@@ -81,6 +81,24 @@ class StoryPathMockEpicTest(unittest.TestCase):
         self.assertEqual(len(result["alternatives"]), 2)
         self.assertNotIn(result["top_pick"], result["alternatives"])
 
+    def test_recommendation_can_exclude_immediate_prior_pick(self):
+        first = mock_epic.recommend_book(KUNAL, "calm bedtime", 10, self.reading_history())
+        second = mock_epic.recommend_book(
+            KUNAL,
+            "calm bedtime",
+            10,
+            self.reading_history(),
+            exclude_book_ids=[first["top_pick"]["book"]["id"]],
+        )
+
+        self.assertNotEqual(first["top_pick"]["book"]["id"], second["top_pick"]["book"]["id"])
+
+    def test_sibling_age_filter_requires_book_to_fit_both_children(self):
+        books = mock_epic.filter_books(3, "calm bedtime", 10, child_ages=[6, 3])
+
+        self.assertTrue(books)
+        self.assertTrue(all(book["age_min"] <= 3 and 6 <= book["age_max"] for book in books))
+
     def test_search_books_matches_title_author_and_tags(self):
         science = mock_epic.search_books("space")
         author = mock_epic.search_books("Mo Willems")

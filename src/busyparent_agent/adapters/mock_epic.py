@@ -49,12 +49,20 @@ def search_books(query: str) -> list[dict[str, Any]]:
     return results
 
 
-def filter_books(child_age: int, mood: str, max_minutes: int) -> list[dict[str, Any]]:
+def filter_books(
+    child_age: int,
+    mood: str,
+    max_minutes: int,
+    child_ages: list[int] | None = None,
+    exclude_book_ids: list[str] | None = None,
+) -> list[dict[str, Any]]:
+    excluded = set(exclude_book_ids or [])
     return [
         book
         for book in get_catalog_books()
         if book["available"]
-        and book["age_min"] <= child_age <= book["age_max"]
+        and book["id"] not in excluded
+        and _age_matches(book, child_age, child_ages)
         and book["read_minutes"] <= max_minutes
         and _matches_mood(book, mood)
     ]
@@ -65,14 +73,18 @@ def recommend_book(
     mood: str,
     max_minutes: int,
     reading_history: dict[str, Any] | list[dict[str, Any]],
+    exclude_book_ids: list[str] | None = None,
+    child_ages: list[int] | None = None,
 ) -> dict[str, Any]:
-    candidates = filter_books(child_profile["age"], mood, max_minutes)
+    excluded = set(exclude_book_ids or [])
+    candidates = filter_books(child_profile["age"], mood, max_minutes, child_ages, list(excluded))
     if not candidates:
         candidates = [
             book
             for book in get_catalog_books()
             if book["available"]
-            and book["age_min"] <= child_profile["age"] <= book["age_max"]
+            and book["id"] not in excluded
+            and _age_matches(book, child_profile["age"], child_ages)
             and book["read_minutes"] <= max_minutes
         ]
 
@@ -133,6 +145,12 @@ def _score_book(
         "score": score,
         "reasons": reasons,
     }
+
+
+def _age_matches(book: dict[str, Any], child_age: int, child_ages: list[int] | None) -> bool:
+    if child_ages:
+        return book["age_min"] <= min(child_ages) and max(child_ages) <= book["age_max"]
+    return book["age_min"] <= child_age <= book["age_max"]
 
 
 def _mood_score(book: dict[str, Any], mood: str) -> int:

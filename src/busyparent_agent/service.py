@@ -39,6 +39,16 @@ STORYPATH_CHILDREN = {
         "favorite_moods": ["science", "bravery", "calm bedtime"],
         "repetition_preference": "moderate",
     },
+    "siblings": {
+        "id": "siblings",
+        "name": "Arya and Kunal",
+        "age": 3,
+        "child_ages": [6, 3],
+        "reading_level": "shared read-aloud",
+        "interests": ["trucks", "dinosaurs", "silly sounds", "rhymes", "space", "animals", "science", "brave characters"],
+        "favorite_moods": ["silly", "calm bedtime", "science", "bravery"],
+        "repetition_preference": "moderate",
+    },
 }
 
 
@@ -152,14 +162,27 @@ def run_scenario(session: AgentSession, scenario: str) -> list[dict[str, Any]]:
     return [session.send(SCENARIO_MESSAGES[scenario], scenario=scenario)]
 
 
-def run_book_scenario(trace: bool = False, parent_message: str | None = None) -> dict[str, Any]:
-    child_profile = STORYPATH_CHILDREN["kunal"]
-    mood = "calm bedtime"
-    max_minutes = 10
+def run_book_scenario(
+    trace: bool = False,
+    parent_message: str | None = None,
+    exclude_book_ids: list[str] | None = None,
+) -> dict[str, Any]:
     parent_message = parent_message or SCENARIO_MESSAGES["book"]
+    request = parse_book_request(parent_message)
+    child_profile = request["child_profile"]
+    mood = request["mood"]
+    max_minutes = request["max_minutes"]
+    excluded = [] if request["allow_repeat"] else (exclude_book_ids or [])
     reading_history = _get_reading_history()
     catalog_count = len(mock_epic.get_catalog_books())
-    recommendation = mock_epic.recommend_book(child_profile, mood, max_minutes, reading_history)
+    recommendation = mock_epic.recommend_book(
+        child_profile,
+        mood,
+        max_minutes,
+        reading_history,
+        exclude_book_ids=excluded,
+        child_ages=child_profile.get("child_ages"),
+    )
     top_pick = recommendation["top_pick"]
     book = top_pick["book"]
 
@@ -168,7 +191,7 @@ def run_book_scenario(trace: bool = False, parent_message: str | None = None) ->
         trace_lines.extend(
             [
                 f"[book] mock_epic.get_catalog_books -> {catalog_count} books",
-                "[book] filter age/mood/time/availability",
+                f"[book] filter age/mood/time/availability -> {child_profile['name']}, {mood}, {max_minutes} min",
                 "[memory] recent reading history checked",
                 f"[decision] chose {book['title']} because {_book_decision_reason(child_profile, mood, max_minutes, top_pick)}",
             ]
@@ -181,11 +204,44 @@ def run_book_scenario(trace: bool = False, parent_message: str | None = None) ->
         "grocery_items": [],
         "metadata": {
             "scenario": "book",
+            "child_id": child_profile["id"],
             "child": child_profile["name"],
             "mode": mood,
             "max_minutes": max_minutes,
+            "book_id": book["id"],
             "book_recommendation": book["title"],
         },
+    }
+
+
+def parse_book_request(parent_message: str) -> dict[str, Any]:
+    message = parent_message.lower()
+    if any(phrase in message for phrase in ("both", "both of them", "siblings", "arya and kunal", "kunal and arya")):
+        child_profile = STORYPATH_CHILDREN["siblings"]
+    elif "arya" in message:
+        child_profile = STORYPATH_CHILDREN["arya"]
+    elif "kunal" in message:
+        child_profile = STORYPATH_CHILDREN["kunal"]
+    else:
+        child_profile = STORYPATH_CHILDREN["kunal"]
+
+    mood = "calm bedtime"
+    if any(word in message for word in ("silly", "funny")):
+        mood = "silly"
+    elif any(word in message for word in ("science", "curious", "curiosity")):
+        mood = "science"
+    elif any(word in message for word in ("calm", "bedtime", "sleep")):
+        mood = "calm bedtime"
+
+    max_minutes = 10
+    if any(word in message for word in ("short", "quick", "tired")):
+        max_minutes = 6
+
+    return {
+        "child_profile": child_profile,
+        "mood": mood,
+        "max_minutes": max_minutes,
+        "allow_repeat": any(phrase in message for phrase in ("same", "again", "repeat")),
     }
 
 
@@ -225,6 +281,11 @@ def _book_decision_reason(
     top_pick: dict[str, Any],
 ) -> str:
     book = top_pick["book"]
+    if child_profile["id"] == "siblings":
+        return (
+            f"it works as a shared read for both Arya and Kunal, fits {mood}, "
+            f"stays within {max_minutes} minutes, and is available in the demo catalog"
+        )
     return (
         f"it fits {child_profile['name']}'s {mood} mode, stays within {max_minutes} minutes, "
         f"and is available in the demo catalog"

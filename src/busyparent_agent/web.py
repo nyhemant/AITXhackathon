@@ -11,6 +11,7 @@ from busyparent_agent.service import APP_TITLE, create_session, parse_now, run_b
 
 
 SESSIONS = {}
+BOOK_SESSIONS = {}
 
 
 HTML = """<!doctype html>
@@ -205,10 +206,13 @@ class WebHandler(BaseHTTPRequestHandler):
         mode = payload.get("mode") or payload.get("scenario")
         if mode == "book":
             session_id = payload.get("session_id") or str(uuid4())
+            state = BOOK_SESSIONS.setdefault(session_id, {})
             response = run_book_scenario(
                 trace=True,
                 parent_message=payload.get("message") or "What should I read tonight?",
+                exclude_book_ids=[state["last_book_id"]] if state.get("last_book_id") else None,
             )
+            state["last_book_id"] = response["metadata"]["book_id"]
             self._send_json({"session_id": session_id, "response": response})
             return
 
@@ -225,7 +229,9 @@ class WebHandler(BaseHTTPRequestHandler):
             return
         if scenario == "book":
             session_id = str(uuid4())
-            self._send_json({"session_id": session_id, "responses": [run_book_scenario(trace=True)]})
+            response = run_book_scenario(trace=True)
+            BOOK_SESSIONS[session_id] = {"last_book_id": response["metadata"]["book_id"]}
+            self._send_json({"session_id": session_id, "responses": [response]})
             return
 
         session_id = self._new_session(scenario)

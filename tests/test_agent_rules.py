@@ -6,7 +6,7 @@ import unittest
 
 from busyparent_agent.agent import BusyParentAgent
 from busyparent_agent.service import create_session, parse_now
-from busyparent_agent.web import HTML, SESSIONS, WebHandler
+from busyparent_agent.web import BOOK_SESSIONS, HTML, SESSIONS, WebHandler
 from busyparent_agent import tools
 from busyparent_agent import inventory as inventory_engine
 from busyparent_agent.adapters import costco_bulk
@@ -245,6 +245,7 @@ class ServiceAdapterTest(unittest.TestCase):
 class WebApiScenarioTest(unittest.TestCase):
     def tearDown(self):
         SESSIONS.clear()
+        BOOK_SESSIONS.clear()
 
     def handle_scenario(self, scenario: str) -> dict:
         handler = object.__new__(WebHandler)
@@ -297,8 +298,13 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertNotIn("mocked Epic-style catalog", response["message"])
 
     def test_book_web_chat_stays_in_storypath_mode_for_followup(self):
+        first_payload = self.handle_scenario("book")
+        session_id = first_payload["session_id"]
+        first_response = first_payload["responses"][0]
+
         payload = self.handle_chat(
             {
+                "session_id": session_id,
                 "mode": "book",
                 "message": "What should I read with both of them tonight?",
             }
@@ -307,8 +313,12 @@ class WebApiScenarioTest(unittest.TestCase):
         combined = "\n".join([response["message"], *response["trace"]])
 
         self.assertEqual(response["metadata"]["scenario"], "book")
+        self.assertEqual(response["metadata"]["child_id"], "siblings")
+        self.assertNotEqual(response["metadata"]["book_id"], first_response["metadata"]["book_id"])
         self.assertIn("What should I read with both of them tonight?", response["parent_message"])
         self.assertIn("Tonight's pick:", response["message"])
+        self.assertIn("Arya and Kunal", response["message"])
+        self.assertIn("both Arya and Kunal", response["message"])
         self.assertIn("mocked Epic-style", response["message"])
         self.assertNotIn("Egg Fried Rice", combined)
         self.assertNotIn("Make ", combined)
