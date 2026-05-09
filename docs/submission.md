@@ -105,10 +105,8 @@ All family, inventory, grocery, photo, receipt, catalog, and meal-memory data is
 
 ## Team Roster
 
-- Hemant Bhangale — product, agent design, implementation/demo
-- Contact: GitHub profile, <https://github.com/nyhemant>
-- Additional teammate: TBD
-- Additional teammate: TBD
+- Hemant Bhangale — solo builder; product, agent design, implementation, demo
+- Contact: <https://github.com/nyhemant>
 
 ## Short Write-Up
 

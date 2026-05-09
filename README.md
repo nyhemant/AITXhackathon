@@ -206,3 +206,7 @@ docs/demo.md  judge-facing demo script
 ## Allergy Wording
 
 The demo can help avoid named ingredients such as nuts or spicy foods, but it is not an allergy safety guarantee. Allergy-sensitive families must verify packaged labels before serving.
+
+## License
+
+MIT. See [LICENSE](LICENSE).
