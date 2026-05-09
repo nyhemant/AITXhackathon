@@ -97,6 +97,22 @@ class AgentRulesTest(unittest.TestCase):
         self.assertTrue(agent.selected_meal["guest_constraints"]["no_nuts"])
         self.assertTrue(agent.selected_meal["guest_constraints"]["no_spicy"])
 
+    def test_nut_allergy_switches_away_from_peanut_meal(self):
+        agent = BusyParentAgent(now=datetime(2026, 5, 8, 17, 30))
+        agent.reply("Let's do peanut butter noodles.")
+
+        response = agent.reply("Guest has a nut allergy and dislikes spice.")
+
+        self.assertNotIn("Keep Peanut Butter Noodles", response)
+        self.assertIn("Peanut Butter Noodles conflicts with the nut allergy", response)
+        self.assertIn("Let's switch to Egg Fried Rice", response)
+        self.assertNotIn("Reviewable grocery cart: peanut butter", response)
+        self.assertNotIn("- peanut butter", response)
+        self.assertIn("verify packaged labels", response)
+        self.assertIn("not an allergy safety guarantee", response)
+        self.assertEqual(agent.selected_meal["name"], "Egg Fried Rice")
+        self.assertEqual(agent.selected_meal["missing"], [])
+
 
 class ScenarioCliTest(unittest.TestCase):
     def run_scenario(self, scenario: str) -> str:

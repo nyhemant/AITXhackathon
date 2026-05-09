@@ -167,6 +167,24 @@ class BusyParentAgent:
         if not meal:
             return self._handle_first_recommendation()
 
+        if self._conflicts_with_guest_allergy(meal, constraints):
+            fallback = self._guest_safe_fallback(constraints)
+            revised = tools.apply_guest_constraints(fallback, constraints, self.inventory, self._trace)
+            self.selected_meal = revised
+            self.current_recommendation = None
+            grocery_list = tools.update_grocery_list(revised, self.inventory, self._trace)
+            self._decision(f"switch away from {meal['name']} because it conflicts with guest allergy")
+            return "\n".join(
+                [
+                    (
+                        f"{meal['name']} conflicts with the nut allergy, so I would not serve that for this guest. "
+                        f"Let's switch to {revised['name']} and verify packaged labels."
+                    ),
+                    self._grocery_line(grocery_list),
+                    revised["allergy_note"],
+                ]
+            )
+
         revised = tools.apply_guest_constraints(meal, constraints, self.inventory, self._trace)
         self.selected_meal = revised
         grocery_list = tools.update_grocery_list(revised, self.inventory, self._trace)
@@ -179,6 +197,25 @@ class BusyParentAgent:
             revised["allergy_note"],
         ]
         return "\n".join(lines)
+
+    def _guest_safe_fallback(self, constraints: dict[str, Any]) -> dict[str, Any]:
+        preferred = next((meal for meal in self.meal_options if meal["name"] == "Egg Fried Rice"), None)
+        if preferred and not self._conflicts_with_guest_allergy(preferred, constraints):
+            fallback = dict(preferred)
+            fallback["missing"] = tools.missing_ingredients(fallback, self.inventory)
+            return fallback
+
+        fallback = next(meal for meal in self.meal_options if not self._conflicts_with_guest_allergy(meal, constraints))
+        fallback = dict(fallback)
+        fallback["missing"] = tools.missing_ingredients(fallback, self.inventory)
+        return fallback
+
+    @staticmethod
+    def _conflicts_with_guest_allergy(meal: dict[str, Any], constraints: dict[str, Any]) -> bool:
+        if not constraints.get("no_nuts"):
+            return False
+        allergens = {allergen.lower() for allergen in meal.get("allergens", [])}
+        return bool(allergens.intersection({"peanut", "tree nut"}))
 
     def _handle_meal_feedback(self, parent_message: str, feedback: dict[str, Any]) -> str:
         meal = self._find_referenced_meal(parent_message) or self.selected_meal or self.current_recommendation
