@@ -33,5 +33,10 @@
     "date": "2026-05-03",
     "event": "recommended",
     "meal": "Chicken and Corn Rice Bowls"
+  },
+  {
+    "date": "2026-05-09",
+    "event": "kid_liked",
+    "meal": "Egg Fried Rice"
   }
 ]

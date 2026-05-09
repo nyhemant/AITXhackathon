@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import datetime, timedelta
 import re
 from typing import Any, Callable
 
@@ -26,7 +26,7 @@ class BusyParentAgent:
 
     def _trace(self, tool_name: str, payload: dict[str, Any]) -> None:
         if self.trace_enabled:
-            if tool_name == "memory_score":
+            if tool_name in {"memory_score", "save_meal_feedback"}:
                 self._emit_trace(f"[memory] {self._format_tool_trace(tool_name, payload)}")
                 return
             self._emit_trace(f"[tool] {tool_name} -> {self._format_tool_trace(tool_name, payload)}")
@@ -43,6 +43,9 @@ class BusyParentAgent:
 
     def reply(self, parent_message: str) -> str:
         message = parent_message.lower()
+        feedback = self._feedback_intent(message)
+        if feedback:
+            return self._handle_meal_feedback(parent_message, feedback)
 
         if self._mentions_guest_constraints(message):
             return self._handle_guest_constraints(message)
@@ -166,6 +169,20 @@ class BusyParentAgent:
         ]
         return "\n".join(lines)
 
+    def _handle_meal_feedback(self, parent_message: str, feedback: dict[str, Any]) -> str:
+        meal = self._find_referenced_meal(parent_message) or self.selected_meal or self.current_recommendation
+        if not meal:
+            return "I can remember that. Which meal should I attach it to?"
+
+        event = tools.save_meal_feedback(
+            meal["name"],
+            feedback["event"],
+            feedback["date"],
+            self._trace,
+        )
+        self.meal_history.append(event)
+        return self._feedback_confirmation(meal["name"], feedback["event"])
+
     def _find_meal(self, parent_message: str) -> dict[str, Any] | None:
         normalized = parent_message.lower()
         candidates = self.alternatives + self.meal_options
@@ -176,6 +193,34 @@ class BusyParentAgent:
             words = [word for word in re.split(r"\W+", meal["name"].lower()) if len(word) > 2]
             if all(word in normalized for word in words[:2]):
                 return meal
+        return None
+
+    def _find_referenced_meal(self, parent_message: str) -> dict[str, Any] | None:
+        normalized = self._normalize_message(parent_message)
+        candidates = self.alternatives + self.meal_options
+        seen = set()
+        unique_candidates = []
+        for meal in candidates:
+            if meal["name"] not in seen:
+                seen.add(meal["name"])
+                unique_candidates.append(meal)
+
+        for meal in unique_candidates:
+            if self._normalize_message(meal["name"]) in normalized:
+                return meal
+
+        matches = []
+        message_words = set(normalized.split())
+        for meal in unique_candidates:
+            meal_words = self._meal_words(meal["name"])
+            match_count = len(meal_words.intersection(message_words))
+            if match_count:
+                matches.append((match_count, meal))
+        if not matches:
+            return None
+        matches.sort(key=lambda item: item[0], reverse=True)
+        if len(matches) == 1 or matches[0][0] > matches[1][0]:
+            return matches[0][1]
         return None
 
     @staticmethod
@@ -199,6 +244,63 @@ class BusyParentAgent:
             "no_nuts": "nut" in message or "allerg" in message,
             "no_spicy": "spicy" in message or "no spice" in message,
         }
+
+    def _feedback_intent(self, message: str) -> dict[str, Any] | None:
+        normalized = self._normalize_message(message)
+        event_date = self.now.date()
+        if "yesterday" in normalized:
+            event_date = event_date - timedelta(days=1)
+
+        if any(phrase in normalized for phrase in ("dont suggest", "do not suggest", "avoid this week", "again this week")):
+            return {"event": "avoid_this_week", "date": event_date}
+        if "favorite" in normalized or "favourite" in normalized:
+            return {"event": "favorite_added", "date": event_date}
+        if "too spicy" in normalized:
+            return {"event": "too_spicy", "date": event_date}
+        if any(phrase in normalized for phrase in ("didnt eat", "did not eat", "wouldnt eat", "would not eat")):
+            return {"event": "kid_rejected", "date": event_date}
+        if any(phrase in normalized for phrase in ("kids loved", "kid loved", "kids liked", "kid liked", "was a hit")):
+            return {"event": "kid_liked", "date": event_date}
+        if any(phrase in normalized for phrase in ("we served", "served this", "served it", "served tonight")):
+            return {"event": "served", "date": event_date}
+        if any(phrase in normalized for phrase in ("we had", "had this", "had it")):
+            return {"event": "served", "date": event_date}
+        if any(phrase in normalized for phrase in ("worked well", "we liked", "i liked")):
+            return {"event": "accepted", "date": event_date}
+        return None
+
+    @staticmethod
+    def _normalize_message(message: str) -> str:
+        normalized = message.lower().replace("’", "'").replace("'", "")
+        normalized = normalized.replace("-", " ")
+        return re.sub(r"[^a-z0-9 ]+", " ", normalized)
+
+    @staticmethod
+    def _meal_words(meal_name: str) -> set[str]:
+        words = set()
+        for word in re.split(r"\W+", meal_name.lower()):
+            if len(word) <= 3 or word in {"with", "and", "the"}:
+                continue
+            words.add(word)
+            if word.endswith("s") and len(word) > 4:
+                words.add(word[:-1])
+        return words
+
+    @staticmethod
+    def _feedback_confirmation(meal_name: str, event_type: str) -> str:
+        if event_type == "avoid_this_week":
+            return f"Got it — I’ll avoid {meal_name} for the next few days."
+        if event_type == "favorite_added":
+            return f"Got it — I’ll remember {meal_name} is a favorite."
+        if event_type == "served":
+            return f"Got it — I’ll remember you served {meal_name}."
+        if event_type == "kid_liked":
+            return f"Got it — I’ll remember {meal_name} was a hit."
+        if event_type == "kid_rejected":
+            return f"Got it — I’ll remember {meal_name} did not work for the kids."
+        if event_type == "too_spicy":
+            return f"Got it — I’ll remember {meal_name} was too spicy."
+        return f"Got it — I’ll remember {meal_name} worked."
 
     def _already_have_line(self, meal: dict[str, Any]) -> str:
         available = tools.inventory_items(self.inventory)
@@ -241,6 +343,8 @@ class BusyParentAgent:
         if tool_name == "memory_score":
             reasons = ", ".join(payload["reasons"])
             return f"{payload['meal']} -> {reasons}; score {payload['total_score']}"
+        if tool_name == "save_meal_feedback":
+            return f"saved feedback -> {payload['meal']}, {payload['event']}"
         if tool_name == "recommend_meal":
             strategy = payload["delivery_strategy"].replace("_", "-")
             return f"{payload['chosen']}, one meal returned, {strategy}"

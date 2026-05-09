@@ -84,6 +84,8 @@ In the lunchtime demo, the agent says planning starts early enough to use a smal
 
 The agent also reads sample household memory from `data/meal_history.json`. Favorites, kid-approved meals, and popular meals get boosted, while meals served, recommended, or rejected recently are penalized so the agent avoids repeating yesterday's dinner when a strong pantry alternative exists.
 
+Parents can update that local memory conversationally in CLI or web chat. Messages like `Egg fried rice was a hit`, `The kids loved this`, `We had quesadillas yesterday`, or `Don't suggest quesadillas again this week` append simple events to `data/meal_history.json` and affect later recommendations.
+
 After the parent rejects the first recommendation, the agent returns three alternatives and gives a clear next pick. The scripted demo then chooses a valid current alternative.
 
 When a guest child has no-nuts/no-spicy constraints, the agent revises the selected meal, avoids the named ingredients, keeps heat off the shared meal, and reminds the parent to verify packaged labels.
@@ -99,6 +101,7 @@ Mocked today:
 - `data/meal_history.json`
 - Delivery timing logic
 - Household memory and recency-aware recommendation scoring
+- Conversational feedback capture into local JSON memory
 - Reviewable grocery list updates
 
 Real later:

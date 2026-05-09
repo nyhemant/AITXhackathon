@@ -23,6 +23,12 @@ def _read_json(filename: str) -> Any:
         return json.load(file)
 
 
+def _write_json(filename: str, value: Any) -> None:
+    with (DATA_DIR / filename).open("w", encoding="utf-8") as file:
+        json.dump(value, file, indent=2)
+        file.write("\n")
+
+
 def _trace(trace: TraceFn, name: str, payload: dict[str, Any]) -> None:
     if trace:
         trace(name, payload)
@@ -57,6 +63,24 @@ def get_meal_history(trace: TraceFn = None) -> list[dict[str, Any]]:
     history = _read_json("meal_history.json")
     _trace(trace, "get_meal_history", {"events": len(history)})
     return history
+
+
+def save_meal_feedback(
+    meal_name: str,
+    event_type: str,
+    event_date: date,
+    trace: TraceFn = None,
+) -> dict[str, Any]:
+    event = {
+        "date": event_date.isoformat(),
+        "event": event_type,
+        "meal": meal_name,
+    }
+    history = _read_json("meal_history.json")
+    history.append(event)
+    _write_json("meal_history.json", history)
+    _trace(trace, "save_meal_feedback", event)
+    return event
 
 
 def inventory_items(inventory: dict[str, Any]) -> set[str]:
@@ -252,9 +276,28 @@ def _household_memory_score(
             recent_rejection = True
             reasons.append("rejected this week -5")
 
-        if event_type == "accepted" and days_ago <= 14:
+        if event_type == "avoid_this_week" and days_ago <= 7:
+            score -= 24
+            recent_rejection = True
+            reasons.append("avoid this week -24")
+
+        if event_type == "kid_rejected" and days_ago <= 7:
+            score -= 10
+            recent_rejection = True
+            reasons.append("kid rejected -10")
+
+        if event_type == "too_spicy" and days_ago <= 14:
+            score -= 8
+            recent_rejection = True
+            reasons.append("too spicy -8")
+
+        if event_type in {"accepted", "kid_liked"} and days_ago <= 14:
             score += 2
-            reasons.append("accepted before +2")
+            reasons.append("liked before +2")
+
+        if event_type == "favorite_added":
+            score += 8
+            reasons.append("favorite saved +8")
 
     if not recent_repeat and not recent_rejection:
         score += 1

@@ -1,4 +1,5 @@
 from datetime import datetime
+import json
 import subprocess
 import sys
 import unittest
@@ -270,6 +271,84 @@ class HouseholdMemoryTest(unittest.TestCase):
         )
 
         self.assertEqual(recommendation["name"], "Egg Fried Rice")
+
+
+class ConversationalFeedbackTest(unittest.TestCase):
+    def setUp(self):
+        self.history_path = tools.DATA_DIR / "meal_history.json"
+        self.original_history = self.history_path.read_text(encoding="utf-8")
+
+    def tearDown(self):
+        self.history_path.write_text(self.original_history, encoding="utf-8")
+
+    def saved_events(self) -> list[dict]:
+        return json.loads(self.history_path.read_text(encoding="utf-8"))
+
+    def test_explicit_meal_feedback_saves_hit(self):
+        agent = BusyParentAgent(now=datetime(2026, 5, 8, 17, 30))
+
+        response = agent.reply("Egg fried rice was a hit.")
+
+        self.assertIn("Egg Fried Rice was a hit", response)
+        self.assertEqual(self.saved_events()[-1]["meal"], "Egg Fried Rice")
+        self.assertEqual(self.saved_events()[-1]["event"], "kid_liked")
+
+    def test_implicit_feedback_after_recommendation_uses_current_meal(self):
+        traces = []
+        agent = BusyParentAgent(
+            now=datetime(2026, 5, 8, 17, 30),
+            trace=True,
+            trace_sink=traces.append,
+        )
+        agent.reply("What should I make for dinner tonight?")
+
+        response = agent.reply("The kids loved this.")
+
+        self.assertIn("Egg Fried Rice was a hit", response)
+        self.assertEqual(self.saved_events()[-1]["meal"], "Egg Fried Rice")
+        self.assertEqual(self.saved_events()[-1]["event"], "kid_liked")
+        self.assertIn("[memory] saved feedback -> Egg Fried Rice, kid_liked", traces)
+
+    def test_avoid_request_saves_avoid_this_week(self):
+        agent = BusyParentAgent(now=datetime(2026, 5, 8, 17, 30))
+
+        response = agent.reply("Don't suggest quesadillas again this week.")
+
+        self.assertIn("avoid Black Bean Quesadillas", response)
+        self.assertEqual(self.saved_events()[-1]["meal"], "Black Bean Quesadillas")
+        self.assertEqual(self.saved_events()[-1]["event"], "avoid_this_week")
+
+    def test_served_event_from_yesterday_message(self):
+        agent = BusyParentAgent(now=datetime(2026, 5, 8, 17, 30))
+
+        response = agent.reply("We had quesadillas yesterday.")
+
+        self.assertIn("served Black Bean Quesadillas", response)
+        self.assertEqual(self.saved_events()[-1]["meal"], "Black Bean Quesadillas")
+        self.assertEqual(self.saved_events()[-1]["event"], "served")
+        self.assertEqual(self.saved_events()[-1]["date"], "2026-05-07")
+
+    def test_future_recommendation_penalizes_avoid_this_week_and_recently_served(self):
+        family = tools.get_family_profile()
+        inventory = tools.estimate_inventory()
+        grocery_history = tools.get_grocery_history()
+        meals = tools.get_meal_options()
+        delivery_window = tools.check_delivery_window(datetime(2026, 5, 8, 17, 30))
+
+        recommendation = tools.recommend_meal(
+            family,
+            inventory,
+            grocery_history,
+            meals,
+            delivery_window,
+            [
+                {"date": "2026-05-08", "event": "avoid_this_week", "meal": "Egg Fried Rice"},
+                {"date": "2026-05-07", "event": "served", "meal": "Egg Fried Rice"},
+            ],
+            datetime(2026, 5, 8, 17, 30),
+        )
+
+        self.assertEqual(recommendation["name"], "Black Bean Quesadillas")
 
 
 if __name__ == "__main__":

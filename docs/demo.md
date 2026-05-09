@@ -74,6 +74,8 @@ Call out:
 
 The demo uses local sample memory in `data/meal_history.json` with `served`, `accepted`, `rejected`, and `recommended` events. The recommendation score boosts family favorites, kid-approved meals, and popular meals, then penalizes meals served or recommended in the last 1-2 days and meals rejected recently.
 
+The same memory file can be updated through natural chat feedback. Try `The kids loved this`, `Egg fried rice was a hit`, `We had quesadillas yesterday`, or `Don't suggest quesadillas again this week`; the agent saves an event and confirms it conversationally.
+
 A real version could learn this history from parent accept/reject clicks, completed dinner plans, and repeated household behavior. This demo keeps that memory deterministic and local so judge scenarios remain reliable.
 
 ## 5. Guest Constraint Branch
