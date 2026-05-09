@@ -7,7 +7,7 @@ import argparse
 import json
 from uuid import uuid4
 
-from busyparent_agent.service import APP_TITLE, create_session, parse_now, run_scenario
+from busyparent_agent.service import APP_TITLE, create_session, parse_now, run_book_scenario, run_scenario
 
 
 SESSIONS = {}
@@ -92,6 +92,7 @@ HTML = """<!doctype html>
     </main>
     <script>
       let sessionId = null;
+      let activeMode = "dinner";
       const chat = document.querySelector("#chat");
       const form = document.querySelector("#form");
       const input = document.querySelector("#message");
@@ -139,7 +140,7 @@ HTML = """<!doctype html>
         const message = input.value.trim();
         if (!message) return;
         input.value = "";
-        const data = await postJson("/api/chat", { session_id: sessionId, message });
+        const data = await postJson("/api/chat", { session_id: sessionId, message, mode: activeMode });
         sessionId = data.session_id;
         renderResponse(data.response);
       });
@@ -147,6 +148,7 @@ HTML = """<!doctype html>
       document.querySelectorAll("[data-scenario]").forEach((button) => {
         button.addEventListener("click", async () => {
           chat.innerHTML = "";
+          activeMode = button.dataset.scenario === "book" ? "book" : "dinner";
           const data = await postJson("/api/scenario", { scenario: button.dataset.scenario });
           sessionId = data.session_id;
           data.responses.forEach(renderResponse);
@@ -156,6 +158,8 @@ HTML = """<!doctype html>
       document.querySelectorAll("[data-tab]").forEach((button) => {
         button.addEventListener("click", () => {
           const active = button.dataset.tab;
+          activeMode = active === "book" ? "book" : "dinner";
+          sessionId = null;
           document.querySelectorAll("[data-tab]").forEach((tab) => {
             tab.classList.toggle("active", tab.dataset.tab === active);
           });
@@ -198,6 +202,16 @@ class WebHandler(BaseHTTPRequestHandler):
 
     def _handle_chat(self) -> None:
         payload = self._read_json()
+        mode = payload.get("mode") or payload.get("scenario")
+        if mode == "book":
+            session_id = payload.get("session_id") or str(uuid4())
+            response = run_book_scenario(
+                trace=True,
+                parent_message=payload.get("message") or "What should I read tonight?",
+            )
+            self._send_json({"session_id": session_id, "response": response})
+            return
+
         session_id = payload.get("session_id") or self._new_session()
         session = SESSIONS[session_id]
         response = session.send(payload.get("message", ""))
@@ -209,6 +223,11 @@ class WebHandler(BaseHTTPRequestHandler):
         if scenario not in {"dinner", "lunch", "guest", "book"}:
             self.send_error(400, "Unknown scenario")
             return
+        if scenario == "book":
+            session_id = str(uuid4())
+            self._send_json({"session_id": session_id, "responses": [run_book_scenario(trace=True)]})
+            return
+
         session_id = self._new_session(scenario)
         responses = run_scenario(SESSIONS[session_id], scenario)
         self._send_json({"session_id": session_id, "responses": responses})

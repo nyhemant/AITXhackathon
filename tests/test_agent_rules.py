@@ -256,9 +256,22 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertFalse(hasattr(handler, "error"))
         return handler.json_payload
 
+    def handle_chat(self, payload: dict) -> dict:
+        handler = object.__new__(WebHandler)
+        handler._read_json = lambda: payload
+        handler._send_json = lambda response: setattr(handler, "json_payload", response)
+        handler.send_error = lambda code, message=None: setattr(handler, "error", (code, message))
+
+        WebHandler._handle_chat(handler)
+        self.assertFalse(hasattr(handler, "error"))
+        return handler.json_payload
+
     def test_web_page_exposes_bedtime_book_tab(self):
         self.assertIn("Bedtime Book", HTML)
         self.assertIn('data-scenario="book"', HTML)
+        self.assertIn("activeMode", HTML)
+        self.assertIn("mode: activeMode", HTML)
+        self.assertIn('activeMode = active === "book" ? "book" : "dinner"', HTML)
         self.assertIn("Dinner", HTML)
 
     def test_book_web_api_scenario_returns_storypath_output(self):
@@ -282,6 +295,26 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertIn("Reviewable grocery list: nothing required.", response["message"])
         self.assertNotIn("Tonight's pick:", response["message"])
         self.assertNotIn("mocked Epic-style catalog", response["message"])
+
+    def test_book_web_chat_stays_in_storypath_mode_for_followup(self):
+        payload = self.handle_chat(
+            {
+                "mode": "book",
+                "message": "What should I read with both of them tonight?",
+            }
+        )
+        response = payload["response"]
+        combined = "\n".join([response["message"], *response["trace"]])
+
+        self.assertEqual(response["metadata"]["scenario"], "book")
+        self.assertIn("What should I read with both of them tonight?", response["parent_message"])
+        self.assertIn("Tonight's pick:", response["message"])
+        self.assertIn("mocked Epic-style", response["message"])
+        self.assertNotIn("Egg Fried Rice", combined)
+        self.assertNotIn("Make ", combined)
+        self.assertNotIn("Reviewable grocery", combined)
+        self.assertNotIn("recommend_meal", combined)
+        self.assertNotIn("update_grocery_list", combined)
 
 
 class HouseholdMemoryTest(unittest.TestCase):

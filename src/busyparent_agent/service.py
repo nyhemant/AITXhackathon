@@ -152,11 +152,11 @@ def run_scenario(session: AgentSession, scenario: str) -> list[dict[str, Any]]:
     return [session.send(SCENARIO_MESSAGES[scenario], scenario=scenario)]
 
 
-def run_book_scenario(trace: bool = False) -> dict[str, Any]:
+def run_book_scenario(trace: bool = False, parent_message: str | None = None) -> dict[str, Any]:
     child_profile = STORYPATH_CHILDREN["kunal"]
     mood = "calm bedtime"
     max_minutes = 10
-    parent_message = SCENARIO_MESSAGES["book"]
+    parent_message = parent_message or SCENARIO_MESSAGES["book"]
     reading_history = _get_reading_history()
     catalog_count = len(mock_epic.get_catalog_books())
     recommendation = mock_epic.recommend_book(child_profile, mood, max_minutes, reading_history)
