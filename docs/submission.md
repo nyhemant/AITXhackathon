@@ -12,6 +12,12 @@ Deployed URL: <https://aitx.myglucoach.app>
 
 Note: Temporary demo tunnel hosted from presenter MacBook Air. Requires the local web app and Cloudflare tunnel to remain running.
 
+## Demo Video
+
+Video walkthrough: <https://drive.google.com/file/d/1jgGs-XpvC7UQszNcjeiNnr0VnRObeRhd/view?usp=share_link>
+
+Sharing is set so anyone with the link can view.
+
 Quick start from a clean machine:
 
 ```bash
