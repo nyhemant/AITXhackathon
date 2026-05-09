@@ -32,7 +32,11 @@ HTML = """<!doctype html>
       h1 { margin: 0 0 6px; font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1; }
       .subhead { margin: 0; max-width: 680px; color: #6b5f55; line-height: 1.5; }
       .shell { overflow: hidden; border: 1px solid #fed7aa; border-radius: 24px; background: rgba(255,255,255,.86); box-shadow: 0 24px 70px rgba(124,45,18,.14); }
+      .tabs { display: flex; gap: 8px; padding: 14px 14px 0; background: #fffaf5; }
+      .tab { background: #fff7ed; color: #7c2d12; border: 1px solid #fed7aa; }
+      .tab.active { background: #7c2d12; color: white; }
       .toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; padding: 14px; border-bottom: 1px solid #fed7aa; background: #fffaf5; }
+      .hidden { display: none; }
       button { border: 0; border-radius: 999px; padding: 10px 14px; background: #ffedd5; color: #7c2d12; font-weight: 800; cursor: pointer; }
       button.primary { background: #ea580c; color: white; }
       label { display: inline-flex; align-items: center; gap: 8px; color: #6b5f55; font-weight: 700; }
@@ -56,13 +60,22 @@ HTML = """<!doctype html>
     <main>
       <header>
         <h1>BusyParent Kitchen Agent / HomePlate AI</h1>
-        <p class="subhead">A local chat shell around the same Python agent used by the CLI. No real grocery APIs, accounts, or external services.</p>
+        <p class="subhead">A local chat shell around the same Python agent used by the CLI. Dinner and bedtime reading use deterministic mocked fixtures, with no real grocery or book-service accounts.</p>
       </header>
       <section class="shell">
-        <div class="toolbar">
+        <div class="tabs" role="tablist" aria-label="BusyParent workflows">
+          <button class="tab active" data-tab="dinner" type="button">Dinner</button>
+          <button class="tab" data-tab="book" type="button">Bedtime Book</button>
+        </div>
+        <div class="toolbar" data-panel="dinner">
           <button data-scenario="dinner">Dinner now</button>
           <button data-scenario="lunch">Plan at lunch</button>
           <button data-scenario="guest">Guest child</button>
+        </div>
+        <div class="toolbar hidden" data-panel="book">
+          <button data-scenario="book">Pick tonight's book</button>
+        </div>
+        <div class="toolbar">
           <button id="clear" type="button">Clear</button>
           <label><input id="traceToggle" type="checkbox" checked /> Show trace</label>
         </div>
@@ -80,6 +93,10 @@ HTML = """<!doctype html>
       const form = document.querySelector("#form");
       const input = document.querySelector("#message");
       const traceToggle = document.querySelector("#traceToggle");
+      const hints = {
+        dinner: "Try: “Not feeling that. Anything else?” then “Let’s do Egg Fried Rice.”",
+        book: "Try the Bedtime Book scenario for one mocked Epic-style read-aloud pick."
+      };
 
       function addBubble(role, text) {
         const div = document.createElement("div");
@@ -133,6 +150,19 @@ HTML = """<!doctype html>
         });
       });
 
+      document.querySelectorAll("[data-tab]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const active = button.dataset.tab;
+          document.querySelectorAll("[data-tab]").forEach((tab) => {
+            tab.classList.toggle("active", tab.dataset.tab === active);
+          });
+          document.querySelectorAll("[data-panel]").forEach((panel) => {
+            panel.classList.toggle("hidden", panel.dataset.panel !== active);
+          });
+          document.querySelector(".hint").textContent = hints[active];
+        });
+      });
+
       document.querySelector("#clear").addEventListener("click", () => {
         sessionId = null;
         chat.innerHTML = "";
@@ -173,7 +203,7 @@ class WebHandler(BaseHTTPRequestHandler):
     def _handle_scenario(self) -> None:
         payload = self._read_json()
         scenario = payload.get("scenario")
-        if scenario not in {"dinner", "lunch", "guest"}:
+        if scenario not in {"dinner", "lunch", "guest", "book"}:
             self.send_error(400, "Unknown scenario")
             return
         session_id = self._new_session(scenario)

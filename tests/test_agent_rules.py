@@ -6,6 +6,7 @@ import unittest
 
 from busyparent_agent.agent import BusyParentAgent
 from busyparent_agent.service import create_session, parse_now
+from busyparent_agent.web import HTML, SESSIONS, WebHandler
 from busyparent_agent import tools
 from busyparent_agent import inventory as inventory_engine
 from busyparent_agent.adapters import costco_bulk
@@ -239,6 +240,48 @@ class ServiceAdapterTest(unittest.TestCase):
 
         self.assertIn("--port", result.stdout)
         self.assertIn("local web chat", result.stdout)
+
+
+class WebApiScenarioTest(unittest.TestCase):
+    def tearDown(self):
+        SESSIONS.clear()
+
+    def handle_scenario(self, scenario: str) -> dict:
+        handler = object.__new__(WebHandler)
+        handler._read_json = lambda: {"scenario": scenario}
+        handler._send_json = lambda payload: setattr(handler, "json_payload", payload)
+        handler.send_error = lambda code, message=None: setattr(handler, "error", (code, message))
+
+        WebHandler._handle_scenario(handler)
+        self.assertFalse(hasattr(handler, "error"))
+        return handler.json_payload
+
+    def test_web_page_exposes_bedtime_book_tab(self):
+        self.assertIn("Bedtime Book", HTML)
+        self.assertIn('data-scenario="book"', HTML)
+        self.assertIn("Dinner", HTML)
+
+    def test_book_web_api_scenario_returns_storypath_output(self):
+        payload = self.handle_scenario("book")
+        response = payload["responses"][0]
+
+        self.assertEqual(response["metadata"]["scenario"], "book")
+        self.assertIn("Tonight's pick:", response["message"])
+        self.assertIn("Parent prompts:", response["message"])
+        self.assertIn("Tiny tomorrow activity:", response["message"])
+        self.assertIn("mocked Epic-style catalog", response["message"])
+        self.assertIn("no real Epic login, API, scraping, or checkout is used", response["message"])
+        self.assertTrue(any(line.startswith("[book]") for line in response["trace"]))
+
+    def test_dinner_web_api_scenario_still_returns_dinner_output(self):
+        payload = self.handle_scenario("dinner")
+        response = payload["responses"][0]
+
+        self.assertEqual(response["metadata"]["scenario"], "dinner")
+        self.assertIn("Make Egg Fried Rice tonight.", response["message"])
+        self.assertIn("Reviewable grocery list: nothing required.", response["message"])
+        self.assertNotIn("Tonight's pick:", response["message"])
+        self.assertNotIn("mocked Epic-style catalog", response["message"])
 
 
 class HouseholdMemoryTest(unittest.TestCase):
