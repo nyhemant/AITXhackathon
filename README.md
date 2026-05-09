@@ -74,6 +74,18 @@ http://127.0.0.1:8001
 
 Restart the web server immediately before presenting so it serves the latest code.
 
+For v2 StoryPath work on the `v2-storypath` branch, keep v1 pinned separately on port `8000` and run the expanded dinner + bedtime-book demo on port `8001`:
+
+```bash
+python3 -m busyparent_agent.web --host 127.0.0.1 --port 8001
+```
+
+Then browse to:
+
+```text
+http://127.0.0.1:8001
+```
+
 ## Demo Commands
 
 Before the golden demo, reset mutable local meal memory and run tests:

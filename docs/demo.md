@@ -48,6 +48,22 @@ Restart the web server immediately before presenting so it serves the latest cod
 
 Use this when you want a mentor or judge to test the UX without typing in a terminal. The web UI is a demo shell around the same agent service used by the CLI.
 
+## 2b. v2 StoryPath Local Web Demo
+
+For the `v2-storypath` branch, keep the stable v1 dinner demo pinned separately on port `8000`. Run v2 locally on port `8001`:
+
+```bash
+python3 -m busyparent_agent.web --host 127.0.0.1 --port 8001
+```
+
+Browse locally to:
+
+```text
+http://127.0.0.1:8001
+```
+
+Use the `Dinner` tab for the existing dinner flow and the `Bedtime Book` tab for StoryPath. StoryPath uses a mocked Epic-style catalog only; there is no real Epic login, API, scraping, checkout, or account access.
+
 ## 3. Close-To-Dinner Branch
 
 Short version:

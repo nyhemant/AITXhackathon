@@ -48,6 +48,8 @@ HTML = """<!doctype html>
       .show-trace .trace { display: block; }
       form { display: grid; grid-template-columns: 1fr auto; gap: 10px; padding: 14px; border-top: 1px solid #fed7aa; background: white; }
       input[type="text"] { min-width: 0; border: 1px solid #fed7aa; border-radius: 999px; padding: 12px 14px; font: inherit; }
+      .story { margin: 12px 0 0; display: flex; flex-wrap: wrap; gap: 8px; }
+      .story span { display: inline-flex; align-items: center; min-height: 32px; border: 1px solid #fed7aa; border-radius: 999px; padding: 6px 10px; background: #fffaf5; color: #7c2d12; font-weight: 800; font-size: .9rem; }
       .hint { margin: 14px 2px 0; color: #6b5f55; font-size: .92rem; }
       @media (max-width: 640px) {
         body { padding: 16px; }
@@ -60,7 +62,8 @@ HTML = """<!doctype html>
     <main>
       <header>
         <h1>BusyParent Kitchen Agent / HomePlate AI</h1>
-        <p class="subhead">A local chat shell around the same Python agent used by the CLI. Dinner and bedtime reading use deterministic mocked fixtures, with no real grocery or book-service accounts.</p>
+        <p class="subhead">BusyParent reduces evening decision load with one practical default at a time.</p>
+        <p class="story"><span>Dinner handled</span><span>Bedtime book handled</span></p>
       </header>
       <section class="shell">
         <div class="tabs" role="tablist" aria-label="BusyParent workflows">
