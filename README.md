@@ -29,6 +29,18 @@ Run tests:
 python3 -m unittest discover -s tests
 ```
 
+Run the local web chat:
+
+```bash
+python3 -m busyparent_agent.web
+```
+
+Then open:
+
+```text
+http://127.0.0.1:8000
+```
+
 ## Demo Commands
 
 Short mentor/judge scenarios:
@@ -55,6 +67,12 @@ Interactive local chat:
 
 ```bash
 python3 -m busyparent_agent.app
+```
+
+Local web chat for UX testing:
+
+```bash
+python3 -m busyparent_agent.web
 ```
 
 ## What Judges Should Notice
@@ -88,13 +106,28 @@ Real later:
 
 No real grocery APIs, web UI, Telegram bot, or photo recognition are included in this version.
 
+The local web chat is only a demo shell around the agent. It does not add auth, persistence, deployment, or external integrations.
+
+## Interface Architecture
+
+`src/busyparent_agent/service.py` is the channel-neutral adapter used by the CLI and web chat. It returns structured response dictionaries with:
+
+- visible message text
+- `[tool]` and `[decision]` trace lines
+- reviewable grocery items
+- scenario/state metadata
+
+The future Telegram adapter should call this same service instead of duplicating agent logic. Agent response text should stay channel-neutral so the same content can work in CLI, web chat, and Telegram.
+
 ## Project Structure
 
 ```text
 src/busyparent_agent/
   app.py      CLI entry point
   agent.py    deterministic agent loop and response policy
+  service.py  channel-neutral response service
   tools.py    local mocked tools
+  web.py      stdlib local web chat adapter
 data/         mocked JSON inputs
 tests/        unittest coverage for agent behavior
 docs/demo.md  judge-facing demo script

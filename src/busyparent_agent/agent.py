@@ -4,15 +4,16 @@ from __future__ import annotations
 
 from datetime import datetime
 import re
-from typing import Any
+from typing import Any, Callable
 
 from busyparent_agent import tools
 
 
 class BusyParentAgent:
-    def __init__(self, now: datetime, trace: bool = False):
+    def __init__(self, now: datetime, trace: bool = False, trace_sink: Callable[[str], None] | None = None):
         self.now = now
         self.trace_enabled = trace
+        self.trace_sink = trace_sink
         self.family = tools.get_family_profile(self._trace)
         self.inventory = tools.estimate_inventory(self._trace)
         self.grocery_history = tools.get_grocery_history(self._trace)
@@ -24,11 +25,17 @@ class BusyParentAgent:
 
     def _trace(self, tool_name: str, payload: dict[str, Any]) -> None:
         if self.trace_enabled:
-            print(f"[tool] {tool_name} -> {self._format_tool_trace(tool_name, payload)}")
+            self._emit_trace(f"[tool] {tool_name} -> {self._format_tool_trace(tool_name, payload)}")
 
     def _decision(self, message: str) -> None:
         if self.trace_enabled:
-            print(f"[decision] {message}")
+            self._emit_trace(f"[decision] {message}")
+
+    def _emit_trace(self, line: str) -> None:
+        if self.trace_sink:
+            self.trace_sink(line)
+        else:
+            print(line)
 
     def reply(self, parent_message: str) -> str:
         message = parent_message.lower()

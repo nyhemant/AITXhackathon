@@ -8,14 +8,23 @@ Use this for a short judge walkthrough. The demo is local Python only.
 python3 -m unittest discover -s tests
 ```
 
-Expected result:
+Expected result: `OK`.
 
-```text
-Ran 8 tests
-OK
+## 2. Local Web Chat
+
+```bash
+python3 -m busyparent_agent.web
 ```
 
-## 2. Close-To-Dinner Branch
+Open:
+
+```text
+http://127.0.0.1:8000
+```
+
+Use this when you want a mentor or judge to test the UX without typing in a terminal. The web UI is a demo shell around the same agent service used by the CLI.
+
+## 3. Close-To-Dinner Branch
 
 Short version:
 
@@ -38,7 +47,7 @@ Call out:
 - Rejection produces three alternatives
 - Guest child constraint revises the selected meal
 
-## 3. Lunchtime Branch
+## 4. Lunchtime Branch
 
 Short version:
 
@@ -59,7 +68,7 @@ Call out:
 - `Reviewable grocery list: avocado, berries.`
 - This is still a reviewable list, not an automatic order
 
-## 4. Guest Constraint Branch
+## 5. Guest Constraint Branch
 
 ```bash
 python3 -m busyparent_agent.app --scenario guest --trace
@@ -72,6 +81,10 @@ Call out:
 - `[tool] apply_guest_constraints`
 - Avoids nuts and keeps spicy food off the shared meal
 - Reminds parent to verify packaged labels
+
+## Future Telegram Adapter
+
+CLI and web both call `busyparent_agent.service.AgentSession`. A future Telegram bot should call that same service from a Telegram-specific adapter and send the returned `message` text plus optional trace/debug metadata. The Telegram layer should not reimplement dinner rules, allergy wording, grocery-list logic, or scenario handling.
 
 ## Sample Transcript Cues
 
