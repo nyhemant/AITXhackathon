@@ -6,6 +6,12 @@ Public repo: <https://github.com/nyhemant/AITXhackathon>
 
 The repo was checked as reachable over unauthenticated HTTPS with `git ls-remote`.
 
+## Deployed URL
+
+Temporary demo tunnel: <https://aitx.myglucoach.app>
+
+This URL requires the presenter's laptop to remain awake with both the local web app and Cloudflare tunnel running.
+
 Quick start from a clean machine:
 
 ```bash
