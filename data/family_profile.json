@@ -1,0 +1,23 @@
+{
+  "family_name": "Rivera",
+  "children": [
+    {
+      "name": "Maya",
+      "age": 8,
+      "preferences": ["rice", "eggs", "cheese", "mild flavors"],
+      "avoid": ["very spicy"]
+    },
+    {
+      "name": "Leo",
+      "age": 5,
+      "preferences": ["tortillas", "pasta", "crunchy vegetables"],
+      "avoid": ["mixed sauces"]
+    }
+  ],
+  "parent_preferences": {
+    "weeknight_max_minutes": 30,
+    "default_tone": "decisive and calm",
+    "leftover_friendly": true
+  },
+  "household_allergies": []
+}

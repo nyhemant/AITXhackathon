@@ -1,0 +1,24 @@
+{
+  "captured_at": "2026-05-08 17:15",
+  "pantry": [
+    "rice",
+    "pasta",
+    "marinara sauce",
+    "black beans",
+    "tortillas",
+    "soy sauce",
+    "oats"
+  ],
+  "fridge": [
+    "eggs",
+    "shredded cheese",
+    "carrots",
+    "plain yogurt",
+    "milk"
+  ],
+  "freezer": [
+    "frozen peas",
+    "frozen corn",
+    "chicken thighs"
+  ]
+}

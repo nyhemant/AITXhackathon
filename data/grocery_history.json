@@ -1,0 +1,31 @@
+{
+  "recent_buys": [
+    {
+      "item": "eggs",
+      "last_bought": "2026-05-06",
+      "usually_on_hand": true
+    },
+    {
+      "item": "rice",
+      "last_bought": "2026-05-01",
+      "usually_on_hand": true
+    },
+    {
+      "item": "tortillas",
+      "last_bought": "2026-05-07",
+      "usually_on_hand": true
+    },
+    {
+      "item": "peanut butter",
+      "last_bought": "2026-04-30",
+      "usually_on_hand": true
+    },
+    {
+      "item": "bagged salad",
+      "last_bought": "2026-05-02",
+      "usually_on_hand": false
+    }
+  ],
+  "preferred_store": "Local grocery",
+  "typical_delivery_minutes": 90
+}
