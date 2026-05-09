@@ -380,8 +380,14 @@ def recommend_meal(
     if delivery_window["strategy"] == "delivery_ok":
         add_ons = delivery_add_ons(recommendation, inventory)
         if add_ons:
-            cart = mock_instacart.build_reviewable_cart(add_ons, trace)
-            recommendation["missing"] = cart["items"]
+            cart = mock_instacart.build_reviewable_cart(
+                add_ons,
+                trace,
+                inventory=inventory,
+                meal_options=meal_options,
+                current_meal=recommendation,
+            )
+            recommendation["missing"] = [line["name"] for line in cart["required_items"]]
             recommendation["reviewable_cart"] = cart
             recommendation["delivery_help"] = True
     _trace(

@@ -81,11 +81,11 @@ python3 -m busyparent_agent.web
 
 In the close-to-dinner demo, the agent says it is close to dinner and chooses a pantry-first meal using high-confidence inventory.
 
-In the lunchtime demo, the agent says planning starts early enough to use a small mock Instacart delivery, then recommends dinner with a reviewable cart/list such as `avocado, berries`. It never places an automatic order.
+In the lunchtime demo, the agent says planning starts early enough to use a small mock Instacart delivery, then recommends dinner with a reviewable cart/list. Required dinner items such as `avocado, berries` appear first, and the Smart Basket Builder adds useful household items only when the mock cart is below the $35.00 minimum. It never places an automatic order.
 
-The mock cart is backed by `data/mock_grocery_catalog.json`, a local grocery universe with representative demo prices, stock status, categories, sizes, brands, tags, and substitutes. The agent only adds catalog-backed, in-stock items or available substitutes to a mock cart.
+The mock cart is backed by `data/mock_grocery_catalog.json`, a local grocery universe with representative demo prices, stock status, categories, sizes, brands, tags, and substitutes. The agent only adds catalog-backed, in-stock items or available substitutes to a mock cart. Smart add-ons prioritize upcoming meal usefulness, low-confidence fresh staples, kid snacks/sides, and low-waste recurring items while skipping high-confidence home inventory and Costco-covered staples.
 
-The Inventory Confidence Engine reconciles `fridge_snapshot.json`, `pantry_snapshot.json`, mock Instacart orders, mock Costco bulk purchases, household usage patterns, and meal history. For example, visible eggs become high-confidence, avocado ordered a few days ago becomes medium-confidence, and older kid snack berries become likely low.
+The Inventory Confidence Engine reconciles three local signals: biweekly Saturday morning Costco bulk restocks, short-cycle mock Instacart delivery history, and current fridge/pantry photo snapshots. Costco shelf-stable staples decay slowly, Costco freezer items decay moderately, and Costco fresh produce decays quickly. For example, rice stays high-confidence from a recent Costco run, avocado ordered a few days ago becomes medium-confidence, and older kid snack berries become likely low.
 
 The agent also reads sample household memory from `data/meal_history.json`. Favorites, kid-approved meals, and popular meals get boosted, while meals served, recommended, or rejected recently are penalized so the agent avoids repeating yesterday's dinner when a strong pantry alternative exists.
 
@@ -110,9 +110,11 @@ Mocked today:
 - `data/mock_grocery_catalog.json`
 - `data/costco_bulk_purchases.json`
 - `src/busyparent_agent/adapters/mock_instacart.py`
+- `src/busyparent_agent/adapters/costco_bulk.py`
 - Delivery timing logic
 - Inventory confidence scoring from local fixtures
 - Mock grocery catalog search, availability, substitutions, and demo pricing
+- Minimum-aware Smart Basket Builder with required and add-on cart sections
 - Household memory and recency-aware recommendation scoring
 - Conversational feedback capture into local JSON memory
 - Reviewable grocery cart/list updates
@@ -121,6 +123,7 @@ Real later:
 
 - Real grocery provider availability and cart APIs
 - Real prices, taxes, fees, promotions, and substitution rules
+- Real read-only Costco receipt/account sync
 - Receipt, pantry, or fridge scanning
 - Photo recognition for fridge/pantry snapshots
 - Calendar-aware dinner timing

@@ -68,20 +68,32 @@ Call out:
 - `[decision] grocery delivery can help because planning starts earlier`
 - `[tool] mock_instacart.get_recent_orders`
 - `[tool] mock_instacart.build_reviewable_cart`
+- `[cart]` lines show required subtotal, minimum check, smart add-ons, and final subtotal
 - `[memory]` scoring still runs before the recommendation
 - The agent does not force pantry-only
 - `Reviewable cart/list: avocado, berries.`
+- Required-for-tonight items are separated from smart add-ons
 - This is still a reviewable mock cart/list, not an automatic order
 
 ## Inventory Confidence
 
-The demo uses local fixtures for visible food snapshots, mock Instacart orders, and mock Costco bulk purchases. The Inventory Confidence Engine ranks items as high-confidence, medium-confidence, low-confidence, likely low, or needing a parent check.
+The demo uses three local inventory signals:
+
+- Costco biweekly Saturday morning bulk restock for pantry and freezer staples
+- Instacart short-cycle grocery delivery for fresh or missing items
+- Fridge/pantry photos for current visual confirmation
+
+The Inventory Confidence Engine ranks items as high-confidence, medium-confidence, low-confidence, likely low, or needing a parent check. Costco shelf-stable items decay slowly, freezer items decay moderately, and fresh produce decays quickly.
 
 Late-day planning prefers high-confidence items. Lunch planning can use the mock Instacart adapter to build a reviewable cart for fresh add-ons like avocado and berries. A real version could replace the fixtures with provider APIs and photo recognition for fridge or pantry snapshots.
+
+The Costco data is fixture-backed receipt-photo style data with a 14-day cadence. A real version could add read-only Costco account receipt sync later; this demo does not build Costco login.
 
 ## Mock Grocery Catalog
 
 `data/mock_grocery_catalog.json` is the local shopping universe for the demo. It includes representative prices, brands, sizes, stock status, tags, and substitutes for common household items. The adapter can search this catalog, check availability, substitute an out-of-stock item, and build a priced reviewable cart.
+
+The Smart Basket Builder starts with required dinner items, checks the mock Instacart $35.00 minimum, then adds useful household items only when needed. Add-ons favor upcoming meal ingredients, low-confidence fresh staples, recurring kid snacks/sides, and low-waste items while skipping high-confidence home inventory and Costco-covered staples.
 
 The prices are fixture prices for demo realism only. No real Instacart API, live pricing, account, checkout, scraping, taxes, fees, or order placement is included.
 

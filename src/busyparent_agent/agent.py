@@ -32,6 +32,9 @@ class BusyParentAgent:
             if tool_name == "inventory_confidence":
                 self._emit_trace(f"[inventory] {self._format_tool_trace(tool_name, payload)}")
                 return
+            if tool_name.startswith("cart_"):
+                self._emit_trace(f"[cart] {self._format_tool_trace(tool_name, payload)}")
+                return
             self._emit_trace(f"[tool] {tool_name} -> {self._format_tool_trace(tool_name, payload)}")
 
     def _decision(self, message: str) -> None:
@@ -66,6 +69,7 @@ class BusyParentAgent:
             self._decision("pantry-first because it is close to dinner")
         else:
             self._decision("grocery delivery can help because planning starts earlier")
+            self._decision("use Instacart only for fresh gaps; rely on Costco for pantry/freezer staples")
 
         meal = tools.recommend_meal(
             self.family,
@@ -317,11 +321,35 @@ class BusyParentAgent:
         if not items:
             return "Reviewable grocery list: nothing required."
         cart = grocery_list.get("reviewable_cart") or {}
-        if cart.get("subtotal") is not None:
-            return f"Reviewable cart/list: {', '.join(items)}. Mock estimate: ${cart['subtotal']:.2f}."
+        if cart.get("line_items"):
+            lines = [
+                f"Reviewable cart/list: {', '.join(items)}.",
+                "Required for tonight:",
+            ]
+            lines.extend(
+                f"- {line['name']} - ${line['price']:.2f}"
+                for line in cart.get("required_items", [])
+            )
+            if cart.get("smart_addons"):
+                lines.append("Smart add-ons to make delivery worthwhile:")
+                lines.extend(
+                    f"- {line['name']} - ${line['price']:.2f} - {line['reason']}"
+                    for line in cart["smart_addons"]
+                )
+            lines.extend(
+                [
+                    f"Mock subtotal: ${cart['subtotal']:.2f}",
+                    f"Mock Instacart minimum: ${cart['minimum_order_amount']:.2f}",
+                    f"Status: {cart['status']}",
+                ]
+            )
+            return "\n".join(lines)
         return f"Reviewable cart/list: {', '.join(items)}."
 
     def _inventory_confidence_line(self) -> str:
+        cadence = self.inventory.get("costco_cadence", {})
+        if cadence.get("days_until_next_run") is not None and cadence["days_until_next_run"] <= 3:
+            return f"Inventory confidence: Costco restock is due this {cadence['usual_day']}."
         if not self.inventory.get("needs_photo_hint"):
             return "Inventory confidence: high enough for tonight."
         return "Inventory confidence: a quick fridge photo would improve this, but I can still plan from recent orders."
@@ -366,8 +394,25 @@ class BusyParentAgent:
             return f"{payload['available']} available, {payload['unavailable']} unavailable"
         if tool_name == "mock_instacart.check_delivery_window":
             return payload["message"]
+        if tool_name == "mock_instacart.get_order_rules":
+            return f"minimum ${payload['minimum_order_amount']:.2f}, target ${payload['cart_target_amount']:.2f}"
         if tool_name == "mock_instacart.build_reviewable_cart":
             return ", ".join(payload["items"]) if payload["items"] else "empty"
+        if tool_name == "cart_required_subtotal":
+            return f"required tonight subtotal: ${payload['subtotal']:.2f}"
+        if tool_name == "cart_below_minimum":
+            return f"below mock Instacart minimum: ${payload['minimum_order_amount']:.2f}"
+        if tool_name == "cart_added_smart_addon":
+            return f"added {payload['item']} because {payload['reason']}"
+        if tool_name == "cart_skipped_item":
+            return f"skipped {payload['item']} because {payload['reason']}"
+        if tool_name == "cart_final_subtotal":
+            return f"final subtotal: ${payload['subtotal']:.2f}"
+        if tool_name == "costco_bulk.get_cadence":
+            return f"every {payload['frequency_days']} days, {payload['usual_day']} {payload['usual_time']}"
+        if tool_name == "costco_bulk.get_recent_receipts":
+            days = payload["last_run_days_ago"]
+            return f"last run {days} days ago" if days is not None else "no recent receipts"
         if tool_name == "get_grocery_history":
             return f"{payload['recent_buys']} recent grocery signals"
         if tool_name == "get_meal_options":

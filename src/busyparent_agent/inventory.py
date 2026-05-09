@@ -11,6 +11,7 @@ import json
 from pathlib import Path
 from typing import Any, Callable
 
+from busyparent_agent.adapters import costco_bulk
 from busyparent_agent.adapters import mock_instacart
 
 
@@ -18,8 +19,8 @@ ROOT_DIR = Path(__file__).resolve().parents[2]
 DATA_DIR = ROOT_DIR / "data"
 TraceFn = Callable[[str, dict[str, Any]], None] | None
 
-KID_SNACK_ITEMS = {"berries", "carrots"}
-FRESH_ITEMS = {"avocado", "berries", "carrots", "bagged salad", "plain yogurt", "eggs", "milk"}
+KID_SNACK_ITEMS = {"berries", "blueberries", "carrots"}
+FRESH_ITEMS = {"avocado", "berries", "blueberries", "carrots", "bagged salad", "plain yogurt", "eggs", "milk"}
 ITEM_ALIASES = {
     "eggs": "eggs",
     "egg": "eggs",
@@ -41,13 +42,15 @@ def _trace(trace: TraceFn, name: str, payload: dict[str, Any]) -> None:
 def build_confidence_inventory(now: datetime, trace: TraceFn = None) -> dict[str, Any]:
     fridge_snapshot = _read_json("fridge_snapshot.json")
     pantry_snapshot = _read_json("pantry_snapshot.json")
-    bulk_purchases = _read_json("costco_bulk_purchases.json")
+    costco_cadence = costco_bulk.get_cadence(trace)
+    costco_receipts = costco_bulk.get_recent_receipts(now, trace)
     orders = mock_instacart.get_recent_orders(trace)
     mock_instacart.get_last_delivery(trace)
     frequently_bought = mock_instacart.get_frequently_bought_items(trace)
 
     evidence: dict[str, list[str]] = {}
     ordered_items: dict[str, dict[str, Any]] = {}
+    costco_items: dict[str, dict[str, Any]] = {}
 
     fridge_items = [_canonical(item) for item in fridge_snapshot.get("items", [])]
     pantry_items = [_canonical(item) for item in pantry_snapshot.get("pantry", [])]
@@ -71,20 +74,30 @@ def build_confidence_inventory(now: datetime, trace: TraceFn = None) -> dict[str
             if days <= 3:
                 evidence.setdefault(item, []).append("bought recently")
 
-    for purchase in bulk_purchases:
-        item = _canonical(purchase["item"])
-        days = _days_ago(date.fromisoformat(purchase["purchased_at"]), now)
-        if days <= int(purchase["shelf_life_days"]):
-            evidence.setdefault(item, []).append("bulk purchase likely on hand")
+    for receipt in costco_receipts:
+        purchased_at = date.fromisoformat(receipt["purchased_at"])
+        for raw_item in receipt["items"]:
+            item = _canonical(raw_item["item"])
+            days = _days_ago(purchased_at, now)
+            prior = costco_items.get(item)
+            if prior is None or days < prior["days_ago"]:
+                costco_items[item] = {
+                    **raw_item,
+                    "item": item,
+                    "days_ago": days,
+                    "purchased_at": receipt["purchased_at"],
+                    "source_type": receipt.get("source_type", "mock_fixture"),
+                }
+            evidence.setdefault(item, []).append("Costco bulk item")
 
     for item in frequently_bought:
         canonical = _canonical(item)
         evidence.setdefault(canonical, []).append("frequently bought")
 
     confidence: dict[str, dict[str, Any]] = {}
-    all_items = sorted(set(evidence) | set(ordered_items))
+    all_items = sorted(set(evidence) | set(ordered_items) | set(costco_items))
     for item in all_items:
-        entry = _classify_item(item, evidence.get(item, []), ordered_items.get(item))
+        entry = _classify_item(item, evidence.get(item, []), ordered_items.get(item), costco_items.get(item))
         confidence[item] = entry
         _trace(
             trace,
@@ -109,6 +122,10 @@ def build_confidence_inventory(now: datetime, trace: TraceFn = None) -> dict[str
         "fridge": fridge_items,
         "pantry": pantry_items,
         "freezer": freezer_items,
+        "costco_cadence": {
+            **costco_cadence,
+            "days_until_next_run": costco_bulk.days_until_next_run(now, costco_cadence),
+        },
         "confidence": confidence,
         **groups,
         "needs_photo_hint": bool(groups["low_confidence"] or groups["needs_parent_check"]),
@@ -130,20 +147,28 @@ def confidence_for_item(inventory: dict[str, Any], item: str) -> dict[str, Any]:
     )
 
 
-def _classify_item(item: str, evidence: list[str], order_item: dict[str, Any] | None) -> dict[str, Any]:
+def _classify_item(
+    item: str,
+    evidence: list[str],
+    order_item: dict[str, Any] | None,
+    costco_item: dict[str, Any] | None,
+) -> dict[str, Any]:
     visible = any(reason.startswith("seen in") for reason in evidence)
     bought_recently = "bought recently" in evidence
-    bulk = "bulk purchase likely on hand" in evidence
     days_ago = order_item["days_ago"] if order_item else None
     kid_snack = bool(order_item and order_item.get("kid_snack")) or item in KID_SNACK_ITEMS
 
     if visible:
-        supporting = [reason for reason in evidence if reason != "frequently bought"]
+        if costco_item and costco_item["storage_type"] in {"shelf_stable", "freezer"}:
+            return {"bucket": "high_confidence", "reason": _costco_reason(costco_item)}
+        supporting = [reason for reason in evidence if reason != "frequently bought" and reason != "Costco bulk item"]
+        if costco_item:
+            supporting.append(_costco_reason(costco_item))
         reason = " + ".join(supporting)
         return {"bucket": "high_confidence", "reason": reason}
 
-    if bulk:
-        return {"bucket": "high_confidence", "reason": "bulk purchase likely on hand"}
+    if costco_item:
+        return _classify_costco_item(costco_item)
 
     if days_ago is not None:
         if kid_snack and days_ago >= 5:
@@ -156,6 +181,41 @@ def _classify_item(item: str, evidence: list[str], order_item: dict[str, Any] | 
             return {"bucket": "low_confidence", "reason": f"ordered {days_ago} days ago, not visible"}
 
     return {"bucket": "needs_parent_check", "reason": "not visible or recently ordered"}
+
+
+def _classify_costco_item(item: dict[str, Any]) -> dict[str, Any]:
+    storage_type = item["storage_type"]
+    days_ago = item["days_ago"]
+
+    if storage_type == "shelf_stable":
+        if days_ago <= 45:
+            return {"bucket": "high_confidence", "reason": _costco_reason(item)}
+        if days_ago <= int(item["shelf_life_days"]):
+            return {"bucket": "medium_confidence", "reason": _costco_reason(item)}
+
+    if storage_type == "freezer":
+        if days_ago <= 21:
+            return {"bucket": "high_confidence", "reason": _costco_reason(item)}
+        if days_ago <= int(item["shelf_life_days"]):
+            return {"bucket": "medium_confidence", "reason": _costco_reason(item)}
+
+    if storage_type == "fresh":
+        if days_ago <= 3:
+            return {"bucket": "medium_confidence", "reason": _costco_reason(item)}
+        return {"bucket": "low_confidence", "reason": _costco_reason(item)}
+
+    return {"bucket": "needs_parent_check", "reason": _costco_reason(item)}
+
+
+def _costco_reason(item: dict[str, Any]) -> str:
+    label = {
+        "shelf_stable": "shelf-stable",
+        "freezer": "freezer",
+        "fresh": "fresh Costco item",
+    }.get(item["storage_type"], item["storage_type"])
+    if item["storage_type"] == "fresh":
+        return f"{label}, bought {item['days_ago']} days ago"
+    return f"Costco bulk item, {label}, bought {item['days_ago']} days ago"
 
 
 def _items_in_bucket(confidence: dict[str, dict[str, Any]], bucket: str) -> list[str]:

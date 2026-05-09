@@ -1,32 +1,61 @@
-[
-  {
-    "item": "rice",
-    "purchased_at": "2026-04-20",
-    "shelf_life_days": 180,
-    "bulk_item": true
+{
+  "cadence": {
+    "frequency_days": 14,
+    "usual_day": "Saturday",
+    "usual_time": "morning",
+    "last_bulk_run_date": "2026-05-02",
+    "expected_next_run_date": "2026-05-16",
+    "source_type": "mock_fixture"
   },
-  {
-    "item": "pasta",
-    "purchased_at": "2026-04-20",
-    "shelf_life_days": 365,
-    "bulk_item": true
-  },
-  {
-    "item": "frozen peas",
-    "purchased_at": "2026-04-27",
-    "shelf_life_days": 120,
-    "bulk_item": true
-  },
-  {
-    "item": "frozen corn",
-    "purchased_at": "2026-04-27",
-    "shelf_life_days": 120,
-    "bulk_item": true
-  },
-  {
-    "item": "chicken thighs",
-    "purchased_at": "2026-05-01",
-    "shelf_life_days": 45,
-    "bulk_item": true
-  }
-]
+  "receipts": [
+    {
+      "receipt_id": "costco-mock-2026-05-02",
+      "purchased_at": "2026-05-02",
+      "source_type": "receipt_photo",
+      "items": [
+        {
+          "item": "rice",
+          "storage_type": "shelf_stable",
+          "shelf_life_days": 180,
+          "bulk_item": true
+        },
+        {
+          "item": "pasta",
+          "storage_type": "shelf_stable",
+          "shelf_life_days": 365,
+          "bulk_item": true
+        },
+        {
+          "item": "frozen peas",
+          "storage_type": "freezer",
+          "shelf_life_days": 120,
+          "bulk_item": true
+        },
+        {
+          "item": "frozen corn",
+          "storage_type": "freezer",
+          "shelf_life_days": 120,
+          "bulk_item": true
+        },
+        {
+          "item": "chicken thighs",
+          "storage_type": "freezer",
+          "shelf_life_days": 45,
+          "bulk_item": true
+        },
+        {
+          "item": "blueberries",
+          "storage_type": "fresh",
+          "shelf_life_days": 6,
+          "bulk_item": true
+        },
+        {
+          "item": "apples",
+          "storage_type": "fresh",
+          "shelf_life_days": 14,
+          "bulk_item": true
+        }
+      ]
+    }
+  ]
+}

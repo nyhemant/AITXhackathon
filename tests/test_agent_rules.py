@@ -8,6 +8,7 @@ from busyparent_agent.agent import BusyParentAgent
 from busyparent_agent.service import create_session, parse_now
 from busyparent_agent import tools
 from busyparent_agent import inventory as inventory_engine
+from busyparent_agent.adapters import costco_bulk
 from busyparent_agent.adapters import mock_instacart
 
 
@@ -388,6 +389,12 @@ class InventoryConfidenceTest(unittest.TestCase):
         self.assertTrue(
             any("[tool] mock_instacart.build_reviewable_cart -> avocado, berries" in line for line in response["trace"])
         )
+        self.assertTrue(
+            any(
+                "[decision] use Instacart only for fresh gaps; rely on Costco for pantry/freezer staples" in line
+                for line in response["trace"]
+            )
+        )
 
     def test_dinner_branch_avoids_relying_on_low_confidence_items(self):
         agent = BusyParentAgent(now=datetime(2026, 5, 8, 17, 30))
@@ -401,8 +408,91 @@ class InventoryConfidenceTest(unittest.TestCase):
             "low_confidence",
         )
 
+    def test_next_costco_run_date_calculation(self):
+        cadence = costco_bulk.get_cadence()
+
+        self.assertEqual(cadence["frequency_days"], 14)
+        self.assertEqual(cadence["usual_day"], "Saturday")
+        self.assertEqual(cadence["usual_time"], "morning")
+        self.assertEqual(costco_bulk.expected_next_run_date(cadence).isoformat(), "2026-05-16")
+
+    def test_costco_fresh_item_decays_before_next_run(self):
+        inventory = inventory_engine.build_confidence_inventory(datetime(2026, 5, 14, 12, 30))
+
+        blueberries = inventory_engine.confidence_for_item(inventory, "blueberries")
+
+        self.assertEqual(blueberries["bucket"], "low_confidence")
+        self.assertIn("fresh Costco item, bought 12 days ago", blueberries["reason"])
+
+    def test_costco_shelf_stable_item_remains_high_across_cycle(self):
+        inventory = inventory_engine.build_confidence_inventory(datetime(2026, 5, 15, 12, 30))
+
+        rice = inventory_engine.confidence_for_item(inventory, "rice")
+
+        self.assertEqual(rice["bucket"], "high_confidence")
+        self.assertIn("Costco bulk item, shelf-stable, bought 13 days ago", rice["reason"])
+
+    def test_costco_freezer_item_remains_high_confidence(self):
+        inventory = inventory_engine.build_confidence_inventory(datetime(2026, 5, 15, 12, 30))
+
+        frozen_peas = inventory_engine.confidence_for_item(inventory, "frozen peas")
+
+        self.assertEqual(frozen_peas["bucket"], "high_confidence")
+        self.assertIn("Costco bulk item, freezer, bought 13 days ago", frozen_peas["reason"])
+
+    def test_lunch_cart_does_not_add_costco_covered_staples_to_instacart(self):
+        session = create_session(parse_now(None, scenario="lunch"), trace=True, scenario="lunch")
+
+        response = session.send("What should I make for dinner tonight?", scenario="lunch")
+
+        self.assertEqual(response["grocery_items"], ["avocado", "berries"])
+        self.assertNotIn("rice", response["grocery_items"])
+        self.assertNotIn("frozen corn", response["grocery_items"])
+
+    def test_may_9_10am_uses_early_delivery_and_costco_cycle(self):
+        session = create_session(datetime(2026, 5, 9, 10, 0), trace=True)
+
+        response = session.send("It is 10am and I want to plan for dinner tonight")
+
+        self.assertEqual(response["metadata"]["delivery_strategy"], "delivery_ok")
+        self.assertEqual(response["grocery_items"], ["avocado", "berries"])
+        self.assertIn("Reviewable cart/list: avocado, berries.", response["message"])
+        self.assertIn("Mock subtotal: $35.22", response["message"])
+        self.assertTrue(
+            any("[tool] costco_bulk.get_recent_receipts -> last run 7 days ago" in line for line in response["trace"])
+        )
+        self.assertTrue(
+            any(
+                "[decision] use Instacart only for fresh gaps; rely on Costco for pantry/freezer staples" in line
+                for line in response["trace"]
+            )
+        )
+
+    def test_may_9_10am_costco_confidence_buckets(self):
+        inventory = inventory_engine.build_confidence_inventory(datetime(2026, 5, 9, 10, 0))
+
+        self.assertEqual(inventory["costco_cadence"]["days_until_next_run"], 7)
+        self.assertEqual(inventory_engine.confidence_for_item(inventory, "rice")["bucket"], "high_confidence")
+        self.assertIn(
+            "Costco bulk item, shelf-stable, bought 7 days ago",
+            inventory_engine.confidence_for_item(inventory, "rice")["reason"],
+        )
+        self.assertEqual(inventory_engine.confidence_for_item(inventory, "frozen peas")["bucket"], "high_confidence")
+        self.assertEqual(inventory_engine.confidence_for_item(inventory, "blueberries")["bucket"], "low_confidence")
+
 
 class MockGroceryCatalogTest(unittest.TestCase):
+    def smart_cart(self, traces=None):
+        inventory = inventory_engine.build_confidence_inventory(datetime(2026, 5, 9, 12, 30))
+        meals = tools.get_meal_options()
+        return mock_instacart.build_reviewable_cart(
+            ["avocado", "berries"],
+            (lambda name, payload: traces.append((name, payload))) if traces is not None else None,
+            inventory=inventory,
+            meal_options=meals,
+            current_meal=meals[0],
+        )
+
     def test_catalog_is_deep_enough_for_demo(self):
         catalog = mock_instacart.get_catalog_items()
 
@@ -411,18 +501,44 @@ class MockGroceryCatalogTest(unittest.TestCase):
         self.assertTrue(any(item["name"] == "avocado" for item in catalog))
         self.assertTrue(any(item["name"] == "eggs" for item in catalog))
 
-    def test_reviewable_cart_uses_catalog_prices(self):
-        cart = mock_instacart.build_reviewable_cart(["avocado", "berries"])
+    def test_dinner_required_items_are_included_first(self):
+        cart = self.smart_cart()
 
-        self.assertEqual(cart["items"], ["avocado", "berries"])
-        self.assertEqual(len(cart["line_items"]), 2)
-        self.assertAlmostEqual(cart["subtotal"], 8.28)
+        self.assertEqual([line["name"] for line in cart["required_items"]], ["avocado", "berries"])
+        self.assertEqual([line["name"] for line in cart["line_items"][:2]], ["avocado", "berries"])
+        self.assertAlmostEqual(cart["required_subtotal"], 8.28)
+
+    def test_below_minimum_cart_gets_smart_addons(self):
+        cart = self.smart_cart()
+
+        self.assertGreater(len(cart["smart_addons"]), 0)
+        self.assertGreaterEqual(cart["subtotal"], cart["minimum_order_amount"])
+        self.assertEqual(cart["status"], "meets minimum")
+        self.assertAlmostEqual(cart["subtotal"], 35.22)
         self.assertEqual(cart["unavailable_items"], [])
 
-    def test_out_of_stock_catalog_item_uses_available_substitute(self):
-        cart = mock_instacart.build_reviewable_cart(["guacamole cup"])
+    def test_high_confidence_home_inventory_is_not_added(self):
+        cart = self.smart_cart()
 
-        self.assertEqual(cart["items"], ["avocado"])
+        self.assertNotIn("eggs", cart["items"])
+        self.assertNotIn("rice", cart["items"])
+
+    def test_costco_covered_staples_are_skipped(self):
+        traces = []
+
+        self.smart_cart(traces)
+
+        self.assertIn(
+            ("cart_skipped_item", {"item": "rice", "reason": "Costco bulk item is high confidence"}),
+            traces,
+        )
+
+    def test_out_of_stock_catalog_item_uses_available_substitute(self):
+        inventory = inventory_engine.build_confidence_inventory(datetime(2026, 5, 9, 12, 30))
+
+        cart = mock_instacart.build_reviewable_cart(["guacamole cup"], inventory=inventory)
+
+        self.assertEqual(cart["required_items"][0]["name"], "avocado")
         self.assertEqual(cart["substitutions"], [{"requested": "guacamole cup", "substitute": "avocado"}])
 
     def test_unknown_item_is_not_added_to_cart(self):
@@ -431,12 +547,25 @@ class MockGroceryCatalogTest(unittest.TestCase):
         self.assertEqual(cart["items"], [])
         self.assertEqual(cart["unavailable_items"], ["dragon fruit"])
 
-    def test_lunch_response_includes_mock_catalog_price(self):
+    def test_final_cart_only_contains_catalog_item_ids(self):
+        catalog_ids = {item["id"] for item in mock_instacart.get_catalog_items()}
+        cart = self.smart_cart()
+
+        self.assertTrue(all(line["id"] in catalog_ids for line in cart["line_items"]))
+
+    def test_lunch_response_separates_required_items_from_smart_addons(self):
         session = create_session(parse_now(None, scenario="lunch"), trace=True, scenario="lunch")
 
         response = session.send("What should I make for dinner tonight?", scenario="lunch")
 
-        self.assertIn("Mock estimate: $8.28", response["message"])
+        self.assertIn("Required for tonight:", response["message"])
+        self.assertIn("- avocado - $1.79", response["message"])
+        self.assertIn("- berries - $6.49", response["message"])
+        self.assertIn("Smart add-ons to make delivery worthwhile:", response["message"])
+        self.assertIn("- mini cucumbers - $4.49", response["message"])
+        self.assertIn("Mock subtotal: $35.22", response["message"])
+        self.assertIn("Mock Instacart minimum: $35.00", response["message"])
+        self.assertIn("Status: meets minimum", response["message"])
 
 
 if __name__ == "__main__":
