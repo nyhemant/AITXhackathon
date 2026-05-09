@@ -3,10 +3,12 @@
 from __future__ import annotations
 
 from datetime import datetime
+import json
 from typing import Any
 
 from busyparent_agent.agent import BusyParentAgent
 from busyparent_agent import tools
+from busyparent_agent.adapters import mock_epic
 
 
 APP_TITLE = "BusyParent Kitchen Agent / HomePlate AI"
@@ -16,6 +18,27 @@ SCENARIO_MESSAGES = {
     "dinner": "What should I make for dinner tonight?",
     "lunch": "What should I make for dinner tonight?",
     "guest": "My daughter has a friend coming over. No nuts, no spicy food.",
+    "book": "What should I read with Kunal tonight?",
+}
+STORYPATH_CHILDREN = {
+    "kunal": {
+        "id": "kunal",
+        "name": "Kunal",
+        "age": 3,
+        "reading_level": "preschool read-aloud",
+        "interests": ["trucks", "dinosaurs", "silly sounds", "rhymes"],
+        "favorite_moods": ["silly", "phonics", "short because parent is tired", "calm bedtime"],
+        "repetition_preference": "high",
+    },
+    "arya": {
+        "id": "arya",
+        "name": "Arya",
+        "age": 6,
+        "reading_level": "early reader with parent support",
+        "interests": ["space", "animals", "science", "brave characters", "drawing"],
+        "favorite_moods": ["science", "bravery", "calm bedtime"],
+        "repetition_preference": "moderate",
+    },
 }
 
 
@@ -24,6 +47,8 @@ def parse_now(value: str | None, demo: bool = False, scenario: str | None = None
         return datetime.strptime(value, "%Y-%m-%d %H:%M")
     if scenario == "lunch":
         return datetime.strptime("2026-05-09 12:30", "%Y-%m-%d %H:%M")
+    if scenario == "book":
+        return datetime.strptime("2026-05-08 20:00", "%Y-%m-%d %H:%M")
     if scenario in {"dinner", "guest"}:
         return datetime.strptime("2026-05-08 17:30", "%Y-%m-%d %H:%M")
     if demo:
@@ -111,6 +136,10 @@ def create_session(
 
 
 def run_scenario(session: AgentSession, scenario: str) -> list[dict[str, Any]]:
+    if scenario == "book":
+        session._consume_trace()
+        return [run_book_scenario(trace=session.trace)]
+
     if scenario == "guest":
         session.set_selected_meal("Egg Fried Rice")
         return [
@@ -121,6 +150,85 @@ def run_scenario(session: AgentSession, scenario: str) -> list[dict[str, Any]]:
         ]
 
     return [session.send(SCENARIO_MESSAGES[scenario], scenario=scenario)]
+
+
+def run_book_scenario(trace: bool = False) -> dict[str, Any]:
+    child_profile = STORYPATH_CHILDREN["kunal"]
+    mood = "calm bedtime"
+    max_minutes = 10
+    parent_message = SCENARIO_MESSAGES["book"]
+    reading_history = _get_reading_history()
+    catalog_count = len(mock_epic.get_catalog_books())
+    recommendation = mock_epic.recommend_book(child_profile, mood, max_minutes, reading_history)
+    top_pick = recommendation["top_pick"]
+    book = top_pick["book"]
+
+    trace_lines = []
+    if trace:
+        trace_lines.extend(
+            [
+                f"[book] mock_epic.get_catalog_books -> {catalog_count} books",
+                "[book] filter age/mood/time/availability",
+                "[memory] recent reading history checked",
+                f"[decision] chose {book['title']} because {_book_decision_reason(child_profile, mood, max_minutes, top_pick)}",
+            ]
+        )
+
+    return {
+        "parent_message": parent_message,
+        "message": _format_book_message(child_profile, mood, max_minutes, top_pick),
+        "trace": trace_lines,
+        "grocery_items": [],
+        "metadata": {
+            "scenario": "book",
+            "child": child_profile["name"],
+            "mode": mood,
+            "max_minutes": max_minutes,
+            "book_recommendation": book["title"],
+        },
+    }
+
+
+def _get_reading_history() -> dict[str, Any]:
+    with (mock_epic.DATA_DIR / "reading_history.json").open(encoding="utf-8") as file:
+        return json.load(file)
+
+
+def _format_book_message(
+    child_profile: dict[str, Any],
+    mood: str,
+    max_minutes: int,
+    top_pick: dict[str, Any],
+) -> str:
+    book = top_pick["book"]
+    prompts = book["parent_prompts"]
+    return "\n".join(
+        [
+            f"Tonight's pick: {book['title']} by {book['author']}.",
+            f"Why it fits {child_profile['name']} tonight: {_book_decision_reason(child_profile, mood, max_minutes, top_pick)}.",
+            f"Read time: about {book['read_minutes']} minutes.",
+            f"Format/source: {book['format'].replace('_', ' ')} from the mocked Epic-style catalog.",
+            "Parent prompts:",
+            f"1. {prompts[0]}",
+            f"2. {prompts[1]}",
+            f"3. {prompts[2]}",
+            f"Tiny tomorrow activity: {book['tiny_activity']}",
+            "Note: availability is from a mocked Epic-style fixture only; no real Epic login, API, scraping, or checkout is used.",
+        ]
+    )
+
+
+def _book_decision_reason(
+    child_profile: dict[str, Any],
+    mood: str,
+    max_minutes: int,
+    top_pick: dict[str, Any],
+) -> str:
+    book = top_pick["book"]
+    return (
+        f"it fits {child_profile['name']}'s {mood} mode, stays within {max_minutes} minutes, "
+        f"and is available in the demo catalog"
+    )
 
 
 def message_implies_early_planning(message: str) -> bool:

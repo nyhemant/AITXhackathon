@@ -28,7 +28,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--demo", action="store_true", help="Run the scripted hackathon demo conversation.")
     parser.add_argument(
         "--scenario",
-        choices=["dinner", "lunch", "guest"],
+        choices=["dinner", "lunch", "guest", "book"],
         help="Run a short judge-friendly scenario.",
     )
     parser.add_argument("--now", help='Override current time, for example: "2026-05-08 17:30".')

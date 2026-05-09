@@ -155,6 +155,32 @@ class ScenarioCliTest(unittest.TestCase):
         self.assertIn("Keep spice off", output)
         self.assertIn("verify packaged labels", output)
 
+    def test_scenario_book_runs_and_returns_one_book(self):
+        output = self.run_scenario("book")
+
+        self.assertIn("[book] mock_epic.get_catalog_books -> 35 books", output)
+        self.assertIn("[book] filter age/mood/time/availability", output)
+        self.assertIn("[memory] recent reading history checked", output)
+        self.assertIn("[decision] chose ", output)
+        self.assertEqual(output.count("Tonight's pick:"), 1)
+        self.assertIn("What should I read with Kunal tonight?", output)
+        self.assertIn("Why it fits Kunal tonight:", output)
+        self.assertIn("Read time: about ", output)
+        self.assertIn("Format/source:", output)
+        self.assertIn("mocked Epic-style catalog", output)
+        self.assertIn("Parent prompts:", output)
+        self.assertIn("1. ", output)
+        self.assertIn("2. ", output)
+        self.assertIn("3. ", output)
+        self.assertIn("Tiny tomorrow activity:", output)
+        self.assertIn("no real Epic login, API, scraping, or checkout is used", output)
+
+    def test_scenario_dinner_does_not_include_storypath_copy(self):
+        output = self.run_scenario("dinner")
+
+        self.assertNotIn("Tonight's pick:", output)
+        self.assertNotIn("mocked Epic-style catalog", output)
+
 
 class ServiceAdapterTest(unittest.TestCase):
     def test_service_response_shape_is_channel_neutral(self):
