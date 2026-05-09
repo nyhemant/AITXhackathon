@@ -566,6 +566,23 @@ class MockGroceryCatalogTest(unittest.TestCase):
             current_meal=meals[0],
         )
 
+    def high_value_cart(self, traces=None):
+        names = []
+        subtotal = 0
+        for item in mock_instacart.get_catalog_items():
+            if not item["in_stock"] or item["category"] == "household":
+                continue
+            names.append(item["name"])
+            subtotal += item["price"]
+            if subtotal >= 105:
+                break
+
+        self.assertGreaterEqual(subtotal, 100)
+        return mock_instacart.build_reviewable_cart(
+            names,
+            (lambda name, payload: traces.append((name, payload))) if traces is not None else None,
+        )
+
     def test_catalog_is_deep_enough_for_demo(self):
         catalog = mock_instacart.get_catalog_items()
 
@@ -588,6 +605,7 @@ class MockGroceryCatalogTest(unittest.TestCase):
         self.assertGreaterEqual(cart["subtotal"], cart["minimum_order_amount"])
         self.assertEqual(cart["status"], "meets minimum")
         self.assertAlmostEqual(cart["subtotal"], 35.22)
+        self.assertFalse(cart["requires_reconfirmation"])
         self.assertEqual(cart["unavailable_items"], [])
 
     def test_high_confidence_home_inventory_is_not_added(self):
@@ -639,6 +657,32 @@ class MockGroceryCatalogTest(unittest.TestCase):
         self.assertIn("Mock subtotal: $35.22", response["message"])
         self.assertIn("Mock Instacart minimum: $35.00", response["message"])
         self.assertIn("Status: meets minimum", response["message"])
+        self.assertNotIn("High-value cart alert", response["message"])
+
+    def test_cart_at_100_requires_parent_reconfirmation(self):
+        traces = []
+
+        cart = self.high_value_cart(traces)
+
+        self.assertGreaterEqual(cart["subtotal"], 100)
+        self.assertEqual(cart["reconfirmation_threshold"], 100.00)
+        self.assertTrue(cart["requires_reconfirmation"])
+        self.assertIn("parent reconfirmation is required", cart["high_value_alert"])
+        self.assertTrue(any(name == "cart_reconfirmation_required" for name, _payload in traces))
+
+    def test_high_value_cart_warning_is_user_visible(self):
+        cart = self.high_value_cart()
+
+        message = BusyParentAgent._grocery_line(
+            {
+                "reviewable_items": cart["items"],
+                "reviewable_cart": cart,
+            }
+        )
+
+        self.assertIn("High-value cart alert", message)
+        self.assertIn("$100.00 review cap", message)
+        self.assertIn("Reconfirmation required", message)
 
     def test_receipt_household_items_do_not_enter_food_cart(self):
         inventory = inventory_engine.build_confidence_inventory(datetime(2026, 5, 9, 12, 30))

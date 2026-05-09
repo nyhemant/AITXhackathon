@@ -383,6 +383,16 @@ class BusyParentAgent:
                     f"Status: {cart['status']}",
                 ]
             )
+            if cart.get("requires_reconfirmation"):
+                lines.extend(
+                    [
+                        (
+                            "High-value cart alert: mock subtotal is at or above "
+                            f"the ${cart['reconfirmation_threshold']:.2f} review cap."
+                        ),
+                        "Reconfirmation required before using this reviewable grocery cart.",
+                    ]
+                )
             return "\n".join(lines)
         return f"Reviewable grocery cart: {', '.join(items)}."
 
@@ -438,7 +448,11 @@ class BusyParentAgent:
         if tool_name == "mock_instacart.check_delivery_window":
             return payload["message"]
         if tool_name == "mock_instacart.get_order_rules":
-            return f"minimum ${payload['minimum_order_amount']:.2f}, target ${payload['cart_target_amount']:.2f}"
+            return (
+                f"minimum ${payload['minimum_order_amount']:.2f}, "
+                f"target ${payload['cart_target_amount']:.2f}, "
+                f"reconfirm at ${payload['reconfirmation_threshold']:.2f}"
+            )
         if tool_name == "mock_instacart.build_reviewable_cart":
             return ", ".join(payload["items"]) if payload["items"] else "empty"
         if tool_name == "mock_photo_scan.list_available_scans":
@@ -465,6 +479,11 @@ class BusyParentAgent:
             return f"skipped {payload['item']} because {payload['reason']}"
         if tool_name == "cart_final_subtotal":
             return f"final subtotal: ${payload['subtotal']:.2f}"
+        if tool_name == "cart_reconfirmation_required":
+            return (
+                f"reconfirmation required: subtotal ${payload['subtotal']:.2f} "
+                f"is at or above ${payload['reconfirmation_threshold']:.2f}"
+            )
         if tool_name == "costco_bulk.get_cadence":
             return f"every {payload['frequency_days']} days, {payload['usual_day']} {payload['usual_time']}"
         if tool_name == "costco_bulk.get_recent_receipts":

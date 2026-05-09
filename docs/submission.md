@@ -95,6 +95,7 @@ All family, inventory, grocery, photo, receipt, catalog, and meal-memory data is
 
 - No real grocery accounts are used.
 - No real checkout is implemented.
+- Mock carts over $100 require explicit reconfirmation before any future checkout step. This demo never places real orders.
 - No real camera capture, image recognition, or OCR is used.
 - No private family photos are committed.
 - Sample photo paths are placeholders backed by deterministic JSON scan results.

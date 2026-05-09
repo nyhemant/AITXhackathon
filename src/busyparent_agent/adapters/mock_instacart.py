@@ -18,6 +18,7 @@ ORDER_RULES = {
     "minimum_order_amount": 35.00,
     "small_order_fee_threshold": 35.00,
     "cart_target_amount": 40.00,
+    "reconfirmation_threshold": 100.00,
 }
 SMART_ADDON_CANDIDATES = [
     ("rice", "Costco bulk staple check"),
@@ -182,6 +183,7 @@ def build_reviewable_cart(
     line_items = required_line_items + smart_addons
     subtotal = _subtotal(line_items)
     status = "meets minimum" if subtotal >= rules["minimum_order_amount"] else "below minimum"
+    requires_reconfirmation = subtotal >= rules["reconfirmation_threshold"]
     cart = {
         "items": [line["name"] for line in line_items],
         "line_items": line_items,
@@ -194,9 +196,22 @@ def build_reviewable_cart(
         "minimum_order_amount": rules["minimum_order_amount"],
         "small_order_fee_threshold": rules["small_order_fee_threshold"],
         "cart_target_amount": rules["cart_target_amount"],
+        "reconfirmation_threshold": rules["reconfirmation_threshold"],
+        "requires_reconfirmation": requires_reconfirmation,
+        "high_value_alert": (
+            "Mock subtotal is at or above the $100.00 review cap; parent reconfirmation is required."
+            if requires_reconfirmation
+            else None
+        ),
         "status": status,
         "note": "Review before buying. This mock adapter never places orders.",
     }
+    if requires_reconfirmation:
+        _trace(
+            trace,
+            "cart_reconfirmation_required",
+            {"subtotal": subtotal, "reconfirmation_threshold": rules["reconfirmation_threshold"]},
+        )
     _trace(trace, "cart_final_subtotal", {"subtotal": subtotal, "status": status})
     _trace(
         trace,
