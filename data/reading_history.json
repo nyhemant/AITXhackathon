@@ -1,0 +1,68 @@
+{
+  "events": [
+    {
+      "date": "2026-05-08",
+      "child_id": "kunal",
+      "book_id": "little-blue-truck",
+      "event": "repeated",
+      "reaction": "loved",
+      "parent_note": "Asked for animal sounds twice."
+    },
+    {
+      "date": "2026-05-07",
+      "child_id": "arya",
+      "book_id": "ada-twist-scientist",
+      "event": "read",
+      "reaction": "liked",
+      "parent_note": "Wanted to talk about experiments."
+    },
+    {
+      "date": "2026-05-06",
+      "child_id": "siblings",
+      "book_id": "book-with-no-pictures",
+      "event": "read",
+      "reaction": "liked",
+      "parent_note": "Both kids laughed; better before final wind-down."
+    },
+    {
+      "date": "2026-05-05",
+      "child_id": "kunal",
+      "book_id": "dragons-love-tacos",
+      "event": "read",
+      "reaction": "disliked",
+      "parent_note": "Too chaotic at lights out."
+    },
+    {
+      "date": "2026-05-04",
+      "child_id": "arya",
+      "book_id": "jabari-jumps",
+      "event": "liked",
+      "reaction": "liked",
+      "parent_note": "Good confidence conversation."
+    },
+    {
+      "date": "2026-05-03",
+      "child_id": "kunal",
+      "book_id": "brown-bear-brown-bear",
+      "event": "repeated",
+      "reaction": "loved",
+      "parent_note": "Comfort reread worked well."
+    },
+    {
+      "date": "2026-05-02",
+      "child_id": "arya",
+      "book_id": "frog-and-toad-spring",
+      "event": "read",
+      "reaction": "liked",
+      "parent_note": "Calm but a little long for a tired night."
+    },
+    {
+      "date": "2026-05-01",
+      "child_id": "siblings",
+      "book_id": "duck-rabbit",
+      "event": "read",
+      "reaction": "liked",
+      "parent_note": "Good shared laugh."
+    }
+  ]
+}
