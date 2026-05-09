@@ -1,0 +1,32 @@
+[
+  {
+    "item": "rice",
+    "purchased_at": "2026-04-20",
+    "shelf_life_days": 180,
+    "bulk_item": true
+  },
+  {
+    "item": "pasta",
+    "purchased_at": "2026-04-20",
+    "shelf_life_days": 365,
+    "bulk_item": true
+  },
+  {
+    "item": "frozen peas",
+    "purchased_at": "2026-04-27",
+    "shelf_life_days": 120,
+    "bulk_item": true
+  },
+  {
+    "item": "frozen corn",
+    "purchased_at": "2026-04-27",
+    "shelf_life_days": 120,
+    "bulk_item": true
+  },
+  {
+    "item": "chicken thighs",
+    "purchased_at": "2026-05-01",
+    "shelf_life_days": 45,
+    "bulk_item": true
+  }
+]

@@ -41,6 +41,7 @@ python3 -m busyparent_agent.app --demo --trace --now "2026-05-08 17:30"
 Call out:
 
 - `[tool] check_delivery_window`
+- `[inventory]` confidence lines show what is visible, recently ordered, or likely low
 - `[decision] pantry-first because it is close to dinner`
 - `[memory]` scoring lines boost household favorites and penalize recent repeats
 - One meal first: `Egg Fried Rice`
@@ -65,10 +66,24 @@ python3 -m busyparent_agent.app --demo --trace --now "2026-05-09 12:30"
 Call out:
 
 - `[decision] grocery delivery can help because planning starts earlier`
+- `[tool] mock_instacart.get_recent_orders`
+- `[tool] mock_instacart.build_reviewable_cart`
 - `[memory]` scoring still runs before the recommendation
 - The agent does not force pantry-only
-- `Reviewable grocery list: avocado, berries.`
-- This is still a reviewable list, not an automatic order
+- `Reviewable cart/list: avocado, berries.`
+- This is still a reviewable mock cart/list, not an automatic order
+
+## Inventory Confidence
+
+The demo uses local fixtures for visible food snapshots, mock Instacart orders, and mock Costco bulk purchases. The Inventory Confidence Engine ranks items as high-confidence, medium-confidence, low-confidence, likely low, or needing a parent check.
+
+Late-day planning prefers high-confidence items. Lunch planning can use the mock Instacart adapter to build a reviewable cart for fresh add-ons like avocado and berries. A real version could replace the fixtures with provider APIs and photo recognition for fridge or pantry snapshots.
+
+## Mock Grocery Catalog
+
+`data/mock_grocery_catalog.json` is the local shopping universe for the demo. It includes representative prices, brands, sizes, stock status, tags, and substitutes for common household items. The adapter can search this catalog, check availability, substitute an out-of-stock item, and build a priced reviewable cart.
+
+The prices are fixture prices for demo realism only. No real Instacart API, live pricing, account, checkout, scraping, taxes, fees, or order placement is included.
 
 ## Household Memory
 

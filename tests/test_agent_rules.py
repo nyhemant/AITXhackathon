@@ -7,6 +7,8 @@ import unittest
 from busyparent_agent.agent import BusyParentAgent
 from busyparent_agent.service import create_session, parse_now
 from busyparent_agent import tools
+from busyparent_agent import inventory as inventory_engine
+from busyparent_agent.adapters import mock_instacart
 
 
 class AgentRulesTest(unittest.TestCase):
@@ -41,7 +43,7 @@ class AgentRulesTest(unittest.TestCase):
         response = agent.reply("What should I make for dinner tonight?")
 
         self.assertIn("Because we are planning early", response)
-        self.assertIn("Reviewable grocery list: avocado, berries.", response)
+        self.assertIn("Reviewable cart/list: avocado, berries.", response)
         self.assertEqual(agent.current_recommendation["missing"], ["avocado", "berries"])
 
     def test_close_to_dinner_branch_remains_pantry_first_nothing_required(self):
@@ -123,7 +125,7 @@ class ScenarioCliTest(unittest.TestCase):
         output = self.run_scenario("lunch")
 
         self.assertIn("[decision] grocery delivery can help because planning starts earlier", output)
-        self.assertIn("Reviewable grocery list: avocado, berries.", output)
+        self.assertIn("Reviewable cart/list: avocado, berries.", output)
         self.assertNotIn("Not feeling that", output)
 
     def test_scenario_guest_runs_and_includes_constraints(self):
@@ -156,7 +158,7 @@ class ServiceAdapterTest(unittest.TestCase):
         response = session.send("It is noon and I want to plan for dinner tonight")
 
         self.assertEqual(response["metadata"]["delivery_strategy"], "delivery_ok")
-        self.assertIn("Reviewable grocery list: avocado, berries.", response["message"])
+        self.assertIn("Reviewable cart/list: avocado, berries.", response["message"])
         self.assertIn("avocado", response["grocery_items"])
         self.assertTrue(
             any("[decision] grocery delivery can help because planning starts earlier" in line for line in response["trace"])
@@ -349,6 +351,92 @@ class ConversationalFeedbackTest(unittest.TestCase):
         )
 
         self.assertEqual(recommendation["name"], "Black Bean Quesadillas")
+
+
+class InventoryConfidenceTest(unittest.TestCase):
+    def test_recent_instacart_order_increases_confidence(self):
+        inventory = inventory_engine.build_confidence_inventory(datetime(2026, 5, 9, 12, 30))
+
+        avocado = inventory_engine.confidence_for_item(inventory, "avocado")
+
+        self.assertEqual(avocado["bucket"], "medium_confidence")
+        self.assertIn("ordered 3 days ago", avocado["reason"])
+
+    def test_visible_fridge_item_gets_high_confidence(self):
+        inventory = inventory_engine.build_confidence_inventory(datetime(2026, 5, 9, 12, 30))
+
+        eggs = inventory_engine.confidence_for_item(inventory, "eggs")
+
+        self.assertEqual(eggs["bucket"], "high_confidence")
+        self.assertIn("seen in fridge snapshot", eggs["reason"])
+
+    def test_old_kid_snack_item_becomes_likely_low(self):
+        inventory = inventory_engine.build_confidence_inventory(datetime(2026, 5, 9, 12, 30))
+
+        berries = inventory_engine.confidence_for_item(inventory, "berries")
+
+        self.assertEqual(berries["bucket"], "likely_low")
+        self.assertIn("kid snack item", berries["reason"])
+
+    def test_lunch_branch_uses_mock_instacart_cart_for_missing_fresh_items(self):
+        session = create_session(parse_now(None, scenario="lunch"), trace=True, scenario="lunch")
+
+        response = session.send("What should I make for dinner tonight?", scenario="lunch")
+
+        self.assertIn("Reviewable cart/list: avocado, berries.", response["message"])
+        self.assertEqual(response["grocery_items"], ["avocado", "berries"])
+        self.assertTrue(
+            any("[tool] mock_instacart.build_reviewable_cart -> avocado, berries" in line for line in response["trace"])
+        )
+
+    def test_dinner_branch_avoids_relying_on_low_confidence_items(self):
+        agent = BusyParentAgent(now=datetime(2026, 5, 8, 17, 30))
+
+        response = agent.reply("What should I make for dinner tonight?")
+
+        self.assertIn("Make Egg Fried Rice tonight.", response)
+        self.assertNotIn("Peanut Butter Noodles", response)
+        self.assertEqual(
+            tools.confidence_for_item(agent.inventory, "peanut butter")["bucket"],
+            "low_confidence",
+        )
+
+
+class MockGroceryCatalogTest(unittest.TestCase):
+    def test_catalog_is_deep_enough_for_demo(self):
+        catalog = mock_instacart.get_catalog_items()
+
+        self.assertGreaterEqual(len(catalog), 70)
+        self.assertTrue(all("price" in item for item in catalog))
+        self.assertTrue(any(item["name"] == "avocado" for item in catalog))
+        self.assertTrue(any(item["name"] == "eggs" for item in catalog))
+
+    def test_reviewable_cart_uses_catalog_prices(self):
+        cart = mock_instacart.build_reviewable_cart(["avocado", "berries"])
+
+        self.assertEqual(cart["items"], ["avocado", "berries"])
+        self.assertEqual(len(cart["line_items"]), 2)
+        self.assertAlmostEqual(cart["subtotal"], 8.28)
+        self.assertEqual(cart["unavailable_items"], [])
+
+    def test_out_of_stock_catalog_item_uses_available_substitute(self):
+        cart = mock_instacart.build_reviewable_cart(["guacamole cup"])
+
+        self.assertEqual(cart["items"], ["avocado"])
+        self.assertEqual(cart["substitutions"], [{"requested": "guacamole cup", "substitute": "avocado"}])
+
+    def test_unknown_item_is_not_added_to_cart(self):
+        cart = mock_instacart.build_reviewable_cart(["dragon fruit"])
+
+        self.assertEqual(cart["items"], [])
+        self.assertEqual(cart["unavailable_items"], ["dragon fruit"])
+
+    def test_lunch_response_includes_mock_catalog_price(self):
+        session = create_session(parse_now(None, scenario="lunch"), trace=True, scenario="lunch")
+
+        response = session.send("What should I make for dinner tonight?", scenario="lunch")
+
+        self.assertIn("Mock estimate: $8.28", response["message"])
 
 
 if __name__ == "__main__":

@@ -12,6 +12,9 @@ import json
 from pathlib import Path
 from typing import Any, Callable
 
+from busyparent_agent import inventory as inventory_engine
+from busyparent_agent.adapters import mock_instacart
+
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
 DATA_DIR = ROOT_DIR / "data"
@@ -40,10 +43,22 @@ def get_family_profile(trace: TraceFn = None) -> dict[str, Any]:
     return profile
 
 
-def estimate_inventory(trace: TraceFn = None) -> dict[str, Any]:
-    inventory = _read_json("inventory_snapshot.json")
+def estimate_inventory(trace: TraceFn = None, now: datetime | None = None) -> dict[str, Any]:
+    if now is None:
+        snapshot = _read_json("fridge_snapshot.json")
+        now = datetime.strptime(snapshot["captured_at"], "%Y-%m-%d %H:%M")
+    inventory = inventory_engine.build_confidence_inventory(now, trace)
     item_count = sum(len(inventory.get(area, [])) for area in ("pantry", "fridge", "freezer"))
-    _trace(trace, "estimate_inventory", {"items_seen": item_count})
+    _trace(
+        trace,
+        "estimate_inventory",
+        {
+            "items_seen": item_count,
+            "high_confidence": len(inventory["high_confidence"]),
+            "medium_confidence": len(inventory["medium_confidence"]),
+            "likely_low": len(inventory["likely_low"]),
+        },
+    )
     return inventory
 
 
@@ -84,6 +99,8 @@ def save_meal_feedback(
 
 
 def inventory_items(inventory: dict[str, Any]) -> set[str]:
+    if "confidence" in inventory:
+        return inventory_engine.available_items(inventory)
     items: set[str] = set()
     for area in ("pantry", "fridge", "freezer"):
         items.update(item.lower() for item in inventory.get(area, []))
@@ -100,6 +117,7 @@ def check_delivery_window(now: datetime, trace: TraceFn = None) -> dict[str, Any
     """
 
     minutes = now.hour * 60 + now.minute
+    mock_instacart.check_delivery_window(now, trace)
     if minutes < 15 * 60:
         result = {
             "strategy": "delivery_ok",
@@ -136,8 +154,17 @@ def missing_ingredients(meal: dict[str, Any], inventory: dict[str, Any]) -> list
 
 
 def delivery_add_ons(meal: dict[str, Any], inventory: dict[str, Any]) -> list[str]:
+    if "confidence" in inventory:
+        high_confidence = set(inventory.get("high_confidence", []))
+        return [item for item in meal.get("delivery_add_ons", []) if item.lower() not in high_confidence][:2]
     available = inventory_items(inventory)
     return [item for item in meal.get("delivery_add_ons", []) if item.lower() not in available][:2]
+
+
+def confidence_for_item(inventory: dict[str, Any], item: str) -> dict[str, Any]:
+    if "confidence" not in inventory:
+        return {"bucket": "high_confidence", "reason": "legacy inventory snapshot"}
+    return inventory_engine.confidence_for_item(inventory, item)
 
 
 def _preference_score(meal: dict[str, Any], family: dict[str, Any]) -> int:
@@ -193,6 +220,9 @@ def _score_meal(
         score += 18 if not missing else -24 * len(missing)
         if "pantry-first" in tags:
             score += 8
+        low_confidence_items = _low_confidence_meal_items(meal, inventory)
+        if low_confidence_items:
+            score -= 18 * len(low_confidence_items)
     else:
         score -= 7 * len(missing)
         add_ons = delivery_add_ons(meal, inventory)
@@ -215,6 +245,15 @@ def _score_meal(
         },
     )
     return score
+
+
+def _low_confidence_meal_items(meal: dict[str, Any], inventory: dict[str, Any]) -> list[str]:
+    low_buckets = {"low_confidence", "likely_low", "needs_parent_check"}
+    return [
+        item
+        for item in meal["ingredients"]
+        if confidence_for_item(inventory, item)["bucket"] in low_buckets
+    ]
 
 
 def _household_memory_score(
@@ -327,6 +366,7 @@ def recommend_meal(
 ) -> dict[str, Any]:
     del grocery_history
     candidates = [meal for meal in meal_options if not _violates_constraints(meal, constraints)]
+    candidates = [meal for meal in candidates if _meal_can_be_supported_by_catalog(meal, inventory, delivery_window)]
     ranked = sorted(
         candidates,
         key=lambda meal: (
@@ -340,7 +380,9 @@ def recommend_meal(
     if delivery_window["strategy"] == "delivery_ok":
         add_ons = delivery_add_ons(recommendation, inventory)
         if add_ons:
-            recommendation["missing"] = add_ons
+            cart = mock_instacart.build_reviewable_cart(add_ons, trace)
+            recommendation["missing"] = cart["items"]
+            recommendation["reviewable_cart"] = cart
             recommendation["delivery_help"] = True
     _trace(
         trace,
@@ -367,6 +409,7 @@ def adapt_for_rejection(
 ) -> list[dict[str, Any]]:
     del grocery_history
     alternatives = [meal for meal in meal_options if meal["name"] != rejected_meal["name"]]
+    alternatives = [meal for meal in alternatives if _meal_can_be_supported_by_catalog(meal, inventory, delivery_window)]
     ranked = sorted(
         alternatives,
         key=lambda meal: (
@@ -426,7 +469,20 @@ def update_grocery_list(
     grocery_list = {
         "meal": selected_meal["name"],
         "reviewable_items": missing,
+        "reviewable_cart": selected_meal.get("reviewable_cart"),
         "note": "Review before buying. This is not an automatic order.",
     }
     _trace(trace, "update_grocery_list", grocery_list)
     return grocery_list
+
+
+def _meal_can_be_supported_by_catalog(
+    meal: dict[str, Any],
+    inventory: dict[str, Any],
+    delivery_window: dict[str, Any],
+) -> bool:
+    if delivery_window["pantry_first"]:
+        return True
+    required_missing = missing_ingredients(meal, inventory)
+    cart_candidates = required_missing + delivery_add_ons(meal, inventory)
+    return all(mock_instacart.catalog_item_available(item) for item in cart_candidates)

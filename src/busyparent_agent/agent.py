@@ -15,7 +15,7 @@ class BusyParentAgent:
         self.trace_enabled = trace
         self.trace_sink = trace_sink
         self.family = tools.get_family_profile(self._trace)
-        self.inventory = tools.estimate_inventory(self._trace)
+        self.inventory = tools.estimate_inventory(self._trace, now)
         self.grocery_history = tools.get_grocery_history(self._trace)
         self.meal_options = tools.get_meal_options(self._trace)
         self.meal_history = tools.get_meal_history(self._trace)
@@ -28,6 +28,9 @@ class BusyParentAgent:
         if self.trace_enabled:
             if tool_name in {"memory_score", "save_meal_feedback"}:
                 self._emit_trace(f"[memory] {self._format_tool_trace(tool_name, payload)}")
+                return
+            if tool_name == "inventory_confidence":
+                self._emit_trace(f"[inventory] {self._format_tool_trace(tool_name, payload)}")
                 return
             self._emit_trace(f"[tool] {tool_name} -> {self._format_tool_trace(tool_name, payload)}")
 
@@ -85,6 +88,7 @@ class BusyParentAgent:
                 f"Why: {meal['why']}",
                 f"Time: about {meal['minutes']} minutes, {meal['effort']} effort.",
                 f"Plan: {self.delivery_window['message']}",
+                self._inventory_confidence_line(),
                 self._grocery_line(grocery_list),
                 "I am leading with one option so dinner moves forward.",
             ]
@@ -312,7 +316,15 @@ class BusyParentAgent:
         items = grocery_list["reviewable_items"]
         if not items:
             return "Reviewable grocery list: nothing required."
-        return f"Reviewable grocery list: {', '.join(items)}."
+        cart = grocery_list.get("reviewable_cart") or {}
+        if cart.get("subtotal") is not None:
+            return f"Reviewable cart/list: {', '.join(items)}. Mock estimate: ${cart['subtotal']:.2f}."
+        return f"Reviewable cart/list: {', '.join(items)}."
+
+    def _inventory_confidence_line(self) -> str:
+        if not self.inventory.get("needs_photo_hint"):
+            return "Inventory confidence: high enough for tonight."
+        return "Inventory confidence: a quick fridge photo would improve this, but I can still plan from recent orders."
 
     def _alternative_pick_line(self) -> str:
         egg_option = next((meal for meal in self.alternatives if meal["name"] == "Egg Fried Rice"), None)
@@ -331,7 +343,31 @@ class BusyParentAgent:
         if tool_name == "get_family_profile":
             return f"{payload['children']} children, mild spice, peanut-aware"
         if tool_name == "estimate_inventory":
-            return f"{payload['items_seen']} likely items"
+            return (
+                f"{payload['items_seen']} visible items, "
+                f"{payload['high_confidence']} high-confidence, "
+                f"{payload['medium_confidence']} medium-confidence"
+            )
+        if tool_name == "inventory_confidence":
+            return f"{payload['item']} -> {payload['bucket'].replace('_', ' ')}: {payload['reason']}"
+        if tool_name == "mock_instacart.get_recent_orders":
+            return f"{payload['orders']} orders"
+        if tool_name == "mock_instacart.get_last_delivery":
+            return payload["delivered_at"] or "none"
+        if tool_name == "mock_instacart.get_frequently_bought_items":
+            return f"{payload['items']} items"
+        if tool_name == "mock_instacart.get_catalog_items":
+            return f"{payload['items']} catalog items"
+        if tool_name == "mock_instacart.search_catalog":
+            return f"{payload['matches']} matches for {payload['query']}"
+        if tool_name == "mock_instacart.get_item":
+            return "found" if payload["found"] else "not found"
+        if tool_name == "mock_instacart.check_availability":
+            return f"{payload['available']} available, {payload['unavailable']} unavailable"
+        if tool_name == "mock_instacart.check_delivery_window":
+            return payload["message"]
+        if tool_name == "mock_instacart.build_reviewable_cart":
+            return ", ".join(payload["items"]) if payload["items"] else "empty"
         if tool_name == "get_grocery_history":
             return f"{payload['recent_buys']} recent grocery signals"
         if tool_name == "get_meal_options":

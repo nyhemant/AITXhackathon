@@ -1,0 +1,29 @@
+[
+  {
+    "order_id": "mock-ic-1003",
+    "delivered_at": "2026-05-06 16:10",
+    "items": [
+      {"name": "eggs", "category": "dairy", "quantity": 1, "kid_snack": false},
+      {"name": "avocado", "category": "produce", "quantity": 2, "kid_snack": false},
+      {"name": "plain yogurt", "category": "dairy", "quantity": 1, "kid_snack": false}
+    ]
+  },
+  {
+    "order_id": "mock-ic-1002",
+    "delivered_at": "2026-05-03 11:40",
+    "items": [
+      {"name": "berries", "category": "produce", "quantity": 1, "kid_snack": true},
+      {"name": "tortillas", "category": "bakery", "quantity": 1, "kid_snack": false},
+      {"name": "shredded cheese", "category": "dairy", "quantity": 1, "kid_snack": false}
+    ]
+  },
+  {
+    "order_id": "mock-ic-1001",
+    "delivered_at": "2026-04-30 17:25",
+    "items": [
+      {"name": "peanut butter", "category": "pantry", "quantity": 1, "kid_snack": false},
+      {"name": "carrots", "category": "produce", "quantity": 1, "kid_snack": true},
+      {"name": "bagged salad", "category": "produce", "quantity": 1, "kid_snack": false}
+    ]
+  }
+]
