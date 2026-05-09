@@ -1,3 +1,3 @@
-"""BusyParent Kitchen Agent / HomePlate AI local demo."""
+"""BusyParent Agent local demo."""
 
 __all__ = ["agent", "tools"]

@@ -48,7 +48,7 @@ Restart the web server immediately before presenting so it serves the latest cod
 
 Use this when you want a mentor or judge to test the UX without typing in a terminal. The web UI is a demo shell around the same agent service used by the CLI.
 
-## 2b. v2 StoryPath Local Web Demo
+## 2b. v2 Story Picker Local Web Demo
 
 For the `v2-storypath` branch, keep the stable v1 dinner demo pinned separately on port `8000`. Run v2 locally on port `8001`:
 
@@ -62,7 +62,7 @@ Browse locally to:
 http://127.0.0.1:8001
 ```
 
-Use the `Dinner` tab for the existing dinner flow and the `Bedtime Book` tab for StoryPath. StoryPath uses a mocked Epic-style catalog only; there is no real Epic login, API, scraping, checkout, or account access.
+Use the `Dinner Planner` room for the existing dinner flow and the `Story Picker` room for the bedtime-book flow. Story Picker uses a mocked Epic-style catalog only; there is no real Epic login, API, scraping, checkout, or account access.
 
 ## 3. Close-To-Dinner Branch
 
@@ -201,4 +201,4 @@ Agent: ...verify packaged labels. This demo is not an allergy safety guarantee.
 
 ## One-Sentence Pitch
 
-HomePlate AI is an agent that decides what dinner should be, explains the time-aware tradeoff, and adapts when a real parent changes the constraints.
+BusyParent Agent reduces evening decision load. Dinner Planner decides what dinner should be, explains the time-aware tradeoff, and adapts when a real parent changes the constraints; Story Picker chooses one kid-right bedtime book from a mocked Epic-style catalog.

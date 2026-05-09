@@ -11,7 +11,7 @@ from busyparent_agent import tools
 from busyparent_agent.adapters import mock_epic
 
 
-APP_TITLE = "BusyParent Kitchen Agent / HomePlate AI"
+APP_TITLE = "BusyParent Agent"
 APP_SUBTITLE = "Local Python agent demo"
 
 SCENARIO_MESSAGES = {

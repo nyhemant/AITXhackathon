@@ -1,4 +1,4 @@
-"""Command-line entry point for the BusyParent Kitchen Agent demo."""
+"""Command-line entry point for the BusyParent Agent demo."""
 
 from __future__ import annotations
 
@@ -22,7 +22,7 @@ FIRST_DEMO_MESSAGES = [
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Run the BusyParent Kitchen Agent / HomePlate AI local demo."
+        description="Run the BusyParent Agent local demo."
     )
     parser.add_argument("--trace", action="store_true", help="Print tool calls and decisions.")
     parser.add_argument("--demo", action="store_true", help="Run the scripted hackathon demo conversation.")

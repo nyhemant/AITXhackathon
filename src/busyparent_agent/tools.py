@@ -1,4 +1,4 @@
-"""Local tools for the BusyParent Kitchen Agent.
+"""Local tools for BusyParent Agent.
 
 These functions intentionally use mocked JSON files. The hackathon demo is about
 the agent loop and decisions, not external API plumbing.

@@ -1,4 +1,4 @@
-"""A tiny deterministic agent loop for HomePlate AI."""
+"""A tiny deterministic agent loop for BusyParent Agent."""
 
 from __future__ import annotations
 

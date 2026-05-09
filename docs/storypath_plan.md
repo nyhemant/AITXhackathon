@@ -1,23 +1,23 @@
-# StoryPath v2 Plan
+# Story Picker v2 Plan
 
-Working names: StoryPath, Tonight's Book, Bedtime Book Copilot.
+Working name: Story Picker.
 
 ## 1. Product Framing
 
-BusyParent reduces parent evening decision load after work.
+BusyParent Agent reduces parent evening decision load after work.
 
-v1: Dinner handled.
+v1: Dinner Planner handles what to make for dinner, pantry fit, and grocery gaps.
 
-v2: Bedtime book handled.
+v2: Story Picker handles what to read tonight, kid fit, bedtime mood, and mocked Epic-style availability.
 
 The product theme stays the same: a parent should not have to make a dozen small evening decisions when they are already tired. Dinner and bedtime reading are naturally linked:
 
 - "What should we make for dinner?"
 - "What should I read with my kid tonight?"
 
-The v2 extension should not pivot away from the dinner agent. It should add a second, clearly separated workflow that starts after dinner or from a new "Reading after dinner" tab. The shared promise is still one practical recommendation first, not a menu of options.
+The v2 extension should not pivot away from the dinner agent. It should add a second, clearly separated room that starts after dinner from Story Picker. The shared promise is still one practical recommendation first, not a menu of options.
 
-StoryPath should answer:
+Story Picker should answer:
 
 - Which child are we reading with tonight?
 - What mood or mode fits tonight?
@@ -28,7 +28,7 @@ StoryPath should answer:
 
 ## 2. Epic-Style Mock Catalog
 
-Do not use Dallas Public Library, Libby, Hoopla, or Texas public data as core dependencies. StoryPath should use a deterministic mocked Epic-style kids book catalog, analogous to how v1 uses `data/mock_grocery_catalog.json` for Instacart-like grocery availability.
+Do not use Dallas Public Library, Libby, Hoopla, or Texas public data as core dependencies. Story Picker should use a deterministic mocked Epic-style kids book catalog, analogous to how v1 uses `data/mock_grocery_catalog.json` for Instacart-like grocery availability.
 
 Proposed source of availability:
 
@@ -280,7 +280,7 @@ Recommended v2 MVP:
 - Add or extend family profile with reading preferences for Arya and Kunal.
 - Add a small `storypath.py` module that returns one book recommendation.
 - Add CLI scenario: `python3 -m busyparent_agent.app --scenario book`.
-- Add a second tab or toolbar mode in the existing web UI called `Reading after dinner`.
+- Add a second top-level room in the existing web UI called `Story Picker`.
 - Keep dinner/lunch/guest flows unchanged.
 - Use port `8001` for v2 demos later; keep port `8000` pinned to v1.
 - Add focused tests for recommendation logic and regression tests that v1 dinner behavior remains unchanged.
@@ -297,7 +297,7 @@ Implementation shape:
 - `src/busyparent_agent/service.py`
   - optionally route a `book` scenario without changing meal sessions
 - `src/busyparent_agent/web.py`
-  - add a small second tab/button only after CLI is stable
+  - add a small second room/button only after CLI is stable
 - `tests/test_storypath.py`
   - cover all new behavior independently
 
@@ -315,13 +315,13 @@ Preserve v1 behavior:
 Show continuity from dinner to reading:
 
 1. Parent opens BusyParent after work.
-2. Dinner tab answers: "Make Egg Fried Rice tonight" or "Make Black Bean Quesadillas tonight" with the existing inventory/cart reasoning.
-3. After dinner, parent switches to `Reading after dinner`.
+2. Dinner Planner room answers: "Make Egg Fried Rice tonight" or "Make Black Bean Quesadillas tonight" with the existing inventory/cart reasoning.
+3. After dinner, parent switches to `Story Picker`.
 4. Parent chooses child and mood:
    - Kunal + short calm bedtime
    - Arya + curiosity/confidence
    - siblings together + funny read-aloud
-5. StoryPath recommends one book, not a shelf of options.
+5. Story Picker recommends one book, not a shelf of options.
 6. Parent gets three prompts and one tiny next-day activity.
 
 Narrative:
@@ -347,12 +347,12 @@ Both flows use the same principle: one practical recommendation, grounded in hou
 
 ## 9. Risks
 
-- Scope creep: a second domain can distract from the already strong dinner demo. Mitigation: keep StoryPath as a narrow second tab and one CLI scenario.
-- UI clutter: adding another mode may make the app feel less focused. Mitigation: use clear tabs: `Dinner` and `Reading after dinner`.
+- Scope creep: a second domain can distract from the already strong dinner demo. Mitigation: keep Story Picker as a narrow second room and one CLI scenario.
+- UI clutter: adding another mode may make the app feel less focused. Mitigation: use clear top-level rooms: `Dinner Planner` and `Story Picker`.
 - Catalog quality: mocked books need enough variety to feel credible. Mitigation: curate 30-60 records with clear tags.
 - Availability claims: must stay fixture-backed. Mitigation: always say "Available in demo catalog" rather than implying real Epic availability.
 - Regression risk: dinner v1 must remain stable. Mitigation: keep v1 worktree on port `8000`, develop v2 on `v2-storypath`, and use port `8001` for future v2 demo.
 
 ## Bottom Line
 
-Build StoryPath as BusyParent v2 if time allows. The concept strengthens the broader pitch: BusyParent lifts evening decision load, starting with dinner and naturally continuing into bedtime reading. The safest version uses a mocked Epic-style catalog as the single availability source, recommends exactly one book, and keeps all v1 dinner/cart/photo/Instacart behavior intact.
+Build Story Picker as BusyParent Agent v2 if time allows. The concept strengthens the broader pitch: BusyParent Agent lifts evening decision load, starting with dinner and naturally continuing into bedtime reading. The safest version uses a mocked Epic-style catalog as the single availability source, recommends exactly one book, and keeps all v1 dinner/cart/photo/Instacart behavior intact.

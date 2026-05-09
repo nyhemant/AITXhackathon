@@ -135,7 +135,7 @@ class ScenarioCliTest(unittest.TestCase):
     def test_scenario_dinner_runs_and_includes_pantry_first(self):
         output = self.run_scenario("dinner")
 
-        self.assertIn("BusyParent Kitchen Agent / HomePlate AI", output)
+        self.assertIn("BusyParent Agent", output)
         self.assertIn("[decision] pantry-first because it is close to dinner", output)
         self.assertIn("Reviewable grocery list: nothing required.", output)
         self.assertNotIn("Not feeling that", output)
@@ -267,13 +267,31 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertFalse(hasattr(handler, "error"))
         return handler.json_payload
 
-    def test_web_page_exposes_bedtime_book_tab(self):
-        self.assertIn("Bedtime Book", HTML)
+    def test_web_page_exposes_story_picker_room(self):
+        self.assertIn("Dinner Planner", HTML)
+        self.assertIn("Story Picker", HTML)
+        self.assertIn('id="roomTitle"', HTML)
+        self.assertIn("BusyParent Agent / Dinner Planner", HTML)
+        self.assertIn("BusyParent Agent / Story Picker", HTML)
+        self.assertIn("BusyParent Agent reduces evening decision load", HTML)
+        self.assertIn("roomTitle.textContent = titles[activeMode]", HTML)
+        self.assertIn('data-room-control="dinner"', HTML)
+        self.assertIn('data-room-control="book"', HTML)
+        self.assertIn('class="room-card dinner-room active"', HTML)
+        self.assertIn('class="room-card book-room"', HTML)
+        self.assertIn("Plan tonight's meal and grocery gaps.", HTML)
+        self.assertIn("Pick one kid-right book for bedtime.", HTML)
+        self.assertIn('class="toolbar dinner-panel" data-panel="dinner"', HTML)
+        self.assertIn('class="toolbar book-panel hidden" data-panel="book"', HTML)
+        self.assertIn('class="scenario-chip" data-scenario="dinner"', HTML)
         self.assertIn('data-scenario="book"', HTML)
+        self.assertIn('<body data-mode="dinner">', HTML)
+        self.assertIn("document.body.dataset.mode = activeMode", HTML)
+        self.assertIn('aria-pressed="true"', HTML)
+        self.assertIn('setAttribute("aria-pressed"', HTML)
         self.assertIn("activeMode", HTML)
         self.assertIn("mode: activeMode", HTML)
         self.assertIn('activeMode = active === "book" ? "book" : "dinner"', HTML)
-        self.assertIn("Dinner", HTML)
 
     def test_book_web_api_scenario_returns_storypath_output(self):
         payload = self.handle_scenario("book")

@@ -1,16 +1,16 @@
-# StoryPath v2 QA
+# Story Picker v2 QA
 
 ## Golden Demo Flow
 
-Theme: BusyParent reduces evening decision load.
+Theme: BusyParent Agent reduces evening decision load.
 
 1. Dinner handled:
    - Open the v2 local web app.
-   - Use the `Dinner` tab.
+   - Use the `Dinner Planner` room.
    - Click `Dinner now`.
    - Show the agent leading with one practical dinner default.
 2. Bedtime book handled:
-   - Switch to the `Bedtime Book` tab.
+   - Switch to the `Story Picker` room.
    - Click `Pick tonight's book`.
    - Show the agent leading with one book, parent prompts, and a tiny tomorrow activity.
 
@@ -23,7 +23,7 @@ python3 -m busyparent_agent.app --scenario book --trace
 
 ## v2 Local Run Command
 
-Keep v1 pinned separately on port `8000`. Run v2 StoryPath locally on port `8001`:
+Keep v1 pinned separately on port `8000`. Run v2 Story Picker locally on port `8001`:
 
 ```bash
 python3 -m busyparent_agent.web --host 127.0.0.1 --port 8001
@@ -35,7 +35,7 @@ Browse locally to:
 http://127.0.0.1:8001
 ```
 
-## Expected Dinner Tab Result
+## Expected Dinner Planner Result
 
 Expected primary result:
 
@@ -48,7 +48,7 @@ Expected supporting points:
 - Pantry-first because it is close to dinner.
 - Photo evidence confirms core staples.
 - Reviewable grocery list says nothing required.
-- No StoryPath or mocked Epic-style catalog copy appears in the dinner response.
+- No Story Picker or mocked Epic-style catalog copy appears in the dinner response.
 
 Relevant trace lines:
 
@@ -57,7 +57,7 @@ Relevant trace lines:
 [tool] recommend_meal -> Egg Fried Rice, one meal returned, pantry-first
 ```
 
-## Expected Bedtime Book Tab Result
+## Expected Story Picker Result
 
 Expected primary result:
 
@@ -85,7 +85,7 @@ Relevant trace lines:
 
 ## Mocked-vs-Real Limitations
 
-- StoryPath uses `data/mock_epic_book_catalog.json` as a deterministic mocked Epic-style book catalog.
+- Story Picker uses `data/mock_epic_book_catalog.json` as a deterministic mocked Epic-style book catalog.
 - `data/reading_history.json` is local sample memory only.
 - There is no real Epic login.
 - There is no real Epic API.
@@ -107,8 +107,7 @@ None found.
 ### P2 Nice-To-Have
 
 - Add a visible CLI/web scenario for Arya or siblings together if there is time.
-- Make the Bedtime Book tab allow choosing child and mode instead of using the default Kunal calm-bedtime scenario.
-- Consider renaming the app header to `BusyParent / HomePlate AI` if the pitch moves beyond kitchen-only branding.
+- Make the Story Picker room allow choosing child and mode instead of using the default Kunal calm-bedtime scenario.
 - Add a short v2 section to `docs/submission.md` only if v2 becomes part of the final submitted demo.
 
 ## Verification Performed
@@ -124,8 +123,7 @@ python3 -m busyparent_agent.app --scenario book --trace
 
 Result:
 
-- Working tree was clean before creating this QA note.
-- Test suite passed: 69 tests.
+- Last verification pass: `python3 -m unittest discover -s tests` passed with 72 tests.
 - Dinner CLI scenario returned the expected pantry-first Egg Fried Rice flow.
-- Book CLI scenario returned the expected mocked Epic-style StoryPath flow.
+- Book CLI scenario returned the expected mocked Epic-style Story Picker flow.
 - README, `docs/demo.md`, and web UI copy clearly communicate the v2 decision-load story and port `8001` run command.

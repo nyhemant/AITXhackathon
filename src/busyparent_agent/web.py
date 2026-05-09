@@ -1,4 +1,4 @@
-"""Tiny local web chat adapter for the BusyParent Kitchen Agent."""
+"""Tiny local web chat adapter for BusyParent Agent."""
 
 from __future__ import annotations
 
@@ -19,7 +19,7 @@ HTML = """<!doctype html>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>BusyParent Kitchen Agent</title>
+    <title>BusyParent Agent</title>
     <style>
       :root {
         color: #2b2118;
@@ -27,18 +27,28 @@ HTML = """<!doctype html>
         font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       }
       * { box-sizing: border-box; }
-      body { margin: 0; min-height: 100vh; padding: 24px; background: linear-gradient(135deg, #fff7ed, #fef3c7 58%, #e7f3df); }
+      body { margin: 0; min-height: 100vh; padding: 24px; background: linear-gradient(135deg, #fff7ed, #fef3c7 58%, #e7f3df); transition: background .22s ease; }
+      body[data-mode="dinner"] { background: linear-gradient(135deg, #fff7ed, #fef3c7 58%, #e7f3df); }
+      body[data-mode="book"] { background: linear-gradient(135deg, #eef2ff, #f5f3ff 58%, #fdf2f8); }
       main { width: min(920px, 100%); margin: 0 auto; }
       header { margin-bottom: 18px; }
       h1 { margin: 0 0 6px; font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1; }
       .subhead { margin: 0; max-width: 680px; color: #6b5f55; line-height: 1.5; }
       .shell { overflow: hidden; border: 1px solid #fed7aa; border-radius: 24px; background: rgba(255,255,255,.86); box-shadow: 0 24px 70px rgba(124,45,18,.14); }
-      .tabs { display: flex; gap: 8px; padding: 14px 14px 0; background: #fffaf5; }
-      .tab { background: #fff7ed; color: #7c2d12; border: 1px solid #fed7aa; }
-      .tab.active { background: #7c2d12; color: white; }
-      .toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; padding: 14px; border-bottom: 1px solid #fed7aa; background: #fffaf5; }
+      .room-switch { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding: 14px; background: #fffaf5; border-bottom: 1px solid #fed7aa; }
+      .room-card { display: grid; gap: 4px; min-height: 104px; border: 2px solid #fed7aa; border-radius: 8px; padding: 14px; background: white; color: #4b3425; text-align: left; box-shadow: none; }
+      .room-card strong { display: block; font-size: 1.25rem; line-height: 1.1; }
+      .room-card span { display: block; font-size: .9rem; line-height: 1.35; font-weight: 700; }
+      .room-card .room-kicker { font-size: .75rem; letter-spacing: 0; text-transform: uppercase; color: #8a5a2f; }
+      .room-card.active { border: 2px solid #c2410c; background: #fff7ed; }
+      .book-room { border-color: #c7d2fe; }
+      .book-room .room-kicker { color: #4338ca; }
+      .book-room.active { border-color: #4f46e5; background: #eef2ff; }
+      .toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; padding: 12px 14px; border-bottom: 1px solid #fed7aa; background: #fffaf5; }
       .hidden { display: none; }
       button { border: 0; border-radius: 999px; padding: 10px 14px; background: #ffedd5; color: #7c2d12; font-weight: 800; cursor: pointer; }
+      .scenario-chip { min-height: 34px; padding: 8px 12px; background: #fff7ed; border: 1px solid #fed7aa; color: #7c2d12; font-size: .92rem; }
+      .book-panel .scenario-chip { background: #eef2ff; border-color: #c7d2fe; color: #3730a3; }
       button.primary { background: #ea580c; color: white; }
       label { display: inline-flex; align-items: center; gap: 8px; color: #6b5f55; font-weight: 700; }
       .chat { display: grid; gap: 12px; min-height: 380px; max-height: 58vh; overflow-y: auto; padding: 18px; }
@@ -54,30 +64,39 @@ HTML = """<!doctype html>
       .hint { margin: 14px 2px 0; color: #6b5f55; font-size: .92rem; }
       @media (max-width: 640px) {
         body { padding: 16px; }
+        .room-switch { grid-template-columns: 1fr; }
         .bubble { max-width: 92%; }
         form { grid-template-columns: 1fr; }
       }
     </style>
   </head>
-  <body>
+  <body data-mode="dinner">
     <main>
       <header>
-        <h1>BusyParent Kitchen Agent / HomePlate AI</h1>
-        <p class="subhead">BusyParent reduces evening decision load with one practical default at a time.</p>
+        <h1 id="roomTitle">BusyParent Agent / Dinner Planner</h1>
+        <p class="subhead">BusyParent Agent reduces evening decision load with one practical default at a time.</p>
         <p class="story"><span>Dinner handled</span><span>Bedtime book handled</span></p>
       </header>
       <section class="shell">
-        <div class="tabs" role="tablist" aria-label="BusyParent workflows">
-          <button class="tab active" data-tab="dinner" type="button">Dinner</button>
-          <button class="tab" data-tab="book" type="button">Bedtime Book</button>
+        <div class="room-switch" role="tablist" aria-label="BusyParent rooms">
+          <button class="room-card dinner-room active" data-room-control="dinner" data-tab="dinner" type="button" aria-pressed="true">
+            <span class="room-kicker">Dinner room</span>
+            <strong>Dinner Planner</strong>
+            <span>Plan tonight's meal and grocery gaps.</span>
+          </button>
+          <button class="room-card book-room" data-room-control="book" data-tab="book" type="button" aria-pressed="false">
+            <span class="room-kicker">Bedtime book room</span>
+            <strong>Story Picker</strong>
+            <span>Pick one kid-right book for bedtime.</span>
+          </button>
         </div>
-        <div class="toolbar" data-panel="dinner">
-          <button data-scenario="dinner">Dinner now</button>
-          <button data-scenario="lunch">Plan at lunch</button>
-          <button data-scenario="guest">Guest child</button>
+        <div class="toolbar dinner-panel" data-panel="dinner">
+          <button class="scenario-chip" data-scenario="dinner">Dinner now</button>
+          <button class="scenario-chip" data-scenario="lunch">Plan at lunch</button>
+          <button class="scenario-chip" data-scenario="guest">Guest child</button>
         </div>
-        <div class="toolbar hidden" data-panel="book">
-          <button data-scenario="book">Pick tonight's book</button>
+        <div class="toolbar book-panel hidden" data-panel="book">
+          <button class="scenario-chip" data-scenario="book">Pick tonight's book</button>
         </div>
         <div class="toolbar">
           <button id="clear" type="button">Clear</button>
@@ -98,9 +117,14 @@ HTML = """<!doctype html>
       const form = document.querySelector("#form");
       const input = document.querySelector("#message");
       const traceToggle = document.querySelector("#traceToggle");
+      const roomTitle = document.querySelector("#roomTitle");
+      const titles = {
+        dinner: "BusyParent Agent / Dinner Planner",
+        book: "BusyParent Agent / Story Picker"
+      };
       const hints = {
         dinner: "Try: “Not feeling that. Anything else?” then “Let’s do Egg Fried Rice.”",
-        book: "Try the Bedtime Book scenario for one mocked Epic-style read-aloud pick."
+        book: "Try the Story Picker scenario for one mocked Epic-style read-aloud pick."
       };
 
       function addBubble(role, text) {
@@ -150,6 +174,8 @@ HTML = """<!doctype html>
         button.addEventListener("click", async () => {
           chat.innerHTML = "";
           activeMode = button.dataset.scenario === "book" ? "book" : "dinner";
+          document.body.dataset.mode = activeMode;
+          roomTitle.textContent = titles[activeMode];
           const data = await postJson("/api/scenario", { scenario: button.dataset.scenario });
           sessionId = data.session_id;
           data.responses.forEach(renderResponse);
@@ -160,9 +186,12 @@ HTML = """<!doctype html>
         button.addEventListener("click", () => {
           const active = button.dataset.tab;
           activeMode = active === "book" ? "book" : "dinner";
+          document.body.dataset.mode = activeMode;
+          roomTitle.textContent = titles[activeMode];
           sessionId = null;
           document.querySelectorAll("[data-tab]").forEach((tab) => {
             tab.classList.toggle("active", tab.dataset.tab === active);
+            tab.setAttribute("aria-pressed", String(tab.dataset.tab === active));
           });
           document.querySelectorAll("[data-panel]").forEach((panel) => {
             panel.classList.toggle("hidden", panel.dataset.panel !== active);

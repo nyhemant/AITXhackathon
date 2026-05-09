@@ -1,8 +1,8 @@
-# BusyParent Kitchen Agent / HomePlate AI
+# BusyParent Agent
 
 Local Python agent demo for the **AITX Community x Codex Hackathon, Agents Track**.
 
-Busy parents do not need another recipe app. They need dinner handled. This demo proves an agent loop: understand the dinner goal, call local tools, make a time-aware decision, adapt after feedback, and revise for a guest child constraint.
+BusyParent Agent reduces evening decision load with one practical default at a time. v1 proves Dinner Planner: understand the dinner goal, call local tools, make a time-aware decision, adapt after feedback, and revise for a guest child constraint. v2 adds Story Picker: one kid-right bedtime book from a mocked Epic-style catalog.
 
 ## Submission Materials
 
@@ -74,7 +74,7 @@ http://127.0.0.1:8001
 
 Restart the web server immediately before presenting so it serves the latest code.
 
-For v2 StoryPath work on the `v2-storypath` branch, keep v1 pinned separately on port `8000` and run the expanded dinner + bedtime-book demo on port `8001`:
+For v2 Story Picker work on the `v2-storypath` branch, keep v1 pinned separately on port `8000` and run the expanded Dinner Planner + Story Picker demo on port `8001`:
 
 ```bash
 python3 -m busyparent_agent.web --host 127.0.0.1 --port 8001
