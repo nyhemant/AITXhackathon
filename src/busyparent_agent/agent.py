@@ -18,6 +18,7 @@ class BusyParentAgent:
         self.inventory = tools.estimate_inventory(self._trace)
         self.grocery_history = tools.get_grocery_history(self._trace)
         self.meal_options = tools.get_meal_options(self._trace)
+        self.meal_history = tools.get_meal_history(self._trace)
         self.delivery_window = tools.check_delivery_window(now, self._trace)
         self.current_recommendation: dict[str, Any] | None = None
         self.alternatives: list[dict[str, Any]] = []
@@ -25,6 +26,9 @@ class BusyParentAgent:
 
     def _trace(self, tool_name: str, payload: dict[str, Any]) -> None:
         if self.trace_enabled:
+            if tool_name == "memory_score":
+                self._emit_trace(f"[memory] {self._format_tool_trace(tool_name, payload)}")
+                return
             self._emit_trace(f"[tool] {tool_name} -> {self._format_tool_trace(tool_name, payload)}")
 
     def _decision(self, message: str) -> None:
@@ -63,12 +67,14 @@ class BusyParentAgent:
             self.grocery_history,
             self.meal_options,
             self.delivery_window,
+            self.meal_history,
+            self.now,
             trace=self._trace,
         )
         self.current_recommendation = meal
         self.selected_meal = None
         grocery_list = tools.update_grocery_list(meal, self.inventory, self._trace)
-        self._decision(f"lead with one dinner: {meal['name']}")
+        self._decision(self._choice_decision(meal))
 
         return "\n".join(
             [
@@ -94,6 +100,8 @@ class BusyParentAgent:
             self.grocery_history,
             self.meal_options,
             self.delivery_window,
+            self.meal_history,
+            self.now,
             trace=self._trace,
         )
 
@@ -209,6 +217,13 @@ class BusyParentAgent:
         pick = egg_option or self.alternatives[0]
         return f"I’d pick {pick['name']} if you want the least effort tonight."
 
+    def _choice_decision(self, meal: dict[str, Any]) -> str:
+        if meal["name"] == "Egg Fried Rice" and self.delivery_window["strategy"] == "pantry_first":
+            return "chose Egg Fried Rice because it fits tonight and avoids repeating yesterday's meal"
+        if meal.get("delivery_help"):
+            return f"chose {meal['name']} because delivery can add small fresh items while keeping the core dinner familiar"
+        return f"lead with one dinner: {meal['name']}"
+
     @staticmethod
     def _format_tool_trace(tool_name: str, payload: dict[str, Any]) -> str:
         if tool_name == "get_family_profile":
@@ -219,8 +234,13 @@ class BusyParentAgent:
             return f"{payload['recent_buys']} recent grocery signals"
         if tool_name == "get_meal_options":
             return f"{payload['meal_options']} candidate dinners"
+        if tool_name == "get_meal_history":
+            return f"{payload['events']} local household memory events"
         if tool_name == "check_delivery_window":
             return payload["message"]
+        if tool_name == "memory_score":
+            reasons = ", ".join(payload["reasons"])
+            return f"{payload['meal']} -> {reasons}; score {payload['total_score']}"
         if tool_name == "recommend_meal":
             strategy = payload["delivery_strategy"].replace("_", "-")
             return f"{payload['chosen']}, one meal returned, {strategy}"

@@ -9,6 +9,7 @@ Busy parents do not need another recipe app. They need dinner handled. This demo
 This is a small, deterministic agent demo rather than a web app. The visible trace shows:
 
 - `[tool]` calls into mocked family, inventory, grocery history, meal, delivery-window, and grocery-list tools
+- `[memory]` scoring lines from local household meal history
 - `[decision]` lines explaining why the agent chooses pantry-first or delivery-aware planning
 - One meal recommendation first, not a recipe list
 - Adaptation after rejection
@@ -81,6 +82,8 @@ In the close-to-dinner demo, the agent says it is close to dinner and chooses a 
 
 In the lunchtime demo, the agent says planning starts early enough to use a small delivery, then recommends dinner with a reviewable grocery list such as `avocado, berries`.
 
+The agent also reads sample household memory from `data/meal_history.json`. Favorites, kid-approved meals, and popular meals get boosted, while meals served, recommended, or rejected recently are penalized so the agent avoids repeating yesterday's dinner when a strong pantry alternative exists.
+
 After the parent rejects the first recommendation, the agent returns three alternatives and gives a clear next pick. The scripted demo then chooses a valid current alternative.
 
 When a guest child has no-nuts/no-spicy constraints, the agent revises the selected meal, avoids the named ingredients, keeps heat off the shared meal, and reminds the parent to verify packaged labels.
@@ -93,7 +96,9 @@ Mocked today:
 - `data/inventory_snapshot.json`
 - `data/grocery_history.json`
 - `data/meal_options.json`
+- `data/meal_history.json`
 - Delivery timing logic
+- Household memory and recency-aware recommendation scoring
 - Reviewable grocery list updates
 
 Real later:
@@ -101,7 +106,7 @@ Real later:
 - Grocery provider availability
 - Receipt, pantry, or fridge scanning
 - Calendar-aware dinner timing
-- User preference memory
+- User preference memory learned from accept, reject, recommended, and served events
 - LLM reasoning over a larger meal library
 
 No real grocery APIs, web UI, Telegram bot, or photo recognition are included in this version.

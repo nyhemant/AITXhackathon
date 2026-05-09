@@ -29,7 +29,7 @@ class AgentRulesTest(unittest.TestCase):
         response = agent.reply("What should I make for dinner tonight?")
 
         self.assertIn("Make ", response)
-        self.assertIn("Black Bean Quesadillas", response)
+        self.assertIn("Egg Fried Rice", response)
         self.assertIn("I am leading with one option", response)
         self.assertNotIn("1.", response)
         self.assertIsNotNone(agent.current_recommendation)
@@ -51,6 +51,7 @@ class AgentRulesTest(unittest.TestCase):
         self.assertIn("It is close to dinner", response)
         self.assertIn("Reviewable grocery list: nothing required.", response)
         self.assertEqual(agent.delivery_window["strategy"], "pantry_first")
+        self.assertEqual(agent.current_recommendation["name"], "Egg Fried Rice")
 
     def test_rejection_returns_three_alternatives(self):
         agent = BusyParentAgent(now=datetime(2026, 5, 8, 17, 30))
@@ -59,9 +60,9 @@ class AgentRulesTest(unittest.TestCase):
         response = agent.reply("Not feeling that. Anything else?")
 
         self.assertIn("Here are three better directions", response)
-        self.assertIn("I’d pick Egg Fried Rice if you want the least effort tonight.", response)
+        self.assertIn("I’d pick Black Bean Quesadillas if you want the least effort tonight.", response)
         self.assertEqual(len(agent.alternatives), 3)
-        self.assertNotIn("Black Bean Quesadillas", [meal["name"] for meal in agent.alternatives])
+        self.assertNotIn("Egg Fried Rice", [meal["name"] for meal in agent.alternatives])
 
     def test_selected_egg_fried_rice_plan_is_concise_and_parent_aware(self):
         agent = BusyParentAgent(now=datetime(2026, 5, 8, 17, 30))
@@ -191,6 +192,84 @@ class ServiceAdapterTest(unittest.TestCase):
 
         self.assertIn("--port", result.stdout)
         self.assertIn("local web chat", result.stdout)
+
+
+class HouseholdMemoryTest(unittest.TestCase):
+    def setUp(self):
+        self.family = tools.get_family_profile()
+        self.inventory = tools.estimate_inventory()
+        self.meals = tools.get_meal_options()
+        self.delivery_window = tools.check_delivery_window(datetime(2026, 5, 8, 17, 30))
+
+    def meal(self, name: str) -> dict:
+        return next(meal for meal in self.meals if meal["name"] == name)
+
+    def score(self, meal_name: str, history: list[dict]) -> float:
+        return tools._score_meal(
+            self.meal(meal_name),
+            self.family,
+            self.inventory,
+            self.delivery_window,
+            history,
+            datetime(2026, 5, 8, 17, 30),
+        )
+
+    def test_recently_served_meal_is_penalized(self):
+        no_history = self.score("Black Bean Quesadillas", [])
+        recent = self.score(
+            "Black Bean Quesadillas",
+            [{"date": "2026-05-07", "event": "served", "meal": "Black Bean Quesadillas"}],
+        )
+
+        self.assertLess(recent, no_history)
+
+    def test_recently_rejected_meal_is_penalized(self):
+        no_history = self.score("Peanut Butter Noodles", [])
+        recent = self.score(
+            "Peanut Butter Noodles",
+            [{"date": "2026-05-07", "event": "rejected", "meal": "Peanut Butter Noodles"}],
+        )
+
+        self.assertLess(recent, no_history)
+
+    def test_favorites_are_boosted_when_not_recent(self):
+        egg = self.meal("Egg Fried Rice")
+        neutral = dict(egg, favorite_score=0, kid_approved=False, usual_popularity=0)
+
+        boosted = tools._score_meal(
+            egg,
+            self.family,
+            self.inventory,
+            self.delivery_window,
+            [],
+            datetime(2026, 5, 8, 17, 30),
+        )
+        unboosted = tools._score_meal(
+            neutral,
+            self.family,
+            self.inventory,
+            self.delivery_window,
+            [],
+            datetime(2026, 5, 8, 17, 30),
+        )
+
+        self.assertGreater(boosted, unboosted)
+
+    def test_recommendation_avoids_back_to_back_repeat_when_good_alternative_exists(self):
+        recommendation = tools.recommend_meal(
+            self.family,
+            self.inventory,
+            tools.get_grocery_history(),
+            self.meals,
+            self.delivery_window,
+            [
+                {"date": "2026-05-07", "event": "served", "meal": "Black Bean Quesadillas"},
+                {"date": "2026-05-05", "event": "accepted", "meal": "Egg Fried Rice"},
+            ],
+            datetime(2026, 5, 8, 17, 30),
+        )
+
+        self.assertEqual(recommendation["name"], "Egg Fried Rice")
 
 
 if __name__ == "__main__":

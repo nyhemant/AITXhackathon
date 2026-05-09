@@ -1,0 +1,37 @@
+[
+  {
+    "date": "2026-05-07",
+    "event": "served",
+    "meal": "Black Bean Quesadillas"
+  },
+  {
+    "date": "2026-05-07",
+    "event": "accepted",
+    "meal": "Black Bean Quesadillas"
+  },
+  {
+    "date": "2026-05-07",
+    "event": "rejected",
+    "meal": "Peanut Butter Noodles"
+  },
+  {
+    "date": "2026-05-06",
+    "event": "recommended",
+    "meal": "Pasta Marinara with Carrots"
+  },
+  {
+    "date": "2026-05-05",
+    "event": "accepted",
+    "meal": "Egg Fried Rice"
+  },
+  {
+    "date": "2026-05-04",
+    "event": "served",
+    "meal": "Egg Fried Rice"
+  },
+  {
+    "date": "2026-05-03",
+    "event": "recommended",
+    "meal": "Chicken and Corn Rice Bowls"
+  }
+]

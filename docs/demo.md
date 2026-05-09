@@ -42,7 +42,8 @@ Call out:
 
 - `[tool] check_delivery_window`
 - `[decision] pantry-first because it is close to dinner`
-- One meal first: `Black Bean Quesadillas`
+- `[memory]` scoring lines boost household favorites and penalize recent repeats
+- One meal first: `Egg Fried Rice`
 - `Reviewable grocery list: nothing required.`
 - Rejection produces three alternatives
 - Guest child constraint revises the selected meal
@@ -64,9 +65,16 @@ python3 -m busyparent_agent.app --demo --trace --now "2026-05-09 12:30"
 Call out:
 
 - `[decision] grocery delivery can help because planning starts earlier`
+- `[memory]` scoring still runs before the recommendation
 - The agent does not force pantry-only
 - `Reviewable grocery list: avocado, berries.`
 - This is still a reviewable list, not an automatic order
+
+## Household Memory
+
+The demo uses local sample memory in `data/meal_history.json` with `served`, `accepted`, `rejected`, and `recommended` events. The recommendation score boosts family favorites, kid-approved meals, and popular meals, then penalizes meals served or recommended in the last 1-2 days and meals rejected recently.
+
+A real version could learn this history from parent accept/reject clicks, completed dinner plans, and repeated household behavior. This demo keeps that memory deterministic and local so judge scenarios remain reliable.
 
 ## 5. Guest Constraint Branch
 
@@ -91,7 +99,7 @@ CLI and web both call `busyparent_agent.service.AgentSession`. A future Telegram
 ```text
 Parent: What should I make for dinner tonight?
 [decision] pantry-first because it is close to dinner
-Agent: Make Black Bean Quesadillas tonight.
+Agent: Make Egg Fried Rice tonight.
 
 Parent: Not feeling that. Anything else?
 Agent: Totally. Here are three better directions:

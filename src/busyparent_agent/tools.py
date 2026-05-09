@@ -7,7 +7,7 @@ the agent loop and decisions, not external API plumbing.
 from __future__ import annotations
 
 from copy import deepcopy
-from datetime import datetime
+from datetime import date, datetime
 import json
 from pathlib import Path
 from typing import Any, Callable
@@ -51,6 +51,12 @@ def get_meal_options(trace: TraceFn = None) -> list[dict[str, Any]]:
     meals = _read_json("meal_options.json")
     _trace(trace, "get_meal_options", {"meal_options": len(meals)})
     return meals
+
+
+def get_meal_history(trace: TraceFn = None) -> list[dict[str, Any]]:
+    history = _read_json("meal_history.json")
+    _trace(trace, "get_meal_history", {"events": len(history)})
+    return history
 
 
 def inventory_items(inventory: dict[str, Any]) -> set[str]:
@@ -141,6 +147,9 @@ def _score_meal(
     family: dict[str, Any],
     inventory: dict[str, Any],
     delivery_window: dict[str, Any],
+    meal_history: list[dict[str, Any]] | None = None,
+    now: datetime | None = None,
+    trace: TraceFn = None,
 ) -> float:
     missing = missing_ingredients(meal, inventory)
     coverage = (len(meal["ingredients"]) - len(missing)) / len(meal["ingredients"])
@@ -170,7 +179,96 @@ def _score_meal(
     if meal["name"] == "Black Bean Quesadillas" and delivery_window["strategy"] == "pantry_first":
         score += 7
 
+    memory_score, memory_reasons = _household_memory_score(meal, meal_history or [], now)
+    score += memory_score
+    _trace(
+        trace,
+        "memory_score",
+        {
+            "meal": meal["name"],
+            "reasons": memory_reasons,
+            "total_score": round(score, 1),
+        },
+    )
     return score
+
+
+def _household_memory_score(
+    meal: dict[str, Any],
+    meal_history: list[dict[str, Any]],
+    now: datetime | None,
+) -> tuple[int, list[str]]:
+    score = 0
+    reasons = []
+
+    favorite_score = int(meal.get("favorite_score", 0))
+    if favorite_score:
+        score += favorite_score
+        reasons.append(f"favorite +{favorite_score}")
+
+    if meal.get("kid_approved"):
+        score += 2
+        reasons.append("kid-approved +2")
+
+    popularity = int(meal.get("usual_popularity", 0))
+    if popularity:
+        score += popularity
+        reasons.append(f"popular +{popularity}")
+
+    meal_events = [event for event in meal_history if event.get("meal") == meal["name"]]
+    recent_repeat = False
+    recent_rejection = False
+
+    for event in meal_events:
+        days_ago = _days_ago(event.get("date"), now)
+        if days_ago is None:
+            continue
+        event_type = event.get("event")
+
+        if event_type == "served" and days_ago <= 1:
+            score -= 12
+            recent_repeat = True
+            reasons.append("recently served -12")
+        elif event_type == "served" and days_ago <= 2:
+            score -= 6
+            recent_repeat = True
+            reasons.append("served this week -6")
+
+        if event_type == "recommended" and days_ago <= 1:
+            score -= 6
+            recent_repeat = True
+            reasons.append("recently recommended -6")
+        elif event_type == "recommended" and days_ago <= 2:
+            score -= 4
+            recent_repeat = True
+            reasons.append("recommended this week -4")
+
+        if event_type == "rejected" and days_ago <= 3:
+            score -= 12
+            recent_rejection = True
+            reasons.append("recently rejected -12")
+        elif event_type == "rejected" and days_ago <= 7:
+            score -= 5
+            recent_rejection = True
+            reasons.append("rejected this week -5")
+
+        if event_type == "accepted" and days_ago <= 14:
+            score += 2
+            reasons.append("accepted before +2")
+
+    if not recent_repeat and not recent_rejection:
+        score += 1
+        reasons.append("not recent +1")
+
+    return score, reasons
+
+
+def _days_ago(value: str | None, now: datetime | None) -> int | None:
+    if not value or not now:
+        return None
+    event_date = date.fromisoformat(value)
+    days = (now.date() - event_date).days
+    return days if days >= 0 else None
 
 
 def recommend_meal(
@@ -179,6 +277,8 @@ def recommend_meal(
     grocery_history: dict[str, Any],
     meal_options: list[dict[str, Any]],
     delivery_window: dict[str, Any],
+    meal_history: list[dict[str, Any]] | None = None,
+    now: datetime | None = None,
     constraints: dict[str, Any] | None = None,
     trace: TraceFn = None,
 ) -> dict[str, Any]:
@@ -186,7 +286,10 @@ def recommend_meal(
     candidates = [meal for meal in meal_options if not _violates_constraints(meal, constraints)]
     ranked = sorted(
         candidates,
-        key=lambda meal: (_score_meal(meal, family, inventory, delivery_window), -meal["minutes"]),
+        key=lambda meal: (
+            _score_meal(meal, family, inventory, delivery_window, meal_history, now, trace),
+            -meal["minutes"],
+        ),
         reverse=True,
     )
     recommendation = deepcopy(ranked[0])
@@ -215,13 +318,18 @@ def adapt_for_rejection(
     grocery_history: dict[str, Any],
     meal_options: list[dict[str, Any]],
     delivery_window: dict[str, Any],
+    meal_history: list[dict[str, Any]] | None = None,
+    now: datetime | None = None,
     trace: TraceFn = None,
 ) -> list[dict[str, Any]]:
     del grocery_history
     alternatives = [meal for meal in meal_options if meal["name"] != rejected_meal["name"]]
     ranked = sorted(
         alternatives,
-        key=lambda meal: (_score_meal(meal, family, inventory, delivery_window), -meal["minutes"]),
+        key=lambda meal: (
+            _score_meal(meal, family, inventory, delivery_window, meal_history, now, trace),
+            -meal["minutes"],
+        ),
         reverse=True,
     )
     result = []
