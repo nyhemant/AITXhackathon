@@ -2,7 +2,15 @@
 
 Use this for a short judge walkthrough. The demo is local Python only.
 
+Requirements: Python >=3.10.
+
 ## 1. Run Tests
+
+Before the golden demo, reset mutable local meal memory:
+
+```bash
+git restore data/meal_history.json
+```
 
 ```bash
 python3 -m unittest discover -s tests
@@ -13,14 +21,30 @@ Expected result: `OK`.
 ## 2. Local Web Chat
 
 ```bash
-python3 -m busyparent_agent.web
+python3 -m busyparent_agent.web --host 0.0.0.0 --port 8000
 ```
 
-Open:
+Browse locally to:
 
 ```text
 http://127.0.0.1:8000
 ```
+
+`0.0.0.0` is the bind address for the server. Use `127.0.0.1` in the browser.
+
+If port `8000` is busy:
+
+```bash
+python3 -m busyparent_agent.web --host 0.0.0.0 --port 8001
+```
+
+Then browse to:
+
+```text
+http://127.0.0.1:8001
+```
+
+Restart the web server immediately before presenting so it serves the latest code.
 
 Use this when you want a mentor or judge to test the UX without typing in a terminal. The web UI is a demo shell around the same agent service used by the CLI.
 
@@ -76,7 +100,7 @@ Call out:
 - The agent does not force pantry-only
 - `Reviewable grocery cart: avocado, berries.`
 - Required-for-tonight items are separated from smart add-ons
-- This is still a reviewable mock cart/list, not an automatic order
+- This is still a reviewable mock grocery cart, not an automatic order
 
 ## Inventory Confidence
 
@@ -114,6 +138,12 @@ The prices are fixture prices for demo realism only. No real Instacart API, live
 The demo uses local sample memory in `data/meal_history.json` with `served`, `accepted`, `rejected`, and `recommended` events. The recommendation score boosts family favorites, kid-approved meals, and popular meals, then penalizes meals served or recommended in the last 1-2 days and meals rejected recently.
 
 The same memory file can be updated through natural chat feedback. Try `The kids loved this`, `Egg fried rice was a hit`, `We had quesadillas yesterday`, or `Don't suggest quesadillas again this week`; the agent saves an event and confirms it conversationally.
+
+Before the golden demo, reset mutated demo memory with:
+
+```bash
+git restore data/meal_history.json
+```
 
 A real version could learn this history from parent accept/reject clicks, completed dinner plans, and repeated household behavior. This demo keeps that memory deterministic and local so judge scenarios remain reliable.
 

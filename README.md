@@ -19,10 +19,20 @@ This is a small, deterministic agent demo rather than a web app. The visible tra
 
 ## Quick Start
 
-From the project root:
+Requirements:
+
+- Python >=3.10
+
+Clone and enter the repo:
 
 ```bash
-cd /Users/arku/Projects/AITXhackathon
+git clone https://github.com/nyhemant/AITXhackathon.git
+cd AITXhackathon
+```
+
+From the repo root:
+
+```bash
 python3 -m busyparent_agent.app --demo --trace
 ```
 
@@ -35,16 +45,39 @@ python3 -m unittest discover -s tests
 Run the local web chat:
 
 ```bash
-python3 -m busyparent_agent.web
+python3 -m busyparent_agent.web --host 0.0.0.0 --port 8000
 ```
 
-Then open:
+Then browse locally to:
 
 ```text
 http://127.0.0.1:8000
 ```
 
+`0.0.0.0` is the bind address for the server. Use `127.0.0.1` in the browser.
+
+If port `8000` is busy:
+
+```bash
+python3 -m busyparent_agent.web --host 0.0.0.0 --port 8001
+```
+
+Then browse to:
+
+```text
+http://127.0.0.1:8001
+```
+
+Restart the web server immediately before presenting so it serves the latest code.
+
 ## Demo Commands
+
+Before the golden demo, reset mutable local meal memory and run tests:
+
+```bash
+git restore data/meal_history.json
+python3 -m unittest discover -s tests
+```
 
 Short mentor/judge scenarios:
 
@@ -60,7 +93,7 @@ Close-to-dinner branch: pantry-first, nothing required.
 python3 -m busyparent_agent.app --demo --trace --now "2026-05-08 17:30"
 ```
 
-Lunchtime branch: delivery-aware, small reviewable cart/list.
+Lunchtime branch: delivery-aware, small reviewable grocery cart.
 
 ```bash
 python3 -m busyparent_agent.app --demo --trace --now "2026-05-09 12:30"
@@ -75,14 +108,14 @@ python3 -m busyparent_agent.app
 Local web chat for UX testing:
 
 ```bash
-python3 -m busyparent_agent.web
+python3 -m busyparent_agent.web --host 0.0.0.0 --port 8000
 ```
 
 ## What Judges Should Notice
 
 In the close-to-dinner demo, the agent says it is close to dinner and chooses a pantry-first meal using high-confidence inventory.
 
-In the lunchtime demo, the agent says planning starts early enough to use a small mock Instacart delivery, then recommends dinner with a reviewable cart/list. Required dinner items such as `avocado, berries` appear first, and the Smart Basket Builder adds useful household items only when the mock cart is below the $35.00 minimum. It never places an automatic order.
+In the lunchtime demo, the agent says planning starts early enough to use a small mock Instacart delivery, then recommends dinner with a reviewable grocery cart. Required dinner items such as `avocado, berries` appear first, and the Smart Basket Builder adds useful household items only when the mock cart is below the $35.00 minimum. It never places an automatic order.
 
 The mock cart is backed by `data/mock_grocery_catalog.json`, a local grocery universe with representative demo prices, stock status, categories, sizes, brands, tags, and substitutes. The agent only adds catalog-backed, in-stock items or available substitutes to a mock cart. Smart add-ons prioritize upcoming meal usefulness, low-confidence fresh staples, kid snacks/sides, and low-waste recurring items while skipping high-confidence home inventory and Costco-covered staples.
 
@@ -122,7 +155,7 @@ Mocked today:
 - Minimum-aware Smart Basket Builder with required and add-on cart sections
 - Household memory and recency-aware recommendation scoring
 - Conversational feedback capture into local JSON memory
-- Reviewable grocery cart/list updates
+- Reviewable grocery cart updates
 
 Real later:
 
