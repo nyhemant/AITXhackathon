@@ -8,9 +8,9 @@ The repo was checked as reachable over unauthenticated HTTPS with `git ls-remote
 
 ## Deployed URL
 
-Temporary demo tunnel: <https://aitx.myglucoach.app>
+Deployed URL: <https://aitx.myglucoach.app>
 
-This URL requires the presenter's laptop to remain awake with both the local web app and Cloudflare tunnel running.
+Note: Temporary demo tunnel hosted from presenter MacBook Air. Requires the local web app and Cloudflare tunnel to remain running.
 
 Quick start from a clean machine:
 
