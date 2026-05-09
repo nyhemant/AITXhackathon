@@ -1,4 +1,6 @@
 from datetime import datetime
+import subprocess
+import sys
 import unittest
 
 from busyparent_agent.agent import BusyParentAgent
@@ -87,6 +89,48 @@ class AgentRulesTest(unittest.TestCase):
         self.assertNotIn("guaranteed safe", response)
         self.assertTrue(agent.selected_meal["guest_constraints"]["no_nuts"])
         self.assertTrue(agent.selected_meal["guest_constraints"]["no_spicy"])
+
+
+class ScenarioCliTest(unittest.TestCase):
+    def run_scenario(self, scenario: str) -> str:
+        result = subprocess.run(
+            [
+                sys.executable,
+                "-m",
+                "busyparent_agent.app",
+                "--scenario",
+                scenario,
+                "--trace",
+            ],
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+        return result.stdout
+
+    def test_scenario_dinner_runs_and_includes_pantry_first(self):
+        output = self.run_scenario("dinner")
+
+        self.assertIn("BusyParent Kitchen Agent / HomePlate AI", output)
+        self.assertIn("[decision] pantry-first because it is close to dinner", output)
+        self.assertIn("Reviewable grocery list: nothing required.", output)
+        self.assertNotIn("Not feeling that", output)
+
+    def test_scenario_lunch_runs_and_includes_fresh_grocery_items(self):
+        output = self.run_scenario("lunch")
+
+        self.assertIn("[decision] grocery delivery can help because planning starts earlier", output)
+        self.assertIn("Reviewable grocery list: avocado, berries.", output)
+        self.assertNotIn("Not feeling that", output)
+
+    def test_scenario_guest_runs_and_includes_constraints(self):
+        output = self.run_scenario("guest")
+
+        self.assertIn("Context: Selected meal is Egg Fried Rice.", output)
+        self.assertIn("[tool] apply_guest_constraints", output)
+        self.assertIn("Avoid nut ingredients", output)
+        self.assertIn("Keep spice off", output)
+        self.assertIn("verify packaged labels", output)
 
 
 if __name__ == "__main__":

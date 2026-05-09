@@ -31,6 +31,14 @@ python3 -m unittest discover -s tests
 
 ## Demo Commands
 
+Short mentor/judge scenarios:
+
+```bash
+python3 -m busyparent_agent.app --scenario dinner --trace
+python3 -m busyparent_agent.app --scenario lunch --trace
+python3 -m busyparent_agent.app --scenario guest --trace
+```
+
 Close-to-dinner branch: pantry-first, nothing required.
 
 ```bash

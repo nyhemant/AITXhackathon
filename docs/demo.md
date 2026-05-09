@@ -17,6 +17,14 @@ OK
 
 ## 2. Close-To-Dinner Branch
 
+Short version:
+
+```bash
+python3 -m busyparent_agent.app --scenario dinner --trace
+```
+
+Full scripted version:
+
 ```bash
 python3 -m busyparent_agent.app --demo --trace --now "2026-05-08 17:30"
 ```
@@ -32,6 +40,14 @@ Call out:
 
 ## 3. Lunchtime Branch
 
+Short version:
+
+```bash
+python3 -m busyparent_agent.app --scenario lunch --trace
+```
+
+Full scripted version:
+
 ```bash
 python3 -m busyparent_agent.app --demo --trace --now "2026-05-09 12:30"
 ```
@@ -42,6 +58,20 @@ Call out:
 - The agent does not force pantry-only
 - `Reviewable grocery list: avocado, berries.`
 - This is still a reviewable list, not an automatic order
+
+## 4. Guest Constraint Branch
+
+```bash
+python3 -m busyparent_agent.app --scenario guest --trace
+```
+
+Call out:
+
+- Starts from selected context: `Egg Fried Rice`
+- Parent adds a guest child constraint
+- `[tool] apply_guest_constraints`
+- Avoids nuts and keeps spicy food off the shared meal
+- Reminds parent to verify packaged labels
 
 ## Sample Transcript Cues
 
