@@ -1,115 +1,96 @@
 # BusyParent Kitchen Agent / HomePlate AI
 
-This is a local Python agent demo for the AITX Community x Codex Hackathon, Agents Track.
+Local Python agent demo for the **AITX Community x Codex Hackathon, Agents Track**.
 
-Busy parents do not need another recipe app. They need dinner handled. This demo leads with one practical dinner recommendation, then adapts when the parent rejects it or adds guest constraints.
+Busy parents do not need another recipe app. They need dinner handled. This demo proves an agent loop: understand the dinner goal, call local tools, make a time-aware decision, adapt after feedback, and revise for a guest child constraint.
 
-## What It Does
+## Why It Fits The Agents Track
 
-The agent uses mocked local JSON data to answer:
+This is a small, deterministic agent demo rather than a web app. The visible trace shows:
 
-- What family are we feeding?
-- What food is likely at home?
-- Is there enough time for groceries, or should dinner be pantry-first?
-- What is the one best dinner recommendation right now?
-- What should change if the parent rejects it?
-- What should change if a guest child needs no nuts and no spicy food?
+- `[tool]` calls into mocked family, inventory, grocery history, meal, delivery-window, and grocery-list tools
+- `[decision]` lines explaining why the agent chooses pantry-first or delivery-aware planning
+- One meal recommendation first, not a recipe list
+- Adaptation after rejection
+- Guest child handling for no nuts and no spicy food, with careful allergy wording
 
-The demo is intentionally small and deterministic so it is reliable live.
-
-## Run It
+## Quick Start
 
 From the project root:
 
 ```bash
 cd /Users/arku/Projects/AITXhackathon
-python -m busyparent_agent.app
-```
-
-On Macs where `python` is not installed, use `python3`:
-
-```bash
-python3 -m busyparent_agent.app
-```
-
-Run the scripted hackathon conversation:
-
-```bash
-python -m busyparent_agent.app --demo
-python3 -m busyparent_agent.app --demo
-```
-
-Show tool calls and decisions:
-
-```bash
-python -m busyparent_agent.app --demo --trace
 python3 -m busyparent_agent.app --demo --trace
 ```
 
-Test a specific time:
+Run tests:
 
 ```bash
-python -m busyparent_agent.app --demo --now "2026-05-08 13:00"
-python -m busyparent_agent.app --demo --now "2026-05-08 17:30"
-python3 -m busyparent_agent.app --demo --now "2026-05-08 13:00"
-python3 -m busyparent_agent.app --demo --now "2026-05-08 17:30"
+python3 -m unittest discover -s tests
 ```
 
-Lunchtime planning demo, with trace:
+## Demo Commands
+
+Close-to-dinner branch: pantry-first, nothing required.
+
+```bash
+python3 -m busyparent_agent.app --demo --trace --now "2026-05-08 17:30"
+```
+
+Lunchtime branch: delivery-aware, small reviewable grocery list.
 
 ```bash
 python3 -m busyparent_agent.app --demo --trace --now "2026-05-09 12:30"
 ```
 
-At lunchtime, the trace should show that grocery delivery can still help. Near dinner, the trace should switch to pantry-first.
-
-## Demo Conversation
-
-```text
-Parent: What should I make for dinner tonight?
-Parent: Not feeling that. Anything else?
-Parent: Let's do egg fried rice.
-Parent: My daughter has a friend coming over. No nuts, no spicy food.
-```
-
-## Run Tests
+Interactive local chat:
 
 ```bash
-python -m unittest discover -s tests
-python3 -m unittest discover -s tests
+python3 -m busyparent_agent.app
 ```
 
-## Mocked vs. Real
+## What Judges Should Notice
+
+In the close-to-dinner demo, the agent says it is close to dinner and chooses a pantry-first meal with no required grocery list.
+
+In the lunchtime demo, the agent says planning starts early enough to use a small delivery, then recommends dinner with a reviewable grocery list such as `avocado, berries`.
+
+After the parent rejects the first recommendation, the agent returns three alternatives and gives a clear next pick. The scripted demo then chooses a valid current alternative.
+
+When a guest child has no-nuts/no-spicy constraints, the agent revises the selected meal, avoids the named ingredients, keeps heat off the shared meal, and reminds the parent to verify packaged labels.
+
+## Mocked vs. Real Integrations
 
 Mocked today:
 
-- Family profile
-- Fridge, freezer, and pantry snapshot
-- Grocery history
-- Meal options
-- Grocery list updates
-- Delivery window logic
+- `data/family_profile.json`
+- `data/inventory_snapshot.json`
+- `data/grocery_history.json`
+- `data/meal_options.json`
+- Delivery timing logic
+- Reviewable grocery list updates
 
 Real later:
 
-- Fridge or receipt scanning
 - Grocery provider availability
-- User preference memory
+- Receipt, pantry, or fridge scanning
 - Calendar-aware dinner timing
+- User preference memory
 - LLM reasoning over a larger meal library
 
-## Why This Is Agentic
+No real grocery APIs, web UI, Telegram bot, or photo recognition are included in this version.
 
-This is not a static recipe picker. It follows an agent loop:
+## Project Structure
 
-1. Understand the parent goal.
-2. Use tools and local data.
-3. Make one decision.
-4. Listen to feedback.
-5. Adapt the plan.
-6. Produce a reviewable grocery list, not an auto-buy order.
-
-The important behavior is adaptation. The first answer is one meal. A rejection produces three alternatives. A guest constraint revises the selected dinner with careful allergy wording.
+```text
+src/busyparent_agent/
+  app.py      CLI entry point
+  agent.py    deterministic agent loop and response policy
+  tools.py    local mocked tools
+data/         mocked JSON inputs
+tests/        unittest coverage for agent behavior
+docs/demo.md  judge-facing demo script
+```
 
 ## Allergy Wording
 
