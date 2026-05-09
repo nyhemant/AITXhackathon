@@ -74,7 +74,7 @@ Call out:
 - `[cart]` lines show required subtotal, minimum check, smart add-ons, and final subtotal
 - `[memory]` scoring still runs before the recommendation
 - The agent does not force pantry-only
-- `Reviewable cart/list: avocado, berries.`
+- `Reviewable grocery cart: avocado, berries.`
 - Required-for-tonight items are separated from smart add-ons
 - This is still a reviewable mock cart/list, not an automatic order
 

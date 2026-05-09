@@ -22,7 +22,7 @@ ORDER_RULES = {
 SMART_ADDON_CANDIDATES = [
     ("rice", "Costco bulk staple check"),
     ("eggs", "visible fridge staple check"),
-    ("mini cucumbers", "recurring kid side + low confidence"),
+    ("mini cucumbers", "recurring kid side + useful for lunchboxes"),
     ("bananas", "kid snack staple + low waste"),
     ("salad kit", "useful for next dinner side"),
     ("applesauce pouches", "lunchbox backup + low waste"),

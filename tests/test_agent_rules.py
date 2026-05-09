@@ -45,7 +45,7 @@ class AgentRulesTest(unittest.TestCase):
         response = agent.reply("What should I make for dinner tonight?")
 
         self.assertIn("Because we are planning early", response)
-        self.assertIn("Reviewable cart/list: avocado, berries.", response)
+        self.assertIn("Reviewable grocery cart: avocado, berries.", response)
         self.assertEqual(agent.current_recommendation["missing"], ["avocado", "berries"])
 
     def test_close_to_dinner_branch_remains_pantry_first_nothing_required(self):
@@ -127,7 +127,7 @@ class ScenarioCliTest(unittest.TestCase):
         output = self.run_scenario("lunch")
 
         self.assertIn("[decision] grocery delivery can help because planning starts earlier", output)
-        self.assertIn("Reviewable cart/list: avocado, berries.", output)
+        self.assertIn("Reviewable grocery cart: avocado, berries.", output)
         self.assertNotIn("Not feeling that", output)
 
     def test_scenario_guest_runs_and_includes_constraints(self):
@@ -160,7 +160,7 @@ class ServiceAdapterTest(unittest.TestCase):
         response = session.send("It is noon and I want to plan for dinner tonight")
 
         self.assertEqual(response["metadata"]["delivery_strategy"], "delivery_ok")
-        self.assertIn("Reviewable cart/list: avocado, berries.", response["message"])
+        self.assertIn("Reviewable grocery cart: avocado, berries.", response["message"])
         self.assertIn("avocado", response["grocery_items"])
         self.assertTrue(
             any("[decision] grocery delivery can help because planning starts earlier" in line for line in response["trace"])
@@ -439,7 +439,7 @@ class InventoryConfidenceTest(unittest.TestCase):
 
         response = session.send("What should I make for dinner tonight?", scenario="lunch")
 
-        self.assertIn("Reviewable cart/list: avocado, berries.", response["message"])
+        self.assertIn("Reviewable grocery cart: avocado, berries.", response["message"])
         self.assertIn("Photo evidence confirms eggs, rice, tortillas, and Costco freezer staples", response["message"])
         self.assertNotIn("foil-wrapped packet", response["message"])
         self.assertEqual(response["grocery_items"], ["avocado", "berries"])
@@ -513,7 +513,7 @@ class InventoryConfidenceTest(unittest.TestCase):
 
         self.assertEqual(response["metadata"]["delivery_strategy"], "delivery_ok")
         self.assertEqual(response["grocery_items"], ["avocado", "berries"])
-        self.assertIn("Reviewable cart/list: avocado, berries.", response["message"])
+        self.assertIn("Reviewable grocery cart: avocado, berries.", response["message"])
         self.assertIn("Mock subtotal: $35.22", response["message"])
         self.assertTrue(
             any("[tool] costco_bulk.get_recent_receipts -> last run 7 days ago" in line for line in response["trace"])

@@ -326,7 +326,7 @@ class BusyParentAgent:
         cart = grocery_list.get("reviewable_cart") or {}
         if cart.get("line_items"):
             lines = [
-                f"Reviewable cart/list: {', '.join(items)}.",
+                f"Reviewable grocery cart: {', '.join(items)}.",
                 "Required for tonight:",
             ]
             lines.extend(
@@ -347,7 +347,7 @@ class BusyParentAgent:
                 ]
             )
             return "\n".join(lines)
-        return f"Reviewable cart/list: {', '.join(items)}."
+        return f"Reviewable grocery cart: {', '.join(items)}."
 
     def _inventory_confidence_line(self) -> str:
         cadence = self.inventory.get("costco_cadence", {})
