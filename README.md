@@ -10,6 +10,7 @@ This is a small, deterministic agent demo rather than a web app. The visible tra
 
 - `[tool]` calls into mocked family, inventory, Instacart-like order history, meal, delivery-window, and grocery-list tools
 - `[inventory]` lines that explain confidence from visible snapshots, recent orders, and bulk purchases
+- `[vision]` lines from mocked/preexisting fridge, pantry, grocery-haul, and receipt photo scans
 - `[memory]` scoring lines from local household meal history
 - `[decision]` lines explaining why the agent chooses pantry-first or delivery-aware planning
 - One meal recommendation first, not a recipe list
@@ -85,7 +86,7 @@ In the lunchtime demo, the agent says planning starts early enough to use a smal
 
 The mock cart is backed by `data/mock_grocery_catalog.json`, a local grocery universe with representative demo prices, stock status, categories, sizes, brands, tags, and substitutes. The agent only adds catalog-backed, in-stock items or available substitutes to a mock cart. Smart add-ons prioritize upcoming meal usefulness, low-confidence fresh staples, kid snacks/sides, and low-waste recurring items while skipping high-confidence home inventory and Costco-covered staples.
 
-The Inventory Confidence Engine reconciles three local signals: biweekly Saturday morning Costco bulk restocks, short-cycle mock Instacart delivery history, and current fridge/pantry photo snapshots. Costco shelf-stable staples decay slowly, Costco freezer items decay moderately, and Costco fresh produce decays quickly. For example, rice stays high-confidence from a recent Costco run, avocado ordered a few days ago becomes medium-confidence, and older kid snack berries become likely low.
+The Inventory Confidence Engine reconciles four local signals: biweekly Saturday morning Costco bulk restocks, short-cycle mock Instacart delivery history, current visible fridge/pantry snapshots, and mocked/preexisting photo scans for fridge, pantry, grocery hauls, and receipts. Photo scans are treated as visual evidence, not perfect inventory truth: high-confidence detected items can raise confidence, maybe items stay medium-confidence, and unknown objects are surfaced for parent confirmation. Costco shelf-stable staples decay slowly, Costco freezer items decay moderately, and Costco fresh produce decays quickly. For example, rice stays high-confidence from a recent Costco run, avocado ordered a few days ago becomes medium-confidence, and older kid snack berries become likely low.
 
 The agent also reads sample household memory from `data/meal_history.json`. Favorites, kid-approved meals, and popular meals get boosted, while meals served, recommended, or rejected recently are penalized so the agent avoids repeating yesterday's dinner when a strong pantry alternative exists.
 
@@ -109,10 +110,14 @@ Mocked today:
 - `data/instacart_orders.json`
 - `data/mock_grocery_catalog.json`
 - `data/costco_bulk_purchases.json`
+- `data/photo_scan_results.json`
+- `data/sample_photos/`
 - `src/busyparent_agent/adapters/mock_instacart.py`
 - `src/busyparent_agent/adapters/costco_bulk.py`
+- `src/busyparent_agent/adapters/mock_photo_scan.py`
 - Delivery timing logic
 - Inventory confidence scoring from local fixtures
+- Mocked photo scan evidence from preexisting fixture outputs
 - Mock grocery catalog search, availability, substitutions, and demo pricing
 - Minimum-aware Smart Basket Builder with required and add-on cart sections
 - Household memory and recency-aware recommendation scoring
@@ -124,13 +129,13 @@ Real later:
 - Real grocery provider availability and cart APIs
 - Real prices, taxes, fees, promotions, and substitution rules
 - Real read-only Costco receipt/account sync
-- Receipt, pantry, or fridge scanning
-- Photo recognition for fridge/pantry snapshots
+- Real receipt, pantry, haul, or fridge scanning
+- Photo recognition/OCR for fridge, pantry, haul, and receipt images
 - Calendar-aware dinner timing
 - User preference memory learned from accept, reject, recommended, and served events
 - LLM reasoning over a larger meal library
 
-No real grocery APIs, purchases, auth, web scraping, Telegram bot, or photo recognition are included in this version.
+No real grocery APIs, purchases, auth, web scraping, Telegram bot, camera capture, OCR, or photo recognition are included in this version.
 
 The local web chat is only a demo shell around the agent. It does not add auth, persistence, deployment, or external integrations.
 

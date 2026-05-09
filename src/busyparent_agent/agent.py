@@ -32,6 +32,9 @@ class BusyParentAgent:
             if tool_name == "inventory_confidence":
                 self._emit_trace(f"[inventory] {self._format_tool_trace(tool_name, payload)}")
                 return
+            if tool_name.startswith("vision_"):
+                self._emit_trace(f"[vision] {self._format_tool_trace(tool_name, payload)}")
+                return
             if tool_name.startswith("cart_"):
                 self._emit_trace(f"[cart] {self._format_tool_trace(tool_name, payload)}")
                 return
@@ -350,6 +353,9 @@ class BusyParentAgent:
         cadence = self.inventory.get("costco_cadence", {})
         if cadence.get("days_until_next_run") is not None and cadence["days_until_next_run"] <= 3:
             return f"Inventory confidence: Costco restock is due this {cadence['usual_day']}."
+        if self.inventory.get("photo_scans"):
+            suffix = " a few unknown items need confirmation." if self.inventory.get("photo_unknowns") else " no unknown items flagged."
+            return "Photo evidence confirms eggs, rice, tortillas, and Costco freezer staples;" + suffix
         if not self.inventory.get("needs_photo_hint"):
             return "Inventory confidence: high enough for tonight."
         return "Inventory confidence: a quick fridge photo would improve this, but I can still plan from recent orders."
@@ -398,6 +404,20 @@ class BusyParentAgent:
             return f"minimum ${payload['minimum_order_amount']:.2f}, target ${payload['cart_target_amount']:.2f}"
         if tool_name == "mock_instacart.build_reviewable_cart":
             return ", ".join(payload["items"]) if payload["items"] else "empty"
+        if tool_name == "mock_photo_scan.list_available_scans":
+            return f"{payload['scans']} scans"
+        if tool_name == "mock_photo_scan.get_scan":
+            return f"{payload['scan_id']} {'found' if payload['found'] else 'not found'}"
+        if tool_name == "mock_photo_scan.get_latest_scan":
+            return payload["scan_id"] or f"none for {payload['source_type']}"
+        if tool_name == "mock_photo_scan.scan_photo":
+            return f"{payload['scan_id']}, {payload['items']} items, {payload['unknowns']} unknowns"
+        if tool_name == "vision_item":
+            return f"{payload['item']} -> {payload['bucket'].replace('_', ' ')}: {payload['reason']}"
+        if tool_name == "vision_unknown":
+            return f"{payload['description']} -> unknown: {payload['reason']}, ask parent if needed"
+        if tool_name == "vision_receipt":
+            return f"{payload['source_type']} -> parsed mock receipt with {payload['items']} Costco items"
         if tool_name == "cart_required_subtotal":
             return f"required tonight subtotal: ${payload['subtotal']:.2f}"
         if tool_name == "cart_below_minimum":

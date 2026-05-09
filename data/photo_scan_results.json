@@ -1,0 +1,267 @@
+{
+  "scans": [
+    {
+      "scan_id": "fridge-demo-001",
+      "source_type": "fridge_photo",
+      "image_path": "data/sample_photos/fridge_demo.jpg",
+      "captured_at": "2026-05-09T10:00:00",
+      "items": [
+        {
+          "name": "eggs",
+          "category": "dairy_eggs",
+          "confidence": 0.92,
+          "quantity_hint": "about 8-12 eggs",
+          "storage": "fridge",
+          "evidence": "visible egg carton in fridge photo",
+          "matched_catalog_id": "eggs_large_dozen"
+        },
+        {
+          "name": "milk",
+          "category": "dairy",
+          "confidence": 0.86,
+          "quantity_hint": "partial half gallon",
+          "storage": "fridge",
+          "evidence": "visible milk carton in fridge door",
+          "matched_catalog_id": "milk_half_gallon"
+        },
+        {
+          "name": "plain yogurt",
+          "category": "dairy",
+          "confidence": 0.88,
+          "quantity_hint": "one tub",
+          "storage": "fridge",
+          "evidence": "visible yogurt tub on top shelf",
+          "matched_catalog_id": "plain_yogurt"
+        },
+        {
+          "name": "shredded cheese",
+          "category": "dairy",
+          "confidence": 0.84,
+          "quantity_hint": "open bag",
+          "storage": "fridge",
+          "evidence": "visible shredded cheese bag in drawer",
+          "matched_catalog_id": "shredded_cheese"
+        },
+        {
+          "name": "carrots",
+          "category": "produce",
+          "confidence": 0.68,
+          "quantity_hint": "maybe half bag",
+          "storage": "fridge",
+          "evidence": "orange produce bag partly visible",
+          "matched_catalog_id": "baby_carrots"
+        }
+      ],
+      "unknowns": [
+        {
+          "description": "foil-wrapped packet",
+          "storage": "freezer",
+          "reason": "label not visible"
+        }
+      ],
+      "notes": [
+        "Photo scan is visual evidence, not a full inventory count."
+      ]
+    },
+    {
+      "scan_id": "pantry-demo-001",
+      "source_type": "pantry_photo",
+      "image_path": "data/sample_photos/pantry_demo.jpg",
+      "captured_at": "2026-05-09T10:02:00",
+      "items": [
+        {
+          "name": "rice",
+          "category": "grain",
+          "confidence": 0.94,
+          "quantity_hint": "large bag still mostly full",
+          "storage": "pantry",
+          "evidence": "visible rice bag on lower shelf",
+          "matched_catalog_id": "white_rice_5lb"
+        },
+        {
+          "name": "pasta",
+          "category": "grain",
+          "confidence": 0.91,
+          "quantity_hint": "several boxes",
+          "storage": "pantry",
+          "evidence": "visible pasta boxes in pantry photo",
+          "matched_catalog_id": "pasta_box"
+        },
+        {
+          "name": "black beans",
+          "category": "canned_goods",
+          "confidence": 0.89,
+          "quantity_hint": "at least two cans",
+          "storage": "pantry",
+          "evidence": "visible black bean cans",
+          "matched_catalog_id": "black_beans"
+        },
+        {
+          "name": "tortillas",
+          "category": "bakery",
+          "confidence": 0.86,
+          "quantity_hint": "one package",
+          "storage": "pantry",
+          "evidence": "visible tortilla package",
+          "matched_catalog_id": "flour_tortillas"
+        }
+      ],
+      "unknowns": [
+        {
+          "description": "unlabeled jar",
+          "storage": "pantry",
+          "reason": "front label turned away"
+        }
+      ],
+      "notes": [
+        "Pantry photo confirms visible staples but does not prove exact counts."
+      ]
+    },
+    {
+      "scan_id": "haul-demo-001",
+      "source_type": "grocery_haul_photo",
+      "image_path": "data/sample_photos/grocery_haul_demo.jpg",
+      "captured_at": "2026-05-06T16:30:00",
+      "items": [
+        {
+          "name": "mini cucumbers",
+          "category": "produce",
+          "confidence": 0.78,
+          "quantity_hint": "one clamshell",
+          "storage": "fridge",
+          "shelf_life_days": 5,
+          "evidence": "seen in haul photo",
+          "matched_catalog_id": "mini_cucumbers"
+        },
+        {
+          "name": "bananas",
+          "category": "produce",
+          "confidence": 0.82,
+          "quantity_hint": "one bunch",
+          "storage": "counter",
+          "shelf_life_days": 5,
+          "evidence": "seen in grocery haul photo",
+          "matched_catalog_id": "bananas"
+        },
+        {
+          "name": "salad kit",
+          "category": "produce",
+          "confidence": 0.74,
+          "quantity_hint": "one bag",
+          "storage": "fridge",
+          "shelf_life_days": 4,
+          "evidence": "seen in grocery haul photo",
+          "matched_catalog_id": "salad_kit"
+        }
+      ],
+      "unknowns": [
+        {
+          "description": "paper bag with produce",
+          "storage": "counter",
+          "reason": "contents hidden"
+        }
+      ],
+      "notes": [
+        "Grocery haul scan is acquisition evidence; fresh items still decay quickly."
+      ]
+    },
+    {
+      "scan_id": "receipt-demo-001",
+      "source_type": "receipt_photo",
+      "image_path": "data/sample_photos/receipt_demo.jpg",
+      "captured_at": "2026-05-02T10:30:00",
+      "items": [
+        {
+          "name": "rice",
+          "category": "grain",
+          "confidence": 0.96,
+          "quantity_hint": "Costco bulk bag",
+          "storage": "pantry",
+          "shelf_life_days": 180,
+          "evidence": "parsed mock Costco receipt line",
+          "matched_catalog_id": "white_rice_5lb"
+        },
+        {
+          "name": "pasta",
+          "category": "grain",
+          "confidence": 0.95,
+          "quantity_hint": "multi-pack",
+          "storage": "pantry",
+          "shelf_life_days": 180,
+          "evidence": "parsed mock Costco receipt line",
+          "matched_catalog_id": "pasta_box"
+        },
+        {
+          "name": "frozen peas",
+          "category": "frozen",
+          "confidence": 0.93,
+          "quantity_hint": "bulk freezer bag",
+          "storage": "freezer",
+          "shelf_life_days": 90,
+          "evidence": "parsed mock Costco receipt line",
+          "matched_catalog_id": "frozen_peas"
+        },
+        {
+          "name": "frozen corn",
+          "category": "frozen",
+          "confidence": 0.93,
+          "quantity_hint": "bulk freezer bag",
+          "storage": "freezer",
+          "shelf_life_days": 90,
+          "evidence": "parsed mock Costco receipt line",
+          "matched_catalog_id": "frozen_corn"
+        },
+        {
+          "name": "chicken thighs",
+          "category": "protein",
+          "confidence": 0.92,
+          "quantity_hint": "freezer pack",
+          "storage": "freezer",
+          "shelf_life_days": 120,
+          "evidence": "parsed mock Costco receipt line",
+          "matched_catalog_id": "chicken_thighs"
+        },
+        {
+          "name": "blueberries",
+          "category": "produce",
+          "confidence": 0.91,
+          "quantity_hint": "large clamshell",
+          "storage": "fridge",
+          "shelf_life_days": 6,
+          "evidence": "parsed mock Costco receipt line",
+          "matched_catalog_id": "blueberries"
+        },
+        {
+          "name": "apples",
+          "category": "produce",
+          "confidence": 0.90,
+          "quantity_hint": "bulk bag",
+          "storage": "counter",
+          "shelf_life_days": 14,
+          "evidence": "parsed mock Costco receipt line",
+          "matched_catalog_id": "apples"
+        },
+        {
+          "name": "paper towels",
+          "category": "household",
+          "confidence": 0.94,
+          "quantity_hint": "bulk pack",
+          "storage": "pantry",
+          "shelf_life_days": 365,
+          "evidence": "parsed mock Costco receipt line",
+          "matched_catalog_id": null
+        }
+      ],
+      "unknowns": [
+        {
+          "description": "faded receipt line",
+          "storage": "unknown",
+          "reason": "OCR confidence below demo threshold"
+        }
+      ],
+      "notes": [
+        "Receipt scan is mocked OCR evidence and can be replaced by a real read-only adapter later."
+      ]
+    }
+  ]
+}

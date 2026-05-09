@@ -10,6 +10,7 @@ from busyparent_agent import tools
 from busyparent_agent import inventory as inventory_engine
 from busyparent_agent.adapters import costco_bulk
 from busyparent_agent.adapters import mock_instacart
+from busyparent_agent.adapters import mock_photo_scan
 
 
 class AgentRulesTest(unittest.TestCase):
@@ -355,6 +356,20 @@ class ConversationalFeedbackTest(unittest.TestCase):
 
 
 class InventoryConfidenceTest(unittest.TestCase):
+    def test_photo_scan_adapter_returns_deterministic_fixture(self):
+        latest = mock_photo_scan.get_latest_scan("fridge_photo")
+        scanned = mock_photo_scan.scan_photo("data/sample_photos/fridge_demo.jpg", "fridge_photo")
+
+        self.assertEqual(latest["scan_id"], "fridge-demo-001")
+        self.assertEqual(scanned["scan_id"], "fridge-demo-001")
+        self.assertTrue(any(item["name"] == "eggs" for item in scanned["items"]))
+
+    def test_photo_scan_unknown_items_are_preserved(self):
+        scan = mock_photo_scan.get_scan("fridge-demo-001")
+
+        self.assertEqual(scan["unknowns"][0]["description"], "foil-wrapped packet")
+        self.assertEqual(scan["unknowns"][0]["reason"], "label not visible")
+
     def test_recent_instacart_order_increases_confidence(self):
         inventory = inventory_engine.build_confidence_inventory(datetime(2026, 5, 9, 12, 30))
 
@@ -370,6 +385,46 @@ class InventoryConfidenceTest(unittest.TestCase):
 
         self.assertEqual(eggs["bucket"], "high_confidence")
         self.assertIn("seen in fridge snapshot", eggs["reason"])
+        self.assertIn("visible egg carton in fridge photo", eggs["reason"])
+
+    def test_photo_haul_item_affects_inventory_with_shelf_life_decay(self):
+        inventory = inventory_engine.build_confidence_inventory(datetime(2026, 5, 9, 12, 30))
+
+        cucumbers = inventory_engine.confidence_for_item(inventory, "mini cucumbers")
+
+        self.assertEqual(cucumbers["bucket"], "medium_confidence")
+        self.assertIn("seen in haul photo, fresh item, bought 3 days ago", cucumbers["reason"])
+
+    def test_photo_receipt_item_affects_inventory_with_decay(self):
+        inventory = inventory_engine.build_confidence_inventory(datetime(2026, 5, 9, 12, 30))
+
+        paper_towels = inventory_engine.confidence_for_item(inventory, "paper towels")
+
+        self.assertEqual(paper_towels["bucket"], "high_confidence")
+        self.assertIn("parsed mock Costco receipt line, shelf-stable, bought 7 days ago", paper_towels["reason"])
+
+    def test_trace_includes_photo_scan_evidence(self):
+        session = create_session(datetime(2026, 5, 9, 10, 0), trace=True)
+
+        response = session.send("It is 10am and I want to plan for dinner tonight")
+
+        self.assertTrue(any("[tool] mock_photo_scan.get_latest_scan -> fridge-demo-001" in line for line in response["trace"]))
+        self.assertTrue(
+            any("[vision] eggs -> high confidence: visible egg carton in fridge photo" in line for line in response["trace"])
+        )
+        self.assertTrue(
+            any("[vision] foil-wrapped packet -> unknown: label not visible, ask parent if needed" in line for line in response["trace"])
+        )
+        self.assertTrue(
+            any("[vision] receipt_photo -> parsed mock receipt with 8 Costco items" in line for line in response["trace"])
+        )
+
+    def test_photo_scan_requires_no_camera_or_real_vision_api(self):
+        empty = mock_photo_scan.scan_photo("data/sample_photos/missing.jpg", "garage_photo")
+
+        self.assertEqual(empty["scan_id"], "empty-garage_photo")
+        self.assertEqual(empty["items"], [])
+        self.assertEqual(empty["unknowns"][0]["reason"], "no matching mock fixture")
 
     def test_old_kid_snack_item_becomes_likely_low(self):
         inventory = inventory_engine.build_confidence_inventory(datetime(2026, 5, 9, 12, 30))
@@ -385,6 +440,8 @@ class InventoryConfidenceTest(unittest.TestCase):
         response = session.send("What should I make for dinner tonight?", scenario="lunch")
 
         self.assertIn("Reviewable cart/list: avocado, berries.", response["message"])
+        self.assertIn("Photo evidence confirms eggs, rice, tortillas, and Costco freezer staples", response["message"])
+        self.assertNotIn("foil-wrapped packet", response["message"])
         self.assertEqual(response["grocery_items"], ["avocado", "berries"])
         self.assertTrue(
             any("[tool] mock_instacart.build_reviewable_cart -> avocado, berries" in line for line in response["trace"])
@@ -566,6 +623,19 @@ class MockGroceryCatalogTest(unittest.TestCase):
         self.assertIn("Mock subtotal: $35.22", response["message"])
         self.assertIn("Mock Instacart minimum: $35.00", response["message"])
         self.assertIn("Status: meets minimum", response["message"])
+
+    def test_receipt_household_items_do_not_enter_food_cart(self):
+        inventory = inventory_engine.build_confidence_inventory(datetime(2026, 5, 9, 12, 30))
+
+        cart = mock_instacart.build_reviewable_cart(
+            ["avocado", "berries"],
+            inventory=inventory,
+            meal_options=tools.get_meal_options(),
+        )
+
+        self.assertEqual(inventory_engine.confidence_for_item(inventory, "paper towels")["bucket"], "high_confidence")
+        self.assertNotIn("paper towels", cart["items"])
+        self.assertTrue(all(line["category"] != "household" for line in cart["line_items"]))
 
 
 if __name__ == "__main__":

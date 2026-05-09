@@ -43,6 +43,7 @@ Call out:
 - `[tool] check_delivery_window`
 - `[inventory]` confidence lines show what is visible, recently ordered, or likely low
 - `[decision] pantry-first because it is close to dinner`
+- `[vision]` lines show mocked fridge, pantry, haul, and receipt scan evidence
 - `[memory]` scoring lines boost household favorites and penalize recent repeats
 - One meal first: `Egg Fried Rice`
 - `Reviewable grocery list: nothing required.`
@@ -67,7 +68,9 @@ Call out:
 
 - `[decision] grocery delivery can help because planning starts earlier`
 - `[tool] mock_instacart.get_recent_orders`
+- `[tool] mock_photo_scan.get_latest_scan`
 - `[tool] mock_instacart.build_reviewable_cart`
+- `[vision]` lines confirm visible fridge/pantry items, recent haul items, receipt parsing, and unknowns
 - `[cart]` lines show required subtotal, minimum check, smart add-ons, and final subtotal
 - `[memory]` scoring still runs before the recommendation
 - The agent does not force pantry-only
@@ -77,17 +80,26 @@ Call out:
 
 ## Inventory Confidence
 
-The demo uses three local inventory signals:
+The demo uses four local inventory signals:
 
 - Costco biweekly Saturday morning bulk restock for pantry and freezer staples
 - Instacart short-cycle grocery delivery for fresh or missing items
-- Fridge/pantry photos for current visual confirmation
+- Fridge/pantry JSON snapshots for current visible inventory
+- Mocked/preexisting photo scans for fridge, pantry, grocery haul, and receipt evidence
 
 The Inventory Confidence Engine ranks items as high-confidence, medium-confidence, low-confidence, likely low, or needing a parent check. Costco shelf-stable items decay slowly, freezer items decay moderately, and fresh produce decays quickly.
 
 Late-day planning prefers high-confidence items. Lunch planning can use the mock Instacart adapter to build a reviewable cart for fresh add-ons like avocado and berries. A real version could replace the fixtures with provider APIs and photo recognition for fridge or pantry snapshots.
 
 The Costco data is fixture-backed receipt-photo style data with a 14-day cadence. A real version could add read-only Costco account receipt sync later; this demo does not build Costco login.
+
+## Mock Photo Scans
+
+`data/photo_scan_results.json` contains deterministic scan outputs for fridge, pantry, grocery-haul, and receipt demo photos. The paths in `data/sample_photos/` are placeholders so the demo can talk about preexisting images without requiring a phone camera or real image recognition.
+
+The mock photo adapter treats scans as confidence evidence, not perfect truth. High-confidence visible items like eggs can raise inventory confidence. Maybe/uncertain items stay medium-confidence. Unknown objects such as a foil-wrapped packet are intentionally surfaced in trace output so a parent can confirm them if needed.
+
+In production, `src/busyparent_agent/adapters/mock_photo_scan.py` could be replaced with a real vision/OCR adapter. The rest of the agent would still consume the same structured scan result shape.
 
 ## Mock Grocery Catalog
 

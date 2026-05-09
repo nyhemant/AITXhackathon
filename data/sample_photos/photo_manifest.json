@@ -1,0 +1,24 @@
+{
+  "photos": [
+    {
+      "source_type": "fridge_photo",
+      "image_path": "data/sample_photos/fridge_demo.jpg",
+      "description": "Placeholder fridge shelf photo for demo scan."
+    },
+    {
+      "source_type": "pantry_photo",
+      "image_path": "data/sample_photos/pantry_demo.jpg",
+      "description": "Placeholder pantry shelf photo for demo scan."
+    },
+    {
+      "source_type": "grocery_haul_photo",
+      "image_path": "data/sample_photos/grocery_haul_demo.jpg",
+      "description": "Placeholder grocery haul photo for demo scan."
+    },
+    {
+      "source_type": "receipt_photo",
+      "image_path": "data/sample_photos/receipt_demo.jpg",
+      "description": "Placeholder receipt photo for demo OCR scan."
+    }
+  ]
+}

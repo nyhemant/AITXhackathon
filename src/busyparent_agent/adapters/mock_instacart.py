@@ -305,6 +305,7 @@ def _cart_line(
         "requested": requested,
         "name": item["name"],
         "brand": item["brand"],
+        "category": item["category"],
         "size": item["size"],
         "price": item["price"],
         "section": section,
