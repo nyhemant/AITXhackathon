@@ -4,6 +4,10 @@ Local Python agent demo for the **AITX Community x Codex Hackathon, Agents Track
 
 Busy parents do not need another recipe app. They need dinner handled. This demo proves an agent loop: understand the dinner goal, call local tools, make a time-aware decision, adapt after feedback, and revise for a guest child constraint.
 
+## Submission Materials
+
+Hackathon submission checklist, architecture, data provenance, and limitations are in [docs/submission.md](docs/submission.md).
+
 ## Why It Fits The Agents Track
 
 This is a small, deterministic agent demo rather than a web app. The visible trace shows:
