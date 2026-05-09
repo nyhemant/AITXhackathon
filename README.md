@@ -55,6 +55,14 @@ python3 -m busyparent_agent.app --demo --now "2026-05-08 13:00"
 python3 -m busyparent_agent.app --demo --now "2026-05-08 17:30"
 ```
 
+Lunchtime planning demo, with trace:
+
+```bash
+python3 -m busyparent_agent.app --demo --trace --now "2026-05-09 12:30"
+```
+
+At lunchtime, the trace should show that grocery delivery can still help. Near dinner, the trace should switch to pantry-first.
+
 ## Demo Conversation
 
 ```text
@@ -105,4 +113,4 @@ The important behavior is adaptation. The first answer is one meal. A rejection 
 
 ## Allergy Wording
 
-The demo can help avoid named ingredients such as nuts or spicy foods, but it cannot guarantee allergy safety. Allergy-sensitive families must verify packaged labels before serving.
+The demo can help avoid named ingredients such as nuts or spicy foods, but it is not an allergy safety guarantee. Allergy-sensitive families must verify packaged labels before serving.

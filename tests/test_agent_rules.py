@@ -31,6 +31,24 @@ class AgentRulesTest(unittest.TestCase):
         self.assertNotIn("1.", response)
         self.assertIsNotNone(agent.current_recommendation)
 
+    def test_lunch_branch_uses_small_reviewable_grocery_list(self):
+        agent = BusyParentAgent(now=datetime(2026, 5, 9, 12, 30))
+
+        response = agent.reply("What should I make for dinner tonight?")
+
+        self.assertIn("Because we are planning early", response)
+        self.assertIn("Reviewable grocery list: avocado, berries.", response)
+        self.assertEqual(agent.current_recommendation["missing"], ["avocado", "berries"])
+
+    def test_close_to_dinner_branch_remains_pantry_first_nothing_required(self):
+        agent = BusyParentAgent(now=datetime(2026, 5, 8, 17, 30))
+
+        response = agent.reply("What should I make for dinner tonight?")
+
+        self.assertIn("It is close to dinner", response)
+        self.assertIn("Reviewable grocery list: nothing required.", response)
+        self.assertEqual(agent.delivery_window["strategy"], "pantry_first")
+
     def test_rejection_returns_three_alternatives(self):
         agent = BusyParentAgent(now=datetime(2026, 5, 8, 17, 30))
         agent.reply("What should I make for dinner tonight?")
@@ -38,8 +56,21 @@ class AgentRulesTest(unittest.TestCase):
         response = agent.reply("Not feeling that. Anything else?")
 
         self.assertIn("Here are three better directions", response)
+        self.assertIn("I’d pick Egg Fried Rice if you want the least effort tonight.", response)
         self.assertEqual(len(agent.alternatives), 3)
         self.assertNotIn("Black Bean Quesadillas", [meal["name"] for meal in agent.alternatives])
+
+    def test_selected_egg_fried_rice_plan_is_concise_and_parent_aware(self):
+        agent = BusyParentAgent(now=datetime(2026, 5, 8, 17, 30))
+        agent.reply("What should I make for dinner tonight?")
+        agent.reply("Not feeling that. Anything else?")
+
+        response = agent.reply("Let's do egg fried rice.")
+
+        self.assertIn("5 minutes prep, 12-15 minutes cook", response)
+        self.assertIn("Kid adaptation", response)
+        self.assertIn("Adult upgrade", response)
+        self.assertIn("if eggs get rejected", response)
 
     def test_guest_constraints_revise_selected_meal(self):
         agent = BusyParentAgent(now=datetime(2026, 5, 8, 17, 30))
@@ -52,7 +83,8 @@ class AgentRulesTest(unittest.TestCase):
         self.assertIn("Avoid nut ingredients", response)
         self.assertIn("Keep spice off", response)
         self.assertIn("verify packaged labels", response)
-        self.assertIn("cannot guarantee allergy safety", response)
+        self.assertIn("not an allergy safety guarantee", response)
+        self.assertNotIn("guaranteed safe", response)
         self.assertTrue(agent.selected_meal["guest_constraints"]["no_nuts"])
         self.assertTrue(agent.selected_meal["guest_constraints"]["no_spicy"])
 

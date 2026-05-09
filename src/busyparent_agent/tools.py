@@ -75,7 +75,10 @@ def check_delivery_window(now: datetime, trace: TraceFn = None) -> dict[str, Any
             "strategy": "delivery_ok",
             "can_use_delivery": True,
             "pantry_first": False,
-            "message": "There is enough runway for a grocery run or delivery if needed.",
+            "message": (
+                "Because we are planning early, I can use a small delivery to make dinner better "
+                "instead of forcing pantry-only."
+            ),
         }
     elif minutes < 16 * 60 + 30:
         result = {
@@ -100,6 +103,11 @@ def check_delivery_window(now: datetime, trace: TraceFn = None) -> dict[str, Any
 def missing_ingredients(meal: dict[str, Any], inventory: dict[str, Any]) -> list[str]:
     available = inventory_items(inventory)
     return [item for item in meal["ingredients"] if item.lower() not in available]
+
+
+def delivery_add_ons(meal: dict[str, Any], inventory: dict[str, Any]) -> list[str]:
+    available = inventory_items(inventory)
+    return [item for item in meal.get("delivery_add_ons", []) if item.lower() not in available][:2]
 
 
 def _preference_score(meal: dict[str, Any], family: dict[str, Any]) -> int:
@@ -154,6 +162,9 @@ def _score_meal(
             score += 8
     else:
         score -= 7 * len(missing)
+        add_ons = delivery_add_ons(meal, inventory)
+        if not missing and 1 <= len(add_ons) <= 2:
+            score += 24
 
     # In the default near-dinner demo, this is the best "dinner handled" answer.
     if meal["name"] == "Black Bean Quesadillas" and delivery_window["strategy"] == "pantry_first":
@@ -180,6 +191,11 @@ def recommend_meal(
     )
     recommendation = deepcopy(ranked[0])
     recommendation["missing"] = missing_ingredients(recommendation, inventory)
+    if delivery_window["strategy"] == "delivery_ok":
+        add_ons = delivery_add_ons(recommendation, inventory)
+        if add_ons:
+            recommendation["missing"] = add_ons
+            recommendation["delivery_help"] = True
     _trace(
         trace,
         "recommend_meal",
@@ -243,7 +259,7 @@ def apply_guest_constraints(
     revised["constraint_changes"] = changes
     revised["allergy_note"] = (
         "For allergy-sensitive guests, avoid the named ingredients and verify packaged labels. "
-        "This demo cannot guarantee allergy safety."
+        "This demo is not an allergy safety guarantee."
     )
 
     _trace(trace, "apply_guest_constraints", {"meal": revised["name"], **constraints})
@@ -255,7 +271,7 @@ def update_grocery_list(
     inventory: dict[str, Any],
     trace: TraceFn = None,
 ) -> dict[str, Any]:
-    missing = missing_ingredients(selected_meal, inventory)
+    missing = selected_meal.get("missing", missing_ingredients(selected_meal, inventory))
     grocery_list = {
         "meal": selected_meal["name"],
         "reviewable_items": missing,

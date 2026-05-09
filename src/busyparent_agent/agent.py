@@ -24,7 +24,11 @@ class BusyParentAgent:
 
     def _trace(self, tool_name: str, payload: dict[str, Any]) -> None:
         if self.trace_enabled:
-            print(f"[trace] {tool_name}: {payload}")
+            print(f"[tool] {tool_name} -> {self._format_tool_trace(tool_name, payload)}")
+
+    def _decision(self, message: str) -> None:
+        if self.trace_enabled:
+            print(f"[decision] {message}")
 
     def reply(self, parent_message: str) -> str:
         message = parent_message.lower()
@@ -41,6 +45,11 @@ class BusyParentAgent:
         return self._handle_first_recommendation()
 
     def _handle_first_recommendation(self) -> str:
+        if self.delivery_window["pantry_first"]:
+            self._decision("pantry-first because it is close to dinner")
+        else:
+            self._decision("grocery delivery can help because planning starts earlier")
+
         meal = tools.recommend_meal(
             self.family,
             self.inventory,
@@ -52,6 +61,7 @@ class BusyParentAgent:
         self.current_recommendation = meal
         self.selected_meal = None
         grocery_list = tools.update_grocery_list(meal, self.inventory, self._trace)
+        self._decision(f"lead with one dinner: {meal['name']}")
 
         return "\n".join(
             [
@@ -68,6 +78,8 @@ class BusyParentAgent:
         if not self.current_recommendation:
             return self._handle_first_recommendation()
 
+        self._decision("parent rejected the first plan, so offer three alternatives")
+
         self.alternatives = tools.adapt_for_rejection(
             self.current_recommendation,
             self.family,
@@ -82,6 +94,7 @@ class BusyParentAgent:
         for index, meal in enumerate(self.alternatives, start=1):
             missing = "nothing important" if not meal["missing"] else ", ".join(meal["missing"])
             lines.append(f"{index}. {meal['name']} - {meal['minutes']} min. Missing: {missing}.")
+        lines.append(self._alternative_pick_line())
         lines.append("Pick one and I will tighten the plan.")
         return "\n".join(lines)
 
@@ -94,6 +107,20 @@ class BusyParentAgent:
         meal["missing"] = tools.missing_ingredients(meal, self.inventory)
         self.selected_meal = meal
         grocery_list = tools.update_grocery_list(meal, self.inventory, self._trace)
+        self._decision(f"tighten selected plan for {meal['name']}")
+
+        if meal["name"] == "Egg Fried Rice":
+            return "\n".join(
+                [
+                    "Good. Let’s do Egg Fried Rice.",
+                    "Timing: 5 minutes prep, 12-15 minutes cook.",
+                    f"Use what you have: {self._already_have_line(meal)}.",
+                    "Kid adaptation: keep vegetables small and let soy sauce stay light.",
+                    "Adult upgrade: add chili crisp or scallions after serving children.",
+                    "Backup: if eggs get rejected, serve the rice with cheese quesadilla triangles.",
+                    self._grocery_line(grocery_list),
+                ]
+            )
 
         return "\n".join(
             [
@@ -114,6 +141,7 @@ class BusyParentAgent:
         revised = tools.apply_guest_constraints(meal, constraints, self.inventory, self._trace)
         self.selected_meal = revised
         grocery_list = tools.update_grocery_list(revised, self.inventory, self._trace)
+        self._decision("revise selected dinner for guest child constraints")
 
         lines = [
             f"Keep {revised['name']}, but make it guest-safe in practice:",
@@ -168,3 +196,39 @@ class BusyParentAgent:
         if not items:
             return "Reviewable grocery list: nothing required."
         return f"Reviewable grocery list: {', '.join(items)}."
+
+    def _alternative_pick_line(self) -> str:
+        egg_option = next((meal for meal in self.alternatives if meal["name"] == "Egg Fried Rice"), None)
+        pick = egg_option or self.alternatives[0]
+        return f"I’d pick {pick['name']} if you want the least effort tonight."
+
+    @staticmethod
+    def _format_tool_trace(tool_name: str, payload: dict[str, Any]) -> str:
+        if tool_name == "get_family_profile":
+            return f"{payload['children']} children, mild spice, peanut-aware"
+        if tool_name == "estimate_inventory":
+            return f"{payload['items_seen']} likely items"
+        if tool_name == "get_grocery_history":
+            return f"{payload['recent_buys']} recent grocery signals"
+        if tool_name == "get_meal_options":
+            return f"{payload['meal_options']} candidate dinners"
+        if tool_name == "check_delivery_window":
+            return payload["message"]
+        if tool_name == "recommend_meal":
+            strategy = payload["delivery_strategy"].replace("_", "-")
+            return f"{payload['chosen']}, one meal returned, {strategy}"
+        if tool_name == "adapt_for_rejection":
+            return f"rejected {payload['rejected']}, returned {payload['alternatives']} alternatives"
+        if tool_name == "apply_guest_constraints":
+            constraints = []
+            if payload.get("no_nuts"):
+                constraints.append("no nuts")
+            if payload.get("no_spicy"):
+                constraints.append("no spicy food")
+            return f"{payload['meal']} revised for {', '.join(constraints)}"
+        if tool_name == "update_grocery_list":
+            items = payload["reviewable_items"]
+            if not items:
+                return f"{payload['meal']}, no missing items"
+            return f"{payload['meal']}, review {', '.join(items)}"
+        return str(payload)

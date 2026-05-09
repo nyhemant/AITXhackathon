@@ -8,11 +8,9 @@ from datetime import datetime
 from busyparent_agent.agent import BusyParentAgent
 
 
-DEMO_MESSAGES = [
+FIRST_DEMO_MESSAGES = [
     "What should I make for dinner tonight?",
     "Not feeling that. Anything else?",
-    "Let's do egg fried rice.",
-    "My daughter has a friend coming over. No nuts, no spicy food.",
 ]
 
 
@@ -35,11 +33,25 @@ def parse_now(value: str | None, demo: bool) -> datetime:
 
 
 def run_demo(agent: BusyParentAgent) -> None:
-    print("BusyParent Kitchen Agent / HomePlate AI")
-    print("Local Python agent demo\n")
-    for message in DEMO_MESSAGES:
+    for message in FIRST_DEMO_MESSAGES:
         print(f"Parent: {message}")
         print(f"Agent: {agent.reply(message)}\n")
+
+    selected = choose_demo_alternative(agent)
+    selection_message = f"Let's do {selected}."
+    print(f"Parent: {selection_message}")
+    print(f"Agent: {agent.reply(selection_message)}\n")
+
+    guest_message = "My daughter has a friend coming over. No nuts, no spicy food."
+    print(f"Parent: {guest_message}")
+    print(f"Agent: {agent.reply(guest_message)}\n")
+
+
+def choose_demo_alternative(agent: BusyParentAgent) -> str:
+    alternatives = [meal["name"] for meal in agent.alternatives]
+    if "Egg Fried Rice" in alternatives:
+        return "Egg Fried Rice"
+    return alternatives[0]
 
 
 def run_chat(agent: BusyParentAgent) -> None:
@@ -59,6 +71,9 @@ def run_chat(agent: BusyParentAgent) -> None:
 def main() -> None:
     args = parse_args()
     now = parse_now(args.now, args.demo)
+    if args.demo:
+        print("BusyParent Kitchen Agent / HomePlate AI")
+        print("Local Python agent demo\n")
     agent = BusyParentAgent(now=now, trace=args.trace)
     if args.demo:
         run_demo(agent)
