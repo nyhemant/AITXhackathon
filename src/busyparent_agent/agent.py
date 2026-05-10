@@ -74,7 +74,10 @@ class BusyParentAgent:
         if dinner_intent and dinner_intent.get("labels"):
             self._trace("dinner_intent", dinner_intent)
 
-        if self.delivery_window["pantry_first"]:
+        delivery_window = self._effective_delivery_window(dinner_intent)
+        self.delivery_window = delivery_window
+
+        if delivery_window["pantry_first"]:
             self._decision("pantry-first because it is close to dinner")
         else:
             self._decision("grocery delivery can help because planning starts earlier")
@@ -85,7 +88,7 @@ class BusyParentAgent:
             self.inventory,
             self.grocery_history,
             self.meal_options,
-            self.delivery_window,
+            delivery_window,
             self.meal_history,
             self.now,
             dinner_intent=dinner_intent,
@@ -101,12 +104,31 @@ class BusyParentAgent:
                 f"Make {meal['name']} tonight.",
                 f"Why: {meal['why']}",
                 f"Time: about {meal['minutes']} minutes, {meal['effort']} effort.",
-                f"Plan: {self.delivery_window['message']}",
+                f"Plan: {delivery_window['message']}",
                 self._inventory_confidence_line(),
                 self._grocery_line(grocery_list),
                 "I am leading with one option so dinner moves forward.",
             ]
         )
+
+    def _effective_delivery_window(self, dinner_intent: dict[str, Any] | None) -> dict[str, Any]:
+        if not dinner_intent:
+            return self.delivery_window
+        if dinner_intent.get("very_fast") and not dinner_intent.get("delivery_ok"):
+            window = dict(self.delivery_window)
+            window.update(
+                {
+                    "strategy": "pantry_first",
+                    "can_use_delivery": False,
+                    "pantry_first": True,
+                    "message": (
+                        "You need dinner in about 20 minutes, so I am skipping grocery shopping "
+                        "and using what is likely already at home."
+                    ),
+                }
+            )
+            return window
+        return self.delivery_window
 
     def _handle_rejection(self) -> str:
         if not self.current_recommendation:

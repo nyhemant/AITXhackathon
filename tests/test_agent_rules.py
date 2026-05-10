@@ -260,6 +260,17 @@ class ServiceAdapterTest(unittest.TestCase):
         self.assertIn("Reviewable grocery list: nothing required.", response["message"])
         self.assertTrue(any("[decision] pantry-first because it is close to dinner" in line for line in response["trace"]))
 
+    def test_urgent_twenty_minute_prompt_skips_grocery_shopping(self):
+        session = create_session(datetime(2026, 5, 9, 12, 30), trace=True)
+
+        response = session.send("I need dinner in 20 minutes.")
+
+        self.assertEqual(response["metadata"]["delivery_strategy"], "pantry_first")
+        self.assertIn("skipping grocery shopping", response["message"])
+        self.assertIn("Reviewable grocery list: nothing required.", response["message"])
+        self.assertNotIn("Reviewable grocery cart:", response["message"])
+        self.assertNotIn("grocery delivery can help because planning starts earlier", "\n".join(response["trace"]))
+
     def test_story_picker_prompts_shift_recommendation_by_intent(self):
         cases = {
             "Pick a calm bedtime book for Kunal.": "Goodnight, Goodnight, Construction Site",
