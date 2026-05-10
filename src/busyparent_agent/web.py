@@ -183,21 +183,6 @@ HTML = """<!doctype html>
             </div>
             <p id="roomDescription">Start with one fridge/pantry based dinner recommendation combined with household memory of items of Instacart/Costco receipts and if needed and time permits, order intelligently on instacart.</p>
           </section>
-          <div class="room-actions dinner-panel" data-panel="dinner">
-            <span class="action-label">Hackathon Demo Scenarios</span>
-            <div class="toolbar">
-              <button class="scenario-chip" data-scenario="dinner" aria-pressed="false">Dinner now</button>
-              <button class="scenario-chip" data-scenario="lunch" aria-pressed="false">Plan at lunch</button>
-              <button class="scenario-chip" data-scenario="guest" aria-pressed="false">Guest child</button>
-            </div>
-          </div>
-          <div class="room-actions book-panel hidden" data-panel="book">
-            <span class="action-label">Hackathon Demo Scenarios</span>
-            <div class="toolbar">
-              <button class="scenario-chip" data-scenario="book" aria-pressed="false">Pick tonight's book</button>
-              <button class="scenario-chip" data-scenario="book_siblings" aria-pressed="false">Read with both kids</button>
-            </div>
-          </div>
           <div id="chat" class="chat" aria-live="polite"></div>
           <form id="form">
             <div class="prompt-control" id="promptControl">
@@ -247,6 +232,21 @@ HTML = """<!doctype html>
         </div>
       </section>
       <label class="trace-footer"><input id="traceToggle" type="checkbox" /> Show trace</label>
+      <div class="room-actions dinner-panel" data-panel="dinner">
+        <span class="action-label">Hackathon Demo Scenarios</span>
+        <div class="toolbar">
+          <button class="scenario-chip" data-scenario="dinner" aria-pressed="false">Dinner now</button>
+          <button class="scenario-chip" data-scenario="lunch" aria-pressed="false">Plan at lunch</button>
+          <button class="scenario-chip" data-scenario="guest" aria-pressed="false">Guest child</button>
+        </div>
+      </div>
+      <div class="room-actions book-panel hidden" data-panel="book">
+        <span class="action-label">Hackathon Demo Scenarios</span>
+        <div class="toolbar">
+          <button class="scenario-chip" data-scenario="book" aria-pressed="false">Pick tonight's book</button>
+          <button class="scenario-chip" data-scenario="book_siblings" aria-pressed="false">Read with both kids</button>
+        </div>
+      </div>
     </main>
     <script>
       let sessionId = null;
