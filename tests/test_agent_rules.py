@@ -341,7 +341,7 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertNotIn("<h1>BusyParent Agent</h1>", HTML)
         self.assertIn('class="brand-lockup"', HTML)
         self.assertIn('class="brand-logo"', HTML)
-        self.assertIn('src="/BusyParentLogoResize.png"', HTML)
+        self.assertIn('src="/BPLogo.png"', HTML)
         self.assertIn('<p class="tagline">Fewer evening decisions.</p>', HTML)
         self.assertNotIn("One good default at a time.", HTML)
         self.assertNotIn("Evening decision support", HTML)

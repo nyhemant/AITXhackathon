@@ -13,7 +13,7 @@ from busyparent_agent.service import APP_TITLE, create_session, parse_now, run_b
 
 SESSIONS = {}
 BOOK_SESSIONS = {}
-LOGO_FILENAME = "BusyParentLogoResize.png"
+LOGO_FILENAME = "BPLogo.png"
 LOGO_PATH = Path(__file__).resolve().parents[2] / LOGO_FILENAME
 
 
@@ -70,8 +70,8 @@ HTML = """<!doctype html>
       main { width: min(1080px, 100%); margin: 0 auto; }
       .hero { display: grid; gap: 22px; align-items: end; margin-bottom: 22px; }
       .brand-lockup { display: flex; gap: 18px; align-items: center; }
-      .brand-logo { width: 112px; height: 112px; flex: 0 0 auto; object-fit: contain; filter: drop-shadow(0 14px 28px rgba(39,33,29,.11)); }
-      .brand-copy { min-width: 0; }
+      .brand-logo { width: 168px; height: 168px; flex: 0 0 auto; object-fit: contain; filter: drop-shadow(0 14px 28px rgba(39,33,29,.11)); }
+      .brand-copy { min-width: 0; align-self: center; }
       .tagline { margin: 0 0 10px; color: #2f2924; font-size: clamp(1.5rem, 3.2vw, 2.25rem); font-weight: 620; line-height: 1.02; }
       .subhead { margin: 0; max-width: 710px; color: #665b52; line-height: 1.55; font-size: 1.03rem; }
       .shell { overflow: hidden; border: 1px solid rgba(255,255,255,.66); border-radius: 8px; background: rgba(255,255,255,.78); box-shadow: 0 30px 90px var(--shadow); backdrop-filter: blur(18px); }
@@ -136,7 +136,7 @@ HTML = """<!doctype html>
       @media (max-width: 640px) {
         body { padding: 16px; }
         .brand-lockup { gap: 12px; align-items: center; }
-        .brand-logo { width: 82px; height: 82px; }
+        .brand-logo { width: 124px; height: 124px; }
         .mode-tabs { display: grid; grid-template-columns: 1fr 1fr; padding: 12px 12px 0; }
         .mode-tab { min-width: 0; padding: 14px 12px 15px; font-size: 1rem; }
         .room-heading-row { display: grid; gap: 10px; }
@@ -154,7 +154,7 @@ HTML = """<!doctype html>
     <main>
       <header class="hero">
         <div class="brand-lockup">
-          <img class="brand-logo" src="/BusyParentLogoResize.png" alt="BusyParent Agent logo" width="1190" height="1062" />
+          <img class="brand-logo" src="/BPLogo.png" alt="BusyParent Agent logo" width="1024" height="1024" />
           <div class="brand-copy">
           <p class="tagline">Fewer evening decisions.</p>
           <p class="subhead">Move from dinner to bedtime with two focused helpers: Dinner Planner for meals and grocery gaps, Story Picker for one kid-right book from a mocked Epic-style catalog.</p>
