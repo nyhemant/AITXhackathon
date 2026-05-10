@@ -23,6 +23,13 @@ HTML = """<!doctype html>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>BusyMom Agent</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6ZSEMN130R"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-6ZSEMN130R');
+    </script>
     <style>
       :root {
         color: #27211d;
@@ -424,6 +431,12 @@ HTML = """<!doctype html>
         return scenario.startsWith("book") ? "book" : "dinner";
       }
 
+      function trackEvent(name, params) {
+        if (typeof gtag === "function") {
+          gtag("event", name, params || {});
+        }
+      }
+
       function escapeHtml(text) {
         return text
           .replaceAll("&", "&amp;")
@@ -529,6 +542,7 @@ HTML = """<!doctype html>
 
       document.querySelectorAll("[data-scenario]").forEach((button) => {
         button.addEventListener("click", async () => {
+          trackEvent("scenario_click", { scenario: button.dataset.scenario });
           if (selectedScenario === button.dataset.scenario) {
             clearScenarioState();
             return;
@@ -566,6 +580,7 @@ HTML = """<!doctype html>
 
       document.querySelectorAll("[data-tab]").forEach((button) => {
         button.addEventListener("click", () => {
+          trackEvent(button.dataset.tab === "book" ? "mode_story" : "mode_dinner");
           clearScenarioState();
           setRoom(button.dataset.tab);
         });
