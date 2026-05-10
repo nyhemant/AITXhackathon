@@ -201,4 +201,4 @@ Agent: ...verify packaged labels. This demo is not an allergy safety guarantee.
 
 ## One-Sentence Pitch
 
-BusyParent Agent reduces evening decision load. Dinner Planner decides what dinner should be, explains the time-aware tradeoff, and adapts when a real parent changes the constraints; Story Picker chooses one kid-right bedtime book from a mocked Epic-style catalog.
+BusyMom Agent reduces evening decision load. Dinner Planner decides what dinner should be, explains the time-aware tradeoff, and adapts when a real parent changes the constraints; Story Picker chooses one kid-right bedtime book from a mocked Epic-style catalog.

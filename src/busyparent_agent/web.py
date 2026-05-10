@@ -1,11 +1,10 @@
-"""Tiny local web chat adapter for BusyParent Agent."""
+"""Tiny local web chat adapter for BusyMom Agent."""
 
 from __future__ import annotations
 
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import argparse
 import json
-from pathlib import Path
 from uuid import uuid4
 
 from busyparent_agent.service import APP_TITLE, create_session, parse_now, run_book_scenario, run_scenario
@@ -13,8 +12,6 @@ from busyparent_agent.service import APP_TITLE, create_session, parse_now, run_b
 
 SESSIONS = {}
 BOOK_SESSIONS = {}
-LOGO_FILENAME = "BPLogo.png"
-LOGO_PATH = Path(__file__).resolve().parents[2] / LOGO_FILENAME
 
 
 HTML = """<!doctype html>
@@ -22,7 +19,7 @@ HTML = """<!doctype html>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>BusyParent Agent</title>
+    <title>BusyMom Agent</title>
     <style>
       :root {
         color: #27211d;
@@ -70,7 +67,7 @@ HTML = """<!doctype html>
       main { width: min(1080px, 100%); margin: 0 auto; }
       .hero { display: grid; gap: 22px; align-items: end; margin-bottom: 22px; }
       .brand-lockup { display: flex; gap: 18px; align-items: center; }
-      .brand-logo { width: 168px; height: 168px; flex: 0 0 auto; object-fit: contain; filter: drop-shadow(0 14px 28px rgba(39,33,29,.11)); }
+      .brand-logo { display: grid; place-items: center; width: 168px; height: 168px; flex: 0 0 auto; border: 1px solid rgba(194,65,12,.22); border-radius: 8px; background: linear-gradient(135deg, #fff7ed, #eef2ff); color: #0f3f72; font-size: 3.2rem; font-weight: 950; letter-spacing: 0; box-shadow: 0 18px 40px rgba(39,33,29,.12); }
       .brand-copy { min-width: 0; align-self: center; }
       .tagline { margin: 0 0 10px; color: #2f2924; font-size: clamp(1.5rem, 3.2vw, 2.25rem); font-weight: 620; line-height: 1.02; }
       .subhead { margin: 0; max-width: 710px; color: #665b52; line-height: 1.55; font-size: 1.03rem; }
@@ -136,7 +133,7 @@ HTML = """<!doctype html>
       @media (max-width: 640px) {
         body { padding: 16px; }
         .brand-lockup { gap: 12px; align-items: center; }
-        .brand-logo { width: 124px; height: 124px; }
+        .brand-logo { width: 124px; height: 124px; font-size: 2.35rem; }
         .mode-tabs { display: grid; grid-template-columns: 1fr 1fr; padding: 12px 12px 0; }
         .mode-tab { min-width: 0; padding: 14px 12px 15px; font-size: 1rem; }
         .room-heading-row { display: grid; gap: 10px; }
@@ -154,7 +151,7 @@ HTML = """<!doctype html>
     <main>
       <header class="hero">
         <div class="brand-lockup">
-          <img class="brand-logo" src="/BPLogo.png" alt="BusyParent Agent logo" width="1024" height="1024" />
+          <div class="brand-logo" aria-label="BusyMom Agent logo">BM</div>
           <div class="brand-copy">
           <p class="tagline">Fewer evening decisions.</p>
           <p class="subhead">Move from dinner to bedtime with two focused helpers: Dinner Planner for meals and grocery gaps, Story Picker for one kid-right book from a mocked Epic-style catalog.</p>
@@ -162,7 +159,7 @@ HTML = """<!doctype html>
         </div>
       </header>
       <section class="shell">
-        <div class="mode-tabs" role="tablist" aria-label="BusyParent modes">
+        <div class="mode-tabs" role="tablist" aria-label="BusyMom modes">
           <button class="mode-tab active" id="dinner-tab" data-tab="dinner" role="tab" type="button" aria-selected="true" aria-controls="active-panel">
             Dinner Planner
           </button>
@@ -237,7 +234,7 @@ HTML = """<!doctype html>
         <div class="toolbar">
           <button class="scenario-chip" data-scenario="dinner" aria-pressed="false">Dinner now</button>
           <button class="scenario-chip" data-scenario="lunch" aria-pressed="false">Plan at lunch</button>
-          <button class="scenario-chip" data-scenario="guest" aria-pressed="false">Guest child</button>
+          <button class="scenario-chip" data-scenario="guest" aria-pressed="false">Playdate</button>
         </div>
       </div>
       <div class="room-actions book-panel hidden" data-panel="book">
@@ -582,13 +579,8 @@ HTML = """<!doctype html>
 
 class WebHandler(BaseHTTPRequestHandler):
     def do_GET(self) -> None:
-        if self.path == f"/{LOGO_FILENAME}":
-            if not LOGO_PATH.exists():
-                self.send_error(404)
-                return
-            self._send_binary(LOGO_PATH.read_bytes(), "image/png")
-            return
-        if self.path not in {"/", "/index.html"}:
+        path = self.path.split("?", 1)[0]
+        if path not in {"/", "/index.html"}:
             self.send_error(404)
             return
         self._send_text(HTML, "text/html; charset=utf-8")
