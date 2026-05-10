@@ -1,8 +1,8 @@
-# BusyParent Agent
+# BusyMom Agent
 
 Local Python agent demo for the **AITX Community x Codex Hackathon, Agents Track**.
 
-BusyParent Agent reduces evening decision load with one practical default at a time. v1 proves Dinner Planner: understand the dinner goal, call local tools, make a time-aware decision, adapt after feedback, and revise for a guest child constraint. v2 adds Story Picker: one kid-right bedtime book from a mocked Epic-style catalog.
+BusyMom Agent reduces evening decision load with one practical default at a time. v1 proves Dinner Planner: understand the dinner goal, call local tools, make a time-aware decision, adapt after feedback, and revise for a guest child constraint. v2 adds Story Picker: one kid-right bedtime book from a mocked Epic-style catalog.
 
 ## Submission Materials
 

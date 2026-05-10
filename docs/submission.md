@@ -51,7 +51,7 @@ Parent via Web UI or CLI
 AgentSession service
         |
         v
-BusyParent Agent
+BusyMom Agent
         |
         v
 tools/adapters
@@ -123,6 +123,6 @@ All family, inventory, grocery, photo, receipt, catalog, and meal-memory data is
 
 ## Short Write-Up
 
-Busy parents do not need another recipe app; they need dinner handled. HomePlate AI / BusyParent Kitchen Agent helps families answer the daily "what should we make tonight?" question by combining time of day, family preferences, meal memory, likely home inventory, mocked photo/receipt evidence, Costco bulk shopping patterns, and a mocked Instacart catalog/cart. Instead of generating a recipe list, the agent leads with one practical dinner recommendation, explains the tradeoff, adapts to feedback or guest-child constraints, and builds a reviewable grocery cart only when delivery makes sense.
+Busy moms do not need another recipe app; they need dinner handled. HomePlate AI / BusyMom Kitchen Agent helps families answer the daily "what should we make tonight?" question by combining time of day, family preferences, meal memory, likely home inventory, mocked photo/receipt evidence, Costco bulk shopping patterns, and a mocked Instacart catalog/cart. Instead of generating a recipe list, the agent leads with one practical dinner recommendation, explains the tradeoff, adapts to feedback or guest-child constraints, and builds a reviewable grocery cart only when delivery makes sense.
 
-The demo uses deterministic local fixtures for photo scans, Costco receipts, Instacart history, grocery catalog pricing, and household memory so judges can reproduce the full flow without accounts, API keys, or checkout risk. The impact is reduced decision fatigue for busy parents: fewer last-minute grocery runs, less overbuying, more realistic kid-friendly dinners, and safer handling of constraints like no nuts or no spicy food.
+The demo uses deterministic local fixtures for photo scans, Costco receipts, Instacart history, grocery catalog pricing, and household memory so judges can reproduce the full flow without accounts, API keys, or checkout risk. The impact is reduced decision fatigue for busy moms: fewer last-minute grocery runs, less overbuying, more realistic kid-friendly dinners, and safer handling of constraints like no nuts or no spicy food.

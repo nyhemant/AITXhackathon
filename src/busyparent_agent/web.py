@@ -1,4 +1,4 @@
-"""Tiny local web chat adapter for BusyParent Agent."""
+"""Tiny local web chat adapter for BusyMom Agent."""
 
 from __future__ import annotations
 
@@ -13,7 +13,7 @@ from busyparent_agent.service import APP_TITLE, create_session, parse_now, run_b
 
 SESSIONS = {}
 BOOK_SESSIONS = {}
-LOGO_FILENAME = "BPLogo.png"
+LOGO_FILENAME = "BMLogo.svg"
 LOGO_PATH = Path(__file__).resolve().parents[2] / LOGO_FILENAME
 
 
@@ -22,7 +22,7 @@ HTML = """<!doctype html>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>BusyParent Agent</title>
+    <title>BusyMom Agent</title>
     <style>
       :root {
         color: #27211d;
@@ -154,7 +154,7 @@ HTML = """<!doctype html>
     <main>
       <header class="hero">
         <div class="brand-lockup">
-          <img class="brand-logo" src="/BPLogo.png" alt="BusyParent Agent logo" width="1024" height="1024" />
+          <img class="brand-logo" src="/BMLogo.svg" alt="BusyMom Agent logo" width="1024" height="1024" />
           <div class="brand-copy">
           <p class="tagline">Fewer evening decisions.</p>
           <p class="subhead">Move from dinner to bedtime with two focused helpers: Dinner Planner for meals and grocery gaps, Story Picker for one kid-right book from a mocked Epic-style catalog.</p>
@@ -162,7 +162,7 @@ HTML = """<!doctype html>
         </div>
       </header>
       <section class="shell">
-        <div class="mode-tabs" role="tablist" aria-label="BusyParent modes">
+        <div class="mode-tabs" role="tablist" aria-label="BusyMom modes">
           <button class="mode-tab active" id="dinner-tab" data-tab="dinner" role="tab" type="button" aria-selected="true" aria-controls="active-panel">
             Dinner Planner
           </button>
@@ -586,7 +586,8 @@ class WebHandler(BaseHTTPRequestHandler):
             if not LOGO_PATH.exists():
                 self.send_error(404)
                 return
-            self._send_binary(LOGO_PATH.read_bytes(), "image/png")
+            content_type = "image/svg+xml" if LOGO_PATH.suffix == ".svg" else "image/png"
+            self._send_binary(LOGO_PATH.read_bytes(), content_type)
             return
         if self.path not in {"/", "/index.html"}:
             self.send_error(404)

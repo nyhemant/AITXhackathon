@@ -4,7 +4,7 @@ Working name: Story Picker.
 
 ## 1. Product Framing
 
-BusyParent Agent reduces parent evening decision load after work.
+BusyMom Agent reduces parent evening decision load after work.
 
 v1: Dinner Planner handles what to make for dinner, pantry fit, and grocery gaps.
 
@@ -314,7 +314,7 @@ Preserve v1 behavior:
 
 Show continuity from dinner to reading:
 
-1. Parent opens BusyParent after work.
+1. Parent opens BusyMom after work.
 2. Dinner Planner room answers: "Make Egg Fried Rice tonight" or "Make Black Bean Quesadillas tonight" with the existing inventory/cart reasoning.
 3. After dinner, parent switches to `Story Picker`.
 4. Parent chooses child and mood:
@@ -327,7 +327,7 @@ Show continuity from dinner to reading:
 Narrative:
 
 ```text
-BusyParent is not just a recipe app. It removes evening decision load.
+BusyMom Agent is not just a recipe app. It removes evening decision load.
 First it handles dinner from what is likely at home. Then it handles the next parent decision: what to read tonight.
 Both flows use the same principle: one practical recommendation, grounded in household context, with a reviewable explanation.
 ```
@@ -355,4 +355,4 @@ Both flows use the same principle: one practical recommendation, grounded in hou
 
 ## Bottom Line
 
-Build Story Picker as BusyParent Agent v2 if time allows. The concept strengthens the broader pitch: BusyParent Agent lifts evening decision load, starting with dinner and naturally continuing into bedtime reading. The safest version uses a mocked Epic-style catalog as the single availability source, recommends exactly one book, and keeps all v1 dinner/cart/photo/Instacart behavior intact.
+Build Story Picker as BusyMom Agent v2 if time allows. The concept strengthens the broader pitch: BusyMom Agent lifts evening decision load, starting with dinner and naturally continuing into bedtime reading. The safest version uses a mocked Epic-style catalog as the single availability source, recommends exactly one book, and keeps all v1 dinner/cart/photo/Instacart behavior intact.

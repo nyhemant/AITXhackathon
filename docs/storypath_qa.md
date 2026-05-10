@@ -2,7 +2,7 @@
 
 ## Golden Demo Flow
 
-Theme: BusyParent Agent reduces evening decision load.
+Theme: BusyMom Agent reduces evening decision load.
 
 1. Dinner handled:
    - Open the v2 local web app.
