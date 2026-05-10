@@ -5,6 +5,7 @@ from __future__ import annotations
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import argparse
 import json
+from pathlib import Path
 from uuid import uuid4
 
 from busyparent_agent.service import APP_TITLE, create_session, parse_now, run_book_scenario, run_scenario
@@ -12,6 +13,8 @@ from busyparent_agent.service import APP_TITLE, create_session, parse_now, run_b
 
 SESSIONS = {}
 BOOK_SESSIONS = {}
+LOGO_FILENAME = "BMLogo.svg"
+LOGO_PATH = Path(__file__).resolve().parents[2] / LOGO_FILENAME
 
 
 HTML = """<!doctype html>
@@ -151,7 +154,7 @@ HTML = """<!doctype html>
     <main>
       <header class="hero">
         <div class="brand-lockup">
-          <div class="brand-logo" aria-label="BusyMom Agent logo">BM</div>
+          <img class="brand-logo" src="/BMLogo.svg" alt="BusyMom Agent logo" width="1024" height="1024" />
           <div class="brand-copy">
           <p class="tagline">Fewer evening decisions.</p>
           <p class="subhead">Move from dinner to bedtime with two focused helpers: Dinner Planner for meals and grocery gaps, Story Picker for one kid-right book from a mocked Epic-style catalog.</p>
@@ -579,8 +582,14 @@ HTML = """<!doctype html>
 
 class WebHandler(BaseHTTPRequestHandler):
     def do_GET(self) -> None:
-        path = self.path.split("?", 1)[0]
-        if path not in {"/", "/index.html"}:
+        if self.path == f"/{LOGO_FILENAME}":
+            if not LOGO_PATH.exists():
+                self.send_error(404)
+                return
+            content_type = "image/svg+xml" if LOGO_PATH.suffix == ".svg" else "image/png"
+            self._send_binary(LOGO_PATH.read_bytes(), content_type)
+            return
+        if self.path not in {"/", "/index.html"}:
             self.send_error(404)
             return
         self._send_text(HTML, "text/html; charset=utf-8")

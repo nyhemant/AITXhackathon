@@ -33,7 +33,7 @@ I am leading with one option so dinner moves forward.
 
 Assessment:
 
-- Concise enough for a busy parent.
+- Concise enough for a busy mom.
 - Leads with one smart default.
 - Pantry-first is clear and matched by behavior: no cart is created and no grocery run is required.
 - Photo evidence helps without dumping scanned items into user copy.

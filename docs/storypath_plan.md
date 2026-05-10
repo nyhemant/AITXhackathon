@@ -327,7 +327,7 @@ Show continuity from dinner to reading:
 Narrative:
 
 ```text
-BusyMom is not just a recipe app. It removes evening decision load.
+BusyMom Agent is not just a recipe app. It removes evening decision load.
 First it handles dinner from what is likely at home. Then it handles the next parent decision: what to read tonight.
 Both flows use the same principle: one practical recommendation, grounded in household context, with a reviewable explanation.
 ```

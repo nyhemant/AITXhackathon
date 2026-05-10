@@ -1,7 +1,7 @@
 [project]
 name = "busyparent-agent"
 version = "0.1.0"
-description = "Local Python agent demo for BusyParent Kitchen Agent / HomePlate AI."
+description = "Local Python agent demo for BusyMom Kitchen Agent / HomePlate AI."
 requires-python = ">=3.10"
 
 [tool.setuptools.packages.find]
