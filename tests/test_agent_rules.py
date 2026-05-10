@@ -5,7 +5,7 @@ import sys
 import unittest
 
 from busyparent_agent.agent import BusyParentAgent
-from busyparent_agent.service import create_session, parse_now
+from busyparent_agent.service import create_session, parse_now, run_book_scenario
 from busyparent_agent.web import BOOK_SESSIONS, HTML, SESSIONS, WebHandler
 from busyparent_agent import tools
 from busyparent_agent import inventory as inventory_engine
@@ -58,6 +58,45 @@ class AgentRulesTest(unittest.TestCase):
         self.assertIn("Reviewable grocery list: nothing required.", response)
         self.assertEqual(agent.delivery_window["strategy"], "pantry_first")
         self.assertEqual(agent.current_recommendation["name"], "Egg Fried Rice")
+
+    def test_dinner_prompts_shift_recommendation_by_intent(self):
+        cases = {
+            "I’m exhausted — give me the lowest-effort dinner.": "Black Bean Quesadillas",
+            "High-protein and kid-friendly.": "Chicken and Corn Rice Bowls",
+            "Light dinner, not too heavy.": "Pasta Marinara with Carrots",
+            "No grocery run tonight.": "Egg Fried Rice",
+        }
+
+        for prompt, expected in cases.items():
+            with self.subTest(prompt=prompt):
+                agent = BusyParentAgent(now=datetime(2026, 5, 8, 17, 30))
+                response = agent.reply(prompt)
+
+                self.assertIn(f"Make {expected} tonight.", response)
+                self.assertEqual(agent.current_recommendation["name"], expected)
+
+    def test_kid_friendly_prompt_does_not_trigger_guest_flow(self):
+        agent = BusyParentAgent(now=datetime(2026, 5, 8, 17, 30))
+
+        response = agent.reply("Make it picky-kid friendly.")
+
+        self.assertIn("Make Black Bean Quesadillas tonight.", response)
+        self.assertNotIn("guest plan", response)
+        self.assertIsNotNone(agent.current_recommendation)
+
+    def test_dinner_intent_trace_explains_prompt_weighting(self):
+        trace_lines = []
+        agent = BusyParentAgent(
+            now=datetime(2026, 5, 8, 17, 30),
+            trace=True,
+            trace_sink=trace_lines.append,
+        )
+
+        agent.reply("High-protein and kid-friendly.")
+
+        self.assertTrue(any(line.startswith("[intent]") for line in trace_lines))
+        self.assertTrue(any("strongest protein fit" in line for line in trace_lines))
+        self.assertTrue(any("Chicken and Corn Rice Bowls" in line for line in trace_lines))
 
     def test_rejection_returns_three_alternatives(self):
         agent = BusyParentAgent(now=datetime(2026, 5, 8, 17, 30))
@@ -150,8 +189,11 @@ class ScenarioCliTest(unittest.TestCase):
     def test_scenario_guest_runs_and_includes_constraints(self):
         output = self.run_scenario("guest")
 
-        self.assertIn("Context: Selected meal is Egg Fried Rice.", output)
+        self.assertNotIn("Context: Selected meal is Egg Fried Rice.", output)
+        self.assertIn("Parent: My daughter has a friend coming over. No nuts, no spicy food.", output)
+        self.assertIn("Agent: Make Egg Fried Rice for the guest plan:", output)
         self.assertIn("[tool] apply_guest_constraints", output)
+        self.assertIn("[decision] choose guest-safe dinner from guest child constraints", output)
         self.assertIn("Avoid nut ingredients", output)
         self.assertIn("Keep spice off", output)
         self.assertIn("verify packaged labels", output)
@@ -218,6 +260,26 @@ class ServiceAdapterTest(unittest.TestCase):
         self.assertIn("Reviewable grocery list: nothing required.", response["message"])
         self.assertTrue(any("[decision] pantry-first because it is close to dinner" in line for line in response["trace"]))
 
+    def test_story_picker_prompts_shift_recommendation_by_intent(self):
+        cases = {
+            "Pick a calm bedtime book for Kunal.": "Goodnight, Goodnight, Construction Site",
+            "Pick something for Arya that feels a little grown-up.": "What Do You Do With an Idea?",
+            "Give me a silly read-aloud.": "Don't Let the Pigeon Drive the Bus!",
+            "Pick something about bravery and confidence.": "Giraffes Can't Dance",
+            "I’m tired — keep it under 10 minutes.": "Brown Bear, Brown Bear, What Do You See?",
+            "Pick a book with easy parent prompts.": "Press Here",
+            "Arya wants something science-y or curious.": "Mae Among the Stars",
+            "Kunal wants rhyme or repetition.": "Chicka Chicka Boom Boom",
+        }
+
+        for prompt, expected in cases.items():
+            with self.subTest(prompt=prompt):
+                response = run_book_scenario(trace=True, parent_message=prompt)
+
+                self.assertEqual(response["metadata"]["book_recommendation"], expected)
+                self.assertIn(f"Tonight's pick: {expected}", response["message"])
+                self.assertTrue(any(line.startswith("[book] prompt intent ->") for line in response["trace"]))
+
     def test_locked_time_context_ignores_manual_noon_phrase(self):
         session = create_session(
             datetime(2026, 5, 8, 17, 30),
@@ -270,28 +332,109 @@ class WebApiScenarioTest(unittest.TestCase):
     def test_web_page_exposes_story_picker_room(self):
         self.assertIn("Dinner Planner", HTML)
         self.assertIn("Story Picker", HTML)
-        self.assertIn('id="roomTitle"', HTML)
-        self.assertIn("BusyParent Agent / Dinner Planner", HTML)
-        self.assertIn("BusyParent Agent / Story Picker", HTML)
-        self.assertIn("BusyParent Agent reduces evening decision load", HTML)
-        self.assertIn("roomTitle.textContent = titles[activeMode]", HTML)
-        self.assertIn('data-room-control="dinner"', HTML)
-        self.assertIn('data-room-control="book"', HTML)
-        self.assertIn('class="room-card dinner-room active"', HTML)
-        self.assertIn('class="room-card book-room"', HTML)
-        self.assertIn("Plan tonight's meal and grocery gaps.", HTML)
-        self.assertIn("Pick one kid-right book for bedtime.", HTML)
-        self.assertIn('class="toolbar dinner-panel" data-panel="dinner"', HTML)
-        self.assertIn('class="toolbar book-panel hidden" data-panel="book"', HTML)
+        self.assertNotIn("Active room", HTML)
+        self.assertNotIn("hero-status", HTML)
+        self.assertNotIn('id="roomTitle"', HTML)
+        self.assertNotIn('id="roomEyebrow"', HTML)
+        self.assertNotIn("roomEyebrow", HTML)
+        self.assertNotIn('class="room-label"', HTML)
+        self.assertNotIn("<h1>BusyParent Agent</h1>", HTML)
+        self.assertIn('class="brand-lockup"', HTML)
+        self.assertIn('class="brand-logo"', HTML)
+        self.assertIn('src="/BusyParentLogoResize.png"', HTML)
+        self.assertIn('<p class="tagline">Fewer evening decisions.</p>', HTML)
+        self.assertNotIn("One good default at a time.", HTML)
+        self.assertNotIn("Evening decision support", HTML)
+        self.assertNotIn("Dinner handled", HTML)
+        self.assertNotIn("Bedtime book handled", HTML)
+        self.assertNotIn("Dinner room", HTML)
+        self.assertNotIn("Bedtime book room", HTML)
+        self.assertIn("BusyParent Agent", HTML)
+        self.assertIn('class="room-heading-row"', HTML)
+        self.assertIn('class="proof-line" id="roomProofLine"', HTML)
+        self.assertIn("Dinner Planner considers", HTML)
+        self.assertIn("Story Picker considers", HTML)
+        self.assertIn("Fit for", HTML)
+        self.assertIn("Reading History", HTML)
+        self.assertIn("Instant access", HTML)
+        self.assertNotIn("Mood dependent", HTML)
+        self.assertNotIn("Knows reading history", HTML)
+        self.assertNotIn("Read online now", HTML)
+        self.assertNotIn("Mocked Epic-style availability", HTML)
+        self.assertIn("roomProofLine.setAttribute", HTML)
+        self.assertNotIn("room-points", HTML)
+        self.assertIn('class="room-actions dinner-panel" data-panel="dinner"', HTML)
+        self.assertIn('class="room-actions book-panel hidden" data-panel="book"', HTML)
+        self.assertIn("Hackathon Demo Scenarios", HTML)
+        self.assertNotIn("Dinner Planner demo sample scenarios", HTML)
+        self.assertNotIn("Story Picker demo sample scenarios", HTML)
+        self.assertNotIn("Dinner Planner actions", HTML)
+        self.assertNotIn("Story Picker actions", HTML)
+        self.assertIn("One dinner plan that fits tonight.", HTML)
+        self.assertNotIn("Tonight's meal, made practical.", HTML)
+        self.assertIn("One bedtime book that fits tonight.", HTML)
+        self.assertNotIn("A just-right book-read for tonight.", HTML)
+        self.assertIn('class="mode-tabs" role="tablist"', HTML)
+        self.assertIn('class="mode-tab active" id="dinner-tab"', HTML)
+        self.assertIn('class="mode-tab" id="story-tab"', HTML)
+        self.assertIn('role="tab"', HTML)
+        self.assertIn('role="tabpanel"', HTML)
+        self.assertIn('aria-selected="true"', HTML)
+        self.assertIn('aria-selected="false"', HTML)
+        self.assertIn('tabPanel.setAttribute("aria-labelledby"', HTML)
+        self.assertNotIn("room-card", HTML)
+        self.assertNotIn("room-visual", HTML)
+        self.assertNotIn("book-stack", HTML)
+        self.assertIn('link.href = "https://www.getepic.com/"', HTML)
+        self.assertIn('link.href = "https://www.instacart.com/"', HTML)
+        self.assertIn('link.target = "_blank"', HTML)
+        self.assertNotIn("mock-source-card", HTML)
+        self.assertIn("One dinner plan that fits tonight.", HTML)
+        self.assertIn("One bedtime book that fits tonight.", HTML)
+        self.assertNotIn("Plan tonight's meal and grocery gaps.", HTML)
+        self.assertNotIn("Pick one kid-right book for bedtime.", HTML)
         self.assertIn('class="scenario-chip" data-scenario="dinner"', HTML)
         self.assertIn('data-scenario="book"', HTML)
+        self.assertIn('data-scenario="book_siblings"', HTML)
+        self.assertIn("Read with both kids", HTML)
+        self.assertIn('scenario.startsWith("book") ? "book" : "dinner"', HTML)
+        self.assertIn('aria-pressed="false">Dinner now</button>', HTML)
+        self.assertIn("let selectedScenario = null", HTML)
+        self.assertIn("function updateScenarioButtons()", HTML)
+        self.assertIn('button.classList.toggle("pressed", pressed)', HTML)
+        self.assertIn('button.setAttribute("aria-pressed", String(pressed))', HTML)
+        self.assertIn("if (selectedScenario === button.dataset.scenario)", HTML)
+        self.assertIn("clearScenarioState();", HTML)
+        self.assertNotIn('id="clear"', HTML)
+        self.assertNotIn(">Clear</button>", HTML)
         self.assertIn('<body data-mode="dinner">', HTML)
         self.assertIn("document.body.dataset.mode = activeMode", HTML)
-        self.assertIn('aria-pressed="true"', HTML)
+        self.assertIn('setAttribute("aria-selected"', HTML)
         self.assertIn('setAttribute("aria-pressed"', HTML)
+        self.assertIn("setRoom(button.dataset.tab)", HTML)
         self.assertIn("activeMode", HTML)
         self.assertIn("mode: activeMode", HTML)
-        self.assertIn('activeMode = active === "book" ? "book" : "dinner"', HTML)
+        self.assertIn('id="promptButton"', HTML)
+        self.assertIn('aria-label="Dinner Planner starter prompts"', HTML)
+        self.assertIn("Pick a starter prompt to send, or type your own.", HTML)
+        self.assertIn("I’m exhausted — give me the lowest-effort dinner.", HTML)
+        self.assertIn("No grocery run tonight.", HTML)
+        self.assertIn("Build a reviewable grocery cart if we’re missing things.", HTML)
+        self.assertIn("We have a guest kid — no nuts, no spicy.", HTML)
+        self.assertIn("Story Picker starter prompts", HTML)
+        self.assertIn("What should I read with both of them tonight?", HTML)
+        self.assertIn("Give me a silly read-aloud.", HTML)
+        self.assertIn("I’m tired — keep it under 10 minutes.", HTML)
+        self.assertIn("Pick something they have not read recently.", HTML)
+        self.assertIn("renderPromptMenu(activeMode)", HTML)
+        self.assertIn('promptMenu.setAttribute("aria-label", label)', HTML)
+        self.assertIn('event.target.closest("[data-prompt]")', HTML)
+        self.assertIn("async function sendCurrentInput()", HTML)
+        self.assertIn("input.value = button.dataset.prompt", HTML)
+        self.assertIn("await sendCurrentInput();", HTML)
+        self.assertNotIn("`${existing} ${button.dataset.prompt}`", HTML)
+        self.assertIn("closePromptMenu();", HTML)
+        self.assertIn('event.key === "Escape"', HTML)
 
     def test_book_web_api_scenario_returns_storypath_output(self):
         payload = self.handle_scenario("book")
@@ -304,6 +447,17 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertIn("mocked Epic-style catalog", response["message"])
         self.assertIn("no real Epic login, API, scraping, or checkout is used", response["message"])
         self.assertTrue(any(line.startswith("[book]") for line in response["trace"]))
+
+    def test_book_siblings_web_api_scenario_returns_shared_read(self):
+        payload = self.handle_scenario("book_siblings")
+        response = payload["responses"][0]
+
+        self.assertEqual(response["metadata"]["scenario"], "book")
+        self.assertEqual(response["metadata"]["child_id"], "siblings")
+        self.assertEqual(response["metadata"]["book_recommendation"], "Giraffes Can't Dance")
+        self.assertIn("Arya and Kunal", response["message"])
+        self.assertIn("mocked Epic-style catalog", response["message"])
+        self.assertNotIn("Egg Fried Rice", response["message"])
 
     def test_dinner_web_api_scenario_still_returns_dinner_output(self):
         payload = self.handle_scenario("dinner")

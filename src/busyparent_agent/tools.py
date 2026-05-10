@@ -167,6 +167,37 @@ def confidence_for_item(inventory: dict[str, Any], item: str) -> dict[str, Any]:
     return inventory_engine.confidence_for_item(inventory, item)
 
 
+def parse_dinner_intent(parent_message: str) -> dict[str, Any]:
+    message = parent_message.lower().replace("’", "'")
+    intents = {
+        "lowest_effort": any(phrase in message for phrase in ("exhausted", "lowest-effort", "lowest effort", "easy")),
+        "very_fast": any(phrase in message for phrase in ("10 minutes", "20 minutes", "quick", "fast", "melt down")),
+        "no_grocery": any(
+            phrase in message
+            for phrase in (
+                "no grocery",
+                "no grocery run",
+                "use what",
+                "already in the fridge",
+                "already have",
+                "probably already have",
+            )
+        ),
+        "leftovers": "leftover" in message,
+        "picky_kid": any(phrase in message for phrase in ("picky", "both kids", "kid friendly", "kid-friendly", "kids may eat")),
+        "mild": any(phrase in message for phrase in ("mild", "no spicy", "no spice", "adult upgrade")),
+        "healthy": any(phrase in message for phrase in ("healthy", "high-protein", "high protein", "protein")),
+        "high_protein": any(phrase in message for phrase in ("high-protein", "high protein", "protein")),
+        "light": any(phrase in message for phrase in ("light dinner", "not too heavy")),
+        "delivery_ok": any(
+            phrase in message
+            for phrase in ("delivery is okay", "grocery delivery", "reviewable grocery cart", "missing things")
+        ),
+    }
+    labels = [name for name, active in intents.items() if active]
+    return {"labels": labels, **intents}
+
+
 def _preference_score(meal: dict[str, Any], family: dict[str, Any]) -> int:
     score = 0
     ingredients = {item.lower() for item in meal["ingredients"]}
@@ -201,6 +232,7 @@ def _score_meal(
     meal_history: list[dict[str, Any]] | None = None,
     now: datetime | None = None,
     trace: TraceFn = None,
+    dinner_intent: dict[str, Any] | None = None,
 ) -> float:
     missing = missing_ingredients(meal, inventory)
     coverage = (len(meal["ingredients"]) - len(missing)) / len(meal["ingredients"])
@@ -233,6 +265,20 @@ def _score_meal(
     if meal["name"] == "Black Bean Quesadillas" and delivery_window["strategy"] == "pantry_first":
         score += 7
 
+    intent_score, intent_reasons = _dinner_intent_score(meal, inventory, delivery_window, dinner_intent)
+    score += intent_score
+    if intent_reasons:
+        _trace(
+            trace,
+            "dinner_intent_score",
+            {
+                "meal": meal["name"],
+                "intents": dinner_intent.get("labels", []) if dinner_intent else [],
+                "reasons": intent_reasons,
+                "delta": intent_score,
+            },
+        )
+
     memory_score, memory_reasons = _household_memory_score(meal, meal_history or [], now)
     score += memory_score
     _trace(
@@ -245,6 +291,138 @@ def _score_meal(
         },
     )
     return score
+
+
+def _dinner_intent_score(
+    meal: dict[str, Any],
+    inventory: dict[str, Any],
+    delivery_window: dict[str, Any],
+    dinner_intent: dict[str, Any] | None,
+) -> tuple[int, list[str]]:
+    if not dinner_intent or not dinner_intent.get("labels"):
+        return 0, []
+
+    score = 0
+    reasons: list[str] = []
+    tags = set(meal.get("tags", []))
+    ingredients = {item.lower() for item in meal["ingredients"]}
+    missing = missing_ingredients(meal, inventory)
+
+    def add(points: int, reason: str) -> None:
+        nonlocal score
+        score += points
+        reasons.append(f"{reason} {points:+d}")
+
+    if dinner_intent.get("lowest_effort"):
+        if meal.get("effort") == "low":
+            add(24, "low effort")
+        if meal["minutes"] <= 20:
+            add(18, "20 minutes or less")
+        if meal["name"] == "Black Bean Quesadillas":
+            add(18, "demo-friendly easy dinner")
+        if meal["name"] == "Egg Fried Rice":
+            add(8, "simple pantry cooking")
+        if meal.get("effort") == "medium":
+            add(-18, "more parent effort")
+
+    if dinner_intent.get("very_fast"):
+        if meal["minutes"] <= 20:
+            add(24, "fast enough")
+        elif meal["minutes"] >= 30:
+            add(-28, "too slow")
+        if meal["name"] == "Egg Fried Rice":
+            add(18, "fastest safe default")
+        if meal["name"] == "Peanut Butter Noodles":
+            add(46, "fastest pantry option")
+
+    if dinner_intent.get("no_grocery"):
+        if not missing:
+            add(24, "no grocery gap")
+        else:
+            add(-26 * len(missing), "missing items")
+        if "pantry-first" in tags:
+            add(20, "pantry fit")
+        low_confidence_items = _low_confidence_meal_items(meal, inventory)
+        if low_confidence_items:
+            add(-10 * len(low_confidence_items), "low-confidence ingredients")
+
+    if dinner_intent.get("leftovers"):
+        if "leftover-friendly" in tags:
+            add(62, "leftover-friendly")
+        if "lunch" in meal.get("leftover_plan", "").lower() or "leftover" in meal.get("leftover_plan", "").lower():
+            add(28, "next-day plan")
+        if meal["name"] == "Chicken and Corn Rice Bowls":
+            add(34, "best leftover protein base")
+        if meal["name"] == "Pasta Marinara with Carrots":
+            add(24, "easy leftover pasta")
+
+    if dinner_intent.get("picky_kid"):
+        if meal.get("kid_approved"):
+            add(28, "kid-approved")
+        else:
+            add(-24, "not kid-approved")
+        if meal.get("spice_level") in {"none", "mild"}:
+            add(12, "safe spice level")
+        if meal["name"] == "Black Bean Quesadillas":
+            add(38, "finger-food favorite")
+        if meal["name"] == "Pasta Marinara with Carrots":
+            add(24, "familiar fallback")
+
+    if dinner_intent.get("mild"):
+        if meal.get("spice_level") == "spicy":
+            add(-48, "spicy")
+        elif meal.get("spice_level") == "none":
+            add(20, "no spice")
+        else:
+            add(12, "mild")
+        if meal.get("parent_upgrade"):
+            add(12, "adult upgrade possible")
+        if meal["name"] == "Black Bean Quesadillas":
+            add(24, "easy adult upgrade")
+
+    if dinner_intent.get("healthy"):
+        if ingredients.intersection({"chicken thighs", "eggs", "black beans", "chickpeas", "plain yogurt"}):
+            add(30, "protein source")
+        if ingredients.intersection({"carrots", "frozen peas", "frozen corn", "black beans", "chickpeas"}):
+            add(18, "vegetable or bean base")
+        if meal["name"] == "Chicken and Corn Rice Bowls":
+            add(46, "highest-protein family option")
+        if meal["name"] == "Chickpea Coconut Curry":
+            add(34, "plant-protein option")
+        if meal.get("spice_level") == "spicy":
+            add(-20, "spice risk")
+
+    if dinner_intent.get("high_protein"):
+        if meal["name"] == "Chicken and Corn Rice Bowls":
+            add(96, "strongest protein fit")
+        elif "eggs" in ingredients:
+            add(24, "egg protein")
+        elif ingredients.intersection({"black beans", "chickpeas"}):
+            add(20, "bean protein")
+        else:
+            add(-18, "lower protein")
+
+    if dinner_intent.get("light"):
+        if meal["name"] == "Pasta Marinara with Carrots":
+            add(78, "lighter familiar plate")
+        if meal["name"] == "Egg Fried Rice":
+            add(18, "moderate portion")
+        if meal["name"] == "Chicken and Corn Rice Bowls":
+            add(-14, "more filling")
+        if meal["name"] == "Peanut Butter Noodles":
+            add(-28, "heavier sauce")
+
+    if dinner_intent.get("delivery_ok"):
+        if meal.get("delivery_add_ons"):
+            add(36, "delivery can improve sides")
+        if "grocery-friendly" in tags:
+            add(46, "grocery-friendly")
+        if delivery_window.get("can_use_delivery"):
+            add(18, "delivery window available")
+        if meal["name"] == "Chickpea Coconut Curry":
+            add(42, "best when groceries can help")
+
+    return score, reasons
 
 
 def _low_confidence_meal_items(meal: dict[str, Any], inventory: dict[str, Any]) -> list[str]:
@@ -362,6 +540,7 @@ def recommend_meal(
     meal_history: list[dict[str, Any]] | None = None,
     now: datetime | None = None,
     constraints: dict[str, Any] | None = None,
+    dinner_intent: dict[str, Any] | None = None,
     trace: TraceFn = None,
 ) -> dict[str, Any]:
     del grocery_history
@@ -370,7 +549,7 @@ def recommend_meal(
     ranked = sorted(
         candidates,
         key=lambda meal: (
-            _score_meal(meal, family, inventory, delivery_window, meal_history, now, trace),
+            _score_meal(meal, family, inventory, delivery_window, meal_history, now, trace, dinner_intent),
             -meal["minutes"],
         ),
         reverse=True,

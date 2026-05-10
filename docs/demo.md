@@ -171,8 +171,8 @@ python3 -m busyparent_agent.app --scenario guest --trace
 
 Call out:
 
-- Starts from selected context: `Egg Fried Rice`
-- Parent adds a guest child constraint
+- Starts from the parent’s guest child constraint
+- Chooses a guest-safe dinner directly
 - `[tool] apply_guest_constraints`
 - Avoids nuts and keeps spicy food off the shared meal
 - Reminds parent to verify packaged labels

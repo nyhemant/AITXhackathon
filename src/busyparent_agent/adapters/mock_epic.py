@@ -75,6 +75,7 @@ def recommend_book(
     reading_history: dict[str, Any] | list[dict[str, Any]],
     exclude_book_ids: list[str] | None = None,
     child_ages: list[int] | None = None,
+    book_intent: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     excluded = set(exclude_book_ids or [])
     candidates = filter_books(child_profile["age"], mood, max_minutes, child_ages, list(excluded))
@@ -89,7 +90,7 @@ def recommend_book(
         ]
 
     scored = [
-        _score_book(book, child_profile, mood, max_minutes, reading_history)
+        _score_book(book, child_profile, mood, max_minutes, reading_history, book_intent)
         for book in candidates
     ]
     scored.sort(key=lambda item: (-item["score"], item["book"]["read_minutes"], item["book"]["title"]))
@@ -109,6 +110,7 @@ def _score_book(
     mood: str,
     max_minutes: int,
     reading_history: dict[str, Any] | list[dict[str, Any]],
+    book_intent: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     score = 0
     reasons = []
@@ -133,6 +135,11 @@ def _score_book(
         score += preference_score
         reasons.append(f"child preference +{preference_score}")
 
+    intent_score, intent_reasons = _book_intent_score(book, child_profile, mood, max_minutes, reading_history, book_intent)
+    if intent_score:
+        score += intent_score
+        reasons.extend(intent_reasons)
+
     history_score, history_reason = _history_adjustment(book, child_profile, reading_history)
     if history_score:
         score += history_score
@@ -145,6 +152,123 @@ def _score_book(
         "score": score,
         "reasons": reasons,
     }
+
+
+def _book_intent_score(
+    book: dict[str, Any],
+    child_profile: dict[str, Any],
+    mood: str,
+    max_minutes: int,
+    reading_history: dict[str, Any] | list[dict[str, Any]],
+    book_intent: dict[str, Any] | None,
+) -> tuple[int, list[str]]:
+    if not book_intent or not book_intent.get("labels"):
+        return 0, []
+
+    score = 0
+    reasons: list[str] = []
+    terms = _book_terms(book, ("themes", "mood_tags", "title"))
+    title = _normalize(book["title"])
+
+    def add(points: int, reason: str) -> None:
+        nonlocal score
+        score += points
+        reasons.append(f"{reason} {points:+d}")
+
+    if book_intent.get("siblings"):
+        if child_profile.get("id") == "siblings":
+            add(24, "shared read fit")
+        if book["age_min"] <= 3 and book["age_max"] >= 6:
+            add(18, "fits both ages")
+        if {"confidence", "friendship", "humor", "bravery"}.intersection(terms):
+            add(14, "shared discussion")
+        if book["id"] == "giraffes-cant-dance":
+            add(34, "best sibling bridge")
+
+    if book_intent.get("explicit_calm"):
+        if "bedtime" in terms or "routine" in terms or "reassurance" in terms:
+            add(34, "bedtime wind-down")
+        if book["id"] == "goodnight-goodnight-construction-site":
+            add(42, "strong calm bedtime routine")
+        if book["id"] == "llama-llama-red-pajama":
+            add(32, "reassuring bedtime fit")
+        if "humor" in terms:
+            add(-12, "more playful than calm")
+
+    if book_intent.get("silly"):
+        if "humor" in terms or "wordplay" in terms or "play" in terms:
+            add(34, "silly read-aloud")
+        if book.get("format") == "read_aloud":
+            add(10, "read-aloud energy")
+        if book["id"] == "dont-let-pigeon-drive-bus":
+            add(42, "high-laugh demo pick")
+        if book["id"] == "dinosaur-dance":
+            add(24, "Kunal movement fit")
+
+    if book_intent.get("bravery"):
+        if {"bravery", "confidence", "trying", "again", "resilience"}.intersection(terms):
+            add(38, "bravery theme")
+        if book["id"] == "giraffes-cant-dance":
+            add(42, "confidence for younger kids")
+        if book["id"] == "jabari-jumps":
+            add(48, "direct bravery story")
+
+    if book_intent.get("grown_up"):
+        if child_profile.get("id") == "arya":
+            add(18, "older child fit")
+        if {"creativity", "curiosity", "confidence", "making"}.intersection(terms):
+            add(28, "bigger-kid theme")
+        if book["id"] == "what-do-you-do-with-idea":
+            add(62, "thoughtful grown-up feel")
+
+    if book_intent.get("science"):
+        if {"science", "space", "curiosity", "facts", "dreams"}.intersection(terms):
+            add(42, "science curiosity fit")
+        if book["id"] == "mae-among-stars":
+            add(58, "Arya space confidence pick")
+        if book["id"] == "ada-twist-scientist":
+            add(26, "scientist theme")
+
+    if book_intent.get("rhyme_repetition"):
+        if {"rhyme", "letters", "repeat", "friendly", "animal", "sounds"}.intersection(terms):
+            add(38, "rhyme or repetition")
+        if book["id"] == "chicka-chicka-boom-boom":
+            add(58, "best rhyme repeat pick")
+        if book["id"] == "little-blue-truck":
+            add(18, "sound repetition")
+
+    if book_intent.get("short_tired"):
+        if book["read_minutes"] <= min(max_minutes, 6):
+            add(28, "short enough")
+        if book["read_minutes"] <= 4:
+            add(16, "very quick")
+        if {"bedtime", "repeat", "friendly", "calm"}.intersection(terms):
+            add(16, "low parent effort")
+        if book["id"] == "brown-bear-brown-bear":
+            add(44, "comfort short read")
+
+    if book_intent.get("easy_prompts"):
+        if {"interaction", "cause", "effect", "play", "perspective"}.intersection(terms):
+            add(36, "easy parent prompts")
+        if book["id"] == "press-here":
+            add(54, "interactive prompt-friendly pick")
+        if book["read_minutes"] <= 6:
+            add(12, "quick prompts")
+
+    if book_intent.get("not_recent"):
+        events = _history_events(reading_history)
+        latest_date = _latest_history_date(events)
+        recent = [
+            event
+            for event in events
+            if event.get("book_id") == book["id"] and _is_recent(event, latest_date)
+        ]
+        if recent:
+            add(-44, "recently read")
+        else:
+            add(22, "not recently read")
+
+    return score, reasons
 
 
 def _age_matches(book: dict[str, Any], child_age: int, child_ages: list[int] | None) -> bool:

@@ -29,6 +29,9 @@ class BusyParentAgent:
             if tool_name in {"memory_score", "save_meal_feedback"}:
                 self._emit_trace(f"[memory] {self._format_tool_trace(tool_name, payload)}")
                 return
+            if tool_name in {"dinner_intent", "dinner_intent_score"}:
+                self._emit_trace(f"[intent] {self._format_tool_trace(tool_name, payload)}")
+                return
             if tool_name == "inventory_confidence":
                 self._emit_trace(f"[inventory] {self._format_tool_trace(tool_name, payload)}")
                 return
@@ -65,9 +68,12 @@ class BusyParentAgent:
         if self._rejects(message):
             return self._handle_rejection()
 
-        return self._handle_first_recommendation()
+        return self._handle_first_recommendation(tools.parse_dinner_intent(parent_message))
 
-    def _handle_first_recommendation(self) -> str:
+    def _handle_first_recommendation(self, dinner_intent: dict[str, Any] | None = None) -> str:
+        if dinner_intent and dinner_intent.get("labels"):
+            self._trace("dinner_intent", dinner_intent)
+
         if self.delivery_window["pantry_first"]:
             self._decision("pantry-first because it is close to dinner")
         else:
@@ -82,6 +88,7 @@ class BusyParentAgent:
             self.delivery_window,
             self.meal_history,
             self.now,
+            dinner_intent=dinner_intent,
             trace=self._trace,
         )
         self.current_recommendation = meal
@@ -165,7 +172,19 @@ class BusyParentAgent:
         constraints = self._parse_constraints(message)
         meal = self.selected_meal or self.current_recommendation
         if not meal:
-            return self._handle_first_recommendation()
+            fallback = self._guest_safe_fallback(constraints)
+            revised = tools.apply_guest_constraints(fallback, constraints, self.inventory, self._trace)
+            self.selected_meal = revised
+            grocery_list = tools.update_grocery_list(revised, self.inventory, self._trace)
+            self._decision("choose guest-safe dinner from guest child constraints")
+            return "\n".join(
+                [
+                    f"Make {revised['name']} for the guest plan:",
+                    *[f"- {change}" for change in revised["constraint_changes"]],
+                    self._grocery_line(grocery_list),
+                    revised["allergy_note"],
+                ]
+            )
 
         if self._conflicts_with_guest_allergy(meal, constraints):
             fallback = self._guest_safe_fallback(constraints)
@@ -284,7 +303,9 @@ class BusyParentAgent:
 
     @staticmethod
     def _mentions_guest_constraints(message: str) -> bool:
-        return any(word in message for word in ("friend", "guest", "allergy", "allergic", "no nuts", "no spicy"))
+        return bool(re.search(r"\b(friend|guest|allergy|allergic)\b", message)) or any(
+            phrase in message for phrase in ("no nuts", "no spicy")
+        )
 
     @staticmethod
     def _parse_constraints(message: str) -> dict[str, Any]:
@@ -500,6 +521,11 @@ class BusyParentAgent:
         if tool_name == "memory_score":
             reasons = ", ".join(payload["reasons"])
             return f"{payload['meal']} -> {reasons}; score {payload['total_score']}"
+        if tool_name == "dinner_intent":
+            return ", ".join(payload["labels"])
+        if tool_name == "dinner_intent_score":
+            reasons = ", ".join(payload["reasons"])
+            return f"{payload['meal']} -> {reasons}; intent delta {payload['delta']:+d}"
         if tool_name == "save_meal_feedback":
             return f"saved feedback -> {payload['meal']}, {payload['event']}"
         if tool_name == "recommend_meal":

@@ -150,15 +150,6 @@ def run_scenario(session: AgentSession, scenario: str) -> list[dict[str, Any]]:
         session._consume_trace()
         return [run_book_scenario(trace=session.trace)]
 
-    if scenario == "guest":
-        session.set_selected_meal("Egg Fried Rice")
-        return [
-            {
-                "context": "Selected meal is Egg Fried Rice.",
-                **session.send(SCENARIO_MESSAGES["guest"], scenario=scenario),
-            }
-        ]
-
     return [session.send(SCENARIO_MESSAGES[scenario], scenario=scenario)]
 
 
@@ -172,6 +163,7 @@ def run_book_scenario(
     child_profile = request["child_profile"]
     mood = request["mood"]
     max_minutes = request["max_minutes"]
+    book_intent = request["book_intent"]
     excluded = [] if request["allow_repeat"] else (exclude_book_ids or [])
     reading_history = _get_reading_history()
     catalog_count = len(mock_epic.get_catalog_books())
@@ -182,6 +174,7 @@ def run_book_scenario(
         reading_history,
         exclude_book_ids=excluded,
         child_ages=child_profile.get("child_ages"),
+        book_intent=book_intent,
     )
     top_pick = recommendation["top_pick"]
     book = top_pick["book"]
@@ -192,6 +185,7 @@ def run_book_scenario(
             [
                 f"[book] mock_epic.get_catalog_books -> {catalog_count} books",
                 f"[book] filter age/mood/time/availability -> {child_profile['name']}, {mood}, {max_minutes} min",
+                f"[book] prompt intent -> {', '.join(book_intent['labels']) if book_intent['labels'] else 'default bedtime'}",
                 "[memory] recent reading history checked",
                 f"[decision] chose {book['title']} because {_book_decision_reason(child_profile, mood, max_minutes, top_pick)}",
             ]
@@ -216,8 +210,13 @@ def run_book_scenario(
 
 def parse_book_request(parent_message: str) -> dict[str, Any]:
     message = parent_message.lower()
-    if any(phrase in message for phrase in ("both", "both of them", "siblings", "arya and kunal", "kunal and arya")):
+    labels = []
+    if any(
+        phrase in message
+        for phrase in ("both", "both of them", "siblings", "arya and kunal", "kunal and arya", "they have not")
+    ):
         child_profile = STORYPATH_CHILDREN["siblings"]
+        labels.append("siblings")
     elif "arya" in message:
         child_profile = STORYPATH_CHILDREN["arya"]
     elif "kunal" in message:
@@ -226,22 +225,70 @@ def parse_book_request(parent_message: str) -> dict[str, Any]:
         child_profile = STORYPATH_CHILDREN["kunal"]
 
     mood = "calm bedtime"
+    explicit_calm = any(word in message for word in ("calm", "bedtime", "sleep"))
+    silly = any(word in message for word in ("silly", "funny"))
+    science = any(word in message for word in ("science", "science-y", "curious", "curiosity"))
+    bravery = any(word in message for word in ("bravery", "brave", "confidence", "confident"))
+    rhyme_repetition = any(word in message for word in ("rhyme", "rhyming", "repetition", "repeat", "phonics"))
+    grown_up = any(phrase in message for phrase in ("grown-up", "grown up", "older", "big kid"))
+    short_tired = any(word in message for word in ("short", "quick", "tired"))
+    easy_prompts = any(phrase in message for phrase in ("easy parent prompts", "parent prompts", "easy prompts"))
+    not_recent = any(phrase in message for phrase in ("not read recently", "not recently", "have not read", "haven't read"))
+
     if any(word in message for word in ("silly", "funny")):
         mood = "silly"
-    elif any(word in message for word in ("science", "curious", "curiosity")):
+    elif science:
         mood = "science"
-    elif any(word in message for word in ("calm", "bedtime", "sleep")):
+    elif bravery:
+        mood = "bravery"
+    elif rhyme_repetition:
+        mood = "phonics"
+    elif easy_prompts:
+        mood = "short because parent is tired"
+    elif explicit_calm:
         mood = "calm bedtime"
 
     max_minutes = 10
-    if any(word in message for word in ("short", "quick", "tired")):
+    if short_tired:
         max_minutes = 6
+
+    if explicit_calm:
+        labels.append("explicit_calm")
+    if silly:
+        labels.append("silly")
+    if science:
+        labels.append("science")
+    if bravery:
+        labels.append("bravery")
+    if rhyme_repetition:
+        labels.append("rhyme_repetition")
+    if grown_up:
+        labels.append("grown_up")
+    if short_tired:
+        labels.append("short_tired")
+    if easy_prompts:
+        labels.append("easy_prompts")
+    if not_recent:
+        labels.append("not_recent")
 
     return {
         "child_profile": child_profile,
         "mood": mood,
         "max_minutes": max_minutes,
         "allow_repeat": any(phrase in message for phrase in ("same", "again", "repeat")),
+        "book_intent": {
+            "labels": labels,
+            "siblings": "siblings" in labels,
+            "explicit_calm": explicit_calm,
+            "silly": silly,
+            "science": science,
+            "bravery": bravery,
+            "rhyme_repetition": rhyme_repetition,
+            "grown_up": grown_up,
+            "short_tired": short_tired,
+            "easy_prompts": easy_prompts,
+            "not_recent": not_recent,
+        },
     }
 
 
