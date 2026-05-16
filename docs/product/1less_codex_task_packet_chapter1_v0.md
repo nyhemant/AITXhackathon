@@ -51,6 +51,8 @@ Required copy ideas:
 - Dinner chapter promise: `Tonight’s dinner, decided.`
 - Explain that dinner is the first chapter/proof point without building other chapters.
 
+Use chapter language at the product/copy level only. Do not introduce a chapter registry, generic decision engine, chapter routing system, or multi-chapter data model in this task.
+
 Do not fully refactor package/module/class names unless required. Keep internal `busyparent_agent` naming if changing it would create risk.
 
 ### 2. Dinner-first MVP flow
@@ -59,21 +61,23 @@ Update the existing dinner web flow so the parent can provide minimal context th
 
 - time available: 10 / 20 / 30 minutes
 - energy level: barely cooking / normal / can cook
-- constraints: picky eater, vegetarian, nut-free, dairy-free, use leftovers, pantry/freezer meal
+- constraints: picky eater/familiar kid-friendly option, vegetarian, nut-free, dairy-free, use leftovers, pantry/freezer meal
 - optional free text for what they have or what to avoid
+
+Any pantry/use-what-you-have language must be based only on what the parent enters in the current flow. Do not imply 1Less knows the household pantry or inventory.
 
 The parent should not face a long setup wizard.
 
 ### 3. Recommendation output
 
-The dinner recommendation should return **one clear decision**, not a list.
+The dinner recommendation must return **one clear decision**, not a list.
 
-Output should include:
+Every recommendation must include:
 
 - meal name
 - why it fits tonight
-- estimated time/effort
-- simple ingredient/use-what-you-have guidance
+- rough time/effort
+- simple ingredient/use-what-you-have guidance based only on parent input
 - one fallback/tweak path
 - allergy/preference caveat when relevant
 
@@ -87,7 +91,7 @@ Add or expose low-friction feedback actions in the UI, using existing backend fe
 - Missing ingredient
 - Give me backup / fallback
 
-Feedback should not require account creation or a heavy profile setup.
+Feedback should not require account creation, a heavy profile setup, a new database/profile schema, or long-term family memory storage beyond existing trivial feedback behavior.
 
 ### 5. Trust/safety copy
 
@@ -108,16 +112,26 @@ Avoid:
 - `Perfectly balanced`
 - `Nutritionist recommended` unless truly backed
 
-Suggested caveat:
+Important trust contract:
+
+- Do not claim allergy safety, nutrition optimization, medical diet support, budget optimization, cultural/religious dietary correctness, or pantry accuracy.
+- Do not ask for or require child names, medical conditions, precise location, detailed health/nutrition goals, school schedules, pantry/fridge photos, or grocery purchase history.
+- If a parent voluntarily types sensitive information into free text, do not highlight it, build profile features around it, or require it for future use.
+
+Mandatory in-product allergy/avoidance caveat:
 
 > 1Less can help avoid ingredients you flag, but it cannot guarantee allergy safety. Always check labels and use your judgment for serious allergies.
+
+If allergy or avoidance input is present, this caveat must appear near the recommendation. It cannot live only in docs, policy text, or footer copy.
 
 ## Non-goals
 
 Do **not** implement:
 
 - bedtime/story choice as a new feature
+- new Story Picker behavior, bedtime/story recommendation logic, or Story Picker polish beyond minimal copy-safe adjustments needed to avoid brand confusion or keep existing tests passing
 - a generic multi-chapter platform
+- chapter registry, generic decision engine, chapter router, reusable chapter infrastructure, or multi-chapter data model
 - full chapter navigation beyond trivial copy/labels
 - full weekly meal planning
 - grocery delivery integrations
@@ -127,6 +141,7 @@ Do **not** implement:
 - medical diet management
 - broad parent command center behavior
 - heavy family profile setup
+- asking for or requiring child names, medical conditions, precise location, detailed health/nutrition goals, school schedules, pantry/fridge photos, or grocery purchase history
 - authentication/login
 - social sharing
 - unrelated refactors
@@ -143,7 +158,7 @@ Codex should inspect before editing, but likely files are:
 - `src/busyparent_agent/agent.py` — only if feedback/constraint handling needs small changes
 - `src/busyparent_agent/tools.py` — only if intent parsing needs small additions
 - `tests/test_agent_rules.py` — backend/service tests
-- `tests/test_storypath.py` — only if existing Story Picker tests need copy-safe adjustment
+- `tests/test_storypath.py` — only if existing Story Picker tests need copy-safe adjustment; do not add Story Picker behavior
 - `README.md` and/or `docs/demo.md` — update public docs to 1Less positioning
 
 Avoid touching fixture data unless needed for a test.
@@ -162,8 +177,10 @@ Avoid touching fixture data unless needed for a test.
 ### Trust/safety
 
 - Allergy/diet constraints affect the recommendation or caveat.
+- When allergy or avoidance input is selected or typed, the recommendation UI shows the mandatory in-product caution near the recommendation.
 - UI does not imply guaranteed allergy safety.
-- No medical, nutrition, or allergy guarantees are introduced.
+- No medical, nutrition, budget, pantry-accuracy, cultural/religious dietary, or allergy guarantees are introduced.
+- UI does not ask for or require child names, medical conditions, precise location, detailed health/nutrition goals, school schedules, pantry/fridge photos, or grocery purchase history.
 - Privacy/family-memory copy does not encourage unnecessary sensitive data collection.
 
 ### Engineering
@@ -222,10 +239,13 @@ Before finalizing/committing user-facing copy, ask Sophie or apply a Sophie-styl
 Stop and ask Hemant if implementation starts expanding into:
 
 - bedtime/story buildout
+- Story Picker behavior changes beyond minimal copy-safe adjustments
 - generic multi-chapter platform
+- chapter registry, generic decision engine, chapter routing system, or multi-chapter data model
 - weekly meal planning
 - grocery integrations
 - detailed family profiles
+- sensitive child/medical/location/nutrition data collection
 - nutrition/medical claims
 - broad parent command center functionality
 - large architecture rewrite
@@ -263,14 +283,17 @@ Scope:
 - Update public-facing web/docs copy to 1Less.
 - Keep dinner as Chapter 1 / first proof point.
 - Do not build future chapters or a generic chapter engine.
+- Use chapter language at the product/copy level only; do not add chapter architecture.
+- The repo already has Story Picker code. Do not expand Story Picker or build bedtime/story behavior. Only make minimal copy-safe adjustments if necessary.
 - Add/update minimal dinner context controls/prompts if they fit the existing web architecture.
 - Preserve one recommendation first.
 - Expose lightweight feedback/fallback actions where practical.
 - Preserve cautious allergy/privacy language.
+- Important trust contract: do not claim allergy safety, nutrition optimization, medical diet support, budget optimization, cultural/religious dietary correctness, or pantry accuracy. If allergy/avoidance input is present, show an in-product allergy caveat near the recommendation. Do not ask for or require child names, medical conditions, precise location, detailed health/nutrition goals, school schedules, pantry/fridge photos, or grocery purchase history.
 - Add/update tests for changed behavior.
 
 Non-goals:
-No bedtime/story buildout, no full weekly planning, no grocery integrations, no photo scanning, no auth, no heavy profiles, no medical/nutrition/allergy guarantees, no unrelated refactors.
+No bedtime/story buildout, no Story Picker behavior expansion, no generic chapter architecture, no full weekly planning, no grocery integrations, no photo scanning, no auth, no heavy profiles, no sensitive child/medical/location/nutrition data prompts, no medical/nutrition/allergy/budget/pantry-accuracy guarantees, no unrelated refactors.
 
 Before editing:
 - Show current git status.

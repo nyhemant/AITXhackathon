@@ -93,14 +93,14 @@ The pain is:
 
 MVP promise for Chapter 1:
 
-1Less gives a busy parent one clear dinner recommendation for tonight that respects basic family constraints and requires minimal effort to act on.
+1Less gives a busy parent one clear dinner recommendation for tonight using simple preferences, avoidances, time, and energy level entered by the parent. It should reduce decision fatigue without claiming medical, allergy, nutrition, budget, or pantry accuracy.
 
 A good MVP answer includes:
 
 - One recommended dinner
 - Why this dinner fits tonight
 - Estimated time/effort
-- Simple ingredient/use-what-you-have guidance
+- Simple ingredient/use-what-you-have guidance based only on what the parent enters tonight
 - Allergy/preference caveat if relevant
 - One fallback/tweak path if the answer does not work
 
@@ -162,7 +162,7 @@ Potential inputs:
   - can cook
 
 - Constraints:
-  - picky eater
+  - picky eater / familiar kid-friendly option based on what the parent says, not a guarantee the child will eat it
   - vegetarian
   - nut-free
   - dairy-free
@@ -173,6 +173,8 @@ Potential inputs:
   “What do you have?”
   “Anything to avoid?”
 
+Any pantry/use-what-you-have language should be based only on what the parent enters in the current flow. 1Less should not imply it knows the household pantry or inventory.
+
 Step 3:
 1Less returns one dinner decision.
 
@@ -180,7 +182,7 @@ Example:
 
 “Tonight: bean & cheese quesadillas with fruit and yogurt.
 
-Why: 15 minutes, kid-friendly, low cleanup, uses pantry staples.
+Why: 15 minutes, familiar/kid-friendly based on what you told me, low cleanup, uses pantry/freezer staples you say you have.
 
 Check: If dairy is a concern, swap cheese/yogurt for your safe alternative.”
 
@@ -240,15 +242,17 @@ Likely okay to store:
 - accepted/rejected meal history
 - saved fallback meals
 
-Be cautious with:
+MVP must not ask for or require:
 
 - children’s names
 - medical conditions
-- detailed health data
-- exact location
+- precise location
+- detailed health/nutrition goals
 - school schedules
 - photos of pantry/fridge
 - grocery purchase history
+
+If a parent voluntarily types sensitive information into free text, this MVP should not highlight it, build profile features around it, or require it for future use.
 
 Suggested privacy posture:
 
@@ -268,6 +272,8 @@ MVP boundary:
 Suggested wording:
 
 “1Less can help avoid ingredients you flag, but it cannot guarantee allergy safety. Always check labels and use your judgment for serious allergies.”
+
+If allergy or avoidance input is present, the recommendation UI must show this caution near the recommendation. This cannot live only in docs, policy text, or footer copy.
 
 ## 7. Retention hypothesis
 
@@ -373,7 +379,7 @@ Scope:
   - energy level
   - dietary/allergy constraints
   - optional ingredients / what they have
-  - picky eater note
+  - picky eater / familiar kid-friendly option based on what the parent says, not a guarantee the child will eat it note
 - Return one dinner recommendation, not a long list
 - Recommendation should include:
   - meal name
