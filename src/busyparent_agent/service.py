@@ -156,6 +156,7 @@ DINNER_MVP_MEALS = [
         "minutes": 15,
         "effort": "low",
         "tags": {"low_energy", "picky", "vegetarian", "pantry", "leftovers", "nut_free", "dairy_free", "egg_free"},
+        "ingredient_keywords": {"tortilla", "tortillas", "bean", "beans", "black beans", "fruit", "avocado", "salsa"},
         "ingredients": "tortillas, black beans, mild salsa or avocado, and any fruit or crunchy side that fits your house",
         "steps": "Warm beans, fold them into tortillas with mild salsa or avocado, and serve fruit or a simple side.",
         "fallback": "If tortillas are missing, make quick bean-and-rice bowls with the same toppings.",
@@ -165,6 +166,7 @@ DINNER_MVP_MEALS = [
         "minutes": 20,
         "effort": "normal",
         "tags": {"fast", "picky", "pantry", "leftovers", "dairy_free", "nut_free"},
+        "ingredient_keywords": {"rice", "egg", "eggs", "pea", "peas", "frozen peas", "vegetable", "vegetables"},
         "ingredients": "rice, eggs, frozen peas or another vegetable that fits your house, and a light sauce",
         "steps": "Scramble eggs, stir-fry rice with peas, keep sauce light for kids, and add grown-up heat at the table.",
         "fallback": "If eggs are out, make quick vegetable fried rice with beans, tofu, or another protein you have.",
@@ -174,6 +176,7 @@ DINNER_MVP_MEALS = [
         "minutes": 25,
         "effort": "normal",
         "tags": {"picky", "vegetarian", "nut_free"},
+        "ingredient_keywords": {"pasta", "marinara", "carrot", "carrots", "vegetable", "vegetables", "cheese"},
         "ingredients": "pasta, jarred marinara, carrots or another simple vegetable, and optional cheese",
         "steps": "Boil pasta, warm sauce, add shredded carrots or a side vegetable, and keep toppings optional.",
         "fallback": "If pasta is missing, serve the sauce over toast, rice, or any grain you already have.",
@@ -183,6 +186,7 @@ DINNER_MVP_MEALS = [
         "minutes": 30,
         "effort": "can cook",
         "tags": {"can_cook", "leftovers", "dairy_free", "nut_free"},
+        "ingredient_keywords": {"chicken", "protein", "rice", "corn", "beans"},
         "ingredients": "chicken or another protein that fits your house, rice, corn, and a mild topping",
         "steps": "Cook the protein and corn together, serve over rice, and keep sauces on the side.",
         "fallback": "If chicken is missing, use beans, eggs, or leftovers as the bowl protein.",
@@ -262,6 +266,7 @@ def parse_dinner_decision_context(parent_message: str) -> dict[str, Any]:
         minutes = 30
 
     avoid_terms = _parse_avoid_terms(message)
+    positive_ingredients = [term for term in _parse_positive_ingredients(message) if term not in avoid_terms]
 
     return {
         "minutes": minutes,
@@ -274,6 +279,7 @@ def parse_dinner_decision_context(parent_message: str) -> dict[str, Any]:
         "leftovers": _has_word(message, "leftover") or _has_word(message, "leftovers"),
         "pantry": any(phrase in message for phrase in ("pantry", "freezer", "use what", "already have", "no grocery")),
         "avoid_terms": avoid_terms,
+        "positive_ingredients": positive_ingredients,
         "free_text": parent_message.strip(),
     }
 
@@ -304,6 +310,10 @@ def choose_dinner_decision(context: dict[str, Any], rejected: set[str] | None = 
             value += 35 if "egg_free" in tags else -80
         if _meal_mentions_avoided_term(meal, context.get("avoid_terms", [])):
             value -= 1000
+        matched_ingredients = _matching_positive_ingredients(meal, context.get("positive_ingredients", []))
+        value += 25 * len(matched_ingredients)
+        if len(matched_ingredients) >= 2:
+            value += 20
         if context.get("leftovers"):
             value += 20 if "leftovers" in tags else 0
         if context.get("pantry"):
@@ -339,6 +349,9 @@ def dinner_fit_reason(meal: dict[str, Any], context: dict[str, Any]) -> str:
         reasons.append("it is a familiar kid-friendly direction based on what you told me")
     if context.get("vegetarian"):
         reasons.append("it avoids meat")
+    matched_ingredients = _matching_positive_ingredients(meal, context.get("positive_ingredients", []))
+    if matched_ingredients:
+        reasons.append("it uses ingredients you said you have")
     if context.get("dairy_free") or context.get("egg_free") or context.get("avoid_terms"):
         reasons.append("it respects the avoidances you flagged")
     if context.get("leftovers"):
@@ -363,9 +376,67 @@ def _parse_avoid_terms(message: str) -> list[str]:
         "spicy": ("spicy",),
     }
     for term, words in checks.items():
-        if any(_has_word(message, word) for word in words):
+        if any(_has_avoidance_signal(message, word) for word in words):
             terms.append(term)
     return terms
+
+
+def _has_avoidance_signal(message: str, word: str) -> bool:
+    escaped = re.escape(word)
+    patterns = (
+        rf"(?<![a-z0-9])(avoid|avoiding|no|without)\s+{escaped}(?![a-z0-9])",
+        rf"(?<![a-z0-9]){escaped}\s+(allergy|allergies)(?![a-z0-9])",
+        rf"(?<![a-z0-9])allergic\s+to\s+{escaped}(?![a-z0-9])",
+        rf"(?<![a-z0-9]){escaped}[- ]free(?![a-z0-9])",
+    )
+    return any(re.search(pattern, message) for pattern in patterns)
+
+
+def _parse_positive_ingredients(message: str) -> list[str]:
+    ingredients = []
+    for term in (
+        "rice",
+        "egg",
+        "eggs",
+        "pea",
+        "peas",
+        "frozen peas",
+        "tortilla",
+        "tortillas",
+        "bean",
+        "beans",
+        "black beans",
+        "pasta",
+        "marinara",
+        "carrot",
+        "carrots",
+        "chicken",
+        "corn",
+        "fruit",
+        "avocado",
+        "salsa",
+    ):
+        if _has_positive_ingredient_signal(message, term):
+            ingredients.append(term)
+    return ingredients
+
+
+def _has_positive_ingredient_signal(message: str, term: str) -> bool:
+    escaped = re.escape(term)
+    patterns = (
+        rf"(?<![a-z0-9])(i|we)\s+have[^.?!;]*\b{escaped}\b",
+        rf"(?<![a-z0-9])use[^.?!;]*\b{escaped}\b",
+        rf"(?<![a-z0-9])leftover\s+{escaped}\b",
+        rf"(?<![a-z0-9]){escaped}\s+in\s+the\s+(fridge|freezer|pantry)\b",
+    )
+    return any(re.search(pattern, message) for pattern in patterns)
+
+
+def _matching_positive_ingredients(meal: dict[str, Any], positive_ingredients: list[str]) -> list[str]:
+    if not positive_ingredients:
+        return []
+    keywords = meal.get("ingredient_keywords", set())
+    return [term for term in positive_ingredients if term in keywords]
 
 
 def _has_word(message: str, word: str) -> bool:

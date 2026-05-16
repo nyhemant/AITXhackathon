@@ -532,6 +532,48 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertNotIn("milk", lower_message)
         self.assertNotIn("yogurt", lower_message)
 
+    def test_chapter1_positive_ingredient_context_biases_recommendation_without_caveat(self):
+        session = create_dinner_decision_session()
+
+        response = session.send("I have rice, eggs, and frozen peas. I have 20 minutes and normal energy.")
+
+        self.assertEqual(response["metadata"]["current_recommendation"], "Egg Fried Rice with peas")
+        self.assertIn("Tonight: Egg Fried Rice with peas.", response["message"])
+        self.assertIn("it uses ingredients you said you have", response["message"])
+        self.assertNotIn(ALLERGY_CAVEAT, response["message"])
+        self.assertFalse(response["metadata"]["allergy_caveat"])
+
+    def test_chapter1_explicit_egg_avoidance_blocks_egg_meal_and_shows_caveat(self):
+        session = create_dinner_decision_session()
+
+        response = session.send("Avoid eggs. I have rice and frozen peas. I have 20 minutes.")
+
+        self.assertNotEqual(response["metadata"]["current_recommendation"], "Egg Fried Rice with peas")
+        self.assertIn(ALLERGY_CAVEAT, response["message"])
+        self.assertTrue(response["metadata"]["allergy_caveat"])
+        self.assertNotIn("egg", response["message"].lower())
+
+    def test_chapter1_egg_allergy_blocks_egg_meal_and_shows_caveat(self):
+        session = create_dinner_decision_session()
+
+        response = session.send("Egg allergy. I have rice and frozen peas. I have 20 minutes.")
+
+        self.assertNotEqual(response["metadata"]["current_recommendation"], "Egg Fried Rice with peas")
+        self.assertIn(ALLERGY_CAVEAT, response["message"])
+        self.assertTrue(response["metadata"]["allergy_caveat"])
+
+    def test_chapter1_without_and_free_phrases_are_avoidance_signals(self):
+        session = create_dinner_decision_session()
+
+        response = session.send("Without dairy tonight. Egg-free too. I have rice and frozen peas. I have 20 minutes.")
+
+        self.assertIn(ALLERGY_CAVEAT, response["message"])
+        self.assertTrue(response["metadata"]["allergy_caveat"])
+        self.assertNotIn("egg", response["message"].lower())
+        self.assertNotIn("cheese", response["message"].lower())
+        self.assertNotIn("milk", response["message"].lower())
+        self.assertNotIn("yogurt", response["message"].lower())
+
     def test_book_web_chat_stays_in_storypath_mode_for_followup(self):
         first_payload = self.handle_scenario("book")
         session_id = first_payload["session_id"]
