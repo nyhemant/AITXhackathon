@@ -43,7 +43,7 @@ The gate covered:
 
 ## Remaining caveat
 
-This is still synthetic validation. It reduces obvious product/trust failures, but it does **not** prove emotional relief.
+This is still synthetic validation. It reduces obvious product/trust failures, but it does **not** prove emotional relief. The Reddit community observation scan sharpened the emotional job to the late-day dinner-crunch moment: one realistic answer for the 4:47pm dinner meltdown, not recipe discovery or meal-planning homework.
 
 Use the label:
 
@@ -53,11 +53,13 @@ Do not call it generally validated, parent-proven, or emotionally validated unti
 
 ## Recommended next step
 
-Proceed to a small unmoderated alpha or 3–5 moderated parent tests.
+Proceed to a small unmoderated alpha or 3–5 moderated parent tests, preferably with working parents / working moms with young or school-age kids.
 
 Watch especially:
 
 - whether the first recommendation removes effort or creates a new decision
+- whether the “4:47pm dinner meltdown” framing resonates or feels gimmicky
+- whether the experience feels like one realistic answer, not twenty recipes
 - whether `Too much work` feels like genuine relief
 - whether sparse ingredient handling feels heard rather than magical
 - whether allergy/avoidance caveats feel appropriately cautious without being scary

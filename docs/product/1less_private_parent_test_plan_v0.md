@@ -1,20 +1,26 @@
 # 1Less Chapter 1 — Private Parent Test Plan v0
 
-Status: draft for small private test  
+Status: updated after Reddit community observation scan  
 Scope: usage/trust feedback only; no feature expansion
 
 ## Core question
 
-Does the current Chapter 1 dinner flow remove one dinner decision without creating another chore?
+Does the current Chapter 1 dinner flow remove one dinner decision without creating another chore — specifically at the late-day “4:47pm dinner meltdown” moment?
 
 ## Test size
 
 Run with either:
 
-- 3–5 private parent testers, or
+- 3–5 private parent testers, preferably working parents / working moms with young or school-age kids, or
 - 3–5 realistic parent-style scenarios if live testers are not ready yet.
 
 This is not a growth, onboarding, or retention test. It is a trust/usefulness gate.
+
+Positioning under test:
+
+> For the 4:47pm dinner meltdown: one realistic dinner decision, not a recipe rabbit hole.
+
+Watch whether this feels true, too cute, too narrow, or genuinely relieving.
 
 ## What to observe
 
@@ -26,14 +32,16 @@ For each tester/scenario, capture:
 4. Did any wording feel unsafe, creepy, or overconfident?
 5. Did the app avoid allergy, nutrition, and medical promises?
 6. Did it feel like “one less decision,” or just another mini form?
+7. Did it feel like one realistic answer, not twenty recipes?
+8. Did “use what I have” feel grounded in what they typed, without implying pantry memory?
 
 ## Suggested test scenarios
 
-### Scenario 1 — exhausted weeknight
+### Scenario 1 — 4:47pm dinner meltdown
 
 Prompt:
 
-> I have 10 minutes and barely cooking energy. Make it picky-kid friendly.
+> It is 4:47pm, everyone is hungry, I have 10 minutes and barely cooking energy. Make it picky-kid friendly.
 
 Watch for:
 
@@ -55,7 +63,7 @@ Watch for:
 - no medical/nutrition/allergy guarantee
 - no overconfident “safe” language
 
-### Scenario 3 — ingredient context
+### Scenario 3 — use what I have
 
 Prompt:
 
@@ -89,7 +97,33 @@ Prompt sequence:
 Watch for:
 
 - fallback reduces burden rather than opening a new decision tree
+- `Too much work` reduces at least one of time, cleanup, steps, active attention, or ingredient complexity
+- `Kid won't eat this` tries a deconstructed/familiar-side version before a totally unrelated adult recipe
 - parent still ends with one plausible dinner
+
+### Scenario 6 — no store run / pantry constraint
+
+Prompt:
+
+> No store run. I only have pasta, jarred sauce, frozen peas, yogurt, and apples. I have 15 minutes.
+
+Watch for:
+
+- uses current-turn ingredients as constraints
+- does not invent groceries as required items
+- gives a good-enough default rather than a full meal plan
+
+### Scenario 7 — parent has ideas but no brain
+
+Prompt:
+
+> I have a few dinner ideas but no brain left to decide. We have tortillas, cheese, beans, rice, and fruit. Pick one.
+
+Watch for:
+
+- acknowledges decision fatigue without being patronizing
+- chooses one path
+- avoids presenting a comparison list that recreates the decision
 
 ## Pass condition
 
@@ -104,6 +138,7 @@ The MVP is usable enough for small private testing if most scenarios/testers sho
 - no creepy memory/pantry implication
 - no allergy, nutrition, medical, budget, or pantry-accuracy promises
 - tester feels relief rather than another chore
+- tester understands the product as dinner-crunch relief, not recipe discovery or meal planning
 
 ## Stop conditions
 
@@ -132,4 +167,6 @@ Recommended next artifact after testing: a short findings note with:
 - confusing or unsafe wording
 - what felt like relief
 - what felt like a chore
+- whether “4:47pm dinner meltdown” resonated or felt gimmicky
+- whether “one realistic answer, not twenty recipes” was visible in the experience
 - one recommended next fix, if any

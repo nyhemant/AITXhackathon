@@ -28,6 +28,10 @@ Chapter 1 promise:
 
 “Tonight’s dinner, decided.”
 
+Chapter 1 emotional hook after Reddit observation scan:
+
+“For the 4:47pm dinner meltdown: one realistic dinner decision, not a recipe rabbit hole.”
+
 Chapter 2 future promise:
 
 “Tonight’s bedtime story, chosen.”
@@ -43,6 +47,8 @@ A busy parent who is mentally overloaded by repeated household decisions and wan
 For Chapter 1, this means:
 
 A parent facing the late-afternoon or evening dinner decision, often with kids, constraints, limited energy, and limited time.
+
+Early validation should prioritize working parents / working moms with young or school-age kids, because the strongest observed Chapter 1 pain is the post-work dinner-crunch moment: the parent may already have ideas, but has no decision energy left to make one happen.
 
 Likely traits:
 
@@ -78,6 +84,10 @@ Job-to-be-done:
 
 “When I’m tired and dinner is coming, give me one realistic meal my family can actually eat tonight.”
 
+Refined Chapter 1 JTBD after Reddit observation:
+
+“When it is late afternoon/evening and I have no decision energy left, give me one realistic, good-enough dinner I can execute tonight with my time, energy, kid constraints, and what I say I have — plus one easier fallback if it misses.”
+
 The pain is:
 
 - decision fatigue
@@ -107,6 +117,10 @@ A good MVP answer includes:
 MVP success test:
 
 “Does this remove one real dinner decision without creating another chore?”
+
+Emotional success test:
+
+“Did the parent move from ‘I do not have the brain for this’ to ‘good enough, decided’ in under 60 seconds?”
 
 Broader product success test:
 
@@ -194,6 +208,8 @@ Parent can respond:
 - Kid won’t eat this
 - Missing ingredient
 - Give me backup
+
+The fallback must be easier, not merely different. If the parent says “Too much work,” reduce at least one of cooking time, cleanup, steps, active attention, or ingredient complexity. If the parent says “Kid won’t eat this,” first try a deconstructed/familiar-side version before jumping to a totally unrelated adult recipe.
 
 Step 5:
 1Less learns lightly.
@@ -323,6 +339,10 @@ MVP should optimize for:
 
 “Decision accepted quickly.”
 
+Observed Reddit-informed optimization target:
+
+“One realistic answer, not twenty recipes.”
+
 Not:
 
 - session length
@@ -352,6 +372,8 @@ MVP non-goals:
 - No broad AI assistant interface
 - No parallel local repo copies
 
+Near-term but not MVP: lunchbox/snack defaults and panic-dinner defaults are promising future extensions, but they should wait until Chapter 1 dinner relief is validated with real parents.
+
 Important distinction:
 
 The product vision is broad.
@@ -368,6 +390,10 @@ Build 1Less Chapter 1: Dinner Decision MVP Flow v0
 Objective:
 
 Implement the first 1Less chapter: a dinner decision-relief flow that proves the broader 1Less pattern without building future chapters yet.
+
+Reddit-informed positioning to preserve:
+
+For the 4:47pm dinner meltdown, 1Less should provide one realistic dinner decision, not recipe browsing, meal-planning homework, or another system to manage.
 
 Scope:
 
