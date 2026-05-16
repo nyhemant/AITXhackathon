@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from datetime import datetime
 import json
+import re
 from typing import Any
 
 from busyparent_agent.agent import BusyParentAgent
@@ -11,8 +12,12 @@ from busyparent_agent import tools
 from busyparent_agent.adapters import mock_epic
 
 
-APP_TITLE = "BusyMom Agent"
-APP_SUBTITLE = "Local Python agent demo"
+APP_TITLE = "1Less"
+APP_SUBTITLE = "Chapter 1 dinner decision demo"
+ALLERGY_CAVEAT = (
+    "1Less can help avoid ingredients you flag, but it cannot guarantee allergy safety. "
+    "Always check labels and use your judgment for serious allergies."
+)
 
 SCENARIO_MESSAGES = {
     "dinner": "What should I make for dinner tonight?",
@@ -143,6 +148,278 @@ def create_session(
         trace=trace,
         locked_time_context=locked_time_context or scenario is not None,
     )
+
+
+DINNER_MVP_MEALS = [
+    {
+        "name": "Black Bean Tacos with fruit",
+        "minutes": 15,
+        "effort": "low",
+        "tags": {"low_energy", "picky", "vegetarian", "pantry", "leftovers", "nut_free", "dairy_free", "egg_free"},
+        "ingredients": "tortillas, black beans, mild salsa or avocado, and any fruit or crunchy side that fits your house",
+        "steps": "Warm beans, fold them into tortillas with mild salsa or avocado, and serve fruit or a simple side.",
+        "fallback": "If tortillas are missing, make quick bean-and-rice bowls with the same toppings.",
+    },
+    {
+        "name": "Egg Fried Rice with peas",
+        "minutes": 20,
+        "effort": "normal",
+        "tags": {"fast", "picky", "pantry", "leftovers", "dairy_free", "nut_free"},
+        "ingredients": "rice, eggs, frozen peas or another vegetable that fits your house, and a light sauce",
+        "steps": "Scramble eggs, stir-fry rice with peas, keep sauce light for kids, and add grown-up heat at the table.",
+        "fallback": "If eggs are out, make quick vegetable fried rice with beans, tofu, or another protein you have.",
+    },
+    {
+        "name": "Pasta Marinara with carrots",
+        "minutes": 25,
+        "effort": "normal",
+        "tags": {"picky", "vegetarian", "nut_free"},
+        "ingredients": "pasta, jarred marinara, carrots or another simple vegetable, and optional cheese",
+        "steps": "Boil pasta, warm sauce, add shredded carrots or a side vegetable, and keep toppings optional.",
+        "fallback": "If pasta is missing, serve the sauce over toast, rice, or any grain you already have.",
+    },
+    {
+        "name": "Sheet-pan chicken and corn rice bowls",
+        "minutes": 30,
+        "effort": "can cook",
+        "tags": {"can_cook", "leftovers", "dairy_free", "nut_free"},
+        "ingredients": "chicken or another protein that fits your house, rice, corn, and a mild topping",
+        "steps": "Cook the protein and corn together, serve over rice, and keep sauces on the side.",
+        "fallback": "If chicken is missing, use beans, eggs, or leftovers as the bowl protein.",
+    },
+]
+
+
+class DinnerDecisionSession:
+    """Small Chapter 1 MVP flow that uses only current-turn parent input."""
+
+    def __init__(self):
+        self.current_recommendation: dict[str, Any] | None = None
+        self.last_context: dict[str, Any] | None = None
+        self.rejected: set[str] = set()
+
+    def send(self, parent_message: str, scenario: str | None = None) -> dict[str, Any]:
+        context = parse_dinner_decision_context(parent_message)
+        if self.last_context:
+            context = {**self.last_context, **{key: value for key, value in context.items() if value}}
+
+        feedback = _dinner_feedback(parent_message)
+        if feedback and self.current_recommendation:
+            if feedback in {"too_much_work", "kid_wont_eat", "missing_ingredient", "backup"}:
+                self.rejected.add(self.current_recommendation["name"])
+                if feedback == "too_much_work":
+                    context["energy"] = "barely cooking"
+                    context["minutes"] = min(context.get("minutes") or 20, 15)
+                if feedback == "kid_wont_eat":
+                    context["picky"] = True
+                if feedback == "missing_ingredient":
+                    context["use_current_input"] = True
+                recommendation = choose_dinner_decision(context, self.rejected)
+                self.current_recommendation = recommendation
+                self.last_context = context
+                message = format_dinner_decision(recommendation, context, prefix="Backup:")
+            else:
+                message = (
+                    f"Good enough. Tonight is decided: {self.current_recommendation['name']}.\n"
+                    "I will keep this as a lightweight signal for this session only."
+                )
+        else:
+            recommendation = choose_dinner_decision(context, self.rejected)
+            self.current_recommendation = recommendation
+            self.last_context = context
+            message = format_dinner_decision(recommendation, context)
+
+        return {
+            "parent_message": parent_message,
+            "message": message,
+            "trace": [],
+            "grocery_items": [],
+            "metadata": {
+                "scenario": scenario,
+                "chapter": "chapter_1_dinner_decision",
+                "current_recommendation": (
+                    self.current_recommendation["name"] if self.current_recommendation else None
+                ),
+                "allergy_caveat": _needs_allergy_caveat(context),
+            },
+        }
+
+
+def create_dinner_decision_session() -> DinnerDecisionSession:
+    return DinnerDecisionSession()
+
+
+def parse_dinner_decision_context(parent_message: str) -> dict[str, Any]:
+    message = parent_message.lower().replace("’", "'")
+    minutes = None
+    if any(phrase in message for phrase in ("10 min", "10 minutes", "ten minutes")):
+        minutes = 10
+    elif any(phrase in message for phrase in ("15 min", "15 minutes", "fifteen minutes")):
+        minutes = 15
+    elif any(phrase in message for phrase in ("20 min", "20 minutes", "twenty minutes")):
+        minutes = 20
+    elif any(phrase in message for phrase in ("30 min", "30 minutes", "thirty minutes")):
+        minutes = 30
+
+    avoid_terms = _parse_avoid_terms(message)
+
+    return {
+        "minutes": minutes,
+        "energy": _parse_energy(message),
+        "picky": any(phrase in message for phrase in ("picky", "kid friendly", "kid-friendly", "familiar", "kids may eat")),
+        "vegetarian": _has_word(message, "vegetarian"),
+        "nut_free": any(term in avoid_terms for term in ("peanut", "nut")),
+        "dairy_free": any(term in avoid_terms for term in ("dairy", "milk", "cheese", "yogurt")),
+        "egg_free": "egg" in avoid_terms,
+        "leftovers": _has_word(message, "leftover") or _has_word(message, "leftovers"),
+        "pantry": any(phrase in message for phrase in ("pantry", "freezer", "use what", "already have", "no grocery")),
+        "avoid_terms": avoid_terms,
+        "free_text": parent_message.strip(),
+    }
+
+
+def choose_dinner_decision(context: dict[str, Any], rejected: set[str] | None = None) -> dict[str, Any]:
+    rejected = rejected or set()
+    candidates = [meal for meal in DINNER_MVP_MEALS if meal["name"] not in rejected] or DINNER_MVP_MEALS[:]
+
+    def score(meal: dict[str, Any]) -> int:
+        tags = meal["tags"]
+        value = 0
+        minutes = context.get("minutes")
+        if minutes:
+            value += 35 if meal["minutes"] <= minutes else -25
+        if context.get("energy") == "barely cooking":
+            value += 35 if meal["effort"] == "low" else -20
+        elif context.get("energy") == "can cook":
+            value += 12 if meal["effort"] == "can cook" else 0
+        if context.get("picky"):
+            value += 30 if "picky" in tags else -10
+        if context.get("vegetarian"):
+            value += 40 if "vegetarian" in tags else -60
+        if context.get("nut_free"):
+            value += 15 if "nut_free" in tags else -60
+        if context.get("dairy_free"):
+            value += 35 if "dairy_free" in tags else -60
+        if context.get("egg_free"):
+            value += 35 if "egg_free" in tags else -80
+        if _meal_mentions_avoided_term(meal, context.get("avoid_terms", [])):
+            value -= 1000
+        if context.get("leftovers"):
+            value += 20 if "leftovers" in tags else 0
+        if context.get("pantry"):
+            value += 20 if "pantry" in tags else -8
+        value -= meal["minutes"] // 5
+        return value
+
+    return dict(max(candidates, key=score))
+
+
+def format_dinner_decision(meal: dict[str, Any], context: dict[str, Any], prefix: str = "Tonight:") -> str:
+    lines = [
+        f"{prefix} {meal['name']}.",
+        f"Why it fits: {dinner_fit_reason(meal, context)}",
+        f"Time/effort: about {meal['minutes']} minutes, {meal['effort']} effort.",
+        f"Works with common basics like: {meal['ingredients']}.",
+        f"Simple plan: {meal['steps']}",
+        f"Fallback/tweak: {meal['fallback']}",
+    ]
+    if _needs_allergy_caveat(context):
+        lines.append(ALLERGY_CAVEAT)
+    lines.append("One decision, not a recipe search.")
+    return "\n".join(lines)
+
+
+def dinner_fit_reason(meal: dict[str, Any], context: dict[str, Any]) -> str:
+    reasons = []
+    if context.get("minutes"):
+        reasons.append(f"it fits the {context['minutes']}-minute window" if meal["minutes"] <= context["minutes"] else "it is the closest practical fit")
+    if context.get("energy") == "barely cooking":
+        reasons.append("it keeps cooking effort low")
+    if context.get("picky"):
+        reasons.append("it is a familiar kid-friendly direction based on what you told me")
+    if context.get("vegetarian"):
+        reasons.append("it avoids meat")
+    if context.get("dairy_free") or context.get("egg_free") or context.get("avoid_terms"):
+        reasons.append("it respects the avoidances you flagged")
+    if context.get("leftovers"):
+        reasons.append("it can use leftovers")
+    if context.get("pantry"):
+        reasons.append("it is built around ingredients you say you have")
+    if not reasons:
+        reasons.append("it is fast, familiar, and low-decision for tonight")
+    return "; ".join(reasons) + "."
+
+
+def _parse_avoid_terms(message: str) -> list[str]:
+    terms: list[str] = []
+    checks = {
+        "peanut": ("peanut", "peanuts"),
+        "nut": ("nut", "nuts", "tree nut", "tree nuts"),
+        "dairy": ("dairy",),
+        "milk": ("milk",),
+        "cheese": ("cheese",),
+        "yogurt": ("yogurt", "yoghurt"),
+        "egg": ("egg", "eggs"),
+        "spicy": ("spicy",),
+    }
+    for term, words in checks.items():
+        if any(_has_word(message, word) for word in words):
+            terms.append(term)
+    return terms
+
+
+def _has_word(message: str, word: str) -> bool:
+    pattern = r"(?<![a-z0-9])" + re.escape(word) + r"(?![a-z0-9])"
+    return re.search(pattern, message) is not None
+
+
+def _meal_mentions_avoided_term(meal: dict[str, Any], avoid_terms: list[str]) -> bool:
+    if not avoid_terms:
+        return False
+    haystack = " ".join(str(meal.get(field, "")) for field in ("name", "ingredients", "steps", "fallback")).lower()
+    blocked_words = {
+        "peanut": ("peanut", "peanuts"),
+        "nut": ("nut", "nuts", "tree nut", "tree nuts"),
+        "dairy": ("dairy", "milk", "cheese", "yogurt", "yoghurt"),
+        "milk": ("milk",),
+        "cheese": ("cheese",),
+        "yogurt": ("yogurt", "yoghurt"),
+        "egg": ("egg", "eggs"),
+        "spicy": ("spicy",),
+    }
+    for term in avoid_terms:
+        if any(_has_word(haystack, word) for word in blocked_words.get(term, (term,))):
+            return True
+    return False
+
+
+def _parse_energy(message: str) -> str | None:
+    if any(phrase in message for phrase in ("barely cooking", "exhausted", "lowest effort", "lowest-effort", "low effort")):
+        return "barely cooking"
+    if "can cook" in message:
+        return "can cook"
+    if "normal" in message:
+        return "normal"
+    return None
+
+
+def _needs_allergy_caveat(context: dict[str, Any]) -> bool:
+    return bool(context.get("nut_free") or context.get("dairy_free") or context.get("avoid_terms"))
+
+
+def _dinner_feedback(parent_message: str) -> str | None:
+    normalized = parent_message.lower().replace("’", "'")
+    if "good enough" in normalized or "works" in normalized:
+        return "accepted"
+    if any(phrase in normalized for phrase in ("too much work", "too much cooking", "barely cooking")):
+        return "too_much_work"
+    if any(phrase in normalized for phrase in ("kid won't eat", "kid wont eat", "kids won't eat", "kids wont eat")):
+        return "kid_wont_eat"
+    if "missing ingredient" in normalized or "don't have" in normalized or "do not have" in normalized:
+        return "missing_ingredient"
+    if "backup" in normalized or "fallback" in normalized or "give me backup" in normalized:
+        return "backup"
+    return None
 
 
 def run_scenario(session: AgentSession, scenario: str) -> list[dict[str, Any]]:

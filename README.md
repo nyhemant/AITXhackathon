@@ -1,25 +1,35 @@
-# BusyMom Agent
+# 1Less
 
-Local Python agent demo for the **AITX Community x Codex Hackathon, Agents Track**.
+1Less is a parent decision-relief demo.
 
-BusyMom Agent reduces evening decision load with one practical default at a time. v1 proves Dinner Planner: understand the dinner goal, call local tools, make a time-aware decision, adapt after feedback, and revise for a guest child constraint. v2 adds Story Picker: one kid-right bedtime book from a mocked Epic-style catalog.
+Company promise: **One less decision for busy parents.**
 
-## Submission Materials
+Chapter 1 promise: **Tonight's dinner, decided.**
 
-Hackathon submission checklist, architecture, data provenance, and limitations are in [docs/submission.md](docs/submission.md).
+This implementation starts with a narrow dinner decision flow. A parent gives only the context needed for tonight: time, energy, simple constraints, optional ingredients, and anything to avoid. 1Less returns one practical dinner recommendation, not a recipe browser or weekly planning system.
 
-## Why It Fits The Agents Track
+## Chapter 1 Flow
 
-This is a small, deterministic agent demo rather than a web app. The visible trace shows:
+The local web app supports:
 
-- `[tool]` calls into mocked family, inventory, Instacart-like order history, meal, delivery-window, and grocery-list tools
-- `[inventory]` lines that explain confidence from visible snapshots, recent orders, and bulk purchases
-- `[vision]` lines from mocked/preexisting fridge, pantry, grocery-haul, and receipt photo scans
-- `[memory]` scoring lines from local household meal history
-- `[decision]` lines explaining why the agent chooses pantry-first or delivery-aware planning
-- One meal recommendation first, not a recipe list
-- Adaptation after rejection
-- Guest child handling for no nuts and no spicy food, with careful allergy wording
+- Quick prompts for 10 / 20 / 30 minute dinners
+- Energy levels: barely cooking, normal, can cook
+- Lightweight constraints such as picky-kid friendly, vegetarian, nut-free, dairy-free, leftovers, and pantry/freezer basics
+- Optional free text for what the parent has tonight or wants to avoid
+- One recommendation with meal name, why it fits, time/effort, simple steps, and one fallback/tweak
+- Feedback actions: Good enough, Too much work, Kid won't eat, Missing ingredient, Give me backup
+
+If allergy or avoidance input is present, the recommendation shows:
+
+> 1Less can help avoid ingredients you flag, but it cannot guarantee allergy safety. Always check labels and use your judgment for serious allergies.
+
+## Boundaries
+
+This MVP does not claim allergy safety, nutrition optimization, medical diet support, budget optimization, cultural or religious dietary correctness, pantry accuracy, or grocery fulfillment.
+
+It does not ask for child names, medical conditions, precise location, detailed health or nutrition goals, school schedules, pantry/fridge photos, or grocery purchase history.
+
+The existing repository still contains older deterministic demo internals and Story Picker code from prior hackathon work. This Chapter 1 pass keeps that code intact where possible, but the public dinner web flow is the active 1Less MVP surface.
 
 ## Quick Start
 
@@ -27,20 +37,7 @@ Requirements:
 
 - Python >=3.10
 
-Clone and enter the repo:
-
-```bash
-git clone https://github.com/nyhemant/AITXhackathon.git
-cd AITXhackathon
-```
-
 From the repo root:
-
-```bash
-python3 -m busyparent_agent.app --demo --trace
-```
-
-Run tests:
 
 ```bash
 python3 -m unittest discover -s tests
@@ -58,8 +55,6 @@ Then browse locally to:
 http://127.0.0.1:8000
 ```
 
-`0.0.0.0` is the bind address for the server. Use `127.0.0.1` in the browser.
-
 If port `8000` is busy:
 
 ```bash
@@ -72,153 +67,15 @@ Then browse to:
 http://127.0.0.1:8001
 ```
 
-Restart the web server immediately before presenting so it serves the latest code.
-
-For v2 Story Picker work on the `v2-storypath` branch, keep v1 pinned separately on port `8000` and run the expanded Dinner Planner + Story Picker demo on port `8001`:
-
-```bash
-python3 -m busyparent_agent.web --host 127.0.0.1 --port 8001
-```
-
-Then browse to:
-
-```text
-http://127.0.0.1:8001
-```
-
-## Demo Commands
-
-Before the golden demo, reset mutable local meal memory and run tests:
-
-```bash
-git restore data/meal_history.json
-python3 -m unittest discover -s tests
-```
-
-Short mentor/judge scenarios:
-
-```bash
-python3 -m busyparent_agent.app --scenario dinner --trace
-python3 -m busyparent_agent.app --scenario lunch --trace
-python3 -m busyparent_agent.app --scenario guest --trace
-```
-
-Close-to-dinner branch: pantry-first, nothing required.
-
-```bash
-python3 -m busyparent_agent.app --demo --trace --now "2026-05-08 17:30"
-```
-
-Lunchtime branch: delivery-aware, small reviewable grocery cart.
-
-```bash
-python3 -m busyparent_agent.app --demo --trace --now "2026-05-09 12:30"
-```
-
-Interactive local chat:
-
-```bash
-python3 -m busyparent_agent.app
-```
-
-Local web chat for UX testing:
-
-```bash
-python3 -m busyparent_agent.web --host 0.0.0.0 --port 8000
-```
-
-## What Judges Should Notice
-
-In the close-to-dinner demo, the agent says it is close to dinner and chooses a pantry-first meal using high-confidence inventory.
-
-In the lunchtime demo, the agent says planning starts early enough to use a small mock Instacart delivery, then recommends dinner with a reviewable grocery cart. Required dinner items such as `avocado, berries` appear first, and the Smart Basket Builder adds useful household items only when the mock cart is below the $35.00 minimum. It never places an automatic order.
-
-The mock cart is backed by `data/mock_grocery_catalog.json`, a local grocery universe with representative demo prices, stock status, categories, sizes, brands, tags, and substitutes. The agent only adds catalog-backed, in-stock items or available substitutes to a mock cart. Smart add-ons prioritize upcoming meal usefulness, low-confidence fresh staples, kid snacks/sides, and low-waste recurring items while skipping high-confidence home inventory and Costco-covered staples.
-
-The Inventory Confidence Engine reconciles four local signals: biweekly Saturday morning Costco bulk restocks, short-cycle mock Instacart delivery history, current visible fridge/pantry snapshots, and mocked/preexisting photo scans for fridge, pantry, grocery hauls, and receipts. Photo scans are treated as visual evidence, not perfect inventory truth: high-confidence detected items can raise confidence, maybe items stay medium-confidence, and unknown objects are surfaced for parent confirmation. Costco shelf-stable staples decay slowly, Costco freezer items decay moderately, and Costco fresh produce decays quickly. For example, rice stays high-confidence from a recent Costco run, avocado ordered a few days ago becomes medium-confidence, and older kid snack berries become likely low.
-
-The agent also reads sample household memory from `data/meal_history.json`. Favorites, kid-approved meals, and popular meals get boosted, while meals served, recommended, or rejected recently are penalized so the agent avoids repeating yesterday's dinner when a strong pantry alternative exists.
-
-Parents can update that local memory conversationally in CLI or web chat. Messages like `Egg fried rice was a hit`, `The kids loved this`, `We had quesadillas yesterday`, or `Don't suggest quesadillas again this week` append simple events to `data/meal_history.json` and affect later recommendations.
-
-After the parent rejects the first recommendation, the agent returns three alternatives and gives a clear next pick. The scripted demo then chooses a valid current alternative.
-
-When a guest child has no-nuts/no-spicy constraints, the agent revises the selected meal, avoids the named ingredients, keeps heat off the shared meal, and reminds the parent to verify packaged labels.
-
-## Mocked vs. Real Integrations
-
-Mocked today:
-
-- `data/family_profile.json`
-- `data/inventory_snapshot.json`
-- `data/grocery_history.json`
-- `data/meal_options.json`
-- `data/meal_history.json`
-- `data/fridge_snapshot.json`
-- `data/pantry_snapshot.json`
-- `data/instacart_orders.json`
-- `data/mock_grocery_catalog.json`
-- `data/costco_bulk_purchases.json`
-- `data/photo_scan_results.json`
-- `data/sample_photos/`
-- `src/busyparent_agent/adapters/mock_instacart.py`
-- `src/busyparent_agent/adapters/costco_bulk.py`
-- `src/busyparent_agent/adapters/mock_photo_scan.py`
-- Delivery timing logic
-- Inventory confidence scoring from local fixtures
-- Mocked photo scan evidence from preexisting fixture outputs
-- Mock grocery catalog search, availability, substitutions, and demo pricing
-- Minimum-aware Smart Basket Builder with required and add-on cart sections
-- Household memory and recency-aware recommendation scoring
-- Conversational feedback capture into local JSON memory
-- Reviewable grocery cart updates
-
-Real later:
-
-- Real grocery provider availability and cart APIs
-- Real prices, taxes, fees, promotions, and substitution rules
-- Real read-only Costco receipt/account sync
-- Real receipt, pantry, haul, or fridge scanning
-- Photo recognition/OCR for fridge, pantry, haul, and receipt images
-- Calendar-aware dinner timing
-- User preference memory learned from accept, reject, recommended, and served events
-- LLM reasoning over a larger meal library
-
-No real grocery APIs, purchases, auth, web scraping, Telegram bot, camera capture, OCR, or photo recognition are included in this version.
-
-The local web chat is only a demo shell around the agent. It does not add auth, persistence, deployment, or external integrations.
-
-## Interface Architecture
-
-`src/busyparent_agent/service.py` is the channel-neutral adapter used by the CLI and web chat. It returns structured response dictionaries with:
-
-- visible message text
-- `[tool]` and `[decision]` trace lines
-- reviewable grocery items
-- scenario/state metadata
-
-The future Telegram adapter should call this same service instead of duplicating agent logic. Agent response text should stay channel-neutral so the same content can work in CLI, web chat, and Telegram.
-
 ## Project Structure
 
 ```text
 src/busyparent_agent/
-  adapters/   mock external-service adapters
-  app.py      CLI entry point
-  agent.py    deterministic agent loop and response policy
-  inventory.py Inventory Confidence Engine
-  service.py  channel-neutral response service
-  tools.py    local mocked tools
+  app.py      legacy CLI entry point
+  service.py  channel-neutral service helpers and Chapter 1 dinner MVP session
   web.py      stdlib local web chat adapter
-data/         mocked JSON inputs
-tests/        unittest coverage for agent behavior
-docs/demo.md  judge-facing demo script
+  agent.py    older deterministic dinner demo internals
+  tools.py    older local mocked tools
+tests/        unittest coverage
+docs/product/ source-of-truth product brief and task packet
 ```
-
-## Allergy Wording
-
-The demo can help avoid named ingredients such as nuts or spicy foods, but it is not an allergy safety guarantee. Allergy-sensitive families must verify packaged labels before serving.
-
-## License
-
-MIT. See [LICENSE](LICENSE).

@@ -5,7 +5,7 @@ import sys
 import unittest
 
 from busyparent_agent.agent import BusyParentAgent
-from busyparent_agent.service import create_session, parse_now, run_book_scenario
+from busyparent_agent.service import ALLERGY_CAVEAT, create_dinner_decision_session, create_session, parse_now, run_book_scenario
 from busyparent_agent.web import BOOK_SESSIONS, HTML, SESSIONS, WebHandler
 from busyparent_agent import tools
 from busyparent_agent import inventory as inventory_engine
@@ -174,7 +174,7 @@ class ScenarioCliTest(unittest.TestCase):
     def test_scenario_dinner_runs_and_includes_pantry_first(self):
         output = self.run_scenario("dinner")
 
-        self.assertIn("BusyMom Agent", output)
+        self.assertIn("1Less", output)
         self.assertIn("[decision] pantry-first because it is close to dinner", output)
         self.assertIn("Reviewable grocery list: nothing required.", output)
         self.assertNotIn("Not feeling that", output)
@@ -341,7 +341,7 @@ class WebApiScenarioTest(unittest.TestCase):
         return handler.json_payload
 
     def test_web_page_exposes_story_picker_room(self):
-        self.assertIn("Dinner Planner", HTML)
+        self.assertIn("Chapter 1: Dinner", HTML)
         self.assertIn("Story Picker", HTML)
         self.assertNotIn("Active room", HTML)
         self.assertNotIn("hero-status", HTML)
@@ -352,21 +352,23 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertNotIn("<h1>BusyMom Agent</h1>", HTML)
         self.assertIn('class="brand-lockup"', HTML)
         self.assertIn('class="brand-logo"', HTML)
-        self.assertIn('alt="BusyMom Agent logo"', HTML)
+        self.assertIn('alt="1Less logo"', HTML)
         self.assertIn('src="/BMLogo.svg"', HTML)
         self.assertNotIn("BPLogo", HTML)
         self.assertNotIn("BusyParent", HTML)
-        self.assertIn('<p class="tagline">Fewer evening decisions.</p>', HTML)
+        self.assertIn('<p class="tagline">One less decision for busy parents.</p>', HTML)
+        self.assertIn("Tonight's dinner, decided.", HTML)
+        self.assertIn("Dinner is the first 1Less proof point", HTML)
         self.assertNotIn("One good default at a time.", HTML)
         self.assertNotIn("Evening decision support", HTML)
         self.assertNotIn("Dinner handled", HTML)
         self.assertNotIn("Bedtime book handled", HTML)
         self.assertNotIn("Dinner room", HTML)
         self.assertNotIn("Bedtime book room", HTML)
-        self.assertIn("BusyMom Agent", HTML)
+        self.assertIn("<title>1Less</title>", HTML)
         self.assertIn('class="room-heading-row"', HTML)
         self.assertIn('class="proof-line" id="roomProofLine"', HTML)
-        self.assertIn("Dinner Planner considers", HTML)
+        self.assertIn("Chapter 1 dinner considers", HTML)
         self.assertIn("Story Picker considers", HTML)
         self.assertIn("Fit for", HTML)
         self.assertIn("Reading History", HTML)
@@ -384,7 +386,7 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertNotIn("Story Picker demo sample scenarios", HTML)
         self.assertNotIn("Dinner Planner actions", HTML)
         self.assertNotIn("Story Picker actions", HTML)
-        self.assertIn("One dinner plan that fits tonight.", HTML)
+        self.assertIn("Tonight's dinner, decided.", HTML)
         self.assertNotIn("Tonight's meal, made practical.", HTML)
         self.assertIn("One bedtime book that fits tonight.", HTML)
         self.assertNotIn("A just-right book-read for tonight.", HTML)
@@ -400,10 +402,10 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertNotIn("room-visual", HTML)
         self.assertNotIn("book-stack", HTML)
         self.assertIn('link.href = "https://www.getepic.com/"', HTML)
-        self.assertIn('link.href = "https://www.instacart.com/"', HTML)
+        self.assertNotIn('link.href = "https://www.instacart.com/"', HTML)
         self.assertIn('link.target = "_blank"', HTML)
         self.assertNotIn("mock-source-card", HTML)
-        self.assertIn("One dinner plan that fits tonight.", HTML)
+        self.assertIn("Tonight's dinner, decided.", HTML)
         self.assertIn("One bedtime book that fits tonight.", HTML)
         self.assertNotIn("Plan tonight's meal and grocery gaps.", HTML)
         self.assertNotIn("Pick one kid-right book for bedtime.", HTML)
@@ -412,7 +414,7 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertIn('data-scenario="book_siblings"', HTML)
         self.assertIn("Read with both kids", HTML)
         self.assertIn('scenario.startsWith("book") ? "book" : "dinner"', HTML)
-        self.assertIn('aria-pressed="false">Dinner now</button>', HTML)
+        self.assertIn('aria-pressed="false">No constraints</button>', HTML)
         self.assertIn("let selectedScenario = null", HTML)
         self.assertIn("function updateScenarioButtons()", HTML)
         self.assertIn('button.classList.toggle("pressed", pressed)', HTML)
@@ -429,12 +431,13 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertIn("activeMode", HTML)
         self.assertIn("mode: activeMode", HTML)
         self.assertIn('id="promptButton"', HTML)
-        self.assertIn('aria-label="Dinner Planner starter prompts"', HTML)
-        self.assertIn("Pick a starter prompt to send, or type your own.", HTML)
-        self.assertIn("I’m exhausted — give me the lowest-effort dinner.", HTML)
-        self.assertIn("No grocery run tonight.", HTML)
-        self.assertIn("Build a reviewable grocery cart if we’re missing things.", HTML)
-        self.assertIn("We have a guest kid — no nuts, no spicy.", HTML)
+        self.assertIn('aria-label="1Less dinner starter prompts"', HTML)
+        self.assertIn("Pick quick context, or type what you have and anything to avoid.", HTML)
+        self.assertIn("I have 10 minutes and barely cooking energy.", HTML)
+        self.assertIn("Use pantry or freezer basics I already have.", HTML)
+        self.assertIn("Avoid peanuts and tree nuts tonight.", HTML)
+        self.assertIn("Good enough", HTML)
+        self.assertIn("Give me backup", HTML)
         self.assertIn("Story Picker starter prompts", HTML)
         self.assertIn("What should I read with both of them tonight?", HTML)
         self.assertIn("Give me a silly read-aloud.", HTML)
@@ -478,10 +481,56 @@ class WebApiScenarioTest(unittest.TestCase):
         response = payload["responses"][0]
 
         self.assertEqual(response["metadata"]["scenario"], "dinner")
-        self.assertIn("Make Egg Fried Rice tonight.", response["message"])
-        self.assertIn("Reviewable grocery list: nothing required.", response["message"])
+        self.assertEqual(response["metadata"]["chapter"], "chapter_1_dinner_decision")
+        self.assertIn("Tonight:", response["message"])
+        self.assertIn("One decision, not a recipe search.", response["message"])
+        self.assertNotIn("Reviewable grocery", response["message"])
         self.assertNotIn("Tonight's pick:", response["message"])
         self.assertNotIn("mocked Epic-style catalog", response["message"])
+
+    def test_chapter1_dinner_session_returns_one_meal_and_feedback_backup(self):
+        session = create_dinner_decision_session()
+
+        first = session.send("I have 15 minutes and barely cooking energy.")
+        backup = session.send("Give me backup")
+
+        self.assertIn("Tonight:", first["message"])
+        self.assertEqual(first["message"].count("Tonight:"), 1)
+        self.assertIn("Time/effort:", first["message"])
+        self.assertIn("Fallback/tweak:", first["message"])
+        self.assertIn("Backup:", backup["message"])
+        self.assertNotEqual(first["metadata"]["current_recommendation"], backup["metadata"]["current_recommendation"])
+
+    def test_chapter1_allergy_avoidance_uses_mandatory_caveat_without_guarantee(self):
+        session = create_dinner_decision_session()
+
+        response = session.send("Avoid peanuts and tree nuts tonight. Make it picky-kid friendly.")
+
+        self.assertIn(ALLERGY_CAVEAT, response["message"])
+        self.assertTrue(response["metadata"]["allergy_caveat"])
+        self.assertNotIn("guaranteed allergy-free", response["message"].lower())
+        self.assertNotIn("safe for your child", response["message"].lower())
+
+    def test_chapter1_plain_minutes_prompt_does_not_trigger_allergy_caveat(self):
+        session = create_dinner_decision_session()
+
+        response = session.send("I have 30 minutes and can cook.")
+
+        self.assertNotIn(ALLERGY_CAVEAT, response["message"])
+        self.assertFalse(response["metadata"]["allergy_caveat"])
+
+    def test_chapter1_avoid_terms_do_not_leak_into_recommendation_copy(self):
+        session = create_dinner_decision_session()
+
+        response = session.send("Dairy-free, avoid eggs. I have 20 minutes.")
+        lower_message = response["message"].lower()
+
+        self.assertIn(ALLERGY_CAVEAT, response["message"])
+        self.assertNotIn(" egg", lower_message)
+        self.assertNotIn("eggs", lower_message)
+        self.assertNotIn("cheese", lower_message)
+        self.assertNotIn("milk", lower_message)
+        self.assertNotIn("yogurt", lower_message)
 
     def test_book_web_chat_stays_in_storypath_mode_for_followup(self):
         first_payload = self.handle_scenario("book")

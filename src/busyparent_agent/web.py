@@ -1,4 +1,4 @@
-"""Tiny local web chat adapter for BusyMom Agent."""
+"""Tiny local web chat adapter for 1Less."""
 
 from __future__ import annotations
 
@@ -8,7 +8,7 @@ import json
 from pathlib import Path
 from uuid import uuid4
 
-from busyparent_agent.service import APP_TITLE, create_session, parse_now, run_book_scenario, run_scenario
+from busyparent_agent.service import APP_TITLE, create_dinner_decision_session, run_book_scenario
 
 
 SESSIONS = {}
@@ -22,7 +22,7 @@ HTML = """<!doctype html>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>BusyMom Agent</title>
+    <title>1Less</title>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-6ZSEMN130R"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -139,6 +139,8 @@ HTML = """<!doctype html>
       .prompt-group h3 { margin: 0 0 5px; color: var(--accent-dark); font-size: .74rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
       .prompt-option { width: 100%; border-radius: 6px; padding: 8px 10px; background: transparent; color: #2f2924; text-align: left; font-size: .92rem; font-weight: 650; box-shadow: none; }
       .prompt-option:hover { transform: none; background: var(--accent-soft); }
+      .feedback-actions { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 24px 18px; background: rgba(255,255,255,.28); }
+      .feedback-action { border: 1px solid rgba(102,91,82,.18); background: rgba(255,255,255,.88); color: #51463f; box-shadow: none; font-size: .88rem; }
       .trace-footer { margin: 14px 2px 0; color: #665b52; font-size: .92rem; }
       @media (max-width: 640px) {
         body { padding: 16px; }
@@ -161,17 +163,17 @@ HTML = """<!doctype html>
     <main>
       <header class="hero">
         <div class="brand-lockup">
-          <img class="brand-logo" src="/BMLogo.svg" alt="BusyMom Agent logo" width="1024" height="1024" />
+          <img class="brand-logo" src="/BMLogo.svg" alt="1Less logo" width="1024" height="1024" />
           <div class="brand-copy">
-          <p class="tagline">Fewer evening decisions.</p>
-          <p class="subhead">Move from dinner to bedtime with two focused helpers: Dinner Planner for meals and grocery gaps, Story Picker for one kid-right book from a mocked Epic-style catalog.</p>
+          <p class="tagline">One less decision for busy parents.</p>
+          <p class="subhead">Chapter 1 starts with dinner: a low-burden flow that turns tonight's constraints into one clear meal decision.</p>
           </div>
         </div>
       </header>
       <section class="shell">
-        <div class="mode-tabs" role="tablist" aria-label="BusyMom modes">
+        <div class="mode-tabs" role="tablist" aria-label="1Less modes">
           <button class="mode-tab active" id="dinner-tab" data-tab="dinner" role="tab" type="button" aria-selected="true" aria-controls="active-panel">
-            Dinner Planner
+            Chapter 1: Dinner
           </button>
           <button class="mode-tab" id="story-tab" data-tab="book" role="tab" type="button" aria-selected="false" aria-controls="active-panel">
             Story Picker
@@ -181,59 +183,45 @@ HTML = """<!doctype html>
           <section class="room-context" data-room-context>
             <div class="room-heading-row">
               <h2 id="roomHeadline">One dinner plan that fits tonight.</h2>
-              <div class="proof-line" id="roomProofLine" aria-label="Dinner Planner considers">
+              <div class="proof-line" id="roomProofLine" aria-label="Chapter 1 dinner considers">
                 <b class="proof-prefix">Fit for</b>
-                <span>Fridge/Pantry</span>
-                <span>Grocery needs</span>
-                <span>Family preferences</span>
+                <span>Time</span>
+                <span>Energy</span>
+                <span>What you enter</span>
               </div>
             </div>
-            <p id="roomDescription">Start with one fridge/pantry based dinner recommendation combined with household memory of items of Instacart/Costco receipts and if needed and time permits, order intelligently on instacart.</p>
+            <p id="roomDescription">Answer what's tonight like, then get one practical dinner decision based only on the context you enter now.</p>
           </section>
           <div id="chat" class="chat" aria-live="polite"></div>
           <form id="form">
             <div class="prompt-control" id="promptControl">
               <button class="prompt-trigger" id="promptButton" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="promptMenu">Prompts</button>
-              <div class="prompt-menu hidden" id="promptMenu" role="menu" aria-label="Dinner Planner starter prompts">
-                <p class="prompt-helper">Pick a starter prompt to send, or type your own.</p>
+              <div class="prompt-menu hidden" id="promptMenu" role="menu" aria-label="1Less dinner starter prompts">
+                <p class="prompt-helper">Pick quick context, or type what you have and anything to avoid.</p>
                 <section class="prompt-group" aria-label="Time and energy">
                   <h3>Time + energy</h3>
-                  <button class="prompt-option" type="button" role="menuitem" data-prompt="I need dinner in 20 minutes.">I need dinner in 20 minutes.</button>
-                  <button class="prompt-option" type="button" role="menuitem" data-prompt="I’m exhausted — give me the lowest-effort dinner.">I’m exhausted — give me the lowest-effort dinner.</button>
-                  <button class="prompt-option" type="button" role="menuitem" data-prompt="I have 10 minutes before the kids melt down.">I have 10 minutes before the kids melt down.</button>
+                  <button class="prompt-option" type="button" role="menuitem" data-prompt="I have 10 minutes and barely cooking energy.">10 minutes + barely cooking</button>
+                  <button class="prompt-option" type="button" role="menuitem" data-prompt="I have 20 minutes and normal energy.">20 minutes + normal</button>
+                  <button class="prompt-option" type="button" role="menuitem" data-prompt="I have 30 minutes and can cook.">30 minutes + can cook</button>
                 </section>
                 <section class="prompt-group" aria-label="Use what we have">
-                  <h3>Use what we have</h3>
-                  <button class="prompt-option" type="button" role="menuitem" data-prompt="No grocery run tonight.">No grocery run tonight.</button>
-                  <button class="prompt-option" type="button" role="menuitem" data-prompt="Use what’s already in the fridge.">Use what’s already in the fridge.</button>
+                  <h3>What we have</h3>
                   <button class="prompt-option" type="button" role="menuitem" data-prompt="Use leftovers if possible.">Use leftovers if possible.</button>
+                  <button class="prompt-option" type="button" role="menuitem" data-prompt="Use pantry or freezer basics I already have.">Pantry/freezer basics</button>
                 </section>
                 <section class="prompt-group" aria-label="Kid fit">
-                  <h3>Kid fit</h3>
+                  <h3>Fit</h3>
                   <button class="prompt-option" type="button" role="menuitem" data-prompt="Make it picky-kid friendly.">Make it picky-kid friendly.</button>
-                  <button class="prompt-option" type="button" role="menuitem" data-prompt="Give me something both kids may eat.">Give me something both kids may eat.</button>
-                  <button class="prompt-option" type="button" role="menuitem" data-prompt="Keep it mild, with an adult upgrade.">Keep it mild, with an adult upgrade.</button>
+                  <button class="prompt-option" type="button" role="menuitem" data-prompt="Vegetarian tonight.">Vegetarian</button>
                 </section>
-                <section class="prompt-group" aria-label="Health and practicality">
-                  <h3>Health / practicality</h3>
-                  <button class="prompt-option" type="button" role="menuitem" data-prompt="Healthy but easy.">Healthy but easy.</button>
-                  <button class="prompt-option" type="button" role="menuitem" data-prompt="High-protein and kid-friendly.">High-protein and kid-friendly.</button>
-                  <button class="prompt-option" type="button" role="menuitem" data-prompt="Light dinner, not too heavy.">Light dinner, not too heavy.</button>
-                </section>
-                <section class="prompt-group" aria-label="Groceries">
-                  <h3>Groceries</h3>
-                  <button class="prompt-option" type="button" role="menuitem" data-prompt="Grocery delivery is okay.">Grocery delivery is okay.</button>
-                  <button class="prompt-option" type="button" role="menuitem" data-prompt="Build a reviewable grocery cart if we’re missing things.">Build a reviewable grocery cart if we’re missing things.</button>
-                  <button class="prompt-option" type="button" role="menuitem" data-prompt="Avoid buying things we probably already have.">Avoid buying things we probably already have.</button>
-                </section>
-                <section class="prompt-group" aria-label="Guests and constraints">
-                  <h3>Guests / constraints</h3>
-                  <button class="prompt-option" type="button" role="menuitem" data-prompt="We have a guest kid — no nuts, no spicy.">We have a guest kid — no nuts, no spicy.</button>
-                  <button class="prompt-option" type="button" role="menuitem" data-prompt="Avoid peanuts tonight.">Avoid peanuts tonight.</button>
+                <section class="prompt-group" aria-label="Avoidances">
+                  <h3>Avoid</h3>
+                  <button class="prompt-option" type="button" role="menuitem" data-prompt="Avoid peanuts and tree nuts tonight.">Avoid nuts</button>
+                  <button class="prompt-option" type="button" role="menuitem" data-prompt="Dairy-free tonight.">Dairy-free</button>
                 </section>
               </div>
             </div>
-            <input id="message" type="text" autocomplete="off" placeholder="Ask: What should I make for dinner tonight?" />
+            <input id="message" type="text" autocomplete="off" placeholder="What's tonight like? Add time, energy, ingredients, or avoidances." />
             <button class="primary" type="submit">Send</button>
           </form>
         </div>
@@ -242,9 +230,9 @@ HTML = """<!doctype html>
       <div class="room-actions dinner-panel" data-panel="dinner">
         <span class="action-label">Hackathon Demo Scenarios</span>
         <div class="toolbar">
-          <button class="scenario-chip" data-scenario="dinner" aria-pressed="false">Dinner now</button>
-          <button class="scenario-chip" data-scenario="lunch" aria-pressed="false">Plan at lunch</button>
-          <button class="scenario-chip" data-scenario="guest" aria-pressed="false">Playdate</button>
+          <button class="scenario-chip" data-scenario="dinner" aria-pressed="false">No constraints</button>
+          <button class="scenario-chip" data-scenario="lunch" aria-pressed="false">Low energy</button>
+          <button class="scenario-chip" data-scenario="guest" aria-pressed="false">Avoid nuts</button>
         </div>
       </div>
       <div class="room-actions book-panel hidden" data-panel="book">
@@ -272,14 +260,14 @@ HTML = """<!doctype html>
       const promptMenu = document.querySelector("#promptMenu");
       const rooms = {
         dinner: {
-          title: "Dinner Planner",
-          summary: "Warm, pantry-aware planning for tonight's meal.",
-          headline: "One dinner plan that fits tonight.",
-          description: "Start with one fridge/pantry based dinner recommendation combined with household memory of items of Instacart/Costco receipts and if needed and time permits, order intelligently on instacart.",
-          proofLabel: "Dinner Planner considers",
+          title: "Chapter 1: Dinner",
+          summary: "Tonight's dinner, decided.",
+          headline: "Tonight's dinner, decided.",
+          description: "Dinner is the first 1Less proof point: answer what's tonight like, then get one clear recommendation based only on what you enter now.",
+          proofLabel: "Chapter 1 dinner considers",
           proofPrefix: "Fit for",
-          proof: ["Fridge/Pantry", "Grocery needs", "Family preferences"],
-          placeholder: "Ask: What should I make for dinner tonight?"
+          proof: ["Time", "Energy", "Avoidances", "What you enter"],
+          placeholder: "What's tonight like? Add time, energy, ingredients, or avoidances."
         },
         book: {
           title: "Story Picker",
@@ -298,53 +286,36 @@ HTML = """<!doctype html>
             title: "Time + energy",
             label: "Time and energy",
             prompts: [
-              "I need dinner in 20 minutes.",
-              "I’m exhausted — give me the lowest-effort dinner.",
-              "I have 10 minutes before the kids melt down."
+              "I have 10 minutes and barely cooking energy.",
+              "I have 20 minutes and normal energy.",
+              "I have 30 minutes and can cook."
             ]
           },
           {
-            title: "Use what we have",
+            title: "What we have",
             label: "Use what we have",
             prompts: [
-              "No grocery run tonight.",
-              "Use what’s already in the fridge.",
-              "Use leftovers if possible."
+              "Use leftovers if possible.",
+              "Use pantry or freezer basics I already have.",
+              "I have tortillas, beans, rice, eggs, frozen peas, and fruit."
             ]
           },
           {
-            title: "Kid fit",
+            title: "Fit",
             label: "Kid fit",
             prompts: [
               "Make it picky-kid friendly.",
-              "Give me something both kids may eat.",
-              "Keep it mild, with an adult upgrade."
+              "Vegetarian tonight.",
+              "Dairy-free tonight."
             ]
           },
           {
-            title: "Health / practicality",
-            label: "Health and practicality",
+            title: "Avoid",
+            label: "Avoidances",
             prompts: [
-              "Healthy but easy.",
-              "High-protein and kid-friendly.",
-              "Light dinner, not too heavy."
-            ]
-          },
-          {
-            title: "Groceries",
-            label: "Groceries",
-            prompts: [
-              "Grocery delivery is okay.",
-              "Build a reviewable grocery cart if we’re missing things.",
-              "Avoid buying things we probably already have."
-            ]
-          },
-          {
-            title: "Guests / constraints",
-            label: "Guests and constraints",
-            prompts: [
-              "We have a guest kid — no nuts, no spicy.",
-              "Avoid peanuts tonight."
+              "Avoid peanuts and tree nuts tonight.",
+              "No dairy tonight.",
+              "Avoid spicy food tonight."
             ]
           }
         ],
@@ -447,10 +418,10 @@ HTML = """<!doctype html>
 
       function renderPromptMenu(mode) {
         const groups = promptGroups[mode];
-        const label = mode === "book" ? "Story Picker starter prompts" : "Dinner Planner starter prompts";
+        const label = mode === "book" ? "Story Picker starter prompts" : "Chapter 1 dinner starter prompts";
         promptMenu.setAttribute("aria-label", label);
         promptMenu.innerHTML = `
-          <p class="prompt-helper">Pick a starter prompt to send, or type your own.</p>
+          <p class="prompt-helper">${mode === "book" ? "Pick a starter prompt to send, or type your own." : "Pick quick context, or type what you have and anything to avoid."}</p>
           ${groups.map((group) => `
             <section class="prompt-group" aria-label="${escapeHtml(group.label)}">
               <h3>${escapeHtml(group.title)}</h3>
@@ -485,20 +456,34 @@ HTML = """<!doctype html>
           link.rel = "noopener noreferrer";
           link.textContent = bookMatch[1];
           div.append(link, ` by ${bookMatch[2]}.\n${bookMatch[3]}`);
-        } else if (role === "agent" && text.includes("Reviewable grocery cart:")) {
-          const [beforeCart, afterCart] = text.split("Reviewable grocery cart:");
-          div.append(beforeCart);
-          const link = document.createElement("a");
-          link.href = "https://www.instacart.com/";
-          link.target = "_blank";
-          link.rel = "noopener noreferrer";
-          link.textContent = "Reviewable grocery cart";
-          div.append(link, `:${afterCart}`);
         } else {
           div.textContent = text;
         }
         chat.appendChild(div);
         chat.scrollTop = chat.scrollHeight;
+      }
+
+      function renderDinnerFeedbackActions() {
+        document.querySelectorAll(".feedback-actions").forEach((node) => node.remove());
+        if (activeMode !== "dinner") return;
+        const actions = [
+          ["Good enough", "Good enough"],
+          ["Too much work", "Too much work"],
+          ["Kid won't eat", "Kid won't eat this"],
+          ["Missing ingredient", "Missing ingredient"],
+          ["Give me backup", "Give me backup"]
+        ];
+        const wrap = document.createElement("div");
+        wrap.className = "feedback-actions";
+        actions.forEach(([label, message]) => {
+          const button = document.createElement("button");
+          button.className = "feedback-action";
+          button.type = "button";
+          button.dataset.feedback = message;
+          button.textContent = label;
+          wrap.appendChild(button);
+        });
+        chat.insertAdjacentElement("afterend", wrap);
       }
 
       function addTrace(lines) {
@@ -514,6 +499,9 @@ HTML = """<!doctype html>
         addBubble("parent", response.parent_message);
         addBubble("agent", response.message);
         addTrace(response.trace);
+        if (response.metadata && response.metadata.chapter === "chapter_1_dinner_decision") {
+          renderDinnerFeedbackActions();
+        }
       }
 
       async function postJson(path, payload) {
@@ -537,6 +525,13 @@ HTML = """<!doctype html>
 
       form.addEventListener("submit", async (event) => {
         event.preventDefault();
+        await sendCurrentInput();
+      });
+
+      document.addEventListener("click", async (event) => {
+        const button = event.target.closest("[data-feedback]");
+        if (!button) return;
+        input.value = button.dataset.feedback;
         await sendCurrentInput();
       });
 
@@ -661,17 +656,17 @@ class WebHandler(BaseHTTPRequestHandler):
             return
 
         session_id = self._new_session(scenario)
-        responses = run_scenario(SESSIONS[session_id], scenario)
+        scenario_messages = {
+            "dinner": "What should I make for dinner tonight?",
+            "lunch": "I have 15 minutes and barely cooking energy.",
+            "guest": "Avoid peanuts and tree nuts tonight. Make it picky-kid friendly.",
+        }
+        responses = [SESSIONS[session_id].send(scenario_messages[scenario], scenario=scenario)]
         self._send_json({"session_id": session_id, "responses": responses})
 
     def _new_session(self, scenario: str | None = None) -> str:
         session_id = str(uuid4())
-        SESSIONS[session_id] = create_session(
-            parse_now(None, scenario=scenario),
-            trace=True,
-            scenario=scenario,
-            locked_time_context=scenario is not None,
-        )
+        SESSIONS[session_id] = create_dinner_decision_session()
         return session_id
 
     def _read_json(self) -> dict:
