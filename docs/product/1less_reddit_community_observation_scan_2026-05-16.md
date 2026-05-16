@@ -503,3 +503,46 @@ If parents say it feels like a form:
 
 Medium-high on strategic direction.  
 Medium on evidence completeness because raw Reddit API access was blocked before a full one-by-one crawl could complete.
+
+---
+
+## OpenClaw completed-crawl addendum
+
+Added after Hermes advisory pass on 2026-05-16.
+
+Hermes' strategic synthesis was later compared against a conservative OpenClaw Reddit crawl. The crawl completed under practical safety caps:
+
+| Community | Posts/threads crawled | 30-day cutoff reached? |
+|---|---:|---|
+| r/MealPrepSunday | 134 | yes |
+| r/workingmoms | 160 | no — hit 160-post cap |
+| r/SAHP | 110 | yes |
+| r/Parenting | 160 | no — hit 160-post cap |
+| r/homeschool | 160 | no — hit 160-post cap |
+
+Totals:
+
+- 724 posts/threads crawled
+- 15,526 comments available
+- 13,958 comments retained for analysis under per-thread caps
+
+Interpretation:
+
+- This materially strengthens the evidence base versus snippet-only research.
+- It still is not a perfect archival 30-day audit for high-volume communities, because r/workingmoms, r/Parenting, and r/homeschool hit conservative crawl caps before the full 30-day cutoff.
+- The completed crawl confirms Hermes' main strategic conclusions.
+
+Refinements from the completed crawl:
+
+1. **“Use what I have” should be treated as a first-class Chapter 1 primitive.** Parents need decisions grounded in current-turn ingredients, leftovers, freezer/pantry staples, no-store-run constraints, time, energy, and kid acceptance risk.
+2. **Lunchbox/snack defaults and panic-dinner defaults are the closest future food extensions.** They are stronger near-term adjacency candidates than bedtime or homeschool, though still not MVP work before dinner relief is validated.
+3. **MealPrepSunday is a mechanics benchmark, not the core persona.** Borrow component meals, batch shortcuts, freezer defaults, cost/reheating/storage patterns, and “cook once, decide less later.” Do not position 1Less as a meal-prep planner.
+4. **Nutrition/health language should remain a filter, not the product promise.** The crawl surfaced protein/calorie/weight-loss language, but using it as positioning would pull 1Less toward nutrition coaching.
+5. **Future Reddit participation should remain educational/listening-first.** No product mentions, links, or founder/product participation without explicit review and approval.
+
+Net conclusion:
+
+Hermes' recommendation stands, with one sharper product requirement:
+
+> 1Less should not be AI meal planning. It should be one good-enough dinner decision from the constraints a parent actually has right now.
+
