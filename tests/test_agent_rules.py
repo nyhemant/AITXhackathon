@@ -501,6 +501,46 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertIn("Backup:", backup["message"])
         self.assertNotEqual(first["metadata"]["current_recommendation"], backup["metadata"]["current_recommendation"])
 
+    def test_chapter1_too_much_work_backup_is_meaningfully_easier(self):
+        session = create_dinner_decision_session()
+
+        first = session.send("I have 30 minutes and can cook.")
+        backup = session.send("Too much work")
+
+        self.assertEqual(first["metadata"]["current_recommendation"], "Sheet-pan chicken and corn rice bowls")
+        self.assertEqual(backup["metadata"]["current_recommendation"], "Rice and Peas Bowl")
+        self.assertIn("Backup: Rice and Peas Bowl.", backup["message"])
+        self.assertEqual(backup["message"].count("Backup:"), 1)
+        self.assertIn("Why this is easier: faster and fewer steps", backup["message"])
+        self.assertIn("low-effort version", backup["message"])
+        self.assertIn("Time/effort: about 10 minutes, low effort.", backup["message"])
+        self.assertNotIn("1.", backup["message"])
+        self.assertLess(backup["message"].find("Rice and Peas Bowl"), backup["message"].find("Simple plan:"))
+
+    def test_chapter1_too_much_work_backup_respects_avoidance(self):
+        session = create_dinner_decision_session()
+
+        session.send("Avoid eggs. I have 30 minutes and can cook.")
+        backup = session.send("Too much work")
+
+        self.assertEqual(backup["metadata"]["current_recommendation"], "Rice and Peas Bowl")
+        self.assertIn(ALLERGY_CAVEAT, backup["message"])
+        self.assertTrue(backup["metadata"]["allergy_caveat"])
+        self.assertNotIn("egg", backup["message"].lower())
+
+    def test_chapter1_only_have_sparse_ingredients_uses_listed_constraint(self):
+        session = create_dinner_decision_session()
+
+        response = session.send("Only rice and frozen peas tonight.")
+
+        self.assertEqual(response["metadata"]["current_recommendation"], "Rice and Peas Bowl")
+        self.assertIn("Constraint heard", response["message"])
+        self.assertIn("not assuming a remembered pantry", response["message"])
+        self.assertIn("simplest dinner from only the rice and peas you listed", response["message"])
+        self.assertNotIn("Black Bean Tacos", response["message"])
+        self.assertNotIn(ALLERGY_CAVEAT, response["message"])
+        self.assertFalse(response["metadata"]["allergy_caveat"])
+
     def test_chapter1_allergy_avoidance_uses_mandatory_caveat_without_guarantee(self):
         session = create_dinner_decision_session()
 

@@ -152,6 +152,16 @@ def create_session(
 
 DINNER_MVP_MEALS = [
     {
+        "name": "Rice and Peas Bowl",
+        "minutes": 10,
+        "effort": "low",
+        "tags": {"low_energy", "picky", "vegetarian", "pantry", "leftovers", "nut_free", "dairy_free", "egg_free"},
+        "ingredient_keywords": {"rice", "pea", "peas", "frozen peas"},
+        "ingredients": "rice, frozen peas, and one simple add-on if you have it: olive oil, soy sauce, beans, or any protein",
+        "steps": "Warm the rice and peas together, season simply, and put any add-on on the side so kids can opt in.",
+        "fallback": "If there is no add-on, this can still be the simplest dinner from only the rice and peas you listed.",
+    },
+    {
         "name": "Black Bean Tacos with fruit",
         "minutes": 15,
         "effort": "low",
@@ -210,8 +220,15 @@ class DinnerDecisionSession:
         feedback = _dinner_feedback(parent_message)
         if feedback and self.current_recommendation:
             if feedback in {"too_much_work", "kid_wont_eat", "missing_ingredient", "backup"}:
-                self.rejected.add(self.current_recommendation["name"])
+                rejected_meal = self.current_recommendation
+                already_minimal = feedback == "too_much_work" and rejected_meal["minutes"] <= 10 and rejected_meal["effort"] == "low"
+                if not already_minimal:
+                    self.rejected.add(self.current_recommendation["name"])
                 if feedback == "too_much_work":
+                    context["fallback_relief"] = True
+                    context["fallback_already_minimal"] = already_minimal
+                    context["rejected_minutes"] = rejected_meal["minutes"]
+                    context["rejected_effort"] = rejected_meal["effort"]
                     context["energy"] = "barely cooking"
                     context["minutes"] = min(context.get("minutes") or 20, 15)
                 if feedback == "kid_wont_eat":
@@ -278,6 +295,7 @@ def parse_dinner_decision_context(parent_message: str) -> dict[str, Any]:
         "egg_free": "egg" in avoid_terms,
         "leftovers": _has_word(message, "leftover") or _has_word(message, "leftovers"),
         "pantry": any(phrase in message for phrase in ("pantry", "freezer", "use what", "already have", "no grocery")),
+        "only_have": _has_only_have_signal(message),
         "avoid_terms": avoid_terms,
         "positive_ingredients": positive_ingredients,
         "free_text": parent_message.strip(),
@@ -311,9 +329,30 @@ def choose_dinner_decision(context: dict[str, Any], rejected: set[str] | None = 
         if _meal_mentions_avoided_term(meal, context.get("avoid_terms", [])):
             value -= 1000
         matched_ingredients = _matching_positive_ingredients(meal, context.get("positive_ingredients", []))
+        if meal["name"] == "Rice and Peas Bowl" and not (context.get("only_have") or context.get("fallback_relief")):
+            value -= 80
         value += 25 * len(matched_ingredients)
         if len(matched_ingredients) >= 2:
             value += 20
+        if context.get("only_have"):
+            value += 60 * len(matched_ingredients)
+            unmatched_count = max(0, len(context.get("positive_ingredients", [])) - len(matched_ingredients))
+            value -= 20 * unmatched_count
+            if not matched_ingredients:
+                value -= 120
+        if context.get("fallback_relief"):
+            rejected_minutes = context.get("rejected_minutes") or 30
+            rejected_effort = context.get("rejected_effort")
+            if meal["minutes"] < rejected_minutes:
+                value += 45
+            else:
+                value -= 35
+            if meal["minutes"] <= 15:
+                value += 25
+            if meal["effort"] == "low":
+                value += 25
+            if rejected_effort == "low" and meal["minutes"] >= rejected_minutes:
+                value -= 30
         if context.get("leftovers"):
             value += 20 if "leftovers" in tags else 0
         if context.get("pantry"):
@@ -327,12 +366,27 @@ def choose_dinner_decision(context: dict[str, Any], rejected: set[str] | None = 
 def format_dinner_decision(meal: dict[str, Any], context: dict[str, Any], prefix: str = "Tonight:") -> str:
     lines = [
         f"{prefix} {meal['name']}.",
-        f"Why it fits: {dinner_fit_reason(meal, context)}",
-        f"Time/effort: about {meal['minutes']} minutes, {meal['effort']} effort.",
-        f"Works with common basics like: {meal['ingredients']}.",
-        f"Simple plan: {meal['steps']}",
-        f"Fallback/tweak: {meal['fallback']}",
     ]
+    if prefix.startswith("Backup") and context.get("fallback_relief"):
+        if context.get("fallback_already_minimal"):
+            lines.append("Why this is easier: this is already the low-effort version — use this if cooking energy is gone.")
+        else:
+            lines.append("Why this is easier: faster and fewer steps — this is the low-effort version if cooking energy is gone.")
+    lines.extend(
+        [
+            f"Why it fits: {dinner_fit_reason(meal, context)}",
+            f"Time/effort: about {meal['minutes']} minutes, {meal['effort']} effort.",
+        ]
+    )
+    if context.get("only_have"):
+        lines.append("Constraint heard: I am using the ingredients you listed first, not assuming a remembered pantry.")
+    lines.extend(
+        [
+            f"Works with common basics like: {meal['ingredients']}.",
+            f"Simple plan: {meal['steps']}",
+            f"Fallback/tweak: {meal['fallback']}",
+        ]
+    )
     if _needs_allergy_caveat(context):
         lines.append(ALLERGY_CAVEAT)
     lines.append("One decision, not a recipe search.")
@@ -425,11 +479,27 @@ def _has_positive_ingredient_signal(message: str, term: str) -> bool:
     escaped = re.escape(term)
     patterns = (
         rf"(?<![a-z0-9])(i|we)\s+have[^.?!;]*\b{escaped}\b",
+        rf"(?<![a-z0-9])(i|we)\s+only\s+have[^.?!;]*\b{escaped}\b",
+        rf"(?<![a-z0-9])only\s+[^.?!;]*\b{escaped}\b",
         rf"(?<![a-z0-9])use[^.?!;]*\b{escaped}\b",
         rf"(?<![a-z0-9])leftover\s+{escaped}\b",
         rf"(?<![a-z0-9]){escaped}\s+in\s+the\s+(fridge|freezer|pantry)\b",
     )
     return any(re.search(pattern, message) for pattern in patterns)
+
+
+def _has_only_have_signal(message: str) -> bool:
+    return any(
+        phrase in message
+        for phrase in (
+            "only have",
+            "only got",
+            "only rice",
+            "only pasta",
+            "only beans",
+            "only tortillas",
+        )
+    )
 
 
 def _matching_positive_ingredients(meal: dict[str, Any], positive_ingredients: list[str]) -> list[str]:
@@ -465,7 +535,21 @@ def _meal_mentions_avoided_term(meal: dict[str, Any], avoid_terms: list[str]) ->
 
 
 def _parse_energy(message: str) -> str | None:
-    if any(phrase in message for phrase in ("barely cooking", "exhausted", "lowest effort", "lowest-effort", "low effort")):
+    if any(
+        phrase in message
+        for phrase in (
+            "barely cooking",
+            "cooking energy is gone",
+            "exhausted",
+            "too much work",
+            "need easier",
+            "easiest",
+            "lowest effort",
+            "lowest-effort",
+            "low effort",
+            "no cooking",
+        )
+    ):
         return "barely cooking"
     if "can cook" in message:
         return "can cook"
@@ -482,7 +566,21 @@ def _dinner_feedback(parent_message: str) -> str | None:
     normalized = parent_message.lower().replace("’", "'")
     if "good enough" in normalized or "works" in normalized:
         return "accepted"
-    if any(phrase in normalized for phrase in ("too much work", "too much cooking", "barely cooking")):
+    if any(
+        phrase in normalized
+        for phrase in (
+            "too much work",
+            "too much cooking",
+            "barely cooking",
+            "need easier",
+            "i need easier",
+            "easier than",
+            "make it easier",
+            "no cooking",
+            "only have 10 minutes",
+            "only 10 minutes",
+        )
+    ):
         return "too_much_work"
     if any(phrase in normalized for phrase in ("kid won't eat", "kid wont eat", "kids won't eat", "kids wont eat")):
         return "kid_wont_eat"
