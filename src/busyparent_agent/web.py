@@ -140,7 +140,8 @@ HTML = """<!doctype html>
       input[type="text"] { min-width: 0; border: 1px solid rgba(102,91,82,.18); border-radius: 999px; padding: 13px 15px; font: inherit; background: white; }
       input[type="text"]:focus { outline: 3px solid var(--accent-line); border-color: var(--accent); }
       .prompt-control { position: relative; }
-      .prompt-trigger { height: 100%; min-height: 46px; border: 1px solid rgba(194,65,12,.24); background: #ff7a00; color: #1f1306; box-shadow: 0 14px 30px rgba(255,122,0,.24); font-size: 1.125rem; }
+      .prompt-trigger { display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; height: 100%; min-height: 46px; min-width: 92px; border: 1px solid rgba(194,65,12,.24); background: #ff7a00; color: #1f1306; box-shadow: 0 14px 30px rgba(255,122,0,.24); font-size: 1.02rem; line-height: 1.02; }
+      .prompt-trigger span { display: block; }
       .prompt-trigger:hover { background: #ff8f1f; box-shadow: 0 16px 34px rgba(255,122,0,.3); }
       .prompt-trigger[aria-expanded="true"] { border-color: rgba(39,33,29,.28); filter: saturate(1.08); }
       .prompt-menu { position: absolute; left: 0; bottom: calc(100% + 10px); z-index: 20; width: min(430px, calc(100vw - 48px)); max-height: min(540px, 72vh); overflow: auto; border: 1px solid rgba(102,91,82,.18); border-radius: 8px; padding: 12px; background: rgba(255,255,255,.98); box-shadow: 0 24px 70px rgba(39,33,29,.16); }
@@ -206,7 +207,7 @@ HTML = """<!doctype html>
           <div id="chat" class="chat" aria-live="polite"></div>
           <form id="form">
             <div class="prompt-control" id="promptControl">
-              <button class="prompt-trigger" id="promptButton" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="promptMenu">Prompts</button>
+              <button class="prompt-trigger" id="promptButton" type="button" aria-label="Sample prompts" aria-haspopup="menu" aria-expanded="false" aria-controls="promptMenu"><span>Sample</span><span>Prompts</span></button>
               <div class="prompt-menu hidden" id="promptMenu" role="menu" aria-label="1Less dinner starter prompts">
                 <p class="prompt-helper">Pick quick context, or type what you have and anything to avoid.</p>
                 <section class="prompt-group" aria-label="Time and energy">
