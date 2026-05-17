@@ -381,6 +381,7 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertIn('alt="1Less logo"', HTML)
         self.assertIn('src="/BMLogo.svg"', HTML)
         self.assertIn('<p class="tagline">One less decision for busy parents.</p>', HTML)
+        self.assertIn("<strong>Alpha testing</strong>", HTML)
         self.assertNotIn("Alpha testing now:", HTML)
         self.assertNotIn("try the dinner flow with non-sensitive details and tell us if it actually removes one decision", HTML)
         self.assertNotIn("non-sensitive details", HTML)

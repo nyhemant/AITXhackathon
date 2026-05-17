@@ -182,6 +182,7 @@ HTML = """<!doctype html>
           <div class="brand-copy">
           <p class="tagline">One less decision for busy parents.</p>
           <p class="subhead">Dinner first: a low-burden flow that turns tonight's constraints into one clear meal decision.</p>
+          <p class="alpha-note"><strong>Alpha testing</strong></p>
           </div>
         </div>
       </header>
