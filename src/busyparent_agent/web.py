@@ -108,14 +108,9 @@ HTML = """<!doctype html>
       .mode-tab.active::before { content: ""; position: absolute; left: 18px; right: 18px; top: 0; height: 4px; border-radius: 999px; background: var(--accent); }
       .mode-tab.active::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: rgba(255,255,255,.96); }
       .tab-panel { background: rgba(255,255,255,.9); }
-      .room-actions { display: grid; gap: 10px; padding: 14px 24px; border-bottom: 1px solid rgba(102,91,82,.1); background: rgba(255,255,255,.42); }
-      .action-label { color: #665b52; font-size: .75rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
-      .toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
       .hidden { display: none; }
       button { border: 0; border-radius: 999px; padding: 10px 14px; background: #ffedd5; color: var(--accent-dark); font-weight: 850; cursor: pointer; transition: transform .15s ease, box-shadow .15s ease, background .15s ease; }
       button:hover { transform: translateY(-1px); }
-      .scenario-chip { min-height: 34px; padding: 8px 12px; background: rgba(255,255,255,.64); border: 1px solid rgba(39,33,29,.22); color: #4b5563; font-size: .9rem; box-shadow: none; }
-      .scenario-chip.pressed { background: #e5e7eb; border-color: #374151; color: #111827; box-shadow: inset 0 2px 6px rgba(17,24,39,.14), 0 0 0 2px rgba(255,255,255,.55); transform: translateY(1px); }
       button.primary { border: 1px solid rgba(102,91,82,.18); background: rgba(255,255,255,.92); color: #51463f; box-shadow: none; font-size: 1.125rem; }
       button.primary:hover { background: #f8fafc; }
       label { display: inline-flex; align-items: center; gap: 8px; color: #665b52; font-weight: 760; }
@@ -140,16 +135,14 @@ HTML = """<!doctype html>
       input[type="text"] { min-width: 0; border: 1px solid rgba(102,91,82,.18); border-radius: 999px; padding: 13px 15px; font: inherit; background: white; }
       input[type="text"]:focus { outline: 3px solid var(--accent-line); border-color: var(--accent); }
       .prompt-control { position: relative; }
-      .prompt-trigger { display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; height: 100%; min-height: 46px; min-width: 92px; border: 1px solid rgba(194,65,12,.24); background: #ff7a00; color: #1f1306; box-shadow: 0 14px 30px rgba(255,122,0,.24); font-size: 1.02rem; line-height: 1.02; }
+      .prompt-trigger { display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; height: 100%; min-height: 46px; min-width: 96px; border: 1px solid rgba(194,65,12,.24); background: #ff7a00; color: #1f1306; box-shadow: 0 14px 30px rgba(255,122,0,.24); font-size: 1rem; line-height: 1.02; }
       .prompt-trigger span { display: block; }
       .prompt-trigger:hover { background: #ff8f1f; box-shadow: 0 16px 34px rgba(255,122,0,.3); }
       .prompt-trigger[aria-expanded="true"] { border-color: rgba(39,33,29,.28); filter: saturate(1.08); }
       .prompt-menu { position: absolute; left: 0; bottom: calc(100% + 10px); z-index: 20; width: min(430px, calc(100vw - 48px)); max-height: min(540px, 72vh); overflow: auto; border: 1px solid rgba(102,91,82,.18); border-radius: 8px; padding: 12px; background: rgba(255,255,255,.98); box-shadow: 0 24px 70px rgba(39,33,29,.16); }
       .prompt-helper { margin: 0 0 10px; color: #665b52; font-size: .86rem; font-weight: 760; }
-      .prompt-group { display: grid; gap: 3px; padding: 10px 0; border-top: 1px solid rgba(102,91,82,.1); }
-      .prompt-group:first-of-type { border-top: 0; padding-top: 0; }
-      .prompt-group h3 { margin: 0 0 5px; color: var(--accent-dark); font-size: .74rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
-      .prompt-option { width: 100%; border-radius: 6px; padding: 8px 10px; background: transparent; color: #2f2924; text-align: left; font-size: .92rem; font-weight: 650; box-shadow: none; }
+      .prompt-list { display: grid; gap: 5px; }
+      .prompt-option { width: 100%; border-radius: 6px; padding: 9px 10px; background: transparent; color: #2f2924; text-align: left; font-size: .92rem; font-weight: 750; box-shadow: none; }
       .prompt-option:hover { transform: none; background: var(--accent-soft); }
       .feedback-actions { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 24px 18px; background: rgba(255,255,255,.28); }
       .feedback-action { border: 1px solid rgba(102,91,82,.18); background: rgba(255,255,255,.88); color: #51463f; box-shadow: none; font-size: .88rem; }
@@ -208,30 +201,17 @@ HTML = """<!doctype html>
           <div id="chat" class="chat" aria-live="polite"></div>
           <form id="form">
             <div class="prompt-control" id="promptControl">
-              <button class="prompt-trigger" id="promptButton" type="button" aria-label="Sample prompts" aria-haspopup="menu" aria-expanded="false" aria-controls="promptMenu"><span>Sample</span><span>Prompts</span></button>
-              <div class="prompt-menu hidden" id="promptMenu" role="menu" aria-label="1Less dinner starter prompts">
-                <p class="prompt-helper">Pick quick context, or type what you have and anything to avoid.</p>
-                <section class="prompt-group" aria-label="Time and energy">
-                  <h3>Time + energy</h3>
-                  <button class="prompt-option" type="button" role="menuitem" data-prompt="I have 10 minutes and barely cooking energy.">10 minutes + barely cooking</button>
-                  <button class="prompt-option" type="button" role="menuitem" data-prompt="I have 20 minutes and normal energy.">20 minutes + normal</button>
-                  <button class="prompt-option" type="button" role="menuitem" data-prompt="I have 30 minutes and can cook.">30 minutes + can cook</button>
-                </section>
-                <section class="prompt-group" aria-label="Use what we have">
-                  <h3>What we have</h3>
-                  <button class="prompt-option" type="button" role="menuitem" data-prompt="Use leftovers if possible.">Use leftovers if possible.</button>
-                  <button class="prompt-option" type="button" role="menuitem" data-prompt="Use pantry or freezer basics I already have.">Pantry/freezer basics</button>
-                </section>
-                <section class="prompt-group" aria-label="Kid fit">
-                  <h3>Fit</h3>
-                  <button class="prompt-option" type="button" role="menuitem" data-prompt="Make it picky-kid friendly.">Make it picky-kid friendly.</button>
-                  <button class="prompt-option" type="button" role="menuitem" data-prompt="Vegetarian tonight.">Vegetarian</button>
-                </section>
-                <section class="prompt-group" aria-label="Avoidances">
-                  <h3>Avoid</h3>
-                  <button class="prompt-option" type="button" role="menuitem" data-prompt="Avoid peanuts and tree nuts tonight.">Avoid nuts</button>
-                  <button class="prompt-option" type="button" role="menuitem" data-prompt="Dairy-free tonight.">Dairy-free</button>
-                </section>
+              <button class="prompt-trigger" id="promptButton" type="button" aria-label="Try a real night" aria-haspopup="menu" aria-expanded="false" aria-controls="promptMenu"><span>Try a</span><span>real night</span></button>
+              <div class="prompt-menu hidden" id="promptMenu" role="menu" aria-label="Editable real-life dinner prompts">
+                <p class="prompt-helper">Pick one, then edit it to match tonight.</p>
+                <div class="prompt-list">
+                  <button class="prompt-option" type="button" role="menuitem" data-prompt="It’s 5pm, everyone is hungry, I have 10 minutes and barely cooking energy. Make it picky-kid friendly.">Brain-dead 10 min</button>
+                  <button class="prompt-option" type="button" role="menuitem" data-prompt="I have tortillas, cheese, black beans, rice, and apples. I have 15 minutes and no store run.">Use what we have</button>
+                  <button class="prompt-option" type="button" role="menuitem" data-prompt="Vegetarian tonight. I have rice, eggs, frozen peas, and 20 minutes. Normal energy.">Vegetarian quick</button>
+                  <button class="prompt-option" type="button" role="menuitem" data-prompt="Avoid peanuts and tree nuts tonight. I have pasta, jarred sauce, frozen peas, and 15 minutes.">Avoid nuts</button>
+                  <button class="prompt-option" type="button" role="menuitem" data-prompt="My kid rejects mixed foods. I have chicken, rice, cucumber, yogurt, and 20 minutes. Make it easy to deconstruct.">Picky kid</button>
+                  <button class="prompt-option" type="button" role="menuitem" data-prompt="I have a few options but no brain left to decide. We have eggs, toast, fruit, rice, and frozen vegetables. Pick one easy dinner.">Just pick one</button>
+                </div>
               </div>
             </div>
             <input id="message" type="text" autocomplete="off" placeholder="What's tonight like? Add time, energy, ingredients, or avoidances." />
@@ -244,19 +224,10 @@ HTML = """<!doctype html>
         <p>1Less may explore other parent decisions later, but this alpha is dinner-only. Right now we are testing whether one late-day dinner decision can be removed without creating another chore.</p>
       </section>
       <label class="trace-footer"><input id="traceToggle" type="checkbox" /> Show trace</label>
-      <div class="room-actions dinner-panel" data-panel="dinner">
-        <span class="action-label">Hackathon Demo Scenarios</span>
-        <div class="toolbar">
-          <button class="scenario-chip" data-scenario="dinner" aria-pressed="false">No constraints</button>
-          <button class="scenario-chip" data-scenario="lunch" aria-pressed="false">Low energy</button>
-          <button class="scenario-chip" data-scenario="guest" aria-pressed="false">Avoid nuts</button>
-        </div>
-      </div>
     </main>
     <script>
       let sessionId = null;
       let activeMode = "dinner";
-      let selectedScenario = null;
       const chat = document.querySelector("#chat");
       const form = document.querySelector("#form");
       const input = document.querySelector("#message");
@@ -283,40 +254,28 @@ HTML = """<!doctype html>
       const promptGroups = {
         dinner: [
           {
-            title: "Time + energy",
-            label: "Time and energy",
-            prompts: [
-              "I have 10 minutes and barely cooking energy.",
-              "I have 20 minutes and normal energy.",
-              "I have 30 minutes and can cook."
-            ]
+            label: "Brain-dead 10 min",
+            prompt: "It’s 5pm, everyone is hungry, I have 10 minutes and barely cooking energy. Make it picky-kid friendly."
           },
           {
-            title: "What we have",
             label: "Use what we have",
-            prompts: [
-              "Use leftovers if possible.",
-              "Use pantry or freezer basics I already have.",
-              "I have tortillas, beans, rice, eggs, frozen peas, and fruit."
-            ]
+            prompt: "I have tortillas, cheese, black beans, rice, and apples. I have 15 minutes and no store run."
           },
           {
-            title: "Fit",
-            label: "Kid fit",
-            prompts: [
-              "Make it picky-kid friendly.",
-              "Vegetarian tonight.",
-              "Dairy-free tonight."
-            ]
+            label: "Vegetarian quick",
+            prompt: "Vegetarian tonight. I have rice, eggs, frozen peas, and 20 minutes. Normal energy."
           },
           {
-            title: "Avoid",
-            label: "Avoidances",
-            prompts: [
-              "Avoid peanuts and tree nuts tonight.",
-              "No dairy tonight.",
-              "Avoid spicy food tonight."
-            ]
+            label: "Avoid nuts",
+            prompt: "Avoid peanuts and tree nuts tonight. I have pasta, jarred sauce, frozen peas, and 15 minutes."
+          },
+          {
+            label: "Picky kid",
+            prompt: "My kid rejects mixed foods. I have chicken, rice, cucumber, yogurt, and 20 minutes. Make it easy to deconstruct."
+          },
+          {
+            label: "Just pick one",
+            prompt: "I have a few options but no brain left to decide. We have eggs, toast, fruit, rice, and frozen vegetables. Pick one easy dinner."
           }
         ]
       };
@@ -336,28 +295,6 @@ HTML = """<!doctype html>
         renderPromptMenu(activeMode);
         closePromptMenu();
         tabPanel.setAttribute("aria-labelledby", "dinner-tab");
-        document.querySelectorAll("[data-panel]").forEach((panel) => {
-          panel.classList.toggle("hidden", panel.dataset.panel !== "dinner");
-        });
-      }
-
-      function updateScenarioButtons() {
-        document.querySelectorAll("[data-scenario]").forEach((button) => {
-          const pressed = button.dataset.scenario === selectedScenario;
-          button.classList.toggle("pressed", pressed);
-          button.setAttribute("aria-pressed", String(pressed));
-        });
-      }
-
-      function clearScenarioState() {
-        selectedScenario = null;
-        sessionId = null;
-        chat.innerHTML = "";
-        updateScenarioButtons();
-      }
-
-      function scenarioMode(scenario) {
-        return "dinner";
       }
 
       function trackEvent(name, params) {
@@ -376,17 +313,14 @@ HTML = """<!doctype html>
 
       function renderPromptMenu(mode) {
         const groups = promptGroups[mode];
-        promptMenu.setAttribute("aria-label", "1Less dinner starter prompts");
+        promptMenu.setAttribute("aria-label", "Editable real-life dinner prompts");
         promptMenu.innerHTML = `
-          <p class="prompt-helper">Pick quick context, or type what you have and anything to avoid.</p>
-          ${groups.map((group) => `
-            <section class="prompt-group" aria-label="${escapeHtml(group.label)}">
-              <h3>${escapeHtml(group.title)}</h3>
-              ${group.prompts.map((prompt) => `
-                <button class="prompt-option" type="button" role="menuitem" data-prompt="${escapeHtml(prompt)}">${escapeHtml(prompt)}</button>
-              `).join("")}
-            </section>
-          `).join("")}
+          <p class="prompt-helper">Pick one, then edit it to match tonight.</p>
+          <div class="prompt-list">
+            ${groups.map((sample) => `
+              <button class="prompt-option" type="button" role="menuitem" data-prompt="${escapeHtml(sample.prompt)}">${escapeHtml(sample.label)}</button>
+            `).join("")}
+          </div>
         `;
       }
 
@@ -481,23 +415,6 @@ HTML = """<!doctype html>
         await sendCurrentInput();
       });
 
-      document.querySelectorAll("[data-scenario]").forEach((button) => {
-        button.addEventListener("click", async () => {
-          trackEvent("scenario_click", { scenario: button.dataset.scenario });
-          if (selectedScenario === button.dataset.scenario) {
-            clearScenarioState();
-            return;
-          }
-          selectedScenario = button.dataset.scenario;
-          updateScenarioButtons();
-          chat.innerHTML = "";
-          setRoom(scenarioMode(selectedScenario));
-          const data = await postJson("/api/scenario", { scenario: button.dataset.scenario });
-          sessionId = data.session_id;
-          data.responses.forEach(renderResponse);
-        });
-      });
-
       promptButton.addEventListener("click", (event) => {
         event.stopPropagation();
         togglePromptMenu();
@@ -508,7 +425,7 @@ HTML = """<!doctype html>
         if (!button) return;
         input.value = button.dataset.prompt;
         closePromptMenu();
-        await sendCurrentInput();
+        input.focus();
       });
 
       document.addEventListener("click", (event) => {
@@ -517,14 +434,6 @@ HTML = """<!doctype html>
 
       document.addEventListener("keydown", (event) => {
         if (event.key === "Escape") closePromptMenu();
-      });
-
-      document.querySelectorAll("[data-tab]").forEach((button) => {
-        button.addEventListener("click", () => {
-          trackEvent("mode_dinner");
-          clearScenarioState();
-          setRoom("dinner");
-        });
       });
 
       traceToggle.addEventListener("change", () => {
