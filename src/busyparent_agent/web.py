@@ -111,7 +111,7 @@ HTML = """<!doctype html>
       .hidden { display: none; }
       button { border: 0; border-radius: 999px; padding: 10px 14px; background: #ffedd5; color: var(--accent-dark); font-weight: 850; cursor: pointer; transition: transform .15s ease, box-shadow .15s ease, background .15s ease; }
       button:hover { transform: translateY(-1px); }
-      button.primary { border: 1px solid rgba(102,91,82,.18); background: rgba(255,255,255,.92); color: #51463f; box-shadow: none; font-size: 1.125rem; }
+      button.primary { align-self: start; min-height: 46px; border: 1px solid rgba(102,91,82,.18); border-radius: 10px; padding: 0 18px; background: rgba(255,255,255,.92); color: #51463f; box-shadow: none; font-size: 1rem; line-height: 1; }
       button.primary:hover { background: #f8fafc; }
       label { display: inline-flex; align-items: center; gap: 8px; color: #665b52; font-weight: 760; }
       .room-context { display: grid; gap: 10px; padding: 22px 24px; border-bottom: 1px solid rgba(102,91,82,.1); background: linear-gradient(135deg, rgba(255,255,255,.82), rgba(255,255,255,.48)); }
@@ -154,15 +154,15 @@ HTML = """<!doctype html>
       .agent a:visited { color: #4f46e5; }
       .trace { justify-self: stretch; display: none; border-left: 3px solid var(--accent-line); border-radius: 8px; padding: 11px 12px; background: rgba(255,255,255,.56); color: #65564c; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .8rem; white-space: pre-wrap; }
       .show-trace .trace { display: block; }
-      form { position: relative; display: grid; grid-template-columns: auto 1fr auto; gap: 10px; padding: 16px; border-top: 1px solid rgba(102,91,82,.1); background: rgba(255,255,255,.82); }
+      form { position: relative; display: grid; grid-template-columns: auto 1fr auto; align-items: start; gap: 10px; padding: 16px; border-top: 1px solid rgba(102,91,82,.1); background: rgba(255,255,255,.82); }
       .input-copy { min-width: 0; display: grid; gap: 6px; }
       input[type="text"] { min-width: 0; width: 100%; border: 1px solid rgba(102,91,82,.18); border-radius: 999px; padding: 13px 15px; font: inherit; background: white; }
       input[type="text"]:focus { outline: 3px solid var(--accent-line); border-color: var(--accent); }
       .input-helper { margin: 0 4px; color: #665b52; font-size: .84rem; font-weight: 760; line-height: 1.32; }
       .input-helper-lead { display: block; color: #3f332b; font-weight: 900; }
       .input-helper-detail { display: block; margin-top: 2px; font-weight: 720; }
-      .prompt-control { position: relative; }
-      .prompt-trigger { display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; height: 100%; min-height: 46px; min-width: 96px; border: 1px solid rgba(194,65,12,.24); background: #ff7a00; color: #1f1306; box-shadow: 0 14px 30px rgba(255,122,0,.24); font-size: 1rem; line-height: 1.02; }
+      .prompt-control { position: relative; align-self: start; }
+      .prompt-trigger { display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; min-height: 46px; min-width: 104px; border: 1px solid rgba(194,65,12,.24); border-radius: 10px; padding: 7px 12px; background: #ff7a00; color: #1f1306; box-shadow: 0 14px 30px rgba(255,122,0,.24); font-size: .95rem; line-height: 1.04; }
       .prompt-trigger span { display: block; }
       .prompt-trigger:hover { background: #ff8f1f; box-shadow: 0 16px 34px rgba(255,122,0,.3); }
       .prompt-trigger[aria-expanded="true"] { border-color: rgba(39,33,29,.28); filter: saturate(1.08); }
@@ -198,7 +198,7 @@ HTML = """<!doctype html>
         .dinner-card { padding: 15px; border-radius: 12px; }
         .effort-chip { width: 100%; justify-content: flex-start; }
         form { grid-template-columns: auto 1fr; }
-        .primary { grid-column: 1 / -1; justify-self: stretch; }
+        .primary { grid-column: 1 / -1; justify-self: end; min-width: 88px; }
         .input-copy { grid-column: 2; }
         .input-helper { font-size: .78rem; }
         .prompt-menu { width: calc(100vw - 32px); }
