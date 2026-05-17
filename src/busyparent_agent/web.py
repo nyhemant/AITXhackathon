@@ -232,7 +232,7 @@ HTML = """<!doctype html>
                 <span>Fridge/pantry</span>
               </div>
             </div>
-            <p id="roomDescription">Tell me the messy real-life version: energy, time, what’s in the fridge or pantry, and what the kids might actually eat.</p>
+            <p id="roomDescription">Busy day? I can help with dinner decision. Just steer me in right direction</p>
           </section>
           <div id="chat" class="chat" aria-live="polite"></div>
           <form id="form">
@@ -252,7 +252,7 @@ HTML = """<!doctype html>
             </div>
             <div class="input-copy">
               <input id="message" type="text" autocomplete="off" aria-describedby="inputHelper" placeholder="Busy day? I can help with dinner decision. Just steer me in right direction" />
-              <p class="input-helper" id="inputHelper">Time, energy, leftovers, fridge/pantry basics, picky kids, avoidances — messy is fine.</p>
+              <p class="input-helper" id="inputHelper">Tell me: minutes, energy level, 2–4 things on hand, leftovers, picky-kid no-gos, and any avoidances.</p>
             </div>
             <button class="primary" type="submit">Send</button>
           </form>
@@ -293,9 +293,9 @@ HTML = """<!doctype html>
       const inputCopyByState = {
         start: {
           placeholder: "Busy day? I can help with dinner decision. Just steer me in right direction",
-          helper: "Time, energy, leftovers, fridge/pantry basics, picky kids, avoidances — messy is fine.",
+          helper: "Tell me: minutes, energy level, 2–4 things on hand, leftovers, picky-kid no-gos, and any avoidances.",
           mobilePlaceholder: "Busy day? Steer me toward dinner.",
-          mobileHelper: "Time, energy, leftovers, picky kids — messy is fine."
+          mobileHelper: "Minutes, energy, food on hand, picky-kid no-gos."
         },
         recommendation: {
           placeholder: "Need it easier or more kid-proof?",
