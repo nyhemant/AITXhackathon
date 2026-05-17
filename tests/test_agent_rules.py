@@ -415,7 +415,7 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertIn('aria-describedby="inputHelper"', HTML)
         self.assertIn('class="input-helper" id="inputHelper"', HTML)
         self.assertIn("Busy day? I can help with dinner decision. Just steer me in right direction", HTML)
-        self.assertIn("Use prompts or tell me: Fast or flexible? Tell me your dinner mood, time, 2–4 things on hand, picky-kid no-gos, etc.", HTML)
+        self.assertIn("Use prompts or tell me: 2–4 things on hand, mood to cook, fast or flexible, picky-kid no-gos, etc.", HTML)
         self.assertIn("Need it easier or more kid-proof?", HTML)
         self.assertIn("Try: “too much work,” “kid won’t eat this,” “missing ingredient,” or “give me backup.”", HTML)
         self.assertIn("Good enough, or one more tweak?", HTML)
