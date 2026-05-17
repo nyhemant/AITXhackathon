@@ -127,6 +127,24 @@ HTML = """<!doctype html>
       .parent { justify-self: end; background: #2f2924; color: white; border-bottom-right-radius: 2px; box-shadow: 0 12px 28px rgba(39,33,29,.12); }
       .agent { justify-self: stretch; max-width: 100%; border: 1px solid rgba(102,91,82,.14); border-left: 5px solid var(--accent); border-radius: 8px; padding: 18px 20px; background: rgba(255,255,255,.9); box-shadow: 0 18px 38px rgba(39,33,29,.08); color: #2d2722; }
       .agent::before { content: "Recommendation"; display: block; margin-bottom: 8px; color: var(--accent-dark); font-size: .74rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
+      .dinner-card { justify-self: stretch; max-width: 100%; border: 1px solid rgba(124,45,18,.18); border-left: 5px solid var(--accent); border-radius: 14px; padding: 18px; background: linear-gradient(135deg, rgba(255,255,255,.96), rgba(255,247,237,.92)); box-shadow: 0 18px 38px rgba(39,33,29,.08); color: #2d2722; }
+      .dinner-card * { text-decoration: none; }
+      .dinner-card a { color: #2563eb; font-weight: 850; text-decoration: underline; text-underline-offset: 3px; }
+      .dinner-card-header { display: grid; gap: 9px; margin-bottom: 14px; }
+      .meal-badge { width: fit-content; border: 1px solid rgba(194,65,12,.22); border-radius: 999px; padding: 5px 9px; background: #ffedd5; color: #7c2d12; font-size: .74rem; font-weight: 950; letter-spacing: .08em; text-transform: uppercase; }
+      .meal-title { margin: 0; color: #241b16; font-size: clamp(1.28rem, 2.7vw, 1.72rem); line-height: 1.12; }
+      .effort-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+      .effort-chip { display: inline-flex; align-items: center; gap: 6px; border: 1px solid rgba(102,91,82,.16); border-radius: 999px; padding: 7px 10px; background: rgba(255,255,255,.72); color: #4f453e; font-size: .88rem; font-weight: 820; }
+      .dinner-section { margin-top: 14px; }
+      .dinner-section h4 { margin: 0 0 8px; color: #7c2d12; font-size: .78rem; font-weight: 950; letter-spacing: .08em; text-transform: uppercase; }
+      .plan-list { display: grid; gap: 8px; margin: 0; padding-left: 1.45rem; }
+      .plan-list li { padding-left: 2px; line-height: 1.45; }
+      .fallback-box, .safety-box { border-radius: 12px; padding: 12px 13px; line-height: 1.45; }
+      .fallback-box { border: 1px solid rgba(124,45,18,.14); background: rgba(255,237,213,.72); }
+      .safety-box { border: 1px solid rgba(146,64,14,.24); background: #fff7ed; color: #4f2b12; }
+      .detail-list { display: grid; gap: 7px; margin: 0; padding: 0; list-style: none; color: #665b52; line-height: 1.45; }
+      .detail-list li::before { content: "•"; margin-right: 8px; color: #7c2d12; font-weight: 950; }
+      .decision-note { margin: 14px 0 0; color: #5f554d; font-size: .92rem; font-weight: 820; }
       .agent a { color: #2563eb; font-weight: 850; text-decoration: underline; text-underline-offset: 3px; }
       .agent a:visited { color: #4f46e5; }
       .trace { justify-self: stretch; display: none; border-left: 3px solid var(--accent-line); border-radius: 8px; padding: 11px 12px; background: rgba(255,255,255,.56); color: #65564c; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .8rem; white-space: pre-wrap; }
@@ -161,6 +179,8 @@ HTML = """<!doctype html>
         .proof-line { justify-content: flex-start; }
         .bubble { max-width: 92%; }
         .agent { max-width: 100%; }
+        .dinner-card { padding: 15px; border-radius: 12px; }
+        .effort-chip { width: 100%; justify-content: flex-start; }
         form { grid-template-columns: auto 1fr; }
         .primary { grid-column: 1 / -1; justify-self: stretch; }
         .prompt-menu { width: calc(100vw - 32px); }
@@ -343,6 +363,93 @@ HTML = """<!doctype html>
         chat.scrollTop = chat.scrollHeight;
       }
 
+      function stripTrailingPeriod(text) {
+        return text.replace(/[.]$/, "");
+      }
+
+      function splitDinnerPlan(planText) {
+        const clean = stripTrailingPeriod(planText.trim());
+        if (!clean) return [];
+        const normalized = clean.replace(/, and /g, ", ").replace(/ and /g, ", ");
+        const parts = normalized.split(/,\\s+/).map((part) => part.trim()).filter(Boolean);
+        if (parts.length <= 3) return parts;
+        return [parts[0], parts[1], parts.slice(2).join(", ")];
+      }
+
+      function parseDinnerMessage(message) {
+        const parsed = {
+          badge: "Dinner",
+          title: "Dinner decision",
+          why: [],
+          effort: "",
+          basics: "",
+          plan: [],
+          fallback: "",
+          safety: "",
+          note: "",
+          details: []
+        };
+        message.split("\\n").map((line) => line.trim()).filter(Boolean).forEach((line) => {
+          if (line.startsWith("Tonight:")) {
+            parsed.badge = "Tonight";
+            parsed.title = stripTrailingPeriod(line.replace("Tonight:", "").trim());
+          } else if (line.startsWith("Backup:")) {
+            parsed.badge = "Backup";
+            parsed.title = stripTrailingPeriod(line.replace("Backup:", "").trim());
+          } else if (line.startsWith("Why this is easier:")) {
+            parsed.why.push(line.replace("Why this is easier:", "").trim());
+          } else if (line.startsWith("Why it fits:")) {
+            parsed.why.push(line.replace("Why it fits:", "").trim());
+          } else if (line.startsWith("Time/effort:")) {
+            parsed.effort = line.replace("Time/effort:", "").trim();
+          } else if (line.startsWith("Constraint heard:")) {
+            parsed.details.push(line);
+          } else if (line.startsWith("Works with common basics like:")) {
+            parsed.basics = line.replace("Works with common basics like:", "").trim();
+          } else if (line.startsWith("Simple plan:")) {
+            parsed.plan = splitDinnerPlan(line.replace("Simple plan:", "").trim());
+          } else if (line.startsWith("Fallback/tweak:")) {
+            parsed.fallback = line.replace("Fallback/tweak:", "").trim();
+          } else if (line.includes("cannot guarantee allergy safety") || line.includes("Always check labels")) {
+            parsed.safety = line;
+          } else if (line === "One decision, not a recipe search.") {
+            parsed.note = line;
+          } else {
+            parsed.details.push(line);
+          }
+        });
+        return parsed;
+      }
+
+      function effortChips(effortText) {
+        if (!effortText) return [];
+        const clean = stripTrailingPeriod(effortText);
+        const parts = clean.split(",").map((part) => part.trim()).filter(Boolean);
+        return parts.map((part, index) => index === 0 ? `⏱ ${part}` : `Energy: ${part}`);
+      }
+
+      function renderDinnerCard(response) {
+        const parsed = parseDinnerMessage(response.message || "");
+        const article = document.createElement("article");
+        article.className = "dinner-card";
+        article.setAttribute("aria-label", `${parsed.badge} dinner recommendation: ${parsed.title}`);
+        const chips = effortChips(parsed.effort);
+        article.innerHTML = `
+          <header class="dinner-card-header">
+            <span class="meal-badge">${escapeHtml(parsed.badge)}</span>
+            <h3 class="meal-title">${escapeHtml(parsed.title)}</h3>
+            ${chips.length ? `<ul class="effort-chips" aria-label="Time and effort">${chips.map((chip) => `<li class="effort-chip">${escapeHtml(chip)}</li>`).join("")}</ul>` : ""}
+          </header>
+          ${parsed.plan.length ? `<section class="dinner-section" aria-label="Three-step plan"><h4>3-step plan</h4><ol class="plan-list">${parsed.plan.map((step) => `<li>${escapeHtml(step)}</li>`).join("")}</ol></section>` : ""}
+          ${parsed.fallback ? `<section class="dinner-section" aria-label="Fallback or tweak"><h4>Fallback</h4><div class="fallback-box">${escapeHtml(parsed.fallback)}</div></section>` : ""}
+          ${(parsed.why.length || parsed.basics || parsed.details.length) ? `<section class="dinner-section" aria-label="Why this fits"><h4>Why this fits</h4><ul class="detail-list">${parsed.why.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}${parsed.basics ? `<li>Works with common basics like: ${escapeHtml(parsed.basics)}</li>` : ""}${parsed.details.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></section>` : ""}
+          ${parsed.safety ? `<section class="dinner-section safety-box" role="note" aria-label="Safety caveat"><h4>Safety note</h4><p>${escapeHtml(parsed.safety)}</p></section>` : ""}
+          ${parsed.note ? `<p class="decision-note">${escapeHtml(parsed.note)}</p>` : ""}
+        `;
+        chat.appendChild(article);
+        chat.scrollTop = chat.scrollHeight;
+      }
+
       function renderDinnerFeedbackActions() {
         document.querySelectorAll(".feedback-actions").forEach((node) => node.remove());
         if (activeMode !== "dinner") return;
@@ -375,11 +482,16 @@ HTML = """<!doctype html>
       }
 
       function renderResponse(response) {
+        const isDinnerDecision = response.metadata && response.metadata.chapter === "chapter_1_dinner_decision";
         if (response.context) addBubble("agent", `Context: ${response.context}`);
         addBubble("parent", response.parent_message);
-        addBubble("agent", response.message);
+        if (isDinnerDecision) {
+          renderDinnerCard(response);
+        } else {
+          addBubble("agent", response.message);
+        }
         addTrace(response.trace);
-        if (response.metadata && response.metadata.chapter === "chapter_1_dinner_decision") {
+        if (isDinnerDecision) {
           renderDinnerFeedbackActions();
         }
       }
