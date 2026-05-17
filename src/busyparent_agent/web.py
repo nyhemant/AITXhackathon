@@ -172,7 +172,7 @@ HTML = """<!doctype html>
       .vision-note { margin: 16px 0 12px; border: 1px solid rgba(102,91,82,.14); border-radius: 8px; padding: 18px 20px; background: rgba(255,255,255,.68); box-shadow: 0 12px 30px rgba(39,33,29,.06); }
       .vision-note h2 { margin: 0 0 7px; color: #7c2d12; font-size: 1rem; letter-spacing: .01em; }
       .vision-note p { margin: 0; max-width: 760px; color: #665b52; line-height: 1.5; }
-      .trace-footer { margin: 14px 2px 0; color: #665b52; font-size: .92rem; }
+      .trace-footer { display: none; margin: 14px 2px 0; color: #665b52; font-size: .92rem; }
       @keyframes riseIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
       @keyframes softPulse { 0% { outline: 0 solid rgba(255,237,213,0); } 24% { outline: 5px solid rgba(255,237,213,.82); } 100% { outline: 0 solid rgba(255,237,213,0); } }
       @keyframes dots { 0% { content: ""; } 25% { content: "."; } 50% { content: ".."; } 75%, 100% { content: "..."; } }
@@ -206,9 +206,9 @@ HTML = """<!doctype html>
         <div class="brand-lockup">
           <img class="brand-logo" src="/BMLogo.svg?v=helper" alt="1Less logo" width="1024" height="1024" />
           <div class="brand-copy">
-          <p class="tagline">One less decision for busy parents.</p>
-          <p class="subhead">Dinner first: a low-burden flow that turns tonight's constraints into one clear meal decision.</p>
-          <p class="alpha-note"><strong>Alpha testing</strong></p>
+          <p class="tagline">One less thing on your plate.</p>
+          <p class="subhead">Dinner first, because that’s when the day gets loud. Tell 1Less what you have and what kind of night it is; get one doable idea — not a recipe rabbit hole.</p>
+          <p class="alpha-note"><strong>Dinner-only alpha</strong></p>
           </div>
         </div>
       </header>
@@ -221,37 +221,37 @@ HTML = """<!doctype html>
         <div class="tab-panel" id="active-panel" role="tabpanel" aria-labelledby="dinner-tab">
           <section class="room-context" data-room-context>
             <div class="room-heading-row">
-              <h2 id="roomHeadline">Let’s make dinner one less decision.</h2>
+              <h2 id="roomHeadline">Dinner help for the late-day scramble.</h2>
             </div>
-            <p id="roomDescription">Busy day? I can help with dinner decision. Just steer me in right direction</p>
+            <p id="roomDescription">It’s late, people are hungry, and you don’t need fifteen options. Type one messy sentence about what’s in the fridge, who’s eating, and what tonight can handle.</p>
           </section>
           <div id="chat" class="chat" aria-live="polite"></div>
           <form id="form">
             <div class="prompt-control" id="promptControl">
-              <button class="prompt-trigger" id="promptButton" type="button" aria-label="Sample prompts" aria-haspopup="menu" aria-expanded="false" aria-controls="promptMenu"><span>Sample</span><span>prompts</span></button>
+              <button class="prompt-trigger" id="promptButton" type="button" aria-label="Show examples" aria-haspopup="menu" aria-expanded="false" aria-controls="promptMenu"><span>Show</span><span>examples</span></button>
               <div class="prompt-menu hidden" id="promptMenu" role="menu" aria-label="Editable real-life dinner prompts">
-                <p class="prompt-helper">Pick one, then edit it to match tonight.</p>
+                <p class="prompt-helper">Pick one and make it sound like tonight.</p>
                 <div class="prompt-list">
                   <button class="prompt-option" type="button" role="menuitem" data-prompt="It’s 5pm, everyone is hungry, I have 10 minutes and I’m not in the mood to cook. Make it picky-kid friendly.">Low-effort 10 min</button>
                   <button class="prompt-option" type="button" role="menuitem" data-prompt="I have tortillas, cheese, black beans, rice, and apples. I have 15 minutes and no store run.">Use what we have</button>
                   <button class="prompt-option" type="button" role="menuitem" data-prompt="Vegetarian tonight. I have rice, eggs, frozen peas, and 20 minutes. I’m okay cooking a little.">Vegetarian quick</button>
                   <button class="prompt-option" type="button" role="menuitem" data-prompt="Avoid peanuts and tree nuts tonight. I have pasta, jarred sauce, frozen peas, and 15 minutes.">Avoid nuts</button>
                   <button class="prompt-option" type="button" role="menuitem" data-prompt="My kid rejects mixed foods. I have chicken, rice, cucumber, yogurt, and 20 minutes. Make it easy to deconstruct.">Picky kid</button>
-                  <button class="prompt-option" type="button" role="menuitem" data-prompt="I have a few options but no brain left to decide. We have eggs, toast, fruit, rice, and frozen vegetables. Pick one easy dinner.">Just pick one</button>
+                  <button class="prompt-option" type="button" role="menuitem" data-prompt="I have a few options but I’m too tired to choose. We have eggs, toast, fruit, rice, and frozen vegetables. Pick one easy dinner.">Just pick one</button>
                 </div>
               </div>
             </div>
             <div class="input-copy">
-              <input id="message" type="text" autocomplete="off" aria-describedby="inputHelper" placeholder="What do you have, and what does tonight need?" />
-              <p class="input-helper" id="inputHelper"><span class="input-helper-lead">Pick a sample, edit it, or type one messy sentence.</span></p>
+              <input id="message" type="text" autocomplete="off" aria-describedby="inputHelper" placeholder="Tortillas, eggs, picky 6-year-old, 20 min, low cleanup mood" />
+              <p class="input-helper" id="inputHelper"><span class="input-helper-lead">Messy is fine — leftovers, no-gos, budget, and mood all help.</span></p>
             </div>
-            <button class="primary" type="submit">Send</button>
+            <button class="primary" type="submit">Get one dinner idea</button>
           </form>
         </div>
       </section>
       <section class="vision-note" aria-labelledby="why-dinner-first">
-        <h2 id="why-dinner-first">Why dinner first?</h2>
-        <p>1Less may explore other parent decisions later, but this alpha is dinner-only. Right now we are testing whether one late-day dinner decision can be removed without creating another chore.</p>
+        <h2 id="why-dinner-first">Why start with dinner?</h2>
+        <p>Because choosing dinner is often the chore before the chore. 1Less starts here because that late-day decision hits when parents are tired, kids are hungry, and recipe browsing makes things worse. For now, it only handles dinner. The goal is simple: one practical default you can use, tweak, or ignore.</p>
       </section>
       <label class="trace-footer"><input id="traceToggle" type="checkbox" /> Show trace</label>
     </main>
@@ -272,17 +272,17 @@ HTML = """<!doctype html>
       const rooms = {
         dinner: {
           title: "Dinner",
-          summary: "Let’s make dinner one less decision.",
-          headline: "Let’s make dinner one less decision.",
-          description: "Dinner is the current 1Less proof point: share the real-life constraints — time, mood, fridge/pantry options, and what the kids will tolerate.",
+          summary: "Dinner help for the late-day scramble.",
+          headline: "Dinner help for the late-day scramble.",
+          description: "It’s late, people are hungry, and you don’t need fifteen options. Type one messy sentence about what’s in the fridge, who’s eating, and what tonight can handle.",
         }
       };
       const inputCopyByState = {
         start: {
-          placeholder: "What do you have, and what does tonight need?",
-          helper: "Pick a sample, edit it, or type one messy sentence.",
-          mobilePlaceholder: "What does tonight need?",
-          mobileHelper: "Pick a sample or type one messy sentence."
+          placeholder: "Tortillas, eggs, picky 6-year-old, 20 min, low cleanup mood",
+          helper: "Messy is fine — leftovers, no-gos, budget, and mood all help.",
+          mobilePlaceholder: "What do you have tonight?",
+          mobileHelper: "Messy is fine — food, time, no-gos, mood."
         },
         recommendation: {
           placeholder: "Need it easier or more kid-proof?",
@@ -322,7 +322,7 @@ HTML = """<!doctype html>
           },
           {
             label: "Just pick one",
-            prompt: "I have a few options but no brain left to decide. We have eggs, toast, fruit, rice, and frozen vegetables. Pick one easy dinner."
+            prompt: "I have a few options but I’m too tired to choose. We have eggs, toast, fruit, rice, and frozen vegetables. Pick one easy dinner."
           }
         ]
       };
@@ -388,7 +388,7 @@ HTML = """<!doctype html>
         const groups = promptGroups[mode];
         promptMenu.setAttribute("aria-label", "Editable real-life dinner prompts");
         promptMenu.innerHTML = `
-          <p class="prompt-helper">Pick one, then edit it to match tonight.</p>
+          <p class="prompt-helper">Pick one and make it sound like tonight.</p>
           <div class="prompt-list">
             ${groups.map((sample) => `
               <button class="prompt-option" type="button" role="menuitem" data-prompt="${escapeHtml(sample.prompt)}">${escapeHtml(sample.label)}</button>
@@ -606,7 +606,7 @@ HTML = """<!doctype html>
           sessionId = data.session_id;
           renderResponse(data.response, { skipParent: true, turnStart: parentBubble, replaceNode: thinkingBubble });
         } catch (error) {
-          addBubble("agent", "Something hiccuped. Try Send once more.", { replaceNode: thinkingBubble, turnStart: parentBubble, isNewTurn: true });
+          addBubble("agent", "Something hiccuped. Try once more.", { replaceNode: thinkingBubble, turnStart: parentBubble, isNewTurn: true });
           console.error(error);
         } finally {
           chat.setAttribute("aria-busy", "false");
