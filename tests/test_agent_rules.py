@@ -459,7 +459,7 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertNotIn('>Prompts</button>', HTML)
         self.assertIn('aria-label="Editable real-life dinner prompts"', HTML)
         self.assertIn("Pick one, then edit it to match tonight.", HTML)
-        self.assertIn("It’s 5pm, everyone is hungry, I have 10 minutes and barely cooking energy. Make it picky-kid friendly.", HTML)
+        self.assertIn("It’s 5pm, everyone is hungry, I have 10 minutes and low cooking energy. Make it picky-kid friendly.", HTML)
         self.assertIn("I have tortillas, cheese, black beans, rice, and apples. I have 15 minutes and no store run.", HTML)
         self.assertIn("Vegetarian tonight. I have rice, eggs, frozen peas, and 20 minutes. Normal energy.", HTML)
         self.assertIn("Avoid peanuts and tree nuts tonight. I have pasta, jarred sauce, frozen peas, and 15 minutes.", HTML)

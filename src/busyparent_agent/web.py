@@ -243,7 +243,7 @@ HTML = """<!doctype html>
               <div class="prompt-menu hidden" id="promptMenu" role="menu" aria-label="Editable real-life dinner prompts">
                 <p class="prompt-helper">Pick one, then edit it to match tonight.</p>
                 <div class="prompt-list">
-                  <button class="prompt-option" type="button" role="menuitem" data-prompt="It’s 5pm, everyone is hungry, I have 10 minutes and barely cooking energy. Make it picky-kid friendly.">Brain-dead 10 min</button>
+                  <button class="prompt-option" type="button" role="menuitem" data-prompt="It’s 5pm, everyone is hungry, I have 10 minutes and low cooking energy. Make it picky-kid friendly.">Low-energy 10 min</button>
                   <button class="prompt-option" type="button" role="menuitem" data-prompt="I have tortillas, cheese, black beans, rice, and apples. I have 15 minutes and no store run.">Use what we have</button>
                   <button class="prompt-option" type="button" role="menuitem" data-prompt="Vegetarian tonight. I have rice, eggs, frozen peas, and 20 minutes. Normal energy.">Vegetarian quick</button>
                   <button class="prompt-option" type="button" role="menuitem" data-prompt="Avoid peanuts and tree nuts tonight. I have pasta, jarred sauce, frozen peas, and 15 minutes.">Avoid nuts</button>
@@ -318,8 +318,8 @@ HTML = """<!doctype html>
       const promptGroups = {
         dinner: [
           {
-            label: "Brain-dead 10 min",
-            prompt: "It’s 5pm, everyone is hungry, I have 10 minutes and barely cooking energy. Make it picky-kid friendly."
+            label: "Low-energy 10 min",
+            prompt: "It’s 5pm, everyone is hungry, I have 10 minutes and low cooking energy. Make it picky-kid friendly."
           },
           {
             label: "Use what we have",
