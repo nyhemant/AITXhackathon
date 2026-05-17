@@ -159,6 +159,8 @@ HTML = """<!doctype html>
       input[type="text"] { min-width: 0; width: 100%; border: 1px solid rgba(102,91,82,.18); border-radius: 999px; padding: 13px 15px; font: inherit; background: white; }
       input[type="text"]:focus { outline: 3px solid var(--accent-line); border-color: var(--accent); }
       .input-helper { margin: 0 4px; color: #665b52; font-size: .84rem; font-weight: 760; line-height: 1.32; }
+      .input-helper-lead { display: block; color: #3f332b; font-weight: 900; }
+      .input-helper-detail { display: block; margin-top: 2px; font-weight: 720; }
       .prompt-control { position: relative; }
       .prompt-trigger { display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; height: 100%; min-height: 46px; min-width: 96px; border: 1px solid rgba(194,65,12,.24); background: #ff7a00; color: #1f1306; box-shadow: 0 14px 30px rgba(255,122,0,.24); font-size: 1rem; line-height: 1.02; }
       .prompt-trigger span { display: block; }
@@ -237,7 +239,7 @@ HTML = """<!doctype html>
           <div id="chat" class="chat" aria-live="polite"></div>
           <form id="form">
             <div class="prompt-control" id="promptControl">
-              <button class="prompt-trigger" id="promptButton" type="button" aria-label="Try a real night" aria-haspopup="menu" aria-expanded="false" aria-controls="promptMenu"><span>Try a</span><span>real night</span></button>
+              <button class="prompt-trigger" id="promptButton" type="button" aria-label="Sample prompts" aria-haspopup="menu" aria-expanded="false" aria-controls="promptMenu"><span>Sample</span><span>prompts</span></button>
               <div class="prompt-menu hidden" id="promptMenu" role="menu" aria-label="Editable real-life dinner prompts">
                 <p class="prompt-helper">Pick one, then edit it to match tonight.</p>
                 <div class="prompt-list">
@@ -251,8 +253,8 @@ HTML = """<!doctype html>
               </div>
             </div>
             <div class="input-copy">
-              <input id="message" type="text" autocomplete="off" aria-describedby="inputHelper" placeholder="Busy day? I can help with dinner decision. Just steer me in right direction" />
-              <p class="input-helper" id="inputHelper">Use prompts or share: 2–4 things on hand, mood to cook, fast or flexible, picky-kid no-gos, etc.</p>
+              <input id="message" type="text" autocomplete="off" aria-describedby="inputHelper" placeholder="What do you have, and what does tonight need?" />
+              <p class="input-helper" id="inputHelper"><span class="input-helper-lead">Use prompts or share.</span><span class="input-helper-detail">2–4 things on hand, mood to cook, fast or flexible, picky-kid no-gos, etc.</span></p>
             </div>
             <button class="primary" type="submit">Send</button>
           </form>
@@ -292,10 +294,12 @@ HTML = """<!doctype html>
       };
       const inputCopyByState = {
         start: {
-          placeholder: "Busy day? I can help with dinner decision. Just steer me in right direction",
-          helper: "Use prompts or share: 2–4 things on hand, mood to cook, fast or flexible, picky-kid no-gos, etc.",
-          mobilePlaceholder: "Busy day? Steer me toward dinner.",
-          mobileHelper: "Fast? Flexible? Mood, time, food on hand, no-gos."
+          placeholder: "What do you have, and what does tonight need?",
+          helper: "Use prompts or share.",
+          helperDetail: "2–4 things on hand, mood to cook, fast or flexible, picky-kid no-gos, etc.",
+          mobilePlaceholder: "What does tonight need?",
+          mobileHelper: "Use prompts or share.",
+          mobileHelperDetail: "Food on hand, mood, fast/flexible, no-gos."
         },
         recommendation: {
           placeholder: "Need it easier or more kid-proof?",
@@ -364,8 +368,21 @@ HTML = """<!doctype html>
       function updateInputCopy(state) {
         inputCopyState = state;
         const copy = inputCopyByState[state] || inputCopyByState.start;
-        input.placeholder = isMobileViewport() ? copy.mobilePlaceholder : copy.placeholder;
-        inputHelper.textContent = isMobileViewport() ? copy.mobileHelper : copy.helper;
+        const mobile = isMobileViewport();
+        input.placeholder = mobile ? copy.mobilePlaceholder : copy.placeholder;
+        const helperText = mobile ? copy.mobileHelper : copy.helper;
+        const helperDetail = mobile ? copy.mobileHelperDetail : copy.helperDetail;
+        inputHelper.replaceChildren();
+        const lead = document.createElement("span");
+        lead.className = "input-helper-lead";
+        lead.textContent = helperText;
+        inputHelper.appendChild(lead);
+        if (helperDetail) {
+          const detail = document.createElement("span");
+          detail.className = "input-helper-detail";
+          detail.textContent = helperDetail;
+          inputHelper.appendChild(detail);
+        }
       }
 
       function inputStateForResponse(response) {
