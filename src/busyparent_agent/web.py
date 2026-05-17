@@ -155,8 +155,10 @@ HTML = """<!doctype html>
       .trace { justify-self: stretch; display: none; border-left: 3px solid var(--accent-line); border-radius: 8px; padding: 11px 12px; background: rgba(255,255,255,.56); color: #65564c; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .8rem; white-space: pre-wrap; }
       .show-trace .trace { display: block; }
       form { position: relative; display: grid; grid-template-columns: auto 1fr auto; gap: 10px; padding: 16px; border-top: 1px solid rgba(102,91,82,.1); background: rgba(255,255,255,.82); }
-      input[type="text"] { min-width: 0; border: 1px solid rgba(102,91,82,.18); border-radius: 999px; padding: 13px 15px; font: inherit; background: white; }
+      .input-copy { min-width: 0; display: grid; gap: 6px; }
+      input[type="text"] { min-width: 0; width: 100%; border: 1px solid rgba(102,91,82,.18); border-radius: 999px; padding: 13px 15px; font: inherit; background: white; }
       input[type="text"]:focus { outline: 3px solid var(--accent-line); border-color: var(--accent); }
+      .input-helper { margin: 0 4px; color: #665b52; font-size: .84rem; font-weight: 760; line-height: 1.32; }
       .prompt-control { position: relative; }
       .prompt-trigger { display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; height: 100%; min-height: 46px; min-width: 96px; border: 1px solid rgba(194,65,12,.24); background: #ff7a00; color: #1f1306; box-shadow: 0 14px 30px rgba(255,122,0,.24); font-size: 1rem; line-height: 1.02; }
       .prompt-trigger span { display: block; }
@@ -195,6 +197,8 @@ HTML = """<!doctype html>
         .effort-chip { width: 100%; justify-content: flex-start; }
         form { grid-template-columns: auto 1fr; }
         .primary { grid-column: 1 / -1; justify-self: stretch; }
+        .input-copy { grid-column: 2; }
+        .input-helper { font-size: .78rem; }
         .prompt-menu { width: calc(100vw - 32px); }
       }
     </style>
@@ -246,7 +250,10 @@ HTML = """<!doctype html>
                 </div>
               </div>
             </div>
-            <input id="message" type="text" autocomplete="off" placeholder="Talk to me: how are you feeling, what’s in the fridge/pantry, and any hard no’s?" />
+            <div class="input-copy">
+              <input id="message" type="text" autocomplete="off" aria-describedby="inputHelper" placeholder="Busy day? I can help with dinner decision. Just steer me in right direction" />
+              <p class="input-helper" id="inputHelper">Time, energy, leftovers, fridge/pantry basics, picky kids, avoidances — messy is fine.</p>
+            </div>
             <button class="primary" type="submit">Send</button>
           </form>
         </div>
@@ -263,6 +270,7 @@ HTML = """<!doctype html>
       const chat = document.querySelector("#chat");
       const form = document.querySelector("#form");
       const input = document.querySelector("#message");
+      const inputHelper = document.querySelector("#inputHelper");
       const traceToggle = document.querySelector("#traceToggle");
       const roomHeadline = document.querySelector("#roomHeadline");
       const roomDescription = document.querySelector("#roomDescription");
@@ -279,10 +287,30 @@ HTML = """<!doctype html>
           description: "Dinner is the current 1Less proof point: share the real-life constraints — time, energy, fridge/pantry options, and what the kids will tolerate.",
           proofLabel: "Dinner plan considers",
           proofPrefix: "Fit for",
-          proof: ["Time", "Energy", "Avoidances", "Fridge/pantry"],
-          placeholder: "Talk to me: how are you feeling, what’s in the fridge/pantry, and any hard no’s?"
+          proof: ["Time", "Energy", "Avoidances", "Fridge/pantry"]
         }
       };
+      const inputCopyByState = {
+        start: {
+          placeholder: "Busy day? I can help with dinner decision. Just steer me in right direction",
+          helper: "Time, energy, leftovers, fridge/pantry basics, picky kids, avoidances — messy is fine.",
+          mobilePlaceholder: "Busy day? Steer me toward dinner.",
+          mobileHelper: "Time, energy, leftovers, picky kids — messy is fine."
+        },
+        recommendation: {
+          placeholder: "Need it easier or more kid-proof?",
+          helper: "Try: “too much work,” “kid won’t eat this,” “missing ingredient,” or “give me backup.”",
+          mobilePlaceholder: "Need it easier or more kid-proof?",
+          mobileHelper: "Try: too much work, kid won’t eat, missing ingredient, backup."
+        },
+        fallback: {
+          placeholder: "Good enough, or one more tweak?",
+          helper: "Say what failed — too much cleanup, missing ingredient, picky kid, or no energy.",
+          mobilePlaceholder: "Good enough, or one more tweak?",
+          mobileHelper: "Say what failed: cleanup, ingredient, picky kid, no energy."
+        }
+      };
+      let inputCopyState = "start";
       const promptGroups = {
         dinner: [
           {
@@ -323,11 +351,29 @@ HTML = """<!doctype html>
           room.proofPrefix ? `<b class="proof-prefix">${room.proofPrefix}</b>` : "",
           ...room.proof.map((point) => `<span>${point}</span>`)
         ].join("");
-        input.placeholder = room.placeholder;
+        updateInputCopy(inputCopyState);
         renderPromptMenu(activeMode);
         closePromptMenu();
         tabPanel.setAttribute("aria-labelledby", "dinner-tab");
       }
+
+      function isMobileViewport() {
+        return window.matchMedia("(max-width: 640px)").matches;
+      }
+
+      function updateInputCopy(state) {
+        inputCopyState = state;
+        const copy = inputCopyByState[state] || inputCopyByState.start;
+        input.placeholder = isMobileViewport() ? copy.mobilePlaceholder : copy.placeholder;
+        inputHelper.textContent = isMobileViewport() ? copy.mobileHelper : copy.helper;
+      }
+
+      function inputStateForResponse(response) {
+        const message = response.message || "";
+        if (message.trim().startsWith("Backup:")) return "fallback";
+        return "recommendation";
+      }
+
 
       function trackEvent(name, params) {
         if (typeof gtag === "function") {
@@ -537,6 +583,7 @@ HTML = """<!doctype html>
         addTrace(response.trace);
         scrollTurnIntoView(parentBubble || turnStart, "smooth");
         if (isDinnerDecision) {
+          updateInputCopy(inputStateForResponse(response));
           renderDinnerFeedbackActions();
         }
       }
@@ -603,6 +650,8 @@ HTML = """<!doctype html>
       document.addEventListener("keydown", (event) => {
         if (event.key === "Escape") closePromptMenu();
       });
+
+      window.addEventListener("resize", () => updateInputCopy(inputCopyState));
 
       traceToggle.addEventListener("change", () => {
         chat.classList.toggle("show-trace", traceToggle.checked);
