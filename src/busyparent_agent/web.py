@@ -205,7 +205,7 @@ HTML = """<!doctype html>
             Chapter 1: Dinner
           </button>
           <button class="mode-tab" id="story-tab" data-tab="book" role="tab" type="button" aria-selected="false" aria-controls="active-panel">
-            Story Picker
+            Story Picker (WIP)
           </button>
         </div>
         <div class="tab-panel" id="active-panel" role="tabpanel" aria-labelledby="dinner-tab">

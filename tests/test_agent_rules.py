@@ -395,6 +395,7 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertIn('class="mode-tabs" role="tablist"', HTML)
         self.assertIn('class="mode-tab active" id="dinner-tab"', HTML)
         self.assertIn('class="mode-tab" id="story-tab"', HTML)
+        self.assertIn("Story Picker (WIP)", HTML)
         self.assertIn('role="tab"', HTML)
         self.assertIn('role="tabpanel"', HTML)
         self.assertIn('aria-selected="true"', HTML)
