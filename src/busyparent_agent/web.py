@@ -207,7 +207,7 @@ HTML = """<!doctype html>
           <img class="brand-logo" src="/BMLogo.svg?v=helper" alt="1Less logo" width="1024" height="1024" />
           <div class="brand-copy">
           <p class="tagline">One less thing on your plate.</p>
-          <p class="subhead">Dinner first, because that’s when the day gets loud. Tell 1Less what you have and what kind of night it is; get one doable idea — not a recipe rabbit hole.</p>
+          <p class="subhead">Tell 1Less what’s in the fridge, who’s eating, and what kind of night it is. Get one doable dinner idea, not fifteen recipes.</p>
           <p class="alpha-note"><strong>Dinner-only alpha</strong></p>
           </div>
         </div>
@@ -242,7 +242,7 @@ HTML = """<!doctype html>
               </div>
             </div>
             <div class="input-copy">
-              <input id="message" type="text" autocomplete="off" aria-describedby="inputHelper" placeholder="Tortillas, eggs, picky 6-year-old, 20 min, low cleanup mood" />
+              <input id="message" type="text" autocomplete="off" aria-describedby="inputHelper" placeholder="Tortillas, eggs, picky 6-year-old, 20 min, low-cleanup night" />
               <p class="input-helper" id="inputHelper"><span class="input-helper-lead">Messy is fine — leftovers, no-gos, budget, and mood all help.</span></p>
             </div>
             <button class="primary" type="submit">Get one dinner idea</button>
@@ -279,7 +279,7 @@ HTML = """<!doctype html>
       };
       const inputCopyByState = {
         start: {
-          placeholder: "Tortillas, eggs, picky 6-year-old, 20 min, low cleanup mood",
+          placeholder: "Tortillas, eggs, picky 6-year-old, 20 min, low-cleanup night",
           helper: "Messy is fine — leftovers, no-gos, budget, and mood all help.",
           mobilePlaceholder: "What do you have tonight?",
           mobileHelper: "Messy is fine — food, time, no-gos, mood."
