@@ -99,26 +99,25 @@ HTML = """<!doctype html>
       .alpha-note { display: inline-flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 14px; padding: 9px 12px; border: 1px solid rgba(194,65,12,.2); border-radius: 999px; background: rgba(255,255,255,.72); color: #5f554d; font-size: .9rem; line-height: 1.35; }
       .alpha-note strong { color: #7c2d12; }
       .shell { overflow: hidden; border: 1px solid rgba(255,255,255,.66); border-radius: 8px; background: rgba(255,255,255,.78); box-shadow: 0 30px 90px var(--shadow); backdrop-filter: blur(18px); }
-      .mode-tabs { display: flex; gap: 6px; align-items: end; padding: 18px 18px 0; background: rgba(255,255,255,.52); border-bottom: 1px solid rgba(102,91,82,.16); }
-      .mode-tab { position: relative; min-width: 220px; border: 1px solid rgba(102,91,82,.16); border-bottom: 0; border-radius: 8px 8px 0 0; padding: 17px 24px 18px; color: #51463f; text-align: left; font-size: 1.14rem; font-weight: 920; box-shadow: none; }
-      #dinner-tab { background: #fff7ed; border-color: rgba(194,65,12,.22); color: #7c2d12; }
-      .mode-tab:hover { transform: none; filter: saturate(1.04) brightness(1.01); }
-      .mode-tab.active { margin-bottom: -1px; border-color: rgba(102,91,82,.22); background: rgba(255,255,255,.96); color: var(--accent-dark); box-shadow: 0 -8px 22px rgba(39,33,29,.07); }
-      #dinner-tab.active { background: #fffaf5; border-color: rgba(194,65,12,.3); }
-      .mode-tab.active::before { content: ""; position: absolute; left: 18px; right: 18px; top: 0; height: 4px; border-radius: 999px; background: var(--accent); }
-      .mode-tab.active::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: rgba(255,255,255,.96); }
       .tab-panel { background: rgba(255,255,255,.9); }
       .hidden { display: none; }
       button { border: 0; border-radius: 999px; padding: 10px 14px; background: #ffedd5; color: var(--accent-dark); font-weight: 850; cursor: pointer; transition: transform .15s ease, box-shadow .15s ease, background .15s ease; }
       button:hover { transform: translateY(-1px); }
-      button.primary { align-self: start; min-height: 46px; border: 1px solid rgba(102,91,82,.18); border-radius: 10px; padding: 0 18px; background: rgba(255,255,255,.92); color: #51463f; box-shadow: none; font-size: 1rem; line-height: 1; }
-      button.primary:hover { background: #f8fafc; }
+      button.primary { align-self: start; min-height: 46px; border: 1px solid rgba(194,65,12,.24); border-radius: 10px; padding: 0 18px; background: #ff7a00; color: #1f1306; box-shadow: 0 14px 30px rgba(255,122,0,.24); font-size: 1rem; line-height: 1; }
+      button.primary:hover { background: #ff8f1f; box-shadow: 0 16px 34px rgba(255,122,0,.3); }
       label { display: inline-flex; align-items: center; gap: 8px; color: #665b52; font-weight: 760; }
       .room-context { display: grid; gap: 10px; padding: 22px 24px; border-bottom: 1px solid rgba(102,91,82,.1); background: linear-gradient(135deg, rgba(255,255,255,.82), rgba(255,255,255,.48)); }
       .room-heading-row { display: flex; gap: 18px; align-items: baseline; justify-content: space-between; }
       .room-context h2 { flex: 0 0 auto; margin: 0; font-size: clamp(1.35rem, 3vw, 2rem); line-height: 1.08; letter-spacing: 0; white-space: nowrap; }
       .room-context p { margin: 0; max-width: 720px; color: #665b52; line-height: 1.55; }
       .chat { display: grid; gap: 12px; min-height: 300px; max-height: 50vh; overflow-y: auto; overscroll-behavior: contain; scroll-behavior: smooth; scroll-padding: 18px; padding: 20px 24px; background: rgba(255,255,255,.28); }
+      .empty-state { align-self: start; border: 1px dashed rgba(194,65,12,.22); border-radius: 14px; padding: 16px; background: rgba(255,247,237,.76); color: #5f554d; }
+      .empty-state h3 { margin: 0 0 6px; color: #3f332b; font-size: 1rem; }
+      .empty-state p { margin: 0 0 12px; line-height: 1.45; }
+      .example-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+      .example-chip { border: 1px solid rgba(102,91,82,.18); border-radius: 999px; padding: 8px 10px; background: rgba(255,255,255,.88); color: #51463f; box-shadow: none; font-size: .88rem; font-weight: 820; }
+      .example-chip:hover { transform: none; background: #fff7ed; }
+      .completion { justify-self: stretch; max-width: 100%; border: 1px solid rgba(22,101,52,.18); border-left: 5px solid #22c55e; border-radius: 12px; padding: 14px 16px; background: rgba(240,253,244,.88); color: #21402b; font-weight: 850; }
       .chat[aria-busy="true"] { background: linear-gradient(180deg, rgba(255,255,255,.36), rgba(255,247,237,.44)); }
       .bubble { max-width: 78%; border-radius: 8px; padding: 12px 14px; line-height: 1.48; white-space: pre-wrap; }
       .new-turn { animation: riseIn .34s ease-out both, softPulse 1.2s ease-out; }
@@ -143,30 +142,21 @@ HTML = """<!doctype html>
       .fallback-box, .safety-box { border-radius: 12px; padding: 12px 13px; line-height: 1.45; }
       .fallback-box { border: 1px solid rgba(124,45,18,.14); background: rgba(255,237,213,.72); }
       .safety-box { border: 1px solid rgba(146,64,14,.24); background: #fff7ed; color: #4f2b12; }
-      .detail-list { display: grid; gap: 7px; margin: 0; padding: 0; list-style: none; color: #665b52; line-height: 1.45; }
-      .detail-list li::before { content: "•"; margin-right: 8px; color: #7c2d12; font-weight: 950; }
+      .detail-list { display: grid; gap: 7px; margin: 0; padding-left: 1.2rem; color: #665b52; line-height: 1.45; }
+      .detail-list li::marker { color: #7c2d12; font-weight: 950; }
       .decision-note { margin: 14px 0 0; color: #5f554d; font-size: .92rem; font-weight: 820; }
       .agent a { color: #2563eb; font-weight: 850; text-decoration: underline; text-underline-offset: 3px; }
       .agent a:visited { color: #4f46e5; }
       .trace { justify-self: stretch; display: none; border-left: 3px solid var(--accent-line); border-radius: 8px; padding: 11px 12px; background: rgba(255,255,255,.56); color: #65564c; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .8rem; white-space: pre-wrap; }
       .show-trace .trace { display: block; }
-      form { position: relative; display: grid; grid-template-columns: auto 1fr auto; align-items: start; gap: 10px; padding: 16px; border-top: 1px solid rgba(102,91,82,.1); background: rgba(255,255,255,.82); }
+      form { position: relative; display: grid; grid-template-columns: 1fr auto; align-items: start; gap: 10px; padding: 16px; border-top: 1px solid rgba(102,91,82,.1); background: rgba(255,255,255,.82); }
       .input-copy { min-width: 0; display: grid; gap: 6px; }
       input[type="text"] { min-width: 0; width: 100%; border: 1px solid rgba(102,91,82,.18); border-radius: 999px; padding: 13px 15px; font: inherit; background: white; }
       input[type="text"]:focus { outline: 3px solid var(--accent-line); border-color: var(--accent); }
       .input-helper { margin: 0 4px; color: #665b52; font-size: .84rem; font-weight: 760; line-height: 1.32; }
       .input-helper-lead { display: block; color: #3f332b; font-weight: 900; }
       .input-helper-detail { display: block; margin-top: 2px; font-weight: 720; }
-      .prompt-control { position: relative; align-self: start; }
-      .prompt-trigger { display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; min-height: 46px; min-width: 104px; border: 1px solid rgba(194,65,12,.24); border-radius: 10px; padding: 7px 12px; background: #ff7a00; color: #1f1306; box-shadow: 0 14px 30px rgba(255,122,0,.24); font-size: .95rem; line-height: 1.04; }
-      .prompt-trigger span { display: block; }
-      .prompt-trigger:hover { background: #ff8f1f; box-shadow: 0 16px 34px rgba(255,122,0,.3); }
-      .prompt-trigger[aria-expanded="true"] { border-color: rgba(39,33,29,.28); filter: saturate(1.08); }
-      .prompt-menu { position: absolute; left: 0; bottom: calc(100% + 10px); z-index: 20; width: min(430px, calc(100vw - 48px)); max-height: min(540px, 72vh); overflow: auto; border: 1px solid rgba(102,91,82,.18); border-radius: 8px; padding: 12px; background: rgba(255,255,255,.98); box-shadow: 0 24px 70px rgba(39,33,29,.16); }
-      .prompt-helper { margin: 0 0 10px; color: #665b52; font-size: .86rem; font-weight: 760; }
-      .prompt-list { display: grid; gap: 5px; }
-      .prompt-option { width: 100%; border-radius: 6px; padding: 9px 10px; background: transparent; color: #2f2924; text-align: left; font-size: .92rem; font-weight: 750; box-shadow: none; }
-      .prompt-option:hover { transform: none; background: var(--accent-soft); }
+      .input-nudge { grid-column: 1 / -1; margin: -2px 4px 0; color: #7c2d12; font-size: .86rem; font-weight: 820; }
       .feedback-actions { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 24px 18px; background: rgba(255,255,255,.28); }
       .feedback-action { border: 1px solid rgba(102,91,82,.18); background: rgba(255,255,255,.88); color: #51463f; box-shadow: none; font-size: .88rem; }
       .vision-note { margin: 16px 0 12px; border: 1px solid rgba(102,91,82,.14); border-radius: 8px; padding: 18px 20px; background: rgba(255,255,255,.68); box-shadow: 0 12px 30px rgba(39,33,29,.06); }
@@ -184,19 +174,16 @@ HTML = """<!doctype html>
         body { padding: 16px; }
         .brand-lockup { gap: 12px; align-items: center; }
         .brand-logo { width: 124px; height: 124px; font-size: 2.35rem; }
-        .mode-tabs { display: grid; grid-template-columns: 1fr; padding: 12px 12px 0; }
-        .mode-tab { min-width: 0; padding: 14px 12px 15px; font-size: 1rem; }
         .room-heading-row { display: grid; gap: 10px; }
         .room-context h2 { white-space: normal; }
         .bubble { max-width: 92%; }
         .agent { max-width: 100%; }
         .dinner-card { padding: 15px; border-radius: 12px; }
         .effort-chip { width: 100%; justify-content: flex-start; }
-        form { grid-template-columns: auto 1fr; }
-        .primary { grid-column: 1 / -1; justify-self: end; min-width: 88px; }
-        .input-copy { grid-column: 2; }
+        form { grid-template-columns: 1fr; }
+        .primary { justify-self: stretch; min-width: 88px; }
+        .input-copy { grid-column: 1; }
         .input-helper { font-size: .78rem; }
-        .prompt-menu { width: calc(100vw - 32px); }
       }
     </style>
   </head>
@@ -213,45 +200,37 @@ HTML = """<!doctype html>
         </div>
       </header>
       <section class="shell">
-        <div class="mode-tabs" aria-label="1Less public alpha flow">
-          <div class="mode-tab active" id="dinner-tab" aria-current="page">
-            Dinner
-          </div>
-        </div>
-        <div class="tab-panel" id="active-panel" role="tabpanel" aria-labelledby="dinner-tab">
+        <div class="tab-panel" id="active-panel" role="region" aria-label="Dinner-only alpha">
           <section class="room-context" data-room-context>
             <div class="room-heading-row">
               <h2 id="roomHeadline">Dinner help for the late-day scramble.</h2>
             </div>
             <p id="roomDescription">It’s late, people are hungry, and you don’t need fifteen options. Type one messy sentence about what’s in the fridge, who’s eating, and what tonight can handle.</p>
           </section>
-          <div id="chat" class="chat" aria-live="polite"></div>
-          <form id="form">
-            <div class="prompt-control" id="promptControl">
-              <button class="prompt-trigger" id="promptButton" type="button" aria-label="Show examples" aria-haspopup="menu" aria-expanded="false" aria-controls="promptMenu"><span>Show</span><span>examples</span></button>
-              <div class="prompt-menu hidden" id="promptMenu" role="menu" aria-label="Editable real-life dinner prompts">
-                <p class="prompt-helper">Pick one and make it sound like tonight.</p>
-                <div class="prompt-list">
-                  <button class="prompt-option" type="button" role="menuitem" data-prompt="It’s 5pm, everyone is hungry, I have 10 minutes and I’m not in the mood to cook. Make it picky-kid friendly.">Low-effort 10 min</button>
-                  <button class="prompt-option" type="button" role="menuitem" data-prompt="I have tortillas, cheese, black beans, rice, and apples. I have 15 minutes and no store run.">Use what we have</button>
-                  <button class="prompt-option" type="button" role="menuitem" data-prompt="Vegetarian tonight. I have rice, eggs, frozen peas, and 20 minutes. I’m okay cooking a little.">Vegetarian quick</button>
-                  <button class="prompt-option" type="button" role="menuitem" data-prompt="Avoid peanuts and tree nuts tonight. I have pasta, jarred sauce, frozen peas, and 15 minutes.">Avoid nuts</button>
-                  <button class="prompt-option" type="button" role="menuitem" data-prompt="My kid rejects mixed foods. I have chicken, rice, cucumber, yogurt, and 20 minutes. Make it easy to deconstruct.">Picky kid</button>
-                  <button class="prompt-option" type="button" role="menuitem" data-prompt="I have a few options but I’m too tired to choose. We have eggs, toast, fruit, rice, and frozen vegetables. Pick one easy dinner.">Just pick one</button>
-                </div>
+          <div id="chat" class="chat" aria-live="polite">
+            <section class="empty-state" id="emptyState" aria-label="Start dinner idea">
+              <h3>No dinner idea yet.</h3>
+              <p>Type one messy sentence below — what you have, who’s eating, and how much effort tonight can handle.</p>
+              <div class="example-chips" aria-label="Example dinner prompts">
+                <button class="example-chip" type="button" data-prompt="10 minutes, not in the mood to cook, picky kid, use what we have.">10 min, picky kid</button>
+                <button class="example-chip" type="button" data-prompt="Tortillas, eggs, cheese, 20 minutes, low cleanup.">Tortillas, eggs, low cleanup</button>
+                <button class="example-chip" type="button" data-prompt="Leftover rice, frozen peas, no store run, need one easy dinner.">Leftover rice, no store run</button>
               </div>
-            </div>
+            </section>
+          </div>
+          <form id="form">
             <div class="input-copy">
-              <input id="message" type="text" autocomplete="off" aria-describedby="inputHelper" placeholder="Tortillas, eggs, picky 6-year-old, 20 min, low-cleanup night" />
-              <p class="input-helper" id="inputHelper"><span class="input-helper-lead">Messy is fine — leftovers, no-gos, budget, and mood all help.</span></p>
+              <input id="message" type="text" autocomplete="off" aria-describedby="inputHelper inputNudge" placeholder="Tortillas, eggs, picky 6-year-old, 20 min, low-cleanup night" />
+              <p class="input-helper" id="inputHelper"><span class="input-helper-lead">Messy is fine — leftovers, avoidances, budget, and energy all help.</span></p>
             </div>
-            <button class="primary" type="submit">Get one dinner idea</button>
+            <button class="primary" id="submitButton" type="submit">Get one dinner idea</button>
+            <p class="input-nudge hidden" id="inputNudge" aria-live="polite"></p>
           </form>
         </div>
       </section>
       <section class="vision-note" aria-labelledby="why-dinner-first">
         <h2 id="why-dinner-first">Why start with dinner?</h2>
-        <p>Because choosing dinner is often the chore before the chore. 1Less starts here because that late-day decision hits when parents are tired, kids are hungry, and recipe browsing makes things worse. For now, it only handles dinner. The goal is simple: one practical default you can use, tweak, or ignore.</p>
+        <p>Because choosing dinner is often the chore before the chore. 1Less starts here because that late-day decision hits when parents are tired, kids are hungry, and recipe browsing makes things worse. For now, it only handles dinner. The goal is simple: one practical default you can use or tweak.</p>
       </section>
       <label class="trace-footer"><input id="traceToggle" type="checkbox" /> Show trace</label>
     </main>
@@ -262,13 +241,13 @@ HTML = """<!doctype html>
       const form = document.querySelector("#form");
       const input = document.querySelector("#message");
       const inputHelper = document.querySelector("#inputHelper");
+      const inputNudge = document.querySelector("#inputNudge");
+      const submitButton = document.querySelector("#submitButton");
+      const emptyState = document.querySelector("#emptyState");
       const traceToggle = document.querySelector("#traceToggle");
       const roomHeadline = document.querySelector("#roomHeadline");
       const roomDescription = document.querySelector("#roomDescription");
       const tabPanel = document.querySelector("#active-panel");
-      const promptControl = document.querySelector("#promptControl");
-      const promptButton = document.querySelector("#promptButton");
-      const promptMenu = document.querySelector("#promptMenu");
       const rooms = {
         dinner: {
           title: "Dinner",
@@ -280,9 +259,9 @@ HTML = """<!doctype html>
       const inputCopyByState = {
         start: {
           placeholder: "Tortillas, eggs, picky 6-year-old, 20 min, low-cleanup night",
-          helper: "Messy is fine — leftovers, no-gos, budget, and mood all help.",
+          helper: "Messy is fine — leftovers, avoidances, budget, and energy all help.",
           mobilePlaceholder: "What do you have tonight?",
-          mobileHelper: "Messy is fine — food, time, no-gos, mood."
+          mobileHelper: "Messy is fine — food, time, avoidances, energy."
         },
         recommendation: {
           placeholder: "Need it easier or more kid-proof?",
@@ -298,34 +277,6 @@ HTML = """<!doctype html>
         }
       };
       let inputCopyState = "start";
-      const promptGroups = {
-        dinner: [
-          {
-            label: "Low-effort 10 min",
-            prompt: "It’s 5pm, everyone is hungry, I have 10 minutes and I’m not in the mood to cook. Make it picky-kid friendly."
-          },
-          {
-            label: "Use what we have",
-            prompt: "I have tortillas, cheese, black beans, rice, and apples. I have 15 minutes and no store run."
-          },
-          {
-            label: "Vegetarian quick",
-            prompt: "Vegetarian tonight. I have rice, eggs, frozen peas, and 20 minutes. I’m okay cooking a little."
-          },
-          {
-            label: "Avoid nuts",
-            prompt: "Avoid peanuts and tree nuts tonight. I have pasta, jarred sauce, frozen peas, and 15 minutes."
-          },
-          {
-            label: "Picky kid",
-            prompt: "My kid rejects mixed foods. I have chicken, rice, cucumber, yogurt, and 20 minutes. Make it easy to deconstruct."
-          },
-          {
-            label: "Just pick one",
-            prompt: "I have a few options but I’m too tired to choose. We have eggs, toast, fruit, rice, and frozen vegetables. Pick one easy dinner."
-          }
-        ]
-      };
 
       function setRoom(active) {
         activeMode = "dinner";
@@ -334,9 +285,7 @@ HTML = """<!doctype html>
         roomHeadline.textContent = room.headline;
         roomDescription.textContent = room.description;
         updateInputCopy(inputCopyState);
-        renderPromptMenu(activeMode);
-        closePromptMenu();
-        tabPanel.setAttribute("aria-labelledby", "dinner-tab");
+        tabPanel.setAttribute("aria-label", "Dinner-only alpha");
       }
 
       function isMobileViewport() {
@@ -361,6 +310,8 @@ HTML = """<!doctype html>
           detail.textContent = helperDetail;
           inputHelper.appendChild(detail);
         }
+        submitButton.textContent = state === "start" ? "Get one dinner idea" : "Adjust idea";
+        clearInputNudge();
       }
 
       function inputStateForResponse(response) {
@@ -382,30 +333,6 @@ HTML = """<!doctype html>
           .replaceAll("<", "&lt;")
           .replaceAll(">", "&gt;")
           .replaceAll('"', "&quot;");
-      }
-
-      function renderPromptMenu(mode) {
-        const groups = promptGroups[mode];
-        promptMenu.setAttribute("aria-label", "Editable real-life dinner prompts");
-        promptMenu.innerHTML = `
-          <p class="prompt-helper">Pick one and make it sound like tonight.</p>
-          <div class="prompt-list">
-            ${groups.map((sample) => `
-              <button class="prompt-option" type="button" role="menuitem" data-prompt="${escapeHtml(sample.prompt)}">${escapeHtml(sample.label)}</button>
-            `).join("")}
-          </div>
-        `;
-      }
-
-      function closePromptMenu() {
-        promptMenu.classList.add("hidden");
-        promptButton.setAttribute("aria-expanded", "false");
-      }
-
-      function togglePromptMenu() {
-        const isOpen = !promptMenu.classList.contains("hidden");
-        promptMenu.classList.toggle("hidden", isOpen);
-        promptButton.setAttribute("aria-expanded", String(!isOpen));
       }
 
       function placeChatNode(node, replaceNode = null) {
@@ -450,13 +377,25 @@ HTML = """<!doctype html>
         return text.replace(/[.]$/, "");
       }
 
+      function cleanSentence(text) {
+        const clean = text.trim().replace(/^and\\s+/i, "");
+        if (!clean) return "";
+        const capitalized = clean.charAt(0).toUpperCase() + clean.slice(1);
+        return /[.!?]$/.test(capitalized) ? capitalized : `${capitalized}.`;
+      }
+
       function splitDinnerPlan(planText) {
-        const clean = stripTrailingPeriod(planText.trim());
+        const clean = planText.trim();
         if (!clean) return [];
-        const normalized = clean.replace(/, and /g, ", ").replace(/ and /g, ", ");
-        const parts = normalized.split(/,\\s+/).map((part) => part.trim()).filter(Boolean);
+        const sentenceParts = clean.split(/(?<=[.!?])\\s+/).map(cleanSentence).filter(Boolean);
+        if (sentenceParts.length > 1) return sentenceParts.slice(0, 3);
+        const parts = stripTrailingPeriod(clean).split(/,\\s+/).map(cleanSentence).filter(Boolean);
         if (parts.length <= 3) return parts;
-        return [parts[0], parts[1], parts.slice(2).join(", ")];
+        return [parts[0], parts[1], cleanSentence(parts.slice(2).join(" "))];
+      }
+
+      function splitReasonItems(text) {
+        return stripTrailingPeriod(text).split(/;\\s+/).map(cleanSentence).filter(Boolean);
       }
 
       function parseDinnerMessage(message) {
@@ -480,9 +419,9 @@ HTML = """<!doctype html>
             parsed.badge = "Backup";
             parsed.title = stripTrailingPeriod(line.replace("Backup:", "").trim());
           } else if (line.startsWith("Why this is easier:")) {
-            parsed.why.push(line.replace("Why this is easier:", "").trim());
+            parsed.why.push(...splitReasonItems(line.replace("Why this is easier:", "").trim()));
           } else if (line.startsWith("Why it fits:")) {
-            parsed.why.push(line.replace("Why it fits:", "").trim());
+            parsed.why.push(...splitReasonItems(line.replace("Why it fits:", "").trim()));
           } else if (line.startsWith("Time/effort:")) {
             parsed.effort = line.replace("Time/effort:", "").trim();
           } else if (line.startsWith("Constraint heard:")) {
@@ -508,7 +447,7 @@ HTML = """<!doctype html>
         if (!effortText) return [];
         const clean = stripTrailingPeriod(effortText);
         const parts = clean.split(",").map((part) => part.trim()).filter(Boolean);
-        return parts.map((part, index) => index === 0 ? `⏱ ${part}` : `Mood: ${part}`);
+        return parts.map((part, index) => index === 0 ? `⏱ ${part}` : cleanSentence(part).replace(/[.]$/, ""));
       }
 
       function renderDinnerCard(response, options = {}) {
@@ -525,7 +464,7 @@ HTML = """<!doctype html>
           </header>
           ${parsed.plan.length ? `<section class="dinner-section" aria-label="Three-step plan"><h4>3-step plan</h4><ol class="plan-list">${parsed.plan.map((step) => `<li>${escapeHtml(step)}</li>`).join("")}</ol></section>` : ""}
           ${parsed.fallback ? `<section class="dinner-section" aria-label="Fallback or tweak"><h4>Fallback</h4><div class="fallback-box">${escapeHtml(parsed.fallback)}</div></section>` : ""}
-          ${(parsed.why.length || parsed.basics || parsed.details.length) ? `<section class="dinner-section" aria-label="Why this fits"><h4>Why this fits</h4><ul class="detail-list">${parsed.why.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}${parsed.basics ? `<li>Works with common basics like: ${escapeHtml(parsed.basics)}</li>` : ""}${parsed.details.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></section>` : ""}
+          ${(parsed.why.length || parsed.details.length) ? `<section class="dinner-section" aria-label="Why this fits"><h4>Why this fits</h4><ul class="detail-list">${parsed.why.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}${parsed.details.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></section>` : ""}
           ${parsed.safety ? `<section class="dinner-section safety-box" role="note" aria-label="Safety caveat"><h4>Safety note</h4><p>${escapeHtml(parsed.safety)}</p></section>` : ""}
           ${parsed.note ? `<p class="decision-note">${escapeHtml(parsed.note)}</p>` : ""}
         `;
@@ -565,19 +504,43 @@ HTML = """<!doctype html>
         chat.appendChild(div);
       }
 
+      function renderCompletion(response, options = {}) {
+        const div = document.createElement("div");
+        div.className = `completion${options.isNewTurn ? " new-turn" : ""}`;
+        div.textContent = "Good enough counts. Dinner decided — one less thing.";
+        placeChatNode(div, options.replaceNode);
+        scrollTurnIntoView(options.turnStart || div, options.behavior || "smooth");
+        return div;
+      }
+
+      function clearInputNudge() {
+        inputNudge.textContent = "";
+        inputNudge.classList.add("hidden");
+      }
+
+      function showInputNudge(message) {
+        inputNudge.textContent = message;
+        inputNudge.classList.remove("hidden");
+      }
+
       function renderResponse(response, options = {}) {
         const isDinnerDecision = response.metadata && response.metadata.chapter === "chapter_1_dinner_decision";
         const turnStart = options.turnStart || null;
         if (response.context) addBubble("agent", `Context: ${response.context}`, { turnStart });
         const parentBubble = options.skipParent ? turnStart : addBubble("parent", response.parent_message, { isNewTurn: true });
-        if (isDinnerDecision) {
+        if (isDinnerDecision && response.metadata && response.metadata.accepted) {
+          renderCompletion(response, { replaceNode: options.replaceNode, turnStart: parentBubble || turnStart, isNewTurn: true });
+        } else if (isDinnerDecision) {
           renderDinnerCard(response, { replaceNode: options.replaceNode, turnStart: parentBubble || turnStart, isNewTurn: true });
         } else {
           addBubble("agent", response.message, { replaceNode: options.replaceNode, turnStart: parentBubble || turnStart, isNewTurn: true });
         }
         addTrace(response.trace);
         scrollTurnIntoView(parentBubble || turnStart, "smooth");
-        if (isDinnerDecision) {
+        if (isDinnerDecision && response.metadata && response.metadata.accepted) {
+          updateInputCopy("start");
+          document.querySelectorAll(".feedback-actions").forEach((node) => node.remove());
+        } else if (isDinnerDecision) {
           updateInputCopy(inputStateForResponse(response));
           renderDinnerFeedbackActions();
         }
@@ -595,7 +558,13 @@ HTML = """<!doctype html>
 
       async function sendCurrentInput() {
         const message = input.value.trim();
-        if (!message) return;
+        if (!message) {
+          showInputNudge("Give me a few details first — even “tired, 15 minutes, picky kid” is enough.");
+          input.focus();
+          return;
+        }
+        clearInputNudge();
+        if (emptyState) emptyState.remove();
         document.querySelectorAll(".feedback-actions").forEach((node) => node.remove());
         input.value = "";
         chat.setAttribute("aria-busy", "true");
@@ -625,25 +594,12 @@ HTML = """<!doctype html>
         await sendCurrentInput();
       });
 
-      promptButton.addEventListener("click", (event) => {
-        event.stopPropagation();
-        togglePromptMenu();
-      });
-
-      promptMenu.addEventListener("click", async (event) => {
+      document.addEventListener("click", (event) => {
         const button = event.target.closest("[data-prompt]");
         if (!button) return;
         input.value = button.dataset.prompt;
-        closePromptMenu();
+        clearInputNudge();
         input.focus();
-      });
-
-      document.addEventListener("click", (event) => {
-        if (!promptControl.contains(event.target)) closePromptMenu();
-      });
-
-      document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") closePromptMenu();
       });
 
       window.addEventListener("resize", () => updateInputCopy(inputCopyState));

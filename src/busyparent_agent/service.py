@@ -158,8 +158,8 @@ DINNER_MVP_MEALS = [
         "tags": {"low_energy", "picky", "vegetarian", "pantry", "leftovers", "nut_free", "dairy_free", "egg_free"},
         "ingredient_keywords": {"rice", "pea", "peas", "frozen peas"},
         "ingredients": "rice, frozen peas, and one simple add-on if you have it: olive oil, soy sauce, beans, or any protein",
-        "steps": "Warm the rice and peas together, season simply, and put any add-on on the side so kids can opt in.",
-        "fallback": "If there is no add-on, this can still be the simplest dinner from only the rice and peas you listed.",
+        "steps": "Warm the rice and peas together. Season simply. Put any add-on on the side so kids can opt in.",
+        "fallback": "If there is no add-on, warm the rice and peas together, season simply, and put any extra protein or sauce on the side.",
     },
     {
         "name": "Black Bean Tacos with fruit",
@@ -168,7 +168,7 @@ DINNER_MVP_MEALS = [
         "tags": {"low_energy", "picky", "vegetarian", "pantry", "leftovers", "nut_free", "dairy_free", "egg_free"},
         "ingredient_keywords": {"tortilla", "tortillas", "bean", "beans", "black beans", "fruit", "avocado", "salsa"},
         "ingredients": "tortillas, black beans, mild salsa or avocado, and any fruit or crunchy side that fits your house",
-        "steps": "Warm beans, fold them into tortillas with mild salsa or avocado, and serve fruit or a simple side.",
+        "steps": "Warm the beans. Fold them into tortillas with mild salsa or avocado. Serve fruit or a simple side.",
         "fallback": "If tortillas are missing, make quick bean-and-rice bowls with the same toppings.",
     },
     {
@@ -178,7 +178,7 @@ DINNER_MVP_MEALS = [
         "tags": {"fast", "picky", "pantry", "leftovers", "dairy_free", "nut_free"},
         "ingredient_keywords": {"rice", "egg", "eggs", "pea", "peas", "frozen peas", "vegetable", "vegetables"},
         "ingredients": "rice, eggs, frozen peas or another vegetable that fits your house, and a light sauce",
-        "steps": "Scramble eggs, stir-fry rice with peas, keep sauce light for kids, and add grown-up heat at the table.",
+        "steps": "Scramble the eggs. Stir-fry rice with peas. Keep sauce mild for kids; add grown-up heat at the table.",
         "fallback": "If eggs are out, make quick vegetable fried rice with beans, tofu, or another protein you have.",
     },
     {
@@ -188,7 +188,7 @@ DINNER_MVP_MEALS = [
         "tags": {"picky", "vegetarian", "nut_free"},
         "ingredient_keywords": {"pasta", "marinara", "carrot", "carrots", "vegetable", "vegetables", "cheese"},
         "ingredients": "pasta, jarred marinara, carrots or another simple vegetable, and optional cheese",
-        "steps": "Boil pasta, warm sauce, add shredded carrots or a side vegetable, and keep toppings optional.",
+        "steps": "Boil the pasta. Warm the sauce with shredded carrots or a side vegetable. Keep toppings optional.",
         "fallback": "If pasta is missing, serve the sauce over toast, rice, or any grain you already have.",
     },
     {
@@ -198,7 +198,7 @@ DINNER_MVP_MEALS = [
         "tags": {"can_cook", "leftovers", "dairy_free", "nut_free"},
         "ingredient_keywords": {"chicken", "protein", "rice", "corn", "beans"},
         "ingredients": "chicken or another protein that fits your house, rice, corn, and a mild topping",
-        "steps": "Cook the protein and corn together, serve over rice, and keep sauces on the side.",
+        "steps": "Cook the protein and corn together. Serve over rice. Keep sauces on the side.",
         "fallback": "If chicken is missing, use beans, eggs, or leftovers as the bowl protein.",
     },
 ]
@@ -213,6 +213,7 @@ class DinnerDecisionSession:
         self.rejected: set[str] = set()
 
     def send(self, parent_message: str, scenario: str | None = None) -> dict[str, Any]:
+        accepted = False
         context = parse_dinner_decision_context(parent_message)
         if self.last_context:
             context = {**self.last_context, **{key: value for key, value in context.items() if value}}
@@ -240,10 +241,8 @@ class DinnerDecisionSession:
                 self.last_context = context
                 message = format_dinner_decision(recommendation, context, prefix="Backup:")
             else:
-                message = (
-                    f"Good enough. Tonight is decided: {self.current_recommendation['name']}.\n"
-                    "I will keep this as a lightweight signal for this session only."
-                )
+                accepted = True
+                message = f"Good enough counts. Dinner decided: {self.current_recommendation['name']}."
         else:
             recommendation = choose_dinner_decision(context, self.rejected)
             self.current_recommendation = recommendation
@@ -262,6 +261,7 @@ class DinnerDecisionSession:
                     self.current_recommendation["name"] if self.current_recommendation else None
                 ),
                 "allergy_caveat": _needs_allergy_caveat(context),
+                "accepted": accepted,
             },
         }
 
@@ -294,7 +294,7 @@ def parse_dinner_decision_context(parent_message: str) -> dict[str, Any]:
         "dairy_free": any(term in avoid_terms for term in ("dairy", "milk", "cheese", "yogurt")),
         "egg_free": "egg" in avoid_terms,
         "leftovers": _has_word(message, "leftover") or _has_word(message, "leftovers"),
-        "pantry": any(phrase in message for phrase in ("pantry", "freezer", "use what", "already have", "no grocery")),
+        "pantry": any(phrase in message for phrase in ("pantry", "freezer", "use what", "already have", "no grocery", "no store run", "no shopping")),
         "only_have": _has_only_have_signal(message),
         "avoid_terms": avoid_terms,
         "positive_ingredients": positive_ingredients,
@@ -395,26 +395,67 @@ def format_dinner_decision(meal: dict[str, Any], context: dict[str, Any], prefix
 
 def dinner_fit_reason(meal: dict[str, Any], context: dict[str, Any]) -> str:
     reasons = []
-    if context.get("minutes"):
-        reasons.append(f"it fits the {context['minutes']}-minute window" if meal["minutes"] <= context["minutes"] else "it is the closest practical fit")
-    if context.get("energy") == "barely cooking":
-        reasons.append("it keeps cooking effort low")
-    if context.get("picky"):
-        reasons.append("it is a familiar kid-friendly direction based on what you told me")
-    if context.get("vegetarian"):
-        reasons.append("it avoids meat")
     matched_ingredients = _matching_positive_ingredients(meal, context.get("positive_ingredients", []))
     if matched_ingredients:
-        reasons.append("it uses ingredients you said you have")
+        reasons.append(f"Uses your {_human_join(_friendly_ingredient_terms(matched_ingredients))}")
+    elif context.get("pantry") or context.get("only_have"):
+        reasons.append("Uses what you said you have")
+
+    if context.get("minutes"):
+        if meal["minutes"] <= context["minutes"]:
+            reasons.append(f"Fits about {meal['minutes']} minutes")
+        else:
+            reasons.append("Closest practical fit for tonight")
+    else:
+        reasons.append(f"About {meal['minutes']} minutes")
+
+    if meal["effort"] == "low":
+        reasons.append("Keeps effort low")
+    elif context.get("energy") == "barely cooking":
+        reasons.append("Still doable tonight")
+    elif context.get("picky"):
+        reasons.append("Easy to keep familiar for kids")
+
+    if context.get("vegetarian"):
+        reasons.append("Keeps it vegetarian")
     if context.get("dairy_free") or context.get("egg_free") or context.get("avoid_terms"):
-        reasons.append("it respects the avoidances you flagged")
+        reasons.append("Respects the avoidances you flagged")
     if context.get("leftovers"):
-        reasons.append("it can use leftovers")
-    if context.get("pantry"):
-        reasons.append("it is built around ingredients you say you have")
+        reasons.append("Works with leftovers")
     if not reasons:
-        reasons.append("it is fast, familiar, and low-decision for tonight")
-    return "; ".join(reasons) + "."
+        reasons.append("Fast, familiar, and low-decision for tonight")
+    return "; ".join(dict.fromkeys(reasons)) + "."
+
+
+def _friendly_ingredient_terms(terms: list[str]) -> list[str]:
+    friendly = []
+    seen = set()
+    names = {
+        "egg": "eggs",
+        "pea": "peas",
+        "frozen peas": "frozen peas",
+        "bean": "beans",
+        "black beans": "black beans",
+        "tortilla": "tortillas",
+        "carrot": "carrots",
+    }
+    for term in terms:
+        name = names.get(term, term)
+        if name not in seen:
+            seen.add(name)
+            friendly.append(name)
+    order = {"rice": 0, "eggs": 1, "frozen peas": 2, "peas": 3}
+    return sorted(friendly, key=lambda item: order.get(item, 99))
+
+
+def _human_join(items: list[str]) -> str:
+    if not items:
+        return "ingredients"
+    if len(items) == 1:
+        return items[0]
+    if len(items) == 2:
+        return f"{items[0]} and {items[1]}"
+    return f"{', '.join(items[:-1])}, and {items[-1]}"
 
 
 def _parse_avoid_terms(message: str) -> list[str]:
@@ -448,18 +489,31 @@ def _has_avoidance_signal(message: str, word: str) -> bool:
 
 def _parse_positive_ingredients(message: str) -> list[str]:
     ingredients = []
+    broad_inventory_context = any(
+        phrase in message
+        for phrase in (
+            "leftover",
+            "leftovers",
+            "no store run",
+            "no shopping",
+            "use what",
+            "already have",
+            "what we have",
+            "what i have",
+        )
+    )
     for term in (
         "rice",
+        "frozen peas",
         "egg",
         "eggs",
         "pea",
         "peas",
-        "frozen peas",
         "tortilla",
         "tortillas",
+        "black beans",
         "bean",
         "beans",
-        "black beans",
         "pasta",
         "marinara",
         "carrot",
@@ -470,7 +524,11 @@ def _parse_positive_ingredients(message: str) -> list[str]:
         "avocado",
         "salsa",
     ):
-        if _has_positive_ingredient_signal(message, term):
+        if term in ("pea", "peas") and "frozen peas" in ingredients:
+            continue
+        if term == "egg" and "eggs" in ingredients:
+            continue
+        if _has_positive_ingredient_signal(message, term) or (broad_inventory_context and _has_word(message, term)):
             ingredients.append(term)
     return ingredients
 
@@ -551,6 +609,7 @@ def _parse_energy(message: str) -> str | None:
             "not in the mood to cook",
             "not in mood to cook",
             "low cooking mood",
+            "no brain left",
         )
     ):
         return "barely cooking"
