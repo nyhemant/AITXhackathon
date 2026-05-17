@@ -225,10 +225,10 @@ HTML = """<!doctype html>
                 <b class="proof-prefix">Fit for</b>
                 <span>Time</span>
                 <span>Energy</span>
-                <span>What you enter</span>
+                <span>Fridge/pantry</span>
               </div>
             </div>
-            <p id="roomDescription">Answer what's tonight like, then get one practical dinner decision based only on the context you enter now.</p>
+            <p id="roomDescription">Tell me the messy real-life version: energy, time, what’s in the fridge or pantry, and what the kids might actually eat.</p>
           </section>
           <div id="chat" class="chat" aria-live="polite"></div>
           <form id="form">
@@ -246,7 +246,7 @@ HTML = """<!doctype html>
                 </div>
               </div>
             </div>
-            <input id="message" type="text" autocomplete="off" placeholder="What's tonight like? Add time, energy, ingredients, or avoidances." />
+            <input id="message" type="text" autocomplete="off" placeholder="Talk to me: how are you feeling, what’s in the fridge/pantry, and any hard no’s?" />
             <button class="primary" type="submit">Send</button>
           </form>
         </div>
@@ -276,11 +276,11 @@ HTML = """<!doctype html>
           title: "Dinner",
           summary: "Tonight's dinner, decided.",
           headline: "Tonight's dinner, decided.",
-          description: "Dinner is the current 1Less proof point: answer what's tonight like, then get one clear recommendation based only on what you enter now.",
+          description: "Dinner is the current 1Less proof point: share the real-life constraints — time, energy, fridge/pantry options, and what the kids will tolerate.",
           proofLabel: "Dinner plan considers",
           proofPrefix: "Fit for",
-          proof: ["Time", "Energy", "Avoidances", "What you enter"],
-          placeholder: "What's tonight like? Add time, energy, ingredients, or avoidances."
+          proof: ["Time", "Energy", "Avoidances", "Fridge/pantry"],
+          placeholder: "Talk to me: how are you feeling, what’s in the fridge/pantry, and any hard no’s?"
         }
       };
       const promptGroups = {
