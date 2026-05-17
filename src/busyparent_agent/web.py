@@ -226,9 +226,9 @@ HTML = """<!doctype html>
         <div class="tab-panel" id="active-panel" role="tabpanel" aria-labelledby="dinner-tab">
           <section class="room-context" data-room-context>
             <div class="room-heading-row">
-              <h2 id="roomHeadline">One dinner plan that fits tonight.</h2>
+              <h2 id="roomHeadline">Tonight's dinner, decided.</h2>
               <div class="proof-line" id="roomProofLine" aria-label="Dinner plan considers">
-                <b class="proof-prefix">Fit for</b>
+                <b class="proof-prefix">Based on</b>
                 <span>Time</span>
                 <span>Energy</span>
                 <span>Fridge/pantry</span>
@@ -254,7 +254,7 @@ HTML = """<!doctype html>
             </div>
             <div class="input-copy">
               <input id="message" type="text" autocomplete="off" aria-describedby="inputHelper" placeholder="What do you have, and what does tonight need?" />
-              <p class="input-helper" id="inputHelper"><span class="input-helper-lead">Use prompts or share.</span><span class="input-helper-detail">2–4 things on hand, mood to cook, fast or flexible, picky-kid no-gos, etc.</span></p>
+              <p class="input-helper" id="inputHelper"><span class="input-helper-lead">Pick a sample, edit it, or type one messy sentence.</span></p>
             </div>
             <button class="primary" type="submit">Send</button>
           </form>
@@ -288,18 +288,16 @@ HTML = """<!doctype html>
           headline: "Tonight's dinner, decided.",
           description: "Dinner is the current 1Less proof point: share the real-life constraints — time, energy, fridge/pantry options, and what the kids will tolerate.",
           proofLabel: "Dinner plan considers",
-          proofPrefix: "Fit for",
+          proofPrefix: "Based on",
           proof: ["Time", "Energy", "Avoidances", "Fridge/pantry"]
         }
       };
       const inputCopyByState = {
         start: {
           placeholder: "What do you have, and what does tonight need?",
-          helper: "Use prompts or share.",
-          helperDetail: "2–4 things on hand, mood to cook, fast or flexible, picky-kid no-gos, etc.",
+          helper: "Pick a sample, edit it, or type one messy sentence.",
           mobilePlaceholder: "What does tonight need?",
-          mobileHelper: "Use prompts or share.",
-          mobileHelperDetail: "Food on hand, mood, fast/flexible, no-gos."
+          mobileHelper: "Pick a sample or type one messy sentence."
         },
         recommendation: {
           placeholder: "Need it easier or more kid-proof?",
