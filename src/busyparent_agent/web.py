@@ -226,7 +226,7 @@ HTML = """<!doctype html>
         <div class="tab-panel" id="active-panel" role="tabpanel" aria-labelledby="dinner-tab">
           <section class="room-context" data-room-context>
             <div class="room-heading-row">
-              <h2 id="roomHeadline">Tonight's dinner, decided.</h2>
+              <h2 id="roomHeadline">Let’s make dinner one less decision.</h2>
               <div class="proof-line" id="roomProofLine" aria-label="Dinner plan considers">
                 <b class="proof-prefix">Based on</b>
                 <span>Time</span>
@@ -284,8 +284,8 @@ HTML = """<!doctype html>
       const rooms = {
         dinner: {
           title: "Dinner",
-          summary: "Tonight's dinner, decided.",
-          headline: "Tonight's dinner, decided.",
+          summary: "Let’s make dinner one less decision.",
+          headline: "Let’s make dinner one less decision.",
           description: "Dinner is the current 1Less proof point: share the real-life constraints — time, mood, fridge/pantry options, and what the kids will tolerate.",
           proofLabel: "Dinner plan considers",
           proofPrefix: "Based on",
