@@ -6,6 +6,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import argparse
 import json
 from pathlib import Path
+from urllib.parse import urlsplit
 from uuid import uuid4
 
 from busyparent_agent.service import APP_TITLE, create_dinner_decision_session, run_book_scenario
@@ -13,8 +14,33 @@ from busyparent_agent.service import APP_TITLE, create_dinner_decision_session, 
 
 SESSIONS = {}
 BOOK_SESSIONS = {}
+
+
+class RequestTooLarge(ValueError):
+    """Raised when a public demo request body exceeds the small alpha limit."""
+
+
 LOGO_FILENAME = "BMLogo.svg"
 LOGO_PATH = Path(__file__).resolve().parents[2] / LOGO_FILENAME
+MAX_REQUEST_BYTES = 24_000
+SECURITY_HEADERS = {
+    "Content-Security-Policy": (
+        "default-src 'self'; "
+        "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; "
+        "style-src 'self' 'unsafe-inline'; "
+        "img-src 'self' data:; "
+        "connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com; "
+        "font-src 'self'; "
+        "base-uri 'self'; "
+        "object-src 'none'; "
+        "frame-ancestors 'none'; "
+        "form-action 'self'"
+    ),
+    "Permissions-Policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=(), bluetooth=()",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "DENY",
+}
 
 
 HTML = """<!doctype html>
@@ -81,6 +107,8 @@ HTML = """<!doctype html>
       .brand-copy { min-width: 0; align-self: center; }
       .tagline { margin: 0 0 10px; color: #2f2924; font-size: clamp(1.5rem, 3.2vw, 2.25rem); font-weight: 620; line-height: 1.02; }
       .subhead { margin: 0; max-width: 710px; color: #665b52; line-height: 1.55; font-size: 1.03rem; }
+      .alpha-note { display: inline-flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 14px; padding: 9px 12px; border: 1px solid rgba(194,65,12,.2); border-radius: 999px; background: rgba(255,255,255,.72); color: #5f554d; font-size: .9rem; line-height: 1.35; }
+      .alpha-note strong { color: #7c2d12; }
       .shell { overflow: hidden; border: 1px solid rgba(255,255,255,.66); border-radius: 8px; background: rgba(255,255,255,.78); box-shadow: 0 30px 90px var(--shadow); backdrop-filter: blur(18px); }
       .mode-tabs { display: flex; gap: 6px; align-items: end; padding: 18px 18px 0; background: rgba(255,255,255,.52); border-bottom: 1px solid rgba(102,91,82,.16); }
       .mode-tab { position: relative; min-width: 220px; border: 1px solid rgba(102,91,82,.16); border-bottom: 0; border-radius: 8px 8px 0 0; padding: 17px 24px 18px; color: #51463f; text-align: left; font-size: 1.14rem; font-weight: 920; box-shadow: none; }
@@ -167,6 +195,7 @@ HTML = """<!doctype html>
           <div class="brand-copy">
           <p class="tagline">One less decision for busy parents.</p>
           <p class="subhead">Chapter 1 starts with dinner: a low-burden flow that turns tonight's constraints into one clear meal decision.</p>
+          <p class="alpha-note"><strong>Alpha testing now:</strong> try the dinner flow with non-sensitive details and tell us if it actually removes one decision.</p>
           </div>
         </div>
       </header>
@@ -592,29 +621,50 @@ HTML = """<!doctype html>
 
 class WebHandler(BaseHTTPRequestHandler):
     def do_GET(self) -> None:
-        if self.path == f"/{LOGO_FILENAME}":
+        path = urlsplit(self.path).path
+        if path == f"/{LOGO_FILENAME}":
             if not LOGO_PATH.exists():
                 self.send_error(404)
                 return
             content_type = "image/svg+xml" if LOGO_PATH.suffix == ".svg" else "image/png"
             self._send_binary(LOGO_PATH.read_bytes(), content_type)
             return
-        if self.path not in {"/", "/index.html"}:
+        if path not in {"/", "/index.html"}:
             self.send_error(404)
             return
         self._send_text(HTML, "text/html; charset=utf-8")
 
+    def do_HEAD(self) -> None:
+        path = urlsplit(self.path).path
+        if path not in {"/", "/index.html", f"/{LOGO_FILENAME}"}:
+            self.send_error(404)
+            return
+        content_type = "image/svg+xml" if path == f"/{LOGO_FILENAME}" else "text/html; charset=utf-8"
+        length = LOGO_PATH.stat().st_size if path == f"/{LOGO_FILENAME}" and LOGO_PATH.exists() else len(HTML.encode("utf-8"))
+        self.send_response(200)
+        self.send_header("Content-Type", content_type)
+        self.send_header("Content-Length", str(length))
+        self.end_headers()
+
     def do_POST(self) -> None:
-        if self.path == "/api/chat":
+        path = urlsplit(self.path).path
+        if path == "/api/chat":
             self._handle_chat()
             return
-        if self.path == "/api/scenario":
+        if path == "/api/scenario":
             self._handle_scenario()
             return
         self.send_error(404)
 
     def _handle_chat(self) -> None:
-        payload = self._read_json()
+        try:
+            payload = self._read_json()
+        except RequestTooLarge:
+            self.send_error(413, "Request body too large")
+            return
+        except (json.JSONDecodeError, UnicodeDecodeError):
+            self.send_error(400, "Invalid JSON")
+            return
         mode = payload.get("mode") or payload.get("scenario")
         if mode == "book":
             session_id = payload.get("session_id") or str(uuid4())
@@ -634,7 +684,14 @@ class WebHandler(BaseHTTPRequestHandler):
         self._send_json({"session_id": session_id, "response": response})
 
     def _handle_scenario(self) -> None:
-        payload = self._read_json()
+        try:
+            payload = self._read_json()
+        except RequestTooLarge:
+            self.send_error(413, "Request body too large")
+            return
+        except (json.JSONDecodeError, UnicodeDecodeError):
+            self.send_error(400, "Invalid JSON")
+            return
         scenario = payload.get("scenario")
         if scenario not in {"dinner", "lunch", "guest", "book", "book_siblings"}:
             self.send_error(400, "Unknown scenario")
@@ -671,6 +728,8 @@ class WebHandler(BaseHTTPRequestHandler):
 
     def _read_json(self) -> dict:
         length = int(self.headers.get("Content-Length", "0"))
+        if length > MAX_REQUEST_BYTES:
+            raise RequestTooLarge("Request body too large")
         raw = self.rfile.read(length).decode("utf-8") if length else "{}"
         return json.loads(raw or "{}")
 
@@ -692,6 +751,14 @@ class WebHandler(BaseHTTPRequestHandler):
         self.send_header("Content-Length", str(len(body)))
         self.end_headers()
         self.wfile.write(body)
+
+    def end_headers(self) -> None:
+        self._send_security_headers()
+        super().end_headers()
+
+    def _send_security_headers(self) -> None:
+        for name, value in SECURITY_HEADERS.items():
+            self.send_header(name, value)
 
     def log_message(self, format: str, *args) -> None:
         return

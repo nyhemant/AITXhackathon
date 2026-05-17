@@ -6,7 +6,7 @@ import unittest
 
 from busyparent_agent.agent import BusyParentAgent
 from busyparent_agent.service import ALLERGY_CAVEAT, create_dinner_decision_session, create_session, parse_now, run_book_scenario
-from busyparent_agent.web import BOOK_SESSIONS, HTML, SESSIONS, WebHandler
+from busyparent_agent.web import BOOK_SESSIONS, HTML, MAX_REQUEST_BYTES, SECURITY_HEADERS, SESSIONS, WebHandler
 from busyparent_agent import tools
 from busyparent_agent import inventory as inventory_engine
 from busyparent_agent.adapters import costco_bulk
@@ -358,6 +358,8 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertNotIn("BusyParent", HTML)
         self.assertIn('<p class="tagline">One less decision for busy parents.</p>', HTML)
         self.assertIn("Tonight's dinner, decided.", HTML)
+        self.assertIn("Alpha testing now:", HTML)
+        self.assertIn("non-sensitive details", HTML)
         self.assertIn("Dinner is the first 1Less proof point", HTML)
         self.assertNotIn("One good default at a time.", HTML)
         self.assertNotIn("Evening decision support", HTML)
@@ -452,6 +454,16 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertNotIn("`${existing} ${button.dataset.prompt}`", HTML)
         self.assertIn("closePromptMenu();", HTML)
         self.assertIn('event.key === "Escape"', HTML)
+
+    def test_public_demo_security_headers_are_declared(self):
+        self.assertEqual(MAX_REQUEST_BYTES, 24_000)
+        self.assertEqual(SECURITY_HEADERS["X-Content-Type-Options"], "nosniff")
+        self.assertEqual(SECURITY_HEADERS["X-Frame-Options"], "DENY")
+        self.assertIn("frame-ancestors 'none'", SECURITY_HEADERS["Content-Security-Policy"])
+        self.assertIn("object-src 'none'", SECURITY_HEADERS["Content-Security-Policy"])
+        self.assertIn("form-action 'self'", SECURITY_HEADERS["Content-Security-Policy"])
+        self.assertIn("camera=()", SECURITY_HEADERS["Permissions-Policy"])
+        self.assertIn("payment=()", SECURITY_HEADERS["Permissions-Policy"])
 
     def test_book_web_api_scenario_returns_storypath_output(self):
         payload = self.handle_scenario("book")
