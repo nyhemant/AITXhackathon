@@ -118,10 +118,6 @@ HTML = """<!doctype html>
       .room-heading-row { display: flex; gap: 18px; align-items: baseline; justify-content: space-between; }
       .room-context h2 { flex: 0 0 auto; margin: 0; font-size: clamp(1.35rem, 3vw, 2rem); line-height: 1.08; letter-spacing: 0; white-space: nowrap; }
       .room-context p { margin: 0; max-width: 720px; color: #665b52; line-height: 1.55; }
-      .proof-line { flex: 1 1 auto; min-width: 0; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 12px; padding-top: 2px; color: #51463f; font-size: .9rem; font-weight: 760; cursor: default; }
-      .proof-prefix { font-weight: 760; }
-      .proof-line span { display: inline-flex; align-items: center; gap: 5px; }
-      .proof-line span::before { content: "✓"; color: var(--accent); font-weight: 950; }
       .chat { display: grid; gap: 12px; min-height: 300px; max-height: 50vh; overflow-y: auto; overscroll-behavior: contain; scroll-behavior: smooth; scroll-padding: 18px; padding: 20px 24px; background: rgba(255,255,255,.28); }
       .chat[aria-busy="true"] { background: linear-gradient(180deg, rgba(255,255,255,.36), rgba(255,247,237,.44)); }
       .bubble { max-width: 78%; border-radius: 8px; padding: 12px 14px; line-height: 1.48; white-space: pre-wrap; }
@@ -192,7 +188,6 @@ HTML = """<!doctype html>
         .mode-tab { min-width: 0; padding: 14px 12px 15px; font-size: 1rem; }
         .room-heading-row { display: grid; gap: 10px; }
         .room-context h2 { white-space: normal; }
-        .proof-line { justify-content: flex-start; }
         .bubble { max-width: 92%; }
         .agent { max-width: 100%; }
         .dinner-card { padding: 15px; border-radius: 12px; }
@@ -227,12 +222,6 @@ HTML = """<!doctype html>
           <section class="room-context" data-room-context>
             <div class="room-heading-row">
               <h2 id="roomHeadline">Let’s make dinner one less decision.</h2>
-              <div class="proof-line" id="roomProofLine" aria-label="Dinner plan considers">
-                <b class="proof-prefix">Based on</b>
-                <span>Time</span>
-                <span>Mood</span>
-                <span>Fridge/pantry</span>
-              </div>
             </div>
             <p id="roomDescription">Busy day? I can help with dinner decision. Just steer me in right direction</p>
           </section>
@@ -276,7 +265,6 @@ HTML = """<!doctype html>
       const traceToggle = document.querySelector("#traceToggle");
       const roomHeadline = document.querySelector("#roomHeadline");
       const roomDescription = document.querySelector("#roomDescription");
-      const roomProofLine = document.querySelector("#roomProofLine");
       const tabPanel = document.querySelector("#active-panel");
       const promptControl = document.querySelector("#promptControl");
       const promptButton = document.querySelector("#promptButton");
@@ -287,9 +275,6 @@ HTML = """<!doctype html>
           summary: "Let’s make dinner one less decision.",
           headline: "Let’s make dinner one less decision.",
           description: "Dinner is the current 1Less proof point: share the real-life constraints — time, mood, fridge/pantry options, and what the kids will tolerate.",
-          proofLabel: "Dinner plan considers",
-          proofPrefix: "Based on",
-          proof: ["Time", "Mood", "Avoidances", "Fridge/pantry"]
         }
       };
       const inputCopyByState = {
@@ -348,11 +333,6 @@ HTML = """<!doctype html>
         document.body.dataset.mode = activeMode;
         roomHeadline.textContent = room.headline;
         roomDescription.textContent = room.description;
-        roomProofLine.setAttribute("aria-label", room.proofLabel);
-        roomProofLine.innerHTML = [
-          room.proofPrefix ? `<b class="proof-prefix">${room.proofPrefix}</b>` : "",
-          ...room.proof.map((point) => `<span>${point}</span>`)
-        ].join("");
         updateInputCopy(inputCopyState);
         renderPromptMenu(activeMode);
         closePromptMenu();
