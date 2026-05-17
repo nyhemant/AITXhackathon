@@ -19,7 +19,7 @@ class RequestTooLarge(ValueError):
     """Raised when a public demo request body exceeds the small alpha limit."""
 
 
-LOGO_FILENAME = "BMLogo.svg"
+LOGO_FILENAME = "1LessLogo.png"
 LOGO_PATH = Path(__file__).resolve().parents[2] / LOGO_FILENAME
 MAX_REQUEST_BYTES = 24_000
 SECURITY_HEADERS = {
@@ -92,7 +92,7 @@ HTML = """<!doctype html>
       main { width: min(1080px, 100%); margin: 0 auto; }
       .hero { display: grid; gap: 22px; align-items: end; margin-bottom: 22px; }
       .brand-lockup { display: flex; gap: 18px; align-items: center; }
-      .brand-logo { display: grid; place-items: center; width: 168px; height: 168px; flex: 0 0 auto; border: 1px solid rgba(194,65,12,.22); border-radius: 8px; background: linear-gradient(135deg, #fff7ed, #eef2ff); color: #0f3f72; font-size: 3.2rem; font-weight: 950; letter-spacing: 0; box-shadow: 0 18px 40px rgba(39,33,29,.12); }
+      .brand-logo { display: block; width: min(360px, 42vw); height: auto; flex: 0 0 auto; border: 0; border-radius: 0; background: transparent; box-shadow: none; object-fit: contain; }
       .brand-copy { min-width: 0; align-self: center; }
       .tagline { margin: 0 0 10px; color: #2f2924; font-size: clamp(1.5rem, 3.2vw, 2.25rem); font-weight: 620; line-height: 1.02; }
       .subhead { margin: 0; max-width: 710px; color: #665b52; line-height: 1.55; font-size: 1.03rem; }
@@ -173,7 +173,7 @@ HTML = """<!doctype html>
       @media (max-width: 640px) {
         body { padding: 16px; }
         .brand-lockup { gap: 12px; align-items: center; }
-        .brand-logo { width: 124px; height: 124px; font-size: 2.35rem; }
+        .brand-logo { width: min(260px, 86vw); height: auto; }
         .room-heading-row { display: grid; gap: 10px; }
         .room-context h2 { white-space: normal; }
         .bubble { max-width: 92%; }
@@ -191,7 +191,7 @@ HTML = """<!doctype html>
     <main>
       <header class="hero">
         <div class="brand-lockup">
-          <img class="brand-logo" src="/BMLogo.svg?v=helper" alt="1Less logo" width="1024" height="1024" />
+          <img class="brand-logo" src="/1LessLogo.png?v=grey-ess" alt="1Less logo" width="1024" height="576" />
           <div class="brand-copy">
           <p class="tagline">One less thing on your plate.</p>
           <p class="subhead">Tell 1Less what’s in the fridge, who’s eating, and what kind of night it is. Get one doable dinner idea, not fifteen recipes.</p>
@@ -633,7 +633,7 @@ class WebHandler(BaseHTTPRequestHandler):
         if path not in {"/", "/index.html", f"/{LOGO_FILENAME}"}:
             self.send_error(404)
             return
-        content_type = "image/svg+xml" if path == f"/{LOGO_FILENAME}" else "text/html; charset=utf-8"
+        content_type = ("image/svg+xml" if LOGO_PATH.suffix == ".svg" else "image/png") if path == f"/{LOGO_FILENAME}" else "text/html; charset=utf-8"
         length = LOGO_PATH.stat().st_size if path == f"/{LOGO_FILENAME}" and LOGO_PATH.exists() else len(HTML.encode("utf-8"))
         self.send_response(200)
         self.send_header("Content-Type", content_type)

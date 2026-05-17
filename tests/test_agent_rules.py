@@ -6,7 +6,7 @@ import unittest
 
 from busyparent_agent.agent import BusyParentAgent
 from busyparent_agent.service import ALLERGY_CAVEAT, create_dinner_decision_session, create_session, parse_now, run_book_scenario
-from busyparent_agent.web import HTML, LOGO_PATH, MAX_REQUEST_BYTES, SECURITY_HEADERS, SESSIONS, WebHandler
+from busyparent_agent.web import HTML, LOGO_FILENAME, LOGO_PATH, MAX_REQUEST_BYTES, SECURITY_HEADERS, SESSIONS, WebHandler
 from busyparent_agent import tools
 from busyparent_agent import inventory as inventory_engine
 from busyparent_agent.adapters import costco_bulk
@@ -372,13 +372,13 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertIn("Tonight:", payload["response"]["message"])
         self.assertEqual(payload["response"]["metadata"]["chapter"], "chapter_1_dinner_decision")
 
-    def test_busy_mom_logo_uses_helper_not_agent(self):
-        logo = LOGO_PATH.read_text()
+    def test_1less_logo_uses_png_wordmark_not_busy_mom_asset(self):
+        logo = LOGO_PATH.read_bytes()
 
-        self.assertIn("BusyMom helper logo", logo)
-        self.assertIn(">HELPER</text>", logo)
-        self.assertNotIn("BusyMom Agent", logo)
-        self.assertNotIn(">AGENT</text>", logo)
+        self.assertEqual(LOGO_FILENAME, "1LessLogo.png")
+        self.assertTrue(logo.startswith(b"\x89PNG\r\n\x1a\n"))
+        self.assertNotIn(b"BusyMom", logo)
+        self.assertNotIn(b"AGENT", logo)
 
     def test_web_page_exposes_dinner_only_public_alpha(self):
         self.assertNotIn("Chapter 1", HTML)
@@ -400,7 +400,8 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertIn('class="brand-lockup"', HTML)
         self.assertIn('class="brand-logo"', HTML)
         self.assertIn('alt="1Less logo"', HTML)
-        self.assertIn('src="/BMLogo.svg?v=helper"', HTML)
+        self.assertIn('width="1024" height="576"', HTML)
+        self.assertIn('src="/1LessLogo.png?v=grey-ess"', HTML)
         self.assertIn('<p class="tagline">One less thing on your plate.</p>', HTML)
         self.assertIn("<strong>Dinner-only alpha</strong>", HTML)
         self.assertNotIn("Alpha testing now:", HTML)
