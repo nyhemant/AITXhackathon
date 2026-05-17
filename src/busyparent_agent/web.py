@@ -9,11 +9,10 @@ from pathlib import Path
 from urllib.parse import urlsplit
 from uuid import uuid4
 
-from busyparent_agent.service import APP_TITLE, create_dinner_decision_session, run_book_scenario
+from busyparent_agent.service import APP_TITLE, create_dinner_decision_session
 
 
 SESSIONS = {}
-BOOK_SESSIONS = {}
 
 
 class RequestTooLarge(ValueError):
@@ -90,16 +89,6 @@ HTML = """<!doctype html>
         --page-c: #eaf3e4;
         --shadow: rgba(124, 45, 18, .13);
       }
-      body[data-mode="book"] {
-        --accent: #4f46e5;
-        --accent-dark: #312e81;
-        --accent-soft: #eef2ff;
-        --accent-line: #c7d2fe;
-        --page-a: #f7f8ff;
-        --page-b: #eceefe;
-        --page-c: #f7eef7;
-        --shadow: rgba(49, 46, 129, .13);
-      }
       main { width: min(1080px, 100%); margin: 0 auto; }
       .hero { display: grid; gap: 22px; align-items: end; margin-bottom: 22px; }
       .brand-lockup { display: flex; gap: 18px; align-items: center; }
@@ -113,11 +102,9 @@ HTML = """<!doctype html>
       .mode-tabs { display: flex; gap: 6px; align-items: end; padding: 18px 18px 0; background: rgba(255,255,255,.52); border-bottom: 1px solid rgba(102,91,82,.16); }
       .mode-tab { position: relative; min-width: 220px; border: 1px solid rgba(102,91,82,.16); border-bottom: 0; border-radius: 8px 8px 0 0; padding: 17px 24px 18px; color: #51463f; text-align: left; font-size: 1.14rem; font-weight: 920; box-shadow: none; }
       #dinner-tab { background: #fff7ed; border-color: rgba(194,65,12,.22); color: #7c2d12; }
-      #story-tab { background: #eef2ff; border-color: rgba(79,70,229,.2); color: #312e81; }
       .mode-tab:hover { transform: none; filter: saturate(1.04) brightness(1.01); }
       .mode-tab.active { margin-bottom: -1px; border-color: rgba(102,91,82,.22); background: rgba(255,255,255,.96); color: var(--accent-dark); box-shadow: 0 -8px 22px rgba(39,33,29,.07); }
       #dinner-tab.active { background: #fffaf5; border-color: rgba(194,65,12,.3); }
-      #story-tab.active { background: #f7f8ff; border-color: rgba(79,70,229,.28); }
       .mode-tab.active::before { content: ""; position: absolute; left: 18px; right: 18px; top: 0; height: 4px; border-radius: 999px; background: var(--accent); }
       .mode-tab.active::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: rgba(255,255,255,.96); }
       .tab-panel { background: rgba(255,255,255,.9); }
@@ -129,8 +116,6 @@ HTML = """<!doctype html>
       button:hover { transform: translateY(-1px); }
       .scenario-chip { min-height: 34px; padding: 8px 12px; background: rgba(255,255,255,.64); border: 1px solid rgba(39,33,29,.22); color: #4b5563; font-size: .9rem; box-shadow: none; }
       .scenario-chip.pressed { background: #e5e7eb; border-color: #374151; color: #111827; box-shadow: inset 0 2px 6px rgba(17,24,39,.14), 0 0 0 2px rgba(255,255,255,.55); transform: translateY(1px); }
-      .book-panel .scenario-chip { background: rgba(255,255,255,.64); border-color: rgba(39,33,29,.22); color: #4b5563; }
-      .book-panel .scenario-chip.pressed { background: #e5e7eb; border-color: #374151; color: #111827; }
       button.primary { border: 1px solid rgba(102,91,82,.18); background: rgba(255,255,255,.92); color: #51463f; box-shadow: none; font-size: 1.125rem; }
       button.primary:hover { background: #f8fafc; }
       label { display: inline-flex; align-items: center; gap: 8px; color: #665b52; font-weight: 760; }
@@ -156,9 +141,7 @@ HTML = """<!doctype html>
       input[type="text"]:focus { outline: 3px solid var(--accent-line); border-color: var(--accent); }
       .prompt-control { position: relative; }
       .prompt-trigger { height: 100%; min-height: 46px; border: 1px solid rgba(194,65,12,.24); background: #ff7a00; color: #1f1306; box-shadow: 0 14px 30px rgba(255,122,0,.24); font-size: 1.125rem; }
-      body[data-mode="book"] .prompt-trigger { border-color: rgba(79,70,229,.34); background: #6d5dff; color: #ffffff; box-shadow: 0 14px 30px rgba(79,70,229,.28); }
       .prompt-trigger:hover { background: #ff8f1f; box-shadow: 0 16px 34px rgba(255,122,0,.3); }
-      body[data-mode="book"] .prompt-trigger:hover { background: #5b4bff; box-shadow: 0 16px 34px rgba(79,70,229,.34); }
       .prompt-trigger[aria-expanded="true"] { border-color: rgba(39,33,29,.28); filter: saturate(1.08); }
       .prompt-menu { position: absolute; left: 0; bottom: calc(100% + 10px); z-index: 20; width: min(430px, calc(100vw - 48px)); max-height: min(540px, 72vh); overflow: auto; border: 1px solid rgba(102,91,82,.18); border-radius: 8px; padding: 12px; background: rgba(255,255,255,.98); box-shadow: 0 24px 70px rgba(39,33,29,.16); }
       .prompt-helper { margin: 0 0 10px; color: #665b52; font-size: .86rem; font-weight: 760; }
@@ -169,12 +152,15 @@ HTML = """<!doctype html>
       .prompt-option:hover { transform: none; background: var(--accent-soft); }
       .feedback-actions { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 24px 18px; background: rgba(255,255,255,.28); }
       .feedback-action { border: 1px solid rgba(102,91,82,.18); background: rgba(255,255,255,.88); color: #51463f; box-shadow: none; font-size: .88rem; }
+      .vision-note { margin: 16px 0 12px; border: 1px solid rgba(102,91,82,.14); border-radius: 8px; padding: 18px 20px; background: rgba(255,255,255,.68); box-shadow: 0 12px 30px rgba(39,33,29,.06); }
+      .vision-note h2 { margin: 0 0 7px; color: #7c2d12; font-size: 1rem; letter-spacing: .01em; }
+      .vision-note p { margin: 0; max-width: 760px; color: #665b52; line-height: 1.5; }
       .trace-footer { margin: 14px 2px 0; color: #665b52; font-size: .92rem; }
       @media (max-width: 640px) {
         body { padding: 16px; }
         .brand-lockup { gap: 12px; align-items: center; }
         .brand-logo { width: 124px; height: 124px; font-size: 2.35rem; }
-        .mode-tabs { display: grid; grid-template-columns: 1fr 1fr; padding: 12px 12px 0; }
+        .mode-tabs { display: grid; grid-template-columns: 1fr; padding: 12px 12px 0; }
         .mode-tab { min-width: 0; padding: 14px 12px 15px; font-size: 1rem; }
         .room-heading-row { display: grid; gap: 10px; }
         .room-context h2 { white-space: normal; }
@@ -200,13 +186,10 @@ HTML = """<!doctype html>
         </div>
       </header>
       <section class="shell">
-        <div class="mode-tabs" role="tablist" aria-label="1Less modes">
-          <button class="mode-tab active" id="dinner-tab" data-tab="dinner" role="tab" type="button" aria-selected="true" aria-controls="active-panel">
+        <div class="mode-tabs" aria-label="1Less public alpha flow">
+          <div class="mode-tab active" id="dinner-tab" aria-current="page">
             Chapter 1: Dinner
-          </button>
-          <button class="mode-tab" id="story-tab" data-tab="book" role="tab" type="button" aria-selected="false" aria-controls="active-panel">
-            Story Picker (WIP)
-          </button>
+          </div>
         </div>
         <div class="tab-panel" id="active-panel" role="tabpanel" aria-labelledby="dinner-tab">
           <section class="room-context" data-room-context>
@@ -255,6 +238,10 @@ HTML = """<!doctype html>
           </form>
         </div>
       </section>
+      <section class="vision-note" aria-labelledby="why-dinner-first">
+        <h2 id="why-dinner-first">Why dinner first?</h2>
+        <p>1Less may explore other parent decisions later, but this alpha is dinner-only. Right now we are testing whether one late-day dinner decision can be removed without creating another chore.</p>
+      </section>
       <label class="trace-footer"><input id="traceToggle" type="checkbox" /> Show trace</label>
       <div class="room-actions dinner-panel" data-panel="dinner">
         <span class="action-label">Hackathon Demo Scenarios</span>
@@ -262,13 +249,6 @@ HTML = """<!doctype html>
           <button class="scenario-chip" data-scenario="dinner" aria-pressed="false">No constraints</button>
           <button class="scenario-chip" data-scenario="lunch" aria-pressed="false">Low energy</button>
           <button class="scenario-chip" data-scenario="guest" aria-pressed="false">Avoid nuts</button>
-        </div>
-      </div>
-      <div class="room-actions book-panel hidden" data-panel="book">
-        <span class="action-label">Hackathon Demo Scenarios</span>
-        <div class="toolbar">
-          <button class="scenario-chip" data-scenario="book" aria-pressed="false">Pick tonight's book</button>
-          <button class="scenario-chip" data-scenario="book_siblings" aria-pressed="false">Read with both kids</button>
         </div>
       </div>
     </main>
@@ -297,16 +277,6 @@ HTML = """<!doctype html>
           proofPrefix: "Fit for",
           proof: ["Time", "Energy", "Avoidances", "What you enter"],
           placeholder: "What's tonight like? Add time, energy, ingredients, or avoidances."
-        },
-        book: {
-          title: "Story Picker",
-          summary: "A calmer way to choose one book for bedtime.",
-          headline: "One bedtime book that fits tonight.",
-          description: "Story Picker uses child fit, bedtime mood, recent reading history, and instant online access to lead with one practical read-aloud.",
-          proofLabel: "Story Picker considers",
-          proofPrefix: "Fit for",
-          proof: ["Age", "Mood", "Reading History", "Instant access"],
-          placeholder: "Ask: What should I read with both of them tonight?"
         }
       };
       const promptGroups = {
@@ -347,50 +317,12 @@ HTML = """<!doctype html>
               "Avoid spicy food tonight."
             ]
           }
-        ],
-        book: [
-          {
-            title: "Who is reading",
-            label: "Who is reading",
-            prompts: [
-              "What should I read with both of them tonight?",
-              "Pick a calm bedtime book for Kunal.",
-              "Pick something for Arya that feels a little grown-up."
-            ]
-          },
-          {
-            title: "Mood tonight",
-            label: "Mood tonight",
-            prompts: [
-              "Give me a silly read-aloud.",
-              "I need a calm book for bedtime.",
-              "Pick something about bravery and confidence."
-            ]
-          },
-          {
-            title: "Parent energy",
-            label: "Parent energy",
-            prompts: [
-              "I’m tired — keep it under 10 minutes.",
-              "We only have time for a quick book.",
-              "Pick a book with easy parent prompts."
-            ]
-          },
-          {
-            title: "Interests",
-            label: "Interests",
-            prompts: [
-              "Arya wants something science-y or curious.",
-              "Kunal wants rhyme or repetition.",
-              "Pick something they have not read recently."
-            ]
-          }
         ]
       };
 
       function setRoom(active) {
-        activeMode = active === "book" ? "book" : "dinner";
-        const room = rooms[activeMode];
+        activeMode = "dinner";
+        const room = rooms.dinner;
         document.body.dataset.mode = activeMode;
         roomHeadline.textContent = room.headline;
         roomDescription.textContent = room.description;
@@ -402,13 +334,9 @@ HTML = """<!doctype html>
         input.placeholder = room.placeholder;
         renderPromptMenu(activeMode);
         closePromptMenu();
-        document.querySelectorAll("[data-tab]").forEach((tab) => {
-          tab.classList.toggle("active", tab.dataset.tab === activeMode);
-          tab.setAttribute("aria-selected", String(tab.dataset.tab === activeMode));
-        });
-        tabPanel.setAttribute("aria-labelledby", activeMode === "book" ? "story-tab" : "dinner-tab");
+        tabPanel.setAttribute("aria-labelledby", "dinner-tab");
         document.querySelectorAll("[data-panel]").forEach((panel) => {
-          panel.classList.toggle("hidden", panel.dataset.panel !== activeMode);
+          panel.classList.toggle("hidden", panel.dataset.panel !== "dinner");
         });
       }
 
@@ -428,7 +356,7 @@ HTML = """<!doctype html>
       }
 
       function scenarioMode(scenario) {
-        return scenario.startsWith("book") ? "book" : "dinner";
+        return "dinner";
       }
 
       function trackEvent(name, params) {
@@ -447,10 +375,9 @@ HTML = """<!doctype html>
 
       function renderPromptMenu(mode) {
         const groups = promptGroups[mode];
-        const label = mode === "book" ? "Story Picker starter prompts" : "Chapter 1 dinner starter prompts";
-        promptMenu.setAttribute("aria-label", label);
+        promptMenu.setAttribute("aria-label", "Chapter 1 dinner starter prompts");
         promptMenu.innerHTML = `
-          <p class="prompt-helper">${mode === "book" ? "Pick a starter prompt to send, or type your own." : "Pick quick context, or type what you have and anything to avoid."}</p>
+          <p class="prompt-helper">Pick quick context, or type what you have and anything to avoid.</p>
           ${groups.map((group) => `
             <section class="prompt-group" aria-label="${escapeHtml(group.label)}">
               <h3>${escapeHtml(group.title)}</h3>
@@ -476,18 +403,7 @@ HTML = """<!doctype html>
       function addBubble(role, text) {
         const div = document.createElement("div");
         div.className = `bubble ${role}`;
-        const bookMatch = role === "agent" ? text.match(/^Tonight's pick: (.+?) by (.+?)\\.\\n([\\s\\S]*)$/) : null;
-        if (bookMatch) {
-          div.append("Tonight's pick: ");
-          const link = document.createElement("a");
-          link.href = "https://www.getepic.com/";
-          link.target = "_blank";
-          link.rel = "noopener noreferrer";
-          link.textContent = bookMatch[1];
-          div.append(link, ` by ${bookMatch[2]}.\n${bookMatch[3]}`);
-        } else {
-          div.textContent = text;
-        }
+        div.textContent = text;
         chat.appendChild(div);
         chat.scrollTop = chat.scrollHeight;
       }
@@ -604,9 +520,9 @@ HTML = """<!doctype html>
 
       document.querySelectorAll("[data-tab]").forEach((button) => {
         button.addEventListener("click", () => {
-          trackEvent(button.dataset.tab === "book" ? "mode_story" : "mode_dinner");
+          trackEvent("mode_dinner");
           clearScenarioState();
-          setRoom(button.dataset.tab);
+          setRoom("dinner");
         });
       });
 
@@ -667,15 +583,7 @@ class WebHandler(BaseHTTPRequestHandler):
             return
         mode = payload.get("mode") or payload.get("scenario")
         if mode == "book":
-            session_id = payload.get("session_id") or str(uuid4())
-            state = BOOK_SESSIONS.setdefault(session_id, {})
-            response = run_book_scenario(
-                trace=True,
-                parent_message=payload.get("message") or "What should I read tonight?",
-                exclude_book_ids=[state["last_book_id"]] if state.get("last_book_id") else None,
-            )
-            state["last_book_id"] = response["metadata"]["book_id"]
-            self._send_json({"session_id": session_id, "response": response})
+            self.send_error(404, "Story Picker is not part of the public alpha")
             return
 
         session_id = payload.get("session_id") or self._new_session()
@@ -693,23 +601,8 @@ class WebHandler(BaseHTTPRequestHandler):
             self.send_error(400, "Invalid JSON")
             return
         scenario = payload.get("scenario")
-        if scenario not in {"dinner", "lunch", "guest", "book", "book_siblings"}:
+        if scenario not in {"dinner", "lunch", "guest"}:
             self.send_error(400, "Unknown scenario")
-            return
-        if scenario in {"book", "book_siblings"}:
-            session_id = str(uuid4())
-            parent_message = (
-                "What should I read with both of them tonight?"
-                if scenario == "book_siblings"
-                else None
-            )
-            response = run_book_scenario(
-                trace=True,
-                parent_message=parent_message,
-                exclude_book_ids=["hungry-caterpillar"] if scenario == "book_siblings" else None,
-            )
-            BOOK_SESSIONS[session_id] = {"last_book_id": response["metadata"]["book_id"]}
-            self._send_json({"session_id": session_id, "responses": [response]})
             return
 
         session_id = self._new_session(scenario)
