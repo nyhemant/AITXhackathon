@@ -230,7 +230,7 @@ HTML = """<!doctype html>
               <div class="proof-line" id="roomProofLine" aria-label="Dinner plan considers">
                 <b class="proof-prefix">Based on</b>
                 <span>Time</span>
-                <span>Energy</span>
+                <span>Mood</span>
                 <span>Fridge/pantry</span>
               </div>
             </div>
@@ -243,9 +243,9 @@ HTML = """<!doctype html>
               <div class="prompt-menu hidden" id="promptMenu" role="menu" aria-label="Editable real-life dinner prompts">
                 <p class="prompt-helper">Pick one, then edit it to match tonight.</p>
                 <div class="prompt-list">
-                  <button class="prompt-option" type="button" role="menuitem" data-prompt="It’s 5pm, everyone is hungry, I have 10 minutes and low cooking energy. Make it picky-kid friendly.">Low-energy 10 min</button>
+                  <button class="prompt-option" type="button" role="menuitem" data-prompt="It’s 5pm, everyone is hungry, I have 10 minutes and I’m not in the mood to cook. Make it picky-kid friendly.">Low-effort 10 min</button>
                   <button class="prompt-option" type="button" role="menuitem" data-prompt="I have tortillas, cheese, black beans, rice, and apples. I have 15 minutes and no store run.">Use what we have</button>
-                  <button class="prompt-option" type="button" role="menuitem" data-prompt="Vegetarian tonight. I have rice, eggs, frozen peas, and 20 minutes. Normal energy.">Vegetarian quick</button>
+                  <button class="prompt-option" type="button" role="menuitem" data-prompt="Vegetarian tonight. I have rice, eggs, frozen peas, and 20 minutes. I’m okay cooking a little.">Vegetarian quick</button>
                   <button class="prompt-option" type="button" role="menuitem" data-prompt="Avoid peanuts and tree nuts tonight. I have pasta, jarred sauce, frozen peas, and 15 minutes.">Avoid nuts</button>
                   <button class="prompt-option" type="button" role="menuitem" data-prompt="My kid rejects mixed foods. I have chicken, rice, cucumber, yogurt, and 20 minutes. Make it easy to deconstruct.">Picky kid</button>
                   <button class="prompt-option" type="button" role="menuitem" data-prompt="I have a few options but no brain left to decide. We have eggs, toast, fruit, rice, and frozen vegetables. Pick one easy dinner.">Just pick one</button>
@@ -286,10 +286,10 @@ HTML = """<!doctype html>
           title: "Dinner",
           summary: "Tonight's dinner, decided.",
           headline: "Tonight's dinner, decided.",
-          description: "Dinner is the current 1Less proof point: share the real-life constraints — time, energy, fridge/pantry options, and what the kids will tolerate.",
+          description: "Dinner is the current 1Less proof point: share the real-life constraints — time, mood, fridge/pantry options, and what the kids will tolerate.",
           proofLabel: "Dinner plan considers",
           proofPrefix: "Based on",
-          proof: ["Time", "Energy", "Avoidances", "Fridge/pantry"]
+          proof: ["Time", "Mood", "Avoidances", "Fridge/pantry"]
         }
       };
       const inputCopyByState = {
@@ -307,17 +307,17 @@ HTML = """<!doctype html>
         },
         fallback: {
           placeholder: "Good enough, or one more tweak?",
-          helper: "Say what failed — too much cleanup, missing ingredient, picky kid, or no energy.",
+          helper: "Say what failed — too much cleanup, missing ingredient, picky kid, or not in the mood.",
           mobilePlaceholder: "Good enough, or one more tweak?",
-          mobileHelper: "Say what failed: cleanup, ingredient, picky kid, no energy."
+          mobileHelper: "Say what failed: cleanup, ingredient, picky kid, mood."
         }
       };
       let inputCopyState = "start";
       const promptGroups = {
         dinner: [
           {
-            label: "Low-energy 10 min",
-            prompt: "It’s 5pm, everyone is hungry, I have 10 minutes and low cooking energy. Make it picky-kid friendly."
+            label: "Low-effort 10 min",
+            prompt: "It’s 5pm, everyone is hungry, I have 10 minutes and I’m not in the mood to cook. Make it picky-kid friendly."
           },
           {
             label: "Use what we have",
@@ -325,7 +325,7 @@ HTML = """<!doctype html>
           },
           {
             label: "Vegetarian quick",
-            prompt: "Vegetarian tonight. I have rice, eggs, frozen peas, and 20 minutes. Normal energy."
+            prompt: "Vegetarian tonight. I have rice, eggs, frozen peas, and 20 minutes. I’m okay cooking a little."
           },
           {
             label: "Avoid nuts",
@@ -528,7 +528,7 @@ HTML = """<!doctype html>
         if (!effortText) return [];
         const clean = stripTrailingPeriod(effortText);
         const parts = clean.split(",").map((part) => part.trim()).filter(Boolean);
-        return parts.map((part, index) => index === 0 ? `⏱ ${part}` : `Energy: ${part}`);
+        return parts.map((part, index) => index === 0 ? `⏱ ${part}` : `Mood: ${part}`);
       }
 
       function renderDinnerCard(response, options = {}) {

@@ -548,10 +548,13 @@ def _parse_energy(message: str) -> str | None:
             "lowest-effort",
             "low effort",
             "no cooking",
+            "not in the mood to cook",
+            "not in mood to cook",
+            "low cooking mood",
         )
     ):
         return "barely cooking"
-    if "can cook" in message:
+    if "can cook" in message or "okay cooking" in message or "ok cooking" in message:
         return "can cook"
     if "normal" in message:
         return "normal"
