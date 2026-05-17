@@ -122,8 +122,13 @@ HTML = """<!doctype html>
       .proof-prefix { font-weight: 760; }
       .proof-line span { display: inline-flex; align-items: center; gap: 5px; }
       .proof-line span::before { content: "✓"; color: var(--accent); font-weight: 950; }
-      .chat { display: grid; gap: 12px; min-height: 300px; max-height: 50vh; overflow-y: auto; padding: 20px 24px; background: rgba(255,255,255,.28); }
+      .chat { display: grid; gap: 12px; min-height: 300px; max-height: 50vh; overflow-y: auto; overscroll-behavior: contain; scroll-behavior: smooth; scroll-padding: 18px; padding: 20px 24px; background: rgba(255,255,255,.28); }
+      .chat[aria-busy="true"] { background: linear-gradient(180deg, rgba(255,255,255,.36), rgba(255,247,237,.44)); }
       .bubble { max-width: 78%; border-radius: 8px; padding: 12px 14px; line-height: 1.48; white-space: pre-wrap; }
+      .new-turn { animation: riseIn .34s ease-out both, softPulse 1.2s ease-out; }
+      .parent.new-turn { box-shadow: 0 0 0 3px rgba(255,237,213,.95), 0 14px 30px rgba(39,33,29,.16); }
+      .thinking { justify-self: stretch; max-width: 100%; border: 1px dashed rgba(194,65,12,.28); border-left: 5px solid var(--accent-line); border-radius: 8px; padding: 13px 15px; background: rgba(255,247,237,.86); color: #665b52; font-weight: 800; }
+      .thinking-dots::after { content: ""; display: inline-block; width: 1.4em; text-align: left; animation: dots 1.1s steps(4, end) infinite; }
       .parent { justify-self: end; background: #2f2924; color: white; border-bottom-right-radius: 2px; box-shadow: 0 12px 28px rgba(39,33,29,.12); }
       .agent { justify-self: stretch; max-width: 100%; border: 1px solid rgba(102,91,82,.14); border-left: 5px solid var(--accent); border-radius: 8px; padding: 18px 20px; background: rgba(255,255,255,.9); box-shadow: 0 18px 38px rgba(39,33,29,.08); color: #2d2722; }
       .agent::before { content: "Recommendation"; display: block; margin-bottom: 8px; color: var(--accent-dark); font-size: .74rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
@@ -168,6 +173,13 @@ HTML = """<!doctype html>
       .vision-note h2 { margin: 0 0 7px; color: #7c2d12; font-size: 1rem; letter-spacing: .01em; }
       .vision-note p { margin: 0; max-width: 760px; color: #665b52; line-height: 1.5; }
       .trace-footer { margin: 14px 2px 0; color: #665b52; font-size: .92rem; }
+      @keyframes riseIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+      @keyframes softPulse { 0% { outline: 0 solid rgba(255,237,213,0); } 24% { outline: 5px solid rgba(255,237,213,.82); } 100% { outline: 0 solid rgba(255,237,213,0); } }
+      @keyframes dots { 0% { content: ""; } 25% { content: "."; } 50% { content: ".."; } 75%, 100% { content: "..."; } }
+      @media (prefers-reduced-motion: reduce) {
+        .chat { scroll-behavior: auto; }
+        .new-turn, .thinking-dots::after { animation: none; }
+      }
       @media (max-width: 640px) {
         body { padding: 16px; }
         .brand-lockup { gap: 12px; align-items: center; }
@@ -355,12 +367,42 @@ HTML = """<!doctype html>
         promptButton.setAttribute("aria-expanded", String(!isOpen));
       }
 
-      function addBubble(role, text) {
+      function placeChatNode(node, replaceNode = null) {
+        if (replaceNode && replaceNode.parentNode === chat) {
+          chat.replaceChild(node, replaceNode);
+        } else {
+          chat.appendChild(node);
+        }
+        return node;
+      }
+
+      function scrollTurnIntoView(turnStart, behavior = "smooth") {
+        if (!turnStart) {
+          chat.scrollTo({ top: chat.scrollHeight, behavior });
+          return;
+        }
+        const targetTop = Math.max(0, turnStart.offsetTop - 16);
+        chat.scrollTo({ top: targetTop, behavior });
+      }
+
+      function addBubble(role, text, options = {}) {
         const div = document.createElement("div");
-        div.className = `bubble ${role}`;
+        div.className = `bubble ${role}${options.isNewTurn ? " new-turn" : ""}`;
         div.textContent = text;
-        chat.appendChild(div);
-        chat.scrollTop = chat.scrollHeight;
+        placeChatNode(div, options.replaceNode);
+        scrollTurnIntoView(options.turnStart || div, options.behavior || "smooth");
+        return div;
+      }
+
+      function addThinkingBubble(turnStart) {
+        const div = document.createElement("div");
+        div.className = "thinking new-turn";
+        div.setAttribute("role", "status");
+        div.setAttribute("aria-live", "polite");
+        div.innerHTML = `Deciding dinner<span class="thinking-dots" aria-hidden="true"></span>`;
+        placeChatNode(div);
+        scrollTurnIntoView(turnStart, "smooth");
+        return div;
       }
 
       function stripTrailingPeriod(text) {
@@ -428,10 +470,10 @@ HTML = """<!doctype html>
         return parts.map((part, index) => index === 0 ? `⏱ ${part}` : `Energy: ${part}`);
       }
 
-      function renderDinnerCard(response) {
+      function renderDinnerCard(response, options = {}) {
         const parsed = parseDinnerMessage(response.message || "");
         const article = document.createElement("article");
-        article.className = "dinner-card";
+        article.className = `dinner-card${options.isNewTurn ? " new-turn" : ""}`;
         article.setAttribute("aria-label", `${parsed.badge} dinner recommendation: ${parsed.title}`);
         const chips = effortChips(parsed.effort);
         article.innerHTML = `
@@ -446,8 +488,9 @@ HTML = """<!doctype html>
           ${parsed.safety ? `<section class="dinner-section safety-box" role="note" aria-label="Safety caveat"><h4>Safety note</h4><p>${escapeHtml(parsed.safety)}</p></section>` : ""}
           ${parsed.note ? `<p class="decision-note">${escapeHtml(parsed.note)}</p>` : ""}
         `;
-        chat.appendChild(article);
-        chat.scrollTop = chat.scrollHeight;
+        placeChatNode(article, options.replaceNode);
+        scrollTurnIntoView(options.turnStart || article, options.behavior || "smooth");
+        return article;
       }
 
       function renderDinnerFeedbackActions() {
@@ -481,16 +524,18 @@ HTML = """<!doctype html>
         chat.appendChild(div);
       }
 
-      function renderResponse(response) {
+      function renderResponse(response, options = {}) {
         const isDinnerDecision = response.metadata && response.metadata.chapter === "chapter_1_dinner_decision";
-        if (response.context) addBubble("agent", `Context: ${response.context}`);
-        addBubble("parent", response.parent_message);
+        const turnStart = options.turnStart || null;
+        if (response.context) addBubble("agent", `Context: ${response.context}`, { turnStart });
+        const parentBubble = options.skipParent ? turnStart : addBubble("parent", response.parent_message, { isNewTurn: true });
         if (isDinnerDecision) {
-          renderDinnerCard(response);
+          renderDinnerCard(response, { replaceNode: options.replaceNode, turnStart: parentBubble || turnStart, isNewTurn: true });
         } else {
-          addBubble("agent", response.message);
+          addBubble("agent", response.message, { replaceNode: options.replaceNode, turnStart: parentBubble || turnStart, isNewTurn: true });
         }
         addTrace(response.trace);
+        scrollTurnIntoView(parentBubble || turnStart, "smooth");
         if (isDinnerDecision) {
           renderDinnerFeedbackActions();
         }
@@ -509,10 +554,21 @@ HTML = """<!doctype html>
       async function sendCurrentInput() {
         const message = input.value.trim();
         if (!message) return;
+        document.querySelectorAll(".feedback-actions").forEach((node) => node.remove());
         input.value = "";
-        const data = await postJson("/api/chat", { session_id: sessionId, message, mode: activeMode });
-        sessionId = data.session_id;
-        renderResponse(data.response);
+        chat.setAttribute("aria-busy", "true");
+        const parentBubble = addBubble("parent", message, { isNewTurn: true });
+        const thinkingBubble = addThinkingBubble(parentBubble);
+        try {
+          const data = await postJson("/api/chat", { session_id: sessionId, message, mode: activeMode });
+          sessionId = data.session_id;
+          renderResponse(data.response, { skipParent: true, turnStart: parentBubble, replaceNode: thinkingBubble });
+        } catch (error) {
+          addBubble("agent", "Something hiccuped. Try Send once more.", { replaceNode: thinkingBubble, turnStart: parentBubble, isNewTurn: true });
+          console.error(error);
+        } finally {
+          chat.setAttribute("aria-busy", "false");
+        }
       }
 
       form.addEventListener("submit", async (event) => {
