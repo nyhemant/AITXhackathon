@@ -252,7 +252,7 @@ HTML = """<!doctype html>
             </div>
             <div class="input-copy">
               <input id="message" type="text" autocomplete="off" aria-describedby="inputHelper" placeholder="Busy day? I can help with dinner decision. Just steer me in right direction" />
-              <p class="input-helper" id="inputHelper">Fast or flexible? Tell me your dinner mood, time, 2–4 things on hand, picky-kid no-gos, and any avoidances.</p>
+              <p class="input-helper" id="inputHelper">Use prompts or tell me: Fast or flexible? Tell me your dinner mood, time, 2–4 things on hand, picky-kid no-gos, etc.</p>
             </div>
             <button class="primary" type="submit">Send</button>
           </form>
@@ -293,7 +293,7 @@ HTML = """<!doctype html>
       const inputCopyByState = {
         start: {
           placeholder: "Busy day? I can help with dinner decision. Just steer me in right direction",
-          helper: "Fast or flexible? Tell me your dinner mood, time, 2–4 things on hand, picky-kid no-gos, and any avoidances.",
+          helper: "Use prompts or tell me: Fast or flexible? Tell me your dinner mood, time, 2–4 things on hand, picky-kid no-gos, etc.",
           mobilePlaceholder: "Busy day? Steer me toward dinner.",
           mobileHelper: "Fast? Flexible? Mood, time, food on hand, no-gos."
         },
