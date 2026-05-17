@@ -6,7 +6,7 @@ import unittest
 
 from busyparent_agent.agent import BusyParentAgent
 from busyparent_agent.service import ALLERGY_CAVEAT, create_dinner_decision_session, create_session, parse_now, run_book_scenario
-from busyparent_agent.web import HTML, MAX_REQUEST_BYTES, SECURITY_HEADERS, SESSIONS, WebHandler
+from busyparent_agent.web import HTML, LOGO_PATH, MAX_REQUEST_BYTES, SECURITY_HEADERS, SESSIONS, WebHandler
 from busyparent_agent import tools
 from busyparent_agent import inventory as inventory_engine
 from busyparent_agent.adapters import costco_bulk
@@ -372,6 +372,14 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertIn("Tonight:", payload["response"]["message"])
         self.assertEqual(payload["response"]["metadata"]["chapter"], "chapter_1_dinner_decision")
 
+    def test_busy_mom_logo_uses_helper_not_agent(self):
+        logo = LOGO_PATH.read_text()
+
+        self.assertIn("BusyMom helper logo", logo)
+        self.assertIn(">HELPER</text>", logo)
+        self.assertNotIn("BusyMom Agent", logo)
+        self.assertNotIn(">AGENT</text>", logo)
+
     def test_web_page_exposes_dinner_only_public_alpha(self):
         self.assertIn(">\n            Dinner\n          </div>", HTML)
         self.assertNotIn("Chapter 1", HTML)
@@ -392,7 +400,7 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertIn('class="brand-lockup"', HTML)
         self.assertIn('class="brand-logo"', HTML)
         self.assertIn('alt="1Less logo"', HTML)
-        self.assertIn('src="/BMLogo.svg"', HTML)
+        self.assertIn('src="/BMLogo.svg?v=helper"', HTML)
         self.assertIn('<p class="tagline">One less decision for busy parents.</p>', HTML)
         self.assertIn("<strong>Alpha testing</strong>", HTML)
         self.assertNotIn("Alpha testing now:", HTML)

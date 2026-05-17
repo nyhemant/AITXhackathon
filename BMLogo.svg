@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-labelledby="title desc">
-  <title id="title">BusyMom Agent logo</title>
-  <desc id="desc">Warm family helper logo for BusyMom Agent</desc>
+  <title id="title">BusyMom helper logo</title>
+  <desc id="desc">Warm family helper logo for BusyMom helper</desc>
   <defs>
     <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
       <stop offset="0" stop-color="#fff7ed"/>
@@ -38,7 +38,7 @@
   </g>
   <g font-family="Inter, Avenir Next, Arial, sans-serif" text-anchor="middle">
     <text x="512" y="812" font-size="122" font-weight="900" fill="#fff" stroke="#7c2d12" stroke-width="7" paint-order="stroke">BusyMom</text>
-    <text x="512" y="895" font-size="54" font-weight="900" letter-spacing="15" fill="#2d2722" stroke="#fff" stroke-width="3" paint-order="stroke">AGENT</text>
+    <text x="512" y="895" font-size="50" font-weight="900" letter-spacing="11" fill="#2d2722" stroke="#fff" stroke-width="3" paint-order="stroke">HELPER</text>
   </g>
   <g fill="#f97316">
     <path d="M226 268 238 294 266 306 238 318 226 346 214 318 186 306 214 294z"/>

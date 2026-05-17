@@ -207,7 +207,7 @@ HTML = """<!doctype html>
     <main>
       <header class="hero">
         <div class="brand-lockup">
-          <img class="brand-logo" src="/BMLogo.svg" alt="1Less logo" width="1024" height="1024" />
+          <img class="brand-logo" src="/BMLogo.svg?v=helper" alt="1Less logo" width="1024" height="1024" />
           <div class="brand-copy">
           <p class="tagline">One less decision for busy parents.</p>
           <p class="subhead">Dinner first: a low-burden flow that turns tonight's constraints into one clear meal decision.</p>
