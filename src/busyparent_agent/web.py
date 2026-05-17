@@ -180,22 +180,21 @@ HTML = """<!doctype html>
           <img class="brand-logo" src="/BMLogo.svg" alt="1Less logo" width="1024" height="1024" />
           <div class="brand-copy">
           <p class="tagline">One less decision for busy parents.</p>
-          <p class="subhead">Chapter 1 starts with dinner: a low-burden flow that turns tonight's constraints into one clear meal decision.</p>
-          <p class="alpha-note"><strong>Alpha testing now:</strong> try the dinner flow with non-sensitive details and tell us if it actually removes one decision.</p>
+          <p class="subhead">Dinner first: a low-burden flow that turns tonight's constraints into one clear meal decision.</p>
           </div>
         </div>
       </header>
       <section class="shell">
         <div class="mode-tabs" aria-label="1Less public alpha flow">
           <div class="mode-tab active" id="dinner-tab" aria-current="page">
-            Chapter 1: Dinner
+            Dinner
           </div>
         </div>
         <div class="tab-panel" id="active-panel" role="tabpanel" aria-labelledby="dinner-tab">
           <section class="room-context" data-room-context>
             <div class="room-heading-row">
               <h2 id="roomHeadline">One dinner plan that fits tonight.</h2>
-              <div class="proof-line" id="roomProofLine" aria-label="Chapter 1 dinner considers">
+              <div class="proof-line" id="roomProofLine" aria-label="Dinner plan considers">
                 <b class="proof-prefix">Fit for</b>
                 <span>Time</span>
                 <span>Energy</span>
@@ -269,11 +268,11 @@ HTML = """<!doctype html>
       const promptMenu = document.querySelector("#promptMenu");
       const rooms = {
         dinner: {
-          title: "Chapter 1: Dinner",
+          title: "Dinner",
           summary: "Tonight's dinner, decided.",
           headline: "Tonight's dinner, decided.",
-          description: "Dinner is the first 1Less proof point: answer what's tonight like, then get one clear recommendation based only on what you enter now.",
-          proofLabel: "Chapter 1 dinner considers",
+          description: "Dinner is the current 1Less proof point: answer what's tonight like, then get one clear recommendation based only on what you enter now.",
+          proofLabel: "Dinner plan considers",
           proofPrefix: "Fit for",
           proof: ["Time", "Energy", "Avoidances", "What you enter"],
           placeholder: "What's tonight like? Add time, energy, ingredients, or avoidances."
@@ -375,7 +374,7 @@ HTML = """<!doctype html>
 
       function renderPromptMenu(mode) {
         const groups = promptGroups[mode];
-        promptMenu.setAttribute("aria-label", "Chapter 1 dinner starter prompts");
+        promptMenu.setAttribute("aria-label", "1Less dinner starter prompts");
         promptMenu.innerHTML = `
           <p class="prompt-helper">Pick quick context, or type what you have and anything to avoid.</p>
           ${groups.map((group) => `
