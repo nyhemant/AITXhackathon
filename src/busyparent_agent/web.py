@@ -713,7 +713,8 @@ class WebHandler(BaseHTTPRequestHandler):
             self.send_error(404, "Story Picker is not part of the public alpha")
             return
 
-        session_id = payload.get("session_id") or self._new_session()
+        requested_session_id = payload.get("session_id")
+        session_id = requested_session_id if requested_session_id in SESSIONS else self._new_session()
         session = SESSIONS[session_id]
         response = session.send(payload.get("message", ""))
         self._send_json({"session_id": session_id, "response": response})

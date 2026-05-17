@@ -359,6 +359,19 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertTrue(hasattr(handler, "error"))
         return handler.error
 
+    def test_chat_recovers_from_stale_session_id_after_server_restart(self):
+        SESSIONS.clear()
+        payload = self.handle_chat({
+            "session_id": "stale-browser-session",
+            "mode": "dinner",
+            "message": "I have tortillas, cheese, black beans, rice, and apples. I have 15 minutes and no store run.",
+        })
+
+        self.assertNotEqual(payload["session_id"], "stale-browser-session")
+        self.assertIn(payload["session_id"], SESSIONS)
+        self.assertIn("Tonight:", payload["response"]["message"])
+        self.assertEqual(payload["response"]["metadata"]["chapter"], "chapter_1_dinner_decision")
+
     def test_web_page_exposes_dinner_only_public_alpha(self):
         self.assertIn(">\n            Dinner\n          </div>", HTML)
         self.assertNotIn("Chapter 1", HTML)
