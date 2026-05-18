@@ -19,7 +19,7 @@ class RequestTooLarge(ValueError):
     """Raised when a public demo request body exceeds the small alpha limit."""
 
 
-LOGO_FILENAME = "1LessPrimaryLogo.jpg"
+LOGO_FILENAME = "1LessPrimaryLogo.png"
 PLAN_B_LOGO_FILENAME = "1LessMark.png"
 MOBILE_LOGO_FILENAME = LOGO_FILENAME
 LOGO_PATH = Path(__file__).resolve().parents[2] / LOGO_FILENAME
@@ -197,7 +197,7 @@ HTML = """<!doctype html>
     <main>
       <header class="hero">
         <div class="brand-lockup">
-          <img class="brand-logo brand-logo-wrap" src="/1LessPrimaryLogo.jpg?v=primary-square" alt="1Less logo" width="800" height="800" />
+          <img class="brand-logo brand-logo-wrap" src="/1LessPrimaryLogo.png?v=transparent-square" alt="1Less logo" width="800" height="800" />
           <div class="brand-copy">
           <p class="tagline">One less thing on your plate.</p>
           <p class="subhead">Tell 1Less what’s in the fridge, who’s eating, and what kind of night it is. Get one doable dinner idea, not fifteen recipes.</p>
