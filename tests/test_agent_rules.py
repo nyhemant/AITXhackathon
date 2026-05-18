@@ -6,7 +6,7 @@ import unittest
 
 from busyparent_agent.agent import BusyParentAgent
 from busyparent_agent.service import ALLERGY_CAVEAT, create_dinner_decision_session, create_session, parse_now, run_book_scenario
-from busyparent_agent.web import HTML, LOGO_FILENAME, LOGO_PATH, MAX_REQUEST_BYTES, SECURITY_HEADERS, SESSIONS, WebHandler
+from busyparent_agent.web import HTML, LOGO_FILENAME, LOGO_PATH, MOBILE_LOGO_FILENAME, MOBILE_LOGO_PATH, MAX_REQUEST_BYTES, SECURITY_HEADERS, SESSIONS, WebHandler
 from busyparent_agent import tools
 from busyparent_agent import inventory as inventory_engine
 from busyparent_agent.adapters import costco_bulk
@@ -372,13 +372,18 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertIn("Tonight:", payload["response"]["message"])
         self.assertEqual(payload["response"]["metadata"]["chapter"], "chapter_1_dinner_decision")
 
-    def test_1less_logo_uses_png_wordmark_not_busy_mom_asset(self):
+    def test_1less_logo_uses_png_wordmark_and_mobile_mark_not_busy_mom_asset(self):
         logo = LOGO_PATH.read_bytes()
+        mobile_logo = MOBILE_LOGO_PATH.read_bytes()
 
         self.assertEqual(LOGO_FILENAME, "1LessLogo.png")
+        self.assertEqual(MOBILE_LOGO_FILENAME, "1LessMark.png")
         self.assertTrue(logo.startswith(b"\x89PNG\r\n\x1a\n"))
+        self.assertTrue(mobile_logo.startswith(b"\x89PNG\r\n\x1a\n"))
         self.assertNotIn(b"BusyMom", logo)
+        self.assertNotIn(b"BusyMom", mobile_logo)
         self.assertNotIn(b"AGENT", logo)
+        self.assertNotIn(b"AGENT", mobile_logo)
 
     def test_web_page_exposes_dinner_only_public_alpha(self):
         self.assertNotIn("Chapter 1", HTML)
@@ -398,10 +403,13 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertNotIn('role="tabpanel"', HTML)
         self.assertIn('role="region" aria-label="Dinner-only alpha"', HTML)
         self.assertIn('class="brand-lockup"', HTML)
+        self.assertIn('class="brand-logo-wrap"', HTML)
         self.assertIn('class="brand-logo"', HTML)
         self.assertIn('alt="1Less logo"', HTML)
         self.assertIn('width="1024" height="576"', HTML)
         self.assertIn('src="/1LessLogo.png?v=grey-ess"', HTML)
+        self.assertIn('media="(max-width: 640px)" srcset="/1LessMark.png?v=icon-only"', HTML)
+        self.assertIn('width="328" height="328"', HTML)
         self.assertIn('<p class="tagline">One less thing on your plate.</p>', HTML)
         self.assertIn("<strong>Dinner-only alpha</strong>", HTML)
         self.assertNotIn("Alpha testing now:", HTML)
