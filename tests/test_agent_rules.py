@@ -791,6 +791,33 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertNotIn("milk", lower_message)
         self.assertNotIn("yogurt", lower_message)
 
+    def test_chapter1_random_prompt_gauntlet_respects_negatives_and_context(self):
+        cases = {
+            "I have pasta and cheese but no sauce. Kids are starving.": ("Cheesy Pasta with carrots", ["sauce", "marinara"]),
+            "Only tortillas and cheese, no eggs.": ("Cheese Quesadillas with fruit", ["eggs"]),
+            "I have chicken nuggets but no tortillas.": ("Chicken Nugget Plates", ["tortillas"]),
+            "Low cleanup, no rice, no pasta, what can I do?": ("Crispy Chicken Wraps with salad", ["rice", "pasta"]),
+            "Use leftovers: rice, chicken, carrots. 15 min.": ("Chicken Rice Veggie Bowls", []),
+            "Can cook 40 minutes, chicken in fridge, kids picky.": ("Sheet-pan chicken and corn rice bowls", []),
+        }
+
+        for prompt, (expected_meal, forbidden_terms) in cases.items():
+            with self.subTest(prompt=prompt):
+                response = create_dinner_decision_session().send(prompt)
+                lower_message = response["message"].lower()
+                self.assertEqual(response["metadata"]["current_recommendation"], expected_meal)
+                self.assertIn(f"Tonight: {expected_meal}.", response["message"])
+                for term in forbidden_terms:
+                    self.assertNotIn(term, lower_message)
+
+    def test_chapter1_non_allergy_missing_items_do_not_trigger_allergy_caveat(self):
+        response = create_dinner_decision_session().send("I have chicken nuggets but no tortillas.")
+
+        self.assertEqual(response["metadata"]["current_recommendation"], "Chicken Nugget Plates")
+        self.assertIn("Respects what you ruled out", response["message"])
+        self.assertNotIn(ALLERGY_CAVEAT, response["message"])
+        self.assertFalse(response["metadata"]["allergy_caveat"])
+
     def test_chapter1_explicit_egg_avoidance_blocks_egg_meal_and_shows_caveat(self):
         session = create_dinner_decision_session()
 

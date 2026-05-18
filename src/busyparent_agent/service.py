@@ -240,6 +240,18 @@ DINNER_MVP_MEALS = [
         "typical_family_bias": 30,
     },
     {
+        "name": "Cheese Quesadillas with fruit",
+        "minutes": 10,
+        "effort": "low",
+        "tags": {"low_energy", "picky", "vegetarian", "pantry", "nut_free", "egg_free"},
+        "ingredient_keywords": {"tortilla", "tortillas", "cheese", "fruit"},
+        "typical_family_staples": {"tortillas", "cheese", "fruit"},
+        "ingredients": "tortillas, cheese, and fruit or any simple crunchy side",
+        "steps": "Melt cheese inside folded tortillas. Cut into triangles and put fruit or a crunchy side next to it.",
+        "fallback": "If tortillas are out, melt cheese on toast or serve cheese, crackers, and fruit as a snack-plate dinner.",
+        "typical_family_bias": 24,
+    },
+    {
         "name": "Egg Fried Rice with peas",
         "minutes": 20,
         "effort": "normal",
@@ -256,12 +268,24 @@ DINNER_MVP_MEALS = [
         "minutes": 25,
         "effort": "normal",
         "tags": {"picky", "vegetarian", "nut_free"},
-        "ingredient_keywords": {"pasta", "marinara", "carrot", "carrots", "vegetable", "vegetables", "cheese"},
+        "ingredient_keywords": {"pasta", "marinara", "jar sauce", "sauce", "carrot", "carrots", "vegetable", "vegetables", "cheese"},
         "typical_family_staples": {"pasta", "marinara", "carrots", "cheese"},
         "ingredients": "pasta, jarred marinara, carrots or another simple vegetable, and optional cheese",
         "steps": "Boil the pasta. Warm the sauce with shredded carrots or a side vegetable. Keep toppings optional.",
         "fallback": "If pasta is missing, serve the sauce over toast, rice, or any grain you already have.",
         "typical_family_bias": 42,
+    },
+    {
+        "name": "Cheesy Pasta with carrots",
+        "minutes": 15,
+        "effort": "low",
+        "tags": {"low_energy", "picky", "vegetarian", "nut_free", "egg_free"},
+        "ingredient_keywords": {"pasta", "cheese", "carrot", "carrots"},
+        "typical_family_staples": {"pasta", "cheese", "carrots"},
+        "ingredients": "pasta, cheese, butter or olive oil, and carrots or fruit on the side",
+        "steps": "Boil pasta, toss with a little butter or oil and cheese, and serve carrots or fruit on the side.",
+        "fallback": "If cheese is not usable, toss pasta with olive oil and a simple side instead.",
+        "typical_family_bias": 30,
     },
     {
         "name": "Sheet-pan chicken and corn rice bowls",
@@ -274,6 +298,18 @@ DINNER_MVP_MEALS = [
         "steps": "Cook the protein and corn together. Serve over rice. Keep sauces on the side.",
         "fallback": "If chicken is missing, use beans, eggs, or leftovers as the bowl protein.",
         "typical_family_bias": 30,
+    },
+    {
+        "name": "Chicken Rice Veggie Bowls",
+        "minutes": 15,
+        "effort": "low",
+        "tags": {"low_energy", "picky", "leftovers", "dairy_free", "nut_free", "egg_free"},
+        "ingredient_keywords": {"chicken", "rice", "carrot", "carrots", "vegetable", "vegetables", "veggie", "veggies", "frozen vegetables", "frozen veggies"},
+        "typical_family_staples": {"chicken", "rice", "carrots", "frozen vegetables"},
+        "ingredients": "cooked chicken or rotisserie-style chicken, rice, and carrots or frozen vegetables",
+        "steps": "Warm chicken and rice together. Add carrots or frozen vegetables, keeping sauce optional at the table.",
+        "fallback": "If chicken is not cooked, use nuggets, beans, or another quick protein with the same rice bowl base.",
+        "typical_family_bias": 18,
     },
     {
         "name": "Chicken and Potato Tray Dinner",
@@ -316,12 +352,24 @@ DINNER_MVP_MEALS = [
         "minutes": 15,
         "effort": "low",
         "tags": {"low_energy", "picky", "nut_free", "egg_free"},
-        "ingredient_keywords": {"nugget", "nuggets", "chicken", "tortilla", "tortillas", "salad", "salad kit", "bagged salad"},
+        "ingredient_keywords": {"nugget", "nuggets", "crispy chicken", "tortilla", "tortillas", "salad", "salad kit", "bagged salad"},
         "typical_family_staples": {"nuggets", "tortillas", "salad kit"},
         "ingredients": "frozen nuggets or crispy chicken, tortillas, and a bagged salad kit or crunchy side",
         "steps": "Heat the nuggets. Wrap them in tortillas with a little salad kit, or serve everything deconstructed for a picky kid.",
         "fallback": "If tortillas are out, make nugget-and-salad plates with toast, crackers, or fruit.",
         "typical_family_bias": 32,
+    },
+    {
+        "name": "Chicken Nugget Plates",
+        "minutes": 12,
+        "effort": "low",
+        "tags": {"low_energy", "picky", "nut_free", "egg_free"},
+        "ingredient_keywords": {"nugget", "nuggets", "crispy chicken", "salad", "salad kit", "bagged salad", "fruit", "crackers"},
+        "typical_family_staples": {"nuggets", "fruit", "crackers"},
+        "ingredients": "frozen nuggets, fruit, crackers, or any crunchy side",
+        "steps": "Heat the nuggets and make simple kid plates with fruit, crackers, or a crunchy side. Keep sauces optional.",
+        "fallback": "If fruit is out, use crackers, toast, carrots, or whatever crunchy side is easiest.",
+        "typical_family_bias": 18,
     },
 ]
 
@@ -410,7 +458,9 @@ def parse_dinner_decision_context(parent_message: str) -> dict[str, Any]:
         minutes = 30
 
     avoid_terms = _parse_avoid_terms(message)
-    positive_ingredients = [term for term in _parse_positive_ingredients(message) if term not in avoid_terms]
+    excluded_ingredients = _parse_excluded_ingredients(message)
+    blocked_ingredients = _expanded_blocked_ingredients(avoid_terms, excluded_ingredients)
+    positive_ingredients = [term for term in _parse_positive_ingredients(message) if term not in blocked_ingredients]
 
     return {
         "minutes": minutes,
@@ -424,6 +474,7 @@ def parse_dinner_decision_context(parent_message: str) -> dict[str, Any]:
         "pantry": any(phrase in message for phrase in ("pantry", "freezer", "use what", "already have", "no grocery", "no store run", "no shopping")),
         "only_have": _has_only_have_signal(message),
         "avoid_terms": avoid_terms,
+        "excluded_ingredients": excluded_ingredients,
         "positive_ingredients": positive_ingredients,
         "free_text": parent_message.strip(),
     }
@@ -453,7 +504,12 @@ def choose_dinner_decision(context: dict[str, Any], rejected: set[str] | None = 
             value += 35 if "dairy_free" in tags else -60
         if context.get("egg_free"):
             value += 35 if "egg_free" in tags else -80
+        blocked_ingredients = _expanded_blocked_ingredients(
+            context.get("avoid_terms", []), context.get("excluded_ingredients", [])
+        )
         if _meal_mentions_avoided_term(meal, context.get("avoid_terms", [])):
+            value -= 1000
+        if _meal_mentions_excluded_ingredient(meal, blocked_ingredients):
             value -= 1000
         positive_ingredients = context.get("positive_ingredients", [])
         matched_ingredients = _matching_positive_ingredients(meal, positive_ingredients)
@@ -470,6 +526,10 @@ def choose_dinner_decision(context: dict[str, Any], rejected: set[str] | None = 
             value += 35
         if positive_ingredients and not matched_ingredients:
             value -= 35
+        if meal["name"] == "Chicken Rice Veggie Bowls" and "chicken" in positive_ingredients:
+            text = context.get("free_text", "").lower()
+            if not (context.get("leftovers") or any(word in text for word in ("cooked chicken", "rotisserie", "leftover chicken", "nugget", "nuggets"))):
+                value -= 70
         if context.get("only_have"):
             value += 60 * len(matched_ingredients)
             unmatched_count = max(0, len(context.get("positive_ingredients", [])) - len(matched_ingredients))
@@ -494,7 +554,7 @@ def choose_dinner_decision(context: dict[str, Any], rejected: set[str] | None = 
         if context.get("pantry"):
             value += 20 if "pantry" in tags else -8
         if _uses_typical_family_baseline(context):
-            assumed_matches = _matching_typical_family_staples(meal, context.get("avoid_terms", []))
+            assumed_matches = _matching_typical_family_staples(meal, blocked_ingredients)
             value += int(meal.get("typical_family_bias", 0))
             value += 7 * len(assumed_matches)
             if len(assumed_matches) >= 3:
@@ -555,7 +615,9 @@ def dinner_fit_reason(meal: dict[str, Any], context: dict[str, Any]) -> str:
     if matched_ingredients:
         reasons.append(f"Uses your {_human_join(_friendly_ingredient_terms(matched_ingredients))}")
     elif _uses_typical_family_baseline(context):
-        assumed_matches = _matching_typical_family_staples(meal, context.get("avoid_terms", []))
+        assumed_matches = _matching_typical_family_staples(
+            meal, _expanded_blocked_ingredients(context.get("avoid_terms", []), context.get("excluded_ingredients", []))
+        )
         if assumed_matches:
             reasons.append(f"Leans on common family staples like {_human_join(_friendly_ingredient_terms(assumed_matches[:4]))}")
         else:
@@ -584,6 +646,8 @@ def dinner_fit_reason(meal: dict[str, Any], context: dict[str, Any]) -> str:
         reasons.append("Keeps it vegetarian")
     if context.get("dairy_free") or context.get("egg_free") or context.get("avoid_terms"):
         reasons.append("Respects the avoidances you flagged")
+    elif context.get("excluded_ingredients"):
+        reasons.append("Respects what you ruled out")
     if context.get("leftovers"):
         reasons.append("Works with leftovers")
     if not reasons:
@@ -676,6 +740,106 @@ def _parse_avoid_terms(message: str) -> list[str]:
     return terms
 
 
+def _parse_excluded_ingredients(message: str) -> list[str]:
+    terms: list[str] = []
+    for term in _known_dinner_terms():
+        if _has_exclusion_signal(message, term):
+            terms.append(term)
+    return terms
+
+
+def _known_dinner_terms() -> tuple[str, ...]:
+    return (
+        "crispy chicken",
+        "ground turkey",
+        "black beans",
+        "jar sauce",
+        "frozen peas",
+        "frozen vegetables",
+        "frozen veggies",
+        "bagged salad",
+        "salad kit",
+        "tortillas",
+        "tortilla",
+        "potatoes",
+        "potato",
+        "nuggets",
+        "nugget",
+        "chicken",
+        "turkey",
+        "paneer",
+        "tofu",
+        "rice",
+        "eggs",
+        "egg",
+        "pea",
+        "peas",
+        "bean",
+        "beans",
+        "pasta",
+        "marinara",
+        "sauce",
+        "carrot",
+        "carrots",
+        "cheese",
+        "corn",
+        "fruit",
+        "avocado",
+        "salsa",
+        "vegetable",
+        "vegetables",
+        "veggie",
+        "veggies",
+        "salad",
+    )
+
+
+def _has_exclusion_signal(message: str, term: str) -> bool:
+    escaped = re.escape(term)
+    patterns = (
+        rf"(?<![a-z0-9])(no|without)\s+{escaped}(?![a-z0-9])",
+        rf"(?<![a-z0-9])(don't|do not|dont|didn't|didnt)\s+have[^.?!;]*\b{escaped}\b",
+        rf"(?<![a-z0-9])out\s+of\s+{escaped}(?![a-z0-9])",
+        rf"(?<![a-z0-9])(hate|hates|won't eat|wont eat|will not eat)[^.?!;]*\b{escaped}\b",
+        rf"(?<![a-z0-9]){escaped}[- ]free(?![a-z0-9])",
+    )
+    return any(re.search(pattern, message) for pattern in patterns)
+
+
+def _expanded_blocked_ingredients(avoid_terms: list[str], excluded_ingredients: list[str]) -> set[str]:
+    blocked = set(avoid_terms) | set(excluded_ingredients)
+    expansions = {
+        "dairy": {"milk", "cheese", "yogurt"},
+        "egg": {"egg", "eggs"},
+        "eggs": {"egg", "eggs"},
+        "bean": {"bean", "beans", "black beans"},
+        "beans": {"bean", "beans", "black beans"},
+        "black beans": {"bean", "beans", "black beans"},
+        "pea": {"pea", "peas", "frozen peas"},
+        "peas": {"pea", "peas", "frozen peas"},
+        "frozen peas": {"pea", "peas", "frozen peas"},
+        "tortilla": {"tortilla", "tortillas"},
+        "tortillas": {"tortilla", "tortillas"},
+        "nugget": {"nugget", "nuggets"},
+        "nuggets": {"nugget", "nuggets"},
+        "potato": {"potato", "potatoes"},
+        "potatoes": {"potato", "potatoes"},
+        "sauce": {"sauce", "jar sauce", "marinara", "salsa"},
+        "jar sauce": {"sauce", "jar sauce", "marinara"},
+        "marinara": {"sauce", "jar sauce", "marinara"},
+        "vegetable": {"vegetable", "vegetables", "veggie", "veggies", "frozen vegetables", "frozen veggies"},
+        "vegetables": {"vegetable", "vegetables", "veggie", "veggies", "frozen vegetables", "frozen veggies"},
+        "veggie": {"vegetable", "vegetables", "veggie", "veggies", "frozen vegetables", "frozen veggies"},
+        "veggies": {"vegetable", "vegetables", "veggie", "veggies", "frozen vegetables", "frozen veggies"},
+        "salad": {"salad", "salad kit", "bagged salad"},
+        "salad kit": {"salad", "salad kit", "bagged salad"},
+        "bagged salad": {"salad", "salad kit", "bagged salad"},
+    }
+    for term in list(blocked):
+        blocked.update(expansions.get(term, {term}))
+    return blocked
+
+
 def _has_avoidance_signal(message: str, word: str) -> bool:
     escaped = re.escape(word)
     patterns = (
@@ -710,6 +874,7 @@ def _parse_positive_ingredients(message: str) -> list[str]:
         "salad kit",
         "ground turkey",
         "black beans",
+        "crispy chicken",
         "jar sauce",
         "frozen peas",
         "tortillas",
@@ -835,6 +1000,13 @@ def _meal_mentions_avoided_term(meal: dict[str, Any], avoid_terms: list[str]) ->
         if any(_has_word(haystack, word) for word in blocked_words.get(term, (term,))):
             return True
     return False
+
+
+def _meal_mentions_excluded_ingredient(meal: dict[str, Any], blocked_ingredients: set[str]) -> bool:
+    if not blocked_ingredients:
+        return False
+    haystack = " ".join(str(meal.get(field, "")) for field in ("name", "ingredients", "steps")).lower()
+    return any(_has_word(haystack, term) for term in blocked_ingredients)
 
 
 def _parse_energy(message: str) -> str | None:
