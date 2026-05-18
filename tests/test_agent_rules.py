@@ -6,7 +6,7 @@ import unittest
 
 from busyparent_agent.agent import BusyParentAgent
 from busyparent_agent.service import ALLERGY_CAVEAT, create_dinner_decision_session, create_session, parse_now, run_book_scenario
-from busyparent_agent.web import HTML, LOGO_FILENAME, LOGO_PATH, MOBILE_LOGO_FILENAME, MOBILE_LOGO_PATH, PLAN_B_LOGO_FILENAME, PLAN_B_LOGO_PATH, MAX_REQUEST_BYTES, SECURITY_HEADERS, SESSIONS, WebHandler
+from busyparent_agent.web import HTML, LOGO_FILENAME, LOGO_PATH, MOBILE_LOGO_FILENAME, MOBILE_LOGO_PATH, PLAN_B_LOGO_FILENAME, PLAN_B_LOGO_PATH, MAX_REQUEST_BYTES, SECURITY_HEADERS, SESSIONS, WebHandler, _dinner_preview_text
 from busyparent_agent import tools
 from busyparent_agent import inventory as inventory_engine
 from busyparent_agent.adapters import costco_bulk
@@ -339,6 +339,16 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertFalse(hasattr(handler, "error"))
         return handler.json_payload
 
+    def handle_preview(self, payload: dict) -> dict:
+        handler = object.__new__(WebHandler)
+        handler._read_json = lambda: payload
+        handler._send_json = lambda response: setattr(handler, "json_payload", response)
+        handler.send_error = lambda code, message=None: setattr(handler, "error", (code, message))
+
+        WebHandler._handle_preview(handler)
+        self.assertFalse(hasattr(handler, "error"))
+        return handler.json_payload
+
     def handle_scenario_error(self, scenario: str) -> tuple[int, str | None]:
         handler = object.__new__(WebHandler)
         handler._read_json = lambda: {"scenario": scenario}
@@ -356,6 +366,16 @@ class WebApiScenarioTest(unittest.TestCase):
         handler.send_error = lambda code, message=None: setattr(handler, "error", (code, message))
 
         WebHandler._handle_chat(handler)
+        self.assertTrue(hasattr(handler, "error"))
+        return handler.error
+
+    def handle_preview_error(self, payload: dict) -> tuple[int, str | None]:
+        handler = object.__new__(WebHandler)
+        handler._read_json = lambda: payload
+        handler._send_json = lambda response: setattr(handler, "json_payload", response)
+        handler.send_error = lambda code, message=None: setattr(handler, "error", (code, message))
+
+        WebHandler._handle_preview(handler)
         self.assertTrue(hasattr(handler, "error"))
         return handler.error
 
@@ -517,17 +537,20 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertIn('article.className = `dinner-card${options.isNewTurn ? " new-turn" : ""}`', HTML)
         self.assertIn('scroll-behavior: smooth', HTML)
         self.assertIn('class="thinking-dots"', HTML)
-        self.assertIn('.prompt-preview { justify-self: end;', HTML)
+        self.assertIn('.answer-preview { justify-self: stretch;', HTML)
+        self.assertIn('.answer-preview::before { content: "Preview";', HTML)
         self.assertIn('@keyframes previewGlow', HTML)
-        self.assertIn('.new-turn, .prompt-preview, .thinking-dots::after { animation: none; }', HTML)
+        self.assertIn('.new-turn, .answer-preview, .thinking-dots::after { animation: none; }', HTML)
         self.assertIn('@media (prefers-reduced-motion: reduce)', HTML)
-        self.assertIn('let promptPreviewBubble = null;', HTML)
+        self.assertIn('let answerPreviewBubble = null;', HTML)
+        self.assertIn('let answerPreviewRequestId = 0;', HTML)
         self.assertIn('function placeChatNode(node, replaceNode = null)', HTML)
         self.assertIn('function scrollTurnIntoView(turnStart, behavior = "smooth")', HTML)
         self.assertIn('function addThinkingBubble(turnStart)', HTML)
-        self.assertIn('function renderPromptPreview(text)', HTML)
-        self.assertIn('function promotePromptPreview(message)', HTML)
-        self.assertIn('bubble.className = "bubble parent new-turn";', HTML)
+        self.assertIn('function renderAnswerPreview(text)', HTML)
+        self.assertIn('async function previewDinnerIdea(message)', HTML)
+        self.assertIn('const data = await postJson("/api/preview", { message, mode: activeMode });', HTML)
+        self.assertIn('renderAnswerPreview(data.preview);', HTML)
         self.assertIn('chat.setAttribute("aria-busy", "true")', HTML)
         self.assertIn('renderResponse(data.response, { skipParent: true, turnStart: parentBubble, replaceNode: thinkingBubble })', HTML)
         self.assertIn("function parseDinnerMessage(message)", HTML)
@@ -545,9 +568,10 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertIn('if (!message) {', HTML)
         self.assertIn('showInputNudge("Give me a few details first', HTML)
         self.assertIn('emptyState.remove()', HTML)
-        self.assertIn('const parentBubble = promotePromptPreview(message);', HTML)
+        self.assertIn('removeAnswerPreview();', HTML)
+        self.assertIn('const parentBubble = addBubble("parent", message, { isNewTurn: true });', HTML)
         self.assertIn("input.value = button.dataset.prompt", HTML)
-        self.assertIn("renderPromptPreview(input.value.trim());", HTML)
+        self.assertIn("previewDinnerIdea(input.value.trim());", HTML)
         self.assertIn('input.addEventListener("input", () => {', HTML)
         self.assertIn("input.focus();", HTML)
         self.assertNotIn("closePromptMenu();\n        await sendCurrentInput();", HTML)
@@ -559,6 +583,22 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertIn("renderDinnerCard(response, { replaceNode: options.replaceNode, turnStart: parentBubble || turnStart, isNewTurn: true });", HTML)
         self.assertIn('addBubble("agent", response.message, { replaceNode: options.replaceNode, turnStart: parentBubble || turnStart, isNewTurn: true });', HTML)
         self.assertNotIn('event.key === "Escape"', HTML)
+
+    def test_preview_api_returns_first_lines_without_creating_session(self):
+        SESSIONS.clear()
+        payload = self.handle_preview({"message": "Tortillas, eggs, cheese, 20 minutes, low cleanup.", "mode": "dinner"})
+
+        self.assertEqual(SESSIONS, {})
+        self.assertIn("preview", payload)
+        self.assertIn("response", payload)
+        self.assertEqual(payload["preview"], _dinner_preview_text(payload["response"]["message"]))
+        self.assertIn("Tonight:", payload["preview"])
+        self.assertIn("Why it fits:", payload["preview"])
+        self.assertIn("Time/effort:", payload["preview"])
+        self.assertLessEqual(len(payload["preview"].splitlines()), 3)
+
+    def test_preview_api_rejects_empty_message(self):
+        self.assertEqual(self.handle_preview_error({"message": ""}), (400, "Missing message"))
 
     def test_public_demo_security_headers_are_declared(self):
         self.assertEqual(MAX_REQUEST_BYTES, 24_000)
