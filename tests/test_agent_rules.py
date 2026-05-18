@@ -600,6 +600,40 @@ class WebApiScenarioTest(unittest.TestCase):
     def test_preview_api_rejects_empty_message(self):
         self.assertEqual(self.handle_preview_error({"message": ""}), (400, "Missing message"))
 
+    def test_chapter1_catalog_has_real_variety_for_alpha(self):
+        from busyparent_agent.service import DINNER_MVP_MEALS
+
+        names = [meal["name"] for meal in DINNER_MVP_MEALS]
+
+        self.assertGreaterEqual(len(names), 40)
+        self.assertEqual(len(names), len(set(names)))
+        self.assertIn("Snack Plate Dinner", names)
+        self.assertIn("Yogurt Oat Fruit Bowls", names)
+        self.assertIn("Tuna Pasta Plates", names)
+        self.assertIn("Edamame Rice Bowls", names)
+
+    def test_chapter1_catalog_expansion_handles_shorthand_ingredient_prompts(self):
+        cases = {
+            "Tuna pasta peas 15 minutes": "Tuna Pasta Plates",
+            "Salmon rice peas 25 minutes": "Salmon Rice Pea Plates",
+            "Yogurt oats fruit no cooking": "Yogurt Oat Fruit Bowls",
+            "Potatoes eggs 20 minutes": "Potato Egg Hash",
+            "Edamame rice frozen veggies": "Edamame Rice Bowls",
+            "Sweet potato beans corn": "Sweet Potato Bean Bowls",
+            "Parotta eggs cheese": "Parotta Egg Roll-Ups",
+            "Cucumber cream cheese tortillas": "Cream Cheese Cucumber Wraps",
+            "Paneer tortillas cheese": "Paneer Tortilla Melts",
+            "Tofu noodles frozen vegetables": "Tofu Veggie Noodles",
+            "Bacon eggs tortillas": "Bacon Egg Tortilla Tacos",
+        }
+
+        for prompt, expected_meal in cases.items():
+            with self.subTest(prompt=prompt):
+                response = create_dinner_decision_session().send(prompt)
+                self.assertEqual(response["metadata"]["current_recommendation"], expected_meal)
+                self.assertIn(f"Tonight: {expected_meal}.", response["message"])
+                self.assertIn("Uses your", response["message"])
+
     def test_chapter1_ready_made_prompts_match_named_ingredients(self):
         cases = {
             "10 minutes, rice, frozen peas, picky kid, not in the mood to cook.": "Rice and Peas Bowl",
