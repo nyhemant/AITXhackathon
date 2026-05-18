@@ -156,7 +156,7 @@ DINNER_MVP_MEALS = [
         "minutes": 10,
         "effort": "low",
         "tags": {"low_energy", "picky", "vegetarian", "pantry", "leftovers", "nut_free", "dairy_free", "egg_free"},
-        "ingredient_keywords": {"rice", "pea", "peas", "frozen peas"},
+        "ingredient_keywords": {"rice", "pea", "peas", "frozen peas", "bean", "beans"},
         "ingredients": "rice, frozen peas, and one simple add-on if you have it: olive oil, soy sauce, beans, or any protein",
         "steps": "Warm the rice and peas together. Season simply. Put any add-on on the side so kids can opt in.",
         "fallback": "If there is no add-on, warm the rice and peas together, season simply, and put any extra protein or sauce on the side.",
@@ -170,6 +170,16 @@ DINNER_MVP_MEALS = [
         "ingredients": "tortillas, black beans, mild salsa or avocado, and any fruit or crunchy side that fits your house",
         "steps": "Warm the beans. Fold them into tortillas with mild salsa or avocado. Serve fruit or a simple side.",
         "fallback": "If tortillas are missing, make quick bean-and-rice bowls with the same toppings.",
+    },
+    {
+        "name": "Bean Rice Avocado Bowls",
+        "minutes": 15,
+        "effort": "low",
+        "tags": {"low_energy", "picky", "vegetarian", "pantry", "leftovers", "nut_free", "egg_free"},
+        "ingredient_keywords": {"bean", "beans", "black beans", "rice", "cheese", "avocado"},
+        "ingredients": "canned beans, rice, cheese, avocado, and any mild salsa or crunchy side",
+        "steps": "Warm the beans and rice. Add cheese and avocado on top, or keep toppings separate for kids.",
+        "fallback": "If avocado is not usable, keep it as beans, rice, and cheese with fruit or a crunchy side.",
     },
     {
         "name": "Egg-and-cheese Tortilla Fold-ups",
@@ -439,7 +449,7 @@ def format_dinner_decision(meal: dict[str, Any], context: dict[str, Any], prefix
     lines.extend(
         [
             f"Why it fits: {dinner_fit_reason(meal, context)}",
-            f"Time/effort: about {meal['minutes']} minutes, {meal['effort']} effort.",
+            f"Time/effort: about {meal['minutes']} minutes, {_effort_label(meal['effort'])}.",
         ]
     )
     if context.get("only_have"):
@@ -457,13 +467,24 @@ def format_dinner_decision(meal: dict[str, Any], context: dict[str, Any], prefix
     return "\n".join(lines)
 
 
+def _effort_label(effort: str) -> str:
+    labels = {
+        "low": "low effort",
+        "normal": "normal effort",
+        "can cook": "some cooking",
+    }
+    return labels.get(effort, f"{effort} effort")
+
+
 def dinner_fit_reason(meal: dict[str, Any], context: dict[str, Any]) -> str:
     reasons = []
     matched_ingredients = _matching_positive_ingredients(meal, context.get("positive_ingredients", []))
     if matched_ingredients:
         reasons.append(f"Uses your {_human_join(_friendly_ingredient_terms(matched_ingredients))}")
-    elif context.get("pantry") or context.get("only_have"):
-        reasons.append("Uses what you said you have")
+    elif context.get("only_have"):
+        reasons.append("Uses the sparse pantry constraint you gave")
+    elif context.get("pantry"):
+        reasons.append("Starts from pantry/freezer basics")
 
     if context.get("minutes"):
         if meal["minutes"] <= context["minutes"]:
@@ -492,6 +513,10 @@ def dinner_fit_reason(meal: dict[str, Any], context: dict[str, Any]) -> str:
 
 
 def _friendly_ingredient_terms(terms: list[str]) -> list[str]:
+    normalized_terms = list(terms)
+    if "paneer" in normalized_terms and "tofu" in normalized_terms:
+        normalized_terms = [term for term in normalized_terms if term not in {"paneer", "tofu"}]
+        normalized_terms.append("tofu or paneer")
     friendly = []
     seen = set()
     names = {
@@ -510,7 +535,7 @@ def _friendly_ingredient_terms(terms: list[str]) -> list[str]:
         "bagged salad": "salad kit",
         "jar sauce": "jarred sauce",
     }
-    for term in terms:
+    for term in normalized_terms:
         name = names.get(term, term)
         if name not in seen:
             seen.add(name)

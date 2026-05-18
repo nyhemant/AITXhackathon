@@ -223,7 +223,7 @@ HTML = """<!doctype html>
               <h3>No dinner idea yet.</h3>
               <p>Try an example, or type the messy real-life version.</p>
               <div class="example-chips" aria-label="Example dinner prompts">
-                <button class="example-chip" type="button" data-prompt="10 minutes, not in the mood to cook, picky kid, use what we have.">10 min, picky kid</button>
+                <button class="example-chip" type="button" data-prompt="10 minutes, rice, frozen peas, picky kid, not in the mood to cook.">10 min, rice + peas</button>
                 <button class="example-chip" type="button" data-prompt="Tortillas, eggs, cheese, 20 minutes, low cleanup.">Tortillas, eggs, low cleanup</button>
                 <button class="example-chip" type="button" data-prompt="Leftover rice, frozen peas, no store run, need one easy dinner.">Leftover rice, no store run</button>
                 <button class="example-chip hidden" type="button" data-extra-prompt data-prompt="Frozen nuggets, tortillas, bagged salad, picky kid, make it feel like dinner.">Nuggets, tortillas, salad kit</button>
@@ -232,7 +232,7 @@ HTML = """<!doctype html>
                 <button class="example-chip hidden" type="button" data-extra-prompt data-prompt="Chicken thighs, potatoes, tired but can wait 35 minutes.">Chicken, potatoes, hands-off</button>
                 <button class="example-chip hidden" type="button" data-extra-prompt data-prompt="Paneer or tofu, frozen veggies, rice, mild spice, kid-friendly.">Paneer/tofu, rice, mild</button>
                 <button class="example-chip hidden" type="button" data-extra-prompt data-prompt="Leftover takeout rice, eggs, peas, need low cleanup.">Takeout rice, eggs, peas</button>
-                <button class="example-chip hidden" type="button" data-extra-prompt data-prompt="Nothing thawed, pantry/freezer only, everyone is hungry.">Pantry/freezer only</button>
+                <button class="example-chip hidden" type="button" data-extra-prompt data-prompt="Nothing thawed, rice, frozen peas, canned beans, everyone is hungry.">Pantry/freezer only</button>
               </div>
               <button class="example-expand" id="showMorePrompts" type="button" aria-expanded="false">Show 7 more ready-made prompts</button>
             </section>

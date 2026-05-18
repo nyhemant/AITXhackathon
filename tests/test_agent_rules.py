@@ -508,7 +508,7 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertIn("No dinner idea yet.", HTML)
         self.assertIn("Try an example, or type the messy real-life version.", HTML)
         self.assertIn('class="example-chip"', HTML)
-        self.assertIn("10 minutes, not in the mood to cook, picky kid, use what we have.", HTML)
+        self.assertIn("10 minutes, rice, frozen peas, picky kid, not in the mood to cook.", HTML)
         self.assertIn("Tortillas, eggs, cheese, 20 minutes, low cleanup.", HTML)
         self.assertIn("Leftover rice, frozen peas, no store run, need one easy dinner.", HTML)
         self.assertIn('id="showMorePrompts"', HTML)
@@ -520,7 +520,7 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertIn("Chicken thighs, potatoes, tired but can wait 35 minutes.", HTML)
         self.assertIn("Paneer or tofu, frozen veggies, rice, mild spice, kid-friendly.", HTML)
         self.assertIn("Leftover takeout rice, eggs, peas, need low cleanup.", HTML)
-        self.assertIn("Nothing thawed, pantry/freezer only, everyone is hungry.", HTML)
+        self.assertIn("Nothing thawed, rice, frozen peas, canned beans, everyone is hungry.", HTML)
         self.assertIn('document.querySelectorAll("[data-extra-prompt]").forEach((node) => node.classList.remove("hidden"));', HTML)
         self.assertIn('button.setAttribute("aria-expanded", "true");', HTML)
         self.assertIn('button.classList.add("hidden");', HTML)
@@ -602,6 +602,7 @@ class WebApiScenarioTest(unittest.TestCase):
 
     def test_chapter1_ready_made_prompts_match_named_ingredients(self):
         cases = {
+            "10 minutes, rice, frozen peas, picky kid, not in the mood to cook.": "Rice and Peas Bowl",
             "Tortillas, eggs, cheese, 20 minutes, low cleanup.": "Egg-and-cheese Tortilla Fold-ups",
             "Leftover rice, frozen peas, no store run, need one easy dinner.": "Rice and Peas Bowl",
             "Frozen nuggets, tortillas, bagged salad, picky kid, make it feel like dinner.": "Crispy Chicken Wraps with salad",
@@ -609,6 +610,7 @@ class WebApiScenarioTest(unittest.TestCase):
             "Chicken thighs, potatoes, tired but can wait 35 minutes.": "Chicken and Potato Tray Dinner",
             "Paneer or tofu, frozen veggies, rice, mild spice, kid-friendly.": "Tofu or Paneer Veggie Rice Bowl",
             "Leftover takeout rice, eggs, peas, need low cleanup.": "Egg Fried Rice with peas",
+            "Nothing thawed, rice, frozen peas, canned beans, everyone is hungry.": "Rice and Peas Bowl",
         }
 
         for prompt, expected_meal in cases.items():
@@ -617,6 +619,8 @@ class WebApiScenarioTest(unittest.TestCase):
                 self.assertEqual(response["metadata"]["current_recommendation"], expected_meal)
                 self.assertIn(f"Tonight: {expected_meal}.", response["message"])
                 self.assertIn("Uses your", response["message"])
+                self.assertNotIn("can cook effort", response["message"])
+                self.assertNotIn("Uses what you said you have", response["message"])
 
     def test_preview_api_uses_ingredient_matched_answer(self):
         payload = self.handle_preview({"message": "Chicken thighs, potatoes, tired but can wait 35 minutes.", "mode": "dinner"})
