@@ -133,6 +133,7 @@ HTML = """<!doctype html>
       .thinking { justify-self: stretch; max-width: 100%; border: 1px dashed rgba(194,65,12,.28); border-left: 5px solid var(--accent-line); border-radius: 8px; padding: 13px 15px; background: rgba(255,247,237,.86); color: #665b52; font-weight: 800; }
       .thinking-dots::after { content: ""; display: inline-block; width: 1.4em; text-align: left; animation: dots 1.1s steps(4, end) infinite; }
       .parent { justify-self: end; background: #2f2924; color: white; border-bottom-right-radius: 2px; box-shadow: 0 12px 28px rgba(39,33,29,.12); }
+      .prompt-preview { justify-self: end; border: 1px solid rgba(194,65,12,.18); background: rgba(255,237,213,.62); color: #7c2d12; border-bottom-right-radius: 2px; box-shadow: 0 10px 22px rgba(194,65,12,.08); opacity: .82; animation: previewGlow 1.4s ease-out; }
       .agent { justify-self: stretch; max-width: 100%; border: 1px solid rgba(102,91,82,.14); border-left: 5px solid var(--accent); border-radius: 8px; padding: 18px 20px; background: rgba(255,255,255,.9); box-shadow: 0 18px 38px rgba(39,33,29,.08); color: #2d2722; }
       .agent::before { content: "Recommendation"; display: block; margin-bottom: 8px; color: var(--accent-dark); font-size: .74rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
       .dinner-card { justify-self: stretch; max-width: 100%; border: 1px solid rgba(124,45,18,.18); border-left: 5px solid var(--accent); border-radius: 14px; padding: 18px; background: linear-gradient(135deg, rgba(255,255,255,.96), rgba(255,247,237,.92)); box-shadow: 0 18px 38px rgba(39,33,29,.08); color: #2d2722; }
@@ -173,10 +174,11 @@ HTML = """<!doctype html>
       .trace-footer { display: none; margin: 14px 2px 0; color: #665b52; font-size: .92rem; }
       @keyframes riseIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
       @keyframes softPulse { 0% { outline: 0 solid rgba(255,237,213,0); } 24% { outline: 5px solid rgba(255,237,213,.82); } 100% { outline: 0 solid rgba(255,237,213,0); } }
+      @keyframes previewGlow { 0% { opacity: 0; transform: translateY(10px); background: rgba(255,247,237,.25); } 36% { opacity: .96; background: rgba(255,237,213,.86); } 100% { opacity: .82; background: rgba(255,237,213,.62); } }
       @keyframes dots { 0% { content: ""; } 25% { content: "."; } 50% { content: ".."; } 75%, 100% { content: "..."; } }
       @media (prefers-reduced-motion: reduce) {
         .chat { scroll-behavior: auto; }
-        .new-turn, .thinking-dots::after { animation: none; }
+        .new-turn, .prompt-preview, .thinking-dots::after { animation: none; }
       }
       @media (max-width: 640px) {
         body { padding: 16px; }
@@ -264,6 +266,7 @@ HTML = """<!doctype html>
       const roomHeadline = document.querySelector("#roomHeadline");
       const roomDescription = document.querySelector("#roomDescription");
       const tabPanel = document.querySelector("#active-panel");
+      let promptPreviewBubble = null;
       const rooms = {
         dinner: {
           title: "Dinner",
@@ -387,6 +390,41 @@ HTML = """<!doctype html>
         placeChatNode(div);
         scrollTurnIntoView(turnStart, "smooth");
         return div;
+      }
+
+      function removePromptPreview() {
+        if (promptPreviewBubble && promptPreviewBubble.parentNode) {
+          promptPreviewBubble.remove();
+        }
+        promptPreviewBubble = null;
+      }
+
+      function renderPromptPreview(text) {
+        if (!text) {
+          removePromptPreview();
+          return null;
+        }
+        if (!promptPreviewBubble || promptPreviewBubble.parentNode !== chat) {
+          promptPreviewBubble = document.createElement("div");
+          promptPreviewBubble.className = "bubble prompt-preview";
+          promptPreviewBubble.setAttribute("aria-label", "Selected prompt preview");
+          placeChatNode(promptPreviewBubble);
+        }
+        promptPreviewBubble.textContent = text;
+        scrollTurnIntoView(promptPreviewBubble, "smooth");
+        return promptPreviewBubble;
+      }
+
+      function promotePromptPreview(message) {
+        if (promptPreviewBubble && promptPreviewBubble.parentNode === chat) {
+          const bubble = promptPreviewBubble;
+          promptPreviewBubble = null;
+          bubble.className = "bubble parent new-turn";
+          bubble.textContent = message;
+          scrollTurnIntoView(bubble, "smooth");
+          return bubble;
+        }
+        return addBubble("parent", message, { isNewTurn: true });
       }
 
       function stripTrailingPeriod(text) {
@@ -584,7 +622,7 @@ HTML = """<!doctype html>
         document.querySelectorAll(".feedback-actions").forEach((node) => node.remove());
         input.value = "";
         chat.setAttribute("aria-busy", "true");
-        const parentBubble = addBubble("parent", message, { isNewTurn: true });
+        const parentBubble = promotePromptPreview(message);
         const thinkingBubble = addThinkingBubble(parentBubble);
         try {
           const data = await postJson("/api/chat", { session_id: sessionId, message, mode: activeMode });
@@ -623,7 +661,13 @@ HTML = """<!doctype html>
         if (!button) return;
         input.value = button.dataset.prompt;
         clearInputNudge();
+        renderPromptPreview(input.value.trim());
         input.focus();
+      });
+
+      input.addEventListener("input", () => {
+        if (!promptPreviewBubble) return;
+        renderPromptPreview(input.value.trim());
       });
 
       window.addEventListener("resize", () => updateInputCopy(inputCopyState));
