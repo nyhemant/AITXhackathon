@@ -600,6 +600,31 @@ class WebApiScenarioTest(unittest.TestCase):
     def test_preview_api_rejects_empty_message(self):
         self.assertEqual(self.handle_preview_error({"message": ""}), (400, "Missing message"))
 
+    def test_chapter1_ready_made_prompts_match_named_ingredients(self):
+        cases = {
+            "Tortillas, eggs, cheese, 20 minutes, low cleanup.": "Egg-and-cheese Tortilla Fold-ups",
+            "Leftover rice, frozen peas, no store run, need one easy dinner.": "Rice and Peas Bowl",
+            "Frozen nuggets, tortillas, bagged salad, picky kid, make it feel like dinner.": "Crispy Chicken Wraps with salad",
+            "Ground turkey, pasta, jar sauce, 25 minutes, one pan if possible.": "Turkey Pasta Skillet",
+            "Chicken thighs, potatoes, tired but can wait 35 minutes.": "Chicken and Potato Tray Dinner",
+            "Paneer or tofu, frozen veggies, rice, mild spice, kid-friendly.": "Tofu or Paneer Veggie Rice Bowl",
+            "Leftover takeout rice, eggs, peas, need low cleanup.": "Egg Fried Rice with peas",
+        }
+
+        for prompt, expected_meal in cases.items():
+            with self.subTest(prompt=prompt):
+                response = create_dinner_decision_session().send(prompt)
+                self.assertEqual(response["metadata"]["current_recommendation"], expected_meal)
+                self.assertIn(f"Tonight: {expected_meal}.", response["message"])
+                self.assertIn("Uses your", response["message"])
+
+    def test_preview_api_uses_ingredient_matched_answer(self):
+        payload = self.handle_preview({"message": "Chicken thighs, potatoes, tired but can wait 35 minutes.", "mode": "dinner"})
+
+        self.assertIn("Tonight: Chicken and Potato Tray Dinner.", payload["preview"])
+        self.assertIn("Uses your chicken and potatoes", payload["preview"])
+        self.assertNotIn("Black Bean Tacos", payload["preview"])
+
     def test_public_demo_security_headers_are_declared(self):
         self.assertEqual(MAX_REQUEST_BYTES, 24_000)
         self.assertEqual(SECURITY_HEADERS["X-Content-Type-Options"], "nosniff")

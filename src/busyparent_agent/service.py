@@ -172,6 +172,16 @@ DINNER_MVP_MEALS = [
         "fallback": "If tortillas are missing, make quick bean-and-rice bowls with the same toppings.",
     },
     {
+        "name": "Egg-and-cheese Tortilla Fold-ups",
+        "minutes": 10,
+        "effort": "low",
+        "tags": {"low_energy", "picky", "vegetarian", "pantry", "nut_free"},
+        "ingredient_keywords": {"tortilla", "tortillas", "egg", "eggs", "cheese"},
+        "ingredients": "tortillas, eggs, cheese, and any mild fruit or vegetable side",
+        "steps": "Scramble the eggs. Fold eggs and cheese into warmed tortillas. Keep sauce or extras on the side.",
+        "fallback": "If eggs are out, make cheese quesadillas with fruit or a simple side.",
+    },
+    {
         "name": "Egg Fried Rice with peas",
         "minutes": 20,
         "effort": "normal",
@@ -200,6 +210,46 @@ DINNER_MVP_MEALS = [
         "ingredients": "chicken or another protein that fits your house, rice, corn, and a mild topping",
         "steps": "Cook the protein and corn together. Serve over rice. Keep sauces on the side.",
         "fallback": "If chicken is missing, use beans, eggs, or leftovers as the bowl protein.",
+    },
+    {
+        "name": "Chicken and Potato Tray Dinner",
+        "minutes": 35,
+        "effort": "can cook",
+        "tags": {"can_cook", "leftovers", "dairy_free", "nut_free", "egg_free"},
+        "ingredient_keywords": {"chicken", "potato", "potatoes"},
+        "ingredients": "chicken thighs, potatoes, oil, salt, and any simple vegetable or fruit on the side",
+        "steps": "Roast chicken and potato chunks on one tray until the potatoes are tender and the chicken is cooked through. Keep seasoning mild and add grown-up sauce at the table.",
+        "fallback": "If potatoes are short, serve the chicken with rice, toast, or any freezer vegetable you have.",
+    },
+    {
+        "name": "Turkey Pasta Skillet",
+        "minutes": 25,
+        "effort": "normal",
+        "tags": {"picky", "nut_free", "egg_free"},
+        "ingredient_keywords": {"turkey", "ground turkey", "pasta", "jar sauce", "sauce", "marinara"},
+        "ingredients": "ground turkey, pasta, jarred sauce, and optional cheese or frozen vegetables",
+        "steps": "Brown the turkey, stir in jarred sauce, and toss with cooked pasta. Keep toppings optional.",
+        "fallback": "If turkey is missing, make the same pasta with beans, tofu, or just sauce and cheese.",
+    },
+    {
+        "name": "Tofu or Paneer Veggie Rice Bowl",
+        "minutes": 20,
+        "effort": "normal",
+        "tags": {"picky", "vegetarian", "pantry", "leftovers", "nut_free", "egg_free"},
+        "ingredient_keywords": {"tofu", "paneer", "rice", "vegetable", "vegetables", "veggie", "veggies", "frozen veggies", "frozen vegetables"},
+        "ingredients": "tofu or paneer, rice, frozen vegetables, and a mild sauce or seasoning",
+        "steps": "Warm the rice and vegetables. Crisp or warm the tofu/paneer separately. Keep sauce mild and optional.",
+        "fallback": "If tofu or paneer is missing, use eggs, beans, or any leftover protein with the same rice bowl base.",
+    },
+    {
+        "name": "Crispy Chicken Wraps with salad",
+        "minutes": 15,
+        "effort": "low",
+        "tags": {"low_energy", "picky", "nut_free", "egg_free"},
+        "ingredient_keywords": {"nugget", "nuggets", "chicken", "tortilla", "tortillas", "salad", "salad kit", "bagged salad"},
+        "ingredients": "frozen nuggets or crispy chicken, tortillas, and a bagged salad kit or crunchy side",
+        "steps": "Heat the nuggets. Wrap them in tortillas with a little salad kit, or serve everything deconstructed for a picky kid.",
+        "fallback": "If tortillas are out, make nugget-and-salad plates with toast, crackers, or fruit.",
     },
 ]
 
@@ -273,13 +323,18 @@ def create_dinner_decision_session() -> DinnerDecisionSession:
 def parse_dinner_decision_context(parent_message: str) -> dict[str, Any]:
     message = parent_message.lower().replace("’", "'")
     minutes = None
-    if any(phrase in message for phrase in ("10 min", "10 minutes", "ten minutes")):
+    minute_match = re.search(r"(?<![a-z0-9])(\d{1,2})\s*(?:min|mins|minute|minutes)(?![a-z0-9])", message)
+    if minute_match:
+        parsed_minutes = int(minute_match.group(1))
+        if 5 <= parsed_minutes <= 60:
+            minutes = parsed_minutes
+    elif any(phrase in message for phrase in ("ten minutes",)):
         minutes = 10
-    elif any(phrase in message for phrase in ("15 min", "15 minutes", "fifteen minutes")):
+    elif any(phrase in message for phrase in ("fifteen minutes",)):
         minutes = 15
-    elif any(phrase in message for phrase in ("20 min", "20 minutes", "twenty minutes")):
+    elif any(phrase in message for phrase in ("twenty minutes",)):
         minutes = 20
-    elif any(phrase in message for phrase in ("30 min", "30 minutes", "thirty minutes")):
+    elif any(phrase in message for phrase in ("thirty minutes",)):
         minutes = 30
 
     avoid_terms = _parse_avoid_terms(message)
@@ -328,12 +383,21 @@ def choose_dinner_decision(context: dict[str, Any], rejected: set[str] | None = 
             value += 35 if "egg_free" in tags else -80
         if _meal_mentions_avoided_term(meal, context.get("avoid_terms", [])):
             value -= 1000
-        matched_ingredients = _matching_positive_ingredients(meal, context.get("positive_ingredients", []))
-        if meal["name"] == "Rice and Peas Bowl" and not (context.get("only_have") or context.get("fallback_relief")):
+        positive_ingredients = context.get("positive_ingredients", [])
+        matched_ingredients = _matching_positive_ingredients(meal, positive_ingredients)
+        if meal["name"] == "Rice and Peas Bowl" and not (
+            context.get("only_have")
+            or context.get("fallback_relief")
+            or context.get("pantry")
+            or context.get("leftovers")
+            or len(matched_ingredients) >= 2
+        ):
             value -= 80
-        value += 25 * len(matched_ingredients)
+        value += 42 * len(matched_ingredients)
         if len(matched_ingredients) >= 2:
-            value += 20
+            value += 35
+        if positive_ingredients and not matched_ingredients:
+            value -= 35
         if context.get("only_have"):
             value += 60 * len(matched_ingredients)
             unmatched_count = max(0, len(context.get("positive_ingredients", [])) - len(matched_ingredients))
@@ -438,13 +502,20 @@ def _friendly_ingredient_terms(terms: list[str]) -> list[str]:
         "black beans": "black beans",
         "tortilla": "tortillas",
         "carrot": "carrots",
+        "potato": "potatoes",
+        "veggie": "vegetables",
+        "veggies": "vegetables",
+        "frozen veggies": "frozen vegetables",
+        "nugget": "nuggets",
+        "bagged salad": "salad kit",
+        "jar sauce": "jarred sauce",
     }
     for term in terms:
         name = names.get(term, term)
         if name not in seen:
             seen.add(name)
             friendly.append(name)
-    order = {"rice": 0, "eggs": 1, "frozen peas": 2, "peas": 3}
+    order = {"rice": 0, "eggs": 1, "frozen peas": 2, "peas": 3, "chicken": 4, "potatoes": 5}
     return sorted(friendly, key=lambda item: order.get(item, 99))
 
 
@@ -502,35 +573,80 @@ def _parse_positive_ingredients(message: str) -> list[str]:
             "what i have",
         )
     )
+    list_style_context = _has_inventory_list_signal(message)
     for term in (
-        "rice",
+        "frozen vegetables",
+        "frozen veggies",
+        "bagged salad",
+        "salad kit",
+        "ground turkey",
+        "black beans",
+        "jar sauce",
         "frozen peas",
-        "egg",
+        "tortillas",
+        "tortilla",
+        "potatoes",
+        "potato",
+        "nuggets",
+        "nugget",
+        "chicken",
+        "turkey",
+        "paneer",
+        "tofu",
+        "rice",
         "eggs",
+        "egg",
         "pea",
         "peas",
-        "tortilla",
-        "tortillas",
-        "black beans",
         "bean",
         "beans",
         "pasta",
         "marinara",
+        "sauce",
         "carrot",
         "carrots",
-        "chicken",
+        "cheese",
         "corn",
         "fruit",
         "avocado",
         "salsa",
+        "vegetable",
+        "vegetables",
+        "veggie",
+        "veggies",
+        "salad",
     ):
         if term in ("pea", "peas") and "frozen peas" in ingredients:
             continue
         if term == "egg" and "eggs" in ingredients:
             continue
-        if _has_positive_ingredient_signal(message, term) or (broad_inventory_context and _has_word(message, term)):
+        if term == "tortilla" and "tortillas" in ingredients:
+            continue
+        if term == "potato" and "potatoes" in ingredients:
+            continue
+        if term == "nugget" and "nuggets" in ingredients:
+            continue
+        if term == "turkey" and "ground turkey" in ingredients:
+            continue
+        if term == "sauce" and "jar sauce" in ingredients:
+            continue
+        if term == "salad" and ("bagged salad" in ingredients or "salad kit" in ingredients):
+            continue
+        if term == "vegetables" and ("frozen vegetables" in ingredients or "frozen veggies" in ingredients):
+            continue
+        if term == "veggies" and ("frozen vegetables" in ingredients or "frozen veggies" in ingredients or "vegetables" in ingredients):
+            continue
+        if _has_positive_ingredient_signal(message, term) or ((broad_inventory_context or list_style_context) and _has_word(message, term)):
             ingredients.append(term)
     return ingredients
+
+
+def _has_inventory_list_signal(message: str) -> bool:
+    if message.count(",") >= 1:
+        return True
+    if " + " in message or " / " in message:
+        return True
+    return False
 
 
 def _has_positive_ingredient_signal(message: str, term: str) -> bool:
