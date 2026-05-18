@@ -19,11 +19,11 @@ class RequestTooLarge(ValueError):
     """Raised when a public demo request body exceeds the small alpha limit."""
 
 
-LOGO_FILENAME = "1LessLogo.png"
+LOGO_FILENAME = "1LessMark.png"
 MOBILE_LOGO_FILENAME = "1LessMark.png"
 LOGO_PATH = Path(__file__).resolve().parents[2] / LOGO_FILENAME
 MOBILE_LOGO_PATH = Path(__file__).resolve().parents[2] / MOBILE_LOGO_FILENAME
-LOGO_ASSETS = {LOGO_FILENAME: LOGO_PATH, MOBILE_LOGO_FILENAME: MOBILE_LOGO_PATH}
+LOGO_ASSETS = {LOGO_FILENAME: LOGO_PATH}
 MAX_REQUEST_BYTES = 24_000
 SECURITY_HEADERS = {
     "Content-Security-Policy": (
@@ -96,7 +96,7 @@ HTML = """<!doctype html>
       .hero { display: grid; gap: 22px; align-items: end; margin-bottom: 22px; }
       .brand-lockup { display: flex; gap: 18px; align-items: center; }
       .brand-logo-wrap { display: block; flex: 0 0 auto; line-height: 0; }
-      .brand-logo { display: block; width: min(360px, 42vw); height: auto; border: 0; border-radius: 0; background: transparent; box-shadow: none; object-fit: contain; }
+      .brand-logo { display: block; width: min(132px, 30vw); height: min(132px, 30vw); border: 0; border-radius: 0; background: transparent; box-shadow: none; object-fit: contain; }
       .brand-copy { min-width: 0; align-self: center; }
       .tagline { margin: 0 0 10px; color: #2f2924; font-size: clamp(1.5rem, 3.2vw, 2.25rem); font-weight: 620; line-height: 1.02; }
       .subhead { margin: 0; max-width: 710px; color: #665b52; line-height: 1.55; font-size: 1.03rem; }
@@ -195,10 +195,7 @@ HTML = """<!doctype html>
     <main>
       <header class="hero">
         <div class="brand-lockup">
-          <picture class="brand-logo-wrap">
-            <source media="(max-width: 640px)" srcset="/1LessMark.png?v=icon-only" width="328" height="328" />
-            <img class="brand-logo" src="/1LessLogo.png?v=grey-ess" alt="1Less logo" width="1024" height="576" />
-          </picture>
+          <img class="brand-logo brand-logo-wrap" src="/1LessMark.png?v=icon-only" alt="1Less logo" width="328" height="328" />
           <div class="brand-copy">
           <p class="tagline">One less thing on your plate.</p>
           <p class="subhead">Tell 1Less what’s in the fridge, who’s eating, and what kind of night it is. Get one doable dinner idea, not fifteen recipes.</p>

@@ -372,11 +372,11 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertIn("Tonight:", payload["response"]["message"])
         self.assertEqual(payload["response"]["metadata"]["chapter"], "chapter_1_dinner_decision")
 
-    def test_1less_logo_uses_png_wordmark_and_mobile_mark_not_busy_mom_asset(self):
+    def test_1less_logo_uses_icon_mark_not_busy_mom_or_wordmark_asset(self):
         logo = LOGO_PATH.read_bytes()
         mobile_logo = MOBILE_LOGO_PATH.read_bytes()
 
-        self.assertEqual(LOGO_FILENAME, "1LessLogo.png")
+        self.assertEqual(LOGO_FILENAME, "1LessMark.png")
         self.assertEqual(MOBILE_LOGO_FILENAME, "1LessMark.png")
         self.assertTrue(logo.startswith(b"\x89PNG\r\n\x1a\n"))
         self.assertTrue(mobile_logo.startswith(b"\x89PNG\r\n\x1a\n"))
@@ -403,13 +403,13 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertNotIn('role="tabpanel"', HTML)
         self.assertIn('role="region" aria-label="Dinner-only alpha"', HTML)
         self.assertIn('class="brand-lockup"', HTML)
-        self.assertIn('class="brand-logo-wrap"', HTML)
-        self.assertIn('class="brand-logo"', HTML)
+        self.assertIn('brand-logo-wrap', HTML)
+        self.assertIn('class="brand-logo brand-logo-wrap"', HTML)
         self.assertIn('alt="1Less logo"', HTML)
-        self.assertIn('width="1024" height="576"', HTML)
-        self.assertIn('src="/1LessLogo.png?v=grey-ess"', HTML)
-        self.assertIn('media="(max-width: 640px)" srcset="/1LessMark.png?v=icon-only"', HTML)
+        self.assertIn('src="/1LessMark.png?v=icon-only"', HTML)
         self.assertIn('width="328" height="328"', HTML)
+        self.assertNotIn('src="/1LessLogo.png', HTML)
+        self.assertNotIn('<source media="(max-width: 640px)"', HTML)
         self.assertIn('<p class="tagline">One less thing on your plate.</p>', HTML)
         self.assertIn("<strong>Dinner-only alpha</strong>", HTML)
         self.assertNotIn("Alpha testing now:", HTML)
