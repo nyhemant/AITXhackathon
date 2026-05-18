@@ -681,6 +681,7 @@ class DinnerDecisionSession:
         self.current_recommendation: dict[str, Any] | None = None
         self.last_context: dict[str, Any] | None = None
         self.rejected: set[str] = set()
+        self.recommendation_history: list[str] = []
 
     def send(self, parent_message: str, scenario: str | None = None) -> dict[str, Any]:
         accepted = False
@@ -706,16 +707,18 @@ class DinnerDecisionSession:
                     context["picky"] = True
                 if feedback == "missing_ingredient":
                     context["use_current_input"] = True
-                recommendation = choose_dinner_decision(context, self.rejected)
+                recommendation = choose_dinner_decision(context, self.rejected, self.recommendation_history)
                 self.current_recommendation = recommendation
+                self.recommendation_history.append(recommendation["name"])
                 self.last_context = context
                 message = format_dinner_decision(recommendation, context, prefix="Backup:")
             else:
                 accepted = True
                 message = f"Good enough counts. Dinner decided: {self.current_recommendation['name']}."
         else:
-            recommendation = choose_dinner_decision(context, self.rejected)
+            recommendation = choose_dinner_decision(context, self.rejected, self.recommendation_history)
             self.current_recommendation = recommendation
+            self.recommendation_history.append(recommendation["name"])
             self.last_context = context
             message = format_dinner_decision(recommendation, context)
 
@@ -780,8 +783,13 @@ def parse_dinner_decision_context(parent_message: str) -> dict[str, Any]:
     }
 
 
-def choose_dinner_decision(context: dict[str, Any], rejected: set[str] | None = None) -> dict[str, Any]:
+def choose_dinner_decision(
+    context: dict[str, Any],
+    rejected: set[str] | None = None,
+    recent_recommendations: list[str] | None = None,
+) -> dict[str, Any]:
     rejected = rejected or set()
+    recent_recommendations = recent_recommendations or []
     candidates = [meal for meal in DINNER_MVP_MEALS if meal["name"] not in rejected] or DINNER_MVP_MEALS[:]
 
     def score(meal: dict[str, Any]) -> int:
@@ -872,7 +880,41 @@ def choose_dinner_decision(context: dict[str, Any], rejected: set[str] | None = 
         value -= meal["minutes"] // 5
         return value
 
-    return dict(max(candidates, key=score))
+    ranked = sorted(((score(meal), meal) for meal in candidates), key=lambda item: item[0], reverse=True)
+    return dict(_select_varied_winner(ranked, context, recent_recommendations))
+
+
+def _select_varied_winner(
+    ranked: list[tuple[int, dict[str, Any]]],
+    context: dict[str, Any],
+    recent_recommendations: list[str],
+) -> dict[str, Any]:
+    if not ranked:
+        return DINNER_MVP_MEALS[0]
+
+    top_score, top_meal = ranked[0]
+    if not recent_recommendations or not _allows_controlled_variety(context):
+        return top_meal
+
+    recent = set(recent_recommendations[-3:])
+    if top_meal["name"] not in recent:
+        return top_meal
+
+    near_tie_margin = 38
+    for score, meal in ranked[1:]:
+        if top_score - score > near_tie_margin:
+            break
+        if meal["name"] not in recent and int(meal.get("typical_family_bias", 0)) >= 10:
+            return meal
+    return top_meal
+
+
+def _allows_controlled_variety(context: dict[str, Any]) -> bool:
+    return bool(
+        _uses_typical_family_baseline(context)
+        and not context.get("only_have")
+        and not context.get("fallback_relief")
+    )
 
 
 def format_dinner_decision(meal: dict[str, Any], context: dict[str, Any], prefix: str = "Tonight:") -> str:

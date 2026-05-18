@@ -825,6 +825,28 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertNotIn("milk", lower_message)
         self.assertNotIn("yogurt", lower_message)
 
+    def test_chapter1_sparse_prompt_variety_avoids_same_session_repeats(self):
+        session = create_dinner_decision_session()
+        prompt = "What should I make for dinner tonight?"
+
+        first = session.send(prompt)["metadata"]["current_recommendation"]
+        second = session.send(prompt)["metadata"]["current_recommendation"]
+        third = session.send(prompt)["metadata"]["current_recommendation"]
+
+        self.assertEqual(first, "Pasta Marinara with carrots")
+        self.assertGreaterEqual(len({first, second, third}), 2)
+        self.assertEqual(create_dinner_decision_session().send(prompt)["metadata"]["current_recommendation"], first)
+
+    def test_chapter1_explicit_ingredient_prompt_stays_stable_in_same_session(self):
+        session = create_dinner_decision_session()
+        prompt = "Tuna pasta peas 15 minutes"
+
+        first = session.send(prompt)["metadata"]["current_recommendation"]
+        second = session.send(prompt)["metadata"]["current_recommendation"]
+
+        self.assertEqual(first, "Tuna Pasta Plates")
+        self.assertEqual(second, "Tuna Pasta Plates")
+
     def test_chapter1_random_prompt_gauntlet_respects_negatives_and_context(self):
         cases = {
             "I have pasta and cheese but no sauce. Kids are starving.": ("Cheesy Pasta with carrots", ["sauce", "marinara"]),
