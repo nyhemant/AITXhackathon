@@ -123,6 +123,8 @@ HTML = """<!doctype html>
       .example-chips { display: flex; flex-wrap: wrap; gap: 8px; }
       .example-chip { border: 1px solid rgba(102,91,82,.18); border-radius: 999px; padding: 8px 10px; background: rgba(255,255,255,.88); color: #51463f; box-shadow: none; font-size: .88rem; font-weight: 820; }
       .example-chip:hover { transform: none; background: #fff7ed; }
+      .example-expand { margin-top: 10px; border: 1px solid rgba(194,65,12,.22); background: #ffedd5; color: #7c2d12; box-shadow: none; font-size: .88rem; }
+      .example-expand:hover { background: #fed7aa; transform: none; }
       .completion { justify-self: stretch; max-width: 100%; border: 1px solid rgba(22,101,52,.18); border-left: 5px solid #22c55e; border-radius: 12px; padding: 14px 16px; background: rgba(240,253,244,.88); color: #21402b; font-weight: 850; }
       .chat[aria-busy="true"] { background: linear-gradient(180deg, rgba(255,255,255,.36), rgba(255,247,237,.44)); }
       .bubble { max-width: 78%; border-radius: 8px; padding: 12px 14px; line-height: 1.48; white-space: pre-wrap; }
@@ -221,7 +223,15 @@ HTML = """<!doctype html>
                 <button class="example-chip" type="button" data-prompt="10 minutes, not in the mood to cook, picky kid, use what we have.">10 min, picky kid</button>
                 <button class="example-chip" type="button" data-prompt="Tortillas, eggs, cheese, 20 minutes, low cleanup.">Tortillas, eggs, low cleanup</button>
                 <button class="example-chip" type="button" data-prompt="Leftover rice, frozen peas, no store run, need one easy dinner.">Leftover rice, no store run</button>
+                <button class="example-chip hidden" type="button" data-extra-prompt data-prompt="Frozen nuggets, tortillas, bagged salad, picky kid, make it feel like dinner.">Nuggets, tortillas, salad kit</button>
+                <button class="example-chip hidden" type="button" data-extra-prompt data-prompt="Ground turkey, pasta, jar sauce, 25 minutes, one pan if possible.">Turkey, pasta, one pan</button>
+                <button class="example-chip hidden" type="button" data-extra-prompt data-prompt="Canned beans, rice, cheese, avocado, cheap and filling.">Beans, rice, filling</button>
+                <button class="example-chip hidden" type="button" data-extra-prompt data-prompt="Chicken thighs, potatoes, tired but can wait 35 minutes.">Chicken, potatoes, hands-off</button>
+                <button class="example-chip hidden" type="button" data-extra-prompt data-prompt="Paneer or tofu, frozen veggies, rice, mild spice, kid-friendly.">Paneer/tofu, rice, mild</button>
+                <button class="example-chip hidden" type="button" data-extra-prompt data-prompt="Leftover takeout rice, eggs, peas, need low cleanup.">Takeout rice, eggs, peas</button>
+                <button class="example-chip hidden" type="button" data-extra-prompt data-prompt="Nothing thawed, pantry/freezer only, everyone is hungry.">Pantry/freezer only</button>
               </div>
+              <button class="example-expand" id="showMorePrompts" type="button" aria-expanded="false">Show 7 more ready-made prompts</button>
             </section>
           </div>
           <form id="form">
@@ -598,6 +608,14 @@ HTML = """<!doctype html>
         if (!button) return;
         input.value = button.dataset.feedback;
         await sendCurrentInput();
+      });
+
+      document.addEventListener("click", (event) => {
+        const button = event.target.closest("#showMorePrompts");
+        if (!button) return;
+        document.querySelectorAll("[data-extra-prompt]").forEach((node) => node.classList.remove("hidden"));
+        button.setAttribute("aria-expanded", "true");
+        button.classList.add("hidden");
       });
 
       document.addEventListener("click", (event) => {
