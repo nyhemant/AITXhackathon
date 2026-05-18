@@ -601,12 +601,18 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertEqual(self.handle_preview_error({"message": ""}), (400, "Missing message"))
 
     def test_chapter1_catalog_has_real_variety_for_alpha(self):
-        from busyparent_agent.service import DINNER_MVP_MEALS
+        from busyparent_agent.service import DINNER_MVP_MEALS, DINNER_TEMPLATE_QUALITY_TIERS
 
         names = [meal["name"] for meal in DINNER_MVP_MEALS]
 
         self.assertGreaterEqual(len(names), 40)
         self.assertEqual(len(names), len(set(names)))
+        self.assertEqual(set(names), set(DINNER_TEMPLATE_QUALITY_TIERS))
+        self.assertIn("core_dinner", set(DINNER_TEMPLATE_QUALITY_TIERS.values()))
+        self.assertIn("quick_backup", set(DINNER_TEMPLATE_QUALITY_TIERS.values()))
+        self.assertIn("snack_plate", set(DINNER_TEMPLATE_QUALITY_TIERS.values()))
+        self.assertIn("breakfast_for_dinner", set(DINNER_TEMPLATE_QUALITY_TIERS.values()))
+        self.assertIn("niche_household", set(DINNER_TEMPLATE_QUALITY_TIERS.values()))
         self.assertIn("Snack Plate Dinner", names)
         self.assertIn("Yogurt Oat Fruit Bowls", names)
         self.assertIn("Tuna Pasta Plates", names)
@@ -829,13 +835,21 @@ class WebApiScenarioTest(unittest.TestCase):
         session = create_dinner_decision_session()
         prompt = "What should I make for dinner tonight?"
 
-        first = session.send(prompt)["metadata"]["current_recommendation"]
-        second = session.send(prompt)["metadata"]["current_recommendation"]
-        third = session.send(prompt)["metadata"]["current_recommendation"]
+        recommendations = [session.send(prompt)["metadata"]["current_recommendation"] for _ in range(6)]
+        emergency_or_niche_defaults = {
+            "Snack Plate Dinner",
+            "Yogurt Oat Fruit Bowls",
+            "Cream Cheese Cucumber Wraps",
+            "Parotta Egg Roll-Ups",
+            "Salmon Rice Pea Plates",
+            "Tuna Pasta Plates",
+            "Edamame Rice Bowls",
+        }
 
-        self.assertEqual(first, "Pasta Marinara with carrots")
-        self.assertGreaterEqual(len({first, second, third}), 2)
-        self.assertEqual(create_dinner_decision_session().send(prompt)["metadata"]["current_recommendation"], first)
+        self.assertEqual(recommendations[0], "Pasta Marinara with carrots")
+        self.assertGreaterEqual(len(set(recommendations[:4])), 3)
+        self.assertTrue(emergency_or_niche_defaults.isdisjoint(recommendations))
+        self.assertEqual(create_dinner_decision_session().send(prompt)["metadata"]["current_recommendation"], recommendations[0])
 
     def test_chapter1_explicit_ingredient_prompt_stays_stable_in_same_session(self):
         session = create_dinner_decision_session()
@@ -846,6 +860,12 @@ class WebApiScenarioTest(unittest.TestCase):
 
         self.assertEqual(first, "Tuna Pasta Plates")
         self.assertEqual(second, "Tuna Pasta Plates")
+
+    def test_chapter1_emergency_tier_surfaces_when_parent_asks_for_it(self):
+        response = create_dinner_decision_session().send("No cooking, kids starving, just need a snack plate dinner.")
+
+        self.assertEqual(response["metadata"]["current_recommendation"], "Snack Plate Dinner")
+        self.assertIn("Tonight: Snack Plate Dinner.", response["message"])
 
     def test_chapter1_random_prompt_gauntlet_respects_negatives_and_context(self):
         cases = {

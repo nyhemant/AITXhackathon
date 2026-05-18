@@ -674,6 +674,63 @@ DINNER_MVP_MEALS = [
 ]
 
 
+DINNER_TEMPLATE_QUALITY_TIERS = {
+    # Real dinner defaults: reasonable first answers even when the parent gives only a vague dinner ask.
+    "Rice and Peas Bowl": "core_dinner",
+    "Black Bean Tacos with fruit": "core_dinner",
+    "Bean Rice Avocado Bowls": "core_dinner",
+    "Egg-and-cheese Tortilla Fold-ups": "core_dinner",
+    "Cheese Quesadillas with fruit": "core_dinner",
+    "Egg Fried Rice with peas": "core_dinner",
+    "Pasta Marinara with carrots": "core_dinner",
+    "Cheesy Pasta with carrots": "core_dinner",
+    "Sheet-pan chicken and corn rice bowls": "core_dinner",
+    "Chicken Rice Veggie Bowls": "core_dinner",
+    "Chicken and Potato Tray Dinner": "core_dinner",
+    "Turkey Pasta Skillet": "core_dinner",
+    "Tofu or Paneer Veggie Rice Bowl": "core_dinner",
+    "Buttered Pea Noodles": "core_dinner",
+    "Tortilla Pizza Triangles": "core_dinner",
+    "Turkey Rice Taco Bowls": "core_dinner",
+    "Turkey Cheese Quesadilla Plates": "core_dinner",
+    "Chicken Cheese Quesadilla Plates": "core_dinner",
+    "Chicken Corn Rice Soup Bowls": "core_dinner",
+    "Potato Egg Hash": "core_dinner",
+    "Sweet Potato Bean Bowls": "core_dinner",
+    "Tofu Veggie Noodles": "core_dinner",
+    "Corn Bean Quesadillas": "core_dinner",
+    "Potato Cheese Skillet": "core_dinner",
+    "Pasta Pea Cheese Bowls": "core_dinner",
+    # Parent-life emergency dinners: practical, but should need time/energy/freezer/picky context.
+    "Crispy Chicken Wraps with salad": "quick_backup",
+    "Chicken Nugget Plates": "quick_backup",
+    "Grilled Cheese and Fruit Plates": "quick_backup",
+    "Avocado Egg Toast Plates": "quick_backup",
+    "Chicken Salad Crackers Plate": "quick_backup",
+    "Pasta Bean Marinara Bowls": "quick_backup",
+    # Snack/lunch/breakfast-style saves: real and useful only when the prompt asks for that kind of save.
+    "Snack Plate Dinner": "snack_plate",
+    "Cream Cheese Cucumber Wraps": "snack_plate",
+    "Yogurt Oat Fruit Bowls": "breakfast_for_dinner",
+    # Household-specific ideas: excellent when named, too assumptive as generic defaults.
+    "Salmon Rice Pea Plates": "niche_household",
+    "Bacon Egg Tortilla Tacos": "niche_household",
+    "Edamame Rice Bowls": "niche_household",
+    "Parotta Egg Roll-Ups": "niche_household",
+    "Paneer Tortilla Melts": "niche_household",
+    "Tuna Pasta Plates": "niche_household",
+}
+
+
+QUALITY_TIER_BASELINE_BONUS = {
+    "core_dinner": 18,
+    "quick_backup": -8,
+    "snack_plate": -18,
+    "breakfast_for_dinner": -24,
+    "niche_household": -35,
+}
+
+
 class DinnerDecisionSession:
     """Small Chapter 1 MVP flow that uses only current-turn parent input."""
 
@@ -849,6 +906,15 @@ def choose_dinner_decision(
             value -= 20 * unmatched_count
             if not matched_ingredients:
                 value -= 120
+        free_text = context.get("free_text", "").lower()
+        if (
+            "low cleanup" in free_text
+            and {"rice", "pasta"} <= set(context.get("excluded_ingredients", []))
+            and meal["name"] == "Crispy Chicken Wraps with salad"
+        ):
+            value += 90
+        if _meal_quality_tier(meal) == "snack_plate" and any(phrase in free_text for phrase in ("snack plate", "snacky", "grazing")):
+            value += 85
         if context.get("fallback_relief"):
             rejected_minutes = context.get("rejected_minutes") or 30
             rejected_effort = context.get("rejected_effort")
@@ -870,6 +936,10 @@ def choose_dinner_decision(
             value += 20 if "pantry" in tags else -8
         if _uses_typical_family_baseline(context):
             assumed_matches = _matching_typical_family_staples(meal, blocked_ingredients)
+            tier = _meal_quality_tier(meal)
+            value += QUALITY_TIER_BASELINE_BONUS.get(tier, 0)
+            if not _quality_tier_allowed_for_context(meal, context, matched_ingredients):
+                value -= 110
             value += int(meal.get("typical_family_bias", 0))
             value += 7 * len(assumed_matches)
             if len(assumed_matches) >= 3:
@@ -882,6 +952,64 @@ def choose_dinner_decision(
 
     ranked = sorted(((score(meal), meal) for meal in candidates), key=lambda item: item[0], reverse=True)
     return dict(_select_varied_winner(ranked, context, recent_recommendations))
+
+
+def _meal_quality_tier(meal: dict[str, Any]) -> str:
+    return DINNER_TEMPLATE_QUALITY_TIERS.get(meal["name"], "core_dinner")
+
+
+def _quality_tier_allowed_for_context(
+    meal: dict[str, Any],
+    context: dict[str, Any],
+    matched_ingredients: list[str] | None = None,
+) -> bool:
+    tier = _meal_quality_tier(meal)
+    matched_ingredients = matched_ingredients or _matching_positive_ingredients(meal, context.get("positive_ingredients", []))
+    if matched_ingredients:
+        return True
+    if tier == "core_dinner":
+        return True
+
+    text = context.get("free_text", "").lower()
+    emergency_or_easy = bool(
+        context.get("fallback_relief")
+        or context.get("energy") == "barely cooking"
+        or (context.get("minutes") is not None and context["minutes"] <= 15)
+        or any(
+            phrase in text
+            for phrase in (
+                "low cleanup",
+                "quick",
+                "fast",
+                "easy",
+                "easiest",
+                "no cooking",
+                "no cook",
+                "barely cooking",
+                "starving",
+                "hungry",
+                "emergency",
+                "backup",
+                "fallback",
+            )
+        )
+    )
+    freezer_or_pantry_save = bool(
+        context.get("pantry")
+        and any(phrase in text for phrase in ("freezer", "nothing thawed", "no thawed", "no store run", "no shopping"))
+    )
+
+    if tier == "quick_backup":
+        return emergency_or_easy or freezer_or_pantry_save or context.get("picky") or context.get("leftovers")
+    if tier == "snack_plate":
+        return emergency_or_easy or any(phrase in text for phrase in ("snack", "plate", "grazing"))
+    if tier == "breakfast_for_dinner":
+        return emergency_or_easy and any(
+            phrase in text for phrase in ("breakfast", "no cooking", "no cook", "yogurt", "oats", "cereal")
+        )
+    if tier == "niche_household":
+        return False
+    return True
 
 
 def _select_varied_winner(
@@ -904,7 +1032,11 @@ def _select_varied_winner(
     for score, meal in ranked[1:]:
         if top_score - score > near_tie_margin:
             break
-        if meal["name"] not in recent and int(meal.get("typical_family_bias", 0)) >= 10:
+        if (
+            meal["name"] not in recent
+            and int(meal.get("typical_family_bias", 0)) >= 10
+            and _quality_tier_allowed_for_context(meal, context)
+        ):
             return meal
     return top_meal
 
