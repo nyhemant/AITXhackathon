@@ -200,7 +200,7 @@ HTML = """<!doctype html>
           <img class="brand-logo brand-logo-wrap" src="/1LessPrimaryLogo.png?v=transparent-square" alt="1Less logo" width="800" height="800" />
           <div class="brand-copy">
           <p class="tagline">One less thing on your plate.</p>
-          <p class="subhead">Tell 1Less what’s in the fridge, who’s eating, and what kind of night it is. Get one doable dinner idea, not fifteen recipes.</p>
+          <p class="subhead">Tell 1Less what tonight looks like. Get one doable dinner idea — not a recipe rabbit hole.</p>
           <p class="alpha-note"><strong>Dinner-only alpha</strong></p>
           </div>
         </div>
@@ -209,14 +209,14 @@ HTML = """<!doctype html>
         <div class="tab-panel" id="active-panel" role="region" aria-label="Dinner-only alpha">
           <section class="room-context" data-room-context>
             <div class="room-heading-row">
-              <h2 id="roomHeadline">Dinner help for the late-day scramble.</h2>
+              <h2 id="roomHeadline">Start with tonight.</h2>
             </div>
-            <p id="roomDescription">It’s late, people are hungry, and you don’t need fifteen options. Type one messy sentence about what’s in the fridge, who’s eating, and what tonight can handle.</p>
+            <p id="roomDescription">What do you have, who needs to eat, and how much effort can dinner take?</p>
           </section>
           <div id="chat" class="chat" aria-live="polite">
             <section class="empty-state" id="emptyState" aria-label="Start dinner idea">
               <h3>No dinner idea yet.</h3>
-              <p>Type one messy sentence below — what you have, who’s eating, and how much effort tonight can handle.</p>
+              <p>Try an example, or type the messy real-life version.</p>
               <div class="example-chips" aria-label="Example dinner prompts">
                 <button class="example-chip" type="button" data-prompt="10 minutes, not in the mood to cook, picky kid, use what we have.">10 min, picky kid</button>
                 <button class="example-chip" type="button" data-prompt="Tortillas, eggs, cheese, 20 minutes, low cleanup.">Tortillas, eggs, low cleanup</button>
@@ -227,7 +227,7 @@ HTML = """<!doctype html>
           <form id="form">
             <div class="input-copy">
               <input id="message" type="text" autocomplete="off" aria-describedby="inputHelper inputNudge" placeholder="Tortillas, eggs, picky 6-year-old, 20 min, low-cleanup night" />
-              <p class="input-helper" id="inputHelper"><span class="input-helper-lead">Messy is fine — leftovers, avoidances, budget, and energy all help.</span></p>
+              <p class="input-helper" id="inputHelper"><span class="input-helper-lead">Messy is fine — food, time, avoidances, budget, and mood all help.</span></p>
             </div>
             <button class="primary" id="submitButton" type="submit">Get one dinner idea</button>
             <p class="input-nudge hidden" id="inputNudge" aria-live="polite"></p>
@@ -236,7 +236,7 @@ HTML = """<!doctype html>
       </section>
       <section class="vision-note" aria-labelledby="why-dinner-first">
         <h2 id="why-dinner-first">Why start with dinner?</h2>
-        <p>Because choosing dinner is often the chore before the chore. 1Less starts here because that late-day decision hits when parents are tired, kids are hungry, and recipe browsing makes things worse. For now, it only handles dinner. The goal is simple: one practical default you can use or tweak.</p>
+        <p>Because dinner is often the chore before the chore. 1Less starts by removing just that one decision: a practical default you can use or tweak. For now, it only handles dinner.</p>
       </section>
       <label class="trace-footer"><input id="traceToggle" type="checkbox" /> Show trace</label>
     </main>
@@ -257,17 +257,17 @@ HTML = """<!doctype html>
       const rooms = {
         dinner: {
           title: "Dinner",
-          summary: "Dinner help for the late-day scramble.",
-          headline: "Dinner help for the late-day scramble.",
-          description: "It’s late, people are hungry, and you don’t need fifteen options. Type one messy sentence about what’s in the fridge, who’s eating, and what tonight can handle.",
+          summary: "Start with tonight.",
+          headline: "Start with tonight.",
+          description: "What do you have, who needs to eat, and how much effort can dinner take?",
         }
       };
       const inputCopyByState = {
         start: {
           placeholder: "Tortillas, eggs, picky 6-year-old, 20 min, low-cleanup night",
-          helper: "Messy is fine — leftovers, avoidances, budget, and energy all help.",
+          helper: "Messy is fine — food, time, avoidances, budget, and mood all help.",
           mobilePlaceholder: "What do you have tonight?",
-          mobileHelper: "Messy is fine — food, time, avoidances, energy."
+          mobileHelper: "Food, time, avoidances, mood."
         },
         recommendation: {
           placeholder: "Need it easier or more kid-proof?",
