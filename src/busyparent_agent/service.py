@@ -18,6 +18,46 @@ ALLERGY_CAVEAT = (
     "1Less can help avoid ingredients you flag, but it cannot guarantee allergy safety. "
     "Always check labels and use your judgment for serious allergies."
 )
+TYPICAL_FAMILY_STAPLES = {
+    # Conservative baseline for a family of 4 with young kids before the user shares real inventory.
+    # Derived from common pantry/fridge/freezer staple guidance: grains/pasta, canned beans/tomatoes,
+    # tortillas/bread, eggs/dairy, sturdy produce, frozen vegetables, and simple freezer proteins.
+    "pantry": {
+        "rice",
+        "pasta",
+        "marinara",
+        "jar sauce",
+        "beans",
+        "black beans",
+        "tortillas",
+        "bread",
+        "crackers",
+        "potatoes",
+        "oats",
+        "cereal",
+    },
+    "fridge": {
+        "eggs",
+        "cheese",
+        "milk",
+        "yogurt",
+        "carrots",
+        "fruit",
+        "apples",
+        "bananas",
+        "salad",
+        "salad kit",
+    },
+    "freezer": {
+        "frozen peas",
+        "frozen vegetables",
+        "corn",
+        "nuggets",
+        "chicken",
+        "ground turkey",
+    },
+}
+TYPICAL_FAMILY_STAPLE_TERMS = frozenset().union(*TYPICAL_FAMILY_STAPLES.values())
 
 SCENARIO_MESSAGES = {
     "dinner": "What should I make for dinner tonight?",
@@ -157,9 +197,11 @@ DINNER_MVP_MEALS = [
         "effort": "low",
         "tags": {"low_energy", "picky", "vegetarian", "pantry", "leftovers", "nut_free", "dairy_free", "egg_free"},
         "ingredient_keywords": {"rice", "pea", "peas", "frozen peas", "bean", "beans"},
+        "typical_family_staples": {"rice", "frozen peas", "beans"},
         "ingredients": "rice, frozen peas, and one simple add-on if you have it: olive oil, soy sauce, beans, or any protein",
         "steps": "Warm the rice and peas together. Season simply. Put any add-on on the side so kids can opt in.",
         "fallback": "If there is no add-on, warm the rice and peas together, season simply, and put any extra protein or sauce on the side.",
+        "typical_family_bias": 12,
     },
     {
         "name": "Black Bean Tacos with fruit",
@@ -167,9 +209,11 @@ DINNER_MVP_MEALS = [
         "effort": "low",
         "tags": {"low_energy", "picky", "vegetarian", "pantry", "leftovers", "nut_free", "dairy_free", "egg_free"},
         "ingredient_keywords": {"tortilla", "tortillas", "bean", "beans", "black beans", "fruit", "avocado", "salsa"},
+        "typical_family_staples": {"tortillas", "black beans", "salsa", "fruit"},
         "ingredients": "tortillas, black beans, mild salsa or avocado, and any fruit or crunchy side that fits your house",
         "steps": "Warm the beans. Fold them into tortillas with mild salsa or avocado. Serve fruit or a simple side.",
         "fallback": "If tortillas are missing, make quick bean-and-rice bowls with the same toppings.",
+        "typical_family_bias": 8,
     },
     {
         "name": "Bean Rice Avocado Bowls",
@@ -177,9 +221,11 @@ DINNER_MVP_MEALS = [
         "effort": "low",
         "tags": {"low_energy", "picky", "vegetarian", "pantry", "leftovers", "nut_free", "egg_free"},
         "ingredient_keywords": {"bean", "beans", "black beans", "rice", "cheese", "avocado"},
+        "typical_family_staples": {"beans", "rice", "cheese"},
         "ingredients": "canned beans, rice, cheese, avocado, and any mild salsa or crunchy side",
         "steps": "Warm the beans and rice. Add cheese and avocado on top, or keep toppings separate for kids.",
         "fallback": "If avocado is not usable, keep it as beans, rice, and cheese with fruit or a crunchy side.",
+        "typical_family_bias": 14,
     },
     {
         "name": "Egg-and-cheese Tortilla Fold-ups",
@@ -187,9 +233,11 @@ DINNER_MVP_MEALS = [
         "effort": "low",
         "tags": {"low_energy", "picky", "vegetarian", "pantry", "nut_free"},
         "ingredient_keywords": {"tortilla", "tortillas", "egg", "eggs", "cheese"},
+        "typical_family_staples": {"tortillas", "eggs", "cheese"},
         "ingredients": "tortillas, eggs, cheese, and any mild fruit or vegetable side",
         "steps": "Scramble the eggs. Fold eggs and cheese into warmed tortillas. Keep sauce or extras on the side.",
         "fallback": "If eggs are out, make cheese quesadillas with fruit or a simple side.",
+        "typical_family_bias": 30,
     },
     {
         "name": "Egg Fried Rice with peas",
@@ -197,9 +245,11 @@ DINNER_MVP_MEALS = [
         "effort": "normal",
         "tags": {"fast", "picky", "pantry", "leftovers", "dairy_free", "nut_free"},
         "ingredient_keywords": {"rice", "egg", "eggs", "pea", "peas", "frozen peas", "vegetable", "vegetables"},
+        "typical_family_staples": {"rice", "eggs", "frozen peas"},
         "ingredients": "rice, eggs, frozen peas or another vegetable that fits your house, and a light sauce",
         "steps": "Scramble the eggs. Stir-fry rice with peas. Keep sauce mild for kids; add grown-up heat at the table.",
         "fallback": "If eggs are out, make quick vegetable fried rice with beans, tofu, or another protein you have.",
+        "typical_family_bias": 22,
     },
     {
         "name": "Pasta Marinara with carrots",
@@ -207,9 +257,11 @@ DINNER_MVP_MEALS = [
         "effort": "normal",
         "tags": {"picky", "vegetarian", "nut_free"},
         "ingredient_keywords": {"pasta", "marinara", "carrot", "carrots", "vegetable", "vegetables", "cheese"},
+        "typical_family_staples": {"pasta", "marinara", "carrots", "cheese"},
         "ingredients": "pasta, jarred marinara, carrots or another simple vegetable, and optional cheese",
         "steps": "Boil the pasta. Warm the sauce with shredded carrots or a side vegetable. Keep toppings optional.",
         "fallback": "If pasta is missing, serve the sauce over toast, rice, or any grain you already have.",
+        "typical_family_bias": 42,
     },
     {
         "name": "Sheet-pan chicken and corn rice bowls",
@@ -217,9 +269,11 @@ DINNER_MVP_MEALS = [
         "effort": "can cook",
         "tags": {"can_cook", "leftovers", "dairy_free", "nut_free"},
         "ingredient_keywords": {"chicken", "protein", "rice", "corn", "beans"},
+        "typical_family_staples": {"chicken", "rice", "corn"},
         "ingredients": "chicken or another protein that fits your house, rice, corn, and a mild topping",
         "steps": "Cook the protein and corn together. Serve over rice. Keep sauces on the side.",
         "fallback": "If chicken is missing, use beans, eggs, or leftovers as the bowl protein.",
+        "typical_family_bias": 30,
     },
     {
         "name": "Chicken and Potato Tray Dinner",
@@ -227,9 +281,11 @@ DINNER_MVP_MEALS = [
         "effort": "can cook",
         "tags": {"can_cook", "leftovers", "dairy_free", "nut_free", "egg_free"},
         "ingredient_keywords": {"chicken", "potato", "potatoes"},
+        "typical_family_staples": {"chicken", "potatoes"},
         "ingredients": "chicken thighs, potatoes, oil, salt, and any simple vegetable or fruit on the side",
         "steps": "Roast chicken and potato chunks on one tray until the potatoes are tender and the chicken is cooked through. Keep seasoning mild and add grown-up sauce at the table.",
         "fallback": "If potatoes are short, serve the chicken with rice, toast, or any freezer vegetable you have.",
+        "typical_family_bias": 20,
     },
     {
         "name": "Turkey Pasta Skillet",
@@ -237,9 +293,11 @@ DINNER_MVP_MEALS = [
         "effort": "normal",
         "tags": {"picky", "nut_free", "egg_free"},
         "ingredient_keywords": {"turkey", "ground turkey", "pasta", "jar sauce", "sauce", "marinara"},
+        "typical_family_staples": {"ground turkey", "pasta", "jar sauce"},
         "ingredients": "ground turkey, pasta, jarred sauce, and optional cheese or frozen vegetables",
         "steps": "Brown the turkey, stir in jarred sauce, and toss with cooked pasta. Keep toppings optional.",
         "fallback": "If turkey is missing, make the same pasta with beans, tofu, or just sauce and cheese.",
+        "typical_family_bias": 28,
     },
     {
         "name": "Tofu or Paneer Veggie Rice Bowl",
@@ -247,9 +305,11 @@ DINNER_MVP_MEALS = [
         "effort": "normal",
         "tags": {"picky", "vegetarian", "pantry", "leftovers", "nut_free", "egg_free"},
         "ingredient_keywords": {"tofu", "paneer", "rice", "vegetable", "vegetables", "veggie", "veggies", "frozen veggies", "frozen vegetables"},
+        "typical_family_staples": {"rice", "frozen vegetables"},
         "ingredients": "tofu or paneer, rice, frozen vegetables, and a mild sauce or seasoning",
         "steps": "Warm the rice and vegetables. Crisp or warm the tofu/paneer separately. Keep sauce mild and optional.",
         "fallback": "If tofu or paneer is missing, use eggs, beans, or any leftover protein with the same rice bowl base.",
+        "typical_family_bias": 10,
     },
     {
         "name": "Crispy Chicken Wraps with salad",
@@ -257,9 +317,11 @@ DINNER_MVP_MEALS = [
         "effort": "low",
         "tags": {"low_energy", "picky", "nut_free", "egg_free"},
         "ingredient_keywords": {"nugget", "nuggets", "chicken", "tortilla", "tortillas", "salad", "salad kit", "bagged salad"},
+        "typical_family_staples": {"nuggets", "tortillas", "salad kit"},
         "ingredients": "frozen nuggets or crispy chicken, tortillas, and a bagged salad kit or crunchy side",
         "steps": "Heat the nuggets. Wrap them in tortillas with a little salad kit, or serve everything deconstructed for a picky kid.",
         "fallback": "If tortillas are out, make nugget-and-salad plates with toast, crackers, or fruit.",
+        "typical_family_bias": 32,
     },
 ]
 
@@ -380,7 +442,7 @@ def choose_dinner_decision(context: dict[str, Any], rejected: set[str] | None = 
         if context.get("energy") == "barely cooking":
             value += 35 if meal["effort"] == "low" else -20
         elif context.get("energy") == "can cook":
-            value += 12 if meal["effort"] == "can cook" else 0
+            value += 35 if meal["effort"] == "can cook" else -6
         if context.get("picky"):
             value += 30 if "picky" in tags else -10
         if context.get("vegetarian"):
@@ -431,6 +493,15 @@ def choose_dinner_decision(context: dict[str, Any], rejected: set[str] | None = 
             value += 20 if "leftovers" in tags else 0
         if context.get("pantry"):
             value += 20 if "pantry" in tags else -8
+        if _uses_typical_family_baseline(context):
+            assumed_matches = _matching_typical_family_staples(meal, context.get("avoid_terms", []))
+            value += int(meal.get("typical_family_bias", 0))
+            value += 7 * len(assumed_matches)
+            if len(assumed_matches) >= 3:
+                value += 12
+            free_text = context.get("free_text", "").lower()
+            if any(phrase in free_text for phrase in ("freezer", "nothing thawed", "no thawed")):
+                value += 18 if {"nuggets", "frozen peas", "frozen vegetables", "chicken"} & set(assumed_matches) else -8
         value -= meal["minutes"] // 5
         return value
 
@@ -454,6 +525,8 @@ def format_dinner_decision(meal: dict[str, Any], context: dict[str, Any], prefix
     )
     if context.get("only_have"):
         lines.append("Constraint heard: I am using the ingredients you listed first, not assuming a remembered pantry.")
+    elif _uses_typical_family_baseline(context):
+        lines.append("Assumption: using common family staples because you have not shared actual kitchen contents yet.")
     lines.extend(
         [
             f"Works with common basics like: {meal['ingredients']}.",
@@ -481,6 +554,12 @@ def dinner_fit_reason(meal: dict[str, Any], context: dict[str, Any]) -> str:
     matched_ingredients = _matching_positive_ingredients(meal, context.get("positive_ingredients", []))
     if matched_ingredients:
         reasons.append(f"Uses your {_human_join(_friendly_ingredient_terms(matched_ingredients))}")
+    elif _uses_typical_family_baseline(context):
+        assumed_matches = _matching_typical_family_staples(meal, context.get("avoid_terms", []))
+        if assumed_matches:
+            reasons.append(f"Leans on common family staples like {_human_join(_friendly_ingredient_terms(assumed_matches[:4]))}")
+        else:
+            reasons.append("Uses a conservative common-staples fallback")
     elif context.get("only_have"):
         reasons.append("Uses the sparse pantry constraint you gave")
     elif context.get("pantry"):
@@ -512,6 +591,24 @@ def dinner_fit_reason(meal: dict[str, Any], context: dict[str, Any]) -> str:
     return "; ".join(dict.fromkeys(reasons)) + "."
 
 
+def _uses_typical_family_baseline(context: dict[str, Any]) -> bool:
+    return bool(
+        not context.get("positive_ingredients")
+        and not context.get("only_have")
+        and not context.get("fallback_relief")
+    )
+
+
+def _matching_typical_family_staples(meal: dict[str, Any], avoid_terms: list[str]) -> list[str]:
+    keywords = meal.get("typical_family_staples", meal.get("ingredient_keywords", set()))
+    blocked = set(avoid_terms)
+    if "dairy" in blocked:
+        blocked.update({"milk", "cheese", "yogurt"})
+    if "egg" in blocked:
+        blocked.update({"egg", "eggs"})
+    return sorted(term for term in TYPICAL_FAMILY_STAPLE_TERMS if term in keywords and term not in blocked)
+
+
 def _friendly_ingredient_terms(terms: list[str]) -> list[str]:
     normalized_terms = list(terms)
     if "paneer" in normalized_terms and "tofu" in normalized_terms:
@@ -534,6 +631,13 @@ def _friendly_ingredient_terms(terms: list[str]) -> list[str]:
         "nugget": "nuggets",
         "bagged salad": "salad kit",
         "jar sauce": "jarred sauce",
+        "marinara": "marinara",
+        "ground turkey": "ground turkey",
+        "fruit": "fruit",
+        "apples": "apples",
+        "bananas": "bananas",
+        "salad": "salad",
+        "salad kit": "salad kit",
     }
     for term in normalized_terms:
         name = names.get(term, term)

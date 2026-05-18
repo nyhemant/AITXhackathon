@@ -5,7 +5,7 @@ import sys
 import unittest
 
 from busyparent_agent.agent import BusyParentAgent
-from busyparent_agent.service import ALLERGY_CAVEAT, create_dinner_decision_session, create_session, parse_now, run_book_scenario
+from busyparent_agent.service import ALLERGY_CAVEAT, TYPICAL_FAMILY_STAPLES, create_dinner_decision_session, create_session, parse_now, run_book_scenario
 from busyparent_agent.web import HTML, LOGO_FILENAME, LOGO_PATH, MOBILE_LOGO_FILENAME, MOBILE_LOGO_PATH, PLAN_B_LOGO_FILENAME, PLAN_B_LOGO_PATH, MAX_REQUEST_BYTES, SECURITY_HEADERS, SESSIONS, WebHandler, _dinner_preview_text
 from busyparent_agent import tools
 from busyparent_agent import inventory as inventory_engine
@@ -760,6 +760,36 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertIn("Uses your rice", response["message"])
         self.assertNotIn(ALLERGY_CAVEAT, response["message"])
         self.assertFalse(response["metadata"]["allergy_caveat"])
+
+    def test_chapter1_typical_family_baseline_for_sparse_prompts_is_transparent(self):
+        self.assertIn("pasta", TYPICAL_FAMILY_STAPLES["pantry"])
+        self.assertIn("eggs", TYPICAL_FAMILY_STAPLES["fridge"])
+        self.assertIn("frozen peas", TYPICAL_FAMILY_STAPLES["freezer"])
+
+        cases = {
+            "What should I make for dinner tonight?": "Pasta Marinara with carrots",
+            "Use what we have, picky kid, 10 minutes.": "Egg-and-cheese Tortilla Fold-ups",
+            "Nothing thawed, pantry/freezer only, everyone is hungry.": "Egg Fried Rice with peas",
+        }
+
+        for prompt, expected_meal in cases.items():
+            with self.subTest(prompt=prompt):
+                response = create_dinner_decision_session().send(prompt)
+                self.assertEqual(response["metadata"]["current_recommendation"], expected_meal)
+                self.assertIn("Leans on common family staples", response["message"])
+                self.assertIn("Assumption: using common family staples", response["message"])
+                self.assertNotIn("Uses your", response["message"])
+
+    def test_chapter1_sparse_baseline_respects_dairy_avoidance(self):
+        response = create_dinner_decision_session().send("Use what we have, dairy-free, 20 minutes.")
+        lower_message = response["message"].lower()
+
+        self.assertEqual(response["metadata"]["current_recommendation"], "Egg Fried Rice with peas")
+        self.assertIn("Leans on common family staples", response["message"])
+        self.assertIn(ALLERGY_CAVEAT, response["message"])
+        self.assertNotIn("cheese", lower_message)
+        self.assertNotIn("milk", lower_message)
+        self.assertNotIn("yogurt", lower_message)
 
     def test_chapter1_explicit_egg_avoidance_blocks_egg_meal_and_shows_caveat(self):
         session = create_dinner_decision_session()
