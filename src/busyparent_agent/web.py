@@ -172,10 +172,13 @@ HTML = """<!doctype html>
       .input-helper { margin: 0 4px; color: #665b52; font-size: .84rem; font-weight: 760; line-height: 1.32; }
       .input-helper-lead { display: block; color: #3f332b; font-weight: 900; }
       .input-helper-detail { display: block; margin-top: 2px; font-weight: 720; }
-      .prompt-helpers { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
-      .helper-toggle { border: 1px solid rgba(102,91,82,.18); background: rgba(255,255,255,.86); color: #51463f; box-shadow: none; font-size: .88rem; }
-      .helper-toggle:hover { background: #fff7ed; transform: none; }
-      .helper-panel { display: grid; gap: 10px; border: 1px solid rgba(102,91,82,.12); border-radius: 12px; padding: 12px; background: rgba(255,247,237,.62); }
+      .prompt-helper-tabs { display: flex; flex-wrap: wrap; gap: 0; align-items: flex-end; margin-bottom: -13px; padding: 0 4px; }
+      .helper-tab { position: relative; border: 1px solid rgba(102,91,82,.16); border-bottom-color: rgba(102,91,82,.12); border-radius: 12px 12px 0 0; padding: 10px 14px 11px; background: rgba(255,255,255,.68); color: #665b52; box-shadow: none; font-size: .88rem; }
+      .helper-tab + .helper-tab { margin-left: -1px; }
+      .helper-tab:hover { background: #fff7ed; transform: none; }
+      .helper-tab.active, .helper-tab[aria-selected="true"] { z-index: 1; border-color: rgba(194,65,12,.24); border-bottom-color: rgba(255,247,237,.92); background: rgba(255,247,237,.92); color: #7c2d12; box-shadow: 0 -8px 18px rgba(124,45,18,.04); }
+      .helper-tab:focus-visible { outline: 3px solid var(--accent-line); outline-offset: 2px; }
+      .helper-panel { display: grid; gap: 10px; border: 1px solid rgba(194,65,12,.16); border-radius: 12px; padding: 14px 12px 12px; background: rgba(255,247,237,.92); }
       .helper-panel.hidden { display: none; }
       .helper-panel p { margin: 0; color: #665b52; font-size: .86rem; font-weight: 760; line-height: 1.42; }
       .photo-helper-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(160px, auto) auto; gap: 8px; align-items: center; }
@@ -210,6 +213,8 @@ HTML = """<!doctype html>
         .primary { justify-self: stretch; min-width: 88px; }
         .input-copy { grid-column: 1; }
         .input-helper { font-size: .78rem; }
+        .prompt-helper-tabs { margin-bottom: -13px; }
+        .helper-tab { flex: 1 1 50%; padding: 10px 9px 11px; font-size: .82rem; }
         .photo-helper-grid { grid-template-columns: 1fr; }
       }
     </style>
@@ -240,11 +245,11 @@ HTML = """<!doctype html>
               <textarea id="message" rows="3" autocomplete="off" aria-describedby="inputHelper inputNudge" placeholder="Let’s decide dinner. Steer me with some details?"></textarea>
               <p class="input-helper" id="inputHelper"><span class="input-helper-lead">Food, time, energy, picky kids, avoidances — messy is fine.</span></p>
             </div>
-            <div class="prompt-helpers" aria-label="Optional prompt helpers">
-              <button class="helper-toggle" id="samplePromptToggle" type="button" aria-expanded="false" aria-controls="samplePromptPanel">Use a sample night</button>
-              <button class="helper-toggle" id="photoPromptToggle" type="button" aria-expanded="false" aria-controls="photoPromptPanel">Use photo to fill prompt</button>
+            <div class="prompt-helper-tabs" role="tablist" aria-label="Prompt helper tabs">
+              <button class="helper-tab active" id="samplePromptToggle" type="button" role="tab" aria-selected="true" aria-expanded="true" aria-controls="samplePromptPanel">Use a sample night</button>
+              <button class="helper-tab" id="photoPromptToggle" type="button" role="tab" aria-selected="false" aria-expanded="false" aria-controls="photoPromptPanel" tabindex="-1">Use photo to fill prompt</button>
             </div>
-            <section class="helper-panel hidden" id="samplePromptPanel" aria-label="Sample nights that fill the prompt">
+            <section class="helper-panel" id="samplePromptPanel" role="tabpanel" aria-labelledby="samplePromptToggle" aria-label="Sample nights that fill the prompt">
               <p>Pick one to fill the box, then edit anything before submitting.</p>
               <div class="example-chips" aria-label="Example dinner prompts">
                 <button class="example-chip" type="button" data-prompt="10 minutes, rice, frozen peas, picky kid, not in the mood to cook.">10 min, rice + peas</button>
@@ -260,7 +265,7 @@ HTML = """<!doctype html>
               </div>
               <button class="example-expand" id="showMorePrompts" type="button" aria-expanded="false">Show 7 more ready-made prompts</button>
             </section>
-            <section class="helper-panel hidden" id="photoPromptPanel" aria-label="Photo prompt helper">
+            <section class="helper-panel hidden" id="photoPromptPanel" role="tabpanel" aria-labelledby="photoPromptToggle" aria-label="Photo prompt helper">
               <p id="photoTrustNote">Photo is only used to draft this dinner prompt. Edit anything it gets wrong. No pantry memory yet — just tonight’s prompt.</p>
               <div class="photo-helper-grid">
                 <input id="photoPromptInput" type="file" accept="image/*" aria-describedby="photoTrustNote" />
@@ -405,10 +410,18 @@ HTML = """<!doctype html>
         trackEvent("prompt_helper_filled", { source: source || "unknown" });
       }
 
-      function toggleHelperPanel(panel, toggle, forceOpen = null) {
-        const open = forceOpen === null ? panel.classList.contains("hidden") : forceOpen;
-        panel.classList.toggle("hidden", !open);
-        toggle.setAttribute("aria-expanded", String(open));
+      function activateHelperTab(tabName) {
+        const sampleActive = tabName === "sample";
+        samplePromptPanel.classList.toggle("hidden", !sampleActive);
+        photoPromptPanel.classList.toggle("hidden", sampleActive);
+        samplePromptToggle.classList.toggle("active", sampleActive);
+        photoPromptToggle.classList.toggle("active", !sampleActive);
+        samplePromptToggle.setAttribute("aria-selected", String(sampleActive));
+        photoPromptToggle.setAttribute("aria-selected", String(!sampleActive));
+        samplePromptToggle.setAttribute("aria-expanded", String(sampleActive));
+        photoPromptToggle.setAttribute("aria-expanded", String(!sampleActive));
+        samplePromptToggle.tabIndex = sampleActive ? 0 : -1;
+        photoPromptToggle.tabIndex = sampleActive ? -1 : 0;
       }
 
       function photoPromptDraft(source) {
@@ -750,11 +763,19 @@ HTML = """<!doctype html>
       });
 
       samplePromptToggle.addEventListener("click", () => {
-        toggleHelperPanel(samplePromptPanel, samplePromptToggle);
+        activateHelperTab("sample");
       });
 
       photoPromptToggle.addEventListener("click", () => {
-        toggleHelperPanel(photoPromptPanel, photoPromptToggle);
+        activateHelperTab("photo");
+      });
+
+      document.querySelector(".prompt-helper-tabs").addEventListener("keydown", (event) => {
+        if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+        event.preventDefault();
+        const nextTab = samplePromptToggle.getAttribute("aria-selected") === "true" ? photoPromptToggle : samplePromptToggle;
+        activateHelperTab(nextTab === samplePromptToggle ? "sample" : "photo");
+        nextTab.focus();
       });
 
       document.addEventListener("click", (event) => {
@@ -799,6 +820,7 @@ HTML = """<!doctype html>
         autoGrowInput();
       });
 
+      activateHelperTab("sample");
       autoGrowInput();
 
       traceToggle.addEventListener("change", () => {
