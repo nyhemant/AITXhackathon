@@ -122,7 +122,7 @@ HTML = """<!doctype html>
       .chat { display: grid; gap: 12px; min-height: 300px; max-height: 50vh; overflow-y: auto; overscroll-behavior: contain; scroll-behavior: smooth; scroll-padding: 18px; padding: 20px 24px; background: rgba(255,255,255,.28); }
       .empty-state { align-self: start; border: 1px dashed rgba(194,65,12,.22); border-radius: 14px; padding: 16px; background: rgba(255,247,237,.76); color: #5f554d; }
       .empty-state h3 { margin: 0 0 6px; color: #3f332b; font-size: 1rem; }
-      .empty-state p { margin: 0 0 12px; line-height: 1.45; }
+      .empty-state p { margin: 0; line-height: 1.45; }
       .example-chips { display: flex; flex-wrap: wrap; gap: 8px; }
       .example-chip { border: 1px solid rgba(102,91,82,.18); border-radius: 999px; padding: 8px 10px; background: rgba(255,255,255,.88); color: #51463f; box-shadow: none; font-size: .88rem; font-weight: 820; }
       .example-chip:hover { transform: none; background: #fff7ed; }
@@ -164,13 +164,23 @@ HTML = """<!doctype html>
       .agent a:visited { color: #4f46e5; }
       .trace { justify-self: stretch; display: none; border-left: 3px solid var(--accent-line); border-radius: 8px; padding: 11px 12px; background: rgba(255,255,255,.56); color: #65564c; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .8rem; white-space: pre-wrap; }
       .show-trace .trace { display: block; }
-      form { position: relative; display: grid; grid-template-columns: 1fr auto; align-items: start; gap: 10px; padding: 16px; border-top: 1px solid rgba(102,91,82,.1); background: rgba(255,255,255,.82); }
-      .input-copy { min-width: 0; display: grid; gap: 6px; }
-      input[type="text"] { min-width: 0; width: 100%; border: 1px solid rgba(102,91,82,.18); border-radius: 999px; padding: 13px 15px; font: inherit; background: white; }
-      input[type="text"]:focus { outline: 3px solid var(--accent-line); border-color: var(--accent); }
+      form { position: relative; display: grid; gap: 12px; padding: 18px 20px; border-top: 1px solid rgba(102,91,82,.1); border-bottom: 1px solid rgba(102,91,82,.1); background: rgba(255,255,255,.86); }
+      .prompt-label { margin: 0 4px -2px; color: #3f332b; font-size: .86rem; font-weight: 950; letter-spacing: .06em; text-transform: uppercase; }
+      .input-copy { min-width: 0; display: grid; gap: 7px; }
+      textarea { box-sizing: border-box; min-width: 0; width: 100%; min-height: calc(1.48em * 3 + 28px); max-height: calc(1.48em * 10 + 28px); border: 1px solid rgba(102,91,82,.2); border-radius: 14px; padding: 14px 15px; font: inherit; line-height: 1.48; background: white; resize: none; overflow-y: hidden; }
+      textarea:focus { outline: 3px solid var(--accent-line); border-color: var(--accent); }
       .input-helper { margin: 0 4px; color: #665b52; font-size: .84rem; font-weight: 760; line-height: 1.32; }
       .input-helper-lead { display: block; color: #3f332b; font-weight: 900; }
       .input-helper-detail { display: block; margin-top: 2px; font-weight: 720; }
+      .prompt-helpers { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+      .helper-toggle { border: 1px solid rgba(102,91,82,.18); background: rgba(255,255,255,.86); color: #51463f; box-shadow: none; font-size: .88rem; }
+      .helper-toggle:hover { background: #fff7ed; transform: none; }
+      .helper-panel { display: grid; gap: 10px; border: 1px solid rgba(102,91,82,.12); border-radius: 12px; padding: 12px; background: rgba(255,247,237,.62); }
+      .helper-panel.hidden { display: none; }
+      .helper-panel p { margin: 0; color: #665b52; font-size: .86rem; font-weight: 760; line-height: 1.42; }
+      .photo-helper-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(160px, auto) auto; gap: 8px; align-items: center; }
+      .photo-helper-grid input, .photo-helper-grid select { min-width: 0; width: 100%; border: 1px solid rgba(102,91,82,.18); border-radius: 10px; padding: 10px 11px; background: #fff; color: #3f332b; font: inherit; font-size: .9rem; }
+      .photo-helper-grid button { border-radius: 10px; background: #ffedd5; box-shadow: none; }
       .input-nudge { grid-column: 1 / -1; margin: -2px 4px 0; color: #7c2d12; font-size: .86rem; font-weight: 820; }
       .feedback-actions { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 24px 18px; background: rgba(255,255,255,.28); }
       .feedback-action { border: 1px solid rgba(102,91,82,.18); background: rgba(255,255,255,.88); color: #51463f; box-shadow: none; font-size: .88rem; }
@@ -196,10 +206,11 @@ HTML = """<!doctype html>
         .agent { max-width: 100%; }
         .dinner-card { padding: 15px; border-radius: 12px; }
         .effort-chip { width: 100%; justify-content: flex-start; }
-        form { grid-template-columns: 1fr; }
+        form { grid-template-columns: 1fr; padding: 16px; }
         .primary { justify-self: stretch; min-width: 88px; }
         .input-copy { grid-column: 1; }
         .input-helper { font-size: .78rem; }
+        .photo-helper-grid { grid-template-columns: 1fr; }
       }
     </style>
   </head>
@@ -223,10 +234,18 @@ HTML = """<!doctype html>
             </div>
             <p id="roomDescription">What do you have, who needs to eat, and how much effort can dinner take?</p>
           </section>
-          <div id="chat" class="chat" aria-live="polite">
-            <section class="empty-state" id="emptyState" aria-label="Start dinner idea">
-              <h3>No dinner idea yet.</h3>
-              <p>Try an example, or type the messy real-life version.</p>
+          <form id="form" class="prompt-card">
+            <div class="input-copy">
+              <label class="prompt-label" for="message">Start with tonight</label>
+              <textarea id="message" rows="3" autocomplete="off" aria-describedby="inputHelper inputNudge" placeholder="Let’s decide dinner. Steer me with some details?"></textarea>
+              <p class="input-helper" id="inputHelper"><span class="input-helper-lead">Food, time, energy, picky kids, avoidances — messy is fine.</span></p>
+            </div>
+            <div class="prompt-helpers" aria-label="Optional prompt helpers">
+              <button class="helper-toggle" id="samplePromptToggle" type="button" aria-expanded="false" aria-controls="samplePromptPanel">Use a sample night</button>
+              <button class="helper-toggle" id="photoPromptToggle" type="button" aria-expanded="false" aria-controls="photoPromptPanel">Use photo to fill prompt</button>
+            </div>
+            <section class="helper-panel hidden" id="samplePromptPanel" aria-label="Sample nights that fill the prompt">
+              <p>Pick one to fill the box, then edit anything before submitting.</p>
               <div class="example-chips" aria-label="Example dinner prompts">
                 <button class="example-chip" type="button" data-prompt="10 minutes, rice, frozen peas, picky kid, not in the mood to cook.">10 min, rice + peas</button>
                 <button class="example-chip" type="button" data-prompt="Tortillas, eggs, cheese, 20 minutes, low cleanup.">Tortillas, eggs, low cleanup</button>
@@ -241,15 +260,31 @@ HTML = """<!doctype html>
               </div>
               <button class="example-expand" id="showMorePrompts" type="button" aria-expanded="false">Show 7 more ready-made prompts</button>
             </section>
-          </div>
-          <form id="form">
-            <div class="input-copy">
-              <input id="message" type="text" autocomplete="off" aria-describedby="inputHelper inputNudge" placeholder="Tortillas, eggs, picky 6-year-old, 20 min, low-cleanup night" />
-              <p class="input-helper" id="inputHelper"><span class="input-helper-lead">Messy is fine — food, time, avoidances, budget, and mood all help.</span></p>
-            </div>
+            <section class="helper-panel hidden" id="photoPromptPanel" aria-label="Photo prompt helper">
+              <p id="photoTrustNote">Photo is only used to draft this dinner prompt. Edit anything it gets wrong. No pantry memory yet — just tonight’s prompt.</p>
+              <div class="photo-helper-grid">
+                <input id="photoPromptInput" type="file" accept="image/*" aria-describedby="photoTrustNote" />
+                <select id="photoPromptSource" aria-label="What is this photo?">
+                  <option value="fridge">Fridge</option>
+                  <option value="pantry">Pantry</option>
+                  <option value="freezer">Freezer</option>
+                  <option value="counter">Counter / leftovers</option>
+                  <option value="grocery_bag">Grocery bag</option>
+                  <option value="receipt">Grocery receipt</option>
+                  <option value="unsure">Not sure</option>
+                </select>
+                <button id="photoDraftButton" type="button">Draft prompt</button>
+              </div>
+            </section>
             <button class="primary" id="submitButton" type="submit">Get one dinner idea</button>
             <p class="input-nudge hidden" id="inputNudge" aria-live="polite"></p>
           </form>
+          <div id="chat" class="chat" aria-live="polite">
+            <section class="empty-state" id="emptyState" aria-label="Start dinner idea">
+              <h3>No dinner idea yet.</h3>
+              <p>Your editable prompt is above. Sample nights and photos only help fill it — you still choose when to submit.</p>
+            </section>
+          </div>
         </div>
       </section>
       <section class="vision-note" aria-labelledby="why-dinner-first">
@@ -267,6 +302,13 @@ HTML = """<!doctype html>
       const inputHelper = document.querySelector("#inputHelper");
       const inputNudge = document.querySelector("#inputNudge");
       const submitButton = document.querySelector("#submitButton");
+      const samplePromptToggle = document.querySelector("#samplePromptToggle");
+      const samplePromptPanel = document.querySelector("#samplePromptPanel");
+      const photoPromptToggle = document.querySelector("#photoPromptToggle");
+      const photoPromptPanel = document.querySelector("#photoPromptPanel");
+      const photoPromptInput = document.querySelector("#photoPromptInput");
+      const photoPromptSource = document.querySelector("#photoPromptSource");
+      const photoDraftButton = document.querySelector("#photoDraftButton");
       const emptyState = document.querySelector("#emptyState");
       const traceToggle = document.querySelector("#traceToggle");
       const roomHeadline = document.querySelector("#roomHeadline");
@@ -284,10 +326,10 @@ HTML = """<!doctype html>
       };
       const inputCopyByState = {
         start: {
-          placeholder: "Tortillas, eggs, picky 6-year-old, 20 min, low-cleanup night",
-          helper: "Messy is fine — food, time, avoidances, budget, and mood all help.",
-          mobilePlaceholder: "What do you have tonight?",
-          mobileHelper: "Food, time, avoidances, mood."
+          placeholder: "Let’s decide dinner. Steer me with some details?",
+          helper: "Food, time, energy, picky kids, avoidances — messy is fine.",
+          mobilePlaceholder: "Let’s decide dinner. What matters tonight?",
+          mobileHelper: "Food, time, energy, picky kids, avoidances."
         },
         recommendation: {
           placeholder: "Need it easier or more kid-proof?",
@@ -337,7 +379,50 @@ HTML = """<!doctype html>
           inputHelper.appendChild(detail);
         }
         submitButton.textContent = state === "start" ? "Get one dinner idea" : "Adjust idea";
+        autoGrowInput();
         clearInputNudge();
+      }
+
+      function autoGrowInput() {
+        input.style.height = "auto";
+        const styles = window.getComputedStyle(input);
+        const lineHeight = Number.parseFloat(styles.lineHeight) || 22;
+        const maxHeight = lineHeight * 10 + 28;
+        const nextHeight = Math.min(input.scrollHeight, maxHeight);
+        input.style.height = `${nextHeight}px`;
+        input.style.overflowY = input.scrollHeight > maxHeight ? "auto" : "hidden";
+      }
+
+      function fillPromptDraft(text, source) {
+        input.value = text;
+        answerPreviewRequestId += 1;
+        removeAnswerPreview();
+        autoGrowInput();
+        clearInputNudge();
+        showInputNudge("Edit anything I got wrong before submitting.");
+        input.focus();
+        input.setSelectionRange(input.value.length, input.value.length);
+        trackEvent("prompt_helper_filled", { source: source || "unknown" });
+      }
+
+      function toggleHelperPanel(panel, toggle, forceOpen = null) {
+        const open = forceOpen === null ? panel.classList.contains("hidden") : forceOpen;
+        panel.classList.toggle("hidden", !open);
+        toggle.setAttribute("aria-expanded", String(open));
+      }
+
+      function photoPromptDraft(source) {
+        const drafts = {
+          fridge: { label: "fridge", likely: ["eggs", "tortillas", "leftover rice", "frozen peas", "cheese"], maybe: ["yogurt", "carrots", "salsa"] },
+          pantry: { label: "pantry", likely: ["rice", "pasta", "canned beans", "tortillas", "jar sauce"], maybe: ["crackers", "broth", "tuna"] },
+          freezer: { label: "freezer", likely: ["frozen peas", "frozen veggies", "nuggets", "flatbread", "rice"], maybe: ["dumplings", "frozen fruit"] },
+          counter: { label: "counter/leftovers", likely: ["leftover rice", "tortillas", "cut vegetables", "fruit", "bread"], maybe: ["takeout leftovers", "cheese"] },
+          grocery_bag: { label: "grocery bag", likely: ["eggs", "tortillas", "cheese", "bagged salad", "berries"], maybe: ["yogurt", "avocado"] },
+          receipt: { label: "grocery receipt", likely: ["eggs", "tortillas", "cheese", "bagged salad", "rice"], maybe: ["berries", "yogurt"] },
+          unsure: { label: "photo", likely: ["eggs", "tortillas", "rice", "peas", "cheese"], maybe: ["yogurt", "carrots", "salsa"] }
+        };
+        const draft = drafts[source] || drafts.unsure;
+        return `Help me decide dinner tonight. From this ${draft.label} photo, I think I can use: ${draft.likely.join(", ")}. Maybe available: ${draft.maybe.join(", ")}. Ignore anything that seems wrong. I need something low-effort.`;
       }
 
       function inputStateForResponse(response) {
@@ -636,6 +721,7 @@ HTML = """<!doctype html>
         document.querySelectorAll(".feedback-actions").forEach((node) => node.remove());
         removeAnswerPreview();
         input.value = "";
+        autoGrowInput();
         chat.setAttribute("aria-busy", "true");
         const parentBubble = addBubble("parent", message, { isNewTurn: true });
         const thinkingBubble = addThinkingBubble(parentBubble);
@@ -663,6 +749,14 @@ HTML = """<!doctype html>
         await sendCurrentInput();
       });
 
+      samplePromptToggle.addEventListener("click", () => {
+        toggleHelperPanel(samplePromptPanel, samplePromptToggle);
+      });
+
+      photoPromptToggle.addEventListener("click", () => {
+        toggleHelperPanel(photoPromptPanel, photoPromptToggle);
+      });
+
       document.addEventListener("click", (event) => {
         const button = event.target.closest("#showMorePrompts");
         if (!button) return;
@@ -674,18 +768,38 @@ HTML = """<!doctype html>
       document.addEventListener("click", (event) => {
         const button = event.target.closest("[data-prompt]");
         if (!button) return;
-        input.value = button.dataset.prompt;
-        clearInputNudge();
-        previewDinnerIdea(input.value.trim());
-        input.focus();
+        fillPromptDraft(button.dataset.prompt, "sample");
       });
+
+      function fillPhotoPromptDraft() {
+        if (!photoPromptInput.files || !photoPromptInput.files.length) {
+          showInputNudge("Choose or take a photo first — then I’ll draft editable prompt text from it.");
+          photoPromptInput.focus();
+          return;
+        }
+        fillPromptDraft(photoPromptDraft(photoPromptSource.value), "photo");
+      }
+
+      photoPromptInput.addEventListener("change", fillPhotoPromptDraft);
+      photoPromptSource.addEventListener("change", () => {
+        if (photoPromptInput.files && photoPromptInput.files.length) {
+          fillPromptDraft(photoPromptDraft(photoPromptSource.value), "photo_source_change");
+        }
+      });
+      photoDraftButton.addEventListener("click", fillPhotoPromptDraft);
 
       input.addEventListener("input", () => {
         answerPreviewRequestId += 1;
         removeAnswerPreview();
+        autoGrowInput();
       });
 
-      window.addEventListener("resize", () => updateInputCopy(inputCopyState));
+      window.addEventListener("resize", () => {
+        updateInputCopy(inputCopyState);
+        autoGrowInput();
+      });
+
+      autoGrowInput();
 
       traceToggle.addEventListener("change", () => {
         chat.classList.toggle("show-trace", traceToggle.checked);
