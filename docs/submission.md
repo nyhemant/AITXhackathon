@@ -8,9 +8,11 @@ The repo was checked as reachable over unauthenticated HTTPS with `git ls-remote
 
 ## Deployed URL
 
-Deployed URL: <https://aitx.myglucoach.app>
+Deployed URL: <https://1less.app>
 
-Note: Temporary demo tunnel hosted from presenter MacBook Air. Requires the local web app and Cloudflare tunnel to remain running.
+Backup URL: <https://aitx.myglucoach.app>
+
+Note: Demo tunnel hosted from the Mac mini. Requires the local web app and dedicated AITX Cloudflare tunnel to remain running.
 
 ## Demo Video
 

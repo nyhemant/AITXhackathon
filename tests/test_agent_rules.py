@@ -6,7 +6,7 @@ import unittest
 
 from busyparent_agent.agent import BusyParentAgent
 from busyparent_agent.service import ALLERGY_CAVEAT, TYPICAL_FAMILY_STAPLES, create_dinner_decision_session, create_session, parse_now, run_book_scenario
-from busyparent_agent.web import HTML, LOGO_FILENAME, LOGO_PATH, MOBILE_LOGO_FILENAME, MOBILE_LOGO_PATH, PLAN_B_LOGO_FILENAME, PLAN_B_LOGO_PATH, MAX_REQUEST_BYTES, SECURITY_HEADERS, SESSIONS, WebHandler, _dinner_preview_text
+from busyparent_agent.web import HTML, LOGO_FILENAME, LOGO_PATH, MOBILE_LOGO_FILENAME, MOBILE_LOGO_PATH, PLAN_B_LOGO_FILENAME, PLAN_B_LOGO_PATH, MAX_REQUEST_BYTES, SECURITY_HEADERS, SESSIONS, WebHandler, _analytics_cookie_header, _analytics_disabled, _html_for_request, _dinner_preview_text
 from busyparent_agent import tools
 from busyparent_agent import inventory as inventory_engine
 from busyparent_agent.adapters import costco_bulk
@@ -379,6 +379,26 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertTrue(hasattr(handler, "error"))
         return handler.error
 
+    def test_analytics_cookie_opt_out_removes_ga4_tag(self):
+        self.assertFalse(_analytics_disabled(None))
+        self.assertTrue(_analytics_disabled("foo=bar; one_less_analytics=off"))
+        self.assertFalse(_analytics_disabled("one_less_analytics=on"))
+
+        default_html = _html_for_request(None)
+        opted_out_html = _html_for_request("one_less_analytics=off")
+
+        self.assertIn("G-X6V6PNY9ZV", default_html)
+        self.assertNotIn("G-X6V6PNY9ZV", opted_out_html)
+        self.assertIn("One less thing on your plate.", opted_out_html)
+
+    def test_analytics_cookie_scope_covers_1less_www(self):
+        cookie = _analytics_cookie_header("off", "www.1less.app", max_age=31_536_000)
+
+        self.assertIn("one_less_analytics=off", cookie)
+        self.assertIn("Domain=1less.app", cookie)
+        self.assertIn("Path=/", cookie)
+        self.assertIn("SameSite=Lax", cookie)
+
     def test_chat_recovers_from_stale_session_id_after_server_restart(self):
         SESSIONS.clear()
         payload = self.handle_chat({
@@ -499,7 +519,14 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertNotIn('button.classList.toggle("pressed", pressed)', HTML)
         self.assertNotIn('button.setAttribute("aria-pressed", String(pressed))', HTML)
         self.assertNotIn("clearScenarioState();", HTML)
+        default_html = _html_for_request(None)
+        opted_out_html = _html_for_request("one_less_analytics=off")
         self.assertIn('<body data-mode="dinner">', HTML)
+        self.assertIn('https://www.googletagmanager.com/gtag/js?id=G-X6V6PNY9ZV', default_html)
+        self.assertIn("gtag('config', 'G-X6V6PNY9ZV');", default_html)
+        self.assertNotIn('https://www.googletagmanager.com/gtag/js?id=G-X6V6PNY9ZV', opted_out_html)
+        self.assertNotIn("gtag('config', 'G-X6V6PNY9ZV');", opted_out_html)
+        self.assertIn("https://www.google-analytics.com", SECURITY_HEADERS["Content-Security-Policy"])
         self.assertIn("document.body.dataset.mode = activeMode", HTML)
         self.assertIn("mode: activeMode", HTML)
         self.assertNotIn('id="promptButton"', HTML)
@@ -537,8 +564,11 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertIn('article.className = `dinner-card${options.isNewTurn ? " new-turn" : ""}`', HTML)
         self.assertIn('scroll-behavior: smooth', HTML)
         self.assertIn('class="thinking-dots"', HTML)
-        self.assertIn('.answer-preview { justify-self: stretch;', HTML)
-        self.assertIn('.answer-preview::before { content: "Preview";', HTML)
+        self.assertIn('.answer-preview { justify-self: stretch; position: relative;', HTML)
+        self.assertIn('.answer-preview::before { content: "Preview only";', HTML)
+        self.assertIn('.answer-preview-text { display: block; max-height: 4.5em;', HTML)
+        self.assertIn('mask-image: linear-gradient(180deg, #000 48%', HTML)
+        self.assertIn('.answer-preview-helper { display: block;', HTML)
         self.assertIn('@keyframes previewGlow', HTML)
         self.assertIn('.new-turn, .answer-preview, .thinking-dots::after { animation: none; }', HTML)
         self.assertIn('@media (prefers-reduced-motion: reduce)', HTML)
@@ -551,6 +581,10 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertIn('async function previewDinnerIdea(message)', HTML)
         self.assertIn('const data = await postJson("/api/preview", { message, mode: activeMode });', HTML)
         self.assertIn('renderAnswerPreview(data.preview);', HTML)
+        self.assertIn('previewText.className = "answer-preview-text";', HTML)
+        self.assertIn('helper.className = "answer-preview-helper";', HTML)
+        self.assertIn('This is just a preview — press Get one dinner idea for the full plan', HTML)
+        self.assertIn('answerPreviewBubble.replaceChildren(previewText, helper);', HTML)
         self.assertIn('chat.setAttribute("aria-busy", "true")', HTML)
         self.assertIn('renderResponse(data.response, { skipParent: true, turnStart: parentBubble, replaceNode: thinkingBubble })', HTML)
         self.assertIn("function parseDinnerMessage(message)", HTML)

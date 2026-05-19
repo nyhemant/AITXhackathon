@@ -27,6 +27,15 @@ PLAN_B_LOGO_PATH = Path(__file__).resolve().parents[2] / PLAN_B_LOGO_FILENAME
 MOBILE_LOGO_PATH = LOGO_PATH
 LOGO_ASSETS = {LOGO_FILENAME: LOGO_PATH, PLAN_B_LOGO_FILENAME: PLAN_B_LOGO_PATH}
 MAX_REQUEST_BYTES = 24_000
+ANALYTICS_COOKIE = "one_less_analytics"
+ANALYTICS_OFF_VALUE = "off"
+GA4_SNIPPET = """    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X6V6PNY9ZV"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-X6V6PNY9ZV');
+    </script>"""
 SECURITY_HEADERS = {
     "Content-Security-Policy": (
         "default-src 'self'; "
@@ -53,13 +62,7 @@ HTML = """<!doctype html>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>1Less</title>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6ZSEMN130R"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-6ZSEMN130R');
-    </script>
+{ga4_snippet}
     <style>
       :root {
         color: #27211d;
@@ -133,8 +136,10 @@ HTML = """<!doctype html>
       .thinking { justify-self: stretch; max-width: 100%; border: 1px dashed rgba(194,65,12,.28); border-left: 5px solid var(--accent-line); border-radius: 8px; padding: 13px 15px; background: rgba(255,247,237,.86); color: #665b52; font-weight: 800; }
       .thinking-dots::after { content: ""; display: inline-block; width: 1.4em; text-align: left; animation: dots 1.1s steps(4, end) infinite; }
       .parent { justify-self: end; background: #2f2924; color: white; border-bottom-right-radius: 2px; box-shadow: 0 12px 28px rgba(39,33,29,.12); }
-      .answer-preview { justify-self: stretch; max-width: 100%; border: 1px solid rgba(194,65,12,.14); border-left: 5px solid rgba(194,65,12,.32); border-radius: 8px; padding: 14px 16px; background: rgba(255,237,213,.5); color: #5f554d; box-shadow: 0 10px 24px rgba(194,65,12,.06); opacity: .86; animation: previewGlow 1.4s ease-out; }
-      .answer-preview::before { content: "Preview"; display: block; margin-bottom: 6px; color: #9a3412; font-size: .72rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
+      .answer-preview { justify-self: stretch; position: relative; max-width: 100%; border: 1px dashed rgba(194,65,12,.18); border-left: 5px solid rgba(194,65,12,.18); border-radius: 8px; padding: 14px 16px 13px; background: rgba(255,247,237,.42); color: rgba(95,85,77,.66); box-shadow: 0 8px 20px rgba(194,65,12,.035); opacity: .76; animation: previewGlow 1.4s ease-out; }
+      .answer-preview::before { content: "Preview only"; display: block; margin-bottom: 6px; color: rgba(154,52,18,.68); font-size: .72rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
+      .answer-preview-text { display: block; max-height: 4.5em; overflow: hidden; -webkit-mask-image: linear-gradient(180deg, #000 48%, rgba(0,0,0,.7) 72%, transparent 100%); mask-image: linear-gradient(180deg, #000 48%, rgba(0,0,0,.7) 72%, transparent 100%); }
+      .answer-preview-helper { display: block; margin-top: 10px; border-top: 1px solid rgba(194,65,12,.11); padding-top: 9px; color: rgba(124,45,18,.78); font-size: .83rem; font-weight: 850; white-space: normal; }
       .agent { justify-self: stretch; max-width: 100%; border: 1px solid rgba(102,91,82,.14); border-left: 5px solid var(--accent); border-radius: 8px; padding: 18px 20px; background: rgba(255,255,255,.9); box-shadow: 0 18px 38px rgba(39,33,29,.08); color: #2d2722; }
       .agent::before { content: "Recommendation"; display: block; margin-bottom: 8px; color: var(--accent-dark); font-size: .74rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
       .dinner-card { justify-self: stretch; max-width: 100%; border: 1px solid rgba(124,45,18,.18); border-left: 5px solid var(--accent); border-radius: 14px; padding: 18px; background: linear-gradient(135deg, rgba(255,255,255,.96), rgba(255,247,237,.92)); box-shadow: 0 18px 38px rgba(39,33,29,.08); color: #2d2722; }
@@ -412,7 +417,13 @@ HTML = """<!doctype html>
           answerPreviewBubble.setAttribute("aria-label", "Dinner idea preview");
           placeChatNode(answerPreviewBubble);
         }
-        answerPreviewBubble.textContent = text;
+        const previewText = document.createElement("span");
+        previewText.className = "answer-preview-text";
+        previewText.textContent = text;
+        const helper = document.createElement("span");
+        helper.className = "answer-preview-helper";
+        helper.textContent = "This is just a preview — press Get one dinner idea for the full plan, or choose another pill to preview a different starting point.";
+        answerPreviewBubble.replaceChildren(previewText, helper);
         scrollTurnIntoView(answerPreviewBubble, "smooth");
         return answerPreviewBubble;
       }
@@ -685,6 +696,35 @@ HTML = """<!doctype html>
 """
 
 
+def _cookie_values(cookie_header: str | None) -> dict[str, str]:
+    cookies: dict[str, str] = {}
+    if not cookie_header:
+        return cookies
+    for item in cookie_header.split(";"):
+        if "=" not in item:
+            continue
+        name, value = item.split("=", 1)
+        cookies[name.strip()] = value.strip()
+    return cookies
+
+
+def _analytics_disabled(cookie_header: str | None) -> bool:
+    return _cookie_values(cookie_header).get(ANALYTICS_COOKIE) == ANALYTICS_OFF_VALUE
+
+
+def _html_for_request(cookie_header: str | None) -> str:
+    snippet = "" if _analytics_disabled(cookie_header) else GA4_SNIPPET
+    return HTML.replace("{ga4_snippet}", snippet)
+
+
+def _analytics_cookie_header(value: str, host_header: str | None, *, max_age: int) -> str:
+    parts = [f"{ANALYTICS_COOKIE}={value}", f"Max-Age={max_age}", "Path=/", "SameSite=Lax", "HttpOnly"]
+    host = (host_header or "").split(":", 1)[0].lower()
+    if host == "1less.app" or host.endswith(".1less.app"):
+        parts.insert(2, "Domain=1less.app")
+    return "; ".join(parts)
+
+
 def _image_content_type(path: Path) -> str:
     if path.suffix == ".svg":
         return "image/svg+xml"
@@ -702,6 +742,15 @@ def _dinner_preview_text(message_text: str) -> str:
 class WebHandler(BaseHTTPRequestHandler):
     def do_GET(self) -> None:
         path = urlsplit(self.path).path
+        if path == "/analytics/off":
+            self._handle_analytics_toggle(enabled=False)
+            return
+        if path == "/analytics/on":
+            self._handle_analytics_toggle(enabled=True)
+            return
+        if path == "/analytics/status":
+            self._handle_analytics_status()
+            return
         asset_path = LOGO_ASSETS.get(path.lstrip("/"))
         if asset_path is not None:
             if not asset_path.exists():
@@ -712,7 +761,7 @@ class WebHandler(BaseHTTPRequestHandler):
         if path not in {"/", "/index.html"}:
             self.send_error(404)
             return
-        self._send_text(HTML, "text/html; charset=utf-8")
+        self._send_text(_html_for_request(self.headers.get("Cookie")), "text/html; charset=utf-8")
 
     def do_HEAD(self) -> None:
         path = urlsplit(self.path).path
@@ -721,7 +770,7 @@ class WebHandler(BaseHTTPRequestHandler):
             self.send_error(404)
             return
         content_type = _image_content_type(asset_path) if asset_path is not None else "text/html; charset=utf-8"
-        length = asset_path.stat().st_size if asset_path is not None and asset_path.exists() else len(HTML.encode("utf-8"))
+        length = asset_path.stat().st_size if asset_path is not None and asset_path.exists() else len(_html_for_request(self.headers.get("Cookie")).encode("utf-8"))
         self.send_response(200)
         self.send_header("Content-Type", content_type)
         self.send_header("Content-Length", str(length))
@@ -739,6 +788,34 @@ class WebHandler(BaseHTTPRequestHandler):
             self._handle_scenario()
             return
         self.send_error(404)
+
+    def _handle_analytics_toggle(self, *, enabled: bool) -> None:
+        if enabled:
+            cookie = _analytics_cookie_header("on", self.headers.get("Host"), max_age=0)
+            status = "included"
+            body = "Google Analytics included for this browser. Visit /analytics/off to exclude testing again."
+        else:
+            cookie = _analytics_cookie_header(ANALYTICS_OFF_VALUE, self.headers.get("Host"), max_age=31_536_000)
+            status = "excluded"
+            body = "Google Analytics excluded for this browser. Visit /analytics/on to include traffic again."
+        self.send_response(200)
+        self.send_header("Content-Type", "text/plain; charset=utf-8")
+        self.send_header("Set-Cookie", cookie)
+        self.send_header("X-Analytics-Status", status)
+        self.send_header("Content-Length", str(len(body.encode("utf-8"))))
+        self.end_headers()
+        self.wfile.write(body.encode("utf-8"))
+
+    def _handle_analytics_status(self) -> None:
+        disabled = _analytics_disabled(self.headers.get("Cookie"))
+        status = "excluded" if disabled else "included"
+        body = f"Google Analytics {status} for this browser. Use /analytics/off to exclude testing or /analytics/on to include traffic."
+        self.send_response(200)
+        self.send_header("Content-Type", "text/plain; charset=utf-8")
+        self.send_header("X-Analytics-Status", status)
+        self.send_header("Content-Length", str(len(body.encode("utf-8"))))
+        self.end_headers()
+        self.wfile.write(body.encode("utf-8"))
 
     def _handle_chat(self) -> None:
         try:
