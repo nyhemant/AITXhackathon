@@ -1,16 +1,16 @@
 # Official Codex Task Packet — 1Less Chapter 1 Dinner Decision MVP v0
 
-**Status:** Drafted by Ginnie for Hemant approval. Do **not** execute Codex until Hemant approves.
+**Status:** Archived Chapter 1 implementation packet. Keep for historical context; do not treat as the current overhaul prompt.
 
 ## Source of truth
 
-- GitHub: <https://github.com/nyhemant/AITXhackathon>
+- GitHub: <https://github.com/nyhemant/AITXhackathon> — legacy repo name; product name is 1Less.
 - Only active local working copy: `/Users/arku/Projects/AITXhackathon` on the Mac mini
 - Do not use MacBook Air or iCloud Drive copies.
 
 ## Current repo context
 
-The existing app is a plain Python demo under `src/busyparent_agent/` with:
+The existing app is a plain Python implementation under `src/busyparent_agent/` with:
 
 - deterministic dinner agent: `agent.py`, `tools.py`, `service.py`
 - local web UI/server: `web.py`
@@ -19,7 +19,7 @@ The existing app is a plain Python demo under `src/busyparent_agent/` with:
 - current test command: `python3 -m unittest discover -s tests`
 - current local run command: `python3 -m busyparent_agent.web --host 0.0.0.0 --port 8000`
 
-The app currently presents **BusyMom Agent** with two tabs: Dinner Planner and Story Picker. The next build should reposition the product toward **1Less** while keeping the implementation narrow and avoiding a broad multi-chapter platform.
+This packet captured the transition from the earlier BusyMom/Story Picker prototype toward **1Less**. Going forward, new work should treat 1Less as the standalone product and keep old names as implementation history only.
 
 ## Objective
 
@@ -38,7 +38,7 @@ The build should prove this product test:
 
 ## Scope
 
-Make the smallest coherent changes needed to turn the existing BusyMom demo into a 1Less Chapter 1 MVP flow.
+Make the smallest coherent changes needed to advance the existing implementation as a 1Less Chapter 1 MVP flow.
 
 ### 1. Branding/copy repositioning
 
@@ -277,7 +277,7 @@ Task: Implement 1Less Chapter 1 — Dinner Decision MVP Flow v0.
 Read docs/product/1less_mvp_product_brief_v0.2.md and docs/product/1less_codex_task_packet_chapter1_v0.md first.
 
 Objective:
-Reposition the existing BusyMom Agent demo toward 1Less: parent decision relief, starting with dinner. Make the dinner flow feel like one low-burden decision helper, not a recipe browser or full meal-planning system.
+Advance the existing implementation as 1Less: parent decision relief, starting with dinner. Make the dinner flow feel like one low-burden decision helper, not a recipe browser or full meal-planning system.
 
 Scope:
 - Update public-facing web/docs copy to 1Less.

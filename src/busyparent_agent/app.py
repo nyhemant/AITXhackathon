@@ -1,4 +1,4 @@
-"""Command-line entry point for the BusyMom Agent demo."""
+"""Command-line entry point for local 1Less validation."""
 
 from __future__ import annotations
 
@@ -22,14 +22,14 @@ FIRST_DEMO_MESSAGES = [
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Run the BusyMom Agent local demo."
+        description="Run the local 1Less validation CLI."
     )
     parser.add_argument("--trace", action="store_true", help="Print tool calls and decisions.")
-    parser.add_argument("--demo", action="store_true", help="Run the scripted hackathon demo conversation.")
+    parser.add_argument("--demo", action="store_true", help="Run the scripted legacy validation conversation.")
     parser.add_argument(
         "--scenario",
         choices=["dinner", "lunch", "guest", "book"],
-        help="Run a short judge-friendly scenario.",
+        help="Run a short local validation scenario.",
     )
     parser.add_argument("--now", help='Override current time, for example: "2026-05-08 17:30".')
     return parser.parse_args()

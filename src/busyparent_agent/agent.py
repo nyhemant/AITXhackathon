@@ -1,4 +1,4 @@
-"""A tiny deterministic agent loop for BusyMom Agent."""
+"""A tiny deterministic agent loop for legacy 1Less dinner flows."""
 
 from __future__ import annotations
 

@@ -1,4 +1,4 @@
-"""Deterministic photo scan adapter for the hackathon demo.
+"""Deterministic photo scan adapter for local 1Less validation.
 
 This module never reads image pixels and never calls a camera, OCR, or vision
 API. It returns local fixture outputs that model what a future adapter could

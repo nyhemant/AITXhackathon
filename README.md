@@ -1,14 +1,14 @@
 # 1Less
 
-1Less is a parent decision-relief demo.
+1Less is a standalone parent decision-relief product.
 
 Company promise: **One less decision for busy parents.**
 
 Chapter 1 promise: **Tonight's dinner, decided.**
 
-This implementation starts with a narrow dinner decision flow. A parent gives only the context needed for tonight: time, energy, simple constraints, optional ingredients, and anything to avoid. 1Less returns one practical dinner recommendation, not a recipe browser or weekly planning system.
+The current product starts with a narrow dinner decision flow. A parent gives only the context needed for tonight: time, energy, simple constraints, optional ingredients, and anything to avoid. 1Less returns one practical dinner recommendation, not a recipe browser, weekly planner, nutrition tracker, or family command center.
 
-## Chapter 1 Flow
+## Current Product Surface
 
 The local web app supports:
 
@@ -29,7 +29,22 @@ This MVP does not claim allergy safety, nutrition optimization, medical diet sup
 
 It does not ask for child names, medical conditions, precise location, detailed health or nutrition goals, school schedules, pantry/fridge photos, or grocery purchase history.
 
-The existing repository still contains older deterministic demo internals and Story Picker code from prior hackathon work. This Chapter 1 pass keeps that code intact where possible, but the public dinner web flow is the active 1Less MVP surface.
+## Standalone Product Status
+
+Treat this repository as the active standalone 1Less product workspace going forward.
+
+Two implementation details remain for continuity and low-risk iteration:
+
+- The GitHub repository is still `nyhemant/AITXhackathon` until a future repo rename/migration.
+- The Python package is still `busyparent_agent` until a future refactor.
+
+Do not use either name as product branding in new documentation, product copy, outreach, or roadmap work.
+
+Legacy model 1.1 is frozen for rollback/reference at:
+
+- Branch: `legacy/model-1.1`
+- Tag: `legacy-model-1.1`
+- Notes: `docs/legacy/model-1.1.md`
 
 ## Quick Start
 
@@ -67,6 +82,14 @@ Then browse to:
 http://127.0.0.1:8001
 ```
 
+## Documentation
+
+- Current product reference: `docs/product-reference.md`
+- Local validation guide: `docs/demo.md`
+- Product research and planning: `docs/product/`
+- Legacy model 1.1 freeze: `docs/legacy/model-1.1.md`
+- Archived historical prototype docs: `docs/archive/`
+
 ## Project Structure
 
 ```text
@@ -74,8 +97,9 @@ src/busyparent_agent/
   app.py      legacy CLI entry point
   service.py  channel-neutral service helpers and Chapter 1 dinner MVP session
   web.py      stdlib local web chat adapter
-  agent.py    older deterministic dinner demo internals
+  agent.py    older deterministic dinner internals
   tools.py    older local mocked tools
 tests/        unittest coverage
-docs/product/ source-of-truth product brief and task packet
+docs/product/ source-of-truth product research, briefs, and planning
+docs/archive/ historical prototype and deprecated concept material
 ```

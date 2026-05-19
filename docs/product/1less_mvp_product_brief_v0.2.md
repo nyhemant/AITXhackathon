@@ -433,7 +433,7 @@ Non-goals:
 - Do not add heavy profile setup
 - Do not make medical/nutrition/allergy guarantees
 - Do not touch unrelated files
-- Do not use any local repo except /Users/arku/Projects/AITXhackathon
+- Use the active local 1Less working copy at /Users/arku/Projects/AITXhackathon until the repo is renamed
 
 Acceptance criteria:
 
@@ -492,8 +492,8 @@ Before any Codex execution, Ginnie should verify:
 
 Source of truth:
 
-- GitHub repo is https://github.com/nyhemant/AITXhackathon
-- Only active local repo is /Users/arku/Projects/AITXhackathon on Mac mini
+- GitHub repo is https://github.com/nyhemant/AITXhackathon — legacy repo name; product name is 1Less
+- Only active local 1Less working copy is /Users/arku/Projects/AITXhackathon on Mac mini until repo rename
 - No MacBook Air or iCloud Drive copy is being used
 
 Repo state:

@@ -2,8 +2,8 @@
 
 Date: 2026-05-16  
 Prepared for: Hemant, OpenClaw / Ginnie  
-Project: 1Less / BusyMom / AITXhackathon  
-Repo source of truth: `/Users/arku/Projects/AITXhackathon`  
+Project: 1Less  
+Repo source of truth: `/Users/arku/Projects/AITXhackathon` until repo rename  
 Related prior artifact: `docs/product/1less_reddit_community_observation_scan_2026-05-16.md`
 
 ## Executive recommendation

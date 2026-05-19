@@ -1,3 +1,3 @@
-"""BusyMom Agent local demo."""
+"""1Less local product prototype."""
 
 __all__ = ["agent", "tools"]

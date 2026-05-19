@@ -1,7 +1,7 @@
-"""Local tools for BusyMom Agent.
+"""Local tools for the 1Less prototype.
 
-These functions intentionally use mocked JSON files. The hackathon demo is about
-the agent loop and decisions, not external API plumbing.
+These functions intentionally use mocked JSON files. Current local validation is about
+the decision flow and product boundaries, not external API plumbing.
 """
 
 from __future__ import annotations
@@ -110,7 +110,7 @@ def inventory_items(inventory: dict[str, Any]) -> set[str]:
 def check_delivery_window(now: datetime, trace: TraceFn = None) -> dict[str, Any]:
     """Choose delivery posture from time of day.
 
-    Deterministic hackathon rules:
+    Deterministic local-validation rules:
     - Before 3:00 p.m., a grocery run or delivery can shape dinner.
     - 3:00-4:29 p.m., allow only a small missing list.
     - 4:30 p.m. and later, lead with pantry-first meals.
