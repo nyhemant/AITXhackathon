@@ -523,8 +523,9 @@
   }
 
   function buildTreasureSheet(venue, trip) {
-    const hunts = venue.treasureHunt || [];
-    const rows = hunts
+    // Keep print content bounded so letter always stays one page
+    const hunts = (venue.treasureHunt || []).slice(0, 8);
+    const huntHtml = hunts
       .map(
         (h, i) => `
       <div class="th-row">
@@ -536,7 +537,7 @@
       .join("");
     const ids = (trip && trip.selectedAnimalIds) || venue.featuredAnimalIds || [];
     const stars = ids
-      .slice(0, 10)
+      .slice(0, 6)
       .map((id) => {
         const it = getItem(id);
         return it ? `<span class="th-chip">${it.emoji || "•"} ${escapeHtml(it.name)}</span>` : "";
@@ -546,25 +547,25 @@
       <div class="th-page">
         <div class="th-banner">
           <h1>🗺️ TREASURE HUNT</h1>
-          <p>Print before you go · Baby’s Day Out</p>
+          <p>One page · Baby’s Day Out</p>
         </div>
         <div class="th-meta">
-          <p><strong>Place:</strong> ${escapeHtml(venue.name)}</p>
-          <p><strong>Where:</strong> ${escapeHtml(venue.location || "")}</p>
-          <p><strong>Explorer:</strong> <span class="write-in-line">________________</span> <span class="write-in-hint">(write name)</span> &nbsp;&nbsp; <strong>Date:</strong> ____________</p>
+          <p><strong>Place:</strong> ${escapeHtml(venue.name)}
+          &nbsp;·&nbsp; <strong>Where:</strong> ${escapeHtml(venue.location || "")}</p>
+          <p><strong>Explorer:</strong> <span class="write-in-line">________________</span>
+          &nbsp;&nbsp; <strong>Date:</strong> ____________</p>
         </div>
-        <p class="th-intro">Find or try each one. Check the box when you do. No rush — have fun!</p>
-        <div class="th-list">${rows}</div>
+        <p class="th-intro">Check each box when you find it. No rush!</p>
+        <div class="th-list">${huntHtml}</div>
         <div class="th-stars">
-          <p class="th-stars-title">Star list (from your outing)</p>
+          <p class="th-stars-title">Star list (top picks)</p>
           <div class="th-chips">${stars}</div>
         </div>
         <div class="th-map">
-          <p class="th-map-title">My path doodle</p>
-          <p class="th-map-hint">Draw where you went</p>
+          <p class="th-map-title">Path doodle <span class="th-map-hint">— start → favorite → end</span></p>
           <div class="th-map-box"></div>
         </div>
-        <p class="th-footer">After (optional): open Baby's Day Out → tap a card → Q&A</p>
+        <p class="th-footer">Optional after: open Baby's Day Out → tap a card → Q&A</p>
       </div>`;
   }
 

@@ -737,11 +737,6 @@ window.FIELD_PACK_VENUES = {
       "jellyfish",
       "clownfish",
       "sea-turtle",
-      "octopus",
-      "eel",
-      "crab",
-      "starfish",
-      "freshwater-fish",
     ],
     animalIds: [
       "shark",

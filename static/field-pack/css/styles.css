@@ -1078,9 +1078,10 @@ a {
 }
 
 @media print {
+  /* One letter page — keep hunt + Q&A cards from spilling */
   @page {
     size: letter portrait;
-    margin: 0.4in;
+    margin: 0.28in;
   }
 
   html,
@@ -1088,7 +1089,8 @@ a {
     background: white !important;
     padding: 0 !important;
     margin: 0 !important;
-    min-height: 0;
+    min-height: 0 !important;
+    height: auto !important;
   }
 
   .app,
@@ -1102,7 +1104,6 @@ a {
     font-family: "Segoe UI", system-ui, sans-serif;
   }
 
-  /* Mission card print (default when #print-sheet has content) */
   body:not(.printing-treasure) #print-sheet:not(:empty) {
     display: block !important;
   }
@@ -1119,73 +1120,86 @@ a {
     box-sizing: border-box;
   }
 
+  /* Force single page: sheet fills printable area, no second page */
+  body.printing-treasure #treasure-sheet,
+  body:not(.printing-treasure) #print-sheet:not(:empty) {
+    max-height: 10.2in;
+    overflow: hidden;
+    page-break-after: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* ---- Mission / Q&A card (one page) ---- */
   .ps-banner {
     background: #0f5c5c;
     color: white;
     text-align: center;
-    border-radius: 10px;
-    padding: 8px 12px;
-    margin-bottom: 10px;
+    border-radius: 8px;
+    padding: 5px 8px;
+    margin-bottom: 6px;
   }
 
   .ps-banner h1 {
     margin: 0;
-    font-size: 16pt;
+    font-size: 13pt;
+    line-height: 1.1;
   }
 
   .ps-banner p {
-    margin: 2px 0 0;
-    font-size: 9pt;
+    margin: 1px 0 0;
+    font-size: 8pt;
     opacity: 0.95;
   }
 
   .ps-hero {
     display: grid;
-    grid-template-columns: 2.4in 1fr;
-    gap: 12px;
-    border: 2px solid #1f6b4a;
-    border-radius: 12px;
-    padding: 10px;
-    margin-bottom: 10px;
+    grid-template-columns: 1.35in 1fr;
+    gap: 8px;
+    border: 1.5px solid #1f6b4a;
+    border-radius: 8px;
+    padding: 6px;
+    margin-bottom: 6px;
   }
 
   .ps-hero img {
     width: 100%;
-    height: 2.1in;
+    height: 1.15in;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 6px;
     border: 1px solid #c5d4e4;
   }
 
   .ps-hero h2 {
-    margin: 0 0 6px;
-    font-size: 22pt;
+    margin: 0 0 2px;
+    font-size: 14pt;
     line-height: 1.05;
   }
 
   .ps-hero .ps-meta {
     margin: 0;
-    font-size: 11pt;
+    font-size: 8.5pt;
     color: #3d4f6f;
+    line-height: 1.25;
   }
 
   .ps-hero .ps-line {
-    margin: 8px 0 0;
-    font-size: 11pt;
+    margin: 3px 0 0;
+    font-size: 9pt;
   }
 
   .ps-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 8px;
+    gap: 5px;
   }
 
   .ps-card {
     border: 1.5px solid #1f6b4a;
-    border-radius: 10px;
-    padding: 8px 10px 6px;
+    border-radius: 7px;
+    padding: 5px 7px 4px;
     break-inside: avoid;
-    min-height: 1.85in;
+    min-height: 0;
   }
 
   .ps-card.c0 { background: #ffe4c4; }
@@ -1198,17 +1212,17 @@ a {
   .ps-card-head {
     display: flex;
     align-items: center;
-    gap: 6px;
-    margin-bottom: 2px;
+    gap: 4px;
+    margin-bottom: 1px;
   }
 
   .ps-num {
-    width: 18px;
-    height: 18px;
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
     background: #0f5c5c;
     color: white;
-    font-size: 10pt;
+    font-size: 8pt;
     font-weight: 800;
     display: grid;
     place-items: center;
@@ -1216,44 +1230,46 @@ a {
 
   .ps-title {
     margin: 0;
-    font-size: 9pt;
+    font-size: 7.5pt;
     font-weight: 800;
     color: #0f5c5c;
     text-transform: uppercase;
   }
 
   .ps-q {
-    margin: 0 0 6px;
-    font-size: 13pt;
+    margin: 0 0 3px;
+    font-size: 9.5pt;
     font-weight: 900;
+    line-height: 1.15;
   }
 
   .ps-choices {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 4px 8px;
+    gap: 2px 6px;
   }
 
   .ps-choice {
     display: flex;
     align-items: center;
-    gap: 6px;
-    font-size: 10.5pt;
+    gap: 4px;
+    font-size: 8pt;
     font-weight: 700;
+    line-height: 1.15;
   }
 
   .ps-dot {
-    width: 12px;
-    height: 12px;
+    width: 9px;
+    height: 9px;
     border-radius: 50%;
-    border: 2px solid #0f5c5c;
+    border: 1.5px solid #0f5c5c;
     flex: 0 0 auto;
     background: white;
   }
 
   .ps-choice.on .ps-dot {
     background: #0f5c5c;
-    box-shadow: inset 0 0 0 2px white;
+    box-shadow: inset 0 0 0 1.5px white;
   }
 
   .ps-choice.on {
@@ -1261,109 +1277,115 @@ a {
   }
 
   .ps-footer {
-    margin-top: 8px;
+    margin-top: 4px;
     text-align: center;
-    font-size: 8pt;
+    font-size: 7pt;
     color: #3d4f6f;
   }
 
   .ps-taught {
-    margin-top: 6px;
-    font-size: 11pt;
+    margin-top: 3px;
+    font-size: 9pt;
     font-weight: 800;
     color: #d9652e;
   }
 
-  /* Treasure hunt one-pager */
+  /* ---- Treasure hunt (one page) ---- */
   .th-page {
     color: #152238;
+    page-break-inside: avoid;
+    break-inside: avoid;
   }
 
   .th-banner {
     background: #0f5c5c;
     color: white;
     text-align: center;
-    border-radius: 10px;
-    padding: 10px 12px;
-    margin-bottom: 10px;
+    border-radius: 8px;
+    padding: 5px 8px;
+    margin-bottom: 5px;
   }
 
   .th-banner h1 {
     margin: 0;
-    font-size: 18pt;
+    font-size: 14pt;
+    line-height: 1.1;
   }
 
   .th-banner p {
-    margin: 3px 0 0;
-    font-size: 10pt;
+    margin: 1px 0 0;
+    font-size: 8pt;
   }
 
   .th-meta {
-    border: 2px solid #1f6b4a;
-    border-radius: 10px;
-    padding: 10px 12px;
-    margin-bottom: 8px;
-    font-size: 11pt;
+    border: 1.5px solid #1f6b4a;
+    border-radius: 7px;
+    padding: 5px 8px;
+    margin-bottom: 4px;
+    font-size: 9pt;
+    line-height: 1.25;
   }
 
   .th-meta p {
-    margin: 3px 0;
+    margin: 1px 0;
   }
 
   .th-intro {
-    font-size: 12pt;
+    font-size: 9pt;
     font-weight: 700;
-    margin: 0 0 8px;
+    margin: 0 0 4px;
+    line-height: 1.25;
   }
 
   .th-list {
     display: grid;
-    gap: 6px;
-    margin-bottom: 10px;
+    gap: 3px;
+    margin-bottom: 5px;
   }
 
   .th-row {
     display: grid;
-    grid-template-columns: 22px 22px 1fr;
-    gap: 8px;
+    grid-template-columns: 16px 16px 1fr;
+    gap: 5px;
     align-items: center;
-    border: 1.5px solid #1f6b4a;
-    border-radius: 8px;
-    padding: 8px 10px;
+    border: 1.25px solid #1f6b4a;
+    border-radius: 6px;
+    padding: 3px 6px;
     background: #f3faf6;
-    font-size: 12pt;
+    font-size: 9.5pt;
     font-weight: 700;
+    line-height: 1.2;
   }
 
   .th-box {
-    width: 18px;
-    height: 18px;
-    border: 2.5px solid #0f5c5c;
-    border-radius: 4px;
+    width: 13px;
+    height: 13px;
+    border: 2px solid #0f5c5c;
+    border-radius: 3px;
     background: white;
   }
 
   .th-num {
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     border-radius: 50%;
     background: #0f5c5c;
     color: white;
-    font-size: 10pt;
+    font-size: 8pt;
     display: grid;
     place-items: center;
   }
 
   .th-stars {
-    margin: 8px 0;
-    padding: 8px;
-    border: 1.5px dashed #c45c26;
-    border-radius: 10px;
+    margin: 0 0 4px;
+    padding: 4px 6px;
+    border: 1.25px dashed #c45c26;
+    border-radius: 7px;
   }
 
   .th-stars-title {
-    margin: 0 0 6px;
-    font-size: 11pt;
+    margin: 0 0 3px;
+    font-size: 8.5pt;
     font-weight: 800;
     color: #c45c26;
   }
@@ -1371,48 +1393,49 @@ a {
   .th-chips {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
+    gap: 3px;
   }
 
   .th-chip {
     border: 1px solid #1f6b4a;
     border-radius: 999px;
-    padding: 3px 8px;
-    font-size: 9pt;
+    padding: 1px 6px;
+    font-size: 7.5pt;
     font-weight: 700;
     background: #fff8e8;
+    line-height: 1.3;
   }
 
   .th-map-title {
-    margin: 8px 0 2px;
-    font-size: 11pt;
+    margin: 0 0 1px;
+    font-size: 8.5pt;
     font-weight: 800;
   }
 
   .th-map-hint {
-    margin: 0 0 4px;
-    font-size: 9pt;
+    margin: 0 0 2px;
+    font-size: 7.5pt;
     color: #3d4f6f;
   }
 
   .th-map-box {
-    height: 1.6in;
-    border: 2px solid #1f6b4a;
-    border-radius: 10px;
+    height: 0.55in;
+    border: 1.5px solid #1f6b4a;
+    border-radius: 6px;
     background:
       repeating-linear-gradient(
         0deg,
         transparent,
-        transparent 18px,
-        rgba(15, 92, 92, 0.06) 18px,
-        rgba(15, 92, 92, 0.06) 19px
+        transparent 12px,
+        rgba(15, 92, 92, 0.06) 12px,
+        rgba(15, 92, 92, 0.06) 13px
       );
   }
 
   .th-footer {
-    margin-top: 8px;
+    margin-top: 3px;
     text-align: center;
-    font-size: 9pt;
+    font-size: 7pt;
     color: #3d4f6f;
   }
 }
