@@ -30,6 +30,9 @@ LOGO_ASSETS = {LOGO_FILENAME: LOGO_PATH, PLAN_B_LOGO_FILENAME: PLAN_B_LOGO_PATH}
 # Baby's Day Out static site (trips, missions, treasure hunt)
 FIELD_PACK_ROOT = REPO_ROOT / "static" / "field-pack"
 FIELD_PACK_PREFIX = "/field-pack"
+SHELL_ROOT = REPO_ROOT / "static" / "shell"
+SHELL_PREFIX = "/shell"
+DINNER_PATH = "/dinner"
 MAX_REQUEST_BYTES = 24_000
 ANALYTICS_COOKIE = "one_less_analytics"
 ANALYTICS_OFF_VALUE = "off"
@@ -264,21 +267,29 @@ HTML = """<!doctype html>
   </head>
   <body data-mode="dinner">
     <main>
-      <nav class="product-threads" aria-label="1Less product threads">
-        <a class="thread" href="/field-pack/">
-          <span class="thread-copy">Baby's Day Out<small>Zoo · aquarium · museum trips</small></span>
+      <link rel="stylesheet" href="/shell/shell.css?v=2" />
+      <header class="oneless-shell" data-product="dinner">
+        <a class="shell-brand" href="/">
+          <img src="/1LessMark.png" alt="" width="28" height="28" />
+          1Less
         </a>
-        <a class="thread active" href="/" aria-current="page">
-          <span class="thread-copy">Dinner<small>Decide tonight’s meal</small></span>
-        </a>
-      </nav>
+        <p class="shell-product">Dinner<small>Decide tonight’s meal</small></p>
+        <div class="shell-more-wrap">
+          <button type="button" class="shell-more" aria-expanded="false" aria-haspopup="true" aria-controls="shell-menu">More</button>
+          <div id="shell-menu" class="shell-menu" hidden role="menu">
+            <a href="/" role="menuitem">Baby's Day Out<small>Kids' museum &amp; zoo days</small></a>
+            <a href="/dinner" aria-current="page" role="menuitem">Dinner<small>Decide tonight’s meal</small></a>
+          </div>
+        </div>
+      </header>
+      <script src="/shell/shell.js?v=1" defer></script>
       <header class="hero">
         <div class="brand-lockup">
           <img class="brand-logo brand-logo-wrap" src="/1LessPrimaryLogo.png?v=transparent-square" alt="1Less logo" width="800" height="800" />
           <div class="brand-copy">
           <p class="tagline">One less thing on your plate.</p>
           <p class="subhead">Tell 1Less what tonight looks like. Get one doable dinner idea — not a recipe rabbit hole.</p>
-          <p class="alpha-note"><strong>Dinner-only alpha</strong></p>
+          <p class="alpha-note"><strong>Dinner</strong> · a quieter 1Less tool</p>
           </div>
         </div>
       </header>
@@ -947,6 +958,27 @@ def _static_content_type(path: Path) -> str:
     return "application/octet-stream"
 
 
+
+def _safe_shell_path(url_path: str) -> Path | None:
+    """Resolve /shell/... under SHELL_ROOT."""
+    if url_path != SHELL_PREFIX and not url_path.startswith(SHELL_PREFIX + "/"):
+        return None
+    if not SHELL_ROOT.is_dir():
+        return None
+    rest = unquote(url_path[len(SHELL_PREFIX) :]).lstrip("/")
+    if not rest:
+        return None
+    candidate = (SHELL_ROOT / rest).resolve()
+    try:
+        root = SHELL_ROOT.resolve()
+        candidate.relative_to(root)
+    except ValueError:
+        return None
+    if candidate.is_file():
+        return candidate
+    return None
+
+
 def _safe_field_pack_path(url_path: str) -> Path | None:
     """Resolve /field-pack/... to a file under FIELD_PACK_ROOT, or None."""
     if url_path != FIELD_PACK_PREFIX and not url_path.startswith(FIELD_PACK_PREFIX + "/"):
@@ -993,6 +1025,18 @@ class WebHandler(BaseHTTPRequestHandler):
         if path == "/analytics/status":
             self._handle_analytics_status()
             return
+        # Default home = Baby's Day Out
+        if path in {"/", "/index.html"}:
+            self.send_response(302)
+            self.send_header("Location", FIELD_PACK_PREFIX + "/")
+            self.send_header("Cache-Control", "no-cache")
+            self.send_header("Content-Length", "0")
+            self.end_headers()
+            return
+        # Dinner lives under /dinner (secondary product)
+        if path in {DINNER_PATH, DINNER_PATH + "/"}:
+            self._send_text(_html_for_request(self.headers.get("Cookie")), "text/html; charset=utf-8")
+            return
         # Trailing slash so relative CSS/JS/photo URLs resolve under /field-pack/
         if path == FIELD_PACK_PREFIX:
             self.send_response(301)
@@ -1006,6 +1050,17 @@ class WebHandler(BaseHTTPRequestHandler):
                 self.send_error(404)
                 return
             self._send_binary(asset_path.read_bytes(), _image_content_type(asset_path))
+            return
+        shell_file = _safe_shell_path(path)
+        if shell_file is not None:
+            body = shell_file.read_bytes()
+            content_type = _static_content_type(shell_file)
+            self.send_response(200)
+            self.send_header("Content-Type", content_type)
+            self.send_header("Content-Length", str(len(body)))
+            self.send_header("Cache-Control", "no-cache")
+            self.end_headers()
+            self.wfile.write(body)
             return
         field_pack_file = _safe_field_pack_path(path)
         if field_pack_file is not None:
@@ -1022,27 +1077,34 @@ class WebHandler(BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(body)
             return
-        if path not in {"/", "/index.html"}:
-            self.send_error(404)
-            return
-        self._send_text(_html_for_request(self.headers.get("Cookie")), "text/html; charset=utf-8")
+        self.send_error(404)
 
     def do_HEAD(self) -> None:
         path = urlsplit(self.path).path
-        asset_path = LOGO_ASSETS.get(path.lstrip("/"))
-        field_pack_file = _safe_field_pack_path(path)
-        if path not in {"/", "/index.html"} and asset_path is None and field_pack_file is None:
-            self.send_error(404)
+        if path in {"/", "/index.html"}:
+            self.send_response(302)
+            self.send_header("Location", FIELD_PACK_PREFIX + "/")
+            self.send_header("Content-Length", "0")
+            self.end_headers()
             return
-        if asset_path is not None:
+        asset_path = LOGO_ASSETS.get(path.lstrip("/"))
+        shell_file = _safe_shell_path(path)
+        field_pack_file = _safe_field_pack_path(path)
+        if path in {DINNER_PATH, DINNER_PATH + "/"}:
+            content_type = "text/html; charset=utf-8"
+            length = len(_html_for_request(self.headers.get("Cookie")).encode("utf-8"))
+        elif asset_path is not None:
             content_type = _image_content_type(asset_path)
             length = asset_path.stat().st_size if asset_path.exists() else 0
+        elif shell_file is not None:
+            content_type = _static_content_type(shell_file)
+            length = shell_file.stat().st_size
         elif field_pack_file is not None:
             content_type = _static_content_type(field_pack_file)
             length = field_pack_file.stat().st_size
         else:
-            content_type = "text/html; charset=utf-8"
-            length = len(_html_for_request(self.headers.get("Cookie")).encode("utf-8"))
+            self.send_error(404)
+            return
         self.send_response(200)
         self.send_header("Content-Type", content_type)
         self.send_header("Content-Length", str(length))

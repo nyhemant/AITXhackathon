@@ -11,23 +11,29 @@
     <title>Baby's Day Out · 1Less</title>
     <!-- Absolute base so /field-pack (no slash) still loads CSS/JS/photos -->
     <base href="/field-pack/" />
-    <link rel="stylesheet" href="/field-pack/css/styles.css?v=7" />
+    <link rel="stylesheet" href="/shell/shell.css?v=2" />
+    <link rel="stylesheet" href="/field-pack/css/styles.css?v=9" />
   </head>
   <body>
     <div class="app">
-      <nav class="product-threads no-print" aria-label="1Less product threads">
-        <a class="thread" href="/field-pack/">
-          <span class="thread-copy">Baby's Day Out<small>Map &amp; places</small></span>
+            <header class="oneless-shell no-print" data-product="bdo">
+        <a class="shell-brand" href="/">
+          <img src="/1LessMark.png" alt="" width="28" height="28" />
+          1Less
         </a>
-        <a class="thread active" href="/field-pack/app.html" aria-current="page">
-          <span class="thread-copy">Plan outing<small>Trips &amp; missions</small></span>
-        </a>
-        <a class="thread" href="/">
-          <span class="thread-copy">Dinner<small>Decide tonight’s meal</small></span>
-        </a>
-      </nav>
-
-      <header class="topbar">
+        <p class="shell-product">
+          Baby's Day Out
+          <small>Kids' outings · shortlist &amp; hunt</small>
+        </p>
+        <div class="shell-more-wrap">
+          <button type="button" class="shell-more" aria-expanded="false" aria-haspopup="true" aria-controls="shell-menu">More</button>
+          <div id="shell-menu" class="shell-menu" hidden role="menu">
+            <a href="/" aria-current="page" role="menuitem">Baby's Day Out<small>Kids' museum &amp; zoo days</small></a>
+            <a href="/dinner" role="menuitem">Dinner<small>Decide tonight’s meal</small></a>
+          </div>
+        </div>
+      </header>
+<header class="topbar">
         <div class="brand">
           <p class="brand-kicker">A 1Less family thread</p>
           <h1>Baby's Day Out</h1>
@@ -38,6 +44,15 @@
           <button type="button" id="btn-reset" class="btn btn-secondary">Clear…</button>
         </div>
       </header>
+
+      <div id="win-banner" class="win-banner no-print" hidden>
+        <strong>Nice work! 🌟</strong>
+        <p>You finished something meaningful. Print the treasure hunt for next time, or explore more cities.</p>
+        <div class="win-actions">
+          <button type="button" id="btn-win-print" class="btn btn-primary">Print treasure hunt</button>
+          <a class="btn btn-secondary" href="/">More cities</a>
+        </div>
+      </div>
 
       <!-- HOME -->
       <main id="view-home">
@@ -114,17 +129,16 @@
           </div>
 
           <div class="action-row primary-actions">
-            <button type="button" id="btn-new-trip" class="btn btn-primary btn-big">
-              Start this outing →
+            <button type="button" id="btn-treasure-home" class="btn btn-primary btn-big btn-print">
+              🖨️ Print treasure hunt
             </button>
-            <button type="button" id="btn-treasure-home" class="btn btn-print btn-big">
-              Print treasure hunt first
+            <button type="button" id="btn-new-trip" class="btn btn-secondary btn-big">
+              Build shortlist &amp; start →
             </button>
           </div>
           <p class="submit-hint">
-            <strong>Treasure hunt</strong> = one page for the bag before you leave.
-            <strong>Start outing</strong> = pick animals/zones, then open missions after (or before)
-            the visit.
+            <strong>Print first</strong> if you’re heading out soon — one page for the bag.
+            Or <strong>build a shortlist</strong>, then print the hunt from the outing.
           </p>
         </section>
 
@@ -297,7 +311,8 @@
     <div id="print-sheet" class="print-sheet" aria-hidden="true"></div>
     <div id="treasure-sheet" class="print-sheet treasure-sheet" aria-hidden="true"></div>
 
-    <script src="/field-pack/js/catalog.js?v=7"></script>
-    <script src="/field-pack/js/app.js?v=7"></script>
+    <script src="/shell/shell.js?v=1"></script>
+    <script src="/field-pack/js/catalog.js?v=8"></script>
+    <script src="/field-pack/js/app.js?v=9"></script>
   </body>
 </html>

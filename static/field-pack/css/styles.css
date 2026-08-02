@@ -1416,3 +1416,42 @@ a {
     color: #3d4f6f;
   }
 }
+
+/* Phase 3 win banner */
+.win-banner {
+  display: none;
+  margin: 12px 0 16px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #e8faf0, #fff8e0);
+  border: 3px solid rgba(15, 92, 92, 0.22);
+  box-shadow: 0 10px 24px rgba(15, 92, 92, 0.1);
+}
+.win-banner.show {
+  display: block;
+}
+.win-banner strong {
+  display: block;
+  font-size: 1.1rem;
+  color: #0a4545;
+  margin-bottom: 6px;
+}
+.win-banner p {
+  margin: 0 0 10px;
+  color: #3d4f6f;
+  font-weight: 650;
+}
+.win-banner .win-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Promote print buttons slightly */
+.btn-print.btn-big {
+  font-weight: 900;
+  box-shadow: 0 8px 18px rgba(15, 92, 92, 0.12);
+}
+.primary-actions .btn-print {
+  order: 0;
+}

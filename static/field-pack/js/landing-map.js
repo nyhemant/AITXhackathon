@@ -175,6 +175,39 @@
   let selectedCityId = "all";
   let selectedVenueId = "";
 
+  const SAVED_CITIES_KEY = "1less-saved-cities";
+
+  function loadSavedCities() {
+    try {
+      const raw = localStorage.getItem(SAVED_CITIES_KEY);
+      const arr = raw ? JSON.parse(raw) : [];
+      return Array.isArray(arr) ? arr : [];
+    } catch {
+      return [];
+    }
+  }
+
+  function saveCityId(id) {
+    if (!id || id === "all") return loadSavedCities();
+    const set = new Set(loadSavedCities());
+    set.add(id);
+    const arr = [...set];
+    localStorage.setItem(SAVED_CITIES_KEY, JSON.stringify(arr));
+    return arr;
+  }
+
+  function bindSaveCityButtons(root) {
+    root.querySelectorAll(".btn-save-city").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const id = btn.dataset.cityId;
+        saveCityId(id);
+        btn.textContent = "✓ Saved on this device";
+        window.dispatchEvent(new CustomEvent("1less-cities-saved"));
+      });
+    });
+  }
+
+
   function placeById(id) {
     return places.find((p) => p.id === id);
   }
@@ -299,16 +332,19 @@
       return;
     }
 
+    const isReadyCity = city.status === "ready" || readyN > 0;
+    const saved = loadSavedCities();
+    const isSaved = saved.includes(selectedCityId);
     detail.className = "pin-detail";
     detail.innerHTML = `
       <p class="pin-detail-kicker">City selected</p>
       <h3>${escapeHtml(city.symbols)} ${escapeHtml(city.label)}</h3>
       <p class="pd-meta">${escapeHtml(city.kidLine)}</p>
-      <span class="pd-status ${city.status}">${
-        city.status === "ready" ? "Has ready venues" : "Coming soon"
+      <span class="pd-status ${isReadyCity ? "ready" : "soon"}">${
+        isReadyCity ? "Has ready venues" : "Coming soon"
       }</span>
       <p class="pd-blurb">
-        Venue dropdown now shows <strong>only places near ${escapeHtml(city.label)}</strong>
+        Venue list shows <strong>places near ${escapeHtml(city.label)}</strong>
         (${list.length} ${list.length === 1 ? "place" : "places"}).
         ${
           selectedCityId === "dallas"
@@ -316,8 +352,19 @@
             : ""
         }
       </p>
-      <p class="pd-blurb">Next: pick a venue in the dropdown → open its page.</p>
+      ${
+        isReadyCity
+          ? `<p class="pd-blurb">Next: pick a venue → <strong>Start outing</strong>.</p>`
+          : `<div class="soon-save" data-city-id="${escapeHtml(selectedCityId)}">
+              <p class="pd-blurb"><strong>Packs for ${escapeHtml(city.label)} are coming.</strong>
+              Save this city on this device and we’ll remember you’re waiting.</p>
+              <button type="button" class="btn btn-primary btn-save-city" data-city-id="${escapeHtml(selectedCityId)}">
+                ${isSaved ? "✓ Saved on this device" : "Save this city"}
+              </button>
+            </div>`
+      }
     `;
+    bindSaveCityButtons(detail);
   }
 
   function showVenueDetail(venueId) {
@@ -338,11 +385,12 @@
       <p class="pd-blurb">${escapeHtml(p.blurb)}</p>
       <p class="pd-official">Official name: <span class="muted">${escapeHtml(p.name)}</span></p>
       <div class="pd-actions">
-        <a class="btn btn-primary" href="${p.href}">Open place page →</a>
         ${
           ready && p.appHref
-            ? `<a class="btn btn-secondary" href="${p.appHref}">Start outing</a>`
-            : `<span class="btn btn-ghost" style="opacity:.7;pointer-events:none">Outing soon</span>`
+            ? `<a class="btn btn-primary" href="${p.appHref}">Start outing →</a>
+               <a class="btn btn-secondary" href="${p.href}">Place info</a>`
+            : `<span class="btn btn-ghost" style="opacity:.7;pointer-events:none">Outing soon</span>
+               <a class="btn btn-secondary" href="${p.href}">Place info</a>`
         }
       </div>
     `;

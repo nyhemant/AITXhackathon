@@ -6,16 +6,30 @@
   <title>🔬 Thinkery · Baby's Day Out · 1Less</title>
   <meta name="description" content="Hands-on STEM for curious Austin kids. Kid-led shortlist, treasure hunt, and missions on 1Less Baby's Day Out." />
   <base href="/field-pack/" />
+  <link rel="stylesheet" href="/shell/shell.css?v=2" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=6" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=6" />
 </head>
 <body class="landing-body">
   <div class="app landing-app">
-    <nav class="product-threads no-print" aria-label="1Less product threads">
-      <a class="thread active" href="/field-pack/"><span class="thread-copy">Baby's Day Out<small>Map &amp; places</small></span></a>
-      <a class="thread" href="/"><span class="thread-copy">Dinner<small>Tonight’s meal</small></span></a>
-    </nav>
-    <p style="margin:0 0 12px"><a href="/field-pack/" style="font-weight:800;color:#0f5c5c">← Back to map</a></p>
+          <header class="oneless-shell no-print" data-product="bdo">
+        <a class="shell-brand" href="/">
+          <img src="/1LessMark.png" alt="" width="28" height="28" />
+          1Less
+        </a>
+        <p class="shell-product">
+          Baby's Day Out
+          <small>Kids' outings · shortlist &amp; hunt</small>
+        </p>
+        <div class="shell-more-wrap">
+          <button type="button" class="shell-more" aria-expanded="false" aria-haspopup="true" aria-controls="shell-menu">More</button>
+          <div id="shell-menu" class="shell-menu" hidden role="menu">
+            <a href="/" aria-current="page" role="menuitem">Baby's Day Out<small>Kids' museum &amp; zoo days</small></a>
+            <a href="/dinner" role="menuitem">Dinner<small>Decide tonight’s meal</small></a>
+          </div>
+        </div>
+      </header>
+<p style="margin:0 0 12px"><a href="/field-pack/" style="font-weight:800;color:#0f5c5c">← Back to map</a></p>
     <section class="hero objective-hero">
       <p class="promise-pill">Children's museum · Austin, TX</p>
       <h2 style="max-width:20ch">🔬 Thinkery</h2>
@@ -35,7 +49,8 @@
       </ol>
       <p style="margin-top:14px;font-weight:700;color:#3d4f6f">Not a full encyclopedia — a kid-sized shortlist so the day stays fun.</p>
     </section>
-    <footer class="site-footer"><p><a href="/field-pack/">All places</a> · Baby\'s Day Out · <a href="/">Dinner</a></p></footer>
+    <footer class="site-footer"><p><a href="/field-pack/">All places</a> · <a href="/">Baby's Day Out</a> · <a href="/dinner">Dinner</a></p></footer>
   </div>
+  <script src="/shell/shell.js?v=1"></script>
 </body>
 </html>

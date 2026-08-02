@@ -57,6 +57,8 @@
     resultsPanel: document.getElementById("results-panel"),
     printSheet: document.getElementById("print-sheet"),
     treasureSheet: document.getElementById("treasure-sheet"),
+    winBanner: document.getElementById("win-banner"),
+    btnWinPrint: document.getElementById("btn-win-print"),
   };
 
   let store = loadStore();
@@ -214,6 +216,8 @@
 
   // ---- nav ----
   function showHome() {
+    const homeTrips = (store.trips || []).filter((tr) => tr.venueId === selectedVenueId);
+    showWinBanner(homeTrips.some(tripHasCheckedOrTaught));
     currentTripId = null;
     currentItemId = null;
     pickerDraft = null;
@@ -685,6 +689,7 @@
     trip.updatedAt = Date.now();
     saveStore();
     renderDetail(trip, item, venue);
+    showWinBanner(true);
   }
 
   function saveTripFromPicker() {
@@ -823,7 +828,25 @@
       </div>`;
   }
 
-  function printTreasureHunt(opts = {}) {
+  function showWinBanner(show) {
+    if (!els.winBanner) return;
+    if (show) {
+      els.winBanner.hidden = false;
+      els.winBanner.classList.add("show");
+    } else {
+      els.winBanner.hidden = true;
+      els.winBanner.classList.remove("show");
+    }
+  }
+
+  function tripHasCheckedOrTaught(trip) {
+    if (!trip || !trip.animals) return false;
+    return Object.values(trip.animals).some(
+      (a) => a && (a.taught || a.submitted)
+    );
+  }
+
+    function printTreasureHunt(opts = {}) {
     const venue = opts.venue || currentVenue();
     if (!venue) return;
     const trip = opts.tripId ? getTrip(opts.tripId) : null;
@@ -929,10 +952,14 @@
     trip.updatedAt = Date.now();
     saveStore();
     renderDetail(trip, item, getVenue(trip.venueId));
+    if (st.taught) showWinBanner(true);
   });
 
   els.btnPrint.addEventListener("click", printMissionCard);
   els.btnSubmit.addEventListener("click", submitAnswers);
+  if (els.btnWinPrint) {
+    els.btnWinPrint.addEventListener("click", () => printTreasureHunt({ tripId: currentTripId }));
+  }
 
   function routeFromHash() {
     const hash = location.hash || "#/";

@@ -455,10 +455,11 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertIn('src="/1LessPrimaryLogo.png?v=transparent-square"', HTML)
         self.assertIn('width="800" height="800"', HTML)
         self.assertNotIn('src="/1LessLogo.png', HTML)
-        self.assertNotIn('src="/1LessMark.png', HTML)
+        self.assertIn('src="/1LessMark.png', HTML)  # shell brand mark
+        self.assertIn('class="oneless-shell"', HTML)
         self.assertNotIn('<source media="(max-width: 640px)"', HTML)
         self.assertIn('<p class="tagline">One less thing on your plate.</p>', HTML)
-        self.assertIn("<strong>Dinner-only alpha</strong>", HTML)
+        self.assertIn("<strong>Dinner</strong>", HTML)
         self.assertNotIn("Alpha testing now:", HTML)
         self.assertIn(".trace-footer { display: none;", HTML)
         self.assertNotIn("try the dinner flow with non-sensitive details and tell us if it actually removes one decision", HTML)
@@ -514,7 +515,7 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertNotIn("Hackathon Demo Scenarios", HTML)
         self.assertNotIn('class="mode-tabs"', HTML)
         self.assertNotIn('class="mode-tab active"', HTML)
-        self.assertNotIn('aria-current="page"', HTML)
+        self.assertIn('href="/dinner" aria-current="page"', HTML)  # shell More menu
         self.assertNotIn('class="scenario-chip" data-scenario="dinner"', HTML)
         self.assertNotIn('aria-pressed="false">No constraints</button>', HTML)
         self.assertNotIn("let selectedScenario = null", HTML)
