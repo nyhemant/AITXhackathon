@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>Arya's Field Pack · DFW</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="topbar">
+        <div class="brand">
+          <p class="one-less-back no-print" style="margin:0 0 6px">
+            <a href="/" style="color:#b8e4dc;font-weight:800;text-decoration:none">← 1Less</a>
+            <span style="opacity:.7;font-weight:700"> · family tools</span>
+          </p>
+          <h1>Arya's Field Pack</h1>
+          <p id="brand-sub">Pick a place · Explore · Teach</p>
+        </div>
+        <div class="top-actions">
+          <label class="venue-select-wrap no-print">
+            <span class="sr-only">Venue</span>
+            <select id="venue-select" class="venue-select" aria-label="Choose venue"></select>
+          </label>
+          <button type="button" id="btn-back" class="btn btn-ghost hidden">← Back</button>
+          <button type="button" id="btn-reset" class="btn btn-secondary">Clear…</button>
+        </div>
+      </header>
+
+      <!-- HOME -->
+      <main id="view-home">
+        <section class="hero">
+          <h2 id="home-title">Plan a trip</h2>
+          <p id="home-blurb">
+            Choose a place up top, then start a trip. Smart shortlists — not giant inventories.
+          </p>
+          <div class="action-row" style="margin-top: 14px">
+            <button type="button" id="btn-new-trip" class="btn btn-primary btn-big">
+              🗺️ New trip here
+            </button>
+            <button type="button" id="btn-treasure-home" class="btn btn-print btn-big">
+              🗺️ Print treasure hunt
+            </button>
+          </div>
+          <p class="submit-hint" style="margin-top: 10px">
+            Treasure hunt = one page to print <strong>before</strong> you go.
+          </p>
+        </section>
+        <section>
+          <h3 class="section-title">Your trips</h3>
+          <div id="trip-list" class="trip-list"></div>
+          <p id="trip-list-empty" class="empty-note hidden">
+            No trips yet for this place — tap <strong>New trip here</strong>.
+          </p>
+        </section>
+      </main>
+
+      <!-- PICKER -->
+      <main id="view-picker" class="hidden">
+        <section class="hero">
+          <h2 id="picker-title">Pick for this trip</h2>
+          <p id="picker-blurb">Featured items are checked. Keep the list small for Arya!</p>
+          <label class="field-label">
+            Trip name
+            <input id="trip-title-input" class="text-input" type="text" maxlength="80" />
+          </label>
+          <label class="field-label">
+            Date (optional)
+            <input id="trip-date-input" class="text-input" type="date" />
+          </label>
+          <p class="venue-chip" id="picker-venue-chip">📍 Place</p>
+        </section>
+
+        <h3 class="section-title" id="picker-featured-heading">⭐ Featured (great default)</h3>
+        <div id="picker-featured" class="picker-grid"></div>
+
+        <h3 class="section-title" id="picker-extra-heading">➕ Optional extras</h3>
+        <div id="picker-extra" class="picker-grid"></div>
+
+        <div class="submit-bar">
+          <button type="button" id="btn-save-trip" class="btn btn-primary btn-big">
+            💾 Save trip &amp; open
+          </button>
+          <button type="button" id="btn-treasure-picker" class="btn btn-print btn-big">
+            🗺️ Print treasure hunt
+          </button>
+          <p class="submit-hint">You can edit the list later from the trip page.</p>
+        </div>
+      </main>
+
+      <!-- TRIP -->
+      <main id="view-trip" class="hidden">
+        <section class="hero">
+          <p class="venue-chip" id="trip-venue-chip">📍 Place</p>
+          <h2 id="trip-heading">Trip</h2>
+          <p id="trip-meta" class="blurb"></p>
+          <div class="action-row">
+            <button type="button" id="btn-edit-animals" class="btn btn-secondary">✏️ Edit list</button>
+            <button type="button" id="btn-treasure-trip" class="btn btn-print btn-big">
+              🗺️ Print treasure hunt
+            </button>
+            <a
+              id="btn-zoo-site"
+              class="btn btn-ghost"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Official site</a
+            >
+            <a
+              id="btn-zoo-map"
+              class="btn btn-ghost"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Map / info</a
+            >
+          </div>
+        </section>
+        <h3 class="section-title" id="trip-grid-heading">On this trip</h3>
+        <div id="trip-animal-grid" class="animal-grid"></div>
+        <p id="trip-animals-empty" class="empty-note hidden">Nothing selected — edit the list.</p>
+      </main>
+
+      <!-- DETAIL -->
+      <main id="view-detail" class="detail hidden">
+        <section class="detail-hero">
+          <figure class="detail-photo">
+            <img id="detail-photo" src="" alt="" />
+            <figcaption id="detail-credit"></figcaption>
+          </figure>
+          <div class="detail-info">
+            <h2 id="detail-name">Item</h2>
+            <p class="blurb" id="detail-blurb"></p>
+            <div class="action-row">
+              <a
+                id="btn-cam"
+                class="btn btn-cam btn-big"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                >📹 Live cam / look</a
+              >
+              <a
+                id="btn-pictures"
+                class="btn btn-primary btn-big"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                >📷 More pictures</a
+              >
+              <a
+                id="btn-more"
+                class="btn btn-secondary btn-big"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                >🔍 Learn more</a
+              >
+            </div>
+            <div class="action-row">
+              <span id="progress-pill" class="progress-pill">0 of 6 missions</span>
+              <button type="button" id="btn-taught" class="btn btn-primary" aria-pressed="false">
+                I taught a grown-up!
+              </button>
+              <button type="button" id="btn-print" class="btn btn-print btn-big">
+                🖨️ Print mission card
+              </button>
+            </div>
+            <div id="teach-banner" class="teach-banner" role="status"></div>
+          </div>
+        </section>
+
+        <p class="footer-note no-print" style="margin-top: 0; text-align: left; font-size: 1.05rem">
+          Click circles, then submit at the bottom to check.
+        </p>
+
+        <div id="mission-grid" class="mission-grid" aria-label="Missions"></div>
+
+        <section class="submit-bar no-print">
+          <button type="button" id="btn-submit" class="btn btn-submit btn-big">
+            ✅ Submit &amp; check answers
+          </button>
+          <p class="submit-hint" id="submit-hint-detail">
+            Science / explorer check on graded boxes. Story boxes are yours!
+          </p>
+          <div id="results-panel" class="results-panel" hidden></div>
+        </section>
+      </main>
+
+      <p class="footer-note no-print">
+        Pre-cooked: Dallas Zoo · Children’s Aquarium · Children’s Museum (Perot). Add a place… coming
+        later.
+      </p>
+    </div>
+
+    <div id="print-sheet" class="print-sheet" aria-hidden="true"></div>
+    <div id="treasure-sheet" class="print-sheet treasure-sheet" aria-hidden="true"></div>
+
+    <script src="js/catalog.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

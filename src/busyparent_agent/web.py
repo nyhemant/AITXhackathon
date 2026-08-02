@@ -6,7 +6,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import argparse
 import json
 from pathlib import Path
-from urllib.parse import urlsplit
+from urllib.parse import unquote, urlsplit
 from uuid import uuid4
 
 from busyparent_agent.service import APP_TITLE, create_dinner_decision_session
@@ -22,10 +22,14 @@ class RequestTooLarge(ValueError):
 LOGO_FILENAME = "1LessPrimaryLogo.png"
 PLAN_B_LOGO_FILENAME = "1LessMark.png"
 MOBILE_LOGO_FILENAME = LOGO_FILENAME
-LOGO_PATH = Path(__file__).resolve().parents[2] / LOGO_FILENAME
-PLAN_B_LOGO_PATH = Path(__file__).resolve().parents[2] / PLAN_B_LOGO_FILENAME
+REPO_ROOT = Path(__file__).resolve().parents[2]
+LOGO_PATH = REPO_ROOT / LOGO_FILENAME
+PLAN_B_LOGO_PATH = REPO_ROOT / PLAN_B_LOGO_FILENAME
 MOBILE_LOGO_PATH = LOGO_PATH
 LOGO_ASSETS = {LOGO_FILENAME: LOGO_PATH, PLAN_B_LOGO_FILENAME: PLAN_B_LOGO_PATH}
+# Arya's Field Pack static site (trips, missions, treasure hunt)
+FIELD_PACK_ROOT = REPO_ROOT / "static" / "field-pack"
+FIELD_PACK_PREFIX = "/field-pack"
 MAX_REQUEST_BYTES = 24_000
 ANALYTICS_COOKIE = "one_less_analytics"
 ANALYTICS_OFF_VALUE = "off"
@@ -107,6 +111,23 @@ HTML = """<!doctype html>
       .subhead { margin: 0; max-width: 710px; color: #665b52; line-height: 1.55; font-size: 1.03rem; }
       .alpha-note { display: inline-flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 14px; padding: 9px 12px; border: 1px solid rgba(194,65,12,.2); border-radius: 999px; background: rgba(255,255,255,.72); color: #5f554d; font-size: .9rem; line-height: 1.35; }
       .alpha-note strong { color: #7c2d12; }
+      .family-tools {
+        display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+        margin-top: 16px; padding: 12px 14px;
+        border: 1px solid rgba(194,65,12,.18); border-radius: 14px;
+        background: rgba(255,255,255,.78); max-width: 720px;
+      }
+      .family-tools-label { color: #7c2d12; font-size: .78rem; font-weight: 950; letter-spacing: .06em; text-transform: uppercase; }
+      .family-tools a {
+        display: inline-flex; align-items: center; gap: 6px;
+        border: 1px solid rgba(194,65,12,.22); border-radius: 999px;
+        padding: 8px 14px; background: #ffedd5; color: #7c2d12;
+        font-weight: 850; font-size: .95rem; text-decoration: none;
+        box-shadow: 0 8px 18px rgba(124,45,18,.08);
+      }
+      .family-tools a:hover { background: #fed7aa; }
+      .family-tools a:visited { color: #7c2d12; }
+      .family-tools .hint { color: #665b52; font-size: .88rem; font-weight: 720; line-height: 1.35; flex: 1 1 200px; }
       .shell { overflow: hidden; border: 1px solid rgba(255,255,255,.66); border-radius: 8px; background: rgba(255,255,255,.78); box-shadow: 0 30px 90px var(--shadow); backdrop-filter: blur(18px); }
       .tab-panel { background: rgba(255,255,255,.9); }
       .hidden { display: none; }
@@ -228,6 +249,11 @@ HTML = """<!doctype html>
           <p class="tagline">One less thing on your plate.</p>
           <p class="subhead">Tell 1Less what tonight looks like. Get one doable dinner idea — not a recipe rabbit hole.</p>
           <p class="alpha-note"><strong>Dinner-only alpha</strong></p>
+          <div class="family-tools" aria-label="More family tools">
+            <span class="family-tools-label">Also underneath</span>
+            <a href="/field-pack/">Arya's Field Pack →</a>
+            <span class="hint">Zoo · aquarium · children’s museum trips with missions, answer check, and treasure-hunt printouts.</span>
+          </div>
           </div>
         </div>
       </header>
@@ -866,7 +892,62 @@ def _image_content_type(path: Path) -> str:
         return "image/svg+xml"
     if path.suffix in {".jpg", ".jpeg"}:
         return "image/jpeg"
-    return "image/png"
+    if path.suffix == ".png":
+        return "image/png"
+    if path.suffix == ".webp":
+        return "image/webp"
+    if path.suffix == ".gif":
+        return "image/gif"
+    return "application/octet-stream"
+
+
+def _static_content_type(path: Path) -> str:
+    suffix = path.suffix.lower()
+    if suffix in {".html", ".htm"}:
+        return "text/html; charset=utf-8"
+    if suffix == ".css":
+        return "text/css; charset=utf-8"
+    if suffix == ".js":
+        return "application/javascript; charset=utf-8"
+    if suffix == ".json":
+        return "application/json; charset=utf-8"
+    if suffix == ".svg":
+        return "image/svg+xml"
+    if suffix in {".jpg", ".jpeg", ".png", ".webp", ".gif"}:
+        return _image_content_type(path)
+    if suffix == ".ico":
+        return "image/x-icon"
+    if suffix == ".map":
+        return "application/json; charset=utf-8"
+    return "application/octet-stream"
+
+
+def _safe_field_pack_path(url_path: str) -> Path | None:
+    """Resolve /field-pack/... to a file under FIELD_PACK_ROOT, or None."""
+    if url_path != FIELD_PACK_PREFIX and not url_path.startswith(FIELD_PACK_PREFIX + "/"):
+        return None
+    if not FIELD_PACK_ROOT.is_dir():
+        return None
+    rest = unquote(url_path[len(FIELD_PACK_PREFIX) :]).lstrip("/")
+    # Block sneaky path segments early
+    if ".." in Path(rest).parts:
+        return None
+    candidate = FIELD_PACK_ROOT / (rest if rest else "index.html")
+    try:
+        root = FIELD_PACK_ROOT.resolve()
+        resolved = candidate.resolve()
+        resolved.relative_to(root)
+    except (OSError, ValueError):
+        return None
+    if resolved.is_dir():
+        resolved = (resolved / "index.html").resolve()
+        try:
+            resolved.relative_to(root)
+        except ValueError:
+            return None
+    if not resolved.is_file():
+        return None
+    return resolved
 
 
 def _dinner_preview_text(message_text: str) -> str:
@@ -894,6 +975,10 @@ class WebHandler(BaseHTTPRequestHandler):
                 return
             self._send_binary(asset_path.read_bytes(), _image_content_type(asset_path))
             return
+        field_pack_file = _safe_field_pack_path(path)
+        if field_pack_file is not None:
+            self._send_binary(field_pack_file.read_bytes(), _static_content_type(field_pack_file))
+            return
         if path not in {"/", "/index.html"}:
             self.send_error(404)
             return
@@ -902,11 +987,19 @@ class WebHandler(BaseHTTPRequestHandler):
     def do_HEAD(self) -> None:
         path = urlsplit(self.path).path
         asset_path = LOGO_ASSETS.get(path.lstrip("/"))
-        if path not in {"/", "/index.html"} and asset_path is None:
+        field_pack_file = _safe_field_pack_path(path)
+        if path not in {"/", "/index.html"} and asset_path is None and field_pack_file is None:
             self.send_error(404)
             return
-        content_type = _image_content_type(asset_path) if asset_path is not None else "text/html; charset=utf-8"
-        length = asset_path.stat().st_size if asset_path is not None and asset_path.exists() else len(_html_for_request(self.headers.get("Cookie")).encode("utf-8"))
+        if asset_path is not None:
+            content_type = _image_content_type(asset_path)
+            length = asset_path.stat().st_size if asset_path.exists() else 0
+        elif field_pack_file is not None:
+            content_type = _static_content_type(field_pack_file)
+            length = field_pack_file.stat().st_size
+        else:
+            content_type = "text/html; charset=utf-8"
+            length = len(_html_for_request(self.headers.get("Cookie")).encode("utf-8"))
         self.send_response(200)
         self.send_header("Content-Type", content_type)
         self.send_header("Content-Length", str(length))
