@@ -6,13 +6,13 @@
     <meta name="color-scheme" content="light" />
     <meta
       name="description"
-      content="Baby's Day Out on 1Less — turn a zoo, aquarium, or children's museum visit into a short, kid-led learning adventure."
+      content="Baby's Day Out on 1Less — kid-sized zoo, aquarium, and museum days with a shortlist and printable treasure hunt. Missions optional."
     />
     <title>Baby's Day Out · 1Less</title>
     <!-- Absolute base so /field-pack (no slash) still loads CSS/JS/photos -->
     <base href="/field-pack/" />
-    <link rel="stylesheet" href="/shell/shell.css?v=2" />
-    <link rel="stylesheet" href="/field-pack/css/styles.css?v=11" />
+    <link rel="stylesheet" href="/shell/shell.css?v=3" />
+    <link rel="stylesheet" href="/field-pack/css/styles.css?v=12" />
   </head>
   <body>
     <div class="app">
@@ -39,7 +39,7 @@
         </div>
         <div class="top-actions">
           <button type="button" id="btn-back" class="btn btn-ghost hidden">← Back</button>
-          <button type="button" id="btn-reset" class="btn btn-secondary">Clear…</button>
+          <button type="button" id="btn-reset" class="btn btn-secondary">Reset…</button>
         </div>
       </header>
 
@@ -135,8 +135,12 @@
             </button>
           </div>
           <p class="submit-hint">
-            <strong>Print first</strong> if you’re heading out soon — one page for the bag.
-            Or <strong>build a shortlist</strong>, then print the hunt from the outing.
+            <strong>Print first</strong> if you’re heading out soon — one page for the bag
+            (use a computer if your phone won’t print). Or <strong>build a shortlist</strong>, then print from the outing.
+          </p>
+          <p class="submit-hint share-row no-print">
+            <button type="button" id="btn-share-link" class="btn btn-ghost">📎 Copy outing link</button>
+            <span id="share-link-status" class="share-status" hidden>Copied — text it to the other parent</span>
           </p>
         </section>
 
@@ -287,7 +291,7 @@
             ✅ Submit &amp; check answers
           </button>
           <p class="submit-hint" id="submit-hint-detail">
-            Checks food, home, and superpower (or play missions). Story boxes stay hers.
+            Optional check for food, home, and superpower (or play missions). Story boxes stay open-ended — not graded.
           </p>
           <div id="results-panel" class="results-panel" hidden></div>
         </section>
@@ -299,8 +303,7 @@
           (Perot). Smart shortlists only — not full inventories.
         </p>
         <p class="footer-promise">
-          1Less promise here: <em>one less chaotic outing</em> — they choose, they notice, they
-          teaches.
+          1Less promise here: <em>one less chaotic outing</em> — they choose, they notice, they teach.
         </p>
       </footer>
     </div>
@@ -310,6 +313,6 @@
 
     <script src="/shell/shell.js?v=1"></script>
     <script src="/field-pack/js/catalog.js?v=9"></script>
-    <script src="/field-pack/js/app.js?v=11"></script>
+    <script src="/field-pack/js/app.js?v=12"></script>
   </body>
 </html>

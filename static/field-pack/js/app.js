@@ -57,6 +57,8 @@
     resultsPanel: document.getElementById("results-panel"),
     printSheet: document.getElementById("print-sheet"),
     treasureSheet: document.getElementById("treasure-sheet"),
+    btnShareLink: document.getElementById("btn-share-link"),
+    shareLinkStatus: document.getElementById("share-link-status"),
     winBanner: document.getElementById("win-banner"),
     btnWinPrint: document.getElementById("btn-win-print"),
   };
@@ -230,10 +232,10 @@
     if (v) {
       els.homeBlurb.innerHTML = `${escapeHtml(v.blurb)} <strong>Selected:</strong> ${escapeHtml(
         v.name
-      )} (${escapeHtml(v.location || "")}). Print a treasure hunt before you go, or start the outing and open missions after.`;
-      els.btnNewTrip.textContent = `Start ${v.shortName || v.name} outing →`;
+      )} (${escapeHtml(v.location || "")}). Print a treasure hunt before you go. Missions after the visit are optional.`;
+      els.btnNewTrip.textContent = `Build shortlist · ${v.shortName || v.name} →`;
     } else {
-      els.btnNewTrip.textContent = "Start this outing →";
+      els.btnNewTrip.textContent = "Build shortlist & start →";
     }
     renderVenueCards();
     renderTripList();
@@ -907,6 +909,22 @@
   els.btnEditAnimals.addEventListener("click", () => {
     if (currentTripId) showPicker(currentTripId);
   });
+
+  async function copyOutingLink() {
+    const url = `${location.origin}/field-pack/app.html#/venue/${encodeURIComponent(selectedVenueId || "dallas-zoo")}`;
+    try {
+      await navigator.clipboard.writeText(url);
+      if (els.shareLinkStatus) {
+        els.shareLinkStatus.hidden = false;
+        setTimeout(() => {
+          els.shareLinkStatus.hidden = true;
+        }, 2500);
+      }
+    } catch {
+      prompt("Copy this outing link:", url);
+    }
+  }
+  if (els.btnShareLink) els.btnShareLink.addEventListener("click", () => copyOutingLink());
 
   els.btnTreasureHome.addEventListener("click", () => printTreasureHunt());
   els.btnTreasurePicker.addEventListener("click", () =>
