@@ -10,8 +10,8 @@
     />
     <title>Arya's Field Pack · Map the adventure · 1Less</title>
     <base href="/field-pack/" />
-    <link rel="stylesheet" href="/field-pack/css/styles.css?v=7" />
-    <link rel="stylesheet" href="/field-pack/css/landing.css?v=7" />
+    <link rel="stylesheet" href="/field-pack/css/styles.css?v=8" />
+    <link rel="stylesheet" href="/field-pack/css/landing.css?v=8" />
   </head>
   <body class="landing-body">
     <div class="app landing-app">
@@ -51,14 +51,29 @@
 
       <section class="map-section" id="us-map" aria-labelledby="map-heading">
         <div class="map-section-head">
-          <h2 id="map-heading">Tap a city on the real USA map</h2>
+          <h2 id="map-heading">Find a city, then a place</h2>
           <p>
-            Labels show the <strong>city</strong> and kind of place (zoo · aquarium · museum) —
-            not long venue names.
+            Use the menus (or tap the map). Labels are <strong>city names</strong> with simple symbols
+            (zoo · aquarium · museum) — not long official titles.
             &nbsp;&nbsp;<span class="legend-dot ready"></span> Ready
             &nbsp;&nbsp;<span class="legend-dot soon"></span> Coming soon
           </p>
         </div>
+
+        <div class="dual-selects" role="group" aria-label="City and venue filters">
+          <label class="select-field">
+            <span class="select-label">City</span>
+            <select id="city-select" class="landing-select" aria-label="Choose city"></select>
+          </label>
+          <label class="select-field">
+            <span class="select-label">Venue</span>
+            <select id="venue-select-landing" class="landing-select" aria-label="Choose venue"></select>
+          </label>
+        </div>
+        <p class="select-hint">
+          <strong>All cities</strong> → every venue in the list.
+          Pick <strong>Dallas area</strong> → only Dallas places <em>plus nearby Fort Worth Zoo</em>.
+        </p>
 
         <div class="map-shell">
           <div class="map-canvas-wrap" id="map-host" aria-label="United States map">
@@ -67,26 +82,12 @@
 
           <aside class="map-side" aria-live="polite">
             <div id="pin-detail" class="pin-detail empty">
-              <p class="pin-detail-kicker">Selected place</p>
-              <h3>Tap a glowing pin</h3>
-              <p>Pins show zoos, aquariums, children’s museums, and science spots on our roadmap.</p>
-            </div>
-            <div class="map-filters">
-              <button type="button" class="chip active" data-filter="all">All</button>
-              <button type="button" class="chip" data-filter="ready">Ready now</button>
-              <button type="button" class="chip" data-filter="soon">Coming soon</button>
-              <button type="button" class="chip" data-filter="tx">Texas</button>
+              <p class="pin-detail-kicker">Your pick</p>
+              <h3>Choose a city or venue</h3>
+              <p>Start with the City menu, then pick a Venue — or tap a city pin on the map.</p>
             </div>
           </aside>
         </div>
-      </section>
-
-      <section class="places-board" aria-labelledby="places-heading">
-        <div class="places-board-head">
-          <h2 id="places-heading">All places</h2>
-          <p>Same list as the map — open a page for each venue.</p>
-        </div>
-        <div id="places-grid" class="places-grid"></div>
       </section>
 
       <section class="landing-promise">
@@ -122,7 +123,7 @@
       </footer>
     </div>
 
-    <script src="/field-pack/js/places-data.js?v=2"></script>
-    <script src="/field-pack/js/landing-map.js?v=2"></script>
+    <script src="/field-pack/js/places-data.js?v=3"></script>
+    <script src="/field-pack/js/landing-map.js?v=3"></script>
   </body>
 </html>
