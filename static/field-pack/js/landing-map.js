@@ -156,8 +156,7 @@
 
   // Map pin id (on SVG) → city dropdown id
   const PIN_TO_CITY = {
-    dfw: "dallas",
-    "fort-worth": "dallas", // pin still exists; selecting it focuses Dallas area (vicinity)
+    dfw: "dallas", // one pin for DFW; Fort Worth venues live under Dallas area
     austin: "austin",
     "san-antonio": "san-antonio",
     houston: "houston",
@@ -269,8 +268,6 @@
       Object.keys(PIN_TO_CITY).forEach((k) => allowedPins.add(k));
     } else if (city?.mapPinId) {
       allowedPins.add(city.mapPinId);
-      // Dallas area also keeps fort-worth pin visible
-      if (selectedCityId === "dallas") allowedPins.add("fort-worth");
     }
 
     document.querySelectorAll(".city-pin").forEach((el) => {
@@ -279,9 +276,7 @@
       el.classList.toggle("dim", !on);
       el.classList.toggle(
         "selected",
-        selectedCityId !== "all" &&
-          (pinId === city?.mapPinId ||
-            (selectedCityId === "dallas" && (pinId === "dfw" || pinId === "fort-worth")))
+        selectedCityId !== "all" && pinId === city?.mapPinId
       );
     });
   }
@@ -426,7 +421,7 @@
     venueSelect.addEventListener("change", () => setVenue(venueSelect.value));
 
     try {
-      const res = await fetch("/field-pack/img/usa-map.svg?v=3");
+      const res = await fetch("/field-pack/img/usa-map.svg?v=4");
       const svgText = await res.text();
       mapHost.innerHTML = svgText;
       const svg = mapHost.querySelector("svg");

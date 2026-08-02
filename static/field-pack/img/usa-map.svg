@@ -26,19 +26,10 @@
     <text class="pin-emoji" x="0" y="5" text-anchor="middle">🦁</text>
     <g class="pin-label" transform="translate(16,-8)">
       <rect class="label-bg" x="-4" y="-14" rx="8" ry="8" width="82" height="36"/>
-      <text class="label-city" x="6" y="0">Dallas</text>
-      <text class="label-sym" x="6" y="14">🦁🦈🎨 Zoo</text>
+      <text class="label-city" x="6" y="0">Dallas area</text>
+      <text class="label-sym" x="6" y="14">🦁🦈🎨 Zoo · more</text>
     </g>
   </g>
-  <g class="city-pin soon" data-city="fort-worth" transform="translate(455,398)" tabindex="0" role="button" aria-label="Fort Worth">
-    <circle class="pin-halo" r="22" cx="0" cy="0"/>
-    <circle class="pin-core" r="12" cx="0" cy="0"/>
-    <text class="pin-emoji" x="0" y="5" text-anchor="middle">🐯</text>
-    <g class="pin-label" transform="translate(16,-8)">
-      <rect class="label-bg" x="-4" y="-14" rx="8" ry="8" width="118" height="36"/>
-      <text class="label-city" x="6" y="0">Fort Worth</text>
-      <text class="label-sym" x="6" y="14">🐯 Zoo</text>
-    </g>
   </g>
   <g class="city-pin soon" data-city="austin" transform="translate(470,430)" tabindex="0" role="button" aria-label="Austin">
     <circle class="pin-halo" r="22" cx="0" cy="0"/>

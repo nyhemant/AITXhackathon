@@ -1,6 +1,7 @@
 (() => {
   const catalog = window.FIELD_PACK_CATALOG;
-  const storageKey = "arya-field-pack-trips-v2";
+  const storageKey = "1less-babys-day-out-trips-v1";
+  const legacyStorageKeys = ["arya-field-pack-trips-v2", "arya-field-pack-trips-v1"];
   const precooked = window.fpPrecookedVenueIds || ["dallas-zoo"];
 
   const els = {
@@ -66,22 +67,20 @@
 
   function loadStore() {
     try {
-      const raw = localStorage.getItem(storageKey);
-      // migrate v1 lightly
+      let raw = localStorage.getItem(storageKey);
       if (!raw) {
-        const old = localStorage.getItem("arya-field-pack-trips-v1");
-        if (old) {
-          const p = JSON.parse(old);
-          return {
-            trips: (p.trips || []).map((t) => ({ ...t, venueId: t.venueId || "dallas-zoo" })),
-            selectedVenueId: "dallas-zoo",
-          };
+        for (const k of legacyStorageKeys) {
+          raw = localStorage.getItem(k);
+          if (raw) break;
         }
-        return { trips: [], selectedVenueId: "dallas-zoo" };
       }
+      if (!raw) return { trips: [], selectedVenueId: "dallas-zoo" };
       const parsed = JSON.parse(raw);
       if (!parsed || !Array.isArray(parsed.trips)) return { trips: [], selectedVenueId: "dallas-zoo" };
-      return parsed;
+      return {
+        trips: (parsed.trips || []).map((t) => ({ ...t, venueId: t.venueId || "dallas-zoo" })),
+        selectedVenueId: parsed.selectedVenueId || "dallas-zoo",
+      };
     } catch {
       return { trips: [], selectedVenueId: "dallas-zoo" };
     }
@@ -799,7 +798,7 @@
       <div class="th-page">
         <div class="th-banner">
           <h1>🗺️ TREASURE HUNT</h1>
-          <p>Print before you go · Arya’s Field Pack</p>
+          <p>Print before you go · Baby’s Day Out</p>
         </div>
         <div class="th-meta">
           <p><strong>Place:</strong> ${escapeHtml(venue.name)}</p>
@@ -820,7 +819,7 @@
           <p class="th-map-hint">Draw where you went — start → favorite stop → end</p>
           <div class="th-map-box"></div>
         </div>
-        <p class="th-footer">After the visit: open Field Pack on the computer → finish missions → Submit!</p>
+        <p class="th-footer">After the visit: open Baby's Day Out on the computer → finish missions → Submit!</p>
       </div>`;
   }
 

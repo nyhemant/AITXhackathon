@@ -1,5 +1,5 @@
 /**
- * Canonical places for Field Pack map + landing.
+ * Canonical places for Baby's Day Out map + landing.
  * status: "ready" | "soon"
  * coords: approx lat/lon for lower-48 pin placement
  */
@@ -18,7 +18,7 @@ window.FP_PLACES = [
     lat: 32.74,
     lon: -96.82,
     href: "places/dallas-zoo.html",
-    appHref: "app.html#/venue/dallas-zoo",
+    appHref: "/field-pack/app.html#/venue/dallas-zoo",
   },
   {
     id: "childrens-aquarium-dallas",
@@ -33,7 +33,7 @@ window.FP_PLACES = [
     lat: 32.78,
     lon: -96.76,
     href: "places/childrens-aquarium-dallas.html",
-    appHref: "app.html#/venue/childrens-aquarium-dallas",
+    appHref: "/field-pack/app.html#/venue/childrens-aquarium-dallas",
   },
   {
     id: "childrens-museum-perot",
@@ -48,7 +48,7 @@ window.FP_PLACES = [
     lat: 32.79,
     lon: -96.81,
     href: "places/childrens-museum-perot.html",
-    appHref: "app.html#/venue/childrens-museum-perot",
+    appHref: "/field-pack/app.html#/venue/childrens-museum-perot",
   },
   {
     id: "fort-worth-zoo",
@@ -138,7 +138,7 @@ window.FP_PLACES = [
     type: "Zoo",
     emoji: "🐼",
     status: "soon",
-    blurb: "World-famous zoo — Field Pack shortlist coming.",
+    blurb: "World-famous zoo — shortlist coming.",
     lat: 32.74,
     lon: -117.15,
     href: "places/san-diego-zoo.html",
@@ -273,7 +273,7 @@ window.FP_PLACES = [
     type: "Zoo",
     emoji: "🦍",
     status: "soon",
-    blurb: "Big NYC zoo day — Field Pack keeps it focused.",
+    blurb: "Big NYC zoo day — keeps the day focused.",
     lat: 40.85,
     lon: -73.88,
     href: "places/bronx-zoo.html",

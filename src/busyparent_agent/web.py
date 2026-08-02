@@ -27,7 +27,7 @@ LOGO_PATH = REPO_ROOT / LOGO_FILENAME
 PLAN_B_LOGO_PATH = REPO_ROOT / PLAN_B_LOGO_FILENAME
 MOBILE_LOGO_PATH = LOGO_PATH
 LOGO_ASSETS = {LOGO_FILENAME: LOGO_PATH, PLAN_B_LOGO_FILENAME: PLAN_B_LOGO_PATH}
-# Arya's Field Pack static site (trips, missions, treasure hunt)
+# Baby's Day Out static site (trips, missions, treasure hunt)
 FIELD_PACK_ROOT = REPO_ROOT / "static" / "field-pack"
 FIELD_PACK_PREFIX = "/field-pack"
 MAX_REQUEST_BYTES = 24_000
@@ -265,11 +265,11 @@ HTML = """<!doctype html>
   <body data-mode="dinner">
     <main>
       <nav class="product-threads" aria-label="1Less product threads">
+        <a class="thread" href="/field-pack/">
+          <span class="thread-copy">Baby's Day Out<small>Zoo · aquarium · museum trips</small></span>
+        </a>
         <a class="thread active" href="/" aria-current="page">
           <span class="thread-copy">Dinner<small>Decide tonight’s meal</small></span>
-        </a>
-        <a class="thread" href="/field-pack/">
-          <span class="thread-copy">Arya's Field Pack<small>Zoo · aquarium · museum trips</small></span>
         </a>
       </nav>
       <header class="hero">
