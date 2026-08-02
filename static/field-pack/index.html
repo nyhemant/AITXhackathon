@@ -10,8 +10,8 @@
     />
     <title>Arya's Field Pack · Map the adventure · 1Less</title>
     <base href="/field-pack/" />
-    <link rel="stylesheet" href="/field-pack/css/styles.css?v=6" />
-    <link rel="stylesheet" href="/field-pack/css/landing.css?v=6" />
+    <link rel="stylesheet" href="/field-pack/css/styles.css?v=7" />
+    <link rel="stylesheet" href="/field-pack/css/landing.css?v=7" />
   </head>
   <body class="landing-body">
     <div class="app landing-app">
@@ -51,61 +51,18 @@
 
       <section class="map-section" id="us-map" aria-labelledby="map-heading">
         <div class="map-section-head">
-          <h2 id="map-heading">Tap a pin on the USA</h2>
+          <h2 id="map-heading">Tap a city on the real USA map</h2>
           <p>
-            <span class="legend-dot ready"></span> Ready to play &nbsp;&nbsp;
-            <span class="legend-dot soon"></span> Coming soon (page ready)
+            Labels show the <strong>city</strong> and kind of place (zoo · aquarium · museum) —
+            not long venue names.
+            &nbsp;&nbsp;<span class="legend-dot ready"></span> Ready
+            &nbsp;&nbsp;<span class="legend-dot soon"></span> Coming soon
           </p>
         </div>
 
         <div class="map-shell">
-          <div class="map-canvas-wrap">
-            <svg
-              id="usa-map"
-              class="usa-map"
-              viewBox="0 0 960 560"
-              role="img"
-              aria-label="United States map with Field Pack places"
-            >
-              <!-- Soft water -->
-              <rect width="960" height="560" rx="28" fill="#d8efff" />
-              <!-- Simplified lower-48 blob (friendly, not geo-perfect) -->
-              <path
-                class="us-land"
-                d="M78 140
-                C120 95 170 78 230 70
-                C300 58 380 62 450 70
-                C520 78 590 85 660 92
-                C720 98 780 110 820 140
-                C855 168 875 210 880 250
-                C885 295 870 340 840 375
-                C800 420 740 445 670 455
-                C600 465 530 470 460 468
-                C390 466 320 455 270 430
-                C220 405 175 365 145 320
-                C115 275 90 220 78 140 Z"
-                fill="#8fd18a"
-                stroke="#2f7d4a"
-                stroke-width="4"
-              />
-              <!-- Florida bump -->
-              <path
-                d="M780 380 C800 400 815 430 820 465 C800 455 785 430 770 410 Z"
-                fill="#8fd18a"
-                stroke="#2f7d4a"
-                stroke-width="3"
-              />
-              <!-- Texas bump hint -->
-              <path
-                d="M420 380 C450 400 470 430 465 460 C430 450 400 430 390 400 Z"
-                fill="#7bc96f"
-                opacity="0.55"
-              />
-              <text x="480" y="40" text-anchor="middle" class="map-title-svg">
-                Explorer map of America
-              </text>
-              <g id="map-pins"></g>
-            </svg>
+          <div class="map-canvas-wrap" id="map-host" aria-label="United States map">
+            <p class="map-loading">Loading map…</p>
           </div>
 
           <aside class="map-side" aria-live="polite">
@@ -165,7 +122,7 @@
       </footer>
     </div>
 
-    <script src="/field-pack/js/places-data.js?v=1"></script>
-    <script src="/field-pack/js/landing-map.js?v=1"></script>
+    <script src="/field-pack/js/places-data.js?v=2"></script>
+    <script src="/field-pack/js/landing-map.js?v=2"></script>
   </body>
 </html>

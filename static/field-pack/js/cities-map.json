@@ -1,0 +1,190 @@
+[
+  {
+    "id": "dfw",
+    "label": "Dallas",
+    "sub": "Zoo \u00b7 Aquarium \u00b7 Museum",
+    "symbols": "\ud83e\udd81\ud83e\udd88\ud83c\udfa8",
+    "lat": 32.78,
+    "lon": -96.8,
+    "places": [
+      "dallas-zoo",
+      "childrens-aquarium-dallas",
+      "childrens-museum-perot"
+    ],
+    "status": "ready"
+  },
+  {
+    "id": "fort-worth",
+    "label": "Fort Worth",
+    "sub": "Zoo",
+    "symbols": "\ud83d\udc2f",
+    "lat": 32.75,
+    "lon": -97.33,
+    "places": [
+      "fort-worth-zoo"
+    ],
+    "status": "soon"
+  },
+  {
+    "id": "austin",
+    "label": "Austin",
+    "sub": "Museum \u00b7 Zoo",
+    "symbols": "\ud83d\udd2c\ud83e\udd92",
+    "lat": 30.27,
+    "lon": -97.74,
+    "places": [
+      "thinkery",
+      "austin-zoo"
+    ],
+    "status": "soon"
+  },
+  {
+    "id": "san-antonio",
+    "label": "San Antonio",
+    "sub": "Museum",
+    "symbols": "\ud83e\udde9",
+    "lat": 29.42,
+    "lon": -98.49,
+    "places": [
+      "doseum"
+    ],
+    "status": "soon"
+  },
+  {
+    "id": "houston",
+    "label": "Houston",
+    "sub": "Zoo",
+    "symbols": "\ud83d\udc18",
+    "lat": 29.76,
+    "lon": -95.37,
+    "places": [
+      "houston-zoo"
+    ],
+    "status": "soon"
+  },
+  {
+    "id": "san-diego",
+    "label": "San Diego",
+    "sub": "Zoo \u00b7 Safari",
+    "symbols": "\ud83d\udc3c\ud83e\udd8f",
+    "lat": 32.72,
+    "lon": -117.16,
+    "places": [
+      "san-diego-zoo",
+      "san-diego-safari-park"
+    ],
+    "status": "soon"
+  },
+  {
+    "id": "la",
+    "label": "Los Angeles",
+    "sub": "Zoo \u00b7 Aquarium \u00b7 Science",
+    "symbols": "\ud83e\udd85\ud83e\uddad\ud83d\udef0\ufe0f",
+    "lat": 34.05,
+    "lon": -118.25,
+    "places": [
+      "la-zoo",
+      "aquarium-of-the-pacific",
+      "california-science-center"
+    ],
+    "status": "soon"
+  },
+  {
+    "id": "monterey",
+    "label": "Monterey",
+    "sub": "Aquarium",
+    "symbols": "\ud83c\udf0a",
+    "lat": 36.6,
+    "lon": -121.89,
+    "places": [
+      "monterey-bay-aquarium"
+    ],
+    "status": "soon"
+  },
+  {
+    "id": "sf",
+    "label": "San Francisco",
+    "sub": "Science",
+    "symbols": "\ud83c\udf3f",
+    "lat": 37.77,
+    "lon": -122.42,
+    "places": [
+      "cal-academy"
+    ],
+    "status": "soon"
+  },
+  {
+    "id": "chicago",
+    "label": "Chicago",
+    "sub": "Aquarium \u00b7 Museum",
+    "symbols": "\ud83d\udc20\ud83e\udd96",
+    "lat": 41.88,
+    "lon": -87.63,
+    "places": [
+      "shedd-aquarium",
+      "field-museum"
+    ],
+    "status": "soon"
+  },
+  {
+    "id": "indy",
+    "label": "Indianapolis",
+    "sub": "Museum",
+    "symbols": "\ud83d\ude80",
+    "lat": 39.77,
+    "lon": -86.16,
+    "places": [
+      "indy-childrens-museum"
+    ],
+    "status": "soon"
+  },
+  {
+    "id": "atlanta",
+    "label": "Atlanta",
+    "sub": "Aquarium",
+    "symbols": "\ud83d\udc0b",
+    "lat": 33.75,
+    "lon": -84.39,
+    "places": [
+      "georgia-aquarium"
+    ],
+    "status": "soon"
+  },
+  {
+    "id": "dc",
+    "label": "Washington, DC",
+    "sub": "Zoo",
+    "symbols": "\ud83e\udda5",
+    "lat": 38.91,
+    "lon": -77.04,
+    "places": [
+      "national-zoo"
+    ],
+    "status": "soon"
+  },
+  {
+    "id": "nyc",
+    "label": "New York",
+    "sub": "Museum \u00b7 Zoo",
+    "symbols": "\ud83e\uddb4\ud83e\udd8d",
+    "lat": 40.78,
+    "lon": -73.97,
+    "places": [
+      "amnh",
+      "bronx-zoo"
+    ],
+    "status": "soon"
+  },
+  {
+    "id": "florida",
+    "label": "Florida Space",
+    "sub": "Rockets",
+    "symbols": "\ud83d\ude80",
+    "lat": 28.57,
+    "lon": -80.65,
+    "places": [
+      "kennedy-space-center"
+    ],
+    "status": "soon"
+  }
+]

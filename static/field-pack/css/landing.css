@@ -141,68 +141,135 @@
   padding: 8px;
 }
 
-.usa-map {
+.usa-real-map {
   width: 100%;
   height: auto;
   display: block;
 }
 
-.map-title-svg {
+.map-loading {
+  margin: 0;
+  padding: 48px;
+  text-align: center;
+  font-weight: 800;
+  color: #3d4f6f;
+}
+
+.map-banner {
   fill: #0a4545;
   font-size: 22px;
   font-weight: 800;
-  font-family: system-ui, sans-serif;
+  font-family: system-ui, -apple-system, sans-serif;
 }
 
-.map-pin {
+.city-pin {
   cursor: pointer;
   outline: none;
 }
 
-.map-pin circle.pin-core {
+.city-pin .pin-core {
   stroke: #0a4545;
-  stroke-width: 3;
-  transition: transform 0.12s ease;
+  stroke-width: 2.5;
 }
 
-.map-pin.ready circle.pin-core {
+.city-pin.ready .pin-core {
   fill: #ff8a3d;
 }
 
-.map-pin.soon circle.pin-core {
+.city-pin.soon .pin-core {
   fill: #5b8def;
 }
 
-.map-pin.selected circle.pin-ring {
-  opacity: 1;
-}
-
-.map-pin circle.pin-ring {
-  fill: none;
-  stroke: #ffcf5a;
-  stroke-width: 4;
+.city-pin .pin-halo {
+  fill: rgba(255, 207, 90, 0.35);
   opacity: 0;
 }
 
-.map-pin:hover circle.pin-core,
-.map-pin:focus-visible circle.pin-core {
-  filter: brightness(1.08);
+.city-pin.selected .pin-halo,
+.city-pin:hover .pin-halo,
+.city-pin:focus-visible .pin-halo {
+  opacity: 1;
 }
 
-.map-pin text {
-  font-family: system-ui, sans-serif;
-  font-size: 13px;
-  font-weight: 800;
+.city-pin .pin-emoji {
+  font-size: 11px;
+  pointer-events: none;
+}
+
+.city-pin .label-bg {
+  fill: rgba(255, 255, 255, 0.96);
+  stroke: #0a4545;
+  stroke-width: 1.5;
+}
+
+.city-pin .label-city {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 12px;
+  font-weight: 900;
   fill: #0a4545;
-  paint-order: stroke;
-  stroke: rgba(255, 255, 255, 0.9);
-  stroke-width: 4px;
+}
+
+.city-pin .label-sym {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 10px;
+  font-weight: 750;
+  fill: #3d4f6f;
+}
+
+.city-pin.dim {
+  opacity: 0.22;
   pointer-events: none;
 }
 
-.map-pin.dim {
-  opacity: 0.28;
-  pointer-events: none;
+.city-pin.selected .label-bg {
+  stroke: #d9652e;
+  stroke-width: 2.5;
+}
+
+.pd-place-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.pd-place {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 10px;
+  border-radius: 12px;
+  background: #f4faf6;
+  border: 1px solid rgba(15, 92, 92, 0.12);
+}
+
+.pd-place a {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  font-weight: 750;
+  min-width: 0;
+}
+
+.pd-place .muted,
+.pc-official.muted {
+  color: #5a6b84;
+  font-size: 0.85rem;
+  font-weight: 650;
+}
+
+.pd-emoji {
+  font-size: 1.25rem;
+}
+
+.btn-sm {
+  min-height: 36px !important;
+  padding: 6px 10px !important;
+  font-size: 0.85rem !important;
 }
 
 .map-side {
