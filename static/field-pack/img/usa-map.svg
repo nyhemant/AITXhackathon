@@ -31,7 +31,7 @@
     </g>
   </g>
   </g>
-  <g class="city-pin soon" data-city="austin" transform="translate(470,430)" tabindex="0" role="button" aria-label="Austin">
+  <g class="city-pin ready" data-city="austin" transform="translate(470,430)" tabindex="0" role="button" aria-label="Austin">
     <circle class="pin-halo" r="22" cx="0" cy="0"/>
     <circle class="pin-core" r="12" cx="0" cy="0"/>
     <text class="pin-emoji" x="0" y="5" text-anchor="middle">🔬</text>
@@ -41,7 +41,7 @@
       <text class="label-sym" x="6" y="14">🔬🦒 Museum</text>
     </g>
   </g>
-  <g class="city-pin soon" data-city="san-antonio" transform="translate(455,445)" tabindex="0" role="button" aria-label="San Antonio">
+  <g class="city-pin ready" data-city="san-antonio" transform="translate(455,445)" tabindex="0" role="button" aria-label="San Antonio">
     <circle class="pin-halo" r="22" cx="0" cy="0"/>
     <circle class="pin-core" r="12" cx="0" cy="0"/>
     <text class="pin-emoji" x="0" y="5" text-anchor="middle">🧩</text>
@@ -51,7 +51,7 @@
       <text class="label-sym" x="6" y="14">🧩 Museum</text>
     </g>
   </g>
-  <g class="city-pin soon" data-city="houston" transform="translate(505,435)" tabindex="0" role="button" aria-label="Houston">
+  <g class="city-pin ready" data-city="houston" transform="translate(505,435)" tabindex="0" role="button" aria-label="Houston">
     <circle class="pin-halo" r="22" cx="0" cy="0"/>
     <circle class="pin-core" r="12" cx="0" cy="0"/>
     <text class="pin-emoji" x="0" y="5" text-anchor="middle">🐘</text>
@@ -61,7 +61,7 @@
       <text class="label-sym" x="6" y="14">🐘 Zoo</text>
     </g>
   </g>
-  <g class="city-pin soon" data-city="san-diego" transform="translate(95,390)" tabindex="0" role="button" aria-label="San Diego">
+  <g class="city-pin ready" data-city="san-diego" transform="translate(95,390)" tabindex="0" role="button" aria-label="San Diego">
     <circle class="pin-halo" r="22" cx="0" cy="0"/>
     <circle class="pin-core" r="12" cx="0" cy="0"/>
     <text class="pin-emoji" x="0" y="5" text-anchor="middle">🐼</text>
@@ -71,7 +71,7 @@
       <text class="label-sym" x="6" y="14">🐼🦏 Zoo</text>
     </g>
   </g>
-  <g class="city-pin soon" data-city="la" transform="translate(85,360)" tabindex="0" role="button" aria-label="Los Angeles">
+  <g class="city-pin ready" data-city="la" transform="translate(85,360)" tabindex="0" role="button" aria-label="Los Angeles">
     <circle class="pin-halo" r="22" cx="0" cy="0"/>
     <circle class="pin-core" r="12" cx="0" cy="0"/>
     <text class="pin-emoji" x="0" y="5" text-anchor="middle">🦅</text>
@@ -81,7 +81,7 @@
       <text class="label-sym" x="6" y="14">🦅🦭🛰️ Zoo</text>
     </g>
   </g>
-  <g class="city-pin soon" data-city="monterey" transform="translate(55,320)" tabindex="0" role="button" aria-label="Monterey">
+  <g class="city-pin ready" data-city="monterey" transform="translate(55,320)" tabindex="0" role="button" aria-label="Monterey">
     <circle class="pin-halo" r="22" cx="0" cy="0"/>
     <circle class="pin-core" r="12" cx="0" cy="0"/>
     <text class="pin-emoji" x="0" y="5" text-anchor="middle">🌊</text>
@@ -91,7 +91,7 @@
       <text class="label-sym" x="6" y="14">🌊 Aquarium</text>
     </g>
   </g>
-  <g class="city-pin soon" data-city="sf" transform="translate(48,290)" tabindex="0" role="button" aria-label="San Francisco">
+  <g class="city-pin ready" data-city="sf" transform="translate(48,290)" tabindex="0" role="button" aria-label="San Francisco">
     <circle class="pin-halo" r="22" cx="0" cy="0"/>
     <circle class="pin-core" r="12" cx="0" cy="0"/>
     <text class="pin-emoji" x="0" y="5" text-anchor="middle">🌿</text>
@@ -101,7 +101,7 @@
       <text class="label-sym" x="6" y="14">🌿 Science</text>
     </g>
   </g>
-  <g class="city-pin soon" data-city="chicago" transform="translate(620,240)" tabindex="0" role="button" aria-label="Chicago">
+  <g class="city-pin ready" data-city="chicago" transform="translate(620,240)" tabindex="0" role="button" aria-label="Chicago">
     <circle class="pin-halo" r="22" cx="0" cy="0"/>
     <circle class="pin-core" r="12" cx="0" cy="0"/>
     <text class="pin-emoji" x="0" y="5" text-anchor="middle">🐠</text>
@@ -111,7 +111,7 @@
       <text class="label-sym" x="6" y="14">🐠🦖 Aquarium</text>
     </g>
   </g>
-  <g class="city-pin soon" data-city="indy" transform="translate(650,280)" tabindex="0" role="button" aria-label="Indianapolis">
+  <g class="city-pin ready" data-city="indy" transform="translate(650,280)" tabindex="0" role="button" aria-label="Indianapolis">
     <circle class="pin-halo" r="22" cx="0" cy="0"/>
     <circle class="pin-core" r="12" cx="0" cy="0"/>
     <text class="pin-emoji" x="0" y="5" text-anchor="middle">🚀</text>
@@ -121,7 +121,7 @@
       <text class="label-sym" x="6" y="14">🚀 Museum</text>
     </g>
   </g>
-  <g class="city-pin soon" data-city="atlanta" transform="translate(700,380)" tabindex="0" role="button" aria-label="Atlanta">
+  <g class="city-pin ready" data-city="atlanta" transform="translate(700,380)" tabindex="0" role="button" aria-label="Atlanta">
     <circle class="pin-halo" r="22" cx="0" cy="0"/>
     <circle class="pin-core" r="12" cx="0" cy="0"/>
     <text class="pin-emoji" x="0" y="5" text-anchor="middle">🐋</text>
@@ -131,7 +131,7 @@
       <text class="label-sym" x="6" y="14">🐋 Aquarium</text>
     </g>
   </g>
-  <g class="city-pin soon" data-city="dc" transform="translate(820,290)" tabindex="0" role="button" aria-label="Washington, DC">
+  <g class="city-pin ready" data-city="dc" transform="translate(820,290)" tabindex="0" role="button" aria-label="Washington, DC">
     <circle class="pin-halo" r="22" cx="0" cy="0"/>
     <circle class="pin-core" r="12" cx="0" cy="0"/>
     <text class="pin-emoji" x="0" y="5" text-anchor="middle">🦥</text>
@@ -141,7 +141,7 @@
       <text class="label-sym" x="6" y="14">🦥 Zoo</text>
     </g>
   </g>
-  <g class="city-pin soon" data-city="nyc" transform="translate(870,230)" tabindex="0" role="button" aria-label="New York">
+  <g class="city-pin ready" data-city="nyc" transform="translate(870,230)" tabindex="0" role="button" aria-label="New York">
     <circle class="pin-halo" r="22" cx="0" cy="0"/>
     <circle class="pin-core" r="12" cx="0" cy="0"/>
     <text class="pin-emoji" x="0" y="5" text-anchor="middle">🦴</text>
@@ -151,7 +151,7 @@
       <text class="label-sym" x="6" y="14">🦴🦍 Museum</text>
     </g>
   </g>
-  <g class="city-pin soon" data-city="florida" transform="translate(780,450)" tabindex="0" role="button" aria-label="Florida Space">
+  <g class="city-pin ready" data-city="florida" transform="translate(780,450)" tabindex="0" role="button" aria-label="Florida Space">
     <circle class="pin-halo" r="22" cx="0" cy="0"/>
     <circle class="pin-core" r="12" cx="0" cy="0"/>
     <text class="pin-emoji" x="0" y="5" text-anchor="middle">🚀</text>

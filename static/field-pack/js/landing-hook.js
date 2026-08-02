@@ -5,7 +5,12 @@
   const continueChip = document.getElementById("continue-chip");
   const citySelect = document.getElementById("city-select");
 
-  const READY = places.filter((p) => p.status === "ready");
+  const FEATURED_READY_IDS = [
+    "dallas-zoo",
+    "childrens-aquarium-dallas",
+    "childrens-museum-perot",
+  ];
+  const READY = FEATURED_READY_IDS.map((id) => places.find((p) => p.id === id)).filter(Boolean);
 
   function escapeHtml(s) {
     return String(s)
@@ -30,11 +35,11 @@
   // City chips: highlight ready cities first
   const chipDefs = [
     { id: "dallas", label: "Dallas area", ready: true },
-    { id: "austin", label: "Austin", ready: false },
-    { id: "nyc", label: "New York", ready: false },
-    { id: "chicago", label: "Chicago", ready: false },
-    { id: "la", label: "Los Angeles", ready: false },
-    { id: "san-diego", label: "San Diego", ready: false },
+    { id: "austin", label: "Austin", ready: true },
+    { id: "nyc", label: "New York", ready: true },
+    { id: "chicago", label: "Chicago", ready: true },
+    { id: "la", label: "Los Angeles", ready: true },
+    { id: "san-diego", label: "San Diego", ready: true },
   ];
 
   if (chips) {

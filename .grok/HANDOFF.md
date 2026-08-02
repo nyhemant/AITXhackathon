@@ -45,3 +45,9 @@ curl -sf -o /dev/null -w "%{http_code}\n" http://localhost:8000/field-pack/ http
 
 Removed from main path: planner home, build-shortlist step, saved-trips list, required place brochure hop.
 
+## National MVP packs (2026-08-02)
+- **23 venues ready** (shared catalog reuse). Home Ready strip still **Dallas 3 only**.
+- All map cities/venues open outing packs: shortlist + hunt + optional Q&A.
+- New shared items: giant-panda, red-panda, zebra, sci-* exhibit cards.
+- Depth is MVP (not zoo-specific unique animals). Unique polish later.
+
