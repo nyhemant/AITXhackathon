@@ -111,6 +111,28 @@ HTML = """<!doctype html>
       .subhead { margin: 0; max-width: 710px; color: #665b52; line-height: 1.55; font-size: 1.03rem; }
       .alpha-note { display: inline-flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 14px; padding: 9px 12px; border: 1px solid rgba(194,65,12,.2); border-radius: 999px; background: rgba(255,255,255,.72); color: #5f554d; font-size: .9rem; line-height: 1.35; }
       .alpha-note strong { color: #7c2d12; }
+      .product-threads {
+        display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+        margin: 0 0 18px; padding: 8px;
+        border: 1px solid rgba(194,65,12,.16); border-radius: 16px;
+        background: rgba(255,255,255,.82); width: fit-content; max-width: 100%;
+        box-shadow: 0 10px 28px rgba(124,45,18,.06);
+      }
+      .product-threads .thread {
+        display: inline-flex; align-items: center; gap: 8px;
+        border: 1px solid transparent; border-radius: 12px;
+        padding: 10px 14px; text-decoration: none; color: #665b52; font-weight: 850;
+      }
+      .product-threads .thread:visited { color: #665b52; }
+      .product-threads .thread:hover { background: #fff7ed; color: #7c2d12; }
+      .product-threads .thread.active {
+        border-color: rgba(194,65,12,.28); background: #ffedd5; color: #7c2d12;
+        box-shadow: 0 8px 18px rgba(255,122,0,.12);
+      }
+      .product-threads .thread small {
+        display: block; font-size: .75rem; font-weight: 720; opacity: .85; margin-top: 2px;
+      }
+      .product-threads .thread-copy { display: grid; gap: 0; line-height: 1.15; }
       .family-tools {
         display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
         margin-top: 16px; padding: 12px 14px;
@@ -242,6 +264,14 @@ HTML = """<!doctype html>
   </head>
   <body data-mode="dinner">
     <main>
+      <nav class="product-threads" aria-label="1Less product threads">
+        <a class="thread active" href="/" aria-current="page">
+          <span class="thread-copy">Dinner<small>Decide tonight’s meal</small></span>
+        </a>
+        <a class="thread" href="/field-pack/">
+          <span class="thread-copy">Arya's Field Pack<small>Zoo · aquarium · museum trips</small></span>
+        </a>
+      </nav>
       <header class="hero">
         <div class="brand-lockup">
           <img class="brand-logo brand-logo-wrap" src="/1LessPrimaryLogo.png?v=transparent-square" alt="1Less logo" width="800" height="800" />
@@ -249,11 +279,6 @@ HTML = """<!doctype html>
           <p class="tagline">One less thing on your plate.</p>
           <p class="subhead">Tell 1Less what tonight looks like. Get one doable dinner idea — not a recipe rabbit hole.</p>
           <p class="alpha-note"><strong>Dinner-only alpha</strong></p>
-          <div class="family-tools" aria-label="More family tools">
-            <span class="family-tools-label">Also underneath</span>
-            <a href="/field-pack/">Arya's Field Pack →</a>
-            <span class="hint">Zoo · aquarium · children’s museum trips with missions, answer check, and treasure-hunt printouts.</span>
-          </div>
           </div>
         </div>
       </header>
