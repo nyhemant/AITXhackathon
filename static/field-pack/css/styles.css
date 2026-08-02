@@ -1551,3 +1551,17 @@ a {
   text-decoration: none;
 }
 .back-link:hover { text-decoration: underline; }
+
+.outing-customize {
+  margin: 0 0 16px;
+}
+.customize-panel {
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.85);
+  border: 2px solid rgba(15, 92, 92, 0.12);
+}
+.customize-panel.hidden {
+  display: none !important;
+}

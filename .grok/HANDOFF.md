@@ -38,3 +38,10 @@ curl -sf -o /dev/null -w "%{http_code}\n" http://localhost:8000/field-pack/ http
 - Ready cards static HTML fallback; logo 52px attrs
 - Missions framed optional after visit; planner topbar compact under shell
 
+## Flow (3 levels — current)
+1. **Home** `/` → `/field-pack/` — city + venue
+2. **Outing** `app.html#/venue/{id}` — item list + print treasure hunt (+ optional customize)
+3. **Item** `#/venue/{id}/item/{itemId}` — optional Q&A + print card
+
+Removed from main path: planner home, build-shortlist step, saved-trips list, required place brochure hop.
+
