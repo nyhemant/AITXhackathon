@@ -32,3 +32,9 @@ curl -sf -o /dev/null -w "%{http_code}\n" http://localhost:8000/field-pack/ http
 - Email notify for saved cities
 - `/outings` alias
 - More ready packs
+
+## Voice & polish
+- Voice: no Arya; kid-neutral; print blank explorer name
+- Ready cards static HTML fallback; logo 52px attrs
+- Missions framed optional after visit; planner topbar compact under shell
+

@@ -270,7 +270,7 @@ HTML = """<!doctype html>
       <link rel="stylesheet" href="/shell/shell.css?v=2" />
       <header class="oneless-shell" data-product="dinner">
         <a class="shell-brand" href="/">
-          <img src="/1LessMark.png" alt="" width="28" height="28" />
+          <img src="/1LessMark.png" alt="1Less" width="52" height="52" />
           1Less
         </a>
         <p class="shell-product">Dinner<small>Decide tonight’s meal</small></p>

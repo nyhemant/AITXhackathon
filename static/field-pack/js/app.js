@@ -225,7 +225,7 @@
     els.home.classList.remove("hidden");
     setBack(false);
     const v = currentVenue();
-    els.brandSub.textContent = "One less wandering outing — your kid leads, learns, and teaches.";
+    els.brandSub.textContent = "Outing kit · shortlist, hunt, optional missions";
     // Keep the fixed objective headline; only refine blurb with venue context.
     if (v) {
       els.homeBlurb.innerHTML = `${escapeHtml(v.blurb)} <strong>Selected:</strong> ${escapeHtml(
@@ -546,6 +546,15 @@
     }
     els.btnTaught.textContent = aState.taught ? "Taught! ⭐" : "I taught a grown-up!";
     els.btnSubmit.textContent = showCheck ? "✅ Checked — submit again" : "✅ Submit & check answers";
+    let optNote = document.getElementById("mission-optional-note");
+    if (!optNote && els.missionGrid && els.missionGrid.parentElement) {
+      optNote = document.createElement("p");
+      optNote.id = "mission-optional-note";
+      optNote.className = "mission-optional-note no-print";
+      optNote.textContent = "Optional after the visit — skip anytime. The treasure hunt is enough for a great day.";
+      els.missionGrid.parentElement.insertBefore(optNote, els.missionGrid);
+    }
+
 
     els.missionGrid.innerHTML = "";
     missions.forEach((mission, index) => {
