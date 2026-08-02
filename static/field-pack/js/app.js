@@ -225,7 +225,7 @@
     els.home.classList.remove("hidden");
     setBack(false);
     const v = currentVenue();
-    els.brandSub.textContent = "One less wandering outing — she leads, she learns, she teaches.";
+    els.brandSub.textContent = "One less wandering outing — your kid leads, learns, and teaches.";
     // Keep the fixed objective headline; only refine blurb with venue context.
     if (v) {
       els.homeBlurb.innerHTML = `${escapeHtml(v.blurb)} <strong>Selected:</strong> ${escapeHtml(
@@ -280,7 +280,7 @@
       currentTripId = null;
       pickerDraft = {
         tripId: null,
-        title: `Arya · ${venue.shortName || venue.name}`,
+        title: `Outing · ${venue.shortName || venue.name}`,
         date: "",
         venueId: venue.id,
         selected: new Set(venue.featuredAnimalIds),
@@ -542,7 +542,7 @@
 
     els.teachBanner.classList.toggle("show", aState.taught);
     if (aState.taught) {
-      els.teachBanner.textContent = `⭐ Arya taught someone about ${item.name}!`;
+      els.teachBanner.textContent = `⭐ They taught a grown-up about ${item.name}!`;
     }
     els.btnTaught.textContent = aState.taught ? "Taught! ⭐" : "I taught a grown-up!";
     els.btnSubmit.textContent = showCheck ? "✅ Checked — submit again" : "✅ Submit & check answers";
@@ -696,7 +696,7 @@
     if (!pickerDraft) return;
     const venue = getVenue(pickerDraft.venueId) || currentVenue();
     pickerDraft.title =
-      (els.tripTitleInput.value || "").trim() || `Arya · ${venue.shortName || venue.name}`;
+      (els.tripTitleInput.value || "").trim() || `Outing · ${venue.shortName || venue.name}`;
     pickerDraft.date = els.tripDateInput.value || "";
     const selected = [...pickerDraft.selected];
     if (!selected.length) {
@@ -758,7 +758,7 @@
         <div>
           <h2>${escapeHtml(item.name)}</h2>
           <p class="ps-meta">${escapeHtml(item.blurb || "")}</p>
-          <p class="ps-line"><strong>Explorer:</strong> Arya</p>
+          <p class="ps-line"><strong>Explorer:</strong> <span class="write-in-line" aria-label="Write name">________________</span> <span class="write-in-hint">(write name)</span></p>
           <p class="ps-line"><strong>Trip:</strong> ${escapeHtml(trip.title)}</p>
           <p class="ps-line"><strong>Day:</strong> ${escapeHtml(trip.date || "________")}</p>
         </div>
@@ -808,7 +808,7 @@
         <div class="th-meta">
           <p><strong>Place:</strong> ${escapeHtml(venue.name)}</p>
           <p><strong>Where:</strong> ${escapeHtml(venue.location || "")}</p>
-          <p><strong>Explorer:</strong> Arya &nbsp;&nbsp; <strong>Date:</strong> ${escapeHtml(
+          <p><strong>Explorer:</strong> <span class="write-in-line">________________</span> <span class="write-in-hint">(write name)</span> &nbsp;&nbsp; <strong>Date:</strong> ${escapeHtml(
             tripDate || "____________"
           )}</p>
           <p><strong>Trip name:</strong> ${escapeHtml(tripTitle || "____________")}</p>

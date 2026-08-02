@@ -626,7 +626,7 @@ window.FIELD_PACK_CATALOG = {
     emoji: "🧭",
     photo: "photos/cm-explore.jpg",
     photoCredit: "Play zone icon",
-    blurb: "Arya’s choice path — whatever pulled her in!",
+    blurb: "Their choice path — whatever pulled them in!",
     links: {
       pictures: "https://www.perotmuseum.org/exhibits/halls/childrens-museum/",
       more: "https://www.perotmuseum.org/exhibits/halls/childrens-museum/",

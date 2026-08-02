@@ -44,7 +44,7 @@ window.FP_PLACES = [
     type: "Children's museum",
     emoji: "🎨",
     status: "ready",
-    blurb: "Play zones she controls — climb, make, splash.",
+    blurb: "Play zones they control — climb, make, splash.",
     lat: 32.79,
     lon: -96.81,
     href: "places/childrens-museum-perot.html",

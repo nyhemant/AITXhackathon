@@ -1455,3 +1455,29 @@ a {
 .primary-actions .btn-print {
   order: 0;
 }
+
+/* Hand-write explorer name on printouts */
+.write-in-line {
+  display: inline-block;
+  min-width: 12ch;
+  border-bottom: 2px solid #1a1a1a;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  color: #888;
+}
+.write-in-hint {
+  font-size: 0.85em;
+  font-weight: 600;
+  color: #666;
+  font-style: italic;
+}
+@media print {
+  .write-in-hint {
+    color: #444;
+  }
+  .write-in-line {
+    color: transparent;
+    border-bottom-color: #000;
+    min-width: 14ch;
+  }
+}
