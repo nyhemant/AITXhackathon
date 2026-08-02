@@ -6,15 +6,15 @@
     <meta name="color-scheme" content="light" />
     <meta
       name="description"
-      content="Arya's Field Pack on 1Less — turn a zoo, aquarium, or children's museum visit into a short, kid-led learning adventure."
+      content="Arya's Field Pack on 1Less — kid-led zoo, aquarium, and museum adventures with shortlists, treasure hunts, and teach-back missions."
     />
-    <title>Arya's Field Pack · 1Less</title>
-    <!-- Absolute base so /field-pack (no slash) still loads CSS/JS/photos -->
+    <title>Arya's Field Pack · Map the adventure · 1Less</title>
     <base href="/field-pack/" />
-    <link rel="stylesheet" href="/field-pack/css/styles.css?v=5" />
+    <link rel="stylesheet" href="/field-pack/css/styles.css?v=6" />
+    <link rel="stylesheet" href="/field-pack/css/landing.css?v=6" />
   </head>
-  <body>
-    <div class="app">
+  <body class="landing-body">
+    <div class="app landing-app">
       <nav class="product-threads no-print" aria-label="1Less product threads">
         <a class="thread" href="/">
           <span class="thread-copy">Dinner<small>Decide tonight’s meal</small></span>
@@ -24,277 +24,148 @@
         </a>
       </nav>
 
-      <header class="topbar">
-        <div class="brand">
-          <p class="brand-kicker">A 1Less family thread</p>
-          <h1>Arya's Field Pack</h1>
-          <p id="brand-sub">One less wandering outing — she leads, she learns, she teaches.</p>
+      <header class="landing-hero">
+        <div class="landing-hero-text">
+          <p class="promise-pill">A 1Less family thread</p>
+          <h1>One less chaotic outing</h1>
+          <p class="lead">
+            Pick a place on the map. Get a <strong>kid-sized shortlist</strong>, a
+            <strong>treasure hunt</strong> to print, and simple
+            <strong>missions</strong> so she leads, learns, and teaches — not a 400-species lecture.
+          </p>
+          <ol class="how-steps landing-steps">
+            <li><strong>1. Map</strong><span>Tap a city pin</span></li>
+            <li><strong>2. Place</strong><span>Open that venue’s page</span></li>
+            <li><strong>3. Adventure</strong><span>Hunt · missions · teach</span></li>
+          </ol>
+          <div class="landing-cta-row">
+            <a class="btn btn-primary btn-big" href="app.html">Open trip planner →</a>
+            <a class="btn btn-secondary btn-big" href="#us-map">Explore the map</a>
+          </div>
         </div>
-        <div class="top-actions">
-          <button type="button" id="btn-back" class="btn btn-ghost hidden">← Back</button>
-          <button type="button" id="btn-reset" class="btn btn-secondary">Clear…</button>
+        <div class="landing-hero-badge" aria-hidden="true">
+          <div class="badge-orb">🗺️</div>
+          <p>Texas home base<br /><span>+ tourist favorites</span></p>
         </div>
       </header>
 
-      <!-- HOME -->
-      <main id="view-home">
-        <section class="hero objective-hero">
-          <div class="hero-layout">
-            <div class="hero-copy">
-          <p class="promise-pill">Promise</p>
-          <h2 id="home-title">Turn a museum or zoo day into a short adventure she controls</h2>
-          <p id="home-blurb" class="lead">
-            Pick a place. Choose a handful of animals or play zones. At the visit she hunts and
-            notices. Afterward she answers simple missions, checks what she learned, and teaches a
-            grown-up — without a long lecture or a 400-species list.
+      <section class="map-section" id="us-map" aria-labelledby="map-heading">
+        <div class="map-section-head">
+          <h2 id="map-heading">Tap a pin on the USA</h2>
+          <p>
+            <span class="legend-dot ready"></span> Ready to play &nbsp;&nbsp;
+            <span class="legend-dot soon"></span> Coming soon (page ready)
           </p>
-            </div>
-            <div class="hero-art" aria-hidden="true">
-              <svg class="hero-svg" viewBox="0 0 320 260" role="img">
-                <defs>
-                  <linearGradient id="skyG" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#7ec8ff"/>
-                    <stop offset="100%" stop-color="#e8f6ff"/>
-                  </linearGradient>
-                  <linearGradient id="hillG" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#7bc96f"/>
-                    <stop offset="100%" stop-color="#3d8b5f"/>
-                  </linearGradient>
-                </defs>
-                <rect width="320" height="260" rx="28" fill="url(#skyG)"/>
-                <circle cx="255" cy="58" r="28" fill="#ffe08a"/>
-                <path d="M0 170 C60 130 110 190 160 150 C210 115 260 155 320 130 L320 260 L0 260 Z" fill="url(#hillG)"/>
-                <!-- simple giraffe silhouette -->
-                <g fill="#e8b86d" stroke="#c48a3a" stroke-width="2">
-                  <rect x="198" y="70" width="16" height="70" rx="6"/>
-                  <ellipse cx="206" cy="155" rx="34" ry="22"/>
-                  <ellipse cx="218" cy="62" rx="22" ry="16"/>
-                  <rect x="228" y="58" width="18" height="8" rx="3"/>
-                </g>
-                <g fill="#c48a3a">
-                  <circle cx="200" cy="100" r="5"/><circle cx="210" cy="118" r="5"/>
-                  <circle cx="194" cy="148" r="5"/><circle cx="218" cy="152" r="5"/>
-                </g>
-                <!-- backpack kid circle -->
-                <circle cx="90" cy="148" r="36" fill="#fff7d0" stroke="#0f5c5c" stroke-width="3"/>
-                <circle cx="90" cy="136" r="12" fill="#f4a261"/>
-                <path d="M70 158 Q90 178 110 158" fill="#0f5c5c"/>
-                <text x="90" y="210" text-anchor="middle" fill="#0a4545" font-size="15" font-family="system-ui,sans-serif" font-weight="800">Explorer mode</text>
-              </svg>
-            </div>
-          </div>
-
-          <ol class="how-steps" aria-label="How this thread works">
-            <li>
-              <strong>1. Before</strong>
-              <span>Pick a place + print a treasure hunt</span>
-            </li>
-            <li>
-              <strong>2. During</strong>
-              <span>She finds, looks, and chooses favorites</span>
-            </li>
-            <li>
-              <strong>3. After</strong>
-              <span>Missions → Submit → teach a grown-up</span>
-            </li>
-          </ol>
-
-          <div class="venue-picker-block">
-            <div class="venue-picker-head">
-              <h3>Where are you going?</h3>
-              <label class="venue-select-wrap no-print">
-                <span class="field-inline-label">Place</span>
-                <select id="venue-select" class="venue-select" aria-label="Choose venue"></select>
-              </label>
-            </div>
-            <div id="venue-cards" class="venue-cards" aria-label="Ready places"></div>
-          </div>
-
-          <div class="action-row primary-actions">
-            <button type="button" id="btn-new-trip" class="btn btn-primary btn-big">
-              Start this outing →
-            </button>
-            <button type="button" id="btn-treasure-home" class="btn btn-print btn-big">
-              Print treasure hunt first
-            </button>
-          </div>
-          <p class="submit-hint">
-            <strong>Treasure hunt</strong> = one page for the bag before you leave.
-            <strong>Start outing</strong> = pick animals/zones, then open missions after (or before)
-            the visit.
-          </p>
-        </section>
-
-        <section class="trips-section">
-          <h3 class="section-title">Saved outings for this place</h3>
-          <div id="trip-list" class="trip-list"></div>
-          <p id="trip-list-empty" class="empty-note hidden">
-            No outings yet — tap <strong>Start this outing</strong> to begin.
-          </p>
-        </section>
-      </main>
-
-      <!-- PICKER -->
-      <main id="view-picker" class="hidden">
-        <section class="hero">
-          <p class="step-chip">Step 1 · Build the shortlist</p>
-          <h2 id="picker-title">What will she look for?</h2>
-          <p id="picker-blurb">
-            Featured picks are already on. Keep it small (about 5–12) so the day stays fun.
-          </p>
-          <label class="field-label">
-            Outing name
-            <input id="trip-title-input" class="text-input" type="text" maxlength="80" />
-          </label>
-          <label class="field-label">
-            Date (optional)
-            <input id="trip-date-input" class="text-input" type="date" />
-          </label>
-          <p class="venue-chip" id="picker-venue-chip">📍 Place</p>
-        </section>
-
-        <h3 class="section-title" id="picker-featured-heading">⭐ Featured (great default)</h3>
-        <div id="picker-featured" class="picker-grid"></div>
-
-        <h3 class="section-title" id="picker-extra-heading">➕ Optional extras</h3>
-        <div id="picker-extra" class="picker-grid"></div>
-
-        <div class="submit-bar">
-          <button type="button" id="btn-save-trip" class="btn btn-primary btn-big">
-            Save outing &amp; continue →
-          </button>
-          <button type="button" id="btn-treasure-picker" class="btn btn-print btn-big">
-            Print treasure hunt
-          </button>
-          <p class="submit-hint">You can edit this list later from the outing page.</p>
         </div>
-      </main>
 
-      <!-- TRIP -->
-      <main id="view-trip" class="hidden">
-        <section class="hero">
-          <p class="step-chip">Your outing</p>
-          <p class="venue-chip" id="trip-venue-chip">📍 Place</p>
-          <h2 id="trip-heading">Trip</h2>
-          <p id="trip-meta" class="blurb"></p>
-          <p class="lead tight">
-            Tap a card to open missions. After the visit, answer, submit to check, then teach a
-            grown-up.
-          </p>
-          <div class="action-row">
-            <button type="button" id="btn-edit-animals" class="btn btn-secondary">✏️ Edit list</button>
-            <button type="button" id="btn-treasure-trip" class="btn btn-print btn-big">
-              Print treasure hunt
-            </button>
-            <a
-              id="btn-zoo-site"
-              class="btn btn-ghost"
-              href="#"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Official site</a
+        <div class="map-shell">
+          <div class="map-canvas-wrap">
+            <svg
+              id="usa-map"
+              class="usa-map"
+              viewBox="0 0 960 560"
+              role="img"
+              aria-label="United States map with Field Pack places"
             >
-            <a
-              id="btn-zoo-map"
-              class="btn btn-ghost"
-              href="#"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Map / info</a
-            >
+              <!-- Soft water -->
+              <rect width="960" height="560" rx="28" fill="#d8efff" />
+              <!-- Simplified lower-48 blob (friendly, not geo-perfect) -->
+              <path
+                class="us-land"
+                d="M78 140
+                C120 95 170 78 230 70
+                C300 58 380 62 450 70
+                C520 78 590 85 660 92
+                C720 98 780 110 820 140
+                C855 168 875 210 880 250
+                C885 295 870 340 840 375
+                C800 420 740 445 670 455
+                C600 465 530 470 460 468
+                C390 466 320 455 270 430
+                C220 405 175 365 145 320
+                C115 275 90 220 78 140 Z"
+                fill="#8fd18a"
+                stroke="#2f7d4a"
+                stroke-width="4"
+              />
+              <!-- Florida bump -->
+              <path
+                d="M780 380 C800 400 815 430 820 465 C800 455 785 430 770 410 Z"
+                fill="#8fd18a"
+                stroke="#2f7d4a"
+                stroke-width="3"
+              />
+              <!-- Texas bump hint -->
+              <path
+                d="M420 380 C450 400 470 430 465 460 C430 450 400 430 390 400 Z"
+                fill="#7bc96f"
+                opacity="0.55"
+              />
+              <text x="480" y="40" text-anchor="middle" class="map-title-svg">
+                Explorer map of America
+              </text>
+              <g id="map-pins"></g>
+            </svg>
           </div>
-        </section>
-        <h3 class="section-title" id="trip-grid-heading">On this outing</h3>
-        <div id="trip-animal-grid" class="animal-grid"></div>
-        <p id="trip-animals-empty" class="empty-note hidden">Nothing selected — edit the list.</p>
-      </main>
 
-      <!-- DETAIL -->
-      <main id="view-detail" class="detail hidden">
-        <section class="detail-hero">
-          <figure class="detail-photo">
-            <img id="detail-photo" src="" alt="" />
-            <figcaption id="detail-credit"></figcaption>
-          </figure>
-          <div class="detail-info">
-            <p class="step-chip">Missions</p>
-            <h2 id="detail-name">Item</h2>
-            <p class="blurb" id="detail-blurb"></p>
-            <div class="action-row">
-              <a
-                id="btn-cam"
-                class="btn btn-cam btn-big"
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                >📹 Live cam / look</a
-              >
-              <a
-                id="btn-pictures"
-                class="btn btn-primary btn-big"
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                >📷 More pictures</a
-              >
-              <a
-                id="btn-more"
-                class="btn btn-secondary btn-big"
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                >🔍 Learn more</a
-              >
+          <aside class="map-side" aria-live="polite">
+            <div id="pin-detail" class="pin-detail empty">
+              <p class="pin-detail-kicker">Selected place</p>
+              <h3>Tap a glowing pin</h3>
+              <p>Pins show zoos, aquariums, children’s museums, and science spots on our roadmap.</p>
             </div>
-            <div class="action-row">
-              <span id="progress-pill" class="progress-pill">0 of 6 missions</span>
-              <button type="button" id="btn-taught" class="btn btn-primary" aria-pressed="false">
-                I taught a grown-up!
-              </button>
-              <button type="button" id="btn-print" class="btn btn-print btn-big">
-                🖨️ Print mission card
-              </button>
+            <div class="map-filters">
+              <button type="button" class="chip active" data-filter="all">All</button>
+              <button type="button" class="chip" data-filter="ready">Ready now</button>
+              <button type="button" class="chip" data-filter="soon">Coming soon</button>
+              <button type="button" class="chip" data-filter="tx">Texas</button>
             </div>
-            <div id="teach-banner" class="teach-banner" role="status"></div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="places-board" aria-labelledby="places-heading">
+        <div class="places-board-head">
+          <h2 id="places-heading">All places</h2>
+          <p>Same list as the map — open a page for each venue.</p>
+        </div>
+        <div id="places-grid" class="places-grid"></div>
+      </section>
+
+      <section class="landing-promise">
+        <h2>What this thread is (and isn’t)</h2>
+        <div class="promise-grid">
+          <div class="promise-card yes">
+            <h3>✓ It is</h3>
+            <ul>
+              <li>A shortlist she can finish</li>
+              <li>Treasure hunts to print before you go</li>
+              <li>Missions + gentle answer check after</li>
+              <li>She teaches a grown-up</li>
+            </ul>
           </div>
-        </section>
+          <div class="promise-card no">
+            <h3>✗ It isn’t</h3>
+            <ul>
+              <li>A 400-species encyclopedia</li>
+              <li>A theme-park ride guide</li>
+              <li>A graded school test</li>
+              <li>Endless scrolling “top 50 kids”</li>
+            </ul>
+          </div>
+        </div>
+        <a class="btn btn-primary btn-big" href="app.html">Start with a ready Texas place →</a>
+      </section>
 
-        <p class="footer-note no-print mission-guide">
-          <strong>How to play:</strong> tap circles to choose (more than one is OK). When you’re
-          done, scroll down and hit <strong>Submit &amp; check</strong>. Green = strong match;
-          tips appear if something needs another look. Baby / cam / teach boxes are her story — not
-          graded.
-        </p>
-
-        <div id="mission-grid" class="mission-grid" aria-label="Missions"></div>
-
-        <section class="submit-bar no-print">
-          <button type="button" id="btn-submit" class="btn btn-submit btn-big">
-            ✅ Submit &amp; check answers
-          </button>
-          <p class="submit-hint" id="submit-hint-detail">
-            Checks food, home, and superpower (or play missions). Story boxes stay hers.
-          </p>
-          <div id="results-panel" class="results-panel" hidden></div>
-        </section>
-      </main>
-
-      <footer class="site-footer no-print">
+      <footer class="site-footer">
         <p>
-          <strong>Ready places:</strong> Dallas Zoo · Children’s Aquarium Dallas · Children’s Museum
-          (Perot). Smart shortlists only — not full inventories.
-        </p>
-        <p class="footer-promise">
-          1Less promise here: <em>one less chaotic outing</em> — she chooses, she notices, she
-          teaches.
+          <a href="/">1Less Dinner</a> · Arya’s Field Pack · Home base: Dallas–Fort Worth · Growing
+          city by city
         </p>
       </footer>
     </div>
 
-    <div id="print-sheet" class="print-sheet" aria-hidden="true"></div>
-    <div id="treasure-sheet" class="print-sheet treasure-sheet" aria-hidden="true"></div>
-
-    <script src="/field-pack/js/catalog.js?v=5"></script>
-    <script src="/field-pack/js/app.js?v=5"></script>
+    <script src="/field-pack/js/places-data.js?v=1"></script>
+    <script src="/field-pack/js/landing-map.js?v=1"></script>
   </body>
 </html>

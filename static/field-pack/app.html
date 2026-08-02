@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <meta
+      name="description"
+      content="Arya's Field Pack on 1Less — turn a zoo, aquarium, or children's museum visit into a short, kid-led learning adventure."
+    />
+    <title>Arya's Field Pack · 1Less</title>
+    <!-- Absolute base so /field-pack (no slash) still loads CSS/JS/photos -->
+    <base href="/field-pack/" />
+    <link rel="stylesheet" href="/field-pack/css/styles.css?v=6" />
+  </head>
+  <body>
+    <div class="app">
+      <nav class="product-threads no-print" aria-label="1Less product threads">
+        <a class="thread" href="/">
+          <span class="thread-copy">Dinner<small>Decide tonight’s meal</small></span>
+        </a>
+        <a class="thread" href="/field-pack/">
+          <span class="thread-copy">Map &amp; places<small>Pick a destination</small></span>
+        </a>
+        <a class="thread active" href="/field-pack/app.html" aria-current="page">
+          <span class="thread-copy">Plan outing<small>Trips &amp; missions</small></span>
+        </a>
+      </nav>
+
+      <header class="topbar">
+        <div class="brand">
+          <p class="brand-kicker">A 1Less family thread</p>
+          <h1>Arya's Field Pack</h1>
+          <p id="brand-sub">One less wandering outing — she leads, she learns, she teaches.</p>
+        </div>
+        <div class="top-actions">
+          <button type="button" id="btn-back" class="btn btn-ghost hidden">← Back</button>
+          <button type="button" id="btn-reset" class="btn btn-secondary">Clear…</button>
+        </div>
+      </header>
+
+      <!-- HOME -->
+      <main id="view-home">
+        <section class="hero objective-hero">
+          <div class="hero-layout">
+            <div class="hero-copy">
+          <p class="promise-pill">Promise</p>
+          <h2 id="home-title">Turn a museum or zoo day into a short adventure she controls</h2>
+          <p id="home-blurb" class="lead">
+            Pick a place. Choose a handful of animals or play zones. At the visit she hunts and
+            notices. Afterward she answers simple missions, checks what she learned, and teaches a
+            grown-up — without a long lecture or a 400-species list.
+          </p>
+            </div>
+            <div class="hero-art" aria-hidden="true">
+              <svg class="hero-svg" viewBox="0 0 320 260" role="img">
+                <defs>
+                  <linearGradient id="skyG" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#7ec8ff"/>
+                    <stop offset="100%" stop-color="#e8f6ff"/>
+                  </linearGradient>
+                  <linearGradient id="hillG" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#7bc96f"/>
+                    <stop offset="100%" stop-color="#3d8b5f"/>
+                  </linearGradient>
+                </defs>
+                <rect width="320" height="260" rx="28" fill="url(#skyG)"/>
+                <circle cx="255" cy="58" r="28" fill="#ffe08a"/>
+                <path d="M0 170 C60 130 110 190 160 150 C210 115 260 155 320 130 L320 260 L0 260 Z" fill="url(#hillG)"/>
+                <!-- simple giraffe silhouette -->
+                <g fill="#e8b86d" stroke="#c48a3a" stroke-width="2">
+                  <rect x="198" y="70" width="16" height="70" rx="6"/>
+                  <ellipse cx="206" cy="155" rx="34" ry="22"/>
+                  <ellipse cx="218" cy="62" rx="22" ry="16"/>
+                  <rect x="228" y="58" width="18" height="8" rx="3"/>
+                </g>
+                <g fill="#c48a3a">
+                  <circle cx="200" cy="100" r="5"/><circle cx="210" cy="118" r="5"/>
+                  <circle cx="194" cy="148" r="5"/><circle cx="218" cy="152" r="5"/>
+                </g>
+                <!-- backpack kid circle -->
+                <circle cx="90" cy="148" r="36" fill="#fff7d0" stroke="#0f5c5c" stroke-width="3"/>
+                <circle cx="90" cy="136" r="12" fill="#f4a261"/>
+                <path d="M70 158 Q90 178 110 158" fill="#0f5c5c"/>
+                <text x="90" y="210" text-anchor="middle" fill="#0a4545" font-size="15" font-family="system-ui,sans-serif" font-weight="800">Explorer mode</text>
+              </svg>
+            </div>
+          </div>
+
+          <ol class="how-steps" aria-label="How this thread works">
+            <li>
+              <strong>1. Before</strong>
+              <span>Pick a place + print a treasure hunt</span>
+            </li>
+            <li>
+              <strong>2. During</strong>
+              <span>She finds, looks, and chooses favorites</span>
+            </li>
+            <li>
+              <strong>3. After</strong>
+              <span>Missions → Submit → teach a grown-up</span>
+            </li>
+          </ol>
+
+          <div class="venue-picker-block">
+            <div class="venue-picker-head">
+              <h3>Where are you going?</h3>
+              <label class="venue-select-wrap no-print">
+                <span class="field-inline-label">Place</span>
+                <select id="venue-select" class="venue-select" aria-label="Choose venue"></select>
+              </label>
+            </div>
+            <div id="venue-cards" class="venue-cards" aria-label="Ready places"></div>
+          </div>
+
+          <div class="action-row primary-actions">
+            <button type="button" id="btn-new-trip" class="btn btn-primary btn-big">
+              Start this outing →
+            </button>
+            <button type="button" id="btn-treasure-home" class="btn btn-print btn-big">
+              Print treasure hunt first
+            </button>
+          </div>
+          <p class="submit-hint">
+            <strong>Treasure hunt</strong> = one page for the bag before you leave.
+            <strong>Start outing</strong> = pick animals/zones, then open missions after (or before)
+            the visit.
+          </p>
+        </section>
+
+        <section class="trips-section">
+          <h3 class="section-title">Saved outings for this place</h3>
+          <div id="trip-list" class="trip-list"></div>
+          <p id="trip-list-empty" class="empty-note hidden">
+            No outings yet — tap <strong>Start this outing</strong> to begin.
+          </p>
+        </section>
+      </main>
+
+      <!-- PICKER -->
+      <main id="view-picker" class="hidden">
+        <section class="hero">
+          <p class="step-chip">Step 1 · Build the shortlist</p>
+          <h2 id="picker-title">What will she look for?</h2>
+          <p id="picker-blurb">
+            Featured picks are already on. Keep it small (about 5–12) so the day stays fun.
+          </p>
+          <label class="field-label">
+            Outing name
+            <input id="trip-title-input" class="text-input" type="text" maxlength="80" />
+          </label>
+          <label class="field-label">
+            Date (optional)
+            <input id="trip-date-input" class="text-input" type="date" />
+          </label>
+          <p class="venue-chip" id="picker-venue-chip">📍 Place</p>
+        </section>
+
+        <h3 class="section-title" id="picker-featured-heading">⭐ Featured (great default)</h3>
+        <div id="picker-featured" class="picker-grid"></div>
+
+        <h3 class="section-title" id="picker-extra-heading">➕ Optional extras</h3>
+        <div id="picker-extra" class="picker-grid"></div>
+
+        <div class="submit-bar">
+          <button type="button" id="btn-save-trip" class="btn btn-primary btn-big">
+            Save outing &amp; continue →
+          </button>
+          <button type="button" id="btn-treasure-picker" class="btn btn-print btn-big">
+            Print treasure hunt
+          </button>
+          <p class="submit-hint">You can edit this list later from the outing page.</p>
+        </div>
+      </main>
+
+      <!-- TRIP -->
+      <main id="view-trip" class="hidden">
+        <section class="hero">
+          <p class="step-chip">Your outing</p>
+          <p class="venue-chip" id="trip-venue-chip">📍 Place</p>
+          <h2 id="trip-heading">Trip</h2>
+          <p id="trip-meta" class="blurb"></p>
+          <p class="lead tight">
+            Tap a card to open missions. After the visit, answer, submit to check, then teach a
+            grown-up.
+          </p>
+          <div class="action-row">
+            <button type="button" id="btn-edit-animals" class="btn btn-secondary">✏️ Edit list</button>
+            <button type="button" id="btn-treasure-trip" class="btn btn-print btn-big">
+              Print treasure hunt
+            </button>
+            <a
+              id="btn-zoo-site"
+              class="btn btn-ghost"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Official site</a
+            >
+            <a
+              id="btn-zoo-map"
+              class="btn btn-ghost"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Map / info</a
+            >
+          </div>
+        </section>
+        <h3 class="section-title" id="trip-grid-heading">On this outing</h3>
+        <div id="trip-animal-grid" class="animal-grid"></div>
+        <p id="trip-animals-empty" class="empty-note hidden">Nothing selected — edit the list.</p>
+      </main>
+
+      <!-- DETAIL -->
+      <main id="view-detail" class="detail hidden">
+        <section class="detail-hero">
+          <figure class="detail-photo">
+            <img id="detail-photo" src="" alt="" />
+            <figcaption id="detail-credit"></figcaption>
+          </figure>
+          <div class="detail-info">
+            <p class="step-chip">Missions</p>
+            <h2 id="detail-name">Item</h2>
+            <p class="blurb" id="detail-blurb"></p>
+            <div class="action-row">
+              <a
+                id="btn-cam"
+                class="btn btn-cam btn-big"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                >📹 Live cam / look</a
+              >
+              <a
+                id="btn-pictures"
+                class="btn btn-primary btn-big"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                >📷 More pictures</a
+              >
+              <a
+                id="btn-more"
+                class="btn btn-secondary btn-big"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                >🔍 Learn more</a
+              >
+            </div>
+            <div class="action-row">
+              <span id="progress-pill" class="progress-pill">0 of 6 missions</span>
+              <button type="button" id="btn-taught" class="btn btn-primary" aria-pressed="false">
+                I taught a grown-up!
+              </button>
+              <button type="button" id="btn-print" class="btn btn-print btn-big">
+                🖨️ Print mission card
+              </button>
+            </div>
+            <div id="teach-banner" class="teach-banner" role="status"></div>
+          </div>
+        </section>
+
+        <p class="footer-note no-print mission-guide">
+          <strong>How to play:</strong> tap circles to choose (more than one is OK). When you’re
+          done, scroll down and hit <strong>Submit &amp; check</strong>. Green = strong match;
+          tips appear if something needs another look. Baby / cam / teach boxes are her story — not
+          graded.
+        </p>
+
+        <div id="mission-grid" class="mission-grid" aria-label="Missions"></div>
+
+        <section class="submit-bar no-print">
+          <button type="button" id="btn-submit" class="btn btn-submit btn-big">
+            ✅ Submit &amp; check answers
+          </button>
+          <p class="submit-hint" id="submit-hint-detail">
+            Checks food, home, and superpower (or play missions). Story boxes stay hers.
+          </p>
+          <div id="results-panel" class="results-panel" hidden></div>
+        </section>
+      </main>
+
+      <footer class="site-footer no-print">
+        <p>
+          <strong>Ready places:</strong> Dallas Zoo · Children’s Aquarium Dallas · Children’s Museum
+          (Perot). Smart shortlists only — not full inventories.
+        </p>
+        <p class="footer-promise">
+          1Less promise here: <em>one less chaotic outing</em> — she chooses, she notices, she
+          teaches.
+        </p>
+      </footer>
+    </div>
+
+    <div id="print-sheet" class="print-sheet" aria-hidden="true"></div>
+    <div id="treasure-sheet" class="print-sheet treasure-sheet" aria-hidden="true"></div>
+
+    <script src="/field-pack/js/catalog.js?v=6"></script>
+    <script src="/field-pack/js/app.js?v=6"></script>
+  </body>
+</html>
