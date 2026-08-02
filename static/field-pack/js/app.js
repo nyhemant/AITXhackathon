@@ -140,14 +140,20 @@
   }
 
   const VENUE_CARD_COPY = {
-    "dallas-zoo": { emoji: "🦁", blurb: "Animals · smart shortlist for Dallas Zoo" },
+    "dallas-zoo": {
+      emoji: "🦁",
+      blurb: "Animals · smart shortlist for Dallas Zoo",
+      cover: "photos/sumatran-tiger.jpg",
+    },
     "childrens-aquarium-dallas": {
       emoji: "🦈",
       blurb: "Water life · half-day kid aquarium list",
+      cover: "photos/shark.jpg",
     },
     "childrens-museum-perot": {
       emoji: "🎨",
       blurb: "Play zones · Moody Family Children’s Museum",
+      cover: "photos/cm-woven.jpg",
     },
   };
 
@@ -183,9 +189,14 @@
       btn.type = "button";
       btn.className = "venue-card" + (id === selectedVenueId ? " selected" : "");
       btn.setAttribute("aria-pressed", id === selectedVenueId ? "true" : "false");
+      const cover = meta.cover || (getItem(v.featuredAnimalIds[0]) || {}).photo || "";
       btn.innerHTML = `
-        <span class="vc-emoji" aria-hidden="true">${meta.emoji}</span>
-        <span class="vc-name">${escapeHtml(v.shortName || v.name)}</span>
+        ${
+          cover
+            ? `<img class="vc-photo" src="${escapeAttr(cover)}" alt="" loading="lazy" />`
+            : `<span class="vc-emoji" aria-hidden="true">${meta.emoji}</span>`
+        }
+        <span class="vc-name">${meta.emoji || ""} ${escapeHtml(v.shortName || v.name)}</span>
         <span class="vc-meta">${escapeHtml(meta.blurb)}</span>
       `;
       btn.addEventListener("click", () => {

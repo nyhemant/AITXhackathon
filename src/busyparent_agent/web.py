@@ -993,6 +993,13 @@ class WebHandler(BaseHTTPRequestHandler):
         if path == "/analytics/status":
             self._handle_analytics_status()
             return
+        # Trailing slash so relative CSS/JS/photo URLs resolve under /field-pack/
+        if path == FIELD_PACK_PREFIX:
+            self.send_response(301)
+            self.send_header("Location", FIELD_PACK_PREFIX + "/")
+            self.send_header("Content-Length", "0")
+            self.end_headers()
+            return
         asset_path = LOGO_ASSETS.get(path.lstrip("/"))
         if asset_path is not None:
             if not asset_path.exists():
@@ -1002,7 +1009,18 @@ class WebHandler(BaseHTTPRequestHandler):
             return
         field_pack_file = _safe_field_pack_path(path)
         if field_pack_file is not None:
-            self._send_binary(field_pack_file.read_bytes(), _static_content_type(field_pack_file))
+            body = field_pack_file.read_bytes()
+            content_type = _static_content_type(field_pack_file)
+            self.send_response(200)
+            self.send_header("Content-Type", content_type)
+            self.send_header("Content-Length", str(len(body)))
+            # Avoid long stale CSS/JS at the edge while iterating
+            if field_pack_file.suffix.lower() in {".css", ".js", ".html", ".htm"}:
+                self.send_header("Cache-Control", "no-cache")
+            else:
+                self.send_header("Cache-Control", "public, max-age=86400")
+            self.end_headers()
+            self.wfile.write(body)
             return
         if path not in {"/", "/index.html"}:
             self.send_error(404)

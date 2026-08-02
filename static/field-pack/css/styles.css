@@ -246,6 +246,36 @@ a {
   background:
     radial-gradient(circle at 92% 8%, rgba(255, 207, 90, 0.28), transparent 18rem),
     linear-gradient(165deg, #ffffff 0%, #f3fbf6 55%, #eef8ff 100%);
+  overflow: hidden;
+}
+
+.hero-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(180px, 0.85fr);
+  gap: 18px;
+  align-items: center;
+}
+
+.hero-art {
+  justify-self: end;
+  width: min(100%, 320px);
+}
+
+.hero-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 14px 28px rgba(15, 92, 92, 0.18));
+}
+
+.venue-card .vc-photo {
+  width: 100%;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+  background: linear-gradient(135deg, #cfe8ff, #dff0d6);
+  margin-bottom: 4px;
 }
 
 .promise-pill,
@@ -435,6 +465,16 @@ a {
   .how-steps,
   .venue-cards {
     grid-template-columns: 1fr;
+  }
+
+  .hero-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-art {
+    justify-self: center;
+    order: -1;
+    width: min(100%, 280px);
   }
 
   .hero h2 {
