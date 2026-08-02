@@ -14,6 +14,7 @@
     venueSelect: document.getElementById("venue-select"),
     homeTitle: document.getElementById("home-title"),
     homeBlurb: document.getElementById("home-blurb"),
+    venueCards: document.getElementById("venue-cards"),
     tripList: document.getElementById("trip-list"),
     tripListEmpty: document.getElementById("trip-list-empty"),
     btnNewTrip: document.getElementById("btn-new-trip"),
@@ -138,6 +139,18 @@
     els.backBtn.textContent = label || "← Back";
   }
 
+  const VENUE_CARD_COPY = {
+    "dallas-zoo": { emoji: "🦁", blurb: "Animals · smart shortlist for Dallas Zoo" },
+    "childrens-aquarium-dallas": {
+      emoji: "🦈",
+      blurb: "Water life · half-day kid aquarium list",
+    },
+    "childrens-museum-perot": {
+      emoji: "🎨",
+      blurb: "Play zones · Moody Family Children’s Museum",
+    },
+  };
+
   function fillVenueSelect() {
     els.venueSelect.innerHTML = "";
     for (const id of precooked) {
@@ -156,6 +169,33 @@
       ? selectedVenueId
       : precooked[0];
     selectedVenueId = els.venueSelect.value;
+    renderVenueCards();
+  }
+
+  function renderVenueCards() {
+    if (!els.venueCards) return;
+    els.venueCards.innerHTML = "";
+    for (const id of precooked) {
+      const v = getVenue(id);
+      if (!v) continue;
+      const meta = VENUE_CARD_COPY[id] || { emoji: "📍", blurb: v.blurb || "" };
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "venue-card" + (id === selectedVenueId ? " selected" : "");
+      btn.setAttribute("aria-pressed", id === selectedVenueId ? "true" : "false");
+      btn.innerHTML = `
+        <span class="vc-emoji" aria-hidden="true">${meta.emoji}</span>
+        <span class="vc-name">${escapeHtml(v.shortName || v.name)}</span>
+        <span class="vc-meta">${escapeHtml(meta.blurb)}</span>
+      `;
+      btn.addEventListener("click", () => {
+        selectedVenueId = id;
+        els.venueSelect.value = id;
+        saveStore();
+        showHome();
+      });
+      els.venueCards.appendChild(btn);
+    }
   }
 
   function currentVenue() {
@@ -171,12 +211,17 @@
     els.home.classList.remove("hidden");
     setBack(false);
     const v = currentVenue();
-    els.brandSub.textContent = `${v ? v.shortName : "Field Pack"} · trips`;
-    els.homeTitle.textContent = v ? `Plan: ${v.name}` : "Plan a trip";
-    els.homeBlurb.textContent = v
-      ? `${v.blurb} Pick items, explore missions, submit to check — or print a treasure hunt before you go.`
-      : "";
-    els.btnNewTrip.textContent = v ? `🗺️ New ${v.shortName || v.name} trip` : "🗺️ New trip";
+    els.brandSub.textContent = "One less wandering outing — she leads, she learns, she teaches.";
+    // Keep the fixed objective headline; only refine blurb with venue context.
+    if (v) {
+      els.homeBlurb.innerHTML = `${escapeHtml(v.blurb)} <strong>Selected:</strong> ${escapeHtml(
+        v.name
+      )} (${escapeHtml(v.location || "")}). Print a treasure hunt before you go, or start the outing and open missions after.`;
+      els.btnNewTrip.textContent = `Start ${v.shortName || v.name} outing →`;
+    } else {
+      els.btnNewTrip.textContent = "Start this outing →";
+    }
+    renderVenueCards();
     renderTripList();
     history.replaceState(null, "", `#/venue/${selectedVenueId}`);
   }
