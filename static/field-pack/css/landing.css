@@ -1065,9 +1065,9 @@
   max-width: 1100px;
 }
 
-/* Breath of education — then map owns the page */
+/* Breath of education — visual story, then map owns the page */
 .landing-pitch {
-  margin: 2px 0 12px;
+  margin: 2px 0 14px;
   padding: 0 2px;
   text-align: left;
 }
@@ -1080,32 +1080,137 @@
   letter-spacing: -0.03em;
 }
 .pitch-line {
-  margin: 0;
+  margin: 0 0 12px;
   font-size: 0.98rem;
   font-weight: 600;
   color: var(--muted, #3d4f6f);
-  max-width: 40rem;
+  max-width: 36rem;
   line-height: 1.45;
 }
-.pitch-line strong {
-  color: var(--teal-deep, #0a4545);
-  font-weight: 750;
-}
-.pitch-flow {
-  display: inline-block;
-  margin-left: 0.4rem;
-  padding: 3px 11px;
-  border-radius: var(--radius-pill, 999px);
-  background: rgba(255, 255, 255, 0.9);
+
+/* Map → Print → Play storyboard (aha strip) */
+.story-flow {
+  list-style: none;
+  margin: 0;
+  padding: 12px 14px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 4px 6px;
+  border-radius: var(--radius-lg, 24px);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(232, 248, 240, 0.88));
   border: 1.5px solid var(--border, rgba(15, 92, 92, 0.12));
+  box-shadow: var(--shadow-sm, 0 2px 8px rgba(21, 34, 56, 0.05));
+}
+.story-step {
+  flex: 1 1 140px;
+  min-width: 120px;
+  max-width: 200px;
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  gap: 4px;
+  padding: 6px 8px 8px;
+  border-radius: var(--radius, 16px);
+  transition: background var(--dur-fast, 120ms) ease;
+}
+.story-step:hover {
+  background: rgba(255, 255, 255, 0.75);
+}
+.story-art {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 72px;
+}
+.story-svg {
+  display: block;
+  width: min(88px, 100%);
+  height: auto;
+  filter: drop-shadow(0 4px 10px rgba(21, 34, 56, 0.08));
+}
+.story-label {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: -0.02em;
+  color: var(--teal-deep, #0a4545);
+}
+.story-num {
+  display: grid;
+  place-items: center;
+  width: 1.35rem;
+  height: 1.35rem;
+  border-radius: 50%;
+  background: var(--teal, #0f5c5c);
+  color: #fff;
   font-size: 0.72rem;
-  font-weight: 750;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--teal, #0f5c5c);
-  vertical-align: 1px;
-  white-space: nowrap;
-  box-shadow: var(--shadow-sm, none);
+  font-weight: 800;
+  flex: 0 0 auto;
+}
+.story-desc {
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 650;
+  line-height: 1.3;
+  color: var(--muted, #3d4f6f);
+  max-width: 14ch;
+}
+.story-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  color: var(--accent, #d9652e);
+  opacity: 0.85;
+  padding: 0 2px;
+  margin-top: -18px; /* optically center with art, not labels */
+}
+.story-step:nth-child(1) .story-num { background: #0f5c5c; }
+.story-step:nth-child(3) .story-num { background: #d9652e; }
+.story-step:nth-child(5) .story-num { background: #c9a227; color: #1a1a1a; }
+
+@media (max-width: 640px) {
+  .story-flow {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+    padding: 10px 12px;
+  }
+  .story-step {
+    max-width: none;
+    flex-direction: row;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    column-gap: 12px;
+    row-gap: 2px;
+    text-align: left;
+    justify-items: start;
+    padding: 8px 6px;
+  }
+  .story-art {
+    grid-row: 1 / span 2;
+    width: 72px;
+    min-height: 60px;
+  }
+  .story-svg {
+    width: 72px;
+  }
+  .story-desc {
+    max-width: none;
+  }
+  .story-arrow {
+    margin: 0;
+    padding: 0;
+    height: 18px;
+    transform: rotate(90deg);
+    opacity: 0.7;
+  }
 }
 
 .map-first {
