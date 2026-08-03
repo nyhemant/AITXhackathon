@@ -1193,100 +1193,59 @@ window.FP_PLACES = [
 window.FP_TOP_PLACE_IDS = ["dallas-zoo", "childrens-aquarium-dallas", "childrens-museum-perot", "fort-worth-zoo", "houston-zoo", "san-diego-zoo", "san-diego-safari-park", "la-zoo", "aquarium-of-the-pacific", "california-science-center", "monterey-bay-aquarium", "cal-academy", "shedd-aquarium", "field-museum", "georgia-aquarium", "national-zoo", "amnh", "bronx-zoo", "kennedy-space-center", "new-england-aquarium"];
 
 /**
- * Project lat/lon onto THIS usa-map.svg (viewBox 0 0 959 593).
- * The state paths are not equirectangular — we IDW-interpolate from
- * hand-placed city anchors so pins sit on land correctly.
+ * Project lat/lon onto usa-map.svg using each state's path bbox.
+ * Maps geographic position within a state → SVG position within that state's outline.
  */
-window.fpProjectUS = function fpProjectUS(lat, lon /*, width, height ignored */) {
-  // Hawaii inset (bottom-left of this artwork)
+window.fpProjectUS = function fpProjectUS(lat, lon, _w, _h, stateHint) {
+  const GEO = {"al": [30.2, 35.0, -88.5, -84.9], "az": [31.3, 37.0, -114.8, -109.0], "ar": [33.0, 36.5, -94.6, -89.6], "ca": [32.5, 42.0, -124.5, -114.1], "co": [37.0, 41.0, -109.1, -102.0], "ct": [40.95, 42.05, -73.75, -71.8], "de": [38.45, 39.85, -75.8, -75.05], "fl": [24.5, 31.0, -87.6, -80.0], "ga": [30.35, 35.0, -85.6, -80.85], "id": [42.0, 49.0, -117.25, -111.05], "il": [37.0, 42.5, -91.5, -87.0], "in": [37.8, 41.75, -88.1, -84.8], "ia": [40.4, 43.5, -96.65, -90.15], "ks": [37.0, 40.0, -102.05, -94.6], "ky": [36.5, 39.15, -89.55, -81.95], "la": [28.9, 33.05, -94.05, -88.8], "me": [43.05, 47.45, -71.1, -66.95], "md": [37.9, 39.75, -79.5, -75.05], "ma": [41.2, 42.9, -73.5, -69.9], "mi": [41.7, 48.25, -90.45, -82.15], "mn": [43.5, 49.4, -97.25, -89.5], "ms": [30.2, 35.0, -91.65, -88.1], "mo": [36.0, 40.6, -95.8, -89.1], "mt": [44.35, 49.0, -116.05, -104.05], "ne": [40.0, 43.0, -104.05, -95.3], "nv": [35.0, 42.0, -120.0, -114.05], "nh": [42.7, 45.3, -72.55, -70.7], "nj": [38.95, 41.35, -75.55, -73.9], "nm": [31.3, 37.0, -109.05, -103.0], "ny": [40.5, 45.05, -79.75, -71.85], "nc": [33.85, 36.6, -84.3, -75.45], "nd": [45.95, 49.0, -104.05, -96.55], "oh": [38.4, 42.0, -84.8, -80.5], "ok": [33.6, 37.0, -103.0, -94.45], "or": [42.0, 46.3, -124.55, -116.45], "pa": [39.7, 42.25, -80.55, -74.7], "ri": [41.15, 42.0, -71.9, -71.1], "sc": [32.05, 35.2, -83.35, -78.55], "sd": [42.5, 45.95, -104.05, -96.45], "tn": [34.95, 36.7, -90.3, -81.65], "tx": [25.85, 36.5, -106.65, -93.5], "ut": [37.0, 42.0, -114.05, -109.05], "vt": [42.75, 45.0, -73.45, -71.5], "va": [36.55, 39.45, -83.65, -75.25], "wa": [45.55, 49.0, -124.75, -116.95], "wv": [37.2, 40.65, -82.65, -77.7], "wi": [42.5, 47.05, -92.85, -86.75], "wy": [41.0, 45.0, -111.05, -104.05], "dc": [38.79, 38.99, -77.12, -76.91]};
+  const SVG = {"al": {"xmin": 620.9, "xmax": 687.6, "ymin": 361.1, "ymax": 470.0, "cx": 652.89, "cy": 441.88}, "az": {"xmin": 134.9, "xmax": 253.8, "ymin": 296.8, "ymax": 435.1, "cx": 157.3, "cy": 354.14}, "ar": {"xmin": 504.5, "xmax": 593.2, "ymin": 334.4, "ymax": 414.2, "cx": 574.25, "cy": 369.4}, "ca": {"xmin": 20.6, "xmax": 161.3, "ymin": 155.8, "ymax": 395.5, "cx": 70.11, "cy": 308.81}, "co": {"xmin": 253.8, "xmax": 380.8, "ymin": 222.7, "ymax": 323.3, "cx": 330.7, "cy": 271.94}, "ct": {"xmin": 843.8, "xmax": 873.9, "ymin": 165.2, "ymax": 194.7, "cx": 859.4, "cy": 180.52}, "de": {"xmin": 817.9, "xmax": 836.4, "ymin": 226.6, "ymax": 257.2, "cx": 825.79, "cy": 238.0}, "fl": {"xmin": 638.3, "xmax": 802.1, "ymin": 443.5, "ymax": 579.3, "cx": 747.88, "cy": 514.03}, "ga": {"xmin": 666.6, "xmax": 761.8, "ymin": 355.2, "ymax": 454.4, "cx": 725.33, "cy": 410.78}, "id": {"xmin": 140.9, "xmax": 245.0, "ymin": 27.5, "ymax": 196.0, "cx": 190.81, "cy": 112.97}, "il": {"xmin": 555.4, "xmax": 625.5, "ymin": 199.2, "ymax": 322.5, "cx": 588.93, "cy": 267.79}, "in": {"xmin": 617.4, "xmax": 670.9, "ymin": 209.8, "ymax": 303.5, "cx": 636.98, "cy": 281.38}, "ia": {"xmin": 471.2, "xmax": 575.7, "ymin": 180.4, "ymax": 249.7, "cx": 528.89, "cy": 215.85}, "ks": {"xmin": 374.6, "xmax": 504.3, "ymin": 256.3, "ymax": 326.3, "cx": 473.3, "cy": 276.09}, "ky": {"xmin": 596.7, "xmax": 722.7, "ymin": 268.2, "ymax": 333.5, "cx": 655.78, "cy": 300.89}, "la": {"xmin": 516.7, "xmax": 615.6, "ymin": 412.9, "ymax": 499.6, "cx": 579.37, "cy": 478.16}, "me": {"xmin": 863.1, "xmax": 927.4, "ymin": 36.7, "ymax": 138.3, "cx": 899.07, "cy": 89.86}, "md": {"xmin": 756.6, "xmax": 835.6, "ymin": 230.2, "ymax": 269.8, "cx": 808.13, "cy": 254.34}, "ma": {"xmin": 843.4, "xmax": 904.3, "ymin": 141.1, "ymax": 175.6, "cx": 887.26, "cy": 162.19}, "mi": {"xmin": 533.2, "xmax": 698.3, "ymin": 76.4, "ymax": 213.2, "cx": 617.86, "cy": 130.75}, "mn": {"xmin": 462.3, "xmax": 578.1, "ymin": 53.7, "ymax": 182.0, "cx": 520.34, "cy": 104.6}, "ms": {"xmin": 562.8, "xmax": 625.3, "ymin": 365.1, "ymax": 473.6, "cx": 586.27, "cy": 425.28}, "mo": {"xmin": 484.5, "xmax": 601.2, "ymin": 244.9, "ymax": 345.7, "cx": 564.94, "cy": 301.23}, "mt": {"xmin": 184.0, "xmax": 362.5, "ymin": 30.5, "ymax": 143.7, "cx": 225.72, "cy": 105.47}, "ne": {"xmin": 347.7, "xmax": 491.5, "ymin": 187.6, "ymax": 259.5, "cx": 456.45, "cy": 215.88}, "nv": {"xmin": 77.5, "xmax": 188.6, "ymin": 166.5, "ymax": 338.1, "cx": 144.93, "cy": 276.31}, "nh": {"xmin": 852.9, "xmax": 881.9, "ymin": 91.9, "ymax": 152.6, "cx": 862.35, "cy": 126.42}, "nj": {"xmin": 822.5, "xmax": 845.6, "ymin": 190.5, "ymax": 244.4, "cx": 834.18, "cy": 219.69}, "nm": {"xmin": 236.4, "xmax": 358.1, "ymin": 311.0, "ymax": 437.3, "cx": 299.19, "cy": 389.55}, "ny": {"xmin": 742.0, "xmax": 873.6, "ymin": 106.5, "ymax": 206.6, "cx": 831.2, "cy": 175.8}, "nc": {"xmin": 689.5, "xmax": 845.4, "ymin": 300.1, "ymax": 367.3, "cx": 800.45, "cy": 328.76}, "nd": {"xmin": 357.3, "xmax": 472.1, "ymin": 56.3, "ymax": 128.4, "cx": 447.62, "cy": 94.88}, "oh": {"xmin": 663.4, "xmax": 736.8, "ymin": 195.2, "ymax": 279.4, "cx": 707.8, "cy": 246.9}, "ok": {"xmin": 357.5, "xmax": 508.6, "ymin": 322.3, "ymax": 400.5, "cx": 450.18, "cy": 384.2}, "or": {"xmin": 26.5, "xmax": 167.1, "ymin": 59.5, "ymax": 177.7, "cx": 93.35, "cy": 96.34}, "pa": {"xmin": 731.9, "xmax": 833.5, "ymin": 179.1, "ymax": 244.8, "cx": 803.55, "cy": 206.36}, "ri": {"xmin": 870.7, "xmax": 884.6, "ymin": 163.5, "ymax": 185.9, "cx": 879.55, "cy": 173.89}, "sc": {"xmin": 707.5, "xmax": 796.8, "ymin": 346.7, "ymax": 413.7, "cx": 753.68, "cy": 381.74}, "sd": {"xmin": 351.4, "xmax": 473.9, "ymin": 123.0, "ymax": 204.4, "cx": 454.77, "cy": 178.53}, "tn": {"xmin": 582.6, "xmax": 731.4, "ymin": 316.3, "ymax": 367.7, "cx": 636.26, "cy": 342.57}, "tx": {"xmin": 282.3, "xmax": 526.8, "ymin": 332.9, "ymax": 572.1, "cx": 428.83, "cy": 483.94}, "ut": {"xmin": 167.6, "xmax": 265.3, "ymin": 187.8, "ymax": 311.0, "cx": 222.69, "cy": 248.17}, "vt": {"xmin": 830.6, "xmax": 860.1, "ymin": 100.1, "ymax": 155.3, "cx": 847.47, "cy": 126.82}, "va": {"xmin": 698.3, "xmax": 835.3, "ymin": 244.4, "ymax": 320.8, "cx": 799.48, "cy": 278.65}, "wa": {"xmin": 57.4, "xmax": 174.6, "ymin": -49.0, "ymax": 91.9, "cx": 88.67, "cy": 26.45}, "wv": {"xmin": 709.2, "xmax": 788.2, "ymin": 225.1, "ymax": 303.2, "cx": 745.65, "cy": 265.27}, "wi": {"xmin": 528.6, "xmax": 626.7, "ymin": 99.1, "ymax": 202.0, "cx": 579.53, "cy": 138.19}, "wy": {"xmin": 233.2, "xmax": 355.3, "ymin": 130.5, "ymax": 231.8, "cx": 289.59, "cy": 183.82}, "dc": {"xmin": 799.9, "xmax": 803.5, "ymin": 250.2, "ymax": 254.6, "cx": 801.33, "cy": 252.67}};
+
+  // Hawaii inset
   if (lon < -140 || (lat >= 18.5 && lat <= 22.8 && lon < -154)) {
     const x = 88 + (lon + 158) * 11;
     const y = 505 + (21.6 - lat) * 16;
     return { x: Math.max(40, Math.min(200, x)), y: Math.max(470, Math.min(560, y)) };
   }
 
-  // [lat, lon, svgX, svgY] — matched to city-pin translates in usa-map.svg
-  const anchors = [
-    [32.78, -96.80, 480, 400], // Dallas
-    [30.27, -97.74, 470, 430], // Austin
-    [29.42, -98.49, 455, 445], // San Antonio
-    [29.76, -95.37, 505, 435], // Houston
-    [32.72, -117.16, 95, 390], // San Diego
-    [34.05, -118.24, 85, 360], // LA
-    [36.60, -121.89, 55, 320], // Monterey
-    [37.77, -122.42, 48, 290], // SF
-    [47.61, -122.33, 55, 175], // Seattle
-    [45.52, -122.68, 52, 200], // Portland
-    [39.74, -104.99, 340, 280], // Denver
-    [33.45, -112.07, 180, 370], // Phoenix
-    [35.08, -106.65, 260, 350], // Albuquerque
-    [40.75, -111.89, 250, 250], // Salt Lake
-    [41.88, -87.63, 620, 240], // Chicago
-    [39.77, -86.16, 650, 280], // Indy
-    [38.63, -90.20, 560, 310], // St Louis
-    [39.10, -94.58, 500, 290], // Kansas City
-    [41.26, -95.93, 500, 250], // Omaha
-    [44.98, -93.27, 560, 180], // Minneapolis
-    [33.75, -84.39, 700, 380], // Atlanta
-    [35.15, -90.05, 610, 370], // Memphis
-    [36.16, -86.78, 660, 350], // Nashville
-    [29.95, -90.07, 580, 440], // New Orleans
-    [25.76, -80.19, 770, 500], // Miami
-    [27.95, -82.46, 740, 470], // Tampa
-    [28.54, -81.38, 750, 455], // Orlando area
-    [28.54, -80.65, 780, 450], // KSC / Florida east
-    [38.91, -77.04, 820, 290], // DC
-    [39.29, -76.61, 830, 270], // Baltimore
-    [39.95, -75.17, 850, 260], // Philadelphia
-    [40.44, -80.00, 740, 250], // Pittsburgh
-    [42.36, -71.06, 900, 210], // Boston
-    [40.71, -74.01, 870, 230], // NYC
-    [42.33, -83.05, 680, 210], // Detroit
-    [43.04, -87.91, 620, 200], // Milwaukee
-    [39.10, -84.51, 680, 300], // Cincinnati
-    [39.96, -83.00, 690, 290], // Columbus
-    [41.50, -81.69, 710, 230], // Cleveland
-    [35.23, -80.84, 750, 360], // Charlotte
-    [35.78, -78.64, 780, 350], // Raleigh
-    [36.85, -75.98, 820, 340], // Virginia Beach
-    [21.31, -157.86, 100, 510], // Honolulu (also handled above)
-  ];
+  let st = (stateHint || "").toLowerCase();
+  if (st === "hi") {
+    const x = 88 + (lon + 158) * 11;
+    const y = 505 + (21.6 - lat) * 16;
+    return { x: Math.max(40, Math.min(200, x)), y: Math.max(470, Math.min(560, y)) };
+  }
 
-  // Degree-space distance (lon scaled ~ cos mid-lat)
-  const cos = Math.cos((lat * Math.PI) / 180);
-  let wSum = 0;
-  let xSum = 0;
-  let ySum = 0;
-  let bestD = Infinity;
-  let best = anchors[0];
-
-  for (let i = 0; i < anchors.length; i++) {
-    const a = anchors[i];
-    const dLat = lat - a[0];
-    const dLon = (lon - a[1]) * cos;
-    const d2 = dLat * dLat + dLon * dLon;
-    if (d2 < bestD) {
-      bestD = d2;
-      best = a;
+  if (!st || !SVG[st] || !GEO[st]) {
+    let best = null, bestD = 1e18;
+    for (const s of Object.keys(GEO)) {
+      if (!SVG[s]) continue;
+      const g = GEO[s];
+      const cla = (g[0] + g[1]) / 2, clo = (g[2] + g[3]) / 2;
+      let d = (lat - cla) * (lat - cla) + (lon - clo) * (lon - clo) * 0.64;
+      if (lat >= g[0] - 0.4 && lat <= g[1] + 0.4 && lon >= g[2] - 0.4 && lon <= g[3] + 0.4) d *= 0.04;
+      if (d < bestD) { bestD = d; best = s; }
     }
-    // power 2 IDW; tiny epsilon
-    const w = 1 / Math.max(d2, 1e-6);
-    wSum += w;
-    xSum += w * a[2];
-    ySum += w * a[3];
+    st = best;
   }
+  if (!st || !SVG[st] || !GEO[st]) return { x: 480, y: 300 };
 
-  // If extremely close to an anchor, snap
-  if (bestD < 0.0004) {
-    return { x: best[2], y: best[3] };
-  }
-
-  let x = xSum / wSum;
-  let y = ySum / wSum;
-
-  // Soft clamp to continental map (avoid Mexico / ocean ghosts)
-  x = Math.max(30, Math.min(930, x));
-  y = Math.max(55, Math.min(555, y));
+  const g = GEO[st];
+  const s = SVG[st];
+  const la0 = g[0], la1 = g[1], lo0 = g[2], lo1 = g[3];
+  let fx = (lon - lo0) / Math.max(1e-6, lo1 - lo0);
+  let fy = (la1 - lat) / Math.max(1e-6, la1 - la0);
+  // keep pins inside the state's drawn box
+  fx = Math.max(0.12, Math.min(0.88, fx));
+  fy = Math.max(0.12, Math.min(0.88, fy));
+  let x = s.xmin + fx * (s.xmax - s.xmin);
+  let y = s.ymin + fy * (s.ymax - s.ymin);
+  // Keep inside the drawn state (handles path-parse noise at extremes)
+  const padX = (s.xmax - s.xmin) * 0.06;
+  const padY = (s.ymax - s.ymin) * 0.06;
+  x = Math.max(s.xmin + padX, Math.min(s.xmax - padX, x));
+  y = Math.max(s.ymin + padY, Math.min(s.ymax - padY, y));
+  // Never leave the map canvas
+  x = Math.max(35, Math.min(925, x));
+  y = Math.max(60, Math.min(555, y));
   return { x, y };
 };
 
