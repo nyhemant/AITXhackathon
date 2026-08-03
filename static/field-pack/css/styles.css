@@ -1,19 +1,47 @@
 :root {
+  /* Brand */
   --ink: #152238;
   --muted: #3d4f6f;
+  --muted-soft: #5a6b82;
   --teal: #0f5c5c;
   --teal-deep: #0a4545;
   --accent: #d9652e;
-  --sky: #e7f3ff;
-  --grass: #dff0d6;
-  --card: #ffffff;
-  --shadow: 0 10px 28px rgba(21, 34, 56, 0.12);
-  --radius: 18px;
+  --accent-hover: #c45522;
+  --sun: #ffcf5a;
   --focus: #ffcf5a;
-  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  --sky: #eaf4ff;
+  --grass: #e3f2e4;
+  --park-end: #d5ebcf;
+  --card: #ffffff;
+  --card-tint: #f7fbf9;
+  --border: rgba(15, 92, 92, 0.14);
+  --border-strong: rgba(15, 92, 92, 0.22);
+  /* Elevation */
+  --shadow-sm: 0 2px 8px rgba(21, 34, 56, 0.05);
+  --shadow: 0 8px 24px rgba(21, 34, 56, 0.08);
+  --shadow-lg: 0 18px 48px rgba(21, 34, 56, 0.1);
+  /* Shape */
+  --radius-sm: 12px;
+  --radius: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+  /* Space */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  /* Motion */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 120ms;
+  --dur: 180ms;
+  /* Type */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
   color: var(--ink);
-  background: linear-gradient(180deg, var(--sky) 0%, var(--grass) 55%, #cfe8c4 100%);
-  line-height: 1.35;
+  background: linear-gradient(180deg, var(--sky) 0%, var(--grass) 52%, var(--park-end) 100%);
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
 }
 
 *,
@@ -30,7 +58,7 @@ body {
 
 body {
   min-height: 100vh;
-  padding: 20px 16px 40px;
+  padding: 16px 16px 36px;
 }
 
 button,
@@ -47,6 +75,17 @@ a {
 .app {
   width: min(1100px, 100%);
   margin: 0 auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 .sr-only {
@@ -184,18 +223,29 @@ a {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  min-height: 52px;
+  min-height: 48px;
   padding: 12px 18px;
-  border-radius: 14px;
-  font-weight: 800;
-  font-size: 1.05rem;
+  border-radius: var(--radius-sm);
+  font-weight: 750;
+  font-size: 1.02rem;
+  letter-spacing: -0.01em;
   text-decoration: none;
-  box-shadow: var(--shadow);
-  transition: transform 0.12s ease, background 0.12s ease;
+  box-shadow: var(--shadow-sm);
+  border: 1.5px solid transparent;
+  transition:
+    transform var(--dur-fast) var(--ease),
+    background var(--dur-fast) var(--ease),
+    box-shadow var(--dur-fast) var(--ease),
+    border-color var(--dur-fast) var(--ease);
 }
 
 .btn:hover {
   transform: translateY(-1px);
+  box-shadow: var(--shadow);
+}
+
+.btn:active {
+  transform: translateY(0);
 }
 
 .btn:focus-visible,
@@ -208,17 +258,29 @@ a {
 .btn-primary {
   background: var(--accent);
   color: white;
+  box-shadow: 0 6px 18px rgba(217, 101, 46, 0.28);
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
 }
 
 .btn-secondary {
-  background: white;
+  background: var(--card);
   color: var(--teal);
-  border: 2px solid rgba(15, 92, 92, 0.25);
+  border-color: var(--border-strong);
 }
 
 .btn-ghost {
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.72);
   color: var(--ink);
+  box-shadow: none;
+  border-color: transparent;
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: var(--border);
 }
 
 .btn-cam {
@@ -227,19 +289,20 @@ a {
 }
 
 .btn-big {
-  min-height: 60px;
-  font-size: 1.15rem;
+  min-height: 56px;
+  font-size: 1.1rem;
   padding: 14px 22px;
+  border-radius: var(--radius);
 }
 
 /* Home intro */
 .hero {
-  background: white;
-  border-radius: var(--radius);
+  background: var(--card);
+  border-radius: var(--radius-lg);
   padding: 22px 24px;
   box-shadow: var(--shadow);
   margin-bottom: 18px;
-  border: 2px solid rgba(31, 107, 74, 0.18);
+  border: 1.5px solid var(--border);
 }
 
 .objective-hero {

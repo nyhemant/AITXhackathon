@@ -267,7 +267,7 @@ HTML = """<!doctype html>
   </head>
   <body data-mode="dinner">
     <main>
-      <link rel="stylesheet" href="/shell/shell.css?v=2" />
+      <link rel="stylesheet" href="/shell/shell.css?v=4" />
       <header class="oneless-shell" data-product="dinner">
         <a class="shell-brand" href="/">
           <img src="/1LessMark.png" alt="1Less" width="52" height="52" />

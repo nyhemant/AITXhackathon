@@ -534,7 +534,7 @@
       <p class="pd-blurb">${escapeHtml(p.blurb)}</p>
       <div class="pd-actions">
         <a class="btn btn-primary" href="${p.appHref || "#"}">Start outing →</a>
-        <a class="btn btn-secondary" href="${p.href || "#"}">Place info</a>
+        <a class="btn btn-ghost" href="${p.href || "#"}">Place info</a>
       </div>
       
     `;
