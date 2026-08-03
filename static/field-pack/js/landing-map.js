@@ -17,7 +17,7 @@
 
   /** Metro groups for Top mode dropdown (not every pin). */
   const METRO_DEFS = [
-    { id: "all", label: "All (Top list)", symbols: "🇺🇸", states: null },
+    { id: "all", label: "Any area", symbols: "🇺🇸", states: null },
     { id: "dallas", label: "Dallas area", symbols: "🦁", states: ["TX"], regions: ["dfw"] },
     { id: "houston", label: "Houston", symbols: "🐘", states: ["TX"], cities: ["Houston"] },
     { id: "austin", label: "Austin", symbols: "🔬", states: ["TX"], cities: ["Austin"] },
@@ -30,7 +30,7 @@
     { id: "dc", label: "Washington, DC", symbols: "🦥", states: ["DC"], cities: ["Washington"] },
     { id: "nyc", label: "New York", symbols: "🦴", states: ["NY"], cities: ["New York", "Bronx"] },
     { id: "boston", label: "Boston", symbols: "🦞", states: ["MA"], cities: ["Boston"] },
-    { id: "florida", label: "Florida Space", symbols: "🚀", states: ["FL"], cities: ["Merritt Island"] },
+    { id: "florida", label: "Florida", symbols: "🚀", states: ["FL"], cities: ["Merritt Island"] },
   ];
 
   let mapScope = "top"; // top | more
@@ -127,7 +127,7 @@
     } else {
       const optAll = document.createElement("option");
       optAll.value = "all";
-      optAll.textContent = "All states (More)";
+      optAll.textContent = "All states";
       citySelect.appendChild(optAll);
       // use state select
       if (stateSelect) {
@@ -162,10 +162,10 @@
     ph.value = "";
     ph.textContent =
       mapScope === "top"
-        ? `Venues (${list.length} in Top)…`
+        ? `Choose a place (${list.length})…`
         : selectedState
-          ? `Venues in ${selectedState} (${list.length})…`
-          : `All venues (${list.length})…`;
+          ? `Choose a place in ${selectedState} (${list.length})…`
+          : `Choose a place (${list.length})…`;
     venueSelect.appendChild(ph);
     for (const p of list) {
       const opt = document.createElement("option");
@@ -183,8 +183,10 @@
       const topN = allPlaces.filter((p) => TOP_IDS.has(p.id) || p.tier === "top").length;
       mapCount.textContent =
         mapScope === "top"
-          ? `Top ${topN}`
-          : `${allPlaces.length} places` + (selectedState ? ` · ${selectedState}` : "");
+          ? `Showing ${topN} popular places — switch to “All places” for more`
+          : `Showing ${allPlaces.length} places` +
+            (selectedState ? ` in ${selectedState}` : "") +
+            " — tap a pin or pick from the lists";
     }
   }
 
@@ -467,13 +469,13 @@
         : city;
     detail.className = "pin-detail";
     detail.innerHTML = `
-      <p class="pin-detail-kicker">Nearby places · pick one</p>
+      <p class="pin-detail-kicker">A few places here</p>
       <div class="pd-title-row">
-        <h3>📍 ${escapeHtml(area)}</h3>
+        <h3>${escapeHtml(area)}</h3>
         <button type="button" class="pd-clear" id="pd-clear-selection" aria-label="Clear">×</button>
       </div>
-      <p class="pd-meta">${places.length} nearby — pick one</p>
-      <div class="nearby-list" role="listbox" aria-label="Nearby venues">
+      <p class="pd-hint">Choose one to get a kid list and printable hunt.</p>
+      <div class="nearby-list" role="listbox" aria-label="Places nearby">
         ${places
           .map(
             (p) => `
@@ -481,9 +483,9 @@
             <span class="nearby-emoji">${escapeHtml(p.emoji || "📍")}</span>
             <span class="nearby-copy">
               <strong>${escapeHtml(p.name)}</strong>
-              <small>${escapeHtml(kidTypeLabel(p.type))} · ${escapeHtml(p.city)}</small>
+              <small>${escapeHtml(p.city)}</small>
             </span>
-            <span class="nearby-go">Select →</span>
+            <span class="nearby-go">Choose →</span>
           </button>`
           )
           .join("")}
@@ -504,11 +506,19 @@
 
   function showOverview() {
     const list = filteredPlaces();
+    const scopeNote =
+      mapScope === "top"
+        ? `${list.length} popular places on the map`
+        : `${list.length} places on the map`;
     detail.className = "pin-detail empty";
     detail.innerHTML = `
-      <p class="pin-detail-kicker">${mapScope === "top" ? "Top spots" : "All places"} · ${list.length}</p>
-      <h3>Tap a pin</h3>
-      <p class="pd-hint">Numbered stack = several nearby. Hover for the name · click to start.</p>
+      <p class="pin-detail-kicker">What you get</p>
+      <h3>Pick a place</h3>
+      <p class="pd-hint">
+        Tap a pin (or use the lists under the map). You’ll get a <strong>short kid list</strong> and a
+        <strong>printable treasure hunt</strong> for that zoo, aquarium, or museum.
+      </p>
+      <p class="pd-meta">${escapeHtml(scopeNote)}. A number on a pin means several places share that spot — tap it to choose.</p>
     `;
   }
 
@@ -519,24 +529,20 @@
       return;
     }
     selectedVenueId = venueId;
-    const kind = kidTypeLabel(p.type);
     detail.className = "pin-detail";
+    const blurb = (p.blurb || "").trim();
     detail.innerHTML = `
-      <p class="pin-detail-kicker">Selected · ${escapeHtml(kind)}</p>
+      <p class="pin-detail-kicker">${escapeHtml(p.city)}, ${escapeHtml(p.state)}</p>
       <div class="pd-title-row">
         <h3>${escapeHtml(p.emoji || "")} ${escapeHtml(p.name)}</h3>
         <button type="button" class="pd-clear" id="pd-clear-selection" aria-label="Clear selection">×</button>
       </div>
-      <p class="pd-meta">${escapeHtml(p.city)}, ${escapeHtml(p.state)} · ${
-      p.tier === "top" || TOP_IDS.has(p.id) ? "Top list" : "More"
-    }</p>
-      <span class="pd-status ready">Ready to play</span>
-      <p class="pd-blurb">${escapeHtml(p.blurb)}</p>
+      ${blurb ? `<p class="pd-blurb">${escapeHtml(blurb)}</p>` : ""}
+      <p class="pd-hint">Next: a short list of things to find, plus a hunt you can print for the bag.</p>
       <div class="pd-actions">
-        <a class="btn btn-primary" href="${p.appHref || "#"}">Start outing →</a>
-        <a class="btn btn-ghost" href="${p.href || "#"}">Place info</a>
+        <a class="btn btn-primary" href="${p.appHref || "#"}">Get kid list &amp; hunt →</a>
+        <a class="btn btn-ghost" href="${p.href || "#"}">About this place</a>
       </div>
-      
     `;
     detail.querySelector("#pd-clear-selection")?.addEventListener("click", () => setVenue(""));
   }

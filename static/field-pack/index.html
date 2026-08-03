@@ -12,7 +12,7 @@
     <base href="/field-pack/" />
     <link rel="stylesheet" href="/shell/shell.css?v=4" />
     <link rel="stylesheet" href="/field-pack/css/styles.css?v=15" />
-    <link rel="stylesheet" href="/field-pack/css/landing.css?v=25" />
+    <link rel="stylesheet" href="/field-pack/css/landing.css?v=27" />
   </head>
   <body class="landing-body">
     <div class="app landing-app landing-clean">
@@ -43,7 +43,8 @@
       <header class="landing-pitch">
         <h1>Less chaos. More wonder.</h1>
         <p class="pitch-line">
-          Tap a zoo, aquarium, or museum → get a <strong>short list</strong> and a <strong>print hunt</strong> for your kid.
+          Choose where you’re going. Get a <strong>short list</strong> of things for your kid to find, plus a
+          <strong>treasure hunt</strong> you can print.
           <span class="pitch-flow" aria-hidden="true">Map · Print · Play</span>
         </p>
       </header>
@@ -56,8 +57,8 @@
           <div class="map-canvas-wrap">
             <div class="map-overlay-tl no-print">
               <div class="scope-toggle" role="group" aria-label="Map list size">
-                <button type="button" id="scope-top" class="scope-btn active" aria-pressed="true">Top ~20</button>
-                <button type="button" id="scope-more" class="scope-btn" aria-pressed="false">More</button>
+                <button type="button" id="scope-top" class="scope-btn active" aria-pressed="true">Popular</button>
+                <button type="button" id="scope-more" class="scope-btn" aria-pressed="false">All places</button>
               </div>
               <div class="map-zoom-bar" role="toolbar" aria-label="Map zoom">
                 <button type="button" id="map-zoom-in" class="zoom-btn" title="Zoom in">+</button>
@@ -73,9 +74,12 @@
           </div>
           <aside class="map-side" aria-live="polite">
             <div id="pin-detail" class="pin-detail empty">
-              <p class="pin-detail-kicker">Your outing</p>
-              <h3>Tap a pin</h3>
-              <p class="pd-hint">Stacked numbers mean a few places nearby — pick one, then start.</p>
+              <p class="pin-detail-kicker">What you get</p>
+              <h3>Pick a place</h3>
+              <p class="pd-hint">
+                Tap a pin (or use the lists under the map). You’ll get a <strong>short kid list</strong> and a
+                <strong>printable treasure hunt</strong> for that zoo, aquarium, or museum.
+              </p>
             </div>
           </aside>
         </div>
@@ -97,7 +101,7 @@
               <select id="venue-select-landing" class="landing-select" aria-label="Choose venue"></select>
             </label>
           </div>
-          <p id="map-count" class="map-count-quiet">Top spots</p>
+          <p id="map-count" class="map-count-quiet">Popular places on the map</p>
         </div>
       </section>
 
@@ -108,17 +112,17 @@
           <a class="ready-card" href="/field-pack/app.html#/venue/dallas-zoo">
             <span class="rc-emoji" aria-hidden="true">🦁</span>
             <h3>Dallas Zoo</h3>
-            <span class="rc-cta">Start →</span>
+            <span class="rc-cta">Get list &amp; hunt →</span>
           </a>
           <a class="ready-card" href="/field-pack/app.html#/venue/childrens-aquarium-dallas">
             <span class="rc-emoji" aria-hidden="true">🦈</span>
             <h3>Children’s Aquarium</h3>
-            <span class="rc-cta">Start →</span>
+            <span class="rc-cta">Get list &amp; hunt →</span>
           </a>
           <a class="ready-card" href="/field-pack/app.html#/venue/childrens-museum-perot">
             <span class="rc-emoji" aria-hidden="true">🎨</span>
             <h3>Children’s Museum</h3>
-            <span class="rc-cta">Start →</span>
+            <span class="rc-cta">Get list &amp; hunt →</span>
           </a>
         </div>
       </section>
@@ -134,7 +138,7 @@
 
     <script src="/shell/shell.js?v=1"></script>
     <script src="/field-pack/js/places-data.js?v=14"></script>
-    <script src="/field-pack/js/landing-map.js?v=22"></script>
-    <script src="/field-pack/js/landing-hook.js?v=7"></script>
+    <script src="/field-pack/js/landing-map.js?v=23"></script>
+    <script src="/field-pack/js/landing-hook.js?v=8"></script>
   </body>
 </html>

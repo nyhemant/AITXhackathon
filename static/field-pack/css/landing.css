@@ -1127,11 +1127,30 @@
   margin: 0 0 8px;
 }
 .landing-clean .pd-hint {
-  margin: 0;
+  margin: 0 0 10px;
   font-weight: 600;
   color: var(--muted, #3d4f6f);
   line-height: 1.45;
   font-size: 0.95rem;
+}
+.landing-clean .pd-hint strong {
+  color: var(--teal-deep, #0a4545);
+  font-weight: 750;
+}
+.landing-clean .pin-detail .pd-meta {
+  margin: 0 0 8px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: var(--muted-soft, #5a6b82);
+}
+.landing-clean .pin-detail .pd-blurb {
+  margin: 0 0 10px;
+  font-weight: 600;
+  color: var(--muted, #3d4f6f);
+  line-height: 1.4;
+}
+.landing-clean .pin-detail .pd-actions .btn-primary {
+  font-size: 0.98rem;
 }
 
 /* Filters live under the map so the visual leads */

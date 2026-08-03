@@ -33,7 +33,7 @@
       return `<a class="ready-card" href="${escapeHtml(href)}">
         <span class="rc-emoji" aria-hidden="true">${escapeHtml(p.emoji || "")}</span>
         <h3>${escapeHtml(short)}</h3>
-        <span class="rc-cta">Start →</span>
+        <span class="rc-cta">Get list &amp; hunt →</span>
       </a>`;
     }).join("");
   }
@@ -84,12 +84,20 @@
         const href = last.id
           ? `/field-pack/app.html#/trip/${encodeURIComponent(last.id)}`
           : `/field-pack/app.html#/venue/${encodeURIComponent(venueId)}`;
-        const label = last.title || "last outing";
+        // Prefer full place name — trip titles are often short codes (e.g. AMNH)
+        const fromCatalog = places.find((p) => p.id === venueId);
+        const rawTitle = (last.title || "").trim();
+        const looksLikeCode = !rawTitle || rawTitle.length <= 6 || /^[A-Z0-9][A-Z0-9.&'-]{1,10}$/.test(rawTitle);
+        const label =
+          fromCatalog?.name ||
+          (!looksLikeCode ? rawTitle : null) ||
+          "your last place";
         continueChip.hidden = false;
         continueChip.removeAttribute("hidden");
         continueChip.style.display = "block";
-        continueChip.innerHTML = `Continue <strong>${escapeHtml(label)}</strong> ·
-          <a href="${href}">Open</a>`;
+        continueChip.innerHTML = `Pick up where you left off at <strong>${escapeHtml(
+          label
+        )}</strong>. <a href="${href}">Continue →</a>`;
       }
     }
   } catch {
