@@ -12,7 +12,7 @@
     <base href="/field-pack/" />
     <link rel="stylesheet" href="/shell/shell.css?v=4" />
     <link rel="stylesheet" href="/field-pack/css/styles.css?v=15" />
-    <link rel="stylesheet" href="/field-pack/css/landing.css?v=29" />
+    <link rel="stylesheet" href="/field-pack/css/landing.css?v=31" />
   </head>
   <body class="landing-body">
     <div class="app landing-app landing-clean">
@@ -172,9 +172,11 @@
               <span class="select-label">Area</span>
               <select id="city-select" class="landing-select" aria-label="Choose metro area"></select>
             </label>
-            <label class="select-field" id="state-field" hidden>
+            <label class="select-field" id="state-field">
               <span class="select-label">State</span>
-              <select id="state-select" class="landing-select" aria-label="Filter by state"></select>
+              <select id="state-select" class="landing-select" aria-label="Filter by state">
+                <option value="">All states</option>
+              </select>
             </label>
             <label class="select-field">
               <span class="select-label">Place</span>
@@ -218,7 +220,7 @@
 
     <script src="/shell/shell.js?v=3"></script>
     <script src="/field-pack/js/places-data.js?v=14"></script>
-    <script src="/field-pack/js/landing-map.js?v=23"></script>
+    <script src="/field-pack/js/landing-map.js?v=26"></script>
     <script src="/field-pack/js/landing-hook.js?v=8"></script>
   </body>
 </html>

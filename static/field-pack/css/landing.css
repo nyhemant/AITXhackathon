@@ -94,6 +94,12 @@
   color: #0a4545;
 }
 
+/* Author `display: grid` would otherwise beat UA `[hidden]{display:none}`
+   (same specificity) — State field stayed visible with an empty <select>. */
+.select-field[hidden] {
+  display: none !important;
+}
+
 .select-label {
   font-size: 0.78rem;
   letter-spacing: 0.06em;

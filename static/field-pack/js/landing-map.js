@@ -9,6 +9,7 @@
   const scopeMore = document.getElementById("scope-more");
   const stateSelect = document.getElementById("state-select");
   const stateField = document.getElementById("state-field");
+  const metroField = document.getElementById("metro-field");
   const mapCount = document.getElementById("map-count");
   const btnZoomIn = document.getElementById("map-zoom-in");
   const btnZoomOut = document.getElementById("map-zoom-out");
@@ -55,9 +56,17 @@
     return [...allPlaces];
   }
 
+  /**
+   * Places for the Place dropdown + map pins.
+   * A selected state always uses the FULL catalog for that state (not Popular top-N).
+   */
   function filteredPlaces() {
-    let list = placesInScope();
-    if (mapScope === "top") {
+    let list;
+    if (selectedState) {
+      // Full catalog for this state — ignore Popular/top tier cap
+      list = allPlaces.filter((p) => p.state === selectedState);
+    } else if (mapScope === "top") {
+      list = placesInScope();
       if (selectedMetroId !== "all") {
         const m = METRO_DEFS.find((x) => x.id === selectedMetroId);
         if (m) {
@@ -65,7 +74,6 @@
             if (m.regions && m.regions.includes(p.region)) return true;
             if (m.cities && m.cities.includes(p.city)) return true;
             if (m.states && m.states.includes(p.state) && !m.cities && !m.regions) return true;
-            // TX special: dallas metro only TX cities in metro
             if (m.id === "dallas") return p.region === "dfw" || ["Dallas", "Fort Worth"].includes(p.city);
             if (m.id === "houston") return p.city === "Houston";
             if (m.id === "austin") return p.city === "Austin";
@@ -74,10 +82,7 @@
         }
       }
     } else {
-      // More: filter by state
-      if (selectedState) {
-        list = list.filter((p) => p.state === selectedState);
-      }
+      list = placesInScope(); // all places
     }
     return list.sort((a, b) => a.name.localeCompare(b.name));
   }
@@ -108,51 +113,89 @@
       .replaceAll('"', "&quot;");
   }
 
-  function statesInMore() {
-    const set = new Set(allPlaces.map((p) => p.state).filter(Boolean));
-    return [...set].sort();
+  /** Distinct state codes from the venue catalog (or a subset). */
+  function distinctStates(list) {
+    const set = new Set(
+      (list || [])
+        .map((p) => (p && typeof p.state === "string" ? p.state.trim() : ""))
+        .filter(Boolean)
+    );
+    return [...set].sort((a, b) => a.localeCompare(b));
   }
 
+  function clearSelect(sel) {
+    if (!sel) return;
+    sel.innerHTML = "";
+  }
+
+  /**
+   * Always keep the State <select> filled from the full catalog so it is never
+   * empty if CSS fails to honor [hidden]. Visibility depends on whether we have data.
+   * Returns the sorted state list (may be empty).
+   */
+  function fillStateSelectOptions() {
+    const states = distinctStates(allPlaces);
+    if (!stateSelect) return states;
+
+    const prev = selectedState;
+    clearSelect(stateSelect);
+    const o0 = document.createElement("option");
+    o0.value = "";
+    o0.textContent = "All states";
+    stateSelect.appendChild(o0);
+    for (const st of states) {
+      const o = document.createElement("option");
+      o.value = st;
+      o.textContent = st;
+      stateSelect.appendChild(o);
+    }
+    if (prev && states.includes(prev)) {
+      selectedState = prev;
+      stateSelect.value = prev;
+    } else {
+      selectedState = "";
+      stateSelect.value = "";
+    }
+    return states;
+  }
+
+  /**
+   * Populate Area (Popular) + State filters.
+   * State is always populated from FP_PLACES; hidden only when no state data exists.
+   * Popular: show Area (metros). All places: hide Area (state is the location filter).
+   */
   function fillLocationSelect() {
-    citySelect.innerHTML = "";
+    if (!citySelect) return;
+
+    const states = fillStateSelectOptions();
+
+    // Never show an empty state control
+    if (stateField) {
+      stateField.hidden = states.length === 0;
+    }
+    if (!states.length) {
+      selectedState = "";
+    }
+
     if (mapScope === "top") {
+      // Popular: metro Area picker
+      clearSelect(citySelect);
       for (const m of METRO_DEFS) {
         const opt = document.createElement("option");
         opt.value = m.id;
         opt.textContent = m.id === "all" ? m.label : `${m.symbols} ${m.label}`;
         citySelect.appendChild(opt);
       }
-      citySelect.value = selectedMetroId;
-      if (stateField) stateField.hidden = true;
-    } else {
-      const optAll = document.createElement("option");
-      optAll.value = "all";
-      optAll.textContent = "All states";
-      citySelect.appendChild(optAll);
-      // use state select
-      if (stateSelect) {
-        stateSelect.innerHTML = "";
-        const o0 = document.createElement("option");
-        o0.value = "";
-        o0.textContent = "All states";
-        stateSelect.appendChild(o0);
-        for (const st of statesInMore()) {
-          const o = document.createElement("option");
-          o.value = st;
-          o.textContent = st;
-          stateSelect.appendChild(o);
-        }
-        stateSelect.value = selectedState;
-      }
-      if (stateField) stateField.hidden = false;
-      citySelect.innerHTML = "";
-      const o = document.createElement("option");
-      o.value = "all";
-      o.textContent = selectedState ? `State: ${selectedState}` : "Browse by state →";
-      citySelect.appendChild(o);
-      citySelect.disabled = true;
+      citySelect.disabled = false;
+      citySelect.value = selectedMetroId || "all";
+      if (metroField) metroField.hidden = false;
+      return;
     }
-    if (mapScope === "top") citySelect.disabled = false;
+
+    // All places: State filter is primary; hide metro Area
+    if (metroField) metroField.hidden = true;
+    clearSelect(citySelect);
+    citySelect.disabled = true;
   }
 
   function fillVenueSelect() {
@@ -160,12 +203,13 @@
     venueSelect.innerHTML = "";
     const ph = document.createElement("option");
     ph.value = "";
-    ph.textContent =
-      mapScope === "top"
-        ? `Choose a place (${list.length})…`
-        : selectedState
-          ? `Choose a place in ${selectedState} (${list.length})…`
-          : `Choose a place (${list.length})…`;
+    if (selectedState) {
+      ph.textContent = `All places in ${selectedState} (${list.length})…`;
+    } else if (mapScope === "top") {
+      ph.textContent = `Choose a place (${list.length})…`;
+    } else {
+      ph.textContent = `Choose a place (${list.length})…`;
+    }
     venueSelect.appendChild(ph);
     for (const p of list) {
       const opt = document.createElement("option");
@@ -181,13 +225,25 @@
     }
     if (mapCount) {
       const topN = allPlaces.filter((p) => TOP_IDS.has(p.id) || p.tier === "top").length;
-      mapCount.textContent =
-        mapScope === "top"
-          ? `Showing ${topN} popular places — switch to “All places” for more`
-          : `Showing ${allPlaces.length} places` +
-            (selectedState ? ` in ${selectedState}` : "") +
-            " — tap a pin or pick from the lists";
+      if (selectedState) {
+        mapCount.textContent = `Showing all ${list.length} places in ${selectedState} — pick one below or tap a pin`;
+      } else if (mapScope === "top") {
+        mapCount.textContent = `Showing ${topN} popular places — switch to “All places” for more`;
+      } else {
+        mapCount.textContent = `Showing ${allPlaces.length} places — tap a pin or pick from the lists`;
+      }
     }
+  }
+
+  /** Ensure UI is on All places so state filter can show, without wiping selectedState. */
+  function ensureAllPlacesScope() {
+    if (mapScope === "more") return;
+    mapScope = "more";
+    selectedMetroId = "all";
+    if (scopeTop) scopeTop.setAttribute("aria-pressed", "false");
+    if (scopeMore) scopeMore.setAttribute("aria-pressed", "true");
+    scopeTop?.classList.remove("active");
+    scopeMore?.classList.add("active");
   }
 
   function applyMapTransform() {
@@ -233,9 +289,10 @@
 
   function pinXY(p) {
     if (!svgEl || p.lat == null || p.lon == null) return null;
-    const vb = svgEl.viewBox.baseVal;
-    const w = vb.width || 959;
-    const h = vb.height || 593;
+    const vb = svgEl.viewBox && svgEl.viewBox.baseVal;
+    const w = (vb && vb.width) || 959;
+    const h = (vb && vb.height) || 593;
+    if (typeof window.fpProjectUS !== "function") return null;
     const pt = window.fpProjectUS(p.lat, p.lon, w, h, p.state);
     if (!pt || !Number.isFinite(pt.x) || !Number.isFinite(pt.y)) return null;
     if (pt.x < 25 || pt.x > 940 || pt.y < 50 || pt.y > 560) return null;
@@ -609,14 +666,16 @@
     });
     if (stateSelect) {
       stateSelect.addEventListener("change", () => {
-        selectedState = stateSelect.value || "";
+        selectedState = (stateSelect.value || "").trim();
         selectedVenueId = "";
+        // Picking a state always means full catalog for that state (not Popular top-N)
+        if (selectedState) ensureAllPlacesScope();
         fillLocationSelect();
         fillVenueSelect();
         renderPins();
         showOverview();
         if (selectedState) setZoom(Math.max(zoom, 1.6));
-        else setZoom(1.15);
+        else setZoom(mapScope === "more" ? 1.15 : 1);
       });
     }
     venueSelect.addEventListener("change", () => setVenue(venueSelect.value));
