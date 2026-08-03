@@ -118,7 +118,7 @@
       const featured = venue.featuredAnimalIds || venue.animalIds || [];
       trip = {
         id: uid(),
-        title: venue.shortName || venue.name,
+        title: venue.name || venue.shortName || "Visit",
         venueId: venue.id,
         date: "",
         selectedAnimalIds: [...featured],
@@ -170,13 +170,21 @@
     setBackToList(false);
     els.customizePanel.classList.add("hidden");
     els.btnToggleCustomize.setAttribute("aria-expanded", "false");
-    els.brandSub.textContent = `${venue.shortName || venue.name} · list & hunt`;
-    els.outingVenueChip.textContent = `📍 ${venue.name} · ${venue.location || ""}`;
-    els.outingHeading.textContent = venue.shortName || venue.name;
+    const placeLabel = venue.name || venue.shortName || "This place";
+    els.brandSub.textContent = placeLabel;
+    els.outingVenueChip.textContent = venue.location
+      ? `📍 ${venue.location}`
+      : `📍 ${placeLabel}`;
+    els.outingHeading.textContent = placeLabel;
     els.outingBlurb.textContent =
-      "Print the treasure hunt for the bag. Tap a card for optional Q&A after the visit.";
+      "Print the treasure hunt for your bag. Cards below are things to find — tap one later for optional tips.";
     els.btnZooSite.href = venue.website || "#";
-    els.outingGridHeading.textContent = `Find these (${venue.itemLabel || "items"})`;
+    els.outingGridHeading.textContent = "Things to find";
+    const gridSub = document.getElementById("outing-grid-sub");
+    if (gridSub) {
+      const kind = venue.itemLabel || "things";
+      gridSub.textContent = `Your short list (${kind}) · tap a card for optional tips`;
+    }
     renderOutingGrid(trip, venue);
     renderCustomize(trip, venue);
     history.replaceState(null, "", `#/venue/${venue.id}`);
@@ -200,7 +208,7 @@
     hideAll();
     els.detail.classList.remove("hidden");
     setBackToList(true);
-    els.brandSub.textContent = `${item.name} · Q&A`;
+    els.brandSub.textContent = item.name;
     renderDetail(trip, item, getVenue(trip.venueId));
     history.replaceState(null, "", `#/venue/${trip.venueId}/item/${itemId}`);
   }
@@ -215,9 +223,9 @@
       if (!item) continue;
       const st = itemState(trip, id);
       const done = answeredCount(trip, id, missions);
-      let status = "Tap for optional Q&A";
-      if (st.submitted) status = "Checked ✓";
-      else if (st.taught) status = "Taught ⭐";
+      let status = "Optional tips";
+      if (st.submitted) status = "Answers checked ✓";
+      else if (st.taught) status = "Taught a grown-up ⭐";
       else if (done) status = `${done} answered`;
       const btn = document.createElement("button");
       btn.type = "button";
@@ -337,7 +345,7 @@
     els.btnPictures.href = (item.links && item.links.pictures) || "#";
     els.btnMore.href = (item.links && item.links.more) || "#";
     els.btnCam.textContent =
-      venue && venue.packTemplate === "exhibits" ? "🏛️ Museum site" : "📹 Live cam / look";
+      venue && venue.packTemplate === "exhibits" ? "Museum site" : "Look up / live cam";
 
     const done = answeredCount(trip, item.id, missions);
     els.progressPill.innerHTML = showCheck
@@ -350,8 +358,8 @@
     if (aState.taught) {
       els.teachBanner.textContent = `⭐ They taught a grown-up about ${item.name}!`;
     }
-    els.btnTaught.textContent = aState.taught ? "Taught! ⭐" : "I taught a grown-up!";
-    els.btnSubmit.textContent = showCheck ? "✅ Checked — submit again" : "✅ Submit & check";
+    els.btnTaught.textContent = aState.taught ? "Taught a grown-up ⭐" : "Kid taught a grown-up";
+    els.btnSubmit.textContent = showCheck ? "Check again" : "Check answers";
 
     els.missionGrid.innerHTML = "";
     missions.forEach((mission, index) => {
