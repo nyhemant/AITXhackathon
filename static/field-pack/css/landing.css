@@ -804,12 +804,10 @@
 .map-viewport {
   overflow: hidden;
   border-radius: 18px;
-  touch-action: none;
-  cursor: grab;
+  touch-action: manipulation;
+  cursor: default;
   min-height: 280px;
-}
-.map-viewport:active {
-  cursor: grabbing;
+  user-select: none;
 }
 .map-zoom-bar {
   display: flex;
@@ -859,13 +857,19 @@
 }
 .venue-pin .vpin-label {
   font-family: system-ui, sans-serif;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 800;
   fill: #0a4545;
   paint-order: stroke;
-  stroke: rgba(255,255,255,0.92);
-  stroke-width: 3px;
+  stroke: rgba(255, 255, 255, 0.95);
+  stroke-width: 3.5px;
   pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+}
+.venue-pin .vpin-label.is-visible {
+  opacity: 1;
+  visibility: visible;
 }
 .venue-pin .vpin-label-on {
   font-size: 12px;
@@ -881,6 +885,13 @@
 .venue-pin.selected .vpin-halo {
   opacity: 1;
   fill: rgba(217, 101, 46, 0.35);
+}
+.venue-pin.selected {
+  /* selected label stays on top of neighbors */
+}
+.venue-pin:hover,
+.venue-pin.selected {
+  z-index: 10;
 }
 .pin-detail h3 {
   word-break: break-word;

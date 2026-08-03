@@ -270,32 +270,32 @@
       core.setAttribute("r", selected ? "8" : mapScope === "more" ? "5" : "7");
       g.appendChild(core);
 
-      // Name always on selected pin; otherwise when top list / zoomed / state filter
-      const showLabel =
-        selected || mapScope === "top" || zoom >= 1.4 || Boolean(selectedState);
-      if (showLabel) {
-        const label = document.createElementNS(NS, "text");
-        label.setAttribute("class", "vpin-label" + (selected ? " vpin-label-on" : ""));
-        label.setAttribute("x", x + 10);
-        label.setAttribute("y", y + 4);
-        const text =
-          (p.emoji || "•") +
-          " " +
-          (selected || mapScope === "top"
-            ? p.name.length > 26
-              ? p.name.slice(0, 24) + "…"
-              : p.name
-            : p.name.length > 18
-              ? p.name.slice(0, 16) + "…"
-              : p.name);
-        label.textContent = text;
-        g.appendChild(label);
-      }
+      // Name only on hover or selected click — never always-on (avoids overlap when zoomed)
+      const label = document.createElementNS(NS, "text");
+      label.setAttribute(
+        "class",
+        "vpin-label" + (selected ? " vpin-label-on is-visible" : "")
+      );
+      label.setAttribute("x", x + 10);
+      label.setAttribute("y", y + 4);
+      const fullName = p.name.length > 28 ? p.name.slice(0, 26) + "…" : p.name;
+      label.textContent = `${p.emoji || "•"} ${fullName}`;
+      g.appendChild(label);
+
+      const showName = () => label.classList.add("is-visible");
+      const hideName = () => {
+        if (p.id !== selectedVenueId) label.classList.remove("is-visible");
+      };
+
+      g.addEventListener("pointerenter", showName);
+      g.addEventListener("pointerleave", hideName);
+      g.addEventListener("focus", showName);
+      g.addEventListener("blur", hideName);
 
       g.addEventListener("click", (e) => {
         e.stopPropagation();
         e.preventDefault();
-        // One click: select pin, show name, fill right detail panel
+        // One click: select pin, keep name on, fill right detail panel
         setVenue(p.id, { fromPin: true });
       });
       g.addEventListener("dblclick", (e) => {
@@ -312,6 +312,9 @@
       });
       pinsLayer.appendChild(g);
     }
+    // Paint selected pin (and its name) above neighbors
+    const sel = pinsLayer.querySelector(".venue-pin.selected");
+    if (sel) pinsLayer.appendChild(sel);
   }
 
   function showOverview() {
@@ -325,8 +328,8 @@
           ? "Tourist magnets covering most US family trips."
           : "Expanded list — filter by state to unclutter."
       }</p>
-      <p class="pd-blurb"><strong>Click a pin</strong> to select it (name + details here). <strong>Double-click</strong> to zoom in on that spot.</p>
-      <p class="pd-blurb">Or use the venue menu. + / − also zoom.</p>
+      <p class="pd-blurb"><strong>Hover</strong> a pin for its name. <strong>Click</strong> to select (details here). <strong>Double-click</strong> to zoom there.</p>
+      <p class="pd-blurb">Or use the venue menu. + / − zoom (no drag).</p>
     `;
   }
 
@@ -439,41 +442,14 @@
     });
     btnZoomReset?.addEventListener("click", () => setZoom(1));
 
-    // Double-click empty map: zoom in centered on that point
+    // Double-click empty map: zoom in centered on that point (no drag-pan)
     mapViewport?.addEventListener("dblclick", (e) => {
       if (e.target.closest && e.target.closest(".venue-pin")) return;
       e.preventDefault();
       zoomToClientPoint(e.clientX, e.clientY, Math.min(3.5, zoom + 0.75));
     });
 
-    // drag pan when zoomed (ignore if starting on a pin)
-    let dragging = false;
-    let lastX = 0;
-    let lastY = 0;
-    let dragMoved = false;
-    mapViewport?.addEventListener("pointerdown", (e) => {
-      if (e.target.closest && e.target.closest(".venue-pin")) return;
-      if (zoom <= 1) return;
-      dragging = true;
-      dragMoved = false;
-      lastX = e.clientX;
-      lastY = e.clientY;
-      mapViewport.setPointerCapture(e.pointerId);
-    });
-    mapViewport?.addEventListener("pointermove", (e) => {
-      if (!dragging) return;
-      const dx = e.clientX - lastX;
-      const dy = e.clientY - lastY;
-      if (Math.abs(dx) + Math.abs(dy) > 2) dragMoved = true;
-      panX += dx;
-      panY += dy;
-      lastX = e.clientX;
-      lastY = e.clientY;
-      applyMapTransform();
-    });
-    mapViewport?.addEventListener("pointerup", () => {
-      dragging = false;
-    });
+    // Wheel zoom toward cursor only — dragging disabled (left the USA / felt broken)
     mapViewport?.addEventListener(
       "wheel",
       (e) => {
