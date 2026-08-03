@@ -12,7 +12,7 @@
     <base href="/field-pack/" />
     <link rel="stylesheet" href="/shell/shell.css?v=3" />
     <link rel="stylesheet" href="/field-pack/css/styles.css?v=13" />
-    <link rel="stylesheet" href="/field-pack/css/landing.css?v=23" />
+    <link rel="stylesheet" href="/field-pack/css/landing.css?v=24" />
   </head>
   <body class="landing-body">
     <div class="app landing-app landing-clean">
@@ -39,43 +39,18 @@
       <div id="continue-chip" class="continue-chip" hidden></div>
       <p id="waiting-cities" class="waiting-cities" hidden></p>
 
-      <!-- Tight pitch + what you get -->
+      <!-- One breath of education, then the map -->
       <header class="landing-pitch">
         <h1>Less chaos. More wonder.</h1>
         <p class="pitch-line">
-          Pick a place → get a <strong>short list</strong> + <strong>print hunt</strong> for your kid.
+          Tap a zoo, aquarium, or museum → get a <strong>short list</strong> and a <strong>print hunt</strong> for your kid.
+          <span class="pitch-flow" aria-hidden="true">Map · Print · Play</span>
         </p>
-        <ol class="pitch-steps" aria-label="How it works">
-          <li><span>1</span> Map</li>
-          <li><span>2</span> Print</li>
-          <li><span>3</span> Play <em>(Q&amp;A optional)</em></li>
-        </ol>
       </header>
 
       <!-- MAP FIRST -->
       <section class="map-section map-first" id="us-map" aria-labelledby="map-heading">
-        <div class="map-section-head">
-          <h2 id="map-heading">Tap a place</h2>
-          <p id="map-count" class="map-count-quiet">Top spots</p>
-        </div>
-
-        <div class="dual-selects dual-selects-tight" role="group" aria-label="Filters">
-          <label class="select-field" id="metro-field">
-            <span class="select-label">Area</span>
-            <select id="city-select" class="landing-select" aria-label="Choose metro area"></select>
-          </label>
-          <label class="select-field" id="state-field" hidden>
-            <span class="select-label">State</span>
-            <select id="state-select" class="landing-select" aria-label="Filter by state"></select>
-          </label>
-          <label class="select-field">
-            <span class="select-label">Place</span>
-            <select id="venue-select-landing" class="landing-select" aria-label="Choose venue"></select>
-          </label>
-        </div>
-
-        <!-- city chips for quick jumps (filled by JS if present) -->
-        <div class="city-chips city-chips-slim" id="city-chips" aria-label="Quick cities"></div>
+        <h2 id="map-heading" class="sr-only">Explore places on the map</h2>
 
         <div class="map-shell">
           <div class="map-canvas-wrap">
@@ -98,20 +73,37 @@
           </div>
           <aside class="map-side" aria-live="polite">
             <div id="pin-detail" class="pin-detail empty">
-              <p class="pin-detail-kicker">Start here</p>
-              <h3>🗺️ Explore</h3>
-              <p>Tap a pin or pick a place. Stacked numbers = several nearby — choose from the list.</p>
+              <p class="pin-detail-kicker">Your outing</p>
+              <h3>Tap a pin</h3>
+              <p class="pd-hint">Stacked numbers mean a few places nearby — pick one, then start.</p>
             </div>
           </aside>
         </div>
+
+        <!-- Filters after the visual (secondary path) -->
+        <div class="map-controls-below">
+          <div class="city-chips city-chips-slim" id="city-chips" aria-label="Jump to a city"></div>
+          <div class="dual-selects dual-selects-tight" role="group" aria-label="Filters">
+            <label class="select-field" id="metro-field">
+              <span class="select-label">Area</span>
+              <select id="city-select" class="landing-select" aria-label="Choose metro area"></select>
+            </label>
+            <label class="select-field" id="state-field" hidden>
+              <span class="select-label">State</span>
+              <select id="state-select" class="landing-select" aria-label="Filter by state"></select>
+            </label>
+            <label class="select-field">
+              <span class="select-label">Place</span>
+              <select id="venue-select-landing" class="landing-select" aria-label="Choose venue"></select>
+            </label>
+          </div>
+          <p id="map-count" class="map-count-quiet">Top spots</p>
+        </div>
       </section>
 
-      <!-- Quick try strip under map -->
+      <!-- One-tap starters -->
       <section class="ready-now ready-slim" id="ready-now" aria-labelledby="ready-heading">
-        <div class="ready-head-row">
-          <h2 id="ready-heading">Try Dallas in one tap</h2>
-          <a class="ready-jump" href="#us-map">Or use the map ↑</a>
-        </div>
+        <h2 id="ready-heading">Or try Dallas</h2>
         <div class="ready-grid" id="ready-grid">
           <a class="ready-card" href="/field-pack/app.html#/venue/dallas-zoo">
             <span class="rc-emoji" aria-hidden="true">🦁</span>
@@ -142,7 +134,7 @@
 
     <script src="/shell/shell.js?v=1"></script>
     <script src="/field-pack/js/places-data.js?v=14"></script>
-    <script src="/field-pack/js/landing-map.js?v=20"></script>
-    <script src="/field-pack/js/landing-hook.js?v=6"></script>
+    <script src="/field-pack/js/landing-map.js?v=21"></script>
+    <script src="/field-pack/js/landing-hook.js?v=7"></script>
   </body>
 </html>

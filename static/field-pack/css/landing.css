@@ -1012,161 +1012,168 @@
 .landing-clean {
   max-width: 1100px;
 }
+
+/* Breath of education — then map owns the page */
 .landing-pitch {
-  margin: 0 0 14px;
-  padding: 4px 2px 8px;
+  margin: 2px 0 10px;
+  padding: 0 2px;
   text-align: left;
 }
 .landing-pitch h1 {
-  margin: 0 0 6px;
-  font-size: clamp(1.55rem, 4vw, 2.1rem);
-  line-height: 1.1;
+  margin: 0 0 4px;
+  font-size: clamp(1.4rem, 3.6vw, 1.85rem);
+  line-height: 1.12;
   color: #0a4545;
   letter-spacing: -0.02em;
 }
 .pitch-line {
-  margin: 0 0 10px;
-  font-size: 1.05rem;
+  margin: 0;
+  font-size: 0.98rem;
   font-weight: 650;
   color: #2a3d55;
-  max-width: 36rem;
-  line-height: 1.35;
+  max-width: 40rem;
+  line-height: 1.4;
 }
-.pitch-steps {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.pitch-steps li {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
+.pitch-flow {
+  display: inline-block;
+  margin-left: 0.35rem;
+  padding: 2px 10px;
   border-radius: 999px;
-  background: rgba(255,255,255,0.9);
-  border: 2px solid rgba(15, 92, 92, 0.14);
-  font-weight: 800;
-  font-size: 0.88rem;
-  color: #0a4545;
-}
-.pitch-steps li span {
-  display: grid;
-  place-items: center;
-  width: 1.35rem;
-  height: 1.35rem;
-  border-radius: 50%;
-  background: #0f5c5c;
-  color: #fff;
-  font-size: 0.75rem;
-}
-.pitch-steps li em {
-  font-style: normal;
-  font-weight: 650;
-  color: #5a6b82;
-  font-size: 0.8rem;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1.5px solid rgba(15, 92, 92, 0.16);
+  font-size: 0.78rem;
+  font-weight: 850;
+  letter-spacing: 0.04em;
+  color: #0f5c5c;
+  vertical-align: 1px;
+  white-space: nowrap;
 }
 
 .map-first {
-  margin-top: 4px;
+  margin: 0 0 16px;
 }
-.map-first .map-section-head {
-  margin-bottom: 8px;
+.landing-clean .map-shell {
+  gap: 12px;
+  margin-bottom: 12px;
 }
-.map-first .map-section-head h2 {
-  margin: 0;
+.landing-clean .map-viewport {
+  min-height: 320px;
+}
+.landing-clean .pin-detail {
+  min-height: 180px;
+  padding: 16px;
+}
+.landing-clean .pin-detail.empty h3 {
   font-size: 1.25rem;
+  margin: 0 0 6px;
 }
-.map-count-quiet {
-  margin: 2px 0 0 !important;
-  font-size: 0.9rem !important;
-  font-weight: 700 !important;
-  color: #5a6b82 !important;
+.landing-clean .pd-hint {
+  margin: 0;
+  font-weight: 650;
+  color: #3d4f6f;
+  line-height: 1.4;
+  font-size: 0.95rem;
 }
-.dual-selects-tight {
-  margin-bottom: 6px;
-  gap: 10px;
-}
-.dual-selects-tight .landing-select {
-  min-height: 46px;
-  font-size: 0.98rem;
-  padding: 8px 12px;
+
+/* Filters live under the map so the visual leads */
+.map-controls-below {
+  display: grid;
+  gap: 8px;
 }
 .city-chips-slim {
-  margin: 0 0 10px;
+  margin: 0;
   gap: 6px;
 }
 .city-chips-slim .city-chip {
   padding: 6px 11px;
   font-size: 0.82rem;
 }
+.dual-selects-tight {
+  margin: 0;
+  gap: 10px;
+}
+.dual-selects-tight .landing-select {
+  min-height: 44px;
+  font-size: 0.95rem;
+  padding: 8px 12px;
+}
+.dual-selects-tight .select-label {
+  font-size: 0.78rem;
+}
+.map-count-quiet {
+  margin: 0 !important;
+  font-size: 0.85rem !important;
+  font-weight: 700 !important;
+  color: #5a6b82 !important;
+}
 
 .ready-slim {
-  margin-top: 18px;
-  padding: 16px 16px 14px;
-}
-.ready-head-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 8px;
-  margin-bottom: 10px;
+  margin: 0 0 16px;
+  padding: 14px 14px 12px;
 }
 .ready-slim h2 {
-  margin: 0;
-  font-size: 1.15rem;
+  margin: 0 0 10px;
+  font-size: 1.05rem;
+  color: #0a4545;
 }
-.ready-jump {
-  font-weight: 800;
-  font-size: 0.9rem;
-  color: #0f5c5c;
-  text-decoration: none;
-}
-.ready-jump:hover { text-decoration: underline; }
 .ready-slim .ready-card {
-  padding: 14px;
-  gap: 6px;
+  padding: 12px 14px;
+  gap: 4px;
+  flex-direction: row;
+  align-items: center;
 }
 .ready-slim .ready-card p { display: none; }
 .ready-slim .ready-card h3 {
-  font-size: 1rem;
+  margin: 0;
+  flex: 1;
+  font-size: 0.98rem;
+}
+.ready-slim .rc-emoji {
+  font-size: 1.45rem;
 }
 .ready-slim .rc-cta {
-  margin-top: 2px;
+  margin: 0;
+  font-size: 0.88rem;
 }
 
 .site-footer-slim {
-  margin-top: 20px;
-  padding-top: 12px;
+  margin-top: 12px;
+  padding-top: 10px;
 }
 .site-footer-slim p {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
 }
 .footer-dot {
   opacity: 0.5;
   margin: 0 2px;
 }
 
-/* Tighter map panel empty state */
-.landing-clean .pin-detail.empty h3 {
-  font-size: 1.2rem;
+/* Slightly less page chrome so map rises faster */
+body.landing-body {
+  padding-top: 12px;
+  padding-bottom: 28px;
 }
-.landing-clean .map-shell {
-  gap: 12px;
+.landing-clean .oneless-shell {
+  margin-bottom: 10px;
+}
+.landing-clean .continue-chip {
+  margin-bottom: 8px;
+  padding: 10px 14px;
 }
 
 @media (max-width: 720px) {
   .landing-pitch {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
-  .pitch-steps li em {
-    display: none;
+  .pitch-flow {
+    display: block;
+    margin: 6px 0 0;
+    width: fit-content;
   }
-  .ready-head-row {
-    flex-direction: column;
-    align-items: flex-start;
+  .landing-clean .map-viewport {
+    min-height: 260px;
+  }
+  .ready-slim .ready-card {
+    flex-direction: row;
   }
 }

@@ -472,8 +472,7 @@
         <h3>📍 ${escapeHtml(area)}</h3>
         <button type="button" class="pd-clear" id="pd-clear-selection" aria-label="Clear">×</button>
       </div>
-      <p class="pd-meta">${places.length} venues share this spot on the map</p>
-      <p class="pd-blurb">Pick one:</p>
+      <p class="pd-meta">${places.length} nearby — pick one</p>
       <div class="nearby-list" role="listbox" aria-label="Nearby venues">
         ${places
           .map(
@@ -505,12 +504,11 @@
 
   function showOverview() {
     const list = filteredPlaces();
-    detail.className = "pin-detail";
+    detail.className = "pin-detail empty";
     detail.innerHTML = `
-      <p class="pin-detail-kicker">${mapScope === "top" ? "Top spots" : "All places"}</p>
-      <h3>🗺️ ${list.length} on map</h3>
-      <p class="pd-blurb">Tap a pin. <strong>Numbered pins</strong> = several nearby — pick from the list.</p>
-      <p class="pd-blurb">Hover name · click go · double-click zoom.</p>
+      <p class="pin-detail-kicker">${mapScope === "top" ? "Top spots" : "All places"} · ${list.length}</p>
+      <h3>Tap a pin</h3>
+      <p class="pd-hint">Numbered stack = several nearby. Hover for the name · click to start.</p>
     `;
   }
 

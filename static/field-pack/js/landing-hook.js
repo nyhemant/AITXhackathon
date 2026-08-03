@@ -67,7 +67,7 @@
         citySelect.value = id;
         citySelect.dispatchEvent(new Event("change", { bubbles: true }));
       }
-      document.getElementById("us-map")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      document.getElementById("map-viewport")?.scrollIntoView({ behavior: "smooth", block: "center" });
     });
   }
 
