@@ -1119,6 +1119,28 @@
 .story-step:hover {
   background: rgba(255, 255, 255, 0.75);
 }
+.story-jump {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  gap: 4px;
+  text-decoration: none;
+  color: inherit;
+  width: 100%;
+  border-radius: var(--radius, 16px);
+  outline-offset: 3px;
+}
+.story-jump:focus-visible {
+  outline: 3px solid var(--focus, #ffcf5a);
+}
+.story-step-map {
+  background: rgba(255, 248, 230, 0.55);
+  box-shadow: inset 0 0 0 1.5px rgba(217, 101, 46, 0.22);
+}
+.story-step-map:hover,
+.story-step-map:focus-within {
+  background: rgba(255, 244, 220, 0.9);
+}
 .story-art {
   display: grid;
   place-items: center;
@@ -1130,6 +1152,9 @@
   width: min(88px, 100%);
   height: auto;
   filter: drop-shadow(0 4px 10px rgba(21, 34, 56, 0.08));
+}
+.story-svg-hunt {
+  width: min(96px, 100%);
 }
 .story-label {
   margin: 0;
@@ -1175,6 +1200,71 @@
 .story-step:nth-child(3) .story-num { background: #d9652e; }
 .story-step:nth-child(5) .story-num { background: #c9a227; color: #1a1a1a; }
 
+/* Soft pulse on Map pin → draws eye to “tap a place” */
+.story-pin-pulse {
+  transform-origin: 0 0;
+  animation: story-pin-pulse 2s var(--ease, ease) infinite;
+  transform-box: fill-box;
+}
+@keyframes story-pin-pulse {
+  0% {
+    transform: translate(54px, 28px) scale(0.85);
+    opacity: 0.75;
+  }
+  70% {
+    transform: translate(54px, 28px) scale(1.45);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(54px, 28px) scale(1.45);
+    opacity: 0;
+  }
+}
+
+/* Cue arrow from story → real map */
+.story-map-cue {
+  margin: 8px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 750;
+  color: var(--accent, #d9652e);
+  letter-spacing: 0.01em;
+}
+.story-map-cue-arrow {
+  display: inline-flex;
+  animation: story-bounce-y 1.4s var(--ease, ease) infinite;
+  font-size: 1rem;
+  line-height: 1;
+}
+@keyframes story-bounce-y {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(4px);
+  }
+}
+
+/* Gentle invite ring on the real map (first ~12s, then calm) */
+.map-canvas-invite {
+  animation: map-invite-glow 2.4s var(--ease, ease) 3;
+}
+@keyframes map-invite-glow {
+  0%,
+  100% {
+    box-shadow: var(--shadow-lg, 0 18px 48px rgba(21, 34, 56, 0.1));
+  }
+  50% {
+    box-shadow:
+      0 0 0 3px rgba(217, 101, 46, 0.35),
+      0 18px 48px rgba(21, 34, 56, 0.12);
+  }
+}
+
 @media (max-width: 640px) {
   .story-flow {
     flex-direction: column;
@@ -1184,22 +1274,35 @@
   }
   .story-step {
     max-width: none;
-    flex-direction: row;
+    padding: 8px 6px;
+  }
+  .story-jump {
     grid-template-columns: auto 1fr;
     grid-template-rows: auto auto;
     column-gap: 12px;
     row-gap: 2px;
     text-align: left;
     justify-items: start;
-    padding: 8px 6px;
   }
-  .story-art {
+  .story-step:not(:has(.story-jump)) {
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    column-gap: 12px;
+    row-gap: 2px;
+    text-align: left;
+    justify-items: start;
+  }
+  .story-jump .story-art,
+  .story-step:not(:has(.story-jump)) .story-art {
     grid-row: 1 / span 2;
     width: 72px;
     min-height: 60px;
   }
   .story-svg {
     width: 72px;
+  }
+  .story-svg-hunt {
+    width: 78px;
   }
   .story-desc {
     max-width: none;
@@ -1210,6 +1313,18 @@
     height: 18px;
     transform: rotate(90deg);
     opacity: 0.7;
+  }
+  .story-map-cue {
+    justify-content: flex-start;
+    padding-left: 4px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .story-pin-pulse,
+  .story-map-cue-arrow,
+  .map-canvas-invite {
+    animation: none !important;
   }
 }
 
