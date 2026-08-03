@@ -148,7 +148,7 @@
       return;
     }
     els.backBtn.classList.remove("hidden");
-    els.backBtn.textContent = "← List";
+    els.backBtn.textContent = "← Back to list";
   }
 
   function showOuting(venueId) {
