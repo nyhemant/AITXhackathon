@@ -1,230 +1,84 @@
 (() => {
-  const places = window.FP_PLACES || [];
+  const allPlaces = window.FP_PLACES || [];
+  const TOP_IDS = new Set(window.FP_TOP_PLACE_IDS || []);
   const detail = document.getElementById("pin-detail");
   const mapHost = document.getElementById("map-host");
   const citySelect = document.getElementById("city-select");
   const venueSelect = document.getElementById("venue-select-landing");
+  const scopeTop = document.getElementById("scope-top");
+  const scopeMore = document.getElementById("scope-more");
+  const stateSelect = document.getElementById("state-select");
+  const stateField = document.getElementById("state-field");
+  const mapCount = document.getElementById("map-count");
+  const btnZoomIn = document.getElementById("map-zoom-in");
+  const btnZoomOut = document.getElementById("map-zoom-out");
+  const btnZoomReset = document.getElementById("map-zoom-reset");
+  const mapViewport = document.getElementById("map-viewport");
 
-  /**
-   * City options for the dropdown.
-   * placeIds = venues in that city's vicinity (Dallas includes Fort Worth).
-   * mapPinId = matching pin on the SVG (optional).
-   */
-  const CITY_DEFS = [
-    {
-      id: "all",
-      label: "All cities",
-      kidLine: "Everywhere on our map",
-      symbols: "🇺🇸",
-      status: "ready",
-      placeIds: null, // all
-      mapPinId: null,
-    },
-    {
-      id: "dallas",
-      label: "Dallas area",
-      kidLine: "Zoo · Aquarium · Museum · nearby Fort Worth Zoo",
-      symbols: "🦁🦈🎨",
-      status: "ready",
-      // Vicinity: Dallas venues + Fort Worth Zoo
-      placeIds: [
-        "dallas-zoo",
-        "childrens-aquarium-dallas",
-        "childrens-museum-perot",
-        "fort-worth-zoo",
-      ],
-      mapPinId: "dfw",
-    },
-    {
-      id: "austin",
-      label: "Austin",
-      kidLine: "Museum · Zoo",
-      symbols: "🔬🦒",
-      status: "ready",
-      placeIds: ["thinkery", "austin-zoo"],
-      mapPinId: "austin",
-    },
-    {
-      id: "san-antonio",
-      label: "San Antonio",
-      kidLine: "Museum",
-      symbols: "🧩",
-      status: "ready",
-      placeIds: ["doseum"],
-      mapPinId: "san-antonio",
-    },
-    {
-      id: "houston",
-      label: "Houston",
-      kidLine: "Zoo",
-      symbols: "🐘",
-      status: "ready",
-      placeIds: ["houston-zoo"],
-      mapPinId: "houston",
-    },
-    {
-      id: "san-diego",
-      label: "San Diego",
-      kidLine: "Zoo · Safari",
-      symbols: "🐼🦏",
-      status: "ready",
-      placeIds: ["san-diego-zoo", "san-diego-safari-park"],
-      mapPinId: "san-diego",
-    },
-    {
-      id: "la",
-      label: "Los Angeles",
-      kidLine: "Zoo · Aquarium · Science",
-      symbols: "🦅🦭🛰️",
-      status: "ready",
-      placeIds: ["la-zoo", "aquarium-of-the-pacific", "california-science-center"],
-      mapPinId: "la",
-    },
-    {
-      id: "monterey",
-      label: "Monterey",
-      kidLine: "Aquarium",
-      symbols: "🌊",
-      status: "ready",
-      placeIds: ["monterey-bay-aquarium"],
-      mapPinId: "monterey",
-    },
-    {
-      id: "sf",
-      label: "San Francisco",
-      kidLine: "Science",
-      symbols: "🌿",
-      status: "ready",
-      placeIds: ["cal-academy"],
-      mapPinId: "sf",
-    },
-    {
-      id: "chicago",
-      label: "Chicago",
-      kidLine: "Aquarium · Museum",
-      symbols: "🐠🦖",
-      status: "ready",
-      placeIds: ["shedd-aquarium", "field-museum"],
-      mapPinId: "chicago",
-    },
-    {
-      id: "indy",
-      label: "Indianapolis",
-      kidLine: "Museum",
-      symbols: "🚀",
-      status: "ready",
-      placeIds: ["indy-childrens-museum"],
-      mapPinId: "indy",
-    },
-    {
-      id: "atlanta",
-      label: "Atlanta",
-      kidLine: "Aquarium",
-      symbols: "🐋",
-      status: "ready",
-      placeIds: ["georgia-aquarium"],
-      mapPinId: "atlanta",
-    },
-    {
-      id: "dc",
-      label: "Washington, DC",
-      kidLine: "Zoo",
-      symbols: "🦥",
-      status: "ready",
-      placeIds: ["national-zoo"],
-      mapPinId: "dc",
-    },
-    {
-      id: "nyc",
-      label: "New York",
-      kidLine: "Museum · Zoo",
-      symbols: "🦴🦍",
-      status: "ready",
-      placeIds: ["amnh", "bronx-zoo"],
-      mapPinId: "nyc",
-    },
-    {
-      id: "florida",
-      label: "Florida Space",
-      kidLine: "Rockets",
-      symbols: "🚀",
-      status: "ready",
-      placeIds: ["kennedy-space-center"],
-      mapPinId: "florida",
-    },
+  /** Metro groups for Top mode dropdown (not every pin). */
+  const METRO_DEFS = [
+    { id: "all", label: "All (Top list)", symbols: "🇺🇸", states: null },
+    { id: "dallas", label: "Dallas area", symbols: "🦁", states: ["TX"], regions: ["dfw"] },
+    { id: "houston", label: "Houston", symbols: "🐘", states: ["TX"], cities: ["Houston"] },
+    { id: "austin", label: "Austin", symbols: "🔬", states: ["TX"], cities: ["Austin"] },
+    { id: "san-diego", label: "San Diego", symbols: "🐼", states: ["CA"], cities: ["San Diego", "Escondido"] },
+    { id: "la", label: "Los Angeles", symbols: "🦅", states: ["CA"], cities: ["Los Angeles", "Long Beach"] },
+    { id: "monterey", label: "Monterey", symbols: "🌊", states: ["CA"], cities: ["Monterey"] },
+    { id: "sf", label: "San Francisco", symbols: "🌿", states: ["CA"], cities: ["San Francisco"] },
+    { id: "chicago", label: "Chicago", symbols: "🐠", states: ["IL"], cities: ["Chicago"] },
+    { id: "atlanta", label: "Atlanta", symbols: "🐋", states: ["GA"], cities: ["Atlanta"] },
+    { id: "dc", label: "Washington, DC", symbols: "🦥", states: ["DC"], cities: ["Washington"] },
+    { id: "nyc", label: "New York", symbols: "🦴", states: ["NY"], cities: ["New York", "Bronx"] },
+    { id: "boston", label: "Boston", symbols: "🦞", states: ["MA"], cities: ["Boston"] },
+    { id: "florida", label: "Florida Space", symbols: "🚀", states: ["FL"], cities: ["Merritt Island"] },
   ];
 
-  // Map pin id (on SVG) → city dropdown id
-  const PIN_TO_CITY = {
-    dfw: "dallas", // one pin for DFW; Fort Worth venues live under Dallas area
-    austin: "austin",
-    "san-antonio": "san-antonio",
-    houston: "houston",
-    "san-diego": "san-diego",
-    la: "la",
-    monterey: "monterey",
-    sf: "sf",
-    chicago: "chicago",
-    indy: "indy",
-    atlanta: "atlanta",
-    dc: "dc",
-    nyc: "nyc",
-    florida: "florida",
-  };
-
-  let selectedCityId = "all";
+  let mapScope = "top"; // top | more
+  let selectedMetroId = "all";
+  let selectedState = "";
   let selectedVenueId = "";
-
-  const SAVED_CITIES_KEY = "1less-saved-cities";
-
-  function loadSavedCities() {
-    try {
-      const raw = localStorage.getItem(SAVED_CITIES_KEY);
-      const arr = raw ? JSON.parse(raw) : [];
-      return Array.isArray(arr) ? arr : [];
-    } catch {
-      return [];
-    }
-  }
-
-  function saveCityId(id) {
-    if (!id || id === "all") return loadSavedCities();
-    const set = new Set(loadSavedCities());
-    set.add(id);
-    const arr = [...set];
-    localStorage.setItem(SAVED_CITIES_KEY, JSON.stringify(arr));
-    return arr;
-  }
-
-  function bindSaveCityButtons(root) {
-    root.querySelectorAll(".btn-save-city").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const id = btn.dataset.cityId;
-        saveCityId(id);
-        btn.textContent = "✓ Saved on this device";
-        window.dispatchEvent(new CustomEvent("1less-cities-saved"));
-      });
-    });
-  }
-
+  let zoom = 1;
+  let panX = 0;
+  let panY = 0;
+  let svgEl = null;
+  let pinsLayer = null;
 
   function placeById(id) {
-    return places.find((p) => p.id === id);
+    return allPlaces.find((p) => p.id === id);
   }
 
-  function cityById(id) {
-    return CITY_DEFS.find((c) => c.id === id);
-  }
-
-  function venuesForCity(cityId) {
-    const city = cityById(cityId);
-    if (!city || city.id === "all" || !city.placeIds) {
-      return [...places].sort((a, b) => {
-        if (a.status !== b.status) return a.status === "ready" ? -1 : 1;
-        return a.name.localeCompare(b.name);
-      });
+  function placesInScope() {
+    if (mapScope === "top") {
+      return allPlaces.filter((p) => TOP_IDS.has(p.id) || p.tier === "top");
     }
-    return city.placeIds.map(placeById).filter(Boolean);
+    return [...allPlaces];
+  }
+
+  function filteredPlaces() {
+    let list = placesInScope();
+    if (mapScope === "top") {
+      if (selectedMetroId !== "all") {
+        const m = METRO_DEFS.find((x) => x.id === selectedMetroId);
+        if (m) {
+          list = list.filter((p) => {
+            if (m.regions && m.regions.includes(p.region)) return true;
+            if (m.cities && m.cities.includes(p.city)) return true;
+            if (m.states && m.states.includes(p.state) && !m.cities && !m.regions) return true;
+            // TX special: dallas metro only TX cities in metro
+            if (m.id === "dallas") return p.region === "dfw" || ["Dallas", "Fort Worth"].includes(p.city);
+            if (m.id === "houston") return p.city === "Houston";
+            if (m.id === "austin") return p.city === "Austin";
+            return m.states && m.states.includes(p.state) && (!m.cities || m.cities.includes(p.city));
+          });
+        }
+      }
+    } else {
+      // More: filter by state
+      if (selectedState) {
+        list = list.filter((p) => p.state === selectedState);
+      }
+    }
+    return list.sort((a, b) => a.name.localeCompare(b.name));
   }
 
   function kidTypeLabel(type) {
@@ -233,18 +87,16 @@
     if (t.includes("zoo")) return "Zoo";
     if (t.includes("aquarium")) return "Aquarium";
     if (t.includes("children")) return "Kids museum";
-    if (t.includes("space")) return "Rockets / space";
+    if (t.includes("space") || t.includes("air")) return "Space / air";
     if (t.includes("science")) return "Science";
     if (t.includes("natural") || t.includes("history")) return "Nature museum";
     return type || "Place";
   }
 
   function venueOptionLabel(p) {
-    // Kid-friendly: type + short city cue, official name secondary in data
     const kind = kidTypeLabel(p.type);
     const city = p.city === "Escondido" ? "San Diego area" : p.city;
-    const ready = p.status === "ready" ? " ✓" : "";
-    return `${p.emoji || "📍"} ${kind} — ${city}${ready}`;
+    return `${p.emoji || "📍"} ${p.name} — ${city}, ${p.state}`;
   }
 
   function escapeHtml(s) {
@@ -255,236 +107,332 @@
       .replaceAll('"', "&quot;");
   }
 
-  function fillCitySelect() {
+  function statesInMore() {
+    const set = new Set(allPlaces.map((p) => p.state).filter(Boolean));
+    return [...set].sort();
+  }
+
+  function fillLocationSelect() {
     citySelect.innerHTML = "";
-    for (const c of CITY_DEFS) {
-      const opt = document.createElement("option");
-      opt.value = c.id;
-      const mark = c.status === "ready" && c.id !== "all" ? " ✓" : "";
-      opt.textContent =
-        c.id === "all" ? "All cities" : `${c.symbols} ${c.label}${mark}`;
-      citySelect.appendChild(opt);
+    if (mapScope === "top") {
+      for (const m of METRO_DEFS) {
+        const opt = document.createElement("option");
+        opt.value = m.id;
+        opt.textContent = m.id === "all" ? m.label : `${m.symbols} ${m.label}`;
+        citySelect.appendChild(opt);
+      }
+      citySelect.value = selectedMetroId;
+      if (stateField) stateField.hidden = true;
+    } else {
+      const optAll = document.createElement("option");
+      optAll.value = "all";
+      optAll.textContent = "All states (More)";
+      citySelect.appendChild(optAll);
+      // use state select
+      if (stateSelect) {
+        stateSelect.innerHTML = "";
+        const o0 = document.createElement("option");
+        o0.value = "";
+        o0.textContent = "All states";
+        stateSelect.appendChild(o0);
+        for (const st of statesInMore()) {
+          const o = document.createElement("option");
+          o.value = st;
+          o.textContent = st;
+          stateSelect.appendChild(o);
+        }
+        stateSelect.value = selectedState;
+      }
+      if (stateField) stateField.hidden = false;
+      citySelect.innerHTML = "";
+      const o = document.createElement("option");
+      o.value = "all";
+      o.textContent = selectedState ? `State: ${selectedState}` : "Browse by state →";
+      citySelect.appendChild(o);
+      citySelect.disabled = true;
     }
-    citySelect.value = selectedCityId;
+    if (mapScope === "top") citySelect.disabled = false;
   }
 
   function fillVenueSelect() {
-    const list = venuesForCity(selectedCityId);
+    const list = filteredPlaces();
     venueSelect.innerHTML = "";
-    const placeholder = document.createElement("option");
-    placeholder.value = "";
-    placeholder.textContent =
-      selectedCityId === "all"
-        ? "Pick a venue…"
-        : `Venues near ${cityById(selectedCityId)?.label || "city"}…`;
-    venueSelect.appendChild(placeholder);
-
+    const ph = document.createElement("option");
+    ph.value = "";
+    ph.textContent =
+      mapScope === "top"
+        ? `Venues (${list.length} in Top)…`
+        : selectedState
+          ? `Venues in ${selectedState} (${list.length})…`
+          : `All venues (${list.length})…`;
+    venueSelect.appendChild(ph);
     for (const p of list) {
       const opt = document.createElement("option");
       opt.value = p.id;
       opt.textContent = venueOptionLabel(p);
       venueSelect.appendChild(opt);
     }
-
     if (selectedVenueId && list.some((p) => p.id === selectedVenueId)) {
       venueSelect.value = selectedVenueId;
     } else {
       selectedVenueId = "";
       venueSelect.value = "";
     }
+    if (mapCount) {
+      const topN = allPlaces.filter((p) => TOP_IDS.has(p.id) || p.tier === "top").length;
+      mapCount.textContent =
+        mapScope === "top"
+          ? `Showing Top ${topN} tourist magnets`
+          : `Showing all ${allPlaces.length} places` + (selectedState ? ` · ${selectedState}` : "");
+    }
   }
 
-  function highlightMapPins() {
-    const city = cityById(selectedCityId);
-    const allowedPins = new Set();
-    if (selectedCityId === "all") {
-      Object.keys(PIN_TO_CITY).forEach((k) => allowedPins.add(k));
-    } else if (city?.mapPinId) {
-      allowedPins.add(city.mapPinId);
-    }
+  function applyMapTransform() {
+    if (!svgEl) return;
+    svgEl.style.transformOrigin = "center center";
+    svgEl.style.transform = `translate(${panX}px, ${panY}px) scale(${zoom})`;
+  }
 
-    document.querySelectorAll(".city-pin").forEach((el) => {
-      const pinId = el.dataset.city;
-      const on = allowedPins.has(pinId);
-      el.classList.toggle("dim", !on);
-      el.classList.toggle(
-        "selected",
-        selectedCityId !== "all" && pinId === city?.mapPinId
-      );
+  function setZoom(z) {
+    zoom = Math.min(3.5, Math.max(1, z));
+    if (zoom === 1) {
+      panX = 0;
+      panY = 0;
+    }
+    applyMapTransform();
+  }
+
+  function renderPins() {
+    if (!svgEl || !pinsLayer) return;
+    while (pinsLayer.firstChild) pinsLayer.removeChild(pinsLayer.firstChild);
+    // hide legacy city pins when showing venue layer
+    svgEl.querySelectorAll(".city-pin").forEach((el) => {
+      el.style.display = "none";
     });
-  }
 
-  function showCitySummary() {
-    const city = cityById(selectedCityId);
-    if (!city) return;
-    const list = venuesForCity(selectedCityId);
-    const readyN = list.filter((p) => p.status === "ready").length;
+    const vb = svgEl.viewBox.baseVal;
+    const w = vb.width || 1000;
+    const h = vb.height || 620;
+    const list = filteredPlaces();
+    const NS = "http://www.w3.org/2000/svg";
 
-    if (selectedCityId === "all") {
-      detail.className = "pin-detail";
-      detail.innerHTML = `
-        <p class="pin-detail-kicker">City filter</p>
-        <h3>🇺🇸 All cities</h3>
-        <p class="pd-meta">${list.length} venues on the map</p>
-        <p class="pd-blurb">Pick a <strong>city</strong> to narrow the venue list, or choose a venue from the dropdown. Dallas area includes nearby Fort Worth Zoo.</p>
-        <p class="pd-blurb"><strong>${readyN}</strong> ready to play now (Dallas).</p>
-      `;
-      return;
-    }
+    for (const p of list) {
+      if (p.lat == null || p.lon == null) continue;
+      const { x, y } = window.fpProjectUS(p.lat, p.lon, w, h);
+      const g = document.createElementNS(NS, "g");
+      g.setAttribute("class", "venue-pin" + (p.id === selectedVenueId ? " selected" : ""));
+      g.setAttribute("tabindex", "0");
+      g.setAttribute("role", "button");
+      g.setAttribute("aria-label", p.name);
+      g.dataset.venueId = p.id;
+      g.style.cursor = "pointer";
 
-    const isReadyCity = city.status === "ready" || readyN > 0;
-    const saved = loadSavedCities();
-    const isSaved = saved.includes(selectedCityId);
-    detail.className = "pin-detail";
-    detail.innerHTML = `
-      <p class="pin-detail-kicker">City selected</p>
-      <h3>${escapeHtml(city.symbols)} ${escapeHtml(city.label)}</h3>
-      <p class="pd-meta">${escapeHtml(city.kidLine)}</p>
-      <span class="pd-status ${isReadyCity ? "ready" : "soon"}">${
-        isReadyCity ? "Has ready venues" : "Coming soon"
-      }</span>
-      <p class="pd-blurb">
-        Venue list shows <strong>places near ${escapeHtml(city.label)}</strong>
-        (${list.length} ${list.length === 1 ? "place" : "places"}).
-        ${
-          selectedCityId === "dallas"
-            ? " Fort Worth Zoo is included because it’s in the Dallas area."
-            : ""
-        }
-      </p>
-      ${
-        isReadyCity
-          ? `<p class="pd-blurb">Next: pick a venue → <strong>Start outing</strong>.</p>`
-          : `<div class="soon-save" data-city-id="${escapeHtml(selectedCityId)}">
-              <p class="pd-blurb"><strong>Packs for ${escapeHtml(city.label)} are coming.</strong>
-              Save this city on this device and we’ll remember you’re waiting.</p>
-              <button type="button" class="btn btn-primary btn-save-city" data-city-id="${escapeHtml(selectedCityId)}">
-                ${isSaved ? "✓ Saved on this device" : "Save this city"}
-              </button>
-            </div>`
+      const halo = document.createElementNS(NS, "circle");
+      halo.setAttribute("class", "vpin-halo");
+      halo.setAttribute("cx", x);
+      halo.setAttribute("cy", y);
+      halo.setAttribute("r", mapScope === "more" ? "10" : "14");
+      g.appendChild(halo);
+
+      const core = document.createElementNS(NS, "circle");
+      core.setAttribute("class", "vpin-core");
+      core.setAttribute("cx", x);
+      core.setAttribute("cy", y);
+      core.setAttribute("r", mapScope === "more" ? "5" : "7");
+      g.appendChild(core);
+
+      if (mapScope === "top" || zoom >= 1.4 || selectedState) {
+        const label = document.createElementNS(NS, "text");
+        label.setAttribute("class", "vpin-label");
+        label.setAttribute("x", x + 9);
+        label.setAttribute("y", y + 4);
+        label.textContent = (p.emoji || "•") + " " + (p.name.length > 22 ? p.name.slice(0, 20) + "…" : p.name);
+        g.appendChild(label);
       }
-    `;
-    bindSaveCityButtons(detail);
-  }
 
-  function showVenueDetail(venueId) {
-    const p = placeById(venueId);
-    if (!p) {
-      showCitySummary();
-      return;
-    }
-    selectedVenueId = venueId;
-    const kind = kidTypeLabel(p.type);
-    const ready = p.status === "ready";
-    detail.className = "pin-detail";
-    detail.innerHTML = `
-      <p class="pin-detail-kicker">${escapeHtml(kind)} · ${escapeHtml(p.city)}</p>
-      <h3>${escapeHtml(p.emoji || "")} ${escapeHtml(kind)}</h3>
-      <p class="pd-meta">${escapeHtml(p.city)}, ${escapeHtml(p.state)}</p>
-      <span class="pd-status ${p.status}">${ready ? "Ready to play" : "Coming soon"}</span>
-      <p class="pd-blurb">${escapeHtml(p.blurb)}</p>
-      <p class="pd-official">Official name: <span class="muted">${escapeHtml(p.name)}</span></p>
-      <div class="pd-actions">
-        ${
-          ready && p.appHref
-            ? `<a class="btn btn-primary" href="${p.appHref}">Start outing →</a>
-               <a class="btn btn-secondary" href="${p.href}">Place info</a>`
-            : `<span class="btn btn-ghost" style="opacity:.7;pointer-events:none">Outing soon</span>
-               <a class="btn btn-secondary" href="${p.href}">Place info</a>`
-        }
-      </div>
-    `;
-  }
-
-  function setCity(cityId, { fromPin } = {}) {
-    if (!cityById(cityId)) cityId = "all";
-    selectedCityId = cityId;
-    citySelect.value = cityId;
-    selectedVenueId = "";
-    fillVenueSelect();
-    highlightMapPins();
-    showCitySummary();
-  }
-
-  function setVenue(venueId) {
-    if (!venueId) {
-      selectedVenueId = "";
-      showCitySummary();
-      return;
-    }
-    // If venue not in current city filter, switch city to one that contains it
-    const list = venuesForCity(selectedCityId);
-    if (!list.some((p) => p.id === venueId)) {
-      const owner = CITY_DEFS.find(
-        (c) => c.id !== "all" && c.placeIds && c.placeIds.includes(venueId)
-      );
-      if (owner) {
-        selectedCityId = owner.id;
-        citySelect.value = owner.id;
-        fillVenueSelect();
-        highlightMapPins();
-      }
-    }
-    selectedVenueId = venueId;
-    venueSelect.value = venueId;
-    showVenueDetail(venueId);
-  }
-
-  function wirePins(root) {
-    root.querySelectorAll(".city-pin").forEach((el) => {
-      const pinId = el.dataset.city;
-      const go = () => {
-        const cityId = PIN_TO_CITY[pinId] || "all";
-        setCity(cityId, { fromPin: true });
-      };
-      el.addEventListener("click", go);
-      el.addEventListener("keydown", (e) => {
+      const go = () => setVenue(p.id);
+      g.addEventListener("click", (e) => {
+        e.stopPropagation();
+        go();
+      });
+      g.addEventListener("keydown", (e) => {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
           go();
         }
       });
-    });
+      pinsLayer.appendChild(g);
+    }
   }
 
-  function fillCitySelect() {
-    citySelect.innerHTML = "";
-    for (const c of CITY_DEFS) {
-      const opt = document.createElement("option");
-      opt.value = c.id;
-      if (c.id === "all") opt.textContent = "All cities";
-      else {
-        const mark = c.status === "ready" ? " ✓" : "";
-        opt.textContent = `${c.symbols} ${c.label}${mark}`;
-      }
-      citySelect.appendChild(opt);
+  function showOverview() {
+    const list = filteredPlaces();
+    detail.className = "pin-detail";
+    detail.innerHTML = `
+      <p class="pin-detail-kicker">${mapScope === "top" ? "Top list" : "More places"}</p>
+      <h3>🗺️ ${list.length} places</h3>
+      <p class="pd-meta">${
+        mapScope === "top"
+          ? "Tourist magnets covering most US family trips."
+          : "Expanded list — filter by state to unclutter."
+      }</p>
+      <p class="pd-blurb">Pick a <strong>venue</strong> in the menu or tap a pin. Each opens a shortlist + print hunt.</p>
+      <p class="pd-blurb"><strong>Tip:</strong> use + / − to zoom when pins overlap.</p>
+    `;
+  }
+
+  function showVenueDetail(venueId) {
+    const p = placeById(venueId);
+    if (!p) {
+      showOverview();
+      return;
     }
+    selectedVenueId = venueId;
+    const kind = kidTypeLabel(p.type);
+    detail.className = "pin-detail";
+    detail.innerHTML = `
+      <p class="pin-detail-kicker">${escapeHtml(kind)} · ${escapeHtml(p.city)}</p>
+      <h3>${escapeHtml(p.emoji || "")} ${escapeHtml(p.name)}</h3>
+      <p class="pd-meta">${escapeHtml(p.city)}, ${escapeHtml(p.state)} · ${
+      p.tier === "top" || TOP_IDS.has(p.id) ? "Top list" : "More"
+    }</p>
+      <span class="pd-status ready">Ready to play</span>
+      <p class="pd-blurb">${escapeHtml(p.blurb)}</p>
+      <div class="pd-actions">
+        <a class="btn btn-primary" href="${p.appHref || "#"}">Start outing →</a>
+        <a class="btn btn-secondary" href="${p.href || "#"}">Place info</a>
+      </div>
+    `;
+    renderPins();
+  }
+
+  function setVenue(venueId) {
+    if (!venueId) {
+      selectedVenueId = "";
+      fillVenueSelect();
+      renderPins();
+      showOverview();
+      return;
+    }
+    selectedVenueId = venueId;
+    // ensure visible in filter
+    const p = placeById(venueId);
+    if (p && mapScope === "top" && !(TOP_IDS.has(p.id) || p.tier === "top")) {
+      setScope("more");
+    }
+    if (p && mapScope === "more" && selectedState && p.state !== selectedState) {
+      selectedState = p.state;
+      if (stateSelect) stateSelect.value = selectedState;
+    }
+    fillVenueSelect();
+    venueSelect.value = venueId;
+    renderPins();
+    showVenueDetail(venueId);
+  }
+
+  function setScope(scope) {
+    mapScope = scope === "more" ? "more" : "top";
+    selectedVenueId = "";
+    selectedMetroId = "all";
+    selectedState = "";
+    if (scopeTop) scopeTop.setAttribute("aria-pressed", mapScope === "top" ? "true" : "false");
+    if (scopeMore) scopeMore.setAttribute("aria-pressed", mapScope === "more" ? "true" : "false");
+    scopeTop?.classList.toggle("active", mapScope === "top");
+    scopeMore?.classList.toggle("active", mapScope === "more");
+    fillLocationSelect();
+    fillVenueSelect();
+    renderPins();
+    showOverview();
+    if (mapScope === "more" && zoom < 1.2) setZoom(1.15);
+    if (mapScope === "top") setZoom(1);
   }
 
   async function boot() {
-    fillCitySelect();
-    fillVenueSelect();
-
-    citySelect.addEventListener("change", () => setCity(citySelect.value));
+    if (scopeTop) scopeTop.addEventListener("click", () => setScope("top"));
+    if (scopeMore) scopeMore.addEventListener("click", () => setScope("more"));
+    citySelect.addEventListener("change", () => {
+      if (mapScope === "top") {
+        selectedMetroId = citySelect.value || "all";
+        selectedVenueId = "";
+        fillVenueSelect();
+        renderPins();
+        showOverview();
+      }
+    });
+    if (stateSelect) {
+      stateSelect.addEventListener("change", () => {
+        selectedState = stateSelect.value || "";
+        selectedVenueId = "";
+        fillLocationSelect();
+        fillVenueSelect();
+        renderPins();
+        showOverview();
+        if (selectedState) setZoom(Math.max(zoom, 1.6));
+        else setZoom(1.15);
+      });
+    }
     venueSelect.addEventListener("change", () => setVenue(venueSelect.value));
 
+    btnZoomIn?.addEventListener("click", () => setZoom(zoom + 0.35));
+    btnZoomOut?.addEventListener("click", () => setZoom(zoom - 0.35));
+    btnZoomReset?.addEventListener("click", () => setZoom(1));
+
+    // drag pan when zoomed
+    let dragging = false;
+    let lastX = 0;
+    let lastY = 0;
+    mapViewport?.addEventListener("pointerdown", (e) => {
+      if (zoom <= 1) return;
+      dragging = true;
+      lastX = e.clientX;
+      lastY = e.clientY;
+      mapViewport.setPointerCapture(e.pointerId);
+    });
+    mapViewport?.addEventListener("pointermove", (e) => {
+      if (!dragging) return;
+      panX += e.clientX - lastX;
+      panY += e.clientY - lastY;
+      lastX = e.clientX;
+      lastY = e.clientY;
+      applyMapTransform();
+    });
+    mapViewport?.addEventListener("pointerup", () => {
+      dragging = false;
+    });
+    mapViewport?.addEventListener(
+      "wheel",
+      (e) => {
+        e.preventDefault();
+        setZoom(zoom + (e.deltaY < 0 ? 0.15 : -0.15));
+      },
+      { passive: false }
+    );
+
     try {
-      const res = await fetch("/field-pack/img/usa-map.svg?v=4");
+      const res = await fetch("/field-pack/img/usa-map.svg?v=5");
       const svgText = await res.text();
       mapHost.innerHTML = svgText;
-      const svg = mapHost.querySelector("svg");
-      if (svg) {
-        svg.removeAttribute("width");
-        svg.removeAttribute("height");
-        svg.setAttribute("class", "usa-real-map");
-        wirePins(svg);
+      svgEl = mapHost.querySelector("svg");
+      if (svgEl) {
+        svgEl.removeAttribute("width");
+        svgEl.removeAttribute("height");
+        svgEl.setAttribute("class", "usa-real-map");
+        svgEl.style.transition = "transform 0.15s ease";
+        const NS = "http://www.w3.org/2000/svg";
+        pinsLayer = document.createElementNS(NS, "g");
+        pinsLayer.setAttribute("id", "venue-pins-layer");
+        svgEl.appendChild(pinsLayer);
       }
     } catch (err) {
-      mapHost.innerHTML = `<p class="map-loading">Map failed to load — use the city and venue menus.</p>`;
+      mapHost.innerHTML = `<p class="map-loading">Map unavailable — use the menus.</p>`;
       console.error(err);
     }
 
-    setCity("all");
+    fillLocationSelect();
+    fillVenueSelect();
+    renderPins();
+    showOverview();
+    scopeTop?.classList.add("active");
   }
 
   boot();

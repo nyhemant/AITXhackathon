@@ -754,3 +754,97 @@
   position: sticky;
   top: 8px;
 }
+
+/* Map scope + zoom */
+.scope-toggle {
+  display: inline-flex;
+  gap: 0;
+  margin: 0 0 14px;
+  padding: 4px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.85);
+  border: 2px solid rgba(15, 92, 92, 0.16);
+}
+.scope-btn {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-weight: 850;
+  font-size: 0.9rem;
+  padding: 8px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  color: #3d4f6f;
+}
+.scope-btn.active,
+.scope-btn[aria-pressed="true"] {
+  background: #0f5c5c;
+  color: #fff;
+}
+.map-canvas-wrap {
+  position: relative;
+}
+.map-viewport {
+  overflow: hidden;
+  border-radius: 18px;
+  touch-action: none;
+  cursor: grab;
+  min-height: 280px;
+}
+.map-viewport:active {
+  cursor: grabbing;
+}
+.map-zoom-bar {
+  position: absolute;
+  z-index: 5;
+  top: 14px;
+  left: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.zoom-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  border: 2px solid rgba(15, 92, 92, 0.25);
+  background: rgba(255,255,255,0.95);
+  font-size: 1.2rem;
+  font-weight: 900;
+  cursor: pointer;
+  color: #0a4545;
+  line-height: 1;
+}
+.zoom-btn:hover {
+  border-color: #0f5c5c;
+  background: #e8f6f0;
+}
+.venue-pin .vpin-core {
+  fill: #ff8a3d;
+  stroke: #0a4545;
+  stroke-width: 1.5;
+}
+.venue-pin .vpin-halo {
+  fill: rgba(255, 138, 61, 0.25);
+  opacity: 0;
+}
+.venue-pin:hover .vpin-halo,
+.venue-pin.selected .vpin-halo,
+.venue-pin:focus-visible .vpin-halo {
+  opacity: 1;
+}
+.venue-pin .vpin-label {
+  font-family: system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  fill: #0a4545;
+  paint-order: stroke;
+  stroke: rgba(255,255,255,0.92);
+  stroke-width: 3px;
+  pointer-events: none;
+}
+.venue-pin.selected .vpin-core {
+  fill: #d9652e;
+  stroke-width: 2.5;
+}
