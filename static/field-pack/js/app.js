@@ -584,6 +584,15 @@
     buildTreasureSheet(venue, trip);
     els.printSheet.innerHTML = "";
     document.body.classList.add("printing-treasure");
+    // Core conversion: printable kid list + treasure hunt produced
+    const track = (window.OneLessAnalytics && window.OneLessAnalytics.track) || window.trackEvent;
+    if (typeof track === "function") {
+      track("hunt_generated", {
+        venue_slug: venue.id || selectedVenueId,
+        venue_name: venue.name || "",
+        product: "babys_day_out",
+      });
+    }
     const cleanup = () => {
       document.body.classList.remove("printing-treasure");
       window.removeEventListener("afterprint", cleanup);

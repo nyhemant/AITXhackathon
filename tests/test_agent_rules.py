@@ -1,4 +1,5 @@
 from datetime import datetime
+from pathlib import Path
 import json
 import subprocess
 import sys
@@ -387,8 +388,12 @@ class WebApiScenarioTest(unittest.TestCase):
         default_html = _html_for_request(None)
         opted_out_html = _html_for_request("one_less_analytics=off")
 
-        self.assertIn("G-X6V6PNY9ZV", default_html)
-        self.assertNotIn("G-X6V6PNY9ZV", opted_out_html)
+        # GA4 loads from shared shell.js; dinner only injects opt-out flag when cookie=off
+        self.assertNotIn("googletagmanager.com/gtag/js", default_html)
+        self.assertNotIn("__1LESS_ANALYTICS_OFF__", default_html)
+        self.assertIn("__1LESS_ANALYTICS_OFF__", opted_out_html)
+        self.assertNotIn("googletagmanager.com/gtag/js", opted_out_html)
+        self.assertIn("/shell/shell.js", default_html)
         self.assertIn("One less thing on your plate.", opted_out_html)
 
     def test_analytics_cookie_scope_covers_1less_www(self):
@@ -526,11 +531,16 @@ class WebApiScenarioTest(unittest.TestCase):
         default_html = _html_for_request(None)
         opted_out_html = _html_for_request("one_less_analytics=off")
         self.assertIn('<body data-mode="dinner">', HTML)
-        self.assertIn('https://www.googletagmanager.com/gtag/js?id=G-X6V6PNY9ZV', default_html)
-        self.assertIn("gtag('config', 'G-X6V6PNY9ZV');", default_html)
-        self.assertNotIn('https://www.googletagmanager.com/gtag/js?id=G-X6V6PNY9ZV', opted_out_html)
-        self.assertNotIn("gtag('config', 'G-X6V6PNY9ZV');", opted_out_html)
+        # Site-wide GA4 is in shell.js (not duplicated in dinner <head>)
+        self.assertNotIn("googletagmanager.com/gtag/js", default_html)
+        self.assertIn("/shell/shell.js", default_html)
+        self.assertIn("__1LESS_ANALYTICS_OFF__", opted_out_html)
+        self.assertNotIn("googletagmanager.com/gtag/js", opted_out_html)
         self.assertIn("https://www.google-analytics.com", SECURITY_HEADERS["Content-Security-Policy"])
+        shell_js = (Path(__file__).resolve().parents[1] / "static" / "shell" / "shell.js").read_text(encoding="utf-8")
+        self.assertIn("G-X6V6PNY9ZV", shell_js)
+        self.assertIn("hashchange", shell_js)
+        self.assertIn("hunt_generated", (Path(__file__).resolve().parents[1] / "static" / "field-pack" / "js" / "app.js").read_text(encoding="utf-8"))
         self.assertIn("document.body.dataset.mode = activeMode", HTML)
         self.assertIn("mode: activeMode", HTML)
         self.assertNotIn('id="promptButton"', HTML)
