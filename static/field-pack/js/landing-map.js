@@ -183,8 +183,8 @@
       const topN = allPlaces.filter((p) => TOP_IDS.has(p.id) || p.tier === "top").length;
       mapCount.textContent =
         mapScope === "top"
-          ? `Showing Top ${topN} tourist magnets`
-          : `Showing all ${allPlaces.length} places` + (selectedState ? ` · ${selectedState}` : "");
+          ? `Top ${topN}`
+          : `${allPlaces.length} places` + (selectedState ? ` · ${selectedState}` : "");
     }
   }
 
@@ -473,7 +473,7 @@
         <button type="button" class="pd-clear" id="pd-clear-selection" aria-label="Clear">×</button>
       </div>
       <p class="pd-meta">${places.length} venues share this spot on the map</p>
-      <p class="pd-blurb">Dots overlap in dense cities — choose the place you want:</p>
+      <p class="pd-blurb">Pick one:</p>
       <div class="nearby-list" role="listbox" aria-label="Nearby venues">
         ${places
           .map(
@@ -507,15 +507,10 @@
     const list = filteredPlaces();
     detail.className = "pin-detail";
     detail.innerHTML = `
-      <p class="pin-detail-kicker">${mapScope === "top" ? "Top list" : "More places"}</p>
-      <h3>🗺️ ${list.length} places</h3>
-      <p class="pd-meta">${
-        mapScope === "top"
-          ? "Tourist magnets covering most US family trips."
-          : "Expanded list — filter by state to unclutter."
-      }</p>
-      <p class="pd-blurb"><strong>Stacked dots</strong> show a number — click for a list of nearby places (e.g. Dallas Zoo vs Fort Worth Zoo).</p>
-      <p class="pd-blurb"><strong>Hover</strong> name · <strong>click</strong> select · <strong>double-click</strong> zoom. + / − also zoom.</p>
+      <p class="pin-detail-kicker">${mapScope === "top" ? "Top spots" : "All places"}</p>
+      <h3>🗺️ ${list.length} on map</h3>
+      <p class="pd-blurb">Tap a pin. <strong>Numbered pins</strong> = several nearby — pick from the list.</p>
+      <p class="pd-blurb">Hover name · click go · double-click zoom.</p>
     `;
   }
 
@@ -543,7 +538,7 @@
         <a class="btn btn-primary" href="${p.appHref || "#"}">Start outing →</a>
         <a class="btn btn-secondary" href="${p.href || "#"}">Place info</a>
       </div>
-      <p class="pd-blurb" style="margin-top:10px;font-size:0.88rem">Double-click the pin to zoom · × clears the name.</p>
+      
     `;
     detail.querySelector("#pd-clear-selection")?.addEventListener("click", () => setVenue(""));
   }

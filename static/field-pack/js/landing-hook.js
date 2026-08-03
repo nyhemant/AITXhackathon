@@ -20,36 +20,40 @@
       .replace(/"/g, "&quot;");
   }
 
-  if (grid) {
+  // Keep static HTML if present; only rebuild if empty
+  if (grid && !grid.children.length) {
     grid.innerHTML = READY.map((p) => {
       const href = p.appHref || p.href;
+      const short =
+        p.id === "childrens-aquarium-dallas"
+          ? "Children’s Aquarium"
+          : p.id === "childrens-museum-perot"
+            ? "Children’s Museum"
+            : p.name;
       return `<a class="ready-card" href="${escapeHtml(href)}">
         <span class="rc-emoji" aria-hidden="true">${escapeHtml(p.emoji || "")}</span>
-        <h3>${escapeHtml(p.name)}</h3>
-        <p>${escapeHtml(p.blurb || "")}</p>
-        <span class="rc-cta">Start outing →</span>
+        <h3>${escapeHtml(short)}</h3>
+        <span class="rc-cta">Start →</span>
       </a>`;
     }).join("");
   }
 
-  // City chips: highlight ready cities first
   const chipDefs = [
-    { id: "dallas", label: "Dallas area", ready: true },
-    { id: "austin", label: "Austin", ready: true },
-    { id: "nyc", label: "New York", ready: true },
-    { id: "chicago", label: "Chicago", ready: true },
-    { id: "la", label: "Los Angeles", ready: true },
-    { id: "san-diego", label: "San Diego", ready: true },
+    { id: "dallas", label: "Dallas" },
+    { id: "nyc", label: "NYC" },
+    { id: "chicago", label: "Chicago" },
+    { id: "la", label: "LA" },
+    { id: "san-diego", label: "San Diego" },
+    { id: "austin", label: "Austin" },
   ];
 
   if (chips) {
     chips.innerHTML = chipDefs
       .map(
         (c) =>
-          `<button type="button" class="city-chip" data-city="${c.id}" aria-pressed="false">
-            ${escapeHtml(c.label)}
-            <span class="chip-tag">${c.ready ? "ready" : "soon"}</span>
-          </button>`
+          `<button type="button" class="city-chip" data-city="${c.id}" aria-pressed="false">${escapeHtml(
+            c.label
+          )}</button>`
       )
       .join("");
 
@@ -67,7 +71,6 @@
     });
   }
 
-  // Continue last outing — deep-link trip if possible
   try {
     const raw =
       localStorage.getItem("1less-babys-day-out-trips-v1") ||
@@ -85,15 +88,14 @@
         continueChip.hidden = false;
         continueChip.removeAttribute("hidden");
         continueChip.style.display = "block";
-        continueChip.innerHTML = `Continue <strong>${escapeHtml(label)}</strong> →
-          <a href="${href}">Open outing</a>`;
+        continueChip.innerHTML = `Continue <strong>${escapeHtml(label)}</strong> ·
+          <a href="${href}">Open</a>`;
       }
     }
   } catch {
     /* ignore */
   }
 
-  // Waiting-on cities
   function renderWaiting() {
     const el = document.getElementById("waiting-cities");
     if (!el) return;
@@ -113,7 +115,7 @@
       return opt ? opt.textContent.replace(/\s*·.*$/, "").trim() : id;
     });
     el.hidden = false;
-    el.innerHTML = `You’re waiting on: <strong>${labels.map(escapeHtml).join(", ")}</strong>`;
+    el.innerHTML = `Waiting on: <strong>${labels.map(escapeHtml).join(", ")}</strong>`;
   }
   renderWaiting();
   window.addEventListener("1less-cities-saved", renderWaiting);
