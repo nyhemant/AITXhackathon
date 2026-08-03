@@ -12,7 +12,7 @@
     <base href="/field-pack/" />
     <link rel="stylesheet" href="/shell/shell.css?v=3" />
     <link rel="stylesheet" href="/field-pack/css/styles.css?v=13" />
-    <link rel="stylesheet" href="/field-pack/css/landing.css?v=15" />
+    <link rel="stylesheet" href="/field-pack/css/landing.css?v=17" />
   </head>
   <body class="landing-body">
     <div class="app landing-app">
@@ -58,14 +58,14 @@
         </div>
         <div class="landing-hero-badge" aria-hidden="true">
           <div class="badge-orb">🗺️</div>
-          <p>Home base: Dallas<br /><span>Nationwide packs on the map</span></p>
+          <p>Top ~20 on the map<br /><span>More by state anytime</span></p>
         </div>
       </header>
 
       <section class="ready-now" id="ready-now" aria-labelledby="ready-heading">
         <h2 id="ready-heading">Ready to play now</h2>
         <p class="ready-lead">
-          Dallas picks below. Any city on the map: shortlist + print hunt (Q&amp;A optional).
+          Dallas starters below. Map default = Top tourist magnets; More = 70+ places by state.
         </p>
         <div class="ready-grid" id="ready-grid">
           <a class="ready-card" href="/field-pack/app.html#/venue/dallas-zoo">
@@ -91,18 +91,23 @@
 
       <section class="map-section" id="us-map" aria-labelledby="map-heading">
         <div class="map-section-head">
-          <h2 id="map-heading">Find your city</h2>
-          <p>
-            Choose a city, then a place.
-            <span class="legend-dot ready"></span> Ready &nbsp;
-            <span class="legend-dot soon"></span> Coming soon
-          </p>
+          <h2 id="map-heading">Find a place</h2>
+          <p id="map-count">Showing Top tourist magnets</p>
         </div>
 
-        <div class="dual-selects" role="group" aria-label="City and venue filters">
-          <label class="select-field">
-            <span class="select-label">City</span>
-            <select id="city-select" class="landing-select" aria-label="Choose city"></select>
+        <div class="scope-toggle" role="group" aria-label="Map list size">
+          <button type="button" id="scope-top" class="scope-btn active" aria-pressed="true">Top ~20</button>
+          <button type="button" id="scope-more" class="scope-btn" aria-pressed="false">More (by state)</button>
+        </div>
+
+        <div class="dual-selects" role="group" aria-label="Location and venue filters">
+          <label class="select-field" id="metro-field">
+            <span class="select-label">Area</span>
+            <select id="city-select" class="landing-select" aria-label="Choose metro area"></select>
+          </label>
+          <label class="select-field" id="state-field" hidden>
+            <span class="select-label">State</span>
+            <select id="state-select" class="landing-select" aria-label="Filter by state"></select>
           </label>
           <label class="select-field">
             <span class="select-label">Venue</span>
@@ -110,18 +115,28 @@
           </label>
         </div>
         <p class="select-hint">
-          <strong>Dallas area</strong> includes nearby Fort Worth Zoo. Other cities show on the map as we add packs.
+          <strong>Top ~20</strong> = places most US family tourists hit.
+          <strong>More</strong> = full list, filter by state, zoom the map.
         </p>
 
         <div class="map-shell">
-          <div class="map-canvas-wrap" id="map-host" aria-label="United States map">
-            <p class="map-loading">Loading map…</p>
+          <div class="map-canvas-wrap">
+            <div class="map-zoom-bar no-print" role="toolbar" aria-label="Map zoom">
+              <button type="button" id="map-zoom-in" class="zoom-btn" title="Zoom in">+</button>
+              <button type="button" id="map-zoom-out" class="zoom-btn" title="Zoom out">−</button>
+              <button type="button" id="map-zoom-reset" class="zoom-btn" title="Reset">⟲</button>
+            </div>
+            <div id="map-viewport" class="map-viewport">
+              <div id="map-host" aria-label="United States map">
+                <p class="map-loading">Loading map…</p>
+              </div>
+            </div>
           </div>
           <aside class="map-side" aria-live="polite">
             <div id="pin-detail" class="pin-detail empty">
               <p class="pin-detail-kicker">Your pick</p>
-              <h3>Choose a city or venue</h3>
-              <p>Start with a city chip above, the menus, or a map pin.</p>
+              <h3>Choose a venue</h3>
+              <p>Use Top ~20 or More, then pick from the list or tap a pin.</p>
             </div>
           </aside>
         </div>
@@ -148,8 +163,8 @@
     </div>
 
     <script src="/shell/shell.js?v=1"></script>
-    <script src="/field-pack/js/places-data.js?v=9"></script>
-    <script src="/field-pack/js/landing-map.js?v=10"></script>
+    <script src="/field-pack/js/places-data.js?v=11"></script>
+    <script src="/field-pack/js/landing-map.js?v=12"></script>
     <script src="/field-pack/js/landing-hook.js?v=5"></script>
   </body>
 </html>
