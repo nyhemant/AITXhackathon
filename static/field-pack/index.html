@@ -12,7 +12,7 @@
     <base href="/field-pack/" />
     <link rel="stylesheet" href="/shell/shell.css?v=3" />
     <link rel="stylesheet" href="/field-pack/css/styles.css?v=13" />
-    <link rel="stylesheet" href="/field-pack/css/landing.css?v=17" />
+    <link rel="stylesheet" href="/field-pack/css/landing.css?v=18" />
   </head>
   <body class="landing-body">
     <div class="app landing-app">
@@ -95,11 +95,6 @@
           <p id="map-count">Showing Top tourist magnets</p>
         </div>
 
-        <div class="scope-toggle" role="group" aria-label="Map list size">
-          <button type="button" id="scope-top" class="scope-btn active" aria-pressed="true">Top ~20</button>
-          <button type="button" id="scope-more" class="scope-btn" aria-pressed="false">More (by state)</button>
-        </div>
-
         <div class="dual-selects" role="group" aria-label="Location and venue filters">
           <label class="select-field" id="metro-field">
             <span class="select-label">Area</span>
@@ -115,16 +110,21 @@
           </label>
         </div>
         <p class="select-hint">
-          <strong>Top ~20</strong> = places most US family tourists hit.
-          <strong>More</strong> = full list, filter by state, zoom the map.
+          On the map: <strong>Top ~20</strong> or <strong>More</strong> (top-left). Zoom if pins overlap.
         </p>
 
         <div class="map-shell">
           <div class="map-canvas-wrap">
-            <div class="map-zoom-bar no-print" role="toolbar" aria-label="Map zoom">
-              <button type="button" id="map-zoom-in" class="zoom-btn" title="Zoom in">+</button>
-              <button type="button" id="map-zoom-out" class="zoom-btn" title="Zoom out">−</button>
-              <button type="button" id="map-zoom-reset" class="zoom-btn" title="Reset">⟲</button>
+            <div class="map-overlay-tl no-print">
+              <div class="scope-toggle" role="group" aria-label="Map list size">
+                <button type="button" id="scope-top" class="scope-btn active" aria-pressed="true">Top ~20</button>
+                <button type="button" id="scope-more" class="scope-btn" aria-pressed="false">More</button>
+              </div>
+              <div class="map-zoom-bar" role="toolbar" aria-label="Map zoom">
+                <button type="button" id="map-zoom-in" class="zoom-btn" title="Zoom in">+</button>
+                <button type="button" id="map-zoom-out" class="zoom-btn" title="Zoom out">−</button>
+                <button type="button" id="map-zoom-reset" class="zoom-btn" title="Reset">⟲</button>
+              </div>
             </div>
             <div id="map-viewport" class="map-viewport">
               <div id="map-host" aria-label="United States map">

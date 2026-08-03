@@ -755,15 +755,33 @@
   top: 8px;
 }
 
-/* Map scope + zoom */
+/* Map scope + zoom — overlay top-left on the map */
+.map-canvas-wrap {
+  position: relative;
+}
+.map-overlay-tl {
+  position: absolute;
+  z-index: 6;
+  top: 12px;
+  left: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  pointer-events: none;
+}
+.map-overlay-tl > * {
+  pointer-events: auto;
+}
 .scope-toggle {
   display: inline-flex;
   gap: 0;
-  margin: 0 0 14px;
-  padding: 4px;
+  margin: 0;
+  padding: 3px;
   border-radius: 999px;
-  background: rgba(255,255,255,0.85);
-  border: 2px solid rgba(15, 92, 92, 0.16);
+  background: rgba(255, 255, 255, 0.96);
+  border: 2px solid rgba(15, 92, 92, 0.2);
+  box-shadow: 0 6px 16px rgba(21, 34, 56, 0.12);
 }
 .scope-btn {
   appearance: none;
@@ -771,19 +789,17 @@
   background: transparent;
   font: inherit;
   font-weight: 850;
-  font-size: 0.9rem;
-  padding: 8px 16px;
+  font-size: 0.82rem;
+  padding: 7px 12px;
   border-radius: 999px;
   cursor: pointer;
   color: #3d4f6f;
+  white-space: nowrap;
 }
 .scope-btn.active,
 .scope-btn[aria-pressed="true"] {
   background: #0f5c5c;
   color: #fff;
-}
-.map-canvas-wrap {
-  position: relative;
 }
 .map-viewport {
   overflow: hidden;
@@ -796,10 +812,6 @@
   cursor: grabbing;
 }
 .map-zoom-bar {
-  position: absolute;
-  z-index: 5;
-  top: 14px;
-  left: 14px;
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -809,16 +821,27 @@
   height: 36px;
   border-radius: 10px;
   border: 2px solid rgba(15, 92, 92, 0.25);
-  background: rgba(255,255,255,0.95);
+  background: rgba(255, 255, 255, 0.96);
   font-size: 1.2rem;
   font-weight: 900;
   cursor: pointer;
   color: #0a4545;
   line-height: 1;
+  box-shadow: 0 4px 12px rgba(21, 34, 56, 0.1);
 }
 .zoom-btn:hover {
   border-color: #0f5c5c;
   background: #e8f6f0;
+}
+@media (max-width: 520px) {
+  .scope-btn {
+    font-size: 0.75rem;
+    padding: 6px 10px;
+  }
+  .map-overlay-tl {
+    top: 8px;
+    left: 8px;
+  }
 }
 .venue-pin .vpin-core {
   fill: #ff8a3d;
