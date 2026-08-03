@@ -504,7 +504,6 @@
   }
 
   function showOverview() {
- {
     const list = filteredPlaces();
     detail.className = "pin-detail";
     detail.innerHTML = `
@@ -515,8 +514,8 @@
           ? "Tourist magnets covering most US family trips."
           : "Expanded list — filter by state to unclutter."
       }</p>
-      <p class="pd-blurb"><strong>Hover</strong> a pin for its name. <strong>Click</strong> to select (details here). <strong>Double-click</strong> to zoom there.</p>
-      <p class="pd-blurb">Or use the venue menu. + / − zoom (no drag).</p>
+      <p class="pd-blurb"><strong>Stacked dots</strong> show a number — click for a list of nearby places (e.g. Dallas Zoo vs Fort Worth Zoo).</p>
+      <p class="pd-blurb"><strong>Hover</strong> name · <strong>click</strong> select · <strong>double-click</strong> zoom. + / − also zoom.</p>
     `;
   }
 
