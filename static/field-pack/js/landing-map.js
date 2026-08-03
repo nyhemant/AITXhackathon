@@ -160,42 +160,35 @@
   }
 
   /**
-   * Populate Area (Popular) + State filters.
-   * State is always populated from FP_PLACES; hidden only when no state data exists.
-   * Popular: show Area (metros). All places: hide Area (state is the location filter).
+   * Populate Metroarea + State filters.
+   * Both stay in the layout always (plus fixed Place column) so selecting State
+   * never shifts the Place dropdown. When a state is chosen, metro is disabled
+   * but still occupies its slot; clearing state re-enables metro.
    */
   function fillLocationSelect() {
     if (!citySelect) return;
 
     const states = fillStateSelectOptions();
 
-    // Never show an empty state control
+    // Never show an empty state control; never hide metro (layout must stay fixed)
     if (stateField) {
       stateField.hidden = states.length === 0;
     }
     if (!states.length) {
       selectedState = "";
     }
+    if (metroField) metroField.hidden = false;
 
-    if (mapScope === "top") {
-      // Popular: metro Area picker
-      clearSelect(citySelect);
-      for (const m of METRO_DEFS) {
-        const opt = document.createElement("option");
-        opt.value = m.id;
-        opt.textContent = m.id === "all" ? m.label : `${m.symbols} ${m.label}`;
-        citySelect.appendChild(opt);
-      }
-      citySelect.disabled = false;
-      citySelect.value = selectedMetroId || "all";
-      if (metroField) metroField.hidden = false;
-      return;
-    }
-
-    // All places: State filter is primary; hide metro Area
-    if (metroField) metroField.hidden = true;
     clearSelect(citySelect);
-    citySelect.disabled = true;
+    for (const m of METRO_DEFS) {
+      const opt = document.createElement("option");
+      opt.value = m.id;
+      opt.textContent = m.id === "all" ? m.label : `${m.symbols} ${m.label}`;
+      citySelect.appendChild(opt);
+    }
+    citySelect.value = selectedMetroId || "all";
+    // State selection wins: keep metro visible but inactive so Place stays put
+    citySelect.disabled = Boolean(selectedState);
   }
 
   function fillVenueSelect() {
@@ -656,20 +649,31 @@
     if (scopeTop) scopeTop.addEventListener("click", () => setScope("top"));
     if (scopeMore) scopeMore.addEventListener("click", () => setScope("more"));
     citySelect.addEventListener("change", () => {
-      if (mapScope === "top") {
-        selectedMetroId = citySelect.value || "all";
-        selectedVenueId = "";
-        fillVenueSelect();
-        renderPins();
-        showOverview();
+      selectedMetroId = citySelect.value || "all";
+      selectedVenueId = "";
+      // Metro and State are alternatives — picking a metro clears state
+      if (selectedMetroId && selectedMetroId !== "all" && selectedState) {
+        selectedState = "";
+        if (stateSelect) stateSelect.value = "";
       }
+      if (selectedMetroId && selectedMetroId !== "all") {
+        // Metro filter uses Popular-style metro defs; stay on top unless All places
+        // already active with no state
+      }
+      fillLocationSelect();
+      fillVenueSelect();
+      renderPins();
+      showOverview();
     });
     if (stateSelect) {
       stateSelect.addEventListener("change", () => {
         selectedState = (stateSelect.value || "").trim();
         selectedVenueId = "";
         // Picking a state always means full catalog for that state (not Popular top-N)
-        if (selectedState) ensureAllPlacesScope();
+        if (selectedState) {
+          selectedMetroId = "all";
+          ensureAllPlacesScope();
+        }
         fillLocationSelect();
         fillVenueSelect();
         renderPins();

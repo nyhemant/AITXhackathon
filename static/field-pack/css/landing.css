@@ -79,12 +79,32 @@
   font-size: 0.95rem;
 }
 
-/* Dual dropdowns */
+/* Filters: Metroarea | OR | State | Place — fixed columns so Place never jumps */
 .dual-selects {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 0.85fr) minmax(0, 1.35fr);
+  gap: 12px 10px;
   margin: 0 0 8px;
+  align-items: end;
+}
+
+.filter-or {
+  display: grid;
+  place-items: center;
+  align-self: end;
+  min-height: 46px;
+  padding: 0 2px 0;
+  margin-bottom: 1px;
+  font-size: 0.72rem;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted-soft, #5a6b82);
+  user-select: none;
+}
+
+.select-field-place {
+  min-width: 0;
 }
 
 .select-field {
@@ -600,9 +620,20 @@
 @media (max-width: 900px) {
   .landing-hero,
   .map-shell,
-  .promise-grid,
-  .dual-selects {
+  .promise-grid {
     grid-template-columns: 1fr;
+  }
+
+  .dual-selects {
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  }
+
+  .dual-selects .select-field-place {
+    grid-column: 1 / -1;
+  }
+
+  .filter-or {
+    min-height: 44px;
   }
 
   .landing-hero-badge {
@@ -798,7 +829,12 @@
   }
   .landing-hero-badge { display: none; }
   .landing-hero h1 { max-width: none; font-size: clamp(1.65rem, 7vw, 2.2rem); }
-  .dual-selects { grid-template-columns: 1fr; }
+  .dual-selects {
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  }
+  .dual-selects .select-field-place {
+    grid-column: 1 / -1;
+  }
   .map-shell { grid-template-columns: 1fr; }
   .ready-grid { grid-template-columns: 1fr; }
   .city-chips { gap: 6px; }
@@ -1394,7 +1430,7 @@
 }
 .dual-selects-tight {
   margin: 0;
-  gap: 10px;
+  gap: 8px 10px;
 }
 .dual-selects-tight .landing-select {
   min-height: 44px;
@@ -1403,6 +1439,10 @@
 }
 .dual-selects-tight .select-label {
   font-size: 0.72rem;
+}
+.dual-selects-tight .filter-or {
+  min-height: 44px;
+  font-size: 0.68rem;
 }
 .map-count-quiet {
   margin: 0 !important;
