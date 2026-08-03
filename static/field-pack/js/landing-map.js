@@ -244,7 +244,15 @@
 
     for (const p of list) {
       if (p.lat == null || p.lon == null) continue;
+      // Skip clearly non-continental / bad coords (e.g. south of US)
+      if (p.lat < 24.2 || p.lat > 49.5) {
+        if (!(p.lat >= 18.5 && p.lat <= 22.8 && p.lon < -154)) continue; // allow HI
+      }
+      if (p.lon > -66 || p.lon < -125) {
+        if (!(p.lon < -154)) continue; // allow HI only west of -125 besides AK
+      }
       const { x, y } = window.fpProjectUS(p.lat, p.lon, w, h);
+      if (x < 25 || x > 940 || y < 50 || y > 560) continue;
       const selected = p.id === selectedVenueId;
       const g = document.createElementNS(NS, "g");
       g.setAttribute("class", "venue-pin" + (selected ? " selected" : ""));

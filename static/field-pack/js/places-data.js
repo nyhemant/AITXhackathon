@@ -1192,21 +1192,101 @@ window.FP_PLACES = [
 
 window.FP_TOP_PLACE_IDS = ["dallas-zoo", "childrens-aquarium-dallas", "childrens-museum-perot", "fort-worth-zoo", "houston-zoo", "san-diego-zoo", "san-diego-safari-park", "la-zoo", "aquarium-of-the-pacific", "california-science-center", "monterey-bay-aquarium", "cal-academy", "shedd-aquarium", "field-museum", "georgia-aquarium", "national-zoo", "amnh", "bronx-zoo", "kennedy-space-center", "new-england-aquarium"];
 
-/** Rough equirectangular project for lower 48 → viewBox */
-window.fpProjectUS = function fpProjectUS(lat, lon, width, height) {
-  const padX = 36;
-  const padY = 48;
-  const lon0 = -124.8;
-  const lon1 = -66.9;
-  const lat0 = 24.5;
-  const lat1 = 49.4;
-  // Hawaii / Alaska rough tuck
-  let la = lat, lo = lon;
-  if (lon < -130) { // HI / Pacific
-    lo = -108 + (lon + 160) * 0.15;
-    la = 27 + (lat - 20) * 0.3;
+/**
+ * Project lat/lon onto THIS usa-map.svg (viewBox 0 0 959 593).
+ * The state paths are not equirectangular — we IDW-interpolate from
+ * hand-placed city anchors so pins sit on land correctly.
+ */
+window.fpProjectUS = function fpProjectUS(lat, lon /*, width, height ignored */) {
+  // Hawaii inset (bottom-left of this artwork)
+  if (lon < -140 || (lat >= 18.5 && lat <= 22.8 && lon < -154)) {
+    const x = 88 + (lon + 158) * 11;
+    const y = 505 + (21.6 - lat) * 16;
+    return { x: Math.max(40, Math.min(200, x)), y: Math.max(470, Math.min(560, y)) };
   }
-  const x = padX + ((lo - lon0) / (lon1 - lon0)) * (width - padX * 2);
-  const y = padY + ((lat1 - la) / (lat1 - lat0)) * (height - padY * 2 - 20);
+
+  // [lat, lon, svgX, svgY] — matched to city-pin translates in usa-map.svg
+  const anchors = [
+    [32.78, -96.80, 480, 400], // Dallas
+    [30.27, -97.74, 470, 430], // Austin
+    [29.42, -98.49, 455, 445], // San Antonio
+    [29.76, -95.37, 505, 435], // Houston
+    [32.72, -117.16, 95, 390], // San Diego
+    [34.05, -118.24, 85, 360], // LA
+    [36.60, -121.89, 55, 320], // Monterey
+    [37.77, -122.42, 48, 290], // SF
+    [47.61, -122.33, 55, 175], // Seattle
+    [45.52, -122.68, 52, 200], // Portland
+    [39.74, -104.99, 340, 280], // Denver
+    [33.45, -112.07, 180, 370], // Phoenix
+    [35.08, -106.65, 260, 350], // Albuquerque
+    [40.75, -111.89, 250, 250], // Salt Lake
+    [41.88, -87.63, 620, 240], // Chicago
+    [39.77, -86.16, 650, 280], // Indy
+    [38.63, -90.20, 560, 310], // St Louis
+    [39.10, -94.58, 500, 290], // Kansas City
+    [41.26, -95.93, 500, 250], // Omaha
+    [44.98, -93.27, 560, 180], // Minneapolis
+    [33.75, -84.39, 700, 380], // Atlanta
+    [35.15, -90.05, 610, 370], // Memphis
+    [36.16, -86.78, 660, 350], // Nashville
+    [29.95, -90.07, 580, 440], // New Orleans
+    [25.76, -80.19, 770, 500], // Miami
+    [27.95, -82.46, 740, 470], // Tampa
+    [28.54, -81.38, 750, 455], // Orlando area
+    [28.54, -80.65, 780, 450], // KSC / Florida east
+    [38.91, -77.04, 820, 290], // DC
+    [39.29, -76.61, 830, 270], // Baltimore
+    [39.95, -75.17, 850, 260], // Philadelphia
+    [40.44, -80.00, 740, 250], // Pittsburgh
+    [42.36, -71.06, 900, 210], // Boston
+    [40.71, -74.01, 870, 230], // NYC
+    [42.33, -83.05, 680, 210], // Detroit
+    [43.04, -87.91, 620, 200], // Milwaukee
+    [39.10, -84.51, 680, 300], // Cincinnati
+    [39.96, -83.00, 690, 290], // Columbus
+    [41.50, -81.69, 710, 230], // Cleveland
+    [35.23, -80.84, 750, 360], // Charlotte
+    [35.78, -78.64, 780, 350], // Raleigh
+    [36.85, -75.98, 820, 340], // Virginia Beach
+    [21.31, -157.86, 100, 510], // Honolulu (also handled above)
+  ];
+
+  // Degree-space distance (lon scaled ~ cos mid-lat)
+  const cos = Math.cos((lat * Math.PI) / 180);
+  let wSum = 0;
+  let xSum = 0;
+  let ySum = 0;
+  let bestD = Infinity;
+  let best = anchors[0];
+
+  for (let i = 0; i < anchors.length; i++) {
+    const a = anchors[i];
+    const dLat = lat - a[0];
+    const dLon = (lon - a[1]) * cos;
+    const d2 = dLat * dLat + dLon * dLon;
+    if (d2 < bestD) {
+      bestD = d2;
+      best = a;
+    }
+    // power 2 IDW; tiny epsilon
+    const w = 1 / Math.max(d2, 1e-6);
+    wSum += w;
+    xSum += w * a[2];
+    ySum += w * a[3];
+  }
+
+  // If extremely close to an anchor, snap
+  if (bestD < 0.0004) {
+    return { x: best[2], y: best[3] };
+  }
+
+  let x = xSum / wSum;
+  let y = ySum / wSum;
+
+  // Soft clamp to continental map (avoid Mexico / ocean ghosts)
+  x = Math.max(30, Math.min(930, x));
+  y = Math.max(55, Math.min(555, y));
   return { x, y };
 };
+
