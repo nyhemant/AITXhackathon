@@ -944,3 +944,66 @@
   border-color: #c2410c;
   color: #c2410c;
 }
+
+.venue-pin.is-cluster .vpin-core {
+  fill: #0f5c5c;
+}
+.venue-pin.is-cluster.selected .vpin-core {
+  fill: #d9652e;
+}
+.venue-pin .vpin-count {
+  font-family: system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 900;
+  fill: #fff;
+  pointer-events: none;
+}
+.nearby-list {
+  display: grid;
+  gap: 8px;
+  margin-top: 10px;
+}
+.nearby-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+  text-align: left;
+  border: 2px solid rgba(15, 92, 92, 0.16);
+  border-radius: 14px;
+  background: #fff;
+  padding: 10px 12px;
+  cursor: pointer;
+  font: inherit;
+}
+.nearby-item:hover,
+.nearby-item:focus-visible {
+  border-color: #0f5c5c;
+  background: #f0faf5;
+  outline: none;
+}
+.nearby-emoji {
+  font-size: 1.4rem;
+  line-height: 1;
+}
+.nearby-copy {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+.nearby-copy strong {
+  font-size: 0.95rem;
+  color: #0a4545;
+}
+.nearby-copy small {
+  font-size: 0.8rem;
+  font-weight: 650;
+  color: #5a6b82;
+}
+.nearby-go {
+  font-weight: 850;
+  font-size: 0.85rem;
+  color: #0f5c5c;
+  white-space: nowrap;
+}

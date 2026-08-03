@@ -37,6 +37,7 @@
   let selectedMetroId = "all";
   let selectedState = "";
   let selectedVenueId = "";
+  let clusterFocusIds = []; // nearby group open in side panel
   let zoom = 1;
   let panX = 0;
   let panY = 0;
@@ -228,60 +229,146 @@
     renderPins();
   }
 
+  function pinXY(p) {
+    if (!svgEl || p.lat == null || p.lon == null) return null;
+    const vb = svgEl.viewBox.baseVal;
+    const w = vb.width || 959;
+    const h = vb.height || 593;
+    const pt = window.fpProjectUS(p.lat, p.lon, w, h, p.state);
+    if (!pt || !Number.isFinite(pt.x) || !Number.isFinite(pt.y)) return null;
+    if (pt.x < 25 || pt.x > 940 || pt.y < 50 || pt.y > 560) return null;
+    return pt;
+  }
+
+  /** Group venues whose map dots would sit on top of each other. */
+  function buildClusters(list) {
+    const items = [];
+    for (const p of list) {
+      const xy = pinXY(p);
+      if (!xy) continue;
+      items.push({ p, x: xy.x, y: xy.y });
+    }
+    // ~28px in SVG space; slightly tighter when zoomed in
+    const thresh = zoom >= 2 ? 14 : zoom >= 1.4 ? 20 : 28;
+    const used = new Array(items.length).fill(false);
+    const clusters = [];
+    for (let i = 0; i < items.length; i++) {
+      if (used[i]) continue;
+      const group = [items[i]];
+      used[i] = true;
+      for (let j = i + 1; j < items.length; j++) {
+        if (used[j]) continue;
+        const dx = items[i].x - items[j].x;
+        const dy = items[i].y - items[j].y;
+        if (dx * dx + dy * dy <= thresh * thresh) {
+          used[j] = true;
+          group.push(items[j]);
+        }
+      }
+      // also merge if any member close to group centroid iteratively
+      let changed = true;
+      while (changed) {
+        changed = false;
+        const cx = group.reduce((s, g) => s + g.x, 0) / group.length;
+        const cy = group.reduce((s, g) => s + g.y, 0) / group.length;
+        for (let j = 0; j < items.length; j++) {
+          if (used[j]) continue;
+          const dx = cx - items[j].x;
+          const dy = cy - items[j].y;
+          if (dx * dx + dy * dy <= thresh * thresh) {
+            used[j] = true;
+            group.push(items[j]);
+            changed = true;
+          }
+        }
+      }
+      const cx = group.reduce((s, g) => s + g.x, 0) / group.length;
+      const cy = group.reduce((s, g) => s + g.y, 0) / group.length;
+      const places = group.map((g) => g.p).sort((a, b) => a.name.localeCompare(b.name));
+      clusters.push({ x: cx, y: cy, places, ids: places.map((p) => p.id) });
+    }
+    return clusters;
+  }
+
   function renderPins() {
     if (!svgEl || !pinsLayer) return;
     while (pinsLayer.firstChild) pinsLayer.removeChild(pinsLayer.firstChild);
-    // hide legacy city pins when showing venue layer
     svgEl.querySelectorAll(".city-pin").forEach((el) => {
       el.style.display = "none";
     });
 
-    const vb = svgEl.viewBox.baseVal;
-    const w = vb.width || 1000;
-    const h = vb.height || 620;
     const list = filteredPlaces();
+    const clusters = buildClusters(list);
     const NS = "http://www.w3.org/2000/svg";
+    const focusSet = new Set(clusterFocusIds);
 
-    for (const p of list) {
-      if (p.lat == null || p.lon == null) continue;
-      const { x, y } = window.fpProjectUS(p.lat, p.lon, w, h, p.state);
-      if (!Number.isFinite(x) || !Number.isFinite(y)) continue;
-      if (x < 25 || x > 940 || y < 50 || y > 560) continue;
-      const selected = p.id === selectedVenueId;
+    for (const cl of clusters) {
+      const n = cl.places.length;
+      const selectedHere =
+        (selectedVenueId && cl.ids.includes(selectedVenueId)) ||
+        (focusSet.size && cl.ids.some((id) => focusSet.has(id)));
+      const x = cl.x;
+      const y = cl.y;
+
       const g = document.createElementNS(NS, "g");
-      g.setAttribute("class", "venue-pin" + (selected ? " selected" : ""));
+      g.setAttribute(
+        "class",
+        "venue-pin" +
+          (selectedHere ? " selected" : "") +
+          (n > 1 ? " is-cluster" : "")
+      );
       g.setAttribute("tabindex", "0");
       g.setAttribute("role", "button");
-      g.setAttribute("aria-label", p.name);
-      g.dataset.venueId = p.id;
+      g.setAttribute(
+        "aria-label",
+        n > 1
+          ? `${n} places near ${cl.places[0].city || "here"}`
+          : cl.places[0].name
+      );
+      g.dataset.clusterIds = cl.ids.join(",");
       g.style.cursor = "pointer";
 
       const halo = document.createElementNS(NS, "circle");
       halo.setAttribute("class", "vpin-halo");
       halo.setAttribute("cx", x);
       halo.setAttribute("cy", y);
-      halo.setAttribute("r", mapScope === "more" ? "12" : "16");
+      halo.setAttribute("r", n > 1 ? "18" : mapScope === "more" ? "12" : "16");
       g.appendChild(halo);
 
       const core = document.createElementNS(NS, "circle");
       core.setAttribute("class", "vpin-core");
       core.setAttribute("cx", x);
       core.setAttribute("cy", y);
-      core.setAttribute("r", selected ? "8" : mapScope === "more" ? "5" : "7");
+      core.setAttribute("r", n > 1 ? "11" : selectedHere ? "8" : mapScope === "more" ? "5" : "7");
       g.appendChild(core);
 
-      // Name chip: hover OR selected. Selected also gets a × to dismiss.
-      const fullName = p.name.length > 26 ? p.name.slice(0, 24) + "…" : p.name;
-      const labelText = `${p.emoji || "•"} ${fullName}`;
+      if (n > 1) {
+        const count = document.createElementNS(NS, "text");
+        count.setAttribute("class", "vpin-count");
+        count.setAttribute("x", x);
+        count.setAttribute("y", y + 4);
+        count.setAttribute("text-anchor", "middle");
+        count.textContent = String(n);
+        g.appendChild(count);
+      }
+
+      // Hover / selected name chip (single only; clusters open list in panel)
       const chip = document.createElementNS(NS, "g");
+      const showChipSelected = selectedHere && n === 1;
       chip.setAttribute(
         "class",
-        "vpin-chip" + (selected ? " vpin-chip-on is-visible" : "")
+        "vpin-chip" + (showChipSelected ? " vpin-chip-on is-visible" : "")
       );
-      chip.setAttribute("transform", `translate(${x + 10}, ${y - 10})`);
-
-      // Rough width for background
-      const textW = Math.min(200, 10 + labelText.length * 6.2 + (selected ? 18 : 0));
+      chip.setAttribute("transform", `translate(${x + 12}, ${y - 10})`);
+      const hoverName =
+        n > 1
+          ? `${n} places · ${cl.places[0].city || "area"}`
+          : `${cl.places[0].emoji || "•"} ${
+              cl.places[0].name.length > 26
+                ? cl.places[0].name.slice(0, 24) + "…"
+                : cl.places[0].name
+            }`;
+      const textW = Math.min(210, 12 + hoverName.length * 6.2 + (showChipSelected ? 18 : 0));
       const bg = document.createElementNS(NS, "rect");
       bg.setAttribute("class", "vpin-chip-bg");
       bg.setAttribute("x", "0");
@@ -291,19 +378,16 @@
       bg.setAttribute("width", String(textW));
       bg.setAttribute("height", "22");
       chip.appendChild(bg);
-
       const label = document.createElementNS(NS, "text");
-      label.setAttribute("class", "vpin-label" + (selected ? " vpin-label-on" : ""));
+      label.setAttribute("class", "vpin-label" + (showChipSelected ? " vpin-label-on" : ""));
       label.setAttribute("x", "6");
       label.setAttribute("y", "4");
-      label.textContent = labelText;
+      label.textContent = hoverName;
       chip.appendChild(label);
 
-      if (selected) {
+      if (showChipSelected) {
         const dismiss = document.createElementNS(NS, "g");
         dismiss.setAttribute("class", "vpin-dismiss");
-        dismiss.setAttribute("role", "button");
-        dismiss.setAttribute("tabindex", "0");
         dismiss.setAttribute("aria-label", "Clear selection");
         dismiss.style.cursor = "pointer";
         const dx = textW - 14;
@@ -327,51 +411,100 @@
         };
         dismiss.addEventListener("click", clear);
         dismiss.addEventListener("pointerdown", (e) => e.stopPropagation());
-        dismiss.addEventListener("keydown", (e) => {
-          if (e.key === "Enter" || e.key === " ") clear(e);
-        });
         chip.appendChild(dismiss);
       }
-
       g.appendChild(chip);
 
       const showName = () => chip.classList.add("is-visible");
       const hideName = () => {
-        if (p.id !== selectedVenueId) chip.classList.remove("is-visible");
+        if (!(selectedHere && n === 1)) chip.classList.remove("is-visible");
       };
-
       g.addEventListener("pointerenter", showName);
       g.addEventListener("pointerleave", hideName);
       g.addEventListener("focus", showName);
       g.addEventListener("blur", hideName);
 
+      const activate = () => {
+        if (n > 1) showClusterPicker(cl.places);
+        else setVenue(cl.places[0].id, { fromPin: true });
+      };
+
       g.addEventListener("click", (e) => {
         if (e.target.closest && e.target.closest(".vpin-dismiss")) return;
         e.stopPropagation();
         e.preventDefault();
-        setVenue(p.id, { fromPin: true });
+        activate();
       });
       g.addEventListener("dblclick", (e) => {
         if (e.target.closest && e.target.closest(".vpin-dismiss")) return;
         e.stopPropagation();
         e.preventDefault();
-        setVenue(p.id, { fromPin: true });
+        activate();
         zoomToClientPoint(e.clientX, e.clientY, Math.min(3.5, zoom + 0.75));
       });
       g.addEventListener("keydown", (e) => {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
-          setVenue(p.id, { fromPin: true });
+          activate();
         }
       });
       pinsLayer.appendChild(g);
     }
-    // Paint selected pin (and its name) above neighbors
+
     const sel = pinsLayer.querySelector(".venue-pin.selected");
     if (sel) pinsLayer.appendChild(sel);
   }
 
+  function showClusterPicker(places) {
+    clusterFocusIds = places.map((p) => p.id);
+    selectedVenueId = "";
+    fillVenueSelect();
+    renderPins();
+    const city = places[0].city || "this area";
+    const area =
+      places[0].region === "dfw" || ["Dallas", "Fort Worth"].includes(places[0].city)
+        ? "Dallas–Fort Worth area"
+        : city;
+    detail.className = "pin-detail";
+    detail.innerHTML = `
+      <p class="pin-detail-kicker">Nearby places · pick one</p>
+      <div class="pd-title-row">
+        <h3>📍 ${escapeHtml(area)}</h3>
+        <button type="button" class="pd-clear" id="pd-clear-selection" aria-label="Clear">×</button>
+      </div>
+      <p class="pd-meta">${places.length} venues share this spot on the map</p>
+      <p class="pd-blurb">Dots overlap in dense cities — choose the place you want:</p>
+      <div class="nearby-list" role="listbox" aria-label="Nearby venues">
+        ${places
+          .map(
+            (p) => `
+          <button type="button" class="nearby-item" data-venue-id="${escapeHtml(p.id)}" role="option">
+            <span class="nearby-emoji">${escapeHtml(p.emoji || "📍")}</span>
+            <span class="nearby-copy">
+              <strong>${escapeHtml(p.name)}</strong>
+              <small>${escapeHtml(kidTypeLabel(p.type))} · ${escapeHtml(p.city)}</small>
+            </span>
+            <span class="nearby-go">Select →</span>
+          </button>`
+          )
+          .join("")}
+      </div>
+    `;
+    detail.querySelector("#pd-clear-selection")?.addEventListener("click", () => {
+      clusterFocusIds = [];
+      setVenue("");
+    });
+    detail.querySelectorAll(".nearby-item").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const id = btn.getAttribute("data-venue-id");
+        clusterFocusIds = [];
+        setVenue(id, { fromPin: true });
+      });
+    });
+  }
+
   function showOverview() {
+ {
     const list = filteredPlaces();
     detail.className = "pin-detail";
     detail.innerHTML = `
@@ -419,11 +552,13 @@
   function setVenue(venueId, opts = {}) {
     if (!venueId) {
       selectedVenueId = "";
+      clusterFocusIds = [];
       fillVenueSelect();
       renderPins();
       showOverview();
       return;
     }
+    clusterFocusIds = [];
     selectedVenueId = venueId;
     const p = placeById(venueId);
     // Don't call setScope (resets selection) — just flip mode quietly if needed
