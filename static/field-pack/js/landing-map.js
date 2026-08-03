@@ -200,6 +200,32 @@
       panY = 0;
     }
     applyMapTransform();
+    renderPins();
+  }
+
+  /** Zoom so the viewport point (clientX/Y) becomes the center. */
+  function zoomToClientPoint(clientX, clientY, newZoom) {
+    if (!mapViewport) {
+      setZoom(newZoom);
+      return;
+    }
+    const rect = mapViewport.getBoundingClientRect();
+    const ox = clientX - rect.left - rect.width / 2;
+    const oy = clientY - rect.top - rect.height / 2;
+    const z0 = zoom || 1;
+    const z1 = Math.min(3.5, Math.max(1, newZoom));
+    const contentX = (ox - panX) / z0;
+    const contentY = (oy - panY) / z0;
+    zoom = z1;
+    if (zoom <= 1) {
+      panX = 0;
+      panY = 0;
+    } else {
+      panX = -contentX * zoom;
+      panY = -contentY * zoom;
+    }
+    applyMapTransform();
+    renderPins();
   }
 
   function renderPins() {
@@ -219,8 +245,9 @@
     for (const p of list) {
       if (p.lat == null || p.lon == null) continue;
       const { x, y } = window.fpProjectUS(p.lat, p.lon, w, h);
+      const selected = p.id === selectedVenueId;
       const g = document.createElementNS(NS, "g");
-      g.setAttribute("class", "venue-pin" + (p.id === selectedVenueId ? " selected" : ""));
+      g.setAttribute("class", "venue-pin" + (selected ? " selected" : ""));
       g.setAttribute("tabindex", "0");
       g.setAttribute("role", "button");
       g.setAttribute("aria-label", p.name);
@@ -231,34 +258,54 @@
       halo.setAttribute("class", "vpin-halo");
       halo.setAttribute("cx", x);
       halo.setAttribute("cy", y);
-      halo.setAttribute("r", mapScope === "more" ? "10" : "14");
+      halo.setAttribute("r", mapScope === "more" ? "12" : "16");
       g.appendChild(halo);
 
       const core = document.createElementNS(NS, "circle");
       core.setAttribute("class", "vpin-core");
       core.setAttribute("cx", x);
       core.setAttribute("cy", y);
-      core.setAttribute("r", mapScope === "more" ? "5" : "7");
+      core.setAttribute("r", selected ? "8" : mapScope === "more" ? "5" : "7");
       g.appendChild(core);
 
-      if (mapScope === "top" || zoom >= 1.4 || selectedState) {
+      // Name always on selected pin; otherwise when top list / zoomed / state filter
+      const showLabel =
+        selected || mapScope === "top" || zoom >= 1.4 || Boolean(selectedState);
+      if (showLabel) {
         const label = document.createElementNS(NS, "text");
-        label.setAttribute("class", "vpin-label");
-        label.setAttribute("x", x + 9);
+        label.setAttribute("class", "vpin-label" + (selected ? " vpin-label-on" : ""));
+        label.setAttribute("x", x + 10);
         label.setAttribute("y", y + 4);
-        label.textContent = (p.emoji || "•") + " " + (p.name.length > 22 ? p.name.slice(0, 20) + "…" : p.name);
+        const text =
+          (p.emoji || "•") +
+          " " +
+          (selected || mapScope === "top"
+            ? p.name.length > 26
+              ? p.name.slice(0, 24) + "…"
+              : p.name
+            : p.name.length > 18
+              ? p.name.slice(0, 16) + "…"
+              : p.name);
+        label.textContent = text;
         g.appendChild(label);
       }
 
-      const go = () => setVenue(p.id);
       g.addEventListener("click", (e) => {
         e.stopPropagation();
-        go();
+        e.preventDefault();
+        // One click: select pin, show name, fill right detail panel
+        setVenue(p.id, { fromPin: true });
+      });
+      g.addEventListener("dblclick", (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        setVenue(p.id, { fromPin: true });
+        zoomToClientPoint(e.clientX, e.clientY, Math.min(3.5, zoom + 0.75));
       });
       g.addEventListener("keydown", (e) => {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
-          go();
+          setVenue(p.id, { fromPin: true });
         }
       });
       pinsLayer.appendChild(g);
@@ -276,8 +323,8 @@
           ? "Tourist magnets covering most US family trips."
           : "Expanded list — filter by state to unclutter."
       }</p>
-      <p class="pd-blurb">Pick a <strong>venue</strong> in the menu or tap a pin. Each opens a shortlist + print hunt.</p>
-      <p class="pd-blurb"><strong>Tip:</strong> use + / − to zoom when pins overlap.</p>
+      <p class="pd-blurb"><strong>Click a pin</strong> to select it (name + details here). <strong>Double-click</strong> to zoom in on that spot.</p>
+      <p class="pd-blurb">Or use the venue menu. + / − also zoom.</p>
     `;
   }
 
@@ -291,7 +338,7 @@
     const kind = kidTypeLabel(p.type);
     detail.className = "pin-detail";
     detail.innerHTML = `
-      <p class="pin-detail-kicker">${escapeHtml(kind)} · ${escapeHtml(p.city)}</p>
+      <p class="pin-detail-kicker">Selected · ${escapeHtml(kind)}</p>
       <h3>${escapeHtml(p.emoji || "")} ${escapeHtml(p.name)}</h3>
       <p class="pd-meta">${escapeHtml(p.city)}, ${escapeHtml(p.state)} · ${
       p.tier === "top" || TOP_IDS.has(p.id) ? "Top list" : "More"
@@ -302,11 +349,11 @@
         <a class="btn btn-primary" href="${p.appHref || "#"}">Start outing →</a>
         <a class="btn btn-secondary" href="${p.href || "#"}">Place info</a>
       </div>
+      <p class="pd-blurb" style="margin-top:10px;font-size:0.88rem">Double-click the pin to zoom the map here.</p>
     `;
-    renderPins();
   }
 
-  function setVenue(venueId) {
+  function setVenue(venueId, opts = {}) {
     if (!venueId) {
       selectedVenueId = "";
       fillVenueSelect();
@@ -315,10 +362,15 @@
       return;
     }
     selectedVenueId = venueId;
-    // ensure visible in filter
     const p = placeById(venueId);
+    // Don't call setScope (resets selection) — just flip mode quietly if needed
     if (p && mapScope === "top" && !(TOP_IDS.has(p.id) || p.tier === "top")) {
-      setScope("more");
+      mapScope = "more";
+      scopeTop?.setAttribute("aria-pressed", "false");
+      scopeMore?.setAttribute("aria-pressed", "true");
+      scopeTop?.classList.remove("active");
+      scopeMore?.classList.add("active");
+      fillLocationSelect();
     }
     if (p && mapScope === "more" && selectedState && p.state !== selectedState) {
       selectedState = p.state;
@@ -326,8 +378,8 @@
     }
     fillVenueSelect();
     venueSelect.value = venueId;
-    renderPins();
     showVenueDetail(venueId);
+    renderPins();
   }
 
   function setScope(scope) {
@@ -373,25 +425,46 @@
     }
     venueSelect.addEventListener("change", () => setVenue(venueSelect.value));
 
-    btnZoomIn?.addEventListener("click", () => setZoom(zoom + 0.35));
-    btnZoomOut?.addEventListener("click", () => setZoom(zoom - 0.35));
+    btnZoomIn?.addEventListener("click", () => {
+      if (!mapViewport) return setZoom(zoom + 0.35);
+      const r = mapViewport.getBoundingClientRect();
+      zoomToClientPoint(r.left + r.width / 2, r.top + r.height / 2, zoom + 0.35);
+    });
+    btnZoomOut?.addEventListener("click", () => {
+      if (!mapViewport) return setZoom(zoom - 0.35);
+      const r = mapViewport.getBoundingClientRect();
+      zoomToClientPoint(r.left + r.width / 2, r.top + r.height / 2, zoom - 0.35);
+    });
     btnZoomReset?.addEventListener("click", () => setZoom(1));
 
-    // drag pan when zoomed
+    // Double-click empty map: zoom in centered on that point
+    mapViewport?.addEventListener("dblclick", (e) => {
+      if (e.target.closest && e.target.closest(".venue-pin")) return;
+      e.preventDefault();
+      zoomToClientPoint(e.clientX, e.clientY, Math.min(3.5, zoom + 0.75));
+    });
+
+    // drag pan when zoomed (ignore if starting on a pin)
     let dragging = false;
     let lastX = 0;
     let lastY = 0;
+    let dragMoved = false;
     mapViewport?.addEventListener("pointerdown", (e) => {
+      if (e.target.closest && e.target.closest(".venue-pin")) return;
       if (zoom <= 1) return;
       dragging = true;
+      dragMoved = false;
       lastX = e.clientX;
       lastY = e.clientY;
       mapViewport.setPointerCapture(e.pointerId);
     });
     mapViewport?.addEventListener("pointermove", (e) => {
       if (!dragging) return;
-      panX += e.clientX - lastX;
-      panY += e.clientY - lastY;
+      const dx = e.clientX - lastX;
+      const dy = e.clientY - lastY;
+      if (Math.abs(dx) + Math.abs(dy) > 2) dragMoved = true;
+      panX += dx;
+      panY += dy;
       lastX = e.clientX;
       lastY = e.clientY;
       applyMapTransform();
@@ -403,7 +476,7 @@
       "wheel",
       (e) => {
         e.preventDefault();
-        setZoom(zoom + (e.deltaY < 0 ? 0.15 : -0.15));
+        zoomToClientPoint(e.clientX, e.clientY, zoom + (e.deltaY < 0 ? 0.15 : -0.15));
       },
       { passive: false }
     );

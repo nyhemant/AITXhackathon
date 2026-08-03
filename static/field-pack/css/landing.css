@@ -867,7 +867,21 @@
   stroke-width: 3px;
   pointer-events: none;
 }
+.venue-pin .vpin-label-on {
+  font-size: 12px;
+  font-weight: 900;
+  fill: #7c2d12;
+  stroke: rgba(255, 255, 255, 0.98);
+  stroke-width: 4px;
+}
 .venue-pin.selected .vpin-core {
   fill: #d9652e;
   stroke-width: 2.5;
+}
+.venue-pin.selected .vpin-halo {
+  opacity: 1;
+  fill: rgba(217, 101, 46, 0.35);
+}
+.pin-detail h3 {
+  word-break: break-word;
 }
