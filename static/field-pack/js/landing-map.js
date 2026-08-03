@@ -270,21 +270,74 @@
       core.setAttribute("r", selected ? "8" : mapScope === "more" ? "5" : "7");
       g.appendChild(core);
 
-      // Name only on hover or selected click — never always-on (avoids overlap when zoomed)
-      const label = document.createElementNS(NS, "text");
-      label.setAttribute(
+      // Name chip: hover OR selected. Selected also gets a × to dismiss.
+      const fullName = p.name.length > 26 ? p.name.slice(0, 24) + "…" : p.name;
+      const labelText = `${p.emoji || "•"} ${fullName}`;
+      const chip = document.createElementNS(NS, "g");
+      chip.setAttribute(
         "class",
-        "vpin-label" + (selected ? " vpin-label-on is-visible" : "")
+        "vpin-chip" + (selected ? " vpin-chip-on is-visible" : "")
       );
-      label.setAttribute("x", x + 10);
-      label.setAttribute("y", y + 4);
-      const fullName = p.name.length > 28 ? p.name.slice(0, 26) + "…" : p.name;
-      label.textContent = `${p.emoji || "•"} ${fullName}`;
-      g.appendChild(label);
+      chip.setAttribute("transform", `translate(${x + 10}, ${y - 10})`);
 
-      const showName = () => label.classList.add("is-visible");
+      // Rough width for background
+      const textW = Math.min(200, 10 + labelText.length * 6.2 + (selected ? 18 : 0));
+      const bg = document.createElementNS(NS, "rect");
+      bg.setAttribute("class", "vpin-chip-bg");
+      bg.setAttribute("x", "0");
+      bg.setAttribute("y", "-12");
+      bg.setAttribute("rx", "8");
+      bg.setAttribute("ry", "8");
+      bg.setAttribute("width", String(textW));
+      bg.setAttribute("height", "22");
+      chip.appendChild(bg);
+
+      const label = document.createElementNS(NS, "text");
+      label.setAttribute("class", "vpin-label" + (selected ? " vpin-label-on" : ""));
+      label.setAttribute("x", "6");
+      label.setAttribute("y", "4");
+      label.textContent = labelText;
+      chip.appendChild(label);
+
+      if (selected) {
+        const dismiss = document.createElementNS(NS, "g");
+        dismiss.setAttribute("class", "vpin-dismiss");
+        dismiss.setAttribute("role", "button");
+        dismiss.setAttribute("tabindex", "0");
+        dismiss.setAttribute("aria-label", "Clear selection");
+        dismiss.style.cursor = "pointer";
+        const dx = textW - 14;
+        const dCircle = document.createElementNS(NS, "circle");
+        dCircle.setAttribute("cx", String(dx));
+        dCircle.setAttribute("cy", "0");
+        dCircle.setAttribute("r", "8");
+        dCircle.setAttribute("class", "vpin-dismiss-bg");
+        const dX = document.createElementNS(NS, "text");
+        dX.setAttribute("x", String(dx));
+        dX.setAttribute("y", "4");
+        dX.setAttribute("text-anchor", "middle");
+        dX.setAttribute("class", "vpin-dismiss-x");
+        dX.textContent = "×";
+        dismiss.appendChild(dCircle);
+        dismiss.appendChild(dX);
+        const clear = (e) => {
+          e.stopPropagation();
+          e.preventDefault();
+          setVenue("");
+        };
+        dismiss.addEventListener("click", clear);
+        dismiss.addEventListener("pointerdown", (e) => e.stopPropagation());
+        dismiss.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") clear(e);
+        });
+        chip.appendChild(dismiss);
+      }
+
+      g.appendChild(chip);
+
+      const showName = () => chip.classList.add("is-visible");
       const hideName = () => {
-        if (p.id !== selectedVenueId) label.classList.remove("is-visible");
+        if (p.id !== selectedVenueId) chip.classList.remove("is-visible");
       };
 
       g.addEventListener("pointerenter", showName);
@@ -293,12 +346,13 @@
       g.addEventListener("blur", hideName);
 
       g.addEventListener("click", (e) => {
+        if (e.target.closest && e.target.closest(".vpin-dismiss")) return;
         e.stopPropagation();
         e.preventDefault();
-        // One click: select pin, keep name on, fill right detail panel
         setVenue(p.id, { fromPin: true });
       });
       g.addEventListener("dblclick", (e) => {
+        if (e.target.closest && e.target.closest(".vpin-dismiss")) return;
         e.stopPropagation();
         e.preventDefault();
         setVenue(p.id, { fromPin: true });
@@ -344,7 +398,10 @@
     detail.className = "pin-detail";
     detail.innerHTML = `
       <p class="pin-detail-kicker">Selected · ${escapeHtml(kind)}</p>
-      <h3>${escapeHtml(p.emoji || "")} ${escapeHtml(p.name)}</h3>
+      <div class="pd-title-row">
+        <h3>${escapeHtml(p.emoji || "")} ${escapeHtml(p.name)}</h3>
+        <button type="button" class="pd-clear" id="pd-clear-selection" aria-label="Clear selection">×</button>
+      </div>
       <p class="pd-meta">${escapeHtml(p.city)}, ${escapeHtml(p.state)} · ${
       p.tier === "top" || TOP_IDS.has(p.id) ? "Top list" : "More"
     }</p>
@@ -354,8 +411,9 @@
         <a class="btn btn-primary" href="${p.appHref || "#"}">Start outing →</a>
         <a class="btn btn-secondary" href="${p.href || "#"}">Place info</a>
       </div>
-      <p class="pd-blurb" style="margin-top:10px;font-size:0.88rem">Double-click the pin to zoom the map here.</p>
+      <p class="pd-blurb" style="margin-top:10px;font-size:0.88rem">Double-click the pin to zoom · × clears the name.</p>
     `;
+    detail.querySelector("#pd-clear-selection")?.addEventListener("click", () => setVenue(""));
   }
 
   function setVenue(venueId, opts = {}) {

@@ -855,28 +855,52 @@
 .venue-pin:focus-visible .vpin-halo {
   opacity: 1;
 }
+.venue-pin .vpin-chip {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.venue-pin .vpin-chip.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+.venue-pin .vpin-chip-bg {
+  fill: rgba(255, 255, 255, 0.96);
+  stroke: #0a4545;
+  stroke-width: 1.5;
+}
+.venue-pin .vpin-chip-on .vpin-chip-bg {
+  stroke: #d9652e;
+  stroke-width: 2;
+  fill: #fff8f0;
+}
 .venue-pin .vpin-label {
   font-family: system-ui, sans-serif;
   font-size: 11px;
   font-weight: 800;
   fill: #0a4545;
-  paint-order: stroke;
-  stroke: rgba(255, 255, 255, 0.95);
-  stroke-width: 3.5px;
   pointer-events: none;
-  opacity: 0;
-  visibility: hidden;
-}
-.venue-pin .vpin-label.is-visible {
-  opacity: 1;
-  visibility: visible;
 }
 .venue-pin .vpin-label-on {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 900;
   fill: #7c2d12;
-  stroke: rgba(255, 255, 255, 0.98);
-  stroke-width: 4px;
+}
+.venue-pin .vpin-dismiss-bg {
+  fill: #0f5c5c;
+  stroke: #fff;
+  stroke-width: 1;
+}
+.venue-pin .vpin-dismiss-x {
+  font-family: system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 900;
+  fill: #fff;
+  pointer-events: none;
+}
+.venue-pin .vpin-dismiss:hover .vpin-dismiss-bg {
+  fill: #c2410c;
 }
 .venue-pin.selected .vpin-core {
   fill: #d9652e;
@@ -886,13 +910,37 @@
   opacity: 1;
   fill: rgba(217, 101, 46, 0.35);
 }
-.venue-pin.selected {
-  /* selected label stays on top of neighbors */
-}
 .venue-pin:hover,
 .venue-pin.selected {
   z-index: 10;
 }
 .pin-detail h3 {
   word-break: break-word;
+  margin: 0;
+  flex: 1;
+}
+.pd-title-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 0 0 6px;
+}
+.pd-clear {
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  border: 2px solid rgba(15, 92, 92, 0.25);
+  background: #fff;
+  color: #0a4545;
+  font-size: 1.35rem;
+  font-weight: 900;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+}
+.pd-clear:hover {
+  background: #ffe4d6;
+  border-color: #c2410c;
+  color: #c2410c;
 }
