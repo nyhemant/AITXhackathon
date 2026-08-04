@@ -1428,6 +1428,106 @@
   align-self: flex-start;
 }
 
+/* Rich pin panel: hunt + photo sample Q&A card */
+.pin-detail-rich {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.pd-sample-card {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 0;
+  padding: 0;
+  margin: 4px 0 0;
+  border: 1.5px solid rgba(15, 92, 92, 0.16);
+  border-radius: 16px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 6px 16px rgba(21, 34, 56, 0.07);
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+.pd-sample-card:hover {
+  border-color: #d9652e;
+  box-shadow: 0 8px 20px rgba(217, 101, 46, 0.15);
+  transform: translateY(-1px);
+}
+.pd-sample-card img,
+.pd-sample-fallback {
+  width: 96px;
+  height: 100%;
+  min-height: 112px;
+  object-fit: cover;
+  background: linear-gradient(145deg, #e8f0f8, #d4e4d8);
+  display: block;
+}
+.pd-sample-fallback {
+  display: grid;
+  place-items: center;
+  font-size: 2rem;
+}
+.pd-sample-body {
+  display: grid;
+  gap: 3px;
+  padding: 10px 12px 11px;
+  align-content: center;
+}
+.pd-sample-kicker {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #0f5c5c;
+}
+.pd-sample-name {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #0a4545;
+  line-height: 1.2;
+}
+.pd-sample-blurb {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #3d4f6f;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.pd-sample-cta {
+  margin-top: 2px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #d9652e;
+}
+.pd-more-link {
+  margin: 2px 0 0;
+  font-size: 0.88rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+.pd-more-link a {
+  color: #0f5c5c;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(15, 92, 92, 0.28);
+}
+.pd-more-link a:hover {
+  color: #0a4545;
+  border-bottom-color: #0a4545;
+}
+.pd-actions-secondary {
+  margin-top: 2px;
+}
+.landing-clean .pin-detail-rich .pd-actions-secondary .btn {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
 /* Filters live under the map so the visual leads */
 .map-controls-below {
   display: grid;

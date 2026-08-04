@@ -68,6 +68,20 @@
   overflow: hidden;
   box-shadow: 0 4px 14px rgba(21, 34, 56, 0.06);
   min-height: 220px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+.seo-animal-card:hover {
+  border-color: #d9652e;
+  box-shadow: 0 8px 20px rgba(217, 101, 46, 0.14);
+  transform: translateY(-1px);
+}
+.seo-card-hint {
+  margin: 4px 0 0 !important;
+  font-size: 0.8rem !important;
+  font-weight: 800 !important;
+  color: #d9652e !important;
 }
 .seo-animal-card img {
   width: 100%;

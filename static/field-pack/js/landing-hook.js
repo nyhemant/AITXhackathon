@@ -20,10 +20,10 @@
       .replace(/"/g, "&quot;");
   }
 
-  // Keep static HTML if present; only rebuild if empty
-  if (grid && !grid.children.length) {
+  // Ready cards always deep-link to the map hash (interactive primary path)
+  if (grid) {
     grid.innerHTML = READY.map((p) => {
-      const href = p.appHref || p.href;
+      const href = `#/venue/${encodeURIComponent(p.id)}`;
       const short =
         p.id === "childrens-aquarium-dallas"
           ? "Children’s Aquarium"
@@ -33,7 +33,7 @@
       return `<a class="ready-card" href="${escapeHtml(href)}">
         <span class="rc-emoji" aria-hidden="true">${escapeHtml(p.emoji || "")}</span>
         <h3>${escapeHtml(short)}</h3>
-        <span class="rc-cta">Get list &amp; hunt →</span>
+        <span class="rc-cta">Open on map →</span>
       </a>`;
     }).join("");
   }

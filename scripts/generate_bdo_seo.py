@@ -83,7 +83,8 @@ const byId = Object.fromEntries(places.map(p => [p.id, p]));
 const out = Object.keys(venues).map(id => {
   const ven = venues[id];
   const pl = byId[id] || {};
-  const items = (ven.featuredAnimalIds || []).slice(0, 8).map(iid => {
+  const idList = [...new Set([...(ven.featuredAnimalIds || []), ...(ven.animalIds || [])])];
+  const items = idList.slice(0, 12).map(iid => {
     const it = catalog[iid];
     if (!it) return null;
     return {
@@ -192,7 +193,7 @@ def unique_body(v: dict) -> str:
     # Photo cards first (visual), plus crawlable text for SEO
     cards = []
     feat_html_parts = []
-    for it in featured[:6]:
+    for it in featured[:12]:
         photo = (it.get("photo") or "").strip()
         # Catalog paths are like photos/foo.jpg; base href is /field-pack/
         if photo and not photo.startswith("/") and not photo.startswith("http"):
@@ -203,15 +204,22 @@ def unique_body(v: dict) -> str:
             src = photo
         alt = f"{it.get('name') or 'Animal'} at {name} — kid shortlist photo"
         blurb = it.get("blurb") or "A favorite stop for curious kids."
+        item_id = it.get("id") or ""
+        card_inner = ""
         if src:
-            cards.append(
-                f"""<article class="seo-animal-card">
-          <img src="{esc(src)}" alt="{esc(alt)}" width="640" height="400" loading="lazy" decoding="async" />
+            card_inner = f"""<img src="{esc(src)}" alt="{esc(alt)}" width="640" height="400" loading="lazy" decoding="async" />
           <div class="seo-animal-meta">
             <h3>{esc(it.get('emoji',''))} {esc(it['name'])}</h3>
             <p>{esc(blurb)}</p>
-          </div>
-        </article>"""
+            <p class="seo-card-hint">Open the interactive list for this Q&amp;A card</p>
+          </div>"""
+        if card_inner:
+            # Link card to interactive app item for Q&A print path
+            href = f"/field-pack/app.html#/venue/{esc(v['id'])}/item/{esc(item_id)}" if item_id else f"/field-pack/app.html#/venue/{esc(v['id'])}"
+            cards.append(
+                f"""<a class="seo-animal-card" href="{href}" role="listitem">
+          {card_inner}
+        </a>"""
             )
         feat_html_parts.append(
             f"<li><strong>{esc(it.get('emoji',''))} {esc(it['name'])}</strong> — {esc(blurb)}</li>"
@@ -253,8 +261,8 @@ def unique_body(v: dict) -> str:
     return f"""
     {hero_strip}
     <section class="seo-list-block seo-visual-shortlist" aria-labelledby="shortlist-heading">
-      <h2 id="shortlist-heading">Kid shortlist at {esc(name)}</h2>
-      <p>Color photos of the top {esc(label)} in this free kit — tap through to the full list for Q&amp;A cards.</p>
+      <h2 id="shortlist-heading">More Q&amp;A cards at {esc(name)}</h2>
+      <p>Photo cards for the kid shortlist — open any card for the interactive outing and printable Q&amp;A.</p>
       {cards_html}
       <ul class="seo-shortlist seo-shortlist-sr">
         {"".join(feat_html_parts) or "<li>Open the interactive outing for the full shortlist.</li>"}
@@ -339,6 +347,7 @@ def render_venue_page(v: dict) -> str:
         raise SystemExit(f"Venue id collides with reserved path: {vid}")
     url = f"{SITE}/field-pack/{vid}/"
     app_href = f"/field-pack/app.html#/venue/{vid}"
+    map_href = f"/field-pack/#/venue/{vid}"
     place, things, _ = type_bits(v)
     loc_chip = " · ".join(
         x for x in [place.replace("_", " ").title(), v.get("location") or ""] if x
@@ -372,9 +381,9 @@ def render_venue_page(v: dict) -> str:
   <meta name="color-scheme" content="light" />
   <base href="/field-pack/" />
   <link rel="stylesheet" href="/shell/shell.css?v=4" />
-  <link rel="stylesheet" href="/field-pack/css/styles.css?v=17" />
-  <link rel="stylesheet" href="/field-pack/css/landing.css?v=34" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=2" />
+  <link rel="stylesheet" href="/field-pack/css/styles.css?v=18" />
+  <link rel="stylesheet" href="/field-pack/css/landing.css?v=35" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=3" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
   </script>
@@ -415,11 +424,11 @@ def render_venue_page(v: dict) -> str:
         <p class="lead">{esc(v.get('blurb') or f'Free printable scavenger hunt and kid shortlist for {v["name"]}.')}</p>
         <p class="seo-brand-note">Part of <strong>Baby's Day Out</strong> by 1Less — free for families.</p>
         <div class="landing-cta-row seo-cta no-print">
-          <button type="button" class="btn btn-primary btn-big" id="seo-print-hunt" data-venue="{esc(vid)}">
+          <a class="btn btn-primary btn-big" href="{esc(map_href)}">Open on map →</a>
+          <button type="button" class="btn btn-secondary btn-big" id="seo-print-hunt" data-venue="{esc(vid)}">
             One-page hunt to print
           </button>
-          <a class="btn btn-secondary btn-big" href="{esc(app_href)}">Open full kid list →</a>
-          <a class="btn btn-ghost" href="/field-pack/#us-map">Back to map</a>
+          <a class="btn btn-ghost" href="{esc(app_href)}">Full interactive list →</a>
         </div>
       </header>
 
@@ -579,6 +588,20 @@ SEO_CSS = """/* SEO venue pages — visual-first, same brand language as outing 
   overflow: hidden;
   box-shadow: 0 4px 14px rgba(21, 34, 56, 0.06);
   min-height: 220px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+.seo-animal-card:hover {
+  border-color: #d9652e;
+  box-shadow: 0 8px 20px rgba(217, 101, 46, 0.14);
+  transform: translateY(-1px);
+}
+.seo-card-hint {
+  margin: 4px 0 0 !important;
+  font-size: 0.8rem !important;
+  font-weight: 800 !important;
+  color: #d9652e !important;
 }
 .seo-animal-card img {
   width: 100%;

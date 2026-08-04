@@ -572,6 +572,43 @@
     `;
   }
 
+  function catalogVenue(venueId) {
+    return typeof window.fpGetVenue === "function" ? window.fpGetVenue(venueId) : null;
+  }
+
+  function catalogItem(itemId) {
+    return (window.FIELD_PACK_CATALOG && window.FIELD_PACK_CATALOG[itemId]) || null;
+  }
+
+  function sampleItemForVenue(venueId) {
+    const ven = catalogVenue(venueId);
+    if (!ven) return null;
+    const topId =
+      (window.FPPrint && window.FPPrint.topPickItemId && window.FPPrint.topPickItemId(ven)) ||
+      (ven.featuredAnimalIds && ven.featuredAnimalIds[0]) ||
+      (ven.animalIds && ven.animalIds[0]) ||
+      null;
+    return topId ? catalogItem(topId) : null;
+  }
+
+  function photoSrc(photo) {
+    if (!photo) return "";
+    if (photo.startsWith("http") || photo.startsWith("/")) return photo;
+    return `/field-pack/${photo}`;
+  }
+
+  function syncVenueHash(venueId) {
+    const next = venueId ? `#/venue/${encodeURIComponent(venueId)}` : "#us-map";
+    if (location.hash !== next) {
+      history.replaceState(null, "", next);
+    }
+  }
+
+  function venueIdFromHash() {
+    const m = (location.hash || "").match(/^#\/venue\/([^/?#]+)/);
+    return m ? decodeURIComponent(m[1]) : "";
+  }
+
   function showVenueDetail(venueId) {
     const p = placeById(venueId);
     if (!p) {
@@ -579,13 +616,31 @@
       return;
     }
     selectedVenueId = venueId;
-    detail.className = "pin-detail";
+    detail.className = "pin-detail pin-detail-rich";
     const blurb = (p.blurb || "").trim();
-    const canPrintHunt =
-      window.FPPrint &&
-      typeof window.fpGetVenue === "function" &&
-      window.fpGetVenue(venueId) &&
-      (window.fpGetVenue(venueId).treasureHunt || []).length > 0;
+    const ven = catalogVenue(venueId);
+    const canPrintHunt = Boolean(ven && (ven.treasureHunt || []).length);
+    const sample = sampleItemForVenue(venueId);
+    const samplePhoto = sample ? photoSrc(sample.photo) : "";
+    const placePage = `/field-pack/${encodeURIComponent(venueId)}/`;
+    const appHref = p.appHref || `/field-pack/app.html#/venue/${encodeURIComponent(venueId)}`;
+
+    const sampleCard = sample
+      ? `<button type="button" class="pd-sample-card" id="pd-print-sample" aria-label="Print sample Q&A card for ${escapeHtml(sample.name)}">
+          ${
+            samplePhoto
+              ? `<img src="${escapeHtml(samplePhoto)}" alt="${escapeHtml(sample.name)} — sample find" width="320" height="200" loading="lazy" decoding="async" />`
+              : `<span class="pd-sample-fallback" aria-hidden="true">${escapeHtml(sample.emoji || "⭐")}</span>`
+          }
+          <span class="pd-sample-body">
+            <span class="pd-sample-kicker">Sample Q&amp;A card</span>
+            <span class="pd-sample-name">${escapeHtml(sample.emoji || "")} ${escapeHtml(sample.name)}</span>
+            <span class="pd-sample-blurb">${escapeHtml(sample.blurb || "Tap to print a one-page sample card.")}</span>
+            <span class="pd-sample-cta">Tap to print this card →</span>
+          </span>
+        </button>`
+      : "";
+
     detail.innerHTML = `
       <p class="pin-detail-kicker">${escapeHtml(p.city)}, ${escapeHtml(p.state)}</p>
       <div class="pd-title-row">
@@ -593,32 +648,41 @@
         <button type="button" class="pd-clear" id="pd-clear-selection" aria-label="Clear selection">×</button>
       </div>
       ${blurb ? `<p class="pd-blurb">${escapeHtml(blurb)}</p>` : ""}
-      <p class="pd-hint">Print a one-page hunt for the bag, or open the full kid list.</p>
       <div class="pd-actions">
         ${
           canPrintHunt
             ? `<button type="button" class="btn btn-primary" id="pd-print-hunt">One-page hunt to print</button>`
             : ""
         }
-        <a class="btn ${canPrintHunt ? "btn-secondary" : "btn-primary"}" href="${p.appHref || "#"}">Open full kid list →</a>
-        <a class="btn btn-ghost" href="/field-pack/${encodeURIComponent(venueId)}/">Place guide &amp; tips</a>
+      </div>
+      ${sampleCard}
+      <p class="pd-more-link">
+        <a href="${placePage}">More animal Q&amp;A cards with photos on the ${escapeHtml(p.name)} page →</a>
+      </p>
+      <div class="pd-actions pd-actions-secondary">
+        <a class="btn btn-secondary" href="${appHref}">Open full interactive list →</a>
       </div>
     `;
     detail.querySelector("#pd-clear-selection")?.addEventListener("click", () => setVenue(""));
     detail.querySelector("#pd-print-hunt")?.addEventListener("click", () => {
       if (window.FPPrint && window.FPPrint.printTreasureForVenue(venueId)) return;
-      // Fallback: open outing if print kit unavailable
-      location.href = p.appHref || `/field-pack/app.html#/venue/${encodeURIComponent(venueId)}`;
+      location.href = appHref;
+    });
+    detail.querySelector("#pd-print-sample")?.addEventListener("click", () => {
+      if (window.FPPrint && window.FPPrint.printSampleQaForVenue(venueId)) return;
+      location.href = placePage;
     });
   }
 
   function setVenue(venueId, opts = {}) {
+    const skipHash = opts.skipHash === true;
     if (!venueId) {
       selectedVenueId = "";
       clusterFocusIds = [];
       fillVenueSelect();
       renderPins();
       showOverview();
+      if (!skipHash) syncVenueHash("");
       return;
     }
     clusterFocusIds = [];
@@ -641,7 +705,14 @@
     venueSelect.value = venueId;
     showVenueDetail(venueId);
     renderPins();
+    if (!skipHash) syncVenueHash(venueId);
+    if (opts.scroll !== false) {
+      document.getElementById("us-map")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   }
+
+  // Allow ready-cards / external links: /field-pack/#/venue/dallas-zoo
+  window.fpSelectVenueOnMap = (id) => setVenue(id);
 
   function setScope(scope) {
     mapScope = scope === "more" ? "more" : "top";
@@ -753,6 +824,20 @@
     renderPins();
     showOverview();
     scopeTop?.classList.add("active");
+
+    // Deep link: /field-pack/#/venue/dallas-zoo
+    const fromHash = venueIdFromHash();
+    if (fromHash && placeById(fromHash)) {
+      setVenue(fromHash, { skipHash: true, scroll: true });
+    }
+    window.addEventListener("hashchange", () => {
+      const id = venueIdFromHash();
+      if (id && placeById(id)) {
+        if (id !== selectedVenueId) setVenue(id, { skipHash: true, scroll: true });
+      } else if (!id && selectedVenueId) {
+        setVenue("", { skipHash: true });
+      }
+    });
   }
 
   boot();
