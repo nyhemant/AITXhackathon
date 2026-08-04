@@ -86,7 +86,13 @@ const out = Object.keys(venues).map(id => {
   const items = (ven.featuredAnimalIds || []).slice(0, 8).map(iid => {
     const it = catalog[iid];
     if (!it) return null;
-    return { id: iid, name: it.name, emoji: it.emoji || '', blurb: it.blurb || '' };
+    return {
+      id: iid,
+      name: it.name,
+      emoji: it.emoji || '',
+      blurb: it.blurb || '',
+      photo: it.photo || '',
+    };
   }).filter(Boolean);
   const hunt = (ven.treasureHunt || []).map(h => h.text);
   return {
@@ -183,38 +189,83 @@ def unique_body(v: dict) -> str:
     p4 = pick(seed + "d", tips)
     p5 = pick(seed + "e", closes)
 
-    # Featured blurbs for uniqueness + crawlable detail
+    # Photo cards first (visual), plus crawlable text for SEO
+    cards = []
     feat_html_parts = []
-    for i, it in enumerate(featured[:6]):
+    for it in featured[:6]:
+        photo = (it.get("photo") or "").strip()
+        # Catalog paths are like photos/foo.jpg; base href is /field-pack/
+        if photo and not photo.startswith("/") and not photo.startswith("http"):
+            src = photo
+        elif photo.startswith("/field-pack/"):
+            src = photo[len("/field-pack/") :]
+        else:
+            src = photo
+        alt = f"{it.get('name') or 'Animal'} at {name} — kid shortlist photo"
+        blurb = it.get("blurb") or "A favorite stop for curious kids."
+        if src:
+            cards.append(
+                f"""<article class="seo-animal-card">
+          <img src="{esc(src)}" alt="{esc(alt)}" width="640" height="400" loading="lazy" decoding="async" />
+          <div class="seo-animal-meta">
+            <h3>{esc(it.get('emoji',''))} {esc(it['name'])}</h3>
+            <p>{esc(blurb)}</p>
+          </div>
+        </article>"""
+            )
         feat_html_parts.append(
-            f"<li><strong>{esc(it.get('emoji',''))} {esc(it['name'])}</strong>"
-            f" — {esc(it.get('blurb') or 'A favorite stop for curious kids.')}</li>"
+            f"<li><strong>{esc(it.get('emoji',''))} {esc(it['name'])}</strong> — {esc(blurb)}</li>"
         )
 
     hunt_lis = "".join(f"<li>{esc(t)}</li>" for t in hunt[:8]) or "<li>Find your favorite stop and check it off</li>"
+    cards_html = (
+        f'<div class="seo-animal-grid" role="list">{"".join(cards)}</div>'
+        if cards
+        else ""
+    )
 
     words = " ".join([p1, p2, p3, p4, p5])
-    # ensure length
     if len(words.split()) < 150:
         p5 += (
             f" Families comparing printable zoo scavenger hunts, aquarium checklists, "
             f"and museum treasure hunts for kids can use this {name} page as a ready-made plan for {loc}."
         )
 
+    # Hero strip: first 3 photos if available
+    hero_photos = []
+    for it in featured[:3]:
+        photo = (it.get("photo") or "").strip()
+        if not photo:
+            continue
+        if photo.startswith("/field-pack/"):
+            src = photo[len("/field-pack/") :]
+        else:
+            src = photo
+        hero_photos.append(
+            f'<img src="{esc(src)}" alt="{esc(it.get("name") or "Highlight")} at {esc(name)}" width="400" height="280" loading="eager" decoding="async" />'
+        )
+    hero_strip = (
+        f'<div class="seo-hero-photos" aria-hidden="false">{"".join(hero_photos)}</div>'
+        if hero_photos
+        else ""
+    )
+
     return f"""
+    {hero_strip}
+    <section class="seo-list-block seo-visual-shortlist" aria-labelledby="shortlist-heading">
+      <h2 id="shortlist-heading">Kid shortlist at {esc(name)}</h2>
+      <p>Color photos of the top {esc(label)} in this free kit — tap through to the full list for Q&amp;A cards.</p>
+      {cards_html}
+      <ul class="seo-shortlist seo-shortlist-sr">
+        {"".join(feat_html_parts) or "<li>Open the interactive outing for the full shortlist.</li>"}
+      </ul>
+    </section>
     <section class="seo-prose">
       <p>{esc(p1)}</p>
       <p>{esc(p2)}</p>
       <p>{esc(p3)}</p>
       <p>{esc(p4)}</p>
       <p>{esc(p5)}</p>
-    </section>
-    <section class="seo-list-block" aria-labelledby="shortlist-heading">
-      <h2 id="shortlist-heading">Kid shortlist at {esc(name)}</h2>
-      <p>Crawlable list of top {esc(label)} featured in this kit:</p>
-      <ul class="seo-shortlist">
-        {"".join(feat_html_parts) or "<li>Open the interactive outing for the full shortlist.</li>"}
-      </ul>
     </section>
     <section class="seo-list-block" aria-labelledby="hunt-heading">
       <h2 id="hunt-heading">Treasure hunt checklist (printable)</h2>
@@ -323,7 +374,7 @@ def render_venue_page(v: dict) -> str:
   <link rel="stylesheet" href="/shell/shell.css?v=4" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=17" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=34" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=1" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=2" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
   </script>
@@ -458,7 +509,7 @@ Sitemap: {SITE}/sitemap.xml
     (REPO / "static" / "robots.txt").write_text(text, encoding="utf-8")
 
 
-SEO_CSS = """/* SEO venue pages — extend landing look without changing map UI */
+SEO_CSS = """/* SEO venue pages — visual-first, same brand language as outing cards */
 .seo-venue-body .seo-crumbs {
   margin: 0 0 12px;
   font-weight: 700;
@@ -472,7 +523,7 @@ SEO_CSS = """/* SEO venue pages — extend landing look without changing map UI 
 }
 .seo-venue-body .seo-crumbs a:hover { text-decoration: underline; }
 .seo-article {
-  max-width: 42rem;
+  max-width: 52rem;
   margin: 0 auto 28px;
   padding: 22px 22px 28px;
   border-radius: 24px;
@@ -493,6 +544,83 @@ SEO_CSS = """/* SEO venue pages — extend landing look without changing map UI 
   color: #3d4f6f;
   font-size: 0.95rem;
 }
+
+/* Top photo strip under CTAs */
+.seo-hero-photos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0 0 22px;
+}
+.seo-hero-photos img {
+  width: 100%;
+  height: 148px;
+  object-fit: cover;
+  border-radius: 16px;
+  border: 1.5px solid rgba(15, 92, 92, 0.12);
+  box-shadow: 0 8px 20px rgba(21, 34, 56, 0.08);
+  background: #dfe7f2;
+  display: block;
+}
+
+/* Animal / exhibit photo cards (match outing visual energy) */
+.seo-animal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 12px 0 8px;
+}
+.seo-animal-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1.5px solid rgba(15, 92, 92, 0.12);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(21, 34, 56, 0.06);
+  min-height: 220px;
+}
+.seo-animal-card img {
+  width: 100%;
+  height: 132px;
+  object-fit: cover;
+  background: linear-gradient(145deg, #e8f0f8, #d4e4d8);
+  display: block;
+}
+.seo-animal-meta {
+  padding: 12px 12px 14px;
+  display: grid;
+  gap: 4px;
+}
+.seo-animal-meta h3 {
+  margin: 0;
+  font-size: 1.02rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: #0a4545;
+  line-height: 1.2;
+}
+.seo-animal-meta p {
+  margin: 0;
+  font-size: 0.88rem;
+  font-weight: 650;
+  color: #3d4f6f;
+  line-height: 1.35;
+}
+
+/* Keep text list for crawlers / no-image clients, but de-emphasize visually */
+.seo-shortlist-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .seo-prose p {
   margin: 0 0 12px;
   line-height: 1.55;
@@ -502,6 +630,7 @@ SEO_CSS = """/* SEO venue pages — extend landing look without changing map UI 
 }
 .seo-list-block {
   margin: 22px 0 8px;
+  position: relative;
 }
 .seo-list-block h2 {
   margin: 0 0 8px;
@@ -603,9 +732,17 @@ SEO_CSS = """/* SEO venue pages — extend landing look without changing map UI 
   color: #2a3d55;
   line-height: 1.5;
 }
+@media (max-width: 720px) {
+  .seo-animal-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .seo-hero-photos { grid-template-columns: 1fr 1fr; }
+  .seo-hero-photos img:nth-child(3) { display: none; }
+}
 @media (max-width: 640px) {
   .seo-dir-grid { columns: 1; }
   .seo-article { padding: 16px; }
+  .seo-animal-grid { grid-template-columns: 1fr; }
+  .seo-hero-photos { grid-template-columns: 1fr 1fr; }
+  .seo-animal-card img, .seo-hero-photos img { height: 160px; }
 }
 """
 
