@@ -597,10 +597,10 @@
       <div class="pd-actions">
         ${
           canPrintHunt
-            ? `<button type="button" class="btn btn-primary" id="pd-print-hunt">🖨️ Print treasure hunt</button>`
+            ? `<button type="button" class="btn btn-primary" id="pd-print-hunt">One-page hunt to print</button>`
             : ""
         }
-        <a class="btn ${canPrintHunt ? "btn-secondary" : "btn-primary"}" href="${p.appHref || "#"}">Get kid list &amp; hunt →</a>
+        <a class="btn ${canPrintHunt ? "btn-secondary" : "btn-primary"}" href="${p.appHref || "#"}">Open full kid list →</a>
         <a class="btn btn-ghost" href="${p.href || "#"}">About this place</a>
       </div>
     `;

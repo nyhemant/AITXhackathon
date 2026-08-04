@@ -199,10 +199,10 @@
       els.btnSampleQa.disabled = !canSample;
       if (canSample) {
         const short = topItem.name.length > 22 ? topItem.name.slice(0, 20) + "…" : topItem.name;
-        els.btnSampleQa.innerHTML = `⭐ Print sample: ${topItem.emoji || ""} ${escapeHtml(short)}`.trim();
+        els.btnSampleQa.innerHTML = `Try a sample: ${topItem.emoji || ""} ${escapeHtml(short)}`.trim();
         els.btnSampleQa.setAttribute(
           "aria-label",
-          `Print sample Q&A card for ${topItem.name}`
+          `Try a sample Q&A card for ${topItem.name}`
         );
       }
     }
