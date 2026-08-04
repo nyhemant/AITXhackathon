@@ -1414,6 +1414,19 @@
 .landing-clean .pin-detail .pd-actions .btn-primary {
   font-size: 0.98rem;
 }
+.landing-clean .pin-detail .pd-actions {
+  flex-direction: column;
+  align-items: stretch;
+}
+.landing-clean .pin-detail .pd-actions .btn {
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+}
+.landing-clean .pin-detail .pd-actions .btn-ghost {
+  width: auto;
+  align-self: flex-start;
+}
 
 /* Filters live under the map so the visual leads */
 .map-controls-below {

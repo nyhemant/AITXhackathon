@@ -1664,6 +1664,16 @@ body.app-body {
 .outing-hero .primary-actions {
   margin-top: 16px;
   margin-bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: stretch;
+}
+.outing-hero .primary-actions .btn-big {
+  flex: 1 1 12rem;
+}
+.outing-hero .sample-qa-hint {
+  margin-top: 8px !important;
 }
 .outing-hero .secondary-actions {
   margin-top: 8px;
@@ -1803,6 +1813,7 @@ body.app-body {
   }
   .outing-hero .primary-actions .btn-big {
     width: 100%;
+    flex: 1 1 100%;
   }
   .app-nav-context {
     order: 3;

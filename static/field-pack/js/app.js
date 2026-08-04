@@ -17,6 +17,8 @@
     outingEmpty: document.getElementById("outing-empty"),
     outingGridHeading: document.getElementById("outing-grid-heading"),
     btnTreasure: document.getElementById("btn-treasure"),
+    btnSampleQa: document.getElementById("btn-sample-qa"),
+    sampleQaHint: document.getElementById("sample-qa-hint"),
     btnShareLink: document.getElementById("btn-share-link"),
     shareLinkStatus: document.getElementById("share-link-status"),
     btnZooSite: document.getElementById("btn-zoo-site"),
@@ -184,6 +186,33 @@
     if (gridSub) {
       const kind = venue.itemLabel || "things";
       gridSub.textContent = `Your short list (${kind}) · tap a card for optional tips`;
+    }
+    // Sample Q&A: top featured pick — label button with animal name when known
+    const topId =
+      (window.FPPrint && window.FPPrint.topPickItemId(venue)) ||
+      (venue.featuredAnimalIds && venue.featuredAnimalIds[0]) ||
+      null;
+    const topItem = topId ? getItem(topId) : null;
+    if (els.btnSampleQa) {
+      const canSample = Boolean(topItem);
+      els.btnSampleQa.hidden = !canSample;
+      els.btnSampleQa.disabled = !canSample;
+      if (canSample) {
+        const short = topItem.name.length > 22 ? topItem.name.slice(0, 20) + "…" : topItem.name;
+        els.btnSampleQa.innerHTML = `⭐ Print sample: ${topItem.emoji || ""} ${escapeHtml(short)}`.trim();
+        els.btnSampleQa.setAttribute(
+          "aria-label",
+          `Print sample Q&A card for ${topItem.name}`
+        );
+      }
+    }
+    if (els.sampleQaHint) {
+      els.sampleQaHint.hidden = !topItem;
+      if (topItem) {
+        els.sampleQaHint.textContent = `Try a top-pick Q&A card (${topItem.name}) — then open more ${
+          venue.itemLabel || "items"
+        } below.`;
+      }
     }
     renderOutingGrid(trip, venue);
     renderCustomize(trip, venue);
@@ -625,6 +654,21 @@
 
   // events
   els.btnTreasure.addEventListener("click", printTreasureHunt);
+  if (els.btnSampleQa) {
+    els.btnSampleQa.addEventListener("click", () => {
+      const venue = getVenue(selectedVenueId);
+      if (!venue) return;
+      if (window.FPPrint && window.FPPrint.printSampleQaForVenue(selectedVenueId)) return;
+      // Fallback: open first featured item for on-screen Q&A
+      const topId =
+        (venue.featuredAnimalIds && venue.featuredAnimalIds[0]) ||
+        (venue.animalIds && venue.animalIds[0]);
+      if (topId) {
+        ensureOuting(selectedVenueId);
+        showItem(currentTripId, topId);
+      }
+    });
+  }
   els.btnShareLink.addEventListener("click", async () => {
     const url = `${location.origin}/field-pack/app.html#/venue/${encodeURIComponent(selectedVenueId)}`;
     try {

@@ -581,6 +581,11 @@
     selectedVenueId = venueId;
     detail.className = "pin-detail";
     const blurb = (p.blurb || "").trim();
+    const canPrintHunt =
+      window.FPPrint &&
+      typeof window.fpGetVenue === "function" &&
+      window.fpGetVenue(venueId) &&
+      (window.fpGetVenue(venueId).treasureHunt || []).length > 0;
     detail.innerHTML = `
       <p class="pin-detail-kicker">${escapeHtml(p.city)}, ${escapeHtml(p.state)}</p>
       <div class="pd-title-row">
@@ -588,13 +593,23 @@
         <button type="button" class="pd-clear" id="pd-clear-selection" aria-label="Clear selection">×</button>
       </div>
       ${blurb ? `<p class="pd-blurb">${escapeHtml(blurb)}</p>` : ""}
-      <p class="pd-hint">Next: a short list of things to find, plus a hunt you can print for the bag.</p>
+      <p class="pd-hint">Print a one-page hunt for the bag, or open the full kid list.</p>
       <div class="pd-actions">
-        <a class="btn btn-primary" href="${p.appHref || "#"}">Get kid list &amp; hunt →</a>
+        ${
+          canPrintHunt
+            ? `<button type="button" class="btn btn-primary" id="pd-print-hunt">🖨️ Print treasure hunt</button>`
+            : ""
+        }
+        <a class="btn ${canPrintHunt ? "btn-secondary" : "btn-primary"}" href="${p.appHref || "#"}">Get kid list &amp; hunt →</a>
         <a class="btn btn-ghost" href="${p.href || "#"}">About this place</a>
       </div>
     `;
     detail.querySelector("#pd-clear-selection")?.addEventListener("click", () => setVenue(""));
+    detail.querySelector("#pd-print-hunt")?.addEventListener("click", () => {
+      if (window.FPPrint && window.FPPrint.printTreasureForVenue(venueId)) return;
+      // Fallback: open outing if print kit unavailable
+      location.href = p.appHref || `/field-pack/app.html#/venue/${encodeURIComponent(venueId)}`;
+    });
   }
 
   function setVenue(venueId, opts = {}) {
