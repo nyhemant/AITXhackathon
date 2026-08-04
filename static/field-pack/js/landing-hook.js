@@ -20,22 +20,34 @@
       .replace(/"/g, "&quot;");
   }
 
-  // Ready cards always deep-link to the map hash (interactive primary path)
+  // Ready cards open the map mini-panel for that venue (not the SEO static page)
   if (grid) {
     grid.innerHTML = READY.map((p) => {
-      const href = `#/venue/${encodeURIComponent(p.id)}`;
+      const href = `/field-pack/#/venue/${encodeURIComponent(p.id)}`;
       const short =
         p.id === "childrens-aquarium-dallas"
           ? "Children’s Aquarium"
           : p.id === "childrens-museum-perot"
             ? "Children’s Museum"
             : p.name;
-      return `<a class="ready-card" href="${escapeHtml(href)}">
+      return `<a class="ready-card" href="${escapeHtml(href)}" data-venue-id="${escapeHtml(p.id)}">
         <span class="rc-emoji" aria-hidden="true">${escapeHtml(p.emoji || "")}</span>
         <h3>${escapeHtml(short)}</h3>
         <span class="rc-cta">Open on map →</span>
       </a>`;
     }).join("");
+
+    grid.addEventListener("click", (e) => {
+      const a = e.target.closest("a.ready-card[data-venue-id]");
+      if (!a) return;
+      const id = a.getAttribute("data-venue-id");
+      if (!id) return;
+      // Prefer in-page map panel (no full reload) when already on the landing map
+      if (typeof window.fpSelectVenueOnMap === "function") {
+        e.preventDefault();
+        window.fpSelectVenueOnMap(id);
+      }
+    });
   }
 
   const chipDefs = [

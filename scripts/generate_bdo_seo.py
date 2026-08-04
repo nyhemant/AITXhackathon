@@ -603,6 +603,9 @@ SEO_CSS = """/* SEO venue pages — visual-first, same brand language as outing 
   font-weight: 800 !important;
   color: #d9652e !important;
 }
+.seo-animal-card {
+  cursor: pointer;
+}
 .seo-animal-card img {
   width: 100%;
   height: 132px;
