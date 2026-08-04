@@ -601,7 +601,7 @@
             : ""
         }
         <a class="btn ${canPrintHunt ? "btn-secondary" : "btn-primary"}" href="${p.appHref || "#"}">Open full kid list →</a>
-        <a class="btn btn-ghost" href="${p.href || "#"}">About this place</a>
+        <a class="btn btn-ghost" href="/field-pack/${encodeURIComponent(venueId)}/">Place guide &amp; tips</a>
       </div>
     `;
     detail.querySelector("#pd-clear-selection")?.addEventListener("click", () => setVenue(""));

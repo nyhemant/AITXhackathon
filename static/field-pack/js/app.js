@@ -181,6 +181,21 @@
     els.outingBlurb.textContent =
       "Print the treasure hunt for your bag. Cards below are things to find — tap one later for optional tips.";
     els.btnZooSite.href = venue.website || "#";
+    // Prefer indexable SEO URL in the browser URL bar when sharing is not mid-session
+    try {
+      const seoPath = `/field-pack/${encodeURIComponent(venue.id)}/`;
+      const linkCanon = document.querySelector('link[rel="canonical"]');
+      if (!linkCanon) {
+        const l = document.createElement("link");
+        l.rel = "canonical";
+        l.href = `${location.origin}${seoPath}`;
+        document.head.appendChild(l);
+      } else {
+        linkCanon.setAttribute("href", `${location.origin}${seoPath}`);
+      }
+    } catch {
+      /* ignore */
+    }
     els.outingGridHeading.textContent = "Things to find";
     const gridSub = document.getElementById("outing-grid-sub");
     if (gridSub) {

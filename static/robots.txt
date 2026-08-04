@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Allow: /field-pack/
+Disallow: /dinner
+Disallow: /analytics/
+Disallow: /api/
+
+Sitemap: https://1less.app/sitemap.xml

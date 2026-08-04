@@ -27,6 +27,7 @@ LOGO_PATH = REPO_ROOT / LOGO_FILENAME
 PLAN_B_LOGO_PATH = REPO_ROOT / PLAN_B_LOGO_FILENAME
 MOBILE_LOGO_PATH = LOGO_PATH
 LOGO_ASSETS = {LOGO_FILENAME: LOGO_PATH, PLAN_B_LOGO_FILENAME: PLAN_B_LOGO_PATH}
+STATIC_ROOT = REPO_ROOT / "static"
 # Baby's Day Out static site (trips, missions, treasure hunt)
 FIELD_PACK_ROOT = REPO_ROOT / "static" / "field-pack"
 FIELD_PACK_PREFIX = "/field-pack"
@@ -1018,6 +1019,27 @@ def _dinner_preview_text(message_text: str) -> str:
     return "\n".join(preview_lines)
 
 
+def _send_redirect(handler: "WebHandler", location: str, *, code: int = 301) -> None:
+    handler.send_response(code)
+    handler.send_header("Location", location)
+    handler.send_header("Cache-Control", "no-cache")
+    handler.send_header("Content-Length", "0")
+    handler.end_headers()
+
+
+def _safe_static_root_file(url_path: str) -> Path | None:
+    """Serve top-level static files: /robots.txt, /sitemap.xml."""
+    name = url_path.lstrip("/")
+    if name not in {"robots.txt", "sitemap.xml"}:
+        return None
+    candidate = (STATIC_ROOT / name).resolve()
+    try:
+        candidate.relative_to(STATIC_ROOT.resolve())
+    except ValueError:
+        return None
+    return candidate if candidate.is_file() else None
+
+
 class WebHandler(BaseHTTPRequestHandler):
     def do_GET(self) -> None:
         path = urlsplit(self.path).path
@@ -1029,6 +1051,18 @@ class WebHandler(BaseHTTPRequestHandler):
             return
         if path == "/analytics/status":
             self._handle_analytics_status()
+            return
+        # SEO: robots + sitemap at site root
+        root_static = _safe_static_root_file(path)
+        if root_static is not None:
+            body = root_static.read_bytes()
+            ctype = "text/plain; charset=utf-8" if root_static.name == "robots.txt" else "application/xml; charset=utf-8"
+            self.send_response(200)
+            self.send_header("Content-Type", ctype)
+            self.send_header("Content-Length", str(len(body)))
+            self.send_header("Cache-Control", "public, max-age=3600")
+            self.end_headers()
+            self.wfile.write(body)
             return
         # Default home = Baby's Day Out
         if path in {"/", "/index.html"}:
@@ -1049,6 +1083,19 @@ class WebHandler(BaseHTTPRequestHandler):
             self.send_header("Content-Length", "0")
             self.end_headers()
             return
+        # Legacy place brochures → indexable venue URLs
+        # /field-pack/places/dallas-zoo.html → /field-pack/dallas-zoo/
+        if path.startswith(FIELD_PACK_PREFIX + "/places/") and path.endswith(".html"):
+            slug = path[len(FIELD_PACK_PREFIX + "/places/") : -len(".html")]
+            if slug and "/" not in slug and ".." not in slug:
+                _send_redirect(self, f"{FIELD_PACK_PREFIX}/{slug}/", code=301)
+                return
+        # /field-pack/places/dallas-zoo → /field-pack/dallas-zoo/
+        if path.startswith(FIELD_PACK_PREFIX + "/places/") and not path.endswith(".html"):
+            slug = path[len(FIELD_PACK_PREFIX + "/places/") :].strip("/")
+            if slug and "/" not in slug and ".." not in slug:
+                _send_redirect(self, f"{FIELD_PACK_PREFIX}/{slug}/", code=301)
+                return
         asset_path = LOGO_ASSETS.get(path.lstrip("/"))
         if asset_path is not None:
             if not asset_path.exists():
@@ -1092,15 +1139,37 @@ class WebHandler(BaseHTTPRequestHandler):
             self.send_header("Content-Length", "0")
             self.end_headers()
             return
-        asset_path = LOGO_ASSETS.get(path.lstrip("/"))
-        shell_file = _safe_shell_path(path)
-        field_pack_file = _safe_field_pack_path(path)
+        root_static = _safe_static_root_file(path)
+        if root_static is not None:
+            ctype = "text/plain; charset=utf-8" if root_static.name == "robots.txt" else "application/xml; charset=utf-8"
+            self.send_response(200)
+            self.send_header("Content-Type", ctype)
+            self.send_header("Content-Length", str(root_static.stat().st_size))
+            self.send_header("Cache-Control", "public, max-age=3600")
+            self.end_headers()
+            return
         if path in {DINNER_PATH, DINNER_PATH + "/"}:
             content_type = "text/html; charset=utf-8"
             length = len(_html_for_request(self.headers.get("Cookie")).encode("utf-8"))
-        elif asset_path is not None:
+            self.send_response(200)
+            self.send_header("Content-Type", content_type)
+            self.send_header("Content-Length", str(length))
+            self.end_headers()
+            return
+        if path.startswith(FIELD_PACK_PREFIX + "/places/"):
+            slug = path[len(FIELD_PACK_PREFIX + "/places/") :]
+            if slug.endswith(".html"):
+                slug = slug[: -len(".html")]
+            slug = slug.strip("/")
+            if slug and "/" not in slug and ".." not in slug:
+                _send_redirect(self, f"{FIELD_PACK_PREFIX}/{slug}/", code=301)
+                return
+        asset_path = LOGO_ASSETS.get(path.lstrip("/"))
+        shell_file = _safe_shell_path(path)
+        field_pack_file = _safe_field_pack_path(path)
+        if asset_path is not None and asset_path.exists():
             content_type = _image_content_type(asset_path)
-            length = asset_path.stat().st_size if asset_path.exists() else 0
+            length = asset_path.stat().st_size
         elif shell_file is not None:
             content_type = _static_content_type(shell_file)
             length = shell_file.stat().st_size

@@ -17,7 +17,7 @@ window.FP_PLACES = [
     blurb: "Smart animal shortlist \u2014 not 400 species.",
     lat: 32.74,
     lon: -96.82,
-    href: "places/dallas-zoo.html",
+    href: "/field-pack/dallas-zoo/",
     appHref: "/field-pack/app.html#/venue/dallas-zoo",
   },
   {
@@ -33,7 +33,7 @@ window.FP_PLACES = [
     blurb: "Kid-scale water life \u00b7 half-day list.",
     lat: 32.78,
     lon: -96.76,
-    href: "places/childrens-aquarium-dallas.html",
+    href: "/field-pack/childrens-aquarium-dallas/",
     appHref: "/field-pack/app.html#/venue/childrens-aquarium-dallas",
   },
   {
@@ -49,7 +49,7 @@ window.FP_PLACES = [
     blurb: "Play zones they control \u2014 climb, make, splash.",
     lat: 32.79,
     lon: -96.81,
-    href: "places/childrens-museum-perot.html",
+    href: "/field-pack/childrens-museum-perot/",
     appHref: "/field-pack/app.html#/venue/childrens-museum-perot",
   },
   {
@@ -65,7 +65,7 @@ window.FP_PLACES = [
     blurb: "DFW classic zoo \u2014 tight animal shortlist.",
     lat: 32.72,
     lon: -97.36,
-    href: "places/fort-worth-zoo.html",
+    href: "/field-pack/fort-worth-zoo/",
     appHref: "/field-pack/app.html#/venue/fort-worth-zoo",
   },
   {
@@ -81,7 +81,7 @@ window.FP_PLACES = [
     blurb: "Hands-on STEM for curious Austin kids.",
     lat: 30.31,
     lon: -97.71,
-    href: "places/thinkery.html",
+    href: "/field-pack/thinkery/",
     appHref: "/field-pack/app.html#/venue/thinkery",
   },
   {
@@ -97,7 +97,7 @@ window.FP_PLACES = [
     blurb: "A tight zoo day shortlist \u2014 Austin style.",
     lat: 30.24,
     lon: -97.93,
-    href: "places/austin-zoo.html",
+    href: "/field-pack/austin-zoo/",
     appHref: "/field-pack/app.html#/venue/austin-zoo",
   },
   {
@@ -113,7 +113,7 @@ window.FP_PLACES = [
     blurb: "Play-and-learn museum for SA family trips.",
     lat: 29.46,
     lon: -98.47,
-    href: "places/doseum.html",
+    href: "/field-pack/doseum/",
     appHref: "/field-pack/app.html#/venue/doseum",
   },
   {
@@ -129,7 +129,7 @@ window.FP_PLACES = [
     blurb: "Big-city Texas zoo \u2014 shortlist, not overwhelm.",
     lat: 29.72,
     lon: -95.39,
-    href: "places/houston-zoo.html",
+    href: "/field-pack/houston-zoo/",
     appHref: "/field-pack/app.html#/venue/houston-zoo",
   },
   {
@@ -145,7 +145,7 @@ window.FP_PLACES = [
     blurb: "World-famous zoo \u2014 focused shortlist.",
     lat: 32.74,
     lon: -117.15,
-    href: "places/san-diego-zoo.html",
+    href: "/field-pack/san-diego-zoo/",
     appHref: "/field-pack/app.html#/venue/san-diego-zoo",
   },
   {
@@ -161,7 +161,7 @@ window.FP_PLACES = [
     blurb: "Open-range adventure companion to the Zoo.",
     lat: 33.1,
     lon: -117.0,
-    href: "places/san-diego-safari-park.html",
+    href: "/field-pack/san-diego-safari-park/",
     appHref: "/field-pack/app.html#/venue/san-diego-safari-park",
   },
   {
@@ -177,7 +177,7 @@ window.FP_PLACES = [
     blurb: "Lakefront classic for Chicago family trips.",
     lat: 41.87,
     lon: -87.62,
-    href: "places/shedd-aquarium.html",
+    href: "/field-pack/shedd-aquarium/",
     appHref: "/field-pack/app.html#/venue/shedd-aquarium",
   },
   {
@@ -193,7 +193,7 @@ window.FP_PLACES = [
     blurb: "Dinos and wonders \u2014 hall-by-hall missions.",
     lat: 41.87,
     lon: -87.62,
-    href: "places/field-museum.html",
+    href: "/field-pack/field-museum/",
     appHref: "/field-pack/app.html#/venue/field-museum",
   },
   {
@@ -209,7 +209,7 @@ window.FP_PLACES = [
     blurb: "Giant tanks, kid wonder, tourist favorite.",
     lat: 33.76,
     lon: -84.4,
-    href: "places/georgia-aquarium.html",
+    href: "/field-pack/georgia-aquarium/",
     appHref: "/field-pack/app.html#/venue/georgia-aquarium",
   },
   {
@@ -225,7 +225,7 @@ window.FP_PLACES = [
     blurb: "Capital tourists + animal shortlist.",
     lat: 38.93,
     lon: -77.05,
-    href: "places/national-zoo.html",
+    href: "/field-pack/national-zoo/",
     appHref: "/field-pack/app.html#/venue/national-zoo",
   },
   {
@@ -241,7 +241,7 @@ window.FP_PLACES = [
     blurb: "Destination aquarium on the California coast.",
     lat: 36.62,
     lon: -121.9,
-    href: "places/monterey-bay-aquarium.html",
+    href: "/field-pack/monterey-bay-aquarium/",
     appHref: "/field-pack/app.html#/venue/monterey-bay-aquarium",
   },
   {
@@ -257,7 +257,7 @@ window.FP_PLACES = [
     blurb: "One of America's great children's museums.",
     lat: 39.81,
     lon: -86.16,
-    href: "places/indy-childrens-museum.html",
+    href: "/field-pack/indy-childrens-museum/",
     appHref: "/field-pack/app.html#/venue/indy-childrens-museum",
   },
   {
@@ -273,7 +273,7 @@ window.FP_PLACES = [
     blurb: "NYC classic \u2014 dinos, space, and wonder halls.",
     lat: 40.78,
     lon: -73.97,
-    href: "places/amnh.html",
+    href: "/field-pack/amnh/",
     appHref: "/field-pack/app.html#/venue/amnh",
   },
   {
@@ -289,7 +289,7 @@ window.FP_PLACES = [
     blurb: "Big NYC zoo day \u2014 keeps the day focused.",
     lat: 40.85,
     lon: -73.88,
-    href: "places/bronx-zoo.html",
+    href: "/field-pack/bronx-zoo/",
     appHref: "/field-pack/app.html#/venue/bronx-zoo",
   },
   {
@@ -305,7 +305,7 @@ window.FP_PLACES = [
     blurb: "LA family classic \u2014 tight animal shortlist.",
     lat: 34.15,
     lon: -118.28,
-    href: "places/la-zoo.html",
+    href: "/field-pack/la-zoo/",
     appHref: "/field-pack/app.html#/venue/la-zoo",
   },
   {
@@ -321,7 +321,7 @@ window.FP_PLACES = [
     blurb: "Pacific ocean day trip from LA.",
     lat: 33.76,
     lon: -118.2,
-    href: "places/aquarium-of-the-pacific.html",
+    href: "/field-pack/aquarium-of-the-pacific/",
     appHref: "/field-pack/app.html#/venue/aquarium-of-the-pacific",
   },
   {
@@ -337,7 +337,7 @@ window.FP_PLACES = [
     blurb: "Space Shuttle + hands-on science missions.",
     lat: 34.02,
     lon: -118.29,
-    href: "places/california-science-center.html",
+    href: "/field-pack/california-science-center/",
     appHref: "/field-pack/app.html#/venue/california-science-center",
   },
   {
@@ -353,7 +353,7 @@ window.FP_PLACES = [
     blurb: "Rainforest, aquarium, planetarium \u2014 one roof.",
     lat: 37.77,
     lon: -122.47,
-    href: "places/cal-academy.html",
+    href: "/field-pack/cal-academy/",
     appHref: "/field-pack/app.html#/venue/cal-academy",
   },
   {
@@ -369,7 +369,7 @@ window.FP_PLACES = [
     blurb: "Florida tourist edutainment \u2014 rockets, not ride parks.",
     lat: 28.57,
     lon: -80.65,
-    href: "places/kennedy-space-center.html",
+    href: "/field-pack/kennedy-space-center/",
     appHref: "/field-pack/app.html#/venue/kennedy-space-center",
   },
   {
@@ -385,7 +385,7 @@ window.FP_PLACES = [
     blurb: "Boston harbor classic aquarium.",
     lat: 42.36,
     lon: -71.05,
-    href: "places/new-england-aquarium.html",
+    href: "/field-pack/new-england-aquarium/",
     appHref: "/field-pack/app.html#/venue/new-england-aquarium",
   },
   {
@@ -401,7 +401,7 @@ window.FP_PLACES = [
     blurb: "Hands-on science on the Charles.",
     lat: 42.37,
     lon: -71.07,
-    href: "places/museum-of-science-boston.html",
+    href: "/field-pack/museum-of-science-boston/",
     appHref: "/field-pack/app.html#/venue/museum-of-science-boston",
   },
   {
@@ -417,7 +417,7 @@ window.FP_PLACES = [
     blurb: "America's first zoo \u2014 tight shortlist.",
     lat: 39.97,
     lon: -75.2,
-    href: "places/philadelphia-zoo.html",
+    href: "/field-pack/philadelphia-zoo/",
     appHref: "/field-pack/app.html#/venue/philadelphia-zoo",
   },
   {
@@ -433,7 +433,7 @@ window.FP_PLACES = [
     blurb: "Play-first museum for little kids.",
     lat: 39.98,
     lon: -75.21,
-    href: "places/please-touch-museum.html",
+    href: "/field-pack/please-touch-museum/",
     appHref: "/field-pack/app.html#/venue/please-touch-museum",
   },
   {
@@ -449,7 +449,7 @@ window.FP_PLACES = [
     blurb: "Inner Harbor tanks and dolphins.",
     lat: 39.28,
     lon: -76.61,
-    href: "places/national-aquarium-baltimore.html",
+    href: "/field-pack/national-aquarium-baltimore/",
     appHref: "/field-pack/app.html#/venue/national-aquarium-baltimore",
   },
   {
@@ -465,7 +465,7 @@ window.FP_PLACES = [
     blurb: "Dinos and gems on the Mall.",
     lat: 38.89,
     lon: -77.03,
-    href: "places/smithsonian-natural-history.html",
+    href: "/field-pack/smithsonian-natural-history/",
     appHref: "/field-pack/app.html#/venue/smithsonian-natural-history",
   },
   {
@@ -481,7 +481,7 @@ window.FP_PLACES = [
     blurb: "Planes and space on the Mall.",
     lat: 38.89,
     lon: -77.02,
-    href: "places/air-and-space.html",
+    href: "/field-pack/air-and-space/",
     appHref: "/field-pack/app.html#/venue/air-and-space",
   },
   {
@@ -497,7 +497,7 @@ window.FP_PLACES = [
     blurb: "Free-admission legend \u2014 focused shortlist.",
     lat: 38.64,
     lon: -90.29,
-    href: "places/st-louis-zoo.html",
+    href: "/field-pack/st-louis-zoo/",
     appHref: "/field-pack/app.html#/venue/st-louis-zoo",
   },
   {
@@ -513,7 +513,7 @@ window.FP_PLACES = [
     blurb: "Desert dome and aquarium wonders.",
     lat: 41.22,
     lon: -95.93,
-    href: "places/omaha-henry-doorly.html",
+    href: "/field-pack/omaha-henry-doorly/",
     appHref: "/field-pack/app.html#/venue/omaha-henry-doorly",
   },
   {
@@ -529,7 +529,7 @@ window.FP_PLACES = [
     blurb: "Twin Cities zoo day shortlist.",
     lat: 44.77,
     lon: -93.2,
-    href: "places/minnesota-zoo.html",
+    href: "/field-pack/minnesota-zoo/",
     appHref: "/field-pack/app.html#/venue/minnesota-zoo",
   },
   {
@@ -545,7 +545,7 @@ window.FP_PLACES = [
     blurb: "Mile-high zoo shortlist.",
     lat: 39.75,
     lon: -104.95,
-    href: "places/denver-zoo.html",
+    href: "/field-pack/denver-zoo/",
     appHref: "/field-pack/app.html#/venue/denver-zoo",
   },
   {
@@ -561,7 +561,7 @@ window.FP_PLACES = [
     blurb: "Dinos and space in Denver.",
     lat: 39.75,
     lon: -104.94,
-    href: "places/denver-museum-nature-science.html",
+    href: "/field-pack/denver-museum-nature-science/",
     appHref: "/field-pack/app.html#/venue/denver-museum-nature-science",
   },
   {
@@ -577,7 +577,7 @@ window.FP_PLACES = [
     blurb: "Seattle zoo in the city.",
     lat: 47.67,
     lon: -122.35,
-    href: "places/woodland-park-zoo.html",
+    href: "/field-pack/woodland-park-zoo/",
     appHref: "/field-pack/app.html#/venue/woodland-park-zoo",
   },
   {
@@ -593,7 +593,7 @@ window.FP_PLACES = [
     blurb: "Puget Sound waterfront tanks.",
     lat: 47.61,
     lon: -122.34,
-    href: "places/seattle-aquarium.html",
+    href: "/field-pack/seattle-aquarium/",
     appHref: "/field-pack/app.html#/venue/seattle-aquarium",
   },
   {
@@ -609,7 +609,7 @@ window.FP_PLACES = [
     blurb: "Portland zoo in the hills.",
     lat: 45.51,
     lon: -122.72,
-    href: "places/oregon-zoo.html",
+    href: "/field-pack/oregon-zoo/",
     appHref: "/field-pack/app.html#/venue/oregon-zoo",
   },
   {
@@ -625,7 +625,7 @@ window.FP_PLACES = [
     blurb: "Hands-on science on the river.",
     lat: 45.51,
     lon: -122.67,
-    href: "places/oregon-museum-science-industry.html",
+    href: "/field-pack/oregon-museum-science-industry/",
     appHref: "/field-pack/app.html#/venue/oregon-museum-science-industry",
   },
   {
@@ -641,7 +641,7 @@ window.FP_PLACES = [
     blurb: "Desert zoo day shortlist.",
     lat: 33.45,
     lon: -111.95,
-    href: "places/phoenix-zoo.html",
+    href: "/field-pack/phoenix-zoo/",
     appHref: "/field-pack/app.html#/venue/phoenix-zoo",
   },
   {
@@ -657,7 +657,7 @@ window.FP_PLACES = [
     blurb: "Hands-on science downtown.",
     lat: 33.45,
     lon: -112.07,
-    href: "places/arizona-science-center.html",
+    href: "/field-pack/arizona-science-center/",
     appHref: "/field-pack/app.html#/venue/arizona-science-center",
   },
   {
@@ -673,7 +673,7 @@ window.FP_PLACES = [
     blurb: "River city zoo shortlist.",
     lat: 29.46,
     lon: -98.47,
-    href: "places/san-antonio-zoo.html",
+    href: "/field-pack/san-antonio-zoo/",
     appHref: "/field-pack/app.html#/venue/san-antonio-zoo",
   },
   {
@@ -689,7 +689,7 @@ window.FP_PLACES = [
     blurb: "Rainforest and tanks downtown.",
     lat: 32.78,
     lon: -96.81,
-    href: "places/dallas-world-aquarium.html",
+    href: "/field-pack/dallas-world-aquarium/",
     appHref: "/field-pack/app.html#/venue/dallas-world-aquarium",
   },
   {
@@ -705,7 +705,7 @@ window.FP_PLACES = [
     blurb: "Dinos and hands-on science upstairs.",
     lat: 32.79,
     lon: -96.81,
-    href: "places/perot-museum.html",
+    href: "/field-pack/perot-museum/",
     appHref: "/field-pack/app.html#/venue/perot-museum",
   },
   {
@@ -721,7 +721,7 @@ window.FP_PLACES = [
     blurb: "Historic zoo \u2014 tight shortlist.",
     lat: 39.14,
     lon: -84.51,
-    href: "places/cincinnati-zoo.html",
+    href: "/field-pack/cincinnati-zoo/",
     appHref: "/field-pack/app.html#/venue/cincinnati-zoo",
   },
   {
@@ -737,7 +737,7 @@ window.FP_PLACES = [
     blurb: "Big Ohio zoo + aquarium vibes.",
     lat: 40.16,
     lon: -83.12,
-    href: "places/columbus-zoo.html",
+    href: "/field-pack/columbus-zoo/",
     appHref: "/field-pack/app.html#/venue/columbus-zoo",
   },
   {
@@ -753,7 +753,7 @@ window.FP_PLACES = [
     blurb: "RainForest and classic zoo day.",
     lat: 41.45,
     lon: -81.71,
-    href: "places/cleveland-metroparks-zoo.html",
+    href: "/field-pack/cleveland-metroparks-zoo/",
     appHref: "/field-pack/app.html#/venue/cleveland-metroparks-zoo",
   },
   {
@@ -769,7 +769,7 @@ window.FP_PLACES = [
     blurb: "Metro Detroit zoo shortlist.",
     lat: 42.48,
     lon: -83.16,
-    href: "places/detroit-zoo.html",
+    href: "/field-pack/detroit-zoo/",
     appHref: "/field-pack/app.html#/venue/detroit-zoo",
   },
   {
@@ -785,7 +785,7 @@ window.FP_PLACES = [
     blurb: "Wisconsin zoo day shortlist.",
     lat: 43.03,
     lon: -88.04,
-    href: "places/milwaukee-zoo.html",
+    href: "/field-pack/milwaukee-zoo/",
     appHref: "/field-pack/app.html#/venue/milwaukee-zoo",
   },
   {
@@ -801,7 +801,7 @@ window.FP_PLACES = [
     blurb: "Free lakefront zoo \u2014 focused list.",
     lat: 41.92,
     lon: -87.63,
-    href: "places/lincoln-park-zoo.html",
+    href: "/field-pack/lincoln-park-zoo/",
     appHref: "/field-pack/app.html#/venue/lincoln-park-zoo",
   },
   {
@@ -817,7 +817,7 @@ window.FP_PLACES = [
     blurb: "Submarine, trains, hands-on halls.",
     lat: 41.79,
     lon: -87.58,
-    href: "places/museum-of-science-industry-chi.html",
+    href: "/field-pack/museum-of-science-industry-chi/",
     appHref: "/field-pack/app.html#/venue/museum-of-science-industry-chi",
   },
   {
@@ -833,7 +833,7 @@ window.FP_PLACES = [
     blurb: "Music City zoo shortlist.",
     lat: 36.09,
     lon: -86.74,
-    href: "places/nashville-zoo.html",
+    href: "/field-pack/nashville-zoo/",
     appHref: "/field-pack/app.html#/venue/nashville-zoo",
   },
   {
@@ -849,7 +849,7 @@ window.FP_PLACES = [
     blurb: "Pandas and classic zoo day.",
     lat: 35.15,
     lon: -89.99,
-    href: "places/memphis-zoo.html",
+    href: "/field-pack/memphis-zoo/",
     appHref: "/field-pack/app.html#/venue/memphis-zoo",
   },
   {
@@ -865,7 +865,7 @@ window.FP_PLACES = [
     blurb: "Riverfront tanks and Gulf life.",
     lat: 29.95,
     lon: -90.06,
-    href: "places/audubon-aquarium.html",
+    href: "/field-pack/audubon-aquarium/",
     appHref: "/field-pack/app.html#/venue/audubon-aquarium",
   },
   {
@@ -881,7 +881,7 @@ window.FP_PLACES = [
     blurb: "Uptown New Orleans zoo.",
     lat: 29.92,
     lon: -90.13,
-    href: "places/audubon-zoo.html",
+    href: "/field-pack/audubon-zoo/",
     appHref: "/field-pack/app.html#/venue/audubon-zoo",
   },
   {
@@ -897,7 +897,7 @@ window.FP_PLACES = [
     blurb: "South Florida open-range zoo.",
     lat: 25.61,
     lon: -80.4,
-    href: "places/miami-zoo.html",
+    href: "/field-pack/miami-zoo/",
     appHref: "/field-pack/app.html#/venue/miami-zoo",
   },
   {
@@ -913,7 +913,7 @@ window.FP_PLACES = [
     blurb: "Aquarium + science downtown Miami.",
     lat: 25.78,
     lon: -80.19,
-    href: "places/frost-science.html",
+    href: "/field-pack/frost-science/",
     appHref: "/field-pack/app.html#/venue/frost-science",
   },
   {
@@ -929,7 +929,7 @@ window.FP_PLACES = [
     blurb: "Manatees and Florida zoo day.",
     lat: 28.01,
     lon: -82.47,
-    href: "places/tampa-zoo.html",
+    href: "/field-pack/tampa-zoo/",
     appHref: "/field-pack/app.html#/venue/tampa-zoo",
   },
   {
@@ -945,7 +945,7 @@ window.FP_PLACES = [
     blurb: "Florida coast tanks.",
     lat: 27.94,
     lon: -82.44,
-    href: "places/florida-aquarium.html",
+    href: "/field-pack/florida-aquarium/",
     appHref: "/field-pack/app.html#/venue/florida-aquarium",
   },
   {
@@ -961,7 +961,7 @@ window.FP_PLACES = [
     blurb: "Hands-on science (not theme parks).",
     lat: 28.57,
     lon: -81.37,
-    href: "places/orlando-science-center.html",
+    href: "/field-pack/orlando-science-center/",
     appHref: "/field-pack/app.html#/venue/orlando-science-center",
   },
   {
@@ -977,7 +977,7 @@ window.FP_PLACES = [
     blurb: "One of the world's largest natural-habitat zoos.",
     lat: 35.63,
     lon: -79.76,
-    href: "places/north-carolina-zoo.html",
+    href: "/field-pack/north-carolina-zoo/",
     appHref: "/field-pack/app.html#/venue/north-carolina-zoo",
   },
   {
@@ -993,7 +993,7 @@ window.FP_PLACES = [
     blurb: "Hands-on science in Charlotte.",
     lat: 35.23,
     lon: -80.84,
-    href: "places/discovery-place.html",
+    href: "/field-pack/discovery-place/",
     appHref: "/field-pack/app.html#/venue/discovery-place",
   },
   {
@@ -1009,7 +1009,7 @@ window.FP_PLACES = [
     blurb: "Coastal Virginia tanks and aviary.",
     lat: 36.82,
     lon: -76.0,
-    href: "places/virginia-aquarium.html",
+    href: "/field-pack/virginia-aquarium/",
     appHref: "/field-pack/app.html#/venue/virginia-aquarium",
   },
   {
@@ -1025,7 +1025,7 @@ window.FP_PLACES = [
     blurb: "Zoo + aquarium in one visit.",
     lat: 40.48,
     lon: -79.92,
-    href: "places/pittsburgh-zoo.html",
+    href: "/field-pack/pittsburgh-zoo/",
     appHref: "/field-pack/app.html#/venue/pittsburgh-zoo",
   },
   {
@@ -1041,7 +1041,7 @@ window.FP_PLACES = [
     blurb: "Dinos in Pittsburgh.",
     lat: 40.44,
     lon: -79.95,
-    href: "places/carnegie-natural-history.html",
+    href: "/field-pack/carnegie-natural-history/",
     appHref: "/field-pack/app.html#/venue/carnegie-natural-history",
   },
   {
@@ -1057,7 +1057,7 @@ window.FP_PLACES = [
     blurb: "Heartland zoo shortlist.",
     lat: 39.01,
     lon: -94.53,
-    href: "places/kansas-city-zoo.html",
+    href: "/field-pack/kansas-city-zoo/",
     appHref: "/field-pack/app.html#/venue/kansas-city-zoo",
   },
   {
@@ -1073,7 +1073,7 @@ window.FP_PLACES = [
     blurb: "Hands-on science downtown KC.",
     lat: 39.09,
     lon: -94.59,
-    href: "places/union-station-kc-science.html",
+    href: "/field-pack/union-station-kc-science/",
     appHref: "/field-pack/app.html#/venue/union-station-kc-science",
   },
   {
@@ -1089,7 +1089,7 @@ window.FP_PLACES = [
     blurb: "Mountain-west zoo day.",
     lat: 40.75,
     lon: -111.81,
-    href: "places/hogle-zoo.html",
+    href: "/field-pack/hogle-zoo/",
     appHref: "/field-pack/app.html#/venue/hogle-zoo",
   },
   {
@@ -1105,7 +1105,7 @@ window.FP_PLACES = [
     blurb: "Rio Grande zoo shortlist.",
     lat: 35.08,
     lon: -106.67,
-    href: "places/albuquerque-biopark.html",
+    href: "/field-pack/albuquerque-biopark/",
     appHref: "/field-pack/app.html#/venue/albuquerque-biopark",
   },
   {
@@ -1121,7 +1121,7 @@ window.FP_PLACES = [
     blurb: "Waikiki zoo day (map edge).",
     lat: 21.27,
     lon: -157.82,
-    href: "places/honolulu-zoo.html",
+    href: "/field-pack/honolulu-zoo/",
     appHref: "/field-pack/app.html#/venue/honolulu-zoo",
   },
   {
@@ -1137,7 +1137,7 @@ window.FP_PLACES = [
     blurb: "Pacific reef tanks by the beach.",
     lat: 21.27,
     lon: -157.82,
-    href: "places/waikiki-aquarium.html",
+    href: "/field-pack/waikiki-aquarium/",
     appHref: "/field-pack/app.html#/venue/waikiki-aquarium",
   },
   {
@@ -1153,7 +1153,7 @@ window.FP_PLACES = [
     blurb: "Zoo + aquarium near Seattle.",
     lat: 47.3,
     lon: -122.52,
-    href: "places/point-defiance-zoo.html",
+    href: "/field-pack/point-defiance-zoo/",
     appHref: "/field-pack/app.html#/venue/point-defiance-zoo",
   },
   {
@@ -1169,7 +1169,7 @@ window.FP_PLACES = [
     blurb: "Hands-on science in Nashville.",
     lat: 36.15,
     lon: -86.78,
-    href: "places/nashville-adventure-science.html",
+    href: "/field-pack/nashville-adventure-science/",
     appHref: "/field-pack/app.html#/venue/nashville-adventure-science",
   },
   {
@@ -1185,7 +1185,7 @@ window.FP_PLACES = [
     blurb: "Gardens and kid discovery trails.",
     lat: 32.82,
     lon: -96.72,
-    href: "places/dallas-arboretum.html",
+    href: "/field-pack/dallas-arboretum/",
     appHref: "/field-pack/app.html#/venue/dallas-arboretum",
   }
 ];
