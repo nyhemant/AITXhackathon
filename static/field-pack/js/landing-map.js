@@ -622,7 +622,6 @@
     const canPrintHunt = Boolean(ven && (ven.treasureHunt || []).length);
     const sample = sampleItemForVenue(venueId);
     const samplePhoto = sample ? photoSrc(sample.photo) : "";
-    const placePage = `/field-pack/${encodeURIComponent(venueId)}/`;
     const appHref = p.appHref || `/field-pack/app.html#/venue/${encodeURIComponent(venueId)}`;
 
     const sampleCard = sample
@@ -656,11 +655,13 @@
         }
       </div>
       ${sampleCard}
-      <p class="pd-more-link">
-        <a href="${placePage}">More animal Q&amp;A cards with photos on the ${escapeHtml(p.name)} page →</a>
-      </p>
+      ${
+        sample
+          ? `<p class="pd-more-hint">More cards in the full list</p>`
+          : ""
+      }
       <div class="pd-actions pd-actions-secondary">
-        <a class="btn btn-secondary" href="${appHref}">Open full interactive list →</a>
+        <a class="btn btn-secondary" href="${appHref}">Open full list →</a>
       </div>
     `;
     detail.querySelector("#pd-clear-selection")?.addEventListener("click", () => setVenue(""));
@@ -670,7 +671,7 @@
     });
     detail.querySelector("#pd-print-sample")?.addEventListener("click", () => {
       if (window.FPPrint && window.FPPrint.printSampleQaForVenue(venueId)) return;
-      location.href = placePage;
+      location.href = appHref;
     });
   }
 
