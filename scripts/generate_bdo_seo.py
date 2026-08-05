@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate indexable Baby's Day Out venue pages + sitemap/robots.
+"""Generate indexable Field Trip Kit venue pages + sitemap/robots.
 
 Run from repo root:
   python3 scripts/generate_bdo_seo.py
@@ -157,7 +157,7 @@ def unique_body(v: dict) -> str:
     )
 
     openers = [
-        f"Planning a kid-friendly day at {name} in {loc}? Baby's Day Out by 1Less gives you a free printable {hunt_word} and a short list of {label} so you are not staring at a map of hundreds of options.",
+        f"Planning a kid-friendly day at {name} in {loc}? Field Trip Kit by 1Less gives you a free printable {hunt_word} and a short list of {label} so you are not staring at a map of hundreds of options.",
         f"Visiting {name} with kids does not have to mean wandering until everyone is tired. This free one-page {hunt_word} for {loc} keeps the day focused and fun.",
         f"If you searched for a {name} scavenger hunt for kids or a printable checklist for {city}, you are in the right place — a finishable kit, not an encyclopedia.",
         f"{emoji + ' ' if emoji else ''}{name} is a classic {place} stop in {loc}. Families use this free printable scavenger hunt to give little explorers a clear mission without overpacking the day.",
@@ -178,7 +178,7 @@ def unique_body(v: dict) -> str:
         f"Weather or crowds in {state or city} can change plans. The shortlist and hunt are designed so you can reorder stops without losing the fun.",
     ]
     closes = [
-        f"{blurb + '. ' if blurb else ''}Baby's Day Out is free to use. Open the full interactive list when you want optional Q&A cards, or use the one-page hunt alone for a lighter outing.",
+        f"{blurb + '. ' if blurb else ''}Field Trip Kit is free to use. Open the full interactive list when you want optional Q&A cards, or use the one-page hunt alone for a lighter outing.",
         f"{'About this place: ' + blurb + '. ' if blurb else ''}Everything here is free to print and share with co-parents or grandparents joining the day.",
         f"{blurb + '. ' if blurb else ''}1Less keeps the promise simple: one less decision before a museum or zoo day with kids.",
     ]
@@ -300,7 +300,7 @@ def meta_for(v: dict) -> str:
     place, things, _ = type_bits(v)
     base = (
         f"Free printable {v['name']} scavenger hunt for kids in {city}. "
-        f"Short kid list of {things}, one-page treasure hunt — Baby's Day Out by 1Less."
+        f"Short kid list of {things}, one-page treasure hunt — Field Trip Kit by 1Less."
     )
     return base[:158]
 
@@ -399,13 +399,13 @@ def render_venue_page(v: dict) -> str:
         1Less
       </a>
       <p class="shell-product">
-        Baby's Day Out
-        <small>Kids' outings · shortlist &amp; hunt</small>
+        Field Trip Kit
+        <small>Zoo, aquarium &amp; museum days</small>
       </p>
       <div class="shell-more-wrap">
         <button type="button" class="shell-more" aria-expanded="false" aria-haspopup="true" aria-controls="shell-menu">More</button>
         <div id="shell-menu" class="shell-menu" hidden role="menu">
-          <a href="/field-pack/" role="menuitem">Baby's Day Out<small>Map &amp; places</small></a>
+          <a href="/field-pack/" role="menuitem">Field Trip Kit<small>Map &amp; outings</small></a>
           <a href="/dinner" role="menuitem">Dinner<small>Tonight’s meal</small></a>
         </div>
       </div>
@@ -422,7 +422,7 @@ def render_venue_page(v: dict) -> str:
         <p class="promise-pill">{esc(loc_chip)}</p>
         <h1>{esc(v.get('emoji',''))} {esc(h1)}</h1>
         <p class="lead">{esc(v.get('blurb') or f'Free printable scavenger hunt and kid shortlist for {v["name"]}.')}</p>
-        <p class="seo-brand-note">Part of <strong>Baby's Day Out</strong> by 1Less — free for families.</p>
+        <p class="seo-brand-note">Part of <strong>Field Trip Kit</strong> by 1Less — free for families.</p>
         <div class="landing-cta-row seo-cta no-print">
           <a class="btn btn-primary btn-big" href="{esc(map_href)}">Open on map →</a>
           <button type="button" class="btn btn-secondary btn-big" id="seo-print-hunt" data-venue="{esc(vid)}">
@@ -452,7 +452,7 @@ def render_venue_page(v: dict) -> str:
     <footer class="site-footer site-footer-slim no-print">
       <p>
         <a href="/field-pack/">All places</a> ·
-        <strong>1Less</strong> · Baby's Day Out ·
+        <strong>1Less</strong> · Field Trip Kit ·
         <a href="/dinner">Dinner</a>
       </p>
     </footer>

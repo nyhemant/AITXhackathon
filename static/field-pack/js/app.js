@@ -550,8 +550,8 @@
       })
       .join("");
     els.printSheet.innerHTML = `
-      <div class="ps-banner"><h1>BABY'S DAY OUT</h1>
-      <p>${escapeHtml(venue.name)} · Circle answers · No scores</p></div>
+      <div class="ps-banner"><h1>FIELD TRIP KIT</h1>
+      <p>${escapeHtml(venue.name)} · Mission card · Circle answers · No scores</p></div>
       <section class="ps-hero">
         <img src="${escapeAttr(item.photo)}" alt="" />
         <div>
@@ -598,8 +598,8 @@
     els.treasureSheet.innerHTML = `
       <div class="th-page">
         <div class="th-banner">
-          <h1>🗺️ TREASURE HUNT</h1>
-          <p>One page · Baby’s Day Out</p>
+          <h1>🗺️ Your mission</h1>
+          <p>${escapeHtml(venue.name)} · One-page hunt · Field Trip Kit</p>
         </div>
         <div class="th-meta">
           <p><strong>Place:</strong> ${escapeHtml(venue.name)}
@@ -607,7 +607,7 @@
           <p><strong>Explorer:</strong> <span class="write-in-line">________________</span>
           &nbsp;&nbsp; <strong>Date:</strong> ____________</p>
         </div>
-        <p class="th-intro">Check each box when you find it. No rush!</p>
+        <p class="th-intro">Your mission: check each box when you find it. No rush!</p>
         <div class="th-list">${huntHtml}</div>
         <div class="th-stars">
           <p class="th-stars-title">Star list (top picks)</p>
@@ -617,7 +617,7 @@
           <p class="th-map-title">Path doodle <span class="th-map-hint">— start → favorite → end</span></p>
           <div class="th-map-box"></div>
         </div>
-        <p class="th-footer">Optional after: open Baby's Day Out → tap a card → Q&A</p>
+        <p class="th-footer">Optional after: open Field Trip Kit → tap a card → Q&A</p>
       </div>`;
   }
 

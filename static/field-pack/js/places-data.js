@@ -1,5 +1,5 @@
 /**
- * Canonical places for Baby's Day Out map + landing.
+ * Canonical places for Field Trip Kit map + landing.
  * status: ready | soon
  * tier: top (default map ~20) | more (expanded map)
  */

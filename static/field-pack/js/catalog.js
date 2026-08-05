@@ -1,5 +1,5 @@
 /**
- * Baby's Day Out catalog — pre-cooked venues + shared items.
+ * Field Trip Kit catalog — pre-cooked venues + shared items.
  * packTemplate: "animals" | "exhibits"
  */
 window.FIELD_PACK_MISSIONS_ANIMALS = [
