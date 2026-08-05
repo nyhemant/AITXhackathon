@@ -34,7 +34,7 @@
     { id: "florida", label: "Florida", symbols: "🚀", states: ["FL"], cities: ["Merritt Island"] },
   ];
 
-  let mapScope = "top"; // top | more
+  let mapScope = "more"; // top | more — default: all places
   let selectedMetroId = "all";
   let selectedState = "";
   let selectedVenueId = "";
@@ -820,11 +820,20 @@
       console.error(err);
     }
 
+    // Default All places (not Popular top-N)
+    if (scopeTop) {
+      scopeTop.classList.remove("active");
+      scopeTop.setAttribute("aria-pressed", "false");
+    }
+    if (scopeMore) {
+      scopeMore.classList.add("active");
+      scopeMore.setAttribute("aria-pressed", "true");
+    }
     fillLocationSelect();
     fillVenueSelect();
     renderPins();
     showOverview();
-    scopeTop?.classList.add("active");
+    if (zoom < 1.2) setZoom(1.15);
 
     // Deep link: /field-pack/#/venue/dallas-zoo
     const fromHash = venueIdFromHash();
