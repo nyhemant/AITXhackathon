@@ -103,6 +103,17 @@
    * US scopes never include international pins (wrong basemap).
    * A selected state always uses the FULL US catalog for that state (not Popular top-N).
    */
+  function matchesMetro(p, m) {
+    if (!m || m.id === "all") return true;
+    if (m.regions && m.regions.includes(p.region)) return true;
+    if (m.cities && m.cities.includes(p.city)) return true;
+    if (m.states && m.states.includes(p.state) && !m.cities && !m.regions) return true;
+    if (m.id === "dallas") return p.region === "dfw" || ["Dallas", "Fort Worth"].includes(p.city);
+    if (m.id === "houston") return p.city === "Houston";
+    if (m.id === "austin") return p.city === "Austin";
+    return Boolean(m.states && m.states.includes(p.state) && (!m.cities || m.cities.includes(p.city)));
+  }
+
   function filteredPlaces() {
     let list;
     if (mapScope === "intl") {
@@ -114,26 +125,15 @@
         list = list.filter((p) => (p.country || "").toUpperCase() === selectedCountry);
       }
     } else if (selectedState) {
-      // Full catalog for this state — ignore Popular/top tier cap
+      // Full catalog for this state — ignore Popular/top tier cap and metro
       list = allPlaces.filter((p) => isUSPlace(p) && p.state === selectedState);
-    } else if (mapScope === "top") {
-      list = placesInScope();
-      if (selectedMetroId !== "all") {
-        const m = METRO_DEFS.find((x) => x.id === selectedMetroId);
-        if (m) {
-          list = list.filter((p) => {
-            if (m.regions && m.regions.includes(p.region)) return true;
-            if (m.cities && m.cities.includes(p.city)) return true;
-            if (m.states && m.states.includes(p.state) && !m.cities && !m.regions) return true;
-            if (m.id === "dallas") return p.region === "dfw" || ["Dallas", "Fort Worth"].includes(p.city);
-            if (m.id === "houston") return p.city === "Houston";
-            if (m.id === "austin") return p.city === "Austin";
-            return m.states && m.states.includes(p.state) && (!m.cities || m.cities.includes(p.city));
-          });
-        }
-      }
     } else {
-      list = placesInScope(); // all US places
+      // Popular or All places (US) — metro filter applies on both
+      list = placesInScope();
+      if (selectedMetroId && selectedMetroId !== "all") {
+        const m = METRO_DEFS.find((x) => x.id === selectedMetroId);
+        if (m) list = list.filter((p) => matchesMetro(p, m));
+      }
     }
     return list.sort((a, b) => {
       if (mapScope === "intl") {
@@ -345,10 +345,13 @@
     venueSelect.innerHTML = "";
     const ph = document.createElement("option");
     ph.value = "";
-    if (selectedState) {
+    if (mapScope === "intl" && selectedCountry) {
+      const cname = (list[0] && list[0].countryName) || selectedCountry;
+      ph.textContent = `Places in ${cname} (${list.length})…`;
+    } else if (mapScope === "intl") {
+      ph.textContent = `Choose a place worldwide (${list.length})…`;
+    } else if (selectedState) {
       ph.textContent = `All places in ${selectedState} (${list.length})…`;
-    } else if (mapScope === "top") {
-      ph.textContent = `Choose a place (${list.length})…`;
     } else {
       ph.textContent = `Choose a place (${list.length})…`;
     }
@@ -386,10 +389,14 @@
         }
       } else if (selectedState) {
         mapCount.textContent = `Showing all ${list.length} places in ${selectedState} — pick one below or tap a pin`;
+      } else if (selectedMetroId && selectedMetroId !== "all") {
+        const m = METRO_DEFS.find((x) => x.id === selectedMetroId);
+        const label = (m && m.label) || "this area";
+        mapCount.textContent = `Showing ${list.length} places in ${label}`;
       } else if (mapScope === "top") {
-        mapCount.textContent = `Showing ${topN} popular places — switch to “All places” for more`;
+        mapCount.textContent = `Showing ${list.length} popular places — switch to “All places” for more`;
       } else {
-        mapCount.textContent = `Showing ${usCount} places — tap a pin or pick from the lists`;
+        mapCount.textContent = `Showing ${list.length} places — tap a pin or pick from the lists`;
       }
     }
   }
@@ -453,6 +460,8 @@
     clampPan();
     svgEl.style.transformOrigin = "center center";
     svgEl.style.transform = `translate(${panX}px, ${panY}px) scale(${zoom})`;
+    updateMapCursor();
+    updateZoomButtons();
   }
 
   function clampZoom(z) {
@@ -535,6 +544,48 @@
       }
       if (svgEl) svgEl.style.transition = "transform 0.15s ease";
       renderPins();
+    }
+  }
+
+  /** Center map on a place (svg coords → pan), optional target zoom. Does not filter. */
+  function panToPlace(p, targetZoom) {
+    if (!p || !svgEl || !mapViewport) return;
+    const pt = pinXY(p);
+    if (!pt) return;
+    const z = clampZoom(targetZoom != null ? targetZoom : Math.max(zoom, basemap === "world" ? 2.0 : 1.7));
+    const baseW = svgEl.offsetWidth || mapViewport.clientWidth;
+    const baseH = svgEl.offsetHeight || mapViewport.clientHeight;
+    const vb = svgEl.viewBox && svgEl.viewBox.baseVal;
+    const vw = (vb && vb.width) || (basemap === "world" ? 1000 : 959);
+    const vh = (vb && vb.height) || (basemap === "world" ? 500 : 593);
+    // Local coords relative to element center (transform-origin center)
+    const lx = (pt.x / vw) * baseW - baseW / 2;
+    const ly = (pt.y / vh) * baseH - baseH / 2;
+    zoom = z;
+    panX = -lx * z;
+    panY = -ly * z;
+    if (svgEl) svgEl.style.transition = "transform 0.2s ease";
+    applyMapTransform();
+    updateMapCursor();
+  }
+
+  function updateMapCursor() {
+    if (!mapViewport) return;
+    mapViewport.style.cursor = zoom > 1.001 ? "grab" : "default";
+  }
+
+  function updateZoomButtons() {
+    if (btnZoomIn) {
+      const maxed = zoom >= MAX_ZOOM - 0.01;
+      btnZoomIn.disabled = maxed;
+      btnZoomIn.setAttribute("aria-disabled", maxed ? "true" : "false");
+      btnZoomIn.title = maxed ? "Maximum zoom" : "Zoom in";
+    }
+    if (btnZoomOut) {
+      const mined = zoom <= MIN_ZOOM + 0.01;
+      btnZoomOut.disabled = mined;
+      btnZoomOut.setAttribute("aria-disabled", mined ? "true" : "false");
+      btnZoomOut.title = mined ? "Minimum zoom" : "Zoom out";
     }
   }
 
@@ -983,12 +1034,14 @@
   function showOverview() {
     const list = filteredPlaces();
     const readyN = mapScope === "intl" ? list.filter((p) => p.status === "ready").length : 0;
-    const scopeNote =
-      mapScope === "intl"
-        ? `${list.length} places worldwide${readyN ? ` · ${readyN} ready to print` : ""} — pick a city pin or use Place`
-        : mapScope === "top"
-          ? `${list.length} popular places on the map`
-          : `${list.length} places on the map`;
+    let scopeNote;
+    if (mapScope === "intl") {
+      scopeNote = `${list.length} places on the world map${readyN ? ` · ${readyN} ready to print` : ""} — pick a pin or use Place. ⟲ resets the view.`;
+    } else if (mapScope === "top") {
+      scopeNote = `${list.length} popular places on the map`;
+    } else {
+      scopeNote = `${list.length} places on the map`;
+    }
     detail.className = "pin-detail empty";
     detail.innerHTML = `
       <p class="pin-detail-kicker">What you get</p>
@@ -1086,8 +1139,10 @@
       ${blurb ? `<p class="pd-blurb">${escapeHtml(blurb)}</p>` : ""}
       ${
         isSoon
-          ? `<p class="pd-hint">International pack in progress — shortlist and printable hunt coming next.</p>`
-          : ""
+          ? `<p class="pd-hint">Pack in progress — shortlist and printable hunt coming next.</p>`
+          : !canPrintHunt
+            ? `<p class="pd-hint">Open the full list for this place’s kid shortlist and hunt.</p>`
+            : ""
       }
       <div class="pd-actions">
         ${
@@ -1136,39 +1191,64 @@
     selectedVenueId = venueId;
     const p = placeById(venueId);
 
-    // Deep-link / pin: switch basemap only when needed (US default stays until intl)
+    // Deep-link / pin: switch basemap only when needed (US default stays until intl).
+    // Do not auto-apply country/region filters — that hid other pins and felt broken.
+    let basemapSwitched = false;
     if (p && isIntlPlace(p) && mapScope !== "intl") {
       mapScope = "intl";
       selectedMetroId = "all";
       selectedState = "";
-      selectedCountry = (p.country || "").toUpperCase();
+      selectedCountry = "";
+      selectedRegion = "all";
       updateScopeButtons();
       await loadBasemap("world");
+      basemapSwitched = true;
     } else if (p && isUSPlace(p) && mapScope === "intl") {
       mapScope = "more";
       selectedCountry = "";
+      selectedRegion = "all";
       updateScopeButtons();
       await loadBasemap("us");
+      basemapSwitched = true;
     } else if (p && mapScope === "top" && isUSPlace(p) && !(TOP_IDS.has(p.id) || p.tier === "top")) {
       // Don't call setScope (resets selection) — just flip mode quietly if needed
       mapScope = "more";
       updateScopeButtons();
-      fillLocationSelect();
     }
 
-    if (p && mapScope === "intl" && p.country) {
-      selectedCountry = (p.country || "").toUpperCase();
-      if (stateSelect) stateSelect.value = selectedCountry;
-    }
+    // If a US state filter is active and the pin is outside it, clear filter so the pin stays on-map
     if (p && mapScope !== "intl" && selectedState && p.state && p.state !== selectedState) {
-      selectedState = p.state;
-      if (stateSelect) stateSelect.value = selectedState;
+      selectedState = "";
+      if (stateSelect) stateSelect.value = "";
     }
+    // If metro filter excludes this place, clear metro so pin remains visible
+    if (p && mapScope !== "intl" && selectedMetroId && selectedMetroId !== "all") {
+      const m = METRO_DEFS.find((x) => x.id === selectedMetroId);
+      if (m && !matchesMetro(p, m)) {
+        selectedMetroId = "all";
+      }
+    }
+    // Intl region/country filters: clear if they would hide the selected place
+    if (p && mapScope === "intl") {
+      if (selectedRegion && selectedRegion !== "all" && p.region !== selectedRegion) {
+        selectedRegion = "all";
+      }
+      if (selectedCountry && (p.country || "").toUpperCase() !== selectedCountry) {
+        selectedCountry = "";
+      }
+    }
+
     fillLocationSelect();
     fillVenueSelect();
     venueSelect.value = venueId;
     showVenueDetail(venueId);
     renderPins();
+    // Frame the place without hiding siblings
+    if (p && opts.fromPin !== false) {
+      const wantZ =
+        basemap === "world" ? Math.max(zoom, basemapSwitched ? 2.1 : 1.8) : Math.max(zoom, 1.6);
+      panToPlace(p, wantZ);
+    }
     if (!skipHash) syncVenueHash(venueId);
     if (opts.scroll !== false) {
       document.getElementById("us-map")?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -1249,6 +1329,7 @@
     fillVenueSelect();
     renderPins();
     showOverview();
+    syncVenueHash("");
     if (mapScope === "more" && basemap === "us") setZoom(1.15);
     else setZoom(1);
   }
@@ -1281,6 +1362,8 @@
       fillVenueSelect();
       renderPins();
       showOverview();
+      if (selectedMetroId && selectedMetroId !== "all") setZoom(Math.max(zoom, 1.5));
+      else setZoom(mapScope === "more" ? 1.15 : 1);
     });
     if (stateSelect) {
       stateSelect.addEventListener("change", () => {

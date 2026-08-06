@@ -942,9 +942,13 @@
   backdrop-filter: blur(10px);
   transition: background 0.12s ease, border-color 0.12s ease;
 }
-.zoom-btn:hover {
+.zoom-btn:hover:not(:disabled) {
   border-color: var(--teal, #0f5c5c);
   background: #e8f6f0;
+}
+.zoom-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
 @media (max-width: 520px) {
   .scope-btn {
