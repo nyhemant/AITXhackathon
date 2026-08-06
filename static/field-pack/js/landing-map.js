@@ -418,15 +418,43 @@
     }
   }
 
+  /**
+   * Clamp pan so the scaled map always covers the viewport (no white gutters).
+   * Standard map-pan bound: max |pan| = (scaledSize - viewSize) / 2 with center origin.
+   */
+  function clampPan() {
+    if (!mapViewport || !svgEl) {
+      panX = 0;
+      panY = 0;
+      return;
+    }
+    if (zoom <= 1.001) {
+      panX = 0;
+      panY = 0;
+      return;
+    }
+    const view = mapViewport.getBoundingClientRect();
+    // Layout size without CSS transform
+    const baseW = svgEl.offsetWidth || view.width;
+    const baseH = svgEl.offsetHeight || view.height;
+    const scaledW = baseW * zoom;
+    const scaledH = baseH * zoom;
+    const maxX = Math.max(0, (scaledW - view.width) / 2);
+    const maxY = Math.max(0, (scaledH - view.height) / 2);
+    panX = Math.min(maxX, Math.max(-maxX, panX));
+    panY = Math.min(maxY, Math.max(-maxY, panY));
+  }
+
   function applyMapTransform() {
     if (!svgEl) return;
+    clampPan();
     svgEl.style.transformOrigin = "center center";
     svgEl.style.transform = `translate(${panX}px, ${panY}px) scale(${zoom})`;
   }
 
   function setZoom(z) {
     zoom = Math.min(3.5, Math.max(1, z));
-    if (zoom === 1) {
+    if (zoom <= 1) {
       panX = 0;
       panY = 0;
     }
@@ -457,6 +485,79 @@
     }
     applyMapTransform();
     renderPins();
+  }
+
+  /** Pointer drag-pan with bounds (Leaflet-style maxBounds clamp). */
+  function bindMapDrag() {
+    if (!mapViewport) return;
+    let drag = null; // { id, x, y, panX0, panY0, moved }
+
+    const onMove = (e) => {
+      if (!drag || e.pointerId !== drag.id) return;
+      const dx = e.clientX - drag.x;
+      const dy = e.clientY - drag.y;
+      if (!drag.moved && dx * dx + dy * dy > 25) drag.moved = true;
+      if (!drag.moved) return;
+      panX = drag.panX0 + dx;
+      panY = drag.panY0 + dy;
+      applyMapTransform();
+    };
+
+    const endDrag = (e) => {
+      if (!drag || (e && e.pointerId !== drag.id)) return;
+      const wasMoved = drag.moved;
+      try {
+        mapViewport.releasePointerCapture(drag.id);
+      } catch (_) {
+        /* already released */
+      }
+      drag = null;
+      mapViewport.classList.remove("is-dragging");
+      if (svgEl) svgEl.style.transition = "transform 0.15s ease";
+      applyMapTransform();
+      if (wasMoved) {
+        // Swallow the synthetic click that can follow a drag
+        const swallow = (ev) => {
+          ev.preventDefault();
+          ev.stopPropagation();
+          mapViewport.removeEventListener("click", swallow, true);
+        };
+        mapViewport.addEventListener("click", swallow, true);
+        setTimeout(() => mapViewport.removeEventListener("click", swallow, true), 0);
+      }
+    };
+
+    mapViewport.addEventListener("pointerdown", (e) => {
+      if (e.button != null && e.button !== 0) return;
+      if (e.target.closest && e.target.closest(".venue-pin, .zoom-btn, .scope-btn, button, a, select")) {
+        return;
+      }
+      // Only pan when zoomed — at 1:1 there is no room to move without white space
+      if (zoom <= 1.001) return;
+      drag = {
+        id: e.pointerId,
+        x: e.clientX,
+        y: e.clientY,
+        panX0: panX,
+        panY0: panY,
+        moved: false,
+      };
+      mapViewport.classList.add("is-dragging");
+      if (svgEl) svgEl.style.transition = "none";
+      try {
+        mapViewport.setPointerCapture(e.pointerId);
+      } catch (_) {
+        /* ignore */
+      }
+    });
+    mapViewport.addEventListener("pointermove", onMove);
+    mapViewport.addEventListener("pointerup", endDrag);
+    mapViewport.addEventListener("pointercancel", endDrag);
+    mapViewport.addEventListener("lostpointercapture", endDrag);
+
+    window.addEventListener("resize", () => {
+      applyMapTransform();
+    });
   }
 
   function pinXY(p) {
@@ -1107,16 +1208,21 @@
       const r = mapViewport.getBoundingClientRect();
       zoomToClientPoint(r.left + r.width / 2, r.top + r.height / 2, zoom - 0.35);
     });
-    btnZoomReset?.addEventListener("click", () => setZoom(1));
+    // Reset view: zoom 1 + pan 0 (escape hatch if you feel "lost")
+    btnZoomReset?.addEventListener("click", () => {
+      panX = 0;
+      panY = 0;
+      setZoom(1);
+    });
 
-    // Double-click empty map: zoom in centered on that point (no drag-pan)
+    // Double-click empty map: zoom in centered on that point
     mapViewport?.addEventListener("dblclick", (e) => {
       if (e.target.closest && e.target.closest(".venue-pin")) return;
       e.preventDefault();
       zoomToClientPoint(e.clientX, e.clientY, Math.min(3.5, zoom + 0.75));
     });
 
-    // Wheel zoom toward cursor only — dragging disabled (left the USA / felt broken)
+    // Wheel zoom toward cursor; pan is clamped so map never shows empty gutters
     mapViewport?.addEventListener(
       "wheel",
       (e) => {
@@ -1125,6 +1231,8 @@
       },
       { passive: false }
     );
+
+    bindMapDrag();
 
     // Default: US map + All places (never world until International is clicked)
     await loadBasemap("us");

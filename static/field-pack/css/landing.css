@@ -910,10 +910,17 @@
 .map-viewport {
   overflow: hidden;
   border-radius: calc(var(--radius-lg, 24px) - 4px);
-  touch-action: manipulation;
-  cursor: default;
+  /* none = allow custom drag-pan without page scroll fighting */
+  touch-action: none;
+  cursor: grab;
   min-height: 280px;
   user-select: none;
+}
+.map-viewport.is-dragging {
+  cursor: grabbing;
+}
+.map-viewport.is-dragging .venue-pin {
+  pointer-events: none;
 }
 .map-zoom-bar {
   display: flex;
