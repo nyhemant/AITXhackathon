@@ -56,11 +56,14 @@
   let selectedCountry = "";
   let selectedVenueId = "";
   let clusterFocusIds = []; // nearby group open in side panel
+  const MIN_ZOOM = 1;
+  const MAX_ZOOM = 4;
   let zoom = 1;
   let panX = 0;
   let panY = 0;
   let svgEl = null;
   let pinsLayer = null;
+  let pinRenderTimer = null;
 
   function isUSPlace(p) {
     if (!p) return false;
@@ -452,8 +455,12 @@
     svgEl.style.transform = `translate(${panX}px, ${panY}px) scale(${zoom})`;
   }
 
+  function clampZoom(z) {
+    return Math.min(MAX_ZOOM, Math.max(MIN_ZOOM, z));
+  }
+
   function setZoom(z) {
-    zoom = Math.min(3.5, Math.max(1, z));
+    zoom = clampZoom(z);
     if (zoom <= 1) {
       panX = 0;
       panY = 0;
@@ -487,8 +494,12 @@
     else setZoom(1);
   }
 
-  /** Zoom so the viewport point (clientX/Y) becomes the center. */
-  function zoomToClientPoint(clientX, clientY, newZoom) {
+  /**
+   * Zoom toward a viewport point (cursor / pinch center).
+   * continuous: skip pin rebuild every frame (trackpad pinch / wheel stream).
+   */
+  function zoomToClientPoint(clientX, clientY, newZoom, opts = {}) {
+    const continuous = opts.continuous === true;
     if (!mapViewport) {
       setZoom(newZoom);
       return;
@@ -497,7 +508,7 @@
     const ox = clientX - rect.left - rect.width / 2;
     const oy = clientY - rect.top - rect.height / 2;
     const z0 = zoom || 1;
-    const z1 = Math.min(3.5, Math.max(1, newZoom));
+    const z1 = clampZoom(newZoom);
     const contentX = (ox - panX) / z0;
     const contentY = (oy - panY) / z0;
     zoom = z1;
@@ -508,8 +519,85 @@
       panX = -contentX * zoom;
       panY = -contentY * zoom;
     }
+    if (continuous && svgEl) svgEl.style.transition = "none";
     applyMapTransform();
-    renderPins();
+    if (continuous) {
+      if (pinRenderTimer) clearTimeout(pinRenderTimer);
+      pinRenderTimer = setTimeout(() => {
+        pinRenderTimer = null;
+        if (svgEl) svgEl.style.transition = "transform 0.15s ease";
+        renderPins();
+      }, 90);
+    } else {
+      if (pinRenderTimer) {
+        clearTimeout(pinRenderTimer);
+        pinRenderTimer = null;
+      }
+      if (svgEl) svgEl.style.transition = "transform 0.15s ease";
+      renderPins();
+    }
+  }
+
+  /** Normalize wheel delta to roughly pixel units (mouse, trackpad, Firefox). */
+  function wheelDeltaPixels(e) {
+    let dy = e.deltaY;
+    if (e.deltaMode === 1) dy *= 16; // lines
+    else if (e.deltaMode === 2) dy *= (mapViewport?.clientHeight || 400); // pages
+    return dy;
+  }
+
+  /**
+   * Wheel + Mac trackpad pinch (ctrl+wheel) + Safari gesture events.
+   * Multiplicative zoom toward cursor — standard map practice.
+   */
+  function bindMapZoom() {
+    if (!mapViewport) return;
+
+    mapViewport.addEventListener(
+      "wheel",
+      (e) => {
+        // Always preventDefault so Mac pinch does not zoom the whole page
+        e.preventDefault();
+        const dy = wheelDeltaPixels(e);
+        if (!dy) return;
+        // Pinch (ctrlKey on Chrome/Safari/Firefox Mac) needs higher sensitivity;
+        // mouse wheel notches are larger absolute deltas.
+        const sens = e.ctrlKey ? 0.012 : 0.0018;
+        let factor = Math.exp(-dy * sens);
+        // Cap per-event so a single notch is gentle; stream of pinch events stays smooth
+        factor = Math.min(1.2, Math.max(1 / 1.2, factor));
+        zoomToClientPoint(e.clientX, e.clientY, zoom * factor, { continuous: true });
+      },
+      { passive: false }
+    );
+
+    // Safari legacy trackpad pinch (when not fully covered by ctrl+wheel)
+    let gestureBaseZoom = 1;
+    const onGesture = (e) => {
+      e.preventDefault();
+      if (e.type === "gesturestart") {
+        gestureBaseZoom = zoom;
+        if (svgEl) svgEl.style.transition = "none";
+        return;
+      }
+      if (e.type === "gesturechange") {
+        const scale = typeof e.scale === "number" && e.scale > 0 ? e.scale : 1;
+        const rect = mapViewport.getBoundingClientRect();
+        zoomToClientPoint(
+          rect.left + rect.width / 2,
+          rect.top + rect.height / 2,
+          gestureBaseZoom * scale,
+          { continuous: true }
+        );
+        return;
+      }
+      // gestureend
+      if (svgEl) svgEl.style.transition = "transform 0.15s ease";
+      renderPins();
+    };
+    mapViewport.addEventListener("gesturestart", onGesture, { passive: false });
+    mapViewport.addEventListener("gesturechange", onGesture, { passive: false });
+    mapViewport.addEventListener("gestureend", onGesture, { passive: false });
   }
 
   /** Pointer drag-pan with bounds (Leaflet-style maxBounds clamp). */
@@ -830,7 +918,7 @@
         e.stopPropagation();
         e.preventDefault();
         activate();
-        zoomToClientPoint(e.clientX, e.clientY, Math.min(3.5, zoom + 0.75));
+        zoomToClientPoint(e.clientX, e.clientY, zoom * 1.5);
       });
       g.addEventListener("keydown", (e) => {
         if (e.key === "Enter" || e.key === " ") {
@@ -1224,14 +1312,14 @@
     venueSelect.addEventListener("change", () => void setVenue(venueSelect.value));
 
     btnZoomIn?.addEventListener("click", () => {
-      if (!mapViewport) return setZoom(zoom + 0.35);
+      if (!mapViewport) return setZoom(zoom * 1.35);
       const r = mapViewport.getBoundingClientRect();
-      zoomToClientPoint(r.left + r.width / 2, r.top + r.height / 2, zoom + 0.35);
+      zoomToClientPoint(r.left + r.width / 2, r.top + r.height / 2, zoom * 1.35);
     });
     btnZoomOut?.addEventListener("click", () => {
-      if (!mapViewport) return setZoom(zoom - 0.35);
+      if (!mapViewport) return setZoom(zoom / 1.35);
       const r = mapViewport.getBoundingClientRect();
-      zoomToClientPoint(r.left + r.width / 2, r.top + r.height / 2, zoom - 0.35);
+      zoomToClientPoint(r.left + r.width / 2, r.top + r.height / 2, zoom / 1.35);
     });
     // Reset: full original view for current scope (filters + pan + zoom + all pins)
     btnZoomReset?.addEventListener("click", () => resetMapView());
@@ -1240,19 +1328,10 @@
     mapViewport?.addEventListener("dblclick", (e) => {
       if (e.target.closest && e.target.closest(".venue-pin")) return;
       e.preventDefault();
-      zoomToClientPoint(e.clientX, e.clientY, Math.min(3.5, zoom + 0.75));
+      zoomToClientPoint(e.clientX, e.clientY, zoom * 1.6);
     });
 
-    // Wheel zoom toward cursor; pan is clamped so map never shows empty gutters
-    mapViewport?.addEventListener(
-      "wheel",
-      (e) => {
-        e.preventDefault();
-        zoomToClientPoint(e.clientX, e.clientY, zoom + (e.deltaY < 0 ? 0.15 : -0.15));
-      },
-      { passive: false }
-    );
-
+    bindMapZoom();
     bindMapDrag();
 
     // Default: US map + All places (never world until International is clicked)
