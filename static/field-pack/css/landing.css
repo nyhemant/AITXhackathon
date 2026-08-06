@@ -234,6 +234,19 @@
   display: block;
 }
 
+/* World basemap: soft ocean frame so continents read clearly */
+.map-canvas-wrap.is-world-map {
+  background: linear-gradient(180deg, #c5e2ec 0%, #d7ebf2 45%, #b9dce8 100%);
+  border-color: rgba(15, 92, 92, 0.16);
+}
+.map-canvas-wrap.is-world-map .map-viewport {
+  background: transparent;
+}
+.world-real-map {
+  /* Equirectangular 2:1 — pin projection matches viewBox 0 0 1000 500 */
+  aspect-ratio: 2 / 1;
+}
+
 .map-loading {
   margin: 0;
   padding: 48px;

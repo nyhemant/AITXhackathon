@@ -971,11 +971,15 @@
     const token = ++mapLoadToken;
     const url =
       next === "world"
-        ? "/field-pack/img/world-map.svg?v=1"
+        ? "/field-pack/img/world-map.svg?v=2"
         : "/field-pack/img/usa-map.svg?v=5";
     if (mapHost) {
       mapHost.innerHTML = `<p class="map-loading">Loading map…</p>`;
       mapHost.setAttribute("aria-label", next === "world" ? "World map" : "United States map");
+    }
+    const canvasWrap = mapHost && mapHost.closest(".map-canvas-wrap");
+    if (canvasWrap) {
+      canvasWrap.classList.toggle("is-world-map", next === "world");
     }
     try {
       const res = await fetch(url);
