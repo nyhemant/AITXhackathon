@@ -651,7 +651,203 @@
     mapViewport.addEventListener("gestureend", onGesture, { passive: false });
   }
 
-  /** Pointer drag-pan with bounds (Leaflet-style maxBounds clamp). */
+  function swallowNextClick() {
+    const swallow = (ev) => {
+      ev.preventDefault();
+      ev.stopPropagation();
+      mapViewport.removeEventListener("click", swallow, true);
+    };
+    mapViewport.addEventListener("click", swallow, true);
+    setTimeout(() => mapViewport.removeEventListener("click", swallow, true), 0);
+  }
+
+  function endMapInteraction(moved) {
+    mapViewport.classList.remove("is-dragging");
+    if (svgEl) svgEl.style.transition = "transform 0.15s ease";
+    applyMapTransform();
+    if (pinRenderTimer) {
+      clearTimeout(pinRenderTimer);
+      pinRenderTimer = null;
+    }
+    renderPins();
+    if (moved) swallowNextClick();
+  }
+
+  /**
+   * Touch: one-finger pan + two-finger pinch/pan (iPhone / touch screens).
+   * Pointer events only track one finger on iOS — multi-touch needs TouchEvent.
+   */
+  function bindMapTouchGestures() {
+    if (!mapViewport) return;
+
+    let mode = null; // null | "pan" | "pinch"
+    let panState = null;
+    let pinchState = null;
+    let moved = false;
+
+    const touchDist = (a, b) => {
+      const dx = a.clientX - b.clientX;
+      const dy = a.clientY - b.clientY;
+      return Math.hypot(dx, dy) || 1;
+    };
+    const touchMid = (a, b) => ({
+      x: (a.clientX + b.clientX) / 2,
+      y: (a.clientY + b.clientY) / 2,
+    });
+
+    const startPan = (t) => {
+      mode = "pan";
+      panState = {
+        x: t.clientX,
+        y: t.clientY,
+        panX0: panX,
+        panY0: panY,
+      };
+      moved = false;
+      mapViewport.classList.add("is-dragging");
+      if (svgEl) svgEl.style.transition = "none";
+    };
+
+    const startPinch = (t0, t1) => {
+      const mid = touchMid(t0, t1);
+      mode = "pinch";
+      pinchState = {
+        dist0: touchDist(t0, t1),
+        zoom0: zoom,
+        midX: mid.x,
+        midY: mid.y,
+        panX0: panX,
+        panY0: panY,
+      };
+      moved = false;
+      mapViewport.classList.add("is-dragging");
+      if (svgEl) svgEl.style.transition = "none";
+    };
+
+    mapViewport.addEventListener(
+      "touchstart",
+      (e) => {
+        const onChrome =
+          e.target.closest &&
+          e.target.closest(".venue-pin, .zoom-btn, .scope-btn, button, a, select, .vpin-dismiss");
+
+        if (e.touches.length >= 2) {
+          // Two-finger always owned by the map (pinch / pan)
+          e.preventDefault();
+          startPinch(e.touches[0], e.touches[1]);
+          return;
+        }
+
+        if (e.touches.length === 1) {
+          if (onChrome) {
+            mode = null;
+            panState = null;
+            pinchState = null;
+            return;
+          }
+          // One-finger pan only when zoomed (same rule as desktop)
+          if (zoom <= 1.001) return;
+          e.preventDefault();
+          startPan(e.touches[0]);
+        }
+      },
+      { passive: false }
+    );
+
+    mapViewport.addEventListener(
+      "touchmove",
+      (e) => {
+        if (!mode) return;
+
+        if (mode === "pinch" && e.touches.length >= 2) {
+          e.preventDefault();
+          const t0 = e.touches[0];
+          const t1 = e.touches[1];
+          const mid = touchMid(t0, t1);
+          const d = touchDist(t0, t1);
+          const factor = d / pinchState.dist0;
+          const newZoom = clampZoom(pinchState.zoom0 * factor);
+          const rect = mapViewport.getBoundingClientRect();
+          const cx = rect.left + rect.width / 2;
+          const cy = rect.top + rect.height / 2;
+          // Content under the original pinch midpoint (viewport-center coords)
+          const ox0 = pinchState.midX - cx;
+          const oy0 = pinchState.midY - cy;
+          const contentX = (ox0 - pinchState.panX0) / pinchState.zoom0;
+          const contentY = (oy0 - pinchState.panY0) / pinchState.zoom0;
+          // Keep that content under the *current* midpoint (zoom + two-finger pan)
+          const ox1 = mid.x - cx;
+          const oy1 = mid.y - cy;
+          zoom = newZoom;
+          panX = ox1 - contentX * zoom;
+          panY = oy1 - contentY * zoom;
+          if (Math.abs(factor - 1) > 0.015 || Math.hypot(mid.x - pinchState.midX, mid.y - pinchState.midY) > 4) {
+            moved = true;
+          }
+          if (svgEl) svgEl.style.transition = "none";
+          applyMapTransform();
+          // Debounce pin rebuild like continuous wheel zoom
+          if (pinRenderTimer) clearTimeout(pinRenderTimer);
+          pinRenderTimer = setTimeout(() => {
+            pinRenderTimer = null;
+            if (svgEl) svgEl.style.transition = "transform 0.15s ease";
+            renderPins();
+          }, 90);
+          return;
+        }
+
+        if (mode === "pan" && e.touches.length === 1) {
+          e.preventDefault();
+          const t = e.touches[0];
+          const dx = t.clientX - panState.x;
+          const dy = t.clientY - panState.y;
+          if (!moved && dx * dx + dy * dy > 25) moved = true;
+          if (!moved) return;
+          panX = panState.panX0 + dx;
+          panY = panState.panY0 + dy;
+          applyMapTransform();
+          return;
+        }
+
+        // Finger count changed mid-gesture
+        if (e.touches.length >= 2) {
+          e.preventDefault();
+          startPinch(e.touches[0], e.touches[1]);
+        } else if (e.touches.length === 1 && zoom > 1.001) {
+          e.preventDefault();
+          startPan(e.touches[0]);
+        }
+      },
+      { passive: false }
+    );
+
+    const onTouchEnd = (e) => {
+      if (!mode) return;
+      if (e.touches.length >= 2) {
+        startPinch(e.touches[0], e.touches[1]);
+        return;
+      }
+      if (e.touches.length === 1) {
+        if (zoom > 1.001) startPan(e.touches[0]);
+        else {
+          mode = null;
+          endMapInteraction(moved);
+        }
+        return;
+      }
+      // All fingers up
+      const wasMoved = moved;
+      mode = null;
+      panState = null;
+      pinchState = null;
+      endMapInteraction(wasMoved);
+    };
+
+    mapViewport.addEventListener("touchend", onTouchEnd, { passive: false });
+    mapViewport.addEventListener("touchcancel", onTouchEnd, { passive: false });
+  }
+
+  /** Pointer drag-pan for mouse / pen (touch uses bindMapTouchGestures). */
   function bindMapDrag() {
     if (!mapViewport) return;
     let drag = null; // { id, x, y, panX0, panY0, moved }
@@ -676,22 +872,12 @@
         /* already released */
       }
       drag = null;
-      mapViewport.classList.remove("is-dragging");
-      if (svgEl) svgEl.style.transition = "transform 0.15s ease";
-      applyMapTransform();
-      if (wasMoved) {
-        // Swallow the synthetic click that can follow a drag
-        const swallow = (ev) => {
-          ev.preventDefault();
-          ev.stopPropagation();
-          mapViewport.removeEventListener("click", swallow, true);
-        };
-        mapViewport.addEventListener("click", swallow, true);
-        setTimeout(() => mapViewport.removeEventListener("click", swallow, true), 0);
-      }
+      endMapInteraction(wasMoved);
     };
 
     mapViewport.addEventListener("pointerdown", (e) => {
+      // Touch multi-gestures handled separately (iOS only tracks one pointer)
+      if (e.pointerType === "touch") return;
       if (e.button != null && e.button !== 0) return;
       if (e.target.closest && e.target.closest(".venue-pin, .zoom-btn, .scope-btn, button, a, select")) {
         return;
@@ -1415,6 +1601,7 @@
     });
 
     bindMapZoom();
+    bindMapTouchGestures();
     bindMapDrag();
 
     // Default: US map + All places (never world until International is clicked)

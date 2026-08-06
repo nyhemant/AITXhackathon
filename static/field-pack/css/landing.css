@@ -910,8 +910,9 @@
 .map-viewport {
   overflow: hidden;
   border-radius: calc(var(--radius-lg, 24px) - 4px);
-  /* none = allow custom drag-pan without page scroll fighting */
+  /* none = one-finger pan + two-finger pinch without page scroll/zoom fighting */
   touch-action: none;
+  -webkit-user-select: none;
   cursor: grab;
   min-height: 280px;
   user-select: none;
@@ -921,6 +922,11 @@
 }
 .map-viewport.is-dragging .venue-pin {
   pointer-events: none;
+}
+/* Avoid iOS callout / magnifier while gesturing on the map */
+.map-viewport,
+.map-viewport * {
+  -webkit-touch-callout: none;
 }
 .map-zoom-bar {
   display: flex;
