@@ -321,13 +321,20 @@
       const usCount = allPlaces.filter(isUSPlace).length;
       const topN = allPlaces.filter((p) => isUSPlace(p) && (TOP_IDS.has(p.id) || p.tier === "top")).length;
       if (mapScope === "intl") {
+        const readyN = list.filter((p) => p.status === "ready").length;
         if (selectedCountry) {
           const name =
             (list[0] && list[0].countryName) ||
             selectedCountry;
-          mapCount.textContent = `International · ${list.length} places in ${name}`;
+          mapCount.textContent =
+            readyN > 0
+              ? `International · ${list.length} in ${name} (${readyN} ready to print)`
+              : `International · ${list.length} places in ${name}`;
         } else {
-          mapCount.textContent = `International · ${list.length} places on the world map`;
+          mapCount.textContent =
+            readyN > 0
+              ? `International · ${list.length} on the world map · ${readyN} ready to print`
+              : `International · ${list.length} places on the world map`;
         }
       } else if (selectedState) {
         mapCount.textContent = `Showing all ${list.length} places in ${selectedState} — pick one below or tap a pin`;
