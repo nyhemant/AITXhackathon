@@ -37,10 +37,21 @@
     { id: "florida", label: "Florida", symbols: "🚀", states: ["FL"], cities: ["Merritt Island"] },
   ];
 
+  const INTL_REGIONS = [
+    { id: "all", label: "Any region" },
+    { id: "europe", label: "Europe" },
+    { id: "asia", label: "Asia" },
+    { id: "americas", label: "Americas" },
+    { id: "oceania", label: "Oceania" },
+    { id: "middle-east", label: "Middle East" },
+    { id: "africa", label: "Africa" },
+  ];
+
   let mapScope = "more"; // top | more | intl — default: all US places
   let basemap = "us"; // us | world — world only when International selected
   let mapLoadToken = 0;
   let selectedMetroId = "all";
+  let selectedRegion = "all";
   let selectedState = "";
   let selectedCountry = "";
   let selectedVenueId = "";
@@ -93,6 +104,9 @@
     let list;
     if (mapScope === "intl") {
       list = placesInScope();
+      if (selectedRegion && selectedRegion !== "all") {
+        list = list.filter((p) => (p.region || "") === selectedRegion);
+      }
       if (selectedCountry) {
         list = list.filter((p) => (p.country || "").toUpperCase() === selectedCountry);
       }
@@ -118,7 +132,16 @@
     } else {
       list = placesInScope(); // all US places
     }
-    return list.sort((a, b) => a.name.localeCompare(b.name));
+    return list.sort((a, b) => {
+      if (mapScope === "intl") {
+        const ar = a.status === "ready" ? 0 : 1;
+        const br = b.status === "ready" ? 0 : 1;
+        if (ar !== br) return ar - br;
+        const ac = (a.city || "").localeCompare(b.city || "");
+        if (ac !== 0) return ac;
+      }
+      return a.name.localeCompare(b.name);
+    });
   }
 
   function kidTypeLabel(type) {
@@ -136,9 +159,9 @@
   function venueOptionLabel(p) {
     const city = p.city === "Escondido" ? "San Diego area" : p.city;
     const region = placeRegionLabel(p);
-    return region
-      ? `${p.emoji || "📍"} ${p.name} — ${city}, ${region}`
-      : `${p.emoji || "📍"} ${p.name} — ${city}`;
+    const ready = p.status === "ready" ? "✓ " : "";
+    const where = region ? `${city}, ${region}` : city;
+    return `${ready}${p.emoji || "📍"} ${p.name} — ${where}`;
   }
 
   function escapeHtml(s) {
@@ -227,7 +250,11 @@
   }
 
   function fillCountrySelectOptions() {
-    const countries = distinctCountries(placesInScope());
+    let source = placesInScope();
+    if (selectedRegion && selectedRegion !== "all") {
+      source = source.filter((p) => (p.region || "") === selectedRegion);
+    }
+    const countries = distinctCountries(source);
     if (!stateSelect) return countries;
     const prev = selectedCountry;
     clearSelect(stateSelect);
@@ -255,14 +282,32 @@
     if (!citySelect) return;
 
     if (mapScope === "intl") {
-      if (metroField) metroField.hidden = true;
-      if (filterOr) filterOr.hidden = true;
-      if (citySelect) citySelect.disabled = true;
+      if (metroField) metroField.hidden = false;
+      if (filterOr) filterOr.hidden = false;
+      if (citySelect) {
+        citySelect.disabled = false;
+        clearSelect(citySelect);
+        for (const r of INTL_REGIONS) {
+          const opt = document.createElement("option");
+          opt.value = r.id;
+          opt.textContent = r.label;
+          citySelect.appendChild(opt);
+        }
+        citySelect.value = selectedRegion || "all";
+      }
+      const metroLabel = metroField && metroField.querySelector(".select-label");
+      if (metroLabel) metroLabel.textContent = "Region";
+      if (citySelect) citySelect.setAttribute("aria-label", "Filter by region");
       setStateFieldLabel("Country");
       const countries = fillCountrySelectOptions();
       if (stateField) stateField.hidden = countries.length === 0;
       return;
     }
+
+    // restore US metro label
+    const metroLabelUs = metroField && metroField.querySelector(".select-label");
+    if (metroLabelUs) metroLabelUs.textContent = "Metroarea";
+    if (citySelect) citySelect.setAttribute("aria-label", "Choose metro area");
 
     // US scopes: Metro + State
     if (metroField) metroField.hidden = false;
@@ -443,6 +488,30 @@
       if (!xy) continue;
       items.push({ p, x: xy.x, y: xy.y });
     }
+
+    // World map: cluster only same city so London stays its own pin (not mixed with Paris).
+    if (basemap === "world") {
+      const byCity = new Map();
+      for (const it of items) {
+        const key = `${(it.p.city || it.p.id).toLowerCase()}|${(it.p.country || "").toUpperCase()}`;
+        if (!byCity.has(key)) byCity.set(key, []);
+        byCity.get(key).push(it);
+      }
+      const clusters = [];
+      for (const group of byCity.values()) {
+        const cx = group.reduce((s, g) => s + g.x, 0) / group.length;
+        const cy = group.reduce((s, g) => s + g.y, 0) / group.length;
+        const places = group.map((g) => g.p).sort((a, b) => {
+          const ar = a.status === "ready" ? 0 : 1;
+          const br = b.status === "ready" ? 0 : 1;
+          if (ar !== br) return ar - br;
+          return a.name.localeCompare(b.name);
+        });
+        clusters.push({ x: cx, y: cy, places, ids: places.map((p) => p.id) });
+      }
+      return clusters;
+    }
+
     // ~28px in SVG space; slightly tighter when zoomed in
     const thresh = zoom >= 2 ? 14 : zoom >= 1.4 ? 20 : 28;
     const used = new Array(items.length).fill(false);
@@ -699,9 +768,10 @@
 
   function showOverview() {
     const list = filteredPlaces();
+    const readyN = mapScope === "intl" ? list.filter((p) => p.status === "ready").length : 0;
     const scopeNote =
       mapScope === "intl"
-        ? `${list.length} international places on the world map`
+        ? `${list.length} places worldwide${readyN ? ` · ${readyN} ready to print` : ""} — pick a city pin or use Place`
         : mapScope === "top"
           ? `${list.length} popular places on the map`
           : `${list.length} places on the map`;
@@ -947,6 +1017,7 @@
     mapScope = next;
     selectedVenueId = "";
     selectedMetroId = "all";
+    selectedRegion = "all";
     selectedState = "";
     selectedCountry = "";
     clusterFocusIds = [];
@@ -969,7 +1040,18 @@
     if (scopeMore) scopeMore.addEventListener("click", () => void setScope("more"));
     if (scopeIntl) scopeIntl.addEventListener("click", () => void setScope("intl"));
     citySelect.addEventListener("change", () => {
-      if (mapScope === "intl") return;
+      if (mapScope === "intl") {
+        selectedRegion = citySelect.value || "all";
+        selectedVenueId = "";
+        selectedCountry = "";
+        if (stateSelect) stateSelect.value = "";
+        fillLocationSelect();
+        fillVenueSelect();
+        renderPins();
+        showOverview();
+        setZoom(1);
+        return;
+      }
       selectedMetroId = citySelect.value || "all";
       selectedVenueId = "";
       // Metro and State are alternatives — picking a metro clears state
