@@ -462,6 +462,31 @@
     renderPins();
   }
 
+  /**
+   * ⟲ Reset: restore this scope's original map view — all pins, no filters,
+   * pan centered, default zoom (US All places ~1.15; Popular/International = 1).
+   */
+  function resetMapView() {
+    selectedVenueId = "";
+    clusterFocusIds = [];
+    selectedMetroId = "all";
+    selectedRegion = "all";
+    selectedState = "";
+    selectedCountry = "";
+    panX = 0;
+    panY = 0;
+
+    fillLocationSelect();
+    fillVenueSelect();
+    renderPins();
+    showOverview();
+    syncVenueHash("");
+
+    // Default framing matches first open of this scope
+    if (mapScope === "more" && basemap === "us") setZoom(1.15);
+    else setZoom(1);
+  }
+
   /** Zoom so the viewport point (clientX/Y) becomes the center. */
   function zoomToClientPoint(clientX, clientY, newZoom) {
     if (!mapViewport) {
@@ -1208,12 +1233,8 @@
       const r = mapViewport.getBoundingClientRect();
       zoomToClientPoint(r.left + r.width / 2, r.top + r.height / 2, zoom - 0.35);
     });
-    // Reset view: zoom 1 + pan 0 (escape hatch if you feel "lost")
-    btnZoomReset?.addEventListener("click", () => {
-      panX = 0;
-      panY = 0;
-      setZoom(1);
-    });
+    // Reset: full original view for current scope (filters + pan + zoom + all pins)
+    btnZoomReset?.addEventListener("click", () => resetMapView());
 
     // Double-click empty map: zoom in centered on that point
     mapViewport?.addEventListener("dblclick", (e) => {
