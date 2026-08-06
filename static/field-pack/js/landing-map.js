@@ -1,15 +1,18 @@
 (() => {
   const allPlaces = window.FP_PLACES || [];
   const TOP_IDS = new Set(window.FP_TOP_PLACE_IDS || []);
+  const INTL_IDS = new Set(window.FP_INTL_PLACE_IDS || []);
   const detail = document.getElementById("pin-detail");
   const mapHost = document.getElementById("map-host");
   const citySelect = document.getElementById("city-select");
   const venueSelect = document.getElementById("venue-select-landing");
   const scopeTop = document.getElementById("scope-top");
   const scopeMore = document.getElementById("scope-more");
+  const scopeIntl = document.getElementById("scope-intl");
   const stateSelect = document.getElementById("state-select");
   const stateField = document.getElementById("state-field");
   const metroField = document.getElementById("metro-field");
+  const filterOr = document.querySelector(".filter-or");
   const mapCount = document.getElementById("map-count");
   const btnZoomIn = document.getElementById("map-zoom-in");
   const btnZoomOut = document.getElementById("map-zoom-out");
@@ -34,9 +37,12 @@
     { id: "florida", label: "Florida", symbols: "🚀", states: ["FL"], cities: ["Merritt Island"] },
   ];
 
-  let mapScope = "more"; // top | more — default: all places
+  let mapScope = "more"; // top | more | intl — default: all US places
+  let basemap = "us"; // us | world — world only when International selected
+  let mapLoadToken = 0;
   let selectedMetroId = "all";
   let selectedState = "";
+  let selectedCountry = "";
   let selectedVenueId = "";
   let clusterFocusIds = []; // nearby group open in side panel
   let zoom = 1;
@@ -45,26 +51,54 @@
   let svgEl = null;
   let pinsLayer = null;
 
+  function isUSPlace(p) {
+    if (!p) return false;
+    const c = (p.country || "US").toUpperCase();
+    return c === "US" || c === "USA";
+  }
+
+  function isIntlPlace(p) {
+    return Boolean(p) && !isUSPlace(p);
+  }
+
+  function placeRegionLabel(p) {
+    if (!p) return "";
+    if (isIntlPlace(p)) return p.countryName || p.country || "";
+    return p.state || "";
+  }
+
   function placeById(id) {
     return allPlaces.find((p) => p.id === id);
   }
 
   function placesInScope() {
-    if (mapScope === "top") {
-      return allPlaces.filter((p) => TOP_IDS.has(p.id) || p.tier === "top");
+    if (mapScope === "intl") {
+      return allPlaces.filter(
+        (p) => isIntlPlace(p) || INTL_IDS.has(p.id) || p.tier === "intl"
+      );
     }
-    return [...allPlaces];
+    const us = allPlaces.filter(isUSPlace);
+    if (mapScope === "top") {
+      return us.filter((p) => TOP_IDS.has(p.id) || p.tier === "top");
+    }
+    return us;
   }
 
   /**
    * Places for the Place dropdown + map pins.
-   * A selected state always uses the FULL catalog for that state (not Popular top-N).
+   * US scopes never include international pins (wrong basemap).
+   * A selected state always uses the FULL US catalog for that state (not Popular top-N).
    */
   function filteredPlaces() {
     let list;
-    if (selectedState) {
+    if (mapScope === "intl") {
+      list = placesInScope();
+      if (selectedCountry) {
+        list = list.filter((p) => (p.country || "").toUpperCase() === selectedCountry);
+      }
+    } else if (selectedState) {
       // Full catalog for this state — ignore Popular/top tier cap
-      list = allPlaces.filter((p) => p.state === selectedState);
+      list = allPlaces.filter((p) => isUSPlace(p) && p.state === selectedState);
     } else if (mapScope === "top") {
       list = placesInScope();
       if (selectedMetroId !== "all") {
@@ -82,7 +116,7 @@
         }
       }
     } else {
-      list = placesInScope(); // all places
+      list = placesInScope(); // all US places
     }
     return list.sort((a, b) => a.name.localeCompare(b.name));
   }
@@ -100,9 +134,11 @@
   }
 
   function venueOptionLabel(p) {
-    const kind = kidTypeLabel(p.type);
     const city = p.city === "Escondido" ? "San Diego area" : p.city;
-    return `${p.emoji || "📍"} ${p.name} — ${city}, ${p.state}`;
+    const region = placeRegionLabel(p);
+    return region
+      ? `${p.emoji || "📍"} ${p.name} — ${city}, ${region}`
+      : `${p.emoji || "📍"} ${p.name} — ${city}`;
   }
 
   function escapeHtml(s) {
@@ -117,10 +153,27 @@
   function distinctStates(list) {
     const set = new Set(
       (list || [])
+        .filter(isUSPlace)
         .map((p) => (p && typeof p.state === "string" ? p.state.trim() : ""))
         .filter(Boolean)
     );
     return [...set].sort((a, b) => a.localeCompare(b));
+  }
+
+  /** Distinct countries for international scope: [{code, name}] sorted by name. */
+  function distinctCountries(list) {
+    const map = new Map();
+    for (const p of list || []) {
+      if (!isIntlPlace(p)) continue;
+      const code = (p.country || "").toUpperCase();
+      if (!code) continue;
+      if (!map.has(code)) {
+        map.set(code, p.countryName || code);
+      }
+    }
+    return [...map.entries()]
+      .map(([code, name]) => ({ code, name }))
+      .sort((a, b) => a.name.localeCompare(b.name));
   }
 
   function clearSelect(sel) {
@@ -165,8 +218,57 @@
    * never shifts the Place dropdown. When a state is chosen, metro is disabled
    * but still occupies its slot; clearing state re-enables metro.
    */
+  function setStateFieldLabel(text) {
+    const label = stateField && stateField.querySelector(".select-label");
+    if (label) label.textContent = text;
+    if (stateSelect) {
+      stateSelect.setAttribute("aria-label", text === "Country" ? "Filter by country" : "Filter by state");
+    }
+  }
+
+  function fillCountrySelectOptions() {
+    const countries = distinctCountries(placesInScope());
+    if (!stateSelect) return countries;
+    const prev = selectedCountry;
+    clearSelect(stateSelect);
+    const o0 = document.createElement("option");
+    o0.value = "";
+    o0.textContent = "All countries";
+    stateSelect.appendChild(o0);
+    for (const c of countries) {
+      const o = document.createElement("option");
+      o.value = c.code;
+      o.textContent = c.name;
+      stateSelect.appendChild(o);
+    }
+    if (prev && countries.some((c) => c.code === prev)) {
+      selectedCountry = prev;
+      stateSelect.value = prev;
+    } else {
+      selectedCountry = "";
+      stateSelect.value = "";
+    }
+    return countries;
+  }
+
   function fillLocationSelect() {
     if (!citySelect) return;
+
+    if (mapScope === "intl") {
+      if (metroField) metroField.hidden = true;
+      if (filterOr) filterOr.hidden = true;
+      if (citySelect) citySelect.disabled = true;
+      setStateFieldLabel("Country");
+      const countries = fillCountrySelectOptions();
+      if (stateField) stateField.hidden = countries.length === 0;
+      return;
+    }
+
+    // US scopes: Metro + State
+    if (metroField) metroField.hidden = false;
+    if (filterOr) filterOr.hidden = false;
+    setStateFieldLabel("State");
+    selectedCountry = "";
 
     const states = fillStateSelectOptions();
 
@@ -177,7 +279,6 @@
     if (!states.length) {
       selectedState = "";
     }
-    if (metroField) metroField.hidden = false;
 
     clearSelect(citySelect);
     for (const m of METRO_DEFS) {
@@ -217,13 +318,23 @@
       venueSelect.value = "";
     }
     if (mapCount) {
-      const topN = allPlaces.filter((p) => TOP_IDS.has(p.id) || p.tier === "top").length;
-      if (selectedState) {
+      const usCount = allPlaces.filter(isUSPlace).length;
+      const topN = allPlaces.filter((p) => isUSPlace(p) && (TOP_IDS.has(p.id) || p.tier === "top")).length;
+      if (mapScope === "intl") {
+        if (selectedCountry) {
+          const name =
+            (list[0] && list[0].countryName) ||
+            selectedCountry;
+          mapCount.textContent = `International · ${list.length} places in ${name}`;
+        } else {
+          mapCount.textContent = `International · ${list.length} places on the world map`;
+        }
+      } else if (selectedState) {
         mapCount.textContent = `Showing all ${list.length} places in ${selectedState} — pick one below or tap a pin`;
       } else if (mapScope === "top") {
         mapCount.textContent = `Showing ${topN} popular places — switch to “All places” for more`;
       } else {
-        mapCount.textContent = `Showing ${allPlaces.length} places — tap a pin or pick from the lists`;
+        mapCount.textContent = `Showing ${usCount} places — tap a pin or pick from the lists`;
       }
     }
   }
@@ -231,12 +342,28 @@
   /** Ensure UI is on All places so state filter can show, without wiping selectedState. */
   function ensureAllPlacesScope() {
     if (mapScope === "more") return;
+    if (mapScope === "intl") return; // don't yank off world map for US state filter
     mapScope = "more";
     selectedMetroId = "all";
-    if (scopeTop) scopeTop.setAttribute("aria-pressed", "false");
-    if (scopeMore) scopeMore.setAttribute("aria-pressed", "true");
-    scopeTop?.classList.remove("active");
-    scopeMore?.classList.add("active");
+    updateScopeButtons();
+  }
+
+  function updateScopeButtons() {
+    const isTop = mapScope === "top";
+    const isMore = mapScope === "more";
+    const isIntl = mapScope === "intl";
+    if (scopeTop) {
+      scopeTop.setAttribute("aria-pressed", isTop ? "true" : "false");
+      scopeTop.classList.toggle("active", isTop);
+    }
+    if (scopeMore) {
+      scopeMore.setAttribute("aria-pressed", isMore ? "true" : "false");
+      scopeMore.classList.toggle("active", isMore);
+    }
+    if (scopeIntl) {
+      scopeIntl.setAttribute("aria-pressed", isIntl ? "true" : "false");
+      scopeIntl.classList.toggle("active", isIntl);
+    }
   }
 
   function applyMapTransform() {
@@ -283,6 +410,15 @@
   function pinXY(p) {
     if (!svgEl || p.lat == null || p.lon == null) return null;
     const vb = svgEl.viewBox && svgEl.viewBox.baseVal;
+    if (basemap === "world") {
+      const w = (vb && vb.width) || 1000;
+      const h = (vb && vb.height) || 500;
+      if (typeof window.fpProjectWorld !== "function") return null;
+      const pt = window.fpProjectWorld(p.lat, p.lon, w, h);
+      if (!pt || !Number.isFinite(pt.x) || !Number.isFinite(pt.y)) return null;
+      if (pt.x < 4 || pt.x > w - 4 || pt.y < 4 || pt.y > h - 4) return null;
+      return pt;
+    }
     const w = (vb && vb.width) || 959;
     const h = (vb && vb.height) || 593;
     if (typeof window.fpProjectUS !== "function") return null;
@@ -533,7 +669,7 @@
             <span class="nearby-emoji">${escapeHtml(p.emoji || "📍")}</span>
             <span class="nearby-copy">
               <strong>${escapeHtml(p.name)}</strong>
-              <small>${escapeHtml(p.city)}</small>
+              <small>${escapeHtml([p.city, placeRegionLabel(p)].filter(Boolean).join(", "))}</small>
             </span>
             <span class="nearby-go">Choose →</span>
           </button>`
@@ -557,9 +693,11 @@
   function showOverview() {
     const list = filteredPlaces();
     const scopeNote =
-      mapScope === "top"
-        ? `${list.length} popular places on the map`
-        : `${list.length} places on the map`;
+      mapScope === "intl"
+        ? `${list.length} international places on the world map`
+        : mapScope === "top"
+          ? `${list.length} popular places on the map`
+          : `${list.length} places on the map`;
     detail.className = "pin-detail empty";
     detail.innerHTML = `
       <p class="pin-detail-kicker">What you get</p>
@@ -640,29 +778,46 @@
         </button>`
       : "";
 
+    const locLine = [p.city, placeRegionLabel(p)].filter(Boolean).join(", ");
+    const isSoon = p.status === "soon";
+    const statusBadge = isSoon
+      ? `<span class="pd-status soon">Coming soon</span>`
+      : canPrintHunt
+        ? `<span class="pd-status ready">Ready to print</span>`
+        : "";
     detail.innerHTML = `
-      <p class="pin-detail-kicker">${escapeHtml(p.city)}, ${escapeHtml(p.state)}</p>
+      <p class="pin-detail-kicker">${escapeHtml(locLine)}</p>
       <div class="pd-title-row">
         <h3>${escapeHtml(p.emoji || "")} ${escapeHtml(p.name)}</h3>
         <button type="button" class="pd-clear" id="pd-clear-selection" aria-label="Clear selection">×</button>
       </div>
+      ${statusBadge}
       ${blurb ? `<p class="pd-blurb">${escapeHtml(blurb)}</p>` : ""}
+      ${
+        isSoon
+          ? `<p class="pd-hint">International pack in progress — shortlist and printable hunt coming next.</p>`
+          : ""
+      }
       <div class="pd-actions">
         ${
-          canPrintHunt
+          !isSoon && canPrintHunt
             ? `<button type="button" class="btn btn-primary" id="pd-print-hunt">One-page hunt to print</button>`
             : ""
         }
       </div>
-      ${sampleCard}
+      ${isSoon ? "" : sampleCard}
       ${
-        sample
+        !isSoon && sample
           ? `<p class="pd-more-hint">More cards in the full list</p>`
           : ""
       }
-      <div class="pd-actions pd-actions-secondary">
+      ${
+        isSoon
+          ? ""
+          : `<div class="pd-actions pd-actions-secondary">
         <a class="btn btn-secondary" href="${appHref}">Open full list →</a>
-      </div>
+      </div>`
+      }
     `;
     detail.querySelector("#pd-clear-selection")?.addEventListener("click", () => setVenue(""));
     detail.querySelector("#pd-print-hunt")?.addEventListener("click", () => {
@@ -675,7 +830,7 @@
     });
   }
 
-  function setVenue(venueId, opts = {}) {
+  async function setVenue(venueId, opts = {}) {
     const skipHash = opts.skipHash === true;
     if (!venueId) {
       selectedVenueId = "";
@@ -689,19 +844,36 @@
     clusterFocusIds = [];
     selectedVenueId = venueId;
     const p = placeById(venueId);
-    // Don't call setScope (resets selection) — just flip mode quietly if needed
-    if (p && mapScope === "top" && !(TOP_IDS.has(p.id) || p.tier === "top")) {
+
+    // Deep-link / pin: switch basemap only when needed (US default stays until intl)
+    if (p && isIntlPlace(p) && mapScope !== "intl") {
+      mapScope = "intl";
+      selectedMetroId = "all";
+      selectedState = "";
+      selectedCountry = (p.country || "").toUpperCase();
+      updateScopeButtons();
+      await loadBasemap("world");
+    } else if (p && isUSPlace(p) && mapScope === "intl") {
       mapScope = "more";
-      scopeTop?.setAttribute("aria-pressed", "false");
-      scopeMore?.setAttribute("aria-pressed", "true");
-      scopeTop?.classList.remove("active");
-      scopeMore?.classList.add("active");
+      selectedCountry = "";
+      updateScopeButtons();
+      await loadBasemap("us");
+    } else if (p && mapScope === "top" && isUSPlace(p) && !(TOP_IDS.has(p.id) || p.tier === "top")) {
+      // Don't call setScope (resets selection) — just flip mode quietly if needed
+      mapScope = "more";
+      updateScopeButtons();
       fillLocationSelect();
     }
-    if (p && mapScope === "more" && selectedState && p.state !== selectedState) {
+
+    if (p && mapScope === "intl" && p.country) {
+      selectedCountry = (p.country || "").toUpperCase();
+      if (stateSelect) stateSelect.value = selectedCountry;
+    }
+    if (p && mapScope !== "intl" && selectedState && p.state && p.state !== selectedState) {
       selectedState = p.state;
       if (stateSelect) stateSelect.value = selectedState;
     }
+    fillLocationSelect();
     fillVenueSelect();
     venueSelect.value = venueId;
     showVenueDetail(venueId);
@@ -713,39 +885,90 @@
   }
 
   // Allow ready-cards / external links: /field-pack/#/venue/dallas-zoo
-  window.fpSelectVenueOnMap = (id) => setVenue(id);
+  window.fpSelectVenueOnMap = (id) => {
+    void setVenue(id);
+  };
 
-  function setScope(scope) {
-    mapScope = scope === "more" ? "more" : "top";
+  async function loadBasemap(kind) {
+    const next = kind === "world" ? "world" : "us";
+    const token = ++mapLoadToken;
+    const url =
+      next === "world"
+        ? "/field-pack/img/world-map.svg?v=1"
+        : "/field-pack/img/usa-map.svg?v=5";
+    if (mapHost) {
+      mapHost.innerHTML = `<p class="map-loading">Loading map…</p>`;
+      mapHost.setAttribute("aria-label", next === "world" ? "World map" : "United States map");
+    }
+    try {
+      const res = await fetch(url);
+      const svgText = await res.text();
+      if (token !== mapLoadToken) return;
+      mapHost.innerHTML = svgText;
+      svgEl = mapHost.querySelector("svg");
+      if (svgEl) {
+        svgEl.removeAttribute("width");
+        svgEl.removeAttribute("height");
+        svgEl.setAttribute(
+          "class",
+          next === "world" ? "world-real-map usa-real-map" : "usa-real-map"
+        );
+        svgEl.style.transition = "transform 0.15s ease";
+        const NS = "http://www.w3.org/2000/svg";
+        pinsLayer = document.createElementNS(NS, "g");
+        pinsLayer.setAttribute("id", "venue-pins-layer");
+        svgEl.appendChild(pinsLayer);
+      }
+      basemap = next;
+      panX = 0;
+      panY = 0;
+      zoom = 1;
+      applyMapTransform();
+    } catch (err) {
+      if (token !== mapLoadToken) return;
+      mapHost.innerHTML = `<p class="map-loading">Map unavailable — use the menus.</p>`;
+      console.error(err);
+      svgEl = null;
+      pinsLayer = null;
+    }
+  }
+
+  async function setScope(scope) {
+    const next = scope === "intl" ? "intl" : scope === "more" ? "more" : "top";
+    const wasIntl = mapScope === "intl";
+    const willIntl = next === "intl";
+    mapScope = next;
     selectedVenueId = "";
     selectedMetroId = "all";
     selectedState = "";
-    if (scopeTop) scopeTop.setAttribute("aria-pressed", mapScope === "top" ? "true" : "false");
-    if (scopeMore) scopeMore.setAttribute("aria-pressed", mapScope === "more" ? "true" : "false");
-    scopeTop?.classList.toggle("active", mapScope === "top");
-    scopeMore?.classList.toggle("active", mapScope === "more");
+    selectedCountry = "";
+    clusterFocusIds = [];
+    updateScopeButtons();
+
+    if (wasIntl !== willIntl) {
+      await loadBasemap(willIntl ? "world" : "us");
+    }
+
     fillLocationSelect();
     fillVenueSelect();
     renderPins();
     showOverview();
-    if (mapScope === "more" && zoom < 1.2) setZoom(1.15);
-    if (mapScope === "top") setZoom(1);
+    if (mapScope === "more" && basemap === "us") setZoom(1.15);
+    else setZoom(1);
   }
 
   async function boot() {
-    if (scopeTop) scopeTop.addEventListener("click", () => setScope("top"));
-    if (scopeMore) scopeMore.addEventListener("click", () => setScope("more"));
+    if (scopeTop) scopeTop.addEventListener("click", () => void setScope("top"));
+    if (scopeMore) scopeMore.addEventListener("click", () => void setScope("more"));
+    if (scopeIntl) scopeIntl.addEventListener("click", () => void setScope("intl"));
     citySelect.addEventListener("change", () => {
+      if (mapScope === "intl") return;
       selectedMetroId = citySelect.value || "all";
       selectedVenueId = "";
       // Metro and State are alternatives — picking a metro clears state
       if (selectedMetroId && selectedMetroId !== "all" && selectedState) {
         selectedState = "";
         if (stateSelect) stateSelect.value = "";
-      }
-      if (selectedMetroId && selectedMetroId !== "all") {
-        // Metro filter uses Popular-style metro defs; stay on top unless All places
-        // already active with no state
       }
       fillLocationSelect();
       fillVenueSelect();
@@ -754,8 +977,18 @@
     });
     if (stateSelect) {
       stateSelect.addEventListener("change", () => {
-        selectedState = (stateSelect.value || "").trim();
         selectedVenueId = "";
+        if (mapScope === "intl") {
+          selectedCountry = (stateSelect.value || "").trim().toUpperCase();
+          fillLocationSelect();
+          fillVenueSelect();
+          renderPins();
+          showOverview();
+          if (selectedCountry) setZoom(Math.max(zoom, 1.8));
+          else setZoom(1);
+          return;
+        }
+        selectedState = (stateSelect.value || "").trim();
         // Picking a state always means full catalog for that state (not Popular top-N)
         if (selectedState) {
           selectedMetroId = "all";
@@ -769,7 +1002,7 @@
         else setZoom(mapScope === "more" ? 1.15 : 1);
       });
     }
-    venueSelect.addEventListener("change", () => setVenue(venueSelect.value));
+    venueSelect.addEventListener("change", () => void setVenue(venueSelect.value));
 
     btnZoomIn?.addEventListener("click", () => {
       if (!mapViewport) return setZoom(zoom + 0.35);
@@ -800,52 +1033,27 @@
       { passive: false }
     );
 
-    try {
-      const res = await fetch("/field-pack/img/usa-map.svg?v=5");
-      const svgText = await res.text();
-      mapHost.innerHTML = svgText;
-      svgEl = mapHost.querySelector("svg");
-      if (svgEl) {
-        svgEl.removeAttribute("width");
-        svgEl.removeAttribute("height");
-        svgEl.setAttribute("class", "usa-real-map");
-        svgEl.style.transition = "transform 0.15s ease";
-        const NS = "http://www.w3.org/2000/svg";
-        pinsLayer = document.createElementNS(NS, "g");
-        pinsLayer.setAttribute("id", "venue-pins-layer");
-        svgEl.appendChild(pinsLayer);
-      }
-    } catch (err) {
-      mapHost.innerHTML = `<p class="map-loading">Map unavailable — use the menus.</p>`;
-      console.error(err);
-    }
-
-    // Default All places (not Popular top-N)
-    if (scopeTop) {
-      scopeTop.classList.remove("active");
-      scopeTop.setAttribute("aria-pressed", "false");
-    }
-    if (scopeMore) {
-      scopeMore.classList.add("active");
-      scopeMore.setAttribute("aria-pressed", "true");
-    }
+    // Default: US map + All places (never world until International is clicked)
+    await loadBasemap("us");
+    mapScope = "more";
+    updateScopeButtons();
     fillLocationSelect();
     fillVenueSelect();
     renderPins();
     showOverview();
     if (zoom < 1.2) setZoom(1.15);
 
-    // Deep link: /field-pack/#/venue/dallas-zoo
+    // Deep link: /field-pack/#/venue/dallas-zoo (intl ids switch basemap)
     const fromHash = venueIdFromHash();
     if (fromHash && placeById(fromHash)) {
-      setVenue(fromHash, { skipHash: true, scroll: true });
+      await setVenue(fromHash, { skipHash: true, scroll: true });
     }
     window.addEventListener("hashchange", () => {
       const id = venueIdFromHash();
       if (id && placeById(id)) {
-        if (id !== selectedVenueId) setVenue(id, { skipHash: true, scroll: true });
+        if (id !== selectedVenueId) void setVenue(id, { skipHash: true, scroll: true });
       } else if (!id && selectedVenueId) {
-        setVenue("", { skipHash: true });
+        void setVenue("", { skipHash: true });
       }
     });
   }

@@ -227,7 +227,8 @@
   padding: 6px;
 }
 
-.usa-real-map {
+.usa-real-map,
+.world-real-map {
   width: 100%;
   height: auto;
   display: block;
@@ -880,8 +881,8 @@
   background: transparent;
   font: inherit;
   font-weight: 700;
-  font-size: 0.8rem;
-  padding: 8px 13px;
+  font-size: 0.75rem;
+  padding: 7px 10px;
   border-radius: var(--radius-pill, 999px);
   cursor: pointer;
   color: var(--muted, #3d4f6f);
@@ -927,8 +928,12 @@
 }
 @media (max-width: 520px) {
   .scope-btn {
-    font-size: 0.75rem;
-    padding: 6px 10px;
+    font-size: 0.68rem;
+    padding: 6px 8px;
+  }
+  .scope-toggle {
+    max-width: min(100%, 280px);
+    flex-wrap: wrap;
   }
   .map-overlay-tl {
     top: 8px;
