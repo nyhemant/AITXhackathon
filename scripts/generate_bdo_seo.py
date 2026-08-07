@@ -412,13 +412,24 @@ def map_card_html(mission_venue: dict) -> str:
     if not page and not img:
         return ""
     href = page or img
-    has_img = bool(img and (img.startswith("https://") or img.startswith("http://")))
+    def _safe_map_img(u: str) -> bool:
+        u = (u or "").strip()
+        if u.startswith("https://") or u.startswith("http://"):
+            return True
+        # Self-hosted previews (e.g. PDF→PNG) under /field-pack/media/maps/
+        if u.startswith("/field-pack/media/maps/") and ".." not in u:
+            return True
+        return False
+
+    has_img = _safe_map_img(img)
     # Prefer image mode whenever we have a verified map image (kind may lag)
     if has_img and kind in ("image", "page", ""):
+        # Local previews don't need no-referrer; remote maps keep it for fewer hotlink blocks
+        refpol = "" if img.startswith("/") else ' referrerpolicy="no-referrer"'
         return f"""
     <a class="seo-map-card seo-map-card-image seo-map-has-preview no-print" href="{esc(href)}" target="_blank" rel="noopener noreferrer" aria-label="Official visitor map — hover or focus to enlarge, click to open">
       <span class="seo-map-thumb-wrap">
-        <img class="seo-map-thumb" src="{esc(img)}" alt="" width="640" height="400" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+        <img class="seo-map-thumb" src="{esc(img)}" alt="Official visitor map preview" width="640" height="400" loading="lazy" decoding="async"{refpol} />
         <span class="seo-map-hover-hint" aria-hidden="true">Hover to enlarge</span>
       </span>
       <span class="seo-map-card-body">
@@ -427,7 +438,7 @@ def map_card_html(mission_venue: dict) -> str:
         <small>{esc(attr)} · hover to preview</small>
       </span>
       <span class="seo-map-preview" aria-hidden="true">
-        <img src="{esc(img)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+        <img src="{esc(img)}" alt="" loading="lazy" decoding="async"{refpol} />
         <span class="seo-map-preview-cap">{esc(attr)}</span>
       </span>
     </a>"""
@@ -834,7 +845,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <script src="/field-pack/js/catalog.js?v=20"></script>
   <script src="/field-pack/js/print-kit.js?v=2"></script>
   <script src="/field-pack/js/mission/mission-engine.js?v=6"></script>
-  <script src="/field-pack/js/mission/mission-ui.js?v=7"></script>
+  <script src="/field-pack/js/mission/mission-ui.js?v=8"></script>
 </body>
 </html>
 """

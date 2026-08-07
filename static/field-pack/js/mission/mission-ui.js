@@ -80,12 +80,16 @@
       const page = venue.media.visitor_map_page || venue.media.visitor_map_url || "";
       const img = venue.media.visitor_map_url || "";
       const attr = venue.media.map_attribution || "Official map";
-      if (img && /^https?:\/\//i.test(img)) {
+      const safeImg =
+        /^https?:\/\//i.test(img) ||
+        (img.startsWith("/field-pack/media/maps/") && !img.includes(".."));
+      if (img && safeImg) {
+        const refpol = img.startsWith("/") ? "" : ' referrerpolicy="no-referrer"';
         mapHint.className = "ms-map-hint ms-map-has-preview";
         mapHint.innerHTML = `
           <a class="ms-map-card" href="${esc(page || img)}" target="_blank" rel="noopener noreferrer" aria-label="Official map — hover to enlarge">
             <span class="ms-map-thumb-wrap">
-              <img class="ms-map-thumb" src="${esc(img)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+              <img class="ms-map-thumb" src="${esc(img)}" alt="Official visitor map preview" loading="lazy" decoding="async"${refpol} />
               <span class="ms-map-hover-hint" aria-hidden="true">Hover</span>
             </span>
             <span class="ms-map-card-text">
@@ -93,7 +97,7 @@
               <small>${esc(attr)} · hover to preview</small>
             </span>
             <span class="ms-map-preview" aria-hidden="true">
-              <img src="${esc(img)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+              <img src="${esc(img)}" alt="" loading="lazy" decoding="async"${refpol} />
             </span>
           </a>`;
       } else if (page) {

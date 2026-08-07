@@ -245,10 +245,10 @@
   ],
   "content_mode": "curated",
   "media": {
-    "visitor_map_url": "https://zoo.sandiegozoo.org/sites/default/files/body_image/zoo-map.png",
-    "visitor_map_page": "https://zoo.sandiegozoo.org/",
+    "visitor_map_url": "/field-pack/media/maps/san-diego-zoo.jpg",
+    "visitor_map_page": "https://zoo.sandiegozoo.org/zoo-map-print",
     "visitor_map_kind": "image",
-    "map_attribution": "Official site \u00b7 San Diego Zoo"
+    "map_attribution": "Official print map \u00a9 San Diego Zoo Wildlife Alliance"
   },
   "parent_script": [
     "Bathroom first",
