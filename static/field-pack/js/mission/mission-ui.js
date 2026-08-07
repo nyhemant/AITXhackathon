@@ -67,7 +67,10 @@
       time_budget: mission.time,
       personalized: mission.personalized ? "1" : "0",
     });
-    window.print();
+    document.body.classList.add("printing-mission");
+    const done = () => document.body.classList.remove("printing-mission");
+    window.addEventListener("afterprint", done, { once: true });
+    setTimeout(() => window.print(), 50);
   }
 
   let venue = null;
