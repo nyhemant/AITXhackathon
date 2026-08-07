@@ -11,7 +11,7 @@
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Open-range Africa feel — tram views of herds, plus rhino and big cat energy.",
+  "tagline": "Open-range Africa feel \u2014 tram views of herds, plus rhino and big cat energy.",
   "practical": {
     "typical_duration": "half to full day",
     "ticket_note": "Separate ticket from the Zoo; arrive early for parking.",
@@ -21,7 +21,7 @@
     {
       "id": "reticulated_giraffe",
       "label": "Reticulated giraffe",
-      "emoji": "🦒",
+      "emoji": "\ud83e\udd92",
       "one_liner": "Giraffes on wide open savanna-style fields.",
       "tags": [
         "tall",
@@ -44,7 +44,7 @@
     {
       "id": "african_elephant",
       "label": "African elephant",
-      "emoji": "🐘",
+      "emoji": "\ud83d\udc18",
       "one_liner": "Elephants with room to roam.",
       "tags": [
         "big",
@@ -67,7 +67,7 @@
     {
       "id": "zebra",
       "label": "Zebra",
-      "emoji": "🦓",
+      "emoji": "\ud83e\udd93",
       "one_liner": "Stripes in mixed herds from the tram or overlooks.",
       "tags": [
         "outdoor",
@@ -89,7 +89,7 @@
     {
       "id": "african_lion",
       "label": "African lion",
-      "emoji": "🦁",
+      "emoji": "\ud83e\udd81",
       "one_liner": "Lions overlooking the park hills.",
       "tags": [
         "big-cats",
@@ -112,8 +112,8 @@
     {
       "id": "cheetah",
       "label": "Cheetah",
-      "emoji": "🐆",
-      "one_liner": "The speed specialist — often stretched out resting.",
+      "emoji": "\ud83d\udc06",
+      "one_liner": "The speed specialist \u2014 often stretched out resting.",
       "tags": [
         "big-cats",
         "outdoor"
@@ -134,7 +134,7 @@
     {
       "id": "western_lowland_gorilla",
       "label": "Western lowland gorilla",
-      "emoji": "🦍",
+      "emoji": "\ud83e\udd8d",
       "one_liner": "Gorillas in a lush walk-through habitat.",
       "tags": [
         "outdoor",
@@ -156,7 +156,7 @@
     {
       "id": "nile_hippo",
       "label": "Nile hippo",
-      "emoji": "🦛",
+      "emoji": "\ud83e\udd9b",
       "one_liner": "Hippos near water when on view.",
       "tags": [
         "big",
@@ -179,7 +179,7 @@
     {
       "id": "sumatran_tiger",
       "label": "Sumatran tiger",
-      "emoji": "🐯",
+      "emoji": "\ud83d\udc2f",
       "one_liner": "Tigers on the Asian side of the park.",
       "tags": [
         "big-cats",
@@ -201,7 +201,7 @@
     {
       "id": "ostrich",
       "label": "Ostrich",
-      "emoji": "🪶",
+      "emoji": "\ud83e\udeb6",
       "one_liner": "Giant birds strutting the plains.",
       "tags": [
         "outdoor",
@@ -223,7 +223,7 @@
     {
       "id": "warthog",
       "label": "Warthog",
-      "emoji": "🐗",
+      "emoji": "\ud83d\udc17",
       "one_liner": "Funny faces and little tusks on the savanna.",
       "tags": [
         "outdoor"
@@ -245,14 +245,15 @@
   "content_mode": "curated",
   "media": {
     "visitor_map_url": "",
-    "visitor_map_page": "https://sdzsafaripark.org/",
+    "visitor_map_page": "https://sandiegozoowildlifealliance.org/sites/default/files/2025-03/7539_SP25_Map148-Park-WEB.pdf",
     "visitor_map_kind": "page",
-    "map_attribution": "Official site · San Diego Zoo Safari Park"
+    "map_attribution": "Official map \u00b7 San Diego Zoo Safari Park"
   },
   "parent_script": [
     "Bathroom first",
     "One big wow",
     "Snack when needed",
     "Leave while happy"
-  ]
+  ],
+  "research_notes": "web-map 2026-08-07"
 }

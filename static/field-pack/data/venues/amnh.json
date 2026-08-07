@@ -11,7 +11,7 @@
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Dinos, the blue whale, and space — NYC’s classic natural history circuit.",
+  "tagline": "Dinos, the blue whale, and space \u2014 NYC\u2019s classic natural history circuit.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Timed entry + optional planetarium tickets.",
@@ -21,8 +21,8 @@
     {
       "id": "sci_dinosaur",
       "label": "Dinosaur hall",
-      "emoji": "🦖",
-      "one_liner": "T. rex and friends — the reason many kids beg to come.",
+      "emoji": "\ud83e\udd96",
+      "one_liner": "T. rex and friends \u2014 the reason many kids beg to come.",
       "tags": [
         "wow",
         "read"
@@ -36,14 +36,14 @@
       "zone": "Fossil halls",
       "qa_card": {
         "question": "Were all dinosaurs huge?",
-        "answer": "No — some were small, but the big ones steal the show!"
+        "answer": "No \u2014 some were small, but the big ones steal the show!"
       },
       "catalog_id": "sci-dinosaur"
     },
     {
       "id": "sci_mammal_hall",
       "label": "Animal / mammal hall",
-      "emoji": "🦌",
+      "emoji": "\ud83e\udd8c",
       "one_liner": "Lifelike dioramas of animals in habitats.",
       "tags": [
         "wow",
@@ -65,8 +65,8 @@
     {
       "id": "sci_planet",
       "label": "Planet / space hall",
-      "emoji": "🪐",
-      "one_liner": "Space show if you added tickets — stars and planets.",
+      "emoji": "\ud83e\ude90",
+      "one_liner": "Space show if you added tickets \u2014 stars and planets.",
       "tags": [
         "wow"
       ],
@@ -86,7 +86,7 @@
     {
       "id": "sci_hands_on",
       "label": "Hands-on lab",
-      "emoji": "🔬",
+      "emoji": "\ud83d\udd2c",
       "one_liner": "Hands-on spots when open to the public floor.",
       "tags": [
         "hands"
@@ -107,7 +107,7 @@
     {
       "id": "sci_rainforest",
       "label": "Rainforest dome",
-      "emoji": "🌿",
+      "emoji": "\ud83c\udf3f",
       "one_liner": "Lush life exhibits when on the route.",
       "tags": [
         "wow"
@@ -128,8 +128,8 @@
     {
       "id": "two_toed_sloth",
       "label": "Two-toed sloth",
-      "emoji": "🦥",
-      "one_liner": "Live animals appear in some education spaces — bonus if present.",
+      "emoji": "\ud83e\udda5",
+      "one_liner": "Live animals appear in some education spaces \u2014 bonus if present.",
       "tags": [
         "climb"
       ],
@@ -149,7 +149,7 @@
     {
       "id": "sci_aquarium_zone",
       "label": "Aquarium zone",
-      "emoji": "🐠",
+      "emoji": "\ud83d\udc20",
       "one_liner": "Aquatic life corners in biodiversity areas.",
       "tags": [
         "water"
@@ -170,7 +170,7 @@
     {
       "id": "cm_free_explore",
       "label": "Free explore",
-      "emoji": "🧭",
+      "emoji": "\ud83e\udded",
       "one_liner": "Pick a favorite hall and wander five minutes freestyle.",
       "tags": [
         "play"
@@ -192,14 +192,15 @@
   "content_mode": "curated",
   "media": {
     "visitor_map_url": "",
-    "visitor_map_page": "https://www.amnh.org/",
+    "visitor_map_page": "https://www.amnh.org/content/download/385996/5752508/file/english-map.pdf",
     "visitor_map_kind": "page",
-    "map_attribution": "Official site · American Museum of Natural History"
+    "map_attribution": "Official map \u00b7 American Museum of Natural History"
   },
   "parent_script": [
     "Bathroom first",
     "One big wow",
     "Snack when needed",
     "Leave while happy"
-  ]
+  ],
+  "research_notes": "web-map 2026-08-07"
 }

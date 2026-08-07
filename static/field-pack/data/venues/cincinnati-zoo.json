@@ -11,19 +11,19 @@
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Compact classic zoo — hippos, cats, and kid energy without endless walking.",
+  "tagline": "Compact classic zoo \u2014 hippos, cats, and kid energy without endless walking.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Members and timed tickets help on peak days — check cincinnatizoo.org.",
+    "ticket_note": "Members and timed tickets help on peak days \u2014 check cincinnatizoo.org.",
     "transit_note": "Avondale; parking on site.",
     "energy_note": "stroller-easy",
-    "best_start": "Hippo Cove first if open — then big cats or kids’ zoo."
+    "best_start": "Hippo Cove first if open \u2014 then big cats or kids\u2019 zoo."
   },
   "items": [
     {
       "id": "nile_hippo",
       "label": "Nile hippo",
-      "emoji": "🦛",
+      "emoji": "\ud83e\udd9b",
       "one_liner": "Underwater hippo views are a Cincinnati signature.",
       "tags": [
         "water",
@@ -46,7 +46,7 @@
     {
       "id": "african_elephant",
       "label": "African elephant",
-      "emoji": "🐘",
+      "emoji": "\ud83d\udc18",
       "one_liner": "Elephants with room to dust-bathe.",
       "tags": [
         "big",
@@ -69,7 +69,7 @@
     {
       "id": "western_lowland_gorilla",
       "label": "Western lowland gorilla",
-      "emoji": "🦍",
+      "emoji": "\ud83e\udd8d",
       "one_liner": "Gorilla families up close.",
       "tags": [
         "primates",
@@ -91,7 +91,7 @@
     {
       "id": "sumatran_tiger",
       "label": "Sumatran tiger",
-      "emoji": "🐯",
+      "emoji": "\ud83d\udc2f",
       "one_liner": "Tigers on the cat walk.",
       "tags": [
         "big-cats",
@@ -113,8 +113,8 @@
     {
       "id": "cheetah",
       "label": "Cheetah",
-      "emoji": "🐆",
-      "one_liner": "Speed specialist — often resting in view.",
+      "emoji": "\ud83d\udc06",
+      "one_liner": "Speed specialist \u2014 often resting in view.",
       "tags": [
         "big-cats",
         "outdoor"
@@ -135,8 +135,8 @@
     {
       "id": "reticulated_giraffe",
       "label": "Reticulated giraffe",
-      "emoji": "🦒",
-      "one_liner": "Tallest animal on long legs — look up!",
+      "emoji": "\ud83e\udd92",
+      "one_liner": "Tallest animal on long legs \u2014 look up!",
       "tags": [
         "wow",
         "tall",
@@ -151,15 +151,15 @@
       "zone": "Grounds",
       "qa_card": {
         "question": "What is special about the Reticulated giraffe?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
       },
       "catalog_id": "reticulated-giraffe"
     },
     {
       "id": "african_lion",
       "label": "African lion",
-      "emoji": "🦁",
-      "one_liner": "Big cat of the grassland pride — mighty roar!",
+      "emoji": "\ud83e\udd81",
+      "one_liner": "Big cat of the grassland pride \u2014 mighty roar!",
       "tags": [
         "wow",
         "big-cats",
@@ -174,14 +174,14 @@
       "zone": "Grounds",
       "qa_card": {
         "question": "What is special about the African lion?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
       },
       "catalog_id": "african-lion"
     },
     {
       "id": "african_penguin",
       "label": "African penguin",
-      "emoji": "🐧",
+      "emoji": "\ud83d\udc27",
       "one_liner": "Waddle on land, zoom in water.",
       "tags": [
         "wow",
@@ -197,15 +197,15 @@
       "zone": "Grounds",
       "qa_card": {
         "question": "What is special about the African penguin?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
       },
       "catalog_id": "african-penguin"
     },
     {
       "id": "caribbean_flamingo",
       "label": "Caribbean flamingo",
-      "emoji": "🦩",
-      "one_liner": "Bright pink wader — long legs for shallow water.",
+      "emoji": "\ud83e\udda9",
+      "one_liner": "Bright pink wader \u2014 long legs for shallow water.",
       "tags": [
         "wow",
         "outdoor"
@@ -219,15 +219,15 @@
       "zone": "Grounds",
       "qa_card": {
         "question": "What is special about the Caribbean flamingo?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
       },
       "catalog_id": "caribbean-flamingo"
     },
     {
       "id": "two_toed_sloth",
       "label": "Two-toed sloth",
-      "emoji": "🦥",
-      "one_liner": "Slow forest climber — hangs upside down.",
+      "emoji": "\ud83e\udda5",
+      "one_liner": "Slow forest climber \u2014 hangs upside down.",
       "tags": [
         "wow",
         "hands",
@@ -244,15 +244,15 @@
       "zone": "Grounds",
       "qa_card": {
         "question": "What is special about the Two-toed sloth?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
       },
       "catalog_id": "two-toed-sloth"
     },
     {
       "id": "zebra",
       "label": "Zebra",
-      "emoji": "🦓",
-      "one_liner": "Striped grassland runner — every pattern is unique.",
+      "emoji": "\ud83e\udd93",
+      "one_liner": "Striped grassland runner \u2014 every pattern is unique.",
       "tags": [
         "wow",
         "outdoor"
@@ -266,15 +266,15 @@
       "zone": "Grounds",
       "qa_card": {
         "question": "What is special about the Zebra?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
       },
       "catalog_id": "zebra"
     },
     {
       "id": "galapagos_tortoise",
-      "label": "Galápagos tortoise",
-      "emoji": "🐢",
-      "one_liner": "Giant tortoise — slow and steady.",
+      "label": "Gal\u00e1pagos tortoise",
+      "emoji": "\ud83d\udc22",
+      "one_liner": "Giant tortoise \u2014 slow and steady.",
       "tags": [
         "wow",
         "outdoor"
@@ -287,8 +287,8 @@
       ],
       "zone": "Grounds",
       "qa_card": {
-        "question": "What is special about the Galápagos tortoise?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What is special about the Gal\u00e1pagos tortoise?",
+        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
       },
       "catalog_id": "galapagos-tortoise"
     }
@@ -296,9 +296,9 @@
   "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "",
-    "visitor_map_page": "https://cincinnatizoo.org/",
+    "visitor_map_page": "https://cincinnatizoo.org/wp-content/uploads/2026/02/Adventure_Ma-2-11-26-pdf.pdf",
     "visitor_map_kind": "page",
-    "map_attribution": "Plan visit · Cincinnati Zoo & Botanical Garden"
+    "map_attribution": "Plan visit \u00b7 Cincinnati Zoo & Botanical Garden"
   },
   "parent_script": [
     "Bathroom first",
@@ -311,5 +311,5 @@
     "african_elephant",
     "western_lowland_gorilla"
   ],
-  "research_notes": "Hippo Cove widely featured; icons from stable public exhibits."
+  "research_notes": "Hippo Cove widely featured; icons from stable public exhibits. \u00b7 web-map 2026-08-07"
 }

@@ -11,7 +11,7 @@
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Dallas gardens — seasonal color, kid exploration, not a zoo census.",
+  "tagline": "Dallas gardens \u2014 seasonal color, kid exploration, not a zoo census.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Timed tickets peak bloom seasons.",
@@ -23,7 +23,7 @@
     {
       "id": "cm_outdoor",
       "label": "Outdoor Area",
-      "emoji": "🌳",
+      "emoji": "\ud83c\udf33",
       "one_liner": "Paths, flowers, and open sky.",
       "tags": [
         "outdoor",
@@ -46,7 +46,7 @@
     {
       "id": "cm_free_explore",
       "label": "Free explore",
-      "emoji": "🧭",
+      "emoji": "\ud83e\udded",
       "one_liner": "They pick the next fountain or path.",
       "tags": [
         "play"
@@ -67,7 +67,7 @@
     {
       "id": "cm_toddler_garden",
       "label": "Toddler Garden",
-      "emoji": "🌱",
+      "emoji": "\ud83c\udf31",
       "one_liner": "Softer corners to reset.",
       "tags": [
         "rest",
@@ -89,7 +89,7 @@
     {
       "id": "sci_hands_on",
       "label": "Hands-on lab",
-      "emoji": "🔬",
+      "emoji": "\ud83d\udd2c",
       "one_liner": "Hands-on moments if offered.",
       "tags": [
         "hands"
@@ -110,7 +110,7 @@
     {
       "id": "cm_makery",
       "label": "Creative Makery",
-      "emoji": "🔧",
+      "emoji": "\ud83d\udd27",
       "one_liner": "Create something small if stations are open.",
       "tags": [
         "hands",
@@ -132,8 +132,8 @@
     {
       "id": "cm_imaginarium",
       "label": "Imaginarium",
-      "emoji": "✨",
-      "one_liner": "Multi-sensory world — explore, notice, imagine.",
+      "emoji": "\u2728",
+      "one_liner": "Multi-sensory world \u2014 explore, notice, imagine.",
       "tags": [
         "wow",
         "outdoor"
@@ -154,8 +154,8 @@
     {
       "id": "cm_woven",
       "label": "Woven Wonders",
-      "emoji": "🧗",
-      "one_liner": "Colorful climbing structure — art you can climb!",
+      "emoji": "\ud83e\uddd7",
+      "one_liner": "Colorful climbing structure \u2014 art you can climb!",
       "tags": [
         "wow",
         "hands",
@@ -177,7 +177,7 @@
     {
       "id": "cm_art_lab",
       "label": "Art Lab",
-      "emoji": "🎨",
+      "emoji": "\ud83c\udfa8",
       "one_liner": "Come-and-go art and reading activities.",
       "tags": [
         "wow",
@@ -200,7 +200,7 @@
     {
       "id": "cm_waterfall",
       "label": "Waterfall play",
-      "emoji": "💧",
+      "emoji": "\ud83d\udca7",
       "one_liner": "Programmable waterfall / water play outdoors.",
       "tags": [
         "wow",
@@ -223,9 +223,9 @@
   ],
   "content_mode": "hybrid",
   "media": {
-    "visitor_map_url": "",
-    "visitor_map_page": "https://www.dallasarboretum.org/",
-    "visitor_map_kind": "page",
+    "visitor_map_url": "https://dallasarboretum.imgix.net/wp-content/uploads/2019/01/22203122/map.jpg",
+    "visitor_map_page": "https://dallasarboretum.imgix.net/wp-content/uploads/2019/01/22203122/map.jpg",
+    "visitor_map_kind": "image",
     "map_attribution": "Official visit page"
   },
   "parent_script": [
@@ -239,5 +239,5 @@
     "cm_free_explore",
     "cm_toddler_garden"
   ],
-  "research_notes": "R2 hybrid 2026-08-07"
+  "research_notes": "R2 hybrid 2026-08-07 \u00b7 web-map 2026-08-07"
 }

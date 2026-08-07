@@ -294,7 +294,7 @@
   "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "",
-    "visitor_map_page": "https://www.hellabrunn.de/en/",
+    "visitor_map_page": "https://www.hellabrunn.de/en/park-visit/general-information/map-of-the-zoo",
     "visitor_map_kind": "page",
     "map_attribution": "Tierpark Hellabrunn"
   },
@@ -309,5 +309,5 @@
     "western_lowland_gorilla",
     "reticulated_giraffe"
   ],
-  "research_notes": "R2b 2026-08-07 \u00b7 map-page 2026-08-07"
+  "research_notes": "R2b 2026-08-07 \u00b7 map-page 2026-08-07 \u00b7 web-map 2026-08-07"
 }

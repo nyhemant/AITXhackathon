@@ -11,7 +11,7 @@
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Sydney harbour views + Aussie animals — ferry arrival is half the wow.",
+  "tagline": "Sydney harbour views + Aussie animals \u2014 ferry arrival is half the wow.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Ferry + tickets; hills on site.",
@@ -23,7 +23,7 @@
     {
       "id": "koala",
       "label": "Koala",
-      "emoji": "🐨",
+      "emoji": "\ud83d\udc28",
       "one_liner": "Koalas with harbour breezes.",
       "tags": [
         "wow",
@@ -45,7 +45,7 @@
     {
       "id": "sumatran_tiger",
       "label": "Sumatran tiger",
-      "emoji": "🐯",
+      "emoji": "\ud83d\udc2f",
       "one_liner": "Tigers.",
       "tags": [
         "big-cats"
@@ -66,7 +66,7 @@
     {
       "id": "western_lowland_gorilla",
       "label": "Western lowland gorilla",
-      "emoji": "🦍",
+      "emoji": "\ud83e\udd8d",
       "one_liner": "Gorillas.",
       "tags": [
         "primates"
@@ -87,7 +87,7 @@
     {
       "id": "reticulated_giraffe",
       "label": "Reticulated giraffe",
-      "emoji": "🦒",
+      "emoji": "\ud83e\udd92",
       "one_liner": "Giraffes + views.",
       "tags": [
         "tall",
@@ -109,7 +109,7 @@
     {
       "id": "african_lion",
       "label": "African lion",
-      "emoji": "🦁",
+      "emoji": "\ud83e\udd81",
       "one_liner": "Lions.",
       "tags": [
         "big-cats",
@@ -131,8 +131,8 @@
     {
       "id": "red_panda",
       "label": "Red panda",
-      "emoji": "🦊",
-      "one_liner": "Rusty tree-climber with a ringed tail — not a giant panda!",
+      "emoji": "\ud83e\udd8a",
+      "one_liner": "Rusty tree-climber with a ringed tail \u2014 not a giant panda!",
       "tags": [
         "wow",
         "outdoor",
@@ -148,15 +148,15 @@
       "zone": "Grounds",
       "qa_card": {
         "question": "What is special about the Red panda?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
       },
       "catalog_id": "red-panda"
     },
     {
       "id": "chimpanzee",
       "label": "Chimpanzee",
-      "emoji": "🐵",
-      "one_liner": "Smart forest ape — climbs and tools.",
+      "emoji": "\ud83d\udc35",
+      "one_liner": "Smart forest ape \u2014 climbs and tools.",
       "tags": [
         "wow",
         "outdoor",
@@ -174,15 +174,15 @@
       "zone": "Grounds",
       "qa_card": {
         "question": "What is special about the Chimpanzee?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
       },
       "catalog_id": "chimpanzee"
     },
     {
       "id": "zebra",
       "label": "Zebra",
-      "emoji": "🦓",
-      "one_liner": "Striped grassland runner — every pattern is unique.",
+      "emoji": "\ud83e\udd93",
+      "one_liner": "Striped grassland runner \u2014 every pattern is unique.",
       "tags": [
         "wow",
         "outdoor"
@@ -196,15 +196,15 @@
       "zone": "Grounds",
       "qa_card": {
         "question": "What is special about the Zebra?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
       },
       "catalog_id": "zebra"
     },
     {
       "id": "asian_small_clawed_otter",
       "label": "Asian small-clawed otter",
-      "emoji": "🦦",
-      "one_liner": "Playful swimmer — smallest otter.",
+      "emoji": "\ud83e\udda6",
+      "one_liner": "Playful swimmer \u2014 smallest otter.",
       "tags": [
         "wow",
         "water",
@@ -221,15 +221,15 @@
       "zone": "Grounds",
       "qa_card": {
         "question": "What is special about the Asian small-clawed otter?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
       },
       "catalog_id": "asian-small-clawed-otter"
     },
     {
       "id": "galapagos_tortoise",
-      "label": "Galápagos tortoise",
-      "emoji": "🐢",
-      "one_liner": "Giant tortoise — slow and steady.",
+      "label": "Gal\u00e1pagos tortoise",
+      "emoji": "\ud83d\udc22",
+      "one_liner": "Giant tortoise \u2014 slow and steady.",
       "tags": [
         "wow",
         "outdoor"
@@ -242,15 +242,15 @@
       ],
       "zone": "Grounds",
       "qa_card": {
-        "question": "What is special about the Galápagos tortoise?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What is special about the Gal\u00e1pagos tortoise?",
+        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
       },
       "catalog_id": "galapagos-tortoise"
     },
     {
       "id": "african_penguin",
       "label": "African penguin",
-      "emoji": "🐧",
+      "emoji": "\ud83d\udc27",
       "one_liner": "Waddle on land, zoom in water.",
       "tags": [
         "wow",
@@ -266,14 +266,14 @@
       "zone": "Grounds",
       "qa_card": {
         "question": "What is special about the African penguin?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
       },
       "catalog_id": "african-penguin"
     },
     {
       "id": "ring_tailed_lemur",
       "label": "Ring-tailed lemur",
-      "emoji": "🐒",
+      "emoji": "\ud83d\udc12",
       "one_liner": "Stripy tail from Madagascar.",
       "tags": [
         "wow",
@@ -289,7 +289,7 @@
       "zone": "Grounds",
       "qa_card": {
         "question": "What is special about the Ring-tailed lemur?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
       },
       "catalog_id": "ring-tailed-lemur"
     }
@@ -297,7 +297,7 @@
   "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "",
-    "visitor_map_page": "https://taronga.org.au/sydney-zoo",
+    "visitor_map_page": "https://www.taronga.org.au/siteassets/tzs/map/tz-map-online.pdf",
     "visitor_map_kind": "page",
     "map_attribution": "Official visit page"
   },
@@ -312,5 +312,5 @@
     "sumatran_tiger",
     "western_lowland_gorilla"
   ],
-  "research_notes": "R2 hybrid 2026-08-07"
+  "research_notes": "R2 hybrid 2026-08-07 \u00b7 web-map 2026-08-07"
 }

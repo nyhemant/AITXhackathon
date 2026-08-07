@@ -11,17 +11,17 @@
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Iconic free-admission zoo — penguins, primates, and the 1904 Flight Cage vibe.",
+  "tagline": "Iconic free-admission zoo \u2014 penguins, primates, and the 1904 Flight Cage vibe.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Admission often free; some experiences ticketed — confirm current policy.",
+    "ticket_note": "Admission often free; some experiences ticketed \u2014 confirm current policy.",
     "transit_note": "Forest Park; easy with a stroller."
   },
   "items": [
     {
       "id": "african_penguin",
       "label": "African penguin",
-      "emoji": "🐧",
+      "emoji": "\ud83d\udc27",
       "one_liner": "Penguins underwater windows are a kid magnet.",
       "tags": [
         "water",
@@ -43,7 +43,7 @@
     {
       "id": "western_lowland_gorilla",
       "label": "Western lowland gorilla",
-      "emoji": "🦍",
+      "emoji": "\ud83e\udd8d",
       "one_liner": "Gorillas up close.",
       "tags": [
         "primates",
@@ -65,7 +65,7 @@
     {
       "id": "chimpanzee",
       "label": "Chimpanzee",
-      "emoji": "🐵",
+      "emoji": "\ud83d\udc35",
       "one_liner": "Chimp social scenes.",
       "tags": [
         "primates",
@@ -87,7 +87,7 @@
     {
       "id": "orangutan",
       "label": "Orangutan",
-      "emoji": "🦧",
+      "emoji": "\ud83e\udda7",
       "one_liner": "Orangutan long-arm climbs.",
       "tags": [
         "primates",
@@ -109,8 +109,8 @@
     {
       "id": "african_elephant",
       "label": "African elephant",
-      "emoji": "🐘",
-      "one_liner": "Elephants on the River’s Edge loop.",
+      "emoji": "\ud83d\udc18",
+      "one_liner": "Elephants on the River\u2019s Edge loop.",
       "tags": [
         "big",
         "outdoor"
@@ -131,7 +131,7 @@
     {
       "id": "nile_hippo",
       "label": "Nile hippo",
-      "emoji": "🦛",
+      "emoji": "\ud83e\udd9b",
       "one_liner": "Hippo underwater views when open.",
       "tags": [
         "water",
@@ -153,7 +153,7 @@
     {
       "id": "african_lion",
       "label": "African lion",
-      "emoji": "🦁",
+      "emoji": "\ud83e\udd81",
       "one_liner": "Lions along the cat walk.",
       "tags": [
         "big-cats",
@@ -175,7 +175,7 @@
     {
       "id": "sumatran_tiger",
       "label": "Sumatran tiger",
-      "emoji": "🐯",
+      "emoji": "\ud83d\udc2f",
       "one_liner": "Tigers in forested habitats.",
       "tags": [
         "big-cats",
@@ -197,7 +197,7 @@
     {
       "id": "reticulated_giraffe",
       "label": "Reticulated giraffe",
-      "emoji": "🦒",
+      "emoji": "\ud83e\udd92",
       "one_liner": "Giraffes above the paths.",
       "tags": [
         "tall",
@@ -219,7 +219,7 @@
     {
       "id": "caribbean_flamingo",
       "label": "Caribbean flamingo",
-      "emoji": "🦩",
+      "emoji": "\ud83e\udda9",
       "one_liner": "Flamingo lagoon pink.",
       "tags": [
         "color",
@@ -242,14 +242,15 @@
   "content_mode": "curated",
   "media": {
     "visitor_map_url": "",
-    "visitor_map_page": "https://www.stlzoo.org/",
+    "visitor_map_page": "https://files.stlzoo.org/production/documents/Maps/winter2025map.pdf",
     "visitor_map_kind": "page",
-    "map_attribution": "Official site · Saint Louis Zoo"
+    "map_attribution": "Official map \u00b7 Saint Louis Zoo"
   },
   "parent_script": [
     "Bathroom first",
     "One big wow",
     "Snack when needed",
     "Leave while happy"
-  ]
+  ],
+  "research_notes": "web-map 2026-08-07"
 }

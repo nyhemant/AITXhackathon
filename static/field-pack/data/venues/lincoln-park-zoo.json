@@ -320,7 +320,7 @@
   "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "",
-    "visitor_map_page": "https://www.lpzoo.org/",
+    "visitor_map_page": "https://www.lpzoo.org/wp-content/uploads/2025/08/PDF-Map-for-Web_AUG-2025.pdf",
     "visitor_map_kind": "page",
     "map_attribution": "Visit \u00b7 Lincoln Park Zoo"
   },
@@ -335,5 +335,5 @@
     "african_lion",
     "african_penguin"
   ],
-  "research_notes": "R1 hybrid 2026-08-07 \u00b7 map-page 2026-08-07"
+  "research_notes": "R1 hybrid 2026-08-07 \u00b7 map-page 2026-08-07 \u00b7 web-map 2026-08-07"
 }
