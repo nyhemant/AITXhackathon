@@ -9,24 +9,25 @@
   "lng": 77.577,
   "official_url": "https://www.bannerghattabiologicalpark.org/",
   "last_verified": "2026-08-07",
-  "verified_by": "catalog-scaffold",
+  "verified_by": "research",
   "status": "verified",
-  "tagline": "Safari + zoo shortlist + hunt (generic starter).",
+  "tagline": "Bannerghatta — biological park + safari; pick zoo walk OR safari, not both full.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Check the official site for tickets and hours.",
-    "transit_note": ""
+    "ticket_note": "Safari slots sell out — check times.",
+    "transit_note": "South of Bengaluru; plan a car day.",
+    "energy_note": "heat",
+    "best_start": "Safari block or zoo loop — one focus."
   },
   "items": [
     {
       "id": "african_lion",
       "label": "African lion",
       "emoji": "🦁",
-      "one_liner": "Big cat of the grassland pride — mighty roar!",
+      "one_liner": "Lions if on safari or cat zone.",
       "tags": [
-        "wow",
         "big-cats",
-        "outdoor"
+        "wow"
       ],
       "age_fit": [
         "2-3",
@@ -34,22 +35,21 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Safari / cats",
       "qa_card": {
-        "question": "What is special about the African lion?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the African lion?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-lion"
     },
     {
-      "id": "reticulated_giraffe",
-      "label": "Reticulated giraffe",
-      "emoji": "🦒",
-      "one_liner": "Tallest animal on long legs — look up!",
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "emoji": "🐯",
+      "one_liner": "Tigers — Indian park highlight.",
       "tags": [
-        "wow",
-        "tall",
-        "outdoor"
+        "big-cats",
+        "wow"
       ],
       "age_fit": [
         "2-3",
@@ -57,23 +57,20 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Tigers",
       "qa_card": {
-        "question": "What is special about the Reticulated giraffe?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Sumatran tiger?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "reticulated-giraffe"
+      "catalog_id": "sumatran-tiger"
     },
     {
       "id": "african_elephant",
       "label": "African elephant",
       "emoji": "🐘",
-      "one_liner": "Biggest land animal — trunk to grab, spray, and say hello.",
+      "one_liner": "Elephants.",
       "tags": [
-        "wow",
-        "big",
-        "outdoor",
-        "water"
+        "big"
       ],
       "age_fit": [
         "2-3",
@@ -81,10 +78,10 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Elephants",
       "qa_card": {
-        "question": "What is special about the African elephant?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the African elephant?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-elephant"
     },
@@ -92,9 +89,8 @@
       "id": "zebra",
       "label": "Zebra",
       "emoji": "🦓",
-      "one_liner": "Striped grassland runner — every pattern is unique.",
+      "one_liner": "Zebras on safari stretches.",
       "tags": [
-        "wow",
         "outdoor"
       ],
       "age_fit": [
@@ -103,24 +99,20 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Plains",
       "qa_card": {
-        "question": "What is special about the Zebra?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Zebra?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "zebra"
     },
     {
-      "id": "sumatran_tiger",
-      "label": "Sumatran tiger",
-      "emoji": "🐯",
-      "one_liner": "Stripy forest big cat — strong and stealthy.",
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "emoji": "🦒",
+      "one_liner": "Giraffes.",
       "tags": [
-        "wow",
-        "big-cats",
-        "outdoor",
-        "rest",
-        "kids"
+        "tall"
       ],
       "age_fit": [
         "2-3",
@@ -128,12 +120,12 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Giraffes",
       "qa_card": {
-        "question": "What is special about the Sumatran tiger?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Reticulated giraffe?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sumatran-tiger"
+      "catalog_id": "reticulated-giraffe"
     },
     {
       "id": "cheetah",
@@ -298,17 +290,23 @@
       "catalog_id": "warthog"
     }
   ],
-  "content_mode": "wonder",
+  "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://www.bannerghattabiologicalpark.org/",
     "visitor_map_kind": "page",
-    "map_attribution": "Official site · Bannerghatta Biological Park"
+    "map_attribution": "Bannerghatta Biological Park"
   },
   "parent_script": [
     "Bathroom first",
     "One big wow",
     "Snack when needed",
     "Leave while happy"
-  ]
+  ],
+  "route_90m": [
+    "african_lion",
+    "sumatran_tiger",
+    "african_elephant"
+  ],
+  "research_notes": "R3 2026-08-07"
 }

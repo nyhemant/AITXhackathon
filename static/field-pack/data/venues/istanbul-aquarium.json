@@ -9,23 +9,26 @@
   "lng": 28.797,
   "official_url": "https://www.istanbulakvaryum.com/en",
   "last_verified": "2026-08-07",
-  "verified_by": "catalog-scaffold",
+  "verified_by": "research",
   "status": "verified",
-  "tagline": "Continental tanks shortlist + hunt (generic starter).",
+  "tagline": "Istanbul Aquarium — big indoor tunnel day by the sea.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Check the official site for tickets and hours.",
-    "transit_note": ""
+    "ticket_note": "Florya area; tickets online help.",
+    "transit_note": "Plan metro/bus or taxi.",
+    "energy_note": "indoor",
+    "best_start": "Tunnel / biggest tank first."
   },
   "items": [
     {
       "id": "shark",
       "label": "Shark",
       "emoji": "🦈",
-      "one_liner": "Ocean hunter with a strong swishy body.",
+      "one_liner": "Sharks — overhead wow.",
       "tags": [
-        "wow",
-        "water"
+        "water",
+        "big",
+        "wow"
       ],
       "age_fit": [
         "2-3",
@@ -33,10 +36,10 @@
         "6-8",
         "9+"
       ],
-      "zone": "Galleries",
+      "zone": "Big tanks",
       "qa_card": {
         "question": "What did you notice about the Shark?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "shark"
     },
@@ -44,10 +47,10 @@
       "id": "stingray",
       "label": "Stingray",
       "emoji": "射线",
-      "one_liner": "Flat swimmer — often in touch pools (gentle hands!).",
+      "one_liner": "Rays.",
       "tags": [
-        "wow",
-        "water"
+        "water",
+        "flat"
       ],
       "age_fit": [
         "2-3",
@@ -55,10 +58,10 @@
         "6-8",
         "9+"
       ],
-      "zone": "Galleries",
+      "zone": "Rays",
       "qa_card": {
         "question": "What did you notice about the Stingray?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "stingray"
     },
@@ -66,10 +69,10 @@
       "id": "jellyfish",
       "label": "Jellyfish",
       "emoji": "🎐",
-      "one_liner": "Soft drifter — no bones, glows and pulses in the water.",
+      "one_liner": "Jellies glow stop.",
       "tags": [
-        "wow",
-        "water"
+        "water",
+        "glow"
       ],
       "age_fit": [
         "2-3",
@@ -77,10 +80,10 @@
         "6-8",
         "9+"
       ],
-      "zone": "Galleries",
+      "zone": "Jellies",
       "qa_card": {
         "question": "What did you notice about the Jellyfish?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "jellyfish"
     },
@@ -88,11 +91,10 @@
       "id": "sea_turtle",
       "label": "Sea turtle",
       "emoji": "🐢",
-      "one_liner": "Shelled ocean traveler — flippers for swimming.",
+      "one_liner": "Turtles.",
       "tags": [
-        "wow",
         "water",
-        "outdoor"
+        "shell"
       ],
       "age_fit": [
         "2-3",
@@ -100,12 +102,34 @@
         "6-8",
         "9+"
       ],
-      "zone": "Galleries",
+      "zone": "Turtles",
       "qa_card": {
         "question": "What did you notice about the Sea turtle?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sea-turtle"
+    },
+    {
+      "id": "clownfish",
+      "label": "Clownfish",
+      "emoji": "🐠",
+      "one_liner": "Bright reef fish.",
+      "tags": [
+        "water",
+        "color"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Reef",
+      "qa_card": {
+        "question": "What did you notice about the Clownfish?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "clownfish"
     },
     {
       "id": "octopus",
@@ -128,28 +152,6 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "octopus"
-    },
-    {
-      "id": "clownfish",
-      "label": "Clownfish",
-      "emoji": "🐠",
-      "one_liner": "Bright reef fish — friends with anemones.",
-      "tags": [
-        "wow",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "What did you notice about the Clownfish?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "clownfish"
     },
     {
       "id": "seahorse",
@@ -289,17 +291,23 @@
       "catalog_id": "asian-small-clawed-otter"
     }
   ],
-  "content_mode": "wonder",
+  "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://www.istanbulakvaryum.com/en",
     "visitor_map_kind": "page",
-    "map_attribution": "Official site · Istanbul Aquarium"
+    "map_attribution": "Istanbul Aquarium"
   },
   "parent_script": [
     "Bathroom first",
     "One big wow",
     "Snack when needed",
     "Leave while happy"
-  ]
+  ],
+  "route_90m": [
+    "shark",
+    "stingray",
+    "jellyfish"
+  ],
+  "research_notes": "R3 2026-08-07"
 }

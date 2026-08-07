@@ -9,20 +9,22 @@
   "lng": -58.4168,
   "official_url": "https://turismo.buenosaires.gob.ar/",
   "last_verified": "2026-08-07",
-  "verified_by": "catalog-scaffold",
+  "verified_by": "research",
   "status": "verified",
-  "tagline": "Eco-park walk shortlist + hunt (not a classic zoo).",
+  "tagline": "Ecoparque BA — conservation park, not a classic “see every animal” zoo day.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Check the official site for tickets and hours.",
-    "transit_note": ""
+    "ticket_note": "City park rules; verify open areas.",
+    "transit_note": "Palermo / city park access.",
+    "energy_note": "stroller-easy",
+    "best_start": "Birds + one habitat path."
   },
   "items": [
     {
       "id": "caribbean_flamingo",
       "label": "Caribbean flamingo",
       "emoji": "🦩",
-      "one_liner": "Bright pink wader — long legs for shallow water.",
+      "one_liner": "Flamingos — easy visual wow.",
       "tags": [
         "wow",
         "outdoor"
@@ -33,10 +35,10 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Birds",
       "qa_card": {
-        "question": "What is special about the Caribbean flamingo?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Caribbean flamingo?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "caribbean-flamingo"
     },
@@ -44,11 +46,9 @@
       "id": "african_penguin",
       "label": "African penguin",
       "emoji": "🐧",
-      "one_liner": "Waddle on land, zoom in water.",
+      "one_liner": "Penguins if on the open route.",
       "tags": [
-        "wow",
-        "water",
-        "outdoor"
+        "water"
       ],
       "age_fit": [
         "2-3",
@@ -56,10 +56,10 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Penguins",
       "qa_card": {
-        "question": "What is special about the African penguin?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the African penguin?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-penguin"
     },
@@ -67,10 +67,9 @@
       "id": "galapagos_tortoise",
       "label": "Galápagos tortoise",
       "emoji": "🐢",
-      "one_liner": "Giant tortoise — slow and steady.",
+      "one_liner": "Slow giant tortoises.",
       "tags": [
-        "wow",
-        "outdoor"
+        "wow"
       ],
       "age_fit": [
         "2-3",
@@ -78,10 +77,10 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Tortoises",
       "qa_card": {
-        "question": "What is special about the Galápagos tortoise?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Galápagos tortoise?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "galapagos-tortoise"
     },
@@ -89,10 +88,9 @@
       "id": "ring_tailed_lemur",
       "label": "Ring-tailed lemur",
       "emoji": "🐒",
-      "one_liner": "Stripy tail from Madagascar.",
+      "one_liner": "Lemurs.",
       "tags": [
-        "wow",
-        "outdoor",
+        "climb",
         "play"
       ],
       "age_fit": [
@@ -101,10 +99,10 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Lemurs",
       "qa_card": {
-        "question": "What is special about the Ring-tailed lemur?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Ring-tailed lemur?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "ring-tailed-lemur"
     },
@@ -112,13 +110,9 @@
       "id": "two_toed_sloth",
       "label": "Two-toed sloth",
       "emoji": "🦥",
-      "one_liner": "Slow forest climber — hangs upside down.",
+      "one_liner": "Sloths — patience game.",
       "tags": [
-        "wow",
-        "hands",
-        "play",
-        "rest",
-        "kids"
+        "climb"
       ],
       "age_fit": [
         "2-3",
@@ -126,10 +120,10 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Sloths",
       "qa_card": {
-        "question": "What is special about the Two-toed sloth?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Two-toed sloth?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "two-toed-sloth"
     },
@@ -293,17 +287,23 @@
       "catalog_id": "freshwater-fish"
     }
   ],
-  "content_mode": "wonder",
+  "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://turismo.buenosaires.gob.ar/",
     "visitor_map_kind": "page",
-    "map_attribution": "Official site · Ecoparque Buenos Aires"
+    "map_attribution": "Ecoparque Buenos Aires"
   },
   "parent_script": [
     "Bathroom first",
     "One big wow",
     "Snack when needed",
     "Leave while happy"
-  ]
+  ],
+  "route_90m": [
+    "caribbean_flamingo",
+    "african_penguin",
+    "galapagos_tortoise"
+  ],
+  "research_notes": "R3 2026-08-07"
 }
