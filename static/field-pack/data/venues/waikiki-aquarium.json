@@ -11,7 +11,7 @@
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Tiny ocean gem by the water — Hawaiian reef life, not a mega-aquarium.",
+  "tagline": "Tiny ocean gem by the water \u2014 Hawaiian reef life, not a mega-aquarium.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Small campus; check hours.",
@@ -23,7 +23,7 @@
     {
       "id": "shark",
       "label": "Shark",
-      "emoji": "🦈",
+      "emoji": "\ud83e\udd88",
       "one_liner": "Sharks in island tanks.",
       "tags": [
         "water",
@@ -45,7 +45,7 @@
     {
       "id": "sea_turtle",
       "label": "Sea turtle",
-      "emoji": "🐢",
+      "emoji": "\ud83d\udc22",
       "one_liner": "Honu energy when on view.",
       "tags": [
         "water",
@@ -68,7 +68,7 @@
     {
       "id": "jellyfish",
       "label": "Jellyfish",
-      "emoji": "🎐",
+      "emoji": "\ud83c\udf90",
       "one_liner": "Soft glow.",
       "tags": [
         "water",
@@ -90,7 +90,7 @@
     {
       "id": "octopus",
       "label": "Octopus",
-      "emoji": "🐙",
+      "emoji": "\ud83d\udc19",
       "one_liner": "Look carefully.",
       "tags": [
         "water",
@@ -112,7 +112,7 @@
     {
       "id": "clownfish",
       "label": "Clownfish",
-      "emoji": "🐠",
+      "emoji": "\ud83d\udc20",
       "one_liner": "Bright reef colors.",
       "tags": [
         "water",
@@ -134,8 +134,8 @@
     {
       "id": "stingray",
       "label": "Stingray",
-      "emoji": "射线",
-      "one_liner": "Flat swimmer — often in touch pools (gentle hands!).",
+      "emoji": "\u5c04\u7ebf",
+      "one_liner": "Flat swimmer \u2014 often in touch pools (gentle hands!).",
       "tags": [
         "wow",
         "water"
@@ -156,7 +156,7 @@
     {
       "id": "seahorse",
       "label": "Seahorse",
-      "emoji": "🌊",
+      "emoji": "\ud83c\udf0a",
       "one_liner": "Tiny upright swimmer that holds on with its tail.",
       "tags": [
         "wow",
@@ -178,8 +178,8 @@
     {
       "id": "eel",
       "label": "Eel",
-      "emoji": "🐍",
-      "one_liner": "Long snaky fish — loves rocky hidey-holes.",
+      "emoji": "\ud83d\udc0d",
+      "one_liner": "Long snaky fish \u2014 loves rocky hidey-holes.",
       "tags": [
         "wow",
         "water"
@@ -200,7 +200,7 @@
     {
       "id": "crab",
       "label": "Crab",
-      "emoji": "🦀",
+      "emoji": "\ud83e\udd80",
       "one_liner": "Sideways walker with a hard shell and pinchers.",
       "tags": [
         "wow",
@@ -222,8 +222,8 @@
     {
       "id": "starfish",
       "label": "Sea star",
-      "emoji": "⭐",
-      "one_liner": "Star-shaped ocean friend — often in touch tanks.",
+      "emoji": "\u2b50",
+      "one_liner": "Star-shaped ocean friend \u2014 often in touch tanks.",
       "tags": [
         "wow",
         "outdoor",
@@ -246,8 +246,8 @@
     {
       "id": "freshwater_fish",
       "label": "River / lake fish",
-      "emoji": "🐟",
-      "one_liner": "Fish that live in fresh water — rivers, lakes, ponds.",
+      "emoji": "\ud83d\udc1f",
+      "one_liner": "Fish that live in fresh water \u2014 rivers, lakes, ponds.",
       "tags": [
         "wow",
         "water"
@@ -268,8 +268,8 @@
     {
       "id": "asian_small_clawed_otter",
       "label": "Asian small-clawed otter",
-      "emoji": "🦦",
-      "one_liner": "Playful swimmer — smallest otter.",
+      "emoji": "\ud83e\udda6",
+      "one_liner": "Playful swimmer \u2014 smallest otter.",
       "tags": [
         "wow",
         "water",
@@ -294,9 +294,9 @@
   "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "",
-    "visitor_map_page": "https://www.waikikiaquarium.org/",
+    "visitor_map_page": "https://www.waikikiaquarium.org/map/",
     "visitor_map_kind": "page",
-    "map_attribution": "Official visit page"
+    "map_attribution": "Official map \u00b7 Waikiki Aquarium"
   },
   "parent_script": [
     "Bathroom first",
@@ -309,5 +309,5 @@
     "sea_turtle",
     "jellyfish"
   ],
-  "research_notes": "R2 hybrid 2026-08-07"
+  "research_notes": "R2 hybrid 2026-08-07 \u00b7 map-page 2026-08-07"
 }

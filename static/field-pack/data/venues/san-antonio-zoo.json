@@ -295,9 +295,9 @@
   "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "https://sazoo.org/wp-content/uploads/2026/07/Zoorasic-Park-Map-2026-v3-scaled.jpg",
-    "visitor_map_page": "https://sazoo.org/",
+    "visitor_map_page": "http://sazoo.org/wp-content/uploads/2026/07/Zoorasic-Park-Map-2026-v3.pdf",
     "visitor_map_kind": "image",
-    "map_attribution": "Official visit page"
+    "map_attribution": "Official map \u00b7 San Antonio Zoo"
   },
   "parent_script": [
     "Bathroom first",
@@ -310,5 +310,5 @@
     "reticulated_giraffe",
     "sumatran_tiger"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 \u00b7 map-img 2026-08-07"
+  "research_notes": "R2 hybrid 2026-08-07 \u00b7 map-img 2026-08-07 \u00b7 map-page 2026-08-07"
 }

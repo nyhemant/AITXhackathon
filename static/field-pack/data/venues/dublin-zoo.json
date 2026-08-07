@@ -297,9 +297,9 @@
   "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "https://www.dublinzoo.ie/wp-content/smush-webp/2025/10/map.png.webp",
-    "visitor_map_page": "https://www.dublinzoo.ie/",
+    "visitor_map_page": "https://www.dublinzoo.ie/plan-your-visit/#zoo-map",
     "visitor_map_kind": "image",
-    "map_attribution": "Official visit page"
+    "map_attribution": "Official map \u00b7 Dublin Zoo"
   },
   "parent_script": [
     "Bathroom first",
@@ -312,5 +312,5 @@
     "sumatran_tiger",
     "african_elephant"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 \u00b7 map-img 2026-08-07"
+  "research_notes": "R2 hybrid 2026-08-07 \u00b7 map-img 2026-08-07 \u00b7 map-page 2026-08-07"
 }

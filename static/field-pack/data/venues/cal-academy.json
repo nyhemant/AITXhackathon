@@ -21,8 +21,8 @@
     {
       "id": "sci_rainforest",
       "label": "Rainforest dome",
-      "emoji": "🌿",
-      "one_liner": "Four-story living rainforest dome — look for birds and butterflies.",
+      "emoji": "\ud83c\udf3f",
+      "one_liner": "Four-story living rainforest dome \u2014 look for birds and butterflies.",
       "tags": [
         "wow",
         "climb"
@@ -43,7 +43,7 @@
     {
       "id": "shark",
       "label": "Shark",
-      "emoji": "🦈",
+      "emoji": "\ud83e\udd88",
       "one_liner": "Sharks in the Philippine Coral Reef and main tanks.",
       "tags": [
         "water",
@@ -65,7 +65,7 @@
     {
       "id": "african_penguin",
       "label": "African penguin",
-      "emoji": "🐧",
+      "emoji": "\ud83d\udc27",
       "one_liner": "Penguins just outside/near the academy path.",
       "tags": [
         "water",
@@ -87,7 +87,7 @@
     {
       "id": "jellyfish",
       "label": "Jellyfish",
-      "emoji": "🎐",
+      "emoji": "\ud83c\udf90",
       "one_liner": "Jellies in glowing corridors.",
       "tags": [
         "water",
@@ -109,7 +109,7 @@
     {
       "id": "octopus",
       "label": "Octopus",
-      "emoji": "🐙",
+      "emoji": "\ud83d\udc19",
       "one_liner": "Octopus hideouts along the tanks.",
       "tags": [
         "water",
@@ -131,7 +131,7 @@
     {
       "id": "stingray",
       "label": "Stingray",
-      "emoji": "射线",
+      "emoji": "\u5c04\u7ebf",
       "one_liner": "Rays in shallow views.",
       "tags": [
         "water",
@@ -153,7 +153,7 @@
     {
       "id": "sci_planet",
       "label": "Planet / space hall",
-      "emoji": "🪐",
+      "emoji": "\ud83e\ude90",
       "one_liner": "Morrison Planetarium show if ticketed.",
       "tags": [
         "wow"
@@ -174,7 +174,7 @@
     {
       "id": "sci_hands_on",
       "label": "Hands-on lab",
-      "emoji": "🔬",
+      "emoji": "\ud83d\udd2c",
       "one_liner": "Touch specimens and discovery carts when open.",
       "tags": [
         "hands"
@@ -195,7 +195,7 @@
     {
       "id": "seahorse",
       "label": "Seahorse",
-      "emoji": "🌊",
+      "emoji": "\ud83c\udf0a",
       "one_liner": "Seahorses in smaller tanks.",
       "tags": [
         "water",
@@ -217,7 +217,7 @@
     {
       "id": "clownfish",
       "label": "Clownfish",
-      "emoji": "🐠",
+      "emoji": "\ud83d\udc20",
       "one_liner": "Bright reef fish under the rainforest.",
       "tags": [
         "water",
@@ -240,14 +240,15 @@
   "content_mode": "curated",
   "media": {
     "visitor_map_url": "",
-    "visitor_map_page": "https://www.calacademy.org/",
+    "visitor_map_page": "https://www.calacademy.org/map",
     "visitor_map_kind": "page",
-    "map_attribution": "Official site · California Academy of Sciences"
+    "map_attribution": "Official site \u00b7 California Academy of Sciences"
   },
   "parent_script": [
     "Bathroom first",
     "One big wow",
     "Snack when needed",
     "Leave while happy"
-  ]
+  ],
+  "research_notes": "map-page 2026-08-07"
 }

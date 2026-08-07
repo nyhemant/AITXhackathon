@@ -259,7 +259,7 @@
   "content_mode": "curated",
   "media": {
     "visitor_map_url": "https://dallaszoo.imgix.net/wp-content/uploads/2020/03/30143212/DZ-Map-Fall2022-1.jpg",
-    "visitor_map_page": "https://www.dallaszoo.com/",
+    "visitor_map_page": "https://dallaszoo.imgix.net/wp-content/uploads/2026/04/09125619/4.9.25-printed-Map.pdf?fm=pdf",
     "visitor_map_kind": "image",
     "map_attribution": "Official site \u00b7 Dallas Zoo"
   },
@@ -269,5 +269,5 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "research_notes": "map-img 2026-08-07"
+  "research_notes": "map-img 2026-08-07 \u00b7 map-page 2026-08-07"
 }

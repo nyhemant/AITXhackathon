@@ -247,9 +247,9 @@
   "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "https://www.pittsburghzoo.org/wp-content/uploads/2026/05/26_VisitorsMap_Website.webp",
-    "visitor_map_page": "https://www.pittsburghzoo.org/",
+    "visitor_map_page": "https://www.pittsburghzoo.org/plan-your-visit/zoo-map/",
     "visitor_map_kind": "image",
-    "map_attribution": "Official visit page"
+    "map_attribution": "Official map \u00b7 Pittsburgh Zoo & Aquarium"
   },
   "parent_script": [
     "Bathroom first",
@@ -262,5 +262,5 @@
     "african_elephant",
     "reticulated_giraffe"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 \u00b7 map-img 2026-08-07"
+  "research_notes": "R2 hybrid 2026-08-07 \u00b7 map-img 2026-08-07 \u00b7 map-page 2026-08-07"
 }

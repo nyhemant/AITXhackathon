@@ -294,9 +294,9 @@
   "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "https://cdn.aucklandunlimited.com/zoo/assets/media/azoo-visitors-map-jul-2026-map.jpg",
-    "visitor_map_page": "https://www.aucklandzoo.co.nz/",
+    "visitor_map_page": "https://www.aucklandzoo.co.nz/visit/zoo-map",
     "visitor_map_kind": "image",
-    "map_attribution": "Official visit page"
+    "map_attribution": "Official map \u00b7 Auckland Zoo"
   },
   "parent_script": [
     "Bathroom first",
@@ -309,5 +309,5 @@
     "western_lowland_gorilla",
     "reticulated_giraffe"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 \u00b7 map-img 2026-08-07"
+  "research_notes": "R2 hybrid 2026-08-07 \u00b7 map-img 2026-08-07 \u00b7 map-page 2026-08-07"
 }

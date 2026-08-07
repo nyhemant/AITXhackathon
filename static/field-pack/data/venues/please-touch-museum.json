@@ -11,10 +11,10 @@
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Philly play museum — kids run the show; grown-ups follow.",
+  "tagline": "Philly play museum \u2014 kids run the show; grown-ups follow.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Timed tickets common — book on pleasetouchmuseum.org.",
+    "ticket_note": "Timed tickets common \u2014 book on pleasetouchmuseum.org.",
     "transit_note": "Fairmount Park; stroller-friendly halls.",
     "energy_note": "indoor",
     "best_start": "Pick one wing, set a snack timer, rotate rooms."
@@ -23,8 +23,8 @@
     {
       "id": "cm_waterfall",
       "label": "Waterfall play",
-      "emoji": "💧",
-      "one_liner": "Splash zones when open — pack a change of clothes.",
+      "emoji": "\ud83d\udca7",
+      "one_liner": "Splash zones when open \u2014 pack a change of clothes.",
       "tags": [
         "hands",
         "play",
@@ -46,7 +46,7 @@
     {
       "id": "cm_imaginarium",
       "label": "Imaginarium",
-      "emoji": "✨",
+      "emoji": "\u2728",
       "one_liner": "Kid-sized worlds to invent stories.",
       "tags": [
         "play",
@@ -68,7 +68,7 @@
     {
       "id": "cm_makery",
       "label": "Creative Makery",
-      "emoji": "🔧",
+      "emoji": "\ud83d\udd27",
       "one_liner": "Hands-on create stations.",
       "tags": [
         "hands",
@@ -90,7 +90,7 @@
     {
       "id": "cm_outdoor",
       "label": "Outdoor Area",
-      "emoji": "🌳",
+      "emoji": "\ud83c\udf33",
       "one_liner": "Burn energy outside when weather allows.",
       "tags": [
         "outdoor",
@@ -112,7 +112,7 @@
     {
       "id": "cm_toddler_garden",
       "label": "Toddler Garden",
-      "emoji": "🌱",
+      "emoji": "\ud83c\udf31",
       "one_liner": "Softer spaces for the youngest.",
       "tags": [
         "play",
@@ -134,8 +134,8 @@
     {
       "id": "cm_woven",
       "label": "Woven Wonders",
-      "emoji": "🧗",
-      "one_liner": "Colorful climbing structure — art you can climb!",
+      "emoji": "\ud83e\uddd7",
+      "one_liner": "Colorful climbing structure \u2014 art you can climb!",
       "tags": [
         "wow",
         "hands",
@@ -157,7 +157,7 @@
     {
       "id": "cm_art_lab",
       "label": "Art Lab",
-      "emoji": "🎨",
+      "emoji": "\ud83c\udfa8",
       "one_liner": "Come-and-go art and reading activities.",
       "tags": [
         "wow",
@@ -180,8 +180,8 @@
     {
       "id": "cm_free_explore",
       "label": "Free explore",
-      "emoji": "🧭",
-      "one_liner": "Their choice path — whatever pulled them in!",
+      "emoji": "\ud83e\udded",
+      "one_liner": "Their choice path \u2014 whatever pulled them in!",
       "tags": [
         "wow",
         "outdoor"
@@ -203,9 +203,9 @@
   "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "",
-    "visitor_map_page": "https://www.pleasetouchmuseum.org/",
+    "visitor_map_page": "https://www.pleasetouchmuseum.org/map/",
     "visitor_map_kind": "page",
-    "map_attribution": "Plan your visit · Please Touch Museum"
+    "map_attribution": "Plan your visit \u00b7 Please Touch Museum"
   },
   "parent_script": [
     "Bathroom first",
@@ -218,5 +218,5 @@
     "cm_imaginarium",
     "cm_makery"
   ],
-  "research_notes": "R1 hybrid 2026-08-07"
+  "research_notes": "R1 hybrid 2026-08-07 \u00b7 map-page 2026-08-07"
 }

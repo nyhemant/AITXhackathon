@@ -11,17 +11,17 @@
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Desert Dome + jungle + aquarium — three “worlds” in one ticket.",
+  "tagline": "Desert Dome + jungle + aquarium \u2014 three \u201cworlds\u201d in one ticket.",
   "practical": {
     "typical_duration": "full day ideal; half day if you pick two worlds",
-    "ticket_note": "One of the great Midwest zoo days — arrive at open.",
+    "ticket_note": "One of the great Midwest zoo days \u2014 arrive at open.",
     "transit_note": "Omaha; car day."
   },
   "items": [
     {
       "id": "african_elephant",
       "label": "African elephant",
-      "emoji": "🐘",
+      "emoji": "\ud83d\udc18",
       "one_liner": "Elephants outdoors when weather allows.",
       "tags": [
         "big",
@@ -43,7 +43,7 @@
     {
       "id": "western_lowland_gorilla",
       "label": "Western lowland gorilla",
-      "emoji": "🦍",
+      "emoji": "\ud83e\udd8d",
       "one_liner": "Gorillas after the jungle wow.",
       "tags": [
         "primates",
@@ -65,7 +65,7 @@
     {
       "id": "sumatran_tiger",
       "label": "Sumatran tiger",
-      "emoji": "🐯",
+      "emoji": "\ud83d\udc2f",
       "one_liner": "Tigers in forested cat habitats.",
       "tags": [
         "big-cats",
@@ -87,7 +87,7 @@
     {
       "id": "african_lion",
       "label": "African lion",
-      "emoji": "🦁",
+      "emoji": "\ud83e\udd81",
       "one_liner": "Lions on the grasslands.",
       "tags": [
         "big-cats",
@@ -109,7 +109,7 @@
     {
       "id": "reticulated_giraffe",
       "label": "Reticulated giraffe",
-      "emoji": "🦒",
+      "emoji": "\ud83e\udd92",
       "one_liner": "Giraffe feeding opportunities some days.",
       "tags": [
         "tall",
@@ -132,7 +132,7 @@
     {
       "id": "shark",
       "label": "Shark",
-      "emoji": "🦈",
+      "emoji": "\ud83e\udd88",
       "one_liner": "Sharks in the indoor aquarium wing.",
       "tags": [
         "water",
@@ -155,7 +155,7 @@
     {
       "id": "stingray",
       "label": "Stingray",
-      "emoji": "射线",
+      "emoji": "\u5c04\u7ebf",
       "one_liner": "Rays in the aquarium galleries.",
       "tags": [
         "water",
@@ -177,7 +177,7 @@
     {
       "id": "african_penguin",
       "label": "African penguin",
-      "emoji": "🐧",
+      "emoji": "\ud83d\udc27",
       "one_liner": "Penguins as a cool-down stop.",
       "tags": [
         "water",
@@ -199,7 +199,7 @@
     {
       "id": "jellyfish",
       "label": "Jellyfish",
-      "emoji": "🎐",
+      "emoji": "\ud83c\udf90",
       "one_liner": "Jellies inside the dome complex story.",
       "tags": [
         "water",
@@ -221,7 +221,7 @@
     {
       "id": "orangutan",
       "label": "Orangutan",
-      "emoji": "🦧",
+      "emoji": "\ud83e\udda7",
       "one_liner": "Orangutans in lush indoor-outdoor spaces.",
       "tags": [
         "primates",
@@ -244,14 +244,15 @@
   "content_mode": "curated",
   "media": {
     "visitor_map_url": "",
-    "visitor_map_page": "https://www.omahazoo.com/",
+    "visitor_map_page": "https://assets.speakcdn.com/assets/2140/zoo_map_summer_2026.pdf",
     "visitor_map_kind": "page",
-    "map_attribution": "Official site · Omaha's Henry Doorly Zoo & Aquarium"
+    "map_attribution": "Official site \u00b7 Omaha's Henry Doorly Zoo & Aquarium"
   },
   "parent_script": [
     "Bathroom first",
     "One big wow",
     "Snack when needed",
     "Leave while happy"
-  ]
+  ],
+  "research_notes": "map-page 2026-08-07"
 }

@@ -316,7 +316,7 @@
   "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "https://detroitzoo.org/wp-content/uploads/2026/06/ZooMapJune26-777x1200.webp",
-    "visitor_map_page": "https://detroitzoo.org/",
+    "visitor_map_page": "https://detroitzoo.org/visit/maps/",
     "visitor_map_kind": "image",
     "map_attribution": "Official map \u00b7 Detroit Zoo"
   },
@@ -331,5 +331,5 @@
     "african_elephant",
     "reticulated_giraffe"
   ],
-  "research_notes": "R1 hybrid 2026-08-07 \u00b7 map-img 2026-08-07"
+  "research_notes": "R1 hybrid 2026-08-07 \u00b7 map-img 2026-08-07 \u00b7 map-page 2026-08-07"
 }

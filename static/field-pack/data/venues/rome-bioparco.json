@@ -294,7 +294,7 @@
   "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "https://www.bioparco.it/wp-content/uploads/2024/01/Mappa_2023_Ottobre.png",
-    "visitor_map_page": "https://www.bioparco.it/en/",
+    "visitor_map_page": "https://www.bioparco.it/en/zoo-map/",
     "visitor_map_kind": "image",
     "map_attribution": "Official map \u00b7 Bioparco di Roma"
   },
@@ -309,5 +309,5 @@
     "reticulated_giraffe",
     "sumatran_tiger"
   ],
-  "research_notes": "R3 2026-08-07 \u00b7 map-img 2026-08-07"
+  "research_notes": "R3 2026-08-07 \u00b7 map-img 2026-08-07 \u00b7 map-page 2026-08-07"
 }

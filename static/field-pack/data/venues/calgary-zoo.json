@@ -293,9 +293,9 @@
   "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "https://www.calgaryzoo.com/wp-content/uploads/2026/07/IA-Updated-Map-2026-1024x498.jpg",
-    "visitor_map_page": "https://www.calgaryzoo.com/",
+    "visitor_map_page": "https://www.calgaryzoo.com/plan-your-visit/zoo-map/",
     "visitor_map_kind": "image",
-    "map_attribution": "Official visit page"
+    "map_attribution": "Official map \u00b7 Calgary Zoo"
   },
   "parent_script": [
     "Bathroom first",
@@ -308,5 +308,5 @@
     "african_elephant",
     "reticulated_giraffe"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 \u00b7 map-img 2026-08-07"
+  "research_notes": "R2 hybrid 2026-08-07 \u00b7 map-img 2026-08-07 \u00b7 map-page 2026-08-07"
 }

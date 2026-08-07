@@ -246,7 +246,7 @@
   "content_mode": "curated",
   "media": {
     "visitor_map_url": "https://www.neaq.org/wp-content/uploads/2024/02/map-large-thumbnail.jpg",
-    "visitor_map_page": "https://www.neaq.org/",
+    "visitor_map_page": "https://www.neaq.org/visit/aquarium-map-and-daily-presentations/",
     "visitor_map_kind": "image",
     "map_attribution": "Official site \u00b7 New England Aquarium"
   },
@@ -256,5 +256,5 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "research_notes": "map-img 2026-08-07"
+  "research_notes": "map-img 2026-08-07 \u00b7 map-page 2026-08-07"
 }

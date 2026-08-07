@@ -422,10 +422,16 @@ def map_card_html(mission_venue: dict) -> str:
         return False
 
     has_img = _safe_map_img(img)
+    is_pdf = ".pdf" in href.lower() or href.lower().endswith("/pdf")
+    cta = "Open the print map (PDF)" if is_pdf else "Open the real place map"
+    tab_note = "PDF · opens in a new tab" if is_pdf else "opens in a new tab"
     # Prefer image mode whenever we have a verified map image (kind may lag)
     if has_img and kind in ("image", "page", ""):
         # Local previews don't need no-referrer; remote maps keep it for fewer hotlink blocks
         refpol = "" if img.startswith("/") else ' referrerpolicy="no-referrer"'
+        small = f"{esc(attr)} · hover to preview"
+        if is_pdf:
+            small = f"{esc(attr)} · hover preview · click opens PDF"
         return f"""
     <a class="seo-map-card seo-map-card-image seo-map-has-preview no-print" href="{esc(href)}" target="_blank" rel="noopener noreferrer" aria-label="Official visitor map — hover or focus to enlarge, click to open">
       <span class="seo-map-thumb-wrap">
@@ -434,8 +440,8 @@ def map_card_html(mission_venue: dict) -> str:
       </span>
       <span class="seo-map-card-body">
         <span class="seo-map-kicker">Official map</span>
-        <strong>Open the real place map</strong>
-        <small>{esc(attr)} · hover to preview</small>
+        <strong>{cta}</strong>
+        <small>{small}</small>
       </span>
       <span class="seo-map-preview" aria-hidden="true">
         <img src="{esc(img)}" alt="" loading="lazy" decoding="async"{refpol} />
@@ -447,12 +453,11 @@ def map_card_html(mission_venue: dict) -> str:
       <span class="seo-map-icon" aria-hidden="true">🗺️</span>
       <span class="seo-map-card-body">
         <span class="seo-map-kicker">Official map</span>
-        <strong>Open the real place map</strong>
-        <small>{esc(attr)} · opens in a new tab</small>
+        <strong>{cta}</strong>
+        <small>{esc(attr)} · {tab_note}</small>
       </span>
       <span class="seo-map-go" aria-hidden="true">→</span>
     </a>"""
-
 
 def wonder_grid_html(mission: dict) -> str:
     finds = mission.get("finds") or []
@@ -744,7 +749,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <link rel="stylesheet" href="/shell/shell.css?v=4" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=19" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=45" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=7" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=8" />
   <link rel="stylesheet" href="/field-pack/css/mission.css?v=7" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
@@ -907,7 +912,7 @@ def render_venue_page(v: dict) -> str:
   <link rel="stylesheet" href="/shell/shell.css?v=4" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=18" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=44" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=7" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=8" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
   </script>

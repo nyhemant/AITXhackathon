@@ -290,9 +290,9 @@
   "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "https://www.clevelandmetroparks.com/getmedia/1cb69c50-c793-4810-9355-2b928abd003a/7613-edits-to-digital-zoo-map-2026.jpg",
-    "visitor_map_page": "https://www.clevelandmetroparks.com/zoo",
+    "visitor_map_page": "https://www.clevelandmetroparks.com/getmedia/1cb69c50-c793-4810-9355-2b928abd003a/7613-edits-to-digital-zoo-map-2026.jpg",
     "visitor_map_kind": "image",
-    "map_attribution": "Official visit page"
+    "map_attribution": "Official map \u00b7 Cleveland Metroparks Zoo"
   },
   "parent_script": [
     "Bathroom first",
@@ -305,5 +305,5 @@
     "african_elephant",
     "sumatran_tiger"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 \u00b7 map-img 2026-08-07"
+  "research_notes": "R2 hybrid 2026-08-07 \u00b7 map-img 2026-08-07 \u00b7 map-page 2026-08-07"
 }

@@ -249,7 +249,7 @@
   "content_mode": "curated",
   "media": {
     "visitor_map_url": "https://www.georgiaaquarium.org/wp-content/uploads/2025/10/aquarium-map-9.jpg",
-    "visitor_map_page": "https://www.georgiaaquarium.org/",
+    "visitor_map_page": "https://www.georgiaaquarium.org/aquarium-map/",
     "visitor_map_kind": "image",
     "map_attribution": "Official site \u00b7 Georgia Aquarium"
   },
@@ -259,5 +259,5 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "research_notes": "map-img 2026-08-07"
+  "research_notes": "map-img 2026-08-07 \u00b7 map-page 2026-08-07"
 }

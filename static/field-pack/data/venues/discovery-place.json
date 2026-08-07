@@ -11,7 +11,7 @@
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Charlotte science — hands-on floors built for wiggly kids.",
+  "tagline": "Charlotte science \u2014 hands-on floors built for wiggly kids.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Check discoveryplace.org for which campus/tickets.",
@@ -23,7 +23,7 @@
     {
       "id": "sci_hands_on",
       "label": "Hands-on lab",
-      "emoji": "🔬",
+      "emoji": "\ud83d\udd2c",
       "one_liner": "Touch and try.",
       "tags": [
         "hands",
@@ -46,7 +46,7 @@
     {
       "id": "sci_planet",
       "label": "Planet / space hall",
-      "emoji": "🪐",
+      "emoji": "\ud83e\ude90",
       "one_liner": "Space moments if offered.",
       "tags": [
         "wow"
@@ -67,7 +67,7 @@
     {
       "id": "sci_dinosaur",
       "label": "Dinosaur hall",
-      "emoji": "🦖",
+      "emoji": "\ud83e\udd96",
       "one_liner": "Dinos if on route.",
       "tags": [
         "read"
@@ -88,7 +88,7 @@
     {
       "id": "cm_free_explore",
       "label": "Free explore",
-      "emoji": "🧭",
+      "emoji": "\ud83e\udded",
       "one_liner": "They choose next.",
       "tags": [
         "play"
@@ -109,7 +109,7 @@
     {
       "id": "sci_aquarium_zone",
       "label": "Aquarium zone",
-      "emoji": "🐠",
+      "emoji": "\ud83d\udc20",
       "one_liner": "Small live tanks when present.",
       "tags": [
         "water"
@@ -130,7 +130,7 @@
     {
       "id": "cm_makery",
       "label": "Creative Makery",
-      "emoji": "🔧",
+      "emoji": "\ud83d\udd27",
       "one_liner": "Build, invent, problem-solve with your hands.",
       "tags": [
         "wow",
@@ -153,8 +153,8 @@
     {
       "id": "cm_imaginarium",
       "label": "Imaginarium",
-      "emoji": "✨",
-      "one_liner": "Multi-sensory world — explore, notice, imagine.",
+      "emoji": "\u2728",
+      "one_liner": "Multi-sensory world \u2014 explore, notice, imagine.",
       "tags": [
         "wow",
         "outdoor"
@@ -175,8 +175,8 @@
     {
       "id": "sci_shuttle",
       "label": "Space shuttle / orbiter",
-      "emoji": "🛰️",
-      "one_liner": "A real flying machine that went to space — walk around it.",
+      "emoji": "\ud83d\udef0\ufe0f",
+      "one_liner": "A real flying machine that went to space \u2014 walk around it.",
       "tags": [
         "wow",
         "read"
@@ -197,7 +197,7 @@
     {
       "id": "sci_rocket",
       "label": "Rockets & launch",
-      "emoji": "🚀",
+      "emoji": "\ud83d\ude80",
       "one_liner": "Tall rockets and the power of liftoff.",
       "tags": [
         "wow",
@@ -220,9 +220,9 @@
   "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "",
-    "visitor_map_page": "https://discoveryplace.org/",
+    "visitor_map_page": "https://discoveryplace.org/zoo-map-print",
     "visitor_map_kind": "page",
-    "map_attribution": "Official visit page"
+    "map_attribution": "Official map \u00b7 Discovery Place Science"
   },
   "parent_script": [
     "Bathroom first",
@@ -235,5 +235,5 @@
     "sci_planet",
     "sci_dinosaur"
   ],
-  "research_notes": "R2 hybrid 2026-08-07"
+  "research_notes": "R2 hybrid 2026-08-07 \u00b7 map-page 2026-08-07"
 }

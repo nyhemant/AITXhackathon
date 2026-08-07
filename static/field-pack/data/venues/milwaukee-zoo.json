@@ -318,7 +318,7 @@
   "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "https://milwaukeezoo.org/wp-content/uploads/Summer-Fall-2026-map.jpg",
-    "visitor_map_page": "https://www.milwaukeezoo.org/",
+    "visitor_map_page": "https://milwaukeezoo.org/map/",
     "visitor_map_kind": "image",
     "map_attribution": "Official map \u00b7 Milwaukee County Zoo"
   },
@@ -333,5 +333,5 @@
     "western_lowland_gorilla",
     "reticulated_giraffe"
   ],
-  "research_notes": "R1 hybrid 2026-08-07 \u00b7 map-img 2026-08-07"
+  "research_notes": "R1 hybrid 2026-08-07 \u00b7 map-img 2026-08-07 \u00b7 map-page 2026-08-07"
 }

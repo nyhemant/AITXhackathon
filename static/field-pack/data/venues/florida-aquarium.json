@@ -295,7 +295,7 @@
   "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "https://www.flaquarium.org/wp-content/uploads/2025/08/1850x1000_TFA-Map-Digital-MORPH_D_07-31-2025_O.jpg",
-    "visitor_map_page": "https://www.flaquarium.org/",
+    "visitor_map_page": "https://www.flaquarium.org/visit/visitor-information/aquarium-map/",
     "visitor_map_kind": "image",
     "map_attribution": "Official map \u00b7 The Florida Aquarium"
   },
@@ -310,5 +310,5 @@
     "stingray",
     "sea_turtle"
   ],
-  "research_notes": "R1 hybrid 2026-08-07 \u00b7 map-img 2026-08-07"
+  "research_notes": "R1 hybrid 2026-08-07 \u00b7 map-img 2026-08-07 \u00b7 map-page 2026-08-07"
 }

@@ -318,7 +318,7 @@
   "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "https://www.phoenixzoo.org/wp-content/uploads/2026/06/Zoo-Map-Summer-202617-scaled.jpg",
-    "visitor_map_page": "https://phoenixzoo.org/",
+    "visitor_map_page": "https://www.phoenixzoo.org/wp-content/uploads/2026/06/Zoo-Map-Summer-202617.pdf",
     "visitor_map_kind": "image",
     "map_attribution": "Official map \u00b7 Phoenix Zoo"
   },
@@ -333,5 +333,5 @@
     "reticulated_giraffe",
     "sumatran_tiger"
   ],
-  "research_notes": "R1 hybrid 2026-08-07 \u00b7 map-img 2026-08-07"
+  "research_notes": "R1 hybrid 2026-08-07 \u00b7 map-img 2026-08-07 \u00b7 map-page 2026-08-07"
 }

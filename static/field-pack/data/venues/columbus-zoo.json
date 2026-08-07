@@ -290,7 +290,7 @@
   "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "https://www.columbuszoo.org/sites/default/files/inline-images/2025-Map-for-website_June-23.jpg",
-    "visitor_map_page": "https://www.columbuszoo.org/",
+    "visitor_map_page": "https://www.columbuszoo.org/park-map",
     "visitor_map_kind": "image",
     "map_attribution": "Official map \u00b7 Columbus Zoo and Aquarium"
   },
@@ -305,5 +305,5 @@
     "african_elephant",
     "sumatran_tiger"
   ],
-  "research_notes": "R1 hybrid 2026-08-07 \u00b7 map-img 2026-08-07"
+  "research_notes": "R1 hybrid 2026-08-07 \u00b7 map-img 2026-08-07 \u00b7 map-page 2026-08-07"
 }

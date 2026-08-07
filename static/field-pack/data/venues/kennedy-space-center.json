@@ -11,18 +11,18 @@
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Real rockets and a space shuttle — Florida’s tourist STEM day done right.",
+  "tagline": "Real rockets and a space shuttle \u2014 Florida\u2019s tourist STEM day done right.",
   "practical": {
     "typical_duration": "half to full day",
-    "ticket_note": "Hot outdoor queues — water, hats, stroller.",
+    "ticket_note": "Hot outdoor queues \u2014 water, hats, stroller.",
     "transit_note": "Merritt Island; car required for most families."
   },
   "items": [
     {
       "id": "sci_shuttle",
       "label": "Space shuttle / orbiter",
-      "emoji": "🛰️",
-      "one_liner": "Stand under a real orbiter — pure wow.",
+      "emoji": "\ud83d\udef0\ufe0f",
+      "one_liner": "Stand under a real orbiter \u2014 pure wow.",
       "tags": [
         "wow"
       ],
@@ -35,14 +35,14 @@
       "zone": "Space Shuttle Atlantis",
       "qa_card": {
         "question": "Where did the shuttle go?",
-        "answer": "To space — and back to Earth on a runway!"
+        "answer": "To space \u2014 and back to Earth on a runway!"
       },
       "catalog_id": "sci-shuttle"
     },
     {
       "id": "sci_rocket",
       "label": "Rockets & launch",
-      "emoji": "🚀",
+      "emoji": "\ud83d\ude80",
       "one_liner": "Tall rockets outdoors you can walk among.",
       "tags": [
         "wow",
@@ -64,7 +64,7 @@
     {
       "id": "sci_astronaut",
       "label": "Astronaut life",
-      "emoji": "🧑‍🚀",
+      "emoji": "\ud83e\uddd1\u200d\ud83d\ude80",
       "one_liner": "Meet the people who trained to leave Earth.",
       "tags": [
         "read",
@@ -86,7 +86,7 @@
     {
       "id": "sci_planet",
       "label": "Planet / space hall",
-      "emoji": "🪐",
+      "emoji": "\ud83e\ude90",
       "one_liner": "Planets and stars in shows or galleries.",
       "tags": [
         "wow"
@@ -107,7 +107,7 @@
     {
       "id": "sci_hands_on",
       "label": "Hands-on lab",
-      "emoji": "🔬",
+      "emoji": "\ud83d\udd2c",
       "one_liner": "Try a hands-on space challenge if lines are short.",
       "tags": [
         "hands"
@@ -128,7 +128,7 @@
     {
       "id": "cm_free_explore",
       "label": "Free explore",
-      "emoji": "🧭",
+      "emoji": "\ud83e\udded",
       "one_liner": "Pick a favorite rocket photo spot.",
       "tags": [
         "play"
@@ -149,8 +149,8 @@
     {
       "id": "sci_dinosaur",
       "label": "Dinosaur hall",
-      "emoji": "🦖",
-      "one_liner": "Skip unless a dino pop-up is up — space is the star.",
+      "emoji": "\ud83e\udd96",
+      "one_liner": "Skip unless a dino pop-up is up \u2014 space is the star.",
       "tags": [
         "read"
       ],
@@ -170,7 +170,7 @@
     {
       "id": "cm_outdoor",
       "label": "Outdoor Area",
-      "emoji": "🌳",
+      "emoji": "\ud83c\udf33",
       "one_liner": "Train/bus plazas and outdoor exploring between buildings.",
       "tags": [
         "outdoor"
@@ -192,14 +192,15 @@
   "content_mode": "curated",
   "media": {
     "visitor_map_url": "",
-    "visitor_map_page": "https://www.kennedyspacecenter.com/",
+    "visitor_map_page": "https://www.kennedyspacecenter.com/info/while-youre-here/maps/",
     "visitor_map_kind": "page",
-    "map_attribution": "Official site · Kennedy Space Center"
+    "map_attribution": "Official site \u00b7 Kennedy Space Center"
   },
   "parent_script": [
     "Bathroom first",
     "One big wow",
     "Snack when needed",
     "Leave while happy"
-  ]
+  ],
+  "research_notes": "map-page 2026-08-07"
 }

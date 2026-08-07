@@ -245,7 +245,7 @@
   "content_mode": "curated",
   "media": {
     "visitor_map_url": "https://nationalzoo.si.edu/sites/default/files/styles/wide/public/2024-02/zoo-map-teaser-web.png?h=8165685c&itok=5xPuQ-p4",
-    "visitor_map_page": "https://nationalzoo.si.edu/",
+    "visitor_map_page": "https://nationalzoo.si.edu/sites/default/files/2025-01/ZOO_Map_Jan06_508.pdf",
     "visitor_map_kind": "image",
     "map_attribution": "Official site \u00b7 Smithsonian National Zoo"
   },
@@ -255,5 +255,5 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "research_notes": "map-img 2026-08-07"
+  "research_notes": "map-img 2026-08-07 \u00b7 map-page 2026-08-07"
 }

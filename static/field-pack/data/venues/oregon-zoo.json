@@ -317,7 +317,7 @@
   "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "https://www.oregonzoo.org/sites/default/files/styles/scale_675w/public/2026-01/map-thumbnail-20260120.jpg.webp?itok=XPWcwQqM",
-    "visitor_map_page": "https://www.oregonzoo.org/",
+    "visitor_map_page": "https://www.oregonzoo.org/map",
     "visitor_map_kind": "image",
     "map_attribution": "Official map \u00b7 Oregon Zoo"
   },
@@ -332,5 +332,5 @@
     "sumatran_tiger",
     "western_lowland_gorilla"
   ],
-  "research_notes": "R1 hybrid 2026-08-07 \u00b7 map-img 2026-08-07"
+  "research_notes": "R1 hybrid 2026-08-07 \u00b7 map-img 2026-08-07 \u00b7 map-page 2026-08-07"
 }
