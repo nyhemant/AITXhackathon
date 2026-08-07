@@ -181,6 +181,12 @@
     els.outingBlurb.textContent =
       "Print the treasure hunt for your bag. Cards below are things to find — tap one later for optional tips.";
     els.btnZooSite.href = venue.website || "#";
+    setDocMeta({
+      title: `${placeLabel} · Kid list & hunt · Field Trip Kit · 1Less`,
+      description: `Free printable scavenger hunt and short kid list for ${placeLabel}${
+        venue.location ? ` in ${venue.location}` : ""
+      }. Field Trip Kit by 1Less.`,
+    });
     // Prefer indexable SEO URL in the browser URL bar when sharing is not mid-session
     try {
       const seoPath = `/field-pack/${encodeURIComponent(venue.id)}/`;
@@ -253,7 +259,13 @@
     els.detail.classList.remove("hidden");
     setBackToList(true);
     els.brandSub.textContent = item.name;
-    renderDetail(trip, item, getVenue(trip.venueId));
+    const venue = getVenue(trip.venueId);
+    const placeLabel = (venue && (venue.name || venue.shortName)) || "This place";
+    setDocMeta({
+      title: `${item.name} · ${placeLabel} · Field Trip Kit · 1Less`,
+      description: `Optional tips and printable Q&A for ${item.name} at ${placeLabel}. Field Trip Kit by 1Less.`,
+    });
+    renderDetail(trip, item, venue);
     history.replaceState(null, "", `#/venue/${trip.venueId}/item/${itemId}`);
   }
 
@@ -667,6 +679,29 @@
     return escapeHtml(s).replaceAll("'", "&#39;");
   }
 
+  /** Pretty SEO path when a venue page exists; else hash SPA. */
+  function shareUrlForVenue(venueId, itemId) {
+    const id = venueId || selectedVenueId;
+    if (!id) return `${location.origin}/field-pack/`;
+    if (itemId) {
+      return `${location.origin}/field-pack/app.html#/venue/${encodeURIComponent(id)}/item/${encodeURIComponent(itemId)}`;
+    }
+    // Prefer indexable venue page for family share / paste
+    return `${location.origin}/field-pack/${encodeURIComponent(id)}/`;
+  }
+
+  function setDocMeta({ title, description }) {
+    if (title) document.title = title;
+    if (!description) return;
+    let meta = document.querySelector('meta[name="description"]');
+    if (!meta) {
+      meta = document.createElement("meta");
+      meta.setAttribute("name", "description");
+      document.head.appendChild(meta);
+    }
+    meta.setAttribute("content", description);
+  }
+
   // events
   els.btnTreasure.addEventListener("click", printTreasureHunt);
   if (els.btnSampleQa) {
@@ -685,13 +720,16 @@
     });
   }
   els.btnShareLink.addEventListener("click", async () => {
-    const url = `${location.origin}/field-pack/app.html#/venue/${encodeURIComponent(selectedVenueId)}`;
+    const url = shareUrlForVenue(selectedVenueId, currentItemId);
     try {
       await navigator.clipboard.writeText(url);
-      els.shareLinkStatus.hidden = false;
-      setTimeout(() => {
-        els.shareLinkStatus.hidden = true;
-      }, 2000);
+      if (els.shareLinkStatus) {
+        els.shareLinkStatus.hidden = false;
+        els.shareLinkStatus.textContent = "Link copied — send to family";
+        setTimeout(() => {
+          els.shareLinkStatus.hidden = true;
+        }, 2500);
+      }
     } catch {
       prompt("Copy link:", url);
     }

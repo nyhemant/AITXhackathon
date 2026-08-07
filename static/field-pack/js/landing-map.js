@@ -1282,6 +1282,9 @@
     "dallas-zoo",
     "fort-worth-zoo",
     "childrens-museum-perot",
+    "georgia-aquarium",
+    "shedd-aquarium",
+    "monterey-bay-aquarium",
     "london-zoo",
     "ueno-zoo",
   ]);
