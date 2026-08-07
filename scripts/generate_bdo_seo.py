@@ -386,8 +386,8 @@ process.stdout.write(JSON.stringify(mission));
     return json.loads(proc.stdout)
 
 
-def mission_embed_html(mission_venue: dict, mission: dict) -> str:
-    """Compact toolbar + printable sheet (embedded in full SEO venue page)."""
+def mission_drawer_html(mission_venue: dict, mission: dict) -> str:
+    """Slide-over drawer: filters + live sheet. Page stays clean; CTA opens this."""
     vid = mission_venue["slug"]
     loc = ", ".join(x for x in [mission_venue.get("city"), mission_venue.get("region")] if x)
     verified = mission_venue.get("last_verified") or ""
@@ -411,20 +411,34 @@ def mission_embed_html(mission_venue: dict, mission: dict) -> str:
         for c in mission.get("challenges") or []
     )
     return f"""
-      <section class="mission-embed" id="mission" aria-labelledby="mission-heading">
-        <h2 id="mission-heading" class="mission-embed-heading">Your printable mission</h2>
-        <p class="mission-embed-lead no-print">Optional name · age · time — then print this one sheet.</p>
-        <div class="mission-toolbar no-print" id="mission-controls">
+  <div class="mission-overlay no-print" id="mission-overlay" hidden>
+    <div
+      class="mission-drawer"
+      id="mission-drawer"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="mission-heading"
+      tabindex="-1"
+    >
+      <header class="mission-drawer-head">
+        <div>
+          <p class="mission-drawer-kicker">Field Trip Kit</p>
+          <h2 id="mission-heading">Print your mission</h2>
+        </div>
+        <button type="button" class="mission-drawer-close" id="mission-close" aria-label="Close">×</button>
+      </header>
+      <div class="mission-drawer-body">
+        <aside class="mission-filters" id="mission-controls" aria-label="Personalize">
           <div class="mission-field mission-field-name">
-            <label for="mission-name">Name</label>
-            <input type="text" id="mission-name" maxlength="24" placeholder="Optional" autocomplete="off" />
+            <label for="mission-name">Kid name <span class="mission-opt">(optional)</span></label>
+            <input type="text" id="mission-name" maxlength="24" placeholder="e.g. Arya" autocomplete="off" />
           </div>
           <div class="mission-field">
             <label for="mission-age">Age <span class="mission-age-label" id="mission-age-label">Ready (4–5)</span></label>
             <input type="range" id="mission-age" min="0" max="3" step="1" value="1" />
           </div>
           <div class="mission-field mission-field-time">
-            <label>Time</label>
+            <label>Time today</label>
             <div class="mission-time-seg" role="group" aria-label="Time available">
               <label><input type="radio" name="mission-time" value="1hr" /><span>~1 hr</span></label>
               <label><input type="radio" name="mission-time" value="half" checked /><span>Half day</span></label>
@@ -432,35 +446,40 @@ def mission_embed_html(mission_venue: dict, mission: dict) -> str:
             </div>
           </div>
           <div class="mission-field">
-            <label for="mission-interest">Interest</label>
+            <label for="mission-interest">Interest <span class="mission-opt">(optional)</span></label>
             <select id="mission-interest">
               <option value="">Any</option>
             </select>
           </div>
-          <div class="mission-toolbar-actions">
-            <button type="button" class="btn btn-primary" id="mission-print-btn">Print mission</button>
-            <button type="button" class="btn btn-ghost" id="mission-shuffle-btn">Shuffle</button>
+          <p class="mission-filters-hint">Sheet updates live — then print one page.</p>
+        </aside>
+        <div class="mission-preview">
+          <div class="mission-sheet" id="mission-sheet">
+            <p class="ms-brand">1Less Field Trip Kit{f' · {esc(loc)}' if loc else ""}</p>
+            <h3 class="ms-title" id="mission-title">{mission_title}</h3>
+            <p class="ms-meta" id="mission-meta">{age_label} · {time_label}</p>
+            <h4 class="ms-section">Find these</h4>
+            <ol class="mission-finds" id="mission-finds" aria-label="Finds">{finds_html}</ol>
+            <h4 class="ms-section">Bonus</h4>
+            <ul class="mission-challenges" id="mission-challenges" aria-label="Challenges">{ch_html}</ul>
+            <p class="ms-footer">
+              <span id="mission-verified">{esc(verified_line)}</span>
+              · free at 1less.app/field-pack/{esc(vid)}/
+            </p>
           </div>
         </div>
-        <div class="mission-sheet" id="mission-sheet">
-          <p class="ms-brand">1Less Field Trip Kit{f' · {esc(loc)}' if loc else ""}</p>
-          <h3 class="ms-title" id="mission-title">{mission_title}</h3>
-          <p class="ms-meta" id="mission-meta">{age_label} · {time_label}</p>
-          <h4 class="ms-section">Find these</h4>
-          <ol class="mission-finds" id="mission-finds" aria-label="Finds">{finds_html}</ol>
-          <h4 class="ms-section">Bonus</h4>
-          <ul class="mission-challenges" id="mission-challenges" aria-label="Challenges">{ch_html}</ul>
-          <p class="ms-footer">
-            <span id="mission-verified">{esc(verified_line)}</span>
-            · free at 1less.app/field-pack/{esc(vid)}/
-          </p>
-        </div>
-      </section>
+      </div>
+      <footer class="mission-drawer-foot">
+        <button type="button" class="btn btn-ghost" id="mission-shuffle-btn">Shuffle finds</button>
+        <button type="button" class="btn btn-primary btn-big" id="mission-print-btn">Print mission</button>
+      </footer>
+    </div>
+  </div>
 """
 
 
 def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
-    """Full SEO venue page (photos + shortlist) with embedded printable mission."""
+    """Full SEO venue page (photos + shortlist); mission opens in a drawer."""
     vid = v["id"]
     if vid in RESERVED:
         raise SystemExit(f"Venue id collides with reserved path: {vid}")
@@ -501,7 +520,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
 
     body = unique_body(v)
     mission = default_mission_via_node(mission_venue)
-    mission_block = mission_embed_html(mission_venue, mission)
+    drawer = mission_drawer_html(mission_venue, mission)
     h1 = h1_for(v)
     title = title_for(v)
     desc = meta_for(v)
@@ -540,7 +559,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=18" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=44" />
   <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=4" />
-  <link rel="stylesheet" href="/field-pack/css/mission.css?v=4" />
+  <link rel="stylesheet" href="/field-pack/css/mission.css?v=5" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
   </script>
@@ -582,20 +601,20 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
         <p class="seo-quality-note">{esc(quality_note)}</p>
         <p class="seo-brand-note">Part of <strong>Field Trip Kit</strong> by 1Less — free for families.</p>
         <div class="landing-cta-row seo-cta no-print">
-          <a class="btn btn-primary btn-big" href="{esc(map_href)}">Open on map →</a>
-          <a class="btn btn-secondary btn-big" href="#mission">Print mission ↓</a>
+          <button type="button" class="btn btn-primary btn-big" id="mission-open-btn" aria-haspopup="dialog" aria-controls="mission-drawer">
+            Print mission
+          </button>
+          <a class="btn btn-secondary btn-big" href="{esc(map_href)}">Open on map →</a>
           <a class="btn btn-ghost" href="{esc(app_href)}">Full interactive list →</a>
         </div>
       </header>
-
-      {mission_block}
 
       {body}
 
       <section class="seo-how no-print" aria-labelledby="how-heading">
         <h2 id="how-heading">How it works</h2>
         <ol class="how-steps">
-          <li><strong>1</strong><span>Personalize &amp; print the mission</span></li>
+          <li><strong>1</strong><span>Print a one-page mission (optional name)</span></li>
           <li><strong>2</strong><span>Use the photo shortlist on site</span></li>
           <li><strong>3</strong><span>Optional: open Q&amp;A cards after</span></li>
         </ol>
@@ -616,6 +635,8 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
     </footer>
   </div>
 
+  {drawer}
+
   <div id="print-sheet" class="print-sheet" aria-hidden="true"></div>
   <div id="treasure-sheet" class="print-sheet treasure-sheet" aria-hidden="true"></div>
 
@@ -624,8 +645,8 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <script src="/shell/shell.js?v=3"></script>
   <script src="/field-pack/js/catalog.js?v=12"></script>
   <script src="/field-pack/js/print-kit.js?v=1"></script>
-  <script src="/field-pack/js/mission/mission-engine.js?v=4"></script>
-  <script src="/field-pack/js/mission/mission-ui.js?v=4"></script>
+  <script src="/field-pack/js/mission/mission-engine.js?v=5"></script>
+  <script src="/field-pack/js/mission/mission-ui.js?v=5"></script>
 </body>
 </html>
 """

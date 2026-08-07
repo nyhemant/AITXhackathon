@@ -1,6 +1,6 @@
 /**
- * Live controls for printable mission sheet pages.
- * Expects: #venue-data, #challenges-data, #mission-sheet, window.FPMission
+ * Mission print drawer for pilot venue pages.
+ * Page stays clean; #mission-open-btn opens filters + live sheet.
  */
 (function () {
   function $(sel, root) {
@@ -25,6 +25,19 @@
       .replaceAll("<", "&lt;")
       .replaceAll(">", "&gt;")
       .replaceAll('"', "&quot;");
+  }
+
+  let venue = null;
+  let challenges = null;
+  let state = { age: "4-5", time: "half", interest: "", name: "", seed: 1 };
+  let lastMission = null;
+  let genTimer = null;
+  let lastFocus = null;
+  let drawerReady = false;
+
+  function AGE_FROM_SLIDER(v) {
+    const n = parseInt(v, 10) || 1;
+    return ["2-3", "4-5", "6-8", "9+"][Math.max(0, Math.min(3, n))] || "4-5";
   }
 
   function renderSheet(mission) {
@@ -73,17 +86,6 @@
     setTimeout(() => window.print(), 50);
   }
 
-  let venue = null;
-  let challenges = null;
-  let state = { age: "4-5", time: "half", interest: "", name: "", seed: 1 };
-  let lastMission = null;
-  let genTimer = null;
-
-  function AGE_FROM_SLIDER(v) {
-    const n = parseInt(v, 10) || 1;
-    return ["2-3", "4-5", "6-8", "9+"][Math.max(0, Math.min(3, n))] || "4-5";
-  }
-
   function readControls() {
     const nameEl = $("#mission-name");
     const ageEl = $("#mission-age");
@@ -117,7 +119,43 @@
     }, 500);
   }
 
-  function wire() {
+  function isOpen() {
+    const ov = $("#mission-overlay");
+    return ov && !ov.hasAttribute("hidden");
+  }
+
+  function openDrawer() {
+    const ov = $("#mission-overlay");
+    const drawer = $("#mission-drawer");
+    if (!ov || !drawer) return;
+    lastFocus = document.activeElement;
+    ov.hidden = false;
+    document.body.classList.add("mission-drawer-open");
+    recompute(false);
+    track("mission_drawer_open", { venue: venue && venue.slug });
+    const nameEl = $("#mission-name");
+    setTimeout(() => {
+      (nameEl || drawer).focus();
+    }, 30);
+  }
+
+  function closeDrawer() {
+    const ov = $("#mission-overlay");
+    if (!ov) return;
+    ov.hidden = true;
+    document.body.classList.remove("mission-drawer-open");
+    if (lastFocus && typeof lastFocus.focus === "function") {
+      try {
+        lastFocus.focus();
+      } catch (_) {
+        /* ignore */
+      }
+    }
+  }
+
+  function wireControls() {
+    if (drawerReady) return;
+    drawerReady = true;
     ["mission-name", "mission-age", "mission-interest"].forEach((id) => {
       const el = document.getElementById(id);
       if (!el) return;
@@ -135,6 +173,32 @@
       state.seed = (state.seed || 1) + 1;
       recompute(true);
     });
+    $("#mission-close")?.addEventListener("click", closeDrawer);
+    $("#mission-overlay")?.addEventListener("click", (e) => {
+      if (e.target === $("#mission-overlay")) closeDrawer();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && isOpen()) {
+        e.preventDefault();
+        closeDrawer();
+      }
+    });
+  }
+
+  function populateInterest() {
+    const sel = $("#mission-interest");
+    if (!sel || !venue || !window.FPMission) return;
+    const opts = window.FPMission.interestOptions(venue);
+    if (opts.length < 3) {
+      sel.closest(".mission-field")?.setAttribute("hidden", "");
+      return;
+    }
+    opts.forEach((o) => {
+      const op = document.createElement("option");
+      op.value = o.value;
+      op.textContent = o.label.charAt(0).toUpperCase() + o.label.slice(1);
+      sel.appendChild(op);
+    });
   }
 
   function boot() {
@@ -148,24 +212,23 @@
       console.error(e);
       return;
     }
-    const sel = $("#mission-interest");
-    if (sel) {
-      const opts = window.FPMission.interestOptions(venue);
-      if (opts.length < 3) {
-        sel.closest(".mission-field")?.setAttribute("hidden", "");
-      } else {
-        opts.forEach((o) => {
-          const op = document.createElement("option");
-          op.value = o.value;
-          op.textContent = o.label.charAt(0).toUpperCase() + o.label.slice(1);
-          sel.appendChild(op);
-        });
-      }
-    }
+    populateInterest();
     const age = $("#mission-age");
     if (age) age.value = "1";
-    wire();
+    wireControls();
+    // Precompute default sheet (in drawer DOM) for print/SEO consistency
     recompute(false);
+
+    const openBtn = $("#mission-open-btn");
+    openBtn?.addEventListener("click", openDrawer);
+
+    // Deep link: #mission opens drawer
+    if (location.hash === "#mission") {
+      openDrawer();
+    }
+    window.addEventListener("hashchange", () => {
+      if (location.hash === "#mission") openDrawer();
+    });
   }
 
   if (document.readyState === "loading") {
