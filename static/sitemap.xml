@@ -31,7 +31,19 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://1less.app/field-pack/athens-attica-zoo/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://1less.app/field-pack/auckland-zoo/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://1less.app/field-pack/bangkok-safari-world/</loc>
     <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -49,7 +61,37 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://1less.app/field-pack/bangalore-bannerghatta/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://1less.app/field-pack/berlin-zoo/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://1less.app/field-pack/bogota-zoo/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://1less.app/field-pack/budapest-zoo/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://1less.app/field-pack/ecoparque-ba/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://1less.app/field-pack/cairo-zoo/</loc>
     <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -73,6 +115,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://1less.app/field-pack/delhi-zoo/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://1less.app/field-pack/dubai-aquarium/</loc>
     <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
@@ -91,7 +139,25 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://1less.app/field-pack/helsinki-zoo/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://1less.app/field-pack/hong-kong-ocean-park/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://1less.app/field-pack/istanbul-aquarium/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://1less.app/field-pack/jakarta-ragunan/</loc>
     <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -103,7 +169,19 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://1less.app/field-pack/oslo-zoo/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://1less.app/field-pack/kuala-lumpur-zoo/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://1less.app/field-pack/lima-leyendas/</loc>
     <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -127,6 +205,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://1less.app/field-pack/madrid-zoo/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://1less.app/field-pack/manila-zoo/</loc>
     <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
@@ -145,13 +229,37 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://1less.app/field-pack/milan-aquarium/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://1less.app/field-pack/montreal-biodome/</loc>
     <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://1less.app/field-pack/moscow-zoo/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://1less.app/field-pack/mumbai-byculla-zoo/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://1less.app/field-pack/munich-zoo/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://1less.app/field-pack/nairobi-safari-walk/</loc>
     <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -181,7 +289,19 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://1less.app/field-pack/rio-zoo/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://1less.app/field-pack/rome-bioparco/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://1less.app/field-pack/santiago-zoo/</loc>
     <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -212,6 +332,12 @@
   </url>
   <url>
     <loc>https://1less.app/field-pack/singapore-zoo/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://1less.app/field-pack/stockholm-skansen/</loc>
     <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -254,6 +380,12 @@
   </url>
   <url>
     <loc>https://1less.app/field-pack/vienna-zoo/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://1less.app/field-pack/warsaw-zoo/</loc>
     <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
