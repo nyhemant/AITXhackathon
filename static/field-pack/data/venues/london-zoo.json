@@ -1,0 +1,240 @@
+{
+  "slug": "london-zoo",
+  "name": "London Zoo",
+  "type": "zoo",
+  "city": "London",
+  "region": "",
+  "country": "GB",
+  "lat": 51.5353,
+  "lng": -0.1534,
+  "official_url": "https://www.londonzoo.org/",
+  "last_verified": "2026-08-07",
+  "verified_by": "owner",
+  "status": "verified",
+  "tagline": "Regent's Park wildlife — gorillas and penguins (elephants live at Whipsnade).",
+  "practical": {
+    "typical_duration": "half day",
+    "ticket_note": "Book timed tickets online; busy school holidays.",
+    "transit_note": "Camden Town or Regent's Park Underground + walk."
+  },
+  "items": [
+    {
+      "id": "gorilla",
+      "label": "Gorilla (Gorilla Kingdom)",
+      "emoji": "🦍",
+      "one_liner": "Meet the troop in Gorilla Kingdom.",
+      "tags": [
+        "primates",
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Gorilla Kingdom",
+      "qa_card": {
+        "question": "Are gorillas mean?",
+        "answer": "They are strong but mostly gentle plant-eaters who live in families."
+      },
+      "catalog_id": "western-lowland-gorilla"
+    },
+    {
+      "id": "penguin",
+      "label": "Penguin",
+      "emoji": "🐧",
+      "one_liner": "Dive-and-waddle stars of the penguin beach.",
+      "tags": [
+        "birds",
+        "water",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "",
+      "catalog_id": "african-penguin"
+    },
+    {
+      "id": "tiger",
+      "label": "Tiger",
+      "emoji": "🐯",
+      "one_liner": "Stripes in the tiger territory.",
+      "tags": [
+        "big-cats",
+        "pattern",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "",
+      "catalog_id": "sumatran-tiger"
+    },
+    {
+      "id": "lion",
+      "label": "Lion",
+      "emoji": "🦁",
+      "one_liner": "Asiatic lions on the pride rocks.",
+      "tags": [
+        "big-cats",
+        "sound",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Land of the Lions",
+      "catalog_id": "african-lion"
+    },
+    {
+      "id": "sloth",
+      "label": "Two-toed sloth",
+      "emoji": "🦥",
+      "one_liner": "Slow climber hanging upside down.",
+      "tags": [
+        "climb",
+        "slow",
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "",
+      "catalog_id": "two-toed-sloth"
+    },
+    {
+      "id": "lemur",
+      "label": "Lemur / Madagascar",
+      "emoji": "🐒",
+      "one_liner": "Stripy tails and island energy.",
+      "tags": [
+        "primates",
+        "pattern"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Madagascar",
+      "catalog_id": "ring-tailed-lemur"
+    },
+    {
+      "id": "tortoise",
+      "label": "Giant tortoise",
+      "emoji": "🐢",
+      "one_liner": "Ancient shells on the move.",
+      "tags": [
+        "slow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "",
+      "catalog_id": "galapagos-tortoise"
+    },
+    {
+      "id": "otter",
+      "label": "Otter",
+      "emoji": "🦦",
+      "one_liner": "Splashy play in the water.",
+      "tags": [
+        "water",
+        "active"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "",
+      "catalog_id": "asian-small-clawed-otter"
+    },
+    {
+      "id": "chimp",
+      "label": "Monkey / ape friends",
+      "emoji": "🐵",
+      "one_liner": "Climbing primates beyond the gorillas.",
+      "tags": [
+        "primates",
+        "climb"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "",
+      "catalog_id": "chimpanzee"
+    },
+    {
+      "id": "capybara",
+      "label": "Capybara area",
+      "emoji": "🐹",
+      "one_liner": "World's largest rodent — chill by the water.",
+      "tags": [
+        "outdoor",
+        "cute"
+      ],
+      "age_fit": [
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": ""
+    },
+    {
+      "id": "butterfly-or-indoor",
+      "label": "Indoor rainforest moments",
+      "emoji": "🌿",
+      "one_liner": "Warm indoor habitats when London is rainy.",
+      "tags": [
+        "indoor",
+        "explore"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8"
+      ],
+      "zone": ""
+    },
+    {
+      "id": "play",
+      "label": "Play / under-5 reset",
+      "emoji": "🛝",
+      "one_liner": "Burn energy, then back on the path.",
+      "tags": [
+        "kids",
+        "rest"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5"
+      ],
+      "zone": ""
+    }
+  ]
+}

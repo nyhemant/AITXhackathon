@@ -1,0 +1,185 @@
+{
+  "slug": "childrens-museum-perot",
+  "name": "Children's Museum (Perot)",
+  "type": "museum",
+  "city": "Dallas",
+  "region": "TX",
+  "country": "US",
+  "lat": 32.79,
+  "lng": -96.81,
+  "official_url": "https://www.perotmuseum.org/",
+  "last_verified": "2026-08-07",
+  "verified_by": "owner",
+  "status": "verified",
+  "tagline": "Play zones kids control — climb, make, splash.",
+  "practical": {
+    "typical_duration": "half day",
+    "ticket_note": "Timed entry common on busy days — book ahead.",
+    "transit_note": "Downtown Dallas; parking garages nearby."
+  },
+  "items": [
+    {
+      "id": "imaginarium",
+      "label": "Imaginarium",
+      "emoji": "🎨",
+      "one_liner": "Pretend worlds built for little directors.",
+      "tags": [
+        "pretend",
+        "kids",
+        "wow",
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8"
+      ],
+      "zone": "Imaginarium",
+      "catalog_id": "cm-imaginarium"
+    },
+    {
+      "id": "woven",
+      "label": "Woven Wonders",
+      "emoji": "🧶",
+      "one_liner": "Climb-through texture adventure.",
+      "tags": [
+        "climb",
+        "kids",
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8"
+      ],
+      "zone": "Woven Wonders",
+      "catalog_id": "cm-woven"
+    },
+    {
+      "id": "water",
+      "label": "Water play",
+      "emoji": "💧",
+      "one_liner": "Splash science without the deep end.",
+      "tags": [
+        "water",
+        "hands",
+        "kids",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8"
+      ],
+      "zone": "Water",
+      "catalog_id": "cm-waterfall"
+    },
+    {
+      "id": "makery",
+      "label": "Makery",
+      "emoji": "🔧",
+      "one_liner": "Build and tinker with real tools (kid-safe).",
+      "tags": [
+        "hands",
+        "build",
+        "indoor"
+      ],
+      "age_fit": [
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Makery",
+      "catalog_id": "cm-makery"
+    },
+    {
+      "id": "toddler",
+      "label": "Toddler Garden",
+      "emoji": "🌱",
+      "one_liner": "Soft space for the littlest explorers.",
+      "tags": [
+        "kids",
+        "rest",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5"
+      ],
+      "zone": "Toddler Garden",
+      "catalog_id": "cm-toddler-garden"
+    },
+    {
+      "id": "outdoor",
+      "label": "Outdoor play",
+      "emoji": "🌞",
+      "one_liner": "Run, climb, reset outside.",
+      "tags": [
+        "outdoor",
+        "climb",
+        "kids"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Outdoor",
+      "catalog_id": "cm-outdoor"
+    },
+    {
+      "id": "art",
+      "label": "Art lab",
+      "emoji": "🖼️",
+      "one_liner": "Messy-making that is allowed.",
+      "tags": [
+        "hands",
+        "art",
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "",
+      "catalog_id": "cm-art-lab"
+    },
+    {
+      "id": "explore",
+      "label": "Free explore",
+      "emoji": "🔍",
+      "one_liner": "Wander and pick a new favorite corner.",
+      "tags": [
+        "explore",
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "",
+      "catalog_id": "cm-free-explore"
+    },
+    {
+      "id": "quiet",
+      "label": "Quiet corner",
+      "emoji": "🤫",
+      "one_liner": "A calm spot when senses get full.",
+      "tags": [
+        "rest",
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8"
+      ],
+      "zone": ""
+    }
+  ]
+}

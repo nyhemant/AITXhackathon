@@ -1,0 +1,243 @@
+{
+  "slug": "ueno-zoo",
+  "name": "Ueno Zoo",
+  "type": "zoo",
+  "city": "Tokyo",
+  "region": "",
+  "country": "JP",
+  "lat": 35.7167,
+  "lng": 139.7713,
+  "official_url": "https://www.tokyo-zoo.net/english/ueno/",
+  "last_verified": "2026-08-07",
+  "verified_by": "owner",
+  "status": "verified",
+  "tagline": "Tokyo classic — no giant pandas now; red pandas and big cats still wow.",
+  "practical": {
+    "typical_duration": "half day",
+    "ticket_note": "Closed some Mondays; check calendar. Hills between east/west garden.",
+    "transit_note": "JR Ueno / Keisei Ueno — short walk into Ueno Park."
+  },
+  "items": [
+    {
+      "id": "red-panda",
+      "label": "Red panda",
+      "emoji": "🦊",
+      "one_liner": "Rusty tree-climber with a ringed tail — still a panda favorite!",
+      "tags": [
+        "climb",
+        "cute",
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "",
+      "qa_card": {
+        "question": "Is a red panda a giant panda?",
+        "answer": "No — red pandas are their own species. They love climbing!"
+      },
+      "catalog_id": "red-panda"
+    },
+    {
+      "id": "tiger",
+      "label": "Tiger",
+      "emoji": "🐯",
+      "one_liner": "Stripy big cat — strong and stealthy.",
+      "tags": [
+        "big-cats",
+        "pattern",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "",
+      "catalog_id": "sumatran-tiger"
+    },
+    {
+      "id": "gorilla",
+      "label": "Gorilla",
+      "emoji": "🦍",
+      "one_liner": "Gentle ape family to watch quietly.",
+      "tags": [
+        "primates",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "",
+      "catalog_id": "western-lowland-gorilla"
+    },
+    {
+      "id": "giraffe",
+      "label": "Giraffe",
+      "emoji": "🦒",
+      "one_liner": "Long neck above the path — look up!",
+      "tags": [
+        "tall",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "",
+      "catalog_id": "reticulated-giraffe"
+    },
+    {
+      "id": "otter",
+      "label": "Otter",
+      "emoji": "🦦",
+      "one_liner": "Busy swimmer — always on the move.",
+      "tags": [
+        "water",
+        "active"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "",
+      "catalog_id": "asian-small-clawed-otter"
+    },
+    {
+      "id": "lemur",
+      "label": "Ring-tailed lemur",
+      "emoji": "🐒",
+      "one_liner": "Stripy tail and curious eyes.",
+      "tags": [
+        "primates",
+        "pattern"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "",
+      "catalog_id": "ring-tailed-lemur"
+    },
+    {
+      "id": "chimp",
+      "label": "Chimpanzee",
+      "emoji": "🐵",
+      "one_liner": "Smart forest ape — tools and climbs.",
+      "tags": [
+        "primates",
+        "climb"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "",
+      "catalog_id": "chimpanzee"
+    },
+    {
+      "id": "flamingo",
+      "label": "Flamingo",
+      "emoji": "🦩",
+      "one_liner": "Pink waders in a splashy group.",
+      "tags": [
+        "birds",
+        "color",
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "",
+      "catalog_id": "caribbean-flamingo"
+    },
+    {
+      "id": "tortoise",
+      "label": "Giant tortoise",
+      "emoji": "🐢",
+      "one_liner": "Slow steps, long life.",
+      "tags": [
+        "slow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "",
+      "catalog_id": "galapagos-tortoise"
+    },
+    {
+      "id": "small-mammals",
+      "label": "Small Mammal House",
+      "emoji": "🦇",
+      "one_liner": "Tiny mammals and clever exhibits indoors.",
+      "tags": [
+        "indoor",
+        "tiny",
+        "explore"
+      ],
+      "age_fit": [
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Small Mammal House"
+    },
+    {
+      "id": "kids-zoo",
+      "label": "Children's Zoo",
+      "emoji": "🐥",
+      "one_liner": "Farm friends for little legs.",
+      "tags": [
+        "kids",
+        "rest"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8"
+      ],
+      "zone": ""
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "emoji": "🦓",
+      "one_liner": "Walking stripes on the savanna side.",
+      "tags": [
+        "pattern",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "",
+      "catalog_id": "zebra"
+    }
+  ]
+}

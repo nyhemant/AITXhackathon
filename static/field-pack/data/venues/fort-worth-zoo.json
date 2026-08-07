@@ -1,0 +1,241 @@
+{
+  "slug": "fort-worth-zoo",
+  "name": "Fort Worth Zoo",
+  "type": "zoo",
+  "city": "Fort Worth",
+  "region": "TX",
+  "country": "US",
+  "lat": 32.72,
+  "lng": -97.36,
+  "official_url": "https://www.fortworthzoo.org/",
+  "last_verified": "2026-08-07",
+  "verified_by": "owner",
+  "status": "verified",
+  "tagline": "Classic Texas zoo day — big animals without the long drive.",
+  "practical": {
+    "typical_duration": "half day",
+    "ticket_note": "Check summer hours; arrive early for parking.",
+    "transit_note": "Parking on site; plan stroller routes for hills."
+  },
+  "items": [
+    {
+      "id": "elephant",
+      "label": "Elephant",
+      "emoji": "🐘",
+      "one_liner": "Giant with a super-nose trunk.",
+      "tags": [
+        "big",
+        "outdoor",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "",
+      "catalog_id": "african-elephant"
+    },
+    {
+      "id": "giraffe",
+      "label": "Giraffe",
+      "emoji": "🦒",
+      "one_liner": "Sky-high neck — look up!",
+      "tags": [
+        "tall",
+        "outdoor",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "",
+      "catalog_id": "reticulated-giraffe"
+    },
+    {
+      "id": "lion",
+      "label": "Lion",
+      "emoji": "🦁",
+      "one_liner": "King of the pride — listen for a roar.",
+      "tags": [
+        "big-cats",
+        "outdoor",
+        "sound"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "",
+      "catalog_id": "african-lion"
+    },
+    {
+      "id": "tiger",
+      "label": "Tiger",
+      "emoji": "🐯",
+      "one_liner": "Orange stripes built for stealth.",
+      "tags": [
+        "big-cats",
+        "pattern",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "",
+      "catalog_id": "sumatran-tiger"
+    },
+    {
+      "id": "gorilla",
+      "label": "Gorilla",
+      "emoji": "🦍",
+      "one_liner": "Gentle giant of the ape world.",
+      "tags": [
+        "primates",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "",
+      "catalog_id": "western-lowland-gorilla"
+    },
+    {
+      "id": "penguin",
+      "label": "Penguin",
+      "emoji": "🐧",
+      "one_liner": "Waddle crew that loves cool water.",
+      "tags": [
+        "birds",
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "",
+      "catalog_id": "african-penguin"
+    },
+    {
+      "id": "hippo",
+      "label": "Hippo",
+      "emoji": "🦛",
+      "one_liner": "River tank with a huge smile.",
+      "tags": [
+        "big",
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "",
+      "catalog_id": "nile-hippo"
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "emoji": "🦓",
+      "one_liner": "Walking barcode of the savanna.",
+      "tags": [
+        "pattern",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "",
+      "catalog_id": "zebra"
+    },
+    {
+      "id": "otter",
+      "label": "Otter",
+      "emoji": "🦦",
+      "one_liner": "Splashy swimmer — always busy.",
+      "tags": [
+        "water",
+        "active"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "",
+      "catalog_id": "asian-small-clawed-otter"
+    },
+    {
+      "id": "lemur",
+      "label": "Ring-tailed lemur",
+      "emoji": "🐒",
+      "one_liner": "Stripy tail from Madagascar.",
+      "tags": [
+        "primates",
+        "pattern",
+        "climb"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "",
+      "catalog_id": "ring-tailed-lemur"
+    },
+    {
+      "id": "tortoise",
+      "label": "Giant tortoise",
+      "emoji": "🐢",
+      "one_liner": "Slow steps, long life.",
+      "tags": [
+        "slow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "",
+      "catalog_id": "galapagos-tortoise"
+    },
+    {
+      "id": "kids-area",
+      "label": "Kids play / rest stop",
+      "emoji": "🛝",
+      "one_liner": "Burn energy, then back to animals.",
+      "tags": [
+        "kids",
+        "rest"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8"
+      ],
+      "zone": ""
+    }
+  ]
+}

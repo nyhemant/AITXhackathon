@@ -1,0 +1,247 @@
+/* Mission generator — pilot venue pages */
+.mission-controls {
+  display: grid;
+  gap: 12px;
+  margin: 0 0 16px;
+  padding: 14px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1.5px solid rgba(15, 92, 92, 0.14);
+  box-shadow: 0 8px 24px rgba(21, 34, 56, 0.06);
+}
+.mission-controls-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 16px;
+  align-items: end;
+}
+.mission-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 120px;
+  flex: 1 1 140px;
+}
+.mission-field label {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #0a4545;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.mission-field input[type="text"],
+.mission-field select {
+  font: inherit;
+  font-weight: 650;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1.5px solid rgba(15, 92, 92, 0.18);
+  background: #fff;
+}
+.mission-field input[type="range"] {
+  width: 100%;
+  accent-color: #0f5c5c;
+}
+.mission-age-label {
+  font-weight: 800;
+  color: #0f5c5c;
+  font-size: 0.95rem;
+}
+.mission-time-seg {
+  display: inline-flex;
+  border-radius: 999px;
+  border: 1.5px solid rgba(15, 92, 92, 0.18);
+  overflow: hidden;
+  background: #fff;
+}
+.mission-time-seg label {
+  margin: 0;
+  text-transform: none;
+  font-size: 0.85rem;
+  font-weight: 750;
+  cursor: pointer;
+  color: #3d4f6f;
+}
+.mission-time-seg label span {
+  display: block;
+  padding: 8px 12px;
+}
+.mission-time-seg input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.mission-time-seg label:has(input:checked) span {
+  background: #0f5c5c;
+  color: #fff;
+}
+.mission-time-seg label {
+  margin: 0;
+  text-transform: none;
+  font-size: 0.85rem;
+  font-weight: 750;
+  padding: 8px 12px;
+  cursor: pointer;
+  color: #3d4f6f;
+}
+.mission-time-seg input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.mission-time-seg input:checked + span {
+  background: #0f5c5c;
+  color: #fff;
+  display: inline-block;
+  padding: 8px 12px;
+  margin: -8px -12px;
+}
+.mission-time-seg label span {
+  display: inline-block;
+  padding: 0;
+}
+.mission-card {
+  padding: 16px 16px 18px;
+  border-radius: 18px;
+  background: #fffef8;
+  border: 1.5px solid rgba(15, 92, 92, 0.14);
+  margin-bottom: 18px;
+}
+.mission-kicker {
+  margin: 0 0 4px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #3d4f6f;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.mission-title {
+  margin: 0 0 12px;
+  font-size: 1.35rem;
+  color: #0a4545;
+  line-height: 1.2;
+}
+.mission-finds,
+.mission-challenges {
+  margin: 0 0 12px;
+  padding: 0;
+  list-style: none;
+}
+.mission-find,
+.mission-challenge {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 8px 0;
+  border-bottom: 1px dashed rgba(15, 92, 92, 0.12);
+}
+.mission-check {
+  font-size: 1.1rem;
+  line-height: 1.2;
+  color: #0f5c5c;
+}
+.mission-emoji {
+  font-size: 1.25rem;
+  line-height: 1.2;
+}
+.mission-find-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.mission-find-body small {
+  color: #3d4f6f;
+  font-weight: 550;
+}
+.mission-subhead {
+  margin: 8px 0 6px;
+  font-size: 0.95rem;
+  color: #0a4545;
+}
+.mission-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+.mission-verified {
+  font-size: 0.88rem;
+  font-weight: 650;
+  color: #2d5a3d;
+  margin: 0 0 16px;
+}
+.mission-practical {
+  margin: 0 0 16px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: #eef6f4;
+  font-size: 0.92rem;
+  color: #0a4545;
+}
+.mission-practical p {
+  margin: 0 0 4px;
+}
+
+/* Screen: hide print sheet */
+.mission-print-sheet {
+  display: none;
+}
+
+/* Print only mission sheet */
+@media print {
+  body.printing-mission * {
+    visibility: hidden;
+  }
+  body.printing-mission .mission-print-sheet,
+  body.printing-mission .mission-print-sheet * {
+    visibility: visible;
+  }
+  body.printing-mission .mission-print-sheet {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 12mm;
+    background: #fff;
+    color: #000;
+  }
+  .mp-inner h1 {
+    font-size: 18pt;
+    margin: 0 0 6pt;
+  }
+  .mp-brand {
+    font-size: 10pt;
+    font-weight: 700;
+    margin: 0 0 4pt;
+  }
+  .mp-meta {
+    font-size: 10pt;
+    margin: 0 0 10pt;
+  }
+  .mp-finds,
+  .mp-challenges {
+    margin: 0 0 10pt;
+    padding-left: 0;
+    list-style: none;
+  }
+  .mp-finds li,
+  .mp-challenges li {
+    margin: 0 0 6pt;
+    page-break-inside: avoid;
+  }
+  .mp-box {
+    font-family: monospace;
+  }
+  .mp-line {
+    display: block;
+    font-size: 9.5pt;
+    margin-left: 14pt;
+  }
+  .mp-footer {
+    margin-top: 12pt;
+    font-size: 9pt;
+    border-top: 1px solid #999;
+    padding-top: 6pt;
+  }
+}
