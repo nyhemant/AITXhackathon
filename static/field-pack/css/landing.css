@@ -457,6 +457,14 @@
   background: #e0ebff;
   color: #1d4f91;
 }
+.pin-detail .pd-status.starter {
+  background: #e8f0e8;
+  color: #2d5a3d;
+}
+.pin-detail .pd-hint.pd-quality {
+  font-size: 0.88rem;
+  margin-top: 0.25rem;
+}
 
 .pin-detail .pd-actions {
   display: flex;

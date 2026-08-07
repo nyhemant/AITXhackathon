@@ -1310,10 +1310,19 @@
 
     const locLine = [p.city, placeRegionLabel(p)].filter(Boolean).join(", ");
     const isSoon = p.status === "soon";
+    const quality = (ven && ven.quality) || "starter";
     const statusBadge = isSoon
       ? `<span class="pd-status soon">Coming soon</span>`
       : canPrintHunt
-        ? `<span class="pd-status ready">Ready to print</span>`
+        ? quality === "full"
+          ? `<span class="pd-status ready">Ready to print</span>`
+          : `<span class="pd-status starter">Starter list</span>`
+        : "";
+    const qualityHint =
+      !isSoon && canPrintHunt
+        ? quality === "full"
+          ? `<p class="pd-hint pd-quality">Curated shortlist for a finishable kid day.</p>`
+          : `<p class="pd-hint pd-quality">Starter shortlist — animals change; skip anything closed or missing.</p>`
         : "";
     detail.innerHTML = `
       <p class="pin-detail-kicker">${escapeHtml(locLine)}</p>
@@ -1323,6 +1332,7 @@
       </div>
       ${statusBadge}
       ${blurb ? `<p class="pd-blurb">${escapeHtml(blurb)}</p>` : ""}
+      ${qualityHint}
       ${
         isSoon
           ? `<p class="pd-hint">Pack in progress — shortlist and printable hunt coming next.</p>`
@@ -1604,15 +1614,82 @@
     bindMapTouchGestures();
     bindMapDrag();
 
-    // Default: US map + All places (never world until International is clicked)
-    await loadBasemap("us");
-    mapScope = "more";
-    updateScopeButtons();
-    fillLocationSelect();
-    fillVenueSelect();
-    renderPins();
-    showOverview();
-    if (zoom < 1.2) setZoom(1.15);
+    /**
+     * Geo-aware default: US visitors → US map; non-US → International.
+     * Prefer saved scope, then timezone / language heuristics (no geolocation prompt).
+     */
+    function detectPreferIntl() {
+      try {
+        const saved = localStorage.getItem("fp-map-scope");
+        if (saved === "intl") return true;
+        if (saved === "us" || saved === "top" || saved === "more") return false;
+      } catch (_) {
+        /* private mode */
+      }
+      try {
+        const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
+        if (/^America\//.test(tz) || tz === "Pacific/Honolulu" || tz === "US/Hawaii") {
+          // America/* includes parts of South America — refine with language when possible
+          const lang = (navigator.language || "").toLowerCase();
+          if (lang.startsWith("en-us") || lang === "en" || lang.startsWith("en-ca") || lang.startsWith("es-us")) {
+            return false;
+          }
+          // e.g. America/Sao_Paulo + pt-BR → intl
+          if (lang && !lang.startsWith("en-us") && !lang.startsWith("en-ca") && !lang.startsWith("es-mx") && !lang.startsWith("es-us")) {
+            if (/America\/(Argentina|Sao_Paulo|Bogota|Lima|Santiago|Mexico_City|Costa_Rica|Panama)/.test(tz)) {
+              return true;
+            }
+          }
+          return false; // default US for most America/* en speakers
+        }
+        // Europe, Asia, Africa, Australia, etc.
+        return true;
+      } catch (_) {
+        const lang = (navigator.language || "").toLowerCase();
+        if (lang.startsWith("en-us") || lang.startsWith("en-ca")) return false;
+        if (lang.startsWith("en-gb") || lang.startsWith("en-au") || lang.startsWith("en-nz")) return true;
+        return !lang.startsWith("en-us");
+      }
+    }
+
+    function persistScopePreference(scope) {
+      try {
+        if (scope === "intl") localStorage.setItem("fp-map-scope", "intl");
+        else localStorage.setItem("fp-map-scope", "us");
+      } catch (_) {
+        /* ignore */
+      }
+    }
+
+    // Wrap setScope to remember preference
+    const _setScope = setScope;
+    setScope = async function (scope) {
+      await _setScope(scope);
+      persistScopePreference(scope === "intl" ? "intl" : "us");
+      updateReadyChips(scope === "intl");
+    };
+
+    const preferIntl = detectPreferIntl();
+    if (preferIntl) {
+      await loadBasemap("world");
+      mapScope = "intl";
+      updateScopeButtons();
+      fillLocationSelect();
+      fillVenueSelect();
+      renderPins();
+      showOverview();
+      setZoom(1);
+    } else {
+      await loadBasemap("us");
+      mapScope = "more";
+      updateScopeButtons();
+      fillLocationSelect();
+      fillVenueSelect();
+      renderPins();
+      showOverview();
+      if (zoom < 1.2) setZoom(1.15);
+    }
+    updateReadyChips(mapScope === "intl");
 
     // Deep link: /field-pack/#/venue/dallas-zoo (intl ids switch basemap)
     const fromHash = venueIdFromHash();
@@ -1627,6 +1704,34 @@
         void setVenue("", { skipHash: true });
       }
     });
+  }
+
+  /** Swap “Or try …” ready cards for US vs international visitors. */
+  function updateReadyChips(isIntl) {
+    const heading = document.getElementById("ready-heading");
+    const grid = document.getElementById("ready-grid");
+    if (!heading || !grid) return;
+    const usCards = [
+      { id: "dallas-zoo", emoji: "🦁", name: "Dallas Zoo" },
+      { id: "childrens-aquarium-dallas", emoji: "🦈", name: "Children’s Aquarium" },
+      { id: "childrens-museum-perot", emoji: "🎨", name: "Children’s Museum" },
+    ];
+    const intlCards = [
+      { id: "london-zoo", emoji: "🦁", name: "London Zoo" },
+      { id: "singapore-zoo", emoji: "🦍", name: "Singapore Zoo" },
+      { id: "ueno-zoo", emoji: "🐯", name: "Ueno Zoo" },
+    ];
+    const cards = isIntl ? intlCards : usCards;
+    heading.textContent = isIntl ? "Or try a world favorite" : "Or try Dallas";
+    grid.innerHTML = cards
+      .map(
+        (c) => `<a class="ready-card" href="/field-pack/#/venue/${c.id}" data-venue-id="${c.id}">
+            <span class="rc-emoji" aria-hidden="true">${c.emoji}</span>
+            <h3>${c.name}</h3>
+            <span class="rc-cta">Open on map →</span>
+          </a>`
+      )
+      .join("");
   }
 
   boot();

@@ -109,6 +109,7 @@ const out = Object.keys(venues).map(id => {
     emoji: pl.emoji || '',
     itemLabel: ven.itemLabel || 'things',
     packTemplate: ven.packTemplate || 'animals',
+    quality: ven.quality || 'starter',
     featured: items,
     hunt,
   };
@@ -165,7 +166,7 @@ def unique_body(v: dict) -> str:
     middles = [
         f"The shortlist highlights {feat_phrase}. Each pick has a kid-sized blurb so a preschooler or early elementary explorer can understand why it is cool before you arrive.",
         f"Instead of racing through every exhibit, start with top picks like {feat_phrase}. That keeps toddlers and school-age kids engaged without overwhelm.",
-        f"Your printable kit focuses on {feat_phrase} — a manageable set for Pre-K through about grade 5, with room to skip anything that is closed or crowded.",
+        f"Your printable kit focuses on {feat_phrase} — a manageable set for young kids through about age 10–11, with room to skip anything that is closed or crowded.",
     ]
     hunt_bits = "; ".join(hunt[:4]) if hunt else "spot something tall, find a pattern, and photo a favorite"
     hunt_para = [
@@ -202,7 +203,7 @@ def unique_body(v: dict) -> str:
             src = photo[len("/field-pack/") :]
         else:
             src = photo
-        alt = f"{it.get('name') or 'Animal'} at {name} — kid shortlist photo"
+        alt = f"{it.get('name') or 'Animal'} — shortlist photo"
         blurb = it.get("blurb") or "A favorite stop for curious kids."
         item_id = it.get("id") or ""
         card_inner = ""
@@ -250,7 +251,7 @@ def unique_body(v: dict) -> str:
         else:
             src = photo
         hero_photos.append(
-            f'<img src="{esc(src)}" alt="{esc(it.get("name") or "Highlight")} at {esc(name)}" width="400" height="280" loading="eager" decoding="async" />'
+            f'<img src="{esc(src)}" alt="{esc(it.get("name") or "Highlight")} — shortlist photo" width="400" height="280" loading="eager" decoding="async" />'
         )
     hero_strip = (
         f'<div class="seo-hero-photos" aria-hidden="false">{"".join(hero_photos)}</div>'
@@ -349,8 +350,21 @@ def render_venue_page(v: dict) -> str:
     app_href = f"/field-pack/app.html#/venue/{vid}"
     map_href = f"/field-pack/#/venue/{vid}"
     place, things, _ = type_bits(v)
+    # Apostrophe-safe title case (avoid Children'S)
+    def soft_title(s: str) -> str:
+        parts = []
+        for w in (s or "").replace("_", " ").split():
+            if not w:
+                continue
+            if "'" in w:
+                a, b = w.split("'", 1)
+                parts.append((a[:1].upper() + a[1:].lower()) + "'" + (b[:1].upper() + b[1:].lower() if b else ""))
+            else:
+                parts.append(w[:1].upper() + w[1:].lower() if len(w) > 1 else w.upper())
+        return " ".join(parts)
+
     loc_chip = " · ".join(
-        x for x in [place.replace("_", " ").title(), v.get("location") or ""] if x
+        x for x in [soft_title(place.replace("_", " ")), v.get("location") or ""] if x
     )
     body = unique_body(v)
     h1 = h1_for(v)
@@ -422,6 +436,11 @@ def render_venue_page(v: dict) -> str:
         <p class="promise-pill">{esc(loc_chip)}</p>
         <h1>{esc(v.get('emoji',''))} {esc(h1)}</h1>
         <p class="lead">{esc(v.get('blurb') or f'Free printable scavenger hunt and kid shortlist for {v["name"]}.')}</p>
+        <p class="seo-quality-note">{esc(
+          "Starter shortlist — animals and exhibits change; skip anything closed or missing."
+          if (v.get("quality") or "starter") == "starter"
+          else "Curated shortlist for a finishable kid day."
+        )}</p>
         <p class="seo-brand-note">Part of <strong>Field Trip Kit</strong> by 1Less — free for families.</p>
         <div class="landing-cta-row seo-cta no-print">
           <a class="btn btn-primary btn-big" href="{esc(map_href)}">Open on map →</a>
