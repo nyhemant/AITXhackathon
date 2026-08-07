@@ -195,5 +195,18 @@
         "answer": "Breaks help little legs finish the day!"
       }
     }
+  ],
+  "content_mode": "wonder",
+  "media": {
+    "visitor_map_url": "",
+    "visitor_map_page": "https://carnegiemnh.org/",
+    "visitor_map_kind": "page",
+    "map_attribution": "Official site · Carnegie Museum of Natural History"
+  },
+  "parent_script": [
+    "Bathroom first",
+    "One big wow",
+    "Snack when needed",
+    "Leave while happy"
   ]
 }

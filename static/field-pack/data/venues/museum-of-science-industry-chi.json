@@ -197,5 +197,18 @@
       },
       "catalog_id": "sci-rocket"
     }
+  ],
+  "content_mode": "wonder",
+  "media": {
+    "visitor_map_url": "",
+    "visitor_map_page": "https://www.msichicago.org/",
+    "visitor_map_kind": "page",
+    "map_attribution": "Official site · Museum of Science and Industry"
+  },
+  "parent_script": [
+    "Bathroom first",
+    "One big wow",
+    "Snack when needed",
+    "Leave while happy"
   ]
 }

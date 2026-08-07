@@ -276,5 +276,18 @@
       },
       "catalog_id": "african-penguin"
     }
+  ],
+  "content_mode": "wonder",
+  "media": {
+    "visitor_map_url": "",
+    "visitor_map_page": "https://www.torontozoo.com/",
+    "visitor_map_kind": "page",
+    "map_attribution": "Official site · Toronto Zoo"
+  },
+  "parent_script": [
+    "Bathroom first",
+    "One big wow",
+    "Snack when needed",
+    "Leave while happy"
   ]
 }

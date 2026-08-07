@@ -11,11 +11,13 @@
   "last_verified": "2026-08-07",
   "verified_by": "catalog-scaffold",
   "status": "verified",
-  "tagline": "Mountain-west zoo day.",
+  "tagline": "Salt Lake foothills zoo — hills, big views, finishable kid day.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Check the official site for tickets and hours.",
-    "transit_note": ""
+    "ticket_note": "Check hoglezoo.org for hours and tickets.",
+    "transit_note": "Foothill area — car-friendly; paths can be hilly.",
+    "energy_note": "hills",
+    "best_start": "Enter and pick one wow loop — don’t chase the whole map."
   },
   "items": [
     {
@@ -295,5 +297,18 @@
       },
       "catalog_id": "galapagos-tortoise"
     }
+  ],
+  "content_mode": "wonder",
+  "media": {
+    "visitor_map_url": "https://www.hoglezoo.org/wp-content/uploads/2024/07/Utahs-Hogle-Zoo-Map-2024-New.png",
+    "visitor_map_page": "https://www.hoglezoo.org/hogle-zoo-map/",
+    "visitor_map_kind": "image",
+    "map_attribution": "Official map © Utah’s Hogle Zoo"
+  },
+  "parent_script": [
+    "Bathroom first",
+    "One big wow",
+    "Snack when needed",
+    "Leave while happy"
   ]
 }

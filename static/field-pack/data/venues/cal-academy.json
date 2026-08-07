@@ -236,5 +236,18 @@
       },
       "catalog_id": "clownfish"
     }
+  ],
+  "content_mode": "curated",
+  "media": {
+    "visitor_map_url": "",
+    "visitor_map_page": "https://www.calacademy.org/",
+    "visitor_map_kind": "page",
+    "map_attribution": "Official site · California Academy of Sciences"
+  },
+  "parent_script": [
+    "Bathroom first",
+    "One big wow",
+    "Snack when needed",
+    "Leave while happy"
   ]
 }

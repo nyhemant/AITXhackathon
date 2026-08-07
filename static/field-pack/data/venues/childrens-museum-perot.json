@@ -181,5 +181,18 @@
       ],
       "zone": ""
     }
+  ],
+  "content_mode": "curated",
+  "media": {
+    "visitor_map_url": "",
+    "visitor_map_page": "https://www.perotmuseum.org/",
+    "visitor_map_kind": "page",
+    "map_attribution": "Official site · Children's Museum (Perot)"
+  },
+  "parent_script": [
+    "Bathroom first",
+    "One big wow",
+    "Snack when needed",
+    "Leave while happy"
   ]
 }

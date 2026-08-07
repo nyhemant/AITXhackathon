@@ -255,5 +255,18 @@
       },
       "catalog_id": "ring-tailed-lemur"
     }
+  ],
+  "content_mode": "wonder",
+  "media": {
+    "visitor_map_url": "",
+    "visitor_map_page": "https://www.mandai.com/en/night-safari.html",
+    "visitor_map_kind": "page",
+    "map_attribution": "Official site · Night Safari"
+  },
+  "parent_script": [
+    "Bathroom first",
+    "One big wow",
+    "Snack when needed",
+    "Leave while happy"
   ]
 }

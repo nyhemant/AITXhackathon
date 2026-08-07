@@ -12,7 +12,7 @@
     <title>List &amp; hunt · Field Trip Kit · 1Less</title>
     <base href="/field-pack/" />
     <link rel="stylesheet" href="/shell/shell.css?v=4" />
-    <link rel="stylesheet" href="/field-pack/css/styles.css?v=18" />
+    <link rel="stylesheet" href="/field-pack/css/styles.css?v=19" />
   </head>
   <body class="app-body">
     <div class="app app-outing">
@@ -102,36 +102,40 @@
             <figcaption id="detail-credit" class="photo-credit"></figcaption>
           </figure>
           <div class="detail-copy">
-            <p class="step-chip detail-kicker">Optional tips</p>
+            <p class="step-chip detail-kicker">Optional · after you spot something like this</p>
             <h1 id="detail-name">Item</h1>
             <p id="detail-blurb" class="lead"></p>
+            <p class="detail-missing-hint no-print">
+              Not out today? Find something <strong>like</strong> it — big, striped, splashy, or quiet.
+            </p>
+            <div id="floor-prompts" class="floor-prompts no-print" aria-label="Talk prompts"></div>
+            <div class="action-row detail-tools">
+              <button type="button" id="btn-print" class="btn btn-primary btn-print">Print this card</button>
+              <button type="button" id="btn-taught" class="btn btn-secondary" aria-pressed="false">
+                Found it ⭐
+              </button>
+            </div>
             <div class="action-row detail-links">
-              <a id="btn-cam" class="btn btn-secondary" href="#" target="_blank" rel="noopener">Look up</a>
-              <a id="btn-pictures" class="btn btn-secondary" href="#" target="_blank" rel="noopener">Pictures</a>
+              <a id="btn-cam" class="btn btn-ghost" href="#" target="_blank" rel="noopener">Look up</a>
+              <a id="btn-pictures" class="btn btn-ghost" href="#" target="_blank" rel="noopener">Pictures</a>
               <a id="btn-more" class="btn btn-ghost" href="#" target="_blank" rel="noopener">Learn more</a>
             </div>
-            <div class="action-row detail-tools">
-              <span id="progress-pill" class="progress-pill">Optional Q&amp;A</span>
-              <button type="button" id="btn-taught" class="btn btn-primary" aria-pressed="false">
-                Kid taught a grown-up
-              </button>
-              <button type="button" id="btn-print" class="btn btn-secondary btn-print">Print Q&amp;A card</button>
-            </div>
+            <span id="progress-pill" class="progress-pill" hidden>Optional Q&amp;A</span>
             <div id="teach-banner" class="teach-banner" role="status"></div>
           </div>
         </section>
 
-        <p class="mission-optional-note no-print">
-          Optional after the visit — skip anytime. The printed hunt alone is a great day.
-        </p>
-        <p class="footer-note no-print mission-guide">
-          Tap circles to choose. <strong>Check answers</strong> when you want friendly feedback — not a grade.
-        </p>
-        <div id="mission-grid" class="mission-grid" aria-label="Optional questions"></div>
-        <section class="submit-bar no-print">
-          <button type="button" id="btn-submit" class="btn btn-submit btn-big">Check answers</button>
-          <div id="results-panel" class="results-panel" hidden></div>
-        </section>
+        <details class="advanced-qa no-print" id="advanced-qa">
+          <summary>Advanced · multi-choice check</summary>
+          <p class="footer-note mission-guide">
+            Optional quiz-style prompts. <strong>Not a grade</strong> — skip anytime.
+          </p>
+          <div id="mission-grid" class="mission-grid" aria-label="Optional questions"></div>
+          <section class="submit-bar">
+            <button type="button" id="btn-submit" class="btn btn-submit btn-big">Check answers</button>
+            <div id="results-panel" class="results-panel" hidden></div>
+          </section>
+        </details>
       </main>
 
       <footer class="site-footer site-footer-slim no-print">
@@ -145,6 +149,6 @@
     <script src="/shell/shell.js?v=3"></script>
     <script src="/field-pack/js/catalog.js?v=20"></script>
     <script src="/field-pack/js/print-kit.js?v=2"></script>
-    <script src="/field-pack/js/app.js?v=22"></script>
+    <script src="/field-pack/js/app.js?v=23"></script>
   </body>
 </html>

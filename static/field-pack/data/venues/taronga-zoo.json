@@ -299,5 +299,18 @@
       },
       "catalog_id": "ring-tailed-lemur"
     }
+  ],
+  "content_mode": "wonder",
+  "media": {
+    "visitor_map_url": "",
+    "visitor_map_page": "https://taronga.org.au/sydney-zoo",
+    "visitor_map_kind": "page",
+    "map_attribution": "Official site · Taronga Zoo"
+  },
+  "parent_script": [
+    "Bathroom first",
+    "One big wow",
+    "Snack when needed",
+    "Leave while happy"
   ]
 }

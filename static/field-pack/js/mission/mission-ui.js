@@ -29,6 +29,7 @@
 
   let venue = null;
   let challenges = null;
+  let wonders = null;
   let state = { age: "4-5", time: "half", interest: "", name: "", seed: 1 };
   let lastMission = null;
   let genTimer = null;
@@ -101,10 +102,32 @@
     }
   }
 
+  function syncPageChrome() {
+    document.querySelectorAll(".seo-time-chip").forEach((btn) => {
+      const on = btn.getAttribute("data-time") === state.time;
+      btn.classList.toggle("is-active", on);
+      btn.setAttribute("aria-pressed", on ? "true" : "false");
+    });
+    const ageIdx = (window.FPMission.AGE_ORDER || []).indexOf(state.age);
+    document.querySelectorAll(".seo-age-chip").forEach((btn) => {
+      const idx = parseInt(btn.getAttribute("data-age-idx") || "1", 10);
+      const on = idx === ageIdx;
+      btn.classList.toggle("is-active", on);
+      btn.setAttribute("aria-pressed", on ? "true" : "false");
+    });
+    // Keep drawer controls in sync
+    const ageEl = $("#mission-age");
+    if (ageEl && ageIdx >= 0) ageEl.value = String(ageIdx);
+    document.querySelectorAll('input[name="mission-time"]').forEach((el) => {
+      el.checked = el.value === state.time || (state.time === "1hr" && el.value === "90m");
+    });
+  }
+
   function recompute(fromShuffle) {
     if (!venue || !challenges || !window.FPMission) return;
     readControls();
-    lastMission = window.FPMission.selectMission(venue, challenges, state);
+    syncPageChrome();
+    lastMission = window.FPMission.selectMission(venue, challenges, state, wonders);
     renderSheet(lastMission);
     if (genTimer) clearTimeout(genTimer);
     genTimer = setTimeout(() => {
@@ -165,6 +188,23 @@
     document.querySelectorAll('input[name="mission-time"]').forEach((el) => {
       el.addEventListener("change", () => recompute(false));
     });
+    document.querySelectorAll(".seo-time-chip").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        state.time = btn.getAttribute("data-time") || "half";
+        const radio = document.querySelector(`input[name="mission-time"][value="${state.time}"]`);
+        if (radio) radio.checked = true;
+        recompute(false);
+      });
+    });
+    document.querySelectorAll(".seo-age-chip").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const idx = parseInt(btn.getAttribute("data-age-idx") || "1", 10);
+        state.age = AGE_FROM_SLIDER(idx);
+        const ageEl = $("#mission-age");
+        if (ageEl) ageEl.value = String(idx);
+        recompute(false);
+      });
+    });
     $("#mission-print-btn")?.addEventListener("click", () => {
       if (lastMission) printMission(lastMission);
       else window.print();
@@ -204,10 +244,12 @@
   function boot() {
     const dataEl = document.getElementById("venue-data");
     const chEl = document.getElementById("challenges-data");
+    const wEl = document.getElementById("wonders-data");
     if (!dataEl || !window.FPMission) return;
     try {
       venue = JSON.parse(dataEl.textContent);
       challenges = chEl ? JSON.parse(chEl.textContent) : { challenges: [] };
+      wonders = wEl ? JSON.parse(wEl.textContent) : null;
     } catch (e) {
       console.error(e);
       return;

@@ -1,0 +1,126 @@
+{
+  "version": 1,
+  "description": "Place-agnostic wonder finds for long-tail / scaffold venues. Honest when exhibits change.",
+  "wonders": [
+    {
+      "id": "w_tall",
+      "label": "Something taller than you",
+      "emoji": "📏",
+      "one_liner": "Point up — buildings, necks, trees, rockets…",
+      "tags": ["tall", "wow"],
+      "age_fit": ["2-3", "4-5", "6-8", "9+"],
+      "types": ["zoo", "safari_zoo", "museum", "aquarium"],
+      "zone": "Wonder"
+    },
+    {
+      "id": "w_pattern",
+      "label": "Stripes or spots",
+      "emoji": "🦓",
+      "one_liner": "Find a pattern you could draw.",
+      "tags": ["pattern", "wow"],
+      "age_fit": ["2-3", "4-5", "6-8", "9+"],
+      "types": ["zoo", "safari_zoo", "museum", "aquarium"],
+      "zone": "Wonder"
+    },
+    {
+      "id": "w_splash",
+      "label": "Splash or swim",
+      "emoji": "💦",
+      "one_liner": "Watch something move in water.",
+      "tags": ["water", "wow"],
+      "age_fit": ["2-3", "4-5", "6-8", "9+"],
+      "types": ["zoo", "safari_zoo", "aquarium", "museum"],
+      "zone": "Wonder"
+    },
+    {
+      "id": "w_sound",
+      "label": "A loud or quiet sound",
+      "emoji": "👂",
+      "one_liner": "Close your eyes for three seconds — what do you hear?",
+      "tags": ["sound"],
+      "age_fit": ["2-3", "4-5", "6-8", "9+"],
+      "types": ["zoo", "safari_zoo", "museum", "aquarium"],
+      "zone": "Wonder"
+    },
+    {
+      "id": "w_sleep",
+      "label": "A sleep or hide spot",
+      "emoji": "😴",
+      "one_liner": "Where might someone rest or hide?",
+      "tags": ["home"],
+      "age_fit": ["2-3", "4-5", "6-8", "9+"],
+      "types": ["zoo", "safari_zoo", "aquarium", "museum"],
+      "zone": "Wonder"
+    },
+    {
+      "id": "w_color",
+      "label": "Three colors",
+      "emoji": "🎨",
+      "one_liner": "Name three different colors you can see right now.",
+      "tags": ["color", "wow"],
+      "age_fit": ["2-3", "4-5", "6-8"],
+      "types": ["zoo", "safari_zoo", "museum", "aquarium"],
+      "zone": "Wonder"
+    },
+    {
+      "id": "w_photo",
+      "label": "Favorite photo (or draw it)",
+      "emoji": "📷",
+      "one_liner": "Capture one favorite — phone or memory.",
+      "tags": ["photo", "wow"],
+      "age_fit": ["4-5", "6-8", "9+"],
+      "types": ["zoo", "safari_zoo", "museum", "aquarium"],
+      "zone": "Wonder"
+    },
+    {
+      "id": "w_rest",
+      "label": "A rest or snack stop",
+      "emoji": "🧃",
+      "one_liner": "Find a bench, shade, or snack — then keep going.",
+      "tags": ["rest", "kids"],
+      "age_fit": ["2-3", "4-5", "6-8", "9+"],
+      "types": ["zoo", "safari_zoo", "museum", "aquarium"],
+      "zone": "Wonder"
+    },
+    {
+      "id": "w_tiny",
+      "label": "Something smaller than your hand",
+      "emoji": "🔎",
+      "one_liner": "Look close — tiny can be amazing.",
+      "tags": ["tiny"],
+      "age_fit": ["4-5", "6-8", "9+"],
+      "types": ["zoo", "safari_zoo", "museum", "aquarium"],
+      "zone": "Wonder"
+    },
+    {
+      "id": "w_hands",
+      "label": "Something to try with your hands",
+      "emoji": "✋",
+      "one_liner": "Touch exhibit, button, climb, or build — if allowed.",
+      "tags": ["hands", "play"],
+      "age_fit": ["2-3", "4-5", "6-8", "9+"],
+      "types": ["museum", "zoo", "aquarium"],
+      "zone": "Wonder"
+    },
+    {
+      "id": "w_read",
+      "label": "A kid label out loud",
+      "emoji": "📖",
+      "one_liner": "Read one short sign together.",
+      "tags": ["read"],
+      "age_fit": ["6-8", "9+"],
+      "types": ["museum", "zoo", "aquarium"],
+      "zone": "Wonder"
+    },
+    {
+      "id": "w_feathers",
+      "label": "Bright feathers or wings",
+      "emoji": "🪶",
+      "one_liner": "Birds, butterflies, or wing shapes in exhibits.",
+      "tags": ["color", "wow"],
+      "age_fit": ["2-3", "4-5", "6-8", "9+"],
+      "types": ["zoo", "safari_zoo", "museum"],
+      "zone": "Wonder"
+    }
+  ]
+}

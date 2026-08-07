@@ -241,5 +241,18 @@
       },
       "catalog_id": "ring-tailed-lemur"
     }
+  ],
+  "content_mode": "curated",
+  "media": {
+    "visitor_map_url": "",
+    "visitor_map_page": "https://www.lazoo.org/",
+    "visitor_map_kind": "page",
+    "map_attribution": "Official site · Los Angeles Zoo"
+  },
+  "parent_script": [
+    "Bathroom first",
+    "One big wow",
+    "Snack when needed",
+    "Leave while happy"
   ]
 }

@@ -189,5 +189,18 @@
       },
       "catalog_id": "cm-toddler-garden"
     }
+  ],
+  "content_mode": "curated",
+  "media": {
+    "visitor_map_url": "",
+    "visitor_map_page": "https://californiasciencecenter.org/",
+    "visitor_map_kind": "page",
+    "map_attribution": "Official site · California Science Center"
+  },
+  "parent_script": [
+    "Bathroom first",
+    "One big wow",
+    "Snack when needed",
+    "Leave while happy"
   ]
 }

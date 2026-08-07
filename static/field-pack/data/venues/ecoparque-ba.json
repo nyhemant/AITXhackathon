@@ -292,5 +292,18 @@
       },
       "catalog_id": "freshwater-fish"
     }
+  ],
+  "content_mode": "wonder",
+  "media": {
+    "visitor_map_url": "",
+    "visitor_map_page": "https://turismo.buenosaires.gob.ar/",
+    "visitor_map_kind": "page",
+    "map_attribution": "Official site · Ecoparque Buenos Aires"
+  },
+  "parent_script": [
+    "Bathroom first",
+    "One big wow",
+    "Snack when needed",
+    "Leave while happy"
   ]
 }

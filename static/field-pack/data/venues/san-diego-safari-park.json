@@ -241,5 +241,18 @@
       },
       "catalog_id": "warthog"
     }
+  ],
+  "content_mode": "curated",
+  "media": {
+    "visitor_map_url": "",
+    "visitor_map_page": "https://sdzsafaripark.org/",
+    "visitor_map_kind": "page",
+    "map_attribution": "Official site · San Diego Zoo Safari Park"
+  },
+  "parent_script": [
+    "Bathroom first",
+    "One big wow",
+    "Snack when needed",
+    "Leave while happy"
   ]
 }

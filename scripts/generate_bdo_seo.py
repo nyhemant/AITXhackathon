@@ -25,6 +25,7 @@ REPO = Path(__file__).resolve().parents[1]
 FIELD = REPO / "static" / "field-pack"
 VENUE_DATA_DIR = FIELD / "data" / "venues"
 CHALLENGES_JSON = FIELD / "data" / "challenges.json"
+WONDERS_JSON = FIELD / "data" / "wonders.json"
 MISSION_ENGINE = FIELD / "js" / "mission" / "mission-engine.js"
 STATIC = REPO / "static"
 CATALOG_JS = FIELD / "js" / "catalog.js"
@@ -365,8 +366,9 @@ const engine = fs.readFileSync(process.argv[1], 'utf8');
 vm.runInContext(engine + '\nthis.FPMission = globalThis.FPMission;', ctx);
 const venue = JSON.parse(fs.readFileSync(process.argv[2], 'utf8'));
 const challenges = JSON.parse(fs.readFileSync(process.argv[3], 'utf8'));
+const wonders = JSON.parse(fs.readFileSync(process.argv[4], 'utf8'));
 const FP = ctx.FPMission || ctx.globalThis.FPMission;
-const mission = FP.selectMission(venue, challenges, { age: '4-5', time: 'half', name: '', seed: 1 });
+const mission = FP.selectMission(venue, challenges, { age: '4-5', time: 'half', name: '', seed: 1 }, wonders);
 process.stdout.write(JSON.stringify(mission));
 """
     proc = subprocess.run(
@@ -377,6 +379,7 @@ process.stdout.write(JSON.stringify(mission));
             str(MISSION_ENGINE),
             str(VENUE_DATA_DIR / f"{venue['slug']}.json"),
             str(CHALLENGES_JSON),
+            str(WONDERS_JSON),
         ],
         cwd=str(REPO),
         capture_output=True,
@@ -384,6 +387,89 @@ process.stdout.write(JSON.stringify(mission));
         check=True,
     )
     return json.loads(proc.stdout)
+
+
+def content_mode_of(mission_venue: dict, catalog_v: dict | None = None) -> str:
+    m = (mission_venue or {}).get("content_mode") or ""
+    if m in ("wonder", "hybrid", "curated"):
+        return m
+    by = (mission_venue or {}).get("verified_by") or ""
+    if by == "catalog-scaffold":
+        return "wonder"
+    if by in ("research", "owner"):
+        return "curated"
+    q = (catalog_v or {}).get("quality") or ""
+    return "curated" if q == "full" else "wonder"
+
+
+def map_card_html(mission_venue: dict) -> str:
+    """Official map visual card — image when safe URL, else link card."""
+    media = (mission_venue or {}).get("media") or {}
+    page = (media.get("visitor_map_page") or mission_venue.get("official_url") or "").strip()
+    img = (media.get("visitor_map_url") or "").strip()
+    kind = (media.get("visitor_map_kind") or "page").strip()
+    attr = (media.get("map_attribution") or "Official visitor map").strip()
+    if not page and not img:
+        return ""
+    href = page or img
+    if kind == "image" and img and (img.startswith("https://") or img.startswith("http://")):
+        return f"""
+    <a class="seo-map-card seo-map-card-image no-print" href="{esc(href)}" target="_blank" rel="noopener noreferrer">
+      <img src="{esc(img)}" alt="Official visitor map" width="640" height="400" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+      <span class="seo-map-card-body">
+        <span class="seo-map-kicker">Official map</span>
+        <strong>Open the real place map</strong>
+        <small>{esc(attr)}</small>
+      </span>
+    </a>"""
+    return f"""
+    <a class="seo-map-card no-print" href="{esc(href)}" target="_blank" rel="noopener noreferrer">
+      <span class="seo-map-icon" aria-hidden="true">🗺️</span>
+      <span class="seo-map-card-body">
+        <span class="seo-map-kicker">Official map</span>
+        <strong>Open the real place map</strong>
+        <small>{esc(attr)} · opens in a new tab</small>
+      </span>
+      <span class="seo-map-go" aria-hidden="true">→</span>
+    </a>"""
+
+
+def wonder_grid_html(mission: dict) -> str:
+    finds = mission.get("finds") or []
+    tiles = "".join(
+        f"""<li class="seo-wonder-tile">
+        <span class="seo-wonder-emoji" aria-hidden="true">{esc(f.get("emoji") or "✨")}</span>
+        <strong>{esc(f.get("label") or "Wonder")}</strong>
+        <small>{esc(f.get("one_liner") or "")}</small>
+      </li>"""
+        for f in finds[:8]
+    )
+    if not tiles:
+        return ""
+    return f"""
+    <section class="seo-wonder-block" aria-labelledby="wonder-heading">
+      <h2 id="wonder-heading">Your wonder sheet</h2>
+      <p class="seo-wonder-lead">Not a species census — findables that still work when animals move or rest.</p>
+      <ul class="seo-wonder-grid">{tiles}</ul>
+    </section>"""
+
+
+def page_mission_chrome_html() -> str:
+    """Visible age/time chips on the page (synced by mission-ui.js)."""
+    return """
+        <div class="seo-mission-chrome no-print" id="seo-mission-chrome" aria-label="Mission options">
+          <div class="seo-chip-row" role="group" aria-label="Time">
+            <button type="button" class="seo-time-chip" data-time="90m">90 min</button>
+            <button type="button" class="seo-time-chip is-active" data-time="half" aria-pressed="true">Half day</button>
+            <button type="button" class="seo-time-chip" data-time="full">Full day</button>
+          </div>
+          <div class="seo-chip-row" role="group" aria-label="Age">
+            <button type="button" class="seo-age-chip" data-age-idx="0">2–3</button>
+            <button type="button" class="seo-age-chip is-active" data-age-idx="1" aria-pressed="true">4–5</button>
+            <button type="button" class="seo-age-chip" data-age-idx="2">6–8</button>
+            <button type="button" class="seo-age-chip" data-age-idx="3">9+</button>
+          </div>
+        </div>"""
 
 
 def mission_drawer_html(mission_venue: dict, mission: dict) -> str:
@@ -441,6 +527,7 @@ def mission_drawer_html(mission_venue: dict, mission: dict) -> str:
             <label>Time today</label>
             <div class="mission-time-seg" role="group" aria-label="Time available">
               <label><input type="radio" name="mission-time" value="1hr" /><span>~1 hr</span></label>
+              <label><input type="radio" name="mission-time" value="90m" /><span>90 min</span></label>
               <label><input type="radio" name="mission-time" value="half" checked /><span>Half day</span></label>
               <label><input type="radio" name="mission-time" value="full" /><span>Full day</span></label>
             </div>
@@ -507,20 +594,34 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
     loc_chip = " · ".join(
         x for x in [soft_title(place.replace("_", " ")), v.get("location") or ""] if x
     )
-    quality = v.get("quality") or "starter"
+    mode = content_mode_of(mission_venue, v)
     last_v = (v.get("lastVerified") or mission_venue.get("last_verified") or "")[:7]
-    if quality == "full":
+    if mode == "wonder":
+        badge = "Starter wonder kit"
+        quality_note = (
+            "Wonder sheet — works even when animals rest or rotate. Skip anything you don’t see."
+        )
+    elif mode == "hybrid":
+        badge = "Local starter"
+        quality_note = "A few local icons plus wonder finds." + (
+            f" Checked {last_v}." if last_v else ""
+        )
+    else:
+        badge = "Locally tuned"
         quality_note = "Curated shortlist for a finishable kid day." + (
             f" List checked {last_v}." if last_v else ""
         )
-    else:
-        quality_note = (
-            "Starter shortlist — animals and exhibits change; skip anything closed or missing."
-        )
 
-    body = unique_body(v)
     mission = default_mission_via_node(mission_venue)
     drawer = mission_drawer_html(mission_venue, mission)
+    if mode == "wonder":
+        body = wonder_grid_html(mission)
+        how_step2 = "Check off wonders on site (no perfect census needed)"
+    else:
+        body = unique_body(v)
+        how_step2 = "Use the photo shortlist on site"
+    map_card = map_card_html(mission_venue)
+    chrome = page_mission_chrome_html()
     h1 = h1_for(v)
     title = title_for(v)
     desc = meta_for(v)
@@ -528,10 +629,20 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
     json_ld = venue_json_ld(v, url)
     venue_json = json.dumps(mission_venue, ensure_ascii=False)
     challenges_json = CHALLENGES_JSON.read_text(encoding="utf-8")
+    wonders_json = WONDERS_JSON.read_text(encoding="utf-8") if WONDERS_JSON.is_file() else "{}"
     lead = (
         mission_venue.get("tagline")
         or v.get("blurb")
         or f"Free printable scavenger hunt and kid shortlist for {v['name']}."
+    )
+    practical = mission_venue.get("practical") or {}
+    energy = practical.get("energy_note") or ""
+    ticket = practical.get("ticket_note") or ""
+    practical_bits = " · ".join(x for x in [practical.get("typical_duration"), energy, ticket] if x)
+    practical_html = (
+        f'<p class="seo-practical"><span aria-hidden="true">⏱️</span> {esc(practical_bits)}</p>'
+        if practical_bits
+        else ""
     )
 
     return f"""<!DOCTYPE html>
@@ -556,10 +667,10 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <meta name="color-scheme" content="light" />
   <base href="/field-pack/" />
   <link rel="stylesheet" href="/shell/shell.css?v=4" />
-  <link rel="stylesheet" href="/field-pack/css/styles.css?v=18" />
-  <link rel="stylesheet" href="/field-pack/css/landing.css?v=44" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=4" />
-  <link rel="stylesheet" href="/field-pack/css/mission.css?v=5" />
+  <link rel="stylesheet" href="/field-pack/css/styles.css?v=19" />
+  <link rel="stylesheet" href="/field-pack/css/landing.css?v=45" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=6" />
+  <link rel="stylesheet" href="/field-pack/css/mission.css?v=6" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
   </script>
@@ -567,7 +678,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
 {json_ld.split(chr(10))[1]}
   </script>
 </head>
-<body class="landing-body seo-venue-body mission-venue-body">
+<body class="landing-body seo-venue-body mission-venue-body" data-content-mode="{esc(mode)}">
   <div class="app landing-app seo-venue">
     <header class="oneless-shell no-print" data-product="bdo">
       <a class="shell-brand" href="/">
@@ -591,32 +702,42 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
       <a href="/field-pack/">All places</a>
       <span aria-hidden="true"> / </span>
       <span>{esc(v['shortName'])}</span>
+      <span class="seo-crumb-extra"> · <a href="{esc(map_href)}">Map</a></span>
     </nav>
 
     <article class="seo-article">
       <header class="seo-hero">
-        <p class="promise-pill">{esc(loc_chip)}</p>
+        <div class="seo-hero-top">
+          <p class="promise-pill">{esc(loc_chip)}</p>
+          <span class="seo-trust-badge seo-trust-{esc(mode)}">{esc(badge)}</span>
+        </div>
         <h1>{esc(v.get('emoji',''))} {esc(h1)}</h1>
         <p class="lead">{esc(lead)}</p>
         <p class="seo-quality-note">{esc(quality_note)}</p>
-        <p class="seo-brand-note">Part of <strong>Field Trip Kit</strong> by 1Less — free for families.</p>
+        {practical_html}
+        <p class="seo-brand-note">Tonight: print one sheet. Tomorrow: pocket paper — no app on the floor.</p>
         <div class="landing-cta-row seo-cta no-print">
           <button type="button" class="btn btn-primary btn-big" id="mission-open-btn" aria-haspopup="dialog" aria-controls="mission-drawer">
             Print mission
           </button>
-          <a class="btn btn-secondary btn-big" href="{esc(map_href)}">Open on map →</a>
-          <a class="btn btn-ghost" href="{esc(app_href)}">Full interactive list →</a>
         </div>
+        {chrome}
+        <p class="seo-secondary-links no-print">
+          <a href="{esc(app_href)}">Full kid list</a>
+          <span aria-hidden="true"> · </span>
+          <a href="{esc(map_href)}">Find on map</a>
+        </p>
       </header>
 
+      {map_card}
       {body}
 
       <section class="seo-how no-print" aria-labelledby="how-heading">
         <h2 id="how-heading">How it works</h2>
-        <ol class="how-steps">
-          <li><strong>1</strong><span>Print a one-page mission (optional name)</span></li>
-          <li><strong>2</strong><span>Use the photo shortlist on site</span></li>
-          <li><strong>3</strong><span>Optional: open Q&amp;A cards after</span></li>
+        <ol class="how-steps how-steps-visual">
+          <li><span class="how-ico" aria-hidden="true">🖨️</span><strong>Print</strong><span>One-page mission</span></li>
+          <li><span class="how-ico" aria-hidden="true">👀</span><strong>Play</strong><span>{esc(how_step2)}</span></li>
+          <li><span class="how-ico" aria-hidden="true">💬</span><strong>Optional</strong><span>Talk cards after</span></li>
         </ol>
       </section>
 
@@ -642,11 +763,12 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
 
   <script type="application/json" id="venue-data">{venue_json}</script>
   <script type="application/json" id="challenges-data">{challenges_json}</script>
+  <script type="application/json" id="wonders-data">{wonders_json}</script>
   <script src="/shell/shell.js?v=3"></script>
-  <script src="/field-pack/js/catalog.js?v=12"></script>
-  <script src="/field-pack/js/print-kit.js?v=1"></script>
-  <script src="/field-pack/js/mission/mission-engine.js?v=5"></script>
-  <script src="/field-pack/js/mission/mission-ui.js?v=5"></script>
+  <script src="/field-pack/js/catalog.js?v=20"></script>
+  <script src="/field-pack/js/print-kit.js?v=2"></script>
+  <script src="/field-pack/js/mission/mission-engine.js?v=6"></script>
+  <script src="/field-pack/js/mission/mission-ui.js?v=6"></script>
 </body>
 </html>
 """
@@ -1153,8 +1275,12 @@ def main() -> int:
     print(f"  {len(venues)} venues")
 
     css_path = FIELD / "css" / "seo-venue.css"
-    css_path.write_text(SEO_CSS, encoding="utf-8")
-    print(f"  wrote {css_path.relative_to(REPO)}")
+    # Prefer hand-maintained css (visual-first enhancements); seed once if missing
+    if not css_path.is_file() or css_path.stat().st_size < 500:
+        css_path.write_text(SEO_CSS, encoding="utf-8")
+        print(f"  seeded {css_path.relative_to(REPO)}")
+    else:
+        print(f"  kept {css_path.relative_to(REPO)} (not overwritten)")
 
     # Validate mission venue data when present
     try:

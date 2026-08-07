@@ -268,5 +268,18 @@
       },
       "catalog_id": "eel"
     }
+  ],
+  "content_mode": "wonder",
+  "media": {
+    "visitor_map_url": "",
+    "visitor_map_page": "https://www.oceanpark.com.hk/en",
+    "visitor_map_kind": "page",
+    "map_attribution": "Official site · Ocean Park Hong Kong"
+  },
+  "parent_script": [
+    "Bathroom first",
+    "One big wow",
+    "Snack when needed",
+    "Leave while happy"
   ]
 }

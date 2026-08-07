@@ -11,11 +11,26 @@
     "6-8": "Big (6–8)",
     "9+": "Older (9+)",
   };
-  const TIME_N = { "1hr": 4, half: 6, full: 8 };
-  const TIME_LABELS = { "1hr": "~1 hr", half: "Half day", full: "Full day" };
+  const TIME_N = { "1hr": 4, half: 6, full: 8, "90m": 4 };
+  const TIME_LABELS = {
+    "1hr": "~1 hr",
+    "90m": "~90 min",
+    half: "Half day",
+    full: "Full day",
+  };
 
   function defaultOptions() {
     return { age: "4-5", time: "half", interest: "", name: "", seed: 1 };
+  }
+
+  function contentMode(venue) {
+    const m = (venue && venue.content_mode) || "";
+    if (m === "wonder" || m === "hybrid" || m === "curated") return m;
+    // Scaffolds default to wonder (honest long-tail)
+    if ((venue && venue.verified_by) === "catalog-scaffold") return "wonder";
+    if ((venue && venue.verified_by) === "research" || (venue && venue.verified_by) === "owner")
+      return "curated";
+    return "wonder";
   }
 
   function mulberry32(a) {
@@ -50,16 +65,38 @@
     return (items || []).filter((it) => (it.age_fit || AGE_ORDER).includes(age));
   }
 
-  function pickItems(venue, opts) {
+  function wonderPool(venue, wondersFile) {
+    const type = (venue.type || "zoo").toLowerCase();
+    const list = (wondersFile && wondersFile.wonders) || [];
+    return list.filter((w) => {
+      const types = w.types || [];
+      if (!types.length) return true;
+      return types.includes(type) || (type === "safari_zoo" && types.includes("zoo"));
+    });
+  }
+
+  function pickItems(venue, opts, wondersFile) {
     const age = opts.age || "4-5";
     const time = opts.time || "half";
     const interest = (opts.interest || "").trim();
-    const need = TIME_N[time] || 6;
+    const need = TIME_N[time] || TIME_N["90m"] || 6;
     const seed = opts.seed || 1;
-    const rand = mulberry32(hashSeed(venue.slug + "|" + age + "|" + time + "|" + interest + "|" + seed));
+    const mode = contentMode(venue);
+    const rand = mulberry32(hashSeed(venue.slug + "|" + mode + "|" + age + "|" + time + "|" + interest + "|" + seed));
 
-    let pool = filterByAge(venue.items || [], age);
-    // Score and stable sort, with tiny seeded jitter for shuffle
+    let sourceItems = venue.items || [];
+    if (mode === "wonder" && wondersFile) {
+      sourceItems = wonderPool(venue, wondersFile);
+    } else if (mode === "hybrid" && wondersFile) {
+      // Prefer real icons first, then fill with wonders
+      const icons = filterByAge(venue.items || [], age);
+      const wonders = filterByAge(wonderPool(venue, wondersFile), age);
+      sourceItems = icons.concat(wonders.filter((w) => !icons.some((i) => i.id === w.id)));
+    }
+
+    let pool = filterByAge(sourceItems, age);
+    if (!pool.length) pool = sourceItems.slice();
+
     const ranked = pool
       .map((it, idx) => ({
         it,
@@ -71,7 +108,7 @@
 
     let picked = ranked.slice(0, need);
     if (picked.length < need) {
-      const rest = (venue.items || []).filter((it) => !picked.some((p) => p.id === it.id));
+      const rest = sourceItems.filter((it) => !picked.some((p) => p.id === it.id));
       picked = picked.concat(rest.slice(0, need - picked.length));
     }
     return picked.slice(0, need);
@@ -134,9 +171,12 @@
     return `${poss} Mission at ${venue.name}`;
   }
 
-  function selectMission(venue, challengesFile, options) {
+  function selectMission(venue, challengesFile, options, wondersFile) {
     const opts = Object.assign(defaultOptions(), options || {});
-    const finds = pickItems(venue, opts);
+    // Allow time alias from page chips
+    if (opts.time === "90m") opts.time = "90m";
+    const mode = contentMode(venue);
+    const finds = pickItems(venue, opts, wondersFile);
     const challenges = pickChallenges(challengesFile, venue, opts, finds);
     return {
       title: missionTitle(venue, opts.name),
@@ -148,11 +188,13 @@
       timeLabel: TIME_LABELS[opts.time] || opts.time,
       interest: opts.interest || "",
       personalized: Boolean((opts.name || "").trim()),
+      contentMode: mode,
       finds,
       challenges,
       lastVerified: venue.last_verified || "",
       tagline: venue.tagline || "",
       practical: venue.practical || null,
+      media: venue.media || null,
     };
   }
 
@@ -180,9 +222,11 @@
     TIME_N,
     TIME_LABELS,
     defaultOptions,
+    contentMode,
     selectMission,
     interestOptions,
     collectTags,
     missionTitle,
+    wonderPool,
   };
 })(typeof window !== "undefined" ? window : globalThis);

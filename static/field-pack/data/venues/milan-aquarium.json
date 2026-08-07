@@ -288,5 +288,18 @@
       },
       "catalog_id": "asian-small-clawed-otter"
     }
+  ],
+  "content_mode": "wonder",
+  "media": {
+    "visitor_map_url": "",
+    "visitor_map_page": "https://www.acquariocivicomilano.eu/",
+    "visitor_map_kind": "page",
+    "map_attribution": "Official site · Acquario di Milano"
+  },
+  "parent_script": [
+    "Bathroom first",
+    "One big wow",
+    "Snack when needed",
+    "Leave while happy"
   ]
 }

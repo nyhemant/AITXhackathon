@@ -196,5 +196,18 @@
         "answer": "Breaks help little legs finish the day!"
       }
     }
+  ],
+  "content_mode": "wonder",
+  "media": {
+    "visitor_map_url": "",
+    "visitor_map_page": "https://airandspace.si.edu/",
+    "visitor_map_kind": "page",
+    "map_attribution": "Official site · National Air and Space Museum"
+  },
+  "parent_script": [
+    "Bathroom first",
+    "One big wow",
+    "Snack when needed",
+    "Leave while happy"
   ]
 }

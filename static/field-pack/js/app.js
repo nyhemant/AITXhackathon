@@ -386,6 +386,23 @@
     }));
   }
 
+  function floorPromptsFor(item, venue) {
+    const name = item.name || "it";
+    const isMuseum = venue && (venue.packTemplate === "exhibits" || /museum|science|space/i.test(venue.type || ""));
+    if (isMuseum) {
+      return [
+        `What did you try or notice at ${name}?`,
+        "How did your body move — climb, hands, quiet look?",
+        "Teach a grown-up one thing you discovered.",
+      ];
+    }
+    return [
+      `What do you notice about the ${name}?`,
+      "How does it move — or stay still?",
+      "Teach a grown-up one thing you saw.",
+    ];
+  }
+
   function renderDetail(trip, item, venue) {
     const missions = missionsFor(venue);
     const aState = itemState(trip, item.id);
@@ -401,21 +418,37 @@
     els.btnPictures.href = (item.links && item.links.pictures) || "#";
     els.btnMore.href = (item.links && item.links.more) || "#";
     els.btnCam.textContent =
-      venue && venue.packTemplate === "exhibits" ? "Museum site" : "Look up / live cam";
+      venue && venue.packTemplate === "exhibits" ? "Museum site" : "Look up";
+
+    const promptsEl = document.getElementById("floor-prompts");
+    if (promptsEl) {
+      const prompts = floorPromptsFor(item, venue);
+      promptsEl.innerHTML = prompts
+        .map(
+          (t, i) =>
+            `<div class="floor-prompt-card"><span class="floor-prompt-n">${i + 1}</span><p>${escapeHtml(
+              t
+            )}</p></div>`
+        )
+        .join("");
+    }
 
     const done = answeredCount(trip, item.id, missions);
-    els.progressPill.innerHTML = showCheck
-      ? `Checked <span class="stamp">✅</span>`
-      : done
-        ? `${done} of ${missions.length} answered`
-        : `Optional Q&A`;
+    if (els.progressPill) {
+      els.progressPill.hidden = !showCheck && !done;
+      els.progressPill.innerHTML = showCheck
+        ? `Checked <span class="stamp">✅</span>`
+        : done
+          ? `${done} of ${missions.length} answered`
+          : `Optional Q&A`;
+    }
 
     els.teachBanner.classList.toggle("show", aState.taught);
     if (aState.taught) {
       els.teachBanner.textContent = `⭐ They taught a grown-up about ${item.name}!`;
     }
-    els.btnTaught.textContent = aState.taught ? "Taught a grown-up ⭐" : "Kid taught a grown-up";
-    els.btnSubmit.textContent = showCheck ? "Check again" : "Check answers";
+    els.btnTaught.textContent = aState.taught ? "Found it ⭐" : "Found it ⭐";
+    if (els.btnSubmit) els.btnSubmit.textContent = showCheck ? "Check again" : "Check answers";
 
     els.missionGrid.innerHTML = "";
     missions.forEach((mission, index) => {

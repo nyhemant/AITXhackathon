@@ -197,5 +197,18 @@
       },
       "catalog_id": "cm-imaginarium"
     }
+  ],
+  "content_mode": "wonder",
+  "media": {
+    "visitor_map_url": "",
+    "visitor_map_page": "https://www.nhm.ac.uk/",
+    "visitor_map_kind": "page",
+    "map_attribution": "Official site · Natural History Museum"
+  },
+  "parent_script": [
+    "Bathroom first",
+    "One big wow",
+    "Snack when needed",
+    "Leave while happy"
   ]
 }

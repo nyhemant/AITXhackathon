@@ -254,5 +254,18 @@
       },
       "catalog_id": "western-lowland-gorilla"
     }
+  ],
+  "content_mode": "wonder",
+  "media": {
+    "visitor_map_url": "",
+    "visitor_map_page": "https://www.edinburghzoo.org.uk/",
+    "visitor_map_kind": "page",
+    "map_attribution": "Official site · Edinburgh Zoo"
+  },
+  "parent_script": [
+    "Bathroom first",
+    "One big wow",
+    "Snack when needed",
+    "Leave while happy"
   ]
 }

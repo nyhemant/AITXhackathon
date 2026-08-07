@@ -1821,3 +1821,58 @@ body.app-body {
     font-size: 0.85rem;
   }
 }
+
+/* Floor prompts (Q&A simplified default) */
+.floor-prompts {
+  display: grid;
+  gap: 8px;
+  margin: 0 0 14px;
+}
+.floor-prompt-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+  align-items: start;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: var(--card-tint, #f7fbf9);
+  border: 1.5px solid var(--border, rgba(15, 92, 92, 0.12));
+}
+.floor-prompt-n {
+  display: grid;
+  place-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: var(--teal, #0f5c5c);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+.floor-prompt-card p {
+  margin: 0;
+  font-weight: 650;
+  color: var(--ink, #152238);
+  line-height: 1.35;
+  font-size: 1rem;
+}
+.detail-missing-hint {
+  margin: 0 0 12px;
+  font-size: 0.9rem;
+  font-weight: 650;
+  color: var(--muted, #3d4f6f);
+}
+.advanced-qa {
+  margin: 16px 0 8px;
+  padding: 12px 14px;
+  border-radius: var(--radius, 16px);
+  background: rgba(255,255,255,0.75);
+  border: 1.5px dashed var(--border, rgba(15, 92, 92, 0.18));
+}
+.advanced-qa summary {
+  cursor: pointer;
+  font-weight: 800;
+  color: var(--teal-deep, #0a4545);
+  font-size: 0.95rem;
+}
+.advanced-qa[open] summary { margin-bottom: 10px; }
