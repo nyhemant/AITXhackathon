@@ -1,0 +1,202 @@
+{
+  "slug": "cal-academy",
+  "name": "California Academy of Sciences",
+  "type": "museum",
+  "city": "San Francisco",
+  "region": "CA",
+  "country": "US",
+  "lat": 37.77,
+  "lng": -122.47,
+  "official_url": "https://www.calacademy.org/",
+  "last_verified": "2026-08-07",
+  "verified_by": "catalog-scaffold",
+  "status": "verified",
+  "tagline": "Rainforest, aquarium, planetarium — one roof.",
+  "practical": {
+    "typical_duration": "half day",
+    "ticket_note": "Check the official site for tickets and hours.",
+    "transit_note": ""
+  },
+  "items": [
+    {
+      "id": "sci_rainforest",
+      "label": "Rainforest dome",
+      "emoji": "🌿",
+      "one_liner": "Warm, green, and full of life — look for layers of plants.",
+      "tags": [
+        "wow",
+        "rest",
+        "kids"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Halls",
+      "qa_card": {
+        "question": "What did you try or notice at Rainforest dome?",
+        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+      },
+      "catalog_id": "sci-rainforest"
+    },
+    {
+      "id": "sci_aquarium_zone",
+      "label": "Aquarium zone",
+      "emoji": "🐠",
+      "one_liner": "Tanks and swimmers inside a bigger museum day.",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Halls",
+      "qa_card": {
+        "question": "What did you try or notice at Aquarium zone?",
+        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+      },
+      "catalog_id": "sci-aquarium-zone"
+    },
+    {
+      "id": "sci_planet",
+      "label": "Planet / space hall",
+      "emoji": "🪐",
+      "one_liner": "Planets, stars, and big sky questions.",
+      "tags": [
+        "wow",
+        "water",
+        "read"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Halls",
+      "qa_card": {
+        "question": "What did you try or notice at Planet / space hall?",
+        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+      },
+      "catalog_id": "sci-planet"
+    },
+    {
+      "id": "sci_hands_on",
+      "label": "Hands-on lab",
+      "emoji": "🔬",
+      "one_liner": "Touch, test, build — science you can try.",
+      "tags": [
+        "wow",
+        "hands",
+        "play"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Halls",
+      "qa_card": {
+        "question": "What did you try or notice at Hands-on lab?",
+        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+      },
+      "catalog_id": "sci-hands-on"
+    },
+    {
+      "id": "sci_dinosaur",
+      "label": "Dinosaur hall",
+      "emoji": "🦖",
+      "one_liner": "Bones, giants, and deep time — look up!",
+      "tags": [
+        "wow",
+        "read"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Halls",
+      "qa_card": {
+        "question": "What did you try or notice at Dinosaur hall?",
+        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+      },
+      "catalog_id": "sci-dinosaur"
+    },
+    {
+      "id": "jellyfish",
+      "label": "Jellyfish",
+      "emoji": "🎐",
+      "one_liner": "Soft drifter — no bones, glows and pulses in the water.",
+      "tags": [
+        "wow",
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Halls",
+      "qa_card": {
+        "question": "What did you notice about the Jellyfish?",
+        "answer": "Something about how it moves, its shape, or its home in the water!"
+      },
+      "catalog_id": "jellyfish"
+    },
+    {
+      "id": "sci_shuttle",
+      "label": "Space shuttle / orbiter",
+      "emoji": "🛰️",
+      "one_liner": "A real flying machine that went to space — walk around it.",
+      "tags": [
+        "wow",
+        "read"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Halls",
+      "qa_card": {
+        "question": "What did you try or notice at Space shuttle / orbiter?",
+        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+      },
+      "catalog_id": "sci-shuttle"
+    },
+    {
+      "id": "cm_makery",
+      "label": "Creative Makery",
+      "emoji": "🔧",
+      "one_liner": "Build, invent, problem-solve with your hands.",
+      "tags": [
+        "wow",
+        "hands",
+        "play"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Halls",
+      "qa_card": {
+        "question": "What did you try or notice at Creative Makery?",
+        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+      },
+      "catalog_id": "cm-makery"
+    }
+  ]
+}

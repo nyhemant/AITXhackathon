@@ -1,0 +1,201 @@
+{
+  "slug": "frost-science",
+  "name": "Phillip and Patricia Frost Museum of Science",
+  "type": "aquarium",
+  "city": "Miami",
+  "region": "FL",
+  "country": "US",
+  "lat": 25.78,
+  "lng": -80.19,
+  "official_url": "https://www.frostscience.org/",
+  "last_verified": "2026-08-07",
+  "verified_by": "catalog-scaffold",
+  "status": "verified",
+  "tagline": "Aquarium + science downtown Miami.",
+  "practical": {
+    "typical_duration": "half day",
+    "ticket_note": "Check the official site for tickets and hours.",
+    "transit_note": ""
+  },
+  "items": [
+    {
+      "id": "sci_aquarium_zone",
+      "label": "Aquarium zone",
+      "emoji": "🐠",
+      "one_liner": "Tanks and swimmers inside a bigger museum day.",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Galleries",
+      "qa_card": {
+        "question": "What did you notice about the Aquarium zone?",
+        "answer": "Something about how it moves, its shape, or its home in the water!"
+      },
+      "catalog_id": "sci-aquarium-zone"
+    },
+    {
+      "id": "sci_hands_on",
+      "label": "Hands-on lab",
+      "emoji": "🔬",
+      "one_liner": "Touch, test, build — science you can try.",
+      "tags": [
+        "wow",
+        "hands",
+        "play"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Galleries",
+      "qa_card": {
+        "question": "What did you notice about the Hands-on lab?",
+        "answer": "Something about how it moves, its shape, or its home in the water!"
+      },
+      "catalog_id": "sci-hands-on"
+    },
+    {
+      "id": "sci_planet",
+      "label": "Planet / space hall",
+      "emoji": "🪐",
+      "one_liner": "Planets, stars, and big sky questions.",
+      "tags": [
+        "wow",
+        "water",
+        "read"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Galleries",
+      "qa_card": {
+        "question": "What did you notice about the Planet / space hall?",
+        "answer": "Something about how it moves, its shape, or its home in the water!"
+      },
+      "catalog_id": "sci-planet"
+    },
+    {
+      "id": "jellyfish",
+      "label": "Jellyfish",
+      "emoji": "🎐",
+      "one_liner": "Soft drifter — no bones, glows and pulses in the water.",
+      "tags": [
+        "wow",
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Galleries",
+      "qa_card": {
+        "question": "What did you notice about the Jellyfish?",
+        "answer": "Something about how it moves, its shape, or its home in the water!"
+      },
+      "catalog_id": "jellyfish"
+    },
+    {
+      "id": "cm_makery",
+      "label": "Creative Makery",
+      "emoji": "🔧",
+      "one_liner": "Build, invent, problem-solve with your hands.",
+      "tags": [
+        "wow",
+        "hands",
+        "play"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Galleries",
+      "qa_card": {
+        "question": "What did you notice about the Creative Makery?",
+        "answer": "Something about how it moves, its shape, or its home in the water!"
+      },
+      "catalog_id": "cm-makery"
+    },
+    {
+      "id": "cm_free_explore",
+      "label": "Free explore",
+      "emoji": "🧭",
+      "one_liner": "Their choice path — whatever pulled them in!",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Galleries",
+      "qa_card": {
+        "question": "What did you notice about the Free explore?",
+        "answer": "Something about how it moves, its shape, or its home in the water!"
+      },
+      "catalog_id": "cm-free-explore"
+    },
+    {
+      "id": "shark",
+      "label": "Shark",
+      "emoji": "🦈",
+      "one_liner": "Ocean hunter with a strong swishy body.",
+      "tags": [
+        "wow",
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Galleries",
+      "qa_card": {
+        "question": "What did you notice about the Shark?",
+        "answer": "Something about how it moves, its shape, or its home in the water!"
+      },
+      "catalog_id": "shark"
+    },
+    {
+      "id": "sci_dinosaur",
+      "label": "Dinosaur hall",
+      "emoji": "🦖",
+      "one_liner": "Bones, giants, and deep time — look up!",
+      "tags": [
+        "wow",
+        "read"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Galleries",
+      "qa_card": {
+        "question": "What did you notice about the Dinosaur hall?",
+        "answer": "Something about how it moves, its shape, or its home in the water!"
+      },
+      "catalog_id": "sci-dinosaur"
+    }
+  ]
+}

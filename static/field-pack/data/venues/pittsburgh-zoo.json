@@ -1,0 +1,250 @@
+{
+  "slug": "pittsburgh-zoo",
+  "name": "Pittsburgh Zoo & Aquarium",
+  "type": "zoo",
+  "city": "Pittsburgh",
+  "region": "PA",
+  "country": "US",
+  "lat": 40.48,
+  "lng": -79.92,
+  "official_url": "https://www.pittsburghzoo.org/",
+  "last_verified": "2026-08-07",
+  "verified_by": "catalog-scaffold",
+  "status": "verified",
+  "tagline": "Zoo + aquarium in one visit.",
+  "practical": {
+    "typical_duration": "half day",
+    "ticket_note": "Check the official site for tickets and hours.",
+    "transit_note": ""
+  },
+  "items": [
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "emoji": "🐘",
+      "one_liner": "Biggest land animal — trunk to grab, spray, and say hello.",
+      "tags": [
+        "wow",
+        "big",
+        "outdoor",
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Grounds",
+      "qa_card": {
+        "question": "What is special about the African elephant?",
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+      },
+      "catalog_id": "african-elephant"
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "emoji": "🐯",
+      "one_liner": "Stripy forest big cat — strong and stealthy.",
+      "tags": [
+        "wow",
+        "big-cats",
+        "outdoor",
+        "rest",
+        "kids"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Grounds",
+      "qa_card": {
+        "question": "What is special about the Sumatran tiger?",
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+      },
+      "catalog_id": "sumatran-tiger"
+    },
+    {
+      "id": "shark",
+      "label": "Shark",
+      "emoji": "🦈",
+      "one_liner": "Ocean hunter with a strong swishy body.",
+      "tags": [
+        "wow",
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Grounds",
+      "qa_card": {
+        "question": "What did you notice about the Shark?",
+        "answer": "Something about how it moves, its shape, or its home in the water!"
+      },
+      "catalog_id": "shark"
+    },
+    {
+      "id": "jellyfish",
+      "label": "Jellyfish",
+      "emoji": "🎐",
+      "one_liner": "Soft drifter — no bones, glows and pulses in the water.",
+      "tags": [
+        "wow",
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Grounds",
+      "qa_card": {
+        "question": "What did you notice about the Jellyfish?",
+        "answer": "Something about how it moves, its shape, or its home in the water!"
+      },
+      "catalog_id": "jellyfish"
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "emoji": "🦒",
+      "one_liner": "Tallest animal on long legs — look up!",
+      "tags": [
+        "wow",
+        "tall",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Grounds",
+      "qa_card": {
+        "question": "What is special about the Reticulated giraffe?",
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+      },
+      "catalog_id": "reticulated-giraffe"
+    },
+    {
+      "id": "sea_turtle",
+      "label": "Sea turtle",
+      "emoji": "🐢",
+      "one_liner": "Shelled ocean traveler — flippers for swimming.",
+      "tags": [
+        "wow",
+        "water",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Grounds",
+      "qa_card": {
+        "question": "What did you notice about the Sea turtle?",
+        "answer": "Something about how it moves, its shape, or its home in the water!"
+      },
+      "catalog_id": "sea-turtle"
+    },
+    {
+      "id": "octopus",
+      "label": "Octopus",
+      "emoji": "🐙",
+      "one_liner": "Eight arms and a big brain — master of hide-and-seek.",
+      "tags": [
+        "wow",
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Grounds",
+      "qa_card": {
+        "question": "What did you notice about the Octopus?",
+        "answer": "Something about how it moves, its shape, or its home in the water!"
+      },
+      "catalog_id": "octopus"
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "emoji": "🐧",
+      "one_liner": "Waddle on land, zoom in water.",
+      "tags": [
+        "wow",
+        "water",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Grounds",
+      "qa_card": {
+        "question": "What is special about the African penguin?",
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+      },
+      "catalog_id": "african-penguin"
+    },
+    {
+      "id": "stingray",
+      "label": "Stingray",
+      "emoji": "射线",
+      "one_liner": "Flat swimmer — often in touch pools (gentle hands!).",
+      "tags": [
+        "wow",
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Grounds",
+      "qa_card": {
+        "question": "What did you notice about the Stingray?",
+        "answer": "Something about how it moves, its shape, or its home in the water!"
+      },
+      "catalog_id": "stingray"
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "emoji": "🦓",
+      "one_liner": "Striped grassland runner — every pattern is unique.",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Grounds",
+      "qa_card": {
+        "question": "What is special about the Zebra?",
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+      },
+      "catalog_id": "zebra"
+    }
+  ]
+}

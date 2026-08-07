@@ -1,0 +1,203 @@
+{
+  "slug": "doseum",
+  "name": "The DoSeum",
+  "type": "museum",
+  "city": "San Antonio",
+  "region": "TX",
+  "country": "US",
+  "lat": 29.46,
+  "lng": -98.47,
+  "official_url": "https://www.thedoseum.org/",
+  "last_verified": "2026-08-07",
+  "verified_by": "catalog-scaffold",
+  "status": "verified",
+  "tagline": "Play-and-learn museum day.",
+  "practical": {
+    "typical_duration": "half day",
+    "ticket_note": "Check the official site for tickets and hours.",
+    "transit_note": ""
+  },
+  "items": [
+    {
+      "id": "cm_outdoor",
+      "label": "Outdoor Area",
+      "emoji": "🌳",
+      "one_liner": "Outside play — waterfall, nature, big body movement.",
+      "tags": [
+        "wow",
+        "hands",
+        "play"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Halls",
+      "qa_card": {
+        "question": "What did you try or notice at Outdoor Area?",
+        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+      },
+      "catalog_id": "cm-outdoor"
+    },
+    {
+      "id": "cm_imaginarium",
+      "label": "Imaginarium",
+      "emoji": "✨",
+      "one_liner": "Multi-sensory world — explore, notice, imagine.",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Halls",
+      "qa_card": {
+        "question": "What did you try or notice at Imaginarium?",
+        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+      },
+      "catalog_id": "cm-imaginarium"
+    },
+    {
+      "id": "cm_woven",
+      "label": "Woven Wonders",
+      "emoji": "🧗",
+      "one_liner": "Colorful climbing structure — art you can climb!",
+      "tags": [
+        "wow",
+        "hands",
+        "play"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Halls",
+      "qa_card": {
+        "question": "What did you try or notice at Woven Wonders?",
+        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+      },
+      "catalog_id": "cm-woven"
+    },
+    {
+      "id": "cm_makery",
+      "label": "Creative Makery",
+      "emoji": "🔧",
+      "one_liner": "Build, invent, problem-solve with your hands.",
+      "tags": [
+        "wow",
+        "hands",
+        "play"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Halls",
+      "qa_card": {
+        "question": "What did you try or notice at Creative Makery?",
+        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+      },
+      "catalog_id": "cm-makery"
+    },
+    {
+      "id": "cm_art_lab",
+      "label": "Art Lab",
+      "emoji": "🎨",
+      "one_liner": "Come-and-go art and reading activities.",
+      "tags": [
+        "wow",
+        "hands",
+        "play"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Halls",
+      "qa_card": {
+        "question": "What did you try or notice at Art Lab?",
+        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+      },
+      "catalog_id": "cm-art-lab"
+    },
+    {
+      "id": "cm_waterfall",
+      "label": "Waterfall play",
+      "emoji": "💧",
+      "one_liner": "Programmable waterfall / water play outdoors.",
+      "tags": [
+        "wow",
+        "hands",
+        "play"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Halls",
+      "qa_card": {
+        "question": "What did you try or notice at Waterfall play?",
+        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+      },
+      "catalog_id": "cm-waterfall"
+    },
+    {
+      "id": "cm_toddler_garden",
+      "label": "Toddler Garden",
+      "emoji": "🌱",
+      "one_liner": "Gentler outdoor/garden space for little explorers.",
+      "tags": [
+        "wow",
+        "read"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Halls",
+      "qa_card": {
+        "question": "What did you try or notice at Toddler Garden?",
+        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+      },
+      "catalog_id": "cm-toddler-garden"
+    },
+    {
+      "id": "cm_free_explore",
+      "label": "Free explore",
+      "emoji": "🧭",
+      "one_liner": "Their choice path — whatever pulled them in!",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Halls",
+      "qa_card": {
+        "question": "What did you try or notice at Free explore?",
+        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+      },
+      "catalog_id": "cm-free-explore"
+    }
+  ]
+}

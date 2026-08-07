@@ -1,0 +1,304 @@
+{
+  "slug": "al-ain-zoo",
+  "name": "Al Ain Zoo",
+  "type": "zoo",
+  "city": "Al Ain",
+  "region": "UAE",
+  "country": "AE",
+  "lat": 24.1758,
+  "lng": 55.7394,
+  "official_url": "https://www.alainzoo.ae/",
+  "last_verified": "2026-08-07",
+  "verified_by": "catalog-scaffold",
+  "status": "verified",
+  "tagline": "Desert oasis zoo — shortlist + hunt.",
+  "practical": {
+    "typical_duration": "half day",
+    "ticket_note": "Check the official site for tickets and hours.",
+    "transit_note": ""
+  },
+  "items": [
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "emoji": "🦁",
+      "one_liner": "Big cat of the grassland pride — mighty roar!",
+      "tags": [
+        "wow",
+        "big-cats",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Grounds",
+      "qa_card": {
+        "question": "What is special about the African lion?",
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+      },
+      "catalog_id": "african-lion"
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "emoji": "🐯",
+      "one_liner": "Stripy forest big cat — strong and stealthy.",
+      "tags": [
+        "wow",
+        "big-cats",
+        "outdoor",
+        "rest",
+        "kids"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Grounds",
+      "qa_card": {
+        "question": "What is special about the Sumatran tiger?",
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+      },
+      "catalog_id": "sumatran-tiger"
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "emoji": "🦒",
+      "one_liner": "Tallest animal on long legs — look up!",
+      "tags": [
+        "wow",
+        "tall",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Grounds",
+      "qa_card": {
+        "question": "What is special about the Reticulated giraffe?",
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+      },
+      "catalog_id": "reticulated-giraffe"
+    },
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "emoji": "🐘",
+      "one_liner": "Biggest land animal — trunk to grab, spray, and say hello.",
+      "tags": [
+        "wow",
+        "big",
+        "outdoor",
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Grounds",
+      "qa_card": {
+        "question": "What is special about the African elephant?",
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+      },
+      "catalog_id": "african-elephant"
+    },
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "emoji": "🦍",
+      "one_liner": "Strong gentle ape in family groups.",
+      "tags": [
+        "wow",
+        "outdoor",
+        "play"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Grounds",
+      "qa_card": {
+        "question": "What is special about the Western lowland gorilla?",
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+      },
+      "catalog_id": "western-lowland-gorilla"
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "emoji": "🐧",
+      "one_liner": "Waddle on land, zoom in water.",
+      "tags": [
+        "wow",
+        "water",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Grounds",
+      "qa_card": {
+        "question": "What is special about the African penguin?",
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+      },
+      "catalog_id": "african-penguin"
+    },
+    {
+      "id": "chimpanzee",
+      "label": "Chimpanzee",
+      "emoji": "🐵",
+      "one_liner": "Smart forest ape — climbs and tools.",
+      "tags": [
+        "wow",
+        "outdoor",
+        "play",
+        "hands",
+        "rest",
+        "kids"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Grounds",
+      "qa_card": {
+        "question": "What is special about the Chimpanzee?",
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+      },
+      "catalog_id": "chimpanzee"
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "emoji": "🦓",
+      "one_liner": "Striped grassland runner — every pattern is unique.",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Grounds",
+      "qa_card": {
+        "question": "What is special about the Zebra?",
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+      },
+      "catalog_id": "zebra"
+    },
+    {
+      "id": "red_panda",
+      "label": "Red panda",
+      "emoji": "🦊",
+      "one_liner": "Rusty tree-climber with a ringed tail — not a giant panda!",
+      "tags": [
+        "wow",
+        "outdoor",
+        "hands",
+        "play"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Grounds",
+      "qa_card": {
+        "question": "What is special about the Red panda?",
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+      },
+      "catalog_id": "red-panda"
+    },
+    {
+      "id": "asian_small_clawed_otter",
+      "label": "Asian small-clawed otter",
+      "emoji": "🦦",
+      "one_liner": "Playful swimmer — smallest otter.",
+      "tags": [
+        "wow",
+        "water",
+        "outdoor",
+        "hands",
+        "play"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Grounds",
+      "qa_card": {
+        "question": "What is special about the Asian small-clawed otter?",
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+      },
+      "catalog_id": "asian-small-clawed-otter"
+    },
+    {
+      "id": "nile_hippo",
+      "label": "Nile hippo",
+      "emoji": "🦛",
+      "one_liner": "Huge river giant that loves the water.",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Grounds",
+      "qa_card": {
+        "question": "What is special about the Nile hippo?",
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+      },
+      "catalog_id": "nile-hippo"
+    },
+    {
+      "id": "galapagos_tortoise",
+      "label": "Galápagos tortoise",
+      "emoji": "🐢",
+      "one_liner": "Giant tortoise — slow and steady.",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Grounds",
+      "qa_card": {
+        "question": "What is special about the Galápagos tortoise?",
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+      },
+      "catalog_id": "galapagos-tortoise"
+    }
+  ]
+}

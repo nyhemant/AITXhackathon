@@ -20,6 +20,44 @@
       .replace(/"/g, "&quot;");
   }
 
+  // Personalized mission featured strip (full pilot set lives on every SEO venue page)
+  const pilotLinks = document.getElementById("pilot-mission-links");
+  const pilotMore = document.getElementById("pilot-mission-more");
+  const pilotLead = document.getElementById("pilot-mission-lead");
+  const featuredIds = window.FP_MISSION_PILOTS_FEATURED || [];
+  const allPilotIds = window.FP_MISSION_PILOTS || [];
+  if (pilotLinks && featuredIds.length) {
+    const shortName = (p) => {
+      if (!p) return "";
+      if (p.id === "childrens-aquarium-dallas") return "Children’s Aquarium";
+      if (p.id === "childrens-museum-perot") return "Perot Museum";
+      if (p.id === "monterey-bay-aquarium") return "Monterey Bay";
+      if (p.id === "san-diego-safari-park") return "Safari Park";
+      if (p.id === "kennedy-space-center") return "Kennedy Space";
+      if (p.id === "amnh") return "AMNH";
+      return p.name || p.id;
+    };
+    pilotLinks.innerHTML = featuredIds
+      .map((id) => {
+        const p = places.find((x) => x.id === id);
+        const label = shortName(p) || id;
+        return `<a class="pilot-mission-link" href="/field-pack/${encodeURIComponent(id)}/">${escapeHtml(
+          label
+        )}</a>`;
+      })
+      .join("");
+    if (pilotLead) {
+      pilotLead.innerHTML = `Age slider, time segments, optional name — live preview, one-page print.
+        <strong>${allPilotIds.length} places</strong> have personalized missions. Popular starters:`;
+    }
+    if (pilotMore && allPilotIds.length > featuredIds.length) {
+      pilotMore.hidden = false;
+      pilotMore.innerHTML = `Or pick any pin on the map → <strong>Build personalized mission</strong>. ${
+        allPilotIds.length - featuredIds.length
+      } more places ready.`;
+    }
+  }
+
   // Ready cards open the map mini-panel for that venue (not the SEO static page)
   if (grid) {
     grid.innerHTML = READY.map((p) => {

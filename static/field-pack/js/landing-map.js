@@ -1277,17 +1277,10 @@
     return m ? decodeURIComponent(m[1]) : "";
   }
 
-  /** SEO pilot pages with live mission generator (age/time/name). */
-  const MISSION_PILOTS = new Set([
-    "dallas-zoo",
-    "fort-worth-zoo",
-    "childrens-museum-perot",
-    "georgia-aquarium",
-    "shedd-aquarium",
-    "monterey-bay-aquarium",
-    "london-zoo",
-    "ueno-zoo",
-  ]);
+  /** SEO pages with live mission generator — full set from mission-pilots.js */
+  const MISSION_PILOTS =
+    window.FP_MISSION_PILOT_SET ||
+    new Set(window.FP_MISSION_PILOTS || []);
 
   function showVenueDetail(venueId) {
     const p = placeById(venueId);
@@ -1381,7 +1374,7 @@
       </div>
       ${
         isMissionPilot
-          ? `<p class="pd-hint pd-mission-hint">Pilot: age + time + optional name → live one-page mission.</p>`
+          ? `<p class="pd-hint pd-mission-hint">Personalized mission: age + time + optional name → one-page print.</p>`
           : ""
       }
       ${isSoon ? "" : sampleCard}

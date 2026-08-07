@@ -1,0 +1,202 @@
+{
+  "slug": "field-museum",
+  "name": "Field Museum",
+  "type": "museum",
+  "city": "Chicago",
+  "region": "IL",
+  "country": "US",
+  "lat": 41.87,
+  "lng": -87.62,
+  "official_url": "https://www.fieldmuseum.org/",
+  "last_verified": "2026-08-07",
+  "verified_by": "catalog-scaffold",
+  "status": "verified",
+  "tagline": "Dinos and wonders — hall shortlist.",
+  "practical": {
+    "typical_duration": "half day",
+    "ticket_note": "Check the official site for tickets and hours.",
+    "transit_note": ""
+  },
+  "items": [
+    {
+      "id": "sci_dinosaur",
+      "label": "Dinosaur hall",
+      "emoji": "🦖",
+      "one_liner": "Bones, giants, and deep time — look up!",
+      "tags": [
+        "wow",
+        "read"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Halls",
+      "qa_card": {
+        "question": "What did you try or notice at Dinosaur hall?",
+        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+      },
+      "catalog_id": "sci-dinosaur"
+    },
+    {
+      "id": "sci_mammal_hall",
+      "label": "Animal / mammal hall",
+      "emoji": "🦌",
+      "one_liner": "Lifelike animals from around the world — spot fur, horns, and habitats.",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Halls",
+      "qa_card": {
+        "question": "What did you try or notice at Animal / mammal hall?",
+        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+      },
+      "catalog_id": "sci-mammal-hall"
+    },
+    {
+      "id": "sci_planet",
+      "label": "Planet / space hall",
+      "emoji": "🪐",
+      "one_liner": "Planets, stars, and big sky questions.",
+      "tags": [
+        "wow",
+        "water",
+        "read"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Halls",
+      "qa_card": {
+        "question": "What did you try or notice at Planet / space hall?",
+        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+      },
+      "catalog_id": "sci-planet"
+    },
+    {
+      "id": "sci_hands_on",
+      "label": "Hands-on lab",
+      "emoji": "🔬",
+      "one_liner": "Touch, test, build — science you can try.",
+      "tags": [
+        "wow",
+        "hands",
+        "play"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Halls",
+      "qa_card": {
+        "question": "What did you try or notice at Hands-on lab?",
+        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+      },
+      "catalog_id": "sci-hands-on"
+    },
+    {
+      "id": "cm_imaginarium",
+      "label": "Imaginarium",
+      "emoji": "✨",
+      "one_liner": "Multi-sensory world — explore, notice, imagine.",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Halls",
+      "qa_card": {
+        "question": "What did you try or notice at Imaginarium?",
+        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+      },
+      "catalog_id": "cm-imaginarium"
+    },
+    {
+      "id": "cm_free_explore",
+      "label": "Free explore",
+      "emoji": "🧭",
+      "one_liner": "Their choice path — whatever pulled them in!",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Halls",
+      "qa_card": {
+        "question": "What did you try or notice at Free explore?",
+        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+      },
+      "catalog_id": "cm-free-explore"
+    },
+    {
+      "id": "sci_rainforest",
+      "label": "Rainforest dome",
+      "emoji": "🌿",
+      "one_liner": "Warm, green, and full of life — look for layers of plants.",
+      "tags": [
+        "wow",
+        "rest",
+        "kids"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Halls",
+      "qa_card": {
+        "question": "What did you try or notice at Rainforest dome?",
+        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+      },
+      "catalog_id": "sci-rainforest"
+    },
+    {
+      "id": "cm_makery",
+      "label": "Creative Makery",
+      "emoji": "🔧",
+      "one_liner": "Build, invent, problem-solve with your hands.",
+      "tags": [
+        "wow",
+        "hands",
+        "play"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Halls",
+      "qa_card": {
+        "question": "What did you try or notice at Creative Makery?",
+        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+      },
+      "catalog_id": "cm-makery"
+    }
+  ]
+}

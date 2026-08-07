@@ -1,0 +1,272 @@
+{
+  "slug": "hong-kong-ocean-park",
+  "name": "Ocean Park Hong Kong",
+  "type": "zoo",
+  "city": "Hong Kong",
+  "region": "",
+  "country": "HK",
+  "lat": 22.246,
+  "lng": 114.175,
+  "official_url": "https://www.oceanpark.com.hk/en",
+  "last_verified": "2026-08-07",
+  "verified_by": "catalog-scaffold",
+  "status": "verified",
+  "tagline": "Hillside park shortlist + printable hunt.",
+  "practical": {
+    "typical_duration": "half day",
+    "ticket_note": "Check the official site for tickets and hours.",
+    "transit_note": ""
+  },
+  "items": [
+    {
+      "id": "asian_small_clawed_otter",
+      "label": "Asian small-clawed otter",
+      "emoji": "🦦",
+      "one_liner": "Playful swimmer — smallest otter.",
+      "tags": [
+        "wow",
+        "water",
+        "outdoor",
+        "hands",
+        "play"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Grounds",
+      "qa_card": {
+        "question": "What is special about the Asian small-clawed otter?",
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+      },
+      "catalog_id": "asian-small-clawed-otter"
+    },
+    {
+      "id": "red_panda",
+      "label": "Red panda",
+      "emoji": "🦊",
+      "one_liner": "Rusty tree-climber with a ringed tail — not a giant panda!",
+      "tags": [
+        "wow",
+        "outdoor",
+        "hands",
+        "play"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Grounds",
+      "qa_card": {
+        "question": "What is special about the Red panda?",
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+      },
+      "catalog_id": "red-panda"
+    },
+    {
+      "id": "sea_turtle",
+      "label": "Sea turtle",
+      "emoji": "🐢",
+      "one_liner": "Shelled ocean traveler — flippers for swimming.",
+      "tags": [
+        "wow",
+        "water",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Grounds",
+      "qa_card": {
+        "question": "What did you notice about the Sea turtle?",
+        "answer": "Something about how it moves, its shape, or its home in the water!"
+      },
+      "catalog_id": "sea-turtle"
+    },
+    {
+      "id": "shark",
+      "label": "Shark",
+      "emoji": "🦈",
+      "one_liner": "Ocean hunter with a strong swishy body.",
+      "tags": [
+        "wow",
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Grounds",
+      "qa_card": {
+        "question": "What did you notice about the Shark?",
+        "answer": "Something about how it moves, its shape, or its home in the water!"
+      },
+      "catalog_id": "shark"
+    },
+    {
+      "id": "jellyfish",
+      "label": "Jellyfish",
+      "emoji": "🎐",
+      "one_liner": "Soft drifter — no bones, glows and pulses in the water.",
+      "tags": [
+        "wow",
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Grounds",
+      "qa_card": {
+        "question": "What did you notice about the Jellyfish?",
+        "answer": "Something about how it moves, its shape, or its home in the water!"
+      },
+      "catalog_id": "jellyfish"
+    },
+    {
+      "id": "stingray",
+      "label": "Stingray",
+      "emoji": "射线",
+      "one_liner": "Flat swimmer — often in touch pools (gentle hands!).",
+      "tags": [
+        "wow",
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Grounds",
+      "qa_card": {
+        "question": "What did you notice about the Stingray?",
+        "answer": "Something about how it moves, its shape, or its home in the water!"
+      },
+      "catalog_id": "stingray"
+    },
+    {
+      "id": "clownfish",
+      "label": "Clownfish",
+      "emoji": "🐠",
+      "one_liner": "Bright reef fish — friends with anemones.",
+      "tags": [
+        "wow",
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Grounds",
+      "qa_card": {
+        "question": "What did you notice about the Clownfish?",
+        "answer": "Something about how it moves, its shape, or its home in the water!"
+      },
+      "catalog_id": "clownfish"
+    },
+    {
+      "id": "octopus",
+      "label": "Octopus",
+      "emoji": "🐙",
+      "one_liner": "Eight arms and a big brain — master of hide-and-seek.",
+      "tags": [
+        "wow",
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Grounds",
+      "qa_card": {
+        "question": "What did you notice about the Octopus?",
+        "answer": "Something about how it moves, its shape, or its home in the water!"
+      },
+      "catalog_id": "octopus"
+    },
+    {
+      "id": "seahorse",
+      "label": "Seahorse",
+      "emoji": "🌊",
+      "one_liner": "Tiny upright swimmer that holds on with its tail.",
+      "tags": [
+        "wow",
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Grounds",
+      "qa_card": {
+        "question": "What did you notice about the Seahorse?",
+        "answer": "Something about how it moves, its shape, or its home in the water!"
+      },
+      "catalog_id": "seahorse"
+    },
+    {
+      "id": "starfish",
+      "label": "Sea star",
+      "emoji": "⭐",
+      "one_liner": "Star-shaped ocean friend — often in touch tanks.",
+      "tags": [
+        "wow",
+        "outdoor",
+        "play",
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Grounds",
+      "qa_card": {
+        "question": "What is special about the Sea star?",
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+      },
+      "catalog_id": "starfish"
+    },
+    {
+      "id": "eel",
+      "label": "Eel",
+      "emoji": "🐍",
+      "one_liner": "Long snaky fish — loves rocky hidey-holes.",
+      "tags": [
+        "wow",
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Grounds",
+      "qa_card": {
+        "question": "What is special about the Eel?",
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+      },
+      "catalog_id": "eel"
+    }
+  ]
+}

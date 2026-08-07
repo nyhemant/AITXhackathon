@@ -1,0 +1,296 @@
+{
+  "slug": "ecoparque-ba",
+  "name": "Ecoparque Buenos Aires",
+  "type": "zoo",
+  "city": "Buenos Aires",
+  "region": "Argentina",
+  "country": "AR",
+  "lat": -34.5805,
+  "lng": -58.4168,
+  "official_url": "https://turismo.buenosaires.gob.ar/",
+  "last_verified": "2026-08-07",
+  "verified_by": "catalog-scaffold",
+  "status": "verified",
+  "tagline": "Eco-park walk shortlist + hunt (not a classic zoo).",
+  "practical": {
+    "typical_duration": "half day",
+    "ticket_note": "Check the official site for tickets and hours.",
+    "transit_note": ""
+  },
+  "items": [
+    {
+      "id": "caribbean_flamingo",
+      "label": "Caribbean flamingo",
+      "emoji": "🦩",
+      "one_liner": "Bright pink wader — long legs for shallow water.",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Grounds",
+      "qa_card": {
+        "question": "What is special about the Caribbean flamingo?",
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+      },
+      "catalog_id": "caribbean-flamingo"
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "emoji": "🐧",
+      "one_liner": "Waddle on land, zoom in water.",
+      "tags": [
+        "wow",
+        "water",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Grounds",
+      "qa_card": {
+        "question": "What is special about the African penguin?",
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+      },
+      "catalog_id": "african-penguin"
+    },
+    {
+      "id": "galapagos_tortoise",
+      "label": "Galápagos tortoise",
+      "emoji": "🐢",
+      "one_liner": "Giant tortoise — slow and steady.",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Grounds",
+      "qa_card": {
+        "question": "What is special about the Galápagos tortoise?",
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+      },
+      "catalog_id": "galapagos-tortoise"
+    },
+    {
+      "id": "ring_tailed_lemur",
+      "label": "Ring-tailed lemur",
+      "emoji": "🐒",
+      "one_liner": "Stripy tail from Madagascar.",
+      "tags": [
+        "wow",
+        "outdoor",
+        "play"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Grounds",
+      "qa_card": {
+        "question": "What is special about the Ring-tailed lemur?",
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+      },
+      "catalog_id": "ring-tailed-lemur"
+    },
+    {
+      "id": "two_toed_sloth",
+      "label": "Two-toed sloth",
+      "emoji": "🦥",
+      "one_liner": "Slow forest climber — hangs upside down.",
+      "tags": [
+        "wow",
+        "hands",
+        "play",
+        "rest",
+        "kids"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Grounds",
+      "qa_card": {
+        "question": "What is special about the Two-toed sloth?",
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+      },
+      "catalog_id": "two-toed-sloth"
+    },
+    {
+      "id": "ostrich",
+      "label": "Ostrich",
+      "emoji": "🪶",
+      "one_liner": "Biggest bird — can’t fly, runs fast.",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Grounds",
+      "qa_card": {
+        "question": "What is special about the Ostrich?",
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+      },
+      "catalog_id": "ostrich"
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "emoji": "🦓",
+      "one_liner": "Striped grassland runner — every pattern is unique.",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Grounds",
+      "qa_card": {
+        "question": "What is special about the Zebra?",
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+      },
+      "catalog_id": "zebra"
+    },
+    {
+      "id": "warthog",
+      "label": "Warthog",
+      "emoji": "🐗",
+      "one_liner": "Savanna pig with tusks.",
+      "tags": [
+        "wow",
+        "hands",
+        "play"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Grounds",
+      "qa_card": {
+        "question": "What is special about the Warthog?",
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+      },
+      "catalog_id": "warthog"
+    },
+    {
+      "id": "nile_hippo",
+      "label": "Nile hippo",
+      "emoji": "🦛",
+      "one_liner": "Huge river giant that loves the water.",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Grounds",
+      "qa_card": {
+        "question": "What is special about the Nile hippo?",
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+      },
+      "catalog_id": "nile-hippo"
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "emoji": "🦒",
+      "one_liner": "Tallest animal on long legs — look up!",
+      "tags": [
+        "wow",
+        "tall",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Grounds",
+      "qa_card": {
+        "question": "What is special about the Reticulated giraffe?",
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+      },
+      "catalog_id": "reticulated-giraffe"
+    },
+    {
+      "id": "asian_small_clawed_otter",
+      "label": "Asian small-clawed otter",
+      "emoji": "🦦",
+      "one_liner": "Playful swimmer — smallest otter.",
+      "tags": [
+        "wow",
+        "water",
+        "outdoor",
+        "hands",
+        "play"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Grounds",
+      "qa_card": {
+        "question": "What is special about the Asian small-clawed otter?",
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+      },
+      "catalog_id": "asian-small-clawed-otter"
+    },
+    {
+      "id": "freshwater_fish",
+      "label": "River / lake fish",
+      "emoji": "🐟",
+      "one_liner": "Fish that live in fresh water — rivers, lakes, ponds.",
+      "tags": [
+        "wow",
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Grounds",
+      "qa_card": {
+        "question": "What did you notice about the River / lake fish?",
+        "answer": "Something about how it moves, its shape, or its home in the water!"
+      },
+      "catalog_id": "freshwater-fish"
+    }
+  ]
+}

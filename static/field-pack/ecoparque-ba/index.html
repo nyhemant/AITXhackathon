@@ -23,6 +23,7 @@
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=18" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=44" />
   <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=4" />
+  <link rel="stylesheet" href="/field-pack/css/mission.css?v=5" />
   <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "HowTo", "name": "Ecoparque Buenos Aires Scavenger Hunt for Kids (Free Printable)", "description": "Free printable Ecoparque Buenos Aires scavenger hunt for kids in Buenos Aires. Short kid list of animals, one-page treasure hunt — Field Trip Kit by 1Less.", "totalTime": "PT2H", "tool": [{"@type": "HowToTool", "name": "Printed one-page hunt sheet"}], "step": [{"@type": "HowToStep", "position": 1, "text": "Find an animal walking free (not in a big cage)"}, {"@type": "HowToStep", "position": 2, "text": "Spot a bird with bright feathers"}, {"@type": "HowToStep", "position": 3, "text": "Find a pond or water area"}, {"@type": "HowToStep", "position": 4, "text": "Notice three different plants"}, {"@type": "HowToStep", "position": 5, "text": "Read a sign about the eco-park"}, {"@type": "HowToStep", "position": 6, "text": "Find a quiet resting spot"}, {"@type": "HowToStep", "position": 7, "text": "Point to something native to this region"}, {"@type": "HowToStep", "position": 8, "text": "Photo your favorite stop"}], "url": "https://1less.app/field-pack/ecoparque-ba/"}
   </script>
@@ -30,7 +31,7 @@
 {"@context": "https://schema.org", "@type": "Article", "headline": "Ecoparque Buenos Aires Scavenger Hunt for Kids (Free Printable)", "description": "Free printable Ecoparque Buenos Aires scavenger hunt for kids in Buenos Aires. Short kid list of animals, one-page treasure hunt — Field Trip Kit by 1Less.", "author": {"@type": "Organization", "name": "1Less"}, "publisher": {"@type": "Organization", "name": "1Less", "url": "https://1less.app"}, "mainEntityOfPage": "https://1less.app/field-pack/ecoparque-ba/", "about": {"@type": "Place", "name": "Ecoparque Buenos Aires", "address": "Buenos Aires, Argentina"}}
   </script>
 </head>
-<body class="landing-body seo-venue-body">
+<body class="landing-body seo-venue-body mission-venue-body">
   <div class="app landing-app seo-venue">
     <header class="oneless-shell no-print" data-product="bdo">
       <a class="shell-brand" href="/">
@@ -64,10 +65,10 @@
         <p class="seo-quality-note">Starter shortlist — animals and exhibits change; skip anything closed or missing.</p>
         <p class="seo-brand-note">Part of <strong>Field Trip Kit</strong> by 1Less — free for families.</p>
         <div class="landing-cta-row seo-cta no-print">
-          <a class="btn btn-primary btn-big" href="/field-pack/#/venue/ecoparque-ba">Open on map →</a>
-          <button type="button" class="btn btn-secondary btn-big" id="seo-print-hunt" data-venue="ecoparque-ba">
-            One-page hunt to print
+          <button type="button" class="btn btn-primary btn-big" id="mission-open-btn" aria-haspopup="dialog" aria-controls="mission-drawer">
+            Print mission
           </button>
+          <a class="btn btn-secondary btn-big" href="/field-pack/#/venue/ecoparque-ba">Open on map →</a>
           <a class="btn btn-ghost" href="/field-pack/app.html#/venue/ecoparque-ba">Full interactive list →</a>
         </div>
       </header>
@@ -182,16 +183,16 @@
     </section>
 
 
-      <section class="seo-how" aria-labelledby="how-heading">
+      <section class="seo-how no-print" aria-labelledby="how-heading">
         <h2 id="how-heading">How it works</h2>
         <ol class="how-steps">
-          <li><strong>1</strong><span>Print the one-page hunt</span></li>
-          <li><strong>2</strong><span>Use the shortlist on site</span></li>
+          <li><strong>1</strong><span>Print a one-page mission (optional name)</span></li>
+          <li><strong>2</strong><span>Use the photo shortlist on site</span></li>
           <li><strong>3</strong><span>Optional: open Q&amp;A cards after</span></li>
         </ol>
       </section>
 
-      <p class="seo-official">
+      <p class="seo-official no-print">
         Official site: <a href="https://turismo.buenosaires.gob.ar/" rel="noopener noreferrer" target="_blank">Ecoparque Buenos Aires website</a>.
         Always check hours and tickets before you go.
       </p>
@@ -206,23 +207,343 @@
     </footer>
   </div>
 
+  
+  <div class="mission-overlay no-print" id="mission-overlay" hidden>
+    <div
+      class="mission-drawer"
+      id="mission-drawer"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="mission-heading"
+      tabindex="-1"
+    >
+      <header class="mission-drawer-head">
+        <div>
+          <p class="mission-drawer-kicker">Field Trip Kit</p>
+          <h2 id="mission-heading">Print your mission</h2>
+        </div>
+        <button type="button" class="mission-drawer-close" id="mission-close" aria-label="Close">×</button>
+      </header>
+      <div class="mission-drawer-body">
+        <aside class="mission-filters" id="mission-controls" aria-label="Personalize">
+          <div class="mission-field mission-field-name">
+            <label for="mission-name">Kid name <span class="mission-opt">(optional)</span></label>
+            <input type="text" id="mission-name" maxlength="24" placeholder="e.g. Arya" autocomplete="off" />
+          </div>
+          <div class="mission-field">
+            <label for="mission-age">Age <span class="mission-age-label" id="mission-age-label">Ready (4–5)</span></label>
+            <input type="range" id="mission-age" min="0" max="3" step="1" value="1" />
+          </div>
+          <div class="mission-field mission-field-time">
+            <label>Time today</label>
+            <div class="mission-time-seg" role="group" aria-label="Time available">
+              <label><input type="radio" name="mission-time" value="1hr" /><span>~1 hr</span></label>
+              <label><input type="radio" name="mission-time" value="half" checked /><span>Half day</span></label>
+              <label><input type="radio" name="mission-time" value="full" /><span>Full day</span></label>
+            </div>
+          </div>
+          <div class="mission-field">
+            <label for="mission-interest">Interest <span class="mission-opt">(optional)</span></label>
+            <select id="mission-interest">
+              <option value="">Any</option>
+            </select>
+          </div>
+          <p class="mission-filters-hint">Sheet updates live — then print one page.</p>
+        </aside>
+        <div class="mission-preview">
+          <div class="mission-sheet" id="mission-sheet">
+            <p class="ms-brand">1Less Field Trip Kit · Buenos Aires, Argentina</p>
+            <h3 class="ms-title" id="mission-title">Your Mission at Ecoparque Buenos Aires</h3>
+            <p class="ms-meta" id="mission-meta">Ready (4–5) · Half day</p>
+            <h4 class="ms-section">Find these</h4>
+            <ol class="mission-finds" id="mission-finds" aria-label="Finds"><li class="mission-find"><span class="mission-check" aria-hidden="true">☐</span><span class="mission-emoji">🦩</span><span class="mission-find-body"><strong>Caribbean flamingo</strong><small>Bright pink wader — long legs for shallow water. · Grounds</small></span></li><li class="mission-find"><span class="mission-check" aria-hidden="true">☐</span><span class="mission-emoji">🐢</span><span class="mission-find-body"><strong>Galápagos tortoise</strong><small>Giant tortoise — slow and steady. · Grounds</small></span></li><li class="mission-find"><span class="mission-check" aria-hidden="true">☐</span><span class="mission-emoji">🐟</span><span class="mission-find-body"><strong>River / lake fish</strong><small>Fish that live in fresh water — rivers, lakes, ponds. · Grounds</small></span></li><li class="mission-find"><span class="mission-check" aria-hidden="true">☐</span><span class="mission-emoji">🦦</span><span class="mission-find-body"><strong>Asian small-clawed otter</strong><small>Playful swimmer — smallest otter. · Grounds</small></span></li><li class="mission-find"><span class="mission-check" aria-hidden="true">☐</span><span class="mission-emoji">🐒</span><span class="mission-find-body"><strong>Ring-tailed lemur</strong><small>Stripy tail from Madagascar. · Grounds</small></span></li><li class="mission-find"><span class="mission-check" aria-hidden="true">☐</span><span class="mission-emoji">🦒</span><span class="mission-find-body"><strong>Reticulated giraffe</strong><small>Tallest animal on long legs — look up! · Grounds</small></span></li></ol>
+            <h4 class="ms-section">Bonus</h4>
+            <ul class="mission-challenges" id="mission-challenges" aria-label="Challenges"><li class="mission-challenge"><span class="mission-check" aria-hidden="true">☐</span><span>Follow a path and name three things you pass</span></li><li class="mission-challenge"><span class="mission-check" aria-hidden="true">☐</span><span>Watch something climb</span></li><li class="mission-challenge"><span class="mission-check" aria-hidden="true">☐</span><span>Find an animal that is awake at night</span></li></ul>
+            <p class="ms-footer">
+              <span id="mission-verified">Checked 2026-08</span>
+              · free at 1less.app/field-pack/ecoparque-ba/
+            </p>
+          </div>
+        </div>
+      </div>
+      <footer class="mission-drawer-foot">
+        <button type="button" class="btn btn-ghost" id="mission-shuffle-btn">Shuffle finds</button>
+        <button type="button" class="btn btn-primary btn-big" id="mission-print-btn">Print mission</button>
+      </footer>
+    </div>
+  </div>
+
+
   <div id="print-sheet" class="print-sheet" aria-hidden="true"></div>
   <div id="treasure-sheet" class="print-sheet treasure-sheet" aria-hidden="true"></div>
 
+  <script type="application/json" id="venue-data">{"slug": "ecoparque-ba", "name": "Ecoparque Buenos Aires", "type": "zoo", "city": "Buenos Aires", "region": "Argentina", "country": "AR", "lat": -34.5805, "lng": -58.4168, "official_url": "https://turismo.buenosaires.gob.ar/", "last_verified": "2026-08-07", "verified_by": "catalog-scaffold", "status": "verified", "tagline": "Eco-park walk shortlist + hunt (not a classic zoo).", "practical": {"typical_duration": "half day", "ticket_note": "Check the official site for tickets and hours.", "transit_note": ""}, "items": [{"id": "caribbean_flamingo", "label": "Caribbean flamingo", "emoji": "🦩", "one_liner": "Bright pink wader — long legs for shallow water.", "tags": ["wow", "outdoor"], "age_fit": ["2-3", "4-5", "6-8", "9+"], "zone": "Grounds", "qa_card": {"question": "What is special about the Caribbean flamingo?", "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"}, "catalog_id": "caribbean-flamingo"}, {"id": "african_penguin", "label": "African penguin", "emoji": "🐧", "one_liner": "Waddle on land, zoom in water.", "tags": ["wow", "water", "outdoor"], "age_fit": ["2-3", "4-5", "6-8", "9+"], "zone": "Grounds", "qa_card": {"question": "What is special about the African penguin?", "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"}, "catalog_id": "african-penguin"}, {"id": "galapagos_tortoise", "label": "Galápagos tortoise", "emoji": "🐢", "one_liner": "Giant tortoise — slow and steady.", "tags": ["wow", "outdoor"], "age_fit": ["2-3", "4-5", "6-8", "9+"], "zone": "Grounds", "qa_card": {"question": "What is special about the Galápagos tortoise?", "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"}, "catalog_id": "galapagos-tortoise"}, {"id": "ring_tailed_lemur", "label": "Ring-tailed lemur", "emoji": "🐒", "one_liner": "Stripy tail from Madagascar.", "tags": ["wow", "outdoor", "play"], "age_fit": ["2-3", "4-5", "6-8", "9+"], "zone": "Grounds", "qa_card": {"question": "What is special about the Ring-tailed lemur?", "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"}, "catalog_id": "ring-tailed-lemur"}, {"id": "two_toed_sloth", "label": "Two-toed sloth", "emoji": "🦥", "one_liner": "Slow forest climber — hangs upside down.", "tags": ["wow", "hands", "play", "rest", "kids"], "age_fit": ["2-3", "4-5", "6-8", "9+"], "zone": "Grounds", "qa_card": {"question": "What is special about the Two-toed sloth?", "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"}, "catalog_id": "two-toed-sloth"}, {"id": "ostrich", "label": "Ostrich", "emoji": "🪶", "one_liner": "Biggest bird — can’t fly, runs fast.", "tags": ["wow", "outdoor"], "age_fit": ["2-3", "4-5", "6-8", "9+"], "zone": "Grounds", "qa_card": {"question": "What is special about the Ostrich?", "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"}, "catalog_id": "ostrich"}, {"id": "zebra", "label": "Zebra", "emoji": "🦓", "one_liner": "Striped grassland runner — every pattern is unique.", "tags": ["wow", "outdoor"], "age_fit": ["2-3", "4-5", "6-8", "9+"], "zone": "Grounds", "qa_card": {"question": "What is special about the Zebra?", "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"}, "catalog_id": "zebra"}, {"id": "warthog", "label": "Warthog", "emoji": "🐗", "one_liner": "Savanna pig with tusks.", "tags": ["wow", "hands", "play"], "age_fit": ["2-3", "4-5", "6-8", "9+"], "zone": "Grounds", "qa_card": {"question": "What is special about the Warthog?", "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"}, "catalog_id": "warthog"}, {"id": "nile_hippo", "label": "Nile hippo", "emoji": "🦛", "one_liner": "Huge river giant that loves the water.", "tags": ["wow", "outdoor"], "age_fit": ["2-3", "4-5", "6-8", "9+"], "zone": "Grounds", "qa_card": {"question": "What is special about the Nile hippo?", "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"}, "catalog_id": "nile-hippo"}, {"id": "reticulated_giraffe", "label": "Reticulated giraffe", "emoji": "🦒", "one_liner": "Tallest animal on long legs — look up!", "tags": ["wow", "tall", "outdoor"], "age_fit": ["2-3", "4-5", "6-8", "9+"], "zone": "Grounds", "qa_card": {"question": "What is special about the Reticulated giraffe?", "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"}, "catalog_id": "reticulated-giraffe"}, {"id": "asian_small_clawed_otter", "label": "Asian small-clawed otter", "emoji": "🦦", "one_liner": "Playful swimmer — smallest otter.", "tags": ["wow", "water", "outdoor", "hands", "play"], "age_fit": ["2-3", "4-5", "6-8", "9+"], "zone": "Grounds", "qa_card": {"question": "What is special about the Asian small-clawed otter?", "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"}, "catalog_id": "asian-small-clawed-otter"}, {"id": "freshwater_fish", "label": "River / lake fish", "emoji": "🐟", "one_liner": "Fish that live in fresh water — rivers, lakes, ponds.", "tags": ["wow", "water"], "age_fit": ["2-3", "4-5", "6-8", "9+"], "zone": "Grounds", "qa_card": {"question": "What did you notice about the River / lake fish?", "answer": "Something about how it moves, its shape, or its home in the water!"}, "catalog_id": "freshwater-fish"}]}</script>
+  <script type="application/json" id="challenges-data">{
+  "version": 1,
+  "challenges": [
+    {
+      "id": "tall",
+      "text": "Find something taller than a grown-up",
+      "types": [
+        "zoo",
+        "museum",
+        "safari_zoo"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "tags": [
+        "tall"
+      ]
+    },
+    {
+      "id": "stripes",
+      "text": "Spot stripes or spots",
+      "types": [
+        "zoo",
+        "safari_zoo"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "tags": [
+        "pattern"
+      ]
+    },
+    {
+      "id": "sound",
+      "text": "Hear a loud sound (or a very quiet one)",
+      "types": [
+        "zoo",
+        "aquarium",
+        "museum",
+        "safari_zoo"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "tags": [
+        "sound"
+      ]
+    },
+    {
+      "id": "sleep",
+      "text": "Point to where an animal might sleep",
+      "types": [
+        "zoo",
+        "aquarium",
+        "safari_zoo"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "tags": [
+        "home"
+      ]
+    },
+    {
+      "id": "water",
+      "text": "Find something that loves water",
+      "types": [
+        "zoo",
+        "aquarium",
+        "safari_zoo"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "tags": [
+        "water"
+      ]
+    },
+    {
+      "id": "photo",
+      "text": "Photo your favorite find",
+      "types": [
+        "zoo",
+        "aquarium",
+        "museum",
+        "safari_zoo"
+      ],
+      "age_fit": [
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "tags": [
+        "photo"
+      ]
+    },
+    {
+      "id": "climb",
+      "text": "Watch something climb",
+      "types": [
+        "zoo",
+        "museum"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "tags": [
+        "climb"
+      ]
+    },
+    {
+      "id": "swim",
+      "text": "Watch something swim or splash",
+      "types": [
+        "zoo",
+        "aquarium"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "tags": [
+        "water"
+      ]
+    },
+    {
+      "id": "tiny",
+      "text": "Find something smaller than your hand",
+      "types": [
+        "zoo",
+        "aquarium",
+        "museum"
+      ],
+      "age_fit": [
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "tags": [
+        "tiny"
+      ]
+    },
+    {
+      "id": "color",
+      "text": "Find three different colors on animals or exhibits",
+      "types": [
+        "zoo",
+        "aquarium",
+        "museum"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8"
+      ],
+      "tags": [
+        "color"
+      ]
+    },
+    {
+      "id": "read",
+      "text": "Read a kid label out loud",
+      "types": [
+        "museum",
+        "zoo",
+        "aquarium"
+      ],
+      "age_fit": [
+        "6-8",
+        "9+"
+      ],
+      "tags": [
+        "read"
+      ]
+    },
+    {
+      "id": "soft",
+      "text": "Find a soft play or quiet corner",
+      "types": [
+        "museum"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5"
+      ],
+      "tags": [
+        "rest"
+      ]
+    },
+    {
+      "id": "make",
+      "text": "Try one hands-on activity",
+      "types": [
+        "museum"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "tags": [
+        "hands"
+      ]
+    },
+    {
+      "id": "night",
+      "text": "Find an animal that is awake at night",
+      "types": [
+        "safari_zoo",
+        "zoo"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "tags": [
+        "night"
+      ]
+    },
+    {
+      "id": "path",
+      "text": "Follow a path and name three things you pass",
+      "types": [
+        "zoo",
+        "museum",
+        "safari_zoo"
+      ],
+      "age_fit": [
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "tags": [
+        "walk"
+      ]
+    }
+  ]
+}
+</script>
   <script src="/shell/shell.js?v=3"></script>
   <script src="/field-pack/js/catalog.js?v=12"></script>
   <script src="/field-pack/js/print-kit.js?v=1"></script>
-  <script>
-    (function () {
-      var btn = document.getElementById("seo-print-hunt");
-      if (!btn || !window.FPPrint) return;
-      btn.addEventListener("click", function () {
-        var id = btn.getAttribute("data-venue");
-        if (!window.FPPrint.printTreasureForVenue(id)) {
-          location.href = "/field-pack/app.html#/venue/" + encodeURIComponent(id);
-        }
-      });
-    })();
-  </script>
+  <script src="/field-pack/js/mission/mission-engine.js?v=5"></script>
+  <script src="/field-pack/js/mission/mission-ui.js?v=5"></script>
 </body>
 </html>
