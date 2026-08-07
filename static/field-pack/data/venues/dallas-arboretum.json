@@ -9,22 +9,110 @@
   "lng": -96.72,
   "official_url": "https://www.dallasarboretum.org/",
   "last_verified": "2026-08-07",
-  "verified_by": "catalog-scaffold",
+  "verified_by": "research",
   "status": "verified",
-  "tagline": "Gardens and kid discovery trails.",
+  "tagline": "Dallas gardens — seasonal color, kid exploration, not a zoo census.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Check the official site for tickets and hours.",
-    "transit_note": ""
+    "ticket_note": "Timed tickets peak bloom seasons.",
+    "transit_note": "White Rock Lake area.",
+    "energy_note": "heat",
+    "best_start": "Shade + water; one garden room at a time."
   },
   "items": [
     {
       "id": "cm_outdoor",
       "label": "Outdoor Area",
       "emoji": "🌳",
-      "one_liner": "Outside play — waterfall, nature, big body movement.",
+      "one_liner": "Paths, flowers, and open sky.",
       "tags": [
-        "wow",
+        "outdoor",
+        "play",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Gardens",
+      "qa_card": {
+        "question": "What did you notice about the Outdoor Area?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "cm-outdoor"
+    },
+    {
+      "id": "cm_free_explore",
+      "label": "Free explore",
+      "emoji": "🧭",
+      "one_liner": "They pick the next fountain or path.",
+      "tags": [
+        "play"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Kid lead",
+      "qa_card": {
+        "question": "What did you notice about the Free explore?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "cm-free-explore"
+    },
+    {
+      "id": "cm_toddler_garden",
+      "label": "Toddler Garden",
+      "emoji": "🌱",
+      "one_liner": "Softer corners to reset.",
+      "tags": [
+        "rest",
+        "play"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Little kids",
+      "qa_card": {
+        "question": "What did you notice about the Toddler Garden?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "cm-toddler-garden"
+    },
+    {
+      "id": "sci_hands_on",
+      "label": "Hands-on lab",
+      "emoji": "🔬",
+      "one_liner": "Hands-on moments if offered.",
+      "tags": [
+        "hands"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Discovery",
+      "qa_card": {
+        "question": "What did you notice about the Hands-on lab?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sci-hands-on"
+    },
+    {
+      "id": "cm_makery",
+      "label": "Creative Makery",
+      "emoji": "🔧",
+      "one_liner": "Create something small if stations are open.",
+      "tags": [
         "hands",
         "play"
       ],
@@ -34,12 +122,12 @@
         "6-8",
         "9+"
       ],
-      "zone": "Halls",
+      "zone": "Make",
       "qa_card": {
-        "question": "What did you try or notice at Outdoor Area?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+        "question": "What did you notice about the Creative Makery?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "cm-outdoor"
+      "catalog_id": "cm-makery"
     },
     {
       "id": "cm_imaginarium",
@@ -87,29 +175,6 @@
       "catalog_id": "cm-woven"
     },
     {
-      "id": "cm_makery",
-      "label": "Creative Makery",
-      "emoji": "🔧",
-      "one_liner": "Build, invent, problem-solve with your hands.",
-      "tags": [
-        "wow",
-        "hands",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Creative Makery?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "cm-makery"
-    },
-    {
       "id": "cm_art_lab",
       "label": "Art Lab",
       "emoji": "🎨",
@@ -154,63 +219,25 @@
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
       "catalog_id": "cm-waterfall"
-    },
-    {
-      "id": "cm_toddler_garden",
-      "label": "Toddler Garden",
-      "emoji": "🌱",
-      "one_liner": "Gentler outdoor/garden space for little explorers.",
-      "tags": [
-        "wow",
-        "read"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Toddler Garden?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "cm-toddler-garden"
-    },
-    {
-      "id": "cm_free_explore",
-      "label": "Free explore",
-      "emoji": "🧭",
-      "one_liner": "Their choice path — whatever pulled them in!",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Free explore?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "cm-free-explore"
     }
   ],
-  "content_mode": "wonder",
+  "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://www.dallasarboretum.org/",
     "visitor_map_kind": "page",
-    "map_attribution": "Official site · Dallas Arboretum (kids trails)"
+    "map_attribution": "Official visit page"
   },
   "parent_script": [
     "Bathroom first",
     "One big wow",
     "Snack when needed",
     "Leave while happy"
-  ]
+  ],
+  "route_90m": [
+    "cm_outdoor",
+    "cm_free_explore",
+    "cm_toddler_garden"
+  ],
+  "research_notes": "R2 hybrid 2026-08-07"
 }

@@ -9,23 +9,89 @@
   "lng": -81.37,
   "official_url": "https://www.osc.org/",
   "last_verified": "2026-08-07",
-  "verified_by": "catalog-scaffold",
+  "verified_by": "research",
   "status": "verified",
-  "tagline": "Hands-on science (not theme parks).",
+  "tagline": "Orlando science without theme-park prices — hands-on + optional shows.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Check the official site for tickets and hours.",
-    "transit_note": ""
+    "ticket_note": "Loch Haven area; check osc.org.",
+    "transit_note": "Car / rideshare.",
+    "energy_note": "indoor",
+    "best_start": "Hands-on floors first."
   },
   "items": [
     {
       "id": "sci_hands_on",
       "label": "Hands-on lab",
       "emoji": "🔬",
-      "one_liner": "Touch, test, build — science you can try.",
+      "one_liner": "Touch science.",
       "tags": [
-        "wow",
         "hands",
+        "play",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Exhibit floors",
+      "qa_card": {
+        "question": "What did you notice about the Hands-on lab?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sci-hands-on"
+    },
+    {
+      "id": "sci_planet",
+      "label": "Planet / space hall",
+      "emoji": "🪐",
+      "one_liner": "Planetarium if ticketed.",
+      "tags": [
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Shows",
+      "qa_card": {
+        "question": "What did you notice about the Planet / space hall?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sci-planet"
+    },
+    {
+      "id": "sci_dinosaur",
+      "label": "Dinosaur hall",
+      "emoji": "🦖",
+      "one_liner": "Dino wow if featured.",
+      "tags": [
+        "read",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Dinos",
+      "qa_card": {
+        "question": "What did you notice about the Dinosaur hall?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sci-dinosaur"
+    },
+    {
+      "id": "cm_free_explore",
+      "label": "Free explore",
+      "emoji": "🧭",
+      "one_liner": "They pick next.",
+      "tags": [
         "play"
       ],
       "age_fit": [
@@ -34,22 +100,20 @@
         "6-8",
         "9+"
       ],
-      "zone": "Halls",
+      "zone": "Kid lead",
       "qa_card": {
-        "question": "What did you try or notice at Hands-on lab?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+        "question": "What did you notice about the Free explore?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-hands-on"
+      "catalog_id": "cm-free-explore"
     },
     {
-      "id": "sci_planet",
-      "label": "Planet / space hall",
-      "emoji": "🪐",
-      "one_liner": "Planets, stars, and big sky questions.",
+      "id": "sci_rocket",
+      "label": "Rockets & launch",
+      "emoji": "🚀",
+      "one_liner": "Rockets and flight energy.",
       "tags": [
-        "wow",
-        "water",
-        "read"
+        "wow"
       ],
       "age_fit": [
         "2-3",
@@ -57,34 +121,12 @@
         "6-8",
         "9+"
       ],
-      "zone": "Halls",
+      "zone": "Flight / space",
       "qa_card": {
-        "question": "What did you try or notice at Planet / space hall?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+        "question": "What did you notice about the Rockets & launch?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-planet"
-    },
-    {
-      "id": "sci_dinosaur",
-      "label": "Dinosaur hall",
-      "emoji": "🦖",
-      "one_liner": "Bones, giants, and deep time — look up!",
-      "tags": [
-        "wow",
-        "read"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Dinosaur hall?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "sci-dinosaur"
+      "catalog_id": "sci-rocket"
     },
     {
       "id": "cm_makery",
@@ -132,28 +174,6 @@
       "catalog_id": "cm-imaginarium"
     },
     {
-      "id": "cm_free_explore",
-      "label": "Free explore",
-      "emoji": "🧭",
-      "one_liner": "Their choice path — whatever pulled them in!",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Free explore?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "cm-free-explore"
-    },
-    {
       "id": "sci_shuttle",
       "label": "Space shuttle / orbiter",
       "emoji": "🛰️",
@@ -174,41 +194,25 @@
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
       "catalog_id": "sci-shuttle"
-    },
-    {
-      "id": "sci_rocket",
-      "label": "Rockets & launch",
-      "emoji": "🚀",
-      "one_liner": "Tall rockets and the power of liftoff.",
-      "tags": [
-        "wow",
-        "read"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Rockets & launch?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "sci-rocket"
     }
   ],
-  "content_mode": "wonder",
+  "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://www.osc.org/",
     "visitor_map_kind": "page",
-    "map_attribution": "Official site · Orlando Science Center"
+    "map_attribution": "Official visit page"
   },
   "parent_script": [
     "Bathroom first",
     "One big wow",
     "Snack when needed",
     "Leave while happy"
-  ]
+  ],
+  "route_90m": [
+    "sci_hands_on",
+    "sci_planet",
+    "sci_dinosaur"
+  ],
+  "research_notes": "R2 hybrid 2026-08-07"
 }

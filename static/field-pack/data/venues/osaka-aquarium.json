@@ -9,23 +9,26 @@
   "lng": 135.4289,
   "official_url": "https://www.kaiyukan.com/language/eng/",
   "last_verified": "2026-08-07",
-  "verified_by": "catalog-scaffold",
+  "verified_by": "research",
   "status": "verified",
-  "tagline": "Pacific-ring tanks — shortlist + hunt.",
+  "tagline": "Kaiyukan — whale shark fame in a spiral building.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Check the official site for tickets and hours.",
-    "transit_note": ""
+    "ticket_note": "Popular; tickets ahead in peak.",
+    "transit_note": "Osaka bay area.",
+    "energy_note": "indoor",
+    "best_start": "Biggest tank first."
   },
   "items": [
     {
       "id": "shark",
       "label": "Shark",
       "emoji": "🦈",
-      "one_liner": "Ocean hunter with a strong swishy body.",
+      "one_liner": "Whale-shark-scale wow in the huge tank.",
       "tags": [
-        "wow",
-        "water"
+        "water",
+        "big",
+        "wow"
       ],
       "age_fit": [
         "2-3",
@@ -33,10 +36,10 @@
         "6-8",
         "9+"
       ],
-      "zone": "Galleries",
+      "zone": "Pacific tank",
       "qa_card": {
         "question": "What did you notice about the Shark?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "shark"
     },
@@ -44,10 +47,10 @@
       "id": "stingray",
       "label": "Stingray",
       "emoji": "射线",
-      "one_liner": "Flat swimmer — often in touch pools (gentle hands!).",
+      "one_liner": "Rays.",
       "tags": [
-        "wow",
-        "water"
+        "water",
+        "flat"
       ],
       "age_fit": [
         "2-3",
@@ -55,10 +58,10 @@
         "6-8",
         "9+"
       ],
-      "zone": "Galleries",
+      "zone": "Tanks",
       "qa_card": {
         "question": "What did you notice about the Stingray?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "stingray"
     },
@@ -66,10 +69,10 @@
       "id": "jellyfish",
       "label": "Jellyfish",
       "emoji": "🎐",
-      "one_liner": "Soft drifter — no bones, glows and pulses in the water.",
+      "one_liner": "Jellies.",
       "tags": [
-        "wow",
-        "water"
+        "water",
+        "glow"
       ],
       "age_fit": [
         "2-3",
@@ -77,10 +80,10 @@
         "6-8",
         "9+"
       ],
-      "zone": "Galleries",
+      "zone": "Jellies",
       "qa_card": {
         "question": "What did you notice about the Jellyfish?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "jellyfish"
     },
@@ -88,11 +91,10 @@
       "id": "sea_turtle",
       "label": "Sea turtle",
       "emoji": "🐢",
-      "one_liner": "Shelled ocean traveler — flippers for swimming.",
+      "one_liner": "Turtles.",
       "tags": [
-        "wow",
         "water",
-        "outdoor"
+        "shell"
       ],
       "age_fit": [
         "2-3",
@@ -100,10 +102,10 @@
         "6-8",
         "9+"
       ],
-      "zone": "Galleries",
+      "zone": "Turtles",
       "qa_card": {
         "question": "What did you notice about the Sea turtle?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sea-turtle"
     },
@@ -111,10 +113,10 @@
       "id": "octopus",
       "label": "Octopus",
       "emoji": "🐙",
-      "one_liner": "Eight arms and a big brain — master of hide-and-seek.",
+      "one_liner": "Octopus.",
       "tags": [
-        "wow",
-        "water"
+        "water",
+        "hide"
       ],
       "age_fit": [
         "2-3",
@@ -122,10 +124,10 @@
         "6-8",
         "9+"
       ],
-      "zone": "Galleries",
+      "zone": "Octopus",
       "qa_card": {
         "question": "What did you notice about the Octopus?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "octopus"
     },
@@ -289,17 +291,23 @@
       "catalog_id": "asian-small-clawed-otter"
     }
   ],
-  "content_mode": "wonder",
+  "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://www.kaiyukan.com/language/eng/",
     "visitor_map_kind": "page",
-    "map_attribution": "Official site · Osaka Aquarium Kaiyukan"
+    "map_attribution": "Kaiyukan"
   },
   "parent_script": [
     "Bathroom first",
     "One big wow",
     "Snack when needed",
     "Leave while happy"
-  ]
+  ],
+  "route_90m": [
+    "shark",
+    "stingray",
+    "jellyfish"
+  ],
+  "research_notes": "R2b 2026-08-07"
 }

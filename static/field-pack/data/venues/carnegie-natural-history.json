@@ -9,20 +9,22 @@
   "lng": -79.95,
   "official_url": "https://carnegiemnh.org/",
   "last_verified": "2026-08-07",
-  "verified_by": "catalog-scaffold",
+  "verified_by": "research",
   "status": "verified",
-  "tagline": "Dinos in Pittsburgh.",
+  "tagline": "Pittsburgh dinos and gems — classic natural history without Mall crowds.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Check the official site for tickets and hours.",
-    "transit_note": ""
+    "ticket_note": "Combined tickets with art sometimes — check carnegiemnh.org.",
+    "transit_note": "Oakland museums cluster.",
+    "energy_note": "indoor",
+    "best_start": "Dinosaurs, then kid pace."
   },
   "items": [
     {
       "id": "sci_dinosaur",
       "label": "Dinosaur hall",
       "emoji": "🦖",
-      "one_liner": "Bones, giants, and deep time — look up!",
+      "one_liner": "Fossil wow is the draw.",
       "tags": [
         "wow",
         "read"
@@ -33,10 +35,10 @@
         "6-8",
         "9+"
       ],
-      "zone": "Halls",
+      "zone": "Dinosaurs",
       "qa_card": {
-        "question": "What did you try or notice at Dinosaur hall?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+        "question": "What did you notice about the Dinosaur hall?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sci-dinosaur"
     },
@@ -44,10 +46,9 @@
       "id": "sci_mammal_hall",
       "label": "Animal / mammal hall",
       "emoji": "🦌",
-      "one_liner": "Lifelike animals from around the world — spot fur, horns, and habitats.",
+      "one_liner": "Habitat stories.",
       "tags": [
-        "wow",
-        "outdoor"
+        "wow"
       ],
       "age_fit": [
         "2-3",
@@ -55,44 +56,61 @@
         "6-8",
         "9+"
       ],
-      "zone": "Halls",
+      "zone": "Mammals / dioramas",
       "qa_card": {
-        "question": "What did you try or notice at Animal / mammal hall?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+        "question": "What did you notice about the Animal / mammal hall?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sci-mammal-hall"
-    },
-    {
-      "id": "sci_planet",
-      "label": "Planet / space hall",
-      "emoji": "🪐",
-      "one_liner": "Planets, stars, and big sky questions.",
-      "tags": [
-        "wow",
-        "water",
-        "read"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Planet / space hall?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "sci-planet"
     },
     {
       "id": "sci_hands_on",
       "label": "Hands-on lab",
       "emoji": "🔬",
-      "one_liner": "Touch, test, build — science you can try.",
+      "one_liner": "Hands-on when open.",
       "tags": [
-        "wow",
-        "hands",
+        "hands"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Discovery",
+      "qa_card": {
+        "question": "What did you notice about the Hands-on lab?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sci-hands-on"
+    },
+    {
+      "id": "sci_planet",
+      "label": "Planet / space hall",
+      "emoji": "🪐",
+      "one_liner": "Rocks and space corners.",
+      "tags": [
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Earth / space",
+      "qa_card": {
+        "question": "What did you notice about the Planet / space hall?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sci-planet"
+    },
+    {
+      "id": "cm_free_explore",
+      "label": "Free explore",
+      "emoji": "🧭",
+      "one_liner": "They choose next.",
+      "tags": [
         "play"
       ],
       "age_fit": [
@@ -101,12 +119,12 @@
         "6-8",
         "9+"
       ],
-      "zone": "Halls",
+      "zone": "Kid pick",
       "qa_card": {
-        "question": "What did you try or notice at Hands-on lab?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+        "question": "What did you notice about the Free explore?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-hands-on"
+      "catalog_id": "cm-free-explore"
     },
     {
       "id": "cm_imaginarium",
@@ -129,28 +147,6 @@
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
       "catalog_id": "cm-imaginarium"
-    },
-    {
-      "id": "cm_free_explore",
-      "label": "Free explore",
-      "emoji": "🧭",
-      "one_liner": "Their choice path — whatever pulled them in!",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Free explore?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "cm-free-explore"
     },
     {
       "id": "sci_rainforest",
@@ -176,37 +172,44 @@
       "catalog_id": "sci-rainforest"
     },
     {
-      "id": "kids_rest",
-      "label": "Kids rest / play stop",
-      "emoji": "🛝",
-      "one_liner": "Take a break, then keep exploring.",
+      "id": "explore_7",
+      "label": "Kid choice stop",
+      "emoji": "🧭",
+      "one_liner": "They pick what to see next for five minutes.",
       "tags": [
-        "rest",
-        "kids"
+        "play"
       ],
       "age_fit": [
         "2-3",
         "4-5",
-        "6-8"
+        "6-8",
+        "9+"
       ],
-      "zone": "",
+      "zone": "Explore",
       "qa_card": {
-        "question": "Did a rest stop help?",
-        "answer": "Breaks help little legs finish the day!"
-      }
+        "question": "What was your favorite?",
+        "answer": "Whatever made you smile!"
+      },
+      "catalog_id": "cm-free-explore"
     }
   ],
-  "content_mode": "wonder",
+  "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://carnegiemnh.org/",
     "visitor_map_kind": "page",
-    "map_attribution": "Official site · Carnegie Museum of Natural History"
+    "map_attribution": "Official visit page"
   },
   "parent_script": [
     "Bathroom first",
     "One big wow",
     "Snack when needed",
     "Leave while happy"
-  ]
+  ],
+  "route_90m": [
+    "sci_dinosaur",
+    "sci_mammal_hall",
+    "sci_hands_on"
+  ],
+  "research_notes": "R2 hybrid 2026-08-07"
 }

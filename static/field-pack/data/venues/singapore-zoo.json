@@ -9,24 +9,26 @@
   "lng": 103.793,
   "official_url": "https://www.mandai.com/en/singapore-zoo.html",
   "last_verified": "2026-08-07",
-  "verified_by": "catalog-scaffold",
+  "verified_by": "research",
   "status": "verified",
-  "tagline": "Free-ranging orangutans + rainforest icons — Mandai shortlist.",
+  "tagline": "Singapore Zoo — rainforest immersion, breakfast with orangutans lore.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Check the official site for tickets and hours.",
-    "transit_note": ""
+    "ticket_note": "Book online; morning cooler.",
+    "transit_note": "Mandai; plan transport.",
+    "energy_note": "heat",
+    "best_start": "Orangutans + one more zone."
   },
   "items": [
     {
       "id": "orangutan",
       "label": "Orangutan",
       "emoji": "🦧",
-      "one_liner": "Tree ape with long arms — watches from the canopy.",
+      "one_liner": "Free-ranging orangutan views are the signature.",
       "tags": [
-        "wow",
-        "outdoor",
-        "play"
+        "primates",
+        "climb",
+        "wow"
       ],
       "age_fit": [
         "2-3",
@@ -34,10 +36,10 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Orangutans",
       "qa_card": {
-        "question": "What is special about the Orangutan?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Orangutan?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "orangutan"
     },
@@ -45,9 +47,8 @@
       "id": "reticulated_giraffe",
       "label": "Reticulated giraffe",
       "emoji": "🦒",
-      "one_liner": "Tallest animal on long legs — look up!",
+      "one_liner": "Giraffes.",
       "tags": [
-        "wow",
         "tall",
         "outdoor"
       ],
@@ -57,10 +58,10 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Wild Africa",
       "qa_card": {
-        "question": "What is special about the Reticulated giraffe?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Reticulated giraffe?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "reticulated-giraffe"
     },
@@ -68,12 +69,10 @@
       "id": "african_elephant",
       "label": "African elephant",
       "emoji": "🐘",
-      "one_liner": "Biggest land animal — trunk to grab, spray, and say hello.",
+      "one_liner": "Elephants.",
       "tags": [
-        "wow",
         "big",
-        "outdoor",
-        "water"
+        "outdoor"
       ],
       "age_fit": [
         "2-3",
@@ -81,10 +80,10 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Elephants",
       "qa_card": {
-        "question": "What is special about the African elephant?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the African elephant?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-elephant"
     },
@@ -92,13 +91,9 @@
       "id": "sumatran_tiger",
       "label": "Sumatran tiger",
       "emoji": "🐯",
-      "one_liner": "Stripy forest big cat — strong and stealthy.",
+      "one_liner": "Tigers.",
       "tags": [
-        "wow",
-        "big-cats",
-        "outdoor",
-        "rest",
-        "kids"
+        "big-cats"
       ],
       "age_fit": [
         "2-3",
@@ -106,12 +101,33 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Cats",
       "qa_card": {
-        "question": "What is special about the Sumatran tiger?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Sumatran tiger?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sumatran-tiger"
+    },
+    {
+      "id": "red_panda",
+      "label": "Red panda",
+      "emoji": "🦊",
+      "one_liner": "Red pandas.",
+      "tags": [
+        "climb"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Fragile forest",
+      "qa_card": {
+        "question": "What did you notice about the Red panda?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "red-panda"
     },
     {
       "id": "asian_small_clawed_otter",
@@ -233,30 +249,6 @@
       "catalog_id": "ring-tailed-lemur"
     },
     {
-      "id": "red_panda",
-      "label": "Red panda",
-      "emoji": "🦊",
-      "one_liner": "Rusty tree-climber with a ringed tail — not a giant panda!",
-      "tags": [
-        "wow",
-        "outdoor",
-        "hands",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Red panda?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "red-panda"
-    },
-    {
       "id": "galapagos_tortoise",
       "label": "Galápagos tortoise",
       "emoji": "🐢",
@@ -302,17 +294,23 @@
       "catalog_id": "african-lion"
     }
   ],
-  "content_mode": "wonder",
+  "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://www.mandai.com/en/singapore-zoo.html",
     "visitor_map_kind": "page",
-    "map_attribution": "Official site · Singapore Zoo"
+    "map_attribution": "Official visit page"
   },
   "parent_script": [
     "Bathroom first",
     "One big wow",
     "Snack when needed",
     "Leave while happy"
-  ]
+  ],
+  "route_90m": [
+    "orangutan",
+    "reticulated_giraffe",
+    "african_elephant"
+  ],
+  "research_notes": "R2 hybrid 2026-08-07"
 }

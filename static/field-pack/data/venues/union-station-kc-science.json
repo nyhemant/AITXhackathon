@@ -9,23 +9,88 @@
   "lng": -94.59,
   "official_url": "https://www.unionstation.org/sciencecity",
   "last_verified": "2026-08-07",
-  "verified_by": "catalog-scaffold",
+  "verified_by": "research",
   "status": "verified",
-  "tagline": "Hands-on science downtown KC.",
+  "tagline": "KC Science City inside Union Station — trains outside, experiments inside.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Check the official site for tickets and hours.",
-    "transit_note": ""
+    "ticket_note": "Union Station complex tickets.",
+    "transit_note": "Downtown KC.",
+    "energy_note": "indoor",
+    "best_start": "Science floors first, station photos after."
   },
   "items": [
     {
       "id": "sci_hands_on",
       "label": "Hands-on lab",
       "emoji": "🔬",
-      "one_liner": "Touch, test, build — science you can try.",
+      "one_liner": "Interactives galore.",
       "tags": [
-        "wow",
         "hands",
+        "play",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Science City",
+      "qa_card": {
+        "question": "What did you notice about the Hands-on lab?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sci-hands-on"
+    },
+    {
+      "id": "sci_planet",
+      "label": "Planet / space hall",
+      "emoji": "🪐",
+      "one_liner": "Space moments.",
+      "tags": [
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Space / sky",
+      "qa_card": {
+        "question": "What did you notice about the Planet / space hall?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sci-planet"
+    },
+    {
+      "id": "sci_dinosaur",
+      "label": "Dinosaur hall",
+      "emoji": "🦖",
+      "one_liner": "Dinos if featured.",
+      "tags": [
+        "read"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Life",
+      "qa_card": {
+        "question": "What did you notice about the Dinosaur hall?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sci-dinosaur"
+    },
+    {
+      "id": "cm_free_explore",
+      "label": "Free explore",
+      "emoji": "🧭",
+      "one_liner": "They choose.",
+      "tags": [
         "play"
       ],
       "age_fit": [
@@ -34,22 +99,20 @@
         "6-8",
         "9+"
       ],
-      "zone": "Halls",
+      "zone": "Kid pick",
       "qa_card": {
-        "question": "What did you try or notice at Hands-on lab?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+        "question": "What did you notice about the Free explore?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-hands-on"
+      "catalog_id": "cm-free-explore"
     },
     {
-      "id": "sci_planet",
-      "label": "Planet / space hall",
-      "emoji": "🪐",
-      "one_liner": "Planets, stars, and big sky questions.",
+      "id": "sci_rocket",
+      "label": "Rockets & launch",
+      "emoji": "🚀",
+      "one_liner": "Flight/tech wow.",
       "tags": [
-        "wow",
-        "water",
-        "read"
+        "wow"
       ],
       "age_fit": [
         "2-3",
@@ -57,34 +120,12 @@
         "6-8",
         "9+"
       ],
-      "zone": "Halls",
+      "zone": "Flight",
       "qa_card": {
-        "question": "What did you try or notice at Planet / space hall?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+        "question": "What did you notice about the Rockets & launch?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-planet"
-    },
-    {
-      "id": "sci_dinosaur",
-      "label": "Dinosaur hall",
-      "emoji": "🦖",
-      "one_liner": "Bones, giants, and deep time — look up!",
-      "tags": [
-        "wow",
-        "read"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Dinosaur hall?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "sci-dinosaur"
+      "catalog_id": "sci-rocket"
     },
     {
       "id": "cm_makery",
@@ -132,28 +173,6 @@
       "catalog_id": "cm-imaginarium"
     },
     {
-      "id": "cm_free_explore",
-      "label": "Free explore",
-      "emoji": "🧭",
-      "one_liner": "Their choice path — whatever pulled them in!",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Free explore?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "cm-free-explore"
-    },
-    {
       "id": "sci_shuttle",
       "label": "Space shuttle / orbiter",
       "emoji": "🛰️",
@@ -174,41 +193,25 @@
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
       "catalog_id": "sci-shuttle"
-    },
-    {
-      "id": "sci_rocket",
-      "label": "Rockets & launch",
-      "emoji": "🚀",
-      "one_liner": "Tall rockets and the power of liftoff.",
-      "tags": [
-        "wow",
-        "read"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Rockets & launch?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "sci-rocket"
     }
   ],
-  "content_mode": "wonder",
+  "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://www.unionstation.org/sciencecity",
     "visitor_map_kind": "page",
-    "map_attribution": "Official site · Science City at Union Station"
+    "map_attribution": "Official visit page"
   },
   "parent_script": [
     "Bathroom first",
     "One big wow",
     "Snack when needed",
     "Leave while happy"
-  ]
+  ],
+  "route_90m": [
+    "sci_hands_on",
+    "sci_planet",
+    "sci_dinosaur"
+  ],
+  "research_notes": "R2 hybrid 2026-08-07"
 }

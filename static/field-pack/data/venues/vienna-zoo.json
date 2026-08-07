@@ -9,25 +9,25 @@
   "lng": 16.3038,
   "official_url": "https://www.zoovienna.at/en/",
   "last_verified": "2026-08-07",
-  "verified_by": "catalog-scaffold",
+  "verified_by": "research",
   "status": "verified",
-  "tagline": "World’s oldest zoo — kid shortlist + hunt.",
+  "tagline": "Schönbrunn Zoo — oldest zoo in the world inside palace gardens.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Check the official site for tickets and hours.",
-    "transit_note": ""
+    "ticket_note": "Zoo tickets separate from palace sometimes.",
+    "transit_note": "Schönbrunn; U4.",
+    "energy_note": "stroller-easy",
+    "best_start": "Panda/giant icons only if present; else big mammals loop."
   },
   "items": [
     {
-      "id": "african_elephant",
-      "label": "African elephant",
-      "emoji": "🐘",
-      "one_liner": "Biggest land animal — trunk to grab, spray, and say hello.",
+      "id": "giant_panda",
+      "label": "Giant panda",
+      "emoji": "🐼",
+      "one_liner": "Pandas when on view — verify.",
       "tags": [
         "wow",
-        "big",
-        "outdoor",
-        "water"
+        "big"
       ],
       "age_fit": [
         "2-3",
@@ -35,10 +35,31 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Pandas",
       "qa_card": {
-        "question": "What is special about the African elephant?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Giant panda?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "giant-panda"
+    },
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "emoji": "🐘",
+      "one_liner": "Elephants.",
+      "tags": [
+        "big"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Elephants",
+      "qa_card": {
+        "question": "What did you notice about the African elephant?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-elephant"
     },
@@ -46,11 +67,9 @@
       "id": "reticulated_giraffe",
       "label": "Reticulated giraffe",
       "emoji": "🦒",
-      "one_liner": "Tallest animal on long legs — look up!",
+      "one_liner": "Giraffes.",
       "tags": [
-        "wow",
-        "tall",
-        "outdoor"
+        "tall"
       ],
       "age_fit": [
         "2-3",
@@ -58,12 +77,55 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Giraffes",
       "qa_card": {
-        "question": "What is special about the Reticulated giraffe?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Reticulated giraffe?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "reticulated-giraffe"
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "emoji": "🐯",
+      "one_liner": "Tigers.",
+      "tags": [
+        "big-cats"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Tigers",
+      "qa_card": {
+        "question": "What did you notice about the Sumatran tiger?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sumatran-tiger"
+    },
+    {
+      "id": "orangutan",
+      "label": "Orangutan",
+      "emoji": "🦧",
+      "one_liner": "Orangutans.",
+      "tags": [
+        "primates",
+        "climb"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Orangutans",
+      "qa_card": {
+        "question": "What did you notice about the Orangutan?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "orangutan"
     },
     {
       "id": "african_lion",
@@ -87,31 +149,6 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "african-lion"
-    },
-    {
-      "id": "sumatran_tiger",
-      "label": "Sumatran tiger",
-      "emoji": "🐯",
-      "one_liner": "Stripy forest big cat — strong and stealthy.",
-      "tags": [
-        "wow",
-        "big-cats",
-        "outdoor",
-        "rest",
-        "kids"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Sumatran tiger?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "sumatran-tiger"
     },
     {
       "id": "western_lowland_gorilla",
@@ -276,17 +313,23 @@
       "catalog_id": "galapagos-tortoise"
     }
   ],
-  "content_mode": "wonder",
+  "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://www.zoovienna.at/en/",
     "visitor_map_kind": "page",
-    "map_attribution": "Official site · Schönbrunn Zoo"
+    "map_attribution": "Official visit page"
   },
   "parent_script": [
     "Bathroom first",
     "One big wow",
     "Snack when needed",
     "Leave while happy"
-  ]
+  ],
+  "route_90m": [
+    "giant_panda",
+    "african_elephant",
+    "reticulated_giraffe"
+  ],
+  "research_notes": "R2 hybrid 2026-08-07"
 }

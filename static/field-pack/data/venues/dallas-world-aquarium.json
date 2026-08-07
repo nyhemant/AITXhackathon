@@ -9,23 +9,25 @@
   "lng": -96.81,
   "official_url": "https://www.dwazoo.com/",
   "last_verified": "2026-08-07",
-  "verified_by": "catalog-scaffold",
+  "verified_by": "research",
   "status": "verified",
-  "tagline": "Rainforest and tanks downtown.",
+  "tagline": "Downtown Dallas rainforest-under-a-roof — sloths, fish, and vertical wow.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Check the official site for tickets and hours.",
-    "transit_note": ""
+    "ticket_note": "Downtown parking; check dwazoo.com.",
+    "transit_note": "West End / downtown.",
+    "energy_note": "indoor",
+    "best_start": "Start at the top and spiral down if signed that way."
   },
   "items": [
     {
-      "id": "shark",
-      "label": "Shark",
-      "emoji": "🦈",
-      "one_liner": "Ocean hunter with a strong swishy body.",
+      "id": "two_toed_sloth",
+      "label": "Two-toed sloth",
+      "emoji": "🦥",
+      "one_liner": "Sloths hanging in the greenery.",
       "tags": [
-        "wow",
-        "water"
+        "climb",
+        "wow"
       ],
       "age_fit": [
         "2-3",
@@ -33,10 +35,32 @@
         "6-8",
         "9+"
       ],
-      "zone": "Galleries",
+      "zone": "Rainforest",
+      "qa_card": {
+        "question": "What did you notice about the Two-toed sloth?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "two-toed-sloth"
+    },
+    {
+      "id": "shark",
+      "label": "Shark",
+      "emoji": "🦈",
+      "one_liner": "Sharks in the aquatic sections.",
+      "tags": [
+        "water",
+        "big"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Aquatic",
       "qa_card": {
         "question": "What did you notice about the Shark?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "shark"
     },
@@ -44,10 +68,10 @@
       "id": "stingray",
       "label": "Stingray",
       "emoji": "射线",
-      "one_liner": "Flat swimmer — often in touch pools (gentle hands!).",
+      "one_liner": "Rays gliding past.",
       "tags": [
-        "wow",
-        "water"
+        "water",
+        "flat"
       ],
       "age_fit": [
         "2-3",
@@ -55,12 +79,56 @@
         "6-8",
         "9+"
       ],
-      "zone": "Galleries",
+      "zone": "Aquatic",
       "qa_card": {
         "question": "What did you notice about the Stingray?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "stingray"
+    },
+    {
+      "id": "ring_tailed_lemur",
+      "label": "Ring-tailed lemur",
+      "emoji": "🐒",
+      "one_liner": "Lemur energy in rainforest settings.",
+      "tags": [
+        "primates",
+        "play"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Primates",
+      "qa_card": {
+        "question": "What did you notice about the Ring-tailed lemur?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "ring-tailed-lemur"
+    },
+    {
+      "id": "jellyfish",
+      "label": "Jellyfish",
+      "emoji": "🎐",
+      "one_liner": "Glow pause if present.",
+      "tags": [
+        "water",
+        "glow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Jellies",
+      "qa_card": {
+        "question": "What did you notice about the Jellyfish?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "jellyfish"
     },
     {
       "id": "seahorse",
@@ -83,28 +151,6 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "seahorse"
-    },
-    {
-      "id": "jellyfish",
-      "label": "Jellyfish",
-      "emoji": "🎐",
-      "one_liner": "Soft drifter — no bones, glows and pulses in the water.",
-      "tags": [
-        "wow",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "What did you notice about the Jellyfish?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "jellyfish"
     },
     {
       "id": "clownfish",
@@ -289,17 +335,23 @@
       "catalog_id": "asian-small-clawed-otter"
     }
   ],
-  "content_mode": "wonder",
+  "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://www.dwazoo.com/",
     "visitor_map_kind": "page",
-    "map_attribution": "Official site · Dallas World Aquarium"
+    "map_attribution": "Official visit page"
   },
   "parent_script": [
     "Bathroom first",
     "One big wow",
     "Snack when needed",
     "Leave while happy"
-  ]
+  ],
+  "route_90m": [
+    "two_toed_sloth",
+    "shark",
+    "stingray"
+  ],
+  "research_notes": "R2 hybrid 2026-08-07"
 }

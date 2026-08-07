@@ -9,25 +9,26 @@
   "lng": -94.53,
   "official_url": "https://www.kansascityzoo.org/",
   "last_verified": "2026-08-07",
-  "verified_by": "catalog-scaffold",
+  "verified_by": "research",
   "status": "verified",
-  "tagline": "Heartland zoo shortlist.",
+  "tagline": "KC zoo — train/boat extras optional; pick habitats not rides first.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Check the official site for tickets and hours.",
-    "transit_note": ""
+    "ticket_note": "Extras cost more; animals first.",
+    "transit_note": "Swope Park; car.",
+    "energy_note": "stroller-easy",
+    "best_start": "Africa or Australia first, then decide."
   },
   "items": [
     {
       "id": "african_elephant",
       "label": "African elephant",
       "emoji": "🐘",
-      "one_liner": "Biggest land animal — trunk to grab, spray, and say hello.",
+      "one_liner": "Elephants early.",
       "tags": [
-        "wow",
         "big",
         "outdoor",
-        "water"
+        "wow"
       ],
       "age_fit": [
         "2-3",
@@ -35,10 +36,10 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Africa",
       "qa_card": {
-        "question": "What is special about the African elephant?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the African elephant?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-elephant"
     },
@@ -46,9 +47,8 @@
       "id": "reticulated_giraffe",
       "label": "Reticulated giraffe",
       "emoji": "🦒",
-      "one_liner": "Tallest animal on long legs — look up!",
+      "one_liner": "Giraffes.",
       "tags": [
-        "wow",
         "tall",
         "outdoor"
       ],
@@ -58,10 +58,10 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Africa",
       "qa_card": {
-        "question": "What is special about the Reticulated giraffe?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Reticulated giraffe?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "reticulated-giraffe"
     },
@@ -69,9 +69,8 @@
       "id": "african_lion",
       "label": "African lion",
       "emoji": "🦁",
-      "one_liner": "Big cat of the grassland pride — mighty roar!",
+      "one_liner": "Lions.",
       "tags": [
-        "wow",
         "big-cats",
         "outdoor"
       ],
@@ -81,10 +80,10 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Cats",
       "qa_card": {
-        "question": "What is special about the African lion?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the African lion?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-lion"
     },
@@ -92,13 +91,10 @@
       "id": "sumatran_tiger",
       "label": "Sumatran tiger",
       "emoji": "🐯",
-      "one_liner": "Stripy forest big cat — strong and stealthy.",
+      "one_liner": "Tigers.",
       "tags": [
-        "wow",
         "big-cats",
-        "outdoor",
-        "rest",
-        "kids"
+        "outdoor"
       ],
       "age_fit": [
         "2-3",
@@ -106,12 +102,34 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Cats / Asia",
       "qa_card": {
-        "question": "What is special about the Sumatran tiger?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Sumatran tiger?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sumatran-tiger"
+    },
+    {
+      "id": "koala",
+      "label": "Koala",
+      "emoji": "🐨",
+      "one_liner": "Koalas if on exhibit — iconic KC stop when present.",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Australia",
+      "qa_card": {
+        "question": "What did you notice about the Koala?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "koala"
     },
     {
       "id": "western_lowland_gorilla",
@@ -296,17 +314,23 @@
       "catalog_id": "galapagos-tortoise"
     }
   ],
-  "content_mode": "wonder",
+  "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://www.kansascityzoo.org/",
     "visitor_map_kind": "page",
-    "map_attribution": "Official site · Kansas City Zoo"
+    "map_attribution": "Official visit page"
   },
   "parent_script": [
     "Bathroom first",
     "One big wow",
     "Snack when needed",
     "Leave while happy"
-  ]
+  ],
+  "route_90m": [
+    "african_elephant",
+    "reticulated_giraffe",
+    "african_lion"
+  ],
+  "research_notes": "R2 hybrid 2026-08-07"
 }

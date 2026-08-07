@@ -9,22 +9,23 @@
   "lng": -97.71,
   "official_url": "https://thinkeryaustin.org/",
   "last_verified": "2026-08-07",
-  "verified_by": "catalog-scaffold",
+  "verified_by": "research",
   "status": "verified",
-  "tagline": "Hands-on STEM play for curious kids.",
+  "tagline": "Austin Thinkery — pure play museum; short visit, high joy.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Check the official site for tickets and hours.",
-    "transit_note": ""
+    "ticket_note": "Mueller; timed tickets peak times.",
+    "transit_note": "Easy parking usually.",
+    "energy_note": "indoor",
+    "best_start": "One big play room + snack."
   },
   "items": [
     {
-      "id": "cm_outdoor",
-      "label": "Outdoor Area",
-      "emoji": "🌳",
-      "one_liner": "Outside play — waterfall, nature, big body movement.",
+      "id": "cm_makery",
+      "label": "Creative Makery",
+      "emoji": "🔧",
+      "one_liner": "Build and tinker.",
       "tags": [
-        "wow",
         "hands",
         "play"
       ],
@@ -34,21 +35,20 @@
         "6-8",
         "9+"
       ],
-      "zone": "Halls",
+      "zone": "Make",
       "qa_card": {
-        "question": "What did you try or notice at Outdoor Area?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+        "question": "What did you notice about the Creative Makery?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "cm-outdoor"
+      "catalog_id": "cm-makery"
     },
     {
       "id": "cm_imaginarium",
       "label": "Imaginarium",
       "emoji": "✨",
-      "one_liner": "Multi-sensory world — explore, notice, imagine.",
+      "one_liner": "Pretend worlds.",
       "tags": [
-        "wow",
-        "outdoor"
+        "play"
       ],
       "age_fit": [
         "2-3",
@@ -56,12 +56,78 @@
         "6-8",
         "9+"
       ],
-      "zone": "Halls",
+      "zone": "Imagine",
       "qa_card": {
-        "question": "What did you try or notice at Imaginarium?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+        "question": "What did you notice about the Imaginarium?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "cm-imaginarium"
+    },
+    {
+      "id": "cm_waterfall",
+      "label": "Waterfall play",
+      "emoji": "💧",
+      "one_liner": "Splash when open.",
+      "tags": [
+        "water",
+        "play"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Water",
+      "qa_card": {
+        "question": "What did you notice about the Waterfall play?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "cm-waterfall"
+    },
+    {
+      "id": "cm_toddler_garden",
+      "label": "Toddler Garden",
+      "emoji": "🌱",
+      "one_liner": "Toddler spaces.",
+      "tags": [
+        "rest",
+        "play"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Little kids",
+      "qa_card": {
+        "question": "What did you notice about the Toddler Garden?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "cm-toddler-garden"
+    },
+    {
+      "id": "cm_outdoor",
+      "label": "Outdoor Area",
+      "emoji": "🌳",
+      "one_liner": "Outside energy if open.",
+      "tags": [
+        "outdoor",
+        "play"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Outdoor",
+      "qa_card": {
+        "question": "What did you notice about the Outdoor Area?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "cm-outdoor"
     },
     {
       "id": "cm_woven",
@@ -87,29 +153,6 @@
       "catalog_id": "cm-woven"
     },
     {
-      "id": "cm_makery",
-      "label": "Creative Makery",
-      "emoji": "🔧",
-      "one_liner": "Build, invent, problem-solve with your hands.",
-      "tags": [
-        "wow",
-        "hands",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Creative Makery?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "cm-makery"
-    },
-    {
       "id": "cm_art_lab",
       "label": "Art Lab",
       "emoji": "🎨",
@@ -131,51 +174,6 @@
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
       "catalog_id": "cm-art-lab"
-    },
-    {
-      "id": "cm_waterfall",
-      "label": "Waterfall play",
-      "emoji": "💧",
-      "one_liner": "Programmable waterfall / water play outdoors.",
-      "tags": [
-        "wow",
-        "hands",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Waterfall play?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "cm-waterfall"
-    },
-    {
-      "id": "cm_toddler_garden",
-      "label": "Toddler Garden",
-      "emoji": "🌱",
-      "one_liner": "Gentler outdoor/garden space for little explorers.",
-      "tags": [
-        "wow",
-        "read"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Toddler Garden?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "cm-toddler-garden"
     },
     {
       "id": "cm_free_explore",
@@ -200,17 +198,23 @@
       "catalog_id": "cm-free-explore"
     }
   ],
-  "content_mode": "wonder",
+  "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://thinkeryaustin.org/",
     "visitor_map_kind": "page",
-    "map_attribution": "Official site · Thinkery"
+    "map_attribution": "Official visit page"
   },
   "parent_script": [
     "Bathroom first",
     "One big wow",
     "Snack when needed",
     "Leave while happy"
-  ]
+  ],
+  "route_90m": [
+    "cm_makery",
+    "cm_imaginarium",
+    "cm_waterfall"
+  ],
+  "research_notes": "R2 hybrid 2026-08-07"
 }

@@ -9,20 +9,22 @@
   "lng": -77.03,
   "official_url": "https://naturalhistory.si.edu/",
   "last_verified": "2026-08-07",
-  "verified_by": "catalog-scaffold",
+  "verified_by": "research",
   "status": "verified",
-  "tagline": "Dinos and gems on the Mall.",
+  "tagline": "Mall fossils and ocean hall — free, crowded, finishable if you pick two halls.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Check the official site for tickets and hours.",
-    "transit_note": ""
+    "ticket_note": "Free; lines at peak times.",
+    "transit_note": "National Mall Metro.",
+    "energy_note": "indoor",
+    "best_start": "Fossil hall wow, then one more favorite."
   },
   "items": [
     {
       "id": "sci_dinosaur",
       "label": "Dinosaur hall",
       "emoji": "🦖",
-      "one_liner": "Bones, giants, and deep time — look up!",
+      "one_liner": "Deep-time bones for instant wow.",
       "tags": [
         "wow",
         "read"
@@ -33,10 +35,10 @@
         "6-8",
         "9+"
       ],
-      "zone": "Halls",
+      "zone": "Fossils",
       "qa_card": {
-        "question": "What did you try or notice at Dinosaur hall?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+        "question": "What did you notice about the Dinosaur hall?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sci-dinosaur"
     },
@@ -44,10 +46,9 @@
       "id": "sci_mammal_hall",
       "label": "Animal / mammal hall",
       "emoji": "🦌",
-      "one_liner": "Lifelike animals from around the world — spot fur, horns, and habitats.",
+      "one_liner": "Classic dioramas and big animals.",
       "tags": [
-        "wow",
-        "outdoor"
+        "wow"
       ],
       "age_fit": [
         "2-3",
@@ -55,12 +56,76 @@
         "6-8",
         "9+"
       ],
-      "zone": "Halls",
+      "zone": "Mammals",
       "qa_card": {
-        "question": "What did you try or notice at Animal / mammal hall?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+        "question": "What did you notice about the Animal / mammal hall?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sci-mammal-hall"
+    },
+    {
+      "id": "sci_aquarium_zone",
+      "label": "Aquarium zone",
+      "emoji": "🐠",
+      "one_liner": "Ocean hall energy when open.",
+      "tags": [
+        "water",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Ocean",
+      "qa_card": {
+        "question": "What did you notice about the Aquarium zone?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sci-aquarium-zone"
+    },
+    {
+      "id": "sci_hands_on",
+      "label": "Hands-on lab",
+      "emoji": "🔬",
+      "one_liner": "Hands-on corners when available.",
+      "tags": [
+        "hands"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Discovery",
+      "qa_card": {
+        "question": "What did you notice about the Hands-on lab?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sci-hands-on"
+    },
+    {
+      "id": "cm_free_explore",
+      "label": "Free explore",
+      "emoji": "🧭",
+      "one_liner": "Five minutes their choice.",
+      "tags": [
+        "play"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Kid lead",
+      "qa_card": {
+        "question": "What did you notice about the Free explore?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "cm-free-explore"
     },
     {
       "id": "sci_planet",
@@ -86,29 +151,6 @@
       "catalog_id": "sci-planet"
     },
     {
-      "id": "sci_hands_on",
-      "label": "Hands-on lab",
-      "emoji": "🔬",
-      "one_liner": "Touch, test, build — science you can try.",
-      "tags": [
-        "wow",
-        "hands",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Hands-on lab?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "sci-hands-on"
-    },
-    {
       "id": "cm_imaginarium",
       "label": "Imaginarium",
       "emoji": "✨",
@@ -129,28 +171,6 @@
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
       "catalog_id": "cm-imaginarium"
-    },
-    {
-      "id": "cm_free_explore",
-      "label": "Free explore",
-      "emoji": "🧭",
-      "one_liner": "Their choice path — whatever pulled them in!",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Free explore?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "cm-free-explore"
     },
     {
       "id": "sci_rainforest",
@@ -174,39 +194,25 @@
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
       "catalog_id": "sci-rainforest"
-    },
-    {
-      "id": "kids_rest",
-      "label": "Kids rest / play stop",
-      "emoji": "🛝",
-      "one_liner": "Take a break, then keep exploring.",
-      "tags": [
-        "rest",
-        "kids"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8"
-      ],
-      "zone": "",
-      "qa_card": {
-        "question": "Did a rest stop help?",
-        "answer": "Breaks help little legs finish the day!"
-      }
     }
   ],
-  "content_mode": "wonder",
+  "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://naturalhistory.si.edu/",
     "visitor_map_kind": "page",
-    "map_attribution": "Official site · National Museum of Natural History"
+    "map_attribution": "Official visit page"
   },
   "parent_script": [
     "Bathroom first",
     "One big wow",
     "Snack when needed",
     "Leave while happy"
-  ]
+  ],
+  "route_90m": [
+    "sci_dinosaur",
+    "sci_mammal_hall",
+    "sci_aquarium_zone"
+  ],
+  "research_notes": "R2 hybrid 2026-08-07"
 }

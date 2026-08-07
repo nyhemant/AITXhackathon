@@ -1027,13 +1027,12 @@ window.FIELD_PACK_VENUES = {
     location: "Austin, Texas",
     website: "https://www.austinzoo.org/",
     mapUrl: "https://www.austinzoo.org/",
-    blurb: "Hill Country zoo \u2014 shortlist, not overwhelm.",
+    blurb: "Perfect when you want animals without a stadium day.",
     itemLabel: "animals",
     featuredAnimalIds: [
-      "reticulated-giraffe",
       "african-lion",
       "sumatran-tiger",
-      "two-toed-sloth",
+      "reticulated-giraffe",
       "ring-tailed-lemur",
       "galapagos-tortoise"
     ],
@@ -1602,15 +1601,14 @@ window.FIELD_PACK_VENUES = {
     location: "Austin, Texas",
     website: "https://thinkeryaustin.org/",
     mapUrl: "https://thinkeryaustin.org/",
-    blurb: "Hands-on STEM play for curious kids.",
+    blurb: "Let them lead; print wonders not a schedule.",
     itemLabel: "play zones",
     featuredAnimalIds: [
-      "cm-outdoor",
-      "cm-imaginarium",
-      "cm-woven",
       "cm-makery",
-      "cm-art-lab",
-      "cm-waterfall"
+      "cm-imaginarium",
+      "cm-waterfall",
+      "cm-toddler-garden",
+      "cm-outdoor"
     ],
     animalIds: [
       "cm-outdoor",
@@ -2209,19 +2207,18 @@ window.FIELD_PACK_VENUES = {
     shortName: "National Museum of Natural\u2026",
     type: "nh",
     mode: "precooked",
-    quality: "starter",
+    quality: "full",
     packTemplate: "exhibits",
     location: "Washington, DC",
     website: "https://naturalhistory.si.edu/",
     mapUrl: "https://naturalhistory.si.edu/",
-    blurb: "Dinos and gems on the Mall.",
+    blurb: "Dinos or ocean first; don’t try the whole building.",
     itemLabel: "stops",
     featuredAnimalIds: [
       "sci-dinosaur",
       "sci-mammal-hall",
-      "sci-planet",
+      "sci-aquarium-zone",
       "sci-hands-on",
-      "cm-imaginarium",
       "cm-free-explore"
     ],
     animalIds: [
@@ -2251,20 +2248,19 @@ window.FIELD_PACK_VENUES = {
     shortName: "National Air and Space Mus\u2026",
     type: "space",
     mode: "precooked",
-    quality: "starter",
+    quality: "full",
     packTemplate: "exhibits",
     location: "Washington, DC",
     website: "https://airandspace.si.edu/",
     mapUrl: "https://airandspace.si.edu/",
-    blurb: "Planes and space on the Mall.",
+    blurb: "Udvar-Hazy or Mall: pick planes first, then one space hall.",
     itemLabel: "stops",
     featuredAnimalIds: [
       "sci-rocket",
       "sci-shuttle",
       "sci-astronaut",
       "sci-planet",
-      "sci-hands-on",
-      "cm-outdoor"
+      "cm-free-explore"
     ],
     animalIds: [
       "sci-rocket",
@@ -2754,20 +2750,19 @@ window.FIELD_PACK_VENUES = {
     shortName: "Arizona Science Center",
     type: "sci",
     mode: "precooked",
-    quality: "starter",
+    quality: "full",
     packTemplate: "exhibits",
     location: "Phoenix, AZ",
     website: "https://www.azscience.org/",
     mapUrl: "https://www.azscience.org/",
-    blurb: "Hands-on science downtown.",
+    blurb: "Hands-on first; planetarium only if energy remains.",
     itemLabel: "stops",
     featuredAnimalIds: [
       "sci-hands-on",
       "sci-planet",
-      "sci-dinosaur",
-      "cm-makery",
-      "cm-imaginarium",
-      "cm-free-explore"
+      "sci-rocket",
+      "cm-free-explore",
+      "sci-dinosaur"
     ],
     animalIds: [
       "sci-hands-on",
@@ -2797,20 +2792,19 @@ window.FIELD_PACK_VENUES = {
     shortName: "San Antonio Zoo",
     type: "zoo",
     mode: "precooked",
-    quality: "starter",
+    quality: "full",
     packTemplate: "animals",
     location: "San Antonio, TX",
     website: "https://sazoo.org/",
     mapUrl: "https://sazoo.org/",
-    blurb: "River city zoo shortlist.",
+    blurb: "Heat strategy: morning only in summer.",
     itemLabel: "animals",
     featuredAnimalIds: [
       "african-elephant",
       "reticulated-giraffe",
-      "african-lion",
       "sumatran-tiger",
       "western-lowland-gorilla",
-      "african-penguin"
+      "caribbean-flamingo"
     ],
     animalIds: [
       "african-elephant",
@@ -2850,15 +2844,14 @@ window.FIELD_PACK_VENUES = {
     location: "Dallas, TX",
     website: "https://www.dwazoo.com/",
     mapUrl: "https://www.dwazoo.com/",
-    blurb: "Rainforest and tanks downtown.",
+    blurb: "Multi-level indoor loop; great heat escape.",
     itemLabel: "animals",
     featuredAnimalIds: [
+      "two-toed-sloth",
       "shark",
       "stingray",
-      "seahorse",
-      "jellyfish",
-      "clownfish",
-      "sea-turtle"
+      "ring-tailed-lemur",
+      "jellyfish"
     ],
     animalIds: [
       "shark",
@@ -2898,15 +2891,14 @@ window.FIELD_PACK_VENUES = {
     location: "Dallas, TX",
     website: "https://www.perotmuseum.org/",
     mapUrl: "https://www.perotmuseum.org/",
-    blurb: "Dinos and hands-on science upstairs.",
+    blurb: "Children’s levels + one big hall is a perfect half day.",
     itemLabel: "stops",
     featuredAnimalIds: [
       "sci-dinosaur",
-      "sci-mammal-hall",
-      "sci-planet",
       "sci-hands-on",
       "cm-imaginarium",
-      "cm-free-explore"
+      "sci-planet",
+      "cm-makery"
     ],
     animalIds: [
       "sci-dinosaur",
@@ -3025,20 +3017,19 @@ window.FIELD_PACK_VENUES = {
     shortName: "Cleveland Metroparks Zoo",
     type: "zoo",
     mode: "precooked",
-    quality: "starter",
+    quality: "full",
     packTemplate: "animals",
     location: "Cleveland, OH",
     website: "https://www.clevelandmetroparks.com/zoo",
     mapUrl: "https://www.clevelandmetroparks.com/zoo",
-    blurb: "RainForest and classic zoo day.",
+    blurb: "Use the indoor rainforest when weather bites.",
     itemLabel: "animals",
     featuredAnimalIds: [
-      "african-elephant",
-      "reticulated-giraffe",
-      "african-lion",
-      "sumatran-tiger",
       "western-lowland-gorilla",
-      "african-penguin"
+      "african-elephant",
+      "sumatran-tiger",
+      "reticulated-giraffe",
+      "two-toed-sloth"
     ],
     animalIds: [
       "african-elephant",
@@ -3210,19 +3201,18 @@ window.FIELD_PACK_VENUES = {
     shortName: "Museum of Science and Indu\u2026",
     type: "sci",
     mode: "precooked",
-    quality: "starter",
+    quality: "full",
     packTemplate: "exhibits",
     location: "Chicago, IL",
     website: "https://www.msichicago.org/",
     mapUrl: "https://www.msichicago.org/",
-    blurb: "Submarine, trains, hands-on halls.",
+    blurb: "Pick two signature experiences; ignore the rest guilt-free.",
     itemLabel: "stops",
     featuredAnimalIds: [
       "sci-hands-on",
+      "sci-rocket",
       "sci-planet",
       "sci-dinosaur",
-      "cm-makery",
-      "cm-imaginarium",
       "cm-free-explore"
     ],
     animalIds: [
@@ -3299,20 +3289,19 @@ window.FIELD_PACK_VENUES = {
     shortName: "Memphis Zoo",
     type: "zoo",
     mode: "precooked",
-    quality: "starter",
+    quality: "full",
     packTemplate: "animals",
     location: "Memphis, TN",
     website: "https://www.memphiszoo.org/",
     mapUrl: "https://www.memphiszoo.org/",
-    blurb: "Pandas and classic zoo day.",
+    blurb: "Morning visit; pick pandas only if currently on view (exhibits change).",
     itemLabel: "animals",
     featuredAnimalIds: [
+      "giant-panda",
       "african-elephant",
       "reticulated-giraffe",
-      "african-lion",
       "sumatran-tiger",
-      "western-lowland-gorilla",
-      "african-penguin"
+      "western-lowland-gorilla"
     ],
     animalIds: [
       "african-elephant",
@@ -3392,20 +3381,19 @@ window.FIELD_PACK_VENUES = {
     shortName: "Audubon Zoo",
     type: "zoo",
     mode: "precooked",
-    quality: "starter",
+    quality: "full",
     packTemplate: "animals",
     location: "New Orleans, LA",
     website: "https://audubonnatureinstitute.org/zoo",
     mapUrl: "https://audubonnatureinstitute.org/zoo",
-    blurb: "Uptown New Orleans zoo.",
+    blurb: "Compact enough for a half day; shade and water in heat.",
     itemLabel: "animals",
     featuredAnimalIds: [
       "african-elephant",
       "reticulated-giraffe",
-      "african-lion",
       "sumatran-tiger",
       "western-lowland-gorilla",
-      "african-penguin"
+      "nile-hippo"
     ],
     animalIds: [
       "african-elephant",
@@ -3439,20 +3427,19 @@ window.FIELD_PACK_VENUES = {
     shortName: "Zoo Miami",
     type: "zoo",
     mode: "precooked",
-    quality: "starter",
+    quality: "full",
     packTemplate: "animals",
     location: "Miami, FL",
     website: "https://www.zoomiami.org/",
     mapUrl: "https://www.zoomiami.org/",
-    blurb: "South Florida open-range zoo.",
+    blurb: "Never see it all; two loops max in heat.",
     itemLabel: "animals",
     featuredAnimalIds: [
       "african-elephant",
       "reticulated-giraffe",
-      "african-lion",
       "sumatran-tiger",
-      "western-lowland-gorilla",
-      "african-penguin"
+      "orangutan",
+      "nile-hippo"
     ],
     animalIds: [
       "african-elephant",
@@ -3528,20 +3515,19 @@ window.FIELD_PACK_VENUES = {
     shortName: "ZooTampa at Lowry Park",
     type: "zoo",
     mode: "precooked",
-    quality: "starter",
+    quality: "full",
     packTemplate: "animals",
     location: "Tampa, FL",
     website: "https://zootampa.org/",
     mapUrl: "https://zootampa.org/",
-    blurb: "Manatees and Florida zoo day.",
+    blurb: "Manatee building is the local wow when open.",
     itemLabel: "animals",
     featuredAnimalIds: [
+      "nile-hippo",
       "african-elephant",
       "reticulated-giraffe",
-      "african-lion",
       "sumatran-tiger",
-      "western-lowland-gorilla",
-      "african-penguin"
+      "stingray"
     ],
     animalIds: [
       "african-elephant",
@@ -3621,20 +3607,19 @@ window.FIELD_PACK_VENUES = {
     shortName: "Orlando Science Center",
     type: "sci",
     mode: "precooked",
-    quality: "starter",
+    quality: "full",
     packTemplate: "exhibits",
     location: "Orlando, FL",
     website: "https://www.osc.org/",
     mapUrl: "https://www.osc.org/",
-    blurb: "Hands-on science (not theme parks).",
+    blurb: "Great reset day from parks; don’t stack every add-on.",
     itemLabel: "stops",
     featuredAnimalIds: [
       "sci-hands-on",
       "sci-planet",
       "sci-dinosaur",
-      "cm-makery",
-      "cm-imaginarium",
-      "cm-free-explore"
+      "cm-free-explore",
+      "sci-rocket"
     ],
     animalIds: [
       "sci-hands-on",
@@ -3664,20 +3649,19 @@ window.FIELD_PACK_VENUES = {
     shortName: "North Carolina Zoo",
     type: "zoo",
     mode: "precooked",
-    quality: "starter",
+    quality: "full",
     packTemplate: "animals",
     location: "Asheboro, NC",
     website: "https://www.nczoo.org/",
     mapUrl: "https://www.nczoo.org/",
-    blurb: "One of the world's largest natural-habitat zoos.",
+    blurb: "One continent side per visit with little kids.",
     itemLabel: "animals",
     featuredAnimalIds: [
       "african-elephant",
       "reticulated-giraffe",
       "african-lion",
-      "sumatran-tiger",
       "western-lowland-gorilla",
-      "african-penguin"
+      "nile-hippo"
     ],
     animalIds: [
       "african-elephant",
@@ -3711,20 +3695,19 @@ window.FIELD_PACK_VENUES = {
     shortName: "Discovery Place Science",
     type: "sci",
     mode: "precooked",
-    quality: "starter",
+    quality: "full",
     packTemplate: "exhibits",
     location: "Charlotte, NC",
     website: "https://discoveryplace.org/",
     mapUrl: "https://discoveryplace.org/",
-    blurb: "Hands-on science in Charlotte.",
+    blurb: "One lab floor + kid choice beats racing every exhibit.",
     itemLabel: "stops",
     featuredAnimalIds: [
       "sci-hands-on",
       "sci-planet",
       "sci-dinosaur",
-      "cm-makery",
-      "cm-imaginarium",
-      "cm-free-explore"
+      "cm-free-explore",
+      "sci-aquarium-zone"
     ],
     animalIds: [
       "sci-hands-on",
@@ -3800,20 +3783,19 @@ window.FIELD_PACK_VENUES = {
     shortName: "Pittsburgh Zoo & Aquarium",
     type: "zoo_aq",
     mode: "precooked",
-    quality: "starter",
+    quality: "full",
     packTemplate: "animals",
     location: "Pittsburgh, PA",
     website: "https://www.pittsburghzoo.org/",
     mapUrl: "https://www.pittsburghzoo.org/",
-    blurb: "Zoo + aquarium in one visit.",
+    blurb: "Aquarium helps on cold days; outdoor loops when mild.",
     itemLabel: "animals",
     featuredAnimalIds: [
-      "african-elephant",
-      "sumatran-tiger",
       "shark",
-      "jellyfish",
+      "african-elephant",
       "reticulated-giraffe",
-      "sea-turtle"
+      "sumatran-tiger",
+      "jellyfish"
     ],
     animalIds: [
       "african-elephant",
@@ -3845,19 +3827,18 @@ window.FIELD_PACK_VENUES = {
     shortName: "Carnegie Museum of Natural\u2026",
     type: "nh",
     mode: "precooked",
-    quality: "starter",
+    quality: "full",
     packTemplate: "exhibits",
     location: "Pittsburgh, PA",
     website: "https://carnegiemnh.org/",
     mapUrl: "https://carnegiemnh.org/",
-    blurb: "Dinos in Pittsburgh.",
+    blurb: "Dippy energy: fossils first, then one more hall.",
     itemLabel: "stops",
     featuredAnimalIds: [
       "sci-dinosaur",
       "sci-mammal-hall",
-      "sci-planet",
       "sci-hands-on",
-      "cm-imaginarium",
+      "sci-planet",
       "cm-free-explore"
     ],
     animalIds: [
@@ -3887,20 +3868,19 @@ window.FIELD_PACK_VENUES = {
     shortName: "Kansas City Zoo",
     type: "zoo",
     mode: "precooked",
-    quality: "starter",
+    quality: "full",
     packTemplate: "animals",
     location: "Kansas City, MO",
     website: "https://www.kansascityzoo.org/",
     mapUrl: "https://www.kansascityzoo.org/",
-    blurb: "Heartland zoo shortlist.",
+    blurb: "Big enough to overdo — two regions max with little kids.",
     itemLabel: "animals",
     featuredAnimalIds: [
       "african-elephant",
       "reticulated-giraffe",
       "african-lion",
       "sumatran-tiger",
-      "western-lowland-gorilla",
-      "african-penguin"
+      "koala"
     ],
     animalIds: [
       "african-elephant",
@@ -3934,20 +3914,19 @@ window.FIELD_PACK_VENUES = {
     shortName: "Science City at Union Stat\u2026",
     type: "sci",
     mode: "precooked",
-    quality: "starter",
+    quality: "full",
     packTemplate: "exhibits",
     location: "Kansas City, MO",
     website: "https://www.unionstation.org/sciencecity",
     mapUrl: "https://www.unionstation.org/sciencecity",
-    blurb: "Hands-on science downtown KC.",
+    blurb: "Combine with station grandeur; don’t overstack city plans.",
     itemLabel: "stops",
     featuredAnimalIds: [
       "sci-hands-on",
       "sci-planet",
       "sci-dinosaur",
-      "cm-makery",
-      "cm-imaginarium",
-      "cm-free-explore"
+      "cm-free-explore",
+      "sci-rocket"
     ],
     animalIds: [
       "sci-hands-on",
@@ -4068,20 +4047,19 @@ window.FIELD_PACK_VENUES = {
     shortName: "Honolulu Zoo",
     type: "zoo",
     mode: "precooked",
-    quality: "starter",
+    quality: "full",
     packTemplate: "animals",
     location: "Honolulu, HI",
     website: "https://www.honoluluzoo.org/",
     mapUrl: "https://www.honoluluzoo.org/",
-    blurb: "Waikiki zoo day (map edge).",
+    blurb: "Pair with beach carefully; zoo alone is enough for little legs.",
     itemLabel: "animals",
     featuredAnimalIds: [
       "african-elephant",
       "reticulated-giraffe",
-      "african-lion",
       "sumatran-tiger",
-      "western-lowland-gorilla",
-      "african-penguin"
+      "ring-tailed-lemur",
+      "caribbean-flamingo"
     ],
     animalIds: [
       "african-elephant",
@@ -4115,20 +4093,19 @@ window.FIELD_PACK_VENUES = {
     shortName: "Waikiki Aquarium",
     type: "aq",
     mode: "precooked",
-    quality: "starter",
+    quality: "full",
     packTemplate: "animals",
     location: "Honolulu, HI",
     website: "https://www.waikikiaquarium.org/",
     mapUrl: "https://www.waikikiaquarium.org/",
-    blurb: "Pacific reef tanks by the beach.",
+    blurb: "Short and sweet; perfect after beach or before dinner.",
     itemLabel: "animals",
     featuredAnimalIds: [
       "shark",
-      "stingray",
-      "seahorse",
+      "sea-turtle",
       "jellyfish",
-      "clownfish",
-      "sea-turtle"
+      "octopus",
+      "clownfish"
     ],
     animalIds: [
       "shark",
@@ -4206,20 +4183,19 @@ window.FIELD_PACK_VENUES = {
     shortName: "Adventure Science Center",
     type: "sci",
     mode: "precooked",
-    quality: "starter",
+    quality: "full",
     packTemplate: "exhibits",
     location: "Nashville, TN",
     website: "https://www.adventuresci.org/",
     mapUrl: "https://www.adventuresci.org/",
-    blurb: "Hands-on science in Nashville.",
+    blurb: "Body-first museum: climb, then calm make time.",
     itemLabel: "stops",
     featuredAnimalIds: [
       "sci-hands-on",
+      "cm-outdoor",
       "sci-planet",
-      "sci-dinosaur",
       "cm-makery",
-      "cm-imaginarium",
-      "cm-free-explore"
+      "cm-toddler-garden"
     ],
     animalIds: [
       "sci-hands-on",
@@ -4255,15 +4231,14 @@ window.FIELD_PACK_VENUES = {
     location: "Dallas, TX",
     website: "https://www.dallasarboretum.org/",
     mapUrl: "https://www.dallasarboretum.org/",
-    blurb: "Gardens and kid discovery trails.",
+    blurb: "Wonder sheet heaven: colors, paths, fountains, rest stops.",
     itemLabel: "play zones",
     featuredAnimalIds: [
       "cm-outdoor",
-      "cm-imaginarium",
-      "cm-woven",
-      "cm-makery",
-      "cm-art-lab",
-      "cm-waterfall"
+      "cm-free-explore",
+      "cm-toddler-garden",
+      "sci-hands-on",
+      "cm-makery"
     ],
     animalIds: [
       "cm-outdoor",
@@ -4346,14 +4321,13 @@ window.FIELD_PACK_VENUES = {
     location: "London, United Kingdom",
     website: "https://www.nhm.ac.uk/",
     mapUrl: "https://www.nhm.ac.uk/",
-    blurb: "Dinosaurs, Hintze Hall energy, Earth halls \u2014 exhibit hunt for NHM.",
+    blurb: "Pick dinosaurs or mammals; don’t marathon.",
     itemLabel: "exhibits",
     featuredAnimalIds: [
       "sci-dinosaur",
       "sci-mammal-hall",
       "sci-planet",
       "sci-hands-on",
-      "sci-rainforest",
       "cm-free-explore"
     ],
     animalIds: [
@@ -4390,15 +4364,14 @@ window.FIELD_PACK_VENUES = {
     location: "Singapore",
     website: "https://www.mandai.com/en/singapore-zoo.html",
     mapUrl: "https://www.mandai.com/en/singapore-zoo.html",
-    blurb: "Free-ranging orangutans + rainforest icons \u2014 Mandai shortlist.",
+    blurb: "Humid; pace slow; water breaks constant.",
     itemLabel: "animals",
     featuredAnimalIds: [
       "orangutan",
       "reticulated-giraffe",
       "african-elephant",
       "sumatran-tiger",
-      "asian-small-clawed-otter",
-      "chimpanzee"
+      "red-panda"
     ],
     animalIds: [
       "orangutan",
@@ -4438,15 +4411,14 @@ window.FIELD_PACK_VENUES = {
     location: "Sydney, Australia",
     website: "https://taronga.org.au/sydney-zoo",
     mapUrl: "https://taronga.org.au/sydney-zoo",
-    blurb: "Koalas, Tiger Trek, giraffe + harbour views \u2014 Sydney shortlist.",
+    blurb: "Koalas and views first; wire cable if legs allow.",
     itemLabel: "animals",
     featuredAnimalIds: [
       "koala",
       "sumatran-tiger",
-      "reticulated-giraffe",
-      "african-lion",
       "western-lowland-gorilla",
-      "red-panda"
+      "reticulated-giraffe",
+      "african-lion"
     ],
     animalIds: [
       "koala",
@@ -4480,19 +4452,19 @@ window.FIELD_PACK_VENUES = {
     shortName: "Berlin Zoo",
     type: "zoo",
     mode: "precooked",
-    quality: "starter",
+    quality: "full",
     packTemplate: "animals",
     location: "Berlin, Germany",
     website: "https://www.zoo-berlin.de/en/",
     mapUrl: "https://www.zoo-berlin.de/en/",
-    blurb: "Historic city zoo — classic animals, kid-size list.",
+    blurb: "Too big to finish; enter with a 90-minute mindset.",
     itemLabel: "animals",
     featuredAnimalIds: [
-      "african-lion",
       "african-elephant",
-      "reticulated-giraffe",
       "western-lowland-gorilla",
-      "nile-hippo"
+      "sumatran-tiger",
+      "reticulated-giraffe",
+      "african-penguin"
     ],
     animalIds: [
       "african-lion",
@@ -4525,19 +4497,19 @@ window.FIELD_PACK_VENUES = {
     shortName: "Toronto Zoo",
     type: "zoo",
     mode: "precooked",
-    quality: "starter",
+    quality: "full",
     packTemplate: "animals",
     location: "Toronto, Canada",
     website: "https://www.torontozoo.com/",
     mapUrl: "https://www.torontozoo.com/",
-    blurb: "Huge Canadian zoo — pick a region, not everything.",
+    blurb: "Wagon rental culture exists for a reason.",
     itemLabel: "animals",
     featuredAnimalIds: [
-      "african-lion",
-      "sumatran-tiger",
-      "reticulated-giraffe",
       "african-elephant",
-      "western-lowland-gorilla"
+      "reticulated-giraffe",
+      "sumatran-tiger",
+      "western-lowland-gorilla",
+      "giant-panda"
     ],
     animalIds: [
       "african-lion",
@@ -4618,20 +4590,19 @@ window.FIELD_PACK_VENUES = {
     shortName: "Vancouver Aquarium",
     type: "aquarium",
     mode: "precooked",
-    quality: "starter",
+    quality: "full",
     packTemplate: "animals",
     location: "Vancouver, Canada",
     website: "https://www.vanaqua.org/",
     mapUrl: "https://www.vanaqua.org/",
-    blurb: "Stanley Park sea life — short half-day list.",
+    blurb: "Short visit pairs with park stroller loop outside.",
     itemLabel: "animals",
     featuredAnimalIds: [
-      "shark",
-      "stingray",
+      "asian-small-clawed-otter",
       "jellyfish",
-      "sea-turtle",
       "octopus",
-      "asian-small-clawed-otter"
+      "shark",
+      "sea-turtle"
     ],
     animalIds: [
       "shark",
@@ -4671,15 +4642,14 @@ window.FIELD_PACK_VENUES = {
     location: "Paris, France",
     website: "https://www.parczoologiquedeparis.fr/en",
     mapUrl: "https://www.parczoologiquedeparis.fr/en",
-    blurb: "Vincennes biozones \u2014 short kid list for Parc Zoologique de Paris.",
+    blurb: "Half day; combine with Bois de Vincennes carefully.",
     itemLabel: "animals",
     featuredAnimalIds: [
       "african-lion",
       "reticulated-giraffe",
-      "african-elephant",
-      "western-lowland-gorilla",
       "sumatran-tiger",
-      "african-penguin"
+      "nile-hippo",
+      "western-lowland-gorilla"
     ],
     animalIds: [
       "african-lion",
@@ -4713,20 +4683,19 @@ window.FIELD_PACK_VENUES = {
     shortName: "Melbourne Zoo",
     type: "zoo",
     mode: "precooked",
-    quality: "starter",
+    quality: "full",
     packTemplate: "animals",
     location: "Melbourne, Australia",
     website: "https://www.zoo.org.au/melbourne/",
     mapUrl: "https://www.zoo.org.au/melbourne/",
-    blurb: "Royal Park zoo — half-day animal shortlist.",
+    blurb: "Half day perfect; trail of the elephants when open.",
     itemLabel: "animals",
     featuredAnimalIds: [
-      "african-lion",
-      "sumatran-tiger",
-      "western-lowland-gorilla",
-      "reticulated-giraffe",
+      "orangutan",
       "african-elephant",
-      "asian-small-clawed-otter"
+      "sumatran-tiger",
+      "koala",
+      "western-lowland-gorilla"
     ],
     animalIds: [
       "african-lion",
@@ -4760,19 +4729,19 @@ window.FIELD_PACK_VENUES = {
     shortName: "Sch\u00f6nbrunn Zoo",
     type: "zoo",
     mode: "precooked",
-    quality: "starter",
+    quality: "full",
     packTemplate: "animals",
     location: "Vienna, Austria",
     website: "https://www.zoovienna.at/en/",
     mapUrl: "https://www.zoovienna.at/en/",
-    blurb: "World\u2019s oldest zoo \u2014 kid shortlist + hunt.",
+    blurb: "Combine palace only if kids have stamina leftover.",
     itemLabel: "animals",
     featuredAnimalIds: [
+      "giant-panda",
       "african-elephant",
       "reticulated-giraffe",
-      "african-lion",
       "sumatran-tiger",
-      "western-lowland-gorilla"
+      "orangutan"
     ],
     animalIds: [
       "african-elephant",
@@ -4805,20 +4774,19 @@ window.FIELD_PACK_VENUES = {
     shortName: "Prague Zoo",
     type: "zoo",
     mode: "precooked",
-    quality: "starter",
+    quality: "full",
     packTemplate: "animals",
     location: "Prague, Czechia",
     website: "https://www.zoopraha.cz/en",
     mapUrl: "https://www.zoopraha.cz/en",
-    blurb: "Top European zoo \u2014 kid shortlist + hunt.",
+    blurb: "Gondola helps; don’t climb everything.",
     itemLabel: "animals",
     featuredAnimalIds: [
-      "african-lion",
-      "sumatran-tiger",
-      "western-lowland-gorilla",
       "reticulated-giraffe",
       "african-elephant",
-      "african-penguin"
+      "sumatran-tiger",
+      "western-lowland-gorilla",
+      "red-panda"
     ],
     animalIds: [
       "african-lion",
@@ -4852,20 +4820,19 @@ window.FIELD_PACK_VENUES = {
     shortName: "Dubai Aquarium",
     type: "aquarium",
     mode: "precooked",
-    quality: "starter",
+    quality: "full",
     packTemplate: "animals",
     location: "Dubai, UAE",
     website: "https://www.dubaiaquarium.com/",
     mapUrl: "https://www.dubaiaquarium.com/",
-    blurb: "Mall aquarium shortlist + printable hunt.",
+    blurb: "Mall day add-on; not a full zoo substitute.",
     itemLabel: "animals",
     featuredAnimalIds: [
       "shark",
       "stingray",
-      "jellyfish",
       "sea-turtle",
-      "octopus",
-      "asian-small-clawed-otter"
+      "clownfish",
+      "jellyfish"
     ],
     animalIds: [
       "shark",
@@ -4899,19 +4866,18 @@ window.FIELD_PACK_VENUES = {
     shortName: "Two Oceans Aquarium",
     type: "aquarium",
     mode: "precooked",
-    quality: "starter",
+    quality: "full",
     packTemplate: "animals",
     location: "Cape Town, South Africa",
     website: "https://www.aquarium.co.za/",
     mapUrl: "https://www.aquarium.co.za/",
-    blurb: "V&A Waterfront sea life \u2014 hunt ready.",
+    blurb: "V&A Waterfront indoor wow; pair outdoor plans carefully.",
     itemLabel: "animals",
     featuredAnimalIds: [
       "shark",
-      "stingray",
       "african-penguin",
       "jellyfish",
-      "octopus",
+      "stingray",
       "sea-turtle"
     ],
     animalIds: [
@@ -4993,19 +4959,19 @@ window.FIELD_PACK_VENUES = {
     shortName: "Ocean Park",
     type: "zoo",
     mode: "precooked",
-    quality: "starter",
+    quality: "full",
     packTemplate: "animals",
     location: "Hong Kong",
     website: "https://www.oceanpark.com.hk/en",
     mapUrl: "https://www.oceanpark.com.hk/en",
-    blurb: "Hillside park shortlist + printable hunt.",
+    blurb: "Pick ocean OR land side with little kids — not both marathons.",
     itemLabel: "animals",
     featuredAnimalIds: [
-      "asian-small-clawed-otter",
-      "red-panda",
-      "sea-turtle",
       "shark",
-      "jellyfish"
+      "jellyfish",
+      "african-penguin",
+      "sumatran-tiger",
+      "red-panda"
     ],
     animalIds: [
       "asian-small-clawed-otter",
@@ -5038,20 +5004,19 @@ window.FIELD_PACK_VENUES = {
     shortName: "Auckland Zoo",
     type: "zoo",
     mode: "precooked",
-    quality: "starter",
+    quality: "full",
     packTemplate: "animals",
     location: "Auckland, New Zealand",
     website: "https://www.aucklandzoo.co.nz/",
     mapUrl: "https://www.aucklandzoo.co.nz/",
-    blurb: "NZ\u2019s top zoo \u2014 kid shortlist + hunt.",
+    blurb: "Half day; easy add to a city stay.",
     itemLabel: "animals",
     featuredAnimalIds: [
-      "african-lion",
       "sumatran-tiger",
       "western-lowland-gorilla",
       "reticulated-giraffe",
-      "african-elephant",
-      "african-penguin"
+      "african-lion",
+      "red-panda"
     ],
     animalIds: [
       "african-lion",
@@ -5085,20 +5050,19 @@ window.FIELD_PACK_VENUES = {
     shortName: "Kaiyukan",
     type: "aquarium",
     mode: "precooked",
-    quality: "starter",
+    quality: "full",
     packTemplate: "animals",
     location: "Osaka, Japan",
     website: "https://www.kaiyukan.com/language/eng/",
     mapUrl: "https://www.kaiyukan.com/language/eng/",
-    blurb: "Pacific-ring tanks \u2014 shortlist + hunt.",
+    blurb: "Start at the biggest tank story; spiral is the experience.",
     itemLabel: "animals",
     featuredAnimalIds: [
       "shark",
       "stingray",
       "jellyfish",
       "sea-turtle",
-      "octopus",
-      "clownfish"
+      "octopus"
     ],
     animalIds: [
       "shark",
@@ -5138,14 +5102,13 @@ window.FIELD_PACK_VENUES = {
     location: "Edinburgh, United Kingdom",
     website: "https://www.edinburghzoo.org.uk/",
     mapUrl: "https://www.edinburghzoo.org.uk/",
-    blurb: "Penguin Rock + Budongo chimps \u2014 hillside shortlist (no giant pandas).",
+    blurb: "Stroller brakes matter; don’t climb every path.",
     itemLabel: "animals",
     featuredAnimalIds: [
       "african-penguin",
-      "chimpanzee",
-      "reticulated-giraffe",
+      "western-lowland-gorilla",
       "sumatran-tiger",
-      "african-lion",
+      "koala",
       "red-panda"
     ],
     animalIds: [
@@ -5184,14 +5147,13 @@ window.FIELD_PACK_VENUES = {
     location: "Dublin, Ireland",
     website: "https://www.dublinzoo.ie/",
     mapUrl: "https://www.dublinzoo.ie/",
-    blurb: "Kaziranga elephants, savanna, gorilla rainforest \u2014 Phoenix Park shortlist.",
+    blurb: "Half day with little kids; park walks optional after.",
     itemLabel: "animals",
     featuredAnimalIds: [
+      "western-lowland-gorilla",
+      "sumatran-tiger",
       "african-elephant",
       "reticulated-giraffe",
-      "western-lowland-gorilla",
-      "zebra",
-      "african-lion",
       "african-penguin"
     ],
     animalIds: [
@@ -5226,19 +5188,18 @@ window.FIELD_PACK_VENUES = {
     shortName: "ARTIS",
     type: "zoo",
     mode: "precooked",
-    quality: "starter",
+    quality: "full",
     packTemplate: "animals",
     location: "Amsterdam, Netherlands",
     website: "https://www.artis.nl/en",
     mapUrl: "https://www.artis.nl/en",
-    blurb: "Historic city zoo shortlist + printable treasure hunt.",
+    blurb: "Combine with canal day carefully; zoo alone is enough.",
     itemLabel: "animals",
     featuredAnimalIds: [
       "african-elephant",
       "african-lion",
-      "reticulated-giraffe",
-      "western-lowland-gorilla",
       "sumatran-tiger",
+      "reticulated-giraffe",
       "african-penguin"
     ],
     animalIds: [
@@ -5273,19 +5234,19 @@ window.FIELD_PACK_VENUES = {
     shortName: "Copenhagen Zoo",
     type: "zoo",
     mode: "precooked",
-    quality: "starter",
+    quality: "full",
     packTemplate: "animals",
     location: "Copenhagen, Denmark",
     website: "https://www.zoo.dk/en",
     mapUrl: "https://www.zoo.dk/en",
-    blurb: "Giraffes, elephants, and more \u2014 kid shortlist + hunt.",
+    blurb: "Tower views optional; animals first.",
     itemLabel: "animals",
     featuredAnimalIds: [
-      "reticulated-giraffe",
       "african-elephant",
+      "reticulated-giraffe",
       "african-lion",
       "sumatran-tiger",
-      "nile-hippo"
+      "western-lowland-gorilla"
     ],
     animalIds: [
       "reticulated-giraffe",
@@ -5370,14 +5331,13 @@ window.FIELD_PACK_VENUES = {
     location: "Montreal, Canada",
     website: "https://espacepourlavie.ca/en/biodome",
     mapUrl: "https://espacepourlavie.ca/en/biodome",
-    blurb: "Five ecosystems under one roof \u2014 rainforest to penguins.",
+    blurb: "Perfect cold-weather wow; pair with Space for a Science Centre day carefully.",
     itemLabel: "ecosystems",
     featuredAnimalIds: [
-      "sci-rainforest",
       "african-penguin",
-      "sci-aquarium-zone",
-      "sci-mammal-hall",
-      "sci-hands-on",
+      "two-toed-sloth",
+      "sci-rainforest",
+      "ring-tailed-lemur",
       "cm-free-explore"
     ],
     animalIds: [
@@ -5410,17 +5370,17 @@ window.FIELD_PACK_VENUES = {
     shortName: "Calgary Zoo",
     type: "zoo",
     mode: "precooked",
-    quality: "starter",
+    quality: "full",
     packTemplate: "animals",
     location: "Calgary, Canada",
     website: "https://www.calgaryzoo.com/",
     mapUrl: "https://www.calgaryzoo.com/",
-    blurb: "Foothills zoo shortlist + printable treasure hunt.",
+    blurb: "Indoor buildings matter in winter; outdoor in summer.",
     itemLabel: "animals",
     featuredAnimalIds: [
-      "african-lion",
-      "reticulated-giraffe",
+      "giant-panda",
       "african-elephant",
+      "reticulated-giraffe",
       "sumatran-tiger",
       "western-lowland-gorilla"
     ],
@@ -5501,20 +5461,19 @@ window.FIELD_PACK_VENUES = {
     shortName: "Seoul Zoo",
     type: "zoo",
     mode: "precooked",
-    quality: "starter",
+    quality: "full",
     packTemplate: "animals",
     location: "Seoul, South Korea",
     website: "https://grandpark.seoul.go.kr/main/en.do",
     mapUrl: "https://grandpark.seoul.go.kr/main/en.do",
-    blurb: "Grand Park zoo shortlist + printable hunt.",
+    blurb: "Don’t combine every Grand Park attraction.",
     itemLabel: "animals",
     featuredAnimalIds: [
-      "african-lion",
-      "sumatran-tiger",
-      "reticulated-giraffe",
       "african-elephant",
+      "reticulated-giraffe",
+      "sumatran-tiger",
       "western-lowland-gorilla",
-      "african-penguin"
+      "red-panda"
     ],
     animalIds: [
       "african-lion",
@@ -5595,20 +5554,19 @@ window.FIELD_PACK_VENUES = {
     shortName: "Perth Zoo",
     type: "zoo",
     mode: "precooked",
-    quality: "starter",
+    quality: "full",
     packTemplate: "animals",
     location: "Perth, Australia",
     website: "https://perthzoo.wa.gov.au/",
     mapUrl: "https://perthzoo.wa.gov.au/",
-    blurb: "Swan River zoo shortlist + printable hunt.",
+    blurb: "Half day; easy city add-on.",
     itemLabel: "animals",
     featuredAnimalIds: [
+      "koala",
+      "orangutan",
       "african-lion",
       "sumatran-tiger",
-      "reticulated-giraffe",
-      "african-elephant",
-      "western-lowland-gorilla",
-      "african-penguin"
+      "african-elephant"
     ],
     animalIds: [
       "african-lion",
@@ -5687,20 +5645,19 @@ window.FIELD_PACK_VENUES = {
     shortName: "Wellington Zoo",
     type: "zoo",
     mode: "precooked",
-    quality: "starter",
+    quality: "full",
     packTemplate: "animals",
     location: "Wellington, New Zealand",
     website: "https://wellingtonzoo.com/",
     mapUrl: "https://wellingtonzoo.com/",
-    blurb: "Hilltop zoo shortlist + printable hunt.",
+    blurb: "Bus up; shorter than mega zoos.",
     itemLabel: "animals",
     featuredAnimalIds: [
-      "african-lion",
       "sumatran-tiger",
-      "reticulated-giraffe",
-      "african-elephant",
+      "chimpanzee",
       "western-lowland-gorilla",
-      "african-penguin"
+      "red-panda",
+      "african-lion"
     ],
     animalIds: [
       "african-lion",
@@ -5734,19 +5691,19 @@ window.FIELD_PACK_VENUES = {
     shortName: "Taipei Zoo",
     type: "zoo",
     mode: "precooked",
-    quality: "starter",
+    quality: "full",
     packTemplate: "animals",
     location: "Taipei, Taiwan",
     website: "https://www.zoo.gov.taipei/",
     mapUrl: "https://www.zoo.gov.taipei/",
-    blurb: "Big city zoo shortlist + printable hunt.",
+    blurb: "Panda first if that’s the goal; otherwise one area only.",
     itemLabel: "animals",
     featuredAnimalIds: [
-      "african-lion",
-      "reticulated-giraffe",
-      "sumatran-tiger",
+      "giant-panda",
+      "red-panda",
       "african-elephant",
-      "red-panda"
+      "reticulated-giraffe",
+      "sumatran-tiger"
     ],
     animalIds: [
       "african-lion",
@@ -5785,15 +5742,14 @@ window.FIELD_PACK_VENUES = {
     location: "Beijing, China",
     website: "https://www.beijingzoo.com/",
     mapUrl: "https://www.beijingzoo.com/",
-    blurb: "Giant pandas first \u2014 classic Beijing Zoo kid shortlist.",
+    blurb: "Giant pandas first if open; don’t promise every hall.",
     itemLabel: "animals",
     featuredAnimalIds: [
       "giant-panda",
-      "red-panda",
-      "sumatran-tiger",
       "reticulated-giraffe",
       "african-elephant",
-      "african-lion"
+      "sumatran-tiger",
+      "red-panda"
     ],
     animalIds: [
       "giant-panda",
@@ -5872,19 +5828,18 @@ window.FIELD_PACK_VENUES = {
     shortName: "Shanghai Aquarium",
     type: "aquarium",
     mode: "precooked",
-    quality: "starter",
+    quality: "full",
     packTemplate: "animals",
     location: "Shanghai, China",
     website: "https://www.aquarium.sh.com/",
     mapUrl: "https://www.aquarium.sh.com/",
-    blurb: "Long tunnel aquarium \u2014 shortlist + hunt.",
+    blurb: "Short focused tourist aquarium visit.",
     itemLabel: "animals",
     featuredAnimalIds: [
       "shark",
       "stingray",
       "jellyfish",
       "sea-turtle",
-      "octopus",
       "clownfish"
     ],
     animalIds: [
@@ -5919,20 +5874,19 @@ window.FIELD_PACK_VENUES = {
     shortName: "Hellabrunn",
     type: "zoo",
     mode: "precooked",
-    quality: "starter",
+    quality: "full",
     packTemplate: "animals",
     location: "Munich, Germany",
     website: "https://www.hellabrunn.de/en/",
     mapUrl: "https://www.hellabrunn.de/en/",
-    blurb: "Munich geo-zoo shortlist + printable hunt.",
+    blurb: "Spacious habitats; half day with a clear realm pick.",
     itemLabel: "animals",
     featuredAnimalIds: [
-      "african-lion",
-      "sumatran-tiger",
-      "reticulated-giraffe",
       "african-elephant",
       "western-lowland-gorilla",
-      "african-penguin"
+      "reticulated-giraffe",
+      "sumatran-tiger",
+      "african-lion"
     ],
     animalIds: [
       "african-lion",
@@ -6013,20 +5967,19 @@ window.FIELD_PACK_VENUES = {
     shortName: "Barcelona Zoo",
     type: "zoo",
     mode: "precooked",
-    quality: "starter",
+    quality: "full",
     packTemplate: "animals",
     location: "Barcelona, Spain",
     website: "https://www.zoobarcelona.cat/en",
     mapUrl: "https://www.zoobarcelona.cat/en",
-    blurb: "Ciutadella Park zoo \u2014 shortlist + hunt.",
+    blurb: "Heat in summer; mornings better.",
     itemLabel: "animals",
     featuredAnimalIds: [
-      "african-lion",
-      "sumatran-tiger",
-      "reticulated-giraffe",
       "african-elephant",
+      "reticulated-giraffe",
+      "sumatran-tiger",
       "western-lowland-gorilla",
-      "african-penguin"
+      "caribbean-flamingo"
     ],
     animalIds: [
       "african-lion",
@@ -6060,20 +6013,19 @@ window.FIELD_PACK_VENUES = {
     shortName: "Lisbon Zoo",
     type: "zoo",
     mode: "precooked",
-    quality: "starter",
+    quality: "full",
     packTemplate: "animals",
     location: "Lisbon, Portugal",
     website: "https://www.zoo.pt/en",
     mapUrl: "https://www.zoo.pt/en",
-    blurb: "Cable-car zoo shortlist + printable hunt.",
+    blurb: "Hills and heat; cable car can save little legs.",
     itemLabel: "animals",
     featuredAnimalIds: [
-      "african-lion",
-      "sumatran-tiger",
-      "reticulated-giraffe",
       "african-elephant",
+      "reticulated-giraffe",
+      "sumatran-tiger",
       "western-lowland-gorilla",
-      "african-penguin"
+      "african-lion"
     ],
     animalIds: [
       "african-lion",
@@ -6342,20 +6294,19 @@ window.FIELD_PACK_VENUES = {
     shortName: "Skansen",
     type: "zoo",
     mode: "precooked",
-    quality: "starter",
+    quality: "full",
     packTemplate: "animals",
     location: "Stockholm, Sweden",
     website: "https://www.skansen.se/en/",
     mapUrl: "https://www.skansen.se/en/",
-    blurb: "Open-air museum & animals \u2014 shortlist + hunt (generic starter).",
+    blurb: "Not a classic safari zoo; historic Sweden + some animals.",
     itemLabel: "animals",
     featuredAnimalIds: [
-      "african-lion",
-      "sumatran-tiger",
-      "reticulated-giraffe",
-      "african-elephant",
-      "western-lowland-gorilla",
-      "african-penguin"
+      "cm-outdoor",
+      "cm-free-explore",
+      "red-panda",
+      "sci-hands-on",
+      "cm-toddler-garden"
     ],
     animalIds: [
       "african-lion",
@@ -6483,18 +6434,17 @@ window.FIELD_PACK_VENUES = {
     shortName: "Budapest Zoo",
     type: "zoo",
     mode: "precooked",
-    quality: "starter",
+    quality: "full",
     packTemplate: "animals",
     location: "Budapest, Hungary",
     website: "https://www.zoobudapest.com/en",
     mapUrl: "https://www.zoobudapest.com/en",
-    blurb: "City-park zoo shortlist + hunt (generic starter).",
+    blurb: "City-center dense zoo; half day max.",
     itemLabel: "animals",
     featuredAnimalIds: [
-      "african-lion",
-      "sumatran-tiger",
-      "reticulated-giraffe",
       "african-elephant",
+      "reticulated-giraffe",
+      "sumatran-tiger",
       "western-lowland-gorilla",
       "african-penguin"
     ],
@@ -6577,20 +6527,19 @@ window.FIELD_PACK_VENUES = {
     shortName: "Madrid Zoo",
     type: "zoo",
     mode: "precooked",
-    quality: "starter",
+    quality: "full",
     packTemplate: "animals",
     location: "Madrid, Spain",
     website: "https://www.zoomadrid.com/en",
     mapUrl: "https://www.zoomadrid.com/en",
-    blurb: "Zoo + aquarium shortlist + hunt (generic starter).",
+    blurb: "Pick zoo OR aquarium emphasis with little kids.",
     itemLabel: "animals",
     featuredAnimalIds: [
-      "african-lion",
+      "african-elephant",
+      "shark",
       "sumatran-tiger",
       "reticulated-giraffe",
-      "african-elephant",
-      "western-lowland-gorilla",
-      "african-penguin"
+      "western-lowland-gorilla"
     ],
     animalIds: [
       "african-lion",

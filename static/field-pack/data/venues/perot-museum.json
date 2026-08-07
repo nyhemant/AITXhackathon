@@ -9,20 +9,22 @@
   "lng": -96.81,
   "official_url": "https://www.perotmuseum.org/",
   "last_verified": "2026-08-07",
-  "verified_by": "catalog-scaffold",
+  "verified_by": "research",
   "status": "verified",
-  "tagline": "Dinos and hands-on science upstairs.",
+  "tagline": "Dallas Perot — dinosaurs, sports hall energy, and kids’ museum levels.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Check the official site for tickets and hours.",
-    "transit_note": ""
+    "ticket_note": "Victory Park; timed tickets peak times.",
+    "transit_note": "Downtown adjacent.",
+    "energy_note": "indoor",
+    "best_start": "Kids floors first if under 8."
   },
   "items": [
     {
       "id": "sci_dinosaur",
       "label": "Dinosaur hall",
       "emoji": "🦖",
-      "one_liner": "Bones, giants, and deep time — look up!",
+      "one_liner": "Dinos are the magnet.",
       "tags": [
         "wow",
         "read"
@@ -33,12 +35,97 @@
         "6-8",
         "9+"
       ],
-      "zone": "Halls",
+      "zone": "T. Boone Pickens Life Then and Now",
       "qa_card": {
-        "question": "What did you try or notice at Dinosaur hall?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+        "question": "What did you notice about the Dinosaur hall?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sci-dinosaur"
+    },
+    {
+      "id": "sci_hands_on",
+      "label": "Hands-on lab",
+      "emoji": "🔬",
+      "one_liner": "Body science fun.",
+      "tags": [
+        "hands",
+        "play"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Sports / being human",
+      "qa_card": {
+        "question": "What did you notice about the Hands-on lab?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sci-hands-on"
+    },
+    {
+      "id": "cm_imaginarium",
+      "label": "Imaginarium",
+      "emoji": "✨",
+      "one_liner": "Play and pretend.",
+      "tags": [
+        "play"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Children’s museum levels",
+      "qa_card": {
+        "question": "What did you notice about the Imaginarium?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "cm-imaginarium"
+    },
+    {
+      "id": "sci_planet",
+      "label": "Planet / space hall",
+      "emoji": "🪐",
+      "one_liner": "Earth and beyond.",
+      "tags": [
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Earth / space",
+      "qa_card": {
+        "question": "What did you notice about the Planet / space hall?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sci-planet"
+    },
+    {
+      "id": "cm_makery",
+      "label": "Creative Makery",
+      "emoji": "🔧",
+      "one_liner": "Create something.",
+      "tags": [
+        "hands"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Make",
+      "qa_card": {
+        "question": "What did you notice about the Creative Makery?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "cm-makery"
     },
     {
       "id": "sci_mammal_hall",
@@ -61,74 +148,6 @@
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
       "catalog_id": "sci-mammal-hall"
-    },
-    {
-      "id": "sci_planet",
-      "label": "Planet / space hall",
-      "emoji": "🪐",
-      "one_liner": "Planets, stars, and big sky questions.",
-      "tags": [
-        "wow",
-        "water",
-        "read"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Planet / space hall?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "sci-planet"
-    },
-    {
-      "id": "sci_hands_on",
-      "label": "Hands-on lab",
-      "emoji": "🔬",
-      "one_liner": "Touch, test, build — science you can try.",
-      "tags": [
-        "wow",
-        "hands",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Hands-on lab?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "sci-hands-on"
-    },
-    {
-      "id": "cm_imaginarium",
-      "label": "Imaginarium",
-      "emoji": "✨",
-      "one_liner": "Multi-sensory world — explore, notice, imagine.",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Imaginarium?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "cm-imaginarium"
     },
     {
       "id": "cm_free_explore",
@@ -174,39 +193,25 @@
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
       "catalog_id": "sci-rainforest"
-    },
-    {
-      "id": "kids_rest",
-      "label": "Kids rest / play stop",
-      "emoji": "🛝",
-      "one_liner": "Take a break, then keep exploring.",
-      "tags": [
-        "rest",
-        "kids"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8"
-      ],
-      "zone": "",
-      "qa_card": {
-        "question": "Did a rest stop help?",
-        "answer": "Breaks help little legs finish the day!"
-      }
     }
   ],
-  "content_mode": "wonder",
+  "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://www.perotmuseum.org/",
     "visitor_map_kind": "page",
-    "map_attribution": "Official site · Perot Museum of Nature and Science"
+    "map_attribution": "Official visit page"
   },
   "parent_script": [
     "Bathroom first",
     "One big wow",
     "Snack when needed",
     "Leave while happy"
-  ]
+  ],
+  "route_90m": [
+    "sci_dinosaur",
+    "sci_hands_on",
+    "cm_imaginarium"
+  ],
+  "research_notes": "R2 hybrid 2026-08-07"
 }

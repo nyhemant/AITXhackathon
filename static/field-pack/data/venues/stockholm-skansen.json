@@ -1,7 +1,7 @@
 {
   "slug": "stockholm-skansen",
   "name": "Skansen",
-  "type": "zoo",
+  "type": "museum",
   "city": "Stockholm",
   "region": "Sweden",
   "country": "SE",
@@ -9,15 +9,124 @@
   "lng": 18.103,
   "official_url": "https://www.skansen.se/en/",
   "last_verified": "2026-08-07",
-  "verified_by": "catalog-scaffold",
+  "verified_by": "research",
   "status": "verified",
-  "tagline": "Open-air museum & animals — shortlist + hunt (generic starter).",
+  "tagline": "Skansen — open-air museum + Nordic animals.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Check the official site for tickets and hours.",
-    "transit_note": ""
+    "ticket_note": "Djurgården island access.",
+    "transit_note": "Ferry/tram to Djurgården.",
+    "energy_note": "hills",
+    "best_start": "Kid pace through yards + animal stops."
   },
   "items": [
+    {
+      "id": "cm_outdoor",
+      "label": "Outdoor Area",
+      "emoji": "🌳",
+      "one_liner": "Outdoor cultural paths.",
+      "tags": [
+        "outdoor",
+        "play"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Historic yards",
+      "qa_card": {
+        "question": "What did you notice about the Outdoor Area?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "cm-outdoor"
+    },
+    {
+      "id": "cm_free_explore",
+      "label": "Free explore",
+      "emoji": "🧭",
+      "one_liner": "They pick a cottage or animal stop.",
+      "tags": [
+        "play"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Kid lead",
+      "qa_card": {
+        "question": "What did you notice about the Free explore?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "cm-free-explore"
+    },
+    {
+      "id": "red_panda",
+      "label": "Red panda",
+      "emoji": "🦊",
+      "one_liner": "Red pandas if on animal route.",
+      "tags": [
+        "climb"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Animals",
+      "qa_card": {
+        "question": "What did you notice about the Red panda?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "red-panda"
+    },
+    {
+      "id": "sci_hands_on",
+      "label": "Hands-on lab",
+      "emoji": "🔬",
+      "one_liner": "Hands-on kids corners.",
+      "tags": [
+        "hands"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Discovery",
+      "qa_card": {
+        "question": "What did you notice about the Hands-on lab?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sci-hands-on"
+    },
+    {
+      "id": "cm_toddler_garden",
+      "label": "Toddler Garden",
+      "emoji": "🌱",
+      "one_liner": "Softer resets.",
+      "tags": [
+        "rest",
+        "play"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Little kids",
+      "qa_card": {
+        "question": "What did you notice about the Toddler Garden?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "cm-toddler-garden"
+    },
     {
       "id": "african_lion",
       "label": "African lion",
@@ -208,30 +317,6 @@
       "catalog_id": "zebra"
     },
     {
-      "id": "red_panda",
-      "label": "Red panda",
-      "emoji": "🦊",
-      "one_liner": "Rusty tree-climber with a ringed tail — not a giant panda!",
-      "tags": [
-        "wow",
-        "outdoor",
-        "hands",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Red panda?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "red-panda"
-    },
-    {
       "id": "asian_small_clawed_otter",
       "label": "Asian small-clawed otter",
       "emoji": "🦦",
@@ -255,63 +340,25 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "asian-small-clawed-otter"
-    },
-    {
-      "id": "nile_hippo",
-      "label": "Nile hippo",
-      "emoji": "🦛",
-      "one_liner": "Huge river giant that loves the water.",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Nile hippo?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "nile-hippo"
-    },
-    {
-      "id": "galapagos_tortoise",
-      "label": "Galápagos tortoise",
-      "emoji": "🐢",
-      "one_liner": "Giant tortoise — slow and steady.",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Galápagos tortoise?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "galapagos-tortoise"
     }
   ],
-  "content_mode": "wonder",
+  "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "",
-    "visitor_map_page": "https://www.skansen.se/en/",
+    "visitor_map_page": "https://skansen.se/en/",
     "visitor_map_kind": "page",
-    "map_attribution": "Official site · Skansen"
+    "map_attribution": "Skansen"
   },
   "parent_script": [
     "Bathroom first",
     "One big wow",
     "Snack when needed",
     "Leave while happy"
-  ]
+  ],
+  "route_90m": [
+    "cm_outdoor",
+    "cm_free_explore",
+    "red_panda"
+  ],
+  "research_notes": "R2b 2026-08-07"
 }

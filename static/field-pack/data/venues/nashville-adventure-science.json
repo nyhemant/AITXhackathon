@@ -9,23 +9,111 @@
   "lng": -86.78,
   "official_url": "https://www.adventuresci.org/",
   "last_verified": "2026-08-07",
-  "verified_by": "catalog-scaffold",
+  "verified_by": "research",
   "status": "verified",
-  "tagline": "Hands-on science in Nashville.",
+  "tagline": "Nashville Adventure Science — climbing + experiments downtown.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Check the official site for tickets and hours.",
-    "transit_note": ""
+    "ticket_note": "Check adventuresci.org tickets.",
+    "transit_note": "Downtown Nashville.",
+    "energy_note": "indoor",
+    "best_start": "Climb/play first, quieter exhibits second."
   },
   "items": [
     {
       "id": "sci_hands_on",
       "label": "Hands-on lab",
       "emoji": "🔬",
-      "one_liner": "Touch, test, build — science you can try.",
+      "one_liner": "Experiments and interactives.",
       "tags": [
-        "wow",
         "hands",
+        "play",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Labs",
+      "qa_card": {
+        "question": "What did you notice about the Hands-on lab?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sci-hands-on"
+    },
+    {
+      "id": "cm_outdoor",
+      "label": "Outdoor Area",
+      "emoji": "🌳",
+      "one_liner": "Big-body play energy.",
+      "tags": [
+        "play",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Climb / body",
+      "qa_card": {
+        "question": "What did you notice about the Outdoor Area?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "cm-outdoor"
+    },
+    {
+      "id": "sci_planet",
+      "label": "Planet / space hall",
+      "emoji": "🪐",
+      "one_liner": "Space corners if present.",
+      "tags": [
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Space",
+      "qa_card": {
+        "question": "What did you notice about the Planet / space hall?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sci-planet"
+    },
+    {
+      "id": "cm_makery",
+      "label": "Creative Makery",
+      "emoji": "🔧",
+      "one_liner": "Build something small.",
+      "tags": [
+        "hands"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Make",
+      "qa_card": {
+        "question": "What did you notice about the Creative Makery?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "cm-makery"
+    },
+    {
+      "id": "cm_toddler_garden",
+      "label": "Toddler Garden",
+      "emoji": "🌱",
+      "one_liner": "Toddler-friendly zones.",
+      "tags": [
+        "rest",
         "play"
       ],
       "age_fit": [
@@ -34,35 +122,12 @@
         "6-8",
         "9+"
       ],
-      "zone": "Halls",
+      "zone": "Little kids",
       "qa_card": {
-        "question": "What did you try or notice at Hands-on lab?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+        "question": "What did you notice about the Toddler Garden?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-hands-on"
-    },
-    {
-      "id": "sci_planet",
-      "label": "Planet / space hall",
-      "emoji": "🪐",
-      "one_liner": "Planets, stars, and big sky questions.",
-      "tags": [
-        "wow",
-        "water",
-        "read"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Planet / space hall?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "sci-planet"
+      "catalog_id": "cm-toddler-garden"
     },
     {
       "id": "sci_dinosaur",
@@ -85,29 +150,6 @@
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
       "catalog_id": "sci-dinosaur"
-    },
-    {
-      "id": "cm_makery",
-      "label": "Creative Makery",
-      "emoji": "🔧",
-      "one_liner": "Build, invent, problem-solve with your hands.",
-      "tags": [
-        "wow",
-        "hands",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Creative Makery?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "cm-makery"
     },
     {
       "id": "cm_imaginarium",
@@ -198,17 +240,23 @@
       "catalog_id": "sci-rocket"
     }
   ],
-  "content_mode": "wonder",
+  "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://www.adventuresci.org/",
     "visitor_map_kind": "page",
-    "map_attribution": "Official site · Adventure Science Center"
+    "map_attribution": "Official visit page"
   },
   "parent_script": [
     "Bathroom first",
     "One big wow",
     "Snack when needed",
     "Leave while happy"
-  ]
+  ],
+  "route_90m": [
+    "sci_hands_on",
+    "cm_outdoor",
+    "sci_planet"
+  ],
+  "research_notes": "R2 hybrid 2026-08-07"
 }

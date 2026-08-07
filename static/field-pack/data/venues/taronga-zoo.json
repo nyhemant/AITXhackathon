@@ -9,20 +9,22 @@
   "lng": 151.2413,
   "official_url": "https://taronga.org.au/sydney-zoo",
   "last_verified": "2026-08-07",
-  "verified_by": "catalog-scaffold",
+  "verified_by": "research",
   "status": "verified",
-  "tagline": "Koalas, Tiger Trek, giraffe + harbour views — Sydney shortlist.",
+  "tagline": "Sydney harbour views + Aussie animals — ferry arrival is half the wow.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Check the official site for tickets and hours.",
-    "transit_note": ""
+    "ticket_note": "Ferry + tickets; hills on site.",
+    "transit_note": "Mosman; ferry from Circular Quay.",
+    "energy_note": "hills",
+    "best_start": "Australian animals + lookout moment."
   },
   "items": [
     {
       "id": "koala",
       "label": "Koala",
       "emoji": "🐨",
-      "one_liner": "Sleepy tree-sitter — look up in the eucalyptus.",
+      "one_liner": "Koalas with harbour breezes.",
       "tags": [
         "wow",
         "outdoor"
@@ -33,10 +35,10 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Australian animals",
       "qa_card": {
-        "question": "What is special about the Koala?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Koala?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "koala"
     },
@@ -44,13 +46,9 @@
       "id": "sumatran_tiger",
       "label": "Sumatran tiger",
       "emoji": "🐯",
-      "one_liner": "Stripy forest big cat — strong and stealthy.",
+      "one_liner": "Tigers.",
       "tags": [
-        "wow",
-        "big-cats",
-        "outdoor",
-        "rest",
-        "kids"
+        "big-cats"
       ],
       "age_fit": [
         "2-3",
@@ -58,22 +56,42 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Asian animals",
       "qa_card": {
-        "question": "What is special about the Sumatran tiger?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Sumatran tiger?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sumatran-tiger"
+    },
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "emoji": "🦍",
+      "one_liner": "Gorillas.",
+      "tags": [
+        "primates"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "African animals",
+      "qa_card": {
+        "question": "What did you notice about the Western lowland gorilla?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "western-lowland-gorilla"
     },
     {
       "id": "reticulated_giraffe",
       "label": "Reticulated giraffe",
       "emoji": "🦒",
-      "one_liner": "Tallest animal on long legs — look up!",
+      "one_liner": "Giraffes + views.",
       "tags": [
-        "wow",
         "tall",
-        "outdoor"
+        "wow"
       ],
       "age_fit": [
         "2-3",
@@ -81,10 +99,10 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Giraffes",
       "qa_card": {
-        "question": "What is special about the Reticulated giraffe?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Reticulated giraffe?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "reticulated-giraffe"
     },
@@ -92,11 +110,10 @@
       "id": "african_lion",
       "label": "African lion",
       "emoji": "🦁",
-      "one_liner": "Big cat of the grassland pride — mighty roar!",
+      "one_liner": "Lions.",
       "tags": [
-        "wow",
         "big-cats",
-        "outdoor"
+        "sound"
       ],
       "age_fit": [
         "2-3",
@@ -104,35 +121,12 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Lions",
       "qa_card": {
-        "question": "What is special about the African lion?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the African lion?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-lion"
-    },
-    {
-      "id": "western_lowland_gorilla",
-      "label": "Western lowland gorilla",
-      "emoji": "🦍",
-      "one_liner": "Strong gentle ape in family groups.",
-      "tags": [
-        "wow",
-        "outdoor",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Western lowland gorilla?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "western-lowland-gorilla"
     },
     {
       "id": "red_panda",
@@ -300,17 +294,23 @@
       "catalog_id": "ring-tailed-lemur"
     }
   ],
-  "content_mode": "wonder",
+  "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://taronga.org.au/sydney-zoo",
     "visitor_map_kind": "page",
-    "map_attribution": "Official site · Taronga Zoo"
+    "map_attribution": "Official visit page"
   },
   "parent_script": [
     "Bathroom first",
     "One big wow",
     "Snack when needed",
     "Leave while happy"
-  ]
+  ],
+  "route_90m": [
+    "koala",
+    "sumatran_tiger",
+    "western_lowland_gorilla"
+  ],
+  "research_notes": "R2 hybrid 2026-08-07"
 }

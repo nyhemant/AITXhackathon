@@ -9,23 +9,25 @@
   "lng": -77.02,
   "official_url": "https://airandspace.si.edu/",
   "last_verified": "2026-08-07",
-  "verified_by": "catalog-scaffold",
+  "verified_by": "research",
   "status": "verified",
-  "tagline": "Planes and space on the Mall.",
+  "tagline": "Mall airplanes and space — rockets overhead, walk-under wow.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Check the official site for tickets and hours.",
-    "transit_note": ""
+    "ticket_note": "Free Smithsonian entry; timed if required — check airandspace.si.edu.",
+    "transit_note": "Mall or Udvar-Hazy (separate campus).",
+    "energy_note": "indoor",
+    "best_start": "One giant aircraft, then rest legs."
   },
   "items": [
     {
       "id": "sci_rocket",
       "label": "Rockets & launch",
       "emoji": "🚀",
-      "one_liner": "Tall rockets and the power of liftoff.",
+      "one_liner": "Stand under real flight hardware.",
       "tags": [
         "wow",
-        "read"
+        "tall"
       ],
       "age_fit": [
         "2-3",
@@ -33,10 +35,10 @@
         "6-8",
         "9+"
       ],
-      "zone": "Halls",
+      "zone": "Rockets / missiles",
       "qa_card": {
-        "question": "What did you try or notice at Rockets & launch?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+        "question": "What did you notice about the Rockets & launch?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sci-rocket"
     },
@@ -44,10 +46,9 @@
       "id": "sci_shuttle",
       "label": "Space shuttle / orbiter",
       "emoji": "🛰️",
-      "one_liner": "A real flying machine that went to space — walk around it.",
+      "one_liner": "Orbiter or space hardware when on that campus.",
       "tags": [
-        "wow",
-        "read"
+        "wow"
       ],
       "age_fit": [
         "2-3",
@@ -55,10 +56,10 @@
         "6-8",
         "9+"
       ],
-      "zone": "Halls",
+      "zone": "Space",
       "qa_card": {
-        "question": "What did you try or notice at Space shuttle / orbiter?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+        "question": "What did you notice about the Space shuttle / orbiter?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sci-shuttle"
     },
@@ -66,10 +67,51 @@
       "id": "sci_astronaut",
       "label": "Astronaut life",
       "emoji": "🧑‍🚀",
-      "one_liner": "Suits, food, and how humans live off Earth.",
+      "one_liner": "People who left Earth.",
       "tags": [
-        "wow",
-        "hands",
+        "read",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Human spaceflight",
+      "qa_card": {
+        "question": "What did you notice about the Astronaut life?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sci-astronaut"
+    },
+    {
+      "id": "sci_planet",
+      "label": "Planet / space hall",
+      "emoji": "🪐",
+      "one_liner": "Planets and stars stories.",
+      "tags": [
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Space science",
+      "qa_card": {
+        "question": "What did you notice about the Planet / space hall?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sci-planet"
+    },
+    {
+      "id": "cm_free_explore",
+      "label": "Free explore",
+      "emoji": "🧭",
+      "one_liner": "They choose the next giant machine.",
+      "tags": [
         "play"
       ],
       "age_fit": [
@@ -78,35 +120,12 @@
         "6-8",
         "9+"
       ],
-      "zone": "Halls",
+      "zone": "Kid pick",
       "qa_card": {
-        "question": "What did you try or notice at Astronaut life?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+        "question": "What did you notice about the Free explore?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-astronaut"
-    },
-    {
-      "id": "sci_planet",
-      "label": "Planet / space hall",
-      "emoji": "🪐",
-      "one_liner": "Planets, stars, and big sky questions.",
-      "tags": [
-        "wow",
-        "water",
-        "read"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Planet / space hall?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "sci-planet"
+      "catalog_id": "cm-free-explore"
     },
     {
       "id": "sci_hands_on",
@@ -175,39 +194,25 @@
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
       "catalog_id": "cm-imaginarium"
-    },
-    {
-      "id": "kids_rest",
-      "label": "Kids rest / play stop",
-      "emoji": "🛝",
-      "one_liner": "Take a break, then keep exploring.",
-      "tags": [
-        "rest",
-        "kids"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8"
-      ],
-      "zone": "",
-      "qa_card": {
-        "question": "Did a rest stop help?",
-        "answer": "Breaks help little legs finish the day!"
-      }
     }
   ],
-  "content_mode": "wonder",
+  "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://airandspace.si.edu/",
     "visitor_map_kind": "page",
-    "map_attribution": "Official site · National Air and Space Museum"
+    "map_attribution": "Official visit page"
   },
   "parent_script": [
     "Bathroom first",
     "One big wow",
     "Snack when needed",
     "Leave while happy"
-  ]
+  ],
+  "route_90m": [
+    "sci_rocket",
+    "sci_shuttle",
+    "sci_astronaut"
+  ],
+  "research_notes": "R2 hybrid 2026-08-07"
 }

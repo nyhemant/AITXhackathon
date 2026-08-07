@@ -9,47 +9,25 @@
   "lng": -73.5497,
   "official_url": "https://espacepourlavie.ca/en/biodome",
   "last_verified": "2026-08-07",
-  "verified_by": "catalog-scaffold",
+  "verified_by": "research",
   "status": "verified",
-  "tagline": "Five ecosystems under one roof — rainforest to penguins.",
+  "tagline": "Montréal Biodôme — walk five ecosystems under one roof.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Check the official site for tickets and hours.",
-    "transit_note": ""
+    "ticket_note": "Space for Life tickets; Parc olympique area.",
+    "transit_note": "Metro + walk.",
+    "energy_note": "indoor",
+    "best_start": "One slow ecosystem circuit."
   },
   "items": [
-    {
-      "id": "sci_rainforest",
-      "label": "Rainforest dome",
-      "emoji": "🌿",
-      "one_liner": "Warm, green, and full of life — look for layers of plants.",
-      "tags": [
-        "wow",
-        "rest",
-        "kids"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Rainforest dome?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "sci-rainforest"
-    },
     {
       "id": "african_penguin",
       "label": "African penguin",
       "emoji": "🐧",
-      "one_liner": "Waddle on land, zoom in water.",
+      "one_liner": "Penguins in ecosystem immersion.",
       "tags": [
-        "wow",
         "water",
-        "outdoor"
+        "wow"
       ],
       "age_fit": [
         "2-3",
@@ -57,12 +35,97 @@
         "6-8",
         "9+"
       ],
-      "zone": "Halls",
+      "zone": "Subpolar",
       "qa_card": {
-        "question": "What did you try or notice at African penguin?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+        "question": "What did you notice about the African penguin?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-penguin"
+    },
+    {
+      "id": "two_toed_sloth",
+      "label": "Two-toed sloth",
+      "emoji": "🦥",
+      "one_liner": "Tropical mammals/sloth energy.",
+      "tags": [
+        "climb"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Tropical",
+      "qa_card": {
+        "question": "What did you notice about the Two-toed sloth?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "two-toed-sloth"
+    },
+    {
+      "id": "sci_rainforest",
+      "label": "Rainforest dome",
+      "emoji": "🌿",
+      "one_liner": "Lush immersion.",
+      "tags": [
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Tropical rainforest",
+      "qa_card": {
+        "question": "What did you notice about the Rainforest dome?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sci-rainforest"
+    },
+    {
+      "id": "ring_tailed_lemur",
+      "label": "Ring-tailed lemur",
+      "emoji": "🐒",
+      "one_liner": "Primates when present.",
+      "tags": [
+        "primates",
+        "play"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Habitats",
+      "qa_card": {
+        "question": "What did you notice about the Ring-tailed lemur?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "ring-tailed-lemur"
+    },
+    {
+      "id": "cm_free_explore",
+      "label": "Free explore",
+      "emoji": "🧭",
+      "one_liner": "Pause in favorite ecosystem.",
+      "tags": [
+        "play"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Kid pace",
+      "qa_card": {
+        "question": "What did you notice about the Free explore?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "cm-free-explore"
     },
     {
       "id": "sci_aquarium_zone",
@@ -132,28 +195,6 @@
       "catalog_id": "sci-hands-on"
     },
     {
-      "id": "cm_free_explore",
-      "label": "Free explore",
-      "emoji": "🧭",
-      "one_liner": "Their choice path — whatever pulled them in!",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Free explore?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "cm-free-explore"
-    },
-    {
       "id": "sea_turtle",
       "label": "Sea turtle",
       "emoji": "🐢",
@@ -197,67 +238,25 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "jellyfish"
-    },
-    {
-      "id": "two_toed_sloth",
-      "label": "Two-toed sloth",
-      "emoji": "🦥",
-      "one_liner": "Slow forest climber — hangs upside down.",
-      "tags": [
-        "wow",
-        "hands",
-        "play",
-        "rest",
-        "kids"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Two-toed sloth?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "two-toed-sloth"
-    },
-    {
-      "id": "ring_tailed_lemur",
-      "label": "Ring-tailed lemur",
-      "emoji": "🐒",
-      "one_liner": "Stripy tail from Madagascar.",
-      "tags": [
-        "wow",
-        "outdoor",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Ring-tailed lemur?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "ring-tailed-lemur"
     }
   ],
-  "content_mode": "wonder",
+  "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://espacepourlavie.ca/en/biodome",
     "visitor_map_kind": "page",
-    "map_attribution": "Official site · Montreal Biodome"
+    "map_attribution": "Official visit page"
   },
   "parent_script": [
     "Bathroom first",
     "One big wow",
     "Snack when needed",
     "Leave while happy"
-  ]
+  ],
+  "route_90m": [
+    "african_penguin",
+    "two_toed_sloth",
+    "sci_rainforest"
+  ],
+  "research_notes": "R2 hybrid 2026-08-07"
 }

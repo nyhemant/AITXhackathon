@@ -9,20 +9,22 @@
   "lng": -0.1764,
   "official_url": "https://www.nhm.ac.uk/",
   "last_verified": "2026-08-07",
-  "verified_by": "catalog-scaffold",
+  "verified_by": "research",
   "status": "verified",
-  "tagline": "Dinosaurs, Hintze Hall energy, Earth halls — exhibit hunt for NHM.",
+  "tagline": "London NHM — free Hintze Hall wow and dinos.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Check the official site for tickets and hours.",
-    "transit_note": ""
+    "ticket_note": "Free entry; special exhibits ticketed.",
+    "transit_note": "South Kensington.",
+    "energy_note": "indoor",
+    "best_start": "Hintze Hall + one gallery."
   },
   "items": [
     {
       "id": "sci_dinosaur",
       "label": "Dinosaur hall",
       "emoji": "🦖",
-      "one_liner": "Bones, giants, and deep time — look up!",
+      "one_liner": "Dinos are the magnet.",
       "tags": [
         "wow",
         "read"
@@ -33,10 +35,10 @@
         "6-8",
         "9+"
       ],
-      "zone": "Halls",
+      "zone": "Dinosaurs",
       "qa_card": {
-        "question": "What did you try or notice at Dinosaur hall?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+        "question": "What did you notice about the Dinosaur hall?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sci-dinosaur"
     },
@@ -44,10 +46,9 @@
       "id": "sci_mammal_hall",
       "label": "Animal / mammal hall",
       "emoji": "🦌",
-      "one_liner": "Lifelike animals from around the world — spot fur, horns, and habitats.",
+      "one_liner": "Mammals and giant life.",
       "tags": [
-        "wow",
-        "outdoor"
+        "wow"
       ],
       "age_fit": [
         "2-3",
@@ -55,10 +56,10 @@
         "6-8",
         "9+"
       ],
-      "zone": "Halls",
+      "zone": "Mammals",
       "qa_card": {
-        "question": "What did you try or notice at Animal / mammal hall?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+        "question": "What did you notice about the Animal / mammal hall?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sci-mammal-hall"
     },
@@ -66,11 +67,9 @@
       "id": "sci_planet",
       "label": "Planet / space hall",
       "emoji": "🪐",
-      "one_liner": "Planets, stars, and big sky questions.",
+      "one_liner": "Earth galleries.",
       "tags": [
-        "wow",
-        "water",
-        "read"
+        "wow"
       ],
       "age_fit": [
         "2-3",
@@ -78,10 +77,10 @@
         "6-8",
         "9+"
       ],
-      "zone": "Halls",
+      "zone": "Earth",
       "qa_card": {
-        "question": "What did you try or notice at Planet / space hall?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+        "question": "What did you notice about the Planet / space hall?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sci-planet"
     },
@@ -89,10 +88,29 @@
       "id": "sci_hands_on",
       "label": "Hands-on lab",
       "emoji": "🔬",
-      "one_liner": "Touch, test, build — science you can try.",
+      "one_liner": "Hands-on when open.",
       "tags": [
-        "wow",
-        "hands",
+        "hands"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Investigate",
+      "qa_card": {
+        "question": "What did you notice about the Hands-on lab?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sci-hands-on"
+    },
+    {
+      "id": "cm_free_explore",
+      "label": "Free explore",
+      "emoji": "🧭",
+      "one_liner": "They choose next.",
+      "tags": [
         "play"
       ],
       "age_fit": [
@@ -101,12 +119,12 @@
         "6-8",
         "9+"
       ],
-      "zone": "Halls",
+      "zone": "Kid pick",
       "qa_card": {
-        "question": "What did you try or notice at Hands-on lab?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+        "question": "What did you notice about the Free explore?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-hands-on"
+      "catalog_id": "cm-free-explore"
     },
     {
       "id": "sci_rainforest",
@@ -130,28 +148,6 @@
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
       "catalog_id": "sci-rainforest"
-    },
-    {
-      "id": "cm_free_explore",
-      "label": "Free explore",
-      "emoji": "🧭",
-      "one_liner": "Their choice path — whatever pulled them in!",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Free explore?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "cm-free-explore"
     },
     {
       "id": "sci_aquarium_zone",
@@ -198,17 +194,23 @@
       "catalog_id": "cm-imaginarium"
     }
   ],
-  "content_mode": "wonder",
+  "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://www.nhm.ac.uk/",
     "visitor_map_kind": "page",
-    "map_attribution": "Official site · Natural History Museum"
+    "map_attribution": "Natural History Museum"
   },
   "parent_script": [
     "Bathroom first",
     "One big wow",
     "Snack when needed",
     "Leave while happy"
-  ]
+  ],
+  "route_90m": [
+    "sci_dinosaur",
+    "sci_mammal_hall",
+    "sci_planet"
+  ],
+  "research_notes": "R2b 2026-08-07"
 }
