@@ -1300,7 +1300,7 @@
     const sample = sampleItemForVenue(venueId);
     const samplePhoto = sample ? photoSrc(sample.photo) : "";
     const appHref = p.appHref || `/field-pack/app.html#/venue/${encodeURIComponent(venueId)}`;
-    const missionHref = `/field-pack/${encodeURIComponent(venueId)}/`;
+    const missionHref = `/field-pack/${encodeURIComponent(venueId)}/#mission`;
     const isMissionPilot = MISSION_PILOTS.has(venueId);
 
     const sampleCard = sample
