@@ -9,25 +9,25 @@
   "lng": -83.12,
   "official_url": "https://www.columbuszoo.org/",
   "last_verified": "2026-08-07",
-  "verified_by": "catalog-scaffold",
+  "verified_by": "research",
   "status": "verified",
-  "tagline": "Big Ohio zoo + aquarium vibes.",
+  "tagline": "Huge Ohio campus — pick regions like countries; never ‘see everything.’",
   "practical": {
-    "typical_duration": "half day",
-    "ticket_note": "Check the official site for tickets and hours.",
-    "transit_note": ""
+    "typical_duration": "half to full day",
+    "ticket_note": "Large parking lots; stroller or wagon strongly recommended.",
+    "transit_note": "Powell / north of Columbus; car day.",
+    "energy_note": "stroller-easy",
+    "best_start": "Asia or Africa first; schedule a long snack break."
   },
   "items": [
     {
-      "id": "african_elephant",
-      "label": "African elephant",
-      "emoji": "🐘",
-      "one_liner": "Biggest land animal — trunk to grab, spray, and say hello.",
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "emoji": "🦍",
+      "one_liner": "Gorillas in immersive habitats.",
       "tags": [
-        "wow",
-        "big",
-        "outdoor",
-        "water"
+        "primates",
+        "wow"
       ],
       "age_fit": [
         "2-3",
@@ -35,10 +35,32 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Congo / apes",
       "qa_card": {
-        "question": "What is special about the African elephant?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Western lowland gorilla?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "western-lowland-gorilla"
+    },
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "emoji": "🐘",
+      "one_liner": "Elephants on the big campus.",
+      "tags": [
+        "big",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Africa",
+      "qa_card": {
+        "question": "What did you notice about the African elephant?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-elephant"
     },
@@ -46,13 +68,10 @@
       "id": "sumatran_tiger",
       "label": "Sumatran tiger",
       "emoji": "🐯",
-      "one_liner": "Stripy forest big cat — strong and stealthy.",
+      "one_liner": "Tigers in forested Asia areas.",
       "tags": [
-        "wow",
         "big-cats",
-        "outdoor",
-        "rest",
-        "kids"
+        "outdoor"
       ],
       "age_fit": [
         "2-3",
@@ -60,12 +79,56 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Asia",
       "qa_card": {
-        "question": "What is special about the Sumatran tiger?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Sumatran tiger?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sumatran-tiger"
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "emoji": "🦒",
+      "one_liner": "Giraffes on long loops — stroller helps.",
+      "tags": [
+        "tall",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Africa",
+      "qa_card": {
+        "question": "What did you notice about the Reticulated giraffe?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "reticulated-giraffe"
+    },
+    {
+      "id": "nile_hippo",
+      "label": "Nile hippo",
+      "emoji": "🦛",
+      "one_liner": "Hippos near water when on the route.",
+      "tags": [
+        "water",
+        "big"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Africa",
+      "qa_card": {
+        "question": "What did you notice about the Nile hippo?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "nile-hippo"
     },
     {
       "id": "shark",
@@ -110,29 +173,6 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "jellyfish"
-    },
-    {
-      "id": "reticulated_giraffe",
-      "label": "Reticulated giraffe",
-      "emoji": "🦒",
-      "one_liner": "Tallest animal on long legs — look up!",
-      "tags": [
-        "wow",
-        "tall",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Reticulated giraffe?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "reticulated-giraffe"
     },
     {
       "id": "sea_turtle",
@@ -247,17 +287,23 @@
       "catalog_id": "zebra"
     }
   ],
-  "content_mode": "wonder",
+  "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://www.columbuszoo.org/",
     "visitor_map_kind": "page",
-    "map_attribution": "Official site · Columbus Zoo and Aquarium"
+    "map_attribution": "Visit · Columbus Zoo and Aquarium"
   },
   "parent_script": [
     "Bathroom first",
     "One big wow",
     "Snack when needed",
     "Leave while happy"
-  ]
+  ],
+  "route_90m": [
+    "western_lowland_gorilla",
+    "african_elephant",
+    "sumatran_tiger"
+  ],
+  "research_notes": "R1 hybrid 2026-08-07"
 }

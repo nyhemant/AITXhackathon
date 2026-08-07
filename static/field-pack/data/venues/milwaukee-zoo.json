@@ -9,25 +9,25 @@
   "lng": -88.04,
   "official_url": "https://www.milwaukeezoo.org/",
   "last_verified": "2026-08-07",
-  "verified_by": "catalog-scaffold",
+  "verified_by": "research",
   "status": "verified",
-  "tagline": "Wisconsin zoo day shortlist.",
+  "tagline": "Wisconsin classic — indoor tropical buildings help on cold or hot days.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Check the official site for tickets and hours.",
-    "transit_note": ""
+    "ticket_note": "Seasonal hours vary — check milwaukeezoo.org.",
+    "transit_note": "West of downtown; parking on site.",
+    "energy_note": "stroller-easy",
+    "best_start": "Indoor buildings if weather bites; savanna icons when mild."
   },
   "items": [
     {
       "id": "african_elephant",
       "label": "African elephant",
       "emoji": "🐘",
-      "one_liner": "Biggest land animal — trunk to grab, spray, and say hello.",
+      "one_liner": "Elephants outdoors when weather allows.",
       "tags": [
-        "wow",
         "big",
-        "outdoor",
-        "water"
+        "outdoor"
       ],
       "age_fit": [
         "2-3",
@@ -35,20 +35,41 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Africa",
       "qa_card": {
-        "question": "What is special about the African elephant?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the African elephant?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-elephant"
+    },
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "emoji": "🦍",
+      "one_liner": "Gorillas in primate buildings/habitats.",
+      "tags": [
+        "primates",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Primates",
+      "qa_card": {
+        "question": "What did you notice about the Western lowland gorilla?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "western-lowland-gorilla"
     },
     {
       "id": "reticulated_giraffe",
       "label": "Reticulated giraffe",
       "emoji": "🦒",
-      "one_liner": "Tallest animal on long legs — look up!",
+      "one_liner": "Giraffe necks over the paths.",
       "tags": [
-        "wow",
         "tall",
         "outdoor"
       ],
@@ -58,10 +79,10 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Africa",
       "qa_card": {
-        "question": "What is special about the Reticulated giraffe?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Reticulated giraffe?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "reticulated-giraffe"
     },
@@ -69,9 +90,8 @@
       "id": "african_lion",
       "label": "African lion",
       "emoji": "🦁",
-      "one_liner": "Big cat of the grassland pride — mighty roar!",
+      "one_liner": "Lions for a cat-side stop.",
       "tags": [
-        "wow",
         "big-cats",
         "outdoor"
       ],
@@ -81,12 +101,34 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Big cats",
       "qa_card": {
-        "question": "What is special about the African lion?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the African lion?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-lion"
+    },
+    {
+      "id": "chimpanzee",
+      "label": "Chimpanzee",
+      "emoji": "🐵",
+      "one_liner": "Chimp social scenes.",
+      "tags": [
+        "primates",
+        "play"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Primates",
+      "qa_card": {
+        "question": "What did you notice about the Chimpanzee?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "chimpanzee"
     },
     {
       "id": "sumatran_tiger",
@@ -112,29 +154,6 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "sumatran-tiger"
-    },
-    {
-      "id": "western_lowland_gorilla",
-      "label": "Western lowland gorilla",
-      "emoji": "🦍",
-      "one_liner": "Strong gentle ape in family groups.",
-      "tags": [
-        "wow",
-        "outdoor",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Western lowland gorilla?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "western-lowland-gorilla"
     },
     {
       "id": "african_penguin",
@@ -296,17 +315,23 @@
       "catalog_id": "galapagos-tortoise"
     }
   ],
-  "content_mode": "wonder",
+  "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://www.milwaukeezoo.org/",
     "visitor_map_kind": "page",
-    "map_attribution": "Official site · Milwaukee County Zoo"
+    "map_attribution": "Visit · Milwaukee County Zoo"
   },
   "parent_script": [
     "Bathroom first",
     "One big wow",
     "Snack when needed",
     "Leave while happy"
-  ]
+  ],
+  "route_90m": [
+    "african_elephant",
+    "western_lowland_gorilla",
+    "reticulated_giraffe"
+  ],
+  "research_notes": "R1 hybrid 2026-08-07"
 }

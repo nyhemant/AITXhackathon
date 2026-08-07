@@ -9,23 +9,26 @@
   "lng": -82.44,
   "official_url": "https://www.flaquarium.org/",
   "last_verified": "2026-08-07",
-  "verified_by": "catalog-scaffold",
+  "verified_by": "research",
   "status": "verified",
-  "tagline": "Florida coast tanks.",
+  "tagline": "Tampa waterfront tanks — sharks, touch energy, and indoor AC relief.",
   "practical": {
-    "typical_duration": "half day",
-    "ticket_note": "Check the official site for tickets and hours.",
-    "transit_note": ""
+    "typical_duration": "2–3 hours",
+    "ticket_note": "Waterfront parking; weekends busy.",
+    "transit_note": "Channelside / downtown Tampa.",
+    "energy_note": "indoor",
+    "best_start": "Shark / open ocean wow, then touch if open."
   },
   "items": [
     {
       "id": "shark",
       "label": "Shark",
       "emoji": "🦈",
-      "one_liner": "Ocean hunter with a strong swishy body.",
+      "one_liner": "Sharks circling big windows.",
       "tags": [
-        "wow",
-        "water"
+        "water",
+        "big",
+        "wow"
       ],
       "age_fit": [
         "2-3",
@@ -33,10 +36,10 @@
         "6-8",
         "9+"
       ],
-      "zone": "Galleries",
+      "zone": "Open ocean / sharks",
       "qa_card": {
         "question": "What did you notice about the Shark?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "shark"
     },
@@ -44,10 +47,11 @@
       "id": "stingray",
       "label": "Stingray",
       "emoji": "射线",
-      "one_liner": "Flat swimmer — often in touch pools (gentle hands!).",
+      "one_liner": "Rays when touch pools are open.",
       "tags": [
-        "wow",
-        "water"
+        "water",
+        "touch",
+        "flat"
       ],
       "age_fit": [
         "2-3",
@@ -55,12 +59,78 @@
         "6-8",
         "9+"
       ],
-      "zone": "Galleries",
+      "zone": "Touch / rays",
       "qa_card": {
         "question": "What did you notice about the Stingray?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "stingray"
+    },
+    {
+      "id": "sea_turtle",
+      "label": "Sea turtle",
+      "emoji": "🐢",
+      "one_liner": "Sea turtles paddling past glass.",
+      "tags": [
+        "water",
+        "shell"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Turtles",
+      "qa_card": {
+        "question": "What did you notice about the Sea turtle?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sea-turtle"
+    },
+    {
+      "id": "jellyfish",
+      "label": "Jellyfish",
+      "emoji": "🎐",
+      "one_liner": "Glow rooms for a calm reset.",
+      "tags": [
+        "water",
+        "glow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Jellies",
+      "qa_card": {
+        "question": "What did you notice about the Jellyfish?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "jellyfish"
+    },
+    {
+      "id": "octopus",
+      "label": "Octopus",
+      "emoji": "🐙",
+      "one_liner": "Look carefully — octopuses hide well.",
+      "tags": [
+        "water",
+        "hide"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Camouflage corners",
+      "qa_card": {
+        "question": "What did you notice about the Octopus?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "octopus"
     },
     {
       "id": "seahorse",
@@ -85,28 +155,6 @@
       "catalog_id": "seahorse"
     },
     {
-      "id": "jellyfish",
-      "label": "Jellyfish",
-      "emoji": "🎐",
-      "one_liner": "Soft drifter — no bones, glows and pulses in the water.",
-      "tags": [
-        "wow",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "What did you notice about the Jellyfish?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "jellyfish"
-    },
-    {
       "id": "clownfish",
       "label": "Clownfish",
       "emoji": "🐠",
@@ -127,51 +175,6 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "clownfish"
-    },
-    {
-      "id": "sea_turtle",
-      "label": "Sea turtle",
-      "emoji": "🐢",
-      "one_liner": "Shelled ocean traveler — flippers for swimming.",
-      "tags": [
-        "wow",
-        "water",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "What did you notice about the Sea turtle?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "sea-turtle"
-    },
-    {
-      "id": "octopus",
-      "label": "Octopus",
-      "emoji": "🐙",
-      "one_liner": "Eight arms and a big brain — master of hide-and-seek.",
-      "tags": [
-        "wow",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "What did you notice about the Octopus?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "octopus"
     },
     {
       "id": "eel",
@@ -289,17 +292,23 @@
       "catalog_id": "asian-small-clawed-otter"
     }
   ],
-  "content_mode": "wonder",
+  "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://www.flaquarium.org/",
     "visitor_map_kind": "page",
-    "map_attribution": "Official site · The Florida Aquarium"
+    "map_attribution": "Visit · The Florida Aquarium"
   },
   "parent_script": [
     "Bathroom first",
     "One big wow",
     "Snack when needed",
     "Leave while happy"
-  ]
+  ],
+  "route_90m": [
+    "shark",
+    "stingray",
+    "sea_turtle"
+  ],
+  "research_notes": "R1 hybrid 2026-08-07"
 }

@@ -9,23 +9,26 @@
   "lng": -76,
   "official_url": "https://www.virginiaaquarium.com/",
   "last_verified": "2026-08-07",
-  "verified_by": "catalog-scaffold",
+  "verified_by": "research",
   "status": "verified",
-  "tagline": "Coastal Virginia tanks and aviary.",
+  "tagline": "Virginia Beach — outdoor aviary energy plus indoor tanks by the ocean.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Check the official site for tickets and hours.",
-    "transit_note": ""
+    "ticket_note": "Oceanfront area; wind and sun on outdoor paths.",
+    "transit_note": "Virginia Beach; car + parking.",
+    "energy_note": "stroller-easy",
+    "best_start": "Indoor tanks if windy; aviary/boardwalk when mild."
   },
   "items": [
     {
       "id": "shark",
       "label": "Shark",
       "emoji": "🦈",
-      "one_liner": "Ocean hunter with a strong swishy body.",
+      "one_liner": "Sharks behind big glass.",
       "tags": [
-        "wow",
-        "water"
+        "water",
+        "big",
+        "wow"
       ],
       "age_fit": [
         "2-3",
@@ -33,10 +36,10 @@
         "6-8",
         "9+"
       ],
-      "zone": "Galleries",
+      "zone": "Ocean tanks",
       "qa_card": {
         "question": "What did you notice about the Shark?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "shark"
     },
@@ -44,9 +47,76 @@
       "id": "stingray",
       "label": "Stingray",
       "emoji": "射线",
-      "one_liner": "Flat swimmer — often in touch pools (gentle hands!).",
+      "one_liner": "Rays in shallow views or touch when open.",
       "tags": [
-        "wow",
+        "water",
+        "flat",
+        "touch"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Rays / touch",
+      "qa_card": {
+        "question": "What did you notice about the Stingray?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "stingray"
+    },
+    {
+      "id": "sea_turtle",
+      "label": "Sea turtle",
+      "emoji": "🐢",
+      "one_liner": "Sea turtles as a coastal story stop.",
+      "tags": [
+        "water",
+        "shell"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Turtles",
+      "qa_card": {
+        "question": "What did you notice about the Sea turtle?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sea-turtle"
+    },
+    {
+      "id": "jellyfish",
+      "label": "Jellyfish",
+      "emoji": "🎐",
+      "one_liner": "Glow jellies indoors.",
+      "tags": [
+        "water",
+        "glow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Jellies",
+      "qa_card": {
+        "question": "What did you notice about the Jellyfish?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "jellyfish"
+    },
+    {
+      "id": "asian_small_clawed_otter",
+      "label": "Asian small-clawed otter",
+      "emoji": "🦦",
+      "one_liner": "Otter play energy if present.",
+      "tags": [
+        "play",
         "water"
       ],
       "age_fit": [
@@ -55,12 +125,12 @@
         "6-8",
         "9+"
       ],
-      "zone": "Galleries",
+      "zone": "Otters / mammals",
       "qa_card": {
-        "question": "What did you notice about the Stingray?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
+        "question": "What did you notice about the Asian small-clawed otter?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "stingray"
+      "catalog_id": "asian-small-clawed-otter"
     },
     {
       "id": "seahorse",
@@ -85,28 +155,6 @@
       "catalog_id": "seahorse"
     },
     {
-      "id": "jellyfish",
-      "label": "Jellyfish",
-      "emoji": "🎐",
-      "one_liner": "Soft drifter — no bones, glows and pulses in the water.",
-      "tags": [
-        "wow",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "What did you notice about the Jellyfish?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "jellyfish"
-    },
-    {
       "id": "clownfish",
       "label": "Clownfish",
       "emoji": "🐠",
@@ -127,29 +175,6 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "clownfish"
-    },
-    {
-      "id": "sea_turtle",
-      "label": "Sea turtle",
-      "emoji": "🐢",
-      "one_liner": "Shelled ocean traveler — flippers for swimming.",
-      "tags": [
-        "wow",
-        "water",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "What did you notice about the Sea turtle?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "sea-turtle"
     },
     {
       "id": "octopus",
@@ -262,44 +287,25 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "freshwater-fish"
-    },
-    {
-      "id": "asian_small_clawed_otter",
-      "label": "Asian small-clawed otter",
-      "emoji": "🦦",
-      "one_liner": "Playful swimmer — smallest otter.",
-      "tags": [
-        "wow",
-        "water",
-        "outdoor",
-        "hands",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "What did you notice about the Asian small-clawed otter?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "asian-small-clawed-otter"
     }
   ],
-  "content_mode": "wonder",
+  "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://www.virginiaaquarium.com/",
     "visitor_map_kind": "page",
-    "map_attribution": "Official site · Virginia Aquarium"
+    "map_attribution": "Visit · Virginia Aquarium & Marine Science Center"
   },
   "parent_script": [
     "Bathroom first",
     "One big wow",
     "Snack when needed",
     "Leave while happy"
-  ]
+  ],
+  "route_90m": [
+    "shark",
+    "stingray",
+    "sea_turtle"
+  ],
+  "research_notes": "R1 hybrid 2026-08-07"
 }

@@ -382,11 +382,73 @@
   font-size: 0.85rem;
   color: #3d4f6f;
 }
+/* 90-minute visual strip */
+.seo-90 {
+  margin: 0 0 16px;
+  padding: 14px 14px 12px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #fff8e8, #f3faf6);
+  border: 1.5px solid rgba(217, 101, 46, 0.28);
+}
+.seo-90 h2 {
+  margin: 0 0 10px;
+  font-size: 1.05rem;
+  color: #0a4545;
+}
+.seo-90-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+.seo-90-tile {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  gap: 4px;
+  padding: 12px 8px;
+  border-radius: 14px;
+  background: #fff;
+  border: 1.5px solid rgba(15, 92, 92, 0.12);
+}
+.seo-90-emoji { font-size: 1.6rem; line-height: 1; }
+.seo-90-tile strong {
+  font-size: 0.82rem;
+  color: #0a4545;
+  line-height: 1.2;
+}
+
+/* Parent calm script — icon row */
+.seo-parent-script { margin: 0 0 16px; }
+.seo-parent-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.seo-parent-steps li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.92);
+  border: 1.5px solid rgba(15, 92, 92, 0.12);
+  font-weight: 750;
+  font-size: 0.85rem;
+  color: #0a4545;
+}
+
 @media (max-width: 720px) {
   .seo-wonder-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .seo-map-card-image { grid-template-columns: 1fr; }
   .seo-map-card-image img { height: 120px; }
   .how-steps-visual { grid-template-columns: 1fr; }
+  .seo-90-grid { grid-template-columns: 1fr; }
 }
 .seo-directory {
   margin: 28px 0 18px;

@@ -1,7 +1,7 @@
 {
   "slug": "frost-science",
   "name": "Phillip and Patricia Frost Museum of Science",
-  "type": "aquarium",
+  "type": "museum",
   "city": "Miami",
   "region": "FL",
   "country": "US",
@@ -9,15 +9,127 @@
   "lng": -80.19,
   "official_url": "https://www.frostscience.org/",
   "last_verified": "2026-08-07",
-  "verified_by": "catalog-scaffold",
+  "verified_by": "research",
   "status": "verified",
-  "tagline": "Aquarium + science downtown Miami.",
+  "tagline": "Miami science + aquarium energy — planetarium optional, tanks and hands-on first.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Check the official site for tickets and hours.",
-    "transit_note": ""
+    "ticket_note": "Museum Park; combine carefully with heat outside.",
+    "transit_note": "Downtown Miami / Museum Park.",
+    "energy_note": "indoor",
+    "best_start": "Aquarium levels first, then hands-on floors; planetarium if timed."
   },
   "items": [
+    {
+      "id": "shark",
+      "label": "Shark",
+      "emoji": "🦈",
+      "one_liner": "Sharks in the multi-level aquarium experience.",
+      "tags": [
+        "water",
+        "big",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Aquarium",
+      "qa_card": {
+        "question": "What did you notice about the Shark?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "shark"
+    },
+    {
+      "id": "stingray",
+      "label": "Stingray",
+      "emoji": "射线",
+      "one_liner": "Rays gliding in open tanks.",
+      "tags": [
+        "water",
+        "flat"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Aquarium",
+      "qa_card": {
+        "question": "What did you notice about the Stingray?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "stingray"
+    },
+    {
+      "id": "sci_planet",
+      "label": "Planet / space hall",
+      "emoji": "🪐",
+      "one_liner": "Space show if you added tickets.",
+      "tags": [
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Planetarium",
+      "qa_card": {
+        "question": "What did you notice about the Planet / space hall?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sci-planet"
+    },
+    {
+      "id": "sci_hands_on",
+      "label": "Hands-on lab",
+      "emoji": "🔬",
+      "one_liner": "Buttons, builds, and experiments.",
+      "tags": [
+        "hands",
+        "play"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Floors / labs",
+      "qa_card": {
+        "question": "What did you notice about the Hands-on lab?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sci-hands-on"
+    },
+    {
+      "id": "jellyfish",
+      "label": "Jellyfish",
+      "emoji": "🎐",
+      "one_liner": "Glow jellies for a calm pause.",
+      "tags": [
+        "water",
+        "glow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Aquarium",
+      "qa_card": {
+        "question": "What did you notice about the Jellyfish?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "jellyfish"
+    },
     {
       "id": "sci_aquarium_zone",
       "label": "Aquarium zone",
@@ -39,74 +151,6 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "sci-aquarium-zone"
-    },
-    {
-      "id": "sci_hands_on",
-      "label": "Hands-on lab",
-      "emoji": "🔬",
-      "one_liner": "Touch, test, build — science you can try.",
-      "tags": [
-        "wow",
-        "hands",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "What did you notice about the Hands-on lab?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "sci-hands-on"
-    },
-    {
-      "id": "sci_planet",
-      "label": "Planet / space hall",
-      "emoji": "🪐",
-      "one_liner": "Planets, stars, and big sky questions.",
-      "tags": [
-        "wow",
-        "water",
-        "read"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "What did you notice about the Planet / space hall?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "sci-planet"
-    },
-    {
-      "id": "jellyfish",
-      "label": "Jellyfish",
-      "emoji": "🎐",
-      "one_liner": "Soft drifter — no bones, glows and pulses in the water.",
-      "tags": [
-        "wow",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "What did you notice about the Jellyfish?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "jellyfish"
     },
     {
       "id": "cm_makery",
@@ -154,28 +198,6 @@
       "catalog_id": "cm-free-explore"
     },
     {
-      "id": "shark",
-      "label": "Shark",
-      "emoji": "🦈",
-      "one_liner": "Ocean hunter with a strong swishy body.",
-      "tags": [
-        "wow",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "What did you notice about the Shark?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "shark"
-    },
-    {
       "id": "sci_dinosaur",
       "label": "Dinosaur hall",
       "emoji": "🦖",
@@ -198,17 +220,23 @@
       "catalog_id": "sci-dinosaur"
     }
   ],
-  "content_mode": "wonder",
+  "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://www.frostscience.org/",
     "visitor_map_kind": "page",
-    "map_attribution": "Official site · Phillip and Patricia Frost Museum of Science"
+    "map_attribution": "Visit · Phillip and Patricia Frost Museum of Science"
   },
   "parent_script": [
     "Bathroom first",
     "One big wow",
     "Snack when needed",
     "Leave while happy"
-  ]
+  ],
+  "route_90m": [
+    "shark",
+    "stingray",
+    "sci_planet"
+  ],
+  "research_notes": "R1 hybrid 2026-08-07"
 }

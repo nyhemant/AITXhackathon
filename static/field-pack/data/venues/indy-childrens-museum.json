@@ -9,15 +9,127 @@
   "lng": -86.16,
   "official_url": "https://www.childrensmuseum.org/",
   "last_verified": "2026-08-07",
-  "verified_by": "catalog-scaffold",
+  "verified_by": "research",
   "status": "verified",
-  "tagline": "One of America's great children's museums.",
+  "tagline": "One of America’s great children’s museums — huge; choose two wings max.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Check the official site for tickets and hours.",
-    "transit_note": ""
+    "ticket_note": "Timed entry common — book ahead on childrensmuseum.org.",
+    "transit_note": "Downtown Indianapolis; parking garage options.",
+    "energy_note": "indoor",
+    "best_start": "Pick one physical wing + one make/play wing; schedule a snack."
   },
   "items": [
+    {
+      "id": "cm_waterfall",
+      "label": "Waterfall play",
+      "emoji": "💧",
+      "one_liner": "Water play when available — pack dry clothes.",
+      "tags": [
+        "water",
+        "play"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Water / outdoor elements",
+      "qa_card": {
+        "question": "What did you notice about the Waterfall play?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "cm-waterfall"
+    },
+    {
+      "id": "cm_imaginarium",
+      "label": "Imaginarium",
+      "emoji": "✨",
+      "one_liner": "Kid-run stories and roleles.",
+      "tags": [
+        "play",
+        "hands"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Pretend worlds",
+      "qa_card": {
+        "question": "What did you notice about the Imaginarium?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "cm-imaginarium"
+    },
+    {
+      "id": "cm_makery",
+      "label": "Creative Makery",
+      "emoji": "🔧",
+      "one_liner": "Build and create stations.",
+      "tags": [
+        "hands",
+        "play"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Make",
+      "qa_card": {
+        "question": "What did you notice about the Creative Makery?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "cm-makery"
+    },
+    {
+      "id": "sci_dinosaur",
+      "label": "Dinosaur hall",
+      "emoji": "🦖",
+      "one_liner": "Dino wow if that’s your wing pick.",
+      "tags": [
+        "wow",
+        "read"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Dinosphere / dino",
+      "qa_card": {
+        "question": "What did you notice about the Dinosaur hall?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sci-dinosaur"
+    },
+    {
+      "id": "cm_toddler_garden",
+      "label": "Toddler Garden",
+      "emoji": "🌱",
+      "one_liner": "Softer spaces for toddlers.",
+      "tags": [
+        "play",
+        "rest"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Little ones",
+      "qa_card": {
+        "question": "What did you notice about the Toddler Garden?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "cm-toddler-garden"
+    },
     {
       "id": "cm_outdoor",
       "label": "Outdoor Area",
@@ -40,28 +152,6 @@
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
       "catalog_id": "cm-outdoor"
-    },
-    {
-      "id": "cm_imaginarium",
-      "label": "Imaginarium",
-      "emoji": "✨",
-      "one_liner": "Multi-sensory world — explore, notice, imagine.",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Imaginarium?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "cm-imaginarium"
     },
     {
       "id": "cm_woven",
@@ -87,29 +177,6 @@
       "catalog_id": "cm-woven"
     },
     {
-      "id": "cm_makery",
-      "label": "Creative Makery",
-      "emoji": "🔧",
-      "one_liner": "Build, invent, problem-solve with your hands.",
-      "tags": [
-        "wow",
-        "hands",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Creative Makery?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "cm-makery"
-    },
-    {
       "id": "cm_art_lab",
       "label": "Art Lab",
       "emoji": "🎨",
@@ -131,73 +198,6 @@
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
       "catalog_id": "cm-art-lab"
-    },
-    {
-      "id": "cm_waterfall",
-      "label": "Waterfall play",
-      "emoji": "💧",
-      "one_liner": "Programmable waterfall / water play outdoors.",
-      "tags": [
-        "wow",
-        "hands",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Waterfall play?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "cm-waterfall"
-    },
-    {
-      "id": "sci_dinosaur",
-      "label": "Dinosaur hall",
-      "emoji": "🦖",
-      "one_liner": "Bones, giants, and deep time — look up!",
-      "tags": [
-        "wow",
-        "read"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Dinosaur hall?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "sci-dinosaur"
-    },
-    {
-      "id": "cm_toddler_garden",
-      "label": "Toddler Garden",
-      "emoji": "🌱",
-      "one_liner": "Gentler outdoor/garden space for little explorers.",
-      "tags": [
-        "wow",
-        "read"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Toddler Garden?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "cm-toddler-garden"
     },
     {
       "id": "cm_free_explore",
@@ -245,17 +245,23 @@
       "catalog_id": "sci-hands-on"
     }
   ],
-  "content_mode": "wonder",
+  "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://www.childrensmuseum.org/",
     "visitor_map_kind": "page",
-    "map_attribution": "Official site · Children's Museum of Indianapolis"
+    "map_attribution": "Visit · The Children’s Museum of Indianapolis"
   },
   "parent_script": [
     "Bathroom first",
     "One big wow",
     "Snack when needed",
     "Leave while happy"
-  ]
+  ],
+  "route_90m": [
+    "cm_waterfall",
+    "cm_imaginarium",
+    "cm_makery"
+  ],
+  "research_notes": "R1 hybrid 2026-08-07"
 }

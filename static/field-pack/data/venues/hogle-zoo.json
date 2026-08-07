@@ -9,27 +9,26 @@
   "lng": -111.81,
   "official_url": "https://www.hoglezoo.org/",
   "last_verified": "2026-08-07",
-  "verified_by": "catalog-scaffold",
+  "verified_by": "research",
   "status": "verified",
-  "tagline": "Salt Lake foothills zoo — hills, big views, finishable kid day.",
+  "tagline": "Salt Lake foothills zoo — hills, big views, finishable kid loops.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Check hoglezoo.org for hours and tickets.",
-    "transit_note": "Foothill area — car-friendly; paths can be hilly.",
+    "transit_note": "Foothill Drive area — easiest by car.",
     "energy_note": "hills",
-    "best_start": "Enter and pick one wow loop — don’t chase the whole map."
+    "best_start": "Bathroom, then one big wow habitat before climbing more paths."
   },
   "items": [
     {
       "id": "african_elephant",
       "label": "African elephant",
       "emoji": "🐘",
-      "one_liner": "Biggest land animal — trunk to grab, spray, and say hello.",
+      "one_liner": "Huge land mammal — hard to miss.",
       "tags": [
-        "wow",
         "big",
         "outdoor",
-        "water"
+        "wow"
       ],
       "age_fit": [
         "2-3",
@@ -37,10 +36,10 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "African savanna areas",
       "qa_card": {
-        "question": "What is special about the African elephant?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the African elephant?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-elephant"
     },
@@ -48,11 +47,11 @@
       "id": "reticulated_giraffe",
       "label": "Reticulated giraffe",
       "emoji": "🦒",
-      "one_liner": "Tallest animal on long legs — look up!",
+      "one_liner": "Look up for long necks on the hillside zoo.",
       "tags": [
-        "wow",
         "tall",
-        "outdoor"
+        "outdoor",
+        "wow"
       ],
       "age_fit": [
         "2-3",
@@ -60,10 +59,10 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Giraffe areas",
       "qa_card": {
-        "question": "What is special about the Reticulated giraffe?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Reticulated giraffe?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "reticulated-giraffe"
     },
@@ -71,9 +70,31 @@
       "id": "african_lion",
       "label": "African lion",
       "emoji": "🦁",
-      "one_liner": "Big cat of the grassland pride — mighty roar!",
+      "one_liner": "Big cats with a mountain-west backdrop vibe.",
       "tags": [
-        "wow",
+        "big-cats",
+        "outdoor",
+        "sound"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Cat habitats",
+      "qa_card": {
+        "question": "What did you notice about the African lion?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "african-lion"
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "emoji": "🐯",
+      "one_liner": "Stripes in forested cat spaces.",
+      "tags": [
         "big-cats",
         "outdoor"
       ],
@@ -83,35 +104,10 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Cat habitats",
       "qa_card": {
-        "question": "What is special about the African lion?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "african-lion"
-    },
-    {
-      "id": "sumatran_tiger",
-      "label": "Sumatran tiger",
-      "emoji": "🐯",
-      "one_liner": "Stripy forest big cat — strong and stealthy.",
-      "tags": [
-        "wow",
-        "big-cats",
-        "outdoor",
-        "rest",
-        "kids"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Sumatran tiger?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Sumatran tiger?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sumatran-tiger"
     },
@@ -298,7 +294,7 @@
       "catalog_id": "galapagos-tortoise"
     }
   ],
-  "content_mode": "wonder",
+  "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "https://www.hoglezoo.org/wp-content/uploads/2024/07/Utahs-Hogle-Zoo-Map-2024-New.png",
     "visitor_map_page": "https://www.hoglezoo.org/hogle-zoo-map/",
@@ -310,5 +306,11 @@
     "One big wow",
     "Snack when needed",
     "Leave while happy"
-  ]
+  ],
+  "route_90m": [
+    "african_elephant",
+    "reticulated_giraffe",
+    "african_lion"
+  ],
+  "research_notes": "Map PNG from hoglezoo.org map page 2024."
 }

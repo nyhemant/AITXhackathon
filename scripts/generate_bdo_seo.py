@@ -472,6 +472,54 @@ def page_mission_chrome_html() -> str:
         </div>"""
 
 
+def route_90m_html(mission_venue: dict, mission: dict) -> str:
+    """Visual 90-minute strip from route_90m or first 3 mission finds."""
+    items = {it.get("id"): it for it in (mission_venue.get("items") or [])}
+    route_ids = mission_venue.get("route_90m") or []
+    picks = []
+    for rid in route_ids[:3]:
+        if rid in items:
+            picks.append(items[rid])
+    if len(picks) < 3:
+        for f in mission.get("finds") or []:
+            if len(picks) >= 3:
+                break
+            if not any(p.get("id") == f.get("id") for p in picks):
+                picks.append(f)
+    if len(picks) < 2:
+        return ""
+    tiles = "".join(
+        f"""<li class="seo-90-tile">
+        <span class="seo-90-emoji" aria-hidden="true">{esc(p.get("emoji") or "✨")}</span>
+        <strong>{esc(p.get("label") or "Find")}</strong>
+      </li>"""
+        for p in picks[:3]
+    )
+    return f"""
+    <section class="seo-90 no-print" aria-labelledby="route90-heading">
+      <h2 id="route90-heading"><span aria-hidden="true">⚡</span> If you only have 90 minutes</h2>
+      <ol class="seo-90-grid">{tiles}</ol>
+    </section>"""
+
+
+def parent_script_html(mission_venue: dict) -> str:
+    steps = mission_venue.get("parent_script") or [
+        "Bathroom first",
+        "One big wow",
+        "Snack when needed",
+        "Leave while happy",
+    ]
+    icons = ["🚻", "⭐", "🧃", "🚪", "💛"]
+    lis = "".join(
+        f'<li><span aria-hidden="true">{icons[i % len(icons)]}</span><span>{esc(s)}</span></li>'
+        for i, s in enumerate(steps[:5])
+    )
+    return f"""
+    <section class="seo-parent-script no-print" aria-label="Calm day script">
+      <ol class="seo-parent-steps">{lis}</ol>
+    </section>"""
+
+
 def mission_drawer_html(mission_venue: dict, mission: dict) -> str:
     """Slide-over drawer: filters + live sheet. Page stays clean; CTA opens this."""
     vid = mission_venue["slug"]
@@ -553,6 +601,7 @@ def mission_drawer_html(mission_venue: dict, mission: dict) -> str:
               <span id="mission-verified">{esc(verified_line)}</span>
               · free at 1less.app/field-pack/{esc(vid)}/
             </p>
+            <p class="ms-map-hint" id="mission-map-hint"></p>
           </div>
         </div>
       </div>
@@ -622,6 +671,8 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
         how_step2 = "Use the photo shortlist on site"
     map_card = map_card_html(mission_venue)
     chrome = page_mission_chrome_html()
+    route90 = route_90m_html(mission_venue, mission)
+    parent_sc = parent_script_html(mission_venue)
     h1 = h1_for(v)
     title = title_for(v)
     desc = meta_for(v)
@@ -730,6 +781,8 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
       </header>
 
       {map_card}
+      {route90}
+      {parent_sc}
       {body}
 
       <section class="seo-how no-print" aria-labelledby="how-heading">

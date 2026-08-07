@@ -9,20 +9,22 @@
   "lng": -104.94,
   "official_url": "https://www.dmns.org/",
   "last_verified": "2026-08-07",
-  "verified_by": "catalog-scaffold",
+  "verified_by": "research",
   "status": "verified",
-  "tagline": "Dinos and space in Denver.",
+  "tagline": "City Park natural history — dioramas, space, and kid discovery zones.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Check the official site for tickets and hours.",
-    "transit_note": ""
+    "ticket_note": "IMAX/planetarium add-ons optional.",
+    "transit_note": "City Park; same neighborhood as the zoo.",
+    "energy_note": "indoor",
+    "best_start": "Discovery Zone or dioramas, then one big hall."
   },
   "items": [
     {
       "id": "sci_dinosaur",
       "label": "Dinosaur hall",
       "emoji": "🦖",
-      "one_liner": "Bones, giants, and deep time — look up!",
+      "one_liner": "Dinos for the wow open.",
       "tags": [
         "wow",
         "read"
@@ -33,10 +35,10 @@
         "6-8",
         "9+"
       ],
-      "zone": "Halls",
+      "zone": "Prehistoric journey",
       "qa_card": {
-        "question": "What did you try or notice at Dinosaur hall?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+        "question": "What did you notice about the Dinosaur hall?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sci-dinosaur"
     },
@@ -44,10 +46,9 @@
       "id": "sci_mammal_hall",
       "label": "Animal / mammal hall",
       "emoji": "🦌",
-      "one_liner": "Lifelike animals from around the world — spot fur, horns, and habitats.",
+      "one_liner": "Classic habitat dioramas.",
       "tags": [
-        "wow",
-        "outdoor"
+        "wow"
       ],
       "age_fit": [
         "2-3",
@@ -55,10 +56,10 @@
         "6-8",
         "9+"
       ],
-      "zone": "Halls",
+      "zone": "Dioramas",
       "qa_card": {
-        "question": "What did you try or notice at Animal / mammal hall?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+        "question": "What did you notice about the Animal / mammal hall?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sci-mammal-hall"
     },
@@ -66,11 +67,9 @@
       "id": "sci_planet",
       "label": "Planet / space hall",
       "emoji": "🪐",
-      "one_liner": "Planets, stars, and big sky questions.",
+      "one_liner": "Space hall / shows if added.",
       "tags": [
-        "wow",
-        "water",
-        "read"
+        "wow"
       ],
       "age_fit": [
         "2-3",
@@ -78,10 +77,10 @@
         "6-8",
         "9+"
       ],
-      "zone": "Halls",
+      "zone": "Space Odyssey",
       "qa_card": {
-        "question": "What did you try or notice at Planet / space hall?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+        "question": "What did you notice about the Planet / space hall?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sci-planet"
     },
@@ -89,9 +88,8 @@
       "id": "sci_hands_on",
       "label": "Hands-on lab",
       "emoji": "🔬",
-      "one_liner": "Touch, test, build — science you can try.",
+      "one_liner": "Hands-on for younger kids.",
       "tags": [
-        "wow",
         "hands",
         "play"
       ],
@@ -101,12 +99,33 @@
         "6-8",
         "9+"
       ],
-      "zone": "Halls",
+      "zone": "Discovery Zone",
       "qa_card": {
-        "question": "What did you try or notice at Hands-on lab?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+        "question": "What did you notice about the Hands-on lab?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sci-hands-on"
+    },
+    {
+      "id": "cm_free_explore",
+      "label": "Free explore",
+      "emoji": "🧭",
+      "one_liner": "They choose the next hallway.",
+      "tags": [
+        "play"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Kid lead",
+      "qa_card": {
+        "question": "What did you notice about the Free explore?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "cm-free-explore"
     },
     {
       "id": "cm_imaginarium",
@@ -129,28 +148,6 @@
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
       "catalog_id": "cm-imaginarium"
-    },
-    {
-      "id": "cm_free_explore",
-      "label": "Free explore",
-      "emoji": "🧭",
-      "one_liner": "Their choice path — whatever pulled them in!",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Free explore?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "cm-free-explore"
     },
     {
       "id": "sci_rainforest",
@@ -176,37 +173,44 @@
       "catalog_id": "sci-rainforest"
     },
     {
-      "id": "kids_rest",
-      "label": "Kids rest / play stop",
-      "emoji": "🛝",
-      "one_liner": "Take a break, then keep exploring.",
+      "id": "pad_7",
+      "label": "Kid choice hall",
+      "emoji": "🧭",
+      "one_liner": "They pick the next room for five minutes.",
       "tags": [
-        "rest",
-        "kids"
+        "play"
       ],
       "age_fit": [
         "2-3",
         "4-5",
-        "6-8"
+        "6-8",
+        "9+"
       ],
-      "zone": "",
+      "zone": "Explore",
       "qa_card": {
-        "question": "Did a rest stop help?",
-        "answer": "Breaks help little legs finish the day!"
-      }
+        "question": "What did you like most?",
+        "answer": "Whatever made you curious!"
+      },
+      "catalog_id": "cm-free-explore"
     }
   ],
-  "content_mode": "wonder",
+  "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://www.dmns.org/",
     "visitor_map_kind": "page",
-    "map_attribution": "Official site · Denver Museum of Nature & Science"
+    "map_attribution": "Visit · Denver Museum of Nature & Science"
   },
   "parent_script": [
     "Bathroom first",
     "One big wow",
     "Snack when needed",
     "Leave while happy"
-  ]
+  ],
+  "route_90m": [
+    "sci_dinosaur",
+    "sci_mammal_hall",
+    "sci_planet"
+  ],
+  "research_notes": "R1 hybrid 2026-08-07"
 }

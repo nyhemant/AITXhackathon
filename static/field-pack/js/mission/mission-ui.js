@@ -47,7 +47,10 @@
     const findsEl = $("#mission-finds");
     const chEl = $("#mission-challenges");
     if (title) title.textContent = mission.title;
-    if (meta) meta.textContent = `${mission.ageLabel} · ${mission.timeLabel}`;
+    if (meta) {
+      const mode = mission.contentMode === "wonder" ? " · Wonder sheet" : "";
+      meta.textContent = `${mission.ageLabel} · ${mission.timeLabel}${mode}`;
+    }
     if (findsEl) {
       findsEl.innerHTML = (mission.finds || [])
         .map(
@@ -71,6 +74,15 @@
         </li>`
         )
         .join("");
+    }
+    const mapHint = $("#mission-map-hint");
+    if (mapHint && venue && venue.media) {
+      const page = venue.media.visitor_map_page || venue.media.visitor_map_url || "";
+      if (page) {
+        mapHint.innerHTML = `🗺️ Navigate with the <a href="${esc(page)}" target="_blank" rel="noopener noreferrer">official map</a>`;
+      } else {
+        mapHint.textContent = "";
+      }
     }
   }
 

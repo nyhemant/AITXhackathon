@@ -9,25 +9,26 @@
   "lng": -111.95,
   "official_url": "https://phoenixzoo.org/",
   "last_verified": "2026-08-07",
-  "verified_by": "catalog-scaffold",
+  "verified_by": "research",
   "status": "verified",
-  "tagline": "Desert zoo day shortlist.",
+  "tagline": "Desert zoo day — go early, chase shade, big animals before the heat peaks.",
   "practical": {
-    "typical_duration": "half day",
-    "ticket_note": "Check the official site for tickets and hours.",
-    "transit_note": ""
+    "typical_duration": "half day (morning)",
+    "ticket_note": "Summer: open at open, leave by late morning if possible.",
+    "transit_note": "Papago Park; car day for most families.",
+    "energy_note": "heat",
+    "best_start": "Water bottle rule + elephants/giraffes in cooler hours."
   },
   "items": [
     {
       "id": "african_elephant",
       "label": "African elephant",
       "emoji": "🐘",
-      "one_liner": "Biggest land animal — trunk to grab, spray, and say hello.",
+      "one_liner": "Elephants before the heat climbs.",
       "tags": [
-        "wow",
         "big",
         "outdoor",
-        "water"
+        "wow"
       ],
       "age_fit": [
         "2-3",
@@ -35,10 +36,10 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Africa Trail",
       "qa_card": {
-        "question": "What is special about the African elephant?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the African elephant?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-elephant"
     },
@@ -46,9 +47,8 @@
       "id": "reticulated_giraffe",
       "label": "Reticulated giraffe",
       "emoji": "🦒",
-      "one_liner": "Tallest animal on long legs — look up!",
+      "one_liner": "Tall necks — quick photo win.",
       "tags": [
-        "wow",
         "tall",
         "outdoor"
       ],
@@ -58,12 +58,78 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Africa Trail",
       "qa_card": {
-        "question": "What is special about the Reticulated giraffe?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Reticulated giraffe?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "reticulated-giraffe"
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "emoji": "🐯",
+      "one_liner": "Big cats in desert-zoo landscaping.",
+      "tags": [
+        "big-cats",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Asia Trail",
+      "qa_card": {
+        "question": "What did you notice about the Sumatran tiger?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sumatran-tiger"
+    },
+    {
+      "id": "orangutan",
+      "label": "Orangutan",
+      "emoji": "🦧",
+      "one_liner": "Long-arm climbers if on your loop.",
+      "tags": [
+        "primates",
+        "climb"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Orangutan / primates",
+      "qa_card": {
+        "question": "What did you notice about the Orangutan?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "orangutan"
+    },
+    {
+      "id": "galapagos_tortoise",
+      "label": "Galápagos tortoise",
+      "emoji": "🐢",
+      "one_liner": "Slow giants that handle heat better than toddlers.",
+      "tags": [
+        "slow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Reptiles",
+      "qa_card": {
+        "question": "What did you notice about the Galápagos tortoise?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "galapagos-tortoise"
     },
     {
       "id": "african_lion",
@@ -87,31 +153,6 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "african-lion"
-    },
-    {
-      "id": "sumatran_tiger",
-      "label": "Sumatran tiger",
-      "emoji": "🐯",
-      "one_liner": "Stripy forest big cat — strong and stealthy.",
-      "tags": [
-        "wow",
-        "big-cats",
-        "outdoor",
-        "rest",
-        "kids"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Sumatran tiger?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "sumatran-tiger"
     },
     {
       "id": "western_lowland_gorilla",
@@ -272,41 +313,25 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "zebra"
-    },
-    {
-      "id": "galapagos_tortoise",
-      "label": "Galápagos tortoise",
-      "emoji": "🐢",
-      "one_liner": "Giant tortoise — slow and steady.",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Galápagos tortoise?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "galapagos-tortoise"
     }
   ],
-  "content_mode": "wonder",
+  "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://phoenixzoo.org/",
     "visitor_map_kind": "page",
-    "map_attribution": "Official site · Phoenix Zoo"
+    "map_attribution": "Plan your visit · Phoenix Zoo"
   },
   "parent_script": [
     "Bathroom first",
     "One big wow",
     "Snack when needed",
     "Leave while happy"
-  ]
+  ],
+  "route_90m": [
+    "african_elephant",
+    "reticulated_giraffe",
+    "sumatran_tiger"
+  ],
+  "research_notes": "R1 hybrid 2026-08-07"
 }

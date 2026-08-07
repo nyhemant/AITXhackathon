@@ -9,23 +9,110 @@
   "lng": -71.07,
   "official_url": "https://www.mos.org/",
   "last_verified": "2026-08-07",
-  "verified_by": "catalog-scaffold",
+  "verified_by": "research",
   "status": "verified",
-  "tagline": "Hands-on science on the Charles.",
+  "tagline": "Charles River science — hands-on halls and optional planetarium/IMAX add-ons.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Check the official site for tickets and hours.",
-    "transit_note": ""
+    "ticket_note": "Add-ons (planetarium/OMNI) are separate — don’t overbuy.",
+    "transit_note": "Science Park / West End; garage parking.",
+    "energy_note": "indoor",
+    "best_start": "Hands-on galleries first; show tickets only if energy allows."
   },
   "items": [
     {
       "id": "sci_hands_on",
       "label": "Hands-on lab",
       "emoji": "🔬",
-      "one_liner": "Touch, test, build — science you can try.",
+      "one_liner": "Buttons, builds, and live demos energy.",
       "tags": [
-        "wow",
         "hands",
+        "play",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Interactive halls",
+      "qa_card": {
+        "question": "What did you notice about the Hands-on lab?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sci-hands-on"
+    },
+    {
+      "id": "sci_planet",
+      "label": "Planet / space hall",
+      "emoji": "🪐",
+      "one_liner": "Space show if ticketed.",
+      "tags": [
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Planetarium",
+      "qa_card": {
+        "question": "What did you notice about the Planet / space hall?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sci-planet"
+    },
+    {
+      "id": "sci_dinosaur",
+      "label": "Dinosaur hall",
+      "emoji": "🦖",
+      "one_liner": "Dino moments when on the route.",
+      "tags": [
+        "read",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Dinosaurs / life",
+      "qa_card": {
+        "question": "What did you notice about the Dinosaur hall?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sci-dinosaur"
+    },
+    {
+      "id": "sci_aquarium_zone",
+      "label": "Aquarium zone",
+      "emoji": "🐠",
+      "one_liner": "Small live collections inside science floors.",
+      "tags": [
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Live animals / tanks",
+      "qa_card": {
+        "question": "What did you notice about the Aquarium zone?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sci-aquarium-zone"
+    },
+    {
+      "id": "cm_free_explore",
+      "label": "Free explore",
+      "emoji": "🧭",
+      "one_liner": "Kid picks the next hall for five minutes.",
+      "tags": [
         "play"
       ],
       "age_fit": [
@@ -34,57 +121,12 @@
         "6-8",
         "9+"
       ],
-      "zone": "Halls",
+      "zone": "Open explore",
       "qa_card": {
-        "question": "What did you try or notice at Hands-on lab?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+        "question": "What did you notice about the Free explore?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-hands-on"
-    },
-    {
-      "id": "sci_planet",
-      "label": "Planet / space hall",
-      "emoji": "🪐",
-      "one_liner": "Planets, stars, and big sky questions.",
-      "tags": [
-        "wow",
-        "water",
-        "read"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Planet / space hall?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "sci-planet"
-    },
-    {
-      "id": "sci_dinosaur",
-      "label": "Dinosaur hall",
-      "emoji": "🦖",
-      "one_liner": "Bones, giants, and deep time — look up!",
-      "tags": [
-        "wow",
-        "read"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Dinosaur hall?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "sci-dinosaur"
+      "catalog_id": "cm-free-explore"
     },
     {
       "id": "cm_makery",
@@ -132,28 +174,6 @@
       "catalog_id": "cm-imaginarium"
     },
     {
-      "id": "cm_free_explore",
-      "label": "Free explore",
-      "emoji": "🧭",
-      "one_liner": "Their choice path — whatever pulled them in!",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Free explore?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "cm-free-explore"
-    },
-    {
       "id": "sci_shuttle",
       "label": "Space shuttle / orbiter",
       "emoji": "🛰️",
@@ -198,17 +218,23 @@
       "catalog_id": "sci-rocket"
     }
   ],
-  "content_mode": "wonder",
+  "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://www.mos.org/",
     "visitor_map_kind": "page",
-    "map_attribution": "Official site · Museum of Science"
+    "map_attribution": "Visit · Museum of Science, Boston"
   },
   "parent_script": [
     "Bathroom first",
     "One big wow",
     "Snack when needed",
     "Leave while happy"
-  ]
+  ],
+  "route_90m": [
+    "sci_hands_on",
+    "sci_planet",
+    "sci_dinosaur"
+  ],
+  "research_notes": "R1 hybrid 2026-08-07"
 }

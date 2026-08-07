@@ -9,25 +9,25 @@
   "lng": -83.16,
   "official_url": "https://detroitzoo.org/",
   "last_verified": "2026-08-07",
-  "verified_by": "catalog-scaffold",
+  "verified_by": "research",
   "status": "verified",
-  "tagline": "Metro Detroit zoo shortlist.",
+  "tagline": "Royal Oak favorite — penguins, arctic feels, and a train option for tired legs.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Check the official site for tickets and hours.",
-    "transit_note": ""
+    "ticket_note": "Parking and membership deals on detroitzoo.org.",
+    "transit_note": "Royal Oak / Woodward corridor.",
+    "energy_note": "stroller-easy",
+    "best_start": "Penguin Conservation Center energy, then one outdoor loop."
   },
   "items": [
     {
-      "id": "african_elephant",
-      "label": "African elephant",
-      "emoji": "🐘",
-      "one_liner": "Biggest land animal — trunk to grab, spray, and say hello.",
+      "id": "african_penguin",
+      "label": "African penguin",
+      "emoji": "🐧",
+      "one_liner": "A Detroit Zoo signature stop.",
       "tags": [
-        "wow",
-        "big",
-        "outdoor",
-        "water"
+        "water",
+        "wow"
       ],
       "age_fit": [
         "2-3",
@@ -35,10 +35,32 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Penguin Conservation Center",
       "qa_card": {
-        "question": "What is special about the African elephant?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the African penguin?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "african-penguin"
+    },
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "emoji": "🐘",
+      "one_liner": "Elephants on the main outdoor loop.",
+      "tags": [
+        "big",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Elephants",
+      "qa_card": {
+        "question": "What did you notice about the African elephant?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-elephant"
     },
@@ -46,9 +68,8 @@
       "id": "reticulated_giraffe",
       "label": "Reticulated giraffe",
       "emoji": "🦒",
-      "one_liner": "Tallest animal on long legs — look up!",
+      "one_liner": "Giraffes for a tall wow.",
       "tags": [
-        "wow",
         "tall",
         "outdoor"
       ],
@@ -58,12 +79,56 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "African grasslands",
       "qa_card": {
-        "question": "What is special about the Reticulated giraffe?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Reticulated giraffe?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "reticulated-giraffe"
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "emoji": "🐯",
+      "one_liner": "Tigers in forested habitats.",
+      "tags": [
+        "big-cats",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Asian Forest",
+      "qa_card": {
+        "question": "What did you notice about the Sumatran tiger?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sumatran-tiger"
+    },
+    {
+      "id": "red_panda",
+      "label": "Red panda",
+      "emoji": "🦊",
+      "one_liner": "Red pandas when active in trees.",
+      "tags": [
+        "climb",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Asia",
+      "qa_card": {
+        "question": "What did you notice about the Red panda?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "red-panda"
     },
     {
       "id": "african_lion",
@@ -89,31 +154,6 @@
       "catalog_id": "african-lion"
     },
     {
-      "id": "sumatran_tiger",
-      "label": "Sumatran tiger",
-      "emoji": "🐯",
-      "one_liner": "Stripy forest big cat — strong and stealthy.",
-      "tags": [
-        "wow",
-        "big-cats",
-        "outdoor",
-        "rest",
-        "kids"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Sumatran tiger?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "sumatran-tiger"
-    },
-    {
       "id": "western_lowland_gorilla",
       "label": "Western lowland gorilla",
       "emoji": "🦍",
@@ -135,29 +175,6 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "western-lowland-gorilla"
-    },
-    {
-      "id": "african_penguin",
-      "label": "African penguin",
-      "emoji": "🐧",
-      "one_liner": "Waddle on land, zoom in water.",
-      "tags": [
-        "wow",
-        "water",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the African penguin?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "african-penguin"
     },
     {
       "id": "cheetah",
@@ -296,17 +313,23 @@
       "catalog_id": "galapagos-tortoise"
     }
   ],
-  "content_mode": "wonder",
+  "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://detroitzoo.org/",
     "visitor_map_kind": "page",
-    "map_attribution": "Official site · Detroit Zoo"
+    "map_attribution": "Plan your visit · Detroit Zoo"
   },
   "parent_script": [
     "Bathroom first",
     "One big wow",
     "Snack when needed",
     "Leave while happy"
-  ]
+  ],
+  "route_90m": [
+    "african_penguin",
+    "african_elephant",
+    "reticulated_giraffe"
+  ],
+  "research_notes": "R1 hybrid 2026-08-07"
 }

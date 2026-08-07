@@ -9,23 +9,89 @@
   "lng": -122.67,
   "official_url": "https://omsi.edu/",
   "last_verified": "2026-08-07",
-  "verified_by": "catalog-scaffold",
+  "verified_by": "research",
   "status": "verified",
-  "tagline": "Hands-on science on the river.",
+  "tagline": "OMSI on the river — hands-on science, optional submarine/planetarium extras.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Check the official site for tickets and hours.",
-    "transit_note": ""
+    "ticket_note": "Extras cost more — choose one special experience max.",
+    "transit_note": "Eastbank Esplanade / Portland; parking lots nearby.",
+    "energy_note": "indoor",
+    "best_start": "Turbine hall / hands-on first for wiggles."
   },
   "items": [
     {
       "id": "sci_hands_on",
       "label": "Hands-on lab",
       "emoji": "🔬",
-      "one_liner": "Touch, test, build — science you can try.",
+      "one_liner": "The point of OMSI — touch and try.",
+      "tags": [
+        "hands",
+        "play",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Labs / halls",
+      "qa_card": {
+        "question": "What did you notice about the Hands-on lab?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sci-hands-on"
+    },
+    {
+      "id": "sci_planet",
+      "label": "Planet / space hall",
+      "emoji": "🪐",
+      "one_liner": "Sky show if ticketed.",
+      "tags": [
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Planetarium",
+      "qa_card": {
+        "question": "What did you notice about the Planet / space hall?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sci-planet"
+    },
+    {
+      "id": "sci_rocket",
+      "label": "Rockets & launch",
+      "emoji": "🚀",
+      "one_liner": "Rockets and big machines energy.",
       "tags": [
         "wow",
-        "hands",
+        "tall"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Space / tech",
+      "qa_card": {
+        "question": "What did you notice about the Rockets & launch?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sci-rocket"
+    },
+    {
+      "id": "cm_free_explore",
+      "label": "Free explore",
+      "emoji": "🧭",
+      "one_liner": "Let them pick the next exhibit for five minutes.",
+      "tags": [
         "play"
       ],
       "age_fit": [
@@ -34,35 +100,12 @@
         "6-8",
         "9+"
       ],
-      "zone": "Halls",
+      "zone": "Kid choice",
       "qa_card": {
-        "question": "What did you try or notice at Hands-on lab?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+        "question": "What did you notice about the Free explore?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-hands-on"
-    },
-    {
-      "id": "sci_planet",
-      "label": "Planet / space hall",
-      "emoji": "🪐",
-      "one_liner": "Planets, stars, and big sky questions.",
-      "tags": [
-        "wow",
-        "water",
-        "read"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Planet / space hall?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "sci-planet"
+      "catalog_id": "cm-free-explore"
     },
     {
       "id": "sci_dinosaur",
@@ -132,28 +175,6 @@
       "catalog_id": "cm-imaginarium"
     },
     {
-      "id": "cm_free_explore",
-      "label": "Free explore",
-      "emoji": "🧭",
-      "one_liner": "Their choice path — whatever pulled them in!",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Free explore?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "cm-free-explore"
-    },
-    {
       "id": "sci_shuttle",
       "label": "Space shuttle / orbiter",
       "emoji": "🛰️",
@@ -174,41 +195,25 @@
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
       "catalog_id": "sci-shuttle"
-    },
-    {
-      "id": "sci_rocket",
-      "label": "Rockets & launch",
-      "emoji": "🚀",
-      "one_liner": "Tall rockets and the power of liftoff.",
-      "tags": [
-        "wow",
-        "read"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Rockets & launch?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "sci-rocket"
     }
   ],
-  "content_mode": "wonder",
+  "content_mode": "hybrid",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://omsi.edu/",
     "visitor_map_kind": "page",
-    "map_attribution": "Official site · OMSI"
+    "map_attribution": "Visit · OMSI"
   },
   "parent_script": [
     "Bathroom first",
     "One big wow",
     "Snack when needed",
     "Leave while happy"
-  ]
+  ],
+  "route_90m": [
+    "sci_hands_on",
+    "sci_planet",
+    "sci_rocket"
+  ],
+  "research_notes": "R1 hybrid 2026-08-07"
 }
