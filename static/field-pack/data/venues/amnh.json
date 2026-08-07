@@ -9,20 +9,20 @@
   "lng": -73.97,
   "official_url": "https://www.amnh.org/",
   "last_verified": "2026-08-07",
-  "verified_by": "catalog-scaffold",
+  "verified_by": "research",
   "status": "verified",
-  "tagline": "NYC classic — dinos, space, mammal halls.",
+  "tagline": "Dinos, the blue whale, and space — NYC’s classic natural history circuit.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Check the official site for tickets and hours.",
-    "transit_note": ""
+    "ticket_note": "Timed entry + optional planetarium tickets.",
+    "transit_note": "B/C to 81st Street; stroller-friendly halls."
   },
   "items": [
     {
       "id": "sci_dinosaur",
       "label": "Dinosaur hall",
       "emoji": "🦖",
-      "one_liner": "Bones, giants, and deep time — look up!",
+      "one_liner": "T. rex and friends — the reason many kids beg to come.",
       "tags": [
         "wow",
         "read"
@@ -33,10 +33,10 @@
         "6-8",
         "9+"
       ],
-      "zone": "Halls",
+      "zone": "Fossil halls",
       "qa_card": {
-        "question": "What did you try or notice at Dinosaur hall?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+        "question": "Were all dinosaurs huge?",
+        "answer": "No — some were small, but the big ones steal the show!"
       },
       "catalog_id": "sci-dinosaur"
     },
@@ -44,32 +44,9 @@
       "id": "sci_mammal_hall",
       "label": "Animal / mammal hall",
       "emoji": "🦌",
-      "one_liner": "Lifelike animals from around the world — spot fur, horns, and habitats.",
+      "one_liner": "Lifelike dioramas of animals in habitats.",
       "tags": [
         "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Animal / mammal hall?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "sci-mammal-hall"
-    },
-    {
-      "id": "sci_planet",
-      "label": "Planet / space hall",
-      "emoji": "🪐",
-      "one_liner": "Planets, stars, and big sky questions.",
-      "tags": [
-        "wow",
-        "water",
         "read"
       ],
       "age_fit": [
@@ -78,10 +55,31 @@
         "6-8",
         "9+"
       ],
-      "zone": "Halls",
+      "zone": "Mammal halls",
       "qa_card": {
-        "question": "What did you try or notice at Planet / space hall?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+        "question": "What did you notice about the Animal / mammal hall?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sci-mammal-hall"
+    },
+    {
+      "id": "sci_planet",
+      "label": "Planet / space hall",
+      "emoji": "🪐",
+      "one_liner": "Space show if you added tickets — stars and planets.",
+      "tags": [
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Hayden Planetarium",
+      "qa_card": {
+        "question": "What did you notice about the Planet / space hall?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sci-planet"
     },
@@ -89,10 +87,92 @@
       "id": "sci_hands_on",
       "label": "Hands-on lab",
       "emoji": "🔬",
-      "one_liner": "Touch, test, build — science you can try.",
+      "one_liner": "Hands-on spots when open to the public floor.",
       "tags": [
-        "wow",
-        "hands",
+        "hands"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Discovery / education spaces",
+      "qa_card": {
+        "question": "What did you notice about the Hands-on lab?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sci-hands-on"
+    },
+    {
+      "id": "sci_rainforest",
+      "label": "Rainforest dome",
+      "emoji": "🌿",
+      "one_liner": "Lush life exhibits when on the route.",
+      "tags": [
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Special / biodiversity",
+      "qa_card": {
+        "question": "What did you notice about the Rainforest dome?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sci-rainforest"
+    },
+    {
+      "id": "two_toed_sloth",
+      "label": "Two-toed sloth",
+      "emoji": "🦥",
+      "one_liner": "Live animals appear in some education spaces — bonus if present.",
+      "tags": [
+        "climb"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Live animals / special",
+      "qa_card": {
+        "question": "What did you notice about the Two-toed sloth?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "two-toed-sloth"
+    },
+    {
+      "id": "sci_aquarium_zone",
+      "label": "Aquarium zone",
+      "emoji": "🐠",
+      "one_liner": "Aquatic life corners in biodiversity areas.",
+      "tags": [
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Life exhibits",
+      "qa_card": {
+        "question": "What did you notice about the Aquarium zone?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sci-aquarium-zone"
+    },
+    {
+      "id": "cm_free_explore",
+      "label": "Free explore",
+      "emoji": "🧭",
+      "one_liner": "Pick a favorite hall and wander five minutes freestyle.",
+      "tags": [
         "play"
       ],
       "age_fit": [
@@ -101,99 +181,12 @@
         "6-8",
         "9+"
       ],
-      "zone": "Halls",
+      "zone": "Open halls",
       "qa_card": {
-        "question": "What did you try or notice at Hands-on lab?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "sci-hands-on"
-    },
-    {
-      "id": "cm_imaginarium",
-      "label": "Imaginarium",
-      "emoji": "✨",
-      "one_liner": "Multi-sensory world — explore, notice, imagine.",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Imaginarium?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "cm-imaginarium"
-    },
-    {
-      "id": "cm_free_explore",
-      "label": "Free explore",
-      "emoji": "🧭",
-      "one_liner": "Their choice path — whatever pulled them in!",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Free explore?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+        "question": "What did you notice about the Free explore?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "cm-free-explore"
-    },
-    {
-      "id": "sci_rainforest",
-      "label": "Rainforest dome",
-      "emoji": "🌿",
-      "one_liner": "Warm, green, and full of life — look for layers of plants.",
-      "tags": [
-        "wow",
-        "rest",
-        "kids"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Rainforest dome?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "sci-rainforest"
-    },
-    {
-      "id": "kids_rest",
-      "label": "Kids rest / play stop",
-      "emoji": "🛝",
-      "one_liner": "Take a break, then keep exploring.",
-      "tags": [
-        "rest",
-        "kids"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8"
-      ],
-      "zone": "",
-      "qa_card": {
-        "question": "Did a rest stop help?",
-        "answer": "Breaks help little legs finish the day!"
-      }
     }
   ]
 }

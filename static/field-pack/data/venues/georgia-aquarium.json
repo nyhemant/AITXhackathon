@@ -9,25 +9,24 @@
   "lng": -84.4,
   "official_url": "https://www.georgiaaquarium.org/",
   "last_verified": "2026-08-07",
-  "verified_by": "catalog-scaffold",
+  "verified_by": "research",
   "status": "verified",
-  "tagline": "Giant ocean tanks and whale-shark wow — a finishable kid route.",
+  "tagline": "Whale sharks, belugas, and giant ocean windows — Atlanta’s kid wow tank.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Buy timed tickets online when you can.",
-    "transit_note": ""
+    "ticket_note": "Timed tickets often sell out on weekends — book ahead.",
+    "transit_note": "Downtown Atlanta; parking decks nearby."
   },
   "items": [
     {
       "id": "shark",
       "label": "Shark",
       "emoji": "🦈",
-      "one_liner": "Ocean hunter with a strong swishy body.",
+      "one_liner": "Home of the whale sharks — look for the biggest fish in the tank.",
       "tags": [
-        "big",
-        "wow",
         "water",
-        "fins"
+        "big",
+        "wow"
       ],
       "age_fit": [
         "2-3",
@@ -35,10 +34,10 @@
         "6-8",
         "9+"
       ],
-      "zone": "Galleries",
+      "zone": "Ocean Voyager",
       "qa_card": {
-        "question": "How does a shark swim so well?",
-        "answer": "Strong tail and fins help it cut through water."
+        "question": "Which fish looks the biggest?",
+        "answer": "Whale sharks are the biggest fish in the world — gentle giants!"
       },
       "catalog_id": "shark"
     },
@@ -46,11 +45,11 @@
       "id": "stingray",
       "label": "Stingray",
       "emoji": "射线",
-      "one_liner": "Flat swimmer — often in touch pools (gentle hands!).",
+      "one_liner": "Manta-sized rays glide by the glass like underwater birds.",
       "tags": [
-        "flat",
         "water",
-        "touch"
+        "flat",
+        "wow"
       ],
       "age_fit": [
         "2-3",
@@ -58,10 +57,10 @@
         "6-8",
         "9+"
       ],
-      "zone": "Galleries",
+      "zone": "Ocean Voyager",
       "qa_card": {
-        "question": "Is a stingray flat or round?",
-        "answer": "Flat — like a pancake with wings!"
+        "question": "What did you notice about the Stingray?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "stingray"
     },
@@ -69,11 +68,11 @@
       "id": "sea_turtle",
       "label": "Sea turtle",
       "emoji": "🐢",
-      "one_liner": "Shelled ocean traveler — flippers for swimming.",
+      "one_liner": "Sea turtles paddle past the tunnel windows.",
       "tags": [
         "water",
-        "wow",
-        "shell"
+        "shell",
+        "wow"
       ],
       "age_fit": [
         "2-3",
@@ -81,10 +80,10 @@
         "6-8",
         "9+"
       ],
-      "zone": "Galleries",
+      "zone": "Ocean Voyager",
       "qa_card": {
-        "question": "What covers a sea turtle's body?",
-        "answer": "A hard shell that protects it."
+        "question": "What did you notice about the Sea turtle?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sea-turtle"
     },
@@ -92,7 +91,7 @@
       "id": "jellyfish",
       "label": "Jellyfish",
       "emoji": "🎐",
-      "one_liner": "Soft drifter — no bones, glows and pulses in the water.",
+      "one_liner": "Soft glow jellies in dark rooms — mesmerizing.",
       "tags": [
         "water",
         "glow",
@@ -104,22 +103,22 @@
         "6-8",
         "9+"
       ],
-      "zone": "Galleries",
+      "zone": "Cold Water Quest",
       "qa_card": {
-        "question": "Does a jellyfish have bones?",
-        "answer": "No — it's soft and floaty."
+        "question": "What did you notice about the Jellyfish?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "jellyfish"
     },
     {
-      "id": "clownfish",
-      "label": "Clownfish",
-      "emoji": "🐠",
-      "one_liner": "Bright reef fish — friends with anemones.",
+      "id": "african_penguin",
+      "label": "African penguin",
+      "emoji": "🐧",
+      "one_liner": "Waddling African penguins on rocky shores.",
       "tags": [
-        "color",
-        "small",
-        "water"
+        "water",
+        "outdoor",
+        "wow"
       ],
       "age_fit": [
         "2-3",
@@ -127,137 +126,22 @@
         "6-8",
         "9+"
       ],
-      "zone": "Galleries",
+      "zone": "Cold Water Quest",
       "qa_card": {
-        "question": "Where might a clownfish hide?",
-        "answer": "In a sea anemone (the wobbly home)."
+        "question": "What did you notice about the African penguin?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "clownfish"
-    },
-    {
-      "id": "octopus",
-      "label": "Octopus",
-      "emoji": "🐙",
-      "one_liner": "Eight arms and a big brain — master of hide-and-seek.",
-      "tags": [
-        "hide",
-        "smart",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "How many arms does an octopus have?",
-        "answer": "Eight arms!"
-      },
-      "catalog_id": "octopus"
-    },
-    {
-      "id": "eel",
-      "label": "Eel",
-      "emoji": "🐍",
-      "one_liner": "Long snaky fish — loves rocky hidey-holes.",
-      "tags": [
-        "long",
-        "hide",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "Is an eel long or short?",
-        "answer": "Long and snaky!"
-      },
-      "catalog_id": "eel"
-    },
-    {
-      "id": "crab",
-      "label": "Crab",
-      "emoji": "🦀",
-      "one_liner": "Sideways walker with a hard shell and pinchers.",
-      "tags": [
-        "shell",
-        "legs",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "How does a crab walk?",
-        "answer": "Often sideways on its legs."
-      },
-      "catalog_id": "crab"
-    },
-    {
-      "id": "starfish",
-      "label": "Sea star",
-      "emoji": "⭐",
-      "one_liner": "Star-shaped ocean friend — often in touch tanks.",
-      "tags": [
-        "touch",
-        "shape",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "How many arms does a starfish often have?",
-        "answer": "Usually five."
-      },
-      "catalog_id": "starfish"
-    },
-    {
-      "id": "freshwater_fish",
-      "label": "River / lake fish",
-      "emoji": "🐟",
-      "one_liner": "Fish that live in fresh water — rivers, lakes, ponds.",
-      "tags": [
-        "fins",
-        "color",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "Where do these fish live?",
-        "answer": "In rivers, lakes, or freshwater tanks."
-      },
-      "catalog_id": "freshwater-fish"
+      "catalog_id": "african-penguin"
     },
     {
       "id": "asian_small_clawed_otter",
       "label": "Asian small-clawed otter",
       "emoji": "🦦",
-      "one_liner": "Playful swimmer — smallest otter.",
+      "one_liner": "Playful sea otters (and otter friends) on the cold side.",
       "tags": [
-        "play",
         "water",
-        "outdoor"
+        "play",
+        "wow"
       ],
       "age_fit": [
         "2-3",
@@ -265,12 +149,101 @@
         "6-8",
         "9+"
       ],
-      "zone": "Galleries",
+      "zone": "Cold Water Quest",
       "qa_card": {
-        "question": "What do otters love to do?",
-        "answer": "Swim, play, and use their paws."
+        "question": "What did you notice about the Asian small-clawed otter?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "asian-small-clawed-otter"
+    },
+    {
+      "id": "octopus",
+      "label": "Octopus",
+      "emoji": "🐙",
+      "one_liner": "A camouflage master — look carefully!",
+      "tags": [
+        "water",
+        "hide",
+        "smart"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Tropical Diver",
+      "qa_card": {
+        "question": "What did you notice about the Octopus?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "octopus"
+    },
+    {
+      "id": "seahorse",
+      "label": "Seahorse",
+      "emoji": "🌊",
+      "one_liner": "Tiny upright swimmers in the reef.",
+      "tags": [
+        "water",
+        "tiny"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Tropical Diver",
+      "qa_card": {
+        "question": "What did you notice about the Seahorse?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "seahorse"
+    },
+    {
+      "id": "clownfish",
+      "label": "Clownfish",
+      "emoji": "🐠",
+      "one_liner": "Bright reef fish darting through coral.",
+      "tags": [
+        "water",
+        "color"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Tropical Diver",
+      "qa_card": {
+        "question": "What did you notice about the Clownfish?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "clownfish"
+    },
+    {
+      "id": "starfish",
+      "label": "Sea star",
+      "emoji": "⭐",
+      "one_liner": "If open: gentle touch pools with stars and friends.",
+      "tags": [
+        "water",
+        "touch"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Touch experiences",
+      "qa_card": {
+        "question": "What did you notice about the Sea star?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "starfish"
     }
   ]
 }

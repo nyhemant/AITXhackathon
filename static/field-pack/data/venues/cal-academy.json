@@ -9,24 +9,23 @@
   "lng": -122.47,
   "official_url": "https://www.calacademy.org/",
   "last_verified": "2026-08-07",
-  "verified_by": "catalog-scaffold",
+  "verified_by": "research",
   "status": "verified",
-  "tagline": "Rainforest, aquarium, planetarium — one roof.",
+  "tagline": "Rainforest dome, planetarium, and aquarium under one living roof.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Check the official site for tickets and hours.",
-    "transit_note": ""
+    "ticket_note": "Planetarium is timed/extra; aquarium+rainforest are the free-flow hits.",
+    "transit_note": "Golden Gate Park; busy weekends."
   },
   "items": [
     {
       "id": "sci_rainforest",
       "label": "Rainforest dome",
       "emoji": "🌿",
-      "one_liner": "Warm, green, and full of life — look for layers of plants.",
+      "one_liner": "Four-story living rainforest dome — look for birds and butterflies.",
       "tags": [
         "wow",
-        "rest",
-        "kids"
+        "climb"
       ],
       "age_fit": [
         "2-3",
@@ -34,21 +33,21 @@
         "6-8",
         "9+"
       ],
-      "zone": "Halls",
+      "zone": "Rainforest",
       "qa_card": {
-        "question": "What did you try or notice at Rainforest dome?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+        "question": "What did you notice about the Rainforest dome?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sci-rainforest"
     },
     {
-      "id": "sci_aquarium_zone",
-      "label": "Aquarium zone",
-      "emoji": "🐠",
-      "one_liner": "Tanks and swimmers inside a bigger museum day.",
+      "id": "shark",
+      "label": "Shark",
+      "emoji": "🦈",
+      "one_liner": "Sharks in the Philippine Coral Reef and main tanks.",
       "tags": [
-        "wow",
-        "outdoor"
+        "water",
+        "big"
       ],
       "age_fit": [
         "2-3",
@@ -56,22 +55,108 @@
         "6-8",
         "9+"
       ],
-      "zone": "Halls",
+      "zone": "Aquarium",
       "qa_card": {
-        "question": "What did you try or notice at Aquarium zone?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+        "question": "What did you notice about the Shark?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-aquarium-zone"
+      "catalog_id": "shark"
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "emoji": "🐧",
+      "one_liner": "Penguins just outside/near the academy path.",
+      "tags": [
+        "water",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "African Penguin exhibit",
+      "qa_card": {
+        "question": "What did you notice about the African penguin?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "african-penguin"
+    },
+    {
+      "id": "jellyfish",
+      "label": "Jellyfish",
+      "emoji": "🎐",
+      "one_liner": "Jellies in glowing corridors.",
+      "tags": [
+        "water",
+        "glow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Aquarium",
+      "qa_card": {
+        "question": "What did you notice about the Jellyfish?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "jellyfish"
+    },
+    {
+      "id": "octopus",
+      "label": "Octopus",
+      "emoji": "🐙",
+      "one_liner": "Octopus hideouts along the tanks.",
+      "tags": [
+        "water",
+        "hide"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Aquarium",
+      "qa_card": {
+        "question": "What did you notice about the Octopus?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "octopus"
+    },
+    {
+      "id": "stingray",
+      "label": "Stingray",
+      "emoji": "射线",
+      "one_liner": "Rays in shallow views.",
+      "tags": [
+        "water",
+        "flat"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Aquarium",
+      "qa_card": {
+        "question": "What did you notice about the Stingray?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "stingray"
     },
     {
       "id": "sci_planet",
       "label": "Planet / space hall",
       "emoji": "🪐",
-      "one_liner": "Planets, stars, and big sky questions.",
+      "one_liner": "Morrison Planetarium show if ticketed.",
       "tags": [
-        "wow",
-        "water",
-        "read"
+        "wow"
       ],
       "age_fit": [
         "2-3",
@@ -79,10 +164,10 @@
         "6-8",
         "9+"
       ],
-      "zone": "Halls",
+      "zone": "Planetarium",
       "qa_card": {
-        "question": "What did you try or notice at Planet / space hall?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+        "question": "What did you notice about the Planet / space hall?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sci-planet"
     },
@@ -90,11 +175,9 @@
       "id": "sci_hands_on",
       "label": "Hands-on lab",
       "emoji": "🔬",
-      "one_liner": "Touch, test, build — science you can try.",
+      "one_liner": "Touch specimens and discovery carts when open.",
       "tags": [
-        "wow",
-        "hands",
-        "play"
+        "hands"
       ],
       "age_fit": [
         "2-3",
@@ -102,21 +185,21 @@
         "6-8",
         "9+"
       ],
-      "zone": "Halls",
+      "zone": "Naturalist Center / floors",
       "qa_card": {
-        "question": "What did you try or notice at Hands-on lab?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+        "question": "What did you notice about the Hands-on lab?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sci-hands-on"
     },
     {
-      "id": "sci_dinosaur",
-      "label": "Dinosaur hall",
-      "emoji": "🦖",
-      "one_liner": "Bones, giants, and deep time — look up!",
+      "id": "seahorse",
+      "label": "Seahorse",
+      "emoji": "🌊",
+      "one_liner": "Seahorses in smaller tanks.",
       "tags": [
-        "wow",
-        "read"
+        "water",
+        "tiny"
       ],
       "age_fit": [
         "2-3",
@@ -124,21 +207,21 @@
         "6-8",
         "9+"
       ],
-      "zone": "Halls",
+      "zone": "Aquarium",
       "qa_card": {
-        "question": "What did you try or notice at Dinosaur hall?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+        "question": "What did you notice about the Seahorse?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-dinosaur"
+      "catalog_id": "seahorse"
     },
     {
-      "id": "jellyfish",
-      "label": "Jellyfish",
-      "emoji": "🎐",
-      "one_liner": "Soft drifter — no bones, glows and pulses in the water.",
+      "id": "clownfish",
+      "label": "Clownfish",
+      "emoji": "🐠",
+      "one_liner": "Bright reef fish under the rainforest.",
       "tags": [
-        "wow",
-        "water"
+        "water",
+        "color"
       ],
       "age_fit": [
         "2-3",
@@ -146,57 +229,12 @@
         "6-8",
         "9+"
       ],
-      "zone": "Halls",
+      "zone": "Coral reef",
       "qa_card": {
-        "question": "What did you notice about the Jellyfish?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
+        "question": "What did you notice about the Clownfish?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "jellyfish"
-    },
-    {
-      "id": "sci_shuttle",
-      "label": "Space shuttle / orbiter",
-      "emoji": "🛰️",
-      "one_liner": "A real flying machine that went to space — walk around it.",
-      "tags": [
-        "wow",
-        "read"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Space shuttle / orbiter?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "sci-shuttle"
-    },
-    {
-      "id": "cm_makery",
-      "label": "Creative Makery",
-      "emoji": "🔧",
-      "one_liner": "Build, invent, problem-solve with your hands.",
-      "tags": [
-        "wow",
-        "hands",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Creative Makery?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "cm-makery"
+      "catalog_id": "clownfish"
     }
   ]
 }

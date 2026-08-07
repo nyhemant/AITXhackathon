@@ -9,45 +9,22 @@
   "lng": -80.65,
   "official_url": "https://www.kennedyspacecenter.com/",
   "last_verified": "2026-08-07",
-  "verified_by": "catalog-scaffold",
+  "verified_by": "research",
   "status": "verified",
-  "tagline": "Rockets and astronaut stories — not ride parks.",
+  "tagline": "Real rockets and a space shuttle — Florida’s tourist STEM day done right.",
   "practical": {
-    "typical_duration": "half day",
-    "ticket_note": "Check the official site for tickets and hours.",
-    "transit_note": ""
+    "typical_duration": "half to full day",
+    "ticket_note": "Hot outdoor queues — water, hats, stroller.",
+    "transit_note": "Merritt Island; car required for most families."
   },
   "items": [
-    {
-      "id": "sci_rocket",
-      "label": "Rockets & launch",
-      "emoji": "🚀",
-      "one_liner": "Tall rockets and the power of liftoff.",
-      "tags": [
-        "wow",
-        "read"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Rockets & launch?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "sci-rocket"
-    },
     {
       "id": "sci_shuttle",
       "label": "Space shuttle / orbiter",
       "emoji": "🛰️",
-      "one_liner": "A real flying machine that went to space — walk around it.",
+      "one_liner": "Stand under a real orbiter — pure wow.",
       "tags": [
-        "wow",
-        "read"
+        "wow"
       ],
       "age_fit": [
         "2-3",
@@ -55,22 +32,43 @@
         "6-8",
         "9+"
       ],
-      "zone": "Halls",
+      "zone": "Space Shuttle Atlantis",
       "qa_card": {
-        "question": "What did you try or notice at Space shuttle / orbiter?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+        "question": "Where did the shuttle go?",
+        "answer": "To space — and back to Earth on a runway!"
       },
       "catalog_id": "sci-shuttle"
+    },
+    {
+      "id": "sci_rocket",
+      "label": "Rockets & launch",
+      "emoji": "🚀",
+      "one_liner": "Tall rockets outdoors you can walk among.",
+      "tags": [
+        "wow",
+        "tall"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Rocket Garden",
+      "qa_card": {
+        "question": "What did you notice about the Rockets & launch?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sci-rocket"
     },
     {
       "id": "sci_astronaut",
       "label": "Astronaut life",
       "emoji": "🧑‍🚀",
-      "one_liner": "Suits, food, and how humans live off Earth.",
+      "one_liner": "Meet the people who trained to leave Earth.",
       "tags": [
-        "wow",
-        "hands",
-        "play"
+        "read",
+        "wow"
       ],
       "age_fit": [
         "2-3",
@@ -78,10 +76,10 @@
         "6-8",
         "9+"
       ],
-      "zone": "Halls",
+      "zone": "Astronaut stories",
       "qa_card": {
-        "question": "What did you try or notice at Astronaut life?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+        "question": "What did you notice about the Astronaut life?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sci-astronaut"
     },
@@ -89,10 +87,71 @@
       "id": "sci_planet",
       "label": "Planet / space hall",
       "emoji": "🪐",
-      "one_liner": "Planets, stars, and big sky questions.",
+      "one_liner": "Planets and stars in shows or galleries.",
       "tags": [
-        "wow",
-        "water",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Universe / theaters",
+      "qa_card": {
+        "question": "What did you notice about the Planet / space hall?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sci-planet"
+    },
+    {
+      "id": "sci_hands_on",
+      "label": "Hands-on lab",
+      "emoji": "🔬",
+      "one_liner": "Try a hands-on space challenge if lines are short.",
+      "tags": [
+        "hands"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Interactive simulators",
+      "qa_card": {
+        "question": "What did you notice about the Hands-on lab?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sci-hands-on"
+    },
+    {
+      "id": "cm_free_explore",
+      "label": "Free explore",
+      "emoji": "🧭",
+      "one_liner": "Pick a favorite rocket photo spot.",
+      "tags": [
+        "play"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Gateway complex",
+      "qa_card": {
+        "question": "What did you notice about the Free explore?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "cm-free-explore"
+    },
+    {
+      "id": "sci_dinosaur",
+      "label": "Dinosaur hall",
+      "emoji": "🦖",
+      "one_liner": "Skip unless a dino pop-up is up — space is the star.",
+      "tags": [
         "read"
       ],
       "age_fit": [
@@ -101,45 +160,20 @@
         "6-8",
         "9+"
       ],
-      "zone": "Halls",
+      "zone": "Only if special exhibit",
       "qa_card": {
-        "question": "What did you try or notice at Planet / space hall?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+        "question": "What did you notice about the Dinosaur hall?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-planet"
-    },
-    {
-      "id": "sci_hands_on",
-      "label": "Hands-on lab",
-      "emoji": "🔬",
-      "one_liner": "Touch, test, build — science you can try.",
-      "tags": [
-        "wow",
-        "hands",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Hands-on lab?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "sci-hands-on"
+      "catalog_id": "sci-dinosaur"
     },
     {
       "id": "cm_outdoor",
       "label": "Outdoor Area",
       "emoji": "🌳",
-      "one_liner": "Outside play — waterfall, nature, big body movement.",
+      "one_liner": "Train/bus plazas and outdoor exploring between buildings.",
       "tags": [
-        "wow",
-        "hands",
-        "play"
+        "outdoor"
       ],
       "age_fit": [
         "2-3",
@@ -147,56 +181,12 @@
         "6-8",
         "9+"
       ],
-      "zone": "Halls",
+      "zone": "Outdoor paths",
       "qa_card": {
-        "question": "What did you try or notice at Outdoor Area?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
+        "question": "What did you notice about the Outdoor Area?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "cm-outdoor"
-    },
-    {
-      "id": "cm_imaginarium",
-      "label": "Imaginarium",
-      "emoji": "✨",
-      "one_liner": "Multi-sensory world — explore, notice, imagine.",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Imaginarium?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "cm-imaginarium"
-    },
-    {
-      "id": "cm_free_explore",
-      "label": "Free explore",
-      "emoji": "🧭",
-      "one_liner": "Their choice path — whatever pulled them in!",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Free explore?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "cm-free-explore"
     }
   ]
 }

@@ -9,23 +9,24 @@
   "lng": -71.05,
   "official_url": "https://www.neaq.org/",
   "last_verified": "2026-08-07",
-  "verified_by": "catalog-scaffold",
+  "verified_by": "research",
   "status": "verified",
-  "tagline": "Boston harbor classic aquarium.",
+  "tagline": "Boston harbor classic — giant ocean tank and penguin colony.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Check the official site for tickets and hours.",
-    "transit_note": ""
+    "ticket_note": "Harbor location; combine with the waterfront walk.",
+    "transit_note": "Aquarium T stop (Blue Line)."
   },
   "items": [
     {
       "id": "shark",
       "label": "Shark",
       "emoji": "🦈",
-      "one_liner": "Ocean hunter with a strong swishy body.",
+      "one_liner": "Look into the huge cylindrical tank from every level.",
       "tags": [
-        "wow",
-        "water"
+        "water",
+        "big",
+        "wow"
       ],
       "age_fit": [
         "2-3",
@@ -33,21 +34,112 @@
         "6-8",
         "9+"
       ],
-      "zone": "Galleries",
+      "zone": "Giant Ocean Tank",
       "qa_card": {
         "question": "What did you notice about the Shark?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "shark"
+    },
+    {
+      "id": "sea_turtle",
+      "label": "Sea turtle",
+      "emoji": "🐢",
+      "one_liner": "Sea turtles cruise the big blue cylinder.",
+      "tags": [
+        "water",
+        "shell",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Giant Ocean Tank",
+      "qa_card": {
+        "question": "What did you notice about the Sea turtle?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sea-turtle"
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "emoji": "🐧",
+      "one_liner": "African penguins chatter and splash.",
+      "tags": [
+        "water",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Penguin colony",
+      "qa_card": {
+        "question": "What did you notice about the African penguin?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "african-penguin"
+    },
+    {
+      "id": "jellyfish",
+      "label": "Jellyfish",
+      "emoji": "🎐",
+      "one_liner": "Dark room, bright jellies.",
+      "tags": [
+        "water",
+        "glow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Jellies",
+      "qa_card": {
+        "question": "What did you notice about the Jellyfish?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "jellyfish"
+    },
+    {
+      "id": "octopus",
+      "label": "Octopus",
+      "emoji": "🐙",
+      "one_liner": "A clever octopus may be out exploring.",
+      "tags": [
+        "water",
+        "smart",
+        "hide"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Thinking Gallery",
+      "qa_card": {
+        "question": "What did you notice about the Octopus?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "octopus"
     },
     {
       "id": "stingray",
       "label": "Stingray",
       "emoji": "射线",
-      "one_liner": "Flat swimmer — often in touch pools (gentle hands!).",
+      "one_liner": "Touch tank when open — soft ray wings.",
       "tags": [
-        "wow",
-        "water"
+        "water",
+        "touch",
+        "flat"
       ],
       "age_fit": [
         "2-3",
@@ -55,10 +147,10 @@
         "6-8",
         "9+"
       ],
-      "zone": "Galleries",
+      "zone": "Shark and ray touch",
       "qa_card": {
         "question": "What did you notice about the Stingray?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "stingray"
     },
@@ -66,10 +158,10 @@
       "id": "seahorse",
       "label": "Seahorse",
       "emoji": "🌊",
-      "one_liner": "Tiny upright swimmer that holds on with its tail.",
+      "one_liner": "Seahorses and seadragon cousins.",
       "tags": [
-        "wow",
-        "water"
+        "water",
+        "tiny"
       ],
       "age_fit": [
         "2-3",
@@ -77,43 +169,21 @@
         "6-8",
         "9+"
       ],
-      "zone": "Galleries",
+      "zone": "Seadragons / special",
       "qa_card": {
         "question": "What did you notice about the Seahorse?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "seahorse"
-    },
-    {
-      "id": "jellyfish",
-      "label": "Jellyfish",
-      "emoji": "🎐",
-      "one_liner": "Soft drifter — no bones, glows and pulses in the water.",
-      "tags": [
-        "wow",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "What did you notice about the Jellyfish?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "jellyfish"
     },
     {
       "id": "clownfish",
       "label": "Clownfish",
       "emoji": "🐠",
-      "one_liner": "Bright reef fish — friends with anemones.",
+      "one_liner": "Reef colors for a quick “find three colors” game.",
       "tags": [
-        "wow",
-        "water"
+        "water",
+        "color"
       ],
       "age_fit": [
         "2-3",
@@ -121,112 +191,21 @@
         "6-8",
         "9+"
       ],
-      "zone": "Galleries",
+      "zone": "Tropical gallery",
       "qa_card": {
         "question": "What did you notice about the Clownfish?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "clownfish"
-    },
-    {
-      "id": "sea_turtle",
-      "label": "Sea turtle",
-      "emoji": "🐢",
-      "one_liner": "Shelled ocean traveler — flippers for swimming.",
-      "tags": [
-        "wow",
-        "water",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "What did you notice about the Sea turtle?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "sea-turtle"
-    },
-    {
-      "id": "octopus",
-      "label": "Octopus",
-      "emoji": "🐙",
-      "one_liner": "Eight arms and a big brain — master of hide-and-seek.",
-      "tags": [
-        "wow",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "What did you notice about the Octopus?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "octopus"
-    },
-    {
-      "id": "eel",
-      "label": "Eel",
-      "emoji": "🐍",
-      "one_liner": "Long snaky fish — loves rocky hidey-holes.",
-      "tags": [
-        "wow",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "What did you notice about the Eel?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "eel"
-    },
-    {
-      "id": "crab",
-      "label": "Crab",
-      "emoji": "🦀",
-      "one_liner": "Sideways walker with a hard shell and pinchers.",
-      "tags": [
-        "wow",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "What did you notice about the Crab?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "crab"
     },
     {
       "id": "starfish",
       "label": "Sea star",
       "emoji": "⭐",
-      "one_liner": "Star-shaped ocean friend — often in touch tanks.",
+      "one_liner": "Stars and crabs in rocky pools.",
       "tags": [
-        "wow",
-        "outdoor",
-        "play",
-        "water"
+        "water",
+        "touch"
       ],
       "age_fit": [
         "2-3",
@@ -234,46 +213,21 @@
         "6-8",
         "9+"
       ],
-      "zone": "Galleries",
+      "zone": "Tide pool",
       "qa_card": {
         "question": "What did you notice about the Sea star?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "starfish"
     },
     {
-      "id": "freshwater_fish",
-      "label": "River / lake fish",
-      "emoji": "🐟",
-      "one_liner": "Fish that live in fresh water — rivers, lakes, ponds.",
+      "id": "eel",
+      "label": "Eel",
+      "emoji": "🐍",
+      "one_liner": "Long bodies tucked into rock homes.",
       "tags": [
-        "wow",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "What did you notice about the River / lake fish?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "freshwater-fish"
-    },
-    {
-      "id": "asian_small_clawed_otter",
-      "label": "Asian small-clawed otter",
-      "emoji": "🦦",
-      "one_liner": "Playful swimmer — smallest otter.",
-      "tags": [
-        "wow",
         "water",
-        "outdoor",
-        "hands",
-        "play"
+        "long"
       ],
       "age_fit": [
         "2-3",
@@ -281,12 +235,12 @@
         "6-8",
         "9+"
       ],
-      "zone": "Galleries",
+      "zone": "Edge of the Sea",
       "qa_card": {
-        "question": "What did you notice about the Asian small-clawed otter?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
+        "question": "What did you notice about the Eel?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "asian-small-clawed-otter"
+      "catalog_id": "eel"
     }
   ]
 }
