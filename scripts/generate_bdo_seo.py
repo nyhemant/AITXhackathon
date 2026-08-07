@@ -666,6 +666,10 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
     if mode == "wonder":
         body = wonder_grid_html(mission)
         how_step2 = "Check off wonders on site (no perfect census needed)"
+    elif mode == "hybrid":
+        # Local icons as photos + wonder sheet for resilient fill
+        body = unique_body(v) + wonder_grid_html(mission)
+        how_step2 = "Hit a few local icons, then finish with wonders"
     else:
         body = unique_body(v)
         how_step2 = "Use the photo shortlist on site"
