@@ -1277,6 +1277,15 @@
     return m ? decodeURIComponent(m[1]) : "";
   }
 
+  /** SEO pilot pages with live mission generator (age/time/name). */
+  const MISSION_PILOTS = new Set([
+    "dallas-zoo",
+    "fort-worth-zoo",
+    "childrens-museum-perot",
+    "london-zoo",
+    "ueno-zoo",
+  ]);
+
   function showVenueDetail(venueId) {
     const p = placeById(venueId);
     if (!p) {
@@ -1291,6 +1300,8 @@
     const sample = sampleItemForVenue(venueId);
     const samplePhoto = sample ? photoSrc(sample.photo) : "";
     const appHref = p.appHref || `/field-pack/app.html#/venue/${encodeURIComponent(venueId)}`;
+    const missionHref = `/field-pack/${encodeURIComponent(venueId)}/`;
+    const isMissionPilot = MISSION_PILOTS.has(venueId);
 
     const sampleCard = sample
       ? `<button type="button" class="pd-sample-card" id="pd-print-sample" aria-label="Print sample Q&A card for ${escapeHtml(sample.name)}">
@@ -1353,11 +1364,23 @@
       }
       <div class="pd-actions">
         ${
-          !isSoon && canPrintHunt
-            ? `<button type="button" class="btn btn-primary" id="pd-print-hunt">One-page hunt to print</button>`
+          isMissionPilot
+            ? `<a class="btn btn-primary" href="${missionHref}">Build personalized mission →</a>`
+            : !isSoon && canPrintHunt
+              ? `<button type="button" class="btn btn-primary" id="pd-print-hunt">One-page hunt to print</button>`
+              : ""
+        }
+        ${
+          isMissionPilot && canPrintHunt
+            ? `<button type="button" class="btn btn-secondary" id="pd-print-hunt">Quick classic hunt</button>`
             : ""
         }
       </div>
+      ${
+        isMissionPilot
+          ? `<p class="pd-hint pd-mission-hint">Pilot: age + time + optional name → live one-page mission.</p>`
+          : ""
+      }
       ${isSoon ? "" : sampleCard}
       ${
         !isSoon && sample

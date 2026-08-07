@@ -515,7 +515,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=18" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=43" />
   <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=4" />
-  <link rel="stylesheet" href="/field-pack/css/mission.css?v=1" />
+  <link rel="stylesheet" href="/field-pack/css/mission.css?v=2" />
   <script type="application/ld+json">
 {json_ld_1}
   </script>
@@ -561,7 +561,9 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
         </div>
       </header>
 
-      <section class="mission-generator no-print" aria-label="Build your mission">
+      <section class="mission-generator no-print" aria-labelledby="mission-build-heading">
+        <h2 id="mission-build-heading" class="mission-build-heading">Build your mission</h2>
+        <p class="mission-build-lead">Move the controls — the sheet updates live. Optional name prints on the page.</p>
         <div class="mission-controls" id="mission-controls">
           <div class="mission-controls-row">
             <div class="mission-field">
@@ -624,8 +626,8 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <script type="application/json" id="venue-data">{venue_json}</script>
   <script type="application/json" id="challenges-data">{challenges_json}</script>
   <script src="/shell/shell.js?v=3"></script>
-  <script src="/field-pack/js/mission/mission-engine.js?v=1"></script>
-  <script src="/field-pack/js/mission/mission-ui.js?v=1"></script>
+  <script src="/field-pack/js/mission/mission-engine.js?v=2"></script>
+  <script src="/field-pack/js/mission/mission-ui.js?v=2"></script>
 </body>
 </html>
 """

@@ -1182,6 +1182,56 @@
   opacity: 0.95;
 }
 
+/* Pilot mission generator callout (landing) */
+.pilot-mission-strip {
+  margin: 0 0 16px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background:
+    linear-gradient(135deg, rgba(255, 248, 230, 0.98), rgba(232, 248, 240, 0.95));
+  border: 2px solid rgba(255, 138, 61, 0.45);
+  box-shadow: 0 6px 20px rgba(21, 34, 56, 0.07);
+  max-width: 40rem;
+}
+.pilot-mission-kicker {
+  margin: 0 0 4px;
+  font-size: 0.75rem;
+  font-weight: 850;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #c45a12;
+}
+.pilot-mission-lead {
+  margin: 0 0 10px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--teal-deep, #0a4545);
+  line-height: 1.4;
+}
+.pilot-mission-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.pilot-mission-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  font-weight: 750;
+  text-decoration: none;
+  color: #fff;
+  background: #0f5c5c;
+  border: 1.5px solid #0a4545;
+}
+.pilot-mission-link:hover,
+.pilot-mission-link:focus-visible {
+  background: #0a4545;
+  outline: 2px solid #ff8a3d;
+  outline-offset: 2px;
+}
+
 /* Map → Print → Play storyboard (aha strip) */
 .story-flow {
   list-style: none;
