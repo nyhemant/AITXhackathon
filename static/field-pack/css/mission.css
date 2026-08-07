@@ -1,73 +1,87 @@
-/* Mission generator — pilot venue pages */
-.mission-generator {
-  margin: 0 0 20px;
-  padding: 16px;
-  border-radius: 18px;
-  background: linear-gradient(160deg, #fff8e8 0%, #f0faf6 100%);
-  border: 2px solid rgba(255, 138, 61, 0.4);
-  box-shadow: 0 8px 28px rgba(21, 34, 56, 0.08);
-}
-.mission-build-heading {
-  margin: 0 0 4px;
-  font-size: 1.25rem;
-  font-weight: 850;
+/* Printable mission sheet — pilot venue pages */
+
+.mission-page-body {
+  margin: 0;
+  min-height: 100vh;
+  background: #f4f7f6;
   color: #0a4545;
-  letter-spacing: -0.02em;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
-.mission-build-lead {
-  margin: 0 0 12px;
-  font-size: 0.92rem;
-  font-weight: 600;
+
+.mission-app {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 0 14px 32px;
+}
+
+.mission-back {
+  margin: 10px 0 12px;
+  font-size: 0.88rem;
+  font-weight: 700;
   color: #3d4f6f;
-  line-height: 1.4;
 }
-.mission-controls {
-  display: grid;
-  gap: 12px;
-  margin: 0 0 16px;
-  padding: 14px;
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.95);
-  border: 1.5px solid rgba(15, 92, 92, 0.14);
-  box-shadow: 0 8px 24px rgba(21, 34, 56, 0.06);
+.mission-back a {
+  color: #0f5c5c;
+  text-decoration: none;
 }
-.mission-controls-row {
+.mission-back a:hover {
+  text-decoration: underline;
+}
+
+/* Compact toolbar (screen only) */
+.mission-toolbar {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px 16px;
-  align-items: end;
+  gap: 10px 12px;
+  align-items: flex-end;
+  margin: 0 0 14px;
+  padding: 12px;
+  border-radius: 14px;
+  background: #fff;
+  border: 1.5px solid rgba(15, 92, 92, 0.14);
+  box-shadow: 0 4px 14px rgba(21, 34, 56, 0.05);
 }
 .mission-field {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  min-width: 120px;
+  gap: 3px;
+  min-width: 100px;
+  flex: 1 1 110px;
+}
+.mission-field-name {
   flex: 1 1 140px;
 }
+.mission-field-time {
+  flex: 1 1 200px;
+}
 .mission-field label {
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   font-weight: 800;
   color: #0a4545;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
+}
+.mission-age-label {
+  text-transform: none;
+  font-weight: 750;
+  color: #0f5c5c;
+  letter-spacing: 0;
+  font-size: 0.78rem;
 }
 .mission-field input[type="text"],
 .mission-field select {
   font: inherit;
   font-weight: 650;
-  padding: 10px 12px;
-  border-radius: 12px;
+  padding: 8px 10px;
+  border-radius: 10px;
   border: 1.5px solid rgba(15, 92, 92, 0.18);
   background: #fff;
+  min-height: 38px;
 }
 .mission-field input[type="range"] {
   width: 100%;
   accent-color: #0f5c5c;
-}
-.mission-age-label {
-  font-weight: 800;
-  color: #0f5c5c;
-  font-size: 0.95rem;
+  min-height: 38px;
 }
 .mission-time-seg {
   display: inline-flex;
@@ -79,14 +93,15 @@
 .mission-time-seg label {
   margin: 0;
   text-transform: none;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 750;
   cursor: pointer;
   color: #3d4f6f;
+  letter-spacing: 0;
 }
 .mission-time-seg label span {
   display: block;
-  padding: 8px 12px;
+  padding: 8px 11px;
 }
 .mission-time-seg input {
   position: absolute;
@@ -97,55 +112,77 @@
   background: #0f5c5c;
   color: #fff;
 }
-.mission-time-seg label {
-  margin: 0;
-  text-transform: none;
-  font-size: 0.85rem;
-  font-weight: 750;
-  padding: 8px 12px;
+.mission-toolbar-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex: 0 0 auto;
+  margin-left: auto;
+}
+.mission-toolbar-actions .btn {
+  min-height: 40px;
+  padding: 8px 16px;
+  font-weight: 800;
+  border-radius: 10px;
   cursor: pointer;
-  color: #3d4f6f;
+  border: 1.5px solid transparent;
+  font: inherit;
 }
-.mission-time-seg input {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
-}
-.mission-time-seg input:checked + span {
+.mission-toolbar-actions .btn-primary {
   background: #0f5c5c;
   color: #fff;
-  display: inline-block;
-  padding: 8px 12px;
-  margin: -8px -12px;
+  border-color: #0a4545;
 }
-.mission-time-seg label span {
-  display: inline-block;
-  padding: 0;
+.mission-toolbar-actions .btn-ghost {
+  background: transparent;
+  color: #0f5c5c;
+  border-color: rgba(15, 92, 92, 0.25);
 }
-.mission-card {
-  padding: 16px 16px 18px;
-  border-radius: 18px;
-  background: #fffef8;
-  border: 1.5px solid rgba(15, 92, 92, 0.14);
-  margin-bottom: 18px;
+
+/* The printable sheet — one page */
+.mission-sheet {
+  background: #fff;
+  border-radius: 16px;
+  border: 1.5px solid rgba(15, 92, 92, 0.12);
+  padding: 20px 18px 18px;
+  box-shadow: 0 8px 24px rgba(21, 34, 56, 0.06);
 }
-.mission-kicker {
-  margin: 0 0 4px;
-  font-size: 0.8rem;
+.ms-brand {
+  margin: 0 0 6px;
+  font-size: 0.78rem;
   font-weight: 800;
-  color: #3d4f6f;
-  text-transform: uppercase;
   letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #3d4f6f;
 }
-.mission-title {
-  margin: 0 0 12px;
-  font-size: 1.35rem;
+.ms-title {
+  margin: 0 0 4px;
+  font-size: 1.45rem;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
   color: #0a4545;
-  line-height: 1.2;
+}
+.ms-meta {
+  margin: 0 0 8px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #3d4f6f;
+}
+.ms-tagline {
+  margin: 0 0 12px;
+  font-size: 0.9rem;
+  font-weight: 550;
+  color: #3d4f6f;
+}
+.ms-section {
+  margin: 14px 0 6px;
+  font-size: 0.95rem;
+  font-weight: 850;
+  color: #0a4545;
 }
 .mission-finds,
 .mission-challenges {
-  margin: 0 0 12px;
+  margin: 0;
   padding: 0;
   list-style: none;
 }
@@ -155,115 +192,84 @@
   gap: 10px;
   align-items: flex-start;
   padding: 8px 0;
-  border-bottom: 1px dashed rgba(15, 92, 92, 0.12);
+  border-bottom: 1px dashed rgba(15, 92, 92, 0.14);
+}
+.mission-find:last-child,
+.mission-challenge:last-child {
+  border-bottom: none;
 }
 .mission-check {
-  font-size: 1.1rem;
-  line-height: 1.2;
+  font-size: 1.15rem;
+  line-height: 1.25;
   color: #0f5c5c;
+  flex: 0 0 auto;
 }
 .mission-emoji {
   font-size: 1.25rem;
   line-height: 1.2;
+  flex: 0 0 auto;
 }
 .mission-find-body {
   display: flex;
   flex-direction: column;
   gap: 2px;
+  min-width: 0;
 }
-.mission-find-body small {
+.mission-find-body strong {
+  font-size: 1.02rem;
+  color: #0a4545;
+}
+.mission-find-body small,
+.mission-challenge span {
   color: #3d4f6f;
   font-weight: 550;
+  font-size: 0.9rem;
+  line-height: 1.35;
 }
-.mission-subhead {
-  margin: 8px 0 6px;
-  font-size: 0.95rem;
-  color: #0a4545;
-}
-.mission-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 12px;
-}
-.mission-verified {
-  font-size: 0.88rem;
+.ms-footer {
+  margin: 16px 0 0;
+  padding-top: 10px;
+  border-top: 1px solid rgba(15, 92, 92, 0.14);
+  font-size: 0.8rem;
   font-weight: 650;
-  color: #2d5a3d;
-  margin: 0 0 16px;
-}
-.mission-practical {
-  margin: 0 0 16px;
-  padding: 12px 14px;
-  border-radius: 12px;
-  background: #eef6f4;
-  font-size: 0.92rem;
-  color: #0a4545;
-}
-.mission-practical p {
-  margin: 0 0 4px;
+  color: #3d4f6f;
 }
 
-/* Screen: hide print sheet */
-.mission-print-sheet {
-  display: none;
-}
-
-/* Print only mission sheet */
+/* Print: only the sheet */
 @media print {
-  body.printing-mission * {
-    visibility: hidden;
+  @page {
+    margin: 12mm;
   }
-  body.printing-mission .mission-print-sheet,
-  body.printing-mission .mission-print-sheet * {
-    visibility: visible;
-  }
-  body.printing-mission .mission-print-sheet {
-    display: block;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    padding: 12mm;
+  body.mission-page-body {
     background: #fff;
-    color: #000;
   }
-  .mp-inner h1 {
+  .no-print,
+  .oneless-shell {
+    display: none !important;
+  }
+  .mission-app {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+  .mission-sheet {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+  }
+  .ms-title {
     font-size: 18pt;
-    margin: 0 0 6pt;
   }
-  .mp-brand {
-    font-size: 10pt;
-    font-weight: 700;
-    margin: 0 0 4pt;
-  }
-  .mp-meta {
-    font-size: 10pt;
-    margin: 0 0 10pt;
-  }
-  .mp-finds,
-  .mp-challenges {
-    margin: 0 0 10pt;
-    padding-left: 0;
-    list-style: none;
-  }
-  .mp-finds li,
-  .mp-challenges li {
-    margin: 0 0 6pt;
+  .mission-find,
+  .mission-challenge {
     page-break-inside: avoid;
+    padding: 5pt 0;
   }
-  .mp-box {
-    font-family: monospace;
-  }
-  .mp-line {
-    display: block;
+  .mission-find-body small {
     font-size: 9.5pt;
-    margin-left: 14pt;
   }
-  .mp-footer {
-    margin-top: 12pt;
+  .ms-footer {
     font-size: 9pt;
-    border-top: 1px solid #999;
-    padding-top: 6pt;
   }
 }

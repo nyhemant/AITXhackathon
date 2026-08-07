@@ -387,77 +387,47 @@ process.stdout.write(JSON.stringify(mission));
 
 
 def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
-    """Pilot page: live mission generator shell + crawlable default finds."""
+    """Pilot page: one printable mission sheet + compact live controls."""
     vid = mission_venue["slug"]
     url = f"{SITE}/field-pack/{vid}/"
-    app_href = f"/field-pack/app.html#/venue/{vid}"
     map_href = f"/field-pack/#/venue/{vid}"
-    h1 = h1_for({**v, "name": mission_venue["name"]})
-    title = f"{h1} · 1Less"
+    name = mission_venue["name"]
+    h1 = f"{name} scavenger hunt"
+    title = f"{h1} (free printable) · 1Less"
     city = mission_venue.get("city") or v.get("city") or ""
     desc = (
-        f"Free printable {mission_venue['name']} scavenger hunt for kids in {city}. "
-        f"Personalized mission sheet — Field Trip Kit by 1Less."
+        f"Free printable {name} scavenger hunt for kids"
+        + (f" in {city}" if city else "")
+        + ". One page. Optional name. Field Trip Kit by 1Less."
     )[:158]
     tagline = mission_venue.get("tagline") or v.get("blurb") or ""
     mission = default_mission_via_node(mission_venue)
+    mission_title = esc(mission.get("title") or f"Your Mission at {name}")
+    age_label = esc(mission.get("ageLabel") or "Ready (4–5)")
+    time_label = esc(mission.get("timeLabel") or "Half day")
     finds_html = "".join(
-        f"<li><strong>{esc(f.get('emoji',''))} {esc(f['label'])}</strong>"
-        f" — {esc(f.get('one_liner') or '')}"
-        f"{(' · ' + esc(f['zone'])) if f.get('zone') else ''}</li>"
+        f'<li class="mission-find">'
+        f'<span class="mission-check" aria-hidden="true">☐</span>'
+        f'<span class="mission-emoji">{esc(f.get("emoji") or "📍")}</span>'
+        f'<span class="mission-find-body"><strong>{esc(f["label"])}</strong>'
+        f'<small>{esc(f.get("one_liner") or "")}'
+        f'{(" · " + esc(f["zone"])) if f.get("zone") else ""}</small></span></li>'
         for f in mission.get("finds") or []
     )
     ch_html = "".join(
-        f"<li>{esc(c.get('text') or '')}</li>" for c in mission.get("challenges") or []
-    )
-    practical = mission_venue.get("practical") or {}
-    practical_bits = []
-    if practical.get("typical_duration"):
-        practical_bits.append(f"<p><strong>Typical visit:</strong> {esc(practical['typical_duration'])}</p>")
-    if practical.get("ticket_note"):
-        practical_bits.append(f"<p><strong>Tickets:</strong> {esc(practical['ticket_note'])}</p>")
-    if practical.get("transit_note"):
-        practical_bits.append(f"<p><strong>Getting there:</strong> {esc(practical['transit_note'])}</p>")
-    practical_html = (
-        f'<aside class="mission-practical" aria-label="Visit tips">{"".join(practical_bits)}</aside>'
-        if practical_bits
-        else ""
-    )
-    qa_cards = []
-    for it in (mission_venue.get("items") or [])[:6]:
-        qa = it.get("qa_card")
-        if not qa:
-            continue
-        qa_cards.append(
-            f'<div class="seo-animal-card" role="listitem">'
-            f'<div class="seo-animal-meta"><h3>{esc(it.get("emoji",""))} {esc(it["label"])}</h3>'
-            f'<p><strong>Q:</strong> {esc(qa.get("question",""))}</p>'
-            f'<p><strong>A:</strong> {esc(qa.get("answer",""))}</p></div></div>'
-        )
-    qa_html = (
-        f'<section class="seo-list-block" aria-labelledby="qa-heading">'
-        f'<h2 id="qa-heading">Sample Q&amp;A</h2>'
-        f'<div class="seo-animal-grid" role="list">{"".join(qa_cards)}</div></section>'
-        if qa_cards
-        else ""
-    )
-    interest_tags = sorted(
-        {
-            t
-            for it in mission_venue.get("items") or []
-            for t in (it.get("tags") or [])
-            if t != "wow"
-        }
+        f'<li class="mission-challenge">'
+        f'<span class="mission-check" aria-hidden="true">☐</span>'
+        f"<span>{esc(c.get('text') or '')}</span></li>"
+        for c in mission.get("challenges") or []
     )
     venue_json = json.dumps(mission_venue, ensure_ascii=False)
     challenges_json = CHALLENGES_JSON.read_text(encoding="utf-8")
     verified = mission_venue.get("last_verified") or ""
-    verified_line = f"List checked {verified[:7]}." if len(verified) >= 7 else "Verified shortlist."
+    verified_line = f"Checked {verified[:7]}" if len(verified) >= 7 else "Verified shortlist"
     loc = ", ".join(x for x in [mission_venue.get("city"), mission_venue.get("region")] if x)
     og_img = f"{SITE}/1LessMark.png"
     website = mission_venue.get("official_url") or v.get("website") or ""
 
-    # JSON-LD from mission finds as HowTo steps
     steps = [
         {"@type": "HowToStep", "position": i, "text": f"Find {f['label']}: {f.get('one_liner') or ''}"}
         for i, f in enumerate(mission.get("finds") or [], 1)
@@ -469,7 +439,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
         "description": desc,
         "totalTime": "PT2H",
         "tool": [{"@type": "HowToTool", "name": "Printed mission sheet"}],
-        "step": steps or [{"@type": "HowToStep", "position": 1, "text": f"Explore {mission_venue['name']}"}],
+        "step": steps or [{"@type": "HowToStep", "position": 1, "text": f"Explore {name}"}],
         "url": url,
     }
     article = {
@@ -480,15 +450,14 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
         "author": {"@type": "Organization", "name": "1Less"},
         "publisher": {"@type": "Organization", "name": "1Less", "url": SITE},
         "mainEntityOfPage": url,
-        "about": {"@type": "Place", "name": mission_venue["name"], "address": loc},
+        "about": {"@type": "Place", "name": name, "address": loc},
     }
     json_ld_1 = json.dumps(howto, ensure_ascii=False)
     json_ld_2 = json.dumps(article, ensure_ascii=False)
-
-    seo_intro = (
-        f"Planning a kid-friendly day at {mission_venue['name']} in {city}? "
-        f"Field Trip Kit builds a one-page mission from verified finds — optional name on the sheet, "
-        f"no app required at the venue."
+    official = (
+        f'<a href="{esc(website)}" rel="noopener noreferrer" target="_blank">{esc(name)} site</a>'
+        if website
+        else ""
     )
 
     return f"""<!DOCTYPE html>
@@ -513,9 +482,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <base href="/field-pack/" />
   <link rel="stylesheet" href="/shell/shell.css?v=4" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=18" />
-  <link rel="stylesheet" href="/field-pack/css/landing.css?v=43" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=4" />
-  <link rel="stylesheet" href="/field-pack/css/mission.css?v=2" />
+  <link rel="stylesheet" href="/field-pack/css/mission.css?v=3" />
   <script type="application/ld+json">
 {json_ld_1}
   </script>
@@ -523,8 +490,8 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
 {json_ld_2}
   </script>
 </head>
-<body class="landing-body seo-venue-body mission-venue-body">
-  <div class="app landing-app seo-venue">
+<body class="mission-page-body">
+  <div class="mission-app">
     <header class="oneless-shell no-print" data-product="bdo">
       <a class="shell-brand" href="/">
         <img src="/1LessMark.png" alt="1Less logo" width="52" height="52" />
@@ -532,7 +499,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
       </a>
       <p class="shell-product">
         Field Trip Kit
-        <small>Zoo, aquarium &amp; museum days</small>
+        <small>Printable missions</small>
       </p>
       <div class="shell-more-wrap">
         <button type="button" class="shell-more" aria-expanded="false" aria-haspopup="true" aria-controls="shell-menu">More</button>
@@ -543,91 +510,63 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
       </div>
     </header>
 
-    <nav class="seo-crumbs no-print" aria-label="Breadcrumb">
-      <a href="/field-pack/">All places</a>
-      <span aria-hidden="true"> / </span>
-      <span>{esc(mission_venue['name'])}</span>
-    </nav>
+    <p class="mission-back no-print">
+      <a href="/field-pack/">← All places</a>
+      <span aria-hidden="true"> · </span>
+      <a href="{esc(map_href)}">Map</a>
+      {f' · {official}' if official else ""}
+    </p>
 
-    <article class="seo-article">
-      <header class="seo-hero">
-        <p class="promise-pill">{esc(loc)} · verified mission</p>
-        <h1>{esc(h1)}</h1>
-        <p class="lead">{esc(tagline)}</p>
-        <p class="seo-brand-note">Part of <strong>Field Trip Kit</strong> by 1Less — free for families. No screens on the floor.</p>
-        <div class="landing-cta-row seo-cta no-print">
-          <a class="btn btn-ghost" href="{esc(map_href)}">Open on map →</a>
-          <a class="btn btn-ghost" href="{esc(app_href)}">Full interactive list →</a>
+    <div class="mission-toolbar no-print" id="mission-controls">
+      <div class="mission-field mission-field-name">
+        <label for="mission-name">Name</label>
+        <input type="text" id="mission-name" maxlength="24" placeholder="Optional" autocomplete="off" />
+      </div>
+      <div class="mission-field">
+        <label for="mission-age">Age <span class="mission-age-label" id="mission-age-label">Ready (4–5)</span></label>
+        <input type="range" id="mission-age" min="0" max="3" step="1" value="1" />
+      </div>
+      <div class="mission-field mission-field-time">
+        <label>Time</label>
+        <div class="mission-time-seg" role="group" aria-label="Time available">
+          <label><input type="radio" name="mission-time" value="1hr" /><span>~1 hr</span></label>
+          <label><input type="radio" name="mission-time" value="half" checked /><span>Half day</span></label>
+          <label><input type="radio" name="mission-time" value="full" /><span>Full day</span></label>
         </div>
-      </header>
+      </div>
+      <div class="mission-field">
+        <label for="mission-interest">Interest</label>
+        <select id="mission-interest">
+          <option value="">Any</option>
+        </select>
+      </div>
+      <div class="mission-toolbar-actions">
+        <button type="button" class="btn btn-primary" id="mission-print-btn">Print</button>
+        <button type="button" class="btn btn-ghost" id="mission-shuffle-btn">Shuffle</button>
+      </div>
+    </div>
 
-      <section class="mission-generator no-print" aria-labelledby="mission-build-heading">
-        <h2 id="mission-build-heading" class="mission-build-heading">Build your mission</h2>
-        <p class="mission-build-lead">Move the controls — the sheet updates live. Optional name prints on the page.</p>
-        <div class="mission-controls" id="mission-controls">
-          <div class="mission-controls-row">
-            <div class="mission-field">
-              <label for="mission-name">Kid name (optional)</label>
-              <input type="text" id="mission-name" name="mission-name" maxlength="24" placeholder="Add a name (optional)" autocomplete="off" />
-            </div>
-            <div class="mission-field">
-              <label for="mission-age">Age</label>
-              <input type="range" id="mission-age" min="0" max="3" step="1" value="1" />
-              <span class="mission-age-label" id="mission-age-label">Ready (4–5)</span>
-            </div>
-            <div class="mission-field">
-              <label>Time</label>
-              <div class="mission-time-seg" role="group" aria-label="Time available">
-                <label><input type="radio" name="mission-time" value="1hr" /><span>~1 hr</span></label>
-                <label><input type="radio" name="mission-time" value="half" checked /><span>Half day</span></label>
-                <label><input type="radio" name="mission-time" value="full" /><span>Full day</span></label>
-              </div>
-            </div>
-            <div class="mission-field">
-              <label for="mission-interest">Interest (optional)</label>
-              <select id="mission-interest">
-                <option value="">Any interest</option>
-              </select>
-            </div>
-          </div>
-        </div>
-        <div id="mission-live" aria-live="polite"></div>
-      </section>
-
-      <section class="seo-list-block" aria-labelledby="default-mission-heading">
-        <h2 id="default-mission-heading">Standard mission finds</h2>
-        <p>{esc(seo_intro)}</p>
-        <ol class="seo-shortlist" id="mission-default-list">
-          {finds_html}
-        </ol>
-        <h3>Bonus challenges</h3>
-        <ul class="seo-hunt-list">{ch_html}</ul>
-        <p class="mission-verified">{esc(verified_line)}</p>
-      </section>
-
-      {practical_html}
-      {qa_html}
-
-      <p class="seo-official">
-        {f'Official site: <a href="{esc(website)}" rel="noopener noreferrer" target="_blank">{esc(mission_venue["name"])} website</a>.' if website else ""}
-        Always check hours and tickets before you go.
+    <article class="mission-sheet" id="mission-sheet">
+      <p class="ms-brand">1Less Field Trip Kit{f' · {esc(loc)}' if loc else ""}</p>
+      <h1 class="ms-title" id="mission-title">{mission_title}</h1>
+      <p class="ms-meta" id="mission-meta">{age_label} · {time_label}</p>
+      {f'<p class="ms-tagline no-print">{esc(tagline)}</p>' if tagline else ""}
+      <h2 class="ms-section">Find these</h2>
+      <ol class="mission-finds" id="mission-finds" aria-label="Finds">{finds_html}</ol>
+      <h2 class="ms-section">Bonus</h2>
+      <ul class="mission-challenges" id="mission-challenges" aria-label="Challenges">{ch_html}</ul>
+      <p class="ms-footer">
+        <span id="mission-verified">{esc(verified_line)}</span>
+        · free at 1less.app/field-pack/{esc(vid)}/
       </p>
     </article>
-
-    <footer class="site-footer site-footer-slim no-print">
-      <p>
-        <a href="/field-pack/">All places</a> ·
-        <strong>1Less</strong> · Field Trip Kit ·
-        <a href="/dinner">Dinner</a>
-      </p>
-    </footer>
   </div>
 
   <script type="application/json" id="venue-data">{venue_json}</script>
   <script type="application/json" id="challenges-data">{challenges_json}</script>
   <script src="/shell/shell.js?v=3"></script>
-  <script src="/field-pack/js/mission/mission-engine.js?v=2"></script>
-  <script src="/field-pack/js/mission/mission-ui.js?v=2"></script>
+  <script src="/field-pack/js/mission/mission-engine.js?v=3"></script>
+  <script src="/field-pack/js/mission/mission-ui.js?v=3"></script>
 </body>
 </html>
 """
