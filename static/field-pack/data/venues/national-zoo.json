@@ -11,17 +11,17 @@
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Free Smithsonian zoo — giant pandas Bao Li & Qing Bao lead the day.",
+  "tagline": "Free Smithsonian zoo \u2014 giant pandas Bao Li & Qing Bao lead the day.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Free admission; timed entry may apply — reserve on the Zoo site.",
+    "ticket_note": "Free admission; timed entry may apply \u2014 reserve on the Zoo site.",
     "transit_note": "Woodley Park / Cleveland Park Metro; steep hills."
   },
   "items": [
     {
       "id": "giant_panda",
       "label": "Giant panda",
-      "emoji": "🐼",
+      "emoji": "\ud83d\udc3c",
       "one_liner": "Bao Li and Qing Bao in the renovated panda habitat.",
       "tags": [
         "wow",
@@ -37,14 +37,14 @@
       "zone": "Asia Trail",
       "qa_card": {
         "question": "What color are giant panda ears?",
-        "answer": "Black — just like their eye spots!"
+        "answer": "Black \u2014 just like their eye spots!"
       },
       "catalog_id": "giant-panda"
     },
     {
       "id": "asian_small_clawed_otter",
       "label": "Asian small-clawed otter",
-      "emoji": "🦦",
+      "emoji": "\ud83e\udda6",
       "one_liner": "Otters near the Asia path energy.",
       "tags": [
         "play",
@@ -66,7 +66,7 @@
     {
       "id": "red_panda",
       "label": "Red panda",
-      "emoji": "🦊",
+      "emoji": "\ud83e\udd8a",
       "one_liner": "Red pandas in the trees if awake.",
       "tags": [
         "climb",
@@ -88,7 +88,7 @@
     {
       "id": "african_elephant",
       "label": "African elephant",
-      "emoji": "🐘",
+      "emoji": "\ud83d\udc18",
       "one_liner": "Elephants with room to dust-bathe.",
       "tags": [
         "big",
@@ -111,7 +111,7 @@
     {
       "id": "african_lion",
       "label": "African lion",
-      "emoji": "🦁",
+      "emoji": "\ud83e\udd81",
       "one_liner": "Lions on the cat walk.",
       "tags": [
         "big-cats",
@@ -134,7 +134,7 @@
     {
       "id": "sumatran_tiger",
       "label": "Sumatran tiger",
-      "emoji": "🐯",
+      "emoji": "\ud83d\udc2f",
       "one_liner": "Tigers pacing or napping in the shade.",
       "tags": [
         "big-cats",
@@ -156,7 +156,7 @@
     {
       "id": "western_lowland_gorilla",
       "label": "Western lowland gorilla",
-      "emoji": "🦍",
+      "emoji": "\ud83e\udd8d",
       "one_liner": "Gorillas face-to-face through glass.",
       "tags": [
         "primates",
@@ -178,8 +178,8 @@
     {
       "id": "orangutan",
       "label": "Orangutan",
-      "emoji": "🦧",
-      "one_liner": "Orangutans — watch for sky-cable travel on some days.",
+      "emoji": "\ud83e\udda7",
+      "one_liner": "Orangutans \u2014 watch for sky-cable travel on some days.",
       "tags": [
         "primates",
         "climb"
@@ -200,7 +200,7 @@
     {
       "id": "reticulated_giraffe",
       "label": "Reticulated giraffe",
-      "emoji": "🦒",
+      "emoji": "\ud83e\udd92",
       "one_liner": "Tall spots above the crowd.",
       "tags": [
         "tall",
@@ -222,7 +222,7 @@
     {
       "id": "caribbean_flamingo",
       "label": "Caribbean flamingo",
-      "emoji": "🦩",
+      "emoji": "\ud83e\udda9",
       "one_liner": "Pink flock for an easy win.",
       "tags": [
         "color",
@@ -244,15 +244,16 @@
   ],
   "content_mode": "curated",
   "media": {
-    "visitor_map_url": "",
+    "visitor_map_url": "https://nationalzoo.si.edu/sites/default/files/styles/wide/public/2024-02/zoo-map-teaser-web.png?h=8165685c&itok=5xPuQ-p4",
     "visitor_map_page": "https://nationalzoo.si.edu/",
-    "visitor_map_kind": "page",
-    "map_attribution": "Official site · Smithsonian National Zoo"
+    "visitor_map_kind": "image",
+    "map_attribution": "Official site \u00b7 Smithsonian National Zoo"
   },
   "parent_script": [
     "Bathroom first",
     "One big wow",
     "Snack when needed",
     "Leave while happy"
-  ]
+  ],
+  "research_notes": "map-img 2026-08-07"
 }

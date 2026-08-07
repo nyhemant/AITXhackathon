@@ -11,18 +11,18 @@
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "NYC’s big zoo day — Congo gorillas, Madagascar, and tiger mountain energy.",
+  "tagline": "NYC\u2019s big zoo day \u2014 Congo gorillas, Madagascar, and tiger mountain energy.",
   "practical": {
     "typical_duration": "half to full day",
-    "ticket_note": "Pay-what-you-wish Wednesdays historically — confirm current rules.",
+    "ticket_note": "Pay-what-you-wish Wednesdays historically \u2014 confirm current rules.",
     "transit_note": "2 train to Bronx Park East or BxM11 bus."
   },
   "items": [
     {
       "id": "western_lowland_gorilla",
       "label": "Western lowland gorilla",
-      "emoji": "🦍",
-      "one_liner": "Immersive gorilla habitat — a Bronx signature.",
+      "emoji": "\ud83e\udd8d",
+      "one_liner": "Immersive gorilla habitat \u2014 a Bronx signature.",
       "tags": [
         "primates",
         "outdoor",
@@ -44,7 +44,7 @@
     {
       "id": "sumatran_tiger",
       "label": "Sumatran tiger",
-      "emoji": "🐯",
+      "emoji": "\ud83d\udc2f",
       "one_liner": "Tigers at eye level through glass.",
       "tags": [
         "big-cats",
@@ -67,7 +67,7 @@
     {
       "id": "african_lion",
       "label": "African lion",
-      "emoji": "🦁",
+      "emoji": "\ud83e\udd81",
       "one_liner": "Lions on the plains overlook.",
       "tags": [
         "big-cats",
@@ -89,7 +89,7 @@
     {
       "id": "african_elephant",
       "label": "African elephant",
-      "emoji": "🐘",
+      "emoji": "\ud83d\udc18",
       "one_liner": "Elephants when on the walking route.",
       "tags": [
         "big",
@@ -111,7 +111,7 @@
     {
       "id": "reticulated_giraffe",
       "label": "Reticulated giraffe",
-      "emoji": "🦒",
+      "emoji": "\ud83e\udd92",
       "one_liner": "Giraffes above the acacias.",
       "tags": [
         "tall",
@@ -133,7 +133,7 @@
     {
       "id": "ring_tailed_lemur",
       "label": "Ring-tailed lemur",
-      "emoji": "🐒",
+      "emoji": "\ud83d\udc12",
       "one_liner": "Lemurs hopping through the Madagascar building.",
       "tags": [
         "primates",
@@ -156,7 +156,7 @@
     {
       "id": "nile_hippo",
       "label": "Nile hippo",
-      "emoji": "🦛",
+      "emoji": "\ud83e\udd9b",
       "one_liner": "Hippos near water features.",
       "tags": [
         "big",
@@ -178,7 +178,7 @@
     {
       "id": "zebra",
       "label": "Zebra",
-      "emoji": "🦓",
+      "emoji": "\ud83e\udd93",
       "one_liner": "Stripes mixed with the plains herds.",
       "tags": [
         "pattern",
@@ -200,7 +200,7 @@
     {
       "id": "red_panda",
       "label": "Red panda",
-      "emoji": "🦊",
+      "emoji": "\ud83e\udd8a",
       "one_liner": "Red panda fluff if scheduled on-view.",
       "tags": [
         "climb",
@@ -221,8 +221,8 @@
     },
     {
       "id": "galapagos_tortoise",
-      "label": "Galápagos tortoise",
-      "emoji": "🐢",
+      "label": "Gal\u00e1pagos tortoise",
+      "emoji": "\ud83d\udc22",
       "one_liner": "Giant tortoises for a slow moment.",
       "tags": [
         "slow",
@@ -236,7 +236,7 @@
       ],
       "zone": "Reptiles",
       "qa_card": {
-        "question": "What did you notice about the Galápagos tortoise?",
+        "question": "What did you notice about the Gal\u00e1pagos tortoise?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "galapagos-tortoise"
@@ -244,15 +244,16 @@
   ],
   "content_mode": "curated",
   "media": {
-    "visitor_map_url": "",
+    "visitor_map_url": "https://cdn.wcs.org/2026/03/25/14/47/43/36862b00-a428-414c-aa00-9dfda0fed999/bz-spring-map-2026.png",
     "visitor_map_page": "https://bronxzoo.com/",
-    "visitor_map_kind": "page",
-    "map_attribution": "Official site · Bronx Zoo"
+    "visitor_map_kind": "image",
+    "map_attribution": "Official site \u00b7 Bronx Zoo"
   },
   "parent_script": [
     "Bathroom first",
     "One big wow",
     "Snack when needed",
     "Leave while happy"
-  ]
+  ],
+  "research_notes": "map-img 2026-08-07"
 }

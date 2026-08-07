@@ -11,18 +11,18 @@
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Hermann Park favorite — elephants, giraffes, and a tight kid loop.",
+  "tagline": "Hermann Park favorite \u2014 elephants, giraffes, and a tight kid loop.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Members lines move faster; summers are hot — go early.",
+    "ticket_note": "Members lines move faster; summers are hot \u2014 go early.",
     "transit_note": "Hermann Park; MetroRail Museum District."
   },
   "items": [
     {
       "id": "african_elephant",
       "label": "African elephant",
-      "emoji": "🐘",
-      "one_liner": "Houston’s elephant habitat is a must-see wow.",
+      "emoji": "\ud83d\udc18",
+      "one_liner": "Houston\u2019s elephant habitat is a must-see wow.",
       "tags": [
         "big",
         "outdoor",
@@ -44,8 +44,8 @@
     {
       "id": "reticulated_giraffe",
       "label": "Reticulated giraffe",
-      "emoji": "🦒",
-      "one_liner": "Feeding times are popular — check the board.",
+      "emoji": "\ud83e\udd92",
+      "one_liner": "Feeding times are popular \u2014 check the board.",
       "tags": [
         "tall",
         "outdoor",
@@ -67,7 +67,7 @@
     {
       "id": "nile_hippo",
       "label": "Nile hippo",
-      "emoji": "🦛",
+      "emoji": "\ud83e\udd9b",
       "one_liner": "Underwater hippo windows when open.",
       "tags": [
         "big",
@@ -90,7 +90,7 @@
     {
       "id": "western_lowland_gorilla",
       "label": "Western lowland gorilla",
-      "emoji": "🦍",
+      "emoji": "\ud83e\udd8d",
       "one_liner": "Gorilla families up close.",
       "tags": [
         "primates",
@@ -112,7 +112,7 @@
     {
       "id": "chimpanzee",
       "label": "Chimpanzee",
-      "emoji": "🐵",
+      "emoji": "\ud83d\udc35",
       "one_liner": "Chimp play and chatter.",
       "tags": [
         "primates",
@@ -134,7 +134,7 @@
     {
       "id": "african_lion",
       "label": "African lion",
-      "emoji": "🦁",
+      "emoji": "\ud83e\udd81",
       "one_liner": "Lions lounging in the Texas sun.",
       "tags": [
         "big-cats",
@@ -156,7 +156,7 @@
     {
       "id": "sumatran_tiger",
       "label": "Sumatran tiger",
-      "emoji": "🐯",
+      "emoji": "\ud83d\udc2f",
       "one_liner": "Tigers on the cat walk.",
       "tags": [
         "big-cats",
@@ -178,7 +178,7 @@
     {
       "id": "african_penguin",
       "label": "African penguin",
-      "emoji": "🐧",
+      "emoji": "\ud83d\udc27",
       "one_liner": "Penguins zoom underwater.",
       "tags": [
         "water",
@@ -200,7 +200,7 @@
     {
       "id": "asian_small_clawed_otter",
       "label": "Asian small-clawed otter",
-      "emoji": "🦦",
+      "emoji": "\ud83e\udda6",
       "one_liner": "Busy otters for a quick laugh.",
       "tags": [
         "play",
@@ -222,7 +222,7 @@
     {
       "id": "zebra",
       "label": "Zebra",
-      "emoji": "🦓",
+      "emoji": "\ud83e\udd93",
       "one_liner": "Stripes on the Africa side.",
       "tags": [
         "outdoor",
@@ -244,15 +244,16 @@
   ],
   "content_mode": "curated",
   "media": {
-    "visitor_map_url": "",
+    "visitor_map_url": "https://s28164.pcdn.co/wp-content/themes/houstonzoo-2019/assets/img/gate-map.jpg",
     "visitor_map_page": "https://www.houstonzoo.org/",
-    "visitor_map_kind": "page",
-    "map_attribution": "Official site · Houston Zoo"
+    "visitor_map_kind": "image",
+    "map_attribution": "Official site \u00b7 Houston Zoo"
   },
   "parent_script": [
     "Bathroom first",
     "One big wow",
     "Snack when needed",
     "Leave while happy"
-  ]
+  ],
+  "research_notes": "map-img 2026-08-07"
 }

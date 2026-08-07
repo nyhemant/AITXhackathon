@@ -11,18 +11,18 @@
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Giant pandas are back, plus the famous koala colony — tourist icons first.",
+  "tagline": "Giant pandas are back, plus the famous koala colony \u2014 tourist icons first.",
   "practical": {
     "typical_duration": "full day if you can; half day for icons",
-    "ticket_note": "Panda viewing may use timed entry — check on arrival.",
+    "ticket_note": "Panda viewing may use timed entry \u2014 check on arrival.",
     "transit_note": "Balboa Park; hop-on buses inside help little legs."
   },
   "items": [
     {
       "id": "giant_panda",
       "label": "Giant panda",
-      "emoji": "🐼",
-      "one_liner": "Yun Chuan & Xin Bao — the star return attraction.",
+      "emoji": "\ud83d\udc3c",
+      "one_liner": "Yun Chuan & Xin Bao \u2014 the star return attraction.",
       "tags": [
         "wow",
         "outdoor",
@@ -37,15 +37,15 @@
       "zone": "Panda Ridge",
       "qa_card": {
         "question": "What do giant pandas love to eat?",
-        "answer": "Bamboo — lots and lots of bamboo!"
+        "answer": "Bamboo \u2014 lots and lots of bamboo!"
       },
       "catalog_id": "giant-panda"
     },
     {
       "id": "koala",
       "label": "Koala",
-      "emoji": "🐨",
-      "one_liner": "Largest koala colony outside Australia — look up in the trees.",
+      "emoji": "\ud83d\udc28",
+      "one_liner": "Largest koala colony outside Australia \u2014 look up in the trees.",
       "tags": [
         "outdoor",
         "wow",
@@ -67,7 +67,7 @@
     {
       "id": "red_panda",
       "label": "Red panda",
-      "emoji": "🦊",
+      "emoji": "\ud83e\udd8a",
       "one_liner": "Red panda cousins near the giant pandas.",
       "tags": [
         "outdoor",
@@ -89,7 +89,7 @@
     {
       "id": "african_elephant",
       "label": "African elephant",
-      "emoji": "🐘",
+      "emoji": "\ud83d\udc18",
       "one_liner": "Huge elephants on a big California hillside.",
       "tags": [
         "big",
@@ -112,7 +112,7 @@
     {
       "id": "western_lowland_gorilla",
       "label": "Western lowland gorilla",
-      "emoji": "🦍",
+      "emoji": "\ud83e\udd8d",
       "one_liner": "Gorilla families in lush habitat.",
       "tags": [
         "outdoor",
@@ -134,7 +134,7 @@
     {
       "id": "orangutan",
       "label": "Orangutan",
-      "emoji": "🦧",
+      "emoji": "\ud83e\udda7",
       "one_liner": "Long-armed orangutans in the trees.",
       "tags": [
         "outdoor",
@@ -156,7 +156,7 @@
     {
       "id": "african_lion",
       "label": "African lion",
-      "emoji": "🦁",
+      "emoji": "\ud83e\udd81",
       "one_liner": "Lions lounging with a big roar potential.",
       "tags": [
         "big-cats",
@@ -179,7 +179,7 @@
     {
       "id": "sumatran_tiger",
       "label": "Sumatran tiger",
-      "emoji": "🐯",
+      "emoji": "\ud83d\udc2f",
       "one_liner": "Stripy tigers on the Asia side.",
       "tags": [
         "big-cats",
@@ -201,7 +201,7 @@
     {
       "id": "reticulated_giraffe",
       "label": "Reticulated giraffe",
-      "emoji": "🦒",
+      "emoji": "\ud83e\udd92",
       "one_liner": "Tall necks above the crowd.",
       "tags": [
         "tall",
@@ -223,7 +223,7 @@
     {
       "id": "two_toed_sloth",
       "label": "Two-toed sloth",
-      "emoji": "🦥",
+      "emoji": "\ud83e\udda5",
       "one_liner": "Slow-motion mammal if you spot one hanging out.",
       "tags": [
         "climb",
@@ -245,15 +245,16 @@
   ],
   "content_mode": "curated",
   "media": {
-    "visitor_map_url": "",
+    "visitor_map_url": "https://zoo.sandiegozoo.org/sites/default/files/body_image/zoo-map.png",
     "visitor_map_page": "https://zoo.sandiegozoo.org/",
-    "visitor_map_kind": "page",
-    "map_attribution": "Official site · San Diego Zoo"
+    "visitor_map_kind": "image",
+    "map_attribution": "Official site \u00b7 San Diego Zoo"
   },
   "parent_script": [
     "Bathroom first",
     "One big wow",
     "Snack when needed",
     "Leave while happy"
-  ]
+  ],
+  "research_notes": "map-img 2026-08-07"
 }

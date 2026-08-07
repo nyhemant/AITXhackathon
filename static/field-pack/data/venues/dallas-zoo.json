@@ -15,14 +15,14 @@
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Buy tickets online; weekends can sell out.",
-    "transit_note": "DART Red Line — Dallas Zoo station."
+    "transit_note": "DART Red Line \u2014 Dallas Zoo station."
   },
   "items": [
     {
       "id": "elephant",
       "label": "African elephant",
-      "emoji": "🐘",
-      "one_liner": "Biggest land animal — trunk to grab and spray.",
+      "emoji": "\ud83d\udc18",
+      "one_liner": "Biggest land animal \u2014 trunk to grab and spray.",
       "tags": [
         "big",
         "outdoor",
@@ -45,8 +45,8 @@
     {
       "id": "giraffe",
       "label": "Reticulated giraffe",
-      "emoji": "🦒",
-      "one_liner": "Tallest animal — feed one from the platform!",
+      "emoji": "\ud83e\udd92",
+      "one_liner": "Tallest animal \u2014 feed one from the platform!",
       "tags": [
         "tall",
         "feeding",
@@ -70,8 +70,8 @@
     {
       "id": "lion",
       "label": "African lion",
-      "emoji": "🦁",
-      "one_liner": "Big cat of the grassland pride — mighty roar!",
+      "emoji": "\ud83e\udd81",
+      "one_liner": "Big cat of the grassland pride \u2014 mighty roar!",
       "tags": [
         "big-cats",
         "outdoor",
@@ -90,7 +90,7 @@
     {
       "id": "gorilla",
       "label": "Western lowland gorilla",
-      "emoji": "🦍",
+      "emoji": "\ud83e\udd8d",
       "one_liner": "Strong gentle ape in family groups.",
       "tags": [
         "primates",
@@ -109,8 +109,8 @@
     {
       "id": "tiger",
       "label": "Sumatran tiger",
-      "emoji": "🐯",
-      "one_liner": "Stripy forest big cat — strong and stealthy.",
+      "emoji": "\ud83d\udc2f",
+      "one_liner": "Stripy forest big cat \u2014 strong and stealthy.",
       "tags": [
         "big-cats",
         "pattern",
@@ -128,7 +128,7 @@
     {
       "id": "penguin",
       "label": "African penguin",
-      "emoji": "🐧",
+      "emoji": "\ud83d\udc27",
       "one_liner": "Waddle on land, zoom in water.",
       "tags": [
         "birds",
@@ -147,7 +147,7 @@
     {
       "id": "hippo",
       "label": "Nile hippo",
-      "emoji": "🦛",
+      "emoji": "\ud83e\udd9b",
       "one_liner": "Huge river giant that loves the water.",
       "tags": [
         "big",
@@ -166,8 +166,8 @@
     {
       "id": "zebra",
       "label": "Zebra",
-      "emoji": "🦓",
-      "one_liner": "Striped grassland runner — every pattern is unique.",
+      "emoji": "\ud83e\udd93",
+      "one_liner": "Striped grassland runner \u2014 every pattern is unique.",
       "tags": [
         "pattern",
         "outdoor",
@@ -185,8 +185,8 @@
     {
       "id": "flamingo",
       "label": "Caribbean flamingo",
-      "emoji": "🦩",
-      "one_liner": "Bright pink wader — long legs for shallow water.",
+      "emoji": "\ud83e\udda9",
+      "one_liner": "Bright pink wader \u2014 long legs for shallow water.",
       "tags": [
         "birds",
         "color",
@@ -204,8 +204,8 @@
     {
       "id": "cheetah",
       "label": "Cheetah",
-      "emoji": "🐆",
-      "one_liner": "Fastest land animal — built to sprint.",
+      "emoji": "\ud83d\udc06",
+      "one_liner": "Fastest land animal \u2014 built to sprint.",
       "tags": [
         "big-cats",
         "outdoor",
@@ -223,8 +223,8 @@
     {
       "id": "kids-zoo",
       "label": "Children's Zoo",
-      "emoji": "🎠",
-      "one_liner": "Little-kid reset zone — farm friends and play.",
+      "emoji": "\ud83c\udfa0",
+      "one_liner": "Little-kid reset zone \u2014 farm friends and play.",
       "tags": [
         "kids",
         "rest",
@@ -239,9 +239,9 @@
     },
     {
       "id": "tortoise",
-      "label": "Galápagos tortoise",
-      "emoji": "🐢",
-      "one_liner": "Giant tortoise — slow and steady.",
+      "label": "Gal\u00e1pagos tortoise",
+      "emoji": "\ud83d\udc22",
+      "one_liner": "Giant tortoise \u2014 slow and steady.",
       "tags": [
         "outdoor",
         "slow"
@@ -258,15 +258,16 @@
   ],
   "content_mode": "curated",
   "media": {
-    "visitor_map_url": "",
+    "visitor_map_url": "https://dallaszoo.imgix.net/wp-content/uploads/2020/03/30143212/DZ-Map-Fall2022-1.jpg",
     "visitor_map_page": "https://www.dallaszoo.com/",
-    "visitor_map_kind": "page",
-    "map_attribution": "Official site · Dallas Zoo"
+    "visitor_map_kind": "image",
+    "map_attribution": "Official site \u00b7 Dallas Zoo"
   },
   "parent_script": [
     "Bathroom first",
     "One big wow",
     "Snack when needed",
     "Leave while happy"
-  ]
+  ],
+  "research_notes": "map-img 2026-08-07"
 }

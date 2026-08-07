@@ -11,7 +11,7 @@
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Dallas Perot — dinosaurs, sports hall energy, and kids’ museum levels.",
+  "tagline": "Dallas Perot \u2014 dinosaurs, sports hall energy, and kids\u2019 museum levels.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Victory Park; timed tickets peak times.",
@@ -23,7 +23,7 @@
     {
       "id": "sci_dinosaur",
       "label": "Dinosaur hall",
-      "emoji": "🦖",
+      "emoji": "\ud83e\udd96",
       "one_liner": "Dinos are the magnet.",
       "tags": [
         "wow",
@@ -45,7 +45,7 @@
     {
       "id": "sci_hands_on",
       "label": "Hands-on lab",
-      "emoji": "🔬",
+      "emoji": "\ud83d\udd2c",
       "one_liner": "Body science fun.",
       "tags": [
         "hands",
@@ -67,7 +67,7 @@
     {
       "id": "cm_imaginarium",
       "label": "Imaginarium",
-      "emoji": "✨",
+      "emoji": "\u2728",
       "one_liner": "Play and pretend.",
       "tags": [
         "play"
@@ -78,7 +78,7 @@
         "6-8",
         "9+"
       ],
-      "zone": "Children’s museum levels",
+      "zone": "Children\u2019s museum levels",
       "qa_card": {
         "question": "What did you notice about the Imaginarium?",
         "answer": "Tell a grown-up one thing you saw!"
@@ -88,7 +88,7 @@
     {
       "id": "sci_planet",
       "label": "Planet / space hall",
-      "emoji": "🪐",
+      "emoji": "\ud83e\ude90",
       "one_liner": "Earth and beyond.",
       "tags": [
         "wow"
@@ -109,7 +109,7 @@
     {
       "id": "cm_makery",
       "label": "Creative Makery",
-      "emoji": "🔧",
+      "emoji": "\ud83d\udd27",
       "one_liner": "Create something.",
       "tags": [
         "hands"
@@ -130,8 +130,8 @@
     {
       "id": "sci_mammal_hall",
       "label": "Animal / mammal hall",
-      "emoji": "🦌",
-      "one_liner": "Lifelike animals from around the world — spot fur, horns, and habitats.",
+      "emoji": "\ud83e\udd8c",
+      "one_liner": "Lifelike animals from around the world \u2014 spot fur, horns, and habitats.",
       "tags": [
         "wow",
         "outdoor"
@@ -152,8 +152,8 @@
     {
       "id": "cm_free_explore",
       "label": "Free explore",
-      "emoji": "🧭",
-      "one_liner": "Their choice path — whatever pulled them in!",
+      "emoji": "\ud83e\udded",
+      "one_liner": "Their choice path \u2014 whatever pulled them in!",
       "tags": [
         "wow",
         "outdoor"
@@ -174,8 +174,8 @@
     {
       "id": "sci_rainforest",
       "label": "Rainforest dome",
-      "emoji": "🌿",
-      "one_liner": "Warm, green, and full of life — look for layers of plants.",
+      "emoji": "\ud83c\udf3f",
+      "one_liner": "Warm, green, and full of life \u2014 look for layers of plants.",
       "tags": [
         "wow",
         "rest",
@@ -197,9 +197,9 @@
   ],
   "content_mode": "hybrid",
   "media": {
-    "visitor_map_url": "",
+    "visitor_map_url": "https://perot-m.imgix.net/wp-content/uploads/level-l.png",
     "visitor_map_page": "https://www.perotmuseum.org/",
-    "visitor_map_kind": "page",
+    "visitor_map_kind": "image",
     "map_attribution": "Official visit page"
   },
   "parent_script": [
@@ -213,5 +213,5 @@
     "sci_hands_on",
     "cm_imaginarium"
   ],
-  "research_notes": "R2 hybrid 2026-08-07"
+  "research_notes": "R2 hybrid 2026-08-07 \u00b7 map-img 2026-08-07"
 }

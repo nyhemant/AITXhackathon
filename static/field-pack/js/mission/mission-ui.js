@@ -78,9 +78,29 @@
     const mapHint = $("#mission-map-hint");
     if (mapHint && venue && venue.media) {
       const page = venue.media.visitor_map_page || venue.media.visitor_map_url || "";
-      if (page) {
+      const img = venue.media.visitor_map_url || "";
+      const attr = venue.media.map_attribution || "Official map";
+      if (img && /^https?:\/\//i.test(img)) {
+        mapHint.className = "ms-map-hint ms-map-has-preview";
+        mapHint.innerHTML = `
+          <a class="ms-map-card" href="${esc(page || img)}" target="_blank" rel="noopener noreferrer" aria-label="Official map — hover to enlarge">
+            <span class="ms-map-thumb-wrap">
+              <img class="ms-map-thumb" src="${esc(img)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+              <span class="ms-map-hover-hint" aria-hidden="true">Hover</span>
+            </span>
+            <span class="ms-map-card-text">
+              <strong>Official map</strong>
+              <small>${esc(attr)} · hover to preview</small>
+            </span>
+            <span class="ms-map-preview" aria-hidden="true">
+              <img src="${esc(img)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+            </span>
+          </a>`;
+      } else if (page) {
+        mapHint.className = "ms-map-hint";
         mapHint.innerHTML = `🗺️ Navigate with the <a href="${esc(page)}" target="_blank" rel="noopener noreferrer">official map</a>`;
       } else {
+        mapHint.className = "ms-map-hint";
         mapHint.textContent = "";
       }
     }

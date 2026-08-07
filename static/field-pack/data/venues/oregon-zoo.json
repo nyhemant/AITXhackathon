@@ -11,10 +11,10 @@
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Portland hills zoo — elephants, elephants lore, and forested paths.",
+  "tagline": "Portland hills zoo \u2014 elephants, elephants lore, and forested paths.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Rain happens — layers help year-round.",
+    "ticket_note": "Rain happens \u2014 layers help year-round.",
     "transit_note": "MAX Blue/Red to Washington Park; zoo train seasonally.",
     "energy_note": "hills",
     "best_start": "Pick elephants or predators first before little legs fade on hills."
@@ -23,8 +23,8 @@
     {
       "id": "african_elephant",
       "label": "African elephant",
-      "emoji": "🐘",
-      "one_liner": "Oregon Zoo’s elephant program is a signature stop.",
+      "emoji": "\ud83d\udc18",
+      "one_liner": "Oregon Zoo\u2019s elephant program is a signature stop.",
       "tags": [
         "big",
         "outdoor",
@@ -46,7 +46,7 @@
     {
       "id": "sumatran_tiger",
       "label": "Sumatran tiger",
-      "emoji": "🐯",
+      "emoji": "\ud83d\udc2f",
       "one_liner": "Tigers in forested habitats.",
       "tags": [
         "big-cats",
@@ -68,7 +68,7 @@
     {
       "id": "western_lowland_gorilla",
       "label": "Western lowland gorilla",
-      "emoji": "🦍",
+      "emoji": "\ud83e\udd8d",
       "one_liner": "Gorillas in green NW light.",
       "tags": [
         "primates",
@@ -90,7 +90,7 @@
     {
       "id": "african_penguin",
       "label": "African penguin",
-      "emoji": "🐧",
+      "emoji": "\ud83d\udc27",
       "one_liner": "Penguins for a cooler habitat break.",
       "tags": [
         "water",
@@ -112,7 +112,7 @@
     {
       "id": "red_panda",
       "label": "Red panda",
-      "emoji": "🦊",
+      "emoji": "\ud83e\udd8a",
       "one_liner": "Red pandas in trees when active.",
       "tags": [
         "climb",
@@ -134,8 +134,8 @@
     {
       "id": "reticulated_giraffe",
       "label": "Reticulated giraffe",
-      "emoji": "🦒",
-      "one_liner": "Tallest animal on long legs — look up!",
+      "emoji": "\ud83e\udd92",
+      "one_liner": "Tallest animal on long legs \u2014 look up!",
       "tags": [
         "wow",
         "tall",
@@ -150,15 +150,15 @@
       "zone": "Grounds",
       "qa_card": {
         "question": "What is special about the Reticulated giraffe?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
       },
       "catalog_id": "reticulated-giraffe"
     },
     {
       "id": "african_lion",
       "label": "African lion",
-      "emoji": "🦁",
-      "one_liner": "Big cat of the grassland pride — mighty roar!",
+      "emoji": "\ud83e\udd81",
+      "one_liner": "Big cat of the grassland pride \u2014 mighty roar!",
       "tags": [
         "wow",
         "big-cats",
@@ -173,15 +173,15 @@
       "zone": "Grounds",
       "qa_card": {
         "question": "What is special about the African lion?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
       },
       "catalog_id": "african-lion"
     },
     {
       "id": "cheetah",
       "label": "Cheetah",
-      "emoji": "🐆",
-      "one_liner": "Fastest land animal — built to sprint.",
+      "emoji": "\ud83d\udc06",
+      "one_liner": "Fastest land animal \u2014 built to sprint.",
       "tags": [
         "wow",
         "big-cats",
@@ -196,14 +196,14 @@
       "zone": "Grounds",
       "qa_card": {
         "question": "What is special about the Cheetah?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
       },
       "catalog_id": "cheetah"
     },
     {
       "id": "nile_hippo",
       "label": "Nile hippo",
-      "emoji": "🦛",
+      "emoji": "\ud83e\udd9b",
       "one_liner": "Huge river giant that loves the water.",
       "tags": [
         "wow",
@@ -218,15 +218,15 @@
       "zone": "Grounds",
       "qa_card": {
         "question": "What is special about the Nile hippo?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
       },
       "catalog_id": "nile-hippo"
     },
     {
       "id": "caribbean_flamingo",
       "label": "Caribbean flamingo",
-      "emoji": "🦩",
-      "one_liner": "Bright pink wader — long legs for shallow water.",
+      "emoji": "\ud83e\udda9",
+      "one_liner": "Bright pink wader \u2014 long legs for shallow water.",
       "tags": [
         "wow",
         "outdoor"
@@ -240,15 +240,15 @@
       "zone": "Grounds",
       "qa_card": {
         "question": "What is special about the Caribbean flamingo?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
       },
       "catalog_id": "caribbean-flamingo"
     },
     {
       "id": "two_toed_sloth",
       "label": "Two-toed sloth",
-      "emoji": "🦥",
-      "one_liner": "Slow forest climber — hangs upside down.",
+      "emoji": "\ud83e\udda5",
+      "one_liner": "Slow forest climber \u2014 hangs upside down.",
       "tags": [
         "wow",
         "hands",
@@ -265,15 +265,15 @@
       "zone": "Grounds",
       "qa_card": {
         "question": "What is special about the Two-toed sloth?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
       },
       "catalog_id": "two-toed-sloth"
     },
     {
       "id": "zebra",
       "label": "Zebra",
-      "emoji": "🦓",
-      "one_liner": "Striped grassland runner — every pattern is unique.",
+      "emoji": "\ud83e\udd93",
+      "one_liner": "Striped grassland runner \u2014 every pattern is unique.",
       "tags": [
         "wow",
         "outdoor"
@@ -287,15 +287,15 @@
       "zone": "Grounds",
       "qa_card": {
         "question": "What is special about the Zebra?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
       },
       "catalog_id": "zebra"
     },
     {
       "id": "galapagos_tortoise",
-      "label": "Galápagos tortoise",
-      "emoji": "🐢",
-      "one_liner": "Giant tortoise — slow and steady.",
+      "label": "Gal\u00e1pagos tortoise",
+      "emoji": "\ud83d\udc22",
+      "one_liner": "Giant tortoise \u2014 slow and steady.",
       "tags": [
         "wow",
         "outdoor"
@@ -308,18 +308,18 @@
       ],
       "zone": "Grounds",
       "qa_card": {
-        "question": "What is special about the Galápagos tortoise?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What is special about the Gal\u00e1pagos tortoise?",
+        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
       },
       "catalog_id": "galapagos-tortoise"
     }
   ],
   "content_mode": "hybrid",
   "media": {
-    "visitor_map_url": "",
+    "visitor_map_url": "https://www.oregonzoo.org/sites/default/files/styles/scale_675w/public/2026-01/map-thumbnail-20260120.jpg.webp?itok=XPWcwQqM",
     "visitor_map_page": "https://www.oregonzoo.org/",
-    "visitor_map_kind": "page",
-    "map_attribution": "Plan your visit · Oregon Zoo"
+    "visitor_map_kind": "image",
+    "map_attribution": "Official map \u00b7 Oregon Zoo"
   },
   "parent_script": [
     "Bathroom first",
@@ -332,5 +332,5 @@
     "sumatran_tiger",
     "western_lowland_gorilla"
   ],
-  "research_notes": "R1 hybrid 2026-08-07"
+  "research_notes": "R1 hybrid 2026-08-07 \u00b7 map-img 2026-08-07"
 }

@@ -11,18 +11,18 @@
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Whale sharks, belugas, and giant ocean windows — Atlanta’s kid wow tank.",
+  "tagline": "Whale sharks, belugas, and giant ocean windows \u2014 Atlanta\u2019s kid wow tank.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Timed tickets often sell out on weekends — book ahead.",
+    "ticket_note": "Timed tickets often sell out on weekends \u2014 book ahead.",
     "transit_note": "Downtown Atlanta; parking decks nearby."
   },
   "items": [
     {
       "id": "shark",
       "label": "Shark",
-      "emoji": "🦈",
-      "one_liner": "Home of the whale sharks — look for the biggest fish in the tank.",
+      "emoji": "\ud83e\udd88",
+      "one_liner": "Home of the whale sharks \u2014 look for the biggest fish in the tank.",
       "tags": [
         "water",
         "big",
@@ -37,14 +37,14 @@
       "zone": "Ocean Voyager",
       "qa_card": {
         "question": "Which fish looks the biggest?",
-        "answer": "Whale sharks are the biggest fish in the world — gentle giants!"
+        "answer": "Whale sharks are the biggest fish in the world \u2014 gentle giants!"
       },
       "catalog_id": "shark"
     },
     {
       "id": "stingray",
       "label": "Stingray",
-      "emoji": "射线",
+      "emoji": "\u5c04\u7ebf",
       "one_liner": "Manta-sized rays glide by the glass like underwater birds.",
       "tags": [
         "water",
@@ -67,7 +67,7 @@
     {
       "id": "sea_turtle",
       "label": "Sea turtle",
-      "emoji": "🐢",
+      "emoji": "\ud83d\udc22",
       "one_liner": "Sea turtles paddle past the tunnel windows.",
       "tags": [
         "water",
@@ -90,8 +90,8 @@
     {
       "id": "jellyfish",
       "label": "Jellyfish",
-      "emoji": "🎐",
-      "one_liner": "Soft glow jellies in dark rooms — mesmerizing.",
+      "emoji": "\ud83c\udf90",
+      "one_liner": "Soft glow jellies in dark rooms \u2014 mesmerizing.",
       "tags": [
         "water",
         "glow",
@@ -113,7 +113,7 @@
     {
       "id": "african_penguin",
       "label": "African penguin",
-      "emoji": "🐧",
+      "emoji": "\ud83d\udc27",
       "one_liner": "Waddling African penguins on rocky shores.",
       "tags": [
         "water",
@@ -136,7 +136,7 @@
     {
       "id": "asian_small_clawed_otter",
       "label": "Asian small-clawed otter",
-      "emoji": "🦦",
+      "emoji": "\ud83e\udda6",
       "one_liner": "Playful sea otters (and otter friends) on the cold side.",
       "tags": [
         "water",
@@ -159,8 +159,8 @@
     {
       "id": "octopus",
       "label": "Octopus",
-      "emoji": "🐙",
-      "one_liner": "A camouflage master — look carefully!",
+      "emoji": "\ud83d\udc19",
+      "one_liner": "A camouflage master \u2014 look carefully!",
       "tags": [
         "water",
         "hide",
@@ -182,7 +182,7 @@
     {
       "id": "seahorse",
       "label": "Seahorse",
-      "emoji": "🌊",
+      "emoji": "\ud83c\udf0a",
       "one_liner": "Tiny upright swimmers in the reef.",
       "tags": [
         "water",
@@ -204,7 +204,7 @@
     {
       "id": "clownfish",
       "label": "Clownfish",
-      "emoji": "🐠",
+      "emoji": "\ud83d\udc20",
       "one_liner": "Bright reef fish darting through coral.",
       "tags": [
         "water",
@@ -226,7 +226,7 @@
     {
       "id": "starfish",
       "label": "Sea star",
-      "emoji": "⭐",
+      "emoji": "\u2b50",
       "one_liner": "If open: gentle touch pools with stars and friends.",
       "tags": [
         "water",
@@ -248,15 +248,16 @@
   ],
   "content_mode": "curated",
   "media": {
-    "visitor_map_url": "",
+    "visitor_map_url": "https://www.georgiaaquarium.org/wp-content/uploads/2025/10/aquarium-map-9.jpg",
     "visitor_map_page": "https://www.georgiaaquarium.org/",
-    "visitor_map_kind": "page",
-    "map_attribution": "Official site · Georgia Aquarium"
+    "visitor_map_kind": "image",
+    "map_attribution": "Official site \u00b7 Georgia Aquarium"
   },
   "parent_script": [
     "Bathroom first",
     "One big wow",
     "Snack when needed",
     "Leave while happy"
-  ]
+  ],
+  "research_notes": "map-img 2026-08-07"
 }

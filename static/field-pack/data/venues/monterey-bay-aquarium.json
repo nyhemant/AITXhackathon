@@ -21,8 +21,8 @@
     {
       "id": "jellyfish",
       "label": "Jellyfish",
-      "emoji": "🎐",
-      "one_liner": "Famous glowing jellies — slow down and watch them drift.",
+      "emoji": "\ud83c\udf90",
+      "one_liner": "Famous glowing jellies \u2014 slow down and watch them drift.",
       "tags": [
         "water",
         "glow",
@@ -44,7 +44,7 @@
     {
       "id": "asian_small_clawed_otter",
       "label": "Asian small-clawed otter",
-      "emoji": "🦦",
+      "emoji": "\ud83e\udda6",
       "one_liner": "Sea otters float, crack snacks, and steal the show.",
       "tags": [
         "water",
@@ -67,7 +67,7 @@
     {
       "id": "shark",
       "label": "Shark",
-      "emoji": "🦈",
+      "emoji": "\ud83e\udd88",
       "one_liner": "Big open-ocean swimmers circle the giant tank.",
       "tags": [
         "water",
@@ -90,7 +90,7 @@
     {
       "id": "sea_turtle",
       "label": "Sea turtle",
-      "emoji": "🐢",
+      "emoji": "\ud83d\udc22",
       "one_liner": "A green sea turtle often shares the big blue.",
       "tags": [
         "water",
@@ -112,8 +112,8 @@
     {
       "id": "octopus",
       "label": "Octopus",
-      "emoji": "🐙",
-      "one_liner": "Octopus hide-and-seek — check the corners.",
+      "emoji": "\ud83d\udc19",
+      "one_liner": "Octopus hide-and-seek \u2014 check the corners.",
       "tags": [
         "water",
         "hide",
@@ -135,7 +135,7 @@
     {
       "id": "stingray",
       "label": "Stingray",
-      "emoji": "射线",
+      "emoji": "\u5c04\u7ebf",
       "one_liner": "If open: soft rays in shallow touch pools.",
       "tags": [
         "water",
@@ -158,7 +158,7 @@
     {
       "id": "seahorse",
       "label": "Seahorse",
-      "emoji": "🌊",
+      "emoji": "\ud83c\udf0a",
       "one_liner": "Seahorses and tiny dragons of the tanks.",
       "tags": [
         "water",
@@ -180,7 +180,7 @@
     {
       "id": "clownfish",
       "label": "Clownfish",
-      "emoji": "🐠",
+      "emoji": "\ud83d\udc20",
       "one_liner": "Bright reef fish for a color hunt.",
       "tags": [
         "water",
@@ -202,7 +202,7 @@
     {
       "id": "starfish",
       "label": "Sea star",
-      "emoji": "⭐",
+      "emoji": "\u2b50",
       "one_liner": "Look for stars and crabs in rocky pools.",
       "tags": [
         "water",
@@ -224,7 +224,7 @@
     {
       "id": "eel",
       "label": "Eel",
-      "emoji": "🐍",
+      "emoji": "\ud83d\udc0d",
       "one_liner": "Long eels peek from rocky homes.",
       "tags": [
         "water",
@@ -247,15 +247,16 @@
   ],
   "content_mode": "curated",
   "media": {
-    "visitor_map_url": "",
+    "visitor_map_url": "https://d1v5k86lqgwnzg.cloudfront.net/assets/images/maps/aquarium/may2026/aquarium-visitor-map-May2026.png",
     "visitor_map_page": "https://www.montereybayaquarium.org/",
-    "visitor_map_kind": "page",
-    "map_attribution": "Official site · Monterey Bay Aquarium"
+    "visitor_map_kind": "image",
+    "map_attribution": "Official site \u00b7 Monterey Bay Aquarium"
   },
   "parent_script": [
     "Bathroom first",
     "One big wow",
     "Snack when needed",
     "Leave while happy"
-  ]
+  ],
+  "research_notes": "map-img 2026-08-07"
 }

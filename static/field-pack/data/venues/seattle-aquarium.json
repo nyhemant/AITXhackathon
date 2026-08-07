@@ -11,7 +11,7 @@
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Pier tanks on Elliott Bay — otters and local Salish Sea life.",
+  "tagline": "Pier tanks on Elliott Bay \u2014 otters and local Salish Sea life.",
   "practical": {
     "typical_duration": "2 hours",
     "ticket_note": "Timed tickets recommended on peak days.",
@@ -23,7 +23,7 @@
     {
       "id": "asian_small_clawed_otter",
       "label": "Asian small-clawed otter",
-      "emoji": "🦦",
+      "emoji": "\ud83e\udda6",
       "one_liner": "Sea otter energy is a Seattle favorite.",
       "tags": [
         "play",
@@ -46,8 +46,8 @@
     {
       "id": "octopus",
       "label": "Octopus",
-      "emoji": "🐙",
-      "one_liner": "Giant Pacific octopus lore — look carefully.",
+      "emoji": "\ud83d\udc19",
+      "one_liner": "Giant Pacific octopus lore \u2014 look carefully.",
       "tags": [
         "hide",
         "water",
@@ -69,7 +69,7 @@
     {
       "id": "jellyfish",
       "label": "Jellyfish",
-      "emoji": "🎐",
+      "emoji": "\ud83c\udf90",
       "one_liner": "Calm glow rooms.",
       "tags": [
         "glow",
@@ -91,7 +91,7 @@
     {
       "id": "sea_turtle",
       "label": "Sea turtle",
-      "emoji": "🐢",
+      "emoji": "\ud83d\udc22",
       "one_liner": "Turtles when on the path.",
       "tags": [
         "shell",
@@ -113,7 +113,7 @@
     {
       "id": "starfish",
       "label": "Sea star",
-      "emoji": "⭐",
+      "emoji": "\u2b50",
       "one_liner": "Stars and tide-pool finds when open.",
       "tags": [
         "touch",
@@ -135,7 +135,7 @@
     {
       "id": "shark",
       "label": "Shark",
-      "emoji": "🦈",
+      "emoji": "\ud83e\udd88",
       "one_liner": "Ocean hunter with a strong swishy body.",
       "tags": [
         "wow",
@@ -157,8 +157,8 @@
     {
       "id": "stingray",
       "label": "Stingray",
-      "emoji": "射线",
-      "one_liner": "Flat swimmer — often in touch pools (gentle hands!).",
+      "emoji": "\u5c04\u7ebf",
+      "one_liner": "Flat swimmer \u2014 often in touch pools (gentle hands!).",
       "tags": [
         "wow",
         "water"
@@ -179,7 +179,7 @@
     {
       "id": "seahorse",
       "label": "Seahorse",
-      "emoji": "🌊",
+      "emoji": "\ud83c\udf0a",
       "one_liner": "Tiny upright swimmer that holds on with its tail.",
       "tags": [
         "wow",
@@ -201,8 +201,8 @@
     {
       "id": "clownfish",
       "label": "Clownfish",
-      "emoji": "🐠",
-      "one_liner": "Bright reef fish — friends with anemones.",
+      "emoji": "\ud83d\udc20",
+      "one_liner": "Bright reef fish \u2014 friends with anemones.",
       "tags": [
         "wow",
         "water"
@@ -223,8 +223,8 @@
     {
       "id": "eel",
       "label": "Eel",
-      "emoji": "🐍",
-      "one_liner": "Long snaky fish — loves rocky hidey-holes.",
+      "emoji": "\ud83d\udc0d",
+      "one_liner": "Long snaky fish \u2014 loves rocky hidey-holes.",
       "tags": [
         "wow",
         "water"
@@ -245,7 +245,7 @@
     {
       "id": "crab",
       "label": "Crab",
-      "emoji": "🦀",
+      "emoji": "\ud83e\udd80",
       "one_liner": "Sideways walker with a hard shell and pinchers.",
       "tags": [
         "wow",
@@ -267,8 +267,8 @@
     {
       "id": "freshwater_fish",
       "label": "River / lake fish",
-      "emoji": "🐟",
-      "one_liner": "Fish that live in fresh water — rivers, lakes, ponds.",
+      "emoji": "\ud83d\udc1f",
+      "one_liner": "Fish that live in fresh water \u2014 rivers, lakes, ponds.",
       "tags": [
         "wow",
         "water"
@@ -289,10 +289,10 @@
   ],
   "content_mode": "hybrid",
   "media": {
-    "visitor_map_url": "",
+    "visitor_map_url": "https://www.seattleaquarium.org/wp-content/uploads/2026/05/Seattle-Aquarium-campus-map-May-2026.webp",
     "visitor_map_page": "https://www.seattleaquarium.org/",
-    "visitor_map_kind": "page",
-    "map_attribution": "Visit · Seattle Aquarium"
+    "visitor_map_kind": "image",
+    "map_attribution": "Official map \u00b7 Seattle Aquarium"
   },
   "parent_script": [
     "Bathroom first",
@@ -305,5 +305,5 @@
     "octopus",
     "jellyfish"
   ],
-  "research_notes": "R1 hybrid 2026-08-07"
+  "research_notes": "R1 hybrid 2026-08-07 \u00b7 map-img 2026-08-07"
 }

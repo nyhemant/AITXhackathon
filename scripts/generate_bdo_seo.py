@@ -403,7 +403,7 @@ def content_mode_of(mission_venue: dict, catalog_v: dict | None = None) -> str:
 
 
 def map_card_html(mission_venue: dict) -> str:
-    """Official map visual card — image when safe URL, else link card."""
+    """Official map card — thumbnail + hover/focus enlarge when image URL known."""
     media = (mission_venue or {}).get("media") or {}
     page = (media.get("visitor_map_page") or mission_venue.get("official_url") or "").strip()
     img = (media.get("visitor_map_url") or "").strip()
@@ -412,14 +412,23 @@ def map_card_html(mission_venue: dict) -> str:
     if not page and not img:
         return ""
     href = page or img
-    if kind == "image" and img and (img.startswith("https://") or img.startswith("http://")):
+    has_img = bool(img and (img.startswith("https://") or img.startswith("http://")))
+    # Prefer image mode whenever we have a verified map image (kind may lag)
+    if has_img and kind in ("image", "page", ""):
         return f"""
-    <a class="seo-map-card seo-map-card-image no-print" href="{esc(href)}" target="_blank" rel="noopener noreferrer">
-      <img src="{esc(img)}" alt="Official visitor map" width="640" height="400" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+    <a class="seo-map-card seo-map-card-image seo-map-has-preview no-print" href="{esc(href)}" target="_blank" rel="noopener noreferrer" aria-label="Official visitor map — hover or focus to enlarge, click to open">
+      <span class="seo-map-thumb-wrap">
+        <img class="seo-map-thumb" src="{esc(img)}" alt="" width="640" height="400" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+        <span class="seo-map-hover-hint" aria-hidden="true">Hover to enlarge</span>
+      </span>
       <span class="seo-map-card-body">
         <span class="seo-map-kicker">Official map</span>
         <strong>Open the real place map</strong>
-        <small>{esc(attr)}</small>
+        <small>{esc(attr)} · hover to preview</small>
+      </span>
+      <span class="seo-map-preview" aria-hidden="true">
+        <img src="{esc(img)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+        <span class="seo-map-preview-cap">{esc(attr)}</span>
       </span>
     </a>"""
     return f"""
@@ -724,8 +733,8 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <link rel="stylesheet" href="/shell/shell.css?v=4" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=19" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=45" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=6" />
-  <link rel="stylesheet" href="/field-pack/css/mission.css?v=6" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=7" />
+  <link rel="stylesheet" href="/field-pack/css/mission.css?v=7" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
   </script>
@@ -825,7 +834,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <script src="/field-pack/js/catalog.js?v=20"></script>
   <script src="/field-pack/js/print-kit.js?v=2"></script>
   <script src="/field-pack/js/mission/mission-engine.js?v=6"></script>
-  <script src="/field-pack/js/mission/mission-ui.js?v=6"></script>
+  <script src="/field-pack/js/mission/mission-ui.js?v=7"></script>
 </body>
 </html>
 """
@@ -887,7 +896,7 @@ def render_venue_page(v: dict) -> str:
   <link rel="stylesheet" href="/shell/shell.css?v=4" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=18" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=44" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=4" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=7" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
   </script>

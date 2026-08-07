@@ -11,7 +11,7 @@
   "last_verified": "2026-08-07",
   "verified_by": "owner",
   "status": "verified",
-  "tagline": "Classic Texas zoo day — big animals without the long drive.",
+  "tagline": "Classic Texas zoo day \u2014 big animals without the long drive.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Check summer hours; arrive early for parking.",
@@ -21,7 +21,7 @@
     {
       "id": "elephant",
       "label": "Elephant",
-      "emoji": "🐘",
+      "emoji": "\ud83d\udc18",
       "one_liner": "Giant with a super-nose trunk.",
       "tags": [
         "big",
@@ -40,8 +40,8 @@
     {
       "id": "giraffe",
       "label": "Giraffe",
-      "emoji": "🦒",
-      "one_liner": "Sky-high neck — look up!",
+      "emoji": "\ud83e\udd92",
+      "one_liner": "Sky-high neck \u2014 look up!",
       "tags": [
         "tall",
         "outdoor",
@@ -59,8 +59,8 @@
     {
       "id": "lion",
       "label": "Lion",
-      "emoji": "🦁",
-      "one_liner": "King of the pride — listen for a roar.",
+      "emoji": "\ud83e\udd81",
+      "one_liner": "King of the pride \u2014 listen for a roar.",
       "tags": [
         "big-cats",
         "outdoor",
@@ -78,7 +78,7 @@
     {
       "id": "tiger",
       "label": "Tiger",
-      "emoji": "🐯",
+      "emoji": "\ud83d\udc2f",
       "one_liner": "Orange stripes built for stealth.",
       "tags": [
         "big-cats",
@@ -97,7 +97,7 @@
     {
       "id": "gorilla",
       "label": "Gorilla",
-      "emoji": "🦍",
+      "emoji": "\ud83e\udd8d",
       "one_liner": "Gentle giant of the ape world.",
       "tags": [
         "primates",
@@ -115,7 +115,7 @@
     {
       "id": "penguin",
       "label": "Penguin",
-      "emoji": "🐧",
+      "emoji": "\ud83d\udc27",
       "one_liner": "Waddle crew that loves cool water.",
       "tags": [
         "birds",
@@ -133,7 +133,7 @@
     {
       "id": "hippo",
       "label": "Hippo",
-      "emoji": "🦛",
+      "emoji": "\ud83e\udd9b",
       "one_liner": "River tank with a huge smile.",
       "tags": [
         "big",
@@ -151,7 +151,7 @@
     {
       "id": "zebra",
       "label": "Zebra",
-      "emoji": "🦓",
+      "emoji": "\ud83e\udd93",
       "one_liner": "Walking barcode of the savanna.",
       "tags": [
         "pattern",
@@ -169,8 +169,8 @@
     {
       "id": "otter",
       "label": "Otter",
-      "emoji": "🦦",
-      "one_liner": "Splashy swimmer — always busy.",
+      "emoji": "\ud83e\udda6",
+      "one_liner": "Splashy swimmer \u2014 always busy.",
       "tags": [
         "water",
         "active"
@@ -187,7 +187,7 @@
     {
       "id": "lemur",
       "label": "Ring-tailed lemur",
-      "emoji": "🐒",
+      "emoji": "\ud83d\udc12",
       "one_liner": "Stripy tail from Madagascar.",
       "tags": [
         "primates",
@@ -206,7 +206,7 @@
     {
       "id": "tortoise",
       "label": "Giant tortoise",
-      "emoji": "🐢",
+      "emoji": "\ud83d\udc22",
       "one_liner": "Slow steps, long life.",
       "tags": [
         "slow",
@@ -224,7 +224,7 @@
     {
       "id": "kids-area",
       "label": "Kids play / rest stop",
-      "emoji": "🛝",
+      "emoji": "\ud83d\udedd",
       "one_liner": "Burn energy, then back to animals.",
       "tags": [
         "kids",
@@ -240,15 +240,16 @@
   ],
   "content_mode": "curated",
   "media": {
-    "visitor_map_url": "",
+    "visitor_map_url": "https://www.fortworthzoo.org/assets/2849/fwz_map_2024_web__homepage_image.jpg?w=880",
     "visitor_map_page": "https://www.fortworthzoo.org/",
-    "visitor_map_kind": "page",
-    "map_attribution": "Official site · Fort Worth Zoo"
+    "visitor_map_kind": "image",
+    "map_attribution": "Official site \u00b7 Fort Worth Zoo"
   },
   "parent_script": [
     "Bathroom first",
     "One big wow",
     "Snack when needed",
     "Leave while happy"
-  ]
+  ],
+  "research_notes": "map-img 2026-08-07"
 }

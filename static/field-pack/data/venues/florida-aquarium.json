@@ -11,9 +11,9 @@
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Tampa waterfront tanks — sharks, touch energy, and indoor AC relief.",
+  "tagline": "Tampa waterfront tanks \u2014 sharks, touch energy, and indoor AC relief.",
   "practical": {
-    "typical_duration": "2–3 hours",
+    "typical_duration": "2\u20133 hours",
     "ticket_note": "Waterfront parking; weekends busy.",
     "transit_note": "Channelside / downtown Tampa.",
     "energy_note": "indoor",
@@ -23,7 +23,7 @@
     {
       "id": "shark",
       "label": "Shark",
-      "emoji": "🦈",
+      "emoji": "\ud83e\udd88",
       "one_liner": "Sharks circling big windows.",
       "tags": [
         "water",
@@ -46,7 +46,7 @@
     {
       "id": "stingray",
       "label": "Stingray",
-      "emoji": "射线",
+      "emoji": "\u5c04\u7ebf",
       "one_liner": "Rays when touch pools are open.",
       "tags": [
         "water",
@@ -69,7 +69,7 @@
     {
       "id": "sea_turtle",
       "label": "Sea turtle",
-      "emoji": "🐢",
+      "emoji": "\ud83d\udc22",
       "one_liner": "Sea turtles paddling past glass.",
       "tags": [
         "water",
@@ -91,7 +91,7 @@
     {
       "id": "jellyfish",
       "label": "Jellyfish",
-      "emoji": "🎐",
+      "emoji": "\ud83c\udf90",
       "one_liner": "Glow rooms for a calm reset.",
       "tags": [
         "water",
@@ -113,8 +113,8 @@
     {
       "id": "octopus",
       "label": "Octopus",
-      "emoji": "🐙",
-      "one_liner": "Look carefully — octopuses hide well.",
+      "emoji": "\ud83d\udc19",
+      "one_liner": "Look carefully \u2014 octopuses hide well.",
       "tags": [
         "water",
         "hide"
@@ -135,7 +135,7 @@
     {
       "id": "seahorse",
       "label": "Seahorse",
-      "emoji": "🌊",
+      "emoji": "\ud83c\udf0a",
       "one_liner": "Tiny upright swimmer that holds on with its tail.",
       "tags": [
         "wow",
@@ -157,8 +157,8 @@
     {
       "id": "clownfish",
       "label": "Clownfish",
-      "emoji": "🐠",
-      "one_liner": "Bright reef fish — friends with anemones.",
+      "emoji": "\ud83d\udc20",
+      "one_liner": "Bright reef fish \u2014 friends with anemones.",
       "tags": [
         "wow",
         "water"
@@ -179,8 +179,8 @@
     {
       "id": "eel",
       "label": "Eel",
-      "emoji": "🐍",
-      "one_liner": "Long snaky fish — loves rocky hidey-holes.",
+      "emoji": "\ud83d\udc0d",
+      "one_liner": "Long snaky fish \u2014 loves rocky hidey-holes.",
       "tags": [
         "wow",
         "water"
@@ -201,7 +201,7 @@
     {
       "id": "crab",
       "label": "Crab",
-      "emoji": "🦀",
+      "emoji": "\ud83e\udd80",
       "one_liner": "Sideways walker with a hard shell and pinchers.",
       "tags": [
         "wow",
@@ -223,8 +223,8 @@
     {
       "id": "starfish",
       "label": "Sea star",
-      "emoji": "⭐",
-      "one_liner": "Star-shaped ocean friend — often in touch tanks.",
+      "emoji": "\u2b50",
+      "one_liner": "Star-shaped ocean friend \u2014 often in touch tanks.",
       "tags": [
         "wow",
         "outdoor",
@@ -247,8 +247,8 @@
     {
       "id": "freshwater_fish",
       "label": "River / lake fish",
-      "emoji": "🐟",
-      "one_liner": "Fish that live in fresh water — rivers, lakes, ponds.",
+      "emoji": "\ud83d\udc1f",
+      "one_liner": "Fish that live in fresh water \u2014 rivers, lakes, ponds.",
       "tags": [
         "wow",
         "water"
@@ -269,8 +269,8 @@
     {
       "id": "asian_small_clawed_otter",
       "label": "Asian small-clawed otter",
-      "emoji": "🦦",
-      "one_liner": "Playful swimmer — smallest otter.",
+      "emoji": "\ud83e\udda6",
+      "one_liner": "Playful swimmer \u2014 smallest otter.",
       "tags": [
         "wow",
         "water",
@@ -294,10 +294,10 @@
   ],
   "content_mode": "hybrid",
   "media": {
-    "visitor_map_url": "",
+    "visitor_map_url": "https://www.flaquarium.org/wp-content/uploads/2025/08/1850x1000_TFA-Map-Digital-MORPH_D_07-31-2025_O.jpg",
     "visitor_map_page": "https://www.flaquarium.org/",
-    "visitor_map_kind": "page",
-    "map_attribution": "Visit · The Florida Aquarium"
+    "visitor_map_kind": "image",
+    "map_attribution": "Official map \u00b7 The Florida Aquarium"
   },
   "parent_script": [
     "Bathroom first",
@@ -310,5 +310,5 @@
     "stingray",
     "sea_turtle"
   ],
-  "research_notes": "R1 hybrid 2026-08-07"
+  "research_notes": "R1 hybrid 2026-08-07 \u00b7 map-img 2026-08-07"
 }
