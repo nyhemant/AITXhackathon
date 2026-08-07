@@ -1165,12 +1165,21 @@
   letter-spacing: -0.03em;
 }
 .pitch-line {
-  margin: 0 0 12px;
+  margin: 0 0 8px;
   font-size: 0.98rem;
   font-weight: 600;
   color: var(--muted, #3d4f6f);
-  max-width: 36rem;
+  max-width: 38rem;
   line-height: 1.45;
+}
+.pitch-sub {
+  margin: 0 0 14px;
+  font-size: 0.9rem;
+  font-weight: 550;
+  color: var(--muted, #3d4f6f);
+  max-width: 38rem;
+  line-height: 1.45;
+  opacity: 0.95;
 }
 
 /* Map → Print → Play storyboard (aha strip) */

@@ -110,6 +110,7 @@ const out = Object.keys(venues).map(id => {
     itemLabel: ven.itemLabel || 'things',
     packTemplate: ven.packTemplate || 'animals',
     quality: ven.quality || 'starter',
+    lastVerified: ven.lastVerified || '',
     featured: items,
     hunt,
   };
@@ -437,9 +438,12 @@ def render_venue_page(v: dict) -> str:
         <h1>{esc(v.get('emoji',''))} {esc(h1)}</h1>
         <p class="lead">{esc(v.get('blurb') or f'Free printable scavenger hunt and kid shortlist for {v["name"]}.')}</p>
         <p class="seo-quality-note">{esc(
-          "Starter shortlist — animals and exhibits change; skip anything closed or missing."
-          if (v.get("quality") or "starter") == "starter"
-          else "Curated shortlist for a finishable kid day."
+          (
+            "Curated shortlist for a finishable kid day."
+            + (f' List checked {v["lastVerified"][:7]}.' if (v.get("lastVerified") or "")[:7] else "")
+          )
+          if (v.get("quality") or "starter") == "full"
+          else "Starter shortlist — animals and exhibits change; skip anything closed or missing."
         )}</p>
         <p class="seo-brand-note">Part of <strong>Field Trip Kit</strong> by 1Less — free for families.</p>
         <div class="landing-cta-row seo-cta no-print">

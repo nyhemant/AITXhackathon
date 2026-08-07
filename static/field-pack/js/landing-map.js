@@ -1311,6 +1311,15 @@
     const locLine = [p.city, placeRegionLabel(p)].filter(Boolean).join(", ");
     const isSoon = p.status === "soon";
     const quality = (ven && ven.quality) || "starter";
+    const lastVerified = (ven && ven.lastVerified) || "";
+    const verifiedLabel = lastVerified
+      ? (() => {
+          const [y, m] = lastVerified.split("-");
+          const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+          const mi = Math.max(0, Math.min(11, (parseInt(m, 10) || 1) - 1));
+          return `${months[mi]} ${y}`;
+        })()
+      : "";
     const statusBadge = isSoon
       ? `<span class="pd-status soon">Coming soon</span>`
       : canPrintHunt
@@ -1321,7 +1330,9 @@
     const qualityHint =
       !isSoon && canPrintHunt
         ? quality === "full"
-          ? `<p class="pd-hint pd-quality">Curated shortlist for a finishable kid day.</p>`
+          ? `<p class="pd-hint pd-quality">Curated shortlist for a finishable kid day.${
+              verifiedLabel ? ` List checked ${escapeHtml(verifiedLabel)}.` : ""
+            }</p>`
           : `<p class="pd-hint pd-quality">Starter shortlist — animals change; skip anything closed or missing.</p>`
         : "";
     detail.innerHTML = `
