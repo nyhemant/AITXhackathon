@@ -1,0 +1,144 @@
+{
+  "slug": "dallas-zoo",
+  "name": "Dallas Zoo",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.dallaszoo.com/",
+    "https://www.dallaszoo.com/support-the-zoo/adopt-an-animal/",
+    "https://www.dallaszoo.com/protecting-the-twelve/",
+    "https://www.dallaszoo.com/explore-the-zoo/encounters-experiences/"
+  ],
+  "list_confidence_recommended": "audited",
+  "practical_fixes": [],
+  "do_not_list": [],
+  "items": [
+    {
+      "id": "elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "verified",
+      "display_label": "African elephant",
+      "official_name": "African elephant",
+      "notes": "Baby elephant + adopt list",
+      "source_url": "https://www.dallaszoo.com/support-the-zoo/adopt-an-animal/"
+    },
+    {
+      "id": "giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "verified",
+      "display_label": "Reticulated giraffe",
+      "official_name": "Reticulated giraffe",
+      "notes": "Giraffe Ridge feeding platform",
+      "source_url": "https://www.dallaszoo.com/explore-the-zoo/encounters-experiences/"
+    },
+    {
+      "id": "lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "verified",
+      "display_label": "African lion",
+      "official_name": "African lion",
+      "notes": "",
+      "source_url": "https://www.dallaszoo.com/support-the-zoo/adopt-an-animal/"
+    },
+    {
+      "id": "gorilla",
+      "label": "Western lowland gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "verified",
+      "display_label": "Western lowland gorilla",
+      "official_name": "Western lowland gorilla",
+      "notes": "",
+      "source_url": "https://www.dallaszoo.com/support-the-zoo/adopt-an-animal/"
+    },
+    {
+      "id": "tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "verified",
+      "display_label": "Sumatran tiger",
+      "official_name": "Sumatran tiger",
+      "notes": "",
+      "source_url": "https://www.dallaszoo.com/support-the-zoo/adopt-an-animal/"
+    },
+    {
+      "id": "penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "verified",
+      "display_label": "African penguin",
+      "official_name": "African penguin",
+      "notes": "",
+      "source_url": "https://www.dallaszoo.com/support-the-zoo/adopt-an-animal/"
+    },
+    {
+      "id": "hippo",
+      "label": "Nile hippo",
+      "catalog_id": "nile-hippo",
+      "presence": "verified",
+      "display_label": "Nile hippo",
+      "official_name": "Nile hippopotamus",
+      "notes": "",
+      "source_url": "https://www.dallaszoo.com/support-the-zoo/adopt-an-animal/"
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "high",
+      "display_label": "Zebra",
+      "official_name": "Hartmann's mountain zebra (historical list)",
+      "notes": "Species list reports mountain zebra; soft-label Zebra OK",
+      "source_url": "https://www.zoochat.com/community/threads/dallas-zoo-species-list-june-12th-2023.487822/"
+    },
+    {
+      "id": "flamingo",
+      "label": "Caribbean flamingo",
+      "catalog_id": "caribbean-flamingo",
+      "presence": "verified",
+      "display_label": "Caribbean flamingo",
+      "official_name": "Caribbean flamingo",
+      "notes": "",
+      "source_url": "https://www.dallaszoo.com/support-the-zoo/adopt-an-animal/"
+    },
+    {
+      "id": "cheetah",
+      "label": "Cheetah",
+      "catalog_id": "cheetah",
+      "presence": "verified",
+      "display_label": "Cheetah",
+      "official_name": "Cheetah",
+      "notes": "Protecting the Twelve",
+      "source_url": "https://www.dallaszoo.com/protecting-the-twelve/"
+    },
+    {
+      "id": "kids-zoo",
+      "label": "Children's Zoo",
+      "catalog_id": null,
+      "presence": "verified",
+      "display_label": "Children's Zoo",
+      "official_name": "Lacerte Family Children's Zoo",
+      "notes": "",
+      "source_url": "https://www.dallaszoo.com/explore-the-zoo/encounters-experiences/"
+    },
+    {
+      "id": "tortoise",
+      "label": "Galápagos tortoise",
+      "catalog_id": "galapagos-tortoise",
+      "presence": "verified",
+      "display_label": "Galápagos tortoise",
+      "official_name": "Galápagos tortoise",
+      "notes": "Tortoise feeding ZooNorth",
+      "source_url": "https://www.dallaszoo.com/explore-the-zoo/encounters-experiences/"
+    }
+  ],
+  "route_90m_recommended": [
+    "giraffe",
+    "elephant",
+    "lion"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "Core megafauna match official adopt/Protecting the Twelve lists (African elephant, lion, gorilla, Sumatran tiger, penguin, hippo, giraffe, flamingo, cheetah). Zebra and Galápagos tortoise also supported. Practical transit note (DART Zoo station) is correct.",
+  "severity": "ok"
+}

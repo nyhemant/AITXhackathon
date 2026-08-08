@@ -1,0 +1,150 @@
+{
+  "slug": "detroit-zoo",
+  "name": "Detroit Zoo",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://detroitzoo.org/",
+    "https://detroitzoo.org/animals/",
+    "https://detroitzoo.org/things-to-do/"
+  ],
+  "list_confidence_recommended": "audited",
+  "practical_fixes": [
+    {
+      "field": "city",
+      "current": "Royal Oak",
+      "suggested": "Royal Oak (Zoo address is 8450 W 10 Mile Rd, Royal Oak, MI)",
+      "reason": "City is correct; Zoo is in Royal Oak / Huntington Woods border — keep Royal Oak."
+    }
+  ],
+  "do_not_list": [],
+  "items": [
+    {
+      "id": "macaroni_penguin",
+      "label": "Penguin",
+      "catalog_id": "african-penguin",
+      "presence": "verified",
+      "display_label": "Penguin",
+      "official_name": "Macaroni penguin (+ gentoo, king, rockhopper, chinstrap)",
+      "notes": "NOT African penguin. Soft-label Penguin. Fix catalog_id off african-penguin.",
+      "source_url": "https://detroitzoo.org/things-to-do/"
+    },
+    {
+      "id": "giraffe",
+      "label": "Giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "verified",
+      "display_label": "Giraffe",
+      "official_name": "Giraffe",
+      "notes": "",
+      "source_url": "https://detroitzoo.org/things-to-do/"
+    },
+    {
+      "id": "gorilla",
+      "label": "Gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "verified",
+      "display_label": "Gorilla",
+      "official_name": "Gorilla (Great Apes of Harambee)",
+      "notes": "",
+      "source_url": "https://detroitzoo.org/animals/"
+    },
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "verified",
+      "display_label": "African lion",
+      "official_name": "African lion",
+      "notes": "",
+      "source_url": "https://detroitzoo.org/animal/african-lion/"
+    },
+    {
+      "id": "chimpanzee",
+      "label": "Chimpanzee",
+      "catalog_id": "chimpanzee",
+      "presence": "verified",
+      "display_label": "Chimpanzee",
+      "official_name": "Chimpanzee",
+      "notes": "",
+      "source_url": "https://detroitzoo.org/animal/chimpanzee/"
+    },
+    {
+      "id": "amur_tiger",
+      "label": "Tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "verified",
+      "display_label": "Tiger",
+      "official_name": "Amur tiger",
+      "notes": "Official is Amur tiger not Sumatran. Soft-label Tiger OK; fix catalog_id.",
+      "source_url": "https://detroitzoo.org/"
+    },
+    {
+      "id": "red_panda",
+      "label": "Red panda",
+      "catalog_id": "red-panda",
+      "presence": "high",
+      "display_label": "Red panda",
+      "official_name": "Red panda",
+      "notes": "Featured in conservation/marketing imagery",
+      "source_url": "https://detroitzoo.org/animals/"
+    },
+    {
+      "id": "polar_bear",
+      "label": "Polar bear",
+      "catalog_id": null,
+      "presence": "verified",
+      "display_label": "Polar bear",
+      "official_name": "Polar bear",
+      "notes": "Arctic Ring of Life",
+      "source_url": "https://detroitzoo.org/animal/polar-bear/"
+    },
+    {
+      "id": "grevys_zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "verified",
+      "display_label": "Zebra",
+      "official_name": "Grevy's zebra",
+      "notes": "",
+      "source_url": "https://detroitzoo.org/things-to-do/"
+    },
+    {
+      "id": "sloth_bear",
+      "label": "Sloth bear",
+      "catalog_id": null,
+      "presence": "verified",
+      "display_label": "Sloth bear",
+      "official_name": "Sloth bear",
+      "notes": "",
+      "source_url": "https://detroitzoo.org/animal/sloth-bear/"
+    },
+    {
+      "id": "warthog",
+      "label": "Warthog",
+      "catalog_id": "warthog",
+      "presence": "verified",
+      "display_label": "Warthog",
+      "official_name": "Warthog",
+      "notes": "",
+      "source_url": "https://detroitzoo.org/things-to-do/"
+    },
+    {
+      "id": "gray_wolf",
+      "label": "Gray wolf",
+      "catalog_id": null,
+      "presence": "high",
+      "display_label": "Gray wolf",
+      "official_name": "Gray wolf",
+      "notes": "Historically present; confirm on animals-list if still exhibited",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "macaroni_penguin",
+    "giraffe",
+    "gorilla"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "Official animal pages confirm polar bear, gorilla, chimpanzee, African lion, sloth bear, Amur tiger, giraffes, Grevy's zebra, warthog, multi-species penguins (macaroni/gentoo/king/rockhopper/chinstrap — not African). Catalog mapping sumatran-tiger→Amur tiger and african-penguin→macaroni is wrong at species level but soft labels Penguin/Tiger are visitor-OK if display stays generic.",
+  "severity": "minor"
+}

@@ -1,0 +1,127 @@
+{
+  "slug": "oregon-museum-science-industry",
+  "name": "OMSI",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://omsi.edu/",
+    "https://omsi.edu/exhibits/"
+  ],
+  "list_confidence_recommended": "audited",
+  "practical_fixes": [
+    {
+      "field": "items.sci_shuttle",
+      "current": "Space shuttle / orbiter",
+      "suggested": "Replace with USS Blueback Submarine",
+      "reason": "OMSI icon is submarine Blueback, not a shuttle orbiter."
+    },
+    {
+      "field": "items.sci_rocket",
+      "current": "Rockets & launch",
+      "suggested": "Space Science / planetarium — soft Space",
+      "reason": "No large rocket garden like KSC."
+    },
+    {
+      "field": "items.cm_imaginarium / cm_makery",
+      "current": "generic CM names",
+      "suggested": "Map to real OMSI exhibit names",
+      "reason": "Taxonomy leakage."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "sci-shuttle",
+      "name": "Space shuttle / orbiter",
+      "reason": "OMSI has USS Blueback submarine, not a space shuttle orbiter."
+    }
+  ],
+  "items": [
+    {
+      "id": "sci_hands_on",
+      "label": "Hands-on lab",
+      "catalog_id": "sci-hands-on",
+      "presence": "verified",
+      "display_label": "Hands-on",
+      "official_name": "Hands-on exhibits",
+      "notes": "Core OMSI interactive science.",
+      "source_url": "https://omsi.edu/"
+    },
+    {
+      "id": "sci_planet",
+      "label": "Planet / space hall",
+      "catalog_id": "sci-planet",
+      "presence": "verified",
+      "display_label": "Planetarium",
+      "official_name": "Kendall Planetarium",
+      "notes": "Kendall Planetarium.",
+      "source_url": "https://omsi.edu/exhibits/"
+    },
+    {
+      "id": "sci_rocket",
+      "label": "Rockets & launch",
+      "catalog_id": "sci-rocket",
+      "presence": "medium",
+      "display_label": "Space",
+      "official_name": "Space Science",
+      "notes": "Space Science content; not rockets-as-icon.",
+      "source_url": ""
+    },
+    {
+      "id": "cm_free_explore",
+      "label": "Free explore",
+      "catalog_id": "cm-free-explore",
+      "presence": "verified",
+      "display_label": "Free explore",
+      "official_name": "Free explore",
+      "notes": "Valid.",
+      "source_url": ""
+    },
+    {
+      "id": "sci_dinosaur",
+      "label": "Dinosaur hall",
+      "catalog_id": "sci-dinosaur",
+      "presence": "high",
+      "display_label": "Dinosaurs",
+      "official_name": "Dinosaurs exhibit",
+      "notes": "Dinosaurs: A Story of Survival (featured). Soft Dinosaurs.",
+      "source_url": "https://omsi.edu/exhibits/"
+    },
+    {
+      "id": "cm_makery",
+      "label": "Creative Makery",
+      "catalog_id": "cm-makery",
+      "presence": "medium",
+      "display_label": "Make",
+      "official_name": "",
+      "notes": "Turbine Hall / labs style make energy.",
+      "source_url": ""
+    },
+    {
+      "id": "cm_imaginarium",
+      "label": "Imaginarium",
+      "catalog_id": "cm-imaginarium",
+      "presence": "absent",
+      "display_label": "— remove —",
+      "official_name": "",
+      "notes": "Not an OMSI hall name.",
+      "source_url": ""
+    },
+    {
+      "id": "sci_shuttle",
+      "label": "Space shuttle / orbiter",
+      "catalog_id": "sci-shuttle",
+      "presence": "absent",
+      "display_label": "— replace with Blueback —",
+      "official_name": "USS Blueback Submarine",
+      "notes": "No orbiter — USS Blueback is the vessel icon.",
+      "source_url": "https://omsi.edu/exhibits/"
+    }
+  ],
+  "route_90m_recommended": [
+    "sci_hands_on",
+    "sci_planet",
+    "sci_dinosaur"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "Planetarium + hands-on + dinos high/verified. CRITICAL-ish swap: shuttle orbiter → USS Blueback submarine. Drop Imaginarium label.",
+  "severity": "major"
+}

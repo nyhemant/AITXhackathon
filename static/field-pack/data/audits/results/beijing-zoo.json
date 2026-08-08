@@ -1,0 +1,128 @@
+{
+  "slug": "beijing-zoo",
+  "name": "Beijing Zoo",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.beijingzoo.com/"
+  ],
+  "list_confidence_recommended": "partial",
+  "practical_fixes": [
+    {
+      "field": "official_url",
+      "current": "https://www.beijingzoo.com/",
+      "suggested": "https://www.beijingzoo.com/ (verify current official CN domain; English sparse)",
+      "reason": "English official content limited."
+    }
+  ],
+  "do_not_list": [],
+  "items": [
+    {
+      "id": "giant_panda",
+      "label": "Giant panda",
+      "catalog_id": "giant-panda",
+      "presence": "verified",
+      "display_label": "Giant panda",
+      "official_name": "",
+      "notes": "Flagship of Beijing Zoo.",
+      "source_url": ""
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "high",
+      "display_label": "Giraffe",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "medium",
+      "display_label": "Elephant",
+      "official_name": "",
+      "notes": "Elephants present historically; species soft.",
+      "source_url": ""
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "medium",
+      "display_label": "Tiger",
+      "official_name": "",
+      "notes": "Multiple tiger forms possible.",
+      "source_url": ""
+    },
+    {
+      "id": "red_panda",
+      "label": "Red panda",
+      "catalog_id": "red-panda",
+      "presence": "high",
+      "display_label": "Red panda",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "high",
+      "display_label": "African lion",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "medium",
+      "display_label": "Western lowland gorilla",
+      "official_name": "",
+      "notes": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract.",
+      "source_url": ""
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "high",
+      "display_label": "Zebra",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "chimpanzee",
+      "label": "Chimpanzee",
+      "catalog_id": "chimpanzee",
+      "presence": "medium",
+      "display_label": "Chimpanzee",
+      "official_name": "",
+      "notes": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract.",
+      "source_url": ""
+    },
+    {
+      "id": "galapagos_tortoise",
+      "label": "Galápagos tortoise",
+      "catalog_id": "galapagos-tortoise",
+      "presence": "medium",
+      "display_label": "Galápagos tortoise",
+      "official_name": "",
+      "notes": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "giant_panda",
+    "red_panda",
+    "reticulated_giraffe"
+  ],
+  "content_mode_recommended": "hybrid",
+  "summary": "Pandas are verified icons; remaining list is plausible large-zoo template with partial confidence due to limited English official inventory.",
+  "severity": "minor"
+}

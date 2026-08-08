@@ -16,7 +16,7 @@
     "typical_duration": "half day",
     "ticket_note": "Free; lines at peak times.",
     "transit_note": "National Mall Metro.",
-    "energy_note": "indoor",
+    "energy_note": "Mostly indoors",
     "best_start": "Fossil hall wow, then one more favorite."
   },
   "items": [
@@ -40,7 +40,12 @@
         "question": "What did you notice about the Dinosaur hall?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-dinosaur"
+      "catalog_id": "sci-dinosaur",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Dinosaur hall",
+      "presence_note": "Deep Time fossil hall."
     },
     {
       "id": "sci_mammal_hall",
@@ -61,11 +66,16 @@
         "question": "What did you notice about the Animal / mammal hall?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-mammal-hall"
+      "catalog_id": "sci-mammal-hall",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Animal / mammal hall",
+      "presence_note": "Hall of Mammals."
     },
     {
       "id": "sci_aquarium_zone",
-      "label": "Aquarium zone",
+      "label": "Ocean Hall",
       "emoji": "🐠",
       "one_liner": "Ocean hall energy when open.",
       "tags": [
@@ -83,7 +93,12 @@
         "question": "What did you notice about the Aquarium zone?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-aquarium-zone"
+      "catalog_id": "sci-aquarium-zone",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Ocean Hall",
+      "presence_note": "Sant Ocean Hall — not a full aquarium."
     },
     {
       "id": "sci_hands_on",
@@ -104,7 +119,12 @@
         "question": "What did you notice about the Hands-on lab?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-hands-on"
+      "catalog_id": "sci-hands-on",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Hands-on lab",
+      "presence_note": "Discovery Room / family spaces."
     },
     {
       "id": "cm_free_explore",
@@ -125,7 +145,12 @@
         "question": "What did you notice about the Free explore?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "cm-free-explore"
+      "catalog_id": "cm-free-explore",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Free explore",
+      "presence_note": "Free-explore is the museum mode."
     },
     {
       "id": "sci_planet",
@@ -148,7 +173,11 @@
         "question": "What did you try or notice at Planet / space hall?",
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
-      "catalog_id": "sci-planet"
+      "catalog_id": "sci-planet",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Planet / space hall",
+      "presence_note": "Meteorites/geology present; not a planetarium."
     },
     {
       "id": "cm_imaginarium",
@@ -170,7 +199,11 @@
         "question": "What did you try or notice at Imaginarium?",
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
-      "catalog_id": "cm-imaginarium"
+      "catalog_id": "cm-imaginarium",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Imaginarium",
+      "presence_note": "Family imaginative play spaces rotate."
     },
     {
       "id": "sci_rainforest",
@@ -193,7 +226,11 @@
         "question": "What did you try or notice at Rainforest dome?",
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
-      "catalog_id": "sci-rainforest"
+      "catalog_id": "sci-rainforest",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Rainforest dome",
+      "presence_note": "Butterfly/tropical exhibits sometimes offered — confirm current."
     }
   ],
   "content_mode": "hybrid",
@@ -214,6 +251,10 @@
     "sci_mammal_hall",
     "sci_aquarium_zone"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 · web-map 2026-08-07",
-  "list_confidence": "partial"
+  "research_notes": "R2 hybrid 2026-08-07 · web-map 2026-08-07 · presence-audit 2026-08-08 [minor]",
+  "list_confidence": "partial",
+  "do_not_list": [],
+  "presence_sources": [
+    "https://naturalhistory.si.edu/"
+  ]
 }

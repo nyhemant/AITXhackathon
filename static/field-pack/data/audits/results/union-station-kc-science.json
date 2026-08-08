@@ -1,0 +1,114 @@
+{
+  "slug": "union-station-kc-science",
+  "name": "Science City at Union Station",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.unionstation.org/sciencecity"
+  ],
+  "list_confidence_recommended": "partial",
+  "practical_fixes": [
+    {
+      "field": "name",
+      "current": "Science City at Union Station",
+      "suggested": "Science City at Union Station",
+      "reason": "OK."
+    },
+    {
+      "field": "items.sci_shuttle / sci_rocket",
+      "current": "space-ish",
+      "suggested": "align labels to current Science City floor map",
+      "reason": "Confirm planetarium/space exhibits still branded that way."
+    }
+  ],
+  "do_not_list": [],
+  "items": [
+    {
+      "id": "sci_hands_on",
+      "label": "Hands-on lab",
+      "catalog_id": "sci-hands-on",
+      "presence": "high",
+      "display_label": "Hands-on lab",
+      "official_name": "",
+      "notes": "Hands-on science floors are core Science City.",
+      "source_url": "https://www.unionstation.org/sciencecity"
+    },
+    {
+      "id": "sci_planet",
+      "label": "Planet / space hall",
+      "catalog_id": "sci-planet",
+      "presence": "high",
+      "display_label": "Planet / space hall",
+      "official_name": "",
+      "notes": "Space/planetarium-style experiences historically at Science City; confirm current.",
+      "source_url": "https://www.unionstation.org/sciencecity"
+    },
+    {
+      "id": "sci_dinosaur",
+      "label": "Dinosaur hall",
+      "catalog_id": "sci-dinosaur",
+      "presence": "medium",
+      "display_label": "Dinosaur hall",
+      "official_name": "",
+      "notes": "Dino content sometimes present; confirm current exhibits.",
+      "source_url": ""
+    },
+    {
+      "id": "cm_free_explore",
+      "label": "Free explore",
+      "catalog_id": "cm-free-explore",
+      "presence": "verified",
+      "display_label": "Free explore",
+      "official_name": "",
+      "notes": "Free-explore museum mode.",
+      "source_url": "https://www.unionstation.org/sciencecity"
+    },
+    {
+      "id": "sci_rocket",
+      "label": "Rockets & launch",
+      "catalog_id": "sci-rocket",
+      "presence": "medium",
+      "display_label": "Rockets & launch",
+      "official_name": "",
+      "notes": "Space theme possible; confirm label.",
+      "source_url": ""
+    },
+    {
+      "id": "cm_makery",
+      "label": "Creative Makery",
+      "catalog_id": "cm-makery",
+      "presence": "high",
+      "display_label": "Creative Makery",
+      "official_name": "",
+      "notes": "Maker-style activities common.",
+      "source_url": "https://www.unionstation.org/sciencecity"
+    },
+    {
+      "id": "cm_imaginarium",
+      "label": "Imaginarium",
+      "catalog_id": "cm-imaginarium",
+      "presence": "high",
+      "display_label": "Imaginarium",
+      "official_name": "",
+      "notes": "Imaginative play zones common.",
+      "source_url": ""
+    },
+    {
+      "id": "sci_shuttle",
+      "label": "Space shuttle / orbiter",
+      "catalog_id": "sci-shuttle",
+      "presence": "medium",
+      "display_label": "Space shuttle / orbiter",
+      "official_name": "",
+      "notes": "Space theme possible; confirm.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "sci_hands_on",
+    "sci_planet",
+    "cm_free_explore"
+  ],
+  "content_mode_recommended": "hybrid",
+  "summary": "Science museum zone pack OK at hybrid level. Not species-critical. Confirm space/dino labels vs current map.",
+  "severity": "ok"
+}

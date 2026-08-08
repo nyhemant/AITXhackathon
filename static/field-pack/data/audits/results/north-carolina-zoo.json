@@ -1,0 +1,204 @@
+{
+  "slug": "north-carolina-zoo",
+  "name": "North Carolina Zoo",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.nczoo.org/wildlife/animals",
+    "https://www.nczoo.org/experiences",
+    "https://www.nczoo.org/experiences/habitats"
+  ],
+  "list_confidence_recommended": "audited",
+  "practical_fixes": [
+    {
+      "field": "items.sumatran_tiger",
+      "current": "Sumatran tiger on list now",
+      "suggested": "Asia continent opening soon — tigers planned; do not promise until open",
+      "reason": "Official: Asia region under construction with tigers coming."
+    },
+    {
+      "field": "items.nile_hippo",
+      "current": "Nile hippo",
+      "suggested": "Verify or remove — not on animals A–Z extract",
+      "reason": "Not in animals list sample."
+    },
+    {
+      "field": "items.african_penguin",
+      "current": "African penguin",
+      "suggested": "Remove unless confirmed — Rocky Coast is polar bear/seabirds",
+      "reason": "Not on animals list extract."
+    },
+    {
+      "field": "items.cheetah / flamingo / sloth / galapagos",
+      "current": "template fillers",
+      "suggested": "Remove unlisted",
+      "reason": "Not on official animals A–Z sample."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "sumatran-tiger",
+      "name": "Sumatran tiger",
+      "reason": "Asia continent not open yet; tigers not currently promiseable as on-exhibit."
+    },
+    {
+      "catalog_id": "nile-hippo",
+      "name": "Nile hippo",
+      "reason": "Not on official animals list reviewed."
+    },
+    {
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "Not on official animals list reviewed."
+    },
+    {
+      "catalog_id": "cheetah",
+      "name": "Cheetah",
+      "reason": "Not on official animals list reviewed."
+    },
+    {
+      "catalog_id": "caribbean-flamingo",
+      "name": "Caribbean flamingo",
+      "reason": "Not confirmed."
+    },
+    {
+      "catalog_id": "two-toed-sloth",
+      "name": "Two-toed sloth",
+      "reason": "Not confirmed."
+    },
+    {
+      "catalog_id": "galapagos-tortoise",
+      "name": "Galápagos tortoise",
+      "reason": "Not confirmed."
+    }
+  ],
+  "items": [
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "verified",
+      "display_label": "African elephant",
+      "official_name": "African Elephant",
+      "notes": "African Elephant on animals list + elephant habitat talks.",
+      "source_url": "https://www.nczoo.org/wildlife/animals"
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "high",
+      "display_label": "Giraffe",
+      "official_name": "Giraffe",
+      "notes": "Giraffe on list/talks; soft Giraffe.",
+      "source_url": "https://www.nczoo.org/wildlife/animals"
+    },
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "verified",
+      "display_label": "African lion",
+      "official_name": "African Lion",
+      "notes": "African Lion listed.",
+      "source_url": "https://www.nczoo.org/wildlife/animals"
+    },
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "verified",
+      "display_label": "Gorilla",
+      "official_name": "Western Lowland Gorilla",
+      "notes": "Western Lowland Gorilla listed.",
+      "source_url": "https://www.nczoo.org/wildlife/animals"
+    },
+    {
+      "id": "nile_hippo",
+      "label": "Nile hippo",
+      "catalog_id": "nile-hippo",
+      "presence": "absent",
+      "display_label": "— remove —",
+      "official_name": "",
+      "notes": "Not on animals list reviewed.",
+      "source_url": ""
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "absent",
+      "display_label": "— wait for Asia opening —",
+      "official_name": "",
+      "notes": "Asia still coming soon — do not list as present.",
+      "source_url": "https://www.nczoo.org/experiences/habitats"
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "absent",
+      "display_label": "— remove —",
+      "official_name": "",
+      "notes": "Not listed.",
+      "source_url": ""
+    },
+    {
+      "id": "cheetah",
+      "label": "Cheetah",
+      "catalog_id": "cheetah",
+      "presence": "absent",
+      "display_label": "— remove —",
+      "official_name": "",
+      "notes": "Not listed.",
+      "source_url": ""
+    },
+    {
+      "id": "caribbean_flamingo",
+      "label": "Caribbean flamingo",
+      "catalog_id": "caribbean-flamingo",
+      "presence": "unclear",
+      "display_label": "Caribbean flamingo",
+      "official_name": "",
+      "notes": "Not confirmed.",
+      "source_url": ""
+    },
+    {
+      "id": "two_toed_sloth",
+      "label": "Two-toed sloth",
+      "catalog_id": "two-toed-sloth",
+      "presence": "unclear",
+      "display_label": "Two-toed sloth",
+      "official_name": "",
+      "notes": "Not confirmed.",
+      "source_url": ""
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "verified",
+      "display_label": "Zebra",
+      "official_name": "Zebra",
+      "notes": "Zebra listed; Africa habitats.",
+      "source_url": "https://www.nczoo.org/wildlife/animals"
+    },
+    {
+      "id": "galapagos_tortoise",
+      "label": "Galápagos tortoise",
+      "catalog_id": "galapagos-tortoise",
+      "presence": "unclear",
+      "display_label": "Galápagos tortoise",
+      "official_name": "",
+      "notes": "Not confirmed.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "african_elephant",
+    "reticulated_giraffe",
+    "western_lowland_gorilla"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "Strong Africa/North America icons verified (elephant, giraffe, lion, gorilla, zebra). Tigers not yet — Asia under construction. Strip hippo/penguin/cheetah/sloth/tortoise template until on animals list.",
+  "severity": "major"
+}

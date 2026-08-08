@@ -1,0 +1,148 @@
+{
+  "slug": "virginia-aquarium",
+  "name": "Virginia Aquarium",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.virginiaaquarium.com/"
+  ],
+  "list_confidence_recommended": "partial",
+  "practical_fixes": [
+    {
+      "field": "missing_icons",
+      "current": "",
+      "suggested": "harbor seal, aviary/osprey boardwalk",
+      "reason": "Outdoor marsh walk + aviary are differentiators vs generic tank list."
+    }
+  ],
+  "do_not_list": [],
+  "items": [
+    {
+      "id": "shark",
+      "label": "Shark",
+      "catalog_id": "shark",
+      "presence": "high",
+      "display_label": "Shark",
+      "official_name": "",
+      "notes": "Ocean tanks / sharks signature.",
+      "source_url": "https://www.virginiaaquarium.com/"
+    },
+    {
+      "id": "stingray",
+      "label": "Stingray",
+      "catalog_id": "stingray",
+      "presence": "high",
+      "display_label": "Stingray",
+      "official_name": "",
+      "notes": "Rays/touch common.",
+      "source_url": "https://www.virginiaaquarium.com/"
+    },
+    {
+      "id": "sea_turtle",
+      "label": "Sea turtle",
+      "catalog_id": "sea-turtle",
+      "presence": "high",
+      "display_label": "Sea turtle",
+      "official_name": "",
+      "notes": "Sea turtle rehab/exhibits are a VA Aquarium hallmark.",
+      "source_url": "https://www.virginiaaquarium.com/"
+    },
+    {
+      "id": "jellyfish",
+      "label": "Jellyfish",
+      "catalog_id": "jellyfish",
+      "presence": "high",
+      "display_label": "Jellyfish",
+      "official_name": "",
+      "notes": "Jellies common.",
+      "source_url": "https://www.virginiaaquarium.com/"
+    },
+    {
+      "id": "asian_small_clawed_otter",
+      "label": "Asian small-clawed otter",
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "medium",
+      "display_label": "Asian small-clawed otter",
+      "official_name": "",
+      "notes": "Otters sometimes present; confirm species (may be North American river otter).",
+      "source_url": ""
+    },
+    {
+      "id": "seahorse",
+      "label": "Seahorse",
+      "catalog_id": "seahorse",
+      "presence": "medium",
+      "display_label": "Seahorse",
+      "official_name": "",
+      "notes": "Confirm.",
+      "source_url": ""
+    },
+    {
+      "id": "clownfish",
+      "label": "Clownfish",
+      "catalog_id": "clownfish",
+      "presence": "medium",
+      "display_label": "Clownfish",
+      "official_name": "",
+      "notes": "Reef possible.",
+      "source_url": ""
+    },
+    {
+      "id": "octopus",
+      "label": "Octopus",
+      "catalog_id": "octopus",
+      "presence": "medium",
+      "display_label": "Octopus",
+      "official_name": "",
+      "notes": "Confirm.",
+      "source_url": ""
+    },
+    {
+      "id": "eel",
+      "label": "Eel",
+      "catalog_id": "eel",
+      "presence": "high",
+      "display_label": "Eel",
+      "official_name": "",
+      "notes": "Common.",
+      "source_url": ""
+    },
+    {
+      "id": "crab",
+      "label": "Crab",
+      "catalog_id": "crab",
+      "presence": "high",
+      "display_label": "Crab",
+      "official_name": "",
+      "notes": "Common.",
+      "source_url": ""
+    },
+    {
+      "id": "starfish",
+      "label": "Sea star",
+      "catalog_id": "starfish",
+      "presence": "high",
+      "display_label": "Sea star",
+      "official_name": "",
+      "notes": "Touch/sea stars common.",
+      "source_url": ""
+    },
+    {
+      "id": "freshwater_fish",
+      "label": "River / lake fish",
+      "catalog_id": "freshwater-fish",
+      "presence": "high",
+      "display_label": "River / lake fish",
+      "official_name": "",
+      "notes": "River/lake galleries present on campus.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "shark",
+    "sea_turtle",
+    "stingray"
+  ],
+  "content_mode_recommended": "hybrid",
+  "summary": "Sharks, sea turtles, rays are right icons. Soft-check otter species. Outdoor aviary/boardwalk underrepresented.",
+  "severity": "minor"
+}

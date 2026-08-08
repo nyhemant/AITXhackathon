@@ -1,0 +1,194 @@
+{
+  "slug": "wellington-zoo",
+  "name": "Wellington Zoo",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://wellingtonzoo.com/",
+    "https://wellingtonzoo.com/animals/meet-the-animals",
+    "https://en.wikipedia.org/wiki/Wellington_Zoo"
+  ],
+  "list_confidence_recommended": "audited",
+  "practical_fixes": [
+    {
+      "field": "region",
+      "current": "New Zealand",
+      "suggested": "",
+      "reason": "country duplicated."
+    },
+    {
+      "field": "items.african_elephant",
+      "current": "African elephant",
+      "suggested": "REMOVE",
+      "reason": "No elephants — zoo lacks space/resources historically and currently."
+    },
+    {
+      "field": "items.western_lowland_gorilla",
+      "current": "gorilla",
+      "suggested": "confirm or remove",
+      "reason": "Wikipedia species table does not list gorilla."
+    },
+    {
+      "field": "missing_icons",
+      "current": "",
+      "suggested": "sun bear, Tasmanian devil, kiwi-area natives if shown",
+      "reason": "Sun bears are a Wellington breeding success story."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Wellington Zoo does not keep elephants."
+    },
+    {
+      "catalog_id": "nile-hippo",
+      "name": "Nile hippo",
+      "reason": "Not on Wikipedia current mammal table / not a known exhibit."
+    },
+    {
+      "catalog_id": "western-lowland-gorilla",
+      "name": "Western lowland gorilla",
+      "reason": "Not listed in current public species overview — do not promise."
+    },
+    {
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "Not confirmed on current species overview."
+    },
+    {
+      "catalog_id": "galapagos-tortoise",
+      "name": "Galápagos tortoise",
+      "reason": "Not confirmed."
+    }
+  ],
+  "items": [
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "verified",
+      "display_label": "Sumatran tiger",
+      "official_name": "",
+      "notes": "Sumatran tigers long-standing (since 1990s).",
+      "source_url": "https://en.wikipedia.org/wiki/Wellington_Zoo"
+    },
+    {
+      "id": "chimpanzee",
+      "label": "Chimpanzee",
+      "catalog_id": "chimpanzee",
+      "presence": "verified",
+      "display_label": "Chimpanzee",
+      "official_name": "",
+      "notes": "Chimp troop is a major Wellington Zoo exhibit.",
+      "source_url": "https://en.wikipedia.org/wiki/Wellington_Zoo"
+    },
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "absent",
+      "display_label": "Western lowland gorilla",
+      "official_name": "",
+      "notes": "Not on current public species overview.",
+      "source_url": "https://en.wikipedia.org/wiki/Wellington_Zoo"
+    },
+    {
+      "id": "red_panda",
+      "label": "Red panda",
+      "catalog_id": "red-panda",
+      "presence": "verified",
+      "display_label": "Red panda",
+      "official_name": "",
+      "notes": "Red pandas listed among omnivores.",
+      "source_url": "https://en.wikipedia.org/wiki/Wellington_Zoo"
+    },
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "verified",
+      "display_label": "African lion",
+      "official_name": "",
+      "notes": "Lions listed.",
+      "source_url": "https://en.wikipedia.org/wiki/Wellington_Zoo"
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "verified",
+      "display_label": "Giraffe",
+      "official_name": "",
+      "notes": "Giraffes listed.",
+      "source_url": "https://en.wikipedia.org/wiki/Wellington_Zoo"
+    },
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "absent",
+      "display_label": "African elephant",
+      "official_name": "",
+      "notes": "No elephants at Wellington Zoo.",
+      "source_url": "https://en.wikipedia.org/wiki/Wellington_Zoo"
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "absent",
+      "display_label": "African penguin",
+      "official_name": "",
+      "notes": "Not confirmed on species overview.",
+      "source_url": ""
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "template",
+      "display_label": "Zebra",
+      "official_name": "",
+      "notes": "Not clearly listed on overview table this pass.",
+      "source_url": ""
+    },
+    {
+      "id": "asian_small_clawed_otter",
+      "label": "Asian small-clawed otter",
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "verified",
+      "display_label": "Asian small-clawed otter",
+      "official_name": "",
+      "notes": "Asian small-clawed otters listed.",
+      "source_url": "https://en.wikipedia.org/wiki/Wellington_Zoo"
+    },
+    {
+      "id": "nile_hippo",
+      "label": "Nile hippo",
+      "catalog_id": "nile-hippo",
+      "presence": "absent",
+      "display_label": "Nile hippo",
+      "official_name": "",
+      "notes": "Not a Wellington exhibit.",
+      "source_url": ""
+    },
+    {
+      "id": "galapagos_tortoise",
+      "label": "Galápagos tortoise",
+      "catalog_id": "galapagos-tortoise",
+      "presence": "absent",
+      "display_label": "Galápagos tortoise",
+      "official_name": "",
+      "notes": "Not confirmed.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "sumatran_tiger",
+    "chimpanzee",
+    "reticulated_giraffe"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "CRITICAL: African elephant, hippo, gorilla, penguin, tortoise on list but absent/unconfirmed. Tigers, chimps, lions, giraffes, red pandas, otters verified. Add sun bear.",
+  "severity": "critical"
+}

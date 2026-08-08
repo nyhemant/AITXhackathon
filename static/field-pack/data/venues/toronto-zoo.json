@@ -21,32 +21,8 @@
   },
   "items": [
     {
-      "id": "african_elephant",
-      "label": "African elephant",
-      "emoji": "🐘",
-      "one_liner": "Elephants.",
-      "tags": [
-        "big",
-        "outdoor",
-        "wow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "African savanna",
-      "qa_card": {
-        "question": "What did you notice about the African elephant?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "african-elephant",
-      "presence": "template"
-    },
-    {
       "id": "reticulated_giraffe",
-      "label": "Reticulated giraffe",
+      "label": "Giraffe",
       "emoji": "🦒",
       "one_liner": "Giraffes.",
       "tags": [
@@ -65,30 +41,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "reticulated-giraffe",
-      "presence": "template"
-    },
-    {
-      "id": "sumatran_tiger",
-      "label": "Sumatran tiger",
-      "emoji": "🐯",
-      "one_liner": "Tigers.",
-      "tags": [
-        "big-cats",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Indo-Malaya",
-      "qa_card": {
-        "question": "What did you notice about the Sumatran tiger?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "sumatran-tiger",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Giraffe",
+      "presence_note": "Masai giraffe (baby Imara featured)."
     },
     {
       "id": "western_lowland_gorilla",
@@ -110,29 +67,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "western-lowland-gorilla",
-      "presence": "template"
-    },
-    {
-      "id": "giant_panda",
-      "label": "Giant panda",
-      "emoji": "🐼",
-      "one_liner": "Pandas only if currently featured — verify first.",
-      "tags": [
-        "wow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Occasionally",
-      "qa_card": {
-        "question": "What did you notice about the Giant panda?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "giant-panda",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Western lowland gorilla",
+      "presence_note": "African Rainforest Pavilion gorillas; Guardians of Gorilla."
     },
     {
       "id": "african_lion",
@@ -156,7 +95,11 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "african-lion",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "African lion",
+      "presence_note": "African lion guardians talks / savanna."
     },
     {
       "id": "cheetah",
@@ -180,7 +123,11 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "cheetah",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Cheetah",
+      "presence_note": "Cheetah on guardians schedule / African Savanna."
     },
     {
       "id": "zebra",
@@ -203,7 +150,11 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "zebra",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Zebra",
+      "presence_note": "Savanna hoofstock (Grévy's historically)."
     },
     {
       "id": "chimpanzee",
@@ -230,7 +181,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "chimpanzee",
-      "presence": "template"
+      "presence": "template",
+      "presence_checked": "2026-08-08",
+      "display_label": "Chimpanzee",
+      "presence_note": "Not confirmed this pass."
     },
     {
       "id": "red_panda",
@@ -255,11 +209,15 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "red-panda",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Red panda",
+      "presence_note": "Red pandas remain after giant panda exit; conservation messaging."
     },
     {
       "id": "nile_hippo",
-      "label": "Nile hippo",
+      "label": "Hippo",
       "emoji": "🦛",
       "one_liner": "Huge river giant that loves the water.",
       "tags": [
@@ -278,7 +236,11 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "nile-hippo",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Hippo",
+      "presence_note": "River hippopotamus on guardians schedule / savanna."
     },
     {
       "id": "african_penguin",
@@ -302,10 +264,14 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "african-penguin",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "African penguin",
+      "presence_note": "African penguins on African Savanna (Wikipedia current list)."
     }
   ],
-  "content_mode": "hybrid",
+  "content_mode": "curated",
   "media": {
     "visitor_map_url": "/field-pack/media/maps/toronto-zoo.jpg",
     "visitor_map_page": "https://www.torontozoo.com/!/pdfs/temp/TorontoZoo-Map-VisitorGuide.pdf?d",
@@ -320,10 +286,43 @@
     "Leave while happy"
   ],
   "route_90m": [
-    "african_elephant",
+    "western_lowland_gorilla",
     "reticulated_giraffe",
-    "sumatran_tiger"
+    "african_lion"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 · map-page 2026-08-07",
-  "list_confidence": "template"
+  "research_notes": "R2 hybrid 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [critical]",
+  "list_confidence": "audited",
+  "do_not_list": [
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Elephants previously held; not in current collection (Wikipedia + no elephant guardians talks).",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "giant-panda",
+      "name": "Giant panda",
+      "reason": "Giant pandas no longer reside at Toronto Zoo; red pandas remain.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "sumatran-tiger",
+      "name": "Sumatran tiger",
+      "reason": "Current program is Amur tiger — wrong subspecies label.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "chimpanzee",
+      "name": "Chimpanzee",
+      "reason": "Not confirmed on current guardians/region materials this pass.",
+      "as_of": "2026-08-08"
+    }
+  ],
+  "last_presence_audit": "2026-08-08",
+  "presence_sources": [
+    "https://www.torontozoo.com/",
+    "https://www.torontozoo.com/animals",
+    "https://en.wikipedia.org/wiki/Toronto_Zoo",
+    "https://www.torontozoo.com/meettheguardians"
+  ]
 }

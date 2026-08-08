@@ -19,32 +19,8 @@
   },
   "items": [
     {
-      "id": "african_elephant",
-      "label": "African elephant",
-      "emoji": "🐘",
-      "one_liner": "Houston’s elephant habitat is a must-see wow.",
-      "tags": [
-        "big",
-        "outdoor",
-        "wow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Elephants",
-      "qa_card": {
-        "question": "What did you notice about the African elephant?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "african-elephant",
-      "presence": "template"
-    },
-    {
       "id": "reticulated_giraffe",
-      "label": "Reticulated giraffe",
+      "label": "Giraffe",
       "emoji": "🦒",
       "one_liner": "Feeding times are popular — check the board.",
       "tags": [
@@ -64,31 +40,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "reticulated-giraffe",
-      "presence": "template"
-    },
-    {
-      "id": "nile_hippo",
-      "label": "Nile hippo",
-      "emoji": "🦛",
-      "one_liner": "Underwater hippo windows when open.",
-      "tags": [
-        "big",
-        "water",
-        "wow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Hippos",
-      "qa_card": {
-        "question": "What did you notice about the Nile hippo?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "nile-hippo",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Giraffe",
+      "presence_note": "Wrong subspecies label; soft Giraffe OK"
     },
     {
       "id": "western_lowland_gorilla",
@@ -111,7 +67,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "western-lowland-gorilla",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Western lowland gorilla"
     },
     {
       "id": "chimpanzee",
@@ -134,7 +93,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "chimpanzee",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Chimpanzee"
     },
     {
       "id": "african_lion",
@@ -157,11 +119,14 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-lion",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "African lion"
     },
     {
       "id": "sumatran_tiger",
-      "label": "Sumatran tiger",
+      "label": "Tiger",
       "emoji": "🐯",
       "one_liner": "Tigers on the cat walk.",
       "tags": [
@@ -180,53 +145,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sumatran-tiger",
-      "presence": "template"
-    },
-    {
-      "id": "african_penguin",
-      "label": "African penguin",
-      "emoji": "🐧",
-      "one_liner": "Penguins zoom underwater.",
-      "tags": [
-        "water",
-        "wow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Penguins",
-      "qa_card": {
-        "question": "What did you notice about the African penguin?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "african-penguin",
-      "presence": "template"
-    },
-    {
-      "id": "asian_small_clawed_otter",
-      "label": "Asian small-clawed otter",
-      "emoji": "🦦",
-      "one_liner": "Busy otters for a quick laugh.",
-      "tags": [
-        "play",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Otters",
-      "qa_card": {
-        "question": "What did you notice about the Asian small-clawed otter?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "asian-small-clawed-otter",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Tiger",
+      "presence_note": "Not Sumatran"
     },
     {
       "id": "zebra",
@@ -249,7 +172,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "zebra",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Zebra"
     }
   ],
   "content_mode": "curated",
@@ -266,6 +192,42 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "research_notes": "map-img 2026-08-07 · map-page 2026-08-07",
-  "list_confidence": "template"
+  "research_notes": "map-img 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [critical]",
+  "list_confidence": "partial",
+  "do_not_list": [
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Official list: Asian Elephant only.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "Official: Humboldt Penguin.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "nile-hippo",
+      "name": "Nile hippo",
+      "reason": "Not on official Our Animals list; map references pygmy hippo.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "asian-small-clawed-otter",
+      "name": "Asian small-clawed otter",
+      "reason": "Official: Giant River Otter and North American River Otter.",
+      "as_of": "2026-08-08"
+    }
+  ],
+  "route_90m": [
+    "reticulated_giraffe",
+    "western_lowland_gorilla",
+    "african_lion"
+  ],
+  "presence_sources": [
+    "https://www.houstonzoo.org/explore/animals/",
+    "https://www.houstonzoo.org/",
+    "https://map.houstonzoo.org/map"
+  ]
 }

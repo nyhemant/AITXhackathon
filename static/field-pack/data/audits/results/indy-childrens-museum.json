@@ -1,0 +1,149 @@
+{
+  "slug": "indy-childrens-museum",
+  "name": "Children's Museum of Indianapolis",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.childrensmuseum.org/"
+  ],
+  "list_confidence_recommended": "partial",
+  "practical_fixes": [
+    {
+      "field": "transit_note",
+      "current": "Downtown Indianapolis; parking garage options.",
+      "suggested": "Near downtown / United Northwest Area; on-site parking garage.",
+      "reason": "Museum is just north of downtown proper."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "cm-imaginarium",
+      "name": "Imaginarium",
+      "reason": "Not a CMI exhibit name."
+    },
+    {
+      "catalog_id": "cm-makery",
+      "name": "Creative Makery",
+      "reason": "Perot taxonomy leakage."
+    },
+    {
+      "catalog_id": "cm-woven",
+      "name": "Woven Wonders",
+      "reason": "Perot-specific."
+    },
+    {
+      "catalog_id": "cm-waterfall",
+      "name": "Waterfall play",
+      "reason": "Not verified as CMI zone name."
+    }
+  ],
+  "items": [
+    {
+      "id": "cm_waterfall",
+      "label": "Waterfall play",
+      "catalog_id": "cm-waterfall",
+      "presence": "unclear",
+      "display_label": "Waterfall play",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "cm_imaginarium",
+      "label": "Imaginarium",
+      "catalog_id": "cm-imaginarium",
+      "presence": "absent",
+      "display_label": "Imaginarium",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "cm_makery",
+      "label": "Creative Makery",
+      "catalog_id": "cm-makery",
+      "presence": "absent",
+      "display_label": "Creative Makery",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "sci_dinosaur",
+      "label": "Dinosaur hall",
+      "catalog_id": "sci-dinosaur",
+      "presence": "verified",
+      "display_label": "Dinosphere",
+      "official_name": "Dinosphere",
+      "notes": "",
+      "source_url": "https://www.childrensmuseum.org/"
+    },
+    {
+      "id": "cm_toddler_garden",
+      "label": "Toddler Garden",
+      "catalog_id": "cm-toddler-garden",
+      "presence": "unclear",
+      "display_label": "Playscape / early childhood",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "cm_outdoor",
+      "label": "Outdoor Area",
+      "catalog_id": "cm-outdoor",
+      "presence": "medium",
+      "display_label": "Outdoor Area",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "cm_woven",
+      "label": "Woven Wonders",
+      "catalog_id": "cm-woven",
+      "presence": "absent",
+      "display_label": "Woven Wonders",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "cm_art_lab",
+      "label": "Art Lab",
+      "catalog_id": "cm-art-lab",
+      "presence": "unclear",
+      "display_label": "Art Lab",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "cm_free_explore",
+      "label": "Free explore",
+      "catalog_id": "cm-free-explore",
+      "presence": "medium",
+      "display_label": "Free explore",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "sci_hands_on",
+      "label": "Hands-on lab",
+      "catalog_id": "sci-hands-on",
+      "presence": "high",
+      "display_label": "Science / hands-on galleries",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "sci_dinosaur",
+    "sci_hands_on",
+    "cm_free_explore"
+  ],
+  "content_mode_recommended": "hybrid",
+  "summary": "World's largest children's museum with dinosphere, sports, science, and play areas. Labels Imaginarium, Creative Makery, Woven Wonders, Waterfall play are Perot/generic leakage — not official CMI names. Dinosphere is the real dinosaur brand. Major taxonomy fix needed.",
+  "severity": "major"
+}

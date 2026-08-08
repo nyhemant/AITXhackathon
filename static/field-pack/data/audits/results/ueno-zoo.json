@@ -1,0 +1,167 @@
+{
+  "slug": "ueno-zoo",
+  "name": "Ueno Zoo",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.tokyo-zoo.net/english/ueno/",
+    "https://www.tokyo-zoo.net/en/ueno/",
+    "https://www.giantpandaglobal.com/en/zoo/ueno-zoo"
+  ],
+  "list_confidence_recommended": "audited",
+  "practical_fixes": [
+    {
+      "field": "giant_panda",
+      "current": "not in items (good)",
+      "suggested": "keep out until new loan",
+      "reason": "Xiao Xiao & Lei Lei left Jan 27 2026."
+    },
+    {
+      "field": "official_url",
+      "current": "https://www.tokyo-zoo.net/english/ueno/",
+      "suggested": "https://www.tokyo-zoo.net/en/ueno/ or /english/ueno/",
+      "reason": "Both work; EN hub updated with panda departure news."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "giant-panda",
+      "name": "Giant panda",
+      "reason": "Left Ueno Jan 27 2026 — Japan has no giant pandas."
+    },
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Ueno elephants are Asian if present — never African label."
+    }
+  ],
+  "items": [
+    {
+      "id": "red-panda",
+      "label": "Red panda",
+      "catalog_id": "red-panda",
+      "presence": "verified",
+      "display_label": "Red panda",
+      "official_name": "",
+      "notes": "Red pandas remain after giant panda exit.",
+      "source_url": "https://www.tokyo-zoo.net/en/ueno/"
+    },
+    {
+      "id": "tiger",
+      "label": "Tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "high",
+      "display_label": "Tiger",
+      "official_name": "",
+      "notes": "Tigers present; soft Tiger.",
+      "source_url": "https://www.tokyo-zoo.net/en/ueno/"
+    },
+    {
+      "id": "gorilla",
+      "label": "Gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "high",
+      "display_label": "Gorilla",
+      "official_name": "",
+      "notes": "Gorillas classic Ueno exhibit.",
+      "source_url": "https://www.tokyo-zoo.net/en/ueno/"
+    },
+    {
+      "id": "giraffe",
+      "label": "Giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "high",
+      "display_label": "Giraffe",
+      "official_name": "",
+      "notes": "Giraffes present.",
+      "source_url": "https://www.tokyo-zoo.net/en/ueno/"
+    },
+    {
+      "id": "otter",
+      "label": "Otter",
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "medium",
+      "display_label": "Otter",
+      "official_name": "",
+      "notes": "Confirm otter species.",
+      "source_url": ""
+    },
+    {
+      "id": "lemur",
+      "label": "Ring-tailed lemur",
+      "catalog_id": "ring-tailed-lemur",
+      "presence": "medium",
+      "display_label": "Ring-tailed lemur",
+      "official_name": "",
+      "notes": "Confirm.",
+      "source_url": ""
+    },
+    {
+      "id": "chimp",
+      "label": "Chimpanzee",
+      "catalog_id": "chimpanzee",
+      "presence": "medium",
+      "display_label": "Chimpanzee",
+      "official_name": "",
+      "notes": "Confirm.",
+      "source_url": ""
+    },
+    {
+      "id": "flamingo",
+      "label": "Flamingo",
+      "catalog_id": "caribbean-flamingo",
+      "presence": "high",
+      "display_label": "Flamingo",
+      "official_name": "American flamingo",
+      "notes": "American flamingo noted in zoo news.",
+      "source_url": "https://www.tokyo-zoo.net/en/ueno/"
+    },
+    {
+      "id": "tortoise",
+      "label": "Giant tortoise",
+      "catalog_id": "galapagos-tortoise",
+      "presence": "medium",
+      "display_label": "Giant tortoise",
+      "official_name": "",
+      "notes": "Tortoises; species unconfirmed.",
+      "source_url": ""
+    },
+    {
+      "id": "small-mammals",
+      "label": "Small Mammal House",
+      "catalog_id": "",
+      "presence": "high",
+      "display_label": "Small Mammal House",
+      "official_name": "",
+      "notes": "Small Mammal House is a Ueno classic.",
+      "source_url": "https://www.tokyo-zoo.net/en/ueno/"
+    },
+    {
+      "id": "kids-zoo",
+      "label": "Children's Zoo",
+      "catalog_id": "",
+      "presence": "verified",
+      "display_label": "Children's Zoo",
+      "official_name": "",
+      "notes": "Children's Zoo present (official news mentions exhibits there).",
+      "source_url": "https://www.tokyo-zoo.net/en/ueno/"
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "medium",
+      "display_label": "Zebra",
+      "official_name": "",
+      "notes": "Confirm.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "red-panda",
+    "tiger",
+    "gorilla"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "Giant pandas correctly absent from items (left Jan 2026). Red panda verified; gorilla/tiger/giraffe/flamingo/kids zoo high. Never re-add giant panda.",
+  "severity": "minor"
+}

@@ -40,7 +40,12 @@
         "question": "Is a red panda a giant panda?",
         "answer": "No — red pandas are their own species. They love climbing!"
       },
-      "catalog_id": "red-panda"
+      "catalog_id": "red-panda",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Red panda",
+      "presence_note": "Red pandas remain after giant panda exit."
     },
     {
       "id": "tiger",
@@ -59,7 +64,12 @@
         "9+"
       ],
       "zone": "",
-      "catalog_id": "sumatran-tiger"
+      "catalog_id": "sumatran-tiger",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Tiger",
+      "presence_note": "Tigers present; soft Tiger."
     },
     {
       "id": "gorilla",
@@ -77,7 +87,12 @@
         "9+"
       ],
       "zone": "",
-      "catalog_id": "western-lowland-gorilla"
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Gorilla",
+      "presence_note": "Gorillas classic Ueno exhibit."
     },
     {
       "id": "giraffe",
@@ -95,7 +110,12 @@
         "9+"
       ],
       "zone": "",
-      "catalog_id": "reticulated-giraffe"
+      "catalog_id": "reticulated-giraffe",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Giraffe",
+      "presence_note": "Giraffes present."
     },
     {
       "id": "otter",
@@ -113,7 +133,11 @@
         "9+"
       ],
       "zone": "",
-      "catalog_id": "asian-small-clawed-otter"
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Otter",
+      "presence_note": "Confirm otter species."
     },
     {
       "id": "lemur",
@@ -131,7 +155,11 @@
         "9+"
       ],
       "zone": "",
-      "catalog_id": "ring-tailed-lemur"
+      "catalog_id": "ring-tailed-lemur",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Ring-tailed lemur",
+      "presence_note": "Confirm."
     },
     {
       "id": "chimp",
@@ -149,7 +177,11 @@
         "9+"
       ],
       "zone": "",
-      "catalog_id": "chimpanzee"
+      "catalog_id": "chimpanzee",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Chimpanzee",
+      "presence_note": "Confirm."
     },
     {
       "id": "flamingo",
@@ -168,7 +200,12 @@
         "9+"
       ],
       "zone": "",
-      "catalog_id": "caribbean-flamingo"
+      "catalog_id": "caribbean-flamingo",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Flamingo",
+      "presence_note": "American flamingo noted in zoo news."
     },
     {
       "id": "tortoise",
@@ -186,7 +223,11 @@
         "9+"
       ],
       "zone": "",
-      "catalog_id": "galapagos-tortoise"
+      "catalog_id": "galapagos-tortoise",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Giant tortoise",
+      "presence_note": "Tortoises; species unconfirmed."
     },
     {
       "id": "small-mammals",
@@ -203,7 +244,12 @@
         "6-8",
         "9+"
       ],
-      "zone": "Small Mammal House"
+      "zone": "Small Mammal House",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Small Mammal House",
+      "presence_note": "Small Mammal House is a Ueno classic."
     },
     {
       "id": "kids-zoo",
@@ -219,7 +265,12 @@
         "4-5",
         "6-8"
       ],
-      "zone": ""
+      "zone": "",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Children's Zoo",
+      "presence_note": "Children's Zoo present (official news mentions exhibits there)."
     },
     {
       "id": "zebra",
@@ -237,7 +288,11 @@
         "9+"
       ],
       "zone": "",
-      "catalog_id": "zebra"
+      "catalog_id": "zebra",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Zebra",
+      "presence_note": "Confirm."
     }
   ],
   "content_mode": "curated",
@@ -253,5 +308,31 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "list_confidence": "partial"
+  "list_confidence": "audited",
+  "do_not_list": [
+    {
+      "catalog_id": "giant-panda",
+      "name": "Giant panda",
+      "reason": "Left Ueno Jan 27 2026 — Japan has no giant pandas.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Ueno elephants are Asian if present — never African label.",
+      "as_of": "2026-08-08"
+    }
+  ],
+  "route_90m": [
+    "red-panda",
+    "tiger",
+    "gorilla"
+  ],
+  "last_presence_audit": "2026-08-08",
+  "presence_sources": [
+    "https://www.tokyo-zoo.net/english/ueno/",
+    "https://www.tokyo-zoo.net/en/ueno/",
+    "https://www.giantpandaglobal.com/en/zoo/ueno-zoo"
+  ],
+  "research_notes": "presence-audit 2026-08-08 [minor]"
 }

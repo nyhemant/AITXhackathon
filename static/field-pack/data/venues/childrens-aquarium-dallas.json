@@ -15,7 +15,7 @@
   "practical": {
     "typical_duration": "2–3 hours",
     "ticket_note": "Fair Park location; check event-day parking.",
-    "transit_note": "Dallas Fair Park area."
+    "transit_note": "Fair Park, Dallas — pair with other Fair Park stops if desired."
   },
   "items": [
     {
@@ -38,7 +38,11 @@
         "question": "What did you notice about the Shark?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "shark"
+      "catalog_id": "shark",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Shark"
     },
     {
       "id": "stingray",
@@ -61,7 +65,11 @@
         "question": "What did you notice about the Stingray?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "stingray"
+      "catalog_id": "stingray",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "display_label": "Stingray",
+      "presence_note": "Cownose stingrays featured."
     },
     {
       "id": "sea_turtle",
@@ -83,7 +91,11 @@
         "question": "What did you notice about the Sea turtle?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sea-turtle"
+      "catalog_id": "sea-turtle",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "display_label": "Sea turtle",
+      "presence_note": "Loggerhead sea turtles featured in marketing."
     },
     {
       "id": "jellyfish",
@@ -105,7 +117,11 @@
         "question": "What did you notice about the Jellyfish?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "jellyfish"
+      "catalog_id": "jellyfish",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Jellyfish",
+      "presence_note": "Not highlighted on homepage extract — medium."
     },
     {
       "id": "clownfish",
@@ -127,7 +143,11 @@
         "question": "What did you notice about the Clownfish?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "clownfish"
+      "catalog_id": "clownfish",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Clownfish",
+      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract."
     },
     {
       "id": "seahorse",
@@ -149,7 +169,11 @@
         "question": "What did you notice about the Seahorse?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "seahorse"
+      "catalog_id": "seahorse",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Seahorse",
+      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract."
     },
     {
       "id": "octopus",
@@ -171,7 +195,11 @@
         "question": "What did you notice about the Octopus?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "octopus"
+      "catalog_id": "octopus",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Octopus",
+      "presence_note": "Not confirmed on official sources reviewed in this audit pass."
     },
     {
       "id": "crab",
@@ -193,7 +221,11 @@
         "question": "What did you notice about the Crab?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "crab"
+      "catalog_id": "crab",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Crab",
+      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract."
     },
     {
       "id": "starfish",
@@ -215,7 +247,11 @@
         "question": "What did you notice about the Sea star?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "starfish"
+      "catalog_id": "starfish",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Sea star",
+      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract."
     },
     {
       "id": "eel",
@@ -237,7 +273,11 @@
         "question": "What did you notice about the Eel?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "eel"
+      "catalog_id": "eel",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Eel",
+      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract."
     }
   ],
   "content_mode": "curated",
@@ -253,5 +293,15 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "list_confidence": "partial"
+  "list_confidence": "partial",
+  "do_not_list": [],
+  "route_90m": [
+    "shark",
+    "stingray",
+    "sea_turtle"
+  ],
+  "presence_sources": [
+    "https://www.childrensaquarium.com/"
+  ],
+  "research_notes": "presence-audit 2026-08-08 [ok]"
 }

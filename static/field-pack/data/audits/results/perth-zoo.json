@@ -1,0 +1,214 @@
+{
+  "slug": "perth-zoo",
+  "name": "Perth Zoo",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://perthzoo.wa.gov.au/animals",
+    "https://perthzoo.wa.gov.au/",
+    "https://perthzoo.wa.gov.au/close-encounters"
+  ],
+  "list_confidence_recommended": "audited",
+  "practical_fixes": [
+    {
+      "field": "items.african_elephant",
+      "current": "African elephant on list",
+      "suggested": "Remove — elephants gone from Perth Zoo",
+      "reason": "Public/community reports and collection notes: no more elephants; last elephant era ended."
+    },
+    {
+      "field": "items.western_lowland_gorilla",
+      "current": "Western lowland gorilla",
+      "suggested": "Remove — Perth does not keep gorillas (orangutans yes)",
+      "reason": "No gorillas; Sumatran orangutans are the great ape icon."
+    },
+    {
+      "field": "items.african_penguin",
+      "current": "African penguin",
+      "suggested": "Little penguin",
+      "reason": "Official animals list: Little Penguin."
+    },
+    {
+      "field": "items.sumatran_tiger",
+      "current": "Sumatran tiger",
+      "suggested": "Verify current tiger holding — collection declines noted",
+      "reason": "Tiger status may have changed; confirm before print."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Perth Zoo no longer keeps elephants."
+    },
+    {
+      "catalog_id": "western-lowland-gorilla",
+      "name": "Western lowland gorilla",
+      "reason": "No gorillas at Perth Zoo; orangutans are the ape highlight."
+    },
+    {
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "Official species is Little Penguin, not African penguin."
+    },
+    {
+      "catalog_id": "nile-hippo",
+      "name": "Nile hippo",
+      "reason": "Not on Perth animals list reviewed."
+    },
+    {
+      "catalog_id": "chimpanzee",
+      "name": "Chimpanzee",
+      "reason": "Not on animals list extract (primates are orangutan/gibbon/lemur/tamarin etc.)."
+    }
+  ],
+  "items": [
+    {
+      "id": "koala",
+      "label": "Koala",
+      "catalog_id": "koala",
+      "presence": "verified",
+      "display_label": "Koala",
+      "official_name": "Koala",
+      "notes": "Koala on animals list.",
+      "source_url": "https://perthzoo.wa.gov.au/animals"
+    },
+    {
+      "id": "orangutan",
+      "label": "Orangutan",
+      "catalog_id": "orangutan",
+      "presence": "verified",
+      "display_label": "Orangutan",
+      "official_name": "Sumatran Orangutan",
+      "notes": "Sumatran Orangutan.",
+      "source_url": "https://perthzoo.wa.gov.au/animals"
+    },
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "verified",
+      "display_label": "African lion",
+      "official_name": "African Lion",
+      "notes": "African Lion.",
+      "source_url": "https://perthzoo.wa.gov.au/animals"
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "medium",
+      "display_label": "Tiger (verify)",
+      "official_name": "Tiger",
+      "notes": "Historically present; confirm current. Soft Tiger.",
+      "source_url": ""
+    },
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "absent",
+      "display_label": "— remove —",
+      "official_name": "",
+      "notes": "No elephants.",
+      "source_url": ""
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "verified",
+      "display_label": "Giraffe",
+      "official_name": "Giraffe",
+      "notes": "Giraffe listed. Soft Giraffe.",
+      "source_url": "https://perthzoo.wa.gov.au/animals"
+    },
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "absent",
+      "display_label": "— remove —",
+      "official_name": "",
+      "notes": "No gorillas.",
+      "source_url": ""
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "absent",
+      "display_label": "— relabel Little penguin —",
+      "official_name": "Little Penguin",
+      "notes": "Little Penguin, not African.",
+      "source_url": "https://perthzoo.wa.gov.au/animals"
+    },
+    {
+      "id": "chimpanzee",
+      "label": "Chimpanzee",
+      "catalog_id": "chimpanzee",
+      "presence": "absent",
+      "display_label": "— remove —",
+      "official_name": "",
+      "notes": "Not on list.",
+      "source_url": ""
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "verified",
+      "display_label": "Zebra",
+      "official_name": "Plains Zebra",
+      "notes": "Plains Zebra listed.",
+      "source_url": "https://perthzoo.wa.gov.au/animals"
+    },
+    {
+      "id": "red_panda",
+      "label": "Red panda",
+      "catalog_id": "red-panda",
+      "presence": "high",
+      "display_label": "Red panda",
+      "official_name": "Red panda",
+      "notes": "Red pandas historically bred; confirm current. Soft Red panda.",
+      "source_url": ""
+    },
+    {
+      "id": "asian_small_clawed_otter",
+      "label": "Asian small-clawed otter",
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "verified",
+      "display_label": "Asian small-clawed otter",
+      "official_name": "Asian Small-clawed Otter",
+      "notes": "Asian Small-clawed Otter listed.",
+      "source_url": "https://perthzoo.wa.gov.au/animals"
+    },
+    {
+      "id": "nile_hippo",
+      "label": "Nile hippo",
+      "catalog_id": "nile-hippo",
+      "presence": "absent",
+      "display_label": "— remove —",
+      "official_name": "",
+      "notes": "Not listed.",
+      "source_url": ""
+    },
+    {
+      "id": "galapagos_tortoise",
+      "label": "Galápagos tortoise",
+      "catalog_id": "galapagos-tortoise",
+      "presence": "verified",
+      "display_label": "Galápagos tortoise",
+      "official_name": "Galapagos Tortoise",
+      "notes": "Galapagos Tortoise listed.",
+      "source_url": "https://perthzoo.wa.gov.au/animals"
+    }
+  ],
+  "route_90m_recommended": [
+    "koala",
+    "orangutan",
+    "african_lion"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "CRITICAL removals: elephant, gorilla, African penguin (→ little penguin), chimp, Nile hippo. Verified: koala, Sumatran orangutan, lion, giraffe, zebra, ASC otter, Galápagos tortoise. Strong Australian + SE Asian focus.",
+  "severity": "critical"
+}

@@ -16,13 +16,13 @@
     "typical_duration": "half day",
     "ticket_note": "Compact visit; check open days.",
     "transit_note": "Sempione / castle park edge.",
-    "energy_note": "indoor",
+    "energy_note": "Mostly indoors",
     "best_start": "One floor, kid pace."
   },
   "items": [
     {
       "id": "shark",
-      "label": "Shark",
+      "label": "Shark (verify on site)",
       "emoji": "🦈",
       "one_liner": "Sharks if exhibited.",
       "tags": [
@@ -41,7 +41,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "shark",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Shark (verify on site)",
+      "presence_note": "Historic aquarium keeps Mediterranean/exotic fish; shark presence not verified on thin official English surface."
     },
     {
       "id": "jellyfish",
@@ -64,7 +67,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "jellyfish",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Jellyfish",
+      "presence_note": "Not confirmed on official surface content."
     },
     {
       "id": "stingray",
@@ -87,7 +93,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "stingray",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Stingray",
+      "presence_note": "Not confirmed."
     },
     {
       "id": "seahorse",
@@ -109,7 +118,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "seahorse",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Seahorse",
+      "presence_note": "Common in civic aquariums but not verified on page fetch."
     },
     {
       "id": "clownfish",
@@ -132,7 +144,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "clownfish",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Clownfish",
+      "presence_note": "Likely reef tank species but not verified."
     },
     {
       "id": "sea_turtle",
@@ -156,7 +171,10 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "sea-turtle",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Sea turtle",
+      "presence_note": "Not confirmed."
     },
     {
       "id": "octopus",
@@ -179,7 +197,10 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "octopus",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Octopus",
+      "presence_note": "Not confirmed."
     },
     {
       "id": "eel",
@@ -202,7 +223,10 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "eel",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Eel",
+      "presence_note": "Mediterranean eels plausible; not verified."
     },
     {
       "id": "crab",
@@ -225,7 +249,10 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "crab",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Crab",
+      "presence_note": "Plausible touch/rocky tank; not verified."
     },
     {
       "id": "starfish",
@@ -250,7 +277,10 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "starfish",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Sea star",
+      "presence_note": "Plausible; not verified."
     },
     {
       "id": "freshwater_fish",
@@ -273,36 +303,13 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "freshwater-fish",
-      "presence": "template"
-    },
-    {
-      "id": "asian_small_clawed_otter",
-      "label": "Asian small-clawed otter",
-      "emoji": "🦦",
-      "one_liner": "Playful swimmer — smallest otter.",
-      "tags": [
-        "wow",
-        "water",
-        "outdoor",
-        "hands",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "What did you notice about the Asian small-clawed otter?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "asian-small-clawed-otter",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "River / lake fish",
+      "presence_note": "Civic aquarium historically emphasizes freshwater/Po basin as well as marine. Soft River fish OK."
     }
   ],
-  "content_mode": "hybrid",
+  "content_mode": "wonder",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://www.acquariocivicomilano.eu/",
@@ -316,10 +323,20 @@
     "Leave while happy"
   ],
   "route_90m": [
-    "shark",
-    "jellyfish",
-    "stingray"
+    "freshwater_fish"
   ],
-  "research_notes": "R3 2026-08-07 · map-page 2026-08-07",
-  "list_confidence": "template"
+  "research_notes": "R3 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "list_confidence": "partial",
+  "do_not_list": [
+    {
+      "catalog_id": "asian-small-clawed-otter",
+      "name": "Asian small-clawed otter",
+      "reason": "No evidence of otters at Acquario Civico di Milano; template leakage.",
+      "as_of": "2026-08-08"
+    }
+  ],
+  "presence_sources": [
+    "https://www.acquariocivicomilano.eu/",
+    "https://en.wikipedia.org/wiki/Milan_Civic_Aquarium"
+  ]
 }

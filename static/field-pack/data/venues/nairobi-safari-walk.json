@@ -22,7 +22,7 @@
   "items": [
     {
       "id": "reticulated_giraffe",
-      "label": "Reticulated giraffe",
+      "label": "Giraffe",
       "emoji": "🦒",
       "one_liner": "Giraffes from the walk.",
       "tags": [
@@ -41,7 +41,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "reticulated-giraffe",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Giraffe",
+      "presence_note": "Giraffe commonly on Safari Walk/orphanage complex narrative. Soft Giraffe."
     },
     {
       "id": "zebra",
@@ -63,11 +66,14 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "zebra",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Zebra",
+      "presence_note": "Plains species on walk."
     },
     {
       "id": "african_lion",
-      "label": "African lion",
+      "label": "Lion (if on route)",
       "emoji": "🦁",
       "one_liner": "Lions if on the route that day.",
       "tags": [
@@ -85,11 +91,14 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-lion",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Lion (if on route)",
+      "presence_note": "Big cats may be on route some days; not guaranteed. Soft Lion if present."
     },
     {
       "id": "african_elephant",
-      "label": "African elephant",
+      "label": "Elephant (if present)",
       "emoji": "🐘",
       "one_liner": "Elephants when visible.",
       "tags": [
@@ -107,11 +116,14 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-elephant",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Elephant (if present)",
+      "presence_note": "Elephants sometimes visible in complex; not guaranteed every visit."
     },
     {
       "id": "cm_outdoor",
-      "label": "Outdoor Area",
+      "label": "Boardwalk / outdoor",
       "emoji": "🌳",
       "one_liner": "Walk and notice — the path is the activity.",
       "tags": [
@@ -130,37 +142,14 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "cm-outdoor",
-      "presence": "template"
-    },
-    {
-      "id": "sumatran_tiger",
-      "label": "Sumatran tiger",
-      "emoji": "🐯",
-      "one_liner": "Stripy forest big cat — strong and stealthy.",
-      "tags": [
-        "wow",
-        "big-cats",
-        "outdoor",
-        "rest",
-        "kids"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Sumatran tiger?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "sumatran-tiger",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "display_label": "Boardwalk / outdoor",
+      "presence_note": "Boardwalk path is the activity."
     },
     {
       "id": "cheetah",
-      "label": "Cheetah",
+      "label": "Cheetah (verify)",
       "emoji": "🐆",
       "one_liner": "Fastest land animal — built to sprint.",
       "tags": [
@@ -180,58 +169,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "cheetah",
-      "presence": "template"
-    },
-    {
-      "id": "western_lowland_gorilla",
-      "label": "Western lowland gorilla",
-      "emoji": "🦍",
-      "one_liner": "Strong gentle ape in family groups.",
-      "tags": [
-        "wow",
-        "outdoor",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Western lowland gorilla?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "western-lowland-gorilla",
-      "presence": "template"
-    },
-    {
-      "id": "chimpanzee",
-      "label": "Chimpanzee",
-      "emoji": "🐵",
-      "one_liner": "Smart forest ape — climbs and tools.",
-      "tags": [
-        "wow",
-        "outdoor",
-        "play",
-        "hands",
-        "rest",
-        "kids"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Chimpanzee?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "chimpanzee",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Cheetah (verify)",
+      "presence_note": "Possible African predator exhibit; verify."
     },
     {
       "id": "nile_hippo",
@@ -254,31 +195,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "nile-hippo",
-      "presence": "template"
-    },
-    {
-      "id": "african_penguin",
-      "label": "African penguin",
-      "emoji": "🐧",
-      "one_liner": "Waddle on land, zoom in water.",
-      "tags": [
-        "wow",
-        "water",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the African penguin?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "african-penguin",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Nile hippo",
+      "presence_note": "Not confirmed."
     },
     {
       "id": "ostrich",
@@ -301,7 +221,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "ostrich",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Ostrich",
+      "presence_note": "African plains bird likely. Soft Ostrich."
     },
     {
       "id": "warthog",
@@ -325,7 +248,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "warthog",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Warthog",
+      "presence_note": "Common Safari Walk species."
     }
   ],
   "content_mode": "hybrid",
@@ -342,10 +268,46 @@
     "Leave while happy"
   ],
   "route_90m": [
+    "cm_outdoor",
     "reticulated_giraffe",
-    "zebra",
-    "african_lion"
+    "zebra"
   ],
-  "research_notes": "R3 2026-08-07 · map-page 2026-08-07",
-  "list_confidence": "template"
+  "research_notes": "R3 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [critical]",
+  "list_confidence": "partial",
+  "do_not_list": [
+    {
+      "catalog_id": "sumatran-tiger",
+      "name": "Sumatran tiger",
+      "reason": "Not an East African safari walk species; template leakage.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "western-lowland-gorilla",
+      "name": "Western lowland gorilla",
+      "reason": "Not kept at Nairobi Safari Walk.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "chimpanzee",
+      "name": "Chimpanzee",
+      "reason": "Not confirmed at Safari Walk (compare Sweetwaters/Ol Pejeta etc.).",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "Coastal SA species — not Safari Walk.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "nile-hippo",
+      "name": "Nile hippo",
+      "reason": "Not confirmed on walk list this pass.",
+      "as_of": "2026-08-08"
+    }
+  ],
+  "presence_sources": [
+    "https://www.kws.go.ke/",
+    "https://en.wikipedia.org/wiki/Nairobi_Safari_Walk"
+  ]
 }

@@ -16,7 +16,7 @@
     "typical_duration": "half day",
     "ticket_note": "Mall entry; attraction tickets inside.",
     "transit_note": "Dubai Mall.",
-    "energy_note": "indoor",
+    "energy_note": "Mostly indoors",
     "best_start": "Tunnel walk + one viewing panel."
   },
   "items": [
@@ -42,7 +42,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "shark",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "display_label": "Shark",
+      "presence_note": "King crocs/shark tunnel iconic"
     },
     {
       "id": "stingray",
@@ -65,7 +68,9 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "stingray",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Stingray"
     },
     {
       "id": "sea_turtle",
@@ -88,7 +93,9 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sea-turtle",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Sea turtle"
     },
     {
       "id": "clownfish",
@@ -111,7 +118,9 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "clownfish",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Clownfish"
     },
     {
       "id": "jellyfish",
@@ -134,7 +143,9 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "jellyfish",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Jellyfish"
     },
     {
       "id": "octopus",
@@ -157,7 +168,9 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "octopus",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Octopus"
     },
     {
       "id": "asian_small_clawed_otter",
@@ -183,7 +196,10 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "asian-small-clawed-otter",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Asian small-clawed otter",
+      "presence_note": "Underwater Zoo commonly lists otters"
     },
     {
       "id": "seahorse",
@@ -206,7 +222,9 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "seahorse",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Seahorse"
     },
     {
       "id": "eel",
@@ -229,7 +247,9 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "eel",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Eel"
     },
     {
       "id": "crab",
@@ -252,7 +272,9 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "crab",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Crab"
     },
     {
       "id": "starfish",
@@ -277,7 +299,9 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "starfish",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Sea star"
     },
     {
       "id": "freshwater_fish",
@@ -300,7 +324,9 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "freshwater-fish",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "River / lake fish"
     }
   ],
   "content_mode": "hybrid",
@@ -321,6 +347,10 @@
     "stingray",
     "sea_turtle"
   ],
-  "research_notes": "R2 hybrid 2026-08-07",
-  "list_confidence": "template"
+  "research_notes": "R2 hybrid 2026-08-07 · presence-audit 2026-08-08 [minor]",
+  "list_confidence": "partial",
+  "do_not_list": [],
+  "presence_sources": [
+    "https://www.dubaiaquarium.com/"
+  ]
 }

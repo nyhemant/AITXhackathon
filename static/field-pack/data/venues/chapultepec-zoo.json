@@ -14,7 +14,7 @@
   "tagline": "Chapultepec Zoo — free Mexico City classic inside the big park.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Usually free entry; lines at peaks.",
+    "ticket_note": "Often free/low-cost public zoo; expect crowds — confirm hours on CDMX sites.",
     "transit_note": "Chapultepec; Metro options.",
     "energy_note": "stroller-easy",
     "best_start": "Pandas if open, else one loop."
@@ -41,7 +41,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "giant-panda",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Giant panda",
+      "presence_note": "Historic panda program; Xin Xin long-term resident — confirm still on view (aging last Mexican-born line)."
     },
     {
       "id": "african_lion",
@@ -63,11 +66,13 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-lion",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "African lion"
     },
     {
       "id": "reticulated_giraffe",
-      "label": "Reticulated giraffe",
+      "label": "Giraffe",
       "emoji": "🦒",
       "one_liner": "Giraffes.",
       "tags": [
@@ -85,11 +90,13 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "reticulated-giraffe",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Giraffe"
     },
     {
       "id": "african_elephant",
-      "label": "African elephant",
+      "label": "Elephant",
       "emoji": "🐘",
       "one_liner": "Elephants.",
       "tags": [
@@ -107,7 +114,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-elephant",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Elephant",
+      "presence_note": "Elephants listed among emblematic residents."
     },
     {
       "id": "cm_outdoor",
@@ -130,11 +140,14 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "cm-outdoor",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Outdoor Area",
+      "presence_note": "Large park setting in Bosque de Chapultepec."
     },
     {
       "id": "sumatran_tiger",
-      "label": "Sumatran tiger",
+      "label": "Tiger",
       "emoji": "🐯",
       "one_liner": "Stripy forest big cat — strong and stealthy.",
       "tags": [
@@ -156,7 +169,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "sumatran-tiger",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Tiger",
+      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract."
     },
     {
       "id": "western_lowland_gorilla",
@@ -180,7 +196,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "western-lowland-gorilla",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Western lowland gorilla",
+      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract."
     },
     {
       "id": "african_penguin",
@@ -204,7 +223,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "african-penguin",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "African penguin",
+      "presence_note": "Not confirmed on official sources reviewed in this audit pass."
     },
     {
       "id": "chimpanzee",
@@ -231,7 +253,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "chimpanzee",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Chimpanzee",
+      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract."
     },
     {
       "id": "zebra",
@@ -254,7 +279,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "zebra",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Zebra",
+      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract."
     },
     {
       "id": "red_panda",
@@ -279,7 +307,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "red-panda",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Red panda",
+      "presence_note": "Older notes said red panda gone."
     },
     {
       "id": "asian_small_clawed_otter",
@@ -305,7 +336,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "asian-small-clawed-otter",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Asian small-clawed otter",
+      "presence_note": "Not confirmed on official sources reviewed in this audit pass."
     },
     {
       "id": "nile_hippo",
@@ -328,7 +362,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "nile-hippo",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Nile hippo",
+      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract."
     },
     {
       "id": "galapagos_tortoise",
@@ -351,7 +388,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "galapagos-tortoise",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Galápagos tortoise",
+      "presence_note": "Not confirmed on official sources reviewed in this audit pass."
     }
   ],
   "content_mode": "hybrid",
@@ -372,6 +412,11 @@
     "african_lion",
     "reticulated_giraffe"
   ],
-  "research_notes": "R3 2026-08-07",
-  "list_confidence": "template"
+  "research_notes": "R3 2026-08-07 · presence-audit 2026-08-08 [minor]",
+  "list_confidence": "partial",
+  "do_not_list": [],
+  "presence_sources": [
+    "https://mexicocity.cdmx.gob.mx/venues/chapultepec-zoo/?lang=en",
+    "https://en.wikipedia.org/wiki/Chapultepec_Zoo"
+  ]
 }

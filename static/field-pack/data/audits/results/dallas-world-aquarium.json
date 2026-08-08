@@ -1,0 +1,169 @@
+{
+  "slug": "dallas-world-aquarium",
+  "name": "Dallas World Aquarium",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.dwazoo.com/",
+    "https://dwazoo.com/exhibit/sloth-forest/",
+    "https://dwazoo.com/wp-content/uploads/2024/05/DWA-Field-Guide-2024.pdf"
+  ],
+  "list_confidence_recommended": "audited",
+  "practical_fixes": [],
+  "do_not_list": [
+    {
+      "catalog_id": "asian-small-clawed-otter",
+      "name": "Asian small-clawed otter",
+      "reason": "Orinoco/Lobos del Rio: giant otters, not Asian small-clawed."
+    }
+  ],
+  "items": [
+    {
+      "id": "two_toed_sloth",
+      "label": "Two-toed sloth",
+      "catalog_id": "two-toed-sloth",
+      "presence": "high",
+      "display_label": "Sloth",
+      "official_name": "Brown-throated three-toed sloth (also two-toed reported lower levels)",
+      "notes": "Sloth Forest features three-toed; two-toed also reported historically. Soft-label Sloth.",
+      "source_url": "https://dwazoo.com/exhibit/sloth-forest/"
+    },
+    {
+      "id": "shark",
+      "label": "Shark",
+      "catalog_id": "shark",
+      "presence": "high",
+      "display_label": "Shark",
+      "official_name": "",
+      "notes": "Aquarium section.",
+      "source_url": ""
+    },
+    {
+      "id": "stingray",
+      "label": "Stingray",
+      "catalog_id": "stingray",
+      "presence": "high",
+      "display_label": "Stingray",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "ring_tailed_lemur",
+      "label": "Ring-tailed lemur",
+      "catalog_id": "ring-tailed-lemur",
+      "presence": "high",
+      "display_label": "Ring-tailed lemur",
+      "official_name": "",
+      "notes": "Lemurs featured in social/exhibits.",
+      "source_url": ""
+    },
+    {
+      "id": "jellyfish",
+      "label": "Jellyfish",
+      "catalog_id": "jellyfish",
+      "presence": "medium",
+      "display_label": "Jellyfish",
+      "official_name": "",
+      "notes": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract.",
+      "source_url": ""
+    },
+    {
+      "id": "seahorse",
+      "label": "Seahorse",
+      "catalog_id": "seahorse",
+      "presence": "medium",
+      "display_label": "Seahorse",
+      "official_name": "",
+      "notes": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract.",
+      "source_url": ""
+    },
+    {
+      "id": "clownfish",
+      "label": "Clownfish",
+      "catalog_id": "clownfish",
+      "presence": "medium",
+      "display_label": "Clownfish",
+      "official_name": "",
+      "notes": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract.",
+      "source_url": ""
+    },
+    {
+      "id": "sea_turtle",
+      "label": "Sea turtle",
+      "catalog_id": "sea-turtle",
+      "presence": "medium",
+      "display_label": "Sea turtle",
+      "official_name": "",
+      "notes": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract.",
+      "source_url": ""
+    },
+    {
+      "id": "octopus",
+      "label": "Octopus",
+      "catalog_id": "octopus",
+      "presence": "medium",
+      "display_label": "Octopus",
+      "official_name": "",
+      "notes": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract.",
+      "source_url": ""
+    },
+    {
+      "id": "eel",
+      "label": "Eel",
+      "catalog_id": "eel",
+      "presence": "high",
+      "display_label": "Eel",
+      "official_name": "",
+      "notes": "Electric eel called out in Orinoco-level descriptions.",
+      "source_url": ""
+    },
+    {
+      "id": "crab",
+      "label": "Crab",
+      "catalog_id": "crab",
+      "presence": "medium",
+      "display_label": "Crab",
+      "official_name": "",
+      "notes": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract.",
+      "source_url": ""
+    },
+    {
+      "id": "starfish",
+      "label": "Sea star",
+      "catalog_id": "starfish",
+      "presence": "medium",
+      "display_label": "Sea star",
+      "official_name": "",
+      "notes": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract.",
+      "source_url": ""
+    },
+    {
+      "id": "freshwater_fish",
+      "label": "River / lake fish",
+      "catalog_id": "freshwater-fish",
+      "presence": "high",
+      "display_label": "River / lake fish",
+      "official_name": "",
+      "notes": "Orinoco / river systems.",
+      "source_url": ""
+    },
+    {
+      "id": "asian_small_clawed_otter",
+      "label": "Asian small-clawed otter",
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "absent",
+      "display_label": "Giant otter",
+      "official_name": "Giant otter (Pteronura brasiliensis)",
+      "notes": "Orinoco/Lobos del Rio: giant otters, not Asian small-clawed.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "two_toed_sloth",
+    "shark",
+    "ring_tailed_lemur"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "Sloth Forest and aquarium icons strong; replace Asian small-clawed otter with giant otter; soft-label sloth species (three-toed primary).",
+  "severity": "major"
+}

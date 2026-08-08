@@ -1,0 +1,168 @@
+{
+  "slug": "vancouver-aquarium",
+  "name": "Vancouver Aquarium",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.vanaqua.org/",
+    "https://www.vanaqua.org/explore/animals/",
+    "https://www.vanaqua.org/explore/animals/sea-otters/"
+  ],
+  "list_confidence_recommended": "partial",
+  "practical_fixes": [
+    {
+      "field": "region",
+      "current": "Canada",
+      "suggested": "BC",
+      "reason": "province code."
+    },
+    {
+      "field": "items.asian_small_clawed_otter",
+      "current": "Asian small-clawed otter",
+      "suggested": "Sea otter",
+      "reason": "Signature rescued sea otters — wrong species."
+    },
+    {
+      "field": "items.sea_turtle",
+      "current": "Sea turtle",
+      "suggested": "confirm; Schoona green turtle moved to Ripley's Toronto 2023 per Wikipedia — verify current turtle",
+      "reason": "May be absent or different individual."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "asian-small-clawed-otter",
+      "name": "Asian small-clawed otter",
+      "reason": "Wrong species — Vancouver Aquarium is famous for rescued sea otters."
+    }
+  ],
+  "items": [
+    {
+      "id": "asian_small_clawed_otter",
+      "label": "Asian small-clawed otter",
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "absent",
+      "display_label": "Asian small-clawed otter",
+      "official_name": "",
+      "notes": "Rescued sea otters are the icon — NOT Asian small-clawed.",
+      "source_url": "https://www.vanaqua.org/explore/animals/sea-otters/"
+    },
+    {
+      "id": "jellyfish",
+      "label": "Jellyfish",
+      "catalog_id": "jellyfish",
+      "presence": "high",
+      "display_label": "Jellyfish",
+      "official_name": "",
+      "notes": "Jellies common.",
+      "source_url": "https://www.vanaqua.org/explore/animals/"
+    },
+    {
+      "id": "octopus",
+      "label": "Octopus",
+      "catalog_id": "octopus",
+      "presence": "high",
+      "display_label": "Octopus",
+      "official_name": "",
+      "notes": "Giant Pacific octopus common PNW.",
+      "source_url": "https://www.vanaqua.org/explore/animals/"
+    },
+    {
+      "id": "shark",
+      "label": "Shark",
+      "catalog_id": "shark",
+      "presence": "high",
+      "display_label": "Shark",
+      "official_name": "",
+      "notes": "Tropics gallery blacktip reef sharks etc.",
+      "source_url": "https://www.vanaqua.org/"
+    },
+    {
+      "id": "sea_turtle",
+      "label": "Sea turtle",
+      "catalog_id": "sea-turtle",
+      "presence": "medium",
+      "display_label": "Sea turtle",
+      "official_name": "",
+      "notes": "Green sea turtle Schoona moved 2023 per Wikipedia; confirm current turtle presence before print.",
+      "source_url": ""
+    },
+    {
+      "id": "stingray",
+      "label": "Stingray",
+      "catalog_id": "stingray",
+      "presence": "medium",
+      "display_label": "Stingray",
+      "official_name": "",
+      "notes": "Confirm touch/ray.",
+      "source_url": ""
+    },
+    {
+      "id": "seahorse",
+      "label": "Seahorse",
+      "catalog_id": "seahorse",
+      "presence": "medium",
+      "display_label": "Seahorse",
+      "official_name": "",
+      "notes": "Confirm.",
+      "source_url": ""
+    },
+    {
+      "id": "clownfish",
+      "label": "Clownfish",
+      "catalog_id": "clownfish",
+      "presence": "high",
+      "display_label": "Clownfish",
+      "official_name": "",
+      "notes": "Tropics gallery reef fishes.",
+      "source_url": "https://www.vanaqua.org/"
+    },
+    {
+      "id": "eel",
+      "label": "Eel",
+      "catalog_id": "eel",
+      "presence": "high",
+      "display_label": "Eel",
+      "official_name": "",
+      "notes": "Common.",
+      "source_url": ""
+    },
+    {
+      "id": "crab",
+      "label": "Crab",
+      "catalog_id": "crab",
+      "presence": "high",
+      "display_label": "Crab",
+      "official_name": "",
+      "notes": "Touch/surge pool invertebrates.",
+      "source_url": ""
+    },
+    {
+      "id": "starfish",
+      "label": "Sea star",
+      "catalog_id": "starfish",
+      "presence": "high",
+      "display_label": "Sea star",
+      "official_name": "",
+      "notes": "Touch pool sea stars.",
+      "source_url": ""
+    },
+    {
+      "id": "freshwater_fish",
+      "label": "River / lake fish",
+      "catalog_id": "freshwater-fish",
+      "presence": "medium",
+      "display_label": "River / lake fish",
+      "official_name": "",
+      "notes": "Confirm.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "jellyfish",
+    "octopus",
+    "shark"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "MAJOR: Asian small-clawed otter wrong — sea otters are the icon. Confirm sea turtle still on exhibit. PNW + tropics mix otherwise plausible.",
+  "severity": "major"
+}

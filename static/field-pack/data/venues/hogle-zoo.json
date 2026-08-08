@@ -22,7 +22,7 @@
   "items": [
     {
       "id": "african_elephant",
-      "label": "African elephant",
+      "label": "Elephant",
       "emoji": "🐘",
       "one_liner": "Huge land mammal — hard to miss.",
       "tags": [
@@ -42,11 +42,13 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-elephant",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Elephant"
     },
     {
       "id": "reticulated_giraffe",
-      "label": "Reticulated giraffe",
+      "label": "Giraffe",
       "emoji": "🦒",
       "one_liner": "Look up for long necks on the hillside zoo.",
       "tags": [
@@ -66,7 +68,9 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "reticulated-giraffe",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Giraffe"
     },
     {
       "id": "african_lion",
@@ -90,11 +94,13 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-lion",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "African lion"
     },
     {
       "id": "sumatran_tiger",
-      "label": "Sumatran tiger",
+      "label": "Tiger",
       "emoji": "🐯",
       "one_liner": "Stripes in forested cat spaces.",
       "tags": [
@@ -113,7 +119,9 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sumatran-tiger",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Tiger"
     },
     {
       "id": "western_lowland_gorilla",
@@ -137,7 +145,9 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "western-lowland-gorilla",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Western lowland gorilla"
     },
     {
       "id": "african_penguin",
@@ -161,7 +171,9 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "african-penguin",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "African penguin"
     },
     {
       "id": "cheetah",
@@ -185,7 +197,9 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "cheetah",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Cheetah"
     },
     {
       "id": "nile_hippo",
@@ -208,7 +222,9 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "nile-hippo",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Nile hippo"
     },
     {
       "id": "caribbean_flamingo",
@@ -231,7 +247,9 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "caribbean-flamingo",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Caribbean flamingo"
     },
     {
       "id": "two_toed_sloth",
@@ -257,7 +275,9 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "two-toed-sloth",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Two-toed sloth"
     },
     {
       "id": "zebra",
@@ -280,7 +300,9 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "zebra",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Zebra"
     },
     {
       "id": "galapagos_tortoise",
@@ -303,7 +325,9 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "galapagos-tortoise",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Galápagos tortoise"
     }
   ],
   "content_mode": "hybrid",
@@ -321,10 +345,14 @@
     "Leave while happy"
   ],
   "route_90m": [
-    "african_elephant",
     "reticulated_giraffe",
-    "african_lion"
+    "african_lion",
+    "sumatran_tiger"
   ],
-  "research_notes": "Map PNG from hoglezoo.org map page 2024. · map-img 2026-08-07 · map-page 2026-08-07",
-  "list_confidence": "template"
+  "research_notes": "Map PNG from hoglezoo.org map page 2024. · map-img 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "list_confidence": "template",
+  "do_not_list": [],
+  "presence_sources": [
+    "https://www.hoglezoo.org/"
+  ]
 }

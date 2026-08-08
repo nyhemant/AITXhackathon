@@ -41,11 +41,15 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "western-lowland-gorilla",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Western lowland gorilla",
+      "presence_note": "Large international collection historically."
     },
     {
       "id": "sumatran_tiger",
-      "label": "Sumatran tiger",
+      "label": "Tiger",
       "emoji": "🐯",
       "one_liner": "Tigers.",
       "tags": [
@@ -63,11 +67,15 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sumatran-tiger",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Tiger",
+      "presence_note": "Subspecies unconfirmed."
     },
     {
       "id": "reticulated_giraffe",
-      "label": "Reticulated giraffe",
+      "label": "Giraffe",
       "emoji": "🦒",
       "one_liner": "Giraffes.",
       "tags": [
@@ -85,7 +93,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "reticulated-giraffe",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Giraffe",
+      "presence_note": "Confirm."
     },
     {
       "id": "african_elephant",
@@ -107,7 +119,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-elephant",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "African elephant",
+      "presence_note": "Confirm live elephants."
     },
     {
       "id": "two_toed_sloth",
@@ -129,7 +145,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "two-toed-sloth",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Two-toed sloth",
+      "presence_note": "Strong Neotropical mammal collection."
     },
     {
       "id": "african_lion",
@@ -153,7 +173,11 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "african-lion",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "African lion",
+      "presence_note": "Confirm."
     },
     {
       "id": "african_penguin",
@@ -177,7 +201,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "african-penguin",
-      "presence": "template"
+      "presence": "template",
+      "presence_checked": "2026-08-08",
+      "display_label": "African penguin",
+      "presence_note": "Unconfirmed."
     },
     {
       "id": "chimpanzee",
@@ -204,7 +231,11 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "chimpanzee",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Chimpanzee",
+      "presence_note": "Confirm."
     },
     {
       "id": "zebra",
@@ -227,7 +258,11 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "zebra",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Zebra",
+      "presence_note": "Confirm."
     },
     {
       "id": "red_panda",
@@ -252,7 +287,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "red-panda",
-      "presence": "template"
+      "presence": "template",
+      "presence_checked": "2026-08-08",
+      "display_label": "Red panda",
+      "presence_note": "Unconfirmed."
     },
     {
       "id": "galapagos_tortoise",
@@ -275,7 +313,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "galapagos-tortoise",
-      "presence": "template"
+      "presence": "template",
+      "presence_checked": "2026-08-08",
+      "display_label": "Galápagos tortoise",
+      "presence_note": "Unconfirmed."
     },
     {
       "id": "nile_hippo",
@@ -298,7 +339,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "nile-hippo",
-      "presence": "template"
+      "presence": "template",
+      "presence_checked": "2026-08-08",
+      "display_label": "Nile hippo",
+      "presence_note": "Unconfirmed."
     },
     {
       "id": "asian_small_clawed_otter",
@@ -324,7 +368,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "asian-small-clawed-otter",
-      "presence": "template"
+      "presence": "template",
+      "presence_checked": "2026-08-08",
+      "display_label": "Asian small-clawed otter",
+      "presence_note": "Unconfirmed."
     }
   ],
   "content_mode": "hybrid",
@@ -341,10 +388,19 @@
     "Leave while happy"
   ],
   "route_90m": [
-    "western_lowland_gorilla",
-    "sumatran_tiger",
-    "reticulated_giraffe"
+    "two_toed_sloth"
   ],
-  "research_notes": "R3 2026-08-07",
-  "list_confidence": "template"
+  "research_notes": "R3 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "list_confidence": "partial",
+  "do_not_list": [
+    {
+      "catalog_id": "red-panda",
+      "name": "Red panda",
+      "reason": "Not confirmed this pass.",
+      "as_of": "2026-08-08"
+    }
+  ],
+  "presence_sources": [
+    "https://www.zoologico.com.br/"
+  ]
 }

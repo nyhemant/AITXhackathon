@@ -39,7 +39,12 @@
         "question": "What did you notice about the Shark?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "shark"
+      "catalog_id": "shark",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Shark",
+      "presence_note": "Shark Alley / sharks featured."
     },
     {
       "id": "stingray",
@@ -61,7 +66,11 @@
         "question": "What did you notice about the Stingray?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "stingray"
+      "catalog_id": "stingray",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Stingray",
+      "presence_note": "Rays commonly in touch/exhibits. Soft Ray."
     },
     {
       "id": "jellyfish",
@@ -84,7 +93,12 @@
         "question": "What did you notice about the Jellyfish?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "jellyfish"
+      "catalog_id": "jellyfish",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Jellyfish",
+      "presence_note": "Jellies / blue blubber jelly content."
     },
     {
       "id": "sea_turtle",
@@ -106,7 +120,11 @@
         "question": "What did you notice about the Sea turtle?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sea-turtle"
+      "catalog_id": "sea-turtle",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Sea turtle",
+      "presence_note": "Turtle Odyssey / sea turtles."
     },
     {
       "id": "octopus",
@@ -128,7 +146,11 @@
         "question": "What did you notice about the Octopus?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "octopus"
+      "catalog_id": "octopus",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Octopus",
+      "presence_note": "Octopus exhibits historically/current. Soft Octopus."
     },
     {
       "id": "african_penguin",
@@ -150,7 +172,11 @@
         "question": "What did you notice about the African penguin?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "african-penguin"
+      "catalog_id": "african-penguin",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "African penguin",
+      "presence_note": "Penguin colony is a signature; African/black-footed typical. Soft Penguin if unsure."
     },
     {
       "id": "clownfish",
@@ -172,7 +198,11 @@
         "question": "What did you notice about the Clownfish?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "clownfish"
+      "catalog_id": "clownfish",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Clownfish",
+      "presence_note": "Reef exhibits."
     },
     {
       "id": "seahorse",
@@ -194,7 +224,11 @@
         "question": "What did you notice about the Seahorse?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "seahorse"
+      "catalog_id": "seahorse",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Seahorse",
+      "presence_note": "Seahorses commonly exhibited."
     },
     {
       "id": "starfish",
@@ -216,7 +250,11 @@
         "question": "What did you notice about the Sea star?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "starfish"
+      "catalog_id": "starfish",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Sea star",
+      "presence_note": "Touch/rocky exhibits."
     },
     {
       "id": "eel",
@@ -238,7 +276,11 @@
         "question": "What did you notice about the Eel?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "eel"
+      "catalog_id": "eel",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Eel",
+      "presence_note": "Morays etc. common; medium."
     }
   ],
   "content_mode": "curated",
@@ -255,5 +297,18 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "list_confidence": "partial"
+  "list_confidence": "audited",
+  "do_not_list": [],
+  "route_90m": [
+    "shark",
+    "jellyfish",
+    "african_penguin"
+  ],
+  "last_presence_audit": "2026-08-08",
+  "presence_sources": [
+    "https://aqua.org/",
+    "https://aqua.org/explore/",
+    "https://aqua.org/explore/exhibits/"
+  ],
+  "research_notes": "presence-audit 2026-08-08 [minor]"
 }

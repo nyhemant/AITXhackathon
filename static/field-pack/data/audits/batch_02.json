@@ -1,0 +1,200 @@
+[
+  {
+    "slug": "dallas-zoo",
+    "name": "Dallas Zoo",
+    "type": "zoo",
+    "city": "Dallas",
+    "country": "US",
+    "official_url": "https://www.dallaszoo.com/",
+    "list_confidence": "partial",
+    "content_mode": "curated",
+    "n_items": 12
+  },
+  {
+    "slug": "delhi-zoo",
+    "name": "National Zoological Park",
+    "type": "zoo",
+    "city": "Delhi",
+    "country": "IN",
+    "official_url": "https://nzpnewdelhi.gov.in/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 12
+  },
+  {
+    "slug": "denver-museum-nature-science",
+    "name": "Denver Museum of Nature & Science",
+    "type": "museum",
+    "city": "Denver",
+    "country": "US",
+    "official_url": "https://www.dmns.org/",
+    "list_confidence": "partial",
+    "content_mode": "hybrid",
+    "n_items": 8
+  },
+  {
+    "slug": "denver-zoo",
+    "name": "Denver Zoo",
+    "type": "zoo",
+    "city": "Denver",
+    "country": "US",
+    "official_url": "https://denverzoo.org/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 12
+  },
+  {
+    "slug": "detroit-zoo",
+    "name": "Detroit Zoo",
+    "type": "zoo",
+    "city": "Royal Oak",
+    "country": "US",
+    "official_url": "https://detroitzoo.org/",
+    "list_confidence": "audited",
+    "content_mode": "curated",
+    "n_items": 12
+  },
+  {
+    "slug": "discovery-place",
+    "name": "Discovery Place Science",
+    "type": "museum",
+    "city": "Charlotte",
+    "country": "US",
+    "official_url": "https://discoveryplace.org/",
+    "list_confidence": "partial",
+    "content_mode": "hybrid",
+    "n_items": 9
+  },
+  {
+    "slug": "doseum",
+    "name": "The DoSeum",
+    "type": "museum",
+    "city": "San Antonio",
+    "country": "US",
+    "official_url": "https://www.thedoseum.org/",
+    "list_confidence": "partial",
+    "content_mode": "hybrid",
+    "n_items": 8
+  },
+  {
+    "slug": "dubai-aquarium",
+    "name": "Dubai Aquarium & Underwater Zoo",
+    "type": "aquarium",
+    "city": "Dubai",
+    "country": "AE",
+    "official_url": "https://www.dubaiaquarium.com/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 12
+  },
+  {
+    "slug": "dublin-zoo",
+    "name": "Dublin Zoo",
+    "type": "zoo",
+    "city": "Dublin",
+    "country": "IE",
+    "official_url": "https://www.dublinzoo.ie/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 12
+  },
+  {
+    "slug": "ecoparque-ba",
+    "name": "Ecoparque Buenos Aires",
+    "type": "zoo",
+    "city": "Buenos Aires",
+    "country": "AR",
+    "official_url": "https://turismo.buenosaires.gob.ar/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 12
+  },
+  {
+    "slug": "edinburgh-zoo",
+    "name": "Edinburgh Zoo",
+    "type": "zoo",
+    "city": "Edinburgh",
+    "country": "GB",
+    "official_url": "https://www.edinburghzoo.org.uk/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 11
+  },
+  {
+    "slug": "field-museum",
+    "name": "Field Museum",
+    "type": "museum",
+    "city": "Chicago",
+    "country": "US",
+    "official_url": "https://www.fieldmuseum.org/",
+    "list_confidence": "partial",
+    "content_mode": "curated",
+    "n_items": 8
+  },
+  {
+    "slug": "florida-aquarium",
+    "name": "The Florida Aquarium",
+    "type": "aquarium",
+    "city": "Tampa",
+    "country": "US",
+    "official_url": "https://www.flaquarium.org/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 12
+  },
+  {
+    "slug": "fort-worth-zoo",
+    "name": "Fort Worth Zoo",
+    "type": "zoo",
+    "city": "Fort Worth",
+    "country": "US",
+    "official_url": "https://www.fortworthzoo.org/",
+    "list_confidence": "partial",
+    "content_mode": "curated",
+    "n_items": 12
+  },
+  {
+    "slug": "frost-science",
+    "name": "Phillip and Patricia Frost Museum of Science",
+    "type": "museum",
+    "city": "Miami",
+    "country": "US",
+    "official_url": "https://www.frostscience.org/",
+    "list_confidence": "partial",
+    "content_mode": "hybrid",
+    "n_items": 9
+  },
+  {
+    "slug": "georgia-aquarium",
+    "name": "Georgia Aquarium",
+    "type": "aquarium",
+    "city": "Atlanta",
+    "country": "US",
+    "official_url": "https://www.georgiaaquarium.org/",
+    "list_confidence": "partial",
+    "content_mode": "curated",
+    "n_items": 10
+  },
+  {
+    "slug": "helsinki-zoo",
+    "name": "Korkeasaari Zoo",
+    "type": "zoo",
+    "city": "Helsinki",
+    "country": "FI",
+    "official_url": "https://www.korkeasaari.fi/en/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 13
+  },
+  {
+    "slug": "hogle-zoo",
+    "name": "Utah's Hogle Zoo",
+    "type": "zoo",
+    "city": "Salt Lake City",
+    "country": "US",
+    "official_url": "https://www.hoglezoo.org/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 12
+  }
+]

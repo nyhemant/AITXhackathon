@@ -1,0 +1,122 @@
+{
+  "slug": "cal-academy",
+  "name": "California Academy of Sciences",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.calacademy.org/exhibits",
+    "https://www.calacademy.org/"
+  ],
+  "list_confidence_recommended": "audited",
+  "practical_fixes": [],
+  "do_not_list": [],
+  "items": [
+    {
+      "id": "sci_rainforest",
+      "label": "Rainforest dome",
+      "catalog_id": "sci-rainforest",
+      "presence": "verified",
+      "display_label": "Rainforest dome",
+      "official_name": "Osher Rainforest",
+      "notes": "",
+      "source_url": "https://www.calacademy.org/exhibits"
+    },
+    {
+      "id": "shark",
+      "label": "Shark",
+      "catalog_id": "shark",
+      "presence": "verified",
+      "display_label": "Shark",
+      "official_name": "Steinhart Aquarium",
+      "notes": "Steinhart Aquarium — sharks among 60k animals.",
+      "source_url": ""
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "high",
+      "display_label": "Penguin",
+      "official_name": "",
+      "notes": "African penguins historically iconic at Cal Academy aquarium — high.",
+      "source_url": ""
+    },
+    {
+      "id": "jellyfish",
+      "label": "Jellyfish",
+      "catalog_id": "jellyfish",
+      "presence": "high",
+      "display_label": "Jellyfish",
+      "official_name": "",
+      "notes": "Longstanding jelly exhibits in Steinhart.",
+      "source_url": ""
+    },
+    {
+      "id": "octopus",
+      "label": "Octopus",
+      "catalog_id": "octopus",
+      "presence": "high",
+      "display_label": "Octopus",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "stingray",
+      "label": "Stingray",
+      "catalog_id": "stingray",
+      "presence": "high",
+      "display_label": "Stingray",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "sci_planet",
+      "label": "Planet / space hall",
+      "catalog_id": "sci-planet",
+      "presence": "verified",
+      "display_label": "Planet / space hall",
+      "official_name": "Morrison Planetarium",
+      "notes": "",
+      "source_url": "https://www.calacademy.org/exhibits"
+    },
+    {
+      "id": "sci_hands_on",
+      "label": "Hands-on lab",
+      "catalog_id": "sci-hands-on",
+      "presence": "high",
+      "display_label": "Hands-on lab",
+      "official_name": "",
+      "notes": "Interactive science exhibits throughout.",
+      "source_url": ""
+    },
+    {
+      "id": "seahorse",
+      "label": "Seahorse",
+      "catalog_id": "seahorse",
+      "presence": "high",
+      "display_label": "Seahorse",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "clownfish",
+      "label": "Clownfish",
+      "catalog_id": "clownfish",
+      "presence": "medium",
+      "display_label": "Clownfish",
+      "official_name": "",
+      "notes": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "sci_rainforest",
+    "shark",
+    "sci_planet"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "Osher Rainforest, Steinhart Aquarium, Morrison Planetarium verified on official exhibits page. Strong curated list.",
+  "severity": "ok"
+}

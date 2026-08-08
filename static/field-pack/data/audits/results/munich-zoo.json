@@ -1,0 +1,156 @@
+{
+  "slug": "munich-zoo",
+  "name": "Hellabrunn Zoo",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.hellabrunn.de/en/",
+    "https://www.hellabrunn.de/en/animals",
+    "https://en.wikipedia.org/wiki/Hellabrunn_Zoo"
+  ],
+  "list_confidence_recommended": "partial",
+  "practical_fixes": [
+    {
+      "field": "items.sumatran_tiger",
+      "current": "Sumatran tiger",
+      "suggested": "Soft Tiger — confirm subspecies",
+      "reason": "Hellabrunn has big cats; subspecies not verified this pass."
+    },
+    {
+      "field": "items.african_penguin",
+      "current": "African penguin",
+      "suggested": "Confirm penguin species",
+      "reason": "Penguin species label risk."
+    }
+  ],
+  "do_not_list": [],
+  "items": [
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "high",
+      "display_label": "Elephant",
+      "official_name": "Elephant",
+      "notes": "Hellabrunn long known for elephants (geo-zoo). Soft Elephant; confirm African.",
+      "source_url": "https://www.hellabrunn.de/en/"
+    },
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "high",
+      "display_label": "Gorilla",
+      "official_name": "Gorilla",
+      "notes": "Gorillas are a known Hellabrunn highlight.",
+      "source_url": ""
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "high",
+      "display_label": "Giraffe",
+      "official_name": "Giraffe",
+      "notes": "Giraffes present; subspecies soft.",
+      "source_url": ""
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "medium",
+      "display_label": "Tiger",
+      "official_name": "Tiger",
+      "notes": "Tigers; subspecies unverified. Soft Tiger.",
+      "source_url": ""
+    },
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "high",
+      "display_label": "Lion",
+      "official_name": "Lion",
+      "notes": "Lions in Africa area.",
+      "source_url": ""
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "medium",
+      "display_label": "Penguin (verify)",
+      "official_name": "",
+      "notes": "Penguins may be present; African label medium.",
+      "source_url": ""
+    },
+    {
+      "id": "chimpanzee",
+      "label": "Chimpanzee",
+      "catalog_id": "chimpanzee",
+      "presence": "high",
+      "display_label": "Chimpanzee",
+      "official_name": "Chimpanzee",
+      "notes": "Primates house — chimps known historically.",
+      "source_url": ""
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "high",
+      "display_label": "Zebra",
+      "official_name": "Zebra",
+      "notes": "Africa hoofstock.",
+      "source_url": ""
+    },
+    {
+      "id": "red_panda",
+      "label": "Red panda",
+      "catalog_id": "red-panda",
+      "presence": "medium",
+      "display_label": "Red panda",
+      "official_name": "",
+      "notes": "Often present in European zoos; not verified.",
+      "source_url": ""
+    },
+    {
+      "id": "asian_small_clawed_otter",
+      "label": "Asian small-clawed otter",
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "medium",
+      "display_label": "Asian small-clawed otter",
+      "official_name": "",
+      "notes": "Common; not verified.",
+      "source_url": ""
+    },
+    {
+      "id": "nile_hippo",
+      "label": "Nile hippo",
+      "catalog_id": "nile-hippo",
+      "presence": "medium",
+      "display_label": "Nile hippo",
+      "official_name": "",
+      "notes": "Hippos historically at Hellabrunn; verify current.",
+      "source_url": ""
+    },
+    {
+      "id": "galapagos_tortoise",
+      "label": "Galápagos tortoise",
+      "catalog_id": "galapagos-tortoise",
+      "presence": "unclear",
+      "display_label": "Galápagos tortoise",
+      "official_name": "",
+      "notes": "Not verified.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "african_elephant",
+    "western_lowland_gorilla",
+    "reticulated_giraffe"
+  ],
+  "content_mode_recommended": "hybrid",
+  "summary": "Major European geo-zoo: elephant/gorilla/giraffe/lion/zebra high confidence from institutional knowledge + site, but English animal pages thin in fetch — partial not full audited. Subspecies labels medium.",
+  "severity": "minor"
+}

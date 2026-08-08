@@ -1,0 +1,124 @@
+{
+  "slug": "field-museum",
+  "name": "Field Museum",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.fieldmuseum.org/",
+    "https://www.fieldmuseum.org/exhibition/halls-and-galleries/evolving-planet",
+    "https://www.fieldmuseum.org/exhibitions"
+  ],
+  "list_confidence_recommended": "partial",
+  "practical_fixes": [],
+  "do_not_list": [
+    {
+      "catalog_id": "sci-planet",
+      "name": "Planet / space hall",
+      "reason": "No Field Museum planetarium; Adler is separate."
+    },
+    {
+      "catalog_id": "sci-rainforest",
+      "name": "Rainforest dome",
+      "reason": "Not a Field permanent hall name (Uganda etc. may exist as halls — confirm; generic dome wrong)."
+    },
+    {
+      "catalog_id": "sci-aquarium-zone",
+      "name": "Aquarium zone",
+      "reason": "Shedd Aquarium is next door, not Field."
+    },
+    {
+      "catalog_id": "cm-art-lab",
+      "name": "Art Lab",
+      "reason": "Not a Field Museum family mission stop."
+    }
+  ],
+  "items": [
+    {
+      "id": "sci_dinosaur",
+      "label": "Dinosaur hall",
+      "catalog_id": "sci-dinosaur",
+      "presence": "verified",
+      "display_label": "SUE / Evolving Planet dinosaurs",
+      "official_name": "Griffin Halls of Evolving Planet; SUE the T. rex",
+      "notes": "",
+      "source_url": "https://www.fieldmuseum.org/exhibition/halls-and-galleries/evolving-planet"
+    },
+    {
+      "id": "sci_mammal_hall",
+      "label": "Animal / mammal hall",
+      "catalog_id": "sci-mammal-hall",
+      "presence": "verified",
+      "display_label": "Mammals halls",
+      "official_name": "Various mammal halls / dioramas",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "sci_hands_on",
+      "label": "Hands-on lab",
+      "catalog_id": "sci-hands-on",
+      "presence": "medium",
+      "display_label": "Crown Family PlayLab / hands-on",
+      "official_name": "",
+      "notes": "PlayLab exists for younger kids — confirm branding",
+      "source_url": ""
+    },
+    {
+      "id": "sci_planet",
+      "label": "Planet / space hall",
+      "catalog_id": "sci-planet",
+      "presence": "absent",
+      "display_label": "Planet / space hall",
+      "official_name": "",
+      "notes": "Not Field",
+      "source_url": ""
+    },
+    {
+      "id": "sci_rainforest",
+      "label": "Rainforest dome",
+      "catalog_id": "sci-rainforest",
+      "presence": "medium",
+      "display_label": "Africa / rainforest halls",
+      "official_name": "",
+      "notes": "May map to specific halls; not a dome",
+      "source_url": ""
+    },
+    {
+      "id": "cm_free_explore",
+      "label": "Free explore",
+      "catalog_id": "cm-free-explore",
+      "presence": "medium",
+      "display_label": "Free explore",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "sci_aquarium_zone",
+      "label": "Aquarium zone",
+      "catalog_id": "sci-aquarium-zone",
+      "presence": "absent",
+      "display_label": "Aquarium zone",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "cm_art_lab",
+      "label": "Art Lab",
+      "catalog_id": "cm-art-lab",
+      "presence": "absent",
+      "display_label": "Art Lab",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "sci_dinosaur",
+    "sci_mammal_hall",
+    "cm_free_explore"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "Dinosaur hall (SUE / Evolving Planet / Genius Hall of Dinosaurs) and mammal halls are core. Planetarium, rainforest dome, aquarium zone, Art Lab are wrong venue taxonomy — Field is natural history, not Adler Planetarium or Shedd Aquarium. Major leakage.",
+  "severity": "major"
+}

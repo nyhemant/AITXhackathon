@@ -1,0 +1,179 @@
+{
+  "slug": "waikiki-aquarium",
+  "name": "Waikiki Aquarium",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.waikikiaquarium.org/",
+    "https://www.waikikiaquarium.org/experience/animal-guide/marine-mammals/hawaiian-monk-seal/",
+    "https://www.hawaii.edu/news/2025/09/26/monk-seal-returns-waikiki-aquarium/"
+  ],
+  "list_confidence_recommended": "partial",
+  "practical_fixes": [
+    {
+      "field": "missing_icons",
+      "current": "",
+      "suggested": "Hawaiian monk seal",
+      "reason": "Hōʻailona/Maka onaona monk seals are THE mammal icon — missing from pack."
+    },
+    {
+      "field": "items.asian_small_clawed_otter",
+      "current": "Asian small-clawed otter",
+      "suggested": "REMOVE",
+      "reason": "No otters — monk seals instead."
+    },
+    {
+      "field": "items.freshwater_fish",
+      "current": "River/lake fish",
+      "suggested": "Hawaiian stream gobies if any, else remove",
+      "reason": "Venue is marine Hawaiian reef focused."
+    },
+    {
+      "field": "typical_duration",
+      "current": "half day",
+      "suggested": "1–2 hours",
+      "reason": "Tiny campus — half day overstates."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "asian-small-clawed-otter",
+      "name": "Asian small-clawed otter",
+      "reason": "Not present; Hawaiian monk seals are the mammal exhibit."
+    },
+    {
+      "catalog_id": "freshwater-fish",
+      "name": "River / lake fish",
+      "reason": "Not a freshwater aquarium — Hawaiian marine focus."
+    }
+  ],
+  "items": [
+    {
+      "id": "shark",
+      "label": "Shark",
+      "catalog_id": "shark",
+      "presence": "high",
+      "display_label": "Shark",
+      "official_name": "",
+      "notes": "Hawaiian reef sharks/gallery fishes.",
+      "source_url": "https://www.waikikiaquarium.org/"
+    },
+    {
+      "id": "sea_turtle",
+      "label": "Sea turtle",
+      "catalog_id": "sea-turtle",
+      "presence": "high",
+      "display_label": "Sea turtle",
+      "official_name": "",
+      "notes": "Sea turtles common Hawaiian aquarium highlight.",
+      "source_url": "https://www.waikikiaquarium.org/"
+    },
+    {
+      "id": "jellyfish",
+      "label": "Jellyfish",
+      "catalog_id": "jellyfish",
+      "presence": "high",
+      "display_label": "Jellyfish",
+      "official_name": "",
+      "notes": "Jellies common.",
+      "source_url": "https://www.waikikiaquarium.org/"
+    },
+    {
+      "id": "octopus",
+      "label": "Octopus",
+      "catalog_id": "octopus",
+      "presence": "high",
+      "display_label": "Octopus",
+      "official_name": "",
+      "notes": "Hawaiian day octopus etc. common.",
+      "source_url": "https://www.waikikiaquarium.org/"
+    },
+    {
+      "id": "clownfish",
+      "label": "Clownfish",
+      "catalog_id": "clownfish",
+      "presence": "high",
+      "display_label": "Clownfish",
+      "official_name": "",
+      "notes": "Reef fishes.",
+      "source_url": "https://www.waikikiaquarium.org/"
+    },
+    {
+      "id": "stingray",
+      "label": "Stingray",
+      "catalog_id": "stingray",
+      "presence": "medium",
+      "display_label": "Stingray",
+      "official_name": "",
+      "notes": "Confirm.",
+      "source_url": ""
+    },
+    {
+      "id": "seahorse",
+      "label": "Seahorse",
+      "catalog_id": "seahorse",
+      "presence": "high",
+      "display_label": "Seahorse",
+      "official_name": "",
+      "notes": "Often featured.",
+      "source_url": "https://www.waikikiaquarium.org/"
+    },
+    {
+      "id": "eel",
+      "label": "Eel",
+      "catalog_id": "eel",
+      "presence": "high",
+      "display_label": "Eel",
+      "official_name": "",
+      "notes": "Moray eels common Hawaiian reef.",
+      "source_url": "https://www.waikikiaquarium.org/"
+    },
+    {
+      "id": "crab",
+      "label": "Crab",
+      "catalog_id": "crab",
+      "presence": "high",
+      "display_label": "Crab",
+      "official_name": "",
+      "notes": "Invertebrates common.",
+      "source_url": ""
+    },
+    {
+      "id": "starfish",
+      "label": "Sea star",
+      "catalog_id": "starfish",
+      "presence": "high",
+      "display_label": "Sea star",
+      "official_name": "",
+      "notes": "Sea stars common.",
+      "source_url": ""
+    },
+    {
+      "id": "freshwater_fish",
+      "label": "River / lake fish",
+      "catalog_id": "freshwater-fish",
+      "presence": "absent",
+      "display_label": "River / lake fish",
+      "official_name": "",
+      "notes": "Not a freshwater venue signature.",
+      "source_url": ""
+    },
+    {
+      "id": "asian_small_clawed_otter",
+      "label": "Asian small-clawed otter",
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "absent",
+      "display_label": "Asian small-clawed otter",
+      "official_name": "",
+      "notes": "No otters; monk seals instead.",
+      "source_url": "https://www.waikikiaquarium.org/experience/animal-guide/marine-mammals/hawaiian-monk-seal/"
+    }
+  ],
+  "route_90m_recommended": [
+    "sea_turtle",
+    "shark",
+    "octopus"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "MAJOR: otters absent; Hawaiian monk seal missing from pack. Tiny reef aquarium — drop freshwater template. Duration likely 1–2h not half day.",
+  "severity": "major"
+}

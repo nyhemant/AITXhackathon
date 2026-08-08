@@ -1,0 +1,141 @@
+{
+  "slug": "nashville-adventure-science",
+  "name": "Adventure Science Center",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.adventuresci.org/",
+    "https://www.adventuresci.org/exhibits"
+  ],
+  "list_confidence_recommended": "partial",
+  "practical_fixes": [
+    {
+      "field": "items.sci_shuttle",
+      "current": "Space shuttle / orbiter",
+      "suggested": "Remove",
+      "reason": "No orbiter craft."
+    },
+    {
+      "field": "items generic CM",
+      "current": "cm_imaginarium etc.",
+      "suggested": "Map to Adventure Science Center named exhibits (e.g. Adventure Tower, Body, Space Chase)",
+      "reason": "Generic taxonomy."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "sci-shuttle",
+      "name": "Space shuttle / orbiter",
+      "reason": "Not present."
+    }
+  ],
+  "items": [
+    {
+      "id": "sci_hands_on",
+      "label": "Hands-on lab",
+      "catalog_id": "sci-hands-on",
+      "presence": "verified",
+      "display_label": "Hands-on",
+      "official_name": "Hands-on exhibits",
+      "notes": "Core interactive science center.",
+      "source_url": "https://www.adventuresci.org/"
+    },
+    {
+      "id": "cm_outdoor",
+      "label": "Outdoor Area",
+      "catalog_id": "cm-outdoor",
+      "presence": "high",
+      "display_label": "Climb / outdoor",
+      "official_name": "",
+      "notes": "Climbing/body play energy outdoors or large-body exhibits. Soft Outdoor/climb.",
+      "source_url": ""
+    },
+    {
+      "id": "sci_planet",
+      "label": "Planet / space hall",
+      "catalog_id": "sci-planet",
+      "presence": "verified",
+      "display_label": "Planetarium",
+      "official_name": "Planetarium",
+      "notes": "Planetarium present.",
+      "source_url": "https://www.adventuresci.org/exhibits"
+    },
+    {
+      "id": "cm_makery",
+      "label": "Creative Makery",
+      "catalog_id": "cm-makery",
+      "presence": "medium",
+      "display_label": "Make",
+      "official_name": "",
+      "notes": "Maker-style activities under other names.",
+      "source_url": ""
+    },
+    {
+      "id": "cm_toddler_garden",
+      "label": "Toddler Garden",
+      "catalog_id": "cm-toddler-garden",
+      "presence": "medium",
+      "display_label": "Little kids zone",
+      "official_name": "",
+      "notes": "Younger kid zones likely; name may differ.",
+      "source_url": ""
+    },
+    {
+      "id": "sci_dinosaur",
+      "label": "Dinosaur hall",
+      "catalog_id": "sci-dinosaur",
+      "presence": "medium",
+      "display_label": "Dinosaurs (verify)",
+      "official_name": "",
+      "notes": "Dino content sometimes rotating; not verified permanent hall.",
+      "source_url": ""
+    },
+    {
+      "id": "cm_imaginarium",
+      "label": "Imaginarium",
+      "catalog_id": "cm-imaginarium",
+      "presence": "absent",
+      "display_label": "— remove —",
+      "official_name": "",
+      "notes": "Not a named ASC hall.",
+      "source_url": ""
+    },
+    {
+      "id": "cm_free_explore",
+      "label": "Free explore",
+      "catalog_id": "cm-free-explore",
+      "presence": "verified",
+      "display_label": "Free explore",
+      "official_name": "Free explore",
+      "notes": "Valid.",
+      "source_url": ""
+    },
+    {
+      "id": "sci_shuttle",
+      "label": "Space shuttle / orbiter",
+      "catalog_id": "sci-shuttle",
+      "presence": "absent",
+      "display_label": "— remove —",
+      "official_name": "",
+      "notes": "No orbiter.",
+      "source_url": ""
+    },
+    {
+      "id": "sci_rocket",
+      "label": "Rockets & launch",
+      "catalog_id": "sci-rocket",
+      "presence": "medium",
+      "display_label": "Space",
+      "official_name": "",
+      "notes": "Space exhibits exist; not KSC rockets.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "sci_hands_on",
+    "sci_planet",
+    "cm_outdoor"
+  ],
+  "content_mode_recommended": "hybrid",
+  "summary": "Hands-on + planetarium verified. Drop shuttle orbiter and generic Imaginarium. Map to real ASC exhibit names when editing live JSON later.",
+  "severity": "major"
+}

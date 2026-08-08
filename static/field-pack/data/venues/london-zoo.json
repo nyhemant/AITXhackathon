@@ -39,7 +39,11 @@
         "question": "Are gorillas mean?",
         "answer": "They are strong but mostly gentle plant-eaters who live in families."
       },
-      "catalog_id": "western-lowland-gorilla"
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Gorilla (Gorilla Kingdom)"
     },
     {
       "id": "penguin",
@@ -58,7 +62,12 @@
         "9+"
       ],
       "zone": "",
-      "catalog_id": "african-penguin"
+      "catalog_id": "african-penguin",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Penguin",
+      "presence_note": "Not African"
     },
     {
       "id": "tiger",
@@ -77,11 +86,15 @@
         "9+"
       ],
       "zone": "",
-      "catalog_id": "sumatran-tiger"
+      "catalog_id": "sumatran-tiger",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Tiger"
     },
     {
       "id": "lion",
-      "label": "Lion",
+      "label": "Asiatic lion",
       "emoji": "🦁",
       "one_liner": "Asiatic lions on the pride rocks.",
       "tags": [
@@ -96,7 +109,12 @@
         "9+"
       ],
       "zone": "Land of the Lions",
-      "catalog_id": "african-lion"
+      "catalog_id": "african-lion",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Asiatic lion",
+      "presence_note": "Wrong catalog african-lion"
     },
     {
       "id": "sloth",
@@ -115,11 +133,14 @@
         "9+"
       ],
       "zone": "",
-      "catalog_id": "two-toed-sloth"
+      "catalog_id": "two-toed-sloth",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Two-toed sloth"
     },
     {
       "id": "lemur",
-      "label": "Lemur / Madagascar",
+      "label": "Lemur",
       "emoji": "🐒",
       "one_liner": "Stripy tails and island energy.",
       "tags": [
@@ -133,7 +154,10 @@
         "9+"
       ],
       "zone": "Madagascar",
-      "catalog_id": "ring-tailed-lemur"
+      "catalog_id": "ring-tailed-lemur",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Lemur"
     },
     {
       "id": "tortoise",
@@ -151,7 +175,11 @@
         "9+"
       ],
       "zone": "",
-      "catalog_id": "galapagos-tortoise"
+      "catalog_id": "galapagos-tortoise",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "display_label": "Giant tortoise",
+      "presence_note": "Giants of the Galapagos"
     },
     {
       "id": "otter",
@@ -169,11 +197,14 @@
         "9+"
       ],
       "zone": "",
-      "catalog_id": "asian-small-clawed-otter"
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Otter"
     },
     {
       "id": "chimp",
-      "label": "Monkey / ape friends",
+      "label": "Monkeys & apes",
       "emoji": "🐵",
       "one_liner": "Climbing primates beyond the gorillas.",
       "tags": [
@@ -187,7 +218,11 @@
         "9+"
       ],
       "zone": "",
-      "catalog_id": "chimpanzee"
+      "catalog_id": "chimpanzee",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Monkeys & apes",
+      "presence_note": "Soft; confirm chimps specifically"
     },
     {
       "id": "capybara",
@@ -203,11 +238,14 @@
         "6-8",
         "9+"
       ],
-      "zone": ""
+      "zone": "",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Capybara area"
     },
     {
       "id": "butterfly-or-indoor",
-      "label": "Indoor rainforest moments",
+      "label": "Indoor rainforest / Blackburn Pavilion area",
       "emoji": "🌿",
       "one_liner": "Warm indoor habitats when London is rainy.",
       "tags": [
@@ -219,7 +257,10 @@
         "4-5",
         "6-8"
       ],
-      "zone": ""
+      "zone": "",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Indoor rainforest / Blackburn Pavilion area"
     },
     {
       "id": "play",
@@ -234,7 +275,10 @@
         "2-3",
         "4-5"
       ],
-      "zone": ""
+      "zone": "",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Play / under-5 reset"
     }
   ],
   "content_mode": "curated",
@@ -251,6 +295,17 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "research_notes": "web-map 2026-08-07",
-  "list_confidence": "partial"
+  "research_notes": "web-map 2026-08-07 · presence-audit 2026-08-08 [minor]",
+  "list_confidence": "audited",
+  "do_not_list": [],
+  "route_90m": [
+    "gorilla",
+    "penguin",
+    "tiger"
+  ],
+  "last_presence_audit": "2026-08-08",
+  "presence_sources": [
+    "https://www.londonzoo.org/whats-here/animals",
+    "https://www.londonzoo.org/whats-here/habitats"
+  ]
 }

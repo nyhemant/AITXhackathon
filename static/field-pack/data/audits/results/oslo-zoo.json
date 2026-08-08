@@ -1,0 +1,193 @@
+{
+  "slug": "oslo-zoo",
+  "name": "Kristiansand Zoo",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.dyreparken.no/english/",
+    "https://en.wikipedia.org/wiki/Kristiansand_Zoo_and_Amusement_Park",
+    "https://www.visitnorway.com/things-to-do/family-fun/animal-parks-zoos-and-aquariums/"
+  ],
+  "list_confidence_recommended": "partial",
+  "practical_fixes": [
+    {
+      "field": "slug/name/city",
+      "current": "slug oslo-zoo but name Kristiansand Zoo, city Kristiansand",
+      "suggested": "Keep Kristiansand naming consistent; avoid implying Oslo city zoo",
+      "reason": "Dyreparken is in Kristiansand, ~300km from Oslo."
+    },
+    {
+      "field": "items.african_elephant",
+      "current": "African elephant",
+      "suggested": "Verify — not highlighted in English species summaries",
+      "reason": "Wiki/visitnorway highlight lions, giraffes, chimps, tigers, Nordic animals — elephants not prominent."
+    },
+    {
+      "field": "items.sumatran_tiger",
+      "current": "Sumatran tiger",
+      "suggested": "Siberian/Amur tiger per wiki — soft Tiger",
+      "reason": "Wiki: Siberian tigers."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Not confirmed in Kristiansand Dyreparken public species summaries reviewed."
+    },
+    {
+      "catalog_id": "nile-hippo",
+      "name": "Nile hippo",
+      "reason": "Not confirmed."
+    },
+    {
+      "catalog_id": "galapagos-tortoise",
+      "name": "Galápagos tortoise",
+      "reason": "Tropical dept has tortoises; Galápagos label unconfirmed."
+    },
+    {
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "Not confirmed."
+    }
+  ],
+  "items": [
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "verified",
+      "display_label": "Lion",
+      "official_name": "Lion",
+      "notes": "Africa section: lions.",
+      "source_url": "https://en.wikipedia.org/wiki/Kristiansand_Zoo_and_Amusement_Park"
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "high",
+      "display_label": "Giraffe",
+      "official_name": "Giraffe",
+      "notes": "Giraffes on savannah; soft Giraffe.",
+      "source_url": ""
+    },
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "unclear",
+      "display_label": "African elephant",
+      "official_name": "",
+      "notes": "Not in primary species summaries.",
+      "source_url": ""
+    },
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "unclear",
+      "display_label": "Western lowland gorilla",
+      "official_name": "",
+      "notes": "Not highlighted; apes include chimps/orangutans.",
+      "source_url": ""
+    },
+    {
+      "id": "cm_outdoor",
+      "label": "Outdoor Area",
+      "catalog_id": "cm-outdoor",
+      "presence": "verified",
+      "display_label": "Outdoor park",
+      "official_name": "Park grounds",
+      "notes": "Huge park + amusements; outdoor is the point.",
+      "source_url": ""
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "absent",
+      "display_label": "— relabel Tiger/Siberian —",
+      "official_name": "Siberian tiger",
+      "notes": "Siberian tigers per wiki — not Sumatran. Soft Tiger OK as separate fix.",
+      "source_url": ""
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "unclear",
+      "display_label": "African penguin",
+      "official_name": "",
+      "notes": "Not confirmed.",
+      "source_url": ""
+    },
+    {
+      "id": "chimpanzee",
+      "label": "Chimpanzee",
+      "catalog_id": "chimpanzee",
+      "presence": "verified",
+      "display_label": "Chimpanzee",
+      "official_name": "Chimpanzee",
+      "notes": "Famous chimp Julius / tropical department apes.",
+      "source_url": ""
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "high",
+      "display_label": "Zebra",
+      "official_name": "Zebra",
+      "notes": "Africa savannah.",
+      "source_url": ""
+    },
+    {
+      "id": "red_panda",
+      "label": "Red panda",
+      "catalog_id": "red-panda",
+      "presence": "high",
+      "display_label": "Red panda",
+      "official_name": "Red panda",
+      "notes": "Asia section: red pandas.",
+      "source_url": ""
+    },
+    {
+      "id": "asian_small_clawed_otter",
+      "label": "Asian small-clawed otter",
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "unclear",
+      "display_label": "Asian small-clawed otter",
+      "official_name": "",
+      "notes": "Not confirmed.",
+      "source_url": ""
+    },
+    {
+      "id": "nile_hippo",
+      "label": "Nile hippo",
+      "catalog_id": "nile-hippo",
+      "presence": "unclear",
+      "display_label": "Nile hippo",
+      "official_name": "",
+      "notes": "Not confirmed.",
+      "source_url": ""
+    },
+    {
+      "id": "galapagos_tortoise",
+      "label": "Galápagos tortoise",
+      "catalog_id": "galapagos-tortoise",
+      "presence": "medium",
+      "display_label": "Tortoise (verify)",
+      "official_name": "Tortoise",
+      "notes": "Tortoises in tropical dept; species label medium.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "african_lion",
+    "chimpanzee",
+    "cm_outdoor"
+  ],
+  "content_mode_recommended": "hybrid",
+  "summary": "MAJOR geo naming: Kristiansand not Oslo. Lions, chimps, giraffes, zebras, red pandas high. Sumatran tiger wrong subspecies (Siberian). Elephant unconfirmed. Amusement-park hybrid venue.",
+  "severity": "major"
+}

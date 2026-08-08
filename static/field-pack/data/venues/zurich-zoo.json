@@ -22,7 +22,7 @@
   "items": [
     {
       "id": "cm_outdoor",
-      "label": "Outdoor Area",
+      "label": "Masoala Rainforest",
       "emoji": "🌳",
       "one_liner": "Rainforest hall — warm humid wow indoors.",
       "tags": [
@@ -41,11 +41,15 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "cm-outdoor",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Masoala Rainforest",
+      "presence_note": "Masoala Rainforest is the signature hall (plus outdoor habitats)."
     },
     {
       "id": "sumatran_tiger",
-      "label": "Sumatran tiger",
+      "label": "Tiger",
       "emoji": "🐯",
       "one_liner": "Tigers.",
       "tags": [
@@ -63,11 +67,15 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sumatran-tiger",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Tiger",
+      "presence_note": "Tigers present in Asian habitats; soft Tiger."
     },
     {
       "id": "reticulated_giraffe",
-      "label": "Reticulated giraffe",
+      "label": "Giraffe",
       "emoji": "🦒",
       "one_liner": "Giraffes.",
       "tags": [
@@ -85,29 +93,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "reticulated-giraffe",
-      "presence": "template"
-    },
-    {
-      "id": "african_elephant",
-      "label": "African elephant",
-      "emoji": "🐘",
-      "one_liner": "Elephants.",
-      "tags": [
-        "big"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Elephants",
-      "qa_card": {
-        "question": "What did you notice about the African elephant?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "african-elephant",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Giraffe",
+      "presence_note": "Lewa Savanna giraffes; soft Giraffe."
     },
     {
       "id": "red_panda",
@@ -129,7 +119,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "red-panda",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Red panda",
+      "presence_note": "Common European zoo species; confirm on map."
     },
     {
       "id": "african_lion",
@@ -153,7 +146,11 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "african-lion",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "African lion",
+      "presence_note": "Lewa Savanna predators likely."
     },
     {
       "id": "western_lowland_gorilla",
@@ -177,7 +174,11 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "western-lowland-gorilla",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Western lowland gorilla",
+      "presence_note": "Gorillas present; Ndoki Forest expansion planned."
     },
     {
       "id": "african_penguin",
@@ -201,7 +202,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "african-penguin",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "African penguin",
+      "presence_note": "Confirm."
     },
     {
       "id": "chimpanzee",
@@ -228,7 +232,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "chimpanzee",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Chimpanzee",
+      "presence_note": "Confirm vs other primates."
     },
     {
       "id": "zebra",
@@ -251,7 +258,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "zebra",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Zebra",
+      "presence_note": "Savanna hoofstock."
     },
     {
       "id": "asian_small_clawed_otter",
@@ -277,7 +287,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "asian-small-clawed-otter",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Asian small-clawed otter",
+      "presence_note": "Confirm."
     },
     {
       "id": "nile_hippo",
@@ -300,7 +313,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "nile-hippo",
-      "presence": "template"
+      "presence": "template",
+      "presence_checked": "2026-08-08",
+      "display_label": "Nile hippo",
+      "presence_note": "Pygmy hippo in future Ndoki plans; Nile not confirmed."
     },
     {
       "id": "galapagos_tortoise",
@@ -323,7 +339,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "galapagos-tortoise",
-      "presence": "template"
+      "presence": "template",
+      "presence_checked": "2026-08-08",
+      "display_label": "Galápagos tortoise",
+      "presence_note": "Unconfirmed."
     }
   ],
   "content_mode": "hybrid",
@@ -345,6 +364,24 @@
     "sumatran_tiger",
     "reticulated_giraffe"
   ],
-  "research_notes": "R3 2026-08-07 · map-page 2026-08-07",
-  "list_confidence": "template"
+  "research_notes": "R3 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "list_confidence": "partial",
+  "do_not_list": [
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Kaeng Krachan holds Asian elephants — wrong species.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "galapagos-tortoise",
+      "name": "Galápagos tortoise",
+      "reason": "Not confirmed as print icon.",
+      "as_of": "2026-08-08"
+    }
+  ],
+  "presence_sources": [
+    "https://www.zoo.ch/en",
+    "https://www.zuerich.com/en/visit/nature/zurich-zoo-masoala-rainforest"
+  ]
 }

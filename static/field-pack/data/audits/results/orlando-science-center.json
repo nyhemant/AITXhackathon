@@ -1,0 +1,121 @@
+{
+  "slug": "orlando-science-center",
+  "name": "Orlando Science Center",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.osc.org/",
+    "https://www.osc.org/exhibits"
+  ],
+  "list_confidence_recommended": "partial",
+  "practical_fixes": [
+    {
+      "field": "items.sci_shuttle",
+      "current": "Space shuttle / orbiter",
+      "suggested": "Remove — KSC has orbiters/hardware; OSC is hands-on science center",
+      "reason": "No shuttle orbiter at OSC."
+    },
+    {
+      "field": "generic CM labels",
+      "current": "cm_imaginarium, cm_makery",
+      "suggested": "Map to OSC named halls",
+      "reason": "Taxonomy leakage."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "sci-shuttle",
+      "name": "Space shuttle / orbiter",
+      "reason": "Not at Orlando Science Center."
+    }
+  ],
+  "items": [
+    {
+      "id": "sci_hands_on",
+      "label": "Hands-on lab",
+      "catalog_id": "sci-hands-on",
+      "presence": "verified",
+      "display_label": "Hands-on",
+      "official_name": "Hands-on exhibits",
+      "notes": "Core OSC identity.",
+      "source_url": "https://www.osc.org/"
+    },
+    {
+      "id": "sci_planet",
+      "label": "Planet / space hall",
+      "catalog_id": "sci-planet",
+      "presence": "high",
+      "display_label": "Planetarium",
+      "official_name": "Planetarium",
+      "notes": "Planetarium typically part of OSC. Soft Planetarium.",
+      "source_url": ""
+    },
+    {
+      "id": "sci_dinosaur",
+      "label": "Dinosaur hall",
+      "catalog_id": "sci-dinosaur",
+      "presence": "high",
+      "display_label": "Dinosaurs",
+      "official_name": "Dinosaurs",
+      "notes": "Dino exhibits commonly featured. Soft Dinosaurs.",
+      "source_url": ""
+    },
+    {
+      "id": "cm_free_explore",
+      "label": "Free explore",
+      "catalog_id": "cm-free-explore",
+      "presence": "verified",
+      "display_label": "Free explore",
+      "official_name": "Free explore",
+      "notes": "Valid.",
+      "source_url": ""
+    },
+    {
+      "id": "sci_rocket",
+      "label": "Rockets & launch",
+      "catalog_id": "sci-rocket",
+      "presence": "medium",
+      "display_label": "Space",
+      "official_name": "",
+      "notes": "Space content; not a rocket park.",
+      "source_url": ""
+    },
+    {
+      "id": "cm_makery",
+      "label": "Creative Makery",
+      "catalog_id": "cm-makery",
+      "presence": "medium",
+      "display_label": "Make",
+      "official_name": "",
+      "notes": "Maker activities under other names.",
+      "source_url": ""
+    },
+    {
+      "id": "cm_imaginarium",
+      "label": "Imaginarium",
+      "catalog_id": "cm-imaginarium",
+      "presence": "absent",
+      "display_label": "— remove —",
+      "official_name": "",
+      "notes": "Not a named OSC hall.",
+      "source_url": ""
+    },
+    {
+      "id": "sci_shuttle",
+      "label": "Space shuttle / orbiter",
+      "catalog_id": "sci-shuttle",
+      "presence": "absent",
+      "display_label": "— remove —",
+      "official_name": "",
+      "notes": "No orbiter.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "sci_hands_on",
+    "sci_planet",
+    "sci_dinosaur"
+  ],
+  "content_mode_recommended": "hybrid",
+  "summary": "Hands-on science center list mostly OK if shuttle/Imaginarium dropped. Partial until named-exhibit mapping.",
+  "severity": "major"
+}

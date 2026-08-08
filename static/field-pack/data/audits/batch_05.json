@@ -1,0 +1,200 @@
+[
+  {
+    "slug": "new-england-aquarium",
+    "name": "New England Aquarium",
+    "type": "aquarium",
+    "city": "Boston",
+    "country": "US",
+    "official_url": "https://www.neaq.org/",
+    "list_confidence": "partial",
+    "content_mode": "curated",
+    "n_items": 10
+  },
+  {
+    "slug": "nhm-london",
+    "name": "Natural History Museum",
+    "type": "museum",
+    "city": "London",
+    "country": "GB",
+    "official_url": "https://www.nhm.ac.uk/",
+    "list_confidence": "partial",
+    "content_mode": "hybrid",
+    "n_items": 8
+  },
+  {
+    "slug": "north-carolina-zoo",
+    "name": "North Carolina Zoo",
+    "type": "zoo",
+    "city": "Asheboro",
+    "country": "US",
+    "official_url": "https://www.nczoo.org/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 12
+  },
+  {
+    "slug": "omaha-henry-doorly",
+    "name": "Omaha's Henry Doorly Zoo & Aquarium",
+    "type": "zoo",
+    "city": "Omaha",
+    "country": "US",
+    "official_url": "https://www.omahazoo.com/",
+    "list_confidence": "template",
+    "content_mode": "curated",
+    "n_items": 10
+  },
+  {
+    "slug": "oregon-museum-science-industry",
+    "name": "OMSI",
+    "type": "museum",
+    "city": "Portland",
+    "country": "US",
+    "official_url": "https://omsi.edu/",
+    "list_confidence": "partial",
+    "content_mode": "hybrid",
+    "n_items": 8
+  },
+  {
+    "slug": "oregon-zoo",
+    "name": "Oregon Zoo",
+    "type": "zoo",
+    "city": "Portland",
+    "country": "US",
+    "official_url": "https://www.oregonzoo.org/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 13
+  },
+  {
+    "slug": "orlando-science-center",
+    "name": "Orlando Science Center",
+    "type": "museum",
+    "city": "Orlando",
+    "country": "US",
+    "official_url": "https://www.osc.org/",
+    "list_confidence": "partial",
+    "content_mode": "hybrid",
+    "n_items": 8
+  },
+  {
+    "slug": "osaka-aquarium",
+    "name": "Osaka Aquarium Kaiyukan",
+    "type": "aquarium",
+    "city": "Osaka",
+    "country": "JP",
+    "official_url": "https://www.kaiyukan.com/language/eng/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 12
+  },
+  {
+    "slug": "oslo-zoo",
+    "name": "Kristiansand Zoo",
+    "type": "zoo",
+    "city": "Kristiansand",
+    "country": "NO",
+    "official_url": "https://www.dyreparken.com/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 13
+  },
+  {
+    "slug": "paris-zoo",
+    "name": "Parc Zoologique de Paris",
+    "type": "zoo",
+    "city": "Paris",
+    "country": "FR",
+    "official_url": "https://www.parczoologiquedeparis.fr/en",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 12
+  },
+  {
+    "slug": "perot-museum",
+    "name": "Perot Museum of Nature and Science",
+    "type": "museum",
+    "city": "Dallas",
+    "country": "US",
+    "official_url": "https://www.perotmuseum.org/",
+    "list_confidence": "partial",
+    "content_mode": "hybrid",
+    "n_items": 8
+  },
+  {
+    "slug": "perth-zoo",
+    "name": "Perth Zoo",
+    "type": "zoo",
+    "city": "Perth",
+    "country": "AU",
+    "official_url": "https://perthzoo.wa.gov.au/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 14
+  },
+  {
+    "slug": "philadelphia-zoo",
+    "name": "Philadelphia Zoo",
+    "type": "zoo",
+    "city": "Philadelphia",
+    "country": "US",
+    "official_url": "https://philadelphiazoo.org/",
+    "list_confidence": "template",
+    "content_mode": "curated",
+    "n_items": 10
+  },
+  {
+    "slug": "phoenix-zoo",
+    "name": "Phoenix Zoo",
+    "type": "zoo",
+    "city": "Phoenix",
+    "country": "US",
+    "official_url": "https://phoenixzoo.org/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 13
+  },
+  {
+    "slug": "pittsburgh-zoo",
+    "name": "Pittsburgh Zoo & Aquarium",
+    "type": "zoo",
+    "city": "Pittsburgh",
+    "country": "US",
+    "official_url": "https://www.pittsburghzoo.org/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 10
+  },
+  {
+    "slug": "please-touch-museum",
+    "name": "Please Touch Museum",
+    "type": "museum",
+    "city": "Philadelphia",
+    "country": "US",
+    "official_url": "https://www.pleasetouchmuseum.org/",
+    "list_confidence": "partial",
+    "content_mode": "hybrid",
+    "n_items": 8
+  },
+  {
+    "slug": "point-defiance-zoo",
+    "name": "Point Defiance Zoo & Aquarium",
+    "type": "zoo",
+    "city": "Tacoma",
+    "country": "US",
+    "official_url": "https://www.pdza.org/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 12
+  },
+  {
+    "slug": "prague-zoo",
+    "name": "Prague Zoo",
+    "type": "zoo",
+    "city": "Prague",
+    "country": "CZ",
+    "official_url": "https://www.zoopraha.cz/en",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 12
+  }
+]

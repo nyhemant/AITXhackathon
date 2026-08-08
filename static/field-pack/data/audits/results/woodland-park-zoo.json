@@ -1,0 +1,204 @@
+{
+  "slug": "woodland-park-zoo",
+  "name": "Woodland Park Zoo",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.zoo.org/",
+    "https://zoo.org/animals/",
+    "https://www.zoochat.com/community/threads/woodland-park-zoo-species-list.494251/"
+  ],
+  "list_confidence_recommended": "audited",
+  "practical_fixes": [
+    {
+      "field": "items.african_elephant",
+      "current": "African elephant",
+      "suggested": "REMOVE",
+      "reason": "Elephants left years ago; community notes no return planned."
+    },
+    {
+      "field": "items.nile_hippo",
+      "current": "Nile hippo",
+      "suggested": "REMOVE",
+      "reason": "No hippos."
+    },
+    {
+      "field": "items.african_penguin",
+      "current": "African penguin",
+      "suggested": "Humboldt penguin",
+      "reason": "Official Humboldt Penguin Exhibit."
+    },
+    {
+      "field": "items.sumatran_tiger",
+      "current": "Sumatran tiger",
+      "suggested": "Malayan tiger",
+      "reason": "Banyan Wilds Malayan tigers per species list."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "No elephants at Woodland Park Zoo."
+    },
+    {
+      "catalog_id": "nile-hippo",
+      "name": "Nile hippo",
+      "reason": "No hippos."
+    },
+    {
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "Humboldt penguins only — wrong species."
+    },
+    {
+      "catalog_id": "cheetah",
+      "name": "Cheetah",
+      "reason": "Not on Jun 2025 species list overview used this pass — confirm before print."
+    },
+    {
+      "catalog_id": "galapagos-tortoise",
+      "name": "Galápagos tortoise",
+      "reason": "Aldabra tortoises planned/arriving Wild Encounters 2026 — not Galápagos."
+    }
+  ],
+  "items": [
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "verified",
+      "display_label": "Western lowland gorilla",
+      "official_name": "",
+      "notes": "Two gorilla troops; 2026 baby gorillas Kadre & Oku.",
+      "source_url": "https://blog.zoo.org/2026/07/zoos-baby-gorillas-have-names-say-hello.html"
+    },
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "absent",
+      "display_label": "African elephant",
+      "official_name": "",
+      "notes": "Elephants gone; no return planned.",
+      "source_url": "https://www.zoochat.com/community/threads/woodland-park-zoo-news-2026.495883/page-5"
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "verified",
+      "display_label": "Giraffe",
+      "official_name": "",
+      "notes": "African Savanna giraffes.",
+      "source_url": "https://zoo.org/animals/"
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "high",
+      "display_label": "Tiger",
+      "official_name": "Malayan tiger",
+      "notes": "Malayan tigers in Banyan Wilds / Tropical Asia.",
+      "source_url": "https://www.zoochat.com/community/threads/woodland-park-zoo-species-list.494251/"
+    },
+    {
+      "id": "ring_tailed_lemur",
+      "label": "Ring-tailed lemur",
+      "catalog_id": "ring-tailed-lemur",
+      "presence": "verified",
+      "display_label": "Ring-tailed lemur",
+      "official_name": "",
+      "notes": "Ring-tailed lemurs listed in tropical/primate areas.",
+      "source_url": "https://www.zoochat.com/community/threads/woodland-park-zoo-species-list.494251/"
+    },
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "verified",
+      "display_label": "African lion",
+      "official_name": "",
+      "notes": "African lions on savanna (cubs 2026).",
+      "source_url": "https://zoo.org/animals/zoobabies/"
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "absent",
+      "display_label": "Penguin",
+      "official_name": "Humboldt penguin",
+      "notes": "Humboldt Penguin Exhibit — not African.",
+      "source_url": "https://zoo.org/animals/"
+    },
+    {
+      "id": "cheetah",
+      "label": "Cheetah",
+      "catalog_id": "cheetah",
+      "presence": "template",
+      "display_label": "Cheetah",
+      "official_name": "",
+      "notes": "Not confirmed on 2025 species list pass.",
+      "source_url": ""
+    },
+    {
+      "id": "nile_hippo",
+      "label": "Nile hippo",
+      "catalog_id": "nile-hippo",
+      "presence": "absent",
+      "display_label": "Nile hippo",
+      "official_name": "",
+      "notes": "No hippos.",
+      "source_url": ""
+    },
+    {
+      "id": "caribbean_flamingo",
+      "label": "Caribbean flamingo",
+      "catalog_id": "caribbean-flamingo",
+      "presence": "medium",
+      "display_label": "Caribbean flamingo",
+      "official_name": "",
+      "notes": "Confirm flamingo species/presence.",
+      "source_url": ""
+    },
+    {
+      "id": "two_toed_sloth",
+      "label": "Two-toed sloth",
+      "catalog_id": "two-toed-sloth",
+      "presence": "medium",
+      "display_label": "Two-toed sloth",
+      "official_name": "",
+      "notes": "Possible tropical; unconfirmed.",
+      "source_url": ""
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "high",
+      "display_label": "Zebra",
+      "official_name": "",
+      "notes": "Savanna hoofstock likely.",
+      "source_url": "https://zoo.org/animals/"
+    },
+    {
+      "id": "galapagos_tortoise",
+      "label": "Galápagos tortoise",
+      "catalog_id": "galapagos-tortoise",
+      "presence": "absent",
+      "display_label": "Galápagos tortoise",
+      "official_name": "",
+      "notes": "Wild Encounters adding Aldabra giant tortoises 2026 — not Galápagos.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "western_lowland_gorilla",
+    "reticulated_giraffe",
+    "african_lion"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "CRITICAL: elephants and hippos absent but listed. African penguin wrong (Humboldt). Tiger likely Malayan. Gorillas, giraffes, lions verified.",
+  "severity": "critical"
+}

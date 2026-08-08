@@ -1,0 +1,200 @@
+[
+  {
+    "slug": "adelaide-zoo",
+    "name": "Adelaide Zoo",
+    "type": "zoo",
+    "city": "Adelaide",
+    "country": "AU",
+    "official_url": "https://www.zoossa.com.au/adelaide-zoo/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 13
+  },
+  {
+    "slug": "air-and-space",
+    "name": "National Air and Space Museum",
+    "type": "museum",
+    "city": "Washington",
+    "country": "US",
+    "official_url": "https://airandspace.si.edu/",
+    "list_confidence": "partial",
+    "content_mode": "hybrid",
+    "n_items": 8
+  },
+  {
+    "slug": "al-ain-zoo",
+    "name": "Al Ain Zoo",
+    "type": "zoo",
+    "city": "Al Ain",
+    "country": "AE",
+    "official_url": "https://www.alainzoo.ae/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 12
+  },
+  {
+    "slug": "albuquerque-biopark",
+    "name": "ABQ BioPark Zoo",
+    "type": "zoo",
+    "city": "Albuquerque",
+    "country": "US",
+    "official_url": "https://www.cabq.gov/culturalservices/biopark/zoo",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 12
+  },
+  {
+    "slug": "amnh",
+    "name": "American Museum of Natural History",
+    "type": "museum",
+    "city": "New York",
+    "country": "US",
+    "official_url": "https://www.amnh.org/",
+    "list_confidence": "partial",
+    "content_mode": "curated",
+    "n_items": 8
+  },
+  {
+    "slug": "antwerp-zoo",
+    "name": "Antwerp Zoo",
+    "type": "zoo",
+    "city": "Antwerp",
+    "country": "BE",
+    "official_url": "https://www.zooantwerpen.be/en/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 12
+  },
+  {
+    "slug": "aquarium-of-the-pacific",
+    "name": "Aquarium of the Pacific",
+    "type": "aquarium",
+    "city": "Long Beach",
+    "country": "US",
+    "official_url": "https://www.aquariumofpacific.org/",
+    "list_confidence": "partial",
+    "content_mode": "curated",
+    "n_items": 10
+  },
+  {
+    "slug": "arizona-science-center",
+    "name": "Arizona Science Center",
+    "type": "museum",
+    "city": "Phoenix",
+    "country": "US",
+    "official_url": "https://www.azscience.org/",
+    "list_confidence": "partial",
+    "content_mode": "hybrid",
+    "n_items": 8
+  },
+  {
+    "slug": "artis-zoo",
+    "name": "Artis Zoo",
+    "type": "zoo",
+    "city": "Amsterdam",
+    "country": "NL",
+    "official_url": "https://www.artis.nl/en",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 12
+  },
+  {
+    "slug": "athens-attica-zoo",
+    "name": "Attica Zoological Park",
+    "type": "zoo",
+    "city": "Athens",
+    "country": "GR",
+    "official_url": "https://www.atticapark.com/en/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 12
+  },
+  {
+    "slug": "auckland-zoo",
+    "name": "Auckland Zoo",
+    "type": "zoo",
+    "city": "Auckland",
+    "country": "NZ",
+    "official_url": "https://www.aucklandzoo.co.nz/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 12
+  },
+  {
+    "slug": "audubon-aquarium",
+    "name": "Audubon Aquarium",
+    "type": "aquarium",
+    "city": "New Orleans",
+    "country": "US",
+    "official_url": "https://audubonnatureinstitute.org/aquarium",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 13
+  },
+  {
+    "slug": "audubon-zoo",
+    "name": "Audubon Zoo",
+    "type": "zoo",
+    "city": "New Orleans",
+    "country": "US",
+    "official_url": "https://audubonnatureinstitute.org/zoo",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 12
+  },
+  {
+    "slug": "austin-zoo",
+    "name": "Austin Zoo",
+    "type": "zoo",
+    "city": "Austin",
+    "country": "US",
+    "official_url": "https://www.austinzoo.org/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 13
+  },
+  {
+    "slug": "bangalore-bannerghatta",
+    "name": "Bannerghatta Biological Park",
+    "type": "safari_zoo",
+    "city": "Bengaluru",
+    "country": "IN",
+    "official_url": "https://www.bannerghattabiologicalpark.org/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 12
+  },
+  {
+    "slug": "bangkok-safari-world",
+    "name": "Safari World Bangkok",
+    "type": "safari_zoo",
+    "city": "Bangkok",
+    "country": "TH",
+    "official_url": "https://www.safariworld.com/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 13
+  },
+  {
+    "slug": "barcelona-zoo",
+    "name": "Barcelona Zoo",
+    "type": "zoo",
+    "city": "Barcelona",
+    "country": "ES",
+    "official_url": "https://www.zoobarcelona.cat/en",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 13
+  },
+  {
+    "slug": "beijing-zoo",
+    "name": "Beijing Zoo",
+    "type": "zoo",
+    "city": "Beijing",
+    "country": "CN",
+    "official_url": "https://www.beijingzoo.com/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 10
+  }
+]

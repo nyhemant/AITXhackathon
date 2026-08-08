@@ -1,0 +1,180 @@
+{
+  "slug": "delhi-zoo",
+  "name": "National Zoological Park",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://nzpnewdelhi.gov.in/",
+    "https://en.wikipedia.org/wiki/National_Zoological_Park_Delhi",
+    "https://nzpnewdelhi.gov.in/mammals_inventory?ln=hi"
+  ],
+  "list_confidence_recommended": "template",
+  "practical_fixes": [],
+  "do_not_list": [
+    {
+      "catalog_id": "sumatran-tiger",
+      "name": "Sumatran tiger",
+      "reason": "Delhi holds Bengal/white tiger, not Sumatran."
+    },
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Asiatic/Indian elephant."
+    },
+    {
+      "catalog_id": "western-lowland-gorilla",
+      "name": "Western lowland gorilla",
+      "reason": "Not on official mammal inventory."
+    },
+    {
+      "catalog_id": "chimpanzee",
+      "name": "Chimpanzee",
+      "reason": "Not established on official inventory."
+    },
+    {
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "No evidence on official sources."
+    },
+    {
+      "catalog_id": "galapagos-tortoise",
+      "name": "Galápagos tortoise",
+      "reason": "Not supported by official inventory."
+    },
+    {
+      "catalog_id": "asian-small-clawed-otter",
+      "name": "Asian small-clawed otter",
+      "reason": "Unclear on official inventory."
+    },
+    {
+      "catalog_id": "red-panda",
+      "name": "Red panda",
+      "reason": "Unclear; not confirmed on official inventory pages fetched."
+    }
+  ],
+  "items": [
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "absent",
+      "display_label": "Tiger",
+      "official_name": "Bengal tiger / white tiger",
+      "notes": "Wrong subspecies",
+      "source_url": ""
+    },
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "high",
+      "display_label": "Lion",
+      "official_name": "Asiatic lion",
+      "notes": "Asiatic not African",
+      "source_url": ""
+    },
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "absent",
+      "display_label": "Elephant",
+      "official_name": "Asiatic elephant",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "high",
+      "display_label": "Giraffe",
+      "official_name": "",
+      "notes": "Giraffes reported present; subspecies unclear",
+      "source_url": ""
+    },
+    {
+      "id": "chimpanzee",
+      "label": "Chimpanzee",
+      "catalog_id": "chimpanzee",
+      "presence": "absent",
+      "display_label": "Chimpanzee",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "absent",
+      "display_label": "Western lowland gorilla",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "absent",
+      "display_label": "African penguin",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "unclear",
+      "display_label": "Zebra",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "red_panda",
+      "label": "Red panda",
+      "catalog_id": "red-panda",
+      "presence": "unclear",
+      "display_label": "Red panda",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "asian_small_clawed_otter",
+      "label": "Asian small-clawed otter",
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "unclear",
+      "display_label": "Asian small-clawed otter",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "nile_hippo",
+      "label": "Nile hippo",
+      "catalog_id": "nile-hippo",
+      "presence": "high",
+      "display_label": "Hippo",
+      "official_name": "Hippopotamus",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "galapagos_tortoise",
+      "label": "Galápagos tortoise",
+      "catalog_id": "galapagos-tortoise",
+      "presence": "absent",
+      "display_label": "Galápagos tortoise",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [],
+  "content_mode_recommended": "wonder",
+  "summary": "Official inventory emphasizes Bengal/white tiger, Asiatic lion, Indian/Asian elephant, rhino, hippo, giraffe — not Sumatran tiger, African elephant, gorilla, chimpanzee, African penguin, ASC otter, Galápagos tortoise. Template global catalog leakage is severe; do not print unaudited species list.",
+  "severity": "critical"
+}

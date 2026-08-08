@@ -1,0 +1,121 @@
+{
+  "slug": "perot-museum",
+  "name": "Perot Museum of Nature and Science",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.perotmuseum.org/",
+    "https://www.perotmuseum.org/explore/exhibits"
+  ],
+  "list_confidence_recommended": "audited",
+  "practical_fixes": [
+    {
+      "field": "items.sci_rainforest",
+      "current": "Rainforest dome",
+      "suggested": "Remove or map to specific traveling/life sciences if any",
+      "reason": "Perot is not a biodome."
+    },
+    {
+      "field": "items.cm_imaginarium",
+      "current": "Imaginarium",
+      "suggested": "Map to Moody Family Children's Museum / named floors",
+      "reason": "Real kids area has proper names."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "sci-rainforest",
+      "name": "Rainforest dome",
+      "reason": "No rainforest dome at Perot."
+    }
+  ],
+  "items": [
+    {
+      "id": "sci_dinosaur",
+      "label": "Dinosaur hall",
+      "catalog_id": "sci-dinosaur",
+      "presence": "verified",
+      "display_label": "Dinosaurs",
+      "official_name": "Dinosaurs",
+      "notes": "T. rex / paleo halls are Perot signature.",
+      "source_url": "https://www.perotmuseum.org/"
+    },
+    {
+      "id": "sci_hands_on",
+      "label": "Hands-on lab",
+      "catalog_id": "sci-hands-on",
+      "presence": "verified",
+      "display_label": "Hands-on",
+      "official_name": "Hands-on",
+      "notes": "Interactive science floors.",
+      "source_url": ""
+    },
+    {
+      "id": "cm_imaginarium",
+      "label": "Imaginarium",
+      "catalog_id": "cm-imaginarium",
+      "presence": "medium",
+      "display_label": "Kids explore",
+      "official_name": "Children's Museum level",
+      "notes": "Children’s museum level exists under other branding. Soft kids zone.",
+      "source_url": ""
+    },
+    {
+      "id": "sci_planet",
+      "label": "Planet / space hall",
+      "catalog_id": "sci-planet",
+      "presence": "high",
+      "display_label": "Space",
+      "official_name": "Space / planetarium",
+      "notes": "Space/astronomy content + adjacent planetarium programming. Soft Space.",
+      "source_url": ""
+    },
+    {
+      "id": "cm_makery",
+      "label": "Creative Makery",
+      "catalog_id": "cm-makery",
+      "presence": "medium",
+      "display_label": "Make",
+      "official_name": "",
+      "notes": "Engineering/design interactives.",
+      "source_url": ""
+    },
+    {
+      "id": "sci_mammal_hall",
+      "label": "Animal / mammal hall",
+      "catalog_id": "sci-mammal-hall",
+      "presence": "medium",
+      "display_label": "Life sciences",
+      "official_name": "",
+      "notes": "Life sciences / sports hall etc. — not classic mammal dioramas. Soft Life sciences.",
+      "source_url": ""
+    },
+    {
+      "id": "cm_free_explore",
+      "label": "Free explore",
+      "catalog_id": "cm-free-explore",
+      "presence": "verified",
+      "display_label": "Free explore",
+      "official_name": "Free explore",
+      "notes": "Valid.",
+      "source_url": ""
+    },
+    {
+      "id": "sci_rainforest",
+      "label": "Rainforest dome",
+      "catalog_id": "sci-rainforest",
+      "presence": "absent",
+      "display_label": "— remove —",
+      "official_name": "",
+      "notes": "No dome.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "sci_dinosaur",
+    "sci_hands_on",
+    "cm_free_explore"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "Dinosaurs + hands-on verified. Drop rainforest dome. Align kids labels with Moody Family Children’s Museum naming.",
+  "severity": "minor"
+}

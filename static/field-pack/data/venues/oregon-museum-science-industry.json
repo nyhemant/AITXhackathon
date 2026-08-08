@@ -16,13 +16,13 @@
     "typical_duration": "half day",
     "ticket_note": "Extras cost more — choose one special experience max.",
     "transit_note": "Eastbank Esplanade / Portland; parking lots nearby.",
-    "energy_note": "indoor",
+    "energy_note": "Mostly indoors",
     "best_start": "Turbine hall / hands-on first for wiggles."
   },
   "items": [
     {
       "id": "sci_hands_on",
-      "label": "Hands-on lab",
+      "label": "Hands-on",
       "emoji": "🔬",
       "one_liner": "The point of OMSI — touch and try.",
       "tags": [
@@ -41,11 +41,16 @@
         "question": "What did you notice about the Hands-on lab?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-hands-on"
+      "catalog_id": "sci-hands-on",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Hands-on",
+      "presence_note": "Core OMSI interactive science."
     },
     {
       "id": "sci_planet",
-      "label": "Planet / space hall",
+      "label": "Planetarium",
       "emoji": "🪐",
       "one_liner": "Sky show if ticketed.",
       "tags": [
@@ -62,11 +67,16 @@
         "question": "What did you notice about the Planet / space hall?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-planet"
+      "catalog_id": "sci-planet",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Planetarium",
+      "presence_note": "Kendall Planetarium."
     },
     {
       "id": "sci_rocket",
-      "label": "Rockets & launch",
+      "label": "Space",
       "emoji": "🚀",
       "one_liner": "Rockets and big machines energy.",
       "tags": [
@@ -84,7 +94,11 @@
         "question": "What did you notice about the Rockets & launch?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-rocket"
+      "catalog_id": "sci-rocket",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Space",
+      "presence_note": "Space Science content; not rockets-as-icon."
     },
     {
       "id": "cm_free_explore",
@@ -105,11 +119,15 @@
         "question": "What did you notice about the Free explore?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "cm-free-explore"
+      "catalog_id": "cm-free-explore",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "display_label": "Free explore",
+      "presence_note": "Valid."
     },
     {
       "id": "sci_dinosaur",
-      "label": "Dinosaur hall",
+      "label": "Dinosaurs",
       "emoji": "🦖",
       "one_liner": "Bones, giants, and deep time — look up!",
       "tags": [
@@ -127,11 +145,16 @@
         "question": "What did you try or notice at Dinosaur hall?",
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
-      "catalog_id": "sci-dinosaur"
+      "catalog_id": "sci-dinosaur",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Dinosaurs",
+      "presence_note": "Dinosaurs: A Story of Survival (featured). Soft Dinosaurs."
     },
     {
       "id": "cm_makery",
-      "label": "Creative Makery",
+      "label": "Make",
       "emoji": "🔧",
       "one_liner": "Build, invent, problem-solve with your hands.",
       "tags": [
@@ -150,54 +173,14 @@
         "question": "What did you try or notice at Creative Makery?",
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
-      "catalog_id": "cm-makery"
-    },
-    {
-      "id": "cm_imaginarium",
-      "label": "Imaginarium",
-      "emoji": "✨",
-      "one_liner": "Multi-sensory world — explore, notice, imagine.",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Imaginarium?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "cm-imaginarium"
-    },
-    {
-      "id": "sci_shuttle",
-      "label": "Space shuttle / orbiter",
-      "emoji": "🛰️",
-      "one_liner": "A real flying machine that went to space — walk around it.",
-      "tags": [
-        "wow",
-        "read"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Space shuttle / orbiter?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "sci-shuttle"
+      "catalog_id": "cm-makery",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Make",
+      "presence_note": "Turbine Hall / labs style make energy."
     }
   ],
-  "content_mode": "hybrid",
+  "content_mode": "curated",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://omsi.edu/",
@@ -213,8 +196,27 @@
   "route_90m": [
     "sci_hands_on",
     "sci_planet",
-    "sci_rocket"
+    "sci_dinosaur"
   ],
-  "research_notes": "R1 hybrid 2026-08-07",
-  "list_confidence": "partial"
+  "research_notes": "R1 hybrid 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "list_confidence": "audited",
+  "do_not_list": [
+    {
+      "catalog_id": "sci-shuttle",
+      "name": "Space shuttle / orbiter",
+      "reason": "OMSI has USS Blueback submarine, not a space shuttle orbiter.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "cm-imaginarium",
+      "name": "Imaginarium",
+      "reason": "Not an OMSI hall name.",
+      "as_of": "2026-08-08"
+    }
+  ],
+  "last_presence_audit": "2026-08-08",
+  "presence_sources": [
+    "https://omsi.edu/",
+    "https://omsi.edu/exhibits/"
+  ]
 }

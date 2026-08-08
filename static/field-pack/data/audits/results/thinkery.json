@@ -1,0 +1,109 @@
+{
+  "slug": "thinkery",
+  "name": "Thinkery",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://thinkeryaustin.org/",
+    "existing full pack"
+  ],
+  "list_confidence_recommended": "partial",
+  "practical_fixes": [
+    {
+      "field": "practical.ticket_note",
+      "current": "Mueller; timed tickets peak times",
+      "suggested": "keep; confirm current timed-entry policy",
+      "reason": "OK pattern."
+    }
+  ],
+  "do_not_list": [],
+  "items": [
+    {
+      "id": "cm_makery",
+      "label": "Creative Makery",
+      "catalog_id": "cm-makery",
+      "presence": "high",
+      "display_label": "Creative Makery",
+      "official_name": "",
+      "notes": "Maker / invent spaces are core Thinkery brand.",
+      "source_url": "https://thinkeryaustin.org/"
+    },
+    {
+      "id": "cm_imaginarium",
+      "label": "Imaginarium",
+      "catalog_id": "cm-imaginarium",
+      "presence": "high",
+      "display_label": "Imaginarium",
+      "official_name": "",
+      "notes": "Imaginative play zones core.",
+      "source_url": "https://thinkeryaustin.org/"
+    },
+    {
+      "id": "cm_waterfall",
+      "label": "Waterfall play",
+      "catalog_id": "cm-waterfall",
+      "presence": "high",
+      "display_label": "Waterfall play",
+      "official_name": "",
+      "notes": "Signature water play feature historically; confirm open seasonally.",
+      "source_url": "https://thinkeryaustin.org/"
+    },
+    {
+      "id": "cm_toddler_garden",
+      "label": "Toddler Garden",
+      "catalog_id": "cm-toddler-garden",
+      "presence": "high",
+      "display_label": "Toddler Garden",
+      "official_name": "",
+      "notes": "Toddler areas standard.",
+      "source_url": "https://thinkeryaustin.org/"
+    },
+    {
+      "id": "cm_outdoor",
+      "label": "Outdoor Area",
+      "catalog_id": "cm-outdoor",
+      "presence": "high",
+      "display_label": "Outdoor Area",
+      "official_name": "",
+      "notes": "Outdoor play present on campus.",
+      "source_url": "https://thinkeryaustin.org/"
+    },
+    {
+      "id": "cm_woven",
+      "label": "Woven Wonders",
+      "catalog_id": "cm-woven",
+      "presence": "medium",
+      "display_label": "Woven Wonders",
+      "official_name": "",
+      "notes": "Named zone — confirm current floor plan label.",
+      "source_url": ""
+    },
+    {
+      "id": "cm_art_lab",
+      "label": "Art Lab",
+      "catalog_id": "cm-art-lab",
+      "presence": "high",
+      "display_label": "Art Lab",
+      "official_name": "",
+      "notes": "Art/create labs core.",
+      "source_url": "https://thinkeryaustin.org/"
+    },
+    {
+      "id": "cm_free_explore",
+      "label": "Free explore",
+      "catalog_id": "cm-free-explore",
+      "presence": "verified",
+      "display_label": "Free explore",
+      "official_name": "",
+      "notes": "Free-explore is the museum mode.",
+      "source_url": "https://thinkeryaustin.org/"
+    }
+  ],
+  "route_90m_recommended": [
+    "cm_waterfall",
+    "cm_makery",
+    "cm_toddler_garden"
+  ],
+  "content_mode_recommended": "hybrid",
+  "summary": "Children's museum zone pack is appropriate; not species-critical. Confirm named zones against current map before audited.",
+  "severity": "ok"
+}

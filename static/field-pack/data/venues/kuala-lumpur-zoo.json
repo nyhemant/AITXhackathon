@@ -41,7 +41,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "giant-panda",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Giant panda"
     },
     {
       "id": "orangutan",
@@ -64,11 +67,13 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "orangutan",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "display_label": "Orangutan"
     },
     {
       "id": "sumatran_tiger",
-      "label": "Sumatran tiger",
+      "label": "Tiger",
       "emoji": "🐯",
       "one_liner": "Tigers.",
       "tags": [
@@ -86,7 +91,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sumatran-tiger",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Tiger",
+      "presence_note": "Malayan tiger more likely — soft Tiger"
     },
     {
       "id": "asian_small_clawed_otter",
@@ -109,11 +117,13 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "asian-small-clawed-otter",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Asian small-clawed otter"
     },
     {
       "id": "reticulated_giraffe",
-      "label": "Reticulated giraffe",
+      "label": "Giraffe",
       "emoji": "🦒",
       "one_liner": "Giraffes.",
       "tags": [
@@ -131,7 +141,9 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "reticulated-giraffe",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Giraffe"
     },
     {
       "id": "african_lion",
@@ -155,11 +167,13 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "african-lion",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "African lion"
     },
     {
       "id": "african_elephant",
-      "label": "African elephant",
+      "label": "Elephant",
       "emoji": "🐘",
       "one_liner": "Biggest land animal — trunk to grab, spray, and say hello.",
       "tags": [
@@ -180,7 +194,9 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "african-elephant",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Elephant"
     },
     {
       "id": "western_lowland_gorilla",
@@ -204,7 +220,9 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "western-lowland-gorilla",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Western lowland gorilla"
     },
     {
       "id": "african_penguin",
@@ -228,7 +246,9 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "african-penguin",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "African penguin"
     },
     {
       "id": "chimpanzee",
@@ -255,7 +275,9 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "chimpanzee",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Chimpanzee"
     },
     {
       "id": "zebra",
@@ -278,7 +300,9 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "zebra",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Zebra"
     },
     {
       "id": "red_panda",
@@ -303,7 +327,9 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "red-panda",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Red panda"
     },
     {
       "id": "nile_hippo",
@@ -326,7 +352,9 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "nile-hippo",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Nile hippo"
     },
     {
       "id": "galapagos_tortoise",
@@ -349,7 +377,9 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "galapagos-tortoise",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Galápagos tortoise"
     }
   ],
   "content_mode": "hybrid",
@@ -371,6 +401,30 @@
     "orangutan",
     "sumatran_tiger"
   ],
-  "research_notes": "R3 2026-08-07 · map-page 2026-08-07",
-  "list_confidence": "template"
+  "research_notes": "R3 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "list_confidence": "partial",
+  "do_not_list": [
+    {
+      "catalog_id": "western-lowland-gorilla",
+      "name": "Western lowland gorilla",
+      "reason": "Unverified template.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "Unverified.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Elephants may be Asian; species label unverified.",
+      "as_of": "2026-08-08"
+    }
+  ],
+  "presence_sources": [
+    "https://www.zoonegara.my/",
+    "https://zoonegara.my/arrival-panda.html"
+  ]
 }

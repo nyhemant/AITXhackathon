@@ -41,7 +41,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-lion",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "African lion",
+      "presence_note": "Major European zoo; lions marketed."
     },
     {
       "id": "reticulated_giraffe",
@@ -63,7 +66,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "reticulated-giraffe",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Reticulated giraffe",
+      "presence_note": "Giraffes present."
     },
     {
       "id": "african_elephant",
@@ -85,11 +91,14 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-elephant",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "African elephant",
+      "presence_note": "Elephants historically present; confirm current."
     },
     {
       "id": "sumatran_tiger",
-      "label": "Sumatran tiger",
+      "label": "Tiger",
       "emoji": "🐯",
       "one_liner": "Tigers.",
       "tags": [
@@ -107,7 +116,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sumatran-tiger",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Tiger",
+      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract."
     },
     {
       "id": "western_lowland_gorilla",
@@ -129,7 +141,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "western-lowland-gorilla",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Western lowland gorilla",
+      "presence_note": "Apes reported; subspecies soft."
     },
     {
       "id": "african_penguin",
@@ -153,7 +168,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "african-penguin",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "African penguin",
+      "presence_note": "Penguins often present at Attica."
     },
     {
       "id": "chimpanzee",
@@ -180,7 +198,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "chimpanzee",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Chimpanzee",
+      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract."
     },
     {
       "id": "zebra",
@@ -203,7 +224,9 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "zebra",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Zebra"
     },
     {
       "id": "red_panda",
@@ -228,7 +251,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "red-panda",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Red panda",
+      "presence_note": "Not confirmed on official sources reviewed in this audit pass."
     },
     {
       "id": "asian_small_clawed_otter",
@@ -254,7 +280,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "asian-small-clawed-otter",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Asian small-clawed otter",
+      "presence_note": "Not confirmed on official sources reviewed in this audit pass."
     },
     {
       "id": "nile_hippo",
@@ -277,7 +306,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "nile-hippo",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Nile hippo",
+      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract."
     },
     {
       "id": "galapagos_tortoise",
@@ -300,7 +332,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "galapagos-tortoise",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Galápagos tortoise",
+      "presence_note": "Not confirmed on official sources reviewed in this audit pass."
     }
   ],
   "content_mode": "hybrid",
@@ -319,8 +354,12 @@
   "route_90m": [
     "african_lion",
     "reticulated_giraffe",
-    "african_elephant"
+    "zebra"
   ],
-  "research_notes": "R3 2026-08-07",
-  "list_confidence": "template"
+  "research_notes": "R3 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "list_confidence": "template",
+  "do_not_list": [],
+  "presence_sources": [
+    "https://www.atticapark.com/en/"
+  ]
 }

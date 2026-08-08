@@ -39,11 +39,15 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-elephant",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "African elephant",
+      "presence_note": "African elephant herd / Elephant Family Quarters / experiences."
     },
     {
       "id": "western_lowland_gorilla",
-      "label": "Western lowland gorilla",
+      "label": "Gorilla",
       "emoji": "🦍",
       "one_liner": "Gorillas after the jungle wow.",
       "tags": [
@@ -62,11 +66,15 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "western-lowland-gorilla",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Gorilla",
+      "presence_note": "Hubbard Gorilla Valley."
     },
     {
       "id": "sumatran_tiger",
-      "label": "Sumatran tiger",
+      "label": "Tiger",
       "emoji": "🐯",
       "one_liner": "Tigers in forested cat habitats.",
       "tags": [
@@ -85,11 +93,14 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sumatran-tiger",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Tiger",
+      "presence_note": "Asian Highlands tigers; soft Tiger if subspecies uncertain."
     },
     {
       "id": "african_lion",
-      "label": "African lion",
+      "label": "Lion",
       "emoji": "🦁",
       "one_liner": "Lions on the grasslands.",
       "tags": [
@@ -108,11 +119,14 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-lion",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Lion",
+      "presence_note": "African Grasslands predators. Soft Lion."
     },
     {
       "id": "reticulated_giraffe",
-      "label": "Reticulated giraffe",
+      "label": "Giraffe",
       "emoji": "🦒",
       "one_liner": "Giraffe feeding opportunities some days.",
       "tags": [
@@ -132,7 +146,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "reticulated-giraffe",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Giraffe",
+      "presence_note": "Giraffe experience offered. Soft Giraffe."
     },
     {
       "id": "shark",
@@ -156,7 +174,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "shark",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Shark",
+      "presence_note": "Scott Aquarium. Soft Shark."
     },
     {
       "id": "stingray",
@@ -179,11 +200,15 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "stingray",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Stingray",
+      "presence_note": "Stingray Beach."
     },
     {
       "id": "african_penguin",
-      "label": "African penguin",
+      "label": "Penguin (verify)",
       "emoji": "🐧",
       "one_liner": "Penguins as a cool-down stop.",
       "tags": [
@@ -202,7 +227,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-penguin",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Penguin (verify)",
+      "presence_note": "Confirm species."
     },
     {
       "id": "jellyfish",
@@ -225,7 +253,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "jellyfish",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Jellyfish",
+      "presence_note": "Aquarium jellies common. Soft Jellyfish."
     },
     {
       "id": "orangutan",
@@ -248,7 +279,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "orangutan",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Orangutan",
+      "presence_note": "Hubbard Orangutan Forest."
     }
   ],
   "content_mode": "curated",
@@ -265,6 +300,19 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "research_notes": "map-page 2026-08-07",
-  "list_confidence": "template"
+  "research_notes": "map-page 2026-08-07 · presence-audit 2026-08-08 [minor]",
+  "list_confidence": "audited",
+  "do_not_list": [],
+  "route_90m": [
+    "african_elephant",
+    "western_lowland_gorilla",
+    "orangutan"
+  ],
+  "last_presence_audit": "2026-08-08",
+  "presence_sources": [
+    "https://www.omahazoo.com/",
+    "https://www.omahazoo.com/scott-african-grasslands",
+    "https://www.omahazoo.com/visitorexperiences",
+    "https://en.wikipedia.org/wiki/Omaha%27s_Henry_Doorly_Zoo_and_Aquarium"
+  ]
 }

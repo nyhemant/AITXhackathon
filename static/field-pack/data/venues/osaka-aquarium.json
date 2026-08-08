@@ -16,13 +16,13 @@
     "typical_duration": "half day",
     "ticket_note": "Popular; tickets ahead in peak.",
     "transit_note": "Osaka bay area.",
-    "energy_note": "indoor",
+    "energy_note": "Mostly indoors",
     "best_start": "Biggest tank first."
   },
   "items": [
     {
       "id": "shark",
-      "label": "Shark",
+      "label": "Shark (whale shark)",
       "emoji": "🦈",
       "one_liner": "Whale-shark-scale wow in the huge tank.",
       "tags": [
@@ -42,7 +42,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "shark",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Shark (whale shark)",
+      "presence_note": "Famous whale shark / large shark tanks."
     },
     {
       "id": "stingray",
@@ -65,7 +69,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "stingray",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Stingray",
+      "presence_note": "Large tanks include rays. Soft Ray."
     },
     {
       "id": "jellyfish",
@@ -88,7 +95,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "jellyfish",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Jellyfish",
+      "presence_note": "Jellyfish gallery known."
     },
     {
       "id": "sea_turtle",
@@ -111,7 +121,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sea-turtle",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Sea turtle",
+      "presence_note": "Sea turtles in Pacific exhibits."
     },
     {
       "id": "octopus",
@@ -134,7 +147,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "octopus",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Octopus",
+      "presence_note": "Common. Soft Octopus."
     },
     {
       "id": "clownfish",
@@ -157,7 +173,10 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "clownfish",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Clownfish",
+      "presence_note": "Reef tanks possible."
     },
     {
       "id": "seahorse",
@@ -180,7 +199,10 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "seahorse",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Seahorse",
+      "presence_note": "Possible."
     },
     {
       "id": "eel",
@@ -203,7 +225,10 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "eel",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Eel",
+      "presence_note": "Common in rocky tanks."
     },
     {
       "id": "crab",
@@ -226,7 +251,11 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "crab",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Crab",
+      "presence_note": "Japanese spider crab is a Kaiyukan icon."
     },
     {
       "id": "starfish",
@@ -251,11 +280,14 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "starfish",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Sea star",
+      "presence_note": "Possible."
     },
     {
       "id": "freshwater_fish",
-      "label": "River / lake fish",
+      "label": "Freshwater",
       "emoji": "🐟",
       "one_liner": "Fish that live in fresh water — rivers, lakes, ponds.",
       "tags": [
@@ -274,7 +306,10 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "freshwater-fish",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Freshwater",
+      "presence_note": "Some freshwater/river zones in ring concept."
     },
     {
       "id": "asian_small_clawed_otter",
@@ -300,7 +335,10 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "asian-small-clawed-otter",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Asian small-clawed otter",
+      "presence_note": "Not confirmed."
     }
   ],
   "content_mode": "hybrid",
@@ -318,9 +356,22 @@
   ],
   "route_90m": [
     "shark",
-    "stingray",
-    "jellyfish"
+    "jellyfish",
+    "crab"
   ],
-  "research_notes": "R2b 2026-08-07",
-  "list_confidence": "template"
+  "research_notes": "R2b 2026-08-07 · presence-audit 2026-08-08 [minor]",
+  "list_confidence": "partial",
+  "do_not_list": [
+    {
+      "catalog_id": "asian-small-clawed-otter",
+      "name": "Asian small-clawed otter",
+      "reason": "Not confirmed as Kaiyukan exhibit; template risk.",
+      "as_of": "2026-08-08"
+    }
+  ],
+  "presence_sources": [
+    "https://www.kaiyukan.com/language/eng/",
+    "https://www.kaiyukan.com/language/eng/area/",
+    "https://en.wikipedia.org/wiki/Osaka_Aquarium_Kaiyukan"
+  ]
 }

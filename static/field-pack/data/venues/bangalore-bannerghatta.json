@@ -22,7 +22,7 @@
   "items": [
     {
       "id": "african_lion",
-      "label": "African lion",
+      "label": "Lion",
       "emoji": "🦁",
       "one_liner": "Lions if on safari or cat zone.",
       "tags": [
@@ -41,11 +41,14 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-lion",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Lion",
+      "presence_note": "Indian/Asiatic lions more typical in India; soft-label Lion."
     },
     {
       "id": "sumatran_tiger",
-      "label": "Sumatran tiger",
+      "label": "Tiger (Bengal)",
       "emoji": "🐯",
       "one_liner": "Tigers — Indian park highlight.",
       "tags": [
@@ -64,11 +67,14 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sumatran-tiger",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Tiger (Bengal)",
+      "presence_note": "Safari tigers are Bengal, not Sumatran — must soft-label Tiger/Bengal."
     },
     {
       "id": "african_elephant",
-      "label": "African elephant",
+      "label": "Asian elephant",
       "emoji": "🐘",
       "one_liner": "Elephants.",
       "tags": [
@@ -86,7 +92,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-elephant",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Asian elephant",
+      "presence_note": "Elephants present are Asian; catalog African elephant is wrong label."
     },
     {
       "id": "zebra",
@@ -108,7 +117,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "zebra",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Zebra",
+      "presence_note": "Safari may include exotic herbivores; confirm."
     },
     {
       "id": "reticulated_giraffe",
@@ -130,7 +142,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "reticulated-giraffe",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Reticulated giraffe",
+      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract."
     },
     {
       "id": "cheetah",
@@ -154,58 +169,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "cheetah",
-      "presence": "template"
-    },
-    {
-      "id": "western_lowland_gorilla",
-      "label": "Western lowland gorilla",
-      "emoji": "🦍",
-      "one_liner": "Strong gentle ape in family groups.",
-      "tags": [
-        "wow",
-        "outdoor",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Western lowland gorilla?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "western-lowland-gorilla",
-      "presence": "template"
-    },
-    {
-      "id": "chimpanzee",
-      "label": "Chimpanzee",
-      "emoji": "🐵",
-      "one_liner": "Smart forest ape — climbs and tools.",
-      "tags": [
-        "wow",
-        "outdoor",
-        "play",
-        "hands",
-        "rest",
-        "kids"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Chimpanzee?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "chimpanzee",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Cheetah",
+      "presence_note": "India cheetah reintroduction context — park-specific unclear."
     },
     {
       "id": "nile_hippo",
@@ -228,31 +195,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "nile-hippo",
-      "presence": "template"
-    },
-    {
-      "id": "african_penguin",
-      "label": "African penguin",
-      "emoji": "🐧",
-      "one_liner": "Waddle on land, zoom in water.",
-      "tags": [
-        "wow",
-        "water",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the African penguin?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "african-penguin",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Nile hippo",
+      "presence_note": "Not confirmed on official sources reviewed in this audit pass."
     },
     {
       "id": "ostrich",
@@ -275,7 +221,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "ostrich",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Ostrich",
+      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract."
     },
     {
       "id": "warthog",
@@ -299,7 +248,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "warthog",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Warthog",
+      "presence_note": "Not confirmed on official sources reviewed in this audit pass."
     }
   ],
   "content_mode": "hybrid",
@@ -320,6 +272,29 @@
     "sumatran_tiger",
     "african_elephant"
   ],
-  "research_notes": "R3 2026-08-07",
-  "list_confidence": "template"
+  "research_notes": "R3 2026-08-07 · presence-audit 2026-08-08 [critical]",
+  "list_confidence": "partial",
+  "do_not_list": [
+    {
+      "catalog_id": "western-lowland-gorilla",
+      "name": "Western lowland gorilla",
+      "reason": "Gorillas not part of Bannerghatta safari offering.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "chimpanzee",
+      "name": "Chimpanzee",
+      "reason": "Not a great-ape African collection zoo.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "Unlikely.",
+      "as_of": "2026-08-08"
+    }
+  ],
+  "presence_sources": [
+    "https://www.bannerghattabiologicalpark.org/"
+  ]
 }

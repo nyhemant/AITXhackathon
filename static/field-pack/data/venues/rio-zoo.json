@@ -40,7 +40,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-lion",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "African lion",
+      "presence_note": "Likely large-zoo roster; confirm live map."
     },
     {
       "id": "reticulated_giraffe",
@@ -62,7 +66,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "reticulated-giraffe",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Reticulated giraffe",
+      "presence_note": "Likely; subspecies unconfirmed."
     },
     {
       "id": "african_elephant",
@@ -84,11 +92,14 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-elephant",
-      "presence": "template"
+      "presence": "template",
+      "presence_checked": "2026-08-08",
+      "display_label": "African elephant",
+      "presence_note": "High-risk template — not confirmed."
     },
     {
       "id": "sumatran_tiger",
-      "label": "Sumatran tiger",
+      "label": "Tiger",
       "emoji": "🐯",
       "one_liner": "Tigers.",
       "tags": [
@@ -106,7 +117,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sumatran-tiger",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Tiger",
+      "presence_note": "Tigers possible; subspecies unconfirmed — soft Tiger."
     },
     {
       "id": "two_toed_sloth",
@@ -128,7 +143,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "two-toed-sloth",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Two-toed sloth",
+      "presence_note": "South American mammal; BioParque emphasizes regional fauna."
     },
     {
       "id": "western_lowland_gorilla",
@@ -152,7 +171,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "western-lowland-gorilla",
-      "presence": "template"
+      "presence": "template",
+      "presence_checked": "2026-08-08",
+      "display_label": "Western lowland gorilla",
+      "presence_note": "Not confirmed."
     },
     {
       "id": "african_penguin",
@@ -176,7 +198,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "african-penguin",
-      "presence": "template"
+      "presence": "template",
+      "presence_checked": "2026-08-08",
+      "display_label": "African penguin",
+      "presence_note": "Not confirmed."
     },
     {
       "id": "chimpanzee",
@@ -203,7 +228,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "chimpanzee",
-      "presence": "template"
+      "presence": "template",
+      "presence_checked": "2026-08-08",
+      "display_label": "Chimpanzee",
+      "presence_note": "Not confirmed."
     },
     {
       "id": "zebra",
@@ -226,7 +254,11 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "zebra",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Zebra",
+      "presence_note": "Possible Africa section."
     },
     {
       "id": "red_panda",
@@ -251,7 +283,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "red-panda",
-      "presence": "template"
+      "presence": "template",
+      "presence_checked": "2026-08-08",
+      "display_label": "Red panda",
+      "presence_note": "Not confirmed."
     },
     {
       "id": "asian_small_clawed_otter",
@@ -277,7 +312,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "asian-small-clawed-otter",
-      "presence": "template"
+      "presence": "template",
+      "presence_checked": "2026-08-08",
+      "display_label": "Asian small-clawed otter",
+      "presence_note": "Not confirmed."
     },
     {
       "id": "nile_hippo",
@@ -300,7 +338,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "nile-hippo",
-      "presence": "template"
+      "presence": "template",
+      "presence_checked": "2026-08-08",
+      "display_label": "Nile hippo",
+      "presence_note": "Not confirmed."
     },
     {
       "id": "galapagos_tortoise",
@@ -323,10 +364,13 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "galapagos-tortoise",
-      "presence": "template"
+      "presence": "template",
+      "presence_checked": "2026-08-08",
+      "display_label": "Galápagos tortoise",
+      "presence_note": "Not confirmed."
     }
   ],
-  "content_mode": "hybrid",
+  "content_mode": "wonder",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://www.bioparque.org.br/",
@@ -340,10 +384,37 @@
     "Leave while happy"
   ],
   "route_90m": [
-    "african_lion",
-    "reticulated_giraffe",
-    "african_elephant"
+    "two_toed_sloth"
   ],
-  "research_notes": "R3 2026-08-07",
-  "list_confidence": "template"
+  "research_notes": "R3 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "list_confidence": "partial",
+  "do_not_list": [
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Not confirmed on official BioParque sources this pass.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "western-lowland-gorilla",
+      "name": "Western lowland gorilla",
+      "reason": "Not confirmed present.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "nile-hippo",
+      "name": "Nile hippo",
+      "reason": "Not confirmed present.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "red-panda",
+      "name": "Red panda",
+      "reason": "Not confirmed present.",
+      "as_of": "2026-08-08"
+    }
+  ],
+  "presence_sources": [
+    "https://www.bioparque.org.br/"
+  ]
 }

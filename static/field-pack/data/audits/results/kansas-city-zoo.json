@@ -1,0 +1,151 @@
+{
+  "slug": "kansas-city-zoo",
+  "name": "Kansas City Zoo",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.kansascityzoo.org/"
+  ],
+  "list_confidence_recommended": "partial",
+  "practical_fixes": [],
+  "do_not_list": [],
+  "items": [
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "high",
+      "display_label": "African elephant",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "high",
+      "display_label": "Giraffe",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "high",
+      "display_label": "African lion",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "unclear",
+      "display_label": "Tiger",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "koala",
+      "label": "Koala",
+      "catalog_id": "koala",
+      "presence": "unclear",
+      "display_label": "Koala",
+      "official_name": "",
+      "notes": "Australia zone — confirm current koalas",
+      "source_url": ""
+    },
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "unclear",
+      "display_label": "Western lowland gorilla",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "unclear",
+      "display_label": "African penguin",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "cheetah",
+      "label": "Cheetah",
+      "catalog_id": "cheetah",
+      "presence": "unclear",
+      "display_label": "Cheetah",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "nile_hippo",
+      "label": "Nile hippo",
+      "catalog_id": "nile-hippo",
+      "presence": "unclear",
+      "display_label": "Nile hippo",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "caribbean_flamingo",
+      "label": "Caribbean flamingo",
+      "catalog_id": "caribbean-flamingo",
+      "presence": "unclear",
+      "display_label": "Caribbean flamingo",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "two_toed_sloth",
+      "label": "Two-toed sloth",
+      "catalog_id": "two-toed-sloth",
+      "presence": "unclear",
+      "display_label": "Two-toed sloth",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "high",
+      "display_label": "Zebra",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "galapagos_tortoise",
+      "label": "Galápagos tortoise",
+      "catalog_id": "galapagos-tortoise",
+      "presence": "unclear",
+      "display_label": "Galápagos tortoise",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "african_elephant",
+    "reticulated_giraffe",
+    "african_lion"
+  ],
+  "content_mode_recommended": "hybrid",
+  "summary": "Africa/Australia zones real; koala claim needs confirm (Australia zone). Template species list partial. Swope Park transit OK. Soft hybrid until full animal directory.",
+  "severity": "major"
+}

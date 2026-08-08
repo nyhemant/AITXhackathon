@@ -19,32 +19,8 @@
   },
   "items": [
     {
-      "id": "sumatran_tiger",
-      "label": "Sumatran tiger",
-      "emoji": "🐯",
-      "one_liner": "Tigers on elevated trails sometimes overhead.",
-      "tags": [
-        "big-cats",
-        "outdoor",
-        "wow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Big cats",
-      "qa_card": {
-        "question": "What did you notice about the Sumatran tiger?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "sumatran-tiger",
-      "presence": "template"
-    },
-    {
       "id": "african_lion",
-      "label": "African lion",
+      "label": "Lion",
       "emoji": "🦁",
       "one_liner": "Lions with classic zoo-front presence.",
       "tags": [
@@ -63,11 +39,15 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-lion",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Lion",
+      "presence_note": "Lion chats on daily schedule / Big Cat Falls."
     },
     {
       "id": "western_lowland_gorilla",
-      "label": "Western lowland gorilla",
+      "label": "Gorilla",
       "emoji": "🦍",
       "one_liner": "Gorilla families.",
       "tags": [
@@ -86,7 +66,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "western-lowland-gorilla",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Gorilla",
+      "presence_note": "Gorilla chats / PECO Primate Reserve."
     },
     {
       "id": "orangutan",
@@ -109,11 +93,15 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "orangutan",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Orangutan",
+      "presence_note": "Orangutan/Gibbon chats."
     },
     {
       "id": "reticulated_giraffe",
-      "label": "Reticulated giraffe",
+      "label": "Giraffe",
       "emoji": "🦒",
       "one_liner": "Giraffe necks over the path.",
       "tags": [
@@ -132,30 +120,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "reticulated-giraffe",
-      "presence": "template"
-    },
-    {
-      "id": "african_elephant",
-      "label": "African elephant",
-      "emoji": "🐘",
-      "one_liner": "Elephants when on the loop.",
-      "tags": [
-        "big",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Elephants",
-      "qa_card": {
-        "question": "What did you notice about the African elephant?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "african-elephant",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Giraffe",
+      "presence_note": "African Plains giraffes. Soft Giraffe."
     },
     {
       "id": "red_panda",
@@ -178,11 +146,14 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "red-panda",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Red panda",
+      "presence_note": "Small mammal/zoo360 likely; soft Red panda."
     },
     {
       "id": "caribbean_flamingo",
-      "label": "Caribbean flamingo",
+      "label": "Flamingo",
       "emoji": "🦩",
       "one_liner": "Pink flock near water.",
       "tags": [
@@ -201,11 +172,14 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "caribbean-flamingo",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Flamingo",
+      "presence_note": "Birds area flamingos commonly. Soft Flamingo."
     },
     {
       "id": "ring_tailed_lemur",
-      "label": "Ring-tailed lemur",
+      "label": "Lemur",
       "emoji": "🐒",
       "one_liner": "Lemur energy for younger kids.",
       "tags": [
@@ -224,7 +198,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "ring-tailed-lemur",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Lemur",
+      "presence_note": "Lemur Island chats on schedule."
     },
     {
       "id": "galapagos_tortoise",
@@ -247,7 +225,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "galapagos-tortoise",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Galápagos tortoise",
+      "presence_note": "Not confirmed."
     }
   ],
   "content_mode": "curated",
@@ -263,6 +244,31 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "research_notes": "map-page 2026-08-07",
-  "list_confidence": "template"
+  "research_notes": "map-page 2026-08-07 · presence-audit 2026-08-08 [critical]",
+  "list_confidence": "audited",
+  "do_not_list": [
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Philadelphia Zoo ended elephants in 2009.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "sumatran-tiger",
+      "name": "Sumatran tiger",
+      "reason": "Official listing emphasizes Amur tiger — do not hardcode Sumatran.",
+      "as_of": "2026-08-08"
+    }
+  ],
+  "route_90m": [
+    "african_lion",
+    "western_lowland_gorilla",
+    "orangutan"
+  ],
+  "last_presence_audit": "2026-08-08",
+  "presence_sources": [
+    "https://www.philadelphiazoo.org/",
+    "https://www.philadelphiazoo.org/animals/",
+    "https://www.philadelphiazoo.org/dailyschedule/"
+  ]
 }

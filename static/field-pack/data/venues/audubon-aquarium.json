@@ -16,7 +16,7 @@
     "typical_duration": "2–3 hours",
     "ticket_note": "French Quarter / riverfront; combine with short outdoor walks only.",
     "transit_note": "Canal Street streetcar area.",
-    "energy_note": "indoor",
+    "energy_note": "Mostly indoors",
     "best_start": "Big tank wow first, then touch/jelly calm."
   },
   "items": [
@@ -42,7 +42,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "shark",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Shark",
+      "presence_note": "Core aquarium icon; Gulf/Caribbean focus."
     },
     {
       "id": "sea_turtle",
@@ -65,7 +68,9 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sea-turtle",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Sea turtle"
     },
     {
       "id": "jellyfish",
@@ -88,7 +93,9 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "jellyfish",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Jellyfish"
     },
     {
       "id": "stingray",
@@ -111,7 +118,9 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "stingray",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Stingray"
     },
     {
       "id": "african_penguin",
@@ -134,7 +143,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-penguin",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "African penguin",
+      "presence_note": "Audubon Aquarium historically known for penguins; confirm species."
     },
     {
       "id": "seahorse",
@@ -157,7 +169,9 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "seahorse",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Seahorse"
     },
     {
       "id": "clownfish",
@@ -180,7 +194,10 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "clownfish",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Clownfish",
+      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract."
     },
     {
       "id": "octopus",
@@ -203,7 +220,10 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "octopus",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Octopus",
+      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract."
     },
     {
       "id": "eel",
@@ -226,7 +246,10 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "eel",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Eel",
+      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract."
     },
     {
       "id": "crab",
@@ -249,7 +272,10 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "crab",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Crab",
+      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract."
     },
     {
       "id": "starfish",
@@ -274,7 +300,10 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "starfish",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Sea star",
+      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract."
     },
     {
       "id": "freshwater_fish",
@@ -297,7 +326,10 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "freshwater-fish",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "River / lake fish",
+      "presence_note": "May include Mississippi River gallery content historically."
     },
     {
       "id": "asian_small_clawed_otter",
@@ -323,7 +355,10 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "asian-small-clawed-otter",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Asian small-clawed otter",
+      "presence_note": "Not confirmed; may confuse with other Audubon properties."
     }
   ],
   "content_mode": "hybrid",
@@ -343,8 +378,12 @@
   "route_90m": [
     "shark",
     "sea_turtle",
-    "jellyfish"
+    "stingray"
   ],
-  "research_notes": "R1 hybrid 2026-08-07 · map-page 2026-08-07",
-  "list_confidence": "template"
+  "research_notes": "R1 hybrid 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [minor]",
+  "list_confidence": "partial",
+  "do_not_list": [],
+  "presence_sources": [
+    "https://audubonnatureinstitute.org/aquarium"
+  ]
 }

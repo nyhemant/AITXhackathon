@@ -1,0 +1,196 @@
+{
+  "slug": "toronto-zoo",
+  "name": "Toronto Zoo",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.torontozoo.com/",
+    "https://www.torontozoo.com/animals",
+    "https://en.wikipedia.org/wiki/Toronto_Zoo",
+    "https://www.torontozoo.com/meettheguardians"
+  ],
+  "list_confidence_recommended": "audited",
+  "practical_fixes": [
+    {
+      "field": "region",
+      "current": "Canada",
+      "suggested": "ON",
+      "reason": "region should be province."
+    },
+    {
+      "field": "items.african_elephant",
+      "current": "African elephant",
+      "suggested": "REMOVE",
+      "reason": "African bush elephants previously held; not current collection."
+    },
+    {
+      "field": "items.giant_panda",
+      "current": "Giant panda",
+      "suggested": "REMOVE; use red panda",
+      "reason": "Giant pandas no longer at Toronto Zoo."
+    },
+    {
+      "field": "items.sumatran_tiger",
+      "current": "Sumatran tiger",
+      "suggested": "Amur tiger",
+      "reason": "Guardians schedule lists Amur tiger."
+    },
+    {
+      "field": "items.reticulated_giraffe",
+      "current": "Reticulated giraffe",
+      "suggested": "Giraffe (Masai)",
+      "reason": "Baby Masai giraffe Imara featured 2026."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Elephants previously held; not in current collection (Wikipedia + no elephant guardians talks)."
+    },
+    {
+      "catalog_id": "giant-panda",
+      "name": "Giant panda",
+      "reason": "Giant pandas no longer reside at Toronto Zoo; red pandas remain."
+    },
+    {
+      "catalog_id": "sumatran-tiger",
+      "name": "Sumatran tiger",
+      "reason": "Current program is Amur tiger — wrong subspecies label."
+    },
+    {
+      "catalog_id": "chimpanzee",
+      "name": "Chimpanzee",
+      "reason": "Not confirmed on current guardians/region materials this pass."
+    }
+  ],
+  "items": [
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "absent",
+      "display_label": "African elephant",
+      "official_name": "",
+      "notes": "Species previously held in Africa section; not current.",
+      "source_url": "https://en.wikipedia.org/wiki/Toronto_Zoo"
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "verified",
+      "display_label": "Giraffe",
+      "official_name": "Masai giraffe",
+      "notes": "Masai giraffe (baby Imara featured).",
+      "source_url": "https://www.torontozoo.com/animals"
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "absent",
+      "display_label": "Tiger",
+      "official_name": "Amur tiger",
+      "notes": "Amur tiger on guardians schedule — not Sumatran.",
+      "source_url": "https://www.torontozoo.com/meettheguardians"
+    },
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "verified",
+      "display_label": "Western lowland gorilla",
+      "official_name": "",
+      "notes": "African Rainforest Pavilion gorillas; Guardians of Gorilla.",
+      "source_url": "https://www.torontozoo.com/"
+    },
+    {
+      "id": "giant_panda",
+      "label": "Giant panda",
+      "catalog_id": "giant-panda",
+      "presence": "absent",
+      "display_label": "Giant panda",
+      "official_name": "",
+      "notes": "Giant pandas gone; do not list.",
+      "source_url": "https://www.citypass.com/articles/toronto/toronto-zoo-animals"
+    },
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "verified",
+      "display_label": "African lion",
+      "official_name": "",
+      "notes": "African lion guardians talks / savanna.",
+      "source_url": "https://www.torontozoo.com/meettheguardians"
+    },
+    {
+      "id": "cheetah",
+      "label": "Cheetah",
+      "catalog_id": "cheetah",
+      "presence": "verified",
+      "display_label": "Cheetah",
+      "official_name": "",
+      "notes": "Cheetah on guardians schedule / African Savanna.",
+      "source_url": "https://www.torontozoo.com/meettheguardians"
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "high",
+      "display_label": "Zebra",
+      "official_name": "",
+      "notes": "Savanna hoofstock (Grévy's historically).",
+      "source_url": "https://en.wikipedia.org/wiki/Toronto_Zoo"
+    },
+    {
+      "id": "chimpanzee",
+      "label": "Chimpanzee",
+      "catalog_id": "chimpanzee",
+      "presence": "template",
+      "display_label": "Chimpanzee",
+      "official_name": "",
+      "notes": "Not confirmed this pass.",
+      "source_url": ""
+    },
+    {
+      "id": "red_panda",
+      "label": "Red panda",
+      "catalog_id": "red-panda",
+      "presence": "high",
+      "display_label": "Red panda",
+      "official_name": "",
+      "notes": "Red pandas remain after giant panda exit; conservation messaging.",
+      "source_url": "https://www.torontozoo.com/history"
+    },
+    {
+      "id": "nile_hippo",
+      "label": "Nile hippo",
+      "catalog_id": "nile-hippo",
+      "presence": "verified",
+      "display_label": "Hippo",
+      "official_name": "River hippopotamus",
+      "notes": "River hippopotamus on guardians schedule / savanna.",
+      "source_url": "https://www.torontozoo.com/meettheguardians"
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "high",
+      "display_label": "African penguin",
+      "official_name": "",
+      "notes": "African penguins on African Savanna (Wikipedia current list).",
+      "source_url": "https://en.wikipedia.org/wiki/Toronto_Zoo"
+    }
+  ],
+  "route_90m_recommended": [
+    "western_lowland_gorilla",
+    "reticulated_giraffe",
+    "african_lion"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "CRITICAL: African elephant and giant panda still on print list but ABSENT. Tiger should be Amur not Sumatran. Giraffe is Masai. Gorillas, lions, cheetahs, hippos, penguins solid.",
+  "severity": "critical"
+}

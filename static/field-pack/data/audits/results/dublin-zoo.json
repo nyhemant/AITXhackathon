@@ -1,0 +1,154 @@
+{
+  "slug": "dublin-zoo",
+  "name": "Dublin Zoo",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.dublinzoo.ie/",
+    "https://www.dublinzoo.ie/plan-your-visit/zoo-habitats/",
+    "https://www.dublinzoo.ie/plan-your-visit/"
+  ],
+  "list_confidence_recommended": "partial",
+  "practical_fixes": [],
+  "do_not_list": [
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Dublin has Asian elephants (Kaziranga Forest Trail)."
+    },
+    {
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "Keeper talks: Humboldt penguin."
+    }
+  ],
+  "items": [
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "verified",
+      "display_label": "Western lowland gorilla",
+      "official_name": "",
+      "notes": "",
+      "source_url": "https://www.dublinzoo.ie/plan-your-visit/zoo-habitats/"
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "unclear",
+      "display_label": "Tiger",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "absent",
+      "display_label": "Asian elephant",
+      "official_name": "Asian elephant",
+      "notes": "",
+      "source_url": "https://www.dublinzoo.ie/plan-your-visit/zoo-habitats/"
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "high",
+      "display_label": "Giraffe",
+      "official_name": "Rothschild's giraffe",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "absent",
+      "display_label": "Penguin",
+      "official_name": "Humboldt penguin",
+      "notes": "",
+      "source_url": "https://www.dublinzoo.ie/plan-your-visit/"
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "unclear",
+      "display_label": "Zebra",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "unclear",
+      "display_label": "African lion",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "chimpanzee",
+      "label": "Chimpanzee",
+      "catalog_id": "chimpanzee",
+      "presence": "verified",
+      "display_label": "Chimpanzee",
+      "official_name": "",
+      "notes": "",
+      "source_url": "https://www.dublinzoo.ie/plan-your-visit/"
+    },
+    {
+      "id": "nile_hippo",
+      "label": "Nile hippo",
+      "catalog_id": "nile-hippo",
+      "presence": "high",
+      "display_label": "Hippo",
+      "official_name": "",
+      "notes": "Hippo Imani news 2025",
+      "source_url": ""
+    },
+    {
+      "id": "asian_small_clawed_otter",
+      "label": "Asian small-clawed otter",
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "unclear",
+      "display_label": "Asian small-clawed otter",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "galapagos_tortoise",
+      "label": "Galápagos tortoise",
+      "catalog_id": "galapagos-tortoise",
+      "presence": "unclear",
+      "display_label": "Galápagos tortoise",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "ring_tailed_lemur",
+      "label": "Ring-tailed lemur",
+      "catalog_id": "ring-tailed-lemur",
+      "presence": "unclear",
+      "display_label": "Ring-tailed lemur",
+      "official_name": "",
+      "notes": "Red-ruffed lemurs reported; ring-tailed unclear",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "western_lowland_gorilla",
+    "sumatran_tiger",
+    "chimpanzee"
+  ],
+  "content_mode_recommended": "hybrid",
+  "summary": "CRITICAL: Asian elephants (not African), Humboldt penguins (not African), Rothschild's giraffe. Gorillas, chimps, hippo verified historically. Sumatran tiger/ASC otter/lemur/Galápagos need confirm. Template African labels wrong.",
+  "severity": "critical"
+}

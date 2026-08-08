@@ -1,0 +1,164 @@
+{
+  "slug": "sao-paulo-zoo",
+  "name": "São Paulo Zoo",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.zoologico.com.br/"
+  ],
+  "list_confidence_recommended": "partial",
+  "practical_fixes": [
+    {
+      "field": "region",
+      "current": "Brazil",
+      "suggested": "SP",
+      "reason": "Use state code."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "red-panda",
+      "name": "Red panda",
+      "reason": "Not confirmed this pass."
+    }
+  ],
+  "items": [
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "medium",
+      "display_label": "Western lowland gorilla",
+      "official_name": "",
+      "notes": "Large international collection historically.",
+      "source_url": "https://www.zoologico.com.br/"
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "medium",
+      "display_label": "Tiger",
+      "official_name": "",
+      "notes": "Subspecies unconfirmed.",
+      "source_url": "https://www.zoologico.com.br/"
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "medium",
+      "display_label": "Giraffe",
+      "official_name": "",
+      "notes": "Confirm.",
+      "source_url": "https://www.zoologico.com.br/"
+    },
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "medium",
+      "display_label": "African elephant",
+      "official_name": "",
+      "notes": "Confirm live elephants.",
+      "source_url": "https://www.zoologico.com.br/"
+    },
+    {
+      "id": "two_toed_sloth",
+      "label": "Two-toed sloth",
+      "catalog_id": "two-toed-sloth",
+      "presence": "high",
+      "display_label": "Two-toed sloth",
+      "official_name": "",
+      "notes": "Strong Neotropical mammal collection.",
+      "source_url": "https://www.zoologico.com.br/"
+    },
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "medium",
+      "display_label": "African lion",
+      "official_name": "",
+      "notes": "Confirm.",
+      "source_url": "https://www.zoologico.com.br/"
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "template",
+      "display_label": "African penguin",
+      "official_name": "",
+      "notes": "Unconfirmed.",
+      "source_url": ""
+    },
+    {
+      "id": "chimpanzee",
+      "label": "Chimpanzee",
+      "catalog_id": "chimpanzee",
+      "presence": "medium",
+      "display_label": "Chimpanzee",
+      "official_name": "",
+      "notes": "Confirm.",
+      "source_url": "https://www.zoologico.com.br/"
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "medium",
+      "display_label": "Zebra",
+      "official_name": "",
+      "notes": "Confirm.",
+      "source_url": "https://www.zoologico.com.br/"
+    },
+    {
+      "id": "red_panda",
+      "label": "Red panda",
+      "catalog_id": "red-panda",
+      "presence": "template",
+      "display_label": "Red panda",
+      "official_name": "",
+      "notes": "Unconfirmed.",
+      "source_url": ""
+    },
+    {
+      "id": "galapagos_tortoise",
+      "label": "Galápagos tortoise",
+      "catalog_id": "galapagos-tortoise",
+      "presence": "template",
+      "display_label": "Galápagos tortoise",
+      "official_name": "",
+      "notes": "Unconfirmed.",
+      "source_url": ""
+    },
+    {
+      "id": "nile_hippo",
+      "label": "Nile hippo",
+      "catalog_id": "nile-hippo",
+      "presence": "template",
+      "display_label": "Nile hippo",
+      "official_name": "",
+      "notes": "Unconfirmed.",
+      "source_url": ""
+    },
+    {
+      "id": "asian_small_clawed_otter",
+      "label": "Asian small-clawed otter",
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "template",
+      "display_label": "Asian small-clawed otter",
+      "official_name": "",
+      "notes": "Unconfirmed.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "two_toed_sloth",
+    "western_lowland_gorilla",
+    "reticulated_giraffe"
+  ],
+  "content_mode_recommended": "hybrid",
+  "summary": "Large Brazilian flagship; sloth/regional safer than unconfirmed pandas/otters. Medium on classic megafauna.",
+  "severity": "major"
+}

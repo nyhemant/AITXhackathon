@@ -41,11 +41,14 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "giant-panda",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "display_label": "Giant panda",
+      "presence_note": "Flagship of Beijing Zoo."
     },
     {
       "id": "reticulated_giraffe",
-      "label": "Reticulated giraffe",
+      "label": "Giraffe",
       "emoji": "🦒",
       "one_liner": "Giraffes.",
       "tags": [
@@ -63,11 +66,13 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "reticulated-giraffe",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Giraffe"
     },
     {
       "id": "african_elephant",
-      "label": "African elephant",
+      "label": "Elephant",
       "emoji": "🐘",
       "one_liner": "Elephants.",
       "tags": [
@@ -85,11 +90,14 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-elephant",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Elephant",
+      "presence_note": "Elephants present historically; species soft."
     },
     {
       "id": "sumatran_tiger",
-      "label": "Sumatran tiger",
+      "label": "Tiger",
       "emoji": "🐯",
       "one_liner": "Tigers.",
       "tags": [
@@ -107,7 +115,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sumatran-tiger",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Tiger",
+      "presence_note": "Multiple tiger forms possible."
     },
     {
       "id": "red_panda",
@@ -129,7 +140,9 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "red-panda",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Red panda"
     },
     {
       "id": "african_lion",
@@ -153,7 +166,9 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "african-lion",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "African lion"
     },
     {
       "id": "western_lowland_gorilla",
@@ -177,7 +192,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "western-lowland-gorilla",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Western lowland gorilla",
+      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract."
     },
     {
       "id": "zebra",
@@ -200,7 +218,9 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "zebra",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Zebra"
     },
     {
       "id": "chimpanzee",
@@ -227,7 +247,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "chimpanzee",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Chimpanzee",
+      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract."
     },
     {
       "id": "galapagos_tortoise",
@@ -250,7 +273,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "galapagos-tortoise",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Galápagos tortoise",
+      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract."
     }
   ],
   "content_mode": "hybrid",
@@ -268,9 +294,13 @@
   ],
   "route_90m": [
     "giant_panda",
-    "reticulated_giraffe",
-    "african_elephant"
+    "red_panda",
+    "reticulated_giraffe"
   ],
-  "research_notes": "R2b 2026-08-07",
-  "list_confidence": "template"
+  "research_notes": "R2b 2026-08-07 · presence-audit 2026-08-08 [minor]",
+  "list_confidence": "partial",
+  "do_not_list": [],
+  "presence_sources": [
+    "https://www.beijingzoo.com/"
+  ]
 }

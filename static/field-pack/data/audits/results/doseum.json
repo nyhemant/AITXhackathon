@@ -1,0 +1,118 @@
+{
+  "slug": "doseum",
+  "name": "The DoSeum",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.thedoseum.org/",
+    "https://www.thedoseum.org/exhibits"
+  ],
+  "list_confidence_recommended": "partial",
+  "practical_fixes": [],
+  "do_not_list": [
+    {
+      "catalog_id": "cm-imaginarium",
+      "name": "Imaginarium",
+      "reason": "Generic Perot taxonomy; not confirmed DoSeum name."
+    },
+    {
+      "catalog_id": "cm-woven",
+      "name": "Woven Wonders",
+      "reason": "Perot exhibit name leakage."
+    },
+    {
+      "catalog_id": "cm-makery",
+      "name": "Creative Makery",
+      "reason": "Generic makery label; confirm local name."
+    }
+  ],
+  "items": [
+    {
+      "id": "cm_makery",
+      "label": "Creative Makery",
+      "catalog_id": "cm-makery",
+      "presence": "unclear",
+      "display_label": "Creative Makery",
+      "official_name": "",
+      "notes": "Maker/STEM likely exists under different name",
+      "source_url": ""
+    },
+    {
+      "id": "cm_imaginarium",
+      "label": "Imaginarium",
+      "catalog_id": "cm-imaginarium",
+      "presence": "absent",
+      "display_label": "Imaginarium",
+      "official_name": "",
+      "notes": "Taxonomy leakage",
+      "source_url": ""
+    },
+    {
+      "id": "cm_waterfall",
+      "label": "Waterfall play",
+      "catalog_id": "cm-waterfall",
+      "presence": "unclear",
+      "display_label": "Waterfall play",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "cm_outdoor",
+      "label": "Outdoor Area",
+      "catalog_id": "cm-outdoor",
+      "presence": "high",
+      "display_label": "Outdoor Area",
+      "official_name": "",
+      "notes": "Large outdoor play space documented",
+      "source_url": ""
+    },
+    {
+      "id": "cm_toddler_garden",
+      "label": "Toddler Garden",
+      "catalog_id": "cm-toddler-garden",
+      "presence": "unclear",
+      "display_label": "Toddler Garden",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "cm_woven",
+      "label": "Woven Wonders",
+      "catalog_id": "cm-woven",
+      "presence": "absent",
+      "display_label": "Woven Wonders",
+      "official_name": "",
+      "notes": "Perot-specific name",
+      "source_url": ""
+    },
+    {
+      "id": "cm_art_lab",
+      "label": "Art Lab",
+      "catalog_id": "cm-art-lab",
+      "presence": "unclear",
+      "display_label": "Art Lab",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "cm_free_explore",
+      "label": "Free explore",
+      "catalog_id": "cm-free-explore",
+      "presence": "medium",
+      "display_label": "Free explore",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "cm_outdoor",
+    "cm_free_explore",
+    "cm_art_lab"
+  ],
+  "content_mode_recommended": "hybrid",
+  "summary": "DoSeum is a children's museum with STEM/make/outdoor play. Labels Imaginarium, Creative Makery, Woven Wonders, Toddler Garden are Perot-style generic catalog names — not verified as official DoSeum zone titles. Prefer soft wonder mode or rename to DoSeum's actual exhibit names after official exhibits page pass.",
+  "severity": "major"
+}

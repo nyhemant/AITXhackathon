@@ -41,7 +41,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "western-lowland-gorilla",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Western lowland gorilla"
     },
     {
       "id": "african_elephant",
@@ -64,34 +67,14 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-elephant",
-      "presence": "template"
-    },
-    {
-      "id": "sumatran_tiger",
-      "label": "Sumatran tiger",
-      "emoji": "🐯",
-      "one_liner": "Tigers on the loop.",
-      "tags": [
-        "big-cats",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Cats",
-      "qa_card": {
-        "question": "What did you notice about the Sumatran tiger?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "sumatran-tiger",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "African elephant"
     },
     {
       "id": "reticulated_giraffe",
-      "label": "Reticulated giraffe",
+      "label": "Masai giraffe",
       "emoji": "🦒",
       "one_liner": "Tall necks.",
       "tags": [
@@ -110,7 +93,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "reticulated-giraffe",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Masai giraffe",
+      "presence_note": "Masai not reticulated on materials."
     },
     {
       "id": "two_toed_sloth",
@@ -132,7 +118,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "two-toed-sloth",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Two-toed sloth",
+      "presence_note": "RainForest / species lists include two-toed sloth."
     },
     {
       "id": "african_lion",
@@ -156,7 +145,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "african-lion",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "African lion",
+      "presence_note": "African Savanna."
     },
     {
       "id": "african_penguin",
@@ -180,7 +172,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "african-penguin",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "African penguin",
+      "presence_note": "Penguin Shores history; confirm current."
     },
     {
       "id": "cheetah",
@@ -204,7 +199,11 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "cheetah",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Cheetah",
+      "presence_note": "Across from Aldabra tortoises."
     },
     {
       "id": "nile_hippo",
@@ -227,11 +226,14 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "nile-hippo",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Nile hippo",
+      "presence_note": "Pygmy hippo historic; Nile not confirmed current."
     },
     {
       "id": "caribbean_flamingo",
-      "label": "Caribbean flamingo",
+      "label": "Flamingo",
       "emoji": "🦩",
       "one_liner": "Bright pink wader — long legs for shallow water.",
       "tags": [
@@ -250,7 +252,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "caribbean-flamingo",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Flamingo",
+      "presence_note": "Chilean flamingos noted in materials."
     },
     {
       "id": "zebra",
@@ -273,33 +278,12 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "zebra",
-      "presence": "template"
-    },
-    {
-      "id": "galapagos_tortoise",
-      "label": "Galápagos tortoise",
-      "emoji": "🐢",
-      "one_liner": "Giant tortoise — slow and steady.",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Galápagos tortoise?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "galapagos-tortoise",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Zebra"
     }
   ],
-  "content_mode": "hybrid",
+  "content_mode": "curated",
   "media": {
     "visitor_map_url": "/field-pack/media/maps/cleveland-metroparks-zoo.jpg",
     "visitor_map_page": "https://www.clevelandmetroparks.com/getmedia/1cb69c50-c793-4810-9355-2b928abd003a/7613-edits-to-digital-zoo-map-2026.jpg",
@@ -316,8 +300,28 @@
   "route_90m": [
     "western_lowland_gorilla",
     "african_elephant",
-    "sumatran_tiger"
+    "cheetah"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 · map-img 2026-08-07 · map-page 2026-08-07",
-  "list_confidence": "template"
+  "research_notes": "R2 hybrid 2026-08-07 · map-img 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "list_confidence": "audited",
+  "do_not_list": [
+    {
+      "catalog_id": "sumatran-tiger",
+      "name": "Sumatran tiger",
+      "reason": "Official materials feature Amur tiger, not Sumatran.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "galapagos-tortoise",
+      "name": "Galápagos tortoise",
+      "reason": "Aldabra, not Galápagos.",
+      "as_of": "2026-08-08"
+    }
+  ],
+  "last_presence_audit": "2026-08-08",
+  "presence_sources": [
+    "https://www.clevelandmetroparks.com/zoo",
+    "https://www.clevelandmetroparks.com/zoo/zoo-locations/primate-cat-and-aquatics",
+    "https://en.wikipedia.org/wiki/Cleveland_Metroparks_Zoo"
+  ]
 }

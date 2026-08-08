@@ -1,0 +1,185 @@
+{
+  "slug": "nairobi-safari-walk",
+  "name": "Nairobi Safari Walk",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.kws.go.ke/",
+    "https://en.wikipedia.org/wiki/Nairobi_Safari_Walk"
+  ],
+  "list_confidence_recommended": "partial",
+  "practical_fixes": [
+    {
+      "field": "items template",
+      "current": "Sumatran tiger, gorilla, chimp, African penguin, Nile hippo mixed with African plains",
+      "suggested": "African boardwalk species only: giraffe, zebra, lion/cheetah if on walk, antelope, warthog, ostrich",
+      "reason": "Safari Walk is a KWS boardwalk facility for mainly African species — Sumatran tiger and African penguin are nonsensical leakage."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "sumatran-tiger",
+      "name": "Sumatran tiger",
+      "reason": "Not an East African safari walk species; template leakage."
+    },
+    {
+      "catalog_id": "western-lowland-gorilla",
+      "name": "Western lowland gorilla",
+      "reason": "Not kept at Nairobi Safari Walk."
+    },
+    {
+      "catalog_id": "chimpanzee",
+      "name": "Chimpanzee",
+      "reason": "Not confirmed at Safari Walk (compare Sweetwaters/Ol Pejeta etc.)."
+    },
+    {
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "Coastal SA species — not Safari Walk."
+    },
+    {
+      "catalog_id": "nile-hippo",
+      "name": "Nile hippo",
+      "reason": "Not confirmed on walk list this pass."
+    }
+  ],
+  "items": [
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "high",
+      "display_label": "Giraffe",
+      "official_name": "Giraffe",
+      "notes": "Giraffe commonly on Safari Walk/orphanage complex narrative. Soft Giraffe.",
+      "source_url": ""
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "high",
+      "display_label": "Zebra",
+      "official_name": "Zebra",
+      "notes": "Plains species on walk.",
+      "source_url": ""
+    },
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "medium",
+      "display_label": "Lion (if on route)",
+      "official_name": "Lion",
+      "notes": "Big cats may be on route some days; not guaranteed. Soft Lion if present.",
+      "source_url": ""
+    },
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "medium",
+      "display_label": "Elephant (if present)",
+      "official_name": "",
+      "notes": "Elephants sometimes visible in complex; not guaranteed every visit.",
+      "source_url": ""
+    },
+    {
+      "id": "cm_outdoor",
+      "label": "Outdoor Area",
+      "catalog_id": "cm-outdoor",
+      "presence": "verified",
+      "display_label": "Boardwalk / outdoor",
+      "official_name": "Boardwalk",
+      "notes": "Boardwalk path is the activity.",
+      "source_url": ""
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "absent",
+      "display_label": "— remove —",
+      "official_name": "",
+      "notes": "Absurd for this venue.",
+      "source_url": ""
+    },
+    {
+      "id": "cheetah",
+      "label": "Cheetah",
+      "catalog_id": "cheetah",
+      "presence": "medium",
+      "display_label": "Cheetah (verify)",
+      "official_name": "",
+      "notes": "Possible African predator exhibit; verify.",
+      "source_url": ""
+    },
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "absent",
+      "display_label": "— remove —",
+      "official_name": "",
+      "notes": "No.",
+      "source_url": ""
+    },
+    {
+      "id": "chimpanzee",
+      "label": "Chimpanzee",
+      "catalog_id": "chimpanzee",
+      "presence": "absent",
+      "display_label": "— remove —",
+      "official_name": "",
+      "notes": "Not confirmed.",
+      "source_url": ""
+    },
+    {
+      "id": "nile_hippo",
+      "label": "Nile hippo",
+      "catalog_id": "nile-hippo",
+      "presence": "unclear",
+      "display_label": "Nile hippo",
+      "official_name": "",
+      "notes": "Not confirmed.",
+      "source_url": ""
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "absent",
+      "display_label": "— remove —",
+      "official_name": "",
+      "notes": "No.",
+      "source_url": ""
+    },
+    {
+      "id": "ostrich",
+      "label": "Ostrich",
+      "catalog_id": "ostrich",
+      "presence": "high",
+      "display_label": "Ostrich",
+      "official_name": "Ostrich",
+      "notes": "African plains bird likely. Soft Ostrich.",
+      "source_url": ""
+    },
+    {
+      "id": "warthog",
+      "label": "Warthog",
+      "catalog_id": "warthog",
+      "presence": "high",
+      "display_label": "Warthog",
+      "official_name": "Warthog",
+      "notes": "Common Safari Walk species.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "cm_outdoor",
+    "reticulated_giraffe",
+    "zebra"
+  ],
+  "content_mode_recommended": "hybrid",
+  "summary": "CRITICAL leakage: Sumatran tiger, gorilla, chimp, African penguin do not belong. Keep African boardwalk icons (giraffe, zebra, warthog, ostrich) + outdoor path. Lions/elephants medium.",
+  "severity": "critical"
+}

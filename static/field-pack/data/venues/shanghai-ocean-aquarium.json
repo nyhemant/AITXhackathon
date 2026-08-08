@@ -14,9 +14,9 @@
   "tagline": "Shanghai ocean tunnel — long underwater walk wow.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "People’s Square area.",
-    "transit_note": "Metro.",
-    "energy_note": "indoor",
+    "ticket_note": "Lujiazui / Oriental Pearl area (Pudong) — not People’s Square.",
+    "transit_note": "Metro to Lujiazui; next to Oriental Pearl Tower.",
+    "energy_note": "Mostly indoors",
     "best_start": "Tunnel walk."
   },
   "items": [
@@ -42,12 +42,16 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "shark",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Shark",
+      "presence_note": "Core mega-aquarium taxa; long underwater tunnel."
     },
     {
       "id": "stingray",
       "label": "Stingray",
-      "emoji": "射线",
+      "emoji": "🐟",
       "one_liner": "Rays.",
       "tags": [
         "water",
@@ -65,7 +69,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "stingray",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Stingray",
+      "presence_note": "Core taxa."
     },
     {
       "id": "jellyfish",
@@ -88,7 +96,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "jellyfish",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Jellyfish",
+      "presence_note": "Core taxa."
     },
     {
       "id": "sea_turtle",
@@ -111,7 +123,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sea-turtle",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Sea turtle",
+      "presence_note": "Core taxa."
     },
     {
       "id": "clownfish",
@@ -134,7 +150,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "clownfish",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Clownfish",
+      "presence_note": "Reef galleries."
     },
     {
       "id": "octopus",
@@ -157,7 +177,11 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "octopus",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Octopus",
+      "presence_note": "Core taxa."
     },
     {
       "id": "seahorse",
@@ -180,7 +204,11 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "seahorse",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Seahorse",
+      "presence_note": "Core taxa."
     },
     {
       "id": "eel",
@@ -203,7 +231,11 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "eel",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Eel",
+      "presence_note": "Core taxa."
     },
     {
       "id": "crab",
@@ -226,7 +258,11 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "crab",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Crab",
+      "presence_note": "Core taxa."
     },
     {
       "id": "starfish",
@@ -251,7 +287,11 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "starfish",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Sea star",
+      "presence_note": "Core taxa."
     },
     {
       "id": "freshwater_fish",
@@ -274,7 +314,11 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "freshwater-fish",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "River / lake fish",
+      "presence_note": "Yangtze / freshwater zone is SOA signature theme."
     },
     {
       "id": "asian_small_clawed_otter",
@@ -300,7 +344,10 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "asian-small-clawed-otter",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Asian small-clawed otter",
+      "presence_note": "Confirm before print."
     }
   ],
   "content_mode": "hybrid",
@@ -318,9 +365,14 @@
   ],
   "route_90m": [
     "shark",
-    "stingray",
+    "sea_turtle",
     "jellyfish"
   ],
-  "research_notes": "R2b 2026-08-07",
-  "list_confidence": "template"
+  "research_notes": "R2b 2026-08-07 · presence-audit 2026-08-08 [minor]",
+  "list_confidence": "partial",
+  "do_not_list": [],
+  "presence_sources": [
+    "https://www.aquarium.sh.com/"
+  ],
+  "last_presence_audit": "2026-08-08"
 }

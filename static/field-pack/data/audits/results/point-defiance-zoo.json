@@ -1,0 +1,185 @@
+{
+  "slug": "point-defiance-zoo",
+  "name": "Point Defiance Zoo & Aquarium",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.pdza.org/",
+    "https://www.pdza.org/animals/",
+    "https://www.pdza.org/animals/asian-forest-sanctuary/",
+    "https://www.pdza.org/animals/pacific-seas-aquarium/"
+  ],
+  "list_confidence_recommended": "audited",
+  "practical_fixes": [
+    {
+      "field": "items.asian_small_clawed_otter",
+      "current": "ASC otter + also sea otters at Rocky Shores",
+      "suggested": "Keep ASC otter (Asian Forest) AND/OR sea otter as separate; don't conflate",
+      "reason": "Both may exist: ASC in Asian Forest; southern sea otters in Rocky Shores."
+    },
+    {
+      "field": "items.african_elephant",
+      "current": "African elephant",
+      "suggested": "Asian elephant if Suki still on exhibit — never African",
+      "reason": "PDZA elephant program is Asian elephant."
+    },
+    {
+      "field": "items.reticulated_giraffe / zebra",
+      "current": "on list",
+      "suggested": "Remove — not PDZA collection focus",
+      "reason": "Habitats: Asian Forest, Rocky Shores, Arctic, aquariums, Penguin Point — not African savanna."
+    },
+    {
+      "field": "items.african_penguin",
+      "current": "African penguin",
+      "suggested": "Soft Penguin — confirm species at Penguin Point",
+      "reason": "Penguins yes; African label verify."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "reticulated-giraffe",
+      "name": "Reticulated giraffe",
+      "reason": "Not a Point Defiance focus/collection species on habitat pages."
+    },
+    {
+      "catalog_id": "zebra",
+      "name": "Zebra",
+      "reason": "Not on PDZA habitat lineup."
+    },
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "If elephant present it is Asian; African label false. Confirm live status of elephant program."
+    }
+  ],
+  "items": [
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "verified",
+      "display_label": "Sumatran tiger",
+      "official_name": "Sumatran tiger",
+      "notes": "Asian Forest Sanctuary: Sumatran tiger (e.g. Bintang).",
+      "source_url": "https://www.pdza.org/animals/asian-forest-sanctuary/"
+    },
+    {
+      "id": "shark",
+      "label": "Shark",
+      "catalog_id": "shark",
+      "presence": "verified",
+      "display_label": "Shark",
+      "official_name": "Shark",
+      "notes": "Pacific Seas / Tropical Reef aquariums — sharks (incl. dive with sharks marketing).",
+      "source_url": "https://www.pdza.org/"
+    },
+    {
+      "id": "jellyfish",
+      "label": "Jellyfish",
+      "catalog_id": "jellyfish",
+      "presence": "high",
+      "display_label": "Jellyfish",
+      "official_name": "Jellyfish",
+      "notes": "Aquarium jellies. Soft Jellyfish.",
+      "source_url": ""
+    },
+    {
+      "id": "asian_small_clawed_otter",
+      "label": "Asian small-clawed otter",
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "verified",
+      "display_label": "Asian small-clawed otter",
+      "official_name": "Asian small-clawed otter",
+      "notes": "Asian Forest: Asian small-clawed otter.",
+      "source_url": "https://www.pdza.org/animals/asian-forest-sanctuary/"
+    },
+    {
+      "id": "red_panda",
+      "label": "Red panda",
+      "catalog_id": "red-panda",
+      "presence": "unclear",
+      "display_label": "Red panda",
+      "official_name": "",
+      "notes": "Not on Asian Forest animal list extract (tiger, clouded leopard, gibbon, tapir, anoa, siamang, otter).",
+      "source_url": ""
+    },
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "medium",
+      "display_label": "Elephant (verify Asian)",
+      "official_name": "Asian elephant?",
+      "notes": "Asian elephant historically (Suki); status/species label — not African. Medium pending live confirm.",
+      "source_url": ""
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "absent",
+      "display_label": "— remove —",
+      "official_name": "",
+      "notes": "Not in habitats.",
+      "source_url": ""
+    },
+    {
+      "id": "sea_turtle",
+      "label": "Sea turtle",
+      "catalog_id": "sea-turtle",
+      "presence": "high",
+      "display_label": "Sea turtle",
+      "official_name": "Sea turtle",
+      "notes": "Aquarium sea turtles likely. Soft Sea turtle.",
+      "source_url": ""
+    },
+    {
+      "id": "octopus",
+      "label": "Octopus",
+      "catalog_id": "octopus",
+      "presence": "high",
+      "display_label": "Octopus",
+      "official_name": "Octopus",
+      "notes": "Aquarium. Soft Octopus.",
+      "source_url": ""
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "high",
+      "display_label": "Penguin",
+      "official_name": "Penguin",
+      "notes": "Penguin Point. Soft Penguin; confirm African.",
+      "source_url": "https://www.pdza.org/"
+    },
+    {
+      "id": "stingray",
+      "label": "Stingray",
+      "catalog_id": "stingray",
+      "presence": "high",
+      "display_label": "Stingray",
+      "official_name": "Ray",
+      "notes": "Aquarium rays. Soft Ray.",
+      "source_url": ""
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "absent",
+      "display_label": "— remove —",
+      "official_name": "",
+      "notes": "Not in habitats.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "sumatran_tiger",
+    "shark",
+    "jellyfish"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "MAJOR: Drop giraffe/zebra African template. Sumatran tiger + ASC otter + aquariums verified/high. Elephant only as Asian if still present. Sea otters at Rocky Shores are a star missing from correct catalog labeling.",
+  "severity": "major"
+}

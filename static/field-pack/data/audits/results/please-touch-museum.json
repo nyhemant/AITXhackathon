@@ -1,0 +1,115 @@
+{
+  "slug": "please-touch-museum",
+  "name": "Please Touch Museum",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.pleasetouchmuseum.org/",
+    "https://www.pleasetouchmuseum.org/exhibits/"
+  ],
+  "list_confidence_recommended": "partial",
+  "practical_fixes": [
+    {
+      "field": "items labels",
+      "current": "Generic cm_* may not match current exhibit names",
+      "suggested": "Align to current PTM exhibits (e.g. River Adventures, City Capers, Flight Fantasy, etc.)",
+      "reason": "Children’s museums rebrand halls; verify names before print."
+    },
+    {
+      "field": "items.cm_waterfall",
+      "current": "Waterfall play",
+      "suggested": "Confirm water exhibit name/seasonal status; pack change of clothes",
+      "reason": "Water play may be River Adventures-style; still valid practical tip."
+    }
+  ],
+  "do_not_list": [],
+  "items": [
+    {
+      "id": "cm_waterfall",
+      "label": "Waterfall play",
+      "catalog_id": "cm-waterfall",
+      "presence": "high",
+      "display_label": "Water play",
+      "official_name": "Water play",
+      "notes": "Water play is a PTM staple; exact name may differ.",
+      "source_url": "https://www.pleasetouchmuseum.org/"
+    },
+    {
+      "id": "cm_imaginarium",
+      "label": "Imaginarium",
+      "catalog_id": "cm-imaginarium",
+      "presence": "medium",
+      "display_label": "Pretend play",
+      "official_name": "Pretend play",
+      "notes": "Pretend play halls exist under other names.",
+      "source_url": ""
+    },
+    {
+      "id": "cm_makery",
+      "label": "Creative Makery",
+      "catalog_id": "cm-makery",
+      "presence": "medium",
+      "display_label": "Makery",
+      "official_name": "Make / art",
+      "notes": "Art/make studios common.",
+      "source_url": ""
+    },
+    {
+      "id": "cm_outdoor",
+      "label": "Outdoor Area",
+      "catalog_id": "cm-outdoor",
+      "presence": "high",
+      "display_label": "Outdoor",
+      "official_name": "Outdoor",
+      "notes": "Fairmount Park setting / outdoor components.",
+      "source_url": ""
+    },
+    {
+      "id": "cm_toddler_garden",
+      "label": "Toddler Garden",
+      "catalog_id": "cm-toddler-garden",
+      "presence": "high",
+      "display_label": "Toddler zone",
+      "official_name": "Toddler zone",
+      "notes": "Younger kid zones. Soft Toddler.",
+      "source_url": ""
+    },
+    {
+      "id": "cm_woven",
+      "label": "Woven Wonders",
+      "catalog_id": "cm-woven",
+      "presence": "medium",
+      "display_label": "Climb",
+      "official_name": "Climb structure",
+      "notes": "Climb structures; Woven Wonders may be real or legacy name — medium.",
+      "source_url": ""
+    },
+    {
+      "id": "cm_art_lab",
+      "label": "Art Lab",
+      "catalog_id": "cm-art-lab",
+      "presence": "high",
+      "display_label": "Art lab",
+      "official_name": "Art",
+      "notes": "Art activities. Soft Art lab.",
+      "source_url": ""
+    },
+    {
+      "id": "cm_free_explore",
+      "label": "Free explore",
+      "catalog_id": "cm-free-explore",
+      "presence": "verified",
+      "display_label": "Free explore",
+      "official_name": "Free explore",
+      "notes": "Core product.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "cm_waterfall",
+    "cm_outdoor",
+    "cm_free_explore"
+  ],
+  "content_mode_recommended": "hybrid",
+  "summary": "Children’s museum list directionally right (water, pretend, make, outdoor, toddler) but hall names need alignment to current PTM map. Partial not full audited. No animal taxonomy issues.",
+  "severity": "minor"
+}

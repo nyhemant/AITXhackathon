@@ -1,0 +1,202 @@
+{
+  "slug": "adelaide-zoo",
+  "name": "Adelaide Zoo",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.adelaidezoo.com.au/animals/",
+    "https://www.adelaidezoo.com.au/animals/giant-panda-xing-qiu-and-yi-lan/",
+    "https://www.monartosafari.com.au/animals/"
+  ],
+  "list_confidence_recommended": "audited",
+  "practical_fixes": [
+    {
+      "field": "official_url",
+      "current": "https://www.zoossa.com.au/adelaide-zoo/",
+      "suggested": "https://www.adelaidezoo.com.au/",
+      "reason": "Canonical site redirects to adelaidezoo.com.au"
+    },
+    {
+      "field": "ticket_note",
+      "current": "City-edge zoo; check panda hours.",
+      "suggested": "City zoo; giant panda talks ~1:15pm — confirm adelaidezoo.com.au. Large African species mostly at Monarto Safari Park (separate ticket/site).",
+      "reason": "Avoid implying Monarto megafauna are on-site."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "african-lion",
+      "name": "African lion",
+      "reason": "Not on Adelaide Zoo animals list; African lions listed at sister Monarto Safari Park."
+    },
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Not at Adelaide Zoo; Asian elephants at Monarto Safari Park."
+    },
+    {
+      "catalog_id": "western-lowland-gorilla",
+      "name": "Western lowland gorilla",
+      "reason": "Not on official Adelaide Zoo animals list."
+    },
+    {
+      "catalog_id": "chimpanzee",
+      "name": "Chimpanzee",
+      "reason": "Chimpanzees listed at Monarto, not Adelaide city zoo animals page."
+    },
+    {
+      "catalog_id": "zebra",
+      "name": "Zebra",
+      "reason": "Plains zebra at Monarto; not on Adelaide animals list."
+    },
+    {
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "Has Little (fairy) penguin, not African penguin. Soft-label to Little penguin if keeping a penguin stop."
+    },
+    {
+      "catalog_id": "galapagos-tortoise",
+      "name": "Galápagos tortoise",
+      "reason": "Official list has Aldabra tortoise, not Galápagos."
+    }
+  ],
+  "items": [
+    {
+      "id": "giant_panda",
+      "label": "Giant panda",
+      "catalog_id": "giant-panda",
+      "presence": "verified",
+      "display_label": "Giant panda",
+      "official_name": "Giant Panda – Xing Qiu and Yi Lan",
+      "notes": "New pair on official animals list and keeper talks.",
+      "source_url": "https://www.adelaidezoo.com.au/animals/giant-panda-xing-qiu-and-yi-lan/"
+    },
+    {
+      "id": "red_panda",
+      "label": "Red panda",
+      "catalog_id": "red-panda",
+      "presence": "verified",
+      "display_label": "Red panda",
+      "official_name": "Red Panda",
+      "notes": "",
+      "source_url": "https://www.adelaidezoo.com.au/animals/red-panda/"
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "verified",
+      "display_label": "Sumatran tiger",
+      "official_name": "Sumatran Tiger",
+      "notes": "",
+      "source_url": "https://www.adelaidezoo.com.au/animals/sumatran-tiger/"
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "verified",
+      "display_label": "Giraffe",
+      "official_name": "Giraffe",
+      "notes": "Listed as Giraffe; subspecies not specified on card.",
+      "source_url": "https://www.adelaidezoo.com.au/animals/giraffe/"
+    },
+    {
+      "id": "orangutan",
+      "label": "Orangutan",
+      "catalog_id": "orangutan",
+      "presence": "verified",
+      "display_label": "Sumatran orangutan",
+      "official_name": "Sumatran Orangutan",
+      "notes": "",
+      "source_url": "https://www.adelaidezoo.com.au/animals/sumatran-orangutan/"
+    },
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "absent",
+      "display_label": "African lion",
+      "official_name": "",
+      "notes": "Not on Adelaide Zoo animals list; African lions listed at sister Monarto Safari Park.",
+      "source_url": ""
+    },
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "absent",
+      "display_label": "African elephant",
+      "official_name": "",
+      "notes": "Not at Adelaide Zoo; Asian elephants at Monarto Safari Park.",
+      "source_url": ""
+    },
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "absent",
+      "display_label": "Western lowland gorilla",
+      "official_name": "",
+      "notes": "Not on official Adelaide Zoo animals list.",
+      "source_url": ""
+    },
+    {
+      "id": "chimpanzee",
+      "label": "Chimpanzee",
+      "catalog_id": "chimpanzee",
+      "presence": "absent",
+      "display_label": "Chimpanzee",
+      "official_name": "",
+      "notes": "Chimpanzees listed at Monarto, not Adelaide city zoo animals page.",
+      "source_url": ""
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "absent",
+      "display_label": "Zebra",
+      "official_name": "",
+      "notes": "Plains zebra at Monarto; not on Adelaide animals list.",
+      "source_url": ""
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "absent",
+      "display_label": "Little penguin",
+      "official_name": "Little Penguin",
+      "notes": "Has Little (fairy) penguin, not African penguin. Soft-label to Little penguin if keeping a penguin stop.",
+      "source_url": "https://www.adelaidezoo.com.au/animals/little-penguin/"
+    },
+    {
+      "id": "asian_small_clawed_otter",
+      "label": "Asian small-clawed otter",
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "verified",
+      "display_label": "Asian small-clawed otter",
+      "official_name": "Asian Small-clawed Otter",
+      "notes": "",
+      "source_url": "https://www.adelaidezoo.com.au/animals/asian-small-clawed-otter/"
+    },
+    {
+      "id": "galapagos_tortoise",
+      "label": "Galápagos tortoise",
+      "catalog_id": "galapagos-tortoise",
+      "presence": "absent",
+      "display_label": "Aldabra tortoise",
+      "official_name": "Aldabra Tortoise",
+      "notes": "Official list has Aldabra tortoise, not Galápagos.",
+      "source_url": "https://www.adelaidezoo.com.au/animals/aldabra-tortoise/"
+    }
+  ],
+  "route_90m_recommended": [
+    "giant_panda",
+    "sumatran_tiger",
+    "orangutan"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "Official Adelaide Zoo list verifies pandas, tiger, giraffe, orangutan, otter; template African megafauna (lion, elephant, gorilla, chimp, zebra) and wrong penguin/tortoise taxa are absent on-site (many live at Monarto). Print list needs hard cut.",
+  "severity": "critical"
+}

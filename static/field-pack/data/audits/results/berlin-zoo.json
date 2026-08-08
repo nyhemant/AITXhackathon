@@ -1,0 +1,141 @@
+{
+  "slug": "berlin-zoo",
+  "name": "Berlin Zoo",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.zoo-berlin.de/en/",
+    "https://www.zoo-berlin.de/en/tickets-service/feedings-trainings",
+    "https://www.zoo-berlin.de/en/about-the-zoo/numbers-dates-and-facts"
+  ],
+  "list_confidence_recommended": "partial",
+  "practical_fixes": [
+    {
+      "field": "ticket_note",
+      "current": "",
+      "suggested": "Germany's only giant pandas are a flagship — consider adding panda to print list (not currently on venue items).",
+      "reason": "High-value verified icon missing from template list."
+    }
+  ],
+  "do_not_list": [],
+  "items": [
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "high",
+      "display_label": "Elephant",
+      "official_name": "Elephants (feeding listed)",
+      "notes": "Elephant feedings on official schedule; Asian elephants commonly referenced — soft-label Elephant.",
+      "source_url": ""
+    },
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "verified",
+      "display_label": "Western lowland gorilla",
+      "official_name": "",
+      "notes": "Gorilla feedings; senior gorilla Fatou famous.",
+      "source_url": "https://www.zoo-berlin.de/en/tickets-service/feedings-trainings"
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "medium",
+      "display_label": "Tiger",
+      "official_name": "",
+      "notes": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract.",
+      "source_url": ""
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "high",
+      "display_label": "Giraffe",
+      "official_name": "",
+      "notes": "Giraffes mentioned on about page.",
+      "source_url": ""
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "medium",
+      "display_label": "African penguin",
+      "official_name": "",
+      "notes": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract.",
+      "source_url": ""
+    },
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "high",
+      "display_label": "African lion",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "nile_hippo",
+      "label": "Nile hippo",
+      "catalog_id": "nile-hippo",
+      "presence": "high",
+      "display_label": "Nile hippo",
+      "official_name": "",
+      "notes": "Hippo Bay / hippo feedings; also pygmy hippo news — common hippo program active.",
+      "source_url": ""
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "high",
+      "display_label": "Zebra",
+      "official_name": "",
+      "notes": "About page: A for anteater to Z for zebra.",
+      "source_url": ""
+    },
+    {
+      "id": "chimpanzee",
+      "label": "Chimpanzee",
+      "catalog_id": "chimpanzee",
+      "presence": "verified",
+      "display_label": "Chimpanzee",
+      "official_name": "",
+      "notes": "Chimp feedings on schedule; also bonobos.",
+      "source_url": ""
+    },
+    {
+      "id": "galapagos_tortoise",
+      "label": "Galápagos tortoise",
+      "catalog_id": "galapagos-tortoise",
+      "presence": "unclear",
+      "display_label": "Galápagos tortoise",
+      "official_name": "",
+      "notes": "Not confirmed on official sources reviewed in this audit pass.",
+      "source_url": ""
+    },
+    {
+      "id": "red_panda",
+      "label": "Red panda",
+      "catalog_id": "red-panda",
+      "presence": "medium",
+      "display_label": "Red panda",
+      "official_name": "",
+      "notes": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "western_lowland_gorilla",
+    "chimpanzee",
+    "nile_hippo",
+    "african_elephant"
+  ],
+  "content_mode_recommended": "hybrid",
+  "summary": "Feedings schedule verifies gorillas, chimps, hippos, elephants, pandas (pandas not even on current item list). Soft-label elephant/tiger species; strong hybrid list.",
+  "severity": "minor"
+}

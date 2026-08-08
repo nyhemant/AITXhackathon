@@ -1,0 +1,162 @@
+{
+  "slug": "national-zoo",
+  "name": "Smithsonian National Zoo",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://nationalzoo.si.edu/animals/list",
+    "https://nationalzoo.si.edu/animals",
+    "https://nationalzoo.si.edu/dcpandas",
+    "https://nationalzoo.si.edu/animals/exhibits/asia-trail",
+    "https://nationalzoo.si.edu/animals/asian-elephant",
+    "https://nationalzoo.si.edu/elephants"
+  ],
+  "list_confidence_recommended": "audited",
+  "practical_fixes": [
+    {
+      "field": "items.african_elephant",
+      "current": "African elephant",
+      "suggested": "Asian elephant (Elephant Trails; calf Linh Mai)",
+      "reason": "NZCBI keeps Asian elephants only."
+    },
+    {
+      "field": "items.reticulated_giraffe",
+      "current": "Reticulated giraffe on list",
+      "suggested": "Remove — giraffes left 2006 for Elephant Trails",
+      "reason": "No giraffes at National Zoo for ~20 years."
+    },
+    {
+      "field": "items.sumatran_tiger",
+      "current": "Sumatran tiger",
+      "suggested": "Soft Tiger — collection has included Sumatran and Amur/Siberian",
+      "reason": "Do not hardcode single subspecies without current animal page check."
+    },
+    {
+      "field": "practical.ticket_note",
+      "current": "Free; timed entry may apply",
+      "suggested": "Keep; emphasize free + pass reservation on nationalzoo.si.edu/passes",
+      "reason": "Accurate."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "National Zoo elephants are Asian (Elephant Trails). African elephant label is false."
+    },
+    {
+      "catalog_id": "reticulated-giraffe",
+      "name": "Reticulated giraffe",
+      "reason": "Giraffes removed 2006; not on animals list."
+    }
+  ],
+  "items": [
+    {
+      "id": "giant_panda",
+      "label": "Giant panda",
+      "catalog_id": "giant-panda",
+      "presence": "verified",
+      "display_label": "Giant panda",
+      "official_name": "Giant panda",
+      "notes": "Bao Li & Qing Bao on Asia Trail.",
+      "source_url": "https://nationalzoo.si.edu/dcpandas"
+    },
+    {
+      "id": "asian_small_clawed_otter",
+      "label": "Asian small-clawed otter",
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "verified",
+      "display_label": "Asian small-clawed otter",
+      "official_name": "Asian small-clawed otter",
+      "notes": "Asia Trail: Asian small-clawed otters.",
+      "source_url": "https://nationalzoo.si.edu/animals/exhibits/asia-trail"
+    },
+    {
+      "id": "red_panda",
+      "label": "Red panda",
+      "catalog_id": "red-panda",
+      "presence": "verified",
+      "display_label": "Red panda",
+      "official_name": "Red panda",
+      "notes": "Asia Trail: red pandas.",
+      "source_url": "https://nationalzoo.si.edu/animals/red-panda"
+    },
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "absent",
+      "display_label": "— relabel Asian elephant —",
+      "official_name": "Asian elephant",
+      "notes": "Wrong species — Asian elephants present. Treat African catalog as do-not-list; recommend Asian elephant card.",
+      "source_url": "https://nationalzoo.si.edu/animals/asian-elephant"
+    },
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "verified",
+      "display_label": "Lion",
+      "official_name": "Lion",
+      "notes": "Great Cats: Lion.",
+      "source_url": "https://nationalzoo.si.edu/animals/lion"
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "high",
+      "display_label": "Tiger",
+      "official_name": "Tiger",
+      "notes": "Great Cats: Tiger present; subspecies mix historically. Soft Tiger.",
+      "source_url": "https://nationalzoo.si.edu/animals"
+    },
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "high",
+      "display_label": "Gorilla",
+      "official_name": "Gorilla",
+      "notes": "Primates area historically includes gorillas; confirm current individuals on animals list. Soft Gorilla.",
+      "source_url": ""
+    },
+    {
+      "id": "orangutan",
+      "label": "Orangutan",
+      "catalog_id": "orangutan",
+      "presence": "verified",
+      "display_label": "Orangutan",
+      "official_name": "Orangutan",
+      "notes": "Bornean orangutan on animals list.",
+      "source_url": "https://nationalzoo.si.edu/animals/orangutan"
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "absent",
+      "display_label": "— remove —",
+      "official_name": "",
+      "notes": "No giraffes since 2006.",
+      "source_url": ""
+    },
+    {
+      "id": "caribbean_flamingo",
+      "label": "Caribbean flamingo",
+      "catalog_id": "caribbean-flamingo",
+      "presence": "high",
+      "display_label": "Flamingo",
+      "official_name": "Flamingo",
+      "notes": "Bird House includes flamingos on maps. Soft Flamingo.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "giant_panda",
+    "asian_small_clawed_otter",
+    "red_panda"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "CRITICAL label errors: African elephant (actually Asian; calf Linh Mai 2026) and giraffe (absent since 2006). Pandas Bao Li & Qing Bao verified. Asia Trail otters/red pandas verified. Lions/orangutans verified. Rebuild route around pandas + Asia Trail + Great Cats + Elephant Trails (Asian).",
+  "severity": "critical"
+}

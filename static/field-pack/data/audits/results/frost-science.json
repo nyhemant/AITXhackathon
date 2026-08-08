@@ -1,0 +1,118 @@
+{
+  "slug": "frost-science",
+  "name": "Phillip and Patricia Frost Museum of Science",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.frostscience.org/",
+    "https://www.frostscience.org/exhibitions-featured/"
+  ],
+  "list_confidence_recommended": "partial",
+  "practical_fixes": [],
+  "do_not_list": [
+    {
+      "catalog_id": "cm-makery",
+      "name": "Creative Makery",
+      "reason": "Not an official Frost exhibit name."
+    }
+  ],
+  "items": [
+    {
+      "id": "shark",
+      "label": "Shark",
+      "catalog_id": "shark",
+      "presence": "verified",
+      "display_label": "Shark",
+      "official_name": "Gulf Stream Aquarium sharks",
+      "notes": "",
+      "source_url": "https://www.frostscience.org/"
+    },
+    {
+      "id": "stingray",
+      "label": "Stingray",
+      "catalog_id": "stingray",
+      "presence": "verified",
+      "display_label": "Stingray",
+      "official_name": "",
+      "notes": "Touch tank",
+      "source_url": ""
+    },
+    {
+      "id": "sci_planet",
+      "label": "Planet / space hall",
+      "catalog_id": "sci-planet",
+      "presence": "verified",
+      "display_label": "Frost Planetarium",
+      "official_name": "Frost Planetarium",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "sci_hands_on",
+      "label": "Hands-on lab",
+      "catalog_id": "sci-hands-on",
+      "presence": "high",
+      "display_label": "Hands-on lab",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "jellyfish",
+      "label": "Jellyfish",
+      "catalog_id": "jellyfish",
+      "presence": "medium",
+      "display_label": "Jellyfish",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "sci_aquarium_zone",
+      "label": "Aquarium zone",
+      "catalog_id": "sci-aquarium-zone",
+      "presence": "verified",
+      "display_label": "Aquarium zone",
+      "official_name": "Aquarium",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "cm_makery",
+      "label": "Creative Makery",
+      "catalog_id": "cm-makery",
+      "presence": "absent",
+      "display_label": "Creative Makery",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "cm_free_explore",
+      "label": "Free explore",
+      "catalog_id": "cm-free-explore",
+      "presence": "medium",
+      "display_label": "Free explore",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "sci_dinosaur",
+      "label": "Dinosaur hall",
+      "catalog_id": "sci-dinosaur",
+      "presence": "medium",
+      "display_label": "Feathers to the Stars / dinosaurs",
+      "official_name": "Feathers to the Stars (Yutyrannus)",
+      "notes": "Not a full dinosaur hall",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "shark",
+    "stingray",
+    "sci_planet"
+  ],
+  "content_mode_recommended": "hybrid",
+  "summary": "Aquarium (sharks/rays), planetarium, hands-on science, and feathered-dinosaur content are real. Creative Makery is taxonomy leakage. Permanent 'Dinosaur hall' is overstated — Feathers to the Stars has a large Yutyrannus, not a classic dino hall.",
+  "severity": "major"
+}

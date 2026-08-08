@@ -1,0 +1,138 @@
+{
+  "slug": "discovery-place",
+  "name": "Discovery Place Science",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://discoveryplace.org/",
+    "https://discoveryplace.org/visit"
+  ],
+  "list_confidence_recommended": "partial",
+  "practical_fixes": [],
+  "do_not_list": [
+    {
+      "catalog_id": "cm-imaginarium",
+      "name": "Imaginarium",
+      "reason": "Not a Discovery Place exhibit name."
+    },
+    {
+      "catalog_id": "cm-makery",
+      "name": "Creative Makery",
+      "reason": "Perot-style taxonomy leakage."
+    },
+    {
+      "catalog_id": "sci-shuttle",
+      "name": "Space shuttle / orbiter",
+      "reason": "No resident orbiter exhibit confirmed."
+    },
+    {
+      "catalog_id": "sci-rocket",
+      "name": "Rockets & launch",
+      "reason": "Not a named permanent hall on official site."
+    },
+    {
+      "catalog_id": "sci-dinosaur",
+      "name": "Dinosaur hall",
+      "reason": "No permanent dinosaur hall confirmed on official exhibitions list."
+    }
+  ],
+  "items": [
+    {
+      "id": "sci_hands_on",
+      "label": "Hands-on lab",
+      "catalog_id": "sci-hands-on",
+      "presence": "verified",
+      "display_label": "Hands-on exhibits",
+      "official_name": "",
+      "notes": "",
+      "source_url": "https://discoveryplace.org/"
+    },
+    {
+      "id": "sci_planet",
+      "label": "Planet / space hall",
+      "catalog_id": "sci-planet",
+      "presence": "verified",
+      "display_label": "Planetarium / IMAX Dome",
+      "official_name": "Digistar 7 Planetarium / IMAX Dome",
+      "notes": "",
+      "source_url": "https://discoveryplace.org/imax/digistar-planetarium"
+    },
+    {
+      "id": "sci_dinosaur",
+      "label": "Dinosaur hall",
+      "catalog_id": "sci-dinosaur",
+      "presence": "absent",
+      "display_label": "Dinosaur hall",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "cm_free_explore",
+      "label": "Free explore",
+      "catalog_id": "cm-free-explore",
+      "presence": "medium",
+      "display_label": "Free explore",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "sci_aquarium_zone",
+      "label": "Aquarium zone",
+      "catalog_id": "sci-aquarium-zone",
+      "presence": "verified",
+      "display_label": "World Alive aquariums",
+      "official_name": "World Alive",
+      "notes": "",
+      "source_url": "https://discoveryplace.org/"
+    },
+    {
+      "id": "cm_makery",
+      "label": "Creative Makery",
+      "catalog_id": "cm-makery",
+      "presence": "absent",
+      "display_label": "Creative Makery",
+      "official_name": "",
+      "notes": "Taxonomy leakage",
+      "source_url": ""
+    },
+    {
+      "id": "cm_imaginarium",
+      "label": "Imaginarium",
+      "catalog_id": "cm-imaginarium",
+      "presence": "absent",
+      "display_label": "Imaginarium",
+      "official_name": "",
+      "notes": "Taxonomy leakage",
+      "source_url": ""
+    },
+    {
+      "id": "sci_shuttle",
+      "label": "Space shuttle / orbiter",
+      "catalog_id": "sci-shuttle",
+      "presence": "absent",
+      "display_label": "Space shuttle / orbiter",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "sci_rocket",
+      "label": "Rockets & launch",
+      "catalog_id": "sci-rocket",
+      "presence": "absent",
+      "display_label": "Rockets & launch",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "sci_hands_on",
+    "sci_planet",
+    "sci_aquarium_zone"
+  ],
+  "content_mode_recommended": "hybrid",
+  "summary": "Hands-on science, planetarium (Digistar in IMAX Dome), World Alive aquariums/animals, and indoor rainforest are real. Dinosaur hall, Creative Makery, Imaginarium, shuttle/rocket are generic/template leakage — not official exhibit names. Prefer World Alive, Rainforest, Thinker Studio-style hands-on, IMAX/Planetarium.",
+  "severity": "major"
+}

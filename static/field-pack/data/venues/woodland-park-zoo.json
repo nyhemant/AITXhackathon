@@ -42,34 +42,15 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "western-lowland-gorilla",
-      "presence": "template"
-    },
-    {
-      "id": "african_elephant",
-      "label": "African elephant",
-      "emoji": "🐘",
-      "one_liner": "Elephants on the African side.",
-      "tags": [
-        "big",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Savanna",
-      "qa_card": {
-        "question": "What did you notice about the African elephant?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "african-elephant",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Western lowland gorilla",
+      "presence_note": "Two gorilla troops; 2026 baby gorillas Kadre & Oku."
     },
     {
       "id": "reticulated_giraffe",
-      "label": "Reticulated giraffe",
+      "label": "Giraffe",
       "emoji": "🦒",
       "one_liner": "Giraffes above the paths.",
       "tags": [
@@ -88,11 +69,15 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "reticulated-giraffe",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Giraffe",
+      "presence_note": "African Savanna giraffes."
     },
     {
       "id": "sumatran_tiger",
-      "label": "Sumatran tiger",
+      "label": "Tiger",
       "emoji": "🐯",
       "one_liner": "Tigers in lush settings.",
       "tags": [
@@ -111,7 +96,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sumatran-tiger",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Tiger",
+      "presence_note": "Malayan tigers in Banyan Wilds / Tropical Asia."
     },
     {
       "id": "ring_tailed_lemur",
@@ -134,7 +123,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "ring-tailed-lemur",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Ring-tailed lemur",
+      "presence_note": "Ring-tailed lemurs listed in tropical/primate areas."
     },
     {
       "id": "african_lion",
@@ -158,31 +151,11 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "african-lion",
-      "presence": "template"
-    },
-    {
-      "id": "african_penguin",
-      "label": "African penguin",
-      "emoji": "🐧",
-      "one_liner": "Waddle on land, zoom in water.",
-      "tags": [
-        "wow",
-        "water",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the African penguin?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "african-penguin",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "African lion",
+      "presence_note": "African lions on savanna (cubs 2026)."
     },
     {
       "id": "cheetah",
@@ -206,30 +179,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "cheetah",
-      "presence": "template"
-    },
-    {
-      "id": "nile_hippo",
-      "label": "Nile hippo",
-      "emoji": "🦛",
-      "one_liner": "Huge river giant that loves the water.",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Nile hippo?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "nile-hippo",
-      "presence": "template"
+      "presence": "template",
+      "presence_checked": "2026-08-08",
+      "display_label": "Cheetah",
+      "presence_note": "Not confirmed on 2025 species list pass."
     },
     {
       "id": "caribbean_flamingo",
@@ -252,7 +205,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "caribbean-flamingo",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Caribbean flamingo",
+      "presence_note": "Confirm flamingo species/presence."
     },
     {
       "id": "two_toed_sloth",
@@ -278,7 +234,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "two-toed-sloth",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Two-toed sloth",
+      "presence_note": "Possible tropical; unconfirmed."
     },
     {
       "id": "zebra",
@@ -301,33 +260,14 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "zebra",
-      "presence": "template"
-    },
-    {
-      "id": "galapagos_tortoise",
-      "label": "Galápagos tortoise",
-      "emoji": "🐢",
-      "one_liner": "Giant tortoise — slow and steady.",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Galápagos tortoise?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "galapagos-tortoise",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Zebra",
+      "presence_note": "Savanna hoofstock likely."
     }
   ],
-  "content_mode": "hybrid",
+  "content_mode": "curated",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://zoo.org/wp-content/uploads/2026/05/Woodland-Park-Zoo-Map.pdf",
@@ -342,9 +282,47 @@
   ],
   "route_90m": [
     "western_lowland_gorilla",
-    "african_elephant",
-    "reticulated_giraffe"
+    "reticulated_giraffe",
+    "african_lion"
   ],
-  "research_notes": "R1 hybrid 2026-08-07 · web-map 2026-08-07",
-  "list_confidence": "template"
+  "research_notes": "R1 hybrid 2026-08-07 · web-map 2026-08-07 · presence-audit 2026-08-08 [critical]",
+  "list_confidence": "audited",
+  "do_not_list": [
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "No elephants at Woodland Park Zoo.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "nile-hippo",
+      "name": "Nile hippo",
+      "reason": "No hippos.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "Humboldt penguins only — wrong species.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "cheetah",
+      "name": "Cheetah",
+      "reason": "Not on Jun 2025 species list overview used this pass — confirm before print.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "galapagos-tortoise",
+      "name": "Galápagos tortoise",
+      "reason": "Aldabra tortoises planned/arriving Wild Encounters 2026 — not Galápagos.",
+      "as_of": "2026-08-08"
+    }
+  ],
+  "last_presence_audit": "2026-08-08",
+  "presence_sources": [
+    "https://www.zoo.org/",
+    "https://zoo.org/animals/",
+    "https://www.zoochat.com/community/threads/woodland-park-zoo-species-list.494251/"
+  ]
 }

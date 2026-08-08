@@ -41,7 +41,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "giant-panda",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Giant panda",
+      "presence_note": "Giant pandas are a primary Schönbrunn attraction (one of few European holders)."
     },
     {
       "id": "african_elephant",
@@ -63,11 +67,15 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-elephant",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "African elephant",
+      "presence_note": "African elephants in Elephant Park."
     },
     {
       "id": "reticulated_giraffe",
-      "label": "Reticulated giraffe",
+      "label": "Giraffe",
       "emoji": "🦒",
       "one_liner": "Giraffes.",
       "tags": [
@@ -85,11 +93,15 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "reticulated-giraffe",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Giraffe",
+      "presence_note": "Modern giraffe house; soft Giraffe."
     },
     {
       "id": "sumatran_tiger",
-      "label": "Sumatran tiger",
+      "label": "Tiger",
       "emoji": "🐯",
       "one_liner": "Tigers.",
       "tags": [
@@ -107,7 +119,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sumatran-tiger",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Tiger",
+      "presence_note": "Tigers present; often described as Siberian — soft Tiger."
     },
     {
       "id": "orangutan",
@@ -130,7 +146,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "orangutan",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Orangutan",
+      "presence_note": "ORANG.erie orangutan habitat."
     },
     {
       "id": "african_lion",
@@ -154,7 +174,11 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "african-lion",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "African lion",
+      "presence_note": "Lions present."
     },
     {
       "id": "western_lowland_gorilla",
@@ -178,7 +202,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "western-lowland-gorilla",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Western lowland gorilla",
+      "presence_note": "Great apes — confirm gorilla vs focus on orangutan."
     },
     {
       "id": "zebra",
@@ -201,7 +228,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "zebra",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Zebra",
+      "presence_note": "African hoofstock present."
     },
     {
       "id": "chimpanzee",
@@ -228,7 +258,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "chimpanzee",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Chimpanzee",
+      "presence_note": "Confirm."
     },
     {
       "id": "red_panda",
@@ -253,7 +286,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "red-panda",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Red panda",
+      "presence_note": "Red pandas commonly noted by visitors alongside giant pandas."
     },
     {
       "id": "nile_hippo",
@@ -276,7 +312,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "nile-hippo",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Nile hippo",
+      "presence_note": "Confirm live hippo."
     },
     {
       "id": "african_penguin",
@@ -300,7 +339,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "african-penguin",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "African penguin",
+      "presence_note": "Penguins/polarium area."
     },
     {
       "id": "galapagos_tortoise",
@@ -323,10 +365,13 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "galapagos-tortoise",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Galápagos tortoise",
+      "presence_note": "Confirm species."
     }
   ],
-  "content_mode": "hybrid",
+  "content_mode": "curated",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://www.zoovienna.at/en/",
@@ -342,8 +387,15 @@
   "route_90m": [
     "giant_panda",
     "african_elephant",
-    "reticulated_giraffe"
+    "orangutan"
   ],
-  "research_notes": "R2 hybrid 2026-08-07",
-  "list_confidence": "template"
+  "research_notes": "R2 hybrid 2026-08-07 · presence-audit 2026-08-08 [ok]",
+  "list_confidence": "audited",
+  "do_not_list": [],
+  "last_presence_audit": "2026-08-08",
+  "presence_sources": [
+    "https://www.zoovienna.at/en/",
+    "https://www.zoovienna.at/en/zoo-and-visitors/welcome-worlds-oldest-zoo/",
+    "https://en.wikipedia.org/wiki/Schönbrunn_Zoo"
+  ]
 }

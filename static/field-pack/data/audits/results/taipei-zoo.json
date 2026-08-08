@@ -1,0 +1,148 @@
+{
+  "slug": "taipei-zoo",
+  "name": "Taipei Zoo",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.zoo.gov.taipei/"
+  ],
+  "list_confidence_recommended": "partial",
+  "practical_fixes": [
+    {
+      "field": "practical.best_start",
+      "current": "Pandas if open",
+      "suggested": "Pandas if present + Formosan animals",
+      "reason": "Also promote local Formosan fauna."
+    }
+  ],
+  "do_not_list": [],
+  "items": [
+    {
+      "id": "giant_panda",
+      "label": "Giant panda",
+      "catalog_id": "giant-panda",
+      "presence": "high",
+      "display_label": "Giant panda",
+      "official_name": "",
+      "notes": "Long-running giant panda program; confirm live names on zoo.gov.taipei before print day.",
+      "source_url": "https://www.zoo.gov.taipei/"
+    },
+    {
+      "id": "red_panda",
+      "label": "Red panda",
+      "catalog_id": "red-panda",
+      "presence": "high",
+      "display_label": "Red panda",
+      "official_name": "",
+      "notes": "Red pandas standard at Taipei Zoo.",
+      "source_url": "https://www.zoo.gov.taipei/"
+    },
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "medium",
+      "display_label": "African elephant",
+      "official_name": "",
+      "notes": "Large collection; confirm.",
+      "source_url": "https://www.zoo.gov.taipei/"
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "medium",
+      "display_label": "Giraffe",
+      "official_name": "",
+      "notes": "Confirm subspecies.",
+      "source_url": "https://www.zoo.gov.taipei/"
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "medium",
+      "display_label": "Tiger",
+      "official_name": "",
+      "notes": "Confirm subspecies.",
+      "source_url": "https://www.zoo.gov.taipei/"
+    },
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "medium",
+      "display_label": "African lion",
+      "official_name": "",
+      "notes": "Confirm.",
+      "source_url": "https://www.zoo.gov.taipei/"
+    },
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "template",
+      "display_label": "Western lowland gorilla",
+      "official_name": "",
+      "notes": "Unconfirmed.",
+      "source_url": ""
+    },
+    {
+      "id": "chimpanzee",
+      "label": "Chimpanzee",
+      "catalog_id": "chimpanzee",
+      "presence": "medium",
+      "display_label": "Chimpanzee",
+      "official_name": "",
+      "notes": "Confirm.",
+      "source_url": "https://www.zoo.gov.taipei/"
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "medium",
+      "display_label": "Zebra",
+      "official_name": "",
+      "notes": "Confirm.",
+      "source_url": "https://www.zoo.gov.taipei/"
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "template",
+      "display_label": "African penguin",
+      "official_name": "",
+      "notes": "Unconfirmed.",
+      "source_url": ""
+    },
+    {
+      "id": "asian_small_clawed_otter",
+      "label": "Asian small-clawed otter",
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "medium",
+      "display_label": "Asian small-clawed otter",
+      "official_name": "",
+      "notes": "Possible.",
+      "source_url": ""
+    },
+    {
+      "id": "galapagos_tortoise",
+      "label": "Galápagos tortoise",
+      "catalog_id": "galapagos-tortoise",
+      "presence": "template",
+      "display_label": "Galápagos tortoise",
+      "official_name": "",
+      "notes": "Unconfirmed.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "giant_panda",
+    "red_panda",
+    "reticulated_giraffe"
+  ],
+  "content_mode_recommended": "hybrid",
+  "summary": "Pandas/red pandas high confidence as icons. Rest medium/template until full animal directory audited.",
+  "severity": "minor"
+}

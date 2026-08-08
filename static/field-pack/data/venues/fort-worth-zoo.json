@@ -19,25 +19,6 @@
   },
   "items": [
     {
-      "id": "elephant",
-      "label": "Elephant",
-      "emoji": "🐘",
-      "one_liner": "Giant with a super-nose trunk.",
-      "tags": [
-        "big",
-        "outdoor",
-        "wow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "",
-      "catalog_id": "african-elephant"
-    },
-    {
       "id": "giraffe",
       "label": "Giraffe",
       "emoji": "🦒",
@@ -54,7 +35,11 @@
         "9+"
       ],
       "zone": "",
-      "catalog_id": "reticulated-giraffe"
+      "catalog_id": "reticulated-giraffe",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Giraffe"
     },
     {
       "id": "lion",
@@ -73,7 +58,11 @@
         "9+"
       ],
       "zone": "",
-      "catalog_id": "african-lion"
+      "catalog_id": "african-lion",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Lion"
     },
     {
       "id": "tiger",
@@ -92,7 +81,12 @@
         "9+"
       ],
       "zone": "",
-      "catalog_id": "sumatran-tiger"
+      "catalog_id": "sumatran-tiger",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Tiger",
+      "presence_note": "Malayan not Sumatran; soft Tiger OK"
     },
     {
       "id": "gorilla",
@@ -110,13 +104,17 @@
         "9+"
       ],
       "zone": "",
-      "catalog_id": "western-lowland-gorilla"
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Gorilla"
     },
     {
       "id": "penguin",
       "label": "Penguin",
       "emoji": "🐧",
-      "one_liner": "Waddle crew that loves cool water.",
+      "one_liner": "Penguins on site (rockhoppers; African colony moved).",
       "tags": [
         "birds",
         "water"
@@ -128,7 +126,12 @@
         "9+"
       ],
       "zone": "",
-      "catalog_id": "african-penguin"
+      "catalog_id": "african-penguin",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Penguin",
+      "presence_note": "African penguins moved to Waco; rockhoppers still on site. Soft Penguin if listing."
     },
     {
       "id": "hippo",
@@ -146,7 +149,11 @@
         "9+"
       ],
       "zone": "",
-      "catalog_id": "nile-hippo"
+      "catalog_id": "nile-hippo",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Hippo"
     },
     {
       "id": "zebra",
@@ -164,7 +171,11 @@
         "9+"
       ],
       "zone": "",
-      "catalog_id": "zebra"
+      "catalog_id": "zebra",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Zebra",
+      "presence_note": "Savanna ungulates present; confirm current zebra spp."
     },
     {
       "id": "otter",
@@ -182,7 +193,12 @@
         "9+"
       ],
       "zone": "",
-      "catalog_id": "asian-small-clawed-otter"
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Otter",
+      "presence_note": "Wrong catalog species; soft Otter OK"
     },
     {
       "id": "lemur",
@@ -201,7 +217,12 @@
         "9+"
       ],
       "zone": "",
-      "catalog_id": "ring-tailed-lemur"
+      "catalog_id": "ring-tailed-lemur",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Ring-tailed lemur",
+      "presence_note": "Listed in MOLA residents historically"
     },
     {
       "id": "tortoise",
@@ -219,7 +240,12 @@
         "9+"
       ],
       "zone": "",
-      "catalog_id": "galapagos-tortoise"
+      "catalog_id": "galapagos-tortoise",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Giant tortoise",
+      "presence_note": "Not Galápagos"
     },
     {
       "id": "kids-area",
@@ -235,7 +261,11 @@
         "4-5",
         "6-8"
       ],
-      "zone": ""
+      "zone": "",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Kids play / rest stop",
+      "presence_note": "Play/rest amenities present; soft place-type OK"
     }
   ],
   "content_mode": "curated",
@@ -252,6 +282,43 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "research_notes": "map-img 2026-08-07 · map-page 2026-08-07",
-  "list_confidence": "partial"
+  "research_notes": "map-img 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [critical]",
+  "list_confidence": "partial",
+  "do_not_list": [
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Zoo holds Asian elephants only (Elephant Springs).",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "Official: African penguins moved to Waco; remaining penguins are southern rockhopper.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "galapagos-tortoise",
+      "name": "Galápagos tortoise",
+      "reason": "Keeper chats list Aldabra tortoise; not Galápagos.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "asian-small-clawed-otter",
+      "name": "Asian small-clawed otter",
+      "reason": "Keeper chats list North American river otter.",
+      "as_of": "2026-08-08"
+    }
+  ],
+  "route_90m": [
+    "giraffe",
+    "lion",
+    "gorilla"
+  ],
+  "presence_sources": [
+    "https://www.fortworthzoo.org/",
+    "https://www.fortworthzoo.org/habitats",
+    "https://www.fortworthzoo.org/babies",
+    "https://www.fortworthzoo.org/keeper-chatsstage-show"
+  ]
 }

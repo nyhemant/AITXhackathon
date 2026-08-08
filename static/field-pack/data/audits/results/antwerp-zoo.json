@@ -1,0 +1,160 @@
+{
+  "slug": "antwerp-zoo",
+  "name": "Antwerp Zoo",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.zooantwerpen.be/en/",
+    "https://en.wikipedia.org/wiki/Antwerp_Zoo"
+  ],
+  "list_confidence_recommended": "partial",
+  "practical_fixes": [
+    {
+      "field": "transit_note",
+      "current": "Walk from Centraal station.",
+      "suggested": "Adjacent to Antwerpen-Centraal — short walk from main station exits.",
+      "reason": "OK; minor clarity only."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Egyptian temple houses Asian elephants, not African."
+    },
+    {
+      "catalog_id": "nile-hippo",
+      "name": "Nile hippo",
+      "reason": "Hippotopia features pygmy hippos, not Nile hippo."
+    }
+  ],
+  "items": [
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "absent",
+      "display_label": "Asian elephant",
+      "official_name": "Asian / Indian elephant",
+      "notes": "Egyptian temple houses Asian elephants, not African.",
+      "source_url": ""
+    },
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "verified",
+      "display_label": "Western lowland gorilla",
+      "official_name": "",
+      "notes": "Ape house; also eastern lowland gorilla historically unique.",
+      "source_url": ""
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "high",
+      "display_label": "Giraffe",
+      "official_name": "",
+      "notes": "Giraffes with Egyptian temple complex.",
+      "source_url": ""
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "medium",
+      "display_label": "Tiger",
+      "official_name": "",
+      "notes": "Siberian/other tigers reported; Sumatran not confirmed — soft-label Tiger.",
+      "source_url": ""
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "unclear",
+      "display_label": "African penguin",
+      "official_name": "",
+      "notes": "Not confirmed in sources reviewed.",
+      "source_url": ""
+    },
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "high",
+      "display_label": "Lion",
+      "official_name": "Atlas / Indian lion reported",
+      "notes": "Lions present; African subspecies soft.",
+      "source_url": ""
+    },
+    {
+      "id": "chimpanzee",
+      "label": "Chimpanzee",
+      "catalog_id": "chimpanzee",
+      "presence": "verified",
+      "display_label": "Chimpanzee",
+      "official_name": "",
+      "notes": "Valley of the Apes / ape house.",
+      "source_url": ""
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "medium",
+      "display_label": "Zebra",
+      "official_name": "",
+      "notes": "Likely; not hard-confirmed on official English extract.",
+      "source_url": ""
+    },
+    {
+      "id": "red_panda",
+      "label": "Red panda",
+      "catalog_id": "red-panda",
+      "presence": "high",
+      "display_label": "Red panda",
+      "official_name": "",
+      "notes": "Frequently listed among notable animals.",
+      "source_url": ""
+    },
+    {
+      "id": "asian_small_clawed_otter",
+      "label": "Asian small-clawed otter",
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "unclear",
+      "display_label": "Asian small-clawed otter",
+      "official_name": "",
+      "notes": "Not confirmed.",
+      "source_url": ""
+    },
+    {
+      "id": "nile_hippo",
+      "label": "Nile hippo",
+      "catalog_id": "nile-hippo",
+      "presence": "absent",
+      "display_label": "Pygmy hippo",
+      "official_name": "Pygmy hippopotamus",
+      "notes": "Hippotopia features pygmy hippos, not Nile hippo.",
+      "source_url": ""
+    },
+    {
+      "id": "galapagos_tortoise",
+      "label": "Galápagos tortoise",
+      "catalog_id": "galapagos-tortoise",
+      "presence": "unclear",
+      "display_label": "Galápagos tortoise",
+      "official_name": "",
+      "notes": "Not confirmed.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "western_lowland_gorilla",
+    "chimpanzee",
+    "reticulated_giraffe"
+  ],
+  "content_mode_recommended": "hybrid",
+  "summary": "Elephants are Asian (not African); hippos are pygmy not Nile. Gorillas/chimps/giraffes strong. Several template species unclear — soft-label big cats and drop wrong taxa from print.",
+  "severity": "major"
+}

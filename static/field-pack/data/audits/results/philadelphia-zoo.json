@@ -1,0 +1,153 @@
+{
+  "slug": "philadelphia-zoo",
+  "name": "Philadelphia Zoo",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.philadelphiazoo.org/",
+    "https://www.philadelphiazoo.org/animals/",
+    "https://www.philadelphiazoo.org/dailyschedule/"
+  ],
+  "list_confidence_recommended": "audited",
+  "practical_fixes": [
+    {
+      "field": "items.african_elephant",
+      "current": "African elephant",
+      "suggested": "Remove — elephants left 2009",
+      "reason": "Exhibit closed; last elephants relocated 2009."
+    },
+    {
+      "field": "items.sumatran_tiger",
+      "current": "Sumatran tiger",
+      "suggested": "Amur tiger (animal page) — soft Tiger",
+      "reason": "Official animal page features Amur Tiger."
+    },
+    {
+      "field": "items.galapagos_tortoise",
+      "current": "Galápagos tortoise",
+      "suggested": "Verify species",
+      "reason": "Not confirmed this pass."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Philadelphia Zoo ended elephants in 2009."
+    },
+    {
+      "catalog_id": "sumatran-tiger",
+      "name": "Sumatran tiger",
+      "reason": "Official listing emphasizes Amur tiger — do not hardcode Sumatran."
+    }
+  ],
+  "items": [
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "absent",
+      "display_label": "— relabel Amur/Tiger —",
+      "official_name": "Amur Tiger",
+      "notes": "Amur Tiger on animals pages — not Sumatran catalog. Soft Tiger OK with relabel.",
+      "source_url": "https://www.philadelphiazoo.org/animals/amur-tiger/"
+    },
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "verified",
+      "display_label": "Lion",
+      "official_name": "Lion",
+      "notes": "Lion chats on daily schedule / Big Cat Falls.",
+      "source_url": "https://www.philadelphiazoo.org/dailyschedule/"
+    },
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "verified",
+      "display_label": "Gorilla",
+      "official_name": "Gorilla",
+      "notes": "Gorilla chats / PECO Primate Reserve.",
+      "source_url": "https://www.philadelphiazoo.org/dailyschedule/"
+    },
+    {
+      "id": "orangutan",
+      "label": "Orangutan",
+      "catalog_id": "orangutan",
+      "presence": "verified",
+      "display_label": "Orangutan",
+      "official_name": "Orangutan",
+      "notes": "Orangutan/Gibbon chats.",
+      "source_url": "https://www.philadelphiazoo.org/dailyschedule/"
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "high",
+      "display_label": "Giraffe",
+      "official_name": "Giraffe",
+      "notes": "African Plains giraffes. Soft Giraffe.",
+      "source_url": ""
+    },
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "absent",
+      "display_label": "— remove —",
+      "official_name": "",
+      "notes": "Left 2009.",
+      "source_url": ""
+    },
+    {
+      "id": "red_panda",
+      "label": "Red panda",
+      "catalog_id": "red-panda",
+      "presence": "high",
+      "display_label": "Red panda",
+      "official_name": "Red panda",
+      "notes": "Small mammal/zoo360 likely; soft Red panda.",
+      "source_url": ""
+    },
+    {
+      "id": "caribbean_flamingo",
+      "label": "Caribbean flamingo",
+      "catalog_id": "caribbean-flamingo",
+      "presence": "high",
+      "display_label": "Flamingo",
+      "official_name": "Flamingo",
+      "notes": "Birds area flamingos commonly. Soft Flamingo.",
+      "source_url": ""
+    },
+    {
+      "id": "ring_tailed_lemur",
+      "label": "Ring-tailed lemur",
+      "catalog_id": "ring-tailed-lemur",
+      "presence": "verified",
+      "display_label": "Lemur",
+      "official_name": "Lemur",
+      "notes": "Lemur Island chats on schedule.",
+      "source_url": "https://www.philadelphiazoo.org/dailyschedule/"
+    },
+    {
+      "id": "galapagos_tortoise",
+      "label": "Galápagos tortoise",
+      "catalog_id": "galapagos-tortoise",
+      "presence": "unclear",
+      "display_label": "Galápagos tortoise",
+      "official_name": "",
+      "notes": "Not confirmed.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "african_lion",
+    "western_lowland_gorilla",
+    "orangutan"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "CRITICAL: elephants absent since 2009 still on list. Tigers are Amur not Sumatran. Lions, gorillas, orangutans, lemurs verified via schedule/animals. Zoo360 is a differentiator missing from cards.",
+  "severity": "critical"
+}

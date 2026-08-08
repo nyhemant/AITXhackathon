@@ -1,0 +1,184 @@
+{
+  "slug": "taronga-zoo",
+  "name": "Taronga Zoo",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://taronga.org.au/sydney-zoo",
+    "https://taronga.org.au/wildlife-and-conservation/animals/sydney",
+    "https://en.wikipedia.org/wiki/Taronga_Zoo"
+  ],
+  "list_confidence_recommended": "audited",
+  "practical_fixes": [
+    {
+      "field": "region",
+      "current": "Australia",
+      "suggested": "NSW",
+      "reason": "region should be state; Australia is country."
+    },
+    {
+      "field": "items.african_penguin",
+      "current": "African penguin",
+      "suggested": "Little penguin",
+      "reason": "Official animal: Little Penguin — not African."
+    },
+    {
+      "field": "missing_icons",
+      "current": "",
+      "suggested": "platypus, red kangaroo, Australian sea-lion, sun bear",
+      "reason": "Official featured Aussie + Asia icons not in pack."
+    },
+    {
+      "field": "do_not_promise_elephants",
+      "current": "not in list (good)",
+      "suggested": "keep elephants out",
+      "reason": "Last elephants relocated to Monarto Apr 2025."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Elephants left Taronga Apr 2025 for Monarto Safari Park — never list."
+    },
+    {
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "Wrong species — Little penguin only."
+    },
+    {
+      "catalog_id": "galapagos-tortoise",
+      "name": "Galápagos tortoise",
+      "reason": "Not confirmed on official Sydney animals list this pass."
+    }
+  ],
+  "items": [
+    {
+      "id": "koala",
+      "label": "Koala",
+      "catalog_id": "koala",
+      "presence": "verified",
+      "display_label": "Koala",
+      "official_name": "",
+      "notes": "Official featured animal / Koala Walkabout.",
+      "source_url": "https://taronga.org.au/wildlife-and-conservation/animals/detail/koala/"
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "verified",
+      "display_label": "Sumatran tiger",
+      "official_name": "",
+      "notes": "Sumatran tiger / Tiger Trek on official site.",
+      "source_url": "https://taronga.org.au/sydney-zoo"
+    },
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "verified",
+      "display_label": "Western lowland gorilla",
+      "official_name": "",
+      "notes": "Western-lowland gorilla on official animals page.",
+      "source_url": "https://taronga.org.au/wildlife-and-conservation/animals/sydney"
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "verified",
+      "display_label": "Giraffe",
+      "official_name": "",
+      "notes": "Giraffe + skyline views; soft Giraffe.",
+      "source_url": "https://taronga.org.au/wildlife-and-conservation/animals/detail/giraffe/"
+    },
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "verified",
+      "display_label": "African lion",
+      "official_name": "",
+      "notes": "African lion on official list.",
+      "source_url": "https://taronga.org.au/wildlife-and-conservation/animals/detail/african-lion/"
+    },
+    {
+      "id": "red_panda",
+      "label": "Red panda",
+      "catalog_id": "red-panda",
+      "presence": "verified",
+      "display_label": "Red panda",
+      "official_name": "",
+      "notes": "Red panda on official more-animals section.",
+      "source_url": "https://taronga.org.au/wildlife-and-conservation/animals/sydney"
+    },
+    {
+      "id": "chimpanzee",
+      "label": "Chimpanzee",
+      "catalog_id": "chimpanzee",
+      "presence": "verified",
+      "display_label": "Chimpanzee",
+      "official_name": "",
+      "notes": "Chimpanzee on official African animals list.",
+      "source_url": "https://taronga.org.au/wildlife-and-conservation/animals/detail/chimpanzee/"
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "verified",
+      "display_label": "Zebra",
+      "official_name": "Plains zebra",
+      "notes": "Plains zebra on official list.",
+      "source_url": "https://taronga.org.au/wildlife-and-conservation/animals/detail/plains-zebra/"
+    },
+    {
+      "id": "asian_small_clawed_otter",
+      "label": "Asian small-clawed otter",
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "medium",
+      "display_label": "Asian small-clawed otter",
+      "official_name": "",
+      "notes": "Otters not highlighted on main Sydney animals scrape; confirm before print.",
+      "source_url": ""
+    },
+    {
+      "id": "galapagos_tortoise",
+      "label": "Galápagos tortoise",
+      "catalog_id": "galapagos-tortoise",
+      "presence": "template",
+      "display_label": "Galápagos tortoise",
+      "official_name": "",
+      "notes": "Not on main official animals list this pass.",
+      "source_url": ""
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "absent",
+      "display_label": "Little penguin",
+      "official_name": "Little penguin",
+      "notes": "Official Little Penguin — NOT African penguin.",
+      "source_url": "https://taronga.org.au/wildlife-and-conservation/animals/detail/little-penguin/"
+    },
+    {
+      "id": "ring_tailed_lemur",
+      "label": "Ring-tailed lemur",
+      "catalog_id": "ring-tailed-lemur",
+      "presence": "verified",
+      "display_label": "Ring-tailed lemur",
+      "official_name": "",
+      "notes": "Ring-tailed lemur on official more-animals.",
+      "source_url": "https://taronga.org.au/wildlife-and-conservation/animals/sydney"
+    }
+  ],
+  "route_90m_recommended": [
+    "koala",
+    "sumatran_tiger",
+    "reticulated_giraffe"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "Koala, tiger, gorilla, giraffe, lion, chimp, zebra, red panda, lemur verified. CRITICAL: African penguin wrong (Little penguin). Elephants gone 2025 (not in list — keep out). Prefer platypus/kangaroo adds.",
+  "severity": "major"
+}

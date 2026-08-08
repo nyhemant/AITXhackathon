@@ -1,0 +1,141 @@
+{
+  "slug": "florida-aquarium",
+  "name": "The Florida Aquarium",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.flaquarium.org/"
+  ],
+  "list_confidence_recommended": "partial",
+  "practical_fixes": [],
+  "do_not_list": [],
+  "items": [
+    {
+      "id": "shark",
+      "label": "Shark",
+      "catalog_id": "shark",
+      "presence": "verified",
+      "display_label": "Shark",
+      "official_name": "",
+      "notes": "",
+      "source_url": "https://www.flaquarium.org/"
+    },
+    {
+      "id": "stingray",
+      "label": "Stingray",
+      "catalog_id": "stingray",
+      "presence": "verified",
+      "display_label": "Stingray",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "sea_turtle",
+      "label": "Sea turtle",
+      "catalog_id": "sea-turtle",
+      "presence": "verified",
+      "display_label": "Sea turtle",
+      "official_name": "",
+      "notes": "Sea turtle rehab campus too",
+      "source_url": ""
+    },
+    {
+      "id": "jellyfish",
+      "label": "Jellyfish",
+      "catalog_id": "jellyfish",
+      "presence": "medium",
+      "display_label": "Jellyfish",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "octopus",
+      "label": "Octopus",
+      "catalog_id": "octopus",
+      "presence": "unclear",
+      "display_label": "Octopus",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "seahorse",
+      "label": "Seahorse",
+      "catalog_id": "seahorse",
+      "presence": "medium",
+      "display_label": "Seahorse",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "clownfish",
+      "label": "Clownfish",
+      "catalog_id": "clownfish",
+      "presence": "medium",
+      "display_label": "Clownfish",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "eel",
+      "label": "Eel",
+      "catalog_id": "eel",
+      "presence": "medium",
+      "display_label": "Eel",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "crab",
+      "label": "Crab",
+      "catalog_id": "crab",
+      "presence": "medium",
+      "display_label": "Crab",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "starfish",
+      "label": "Sea star",
+      "catalog_id": "starfish",
+      "presence": "medium",
+      "display_label": "Sea star",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "freshwater_fish",
+      "label": "River / lake fish",
+      "catalog_id": "freshwater-fish",
+      "presence": "high",
+      "display_label": "River / lake fish",
+      "official_name": "",
+      "notes": "Florida wetlands exhibits likely",
+      "source_url": ""
+    },
+    {
+      "id": "asian_small_clawed_otter",
+      "label": "Asian small-clawed otter",
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "unclear",
+      "display_label": "Asian small-clawed otter",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "shark",
+    "stingray",
+    "sea_turtle"
+  ],
+  "content_mode_recommended": "hybrid",
+  "summary": "Sharks, rays, sea turtles strongly supported. Generic aquarium template otherwise; ASC otter unclear (may be different otter spp.). Soft labels preferred until full species guide pass.",
+  "severity": "minor"
+}

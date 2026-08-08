@@ -39,7 +39,12 @@
         "question": "What did you notice about the Shark?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "shark"
+      "catalog_id": "shark",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Shark",
+      "presence_note": "Wild Reef sharks; official Animals hub."
     },
     {
       "id": "stingray",
@@ -61,7 +66,12 @@
         "question": "What did you notice about the Stingray?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "stingray"
+      "catalog_id": "stingray",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Stingray",
+      "presence_note": "Official Stingrays category."
     },
     {
       "id": "jellyfish",
@@ -83,7 +93,12 @@
         "question": "What did you notice about the Jellyfish?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "jellyfish"
+      "catalog_id": "jellyfish",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Jellyfish",
+      "presence_note": "Official Jellies category."
     },
     {
       "id": "sea_turtle",
@@ -105,29 +120,12 @@
         "question": "What did you notice about the Sea turtle?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sea-turtle"
-    },
-    {
-      "id": "african_penguin",
-      "label": "African penguin",
-      "emoji": "🐧",
-      "one_liner": "Penguins waddle and zoom underwater.",
-      "tags": [
-        "water",
-        "wow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Polar Play Zone",
-      "qa_card": {
-        "question": "What did you notice about the African penguin?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "african-penguin"
+      "catalog_id": "sea-turtle",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Sea turtle",
+      "presence_note": "Official Turtles category."
     },
     {
       "id": "octopus",
@@ -149,7 +147,12 @@
         "question": "What did you notice about the Octopus?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "octopus"
+      "catalog_id": "octopus",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Octopus",
+      "presence_note": "Giant Pacific octopus on Animals hub."
     },
     {
       "id": "clownfish",
@@ -171,7 +174,12 @@
         "question": "What did you notice about the Clownfish?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "clownfish"
+      "catalog_id": "clownfish",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Clownfish",
+      "presence_note": "Wild Reef coral community fishes."
     },
     {
       "id": "seahorse",
@@ -193,29 +201,12 @@
         "question": "What did you notice about the Seahorse?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "seahorse"
-    },
-    {
-      "id": "asian_small_clawed_otter",
-      "label": "Asian small-clawed otter",
-      "emoji": "🦦",
-      "one_liner": "Otter energy if they’re on exhibit that day.",
-      "tags": [
-        "water",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Polar / special",
-      "qa_card": {
-        "question": "What did you notice about the Asian small-clawed otter?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "asian-small-clawed-otter"
+      "catalog_id": "seahorse",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Seahorse",
+      "presence_note": "Official Seahorses category."
     },
     {
       "id": "starfish",
@@ -237,7 +228,12 @@
         "question": "What did you notice about the Sea star?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "starfish"
+      "catalog_id": "starfish",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Sea star",
+      "presence_note": "Official Sea Stars category."
     }
   ],
   "content_mode": "curated",
@@ -253,6 +249,31 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "research_notes": "web-map 2026-08-07",
-  "list_confidence": "partial"
+  "research_notes": "web-map 2026-08-07 · presence-audit 2026-08-08 [critical]",
+  "list_confidence": "audited",
+  "do_not_list": [
+    {
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "Wrong species — rockhopper & Magellanic only.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "asian-small-clawed-otter",
+      "name": "Asian small-clawed otter",
+      "reason": "Wrong species — sea otters in Oceanarium.",
+      "as_of": "2026-08-08"
+    }
+  ],
+  "route_90m": [
+    "shark",
+    "jellyfish",
+    "sea_turtle"
+  ],
+  "last_presence_audit": "2026-08-08",
+  "presence_sources": [
+    "https://www.sheddaquarium.org/animals",
+    "https://www.sheddaquarium.org/animals/penguins",
+    "https://www.sheddaquarium.org/exhibits/abbott-oceanarium"
+  ]
 }

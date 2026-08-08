@@ -15,14 +15,14 @@
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Free Smithsonian entry; timed if required — check airandspace.si.edu.",
-    "transit_note": "Mall or Udvar-Hazy (separate campus).",
-    "energy_note": "indoor",
+    "transit_note": "National Mall (DC) vs Udvar-Hazy Center (Chantilly, VA) are separate campuses — pick one outing; shuttle orbiter is at Udvar-Hazy.",
+    "energy_note": "Mostly indoors",
     "best_start": "One giant aircraft, then rest legs."
   },
   "items": [
     {
       "id": "sci_rocket",
-      "label": "Rockets & launch",
+      "label": "Rockets & spaceflight",
       "emoji": "🚀",
       "one_liner": "Stand under real flight hardware.",
       "tags": [
@@ -40,7 +40,12 @@
         "question": "What did you notice about the Rockets & launch?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-rocket"
+      "catalog_id": "sci-rocket",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Rockets & spaceflight",
+      "presence_note": "Rockets and space-age artifacts on Mall campus."
     },
     {
       "id": "sci_shuttle",
@@ -61,11 +66,16 @@
         "question": "What did you notice about the Space shuttle / orbiter?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-shuttle"
+      "catalog_id": "sci-shuttle",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Space shuttle / orbiter",
+      "presence_note": "Full orbiter Discovery is at Udvar-Hazy (Chantilly), not the Mall building. Mall has spacecraft/CM etc. Split campuses in practical notes."
     },
     {
       "id": "sci_astronaut",
-      "label": "Astronaut life",
+      "label": "Astronaut & moon exploration",
       "emoji": "🧑‍🚀",
       "one_liner": "People who left Earth.",
       "tags": [
@@ -83,11 +93,15 @@
         "question": "What did you notice about the Astronaut life?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-astronaut"
+      "catalog_id": "sci-astronaut",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "display_label": "Astronaut & moon exploration",
+      "presence_note": "Armstrong suit, Columbia CM historically featured; astronaut stories across galleries."
     },
     {
       "id": "sci_planet",
-      "label": "Planet / space hall",
+      "label": "Planetarium / universe",
       "emoji": "🪐",
       "one_liner": "Planets and stars stories.",
       "tags": [
@@ -104,7 +118,11 @@
         "question": "What did you notice about the Planet / space hall?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-planet"
+      "catalog_id": "sci-planet",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Planetarium / universe"
     },
     {
       "id": "cm_free_explore",
@@ -125,11 +143,15 @@
         "question": "What did you notice about the Free explore?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "cm-free-explore"
+      "catalog_id": "cm-free-explore",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Free explore",
+      "presence_note": "Generic free-explore OK for large museum."
     },
     {
       "id": "sci_hands_on",
-      "label": "Hands-on lab",
+      "label": "How Things Fly",
       "emoji": "🔬",
       "one_liner": "Touch, test, build — science you can try.",
       "tags": [
@@ -148,7 +170,12 @@
         "question": "What did you try or notice at Hands-on lab?",
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
-      "catalog_id": "sci-hands-on"
+      "catalog_id": "sci-hands-on",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "How Things Fly",
+      "presence_note": "~50 interactives."
     },
     {
       "id": "cm_outdoor",
@@ -171,32 +198,14 @@
         "question": "What did you try or notice at Outdoor Area?",
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
-      "catalog_id": "cm-outdoor"
-    },
-    {
-      "id": "cm_imaginarium",
-      "label": "Imaginarium",
-      "emoji": "✨",
-      "one_liner": "Multi-sensory world — explore, notice, imagine.",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Imaginarium?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "cm-imaginarium"
+      "catalog_id": "cm-outdoor",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Outdoor Area",
+      "presence_note": "No major outdoor animal/play yard; Mall grounds only. Soft generic."
     }
   ],
-  "content_mode": "hybrid",
+  "content_mode": "curated",
   "media": {
     "visitor_map_url": "/field-pack/media/maps/air-and-space.jpg",
     "visitor_map_page": "https://airandspace.si.edu/visit/museum-dc/map",
@@ -212,9 +221,23 @@
   ],
   "route_90m": [
     "sci_rocket",
-    "sci_shuttle",
-    "sci_astronaut"
+    "sci_astronaut",
+    "sci_hands_on"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 · web-map 2026-08-07",
-  "list_confidence": "partial"
+  "research_notes": "R2 hybrid 2026-08-07 · web-map 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "list_confidence": "audited",
+  "do_not_list": [
+    {
+      "catalog_id": "cm-imaginarium",
+      "name": "Imaginarium",
+      "reason": "Children's-museum taxonomy leakage; no Imaginarium at NASM.",
+      "as_of": "2026-08-08"
+    }
+  ],
+  "last_presence_audit": "2026-08-08",
+  "presence_sources": [
+    "https://airandspace.si.edu/",
+    "https://airandspace.si.edu/whats-on/exhibitions",
+    "https://airandspace.si.edu/whats-on/exhibitions/rtx-living-space-age-hall"
+  ]
 }

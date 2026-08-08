@@ -1,0 +1,137 @@
+{
+  "slug": "omaha-henry-doorly",
+  "name": "Omaha's Henry Doorly Zoo & Aquarium",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.omahazoo.com/",
+    "https://www.omahazoo.com/scott-african-grasslands",
+    "https://www.omahazoo.com/visitorexperiences",
+    "https://en.wikipedia.org/wiki/Omaha%27s_Henry_Doorly_Zoo_and_Aquarium"
+  ],
+  "list_confidence_recommended": "audited",
+  "practical_fixes": [
+    {
+      "field": "items.sumatran_tiger",
+      "current": "Sumatran tiger",
+      "suggested": "Soft Tiger — Amur/other may be present",
+      "reason": "Asian Highlands tigers; subspecies check."
+    },
+    {
+      "field": "items.african_penguin",
+      "current": "African penguin",
+      "suggested": "Verify penguin species in aquarium/exhibits",
+      "reason": "Species label risk."
+    }
+  ],
+  "do_not_list": [],
+  "items": [
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "verified",
+      "display_label": "African elephant",
+      "official_name": "African elephant",
+      "notes": "African elephant herd / Elephant Family Quarters / experiences.",
+      "source_url": "https://www.omahazoo.com/scott-african-grasslands"
+    },
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "verified",
+      "display_label": "Gorilla",
+      "official_name": "Gorilla",
+      "notes": "Hubbard Gorilla Valley.",
+      "source_url": "https://www.omahazoo.com/home"
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "high",
+      "display_label": "Tiger",
+      "official_name": "Tiger",
+      "notes": "Asian Highlands tigers; soft Tiger if subspecies uncertain.",
+      "source_url": ""
+    },
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "high",
+      "display_label": "Lion",
+      "official_name": "Lion",
+      "notes": "African Grasslands predators. Soft Lion.",
+      "source_url": ""
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "high",
+      "display_label": "Giraffe",
+      "official_name": "Giraffe",
+      "notes": "Giraffe experience offered. Soft Giraffe.",
+      "source_url": "https://www.omahazoo.com/visitorexperiences"
+    },
+    {
+      "id": "shark",
+      "label": "Shark",
+      "catalog_id": "shark",
+      "presence": "high",
+      "display_label": "Shark",
+      "official_name": "Shark",
+      "notes": "Scott Aquarium. Soft Shark.",
+      "source_url": ""
+    },
+    {
+      "id": "stingray",
+      "label": "Stingray",
+      "catalog_id": "stingray",
+      "presence": "verified",
+      "display_label": "Stingray",
+      "official_name": "Stingray Beach",
+      "notes": "Stingray Beach.",
+      "source_url": "https://www.omahazoo.com/home"
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "medium",
+      "display_label": "Penguin (verify)",
+      "official_name": "",
+      "notes": "Confirm species.",
+      "source_url": ""
+    },
+    {
+      "id": "jellyfish",
+      "label": "Jellyfish",
+      "catalog_id": "jellyfish",
+      "presence": "high",
+      "display_label": "Jellyfish",
+      "official_name": "Jellyfish",
+      "notes": "Aquarium jellies common. Soft Jellyfish.",
+      "source_url": ""
+    },
+    {
+      "id": "orangutan",
+      "label": "Orangutan",
+      "catalog_id": "orangutan",
+      "presence": "verified",
+      "display_label": "Orangutan",
+      "official_name": "Orangutan",
+      "notes": "Hubbard Orangutan Forest.",
+      "source_url": "https://www.omahazoo.com/home"
+    }
+  ],
+  "route_90m_recommended": [
+    "african_elephant",
+    "western_lowland_gorilla",
+    "orangutan"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "Top-tier zoo: elephants, gorilla valley, orangutan forest, aquarium stingrays verified/high. Minor subspecies checks on tiger/penguin. List quality good after light cleanup.",
+  "severity": "minor"
+}

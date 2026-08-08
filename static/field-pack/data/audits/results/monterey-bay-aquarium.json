@@ -1,0 +1,136 @@
+{
+  "slug": "monterey-bay-aquarium",
+  "name": "Monterey Bay Aquarium",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.montereybayaquarium.org/",
+    "https://www.montereybayaquarium.org/visit/exhibits",
+    "https://www.montereybayaquarium.org/visit/exhibits/sea-otters"
+  ],
+  "list_confidence_recommended": "audited",
+  "practical_fixes": [
+    {
+      "field": "items.asian_small_clawed_otter",
+      "current": "Asian small-clawed otter label; one_liner correctly describes sea otters",
+      "suggested": "Sea otter (southern sea otter) — new catalog or display_label override",
+      "reason": "Famous for southern sea otters, not Asian small-clawed otters. Catalog mismatch."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "asian-small-clawed-otter",
+      "name": "Asian small-clawed otter",
+      "reason": "Wrong species: Monterey has southern sea otters. Do not list under ASC otter catalog without display override to Sea otter."
+    }
+  ],
+  "items": [
+    {
+      "id": "jellyfish",
+      "label": "Jellyfish",
+      "catalog_id": "jellyfish",
+      "presence": "verified",
+      "display_label": "Jellyfish",
+      "official_name": "Jellies",
+      "notes": "Jellies galleries — signature exhibit.",
+      "source_url": "https://www.montereybayaquarium.org/visit/exhibits"
+    },
+    {
+      "id": "asian_small_clawed_otter",
+      "label": "Asian small-clawed otter",
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "absent",
+      "display_label": "Sea otter (not ASC)",
+      "official_name": "Southern sea otter",
+      "notes": "Southern sea otters present; ASC otter catalog wrong. Mark absent for catalog_id; recommend Sea otter card.",
+      "source_url": "https://www.montereybayaquarium.org/visit/exhibits/sea-otters"
+    },
+    {
+      "id": "shark",
+      "label": "Shark",
+      "catalog_id": "shark",
+      "presence": "verified",
+      "display_label": "Shark",
+      "official_name": "Sharks",
+      "notes": "Open Sea / Kelp Forest: sharks (incl. hammerheads historically, leopard sharks).",
+      "source_url": "https://www.montereybayaquarium.org/visit/exhibits"
+    },
+    {
+      "id": "sea_turtle",
+      "label": "Sea turtle",
+      "catalog_id": "sea-turtle",
+      "presence": "high",
+      "display_label": "Sea turtle",
+      "official_name": "Sea turtle",
+      "notes": "Open Sea ocean travelers include sea turtles.",
+      "source_url": "https://www.montereybayaquarium.org/visit/exhibits"
+    },
+    {
+      "id": "octopus",
+      "label": "Octopus",
+      "catalog_id": "octopus",
+      "presence": "high",
+      "display_label": "Octopus",
+      "official_name": "Octopus",
+      "notes": "Deep/cephalopod exhibits historically and currently featured. Soft Octopus.",
+      "source_url": ""
+    },
+    {
+      "id": "stingray",
+      "label": "Stingray",
+      "catalog_id": "stingray",
+      "presence": "medium",
+      "display_label": "Ray",
+      "official_name": "",
+      "notes": "Rays in various exhibits; touch pool status varies — medium.",
+      "source_url": ""
+    },
+    {
+      "id": "seahorse",
+      "label": "Seahorse",
+      "catalog_id": "seahorse",
+      "presence": "high",
+      "display_label": "Seahorse",
+      "official_name": "Seahorse",
+      "notes": "Hot water/seahorse exhibits commonly featured.",
+      "source_url": ""
+    },
+    {
+      "id": "clownfish",
+      "label": "Clownfish",
+      "catalog_id": "clownfish",
+      "presence": "medium",
+      "display_label": "Clownfish",
+      "official_name": "",
+      "notes": "Reef exhibits may include anemonefish; not a signature icon — medium.",
+      "source_url": ""
+    },
+    {
+      "id": "starfish",
+      "label": "Sea star",
+      "catalog_id": "starfish",
+      "presence": "high",
+      "display_label": "Sea star",
+      "official_name": "Sea star",
+      "notes": "Rocky shore / tide pool sea stars.",
+      "source_url": ""
+    },
+    {
+      "id": "eel",
+      "label": "Eel",
+      "catalog_id": "eel",
+      "presence": "high",
+      "display_label": "Eel",
+      "official_name": "Wolf-eel / eels",
+      "notes": "Kelp Forest wolf-eels and other eels.",
+      "source_url": "https://www.montereybayaquarium.org/visit/exhibits"
+    }
+  ],
+  "route_90m_recommended": [
+    "jellyfish",
+    "asian_small_clawed_otter",
+    "shark"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "MAJOR catalog bug: Asian small-clawed otter used for world-famous southern sea otters (one_liner already correct). Jellies, sharks, turtles, eels, sea stars high/verified. Curate Open Sea + Jellies + Sea Otters + Kelp.",
+  "severity": "major"
+}

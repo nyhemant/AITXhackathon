@@ -1,0 +1,154 @@
+{
+  "slug": "cleveland-metroparks-zoo",
+  "name": "Cleveland Metroparks Zoo",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.clevelandmetroparks.com/zoo",
+    "https://www.clevelandmetroparks.com/zoo/zoo-locations/primate-cat-and-aquatics",
+    "https://en.wikipedia.org/wiki/Cleveland_Metroparks_Zoo"
+  ],
+  "list_confidence_recommended": "audited",
+  "practical_fixes": [],
+  "do_not_list": [
+    {
+      "catalog_id": "sumatran-tiger",
+      "name": "Sumatran tiger",
+      "reason": "Official materials feature Amur tiger, not Sumatran."
+    },
+    {
+      "catalog_id": "galapagos-tortoise",
+      "name": "Galápagos tortoise",
+      "reason": "Aldabra, not Galápagos."
+    }
+  ],
+  "items": [
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "verified",
+      "display_label": "Western lowland gorilla",
+      "official_name": "Western Lowland gorilla",
+      "notes": "",
+      "source_url": "https://www.clevelandmetroparks.com/zoo/zoo-locations/primate-cat-and-aquatics"
+    },
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "verified",
+      "display_label": "African elephant",
+      "official_name": "African Elephant",
+      "notes": "",
+      "source_url": "https://www.clevelandmetroparks.com/zoo"
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "absent",
+      "display_label": "Amur tiger",
+      "official_name": "Amur (Siberian) Tiger",
+      "notes": "Official materials feature Amur tiger, not Sumatran.",
+      "source_url": ""
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "high",
+      "display_label": "Masai giraffe",
+      "official_name": "Masai Giraffe",
+      "notes": "Masai not reticulated on materials.",
+      "source_url": ""
+    },
+    {
+      "id": "two_toed_sloth",
+      "label": "Two-toed sloth",
+      "catalog_id": "two-toed-sloth",
+      "presence": "high",
+      "display_label": "Two-toed sloth",
+      "official_name": "",
+      "notes": "RainForest / species lists include two-toed sloth.",
+      "source_url": ""
+    },
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "high",
+      "display_label": "African lion",
+      "official_name": "",
+      "notes": "African Savanna.",
+      "source_url": ""
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "medium",
+      "display_label": "African penguin",
+      "official_name": "",
+      "notes": "Penguin Shores history; confirm current.",
+      "source_url": ""
+    },
+    {
+      "id": "cheetah",
+      "label": "Cheetah",
+      "catalog_id": "cheetah",
+      "presence": "verified",
+      "display_label": "Cheetah",
+      "official_name": "",
+      "notes": "Across from Aldabra tortoises.",
+      "source_url": "https://www.clevelandmetroparks.com/zoo/zoo-locations/primate-cat-and-aquatics"
+    },
+    {
+      "id": "nile_hippo",
+      "label": "Nile hippo",
+      "catalog_id": "nile-hippo",
+      "presence": "unclear",
+      "display_label": "Nile hippo",
+      "official_name": "",
+      "notes": "Pygmy hippo historic; Nile not confirmed current.",
+      "source_url": ""
+    },
+    {
+      "id": "caribbean_flamingo",
+      "label": "Caribbean flamingo",
+      "catalog_id": "caribbean-flamingo",
+      "presence": "high",
+      "display_label": "Flamingo",
+      "official_name": "",
+      "notes": "Chilean flamingos noted in materials.",
+      "source_url": ""
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "high",
+      "display_label": "Zebra",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "galapagos_tortoise",
+      "label": "Galápagos tortoise",
+      "catalog_id": "galapagos-tortoise",
+      "presence": "absent",
+      "display_label": "Aldabra tortoise",
+      "official_name": "Aldabra Giant Tortoise",
+      "notes": "Aldabra, not Galápagos.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "western_lowland_gorilla",
+    "african_elephant",
+    "cheetah"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "Gorilla, African elephant, cheetah verified. Fix tiger→Amur, giraffe→Masai, tortoise→Aldabra; Nile hippo unclear.",
+  "severity": "major"
+}

@@ -16,34 +16,10 @@
     "typical_duration": "2 hours",
     "ticket_note": "Timed tickets recommended on peak days.",
     "transit_note": "Pier 59 / waterfront; walkable from downtown.",
-    "energy_note": "indoor",
+    "energy_note": "Mostly indoors",
     "best_start": "Marine mammals and big windows first."
   },
   "items": [
-    {
-      "id": "asian_small_clawed_otter",
-      "label": "Asian small-clawed otter",
-      "emoji": "🦦",
-      "one_liner": "Sea otter energy is a Seattle favorite.",
-      "tags": [
-        "play",
-        "water",
-        "wow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Otters",
-      "qa_card": {
-        "question": "What did you notice about the Asian small-clawed otter?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "asian-small-clawed-otter",
-      "presence": "template"
-    },
     {
       "id": "octopus",
       "label": "Octopus",
@@ -66,7 +42,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "octopus",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Octopus",
+      "presence_note": "Giant Pacific octopus is a PNW aquarium icon."
     },
     {
       "id": "jellyfish",
@@ -89,7 +69,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "jellyfish",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Jellyfish",
+      "presence_note": "Jellies common permanent exhibit."
     },
     {
       "id": "sea_turtle",
@@ -112,7 +96,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sea-turtle",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Sea turtle",
+      "presence_note": "Not a signature exhibit; confirm tropical gallery."
     },
     {
       "id": "starfish",
@@ -135,7 +122,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "starfish",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Sea star",
+      "presence_note": "Touch-pool / invertebrate galleries (sea stars)."
     },
     {
       "id": "shark",
@@ -158,7 +149,11 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "shark",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Shark",
+      "presence_note": "Sharks in ocean galleries."
     },
     {
       "id": "stingray",
@@ -181,7 +176,10 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "stingray",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Stingray",
+      "presence_note": "Confirm ray/touch habitat."
     },
     {
       "id": "seahorse",
@@ -204,7 +202,10 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "seahorse",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Seahorse",
+      "presence_note": "Often in tropical; unconfirmed."
     },
     {
       "id": "clownfish",
@@ -227,7 +228,10 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "clownfish",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Clownfish",
+      "presence_note": "Tropical reef possible; not PNW signature."
     },
     {
       "id": "eel",
@@ -250,7 +254,10 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "eel",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Eel",
+      "presence_note": "Wolf eels / morays common in PNW aquariums."
     },
     {
       "id": "crab",
@@ -273,7 +280,10 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "crab",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Crab",
+      "presence_note": "Local crustaceans."
     },
     {
       "id": "freshwater_fish",
@@ -296,7 +306,10 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "freshwater-fish",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "River / lake fish",
+      "presence_note": "Salmon/local freshwater stories are core."
     }
   ],
   "content_mode": "hybrid",
@@ -314,10 +327,24 @@
     "Leave while happy"
   ],
   "route_90m": [
-    "asian_small_clawed_otter",
     "octopus",
-    "jellyfish"
+    "shark",
+    "starfish"
   ],
-  "research_notes": "R1 hybrid 2026-08-07 · map-img 2026-08-07 · map-page 2026-08-07",
-  "list_confidence": "template"
+  "research_notes": "R1 hybrid 2026-08-07 · map-img 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "list_confidence": "partial",
+  "do_not_list": [
+    {
+      "catalog_id": "asian-small-clawed-otter",
+      "name": "Asian small-clawed otter",
+      "reason": "Wrong otter species — venue has sea otters and river otters.",
+      "as_of": "2026-08-08"
+    }
+  ],
+  "presence_sources": [
+    "https://www.seattleaquarium.org/",
+    "https://www.seattleaquarium.org/animals/",
+    "https://www.seattleaquarium.org/animal/sea-otter/",
+    "https://www.seattleaquarium.org/explore-the-aquarium/campus/pier-60/"
+  ]
 }

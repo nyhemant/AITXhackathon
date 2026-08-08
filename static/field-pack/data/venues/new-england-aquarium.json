@@ -39,7 +39,12 @@
         "question": "What did you notice about the Shark?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "shark"
+      "catalog_id": "shark",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Shark",
+      "presence_note": "Science of Sharks / Shark & Ray Touch Tank."
     },
     {
       "id": "sea_turtle",
@@ -62,7 +67,12 @@
         "question": "What did you notice about the Sea turtle?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sea-turtle"
+      "catalog_id": "sea-turtle",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Sea turtle",
+      "presence_note": "Myrtle the green sea turtle — Ocean Tray iconic."
     },
     {
       "id": "african_penguin",
@@ -84,7 +94,12 @@
         "question": "What did you notice about the African penguin?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "african-penguin"
+      "catalog_id": "african-penguin",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "African penguin",
+      "presence_note": "African Penguin Colony (+ rockhoppers)."
     },
     {
       "id": "jellyfish",
@@ -106,7 +121,11 @@
         "question": "What did you notice about the Jellyfish?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "jellyfish"
+      "catalog_id": "jellyfish",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Jellyfish",
+      "presence_note": "Jellies typically exhibited. Soft Jellyfish."
     },
     {
       "id": "octopus",
@@ -129,11 +148,16 @@
         "question": "What did you notice about the Octopus?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "octopus"
+      "catalog_id": "octopus",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Octopus",
+      "presence_note": "Giant Pacific Octopus listed."
     },
     {
       "id": "stingray",
-      "label": "Stingray",
+      "label": "Stingray / ray",
       "emoji": "射线",
       "one_liner": "Touch tank when open — soft ray wings.",
       "tags": [
@@ -152,7 +176,12 @@
         "question": "What did you notice about the Stingray?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "stingray"
+      "catalog_id": "stingray",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Stingray / ray",
+      "presence_note": "Shark & Ray Touch Tank — cownose/Atlantic rays."
     },
     {
       "id": "seahorse",
@@ -174,11 +203,16 @@
         "question": "What did you notice about the Seahorse?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "seahorse"
+      "catalog_id": "seahorse",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Seahorse",
+      "presence_note": "Dwarf seahorse listed."
     },
     {
       "id": "clownfish",
-      "label": "Clownfish",
+      "label": "Clownfish (verify)",
       "emoji": "🐠",
       "one_liner": "Reef colors for a quick “find three colors” game.",
       "tags": [
@@ -196,7 +230,11 @@
         "question": "What did you notice about the Clownfish?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "clownfish"
+      "catalog_id": "clownfish",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Clownfish (verify)",
+      "presence_note": "Caribbean reef community may include; not specifically extracted."
     },
     {
       "id": "starfish",
@@ -218,7 +256,11 @@
         "question": "What did you notice about the Sea star?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "starfish"
+      "catalog_id": "starfish",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Sea star",
+      "presence_note": "Tide/rocky exhibits. Soft Sea star."
     },
     {
       "id": "eel",
@@ -240,7 +282,11 @@
         "question": "What did you notice about the Eel?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "eel"
+      "catalog_id": "eel",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Eel",
+      "presence_note": "Common; not specifically extracted."
     }
   ],
   "content_mode": "curated",
@@ -257,6 +303,18 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "research_notes": "map-img 2026-08-07 · map-page 2026-08-07",
-  "list_confidence": "partial"
+  "research_notes": "map-img 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [ok]",
+  "list_confidence": "audited",
+  "do_not_list": [],
+  "route_90m": [
+    "sea_turtle",
+    "african_penguin",
+    "shark"
+  ],
+  "last_presence_audit": "2026-08-08",
+  "presence_sources": [
+    "https://www.neaq.org/",
+    "https://www.neaq.org/exhibits/",
+    "https://www.neaq.org/exhibit-and-experiences/"
+  ]
 }

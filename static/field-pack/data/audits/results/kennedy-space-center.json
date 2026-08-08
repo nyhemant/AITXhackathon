@@ -1,0 +1,107 @@
+{
+  "slug": "kennedy-space-center",
+  "name": "Kennedy Space Center",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.kennedyspacecenter.com/"
+  ],
+  "list_confidence_recommended": "audited",
+  "practical_fixes": [],
+  "do_not_list": [
+    {
+      "catalog_id": "sci-dinosaur",
+      "name": "Dinosaur hall",
+      "reason": "KSC is spaceflight; no dinosaur hall."
+    }
+  ],
+  "items": [
+    {
+      "id": "sci_shuttle",
+      "label": "Space shuttle / orbiter",
+      "catalog_id": "sci-shuttle",
+      "presence": "verified",
+      "display_label": "Space Shuttle Atlantis",
+      "official_name": "Space Shuttle Atlantis exhibit",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "sci_rocket",
+      "label": "Rockets & launch",
+      "catalog_id": "sci-rocket",
+      "presence": "verified",
+      "display_label": "Rocket Garden / Saturn V",
+      "official_name": "Rocket Garden; Apollo/Saturn V Center",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "sci_astronaut",
+      "label": "Astronaut life",
+      "catalog_id": "sci-astronaut",
+      "presence": "verified",
+      "display_label": "Astronaut life",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "sci_planet",
+      "label": "Planet / space hall",
+      "catalog_id": "sci-planet",
+      "presence": "verified",
+      "display_label": "Space exhibits",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "sci_hands_on",
+      "label": "Hands-on lab",
+      "catalog_id": "sci-hands-on",
+      "presence": "high",
+      "display_label": "Hands-on lab",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "cm_free_explore",
+      "label": "Free explore",
+      "catalog_id": "cm-free-explore",
+      "presence": "medium",
+      "display_label": "Free explore",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "sci_dinosaur",
+      "label": "Dinosaur hall",
+      "catalog_id": "sci-dinosaur",
+      "presence": "absent",
+      "display_label": "Dinosaur hall",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "cm_outdoor",
+      "label": "Outdoor Area",
+      "catalog_id": "cm-outdoor",
+      "presence": "high",
+      "display_label": "Rocket Garden outdoors",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "sci_shuttle",
+    "sci_rocket",
+    "sci_astronaut"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "Shuttle/orbiter (Atlantis), rockets (Rocket Garden, Saturn V), astronaut life, space halls are core. Dinosaur hall is false taxonomy leakage. Outdoor areas real (causeway/gardens). Practical car/Merritt Island OK.",
+  "severity": "major"
+}

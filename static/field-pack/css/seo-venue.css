@@ -1119,3 +1119,9 @@ a.seo-map-card:focus-visible {
   .seo-hero-photos { grid-template-columns: 1fr 1fr; }
   .seo-animal-card img, .seo-hero-photos img { height: 160px; }
 }
+
+/* Honest list status */
+.seo-checked { margin: 0.35rem 0 0; font-size: 0.88rem; font-weight: 650; }
+.seo-checked-verified { color: #0a4545; }
+.seo-checked-partial { color: #5a6b82; font-weight: 600; }
+.seo-checked-starter { color: #8a6d3b; font-weight: 600; }

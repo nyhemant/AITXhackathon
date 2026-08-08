@@ -16,13 +16,13 @@
     "typical_duration": "half day",
     "ticket_note": "Space for Life tickets; Parc olympique area.",
     "transit_note": "Metro + walk.",
-    "energy_note": "indoor",
+    "energy_note": "Mostly indoors",
     "best_start": "One slow ecosystem circuit."
   },
   "items": [
     {
       "id": "african_penguin",
-      "label": "African penguin",
+      "label": "Penguin",
       "emoji": "🐧",
       "one_liner": "Penguins in ecosystem immersion.",
       "tags": [
@@ -40,11 +40,16 @@
         "question": "What did you notice about the African penguin?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "african-penguin"
+      "catalog_id": "african-penguin",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Penguin",
+      "presence_note": "Subantarctic / Labrador Coast penguin habitat verified as concept; confirm species. Soft Penguin."
     },
     {
       "id": "two_toed_sloth",
-      "label": "Two-toed sloth",
+      "label": "Sloth",
       "emoji": "🦥",
       "one_liner": "Tropical mammals/sloth energy.",
       "tags": [
@@ -61,11 +66,16 @@
         "question": "What did you notice about the Two-toed sloth?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "two-toed-sloth"
+      "catalog_id": "two-toed-sloth",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Sloth",
+      "presence_note": "Tropical rainforest mammals include sloths historically. Soft Sloth."
     },
     {
       "id": "sci_rainforest",
-      "label": "Rainforest dome",
+      "label": "Rainforest ecosystem",
       "emoji": "🌿",
       "one_liner": "Lush immersion.",
       "tags": [
@@ -82,11 +92,16 @@
         "question": "What did you notice about the Rainforest dome?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-rainforest"
+      "catalog_id": "sci-rainforest",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Rainforest ecosystem",
+      "presence_note": "Tropical rainforest ecosystem is a core Biodome zone."
     },
     {
       "id": "ring_tailed_lemur",
-      "label": "Ring-tailed lemur",
+      "label": "Lemur (verify)",
       "emoji": "🐒",
       "one_liner": "Primates when present.",
       "tags": [
@@ -104,7 +119,11 @@
         "question": "What did you notice about the Ring-tailed lemur?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "ring-tailed-lemur"
+      "catalog_id": "ring-tailed-lemur",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Lemur (verify)",
+      "presence_note": "Primates sometimes present; ring-tailed not verified this pass."
     },
     {
       "id": "cm_free_explore",
@@ -125,11 +144,15 @@
         "question": "What did you notice about the Free explore?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "cm-free-explore"
+      "catalog_id": "cm-free-explore",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "display_label": "Free explore",
+      "presence_note": "Kid pace between ecosystems is the product."
     },
     {
       "id": "sci_aquarium_zone",
-      "label": "Aquarium zone",
+      "label": "Marine / Gulf zone",
       "emoji": "🐠",
       "one_liner": "Tanks and swimmers inside a bigger museum day.",
       "tags": [
@@ -147,33 +170,16 @@
         "question": "What did you try or notice at Aquarium zone?",
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
-      "catalog_id": "sci-aquarium-zone"
-    },
-    {
-      "id": "sci_mammal_hall",
-      "label": "Animal / mammal hall",
-      "emoji": "🦌",
-      "one_liner": "Lifelike animals from around the world — spot fur, horns, and habitats.",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Animal / mammal hall?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "sci-mammal-hall"
+      "catalog_id": "sci-aquarium-zone",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Marine / Gulf zone",
+      "presence_note": "Gulf of St. Lawrence marine ecosystem."
     },
     {
       "id": "sci_hands_on",
-      "label": "Hands-on lab",
+      "label": "Hands-on (optional)",
       "emoji": "🔬",
       "one_liner": "Touch, test, build — science you can try.",
       "tags": [
@@ -192,7 +198,11 @@
         "question": "What did you try or notice at Hands-on lab?",
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
-      "catalog_id": "sci-hands-on"
+      "catalog_id": "sci-hands-on",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Hands-on (optional)",
+      "presence_note": "Learning spaces exist in Space for Life complex; not core Biodome hall."
     },
     {
       "id": "sea_turtle",
@@ -215,32 +225,14 @@
         "question": "What did you notice about the Sea turtle?",
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
-      "catalog_id": "sea-turtle"
-    },
-    {
-      "id": "jellyfish",
-      "label": "Jellyfish",
-      "emoji": "🎐",
-      "one_liner": "Soft drifter — no bones, glows and pulses in the water.",
-      "tags": [
-        "wow",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you notice about the Jellyfish?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "jellyfish"
+      "catalog_id": "sea-turtle",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Sea turtle",
+      "presence_note": "Not confirmed as Biodome icon."
     }
   ],
-  "content_mode": "hybrid",
+  "content_mode": "curated",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://espacepourlavie.ca/en/biodome",
@@ -254,10 +246,29 @@
     "Leave while happy"
   ],
   "route_90m": [
-    "african_penguin",
-    "two_toed_sloth",
-    "sci_rainforest"
+    "sci_rainforest",
+    "sci_aquarium_zone",
+    "african_penguin"
   ],
-  "research_notes": "R2 hybrid 2026-08-07",
-  "list_confidence": "partial"
+  "research_notes": "R2 hybrid 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "list_confidence": "audited",
+  "do_not_list": [
+    {
+      "catalog_id": "sci-mammal-hall",
+      "name": "Animal / mammal hall",
+      "reason": "Not a mammal hall museum — ecosystem biodome.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "jellyfish",
+      "name": "Jellyfish",
+      "reason": "Not a Biodome signature; do not template-list without confirmation.",
+      "as_of": "2026-08-08"
+    }
+  ],
+  "last_presence_audit": "2026-08-08",
+  "presence_sources": [
+    "https://espacepourlavie.ca/en/biodome",
+    "https://espacepourlavie.ca/en"
+  ]
 }

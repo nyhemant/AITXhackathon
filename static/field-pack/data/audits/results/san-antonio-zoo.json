@@ -1,0 +1,162 @@
+{
+  "slug": "san-antonio-zoo",
+  "name": "San Antonio Zoo",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://sazoo.org/",
+    "https://sazoo.org/animals/",
+    "https://en.wikipedia.org/wiki/San_Antonio_Zoo"
+  ],
+  "list_confidence_recommended": "partial",
+  "practical_fixes": [
+    {
+      "field": "route_90m",
+      "current": "african_elephant first",
+      "suggested": "nile_hippo, western_lowland_gorilla, reticulated_giraffe",
+      "reason": "Elephants left 2023; hippos/gorillas/giraffes are real icons."
+    },
+    {
+      "field": "tagline",
+      "current": "Llamas lore",
+      "suggested": "hippos Timothy & Uma + Congo Falls gorillas",
+      "reason": "Tagline underplays real icons."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Last elephants left 2022–2023 (Nicole to Elephant Sanctuary). Do not list until return habitat open and stocked."
+    }
+  ],
+  "items": [
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "absent",
+      "display_label": "African elephant",
+      "official_name": "",
+      "notes": "Last elephants left SA Zoo 2022–2023. Return may be planned but not verified guest-visible 2026-08.",
+      "source_url": "https://en.wikipedia.org/wiki/San_Antonio_Zoo"
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "verified",
+      "display_label": "Reticulated giraffe",
+      "official_name": "",
+      "notes": "Naylor Savanna / Africa Live giraffe herd.",
+      "source_url": "https://sazoo.org/animals/"
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "high",
+      "display_label": "Sumatran tiger",
+      "official_name": "",
+      "notes": "Collection lists Sumatran tiger.",
+      "source_url": "https://en.wikipedia.org/wiki/San_Antonio_Zoo"
+    },
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "verified",
+      "display_label": "Western lowland gorilla",
+      "official_name": "",
+      "notes": "Congo Falls gorilla experience opened Dec 2025.",
+      "source_url": "https://sazoo.org/animals/"
+    },
+    {
+      "id": "caribbean_flamingo",
+      "label": "Caribbean flamingo",
+      "catalog_id": "caribbean-flamingo",
+      "presence": "high",
+      "display_label": "Caribbean flamingo",
+      "official_name": "",
+      "notes": "Flamingos long-standing SA Zoo icon.",
+      "source_url": "https://sazoo.org/"
+    },
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "high",
+      "display_label": "African lion",
+      "official_name": "",
+      "notes": "Lions in Africa habitats.",
+      "source_url": "https://sazoo.org/animals/"
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "medium",
+      "display_label": "African penguin",
+      "official_name": "",
+      "notes": "Penguin presence/species unconfirmed this pass.",
+      "source_url": ""
+    },
+    {
+      "id": "cheetah",
+      "label": "Cheetah",
+      "catalog_id": "cheetah",
+      "presence": "medium",
+      "display_label": "Cheetah",
+      "official_name": "",
+      "notes": "Not confirmed on animals hub this pass.",
+      "source_url": ""
+    },
+    {
+      "id": "nile_hippo",
+      "label": "Nile hippo",
+      "catalog_id": "nile-hippo",
+      "presence": "verified",
+      "display_label": "Nile hippo",
+      "official_name": "",
+      "notes": "World-famous hippos Timothy and Uma — Africa Live!",
+      "source_url": "https://sazoo.org/animals/"
+    },
+    {
+      "id": "two_toed_sloth",
+      "label": "Two-toed sloth",
+      "catalog_id": "two-toed-sloth",
+      "presence": "medium",
+      "display_label": "Two-toed sloth",
+      "official_name": "",
+      "notes": "Not confirmed.",
+      "source_url": ""
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "high",
+      "display_label": "Zebra",
+      "official_name": "",
+      "notes": "Africa Live ungulates.",
+      "source_url": "https://sazoo.org/animals/"
+    },
+    {
+      "id": "galapagos_tortoise",
+      "label": "Galápagos tortoise",
+      "catalog_id": "galapagos-tortoise",
+      "presence": "medium",
+      "display_label": "Galápagos tortoise",
+      "official_name": "",
+      "notes": "Species unconfirmed.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "nile_hippo",
+    "western_lowland_gorilla",
+    "reticulated_giraffe"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "CRITICAL: elephants still on print list but left 2023. Hippos, Congo Falls gorillas, giraffes verified icons.",
+  "severity": "critical"
+}

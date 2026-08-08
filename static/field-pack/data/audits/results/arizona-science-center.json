@@ -1,0 +1,107 @@
+{
+  "slug": "arizona-science-center",
+  "name": "Arizona Science Center",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.azscience.org/"
+  ],
+  "list_confidence_recommended": "partial",
+  "practical_fixes": [],
+  "do_not_list": [
+    {
+      "catalog_id": "cm-imaginarium",
+      "name": "Imaginarium",
+      "reason": "Taxonomy leakage from children's museum catalog."
+    }
+  ],
+  "items": [
+    {
+      "id": "sci_hands_on",
+      "label": "Hands-on lab",
+      "catalog_id": "sci-hands-on",
+      "presence": "high",
+      "display_label": "Hands-on lab",
+      "official_name": "",
+      "notes": "Core science center offering.",
+      "source_url": ""
+    },
+    {
+      "id": "sci_planet",
+      "label": "Planet / space hall",
+      "catalog_id": "sci-planet",
+      "presence": "high",
+      "display_label": "Planet / space hall",
+      "official_name": "",
+      "notes": "Planetarium typical; confirm show schedule on azscience.org.",
+      "source_url": ""
+    },
+    {
+      "id": "sci_rocket",
+      "label": "Rockets & launch",
+      "catalog_id": "sci-rocket",
+      "presence": "medium",
+      "display_label": "Rockets & launch",
+      "official_name": "",
+      "notes": "Space content varies by exhibition rotation.",
+      "source_url": ""
+    },
+    {
+      "id": "cm_free_explore",
+      "label": "Free explore",
+      "catalog_id": "cm-free-explore",
+      "presence": "high",
+      "display_label": "Free explore",
+      "official_name": "",
+      "notes": "OK generic.",
+      "source_url": ""
+    },
+    {
+      "id": "sci_dinosaur",
+      "label": "Dinosaur hall",
+      "catalog_id": "sci-dinosaur",
+      "presence": "medium",
+      "display_label": "Dinosaur hall",
+      "official_name": "",
+      "notes": "May be temporary/traveling — verify current exhibits.",
+      "source_url": ""
+    },
+    {
+      "id": "cm_makery",
+      "label": "Creative Makery",
+      "catalog_id": "cm-makery",
+      "presence": "medium",
+      "display_label": "Creative Makery",
+      "official_name": "",
+      "notes": "Maker-style spaces common; official name may differ — soft generic.",
+      "source_url": ""
+    },
+    {
+      "id": "cm_imaginarium",
+      "label": "Imaginarium",
+      "catalog_id": "cm-imaginarium",
+      "presence": "absent",
+      "display_label": "Imaginarium",
+      "official_name": "",
+      "notes": "Taxonomy leakage from children's museum catalog.",
+      "source_url": ""
+    },
+    {
+      "id": "sci_shuttle",
+      "label": "Space shuttle / orbiter",
+      "catalog_id": "sci-shuttle",
+      "presence": "unclear",
+      "display_label": "Space shuttle / orbiter",
+      "official_name": "",
+      "notes": "No permanent orbiter like California Science Center; do not promise shuttle.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "sci_hands_on",
+    "sci_planet",
+    "cm_free_explore"
+  ],
+  "content_mode_recommended": "hybrid",
+  "summary": "Hands-on/planetarium OK as science-center defaults; drop Imaginarium leakage and do not list space shuttle orbiter without confirmation.",
+  "severity": "major"
+}

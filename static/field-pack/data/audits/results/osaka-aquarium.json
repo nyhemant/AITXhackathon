@@ -1,0 +1,162 @@
+{
+  "slug": "osaka-aquarium",
+  "name": "Osaka Aquarium Kaiyukan",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.kaiyukan.com/language/eng/",
+    "https://www.kaiyukan.com/language/eng/area/",
+    "https://en.wikipedia.org/wiki/Osaka_Aquarium_Kaiyukan"
+  ],
+  "list_confidence_recommended": "partial",
+  "practical_fixes": [
+    {
+      "field": "items.asian_small_clawed_otter",
+      "current": "ASC otter",
+      "suggested": "Verify; Kaiyukan is Pacific Ring of Fire tanks — otter not a signature",
+      "reason": "Template leakage risk."
+    },
+    {
+      "field": "items",
+      "current": "generic marine pack",
+      "suggested": "Emphasize whale shark, pacific species, jellyfish",
+      "reason": "Kaiyukan’s icon is whale shark in huge tank."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "asian-small-clawed-otter",
+      "name": "Asian small-clawed otter",
+      "reason": "Not confirmed as Kaiyukan exhibit; template risk."
+    }
+  ],
+  "items": [
+    {
+      "id": "shark",
+      "label": "Shark",
+      "catalog_id": "shark",
+      "presence": "verified",
+      "display_label": "Shark (whale shark)",
+      "official_name": "Whale shark / sharks",
+      "notes": "Famous whale shark / large shark tanks.",
+      "source_url": "https://www.kaiyukan.com/language/eng/"
+    },
+    {
+      "id": "stingray",
+      "label": "Stingray",
+      "catalog_id": "stingray",
+      "presence": "high",
+      "display_label": "Stingray",
+      "official_name": "Ray",
+      "notes": "Large tanks include rays. Soft Ray.",
+      "source_url": ""
+    },
+    {
+      "id": "jellyfish",
+      "label": "Jellyfish",
+      "catalog_id": "jellyfish",
+      "presence": "high",
+      "display_label": "Jellyfish",
+      "official_name": "Jellyfish",
+      "notes": "Jellyfish gallery known.",
+      "source_url": ""
+    },
+    {
+      "id": "sea_turtle",
+      "label": "Sea turtle",
+      "catalog_id": "sea-turtle",
+      "presence": "high",
+      "display_label": "Sea turtle",
+      "official_name": "Sea turtle",
+      "notes": "Sea turtles in Pacific exhibits.",
+      "source_url": ""
+    },
+    {
+      "id": "octopus",
+      "label": "Octopus",
+      "catalog_id": "octopus",
+      "presence": "high",
+      "display_label": "Octopus",
+      "official_name": "Octopus",
+      "notes": "Common. Soft Octopus.",
+      "source_url": ""
+    },
+    {
+      "id": "clownfish",
+      "label": "Clownfish",
+      "catalog_id": "clownfish",
+      "presence": "medium",
+      "display_label": "Clownfish",
+      "official_name": "",
+      "notes": "Reef tanks possible.",
+      "source_url": ""
+    },
+    {
+      "id": "seahorse",
+      "label": "Seahorse",
+      "catalog_id": "seahorse",
+      "presence": "medium",
+      "display_label": "Seahorse",
+      "official_name": "",
+      "notes": "Possible.",
+      "source_url": ""
+    },
+    {
+      "id": "eel",
+      "label": "Eel",
+      "catalog_id": "eel",
+      "presence": "high",
+      "display_label": "Eel",
+      "official_name": "Eel",
+      "notes": "Common in rocky tanks.",
+      "source_url": ""
+    },
+    {
+      "id": "crab",
+      "label": "Crab",
+      "catalog_id": "crab",
+      "presence": "high",
+      "display_label": "Crab",
+      "official_name": "Japanese spider crab",
+      "notes": "Japanese spider crab is a Kaiyukan icon.",
+      "source_url": "https://en.wikipedia.org/wiki/Osaka_Aquarium_Kaiyukan"
+    },
+    {
+      "id": "starfish",
+      "label": "Sea star",
+      "catalog_id": "starfish",
+      "presence": "medium",
+      "display_label": "Sea star",
+      "official_name": "",
+      "notes": "Possible.",
+      "source_url": ""
+    },
+    {
+      "id": "freshwater_fish",
+      "label": "River / lake fish",
+      "catalog_id": "freshwater-fish",
+      "presence": "medium",
+      "display_label": "Freshwater",
+      "official_name": "",
+      "notes": "Some freshwater/river zones in ring concept.",
+      "source_url": ""
+    },
+    {
+      "id": "asian_small_clawed_otter",
+      "label": "Asian small-clawed otter",
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "unclear",
+      "display_label": "Asian small-clawed otter",
+      "official_name": "",
+      "notes": "Not confirmed.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "shark",
+    "jellyfish",
+    "crab"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "Whale shark is the must-list icon (cataloged as shark — OK with display note). Spider crab high. Otter unconfirmed. Partial→curated after whale-shark emphasis.",
+  "severity": "minor"
+}

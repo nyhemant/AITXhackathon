@@ -7,201 +7,183 @@
   "country": "US",
   "lat": 41.79,
   "lng": -87.58,
-  "official_url": "https://www.msichicago.org/",
-  "last_verified": "2026-08-07",
+  "official_url": "https://www.griffinmsi.org/",
+  "last_verified": "2026-08-08",
+  "last_presence_audit": "2026-08-08",
   "verified_by": "research",
+  "list_confidence": "audited",
   "status": "verified",
-  "tagline": "Chicago MSI — submarine, science storms, and kid hands-on overload (in a good way).",
+  "tagline": "Chicago MSI — U-505 submarine, Science Storms, and kid hands-on overload (in a good way).",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Timed entry common; parking garage.",
+    "ticket_note": "Timed entry common; parking garage on site.",
     "transit_note": "Hyde Park.",
-    "energy_note": "indoor",
-    "best_start": "One icon (U-505/storms/etc.) + one hands-on zone."
+    "energy_note": "Mostly indoors",
+    "best_start": "One icon (U-505 or Science Storms) + one hands-on zone."
   },
-  "items": [
+  "do_not_list": [
     {
-      "id": "sci_hands_on",
-      "label": "Hands-on lab",
-      "emoji": "🔬",
-      "one_liner": "Touch science everywhere.",
-      "tags": [
-        "hands",
-        "play",
-        "wow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Interactive",
-      "qa_card": {
-        "question": "What did you notice about the Hands-on lab?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "sci-hands-on"
+      "catalog_id": "cm-imaginarium",
+      "name": "Imaginarium",
+      "reason": "Not an MSI exhibit.",
+      "as_of": "2026-08-08"
     },
     {
-      "id": "sci_rocket",
-      "label": "Rockets & launch",
-      "emoji": "🚀",
-      "one_liner": "Big machines and flight energy.",
-      "tags": [
-        "wow",
-        "tall"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Science / transport",
-      "qa_card": {
-        "question": "What did you notice about the Rockets & launch?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "sci-rocket"
+      "catalog_id": "cm-makery",
+      "name": "Creative Makery",
+      "reason": "Use Idea Factory for little-kid make/play.",
+      "as_of": "2026-08-08"
     },
     {
-      "id": "sci_planet",
-      "label": "Planet / space hall",
-      "emoji": "🪐",
-      "one_liner": "Space and earth stories.",
-      "tags": [
-        "wow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Space / earth",
-      "qa_card": {
-        "question": "What did you notice about the Planet / space hall?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "sci-planet"
+      "catalog_id": "sci-dinosaur",
+      "name": "Dinosaur hall",
+      "reason": "Not MSI’s icon — Field Museum is Chicago’s dino destination.",
+      "as_of": "2026-08-08"
     },
     {
-      "id": "sci_dinosaur",
-      "label": "Dinosaur hall",
-      "emoji": "🦖",
-      "one_liner": "Life science moments.",
-      "tags": [
-        "read"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Life",
-      "qa_card": {
-        "question": "What did you notice about the Dinosaur hall?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "sci-dinosaur"
-    },
-    {
-      "id": "cm_free_explore",
-      "label": "Free explore",
-      "emoji": "🧭",
-      "one_liner": "They choose the next hall.",
-      "tags": [
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Kid pick",
-      "qa_card": {
-        "question": "What did you notice about the Free explore?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "cm-free-explore"
-    },
-    {
-      "id": "cm_makery",
-      "label": "Creative Makery",
-      "emoji": "🔧",
-      "one_liner": "Build, invent, problem-solve with your hands.",
-      "tags": [
-        "wow",
-        "hands",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Creative Makery?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "cm-makery"
-    },
-    {
-      "id": "cm_imaginarium",
-      "label": "Imaginarium",
-      "emoji": "✨",
-      "one_liner": "Multi-sensory world — explore, notice, imagine.",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Imaginarium?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "cm-imaginarium"
-    },
-    {
-      "id": "sci_shuttle",
-      "label": "Space shuttle / orbiter",
-      "emoji": "🛰️",
-      "one_liner": "A real flying machine that went to space — walk around it.",
-      "tags": [
-        "wow",
-        "read"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Space shuttle / orbiter?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "sci-shuttle"
+      "catalog_id": "sci-shuttle",
+      "name": "Space shuttle / orbiter",
+      "reason": "No orbiter at MSI; U-505 is the iconic vessel.",
+      "as_of": "2026-08-08"
     }
   ],
-  "content_mode": "hybrid",
+  "items": [
+    {
+      "id": "u505",
+      "label": "U-505 Submarine",
+      "emoji": "🚢",
+      "one_liner": "A captured WWII U-boat — walk around a real submarine.",
+      "tags": ["wow", "big", "read"],
+      "age_fit": ["4-5", "6-8", "9+"],
+      "zone": "U-505",
+      "qa_card": {
+        "question": "What surprised you about the submarine’s size?",
+        "answer": "Long, narrow, metal — one detail!"
+      },
+      "presence": "verified",
+      "presence_source": "official_animals_page",
+      "presence_checked": "2026-08-08",
+      "presence_note": "Signature MSI exhibit (Griffin MSI)."
+    },
+    {
+      "id": "science_storms",
+      "label": "Science Storms",
+      "emoji": "⚡",
+      "one_liner": "Tsunami tank, avalanche, and storm science you can feel.",
+      "tags": ["hands", "wow", "play"],
+      "age_fit": ["2-3", "4-5", "6-8", "9+"],
+      "zone": "Science Storms",
+      "qa_card": {
+        "question": "Which storm demo was loudest or splashiest?",
+        "answer": "Wave, wind, or avalanche — pick one!"
+      },
+      "presence": "verified",
+      "presence_source": "official_animals_page",
+      "presence_checked": "2026-08-08"
+    },
+    {
+      "id": "henry_crown_space",
+      "label": "Henry Crown Space Center",
+      "emoji": "🚀",
+      "one_liner": "Rockets, spaceflight stories, and big sky dreams.",
+      "tags": ["wow", "read"],
+      "age_fit": ["4-5", "6-8", "9+"],
+      "zone": "Space",
+      "qa_card": {
+        "question": "What would you pack for a trip to space?",
+        "answer": "Food, tools, or a toy — one idea!"
+      },
+      "presence": "verified",
+      "presence_source": "official_animals_page",
+      "presence_checked": "2026-08-08"
+    },
+    {
+      "id": "idea_factory",
+      "label": "Idea Factory",
+      "emoji": "🧱",
+      "one_liner": "Little-kid build-and-play lab — hands busy.",
+      "tags": ["hands", "play", "kids"],
+      "age_fit": ["2-3", "4-5", "6-8"],
+      "zone": "Idea Factory",
+      "qa_card": {
+        "question": "What did you build or knock down?",
+        "answer": "Blocks, water, gears — one thing!"
+      },
+      "presence": "verified",
+      "presence_source": "official_animals_page",
+      "presence_checked": "2026-08-08"
+    },
+    {
+      "id": "great_train_story",
+      "label": "The Great Train Story",
+      "emoji": "🚂",
+      "one_liner": "A giant model train layout across America.",
+      "tags": ["wow", "rest"],
+      "age_fit": ["2-3", "4-5", "6-8", "9+"],
+      "zone": "Trains",
+      "qa_card": {
+        "question": "Which train or town did you spot first?",
+        "answer": "Color, mountain, or city — one find!"
+      },
+      "presence": "verified",
+      "presence_source": "official_animals_page",
+      "presence_checked": "2026-08-08"
+    },
+    {
+      "id": "fairy_castle",
+      "label": "Colleen Moore's Fairy Castle",
+      "emoji": "🏰",
+      "one_liner": "A tiny fairy palace with jewel-box rooms.",
+      "tags": ["wow", "rest"],
+      "age_fit": ["2-3", "4-5", "6-8", "9+"],
+      "zone": "Fairy Castle",
+      "qa_card": {
+        "question": "What tiny detail was your favorite?",
+        "answer": "Furniture, stairs, or sparkle!"
+      },
+      "presence": "verified",
+      "presence_source": "official_animals_page",
+      "presence_checked": "2026-08-08"
+    },
+    {
+      "id": "take_flight",
+      "label": "Take Flight",
+      "emoji": "✈️",
+      "one_liner": "Stand under a real Boeing 727 — look up!",
+      "tags": ["wow", "tall"],
+      "age_fit": ["2-3", "4-5", "6-8", "9+"],
+      "zone": "Aviation",
+      "qa_card": {
+        "question": "How big did the plane feel from underneath?",
+        "answer": "Wings, wheels, or engines — one word!"
+      },
+      "presence": "verified",
+      "presence_source": "official_animals_page",
+      "presence_checked": "2026-08-08"
+    },
+    {
+      "id": "free_explore",
+      "label": "Free explore",
+      "emoji": "🧭",
+      "one_liner": "Their choice hall — follow what pulls them in.",
+      "tags": ["play", "wow"],
+      "age_fit": ["2-3", "4-5", "6-8", "9+"],
+      "zone": "Kid pick",
+      "qa_card": {
+        "question": "What pulled you into the next room?",
+        "answer": "Sound, size, or color!"
+      },
+      "presence": "verified",
+      "presence_source": "official_animals_page",
+      "presence_checked": "2026-08-08"
+    }
+  ],
+  "content_mode": "curated",
   "media": {
     "visitor_map_url": "",
-    "visitor_map_page": "https://www.msichicago.org/",
+    "visitor_map_page": "https://www.griffinmsi.org/",
     "visitor_map_kind": "page",
-    "map_attribution": "Official visit page"
+    "map_attribution": "Official visit · Griffin MSI"
   },
   "parent_script": [
     "Bathroom first",
@@ -210,10 +192,13 @@
     "Leave while happy"
   ],
   "route_90m": [
-    "sci_hands_on",
-    "sci_rocket",
-    "sci_planet"
+    "u505",
+    "science_storms",
+    "idea_factory"
   ],
-  "research_notes": "R2 hybrid 2026-08-07",
-  "list_confidence": "partial"
+  "research_notes": "Rewrote 2026-08-08 from Griffin MSI icons (U-505, Science Storms, Henry Crown Space, Idea Factory, trains, fairy castle, Take Flight). Removed generic CM/sci taxonomy leakage.",
+  "presence_sources": [
+    "https://www.griffinmsi.org/",
+    "https://www.msichicago.org/explore/whats-here/exhibits/u-505-submarine/"
+  ]
 }

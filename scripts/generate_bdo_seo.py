@@ -142,6 +142,42 @@ def pick(seed: str, options: list[str]) -> str:
     return options[h % len(options)]
 
 
+
+def status_chip_html(mission_venue: dict) -> str:
+    """Honest list status — never claim Verified without presence audit."""
+    conf = (mission_venue or {}).get("list_confidence") or ""
+    audited = (mission_venue or {}).get("last_presence_audit") or ""
+    month = audited[:7] if len(audited) >= 7 else ""
+    if conf == "audited" and month:
+        return (
+            f'<p class="seo-checked seo-checked-verified">'
+            f'✓ Verified with venue website · {esc(month)}</p>'
+        )
+    if conf == "partial":
+        m = month or ((mission_venue or {}).get("last_verified") or "")[:7]
+        extra = f" · {esc(m)}" if m else ""
+        return (
+            f'<p class="seo-checked seo-checked-partial">'
+            f'Local shortlist · confirm on arrival{extra}</p>'
+        )
+    # template / unknown
+    return (
+        '<p class="seo-checked seo-checked-starter">'
+        'Starter hunt · flexible finds — skip anything closed</p>'
+    )
+
+
+def print_status_line(mission_venue: dict) -> str:
+    conf = (mission_venue or {}).get("list_confidence") or ""
+    audited = (mission_venue or {}).get("last_presence_audit") or ""
+    month = audited[:7] if len(audited) >= 7 else ""
+    if conf == "audited" and month:
+        return f"Verified {month}"
+    if conf == "partial":
+        return "Confirm on arrival"
+    return "Flexible finds"
+
+
 def practical_chips_html(practical: dict | None, last_v: str = "") -> str:
     """Scannable venue facts — duration, energy, tickets, transit. No paragraph soup."""
     p = practical or {}
@@ -149,7 +185,7 @@ def practical_chips_html(practical: dict | None, last_v: str = "") -> str:
     if p.get("typical_duration"):
         chips.append(("Time", str(p["typical_duration"])))
     if p.get("energy_note"):
-        chips.append(("Vibe", str(p["energy_note"])))
+        chips.append(("Setting", str(p["energy_note"])))
     if p.get("ticket_note"):
         chips.append(("Tickets", str(p["ticket_note"])))
     if p.get("transit_note"):
@@ -161,12 +197,8 @@ def practical_chips_html(practical: dict | None, last_v: str = "") -> str:
         f'<span class="seo-fact-v">{esc(val)}</span></li>'
         for k, val in chips
     )
-    checked = (
-        f'<p class="seo-checked">List checked {esc(last_v)}</p>' if last_v else ""
-    )
     return f"""
-        <ul class="seo-fact-chips" aria-label="Visit facts">{lis}</ul>
-        {checked}"""
+        <ul class="seo-fact-chips" aria-label="Visit facts">{lis}</ul>"""
 
 
 def unique_body(
@@ -235,7 +267,7 @@ def unique_body(
     )
     return f"""
     <section class="seo-list-block seo-visual-shortlist" aria-labelledby="shortlist-heading">
-      <h2 id="shortlist-heading">{"More to find" if showing_rest else "Kid shortlist"}</h2>
+      <h2 id="shortlist-heading">{"More if you have energy" if showing_rest else "Kid shortlist"}</h2>
       <p>{shortlist_lead}</p>
       {cards_html}
       <ul class="seo-shortlist seo-shortlist-sr">
@@ -715,10 +747,9 @@ def mission_drawer_html(mission_venue: dict, mission: dict) -> str:
     """Slide-over drawer: filters + live sheet. Page stays clean; CTA opens this."""
     vid = mission_venue["slug"]
     loc = ", ".join(x for x in [mission_venue.get("city"), mission_venue.get("region")] if x)
-    verified = mission_venue.get("last_verified") or ""
-    verified_line = f"Checked {verified[:7]}" if len(verified) >= 7 else "Verified shortlist"
+    verified_line = print_status_line(mission_venue)
     mission_title = esc(mission.get("title") or f"Your Mission at {mission_venue['name']}")
-    age_label = esc(mission.get("ageLabel") or "Ready (4–5)")
+    age_label = esc(mission.get("ageLabel") or "4–5")
     time_label = esc(mission.get("timeLabel") or "Half day")
     finds_html = "".join(
         f'<li class="mission-find">'
@@ -760,11 +791,11 @@ def mission_drawer_html(mission_venue: dict, mission: dict) -> str:
             <p class="mission-privacy">Stays on this page — never sent anywhere.</p>
           </div>
           <div class="mission-field">
-            <label for="mission-age">Age <span class="mission-age-label" id="mission-age-label">Ready (4–5)</span></label>
+            <label for="mission-age">Age <span class="mission-age-label" id="mission-age-label">4–5</span></label>
             <input type="range" id="mission-age" min="0" max="3" step="1" value="1" />
           </div>
           <div class="mission-field mission-field-time">
-            <label>Time today</label>
+            <label>How long will you be there?</label>
             <div class="mission-time-seg" role="group" aria-label="Time available">
               <label><input type="radio" name="mission-time" value="1hr" /><span>~1 hr</span></label>
               <label><input type="radio" name="mission-time" value="90m" /><span>90 min</span></label>
@@ -773,7 +804,7 @@ def mission_drawer_html(mission_venue: dict, mission: dict) -> str:
             </div>
           </div>
           <div class="mission-field">
-            <label for="mission-interest">Interest <span class="mission-opt">(optional)</span></label>
+            <label for="mission-interest">What are they into? <span class="mission-opt">(optional)</span></label>
             <select id="mission-interest">
               <option value="">Any</option>
             </select>
@@ -782,13 +813,14 @@ def mission_drawer_html(mission_venue: dict, mission: dict) -> str:
         </aside>
         <div class="mission-preview">
           <div class="mission-sheet" id="mission-sheet">
-            <p class="ms-brand">1Less Field Trip Kit{f' · {esc(loc)}' if loc else ""}</p>
+            <p class="ms-brand">Field Trip Kit{f' · {esc(loc)}' if loc else ""}</p>
             <h3 class="ms-title" id="mission-title">{mission_title}</h3>
             <p class="ms-meta" id="mission-meta">{age_label} · {time_label}</p>
             <h4 class="ms-section">Find these</h4>
             <ol class="mission-finds" id="mission-finds" aria-label="Finds">{finds_html}</ol>
             <h4 class="ms-section">Bonus</h4>
             <ul class="mission-challenges" id="mission-challenges" aria-label="Challenges">{ch_html}</ul>
+            <p class="ms-favorite">My favorite was _______________________</p>
             <p class="ms-footer">
               <span id="mission-verified">{esc(verified_line)}</span>
               · free at 1less.app/field-pack/{esc(vid)}/
@@ -798,7 +830,7 @@ def mission_drawer_html(mission_venue: dict, mission: dict) -> str:
         </div>
       </div>
       <footer class="mission-drawer-foot">
-        <button type="button" class="btn btn-ghost" id="mission-shuffle-btn">Shuffle finds</button>
+        <button type="button" class="btn btn-ghost" id="mission-shuffle-btn">Give me different stops</button>
         <button type="button" class="btn btn-primary btn-big" id="mission-print-btn">Print your mission</button>
       </footer>
     </div>
@@ -896,7 +928,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
         or v.get("blurb")
         or f"Free printable scavenger hunt and kid shortlist for {v['name']}."
     )
-    facts_html = practical_chips_html(practical, last_v)
+    facts_html = practical_chips_html(practical, last_v) + status_chip_html(mission_venue)
 
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -922,7 +954,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <link rel="stylesheet" href="/shell/shell.css?v=5" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=64" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=24" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=25" />
   <link rel="stylesheet" href="/field-pack/css/mission.css?v=11" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
@@ -1008,8 +1040,8 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <script src="/field-pack/js/catalog.js?v=23"></script>
   <script src="/field-pack/js/print-maps.js?v=2"></script>
   <script src="/field-pack/js/print-kit.js?v=9"></script>
-  <script src="/field-pack/js/mission/mission-engine.js?v=8"></script>
-  <script src="/field-pack/js/mission/mission-ui.js?v=13"></script>
+  <script src="/field-pack/js/mission/mission-engine.js?v=9"></script>
+  <script src="/field-pack/js/mission/mission-ui.js?v=14"></script>
 </body>
 </html>
 """
@@ -1112,7 +1144,7 @@ def render_venue_page(v: dict) -> str:
         <p class="seo-quality-note">{esc(
           (
             "Short kid list for a half-day visit."
-            + (f' List checked {v["lastVerified"][:7]}.' if (v.get("lastVerified") or "")[:7] else "")
+            + (f' Status {v["lastVerified"][:7]}.' if (v.get("lastVerified") or "")[:7] else "")
           )
           if (v.get("quality") or "starter") == "full"
           else "Short flexible list — animals and exhibits change; skip anything closed or missing."

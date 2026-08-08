@@ -1,0 +1,163 @@
+{
+  "slug": "seattle-aquarium",
+  "name": "Seattle Aquarium",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.seattleaquarium.org/",
+    "https://www.seattleaquarium.org/animals/",
+    "https://www.seattleaquarium.org/animal/sea-otter/",
+    "https://www.seattleaquarium.org/explore-the-aquarium/campus/pier-60/"
+  ],
+  "list_confidence_recommended": "partial",
+  "practical_fixes": [
+    {
+      "field": "items.asian_small_clawed_otter",
+      "current": "Asian small-clawed otter",
+      "suggested": "Sea otter (or river otter)",
+      "reason": "Pier 60 mammals are sea otters, river otters, harbor seals, fur seals."
+    },
+    {
+      "field": "missing_icons",
+      "current": "",
+      "suggested": "harbor seal, sea otter",
+      "reason": "Signature animals missing from pack."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "asian-small-clawed-otter",
+      "name": "Asian small-clawed otter",
+      "reason": "Wrong otter species — venue has sea otters and river otters."
+    }
+  ],
+  "items": [
+    {
+      "id": "asian_small_clawed_otter",
+      "label": "Asian small-clawed otter",
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "absent",
+      "display_label": "Asian small-clawed otter",
+      "official_name": "",
+      "notes": "Features sea otters and river otters — NOT Asian small-clawed.",
+      "source_url": "https://www.seattleaquarium.org/animal/sea-otter/"
+    },
+    {
+      "id": "octopus",
+      "label": "Octopus",
+      "catalog_id": "octopus",
+      "presence": "high",
+      "display_label": "Octopus",
+      "official_name": "",
+      "notes": "Giant Pacific octopus is a PNW aquarium icon.",
+      "source_url": "https://www.seattleaquarium.org/animals/"
+    },
+    {
+      "id": "jellyfish",
+      "label": "Jellyfish",
+      "catalog_id": "jellyfish",
+      "presence": "high",
+      "display_label": "Jellyfish",
+      "official_name": "",
+      "notes": "Jellies common permanent exhibit.",
+      "source_url": "https://www.seattleaquarium.org/animals/"
+    },
+    {
+      "id": "sea_turtle",
+      "label": "Sea turtle",
+      "catalog_id": "sea-turtle",
+      "presence": "medium",
+      "display_label": "Sea turtle",
+      "official_name": "",
+      "notes": "Not a signature exhibit; confirm tropical gallery.",
+      "source_url": ""
+    },
+    {
+      "id": "starfish",
+      "label": "Sea star",
+      "catalog_id": "starfish",
+      "presence": "verified",
+      "display_label": "Sea star",
+      "official_name": "",
+      "notes": "Touch-pool / invertebrate galleries (sea stars).",
+      "source_url": "https://www.seattleaquarium.org/animals/"
+    },
+    {
+      "id": "shark",
+      "label": "Shark",
+      "catalog_id": "shark",
+      "presence": "high",
+      "display_label": "Shark",
+      "official_name": "",
+      "notes": "Sharks in ocean galleries.",
+      "source_url": "https://www.seattleaquarium.org/animals/"
+    },
+    {
+      "id": "stingray",
+      "label": "Stingray",
+      "catalog_id": "stingray",
+      "presence": "medium",
+      "display_label": "Stingray",
+      "official_name": "",
+      "notes": "Confirm ray/touch habitat.",
+      "source_url": ""
+    },
+    {
+      "id": "seahorse",
+      "label": "Seahorse",
+      "catalog_id": "seahorse",
+      "presence": "medium",
+      "display_label": "Seahorse",
+      "official_name": "",
+      "notes": "Often in tropical; unconfirmed.",
+      "source_url": ""
+    },
+    {
+      "id": "clownfish",
+      "label": "Clownfish",
+      "catalog_id": "clownfish",
+      "presence": "medium",
+      "display_label": "Clownfish",
+      "official_name": "",
+      "notes": "Tropical reef possible; not PNW signature.",
+      "source_url": ""
+    },
+    {
+      "id": "eel",
+      "label": "Eel",
+      "catalog_id": "eel",
+      "presence": "high",
+      "display_label": "Eel",
+      "official_name": "",
+      "notes": "Wolf eels / morays common in PNW aquariums.",
+      "source_url": ""
+    },
+    {
+      "id": "crab",
+      "label": "Crab",
+      "catalog_id": "crab",
+      "presence": "high",
+      "display_label": "Crab",
+      "official_name": "",
+      "notes": "Local crustaceans.",
+      "source_url": ""
+    },
+    {
+      "id": "freshwater_fish",
+      "label": "River / lake fish",
+      "catalog_id": "freshwater-fish",
+      "presence": "high",
+      "display_label": "River / lake fish",
+      "official_name": "",
+      "notes": "Salmon/local freshwater stories are core.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "octopus",
+    "shark",
+    "starfish"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "MAJOR: Asian small-clawed otter wrong species. Icons should be sea otter, harbor seal, octopus, local fish.",
+  "severity": "major"
+}

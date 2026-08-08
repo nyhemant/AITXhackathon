@@ -1,0 +1,179 @@
+{
+  "slug": "oregon-zoo",
+  "name": "Oregon Zoo",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.oregonzoo.org/",
+    "https://www.oregonzoo.org/wildlife/animals",
+    "https://www.oregonzoo.org/events/keeper-talks-and-animal-activities",
+    "https://en.wikipedia.org/wiki/Oregon_Zoo"
+  ],
+  "list_confidence_recommended": "audited",
+  "practical_fixes": [
+    {
+      "field": "items.african_elephant",
+      "current": "African elephant",
+      "suggested": "Asian elephant (Elephant Lands / historic Packy lineage)",
+      "reason": "Oregon Zoo is famous for Asian elephants, not African."
+    },
+    {
+      "field": "items.sumatran_tiger",
+      "current": "Sumatran tiger",
+      "suggested": "Confirm subspecies — soft Tiger",
+      "reason": "Verify on animal page."
+    },
+    {
+      "field": "items.nile_hippo / cheetah / flamingo / sloth / galapagos / zebra",
+      "current": "template fillers",
+      "suggested": "Confirm each on oregonzoo.org animals search",
+      "reason": "Several may be absent."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Oregon Zoo elephants are Asian (Elephant Lands)."
+    }
+  ],
+  "items": [
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "absent",
+      "display_label": "— relabel Asian elephant —",
+      "official_name": "Asian elephant",
+      "notes": "Asian elephants at Elephant Lands — African catalog wrong.",
+      "source_url": "https://www.oregonzoo.org/"
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "medium",
+      "display_label": "Tiger",
+      "official_name": "Tiger",
+      "notes": "Big cats; subspecies medium. Soft Tiger.",
+      "source_url": ""
+    },
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "high",
+      "display_label": "Gorilla",
+      "official_name": "Gorilla",
+      "notes": "Africa Rainforest gorillas known. Soft Gorilla.",
+      "source_url": ""
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "high",
+      "display_label": "Penguin",
+      "official_name": "Penguin",
+      "notes": "Penguin feeding on daily schedule. Soft Penguin; confirm African.",
+      "source_url": "https://www.oregonzoo.org/events/keeper-talks-and-animal-activities"
+    },
+    {
+      "id": "red_panda",
+      "label": "Red panda",
+      "catalog_id": "red-panda",
+      "presence": "high",
+      "display_label": "Red panda",
+      "official_name": "Red panda",
+      "notes": "Commonly listed; soft Red panda.",
+      "source_url": ""
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "verified",
+      "display_label": "Giraffe",
+      "official_name": "Giraffe",
+      "notes": "Giraffe keeper talks daily. Soft Giraffe.",
+      "source_url": "https://www.oregonzoo.org/events/keeper-talks-and-animal-activities"
+    },
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "high",
+      "display_label": "Lion",
+      "official_name": "Lion",
+      "notes": "Predators of the Serengeti lions.",
+      "source_url": "https://en.wikipedia.org/wiki/Oregon_Zoo"
+    },
+    {
+      "id": "cheetah",
+      "label": "Cheetah",
+      "catalog_id": "cheetah",
+      "presence": "unclear",
+      "display_label": "Cheetah",
+      "official_name": "",
+      "notes": "Not confirmed this pass.",
+      "source_url": ""
+    },
+    {
+      "id": "nile_hippo",
+      "label": "Nile hippo",
+      "catalog_id": "nile-hippo",
+      "presence": "unclear",
+      "display_label": "Nile hippo",
+      "official_name": "",
+      "notes": "Not confirmed.",
+      "source_url": ""
+    },
+    {
+      "id": "caribbean_flamingo",
+      "label": "Caribbean flamingo",
+      "catalog_id": "caribbean-flamingo",
+      "presence": "unclear",
+      "display_label": "Caribbean flamingo",
+      "official_name": "",
+      "notes": "Not confirmed.",
+      "source_url": ""
+    },
+    {
+      "id": "two_toed_sloth",
+      "label": "Two-toed sloth",
+      "catalog_id": "two-toed-sloth",
+      "presence": "unclear",
+      "display_label": "Two-toed sloth",
+      "official_name": "",
+      "notes": "Not confirmed.",
+      "source_url": ""
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "medium",
+      "display_label": "Zebra (verify)",
+      "official_name": "",
+      "notes": "Africa savanna hoofstock possible.",
+      "source_url": ""
+    },
+    {
+      "id": "galapagos_tortoise",
+      "label": "Galápagos tortoise",
+      "catalog_id": "galapagos-tortoise",
+      "presence": "unclear",
+      "display_label": "Galápagos tortoise",
+      "official_name": "",
+      "notes": "Not confirmed (African spurred/pancake tortoises appear on animals list instead).",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "african_elephant",
+    "reticulated_giraffe",
+    "western_lowland_gorilla"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "MAJOR: African elephant label wrong (Asian elephants). Giraffe, lion, gorilla, penguins, red panda high. Template fillers (hippo, cheetah, flamingo, sloth, Galápagos) unclear — gate. Polar bears are a real Oregon Zoo icon missing from list.",
+  "severity": "major"
+}

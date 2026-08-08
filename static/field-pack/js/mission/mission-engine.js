@@ -6,10 +6,10 @@
 (function (root) {
   const AGE_ORDER = ["2-3", "4-5", "6-8", "9+"];
   const AGE_LABELS = {
-    "2-3": "Little (2–3)",
-    "4-5": "Ready (4–5)",
-    "6-8": "Big (6–8)",
-    "9+": "Older (9+)",
+    "2-3": "2–3",
+    "4-5": "4–5",
+    "6-8": "6–8",
+    "9+": "9+",
   };
   const TIME_N = { "1hr": 4, half: 6, full: 8, "90m": 4 };
   const TIME_LABELS = {

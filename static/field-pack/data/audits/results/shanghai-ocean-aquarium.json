@@ -1,0 +1,154 @@
+{
+  "slug": "shanghai-ocean-aquarium",
+  "name": "Shanghai Ocean Aquarium",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.aquarium.sh.com/"
+  ],
+  "list_confidence_recommended": "partial",
+  "practical_fixes": [
+    {
+      "field": "missing_icons",
+      "current": "",
+      "suggested": "Chinese sturgeon / underwater tunnel",
+      "reason": "SOA signature is tunnel + Chinese aquatic fauna."
+    },
+    {
+      "field": "lat_lng",
+      "current": "31.241,121.496",
+      "suggested": "verify Lujiazui / Oriental Pearl waterfront",
+      "reason": "Spot-check coordinates."
+    }
+  ],
+  "do_not_list": [],
+  "items": [
+    {
+      "id": "shark",
+      "label": "Shark",
+      "catalog_id": "shark",
+      "presence": "high",
+      "display_label": "Shark",
+      "official_name": "",
+      "notes": "Core mega-aquarium taxa; long underwater tunnel.",
+      "source_url": "https://www.aquarium.sh.com/"
+    },
+    {
+      "id": "stingray",
+      "label": "Stingray",
+      "catalog_id": "stingray",
+      "presence": "high",
+      "display_label": "Stingray",
+      "official_name": "",
+      "notes": "Core taxa.",
+      "source_url": "https://www.aquarium.sh.com/"
+    },
+    {
+      "id": "jellyfish",
+      "label": "Jellyfish",
+      "catalog_id": "jellyfish",
+      "presence": "high",
+      "display_label": "Jellyfish",
+      "official_name": "",
+      "notes": "Core taxa.",
+      "source_url": "https://www.aquarium.sh.com/"
+    },
+    {
+      "id": "sea_turtle",
+      "label": "Sea turtle",
+      "catalog_id": "sea-turtle",
+      "presence": "high",
+      "display_label": "Sea turtle",
+      "official_name": "",
+      "notes": "Core taxa.",
+      "source_url": "https://www.aquarium.sh.com/"
+    },
+    {
+      "id": "clownfish",
+      "label": "Clownfish",
+      "catalog_id": "clownfish",
+      "presence": "high",
+      "display_label": "Clownfish",
+      "official_name": "",
+      "notes": "Reef galleries.",
+      "source_url": "https://www.aquarium.sh.com/"
+    },
+    {
+      "id": "octopus",
+      "label": "Octopus",
+      "catalog_id": "octopus",
+      "presence": "high",
+      "display_label": "Octopus",
+      "official_name": "",
+      "notes": "Core taxa.",
+      "source_url": "https://www.aquarium.sh.com/"
+    },
+    {
+      "id": "seahorse",
+      "label": "Seahorse",
+      "catalog_id": "seahorse",
+      "presence": "high",
+      "display_label": "Seahorse",
+      "official_name": "",
+      "notes": "Core taxa.",
+      "source_url": "https://www.aquarium.sh.com/"
+    },
+    {
+      "id": "eel",
+      "label": "Eel",
+      "catalog_id": "eel",
+      "presence": "high",
+      "display_label": "Eel",
+      "official_name": "",
+      "notes": "Core taxa.",
+      "source_url": "https://www.aquarium.sh.com/"
+    },
+    {
+      "id": "crab",
+      "label": "Crab",
+      "catalog_id": "crab",
+      "presence": "high",
+      "display_label": "Crab",
+      "official_name": "",
+      "notes": "Core taxa.",
+      "source_url": "https://www.aquarium.sh.com/"
+    },
+    {
+      "id": "starfish",
+      "label": "Sea star",
+      "catalog_id": "starfish",
+      "presence": "high",
+      "display_label": "Sea star",
+      "official_name": "",
+      "notes": "Core taxa.",
+      "source_url": "https://www.aquarium.sh.com/"
+    },
+    {
+      "id": "freshwater_fish",
+      "label": "River / lake fish",
+      "catalog_id": "freshwater-fish",
+      "presence": "high",
+      "display_label": "River / lake fish",
+      "official_name": "",
+      "notes": "Yangtze / freshwater zone is SOA signature theme.",
+      "source_url": "https://www.aquarium.sh.com/"
+    },
+    {
+      "id": "asian_small_clawed_otter",
+      "label": "Asian small-clawed otter",
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "medium",
+      "display_label": "Asian small-clawed otter",
+      "official_name": "",
+      "notes": "Confirm before print.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "shark",
+    "sea_turtle",
+    "jellyfish"
+  ],
+  "content_mode_recommended": "hybrid",
+  "summary": "Tropical template mostly plausible for mega-aquarium; elevate freshwater/Chinese species. Otter medium.",
+  "severity": "minor"
+}

@@ -15,8 +15,8 @@
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Timed entry common — book ahead on childrensmuseum.org.",
-    "transit_note": "Downtown Indianapolis; parking garage options.",
-    "energy_note": "indoor",
+    "transit_note": "Near downtown / United Northwest Area; on-site parking garage.",
+    "energy_note": "Mostly indoors",
     "best_start": "Pick one physical wing + one make/play wing; schedule a snack."
   },
   "items": [
@@ -40,55 +40,14 @@
         "question": "What did you notice about the Waterfall play?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "cm-waterfall"
-    },
-    {
-      "id": "cm_imaginarium",
-      "label": "Imaginarium",
-      "emoji": "✨",
-      "one_liner": "Kid-run stories and roleles.",
-      "tags": [
-        "play",
-        "hands"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Pretend worlds",
-      "qa_card": {
-        "question": "What did you notice about the Imaginarium?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "cm-imaginarium"
-    },
-    {
-      "id": "cm_makery",
-      "label": "Creative Makery",
-      "emoji": "🔧",
-      "one_liner": "Build and create stations.",
-      "tags": [
-        "hands",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Make",
-      "qa_card": {
-        "question": "What did you notice about the Creative Makery?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "cm-makery"
+      "catalog_id": "cm-waterfall",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Waterfall play"
     },
     {
       "id": "sci_dinosaur",
-      "label": "Dinosaur hall",
+      "label": "Dinosphere",
       "emoji": "🦖",
       "one_liner": "Dino wow if that’s your wing pick.",
       "tags": [
@@ -106,11 +65,15 @@
         "question": "What did you notice about the Dinosaur hall?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-dinosaur"
+      "catalog_id": "sci-dinosaur",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Dinosphere"
     },
     {
       "id": "cm_toddler_garden",
-      "label": "Toddler Garden",
+      "label": "Playscape / early childhood",
       "emoji": "🌱",
       "one_liner": "Softer spaces for toddlers.",
       "tags": [
@@ -128,7 +91,10 @@
         "question": "What did you notice about the Toddler Garden?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "cm-toddler-garden"
+      "catalog_id": "cm-toddler-garden",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Playscape / early childhood"
     },
     {
       "id": "cm_outdoor",
@@ -151,30 +117,10 @@
         "question": "What did you try or notice at Outdoor Area?",
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
-      "catalog_id": "cm-outdoor"
-    },
-    {
-      "id": "cm_woven",
-      "label": "Woven Wonders",
-      "emoji": "🧗",
-      "one_liner": "Colorful climbing structure — art you can climb!",
-      "tags": [
-        "wow",
-        "hands",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Woven Wonders?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "cm-woven"
+      "catalog_id": "cm-outdoor",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Outdoor Area"
     },
     {
       "id": "cm_art_lab",
@@ -197,7 +143,10 @@
         "question": "What did you try or notice at Art Lab?",
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
-      "catalog_id": "cm-art-lab"
+      "catalog_id": "cm-art-lab",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Art Lab"
     },
     {
       "id": "cm_free_explore",
@@ -219,11 +168,14 @@
         "question": "What did you try or notice at Free explore?",
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
-      "catalog_id": "cm-free-explore"
+      "catalog_id": "cm-free-explore",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Free explore"
     },
     {
       "id": "sci_hands_on",
-      "label": "Hands-on lab",
+      "label": "Science / hands-on galleries",
       "emoji": "🔬",
       "one_liner": "Touch, test, build — science you can try.",
       "tags": [
@@ -242,7 +194,10 @@
         "question": "What did you try or notice at Hands-on lab?",
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
-      "catalog_id": "sci-hands-on"
+      "catalog_id": "sci-hands-on",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Science / hands-on galleries"
     }
   ],
   "content_mode": "hybrid",
@@ -260,10 +215,38 @@
     "Leave while happy"
   ],
   "route_90m": [
-    "cm_waterfall",
-    "cm_imaginarium",
-    "cm_makery"
+    "sci_dinosaur",
+    "sci_hands_on"
   ],
-  "research_notes": "R1 hybrid 2026-08-07",
-  "list_confidence": "partial"
+  "research_notes": "R1 hybrid 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "list_confidence": "partial",
+  "do_not_list": [
+    {
+      "catalog_id": "cm-imaginarium",
+      "name": "Imaginarium",
+      "reason": "Not a CMI exhibit name.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "cm-makery",
+      "name": "Creative Makery",
+      "reason": "Perot taxonomy leakage.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "cm-woven",
+      "name": "Woven Wonders",
+      "reason": "Perot-specific.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "cm-waterfall",
+      "name": "Waterfall play",
+      "reason": "Not verified as CMI zone name.",
+      "as_of": "2026-08-08"
+    }
+  ],
+  "presence_sources": [
+    "https://www.childrensmuseum.org/"
+  ]
 }

@@ -693,3 +693,13 @@ body.mission-drawer-open {
   .ms-map-preview,
   .ms-map-hover-hint { display: none !important; }
 }
+
+.ms-favorite {
+  margin: 0.75rem 0 0.25rem;
+  font-size: 1rem;
+  font-weight: 650;
+  letter-spacing: 0.01em;
+}
+@media print {
+  .ms-favorite { font-size: 12pt; margin-top: 10pt; }
+}

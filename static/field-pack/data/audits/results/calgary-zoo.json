@@ -1,0 +1,165 @@
+{
+  "slug": "calgary-zoo",
+  "name": "Calgary Zoo",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.calgaryzoo.com/care-conservation/our-animals/mammals/",
+    "https://www.calgaryzoo.com/"
+  ],
+  "list_confidence_recommended": "audited",
+  "practical_fixes": [
+    {
+      "field": "ticket_note",
+      "current": "",
+      "suggested": "West gate/Imagine Asia construction may alter paths through 2028/29 — check calgaryzoo.com before visit.",
+      "reason": "Major construction notices on official site."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "giant-panda",
+      "name": "Giant panda",
+      "reason": "Giant pandas left Calgary (returned to China ~2020); not on current mammals list."
+    },
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Elephant program closed 2014; herd relocated. Not on mammals list."
+    },
+    {
+      "catalog_id": "sumatran-tiger",
+      "name": "Sumatran tiger",
+      "reason": "Official list: Amur tigers, not Sumatran."
+    }
+  ],
+  "items": [
+    {
+      "id": "giant_panda",
+      "label": "Giant panda",
+      "catalog_id": "giant-panda",
+      "presence": "absent",
+      "display_label": "Giant panda",
+      "official_name": "",
+      "notes": "Giant pandas left Calgary (returned to China ~2020); not on current mammals list.",
+      "source_url": ""
+    },
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "absent",
+      "display_label": "African elephant",
+      "official_name": "",
+      "notes": "Elephant program closed 2014; herd relocated. Not on mammals list.",
+      "source_url": ""
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "verified",
+      "display_label": "Giraffe",
+      "official_name": "Giraffes",
+      "notes": "",
+      "source_url": "https://www.calgaryzoo.com/care-conservation/our-animals/mammals/"
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "absent",
+      "display_label": "Amur tiger",
+      "official_name": "Amur Tigers",
+      "notes": "Official list: Amur tigers, not Sumatran.",
+      "source_url": ""
+    },
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "verified",
+      "display_label": "Western lowland gorilla",
+      "official_name": "Western Lowland Gorillas",
+      "notes": "",
+      "source_url": "https://www.calgaryzoo.com/care-conservation/our-animals/mammals/"
+    },
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "verified",
+      "display_label": "African lion",
+      "official_name": "African Lions",
+      "notes": "",
+      "source_url": "https://www.calgaryzoo.com/care-conservation/our-animals/mammals/"
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "verified",
+      "display_label": "Hartmann's mountain zebra",
+      "official_name": "Hartmann’s Mountain Zebras",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "chimpanzee",
+      "label": "Chimpanzee",
+      "catalog_id": "chimpanzee",
+      "presence": "unclear",
+      "display_label": "Chimpanzee",
+      "official_name": "",
+      "notes": "Not on mammals list extract.",
+      "source_url": ""
+    },
+    {
+      "id": "red_panda",
+      "label": "Red panda",
+      "catalog_id": "red-panda",
+      "presence": "verified",
+      "display_label": "Red panda",
+      "official_name": "Red Pandas",
+      "notes": "Returning/returned with Imagine Asia work — listed on mammals page.",
+      "source_url": ""
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "unclear",
+      "display_label": "African penguin",
+      "official_name": "",
+      "notes": "Check birds list separately.",
+      "source_url": ""
+    },
+    {
+      "id": "nile_hippo",
+      "label": "Nile hippo",
+      "catalog_id": "nile-hippo",
+      "presence": "verified",
+      "display_label": "Nile hippo",
+      "official_name": "Hippopotamuses",
+      "notes": "",
+      "source_url": "https://www.calgaryzoo.com/care-conservation/our-animals/mammals/"
+    },
+    {
+      "id": "galapagos_tortoise",
+      "label": "Galápagos tortoise",
+      "catalog_id": "galapagos-tortoise",
+      "presence": "unclear",
+      "display_label": "Galápagos tortoise",
+      "official_name": "",
+      "notes": "Not confirmed on official sources reviewed in this audit pass.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "western_lowland_gorilla",
+    "african_lion",
+    "reticulated_giraffe"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "CRITICAL: no giant pandas, no elephants. Amur not Sumatran tigers. Verified: gorilla, lion, giraffe, hippo, zebra, red panda on official mammals list.",
+  "severity": "critical"
+}

@@ -1,0 +1,172 @@
+{
+  "slug": "vienna-zoo",
+  "name": "Schönbrunn Zoo",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.zoovienna.at/en/",
+    "https://www.zoovienna.at/en/zoo-and-visitors/welcome-worlds-oldest-zoo/",
+    "https://en.wikipedia.org/wiki/Schönbrunn_Zoo"
+  ],
+  "list_confidence_recommended": "audited",
+  "practical_fixes": [
+    {
+      "field": "region",
+      "current": "Austria",
+      "suggested": "Vienna",
+      "reason": "or leave city-level."
+    },
+    {
+      "field": "items.sumatran_tiger",
+      "current": "Sumatran tiger",
+      "suggested": "Tiger (Siberian/Amur often cited)",
+      "reason": "Official messaging references Siberian tigers — soft Tiger."
+    },
+    {
+      "field": "name",
+      "current": "Schönbrunn Zoo",
+      "suggested": "Tiergarten Schönbrunn / Vienna Zoo",
+      "reason": "Official English often Vienna Zoo / Tiergarten Schönbrunn."
+    }
+  ],
+  "do_not_list": [],
+  "items": [
+    {
+      "id": "giant_panda",
+      "label": "Giant panda",
+      "catalog_id": "giant-panda",
+      "presence": "verified",
+      "display_label": "Giant panda",
+      "official_name": "",
+      "notes": "Giant pandas are a primary Schönbrunn attraction (one of few European holders).",
+      "source_url": "https://www.zoovienna.at/en/zoo-and-visitors/welcome-worlds-oldest-zoo/"
+    },
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "verified",
+      "display_label": "African elephant",
+      "official_name": "",
+      "notes": "African elephants in Elephant Park.",
+      "source_url": "https://www.zoovienna.at/en/"
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "high",
+      "display_label": "Giraffe",
+      "official_name": "",
+      "notes": "Modern giraffe house; soft Giraffe.",
+      "source_url": "https://www.zoovienna.at/en/"
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "high",
+      "display_label": "Tiger",
+      "official_name": "Siberian/Amur tiger (confirm)",
+      "notes": "Tigers present; often described as Siberian — soft Tiger.",
+      "source_url": "https://www.zoovienna.at/en/"
+    },
+    {
+      "id": "orangutan",
+      "label": "Orangutan",
+      "catalog_id": "orangutan",
+      "presence": "verified",
+      "display_label": "Orangutan",
+      "official_name": "",
+      "notes": "ORANG.erie orangutan habitat.",
+      "source_url": "https://www.zoovienna.at/en/"
+    },
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "high",
+      "display_label": "African lion",
+      "official_name": "",
+      "notes": "Lions present.",
+      "source_url": "https://www.zoovienna.at/en/"
+    },
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "medium",
+      "display_label": "Western lowland gorilla",
+      "official_name": "",
+      "notes": "Great apes — confirm gorilla vs focus on orangutan.",
+      "source_url": ""
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "high",
+      "display_label": "Zebra",
+      "official_name": "",
+      "notes": "African hoofstock present.",
+      "source_url": ""
+    },
+    {
+      "id": "chimpanzee",
+      "label": "Chimpanzee",
+      "catalog_id": "chimpanzee",
+      "presence": "medium",
+      "display_label": "Chimpanzee",
+      "official_name": "",
+      "notes": "Confirm.",
+      "source_url": ""
+    },
+    {
+      "id": "red_panda",
+      "label": "Red panda",
+      "catalog_id": "red-panda",
+      "presence": "high",
+      "display_label": "Red panda",
+      "official_name": "",
+      "notes": "Red pandas commonly noted by visitors alongside giant pandas.",
+      "source_url": ""
+    },
+    {
+      "id": "nile_hippo",
+      "label": "Nile hippo",
+      "catalog_id": "nile-hippo",
+      "presence": "medium",
+      "display_label": "Nile hippo",
+      "official_name": "",
+      "notes": "Confirm live hippo.",
+      "source_url": ""
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "high",
+      "display_label": "African penguin",
+      "official_name": "",
+      "notes": "Penguins/polarium area.",
+      "source_url": ""
+    },
+    {
+      "id": "galapagos_tortoise",
+      "label": "Galápagos tortoise",
+      "catalog_id": "galapagos-tortoise",
+      "presence": "medium",
+      "display_label": "Galápagos tortoise",
+      "official_name": "",
+      "notes": "Confirm species.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "giant_panda",
+    "african_elephant",
+    "orangutan"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "Giant pandas, African elephants, orangutans verified icons at world's oldest zoo. Soft-label tiger subspecies. Strong audited core.",
+  "severity": "ok"
+}

@@ -1,0 +1,185 @@
+{
+  "slug": "nashville-zoo",
+  "name": "Nashville Zoo",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.nashvillezoo.org/our-animals",
+    "https://www.nashvillezoo.org/",
+    "https://www.nashvillezoo.org/leopard-forest",
+    "https://www.nashvillezoo.org/our-blog/posts/elephant-herd-updates"
+  ],
+  "list_confidence_recommended": "audited",
+  "practical_fixes": [
+    {
+      "field": "items.reticulated_giraffe",
+      "current": "Reticulated giraffe",
+      "suggested": "Masai giraffe / soft Giraffe",
+      "reason": "Official: Masai giraffes at Leopard Forest."
+    },
+    {
+      "field": "items.nile_hippo",
+      "current": "Nile hippo",
+      "suggested": "Verify hippo presence or remove",
+      "reason": "Not confirmed on animals extract this pass."
+    },
+    {
+      "field": "items.western_lowland_gorilla",
+      "current": "Gorilla on list",
+      "suggested": "Verify on-site gorilla exhibit vs conservation-only mentions",
+      "reason": "GRACE conservation mentions ≠ animals on ground."
+    },
+    {
+      "field": "items.african_penguin",
+      "current": "African penguin",
+      "suggested": "Verify species",
+      "reason": "Mentions of black-footed penguin conservation — confirm exhibit."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "nile-hippo",
+      "name": "Nile hippo",
+      "reason": "Not confirmed on official animals pages this audit."
+    }
+  ],
+  "items": [
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "verified",
+      "display_label": "Sumatran tiger",
+      "official_name": "Sumatran Tiger",
+      "notes": "Sumatran Tiger on our-animals + keeper chats.",
+      "source_url": "https://www.nashvillezoo.org/our-animals"
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "high",
+      "display_label": "Giraffe (Masai)",
+      "official_name": "Masai giraffe",
+      "notes": "Masai giraffes returned in Leopard Forest — not reticulated label. Soft Giraffe.",
+      "source_url": "https://www.nashvillezoo.org/leopard-forest"
+    },
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "verified",
+      "display_label": "African elephant",
+      "official_name": "African elephant",
+      "notes": "African elephant herd program / updates.",
+      "source_url": "https://www.nashvillezoo.org/our-blog/posts/elephant-herd-updates"
+    },
+    {
+      "id": "ring_tailed_lemur",
+      "label": "Ring-tailed lemur",
+      "catalog_id": "ring-tailed-lemur",
+      "presence": "high",
+      "display_label": "Lemur",
+      "official_name": "Lemur",
+      "notes": "Lemurs commonly featured; soft Lemur.",
+      "source_url": ""
+    },
+    {
+      "id": "galapagos_tortoise",
+      "label": "Galápagos tortoise",
+      "catalog_id": "galapagos-tortoise",
+      "presence": "verified",
+      "display_label": "Galápagos tortoise",
+      "official_name": "Galapagos tortoise",
+      "notes": "Galapagos and Aldabra tortoises keeper chat.",
+      "source_url": "https://www.nashvillezoo.org/"
+    },
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "medium",
+      "display_label": "Lion (verify)",
+      "official_name": "",
+      "notes": "Lions not strongly confirmed this pass — medium.",
+      "source_url": ""
+    },
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "unclear",
+      "display_label": "Western lowland gorilla",
+      "official_name": "",
+      "notes": "Conservation partner mentions ≠ confirmed exhibit animals.",
+      "source_url": ""
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "medium",
+      "display_label": "Penguin (verify)",
+      "official_name": "",
+      "notes": "Possible; confirm.",
+      "source_url": ""
+    },
+    {
+      "id": "cheetah",
+      "label": "Cheetah",
+      "catalog_id": "cheetah",
+      "presence": "medium",
+      "display_label": "Cheetah",
+      "official_name": "",
+      "notes": "Possible; confirm.",
+      "source_url": ""
+    },
+    {
+      "id": "nile_hippo",
+      "label": "Nile hippo",
+      "catalog_id": "nile-hippo",
+      "presence": "unclear",
+      "display_label": "Nile hippo",
+      "official_name": "",
+      "notes": "Not confirmed.",
+      "source_url": ""
+    },
+    {
+      "id": "caribbean_flamingo",
+      "label": "Caribbean flamingo",
+      "catalog_id": "caribbean-flamingo",
+      "presence": "medium",
+      "display_label": "Caribbean flamingo",
+      "official_name": "",
+      "notes": "Possible; confirm.",
+      "source_url": ""
+    },
+    {
+      "id": "two_toed_sloth",
+      "label": "Two-toed sloth",
+      "catalog_id": "two-toed-sloth",
+      "presence": "high",
+      "display_label": "Sloth",
+      "official_name": "Sloth",
+      "notes": "Sloth encounters marketed. Soft Sloth.",
+      "source_url": ""
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "medium",
+      "display_label": "Zebra",
+      "official_name": "",
+      "notes": "Possible hoofstock; confirm.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "sumatran_tiger",
+    "reticulated_giraffe",
+    "african_elephant"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "Sumatran tiger, African elephants, Masai giraffes, tortoises verified/high. Several template fillers (hippo, gorilla, flamingo, cheetah) weak — gate. Fix giraffe subspecies label.",
+  "severity": "major"
+}

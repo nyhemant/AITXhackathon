@@ -42,30 +42,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "orangutan",
-      "presence": "template"
-    },
-    {
-      "id": "african_elephant",
-      "label": "African elephant",
-      "emoji": "🐘",
-      "one_liner": "Elephants.",
-      "tags": [
-        "big",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Elephants",
-      "qa_card": {
-        "question": "What did you notice about the African elephant?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "african-elephant",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Orangutan",
+      "presence_note": "Forest of Wonder lists Orangutan with Sumatran tiger and siamang."
     },
     {
       "id": "sumatran_tiger",
@@ -87,7 +68,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sumatran-tiger",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Sumatran tiger",
+      "presence_note": "Forest of Wonder / Lion Gorge: Sumatran Tiger."
     },
     {
       "id": "koala",
@@ -109,11 +94,15 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "koala",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Koala",
+      "presence_note": "Australian Bush: Koala."
     },
     {
       "id": "western_lowland_gorilla",
-      "label": "Western lowland gorilla",
+      "label": "Gorilla",
       "emoji": "🦍",
       "one_liner": "Gorillas.",
       "tags": [
@@ -131,11 +120,15 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "western-lowland-gorilla",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Gorilla",
+      "presence_note": "Gorilla Rainforest: Western Lowland Gorilla."
     },
     {
       "id": "african_lion",
-      "label": "African lion",
+      "label": "Lion",
       "emoji": "🦁",
       "one_liner": "Big cat of the grassland pride — mighty roar!",
       "tags": [
@@ -155,11 +148,15 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "african-lion",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Lion",
+      "presence_note": "Lion Gorge: Lion."
     },
     {
       "id": "reticulated_giraffe",
-      "label": "Reticulated giraffe",
+      "label": "Giraffe",
       "emoji": "🦒",
       "one_liner": "Tallest animal on long legs — look up!",
       "tags": [
@@ -179,7 +176,11 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "reticulated-giraffe",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Giraffe",
+      "presence_note": "Main Trail lists Giraffe; subspecies not specified on habitat page — soft Giraffe label."
     },
     {
       "id": "asian_small_clawed_otter",
@@ -205,57 +206,11 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "asian-small-clawed-otter",
-      "presence": "template"
-    },
-    {
-      "id": "zebra",
-      "label": "Zebra",
-      "emoji": "🦓",
-      "one_liner": "Striped grassland runner — every pattern is unique.",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Zebra?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "zebra",
-      "presence": "template"
-    },
-    {
-      "id": "chimpanzee",
-      "label": "Chimpanzee",
-      "emoji": "🐵",
-      "one_liner": "Smart forest ape — climbs and tools.",
-      "tags": [
-        "wow",
-        "outdoor",
-        "play",
-        "hands",
-        "rest",
-        "kids"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Chimpanzee?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "chimpanzee",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Asian small-clawed otter",
+      "presence_note": "Forest of Wonder: Asian Small-clawed Otter."
     },
     {
       "id": "red_panda",
@@ -280,34 +235,15 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "red-panda",
-      "presence": "template"
-    },
-    {
-      "id": "galapagos_tortoise",
-      "label": "Galápagos tortoise",
-      "emoji": "🐢",
-      "one_liner": "Giant tortoise — slow and steady.",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Galápagos tortoise?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "galapagos-tortoise",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Red panda",
+      "presence_note": "Main Trail: Red Panda."
     },
     {
       "id": "ring_tailed_lemur",
-      "label": "Ring-tailed lemur",
+      "label": "Lemur",
       "emoji": "🐒",
       "one_liner": "Stripy tail from Madagascar.",
       "tags": [
@@ -327,34 +263,14 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "ring-tailed-lemur",
-      "presence": "template"
-    },
-    {
-      "id": "african_penguin",
-      "label": "African penguin",
-      "emoji": "🐧",
-      "one_liner": "Waddle on land, zoom in water.",
-      "tags": [
-        "wow",
-        "water",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the African penguin?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "african-penguin",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Lemur",
+      "presence_note": "Gorilla Rainforest: Lemur (ring-tailed among lemur experiences). Soft Lemur OK."
     }
   ],
-  "content_mode": "hybrid",
+  "content_mode": "curated",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://www.zoo.org.au/melbourne/melbourne-zoo-maps/",
@@ -369,9 +285,51 @@
   ],
   "route_90m": [
     "orangutan",
-    "african_elephant",
-    "sumatran_tiger"
+    "sumatran_tiger",
+    "koala"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 · map-page 2026-08-07",
-  "list_confidence": "template"
+  "research_notes": "R2 hybrid 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [critical]",
+  "list_confidence": "audited",
+  "do_not_list": [
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "No elephants at Melbourne Zoo after Feb 2025 move of Asian elephant herd to Werribee Open Range Zoo. Never African.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "chimpanzee",
+      "name": "Chimpanzee",
+      "reason": "Not listed on current Melbourne Zoo habitat pages (Gorilla Rainforest features gorillas/lemurs/gibbons, not chimps).",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "zebra",
+      "name": "Zebra",
+      "reason": "Not listed on current Melbourne Zoo habitat animal pages reviewed.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "Do not label African penguin; Wild Sea penguins are not confirmed as African species.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "galapagos-tortoise",
+      "name": "Galápagos tortoise",
+      "reason": "Official Main Trail animal is Aldabra giant tortoise, not Galápagos.",
+      "as_of": "2026-08-08"
+    }
+  ],
+  "last_presence_audit": "2026-08-08",
+  "presence_sources": [
+    "https://www.zoo.org.au/melbourne/animals-and-habitats/",
+    "https://www.zoo.org.au/melbourne/animals-and-habitats/forest-of-wonder/",
+    "https://www.zoo.org.au/melbourne/animals-and-habitats/lion-gorge/",
+    "https://www.zoo.org.au/melbourne/animals-and-habitats/gorilla-rainforest/",
+    "https://www.zoo.org.au/melbourne/animals-and-habitats/australian-bush/",
+    "https://www.zoo.org.au/melbourne/animals-and-habitats/main-trail/",
+    "https://www.zoo.org.au/elephant-move-faqs/"
+  ]
 }

@@ -1,0 +1,200 @@
+[
+  {
+    "slug": "berlin-zoo",
+    "name": "Berlin Zoo",
+    "type": "zoo",
+    "city": "Berlin",
+    "country": "DE",
+    "official_url": "https://www.zoo-berlin.de/en/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 11
+  },
+  {
+    "slug": "bogota-zoo",
+    "name": "Jaime Duque Park Zoo",
+    "type": "zoo",
+    "city": "Bogot\u00e1",
+    "country": "CO",
+    "official_url": "https://www.parquejaimeduque.com/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 13
+  },
+  {
+    "slug": "bronx-zoo",
+    "name": "Bronx Zoo",
+    "type": "zoo",
+    "city": "New York",
+    "country": "US",
+    "official_url": "https://bronxzoo.com/",
+    "list_confidence": "template",
+    "content_mode": "curated",
+    "n_items": 10
+  },
+  {
+    "slug": "budapest-zoo",
+    "name": "Budapest Zoo",
+    "type": "zoo",
+    "city": "Budapest",
+    "country": "HU",
+    "official_url": "https://www.zoobudapest.com/en",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 12
+  },
+  {
+    "slug": "cairo-zoo",
+    "name": "Giza Zoo",
+    "type": "zoo",
+    "city": "Cairo",
+    "country": "EG",
+    "official_url": "https://www.facebook.com/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 12
+  },
+  {
+    "slug": "cal-academy",
+    "name": "California Academy of Sciences",
+    "type": "museum",
+    "city": "San Francisco",
+    "country": "US",
+    "official_url": "https://www.calacademy.org/",
+    "list_confidence": "partial",
+    "content_mode": "curated",
+    "n_items": 10
+  },
+  {
+    "slug": "calgary-zoo",
+    "name": "Calgary Zoo",
+    "type": "zoo",
+    "city": "Calgary",
+    "country": "CA",
+    "official_url": "https://www.calgaryzoo.com/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 12
+  },
+  {
+    "slug": "california-science-center",
+    "name": "California Science Center",
+    "type": "museum",
+    "city": "Los Angeles",
+    "country": "US",
+    "official_url": "https://californiasciencecenter.org/",
+    "list_confidence": "partial",
+    "content_mode": "curated",
+    "n_items": 8
+  },
+  {
+    "slug": "carnegie-natural-history",
+    "name": "Carnegie Museum of Natural History",
+    "type": "museum",
+    "city": "Pittsburgh",
+    "country": "US",
+    "official_url": "https://carnegiemnh.org/",
+    "list_confidence": "partial",
+    "content_mode": "hybrid",
+    "n_items": 8
+  },
+  {
+    "slug": "chapultepec-zoo",
+    "name": "Chapultepec Zoo",
+    "type": "zoo",
+    "city": "Mexico City",
+    "country": "MX",
+    "official_url": "https://www.sedema.cdmx.gob.mx/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 14
+  },
+  {
+    "slug": "childrens-aquarium-dallas",
+    "name": "Children's Aquarium Dallas",
+    "type": "aquarium",
+    "city": "Dallas",
+    "country": "US",
+    "official_url": "https://www.childrensaquarium.com/",
+    "list_confidence": "partial",
+    "content_mode": "curated",
+    "n_items": 10
+  },
+  {
+    "slug": "childrens-museum-perot",
+    "name": "Children's Museum (Perot)",
+    "type": "museum",
+    "city": "Dallas",
+    "country": "US",
+    "official_url": "https://www.perotmuseum.org/",
+    "list_confidence": "partial",
+    "content_mode": "curated",
+    "n_items": 9
+  },
+  {
+    "slug": "cincinnati-zoo",
+    "name": "Cincinnati Zoo & Botanical Garden",
+    "type": "zoo",
+    "city": "Cincinnati",
+    "country": "US",
+    "official_url": "https://cincinnatizoo.org/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 12
+  },
+  {
+    "slug": "cleveland-metroparks-zoo",
+    "name": "Cleveland Metroparks Zoo",
+    "type": "zoo",
+    "city": "Cleveland",
+    "country": "US",
+    "official_url": "https://www.clevelandmetroparks.com/zoo",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 12
+  },
+  {
+    "slug": "columbus-zoo",
+    "name": "Columbus Zoo and Aquarium",
+    "type": "zoo",
+    "city": "Powell",
+    "country": "US",
+    "official_url": "https://www.columbuszoo.org/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 12
+  },
+  {
+    "slug": "copenhagen-zoo",
+    "name": "Copenhagen Zoo",
+    "type": "zoo",
+    "city": "Copenhagen",
+    "country": "DK",
+    "official_url": "https://www.zoo.dk/en",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 11
+  },
+  {
+    "slug": "dallas-arboretum",
+    "name": "Dallas Arboretum (kids trails)",
+    "type": "museum",
+    "city": "Dallas",
+    "country": "US",
+    "official_url": "https://www.dallasarboretum.org/",
+    "list_confidence": "partial",
+    "content_mode": "hybrid",
+    "n_items": 9
+  },
+  {
+    "slug": "dallas-world-aquarium",
+    "name": "Dallas World Aquarium",
+    "type": "aquarium",
+    "city": "Dallas",
+    "country": "US",
+    "official_url": "https://www.dwazoo.com/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 14
+  }
+]

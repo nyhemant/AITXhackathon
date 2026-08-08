@@ -13,10 +13,10 @@
   "status": "verified",
   "tagline": "Tiny ocean gem by the water — Hawaiian reef life, not a mega-aquarium.",
   "practical": {
-    "typical_duration": "half day",
+    "typical_duration": "1–2 hours",
     "ticket_note": "Small campus; check hours.",
     "transit_note": "Waikiki waterfront.",
-    "energy_note": "indoor",
+    "energy_note": "Mostly indoors",
     "best_start": "One slow loop; read a few labels together."
   },
   "items": [
@@ -41,7 +41,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "shark",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Shark",
+      "presence_note": "Hawaiian reef sharks/gallery fishes."
     },
     {
       "id": "sea_turtle",
@@ -65,7 +69,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sea-turtle",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Sea turtle",
+      "presence_note": "Sea turtles common Hawaiian aquarium highlight."
     },
     {
       "id": "jellyfish",
@@ -88,7 +96,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "jellyfish",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Jellyfish",
+      "presence_note": "Jellies common."
     },
     {
       "id": "octopus",
@@ -111,7 +123,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "octopus",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Octopus",
+      "presence_note": "Hawaiian day octopus etc. common."
     },
     {
       "id": "clownfish",
@@ -134,7 +150,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "clownfish",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Clownfish",
+      "presence_note": "Reef fishes."
     },
     {
       "id": "stingray",
@@ -157,7 +177,10 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "stingray",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Stingray",
+      "presence_note": "Confirm."
     },
     {
       "id": "seahorse",
@@ -180,7 +203,11 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "seahorse",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Seahorse",
+      "presence_note": "Often featured."
     },
     {
       "id": "eel",
@@ -203,7 +230,11 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "eel",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Eel",
+      "presence_note": "Moray eels common Hawaiian reef."
     },
     {
       "id": "crab",
@@ -226,7 +257,10 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "crab",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Crab",
+      "presence_note": "Invertebrates common."
     },
     {
       "id": "starfish",
@@ -251,56 +285,10 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "starfish",
-      "presence": "template"
-    },
-    {
-      "id": "freshwater_fish",
-      "label": "River / lake fish",
-      "emoji": "🐟",
-      "one_liner": "Fish that live in fresh water — rivers, lakes, ponds.",
-      "tags": [
-        "wow",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "What did you notice about the River / lake fish?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "freshwater-fish",
-      "presence": "template"
-    },
-    {
-      "id": "asian_small_clawed_otter",
-      "label": "Asian small-clawed otter",
-      "emoji": "🦦",
-      "one_liner": "Playful swimmer — smallest otter.",
-      "tags": [
-        "wow",
-        "water",
-        "outdoor",
-        "hands",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "What did you notice about the Asian small-clawed otter?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "asian-small-clawed-otter",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Sea star",
+      "presence_note": "Sea stars common."
     }
   ],
   "content_mode": "hybrid",
@@ -317,10 +305,29 @@
     "Leave while happy"
   ],
   "route_90m": [
-    "shark",
     "sea_turtle",
-    "jellyfish"
+    "shark",
+    "octopus"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 · map-page 2026-08-07",
-  "list_confidence": "template"
+  "research_notes": "R2 hybrid 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "list_confidence": "partial",
+  "do_not_list": [
+    {
+      "catalog_id": "asian-small-clawed-otter",
+      "name": "Asian small-clawed otter",
+      "reason": "Not present; Hawaiian monk seals are the mammal exhibit.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "freshwater-fish",
+      "name": "River / lake fish",
+      "reason": "Not a freshwater aquarium — Hawaiian marine focus.",
+      "as_of": "2026-08-08"
+    }
+  ],
+  "presence_sources": [
+    "https://www.waikikiaquarium.org/",
+    "https://www.waikikiaquarium.org/experience/animal-guide/marine-mammals/hawaiian-monk-seal/",
+    "https://www.hawaii.edu/news/2025/09/26/monk-seal-returns-waikiki-aquarium/"
+  ]
 }

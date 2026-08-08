@@ -20,7 +20,7 @@
   "items": [
     {
       "id": "sci_dinosaur",
-      "label": "Dinosaur hall",
+      "label": "SUE / Evolving Planet dinosaurs",
       "emoji": "🦖",
       "one_liner": "SUE the T. rex — still the superstar.",
       "tags": [
@@ -38,11 +38,15 @@
         "question": "What did you notice about the Dinosaur hall?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-dinosaur"
+      "catalog_id": "sci-dinosaur",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "SUE / Evolving Planet dinosaurs"
     },
     {
       "id": "sci_mammal_hall",
-      "label": "Animal / mammal hall",
+      "label": "Mammals halls",
       "emoji": "🦌",
       "one_liner": "Giant animal displays and dioramas.",
       "tags": [
@@ -59,11 +63,14 @@
         "question": "What did you notice about the Animal / mammal hall?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-mammal-hall"
+      "catalog_id": "sci-mammal-hall",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "display_label": "Mammals halls"
     },
     {
       "id": "sci_hands_on",
-      "label": "Hands-on lab",
+      "label": "Crown Family PlayLab / hands-on",
       "emoji": "🔬",
       "one_liner": "PlayLab for younger kids when included/open.",
       "tags": [
@@ -81,32 +88,15 @@
         "question": "What did you notice about the Hands-on lab?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-hands-on"
-    },
-    {
-      "id": "sci_planet",
-      "label": "Planet / space hall",
-      "emoji": "🪐",
-      "one_liner": "Meteorites and space stories upstairs/downstairs loops.",
-      "tags": [
-        "wow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Space / rocks",
-      "qa_card": {
-        "question": "What did you notice about the Planet / space hall?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "sci-planet"
+      "catalog_id": "sci-hands-on",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Crown Family PlayLab / hands-on",
+      "presence_note": "PlayLab exists for younger kids — confirm branding"
     },
     {
       "id": "sci_rainforest",
-      "label": "Rainforest dome",
+      "label": "Africa / rainforest halls",
       "emoji": "🌿",
       "one_liner": "Scale-shifting life exhibits if on your ticket path.",
       "tags": [
@@ -123,7 +113,11 @@
         "question": "What did you notice about the Rainforest dome?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-rainforest"
+      "catalog_id": "sci-rainforest",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Africa / rainforest halls",
+      "presence_note": "May map to specific halls; not a dome"
     },
     {
       "id": "cm_free_explore",
@@ -144,50 +138,10 @@
         "question": "What did you notice about the Free explore?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "cm-free-explore"
-    },
-    {
-      "id": "sci_aquarium_zone",
-      "label": "Aquarium zone",
-      "emoji": "🐠",
-      "one_liner": "Aquatic cases and models along Evolving Planet edges.",
-      "tags": [
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Life sciences",
-      "qa_card": {
-        "question": "What did you notice about the Aquarium zone?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "sci-aquarium-zone"
-    },
-    {
-      "id": "cm_art_lab",
-      "label": "Art Lab",
-      "emoji": "🎨",
-      "one_liner": "Make-and-take moments when offered.",
-      "tags": [
-        "hands",
-        "art"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Creativity corners",
-      "qa_card": {
-        "question": "What did you notice about the Art Lab?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "cm-art-lab"
+      "catalog_id": "cm-free-explore",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Free explore"
     }
   ],
   "content_mode": "curated",
@@ -204,6 +158,41 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "research_notes": "map-img 2026-08-07",
-  "list_confidence": "partial"
+  "research_notes": "map-img 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "list_confidence": "partial",
+  "do_not_list": [
+    {
+      "catalog_id": "sci-planet",
+      "name": "Planet / space hall",
+      "reason": "No Field Museum planetarium; Adler is separate.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "sci-rainforest",
+      "name": "Rainforest dome",
+      "reason": "Not a Field permanent hall name (Uganda etc. may exist as halls — confirm; generic dome wrong).",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "sci-aquarium-zone",
+      "name": "Aquarium zone",
+      "reason": "Shedd Aquarium is next door, not Field.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "cm-art-lab",
+      "name": "Art Lab",
+      "reason": "Not a Field Museum family mission stop.",
+      "as_of": "2026-08-08"
+    }
+  ],
+  "route_90m": [
+    "sci_dinosaur",
+    "sci_mammal_hall"
+  ],
+  "presence_sources": [
+    "https://www.fieldmuseum.org/",
+    "https://www.fieldmuseum.org/exhibition/halls-and-galleries/evolving-planet",
+    "https://www.fieldmuseum.org/exhibitions"
+  ]
 }

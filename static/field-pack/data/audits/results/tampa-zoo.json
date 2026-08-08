@@ -1,0 +1,160 @@
+{
+  "slug": "tampa-zoo",
+  "name": "ZooTampa at Lowry Park",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://zootampa.org/",
+    "https://zootampa.org/visit/animals/",
+    "https://zootampa.org/animals/african-elephant-3/"
+  ],
+  "list_confidence_recommended": "partial",
+  "practical_fixes": [
+    {
+      "field": "missing_icons",
+      "current": "",
+      "suggested": "manatee, Florida panther",
+      "reason": "ZooTampa signature is manatee rescue — must list over generic template."
+    }
+  ],
+  "do_not_list": [],
+  "items": [
+    {
+      "id": "nile_hippo",
+      "label": "Nile hippo",
+      "catalog_id": "nile-hippo",
+      "presence": "high",
+      "display_label": "Hippo",
+      "official_name": "",
+      "notes": "Hippos present; also pygmy hippo births — soft Hippo; confirm Nile vs pygmy.",
+      "source_url": "https://zootampa.org/"
+    },
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "verified",
+      "display_label": "African elephant",
+      "official_name": "",
+      "notes": "Official African elephant page + encounters.",
+      "source_url": "https://zootampa.org/animals/african-elephant-3/"
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "high",
+      "display_label": "Giraffe",
+      "official_name": "",
+      "notes": "Africa section giraffes.",
+      "source_url": "https://zootampa.org/"
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "medium",
+      "display_label": "Tiger",
+      "official_name": "",
+      "notes": "Big cats; subspecies unconfirmed.",
+      "source_url": ""
+    },
+    {
+      "id": "stingray",
+      "label": "Stingray",
+      "catalog_id": "stingray",
+      "presence": "medium",
+      "display_label": "Stingray",
+      "official_name": "",
+      "notes": "Touch experiences sometimes; confirm.",
+      "source_url": ""
+    },
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "high",
+      "display_label": "African lion",
+      "official_name": "",
+      "notes": "Africa safari area.",
+      "source_url": "https://zootampa.org/"
+    },
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "medium",
+      "display_label": "Western lowland gorilla",
+      "official_name": "",
+      "notes": "Confirm live.",
+      "source_url": ""
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "medium",
+      "display_label": "African penguin",
+      "official_name": "",
+      "notes": "Confirm species.",
+      "source_url": ""
+    },
+    {
+      "id": "cheetah",
+      "label": "Cheetah",
+      "catalog_id": "cheetah",
+      "presence": "medium",
+      "display_label": "Cheetah",
+      "official_name": "",
+      "notes": "Unconfirmed.",
+      "source_url": ""
+    },
+    {
+      "id": "caribbean_flamingo",
+      "label": "Caribbean flamingo",
+      "catalog_id": "caribbean-flamingo",
+      "presence": "high",
+      "display_label": "Caribbean flamingo",
+      "official_name": "",
+      "notes": "Common Florida zoo icon.",
+      "source_url": ""
+    },
+    {
+      "id": "two_toed_sloth",
+      "label": "Two-toed sloth",
+      "catalog_id": "two-toed-sloth",
+      "presence": "medium",
+      "display_label": "Two-toed sloth",
+      "official_name": "",
+      "notes": "Unconfirmed.",
+      "source_url": ""
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "high",
+      "display_label": "Zebra",
+      "official_name": "",
+      "notes": "Africa hoofstock.",
+      "source_url": ""
+    },
+    {
+      "id": "galapagos_tortoise",
+      "label": "Galápagos tortoise",
+      "catalog_id": "galapagos-tortoise",
+      "presence": "high",
+      "display_label": "Galápagos tortoise",
+      "official_name": "",
+      "notes": "Giant tortoise encounters advertised.",
+      "source_url": "https://zootampa.org/visit/animals/"
+    }
+  ],
+  "route_90m_recommended": [
+    "african_elephant",
+    "nile_hippo",
+    "reticulated_giraffe"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "Elephants verified. MAJOR gap: manatees (and Florida panther) missing despite being venue identity.",
+  "severity": "major"
+}

@@ -1,0 +1,128 @@
+{
+  "slug": "childrens-aquarium-dallas",
+  "name": "Children's Aquarium Dallas",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.childrensaquarium.com/"
+  ],
+  "list_confidence_recommended": "audited",
+  "practical_fixes": [
+    {
+      "field": "transit_note",
+      "current": "",
+      "suggested": "Fair Park, Dallas — pair with other Fair Park stops if desired.",
+      "reason": "Location clarity."
+    }
+  ],
+  "do_not_list": [],
+  "items": [
+    {
+      "id": "shark",
+      "label": "Shark",
+      "catalog_id": "shark",
+      "presence": "verified",
+      "display_label": "Shark",
+      "official_name": "Shark Habitat",
+      "notes": "",
+      "source_url": "https://www.childrensaquarium.com/"
+    },
+    {
+      "id": "stingray",
+      "label": "Stingray",
+      "catalog_id": "stingray",
+      "presence": "verified",
+      "display_label": "Stingray",
+      "official_name": "Stingray Bay",
+      "notes": "Cownose stingrays featured.",
+      "source_url": ""
+    },
+    {
+      "id": "sea_turtle",
+      "label": "Sea turtle",
+      "catalog_id": "sea-turtle",
+      "presence": "verified",
+      "display_label": "Sea turtle",
+      "official_name": "",
+      "notes": "Loggerhead sea turtles featured in marketing.",
+      "source_url": ""
+    },
+    {
+      "id": "jellyfish",
+      "label": "Jellyfish",
+      "catalog_id": "jellyfish",
+      "presence": "medium",
+      "display_label": "Jellyfish",
+      "official_name": "",
+      "notes": "Not highlighted on homepage extract — medium.",
+      "source_url": ""
+    },
+    {
+      "id": "clownfish",
+      "label": "Clownfish",
+      "catalog_id": "clownfish",
+      "presence": "medium",
+      "display_label": "Clownfish",
+      "official_name": "",
+      "notes": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract.",
+      "source_url": ""
+    },
+    {
+      "id": "seahorse",
+      "label": "Seahorse",
+      "catalog_id": "seahorse",
+      "presence": "medium",
+      "display_label": "Seahorse",
+      "official_name": "",
+      "notes": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract.",
+      "source_url": ""
+    },
+    {
+      "id": "octopus",
+      "label": "Octopus",
+      "catalog_id": "octopus",
+      "presence": "unclear",
+      "display_label": "Octopus",
+      "official_name": "",
+      "notes": "Not confirmed on official sources reviewed in this audit pass.",
+      "source_url": ""
+    },
+    {
+      "id": "crab",
+      "label": "Crab",
+      "catalog_id": "crab",
+      "presence": "medium",
+      "display_label": "Crab",
+      "official_name": "",
+      "notes": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract.",
+      "source_url": ""
+    },
+    {
+      "id": "starfish",
+      "label": "Sea star",
+      "catalog_id": "starfish",
+      "presence": "medium",
+      "display_label": "Sea star",
+      "official_name": "",
+      "notes": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract.",
+      "source_url": ""
+    },
+    {
+      "id": "eel",
+      "label": "Eel",
+      "catalog_id": "eel",
+      "presence": "medium",
+      "display_label": "Eel",
+      "official_name": "",
+      "notes": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "shark",
+    "stingray",
+    "sea_turtle"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "Official site highlights sharks, cownose stingrays, loggerhead turtles — solid three-stop route. Secondary reef species medium.",
+  "severity": "ok"
+}

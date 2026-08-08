@@ -1,0 +1,113 @@
+{
+  "slug": "denver-museum-nature-science",
+  "name": "Denver Museum of Nature & Science",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.dmns.org/",
+    "https://www.dmns.org/exhibitions/permanent-exhibitions/"
+  ],
+  "list_confidence_recommended": "partial",
+  "practical_fixes": [],
+  "do_not_list": [
+    {
+      "catalog_id": "cm-imaginarium",
+      "name": "Imaginarium",
+      "reason": "Perot/children's museum taxonomy; not a DMNS hall name."
+    },
+    {
+      "catalog_id": "sci-rainforest",
+      "name": "Rainforest dome",
+      "reason": "No DMNS rainforest dome exhibit on permanent exhibitions list."
+    }
+  ],
+  "items": [
+    {
+      "id": "sci_dinosaur",
+      "label": "Dinosaur hall",
+      "catalog_id": "sci-dinosaur",
+      "presence": "verified",
+      "display_label": "Dinosaurs / Prehistoric Journey",
+      "official_name": "Prehistoric Journey / dinosaur fossils",
+      "notes": "",
+      "source_url": "https://www.dmns.org/exhibitions/permanent-exhibitions/"
+    },
+    {
+      "id": "sci_mammal_hall",
+      "label": "Animal / mammal hall",
+      "catalog_id": "sci-mammal-hall",
+      "presence": "verified",
+      "display_label": "Wildlife Halls",
+      "official_name": "Wildlife Halls",
+      "notes": "",
+      "source_url": "https://www.dmns.org/exhibitions/permanent-exhibitions/"
+    },
+    {
+      "id": "sci_planet",
+      "label": "Planet / space hall",
+      "catalog_id": "sci-planet",
+      "presence": "verified",
+      "display_label": "Planetarium / Space Odyssey",
+      "official_name": "Gates Planetarium; Space Odyssey",
+      "notes": "",
+      "source_url": "https://www.dmns.org/"
+    },
+    {
+      "id": "sci_hands_on",
+      "label": "Hands-on lab",
+      "catalog_id": "sci-hands-on",
+      "presence": "high",
+      "display_label": "Discovery Zone / Expedition Health",
+      "official_name": "Discovery Zone; Expedition Health",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "cm_free_explore",
+      "label": "Free explore",
+      "catalog_id": "cm-free-explore",
+      "presence": "medium",
+      "display_label": "Free explore",
+      "official_name": "",
+      "notes": "Generic filler; OK as wonder soft stop",
+      "source_url": ""
+    },
+    {
+      "id": "cm_imaginarium",
+      "label": "Imaginarium",
+      "catalog_id": "cm-imaginarium",
+      "presence": "absent",
+      "display_label": "Imaginarium",
+      "official_name": "",
+      "notes": "Taxonomy leakage from children's museum catalog",
+      "source_url": ""
+    },
+    {
+      "id": "sci_rainforest",
+      "label": "Rainforest dome",
+      "catalog_id": "sci-rainforest",
+      "presence": "absent",
+      "display_label": "Rainforest dome",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "pad_7",
+      "label": "Kid choice hall",
+      "catalog_id": "cm-free-explore",
+      "presence": "medium",
+      "display_label": "Kid choice",
+      "official_name": "",
+      "notes": "Generic pad",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "sci_dinosaur",
+    "sci_mammal_hall",
+    "sci_planet"
+  ],
+  "content_mode_recommended": "hybrid",
+  "summary": "Dinosaur halls, Wildlife Halls (mammal dioramas), and Gates Planetarium are real. Taxonomy leakage: Imaginarium, generic rainforest dome, and generic free-explore labels are Perot/children's-museum catalog — not DMNS names. Prefer official names: Prehistoric Journey / dinosaurs, Wildlife Halls, Space Odyssey / Gates Planetarium, Expedition Health / Discovery Zone.",
+  "severity": "major"
+}

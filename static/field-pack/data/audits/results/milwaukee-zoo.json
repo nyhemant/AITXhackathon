@@ -1,0 +1,201 @@
+{
+  "slug": "milwaukee-zoo",
+  "name": "Milwaukee County Zoo",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://milwaukeezoo.org/visit/meet-our-animals/",
+    "https://milwaukeezoo.org/about-us/zoo-facts/",
+    "https://milwaukeezoo.org/"
+  ],
+  "list_confidence_recommended": "audited",
+  "practical_fixes": [
+    {
+      "field": "items.african_penguin",
+      "current": "African penguin",
+      "suggested": "Humboldt / rockhopper / gentoo — or soft Penguin",
+      "reason": "Official lists rockhopper, gentoo, Humboldt at aviary/Penguins of the Pacific — not African penguin."
+    },
+    {
+      "field": "items.sumatran_tiger",
+      "current": "Sumatran tiger",
+      "suggested": "Soft Tiger after confirming subspecies on animal page",
+      "reason": "Big Cat Country has tigers; subspecies label not verified in this pass."
+    },
+    {
+      "field": "items.two_toed_sloth",
+      "current": "Two-toed sloth",
+      "suggested": "Remove — Small Mammal House sloth moved out (Vilas)",
+      "reason": "Reports of two-toed sloth transfer; not confirmed present."
+    },
+    {
+      "field": "items.galapagos_tortoise",
+      "current": "Galápagos tortoise",
+      "suggested": "Verify tortoise species or remove",
+      "reason": "Not confirmed on meet-our-animals extract."
+    },
+    {
+      "field": "items.cheetah",
+      "current": "Cheetah",
+      "suggested": "Verify or remove",
+      "reason": "Not confirmed on official animal list extract."
+    },
+    {
+      "field": "items.caribbean_flamingo",
+      "current": "Caribbean flamingo",
+      "suggested": "Soft Flamingo if present",
+      "reason": "Species not confirmed."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "Milwaukee lists Humboldt/rockhopper/gentoo penguins — not African penguin."
+    },
+    {
+      "catalog_id": "two-toed-sloth",
+      "name": "Two-toed sloth",
+      "reason": "Not confirmed present; prior transfer reports."
+    }
+  ],
+  "items": [
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "verified",
+      "display_label": "African elephant",
+      "official_name": "African Savanna Elephant",
+      "notes": "African Savanna Elephant on meet-our-animals; Adventure Africa.",
+      "source_url": "https://milwaukeezoo.org/visit/meet-our-animals/african-savanna-elephant/"
+    },
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "high",
+      "display_label": "Gorilla",
+      "official_name": "Gorilla",
+      "notes": "Stearns Family Apes of Africa — gorillas. Soft Gorilla.",
+      "source_url": "https://milwaukeezoo.org/"
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "verified",
+      "display_label": "Reticulated giraffe",
+      "official_name": "Reticulated Giraffe",
+      "notes": "Reticulated Giraffe listed; Giraffe Experience.",
+      "source_url": "https://milwaukeezoo.org/visit/meet-our-animals/reticulated-giraffe/"
+    },
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "high",
+      "display_label": "African lion",
+      "official_name": "African lion",
+      "notes": "African lions in Africa area per zoo facts.",
+      "source_url": "https://milwaukeezoo.org/about-us/zoo-facts/"
+    },
+    {
+      "id": "chimpanzee",
+      "label": "Chimpanzee",
+      "catalog_id": "chimpanzee",
+      "presence": "high",
+      "display_label": "Chimpanzee",
+      "official_name": "Chimpanzee",
+      "notes": "Primates of the World / apes complex — chimps historically present; treat high pending page.",
+      "source_url": ""
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "medium",
+      "display_label": "Tiger",
+      "official_name": "Tiger",
+      "notes": "Big cats present; Sumatran subspecies label not verified. Soft Tiger.",
+      "source_url": ""
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "absent",
+      "display_label": "— relabel Penguin —",
+      "official_name": "Humboldt/rockhopper/gentoo penguins",
+      "notes": "Wrong species label vs Humboldt/rockhopper/gentoo.",
+      "source_url": "https://milwaukeezoo.org/visit/meet-our-animals/"
+    },
+    {
+      "id": "cheetah",
+      "label": "Cheetah",
+      "catalog_id": "cheetah",
+      "presence": "unclear",
+      "display_label": "Cheetah",
+      "official_name": "",
+      "notes": "Not confirmed on animal list extract.",
+      "source_url": ""
+    },
+    {
+      "id": "nile_hippo",
+      "label": "Nile hippo",
+      "catalog_id": "nile-hippo",
+      "presence": "verified",
+      "display_label": "Hippo",
+      "official_name": "Hippopotamus",
+      "notes": "Hippopotamus / Hippo Haven.",
+      "source_url": "https://milwaukeezoo.org/visit/meet-our-animals/hippopotamus/"
+    },
+    {
+      "id": "caribbean_flamingo",
+      "label": "Caribbean flamingo",
+      "catalog_id": "caribbean-flamingo",
+      "presence": "unclear",
+      "display_label": "Caribbean flamingo",
+      "official_name": "",
+      "notes": "Not confirmed.",
+      "source_url": ""
+    },
+    {
+      "id": "two_toed_sloth",
+      "label": "Two-toed sloth",
+      "catalog_id": "two-toed-sloth",
+      "presence": "absent",
+      "display_label": "— remove —",
+      "official_name": "",
+      "notes": "Not confirmed present.",
+      "source_url": ""
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "medium",
+      "display_label": "Zebra",
+      "official_name": "",
+      "notes": "Africa hoofstock area; zebra not explicitly extracted — medium.",
+      "source_url": ""
+    },
+    {
+      "id": "galapagos_tortoise",
+      "label": "Galápagos tortoise",
+      "catalog_id": "galapagos-tortoise",
+      "presence": "unclear",
+      "display_label": "Galápagos tortoise",
+      "official_name": "",
+      "notes": "Not confirmed.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "african_elephant",
+    "reticulated_giraffe",
+    "nile_hippo"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "Core Adventure Africa icons verified (elephant, giraffe, hippo, lion/gorilla high). African penguin label wrong. Template fillers (cheetah, flamingo, Galápagos, sloth) weak — gate.",
+  "severity": "major"
+}

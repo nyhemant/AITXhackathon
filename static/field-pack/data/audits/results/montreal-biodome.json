@@ -1,0 +1,152 @@
+{
+  "slug": "montreal-biodome",
+  "name": "Montreal Biodome",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://espacepourlavie.ca/en/biodome",
+    "https://espacepourlavie.ca/en"
+  ],
+  "list_confidence_recommended": "audited",
+  "practical_fixes": [
+    {
+      "field": "items generic sci_* halls",
+      "current": "sci_mammal_hall, sci_hands_on, jellyfish, sea_turtle as generic halls",
+      "suggested": "Map to Biodome ecosystems: Tropical rainforest, Laurentian maple forest, Gulf of St. Lawrence, Labrador Coast",
+      "reason": "Biodome is ecosystem immersion, not a natural history mammal hall."
+    },
+    {
+      "field": "items.african_penguin",
+      "current": "African penguin",
+      "suggested": "Penguin / Magellanic or species on Subantarctic/Labrador Coast — verify",
+      "reason": "Penguin zone exists; African penguin label may be wrong species."
+    },
+    {
+      "field": "items.ring_tailed_lemur",
+      "current": "Ring-tailed lemur",
+      "suggested": "Verify current primate list in Tropical rainforest",
+      "reason": "Primates may rotate; confirm before print."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "sci-mammal-hall",
+      "name": "Animal / mammal hall",
+      "reason": "Not a mammal hall museum — ecosystem biodome."
+    },
+    {
+      "catalog_id": "jellyfish",
+      "name": "Jellyfish",
+      "reason": "Not a Biodome signature; do not template-list without confirmation."
+    }
+  ],
+  "items": [
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "high",
+      "display_label": "Penguin",
+      "official_name": "Penguins",
+      "notes": "Subantarctic / Labrador Coast penguin habitat verified as concept; confirm species. Soft Penguin.",
+      "source_url": "https://espacepourlavie.ca/en/biodome"
+    },
+    {
+      "id": "two_toed_sloth",
+      "label": "Two-toed sloth",
+      "catalog_id": "two-toed-sloth",
+      "presence": "high",
+      "display_label": "Sloth",
+      "official_name": "Sloth",
+      "notes": "Tropical rainforest mammals include sloths historically. Soft Sloth.",
+      "source_url": "https://espacepourlavie.ca/en/biodome"
+    },
+    {
+      "id": "sci_rainforest",
+      "label": "Rainforest dome",
+      "catalog_id": "sci-rainforest",
+      "presence": "verified",
+      "display_label": "Rainforest ecosystem",
+      "official_name": "Tropical rainforest",
+      "notes": "Tropical rainforest ecosystem is a core Biodome zone.",
+      "source_url": "https://espacepourlavie.ca/en/biodome"
+    },
+    {
+      "id": "ring_tailed_lemur",
+      "label": "Ring-tailed lemur",
+      "catalog_id": "ring-tailed-lemur",
+      "presence": "medium",
+      "display_label": "Lemur (verify)",
+      "official_name": "",
+      "notes": "Primates sometimes present; ring-tailed not verified this pass.",
+      "source_url": ""
+    },
+    {
+      "id": "cm_free_explore",
+      "label": "Free explore",
+      "catalog_id": "cm-free-explore",
+      "presence": "verified",
+      "display_label": "Free explore",
+      "official_name": "Free explore",
+      "notes": "Kid pace between ecosystems is the product.",
+      "source_url": ""
+    },
+    {
+      "id": "sci_aquarium_zone",
+      "label": "Aquarium zone",
+      "catalog_id": "sci-aquarium-zone",
+      "presence": "verified",
+      "display_label": "Marine / Gulf zone",
+      "official_name": "Gulf of St. Lawrence",
+      "notes": "Gulf of St. Lawrence marine ecosystem.",
+      "source_url": "https://espacepourlavie.ca/en/biodome"
+    },
+    {
+      "id": "sci_mammal_hall",
+      "label": "Animal / mammal hall",
+      "catalog_id": "sci-mammal-hall",
+      "presence": "absent",
+      "display_label": "— remove —",
+      "official_name": "",
+      "notes": "Wrong venue type framing.",
+      "source_url": ""
+    },
+    {
+      "id": "sci_hands_on",
+      "label": "Hands-on lab",
+      "catalog_id": "sci-hands-on",
+      "presence": "medium",
+      "display_label": "Hands-on (optional)",
+      "official_name": "",
+      "notes": "Learning spaces exist in Space for Life complex; not core Biodome hall.",
+      "source_url": ""
+    },
+    {
+      "id": "sea_turtle",
+      "label": "Sea turtle",
+      "catalog_id": "sea-turtle",
+      "presence": "unclear",
+      "display_label": "Sea turtle",
+      "official_name": "",
+      "notes": "Not confirmed as Biodome icon.",
+      "source_url": ""
+    },
+    {
+      "id": "jellyfish",
+      "label": "Jellyfish",
+      "catalog_id": "jellyfish",
+      "presence": "absent",
+      "display_label": "— remove —",
+      "official_name": "",
+      "notes": "Not a listed Biodome ecosystem icon.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "sci_rainforest",
+    "sci_aquarium_zone",
+    "african_penguin"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "Replace generic sci mammal/jelly templates with Biodome ecosystems (rainforest, Laurentian forest, Gulf, Labrador Coast). Penguins + sloth high; mammal hall absent.",
+  "severity": "major"
+}

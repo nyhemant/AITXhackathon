@@ -40,7 +40,12 @@
         "question": "What did you notice about the Outdoor Area?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "cm-outdoor"
+      "catalog_id": "cm-outdoor",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Outdoor Area",
+      "presence_note": "Open-air museum + Nordic zoo outdoor yards."
     },
     {
       "id": "cm_free_explore",
@@ -61,28 +66,12 @@
         "question": "What did you notice about the Free explore?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "cm-free-explore"
-    },
-    {
-      "id": "red_panda",
-      "label": "Red panda",
-      "emoji": "🦊",
-      "one_liner": "Red pandas if on animal route.",
-      "tags": [
-        "climb"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Animals",
-      "qa_card": {
-        "question": "What did you notice about the Red panda?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "red-panda"
+      "catalog_id": "cm-free-explore",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Free explore",
+      "presence_note": "Core Skansen mode."
     },
     {
       "id": "sci_hands_on",
@@ -103,7 +92,12 @@
         "question": "What did you notice about the Hands-on lab?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-hands-on"
+      "catalog_id": "sci-hands-on",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Hands-on lab",
+      "presence_note": "Historic crafts/farm hands-on energy."
     },
     {
       "id": "cm_toddler_garden",
@@ -125,224 +119,15 @@
         "question": "What did you notice about the Toddler Garden?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "cm-toddler-garden"
-    },
-    {
-      "id": "african_lion",
-      "label": "African lion",
-      "emoji": "🦁",
-      "one_liner": "Big cat of the grassland pride — mighty roar!",
-      "tags": [
-        "wow",
-        "big-cats",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the African lion?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "african-lion"
-    },
-    {
-      "id": "sumatran_tiger",
-      "label": "Sumatran tiger",
-      "emoji": "🐯",
-      "one_liner": "Stripy forest big cat — strong and stealthy.",
-      "tags": [
-        "wow",
-        "big-cats",
-        "outdoor",
-        "rest",
-        "kids"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Sumatran tiger?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "sumatran-tiger"
-    },
-    {
-      "id": "reticulated_giraffe",
-      "label": "Reticulated giraffe",
-      "emoji": "🦒",
-      "one_liner": "Tallest animal on long legs — look up!",
-      "tags": [
-        "wow",
-        "tall",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Reticulated giraffe?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "reticulated-giraffe"
-    },
-    {
-      "id": "african_elephant",
-      "label": "African elephant",
-      "emoji": "🐘",
-      "one_liner": "Biggest land animal — trunk to grab, spray, and say hello.",
-      "tags": [
-        "wow",
-        "big",
-        "outdoor",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the African elephant?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "african-elephant"
-    },
-    {
-      "id": "western_lowland_gorilla",
-      "label": "Western lowland gorilla",
-      "emoji": "🦍",
-      "one_liner": "Strong gentle ape in family groups.",
-      "tags": [
-        "wow",
-        "outdoor",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Western lowland gorilla?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "western-lowland-gorilla"
-    },
-    {
-      "id": "african_penguin",
-      "label": "African penguin",
-      "emoji": "🐧",
-      "one_liner": "Waddle on land, zoom in water.",
-      "tags": [
-        "wow",
-        "water",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the African penguin?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "african-penguin"
-    },
-    {
-      "id": "chimpanzee",
-      "label": "Chimpanzee",
-      "emoji": "🐵",
-      "one_liner": "Smart forest ape — climbs and tools.",
-      "tags": [
-        "wow",
-        "outdoor",
-        "play",
-        "hands",
-        "rest",
-        "kids"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Chimpanzee?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "chimpanzee"
-    },
-    {
-      "id": "zebra",
-      "label": "Zebra",
-      "emoji": "🦓",
-      "one_liner": "Striped grassland runner — every pattern is unique.",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Zebra?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "zebra"
-    },
-    {
-      "id": "asian_small_clawed_otter",
-      "label": "Asian small-clawed otter",
-      "emoji": "🦦",
-      "one_liner": "Playful swimmer — smallest otter.",
-      "tags": [
-        "wow",
-        "water",
-        "outdoor",
-        "hands",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Asian small-clawed otter?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "asian-small-clawed-otter"
+      "catalog_id": "cm-toddler-garden",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Toddler Garden",
+      "presence_note": "Family/kids spaces on grounds."
     }
   ],
-  "content_mode": "hybrid",
+  "content_mode": "curated",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://www.skansen.se/en/plan-your-visit/map/",
@@ -358,8 +143,76 @@
   "route_90m": [
     "cm_outdoor",
     "cm_free_explore",
-    "red_panda"
+    "cm_toddler_garden"
   ],
-  "research_notes": "R2b 2026-08-07 · map-page 2026-08-07",
-  "list_confidence": "partial"
+  "research_notes": "R2b 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [critical]",
+  "list_confidence": "audited",
+  "do_not_list": [
+    {
+      "catalog_id": "african-lion",
+      "name": "african-lion",
+      "reason": "Skansen is Nordic wildlife + historic farm — not tropical zoo megafauna.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "sumatran-tiger",
+      "name": "sumatran-tiger",
+      "reason": "Skansen is Nordic wildlife + historic farm — not tropical zoo megafauna.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "reticulated-giraffe",
+      "name": "reticulated-giraffe",
+      "reason": "Skansen is Nordic wildlife + historic farm — not tropical zoo megafauna.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "african-elephant",
+      "name": "african-elephant",
+      "reason": "Skansen is Nordic wildlife + historic farm — not tropical zoo megafauna.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "western-lowland-gorilla",
+      "name": "western-lowland-gorilla",
+      "reason": "Skansen is Nordic wildlife + historic farm — not tropical zoo megafauna.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "african-penguin",
+      "name": "african-penguin",
+      "reason": "Skansen is Nordic wildlife + historic farm — not tropical zoo megafauna.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "chimpanzee",
+      "name": "chimpanzee",
+      "reason": "Skansen is Nordic wildlife + historic farm — not tropical zoo megafauna.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "zebra",
+      "name": "zebra",
+      "reason": "Skansen is Nordic wildlife + historic farm — not tropical zoo megafauna.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "asian-small-clawed-otter",
+      "name": "asian-small-clawed-otter",
+      "reason": "Skansen is Nordic wildlife + historic farm — not tropical zoo megafauna.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "red-panda",
+      "name": "red-panda",
+      "reason": "Skansen is Nordic wildlife + historic farm — not tropical zoo megafauna.",
+      "as_of": "2026-08-08"
+    }
+  ],
+  "last_presence_audit": "2026-08-08",
+  "presence_sources": [
+    "https://www.skansen.se/en/",
+    "https://www.skansen.se/en/see-and-do/the-zoo/animals-at-skansen/",
+    "https://www.skansen.se/en/see-and-do/the-zoo/animals-at-skansen/brown-bear/"
+  ]
 }

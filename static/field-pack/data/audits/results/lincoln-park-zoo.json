@@ -1,0 +1,158 @@
+{
+  "slug": "lincoln-park-zoo",
+  "name": "Lincoln Park Zoo",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.lpzoo.org/",
+    "https://www.lpzoo.org/animals-gardens/animals-exhibits/"
+  ],
+  "list_confidence_recommended": "partial",
+  "practical_fixes": [],
+  "do_not_list": [
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Lincoln Park Zoo closed elephant program (~2010); none on site."
+    }
+  ],
+  "items": [
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "verified",
+      "display_label": "Western lowland gorilla",
+      "official_name": "",
+      "notes": "Regenstein Center for African Apes",
+      "source_url": ""
+    },
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "verified",
+      "display_label": "African lion",
+      "official_name": "",
+      "notes": "",
+      "source_url": "https://www.lpzoo.org/animals-gardens/animals-exhibits/"
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "verified",
+      "display_label": "African penguin",
+      "official_name": "",
+      "notes": "",
+      "source_url": "https://www.lpzoo.org/animals-gardens/animals-exhibits/"
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "high",
+      "display_label": "Giraffe",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "red_panda",
+      "label": "Red panda",
+      "catalog_id": "red-panda",
+      "presence": "unclear",
+      "display_label": "Red panda",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "absent",
+      "display_label": "African elephant",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "unclear",
+      "display_label": "Tiger",
+      "official_name": "",
+      "notes": "Snow leopards more highlighted; tiger unclear",
+      "source_url": ""
+    },
+    {
+      "id": "cheetah",
+      "label": "Cheetah",
+      "catalog_id": "cheetah",
+      "presence": "unclear",
+      "display_label": "Cheetah",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "nile_hippo",
+      "label": "Nile hippo",
+      "catalog_id": "nile-hippo",
+      "presence": "medium",
+      "display_label": "Hippo",
+      "official_name": "",
+      "notes": "Pygmy hippo historically reported",
+      "source_url": ""
+    },
+    {
+      "id": "caribbean_flamingo",
+      "label": "Caribbean flamingo",
+      "catalog_id": "caribbean-flamingo",
+      "presence": "unclear",
+      "display_label": "Caribbean flamingo",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "two_toed_sloth",
+      "label": "Two-toed sloth",
+      "catalog_id": "two-toed-sloth",
+      "presence": "unclear",
+      "display_label": "Two-toed sloth",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "unclear",
+      "display_label": "Zebra",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "galapagos_tortoise",
+      "label": "Galápagos tortoise",
+      "catalog_id": "galapagos-tortoise",
+      "presence": "unclear",
+      "display_label": "Galápagos tortoise",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "western_lowland_gorilla",
+    "african_lion",
+    "african_penguin"
+  ],
+  "content_mode_recommended": "hybrid",
+  "summary": "CRITICAL: no elephants since ~2010. African lion, African penguin, gorillas verified on official animal list. Hippo/tiger/cheetah/red panda/flamingo/sloth/zebra/tortoise need confirm. Free admission practical OK.",
+  "severity": "critical"
+}

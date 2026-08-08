@@ -16,7 +16,7 @@
     "typical_duration": "half day",
     "ticket_note": "Union Station complex tickets.",
     "transit_note": "Downtown KC.",
-    "energy_note": "indoor",
+    "energy_note": "Mostly indoors",
     "best_start": "Science floors first, station photos after."
   },
   "items": [
@@ -41,7 +41,12 @@
         "question": "What did you notice about the Hands-on lab?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-hands-on"
+      "catalog_id": "sci-hands-on",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Hands-on lab",
+      "presence_note": "Hands-on science floors are core Science City."
     },
     {
       "id": "sci_planet",
@@ -62,7 +67,12 @@
         "question": "What did you notice about the Planet / space hall?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-planet"
+      "catalog_id": "sci-planet",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Planet / space hall",
+      "presence_note": "Space/planetarium-style experiences historically at Science City; confirm current."
     },
     {
       "id": "sci_dinosaur",
@@ -83,7 +93,11 @@
         "question": "What did you notice about the Dinosaur hall?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-dinosaur"
+      "catalog_id": "sci-dinosaur",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Dinosaur hall",
+      "presence_note": "Dino content sometimes present; confirm current exhibits."
     },
     {
       "id": "cm_free_explore",
@@ -104,7 +118,12 @@
         "question": "What did you notice about the Free explore?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "cm-free-explore"
+      "catalog_id": "cm-free-explore",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Free explore",
+      "presence_note": "Free-explore museum mode."
     },
     {
       "id": "sci_rocket",
@@ -125,7 +144,11 @@
         "question": "What did you notice about the Rockets & launch?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-rocket"
+      "catalog_id": "sci-rocket",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Rockets & launch",
+      "presence_note": "Space theme possible; confirm label."
     },
     {
       "id": "cm_makery",
@@ -148,7 +171,12 @@
         "question": "What did you try or notice at Creative Makery?",
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
-      "catalog_id": "cm-makery"
+      "catalog_id": "cm-makery",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Creative Makery",
+      "presence_note": "Maker-style activities common."
     },
     {
       "id": "cm_imaginarium",
@@ -170,7 +198,11 @@
         "question": "What did you try or notice at Imaginarium?",
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
-      "catalog_id": "cm-imaginarium"
+      "catalog_id": "cm-imaginarium",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Imaginarium",
+      "presence_note": "Imaginative play zones common."
     },
     {
       "id": "sci_shuttle",
@@ -192,7 +224,11 @@
         "question": "What did you try or notice at Space shuttle / orbiter?",
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
-      "catalog_id": "sci-shuttle"
+      "catalog_id": "sci-shuttle",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Space shuttle / orbiter",
+      "presence_note": "Space theme possible; confirm."
     }
   ],
   "content_mode": "hybrid",
@@ -211,8 +247,12 @@
   "route_90m": [
     "sci_hands_on",
     "sci_planet",
-    "sci_dinosaur"
+    "cm_free_explore"
   ],
-  "research_notes": "R2 hybrid 2026-08-07",
-  "list_confidence": "partial"
+  "research_notes": "R2 hybrid 2026-08-07 · presence-audit 2026-08-08 [ok]",
+  "list_confidence": "partial",
+  "do_not_list": [],
+  "presence_sources": [
+    "https://www.unionstation.org/sciencecity"
+  ]
 }

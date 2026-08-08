@@ -42,11 +42,15 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-elephant",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "African elephant",
+      "presence_note": "Animals page: African Elephants and Asian Elephant both listed."
     },
     {
       "id": "reticulated_giraffe",
-      "label": "Reticulated giraffe",
+      "label": "Giraffe",
       "emoji": "🦒",
       "one_liner": "Giraffes.",
       "tags": [
@@ -65,7 +69,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "reticulated-giraffe",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Giraffe",
+      "presence_note": "Giraffe on animals list; subspecies not forced — soft Giraffe."
     },
     {
       "id": "sumatran_tiger",
@@ -88,7 +96,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sumatran-tiger",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Sumatran tiger",
+      "presence_note": "Sumatran Tiger on animals list."
     },
     {
       "id": "orangutan",
@@ -111,34 +123,15 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "orangutan",
-      "presence": "template"
-    },
-    {
-      "id": "nile_hippo",
-      "label": "Nile hippo",
-      "emoji": "🦛",
-      "one_liner": "Hippos.",
-      "tags": [
-        "water",
-        "big"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Africa",
-      "qa_card": {
-        "question": "What did you notice about the Nile hippo?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "nile-hippo",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Orangutan",
+      "presence_note": "Bornean Orangutan."
     },
     {
       "id": "african_lion",
-      "label": "African lion",
+      "label": "Lion",
       "emoji": "🦁",
       "one_liner": "Big cat of the grassland pride — mighty roar!",
       "tags": [
@@ -158,11 +151,15 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "african-lion",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Lion",
+      "presence_note": "Lion on animals list."
     },
     {
       "id": "western_lowland_gorilla",
-      "label": "Western lowland gorilla",
+      "label": "Gorilla",
       "emoji": "🦍",
       "one_liner": "Strong gentle ape in family groups.",
       "tags": [
@@ -182,7 +179,11 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "western-lowland-gorilla",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Gorilla",
+      "presence_note": "Lowland Gorilla."
     },
     {
       "id": "african_penguin",
@@ -206,7 +207,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "african-penguin",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "African penguin",
+      "presence_note": "Not confirmed on animals map extract."
     },
     {
       "id": "cheetah",
@@ -230,11 +234,14 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "cheetah",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Cheetah",
+      "presence_note": "Not confirmed on animals map extract."
     },
     {
       "id": "caribbean_flamingo",
-      "label": "Caribbean flamingo",
+      "label": "Flamingo",
       "emoji": "🦩",
       "one_liner": "Bright pink wader — long legs for shallow water.",
       "tags": [
@@ -253,7 +260,11 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "caribbean-flamingo",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Flamingo",
+      "presence_note": "American/Florida Flamingos listed. Soft Flamingo."
     },
     {
       "id": "two_toed_sloth",
@@ -279,7 +290,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "two-toed-sloth",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Two-toed sloth",
+      "presence_note": "Not confirmed on animals map extract."
     },
     {
       "id": "zebra",
@@ -302,7 +316,11 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "zebra",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Zebra",
+      "presence_note": "Grevy's Zebra listed."
     },
     {
       "id": "galapagos_tortoise",
@@ -325,10 +343,14 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "galapagos-tortoise",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Galápagos tortoise",
+      "presence_note": "Galapagos Tortoise listed."
     }
   ],
-  "content_mode": "hybrid",
+  "content_mode": "curated",
   "media": {
     "visitor_map_url": "/field-pack/media/maps/miami-zoo.jpg",
     "visitor_map_page": "https://www.zoomiami.org/zoo-map",
@@ -344,9 +366,23 @@
   ],
   "route_90m": [
     "african_elephant",
-    "reticulated_giraffe",
-    "sumatran_tiger"
+    "sumatran_tiger",
+    "orangutan"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 · map-page 2026-08-07",
-  "list_confidence": "template"
+  "research_notes": "R2 hybrid 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "list_confidence": "audited",
+  "do_not_list": [
+    {
+      "catalog_id": "nile-hippo",
+      "name": "Nile hippo",
+      "reason": "Official listing shows pygmy hippo; do not label Nile hippo without confirmation.",
+      "as_of": "2026-08-08"
+    }
+  ],
+  "last_presence_audit": "2026-08-08",
+  "presence_sources": [
+    "https://www.zoomiami.org/animals",
+    "https://www.zoomiami.org/zoo-map",
+    "https://www.zoomiami.org/know-before-you-visit"
+  ]
 }

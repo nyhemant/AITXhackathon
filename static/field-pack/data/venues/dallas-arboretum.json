@@ -41,7 +41,11 @@
         "question": "What did you notice about the Outdoor Area?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "cm-outdoor"
+      "catalog_id": "cm-outdoor",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "display_label": "Outdoor Area",
+      "presence_note": "Garden is inherently outdoor."
     },
     {
       "id": "cm_free_explore",
@@ -62,11 +66,14 @@
         "question": "What did you notice about the Free explore?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "cm-free-explore"
+      "catalog_id": "cm-free-explore",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Free explore"
     },
     {
       "id": "cm_toddler_garden",
-      "label": "Toddler Garden",
+      "label": "Rory Meyers Children's Adventure Garden",
       "emoji": "🌱",
       "one_liner": "Softer corners to reset.",
       "tags": [
@@ -84,7 +91,11 @@
         "question": "What did you notice about the Toddler Garden?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "cm-toddler-garden"
+      "catalog_id": "cm-toddler-garden",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Rory Meyers Children's Adventure Garden",
+      "presence_note": "Children's Adventure Garden is the kid anchor — map toddler stop there."
     },
     {
       "id": "sci_hands_on",
@@ -105,78 +116,15 @@
         "question": "What did you notice about the Hands-on lab?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-hands-on"
-    },
-    {
-      "id": "cm_makery",
-      "label": "Creative Makery",
-      "emoji": "🔧",
-      "one_liner": "Create something small if stations are open.",
-      "tags": [
-        "hands",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Make",
-      "qa_card": {
-        "question": "What did you notice about the Creative Makery?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "cm-makery"
-    },
-    {
-      "id": "cm_imaginarium",
-      "label": "Imaginarium",
-      "emoji": "✨",
-      "one_liner": "Multi-sensory world — explore, notice, imagine.",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Imaginarium?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "cm-imaginarium"
-    },
-    {
-      "id": "cm_woven",
-      "label": "Woven Wonders",
-      "emoji": "🧗",
-      "one_liner": "Colorful climbing structure — art you can climb!",
-      "tags": [
-        "wow",
-        "hands",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Woven Wonders?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "cm-woven"
+      "catalog_id": "sci-hands-on",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Hands-on lab",
+      "presence_note": "Educational interactives in children's garden — not a science lab."
     },
     {
       "id": "cm_art_lab",
-      "label": "Art Lab",
+      "label": "Art / nature create",
       "emoji": "🎨",
       "one_liner": "Come-and-go art and reading activities.",
       "tags": [
@@ -195,7 +143,11 @@
         "question": "What did you try or notice at Art Lab?",
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
-      "catalog_id": "cm-art-lab"
+      "catalog_id": "cm-art-lab",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Art / nature create",
+      "presence_note": "Soft activity stop only."
     },
     {
       "id": "cm_waterfall",
@@ -218,7 +170,11 @@
         "question": "What did you try or notice at Waterfall play?",
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
-      "catalog_id": "cm-waterfall"
+      "catalog_id": "cm-waterfall",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Waterfall play",
+      "presence_note": "Water features exist seasonally; not a waterpark."
     }
   ],
   "content_mode": "hybrid",
@@ -237,9 +193,32 @@
   ],
   "route_90m": [
     "cm_outdoor",
-    "cm_free_explore",
-    "cm_toddler_garden"
+    "cm_toddler_garden",
+    "cm_free_explore"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 · web-map 2026-08-07",
-  "list_confidence": "partial"
+  "research_notes": "R2 hybrid 2026-08-07 · web-map 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "list_confidence": "partial",
+  "do_not_list": [
+    {
+      "catalog_id": "cm-makery",
+      "name": "Creative Makery",
+      "reason": "Children's museum taxonomy leakage.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "cm-imaginarium",
+      "name": "Imaginarium",
+      "reason": "Taxonomy leakage.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "cm-woven",
+      "name": "Woven Wonders",
+      "reason": "Taxonomy leakage from other venue.",
+      "as_of": "2026-08-08"
+    }
+  ],
+  "presence_sources": [
+    "https://www.dallasarboretum.org/"
+  ]
 }

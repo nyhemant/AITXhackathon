@@ -39,30 +39,12 @@
         "question": "What did you notice about the Jellyfish?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "jellyfish"
-    },
-    {
-      "id": "asian_small_clawed_otter",
-      "label": "Asian small-clawed otter",
-      "emoji": "🦦",
-      "one_liner": "Sea otters float, crack snacks, and steal the show.",
-      "tags": [
-        "water",
-        "play",
-        "wow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Sea Otters",
-      "qa_card": {
-        "question": "What did you notice about the Asian small-clawed otter?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "asian-small-clawed-otter"
+      "catalog_id": "jellyfish",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Jellyfish",
+      "presence_note": "Jellies galleries — signature exhibit."
     },
     {
       "id": "shark",
@@ -85,7 +67,12 @@
         "question": "What did you notice about the Shark?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "shark"
+      "catalog_id": "shark",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Shark",
+      "presence_note": "Open Sea / Kelp Forest: sharks (incl. hammerheads historically, leopard sharks)."
     },
     {
       "id": "sea_turtle",
@@ -107,7 +94,12 @@
         "question": "What did you notice about the Sea turtle?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sea-turtle"
+      "catalog_id": "sea-turtle",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Sea turtle",
+      "presence_note": "Open Sea ocean travelers include sea turtles."
     },
     {
       "id": "octopus",
@@ -130,11 +122,15 @@
         "question": "What did you notice about the Octopus?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "octopus"
+      "catalog_id": "octopus",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Octopus",
+      "presence_note": "Deep/cephalopod exhibits historically and currently featured. Soft Octopus."
     },
     {
       "id": "stingray",
-      "label": "Stingray",
+      "label": "Ray",
       "emoji": "射线",
       "one_liner": "If open: soft rays in shallow touch pools.",
       "tags": [
@@ -153,7 +149,11 @@
         "question": "What did you notice about the Stingray?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "stingray"
+      "catalog_id": "stingray",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Ray",
+      "presence_note": "Rays in various exhibits; touch pool status varies — medium."
     },
     {
       "id": "seahorse",
@@ -175,7 +175,11 @@
         "question": "What did you notice about the Seahorse?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "seahorse"
+      "catalog_id": "seahorse",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Seahorse",
+      "presence_note": "Hot water/seahorse exhibits commonly featured."
     },
     {
       "id": "clownfish",
@@ -197,7 +201,11 @@
         "question": "What did you notice about the Clownfish?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "clownfish"
+      "catalog_id": "clownfish",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Clownfish",
+      "presence_note": "Reef exhibits may include anemonefish; not a signature icon — medium."
     },
     {
       "id": "starfish",
@@ -219,7 +227,11 @@
         "question": "What did you notice about the Sea star?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "starfish"
+      "catalog_id": "starfish",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Sea star",
+      "presence_note": "Rocky shore / tide pool sea stars."
     },
     {
       "id": "eel",
@@ -242,7 +254,12 @@
         "question": "What did you notice about the Eel?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "eel"
+      "catalog_id": "eel",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Eel",
+      "presence_note": "Kelp Forest wolf-eels and other eels."
     }
   ],
   "content_mode": "curated",
@@ -259,6 +276,24 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "research_notes": "map-img 2026-08-07 · map-page 2026-08-07",
-  "list_confidence": "partial"
+  "research_notes": "map-img 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "list_confidence": "audited",
+  "do_not_list": [
+    {
+      "catalog_id": "asian-small-clawed-otter",
+      "name": "Asian small-clawed otter",
+      "reason": "Wrong species: Monterey has southern sea otters. Do not list under ASC otter catalog without display override to Sea otter.",
+      "as_of": "2026-08-08"
+    }
+  ],
+  "route_90m": [
+    "jellyfish",
+    "shark"
+  ],
+  "last_presence_audit": "2026-08-08",
+  "presence_sources": [
+    "https://www.montereybayaquarium.org/",
+    "https://www.montereybayaquarium.org/visit/exhibits",
+    "https://www.montereybayaquarium.org/visit/exhibits/sea-otters"
+  ]
 }

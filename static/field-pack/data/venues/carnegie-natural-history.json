@@ -16,7 +16,7 @@
     "typical_duration": "half day",
     "ticket_note": "Combined tickets with art sometimes — check carnegiemnh.org.",
     "transit_note": "Oakland museums cluster.",
-    "energy_note": "indoor",
+    "energy_note": "Mostly indoors",
     "best_start": "Dinosaurs, then kid pace."
   },
   "items": [
@@ -40,7 +40,12 @@
         "question": "What did you notice about the Dinosaur hall?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-dinosaur"
+      "catalog_id": "sci-dinosaur",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Dinosaur hall",
+      "presence_note": "Flagship fossil halls."
     },
     {
       "id": "sci_mammal_hall",
@@ -61,11 +66,16 @@
         "question": "What did you notice about the Animal / mammal hall?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-mammal-hall"
+      "catalog_id": "sci-mammal-hall",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Animal / mammal hall",
+      "presence_note": "Mammal/wildlife halls present."
     },
     {
       "id": "sci_hands_on",
-      "label": "Hands-on lab",
+      "label": "Hands-on / discovery",
       "emoji": "🔬",
       "one_liner": "Hands-on when open.",
       "tags": [
@@ -82,11 +92,16 @@
         "question": "What did you notice about the Hands-on lab?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-hands-on"
+      "catalog_id": "sci-hands-on",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Hands-on / discovery",
+      "presence_note": "Family discovery spaces."
     },
     {
       "id": "sci_planet",
-      "label": "Planet / space hall",
+      "label": "Earth / space content",
       "emoji": "🪐",
       "one_liner": "Rocks and space corners.",
       "tags": [
@@ -103,7 +118,11 @@
         "question": "What did you notice about the Planet / space hall?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-planet"
+      "catalog_id": "sci-planet",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Earth / space content",
+      "presence_note": "Limited vs dedicated planetarium museums — soft."
     },
     {
       "id": "cm_free_explore",
@@ -124,33 +143,16 @@
         "question": "What did you notice about the Free explore?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "cm-free-explore"
-    },
-    {
-      "id": "cm_imaginarium",
-      "label": "Imaginarium",
-      "emoji": "✨",
-      "one_liner": "Multi-sensory world — explore, notice, imagine.",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Imaginarium?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "cm-imaginarium"
+      "catalog_id": "cm-free-explore",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Free explore",
+      "presence_note": "OK generic."
     },
     {
       "id": "sci_rainforest",
-      "label": "Rainforest dome",
+      "label": "Forest / botany halls",
       "emoji": "🌿",
       "one_liner": "Warm, green, and full of life — look for layers of plants.",
       "tags": [
@@ -169,11 +171,15 @@
         "question": "What did you try or notice at Rainforest dome?",
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
-      "catalog_id": "sci-rainforest"
+      "catalog_id": "sci-rainforest",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Forest / botany halls",
+      "presence_note": "May map to dioramas/botany — not a live rainforest dome."
     },
     {
       "id": "explore_7",
-      "label": "Kid choice stop",
+      "label": "Free explore",
       "emoji": "🧭",
       "one_liner": "They pick what to see next for five minutes.",
       "tags": [
@@ -190,7 +196,12 @@
         "question": "What was your favorite?",
         "answer": "Whatever made you smile!"
       },
-      "catalog_id": "cm-free-explore"
+      "catalog_id": "cm-free-explore",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Free explore",
+      "presence_note": "OK generic."
     }
   ],
   "content_mode": "hybrid",
@@ -212,6 +223,17 @@
     "sci_mammal_hall",
     "sci_hands_on"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 · map-page 2026-08-07",
-  "list_confidence": "partial"
+  "research_notes": "R2 hybrid 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "list_confidence": "partial",
+  "do_not_list": [
+    {
+      "catalog_id": "cm-imaginarium",
+      "name": "Imaginarium",
+      "reason": "Children’s-museum taxonomy leakage.",
+      "as_of": "2026-08-08"
+    }
+  ],
+  "presence_sources": [
+    "https://carnegiemnh.org/"
+  ]
 }

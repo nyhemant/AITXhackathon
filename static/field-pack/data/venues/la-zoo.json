@@ -19,30 +19,6 @@
   },
   "items": [
     {
-      "id": "african_elephant",
-      "label": "African elephant",
-      "emoji": "🐘",
-      "one_liner": "LA’s elephant habitat is a first stop for many families.",
-      "tags": [
-        "big",
-        "outdoor",
-        "wow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Elephants",
-      "qa_card": {
-        "question": "What did you notice about the African elephant?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "african-elephant",
-      "presence": "template"
-    },
-    {
       "id": "chimpanzee",
       "label": "Chimpanzee",
       "emoji": "🐵",
@@ -64,7 +40,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "chimpanzee",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Chimpanzee"
     },
     {
       "id": "western_lowland_gorilla",
@@ -87,11 +66,14 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "western-lowland-gorilla",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Western lowland gorilla"
     },
     {
       "id": "reticulated_giraffe",
-      "label": "Reticulated giraffe",
+      "label": "Giraffe",
       "emoji": "🦒",
       "one_liner": "Tall necks above the path.",
       "tags": [
@@ -110,7 +92,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "reticulated-giraffe",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Giraffe",
+      "presence_note": "Masai not reticulated"
     },
     {
       "id": "african_lion",
@@ -134,11 +120,13 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-lion",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "African lion"
     },
     {
       "id": "sumatran_tiger",
-      "label": "Sumatran tiger",
+      "label": "Tiger",
       "emoji": "🐯",
       "one_liner": "Stripes in the forested cat areas.",
       "tags": [
@@ -157,7 +145,9 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sumatran-tiger",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Tiger"
     },
     {
       "id": "red_panda",
@@ -180,11 +170,13 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "red-panda",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Red panda"
     },
     {
       "id": "caribbean_flamingo",
-      "label": "Caribbean flamingo",
+      "label": "Flamingo",
       "emoji": "🦩",
       "one_liner": "Bright pink flock — easy first find.",
       "tags": [
@@ -203,7 +195,9 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "caribbean-flamingo",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Flamingo"
     },
     {
       "id": "galapagos_tortoise",
@@ -226,7 +220,9 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "galapagos-tortoise",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Galápagos tortoise"
     },
     {
       "id": "ring_tailed_lemur",
@@ -249,7 +245,9 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "ring-tailed-lemur",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Ring-tailed lemur"
     }
   ],
   "content_mode": "curated",
@@ -266,6 +264,24 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "research_notes": "map-page 2026-08-07",
-  "list_confidence": "template"
+  "research_notes": "map-page 2026-08-07 · presence-audit 2026-08-08 [critical]",
+  "list_confidence": "partial",
+  "do_not_list": [
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "LA Zoo ended elephant program 2025; remaining Asian elephants moved to Tulsa. Exhibit empty.",
+      "as_of": "2026-08-08"
+    }
+  ],
+  "route_90m": [
+    "western_lowland_gorilla",
+    "chimpanzee",
+    "reticulated_giraffe"
+  ],
+  "presence_sources": [
+    "https://lazoo.org/",
+    "https://lazoo.org/explore-your-zoo/our-animals/mammals/",
+    "https://lazoo.org/2025/04/elephantnews/"
+  ]
 }

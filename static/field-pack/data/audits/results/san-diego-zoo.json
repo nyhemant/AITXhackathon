@@ -1,0 +1,142 @@
+{
+  "slug": "san-diego-zoo",
+  "name": "San Diego Zoo",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://zoo.sandiegozoo.org/",
+    "https://zoo.sandiegozoo.org/wildlife",
+    "https://sandiegozoowildlifealliance.org/pressroom/san-diego-zoo-fact-sheet"
+  ],
+  "list_confidence_recommended": "audited",
+  "practical_fixes": [
+    {
+      "field": "items.sumatran_tiger.label",
+      "current": "Sumatran tiger",
+      "suggested": "Tiger",
+      "reason": "On-display lists reported Malayan tiger (2025); soft-label."
+    },
+    {
+      "field": "items.reticulated_giraffe.label",
+      "current": "Reticulated giraffe",
+      "suggested": "Giraffe",
+      "reason": "Official: Masai giraffes at Urban Jungle."
+    },
+    {
+      "field": "route_90m",
+      "current": "null",
+      "suggested": "giant_panda, koala, african_elephant",
+      "reason": "Set tourist icons route."
+    }
+  ],
+  "do_not_list": [],
+  "items": [
+    {
+      "id": "giant_panda",
+      "label": "Giant panda",
+      "catalog_id": "giant-panda",
+      "presence": "verified",
+      "display_label": "Giant panda",
+      "official_name": "",
+      "notes": "Yun Chuan & Xin Bao at Denny Sanford Panda Ridge (returned 2024; featured 2026).",
+      "source_url": "https://zoo.sandiegozoo.org/"
+    },
+    {
+      "id": "koala",
+      "label": "Koala",
+      "catalog_id": "koala",
+      "presence": "verified",
+      "display_label": "Koala",
+      "official_name": "",
+      "notes": "Largest koala colony outside Australia.",
+      "source_url": "https://zoo.sandiegozoo.org/animals/koala"
+    },
+    {
+      "id": "red_panda",
+      "label": "Red panda",
+      "catalog_id": "red-panda",
+      "presence": "verified",
+      "display_label": "Red panda",
+      "official_name": "",
+      "notes": "Official red panda page.",
+      "source_url": "https://zoo.sandiegozoo.org/animals/red-panda"
+    },
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "verified",
+      "display_label": "African elephant",
+      "official_name": "",
+      "notes": "African elephants at Elephant Odyssey.",
+      "source_url": "https://zoo.sandiegozoo.org/animals/elephant"
+    },
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "verified",
+      "display_label": "Western lowland gorilla",
+      "official_name": "",
+      "notes": "Gorilla Tropics.",
+      "source_url": "https://zoo.sandiegozoo.org/wildlife"
+    },
+    {
+      "id": "orangutan",
+      "label": "Orangutan",
+      "catalog_id": "orangutan",
+      "presence": "verified",
+      "display_label": "Orangutan",
+      "official_name": "Sumatran orangutan",
+      "notes": "Sumatran orangutan on Orangutan Trail.",
+      "source_url": "https://zoo.sandiegozoo.org/wildlife"
+    },
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "verified",
+      "display_label": "African lion",
+      "official_name": "",
+      "notes": "Official lion page.",
+      "source_url": "https://zoo.sandiegozoo.org/animals/lion"
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "high",
+      "display_label": "Tiger",
+      "official_name": "Tiger (Malayan reported)",
+      "notes": "Tiger Trail present; Malayan reported on-display 2025 — soft Tiger.",
+      "source_url": "https://zoo.sandiegozoo.org/animals/tiger-trail"
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "verified",
+      "display_label": "Giraffe",
+      "official_name": "Masai giraffe",
+      "notes": "Masai giraffes at Urban Jungle — soft Giraffe.",
+      "source_url": "https://zoo.sandiegozoo.org/animals/giraffe"
+    },
+    {
+      "id": "two_toed_sloth",
+      "label": "Two-toed sloth",
+      "catalog_id": "two-toed-sloth",
+      "presence": "high",
+      "display_label": "Two-toed sloth",
+      "official_name": "",
+      "notes": "Official two-toed sloth page (ambassador appearances).",
+      "source_url": "https://zoo.sandiegozoo.org/animals/two-toed-sloth"
+    }
+  ],
+  "route_90m_recommended": [
+    "giant_panda",
+    "koala",
+    "african_elephant"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "Pandas, koalas, elephants, gorillas, lions, red pandas verified. Soft-label giraffe (Masai) and tiger subspecies.",
+  "severity": "minor"
+}

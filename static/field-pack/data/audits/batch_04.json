@@ -1,0 +1,200 @@
+[
+  {
+    "slug": "melbourne-zoo",
+    "name": "Melbourne Zoo",
+    "type": "zoo",
+    "city": "Melbourne",
+    "country": "AU",
+    "official_url": "https://www.zoo.org.au/melbourne/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 14
+  },
+  {
+    "slug": "memphis-zoo",
+    "name": "Memphis Zoo",
+    "type": "zoo",
+    "city": "Memphis",
+    "country": "US",
+    "official_url": "https://www.memphiszoo.org/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 13
+  },
+  {
+    "slug": "miami-zoo",
+    "name": "Zoo Miami",
+    "type": "zoo",
+    "city": "Miami",
+    "country": "US",
+    "official_url": "https://www.zoomiami.org/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 13
+  },
+  {
+    "slug": "milan-aquarium",
+    "name": "Acquario di Milano",
+    "type": "aquarium",
+    "city": "Milan",
+    "country": "IT",
+    "official_url": "https://www.acquariocivicomilano.eu/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 12
+  },
+  {
+    "slug": "milwaukee-zoo",
+    "name": "Milwaukee County Zoo",
+    "type": "zoo",
+    "city": "Milwaukee",
+    "country": "US",
+    "official_url": "https://www.milwaukeezoo.org/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 13
+  },
+  {
+    "slug": "minnesota-zoo",
+    "name": "Minnesota Zoo",
+    "type": "zoo",
+    "city": "Apple Valley",
+    "country": "US",
+    "official_url": "https://mnzoo.org/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 13
+  },
+  {
+    "slug": "monterey-bay-aquarium",
+    "name": "Monterey Bay Aquarium",
+    "type": "aquarium",
+    "city": "Monterey",
+    "country": "US",
+    "official_url": "https://www.montereybayaquarium.org/",
+    "list_confidence": "partial",
+    "content_mode": "curated",
+    "n_items": 10
+  },
+  {
+    "slug": "montreal-biodome",
+    "name": "Montreal Biodome",
+    "type": "museum",
+    "city": "Montreal",
+    "country": "CA",
+    "official_url": "https://espacepourlavie.ca/en/biodome",
+    "list_confidence": "partial",
+    "content_mode": "hybrid",
+    "n_items": 10
+  },
+  {
+    "slug": "moscow-zoo",
+    "name": "Moscow Zoo",
+    "type": "zoo",
+    "city": "Moscow",
+    "country": "RU",
+    "official_url": "https://moscowzoo.ru/en/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 12
+  },
+  {
+    "slug": "mumbai-byculla-zoo",
+    "name": "Byculla Zoo (Jijamata Udyan)",
+    "type": "zoo",
+    "city": "Mumbai",
+    "country": "IN",
+    "official_url": "https://www.mcgm.gov.in/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 13
+  },
+  {
+    "slug": "munich-zoo",
+    "name": "Hellabrunn Zoo",
+    "type": "zoo",
+    "city": "Munich",
+    "country": "DE",
+    "official_url": "https://www.hellabrunn.de/en/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 12
+  },
+  {
+    "slug": "museum-of-science-boston",
+    "name": "Museum of Science",
+    "type": "museum",
+    "city": "Boston",
+    "country": "US",
+    "official_url": "https://www.mos.org/",
+    "list_confidence": "partial",
+    "content_mode": "hybrid",
+    "n_items": 9
+  },
+  {
+    "slug": "museum-of-science-industry-chi",
+    "name": "Museum of Science and Industry",
+    "type": "museum",
+    "city": "Chicago",
+    "country": "US",
+    "official_url": "https://www.msichicago.org/",
+    "list_confidence": "partial",
+    "content_mode": "hybrid",
+    "n_items": 8
+  },
+  {
+    "slug": "nairobi-safari-walk",
+    "name": "Nairobi Safari Walk",
+    "type": "safari_zoo",
+    "city": "Nairobi",
+    "country": "KE",
+    "official_url": "https://www.kws.go.ke/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 13
+  },
+  {
+    "slug": "nashville-adventure-science",
+    "name": "Adventure Science Center",
+    "type": "museum",
+    "city": "Nashville",
+    "country": "US",
+    "official_url": "https://www.adventuresci.org/",
+    "list_confidence": "partial",
+    "content_mode": "hybrid",
+    "n_items": 10
+  },
+  {
+    "slug": "nashville-zoo",
+    "name": "Nashville Zoo",
+    "type": "zoo",
+    "city": "Nashville",
+    "country": "US",
+    "official_url": "https://www.nashvillezoo.org/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 13
+  },
+  {
+    "slug": "national-aquarium-baltimore",
+    "name": "National Aquarium",
+    "type": "aquarium",
+    "city": "Baltimore",
+    "country": "US",
+    "official_url": "https://aqua.org/",
+    "list_confidence": "partial",
+    "content_mode": "curated",
+    "n_items": 10
+  },
+  {
+    "slug": "national-zoo",
+    "name": "Smithsonian National Zoo",
+    "type": "zoo",
+    "city": "Washington",
+    "country": "US",
+    "official_url": "https://nationalzoo.si.edu/",
+    "list_confidence": "template",
+    "content_mode": "curated",
+    "n_items": 10
+  }
+]

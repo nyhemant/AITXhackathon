@@ -1,0 +1,170 @@
+{
+  "slug": "albuquerque-biopark",
+  "name": "ABQ BioPark Zoo",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.cabq.gov/artsculture/biopark/zoo/zoo-animals",
+    "https://www.bioparksociety.org/biopark-parent-animal-list/"
+  ],
+  "list_confidence_recommended": "audited",
+  "practical_fixes": [
+    {
+      "field": "best_start",
+      "current": "Morning only in summer; elephants/apes before heat.",
+      "suggested": "Morning only in summer; Asian elephants and apes before heat.",
+      "reason": "Species correction."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Official city animals page lists Asian Elephant, not African."
+    },
+    {
+      "catalog_id": "sumatran-tiger",
+      "name": "Sumatran tiger",
+      "reason": "Official list: Malayan Tiger, not Sumatran."
+    },
+    {
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "City page lists Gentoo, King, Macaroni penguins — not African penguin."
+    },
+    {
+      "catalog_id": "galapagos-tortoise",
+      "name": "Galápagos tortoise",
+      "reason": "Society list has Aldabra Tortoise; Galápagos not listed."
+    }
+  ],
+  "items": [
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "absent",
+      "display_label": "Asian elephant",
+      "official_name": "Asian Elephant",
+      "notes": "Official city animals page lists Asian Elephant, not African.",
+      "source_url": "https://www.cabq.gov/artsculture/biopark/zoo/zoo-animals"
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "verified",
+      "display_label": "Reticulated giraffe",
+      "official_name": "Reticulated Giraffe",
+      "notes": "",
+      "source_url": "https://www.cabq.gov/artsculture/biopark/zoo/zoo-animals"
+    },
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "verified",
+      "display_label": "Western lowland gorilla",
+      "official_name": "Western Lowland Gorilla",
+      "notes": "",
+      "source_url": "https://www.cabq.gov/artsculture/biopark/zoo/zoo-animals"
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "absent",
+      "display_label": "Malayan tiger",
+      "official_name": "Malayan Tiger",
+      "notes": "Official list: Malayan Tiger, not Sumatran.",
+      "source_url": "https://www.cabq.gov/artsculture/biopark/zoo/zoo-animals"
+    },
+    {
+      "id": "nile_hippo",
+      "label": "Nile hippo",
+      "catalog_id": "nile-hippo",
+      "presence": "verified",
+      "display_label": "Hippo",
+      "official_name": "Hippo",
+      "notes": "",
+      "source_url": "https://www.cabq.gov/artsculture/biopark/zoo/zoo-animals"
+    },
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "high",
+      "display_label": "African lion",
+      "official_name": "",
+      "notes": "On BioPark Society parent animal list; not on abbreviated city highlight page. Treat as high.",
+      "source_url": "https://www.bioparksociety.org/biopark-parent-animal-list/"
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "absent",
+      "display_label": "African penguin",
+      "official_name": "",
+      "notes": "City page lists Gentoo, King, Macaroni penguins — not African penguin.",
+      "source_url": ""
+    },
+    {
+      "id": "cheetah",
+      "label": "Cheetah",
+      "catalog_id": "cheetah",
+      "presence": "verified",
+      "display_label": "Cheetah",
+      "official_name": "Southeast African Cheetah",
+      "notes": "",
+      "source_url": "https://www.cabq.gov/artsculture/biopark/zoo/zoo-animals"
+    },
+    {
+      "id": "caribbean_flamingo",
+      "label": "Caribbean flamingo",
+      "catalog_id": "caribbean-flamingo",
+      "presence": "high",
+      "display_label": "Flamingo",
+      "official_name": "American Flamingo",
+      "notes": "Official: American Flamingo (closely related Caribbean form). Soft-label Flamingo.",
+      "source_url": ""
+    },
+    {
+      "id": "two_toed_sloth",
+      "label": "Two-toed sloth",
+      "catalog_id": "two-toed-sloth",
+      "presence": "unclear",
+      "display_label": "Two-toed sloth",
+      "official_name": "",
+      "notes": "Not on city animals page or society list reviewed.",
+      "source_url": ""
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "verified",
+      "display_label": "Hartmann's mountain zebra",
+      "official_name": "Hartmann's Mountain Zebra",
+      "notes": "",
+      "source_url": "https://www.cabq.gov/artsculture/biopark/zoo/zoo-animals"
+    },
+    {
+      "id": "galapagos_tortoise",
+      "label": "Galápagos tortoise",
+      "catalog_id": "galapagos-tortoise",
+      "presence": "absent",
+      "display_label": "Galápagos tortoise",
+      "official_name": "",
+      "notes": "Society list has Aldabra Tortoise; Galápagos not listed.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "reticulated_giraffe",
+    "western_lowland_gorilla",
+    "cheetah"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "Strong official CABQ list: fix African→Asian elephant, Sumatran→Malayan tiger, drop African penguin and Galápagos tortoise; gorilla/giraffe/cheetah/hippo/zebra verified.",
+  "severity": "critical"
+}

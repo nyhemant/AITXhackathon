@@ -1,0 +1,102 @@
+{
+  "slug": "california-science-center",
+  "name": "California Science Center",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://californiasciencecenter.org/",
+    "https://californiasciencecenter.org/exhibits"
+  ],
+  "list_confidence_recommended": "audited",
+  "practical_fixes": [],
+  "do_not_list": [],
+  "items": [
+    {
+      "id": "sci_shuttle",
+      "label": "Space shuttle / orbiter",
+      "catalog_id": "sci-shuttle",
+      "presence": "verified",
+      "display_label": "Space shuttle / orbiter",
+      "official_name": "Space Shuttle Endeavour",
+      "notes": "Permanent Endeavour display — flagship.",
+      "source_url": ""
+    },
+    {
+      "id": "sci_rocket",
+      "label": "Rockets & launch",
+      "catalog_id": "sci-rocket",
+      "presence": "verified",
+      "display_label": "Rockets & launch",
+      "official_name": "",
+      "notes": "External tank/rocket components with Endeavour.",
+      "source_url": ""
+    },
+    {
+      "id": "sci_hands_on",
+      "label": "Hands-on lab",
+      "catalog_id": "sci-hands-on",
+      "presence": "high",
+      "display_label": "Hands-on lab",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "sci_planet",
+      "label": "Planet / space hall",
+      "catalog_id": "sci-planet",
+      "presence": "high",
+      "display_label": "Planet / space hall",
+      "official_name": "",
+      "notes": "Space exhibits; IMAX/air & space content.",
+      "source_url": ""
+    },
+    {
+      "id": "sci_aquarium_zone",
+      "label": "Aquarium zone",
+      "catalog_id": "sci-aquarium-zone",
+      "presence": "medium",
+      "display_label": "Aquarium zone",
+      "official_name": "",
+      "notes": "Ecosytems/aquatic exhibits may exist — confirm current.",
+      "source_url": ""
+    },
+    {
+      "id": "sci_rainforest",
+      "label": "Rainforest dome",
+      "catalog_id": "sci-rainforest",
+      "presence": "medium",
+      "display_label": "Rainforest dome",
+      "official_name": "",
+      "notes": "Ecosystems gallery historically includes habitats — not a 4-story live dome like Cal Academy.",
+      "source_url": ""
+    },
+    {
+      "id": "sci_dinosaur",
+      "label": "Dinosaur hall",
+      "catalog_id": "sci-dinosaur",
+      "presence": "medium",
+      "display_label": "Dinosaur hall",
+      "official_name": "",
+      "notes": "Rotating/permanent natural history varies.",
+      "source_url": ""
+    },
+    {
+      "id": "cm_toddler_garden",
+      "label": "Toddler Garden",
+      "catalog_id": "cm-toddler-garden",
+      "presence": "medium",
+      "display_label": "Toddler Garden",
+      "official_name": "",
+      "notes": "Family areas; exact name may differ.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "sci_shuttle",
+    "sci_rocket",
+    "sci_hands_on"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "Endeavour + rockets verified flagships. Secondary habitat labels are softer — keep mission centered on space gallery.",
+  "severity": "ok"
+}

@@ -1,0 +1,141 @@
+{
+  "slug": "st-louis-zoo",
+  "name": "Saint Louis Zoo",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://stlzoo.org/",
+    "https://stlzoo.org/animals"
+  ],
+  "list_confidence_recommended": "partial",
+  "practical_fixes": [
+    {
+      "field": "items.african_elephant",
+      "current": "African elephant",
+      "suggested": "Asian elephant",
+      "reason": "River's Edge Asian elephant program (calf Jet)."
+    },
+    {
+      "field": "missing_icons",
+      "current": "",
+      "suggested": "cheetah",
+      "reason": "Cheetah cubs 2025 major River's Edge story."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Asian elephants (Jet etc.) — wrong species catalog."
+    }
+  ],
+  "items": [
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "high",
+      "display_label": "Penguin",
+      "official_name": "",
+      "notes": "Penguins in The Wild; soft-label Penguin.",
+      "source_url": "https://stlzoo.org/"
+    },
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "verified",
+      "display_label": "Western lowland gorilla",
+      "official_name": "",
+      "notes": "Great apes in The Wild.",
+      "source_url": "https://stlzoo.org/"
+    },
+    {
+      "id": "chimpanzee",
+      "label": "Chimpanzee",
+      "catalog_id": "chimpanzee",
+      "presence": "high",
+      "display_label": "Chimpanzee",
+      "official_name": "",
+      "notes": "Great apes present.",
+      "source_url": "https://stlzoo.org/"
+    },
+    {
+      "id": "orangutan",
+      "label": "Orangutan",
+      "catalog_id": "orangutan",
+      "presence": "verified",
+      "display_label": "Orangutan",
+      "official_name": "",
+      "notes": "Orangutan Hang tours / great apes.",
+      "source_url": "https://stlzoo.org/"
+    },
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "absent",
+      "display_label": "African elephant",
+      "official_name": "Asian elephant",
+      "notes": "Asian elephants (calf Jet 2025) — not African.",
+      "source_url": "https://stlzoo.org/"
+    },
+    {
+      "id": "nile_hippo",
+      "label": "Nile hippo",
+      "catalog_id": "nile-hippo",
+      "presence": "verified",
+      "display_label": "Nile hippo",
+      "official_name": "",
+      "notes": "Hippos in River's Edge.",
+      "source_url": "https://stlzoo.org/"
+    },
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "verified",
+      "display_label": "African lion",
+      "official_name": "",
+      "notes": "Red Rocks big cats.",
+      "source_url": "https://stlzoo.org/"
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "medium",
+      "display_label": "Tiger",
+      "official_name": "",
+      "notes": "Big cats; subspecies unconfirmed.",
+      "source_url": "https://stlzoo.org/"
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "verified",
+      "display_label": "Giraffe",
+      "official_name": "",
+      "notes": "Giraffes at Red Rocks.",
+      "source_url": "https://stlzoo.org/"
+    },
+    {
+      "id": "caribbean_flamingo",
+      "label": "Caribbean flamingo",
+      "catalog_id": "caribbean-flamingo",
+      "presence": "high",
+      "display_label": "Caribbean flamingo",
+      "official_name": "",
+      "notes": "Flamingos long-standing.",
+      "source_url": "https://stlzoo.org/"
+    }
+  ],
+  "route_90m_recommended": [
+    "nile_hippo",
+    "orangutan",
+    "reticulated_giraffe"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "MAJOR: African elephant label wrong (Asian). Hippos, giraffes, lions, apes solid.",
+  "severity": "major"
+}

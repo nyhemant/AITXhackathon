@@ -1,0 +1,165 @@
+{
+  "slug": "fort-worth-zoo",
+  "name": "Fort Worth Zoo",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.fortworthzoo.org/",
+    "https://www.fortworthzoo.org/habitats",
+    "https://www.fortworthzoo.org/babies",
+    "https://www.fortworthzoo.org/keeper-chatsstage-show"
+  ],
+  "list_confidence_recommended": "partial",
+  "practical_fixes": [],
+  "do_not_list": [
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Zoo holds Asian elephants only (Elephant Springs)."
+    },
+    {
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "Official: African penguins moved to Waco; remaining penguins are southern rockhopper."
+    },
+    {
+      "catalog_id": "galapagos-tortoise",
+      "name": "Galápagos tortoise",
+      "reason": "Keeper chats list Aldabra tortoise; not Galápagos."
+    },
+    {
+      "catalog_id": "asian-small-clawed-otter",
+      "name": "Asian small-clawed otter",
+      "reason": "Keeper chats list North American river otter."
+    }
+  ],
+  "items": [
+    {
+      "id": "elephant",
+      "label": "Elephant",
+      "catalog_id": "african-elephant",
+      "presence": "absent",
+      "display_label": "Asian elephant",
+      "official_name": "Asian elephant",
+      "notes": "CRITICAL wrong species. Use Asian elephant label; elephants sometimes off-habitat for maintenance.",
+      "source_url": "https://www.fortworthzoo.org/habitats"
+    },
+    {
+      "id": "giraffe",
+      "label": "Giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "verified",
+      "display_label": "Giraffe",
+      "official_name": "Reticulated giraffe",
+      "notes": "",
+      "source_url": "https://www.fortworthzoo.org/babies"
+    },
+    {
+      "id": "lion",
+      "label": "Lion",
+      "catalog_id": "african-lion",
+      "presence": "verified",
+      "display_label": "Lion",
+      "official_name": "African lion",
+      "notes": "",
+      "source_url": "https://www.fortworthzoo.org/babies"
+    },
+    {
+      "id": "tiger",
+      "label": "Tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "high",
+      "display_label": "Tiger",
+      "official_name": "Malayan tiger",
+      "notes": "Malayan not Sumatran; soft Tiger OK",
+      "source_url": "https://en.wikipedia.org/wiki/Fort_Worth_Zoo"
+    },
+    {
+      "id": "gorilla",
+      "label": "Gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "verified",
+      "display_label": "Gorilla",
+      "official_name": "Western lowland gorilla",
+      "notes": "",
+      "source_url": "https://www.fortworthzoo.org/babies"
+    },
+    {
+      "id": "penguin",
+      "label": "Penguin",
+      "catalog_id": "african-penguin",
+      "presence": "medium",
+      "display_label": "Penguin",
+      "official_name": "Southern rockhopper penguin",
+      "notes": "African penguins moved to Waco; rockhoppers still on site. Soft Penguin if listing.",
+      "source_url": "https://www.fortworthzoo.org/habitats"
+    },
+    {
+      "id": "hippo",
+      "label": "Hippo",
+      "catalog_id": "nile-hippo",
+      "presence": "verified",
+      "display_label": "Hippo",
+      "official_name": "Hippo (African Savanna river)",
+      "notes": "",
+      "source_url": "https://www.fortworthzoo.org/habitats"
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "high",
+      "display_label": "Zebra",
+      "official_name": "",
+      "notes": "Savanna ungulates present; confirm current zebra spp.",
+      "source_url": ""
+    },
+    {
+      "id": "otter",
+      "label": "Otter",
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "high",
+      "display_label": "Otter",
+      "official_name": "North American river otter",
+      "notes": "Wrong catalog species; soft Otter OK",
+      "source_url": "https://www.fortworthzoo.org/keeper-chatsstage-show"
+    },
+    {
+      "id": "lemur",
+      "label": "Ring-tailed lemur",
+      "catalog_id": "ring-tailed-lemur",
+      "presence": "high",
+      "display_label": "Ring-tailed lemur",
+      "official_name": "Ring-tailed lemur",
+      "notes": "Listed in MOLA residents historically",
+      "source_url": "https://en.wikipedia.org/wiki/Fort_Worth_Zoo"
+    },
+    {
+      "id": "tortoise",
+      "label": "Giant tortoise",
+      "catalog_id": "galapagos-tortoise",
+      "presence": "high",
+      "display_label": "Giant tortoise",
+      "official_name": "Aldabra tortoise",
+      "notes": "Not Galápagos",
+      "source_url": "https://www.fortworthzoo.org/keeper-chatsstage-show"
+    },
+    {
+      "id": "kids-area",
+      "label": "Kids play / rest stop",
+      "catalog_id": null,
+      "presence": "high",
+      "display_label": "Kids play / rest stop",
+      "official_name": "",
+      "notes": "Play/rest amenities present; soft place-type OK",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "giraffe",
+    "lion",
+    "gorilla"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "CRITICAL: elephants are Asian (Elephant Springs), not African. African penguins relocated to Cameron Park Zoo (Waco); rockhoppers remain indoors. Otters are North American river otters, not Asian small-clawed. Tortoises are Aldabra, not Galápagos. Giraffe/lion/gorilla/hippo/zebra verified. Tigers Malayan.",
+  "severity": "critical"
+}

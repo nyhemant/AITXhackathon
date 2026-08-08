@@ -16,13 +16,13 @@
     "typical_duration": "half day",
     "ticket_note": "Downtown parking; check dwazoo.com.",
     "transit_note": "West End / downtown.",
-    "energy_note": "indoor",
+    "energy_note": "Mostly indoors",
     "best_start": "Start at the top and spiral down if signed that way."
   },
   "items": [
     {
       "id": "two_toed_sloth",
-      "label": "Two-toed sloth",
+      "label": "Sloth",
       "emoji": "🦥",
       "one_liner": "Sloths hanging in the greenery.",
       "tags": [
@@ -41,7 +41,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "two-toed-sloth",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Sloth",
+      "presence_note": "Sloth Forest features three-toed; two-toed also reported historically. Soft-label Sloth."
     },
     {
       "id": "shark",
@@ -64,7 +68,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "shark",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Shark",
+      "presence_note": "Aquarium section."
     },
     {
       "id": "stingray",
@@ -87,7 +94,9 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "stingray",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Stingray"
     },
     {
       "id": "ring_tailed_lemur",
@@ -110,7 +119,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "ring-tailed-lemur",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Ring-tailed lemur",
+      "presence_note": "Lemurs featured in social/exhibits."
     },
     {
       "id": "jellyfish",
@@ -133,7 +145,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "jellyfish",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Jellyfish",
+      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract."
     },
     {
       "id": "seahorse",
@@ -156,7 +171,10 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "seahorse",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Seahorse",
+      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract."
     },
     {
       "id": "clownfish",
@@ -179,7 +197,10 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "clownfish",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Clownfish",
+      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract."
     },
     {
       "id": "sea_turtle",
@@ -203,7 +224,10 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "sea-turtle",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Sea turtle",
+      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract."
     },
     {
       "id": "octopus",
@@ -226,7 +250,10 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "octopus",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Octopus",
+      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract."
     },
     {
       "id": "eel",
@@ -249,7 +276,10 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "eel",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Eel",
+      "presence_note": "Electric eel called out in Orinoco-level descriptions."
     },
     {
       "id": "crab",
@@ -272,7 +302,10 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "crab",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Crab",
+      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract."
     },
     {
       "id": "starfish",
@@ -297,7 +330,10 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "starfish",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Sea star",
+      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract."
     },
     {
       "id": "freshwater_fish",
@@ -320,36 +356,13 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "freshwater-fish",
-      "presence": "template"
-    },
-    {
-      "id": "asian_small_clawed_otter",
-      "label": "Asian small-clawed otter",
-      "emoji": "🦦",
-      "one_liner": "Playful swimmer — smallest otter.",
-      "tags": [
-        "wow",
-        "water",
-        "outdoor",
-        "hands",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "What did you notice about the Asian small-clawed otter?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "asian-small-clawed-otter",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "River / lake fish",
+      "presence_note": "Orinoco / river systems."
     }
   ],
-  "content_mode": "hybrid",
+  "content_mode": "curated",
   "media": {
     "visitor_map_url": "/field-pack/media/maps/dallas-world-aquarium.jpg",
     "visitor_map_page": "https://www.dwazoo.com/",
@@ -366,8 +379,22 @@
   "route_90m": [
     "two_toed_sloth",
     "shark",
-    "stingray"
+    "ring_tailed_lemur"
   ],
-  "research_notes": "R2 hybrid 2026-08-07",
-  "list_confidence": "template"
+  "research_notes": "R2 hybrid 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "list_confidence": "audited",
+  "do_not_list": [
+    {
+      "catalog_id": "asian-small-clawed-otter",
+      "name": "Asian small-clawed otter",
+      "reason": "Orinoco/Lobos del Rio: giant otters, not Asian small-clawed.",
+      "as_of": "2026-08-08"
+    }
+  ],
+  "last_presence_audit": "2026-08-08",
+  "presence_sources": [
+    "https://www.dwazoo.com/",
+    "https://dwazoo.com/exhibit/sloth-forest/",
+    "https://dwazoo.com/wp-content/uploads/2024/05/DWA-Field-Guide-2024.pdf"
+  ]
 }

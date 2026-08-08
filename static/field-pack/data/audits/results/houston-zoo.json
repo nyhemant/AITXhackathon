@@ -1,0 +1,144 @@
+{
+  "slug": "houston-zoo",
+  "name": "Houston Zoo",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.houstonzoo.org/explore/animals/",
+    "https://www.houstonzoo.org/",
+    "https://map.houstonzoo.org/map"
+  ],
+  "list_confidence_recommended": "partial",
+  "practical_fixes": [],
+  "do_not_list": [
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Official list: Asian Elephant only."
+    },
+    {
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "Official: Humboldt Penguin."
+    },
+    {
+      "catalog_id": "nile-hippo",
+      "name": "Nile hippo",
+      "reason": "Not on official Our Animals list; map references pygmy hippo."
+    },
+    {
+      "catalog_id": "asian-small-clawed-otter",
+      "name": "Asian small-clawed otter",
+      "reason": "Official: Giant River Otter and North American River Otter."
+    }
+  ],
+  "items": [
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "absent",
+      "display_label": "Asian elephant",
+      "official_name": "Asian elephant",
+      "notes": "CRITICAL",
+      "source_url": "https://www.houstonzoo.org/explore/animals/elephant-asian/"
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "verified",
+      "display_label": "Giraffe",
+      "official_name": "Masai giraffe",
+      "notes": "Wrong subspecies label; soft Giraffe OK",
+      "source_url": "https://www.houstonzoo.org/explore/animals/giraffe-masai/"
+    },
+    {
+      "id": "nile_hippo",
+      "label": "Nile hippo",
+      "catalog_id": "nile-hippo",
+      "presence": "absent",
+      "display_label": "Nile hippo",
+      "official_name": "",
+      "notes": "No Nile hippo on official animal directory; pygmy hippo on map only",
+      "source_url": "https://www.houstonzoo.org/explore/animals/"
+    },
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "verified",
+      "display_label": "Western lowland gorilla",
+      "official_name": "Gorilla",
+      "notes": "",
+      "source_url": "https://www.houstonzoo.org/explore/animals/western-lowland-gorilla/"
+    },
+    {
+      "id": "chimpanzee",
+      "label": "Chimpanzee",
+      "catalog_id": "chimpanzee",
+      "presence": "verified",
+      "display_label": "Chimpanzee",
+      "official_name": "",
+      "notes": "",
+      "source_url": "https://www.houstonzoo.org/explore/animals/chimpanzee/"
+    },
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "verified",
+      "display_label": "African lion",
+      "official_name": "",
+      "notes": "",
+      "source_url": "https://www.houstonzoo.org/explore/animals/lion-african/"
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "high",
+      "display_label": "Tiger",
+      "official_name": "Malayan tiger",
+      "notes": "Not Sumatran",
+      "source_url": "https://www.houstonzoo.org/explore/animals/tiger-malayan/"
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "absent",
+      "display_label": "Penguin",
+      "official_name": "Humboldt penguin",
+      "notes": "Wrong species",
+      "source_url": "https://www.houstonzoo.org/explore/animals/humboldt-penguin/"
+    },
+    {
+      "id": "asian_small_clawed_otter",
+      "label": "Asian small-clawed otter",
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "absent",
+      "display_label": "Otter",
+      "official_name": "Giant river otter / North American river otter",
+      "notes": "",
+      "source_url": "https://www.houstonzoo.org/explore/animals/"
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "verified",
+      "display_label": "Zebra",
+      "official_name": "Plains zebra",
+      "notes": "",
+      "source_url": "https://www.houstonzoo.org/explore/animals/zebra/"
+    }
+  ],
+  "route_90m_recommended": [
+    "reticulated_giraffe",
+    "western_lowland_gorilla",
+    "african_lion"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "CRITICAL species mismatches vs official Our Animals list: Asian elephant (not African), Masai giraffe (not reticulated), Humboldt penguin (not African), Malayan tiger (not Sumatran), giant river otter / N.A. river otter (not Asian small-clawed). Nile hippo not on current public animal list (map shows pygmy hippo). Gorilla, chimp, lion, zebra verified. Transit Hermann Park/MetroRail OK.",
+  "severity": "critical"
+}

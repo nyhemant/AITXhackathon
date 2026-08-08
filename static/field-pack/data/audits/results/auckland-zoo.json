@@ -1,0 +1,171 @@
+{
+  "slug": "auckland-zoo",
+  "name": "Auckland Zoo",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.aucklandzoo.co.nz/animals/mammals",
+    "https://www.aucklandzoo.co.nz/animals/asian-elephant",
+    "https://www.aucklandzoo.co.nz/"
+  ],
+  "list_confidence_recommended": "audited",
+  "practical_fixes": [
+    {
+      "field": "tagline",
+      "current": "",
+      "suggested": "Note elephants left Nov 2024 — do not print elephant hunts.",
+      "reason": "Critical absence."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "western-lowland-gorilla",
+      "name": "Western lowland gorilla",
+      "reason": "Not on current mammals list."
+    },
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Official: Asian elephants relocated November 2024 — none on site."
+    },
+    {
+      "catalog_id": "chimpanzee",
+      "name": "Chimpanzee",
+      "reason": "Not on mammals list; orangutan/siamang present instead."
+    },
+    {
+      "catalog_id": "nile-hippo",
+      "name": "Nile hippo",
+      "reason": "Not on current mammals list."
+    }
+  ],
+  "items": [
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "verified",
+      "display_label": "Sumatran tiger",
+      "official_name": "Sumatran tiger",
+      "notes": "",
+      "source_url": "https://www.aucklandzoo.co.nz/animals/sumatran-tiger"
+    },
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "absent",
+      "display_label": "Western lowland gorilla",
+      "official_name": "",
+      "notes": "Not on current mammals list.",
+      "source_url": ""
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "verified",
+      "display_label": "Giraffe",
+      "official_name": "Giraffe",
+      "notes": "",
+      "source_url": "https://www.aucklandzoo.co.nz/animals/giraffe"
+    },
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "verified",
+      "display_label": "African lion",
+      "official_name": "African lion",
+      "notes": "",
+      "source_url": "https://www.aucklandzoo.co.nz/animals/african-lion"
+    },
+    {
+      "id": "red_panda",
+      "label": "Red panda",
+      "catalog_id": "red-panda",
+      "presence": "verified",
+      "display_label": "Red panda",
+      "official_name": "Red panda",
+      "notes": "",
+      "source_url": "https://www.aucklandzoo.co.nz/animals/red-panda"
+    },
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "absent",
+      "display_label": "African elephant",
+      "official_name": "",
+      "notes": "Official: Asian elephants relocated November 2024 — none on site.",
+      "source_url": "https://www.aucklandzoo.co.nz/animals/asian-elephant"
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "unclear",
+      "display_label": "African penguin",
+      "official_name": "",
+      "notes": "Not confirmed on mammals page (birds separate).",
+      "source_url": ""
+    },
+    {
+      "id": "chimpanzee",
+      "label": "Chimpanzee",
+      "catalog_id": "chimpanzee",
+      "presence": "absent",
+      "display_label": "Chimpanzee",
+      "official_name": "",
+      "notes": "Not on mammals list; orangutan/siamang present instead.",
+      "source_url": ""
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "verified",
+      "display_label": "Zebra",
+      "official_name": "Zebra",
+      "notes": "",
+      "source_url": "https://www.aucklandzoo.co.nz/animals/zebra"
+    },
+    {
+      "id": "galapagos_tortoise",
+      "label": "Galápagos tortoise",
+      "catalog_id": "galapagos-tortoise",
+      "presence": "unclear",
+      "display_label": "Galápagos tortoise",
+      "official_name": "",
+      "notes": "Not on mammals list.",
+      "source_url": ""
+    },
+    {
+      "id": "nile_hippo",
+      "label": "Nile hippo",
+      "catalog_id": "nile-hippo",
+      "presence": "absent",
+      "display_label": "Nile hippo",
+      "official_name": "",
+      "notes": "Not on current mammals list.",
+      "source_url": ""
+    },
+    {
+      "id": "asian_small_clawed_otter",
+      "label": "Asian small-clawed otter",
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "verified",
+      "display_label": "Asian small-clawed otter",
+      "official_name": "Asian small-clawed otter",
+      "notes": "",
+      "source_url": "https://www.aucklandzoo.co.nz/animals/otter"
+    }
+  ],
+  "route_90m_recommended": [
+    "sumatran_tiger",
+    "african_lion",
+    "red_panda"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "Official mammals list: tiger, lion, giraffe, zebra, red panda, otter verified. Elephants gone (Nov 2024). No gorilla/chimp/hippo on list — remove from print.",
+  "severity": "critical"
+}

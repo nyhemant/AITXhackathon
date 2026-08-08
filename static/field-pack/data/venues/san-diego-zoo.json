@@ -40,7 +40,11 @@
         "answer": "Bamboo — lots and lots of bamboo!"
       },
       "catalog_id": "giant-panda",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Giant panda",
+      "presence_note": "Yun Chuan & Xin Bao at Denny Sanford Panda Ridge (returned 2024; featured 2026)."
     },
     {
       "id": "koala",
@@ -64,7 +68,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "koala",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Koala",
+      "presence_note": "Largest koala colony outside Australia."
     },
     {
       "id": "red_panda",
@@ -87,7 +95,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "red-panda",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Red panda",
+      "presence_note": "Official red panda page."
     },
     {
       "id": "african_elephant",
@@ -111,7 +123,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-elephant",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "African elephant",
+      "presence_note": "African elephants at Elephant Odyssey."
     },
     {
       "id": "western_lowland_gorilla",
@@ -134,7 +150,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "western-lowland-gorilla",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Western lowland gorilla",
+      "presence_note": "Gorilla Tropics."
     },
     {
       "id": "orangutan",
@@ -157,7 +177,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "orangutan",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Orangutan",
+      "presence_note": "Sumatran orangutan on Orangutan Trail."
     },
     {
       "id": "african_lion",
@@ -181,11 +205,15 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-lion",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "African lion",
+      "presence_note": "Official lion page."
     },
     {
       "id": "sumatran_tiger",
-      "label": "Sumatran tiger",
+      "label": "Tiger",
       "emoji": "🐯",
       "one_liner": "Stripy tigers on the Asia side.",
       "tags": [
@@ -204,11 +232,15 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sumatran-tiger",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Tiger",
+      "presence_note": "Tiger Trail present; Malayan reported on-display 2025 — soft Tiger."
     },
     {
       "id": "reticulated_giraffe",
-      "label": "Reticulated giraffe",
+      "label": "Giraffe",
       "emoji": "🦒",
       "one_liner": "Tall necks above the crowd.",
       "tags": [
@@ -227,7 +259,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "reticulated-giraffe",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Giraffe",
+      "presence_note": "Masai giraffes at Urban Jungle — soft Giraffe."
     },
     {
       "id": "two_toed_sloth",
@@ -250,7 +286,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "two-toed-sloth",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Two-toed sloth",
+      "presence_note": "Official two-toed sloth page (ambassador appearances)."
     }
   ],
   "content_mode": "curated",
@@ -267,6 +307,18 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "research_notes": "map-img 2026-08-07 · map-page 2026-08-07",
-  "list_confidence": "template"
+  "research_notes": "map-img 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [minor]",
+  "list_confidence": "audited",
+  "do_not_list": [],
+  "route_90m": [
+    "giant_panda",
+    "koala",
+    "african_elephant"
+  ],
+  "last_presence_audit": "2026-08-08",
+  "presence_sources": [
+    "https://zoo.sandiegozoo.org/",
+    "https://zoo.sandiegozoo.org/wildlife",
+    "https://sandiegozoowildlifealliance.org/pressroom/san-diego-zoo-fact-sheet"
+  ]
 }

@@ -1,0 +1,130 @@
+{
+  "slug": "national-aquarium-baltimore",
+  "name": "National Aquarium",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://aqua.org/",
+    "https://aqua.org/explore/",
+    "https://aqua.org/explore/exhibits/"
+  ],
+  "list_confidence_recommended": "audited",
+  "practical_fixes": [
+    {
+      "field": "items.african_penguin",
+      "current": "African penguin",
+      "suggested": "Confirm colony species on aqua.org (often African/black-footed)",
+      "reason": "Penguins are a known National Aquarium highlight — verify label."
+    }
+  ],
+  "do_not_list": [],
+  "items": [
+    {
+      "id": "shark",
+      "label": "Shark",
+      "catalog_id": "shark",
+      "presence": "verified",
+      "display_label": "Shark",
+      "official_name": "Shark Alley",
+      "notes": "Shark Alley / sharks featured.",
+      "source_url": "https://aqua.org/explore/"
+    },
+    {
+      "id": "stingray",
+      "label": "Stingray",
+      "catalog_id": "stingray",
+      "presence": "high",
+      "display_label": "Stingray",
+      "official_name": "Ray",
+      "notes": "Rays commonly in touch/exhibits. Soft Ray.",
+      "source_url": ""
+    },
+    {
+      "id": "jellyfish",
+      "label": "Jellyfish",
+      "catalog_id": "jellyfish",
+      "presence": "verified",
+      "display_label": "Jellyfish",
+      "official_name": "Jellyfish",
+      "notes": "Jellies / blue blubber jelly content.",
+      "source_url": "https://aqua.org/explore/"
+    },
+    {
+      "id": "sea_turtle",
+      "label": "Sea turtle",
+      "catalog_id": "sea-turtle",
+      "presence": "high",
+      "display_label": "Sea turtle",
+      "official_name": "Sea turtle",
+      "notes": "Turtle Odyssey / sea turtles.",
+      "source_url": ""
+    },
+    {
+      "id": "octopus",
+      "label": "Octopus",
+      "catalog_id": "octopus",
+      "presence": "high",
+      "display_label": "Octopus",
+      "official_name": "Octopus",
+      "notes": "Octopus exhibits historically/current. Soft Octopus.",
+      "source_url": ""
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "high",
+      "display_label": "African penguin",
+      "official_name": "Penguin",
+      "notes": "Penguin colony is a signature; African/black-footed typical. Soft Penguin if unsure.",
+      "source_url": ""
+    },
+    {
+      "id": "clownfish",
+      "label": "Clownfish",
+      "catalog_id": "clownfish",
+      "presence": "high",
+      "display_label": "Clownfish",
+      "official_name": "Clownfish / reef",
+      "notes": "Reef exhibits.",
+      "source_url": ""
+    },
+    {
+      "id": "seahorse",
+      "label": "Seahorse",
+      "catalog_id": "seahorse",
+      "presence": "high",
+      "display_label": "Seahorse",
+      "official_name": "Seahorse",
+      "notes": "Seahorses commonly exhibited.",
+      "source_url": ""
+    },
+    {
+      "id": "starfish",
+      "label": "Sea star",
+      "catalog_id": "starfish",
+      "presence": "high",
+      "display_label": "Sea star",
+      "official_name": "Sea star",
+      "notes": "Touch/rocky exhibits.",
+      "source_url": ""
+    },
+    {
+      "id": "eel",
+      "label": "Eel",
+      "catalog_id": "eel",
+      "presence": "medium",
+      "display_label": "Eel",
+      "official_name": "",
+      "notes": "Morays etc. common; medium.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "shark",
+    "jellyfish",
+    "african_penguin"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "Inner Harbor aquarium icons (sharks, jellies, turtles, penguins, reef) high/verified. List is reasonable; minor species-label checks only.",
+  "severity": "minor"
+}

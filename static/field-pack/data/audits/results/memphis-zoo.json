@@ -1,0 +1,177 @@
+{
+  "slug": "memphis-zoo",
+  "name": "Memphis Zoo",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.memphiszoo.org/animals",
+    "https://www.memphiszoo.org/african-veldt",
+    "https://www.memphiszoo.org/cat-country",
+    "https://www.memphiszoo.org/primate-canyon",
+    "https://www.memphiszoo.org/penguin-rock",
+    "https://www.memphiszoo.org/zambezi-river-hippo-camp",
+    "https://www.memphiszoo.org/herpetarium",
+    "https://en.wikipedia.org/wiki/Memphis_Zoo"
+  ],
+  "list_confidence_recommended": "audited",
+  "practical_fixes": [
+    {
+      "field": "items.giant_panda / route_90m",
+      "current": "Giant panda first on route",
+      "suggested": "Remove panda; route African elephant + giraffe + tiger/gorilla",
+      "reason": "Ya Ya returned to China 2023; no giant pandas in residence. China exhibit remains without pandas."
+    },
+    {
+      "field": "items.caribbean_flamingo",
+      "current": "Caribbean flamingo",
+      "suggested": "Flamingo (species may be Chilean/other — verify)",
+      "reason": "Hippo Camp lists Flamingos; wiki notes Chilean flamingos historically — soft label safer."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "giant-panda",
+      "name": "Giant panda",
+      "reason": "No giant pandas since 2023 loan end (Ya Ya returned to China). Do not promise."
+    }
+  ],
+  "items": [
+    {
+      "id": "giant_panda",
+      "label": "Giant panda",
+      "catalog_id": "giant-panda",
+      "presence": "absent",
+      "display_label": "— remove —",
+      "official_name": "",
+      "notes": "Pandas gone since 2023; China exhibit without giant pandas.",
+      "source_url": "https://www.memphiszoo.org/china"
+    },
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "verified",
+      "display_label": "African elephant",
+      "official_name": "African Elephant",
+      "notes": "African Veldt: African Elephant (named herd).",
+      "source_url": "https://www.memphiszoo.org/african-veldt"
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "high",
+      "display_label": "Giraffe",
+      "official_name": "Giraffe",
+      "notes": "African Veldt: Giraffe; subspecies not forced on page — soft Giraffe OK.",
+      "source_url": "https://www.memphiszoo.org/african-veldt"
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "verified",
+      "display_label": "Sumatran tiger",
+      "official_name": "Sumatran Tiger",
+      "notes": "Cat Country: Sumatran tigers (e.g. Badar 2026).",
+      "source_url": "https://www.memphiszoo.org/cat-country/?animal=Tiger"
+    },
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "verified",
+      "display_label": "Gorilla",
+      "official_name": "Lowland Gorillas",
+      "notes": "Primate Canyon: Lowland Gorillas.",
+      "source_url": "https://www.memphiszoo.org/primate-canyon"
+    },
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "verified",
+      "display_label": "African lion",
+      "official_name": "African Lions",
+      "notes": "Cat Country: African Lions.",
+      "source_url": "https://www.memphiszoo.org/cat-country"
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "verified",
+      "display_label": "African penguin",
+      "official_name": "Penguins (black-footed)",
+      "notes": "Penguin Rock: black-footed/African penguins.",
+      "source_url": "https://www.memphiszoo.org/penguin-rock"
+    },
+    {
+      "id": "cheetah",
+      "label": "Cheetah",
+      "catalog_id": "cheetah",
+      "presence": "verified",
+      "display_label": "Cheetah",
+      "official_name": "Cheetah",
+      "notes": "Cat Country: Cheetah.",
+      "source_url": "https://www.memphiszoo.org/cat-country"
+    },
+    {
+      "id": "nile_hippo",
+      "label": "Nile hippo",
+      "catalog_id": "nile-hippo",
+      "presence": "high",
+      "display_label": "Hippo",
+      "official_name": "Hippos",
+      "notes": "Zambezi River Hippo Camp: Hippos. Soft Hippo OK if Nile not explicit.",
+      "source_url": "https://www.memphiszoo.org/zambezi-river-hippo-camp"
+    },
+    {
+      "id": "caribbean_flamingo",
+      "label": "Caribbean flamingo",
+      "catalog_id": "caribbean-flamingo",
+      "presence": "high",
+      "display_label": "Flamingo",
+      "official_name": "Flamingos",
+      "notes": "Hippo Camp lists Flamingos; confirm Caribbean vs Chilean.",
+      "source_url": "https://www.memphiszoo.org/zambezi-river-hippo-camp"
+    },
+    {
+      "id": "two_toed_sloth",
+      "label": "Two-toed sloth",
+      "catalog_id": "two-toed-sloth",
+      "presence": "verified",
+      "display_label": "Two-toed sloth",
+      "official_name": "Two-toed Sloth",
+      "notes": "Animals of the Night: Two-toed Sloth.",
+      "source_url": "https://www.memphiszoo.org/animals-of-the-night"
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "verified",
+      "display_label": "Zebra",
+      "official_name": "Zebra",
+      "notes": "African Veldt: Zebra.",
+      "source_url": "https://www.memphiszoo.org/african-veldt"
+    },
+    {
+      "id": "galapagos_tortoise",
+      "label": "Galápagos tortoise",
+      "catalog_id": "galapagos-tortoise",
+      "presence": "verified",
+      "display_label": "Galápagos tortoise",
+      "official_name": "Galapagos Tortoise",
+      "notes": "Herpetarium: Galapagos Tortoise.",
+      "source_url": "https://www.memphiszoo.org/herpetarium"
+    }
+  ],
+  "route_90m_recommended": [
+    "african_elephant",
+    "reticulated_giraffe",
+    "sumatran_tiger"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "CRITICAL: Giant panda still on route/list but absent since 2023. Rest of list largely verified on memphiszoo.org wildlife pages (elephants, giraffe, Sumatran tiger, gorilla, lion, cheetah, hippo, penguin, zebra, tortoise, sloth).",
+  "severity": "critical"
+}

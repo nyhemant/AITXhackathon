@@ -1,0 +1,109 @@
+{
+  "slug": "amnh",
+  "name": "American Museum of Natural History",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.amnh.org/exhibitions",
+    "https://www.amnh.org/exhibitions/permanent",
+    "https://www.amnh.org/"
+  ],
+  "list_confidence_recommended": "audited",
+  "practical_fixes": [],
+  "do_not_list": [
+    {
+      "catalog_id": "two-toed-sloth",
+      "name": "Two-toed sloth",
+      "reason": "No live two-toed sloth exhibit; museum is not a zoo. Live butterflies in ticketed vivarium only."
+    }
+  ],
+  "items": [
+    {
+      "id": "sci_dinosaur",
+      "label": "Dinosaur hall",
+      "catalog_id": "sci-dinosaur",
+      "presence": "verified",
+      "display_label": "Dinosaur hall",
+      "official_name": "Hall of Saurischian / Ornithischian Dinosaurs; Impact ticketed show",
+      "notes": "",
+      "source_url": "https://www.amnh.org/exhibitions"
+    },
+    {
+      "id": "sci_mammal_hall",
+      "label": "Animal / mammal hall",
+      "catalog_id": "sci-mammal-hall",
+      "presence": "verified",
+      "display_label": "Animal / mammal hall",
+      "official_name": "Akeley Hall of African Mammals; Bernard Family Hall of North American Mammals",
+      "notes": "",
+      "source_url": "https://www.amnh.org/exhibitions/permanent/african-mammals"
+    },
+    {
+      "id": "sci_planet",
+      "label": "Planet / space hall",
+      "catalog_id": "sci-planet",
+      "presence": "verified",
+      "display_label": "Planet / space hall",
+      "official_name": "Hayden Planetarium / Encounters in the Milky Way; Hall of the Universe",
+      "notes": "",
+      "source_url": "https://www.amnh.org/exhibitions/space-show"
+    },
+    {
+      "id": "sci_hands_on",
+      "label": "Hands-on lab",
+      "catalog_id": "sci-hands-on",
+      "presence": "verified",
+      "display_label": "Discovery Room / Gilder Center",
+      "official_name": "Discovery Room; Richard Gilder Center",
+      "notes": "Hands-on Discovery Room; Gilder Center immersive spaces.",
+      "source_url": ""
+    },
+    {
+      "id": "sci_rainforest",
+      "label": "Rainforest dome",
+      "catalog_id": "sci-rainforest",
+      "presence": "medium",
+      "display_label": "Biodiversity / forest halls",
+      "official_name": "Theodore Roosevelt Hall of Biodiversity rainforest diorama",
+      "notes": "No freestanding 'rainforest dome' like Cal Academy; Hall of Biodiversity has rainforest diorama. Soft-label.",
+      "source_url": ""
+    },
+    {
+      "id": "two_toed_sloth",
+      "label": "Two-toed sloth",
+      "catalog_id": "two-toed-sloth",
+      "presence": "absent",
+      "display_label": "Two-toed sloth",
+      "official_name": "",
+      "notes": "No live two-toed sloth exhibit; museum is not a zoo. Live butterflies in ticketed vivarium only.",
+      "source_url": ""
+    },
+    {
+      "id": "sci_aquarium_zone",
+      "label": "Aquarium zone",
+      "catalog_id": "sci-aquarium-zone",
+      "presence": "medium",
+      "display_label": "Hall of Ocean Life",
+      "official_name": "Milstein Hall of Ocean Life",
+      "notes": "Ocean life hall with blue whale — not a living aquarium zone.",
+      "source_url": ""
+    },
+    {
+      "id": "cm_free_explore",
+      "label": "Free explore",
+      "catalog_id": "cm-free-explore",
+      "presence": "high",
+      "display_label": "Free explore",
+      "official_name": "",
+      "notes": "Appropriate free-explore stop.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "sci_dinosaur",
+    "sci_mammal_hall",
+    "sci_planet"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "Dinosaur, mammal halls, planetarium verified. Drop live sloth; relabel rainforest dome and aquarium zone to real permanent halls (Biodiversity diorama, Ocean Life).",
+  "severity": "major"
+}

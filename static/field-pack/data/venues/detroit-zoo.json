@@ -59,8 +59,16 @@
       "label": "Penguin",
       "emoji": "🐧",
       "one_liner": "Penguin Conservation Center — waddle, dive, kid magnet.",
-      "tags": ["water", "wow"],
-      "age_fit": ["2-3", "4-5", "6-8", "9+"],
+      "tags": [
+        "water",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
       "zone": "Penguin Conservation Center",
       "qa_card": {
         "question": "What did the penguins do in the water?",
@@ -71,15 +79,24 @@
       "presence": "verified",
       "presence_source": "official_animals_page",
       "presence_checked": "2026-08-08",
-      "presence_note": "Official macaroni-penguin page + Penguin Conservation Center / Breakfast with the Penguins."
+      "presence_note": "NOT African penguin. Soft-label Penguin. Fix catalog_id off african-penguin."
     },
     {
       "id": "giraffe",
       "label": "Giraffe",
       "emoji": "🦒",
       "one_liner": "Tall necks above the tree line — easy wow.",
-      "tags": ["tall", "outdoor", "wow"],
-      "age_fit": ["2-3", "4-5", "6-8", "9+"],
+      "tags": [
+        "tall",
+        "outdoor",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
       "zone": "African grasslands",
       "qa_card": {
         "question": "How tall did the giraffe seem next to you?",
@@ -96,8 +113,17 @@
       "label": "Gorilla",
       "emoji": "🦍",
       "one_liner": "Great ape families — calm watch stop.",
-      "tags": ["wow", "outdoor", "play"],
-      "age_fit": ["2-3", "4-5", "6-8", "9+"],
+      "tags": [
+        "wow",
+        "outdoor",
+        "play"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
       "zone": "Great Apes of Harambee",
       "qa_card": {
         "question": "What was the gorilla doing with its hands or face?",
@@ -114,8 +140,17 @@
       "label": "African lion",
       "emoji": "🦁",
       "one_liner": "Pride of the grasslands — look for cubs when on view.",
-      "tags": ["wow", "big-cats", "outdoor"],
-      "age_fit": ["2-3", "4-5", "6-8", "9+"],
+      "tags": [
+        "wow",
+        "big-cats",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
       "zone": "African grasslands",
       "qa_card": {
         "question": "What did you notice about the lions?",
@@ -124,15 +159,25 @@
       "catalog_id": "african-lion",
       "presence": "verified",
       "presence_source": "official_animals_page",
-      "presence_checked": "2026-08-08"
+      "presence_checked": "2026-08-08",
+      "display_label": "African lion"
     },
     {
       "id": "chimpanzee",
       "label": "Chimpanzee",
       "emoji": "🐵",
       "one_liner": "Smart climbers — lots of movement when active.",
-      "tags": ["wow", "play", "climb"],
-      "age_fit": ["2-3", "4-5", "6-8", "9+"],
+      "tags": [
+        "wow",
+        "play",
+        "climb"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
       "zone": "Great Apes of Harambee",
       "qa_card": {
         "question": "How did the chimpanzee use its hands?",
@@ -141,15 +186,25 @@
       "catalog_id": "chimpanzee",
       "presence": "verified",
       "presence_source": "official_animals_page",
-      "presence_checked": "2026-08-08"
+      "presence_checked": "2026-08-08",
+      "display_label": "Chimpanzee"
     },
     {
       "id": "amur_tiger",
       "label": "Tiger",
       "emoji": "🐯",
       "one_liner": "Amur tiger — stripes and stealth.",
-      "tags": ["big-cats", "outdoor", "wow"],
-      "age_fit": ["2-3", "4-5", "6-8", "9+"],
+      "tags": [
+        "big-cats",
+        "outdoor",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
       "zone": "Asian Forest",
       "qa_card": {
         "question": "How many stripe patterns can you spot?",
@@ -160,32 +215,51 @@
       "presence": "verified",
       "presence_source": "official_animals_page",
       "presence_checked": "2026-08-08",
-      "presence_note": "Official page is Amur tiger — soft label Tiger on sheet."
+      "presence_note": "Official is Amur tiger not Sumatran. Soft-label Tiger OK; fix catalog_id."
     },
     {
       "id": "red_panda",
       "label": "Red panda",
       "emoji": "🦊",
       "one_liner": "Tree climber — often high and hard to spot.",
-      "tags": ["climb", "outdoor"],
-      "age_fit": ["2-3", "4-5", "6-8", "9+"],
+      "tags": [
+        "climb",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
       "zone": "Asia",
       "qa_card": {
         "question": "Where was the red panda — branch or ground?",
         "answer": "Tell a grown-up what you saw!"
       },
       "catalog_id": "red-panda",
-      "presence": "verified",
+      "presence": "high",
       "presence_source": "official_animals_page",
-      "presence_checked": "2026-08-08"
+      "presence_checked": "2026-08-08",
+      "display_label": "Red panda",
+      "presence_note": "Featured in conservation/marketing imagery"
     },
     {
       "id": "polar_bear",
       "label": "Polar bear",
       "emoji": "🐻‍❄️",
       "one_liner": "Arctic icon — big and cool when on view.",
-      "tags": ["wow", "outdoor", "big"],
-      "age_fit": ["2-3", "4-5", "6-8", "9+"],
+      "tags": [
+        "wow",
+        "outdoor",
+        "big"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
       "zone": "Arctic Ring of Life",
       "qa_card": {
         "question": "What color is a polar bear’s fur up close?",
@@ -194,15 +268,24 @@
       "presence": "verified",
       "presence_source": "official_animals_page",
       "presence_checked": "2026-08-08",
-      "presence_note": "Featured on detroitzoo.org animals hub (Kali)."
+      "presence_note": "Arctic Ring of Life",
+      "display_label": "Polar bear"
     },
     {
       "id": "grevys_zebra",
       "label": "Zebra",
       "emoji": "🦓",
       "one_liner": "Grevy’s zebra — bold stripes for a pattern hunt.",
-      "tags": ["outdoor", "wow"],
-      "age_fit": ["2-3", "4-5", "6-8", "9+"],
+      "tags": [
+        "outdoor",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
       "zone": "African grasslands",
       "qa_card": {
         "question": "Are any two zebras striped the same?",
@@ -219,8 +302,15 @@
       "label": "Sloth bear",
       "emoji": "🐻",
       "one_liner": "Shaggy bear with a long snout — fun face to watch.",
-      "tags": ["outdoor", "wow"],
-      "age_fit": ["4-5", "6-8", "9+"],
+      "tags": [
+        "outdoor",
+        "wow"
+      ],
+      "age_fit": [
+        "4-5",
+        "6-8",
+        "9+"
+      ],
       "zone": "Asian Forest",
       "qa_card": {
         "question": "What does the sloth bear’s snout look like?",
@@ -228,15 +318,23 @@
       },
       "presence": "verified",
       "presence_source": "official_animals_page",
-      "presence_checked": "2026-08-08"
+      "presence_checked": "2026-08-08",
+      "display_label": "Sloth bear"
     },
     {
       "id": "warthog",
       "label": "Warthog",
       "emoji": "🐗",
       "one_liner": "Tusks and a funny trot — easy laugh stop.",
-      "tags": ["outdoor"],
-      "age_fit": ["2-3", "4-5", "6-8", "9+"],
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
       "zone": "African grasslands",
       "qa_card": {
         "question": "What stood out — tusks, snout, or how it ran?",
@@ -245,23 +343,33 @@
       "catalog_id": "warthog",
       "presence": "verified",
       "presence_source": "official_animals_page",
-      "presence_checked": "2026-08-08"
+      "presence_checked": "2026-08-08",
+      "display_label": "Warthog"
     },
     {
       "id": "gray_wolf",
       "label": "Gray wolf",
       "emoji": "🐺",
       "one_liner": "Pack hunter — listen for howls if they’re vocal.",
-      "tags": ["outdoor", "wow"],
-      "age_fit": ["4-5", "6-8", "9+"],
+      "tags": [
+        "outdoor",
+        "wow"
+      ],
+      "age_fit": [
+        "4-5",
+        "6-8",
+        "9+"
+      ],
       "zone": "American Grasslands",
       "qa_card": {
         "question": "Did the wolf look more like a dog or something wilder?",
         "answer": "Talk about size, ears, and how it moves!"
       },
-      "presence": "verified",
+      "presence": "high",
       "presence_source": "official_animals_page",
-      "presence_checked": "2026-08-08"
+      "presence_checked": "2026-08-08",
+      "display_label": "Gray wolf",
+      "presence_note": "Historically present; confirm on animals-list if still exhibited"
     }
   ],
   "content_mode": "curated",
@@ -283,20 +391,10 @@
     "giraffe",
     "gorilla"
   ],
-  "research_notes": "Presence audit 2026-08-08 against detroitzoo.org animal pages (HTTP 200). Removed elephant (gone since 2005), hippo, cheetah; soft-labeled penguin/tiger/zebra. Sources: https://detroitzoo.org/animals/ and individual /animal/* pages.",
+  "research_notes": "Presence audit 2026-08-08 against detroitzoo.org animal pages (HTTP 200). Removed elephant (gone since 2005), hippo, cheetah; soft-labeled penguin/tiger/zebra. Sources: https://detroitzoo.org/animals/ and individual /animal/* pages. · presence-audit 2026-08-08 [minor]",
   "presence_sources": [
+    "https://detroitzoo.org/",
     "https://detroitzoo.org/animals/",
-    "https://detroitzoo.org/animal/macaroni-penguin/",
-    "https://detroitzoo.org/animal/giraffe/",
-    "https://detroitzoo.org/animal/gorilla/",
-    "https://detroitzoo.org/animal/african-lion/",
-    "https://detroitzoo.org/animal/chimpanzee/",
-    "https://detroitzoo.org/animal/amur-tiger/",
-    "https://detroitzoo.org/animal/red-panda/",
-    "https://detroitzoo.org/animal/polar-bear/",
-    "https://detroitzoo.org/animal/grevys-zebra/",
-    "https://detroitzoo.org/animal/sloth-bear/",
-    "https://detroitzoo.org/animal/warthog/",
-    "https://detroitzoo.org/animal/gray-wolf/"
+    "https://detroitzoo.org/things-to-do/"
   ]
 }

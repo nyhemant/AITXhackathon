@@ -372,7 +372,7 @@ window.FIELD_PACK_CATALOG = {
   stingray: {
     id: "stingray",
     name: "Stingray",
-    emoji: "射线",
+    emoji: "🐟",
     photo: "photos/stingray.jpg",
     photoCredit: "Photo via Wikimedia Commons",
     blurb: "Flat swimmer — often in touch pools (gentle hands!).",
@@ -866,7 +866,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird with bright feathers" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -1011,7 +1011,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird with bright feathers" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -1059,7 +1059,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird with bright feathers" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -1113,7 +1113,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird with bright feathers" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -1167,7 +1167,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird with bright feathers" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -1220,7 +1220,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Find a bird that runs or stays low" },
       { id: "th6", text: "Point far away at something tiny" },
       { id: "th7", text: "Notice dusty, dry, or green habitat" },
-      { id: "th8", text: "Photo your favorite wild view" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -1274,7 +1274,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird with bright feathers" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -1328,7 +1328,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird with bright feathers" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -1382,7 +1382,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird with bright feathers" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -1763,7 +1763,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Find a planet, star, or sky clue" },
       { id: "th6", text: "Notice three different materials" },
       { id: "th7", text: "Ask a grown-up one wonder question" },
-      { id: "th8", text: "Photo your favorite stop" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -1810,7 +1810,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Find a planet, star, or sky clue" },
       { id: "th6", text: "Notice three different materials" },
       { id: "th7", text: "Ask a grown-up one wonder question" },
-      { id: "th8", text: "Photo your favorite stop" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -1859,7 +1859,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Find a planet, star, or sky clue" },
       { id: "th6", text: "Notice three different materials" },
       { id: "th7", text: "Ask a grown-up one wonder question" },
-      { id: "th8", text: "Photo your favorite stop" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -1911,7 +1911,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Find a planet, star, or sky clue" },
       { id: "th6", text: "Notice three different materials" },
       { id: "th7", text: "Ask a grown-up one wonder question" },
-      { id: "th8", text: "Photo your favorite stop" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -1958,7 +1958,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Point to Earth or the Moon" },
       { id: "th6", text: "Try a hands-on space activity" },
       { id: "th7", text: "Hear a space story or film clip" },
-      { id: "th8", text: "Photo your favorite rocket" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -2051,7 +2051,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Find a planet or sky clue" },
       { id: "th6", text: "Notice three materials" },
       { id: "th7", text: "Ask one wonder question" },
-      { id: "th8", text: "Photo your favorite stop" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -2104,7 +2104,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud or quiet animal sound" },
       { id: "th6", text: "Point to a sleep spot" },
       { id: "th7", text: "Find bright feathers" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -2238,7 +2238,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Find a planet or sky clue" },
       { id: "th6", text: "Notice three materials" },
       { id: "th7", text: "Ask one wonder question" },
-      { id: "th8", text: "Photo your favorite stop" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -2279,7 +2279,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Point to Earth or the Moon" },
       { id: "th6", text: "Try a hands-on space activity" },
       { id: "th7", text: "Hear a space story" },
-      { id: "th8", text: "Photo your favorite rocket" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -2331,7 +2331,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud or quiet animal sound" },
       { id: "th6", text: "Point to a sleep spot" },
       { id: "th7", text: "Find bright feathers" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -2382,7 +2382,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud or quiet animal sound" },
       { id: "th6", text: "Point to a sleep spot" },
       { id: "th7", text: "Find bright feathers" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -2428,7 +2428,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud or quiet animal sound" },
       { id: "th6", text: "Point to a sleep spot" },
       { id: "th7", text: "Find bright feathers" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -2474,7 +2474,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud or quiet animal sound" },
       { id: "th6", text: "Point to a sleep spot" },
       { id: "th7", text: "Find bright feathers" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -2515,7 +2515,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Find a planet or sky clue" },
       { id: "th6", text: "Notice three materials" },
       { id: "th7", text: "Ask one wonder question" },
-      { id: "th8", text: "Photo your favorite stop" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -2561,7 +2561,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud or quiet animal sound" },
       { id: "th6", text: "Point to a sleep spot" },
       { id: "th7", text: "Find bright feathers" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -2653,7 +2653,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud or quiet animal sound" },
       { id: "th6", text: "Point to a sleep spot" },
       { id: "th7", text: "Find bright feathers" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -2694,7 +2694,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Find a planet or sky clue" },
       { id: "th6", text: "Notice three materials" },
       { id: "th7", text: "Ask one wonder question" },
-      { id: "th8", text: "Photo your favorite stop" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -2740,7 +2740,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud or quiet animal sound" },
       { id: "th6", text: "Point to a sleep spot" },
       { id: "th7", text: "Find bright feathers" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -2782,7 +2782,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Find a planet or sky clue" },
       { id: "th6", text: "Notice three materials" },
       { id: "th7", text: "Ask one wonder question" },
-      { id: "th8", text: "Photo your favorite stop" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -2828,7 +2828,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud or quiet animal sound" },
       { id: "th6", text: "Point to a sleep spot" },
       { id: "th7", text: "Find bright feathers" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -2917,7 +2917,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Find a planet or sky clue" },
       { id: "th6", text: "Notice three materials" },
       { id: "th7", text: "Ask one wonder question" },
-      { id: "th8", text: "Photo your favorite stop" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -2963,7 +2963,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud or quiet animal sound" },
       { id: "th6", text: "Point to a sleep spot" },
       { id: "th7", text: "Find bright feathers" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -3007,7 +3007,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud or quiet animal sound" },
       { id: "th6", text: "Point to a sleep spot" },
       { id: "th7", text: "Find bright feathers" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -3053,7 +3053,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud or quiet animal sound" },
       { id: "th6", text: "Point to a sleep spot" },
       { id: "th7", text: "Find bright feathers" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -3097,7 +3097,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud or quiet animal sound" },
       { id: "th6", text: "Point to a sleep spot" },
       { id: "th7", text: "Find bright feathers" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-08",
   },
@@ -3143,7 +3143,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud or quiet animal sound" },
       { id: "th6", text: "Point to a sleep spot" },
       { id: "th7", text: "Find bright feathers" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -3189,7 +3189,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud or quiet animal sound" },
       { id: "th6", text: "Point to a sleep spot" },
       { id: "th7", text: "Find bright feathers" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -3231,7 +3231,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Find a planet or sky clue" },
       { id: "th6", text: "Notice three materials" },
       { id: "th7", text: "Ask one wonder question" },
-      { id: "th8", text: "Photo your favorite stop" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -3277,7 +3277,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud or quiet animal sound" },
       { id: "th6", text: "Point to a sleep spot" },
       { id: "th7", text: "Find bright feathers" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -3323,7 +3323,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud or quiet animal sound" },
       { id: "th6", text: "Point to a sleep spot" },
       { id: "th7", text: "Find bright feathers" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -3415,7 +3415,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud or quiet animal sound" },
       { id: "th6", text: "Point to a sleep spot" },
       { id: "th7", text: "Find bright feathers" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -3461,7 +3461,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud or quiet animal sound" },
       { id: "th6", text: "Point to a sleep spot" },
       { id: "th7", text: "Find bright feathers" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -3503,7 +3503,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Find a planet or sky clue" },
       { id: "th6", text: "Notice three materials" },
       { id: "th7", text: "Ask one wonder question" },
-      { id: "th8", text: "Photo your favorite stop" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -3549,7 +3549,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud or quiet animal sound" },
       { id: "th6", text: "Point to a sleep spot" },
       { id: "th7", text: "Find bright feathers" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -3637,7 +3637,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Find a planet or sky clue" },
       { id: "th6", text: "Notice three materials" },
       { id: "th7", text: "Ask one wonder question" },
-      { id: "th8", text: "Photo your favorite stop" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -3683,7 +3683,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud or quiet animal sound" },
       { id: "th6", text: "Point to a sleep spot" },
       { id: "th7", text: "Find bright feathers" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -3725,7 +3725,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Find a planet or sky clue" },
       { id: "th6", text: "Notice three materials" },
       { id: "th7", text: "Ask one wonder question" },
-      { id: "th8", text: "Photo your favorite stop" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -3815,7 +3815,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud or quiet animal sound" },
       { id: "th6", text: "Point to a sleep spot" },
       { id: "th7", text: "Find bright feathers" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -3856,7 +3856,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Find a planet or sky clue" },
       { id: "th6", text: "Notice three materials" },
       { id: "th7", text: "Ask one wonder question" },
-      { id: "th8", text: "Photo your favorite stop" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -3902,7 +3902,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud or quiet animal sound" },
       { id: "th6", text: "Point to a sleep spot" },
       { id: "th7", text: "Find bright feathers" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -3944,7 +3944,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Find a planet or sky clue" },
       { id: "th6", text: "Notice three materials" },
       { id: "th7", text: "Ask one wonder question" },
-      { id: "th8", text: "Photo your favorite stop" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -3989,7 +3989,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud or quiet animal sound" },
       { id: "th6", text: "Point to a sleep spot" },
       { id: "th7", text: "Find bright feathers" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -4035,7 +4035,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud or quiet animal sound" },
       { id: "th6", text: "Point to a sleep spot" },
       { id: "th7", text: "Find bright feathers" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -4081,7 +4081,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud or quiet animal sound" },
       { id: "th6", text: "Point to a sleep spot" },
       { id: "th7", text: "Find bright feathers" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -4171,7 +4171,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud or quiet animal sound" },
       { id: "th6", text: "Point to a sleep spot" },
       { id: "th7", text: "Find bright feathers" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -4213,7 +4213,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Find a planet or sky clue" },
       { id: "th6", text: "Notice three materials" },
       { id: "th7", text: "Ask one wonder question" },
-      { id: "th8", text: "Photo your favorite stop" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-02",
   },
@@ -4303,7 +4303,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a long tail or lemur ring" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -4346,7 +4346,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Find an animal from the ocean" },
       { id: "th6", text: "Notice three materials or textures" },
       { id: "th7", text: "Ask one wonder question" },
-      { id: "th8", text: "Photo your favorite stop" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -4393,7 +4393,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud call (or a quiet one)" },
       { id: "th6", text: "Point to a shady resting spot" },
       { id: "th7", text: "Find an animal smaller than your backpack" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -4440,7 +4440,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Point toward the harbour if you can see it" },
       { id: "th6", text: "Find a bird that cannot fly far" },
       { id: "th7", text: "Hear a loud sound (or a quiet one)" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -4485,7 +4485,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find stripes or spots" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-06",
   },
@@ -4530,7 +4530,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to a shady resting spot" },
       { id: "th7", text: "Find black-and-white fur" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-06",
   },
@@ -4578,7 +4578,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Find a long neck or trunk" },
       { id: "th6", text: "Hear a loud sound (or a quiet one)" },
       { id: "th7", text: "Point to where an animal might sleep" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -4624,7 +4624,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Find an animal with arms (or tentacles)" },
       { id: "th6", text: "Spot something tiny and bright" },
       { id: "th7", text: "Find an animal that walks on the bottom" },
-      { id: "th8", text: "Photo your favorite sea friend" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-06",
   },
@@ -4671,7 +4671,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to a shady resting spot" },
       { id: "th7", text: "Find a bird that loves water" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -4717,7 +4717,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find an animal that climbs" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-06",
   },
@@ -4762,7 +4762,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird that loves water" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-06",
   },
@@ -4808,7 +4808,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird that loves water" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-06",
   },
@@ -4854,7 +4854,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Find an animal with arms (or tentacles)" },
       { id: "th6", text: "Spot something tiny and bright" },
       { id: "th7", text: "Find an animal that walks on the bottom" },
-      { id: "th8", text: "Photo your favorite sea friend" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-06",
   },
@@ -4900,7 +4900,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Find an animal with arms (or tentacles)" },
       { id: "th6", text: "Spot something tiny and bright" },
       { id: "th7", text: "Find an animal that walks on the bottom" },
-      { id: "th8", text: "Photo your favorite sea friend" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-06",
   },
@@ -4946,7 +4946,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird that loves water" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-06",
   },
@@ -4991,7 +4991,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird that loves water" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-06",
   },
@@ -5037,7 +5037,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird that loves water" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-06",
   },
@@ -5083,7 +5083,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Find an animal with arms (or tentacles)" },
       { id: "th6", text: "Spot something tiny and bright" },
       { id: "th7", text: "Find an animal that walks on the bottom" },
-      { id: "th8", text: "Photo your favorite sea friend" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-06",
   },
@@ -5128,7 +5128,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird that loves water" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -5175,7 +5175,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird that loves water" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -5221,7 +5221,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird that loves water" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -5266,7 +5266,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird that loves water" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -5311,7 +5311,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Find stripes or spots" },
       { id: "th6", text: "Point to a quiet resting animal" },
       { id: "th7", text: "Notice three night sounds or smells" },
-      { id: "th8", text: "Photo your favorite night animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -5356,7 +5356,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Read a kid label out loud" },
       { id: "th6", text: "Notice three different habitats" },
       { id: "th7", text: "Ask one wonder question" },
-      { id: "th8", text: "Photo your favorite ecosystem stop" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -5401,7 +5401,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird that loves water" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -5447,7 +5447,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird that loves water" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -5493,7 +5493,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird that loves water" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -5539,7 +5539,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird that loves water" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -5585,7 +5585,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird that loves water" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -5630,7 +5630,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird that loves water" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -5676,7 +5676,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird that loves water" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -5721,7 +5721,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird that loves water" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -5766,7 +5766,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird that loves water" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -5812,7 +5812,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Find an animal with arms (or tentacles)" },
       { id: "th6", text: "Spot something tiny and bright" },
       { id: "th7", text: "Find an animal that walks on the bottom" },
-      { id: "th8", text: "Photo your favorite sea friend" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -5858,7 +5858,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Find an animal with arms (or tentacles)" },
       { id: "th6", text: "Spot something tiny and bright" },
       { id: "th7", text: "Find an animal that walks on the bottom" },
-      { id: "th8", text: "Photo your favorite sea friend" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -5904,7 +5904,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird that loves water" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -5950,7 +5950,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird that loves water" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -5996,7 +5996,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird that loves water" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -6042,7 +6042,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird that loves water" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -6088,7 +6088,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird that loves water" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -6134,7 +6134,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird that loves water" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -6180,7 +6180,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird that loves water" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -6226,7 +6226,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird that loves water" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -6272,7 +6272,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird that loves water" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -6318,7 +6318,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird that loves water" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -6364,7 +6364,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird that loves water" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -6410,7 +6410,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird that loves water" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -6456,7 +6456,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird that loves water" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -6502,7 +6502,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird that loves water" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -6548,7 +6548,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird that loves water" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -6594,7 +6594,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Find an animal with arms (or tentacles)" },
       { id: "th6", text: "Spot something tiny and bright" },
       { id: "th7", text: "Find an animal that walks on the bottom" },
-      { id: "th8", text: "Photo your favorite sea friend" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -6640,7 +6640,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird that loves water" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -6686,7 +6686,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Find an animal with arms (or tentacles)" },
       { id: "th6", text: "Spot something tiny and bright" },
       { id: "th7", text: "Find an animal that walks on the bottom" },
-      { id: "th8", text: "Photo your favorite sea friend" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -6732,7 +6732,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird that loves water" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -6778,7 +6778,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Point to a shady resting spot" },
       { id: "th6", text: "Find a bird that cannot fly far" },
       { id: "th7", text: "Watch something walk or run" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -6824,7 +6824,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird that loves water" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -6870,7 +6870,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Read a sign about the eco-park" },
       { id: "th6", text: "Find a quiet resting spot" },
       { id: "th7", text: "Point to something native to this region" },
-      { id: "th8", text: "Photo your favorite stop" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -6916,7 +6916,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird that loves water" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -6962,7 +6962,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird that loves water" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -7008,7 +7008,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird that loves water" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -7054,7 +7054,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird that loves water" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -7100,7 +7100,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird that loves water" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -7146,7 +7146,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird that loves water" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -7192,7 +7192,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Hear a loud sound (or a quiet one)" },
       { id: "th6", text: "Point to where an animal might sleep" },
       { id: "th7", text: "Find a bird that loves water" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -7238,7 +7238,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Point to a shady resting spot" },
       { id: "th6", text: "Find a bird that cannot fly far" },
       { id: "th7", text: "Watch something walk or run" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   },
@@ -7284,7 +7284,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th5", text: "Point to a shady resting spot" },
       { id: "th6", text: "Find a bird that cannot fly far" },
       { id: "th7", text: "Watch something walk or run" },
-      { id: "th8", text: "Photo your favorite animal" }
+      { id: "th8", text: "Pick your favorite — draw it later" }
     ],
     updated: "2026-08-07",
   }

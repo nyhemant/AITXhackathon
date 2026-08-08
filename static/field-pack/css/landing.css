@@ -2760,3 +2760,13 @@ body.landing-body {
     animation: none;
   }
 }
+
+.story-extras-note {
+  margin: 0.75rem auto 0;
+  max-width: 36rem;
+  text-align: center;
+  font-size: 0.92rem;
+  color: var(--muted-soft, #5a6b82);
+  line-height: 1.45;
+}
+.story-extras-note a { font-weight: 650; }

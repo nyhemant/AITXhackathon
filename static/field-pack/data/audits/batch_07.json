@@ -1,0 +1,156 @@
+[
+  {
+    "slug": "taronga-zoo",
+    "name": "Taronga Zoo",
+    "type": "zoo",
+    "city": "Sydney",
+    "country": "AU",
+    "official_url": "https://taronga.org.au/sydney-zoo",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 12
+  },
+  {
+    "slug": "thinkery",
+    "name": "Thinkery",
+    "type": "museum",
+    "city": "Austin",
+    "country": "US",
+    "official_url": "https://thinkeryaustin.org/",
+    "list_confidence": "partial",
+    "content_mode": "hybrid",
+    "n_items": 8
+  },
+  {
+    "slug": "toronto-zoo",
+    "name": "Toronto Zoo",
+    "type": "zoo",
+    "city": "Toronto",
+    "country": "CA",
+    "official_url": "https://www.torontozoo.com/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 12
+  },
+  {
+    "slug": "two-oceans-aquarium",
+    "name": "Two Oceans Aquarium",
+    "type": "aquarium",
+    "city": "Cape Town",
+    "country": "ZA",
+    "official_url": "https://www.aquarium.co.za/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 12
+  },
+  {
+    "slug": "ueno-zoo",
+    "name": "Ueno Zoo",
+    "type": "zoo",
+    "city": "Tokyo",
+    "country": "JP",
+    "official_url": "https://www.tokyo-zoo.net/english/ueno/",
+    "list_confidence": "partial",
+    "content_mode": "curated",
+    "n_items": 12
+  },
+  {
+    "slug": "union-station-kc-science",
+    "name": "Science City at Union Station",
+    "type": "museum",
+    "city": "Kansas City",
+    "country": "US",
+    "official_url": "https://www.unionstation.org/sciencecity",
+    "list_confidence": "partial",
+    "content_mode": "hybrid",
+    "n_items": 8
+  },
+  {
+    "slug": "vancouver-aquarium",
+    "name": "Vancouver Aquarium",
+    "type": "aquarium",
+    "city": "Vancouver",
+    "country": "CA",
+    "official_url": "https://www.vanaqua.org/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 12
+  },
+  {
+    "slug": "vienna-zoo",
+    "name": "Sch\u00f6nbrunn Zoo",
+    "type": "zoo",
+    "city": "Vienna",
+    "country": "AT",
+    "official_url": "https://www.zoovienna.at/en/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 13
+  },
+  {
+    "slug": "virginia-aquarium",
+    "name": "Virginia Aquarium",
+    "type": "aquarium",
+    "city": "Virginia Beach",
+    "country": "US",
+    "official_url": "https://www.virginiaaquarium.com/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 12
+  },
+  {
+    "slug": "waikiki-aquarium",
+    "name": "Waikiki Aquarium",
+    "type": "aquarium",
+    "city": "Honolulu",
+    "country": "US",
+    "official_url": "https://www.waikikiaquarium.org/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 12
+  },
+  {
+    "slug": "warsaw-zoo",
+    "name": "Warsaw Zoo",
+    "type": "zoo",
+    "city": "Warsaw",
+    "country": "PL",
+    "official_url": "https://zoo.waw.pl/en/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 12
+  },
+  {
+    "slug": "wellington-zoo",
+    "name": "Wellington Zoo",
+    "type": "zoo",
+    "city": "Wellington",
+    "country": "NZ",
+    "official_url": "https://wellingtonzoo.com/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 12
+  },
+  {
+    "slug": "woodland-park-zoo",
+    "name": "Woodland Park Zoo",
+    "type": "zoo",
+    "city": "Seattle",
+    "country": "US",
+    "official_url": "https://www.zoo.org/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 13
+  },
+  {
+    "slug": "zurich-zoo",
+    "name": "Zurich Zoo",
+    "type": "zoo",
+    "city": "Zurich",
+    "country": "CH",
+    "official_url": "https://www.zoo.ch/en",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 13
+  }
+]

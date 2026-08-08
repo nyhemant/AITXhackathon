@@ -1,0 +1,116 @@
+{
+  "slug": "air-and-space",
+  "name": "National Air and Space Museum",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://airandspace.si.edu/",
+    "https://airandspace.si.edu/whats-on/exhibitions",
+    "https://airandspace.si.edu/whats-on/exhibitions/rtx-living-space-age-hall"
+  ],
+  "list_confidence_recommended": "audited",
+  "practical_fixes": [
+    {
+      "field": "transit_note",
+      "current": "Mall or Udvar-Hazy (separate campus).",
+      "suggested": "National Mall (DC) vs Udvar-Hazy Center (Chantilly, VA) are separate campuses — pick one outing; shuttle orbiter is at Udvar-Hazy.",
+      "reason": "Prevent parents hunting Discovery on the Mall."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "cm-imaginarium",
+      "name": "Imaginarium",
+      "reason": "Children's-museum taxonomy leakage; no Imaginarium at NASM."
+    }
+  ],
+  "items": [
+    {
+      "id": "sci_rocket",
+      "label": "Rockets & launch",
+      "catalog_id": "sci-rocket",
+      "presence": "verified",
+      "display_label": "Rockets & spaceflight",
+      "official_name": "RTX Living in the Space Age / rocketry galleries",
+      "notes": "Rockets and space-age artifacts on Mall campus.",
+      "source_url": "https://airandspace.si.edu/whats-on/exhibitions"
+    },
+    {
+      "id": "sci_shuttle",
+      "label": "Space shuttle / orbiter",
+      "catalog_id": "sci-shuttle",
+      "presence": "medium",
+      "display_label": "Space shuttle / orbiter",
+      "official_name": "",
+      "notes": "Full orbiter Discovery is at Udvar-Hazy (Chantilly), not the Mall building. Mall has spacecraft/CM etc. Split campuses in practical notes.",
+      "source_url": "https://airandspace.si.edu/"
+    },
+    {
+      "id": "sci_astronaut",
+      "label": "Astronaut life",
+      "catalog_id": "sci-astronaut",
+      "presence": "verified",
+      "display_label": "Astronaut & moon exploration",
+      "official_name": "Destination Moon / spacesuits",
+      "notes": "Armstrong suit, Columbia CM historically featured; astronaut stories across galleries.",
+      "source_url": ""
+    },
+    {
+      "id": "sci_planet",
+      "label": "Planet / space hall",
+      "catalog_id": "sci-planet",
+      "presence": "verified",
+      "display_label": "Planetarium / universe",
+      "official_name": "Planetarium programs; Discovering Our Universe",
+      "notes": "",
+      "source_url": "https://airandspace.si.edu/whats-on/exhibitions"
+    },
+    {
+      "id": "cm_free_explore",
+      "label": "Free explore",
+      "catalog_id": "cm-free-explore",
+      "presence": "high",
+      "display_label": "Free explore",
+      "official_name": "",
+      "notes": "Generic free-explore OK for large museum.",
+      "source_url": ""
+    },
+    {
+      "id": "sci_hands_on",
+      "label": "Hands-on lab",
+      "catalog_id": "sci-hands-on",
+      "presence": "verified",
+      "display_label": "How Things Fly",
+      "official_name": "TEXTRON How Things Fly",
+      "notes": "~50 interactives.",
+      "source_url": "https://airandspace.si.edu/whats-on/exhibitions/textron-how-things-fly"
+    },
+    {
+      "id": "cm_outdoor",
+      "label": "Outdoor Area",
+      "catalog_id": "cm-outdoor",
+      "presence": "medium",
+      "display_label": "Outdoor Area",
+      "official_name": "",
+      "notes": "No major outdoor animal/play yard; Mall grounds only. Soft generic.",
+      "source_url": ""
+    },
+    {
+      "id": "cm_imaginarium",
+      "label": "Imaginarium",
+      "catalog_id": "cm-imaginarium",
+      "presence": "absent",
+      "display_label": "Imaginarium",
+      "official_name": "",
+      "notes": "Children's-museum taxonomy leakage; no Imaginarium at NASM.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "sci_rocket",
+    "sci_astronaut",
+    "sci_hands_on"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "Core air/space stops (rockets, astronauts, How Things Fly, planetarium) verified. Drop Imaginarium leakage; treat shuttle orbiter as Udvar-Hazy-only or relabel spacecraft.",
+  "severity": "major"
+}

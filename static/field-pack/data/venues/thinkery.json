@@ -16,7 +16,7 @@
     "typical_duration": "half day",
     "ticket_note": "Mueller; timed tickets peak times.",
     "transit_note": "Easy parking usually.",
-    "energy_note": "indoor",
+    "energy_note": "Mostly indoors",
     "best_start": "One big play room + snack."
   },
   "items": [
@@ -40,7 +40,12 @@
         "question": "What did you notice about the Creative Makery?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "cm-makery"
+      "catalog_id": "cm-makery",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Creative Makery",
+      "presence_note": "Maker / invent spaces are core Thinkery brand."
     },
     {
       "id": "cm_imaginarium",
@@ -61,7 +66,12 @@
         "question": "What did you notice about the Imaginarium?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "cm-imaginarium"
+      "catalog_id": "cm-imaginarium",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Imaginarium",
+      "presence_note": "Imaginative play zones core."
     },
     {
       "id": "cm_waterfall",
@@ -83,7 +93,12 @@
         "question": "What did you notice about the Waterfall play?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "cm-waterfall"
+      "catalog_id": "cm-waterfall",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Waterfall play",
+      "presence_note": "Signature water play feature historically; confirm open seasonally."
     },
     {
       "id": "cm_toddler_garden",
@@ -105,7 +120,12 @@
         "question": "What did you notice about the Toddler Garden?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "cm-toddler-garden"
+      "catalog_id": "cm-toddler-garden",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Toddler Garden",
+      "presence_note": "Toddler areas standard."
     },
     {
       "id": "cm_outdoor",
@@ -127,7 +147,12 @@
         "question": "What did you notice about the Outdoor Area?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "cm-outdoor"
+      "catalog_id": "cm-outdoor",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Outdoor Area",
+      "presence_note": "Outdoor play present on campus."
     },
     {
       "id": "cm_woven",
@@ -150,7 +175,11 @@
         "question": "What did you try or notice at Woven Wonders?",
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
-      "catalog_id": "cm-woven"
+      "catalog_id": "cm-woven",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Woven Wonders",
+      "presence_note": "Named zone — confirm current floor plan label."
     },
     {
       "id": "cm_art_lab",
@@ -173,7 +202,12 @@
         "question": "What did you try or notice at Art Lab?",
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
-      "catalog_id": "cm-art-lab"
+      "catalog_id": "cm-art-lab",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Art Lab",
+      "presence_note": "Art/create labs core."
     },
     {
       "id": "cm_free_explore",
@@ -195,7 +229,12 @@
         "question": "What did you try or notice at Free explore?",
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
-      "catalog_id": "cm-free-explore"
+      "catalog_id": "cm-free-explore",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Free explore",
+      "presence_note": "Free-explore is the museum mode."
     }
   ],
   "content_mode": "hybrid",
@@ -212,10 +251,15 @@
     "Leave while happy"
   ],
   "route_90m": [
+    "cm_waterfall",
     "cm_makery",
-    "cm_imaginarium",
-    "cm_waterfall"
+    "cm_toddler_garden"
   ],
-  "research_notes": "R2 hybrid 2026-08-07",
-  "list_confidence": "partial"
+  "research_notes": "R2 hybrid 2026-08-07 · presence-audit 2026-08-08 [ok]",
+  "list_confidence": "partial",
+  "do_not_list": [],
+  "presence_sources": [
+    "https://thinkeryaustin.org/",
+    "existing full pack"
+  ]
 }

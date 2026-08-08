@@ -42,7 +42,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sumatran-tiger",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Sumatran tiger",
+      "presence_note": "Asian Forest Sanctuary: Sumatran tiger (e.g. Bintang)."
     },
     {
       "id": "shark",
@@ -65,7 +69,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "shark",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Shark",
+      "presence_note": "Pacific Seas / Tropical Reef aquariums — sharks (incl. dive with sharks marketing)."
     },
     {
       "id": "jellyfish",
@@ -88,7 +96,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "jellyfish",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Jellyfish",
+      "presence_note": "Aquarium jellies. Soft Jellyfish."
     },
     {
       "id": "asian_small_clawed_otter",
@@ -111,7 +122,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "asian-small-clawed-otter",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Asian small-clawed otter",
+      "presence_note": "Asian Forest: Asian small-clawed otter."
     },
     {
       "id": "red_panda",
@@ -134,11 +149,14 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "red-panda",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Red panda",
+      "presence_note": "Not on Asian Forest animal list extract (tiger, clouded leopard, gibbon, tapir, anoa, siamang, otter)."
     },
     {
       "id": "african_elephant",
-      "label": "African elephant",
+      "label": "Elephant (verify Asian)",
       "emoji": "🐘",
       "one_liner": "Biggest land animal — trunk to grab, spray, and say hello.",
       "tags": [
@@ -159,31 +177,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "african-elephant",
-      "presence": "template"
-    },
-    {
-      "id": "reticulated_giraffe",
-      "label": "Reticulated giraffe",
-      "emoji": "🦒",
-      "one_liner": "Tallest animal on long legs — look up!",
-      "tags": [
-        "wow",
-        "tall",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Reticulated giraffe?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "reticulated-giraffe",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Elephant (verify Asian)",
+      "presence_note": "Asian elephant historically (Suki); status/species label — not African. Medium pending live confirm."
     },
     {
       "id": "sea_turtle",
@@ -207,7 +204,10 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "sea-turtle",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Sea turtle",
+      "presence_note": "Aquarium sea turtles likely. Soft Sea turtle."
     },
     {
       "id": "octopus",
@@ -230,11 +230,14 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "octopus",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Octopus",
+      "presence_note": "Aquarium. Soft Octopus."
     },
     {
       "id": "african_penguin",
-      "label": "African penguin",
+      "label": "Penguin",
       "emoji": "🐧",
       "one_liner": "Waddle on land, zoom in water.",
       "tags": [
@@ -254,7 +257,11 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "african-penguin",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Penguin",
+      "presence_note": "Penguin Point. Soft Penguin; confirm African."
     },
     {
       "id": "stingray",
@@ -277,33 +284,13 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "stingray",
-      "presence": "template"
-    },
-    {
-      "id": "zebra",
-      "label": "Zebra",
-      "emoji": "🦓",
-      "one_liner": "Striped grassland runner — every pattern is unique.",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Zebra?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "zebra",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Stingray",
+      "presence_note": "Aquarium rays. Soft Ray."
     }
   ],
-  "content_mode": "hybrid",
+  "content_mode": "curated",
   "media": {
     "visitor_map_url": "/field-pack/media/maps/point-defiance-zoo.jpg",
     "visitor_map_page": "https://www.pdza.org/wp-content/uploads/2025/10/PDZA_Map_EnglishWeb_10-25.jpg",
@@ -322,6 +309,33 @@
     "shark",
     "jellyfish"
   ],
-  "research_notes": "R1 hybrid 2026-08-07 · web-map 2026-08-07",
-  "list_confidence": "template"
+  "research_notes": "R1 hybrid 2026-08-07 · web-map 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "list_confidence": "audited",
+  "do_not_list": [
+    {
+      "catalog_id": "reticulated-giraffe",
+      "name": "Reticulated giraffe",
+      "reason": "Not a Point Defiance focus/collection species on habitat pages.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "zebra",
+      "name": "Zebra",
+      "reason": "Not on PDZA habitat lineup.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "If elephant present it is Asian; African label false. Confirm live status of elephant program.",
+      "as_of": "2026-08-08"
+    }
+  ],
+  "last_presence_audit": "2026-08-08",
+  "presence_sources": [
+    "https://www.pdza.org/",
+    "https://www.pdza.org/animals/",
+    "https://www.pdza.org/animals/asian-forest-sanctuary/",
+    "https://www.pdza.org/animals/pacific-seas-aquarium/"
+  ]
 }

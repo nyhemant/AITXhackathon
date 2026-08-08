@@ -22,7 +22,7 @@
   "items": [
     {
       "id": "caribbean_flamingo",
-      "label": "Caribbean flamingo",
+      "label": "Flamingo",
       "emoji": "🦩",
       "one_liner": "Flamingos — easy visual wow.",
       "tags": [
@@ -41,7 +41,9 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "caribbean-flamingo",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Flamingo"
     },
     {
       "id": "african_penguin",
@@ -63,7 +65,9 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-penguin",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "African penguin"
     },
     {
       "id": "galapagos_tortoise",
@@ -85,7 +89,9 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "galapagos-tortoise",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Galápagos tortoise"
     },
     {
       "id": "ring_tailed_lemur",
@@ -108,7 +114,9 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "ring-tailed-lemur",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Ring-tailed lemur"
     },
     {
       "id": "two_toed_sloth",
@@ -130,7 +138,9 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "two-toed-sloth",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Two-toed sloth"
     },
     {
       "id": "ostrich",
@@ -153,7 +163,9 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "ostrich",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Ostrich"
     },
     {
       "id": "zebra",
@@ -176,7 +188,9 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "zebra",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Zebra"
     },
     {
       "id": "warthog",
@@ -200,7 +214,9 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "warthog",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Warthog"
     },
     {
       "id": "nile_hippo",
@@ -223,7 +239,9 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "nile-hippo",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Nile hippo"
     },
     {
       "id": "reticulated_giraffe",
@@ -247,7 +265,9 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "reticulated-giraffe",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Reticulated giraffe"
     },
     {
       "id": "asian_small_clawed_otter",
@@ -273,7 +293,9 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "asian-small-clawed-otter",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Asian small-clawed otter"
     },
     {
       "id": "freshwater_fish",
@@ -296,10 +318,12 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "freshwater-fish",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "River / lake fish"
     }
   ],
-  "content_mode": "hybrid",
+  "content_mode": "wonder",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://turismo.buenosaires.gob.ar/",
@@ -317,6 +341,66 @@
     "african_penguin",
     "galapagos_tortoise"
   ],
-  "research_notes": "R3 2026-08-07",
-  "list_confidence": "template"
+  "research_notes": "R3 2026-08-07 · presence-audit 2026-08-08 [critical]",
+  "list_confidence": "template",
+  "do_not_list": [
+    {
+      "catalog_id": "reticulated-giraffe",
+      "name": "reticulated-giraffe",
+      "reason": "Ecoparque no longer operates as a classic full zoo; species unverified.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "nile-hippo",
+      "name": "nile-hippo",
+      "reason": "Ecoparque no longer operates as a classic full zoo; species unverified.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "zebra",
+      "name": "zebra",
+      "reason": "Ecoparque no longer operates as a classic full zoo; species unverified.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "warthog",
+      "name": "warthog",
+      "reason": "Ecoparque no longer operates as a classic full zoo; species unverified.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "asian-small-clawed-otter",
+      "name": "asian-small-clawed-otter",
+      "reason": "Ecoparque no longer operates as a classic full zoo; species unverified.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "two-toed-sloth",
+      "name": "two-toed-sloth",
+      "reason": "Ecoparque no longer operates as a classic full zoo; species unverified.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "galapagos-tortoise",
+      "name": "galapagos-tortoise",
+      "reason": "Ecoparque no longer operates as a classic full zoo; species unverified.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "ring-tailed-lemur",
+      "name": "ring-tailed-lemur",
+      "reason": "Ecoparque no longer operates as a classic full zoo; species unverified.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "african-penguin",
+      "name": "african-penguin",
+      "reason": "Ecoparque no longer operates as a classic full zoo; species unverified.",
+      "as_of": "2026-08-08"
+    }
+  ],
+  "presence_sources": [
+    "https://turismo.buenosaires.gob.ar/",
+    "https://en.wikipedia.org/wiki/Buenos_Aires_Eco-Park"
+  ]
 }

@@ -1,0 +1,155 @@
+{
+  "slug": "london-zoo",
+  "name": "London Zoo",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.londonzoo.org/whats-here/animals",
+    "https://www.londonzoo.org/whats-here/habitats"
+  ],
+  "list_confidence_recommended": "audited",
+  "practical_fixes": [
+    {
+      "field": "items.lion.label",
+      "current": "Lion",
+      "suggested": "Asiatic lion",
+      "reason": "Land of the Lions is Asiatic lion, not African."
+    },
+    {
+      "field": "items.penguin.catalog_id",
+      "current": "african-penguin",
+      "suggested": "humboldt-penguin or generic penguin",
+      "reason": "Official Humboldt penguin."
+    }
+  ],
+  "do_not_list": [],
+  "items": [
+    {
+      "id": "gorilla",
+      "label": "Gorilla (Gorilla Kingdom)",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "verified",
+      "display_label": "Gorilla (Gorilla Kingdom)",
+      "official_name": "Western lowland gorilla",
+      "notes": "",
+      "source_url": "https://www.londonzoo.org/whats-here/animals/western-lowland-gorilla"
+    },
+    {
+      "id": "penguin",
+      "label": "Penguin",
+      "catalog_id": "african-penguin",
+      "presence": "verified",
+      "display_label": "Penguin",
+      "official_name": "Humboldt penguin",
+      "notes": "Not African",
+      "source_url": "https://www.londonzoo.org/whats-here/habitats/penguin-beach"
+    },
+    {
+      "id": "tiger",
+      "label": "Tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "verified",
+      "display_label": "Tiger",
+      "official_name": "Sumatran tiger",
+      "notes": "",
+      "source_url": "https://www.londonzoo.org/whats-here/animals/sumatran-tiger"
+    },
+    {
+      "id": "lion",
+      "label": "Lion",
+      "catalog_id": "african-lion",
+      "presence": "verified",
+      "display_label": "Asiatic lion",
+      "official_name": "Asiatic lion",
+      "notes": "Wrong catalog african-lion",
+      "source_url": "https://www.londonzoo.org/whats-here/animals/asiatic-lion"
+    },
+    {
+      "id": "sloth",
+      "label": "Two-toed sloth",
+      "catalog_id": "two-toed-sloth",
+      "presence": "high",
+      "display_label": "Two-toed sloth",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "lemur",
+      "label": "Lemur / Madagascar",
+      "catalog_id": "ring-tailed-lemur",
+      "presence": "high",
+      "display_label": "Lemur",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "tortoise",
+      "label": "Giant tortoise",
+      "catalog_id": "galapagos-tortoise",
+      "presence": "verified",
+      "display_label": "Giant tortoise",
+      "official_name": "Galápagos tortoise",
+      "notes": "Giants of the Galapagos",
+      "source_url": ""
+    },
+    {
+      "id": "otter",
+      "label": "Otter",
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "high",
+      "display_label": "Otter",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "chimp",
+      "label": "Monkey / ape friends",
+      "catalog_id": "chimpanzee",
+      "presence": "medium",
+      "display_label": "Monkeys & apes",
+      "official_name": "",
+      "notes": "Soft; confirm chimps specifically",
+      "source_url": ""
+    },
+    {
+      "id": "capybara",
+      "label": "Capybara area",
+      "catalog_id": null,
+      "presence": "high",
+      "display_label": "Capybara area",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "butterfly-or-indoor",
+      "label": "Indoor rainforest moments",
+      "catalog_id": null,
+      "presence": "high",
+      "display_label": "Indoor rainforest / Blackburn Pavilion area",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "play",
+      "label": "Play / under-5 reset",
+      "catalog_id": null,
+      "presence": "high",
+      "display_label": "Play / under-5 reset",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "gorilla",
+    "penguin",
+    "tiger"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "Official animals: western lowland gorilla, Humboldt penguin (not African), Sumatran tiger, Asiatic lion (not African lion). Galápagos tortoises, otters, lemurs, sloths supported. Soft labels Lion/Penguin OK if subspecies not claimed. Chimp as 'Monkey/ape friends' is vague — confirm current great apes beyond gorilla.",
+  "severity": "minor"
+}

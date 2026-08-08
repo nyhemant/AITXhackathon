@@ -16,7 +16,7 @@
     "typical_duration": "half day",
     "ticket_note": "Museum Park; combine carefully with heat outside.",
     "transit_note": "Downtown Miami / Museum Park.",
-    "energy_note": "indoor",
+    "energy_note": "Mostly indoors",
     "best_start": "Aquarium levels first, then hands-on floors; planetarium if timed."
   },
   "items": [
@@ -41,7 +41,11 @@
         "question": "What did you notice about the Shark?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "shark"
+      "catalog_id": "shark",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Shark"
     },
     {
       "id": "stingray",
@@ -63,11 +67,15 @@
         "question": "What did you notice about the Stingray?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "stingray"
+      "catalog_id": "stingray",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "display_label": "Stingray",
+      "presence_note": "Touch tank"
     },
     {
       "id": "sci_planet",
-      "label": "Planet / space hall",
+      "label": "Frost Planetarium",
       "emoji": "🪐",
       "one_liner": "Space show if you added tickets.",
       "tags": [
@@ -84,7 +92,10 @@
         "question": "What did you notice about the Planet / space hall?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-planet"
+      "catalog_id": "sci-planet",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "display_label": "Frost Planetarium"
     },
     {
       "id": "sci_hands_on",
@@ -106,7 +117,10 @@
         "question": "What did you notice about the Hands-on lab?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-hands-on"
+      "catalog_id": "sci-hands-on",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Hands-on lab"
     },
     {
       "id": "jellyfish",
@@ -128,7 +142,10 @@
         "question": "What did you notice about the Jellyfish?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "jellyfish"
+      "catalog_id": "jellyfish",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Jellyfish"
     },
     {
       "id": "sci_aquarium_zone",
@@ -150,30 +167,10 @@
         "question": "What did you notice about the Aquarium zone?",
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
-      "catalog_id": "sci-aquarium-zone"
-    },
-    {
-      "id": "cm_makery",
-      "label": "Creative Makery",
-      "emoji": "🔧",
-      "one_liner": "Build, invent, problem-solve with your hands.",
-      "tags": [
-        "wow",
-        "hands",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "What did you notice about the Creative Makery?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "cm-makery"
+      "catalog_id": "sci-aquarium-zone",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "display_label": "Aquarium zone"
     },
     {
       "id": "cm_free_explore",
@@ -195,11 +192,14 @@
         "question": "What did you notice about the Free explore?",
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
-      "catalog_id": "cm-free-explore"
+      "catalog_id": "cm-free-explore",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Free explore"
     },
     {
       "id": "sci_dinosaur",
-      "label": "Dinosaur hall",
+      "label": "Feathers to the Stars / dinosaurs",
       "emoji": "🦖",
       "one_liner": "Bones, giants, and deep time — look up!",
       "tags": [
@@ -217,7 +217,11 @@
         "question": "What did you notice about the Dinosaur hall?",
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
-      "catalog_id": "sci-dinosaur"
+      "catalog_id": "sci-dinosaur",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Feathers to the Stars / dinosaurs",
+      "presence_note": "Not a full dinosaur hall"
     }
   ],
   "content_mode": "hybrid",
@@ -239,6 +243,18 @@
     "stingray",
     "sci_planet"
   ],
-  "research_notes": "R1 hybrid 2026-08-07 · map-page 2026-08-07",
-  "list_confidence": "partial"
+  "research_notes": "R1 hybrid 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "list_confidence": "partial",
+  "do_not_list": [
+    {
+      "catalog_id": "cm-makery",
+      "name": "Creative Makery",
+      "reason": "Not an official Frost exhibit name.",
+      "as_of": "2026-08-08"
+    }
+  ],
+  "presence_sources": [
+    "https://www.frostscience.org/",
+    "https://www.frostscience.org/exhibitions-featured/"
+  ]
 }

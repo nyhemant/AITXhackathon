@@ -1,0 +1,130 @@
+{
+  "slug": "aquarium-of-the-pacific",
+  "name": "Aquarium of the Pacific",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.aquariumofpacific.org/exhibits/",
+    "https://www.aquariumofpacific.org/exhibits/shark_lagoon",
+    "https://www.aquariumofpacific.org/exhibits/penguin_habitat",
+    "https://www.aquariumofpacific.org/exhibits/otters"
+  ],
+  "list_confidence_recommended": "audited",
+  "practical_fixes": [],
+  "do_not_list": [
+    {
+      "catalog_id": "asian-small-clawed-otter",
+      "name": "Asian small-clawed otter",
+      "reason": "Has sea otters, not Asian small-clawed otters."
+    }
+  ],
+  "items": [
+    {
+      "id": "shark",
+      "label": "Shark",
+      "catalog_id": "shark",
+      "presence": "verified",
+      "display_label": "Shark",
+      "official_name": "Shark Lagoon",
+      "notes": "",
+      "source_url": "https://www.aquariumofpacific.org/exhibits/shark_lagoon"
+    },
+    {
+      "id": "stingray",
+      "label": "Stingray",
+      "catalog_id": "stingray",
+      "presence": "verified",
+      "display_label": "Stingray",
+      "official_name": "",
+      "notes": "Shark Lagoon touch experiences include rays.",
+      "source_url": "https://www.aquariumofpacific.org/exhibits/shark_lagoon"
+    },
+    {
+      "id": "sea_turtle",
+      "label": "Sea turtle",
+      "catalog_id": "sea-turtle",
+      "presence": "verified",
+      "display_label": "Sea turtle",
+      "official_name": "",
+      "notes": "Featured with Shark Lagoon imagery/habitats.",
+      "source_url": ""
+    },
+    {
+      "id": "jellyfish",
+      "label": "Jellyfish",
+      "catalog_id": "jellyfish",
+      "presence": "verified",
+      "display_label": "Jellyfish",
+      "official_name": "Jelly Dreamscapes",
+      "notes": "",
+      "source_url": "https://www.aquariumofpacific.org/exhibits/jellydreamscapes"
+    },
+    {
+      "id": "octopus",
+      "label": "Octopus",
+      "catalog_id": "octopus",
+      "presence": "high",
+      "display_label": "Octopus",
+      "official_name": "",
+      "notes": "Southern California Gallery features octopus imagery/animals.",
+      "source_url": ""
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "high",
+      "display_label": "Penguin",
+      "official_name": "June Keyes Penguin Habitat",
+      "notes": "Penguin habitat verified; confirm species on-site (often Magellanic/others at AOP) — soft-label Penguin if species uncertain.",
+      "source_url": "https://www.aquariumofpacific.org/exhibits/penguin_habitat"
+    },
+    {
+      "id": "asian_small_clawed_otter",
+      "label": "Asian small-clawed otter",
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "absent",
+      "display_label": "Sea otter",
+      "official_name": "Sea Otter Habitat",
+      "notes": "Has sea otters, not Asian small-clawed otters.",
+      "source_url": "https://www.aquariumofpacific.org/exhibits/otters"
+    },
+    {
+      "id": "clownfish",
+      "label": "Clownfish",
+      "catalog_id": "clownfish",
+      "presence": "high",
+      "display_label": "Clownfish",
+      "official_name": "",
+      "notes": "Tropical Pacific Gallery typical reef species.",
+      "source_url": ""
+    },
+    {
+      "id": "seahorse",
+      "label": "Seahorse",
+      "catalog_id": "seahorse",
+      "presence": "high",
+      "display_label": "Seahorse",
+      "official_name": "",
+      "notes": "Common AOP exhibit animal; treat high.",
+      "source_url": ""
+    },
+    {
+      "id": "starfish",
+      "label": "Sea star",
+      "catalog_id": "starfish",
+      "presence": "high",
+      "display_label": "Sea star",
+      "official_name": "",
+      "notes": "Touch/intertidal experiences common.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "shark",
+    "jellyfish",
+    "sea_turtle"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "Shark Lagoon, jellies, turtles, penguins verified. Replace Asian small-clawed otter with sea otter; soft-label penguin species.",
+  "severity": "major"
+}

@@ -1,0 +1,107 @@
+{
+  "slug": "carnegie-natural-history",
+  "name": "Carnegie Museum of Natural History",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://carnegiemnh.org/"
+  ],
+  "list_confidence_recommended": "partial",
+  "practical_fixes": [],
+  "do_not_list": [
+    {
+      "catalog_id": "cm-imaginarium",
+      "name": "Imaginarium",
+      "reason": "Children’s-museum taxonomy leakage."
+    }
+  ],
+  "items": [
+    {
+      "id": "sci_dinosaur",
+      "label": "Dinosaur hall",
+      "catalog_id": "sci-dinosaur",
+      "presence": "verified",
+      "display_label": "Dinosaur hall",
+      "official_name": "Dinosaurs in Their Time",
+      "notes": "Flagship fossil halls.",
+      "source_url": "https://carnegiemnh.org/"
+    },
+    {
+      "id": "sci_mammal_hall",
+      "label": "Animal / mammal hall",
+      "catalog_id": "sci-mammal-hall",
+      "presence": "high",
+      "display_label": "Animal / mammal hall",
+      "official_name": "Hall of North American Wildlife (and related)",
+      "notes": "Mammal/wildlife halls present.",
+      "source_url": "https://carnegiemnh.org/"
+    },
+    {
+      "id": "sci_hands_on",
+      "label": "Hands-on lab",
+      "catalog_id": "sci-hands-on",
+      "presence": "high",
+      "display_label": "Hands-on / discovery",
+      "official_name": "",
+      "notes": "Family discovery spaces.",
+      "source_url": "https://carnegiemnh.org/"
+    },
+    {
+      "id": "sci_planet",
+      "label": "Planet / space hall",
+      "catalog_id": "sci-planet",
+      "presence": "medium",
+      "display_label": "Earth / space content",
+      "official_name": "",
+      "notes": "Limited vs dedicated planetarium museums — soft.",
+      "source_url": ""
+    },
+    {
+      "id": "cm_free_explore",
+      "label": "Free explore",
+      "catalog_id": "cm-free-explore",
+      "presence": "high",
+      "display_label": "Free explore",
+      "official_name": "",
+      "notes": "OK generic.",
+      "source_url": "https://carnegiemnh.org/"
+    },
+    {
+      "id": "cm_imaginarium",
+      "label": "Imaginarium",
+      "catalog_id": "cm-imaginarium",
+      "presence": "absent",
+      "display_label": "Imaginarium",
+      "official_name": "",
+      "notes": "Children’s-museum taxonomy leakage.",
+      "source_url": ""
+    },
+    {
+      "id": "sci_rainforest",
+      "label": "Rainforest dome",
+      "catalog_id": "sci-rainforest",
+      "presence": "medium",
+      "display_label": "Forest / botany halls",
+      "official_name": "",
+      "notes": "May map to dioramas/botany — not a live rainforest dome.",
+      "source_url": ""
+    },
+    {
+      "id": "explore_7",
+      "label": "Kid choice stop",
+      "catalog_id": "cm-free-explore",
+      "presence": "high",
+      "display_label": "Free explore",
+      "official_name": "",
+      "notes": "OK generic.",
+      "source_url": "https://carnegiemnh.org/"
+    }
+  ],
+  "route_90m_recommended": [
+    "sci_dinosaur",
+    "sci_mammal_hall",
+    "sci_hands_on"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "Dinosaur halls are the correct centerpiece. Drop Imaginarium leakage; avoid promising live rainforest dome.",
+  "severity": "major"
+}

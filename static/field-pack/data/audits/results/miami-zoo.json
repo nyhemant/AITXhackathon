@@ -1,0 +1,184 @@
+{
+  "slug": "miami-zoo",
+  "name": "Zoo Miami",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.zoomiami.org/animals",
+    "https://www.zoomiami.org/zoo-map",
+    "https://www.zoomiami.org/know-before-you-visit"
+  ],
+  "list_confidence_recommended": "audited",
+  "practical_fixes": [
+    {
+      "field": "items.nile_hippo",
+      "current": "Nile hippo",
+      "suggested": "Pygmy hippo (or soft Hippo)",
+      "reason": "Zoo map/animals list pygmy hippo; common Nile hippo not confirmed on animal cards scraped."
+    },
+    {
+      "field": "items.african_penguin",
+      "current": "African penguin",
+      "suggested": "Verify species or remove",
+      "reason": "Not clearly listed on animals map extract; do not invent."
+    },
+    {
+      "field": "items.two_toed_sloth",
+      "current": "Two-toed sloth",
+      "suggested": "Verify or remove",
+      "reason": "Not on map animal extract reviewed."
+    },
+    {
+      "field": "items.cheetah",
+      "current": "Cheetah",
+      "suggested": "Verify or remove",
+      "reason": "Not on map animal extract reviewed."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "nile-hippo",
+      "name": "Nile hippo",
+      "reason": "Official listing shows pygmy hippo; do not label Nile hippo without confirmation."
+    }
+  ],
+  "items": [
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "verified",
+      "display_label": "African elephant",
+      "official_name": "African Elephants",
+      "notes": "Animals page: African Elephants and Asian Elephant both listed.",
+      "source_url": "https://www.zoomiami.org/animals"
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "high",
+      "display_label": "Giraffe",
+      "official_name": "Giraffe",
+      "notes": "Giraffe on animals list; subspecies not forced — soft Giraffe.",
+      "source_url": "https://www.zoomiami.org/animals"
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "verified",
+      "display_label": "Sumatran tiger",
+      "official_name": "Sumatran Tiger",
+      "notes": "Sumatran Tiger on animals list.",
+      "source_url": "https://www.zoomiami.org/animals"
+    },
+    {
+      "id": "orangutan",
+      "label": "Orangutan",
+      "catalog_id": "orangutan",
+      "presence": "verified",
+      "display_label": "Orangutan",
+      "official_name": "Bornean Orangutan",
+      "notes": "Bornean Orangutan.",
+      "source_url": "https://www.zoomiami.org/animals"
+    },
+    {
+      "id": "nile_hippo",
+      "label": "Nile hippo",
+      "catalog_id": "nile-hippo",
+      "presence": "absent",
+      "display_label": "— remove Nile label —",
+      "official_name": "Pygmy Hippopotamus",
+      "notes": "Pygmy Hippopotamus listed, not Nile.",
+      "source_url": "https://www.zoomiami.org/animals"
+    },
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "verified",
+      "display_label": "Lion",
+      "official_name": "Lion",
+      "notes": "Lion on animals list.",
+      "source_url": "https://www.zoomiami.org/animals"
+    },
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "verified",
+      "display_label": "Gorilla",
+      "official_name": "Lowland Gorilla",
+      "notes": "Lowland Gorilla.",
+      "source_url": "https://www.zoomiami.org/animals"
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "unclear",
+      "display_label": "African penguin",
+      "official_name": "",
+      "notes": "Not confirmed on animals map extract.",
+      "source_url": ""
+    },
+    {
+      "id": "cheetah",
+      "label": "Cheetah",
+      "catalog_id": "cheetah",
+      "presence": "unclear",
+      "display_label": "Cheetah",
+      "official_name": "",
+      "notes": "Not confirmed on animals map extract.",
+      "source_url": ""
+    },
+    {
+      "id": "caribbean_flamingo",
+      "label": "Caribbean flamingo",
+      "catalog_id": "caribbean-flamingo",
+      "presence": "high",
+      "display_label": "Flamingo",
+      "official_name": "Flamingos",
+      "notes": "American/Florida Flamingos listed. Soft Flamingo.",
+      "source_url": "https://www.zoomiami.org/animals"
+    },
+    {
+      "id": "two_toed_sloth",
+      "label": "Two-toed sloth",
+      "catalog_id": "two-toed-sloth",
+      "presence": "unclear",
+      "display_label": "Two-toed sloth",
+      "official_name": "",
+      "notes": "Not confirmed on animals map extract.",
+      "source_url": ""
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "verified",
+      "display_label": "Zebra",
+      "official_name": "Grevy's Zebra",
+      "notes": "Grevy's Zebra listed.",
+      "source_url": "https://www.zoomiami.org/animals"
+    },
+    {
+      "id": "galapagos_tortoise",
+      "label": "Galápagos tortoise",
+      "catalog_id": "galapagos-tortoise",
+      "presence": "verified",
+      "display_label": "Galápagos tortoise",
+      "official_name": "Galapagos Tortoise",
+      "notes": "Galapagos Tortoise listed.",
+      "source_url": "https://www.zoomiami.org/animals"
+    }
+  ],
+  "route_90m_recommended": [
+    "african_elephant",
+    "sumatran_tiger",
+    "orangutan"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "Major icons verified (African + Asian elephants, Sumatran tiger, Bornean orangutan, gorilla, lion, giraffe, zebra, Galápagos tortoise, flamingos). Nile hippo label wrong (pygmy). Several template fillers (cheetah, African penguin, two-toed sloth) unclear — gate from print until confirmed.",
+  "severity": "major"
+}

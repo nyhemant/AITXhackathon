@@ -38,7 +38,11 @@
         "question": "Were all dinosaurs huge?",
         "answer": "No — some were small, but the big ones steal the show!"
       },
-      "catalog_id": "sci-dinosaur"
+      "catalog_id": "sci-dinosaur",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Dinosaur hall"
     },
     {
       "id": "sci_mammal_hall",
@@ -60,7 +64,11 @@
         "question": "What did you notice about the Animal / mammal hall?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-mammal-hall"
+      "catalog_id": "sci-mammal-hall",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Animal / mammal hall"
     },
     {
       "id": "sci_planet",
@@ -81,11 +89,15 @@
         "question": "What did you notice about the Planet / space hall?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-planet"
+      "catalog_id": "sci-planet",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Planet / space hall"
     },
     {
       "id": "sci_hands_on",
-      "label": "Hands-on lab",
+      "label": "Discovery Room / Gilder Center",
       "emoji": "🔬",
       "one_liner": "Hands-on spots when open to the public floor.",
       "tags": [
@@ -102,11 +114,15 @@
         "question": "What did you notice about the Hands-on lab?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-hands-on"
+      "catalog_id": "sci-hands-on",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "display_label": "Discovery Room / Gilder Center",
+      "presence_note": "Hands-on Discovery Room; Gilder Center immersive spaces."
     },
     {
       "id": "sci_rainforest",
-      "label": "Rainforest dome",
+      "label": "Biodiversity / forest halls",
       "emoji": "🌿",
       "one_liner": "Lush life exhibits when on the route.",
       "tags": [
@@ -123,32 +139,15 @@
         "question": "What did you notice about the Rainforest dome?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-rainforest"
-    },
-    {
-      "id": "two_toed_sloth",
-      "label": "Two-toed sloth",
-      "emoji": "🦥",
-      "one_liner": "Live animals appear in some education spaces — bonus if present.",
-      "tags": [
-        "climb"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Live animals / special",
-      "qa_card": {
-        "question": "What did you notice about the Two-toed sloth?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "two-toed-sloth"
+      "catalog_id": "sci-rainforest",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Biodiversity / forest halls",
+      "presence_note": "No freestanding 'rainforest dome' like Cal Academy; Hall of Biodiversity has rainforest diorama. Soft-label."
     },
     {
       "id": "sci_aquarium_zone",
-      "label": "Aquarium zone",
+      "label": "Hall of Ocean Life",
       "emoji": "🐠",
       "one_liner": "Aquatic life corners in biodiversity areas.",
       "tags": [
@@ -165,7 +164,11 @@
         "question": "What did you notice about the Aquarium zone?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-aquarium-zone"
+      "catalog_id": "sci-aquarium-zone",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Hall of Ocean Life",
+      "presence_note": "Ocean life hall with blue whale — not a living aquarium zone."
     },
     {
       "id": "cm_free_explore",
@@ -186,7 +189,11 @@
         "question": "What did you notice about the Free explore?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "cm-free-explore"
+      "catalog_id": "cm-free-explore",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Free explore",
+      "presence_note": "Appropriate free-explore stop."
     }
   ],
   "content_mode": "curated",
@@ -203,6 +210,25 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "research_notes": "web-map 2026-08-07",
-  "list_confidence": "partial"
+  "research_notes": "web-map 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "list_confidence": "audited",
+  "do_not_list": [
+    {
+      "catalog_id": "two-toed-sloth",
+      "name": "Two-toed sloth",
+      "reason": "No live two-toed sloth exhibit; museum is not a zoo. Live butterflies in ticketed vivarium only.",
+      "as_of": "2026-08-08"
+    }
+  ],
+  "route_90m": [
+    "sci_dinosaur",
+    "sci_mammal_hall",
+    "sci_planet"
+  ],
+  "last_presence_audit": "2026-08-08",
+  "presence_sources": [
+    "https://www.amnh.org/exhibitions",
+    "https://www.amnh.org/exhibitions/permanent",
+    "https://www.amnh.org/"
+  ]
 }

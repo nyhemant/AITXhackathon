@@ -1,0 +1,129 @@
+{
+  "slug": "san-diego-safari-park",
+  "name": "San Diego Zoo Safari Park",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://sdzsafaripark.org/",
+    "https://sdzsafaripark.org/animals-gardens"
+  ],
+  "list_confidence_recommended": "audited",
+  "practical_fixes": [
+    {
+      "field": "route_90m",
+      "current": "null",
+      "suggested": "reticulated_giraffe, african_elephant, african_lion",
+      "reason": "Set 90m route for print."
+    }
+  ],
+  "do_not_list": [],
+  "items": [
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "verified",
+      "display_label": "Giraffe",
+      "official_name": "",
+      "notes": "Official animals page features giraffe.",
+      "source_url": "https://sdzsafaripark.org/animals-gardens"
+    },
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "verified",
+      "display_label": "African elephant",
+      "official_name": "",
+      "notes": "African elephant herd / Elephant Valley.",
+      "source_url": "https://sdzsafaripark.org/animals/elephant"
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "verified",
+      "display_label": "Zebra",
+      "official_name": "Grévy's zebra",
+      "notes": "Grévy's zebra on official animals page.",
+      "source_url": "https://sdzsafaripark.org/animals-gardens"
+    },
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "verified",
+      "display_label": "African lion",
+      "official_name": "",
+      "notes": "Lion on official animals page.",
+      "source_url": "https://sdzsafaripark.org/animals-gardens"
+    },
+    {
+      "id": "cheetah",
+      "label": "Cheetah",
+      "catalog_id": "cheetah",
+      "presence": "verified",
+      "display_label": "Cheetah",
+      "official_name": "",
+      "notes": "Cheetah on official animals page.",
+      "source_url": "https://sdzsafaripark.org/animals-gardens"
+    },
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "verified",
+      "display_label": "Western lowland gorilla",
+      "official_name": "",
+      "notes": "Gorilla / Gorilla Forest.",
+      "source_url": "https://sdzsafaripark.org/animals-gardens"
+    },
+    {
+      "id": "nile_hippo",
+      "label": "Nile hippo",
+      "catalog_id": "nile-hippo",
+      "presence": "medium",
+      "display_label": "Nile hippo",
+      "official_name": "",
+      "notes": "Not highlighted on main animals hub this pass.",
+      "source_url": ""
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "verified",
+      "display_label": "Sumatran tiger",
+      "official_name": "",
+      "notes": "Sumatran tiger / Tiger Trail on official page.",
+      "source_url": "https://sdzsafaripark.org/animals/sumatran-tiger"
+    },
+    {
+      "id": "ostrich",
+      "label": "Ostrich",
+      "catalog_id": "ostrich",
+      "presence": "high",
+      "display_label": "Ostrich",
+      "official_name": "",
+      "notes": "Africa field birds typically include ostrich.",
+      "source_url": ""
+    },
+    {
+      "id": "warthog",
+      "label": "Warthog",
+      "catalog_id": "warthog",
+      "presence": "high",
+      "display_label": "Warthog",
+      "official_name": "",
+      "notes": "Africa savanna species; secondary confirmation.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "reticulated_giraffe",
+    "african_elephant",
+    "sumatran_tiger"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "Official animals hub confirms elephant, giraffe, lion, cheetah, gorilla, Sumatran tiger, zebra. Strong audited list.",
+  "severity": "ok"
+}

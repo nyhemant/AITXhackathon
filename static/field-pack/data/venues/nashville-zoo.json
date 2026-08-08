@@ -42,11 +42,15 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sumatran-tiger",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Sumatran tiger",
+      "presence_note": "Sumatran Tiger on our-animals + keeper chats."
     },
     {
       "id": "reticulated_giraffe",
-      "label": "Reticulated giraffe",
+      "label": "Giraffe (Masai)",
       "emoji": "🦒",
       "one_liner": "Tall necks — easy photo win.",
       "tags": [
@@ -65,7 +69,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "reticulated-giraffe",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Giraffe (Masai)",
+      "presence_note": "Masai giraffes returned in Leopard Forest — not reticulated label. Soft Giraffe."
     },
     {
       "id": "african_elephant",
@@ -88,11 +96,15 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-elephant",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "African elephant",
+      "presence_note": "African elephant herd program / updates."
     },
     {
       "id": "ring_tailed_lemur",
-      "label": "Ring-tailed lemur",
+      "label": "Lemur",
       "emoji": "🐒",
       "one_liner": "Lemur hop energy.",
       "tags": [
@@ -111,7 +123,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "ring-tailed-lemur",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Lemur",
+      "presence_note": "Lemurs commonly featured; soft Lemur."
     },
     {
       "id": "galapagos_tortoise",
@@ -134,11 +149,15 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "galapagos-tortoise",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Galápagos tortoise",
+      "presence_note": "Galapagos and Aldabra tortoises keeper chat."
     },
     {
       "id": "african_lion",
-      "label": "African lion",
+      "label": "Lion (verify)",
       "emoji": "🦁",
       "one_liner": "Big cat of the grassland pride — mighty roar!",
       "tags": [
@@ -158,7 +177,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "african-lion",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Lion (verify)",
+      "presence_note": "Lions not strongly confirmed this pass — medium."
     },
     {
       "id": "western_lowland_gorilla",
@@ -182,11 +204,14 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "western-lowland-gorilla",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Western lowland gorilla",
+      "presence_note": "Conservation partner mentions ≠ confirmed exhibit animals."
     },
     {
       "id": "african_penguin",
-      "label": "African penguin",
+      "label": "Penguin (verify)",
       "emoji": "🐧",
       "one_liner": "Waddle on land, zoom in water.",
       "tags": [
@@ -206,7 +231,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "african-penguin",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Penguin (verify)",
+      "presence_note": "Possible; confirm."
     },
     {
       "id": "cheetah",
@@ -230,7 +258,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "cheetah",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Cheetah",
+      "presence_note": "Possible; confirm."
     },
     {
       "id": "nile_hippo",
@@ -253,7 +284,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "nile-hippo",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Nile hippo",
+      "presence_note": "Not confirmed."
     },
     {
       "id": "caribbean_flamingo",
@@ -276,11 +310,14 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "caribbean-flamingo",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Caribbean flamingo",
+      "presence_note": "Possible; confirm."
     },
     {
       "id": "two_toed_sloth",
-      "label": "Two-toed sloth",
+      "label": "Sloth",
       "emoji": "🦥",
       "one_liner": "Slow forest climber — hangs upside down.",
       "tags": [
@@ -302,7 +339,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "two-toed-sloth",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Sloth",
+      "presence_note": "Sloth encounters marketed. Soft Sloth."
     },
     {
       "id": "zebra",
@@ -325,10 +365,13 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "zebra",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Zebra",
+      "presence_note": "Possible hoofstock; confirm."
     }
   ],
-  "content_mode": "hybrid",
+  "content_mode": "curated",
   "media": {
     "visitor_map_url": "/field-pack/media/maps/nashville-zoo.jpg",
     "visitor_map_page": "https://www.nashvillezoo.org/zoo-map",
@@ -347,6 +390,21 @@
     "reticulated_giraffe",
     "african_elephant"
   ],
-  "research_notes": "R1 hybrid 2026-08-07 · map-img 2026-08-07 · map-page 2026-08-07",
-  "list_confidence": "template"
+  "research_notes": "R1 hybrid 2026-08-07 · map-img 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "list_confidence": "audited",
+  "do_not_list": [
+    {
+      "catalog_id": "nile-hippo",
+      "name": "Nile hippo",
+      "reason": "Not confirmed on official animals pages this audit.",
+      "as_of": "2026-08-08"
+    }
+  ],
+  "last_presence_audit": "2026-08-08",
+  "presence_sources": [
+    "https://www.nashvillezoo.org/our-animals",
+    "https://www.nashvillezoo.org/",
+    "https://www.nashvillezoo.org/leopard-forest",
+    "https://www.nashvillezoo.org/our-blog/posts/elephant-herd-updates"
+  ]
 }

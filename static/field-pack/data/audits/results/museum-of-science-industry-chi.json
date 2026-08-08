@@ -1,0 +1,152 @@
+{
+  "slug": "museum-of-science-industry-chi",
+  "name": "Museum of Science and Industry",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.griffinmsi.org/exhibits",
+    "https://www.griffinmsi.org/exhibits/u-505-submarine",
+    "https://www.griffinmsi.org/exhibits/science-storms",
+    "https://www.griffinmsi.org/exhibits/henry-crown-space-center",
+    "https://www.griffinmsi.org/exhibits/idea-factory",
+    "https://www.griffinmsi.org/"
+  ],
+  "list_confidence_recommended": "audited",
+  "practical_fixes": [
+    {
+      "field": "name / branding",
+      "current": "Museum of Science and Industry",
+      "suggested": "Kenneth C. Griffin Museum of Science and Industry (Griffin MSI) — still MSI colloquially",
+      "reason": "Official rebrand to Griffin MSI on griffinmsi.org."
+    },
+    {
+      "field": "items entire list",
+      "current": "Generic sci_hands_on, sci_rocket, sci_planet, sci_dinosaur, sci_shuttle, cm_makery, cm_imaginarium",
+      "suggested": "U-505 Submarine, Science Storms, Henry Crown Space Center, Idea Factory, Great Train Story, Fairy Castle, Take Flight (727)",
+      "reason": "Iconic MSI exhibits completely missing; generic catalog leakage."
+    },
+    {
+      "field": "route_90m",
+      "current": "sci_hands_on, sci_rocket, sci_planet",
+      "suggested": "u505, science_storms, idea_factory (or space center)",
+      "reason": "Route should hit real icons parents recognize."
+    },
+    {
+      "field": "official_url",
+      "current": "msichicago.org",
+      "suggested": "https://www.griffinmsi.org/ (redirects may exist)",
+      "reason": "Primary site is griffinmsi.org."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "sci-dinosaur",
+      "name": "Dinosaur hall",
+      "reason": "No permanent dinosaur hall as MSI icon; Field Museum is the dino destination in Chicago."
+    },
+    {
+      "catalog_id": "sci-shuttle",
+      "name": "Space shuttle / orbiter",
+      "reason": "No Space Shuttle orbiter at MSI (compare California Science Center)."
+    },
+    {
+      "catalog_id": "cm-imaginarium",
+      "name": "Imaginarium",
+      "reason": "Not an MSI exhibit name."
+    },
+    {
+      "catalog_id": "cm-makery",
+      "name": "Creative Makery",
+      "reason": "Wrong label; Idea Factory is the little-kids hands-on space."
+    }
+  ],
+  "items": [
+    {
+      "id": "sci_hands_on",
+      "label": "Hands-on lab",
+      "catalog_id": "sci-hands-on",
+      "presence": "medium",
+      "display_label": "Hands-on (map to named halls)",
+      "official_name": "Science Storms / Idea Factory",
+      "notes": "Hands-on exists widely (Science Storms, Idea Factory, YOU!) but label is generic. Prefer named exhibits.",
+      "source_url": "https://www.griffinmsi.org/exhibits/science-storms"
+    },
+    {
+      "id": "sci_rocket",
+      "label": "Rockets & launch",
+      "catalog_id": "sci-rocket",
+      "presence": "medium",
+      "display_label": "Flight & space",
+      "official_name": "Take Flight / Space Center",
+      "notes": "Take Flight / aviation and space center — not a rocket garden. Soft Flight/Space.",
+      "source_url": "https://www.griffinmsi.org/exhibits/take-flight"
+    },
+    {
+      "id": "sci_planet",
+      "label": "Planet / space hall",
+      "catalog_id": "sci-planet",
+      "presence": "high",
+      "display_label": "Space Center",
+      "official_name": "Henry Crown Space Center",
+      "notes": "Henry Crown Space Center — space, not generic planet hall.",
+      "source_url": "https://www.griffinmsi.org/exhibits/henry-crown-space-center"
+    },
+    {
+      "id": "sci_dinosaur",
+      "label": "Dinosaur hall",
+      "catalog_id": "sci-dinosaur",
+      "presence": "absent",
+      "display_label": "— remove —",
+      "official_name": "",
+      "notes": "No dino hall icon at MSI.",
+      "source_url": ""
+    },
+    {
+      "id": "cm_free_explore",
+      "label": "Free explore",
+      "catalog_id": "cm-free-explore",
+      "presence": "verified",
+      "display_label": "Free explore",
+      "official_name": "Free explore",
+      "notes": "Kids choose halls; valid.",
+      "source_url": ""
+    },
+    {
+      "id": "cm_makery",
+      "label": "Creative Makery",
+      "catalog_id": "cm-makery",
+      "presence": "absent",
+      "display_label": "— replace with Idea Factory —",
+      "official_name": "The Idea Factory",
+      "notes": "Use Idea Factory instead.",
+      "source_url": "https://www.griffinmsi.org/exhibits/idea-factory"
+    },
+    {
+      "id": "cm_imaginarium",
+      "label": "Imaginarium",
+      "catalog_id": "cm-imaginarium",
+      "presence": "absent",
+      "display_label": "— remove —",
+      "official_name": "",
+      "notes": "Not a real MSI hall.",
+      "source_url": ""
+    },
+    {
+      "id": "sci_shuttle",
+      "label": "Space shuttle / orbiter",
+      "catalog_id": "sci-shuttle",
+      "presence": "absent",
+      "display_label": "— replace with U-505 —",
+      "official_name": "U-505 Submarine",
+      "notes": "No orbiter. U-505 submarine is the iconic vessel.",
+      "source_url": "https://www.griffinmsi.org/exhibits/u-505-submarine"
+    }
+  ],
+  "route_90m_recommended": [
+    "sci_hands_on",
+    "sci_planet",
+    "cm_free_explore"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "CRITICAL: Print list is generic science-museum taxonomy and misses MSI’s real icons (U-505 Submarine, Science Storms, Idea Factory, Great Train Story, Fairy Castle, Henry Crown Space Center). No dinosaur hall; no Space Shuttle. Rebuild from griffinmsi.org/exhibits. Branding: Griffin MSI.",
+  "severity": "critical"
+}

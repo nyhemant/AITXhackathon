@@ -16,13 +16,13 @@
     "typical_duration": "half day",
     "ticket_note": "Victory Park; timed tickets peak times.",
     "transit_note": "Downtown adjacent.",
-    "energy_note": "indoor",
+    "energy_note": "Mostly indoors",
     "best_start": "Kids floors first if under 8."
   },
   "items": [
     {
       "id": "sci_dinosaur",
-      "label": "Dinosaur hall",
+      "label": "Dinosaurs",
       "emoji": "🦖",
       "one_liner": "Dinos are the magnet.",
       "tags": [
@@ -40,11 +40,16 @@
         "question": "What did you notice about the Dinosaur hall?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-dinosaur"
+      "catalog_id": "sci-dinosaur",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Dinosaurs",
+      "presence_note": "T. rex / paleo halls are Perot signature."
     },
     {
       "id": "sci_hands_on",
-      "label": "Hands-on lab",
+      "label": "Hands-on",
       "emoji": "🔬",
       "one_liner": "Body science fun.",
       "tags": [
@@ -62,11 +67,15 @@
         "question": "What did you notice about the Hands-on lab?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-hands-on"
+      "catalog_id": "sci-hands-on",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "display_label": "Hands-on",
+      "presence_note": "Interactive science floors."
     },
     {
       "id": "cm_imaginarium",
-      "label": "Imaginarium",
+      "label": "Kids explore",
       "emoji": "✨",
       "one_liner": "Play and pretend.",
       "tags": [
@@ -83,11 +92,15 @@
         "question": "What did you notice about the Imaginarium?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "cm-imaginarium"
+      "catalog_id": "cm-imaginarium",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Kids explore",
+      "presence_note": "Children’s museum level exists under other branding. Soft kids zone."
     },
     {
       "id": "sci_planet",
-      "label": "Planet / space hall",
+      "label": "Space",
       "emoji": "🪐",
       "one_liner": "Earth and beyond.",
       "tags": [
@@ -104,11 +117,15 @@
         "question": "What did you notice about the Planet / space hall?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-planet"
+      "catalog_id": "sci-planet",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Space",
+      "presence_note": "Space/astronomy content + adjacent planetarium programming. Soft Space."
     },
     {
       "id": "cm_makery",
-      "label": "Creative Makery",
+      "label": "Make",
       "emoji": "🔧",
       "one_liner": "Create something.",
       "tags": [
@@ -125,11 +142,15 @@
         "question": "What did you notice about the Creative Makery?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "cm-makery"
+      "catalog_id": "cm-makery",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Make",
+      "presence_note": "Engineering/design interactives."
     },
     {
       "id": "sci_mammal_hall",
-      "label": "Animal / mammal hall",
+      "label": "Life sciences",
       "emoji": "🦌",
       "one_liner": "Lifelike animals from around the world — spot fur, horns, and habitats.",
       "tags": [
@@ -147,7 +168,11 @@
         "question": "What did you try or notice at Animal / mammal hall?",
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
-      "catalog_id": "sci-mammal-hall"
+      "catalog_id": "sci-mammal-hall",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Life sciences",
+      "presence_note": "Life sciences / sports hall etc. — not classic mammal dioramas. Soft Life sciences."
     },
     {
       "id": "cm_free_explore",
@@ -169,33 +194,14 @@
         "question": "What did you try or notice at Free explore?",
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
-      "catalog_id": "cm-free-explore"
-    },
-    {
-      "id": "sci_rainforest",
-      "label": "Rainforest dome",
-      "emoji": "🌿",
-      "one_liner": "Warm, green, and full of life — look for layers of plants.",
-      "tags": [
-        "wow",
-        "rest",
-        "kids"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Rainforest dome?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "sci-rainforest"
+      "catalog_id": "cm-free-explore",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "display_label": "Free explore",
+      "presence_note": "Valid."
     }
   ],
-  "content_mode": "hybrid",
+  "content_mode": "curated",
   "media": {
     "visitor_map_url": "/field-pack/media/maps/perot-museum.jpg",
     "visitor_map_page": "https://www.perotmuseum.org/visit/map/",
@@ -212,8 +218,21 @@
   "route_90m": [
     "sci_dinosaur",
     "sci_hands_on",
-    "cm_imaginarium"
+    "cm_free_explore"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 · map-img 2026-08-07 · map-page 2026-08-07",
-  "list_confidence": "partial"
+  "research_notes": "R2 hybrid 2026-08-07 · map-img 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [minor]",
+  "list_confidence": "audited",
+  "do_not_list": [
+    {
+      "catalog_id": "sci-rainforest",
+      "name": "Rainforest dome",
+      "reason": "No rainforest dome at Perot.",
+      "as_of": "2026-08-08"
+    }
+  ],
+  "last_presence_audit": "2026-08-08",
+  "presence_sources": [
+    "https://www.perotmuseum.org/",
+    "https://www.perotmuseum.org/explore/exhibits"
+  ]
 }

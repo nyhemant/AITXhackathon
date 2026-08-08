@@ -16,13 +16,13 @@
     "typical_duration": "half day",
     "ticket_note": "Timed tickets common — book on pleasetouchmuseum.org.",
     "transit_note": "Fairmount Park; stroller-friendly halls.",
-    "energy_note": "indoor",
+    "energy_note": "Mostly indoors",
     "best_start": "Pick one wing, set a snack timer, rotate rooms."
   },
   "items": [
     {
       "id": "cm_waterfall",
-      "label": "Waterfall play",
+      "label": "Water play",
       "emoji": "💧",
       "one_liner": "Splash zones when open — pack a change of clothes.",
       "tags": [
@@ -41,11 +41,16 @@
         "question": "What did you notice about the Waterfall play?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "cm-waterfall"
+      "catalog_id": "cm-waterfall",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Water play",
+      "presence_note": "Water play is a PTM staple; exact name may differ."
     },
     {
       "id": "cm_imaginarium",
-      "label": "Imaginarium",
+      "label": "Pretend play",
       "emoji": "✨",
       "one_liner": "Kid-sized worlds to invent stories.",
       "tags": [
@@ -63,11 +68,15 @@
         "question": "What did you notice about the Imaginarium?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "cm-imaginarium"
+      "catalog_id": "cm-imaginarium",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Pretend play",
+      "presence_note": "Pretend play halls exist under other names."
     },
     {
       "id": "cm_makery",
-      "label": "Creative Makery",
+      "label": "Makery",
       "emoji": "🔧",
       "one_liner": "Hands-on create stations.",
       "tags": [
@@ -85,11 +94,15 @@
         "question": "What did you notice about the Creative Makery?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "cm-makery"
+      "catalog_id": "cm-makery",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Makery",
+      "presence_note": "Art/make studios common."
     },
     {
       "id": "cm_outdoor",
-      "label": "Outdoor Area",
+      "label": "Outdoor",
       "emoji": "🌳",
       "one_liner": "Burn energy outside when weather allows.",
       "tags": [
@@ -107,11 +120,15 @@
         "question": "What did you notice about the Outdoor Area?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "cm-outdoor"
+      "catalog_id": "cm-outdoor",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Outdoor",
+      "presence_note": "Fairmount Park setting / outdoor components."
     },
     {
       "id": "cm_toddler_garden",
-      "label": "Toddler Garden",
+      "label": "Toddler zone",
       "emoji": "🌱",
       "one_liner": "Softer spaces for the youngest.",
       "tags": [
@@ -129,11 +146,15 @@
         "question": "What did you notice about the Toddler Garden?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "cm-toddler-garden"
+      "catalog_id": "cm-toddler-garden",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Toddler zone",
+      "presence_note": "Younger kid zones. Soft Toddler."
     },
     {
       "id": "cm_woven",
-      "label": "Woven Wonders",
+      "label": "Climb",
       "emoji": "🧗",
       "one_liner": "Colorful climbing structure — art you can climb!",
       "tags": [
@@ -152,11 +173,15 @@
         "question": "What did you try or notice at Woven Wonders?",
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
-      "catalog_id": "cm-woven"
+      "catalog_id": "cm-woven",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Climb",
+      "presence_note": "Climb structures; Woven Wonders may be real or legacy name — medium."
     },
     {
       "id": "cm_art_lab",
-      "label": "Art Lab",
+      "label": "Art lab",
       "emoji": "🎨",
       "one_liner": "Come-and-go art and reading activities.",
       "tags": [
@@ -175,7 +200,11 @@
         "question": "What did you try or notice at Art Lab?",
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
-      "catalog_id": "cm-art-lab"
+      "catalog_id": "cm-art-lab",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Art lab",
+      "presence_note": "Art activities. Soft Art lab."
     },
     {
       "id": "cm_free_explore",
@@ -197,7 +226,11 @@
         "question": "What did you try or notice at Free explore?",
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
-      "catalog_id": "cm-free-explore"
+      "catalog_id": "cm-free-explore",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "display_label": "Free explore",
+      "presence_note": "Core product."
     }
   ],
   "content_mode": "hybrid",
@@ -215,9 +248,14 @@
   ],
   "route_90m": [
     "cm_waterfall",
-    "cm_imaginarium",
-    "cm_makery"
+    "cm_outdoor",
+    "cm_free_explore"
   ],
-  "research_notes": "R1 hybrid 2026-08-07 · map-page 2026-08-07",
-  "list_confidence": "partial"
+  "research_notes": "R1 hybrid 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [minor]",
+  "list_confidence": "partial",
+  "do_not_list": [],
+  "presence_sources": [
+    "https://www.pleasetouchmuseum.org/",
+    "https://www.pleasetouchmuseum.org/exhibits/"
+  ]
 }

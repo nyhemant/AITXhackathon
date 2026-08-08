@@ -1,0 +1,155 @@
+{
+  "slug": "paris-zoo",
+  "name": "Parc Zoologique de Paris",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.parczoologiquedeparis.fr/en",
+    "https://en.wikipedia.org/wiki/Paris_Zoological_Park"
+  ],
+  "list_confidence_recommended": "partial",
+  "practical_fixes": [
+    {
+      "field": "items.sumatran_tiger",
+      "current": "Sumatran tiger",
+      "suggested": "Soft Tiger — confirm subspecies",
+      "reason": "Big cats present; subspecies check."
+    },
+    {
+      "field": "items.african_elephant",
+      "current": "African elephant",
+      "suggested": "Verify current elephant status post-renovation eras",
+      "reason": "Collection changes over time."
+    }
+  ],
+  "do_not_list": [],
+  "items": [
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "high",
+      "display_label": "Lion",
+      "official_name": "Lion",
+      "notes": "Africa zone lions. Soft Lion.",
+      "source_url": "https://www.parczoologiquedeparis.fr/en"
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "high",
+      "display_label": "Giraffe",
+      "official_name": "Giraffe",
+      "notes": "Giraffes are a Vincennes icon. Soft Giraffe.",
+      "source_url": ""
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "medium",
+      "display_label": "Tiger",
+      "official_name": "Tiger",
+      "notes": "Tigers; subspecies medium. Soft Tiger.",
+      "source_url": ""
+    },
+    {
+      "id": "nile_hippo",
+      "label": "Nile hippo",
+      "catalog_id": "nile-hippo",
+      "presence": "high",
+      "display_label": "Hippo",
+      "official_name": "Hippo",
+      "notes": "Hippos historically/current in large zoo. Soft Hippo.",
+      "source_url": ""
+    },
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "high",
+      "display_label": "Gorilla",
+      "official_name": "Gorilla",
+      "notes": "Gorillas in Grand Rocher era collection. Soft Gorilla.",
+      "source_url": ""
+    },
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "medium",
+      "display_label": "Elephant (verify)",
+      "official_name": "",
+      "notes": "Verify current.",
+      "source_url": ""
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "medium",
+      "display_label": "Penguin (verify)",
+      "official_name": "",
+      "notes": "Verify.",
+      "source_url": ""
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "high",
+      "display_label": "Zebra",
+      "official_name": "Zebra",
+      "notes": "Africa plains.",
+      "source_url": ""
+    },
+    {
+      "id": "chimpanzee",
+      "label": "Chimpanzee",
+      "catalog_id": "chimpanzee",
+      "presence": "medium",
+      "display_label": "Chimpanzee",
+      "official_name": "",
+      "notes": "Verify.",
+      "source_url": ""
+    },
+    {
+      "id": "ring_tailed_lemur",
+      "label": "Ring-tailed lemur",
+      "catalog_id": "ring-tailed-lemur",
+      "presence": "high",
+      "display_label": "Lemur",
+      "official_name": "Lemur",
+      "notes": "Madagascar zone lemurs known. Soft Lemur.",
+      "source_url": ""
+    },
+    {
+      "id": "galapagos_tortoise",
+      "label": "Galápagos tortoise",
+      "catalog_id": "galapagos-tortoise",
+      "presence": "unclear",
+      "display_label": "Galápagos tortoise",
+      "official_name": "",
+      "notes": "Not verified.",
+      "source_url": ""
+    },
+    {
+      "id": "red_panda",
+      "label": "Red panda",
+      "catalog_id": "red-panda",
+      "presence": "medium",
+      "display_label": "Red panda",
+      "official_name": "",
+      "notes": "Verify.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "reticulated_giraffe",
+    "african_lion",
+    "western_lowland_gorilla"
+  ],
+  "content_mode_recommended": "hybrid",
+  "summary": "Paris Zoological Park (Vincennes): giraffe/lion/gorilla/lemur/zebra high. Elephant and several fillers need live confirmation — partial. Not Parc de la Tête d’Or (Lyon) or Ménagerie.",
+  "severity": "minor"
+}

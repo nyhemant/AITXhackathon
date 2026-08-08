@@ -1,0 +1,174 @@
+{
+  "slug": "singapore-night-safari",
+  "name": "Night Safari",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.mandai.com/en/night-safari.html",
+    "https://www.mandai.com/en/night-safari/animals-and-zones.html"
+  ],
+  "list_confidence_recommended": "audited",
+  "practical_fixes": [
+    {
+      "field": "items",
+      "current": "day-zoo template pack",
+      "suggested": "Asian elephant, white tiger, Sunda pangolin, fishing cat, Asian small-clawed otter, Tasmanian devil, Malayan tapir",
+      "reason": "Official nocturnal list differs almost entirely from print pack."
+    },
+    {
+      "field": "practical.ticket_note",
+      "current": "Evening tickets",
+      "suggested": "Evening only; separate ticket from Singapore Zoo",
+      "reason": "Clarify separate ticket."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Asian elephants only."
+    },
+    {
+      "catalog_id": "african-lion",
+      "name": "African lion",
+      "reason": "Asian lion on official list."
+    },
+    {
+      "catalog_id": "sumatran-tiger",
+      "name": "Sumatran tiger",
+      "reason": "White tigers at Night Safari; not Sumatran label."
+    },
+    {
+      "catalog_id": "red-panda",
+      "name": "Red panda",
+      "reason": "Not on official animals list."
+    },
+    {
+      "catalog_id": "zebra",
+      "name": "Zebra",
+      "reason": "Not on official animals list."
+    },
+    {
+      "catalog_id": "reticulated-giraffe",
+      "name": "Giraffe",
+      "reason": "Not on official animals list."
+    },
+    {
+      "catalog_id": "chimpanzee",
+      "name": "Chimpanzee",
+      "reason": "Not on official animals list."
+    },
+    {
+      "catalog_id": "ring-tailed-lemur",
+      "name": "Ring-tailed lemur",
+      "reason": "Not on official animals list."
+    }
+  ],
+  "items": [
+    {
+      "id": "asian_small_clawed_otter",
+      "label": "Asian small-clawed otter",
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "verified",
+      "display_label": "Asian small-clawed otter",
+      "official_name": "",
+      "notes": "Pangolin Trail official list.",
+      "source_url": "https://www.mandai.com/en/night-safari/animals-and-zones.html"
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "absent",
+      "display_label": "Sumatran tiger",
+      "official_name": "",
+      "notes": "White tigers (Keysa & Pasha); not Sumatran day-zoo tigers.",
+      "source_url": "https://www.mandai.com/en/night-safari/animals-and-zones/white-tiger.html"
+    },
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "absent",
+      "display_label": "African elephant",
+      "official_name": "",
+      "notes": "Asian elephants only.",
+      "source_url": "https://www.mandai.com/en/night-safari/animals-and-zones.html"
+    },
+    {
+      "id": "red_panda",
+      "label": "Red panda",
+      "catalog_id": "red-panda",
+      "presence": "absent",
+      "display_label": "Red panda",
+      "official_name": "",
+      "notes": "Not on official list.",
+      "source_url": ""
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "absent",
+      "display_label": "Zebra",
+      "official_name": "",
+      "notes": "Not on official list.",
+      "source_url": ""
+    },
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "absent",
+      "display_label": "African lion",
+      "official_name": "",
+      "notes": "Official lists Asian lion — not African.",
+      "source_url": "https://www.mandai.com/en/night-safari/animals-and-zones.html"
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "absent",
+      "display_label": "Reticulated giraffe",
+      "official_name": "",
+      "notes": "Not on official list.",
+      "source_url": ""
+    },
+    {
+      "id": "chimpanzee",
+      "label": "Chimpanzee",
+      "catalog_id": "chimpanzee",
+      "presence": "absent",
+      "display_label": "Chimpanzee",
+      "official_name": "",
+      "notes": "Not on official list.",
+      "source_url": ""
+    },
+    {
+      "id": "nile_hippo",
+      "label": "Nile hippo",
+      "catalog_id": "nile-hippo",
+      "presence": "template",
+      "display_label": "Nile hippo",
+      "official_name": "",
+      "notes": "Not on main Mandai list this pass — do not promise.",
+      "source_url": ""
+    },
+    {
+      "id": "ring_tailed_lemur",
+      "label": "Ring-tailed lemur",
+      "catalog_id": "ring-tailed-lemur",
+      "presence": "absent",
+      "display_label": "Ring-tailed lemur",
+      "official_name": "",
+      "notes": "Not on official list.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "asian_small_clawed_otter"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "CRITICAL: day-zoo template. Official: Asian elephant, Asian lion, white tiger, pangolin, otter, tapir, Tassie devil — not giraffe/chimp/zebra/red panda/African labels.",
+  "severity": "critical"
+}

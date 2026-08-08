@@ -17,7 +17,7 @@
     "ticket_note": "Members and timed tickets help on peak days — check cincinnatizoo.org.",
     "transit_note": "Avondale; parking on site.",
     "energy_note": "stroller-easy",
-    "best_start": "Hippo Cove first if open — then big cats or kids’ zoo."
+    "best_start": "Hippo Cove (Fiona) first if open — then cheetah/elephant (Asian) or kids’ zoo."
   },
   "items": [
     {
@@ -42,31 +42,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "nile-hippo",
-      "presence": "template"
-    },
-    {
-      "id": "african_elephant",
-      "label": "African elephant",
-      "emoji": "🐘",
-      "one_liner": "Elephants with room to dust-bathe.",
-      "tags": [
-        "big",
-        "outdoor",
-        "wow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Elephant reserve",
-      "qa_card": {
-        "question": "What did you notice about the African elephant?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "african-elephant",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Nile hippo"
     },
     {
       "id": "western_lowland_gorilla",
@@ -89,11 +68,14 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "western-lowland-gorilla",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Western lowland gorilla"
     },
     {
       "id": "sumatran_tiger",
-      "label": "Sumatran tiger",
+      "label": "Tiger",
       "emoji": "🐯",
       "one_liner": "Tigers on the cat walk.",
       "tags": [
@@ -112,7 +94,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sumatran-tiger",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Tiger",
+      "presence_note": "Tigers present historically; confirm subspecies on animals page."
     },
     {
       "id": "cheetah",
@@ -135,11 +120,14 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "cheetah",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Cheetah"
     },
     {
       "id": "reticulated_giraffe",
-      "label": "Reticulated giraffe",
+      "label": "Giraffe",
       "emoji": "🦒",
       "one_liner": "Tallest animal on long legs — look up!",
       "tags": [
@@ -159,7 +147,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "reticulated-giraffe",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Giraffe",
+      "presence_note": "Giraffe chats on schedule."
     },
     {
       "id": "african_lion",
@@ -183,7 +174,9 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "african-lion",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "African lion"
     },
     {
       "id": "african_penguin",
@@ -207,11 +200,14 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "african-penguin",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "African penguin",
+      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract."
     },
     {
       "id": "caribbean_flamingo",
-      "label": "Caribbean flamingo",
+      "label": "Flamingo",
       "emoji": "🦩",
       "one_liner": "Bright pink wader — long legs for shallow water.",
       "tags": [
@@ -230,7 +226,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "caribbean-flamingo",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Flamingo",
+      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract."
     },
     {
       "id": "two_toed_sloth",
@@ -256,7 +255,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "two-toed-sloth",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Two-toed sloth",
+      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract."
     },
     {
       "id": "zebra",
@@ -279,7 +281,9 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "zebra",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Zebra"
     },
     {
       "id": "galapagos_tortoise",
@@ -302,10 +306,13 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "galapagos-tortoise",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Galápagos tortoise",
+      "presence_note": "Not confirmed on official sources reviewed in this audit pass."
     }
   ],
-  "content_mode": "hybrid",
+  "content_mode": "curated",
   "media": {
     "visitor_map_url": "/field-pack/media/maps/cincinnati-zoo.jpg",
     "visitor_map_page": "https://cincinnatizoo.org/wp-content/uploads/2026/02/Adventure_Ma-2-11-26-pdf.pdf",
@@ -321,9 +328,23 @@
   ],
   "route_90m": [
     "nile_hippo",
-    "african_elephant",
+    "cheetah",
     "western_lowland_gorilla"
   ],
-  "research_notes": "Hippo Cove widely featured; icons from stable public exhibits. · web-map 2026-08-07",
-  "list_confidence": "template"
+  "research_notes": "Hippo Cove widely featured; icons from stable public exhibits. · web-map 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "list_confidence": "audited",
+  "do_not_list": [
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Official animals list: Asian elephant.",
+      "as_of": "2026-08-08"
+    }
+  ],
+  "last_presence_audit": "2026-08-08",
+  "presence_sources": [
+    "https://cincinnatizoo.org/animals/",
+    "https://cincinnatizoo.org/",
+    "https://cincinnatizoo.org/animals/habitats/"
+  ]
 }

@@ -14,61 +14,15 @@
   "tagline": "Calgary Zoo — Canadian wilds + destination exhibits; cold-weather planning.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Tickets online; weather drives the day.",
+    "ticket_note": "West gate/Imagine Asia construction may alter paths through 2028/29 — check calgaryzoo.com before visit.",
     "transit_note": "East of downtown.",
     "energy_note": "stroller-easy",
     "best_start": "Panda/destination exhibits only if currently featured — else Africa icons."
   },
   "items": [
     {
-      "id": "giant_panda",
-      "label": "Giant panda",
-      "emoji": "🐼",
-      "one_liner": "Pandas when present — confirm before promising.",
-      "tags": [
-        "wow",
-        "big"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Destination Asia",
-      "qa_card": {
-        "question": "What did you notice about the Giant panda?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "giant-panda",
-      "presence": "template"
-    },
-    {
-      "id": "african_elephant",
-      "label": "African elephant",
-      "emoji": "🐘",
-      "one_liner": "Elephants.",
-      "tags": [
-        "big",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Africa",
-      "qa_card": {
-        "question": "What did you notice about the African elephant?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "african-elephant",
-      "presence": "template"
-    },
-    {
       "id": "reticulated_giraffe",
-      "label": "Reticulated giraffe",
+      "label": "Giraffe",
       "emoji": "🦒",
       "one_liner": "Giraffes.",
       "tags": [
@@ -86,29 +40,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "reticulated-giraffe",
-      "presence": "template"
-    },
-    {
-      "id": "sumatran_tiger",
-      "label": "Sumatran tiger",
-      "emoji": "🐯",
-      "one_liner": "Tigers.",
-      "tags": [
-        "big-cats"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Cats",
-      "qa_card": {
-        "question": "What did you notice about the Sumatran tiger?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "sumatran-tiger",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Giraffe"
     },
     {
       "id": "western_lowland_gorilla",
@@ -130,7 +65,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "western-lowland-gorilla",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Western lowland gorilla"
     },
     {
       "id": "african_lion",
@@ -154,11 +92,14 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "african-lion",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "African lion"
     },
     {
       "id": "zebra",
-      "label": "Zebra",
+      "label": "Hartmann's mountain zebra",
       "emoji": "🦓",
       "one_liner": "Striped grassland runner — every pattern is unique.",
       "tags": [
@@ -177,7 +118,9 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "zebra",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "display_label": "Hartmann's mountain zebra"
     },
     {
       "id": "chimpanzee",
@@ -204,7 +147,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "chimpanzee",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Chimpanzee",
+      "presence_note": "Not on mammals list extract."
     },
     {
       "id": "red_panda",
@@ -229,7 +175,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "red-panda",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "display_label": "Red panda",
+      "presence_note": "Returning/returned with Imagine Asia work — listed on mammals page."
     },
     {
       "id": "african_penguin",
@@ -253,7 +202,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "african-penguin",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "African penguin",
+      "presence_note": "Check birds list separately."
     },
     {
       "id": "nile_hippo",
@@ -276,7 +228,10 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "nile-hippo",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Nile hippo"
     },
     {
       "id": "galapagos_tortoise",
@@ -299,10 +254,13 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "galapagos-tortoise",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Galápagos tortoise",
+      "presence_note": "Not confirmed on official sources reviewed in this audit pass."
     }
   ],
-  "content_mode": "hybrid",
+  "content_mode": "curated",
   "media": {
     "visitor_map_url": "/field-pack/media/maps/calgary-zoo.jpg",
     "visitor_map_page": "https://www.calgaryzoo.com/plan-your-visit/zoo-map/",
@@ -317,10 +275,35 @@
     "Leave while happy"
   ],
   "route_90m": [
-    "giant_panda",
-    "african_elephant",
+    "western_lowland_gorilla",
+    "african_lion",
     "reticulated_giraffe"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 · map-img 2026-08-07 · map-page 2026-08-07",
-  "list_confidence": "template"
+  "research_notes": "R2 hybrid 2026-08-07 · map-img 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [critical]",
+  "list_confidence": "audited",
+  "do_not_list": [
+    {
+      "catalog_id": "giant-panda",
+      "name": "Giant panda",
+      "reason": "Giant pandas left Calgary (returned to China ~2020); not on current mammals list.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Elephant program closed 2014; herd relocated. Not on mammals list.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "sumatran-tiger",
+      "name": "Sumatran tiger",
+      "reason": "Official list: Amur tigers, not Sumatran.",
+      "as_of": "2026-08-08"
+    }
+  ],
+  "last_presence_audit": "2026-08-08",
+  "presence_sources": [
+    "https://www.calgaryzoo.com/care-conservation/our-animals/mammals/",
+    "https://www.calgaryzoo.com/"
+  ]
 }

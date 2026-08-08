@@ -39,7 +39,11 @@
         "question": "What did you notice about the Shark?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "shark"
+      "catalog_id": "shark",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Shark"
     },
     {
       "id": "stingray",
@@ -62,7 +66,12 @@
         "question": "What did you notice about the Stingray?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "stingray"
+      "catalog_id": "stingray",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Stingray",
+      "presence_note": "Shark Lagoon touch experiences include rays."
     },
     {
       "id": "sea_turtle",
@@ -84,7 +93,11 @@
         "question": "What did you notice about the Sea turtle?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sea-turtle"
+      "catalog_id": "sea-turtle",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "display_label": "Sea turtle",
+      "presence_note": "Featured with Shark Lagoon imagery/habitats."
     },
     {
       "id": "jellyfish",
@@ -106,7 +119,11 @@
         "question": "What did you notice about the Jellyfish?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "jellyfish"
+      "catalog_id": "jellyfish",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Jellyfish"
     },
     {
       "id": "octopus",
@@ -128,11 +145,15 @@
         "question": "What did you notice about the Octopus?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "octopus"
+      "catalog_id": "octopus",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Octopus",
+      "presence_note": "Southern California Gallery features octopus imagery/animals."
     },
     {
       "id": "african_penguin",
-      "label": "African penguin",
+      "label": "Penguin",
       "emoji": "🐧",
       "one_liner": "Penguins waddle and dive.",
       "tags": [
@@ -150,30 +171,12 @@
         "question": "What did you notice about the African penguin?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "african-penguin"
-    },
-    {
-      "id": "asian_small_clawed_otter",
-      "label": "Asian small-clawed otter",
-      "emoji": "🦦",
-      "one_liner": "Sea otters float and play on their backs.",
-      "tags": [
-        "water",
-        "play",
-        "wow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Sea otter habitat",
-      "qa_card": {
-        "question": "What did you notice about the Asian small-clawed otter?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "asian-small-clawed-otter"
+      "catalog_id": "african-penguin",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Penguin",
+      "presence_note": "Penguin habitat verified; confirm species on-site (often Magellanic/others at AOP) — soft-label Penguin if species uncertain."
     },
     {
       "id": "clownfish",
@@ -195,7 +198,11 @@
         "question": "What did you notice about the Clownfish?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "clownfish"
+      "catalog_id": "clownfish",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Clownfish",
+      "presence_note": "Tropical Pacific Gallery typical reef species."
     },
     {
       "id": "seahorse",
@@ -217,7 +224,11 @@
         "question": "What did you notice about the Seahorse?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "seahorse"
+      "catalog_id": "seahorse",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Seahorse",
+      "presence_note": "Common AOP exhibit animal; treat high."
     },
     {
       "id": "starfish",
@@ -239,7 +250,11 @@
         "question": "What did you notice about the Sea star?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "starfish"
+      "catalog_id": "starfish",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Sea star",
+      "presence_note": "Touch/intertidal experiences common."
     }
   ],
   "content_mode": "curated",
@@ -255,5 +270,26 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "list_confidence": "partial"
+  "list_confidence": "audited",
+  "do_not_list": [
+    {
+      "catalog_id": "asian-small-clawed-otter",
+      "name": "Asian small-clawed otter",
+      "reason": "Has sea otters, not Asian small-clawed otters.",
+      "as_of": "2026-08-08"
+    }
+  ],
+  "route_90m": [
+    "shark",
+    "jellyfish",
+    "sea_turtle"
+  ],
+  "last_presence_audit": "2026-08-08",
+  "presence_sources": [
+    "https://www.aquariumofpacific.org/exhibits/",
+    "https://www.aquariumofpacific.org/exhibits/shark_lagoon",
+    "https://www.aquariumofpacific.org/exhibits/penguin_habitat",
+    "https://www.aquariumofpacific.org/exhibits/otters"
+  ],
+  "research_notes": "presence-audit 2026-08-08 [major]"
 }

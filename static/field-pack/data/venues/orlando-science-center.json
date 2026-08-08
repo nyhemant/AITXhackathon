@@ -16,13 +16,13 @@
     "typical_duration": "half day",
     "ticket_note": "Loch Haven area; check osc.org.",
     "transit_note": "Car / rideshare.",
-    "energy_note": "indoor",
+    "energy_note": "Mostly indoors",
     "best_start": "Hands-on floors first."
   },
   "items": [
     {
       "id": "sci_hands_on",
-      "label": "Hands-on lab",
+      "label": "Hands-on",
       "emoji": "🔬",
       "one_liner": "Touch science.",
       "tags": [
@@ -41,11 +41,16 @@
         "question": "What did you notice about the Hands-on lab?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-hands-on"
+      "catalog_id": "sci-hands-on",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Hands-on",
+      "presence_note": "Core OSC identity."
     },
     {
       "id": "sci_planet",
-      "label": "Planet / space hall",
+      "label": "Planetarium",
       "emoji": "🪐",
       "one_liner": "Planetarium if ticketed.",
       "tags": [
@@ -62,11 +67,15 @@
         "question": "What did you notice about the Planet / space hall?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-planet"
+      "catalog_id": "sci-planet",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Planetarium",
+      "presence_note": "Planetarium typically part of OSC. Soft Planetarium."
     },
     {
       "id": "sci_dinosaur",
-      "label": "Dinosaur hall",
+      "label": "Dinosaurs",
       "emoji": "🦖",
       "one_liner": "Dino wow if featured.",
       "tags": [
@@ -84,7 +93,11 @@
         "question": "What did you notice about the Dinosaur hall?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-dinosaur"
+      "catalog_id": "sci-dinosaur",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Dinosaurs",
+      "presence_note": "Dino exhibits commonly featured. Soft Dinosaurs."
     },
     {
       "id": "cm_free_explore",
@@ -105,11 +118,15 @@
         "question": "What did you notice about the Free explore?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "cm-free-explore"
+      "catalog_id": "cm-free-explore",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "display_label": "Free explore",
+      "presence_note": "Valid."
     },
     {
       "id": "sci_rocket",
-      "label": "Rockets & launch",
+      "label": "Space",
       "emoji": "🚀",
       "one_liner": "Rockets and flight energy.",
       "tags": [
@@ -126,11 +143,15 @@
         "question": "What did you notice about the Rockets & launch?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-rocket"
+      "catalog_id": "sci-rocket",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Space",
+      "presence_note": "Space content; not a rocket park."
     },
     {
       "id": "cm_makery",
-      "label": "Creative Makery",
+      "label": "Make",
       "emoji": "🔧",
       "one_liner": "Build, invent, problem-solve with your hands.",
       "tags": [
@@ -149,51 +170,11 @@
         "question": "What did you try or notice at Creative Makery?",
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
-      "catalog_id": "cm-makery"
-    },
-    {
-      "id": "cm_imaginarium",
-      "label": "Imaginarium",
-      "emoji": "✨",
-      "one_liner": "Multi-sensory world — explore, notice, imagine.",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Imaginarium?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "cm-imaginarium"
-    },
-    {
-      "id": "sci_shuttle",
-      "label": "Space shuttle / orbiter",
-      "emoji": "🛰️",
-      "one_liner": "A real flying machine that went to space — walk around it.",
-      "tags": [
-        "wow",
-        "read"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Space shuttle / orbiter?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "sci-shuttle"
+      "catalog_id": "cm-makery",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Make",
+      "presence_note": "Maker activities under other names."
     }
   ],
   "content_mode": "hybrid",
@@ -214,6 +195,24 @@
     "sci_planet",
     "sci_dinosaur"
   ],
-  "research_notes": "R2 hybrid 2026-08-07",
-  "list_confidence": "partial"
+  "research_notes": "R2 hybrid 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "list_confidence": "partial",
+  "do_not_list": [
+    {
+      "catalog_id": "sci-shuttle",
+      "name": "Space shuttle / orbiter",
+      "reason": "Not at Orlando Science Center.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "cm-imaginarium",
+      "name": "Imaginarium",
+      "reason": "Not a named OSC hall.",
+      "as_of": "2026-08-08"
+    }
+  ],
+  "presence_sources": [
+    "https://www.osc.org/",
+    "https://www.osc.org/exhibits"
+  ]
 }

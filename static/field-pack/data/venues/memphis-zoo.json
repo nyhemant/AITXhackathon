@@ -21,30 +21,6 @@
   },
   "items": [
     {
-      "id": "giant_panda",
-      "label": "Giant panda",
-      "emoji": "🐼",
-      "one_liner": "Pandas when present — always verify before the visit.",
-      "tags": [
-        "wow",
-        "outdoor",
-        "big"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "China",
-      "qa_card": {
-        "question": "What did you notice about the Giant panda?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "giant-panda",
-      "presence": "template"
-    },
-    {
       "id": "african_elephant",
       "label": "African elephant",
       "emoji": "🐘",
@@ -65,11 +41,15 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-elephant",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "African elephant",
+      "presence_note": "African Veldt: African Elephant (named herd)."
     },
     {
       "id": "reticulated_giraffe",
-      "label": "Reticulated giraffe",
+      "label": "Giraffe",
       "emoji": "🦒",
       "one_liner": "Giraffes.",
       "tags": [
@@ -88,7 +68,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "reticulated-giraffe",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Giraffe",
+      "presence_note": "African Veldt: Giraffe; subspecies not forced on page — soft Giraffe OK."
     },
     {
       "id": "sumatran_tiger",
@@ -111,11 +95,15 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sumatran-tiger",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Sumatran tiger",
+      "presence_note": "Cat Country: Sumatran tigers (e.g. Badar 2026)."
     },
     {
       "id": "western_lowland_gorilla",
-      "label": "Western lowland gorilla",
+      "label": "Gorilla",
       "emoji": "🦍",
       "one_liner": "Gorillas.",
       "tags": [
@@ -134,7 +122,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "western-lowland-gorilla",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Gorilla",
+      "presence_note": "Primate Canyon: Lowland Gorillas."
     },
     {
       "id": "african_lion",
@@ -158,7 +150,11 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "african-lion",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "African lion",
+      "presence_note": "Cat Country: African Lions."
     },
     {
       "id": "african_penguin",
@@ -182,7 +178,11 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "african-penguin",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "African penguin",
+      "presence_note": "Penguin Rock: black-footed/African penguins."
     },
     {
       "id": "cheetah",
@@ -206,11 +206,15 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "cheetah",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Cheetah",
+      "presence_note": "Cat Country: Cheetah."
     },
     {
       "id": "nile_hippo",
-      "label": "Nile hippo",
+      "label": "Hippo",
       "emoji": "🦛",
       "one_liner": "Huge river giant that loves the water.",
       "tags": [
@@ -229,11 +233,15 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "nile-hippo",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Hippo",
+      "presence_note": "Zambezi River Hippo Camp: Hippos. Soft Hippo OK if Nile not explicit."
     },
     {
       "id": "caribbean_flamingo",
-      "label": "Caribbean flamingo",
+      "label": "Flamingo",
       "emoji": "🦩",
       "one_liner": "Bright pink wader — long legs for shallow water.",
       "tags": [
@@ -252,7 +260,11 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "caribbean-flamingo",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Flamingo",
+      "presence_note": "Hippo Camp lists Flamingos; confirm Caribbean vs Chilean."
     },
     {
       "id": "two_toed_sloth",
@@ -278,7 +290,11 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "two-toed-sloth",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Two-toed sloth",
+      "presence_note": "Animals of the Night: Two-toed Sloth."
     },
     {
       "id": "zebra",
@@ -301,7 +317,11 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "zebra",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Zebra",
+      "presence_note": "African Veldt: Zebra."
     },
     {
       "id": "galapagos_tortoise",
@@ -324,10 +344,14 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "galapagos-tortoise",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Galápagos tortoise",
+      "presence_note": "Herpetarium: Galapagos Tortoise."
     }
   ],
-  "content_mode": "hybrid",
+  "content_mode": "curated",
   "media": {
     "visitor_map_url": "/field-pack/media/maps/memphis-zoo.jpg",
     "visitor_map_page": "https://assets.speakcdn.com/assets/2510/2020_zoo_visitor_map_inside(1).pdf",
@@ -342,10 +366,29 @@
     "Leave while happy"
   ],
   "route_90m": [
-    "giant_panda",
     "african_elephant",
-    "reticulated_giraffe"
+    "reticulated_giraffe",
+    "sumatran_tiger"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 · web-map 2026-08-07",
-  "list_confidence": "template"
+  "research_notes": "R2 hybrid 2026-08-07 · web-map 2026-08-07 · presence-audit 2026-08-08 [critical]",
+  "list_confidence": "audited",
+  "do_not_list": [
+    {
+      "catalog_id": "giant-panda",
+      "name": "Giant panda",
+      "reason": "No giant pandas since 2023 loan end (Ya Ya returned to China). Do not promise.",
+      "as_of": "2026-08-08"
+    }
+  ],
+  "last_presence_audit": "2026-08-08",
+  "presence_sources": [
+    "https://www.memphiszoo.org/animals",
+    "https://www.memphiszoo.org/african-veldt",
+    "https://www.memphiszoo.org/cat-country",
+    "https://www.memphiszoo.org/primate-canyon",
+    "https://www.memphiszoo.org/penguin-rock",
+    "https://www.memphiszoo.org/zambezi-river-hippo-camp",
+    "https://www.memphiszoo.org/herpetarium",
+    "https://en.wikipedia.org/wiki/Memphis_Zoo"
+  ]
 }

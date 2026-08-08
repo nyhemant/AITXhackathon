@@ -42,7 +42,9 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "shark",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Shark"
     },
     {
       "id": "jellyfish",
@@ -65,11 +67,13 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "jellyfish",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Jellyfish"
     },
     {
       "id": "african_penguin",
-      "label": "African penguin",
+      "label": "Penguin",
       "emoji": "🐧",
       "one_liner": "Penguins.",
       "tags": [
@@ -87,11 +91,13 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-penguin",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Penguin"
     },
     {
       "id": "sumatran_tiger",
-      "label": "Sumatran tiger",
+      "label": "Tiger",
       "emoji": "🐯",
       "one_liner": "Big cats on land side.",
       "tags": [
@@ -109,7 +115,9 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sumatran-tiger",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Tiger"
     },
     {
       "id": "red_panda",
@@ -131,7 +139,9 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "red-panda",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Red panda"
     },
     {
       "id": "asian_small_clawed_otter",
@@ -157,7 +167,9 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "asian-small-clawed-otter",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Asian small-clawed otter"
     },
     {
       "id": "sea_turtle",
@@ -181,7 +193,9 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "sea-turtle",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Sea turtle"
     },
     {
       "id": "stingray",
@@ -204,7 +218,9 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "stingray",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Stingray"
     },
     {
       "id": "clownfish",
@@ -227,7 +243,9 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "clownfish",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Clownfish"
     },
     {
       "id": "octopus",
@@ -250,7 +268,9 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "octopus",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Octopus"
     },
     {
       "id": "seahorse",
@@ -273,7 +293,9 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "seahorse",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Seahorse"
     },
     {
       "id": "starfish",
@@ -298,7 +320,9 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "starfish",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Sea star"
     },
     {
       "id": "eel",
@@ -321,7 +345,9 @@
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "eel",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Eel"
     }
   ],
   "content_mode": "hybrid",
@@ -339,9 +365,12 @@
   ],
   "route_90m": [
     "shark",
-    "jellyfish",
-    "african_penguin"
+    "jellyfish"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 · map-page 2026-08-07",
-  "list_confidence": "template"
+  "research_notes": "R2 hybrid 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "list_confidence": "partial",
+  "do_not_list": [],
+  "presence_sources": [
+    "https://www.oceanpark.com.hk/en"
+  ]
 }

@@ -1,0 +1,227 @@
+{
+  "slug": "stockholm-skansen",
+  "name": "Skansen",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.skansen.se/en/",
+    "https://www.skansen.se/en/see-and-do/the-zoo/animals-at-skansen/",
+    "https://www.skansen.se/en/see-and-do/the-zoo/animals-at-skansen/brown-bear/"
+  ],
+  "list_confidence_recommended": "audited",
+  "practical_fixes": [
+    {
+      "field": "items",
+      "current": "generic zoo pack",
+      "suggested": "brown bear, wolf, moose, lynx, reindeer, seal, Nordic farm animals",
+      "reason": "Official animals are Nordic wild + domestic breeds."
+    },
+    {
+      "field": "content_mode",
+      "current": "hybrid",
+      "suggested": "curated",
+      "reason": "Must rebuild list entirely."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "african-lion",
+      "name": "african-lion",
+      "reason": "Skansen is Nordic wildlife + historic farm — not tropical zoo megafauna."
+    },
+    {
+      "catalog_id": "sumatran-tiger",
+      "name": "sumatran-tiger",
+      "reason": "Skansen is Nordic wildlife + historic farm — not tropical zoo megafauna."
+    },
+    {
+      "catalog_id": "reticulated-giraffe",
+      "name": "reticulated-giraffe",
+      "reason": "Skansen is Nordic wildlife + historic farm — not tropical zoo megafauna."
+    },
+    {
+      "catalog_id": "african-elephant",
+      "name": "african-elephant",
+      "reason": "Skansen is Nordic wildlife + historic farm — not tropical zoo megafauna."
+    },
+    {
+      "catalog_id": "western-lowland-gorilla",
+      "name": "western-lowland-gorilla",
+      "reason": "Skansen is Nordic wildlife + historic farm — not tropical zoo megafauna."
+    },
+    {
+      "catalog_id": "african-penguin",
+      "name": "african-penguin",
+      "reason": "Skansen is Nordic wildlife + historic farm — not tropical zoo megafauna."
+    },
+    {
+      "catalog_id": "chimpanzee",
+      "name": "chimpanzee",
+      "reason": "Skansen is Nordic wildlife + historic farm — not tropical zoo megafauna."
+    },
+    {
+      "catalog_id": "zebra",
+      "name": "zebra",
+      "reason": "Skansen is Nordic wildlife + historic farm — not tropical zoo megafauna."
+    },
+    {
+      "catalog_id": "asian-small-clawed-otter",
+      "name": "asian-small-clawed-otter",
+      "reason": "Skansen is Nordic wildlife + historic farm — not tropical zoo megafauna."
+    },
+    {
+      "catalog_id": "red-panda",
+      "name": "red-panda",
+      "reason": "Skansen is Nordic wildlife + historic farm — not tropical zoo megafauna."
+    }
+  ],
+  "items": [
+    {
+      "id": "cm_outdoor",
+      "label": "Outdoor Area",
+      "catalog_id": "cm-outdoor",
+      "presence": "verified",
+      "display_label": "Outdoor Area",
+      "official_name": "",
+      "notes": "Open-air museum + Nordic zoo outdoor yards.",
+      "source_url": "https://www.skansen.se/en/"
+    },
+    {
+      "id": "cm_free_explore",
+      "label": "Free explore",
+      "catalog_id": "cm-free-explore",
+      "presence": "verified",
+      "display_label": "Free explore",
+      "official_name": "",
+      "notes": "Core Skansen mode.",
+      "source_url": "https://www.skansen.se/en/"
+    },
+    {
+      "id": "red_panda",
+      "label": "Red panda",
+      "catalog_id": "red-panda",
+      "presence": "absent",
+      "display_label": "Red panda",
+      "official_name": "",
+      "notes": "Skansen zoo is Nordic wild animals + Swedish native breeds — not African/Asian megafauna.",
+      "source_url": "https://www.skansen.se/en/see-and-do/the-zoo/animals-at-skansen/"
+    },
+    {
+      "id": "sci_hands_on",
+      "label": "Hands-on lab",
+      "catalog_id": "sci-hands-on",
+      "presence": "high",
+      "display_label": "Hands-on lab",
+      "official_name": "",
+      "notes": "Historic crafts/farm hands-on energy.",
+      "source_url": "https://www.skansen.se/en/"
+    },
+    {
+      "id": "cm_toddler_garden",
+      "label": "Toddler Garden",
+      "catalog_id": "cm-toddler-garden",
+      "presence": "verified",
+      "display_label": "Toddler Garden",
+      "official_name": "",
+      "notes": "Family/kids spaces on grounds.",
+      "source_url": "https://www.skansen.se/en/"
+    },
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "absent",
+      "display_label": "African lion",
+      "official_name": "",
+      "notes": "Skansen zoo is Nordic wild animals + Swedish native breeds — not African/Asian megafauna.",
+      "source_url": "https://www.skansen.se/en/see-and-do/the-zoo/animals-at-skansen/"
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "absent",
+      "display_label": "Sumatran tiger",
+      "official_name": "",
+      "notes": "Skansen zoo is Nordic wild animals + Swedish native breeds — not African/Asian megafauna.",
+      "source_url": "https://www.skansen.se/en/see-and-do/the-zoo/animals-at-skansen/"
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "absent",
+      "display_label": "Reticulated giraffe",
+      "official_name": "",
+      "notes": "Skansen zoo is Nordic wild animals + Swedish native breeds — not African/Asian megafauna.",
+      "source_url": "https://www.skansen.se/en/see-and-do/the-zoo/animals-at-skansen/"
+    },
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "absent",
+      "display_label": "African elephant",
+      "official_name": "",
+      "notes": "Skansen zoo is Nordic wild animals + Swedish native breeds — not African/Asian megafauna.",
+      "source_url": "https://www.skansen.se/en/see-and-do/the-zoo/animals-at-skansen/"
+    },
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "absent",
+      "display_label": "Western lowland gorilla",
+      "official_name": "",
+      "notes": "Skansen zoo is Nordic wild animals + Swedish native breeds — not African/Asian megafauna.",
+      "source_url": "https://www.skansen.se/en/see-and-do/the-zoo/animals-at-skansen/"
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "absent",
+      "display_label": "African penguin",
+      "official_name": "",
+      "notes": "Skansen zoo is Nordic wild animals + Swedish native breeds — not African/Asian megafauna.",
+      "source_url": "https://www.skansen.se/en/see-and-do/the-zoo/animals-at-skansen/"
+    },
+    {
+      "id": "chimpanzee",
+      "label": "Chimpanzee",
+      "catalog_id": "chimpanzee",
+      "presence": "absent",
+      "display_label": "Chimpanzee",
+      "official_name": "",
+      "notes": "Skansen zoo is Nordic wild animals + Swedish native breeds — not African/Asian megafauna.",
+      "source_url": "https://www.skansen.se/en/see-and-do/the-zoo/animals-at-skansen/"
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "absent",
+      "display_label": "Zebra",
+      "official_name": "",
+      "notes": "Skansen zoo is Nordic wild animals + Swedish native breeds — not African/Asian megafauna.",
+      "source_url": "https://www.skansen.se/en/see-and-do/the-zoo/animals-at-skansen/"
+    },
+    {
+      "id": "asian_small_clawed_otter",
+      "label": "Asian small-clawed otter",
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "absent",
+      "display_label": "Asian small-clawed otter",
+      "official_name": "",
+      "notes": "Skansen zoo is Nordic wild animals + Swedish native breeds — not African/Asian megafauna.",
+      "source_url": "https://www.skansen.se/en/see-and-do/the-zoo/animals-at-skansen/"
+    }
+  ],
+  "route_90m_recommended": [
+    "cm_outdoor",
+    "cm_free_explore",
+    "cm_toddler_garden"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "CRITICAL: almost entire animal pack wrong. Skansen = Nordic animals (bear, wolf, moose, lynx, reindeer) + open-air museum.",
+  "severity": "critical"
+}

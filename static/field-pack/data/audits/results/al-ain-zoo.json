@@ -1,0 +1,150 @@
+{
+  "slug": "al-ain-zoo",
+  "name": "Al Ain Zoo",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.alainzoo.com/en/discover/animals",
+    "https://www.alainzoo.ae/",
+    "https://en.wikipedia.org/wiki/Al_Ain_Zoo"
+  ],
+  "list_confidence_recommended": "partial",
+  "practical_fixes": [
+    {
+      "field": "official_url",
+      "current": "https://www.alainzoo.ae/",
+      "suggested": "https://www.alainzoo.com/",
+      "reason": "Primary marketing site appears alainzoo.com; confirm redirects."
+    }
+  ],
+  "do_not_list": [],
+  "items": [
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "high",
+      "display_label": "African lion",
+      "official_name": "",
+      "notes": "Lions including white lions widely documented; official animal carousel JS-limited.",
+      "source_url": ""
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "high",
+      "display_label": "Giraffe",
+      "official_name": "",
+      "notes": "Giraffe feeding is a featured experience; Nubian/other giraffe reported.",
+      "source_url": ""
+    },
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "high",
+      "display_label": "African elephant",
+      "official_name": "",
+      "notes": "Elephant herd referenced by zoo management communications.",
+      "source_url": ""
+    },
+    {
+      "id": "nile_hippo",
+      "label": "Nile hippo",
+      "catalog_id": "nile-hippo",
+      "presence": "high",
+      "display_label": "Nile hippo",
+      "official_name": "",
+      "notes": "Hippos cited on visitor guides/trip summaries.",
+      "source_url": ""
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "medium",
+      "display_label": "Zebra",
+      "official_name": "",
+      "notes": "Plausible ungulate collection; not confirmed on static official list extract.",
+      "source_url": ""
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "medium",
+      "display_label": "Tiger",
+      "official_name": "Tiger (Bengal/white reported)",
+      "notes": "Tigers present; Sumatran subspecies not confirmed — soft-label Tiger.",
+      "source_url": ""
+    },
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "unclear",
+      "display_label": "Western lowland gorilla",
+      "official_name": "",
+      "notes": "No solid official confirmation in audit window.",
+      "source_url": ""
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "unclear",
+      "display_label": "African penguin",
+      "official_name": "",
+      "notes": "Not confirmed.",
+      "source_url": ""
+    },
+    {
+      "id": "chimpanzee",
+      "label": "Chimpanzee",
+      "catalog_id": "chimpanzee",
+      "presence": "medium",
+      "display_label": "Chimpanzee",
+      "official_name": "",
+      "notes": "Chimps mentioned in secondary sources.",
+      "source_url": ""
+    },
+    {
+      "id": "red_panda",
+      "label": "Red panda",
+      "catalog_id": "red-panda",
+      "presence": "unclear",
+      "display_label": "Red panda",
+      "official_name": "",
+      "notes": "Not confirmed on official materials reviewed.",
+      "source_url": ""
+    },
+    {
+      "id": "asian_small_clawed_otter",
+      "label": "Asian small-clawed otter",
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "unclear",
+      "display_label": "Asian small-clawed otter",
+      "official_name": "",
+      "notes": "Not confirmed.",
+      "source_url": ""
+    },
+    {
+      "id": "galapagos_tortoise",
+      "label": "Galápagos tortoise",
+      "catalog_id": "galapagos-tortoise",
+      "presence": "unclear",
+      "display_label": "Galápagos tortoise",
+      "official_name": "",
+      "notes": "Not confirmed.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "african_lion",
+    "reticulated_giraffe",
+    "african_elephant"
+  ],
+  "content_mode_recommended": "hybrid",
+  "summary": "Lions, giraffes, elephants, hippos are high-confidence icons; several template species (gorilla, red panda, African penguin, Galápagos tortoise, otter) remain unclear without a scrapeable official species list. Prefer wonder fillers for unconfirmed taxa.",
+  "severity": "major"
+}

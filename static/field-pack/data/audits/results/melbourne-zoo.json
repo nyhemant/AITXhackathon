@@ -1,0 +1,212 @@
+{
+  "slug": "melbourne-zoo",
+  "name": "Melbourne Zoo",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.zoo.org.au/melbourne/animals-and-habitats/",
+    "https://www.zoo.org.au/melbourne/animals-and-habitats/forest-of-wonder/",
+    "https://www.zoo.org.au/melbourne/animals-and-habitats/lion-gorge/",
+    "https://www.zoo.org.au/melbourne/animals-and-habitats/gorilla-rainforest/",
+    "https://www.zoo.org.au/melbourne/animals-and-habitats/australian-bush/",
+    "https://www.zoo.org.au/melbourne/animals-and-habitats/main-trail/",
+    "https://www.zoo.org.au/elephant-move-faqs/"
+  ],
+  "list_confidence_recommended": "audited",
+  "practical_fixes": [
+    {
+      "field": "items.african_elephant",
+      "current": "African elephant on print list / route_90m",
+      "suggested": "Remove; elephants relocated to Werribee Open Range Zoo (2025)",
+      "reason": "Official Zoos Victoria FAQ: entire Asian elephant herd moved from Melbourne Zoo to Werribee."
+    },
+    {
+      "field": "items.galapagos_tortoise",
+      "current": "Galápagos tortoise",
+      "suggested": "Aldabra giant tortoise (or soft Tortoise)",
+      "reason": "Main Trail lists Aldabra Giant Tortoise, not Galápagos."
+    },
+    {
+      "field": "items.african_penguin",
+      "current": "African penguin",
+      "suggested": "Little penguin / penguin at Wild Sea — not African penguin",
+      "reason": "Wild Sea has penguins; Australian little penguins historically, not African penguin label."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "No elephants at Melbourne Zoo after Feb 2025 move of Asian elephant herd to Werribee Open Range Zoo. Never African."
+    },
+    {
+      "catalog_id": "chimpanzee",
+      "name": "Chimpanzee",
+      "reason": "Not listed on current Melbourne Zoo habitat pages (Gorilla Rainforest features gorillas/lemurs/gibbons, not chimps)."
+    },
+    {
+      "catalog_id": "zebra",
+      "name": "Zebra",
+      "reason": "Not listed on current Melbourne Zoo habitat animal pages reviewed."
+    },
+    {
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "Do not label African penguin; Wild Sea penguins are not confirmed as African species."
+    },
+    {
+      "catalog_id": "galapagos-tortoise",
+      "name": "Galápagos tortoise",
+      "reason": "Official Main Trail animal is Aldabra giant tortoise, not Galápagos."
+    }
+  ],
+  "items": [
+    {
+      "id": "orangutan",
+      "label": "Orangutan",
+      "catalog_id": "orangutan",
+      "presence": "verified",
+      "display_label": "Orangutan",
+      "official_name": "Orangutan",
+      "notes": "Forest of Wonder lists Orangutan with Sumatran tiger and siamang.",
+      "source_url": "https://www.zoo.org.au/melbourne/animals-and-habitats/forest-of-wonder/"
+    },
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "absent",
+      "display_label": "— remove —",
+      "official_name": "",
+      "notes": "Official FAQ: elephants moved to Werribee Open Range Zoo (2025). Habitat empty.",
+      "source_url": "https://www.zoo.org.au/elephant-move-faqs/"
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "verified",
+      "display_label": "Sumatran tiger",
+      "official_name": "Sumatran Tiger",
+      "notes": "Forest of Wonder / Lion Gorge: Sumatran Tiger.",
+      "source_url": "https://www.zoo.org.au/melbourne/animals-and-habitats/forest-of-wonder/"
+    },
+    {
+      "id": "koala",
+      "label": "Koala",
+      "catalog_id": "koala",
+      "presence": "verified",
+      "display_label": "Koala",
+      "official_name": "Koala",
+      "notes": "Australian Bush: Koala.",
+      "source_url": "https://www.zoo.org.au/melbourne/animals-and-habitats/australian-bush/"
+    },
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "verified",
+      "display_label": "Gorilla",
+      "official_name": "Western Lowland Gorilla",
+      "notes": "Gorilla Rainforest: Western Lowland Gorilla.",
+      "source_url": "https://www.zoo.org.au/melbourne/animals-and-habitats/gorilla-rainforest/"
+    },
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "verified",
+      "display_label": "Lion",
+      "official_name": "Lion",
+      "notes": "Lion Gorge: Lion.",
+      "source_url": "https://www.zoo.org.au/melbourne/animals-and-habitats/lion-gorge/"
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "high",
+      "display_label": "Giraffe",
+      "official_name": "Giraffe",
+      "notes": "Main Trail lists Giraffe; subspecies not specified on habitat page — soft Giraffe label.",
+      "source_url": "https://www.zoo.org.au/melbourne/animals-and-habitats/main-trail/"
+    },
+    {
+      "id": "asian_small_clawed_otter",
+      "label": "Asian small-clawed otter",
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "verified",
+      "display_label": "Asian small-clawed otter",
+      "official_name": "Asian Small-clawed Otter",
+      "notes": "Forest of Wonder: Asian Small-clawed Otter.",
+      "source_url": "https://www.zoo.org.au/melbourne/animals-and-habitats/forest-of-wonder/"
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "absent",
+      "display_label": "— remove —",
+      "official_name": "",
+      "notes": "Not on current habitat animal lists.",
+      "source_url": ""
+    },
+    {
+      "id": "chimpanzee",
+      "label": "Chimpanzee",
+      "catalog_id": "chimpanzee",
+      "presence": "absent",
+      "display_label": "— remove —",
+      "official_name": "",
+      "notes": "Not on Gorilla Rainforest or other habitat lists.",
+      "source_url": ""
+    },
+    {
+      "id": "red_panda",
+      "label": "Red panda",
+      "catalog_id": "red-panda",
+      "presence": "verified",
+      "display_label": "Red panda",
+      "official_name": "Red Panda",
+      "notes": "Main Trail: Red Panda.",
+      "source_url": "https://www.zoo.org.au/melbourne/animals-and-habitats/main-trail/"
+    },
+    {
+      "id": "galapagos_tortoise",
+      "label": "Galápagos tortoise",
+      "catalog_id": "galapagos-tortoise",
+      "presence": "absent",
+      "display_label": "— relabel or remove —",
+      "official_name": "Aldabra Giant Tortoise",
+      "notes": "Main Trail has Aldabra Giant Tortoise, not Galápagos.",
+      "source_url": "https://www.zoo.org.au/melbourne/animals-and-habitats/main-trail/"
+    },
+    {
+      "id": "ring_tailed_lemur",
+      "label": "Ring-tailed lemur",
+      "catalog_id": "ring-tailed-lemur",
+      "presence": "high",
+      "display_label": "Lemur",
+      "official_name": "Lemur",
+      "notes": "Gorilla Rainforest: Lemur (ring-tailed among lemur experiences). Soft Lemur OK.",
+      "source_url": "https://www.zoo.org.au/melbourne/animals-and-habitats/gorilla-rainforest/"
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "absent",
+      "display_label": "— remove or soft Penguin after verify —",
+      "official_name": "",
+      "notes": "Do not promise African penguin; Wild Sea has penguins of other/unconfirmed labeling.",
+      "source_url": "https://www.zoo.org.au/melbourne/animals-and-habitats/wild-sea/"
+    }
+  ],
+  "route_90m_recommended": [
+    "orangutan",
+    "sumatran_tiger",
+    "koala"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "CRITICAL: African elephant on route is wrong and absent — herd moved to Werribee 2025. Strong verified icons: orangutan, Sumatran tiger, koala, gorilla, lion, otter, red panda. Fix tortoise (Aldabra) and penguin labels. Drop chimp/zebra template leakage.",
+  "severity": "critical"
+}

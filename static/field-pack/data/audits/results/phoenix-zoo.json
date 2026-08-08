@@ -1,0 +1,205 @@
+{
+  "slug": "phoenix-zoo",
+  "name": "Phoenix Zoo",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.phoenixzoo.org/explore/animals/",
+    "https://phoenixzoo.org/animals/",
+    "https://www.phoenixzoo.org/"
+  ],
+  "list_confidence_recommended": "audited",
+  "practical_fixes": [
+    {
+      "field": "items.african_elephant",
+      "current": "African elephant",
+      "suggested": "Asian elephant",
+      "reason": "Official animal page: Asian Elephant."
+    },
+    {
+      "field": "items.reticulated_giraffe",
+      "current": "Reticulated giraffe",
+      "suggested": "Masai giraffe / soft Giraffe",
+      "reason": "Official: Masai Giraffe."
+    },
+    {
+      "field": "items.western_lowland_gorilla",
+      "current": "Gorilla",
+      "suggested": "Remove — no true gorillas (only callimico 'teacup gorilla' nickname historically)",
+      "reason": "No western lowland gorilla exhibit."
+    },
+    {
+      "field": "items.nile_hippo",
+      "current": "Nile hippo",
+      "suggested": "Remove",
+      "reason": "Not on current animals list; former species only."
+    },
+    {
+      "field": "items.galapagos_tortoise",
+      "current": "Galápagos tortoise",
+      "suggested": "Radiated / Sonoran desert tortoise — not Galápagos",
+      "reason": "Animals list shows radiated and Sonoran desert tortoises."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Phoenix keeps Asian elephants."
+    },
+    {
+      "catalog_id": "western-lowland-gorilla",
+      "name": "Western lowland gorilla",
+      "reason": "No gorillas at Phoenix Zoo."
+    },
+    {
+      "catalog_id": "nile-hippo",
+      "name": "Nile hippo",
+      "reason": "Not currently kept."
+    },
+    {
+      "catalog_id": "galapagos-tortoise",
+      "name": "Galápagos tortoise",
+      "reason": "Wrong tortoise species vs official list."
+    }
+  ],
+  "items": [
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "absent",
+      "display_label": "— relabel Asian elephant —",
+      "official_name": "Asian Elephant",
+      "notes": "Asian Elephant on official list.",
+      "source_url": "https://www.phoenixzoo.org/explore/animals/asian-elephant-2/"
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "high",
+      "display_label": "Giraffe (Masai)",
+      "official_name": "Masai Giraffe",
+      "notes": "Masai Giraffe — soft Giraffe.",
+      "source_url": "https://www.phoenixzoo.org/explore/animals/"
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "verified",
+      "display_label": "Sumatran tiger",
+      "official_name": "Sumatran tiger",
+      "notes": "Sumatran tiger listed.",
+      "source_url": "https://www.phoenixzoo.org/explore/animals/"
+    },
+    {
+      "id": "orangutan",
+      "label": "Orangutan",
+      "catalog_id": "orangutan",
+      "presence": "verified",
+      "display_label": "Orangutan",
+      "official_name": "Bornean Orangutan",
+      "notes": "Bornean Orangutan.",
+      "source_url": "https://www.phoenixzoo.org/explore/animals/"
+    },
+    {
+      "id": "galapagos_tortoise",
+      "label": "Galápagos tortoise",
+      "catalog_id": "galapagos-tortoise",
+      "presence": "absent",
+      "display_label": "— relabel tortoise —",
+      "official_name": "Radiated / desert tortoise",
+      "notes": "Not Galápagos; other tortoises present.",
+      "source_url": ""
+    },
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "verified",
+      "display_label": "African lion",
+      "official_name": "African Lion",
+      "notes": "African Lion listed.",
+      "source_url": "https://www.phoenixzoo.org/explore/animals/"
+    },
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "absent",
+      "display_label": "— remove —",
+      "official_name": "",
+      "notes": "No gorillas.",
+      "source_url": ""
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "verified",
+      "display_label": "African penguin",
+      "official_name": "African penguin",
+      "notes": "African penguin listed.",
+      "source_url": "https://www.phoenixzoo.org/explore/animals/"
+    },
+    {
+      "id": "cheetah",
+      "label": "Cheetah",
+      "catalog_id": "cheetah",
+      "presence": "verified",
+      "display_label": "Cheetah",
+      "official_name": "Cheetah",
+      "notes": "Cheetah listed.",
+      "source_url": "https://www.phoenixzoo.org/explore/animals/"
+    },
+    {
+      "id": "nile_hippo",
+      "label": "Nile hippo",
+      "catalog_id": "nile-hippo",
+      "presence": "absent",
+      "display_label": "— remove —",
+      "official_name": "",
+      "notes": "Not current.",
+      "source_url": ""
+    },
+    {
+      "id": "caribbean_flamingo",
+      "label": "Caribbean flamingo",
+      "catalog_id": "caribbean-flamingo",
+      "presence": "high",
+      "display_label": "Flamingo",
+      "official_name": "Flamingos",
+      "notes": "Flamingos listed. Soft Flamingo.",
+      "source_url": "https://www.phoenixzoo.org/explore/animals/"
+    },
+    {
+      "id": "two_toed_sloth",
+      "label": "Two-toed sloth",
+      "catalog_id": "two-toed-sloth",
+      "presence": "verified",
+      "display_label": "Two-toed sloth",
+      "official_name": "Two-toed sloth",
+      "notes": "Linne's Two-toed sloth listed.",
+      "source_url": "https://www.phoenixzoo.org/explore/animals/"
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "verified",
+      "display_label": "Zebra",
+      "official_name": "Grevy's Zebra",
+      "notes": "Grevy's Zebra listed.",
+      "source_url": "https://www.phoenixzoo.org/explore/animals/"
+    }
+  ],
+  "route_90m_recommended": [
+    "sumatran_tiger",
+    "orangutan",
+    "african_lion"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "MAJOR: African elephant→Asian; no gorillas; no Nile hippo; Galápagos tortoise wrong. Strong verified: Sumatran tiger, Bornean orangutan, lion, cheetah, African penguin, zebra, sloth, Masai giraffe.",
+  "severity": "major"
+}

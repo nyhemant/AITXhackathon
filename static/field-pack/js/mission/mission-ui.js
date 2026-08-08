@@ -3,6 +3,16 @@
  * Page stays clean; #mission-open-btn opens filters + live sheet.
  */
 (function () {
+
+  function statusLineFromVenue(venue) {
+    const conf = (venue && venue.list_confidence) || "";
+    const audited = (venue && venue.last_presence_audit) || "";
+    const month = audited.length >= 7 ? audited.slice(0, 7) : "";
+    if (conf === "audited" && month) return `Verified ${month}`;
+    if (conf === "partial") return "Confirm on arrival";
+    return "Flexible finds";
+  }
+
   function $(sel, root) {
     return (root || document).querySelector(sel);
   }
@@ -142,6 +152,17 @@
         </li>`
         )
         .join("");
+    }
+    const ver = $("#mission-verified");
+    if (ver) ver.textContent = statusLineFromVenue(venue);
+    const sheet = $("#mission-sheet");
+    if (sheet && !sheet.querySelector(".ms-favorite")) {
+      const fav = document.createElement("p");
+      fav.className = "ms-favorite";
+      fav.textContent = "My favorite was _______________________";
+      const foot = sheet.querySelector(".ms-footer");
+      if (foot) sheet.insertBefore(fav, foot);
+      else sheet.appendChild(fav);
     }
     renderMapHint(/* forPrint */ false);
   }

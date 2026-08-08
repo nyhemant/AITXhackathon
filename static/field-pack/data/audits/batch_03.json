@@ -1,0 +1,200 @@
+[
+  {
+    "slug": "hong-kong-ocean-park",
+    "name": "Ocean Park Hong Kong",
+    "type": "zoo",
+    "city": "Hong Kong",
+    "country": "HK",
+    "official_url": "https://www.oceanpark.com.hk/en",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 13
+  },
+  {
+    "slug": "honolulu-zoo",
+    "name": "Honolulu Zoo",
+    "type": "zoo",
+    "city": "Honolulu",
+    "country": "US",
+    "official_url": "https://www.honoluluzoo.org/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 13
+  },
+  {
+    "slug": "houston-zoo",
+    "name": "Houston Zoo",
+    "type": "zoo",
+    "city": "Houston",
+    "country": "US",
+    "official_url": "https://www.houstonzoo.org/",
+    "list_confidence": "template",
+    "content_mode": "curated",
+    "n_items": 10
+  },
+  {
+    "slug": "indy-childrens-museum",
+    "name": "Children's Museum of Indianapolis",
+    "type": "museum",
+    "city": "Indianapolis",
+    "country": "US",
+    "official_url": "https://www.childrensmuseum.org/",
+    "list_confidence": "partial",
+    "content_mode": "hybrid",
+    "n_items": 10
+  },
+  {
+    "slug": "istanbul-aquarium",
+    "name": "Istanbul Aquarium",
+    "type": "aquarium",
+    "city": "Istanbul",
+    "country": "TR",
+    "official_url": "https://www.istanbulakvaryum.com/en",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 12
+  },
+  {
+    "slug": "jakarta-ragunan",
+    "name": "Ragunan Zoo",
+    "type": "zoo",
+    "city": "Jakarta",
+    "country": "ID",
+    "official_url": "https://ragunanzoo.jakarta.go.id/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 13
+  },
+  {
+    "slug": "johannesburg-zoo",
+    "name": "Johannesburg Zoo",
+    "type": "zoo",
+    "city": "Johannesburg",
+    "country": "ZA",
+    "official_url": "https://www.jhbcityparksandzoo.com/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 12
+  },
+  {
+    "slug": "kansas-city-zoo",
+    "name": "Kansas City Zoo",
+    "type": "zoo",
+    "city": "Kansas City",
+    "country": "US",
+    "official_url": "https://www.kansascityzoo.org/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 13
+  },
+  {
+    "slug": "kennedy-space-center",
+    "name": "Kennedy Space Center",
+    "type": "museum",
+    "city": "Merritt Island",
+    "country": "US",
+    "official_url": "https://www.kennedyspacecenter.com/",
+    "list_confidence": "partial",
+    "content_mode": "curated",
+    "n_items": 8
+  },
+  {
+    "slug": "kuala-lumpur-zoo",
+    "name": "Zoo Negara",
+    "type": "zoo",
+    "city": "Kuala Lumpur",
+    "country": "MY",
+    "official_url": "https://www.zoonegara.my/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 14
+  },
+  {
+    "slug": "la-zoo",
+    "name": "Los Angeles Zoo",
+    "type": "zoo",
+    "city": "Los Angeles",
+    "country": "US",
+    "official_url": "https://www.lazoo.org/",
+    "list_confidence": "template",
+    "content_mode": "curated",
+    "n_items": 10
+  },
+  {
+    "slug": "lima-leyendas",
+    "name": "Parque de las Leyendas",
+    "type": "zoo",
+    "city": "Lima",
+    "country": "PE",
+    "official_url": "https://www.leyendas.gob.pe/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 14
+  },
+  {
+    "slug": "lincoln-park-zoo",
+    "name": "Lincoln Park Zoo",
+    "type": "zoo",
+    "city": "Chicago",
+    "country": "US",
+    "official_url": "https://www.lpzoo.org/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 13
+  },
+  {
+    "slug": "lisbon-zoo",
+    "name": "Lisbon Zoo",
+    "type": "zoo",
+    "city": "Lisbon",
+    "country": "PT",
+    "official_url": "https://www.zoo.pt/en",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 12
+  },
+  {
+    "slug": "london-zoo",
+    "name": "London Zoo",
+    "type": "zoo",
+    "city": "London",
+    "country": "GB",
+    "official_url": "https://www.londonzoo.org/",
+    "list_confidence": "partial",
+    "content_mode": "curated",
+    "n_items": 12
+  },
+  {
+    "slug": "lotte-aquarium-seoul",
+    "name": "Lotte World Aquarium",
+    "type": "aquarium",
+    "city": "Seoul",
+    "country": "KR",
+    "official_url": "https://www.lotteworld.com/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 12
+  },
+  {
+    "slug": "madrid-zoo",
+    "name": "Madrid Zoo Aquarium",
+    "type": "zoo",
+    "city": "Madrid",
+    "country": "ES",
+    "official_url": "https://www.zoomadrid.com/en",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 13
+  },
+  {
+    "slug": "manila-zoo",
+    "name": "Manila Zoo",
+    "type": "zoo",
+    "city": "Manila",
+    "country": "PH",
+    "official_url": "https://www.manilazoo.ph/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 12
+  }
+]

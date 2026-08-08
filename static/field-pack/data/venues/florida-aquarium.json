@@ -16,7 +16,7 @@
     "typical_duration": "2–3 hours",
     "ticket_note": "Waterfront parking; weekends busy.",
     "transit_note": "Channelside / downtown Tampa.",
-    "energy_note": "indoor",
+    "energy_note": "Mostly indoors",
     "best_start": "Shark / open ocean wow, then touch if open."
   },
   "items": [
@@ -42,7 +42,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "shark",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Shark"
     },
     {
       "id": "stingray",
@@ -66,7 +69,9 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "stingray",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "display_label": "Stingray"
     },
     {
       "id": "sea_turtle",
@@ -89,7 +94,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sea-turtle",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "display_label": "Sea turtle",
+      "presence_note": "Sea turtle rehab campus too"
     },
     {
       "id": "jellyfish",
@@ -112,7 +120,9 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "jellyfish",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Jellyfish"
     },
     {
       "id": "octopus",
@@ -135,7 +145,9 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "octopus",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Octopus"
     },
     {
       "id": "seahorse",
@@ -158,7 +170,9 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "seahorse",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Seahorse"
     },
     {
       "id": "clownfish",
@@ -181,7 +195,9 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "clownfish",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Clownfish"
     },
     {
       "id": "eel",
@@ -204,7 +220,9 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "eel",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Eel"
     },
     {
       "id": "crab",
@@ -227,7 +245,9 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "crab",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Crab"
     },
     {
       "id": "starfish",
@@ -252,7 +272,9 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "starfish",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Sea star"
     },
     {
       "id": "freshwater_fish",
@@ -275,7 +297,10 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "freshwater-fish",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "River / lake fish",
+      "presence_note": "Florida wetlands exhibits likely"
     },
     {
       "id": "asian_small_clawed_otter",
@@ -301,7 +326,9 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "asian-small-clawed-otter",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Asian small-clawed otter"
     }
   ],
   "content_mode": "hybrid",
@@ -323,6 +350,10 @@
     "stingray",
     "sea_turtle"
   ],
-  "research_notes": "R1 hybrid 2026-08-07 · map-img 2026-08-07 · map-page 2026-08-07",
-  "list_confidence": "template"
+  "research_notes": "R1 hybrid 2026-08-07 · map-img 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [minor]",
+  "list_confidence": "partial",
+  "do_not_list": [],
+  "presence_sources": [
+    "https://www.flaquarium.org/"
+  ]
 }

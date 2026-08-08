@@ -40,7 +40,12 @@
         "question": "What does an elephant use its trunk for?",
         "answer": "To smell, grab food, drink, and spray water!"
       },
-      "catalog_id": "african-elephant"
+      "catalog_id": "african-elephant",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "African elephant",
+      "presence_note": "Baby elephant + adopt list"
     },
     {
       "id": "giraffe",
@@ -65,7 +70,12 @@
         "question": "How does a giraffe drink water?",
         "answer": "It spreads its front legs wide and bends way down."
       },
-      "catalog_id": "reticulated-giraffe"
+      "catalog_id": "reticulated-giraffe",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Reticulated giraffe",
+      "presence_note": "Giraffe Ridge feeding platform"
     },
     {
       "id": "lion",
@@ -85,7 +95,11 @@
         "9+"
       ],
       "zone": "Giants of the Savanna",
-      "catalog_id": "african-lion"
+      "catalog_id": "african-lion",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "African lion"
     },
     {
       "id": "gorilla",
@@ -104,7 +118,11 @@
         "9+"
       ],
       "zone": "Gorilla Trail",
-      "catalog_id": "western-lowland-gorilla"
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Western lowland gorilla"
     },
     {
       "id": "tiger",
@@ -123,7 +141,11 @@
         "9+"
       ],
       "zone": "",
-      "catalog_id": "sumatran-tiger"
+      "catalog_id": "sumatran-tiger",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Sumatran tiger"
     },
     {
       "id": "penguin",
@@ -142,7 +164,11 @@
         "9+"
       ],
       "zone": "",
-      "catalog_id": "african-penguin"
+      "catalog_id": "african-penguin",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "African penguin"
     },
     {
       "id": "hippo",
@@ -161,7 +187,11 @@
         "9+"
       ],
       "zone": "",
-      "catalog_id": "nile-hippo"
+      "catalog_id": "nile-hippo",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Nile hippo"
     },
     {
       "id": "zebra",
@@ -180,7 +210,12 @@
         "9+"
       ],
       "zone": "",
-      "catalog_id": "zebra"
+      "catalog_id": "zebra",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Zebra",
+      "presence_note": "Species list reports mountain zebra; soft-label Zebra OK"
     },
     {
       "id": "flamingo",
@@ -199,7 +234,11 @@
         "9+"
       ],
       "zone": "",
-      "catalog_id": "caribbean-flamingo"
+      "catalog_id": "caribbean-flamingo",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Caribbean flamingo"
     },
     {
       "id": "cheetah",
@@ -218,7 +257,12 @@
         "9+"
       ],
       "zone": "",
-      "catalog_id": "cheetah"
+      "catalog_id": "cheetah",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Cheetah",
+      "presence_note": "Protecting the Twelve"
     },
     {
       "id": "kids-zoo",
@@ -235,7 +279,11 @@
         "4-5",
         "6-8"
       ],
-      "zone": "Lacerte Family Children's Zoo"
+      "zone": "Lacerte Family Children's Zoo",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Children's Zoo"
     },
     {
       "id": "tortoise",
@@ -253,7 +301,12 @@
         "9+"
       ],
       "zone": "",
-      "catalog_id": "galapagos-tortoise"
+      "catalog_id": "galapagos-tortoise",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Galápagos tortoise",
+      "presence_note": "Tortoise feeding ZooNorth"
     }
   ],
   "content_mode": "curated",
@@ -270,6 +323,19 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "research_notes": "map-img 2026-08-07 · map-page 2026-08-07",
-  "list_confidence": "partial"
+  "research_notes": "map-img 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [ok]",
+  "list_confidence": "audited",
+  "do_not_list": [],
+  "route_90m": [
+    "giraffe",
+    "elephant",
+    "lion"
+  ],
+  "last_presence_audit": "2026-08-08",
+  "presence_sources": [
+    "https://www.dallaszoo.com/",
+    "https://www.dallaszoo.com/support-the-zoo/adopt-an-animal/",
+    "https://www.dallaszoo.com/protecting-the-twelve/",
+    "https://www.dallaszoo.com/explore-the-zoo/encounters-experiences/"
+  ]
 }

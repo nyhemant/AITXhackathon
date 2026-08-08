@@ -1,0 +1,135 @@
+{
+  "slug": "childrens-museum-perot",
+  "name": "Children's Museum (Perot)",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.perotmuseum.org/"
+  ],
+  "list_confidence_recommended": "partial",
+  "practical_fixes": [
+    {
+      "field": "name",
+      "current": "Children's Museum (Perot)",
+      "suggested": "Perot Museum of Nature and Science",
+      "reason": "Official name; nature/science museum with kid floors, not a standalone children's museum brand."
+    },
+    {
+      "field": "tagline",
+      "current": "Play zones kids control — climb, make, splash.",
+      "suggested": "Lead with dinosaurs + Sports Hall + toddler/outdoor play — not imported children's-museum room names.",
+      "reason": "Taxonomy leakage of Imaginarium/Woven Wonders."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "cm-imaginarium",
+      "name": "Imaginarium",
+      "reason": "No exhibit named Imaginarium at Perot — children's-museum taxonomy leakage."
+    },
+    {
+      "catalog_id": "cm-woven",
+      "name": "Woven Wonders",
+      "reason": "Woven Wonders is another venue's label — leakage."
+    }
+  ],
+  "items": [
+    {
+      "id": "imaginarium",
+      "label": "Imaginarium",
+      "catalog_id": "cm-imaginarium",
+      "presence": "absent",
+      "display_label": "Imaginarium",
+      "official_name": "",
+      "notes": "No exhibit named Imaginarium — taxonomy leakage from children's museum catalog.",
+      "source_url": ""
+    },
+    {
+      "id": "woven",
+      "label": "Woven Wonders",
+      "catalog_id": "cm-woven",
+      "presence": "absent",
+      "display_label": "Woven Wonders",
+      "official_name": "",
+      "notes": "Not a Perot exhibit name — leakage.",
+      "source_url": ""
+    },
+    {
+      "id": "water",
+      "label": "Water play",
+      "catalog_id": "cm-waterfall",
+      "presence": "medium",
+      "display_label": "Water / outdoor play",
+      "official_name": "",
+      "notes": "Outdoor play space exists; exact water-play branding may differ.",
+      "source_url": ""
+    },
+    {
+      "id": "makery",
+      "label": "Makery",
+      "catalog_id": "cm-makery",
+      "presence": "medium",
+      "display_label": "Create / hands-on",
+      "official_name": "",
+      "notes": "Climb-create-imagine messaging — soft maker stop, not a named Makery.",
+      "source_url": ""
+    },
+    {
+      "id": "toddler",
+      "label": "Toddler Garden",
+      "catalog_id": "cm-toddler-garden",
+      "presence": "high",
+      "display_label": "Toddler area",
+      "official_name": "",
+      "notes": "Expanded toddler area on official messaging.",
+      "source_url": "https://www.perotmuseum.org/"
+    },
+    {
+      "id": "outdoor",
+      "label": "Outdoor play",
+      "catalog_id": "cm-outdoor",
+      "presence": "verified",
+      "display_label": "Outdoor play space",
+      "official_name": "Outdoor play space",
+      "notes": "Vibrant outdoor play space on homepage.",
+      "source_url": "https://www.perotmuseum.org/"
+    },
+    {
+      "id": "art",
+      "label": "Art lab",
+      "catalog_id": "cm-art-lab",
+      "presence": "medium",
+      "display_label": "Create / art activities",
+      "official_name": "",
+      "notes": "Soft activity stop.",
+      "source_url": ""
+    },
+    {
+      "id": "explore",
+      "label": "Free explore",
+      "catalog_id": "cm-free-explore",
+      "presence": "high",
+      "display_label": "Free explore",
+      "official_name": "",
+      "notes": "Appropriate free-explore stop.",
+      "source_url": "https://www.perotmuseum.org/"
+    },
+    {
+      "id": "quiet",
+      "label": "Quiet corner",
+      "catalog_id": "",
+      "presence": "medium",
+      "display_label": "Quiet corner",
+      "official_name": "",
+      "notes": "Generic coping stop OK.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "outdoor",
+    "toddler",
+    "explore"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "Drop Imaginarium and Woven Wonders leakage. Prefer real Perot anchors: Discover the Dinosaurs, Sports Hall, toddler/outdoor play. Consider adding sci_dinosaur to venue items later.",
+  "severity": "major"
+}

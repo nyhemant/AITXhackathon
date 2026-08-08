@@ -38,7 +38,11 @@
         "question": "What did you notice about the Rainforest dome?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-rainforest"
+      "catalog_id": "sci-rainforest",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Rainforest dome"
     },
     {
       "id": "shark",
@@ -60,11 +64,15 @@
         "question": "What did you notice about the Shark?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "shark"
+      "catalog_id": "shark",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "display_label": "Shark",
+      "presence_note": "Steinhart Aquarium — sharks among 60k animals."
     },
     {
       "id": "african_penguin",
-      "label": "African penguin",
+      "label": "Penguin",
       "emoji": "🐧",
       "one_liner": "Penguins just outside/near the academy path.",
       "tags": [
@@ -82,7 +90,11 @@
         "question": "What did you notice about the African penguin?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "african-penguin"
+      "catalog_id": "african-penguin",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Penguin",
+      "presence_note": "African penguins historically iconic at Cal Academy aquarium — high."
     },
     {
       "id": "jellyfish",
@@ -104,7 +116,11 @@
         "question": "What did you notice about the Jellyfish?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "jellyfish"
+      "catalog_id": "jellyfish",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Jellyfish",
+      "presence_note": "Longstanding jelly exhibits in Steinhart."
     },
     {
       "id": "octopus",
@@ -126,7 +142,10 @@
         "question": "What did you notice about the Octopus?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "octopus"
+      "catalog_id": "octopus",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Octopus"
     },
     {
       "id": "stingray",
@@ -148,7 +167,10 @@
         "question": "What did you notice about the Stingray?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "stingray"
+      "catalog_id": "stingray",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Stingray"
     },
     {
       "id": "sci_planet",
@@ -169,7 +191,11 @@
         "question": "What did you notice about the Planet / space hall?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-planet"
+      "catalog_id": "sci-planet",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Planet / space hall"
     },
     {
       "id": "sci_hands_on",
@@ -190,7 +216,11 @@
         "question": "What did you notice about the Hands-on lab?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-hands-on"
+      "catalog_id": "sci-hands-on",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Hands-on lab",
+      "presence_note": "Interactive science exhibits throughout."
     },
     {
       "id": "seahorse",
@@ -212,7 +242,10 @@
         "question": "What did you notice about the Seahorse?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "seahorse"
+      "catalog_id": "seahorse",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Seahorse"
     },
     {
       "id": "clownfish",
@@ -234,7 +267,11 @@
         "question": "What did you notice about the Clownfish?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "clownfish"
+      "catalog_id": "clownfish",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Clownfish",
+      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract."
     }
   ],
   "content_mode": "curated",
@@ -251,6 +288,17 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "research_notes": "map-page 2026-08-07",
-  "list_confidence": "partial"
+  "research_notes": "map-page 2026-08-07 · presence-audit 2026-08-08 [ok]",
+  "list_confidence": "audited",
+  "do_not_list": [],
+  "route_90m": [
+    "sci_rainforest",
+    "shark",
+    "sci_planet"
+  ],
+  "last_presence_audit": "2026-08-08",
+  "presence_sources": [
+    "https://www.calacademy.org/exhibits",
+    "https://www.calacademy.org/"
+  ]
 }

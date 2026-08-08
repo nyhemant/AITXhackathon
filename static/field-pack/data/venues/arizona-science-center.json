@@ -16,7 +16,7 @@
     "typical_duration": "half day",
     "ticket_note": "Timed tickets possible in peak season.",
     "transit_note": "Light rail / downtown.",
-    "energy_note": "indoor",
+    "energy_note": "Mostly indoors",
     "best_start": "Body-play science floor before any show."
   },
   "items": [
@@ -41,7 +41,11 @@
         "question": "What did you notice about the Hands-on lab?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-hands-on"
+      "catalog_id": "sci-hands-on",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Hands-on lab",
+      "presence_note": "Core science center offering."
     },
     {
       "id": "sci_planet",
@@ -62,7 +66,11 @@
         "question": "What did you notice about the Planet / space hall?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-planet"
+      "catalog_id": "sci-planet",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Planet / space hall",
+      "presence_note": "Planetarium typical; confirm show schedule on azscience.org."
     },
     {
       "id": "sci_rocket",
@@ -83,7 +91,11 @@
         "question": "What did you notice about the Rockets & launch?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-rocket"
+      "catalog_id": "sci-rocket",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Rockets & launch",
+      "presence_note": "Space content varies by exhibition rotation."
     },
     {
       "id": "cm_free_explore",
@@ -104,7 +116,11 @@
         "question": "What did you notice about the Free explore?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "cm-free-explore"
+      "catalog_id": "cm-free-explore",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Free explore",
+      "presence_note": "OK generic."
     },
     {
       "id": "sci_dinosaur",
@@ -125,7 +141,11 @@
         "question": "What did you notice about the Dinosaur hall?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-dinosaur"
+      "catalog_id": "sci-dinosaur",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Dinosaur hall",
+      "presence_note": "May be temporary/traveling — verify current exhibits."
     },
     {
       "id": "cm_makery",
@@ -148,29 +168,11 @@
         "question": "What did you try or notice at Creative Makery?",
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
-      "catalog_id": "cm-makery"
-    },
-    {
-      "id": "cm_imaginarium",
-      "label": "Imaginarium",
-      "emoji": "✨",
-      "one_liner": "Multi-sensory world — explore, notice, imagine.",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Imaginarium?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "cm-imaginarium"
+      "catalog_id": "cm-makery",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Creative Makery",
+      "presence_note": "Maker-style spaces common; official name may differ — soft generic."
     },
     {
       "id": "sci_shuttle",
@@ -192,7 +194,11 @@
         "question": "What did you try or notice at Space shuttle / orbiter?",
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
-      "catalog_id": "sci-shuttle"
+      "catalog_id": "sci-shuttle",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Space shuttle / orbiter",
+      "presence_note": "No permanent orbiter like California Science Center; do not promise shuttle."
     }
   ],
   "content_mode": "hybrid",
@@ -212,8 +218,19 @@
   "route_90m": [
     "sci_hands_on",
     "sci_planet",
-    "sci_rocket"
+    "cm_free_explore"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 · map-img 2026-08-07 · map-page 2026-08-07",
-  "list_confidence": "partial"
+  "research_notes": "R2 hybrid 2026-08-07 · map-img 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "list_confidence": "partial",
+  "do_not_list": [
+    {
+      "catalog_id": "cm-imaginarium",
+      "name": "Imaginarium",
+      "reason": "Taxonomy leakage from children's museum catalog.",
+      "as_of": "2026-08-08"
+    }
+  ],
+  "presence_sources": [
+    "https://www.azscience.org/"
+  ]
 }

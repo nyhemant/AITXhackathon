@@ -1,0 +1,191 @@
+{
+  "slug": "ecoparque-ba",
+  "name": "Ecoparque Buenos Aires",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://turismo.buenosaires.gob.ar/",
+    "https://en.wikipedia.org/wiki/Buenos_Aires_Eco-Park"
+  ],
+  "list_confidence_recommended": "template",
+  "practical_fixes": [
+    {
+      "field": "official_url",
+      "current": "https://turismo.buenosaires.gob.ar/",
+      "suggested": "Official Ecoparque municipal page if available",
+      "reason": "turismo hub is generic; prefer venue-specific URL."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "reticulated-giraffe",
+      "name": "reticulated-giraffe",
+      "reason": "Ecoparque no longer operates as a classic full zoo; species unverified."
+    },
+    {
+      "catalog_id": "nile-hippo",
+      "name": "nile-hippo",
+      "reason": "Ecoparque no longer operates as a classic full zoo; species unverified."
+    },
+    {
+      "catalog_id": "zebra",
+      "name": "zebra",
+      "reason": "Ecoparque no longer operates as a classic full zoo; species unverified."
+    },
+    {
+      "catalog_id": "warthog",
+      "name": "warthog",
+      "reason": "Ecoparque no longer operates as a classic full zoo; species unverified."
+    },
+    {
+      "catalog_id": "asian-small-clawed-otter",
+      "name": "asian-small-clawed-otter",
+      "reason": "Ecoparque no longer operates as a classic full zoo; species unverified."
+    },
+    {
+      "catalog_id": "two-toed-sloth",
+      "name": "two-toed-sloth",
+      "reason": "Ecoparque no longer operates as a classic full zoo; species unverified."
+    },
+    {
+      "catalog_id": "galapagos-tortoise",
+      "name": "galapagos-tortoise",
+      "reason": "Ecoparque no longer operates as a classic full zoo; species unverified."
+    },
+    {
+      "catalog_id": "ring-tailed-lemur",
+      "name": "ring-tailed-lemur",
+      "reason": "Ecoparque no longer operates as a classic full zoo; species unverified."
+    },
+    {
+      "catalog_id": "african-penguin",
+      "name": "african-penguin",
+      "reason": "Ecoparque no longer operates as a classic full zoo; species unverified."
+    }
+  ],
+  "items": [
+    {
+      "id": "caribbean_flamingo",
+      "label": "Caribbean flamingo",
+      "catalog_id": "caribbean-flamingo",
+      "presence": "unclear",
+      "display_label": "Flamingo",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "unclear",
+      "display_label": "African penguin",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "galapagos_tortoise",
+      "label": "Galápagos tortoise",
+      "catalog_id": "galapagos-tortoise",
+      "presence": "unclear",
+      "display_label": "Galápagos tortoise",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "ring_tailed_lemur",
+      "label": "Ring-tailed lemur",
+      "catalog_id": "ring-tailed-lemur",
+      "presence": "unclear",
+      "display_label": "Ring-tailed lemur",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "two_toed_sloth",
+      "label": "Two-toed sloth",
+      "catalog_id": "two-toed-sloth",
+      "presence": "unclear",
+      "display_label": "Two-toed sloth",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "ostrich",
+      "label": "Ostrich",
+      "catalog_id": "ostrich",
+      "presence": "unclear",
+      "display_label": "Ostrich",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "unclear",
+      "display_label": "Zebra",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "warthog",
+      "label": "Warthog",
+      "catalog_id": "warthog",
+      "presence": "unclear",
+      "display_label": "Warthog",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "nile_hippo",
+      "label": "Nile hippo",
+      "catalog_id": "nile-hippo",
+      "presence": "unclear",
+      "display_label": "Nile hippo",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "unclear",
+      "display_label": "Reticulated giraffe",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "asian_small_clawed_otter",
+      "label": "Asian small-clawed otter",
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "unclear",
+      "display_label": "Asian small-clawed otter",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "freshwater_fish",
+      "label": "River / lake fish",
+      "catalog_id": "freshwater-fish",
+      "presence": "medium",
+      "display_label": "River / lake fish",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [],
+  "content_mode_recommended": "wonder",
+  "summary": "Former zoo converted to Ecoparque with reduced/rehomed collection and conservation focus. Template mega-list (giraffe, hippo, zebra, warthog, ASC otter, etc.) is not trustworthy. Do not print species list until official current residents page is used. Flamingos/birds more plausible.",
+  "severity": "critical"
+}

@@ -8,242 +8,221 @@
   "lat": 36.15,
   "lng": -86.78,
   "official_url": "https://www.adventuresci.org/",
-  "last_verified": "2026-08-07",
+  "last_verified": "2026-08-08",
+  "last_presence_audit": "2026-08-08",
   "verified_by": "research",
+  "list_confidence": "audited",
   "status": "verified",
-  "tagline": "Nashville Adventure Science — climbing + experiments downtown.",
+  "tagline": "Nashville classic — Adventure Tower energy, body science, space, and a makerspace.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Check adventuresci.org tickets.",
+    "ticket_note": "Check adventuresci.org for tickets and planetarium times.",
     "transit_note": "Downtown Nashville.",
-    "energy_note": "indoor",
-    "best_start": "Climb/play first, quieter exhibits second."
+    "energy_note": "Mostly indoors",
+    "best_start": "Adventure Tower or Early Explorations first if legs are fresh."
   },
-  "items": [
+  "do_not_list": [
     {
-      "id": "sci_hands_on",
-      "label": "Hands-on lab",
-      "emoji": "🔬",
-      "one_liner": "Experiments and interactives.",
-      "tags": [
-        "hands",
-        "play",
-        "wow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Labs",
-      "qa_card": {
-        "question": "What did you notice about the Hands-on lab?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "sci-hands-on"
+      "catalog_id": "cm-imaginarium",
+      "name": "Imaginarium",
+      "reason": "Not an Adventure Science Center exhibit — children's-museum taxonomy leakage.",
+      "as_of": "2026-08-08"
     },
     {
-      "id": "cm_outdoor",
-      "label": "Outdoor Area",
-      "emoji": "🌳",
-      "one_liner": "Big-body play energy.",
-      "tags": [
-        "play",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Climb / body",
-      "qa_card": {
-        "question": "What did you notice about the Outdoor Area?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "cm-outdoor"
+      "catalog_id": "cm-makery",
+      "name": "Creative Makery",
+      "reason": "ASC has Makerspace, not Creative Makery.",
+      "as_of": "2026-08-08"
     },
     {
-      "id": "sci_planet",
-      "label": "Planet / space hall",
-      "emoji": "🪐",
-      "one_liner": "Space corners if present.",
-      "tags": [
-        "wow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Space",
-      "qa_card": {
-        "question": "What did you notice about the Planet / space hall?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "sci-planet"
+      "catalog_id": "cm-toddler-garden",
+      "name": "Toddler Garden",
+      "reason": "Use Early Explorations for little kids, not Toddler Garden.",
+      "as_of": "2026-08-08"
     },
     {
-      "id": "cm_makery",
-      "label": "Creative Makery",
-      "emoji": "🔧",
-      "one_liner": "Build something small.",
-      "tags": [
-        "hands"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Make",
-      "qa_card": {
-        "question": "What did you notice about the Creative Makery?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "cm-makery"
-    },
-    {
-      "id": "cm_toddler_garden",
-      "label": "Toddler Garden",
-      "emoji": "🌱",
-      "one_liner": "Toddler-friendly zones.",
-      "tags": [
-        "rest",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Little kids",
-      "qa_card": {
-        "question": "What did you notice about the Toddler Garden?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "cm-toddler-garden"
-    },
-    {
-      "id": "sci_dinosaur",
-      "label": "Dinosaur hall",
-      "emoji": "🦖",
-      "one_liner": "Bones, giants, and deep time — look up!",
-      "tags": [
-        "wow",
-        "read"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Dinosaur hall?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "sci-dinosaur"
-    },
-    {
-      "id": "cm_imaginarium",
-      "label": "Imaginarium",
-      "emoji": "✨",
-      "one_liner": "Multi-sensory world — explore, notice, imagine.",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Imaginarium?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "cm-imaginarium"
-    },
-    {
-      "id": "cm_free_explore",
-      "label": "Free explore",
-      "emoji": "🧭",
-      "one_liner": "Their choice path — whatever pulled them in!",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Free explore?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "cm-free-explore"
-    },
-    {
-      "id": "sci_shuttle",
-      "label": "Space shuttle / orbiter",
-      "emoji": "🛰️",
-      "one_liner": "A real flying machine that went to space — walk around it.",
-      "tags": [
-        "wow",
-        "read"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Space shuttle / orbiter?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "sci-shuttle"
-    },
-    {
-      "id": "sci_rocket",
-      "label": "Rockets & launch",
-      "emoji": "🚀",
-      "one_liner": "Tall rockets and the power of liftoff.",
-      "tags": [
-        "wow",
-        "read"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Rockets & launch?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "sci-rocket"
+      "catalog_id": "sci-shuttle",
+      "name": "Space shuttle / orbiter",
+      "reason": "No orbiter on site.",
+      "as_of": "2026-08-08"
     }
   ],
-  "content_mode": "hybrid",
+  "items": [
+    {
+      "id": "adventure_tower",
+      "label": "Adventure Tower",
+      "emoji": "🧗",
+      "one_liner": "Climb, crawl, and burn energy in the big tower.",
+      "tags": ["play", "wow", "tall"],
+      "age_fit": ["2-3", "4-5", "6-8", "9+"],
+      "zone": "Adventure Tower",
+      "qa_card": {
+        "question": "What was the wildest part of the tower?",
+        "answer": "Tell a grown-up one thing you climbed or crawled through!"
+      },
+      "presence": "verified",
+      "presence_source": "official_animals_page",
+      "presence_checked": "2026-08-08",
+      "presence_note": "https://www.adventuresci.org/exhibit/adventure-tower/"
+    },
+    {
+      "id": "bodyquest",
+      "label": "BodyQuest",
+      "emoji": "🫀",
+      "one_liner": "Journey through the human body — heart, lungs, and more.",
+      "tags": ["hands", "wow", "play"],
+      "age_fit": ["4-5", "6-8", "9+"],
+      "zone": "BodyQuest",
+      "qa_card": {
+        "question": "What body part did you explore?",
+        "answer": "Heart, lungs, bones — pick one detail!"
+      },
+      "presence": "verified",
+      "presence_source": "official_animals_page",
+      "presence_checked": "2026-08-08",
+      "presence_note": "https://www.adventuresci.org/exhibit/bodyquest/"
+    },
+    {
+      "id": "fossil_frontiers",
+      "label": "Fossil Frontiers",
+      "emoji": "🦴",
+      "one_liner": "Fossils from Middle Tennessee — dig into deep time.",
+      "tags": ["wow", "read"],
+      "age_fit": ["2-3", "4-5", "6-8", "9+"],
+      "zone": "Fossil Frontiers",
+      "qa_card": {
+        "question": "What fossil shape stuck with you?",
+        "answer": "Tooth, bone, shell — describe it!"
+      },
+      "presence": "verified",
+      "presence_source": "official_animals_page",
+      "presence_checked": "2026-08-08",
+      "presence_note": "https://www.adventuresci.org/exhibit/fossil-frontiers/"
+    },
+    {
+      "id": "makerspace",
+      "label": "Makerspace",
+      "emoji": "🔧",
+      "one_liner": "Dream it up and build something with your hands.",
+      "tags": ["hands", "play"],
+      "age_fit": ["4-5", "6-8", "9+"],
+      "zone": "Makerspace",
+      "qa_card": {
+        "question": "What did you make or try to invent?",
+        "answer": "Tell a grown-up one idea you tested!"
+      },
+      "presence": "verified",
+      "presence_source": "official_animals_page",
+      "presence_checked": "2026-08-08",
+      "presence_note": "https://www.adventuresci.org/exhibit/makerspace/"
+    },
+    {
+      "id": "early_explorations",
+      "label": "Early Explorations",
+      "emoji": "🌱",
+      "one_liner": "Little-kid zone for ages about five and under.",
+      "tags": ["play", "rest", "kids"],
+      "age_fit": ["2-3", "4-5"],
+      "zone": "Early Explorations",
+      "qa_card": {
+        "question": "What was your favorite little-kid stop?",
+        "answer": "Climb, splash, or quiet play — pick one!"
+      },
+      "presence": "verified",
+      "presence_source": "official_animals_page",
+      "presence_checked": "2026-08-08",
+      "presence_note": "https://www.adventuresci.org/exhibit/early-explorations/"
+    },
+    {
+      "id": "solar_system_survey",
+      "label": "Solar System Survey",
+      "emoji": "🪐",
+      "one_liner": "Compare Earth to other planets — light and gravity.",
+      "tags": ["wow", "read"],
+      "age_fit": ["4-5", "6-8", "9+"],
+      "zone": "Space",
+      "qa_card": {
+        "question": "Which planet would you visit and why?",
+        "answer": "Pick one and give one reason!"
+      },
+      "presence": "verified",
+      "presence_source": "official_animals_page",
+      "presence_checked": "2026-08-08",
+      "presence_note": "https://www.adventuresci.org/exhibit/solar-system-survey/"
+    },
+    {
+      "id": "wonders_universe",
+      "label": "Wonders of the Universe",
+      "emoji": "🚀",
+      "one_liner": "Astronomy up close — look for the Curiosity rover model.",
+      "tags": ["wow", "read"],
+      "age_fit": ["6-8", "9+"],
+      "zone": "Space",
+      "qa_card": {
+        "question": "What space tool or rover detail did you notice?",
+        "answer": "Wheels, camera, size — one detail!"
+      },
+      "presence": "verified",
+      "presence_source": "official_animals_page",
+      "presence_checked": "2026-08-08",
+      "presence_note": "https://www.adventuresci.org/exhibit/wonders/"
+    },
+    {
+      "id": "physics_flight",
+      "label": "Physics of Flight",
+      "emoji": "✈️",
+      "one_liner": "Test wing shapes and how air lifts planes.",
+      "tags": ["hands", "play"],
+      "age_fit": ["4-5", "6-8", "9+"],
+      "zone": "Flight",
+      "qa_card": {
+        "question": "Which wing shape worked best?",
+        "answer": "Wide, skinny, or something silly — what flew?"
+      },
+      "presence": "verified",
+      "presence_source": "official_animals_page",
+      "presence_checked": "2026-08-08",
+      "presence_note": "https://www.adventuresci.org/exhibit/flight/"
+    },
+    {
+      "id": "galactic_gardens",
+      "label": "Galactic Gardens",
+      "emoji": "🌿",
+      "one_liner": "Outdoor learning when weather is friendly.",
+      "tags": ["outdoor", "play"],
+      "age_fit": ["2-3", "4-5", "6-8", "9+"],
+      "zone": "Outdoors",
+      "qa_card": {
+        "question": "What living thing did you spot outside?",
+        "answer": "Plant, bug, or bird — describe it!"
+      },
+      "presence": "verified",
+      "presence_source": "official_animals_page",
+      "presence_checked": "2026-08-08",
+      "presence_note": "https://www.adventuresci.org/exhibit/galactic-gardens/"
+    },
+    {
+      "id": "planetarium",
+      "label": "Sudekum Planetarium",
+      "emoji": "🌌",
+      "one_liner": "Sit back for a sky show (check showtimes).",
+      "tags": ["wow", "rest"],
+      "age_fit": ["4-5", "6-8", "9+"],
+      "zone": "Planetarium",
+      "qa_card": {
+        "question": "What was one cool thing in the sky show?",
+        "answer": "A planet, star, or story moment!"
+      },
+      "presence": "verified",
+      "presence_source": "official_animals_page",
+      "presence_checked": "2026-08-08",
+      "presence_note": "https://www.adventuresci.org/events-programs/sudekum-planetarium/"
+    }
+  ],
+  "content_mode": "curated",
   "media": {
     "visitor_map_url": "",
-    "visitor_map_page": "https://www.adventuresci.org/wp-content/uploads/2025/07/ASC2025_Map.jpg",
+    "visitor_map_page": "https://www.adventuresci.org/visit/directions-building-maps/",
     "visitor_map_kind": "page",
     "map_attribution": "Official map · Adventure Science Center"
   },
@@ -254,10 +233,16 @@
     "Leave while happy"
   ],
   "route_90m": [
-    "sci_hands_on",
-    "cm_outdoor",
-    "sci_planet"
+    "adventure_tower",
+    "bodyquest",
+    "fossil_frontiers"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 · map-page 2026-08-07 · web-map 2026-08-07",
-  "list_confidence": "partial"
+  "research_notes": "Presence audit 2026-08-08 vs adventuresci.org exhibits list. Replaced Perot/CM taxonomy leakage with real ASC names.",
+  "presence_sources": [
+    "https://www.adventuresci.org/events-programs/exhibits-and-activities/",
+    "https://www.adventuresci.org/exhibit/adventure-tower/",
+    "https://www.adventuresci.org/exhibit/bodyquest/",
+    "https://www.adventuresci.org/exhibit/fossil-frontiers/",
+    "https://www.adventuresci.org/exhibit/makerspace/"
+  ]
 }

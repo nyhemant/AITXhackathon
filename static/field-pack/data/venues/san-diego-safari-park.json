@@ -20,7 +20,7 @@
   "items": [
     {
       "id": "reticulated_giraffe",
-      "label": "Reticulated giraffe",
+      "label": "Giraffe",
       "emoji": "🦒",
       "one_liner": "Giraffes on wide open savanna-style fields.",
       "tags": [
@@ -40,7 +40,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "reticulated-giraffe",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Giraffe",
+      "presence_note": "Official animals page features giraffe."
     },
     {
       "id": "african_elephant",
@@ -64,7 +68,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-elephant",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "African elephant",
+      "presence_note": "African elephant herd / Elephant Valley."
     },
     {
       "id": "zebra",
@@ -87,7 +95,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "zebra",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Zebra",
+      "presence_note": "Grévy's zebra on official animals page."
     },
     {
       "id": "african_lion",
@@ -111,7 +123,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-lion",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "African lion",
+      "presence_note": "Lion on official animals page."
     },
     {
       "id": "cheetah",
@@ -134,7 +150,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "cheetah",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Cheetah",
+      "presence_note": "Cheetah on official animals page."
     },
     {
       "id": "western_lowland_gorilla",
@@ -157,7 +177,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "western-lowland-gorilla",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Western lowland gorilla",
+      "presence_note": "Gorilla / Gorilla Forest."
     },
     {
       "id": "nile_hippo",
@@ -181,7 +205,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "nile-hippo",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Nile hippo",
+      "presence_note": "Not highlighted on main animals hub this pass."
     },
     {
       "id": "sumatran_tiger",
@@ -204,7 +231,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sumatran-tiger",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Sumatran tiger",
+      "presence_note": "Sumatran tiger / Tiger Trail on official page."
     },
     {
       "id": "ostrich",
@@ -227,7 +258,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "ostrich",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Ostrich",
+      "presence_note": "Africa field birds typically include ostrich."
     },
     {
       "id": "warthog",
@@ -249,7 +283,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "warthog",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Warthog",
+      "presence_note": "Africa savanna species; secondary confirmation."
     }
   ],
   "content_mode": "curated",
@@ -266,6 +303,17 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "research_notes": "web-map 2026-08-07",
-  "list_confidence": "template"
+  "research_notes": "web-map 2026-08-07 · presence-audit 2026-08-08 [ok]",
+  "list_confidence": "audited",
+  "do_not_list": [],
+  "route_90m": [
+    "reticulated_giraffe",
+    "african_elephant",
+    "sumatran_tiger"
+  ],
+  "last_presence_audit": "2026-08-08",
+  "presence_sources": [
+    "https://sdzsafaripark.org/",
+    "https://sdzsafaripark.org/animals-gardens"
+  ]
 }

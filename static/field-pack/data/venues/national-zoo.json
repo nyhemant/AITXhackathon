@@ -40,7 +40,11 @@
         "answer": "Black — just like their eye spots!"
       },
       "catalog_id": "giant-panda",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Giant panda",
+      "presence_note": "Bao Li & Qing Bao on Asia Trail."
     },
     {
       "id": "asian_small_clawed_otter",
@@ -63,7 +67,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "asian-small-clawed-otter",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Asian small-clawed otter",
+      "presence_note": "Asia Trail: Asian small-clawed otters."
     },
     {
       "id": "red_panda",
@@ -86,35 +94,15 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "red-panda",
-      "presence": "template"
-    },
-    {
-      "id": "african_elephant",
-      "label": "African elephant",
-      "emoji": "🐘",
-      "one_liner": "Elephants with room to dust-bathe.",
-      "tags": [
-        "big",
-        "outdoor",
-        "wow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Elephant Trails",
-      "qa_card": {
-        "question": "What did you notice about the African elephant?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "african-elephant",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Red panda",
+      "presence_note": "Asia Trail: red pandas."
     },
     {
       "id": "african_lion",
-      "label": "African lion",
+      "label": "Lion",
       "emoji": "🦁",
       "one_liner": "Lions on the cat walk.",
       "tags": [
@@ -134,11 +122,15 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-lion",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Lion",
+      "presence_note": "Great Cats: Lion."
     },
     {
       "id": "sumatran_tiger",
-      "label": "Sumatran tiger",
+      "label": "Tiger",
       "emoji": "🐯",
       "one_liner": "Tigers pacing or napping in the shade.",
       "tags": [
@@ -157,11 +149,15 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sumatran-tiger",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Tiger",
+      "presence_note": "Great Cats: Tiger present; subspecies mix historically. Soft Tiger."
     },
     {
       "id": "western_lowland_gorilla",
-      "label": "Western lowland gorilla",
+      "label": "Gorilla",
       "emoji": "🦍",
       "one_liner": "Gorillas face-to-face through glass.",
       "tags": [
@@ -180,7 +176,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "western-lowland-gorilla",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Gorilla",
+      "presence_note": "Primates area historically includes gorillas; confirm current individuals on animals list. Soft Gorilla."
     },
     {
       "id": "orangutan",
@@ -203,34 +202,15 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "orangutan",
-      "presence": "template"
-    },
-    {
-      "id": "reticulated_giraffe",
-      "label": "Reticulated giraffe",
-      "emoji": "🦒",
-      "one_liner": "Tall spots above the crowd.",
-      "tags": [
-        "tall",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Hoofed animals",
-      "qa_card": {
-        "question": "What did you notice about the Reticulated giraffe?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "reticulated-giraffe",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Orangutan",
+      "presence_note": "Bornean orangutan on animals list."
     },
     {
       "id": "caribbean_flamingo",
-      "label": "Caribbean flamingo",
+      "label": "Flamingo",
       "emoji": "🦩",
       "one_liner": "Pink flock for an easy win.",
       "tags": [
@@ -249,7 +229,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "caribbean-flamingo",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Flamingo",
+      "presence_note": "Bird House includes flamingos on maps. Soft Flamingo."
     }
   ],
   "content_mode": "curated",
@@ -266,6 +249,34 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "research_notes": "map-img 2026-08-07 · map-page 2026-08-07",
-  "list_confidence": "template"
+  "research_notes": "map-img 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [critical]",
+  "list_confidence": "audited",
+  "do_not_list": [
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "National Zoo elephants are Asian (Elephant Trails). African elephant label is false.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "reticulated-giraffe",
+      "name": "Reticulated giraffe",
+      "reason": "Giraffes removed 2006; not on animals list.",
+      "as_of": "2026-08-08"
+    }
+  ],
+  "route_90m": [
+    "giant_panda",
+    "asian_small_clawed_otter",
+    "red_panda"
+  ],
+  "last_presence_audit": "2026-08-08",
+  "presence_sources": [
+    "https://nationalzoo.si.edu/animals/list",
+    "https://nationalzoo.si.edu/animals",
+    "https://nationalzoo.si.edu/dcpandas",
+    "https://nationalzoo.si.edu/animals/exhibits/asia-trail",
+    "https://nationalzoo.si.edu/animals/asian-elephant",
+    "https://nationalzoo.si.edu/elephants"
+  ]
 }

@@ -1,0 +1,128 @@
+{
+  "slug": "bronx-zoo",
+  "name": "Bronx Zoo",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://bronxzoo.com/",
+    "https://bronxzoo.com/animals"
+  ],
+  "list_confidence_recommended": "partial",
+  "practical_fixes": [],
+  "do_not_list": [
+    {
+      "catalog_id": "galapagos-tortoise",
+      "name": "Galápagos tortoise",
+      "reason": "Bronx animals imagery features Aldabra tortoise."
+    }
+  ],
+  "items": [
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "high",
+      "display_label": "Western lowland gorilla",
+      "official_name": "",
+      "notes": "Congo Gorilla Forest flagship.",
+      "source_url": ""
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "high",
+      "display_label": "Sumatran tiger",
+      "official_name": "",
+      "notes": "Tiger mountain / Madagascan etc. — tiger program strong; Sumatran historically used.",
+      "source_url": ""
+    },
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "high",
+      "display_label": "African lion",
+      "official_name": "",
+      "notes": "African Plains.",
+      "source_url": ""
+    },
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "high",
+      "display_label": "African elephant",
+      "official_name": "",
+      "notes": "Elephant family / African plains — confirm current.",
+      "source_url": ""
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "high",
+      "display_label": "Giraffe",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "ring_tailed_lemur",
+      "label": "Ring-tailed lemur",
+      "catalog_id": "ring-tailed-lemur",
+      "presence": "high",
+      "display_label": "Ring-tailed lemur",
+      "official_name": "",
+      "notes": "Madagascar!",
+      "source_url": ""
+    },
+    {
+      "id": "nile_hippo",
+      "label": "Nile hippo",
+      "catalog_id": "nile-hippo",
+      "presence": "medium",
+      "display_label": "Nile hippo",
+      "official_name": "",
+      "notes": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract.",
+      "source_url": ""
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "high",
+      "display_label": "Zebra",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "red_panda",
+      "label": "Red panda",
+      "catalog_id": "red-panda",
+      "presence": "high",
+      "display_label": "Red panda",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "galapagos_tortoise",
+      "label": "Galápagos tortoise",
+      "catalog_id": "galapagos-tortoise",
+      "presence": "absent",
+      "display_label": "Aldabra tortoise",
+      "official_name": "Aldabra Tortoise",
+      "notes": "Bronx animals imagery features Aldabra tortoise.",
+      "source_url": "https://bronxzoo.com/animals"
+    }
+  ],
+  "route_90m_recommended": [
+    "western_lowland_gorilla",
+    "sumatran_tiger",
+    "african_lion"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "Flagship WCS zoo: gorilla/tiger/lion/giraffe/lemur/zebra/red panda high confidence; prefer Aldabra over Galápagos tortoise label.",
+  "severity": "minor"
+}

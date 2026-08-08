@@ -1,0 +1,185 @@
+{
+  "slug": "austin-zoo",
+  "name": "Austin Zoo",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.austinzoo.org/",
+    "https://www.austintexas.org/austin-insider-blog/blog/post/visiting-the-austin-zoo/"
+  ],
+  "list_confidence_recommended": "partial",
+  "practical_fixes": [
+    {
+      "field": "ticket_note",
+      "current": "",
+      "suggested": "Rescue zoo (not a full AZA megafauna collection) — set expectations: big cats, bears, hoofstock, tortoises; no elephants/hippos/giraffes expected.",
+      "reason": "Template list overstates collection."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "sumatran-tiger",
+      "name": "Sumatran tiger",
+      "reason": "Has tigers including white Bengal reported — not confirmed Sumatran. Soft-label Tiger only."
+    },
+    {
+      "catalog_id": "reticulated-giraffe",
+      "name": "Reticulated giraffe",
+      "reason": "Austin Zoo is a small rescue zoo; giraffes not a featured species on official materials reviewed."
+    },
+    {
+      "catalog_id": "red-panda",
+      "name": "Red panda",
+      "reason": "Not indicated for this rescue zoo."
+    },
+    {
+      "catalog_id": "cheetah",
+      "name": "Cheetah",
+      "reason": "Not indicated."
+    },
+    {
+      "catalog_id": "nile-hippo",
+      "name": "Nile hippo",
+      "reason": "No hippo program indicated."
+    }
+  ],
+  "items": [
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "high",
+      "display_label": "African lion",
+      "official_name": "",
+      "notes": "Rescue zoo; lions featured (e.g. Aesa and Gaia).",
+      "source_url": ""
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "absent",
+      "display_label": "Tiger",
+      "official_name": "",
+      "notes": "Has tigers including white Bengal reported — not confirmed Sumatran. Soft-label Tiger only.",
+      "source_url": ""
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "absent",
+      "display_label": "Reticulated giraffe",
+      "official_name": "",
+      "notes": "Austin Zoo is a small rescue zoo; giraffes not a featured species on official materials reviewed.",
+      "source_url": ""
+    },
+    {
+      "id": "ring_tailed_lemur",
+      "label": "Ring-tailed lemur",
+      "catalog_id": "ring-tailed-lemur",
+      "presence": "high",
+      "display_label": "Ring-tailed lemur",
+      "official_name": "",
+      "notes": "Primates include lemurs per species lists.",
+      "source_url": ""
+    },
+    {
+      "id": "galapagos_tortoise",
+      "label": "Galápagos tortoise",
+      "catalog_id": "galapagos-tortoise",
+      "presence": "verified",
+      "display_label": "Galápagos tortoise",
+      "official_name": "",
+      "notes": "Private encounters with Galápagos tortoises marketed.",
+      "source_url": "https://www.austinzoo.org/"
+    },
+    {
+      "id": "two_toed_sloth",
+      "label": "Two-toed sloth",
+      "catalog_id": "two-toed-sloth",
+      "presence": "unclear",
+      "display_label": "Two-toed sloth",
+      "official_name": "",
+      "notes": "Not confirmed on official sources reviewed in this audit pass.",
+      "source_url": ""
+    },
+    {
+      "id": "chimpanzee",
+      "label": "Chimpanzee",
+      "catalog_id": "chimpanzee",
+      "presence": "unclear",
+      "display_label": "Chimpanzee",
+      "official_name": "",
+      "notes": "Primates present; chimp not confirmed.",
+      "source_url": ""
+    },
+    {
+      "id": "warthog",
+      "label": "Warthog",
+      "catalog_id": "warthog",
+      "presence": "unclear",
+      "display_label": "Warthog",
+      "official_name": "",
+      "notes": "Not confirmed on official sources reviewed in this audit pass.",
+      "source_url": ""
+    },
+    {
+      "id": "ostrich",
+      "label": "Ostrich",
+      "catalog_id": "ostrich",
+      "presence": "unclear",
+      "display_label": "Ostrich",
+      "official_name": "",
+      "notes": "Not confirmed on official sources reviewed in this audit pass.",
+      "source_url": ""
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "medium",
+      "display_label": "Zebra",
+      "official_name": "",
+      "notes": "Plains zebra on older species lists.",
+      "source_url": ""
+    },
+    {
+      "id": "red_panda",
+      "label": "Red panda",
+      "catalog_id": "red-panda",
+      "presence": "absent",
+      "display_label": "Red panda",
+      "official_name": "",
+      "notes": "Not indicated for this rescue zoo.",
+      "source_url": ""
+    },
+    {
+      "id": "cheetah",
+      "label": "Cheetah",
+      "catalog_id": "cheetah",
+      "presence": "absent",
+      "display_label": "Cheetah",
+      "official_name": "",
+      "notes": "Not indicated.",
+      "source_url": ""
+    },
+    {
+      "id": "nile_hippo",
+      "label": "Nile hippo",
+      "catalog_id": "nile-hippo",
+      "presence": "absent",
+      "display_label": "Nile hippo",
+      "official_name": "",
+      "notes": "No hippo program indicated.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "african_lion",
+    "galapagos_tortoise",
+    "ring_tailed_lemur"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "Rescue zoo with lions/tigers/tortoises/lemurs — NOT a template African safari set. Drop giraffe, hippo, cheetah, red panda, Sumatran-specific tiger from print.",
+  "severity": "critical"
+}

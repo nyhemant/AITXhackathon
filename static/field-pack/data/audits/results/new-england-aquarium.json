@@ -1,0 +1,123 @@
+{
+  "slug": "new-england-aquarium",
+  "name": "New England Aquarium",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.neaq.org/",
+    "https://www.neaq.org/exhibits/",
+    "https://www.neaq.org/exhibit-and-experiences/"
+  ],
+  "list_confidence_recommended": "audited",
+  "practical_fixes": [],
+  "do_not_list": [],
+  "items": [
+    {
+      "id": "shark",
+      "label": "Shark",
+      "catalog_id": "shark",
+      "presence": "verified",
+      "display_label": "Shark",
+      "official_name": "Sharks",
+      "notes": "Science of Sharks / Shark & Ray Touch Tank.",
+      "source_url": "https://www.neaq.org/exhibits/"
+    },
+    {
+      "id": "sea_turtle",
+      "label": "Sea turtle",
+      "catalog_id": "sea-turtle",
+      "presence": "verified",
+      "display_label": "Sea turtle",
+      "official_name": "Green sea turtle",
+      "notes": "Myrtle the green sea turtle — Ocean Tray iconic.",
+      "source_url": "https://www.neaq.org/exhibits/"
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "verified",
+      "display_label": "African penguin",
+      "official_name": "African penguin",
+      "notes": "African Penguin Colony (+ rockhoppers).",
+      "source_url": "https://www.neaq.org/exhibits/"
+    },
+    {
+      "id": "jellyfish",
+      "label": "Jellyfish",
+      "catalog_id": "jellyfish",
+      "presence": "high",
+      "display_label": "Jellyfish",
+      "official_name": "Jellyfish",
+      "notes": "Jellies typically exhibited. Soft Jellyfish.",
+      "source_url": ""
+    },
+    {
+      "id": "octopus",
+      "label": "Octopus",
+      "catalog_id": "octopus",
+      "presence": "verified",
+      "display_label": "Octopus",
+      "official_name": "Giant Pacific Octopus",
+      "notes": "Giant Pacific Octopus listed.",
+      "source_url": "https://www.neaq.org/exhibits/"
+    },
+    {
+      "id": "stingray",
+      "label": "Stingray",
+      "catalog_id": "stingray",
+      "presence": "verified",
+      "display_label": "Stingray / ray",
+      "official_name": "Rays",
+      "notes": "Shark & Ray Touch Tank — cownose/Atlantic rays.",
+      "source_url": "https://www.neaq.org/exhibits/"
+    },
+    {
+      "id": "seahorse",
+      "label": "Seahorse",
+      "catalog_id": "seahorse",
+      "presence": "verified",
+      "display_label": "Seahorse",
+      "official_name": "Dwarf seahorse",
+      "notes": "Dwarf seahorse listed.",
+      "source_url": "https://www.neaq.org/exhibits/"
+    },
+    {
+      "id": "clownfish",
+      "label": "Clownfish",
+      "catalog_id": "clownfish",
+      "presence": "medium",
+      "display_label": "Clownfish (verify)",
+      "official_name": "",
+      "notes": "Caribbean reef community may include; not specifically extracted.",
+      "source_url": ""
+    },
+    {
+      "id": "starfish",
+      "label": "Sea star",
+      "catalog_id": "starfish",
+      "presence": "high",
+      "display_label": "Sea star",
+      "official_name": "Sea star",
+      "notes": "Tide/rocky exhibits. Soft Sea star.",
+      "source_url": ""
+    },
+    {
+      "id": "eel",
+      "label": "Eel",
+      "catalog_id": "eel",
+      "presence": "medium",
+      "display_label": "Eel",
+      "official_name": "",
+      "notes": "Common; not specifically extracted.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "sea_turtle",
+    "african_penguin",
+    "shark"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "Strong curated aquarium list. Myrtle, African penguins, sharks/rays, octopus, seahorse verified. Minor: clownfish/eel medium.",
+  "severity": "ok"
+}

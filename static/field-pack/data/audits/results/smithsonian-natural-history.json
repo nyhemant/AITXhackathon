@@ -1,0 +1,120 @@
+{
+  "slug": "smithsonian-natural-history",
+  "name": "National Museum of Natural History",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://naturalhistory.si.edu/"
+  ],
+  "list_confidence_recommended": "partial",
+  "practical_fixes": [
+    {
+      "field": "items.sci_aquarium_zone",
+      "current": "Aquarium zone",
+      "suggested": "Sant Ocean Hall",
+      "reason": "Not a standalone aquarium."
+    },
+    {
+      "field": "items.sci_planet",
+      "current": "Planet",
+      "suggested": "Meteorites/geology or remove",
+      "reason": "No planetarium at NMNH."
+    },
+    {
+      "field": "practical.ticket_note",
+      "current": "Free",
+      "suggested": "Free; timed-entry may apply — check si.edu",
+      "reason": "Smithsonian sometimes uses timed entry."
+    }
+  ],
+  "do_not_list": [],
+  "items": [
+    {
+      "id": "sci_dinosaur",
+      "label": "Dinosaur hall",
+      "catalog_id": "sci-dinosaur",
+      "presence": "verified",
+      "display_label": "Dinosaur hall",
+      "official_name": "",
+      "notes": "Deep Time fossil hall.",
+      "source_url": "https://naturalhistory.si.edu/"
+    },
+    {
+      "id": "sci_mammal_hall",
+      "label": "Animal / mammal hall",
+      "catalog_id": "sci-mammal-hall",
+      "presence": "verified",
+      "display_label": "Animal / mammal hall",
+      "official_name": "",
+      "notes": "Hall of Mammals.",
+      "source_url": "https://naturalhistory.si.edu/"
+    },
+    {
+      "id": "sci_aquarium_zone",
+      "label": "Aquarium zone",
+      "catalog_id": "sci-aquarium-zone",
+      "presence": "high",
+      "display_label": "Ocean Hall",
+      "official_name": "Sant Ocean Hall",
+      "notes": "Sant Ocean Hall — not a full aquarium.",
+      "source_url": "https://naturalhistory.si.edu/"
+    },
+    {
+      "id": "sci_hands_on",
+      "label": "Hands-on lab",
+      "catalog_id": "sci-hands-on",
+      "presence": "high",
+      "display_label": "Hands-on lab",
+      "official_name": "",
+      "notes": "Discovery Room / family spaces.",
+      "source_url": "https://naturalhistory.si.edu/"
+    },
+    {
+      "id": "cm_free_explore",
+      "label": "Free explore",
+      "catalog_id": "cm-free-explore",
+      "presence": "high",
+      "display_label": "Free explore",
+      "official_name": "",
+      "notes": "Free-explore is the museum mode.",
+      "source_url": "https://naturalhistory.si.edu/"
+    },
+    {
+      "id": "sci_planet",
+      "label": "Planet / space hall",
+      "catalog_id": "sci-planet",
+      "presence": "medium",
+      "display_label": "Planet / space hall",
+      "official_name": "",
+      "notes": "Meteorites/geology present; not a planetarium.",
+      "source_url": ""
+    },
+    {
+      "id": "cm_imaginarium",
+      "label": "Imaginarium",
+      "catalog_id": "cm-imaginarium",
+      "presence": "high",
+      "display_label": "Imaginarium",
+      "official_name": "",
+      "notes": "Family imaginative play spaces rotate.",
+      "source_url": ""
+    },
+    {
+      "id": "sci_rainforest",
+      "label": "Rainforest dome",
+      "catalog_id": "sci-rainforest",
+      "presence": "medium",
+      "display_label": "Rainforest dome",
+      "official_name": "",
+      "notes": "Butterfly/tropical exhibits sometimes offered — confirm current.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "sci_dinosaur",
+    "sci_mammal_hall",
+    "sci_aquarium_zone"
+  ],
+  "content_mode_recommended": "hybrid",
+  "summary": "Dinosaur and mammal halls solid. Soft-label Ocean Hall. Avoid implying full aquarium or planetarium.",
+  "severity": "minor"
+}

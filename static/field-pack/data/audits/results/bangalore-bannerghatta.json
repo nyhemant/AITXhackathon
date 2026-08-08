@@ -1,0 +1,164 @@
+{
+  "slug": "bangalore-bannerghatta",
+  "name": "Bannerghatta Biological Park",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.bannerghattabiologicalpark.org/"
+  ],
+  "list_confidence_recommended": "partial",
+  "practical_fixes": [
+    {
+      "field": "tagline",
+      "current": "",
+      "suggested": "Safari park emphasizing Indian wildlife (tiger, lion, elephant) + some exotics — not African great-ape zoo.",
+      "reason": "Template leakage."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "western-lowland-gorilla",
+      "name": "Western lowland gorilla",
+      "reason": "Gorillas not part of Bannerghatta safari offering."
+    },
+    {
+      "catalog_id": "chimpanzee",
+      "name": "Chimpanzee",
+      "reason": "Not a great-ape African collection zoo."
+    },
+    {
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "Unlikely."
+    }
+  ],
+  "items": [
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "high",
+      "display_label": "Lion",
+      "official_name": "",
+      "notes": "Indian/Asiatic lions more typical in India; soft-label Lion.",
+      "source_url": ""
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "high",
+      "display_label": "Tiger (Bengal)",
+      "official_name": "Bengal tiger",
+      "notes": "Safari tigers are Bengal, not Sumatran — must soft-label Tiger/Bengal.",
+      "source_url": ""
+    },
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "high",
+      "display_label": "Asian elephant",
+      "official_name": "Asian elephant",
+      "notes": "Elephants present are Asian; catalog African elephant is wrong label.",
+      "source_url": ""
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "medium",
+      "display_label": "Zebra",
+      "official_name": "",
+      "notes": "Safari may include exotic herbivores; confirm.",
+      "source_url": ""
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "medium",
+      "display_label": "Reticulated giraffe",
+      "official_name": "",
+      "notes": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract.",
+      "source_url": ""
+    },
+    {
+      "id": "cheetah",
+      "label": "Cheetah",
+      "catalog_id": "cheetah",
+      "presence": "medium",
+      "display_label": "Cheetah",
+      "official_name": "",
+      "notes": "India cheetah reintroduction context — park-specific unclear.",
+      "source_url": ""
+    },
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "absent",
+      "display_label": "Western lowland gorilla",
+      "official_name": "",
+      "notes": "Gorillas not part of Bannerghatta safari offering.",
+      "source_url": ""
+    },
+    {
+      "id": "chimpanzee",
+      "label": "Chimpanzee",
+      "catalog_id": "chimpanzee",
+      "presence": "absent",
+      "display_label": "Chimpanzee",
+      "official_name": "",
+      "notes": "Not a great-ape African collection zoo.",
+      "source_url": ""
+    },
+    {
+      "id": "nile_hippo",
+      "label": "Nile hippo",
+      "catalog_id": "nile-hippo",
+      "presence": "unclear",
+      "display_label": "Nile hippo",
+      "official_name": "",
+      "notes": "Not confirmed on official sources reviewed in this audit pass.",
+      "source_url": ""
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "absent",
+      "display_label": "African penguin",
+      "official_name": "",
+      "notes": "Unlikely.",
+      "source_url": ""
+    },
+    {
+      "id": "ostrich",
+      "label": "Ostrich",
+      "catalog_id": "ostrich",
+      "presence": "medium",
+      "display_label": "Ostrich",
+      "official_name": "",
+      "notes": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract.",
+      "source_url": ""
+    },
+    {
+      "id": "warthog",
+      "label": "Warthog",
+      "catalog_id": "warthog",
+      "presence": "unclear",
+      "display_label": "Warthog",
+      "official_name": "",
+      "notes": "Not confirmed on official sources reviewed in this audit pass.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "african_lion",
+    "sumatran_tiger",
+    "african_elephant"
+  ],
+  "content_mode_recommended": "hybrid",
+  "summary": "Relabel to Asian elephant/Bengal tiger/lion; drop gorilla, chimp, African penguin. Template African suite is wrong for Bannerghatta.",
+  "severity": "critical"
+}

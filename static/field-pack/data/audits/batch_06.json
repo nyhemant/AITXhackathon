@@ -1,0 +1,200 @@
+[
+  {
+    "slug": "rio-zoo",
+    "name": "BioParque do Rio",
+    "type": "zoo",
+    "city": "Rio de Janeiro",
+    "country": "BR",
+    "official_url": "https://www.bioparque.org.br/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 13
+  },
+  {
+    "slug": "rome-bioparco",
+    "name": "Bioparco di Roma",
+    "type": "zoo",
+    "city": "Rome",
+    "country": "IT",
+    "official_url": "https://www.bioparco.it/en/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 12
+  },
+  {
+    "slug": "san-antonio-zoo",
+    "name": "San Antonio Zoo",
+    "type": "zoo",
+    "city": "San Antonio",
+    "country": "US",
+    "official_url": "https://sazoo.org/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 12
+  },
+  {
+    "slug": "san-diego-safari-park",
+    "name": "San Diego Zoo Safari Park",
+    "type": "safari_zoo",
+    "city": "Escondido",
+    "country": "US",
+    "official_url": "https://sdzsafaripark.org/",
+    "list_confidence": "template",
+    "content_mode": "curated",
+    "n_items": 10
+  },
+  {
+    "slug": "san-diego-zoo",
+    "name": "San Diego Zoo",
+    "type": "zoo",
+    "city": "San Diego",
+    "country": "US",
+    "official_url": "https://zoo.sandiegozoo.org/",
+    "list_confidence": "template",
+    "content_mode": "curated",
+    "n_items": 10
+  },
+  {
+    "slug": "santiago-zoo",
+    "name": "Parque Metropolitano Zoo",
+    "type": "zoo",
+    "city": "Santiago",
+    "country": "CL",
+    "official_url": "https://www.parquemet.cl/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 13
+  },
+  {
+    "slug": "sao-paulo-zoo",
+    "name": "S\u00e3o Paulo Zoo",
+    "type": "zoo",
+    "city": "S\u00e3o Paulo",
+    "country": "BR",
+    "official_url": "https://www.zoologico.com.br/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 13
+  },
+  {
+    "slug": "seattle-aquarium",
+    "name": "Seattle Aquarium",
+    "type": "aquarium",
+    "city": "Seattle",
+    "country": "US",
+    "official_url": "https://www.seattleaquarium.org/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 12
+  },
+  {
+    "slug": "seoul-zoo",
+    "name": "Seoul Grand Park Zoo",
+    "type": "zoo",
+    "city": "Seoul",
+    "country": "KR",
+    "official_url": "https://grandpark.seoul.go.kr/main/en.do",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 12
+  },
+  {
+    "slug": "shanghai-ocean-aquarium",
+    "name": "Shanghai Ocean Aquarium",
+    "type": "aquarium",
+    "city": "Shanghai",
+    "country": "CN",
+    "official_url": "https://www.aquarium.sh.com/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 12
+  },
+  {
+    "slug": "shedd-aquarium",
+    "name": "Shedd Aquarium",
+    "type": "aquarium",
+    "city": "Chicago",
+    "country": "US",
+    "official_url": "https://www.sheddaquarium.org/",
+    "list_confidence": "partial",
+    "content_mode": "curated",
+    "n_items": 10
+  },
+  {
+    "slug": "singapore-night-safari",
+    "name": "Night Safari",
+    "type": "safari_zoo",
+    "city": "Singapore",
+    "country": "SG",
+    "official_url": "https://www.mandai.com/en/night-safari.html",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 10
+  },
+  {
+    "slug": "singapore-zoo",
+    "name": "Singapore Zoo",
+    "type": "zoo",
+    "city": "Singapore",
+    "country": "SG",
+    "official_url": "https://www.mandai.com/en/singapore-zoo.html",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 12
+  },
+  {
+    "slug": "smithsonian-natural-history",
+    "name": "National Museum of Natural History",
+    "type": "museum",
+    "city": "Washington",
+    "country": "US",
+    "official_url": "https://naturalhistory.si.edu/",
+    "list_confidence": "partial",
+    "content_mode": "hybrid",
+    "n_items": 8
+  },
+  {
+    "slug": "st-louis-zoo",
+    "name": "Saint Louis Zoo",
+    "type": "zoo",
+    "city": "St. Louis",
+    "country": "US",
+    "official_url": "https://www.stlzoo.org/",
+    "list_confidence": "template",
+    "content_mode": "curated",
+    "n_items": 10
+  },
+  {
+    "slug": "stockholm-skansen",
+    "name": "Skansen",
+    "type": "museum",
+    "city": "Stockholm",
+    "country": "SE",
+    "official_url": "https://www.skansen.se/en/",
+    "list_confidence": "partial",
+    "content_mode": "hybrid",
+    "n_items": 14
+  },
+  {
+    "slug": "taipei-zoo",
+    "name": "Taipei Zoo",
+    "type": "zoo",
+    "city": "Taipei",
+    "country": "TW",
+    "official_url": "https://www.zoo.gov.taipei/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 12
+  },
+  {
+    "slug": "tampa-zoo",
+    "name": "ZooTampa at Lowry Park",
+    "type": "zoo",
+    "city": "Tampa",
+    "country": "US",
+    "official_url": "https://zootampa.org/",
+    "list_confidence": "template",
+    "content_mode": "hybrid",
+    "n_items": 13
+  }
+]

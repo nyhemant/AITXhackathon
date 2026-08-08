@@ -1,0 +1,122 @@
+{
+  "slug": "georgia-aquarium",
+  "name": "Georgia Aquarium",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.georgiaaquarium.org/animal-guide/",
+    "https://www.georgiaaquarium.org/"
+  ],
+  "list_confidence_recommended": "audited",
+  "practical_fixes": [],
+  "do_not_list": [],
+  "items": [
+    {
+      "id": "shark",
+      "label": "Shark",
+      "catalog_id": "shark",
+      "presence": "verified",
+      "display_label": "Shark",
+      "official_name": "Whale shark / multiple shark spp.",
+      "notes": "",
+      "source_url": "https://www.georgiaaquarium.org/animal-guide/"
+    },
+    {
+      "id": "stingray",
+      "label": "Stingray",
+      "catalog_id": "stingray",
+      "presence": "verified",
+      "display_label": "Stingray",
+      "official_name": "Manta ray / rays",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "sea_turtle",
+      "label": "Sea turtle",
+      "catalog_id": "sea-turtle",
+      "presence": "high",
+      "display_label": "Sea turtle",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "jellyfish",
+      "label": "Jellyfish",
+      "catalog_id": "jellyfish",
+      "presence": "verified",
+      "display_label": "Jellyfish",
+      "official_name": "",
+      "notes": "Jellies webcam",
+      "source_url": ""
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "verified",
+      "display_label": "African penguin",
+      "official_name": "",
+      "notes": "",
+      "source_url": "https://www.georgiaaquarium.org/animal/african-penguin/"
+    },
+    {
+      "id": "asian_small_clawed_otter",
+      "label": "Asian small-clawed otter",
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "verified",
+      "display_label": "Asian small-clawed otter",
+      "official_name": "",
+      "notes": "",
+      "source_url": "https://www.georgiaaquarium.org/animal/asian-small-clawed-otter/"
+    },
+    {
+      "id": "octopus",
+      "label": "Octopus",
+      "catalog_id": "octopus",
+      "presence": "medium",
+      "display_label": "Octopus",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "seahorse",
+      "label": "Seahorse",
+      "catalog_id": "seahorse",
+      "presence": "medium",
+      "display_label": "Seahorse",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "clownfish",
+      "label": "Clownfish",
+      "catalog_id": "clownfish",
+      "presence": "medium",
+      "display_label": "Clownfish",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    },
+    {
+      "id": "starfish",
+      "label": "Sea star",
+      "catalog_id": "starfish",
+      "presence": "medium",
+      "display_label": "Sea star",
+      "official_name": "",
+      "notes": "",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "shark",
+    "african_penguin",
+    "asian_small_clawed_otter"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "Animal guide confirms sharks/rays, African penguin, Asian small-clawed otter, jellies, sea turtles likely in galleries. Sea otters also present (different from ASC). Strong curated list if soft labels kept for generic fish.",
+  "severity": "ok"
+}

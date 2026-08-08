@@ -37,7 +37,11 @@
         "question": "What did you notice about the Space shuttle / orbiter?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-shuttle"
+      "catalog_id": "sci-shuttle",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "display_label": "Space shuttle / orbiter",
+      "presence_note": "Permanent Endeavour display — flagship."
     },
     {
       "id": "sci_rocket",
@@ -59,7 +63,11 @@
         "question": "What did you notice about the Rockets & launch?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-rocket"
+      "catalog_id": "sci-rocket",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "display_label": "Rockets & launch",
+      "presence_note": "External tank/rocket components with Endeavour."
     },
     {
       "id": "sci_hands_on",
@@ -81,7 +89,10 @@
         "question": "What did you notice about the Hands-on lab?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-hands-on"
+      "catalog_id": "sci-hands-on",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Hands-on lab"
     },
     {
       "id": "sci_planet",
@@ -102,7 +113,11 @@
         "question": "What did you notice about the Planet / space hall?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-planet"
+      "catalog_id": "sci-planet",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Planet / space hall",
+      "presence_note": "Space exhibits; IMAX/air & space content."
     },
     {
       "id": "sci_aquarium_zone",
@@ -123,7 +138,11 @@
         "question": "What did you notice about the Aquarium zone?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-aquarium-zone"
+      "catalog_id": "sci-aquarium-zone",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Aquarium zone",
+      "presence_note": "Ecosytems/aquatic exhibits may exist — confirm current."
     },
     {
       "id": "sci_rainforest",
@@ -144,7 +163,11 @@
         "question": "What did you notice about the Rainforest dome?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-rainforest"
+      "catalog_id": "sci-rainforest",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Rainforest dome",
+      "presence_note": "Ecosystems gallery historically includes habitats — not a 4-story live dome like Cal Academy."
     },
     {
       "id": "sci_dinosaur",
@@ -165,7 +188,11 @@
         "question": "What did you notice about the Dinosaur hall?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-dinosaur"
+      "catalog_id": "sci-dinosaur",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Dinosaur hall",
+      "presence_note": "Rotating/permanent natural history varies."
     },
     {
       "id": "cm_toddler_garden",
@@ -187,7 +214,11 @@
         "question": "What did you notice about the Toddler Garden?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "cm-toddler-garden"
+      "catalog_id": "cm-toddler-garden",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Toddler Garden",
+      "presence_note": "Family areas; exact name may differ."
     }
   ],
   "content_mode": "curated",
@@ -203,5 +234,17 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "list_confidence": "partial"
+  "list_confidence": "audited",
+  "do_not_list": [],
+  "route_90m": [
+    "sci_shuttle",
+    "sci_rocket",
+    "sci_hands_on"
+  ],
+  "last_presence_audit": "2026-08-08",
+  "presence_sources": [
+    "https://californiasciencecenter.org/",
+    "https://californiasciencecenter.org/exhibits"
+  ],
+  "research_notes": "presence-audit 2026-08-08 [ok]"
 }

@@ -1,0 +1,161 @@
+{
+  "slug": "milan-aquarium",
+  "name": "Acquario di Milano",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.acquariocivicomilano.eu/",
+    "https://en.wikipedia.org/wiki/Milan_Civic_Aquarium"
+  ],
+  "list_confidence_recommended": "partial",
+  "practical_fixes": [
+    {
+      "field": "items (template marine pack)",
+      "current": "Generic aquarium catalog (shark, jelly, ray, otter…)",
+      "suggested": "Curate from official tank list only; drop otter unless confirmed",
+      "reason": "Small civic aquarium; Asian small-clawed otter is classic template leakage."
+    },
+    {
+      "field": "practical.ticket_note",
+      "current": "Compact visit; check open days.",
+      "suggested": "Confirm seasonal hours and ticket purchase path on official site before visit",
+      "reason": "Hours historically limited vs big aquariums."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "asian-small-clawed-otter",
+      "name": "Asian small-clawed otter",
+      "reason": "No evidence of otters at Acquario Civico di Milano; template leakage."
+    }
+  ],
+  "items": [
+    {
+      "id": "shark",
+      "label": "Shark",
+      "catalog_id": "shark",
+      "presence": "medium",
+      "display_label": "Shark (verify on site)",
+      "official_name": "",
+      "notes": "Historic aquarium keeps Mediterranean/exotic fish; shark presence not verified on thin official English surface.",
+      "source_url": ""
+    },
+    {
+      "id": "jellyfish",
+      "label": "Jellyfish",
+      "catalog_id": "jellyfish",
+      "presence": "unclear",
+      "display_label": "Jellyfish",
+      "official_name": "",
+      "notes": "Not confirmed on official surface content.",
+      "source_url": ""
+    },
+    {
+      "id": "stingray",
+      "label": "Stingray",
+      "catalog_id": "stingray",
+      "presence": "unclear",
+      "display_label": "Stingray",
+      "official_name": "",
+      "notes": "Not confirmed.",
+      "source_url": ""
+    },
+    {
+      "id": "seahorse",
+      "label": "Seahorse",
+      "catalog_id": "seahorse",
+      "presence": "medium",
+      "display_label": "Seahorse",
+      "official_name": "",
+      "notes": "Common in civic aquariums but not verified on page fetch.",
+      "source_url": ""
+    },
+    {
+      "id": "clownfish",
+      "label": "Clownfish",
+      "catalog_id": "clownfish",
+      "presence": "medium",
+      "display_label": "Clownfish",
+      "official_name": "",
+      "notes": "Likely reef tank species but not verified.",
+      "source_url": ""
+    },
+    {
+      "id": "sea_turtle",
+      "label": "Sea turtle",
+      "catalog_id": "sea-turtle",
+      "presence": "unclear",
+      "display_label": "Sea turtle",
+      "official_name": "",
+      "notes": "Not confirmed.",
+      "source_url": ""
+    },
+    {
+      "id": "octopus",
+      "label": "Octopus",
+      "catalog_id": "octopus",
+      "presence": "unclear",
+      "display_label": "Octopus",
+      "official_name": "",
+      "notes": "Not confirmed.",
+      "source_url": ""
+    },
+    {
+      "id": "eel",
+      "label": "Eel",
+      "catalog_id": "eel",
+      "presence": "medium",
+      "display_label": "Eel",
+      "official_name": "",
+      "notes": "Mediterranean eels plausible; not verified.",
+      "source_url": ""
+    },
+    {
+      "id": "crab",
+      "label": "Crab",
+      "catalog_id": "crab",
+      "presence": "medium",
+      "display_label": "Crab",
+      "official_name": "",
+      "notes": "Plausible touch/rocky tank; not verified.",
+      "source_url": ""
+    },
+    {
+      "id": "starfish",
+      "label": "Sea star",
+      "catalog_id": "starfish",
+      "presence": "medium",
+      "display_label": "Sea star",
+      "official_name": "",
+      "notes": "Plausible; not verified.",
+      "source_url": ""
+    },
+    {
+      "id": "freshwater_fish",
+      "label": "River / lake fish",
+      "catalog_id": "freshwater-fish",
+      "presence": "high",
+      "display_label": "River / lake fish",
+      "official_name": "",
+      "notes": "Civic aquarium historically emphasizes freshwater/Po basin as well as marine. Soft River fish OK.",
+      "source_url": ""
+    },
+    {
+      "id": "asian_small_clawed_otter",
+      "label": "Asian small-clawed otter",
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "absent",
+      "display_label": "— remove —",
+      "official_name": "",
+      "notes": "No otter exhibit evidence.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "freshwater_fish",
+    "seahorse",
+    "clownfish"
+  ],
+  "content_mode_recommended": "wonder",
+  "summary": "MAJOR: Template aquarium pack applied to a small civic aquarium. Otter absent. Most marine icons unconfirmed from official pages — keep partial/wonder until a tank list is scraped. Prefer freshwater + a few verified tanks.",
+  "severity": "major"
+}

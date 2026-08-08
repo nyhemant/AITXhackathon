@@ -1,0 +1,159 @@
+{
+  "slug": "shedd-aquarium",
+  "name": "Shedd Aquarium",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.sheddaquarium.org/animals",
+    "https://www.sheddaquarium.org/animals/penguins",
+    "https://www.sheddaquarium.org/exhibits/abbott-oceanarium"
+  ],
+  "list_confidence_recommended": "audited",
+  "practical_fixes": [
+    {
+      "field": "items.african_penguin",
+      "current": "African penguin",
+      "suggested": "Penguin (rockhopper/Magellanic)",
+      "reason": "Official: rockhopper and Magellanic only."
+    },
+    {
+      "field": "items.asian_small_clawed_otter",
+      "current": "Asian small-clawed otter",
+      "suggested": "Sea otter",
+      "reason": "Oceanarium sea otters are the otter icon."
+    },
+    {
+      "field": "missing_icons",
+      "current": "",
+      "suggested": "beluga whale, sea otter",
+      "reason": "Signature Oceanarium animals missing."
+    },
+    {
+      "field": "address",
+      "current": "",
+      "suggested": "1200 S DuSable Lake Shore Drive, Chicago IL 60605",
+      "reason": "Official footer address."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "Wrong species — rockhopper & Magellanic only."
+    },
+    {
+      "catalog_id": "asian-small-clawed-otter",
+      "name": "Asian small-clawed otter",
+      "reason": "Wrong species — sea otters in Oceanarium."
+    }
+  ],
+  "items": [
+    {
+      "id": "shark",
+      "label": "Shark",
+      "catalog_id": "shark",
+      "presence": "verified",
+      "display_label": "Shark",
+      "official_name": "",
+      "notes": "Wild Reef sharks; official Animals hub.",
+      "source_url": "https://www.sheddaquarium.org/animals"
+    },
+    {
+      "id": "stingray",
+      "label": "Stingray",
+      "catalog_id": "stingray",
+      "presence": "verified",
+      "display_label": "Stingray",
+      "official_name": "",
+      "notes": "Official Stingrays category.",
+      "source_url": "https://www.sheddaquarium.org/animals"
+    },
+    {
+      "id": "jellyfish",
+      "label": "Jellyfish",
+      "catalog_id": "jellyfish",
+      "presence": "verified",
+      "display_label": "Jellyfish",
+      "official_name": "",
+      "notes": "Official Jellies category.",
+      "source_url": "https://www.sheddaquarium.org/animals"
+    },
+    {
+      "id": "sea_turtle",
+      "label": "Sea turtle",
+      "catalog_id": "sea-turtle",
+      "presence": "verified",
+      "display_label": "Sea turtle",
+      "official_name": "",
+      "notes": "Official Turtles category.",
+      "source_url": "https://www.sheddaquarium.org/animals"
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "absent",
+      "display_label": "Penguin",
+      "official_name": "Rockhopper / Magellanic penguin",
+      "notes": "Rockhopper and Magellanic only — NOT African.",
+      "source_url": "https://www.sheddaquarium.org/animals/penguins"
+    },
+    {
+      "id": "octopus",
+      "label": "Octopus",
+      "catalog_id": "octopus",
+      "presence": "verified",
+      "display_label": "Octopus",
+      "official_name": "Giant Pacific octopus",
+      "notes": "Giant Pacific octopus on Animals hub.",
+      "source_url": "https://www.sheddaquarium.org/animals"
+    },
+    {
+      "id": "clownfish",
+      "label": "Clownfish",
+      "catalog_id": "clownfish",
+      "presence": "high",
+      "display_label": "Clownfish",
+      "official_name": "",
+      "notes": "Wild Reef coral community fishes.",
+      "source_url": "https://www.sheddaquarium.org/exhibits/wild-reef"
+    },
+    {
+      "id": "seahorse",
+      "label": "Seahorse",
+      "catalog_id": "seahorse",
+      "presence": "verified",
+      "display_label": "Seahorse",
+      "official_name": "",
+      "notes": "Official Seahorses category.",
+      "source_url": "https://www.sheddaquarium.org/animals"
+    },
+    {
+      "id": "asian_small_clawed_otter",
+      "label": "Asian small-clawed otter",
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "absent",
+      "display_label": "Asian small-clawed otter",
+      "official_name": "Sea otter",
+      "notes": "Sea otters in Abbott Oceanarium — NOT Asian small-clawed.",
+      "source_url": "https://www.sheddaquarium.org/animals"
+    },
+    {
+      "id": "starfish",
+      "label": "Sea star",
+      "catalog_id": "starfish",
+      "presence": "verified",
+      "display_label": "Sea star",
+      "official_name": "",
+      "notes": "Official Sea Stars category.",
+      "source_url": "https://www.sheddaquarium.org/animals"
+    }
+  ],
+  "route_90m_recommended": [
+    "shark",
+    "jellyfish",
+    "sea_turtle"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "CRITICAL labels: African penguin and Asian small-clawed otter wrong. Sharks/jellies/turtles/seahorses/stars/GPO verified. Add beluga/sea otter.",
+  "severity": "critical"
+}

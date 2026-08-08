@@ -1,0 +1,206 @@
+{
+  "slug": "mumbai-byculla-zoo",
+  "name": "Byculla Zoo (Jijamata Udyan)",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://en.wikipedia.org/wiki/Jijamata_Udyaan",
+    "https://www.mcgm.gov.in/"
+  ],
+  "list_confidence_recommended": "partial",
+  "practical_fixes": [
+    {
+      "field": "official_url",
+      "current": "mcgm.gov.in generic",
+      "suggested": "Point to BMC garden/zoo visitor page when stable",
+      "reason": "Official URL is city portal, not zoo-specific."
+    },
+    {
+      "field": "items template pack",
+      "current": "Gorilla, African penguin, red panda, ASC otter, Nile hippo, Galápagos",
+      "suggested": "Strip to animals actually listed for Byculla (tiger, lion, leopard, deer, birds, reptiles — verify)",
+      "reason": "Western lowland gorilla and African penguin are extremely unlikely template leakage for this venue."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "western-lowland-gorilla",
+      "name": "Western lowland gorilla",
+      "reason": "No credible evidence Byculla keeps gorillas."
+    },
+    {
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "No credible evidence."
+    },
+    {
+      "catalog_id": "chimpanzee",
+      "name": "Chimpanzee",
+      "reason": "Not confirmed."
+    },
+    {
+      "catalog_id": "red-panda",
+      "name": "Red panda",
+      "reason": "Not confirmed for Byculla."
+    },
+    {
+      "catalog_id": "asian-small-clawed-otter",
+      "name": "Asian small-clawed otter",
+      "reason": "Not confirmed."
+    },
+    {
+      "catalog_id": "nile-hippo",
+      "name": "Nile hippo",
+      "reason": "Not confirmed."
+    },
+    {
+      "catalog_id": "galapagos-tortoise",
+      "name": "Galápagos tortoise",
+      "reason": "Not confirmed."
+    },
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "If elephants present historically more likely Asian; current status unclear — do not promise African elephant."
+    }
+  ],
+  "items": [
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "medium",
+      "display_label": "Tiger (verify)",
+      "official_name": "Tiger",
+      "notes": "Tigers historically at Indian city zoos; Sumatran subspecies wrong — soft Tiger if present.",
+      "source_url": ""
+    },
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "medium",
+      "display_label": "Lion (verify)",
+      "official_name": "Lion",
+      "notes": "Lions historically; soft Lion if present.",
+      "source_url": ""
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "medium",
+      "display_label": "Giraffe (verify)",
+      "official_name": "",
+      "notes": "Giraffes sometimes kept; not verified current.",
+      "source_url": ""
+    },
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "unclear",
+      "display_label": "African elephant",
+      "official_name": "",
+      "notes": "Elephant species/status unclear; African label unsafe.",
+      "source_url": ""
+    },
+    {
+      "id": "cm_outdoor",
+      "label": "Outdoor Area",
+      "catalog_id": "cm-outdoor",
+      "presence": "verified",
+      "display_label": "Outdoor garden",
+      "official_name": "Garden paths",
+      "notes": "Garden/park setting is core.",
+      "source_url": ""
+    },
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "absent",
+      "display_label": "— remove —",
+      "official_name": "",
+      "notes": "No evidence.",
+      "source_url": ""
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "absent",
+      "display_label": "— remove —",
+      "official_name": "",
+      "notes": "No evidence.",
+      "source_url": ""
+    },
+    {
+      "id": "chimpanzee",
+      "label": "Chimpanzee",
+      "catalog_id": "chimpanzee",
+      "presence": "absent",
+      "display_label": "— remove —",
+      "official_name": "",
+      "notes": "No evidence.",
+      "source_url": ""
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "unclear",
+      "display_label": "Zebra",
+      "official_name": "",
+      "notes": "Not verified.",
+      "source_url": ""
+    },
+    {
+      "id": "red_panda",
+      "label": "Red panda",
+      "catalog_id": "red-panda",
+      "presence": "absent",
+      "display_label": "— remove —",
+      "official_name": "",
+      "notes": "No evidence.",
+      "source_url": ""
+    },
+    {
+      "id": "asian_small_clawed_otter",
+      "label": "Asian small-clawed otter",
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "absent",
+      "display_label": "— remove —",
+      "official_name": "",
+      "notes": "No evidence.",
+      "source_url": ""
+    },
+    {
+      "id": "nile_hippo",
+      "label": "Nile hippo",
+      "catalog_id": "nile-hippo",
+      "presence": "absent",
+      "display_label": "— remove —",
+      "official_name": "",
+      "notes": "No evidence.",
+      "source_url": ""
+    },
+    {
+      "id": "galapagos_tortoise",
+      "label": "Galápagos tortoise",
+      "catalog_id": "galapagos-tortoise",
+      "presence": "absent",
+      "display_label": "— remove —",
+      "official_name": "",
+      "notes": "No evidence.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "cm_outdoor",
+    "african_lion",
+    "sumatran_tiger"
+  ],
+  "content_mode_recommended": "wonder",
+  "summary": "CRITICAL template leakage: gorilla, African penguin, chimp, red panda, otter, Nile hippo, Galápagos almost certainly absent. Official URL is not zoo-specific. Keep wonder/partial; only soft big cats + garden until BMC animal list audited.",
+  "severity": "critical"
+}

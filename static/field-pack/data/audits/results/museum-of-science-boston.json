@@ -1,0 +1,131 @@
+{
+  "slug": "museum-of-science-boston",
+  "name": "Museum of Science",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.mos.org/",
+    "https://mos.org/exhibits-activities/exhibits"
+  ],
+  "list_confidence_recommended": "partial",
+  "practical_fixes": [
+    {
+      "field": "items.sci_shuttle",
+      "current": "Space shuttle / orbiter",
+      "suggested": "Remove or replace with planetarium / hall that exists",
+      "reason": "MOS Boston is not California Science Center; no Space Shuttle orbiter."
+    },
+    {
+      "field": "items.cm_makery / cm_imaginarium",
+      "current": "Children museum generic labels",
+      "suggested": "Map to named MOS halls (e.g. Hall of Human Life, Energy, Design Challenges)",
+      "reason": "Generic CM taxonomy leakage."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "sci-shuttle",
+      "name": "Space shuttle / orbiter",
+      "reason": "No Space Shuttle orbiter at Museum of Science Boston."
+    }
+  ],
+  "items": [
+    {
+      "id": "sci_hands_on",
+      "label": "Hands-on lab",
+      "catalog_id": "sci-hands-on",
+      "presence": "verified",
+      "display_label": "Hands-on exhibits",
+      "official_name": "Interactive exhibits",
+      "notes": "Core identity is interactive science exhibits.",
+      "source_url": "https://www.mos.org/"
+    },
+    {
+      "id": "sci_planet",
+      "label": "Planet / space hall",
+      "catalog_id": "sci-planet",
+      "presence": "verified",
+      "display_label": "Planetarium",
+      "official_name": "Planetarium",
+      "notes": "Charles Hayden Planetarium.",
+      "source_url": "https://mos.org/exhibits-activities/exhibits"
+    },
+    {
+      "id": "sci_dinosaur",
+      "label": "Dinosaur hall",
+      "catalog_id": "sci-dinosaur",
+      "presence": "high",
+      "display_label": "Dinosaurs",
+      "official_name": "Dinosaurs / life",
+      "notes": "Life sciences / dino content often present; confirm current halls. Soft Dinosaurs.",
+      "source_url": ""
+    },
+    {
+      "id": "sci_aquarium_zone",
+      "label": "Aquarium zone",
+      "catalog_id": "sci-aquarium-zone",
+      "presence": "medium",
+      "display_label": "Live animals (verify)",
+      "official_name": "",
+      "notes": "Live animal/tank corners sometimes present; not a full aquarium.",
+      "source_url": ""
+    },
+    {
+      "id": "cm_free_explore",
+      "label": "Free explore",
+      "catalog_id": "cm-free-explore",
+      "presence": "verified",
+      "display_label": "Free explore",
+      "official_name": "Free explore",
+      "notes": "Open explore fits.",
+      "source_url": ""
+    },
+    {
+      "id": "cm_makery",
+      "label": "Creative Makery",
+      "catalog_id": "cm-makery",
+      "presence": "medium",
+      "display_label": "Make / design",
+      "official_name": "",
+      "notes": "Design/engineering challenges exist under other names.",
+      "source_url": ""
+    },
+    {
+      "id": "cm_imaginarium",
+      "label": "Imaginarium",
+      "catalog_id": "cm-imaginarium",
+      "presence": "absent",
+      "display_label": "— remove or rename —",
+      "official_name": "",
+      "notes": "Named Imaginarium is not an MOS Boston hall.",
+      "source_url": ""
+    },
+    {
+      "id": "sci_shuttle",
+      "label": "Space shuttle / orbiter",
+      "catalog_id": "sci-shuttle",
+      "presence": "absent",
+      "display_label": "— remove —",
+      "official_name": "",
+      "notes": "No orbiter.",
+      "source_url": ""
+    },
+    {
+      "id": "sci_rocket",
+      "label": "Rockets & launch",
+      "catalog_id": "sci-rocket",
+      "presence": "medium",
+      "display_label": "Space exhibits",
+      "official_name": "",
+      "notes": "Space content exists via planetarium/exhibits; not a rocket garden like KSC.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "sci_hands_on",
+    "sci_planet",
+    "sci_dinosaur"
+  ],
+  "content_mode_recommended": "hybrid",
+  "summary": "Planetarium + hands-on verified. Space shuttle orbiter ABSENT (taxonomy leakage). Rename generic CM halls to real MOS exhibit names.",
+  "severity": "major"
+}

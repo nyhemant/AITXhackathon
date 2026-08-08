@@ -1,0 +1,172 @@
+{
+  "slug": "singapore-zoo",
+  "name": "Singapore Zoo",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.mandai.com/en/singapore-zoo.html",
+    "https://www.mandai.com/en/singapore-zoo/animals-and-zones.html"
+  ],
+  "list_confidence_recommended": "audited",
+  "practical_fixes": [
+    {
+      "field": "items.african_elephant",
+      "current": "African elephant",
+      "suggested": "Asian elephant / Elephants of Asia",
+      "reason": "Official zone and species."
+    },
+    {
+      "field": "items.sumatran_tiger",
+      "current": "Sumatran tiger",
+      "suggested": "Tiger (Malayan)",
+      "reason": "Official Malayan tiger."
+    },
+    {
+      "field": "items.reticulated_giraffe",
+      "current": "Reticulated giraffe",
+      "suggested": "Giraffe",
+      "reason": "Official Rothschild's arrivals noted."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Asian elephants only (Elephants of Asia)."
+    },
+    {
+      "catalog_id": "western-lowland-gorilla",
+      "name": "Western lowland gorilla",
+      "reason": "Not confirmed on official animals list this pass."
+    }
+  ],
+  "items": [
+    {
+      "id": "orangutan",
+      "label": "Orangutan",
+      "catalog_id": "orangutan",
+      "presence": "verified",
+      "display_label": "Orangutan",
+      "official_name": "Bornean & Sumatran orangutan",
+      "notes": "Orangutan Island — free-ranging Bornean & Sumatran. THE icon.",
+      "source_url": "https://www.mandai.com/en/singapore-zoo/animals-and-zones.html"
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "verified",
+      "display_label": "Giraffe",
+      "official_name": "Rothschild's giraffe",
+      "notes": "Giraffes on site; Rothschild's Adhil & Balaji noted.",
+      "source_url": "https://www.mandai.com/en/singapore-zoo/animals-and-zones.html"
+    },
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "absent",
+      "display_label": "African elephant",
+      "official_name": "Asian elephant",
+      "notes": "Elephants of Asia — Asian only.",
+      "source_url": "https://www.mandai.com/en/singapore-zoo/animals-and-zones.html"
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "high",
+      "display_label": "Tiger",
+      "official_name": "Malayan tiger",
+      "notes": "Malayan tiger on official list (Tiger Trek).",
+      "source_url": "https://www.mandai.com/en/singapore-zoo/animals-and-zones.html"
+    },
+    {
+      "id": "red_panda",
+      "label": "Red panda",
+      "catalog_id": "red-panda",
+      "presence": "template",
+      "display_label": "Red panda",
+      "official_name": "",
+      "notes": "Not confirmed on main list this pass.",
+      "source_url": ""
+    },
+    {
+      "id": "asian_small_clawed_otter",
+      "label": "Asian small-clawed otter",
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "verified",
+      "display_label": "Asian small-clawed otter",
+      "official_name": "",
+      "notes": "On official animals list.",
+      "source_url": "https://www.mandai.com/en/singapore-zoo/animals-and-zones.html"
+    },
+    {
+      "id": "chimpanzee",
+      "label": "Chimpanzee",
+      "catalog_id": "chimpanzee",
+      "presence": "medium",
+      "display_label": "Chimpanzee",
+      "official_name": "",
+      "notes": "Extensive primates; chimp specifically unconfirmed on scraped list.",
+      "source_url": ""
+    },
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "template",
+      "display_label": "Western lowland gorilla",
+      "official_name": "",
+      "notes": "Not on Mandai animals list this pass.",
+      "source_url": ""
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "medium",
+      "display_label": "Zebra",
+      "official_name": "",
+      "notes": "Wild Africa possible; unconfirmed.",
+      "source_url": ""
+    },
+    {
+      "id": "ring_tailed_lemur",
+      "label": "Ring-tailed lemur",
+      "catalog_id": "ring-tailed-lemur",
+      "presence": "medium",
+      "display_label": "Ring-tailed lemur",
+      "official_name": "",
+      "notes": "Fragile Forest lemur class possible.",
+      "source_url": ""
+    },
+    {
+      "id": "galapagos_tortoise",
+      "label": "Galápagos tortoise",
+      "catalog_id": "galapagos-tortoise",
+      "presence": "medium",
+      "display_label": "Galápagos tortoise",
+      "official_name": "",
+      "notes": "Reptile Kingdom tortoises; Aldabra listed — Galápagos unconfirmed.",
+      "source_url": ""
+    },
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "verified",
+      "display_label": "African lion",
+      "official_name": "",
+      "notes": "African lion on official list.",
+      "source_url": "https://www.mandai.com/en/singapore-zoo/animals-and-zones.html"
+    }
+  ],
+  "route_90m_recommended": [
+    "orangutan",
+    "reticulated_giraffe",
+    "asian_small_clawed_otter"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "Orangutans, Asian elephants (mislabeled African), Malayan tigers, giraffes, otters, lions verified. Drop gorilla until confirmed.",
+  "severity": "major"
+}

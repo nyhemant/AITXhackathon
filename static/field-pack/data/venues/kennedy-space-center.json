@@ -20,7 +20,7 @@
   "items": [
     {
       "id": "sci_shuttle",
-      "label": "Space shuttle / orbiter",
+      "label": "Space Shuttle Atlantis",
       "emoji": "🛰️",
       "one_liner": "Stand under a real orbiter — pure wow.",
       "tags": [
@@ -37,11 +37,14 @@
         "question": "Where did the shuttle go?",
         "answer": "To space — and back to Earth on a runway!"
       },
-      "catalog_id": "sci-shuttle"
+      "catalog_id": "sci-shuttle",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "display_label": "Space Shuttle Atlantis"
     },
     {
       "id": "sci_rocket",
-      "label": "Rockets & launch",
+      "label": "Rocket Garden / Saturn V",
       "emoji": "🚀",
       "one_liner": "Tall rockets outdoors you can walk among.",
       "tags": [
@@ -59,7 +62,10 @@
         "question": "What did you notice about the Rockets & launch?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-rocket"
+      "catalog_id": "sci-rocket",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "display_label": "Rocket Garden / Saturn V"
     },
     {
       "id": "sci_astronaut",
@@ -81,11 +87,14 @@
         "question": "What did you notice about the Astronaut life?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-astronaut"
+      "catalog_id": "sci-astronaut",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "display_label": "Astronaut life"
     },
     {
       "id": "sci_planet",
-      "label": "Planet / space hall",
+      "label": "Space exhibits",
       "emoji": "🪐",
       "one_liner": "Planets and stars in shows or galleries.",
       "tags": [
@@ -102,7 +111,10 @@
         "question": "What did you notice about the Planet / space hall?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-planet"
+      "catalog_id": "sci-planet",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "display_label": "Space exhibits"
     },
     {
       "id": "sci_hands_on",
@@ -123,7 +135,10 @@
         "question": "What did you notice about the Hands-on lab?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-hands-on"
+      "catalog_id": "sci-hands-on",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Hands-on lab"
     },
     {
       "id": "cm_free_explore",
@@ -144,32 +159,14 @@
         "question": "What did you notice about the Free explore?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "cm-free-explore"
-    },
-    {
-      "id": "sci_dinosaur",
-      "label": "Dinosaur hall",
-      "emoji": "🦖",
-      "one_liner": "Skip unless a dino pop-up is up — space is the star.",
-      "tags": [
-        "read"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Only if special exhibit",
-      "qa_card": {
-        "question": "What did you notice about the Dinosaur hall?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "sci-dinosaur"
+      "catalog_id": "cm-free-explore",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Free explore"
     },
     {
       "id": "cm_outdoor",
-      "label": "Outdoor Area",
+      "label": "Rocket Garden outdoors",
       "emoji": "🌳",
       "one_liner": "Train/bus plazas and outdoor exploring between buildings.",
       "tags": [
@@ -186,7 +183,10 @@
         "question": "What did you notice about the Outdoor Area?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "cm-outdoor"
+      "catalog_id": "cm-outdoor",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Rocket Garden outdoors"
     }
   ],
   "content_mode": "curated",
@@ -203,6 +203,23 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "research_notes": "map-page 2026-08-07",
-  "list_confidence": "partial"
+  "research_notes": "map-page 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "list_confidence": "audited",
+  "do_not_list": [
+    {
+      "catalog_id": "sci-dinosaur",
+      "name": "Dinosaur hall",
+      "reason": "KSC is spaceflight; no dinosaur hall.",
+      "as_of": "2026-08-08"
+    }
+  ],
+  "route_90m": [
+    "sci_shuttle",
+    "sci_rocket",
+    "sci_astronaut"
+  ],
+  "last_presence_audit": "2026-08-08",
+  "presence_sources": [
+    "https://www.kennedyspacecenter.com/"
+  ]
 }

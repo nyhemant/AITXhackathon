@@ -16,7 +16,7 @@
     "typical_duration": "2–3 hours",
     "ticket_note": "Check thedoseum.org for tickets and member hours.",
     "transit_note": "Broadway corridor; parking nearby.",
-    "energy_note": "indoor",
+    "energy_note": "Mostly indoors",
     "best_start": "One big body-play room, then a quieter make corner."
   },
   "items": [
@@ -40,28 +40,11 @@
         "question": "What did you notice about the Creative Makery?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "cm-makery"
-    },
-    {
-      "id": "cm_imaginarium",
-      "label": "Imaginarium",
-      "emoji": "✨",
-      "one_liner": "Pretend play worlds.",
-      "tags": [
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Imagine",
-      "qa_card": {
-        "question": "What did you notice about the Imaginarium?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "cm-imaginarium"
+      "catalog_id": "cm-makery",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Creative Makery",
+      "presence_note": "Maker/STEM likely exists under different name"
     },
     {
       "id": "cm_waterfall",
@@ -83,7 +66,10 @@
         "question": "What did you notice about the Waterfall play?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "cm-waterfall"
+      "catalog_id": "cm-waterfall",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Waterfall play"
     },
     {
       "id": "cm_outdoor",
@@ -105,7 +91,11 @@
         "question": "What did you notice about the Outdoor Area?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "cm-outdoor"
+      "catalog_id": "cm-outdoor",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Outdoor Area",
+      "presence_note": "Large outdoor play space documented"
     },
     {
       "id": "cm_toddler_garden",
@@ -127,30 +117,10 @@
         "question": "What did you notice about the Toddler Garden?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "cm-toddler-garden"
-    },
-    {
-      "id": "cm_woven",
-      "label": "Woven Wonders",
-      "emoji": "🧗",
-      "one_liner": "Colorful climbing structure — art you can climb!",
-      "tags": [
-        "wow",
-        "hands",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Woven Wonders?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "cm-woven"
+      "catalog_id": "cm-toddler-garden",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Toddler Garden"
     },
     {
       "id": "cm_art_lab",
@@ -173,7 +143,10 @@
         "question": "What did you try or notice at Art Lab?",
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
-      "catalog_id": "cm-art-lab"
+      "catalog_id": "cm-art-lab",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Art Lab"
     },
     {
       "id": "cm_free_explore",
@@ -195,7 +168,10 @@
         "question": "What did you try or notice at Free explore?",
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
-      "catalog_id": "cm-free-explore"
+      "catalog_id": "cm-free-explore",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Free explore"
     }
   ],
   "content_mode": "hybrid",
@@ -213,10 +189,32 @@
     "Leave while happy"
   ],
   "route_90m": [
-    "cm_makery",
-    "cm_imaginarium",
-    "cm_waterfall"
+    "cm_outdoor"
   ],
-  "research_notes": "R1 hybrid 2026-08-07 · map-page 2026-08-07 · web-map 2026-08-07",
-  "list_confidence": "partial"
+  "research_notes": "R1 hybrid 2026-08-07 · map-page 2026-08-07 · web-map 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "list_confidence": "partial",
+  "do_not_list": [
+    {
+      "catalog_id": "cm-imaginarium",
+      "name": "Imaginarium",
+      "reason": "Generic Perot taxonomy; not confirmed DoSeum name.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "cm-woven",
+      "name": "Woven Wonders",
+      "reason": "Perot exhibit name leakage.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "cm-makery",
+      "name": "Creative Makery",
+      "reason": "Generic makery label; confirm local name.",
+      "as_of": "2026-08-08"
+    }
+  ],
+  "presence_sources": [
+    "https://www.thedoseum.org/",
+    "https://www.thedoseum.org/exhibits"
+  ]
 }

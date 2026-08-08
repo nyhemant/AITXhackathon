@@ -1,0 +1,150 @@
+{
+  "slug": "nhm-london",
+  "name": "Natural History Museum",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.nhm.ac.uk/",
+    "https://www.nhm.ac.uk/visit.html",
+    "https://www.nhm.ac.uk/visit/exhibitions.html"
+  ],
+  "list_confidence_recommended": "audited",
+  "practical_fixes": [
+    {
+      "field": "items.sci_rainforest",
+      "current": "Rainforest dome",
+      "suggested": "Remove or map to specific gallery if any",
+      "reason": "NHM is not a biodome; no rainforest dome."
+    },
+    {
+      "field": "items.sci_aquarium_zone",
+      "current": "Aquarium zone",
+      "suggested": "Remove",
+      "reason": "Not an aquarium."
+    },
+    {
+      "field": "items.cm_imaginarium",
+      "current": "Imaginarium",
+      "suggested": "Remove",
+      "reason": "Not an NHM gallery name."
+    },
+    {
+      "field": "items.sci_planet",
+      "current": "Planet / space hall",
+      "suggested": "Earth halls / volcanoes — or remove space framing",
+      "reason": "NHM is natural history/Earth, not a space museum (compare Science Museum next door)."
+    },
+    {
+      "field": "route / items",
+      "current": "Generic sci pack",
+      "suggested": "Dinosaurs, Hintze Hall (whale), Mammals, Earth/volcano, Minerals, Human evolution",
+      "reason": "Use real NHM gallery names."
+    }
+  ],
+  "do_not_list": [
+    {
+      "catalog_id": "sci-rainforest",
+      "name": "Rainforest dome",
+      "reason": "No rainforest dome at NHM London."
+    },
+    {
+      "catalog_id": "sci-aquarium-zone",
+      "name": "Aquarium zone",
+      "reason": "Not an aquarium."
+    },
+    {
+      "catalog_id": "cm-imaginarium",
+      "name": "Imaginarium",
+      "reason": "Not an NHM gallery."
+    }
+  ],
+  "items": [
+    {
+      "id": "sci_dinosaur",
+      "label": "Dinosaur hall",
+      "catalog_id": "sci-dinosaur",
+      "presence": "verified",
+      "display_label": "Dinosaurs",
+      "official_name": "Dinosaurs",
+      "notes": "Dinosaur galleries / T. rex icons.",
+      "source_url": "https://www.nhm.ac.uk/"
+    },
+    {
+      "id": "sci_mammal_hall",
+      "label": "Animal / mammal hall",
+      "catalog_id": "sci-mammal-hall",
+      "presence": "verified",
+      "display_label": "Mammals / whale hall",
+      "official_name": "Mammals / Hintze Hall",
+      "notes": "Mammals / historic whale association; Hintze Hall blue whale.",
+      "source_url": "https://www.nhm.ac.uk/"
+    },
+    {
+      "id": "sci_planet",
+      "label": "Planet / space hall",
+      "catalog_id": "sci-planet",
+      "presence": "medium",
+      "display_label": "Earth / planet Earth",
+      "official_name": "Earth halls",
+      "notes": "Earth galleries (volcanoes, earthquakes) — not space planetarium. Soft Earth.",
+      "source_url": ""
+    },
+    {
+      "id": "sci_hands_on",
+      "label": "Hands-on lab",
+      "catalog_id": "sci-hands-on",
+      "presence": "high",
+      "display_label": "Hands-on",
+      "official_name": "Hands-on / Investigate",
+      "notes": "Investigate Centre / family hands-on when open. Soft Hands-on.",
+      "source_url": ""
+    },
+    {
+      "id": "cm_free_explore",
+      "label": "Free explore",
+      "catalog_id": "cm-free-explore",
+      "presence": "verified",
+      "display_label": "Free explore",
+      "official_name": "Free explore",
+      "notes": "Valid.",
+      "source_url": ""
+    },
+    {
+      "id": "sci_rainforest",
+      "label": "Rainforest dome",
+      "catalog_id": "sci-rainforest",
+      "presence": "absent",
+      "display_label": "— remove —",
+      "official_name": "",
+      "notes": "No dome.",
+      "source_url": ""
+    },
+    {
+      "id": "sci_aquarium_zone",
+      "label": "Aquarium zone",
+      "catalog_id": "sci-aquarium-zone",
+      "presence": "absent",
+      "display_label": "— remove —",
+      "official_name": "",
+      "notes": "No aquarium.",
+      "source_url": ""
+    },
+    {
+      "id": "cm_imaginarium",
+      "label": "Imaginarium",
+      "catalog_id": "cm-imaginarium",
+      "presence": "absent",
+      "display_label": "— remove —",
+      "official_name": "",
+      "notes": "No.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "sci_dinosaur",
+    "sci_mammal_hall",
+    "cm_free_explore"
+  ],
+  "content_mode_recommended": "curated",
+  "summary": "Dinosaurs + mammal/Hintze Hall verified. Drop rainforest dome, aquarium zone, Imaginarium. Reframe sci_planet as Earth halls not space. Major generic leakage otherwise list is salvageable.",
+  "severity": "major"
+}

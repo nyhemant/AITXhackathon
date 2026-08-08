@@ -16,7 +16,7 @@
     "typical_duration": "half day",
     "ticket_note": "Waterfront location.",
     "transit_note": "V&A Waterfront.",
-    "energy_note": "indoor",
+    "energy_note": "Mostly indoors",
     "best_start": "Predator exhibit energy first."
   },
   "items": [
@@ -42,7 +42,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "shark",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Shark",
+      "presence_note": "Predator exhibit / sharks are signature."
     },
     {
       "id": "african_penguin",
@@ -65,7 +69,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-penguin",
-      "presence": "template"
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "African penguin",
+      "presence_note": "African penguins are a Two Oceans / Cape Town icon."
     },
     {
       "id": "jellyfish",
@@ -88,7 +96,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "jellyfish",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Jellyfish",
+      "presence_note": "Jellies common."
     },
     {
       "id": "stingray",
@@ -111,7 +123,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "stingray",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Stingray",
+      "presence_note": "Rays common."
     },
     {
       "id": "sea_turtle",
@@ -134,7 +150,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sea-turtle",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Sea turtle",
+      "presence_note": "Turtle exhibits common at Two Oceans."
     },
     {
       "id": "octopus",
@@ -157,7 +177,11 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "octopus",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Octopus",
+      "presence_note": "Octopus exhibits common."
     },
     {
       "id": "seahorse",
@@ -180,7 +204,10 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "seahorse",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Seahorse",
+      "presence_note": "Confirm."
     },
     {
       "id": "clownfish",
@@ -203,7 +230,10 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "clownfish",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Clownfish",
+      "presence_note": "Tropical possible; not the local signature."
     },
     {
       "id": "eel",
@@ -226,7 +256,10 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "eel",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Eel",
+      "presence_note": "Common."
     },
     {
       "id": "crab",
@@ -249,7 +282,10 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "crab",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Crab",
+      "presence_note": "Rockpool/touch common."
     },
     {
       "id": "starfish",
@@ -274,7 +310,10 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "starfish",
-      "presence": "template"
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Sea star",
+      "presence_note": "Rockpool common."
     },
     {
       "id": "freshwater_fish",
@@ -297,7 +336,10 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "freshwater-fish",
-      "presence": "template"
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "River / lake fish",
+      "presence_note": "Confirm; venue is marine-focused."
     }
   ],
   "content_mode": "hybrid",
@@ -314,10 +356,14 @@
     "Leave while happy"
   ],
   "route_90m": [
-    "shark",
     "african_penguin",
-    "jellyfish"
+    "shark",
+    "sea_turtle"
   ],
-  "research_notes": "R2b 2026-08-07",
-  "list_confidence": "template"
+  "research_notes": "R2b 2026-08-07 · presence-audit 2026-08-08 [minor]",
+  "list_confidence": "partial",
+  "do_not_list": [],
+  "presence_sources": [
+    "https://www.aquarium.co.za/"
+  ]
 }

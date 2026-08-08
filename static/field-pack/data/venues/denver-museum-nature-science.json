@@ -16,13 +16,13 @@
     "typical_duration": "half day",
     "ticket_note": "IMAX/planetarium add-ons optional.",
     "transit_note": "City Park; same neighborhood as the zoo.",
-    "energy_note": "indoor",
+    "energy_note": "Mostly indoors",
     "best_start": "Discovery Zone or dioramas, then one big hall."
   },
   "items": [
     {
       "id": "sci_dinosaur",
-      "label": "Dinosaur hall",
+      "label": "Dinosaurs / Prehistoric Journey",
       "emoji": "🦖",
       "one_liner": "Dinos for the wow open.",
       "tags": [
@@ -40,11 +40,15 @@
         "question": "What did you notice about the Dinosaur hall?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-dinosaur"
+      "catalog_id": "sci-dinosaur",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Dinosaurs / Prehistoric Journey"
     },
     {
       "id": "sci_mammal_hall",
-      "label": "Animal / mammal hall",
+      "label": "Wildlife Halls",
       "emoji": "🦌",
       "one_liner": "Classic habitat dioramas.",
       "tags": [
@@ -61,11 +65,15 @@
         "question": "What did you notice about the Animal / mammal hall?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-mammal-hall"
+      "catalog_id": "sci-mammal-hall",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Wildlife Halls"
     },
     {
       "id": "sci_planet",
-      "label": "Planet / space hall",
+      "label": "Planetarium / Space Odyssey",
       "emoji": "🪐",
       "one_liner": "Space hall / shows if added.",
       "tags": [
@@ -82,11 +90,15 @@
         "question": "What did you notice about the Planet / space hall?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-planet"
+      "catalog_id": "sci-planet",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Planetarium / Space Odyssey"
     },
     {
       "id": "sci_hands_on",
-      "label": "Hands-on lab",
+      "label": "Discovery Zone / Expedition Health",
       "emoji": "🔬",
       "one_liner": "Hands-on for younger kids.",
       "tags": [
@@ -104,7 +116,10 @@
         "question": "What did you notice about the Hands-on lab?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sci-hands-on"
+      "catalog_id": "sci-hands-on",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "display_label": "Discovery Zone / Expedition Health"
     },
     {
       "id": "cm_free_explore",
@@ -125,56 +140,15 @@
         "question": "What did you notice about the Free explore?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "cm-free-explore"
-    },
-    {
-      "id": "cm_imaginarium",
-      "label": "Imaginarium",
-      "emoji": "✨",
-      "one_liner": "Multi-sensory world — explore, notice, imagine.",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Imaginarium?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "cm-imaginarium"
-    },
-    {
-      "id": "sci_rainforest",
-      "label": "Rainforest dome",
-      "emoji": "🌿",
-      "one_liner": "Warm, green, and full of life — look for layers of plants.",
-      "tags": [
-        "wow",
-        "rest",
-        "kids"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Halls",
-      "qa_card": {
-        "question": "What did you try or notice at Rainforest dome?",
-        "answer": "Tell a grown-up one thing you saw, touched, or built!"
-      },
-      "catalog_id": "sci-rainforest"
+      "catalog_id": "cm-free-explore",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Free explore",
+      "presence_note": "Generic filler; OK as wonder soft stop"
     },
     {
       "id": "pad_7",
-      "label": "Kid choice hall",
+      "label": "Kid choice",
       "emoji": "🧭",
       "one_liner": "They pick the next room for five minutes.",
       "tags": [
@@ -191,7 +165,11 @@
         "question": "What did you like most?",
         "answer": "Whatever made you curious!"
       },
-      "catalog_id": "cm-free-explore"
+      "catalog_id": "cm-free-explore",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "display_label": "Kid choice",
+      "presence_note": "Generic pad"
     }
   ],
   "content_mode": "hybrid",
@@ -212,6 +190,24 @@
     "sci_mammal_hall",
     "sci_planet"
   ],
-  "research_notes": "R1 hybrid 2026-08-07",
-  "list_confidence": "partial"
+  "research_notes": "R1 hybrid 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "list_confidence": "partial",
+  "do_not_list": [
+    {
+      "catalog_id": "cm-imaginarium",
+      "name": "Imaginarium",
+      "reason": "Perot/children's museum taxonomy; not a DMNS hall name.",
+      "as_of": "2026-08-08"
+    },
+    {
+      "catalog_id": "sci-rainforest",
+      "name": "Rainforest dome",
+      "reason": "No DMNS rainforest dome exhibit on permanent exhibitions list.",
+      "as_of": "2026-08-08"
+    }
+  ],
+  "presence_sources": [
+    "https://www.dmns.org/",
+    "https://www.dmns.org/exhibitions/permanent-exhibitions/"
+  ]
 }

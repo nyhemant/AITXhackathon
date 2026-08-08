@@ -1,0 +1,130 @@
+{
+  "slug": "pittsburgh-zoo",
+  "name": "Pittsburgh Zoo & Aquarium",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://www.pittsburghzoo.org/",
+    "https://www.pittsburghzoo.org/our-animals/",
+    "https://en.wikipedia.org/wiki/Pittsburgh_Zoo_%26_PPG_Aquarium"
+  ],
+  "list_confidence_recommended": "partial",
+  "practical_fixes": [
+    {
+      "field": "items.sumatran_tiger",
+      "current": "Sumatran tiger",
+      "suggested": "Soft Tiger — confirm subspecies",
+      "reason": "Big cats present; subspecies check."
+    }
+  ],
+  "do_not_list": [],
+  "items": [
+    {
+      "id": "shark",
+      "label": "Shark",
+      "catalog_id": "shark",
+      "presence": "verified",
+      "display_label": "Shark",
+      "official_name": "Shark",
+      "notes": "PPG Aquarium sharks.",
+      "source_url": "https://www.pittsburghzoo.org/"
+    },
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "high",
+      "display_label": "African elephant",
+      "official_name": "Elephant",
+      "notes": "Elephants historically/current outdoor — soft Elephant confirm African.",
+      "source_url": ""
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "high",
+      "display_label": "Giraffe",
+      "official_name": "Giraffe",
+      "notes": "Africa section giraffes. Soft Giraffe.",
+      "source_url": ""
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "medium",
+      "display_label": "Tiger",
+      "official_name": "Tiger",
+      "notes": "Tigers; subspecies medium. Soft Tiger.",
+      "source_url": ""
+    },
+    {
+      "id": "jellyfish",
+      "label": "Jellyfish",
+      "catalog_id": "jellyfish",
+      "presence": "high",
+      "display_label": "Jellyfish",
+      "official_name": "Jellyfish",
+      "notes": "Aquarium jellies. Soft Jellyfish.",
+      "source_url": ""
+    },
+    {
+      "id": "sea_turtle",
+      "label": "Sea turtle",
+      "catalog_id": "sea-turtle",
+      "presence": "high",
+      "display_label": "Sea turtle",
+      "official_name": "Sea turtle",
+      "notes": "Aquarium turtles. Soft Sea turtle.",
+      "source_url": ""
+    },
+    {
+      "id": "octopus",
+      "label": "Octopus",
+      "catalog_id": "octopus",
+      "presence": "medium",
+      "display_label": "Octopus",
+      "official_name": "",
+      "notes": "Possible aquarium species.",
+      "source_url": ""
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "high",
+      "display_label": "Penguin",
+      "official_name": "Penguin",
+      "notes": "Penguins common at PPG; confirm African. Soft Penguin.",
+      "source_url": ""
+    },
+    {
+      "id": "stingray",
+      "label": "Stingray",
+      "catalog_id": "stingray",
+      "presence": "high",
+      "display_label": "Stingray",
+      "official_name": "Ray",
+      "notes": "Aquarium rays. Soft Ray.",
+      "source_url": ""
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "high",
+      "display_label": "Zebra",
+      "official_name": "Zebra",
+      "notes": "Africa hoofstock. Soft Zebra.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "shark",
+    "african_elephant",
+    "reticulated_giraffe"
+  ],
+  "content_mode_recommended": "hybrid",
+  "summary": "Zoo+aquarium hybrid list reasonable at high/medium. Full audited blocked on thin animals-page fetch — partial. Hills energy note already correct.",
+  "severity": "minor"
+}

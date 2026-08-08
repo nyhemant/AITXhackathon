@@ -1,0 +1,149 @@
+{
+  "slug": "moscow-zoo",
+  "name": "Moscow Zoo",
+  "audited_at": "2026-08-08",
+  "sources": [
+    "https://moscowzoo.ru/en/",
+    "https://en.wikipedia.org/wiki/Moscow_Zoo"
+  ],
+  "list_confidence_recommended": "partial",
+  "practical_fixes": [
+    {
+      "field": "list_confidence",
+      "current": "template savanna pack",
+      "suggested": "partial until Russian animal pages audited species-by-species",
+      "reason": "Large historic zoo likely has many icons but subspecies/template risk high without official list scrape."
+    }
+  ],
+  "do_not_list": [],
+  "items": [
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "catalog_id": "african-lion",
+      "presence": "high",
+      "display_label": "Lion",
+      "official_name": "Lion",
+      "notes": "Major zoo; lions long-term collection. Soft Lion.",
+      "source_url": "https://moscowzoo.ru/en/"
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "catalog_id": "reticulated-giraffe",
+      "presence": "high",
+      "display_label": "Giraffe",
+      "official_name": "Giraffe",
+      "notes": "Giraffes long associated; subspecies unconfirmed. Soft Giraffe.",
+      "source_url": ""
+    },
+    {
+      "id": "african_elephant",
+      "label": "African elephant",
+      "catalog_id": "african-elephant",
+      "presence": "medium",
+      "display_label": "Elephant (verify species)",
+      "official_name": "",
+      "notes": "Elephants historically present; species (African vs Asian) and current status need confirm.",
+      "source_url": ""
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "catalog_id": "sumatran-tiger",
+      "presence": "medium",
+      "display_label": "Tiger",
+      "official_name": "Tiger",
+      "notes": "Tigers present historically; Sumatran label unverified — soft Tiger.",
+      "source_url": ""
+    },
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "medium",
+      "display_label": "Gorilla (verify)",
+      "official_name": "",
+      "notes": "Primates complex; gorilla status medium.",
+      "source_url": ""
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "catalog_id": "african-penguin",
+      "presence": "medium",
+      "display_label": "Penguin (verify)",
+      "official_name": "",
+      "notes": "Penguins often present; African label unverified.",
+      "source_url": ""
+    },
+    {
+      "id": "chimpanzee",
+      "label": "Chimpanzee",
+      "catalog_id": "chimpanzee",
+      "presence": "medium",
+      "display_label": "Chimpanzee",
+      "official_name": "",
+      "notes": "Likely; not verified this pass.",
+      "source_url": ""
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "catalog_id": "zebra",
+      "presence": "high",
+      "display_label": "Zebra",
+      "official_name": "",
+      "notes": "Hoofstock common. Soft Zebra.",
+      "source_url": ""
+    },
+    {
+      "id": "red_panda",
+      "label": "Red panda",
+      "catalog_id": "red-panda",
+      "presence": "medium",
+      "display_label": "Red panda",
+      "official_name": "",
+      "notes": "Often in collection; not verified.",
+      "source_url": ""
+    },
+    {
+      "id": "asian_small_clawed_otter",
+      "label": "Asian small-clawed otter",
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "unclear",
+      "display_label": "Asian small-clawed otter",
+      "official_name": "",
+      "notes": "Not verified.",
+      "source_url": ""
+    },
+    {
+      "id": "nile_hippo",
+      "label": "Nile hippo",
+      "catalog_id": "nile-hippo",
+      "presence": "medium",
+      "display_label": "Nile hippo",
+      "official_name": "",
+      "notes": "Hippos historically; not verified.",
+      "source_url": ""
+    },
+    {
+      "id": "galapagos_tortoise",
+      "label": "Galápagos tortoise",
+      "catalog_id": "galapagos-tortoise",
+      "presence": "unclear",
+      "display_label": "Galápagos tortoise",
+      "official_name": "",
+      "notes": "Not verified.",
+      "source_url": ""
+    }
+  ],
+  "route_90m_recommended": [
+    "african_lion",
+    "reticulated_giraffe",
+    "zebra"
+  ],
+  "content_mode_recommended": "hybrid",
+  "summary": "PARTIAL only: English site thin; do not promote template as audited. Large collection likely has lions/giraffes/zebras but elephant species and many fillers unconfirmed. Severity major for template risk on print.",
+  "severity": "major"
+}
