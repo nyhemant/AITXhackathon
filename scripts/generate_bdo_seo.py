@@ -755,7 +755,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <link rel="stylesheet" href="/shell/shell.css?v=5" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=52" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=14" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=15" />
   <link rel="stylesheet" href="/field-pack/css/mission.css?v=8" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
@@ -934,7 +934,7 @@ def render_venue_page(v: dict) -> str:
   <link rel="stylesheet" href="/shell/shell.css?v=5" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=52" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=14" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=15" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
   </script>
@@ -1377,8 +1377,7 @@ _CONTINENT_ORDER = (
     "North America",
     "South America",
     "Europe",
-    "Middle East",
-    "Africa",
+    "Africa & Middle East",
     "Asia",
     "Oceania",
 )
@@ -1419,11 +1418,11 @@ _COUNTRY_CONTINENT = {
     "russia": "Europe",
     "türkiye": "Europe",
     "turkey": "Europe",
-    "uae": "Middle East",
-    "united arab emirates": "Middle East",
-    "south africa": "Africa",
-    "kenya": "Africa",
-    "egypt": "Africa",
+    "uae": "Africa & Middle East",
+    "united arab emirates": "Africa & Middle East",
+    "south africa": "Africa & Middle East",
+    "kenya": "Africa & Middle East",
+    "egypt": "Africa & Middle East",
     "india": "Asia",
     "japan": "Asia",
     "china": "Asia",
