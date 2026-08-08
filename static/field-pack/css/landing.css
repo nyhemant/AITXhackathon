@@ -2818,3 +2818,67 @@ body.landing-body {
   line-height: 1.45;
 }
 .story-extras-note a { font-weight: 650; }
+
+/* Place type tabs under Field Trip Kit header */
+.place-type-tabs {
+  display: flex;
+  justify-content: center;
+  padding: 0 12px 4px;
+  margin: -2px 0 4px;
+}
+.place-type-seg {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0;
+  max-width: 100%;
+  border-radius: 999px;
+  border: 1.5px solid rgba(15, 92, 92, 0.16);
+  background: #fff;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(21, 34, 56, 0.04);
+}
+.place-type-tab {
+  appearance: none;
+  margin: 0;
+  border: none;
+  border-right: 1px solid rgba(15, 92, 92, 0.1);
+  background: transparent;
+  color: #3d4f6f;
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 750;
+  padding: 10px 16px;
+  min-height: 42px;
+  cursor: pointer;
+  transition: background 0.12s ease, color 0.12s ease;
+}
+.place-type-tab:last-child {
+  border-right: none;
+}
+.place-type-tab:hover {
+  background: #f0faf6;
+  color: #0a4545;
+}
+.place-type-tab.is-active {
+  background: #0f5c5c;
+  color: #fff;
+}
+.place-type-tab:focus-visible {
+  outline: 2px solid rgba(15, 92, 92, 0.45);
+  outline-offset: -2px;
+  z-index: 1;
+}
+.seo-dir-empty {
+  margin: 0.5rem 0 0;
+  font-weight: 650;
+  color: #5a6b82;
+}
+@media (max-width: 480px) {
+  .place-type-tab {
+    flex: 1 1 auto;
+    padding: 9px 10px;
+    font-size: 0.8rem;
+    min-height: 40px;
+  }
+}

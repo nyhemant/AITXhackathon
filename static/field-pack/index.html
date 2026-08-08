@@ -30,7 +30,7 @@
     <base href="/field-pack/" />
     <link rel="stylesheet" href="/shell/shell.css?v=5" />
     <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
-    <link rel="stylesheet" href="/field-pack/css/landing.css?v=68" />
+    <link rel="stylesheet" href="/field-pack/css/landing.css?v=69" />
     <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=14" />
     <script type="application/ld+json">
       {
@@ -104,6 +104,15 @@
         </div>
       </header>
 
+      <nav class="place-type-tabs no-print" id="place-type-tabs" aria-label="Filter by place type">
+        <div class="place-type-seg" role="tablist" aria-label="Place type">
+          <button type="button" class="place-type-tab is-active" role="tab" aria-selected="true" data-place-type="all" id="tab-type-all">All</button>
+          <button type="button" class="place-type-tab" role="tab" aria-selected="false" data-place-type="zoo" id="tab-type-zoo">Zoos</button>
+          <button type="button" class="place-type-tab" role="tab" aria-selected="false" data-place-type="aquarium" id="tab-type-aquarium">Aquariums</button>
+          <button type="button" class="place-type-tab" role="tab" aria-selected="false" data-place-type="museum" id="tab-type-museum">Museums</button>
+        </div>
+      </nav>
+
       <div id="continue-chip" class="continue-chip" hidden></div>
       <p id="waiting-cities" class="waiting-cities" hidden></p>
 
@@ -111,7 +120,7 @@
       <header class="landing-pitch">
         <div class="pitch-hero pitch-hero-copy-only">
           <div class="pitch-copy">
-            <h1>A one-page mission for your next zoo or museum day</h1>
+            <h1 id="pitch-heading">A one-page mission for your next zoo or museum day</h1>
             <p class="pitch-line">
               Pick where you’re going, your child’s age, and how much time you have.
               Get a short must-see list and a printable scavenger hunt.
@@ -386,6 +395,7 @@
       <section class="seo-directory" id="all-places" aria-labelledby="dir-heading">
         <h2 id="dir-heading">All places</h2>
         <p>Each one has a free printable hunt and a short kid list.</p>
+        <p id="seo-dir-empty" class="seo-dir-empty" hidden>No places in this category for the current map filters.</p>
         <!-- SEO:DIR-BODY:START -->
         <div id="seo-venue-directory" class="seo-dir-body">
         <section class="seo-dir-region" data-region="north-america">
@@ -606,7 +616,7 @@
     <script src="/field-pack/js/print-maps.js?v=2"></script>
     <script src="/field-pack/js/print-kit.js?v=9"></script>
     <script src="/field-pack/js/mission-pilots.js?v=4"></script>
-    <script src="/field-pack/js/landing-map.js?v=66"></script>
+    <script src="/field-pack/js/landing-map.js?v=67"></script>
     <script src="/field-pack/js/landing-hook.js?v=18"></script>
   </body>
 </html>

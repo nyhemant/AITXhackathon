@@ -51,6 +51,7 @@
   let basemap = "us"; // us | world — world only when International selected
   let mapLoadToken = 0;
   let selectedMetroId = "all";
+  let selectedTypeKind = "all"; // all | zoo | aquarium | museum
   let selectedRegion = "all";
   let selectedState = "";
   let selectedCountry = "";
@@ -134,6 +135,10 @@
         const m = METRO_DEFS.find((x) => x.id === selectedMetroId);
         if (m) list = list.filter((p) => matchesMetro(p, m));
       }
+    }
+    // Type tab: All | Zoos | Aquariums | Museums
+    if (selectedTypeKind && selectedTypeKind !== "all") {
+      list = list.filter((p) => pinTypeKind(p.type) === selectedTypeKind);
     }
     return list.sort((a, b) => {
       if (mapScope === "intl") {
@@ -1769,6 +1774,9 @@
     }
     updateReadyChips(mapScope === "intl");
 
+    // Type tabs: All | Zoos | Aquariums | Museums (filters map + directory)
+    wirePlaceTypeTabs();
+
     // Deep link: /field-pack/#/venue/dallas-zoo (intl ids switch basemap)
     const fromHash = venueIdFromHash();
     if (fromHash && placeById(fromHash)) {
@@ -1813,4 +1821,123 @@
   }
 
   boot();
+
+  const TYPE_TAB_COPY = {
+    all: {
+      pitch: "A one-page mission for your next zoo or museum day",
+      dir: "All places",
+      blurb: "Each one has a free printable hunt and a short kid list.",
+    },
+    zoo: {
+      pitch: "A one-page mission for your next zoo day",
+      dir: "Zoos",
+      blurb: "Printable hunts and kid shortlists for zoos and safari parks.",
+    },
+    aquarium: {
+      pitch: "A one-page mission for your next aquarium day",
+      dir: "Aquariums",
+      blurb: "Printable hunts and kid shortlists for aquariums.",
+    },
+    museum: {
+      pitch: "A one-page mission for your next museum day",
+      dir: "Museums",
+      blurb: "Printable hunts and kid shortlists for science, nature, space & kids museums.",
+    },
+  };
+
+  function syncTypeTabs() {
+    document.querySelectorAll(".place-type-tab[data-place-type]").forEach((btn) => {
+      const on = btn.getAttribute("data-place-type") === selectedTypeKind;
+      btn.classList.toggle("is-active", on);
+      btn.setAttribute("aria-selected", on ? "true" : "false");
+    });
+    const copy = TYPE_TAB_COPY[selectedTypeKind] || TYPE_TAB_COPY.all;
+    const pitch = document.getElementById("pitch-heading");
+    if (pitch) pitch.textContent = copy.pitch;
+    const dirH = document.getElementById("dir-heading");
+    if (dirH) dirH.textContent = copy.dir;
+    const dirP = document.querySelector("#all-places > p");
+    if (dirP) dirP.textContent = copy.blurb;
+    document.body.setAttribute("data-place-type", selectedTypeKind || "all");
+    filterDirectoryByType();
+  }
+
+  function filterDirectoryByType() {
+    const root = document.getElementById("seo-venue-directory");
+    if (!root || !allPlaces || !allPlaces.length) return;
+    const byId = Object.fromEntries(allPlaces.map((p) => [p.id, p]));
+    let visibleTotal = 0;
+    root.querySelectorAll(".seo-dir-region").forEach((region) => {
+      let n = 0;
+      region.querySelectorAll("li").forEach((li) => {
+        const a = li.querySelector("a[href]");
+        if (!a) return;
+        const m = String(a.getAttribute("href") || "").match(/\/field-pack\/([^/]+)\/?/);
+        const id = m ? m[1] : "";
+        const place = byId[id];
+        const kind = place ? pinTypeKind(place.type) : "other";
+        const show =
+          !selectedTypeKind ||
+          selectedTypeKind === "all" ||
+          kind === selectedTypeKind;
+        li.hidden = !show;
+        if (show) n += 1;
+      });
+      region.hidden = n === 0;
+      const countEl = region.querySelector(".seo-dir-count");
+      if (countEl) countEl.textContent = String(n);
+      visibleTotal += n;
+    });
+    const empty = document.getElementById("seo-dir-empty");
+    if (empty) empty.hidden = visibleTotal > 0;
+  }
+
+  function setPlaceType(kind, opts) {
+    const k = ["all", "zoo", "aquarium", "museum"].includes(kind) ? kind : "all";
+    selectedTypeKind = k;
+    syncTypeTabs();
+    // Refresh map pins + selectors for the type slice
+    if (typeof fillLocationSelect === "function") fillLocationSelect();
+    if (typeof fillVenueSelect === "function") fillVenueSelect();
+    if (typeof renderPins === "function") renderPins();
+    if (typeof showOverview === "function" && !selectedVenueId) showOverview();
+    // Drop selection if it no longer matches the type filter
+    if (selectedVenueId) {
+      const p = placeById(selectedVenueId);
+      if (p && k !== "all" && pinTypeKind(p.type) !== k) {
+        if (typeof setVenue === "function") setVenue("", { skipHash: true });
+      }
+    }
+    if (!opts || !opts.skipHash) {
+      try {
+        const url = new URL(location.href);
+        if (k === "all") url.searchParams.delete("type");
+        else url.searchParams.set("type", k);
+        history.replaceState(null, "", url.pathname + url.search + url.hash);
+      } catch (_) {
+        /* ignore */
+      }
+    }
+  }
+
+  function wirePlaceTypeTabs() {
+    const root = document.getElementById("place-type-tabs");
+    if (!root) return;
+    root.querySelectorAll(".place-type-tab[data-place-type]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        setPlaceType(btn.getAttribute("data-place-type") || "all");
+      });
+    });
+    // Deep-link ?type=zoo|aquarium|museum
+    try {
+      const q = new URLSearchParams(location.search).get("type");
+      if (q && ["zoo", "aquarium", "museum", "all"].includes(q)) {
+        selectedTypeKind = q;
+      }
+    } catch (_) {
+      /* ignore */
+    }
+    syncTypeTabs();
+  }
+
 })();
