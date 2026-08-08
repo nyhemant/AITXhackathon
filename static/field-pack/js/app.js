@@ -392,21 +392,241 @@
     }));
   }
 
-  function floorPromptsFor(item, venue) {
+  /** Q&A talk levels (not the same as mission "Adults" sheet). */
+  const QA_AGE_KEY = "1less-qa-talk-level";
+  const QA_AGE_ORDER = ["2-3", "4-5", "6-8", "bonus"];
+  let qaAge = "4-5";
+
+  function loadQaAge() {
+    try {
+      const v = localStorage.getItem(QA_AGE_KEY);
+      if (v && QA_AGE_ORDER.includes(v)) qaAge = v;
+    } catch (_) {
+      /* ignore */
+    }
+    return qaAge;
+  }
+
+  function saveQaAge(v) {
+    qaAge = QA_AGE_ORDER.includes(v) ? v : "4-5";
+    try {
+      localStorage.setItem(QA_AGE_KEY, qaAge);
+    } catch (_) {
+      /* ignore */
+    }
+    return qaAge;
+  }
+
+  function isMuseumVenue(venue) {
+    return Boolean(
+      venue &&
+        (venue.packTemplate === "exhibits" ||
+          /museum|science|space|history|children/i.test(String(venue.type || "")))
+    );
+  }
+
+  function isAquariumVenue(venue) {
+    return Boolean(venue && /aquarium|aq/i.test(String(venue.type || venue.packTemplate || "")));
+  }
+
+  /** Hard wow facts → turn into bonus questions (animal-specific when we can). */
+  const BONUS_WOW = {
+    "african-elephant": [
+      "An elephant’s trunk has about 40,000 muscles — more than your whole body. Why might that help?",
+      "Elephants can hear low rumbles through their feet. What would you “hear” if you could feel sound?",
+      "They use mud like sunscreen. Spot any mud (or dust) on this one?",
+    ],
+    "reticulated-giraffe": [
+      "A giraffe’s tongue can be ~45 cm long and dark to avoid sunburn. Did you see the tongue?",
+      "They only need short naps. Why might a tall animal sleep so little in the wild?",
+      "Every giraffe’s spot pattern is unique — like a fingerprint. Compare two if you can.",
+    ],
+    "african-lion": [
+      "A lion’s roar can carry for miles. Why roar instead of sneak all the time?",
+      "Males often have manes; females often lead hunts. What jobs do you see here?",
+      "Lions rest a huge part of the day. What burns their energy when they *do* move?",
+    ],
+    "sumatran-tiger": [
+      "No two tigers have the same stripe pattern. Sketch one stripe set in your mind.",
+      "Tigers are mostly solo hunters. How is that different from lions?",
+      "Orange + black looks loud to us — in forest shade it can hide. Where would you hide?",
+    ],
+    "western-lowland-gorilla": [
+      "A silverback can weigh as much as two adults. What clues show strength without fighting?",
+      "Gorillas build new nests almost every night. What would you use for a nest here?",
+      "They eat mostly plants. Find evidence of munching or foraging.",
+    ],
+    chimpanzee: [
+      "Chimps use tools in the wild (sticks, stones). What “tool” would help *you* here?",
+      "Faces and hands look almost human. What emotion do you read right now?",
+      "They live in complex social groups. Who seems in charge of the moment?",
+    ],
+    "african-penguin": [
+      "They “fly” underwater with wing-like flippers. Compare swimming vs walking.",
+      "A layer of air under the feathers helps insulation. Why stay dry under the feathers?",
+      "Colony noise is part of finding mates and chicks. What sounds do you hear?",
+    ],
+    "giant-panda": [
+      "Bamboo is low-calorie — pandas eat many hours a day. Spot chewing?",
+      "A “pseudo-thumb” helps grip bamboo. Watch the front paws carefully.",
+      "Black-and-white may help in forests and snow. Where would each color hide?",
+    ],
+    koala: [
+      "Eucalyptus leaves are tough and toxic to many animals. Why chew so slowly?",
+      "They sleep a huge part of the day to save energy. Is this one awake or out?",
+      "A koala’s pouch opens downward. Why might that help a climbing mom?",
+    ],
+    "red-panda": [
+      "Not a giant panda — closer to raccoons in the family tree. What looks “cat-like” vs “bear-like”?",
+      "They use a wrist bone like a thumb to climb. Watch the front paws on branches.",
+      "Mostly crepuscular (dawn/dusk). Why might heat or crowds change when you see them?",
+    ],
+    shark: [
+      "Many sharks never stop swimming — water must move over gills. Is this one cruising or resting?",
+      "A sandpapery skin of tiny teeth (denticles) cuts drag. Why smooth vs rough matter?",
+      "Senses include smell and tiny electrical cues. What would *you* sense in dark water?",
+    ],
+    octopus: [
+      "Three hearts and blue blood — built for cold, low-oxygen water. What looks “alien” here?",
+      "They can squeeze through any hole bigger than their beak. Find the hard beak area.",
+      "Camouflage is instant. How many colors/textures do you see in one minute?",
+    ],
+    jellyfish: [
+      "No brain — just a nerve net. How do they still pulse and catch food?",
+      "Mostly water by weight. Why do they still sting?",
+      "Some glow. What would light help with in deep or dark water?",
+    ],
+    "sea-turtle": [
+      "They return to nesting beaches using Earth’s magnetic field. What “map” would you use?",
+      "Flippers ≠ feet. How is swimming shape different from a tortoise?",
+      "Plastic bags can look like jellyfish. Why is trash a sea-turtle problem?",
+    ],
+    "sci-dinosaur": [
+      "Birds are living dinosaurs. What on a bird is a dino clue?",
+      "Teeth and hips tell diet and stance. What would *your* fossil say about you?",
+      "Size fools us in museums. What looks bigger up close than you expected?",
+    ],
+  };
+
+  function itemTags(item) {
+    return new Set((item && item.tags) || []);
+  }
+
+  function itemCatalogId(item) {
+    return String((item && (item.catalog_id || item.id)) || "").toLowerCase();
+  }
+
+  function bonusPromptsFor(item, venue) {
+    const name = item.name || "this stop";
+    const id = itemCatalogId(item);
+    const tags = itemTags(item);
+    const place = (venue && (venue.shortName || venue.name)) || "here";
+    const bank = BONUS_WOW[id] || BONUS_WOW[id.replace(/_/g, "-")] || null;
+    if (bank && bank.length) return bank.slice(0, 3);
+
+    // Tag / type fallbacks — still harder than kid prompts
+    if (tags.has("big-cats") || /lion|tiger|cheetah|leopard/i.test(name)) {
+      return [
+        `Big cats hide in plain sight. Where would ${name} vanish in wild cover?`,
+        "Quiet feet + sharp eyes: which body part is the real hunting tool?",
+        `If you only had 60 seconds at ${place}, what one detail would you photograph?`,
+      ];
+    }
+    if (tags.has("water") || isAquariumVenue(venue)) {
+      return [
+        `Water is thicker than air. How does ${name} move differently than a land animal?`,
+        "Find one adaptation for breathing, steering, or staying hidden.",
+        "What’s the quietest thing happening in this tank right now?",
+      ];
+    }
+    if (isMuseumVenue(venue) || tags.has("read") || tags.has("hands")) {
+      return [
+        `What’s the one design choice at “${name}” that makes kids stop walking?`,
+        "If you had to explain this stop in one sentence to a friend, what would you say?",
+        "Find a detail most visitors walk past — label, texture, or hidden model.",
+      ];
+    }
+    // Generic hard wow
+    return [
+      `What’s the strangest true thing you can spot about ${name} in 30 seconds?`,
+      "If this animal (or exhibit) could talk, what would it complain about today?",
+      `Why is ${name} a highlight of ${place} — not just “another stop”?`,
+    ];
+  }
+
+  function floorPromptsFor(item, venue, age) {
     const name = item.name || "it";
-    const isMuseum = venue && (venue.packTemplate === "exhibits" || /museum|science|space/i.test(venue.type || ""));
-    if (isMuseum) {
+    const band = QA_AGE_ORDER.includes(age) ? age : "4-5";
+    const museum = isMuseumVenue(venue);
+    const key = item.key || {};
+    const food = (key.food && key.food[0]) || "";
+    const home = (key.home && key.home[0]) || "";
+    const power = (key.superpower && key.superpower[0]) || "";
+
+    if (band === "bonus") return bonusPromptsFor(item, venue);
+
+    if (band === "2-3") {
+      if (museum) {
+        return [
+          `Point to something at ${name}. Big or small?`,
+          "Can you copy a move — climb, reach, or tiptoe?",
+          "Make a sound or a quiet face for what you saw.",
+        ];
+      }
+      return [
+        `Find the ${name}. Wave or point!`,
+        "Is it moving or still? Show me with your body.",
+        "What color do you see first?",
+      ];
+    }
+
+    if (band === "6-8") {
+      if (museum) {
+        return [
+          `What problem does “${name}” help you understand?`,
+          "Compare two parts of this stop — which surprised you more?",
+          "Teach a friend one fact you’d actually remember tomorrow.",
+        ];
+      }
+      return [
+        `How is ${name} built for its job${power ? ` (think: ${power})` : ""}?`,
+        food ? `What clue says it might eat like “${food}”?` : `What would ${name} eat — and how can you tell?`,
+        home ? `Home is like “${home}”. What here matches that habitat?` : `Where would ${name} hide or rest in the wild?`,
+      ];
+    }
+
+    // 4-5 kids (default)
+    if (museum) {
       return [
         `What did you try or notice at ${name}?`,
         "How did your body move — climb, hands, quiet look?",
-        "Teach a grown-up one thing you discovered.",
+        "Tell a grown-up one thing you discovered.",
       ];
     }
     return [
       `What do you notice about the ${name}?`,
       "How does it move — or stay still?",
-      "Teach a grown-up one thing you saw.",
+      food ? `What might it eat? (Hint family: ${food})` : "What might it eat?",
     ];
+  }
+
+  function qaKickerFor(age) {
+    if (age === "bonus") return "Bonus round · hard wow questions";
+    if (age === "2-3") return "Little kids · notice & play";
+    if (age === "6-8") return "Big kids · think & compare";
+    return "Notice & talk";
+  }
+
+  function syncQaAgeChips() {
+    document.querySelectorAll(".qa-level-chip").forEach((btn) => {
+      const on = btn.getAttribute("data-qa-age") === qaAge;
+      btn.classList.toggle("is-active", on);
+      btn.setAttribute("aria-pressed", on ? "true" : "false");
+    });
+    const k = document.getElementById("floor-prompts-kicker");
+    if (k) k.textContent = qaKickerFor(qaAge);
+    const wrap = document.querySelector(".floor-prompts-wrap");
+    if (wrap) wrap.classList.toggle("is-bonus", qaAge === "bonus");
   }
 
   function renderDetail(trip, item, venue) {
@@ -442,15 +662,25 @@
 
     const promptsEl = document.getElementById("floor-prompts");
     if (promptsEl) {
-      const prompts = floorPromptsFor(item, venue);
+      loadQaAge();
+      syncQaAgeChips();
+      const prompts = floorPromptsFor(item, venue, qaAge);
+      const bonus = qaAge === "bonus";
       promptsEl.innerHTML = prompts
         .map(
           (t, i) =>
-            `<div class="floor-prompt-card"><span class="floor-prompt-n">${i + 1}</span><p>${escapeHtml(
-              t
-            )}</p></div>`
+            `<div class="floor-prompt-card${bonus ? " floor-prompt-bonus" : ""}"><span class="floor-prompt-n">${
+              bonus ? "★" : i + 1
+            }</span><p>${escapeHtml(t)}</p></div>`
         )
         .join("");
+    }
+    // Pick-one is optional extra — quieter for little kids & bonus talk focus
+    if (els.btnMoreQuestions) {
+      els.btnMoreQuestions.hidden = qaAge === "2-3";
+    }
+    if (els.advancedQa && qaAge === "2-3" && els.advancedQa.open) {
+      els.advancedQa.open = false;
     }
 
     const done = answeredCount(trip, item.id, missions);
@@ -837,6 +1067,20 @@
   if (els.btnMoreQuestions) {
     els.btnMoreQuestions.addEventListener("click", openPickOneQuestions);
   }
+
+  // Q&A talk level: 2–4 / 5–8 / 9–12 / Bonus (hard animal-specific)
+  loadQaAge();
+  document.querySelectorAll(".qa-level-chip").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      saveQaAge(btn.getAttribute("data-qa-age") || "4-5");
+      syncQaAgeChips();
+      const trip = getTrip(currentTripId);
+      const item = currentItemId ? getItem(currentItemId) : null;
+      const venue = trip ? getVenue(trip.venueId) : null;
+      if (trip && item && venue) renderDetail(trip, item, venue);
+    });
+  });
+  syncQaAgeChips();
   if (els.progressPill) {
     els.progressPill.style.cursor = "pointer";
     els.progressPill.title = "Open pick-one questions";

@@ -2115,6 +2115,79 @@ body.app-body {
 .floor-prompts-wrap {
   margin: 0 0 16px;
 }
+.qa-level-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 10px;
+  margin: 0 0 12px;
+}
+.qa-level-label {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted-soft, #5a6b82);
+  flex: 0 0 auto;
+}
+.qa-level-seg {
+  display: flex;
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 22rem;
+  border-radius: 999px;
+  border: 1.5px solid rgba(15, 92, 92, 0.18);
+  overflow: hidden;
+  background: #fff;
+}
+.qa-level-chip {
+  appearance: none;
+  flex: 1 1 0;
+  margin: 0;
+  border: none;
+  border-right: 1px solid rgba(15, 92, 92, 0.12);
+  background: transparent;
+  color: #3d4f6f;
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 750;
+  padding: 8px 4px;
+  min-height: 40px;
+  cursor: pointer;
+  transition: background 0.12s ease, color 0.12s ease;
+}
+.qa-level-chip:last-child {
+  border-right: none;
+}
+.qa-level-chip:hover {
+  background: #f0faf6;
+  color: #0a4545;
+}
+.qa-level-chip.is-active {
+  background: #0f5c5c;
+  color: #fff;
+}
+.qa-level-chip.qa-level-bonus.is-active {
+  background: #c45a12;
+  color: #fff;
+}
+.qa-level-chip.qa-level-bonus:not(.is-active) {
+  color: #9a5b00;
+  font-weight: 800;
+}
+.floor-prompts-wrap.is-bonus .floor-prompts-kicker {
+  color: #9a5b00;
+}
+.floor-prompts-wrap.is-bonus .floor-prompts-kicker::before {
+  background: #c45a12;
+}
+.floor-prompt-card.floor-prompt-bonus {
+  border-color: rgba(196, 90, 18, 0.28);
+  background: linear-gradient(135deg, #fffaf3, #fff6eb);
+}
+.floor-prompt-card.floor-prompt-bonus .floor-prompt-n {
+  background: #c45a12;
+}
 .floor-prompts-kicker {
   margin: 4px 0 10px;
   font-size: 0.88rem;

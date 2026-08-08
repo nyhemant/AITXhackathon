@@ -12,7 +12,7 @@
     <title>List &amp; hunt · Field Trip Kit · 1Less</title>
     <base href="/field-pack/" />
     <link rel="stylesheet" href="/shell/shell.css?v=5" />
-    <link rel="stylesheet" href="/field-pack/css/styles.css?v=28" />
+    <link rel="stylesheet" href="/field-pack/css/styles.css?v=29" />
   </head>
   <body class="app-body">
     <div class="app app-outing">
@@ -108,7 +108,16 @@
               Not out today? Find something <strong>like</strong> it — big, striped, splashy, or quiet.
             </p>
             <div class="floor-prompts-wrap no-print">
-              <p class="floor-prompts-kicker">Notice &amp; talk</p>
+              <div class="qa-level-bar">
+                <span class="qa-level-label" id="qa-level-label">Talk level</span>
+                <div class="qa-level-seg" role="group" aria-labelledby="qa-level-label">
+                  <button type="button" class="qa-level-chip" data-qa-age="2-3">2–4</button>
+                  <button type="button" class="qa-level-chip is-active" data-qa-age="4-5" aria-pressed="true">5–8</button>
+                  <button type="button" class="qa-level-chip" data-qa-age="6-8">9–12</button>
+                  <button type="button" class="qa-level-chip qa-level-bonus" data-qa-age="bonus">Bonus</button>
+                </div>
+              </div>
+              <p class="floor-prompts-kicker" id="floor-prompts-kicker">Notice &amp; talk</p>
               <div id="floor-prompts" class="floor-prompts" aria-label="Things to notice and talk about"></div>
             </div>
             <div class="action-row detail-tools">
@@ -157,6 +166,6 @@
     <script src="/field-pack/js/catalog.js?v=23"></script>
     <script src="/field-pack/js/print-maps.js?v=2"></script>
     <script src="/field-pack/js/print-kit.js?v=9"></script>
-    <script src="/field-pack/js/app.js?v=28"></script>
+    <script src="/field-pack/js/app.js?v=29"></script>
   </body>
 </html>
