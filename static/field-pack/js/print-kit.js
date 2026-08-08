@@ -95,11 +95,10 @@
     const mapSrc = printMapForVenue(venue);
     const mapBlock = mapSrc
       ? `<div class="th-map th-map-has-photo">
-          <p class="th-map-title">Park map <span class="th-map-hint">— mark start → favorite → end</span></p>
+          <p class="th-map-title">Park map — mark start → favorite → end</p>
           <div class="th-map-photo-wrap">
             <img class="th-map-photo" src="${escapeAttr(mapSrc)}" alt="Official visitor map" />
           </div>
-          <p class="th-map-cap">Official map preview · pencil your path on top</p>
         </div>`
       : `<div class="th-map">
           <p class="th-map-title">Path doodle <span class="th-map-hint">— start → favorite → end</span></p>

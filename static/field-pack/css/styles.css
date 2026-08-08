@@ -1538,13 +1538,25 @@ a {
   }
   .th-map-has-photo {
     margin: 0 0 2px;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+  .th-page-with-map {
+    display: flex;
+    flex-direction: column;
+    max-height: 10.2in;
+    overflow: hidden;
   }
   .th-map-photo-wrap {
     border: 1.5px solid #1f6b4a;
     border-radius: 6px;
     overflow: hidden;
     background: #f3faf6;
-    max-height: 2.15in;
+    flex: 1 1 auto;
+    min-height: 2.6in;
+    max-height: 4.6in;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1552,19 +1564,10 @@ a {
   .th-map-photo {
     display: block;
     width: 100%;
-    max-height: 2.15in;
-    height: auto;
+    height: 100%;
+    max-height: 4.6in;
     object-fit: contain;
     object-position: center;
-    /* Save ink; still readable for path-marking */
-    filter: grayscale(0.15) contrast(1.05);
-  }
-  .th-map-cap {
-    margin: 1px 0 0;
-    font-size: 6.5pt;
-    font-weight: 650;
-    color: #3d4f6f;
-    text-align: center;
   }
 
   .th-footer {

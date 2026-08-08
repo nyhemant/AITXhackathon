@@ -75,18 +75,49 @@
         )
         .join("");
     }
+    renderMapHint(/* forPrint */ false);
+  }
+
+  /** Prefer local print-safe map under /field-pack/media/maps/. */
+  function mapImageSrc() {
+    if (!venue) return "";
+    const id = venue.slug || "";
+    const maps = window.FP_PRINT_MAPS || {};
+    if (id && maps[id]) return maps[id];
+    const m = venue.media || {};
+    const u = m.print_map || m.visitor_map_url || "";
+    if (u && String(u).startsWith("/field-pack/media/maps/") && !String(u).includes("..")) return u;
+    if (/^https?:\/\//i.test(u)) return u;
+    return "";
+  }
+
+  function renderMapHint(forPrint) {
     const mapHint = $("#mission-map-hint");
-    if (mapHint && venue && venue.media) {
-      const page = venue.media.visitor_map_page || venue.media.visitor_map_url || "";
-      const img = venue.media.visitor_map_url || "";
-      const attr = venue.media.map_attribution || "Official map";
-      const safeImg =
-        /^https?:\/\//i.test(img) ||
-        (img.startsWith("/field-pack/media/maps/") && !img.includes(".."));
-      if (img && safeImg) {
-        const refpol = img.startsWith("/") ? "" : ' referrerpolicy="no-referrer"';
-        mapHint.className = "ms-map-hint ms-map-has-preview";
-        mapHint.innerHTML = `
+    if (!mapHint) return;
+    if (!venue || !venue.media) {
+      mapHint.className = "ms-map-hint";
+      mapHint.textContent = "";
+      return;
+    }
+    const page = venue.media.visitor_map_page || venue.media.visitor_map_url || "";
+    const img = mapImageSrc();
+    const attr = venue.media.map_attribution || "Official map";
+    if (forPrint && img) {
+      // Full-bleed map for one-page print — no hover chrome / link card copy
+      mapHint.className = "ms-map-hint ms-map-print-fill";
+      mapHint.innerHTML = `
+        <div class="ms-map-print-block">
+          <p class="ms-map-print-label">Park map — mark start → favorites → end</p>
+          <div class="ms-map-print-frame">
+            <img class="ms-map-print-img" src="${esc(img)}" alt="Official visitor map" />
+          </div>
+        </div>`;
+      return;
+    }
+    if (img) {
+      const refpol = img.startsWith("/") ? "" : ' referrerpolicy="no-referrer"';
+      mapHint.className = "ms-map-hint ms-map-has-preview";
+      mapHint.innerHTML = `
           <a class="ms-map-card" href="${esc(page || img)}" target="_blank" rel="noopener noreferrer" aria-label="Official map — hover to enlarge">
             <span class="ms-map-thumb-wrap">
               <img class="ms-map-thumb" src="${esc(img)}" alt="Official visitor map preview" loading="lazy" decoding="async"${refpol} />
@@ -100,13 +131,12 @@
               <img src="${esc(img)}" alt="" loading="lazy" decoding="async"${refpol} />
             </span>
           </a>`;
-      } else if (page) {
-        mapHint.className = "ms-map-hint";
-        mapHint.innerHTML = `🗺️ Navigate with the <a href="${esc(page)}" target="_blank" rel="noopener noreferrer">official map</a>`;
-      } else {
-        mapHint.className = "ms-map-hint";
-        mapHint.textContent = "";
-      }
+    } else if (page) {
+      mapHint.className = "ms-map-hint";
+      mapHint.innerHTML = `🗺️ Navigate with the <a href="${esc(page)}" target="_blank" rel="noopener noreferrer">official map</a>`;
+    } else {
+      mapHint.className = "ms-map-hint";
+      mapHint.textContent = "";
     }
   }
 
@@ -117,10 +147,22 @@
       time_budget: mission.time,
       personalized: mission.personalized ? "1" : "0",
     });
+    // Swap map to full print layout before browser print
+    renderMapHint(true);
+    const sheet = $("#mission-sheet");
+    if (sheet && mapImageSrc()) sheet.classList.add("ms-sheet-has-map");
     document.body.classList.add("printing-mission");
-    const done = () => document.body.classList.remove("printing-mission");
+    const done = () => {
+      document.body.classList.remove("printing-mission");
+      if (sheet) sheet.classList.remove("ms-sheet-has-map");
+      renderMapHint(false);
+    };
     window.addEventListener("afterprint", done, { once: true });
-    setTimeout(() => window.print(), 50);
+    // Fallback if afterprint never fires
+    setTimeout(() => {
+      if (document.body.classList.contains("printing-mission")) done();
+    }, 60000);
+    setTimeout(() => window.print(), 80);
   }
 
   function readControls() {
