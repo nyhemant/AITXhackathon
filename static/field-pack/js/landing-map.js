@@ -578,14 +578,15 @@
     }
   }
 
-  /** Center map on a place (svg coords → pan), optional target zoom. Does not filter. */
-  function panToPlace(p, targetZoom) {
-    if (!p || !svgEl || !mapViewport) return;
-    const pt = pinXY(p);
-    if (!pt) return;
-    const z = clampZoom(targetZoom != null ? targetZoom : Math.max(zoom, basemap === "world" ? 2.0 : 1.7));
+  /** Center map on SVG point (pin coords), optional target zoom. Returns false if skipped. */
+  function panToSvgPoint(pt, targetZoom) {
+    if (!pt || !svgEl || !mapViewport) return false;
+    const z = clampZoom(
+      targetZoom != null ? targetZoom : Math.max(zoom, basemap === "world" ? 2.0 : 1.7)
+    );
     const baseW = svgEl.offsetWidth || mapViewport.clientWidth;
     const baseH = svgEl.offsetHeight || mapViewport.clientHeight;
+    if (!baseW || !baseH) return false;
     const vb = svgEl.viewBox && svgEl.viewBox.baseVal;
     const vw = (vb && vb.width) || (basemap === "world" ? 1000 : 959);
     const vh = (vb && vb.height) || (basemap === "world" ? 500 : 593);
@@ -598,7 +599,54 @@
     if (svgEl) svgEl.style.transition = "transform 0.2s ease";
     applyMapTransform();
     updateMapCursor();
+    return true;
   }
+
+  /** Center map on a place (svg coords → pan), optional target zoom. Does not filter. */
+  function panToPlace(p, targetZoom) {
+    if (!p || !svgEl || !mapViewport) return false;
+    const pt = pinXY(p);
+    if (!pt) return false;
+    return panToSvgPoint(pt, targetZoom);
+  }
+
+  /**
+   * Pan/zoom to a metro’s pins. Uses centroid when several places share a city.
+   * Skips zoom entirely if projection fails (better than a bad center zoom).
+   */
+  function panToPlacesCluster(places, targetZoom) {
+    if (!places || !places.length) return false;
+    const pts = places.map((p) => pinXY(p)).filter(Boolean);
+    if (!pts.length) return false;
+    const cx = pts.reduce((s, p) => s + p.x, 0) / pts.length;
+    const cy = pts.reduce((s, p) => s + p.y, 0) / pts.length;
+    // Slightly higher zoom for tight city clusters
+    const z =
+      targetZoom != null
+        ? targetZoom
+        : basemap === "world"
+          ? 2.2
+          : pts.length <= 2
+            ? 2.4
+            : 2.1;
+    return panToSvgPoint({ x: cx, y: cy }, z);
+  }
+
+  // City chips (landing-hook) call this after selecting a metro/intl city
+  window.fpFocusMapOnPlaces = function fpFocusMapOnPlaces(ids, opts) {
+    const idSet = new Set((ids || []).filter(Boolean));
+    const list = places.filter((p) => idSet.has(p.id));
+    const z = opts && opts.zoom != null ? opts.zoom : undefined;
+    if (!list.length) return false;
+    // Wait a frame so basemap / pin layer are ready after scope swap
+    requestAnimationFrame(() => {
+      renderPins();
+      if (!panToPlacesCluster(list, z)) {
+        // Projection failed — leave zoom alone rather than a useless center zoom
+      }
+    });
+    return true;
+  };
 
   function updateMapCursor() {
     if (!mapViewport) return;
@@ -1577,8 +1625,15 @@
       fillVenueSelect();
       renderPins();
       showOverview();
-      if (selectedMetroId && selectedMetroId !== "all") setZoom(Math.max(zoom, 1.5));
-      else setZoom(mapScope === "more" ? 1.15 : 1);
+      if (selectedMetroId && selectedMetroId !== "all") {
+        // Pan to metro pin cluster (not just zoom map center — that felt broken for US cities)
+        const metroList = filteredPlaces();
+        if (!panToPlacesCluster(metroList)) {
+          /* keep current view if pins can’t be projected */
+        }
+      } else {
+        setZoom(mapScope === "more" ? 1.15 : 1);
+      }
     });
     if (stateSelect) {
       stateSelect.addEventListener("change", () => {

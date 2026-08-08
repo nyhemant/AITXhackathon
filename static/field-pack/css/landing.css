@@ -1034,8 +1034,9 @@
   z-index: 1;
 }
 .city-chip-wrap:hover,
-.city-chip-wrap:focus-within {
-  z-index: 20;
+.city-chip-wrap:focus-within,
+.city-chip-wrap.is-open {
+  z-index: 30;
 }
 
 .city-chip {
@@ -1055,15 +1056,21 @@
     background var(--dur-fast, 120ms) ease,
     border-color var(--dur-fast, 120ms) ease,
     color var(--dur-fast, 120ms) ease;
+  position: relative;
+  z-index: 2; /* stay above dropdown so label never paints under menu */
 }
 
 .city-chip:hover,
-.city-chip-wrap:focus-within .city-chip {
+.city-chip-wrap:focus-within .city-chip:not([aria-pressed="true"]) {
   background: #eef8f3;
   border-color: var(--teal, #0f5c5c);
+  color: var(--teal-deep, #0a4545);
 }
 
-.city-chip[aria-pressed="true"] {
+.city-chip[aria-pressed="true"],
+.city-chip[aria-pressed="true"]:hover,
+.city-chip-wrap:focus-within .city-chip[aria-pressed="true"],
+.city-chip-wrap.is-open .city-chip[aria-pressed="true"] {
   background: var(--teal, #0f5c5c);
   border-color: var(--teal-deep, #0a4545);
   color: #fff;
@@ -1076,12 +1083,12 @@
   font-size: 0.75rem;
 }
 
-/* Hover / focus menu: venues in that city */
+/* Hover / focus / open menu: venues in that city (below chip, never covers label) */
 .city-chip-menu {
   display: none;
   position: absolute;
   left: 0;
-  top: calc(100% + 6px);
+  top: calc(100% + 4px);
   min-width: 12.5rem;
   max-width: min(18rem, 85vw);
   padding: 6px;
@@ -1090,9 +1097,11 @@
   background: #fff;
   border: 1.5px solid rgba(15, 92, 92, 0.16);
   box-shadow: 0 12px 28px rgba(21, 34, 56, 0.14);
+  z-index: 1;
 }
 .city-chip-wrap:hover .city-chip-menu,
-.city-chip-wrap:focus-within .city-chip-menu {
+.city-chip-wrap:focus-within .city-chip-menu,
+.city-chip-wrap.is-open .city-chip-menu {
   display: grid;
   gap: 2px;
 }

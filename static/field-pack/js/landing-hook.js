@@ -171,29 +171,62 @@
     return p.name || p.id;
   }
 
+  function focusChipWrap(wrap) {
+    chips.querySelectorAll(".city-chip-wrap").forEach((w) => {
+      w.classList.remove("is-open");
+      const b = w.querySelector(".city-chip");
+      if (b) {
+        b.setAttribute("aria-pressed", "false");
+        b.setAttribute("aria-expanded", "false");
+      }
+    });
+    if (!wrap) return;
+    wrap.classList.add("is-open");
+    const btn = wrap.querySelector(".city-chip");
+    if (btn) {
+      btn.setAttribute("aria-pressed", "true");
+      btn.setAttribute("aria-expanded", "true");
+    }
+  }
+
   function jumpMapToChip(def) {
     document.getElementById("map-viewport")?.scrollIntoView({ behavior: "smooth", block: "center" });
+    const venues = venuesForChip(def);
+    const ids = venues.map((p) => p.id);
+
     if (def.intl) {
       const intlBtn = document.getElementById("scope-intl");
       if (intlBtn && intlBtn.getAttribute("aria-pressed") !== "true") {
         intlBtn.click();
       }
-      const first = venuesForChip(def)[0];
-      if (first && typeof window.fpSelectVenueOnMap === "function") {
-        // Allow intl basemap to swap before focusing a pin
-        setTimeout(() => window.fpSelectVenueOnMap(first.id), 120);
-      }
+      // Focus city cluster (or first pin) after basemap swap — same path as US
+      setTimeout(() => {
+        if (typeof window.fpFocusMapOnPlaces === "function" && ids.length) {
+          window.fpFocusMapOnPlaces(ids, { zoom: 2.4 });
+        } else if (venues[0] && typeof window.fpSelectVenueOnMap === "function") {
+          window.fpSelectVenueOnMap(venues[0].id);
+        }
+      }, 140);
       return;
     }
-    // US metro: ensure All places, then filter via city select
+
+    // US metro: US scope + metro filter, then pan to pin cluster
     const moreBtn = document.getElementById("scope-more");
     if (moreBtn && moreBtn.getAttribute("aria-pressed") !== "true") {
       moreBtn.click();
     }
-    if (citySelect && citySelect.querySelector(`option[value="${def.id}"]`)) {
-      citySelect.value = def.id;
-      citySelect.dispatchEvent(new Event("change", { bubbles: true }));
-    }
+    const runFocus = () => {
+      if (citySelect && citySelect.querySelector(`option[value="${def.id}"]`)) {
+        citySelect.value = def.id;
+        citySelect.dispatchEvent(new Event("change", { bubbles: true }));
+      }
+      // citySelect change already pans; double-ensure after render if API present
+      if (typeof window.fpFocusMapOnPlaces === "function" && ids.length) {
+        setTimeout(() => window.fpFocusMapOnPlaces(ids), 80);
+      }
+    };
+    // Allow US basemap restore if we just left International
+    setTimeout(runFocus, moreBtn && moreBtn.getAttribute("aria-pressed") === "true" ? 0 : 140);
   }
 
   if (chips) {
@@ -227,25 +260,37 @@
       if (e.target.closest("a.city-chip-menu-item")) return;
       const btn = e.target.closest(".city-chip");
       if (!btn) return;
+      const wrap = btn.closest(".city-chip-wrap");
       const id = btn.dataset.city;
       const def = chipDefs.find((c) => c.id === id);
       if (!def) return;
-      chips.querySelectorAll(".city-chip").forEach((b) => {
-        b.setAttribute("aria-pressed", "false");
-        b.setAttribute("aria-expanded", "false");
-      });
-      btn.setAttribute("aria-pressed", "true");
-      btn.setAttribute("aria-expanded", "true");
+      focusChipWrap(wrap);
       jumpMapToChip(def);
     });
 
-    // Keep aria-expanded in sync for keyboard focus
+    // Keep aria-expanded / open class in sync for keyboard + hover
     chips.querySelectorAll(".city-chip-wrap").forEach((wrap) => {
       const btn = wrap.querySelector(".city-chip");
       if (!btn) return;
-      wrap.addEventListener("focusin", () => btn.setAttribute("aria-expanded", "true"));
+      wrap.addEventListener("mouseenter", () => {
+        wrap.classList.add("is-open");
+        btn.setAttribute("aria-expanded", "true");
+      });
+      wrap.addEventListener("mouseleave", () => {
+        // Keep open if this chip is the selected city
+        if (btn.getAttribute("aria-pressed") === "true") return;
+        wrap.classList.remove("is-open");
+        btn.setAttribute("aria-expanded", "false");
+      });
+      wrap.addEventListener("focusin", () => {
+        wrap.classList.add("is-open");
+        btn.setAttribute("aria-expanded", "true");
+      });
       wrap.addEventListener("focusout", (ev) => {
-        if (!wrap.contains(ev.relatedTarget)) btn.setAttribute("aria-expanded", "false");
+        if (wrap.contains(ev.relatedTarget)) return;
+        if (btn.getAttribute("aria-pressed") === "true") return;
+        wrap.classList.remove("is-open");
+        btn.setAttribute("aria-expanded", "false");
       });
     });
   }
