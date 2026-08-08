@@ -755,7 +755,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <link rel="stylesheet" href="/shell/shell.css?v=5" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=51" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=13" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=14" />
   <link rel="stylesheet" href="/field-pack/css/mission.css?v=8" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
@@ -934,7 +934,7 @@ def render_venue_page(v: dict) -> str:
   <link rel="stylesheet" href="/shell/shell.css?v=5" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=51" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=13" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=14" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
   </script>
@@ -1501,6 +1501,15 @@ def _dir_item_html(v: dict) -> str:
     )
 
 
+def _dir_region_slug(title: str) -> str:
+    return (
+        title.lower()
+        .replace("&", "and")
+        .replace(" ", "-")
+        .replace(",", "")
+    )
+
+
 def _dir_continent_html(title: str, venues: list[dict]) -> str:
     """Always-open section — venue names stay visible (light structure only)."""
     if not venues:
@@ -1510,8 +1519,9 @@ def _dir_continent_html(title: str, venues: list[dict]) -> str:
         key=lambda x: ((x.get("city") or "").lower(), (x.get("name") or "").lower()),
     )
     items = "\n            ".join(_dir_item_html(v) for v in venues)
+    slug = esc(_dir_region_slug(title))
     return (
-        f'<section class="seo-dir-region">\n'
+        f'<section class="seo-dir-region" data-region="{slug}">\n'
         f'          <h3 class="seo-dir-region-title">{esc(title)} '
         f'<span class="seo-dir-count">{len(venues)}</span></h3>\n'
         f'          <ul class="seo-dir-grid">\n            {items}\n          </ul>\n'

@@ -704,11 +704,42 @@
 }
 .seo-dir-body {
   display: grid;
-  gap: 22px;
+  gap: 14px;
 }
 .seo-dir-region {
   margin: 0;
-  padding: 0;
+  padding: 14px 14px 12px;
+  border-radius: 16px;
+  border: 1.5px solid transparent;
+}
+/* Soft distinct tints per continent — easier to scan, still calm */
+.seo-dir-region[data-region="north-america"] {
+  background: linear-gradient(165deg, #e8f6f0 0%, #f3faf7 100%);
+  border-color: rgba(15, 92, 92, 0.14);
+}
+.seo-dir-region[data-region="south-america"] {
+  background: linear-gradient(165deg, #fff4e8 0%, #fffaf3 100%);
+  border-color: rgba(217, 101, 46, 0.18);
+}
+.seo-dir-region[data-region="europe"] {
+  background: linear-gradient(165deg, #eaf2ff 0%, #f5f8ff 100%);
+  border-color: rgba(59, 110, 180, 0.16);
+}
+.seo-dir-region[data-region="middle-east"] {
+  background: linear-gradient(165deg, #fff6e0 0%, #fffcf3 100%);
+  border-color: rgba(201, 140, 20, 0.2);
+}
+.seo-dir-region[data-region="africa"] {
+  background: linear-gradient(165deg, #f3efe6 0%, #faf7f1 100%);
+  border-color: rgba(120, 90, 50, 0.16);
+}
+.seo-dir-region[data-region="asia"] {
+  background: linear-gradient(165deg, #f3ecff 0%, #faf6ff 100%);
+  border-color: rgba(110, 70, 160, 0.14);
+}
+.seo-dir-region[data-region="oceania"] {
+  background: linear-gradient(165deg, #e5f6fb 0%, #f2fbfd 100%);
+  border-color: rgba(30, 130, 150, 0.16);
 }
 .seo-dir-region-title {
   margin: 0 0 10px;
@@ -720,15 +751,16 @@
   align-items: baseline;
   gap: 8px;
   padding-bottom: 6px;
-  border-bottom: 1.5px solid rgba(15, 92, 92, 0.12);
+  border-bottom: 1.5px solid rgba(15, 92, 92, 0.1);
 }
 .seo-dir-count {
   font-size: 0.78rem;
   font-weight: 750;
-  color: #5a6b82;
-  background: #eef3f8;
+  color: #3d4f6f;
+  background: rgba(255, 255, 255, 0.75);
   border-radius: 999px;
   padding: 2px 8px;
+  border: 1px solid rgba(15, 92, 92, 0.08);
 }
 .seo-dir-grid {
   columns: 2;
