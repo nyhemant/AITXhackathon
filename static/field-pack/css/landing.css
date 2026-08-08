@@ -1290,9 +1290,33 @@
   stroke: #0a4545;
   stroke-width: 1.5;
 }
+/* Pin colors by place type */
+.venue-pin.pin-type-zoo .vpin-core {
+  fill: #ff8a3d; /* orange — zoos */
+}
+.venue-pin.pin-type-aquarium .vpin-core {
+  fill: #2b8fd9; /* blue — aquariums */
+}
+.venue-pin.pin-type-museum .vpin-core {
+  fill: #7c5cbf; /* purple — museums / science */
+}
+.venue-pin.pin-type-other .vpin-core,
+.venue-pin.pin-type-mixed .vpin-core {
+  fill: #0f5c5c; /* teal — mixed cluster / other */
+}
 .venue-pin .vpin-halo {
   fill: rgba(255, 138, 61, 0.25);
   opacity: 0;
+}
+.venue-pin.pin-type-aquarium .vpin-halo {
+  fill: rgba(43, 143, 217, 0.3);
+}
+.venue-pin.pin-type-museum .vpin-halo {
+  fill: rgba(124, 92, 191, 0.3);
+}
+.venue-pin.pin-type-other .vpin-halo,
+.venue-pin.pin-type-mixed .vpin-halo {
+  fill: rgba(15, 92, 92, 0.28);
 }
 .venue-pin:hover .vpin-halo,
 .venue-pin.selected .vpin-halo,
@@ -1347,12 +1371,32 @@
   fill: #c2410c;
 }
 .venue-pin.selected .vpin-core {
-  fill: #d9652e;
   stroke-width: 2.5;
+}
+.venue-pin.selected.pin-type-zoo .vpin-core {
+  fill: #d9652e;
+}
+.venue-pin.selected.pin-type-aquarium .vpin-core {
+  fill: #1a6fad;
+}
+.venue-pin.selected.pin-type-museum .vpin-core {
+  fill: #5b3fa0;
+}
+.venue-pin.selected.pin-type-other .vpin-core,
+.venue-pin.selected.pin-type-mixed .vpin-core {
+  fill: #0a4545;
 }
 .venue-pin.selected .vpin-halo {
   opacity: 1;
+}
+.venue-pin.selected.pin-type-zoo .vpin-halo {
   fill: rgba(217, 101, 46, 0.35);
+}
+.venue-pin.selected.pin-type-aquarium .vpin-halo {
+  fill: rgba(26, 111, 173, 0.35);
+}
+.venue-pin.selected.pin-type-museum .vpin-halo {
+  fill: rgba(91, 63, 160, 0.35);
 }
 .venue-pin:hover,
 .venue-pin.selected {
@@ -1389,12 +1433,6 @@
   color: #c2410c;
 }
 
-.venue-pin.is-cluster .vpin-core {
-  fill: #0f5c5c;
-}
-.venue-pin.is-cluster.selected .vpin-core {
-  fill: #d9652e;
-}
 .venue-pin .vpin-count {
   font-family: system-ui, sans-serif;
   font-size: 11px;
@@ -2428,6 +2466,48 @@ a.pitch-sample-link:focus-visible .artifact-cap {
   font-weight: 650 !important;
   color: var(--muted-soft, #5a6b82) !important;
   letter-spacing: 0.01em;
+}
+.map-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+  margin-top: 2px;
+}
+.map-pin-legend {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+  font-size: 0.78rem;
+  font-weight: 750;
+  color: var(--muted, #3d4f6f);
+}
+.map-pin-legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.leg-dot {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  border: 1.5px solid #0a4545;
+  flex-shrink: 0;
+  box-shadow: 0 1px 2px rgba(21, 34, 56, 0.12);
+}
+.leg-zoo {
+  background: #ff8a3d;
+}
+.leg-aquarium {
+  background: #2b8fd9;
+}
+.leg-museum {
+  background: #7c5cbf;
 }
 
 .ready-slim {

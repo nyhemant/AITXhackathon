@@ -159,6 +159,34 @@
     return type || "Place";
   }
 
+  /** Map pin color family: zoo | aquarium | museum | other */
+  function pinTypeKind(type) {
+    const t = (type || "").toLowerCase();
+    // Aquarium before zoo (handles "Science + aquarium")
+    if (t.includes("aquarium")) return "aquarium";
+    if (t.includes("zoo") || t.includes("safari")) return "zoo";
+    if (
+      t.includes("museum") ||
+      t.includes("science") ||
+      t.includes("natural") ||
+      t.includes("history") ||
+      t.includes("space") ||
+      t.includes("children") ||
+      t.includes("air")
+    ) {
+      return "museum";
+    }
+    return "other";
+  }
+
+  function clusterPinKind(places) {
+    if (!places || !places.length) return "other";
+    const kinds = places.map((p) => pinTypeKind(p.type));
+    const first = kinds[0];
+    if (kinds.every((k) => k === first)) return first;
+    return "mixed";
+  }
+
   function venueOptionLabel(p) {
     const city = p.city === "Escondido" ? "San Diego area" : p.city;
     const region = placeRegionLabel(p);
@@ -1015,10 +1043,12 @@
       const x = cl.x;
       const y = cl.y;
 
+      const pinKind = n > 1 ? clusterPinKind(cl.places) : pinTypeKind(cl.places[0].type);
       const g = document.createElementNS(NS, "g");
       g.setAttribute(
         "class",
-        "venue-pin" +
+        "venue-pin pin-type-" +
+          pinKind +
           (selectedHere ? " selected" : "") +
           (n > 1 ? " is-cluster" : "")
       );
@@ -1028,7 +1058,7 @@
         "aria-label",
         n > 1
           ? `${n} places near ${cl.places[0].city || "here"}`
-          : cl.places[0].name
+          : `${cl.places[0].name} (${kidTypeLabel(cl.places[0].type)})`
       );
       g.dataset.clusterIds = cl.ids.join(",");
       g.style.cursor = "pointer";
