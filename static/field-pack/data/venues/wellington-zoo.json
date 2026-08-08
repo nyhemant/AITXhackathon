@@ -291,9 +291,9 @@
   ],
   "content_mode": "hybrid",
   "media": {
-    "visitor_map_url": "https://www.wellingtonzoo.com/assets/Wellington-Zoo-Map-July-2026__ResizedImageWzYwMCw4NDld.jpg",
+    "visitor_map_url": "",
     "visitor_map_page": "https://www.wellingtonzoo.com/assets/Resources/Wellington-Zoo-MapJul-2026.pdf",
-    "visitor_map_kind": "image",
+    "visitor_map_kind": "page",
     "map_attribution": "Official map \u00b7 Wellington Zoo"
   },
   "parent_script": [

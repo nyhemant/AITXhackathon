@@ -247,9 +247,9 @@
   ],
   "content_mode": "curated",
   "media": {
-    "visitor_map_url": "https://d1v5k86lqgwnzg.cloudfront.net/assets/images/maps/aquarium/may2026/aquarium-visitor-map-May2026.png",
+    "visitor_map_url": "",
     "visitor_map_page": "https://d1v5k86lqgwnzg.cloudfront.net/assets/pdfs/maps/aquarium-visitor-map.pdf",
-    "visitor_map_kind": "image",
+    "visitor_map_kind": "page",
     "map_attribution": "Official site \u00b7 Monterey Bay Aquarium"
   },
   "parent_script": [
