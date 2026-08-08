@@ -294,10 +294,11 @@
   ],
   "content_mode": "hybrid",
   "media": {
-    "visitor_map_url": "",
+    "visitor_map_url": "/field-pack/media/maps/audubon-zoo.jpg",
     "visitor_map_page": "https://audubonnatureinstitute.org/zoo-map",
-    "visitor_map_kind": "page",
-    "map_attribution": "Official map \u00b7 Audubon Zoo"
+    "visitor_map_kind": "image",
+    "map_attribution": "Official map \u00b7 Audubon Zoo",
+    "print_map": "/field-pack/media/maps/audubon-zoo.jpg"
   },
   "parent_script": [
     "Bathroom first",

@@ -292,10 +292,11 @@
   ],
   "content_mode": "hybrid",
   "media": {
-    "visitor_map_url": "",
+    "visitor_map_url": "/field-pack/media/maps/budapest-zoo.jpg",
     "visitor_map_page": "https://zoobudapest.com/en/for-visitors/zoo-map/",
-    "visitor_map_kind": "page",
-    "map_attribution": "Budapest Zoo"
+    "visitor_map_kind": "image",
+    "map_attribution": "Budapest Zoo",
+    "print_map": "/field-pack/media/maps/budapest-zoo.jpg"
   },
   "parent_script": [
     "Bathroom first",

@@ -200,10 +200,11 @@
   ],
   "content_mode": "hybrid",
   "media": {
-    "visitor_map_url": "",
+    "visitor_map_url": "/field-pack/media/maps/doseum.jpg",
     "visitor_map_page": "https://www.thedoseum.org/",
-    "visitor_map_kind": "page",
-    "map_attribution": "Visit \u00b7 The DoSeum"
+    "visitor_map_kind": "image",
+    "map_attribution": "Visit \u00b7 The DoSeum",
+    "print_map": "/field-pack/media/maps/doseum.jpg"
   },
   "parent_script": [
     "Bathroom first",

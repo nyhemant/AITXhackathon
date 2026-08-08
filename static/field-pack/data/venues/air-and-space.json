@@ -198,10 +198,11 @@
   ],
   "content_mode": "hybrid",
   "media": {
-    "visitor_map_url": "",
+    "visitor_map_url": "/field-pack/media/maps/air-and-space.jpg",
     "visitor_map_page": "https://airandspace.si.edu/visit/museum-dc/map",
-    "visitor_map_kind": "page",
-    "map_attribution": "Official visit page"
+    "visitor_map_kind": "image",
+    "map_attribution": "Official visit page",
+    "print_map": "/field-pack/media/maps/air-and-space.jpg"
   },
   "parent_script": [
     "Bathroom first",

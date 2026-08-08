@@ -195,10 +195,11 @@
   ],
   "content_mode": "hybrid",
   "media": {
-    "visitor_map_url": "",
+    "visitor_map_url": "/field-pack/media/maps/carnegie-natural-history.jpg",
     "visitor_map_page": "https://carnegiemnh.org/map/",
-    "visitor_map_kind": "page",
-    "map_attribution": "Official map \u00b7 Carnegie Museum of Natural History"
+    "visitor_map_kind": "image",
+    "map_attribution": "Official map \u00b7 Carnegie Museum of Natural History",
+    "print_map": "/field-pack/media/maps/carnegie-natural-history.jpg"
   },
   "parent_script": [
     "Bathroom first",

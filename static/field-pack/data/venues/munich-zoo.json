@@ -293,10 +293,11 @@
   ],
   "content_mode": "hybrid",
   "media": {
-    "visitor_map_url": "",
+    "visitor_map_url": "/field-pack/media/maps/munich-zoo.jpg",
     "visitor_map_page": "https://www.hellabrunn.de/en/park-visit/general-information/map-of-the-zoo",
-    "visitor_map_kind": "page",
-    "map_attribution": "Tierpark Hellabrunn"
+    "visitor_map_kind": "image",
+    "map_attribution": "Tierpark Hellabrunn",
+    "print_map": "/field-pack/media/maps/munich-zoo.jpg"
   },
   "parent_script": [
     "Bathroom first",

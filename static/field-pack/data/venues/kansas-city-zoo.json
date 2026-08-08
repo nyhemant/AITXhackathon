@@ -316,10 +316,11 @@
   ],
   "content_mode": "hybrid",
   "media": {
-    "visitor_map_url": "",
+    "visitor_map_url": "/field-pack/media/maps/kansas-city-zoo.jpg",
     "visitor_map_page": "https://kansascityzoo.org/visit/zoo-map",
-    "visitor_map_kind": "page",
-    "map_attribution": "Official map \u00b7 Kansas City Zoo"
+    "visitor_map_kind": "image",
+    "map_attribution": "Official map \u00b7 Kansas City Zoo",
+    "print_map": "/field-pack/media/maps/kansas-city-zoo.jpg"
   },
   "parent_script": [
     "Bathroom first",

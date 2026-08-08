@@ -191,10 +191,11 @@
   ],
   "content_mode": "curated",
   "media": {
-    "visitor_map_url": "",
+    "visitor_map_url": "/field-pack/media/maps/kennedy-space-center.jpg",
     "visitor_map_page": "https://www.kennedyspacecenter.com/info/while-youre-here/maps/",
-    "visitor_map_kind": "page",
-    "map_attribution": "Official site \u00b7 Kennedy Space Center"
+    "visitor_map_kind": "image",
+    "map_attribution": "Official site \u00b7 Kennedy Space Center",
+    "print_map": "/field-pack/media/maps/kennedy-space-center.jpg"
   },
   "parent_script": [
     "Bathroom first",

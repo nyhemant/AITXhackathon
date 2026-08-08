@@ -293,10 +293,11 @@
   ],
   "content_mode": "hybrid",
   "media": {
-    "visitor_map_url": "",
+    "visitor_map_url": "/field-pack/media/maps/lotte-aquarium-seoul.jpg",
     "visitor_map_page": "https://www.lotteworld.com/zoo-map-print",
-    "visitor_map_kind": "page",
-    "map_attribution": "Lotte World Aquarium"
+    "visitor_map_kind": "image",
+    "map_attribution": "Lotte World Aquarium",
+    "print_map": "/field-pack/media/maps/lotte-aquarium-seoul.jpg"
   },
   "parent_script": [
     "Bathroom first",

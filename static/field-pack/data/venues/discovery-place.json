@@ -219,10 +219,11 @@
   ],
   "content_mode": "hybrid",
   "media": {
-    "visitor_map_url": "",
+    "visitor_map_url": "/field-pack/media/maps/discovery-place.jpg",
     "visitor_map_page": "https://discoveryplace.org/zoo-map-print",
-    "visitor_map_kind": "page",
-    "map_attribution": "Official map \u00b7 Discovery Place Science"
+    "visitor_map_kind": "image",
+    "map_attribution": "Official map \u00b7 Discovery Place Science",
+    "print_map": "/field-pack/media/maps/discovery-place.jpg"
   },
   "parent_script": [
     "Bathroom first",

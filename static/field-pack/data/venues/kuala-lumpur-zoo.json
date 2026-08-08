@@ -340,10 +340,11 @@
   ],
   "content_mode": "hybrid",
   "media": {
-    "visitor_map_url": "",
+    "visitor_map_url": "/field-pack/media/maps/kuala-lumpur-zoo.jpg",
     "visitor_map_page": "https://www.zoonegara.my/map.html",
-    "visitor_map_kind": "page",
-    "map_attribution": "Zoo Negara"
+    "visitor_map_kind": "image",
+    "map_attribution": "Zoo Negara",
+    "print_map": "/field-pack/media/maps/kuala-lumpur-zoo.jpg"
   },
   "parent_script": [
     "Bathroom first",

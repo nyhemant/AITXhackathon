@@ -298,10 +298,11 @@
   ],
   "content_mode": "hybrid",
   "media": {
-    "visitor_map_url": "",
+    "visitor_map_url": "/field-pack/media/maps/johannesburg-zoo.jpg",
     "visitor_map_page": "https://www.jhbcityparksandzoo.com/visit/zoo-map",
-    "visitor_map_kind": "page",
-    "map_attribution": "Johannesburg Zoo"
+    "visitor_map_kind": "image",
+    "map_attribution": "Johannesburg Zoo",
+    "print_map": "/field-pack/media/maps/johannesburg-zoo.jpg"
   },
   "parent_script": [
     "Bathroom first",

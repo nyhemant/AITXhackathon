@@ -293,10 +293,11 @@
   ],
   "content_mode": "hybrid",
   "media": {
-    "visitor_map_url": "",
+    "visitor_map_url": "/field-pack/media/maps/lisbon-zoo.jpg",
     "visitor_map_page": "https://www.zoo.pt/en/visit/zoo-map/",
-    "visitor_map_kind": "page",
-    "map_attribution": "Lisbon Zoo"
+    "visitor_map_kind": "image",
+    "map_attribution": "Lisbon Zoo",
+    "print_map": "/field-pack/media/maps/lisbon-zoo.jpg"
   },
   "parent_script": [
     "Bathroom first",
