@@ -745,12 +745,34 @@ a {
   box-shadow: 0 0 0 2px rgba(217, 101, 46, 0.18), var(--shadow-sm);
 }
 
+.animal-card-media {
+  position: relative;
+  display: block;
+  width: 100%;
+}
 .animal-card img {
   width: 100%;
   height: 168px;
   object-fit: cover;
   background: #dfe7f2;
   display: block;
+}
+.animal-cam-badge {
+  position: absolute;
+  left: 8px;
+  bottom: 8px;
+  z-index: 1;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: rgba(10, 69, 69, 0.88);
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  box-shadow: 0 2px 8px rgba(21, 34, 56, 0.2);
+  pointer-events: none;
 }
 @media (min-width: 720px) {
   .animal-card {
@@ -764,6 +786,10 @@ a {
   }
   .animal-card .name {
     font-size: 1.12rem;
+  }
+  .animal-cam-badge {
+    font-size: 0.72rem;
+    padding: 4px 9px;
   }
 }
 @media (min-width: 960px) {
@@ -907,13 +933,22 @@ a {
   .mission-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 16px;
+    align-items: stretch;
   }
   .mission {
-    min-height: 240px;
+    min-height: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
     padding: 16px 16px 14px;
   }
   .mission-q {
     font-size: 1.12rem;
+    min-height: 3.4em; /* even question block across the row */
+    flex: 0 0 auto;
+  }
+  .mission .choices {
+    margin-top: auto;
   }
 }
 
@@ -2077,11 +2112,28 @@ body.app-body {
 }
 
 /* Floor prompts — 3 equal cards on desktop (use the empty width) */
+.floor-prompts-wrap {
+  margin: 0 0 16px;
+}
+.floor-prompts-kicker {
+  margin: 0 0 8px;
+  font-size: 0.78rem;
+  font-weight: 850;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--teal, #0f5c5c);
+}
+@media (min-width: 720px) {
+  .floor-prompts-kicker {
+    margin-bottom: 10px;
+    font-size: 0.82rem;
+  }
+}
 .floor-prompts {
   display: grid;
   grid-template-columns: 1fr;
   gap: 8px;
-  margin: 0 0 16px;
+  margin: 0;
 }
 .floor-prompt-card {
   display: grid;

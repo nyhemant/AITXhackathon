@@ -12,7 +12,7 @@
     <title>List &amp; hunt · Field Trip Kit · 1Less</title>
     <base href="/field-pack/" />
     <link rel="stylesheet" href="/shell/shell.css?v=5" />
-    <link rel="stylesheet" href="/field-pack/css/styles.css?v=24" />
+    <link rel="stylesheet" href="/field-pack/css/styles.css?v=25" />
   </head>
   <body class="app-body">
     <div class="app app-outing">
@@ -108,7 +108,10 @@
             <p class="detail-missing-hint no-print">
               Not out today? Find something <strong>like</strong> it — big, striped, splashy, or quiet.
             </p>
-            <div id="floor-prompts" class="floor-prompts no-print" aria-label="Things to notice and talk about"></div>
+            <div class="floor-prompts-wrap no-print">
+              <p class="floor-prompts-kicker">Notice &amp; talk</p>
+              <div id="floor-prompts" class="floor-prompts" aria-label="Things to notice and talk about"></div>
+            </div>
             <div class="action-row detail-tools">
               <button type="button" id="btn-print" class="btn btn-primary btn-print">Print this card</button>
               <button type="button" id="btn-taught" class="btn btn-secondary" aria-pressed="false">
@@ -155,6 +158,6 @@
     <script src="/field-pack/js/catalog.js?v=23"></script>
     <script src="/field-pack/js/print-maps.js?v=2"></script>
     <script src="/field-pack/js/print-kit.js?v=9"></script>
-    <script src="/field-pack/js/app.js?v=25"></script>
+    <script src="/field-pack/js/app.js?v=26"></script>
   </body>
 </html>

@@ -285,11 +285,15 @@
       if (st.submitted) status = "Picks checked ✓";
       else if (st.taught) status = "Spotted ⭐";
       else if (done) status = `${done} pick-one started`;
+      const hasCam = Boolean(item.links && item.links.cam);
       const btn = document.createElement("button");
       btn.type = "button";
       btn.className = "animal-card" + (done || st.taught || st.submitted ? " has-progress" : "");
       btn.innerHTML = `
-        <img src="${item.photo}" alt="${escapeHtml(item.name)}" loading="lazy" />
+        <span class="animal-card-media">
+          <img src="${item.photo}" alt="${escapeHtml(item.name)}" loading="lazy" />
+          ${hasCam ? `<span class="animal-cam-badge" title="Live cam available">Live cam</span>` : ""}
+        </span>
         <span class="meta">
           <span class="name">${item.emoji || ""} ${escapeHtml(item.name)}</span>
           <span class="status">${status}</span>
