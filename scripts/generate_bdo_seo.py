@@ -480,19 +480,24 @@ def wonder_grid_html(mission: dict) -> str:
 
 
 def page_mission_chrome_html() -> str:
-    """Visible age/time chips on the page (synced by mission-ui.js)."""
+    """Print button + time/age chips: button left, two chip rows right (synced by mission-ui.js)."""
     return """
-        <div class="seo-mission-chrome no-print" id="seo-mission-chrome" aria-label="Mission options">
-          <div class="seo-chip-row" role="group" aria-label="Time">
-            <button type="button" class="seo-time-chip" data-time="90m">90 min</button>
-            <button type="button" class="seo-time-chip is-active" data-time="half" aria-pressed="true">Half day</button>
-            <button type="button" class="seo-time-chip" data-time="full">Full day</button>
-          </div>
-          <div class="seo-chip-row" role="group" aria-label="Age">
-            <button type="button" class="seo-age-chip" data-age-idx="0">2–3</button>
-            <button type="button" class="seo-age-chip is-active" data-age-idx="1" aria-pressed="true">4–5</button>
-            <button type="button" class="seo-age-chip" data-age-idx="2">6–8</button>
-            <button type="button" class="seo-age-chip" data-age-idx="3">9+</button>
+        <div class="seo-mission-bar no-print" aria-label="Print mission options">
+          <button type="button" class="btn btn-primary btn-big seo-print-btn" id="mission-open-btn" aria-haspopup="dialog" aria-controls="mission-drawer">
+            Print mission
+          </button>
+          <div class="seo-mission-chrome" id="seo-mission-chrome">
+            <div class="seo-chip-row" role="group" aria-label="Time">
+              <button type="button" class="seo-time-chip" data-time="90m">90 min</button>
+              <button type="button" class="seo-time-chip is-active" data-time="half" aria-pressed="true">Half day</button>
+              <button type="button" class="seo-time-chip" data-time="full">Full day</button>
+            </div>
+            <div class="seo-chip-row" role="group" aria-label="Age">
+              <button type="button" class="seo-age-chip" data-age-idx="0">2–3y</button>
+              <button type="button" class="seo-age-chip is-active" data-age-idx="1" aria-pressed="true">4–5y</button>
+              <button type="button" class="seo-age-chip" data-age-idx="2">6–8y</button>
+              <button type="button" class="seo-age-chip" data-age-idx="3">9+y</button>
+            </div>
           </div>
         </div>"""
 
@@ -749,7 +754,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <link rel="stylesheet" href="/shell/shell.css?v=5" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=46" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=9" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=10" />
   <link rel="stylesheet" href="/field-pack/css/mission.css?v=8" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
@@ -796,11 +801,6 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
         <p class="seo-quality-note">{esc(quality_note)}</p>
         {practical_html}
         <p class="seo-brand-note">Tonight: print one sheet. Tomorrow: pocket paper — no app on the floor.</p>
-        <div class="landing-cta-row seo-cta no-print">
-          <button type="button" class="btn btn-primary btn-big" id="mission-open-btn" aria-haspopup="dialog" aria-controls="mission-drawer">
-            Print mission
-          </button>
-        </div>
         {chrome}
         <p class="seo-secondary-links no-print">
           <a href="{esc(app_href)}">Full kid list</a>
@@ -933,7 +933,7 @@ def render_venue_page(v: dict) -> str:
   <link rel="stylesheet" href="/shell/shell.css?v=5" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=46" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=9" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=10" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
   </script>

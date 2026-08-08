@@ -166,6 +166,40 @@
 }
 .seo-official a { color: #0f5c5c; font-weight: 800; }
 .seo-cta { flex-wrap: wrap; gap: 10px; }
+
+/* Print button (tall) | time row + age row stacked to the right */
+.seo-mission-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 12px 14px;
+  margin: 4px 0 6px;
+  max-width: 40rem;
+}
+.seo-print-btn {
+  flex: 0 0 auto;
+  align-self: stretch;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 9.5rem;
+  min-height: 5.5rem;
+  padding: 14px 20px;
+  font-size: 1.08rem;
+  font-weight: 850;
+  line-height: 1.2;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(15, 92, 92, 0.16);
+}
+.seo-mission-chrome {
+  flex: 1 1 12rem;
+  min-width: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
 .seo-hero-top {
   display: flex;
   flex-wrap: wrap;
@@ -215,14 +249,10 @@
 }
 .seo-secondary-links a:hover { text-decoration: underline; }
 .seo-crumb-extra a { font-weight: 700; color: #0f5c5c; text-decoration: none; }
-.seo-mission-chrome {
-  margin: 12px 0 4px;
-  display: grid;
-  gap: 8px;
-}
 .seo-chip-row {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 6px;
 }
 .seo-time-chip,
@@ -233,16 +263,41 @@
   color: #0a4545;
   font: inherit;
   font-weight: 750;
-  font-size: 0.85rem;
-  padding: 8px 12px;
+  font-size: 0.82rem;
+  padding: 7px 11px;
+  min-height: 36px;
   border-radius: 999px;
   cursor: pointer;
+  transition:
+    background 0.12s ease,
+    border-color 0.12s ease,
+    color 0.12s ease;
+}
+.seo-time-chip:hover,
+.seo-age-chip:hover {
+  border-color: #0f5c5c;
+  background: #f0faf6;
 }
 .seo-time-chip.is-active,
 .seo-age-chip.is-active {
   background: #0f5c5c;
   color: #fff;
   border-color: #0a4545;
+}
+
+@media (max-width: 520px) {
+  .seo-mission-bar {
+    flex-direction: column;
+    align-items: stretch;
+    max-width: none;
+  }
+  .seo-print-btn {
+    min-height: 52px;
+    width: 100%;
+  }
+  .seo-mission-chrome {
+    flex: 1 1 auto;
+  }
 }
 
 /* Official map card */
