@@ -715,9 +715,15 @@ def route_90m_html(mission_venue: dict, mission: dict, catalog_v: dict | None = 
         label = _item_sheet_label(p) or feat.get("name") or "Stop"
         emoji = p.get("emoji") or feat.get("emoji") or ""
         one = _card_blurb(p.get("one_liner") or feat.get("blurb") or "")
-        item_id = cat_id or (p.get("id") or "")
-        # Primary path is print mission; card opens drawer so parents don't skip the sheet
-        href = f"/field-pack/{esc(slug)}/#mission" if slug else "#mission"
+        # Prefer catalog id for app Q&A cards; underscore venue ids won't resolve in catalog
+        item_id = (p.get("catalog_id") or "").strip() or cat_id
+        # Has a real catalog photo/entry → deep-link to talk card; else venue list in app
+        if item_id and feat:
+            href = f"/field-pack/app.html#/venue/{esc(slug)}/item/{esc(item_id)}"
+        elif item_id and p.get("catalog_id"):
+            href = f"/field-pack/app.html#/venue/{esc(slug)}/item/{esc(item_id)}"
+        else:
+            href = f"/field-pack/app.html#/venue/{esc(slug)}" if slug else "/field-pack/app.html"
         if src:
             media = (
                 f'<img src="{esc(src)}" alt="" width="640" height="400" '
@@ -726,7 +732,7 @@ def route_90m_html(mission_venue: dict, mission: dict, catalog_v: dict | None = 
         else:
             media = f'<span class="seo-start-emoji" aria-hidden="true">{esc(emoji or "✨")}</span>'
         cards.append(
-            f"""<a class="seo-start-card" href="{href}" data-how="print">
+            f"""<a class="seo-start-card" href="{href}">
         <span class="seo-start-num" aria-hidden="true">{i}</span>
         {media}
         <span class="seo-start-meta">
@@ -738,7 +744,7 @@ def route_90m_html(mission_venue: dict, mission: dict, catalog_v: dict | None = 
 
     lead = (
         f"Do these {n} in order if you can — enough for a short visit. "
-        "Tap a stop or Print your mission for the one-page sheet."
+        "Tap a stop for talk tips &amp; photos. Print your mission is above."
     )
     return f"""
     <section class="seo-start-here no-print" aria-labelledby="route90-heading">
