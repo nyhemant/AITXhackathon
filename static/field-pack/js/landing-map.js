@@ -473,11 +473,24 @@
     panY = Math.min(maxY, Math.max(-maxY, panY));
   }
 
+  /** Keep pin screen size constant while the basemap SVG scales with zoom. */
+  function applyPinCounterScale() {
+    if (!pinsLayer) return;
+    const inv = 1 / (zoom || 1);
+    pinsLayer.querySelectorAll(".venue-pin").forEach((g) => {
+      const x = g.dataset.x;
+      const y = g.dataset.y;
+      if (x == null || y == null) return;
+      g.setAttribute("transform", `translate(${x},${y}) scale(${inv})`);
+    });
+  }
+
   function applyMapTransform() {
     if (!svgEl) return;
     clampPan();
     svgEl.style.transformOrigin = "center center";
     svgEl.style.transform = `translate(${panX}px, ${panY}px) scale(${zoom})`;
+    applyPinCounterScale();
     updateMapCursor();
     updateZoomButtons();
   }
@@ -1061,27 +1074,32 @@
           : `${cl.places[0].name} (${kidTypeLabel(cl.places[0].type)})`
       );
       g.dataset.clusterIds = cl.ids.join(",");
+      // Local origin at pin; counter-scale so dots stay constant screen size when map zooms
+      g.dataset.x = String(x);
+      g.dataset.y = String(y);
+      const inv = 1 / (zoom || 1);
+      g.setAttribute("transform", `translate(${x},${y}) scale(${inv})`);
       g.style.cursor = "pointer";
 
       const halo = document.createElementNS(NS, "circle");
       halo.setAttribute("class", "vpin-halo");
-      halo.setAttribute("cx", x);
-      halo.setAttribute("cy", y);
+      halo.setAttribute("cx", "0");
+      halo.setAttribute("cy", "0");
       halo.setAttribute("r", n > 1 ? "18" : mapScope === "more" ? "12" : "16");
       g.appendChild(halo);
 
       const core = document.createElementNS(NS, "circle");
       core.setAttribute("class", "vpin-core");
-      core.setAttribute("cx", x);
-      core.setAttribute("cy", y);
+      core.setAttribute("cx", "0");
+      core.setAttribute("cy", "0");
       core.setAttribute("r", n > 1 ? "11" : selectedHere ? "8" : mapScope === "more" ? "5" : "7");
       g.appendChild(core);
 
       if (n > 1) {
         const count = document.createElementNS(NS, "text");
         count.setAttribute("class", "vpin-count");
-        count.setAttribute("x", x);
-        count.setAttribute("y", y + 4);
+        count.setAttribute("x", "0");
+        count.setAttribute("y", "4");
         count.setAttribute("text-anchor", "middle");
         count.textContent = String(n);
         g.appendChild(count);
@@ -1094,7 +1112,7 @@
         "class",
         "vpin-chip" + (showChipSelected ? " vpin-chip-on is-visible" : "")
       );
-      chip.setAttribute("transform", `translate(${x + 12}, ${y - 10})`);
+      chip.setAttribute("transform", "translate(12, -10)");
       const hoverName =
         n > 1
           ? `${n} places · ${cl.places[0].city || "area"}`
