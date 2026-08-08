@@ -163,30 +163,30 @@ def unique_body(v: dict) -> str:
     )
 
     openers = [
-        f"Planning a kid-friendly day at {name} in {loc}? Field Trip Kit by 1Less gives you a free printable {hunt_word} and a short list of {label} so you are not staring at a map of hundreds of options.",
-        f"Visiting {name} with kids does not have to mean wandering until everyone is tired. This free one-page {hunt_word} for {loc} keeps the day focused and fun.",
-        f"If you searched for a {name} scavenger hunt for kids or a printable checklist for {city}, you are in the right place — a finishable kit, not an encyclopedia.",
-        f"{emoji + ' ' if emoji else ''}{name} is a classic {place} stop in {loc}. Families use this free printable scavenger hunt to give little explorers a clear mission without overpacking the day.",
+        f"Heading to {name} in {loc} with kids? Here’s a free printable {hunt_word} and a short list of {label} — so you’re not trying to do the whole place.",
+        f"A day at {name} goes better with a short plan. This free one-page {hunt_word} for {loc} gives kids something to look for without racing the map.",
+        f"Looking for a {name} scavenger hunt or printable checklist for {city}? This page is a short kid list plus one hunt sheet you can print at home.",
+        f"{emoji + ' ' if emoji else ''}{name} ({loc}) — use this free printable hunt if you want a clear “next stop” instead of wandering until everyone’s done.",
     ]
     middles = [
-        f"The shortlist highlights {feat_phrase}. Each pick has a kid-sized blurb so a preschooler or early elementary explorer can understand why it is cool before you arrive.",
-        f"Instead of racing through every exhibit, start with top picks like {feat_phrase}. That keeps toddlers and school-age kids engaged without overwhelm.",
-        f"Your printable kit focuses on {feat_phrase} — a manageable set for young kids through about age 10–11, with room to skip anything that is closed or crowded.",
+        f"The shortlist includes {feat_phrase}. Each one has a short kid-friendly line so you can talk about it on the way.",
+        f"Start with a few big draws like {feat_phrase}. Skip anything closed, crowded, or out of juice — the list is a guide, not homework.",
+        f"Focus on {feat_phrase}. That set usually works from preschool through about age 10, with room to cut stops if legs get tired.",
     ]
-    hunt_bits = "; ".join(hunt[:4]) if hunt else "spot something tall, find a pattern, and photo a favorite"
+    hunt_bits = "; ".join(hunt[:4]) if hunt else "spot something tall, find a pattern, and take a favorite photo"
     hunt_para = [
-        f"The treasure hunt is one page: check boxes as you go. Sample challenges include {hunt_bits}. There is no score and no app required on site — print before you leave home or save the page for later.",
-        f"On the hunt sheet, kids can check off finds such as {hunt_bits}. Grown-ups stay free to enjoy the day; the paper does the guiding.",
+        f"The hunt is one page with checkboxes. Examples: {hunt_bits}. No scores — print at home (or hotel) and bring a pen.",
+        f"Kids check off finds like {hunt_bits}. You keep the day moving; the sheet is just a simple checklist.",
     ]
     tips = [
-        f"Practical tip for {city}: print the hunt the night before, pack a pen, and start with one or two favorites near the entrance so early energy pays off.",
-        f"For {name}, arrive with the one-page hunt in your bag, pick a first target from the shortlist, and treat the rest as bonus — a calm day beats a complete checklist.",
-        f"Weather or crowds in {state or city} can change plans. The shortlist and hunt are designed so you can reorder stops without losing the fun.",
+        f"Tip for {city}: print the night before, pack a pen, and hit one easy favorite near the entrance first.",
+        f"At {name}, pick a first stop from the shortlist and treat the rest as optional. Leaving happy beats checking every box.",
+        f"If weather or crowds in {state or city} shift the plan, reorder the list — nothing here requires a fixed path.",
     ]
     closes = [
-        f"{blurb + '. ' if blurb else ''}Field Trip Kit is free to use. Open the full interactive list when you want optional Q&A cards, or use the one-page hunt alone for a lighter outing.",
-        f"{'About this place: ' + blurb + '. ' if blurb else ''}Everything here is free to print and share with co-parents or grandparents joining the day.",
-        f"{blurb + '. ' if blurb else ''}1Less keeps the promise simple: one less decision before a museum or zoo day with kids.",
+        f"{blurb + '. ' if blurb else ''}Field Trip Kit is free. Use the full interactive list only if you want optional Q&A cards after; the one-page hunt is enough for most visits.",
+        f"{'About this place: ' + blurb + '. ' if blurb else ''}Print and share with whoever’s coming — co-parent, grandparent, or class helper.",
+        f"{blurb + '. ' if blurb else ''}Goal is simple: fewer “what now?” moments on a zoo, aquarium, or museum day.",
     ]
 
     seed = v["id"]
@@ -473,8 +473,8 @@ def wonder_grid_html(mission: dict) -> str:
         return ""
     return f"""
     <section class="seo-wonder-block" aria-labelledby="wonder-heading">
-      <h2 id="wonder-heading">Your wonder sheet</h2>
-      <p class="seo-wonder-lead">Not a species census — findables that still work when animals move or rest.</p>
+      <h2 id="wonder-heading">Also look for</h2>
+      <p class="seo-wonder-lead">Backup finds if a favorite animal is napping, off exhibit, or the line is too long.</p>
       <ul class="seo-wonder-grid">{tiles}</ul>
     </section>"""
 
@@ -677,18 +677,18 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
     mode = content_mode_of(mission_venue, v)
     last_v = (v.get("lastVerified") or mission_venue.get("last_verified") or "")[:7]
     if mode == "wonder":
-        badge = "Starter wonder kit"
+        badge = "Simple starter"
         quality_note = (
-            "Wonder sheet — works even when animals rest or rotate. Skip anything you don’t see."
+            "Short flexible list — skip anything you don’t see or don’t feel like chasing."
         )
     elif mode == "hybrid":
-        badge = "Local starter"
-        quality_note = "A few local icons plus wonder finds." + (
+        badge = "Starter list"
+        quality_note = "A few local favorites, plus backup finds if plans change." + (
             f" Checked {last_v}." if last_v else ""
         )
     else:
-        badge = "Locally tuned"
-        quality_note = "Curated shortlist for a finishable kid day." + (
+        badge = "Hand-picked"
+        quality_note = "Short kid list meant for a half-day visit." + (
             f" List checked {last_v}." if last_v else ""
         )
 
@@ -696,14 +696,14 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
     drawer = mission_drawer_html(mission_venue, mission)
     if mode == "wonder":
         body = wonder_grid_html(mission)
-        how_step2 = "Check off wonders on site (no perfect census needed)"
+        how_step2 = "Check finds on the list as you go"
     elif mode == "hybrid":
-        # Local icons as photos + wonder sheet for resilient fill
+        # Local icons as photos + flexible backup finds
         body = unique_body(v) + wonder_grid_html(mission)
-        how_step2 = "Hit a few local icons, then finish with wonders"
+        how_step2 = "See a few favorites, then use the backup finds"
     else:
         body = unique_body(v)
-        how_step2 = "Use the photo shortlist on site"
+        how_step2 = "Use the shortlist while you walk"
     map_card = map_card_html(mission_venue)
     chrome = page_mission_chrome_html()
     route90 = route_90m_html(mission_venue, mission)
@@ -754,7 +754,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <base href="/field-pack/" />
   <link rel="stylesheet" href="/shell/shell.css?v=5" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
-  <link rel="stylesheet" href="/field-pack/css/landing.css?v=46" />
+  <link rel="stylesheet" href="/field-pack/css/landing.css?v=47" />
   <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=11" />
   <link rel="stylesheet" href="/field-pack/css/mission.css?v=8" />
   <script type="application/ld+json">
@@ -801,7 +801,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
         <p class="lead">{esc(lead)}</p>
         <p class="seo-quality-note">{esc(quality_note)}</p>
         {practical_html}
-        <p class="seo-brand-note">Tonight: print one sheet. Tomorrow: pocket paper — no app on the floor.</p>
+        <p class="seo-brand-note">Print one page at home. Bring it with you — no app required at the venue.</p>
         {chrome}
         <p class="seo-secondary-links no-print">
           <a href="{esc(app_href)}">Full kid list</a>
@@ -870,7 +870,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <script src="/shell/shell.js?v=3"></script>
   <script src="/field-pack/js/catalog.js?v=23"></script>
   <script src="/field-pack/js/print-maps.js?v=2"></script>
-  <script src="/field-pack/js/print-kit.js?v=7"></script>
+  <script src="/field-pack/js/print-kit.js?v=8"></script>
   <script src="/field-pack/js/mission/mission-engine.js?v=6"></script>
   <script src="/field-pack/js/mission/mission-ui.js?v=10"></script>
 </body>
@@ -933,7 +933,7 @@ def render_venue_page(v: dict) -> str:
   <base href="/field-pack/" />
   <link rel="stylesheet" href="/shell/shell.css?v=5" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
-  <link rel="stylesheet" href="/field-pack/css/landing.css?v=46" />
+  <link rel="stylesheet" href="/field-pack/css/landing.css?v=47" />
   <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=11" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
@@ -975,13 +975,13 @@ def render_venue_page(v: dict) -> str:
         <p class="lead">{esc(v.get('blurb') or f'Free printable scavenger hunt and kid shortlist for {v["name"]}.')}</p>
         <p class="seo-quality-note">{esc(
           (
-            "Curated shortlist for a finishable kid day."
+            "Short kid list for a half-day visit."
             + (f' List checked {v["lastVerified"][:7]}.' if (v.get("lastVerified") or "")[:7] else "")
           )
           if (v.get("quality") or "starter") == "full"
-          else "Starter shortlist — animals and exhibits change; skip anything closed or missing."
+          else "Starter list — animals and exhibits change; skip anything closed or missing."
         )}</p>
-        <p class="seo-brand-note">Part of <strong>Field Trip Kit</strong> by 1Less — free for families.</p>
+        <p class="seo-brand-note"><strong>Field Trip Kit</strong> by 1Less — free printable hunts for families.</p>
         <div class="landing-cta-row seo-cta no-print">
           <a class="btn btn-primary btn-big" href="{esc(map_href)}">Open on map →</a>
           <button type="button" class="btn btn-secondary btn-big" id="seo-print-hunt" data-venue="{esc(vid)}">
@@ -1043,7 +1043,7 @@ def render_venue_page(v: dict) -> str:
   <script src="/shell/shell.js?v=3"></script>
   <script src="/field-pack/js/catalog.js?v=23"></script>
   <script src="/field-pack/js/print-maps.js?v=2"></script>
-  <script src="/field-pack/js/print-kit.js?v=7"></script>
+  <script src="/field-pack/js/print-kit.js?v=8"></script>
   <script>
     (function () {{
       var btn = document.getElementById("seo-print-hunt");

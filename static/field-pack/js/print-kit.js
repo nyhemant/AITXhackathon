@@ -273,72 +273,72 @@
     },
     /* Children’s museum / science “wow” hooks (same strip UI) */
     "cm-outdoor": {
-      q: "Explorer tip",
-      a: "Outside brains notice more — pick one sound, one smell, one thing that moves.",
+      q: "Try this",
+      a: "Name one sound, one smell, and one thing that moves.",
     },
     "cm-toddler-garden": {
-      q: "Little explorer tip",
-      a: "Toddlers learn by repeating — same path twice is a feature, not a bug!",
+      q: "Toddler tip",
+      a: "Doing the same path twice is normal — repetition is how little kids learn.",
     },
     "cm-imaginarium": {
-      q: "Imagination power-up",
-      a: "Pretend play builds real brain skills — narrate what you “see” together.",
+      q: "Try this",
+      a: "Ask what they “see” in pretend play — you don’t need a right answer.",
     },
     "cm-woven": {
-      q: "Climbing wow",
-      a: "Climbing builds balance and bravery — cheer the try, not just the top.",
+      q: "Climbing tip",
+      a: "Cheer the try, not only the top. Coming down counts too.",
     },
     "cm-makery": {
-      q: "Maker secret",
-      a: "Engineers fail on purpose first — “what if we try…?” is the magic phrase.",
+      q: "Maker tip",
+      a: "“What if we try…?” beats getting it perfect on the first try.",
     },
     "cm-art-lab": {
-      q: "Art fact",
-      a: "There’s no wrong color mix — the masterpiece is the story they tell after.",
+      q: "Art tip",
+      a: "Ask them to tell the story of their picture — mess is allowed.",
     },
     "cm-free-explore": {
-      q: "Free-choice power",
-      a: "When kids pick the path, they remember more — follow their “oooh!”",
+      q: "Try this",
+      a: "Let them pick the next stop for five minutes. Follow what pulls them in.",
     },
     "cm-waterfall": {
-      q: "Water play science",
-      a: "Splashing is physics class — gravity, flow, and cause-and-effect with giggles.",
+      q: "Water play",
+      a: "Watch where the water goes — kids notice flow long before we name it “science.”",
     },
     "sci-dinosaur": {
-      q: "Dino wow",
-      a: "T. rex lived closer in time to you than to Stegosaurus — deep time is wild!",
+      q: "Did you know?",
+      a: "T. rex lived closer in time to us than to Stegosaurus.",
     },
     "sci-mammal-hall": {
       q: "Look closer",
-      a: "Dioramas freeze a whole habitat in one glance — find eyes, tracks, and cover.",
+      a: "In a diorama, find eyes, feet, and a place an animal might hide.",
     },
     "sci-planet": {
       q: "Space scale",
-      a: "If Earth were a peppercorn, the Sun would still be a beach ball across the room.",
+      a: "If Earth were a peppercorn, the Sun would be about beach-ball size across the room.",
     },
     "sci-hands-on": {
-      q: "Science secret",
-      a: "Real scientists play too — touch, test, mess up, try again.",
+      q: "Lab tip",
+      a: "Touch, test, mess up, try again — that’s the whole point.",
     },
     "sci-rainforest": {
-      q: "Rainforest layers",
-      a: "Most animals live in the canopy — look up for the busy “apartment floors.”",
+      q: "Look up",
+      a: "A lot of rainforest life lives high in the trees, not on the ground.",
     },
     "sci-aquarium-zone": {
       q: "Tank tip",
-      a: "Stand still 20 seconds — shy fish often come out when the crowd stops bouncing.",
+      a: "Stand still for 20 seconds — shy fish often come out when people stop bouncing.",
     },
     "sci-rocket": {
-      q: "Rocket power",
-      a: "Leaving Earth takes insane speed — about 17,500 mph to stay in orbit!",
+      q: "Did you know?",
+      a: "To stay in orbit, spacecraft go about 17,500 mph.",
     },
     "sci-shuttle": {
-      q: "Orbiter wow",
-      a: "A space shuttle could launch like a rocket, fly like a plane, and land on a runway.",
+      q: "Did you know?",
+      a: "A space shuttle launched like a rocket, flew in space, and landed on a runway.",
     },
     "sci-astronaut": {
-      q: "Life in space",
-      a: "Astronauts sleep strapped in — without gravity, you’d float off your pillow!",
+      q: "Did you know?",
+      a: "Astronauts sleep strapped in — without gravity you’d float off the bed.",
     },
   };
 
