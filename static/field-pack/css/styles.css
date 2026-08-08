@@ -76,6 +76,12 @@ a {
   width: min(1100px, 100%);
   margin: 0 auto;
 }
+/* Outing pages: a bit wider on large desktops so cards can breathe */
+@media (min-width: 1200px) {
+  .app.app-outing {
+    width: min(1180px, 100%);
+  }
+}
 
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -691,11 +697,23 @@ a {
   opacity: 1;
 }
 
-/* Animal grid */
+/* Animal grid — grow into available desktop width */
 .animal-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(168px, 1fr));
   gap: 12px;
+}
+@media (min-width: 720px) {
+  .animal-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 14px;
+  }
+}
+@media (min-width: 960px) {
+  .animal-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+  }
 }
 
 .animal-card {
@@ -733,6 +751,28 @@ a {
   object-fit: cover;
   background: #dfe7f2;
   display: block;
+}
+@media (min-width: 720px) {
+  .animal-card {
+    min-height: 248px;
+  }
+  .animal-card img {
+    height: 188px;
+  }
+  .animal-card .meta {
+    padding: 14px 14px 16px;
+  }
+  .animal-card .name {
+    font-size: 1.12rem;
+  }
+}
+@media (min-width: 960px) {
+  .animal-card {
+    min-height: 272px;
+  }
+  .animal-card img {
+    height: 208px;
+  }
 }
 
 .animal-card .meta {
@@ -775,6 +815,14 @@ a {
   padding: 18px;
   box-shadow: var(--shadow);
   border: 1.5px solid var(--border);
+  align-items: stretch;
+}
+@media (min-width: 900px) {
+  .detail-hero {
+    grid-template-columns: minmax(300px, 0.95fr) minmax(0, 1.15fr);
+    gap: 26px;
+    padding: 24px 26px;
+  }
 }
 
 .detail-photo {
@@ -783,6 +831,7 @@ a {
   overflow: hidden;
   background: #e8eef6;
   border: 1.5px solid var(--border);
+  min-height: 100%;
 }
 
 .detail-photo img {
@@ -792,6 +841,21 @@ a {
   max-height: 320px;
   object-fit: cover;
   display: block;
+}
+@media (min-width: 900px) {
+  .detail-photo img {
+    min-height: 320px;
+    max-height: 420px;
+  }
+  .detail-copy h1,
+  .detail-copy #detail-name {
+    font-size: clamp(1.75rem, 2.6vw, 2.35rem);
+    letter-spacing: -0.03em;
+  }
+  .detail-copy .lead {
+    font-size: 1.12rem;
+    max-width: 38rem;
+  }
 }
 
 .detail-photo figcaption {
@@ -837,6 +901,20 @@ a {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
+}
+/* Prefer 3 wide pick-one cards on desktop when width allows */
+@media (min-width: 900px) {
+  .mission-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .mission {
+    min-height: 240px;
+    padding: 16px 16px 14px;
+  }
+  .mission-q {
+    font-size: 1.12rem;
+  }
 }
 
 .mission {
@@ -1998,11 +2076,12 @@ body.app-body {
   }
 }
 
-/* Floor prompts (Q&A simplified default) */
+/* Floor prompts — 3 equal cards on desktop (use the empty width) */
 .floor-prompts {
   display: grid;
+  grid-template-columns: 1fr;
   gap: 8px;
-  margin: 0 0 14px;
+  margin: 0 0 16px;
 }
 .floor-prompt-card {
   display: grid;
@@ -2013,6 +2092,7 @@ body.app-body {
   border-radius: 14px;
   background: var(--card-tint, #f7fbf9);
   border: 1.5px solid var(--border, rgba(15, 92, 92, 0.12));
+  min-height: 0;
 }
 .floor-prompt-n {
   display: grid;
@@ -2024,6 +2104,7 @@ body.app-body {
   color: #fff;
   font-size: 0.8rem;
   font-weight: 800;
+  flex-shrink: 0;
 }
 .floor-prompt-card p {
   margin: 0;
@@ -2031,6 +2112,44 @@ body.app-body {
   color: var(--ink, #152238);
   line-height: 1.35;
   font-size: 1rem;
+}
+@media (min-width: 720px) {
+  .floor-prompts {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin: 0 0 18px;
+  }
+  .floor-prompt-card {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    gap: 10px;
+    padding: 16px 16px 18px;
+    min-height: 8.25rem;
+    border-radius: 16px;
+    box-shadow: var(--shadow-sm);
+  }
+  .floor-prompt-n {
+    width: 1.75rem;
+    height: 1.75rem;
+    font-size: 0.88rem;
+  }
+  .floor-prompt-card p {
+    font-size: 1.05rem;
+    line-height: 1.4;
+    font-weight: 700;
+  }
+}
+@media (min-width: 960px) {
+  .floor-prompts {
+    gap: 14px;
+  }
+  .floor-prompt-card {
+    min-height: 9.25rem;
+    padding: 18px 18px 20px;
+  }
+  .floor-prompt-card p {
+    font-size: 1.1rem;
+  }
 }
 .detail-missing-hint {
   margin: 0 0 12px;
