@@ -1207,10 +1207,11 @@
   }
 
   function showOverview() {
-    // No coaching copy — Map→Print→Play above already explains. Keep panel empty until a pin is chosen.
+    const n = filteredPlaces().length;
     detail.className = "pin-detail empty";
-    detail.innerHTML = "";
-    detail.setAttribute("aria-label", "Place details appear when you select a pin");
+    // One quiet line (not three) — product is already explained above the map
+    detail.innerHTML = `<p class="pd-empty-line">${n} places — tap a pin for a short list and hunt.</p>`;
+    detail.setAttribute("aria-label", `${n} places. Tap a pin for a short list and hunt.`);
   }
 
   function catalogVenue(venueId) {
