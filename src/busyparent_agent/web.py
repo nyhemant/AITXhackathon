@@ -48,7 +48,8 @@ SECURITY_HEADERS = {
         "default-src 'self'; "
         "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://*.googletagmanager.com; "
         "style-src 'self' 'unsafe-inline'; "
-        "img-src 'self' data: https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://*.googletagmanager.com; "
+        # https: allows official venue map thumbnails hotlinked on Field Trip Kit pages
+        "img-src 'self' data: https:; "
         "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://*.googletagmanager.com https://stats.g.doubleclick.net; "
         "font-src 'self'; "
         "base-uri 'self'; "
