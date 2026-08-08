@@ -692,14 +692,76 @@
   border: 1.5px solid rgba(15, 92, 92, 0.12);
 }
 .seo-directory h2 {
-  margin: 0 0 8px;
+  margin: 0 0 6px;
   font-size: 1.25rem;
   color: #0a4545;
 }
 .seo-directory > p {
-  margin: 0 0 14px;
+  margin: 0 0 16px;
   font-weight: 650;
   color: #3d4f6f;
+  font-size: 0.95rem;
+}
+.seo-dir-body {
+  display: grid;
+  gap: 18px;
+}
+.seo-dir-region-title {
+  margin: 0 0 8px;
+  font-size: 1.02rem;
+  font-weight: 800;
+  color: #0a4545;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.seo-dir-count {
+  font-size: 0.78rem;
+  font-weight: 750;
+  color: #5a6b82;
+  background: #eef3f8;
+  border-radius: 999px;
+  padding: 2px 8px;
+}
+.seo-dir-group {
+  margin: 0 0 6px;
+  border-radius: 12px;
+  border: 1.5px solid rgba(15, 92, 92, 0.12);
+  background: rgba(247, 251, 249, 0.75);
+  overflow: hidden;
+}
+.seo-dir-group > summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  font-weight: 800;
+  font-size: 0.92rem;
+  color: #0a4545;
+  user-select: none;
+}
+.seo-dir-group > summary::-webkit-details-marker {
+  display: none;
+}
+.seo-dir-group > summary::before {
+  content: "▸";
+  color: #d9652e;
+  font-size: 0.75rem;
+  flex: 0 0 auto;
+}
+.seo-dir-group[open] > summary::before {
+  content: "▾";
+}
+.seo-dir-group > summary .seo-dir-count {
+  margin-left: auto;
+}
+.seo-dir-group .seo-dir-grid {
+  padding: 4px 12px 12px;
+  border-top: 1px solid rgba(15, 92, 92, 0.08);
+  background: rgba(255, 255, 255, 0.65);
 }
 .seo-dir-grid {
   columns: 2;

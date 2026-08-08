@@ -755,7 +755,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <link rel="stylesheet" href="/shell/shell.css?v=5" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=49" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=11" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=12" />
   <link rel="stylesheet" href="/field-pack/css/mission.css?v=8" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
@@ -934,7 +934,7 @@ def render_venue_page(v: dict) -> str:
   <link rel="stylesheet" href="/shell/shell.css?v=5" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=49" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=11" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=12" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
   </script>
@@ -1372,28 +1372,127 @@ SEO_CSS = """/* SEO venue pages — visual-first, same brand language as outing 
 """
 
 
+_US_STATE_NAMES = {
+    "AL": "Alabama", "AK": "Alaska", "AZ": "Arizona", "AR": "Arkansas", "CA": "California",
+    "CO": "Colorado", "CT": "Connecticut", "DE": "Delaware", "DC": "Washington, D.C.",
+    "FL": "Florida", "GA": "Georgia", "HI": "Hawaii", "ID": "Idaho", "IL": "Illinois",
+    "IN": "Indiana", "IA": "Iowa", "KS": "Kansas", "KY": "Kentucky", "LA": "Louisiana",
+    "ME": "Maine", "MD": "Maryland", "MA": "Massachusetts", "MI": "Michigan", "MN": "Minnesota",
+    "MS": "Mississippi", "MO": "Missouri", "MT": "Montana", "NE": "Nebraska", "NV": "Nevada",
+    "NH": "New Hampshire", "NJ": "New Jersey", "NM": "New Mexico", "NY": "New York",
+    "NC": "North Carolina", "ND": "North Dakota", "OH": "Ohio", "OK": "Oklahoma", "OR": "Oregon",
+    "PA": "Pennsylvania", "RI": "Rhode Island", "SC": "South Carolina", "SD": "South Dakota",
+    "TN": "Tennessee", "TX": "Texas", "UT": "Utah", "VT": "Vermont", "VA": "Virginia",
+    "WA": "Washington", "WV": "West Virginia", "WI": "Wisconsin", "WY": "Wyoming",
+}
+
+
+def _dir_item_html(v: dict) -> str:
+    loc = v.get("city") or ""
+    if not loc:
+        loc = (v.get("location") or "").split(",")[0].strip()
+    city = esc(loc) if loc else ""
+    small = f"<small>{city}</small>" if city else ""
+    return (
+        f'<li><a href="/field-pack/{esc(v["id"])}/">{esc(v.get("emoji") or "")} {esc(v["name"])}</a>'
+        f"{small}</li>"
+    )
+
+
+def _dir_group_html(title: str, venues: list[dict], *, open_first: bool = False) -> str:
+    if not venues:
+        return ""
+    venues = sorted(venues, key=lambda x: (x.get("name") or "").lower())
+    items = "\n              ".join(_dir_item_html(v) for v in venues)
+    open_attr = " open" if open_first else ""
+    return (
+        f'<details class="seo-dir-group"{open_attr}>\n'
+        f'            <summary>{esc(title)} <span class="seo-dir-count">{len(venues)}</span></summary>\n'
+        f'            <ul class="seo-dir-grid">\n              {items}\n            </ul>\n'
+        f"          </details>"
+    )
+
+
 def patch_landing_directory(venues: list[dict]) -> None:
-    """Fill #seo-venue-directory list on the landing page."""
+    """Fill landing directory grouped by US state + country (still fully linked for SEO)."""
     index = FIELD / "index.html"
     html = index.read_text(encoding="utf-8")
-    items = []
+
+    us: dict[str, list[dict]] = {}
+    intl: dict[str, list[dict]] = {}
     for v in venues:
-        loc = ", ".join(x for x in [v.get("city"), v.get("state")] if x) or v.get("location") or ""
-        items.append(
-            f'<li><a href="/field-pack/{esc(v["id"])}/">{esc(v.get("emoji",""))} {esc(v["name"])}</a>'
-            f"<small>{esc(loc)} · free printable scavenger hunt</small></li>"
+        st = (v.get("state") or "").strip().upper()
+        if st and st in _US_STATE_NAMES:
+            us.setdefault(st, []).append(v)
+            continue
+        loc = v.get("location") or ""
+        if "," in loc:
+            country = loc.split(",")[-1].strip()
+        else:
+            country = loc.strip() or "International"
+        # Normalize a few long names
+        if country in ("United States", "USA", "US"):
+            us.setdefault("US", []).append(v)
+            continue
+        intl.setdefault(country, []).append(v)
+
+    parts: list[str] = []
+    # US states A–Z by full name
+    us_keys = sorted(us.keys(), key=lambda k: _US_STATE_NAMES.get(k, k))
+    if us_keys:
+        state_blocks = []
+        for code in us_keys:
+            label = _US_STATE_NAMES.get(code, code)
+            # Open Texas (or first state) so the section isn’t only closed drawers
+            open_first = code == "TX" or (code == us_keys[0] and "TX" not in us)
+            state_blocks.append(_dir_group_html(label, us[code], open_first=open_first))
+        parts.append(
+            '<div class="seo-dir-region">\n'
+            f'          <h3 class="seo-dir-region-title">United States '
+            f'<span class="seo-dir-count">{sum(len(us[k]) for k in us_keys)}</span></h3>\n'
+            + "\n".join(state_blocks)
+            + "\n        </div>"
         )
-    block = "\n          ".join(items)
+
+    if intl:
+        country_keys = sorted(intl.keys(), key=str.lower)
+        country_blocks = [
+            _dir_group_html(c, intl[c], open_first=False) for c in country_keys
+        ]
+        parts.append(
+            '<div class="seo-dir-region">\n'
+            f'          <h3 class="seo-dir-region-title">Around the world '
+            f'<span class="seo-dir-count">{sum(len(intl[c]) for c in country_keys)}</span></h3>\n'
+            + "\n".join(country_blocks)
+            + "\n        </div>"
+        )
+
+    block = "\n        ".join(parts)
     pattern = re.compile(
-        r'(<ul class="seo-dir-grid" id="seo-venue-directory">)([\s\S]*?)(</ul>)',
+        r'(<!-- SEO:DIR-BODY:START -->)([\s\S]*?)(<!-- SEO:DIR-BODY:END -->)',
         re.M,
     )
     if not pattern.search(html):
-        print("  WARN: landing directory marker not found")
-        return
-    html = pattern.sub(rf"\1\n          {block}\n        \3", html)
+        # Fallback: replace old flat ul if markers missing
+        pattern_old = re.compile(
+            r'(<ul class="seo-dir-grid" id="seo-venue-directory">)([\s\S]*?)(</ul>)',
+            re.M,
+        )
+        if not pattern_old.search(html):
+            print("  WARN: landing directory marker not found")
+            return
+        html = pattern_old.sub(
+            f'<!-- SEO:DIR-BODY:START -->\n        <div id="seo-venue-directory" class="seo-dir-body">\n        {block}\n        </div>\n        <!-- SEO:DIR-BODY:END -->',
+            html,
+            count=1,
+        )
+    else:
+        html = pattern.sub(
+            rf"\1\n        <div id=\"seo-venue-directory\" class=\"seo-dir-body\">\n        {block}\n        </div>\n        \3",
+            html,
+        )
     index.write_text(html, encoding="utf-8")
-    print("  patched landing venue directory")
+    print("  patched landing venue directory (grouped)")
 
 
 def patch_places_data_hrefs(venues: list[dict]) -> None:
