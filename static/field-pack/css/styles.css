@@ -1423,10 +1423,13 @@ a {
   .ps-talk-list {
     margin: 0;
     padding-left: 1.1em;
-    font-size: 9.5pt;
+    font-size: 8.5pt;
     font-weight: 650;
     color: #1a2b3c;
-    line-height: 1.28;
+    line-height: 1.22;
+  }
+  .ps-talk-list li:nth-child(n+5) {
+    /* keep sixth prompt readable but compact */
   }
   .ps-talk-list li {
     margin: 0 0 2px;
@@ -1508,9 +1511,19 @@ a {
   .ps-card {
     border: 1.5px solid #1f6b4a;
     border-radius: 7px;
-    padding: 5px 7px 4px;
+    padding: 4px 6px 3px;
     break-inside: avoid;
     min-height: 0;
+  }
+  .ps-page-with-photo .ps-card {
+    padding: 3px 5px 2px;
+  }
+  .ps-page-with-photo .ps-q {
+    font-size: 8.5pt;
+  }
+  .ps-page-with-photo .ps-choice {
+    font-size: 7.5pt;
+    padding: 1px 0;
   }
 
   .ps-card.c0 { background: #ffe4c4; }

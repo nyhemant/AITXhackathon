@@ -150,12 +150,61 @@
    */
   function talkPackFor(item, venue, age) {
     const band = QA_AGE_ORDER.includes(age) ? age : "4-5";
-    const prompts = floorPromptsFor(item, venue, band);
+    const prompts = floorPromptsFor(item, venue, band).slice(0, 6);
+    while (prompts.length < 6) {
+      prompts.push(padPromptLine(item, venue, band, prompts.length));
+    }
     const label = talkLevelLabel(band);
     const kicker = qaKickerFor(band);
     const base = missionsFor(venue) || [];
     const byId = Object.fromEntries(base.map((m) => [m.id, m]));
     const clone = (m, patch) => Object.assign({}, m, patch || {});
+    const rewriteQ = {
+      food: {
+        "4-5": "What do they eat?",
+        "6-8": "What clues show what they eat?",
+      },
+      home: {
+        "4-5": "Where is home?",
+        "6-8": "What habitat clues do you see here?",
+      },
+      superpower: {
+        "4-5": "What is their superpower?",
+        "6-8": "What body tool is working hardest right now?",
+      },
+      grow: {
+        "4-5": "Baby or grown-up?",
+        "6-8": "Baby, young, or grown — and how can you tell?",
+      },
+      cam: {
+        "4-5": "Did we see one live?",
+        "6-8": "Live here, on a cam, or not today — what is true?",
+      },
+      teach: {
+        "4-5": "I want to teach about…",
+        "6-8": "What would you teach a friend in one sentence?",
+      },
+      try: {
+        "4-5": "What did I do here?",
+        "6-8": "What did you actually do at this stop?",
+      },
+      body: {
+        "4-5": "How did I move?",
+        "6-8": "How did your body work here?",
+      },
+      senses: {
+        "4-5": "What did I notice?",
+        "6-8": "Which sense told you the most?",
+      },
+      feel: {
+        "4-5": "How did it feel?",
+        "6-8": "What feeling stuck with you — and why?",
+      },
+      again: {
+        "4-5": "Would I do this again?",
+        "6-8": "Would you come back — favorite, once more, or skip?",
+      },
+    };
 
     let missions = [];
     if (band === "bonus" || band === "alpha") {
@@ -164,7 +213,7 @@
         band === "alpha"
           ? ["I noticed something real", "Still watching", "Told a grown-up", "Want another look"]
           : ["I spotted it", "Not sure yet", "Told a grown-up", "Want to try later"];
-      missions = prompts.slice(0, 3).map((text, i) => ({
+      missions = prompts.slice(0, 6).map((text, i) => ({
         id: band + "_q" + (i + 1),
         num: String(i + 1),
         title: tag + " " + (i + 1),
@@ -176,108 +225,89 @@
         talkLevel: band,
       }));
     } else if (band === "2-3") {
-      // Little kids: open / simple picks aligned to floor prompts
-      missions = [
-        {
-          id: "little_look",
-          num: "1",
-          title: "Look",
-          question: stripPromptPrefix(prompts[0] || "What do you see?"),
-          choices: ["Big", "Small", "Moving", "Still", "A color", "Not sure"],
-          multi: true,
-          checkable: false,
-          openNote: "Pointing counts!",
-          talkLevel: band,
-        },
-        {
-          id: "little_move",
-          num: "2",
-          title: "Move",
-          question: stripPromptPrefix(prompts[1] || "Is it moving or still?"),
-          choices: ["Moving", "Still", "I copied it", "Too far to see"],
-          multi: true,
-          checkable: false,
-          openNote: "Your body can answer!",
-          talkLevel: band,
-        },
-        {
-          id: "little_say",
-          num: "3",
-          title: "Say",
-          question: stripPromptPrefix(prompts[2] || "What color first?"),
-          choices: ["A color", "A sound", "A feeling", "Told a grown-up"],
-          multi: true,
-          checkable: false,
-          openNote: "Any true answer is great.",
-          talkLevel: band,
-        },
+      const littleMeta = [
+        { id: "little_look", title: "Look", choices: ["Big", "Small", "Moving", "Still", "A color", "Not sure"] },
+        { id: "little_move", title: "Move", choices: ["Moving", "Still", "I copied it", "Too far to see"] },
+        { id: "little_say", title: "Say", choices: ["A color", "A sound", "A feeling", "Told a grown-up"] },
+        { id: "little_touch", title: "Soft", choices: ["Looks soft", "Looks rough", "Looks wet", "Not sure"] },
+        { id: "little_friend", title: "Friend", choices: ["I like it", "A little scary", "Funny", "Quiet"] },
+        { id: "little_again", title: "Again", choices: ["See again!", "Maybe later", "All done", "Photo time"] },
       ];
-    } else if (band === "6-8") {
-      // Bigger kids: fuller pick-ones (keep catalog ids for answer keys)
-      const order = ["food", "home", "superpower", "grow", "try", "body", "senses"];
-      const picked = [];
-      for (const id of order) {
-        if (byId[id]) picked.push(byId[id]);
-        if (picked.length >= 4) break;
-      }
-      if (!picked.length) picked.push(...base.slice(0, 4));
-      missions = picked.map((m, i) =>
-        clone(m, {
-          num: String(i + 1),
-          question:
-            m.id === "food"
-              ? "What clues show what they eat?"
-              : m.id === "home"
-                ? "What habitat clues do you see here?"
-                : m.id === "superpower"
-                  ? "What body tool is working hardest right now?"
-                  : m.id === "grow"
-                    ? "Baby, young, or grown — and how can you tell?"
-                    : m.id === "try"
-                      ? "What did you actually do at this stop?"
-                      : m.id === "body"
-                        ? "How did your body work here?"
-                        : m.question,
-          talkLevel: band,
-        })
-      );
+      missions = littleMeta.map((meta, i) => ({
+        id: meta.id,
+        num: String(i + 1),
+        title: meta.title,
+        question: stripPromptPrefix(prompts[i] || meta.title + "?"),
+        choices: meta.choices,
+        multi: true,
+        checkable: false,
+        openNote: "Pointing and talking both count!",
+        talkLevel: band,
+      }));
     } else {
-      // 4-5 default: classic 3 checkable cores, simpler wording
-      const order = venue && venue.packTemplate === "exhibits" ? ["try", "body", "senses"] : ["food", "home", "superpower"];
+      // 4-5 and 6-8: full catalog set (6 missions)
+      const animalOrder = ["food", "home", "superpower", "grow", "cam", "teach"];
+      const exhibitOrder = ["try", "body", "senses", "feel", "again", "teach"];
+      const order =
+        venue && venue.packTemplate === "exhibits" ? exhibitOrder : animalOrder;
       const picked = [];
       for (const id of order) {
         if (byId[id]) picked.push(byId[id]);
       }
-      if (!picked.length) picked.push(...base.slice(0, 3));
-      missions = picked.map((m, i) =>
-        clone(m, {
-          num: String(i + 1),
-          question:
-            m.id === "food"
-              ? "What do they eat?"
-              : m.id === "home"
-                ? "Where is home?"
-                : m.id === "superpower"
-                  ? "What is their superpower?"
-                  : m.id === "try"
-                    ? "What did I do here?"
-                    : m.id === "body"
-                      ? "How did I move?"
-                      : m.id === "senses"
-                        ? "What did I notice?"
-                        : m.question,
-          talkLevel: band,
-        })
-      );
+      // fill any missing slots from remaining base
+      for (const m of base) {
+        if (picked.length >= 6) break;
+        if (!picked.some((x) => x.id === m.id)) picked.push(m);
+      }
+      if (!picked.length) picked.push(...base.slice(0, 6));
+      missions = picked.slice(0, 6).map((m, i) => {
+        const qmap = rewriteQ[m.id];
+        const q = (qmap && qmap[band]) || m.question;
+        return clone(m, { num: String(i + 1), question: q, talkLevel: band });
+      });
     }
 
     return {
       level: band,
       label,
       kicker,
-      prompts,
-      missions,
+      prompts: prompts.slice(0, 6),
+      missions: missions.slice(0, 6),
     };
+  }
+
+  function padPromptLine(item, venue, band, index) {
+    const name = (item && item.name) || "this stop";
+    const place = (venue && (venue.shortName || venue.name)) || "here";
+    const extras = {
+      "2-3": [
+        `Can you find the eyes on the ${name}?`,
+        `Is the ${name} alone or with friends?`,
+        `Would you say hi soft or loud?`,
+      ],
+      "4-5": [
+        `What is one thing the ${name} is doing right now?`,
+        `What would you tell a friend about ${name}?`,
+        `Find something big and something small near ${name}.`,
+      ],
+      "6-8": [
+        `What problem does ${name} solve with its body or design?`,
+        `Compare two details — which surprised you more?`,
+        `If you only had one photo at ${place}, what would you capture?`,
+      ],
+      bonus: [
+        `What’s a detail most visitors miss at ${name}?`,
+        `If ${name} could change one thing about this habitat, what?`,
+        `Teach a grown-up one true thing you just proved with your eyes.`,
+      ],
+      alpha: [
+        `ALPHA · 20s watch: write one measurement word (fast, slow, high, low…).`,
+        `ALPHA · Counterfactual: what if ${name} were nocturnal — what changes?`,
+        `ALPHA · One-sentence field note you’d put in a scientist’s notebook.`,
+      ],
+    };
+    const list = extras[band] || extras["4-5"];
+    return list[index % list.length];
   }
 
   /** One active outing per venue — auto featured shortlist */
@@ -1018,39 +1048,63 @@
     return null;
   }
 
+  function finishSixPrompts(list, item, venue, band) {
+    const out = (list || []).slice(0, 6);
+    let i = out.length;
+    while (out.length < 6) {
+      out.push(padPromptLine(item, venue, band, i));
+      i += 1;
+    }
+    return out;
+  }
+
   function bonusPromptsFor(item, venue) {
     const name = item.name || "this stop";
     const tags = itemTags(item);
     const place = (venue && (venue.shortName || venue.name)) || "here";
     const bank = lookupPromptBank(BONUS_WOW, item);
-    if (bank && bank.length) return bank.slice(0, 3);
+    let list = bank && bank.length ? bank.slice() : null;
 
-    if (tags.has("big-cats") || /lion|tiger|cheetah|leopard/i.test(name)) {
-      return [
-        `Big cats hide in plain sight. Where would ${name} vanish in wild cover?`,
-        "Quiet feet + sharp eyes: which body part is the real hunting tool?",
-        `If you only had 60 seconds at ${place}, what one detail would you photograph?`,
-      ];
+    if (!list) {
+      if (tags.has("big-cats") || /lion|tiger|cheetah|leopard/i.test(name)) {
+        list = [
+          `Big cats hide in plain sight. Where would ${name} vanish in wild cover?`,
+          "Quiet feet + sharp eyes: which body part is the real hunting tool?",
+          `If you only had 60 seconds at ${place}, what one detail would you photograph?`,
+          `Watch 15 seconds — is ${name} hunting-energy, rest-energy, or social-energy?`,
+          "Find a camouflage clue: stripes, spots, stillness, or shadow.",
+          `What would you put on a warning sign for animals that meet ${name}?`,
+        ];
+      } else if (tags.has("water") || isAquariumVenue(venue)) {
+        list = [
+          `Water is thicker than air. How does ${name} move differently than a land animal?`,
+          "Find one adaptation for breathing, steering, or staying hidden.",
+          "What’s the quietest thing happening in this tank right now?",
+          "Count a pass or pulse — how many in about 15 seconds (best guess)?",
+          "Where is the best hidey spot in this tank or pool?",
+          `If you were ${name} for a day, what would annoy you about visitors?`,
+        ];
+      } else if (isMuseumVenue(venue) || tags.has("read") || tags.has("hands")) {
+        list = [
+          `What’s the one design choice at “${name}” that makes kids stop walking?`,
+          "If you had to explain this stop in one sentence to a friend, what would you say?",
+          "Find a detail most visitors walk past — label, texture, or hidden model.",
+          "What did your hands or body do here (or wish they could)?",
+          "What question is this exhibit trying to answer?",
+          "What would you add to make this stop even clearer for a tired grown-up?",
+        ];
+      } else {
+        list = [
+          `What’s the strangest true thing you can spot about ${name} in 30 seconds?`,
+          "If this animal (or exhibit) could talk, what would it complain about today?",
+          `Why is ${name} a highlight of ${place} — not just “another stop”?`,
+          `What is ${name} doing with its body right now?`,
+          "Find something tiny near something huge.",
+          "Teach a grown-up one fact you didn’t know before today.",
+        ];
+      }
     }
-    if (tags.has("water") || isAquariumVenue(venue)) {
-      return [
-        `Water is thicker than air. How does ${name} move differently than a land animal?`,
-        "Find one adaptation for breathing, steering, or staying hidden.",
-        "What’s the quietest thing happening in this tank right now?",
-      ];
-    }
-    if (isMuseumVenue(venue) || tags.has("read") || tags.has("hands")) {
-      return [
-        `What’s the one design choice at “${name}” that makes kids stop walking?`,
-        "If you had to explain this stop in one sentence to a friend, what would you say?",
-        "Find a detail most visitors walk past — label, texture, or hidden model.",
-      ];
-    }
-    return [
-      `What’s the strangest true thing you can spot about ${name} in 30 seconds?`,
-      "If this animal (or exhibit) could talk, what would it complain about today?",
-      `Why is ${name} a highlight of ${place} — not just “another stop”?`,
-    ];
+    return finishSixPrompts(list, item, venue, "bonus");
   }
 
   function alphaPromptsFor(item, venue) {
@@ -1058,34 +1112,48 @@
     const tags = itemTags(item);
     const place = (venue && (venue.shortName || venue.name)) || "here";
     const bank = lookupPromptBank(ALPHA_WOW, item);
-    if (bank && bank.length) return bank.slice(0, 3);
+    let list = bank && bank.length ? bank.slice() : null;
 
-    if (tags.has("big-cats") || /lion|tiger|cheetah|leopard/i.test(name)) {
-      return [
-        `ALPHA · 30 silent seconds on ${name}: one verb only for what happened.`,
-        "ALPHA · Ambush vs stamina: which body clues say “burst,” not “marathon”?",
-        `ALPHA · Camouflage design: where in wild cover would ${name} disappear first?`,
-      ];
+    if (!list) {
+      if (tags.has("big-cats") || /lion|tiger|cheetah|leopard/i.test(name)) {
+        list = [
+          `ALPHA · 30 silent seconds on ${name}: one verb only for what happened.`,
+          "ALPHA · Ambush vs stamina: which body clues say “burst,” not “marathon”?",
+          `ALPHA · Camouflage design: where in wild cover would ${name} disappear first?`,
+          "ALPHA · Ear/eye check: alert, half-rest, or full nap — evidence?",
+          "ALPHA · Soft pad vs hard claw: when would each matter more?",
+          `ALPHA · Field note: one sentence a zookeeper might write about ${name} today.`,
+        ];
+      } else if (tags.has("water") || isAquariumVenue(venue)) {
+        list = [
+          `ALPHA · Hydrodynamics: name two body parts that cut drag or steer for ${name}.`,
+          "ALPHA · 20s stillness test: what moved first — animal, water, or reflection?",
+          "ALPHA · Sensory swap: if you lost sight, what non-eye sense would save you here?",
+          "ALPHA · Pass/pulse count in 30s (best estimate) — write the number.",
+          "ALPHA · Best hide score 1–10 and name the background it matches.",
+          "ALPHA · Teach-back in 12 words: how this body works in water.",
+        ];
+      } else if (isMuseumVenue(venue) || tags.has("read") || tags.has("hands")) {
+        list = [
+          `ALPHA · Mechanism: what invisible force or idea is “${name}” really about?`,
+          "ALPHA · Fair test: what would you change twice to check the result isn’t luck?",
+          "ALPHA · Overlook: find a label or texture most visitors skip — read it aloud softly.",
+          "ALPHA · Variable hunt: what can you change vs what stays fixed?",
+          "ALPHA · Scale check: what is bigger or smaller than you expected?",
+          "ALPHA · Explain it to a 6-year-old in one breath.",
+        ];
+      } else {
+        list = [
+          `ALPHA · 30s scientist mode on ${name}: write one careful observation (not a feeling).`,
+          `ALPHA · Counterfactual: if ${name} vanished from ${place}, what story would be missing?`,
+          "ALPHA · Teach-back: explain this stop in 12 words or fewer to a grown-up.",
+          "ALPHA · Pattern or texture match: find two similar details in different places.",
+          "ALPHA · Energy budget: rest, move, or social — which wins this minute?",
+          "ALPHA · One question you’d ask a keeper (write it even if you don’t ask).",
+        ];
+      }
     }
-    if (tags.has("water") || isAquariumVenue(venue)) {
-      return [
-        `ALPHA · Hydrodynamics: name two body parts that cut drag or steer for ${name}.`,
-        "ALPHA · 20s stillness test: what moved first — animal, water, or reflection?",
-        "ALPHA · Sensory swap: if you lost sight, what non-eye sense would save you here?",
-      ];
-    }
-    if (isMuseumVenue(venue) || tags.has("read") || tags.has("hands")) {
-      return [
-        `ALPHA · Mechanism: what invisible force or idea is “${name}” really about?`,
-        "ALPHA · Fair test: what would you change twice to check the result isn’t luck?",
-        "ALPHA · Overlook: find a label or texture most visitors skip — read it aloud softly.",
-      ];
-    }
-    return [
-      `ALPHA · 30s scientist mode on ${name}: write one careful observation (not a feeling).`,
-      `ALPHA · Counterfactual: if ${name} vanished from ${place}, what story would be missing?`,
-      "ALPHA · Teach-back: explain this stop in 12 words or fewer to a grown-up.",
-    ];
+    return finishSixPrompts(list, item, venue, "alpha");
   }
 
   function floorPromptsFor(item, venue, age) {
@@ -1102,47 +1170,95 @@
 
     if (band === "2-3") {
       if (museum) {
-        return [
-          `Point to something at ${name}. Big or small?`,
-          "Can you copy a move — climb, reach, or tiptoe?",
-          "Make a sound or a quiet face for what you saw.",
-        ];
+        return finishSixPrompts(
+          [
+            `Point to something at ${name}. Big or small?`,
+            "Can you copy a move — climb, reach, or tiptoe?",
+            "Make a sound or a quiet face for what you saw.",
+            "What color jumps out first?",
+            "Is it loud here or quiet?",
+            "Show me your favorite part with a point.",
+          ],
+          item,
+          venue,
+          band
+        );
       }
-      return [
-        `Find the ${name}. Wave or point!`,
-        "Is it moving or still? Show me with your body.",
-        "What color do you see first?",
-      ];
+      return finishSixPrompts(
+        [
+          `Find the ${name}. Wave or point!`,
+          "Is it moving or still? Show me with your body.",
+          "What color do you see first?",
+          "Can you find the eyes? The nose? The feet?",
+          "Is it alone or with friends?",
+          "Would you say hi soft or loud?",
+        ],
+        item,
+        venue,
+        band
+      );
     }
 
     if (band === "6-8") {
       if (museum) {
-        return [
-          `What problem does “${name}” help you understand?`,
-          "Compare two parts of this stop — which surprised you more?",
-          "Teach a friend one fact you’d actually remember tomorrow.",
-        ];
+        return finishSixPrompts(
+          [
+            `What problem does “${name}” help you understand?`,
+            "Compare two parts of this stop — which surprised you more?",
+            "Teach a friend one fact you’d actually remember tomorrow.",
+            "What would you change to make this clearer?",
+            "What did your hands or eyes do that felt scientific?",
+            "One sentence: why does this stop matter?",
+          ],
+          item,
+          venue,
+          band
+        );
       }
-      return [
-        `How is ${name} built for its job${power ? ` (think: ${power})` : ""}?`,
-        food ? `What clue says it might eat like “${food}”?` : `What would ${name} eat — and how can you tell?`,
-        home ? `Home is like “${home}”. What here matches that habitat?` : `Where would ${name} hide or rest in the wild?`,
-      ];
+      return finishSixPrompts(
+        [
+          `How is ${name} built for its job${power ? ` (think: ${power})` : ""}?`,
+          food ? `What clue says it might eat like “${food}”?` : `What would ${name} eat — and how can you tell?`,
+          home ? `Home is like “${home}”. What here matches that habitat?` : `Where would ${name} hide or rest in the wild?`,
+          `Watch 20 seconds — what is ${name} doing with its body?`,
+          "Find two different textures or patterns nearby.",
+          "What would you put on a kid label that isn’t here yet?",
+        ],
+        item,
+        venue,
+        band
+      );
     }
 
     // 4-5 kids (default)
     if (museum) {
-      return [
-        `What did you try or notice at ${name}?`,
-        "How did your body move — climb, hands, quiet look?",
-        "Tell a grown-up one thing you discovered.",
-      ];
+      return finishSixPrompts(
+        [
+          `What did you try or notice at ${name}?`,
+          "How did your body move — climb, hands, quiet look?",
+          "Tell a grown-up one thing you discovered.",
+          "What color or sound stands out?",
+          "Was anything tricky or surprising?",
+          "Would you do this stop again — yes, maybe, or later?",
+        ],
+        item,
+        venue,
+        band
+      );
     }
-    return [
-      `What do you notice about the ${name}?`,
-      "How does it move — or stay still?",
-      food ? `What might it eat? (Hint family: ${food})` : "What might it eat?",
-    ];
+    return finishSixPrompts(
+      [
+        `What do you notice about the ${name}?`,
+        "How does it move — or stay still?",
+        food ? `What might it eat? (Hint family: ${food})` : "What might it eat?",
+        home ? `Does this place feel like “${home}”?` : "Where might it sleep or hide?",
+        "What is one color you see on its body?",
+        "Tell a grown-up your favorite thing about it.",
+      ],
+      item,
+      venue,
+      band
+    );
   }
 
   function qaKickerFor(age) {

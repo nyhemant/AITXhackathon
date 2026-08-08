@@ -389,11 +389,10 @@
     const o = opts || {};
     const answerMap = o.answers || {};
     // Prefer caller-supplied missions (talk-level pack); else venue defaults
-    const missions = Array.isArray(o.missions) && o.missions.length ? o.missions : missionsFor(venue);
-    const prompts = Array.isArray(o.prompts) ? o.prompts : [];
+    const missions = (Array.isArray(o.missions) && o.missions.length ? o.missions : missionsFor(venue)).slice(0, 6);
+    const prompts = (Array.isArray(o.prompts) ? o.prompts : []).slice(0, 6);
     const talkLabel = o.talkLabel || o.talkLevel || "";
     const cards = missions
-      .slice(0, 6)
       .map((mission, index) => {
         const mid = mission.id || String(index);
         const selected = new Set(answerMap[mid] || answerMap[mission.id] || []);
@@ -420,7 +419,7 @@
         ? `<div class="ps-talk">
             <p class="ps-talk-label">${escapeHtml(talkLabel ? talkLabel + " · talk prompts" : "Talk prompts")}</p>
             <ol class="ps-talk-list">${prompts
-              .slice(0, 4)
+              .slice(0, 6)
               .map((t) => `<li>${escapeHtml(String(t).replace(/^ALPHA · /, "").replace(/^★ /, ""))}</li>`)
               .join("")}</ol>
           </div>`
