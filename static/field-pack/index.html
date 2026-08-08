@@ -30,7 +30,7 @@
     <base href="/field-pack/" />
     <link rel="stylesheet" href="/shell/shell.css?v=5" />
     <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
-    <link rel="stylesheet" href="/field-pack/css/landing.css?v=52" />
+    <link rel="stylesheet" href="/field-pack/css/landing.css?v=53" />
     <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=15" />
     <script type="application/ld+json">
       {
@@ -233,7 +233,7 @@
       <section class="map-section map-first" id="us-map" aria-labelledby="map-heading">
         <h2 id="map-heading" class="sr-only">Explore places on the map</h2>
 
-        <div class="map-shell">
+        <div class="map-shell map-shell-full">
           <div class="map-canvas-wrap map-canvas-invite">
             <div class="map-overlay-tl no-print">
               <div class="scope-toggle" role="group" aria-label="Map coverage">
@@ -252,12 +252,9 @@
                 <p class="map-loading">Loading map…</p>
               </div>
             </div>
+            <!-- Float on map only when a pin is selected (empty = hidden; count lives under map) -->
+            <div id="pin-detail" class="pin-detail map-pin-card empty" hidden aria-live="polite"></div>
           </div>
-          <aside class="map-side" aria-live="polite">
-            <div id="pin-detail" class="pin-detail empty" aria-label="Tap a pin for a short list and hunt">
-              <p class="pd-empty-line">Tap a pin for a short list and hunt.</p>
-            </div>
-          </aside>
         </div>
 
         <!-- City jumps + optional filters (one discovery path under the map) -->
@@ -533,7 +530,7 @@
     <script src="/field-pack/js/print-maps.js?v=2"></script>
     <script src="/field-pack/js/print-kit.js?v=8"></script>
     <script src="/field-pack/js/mission-pilots.js?v=4"></script>
-    <script src="/field-pack/js/landing-map.js?v=55"></script>
+    <script src="/field-pack/js/landing-map.js?v=56"></script>
     <script src="/field-pack/js/landing-hook.js?v=14"></script>
   </body>
 </html>

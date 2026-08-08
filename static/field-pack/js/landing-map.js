@@ -1170,7 +1170,7 @@
       places[0].region === "dfw" || ["Dallas", "Fort Worth"].includes(places[0].city)
         ? "Dallas–Fort Worth area"
         : city;
-    detail.className = "pin-detail";
+    revealPinCard("pin-detail map-pin-card", `${places.length} places — pick one`);
     detail.innerHTML = `
       <div class="pd-title-row">
         <h3>${escapeHtml(area)}</h3>
@@ -1207,11 +1207,17 @@
   }
 
   function showOverview() {
-    const n = filteredPlaces().length;
-    detail.className = "pin-detail empty";
-    // One quiet line (not three) — product is already explained above the map
-    detail.innerHTML = `<p class="pd-empty-line">${n} places — tap a pin for a short list and hunt.</p>`;
-    detail.setAttribute("aria-label", `${n} places. Tap a pin for a short list and hunt.`);
+    // Full-width map: no empty side panel. Place count is under the map (#map-count).
+    detail.className = "pin-detail map-pin-card empty";
+    detail.innerHTML = "";
+    detail.hidden = true;
+    detail.removeAttribute("aria-label");
+  }
+
+  function revealPinCard(className, ariaLabel) {
+    detail.hidden = false;
+    detail.className = className;
+    if (ariaLabel) detail.setAttribute("aria-label", ariaLabel);
   }
 
   function catalogVenue(venueId) {
@@ -1263,7 +1269,7 @@
       return;
     }
     selectedVenueId = venueId;
-    detail.className = "pin-detail pin-detail-rich";
+    revealPinCard("pin-detail map-pin-card pin-detail-rich", p.name || "Selected place");
     const blurb = (p.blurb || "").trim();
     const ven = catalogVenue(venueId);
     const canPrintHunt = Boolean(ven && (ven.treasureHunt || []).length);
