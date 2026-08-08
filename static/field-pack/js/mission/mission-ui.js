@@ -108,7 +108,8 @@
   let venue = null;
   let challenges = null;
   let wonders = null;
-  let state = { age: "4-5", time: "half", interest: "", name: "", seed: 1 };
+  let bonusHunts = null;
+  let state = { age: "4-5", time: "half", interest: "", name: "", seed: 1, hunt: "classic" };
   let lastMission = null;
   let genTimer = null;
   let lastFocus = null;
@@ -130,6 +131,14 @@
     if (t === "1hr") return "90m";
     if (t === "90m" || t === "half" || t === "full") return t;
     return "half";
+  }
+
+  function normalizeHuntKey(raw) {
+    if (window.FPMission && typeof window.FPMission.normalizeHunt === "function") {
+      return window.FPMission.normalizeHunt(raw);
+    }
+    const h = String(raw || "classic").toLowerCase();
+    return h === "bonus" || h === "hard" ? "bonus" : "classic";
   }
 
   function setSegActive(rootSel, attr, value) {
@@ -183,11 +192,21 @@
     const meta = $("#mission-meta");
     const findsEl = $("#mission-finds");
     const chEl = $("#mission-challenges");
+    const sheet = $("#mission-sheet");
     if (title) title.textContent = mission.title;
     if (meta) {
-      const mode = mission.contentMode === "wonder" ? " · Flexible finds" : "";
-      meta.textContent = `${mission.ageLabel} · ${mission.timeLabel}${mode}`;
+      const parts = [mission.ageLabel, mission.timeLabel];
+      if (mission.hunt === "bonus") parts.push(mission.huntLabel || "Bonus hunt");
+      else if (mission.contentMode === "wonder") parts.push("Flexible finds");
+      if (mission.huntTagline && mission.hunt === "bonus") {
+        meta.innerHTML = `${esc(parts.join(" · "))}<br><span class="ms-hunt-tag">${esc(
+          mission.huntTagline
+        )}</span>`;
+      } else {
+        meta.textContent = parts.join(" · ");
+      }
     }
+    if (sheet) sheet.classList.toggle("ms-sheet-bonus", mission.hunt === "bonus");
     setSectionHeadings(mission);
     syncAudienceChrome(mission);
     if (findsEl) {
@@ -216,17 +235,37 @@
     }
     const ver = $("#mission-verified");
     if (ver) ver.textContent = statusLineFromVenue(venue);
-    const sheet = $("#mission-sheet");
-    if (sheet && !sheet.querySelector(".ms-favorite")) {
+    const sheetEl = $("#mission-sheet");
+    // Easter egg line (bonus hunt)
+    let egg = sheetEl && sheetEl.querySelector(".ms-easter-egg");
+    if (sheetEl) {
+      if (mission.easterEgg) {
+        if (!egg) {
+          egg = document.createElement("p");
+          egg.className = "ms-easter-egg";
+          const foot = sheetEl.querySelector(".ms-footer");
+          if (foot) sheetEl.insertBefore(egg, foot);
+          else sheetEl.appendChild(egg);
+        }
+        egg.hidden = false;
+        egg.innerHTML = `<span class="mission-check" aria-hidden="true">☐</span> ${esc(
+          mission.easterEgg
+        )}`;
+      } else if (egg) {
+        egg.hidden = true;
+        egg.textContent = "";
+      }
+    }
+    if (sheetEl && !sheetEl.querySelector(".ms-favorite")) {
       const fav = document.createElement("p");
       fav.className = "ms-favorite";
       fav.textContent =
         mission.audience === "adult"
           ? "I'd recommend _______________________ to a friend"
           : "My favorite was _______________________";
-      const foot = sheet.querySelector(".ms-footer");
-      if (foot) sheet.insertBefore(fav, foot);
-      else sheet.appendChild(fav);
+      const foot = sheetEl.querySelector(".ms-footer");
+      if (foot) sheetEl.insertBefore(fav, foot);
+      else sheetEl.appendChild(fav);
     }
     renderMapHint(/* forPrint */ false);
   }
@@ -308,6 +347,7 @@
       venue: mission.slug,
       age_band: mission.age,
       time_budget: mission.time,
+      hunt_style: mission.hunt || "classic",
       personalized: mission.personalized ? "1" : "0",
     });
     // Swap map to full print layout before browser print
@@ -336,23 +376,33 @@
     state.interest = interestEl ? interestEl.value : "";
     state.age = normalizeAgeKey(state.age);
     state.time = normalizeTimeKey(state.time);
+    state.hunt = normalizeHuntKey(state.hunt);
   }
 
   /** Paint page bar + drawer chips from `state` (single source of truth). */
   function syncChipChrome() {
     state.age = normalizeAgeKey(state.age);
     state.time = normalizeTimeKey(state.time);
+    state.hunt = normalizeHuntKey(state.hunt);
     setSegActive(".seo-age-chip", "data-age", state.age);
     setSegActive(".seo-time-chip", "data-time", state.time);
     setSegActive("#mission-who-seg .mission-seg-btn", "data-age", state.age);
     setSegActive("#mission-time-seg .mission-seg-btn", "data-time", state.time);
+    setSegActive(".seo-hunt-chip, #mission-hunt-seg .mission-seg-btn", "data-hunt", state.hunt);
+    document.body.classList.toggle("mission-hunt-bonus", state.hunt === "bonus");
   }
 
   function recompute(fromShuffle) {
     if (!venue || !challenges || !window.FPMission) return;
     readTextControls();
     syncChipChrome();
-    lastMission = window.FPMission.selectMission(venue, challenges, state, wonders);
+    lastMission = window.FPMission.selectMission(
+      venue,
+      challenges,
+      state,
+      wonders,
+      bonusHunts || (typeof window !== "undefined" ? window.FP_BONUS_HUNTS : null)
+    );
     renderSheet(lastMission);
     if (genTimer) clearTimeout(genTimer);
     genTimer = setTimeout(() => {
@@ -360,6 +410,7 @@
         venue: venue.slug,
         age_band: state.age,
         time_budget: state.time,
+        hunt_style: state.hunt || "classic",
         interest: state.interest || "any",
         personalized: state.name.trim() ? "1" : "0",
         shuffle: fromShuffle ? "1" : "0",
@@ -428,6 +479,14 @@
         recompute(false);
       });
     });
+    document.querySelectorAll(".seo-hunt-chip, #mission-hunt-seg .mission-seg-btn").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        state.hunt = normalizeHuntKey(btn.getAttribute("data-hunt") || "classic");
+        syncChipChrome();
+        recompute(false);
+      });
+    });
     $("#mission-print-btn")?.addEventListener("click", () => {
       if (lastMission) printMission(lastMission);
       else window.print();
@@ -468,11 +527,14 @@
     const dataEl = document.getElementById("venue-data");
     const chEl = document.getElementById("challenges-data");
     const wEl = document.getElementById("wonders-data");
+    const bEl = document.getElementById("bonus-hunts-data");
     if (!dataEl || !window.FPMission) return;
     try {
       venue = JSON.parse(dataEl.textContent);
       challenges = chEl ? JSON.parse(chEl.textContent) : { challenges: [] };
       wonders = wEl ? JSON.parse(wEl.textContent) : null;
+      bonusHunts = bEl ? JSON.parse(bEl.textContent) : window.FP_BONUS_HUNTS || null;
+      if (bonusHunts) window.FP_BONUS_HUNTS = bonusHunts;
     } catch (e) {
       console.error(e);
       return;
@@ -480,6 +542,7 @@
     populateInterest();
     state.age = "4-5";
     state.time = "half";
+    state.hunt = "classic";
     wireControls();
     // Precompute default sheet (in drawer DOM) for print/SEO consistency
     recompute(false);

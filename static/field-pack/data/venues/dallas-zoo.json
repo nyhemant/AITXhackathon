@@ -337,5 +337,99 @@
     "https://www.dallaszoo.com/support-the-zoo/adopt-an-animal/",
     "https://www.dallaszoo.com/protecting-the-twelve/",
     "https://www.dallaszoo.com/explore-the-zoo/encounters-experiences/"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "Dallas bonus · ZooNorth + savanna secrets",
+    "find_ids": [
+      "penguin",
+      "cheetah",
+      "hippo",
+      "tortoise",
+      "gorilla",
+      "flamingo",
+      "tiger",
+      "giraffe"
+    ],
+    "challenges": [
+      {
+        "id": "dz_penguin_dive",
+        "text": "Penguins: watch one dive or zoom in the water for a full 10 seconds",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "dz_elephant_mud",
+        "text": "Giants of the Savanna: spot mud, dust, or water play on an elephant (or the ground near them)",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "dz_giraffe_ridge",
+        "text": "Giraffe Ridge: find something taller than the fence line (animal or structure)",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "dz_silverback",
+        "text": "Gorilla Trail: who has big-silverback energy? Point and say why",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "dz_two_patterns",
+        "text": "Find zebra stripes AND tiger stripes — which pattern looks busier?",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "dz_hippo_still",
+        "text": "Hippo stop: mostly underwater, mud, or out? Guess why",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "dz_flock",
+        "text": "Flamingos: count five birds without double-counting",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "dz_little_map",
+        "text": "Roar once near lions, then tip-toe past something resting",
+        "age_fit": [
+          "2-3"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find a ZooNorth sign or map — name one animal that lives that way",
+    "easter_egg_little": "★ Easter egg: Children's Zoo only after the hard list — one free play minute",
+    "researched": "2026-08-08",
+    "sources": [
+      "dallaszoo.com habitats: Giants of the Savanna, Giraffe Ridge, Gorilla Trail, penguin colony / ZooNorth"
+    ]
+  }
 }

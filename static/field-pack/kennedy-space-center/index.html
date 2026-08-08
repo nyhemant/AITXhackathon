@@ -22,8 +22,8 @@
   <link rel="stylesheet" href="/shell/shell.css?v=5" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=64" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=28" />
-  <link rel="stylesheet" href="/field-pack/css/mission.css?v=13" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=29" />
+  <link rel="stylesheet" href="/field-pack/css/mission.css?v=14" />
   <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "HowTo", "name": "Kennedy Space Center Scavenger Hunt for Kids (Free Printable)", "description": "Printable Kennedy Space Center scavenger hunt for kids in Merritt Island. Short list + one-page mission — Field Trip Kit.", "totalTime": "PT2H", "tool": [{"@type": "HowToTool", "name": "Printed one-page hunt sheet"}], "step": [{"@type": "HowToStep", "position": 1, "text": "Find a rocket taller than a house"}, {"@type": "HowToStep", "position": 2, "text": "Spot an astronaut suit"}, {"@type": "HowToStep", "position": 3, "text": "See a spacecraft up close"}, {"@type": "HowToStep", "position": 4, "text": "Find a countdown or launch clue"}, {"@type": "HowToStep", "position": 5, "text": "Point to Earth or the Moon"}, {"@type": "HowToStep", "position": 6, "text": "Try a hands-on space activity"}, {"@type": "HowToStep", "position": 7, "text": "Hear a space story or film clip"}, {"@type": "HowToStep", "position": 8, "text": "Pick your favorite — draw it later"}], "url": "https://1less.app/field-pack/kennedy-space-center/"}
   </script>
@@ -88,9 +88,16 @@
                 <button type="button" class="seo-time-chip" data-time="full">Full day</button>
               </div>
             </div>
+            <div class="seo-chrome-row seo-chrome-row-hunt">
+              <span class="seo-chrome-k" id="seo-hunt-label">Style</span>
+              <div class="seo-chip-row seo-chip-row-hunt" role="group" aria-labelledby="seo-hunt-label">
+                <button type="button" class="seo-hunt-chip is-active" data-hunt="classic" aria-pressed="true">Classic</button>
+                <button type="button" class="seo-hunt-chip seo-hunt-bonus" data-hunt="bonus">Bonus hunt</button>
+              </div>
+            </div>
           </div>
         </div>
-        <p class="seo-print-fallback no-print">No printer? Open the sheet on your phone, or print later.</p>
+        <p class="seo-print-fallback no-print">No printer? Open the sheet on your phone, or print later. <span class="seo-bonus-hint">Bonus hunt = trickier second-visit finds.</span></p>
         <p class="seo-secondary-links no-print">
           <a href="/field-pack/app.html#/venue/kennedy-space-center">Stops &amp; talk cards</a>
           <span aria-hidden="true"> · </span>
@@ -253,6 +260,14 @@
               <button type="button" class="mission-seg-btn is-active" data-time="half" aria-pressed="true">Half day</button>
               <button type="button" class="mission-seg-btn" data-time="full">Full day</button>
             </div>
+          </div>
+          <div class="mission-field mission-field-hunt">
+            <span class="mission-field-label" id="mission-hunt-label">Mission style</span>
+            <div class="mission-seg" id="mission-hunt-seg" role="group" aria-labelledby="mission-hunt-label">
+              <button type="button" class="mission-seg-btn is-active" data-hunt="classic" aria-pressed="true">Classic</button>
+              <button type="button" class="mission-seg-btn mission-seg-bonus" data-hunt="bonus">Bonus hunt</button>
+            </div>
+            <p class="mission-hunt-hint">Bonus = second visit &amp; curious kids · trickier finds + easter egg</p>
           </div>
           <div class="mission-field">
             <label for="mission-interest">What are they into? <span class="mission-opt">(optional)</span></label>
@@ -610,11 +625,116 @@
   ]
 }
 </script>
+  <script type="application/json" id="bonus-hunts-data">{
+  "version": 1,
+  "description": "Optional Bonus hunt mode for printable missions. Venue keys = slug. Presence still enforced by engine.",
+  "generic": {
+    "tagline": "Second visit · curious explorers",
+    "challenges": [
+      {
+        "id": "bh_overlook",
+        "text": "Find something cool most people walk past without stopping",
+        "age_fit": ["4-5", "6-8", "adult", "2-3"]
+      },
+      {
+        "id": "bh_pattern",
+        "text": "Match two patterns (stripes, spots, or shells) in different places",
+        "age_fit": ["4-5", "6-8", "adult"]
+      },
+      {
+        "id": "bh_quiet",
+        "text": "Stand still 20 seconds somewhere quiet — what do you hear?",
+        "age_fit": ["2-3", "4-5", "6-8", "adult"]
+      },
+      {
+        "id": "bh_tiny_big",
+        "text": "Find something tiny next to something huge",
+        "age_fit": ["2-3", "4-5", "6-8", "adult"]
+      }
+    ],
+    "easter_egg": "Ask a keeper or staff one question — write the answer on the back"
+  },
+  "venues": {
+    "dallas-zoo": {
+      "tagline": "Dallas bonus · ZooNorth + savanna secrets",
+      "sources": [
+        "https://www.dallaszoo.com/",
+        "Giants of the Savanna, Giraffe Ridge, Gorilla Trail, Lacerte Family Children's Zoo, African penguin colony (large flock / dive viewing expansion)"
+      ],
+      "notes": "Researched 2026-08. Prefer less-obvious stops after 1 savanna anchor. Penguins = signature flock; hippo/cheetah/tortoise for second-visit depth. African Shorelines expansion (penguins/flamingos underwater views) underway for later years — keep prompts valid with current colony.",
+      "find_ids": [
+        "penguin",
+        "cheetah",
+        "hippo",
+        "tortoise",
+        "gorilla",
+        "flamingo",
+        "tiger",
+        "giraffe"
+      ],
+      "prefer_catalog_ids": [
+        "african-penguin",
+        "cheetah",
+        "nile-hippo",
+        "galapagos-tortoise",
+        "western-lowland-gorilla",
+        "caribbean-flamingo",
+        "sumatran-tiger",
+        "reticulated-giraffe"
+      ],
+      "challenges": [
+        {
+          "id": "dz_penguin_dive",
+          "text": "Penguins: watch one dive or zoom in the water for a full 10 seconds",
+          "age_fit": ["2-3", "4-5", "6-8", "adult"]
+        },
+        {
+          "id": "dz_elephant_mud",
+          "text": "Giants of the Savanna: spot mud, dust, or water play on an elephant (or the ground near them)",
+          "age_fit": ["4-5", "6-8", "adult"]
+        },
+        {
+          "id": "dz_giraffe_ridge",
+          "text": "Giraffe Ridge: find something taller than the fence line (animal or structure)",
+          "age_fit": ["2-3", "4-5", "6-8", "adult"]
+        },
+        {
+          "id": "dz_silverback",
+          "text": "Gorilla Trail: can you tell who might be the biggest/silverback energy? Point and say why",
+          "age_fit": ["4-5", "6-8", "adult"]
+        },
+        {
+          "id": "dz_two_patterns",
+          "text": "Find zebra stripes AND tiger stripes the same day — which looks busier?",
+          "age_fit": ["4-5", "6-8", "adult"]
+        },
+        {
+          "id": "dz_hippo_still",
+          "text": "Hippo stop: are they mostly underwater, mud, or out? Guess why",
+          "age_fit": ["2-3", "4-5", "6-8", "adult"]
+        },
+        {
+          "id": "dz_flock",
+          "text": "Flamingos: count a group of 5 without pointing twice at the same bird",
+          "age_fit": ["4-5", "6-8", "adult"]
+        },
+        {
+          "id": "dz_little_map",
+          "text": "Little kids: roar once at lions, then tip-toe past something sleeping",
+          "age_fit": ["2-3"]
+        }
+      ],
+      "easter_egg": "★ Easter egg: find a ZooNorth sign or map — tell your grown-up one animal that lives that way",
+      "easter_egg_little": "★ Easter egg: find the Children's Zoo after your hard list — one free play minute"
+    }
+  }
+}
+</script>
   <script src="/shell/shell.js?v=4"></script>
   <script src="/field-pack/js/catalog.js?v=23"></script>
   <script src="/field-pack/js/print-maps.js?v=2"></script>
   <script src="/field-pack/js/print-kit.js?v=9"></script>
-  <script src="/field-pack/js/mission/mission-engine.js?v=10"></script>
-  <script src="/field-pack/js/mission/mission-ui.js?v=17"></script>
+  <script src="/field-pack/js/mission/mission-engine.js?v=11"></script>
+  <script src="/field-pack/js/mission/mission-ui.js?v=18"></script>
 </body>
 </html>

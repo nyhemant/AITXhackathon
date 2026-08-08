@@ -26,6 +26,7 @@ FIELD = REPO / "static" / "field-pack"
 VENUE_DATA_DIR = FIELD / "data" / "venues"
 CHALLENGES_JSON = FIELD / "data" / "challenges.json"
 WONDERS_JSON = FIELD / "data" / "wonders.json"
+BONUS_HUNTS_JSON = FIELD / "data" / "bonus-hunts.json"
 MISSION_ENGINE = FIELD / "js" / "mission" / "mission-engine.js"
 STATIC = REPO / "static"
 CATALOG_JS = FIELD / "js" / "catalog.js"
@@ -636,9 +637,16 @@ def page_mission_chrome_html() -> str:
                 <button type="button" class="seo-time-chip" data-time="full">Full day</button>
               </div>
             </div>
+            <div class="seo-chrome-row seo-chrome-row-hunt">
+              <span class="seo-chrome-k" id="seo-hunt-label">Style</span>
+              <div class="seo-chip-row seo-chip-row-hunt" role="group" aria-labelledby="seo-hunt-label">
+                <button type="button" class="seo-hunt-chip is-active" data-hunt="classic" aria-pressed="true">Classic</button>
+                <button type="button" class="seo-hunt-chip seo-hunt-bonus" data-hunt="bonus">Bonus hunt</button>
+              </div>
+            </div>
           </div>
         </div>
-        <p class="seo-print-fallback no-print">No printer? Open the sheet on your phone, or print later.</p>"""
+        <p class="seo-print-fallback no-print">No printer? Open the sheet on your phone, or print later. <span class="seo-bonus-hint">Bonus hunt = trickier second-visit finds.</span></p>"""
 
 
 def _photo_src(photo: str) -> str:
@@ -818,6 +826,14 @@ def mission_drawer_html(mission_venue: dict, mission: dict) -> str:
               <button type="button" class="mission-seg-btn" data-time="full">Full day</button>
             </div>
           </div>
+          <div class="mission-field mission-field-hunt">
+            <span class="mission-field-label" id="mission-hunt-label">Mission style</span>
+            <div class="mission-seg" id="mission-hunt-seg" role="group" aria-labelledby="mission-hunt-label">
+              <button type="button" class="mission-seg-btn is-active" data-hunt="classic" aria-pressed="true">Classic</button>
+              <button type="button" class="mission-seg-btn mission-seg-bonus" data-hunt="bonus">Bonus hunt</button>
+            </div>
+            <p class="mission-hunt-hint">Bonus = second visit &amp; curious kids · trickier finds + easter egg</p>
+          </div>
           <div class="mission-field">
             <label for="mission-interest">What are they into? <span class="mission-opt">(optional)</span></label>
             <select id="mission-interest">
@@ -938,6 +954,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
     venue_json = json.dumps(mission_venue, ensure_ascii=False)
     challenges_json = CHALLENGES_JSON.read_text(encoding="utf-8")
     wonders_json = WONDERS_JSON.read_text(encoding="utf-8") if WONDERS_JSON.is_file() else "{}"
+    bonus_json = BONUS_HUNTS_JSON.read_text(encoding="utf-8") if BONUS_HUNTS_JSON.is_file() else "{}"
     lead = (
         mission_venue.get("tagline")
         or v.get("blurb")
@@ -969,8 +986,8 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <link rel="stylesheet" href="/shell/shell.css?v=5" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=64" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=28" />
-  <link rel="stylesheet" href="/field-pack/css/mission.css?v=13" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=29" />
+  <link rel="stylesheet" href="/field-pack/css/mission.css?v=14" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
   </script>
@@ -1051,12 +1068,13 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <script type="application/json" id="venue-data">{venue_json}</script>
   <script type="application/json" id="challenges-data">{challenges_json}</script>
   <script type="application/json" id="wonders-data">{wonders_json}</script>
+  <script type="application/json" id="bonus-hunts-data">{bonus_json}</script>
   <script src="/shell/shell.js?v=4"></script>
   <script src="/field-pack/js/catalog.js?v=23"></script>
   <script src="/field-pack/js/print-maps.js?v=2"></script>
   <script src="/field-pack/js/print-kit.js?v=9"></script>
-  <script src="/field-pack/js/mission/mission-engine.js?v=10"></script>
-  <script src="/field-pack/js/mission/mission-ui.js?v=17"></script>
+  <script src="/field-pack/js/mission/mission-engine.js?v=11"></script>
+  <script src="/field-pack/js/mission/mission-ui.js?v=18"></script>
 </body>
 </html>
 """
