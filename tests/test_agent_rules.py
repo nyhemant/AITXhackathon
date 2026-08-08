@@ -403,6 +403,9 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertIn("Domain=1less.app", cookie)
         self.assertIn("Path=/", cookie)
         self.assertIn("SameSite=Lax", cookie)
+        # Readable by shell.js on static field-pack pages (not HttpOnly)
+        self.assertNotIn("HttpOnly", cookie)
+        self.assertIn("Secure", cookie)
 
     def test_chat_recovers_from_stale_session_id_after_server_restart(self):
         SESSIONS.clear()

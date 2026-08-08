@@ -283,7 +283,7 @@ HTML = """<!doctype html>
           </div>
         </div>
       </header>
-      <script src="/shell/shell.js?v=3" defer></script>
+      <script src="/shell/shell.js?v=4" defer></script>
       <header class="hero">
         <div class="brand-lockup">
           <img class="brand-logo brand-logo-wrap" src="/1LessPrimaryLogo.png?v=transparent-square" alt="1Less logo" width="800" height="800" />
@@ -923,10 +923,15 @@ def _html_for_request(cookie_header: str | None) -> str:
 
 
 def _analytics_cookie_header(value: str, host_header: str | None, *, max_age: int) -> str:
-    parts = [f"{ANALYTICS_COOKIE}={value}", f"Max-Age={max_age}", "Path=/", "SameSite=Lax", "HttpOnly"]
+    # Not HttpOnly: static /field-pack pages read this cookie in shell.js so QA
+    # browsing on 1less.app does not inflate GA4 (dinner also injects a head flag).
+    parts = [f"{ANALYTICS_COOKIE}={value}", f"Max-Age={max_age}", "Path=/", "SameSite=Lax"]
     host = (host_header or "").split(":", 1)[0].lower()
     if host == "1less.app" or host.endswith(".1less.app"):
         parts.insert(2, "Domain=1less.app")
+    # Secure on production HTTPS so the cookie is sent only over TLS
+    if host == "1less.app" or host.endswith(".1less.app"):
+        parts.append("Secure")
     return "; ".join(parts)
 
 
@@ -1202,23 +1207,64 @@ class WebHandler(BaseHTTPRequestHandler):
         if enabled:
             cookie = _analytics_cookie_header("on", self.headers.get("Host"), max_age=0)
             status = "included"
-            body = "Google Analytics included for this browser. Visit /analytics/off to exclude testing again."
+            ls_js = "try{localStorage.removeItem('1less_analytics_off')}catch(e){}"
+            title = "Analytics included"
+            msg = (
+                "Google Analytics is <strong>on</strong> for this browser "
+                "(real visits will be counted)."
+            )
+            next_hint = 'To exclude build/testing traffic: <a href="/analytics/off">/analytics/off</a>'
         else:
             cookie = _analytics_cookie_header(ANALYTICS_OFF_VALUE, self.headers.get("Host"), max_age=31_536_000)
             status = "excluded"
-            body = "Google Analytics excluded for this browser. Visit /analytics/on to include traffic again."
+            ls_js = "try{localStorage.setItem('1less_analytics_off','1')}catch(e){}"
+            title = "Analytics excluded"
+            msg = (
+                "Google Analytics is <strong>off</strong> for this browser. "
+                "Field Trip Kit + Dinner testing will not inflate production stats."
+            )
+            next_hint = 'To count this browser again: <a href="/analytics/on">/analytics/on</a>'
+        body = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>{title} · 1Less</title>
+  <script>{ls_js};window.__1LESS_ANALYTICS_OFF__={"true" if not enabled else "false"};</script>
+  <style>
+    body{{font-family:system-ui,sans-serif;max-width:36rem;margin:3rem auto;padding:0 1.25rem;line-height:1.5;color:#152238}}
+    a{{color:#0f5c5c;font-weight:650}}
+    .pill{{display:inline-block;padding:.25rem .6rem;border-radius:999px;background:#e8f8f0;font-size:.85rem;font-weight:700}}
+  </style>
+</head>
+<body>
+  <p class="pill">{title}</p>
+  <p>{msg}</p>
+  <p>{next_hint}</p>
+  <p><a href="/field-pack/">← Field Trip Kit</a> · <a href="/dinner">Dinner</a></p>
+</body>
+</html>
+"""
+        raw = body.encode("utf-8")
         self.send_response(200)
-        self.send_header("Content-Type", "text/plain; charset=utf-8")
+        self.send_header("Content-Type", "text/html; charset=utf-8")
         self.send_header("Set-Cookie", cookie)
         self.send_header("X-Analytics-Status", status)
-        self.send_header("Content-Length", str(len(body.encode("utf-8"))))
+        self.send_header("Cache-Control", "no-store")
+        self.send_header("Content-Length", str(len(raw)))
         self.end_headers()
-        self.wfile.write(body.encode("utf-8"))
+        self.wfile.write(raw)
 
     def _handle_analytics_status(self) -> None:
         disabled = _analytics_disabled(self.headers.get("Cookie"))
         status = "excluded" if disabled else "included"
-        body = f"Google Analytics {status} for this browser. Use /analytics/off to exclude testing or /analytics/on to include traffic."
+        body = (
+            f"Google Analytics {status} for this browser "
+            f"(cookie one_less_analytics). "
+            f"Use /analytics/off to exclude testing or /analytics/on to include traffic. "
+            f"shell.js also respects localStorage 1less_analytics_off=1 and skips localhost."
+        )
         self.send_response(200)
         self.send_header("Content-Type", "text/plain; charset=utf-8")
         self.send_header("X-Analytics-Status", status)
