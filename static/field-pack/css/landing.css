@@ -1727,7 +1727,7 @@ a.pitch-sample-link:focus-visible .artifact-cap {
   justify-content: center;
   gap: 6px 10px;
   width: 100%;
-  max-width: 44rem;
+  max-width: 34rem;
   box-sizing: border-box;
   border-radius: var(--radius-lg, 24px);
   background:
@@ -1776,81 +1776,78 @@ a.pitch-sample-link:focus-visible .artifact-cap {
   background: rgba(255, 255, 255, 0.45);
 }
 .story-step-play {
+  position: relative;
+  z-index: 2;
+  overflow: visible;
   background: rgba(255, 252, 235, 0.4);
 }
-.story-step-play-wide {
-  flex: 1.45 1 0;
-  max-width: 15.5rem;
-  gap: 8px;
-  padding-bottom: 8px;
-}
-.story-play-main {
-  display: grid;
-  justify-items: center;
-  text-align: center;
-  gap: 5px;
-  width: 100%;
-}
-.story-animal-sample {
+.story-play-link {
   position: relative;
+  overflow: visible;
+}
+/* Hover/focus Play → lion sample card pops up; click goes to Q&A */
+.story-play-pop {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 10px);
+  transform: translateX(-50%) translateY(8px) scale(0.96);
+  width: min(240px, 70vw);
   display: grid;
-  grid-template-columns: 58px 1fr;
+  grid-template-columns: 72px 1fr;
   gap: 0;
   align-items: stretch;
-  width: 100%;
-  max-width: 13.5rem;
-  margin: 0 auto;
   overflow: hidden;
-  border-radius: 12px;
-  border: 1.5px solid rgba(15, 92, 92, 0.18);
+  border-radius: 14px;
+  border: 1.5px solid rgba(15, 92, 92, 0.2);
   background: #fff;
-  text-decoration: none;
-  color: inherit;
-  box-shadow: 0 4px 12px rgba(21, 34, 56, 0.08);
-  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.12s ease;
+  box-shadow: 0 14px 36px rgba(21, 34, 56, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+  z-index: 30;
+  text-align: left;
 }
-.story-animal-sample:hover,
-.story-animal-sample:focus-visible {
-  border-color: #d9652e;
-  box-shadow: 0 8px 18px rgba(217, 101, 46, 0.16);
-  transform: translateY(-1px);
-  outline: none;
-}
-.story-animal-sample:focus-visible {
-  outline: 3px solid var(--focus, #ffcf5a);
-  outline-offset: 2px;
-}
-.story-animal-sample img {
-  width: 58px;
-  height: 58px;
+.story-play-pop img {
+  width: 72px;
+  height: 72px;
   object-fit: cover;
   display: block;
   background: #e8f0ea;
 }
-.story-animal-sample .sample-watermark-sm {
-  /* sit over the photo half */
+.story-play-pop .sample-watermark-sm {
   inset: 0 auto 0 0;
-  width: 58px;
+  width: 72px;
 }
-.story-animal-meta {
+.story-play-pop .story-animal-meta {
   display: grid;
   gap: 2px;
   align-content: center;
-  padding: 6px 8px;
+  padding: 8px 10px;
   min-width: 0;
-  text-align: left;
 }
-.story-animal-meta strong {
-  font-size: 0.78rem;
+.story-play-pop .story-animal-meta strong {
+  font-size: 0.82rem;
   font-weight: 850;
   color: #0a4545;
   line-height: 1.15;
 }
-.story-animal-meta small {
-  font-size: 0.65rem;
+.story-play-pop .story-animal-meta small {
+  font-size: 0.68rem;
   font-weight: 750;
   color: #0f5c5c;
   line-height: 1.2;
+}
+.story-step-play:hover,
+.story-step-play:focus-within {
+  z-index: 25;
+  background: rgba(255, 248, 220, 0.95);
+}
+.story-step-play:hover .story-play-pop,
+.story-step-play:focus-within .story-play-pop {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0) scale(1);
 }
 .story-art {
   display: grid;
@@ -1994,41 +1991,19 @@ a.pitch-sample-link:focus-visible .artifact-cap {
     max-width: none;
     padding: 8px 6px;
   }
-  .story-step-play-wide {
+  /* Phone: pop below Play so it isn’t clipped; still only on focus/hover */
+  .story-play-pop {
+    bottom: auto;
+    top: calc(100% + 6px);
+    left: 0;
+    right: 0;
+    width: auto;
     max-width: none;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 8px;
+    transform: translateY(6px) scale(0.98);
   }
-  .story-play-main {
-    grid-template-columns: auto 1fr;
-    grid-template-rows: auto auto;
-    column-gap: 12px;
-    row-gap: 2px;
-    text-align: left;
-    justify-items: start;
-  }
-  .story-play-main .story-art {
-    grid-row: 1 / span 2;
-    width: 72px;
-    min-height: 60px;
-  }
-  .story-animal-sample {
-    max-width: none;
-    grid-template-columns: 72px 1fr;
-  }
-  .story-animal-sample img {
-    width: 72px;
-    height: 72px;
-  }
-  .story-animal-sample .sample-watermark-sm {
-    width: 72px;
-  }
-  .story-animal-meta strong {
-    font-size: 0.88rem;
-  }
-  .story-animal-meta small {
-    font-size: 0.72rem;
+  .story-step-play:hover .story-play-pop,
+  .story-step-play:focus-within .story-play-pop {
+    transform: translateY(0) scale(1);
   }
   .story-jump {
     grid-template-columns: auto 1fr;
@@ -2038,7 +2013,7 @@ a.pitch-sample-link:focus-visible .artifact-cap {
     text-align: left;
     justify-items: start;
   }
-  .story-step:not(:has(.story-jump)):not(.story-step-play-wide) {
+  .story-step:not(:has(.story-jump)) {
     grid-template-columns: auto 1fr;
     grid-template-rows: auto auto;
     column-gap: 12px;
@@ -2047,7 +2022,7 @@ a.pitch-sample-link:focus-visible .artifact-cap {
     justify-items: start;
   }
   .story-jump .story-art,
-  .story-step:not(:has(.story-jump)):not(.story-step-play-wide) .story-art {
+  .story-step:not(:has(.story-jump)) .story-art {
     grid-row: 1 / span 2;
     width: 72px;
     min-height: 60px;
