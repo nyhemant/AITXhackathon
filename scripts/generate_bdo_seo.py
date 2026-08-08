@@ -849,7 +849,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <script src="/shell/shell.js?v=3"></script>
   <script src="/field-pack/js/catalog.js?v=20"></script>
   <script src="/field-pack/js/print-maps.js?v=2"></script>
-  <script src="/field-pack/js/print-kit.js?v=5"></script>
+  <script src="/field-pack/js/print-kit.js?v=6"></script>
   <script src="/field-pack/js/mission/mission-engine.js?v=6"></script>
   <script src="/field-pack/js/mission/mission-ui.js?v=9"></script>
 </body>
@@ -1002,7 +1002,7 @@ def render_venue_page(v: dict) -> str:
   <script src="/shell/shell.js?v=3"></script>
   <script src="/field-pack/js/catalog.js?v=12"></script>
   <script src="/field-pack/js/print-maps.js?v=2"></script>
-  <script src="/field-pack/js/print-kit.js?v=5"></script>
+  <script src="/field-pack/js/print-kit.js?v=6"></script>
   <script>
     (function () {{
       var btn = document.getElementById("seo-print-hunt");
