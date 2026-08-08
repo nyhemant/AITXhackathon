@@ -303,6 +303,27 @@
 .pin-detail.map-pin-card .pd-more-hint {
   display: none;
 }
+.pin-detail.map-pin-card .pd-mission-cta {
+  text-align: center;
+  line-height: 1.25;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+.pin-detail.map-pin-card .pd-cta-main {
+  display: block;
+  font-weight: 800;
+  font-size: 0.95rem;
+}
+.pin-detail.map-pin-card .pd-actions-secondary {
+  margin-top: 0;
+}
+.pin-detail.map-pin-card .pd-actions-secondary .btn-ghost {
+  width: auto;
+  align-self: flex-start;
+  padding-left: 2px;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
 
 .usa-real-map,
 .world-real-map {

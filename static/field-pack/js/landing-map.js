@@ -1297,77 +1297,37 @@
 
     const locLine = [p.city, placeRegionLabel(p)].filter(Boolean).join(", ");
     const isSoon = p.status === "soon";
-    const quality = (ven && ven.quality) || "starter";
-    const lastVerified = (ven && ven.lastVerified) || "";
-    const verifiedLabel = lastVerified
-      ? (() => {
-          const [y, m] = lastVerified.split("-");
-          const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-          const mi = Math.max(0, Math.min(11, (parseInt(m, 10) || 1) - 1));
-          return `${months[mi]} ${y}`;
-        })()
-      : "";
-    const statusBadge = isSoon
-      ? `<span class="pd-status soon">Coming soon</span>`
-      : canPrintHunt
-        ? quality === "full"
-          ? `<span class="pd-status ready">Ready to print</span>`
-          : `<span class="pd-status starter">Starter list</span>`
-        : "";
-    const qualityHint =
-      !isSoon && canPrintHunt
-        ? quality === "full"
-          ? `<p class="pd-hint pd-quality">Curated shortlist for a finishable kid day.${
-              verifiedLabel ? ` List checked ${escapeHtml(verifiedLabel)}.` : ""
-            }</p>`
-          : `<p class="pd-hint pd-quality">Starter shortlist — animals change; skip anything closed or missing.</p>`
-        : "";
+    // One primary CTA: mission page has age/time chips + print. No second “quick hunt”
+    // (every place is a mission pilot) and no “ready to print” badge clutter.
+    const primaryCta = isSoon
+      ? ""
+      : isMissionPilot
+        ? `<a class="btn btn-primary pd-mission-cta" href="${missionHref}">
+            <span class="pd-cta-main">Personalize mission by age &amp; print</span>
+          </a>`
+        : canPrintHunt
+          ? `<button type="button" class="btn btn-primary" id="pd-print-hunt">Print one-page hunt</button>`
+          : "";
     detail.innerHTML = `
       <p class="pin-detail-kicker">${escapeHtml(locLine)}</p>
       <div class="pd-title-row">
         <h3>${escapeHtml(p.emoji || "")} ${escapeHtml(p.name)}</h3>
         <button type="button" class="pd-clear" id="pd-clear-selection" aria-label="Clear selection">×</button>
       </div>
-      ${statusBadge}
+      ${isSoon ? `<span class="pd-status soon">Coming soon</span>` : ""}
       ${blurb ? `<p class="pd-blurb">${escapeHtml(blurb)}</p>` : ""}
-      ${qualityHint}
       ${
         isSoon
           ? `<p class="pd-hint">Pack in progress — shortlist and printable hunt coming next.</p>`
-          : !canPrintHunt
-            ? `<p class="pd-hint">Open the full list for this place’s kid shortlist and hunt.</p>`
-            : ""
-      }
-      <div class="pd-actions">
-        ${
-          isMissionPilot
-            ? `<a class="btn btn-primary" href="${missionHref}">Build personalized mission →</a>`
-            : !isSoon && canPrintHunt
-              ? `<button type="button" class="btn btn-primary" id="pd-print-hunt">One-page hunt to print</button>`
-              : ""
-        }
-        ${
-          isMissionPilot && canPrintHunt
-            ? `<button type="button" class="btn btn-secondary" id="pd-print-hunt">Quick classic hunt</button>`
-            : ""
-        }
-      </div>
-      ${
-        isMissionPilot
-          ? `<p class="pd-hint pd-mission-hint">Personalized mission: age + time + optional name → one-page print.</p>`
           : ""
       }
+      ${primaryCta ? `<div class="pd-actions">${primaryCta}</div>` : ""}
       ${isSoon ? "" : sampleCard}
-      ${
-        !isSoon && sample
-          ? `<p class="pd-more-hint">More cards in the full list</p>`
-          : ""
-      }
       ${
         isSoon
           ? ""
           : `<div class="pd-actions pd-actions-secondary">
-        <a class="btn btn-secondary" href="${appHref}">Open full list →</a>
+        <a class="btn btn-ghost" href="${appHref}">Full kid list</a>
       </div>`
       }
     `;
