@@ -566,6 +566,35 @@ body.mission-drawer-open {
   border: 1.5px solid rgba(15, 92, 92, 0.14);
   z-index: 2;
 }
+.ms-map-enlarge-hit {
+  appearance: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  cursor: zoom-in;
+  display: block;
+  border-radius: 10px;
+  overflow: hidden;
+  font: inherit;
+  color: inherit;
+}
+.ms-map-card.is-open {
+  z-index: 45;
+  border-color: #d9652e;
+}
+.ms-map-card.is-open .ms-map-preview {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+  display: block;
+}
+.ms-map-card .seo-map-preview-close {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+}
 .ms-map-thumb-wrap {
   position: relative;
   border-radius: 10px;
@@ -639,8 +668,7 @@ body.mission-drawer-open {
     z-index: 40;
   }
   .ms-map-has-preview .ms-map-card:hover .ms-map-preview,
-  .ms-map-has-preview .ms-map-card:focus-within .ms-map-preview,
-  .ms-map-has-preview .ms-map-card:focus-visible .ms-map-preview {
+  .ms-map-has-preview .ms-map-card:focus-within .ms-map-preview {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
@@ -650,8 +678,9 @@ body.mission-drawer-open {
   }
 }
 @media (hover: none), (pointer: coarse) {
-  .ms-map-hover-hint,
-  .ms-map-preview { display: none; }
+  .ms-map-has-preview .ms-map-card:not(.is-open) .ms-map-preview {
+    display: none;
+  }
 }
 @media print {
   .ms-map-preview,

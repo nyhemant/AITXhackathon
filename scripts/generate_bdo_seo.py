@@ -397,31 +397,37 @@ def map_card_html(mission_venue: dict) -> str:
 
     has_img = _safe_map_img(img)
     is_pdf = ".pdf" in href.lower() or href.lower().endswith("/pdf")
-    cta = "Open the print map (PDF)" if is_pdf else "Open the real place map"
-    tab_note = "PDF · opens in a new tab" if is_pdf else "opens in a new tab"
     # Prefer image mode whenever we have a verified map image (kind may lag)
     if has_img and kind in ("image", "page", ""):
         # Local previews don't need no-referrer; remote maps keep it for fewer hotlink blocks
         refpol = "" if img.startswith("/") else ' referrerpolicy="no-referrer"'
-        small = f"{esc(attr)} · hover to preview"
-        if is_pdf:
-            small = f"{esc(attr)} · hover preview · click opens PDF"
+        ext_label = "Open PDF on official site ↗" if is_pdf else "Open on official site ↗"
+        # Click pins enlarge in-page; external leave is a small secondary link only
         return f"""
-    <a class="seo-map-card seo-map-card-image seo-map-has-preview no-print" href="{esc(href)}" target="_blank" rel="noopener noreferrer" aria-label="Official visitor map — hover or focus to enlarge, click to open">
-      <span class="seo-map-thumb-wrap">
-        <img class="seo-map-thumb" src="{esc(img)}" alt="Official visitor map preview" width="640" height="400" loading="lazy" decoding="async"{refpol} />
-        <span class="seo-map-hover-hint" aria-hidden="true">Hover to enlarge</span>
-      </span>
-      <span class="seo-map-card-body">
-        <span class="seo-map-kicker">Official map</span>
-        <strong>{cta}</strong>
-        <small>{small}</small>
-      </span>
-      <span class="seo-map-preview" aria-hidden="true">
-        <img src="{esc(img)}" alt="" loading="lazy" decoding="async"{refpol} />
-        <span class="seo-map-preview-cap">{esc(attr)}</span>
-      </span>
-    </a>"""
+    <div class="seo-map-card seo-map-card-image seo-map-has-preview no-print" data-map-preview>
+      <button type="button" class="seo-map-enlarge-hit" aria-expanded="false" aria-controls="seo-map-preview-panel" aria-label="Enlarge park map">
+        <span class="seo-map-thumb-wrap">
+          <img class="seo-map-thumb" src="{esc(img)}" alt="Park map preview" width="640" height="400" loading="lazy" decoding="async"{refpol} />
+          <span class="seo-map-hover-hint" aria-hidden="true">Click to pin enlarge</span>
+        </span>
+      </button>
+      <div class="seo-map-card-body">
+        <span class="seo-map-kicker">Park map</span>
+        <strong>Visitor map</strong>
+        <small>{esc(attr)} · click map to enlarge</small>
+        <a class="seo-map-ext-link" href="{esc(href)}" target="_blank" rel="noopener noreferrer">{esc(ext_label)}</a>
+      </div>
+      <div class="seo-map-preview" id="seo-map-preview-panel" role="dialog" aria-label="Enlarged park map" hidden>
+        <button type="button" class="seo-map-preview-close" aria-label="Close enlarged map">×</button>
+        <img src="{esc(img)}" alt="Enlarged park map" loading="lazy" decoding="async"{refpol} />
+        <span class="seo-map-preview-cap">
+          {esc(attr)}
+          · <a class="seo-map-preview-ext" href="{esc(href)}" target="_blank" rel="noopener noreferrer">{esc(ext_label)}</a>
+        </span>
+      </div>
+    </div>"""
+    tab_note = "PDF · opens in a new tab" if is_pdf else "opens in a new tab"
+    cta = "Open the print map (PDF)" if is_pdf else "Open the official map page"
     return f"""
     <a class="seo-map-card no-print" href="{esc(href)}" target="_blank" rel="noopener noreferrer">
       <span class="seo-map-icon" aria-hidden="true">🗺️</span>
@@ -817,8 +823,8 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <link rel="stylesheet" href="/shell/shell.css?v=5" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=52" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=20" />
-  <link rel="stylesheet" href="/field-pack/css/mission.css?v=8" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=21" />
+  <link rel="stylesheet" href="/field-pack/css/mission.css?v=9" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
   </script>
@@ -928,7 +934,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <script src="/field-pack/js/print-maps.js?v=2"></script>
   <script src="/field-pack/js/print-kit.js?v=9"></script>
   <script src="/field-pack/js/mission/mission-engine.js?v=6"></script>
-  <script src="/field-pack/js/mission/mission-ui.js?v=11"></script>
+  <script src="/field-pack/js/mission/mission-ui.js?v=12"></script>
 </body>
 </html>
 """
@@ -990,7 +996,7 @@ def render_venue_page(v: dict) -> str:
   <link rel="stylesheet" href="/shell/shell.css?v=5" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=52" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=20" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=21" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
   </script>

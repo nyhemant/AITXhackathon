@@ -22,8 +22,8 @@
   <link rel="stylesheet" href="/shell/shell.css?v=5" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=52" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=20" />
-  <link rel="stylesheet" href="/field-pack/css/mission.css?v=8" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=21" />
+  <link rel="stylesheet" href="/field-pack/css/mission.css?v=9" />
   <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "HowTo", "name": "Taronga Zoo Scavenger Hunt for Kids (Free Printable)", "description": "Free printable Taronga Zoo scavenger hunt for kids in Sydney. Short kid list of animals, one-page treasure hunt — Field Trip Kit by 1Less.", "totalTime": "PT2H", "tool": [{"@type": "HowToTool", "name": "Printed one-page hunt sheet"}], "step": [{"@type": "HowToStep", "position": 1, "text": "Find an animal taller than a grown-up"}, {"@type": "HowToStep", "position": 2, "text": "Spot stripes or spots"}, {"@type": "HowToStep", "position": 3, "text": "Watch something swim or splash"}, {"@type": "HowToStep", "position": 4, "text": "Find a long neck or trunk"}, {"@type": "HowToStep", "position": 5, "text": "Point toward the harbour if you can see it"}, {"@type": "HowToStep", "position": 6, "text": "Find a bird that cannot fly far"}, {"@type": "HowToStep", "position": 7, "text": "Hear a loud sound (or a quiet one)"}, {"@type": "HowToStep", "position": 8, "text": "Photo your favorite animal"}], "url": "https://1less.app/field-pack/taronga-zoo/"}
   </script>
@@ -94,21 +94,28 @@
       </header>
 
       
-    <a class="seo-map-card seo-map-card-image seo-map-has-preview no-print" href="https://www.taronga.org.au/siteassets/tzs/map/tz-map-online.pdf" target="_blank" rel="noopener noreferrer" aria-label="Official visitor map — hover or focus to enlarge, click to open">
-      <span class="seo-map-thumb-wrap">
-        <img class="seo-map-thumb" src="/field-pack/media/maps/taronga-zoo.jpg" alt="Official visitor map preview" width="640" height="400" loading="lazy" decoding="async" />
-        <span class="seo-map-hover-hint" aria-hidden="true">Hover to enlarge</span>
-      </span>
-      <span class="seo-map-card-body">
-        <span class="seo-map-kicker">Official map</span>
-        <strong>Open the print map (PDF)</strong>
-        <small>Official visit page · hover preview · click opens PDF</small>
-      </span>
-      <span class="seo-map-preview" aria-hidden="true">
-        <img src="/field-pack/media/maps/taronga-zoo.jpg" alt="" loading="lazy" decoding="async" />
-        <span class="seo-map-preview-cap">Official visit page</span>
-      </span>
-    </a>
+    <div class="seo-map-card seo-map-card-image seo-map-has-preview no-print" data-map-preview>
+      <button type="button" class="seo-map-enlarge-hit" aria-expanded="false" aria-controls="seo-map-preview-panel" aria-label="Enlarge park map">
+        <span class="seo-map-thumb-wrap">
+          <img class="seo-map-thumb" src="/field-pack/media/maps/taronga-zoo.jpg" alt="Park map preview" width="640" height="400" loading="lazy" decoding="async" />
+          <span class="seo-map-hover-hint" aria-hidden="true">Click to pin enlarge</span>
+        </span>
+      </button>
+      <div class="seo-map-card-body">
+        <span class="seo-map-kicker">Park map</span>
+        <strong>Visitor map</strong>
+        <small>Official visit page · click map to enlarge</small>
+        <a class="seo-map-ext-link" href="https://www.taronga.org.au/siteassets/tzs/map/tz-map-online.pdf" target="_blank" rel="noopener noreferrer">Open PDF on official site ↗</a>
+      </div>
+      <div class="seo-map-preview" id="seo-map-preview-panel" role="dialog" aria-label="Enlarged park map" hidden>
+        <button type="button" class="seo-map-preview-close" aria-label="Close enlarged map">×</button>
+        <img src="/field-pack/media/maps/taronga-zoo.jpg" alt="Enlarged park map" loading="lazy" decoding="async" />
+        <span class="seo-map-preview-cap">
+          Official visit page
+          · <a class="seo-map-preview-ext" href="https://www.taronga.org.au/siteassets/tzs/map/tz-map-online.pdf" target="_blank" rel="noopener noreferrer">Open PDF on official site ↗</a>
+        </span>
+      </div>
+    </div>
       
     <section class="seo-start-here no-print" aria-labelledby="route90-heading">
       <h2 id="route90-heading">Short on time? Start here</h2>
@@ -736,6 +743,6 @@
   <script src="/field-pack/js/print-maps.js?v=2"></script>
   <script src="/field-pack/js/print-kit.js?v=9"></script>
   <script src="/field-pack/js/mission/mission-engine.js?v=6"></script>
-  <script src="/field-pack/js/mission/mission-ui.js?v=11"></script>
+  <script src="/field-pack/js/mission/mission-ui.js?v=12"></script>
 </body>
 </html>

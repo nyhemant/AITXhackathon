@@ -7,6 +7,74 @@
     return (root || document).querySelector(sel);
   }
 
+  /** Map thumbnail: hover peeks; click pins enlarge on-page (no accidental leave). */
+  const MapPreview = (function () {
+    let docWired = false;
+
+    function setOpen(card, open) {
+      if (!card) return;
+      card.classList.toggle("is-open", open);
+      const btn = card.querySelector(".seo-map-enlarge-hit, .ms-map-enlarge-hit");
+      const panel = card.querySelector(".seo-map-preview, .ms-map-preview");
+      if (btn) btn.setAttribute("aria-expanded", open ? "true" : "false");
+      if (panel) {
+        if (open) panel.removeAttribute("hidden");
+        else panel.setAttribute("hidden", "");
+      }
+    }
+
+    function closeAll(except) {
+      document.querySelectorAll("[data-map-preview].is-open").forEach((c) => {
+        if (c !== except) setOpen(c, false);
+      });
+    }
+
+    function wireCard(card) {
+      if (!card || card.dataset.mapPreviewWired === "1") return;
+      card.dataset.mapPreviewWired = "1";
+      const hit = card.querySelector(".seo-map-enlarge-hit, .ms-map-enlarge-hit");
+      const closeBtn = card.querySelector(".seo-map-preview-close");
+      if (hit) {
+        hit.addEventListener("click", (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const next = !card.classList.contains("is-open");
+          closeAll(card);
+          setOpen(card, next);
+        });
+      }
+      if (closeBtn) {
+        closeBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          setOpen(card, false);
+          hit?.focus();
+        });
+      }
+      // External links: leave behavior intentional — stop pin toggle only
+      card.querySelectorAll("a[href]").forEach((a) => {
+        a.addEventListener("click", (e) => e.stopPropagation());
+      });
+    }
+
+    function wire(root) {
+      const scope = root || document;
+      scope.querySelectorAll("[data-map-preview]").forEach(wireCard);
+      if (docWired) return;
+      docWired = true;
+      document.addEventListener("click", (e) => {
+        if (e.target.closest && e.target.closest("[data-map-preview].is-open")) return;
+        closeAll();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeAll();
+      });
+    }
+
+    return { wire, closeAll, setOpen };
+  })();
+  window.FPMapPreview = MapPreview;
+
   function track(event, params) {
     try {
       if (typeof gtag === "function") {
@@ -116,21 +184,31 @@
     }
     if (img) {
       const refpol = img.startsWith("/") ? "" : ' referrerpolicy="no-referrer"';
+      const ext = page || img;
       mapHint.className = "ms-map-hint ms-map-has-preview";
       mapHint.innerHTML = `
-          <a class="ms-map-card" href="${esc(page || img)}" target="_blank" rel="noopener noreferrer" aria-label="Official map — hover to enlarge">
-            <span class="ms-map-thumb-wrap">
-              <img class="ms-map-thumb" src="${esc(img)}" alt="Official visitor map preview" loading="lazy" decoding="async"${refpol} />
-              <span class="ms-map-hover-hint" aria-hidden="true">Hover</span>
-            </span>
+          <div class="ms-map-card" data-map-preview>
+            <button type="button" class="ms-map-enlarge-hit seo-map-enlarge-hit" aria-expanded="false" aria-label="Enlarge park map">
+              <span class="ms-map-thumb-wrap">
+                <img class="ms-map-thumb" src="${esc(img)}" alt="Park map preview" loading="lazy" decoding="async"${refpol} />
+                <span class="ms-map-hover-hint" aria-hidden="true">Click to pin</span>
+              </span>
+            </button>
             <span class="ms-map-card-text">
-              <strong>Official map</strong>
-              <small>${esc(attr)} · hover to preview</small>
+              <strong>Park map</strong>
+              <small>${esc(attr)} · click to enlarge</small>
+              <a class="seo-map-ext-link" href="${esc(ext)}" target="_blank" rel="noopener noreferrer">Official site ↗</a>
             </span>
-            <span class="ms-map-preview" aria-hidden="true">
-              <img src="${esc(img)}" alt="" loading="lazy" decoding="async"${refpol} />
-            </span>
-          </a>`;
+            <div class="ms-map-preview seo-map-preview" role="dialog" aria-label="Enlarged park map" hidden>
+              <button type="button" class="seo-map-preview-close" aria-label="Close enlarged map">×</button>
+              <img src="${esc(img)}" alt="Enlarged park map" loading="lazy" decoding="async"${refpol} />
+              <span class="seo-map-preview-cap">
+                <a class="seo-map-preview-ext" href="${esc(ext)}" target="_blank" rel="noopener noreferrer">Open on official site ↗</a>
+              </span>
+            </div>
+          </div>`;
+      // Wire after inject (boot also wires page-level cards)
+      if (window.FPMapPreview && window.FPMapPreview.wire) window.FPMapPreview.wire(mapHint);
     } else if (page) {
       mapHint.className = "ms-map-hint";
       mapHint.innerHTML = `🗺️ Navigate with the <a href="${esc(page)}" target="_blank" rel="noopener noreferrer">official map</a>`;
@@ -393,6 +471,8 @@
       isOpen,
       getVenue: () => venue,
     };
+
+    MapPreview.wire(document);
   }
 
   if (document.readyState === "loading") {
