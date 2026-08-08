@@ -534,7 +534,7 @@ window.FIELD_PACK_CATALOG = {
     id: "cm-toddler-garden",
     name: "Toddler Garden",
     emoji: "🌱",
-    photo: "photos/cm-toddler.jpg?v=ill1",
+    photo: "photos/cm-toddler.jpg?v=ill2",
     photoCredit: "Illustration · Field Trip Kit",
     blurb: "Gentler outdoor/garden space for little explorers.",
     links: {
