@@ -240,10 +240,11 @@
   ],
   "content_mode": "curated",
   "media": {
-    "visitor_map_url": "https://www.fortworthzoo.org/assets/2849/fwz_map_2024_web__homepage_image.jpg?w=880",
+    "visitor_map_url": "/field-pack/media/maps/fort-worth-zoo.jpg",
     "visitor_map_page": "https://www.fortworthzoo.org/zoo-map",
     "visitor_map_kind": "image",
-    "map_attribution": "Official site \u00b7 Fort Worth Zoo"
+    "map_attribution": "Official site \u00b7 Fort Worth Zoo",
+    "print_map": "/field-pack/media/maps/fort-worth-zoo.jpg"
   },
   "parent_script": [
     "Bathroom first",

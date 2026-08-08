@@ -197,10 +197,11 @@
   ],
   "content_mode": "hybrid",
   "media": {
-    "visitor_map_url": "https://perot-m.imgix.net/wp-content/uploads/level-l.png",
+    "visitor_map_url": "/field-pack/media/maps/perot-museum.jpg",
     "visitor_map_page": "https://www.perotmuseum.org/visit/map/",
     "visitor_map_kind": "image",
-    "map_attribution": "Official map \u00b7 Perot Museum of Nature and Science"
+    "map_attribution": "Official map \u00b7 Perot Museum of Nature and Science",
+    "print_map": "/field-pack/media/maps/perot-museum.jpg"
   },
   "parent_script": [
     "Bathroom first",

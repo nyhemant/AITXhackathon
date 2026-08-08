@@ -242,10 +242,11 @@
   ],
   "content_mode": "hybrid",
   "media": {
-    "visitor_map_url": "https://www.adventuresci.org/wp-content/uploads/2025/07/ASC2025_Map.jpg",
+    "visitor_map_url": "/field-pack/media/maps/nashville-adventure-science.jpg",
     "visitor_map_page": "https://www.adventuresci.org/wp-content/uploads/2025/07/ASC2025_Map.jpg",
     "visitor_map_kind": "image",
-    "map_attribution": "Official map \u00b7 Adventure Science Center"
+    "map_attribution": "Official map \u00b7 Adventure Science Center",
+    "print_map": "/field-pack/media/maps/nashville-adventure-science.jpg"
   },
   "parent_script": [
     "Bathroom first",

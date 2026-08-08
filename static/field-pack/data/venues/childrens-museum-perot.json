@@ -184,10 +184,11 @@
   ],
   "content_mode": "curated",
   "media": {
-    "visitor_map_url": "https://perot-m.imgix.net/wp-content/uploads/level-l.png",
+    "visitor_map_url": "/field-pack/media/maps/childrens-museum-perot.jpg",
     "visitor_map_page": "https://www.perotmuseum.org/visit/map/",
     "visitor_map_kind": "image",
-    "map_attribution": "Official site \u00b7 Children's Museum (Perot)"
+    "map_attribution": "Official site \u00b7 Children's Museum (Perot)",
+    "print_map": "/field-pack/media/maps/childrens-museum-perot.jpg"
   },
   "parent_script": [
     "Bathroom first",

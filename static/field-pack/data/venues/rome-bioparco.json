@@ -293,10 +293,11 @@
   ],
   "content_mode": "hybrid",
   "media": {
-    "visitor_map_url": "https://www.bioparco.it/wp-content/uploads/2024/01/Mappa_2023_Ottobre.png",
+    "visitor_map_url": "/field-pack/media/maps/rome-bioparco.jpg",
     "visitor_map_page": "https://www.bioparco.it/en/zoo-map/",
     "visitor_map_kind": "image",
-    "map_attribution": "Official map \u00b7 Bioparco di Roma"
+    "map_attribution": "Official map \u00b7 Bioparco di Roma",
+    "print_map": "/field-pack/media/maps/rome-bioparco.jpg"
   },
   "parent_script": [
     "Bathroom first",

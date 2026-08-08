@@ -296,10 +296,11 @@
   ],
   "content_mode": "hybrid",
   "media": {
-    "visitor_map_url": "https://www.hoglezoo.org/wp-content/uploads/2024/07/Utahs-Hogle-Zoo-Map-2024-New.png",
+    "visitor_map_url": "/field-pack/media/maps/hogle-zoo.jpg",
     "visitor_map_page": "https://www.hoglezoo.org/hogle-zoo-map/",
     "visitor_map_kind": "image",
-    "map_attribution": "Official map \u00a9 Utah\u2019s Hogle Zoo"
+    "map_attribution": "Official map \u00a9 Utah\u2019s Hogle Zoo",
+    "print_map": "/field-pack/media/maps/hogle-zoo.jpg"
   },
   "parent_script": [
     "Bathroom first",

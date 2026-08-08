@@ -316,10 +316,11 @@
   ],
   "content_mode": "hybrid",
   "media": {
-    "visitor_map_url": "",
+    "visitor_map_url": "/field-pack/media/maps/memphis-zoo.jpg",
     "visitor_map_page": "https://assets.speakcdn.com/assets/2510/2020_zoo_visitor_map_inside(1).pdf",
-    "visitor_map_kind": "page",
-    "map_attribution": "Official visit page"
+    "visitor_map_kind": "image",
+    "map_attribution": "Official visit page",
+    "print_map": "/field-pack/media/maps/memphis-zoo.jpg"
   },
   "parent_script": [
     "Bathroom first",

@@ -294,10 +294,11 @@
   ],
   "content_mode": "hybrid",
   "media": {
-    "visitor_map_url": "https://www.flaquarium.org/wp-content/uploads/2025/08/1850x1000_TFA-Map-Digital-MORPH_D_07-31-2025_O.jpg",
+    "visitor_map_url": "/field-pack/media/maps/florida-aquarium.jpg",
     "visitor_map_page": "https://www.flaquarium.org/visit/visitor-information/aquarium-map/",
     "visitor_map_kind": "image",
-    "map_attribution": "Official map \u00b7 The Florida Aquarium"
+    "map_attribution": "Official map \u00b7 The Florida Aquarium",
+    "print_map": "/field-pack/media/maps/florida-aquarium.jpg"
   },
   "parent_script": [
     "Bathroom first",

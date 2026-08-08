@@ -289,10 +289,11 @@
   ],
   "content_mode": "hybrid",
   "media": {
-    "visitor_map_url": "https://www.clevelandmetroparks.com/getmedia/1cb69c50-c793-4810-9355-2b928abd003a/7613-edits-to-digital-zoo-map-2026.jpg",
+    "visitor_map_url": "/field-pack/media/maps/cleveland-metroparks-zoo.jpg",
     "visitor_map_page": "https://www.clevelandmetroparks.com/getmedia/1cb69c50-c793-4810-9355-2b928abd003a/7613-edits-to-digital-zoo-map-2026.jpg",
     "visitor_map_kind": "image",
-    "map_attribution": "Official map \u00b7 Cleveland Metroparks Zoo"
+    "map_attribution": "Official map \u00b7 Cleveland Metroparks Zoo",
+    "print_map": "/field-pack/media/maps/cleveland-metroparks-zoo.jpg"
   },
   "parent_script": [
     "Bathroom first",

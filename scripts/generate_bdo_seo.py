@@ -747,7 +747,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <meta name="color-scheme" content="light" />
   <base href="/field-pack/" />
   <link rel="stylesheet" href="/shell/shell.css?v=4" />
-  <link rel="stylesheet" href="/field-pack/css/styles.css?v=19" />
+  <link rel="stylesheet" href="/field-pack/css/styles.css?v=20" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=45" />
   <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=8" />
   <link rel="stylesheet" href="/field-pack/css/mission.css?v=7" />
@@ -848,7 +848,8 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <script type="application/json" id="wonders-data">{wonders_json}</script>
   <script src="/shell/shell.js?v=3"></script>
   <script src="/field-pack/js/catalog.js?v=20"></script>
-  <script src="/field-pack/js/print-kit.js?v=2"></script>
+  <script src="/field-pack/js/print-maps.js?v=1"></script>
+  <script src="/field-pack/js/print-kit.js?v=3"></script>
   <script src="/field-pack/js/mission/mission-engine.js?v=6"></script>
   <script src="/field-pack/js/mission/mission-ui.js?v=8"></script>
 </body>
@@ -910,7 +911,7 @@ def render_venue_page(v: dict) -> str:
   <meta name="color-scheme" content="light" />
   <base href="/field-pack/" />
   <link rel="stylesheet" href="/shell/shell.css?v=4" />
-  <link rel="stylesheet" href="/field-pack/css/styles.css?v=18" />
+  <link rel="stylesheet" href="/field-pack/css/styles.css?v=20" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=44" />
   <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=8" />
   <script type="application/ld+json">
@@ -1000,7 +1001,8 @@ def render_venue_page(v: dict) -> str:
 
   <script src="/shell/shell.js?v=3"></script>
   <script src="/field-pack/js/catalog.js?v=12"></script>
-  <script src="/field-pack/js/print-kit.js?v=1"></script>
+  <script src="/field-pack/js/print-maps.js?v=1"></script>
+  <script src="/field-pack/js/print-kit.js?v=3"></script>
   <script>
     (function () {{
       var btn = document.getElementById("seo-print-hunt");

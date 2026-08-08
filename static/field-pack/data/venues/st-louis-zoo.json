@@ -241,10 +241,11 @@
   ],
   "content_mode": "curated",
   "media": {
-    "visitor_map_url": "",
+    "visitor_map_url": "/field-pack/media/maps/st-louis-zoo.jpg",
     "visitor_map_page": "https://files.stlzoo.org/production/documents/Maps/winter2025map.pdf",
-    "visitor_map_kind": "page",
-    "map_attribution": "Official map \u00b7 Saint Louis Zoo"
+    "visitor_map_kind": "image",
+    "map_attribution": "Official map \u00b7 Saint Louis Zoo",
+    "print_map": "/field-pack/media/maps/st-louis-zoo.jpg"
   },
   "parent_script": [
     "Bathroom first",

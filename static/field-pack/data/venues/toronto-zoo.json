@@ -295,10 +295,11 @@
   ],
   "content_mode": "hybrid",
   "media": {
-    "visitor_map_url": "",
+    "visitor_map_url": "/field-pack/media/maps/toronto-zoo.jpg",
     "visitor_map_page": "https://www.torontozoo.com/!/pdfs/temp/TorontoZoo-Map-VisitorGuide.pdf?d",
-    "visitor_map_kind": "page",
-    "map_attribution": "Official map \u00b7 Toronto Zoo"
+    "visitor_map_kind": "image",
+    "map_attribution": "Official map \u00b7 Toronto Zoo",
+    "print_map": "/field-pack/media/maps/toronto-zoo.jpg"
   },
   "parent_script": [
     "Bathroom first",

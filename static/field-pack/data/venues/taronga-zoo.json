@@ -296,10 +296,11 @@
   ],
   "content_mode": "hybrid",
   "media": {
-    "visitor_map_url": "",
+    "visitor_map_url": "/field-pack/media/maps/taronga-zoo.jpg",
     "visitor_map_page": "https://www.taronga.org.au/siteassets/tzs/map/tz-map-online.pdf",
-    "visitor_map_kind": "page",
-    "map_attribution": "Official visit page"
+    "visitor_map_kind": "image",
+    "map_attribution": "Official visit page",
+    "print_map": "/field-pack/media/maps/taronga-zoo.jpg"
   },
   "parent_script": [
     "Bathroom first",

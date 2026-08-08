@@ -316,10 +316,11 @@
   ],
   "content_mode": "hybrid",
   "media": {
-    "visitor_map_url": "https://www.oregonzoo.org/sites/default/files/styles/scale_675w/public/2026-01/map-thumbnail-20260120.jpg.webp?itok=XPWcwQqM",
+    "visitor_map_url": "/field-pack/media/maps/oregon-zoo.jpg",
     "visitor_map_page": "https://www.oregonzoo.org/map",
     "visitor_map_kind": "image",
-    "map_attribution": "Official map \u00b7 Oregon Zoo"
+    "map_attribution": "Official map \u00b7 Oregon Zoo",
+    "print_map": "/field-pack/media/maps/oregon-zoo.jpg"
   },
   "parent_script": [
     "Bathroom first",

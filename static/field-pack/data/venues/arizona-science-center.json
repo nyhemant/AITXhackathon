@@ -197,10 +197,11 @@
   ],
   "content_mode": "hybrid",
   "media": {
-    "visitor_map_url": "https://www.azscience.org/media/ddjc2qiq/updated_map.png?rmode=max",
+    "visitor_map_url": "/field-pack/media/maps/arizona-science-center.jpg",
     "visitor_map_page": "https://www.azscience.org/visit/plan-your-visit/map/",
     "visitor_map_kind": "image",
-    "map_attribution": "Official map \u00b7 Arizona Science Center"
+    "map_attribution": "Official map \u00b7 Arizona Science Center",
+    "print_map": "/field-pack/media/maps/arizona-science-center.jpg"
   },
   "parent_script": [
     "Bathroom first",

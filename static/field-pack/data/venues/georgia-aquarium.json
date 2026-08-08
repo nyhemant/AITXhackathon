@@ -248,10 +248,11 @@
   ],
   "content_mode": "curated",
   "media": {
-    "visitor_map_url": "https://www.georgiaaquarium.org/wp-content/uploads/2025/10/aquarium-map-9.jpg",
+    "visitor_map_url": "/field-pack/media/maps/georgia-aquarium.jpg",
     "visitor_map_page": "https://www.georgiaaquarium.org/aquarium-map/",
     "visitor_map_kind": "image",
-    "map_attribution": "Official site \u00b7 Georgia Aquarium"
+    "map_attribution": "Official site \u00b7 Georgia Aquarium",
+    "print_map": "/field-pack/media/maps/georgia-aquarium.jpg"
   },
   "parent_script": [
     "Bathroom first",

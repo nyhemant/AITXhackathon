@@ -317,10 +317,11 @@
   ],
   "content_mode": "hybrid",
   "media": {
-    "visitor_map_url": "https://milwaukeezoo.org/wp-content/uploads/Summer-Fall-2026-map.jpg",
+    "visitor_map_url": "/field-pack/media/maps/milwaukee-zoo.jpg",
     "visitor_map_page": "https://milwaukeezoo.org/map/",
     "visitor_map_kind": "image",
-    "map_attribution": "Official map \u00b7 Milwaukee County Zoo"
+    "map_attribution": "Official map \u00b7 Milwaukee County Zoo",
+    "print_map": "/field-pack/media/maps/milwaukee-zoo.jpg"
   },
   "parent_script": [
     "Bathroom first",

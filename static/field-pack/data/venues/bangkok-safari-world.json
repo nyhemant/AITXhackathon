@@ -318,10 +318,11 @@
   ],
   "content_mode": "hybrid",
   "media": {
-    "visitor_map_url": "https://www.safariworld.com/assets_2022/map/map.jpg?v=20250627-2",
+    "visitor_map_url": "/field-pack/media/maps/bangkok-safari-world.jpg",
     "visitor_map_page": "http://www.safariworld.com/map/",
     "visitor_map_kind": "image",
-    "map_attribution": "Official map \u00b7 Safari World Bangkok"
+    "map_attribution": "Official map \u00b7 Safari World Bangkok",
+    "print_map": "/field-pack/media/maps/bangkok-safari-world.jpg"
   },
   "parent_script": [
     "Bathroom first",

@@ -243,10 +243,11 @@
   ],
   "content_mode": "curated",
   "media": {
-    "visitor_map_url": "",
+    "visitor_map_url": "/field-pack/media/maps/omaha-henry-doorly.jpg",
     "visitor_map_page": "https://assets.speakcdn.com/assets/2140/zoo_map_summer_2026.pdf",
-    "visitor_map_kind": "page",
-    "map_attribution": "Official site \u00b7 Omaha's Henry Doorly Zoo & Aquarium"
+    "visitor_map_kind": "image",
+    "map_attribution": "Official site \u00b7 Omaha's Henry Doorly Zoo & Aquarium",
+    "print_map": "/field-pack/media/maps/omaha-henry-doorly.jpg"
   },
   "parent_script": [
     "Bathroom first",

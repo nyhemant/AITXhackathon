@@ -316,10 +316,11 @@
   ],
   "content_mode": "hybrid",
   "media": {
-    "visitor_map_url": "https://www.zoomadrid.com/content/dam/zoo/maps/relativeMap.jpeg",
+    "visitor_map_url": "/field-pack/media/maps/madrid-zoo.jpg",
     "visitor_map_page": "https://www.zoomadrid.com/en/descubre-el-zoo/mapa-del-zoo",
     "visitor_map_kind": "image",
-    "map_attribution": "Official map \u00b7 Madrid Zoo Aquarium"
+    "map_attribution": "Official map \u00b7 Madrid Zoo Aquarium",
+    "print_map": "/field-pack/media/maps/madrid-zoo.jpg"
   },
   "parent_script": [
     "Bathroom first",

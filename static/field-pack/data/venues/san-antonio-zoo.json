@@ -294,10 +294,11 @@
   ],
   "content_mode": "hybrid",
   "media": {
-    "visitor_map_url": "https://sazoo.org/wp-content/uploads/2026/07/Zoorasic-Park-Map-2026-v3-scaled.jpg",
+    "visitor_map_url": "/field-pack/media/maps/san-antonio-zoo.jpg",
     "visitor_map_page": "http://sazoo.org/wp-content/uploads/2026/07/Zoorasic-Park-Map-2026-v3.pdf",
     "visitor_map_kind": "image",
-    "map_attribution": "Official map \u00b7 San Antonio Zoo"
+    "map_attribution": "Official map \u00b7 San Antonio Zoo",
+    "print_map": "/field-pack/media/maps/san-antonio-zoo.jpg"
   },
   "parent_script": [
     "Bathroom first",

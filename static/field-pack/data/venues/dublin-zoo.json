@@ -296,10 +296,11 @@
   ],
   "content_mode": "hybrid",
   "media": {
-    "visitor_map_url": "https://www.dublinzoo.ie/wp-content/smush-webp/2025/10/map.png.webp",
+    "visitor_map_url": "/field-pack/media/maps/dublin-zoo.jpg",
     "visitor_map_page": "https://www.dublinzoo.ie/plan-your-visit/#zoo-map",
     "visitor_map_kind": "image",
-    "map_attribution": "Official map \u00b7 Dublin Zoo"
+    "map_attribution": "Official map \u00b7 Dublin Zoo",
+    "print_map": "/field-pack/media/maps/dublin-zoo.jpg"
   },
   "parent_script": [
     "Bathroom first",

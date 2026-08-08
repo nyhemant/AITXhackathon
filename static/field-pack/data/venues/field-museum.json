@@ -192,10 +192,11 @@
   ],
   "content_mode": "curated",
   "media": {
-    "visitor_map_url": "https://www.datocms-assets.com/44232/1775514218-0d8e6bf6-237c-47e7-9dbe-1784c109f669.webp",
+    "visitor_map_url": "/field-pack/media/maps/field-museum.jpg",
     "visitor_map_page": "https://www.datocms-assets.com/44232/1775514218-0d8e6bf6-237c-47e7-9dbe-1784c109f669.webp",
     "visitor_map_kind": "image",
-    "map_attribution": "Official site \u00b7 Field Museum"
+    "map_attribution": "Official site \u00b7 Field Museum",
+    "print_map": "/field-pack/media/maps/field-museum.jpg"
   },
   "parent_script": [
     "Bathroom first",

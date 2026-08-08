@@ -239,10 +239,11 @@
   ],
   "content_mode": "curated",
   "media": {
-    "visitor_map_url": "",
+    "visitor_map_url": "/field-pack/media/maps/london-zoo.jpg",
     "visitor_map_page": "https://cms.londonzoo.org/sites/default/files/2025-11/LZ%20Map%20Nov%202025.pdf",
-    "visitor_map_kind": "page",
-    "map_attribution": "Official map \u00b7 London Zoo"
+    "visitor_map_kind": "image",
+    "map_attribution": "Official map \u00b7 London Zoo",
+    "print_map": "/field-pack/media/maps/london-zoo.jpg"
   },
   "parent_script": [
     "Bathroom first",

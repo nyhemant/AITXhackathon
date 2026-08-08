@@ -294,10 +294,11 @@
   ],
   "content_mode": "hybrid",
   "media": {
-    "visitor_map_url": "",
+    "visitor_map_url": "/field-pack/media/maps/albuquerque-biopark.jpg",
     "visitor_map_page": "https://www.cabq.gov/artsculture/biopark/documents/zoo-map-june-2026.pdf",
-    "visitor_map_kind": "page",
-    "map_attribution": "ABQ BioPark Zoo"
+    "visitor_map_kind": "image",
+    "map_attribution": "ABQ BioPark Zoo",
+    "print_map": "/field-pack/media/maps/albuquerque-biopark.jpg"
   },
   "parent_script": [
     "Bathroom first",

@@ -270,10 +270,11 @@
   ],
   "content_mode": "hybrid",
   "media": {
-    "visitor_map_url": "",
+    "visitor_map_url": "/field-pack/media/maps/edinburgh-zoo.jpg",
     "visitor_map_page": "https://images.rzss.org.uk/media/Edinburgh_Zoo/EZ_documents/Maps_and_guides/edinburgh_zoo_map.pdf",
-    "visitor_map_kind": "page",
-    "map_attribution": "Official map \u00b7 Edinburgh Zoo"
+    "visitor_map_kind": "image",
+    "map_attribution": "Official map \u00b7 Edinburgh Zoo",
+    "print_map": "/field-pack/media/maps/edinburgh-zoo.jpg"
   },
   "parent_script": [
     "Bathroom first",

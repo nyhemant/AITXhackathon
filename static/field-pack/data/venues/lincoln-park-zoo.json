@@ -319,10 +319,11 @@
   ],
   "content_mode": "hybrid",
   "media": {
-    "visitor_map_url": "",
+    "visitor_map_url": "/field-pack/media/maps/lincoln-park-zoo.jpg",
     "visitor_map_page": "https://www.lpzoo.org/wp-content/uploads/2025/08/PDF-Map-for-Web_AUG-2025.pdf",
-    "visitor_map_kind": "page",
-    "map_attribution": "Visit \u00b7 Lincoln Park Zoo"
+    "visitor_map_kind": "image",
+    "map_attribution": "Visit \u00b7 Lincoln Park Zoo",
+    "print_map": "/field-pack/media/maps/lincoln-park-zoo.jpg"
   },
   "parent_script": [
     "Bathroom first",

@@ -196,10 +196,11 @@
   ],
   "content_mode": "hybrid",
   "media": {
-    "visitor_map_url": "",
+    "visitor_map_url": "/field-pack/media/maps/nhm-london.jpg",
     "visitor_map_page": "https://www.nhm.ac.uk/content/dam/nhm-www/visit/map/Museum-map.pdf",
-    "visitor_map_kind": "page",
-    "map_attribution": "Natural History Museum"
+    "visitor_map_kind": "image",
+    "map_attribution": "Natural History Museum",
+    "print_map": "/field-pack/media/maps/nhm-london.jpg"
   },
   "parent_script": [
     "Bathroom first",

@@ -50,6 +50,29 @@
     return all[0] || null;
   }
 
+  /** Print-safe local map path (prefer hosted preview under /field-pack/media/maps/). */
+  function printMapForVenue(venue) {
+    const id = (venue && (venue.id || venue.slug)) || "";
+    const maps = window.FP_PRINT_MAPS || {};
+    if (id && maps[id]) return maps[id];
+    // SEO pages embed full mission venue JSON
+    try {
+      const el = document.getElementById("venue-data");
+      if (el && el.textContent) {
+        const data = JSON.parse(el.textContent);
+        const m = (data && data.media) || {};
+        const u = m.print_map || m.visitor_map_url || "";
+        if (u && String(u).startsWith("/field-pack/media/maps/")) return u;
+      }
+    } catch (_) {
+      /* ignore */
+    }
+    const m = (venue && venue.media) || {};
+    const u = m.print_map || m.visitor_map_url || "";
+    if (u && String(u).startsWith("/field-pack/media/maps/")) return u;
+    return "";
+  }
+
   function buildTreasureHtml(venue, starIds) {
     const hunts = (venue.treasureHunt || []).slice(0, 8);
     const huntHtml = hunts
@@ -69,8 +92,21 @@
         return it ? `<span class="th-chip">${it.emoji || "•"} ${escapeHtml(it.name)}</span>` : "";
       })
       .join("");
+    const mapSrc = printMapForVenue(venue);
+    const mapBlock = mapSrc
+      ? `<div class="th-map th-map-has-photo">
+          <p class="th-map-title">Park map <span class="th-map-hint">— mark start → favorite → end</span></p>
+          <div class="th-map-photo-wrap">
+            <img class="th-map-photo" src="${escapeAttr(mapSrc)}" alt="Official visitor map" />
+          </div>
+          <p class="th-map-cap">Official map preview · pencil your path on top</p>
+        </div>`
+      : `<div class="th-map">
+          <p class="th-map-title">Path doodle <span class="th-map-hint">— start → favorite → end</span></p>
+          <div class="th-map-box"></div>
+        </div>`;
     return `
-      <div class="th-page">
+      <div class="th-page${mapSrc ? " th-page-with-map" : ""}">
         <div class="th-banner">
           <h1>🗺️ Your mission</h1>
           <p>${escapeHtml(venue.name)} · One-page hunt · Field Trip Kit</p>
@@ -87,10 +123,7 @@
           <p class="th-stars-title">Star list (top picks)</p>
           <div class="th-chips">${stars}</div>
         </div>
-        <div class="th-map">
-          <p class="th-map-title">Path doodle <span class="th-map-hint">— start → favorite → end</span></p>
-          <div class="th-map-box"></div>
-        </div>
+        ${mapBlock}
         <p class="th-footer">Optional after: open Field Trip Kit → tap a card → Q&A</p>
       </div>`;
   }

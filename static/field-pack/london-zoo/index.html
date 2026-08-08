@@ -20,7 +20,7 @@
   <meta name="color-scheme" content="light" />
   <base href="/field-pack/" />
   <link rel="stylesheet" href="/shell/shell.css?v=4" />
-  <link rel="stylesheet" href="/field-pack/css/styles.css?v=19" />
+  <link rel="stylesheet" href="/field-pack/css/styles.css?v=20" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=45" />
   <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=8" />
   <link rel="stylesheet" href="/field-pack/css/mission.css?v=7" />
@@ -96,14 +96,20 @@
       </header>
 
       
-    <a class="seo-map-card no-print" href="https://cms.londonzoo.org/sites/default/files/2025-11/LZ%20Map%20Nov%202025.pdf" target="_blank" rel="noopener noreferrer">
-      <span class="seo-map-icon" aria-hidden="true">🗺️</span>
+    <a class="seo-map-card seo-map-card-image seo-map-has-preview no-print" href="https://cms.londonzoo.org/sites/default/files/2025-11/LZ%20Map%20Nov%202025.pdf" target="_blank" rel="noopener noreferrer" aria-label="Official visitor map — hover or focus to enlarge, click to open">
+      <span class="seo-map-thumb-wrap">
+        <img class="seo-map-thumb" src="/field-pack/media/maps/london-zoo.jpg" alt="Official visitor map preview" width="640" height="400" loading="lazy" decoding="async" />
+        <span class="seo-map-hover-hint" aria-hidden="true">Hover to enlarge</span>
+      </span>
       <span class="seo-map-card-body">
         <span class="seo-map-kicker">Official map</span>
         <strong>Open the print map (PDF)</strong>
-        <small>Official map · London Zoo · PDF · opens in a new tab</small>
+        <small>Official map · London Zoo · hover preview · click opens PDF</small>
       </span>
-      <span class="seo-map-go" aria-hidden="true">→</span>
+      <span class="seo-map-preview" aria-hidden="true">
+        <img src="/field-pack/media/maps/london-zoo.jpg" alt="" loading="lazy" decoding="async" />
+        <span class="seo-map-preview-cap">Official map · London Zoo</span>
+      </span>
     </a>
       
     <section class="seo-90 no-print" aria-labelledby="route90-heading">
@@ -315,7 +321,7 @@
   <div id="print-sheet" class="print-sheet" aria-hidden="true"></div>
   <div id="treasure-sheet" class="print-sheet treasure-sheet" aria-hidden="true"></div>
 
-  <script type="application/json" id="venue-data">{"slug": "london-zoo", "name": "London Zoo", "type": "zoo", "city": "London", "region": "", "country": "GB", "lat": 51.5353, "lng": -0.1534, "official_url": "https://www.londonzoo.org/", "last_verified": "2026-08-07", "verified_by": "owner", "status": "verified", "tagline": "Regent's Park wildlife — gorillas and penguins (elephants live at Whipsnade).", "practical": {"typical_duration": "half day", "ticket_note": "Book timed tickets online; busy school holidays.", "transit_note": "Camden Town or Regent's Park Underground + walk."}, "items": [{"id": "gorilla", "label": "Gorilla (Gorilla Kingdom)", "emoji": "🦍", "one_liner": "Meet the troop in Gorilla Kingdom.", "tags": ["primates", "wow", "outdoor"], "age_fit": ["2-3", "4-5", "6-8", "9+"], "zone": "Gorilla Kingdom", "qa_card": {"question": "Are gorillas mean?", "answer": "They are strong but mostly gentle plant-eaters who live in families."}, "catalog_id": "western-lowland-gorilla"}, {"id": "penguin", "label": "Penguin", "emoji": "🐧", "one_liner": "Dive-and-waddle stars of the penguin beach.", "tags": ["birds", "water", "wow"], "age_fit": ["2-3", "4-5", "6-8", "9+"], "zone": "", "catalog_id": "african-penguin"}, {"id": "tiger", "label": "Tiger", "emoji": "🐯", "one_liner": "Stripes in the tiger territory.", "tags": ["big-cats", "pattern", "wow"], "age_fit": ["2-3", "4-5", "6-8", "9+"], "zone": "", "catalog_id": "sumatran-tiger"}, {"id": "lion", "label": "Lion", "emoji": "🦁", "one_liner": "Asiatic lions on the pride rocks.", "tags": ["big-cats", "sound", "outdoor"], "age_fit": ["2-3", "4-5", "6-8", "9+"], "zone": "Land of the Lions", "catalog_id": "african-lion"}, {"id": "sloth", "label": "Two-toed sloth", "emoji": "🦥", "one_liner": "Slow climber hanging upside down.", "tags": ["climb", "slow", "indoor"], "age_fit": ["2-3", "4-5", "6-8", "9+"], "zone": "", "catalog_id": "two-toed-sloth"}, {"id": "lemur", "label": "Lemur / Madagascar", "emoji": "🐒", "one_liner": "Stripy tails and island energy.", "tags": ["primates", "pattern"], "age_fit": ["2-3", "4-5", "6-8", "9+"], "zone": "Madagascar", "catalog_id": "ring-tailed-lemur"}, {"id": "tortoise", "label": "Giant tortoise", "emoji": "🐢", "one_liner": "Ancient shells on the move.", "tags": ["slow", "outdoor"], "age_fit": ["2-3", "4-5", "6-8", "9+"], "zone": "", "catalog_id": "galapagos-tortoise"}, {"id": "otter", "label": "Otter", "emoji": "🦦", "one_liner": "Splashy play in the water.", "tags": ["water", "active"], "age_fit": ["2-3", "4-5", "6-8", "9+"], "zone": "", "catalog_id": "asian-small-clawed-otter"}, {"id": "chimp", "label": "Monkey / ape friends", "emoji": "🐵", "one_liner": "Climbing primates beyond the gorillas.", "tags": ["primates", "climb"], "age_fit": ["2-3", "4-5", "6-8", "9+"], "zone": "", "catalog_id": "chimpanzee"}, {"id": "capybara", "label": "Capybara area", "emoji": "🐹", "one_liner": "World's largest rodent — chill by the water.", "tags": ["outdoor", "cute"], "age_fit": ["4-5", "6-8", "9+"], "zone": ""}, {"id": "butterfly-or-indoor", "label": "Indoor rainforest moments", "emoji": "🌿", "one_liner": "Warm indoor habitats when London is rainy.", "tags": ["indoor", "explore"], "age_fit": ["2-3", "4-5", "6-8"], "zone": ""}, {"id": "play", "label": "Play / under-5 reset", "emoji": "🛝", "one_liner": "Burn energy, then back on the path.", "tags": ["kids", "rest"], "age_fit": ["2-3", "4-5"], "zone": ""}], "content_mode": "curated", "media": {"visitor_map_url": "", "visitor_map_page": "https://cms.londonzoo.org/sites/default/files/2025-11/LZ%20Map%20Nov%202025.pdf", "visitor_map_kind": "page", "map_attribution": "Official map · London Zoo"}, "parent_script": ["Bathroom first", "One big wow", "Snack when needed", "Leave while happy"], "research_notes": "web-map 2026-08-07"}</script>
+  <script type="application/json" id="venue-data">{"slug": "london-zoo", "name": "London Zoo", "type": "zoo", "city": "London", "region": "", "country": "GB", "lat": 51.5353, "lng": -0.1534, "official_url": "https://www.londonzoo.org/", "last_verified": "2026-08-07", "verified_by": "owner", "status": "verified", "tagline": "Regent's Park wildlife — gorillas and penguins (elephants live at Whipsnade).", "practical": {"typical_duration": "half day", "ticket_note": "Book timed tickets online; busy school holidays.", "transit_note": "Camden Town or Regent's Park Underground + walk."}, "items": [{"id": "gorilla", "label": "Gorilla (Gorilla Kingdom)", "emoji": "🦍", "one_liner": "Meet the troop in Gorilla Kingdom.", "tags": ["primates", "wow", "outdoor"], "age_fit": ["2-3", "4-5", "6-8", "9+"], "zone": "Gorilla Kingdom", "qa_card": {"question": "Are gorillas mean?", "answer": "They are strong but mostly gentle plant-eaters who live in families."}, "catalog_id": "western-lowland-gorilla"}, {"id": "penguin", "label": "Penguin", "emoji": "🐧", "one_liner": "Dive-and-waddle stars of the penguin beach.", "tags": ["birds", "water", "wow"], "age_fit": ["2-3", "4-5", "6-8", "9+"], "zone": "", "catalog_id": "african-penguin"}, {"id": "tiger", "label": "Tiger", "emoji": "🐯", "one_liner": "Stripes in the tiger territory.", "tags": ["big-cats", "pattern", "wow"], "age_fit": ["2-3", "4-5", "6-8", "9+"], "zone": "", "catalog_id": "sumatran-tiger"}, {"id": "lion", "label": "Lion", "emoji": "🦁", "one_liner": "Asiatic lions on the pride rocks.", "tags": ["big-cats", "sound", "outdoor"], "age_fit": ["2-3", "4-5", "6-8", "9+"], "zone": "Land of the Lions", "catalog_id": "african-lion"}, {"id": "sloth", "label": "Two-toed sloth", "emoji": "🦥", "one_liner": "Slow climber hanging upside down.", "tags": ["climb", "slow", "indoor"], "age_fit": ["2-3", "4-5", "6-8", "9+"], "zone": "", "catalog_id": "two-toed-sloth"}, {"id": "lemur", "label": "Lemur / Madagascar", "emoji": "🐒", "one_liner": "Stripy tails and island energy.", "tags": ["primates", "pattern"], "age_fit": ["2-3", "4-5", "6-8", "9+"], "zone": "Madagascar", "catalog_id": "ring-tailed-lemur"}, {"id": "tortoise", "label": "Giant tortoise", "emoji": "🐢", "one_liner": "Ancient shells on the move.", "tags": ["slow", "outdoor"], "age_fit": ["2-3", "4-5", "6-8", "9+"], "zone": "", "catalog_id": "galapagos-tortoise"}, {"id": "otter", "label": "Otter", "emoji": "🦦", "one_liner": "Splashy play in the water.", "tags": ["water", "active"], "age_fit": ["2-3", "4-5", "6-8", "9+"], "zone": "", "catalog_id": "asian-small-clawed-otter"}, {"id": "chimp", "label": "Monkey / ape friends", "emoji": "🐵", "one_liner": "Climbing primates beyond the gorillas.", "tags": ["primates", "climb"], "age_fit": ["2-3", "4-5", "6-8", "9+"], "zone": "", "catalog_id": "chimpanzee"}, {"id": "capybara", "label": "Capybara area", "emoji": "🐹", "one_liner": "World's largest rodent — chill by the water.", "tags": ["outdoor", "cute"], "age_fit": ["4-5", "6-8", "9+"], "zone": ""}, {"id": "butterfly-or-indoor", "label": "Indoor rainforest moments", "emoji": "🌿", "one_liner": "Warm indoor habitats when London is rainy.", "tags": ["indoor", "explore"], "age_fit": ["2-3", "4-5", "6-8"], "zone": ""}, {"id": "play", "label": "Play / under-5 reset", "emoji": "🛝", "one_liner": "Burn energy, then back on the path.", "tags": ["kids", "rest"], "age_fit": ["2-3", "4-5"], "zone": ""}], "content_mode": "curated", "media": {"visitor_map_url": "/field-pack/media/maps/london-zoo.jpg", "visitor_map_page": "https://cms.londonzoo.org/sites/default/files/2025-11/LZ%20Map%20Nov%202025.pdf", "visitor_map_kind": "image", "map_attribution": "Official map · London Zoo", "print_map": "/field-pack/media/maps/london-zoo.jpg"}, "parent_script": ["Bathroom first", "One big wow", "Snack when needed", "Leave while happy"], "research_notes": "web-map 2026-08-07"}</script>
   <script type="application/json" id="challenges-data">{
   "version": 1,
   "challenges": [
@@ -707,7 +713,8 @@
 </script>
   <script src="/shell/shell.js?v=3"></script>
   <script src="/field-pack/js/catalog.js?v=20"></script>
-  <script src="/field-pack/js/print-kit.js?v=2"></script>
+  <script src="/field-pack/js/print-maps.js?v=1"></script>
+  <script src="/field-pack/js/print-kit.js?v=3"></script>
   <script src="/field-pack/js/mission/mission-engine.js?v=6"></script>
   <script src="/field-pack/js/mission/mission-ui.js?v=8"></script>
 </body>

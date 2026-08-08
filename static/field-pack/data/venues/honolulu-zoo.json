@@ -317,10 +317,11 @@
   ],
   "content_mode": "hybrid",
   "media": {
-    "visitor_map_url": "https://www.honoluluzoo.org/wp-content/uploads/Zoo-Map.png",
+    "visitor_map_url": "/field-pack/media/maps/honolulu-zoo.jpg",
     "visitor_map_page": "https://www.honoluluzoo.org/wp-content/uploads/Zoo-Map.png",
     "visitor_map_kind": "image",
-    "map_attribution": "Official visit page"
+    "map_attribution": "Official visit page",
+    "print_map": "/field-pack/media/maps/honolulu-zoo.jpg"
   },
   "parent_script": [
     "Bathroom first",

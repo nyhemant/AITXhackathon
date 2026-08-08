@@ -289,10 +289,11 @@
   ],
   "content_mode": "hybrid",
   "media": {
-    "visitor_map_url": "https://www.columbuszoo.org/sites/default/files/inline-images/2025-Map-for-website_June-23.jpg",
+    "visitor_map_url": "/field-pack/media/maps/columbus-zoo.jpg",
     "visitor_map_page": "https://www.columbuszoo.org/park-map",
     "visitor_map_kind": "image",
-    "map_attribution": "Official map \u00b7 Columbus Zoo and Aquarium"
+    "map_attribution": "Official map \u00b7 Columbus Zoo and Aquarium",
+    "print_map": "/field-pack/media/maps/columbus-zoo.jpg"
   },
   "parent_script": [
     "Bathroom first",

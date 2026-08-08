@@ -289,10 +289,11 @@
   ],
   "content_mode": "hybrid",
   "media": {
-    "visitor_map_url": "https://www.seattleaquarium.org/wp-content/uploads/2026/05/Seattle-Aquarium-campus-map-May-2026.webp",
+    "visitor_map_url": "/field-pack/media/maps/seattle-aquarium.jpg",
     "visitor_map_page": "https://www.seattleaquarium.org/visit/plan-your-visit/aquarium-map/",
     "visitor_map_kind": "image",
-    "map_attribution": "Official map \u00b7 Seattle Aquarium"
+    "map_attribution": "Official map \u00b7 Seattle Aquarium",
+    "print_map": "/field-pack/media/maps/seattle-aquarium.jpg"
   },
   "parent_script": [
     "Bathroom first",

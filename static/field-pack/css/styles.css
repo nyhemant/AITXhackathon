@@ -1503,11 +1503,79 @@ a {
       );
   }
 
+  /* Official map squeezed into hunt footer — stay on one letter page */
+  .th-page-with-map .th-banner {
+    padding: 4px 7px;
+    margin-bottom: 4px;
+  }
+  .th-page-with-map .th-banner h1 {
+    font-size: 12.5pt;
+  }
+  .th-page-with-map .th-meta {
+    padding: 4px 7px;
+    margin-bottom: 3px;
+    font-size: 8.5pt;
+  }
+  .th-page-with-map .th-intro {
+    font-size: 8.5pt;
+    margin-bottom: 3px;
+  }
+  .th-page-with-map .th-list {
+    gap: 2px;
+    margin-bottom: 3px;
+  }
+  .th-page-with-map .th-row {
+    padding: 2px 5px;
+    font-size: 8.5pt;
+  }
+  .th-page-with-map .th-stars {
+    margin-bottom: 3px;
+    padding: 3px 5px;
+  }
+  .th-page-with-map .th-chip {
+    font-size: 7pt;
+    padding: 0 5px;
+  }
+  .th-map-has-photo {
+    margin: 0 0 2px;
+  }
+  .th-map-photo-wrap {
+    border: 1.5px solid #1f6b4a;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #f3faf6;
+    max-height: 2.15in;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .th-map-photo {
+    display: block;
+    width: 100%;
+    max-height: 2.15in;
+    height: auto;
+    object-fit: contain;
+    object-position: center;
+    /* Save ink; still readable for path-marking */
+    filter: grayscale(0.15) contrast(1.05);
+  }
+  .th-map-cap {
+    margin: 1px 0 0;
+    font-size: 6.5pt;
+    font-weight: 650;
+    color: #3d4f6f;
+    text-align: center;
+  }
+
   .th-footer {
     margin-top: 3px;
     text-align: center;
     font-size: 7pt;
     color: #3d4f6f;
+  }
+  .th-page-with-map .th-footer {
+    margin-top: 2px;
+    font-size: 6.5pt;
   }
 }
 

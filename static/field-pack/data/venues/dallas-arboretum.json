@@ -223,10 +223,11 @@
   ],
   "content_mode": "hybrid",
   "media": {
-    "visitor_map_url": "https://dallasarboretum.imgix.net/wp-content/uploads/2019/01/22203122/map.jpg",
+    "visitor_map_url": "/field-pack/media/maps/dallas-arboretum.jpg",
     "visitor_map_page": "https://dallasarboretum.imgix.net/wp-content/uploads/2019/01/22203122/map.jpg",
     "visitor_map_kind": "image",
-    "map_attribution": "Official visit page"
+    "map_attribution": "Official visit page",
+    "print_map": "/field-pack/media/maps/dallas-arboretum.jpg"
   },
   "parent_script": [
     "Bathroom first",
