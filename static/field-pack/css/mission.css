@@ -746,11 +746,11 @@ body.mission-drawer-open {
 }
 .mission-seg-bonus.is-active,
 #mission-hunt-seg .mission-seg-btn[data-hunt="bonus"].is-active {
-  background: #c45a12;
+  background: #8a6d3b;
   color: #fff;
 }
 body.mission-hunt-bonus .mission-drawer-kicker {
-  color: #c45a12;
+  color: #8a6d3b;
 }
 @media print {
   .ms-favorite { font-size: 12pt; margin-top: 10pt; }
@@ -762,25 +762,30 @@ body.mission-hunt-bonus .mission-drawer-kicker {
   }
 }
 
+/* Alpha: muted slate — readable, not loud */
 .ms-hunt-tag-alpha {
-  color: #5b21b6;
+  color: #4a5568;
 }
 .ms-sheet-alpha .ms-title {
-  color: #5b21b6;
+  color: #2d3748;
 }
 .ms-sheet-alpha .ms-section {
-  color: #6d28d9;
+  color: #4a5568;
 }
 .ms-sheet-alpha .ms-easter-egg {
-  border-color: rgba(109, 40, 217, 0.45);
-  background: #f5f3ff;
-  color: #3b0764;
+  border-color: rgba(74, 85, 104, 0.35);
+  background: #f7fafc;
+  color: #2d3748;
 }
 .mission-seg-alpha.is-active,
 #mission-hunt-seg .mission-seg-btn[data-hunt="alpha"].is-active {
-  background: #6d28d9;
+  background: #4a5568;
   color: #fff;
 }
 body.mission-hunt-alpha .mission-drawer-kicker {
-  color: #6d28d9;
+  color: #4a5568;
+}
+#mission-hunt-seg {
+  position: relative;
+  z-index: 1;
 }

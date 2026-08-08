@@ -143,11 +143,32 @@
     return "classic";
   }
 
+  /**
+   * Exclusive chip selection. Only buttons that *have* `attr` participate —
+   * missing attributes must never match (null === null would mark whole rows active).
+   */
   function setSegActive(rootSel, attr, value) {
+    const want = value == null ? "" : String(value);
     document.querySelectorAll(rootSel).forEach((btn) => {
-      const on = btn.getAttribute(attr) === value;
-      btn.classList.toggle("is-active", on);
+      if (!btn.hasAttribute(attr)) return;
+      const on = String(btn.getAttribute(attr) || "") === want;
+      if (on) btn.classList.add("is-active");
+      else btn.classList.remove("is-active");
       btn.setAttribute("aria-pressed", on ? "true" : "false");
+    });
+  }
+
+  /** Activate one value inside each chip group container. */
+  function setGroupChip(groupSel, attr, value) {
+    const want = value == null ? "" : String(value);
+    document.querySelectorAll(groupSel).forEach((group) => {
+      group.querySelectorAll("button").forEach((btn) => {
+        if (!btn.hasAttribute(attr)) return;
+        const on = String(btn.getAttribute(attr) || "") === want;
+        if (on) btn.classList.add("is-active");
+        else btn.classList.remove("is-active");
+        btn.setAttribute("aria-pressed", on ? "true" : "false");
+      });
     });
   }
 
@@ -388,31 +409,33 @@
 
   /** Paint page bar + drawer chips from `state` (single source of truth). */
   function syncChipChrome() {
-    state.age = normalizeAgeKey(state.age);
-    state.time = normalizeTimeKey(state.time);
-    state.hunt = normalizeHuntKey(state.hunt);
-    setSegActive(".seo-age-chip", "data-age", state.age);
-    setSegActive(".seo-time-chip", "data-time", state.time);
-    setSegActive("#mission-who-seg .mission-seg-btn", "data-age", state.age);
-    setSegActive("#mission-time-seg .mission-seg-btn", "data-time", state.time);
-    setSegActive(".seo-hunt-chip, #mission-hunt-seg .mission-seg-btn", "data-hunt", state.hunt);
+    state.age = normalizeAgeKey(state.age) || "4-5";
+    state.time = normalizeTimeKey(state.time) || "half";
+    state.hunt = normalizeHuntKey(state.hunt) || "classic";
+    // Exclusive selection by attribute — only nodes that own that data-* participate
+    setGroupChip("#mission-who-seg, .seo-chrome-row:not(.seo-chrome-row-hunt) .seo-chip-row", "data-age", state.age);
+    setGroupChip("#mission-time-seg, .seo-chrome-row:not(.seo-chrome-row-hunt) .seo-chip-row", "data-time", state.time);
+    setGroupChip("#mission-hunt-seg, .seo-chip-row-hunt", "data-hunt", state.hunt);
+    setSegActive(".seo-age-chip[data-age], #mission-who-seg [data-age]", "data-age", state.age);
+    setSegActive(".seo-time-chip[data-time], #mission-time-seg [data-time]", "data-time", state.time);
+    setSegActive(".seo-hunt-chip[data-hunt], #mission-hunt-seg [data-hunt]", "data-hunt", state.hunt);
     document.body.classList.toggle("mission-hunt-bonus", state.hunt === "bonus");
     document.body.classList.toggle("mission-hunt-alpha", state.hunt === "alpha");
     document.querySelectorAll(".mission-hunt-hint, .seo-bonus-hint").forEach((el) => {
       if (el.classList.contains("seo-bonus-hint")) {
         el.textContent =
           state.hunt === "alpha"
-            ? "Alpha = extra-hard cool finds · patience + easter egg"
+            ? "Alpha = extra-hard cool finds."
             : state.hunt === "bonus"
-              ? "Bonus hunt = trickier second-visit finds."
-              : "Classic = first-visit shortlist.";
+              ? "Bonus = trickier second-visit finds."
+              : "Classic · Bonus · Alpha styles.";
       } else {
         el.textContent =
           state.hunt === "alpha"
-            ? "Alpha = extra-hard & cool · deep cuts + ultra challenges"
+            ? "Alpha = extra-hard cool finds + easter egg"
             : state.hunt === "bonus"
-              ? "Bonus = second visit & curious kids · trickier finds + easter egg"
-              : "Classic = first-visit shortlist · easy win";
+              ? "Bonus = second visit · trickier finds + easter egg"
+              : "Classic = first visit · Bonus = trickier · Alpha = extra-hard";
       }
     });
   }
@@ -488,25 +511,29 @@
     });
     // Shared chip pattern: page bar + drawer segments.
     // Set state first, then recompute — never re-read stale .is-active from the other row.
-    document.querySelectorAll(".seo-time-chip, #mission-time-seg .mission-seg-btn").forEach((btn) => {
+    // Use [data-*] so we never bind age handlers onto hunt buttons (or vice versa).
+    document.querySelectorAll(".seo-time-chip[data-time], #mission-time-seg [data-time]").forEach((btn) => {
       btn.addEventListener("click", (e) => {
         e.preventDefault();
+        e.stopPropagation();
         state.time = normalizeTimeKey(btn.getAttribute("data-time") || "half");
         syncChipChrome();
         recompute(false);
       });
     });
-    document.querySelectorAll(".seo-age-chip, #mission-who-seg .mission-seg-btn").forEach((btn) => {
+    document.querySelectorAll(".seo-age-chip[data-age], #mission-who-seg [data-age]").forEach((btn) => {
       btn.addEventListener("click", (e) => {
         e.preventDefault();
+        e.stopPropagation();
         state.age = normalizeAgeKey(btn.getAttribute("data-age") || "4-5");
         syncChipChrome();
         recompute(false);
       });
     });
-    document.querySelectorAll(".seo-hunt-chip, #mission-hunt-seg .mission-seg-btn").forEach((btn) => {
+    document.querySelectorAll(".seo-hunt-chip[data-hunt], #mission-hunt-seg [data-hunt]").forEach((btn) => {
       btn.addEventListener("click", (e) => {
         e.preventDefault();
+        e.stopPropagation();
         state.hunt = normalizeHuntKey(btn.getAttribute("data-hunt") || "classic");
         syncChipChrome();
         recompute(false);

@@ -440,7 +440,8 @@
   gap: 0;
 }
 .seo-time-chip,
-.seo-age-chip {
+.seo-age-chip,
+.seo-hunt-chip {
   appearance: none;
   flex: 1 1 0;
   border: none;
@@ -455,24 +456,30 @@
   min-height: 36px;
   cursor: pointer;
   transition: background 0.12s ease, color 0.12s ease;
+  position: relative;
+  z-index: 1;
 }
 .seo-time-chip:last-child,
-.seo-age-chip:last-child {
+.seo-age-chip:last-child,
+.seo-hunt-chip:last-child {
   border-right: none;
 }
 .seo-time-chip:hover,
-.seo-age-chip:hover {
+.seo-age-chip:hover,
+.seo-hunt-chip:hover {
   background: #f0faf6;
   color: #0a4545;
 }
 .seo-time-chip.is-active,
-.seo-age-chip.is-active {
+.seo-age-chip.is-active,
+.seo-hunt-chip.is-active {
   background: #0f5c5c;
   color: #fff;
   border-color: transparent;
 }
 .seo-time-chip.is-active:hover,
-.seo-age-chip.is-active:hover {
+.seo-age-chip.is-active:hover,
+.seo-hunt-chip.is-active:hover {
   background: #0a4545;
   color: #fff;
 }
@@ -509,7 +516,8 @@
     flex-basis: 2.6rem;
   }
   .seo-time-chip,
-  .seo-age-chip {
+  .seo-age-chip,
+  .seo-hunt-chip {
     min-height: 40px; /* finger-friendly */
     font-size: 0.8rem;
     padding: 8px 2px;
@@ -1204,26 +1212,27 @@ a.seo-map-card:focus-visible {
   font-weight: 650;
 }
 .seo-chrome-row-hunt .seo-chip-row-hunt {
-  max-width: 22rem;
+  max-width: 18rem;
 }
+/* Bonus / Alpha: quiet labels when idle; soft tint when active (not neon) */
 .seo-hunt-chip.seo-hunt-bonus:not(.is-active) {
-  color: #9a5b00;
-  font-weight: 800;
+  color: #6b5a3e;
+  font-weight: 750;
 }
 .seo-hunt-chip.seo-hunt-bonus.is-active {
-  background: #c45a12;
+  background: #8a6d3b;
   color: #fff;
 }
 .seo-bonus-hint {
-  color: #8a6d3b;
-  font-weight: 650;
+  color: #5a6b82;
+  font-weight: 600;
 }
 
 .seo-hunt-chip.seo-hunt-alpha:not(.is-active) {
-  color: #5b21b6;
-  font-weight: 800;
+  color: #4a5568;
+  font-weight: 750;
 }
 .seo-hunt-chip.seo-hunt-alpha.is-active {
-  background: #6d28d9;
+  background: #4a5568;
   color: #fff;
 }

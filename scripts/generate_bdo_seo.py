@@ -1019,8 +1019,8 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <link rel="stylesheet" href="/shell/shell.css?v=5" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=64" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=12" />
-  <link rel="stylesheet" href="/field-pack/css/mission.css?v=12" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=13" />
+  <link rel="stylesheet" href="/field-pack/css/mission.css?v=13" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
   </script>
@@ -1106,8 +1106,8 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <script src="/field-pack/js/catalog.js?v=23"></script>
   <script src="/field-pack/js/print-maps.js?v=2"></script>
   <script src="/field-pack/js/print-kit.js?v=9"></script>
-  <script src="/field-pack/js/mission/mission-engine.js?v=12"></script>
-  <script src="/field-pack/js/mission/mission-ui.js?v=12"></script>
+  <script src="/field-pack/js/mission/mission-engine.js?v=13"></script>
+  <script src="/field-pack/js/mission/mission-ui.js?v=13"></script>
 </body>
 </html>
 """
@@ -1169,7 +1169,7 @@ def render_venue_page(v: dict) -> str:
   <link rel="stylesheet" href="/shell/shell.css?v=5" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=52" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=12" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=13" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
   </script>
