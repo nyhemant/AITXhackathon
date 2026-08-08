@@ -328,34 +328,20 @@
     setTimeout(() => window.print(), 80);
   }
 
-  function readControls() {
+  /** Name / interest only — age & time live in `state` (set by chip clicks). */
+  function readTextControls() {
     const nameEl = $("#mission-name");
     const interestEl = $("#mission-interest");
     state.name = nameEl ? nameEl.value : "";
-    // Prefer active drawer segments; fall back to page chips / existing state
-    const whoBtn =
-      document.querySelector("#mission-who-seg .mission-seg-btn.is-active") ||
-      document.querySelector(".seo-age-chip.is-active");
-    const timeBtn =
-      document.querySelector("#mission-time-seg .mission-seg-btn.is-active") ||
-      document.querySelector(".seo-time-chip.is-active");
-    if (whoBtn) {
-      state.age = normalizeAgeKey(whoBtn.getAttribute("data-age") || state.age);
-    } else {
-      state.age = normalizeAgeKey(state.age);
-    }
-    if (timeBtn) {
-      state.time = normalizeTimeKey(timeBtn.getAttribute("data-time") || state.time);
-    } else {
-      state.time = normalizeTimeKey(state.time);
-    }
     state.interest = interestEl ? interestEl.value : "";
-  }
-
-  function syncPageChrome() {
     state.age = normalizeAgeKey(state.age);
     state.time = normalizeTimeKey(state.time);
-    // Page bar + drawer use the same active pattern
+  }
+
+  /** Paint page bar + drawer chips from `state` (single source of truth). */
+  function syncChipChrome() {
+    state.age = normalizeAgeKey(state.age);
+    state.time = normalizeTimeKey(state.time);
     setSegActive(".seo-age-chip", "data-age", state.age);
     setSegActive(".seo-time-chip", "data-time", state.time);
     setSegActive("#mission-who-seg .mission-seg-btn", "data-age", state.age);
@@ -364,8 +350,8 @@
 
   function recompute(fromShuffle) {
     if (!venue || !challenges || !window.FPMission) return;
-    readControls();
-    syncPageChrome();
+    readTextControls();
+    syncChipChrome();
     lastMission = window.FPMission.selectMission(venue, challenges, state, wonders);
     renderSheet(lastMission);
     if (genTimer) clearTimeout(genTimer);
@@ -424,16 +410,21 @@
       el.addEventListener("input", () => recompute(false));
       el.addEventListener("change", () => recompute(false));
     });
-    // Shared chip pattern: page bar + drawer segments
+    // Shared chip pattern: page bar + drawer segments.
+    // Set state first, then recompute — never re-read stale .is-active from the other row.
     document.querySelectorAll(".seo-time-chip, #mission-time-seg .mission-seg-btn").forEach((btn) => {
-      btn.addEventListener("click", () => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
         state.time = normalizeTimeKey(btn.getAttribute("data-time") || "half");
+        syncChipChrome();
         recompute(false);
       });
     });
     document.querySelectorAll(".seo-age-chip, #mission-who-seg .mission-seg-btn").forEach((btn) => {
-      btn.addEventListener("click", () => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
         state.age = normalizeAgeKey(btn.getAttribute("data-age") || "4-5");
+        syncChipChrome();
         recompute(false);
       });
     });

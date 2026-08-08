@@ -1051,7 +1051,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <script src="/field-pack/js/print-maps.js?v=2"></script>
   <script src="/field-pack/js/print-kit.js?v=9"></script>
   <script src="/field-pack/js/mission/mission-engine.js?v=10"></script>
-  <script src="/field-pack/js/mission/mission-ui.js?v=16"></script>
+  <script src="/field-pack/js/mission/mission-ui.js?v=17"></script>
 </body>
 </html>
 """
