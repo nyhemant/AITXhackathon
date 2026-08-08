@@ -394,7 +394,7 @@
 
   /** Q&A talk levels (not the same as mission "Adults" sheet). */
   const QA_AGE_KEY = "1less-qa-talk-level";
-  const QA_AGE_ORDER = ["2-3", "4-5", "6-8", "bonus"];
+  const QA_AGE_ORDER = ["2-3", "4-5", "6-8", "bonus", "alpha"];
   let qaAge = "4-5";
 
   function loadQaAge() {
@@ -429,7 +429,14 @@
     return Boolean(venue && /aquarium|aq/i.test(String(venue.type || venue.packTemplate || "")));
   }
 
-  /** Hard wow facts → turn into bonus questions (animal-specific when we can). */
+  function normCatalogKey(raw) {
+    return String(raw || "")
+      .toLowerCase()
+      .replace(/_/g, "-")
+      .replace(/\s+/g, "-");
+  }
+
+  /** Hard wow facts → bonus questions (animal-specific when we can). */
   const BONUS_WOW = {
     "african-elephant": [
       "An elephant’s trunk has about 40,000 muscles — more than your whole body. Why might that help?",
@@ -451,6 +458,11 @@
       "Tigers are mostly solo hunters. How is that different from lions?",
       "Orange + black looks loud to us — in forest shade it can hide. Where would you hide?",
     ],
+    tiger: [
+      "No two tigers have the same stripe pattern. Sketch one stripe set in your mind.",
+      "White or orange coat: which would hide better in snow vs forest?",
+      "Tigers are mostly solo. What would change if they lived in a pride like lions?",
+    ],
     "western-lowland-gorilla": [
       "A silverback can weigh as much as two adults. What clues show strength without fighting?",
       "Gorillas build new nests almost every night. What would you use for a nest here?",
@@ -461,10 +473,60 @@
       "Faces and hands look almost human. What emotion do you read right now?",
       "They live in complex social groups. Who seems in charge of the moment?",
     ],
+    orangutan: [
+      "Orangutans are mostly solitary tree travelers. Why live high instead of on the ground?",
+      "Long arms are climbing tools. Time 15s — hands or feet doing more work?",
+      "Fruit brains: what’s one smart move you notice (look, reach, tool-like hold)?",
+    ],
     "african-penguin": [
       "They “fly” underwater with wing-like flippers. Compare swimming vs walking.",
       "A layer of air under the feathers helps insulation. Why stay dry under the feathers?",
       "Colony noise is part of finding mates and chicks. What sounds do you hear?",
+    ],
+    "nile-hippo": [
+      "Hippos look slow on land but can charge fast. Are they mostly water or bank right now?",
+      "Eyes, ears, and nostrils sit high so they can breathe while almost sunk. Spot that lineup.",
+      "They make dung showers to mark territory. Gross but useful — what else marks space here?",
+    ],
+    cheetah: [
+      "Fastest land mammal — but only in short bursts. Why not sprint all day?",
+      "Semi-retractable claws grip like cleats. Look at the feet if you can.",
+      "A still cheetah is still hunting practice. Statue or stretch — call it after 20 quiet seconds.",
+    ],
+    "caribbean-flamingo": [
+      "Pink comes from food pigments (not paint). What color would *you* turn on a shrimp diet joke?",
+      "One-leg standing may save heat. Count how many are on one leg (best guess).",
+      "That weird bent “knee” is really an ankle. Trace the leg joints with your eyes.",
+    ],
+    "galapagos-tortoise": [
+      "Giant tortoises can live longer than most humans. What would you do with 100 slow years?",
+      "Shells are living bone covered in scutes. Tap? No — just look: high dome or saddle shape?",
+      "Patience prize: wait for one step, or admit statue after 30 seconds.",
+    ],
+    "asian-small-clawed-otter": [
+      "Smallest otter species — huge hand energy. Count finger-like toes if paws are visible.",
+      "They use tools and teamwork in the wild. Spot a splash, roll, or pass-the-food moment.",
+      "Dense fur traps air for warmth. Why stay dry under the wet look?",
+    ],
+    "ring-tailed-lemur": [
+      "Ringed tails are flags for the troop. How many black/white rings can you estimate?",
+      "Sun-worship pose: belly out, arms open. Anyone soaking sun?",
+      "Female-led groups are common. Who moves first when the group shifts?",
+    ],
+    "two-toed-sloth": [
+      "Sloths move so slow algae can grow in their fur. Spot green tint?",
+      "They come down to poop about once a week — risky! Why risk the ground?",
+      "Upside-down life: what would be hard if *you* hung like that for an hour?",
+    ],
+    zebra: [
+      "Every zebra’s stripe map is unique. Find a wide stripe vs a thin one on the same animal.",
+      "Stripes may confuse biting flies and predators. Stand back — do stripes blur together?",
+      "Herd math: is this a tight group or a loner right now?",
+    ],
+    "red-panda": [
+      "Not a giant panda — closer to raccoons in the family tree. What looks “cat-like” vs “bear-like”?",
+      "They use a wrist bone like a thumb to climb. Watch the front paws on branches.",
+      "Mostly crepuscular (dawn/dusk). Why might heat or crowds change when you see them?",
     ],
     "giant-panda": [
       "Bamboo is low-calorie — pandas eat many hours a day. Spot chewing?",
@@ -476,15 +538,40 @@
       "They sleep a huge part of the day to save energy. Is this one awake or out?",
       "A koala’s pouch opens downward. Why might that help a climbing mom?",
     ],
-    "red-panda": [
-      "Not a giant panda — closer to raccoons in the family tree. What looks “cat-like” vs “bear-like”?",
-      "They use a wrist bone like a thumb to climb. Watch the front paws on branches.",
-      "Mostly crepuscular (dawn/dusk). Why might heat or crowds change when you see them?",
+    wolf: [
+      "Wolves talk with ears, tails, and posture — not just howls. Read one body cue.",
+      "Pack hunting needs teamwork. Who looks like leader energy right now?",
+      "Quiet 20 seconds: any soft whine, huff, or stillness that feels “packed”?",
+    ],
+    "black-bear": [
+      "Bears are omnivores with a great nose. What would you smell-hunt first here?",
+      "Climbing claws vs walking paws — what are the feet doing?",
+      "Winter slowdown is not always true hibernation. Does this one look sleepy or busy?",
+    ],
+    alligator: [
+      "Eyes and nostrils on top = ambush snorkel. How much of the body is under?",
+      "Cold-blooded: sunny bank vs cool water — which did they pick?",
+      "Powerful tail, short legs. How would *you* swim with that body plan?",
+    ],
+    peacock: [
+      "Train feathers are mostly show — not great for flying far. Why keep such a heavy billboard?",
+      "Eyespots may startle predators or impress mates. Count a few if the train is open.",
+      "Free-roamers choose people paths. Why hang near visitors (food? shade? curiosity)?",
+    ],
+    capybara: [
+      "World’s largest rodent — semi-aquatic. Wet fur or dry sun pose?",
+      "They get along with many species in the wild. Who else shares this space?",
+      "Webbed feet help swim. Spot a paddle move if they enter water.",
     ],
     shark: [
       "Many sharks never stop swimming — water must move over gills. Is this one cruising or resting?",
       "A sandpapery skin of tiny teeth (denticles) cuts drag. Why smooth vs rough matter?",
       "Senses include smell and tiny electrical cues. What would *you* sense in dark water?",
+    ],
+    stingray: [
+      "Wing-flaps are modified fins. Flap or glide — name the motion.",
+      "Mouth and gills are on the underside. How do they eat without seeing the plate?",
+      "Buried in sand = camouflage. Spot any outline that almost disappears.",
     ],
     octopus: [
       "Three hearts and blue blood — built for cold, low-oxygen water. What looks “alien” here?",
@@ -501,10 +588,222 @@
       "Flippers ≠ feet. How is swimming shape different from a tortoise?",
       "Plastic bags can look like jellyfish. Why is trash a sea-turtle problem?",
     ],
+    seahorse: [
+      "Upright swimming + a prehensile tail. Anchored or drifting right now?",
+      "Males carry the eggs in a pouch. Why might dad-pregnancy help survival?",
+      "Tiny snout = vacuum straw. What size prey fits that tool?",
+    ],
+    eel: [
+      "Long body = hiding in holes. Head out or fully tucked?",
+      "Some eels make shocking voltage; many don’t. What’s the “weapon” you *can* see (teeth, speed)?",
+      "Sidewinding swim. Count one full body wave if it moves.",
+    ],
     "sci-dinosaur": [
       "Birds are living dinosaurs. What on a bird is a dino clue?",
       "Teeth and hips tell diet and stance. What would *your* fossil say about you?",
       "Size fools us in museums. What looks bigger up close than you expected?",
+    ],
+    "sci-planet": [
+      "Scale lies: models shrink solar systems. What would crush the room if Earth were this size?",
+      "Find one number (distance, temperature, years) that surprises you.",
+      "If you could visit one world on this floor, which — and why not the flashiest?",
+    ],
+    "sci-hands-on": [
+      "What variable did you change (speed, angle, weight) — and what stayed the same?",
+      "Explain the result in one sentence a tired grown-up would remember.",
+      "Find a control or “fair test” idea hiding in this exhibit.",
+    ],
+    "sci-rocket": [
+      "Rockets shed weight as they climb. What would *you* drop first to go farther?",
+      "Thrust vs gravity: which force is winning in the story of this craft?",
+      "Find a human-scale clue (seat, hatch, footprint) that makes space feel real.",
+    ],
+  };
+
+  /**
+   * Alpha = extra-hard cool talk: patience timers, multi-step notice, deeper why.
+   * Harder than Bonus; still floor-safe (no trivia exam).
+   */
+  const ALPHA_WOW = {
+    "african-elephant": [
+      "ALPHA · Trunk job audit: 30 silent seconds — tool, snorkel, sniffer, or rest? Write one verb.",
+      "ALPHA · Footquake: elephants detect rumbles through fat pads in their feet. Where would *you* stand to “hear” a far herd?",
+      "ALPHA · Matriarch logic: if elders remember water holes, what memory would save *your* family on a hot trip?",
+    ],
+    "reticulated-giraffe": [
+      "ALPHA · Blood pressure puzzle: a giraffe’s heart fights gravity to the brain. Why don’t they faint every time they lift their head?",
+      "ALPHA · Tongue spy: dark tongue = sunscreen hypothesis. Confirm tongue color if it feeds — or note “off duty.”",
+      "ALPHA · Ossicone check: horn-like nubs are covered in skin. Count ossicones you can see (best guess).",
+    ],
+    "african-lion": [
+      "ALPHA · Energy budget: lions rest most of the day. After 30s quiet watch — nap, scan, or social groom?",
+      "ALPHA · Mane tradeoff: thick mane = heat + intimidation. Would *you* take the heat for the look?",
+      "ALPHA · Ambush math: short chase, not marathon. Point to body parts built for burst, not distance.",
+    ],
+    "sumatran-tiger": [
+      "ALPHA · Stripe fingerprint: memorize 3 stripe “forks,” look away 10s, look back — still the same tiger?",
+      "ALPHA · Solo vs pride: invent one hunting problem a solo tiger faces that lions solve with teamwork.",
+      "ALPHA · Vertical space: tigers swim and climb more than people think. Water, height, or ground preference here?",
+    ],
+    tiger: [
+      "ALPHA · Coat story: white/orange is genetics + rarity, not a separate species magic. What *does* change with coat color?",
+      "ALPHA · 30s silence: pacing loop, stare, or out of view — call it with evidence.",
+      "ALPHA · Soft paws, hard end: retractable claws. When would claws stay in vs out?",
+    ],
+    "western-lowland-gorilla": [
+      "ALPHA · Silverback read: age signal in the back hair. Who looks like decision-maker energy?",
+      "ALPHA · Hands story: 20s — knuckle-walk, forage, or social touch? One verb only.",
+      "ALPHA · Folivore life: huge gut for leaves. Why chew a lot for “low-quality” food?",
+    ],
+    chimpanzee: [
+      "ALPHA · Theory of mind lite: does anyone watch another chimp before acting?",
+      "ALPHA · Tool culture: wild chimps crack nuts and fish termites. Design a tool from things you see *outside* the habitat.",
+      "ALPHA · Face → feeling: name an emotion, then point to the face clue that sold you.",
+    ],
+    orangutan: [
+      "ALPHA · Canopy IQ: long arms + slow care. Time a single reach — rushed or planned?",
+      "ALPHA · Nest engineers: wild orangutans build day/night nests. Rate this habitat’s “nest materials” 1–10.",
+      "ALPHA · Loners with depth: why might smart animals still avoid big groups?",
+    ],
+    "african-penguin": [
+      "ALPHA · Countershade: dark back / light belly. From above and below in water — who gets fooled?",
+      "ALPHA · Porpoising: leap-breathe while swimming. Catch one surface breath cycle.",
+      "ALPHA · Colony code: bray calls help find partners. Softest vs loudest sound in 15s?",
+    ],
+    "nile-hippo": [
+      "ALPHA · Underwater window test: is a hippo fully in frame, partial, or ghost? Mark yes/partial/no.",
+      "ALPHA · Semi-aquatic trap: heavy on land, graceful in water. Which medium are they built for *today*?",
+      "ALPHA · Territory chemistry: dung-marking is real. What human “marks” do we leave without thinking?",
+    ],
+    cheetah: [
+      "ALPHA · Sprint physics: huge nostrils + tail rudder. Point to two speed tools you can see.",
+      "ALPHA · 30-second statue score (1–10 stillness). Cheetahs win by patience too.",
+      "ALPHA · Semi-retractable claws = permanent cleats. Tradeoff vs a house cat’s full retract?",
+    ],
+    "caribbean-flamingo": [
+      "ALPHA · Filter feeding: upside-down bill comb. If they eat, watch the head wiggle pattern.",
+      "ALPHA · One-leg thermodynamics: estimate % of flock on one leg without double-counting.",
+      "ALPHA · Knees that aren’t: the bend you see is ankle. Trace hip → ankle → toes with a finger in the air.",
+    ],
+    "galapagos-tortoise": [
+      "ALPHA · Deep time: some individuals outlive nations. What habit is worth a century of slow?",
+      "ALPHA · Shell engineering: dome vs saddle-back shapes fit different islands/food heights. Which shape here?",
+      "ALPHA · Step challenge: full 45s — any step? If not, what *did* move (eye, head, breath)?",
+    ],
+    "asian-small-clawed-otter": [
+      "ALPHA · Dexterity lab: 20s — food handle, water play, or social wrestle?",
+      "ALPHA · Whisker map: vibrissae read currents. Why “feel” water instead of only seeing?",
+      "ALPHA · Waterproofing: air in fur. After a dive, do they look slick or fluffy-dry?",
+    ],
+    "ring-tailed-lemur": [
+      "ALPHA · Stink fights are real (male wrist scent). Invent a polite human version of a stink fight.",
+      "ALPHA · Tail semaphore: raised tail while walking = follow-me flag. Catch a raised-tail move.",
+      "ALPHA · Sun ritual: belly-to-sun pose. Thermoregulation or just vibes? Defend your call.",
+    ],
+    "two-toed-sloth": [
+      "ALPHA · Metabolic minimalism: slow = survive on leaves. What would you cut from *your* day to save energy?",
+      "ALPHA · Algae camouflage: green tint is ecosystem on fur. Camouflage or just damp?",
+      "ALPHA · Motion lottery: 30s — any limb move? Record yes/no like a scientist.",
+    ],
+    zebra: [
+      "ALPHA · Motion dazzle: do stripes make distance harder to judge when they walk? Step back and test.",
+      "ALPHA · Stripe width map: shoulder vs rump — which is busier?",
+      "ALPHA · Fly hypothesis: stripes may cut tsetse landings. Why might bugs hate high-contrast edges?",
+    ],
+    "red-panda": [
+      "ALPHA · False thumb: radial sesamoid bone. Watch a grip — thumb-like or not?",
+      "ALPHA · Bamboo cousin energy without being a bear. List 2 traits that fooled the name “panda.”",
+      "ALPHA · Arboreal escape: height vs speed. If startled, up or out?",
+    ],
+    "giant-panda": [
+      "ALPHA · Gut vs diet mismatch: carnivore-ish gut on bamboo. Why chew forever?",
+      "ALPHA · Pseudo-thumb mechanics: pause on a grip and describe the hold in 5 words.",
+      "ALPHA · Conservation icon: what one habitat need (bamboo, quiet, space) would you fund first?",
+    ],
+    koala: [
+      "ALPHA · Toxic leaf specialist: liver works overtime. Why not switch to easier food?",
+      "ALPHA · Sleep budget: up to ~18–20h. Is “lazy” fair — or efficient?",
+      "ALPHA · Pouch down: joey climbs up into a downward pouch. Engineering win or weird?",
+    ],
+    wolf: [
+      "ALPHA · Rank is fluid, not cartoon. After 30s, who yields space to whom?",
+      "ALPHA · Endurance hunters: long chase strategy. What body clue says “marathon,” not “cheetah”?",
+      "ALPHA · Howl purpose: assemble, advertise, bond. If they howled now, which job fits the scene?",
+    ],
+    "black-bear": [
+      "ALPHA · Nose first: smell >> sight for bears. Design a “scent map” of this habitat in 3 zones.",
+      "ALPHA · Plantigrade feet (flat). Compare to a dog’s digitigrade tip-toe run.",
+      "ALPHA · Omnivore menu: invent today’s buffet from what you see in the yard.",
+    ],
+    alligator: [
+      "ALPHA · Sit-and-wait predator: energy cheap until strike. Still water or micro-move?",
+      "ALPHA · Temperature choice: sun bake vs shade soak — pick their thermostat setting.",
+      "ALPHA · Parental care surprise: gators guard nests/young. What would “good parent” look like here?",
+    ],
+    peacock: [
+      "ALPHA · Honest signal debate: huge train = healthy genes *or* just hard to escape predators. Pick a side.",
+      "ALPHA · Iridescence: color from structure, not only pigment. Tilt your view — does color shift?",
+      "ALPHA · Ground risk: flashy + flight-limited. Why didn’t evolution “fix” that?",
+    ],
+    capybara: [
+      "ALPHA · Semi-aquatic rodent: eyes/ears/nose high like a hippo lite. Spot the snorkel line.",
+      "ALPHA · Social calm: capybaras famously chill with other species. Who’s sharing space?",
+      "ALPHA · Grazers with swims: land food + water escape. Which need seems primary today?",
+    ],
+    shark: [
+      "ALPHA · Ram ventilation vs buccal pump: must-swim vs can-rest species differ. Cruising nonstop here?",
+      "ALPHA · Ampullae of Lorenzini: sense tiny electric fields. What “hidden” prey cue is that?",
+      "ALPHA · Pass count: how many full crossings of your window in 30s?",
+    ],
+    stingray: [
+      "ALPHA · Spiracles: some breathe through holes behind the eyes when buried. Find eye line + bury clues.",
+      "ALPHA · Undulation vs oscillation: wave along the whole fin or flap like wings?",
+      "ALPHA · Bottom hunter: what would you taste/feel in sand if you were a ray?",
+    ],
+    octopus: [
+      "ALPHA · Distributed brain: more neurons in arms than central brain. Does an arm explore “on its own”?",
+      "ALPHA · Beak is the only hard part. Estimate the smallest square hole it could escape through.",
+      "ALPHA · Camouflage score 1–10 after 20s — and name the background it matched.",
+    ],
+    jellyfish: [
+      "ALPHA · Nerve net democracy: no brain, still pulsing. Count 10 pulses and note even vs uneven rhythm.",
+      "ALPHA · Mesoglea: jelly mass is support + buoyancy. Why not need bones?",
+      "ALPHA · Sting ecology: nematocysts fire on touch. Why is “look don’t poke” science, not just manners?",
+    ],
+    "sea-turtle": [
+      "ALPHA · Magnetic natal homing: hatchlings encode beach fields. What human “home beacon” is closest?",
+      "ALPHA · Shell tradeoff: armor vs dive agility. Lightweight feel or tank?",
+      "ALPHA · Light pollution problem: hatchlings crawl toward glow. Invent a beach fix in one sentence.",
+    ],
+    seahorse: [
+      "ALPHA · Male pregnancy: brood pouch oxygen + salt control. Why might that raise survival?",
+      "ALPHA · Anchor tail: prehensile hold on seagrass. Anchored point + body sway?",
+      "ALPHA · Independent eye turret: each eye can track differently. Catch a weird eye split?",
+    ],
+    eel: [
+      "ALPHA · Elongate hydrodynamics: whole-body wave. Trace one wave from head to tip.",
+      "ALPHA · Crevice niche: ambush from holes. What’s the best hide geometry here?",
+      "ALPHA · Mucus + smooth skin: different from scaled fish. Advantage in tight rocks?",
+    ],
+    "sci-dinosaur": [
+      "ALPHA · Phylogeny punchline: birds ⊂ dinosaurs. Find one trait that survives in a pigeon.",
+      "ALPHA · Allometry: big animals need thicker legs. Which bone looks “overbuilt”?",
+      "ALPHA · Trace vs body fossil: which would prove behavior better — trackway or skull?",
+    ],
+    "sci-planet": [
+      "ALPHA · Order-of-magnitude: pick two distances and say which is ~10× or ~100× the other.",
+      "ALPHA · Selection effect: pretty images ≠ common worlds. What’s likely ugly but important?",
+      "ALPHA · Energy story: sunlight vs internal heat — which powers the thing you’re viewing?",
+    ],
+    "sci-hands-on": [
+      "ALPHA · Isolate variables: change only one thing twice. What broke when you changed two?",
+      "ALPHA · Error bars of life: redo once — same result? Why might it differ?",
+      "ALPHA · Teach-back: 15-second explanation with no jargon allowed.",
+    ],
+    "sci-rocket": [
+      "ALPHA · Tsiolkovsky intuition: more fuel helps, but tank mass hurts. What’s the cruel trade?",
+      "ALPHA · Staging: why drop empty cans instead of hauling them to orbit?",
+      "ALPHA · Human system: life support is cargo. Point to one crew-need this craft must solve.",
     ],
   };
 
@@ -513,18 +812,48 @@
   }
 
   function itemCatalogId(item) {
-    return String((item && (item.catalog_id || item.id)) || "").toLowerCase();
+    return normCatalogKey((item && (item.catalog_id || item.id)) || "");
+  }
+
+  function lookupPromptBank(bank, item) {
+    const id = itemCatalogId(item);
+    if (bank[id]) return bank[id];
+    const bare = id.replace(/^w-/, "");
+    if (bank[bare]) return bank[bare];
+    // soft aliases
+    const aliases = {
+      elephant: "african-elephant",
+      giraffe: "reticulated-giraffe",
+      lion: "african-lion",
+      gorilla: "western-lowland-gorilla",
+      hippo: "nile-hippo",
+      penguin: "african-penguin",
+      flamingo: "caribbean-flamingo",
+      tortoise: "galapagos-tortoise",
+      otter: "asian-small-clawed-otter",
+      lemur: "ring-tailed-lemur",
+      sloth: "two-toed-sloth",
+      "sea-star": "starfish",
+      jelly: "jellyfish",
+      panda: "giant-panda",
+    };
+    for (const [k, v] of Object.entries(aliases)) {
+      if (id.includes(k) && bank[v]) return bank[v];
+    }
+    const name = String((item && item.name) || "").toLowerCase();
+    for (const [k, v] of Object.entries(aliases)) {
+      if (name.includes(k.replace(/-/g, " ")) && bank[v]) return bank[v];
+    }
+    return null;
   }
 
   function bonusPromptsFor(item, venue) {
     const name = item.name || "this stop";
-    const id = itemCatalogId(item);
     const tags = itemTags(item);
     const place = (venue && (venue.shortName || venue.name)) || "here";
-    const bank = BONUS_WOW[id] || BONUS_WOW[id.replace(/_/g, "-")] || null;
+    const bank = lookupPromptBank(BONUS_WOW, item);
     if (bank && bank.length) return bank.slice(0, 3);
 
-    // Tag / type fallbacks — still harder than kid prompts
     if (tags.has("big-cats") || /lion|tiger|cheetah|leopard/i.test(name)) {
       return [
         `Big cats hide in plain sight. Where would ${name} vanish in wild cover?`,
@@ -546,11 +875,45 @@
         "Find a detail most visitors walk past — label, texture, or hidden model.",
       ];
     }
-    // Generic hard wow
     return [
       `What’s the strangest true thing you can spot about ${name} in 30 seconds?`,
       "If this animal (or exhibit) could talk, what would it complain about today?",
       `Why is ${name} a highlight of ${place} — not just “another stop”?`,
+    ];
+  }
+
+  function alphaPromptsFor(item, venue) {
+    const name = item.name || "this stop";
+    const tags = itemTags(item);
+    const place = (venue && (venue.shortName || venue.name)) || "here";
+    const bank = lookupPromptBank(ALPHA_WOW, item);
+    if (bank && bank.length) return bank.slice(0, 3);
+
+    if (tags.has("big-cats") || /lion|tiger|cheetah|leopard/i.test(name)) {
+      return [
+        `ALPHA · 30 silent seconds on ${name}: one verb only for what happened.`,
+        "ALPHA · Ambush vs stamina: which body clues say “burst,” not “marathon”?",
+        `ALPHA · Camouflage design: where in wild cover would ${name} disappear first?`,
+      ];
+    }
+    if (tags.has("water") || isAquariumVenue(venue)) {
+      return [
+        `ALPHA · Hydrodynamics: name two body parts that cut drag or steer for ${name}.`,
+        "ALPHA · 20s stillness test: what moved first — animal, water, or reflection?",
+        "ALPHA · Sensory swap: if you lost sight, what non-eye sense would save you here?",
+      ];
+    }
+    if (isMuseumVenue(venue) || tags.has("read") || tags.has("hands")) {
+      return [
+        `ALPHA · Mechanism: what invisible force or idea is “${name}” really about?`,
+        "ALPHA · Fair test: what would you change twice to check the result isn’t luck?",
+        "ALPHA · Overlook: find a label or texture most visitors skip — read it aloud softly.",
+      ];
+    }
+    return [
+      `ALPHA · 30s scientist mode on ${name}: write one careful observation (not a feeling).`,
+      `ALPHA · Counterfactual: if ${name} vanished from ${place}, what story would be missing?`,
+      "ALPHA · Teach-back: explain this stop in 12 words or fewer to a grown-up.",
     ];
   }
 
@@ -563,6 +926,7 @@
     const home = (key.home && key.home[0]) || "";
     const power = (key.superpower && key.superpower[0]) || "";
 
+    if (band === "alpha") return alphaPromptsFor(item, venue);
     if (band === "bonus") return bonusPromptsFor(item, venue);
 
     if (band === "2-3") {
@@ -611,7 +975,8 @@
   }
 
   function qaKickerFor(age) {
-    if (age === "bonus") return "Bonus round · hard wow questions";
+    if (age === "alpha") return "Alpha · extra-hard cool questions";
+    if (age === "bonus") return "Bonus · hard wow questions";
     if (age === "2-3") return "Little kids · notice & play";
     if (age === "6-8") return "Big kids · think & compare";
     return "Notice & talk";
@@ -619,14 +984,19 @@
 
   function syncQaAgeChips() {
     document.querySelectorAll(".qa-level-chip").forEach((btn) => {
+      if (!btn.hasAttribute("data-qa-age")) return;
       const on = btn.getAttribute("data-qa-age") === qaAge;
-      btn.classList.toggle("is-active", on);
+      if (on) btn.classList.add("is-active");
+      else btn.classList.remove("is-active");
       btn.setAttribute("aria-pressed", on ? "true" : "false");
     });
     const k = document.getElementById("floor-prompts-kicker");
     if (k) k.textContent = qaKickerFor(qaAge);
     const wrap = document.querySelector(".floor-prompts-wrap");
-    if (wrap) wrap.classList.toggle("is-bonus", qaAge === "bonus");
+    if (wrap) {
+      wrap.classList.toggle("is-bonus", qaAge === "bonus");
+      wrap.classList.toggle("is-alpha", qaAge === "alpha");
+    }
   }
 
   function renderDetail(trip, item, venue) {
@@ -665,19 +1035,22 @@
       loadQaAge();
       syncQaAgeChips();
       const prompts = floorPromptsFor(item, venue, qaAge);
-      const bonus = qaAge === "bonus";
+      const special = qaAge === "bonus" || qaAge === "alpha";
+      const cardCls =
+        qaAge === "alpha" ? " floor-prompt-alpha" : qaAge === "bonus" ? " floor-prompt-bonus" : "";
+      const mark = qaAge === "alpha" ? "◆" : qaAge === "bonus" ? "★" : null;
       promptsEl.innerHTML = prompts
         .map(
           (t, i) =>
-            `<div class="floor-prompt-card${bonus ? " floor-prompt-bonus" : ""}"><span class="floor-prompt-n">${
-              bonus ? "★" : i + 1
+            `<div class="floor-prompt-card${cardCls}"><span class="floor-prompt-n">${
+              mark || i + 1
             }</span><p>${escapeHtml(t)}</p></div>`
         )
         .join("");
     }
-    // Pick-one is optional extra — quieter for little kids & bonus talk focus
+    // Pick-one is optional extra — quieter for little kids; Bonus/Alpha focus the cards
     if (els.btnMoreQuestions) {
-      els.btnMoreQuestions.hidden = qaAge === "2-3";
+      els.btnMoreQuestions.hidden = qaAge === "2-3" || qaAge === "alpha";
     }
     if (els.advancedQa && qaAge === "2-3" && els.advancedQa.open) {
       els.advancedQa.open = false;
@@ -1068,10 +1441,11 @@
     els.btnMoreQuestions.addEventListener("click", openPickOneQuestions);
   }
 
-  // Q&A talk level: 2–4 / 5–8 / 9–12 / Bonus (hard animal-specific)
+  // Q&A talk level: 2–4 / 5–8 / 9–12 / Bonus / Alpha
   loadQaAge();
-  document.querySelectorAll(".qa-level-chip").forEach((btn) => {
-    btn.addEventListener("click", () => {
+  document.querySelectorAll(".qa-level-chip[data-qa-age]").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
       saveQaAge(btn.getAttribute("data-qa-age") || "4-5");
       syncQaAgeChips();
       const trip = getTrip(currentTripId);

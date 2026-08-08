@@ -2187,7 +2187,7 @@ body.app-body {
   display: flex;
   flex: 1 1 auto;
   min-width: 0;
-  max-width: 22rem;
+  max-width: 28rem;
   border-radius: 999px;
   border: 1.5px solid rgba(15, 92, 92, 0.18);
   overflow: hidden;
@@ -2221,25 +2221,47 @@ body.app-body {
   color: #fff;
 }
 .qa-level-chip.qa-level-bonus.is-active {
-  background: #c45a12;
+  background: #8a6d3b;
   color: #fff;
 }
 .qa-level-chip.qa-level-bonus:not(.is-active) {
-  color: #9a5b00;
-  font-weight: 800;
+  color: #6b5a3e;
+  font-weight: 750;
+}
+.qa-level-chip.qa-level-alpha.is-active {
+  background: #4a5568;
+  color: #fff;
+}
+.qa-level-chip.qa-level-alpha:not(.is-active) {
+  color: #4a5568;
+  font-weight: 750;
 }
 .floor-prompts-wrap.is-bonus .floor-prompts-kicker {
-  color: #9a5b00;
+  color: #8a6d3b;
 }
 .floor-prompts-wrap.is-bonus .floor-prompts-kicker::before {
-  background: #c45a12;
+  background: #8a6d3b;
+}
+.floor-prompts-wrap.is-alpha .floor-prompts-kicker {
+  color: #4a5568;
+}
+.floor-prompts-wrap.is-alpha .floor-prompts-kicker::before {
+  background: #4a5568;
 }
 .floor-prompt-card.floor-prompt-bonus {
-  border-color: rgba(196, 90, 18, 0.28);
-  background: linear-gradient(135deg, #fffaf3, #fff6eb);
+  border-color: rgba(138, 109, 59, 0.28);
+  background: linear-gradient(135deg, #fffaf3, #fff8f0);
+}
+.floor-prompt-card.floor-prompt-alpha {
+  border-color: rgba(74, 85, 104, 0.28);
+  background: linear-gradient(135deg, #f7fafc, #edf2f7);
+}
+.floor-prompt-card.floor-prompt-alpha .floor-prompt-n {
+  background: #4a5568;
+  color: #fff;
 }
 .floor-prompt-card.floor-prompt-bonus .floor-prompt-n {
-  background: #c45a12;
+  background: #8a6d3b;
 }
 .floor-prompts-kicker {
   margin: 4px 0 10px;
