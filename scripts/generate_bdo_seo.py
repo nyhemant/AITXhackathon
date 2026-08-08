@@ -276,7 +276,7 @@ def unique_body(
       </ul>
     </section>
     <section class="seo-list-block seo-hunt-block" aria-labelledby="hunt-heading">
-      <h2 id="hunt-heading">Print your mission</h2>
+      <h2 id="hunt-heading">Create and print your mission</h2>
       <p>Pick age and time, then print one page — no app at the venue.</p>
       <p class="seo-hunt-cta-wrap no-print">
         <button type="button" class="btn btn-secondary" id="seo-open-mission" data-how="print">
@@ -614,10 +614,13 @@ def wonder_grid_html(mission: dict) -> str:
 def page_mission_chrome_html() -> str:
     """Primary print CTA + compact who/time chips (desktop row / phone stack)."""
     return """
-        <div class="seo-mission-bar no-print" aria-label="Print your mission">
-          <button type="button" class="btn btn-primary seo-print-btn" id="mission-open-btn" aria-haspopup="dialog" aria-controls="mission-drawer" aria-label="Print my mission">
-            <span class="seo-print-btn-line">Print my</span>
-            <span class="seo-print-btn-line seo-print-btn-sub">mission</span>
+        <div class="seo-mission-bar no-print" aria-label="Create and print your mission">
+          <button type="button" class="btn btn-primary seo-print-btn" id="mission-open-btn" aria-haspopup="dialog" aria-controls="mission-drawer" aria-label="Create and print your mission">
+            <span class="seo-print-btn-long">
+              <span class="seo-print-btn-line">Create and print</span>
+              <span class="seo-print-btn-line seo-print-btn-sub">your mission</span>
+            </span>
+            <span class="seo-print-btn-short">Create/print mission</span>
           </button>
           <div class="seo-mission-chrome" id="seo-mission-chrome">
             <div class="seo-chrome-row">
@@ -753,7 +756,7 @@ def route_90m_html(mission_venue: dict, mission: dict, catalog_v: dict | None = 
 
     lead = (
         f"Do these {n} in order if you can — enough for a short visit. "
-        "Tap a stop for talk tips &amp; photos. Print your mission is above."
+        "Tap a stop for talk tips &amp; photos. Create and print your mission is above."
     )
     return f"""
     <section class="seo-start-here no-print" aria-labelledby="route90-heading">
@@ -799,7 +802,7 @@ def mission_drawer_html(mission_venue: dict, mission: dict) -> str:
       <header class="mission-drawer-head">
         <div>
           <p class="mission-drawer-kicker">Field Trip Kit</p>
-          <h2 id="mission-heading">Print your mission</h2>
+          <h2 id="mission-heading">Create and print your mission</h2>
         </div>
         <button type="button" class="mission-drawer-close" id="mission-close" aria-label="Close">×</button>
       </header>
@@ -864,7 +867,7 @@ def mission_drawer_html(mission_venue: dict, mission: dict) -> str:
       </div>
       <footer class="mission-drawer-foot">
         <button type="button" class="btn btn-ghost" id="mission-shuffle-btn">Give me different stops</button>
-        <button type="button" class="btn btn-primary btn-big" id="mission-print-btn">Print your mission</button>
+        <button type="button" class="btn btn-primary btn-big" id="mission-print-btn">Create and print your mission</button>
       </footer>
     </div>
   </div>
@@ -927,7 +930,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
         hunt_sec = (
             f"""
     <section class="seo-list-block seo-hunt-block" aria-labelledby="hunt-heading">
-      <h2 id="hunt-heading">Print your mission</h2>
+      <h2 id="hunt-heading">Create and print your mission</h2>
       <p>Pick age and time, then print one page — no app at the venue.</p>
       <p class="seo-hunt-cta-wrap no-print">
         <button type="button" class="btn btn-secondary" id="seo-open-mission" data-how="print">

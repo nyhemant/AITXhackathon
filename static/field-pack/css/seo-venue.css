@@ -336,6 +336,16 @@
   letter-spacing: -0.01em;
   opacity: 1;
 }
+.seo-print-btn-long {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+}
+.seo-print-btn-short {
+  display: none;
+  font-weight: 850;
+}
 .seo-print-fallback {
   margin: 6px 0 0;
   font-size: 0.8rem;
@@ -495,14 +505,22 @@
   }
   .seo-print-btn {
     width: 100%;
-    min-height: 3.75rem;
+    min-height: 3.5rem;
     min-width: 0;
-    font-size: 1.12rem;
+    font-size: 1.02rem;
     border-radius: 14px;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 0.3em;
-    padding: 14px 16px;
+    padding: 12px 14px;
+  }
+  .seo-print-btn-long {
+    display: none;
+  }
+  .seo-print-btn-short {
+    display: inline;
+    font-size: inherit;
+    font-weight: 850;
   }
   .seo-print-btn-line,
   .seo-print-btn-sub {
