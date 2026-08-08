@@ -755,7 +755,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <link rel="stylesheet" href="/shell/shell.css?v=5" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=50" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=12" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=13" />
   <link rel="stylesheet" href="/field-pack/css/mission.css?v=8" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
@@ -934,7 +934,7 @@ def render_venue_page(v: dict) -> str:
   <link rel="stylesheet" href="/shell/shell.css?v=5" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=50" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=12" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=13" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
   </script>
@@ -1372,19 +1372,121 @@ SEO_CSS = """/* SEO venue pages — visual-first, same brand language as outing 
 """
 
 
-_US_STATE_NAMES = {
-    "AL": "Alabama", "AK": "Alaska", "AZ": "Arizona", "AR": "Arkansas", "CA": "California",
-    "CO": "Colorado", "CT": "Connecticut", "DE": "Delaware", "DC": "Washington, D.C.",
-    "FL": "Florida", "GA": "Georgia", "HI": "Hawaii", "ID": "Idaho", "IL": "Illinois",
-    "IN": "Indiana", "IA": "Iowa", "KS": "Kansas", "KY": "Kentucky", "LA": "Louisiana",
-    "ME": "Maine", "MD": "Maryland", "MA": "Massachusetts", "MI": "Michigan", "MN": "Minnesota",
-    "MS": "Mississippi", "MO": "Missouri", "MT": "Montana", "NE": "Nebraska", "NV": "Nevada",
-    "NH": "New Hampshire", "NJ": "New Jersey", "NM": "New Mexico", "NY": "New York",
-    "NC": "North Carolina", "ND": "North Dakota", "OH": "Ohio", "OK": "Oklahoma", "OR": "Oregon",
-    "PA": "Pennsylvania", "RI": "Rhode Island", "SC": "South Carolina", "SD": "South Dakota",
-    "TN": "Tennessee", "TX": "Texas", "UT": "Utah", "VT": "Vermont", "VA": "Virginia",
-    "WA": "Washington", "WV": "West Virginia", "WI": "Wisconsin", "WY": "Wyoming",
+# Light continent buckets (<10) — venue names stay visible under each heading
+_CONTINENT_ORDER = (
+    "North America",
+    "South America",
+    "Europe",
+    "Middle East",
+    "Africa",
+    "Asia",
+    "Oceania",
+)
+
+# Country / territory label (from location string) → continent
+_COUNTRY_CONTINENT = {
+    "united states": "North America",
+    "usa": "North America",
+    "us": "North America",
+    "canada": "North America",
+    "mexico": "North America",
+    "brazil": "South America",
+    "argentina": "South America",
+    "chile": "South America",
+    "peru": "South America",
+    "colombia": "South America",
+    "united kingdom": "Europe",
+    "uk": "Europe",
+    "france": "Europe",
+    "germany": "Europe",
+    "spain": "Europe",
+    "italy": "Europe",
+    "netherlands": "Europe",
+    "belgium": "Europe",
+    "ireland": "Europe",
+    "austria": "Europe",
+    "switzerland": "Europe",
+    "portugal": "Europe",
+    "sweden": "Europe",
+    "norway": "Europe",
+    "finland": "Europe",
+    "denmark": "Europe",
+    "poland": "Europe",
+    "hungary": "Europe",
+    "czechia": "Europe",
+    "czech republic": "Europe",
+    "greece": "Europe",
+    "russia": "Europe",
+    "türkiye": "Europe",
+    "turkey": "Europe",
+    "uae": "Middle East",
+    "united arab emirates": "Middle East",
+    "south africa": "Africa",
+    "kenya": "Africa",
+    "egypt": "Africa",
+    "india": "Asia",
+    "japan": "Asia",
+    "china": "Asia",
+    "south korea": "Asia",
+    "korea": "Asia",
+    "singapore": "Asia",
+    "taiwan": "Asia",
+    "thailand": "Asia",
+    "indonesia": "Asia",
+    "philippines": "Asia",
+    "malaysia": "Asia",
+    "hong kong": "Asia",
+    "australia": "Oceania",
+    "new zealand": "Oceania",
 }
+
+
+def _venue_country_label(v: dict) -> str:
+    loc = (v.get("location") or "").strip()
+    if "," in loc:
+        return loc.split(",")[-1].strip()
+    st = (v.get("state") or "").strip()
+    if st and len(st) <= 3:
+        return "United States"
+    if loc and loc not in (v.get("city") or ""):
+        return loc
+    if st:
+        return "United States"
+    # Single-name city-states (Singapore) or bare city
+    city = (v.get("city") or loc or "").strip()
+    if city.lower() in _COUNTRY_CONTINENT:
+        return city
+    if city.lower() == "singapore":
+        return "Singapore"
+    if city.lower() == "hong kong":
+        return "Hong Kong"
+    return city or "International"
+
+
+def _venue_continent(v: dict) -> str:
+    st = (v.get("state") or "").strip()
+    # US/CA style state codes → North America
+    if st and len(st) <= 3 and st.isalpha():
+        # TX, CA, ON-style; DC too
+        if st.upper() not in ("UAE",):  # not a US state
+            # International places rarely have 2-letter US states
+            if st.upper() in {
+                "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FL", "GA", "HI",
+                "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN",
+                "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH",
+                "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA",
+                "WV", "WI", "WY",
+            }:
+                return "North America"
+    country = _venue_country_label(v)
+    key = country.lower()
+    if key in _COUNTRY_CONTINENT:
+        return _COUNTRY_CONTINENT[key]
+    # Fallback: city match
+    city = (v.get("city") or "").strip().lower()
+    if city in _COUNTRY_CONTINENT:
+        return _COUNTRY_CONTINENT[city]
+    return "Asia"  # rare unknown intl → Asia bucket rather than orphan
 
 
 def _dir_item_html(v: dict) -> str:
@@ -1399,100 +1501,61 @@ def _dir_item_html(v: dict) -> str:
     )
 
 
-def _dir_group_html(title: str, venues: list[dict], *, open_first: bool = False) -> str:
+def _dir_continent_html(title: str, venues: list[dict]) -> str:
+    """Always-open section — venue names stay visible (light structure only)."""
     if not venues:
         return ""
-    venues = sorted(venues, key=lambda x: (x.get("name") or "").lower())
-    items = "\n              ".join(_dir_item_html(v) for v in venues)
-    open_attr = " open" if open_first else ""
+    venues = sorted(
+        venues,
+        key=lambda x: ((x.get("city") or "").lower(), (x.get("name") or "").lower()),
+    )
+    items = "\n            ".join(_dir_item_html(v) for v in venues)
     return (
-        f'<details class="seo-dir-group"{open_attr}>\n'
-        f'            <summary>{esc(title)} <span class="seo-dir-count">{len(venues)}</span></summary>\n'
-        f'            <ul class="seo-dir-grid">\n              {items}\n            </ul>\n'
-        f"          </details>"
+        f'<section class="seo-dir-region">\n'
+        f'          <h3 class="seo-dir-region-title">{esc(title)} '
+        f'<span class="seo-dir-count">{len(venues)}</span></h3>\n'
+        f'          <ul class="seo-dir-grid">\n            {items}\n          </ul>\n'
+        f"        </section>"
     )
 
 
 def patch_landing_directory(venues: list[dict]) -> None:
-    """Fill landing directory grouped by US state + country (still fully linked for SEO)."""
+    """Fill landing directory in a few continent groups; names always visible."""
     index = FIELD / "index.html"
     html = index.read_text(encoding="utf-8")
 
-    us: dict[str, list[dict]] = {}
-    intl: dict[str, list[dict]] = {}
+    buckets: dict[str, list[dict]] = {c: [] for c in _CONTINENT_ORDER}
     for v in venues:
-        st = (v.get("state") or "").strip().upper()
-        if st and st in _US_STATE_NAMES:
-            us.setdefault(st, []).append(v)
-            continue
-        loc = v.get("location") or ""
-        if "," in loc:
-            country = loc.split(",")[-1].strip()
-        else:
-            country = loc.strip() or "International"
-        # Normalize a few long names
-        if country in ("United States", "USA", "US"):
-            us.setdefault("US", []).append(v)
-            continue
-        intl.setdefault(country, []).append(v)
+        cont = _venue_continent(v)
+        if cont not in buckets:
+            buckets[cont] = []
+        buckets[cont].append(v)
 
-    parts: list[str] = []
-    # US states A–Z by full name
-    us_keys = sorted(us.keys(), key=lambda k: _US_STATE_NAMES.get(k, k))
-    if us_keys:
-        state_blocks = []
-        for code in us_keys:
-            label = _US_STATE_NAMES.get(code, code)
-            # Open Texas (or first state) so the section isn’t only closed drawers
-            open_first = code == "TX" or (code == us_keys[0] and "TX" not in us)
-            state_blocks.append(_dir_group_html(label, us[code], open_first=open_first))
-        parts.append(
-            '<div class="seo-dir-region">\n'
-            f'          <h3 class="seo-dir-region-title">United States '
-            f'<span class="seo-dir-count">{sum(len(us[k]) for k in us_keys)}</span></h3>\n'
-            + "\n".join(state_blocks)
-            + "\n        </div>"
-        )
-
-    if intl:
-        country_keys = sorted(intl.keys(), key=str.lower)
-        country_blocks = [
-            _dir_group_html(c, intl[c], open_first=False) for c in country_keys
-        ]
-        parts.append(
-            '<div class="seo-dir-region">\n'
-            f'          <h3 class="seo-dir-region-title">Around the world '
-            f'<span class="seo-dir-count">{sum(len(intl[c]) for c in country_keys)}</span></h3>\n'
-            + "\n".join(country_blocks)
-            + "\n        </div>"
-        )
+    parts = [
+        _dir_continent_html(title, buckets[title])
+        for title in _CONTINENT_ORDER
+        if buckets.get(title)
+    ]
+    # Any leftover continents not in order
+    for title, vs in buckets.items():
+        if title not in _CONTINENT_ORDER and vs:
+            parts.append(_dir_continent_html(title, vs))
 
     block = "\n        ".join(parts)
     pattern = re.compile(
-        r'(<!-- SEO:DIR-BODY:START -->)([\s\S]*?)(<!-- SEO:DIR-BODY:END -->)',
+        r"(<!-- SEO:DIR-BODY:START -->)([\s\S]*?)(<!-- SEO:DIR-BODY:END -->)",
         re.M,
     )
     if not pattern.search(html):
-        # Fallback: replace old flat ul if markers missing
-        pattern_old = re.compile(
-            r'(<ul class="seo-dir-grid" id="seo-venue-directory">)([\s\S]*?)(</ul>)',
-            re.M,
-        )
-        if not pattern_old.search(html):
-            print("  WARN: landing directory marker not found")
-            return
-        html = pattern_old.sub(
-            f'<!-- SEO:DIR-BODY:START -->\n        <div id="seo-venue-directory" class="seo-dir-body">\n        {block}\n        </div>\n        <!-- SEO:DIR-BODY:END -->',
-            html,
-            count=1,
-        )
-    else:
-        html = pattern.sub(
-            rf"\1\n        <div id=\"seo-venue-directory\" class=\"seo-dir-body\">\n        {block}\n        </div>\n        \3",
-            html,
-        )
+        print("  WARN: landing directory marker not found")
+        return
+    html = pattern.sub(
+        rf'\1\n        <div id="seo-venue-directory" class="seo-dir-body">\n        {block}\n        </div>\n        \3',
+        html,
+    )
     index.write_text(html, encoding="utf-8")
-    print("  patched landing venue directory (grouped)")
+    counts = {t: len(buckets[t]) for t in _CONTINENT_ORDER if buckets.get(t)}
+    print(f"  patched landing venue directory (continents: {counts})")
 
 
 def patch_places_data_hrefs(venues: list[dict]) -> None:
