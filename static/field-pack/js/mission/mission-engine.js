@@ -4,12 +4,28 @@
  * Node (SEO build): load via vm
  */
 (function (root) {
-  const AGE_ORDER = ["2-3", "4-5", "6-8", "9+"];
+  /**
+   * Audience bands (UI chips). Internal keys stay short for data compatibility.
+   * 2-3  → Little kids 2–4 (shorter, play-first sheet)
+   * 4-5  → Kids 5–8
+   * 6-8  → Big kids 9–12
+   * adult → Solo adults / young tourists (not a parenting sheet)
+   * Legacy "9+" in item age_fit maps to big kids + adults.
+   */
+  const AGE_ORDER = ["2-3", "4-5", "6-8", "adult"];
   const AGE_LABELS = {
-    "2-3": "2–3",
-    "4-5": "4–5",
-    "6-8": "6–8",
-    "9+": "9+",
+    "2-3": "Little · 2–4",
+    "4-5": "Kids · 5–8",
+    "6-8": "Big · 9–12",
+    adult: "Adults",
+    // legacy display if stored mid-migrate
+    "9+": "Adults",
+  };
+  const AGE_CHIP_LABELS = {
+    "2-3": "2–4",
+    "4-5": "5–8",
+    "6-8": "9–12",
+    adult: "Adults",
   };
   const TIME_N = { "1hr": 4, half: 6, full: 8, "90m": 4 };
   const TIME_LABELS = {
@@ -18,6 +34,29 @@
     half: "Half day",
     full: "Full day",
   };
+
+  function normalizeAge(age) {
+    const a = String(age || "4-5");
+    if (a === "9+" || a === "adults" || a === "solo") return "adult";
+    if (AGE_ORDER.includes(a)) return a;
+    return "4-5";
+  }
+
+  function isAdult(age) {
+    return normalizeAge(age) === "adult";
+  }
+
+  function isLittle(age) {
+    return normalizeAge(age) === "2-3";
+  }
+
+  function needCount(time, age) {
+    const base = TIME_N[time] || TIME_N.half || 6;
+    const a = normalizeAge(age);
+    if (a === "2-3") return Math.max(3, base - 2); // half → 4, shorter attention
+    if (a === "adult") return Math.min(10, base + 1); // half → 7, denser solo day
+    return base;
+  }
 
   function defaultOptions() {
     return { age: "4-5", time: "half", interest: "", name: "", seed: 1 };
@@ -149,17 +188,89 @@
     return h >>> 0;
   }
 
-  function scoreItem(item, interest) {
+  function scoreItem(item, interest, age) {
     let s = 0;
     const tags = item.tags || [];
+    const a = normalizeAge(age);
     if (interest && tags.includes(interest)) s += 2;
     if (tags.includes("wow")) s += 1;
     if (item.zone) s += 1;
+
+    const lab = String(item.label || item.display_label || item.id || "").toLowerCase();
+    if (a === "2-3") {
+      // Little kids: play / reset / easy wow — not long reads
+      if (tags.includes("kids") || tags.includes("play")) s += 3;
+      if (tags.includes("rest") || tags.includes("hands")) s += 2;
+      if (tags.includes("read")) s -= 2;
+      if (/toddler|early explor|children|kids zoo|farm|playground|garden|tower|climb|splash|water play/.test(lab)) {
+        s += 2.5;
+      }
+      if (/planetarium|label|evolution|history hall/.test(lab)) s -= 1.5;
+    } else if (a === "4-5") {
+      if (tags.includes("play") || tags.includes("hands")) s += 1;
+      if (tags.includes("wow")) s += 0.5;
+    } else if (a === "6-8") {
+      if (tags.includes("read") || tags.includes("wow")) s += 1;
+      if (tags.includes("kids") && tags.includes("rest") && !tags.includes("wow")) s -= 1;
+    } else if (a === "adult") {
+      // Solo adults: signature stops, not toddler pens
+      if (tags.includes("kids") && tags.includes("rest") && !tags.includes("wow")) s -= 4;
+      if (tags.includes("kids") && !tags.includes("wow") && !tags.includes("big")) s -= 2;
+      if (tags.includes("wow") || tags.includes("big")) s += 2;
+      if (/toddler|early explor|children's zoo|quiet corner|free explore/.test(lab)) s -= 3;
+      if (/submarine|storms|dinosaur|gorilla|elephant|panda|planetarium|tower|tunnel/.test(lab)) s += 1.5;
+    }
     return s;
   }
 
+  /** Does this item belong on a sheet for the selected audience? */
+  function itemFitsAge(it, age) {
+    if (!it) return false;
+    const a = normalizeAge(age);
+    const fit = it.age_fit;
+    const tags = it.tags || [];
+    const lab = String(it.label || it.id || "").toLowerCase();
+
+    if (a === "adult") {
+      // Drop toddler-only and pure little-kid reset stops
+      if (fit && fit.length && fit.every((x) => x === "2-3")) return false;
+      if (/toddler|early explor|quiet corner/.test(lab)) return false;
+      if (tags.includes("kids") && tags.includes("rest") && !tags.includes("wow") && !tags.includes("big")) {
+        return false;
+      }
+      return true;
+    }
+
+    // No age_fit → allow all kid bands (legacy data)
+    if (!fit || !fit.length) return true;
+
+    if (a === "2-3") {
+      // Little: must be ok for 2-3, OR explicitly play/kids tagged even if age_fit missed 2-3
+      if (fit.includes("2-3")) return true;
+      if ((tags.includes("kids") || tags.includes("play")) && fit.includes("4-5")) return true;
+      return false;
+    }
+    if (a === "4-5") {
+      return fit.includes("4-5") || fit.includes("6-8") || fit.includes("2-3");
+    }
+    if (a === "6-8") {
+      // Big kids: older bands; still allow 4-5 staples
+      return fit.includes("6-8") || fit.includes("9+") || fit.includes("4-5");
+    }
+    return fit.includes(a);
+  }
+
   function filterByAge(items, age) {
-    return (items || []).filter((it) => (it.age_fit || AGE_ORDER).includes(age));
+    return (items || []).filter((it) => itemFitsAge(it, age));
+  }
+
+  function simplifyOneLiner(text, age) {
+    const t = String(text || "").trim();
+    if (!t) return isLittle(age) ? "Go see it together." : "";
+    if (!isLittle(age)) return t;
+    const part = t.split(/[.—]/)[0].trim();
+    if (part.length <= 42) return part;
+    return part.slice(0, 40).trim() + "…";
   }
 
   /** Normalize venue.type → wonder/challenge pool keys: zoo | aquarium | museum | safari_zoo */
@@ -205,45 +316,56 @@
 
   /** Must-include stops: route_90m first, else first print-safe venue items. */
   function anchorItems(venue, age) {
+    const a = normalizeAge(age);
     const items = printSafeItems(venue);
     const byId = Object.fromEntries(items.map((it) => [it.id, it]));
     const out = [];
     const push = (it) => {
       if (!it || out.some((x) => x.id === it.id)) return;
       if (!itemPresenceOk(it, venue)) return;
-      const ages = it.age_fit || AGE_ORDER;
-      if (!ages.includes(age)) return;
+      if (!itemFitsAge(it, a)) return;
       out.push(it);
     };
     for (const id of venue.route_90m || []) {
       if (out.length >= 3) break;
       push(byId[id]);
     }
-    if (!out.length) {
-      for (const it of filterByAge(items, age)) {
+    // Little kids: if route anchors are all "hard", still keep 1–2 icons then fill play stops later
+    if (!out.length || (a === "2-3" && out.length < 2)) {
+      const rankedLittle = filterByAge(items, a)
+        .slice()
+        .sort((x, y) => scoreItem(y, "", a) - scoreItem(x, "", a));
+      for (const it of rankedLittle) {
         if (out.length >= 3) break;
         push(it);
       }
     }
-    // If age filter emptied anchors, take raw print-safe route/items
+    if (!out.length) {
+      for (const it of filterByAge(items, a)) {
+        if (out.length >= 3) break;
+        push(it);
+      }
+    }
+    // If age filter emptied anchors, take raw print-safe route/items that fit
     if (!out.length) {
       for (const id of venue.route_90m || []) {
         if (out.length >= 3) break;
-        if (byId[id]) out.push(byId[id]);
+        const it = byId[id];
+        if (it && itemFitsAge(it, a)) out.push(it);
       }
       for (const it of items) {
         if (out.length >= 3) break;
-        if (!out.some((x) => x.id === it.id)) out.push(it);
+        if (!out.some((x) => x.id === it.id) && itemFitsAge(it, a)) out.push(it);
       }
     }
-    return out.slice(0, 3);
+    return out.slice(0, a === "2-3" ? 2 : 3);
   }
 
   function pickItems(venue, opts, wondersFile) {
-    const age = opts.age || "4-5";
+    const age = normalizeAge(opts.age || "4-5");
     const time = opts.time || "half";
     const interest = (opts.interest || "").trim();
-    const need = TIME_N[time] || TIME_N["90m"] || 6;
+    const need = needCount(time, age);
     const seed = opts.seed || 1;
     const mode = contentMode(venue);
     const rand = mulberry32(
@@ -255,12 +377,10 @@
     if (mode === "wonder" && wondersFile) {
       sourceItems = wonderPool(venue, wondersFile);
     } else if (mode === "hybrid" && wondersFile) {
-      // Print-safe venue stops first, then venue-type-safe wonders only
       const icons = filterByAge(safeNamed, age);
       const wonders = filterByAge(wonderPool(venue, wondersFile), age);
       sourceItems = icons.concat(wonders.filter((w) => !icons.some((i) => i.id === w.id)));
-    } else if (mode === "curated" && wondersFile && safeNamed.length < need) {
-      // Top up audited lists with wonders if short — never with unsafe named pack
+    } else if (mode === "curated" && wondersFile && filterByAge(safeNamed, age).length < need) {
       const icons = filterByAge(safeNamed, age);
       const wonders = filterByAge(wonderPool(venue, wondersFile), age);
       sourceItems = icons.concat(wonders.filter((w) => !icons.some((i) => i.id === w.id)));
@@ -268,7 +388,6 @@
 
     let pool = filterByAge(sourceItems, age).filter((it) => itemPresenceOk(it, venue) || isWonderItem(it));
     if (!pool.length) {
-      // Last resort: type-safe wonders only (never unsafe named animals)
       pool = wondersFile ? filterByAge(wonderPool(venue, wondersFile), age) : [];
     }
 
@@ -276,12 +395,11 @@
       .map((it, idx) => ({
         it,
         idx,
-        score: scoreItem(it, interest) + rand() * 0.01,
+        score: scoreItem(it, interest, age) + rand() * 0.01,
       }))
       .sort((a, b) => b.score - a.score || a.idx - b.idx)
       .map((x) => x.it);
 
-    // Guarantee headline stops (print-safe route_90m / top items) before fillers
     const anchors = mode === "wonder" ? [] : anchorItems(venue, age);
     const picked = [];
     const seen = new Set();
@@ -297,65 +415,90 @@
       seen.add(it.id);
     }
     if (picked.length < need && wondersFile) {
-      for (const it of wonderPool(venue, wondersFile)) {
+      for (const it of filterByAge(wonderPool(venue, wondersFile), age)) {
         if (picked.length >= need) break;
         if (seen.has(it.id)) continue;
         picked.push(it);
         seen.add(it.id);
       }
     }
-    // Apply soft labels for sheet rendering
     return picked.slice(0, need).map((it) => {
       const lab = sheetLabel(it);
-      if (!lab || lab === it.label) return it;
-      return Object.assign({}, it, { label: lab });
+      const line = simplifyOneLiner(it.one_liner, age);
+      const out = Object.assign({}, it);
+      if (lab && lab !== it.label) out.label = lab;
+      if (line) out.one_liner = line;
+      return out;
     });
   }
 
+  function challengeFitsAge(c, age) {
+    const a = normalizeAge(age);
+    const fit = c.age_fit || [];
+    if (!fit.length) return a !== "adult";
+    // Explicit bands only — don't leak "read a kid label" into little/kids
+    if (a === "adult") return fit.includes("adult");
+    if (a === "2-3") return fit.includes("2-3");
+    if (a === "4-5") return fit.includes("4-5");
+    if (a === "6-8") return fit.includes("6-8") || fit.includes("9+");
+    return fit.includes(a);
+  }
+
   function pickChallenges(challengesFile, venue, opts, selectedItems) {
-    const age = opts.age || "4-5";
+    const age = normalizeAge(opts.age || "4-5");
     const seed = (opts.seed || 1) + 17;
     const rand = mulberry32(hashSeed(venue.slug + "|ch|" + age + "|" + seed));
     const kind = normalizeVenueType(venue);
     const blocked = new Set();
     (selectedItems || []).forEach((it) => (it.tags || []).forEach((t) => blocked.add(t)));
 
-    // Strict venue-type match — never pull zoo-only "night animal" onto a museum sheet
     let pool = (challengesFile.challenges || []).filter((c) => {
-      const ages = c.age_fit || AGE_ORDER;
-      if (!ages.includes(age)) return false;
+      if (!challengeFitsAge(c, age)) return false;
       return typeAllows(c.types, kind);
     });
+
+    // Adult: never baby-talk challenges
+    if (age === "adult") {
+      pool = pool.filter((c) => (c.age_fit || []).includes("adult") || (c.tags || []).includes("adult"));
+    }
 
     pool = pool
       .map((c, idx) => {
         const tags = c.tags || [];
         const overlap = tags.filter((t) => blocked.has(t)).length;
-        return { c, idx, score: -overlap + rand() };
+        let bonus = 0;
+        if (age === "2-3" && (tags.includes("rest") || tags.includes("play") || tags.includes("color"))) bonus += 1;
+        if (age === "adult" && tags.includes("adult")) bonus += 2;
+        return { c, idx, score: -overlap + bonus + rand() };
       })
       .sort((a, b) => b.score - a.score || a.idx - b.idx)
       .map((x) => x.c);
 
     const out = [];
     const used = new Set();
+    const want = age === "adult" ? 3 : 3;
     for (const c of pool) {
-      if (out.length >= 3) break;
+      if (out.length >= want) break;
       if (used.has(c.id)) continue;
       out.push(c);
       used.add(c.id);
     }
-    // Backfill only from type-safe pool (never all challenges)
     for (const c of pool) {
-      if (out.length >= 3) break;
+      if (out.length >= want) break;
       if (!used.has(c.id)) {
         out.push(c);
         used.add(c.id);
       }
     }
-    return out.slice(0, 3);
+    return out.slice(0, want);
   }
 
-  function missionTitle(venue, name) {
+  function missionTitle(venue, name, age) {
+    if (isAdult(age)) {
+      const n = (name || "").trim();
+      if (n) return `${n} · ${venue.name}`;
+      return `Solo day at ${venue.name}`;
+    }
     const n = (name || "").trim();
     if (!n) return `Your Mission at ${venue.name}`;
     const poss = /s$/i.test(n) ? `${n}'` : `${n}'s`;
@@ -364,13 +507,16 @@
 
   function selectMission(venue, challengesFile, options, wondersFile) {
     const opts = Object.assign(defaultOptions(), options || {});
-    // Allow time alias from page chips
+    opts.age = normalizeAge(opts.age);
     if (opts.time === "90m") opts.time = "90m";
+    // Adults don't use kid name personalization the same way
+    if (opts.age === "adult") opts.name = (opts.name || "").trim();
     const mode = contentMode(venue);
     const finds = pickItems(venue, opts, wondersFile);
     const challenges = pickChallenges(challengesFile, venue, opts, finds);
+    const adult = opts.age === "adult";
     return {
-      title: missionTitle(venue, opts.name),
+      title: missionTitle(venue, opts.name, opts.age),
       venueName: venue.name,
       slug: venue.slug,
       age: opts.age,
@@ -380,6 +526,10 @@
       interest: opts.interest || "",
       personalized: Boolean((opts.name || "").trim()),
       contentMode: mode,
+      audience: adult ? "adult" : "kid",
+      findsHeading: adult ? "Don't miss" : isLittle(opts.age) ? "Go see" : "Find these",
+      bonusHeading: adult ? "While you're there" : "Bonus",
+      nameLabel: adult ? "Your name (optional)" : "Kid name",
       finds,
       challenges,
       lastVerified: venue.last_verified || "",
@@ -410,12 +560,16 @@
   root.FPMission = {
     AGE_ORDER,
     AGE_LABELS,
+    AGE_CHIP_LABELS,
     TIME_N,
     TIME_LABELS,
     defaultOptions,
+    normalizeAge,
+    isAdult,
     contentMode,
     listConfidence,
     itemPresenceOk,
+    itemFitsAge,
     printSafeItems,
     sheetLabel,
     selectMission,

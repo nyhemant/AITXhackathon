@@ -115,8 +115,48 @@
   let drawerReady = false;
 
   function AGE_FROM_SLIDER(v) {
-    const n = parseInt(v, 10) || 1;
-    return ["2-3", "4-5", "6-8", "9+"][Math.max(0, Math.min(3, n))] || "4-5";
+    const order = (window.FPMission && window.FPMission.AGE_ORDER) || ["2-3", "4-5", "6-8", "adult"];
+    const n = parseInt(v, 10);
+    const idx = Number.isFinite(n) ? n : 1;
+    return order[Math.max(0, Math.min(order.length - 1, idx))] || "4-5";
+  }
+
+  function setSectionHeadings(mission) {
+    const fh = $("#mission-finds-heading") || document.querySelector("#mission-sheet .ms-section");
+    const bh = $("#mission-bonus-heading");
+    if (fh) fh.textContent = mission.findsHeading || "Find these";
+    if (bh) bh.textContent = mission.bonusHeading || "Bonus";
+    else {
+      const heads = document.querySelectorAll("#mission-sheet .ms-section");
+      if (heads[1]) heads[1].textContent = mission.bonusHeading || "Bonus";
+    }
+  }
+
+  function syncAudienceChrome(mission) {
+    const adult = mission && mission.audience === "adult";
+    const nameField = document.querySelector(".mission-field-name");
+    const nameLabel = nameField && nameField.querySelector("label");
+    const nameInput = $("#mission-name");
+    const fav = document.querySelector(".ms-favorite");
+    document.body.classList.toggle("mission-audience-adult", !!adult);
+    if (nameLabel) {
+      nameLabel.innerHTML = adult
+        ? 'Your name <span class="mission-opt">(optional)</span>'
+        : 'Kid name <span class="mission-opt">(optional)</span>';
+    }
+    if (nameInput) {
+      nameInput.placeholder = adult ? "e.g. Alex" : "e.g. Arya";
+      if (adult && !nameInput.value) {
+        /* keep empty — solo sheets don't need a name */
+      }
+    }
+    if (fav) {
+      fav.textContent = adult
+        ? "I'd recommend _______________________ to a friend"
+        : "My favorite was _______________________";
+    }
+    const drawer = $("#mission-drawer");
+    if (drawer) drawer.setAttribute("data-audience", adult ? "adult" : "kid");
   }
 
   function renderSheet(mission) {
@@ -126,9 +166,11 @@
     const chEl = $("#mission-challenges");
     if (title) title.textContent = mission.title;
     if (meta) {
-      const mode = mission.contentMode === "wonder" ? " · Wonder sheet" : "";
+      const mode = mission.contentMode === "wonder" ? " · Flexible finds" : "";
       meta.textContent = `${mission.ageLabel} · ${mission.timeLabel}${mode}`;
     }
+    setSectionHeadings(mission);
+    syncAudienceChrome(mission);
     if (findsEl) {
       findsEl.innerHTML = (mission.finds || [])
         .map(
@@ -159,7 +201,10 @@
     if (sheet && !sheet.querySelector(".ms-favorite")) {
       const fav = document.createElement("p");
       fav.className = "ms-favorite";
-      fav.textContent = "My favorite was _______________________";
+      fav.textContent =
+        mission.audience === "adult"
+          ? "I'd recommend _______________________ to a friend"
+          : "My favorite was _______________________";
       const foot = sheet.querySelector(".ms-footer");
       if (foot) sheet.insertBefore(fav, foot);
       else sheet.appendChild(fav);

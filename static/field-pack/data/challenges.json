@@ -1,261 +1,180 @@
 {
-  "version": 1,
+  "version": 2,
   "challenges": [
     {
       "id": "tall",
       "text": "Find something taller than a grown-up",
-      "types": [
-        "zoo",
-        "museum",
-        "safari_zoo"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "tags": [
-        "tall"
-      ]
+      "types": ["zoo", "museum", "safari_zoo"],
+      "age_fit": ["2-3", "4-5", "6-8"],
+      "tags": ["tall"]
     },
     {
       "id": "stripes",
       "text": "Spot stripes or spots",
-      "types": [
-        "zoo",
-        "safari_zoo"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "tags": [
-        "pattern"
-      ]
+      "types": ["zoo", "safari_zoo"],
+      "age_fit": ["2-3", "4-5", "6-8"],
+      "tags": ["pattern"]
     },
     {
       "id": "sound",
       "text": "Hear a loud sound (or a very quiet one)",
-      "types": [
-        "zoo",
-        "aquarium",
-        "museum",
-        "safari_zoo"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "tags": [
-        "sound"
-      ]
+      "types": ["zoo", "aquarium", "museum", "safari_zoo"],
+      "age_fit": ["2-3", "4-5", "6-8"],
+      "tags": ["sound"]
     },
     {
       "id": "sleep",
       "text": "Point to where an animal might sleep",
-      "types": [
-        "zoo",
-        "aquarium",
-        "safari_zoo"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "tags": [
-        "home"
-      ]
+      "types": ["zoo", "aquarium", "safari_zoo"],
+      "age_fit": ["2-3", "4-5", "6-8"],
+      "tags": ["home"]
     },
     {
       "id": "water",
       "text": "Find something that loves water",
-      "types": [
-        "zoo",
-        "aquarium",
-        "safari_zoo"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "tags": [
-        "water"
-      ]
+      "types": ["zoo", "aquarium", "safari_zoo"],
+      "age_fit": ["2-3", "4-5", "6-8"],
+      "tags": ["water"]
+    },
+    {
+      "id": "wave",
+      "text": "Wave at something that moves",
+      "types": ["zoo", "aquarium", "museum", "safari_zoo"],
+      "age_fit": ["2-3"],
+      "tags": ["play", "little"]
+    },
+    {
+      "id": "same_color",
+      "text": "Find something the same color as your shirt",
+      "types": ["zoo", "aquarium", "museum", "safari_zoo"],
+      "age_fit": ["2-3", "4-5"],
+      "tags": ["color", "play", "little"]
+    },
+    {
+      "id": "rest_spot",
+      "text": "Find a bench or quiet spot to rest",
+      "types": ["zoo", "aquarium", "museum", "safari_zoo"],
+      "age_fit": ["2-3", "4-5"],
+      "tags": ["rest", "little"]
     },
     {
       "id": "photo",
-      "text": "Pick your favorite — draw it later find",
-      "types": [
-        "zoo",
-        "aquarium",
-        "museum",
-        "safari_zoo"
-      ],
-      "age_fit": [
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "tags": [
-        "photo"
-      ]
+      "text": "Pick your favorite — draw it later",
+      "types": ["zoo", "aquarium", "museum", "safari_zoo"],
+      "age_fit": ["4-5", "6-8"],
+      "tags": ["photo"]
     },
     {
       "id": "climb",
       "text": "Watch something climb",
-      "types": [
-        "zoo",
-        "museum"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "tags": [
-        "climb"
-      ]
+      "types": ["zoo", "museum"],
+      "age_fit": ["2-3", "4-5", "6-8"],
+      "tags": ["climb"]
     },
     {
       "id": "swim",
       "text": "Watch something swim or splash",
-      "types": [
-        "zoo",
-        "aquarium"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "tags": [
-        "water"
-      ]
+      "types": ["zoo", "aquarium"],
+      "age_fit": ["2-3", "4-5", "6-8"],
+      "tags": ["water"]
     },
     {
       "id": "tiny",
       "text": "Find something smaller than your hand",
-      "types": [
-        "zoo",
-        "aquarium",
-        "museum"
-      ],
-      "age_fit": [
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "tags": [
-        "tiny"
-      ]
+      "types": ["zoo", "aquarium", "museum"],
+      "age_fit": ["4-5", "6-8"],
+      "tags": ["tiny"]
     },
     {
       "id": "color",
       "text": "Find three different colors on animals or exhibits",
-      "types": [
-        "zoo",
-        "aquarium",
-        "museum"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8"
-      ],
-      "tags": [
-        "color"
-      ]
+      "types": ["zoo", "aquarium", "museum"],
+      "age_fit": ["2-3", "4-5", "6-8"],
+      "tags": ["color"]
     },
     {
       "id": "read",
       "text": "Read a kid label out loud",
-      "types": [
-        "museum",
-        "zoo",
-        "aquarium"
-      ],
-      "age_fit": [
-        "6-8",
-        "9+"
-      ],
-      "tags": [
-        "read"
-      ]
+      "types": ["museum", "zoo", "aquarium"],
+      "age_fit": ["6-8"],
+      "tags": ["read"]
     },
     {
       "id": "soft",
       "text": "Find a soft play or quiet corner",
-      "types": [
-        "museum"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5"
-      ],
-      "tags": [
-        "rest"
-      ]
+      "types": ["museum"],
+      "age_fit": ["2-3", "4-5"],
+      "tags": ["rest", "little"]
     },
     {
       "id": "make",
       "text": "Try one hands-on activity",
-      "types": [
-        "museum"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "tags": [
-        "hands"
-      ]
+      "types": ["museum"],
+      "age_fit": ["2-3", "4-5", "6-8"],
+      "tags": ["hands"]
     },
     {
       "id": "night",
       "text": "Find an animal that is awake at night",
-      "types": [
-        "safari_zoo",
-        "zoo"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "tags": [
-        "night"
-      ]
+      "types": ["safari_zoo", "zoo"],
+      "age_fit": ["4-5", "6-8"],
+      "tags": ["night"]
     },
     {
       "id": "path",
       "text": "Follow a path and name three things you pass",
-      "types": [
-        "zoo",
-        "museum",
-        "safari_zoo"
-      ],
-      "age_fit": [
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "tags": [
-        "walk"
-      ]
+      "types": ["zoo", "museum", "safari_zoo"],
+      "age_fit": ["4-5", "6-8"],
+      "tags": ["walk"]
+    },
+    {
+      "id": "compare",
+      "text": "Find two animals that move very differently",
+      "types": ["zoo", "aquarium", "safari_zoo"],
+      "age_fit": ["6-8"],
+      "tags": ["read", "compare"]
+    },
+    {
+      "id": "adult_signature",
+      "text": "Hit the signature stop first (the one on the postcards)",
+      "types": ["zoo", "aquarium", "museum", "safari_zoo"],
+      "age_fit": ["adult"],
+      "tags": ["adult", "wow"]
+    },
+    {
+      "id": "adult_overlook",
+      "text": "Find one thing most people walk past without noticing",
+      "types": ["zoo", "aquarium", "museum", "safari_zoo"],
+      "age_fit": ["adult"],
+      "tags": ["adult"]
+    },
+    {
+      "id": "adult_photo",
+      "text": "Take one photo you’d actually keep — or just look for 30 seconds",
+      "types": ["zoo", "aquarium", "museum", "safari_zoo"],
+      "age_fit": ["adult"],
+      "tags": ["adult", "photo"]
+    },
+    {
+      "id": "adult_pace",
+      "text": "Sit once with a view (or a cool hall) for two quiet minutes",
+      "types": ["zoo", "aquarium", "museum", "safari_zoo"],
+      "age_fit": ["adult"],
+      "tags": ["adult", "rest"]
+    },
+    {
+      "id": "adult_recommend",
+      "text": "Pick one stop you’d recommend to a friend — why?",
+      "types": ["zoo", "aquarium", "museum", "safari_zoo"],
+      "age_fit": ["adult"],
+      "tags": ["adult"]
+    },
+    {
+      "id": "adult_practical",
+      "text": "Note bathroom / water / exit before you get deep into the map",
+      "types": ["zoo", "aquarium", "museum", "safari_zoo"],
+      "age_fit": ["adult"],
+      "tags": ["adult", "practical"]
     }
   ]
 }

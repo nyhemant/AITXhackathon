@@ -626,10 +626,10 @@ def page_mission_chrome_html() -> str:
               <button type="button" class="seo-time-chip" data-time="full">Full day</button>
             </div>
             <div class="seo-chip-row" role="group" aria-label="Kid age">
-              <button type="button" class="seo-age-chip" data-age-idx="0">2–3y</button>
-              <button type="button" class="seo-age-chip is-active" data-age-idx="1" aria-pressed="true">4–5y</button>
-              <button type="button" class="seo-age-chip" data-age-idx="2">6–8y</button>
-              <button type="button" class="seo-age-chip" data-age-idx="3">9+y</button>
+              <button type="button" class="seo-age-chip" data-age-idx="0">2–4</button>
+              <button type="button" class="seo-age-chip is-active" data-age-idx="1" aria-pressed="true">5–8</button>
+              <button type="button" class="seo-age-chip" data-age-idx="2">9–12</button>
+              <button type="button" class="seo-age-chip" data-age-idx="3">Adults</button>
             </div>
           </div>
         </div>
@@ -749,7 +749,7 @@ def mission_drawer_html(mission_venue: dict, mission: dict) -> str:
     loc = ", ".join(x for x in [mission_venue.get("city"), mission_venue.get("region")] if x)
     verified_line = print_status_line(mission_venue)
     mission_title = esc(mission.get("title") or f"Your Mission at {mission_venue['name']}")
-    age_label = esc(mission.get("ageLabel") or "4–5")
+    age_label = esc(mission.get("ageLabel") or "Kids · 5–8")
     time_label = esc(mission.get("timeLabel") or "Half day")
     finds_html = "".join(
         f'<li class="mission-find">'
@@ -791,7 +791,7 @@ def mission_drawer_html(mission_venue: dict, mission: dict) -> str:
             <p class="mission-privacy">Stays on this page — never sent anywhere.</p>
           </div>
           <div class="mission-field">
-            <label for="mission-age">Age <span class="mission-age-label" id="mission-age-label">4–5</span></label>
+            <label for="mission-age">Who’s going? <span class="mission-age-label" id="mission-age-label">Kids · 5–8</span></label>
             <input type="range" id="mission-age" min="0" max="3" step="1" value="1" />
           </div>
           <div class="mission-field mission-field-time">
@@ -816,9 +816,9 @@ def mission_drawer_html(mission_venue: dict, mission: dict) -> str:
             <p class="ms-brand">Field Trip Kit{f' · {esc(loc)}' if loc else ""}</p>
             <h3 class="ms-title" id="mission-title">{mission_title}</h3>
             <p class="ms-meta" id="mission-meta">{age_label} · {time_label}</p>
-            <h4 class="ms-section">Find these</h4>
+            <h4 class="ms-section" id="mission-finds-heading">Find these</h4>
             <ol class="mission-finds" id="mission-finds" aria-label="Finds">{finds_html}</ol>
-            <h4 class="ms-section">Bonus</h4>
+            <h4 class="ms-section" id="mission-bonus-heading">Bonus</h4>
             <ul class="mission-challenges" id="mission-challenges" aria-label="Challenges">{ch_html}</ul>
             <p class="ms-favorite">My favorite was _______________________</p>
             <p class="ms-footer">
@@ -955,7 +955,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=64" />
   <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=25" />
-  <link rel="stylesheet" href="/field-pack/css/mission.css?v=11" />
+  <link rel="stylesheet" href="/field-pack/css/mission.css?v=12" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
   </script>
@@ -1040,8 +1040,8 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <script src="/field-pack/js/catalog.js?v=23"></script>
   <script src="/field-pack/js/print-maps.js?v=2"></script>
   <script src="/field-pack/js/print-kit.js?v=9"></script>
-  <script src="/field-pack/js/mission/mission-engine.js?v=9"></script>
-  <script src="/field-pack/js/mission/mission-ui.js?v=14"></script>
+  <script src="/field-pack/js/mission/mission-engine.js?v=10"></script>
+  <script src="/field-pack/js/mission/mission-ui.js?v=15"></script>
 </body>
 </html>
 """

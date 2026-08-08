@@ -1125,3 +1125,12 @@ a.seo-map-card:focus-visible {
 .seo-checked-verified { color: #0a4545; }
 .seo-checked-partial { color: #5a6b82; font-weight: 600; }
 .seo-checked-starter { color: #8a6d3b; font-weight: 600; }
+
+/* Adults chip — not a kid age band */
+.seo-age-chip[data-age-idx="3"] {
+  font-weight: 750;
+  letter-spacing: 0.01em;
+}
+.mission-audience-adult .mission-field-name label {
+  font-weight: 650;
+}
