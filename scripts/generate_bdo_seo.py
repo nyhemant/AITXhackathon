@@ -746,7 +746,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <meta name="twitter:image" content="{esc(og_img)}" />
   <meta name="color-scheme" content="light" />
   <base href="/field-pack/" />
-  <link rel="stylesheet" href="/shell/shell.css?v=4" />
+  <link rel="stylesheet" href="/shell/shell.css?v=5" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=45" />
   <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=8" />
@@ -910,7 +910,7 @@ def render_venue_page(v: dict) -> str:
   <meta name="twitter:image" content="{esc(og_img)}" />
   <meta name="color-scheme" content="light" />
   <base href="/field-pack/" />
-  <link rel="stylesheet" href="/shell/shell.css?v=4" />
+  <link rel="stylesheet" href="/shell/shell.css?v=5" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=44" />
   <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=8" />

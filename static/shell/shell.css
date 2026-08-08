@@ -2,13 +2,13 @@
 .oneless-shell {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   flex-wrap: wrap;
   margin: 0 0 14px;
-  padding: 10px 14px;
-  min-height: 60px;
+  padding: 12px 16px;
+  min-height: 68px;
   border-radius: var(--radius, 16px);
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(14px) saturate(1.2);
   -webkit-backdrop-filter: blur(14px) saturate(1.2);
   border: 1.5px solid var(--border, rgba(15, 92, 92, 0.12));
@@ -16,6 +16,24 @@
   position: sticky;
   top: 8px;
   z-index: 40;
+}
+
+/* Field Trip Kit: warmer “gift shop × outing” bar — product name is the star */
+.oneless-shell[data-product="bdo"] {
+  gap: 14px 16px;
+  padding: 14px 18px;
+  min-height: 76px;
+  background:
+    linear-gradient(
+      118deg,
+      rgba(255, 255, 255, 0.97) 0%,
+      rgba(255, 248, 230, 0.94) 42%,
+      rgba(232, 248, 240, 0.95) 100%
+    );
+  border-color: rgba(15, 92, 92, 0.16);
+  box-shadow:
+    0 2px 14px rgba(21, 34, 56, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
 }
 
 .oneless-shell .shell-brand {
@@ -45,9 +63,14 @@
 
 @media (max-width: 520px) {
   .oneless-shell {
-    padding: 8px 12px;
-    gap: 8px;
+    padding: 10px 12px;
+    gap: 10px;
     top: 6px;
+    min-height: 62px;
+  }
+  .oneless-shell[data-product="bdo"] {
+    padding: 12px 14px;
+    min-height: 68px;
   }
   .oneless-shell .shell-brand {
     font-size: 1.05rem;
@@ -55,6 +78,13 @@
   .oneless-shell .shell-brand img {
     width: 42px;
     height: 42px;
+  }
+  .oneless-shell[data-product="bdo"] .shell-product {
+    font-size: 1.22rem;
+  }
+  .oneless-shell[data-product="bdo"] .shell-product small {
+    font-size: 0.72rem;
+    padding: 3px 8px;
   }
 }
 
@@ -75,6 +105,35 @@
   font-size: 0.75rem;
   color: var(--muted-soft, #5a6b82);
   margin-top: 1px;
+}
+
+/* Product title: big, confident, not a muted caption */
+.oneless-shell[data-product="bdo"] .shell-product {
+  font-weight: 850;
+  font-size: clamp(1.28rem, 2.8vw, 1.55rem);
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+  color: var(--teal-deep, #0a4545);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  padding: 2px 0;
+}
+
+.oneless-shell[data-product="bdo"] .shell-product small {
+  display: inline-block;
+  margin-top: 0;
+  font-weight: 750;
+  font-size: 0.78rem;
+  letter-spacing: 0.01em;
+  line-height: 1.25;
+  color: #9a3412;
+  background: rgba(255, 207, 90, 0.42);
+  border: 1px solid rgba(217, 101, 46, 0.28);
+  border-radius: 999px;
+  padding: 3px 10px 4px;
+  max-width: 100%;
 }
 
 .oneless-shell .shell-more-wrap {
