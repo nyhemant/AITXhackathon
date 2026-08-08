@@ -412,9 +412,9 @@
         const label = (m && m.label) || "this area";
         mapCount.textContent = `${list.length} in ${label}`;
       } else if (mapScope === "top") {
-        mapCount.textContent = `${list.length} popular`;
+        mapCount.textContent = `${list.length} popular US places`;
       } else {
-        mapCount.textContent = `${list.length} places`;
+        mapCount.textContent = `${list.length} US places`;
       }
     }
   }
@@ -1399,8 +1399,8 @@
       ? ""
       : isMissionPilot
         ? `<a class="btn btn-primary pd-mission-cta" href="${missionHref}">
-            <span class="pd-cta-main pd-cta-long">Personalize mission by age &amp; print</span>
-            <span class="pd-cta-main pd-cta-short">Personalize &amp; print</span>
+            <span class="pd-cta-main pd-cta-long">Print your mission</span>
+            <span class="pd-cta-main pd-cta-short">Print mission</span>
           </a>`
         : canPrintHunt
           ? `<button type="button" class="btn btn-primary" id="pd-print-hunt">Print one-page hunt</button>`

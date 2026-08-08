@@ -30,7 +30,7 @@
     <base href="/field-pack/" />
     <link rel="stylesheet" href="/shell/shell.css?v=5" />
     <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
-    <link rel="stylesheet" href="/field-pack/css/landing.css?v=62" />
+    <link rel="stylesheet" href="/field-pack/css/landing.css?v=64" />
     <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=15" />
     <script type="application/ld+json">
       {
@@ -86,9 +86,8 @@
   <body class="landing-body">
     <div class="app landing-app landing-clean">
       <header class="oneless-shell no-print" data-product="bdo">
-        <a class="shell-brand" href="/">
-          <img src="/1LessMark.png" alt="1Less logo" width="52" height="52" />
-          1Less
+        <a class="shell-brand" href="/field-pack/" aria-label="Field Trip Kit home">
+          <img src="/1LessMark.png" alt="" width="52" height="52" />
         </a>
         <p class="shell-product">
           Field Trip Kit
@@ -99,8 +98,8 @@
             More
           </button>
           <div id="shell-menu" class="shell-menu" hidden role="menu">
-            <a href="/" aria-current="page" role="menuitem">Field Trip Kit<small>Map &amp; outings</small></a>
-            <a href="/dinner" role="menuitem">Dinner<small>Tonight’s meal</small></a>
+            <a href="/field-pack/" aria-current="page" role="menuitem">All places<small>Map &amp; outings</small></a>
+            <a href="/field-pack/#about" role="menuitem">About<small>1Less &amp; contact</small></a>
           </div>
         </div>
       </header>
@@ -115,7 +114,7 @@
             <h1>A short plan for zoo and museum days</h1>
             <p class="pitch-line">
               One-page hunt and a short kid list for zoos, aquariums, and museums.
-              <strong>Print at home.</strong> Open any animal for Q&amp;A, photos, and live cams when you want more.
+              <strong>Print at home.</strong> Talk cards and live cams when you want more.
             </p>
             <p class="pitch-trust">Free · one page · no account</p>
           </div>
@@ -163,7 +162,7 @@
               class="story-jump story-sample-link"
               href="/field-pack/dallas-zoo/#mission"
               data-sample-pop
-              aria-label="Print — open a sample treasure hunt mission for Dallas Zoo"
+              aria-label="Print — sample mission (Dallas Zoo)"
             >
               <div class="story-art" aria-hidden="true">
                 <svg class="story-svg story-svg-hunt" viewBox="0 0 96 78" width="96" height="78" focusable="false">
@@ -184,20 +183,20 @@
                 </svg>
               </div>
               <p class="story-label"><span class="story-num">2</span> Print</p>
-              <p class="story-desc">Short list + treasure hunt</p>
+              <p class="story-desc">Short list + mission sheet</p>
               <span class="story-pop story-pop-hunt" aria-hidden="true">
                 <span class="sample-watermark" aria-hidden="true">SAMPLE</span>
                 <div class="story-pop-hunt-sheet">
-                  <div class="artifact-banner">Treasure hunt</div>
+                  <div class="artifact-banner">Mission sheet</div>
                   <ul class="artifact-rows">
                     <li><span class="artifact-box">✓</span><span class="artifact-emoji">🦁</span><span class="artifact-line"></span></li>
                     <li><span class="artifact-box"></span><span class="artifact-emoji">🦈</span><span class="artifact-line"></span></li>
                     <li><span class="artifact-box"></span><span class="artifact-emoji">⭐</span><span class="artifact-line"></span></li>
                     <li><span class="artifact-box"></span><span class="artifact-emoji">🦒</span><span class="artifact-line short"></span></li>
                   </ul>
-                  <p class="artifact-foot">One page · mark as you go</p>
+                  <p class="artifact-foot">Sample: Dallas Zoo</p>
                 </div>
-                <span class="story-pop-cta">Open sample mission →</span>
+                <span class="story-pop-cta">Open Dallas Zoo sample →</span>
               </span>
             </a>
           </li>
@@ -223,7 +222,7 @@
               class="story-jump story-sample-link"
               href="/field-pack/app.html#/venue/dallas-zoo/item/african-lion"
               data-sample-pop
-              aria-label="Play — open sample African lion card with Q&A, photos, and live cam"
+              aria-label="Play — sample lion card (Dallas Zoo) with talk prompts, photos, live cam"
             >
               <div class="story-art" aria-hidden="true">
                 <svg class="story-svg" viewBox="0 0 88 72" width="88" height="72" focusable="false">
@@ -248,7 +247,7 @@
                 />
                 <span class="story-animal-meta">
                   <strong>🦁 African lion</strong>
-                  <small>Q&amp;A · live cam · photos</small>
+                  <small>Sample: Dallas Zoo · cam · photos</small>
                 </span>
               </span>
             </a>
@@ -259,6 +258,18 @@
       <!-- MAP FIRST -->
       <section class="map-section map-first" id="us-map" aria-labelledby="map-heading">
         <h2 id="map-heading" class="sr-only">Explore places on the map</h2>
+        <div class="place-search-wrap no-print">
+          <label class="place-search-label" for="place-search">Find a place</label>
+          <input
+            type="search"
+            id="place-search"
+            class="place-search-input"
+            placeholder="Type a zoo, museum, or city…"
+            autocomplete="off"
+            enterkeyhint="search"
+          />
+          <ul id="place-search-results" class="place-search-results" hidden role="listbox" aria-label="Matching places"></ul>
+        </div>
 
         <div class="map-shell map-shell-full">
           <div class="map-canvas-wrap map-canvas-invite">
@@ -286,7 +297,7 @@
 
         <!-- City jumps + optional filters (one discovery path under the map) -->
         <div class="map-controls-below">
-          <p class="map-cities-label" id="city-chips-label">Cities <span class="map-cities-hint">hover for places</span></p>
+          <p class="map-cities-label" id="city-chips-label">Cities <span class="map-cities-hint">tap for places</span></p>
           <div class="city-chips city-chips-slim" id="city-chips" aria-labelledby="city-chips-label"></div>
           <details class="map-filters-more">
             <summary>More filters</summary>
@@ -308,7 +319,7 @@
             </div>
           </details>
           <div class="map-meta-row">
-            <p id="map-count" class="map-count-quiet">74 places</p>
+            <p id="map-count" class="map-count-quiet">74 US places</p>
             <ul class="map-pin-legend" aria-label="Map pin colors">
               <li><span class="leg-dot leg-zoo" aria-hidden="true"></span> Zoo</li>
               <li><span class="leg-dot leg-aquarium" aria-hidden="true"></span> Aquarium</li>
@@ -546,11 +557,36 @@
       </section>
       <!-- SEO:VENUE-DIR:END -->
 
+      <section class="seo-about no-print" id="about" aria-labelledby="about-heading">
+        <h2 id="about-heading">About Field Trip Kit</h2>
+        <p>
+          Field Trip Kit helps families print a short one-page mission for zoo, aquarium, and museum days.
+          No account. Kid names you type stay on your device.
+        </p>
+        <p>
+          It’s part of <strong>1Less</strong> — small free tools for busy parents
+          (also <a href="/dinner">Dinner</a> for tonight’s meal). URLs stay under
+          <code>/field-pack/</code> so shared links keep working.
+        </p>
+        <p>
+          Questions or a venue to suggest?
+          <a href="mailto:hello@1less.app">hello@1less.app</a>
+        </p>
+        <p class="footer-privacy">
+          Privacy: we don’t require sign-up for hunts. Print happens in your browser.
+          Analytics (if enabled) only count visits and print events — not kid names.
+        </p>
+      </section>
+
       <footer class="site-footer site-footer-slim no-print">
         <p>
-          <strong>1Less</strong> · Field Trip Kit
+          <strong>Field Trip Kit</strong>
           <span class="footer-dot">·</span>
-          <a href="/dinner">Dinner</a>
+          <a href="/field-pack/">All places</a>
+          <span class="footer-dot">·</span>
+          <a href="#about">About</a>
+          <span class="footer-dot">·</span>
+          <a href="mailto:hello@1less.app">Contact</a>
         </p>
       </footer>
     </div>
@@ -564,7 +600,7 @@
     <script src="/field-pack/js/print-maps.js?v=2"></script>
     <script src="/field-pack/js/print-kit.js?v=9"></script>
     <script src="/field-pack/js/mission-pilots.js?v=4"></script>
-    <script src="/field-pack/js/landing-map.js?v=61"></script>
-    <script src="/field-pack/js/landing-hook.js?v=16"></script>
+    <script src="/field-pack/js/landing-map.js?v=62"></script>
+    <script src="/field-pack/js/landing-hook.js?v=17"></script>
   </body>
 </html>

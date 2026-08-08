@@ -65,14 +65,80 @@
     return (items || []).filter((it) => (it.age_fit || AGE_ORDER).includes(age));
   }
 
+  /** Normalize venue.type → wonder/challenge pool keys: zoo | aquarium | museum | safari_zoo */
+  function normalizeVenueType(venue) {
+    const raw = String((venue && venue.type) || "zoo")
+      .toLowerCase()
+      .replace(/[\s+/]+/g, "_");
+    if (raw.includes("aquarium") || raw === "aq" || raw === "sci_aq" || raw === "zoo_aq") {
+      return "aquarium";
+    }
+    if (raw.includes("safari")) return "safari_zoo";
+    if (raw.includes("zoo")) return "zoo";
+    if (
+      /museum|science|natural|history|children|space|air|^sci$|^nh$|^cm$|childrens/.test(raw)
+    ) {
+      return "museum";
+    }
+    return raw || "zoo";
+  }
+
+  function typeAllows(poolTypes, kind) {
+    const types = poolTypes || [];
+    if (!types.length) return true;
+    if (types.includes(kind)) return true;
+    if (kind === "safari_zoo" && types.includes("zoo")) return true;
+    return false;
+  }
+
   function wonderPool(venue, wondersFile) {
-    const type = (venue.type || "zoo").toLowerCase();
+    const kind = normalizeVenueType(venue);
     const list = (wondersFile && wondersFile.wonders) || [];
     return list.filter((w) => {
-      const types = w.types || [];
-      if (!types.length) return true;
-      return types.includes(type) || (type === "safari_zoo" && types.includes("zoo"));
+      if (!typeAllows(w.types, kind)) return false;
+      // Museum-safe: no water/splash or live-animal sleep hunts
+      const tags = w.tags || [];
+      if (kind === "museum") {
+        if (tags.includes("water")) return false;
+        if (w.id === "w_splash" || w.id === "w_sleep") return false;
+      }
+      return true;
     });
+  }
+
+  /** Must-include stops: route_90m first, else first venue items (top shortlist). */
+  function anchorItems(venue, age) {
+    const items = venue.items || [];
+    const byId = Object.fromEntries(items.map((it) => [it.id, it]));
+    const out = [];
+    const push = (it) => {
+      if (!it || out.some((x) => x.id === it.id)) return;
+      const ages = it.age_fit || AGE_ORDER;
+      if (!ages.includes(age)) return;
+      out.push(it);
+    };
+    for (const id of venue.route_90m || []) {
+      if (out.length >= 3) break;
+      push(byId[id]);
+    }
+    if (!out.length) {
+      for (const it of filterByAge(items, age)) {
+        if (out.length >= 3) break;
+        push(it);
+      }
+    }
+    // If age filter emptied anchors, take raw route/items
+    if (!out.length) {
+      for (const id of venue.route_90m || []) {
+        if (out.length >= 3) break;
+        if (byId[id]) out.push(byId[id]);
+      }
+      for (const it of items) {
+        if (out.length >= 3) break;
+        if (!out.some((x) => x.id === it.id)) out.push(it);
+      }
+    }
+    return out.slice(0, 3);
   }
 
   function pickItems(venue, opts, wondersFile) {
@@ -82,13 +148,15 @@
     const need = TIME_N[time] || TIME_N["90m"] || 6;
     const seed = opts.seed || 1;
     const mode = contentMode(venue);
-    const rand = mulberry32(hashSeed(venue.slug + "|" + mode + "|" + age + "|" + time + "|" + interest + "|" + seed));
+    const rand = mulberry32(
+      hashSeed(venue.slug + "|" + mode + "|" + age + "|" + time + "|" + interest + "|" + seed)
+    );
 
     let sourceItems = venue.items || [];
     if (mode === "wonder" && wondersFile) {
       sourceItems = wonderPool(venue, wondersFile);
     } else if (mode === "hybrid" && wondersFile) {
-      // Prefer real icons first, then fill with wonders
+      // Real venue stops first, then venue-type-safe wonders only
       const icons = filterByAge(venue.items || [], age);
       const wonders = filterByAge(wonderPool(venue, wondersFile), age);
       sourceItems = icons.concat(wonders.filter((w) => !icons.some((i) => i.id === w.id)));
@@ -106,10 +174,28 @@
       .sort((a, b) => b.score - a.score || a.idx - b.idx)
       .map((x) => x.it);
 
-    let picked = ranked.slice(0, need);
+    // Guarantee headline stops (route_90m / top items) before any filler wonders
+    const anchors = mode === "wonder" ? [] : anchorItems(venue, age);
+    const picked = [];
+    const seen = new Set();
+    for (const a of anchors) {
+      if (picked.length >= need) break;
+      picked.push(a);
+      seen.add(a.id);
+    }
+    for (const it of ranked) {
+      if (picked.length >= need) break;
+      if (seen.has(it.id)) continue;
+      picked.push(it);
+      seen.add(it.id);
+    }
     if (picked.length < need) {
-      const rest = sourceItems.filter((it) => !picked.some((p) => p.id === it.id));
-      picked = picked.concat(rest.slice(0, need - picked.length));
+      for (const it of sourceItems) {
+        if (picked.length >= need) break;
+        if (seen.has(it.id)) continue;
+        picked.push(it);
+        seen.add(it.id);
+      }
     }
     return picked.slice(0, need);
   }
@@ -118,24 +204,17 @@
     const age = opts.age || "4-5";
     const seed = (opts.seed || 1) + 17;
     const rand = mulberry32(hashSeed(venue.slug + "|ch|" + age + "|" + seed));
-    const type = (venue.type || "zoo").toLowerCase();
+    const kind = normalizeVenueType(venue);
     const blocked = new Set();
     (selectedItems || []).forEach((it) => (it.tags || []).forEach((t) => blocked.add(t)));
 
+    // Strict venue-type match — never pull zoo-only "night animal" onto a museum sheet
     let pool = (challengesFile.challenges || []).filter((c) => {
-      const types = c.types || [];
       const ages = c.age_fit || AGE_ORDER;
       if (!ages.includes(age)) return false;
-      if (types.length && !types.includes(type) && !types.includes("zoo")) {
-        // museum-only challenges stay museum; aquarium types strict
-        if (type === "museum") return types.includes("museum");
-        if (type === "aquarium") return types.includes("aquarium");
-        return types.includes(type);
-      }
-      return types.includes(type) || types.includes("zoo") || types.length === 0;
+      return typeAllows(c.types, kind);
     });
 
-    // Prefer challenges that don't heavily overlap item tags
     pool = pool
       .map((c, idx) => {
         const tags = c.tags || [];
@@ -153,8 +232,8 @@
       out.push(c);
       used.add(c.id);
     }
-    // backfill any
-    for (const c of challengesFile.challenges || []) {
+    // Backfill only from type-safe pool (never all challenges)
+    for (const c of pool) {
       if (out.length >= 3) break;
       if (!used.has(c.id)) {
         out.push(c);

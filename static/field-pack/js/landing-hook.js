@@ -20,6 +20,84 @@
       .replace(/"/g, "&quot;");
   }
 
+  /** Typeahead place search above the map */
+  (function wirePlaceSearch() {
+    const input = document.getElementById("place-search");
+    const results = document.getElementById("place-search-results");
+    if (!input || !results || !places.length) return;
+
+    function hide() {
+      results.hidden = true;
+      results.innerHTML = "";
+    }
+
+    function go(id) {
+      hide();
+      input.value = "";
+      if (typeof window.fpSelectVenueOnMap === "function") {
+        window.fpSelectVenueOnMap(id);
+        document.getElementById("map-viewport")?.scrollIntoView({ behavior: "smooth", block: "center" });
+      } else {
+        location.href = `/field-pack/${encodeURIComponent(id)}/`;
+      }
+    }
+
+    function search(q) {
+      const needle = (q || "").trim().toLowerCase();
+      if (needle.length < 2) {
+        hide();
+        return;
+      }
+      const hits = places
+        .filter((p) => {
+          const blob = [p.name, p.city, p.state, p.country, p.id, p.type]
+            .filter(Boolean)
+            .join(" ")
+            .toLowerCase();
+          return blob.includes(needle);
+        })
+        .slice(0, 8);
+      if (!hits.length) {
+        results.innerHTML = `<li class="place-search-empty">No matches</li>`;
+        results.hidden = false;
+        return;
+      }
+      results.innerHTML = hits
+        .map((p) => {
+          const where = [p.city, p.state || p.country].filter(Boolean).join(", ");
+          return `<li role="option">
+            <button type="button" class="place-search-hit" data-id="${escapeHtml(p.id)}">
+              <strong>${escapeHtml(p.emoji || "📍")} ${escapeHtml(p.name)}</strong>
+              <small>${escapeHtml(where)}</small>
+            </button>
+          </li>`;
+        })
+        .join("");
+      results.hidden = false;
+    }
+
+    let t = null;
+    input.addEventListener("input", () => {
+      clearTimeout(t);
+      t = setTimeout(() => search(input.value), 120);
+    });
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        hide();
+        input.blur();
+      }
+    });
+    results.addEventListener("click", (e) => {
+      const btn = e.target.closest(".place-search-hit");
+      if (!btn) return;
+      go(btn.getAttribute("data-id"));
+    });
+    document.addEventListener("click", (e) => {
+      if (e.target.closest && e.target.closest(".place-search-wrap")) return;
+      hide();
+    });
+  })();
+
   // Smooth scroll primary CTA → map
   document.querySelectorAll('a.pitch-cta[href="#us-map"], a.story-jump[href="#us-map"]').forEach((a) => {
     a.addEventListener("click", (e) => {

@@ -246,8 +246,8 @@ def unique_body(
       <h2 id="hunt-heading">Print your mission</h2>
       <p>Pick age and time, then print one page — no app at the venue.</p>
       <p class="seo-hunt-cta-wrap no-print">
-        <button type="button" class="btn btn-primary" id="seo-open-mission" data-how="print">
-          Personalize mission &amp; print
+        <button type="button" class="btn btn-secondary" id="seo-open-mission" data-how="print">
+          Open print options
         </button>
       </p>
       <details class="seo-hunt-examples">
@@ -277,11 +277,12 @@ def title_for(v: dict) -> str:
 def meta_for(v: dict) -> str:
     city = v["city"] or v["location"] or ""
     place, things, _ = type_bits(v)
-    base = (
-        f"Free printable {v['name']} scavenger hunt for kids in {city}. "
-        f"Short kid list of {things}, one-page treasure hunt — Field Trip Kit by 1Less."
-    )
-    return base[:158]
+    # Keep well under ~155 chars so SERP/OG don't truncate mid-word
+    name = v["name"]
+    base = f"Printable {name} scavenger hunt for kids in {city}. Short list + one-page mission — Field Trip Kit."
+    if len(base) > 155:
+        base = f"{name} scavenger hunt for kids ({city}). One-page printable mission — Field Trip Kit."
+    return base[:155].rsplit(" ", 1)[0] if len(base) > 155 else base
 
 
 def venue_json_ld(v: dict, url: str) -> str:
@@ -408,13 +409,13 @@ def map_card_html(mission_venue: dict) -> str:
       <button type="button" class="seo-map-enlarge-hit" aria-expanded="false" aria-controls="seo-map-preview-panel" aria-label="Enlarge park map">
         <span class="seo-map-thumb-wrap">
           <img class="seo-map-thumb" src="{esc(img)}" alt="Park map preview" width="640" height="400" loading="lazy" decoding="async"{refpol} />
-          <span class="seo-map-hover-hint" aria-hidden="true">Click to pin enlarge</span>
+          <span class="seo-map-hover-hint" aria-hidden="true">Tap to enlarge</span>
         </span>
       </button>
       <div class="seo-map-card-body">
         <span class="seo-map-kicker">Park map</span>
         <strong>Visitor map</strong>
-        <small>{esc(attr)} · click map to enlarge</small>
+        <small>{esc(attr)} · tap to enlarge</small>
         <a class="seo-map-ext-link" href="{esc(href)}" target="_blank" rel="noopener noreferrer">{esc(ext_label)}</a>
       </div>
       <div class="seo-map-preview" id="seo-map-preview-panel" role="dialog" aria-label="Enlarged park map" hidden>
@@ -481,27 +482,29 @@ def wonder_grid_html(mission: dict) -> str:
 
 
 def page_mission_chrome_html() -> str:
-    """Print button + time/age chips: button left, two chip rows right (synced by mission-ui.js)."""
+    """One primary Print CTA + labeled age/time chips (synced by mission-ui.js)."""
     return """
-        <div class="seo-mission-bar no-print" aria-label="Print mission options">
-          <button type="button" class="btn btn-primary btn-big seo-print-btn" id="mission-open-btn" aria-haspopup="dialog" aria-controls="mission-drawer" aria-label="Print mission">
-            <span class="seo-print-btn-line">Print</span>
+        <div class="seo-mission-bar no-print" aria-label="Print your mission">
+          <button type="button" class="btn btn-primary btn-big seo-print-btn" id="mission-open-btn" aria-haspopup="dialog" aria-controls="mission-drawer" aria-label="Print your mission">
+            <span class="seo-print-btn-line">Print your</span>
             <span class="seo-print-btn-line seo-print-btn-sub">mission</span>
           </button>
           <div class="seo-mission-chrome" id="seo-mission-chrome">
-            <div class="seo-chip-row" role="group" aria-label="Time">
+            <p class="seo-chrome-label">Customize</p>
+            <div class="seo-chip-row" role="group" aria-label="Time available">
               <button type="button" class="seo-time-chip" data-time="90m">90 min</button>
               <button type="button" class="seo-time-chip is-active" data-time="half" aria-pressed="true">Half day</button>
               <button type="button" class="seo-time-chip" data-time="full">Full day</button>
             </div>
-            <div class="seo-chip-row" role="group" aria-label="Age">
+            <div class="seo-chip-row" role="group" aria-label="Kid age">
               <button type="button" class="seo-age-chip" data-age-idx="0">2–3y</button>
               <button type="button" class="seo-age-chip is-active" data-age-idx="1" aria-pressed="true">4–5y</button>
               <button type="button" class="seo-age-chip" data-age-idx="2">6–8y</button>
               <button type="button" class="seo-age-chip" data-age-idx="3">9+y</button>
             </div>
           </div>
-        </div>"""
+        </div>
+        <p class="seo-print-fallback no-print">No printer? Open the mission on your phone and keep the screen with you.</p>"""
 
 
 def _photo_src(photo: str) -> str:
@@ -578,11 +581,8 @@ def route_90m_html(mission_venue: dict, mission: dict, catalog_v: dict | None = 
         emoji = p.get("emoji") or feat.get("emoji") or ""
         one = _card_blurb(p.get("one_liner") or feat.get("blurb") or "")
         item_id = cat_id or (p.get("id") or "")
-        href = (
-            f"/field-pack/app.html#/venue/{esc(slug)}/item/{esc(item_id)}"
-            if slug and item_id
-            else (f"/field-pack/app.html#/venue/{esc(slug)}" if slug else "#")
-        )
+        # Primary path is print mission; card opens drawer so parents don't skip the sheet
+        href = f"/field-pack/{esc(slug)}/#mission" if slug else "#mission"
         if src:
             media = (
                 f'<img src="{esc(src)}" alt="" width="640" height="400" '
@@ -591,7 +591,7 @@ def route_90m_html(mission_venue: dict, mission: dict, catalog_v: dict | None = 
         else:
             media = f'<span class="seo-start-emoji" aria-hidden="true">{esc(emoji or "✨")}</span>'
         cards.append(
-            f"""<a class="seo-start-card" href="{href}">
+            f"""<a class="seo-start-card" href="{href}" data-how="print">
         <span class="seo-start-num" aria-hidden="true">{i}</span>
         {media}
         <span class="seo-start-meta">
@@ -603,7 +603,7 @@ def route_90m_html(mission_venue: dict, mission: dict, catalog_v: dict | None = 
 
     lead = (
         f"Do these {n} in order if you can — enough for a short visit. "
-        "Print the mission when you want the full checklist."
+        "Tap a stop or Print your mission for the one-page sheet."
     )
     return f"""
     <section class="seo-start-here no-print" aria-labelledby="route90-heading">
@@ -659,6 +659,7 @@ def mission_drawer_html(mission_venue: dict, mission: dict) -> str:
           <div class="mission-field mission-field-name">
             <label for="mission-name">Kid name <span class="mission-opt">(optional)</span></label>
             <input type="text" id="mission-name" maxlength="24" placeholder="e.g. Arya" autocomplete="off" />
+            <p class="mission-privacy">Stays on this page — never sent anywhere.</p>
           </div>
           <div class="mission-field">
             <label for="mission-age">Age <span class="mission-age-label" id="mission-age-label">Ready (4–5)</span></label>
@@ -700,7 +701,7 @@ def mission_drawer_html(mission_venue: dict, mission: dict) -> str:
       </div>
       <footer class="mission-drawer-foot">
         <button type="button" class="btn btn-ghost" id="mission-shuffle-btn">Shuffle finds</button>
-        <button type="button" class="btn btn-primary btn-big" id="mission-print-btn">Print mission</button>
+        <button type="button" class="btn btn-primary btn-big" id="mission-print-btn">Print your mission</button>
       </footer>
     </div>
   </div>
@@ -759,8 +760,8 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
       <h2 id="hunt-heading">Print your mission</h2>
       <p>Pick age and time, then print one page — no app at the venue.</p>
       <p class="seo-hunt-cta-wrap no-print">
-        <button type="button" class="btn btn-primary" id="seo-open-mission" data-how="print">
-          Personalize mission &amp; print
+        <button type="button" class="btn btn-secondary" id="seo-open-mission" data-how="print">
+          Open print options
         </button>
       </p>
       <details class="seo-hunt-examples">
@@ -772,18 +773,11 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
             else ""
         )
         body = wonder_grid_html(mission) + hunt_sec
-        how_step2 = "Check finds on the list as you go"
     elif mode == "hybrid":
         wonder_sec = wonder_grid_html(mission)
         body = unique_body(v, exclude_ids=start_exclude) + wonder_sec
-        how_step2 = (
-            "See favorites, then flexible backups"
-            if wonder_sec
-            else "Use the shortlist while you walk"
-        )
     else:
         body = unique_body(v, exclude_ids=start_exclude)
-        how_step2 = "Use the shortlist while you walk"
     h1 = h1_for(v)
     title = title_for(v)
     desc = meta_for(v)
@@ -822,9 +816,9 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <base href="/field-pack/" />
   <link rel="stylesheet" href="/shell/shell.css?v=5" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
-  <link rel="stylesheet" href="/field-pack/css/landing.css?v=52" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=21" />
-  <link rel="stylesheet" href="/field-pack/css/mission.css?v=9" />
+  <link rel="stylesheet" href="/field-pack/css/landing.css?v=64" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=23" />
+  <link rel="stylesheet" href="/field-pack/css/mission.css?v=11" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
   </script>
@@ -835,9 +829,8 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
 <body class="landing-body seo-venue-body mission-venue-body" data-content-mode="{esc(mode)}">
   <div class="app landing-app seo-venue">
     <header class="oneless-shell no-print" data-product="bdo">
-      <a class="shell-brand" href="/">
-        <img src="/1LessMark.png" alt="1Less logo" width="52" height="52" />
-        1Less
+      <a class="shell-brand" href="/field-pack/" aria-label="Field Trip Kit home">
+        <img src="/1LessMark.png" alt="" width="52" height="52" />
       </a>
       <p class="shell-product">
         Field Trip Kit
@@ -846,8 +839,8 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
       <div class="shell-more-wrap">
         <button type="button" class="shell-more" aria-expanded="false" aria-haspopup="true" aria-controls="shell-menu">More</button>
         <div id="shell-menu" class="shell-menu" hidden role="menu">
-          <a href="/field-pack/" role="menuitem">Field Trip Kit<small>Map &amp; outings</small></a>
-          <a href="/dinner" role="menuitem">Dinner<small>Tonight’s meal</small></a>
+          <a href="/field-pack/" role="menuitem">All places<small>Map &amp; outings</small></a>
+          <a href="/field-pack/#about" role="menuitem">About<small>1Less &amp; contact</small></a>
         </div>
       </div>
     </header>
@@ -867,7 +860,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
         {facts_html}
         {chrome}
         <p class="seo-secondary-links no-print">
-          <a href="{esc(app_href)}">Full kid list</a>
+          <a href="{esc(app_href)}">Stops &amp; talk cards</a>
           <span aria-hidden="true"> · </span>
           <a href="{esc(map_href)}">Find on map</a>
         </p>
@@ -878,34 +871,6 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
       <div id="seo-play-target" class="seo-play-anchor" tabindex="-1"></div>
       {body}
 
-      <section class="seo-how no-print" aria-labelledby="how-heading">
-        <h2 id="how-heading">How it works</h2>
-        <p class="how-hint">Tap a step to jump there.</p>
-        <ol class="how-steps how-steps-visual how-steps-linked">
-          <li>
-            <button type="button" class="how-step-btn" data-how="print" id="how-print-btn">
-              <span class="how-ico" aria-hidden="true">🖨️</span>
-              <strong>Print</strong>
-              <span>Customize age &amp; time, then print</span>
-            </button>
-          </li>
-          <li>
-            <a class="how-step-btn" href="#seo-play-target" data-how="play" id="how-play-link">
-              <span class="how-ico" aria-hidden="true">👀</span>
-              <strong>Play</strong>
-              <span>{esc(how_step2)}</span>
-            </a>
-          </li>
-          <li>
-            <a class="how-step-btn" href="{esc(app_href)}" data-how="talk" id="how-talk-link">
-              <span class="how-ico" aria-hidden="true">💬</span>
-              <strong>Optional</strong>
-              <span>Talk cards after</span>
-            </a>
-          </li>
-        </ol>
-      </section>
-
       <p class="seo-official no-print">
         {f'Official site: <a href="{esc(v["website"])}" rel="noopener noreferrer" target="_blank">{esc(v["name"])} website</a>.' if v.get("website") else ""}
         Always check hours and tickets before you go.
@@ -914,10 +879,15 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
 
     <footer class="site-footer site-footer-slim no-print">
       <p>
-        <a href="/field-pack/">All places</a> ·
-        <strong>1Less</strong> · Field Trip Kit ·
-        <a href="/dinner">Dinner</a>
+        <strong>Field Trip Kit</strong>
+        <span class="footer-dot">·</span>
+        <a href="/field-pack/">All places</a>
+        <span class="footer-dot">·</span>
+        <a href="/field-pack/#about">About</a>
+        <span class="footer-dot">·</span>
+        <a href="mailto:hello@1less.app">Contact</a>
       </p>
+      <p class="footer-privacy">Kid names stay on your device. We don’t collect accounts or emails for hunts.</p>
     </footer>
   </div>
 
@@ -933,8 +903,8 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <script src="/field-pack/js/catalog.js?v=23"></script>
   <script src="/field-pack/js/print-maps.js?v=2"></script>
   <script src="/field-pack/js/print-kit.js?v=9"></script>
-  <script src="/field-pack/js/mission/mission-engine.js?v=6"></script>
-  <script src="/field-pack/js/mission/mission-ui.js?v=12"></script>
+  <script src="/field-pack/js/mission/mission-engine.js?v=7"></script>
+  <script src="/field-pack/js/mission/mission-ui.js?v=13"></script>
 </body>
 </html>
 """
@@ -1007,9 +977,8 @@ def render_venue_page(v: dict) -> str:
 <body class="landing-body seo-venue-body">
   <div class="app landing-app seo-venue">
     <header class="oneless-shell no-print" data-product="bdo">
-      <a class="shell-brand" href="/">
-        <img src="/1LessMark.png" alt="1Less logo" width="52" height="52" />
-        1Less
+      <a class="shell-brand" href="/field-pack/" aria-label="Field Trip Kit home">
+        <img src="/1LessMark.png" alt="" width="52" height="52" />
       </a>
       <p class="shell-product">
         Field Trip Kit
@@ -1018,8 +987,8 @@ def render_venue_page(v: dict) -> str:
       <div class="shell-more-wrap">
         <button type="button" class="shell-more" aria-expanded="false" aria-haspopup="true" aria-controls="shell-menu">More</button>
         <div id="shell-menu" class="shell-menu" hidden role="menu">
-          <a href="/field-pack/" role="menuitem">Field Trip Kit<small>Map &amp; outings</small></a>
-          <a href="/dinner" role="menuitem">Dinner<small>Tonight’s meal</small></a>
+          <a href="/field-pack/" role="menuitem">All places<small>Map &amp; outings</small></a>
+          <a href="/field-pack/#about" role="menuitem">About<small>1Less &amp; contact</small></a>
         </div>
       </div>
     </header>
@@ -1093,8 +1062,8 @@ def render_venue_page(v: dict) -> str:
     <footer class="site-footer site-footer-slim no-print">
       <p>
         <a href="/field-pack/">All places</a> ·
-        <strong>1Less</strong> · Field Trip Kit ·
-        <a href="/dinner">Dinner</a>
+        <strong>Field Trip Kit</strong> ·
+        <a href="/field-pack/#about">About</a>
       </p>
     </footer>
   </div>

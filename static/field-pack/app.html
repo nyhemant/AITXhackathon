@@ -12,14 +12,13 @@
     <title>List &amp; hunt · Field Trip Kit · 1Less</title>
     <base href="/field-pack/" />
     <link rel="stylesheet" href="/shell/shell.css?v=5" />
-    <link rel="stylesheet" href="/field-pack/css/styles.css?v=27" />
+    <link rel="stylesheet" href="/field-pack/css/styles.css?v=28" />
   </head>
   <body class="app-body">
     <div class="app app-outing">
       <header class="oneless-shell no-print" data-product="bdo">
-        <a class="shell-brand" href="/">
-          <img src="/1LessMark.png" alt="1Less" width="52" height="52" />
-          1Less
+        <a class="shell-brand" href="/field-pack/" aria-label="Field Trip Kit home">
+          <img src="/1LessMark.png" alt="" width="52" height="52" />
         </a>
         <p class="shell-product">
           Field Trip Kit
@@ -28,14 +27,14 @@
         <div class="shell-more-wrap">
           <button type="button" class="shell-more" aria-expanded="false" aria-haspopup="true" aria-controls="shell-menu">More</button>
           <div id="shell-menu" class="shell-menu" hidden role="menu">
-            <a href="/" role="menuitem">Field Trip Kit<small>Map &amp; outings</small></a>
-            <a href="/dinner" role="menuitem">Dinner<small>Tonight’s meal</small></a>
+            <a href="/field-pack/" role="menuitem">All places<small>Map &amp; outings</small></a>
+            <a href="/field-pack/#about" role="menuitem">About<small>1Less &amp; contact</small></a>
           </div>
         </div>
       </header>
 
       <nav class="app-nav no-print" aria-label="Outing">
-        <a class="app-nav-back" href="/">← Map &amp; places</a>
+        <a class="app-nav-back" href="/field-pack/">← Map &amp; places</a>
         <p id="brand-sub" class="app-nav-context">List &amp; hunt</p>
         <button type="button" id="btn-back" class="btn btn-ghost app-nav-list hidden">← Back to list</button>
       </nav>
@@ -44,7 +43,7 @@
         <strong>Nice work! 🌟</strong>
         <p>Print the hunt again anytime, or go back to the list.</p>
         <div class="win-actions">
-          <button type="button" id="btn-win-print" class="btn btn-primary">One-page hunt to print</button>
+          <button type="button" id="btn-win-print" class="btn btn-primary">Print your mission →</button>
           <button type="button" id="btn-win-list" class="btn btn-secondary">Back to list</button>
         </div>
       </div>
@@ -55,25 +54,25 @@
           <p class="venue-chip" id="outing-venue-chip">📍 Place</p>
           <h1 id="outing-heading">Your place</h1>
           <p id="outing-blurb" class="lead tight">
-            Print the treasure hunt for your bag. The cards below are things to find — tap one later for optional tips.
+            Print your mission from the place page (age + time). Cards below are stops — tap one for talk prompts, photos, or a live cam.
           </p>
           <div class="action-row primary-actions">
             <button type="button" id="btn-treasure" class="btn btn-primary btn-big btn-print">
-              One-page hunt to print
+              Print your mission →
             </button>
             <button type="button" id="btn-sample-qa" class="btn btn-secondary btn-big btn-print">
               Try a sample card
             </button>
           </div>
           <p id="sample-qa-hint" class="submit-hint outing-hint sample-qa-hint">
-            Try one top-pick Q&amp;A card first — then open more animals below.
+            Sample card is one animal to try on screen — mission print is on the place page.
           </p>
           <div class="action-row secondary-actions">
             <button type="button" id="btn-share-link" class="btn btn-ghost">Copy link</button>
             <a id="btn-zoo-site" class="btn btn-ghost" href="#" target="_blank" rel="noopener">Official website</a>
           </div>
           <p class="submit-hint outing-hint">
-            Phone won’t print? Use a computer or AirPrint.
+            No printer? Open the mission on your phone and keep the screen with you — or print from a computer later.
           </p>
           <p id="share-link-status" class="share-status" hidden>Link copied</p>
         </section>
@@ -88,8 +87,8 @@
           </div>
         </div>
 
-        <h2 class="section-title" id="outing-grid-heading">Things to find</h2>
-        <p class="section-sub" id="outing-grid-sub">On-site checklist · tap a card for optional Q&amp;A</p>
+        <h2 class="section-title" id="outing-grid-heading">Stops</h2>
+        <p class="section-sub" id="outing-grid-sub">Tap a card for talk prompts, photos, or a live cam</p>
         <div id="outing-grid" class="animal-grid"></div>
         <p id="outing-empty" class="empty-note hidden">Turn on at least one item under Customize list.</p>
       </main>
@@ -147,7 +146,7 @@
       </main>
 
       <footer class="site-footer site-footer-slim no-print">
-        <p><a href="/">← Pick another place</a> · Field Trip Kit · 1Less</p>
+        <p><a href="/field-pack/">← All places</a> · Field Trip Kit</p>
       </footer>
     </div>
 
@@ -158,6 +157,6 @@
     <script src="/field-pack/js/catalog.js?v=23"></script>
     <script src="/field-pack/js/print-maps.js?v=2"></script>
     <script src="/field-pack/js/print-kit.js?v=9"></script>
-    <script src="/field-pack/js/app.js?v=27"></script>
+    <script src="/field-pack/js/app.js?v=28"></script>
   </body>
 </html>

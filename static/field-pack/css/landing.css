@@ -1504,6 +1504,121 @@
   max-width: 1100px;
 }
 
+/* Place typeahead above map */
+.place-search-wrap {
+  position: relative;
+  margin: 0 0 12px;
+  max-width: 28rem;
+}
+.place-search-label {
+  display: block;
+  margin: 0 0 6px;
+  font-size: 0.78rem;
+  font-weight: 850;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--teal-deep, #0a4545);
+}
+.place-search-input {
+  width: 100%;
+  box-sizing: border-box;
+  font: inherit;
+  font-weight: 650;
+  font-size: 1rem;
+  padding: 12px 14px;
+  min-height: 48px;
+  border-radius: 14px;
+  border: 1.5px solid rgba(15, 92, 92, 0.2);
+  background: #fff;
+  color: #0a4545;
+  box-shadow: 0 4px 14px rgba(21, 34, 56, 0.06);
+}
+.place-search-input:focus {
+  outline: 2px solid #ffcf5a;
+  outline-offset: 1px;
+  border-color: #0f5c5c;
+}
+.place-search-results {
+  list-style: none;
+  margin: 6px 0 0;
+  padding: 6px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  background: #fff;
+  border-radius: 14px;
+  border: 1.5px solid rgba(15, 92, 92, 0.16);
+  box-shadow: 0 14px 32px rgba(21, 34, 56, 0.14);
+  max-height: min(50vh, 320px);
+  overflow: auto;
+}
+.place-search-hit {
+  display: grid;
+  gap: 2px;
+  width: 100%;
+  text-align: left;
+  border: 0;
+  background: transparent;
+  padding: 10px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+}
+.place-search-hit:hover,
+.place-search-hit:focus-visible {
+  background: #e8f6f0;
+  outline: none;
+}
+.place-search-hit strong {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #0a4545;
+}
+.place-search-hit small {
+  font-size: 0.78rem;
+  font-weight: 650;
+  color: #5a6b82;
+}
+.place-search-empty {
+  padding: 12px;
+  font-weight: 650;
+  color: #5a6b82;
+  font-size: 0.9rem;
+}
+.seo-about {
+  margin: 28px 0 12px;
+  padding: 18px 20px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1.5px solid rgba(15, 92, 92, 0.12);
+  max-width: 40rem;
+}
+.seo-about h2 {
+  margin: 0 0 8px;
+  font-size: 1.15rem;
+  color: #0a4545;
+}
+.seo-about p {
+  margin: 0 0 8px;
+  font-weight: 600;
+  color: #3d4f6f;
+  line-height: 1.45;
+  font-size: 0.95rem;
+}
+.footer-privacy {
+  margin: 8px 0 0;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #6a7d96;
+  line-height: 1.4;
+}
+.footer-dot {
+  opacity: 0.5;
+  margin: 0 0.2em;
+}
+
 /* First-run: copy + print artifact, then story, then few starters, then map */
 .landing-pitch {
   margin: 2px 0 12px;

@@ -765,7 +765,12 @@
   }
 
   // events
-  els.btnTreasure.addEventListener("click", printTreasureHunt);
+  // One print path: venue mission drawer (age/time), not legacy static hunt
+  els.btnTreasure.addEventListener("click", () => {
+    const id = selectedVenueId || defaultVenue;
+    if (!id) return;
+    location.href = `/field-pack/${encodeURIComponent(id)}/#mission`;
+  });
   if (els.btnSampleQa) {
     els.btnSampleQa.addEventListener("click", () => {
       const venue = getVenue(selectedVenueId);
@@ -839,7 +844,12 @@
   }
   els.btnPrint.addEventListener("click", printMissionCard);
   els.btnSubmit.addEventListener("click", submitAnswers);
-  if (els.btnWinPrint) els.btnWinPrint.addEventListener("click", printTreasureHunt);
+  if (els.btnWinPrint) {
+    els.btnWinPrint.addEventListener("click", () => {
+      const id = selectedVenueId || defaultVenue;
+      if (id) location.href = `/field-pack/${encodeURIComponent(id)}/#mission`;
+    });
+  }
   if (els.btnWinList) els.btnWinList.addEventListener("click", () => showOuting(selectedVenueId));
 
   function routeFromHash() {

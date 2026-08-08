@@ -193,6 +193,13 @@
   font-weight: 600;
   color: #3d4f6f;
 }
+.mission-privacy {
+  margin: 4px 0 0;
+  font-size: 0.72rem;
+  font-weight: 650;
+  color: #6a7d96;
+  line-height: 1.3;
+}
 
 .mission-preview {
   min-width: 0;

@@ -325,6 +325,31 @@
   letter-spacing: 0.01em;
   opacity: 0.95;
 }
+.seo-chrome-label {
+  margin: 0 0 2px;
+  font-size: 0.68rem;
+  font-weight: 850;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #5a6b82;
+}
+.seo-print-fallback {
+  margin: 8px 0 0;
+  font-size: 0.82rem;
+  font-weight: 650;
+  color: #5a6b82;
+  line-height: 1.35;
+}
+.footer-privacy {
+  margin: 6px 0 0;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #6a7d96;
+}
+.footer-dot {
+  opacity: 0.5;
+  margin: 0 0.15em;
+}
 .seo-mission-chrome {
   flex: 1 1 12rem;
   min-width: 0;
