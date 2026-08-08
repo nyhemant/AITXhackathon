@@ -1222,21 +1222,17 @@
     const readyN = mapScope === "intl" ? list.filter((p) => p.status === "ready").length : 0;
     let scopeNote;
     if (mapScope === "intl") {
-      scopeNote = `${list.length} places on the world map${readyN ? ` · ${readyN} ready to print` : ""} — pick a pin or use Place. ⟲ resets the view.`;
+      scopeNote = `${list.length} places worldwide${readyN ? ` · ${readyN} ready` : ""}`;
     } else if (mapScope === "top") {
-      scopeNote = `${list.length} popular places on the map`;
+      scopeNote = `${list.length} popular places`;
     } else {
-      scopeNote = `${list.length} places on the map`;
+      scopeNote = `${list.length} places`;
     }
     detail.className = "pin-detail empty";
     detail.innerHTML = `
-      <p class="pin-detail-kicker">What you get</p>
-      <h3>Pick a place</h3>
-      <p class="pd-hint">
-        Tap a pin (or use the lists under the map). You’ll get a <strong>short kid list</strong> and a
-        <strong>printable treasure hunt</strong> for that zoo, aquarium, or museum.
-      </p>
-      <p class="pd-meta">${escapeHtml(scopeNote)}. A number on a pin means several places share that spot — tap it to choose.</p>
+      <h3>Tap a pin</h3>
+      <p class="pd-hint">Short list + one-page hunt for that place.</p>
+      <p class="pd-meta">${escapeHtml(scopeNote)}. Numbered pins share a spot — tap to choose.</p>
     `;
   }
 
