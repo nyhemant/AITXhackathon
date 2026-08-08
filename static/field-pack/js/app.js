@@ -1325,12 +1325,12 @@
       const prompts = pack.prompts;
       const cardCls =
         qaAge === "alpha" ? " floor-prompt-alpha" : qaAge === "bonus" ? " floor-prompt-bonus" : "";
-      const mark = qaAge === "alpha" ? "◆" : qaAge === "bonus" ? "★" : null;
+      // Always 1–6 — Bonus/Alpha is clear from the talk-level filter above
       promptsEl.innerHTML = prompts
         .map(
           (text, i) =>
             `<div class="floor-prompt-card${cardCls}"><span class="floor-prompt-n">${
-              mark || i + 1
+              i + 1
             }</span><p>${escapeHtml(text)}</p></div>`
         )
         .join("");
