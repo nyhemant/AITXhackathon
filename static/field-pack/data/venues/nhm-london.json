@@ -11,7 +11,7 @@
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "London NHM \u2014 free Hintze Hall wow and dinos.",
+  "tagline": "London NHM — free Hintze Hall wow and dinos.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Free entry; special exhibits ticketed.",
@@ -23,7 +23,7 @@
     {
       "id": "sci_dinosaur",
       "label": "Dinosaur hall",
-      "emoji": "\ud83e\udd96",
+      "emoji": "🦖",
       "one_liner": "Dinos are the magnet.",
       "tags": [
         "wow",
@@ -45,7 +45,7 @@
     {
       "id": "sci_mammal_hall",
       "label": "Animal / mammal hall",
-      "emoji": "\ud83e\udd8c",
+      "emoji": "🦌",
       "one_liner": "Mammals and giant life.",
       "tags": [
         "wow"
@@ -66,7 +66,7 @@
     {
       "id": "sci_planet",
       "label": "Planet / space hall",
-      "emoji": "\ud83e\ude90",
+      "emoji": "🪐",
       "one_liner": "Earth galleries.",
       "tags": [
         "wow"
@@ -87,7 +87,7 @@
     {
       "id": "sci_hands_on",
       "label": "Hands-on lab",
-      "emoji": "\ud83d\udd2c",
+      "emoji": "🔬",
       "one_liner": "Hands-on when open.",
       "tags": [
         "hands"
@@ -108,7 +108,7 @@
     {
       "id": "cm_free_explore",
       "label": "Free explore",
-      "emoji": "\ud83e\udded",
+      "emoji": "🧭",
       "one_liner": "They choose next.",
       "tags": [
         "play"
@@ -129,8 +129,8 @@
     {
       "id": "sci_rainforest",
       "label": "Rainforest dome",
-      "emoji": "\ud83c\udf3f",
-      "one_liner": "Warm, green, and full of life \u2014 look for layers of plants.",
+      "emoji": "🌿",
+      "one_liner": "Warm, green, and full of life — look for layers of plants.",
       "tags": [
         "wow",
         "rest",
@@ -152,7 +152,7 @@
     {
       "id": "sci_aquarium_zone",
       "label": "Aquarium zone",
-      "emoji": "\ud83d\udc20",
+      "emoji": "🐠",
       "one_liner": "Tanks and swimmers inside a bigger museum day.",
       "tags": [
         "wow",
@@ -174,8 +174,8 @@
     {
       "id": "cm_imaginarium",
       "label": "Imaginarium",
-      "emoji": "\u2728",
-      "one_liner": "Multi-sensory world \u2014 explore, notice, imagine.",
+      "emoji": "✨",
+      "one_liner": "Multi-sensory world — explore, notice, imagine.",
       "tags": [
         "wow",
         "outdoor"
@@ -213,5 +213,6 @@
     "sci_mammal_hall",
     "sci_planet"
   ],
-  "research_notes": "R2b 2026-08-07 \u00b7 map-page 2026-08-07"
+  "research_notes": "R2b 2026-08-07 · map-page 2026-08-07",
+  "list_confidence": "partial"
 }

@@ -11,10 +11,10 @@
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "One of America\u2019s great children\u2019s museums \u2014 huge; choose two wings max.",
+  "tagline": "One of America’s great children’s museums — huge; choose two wings max.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Timed entry common \u2014 book ahead on childrensmuseum.org.",
+    "ticket_note": "Timed entry common — book ahead on childrensmuseum.org.",
     "transit_note": "Downtown Indianapolis; parking garage options.",
     "energy_note": "indoor",
     "best_start": "Pick one physical wing + one make/play wing; schedule a snack."
@@ -23,8 +23,8 @@
     {
       "id": "cm_waterfall",
       "label": "Waterfall play",
-      "emoji": "\ud83d\udca7",
-      "one_liner": "Water play when available \u2014 pack dry clothes.",
+      "emoji": "💧",
+      "one_liner": "Water play when available — pack dry clothes.",
       "tags": [
         "water",
         "play"
@@ -45,7 +45,7 @@
     {
       "id": "cm_imaginarium",
       "label": "Imaginarium",
-      "emoji": "\u2728",
+      "emoji": "✨",
       "one_liner": "Kid-run stories and roleles.",
       "tags": [
         "play",
@@ -67,7 +67,7 @@
     {
       "id": "cm_makery",
       "label": "Creative Makery",
-      "emoji": "\ud83d\udd27",
+      "emoji": "🔧",
       "one_liner": "Build and create stations.",
       "tags": [
         "hands",
@@ -89,8 +89,8 @@
     {
       "id": "sci_dinosaur",
       "label": "Dinosaur hall",
-      "emoji": "\ud83e\udd96",
-      "one_liner": "Dino wow if that\u2019s your wing pick.",
+      "emoji": "🦖",
+      "one_liner": "Dino wow if that’s your wing pick.",
       "tags": [
         "wow",
         "read"
@@ -111,7 +111,7 @@
     {
       "id": "cm_toddler_garden",
       "label": "Toddler Garden",
-      "emoji": "\ud83c\udf31",
+      "emoji": "🌱",
       "one_liner": "Softer spaces for toddlers.",
       "tags": [
         "play",
@@ -133,8 +133,8 @@
     {
       "id": "cm_outdoor",
       "label": "Outdoor Area",
-      "emoji": "\ud83c\udf33",
-      "one_liner": "Outside play \u2014 waterfall, nature, big body movement.",
+      "emoji": "🌳",
+      "one_liner": "Outside play — waterfall, nature, big body movement.",
       "tags": [
         "wow",
         "hands",
@@ -156,8 +156,8 @@
     {
       "id": "cm_woven",
       "label": "Woven Wonders",
-      "emoji": "\ud83e\uddd7",
-      "one_liner": "Colorful climbing structure \u2014 art you can climb!",
+      "emoji": "🧗",
+      "one_liner": "Colorful climbing structure — art you can climb!",
       "tags": [
         "wow",
         "hands",
@@ -179,7 +179,7 @@
     {
       "id": "cm_art_lab",
       "label": "Art Lab",
-      "emoji": "\ud83c\udfa8",
+      "emoji": "🎨",
       "one_liner": "Come-and-go art and reading activities.",
       "tags": [
         "wow",
@@ -202,8 +202,8 @@
     {
       "id": "cm_free_explore",
       "label": "Free explore",
-      "emoji": "\ud83e\udded",
-      "one_liner": "Their choice path \u2014 whatever pulled them in!",
+      "emoji": "🧭",
+      "one_liner": "Their choice path — whatever pulled them in!",
       "tags": [
         "wow",
         "outdoor"
@@ -224,8 +224,8 @@
     {
       "id": "sci_hands_on",
       "label": "Hands-on lab",
-      "emoji": "\ud83d\udd2c",
-      "one_liner": "Touch, test, build \u2014 science you can try.",
+      "emoji": "🔬",
+      "one_liner": "Touch, test, build — science you can try.",
       "tags": [
         "wow",
         "hands",
@@ -250,7 +250,7 @@
     "visitor_map_url": "/field-pack/media/maps/indy-childrens-museum.jpg",
     "visitor_map_page": "https://www.childrensmuseum.org/",
     "visitor_map_kind": "image",
-    "map_attribution": "Visit \u00b7 The Children\u2019s Museum of Indianapolis",
+    "map_attribution": "Visit · The Children’s Museum of Indianapolis",
     "print_map": "/field-pack/media/maps/indy-childrens-museum.jpg"
   },
   "parent_script": [
@@ -264,5 +264,6 @@
     "cm_imaginarium",
     "cm_makery"
   ],
-  "research_notes": "R1 hybrid 2026-08-07"
+  "research_notes": "R1 hybrid 2026-08-07",
+  "list_confidence": "partial"
 }

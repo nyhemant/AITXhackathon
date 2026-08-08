@@ -11,10 +11,10 @@
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Pittsburgh dinos and gems \u2014 classic natural history without Mall crowds.",
+  "tagline": "Pittsburgh dinos and gems — classic natural history without Mall crowds.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Combined tickets with art sometimes \u2014 check carnegiemnh.org.",
+    "ticket_note": "Combined tickets with art sometimes — check carnegiemnh.org.",
     "transit_note": "Oakland museums cluster.",
     "energy_note": "indoor",
     "best_start": "Dinosaurs, then kid pace."
@@ -23,7 +23,7 @@
     {
       "id": "sci_dinosaur",
       "label": "Dinosaur hall",
-      "emoji": "\ud83e\udd96",
+      "emoji": "🦖",
       "one_liner": "Fossil wow is the draw.",
       "tags": [
         "wow",
@@ -45,7 +45,7 @@
     {
       "id": "sci_mammal_hall",
       "label": "Animal / mammal hall",
-      "emoji": "\ud83e\udd8c",
+      "emoji": "🦌",
       "one_liner": "Habitat stories.",
       "tags": [
         "wow"
@@ -66,7 +66,7 @@
     {
       "id": "sci_hands_on",
       "label": "Hands-on lab",
-      "emoji": "\ud83d\udd2c",
+      "emoji": "🔬",
       "one_liner": "Hands-on when open.",
       "tags": [
         "hands"
@@ -87,7 +87,7 @@
     {
       "id": "sci_planet",
       "label": "Planet / space hall",
-      "emoji": "\ud83e\ude90",
+      "emoji": "🪐",
       "one_liner": "Rocks and space corners.",
       "tags": [
         "wow"
@@ -108,7 +108,7 @@
     {
       "id": "cm_free_explore",
       "label": "Free explore",
-      "emoji": "\ud83e\udded",
+      "emoji": "🧭",
       "one_liner": "They choose next.",
       "tags": [
         "play"
@@ -129,8 +129,8 @@
     {
       "id": "cm_imaginarium",
       "label": "Imaginarium",
-      "emoji": "\u2728",
-      "one_liner": "Multi-sensory world \u2014 explore, notice, imagine.",
+      "emoji": "✨",
+      "one_liner": "Multi-sensory world — explore, notice, imagine.",
       "tags": [
         "wow",
         "outdoor"
@@ -151,8 +151,8 @@
     {
       "id": "sci_rainforest",
       "label": "Rainforest dome",
-      "emoji": "\ud83c\udf3f",
-      "one_liner": "Warm, green, and full of life \u2014 look for layers of plants.",
+      "emoji": "🌿",
+      "one_liner": "Warm, green, and full of life — look for layers of plants.",
       "tags": [
         "wow",
         "rest",
@@ -174,7 +174,7 @@
     {
       "id": "explore_7",
       "label": "Kid choice stop",
-      "emoji": "\ud83e\udded",
+      "emoji": "🧭",
       "one_liner": "They pick what to see next for five minutes.",
       "tags": [
         "play"
@@ -198,7 +198,7 @@
     "visitor_map_url": "/field-pack/media/maps/carnegie-natural-history.jpg",
     "visitor_map_page": "https://carnegiemnh.org/map/",
     "visitor_map_kind": "image",
-    "map_attribution": "Official map \u00b7 Carnegie Museum of Natural History",
+    "map_attribution": "Official map · Carnegie Museum of Natural History",
     "print_map": "/field-pack/media/maps/carnegie-natural-history.jpg"
   },
   "parent_script": [
@@ -212,5 +212,6 @@
     "sci_mammal_hall",
     "sci_hands_on"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 \u00b7 map-page 2026-08-07"
+  "research_notes": "R2 hybrid 2026-08-07 · map-page 2026-08-07",
+  "list_confidence": "partial"
 }

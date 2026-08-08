@@ -11,18 +11,18 @@
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "SUE the T. rex leads Chicago\u2019s natural history hit list.",
+  "tagline": "SUE the T. rex leads Chicago’s natural history hit list.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Museum Campus with Shedd and Adler \u2014 don\u2019t overstack.",
+    "ticket_note": "Museum Campus with Shedd and Adler — don’t overstack.",
     "transit_note": "Roosevelt CTA; walk the campus."
   },
   "items": [
     {
       "id": "sci_dinosaur",
       "label": "Dinosaur hall",
-      "emoji": "\ud83e\udd96",
-      "one_liner": "SUE the T. rex \u2014 still the superstar.",
+      "emoji": "🦖",
+      "one_liner": "SUE the T. rex — still the superstar.",
       "tags": [
         "wow",
         "read"
@@ -43,7 +43,7 @@
     {
       "id": "sci_mammal_hall",
       "label": "Animal / mammal hall",
-      "emoji": "\ud83e\udd8c",
+      "emoji": "🦌",
       "one_liner": "Giant animal displays and dioramas.",
       "tags": [
         "wow"
@@ -64,7 +64,7 @@
     {
       "id": "sci_hands_on",
       "label": "Hands-on lab",
-      "emoji": "\ud83d\udd2c",
+      "emoji": "🔬",
       "one_liner": "PlayLab for younger kids when included/open.",
       "tags": [
         "hands",
@@ -86,7 +86,7 @@
     {
       "id": "sci_planet",
       "label": "Planet / space hall",
-      "emoji": "\ud83e\ude90",
+      "emoji": "🪐",
       "one_liner": "Meteorites and space stories upstairs/downstairs loops.",
       "tags": [
         "wow"
@@ -107,7 +107,7 @@
     {
       "id": "sci_rainforest",
       "label": "Rainforest dome",
-      "emoji": "\ud83c\udf3f",
+      "emoji": "🌿",
       "one_liner": "Scale-shifting life exhibits if on your ticket path.",
       "tags": [
         "wow"
@@ -128,8 +128,8 @@
     {
       "id": "cm_free_explore",
       "label": "Free explore",
-      "emoji": "\ud83e\udded",
-      "one_liner": "Choose one \u201cwow room\u201d and sketch a favorite.",
+      "emoji": "🧭",
+      "one_liner": "Choose one “wow room” and sketch a favorite.",
       "tags": [
         "play"
       ],
@@ -149,7 +149,7 @@
     {
       "id": "sci_aquarium_zone",
       "label": "Aquarium zone",
-      "emoji": "\ud83d\udc20",
+      "emoji": "🐠",
       "one_liner": "Aquatic cases and models along Evolving Planet edges.",
       "tags": [
         "water"
@@ -170,7 +170,7 @@
     {
       "id": "cm_art_lab",
       "label": "Art Lab",
-      "emoji": "\ud83c\udfa8",
+      "emoji": "🎨",
       "one_liner": "Make-and-take moments when offered.",
       "tags": [
         "hands",
@@ -195,7 +195,7 @@
     "visitor_map_url": "/field-pack/media/maps/field-museum.jpg",
     "visitor_map_page": "https://www.datocms-assets.com/44232/1775514218-0d8e6bf6-237c-47e7-9dbe-1784c109f669.webp",
     "visitor_map_kind": "image",
-    "map_attribution": "Official site \u00b7 Field Museum",
+    "map_attribution": "Official site · Field Museum",
     "print_map": "/field-pack/media/maps/field-museum.jpg"
   },
   "parent_script": [
@@ -204,5 +204,6 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "research_notes": "map-img 2026-08-07"
+  "research_notes": "map-img 2026-08-07",
+  "list_confidence": "partial"
 }

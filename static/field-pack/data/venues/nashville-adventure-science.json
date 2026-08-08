@@ -11,7 +11,7 @@
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Nashville Adventure Science \u2014 climbing + experiments downtown.",
+  "tagline": "Nashville Adventure Science — climbing + experiments downtown.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Check adventuresci.org tickets.",
@@ -23,7 +23,7 @@
     {
       "id": "sci_hands_on",
       "label": "Hands-on lab",
-      "emoji": "\ud83d\udd2c",
+      "emoji": "🔬",
       "one_liner": "Experiments and interactives.",
       "tags": [
         "hands",
@@ -46,7 +46,7 @@
     {
       "id": "cm_outdoor",
       "label": "Outdoor Area",
-      "emoji": "\ud83c\udf33",
+      "emoji": "🌳",
       "one_liner": "Big-body play energy.",
       "tags": [
         "play",
@@ -68,7 +68,7 @@
     {
       "id": "sci_planet",
       "label": "Planet / space hall",
-      "emoji": "\ud83e\ude90",
+      "emoji": "🪐",
       "one_liner": "Space corners if present.",
       "tags": [
         "wow"
@@ -89,7 +89,7 @@
     {
       "id": "cm_makery",
       "label": "Creative Makery",
-      "emoji": "\ud83d\udd27",
+      "emoji": "🔧",
       "one_liner": "Build something small.",
       "tags": [
         "hands"
@@ -110,7 +110,7 @@
     {
       "id": "cm_toddler_garden",
       "label": "Toddler Garden",
-      "emoji": "\ud83c\udf31",
+      "emoji": "🌱",
       "one_liner": "Toddler-friendly zones.",
       "tags": [
         "rest",
@@ -132,8 +132,8 @@
     {
       "id": "sci_dinosaur",
       "label": "Dinosaur hall",
-      "emoji": "\ud83e\udd96",
-      "one_liner": "Bones, giants, and deep time \u2014 look up!",
+      "emoji": "🦖",
+      "one_liner": "Bones, giants, and deep time — look up!",
       "tags": [
         "wow",
         "read"
@@ -154,8 +154,8 @@
     {
       "id": "cm_imaginarium",
       "label": "Imaginarium",
-      "emoji": "\u2728",
-      "one_liner": "Multi-sensory world \u2014 explore, notice, imagine.",
+      "emoji": "✨",
+      "one_liner": "Multi-sensory world — explore, notice, imagine.",
       "tags": [
         "wow",
         "outdoor"
@@ -176,8 +176,8 @@
     {
       "id": "cm_free_explore",
       "label": "Free explore",
-      "emoji": "\ud83e\udded",
-      "one_liner": "Their choice path \u2014 whatever pulled them in!",
+      "emoji": "🧭",
+      "one_liner": "Their choice path — whatever pulled them in!",
       "tags": [
         "wow",
         "outdoor"
@@ -198,8 +198,8 @@
     {
       "id": "sci_shuttle",
       "label": "Space shuttle / orbiter",
-      "emoji": "\ud83d\udef0\ufe0f",
-      "one_liner": "A real flying machine that went to space \u2014 walk around it.",
+      "emoji": "🛰️",
+      "one_liner": "A real flying machine that went to space — walk around it.",
       "tags": [
         "wow",
         "read"
@@ -220,7 +220,7 @@
     {
       "id": "sci_rocket",
       "label": "Rockets & launch",
-      "emoji": "\ud83d\ude80",
+      "emoji": "🚀",
       "one_liner": "Tall rockets and the power of liftoff.",
       "tags": [
         "wow",
@@ -245,7 +245,7 @@
     "visitor_map_url": "",
     "visitor_map_page": "https://www.adventuresci.org/wp-content/uploads/2025/07/ASC2025_Map.jpg",
     "visitor_map_kind": "page",
-    "map_attribution": "Official map \u00b7 Adventure Science Center"
+    "map_attribution": "Official map · Adventure Science Center"
   },
   "parent_script": [
     "Bathroom first",
@@ -258,5 +258,6 @@
     "cm_outdoor",
     "sci_planet"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 \u00b7 map-page 2026-08-07 \u00b7 web-map 2026-08-07"
+  "research_notes": "R2 hybrid 2026-08-07 · map-page 2026-08-07 · web-map 2026-08-07",
+  "list_confidence": "partial"
 }

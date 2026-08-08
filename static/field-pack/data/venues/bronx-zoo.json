@@ -11,18 +11,18 @@
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "NYC\u2019s big zoo day \u2014 Congo gorillas, Madagascar, and tiger mountain energy.",
+  "tagline": "NYC’s big zoo day — Congo gorillas, Madagascar, and tiger mountain energy.",
   "practical": {
     "typical_duration": "half to full day",
-    "ticket_note": "Pay-what-you-wish Wednesdays historically \u2014 confirm current rules.",
+    "ticket_note": "Pay-what-you-wish Wednesdays historically — confirm current rules.",
     "transit_note": "2 train to Bronx Park East or BxM11 bus."
   },
   "items": [
     {
       "id": "western_lowland_gorilla",
       "label": "Western lowland gorilla",
-      "emoji": "\ud83e\udd8d",
-      "one_liner": "Immersive gorilla habitat \u2014 a Bronx signature.",
+      "emoji": "🦍",
+      "one_liner": "Immersive gorilla habitat — a Bronx signature.",
       "tags": [
         "primates",
         "outdoor",
@@ -39,12 +39,13 @@
         "question": "What did you notice about the Western lowland gorilla?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "western-lowland-gorilla"
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "template"
     },
     {
       "id": "sumatran_tiger",
       "label": "Sumatran tiger",
-      "emoji": "\ud83d\udc2f",
+      "emoji": "🐯",
       "one_liner": "Tigers at eye level through glass.",
       "tags": [
         "big-cats",
@@ -62,12 +63,13 @@
         "question": "What did you notice about the Sumatran tiger?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sumatran-tiger"
+      "catalog_id": "sumatran-tiger",
+      "presence": "template"
     },
     {
       "id": "african_lion",
       "label": "African lion",
-      "emoji": "\ud83e\udd81",
+      "emoji": "🦁",
       "one_liner": "Lions on the plains overlook.",
       "tags": [
         "big-cats",
@@ -84,12 +86,13 @@
         "question": "What did you notice about the African lion?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "african-lion"
+      "catalog_id": "african-lion",
+      "presence": "template"
     },
     {
       "id": "african_elephant",
       "label": "African elephant",
-      "emoji": "\ud83d\udc18",
+      "emoji": "🐘",
       "one_liner": "Elephants when on the walking route.",
       "tags": [
         "big",
@@ -106,12 +109,13 @@
         "question": "What did you notice about the African elephant?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "african-elephant"
+      "catalog_id": "african-elephant",
+      "presence": "template"
     },
     {
       "id": "reticulated_giraffe",
       "label": "Reticulated giraffe",
-      "emoji": "\ud83e\udd92",
+      "emoji": "🦒",
       "one_liner": "Giraffes above the acacias.",
       "tags": [
         "tall",
@@ -128,12 +132,13 @@
         "question": "What did you notice about the Reticulated giraffe?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "reticulated-giraffe"
+      "catalog_id": "reticulated-giraffe",
+      "presence": "template"
     },
     {
       "id": "ring_tailed_lemur",
       "label": "Ring-tailed lemur",
-      "emoji": "\ud83d\udc12",
+      "emoji": "🐒",
       "one_liner": "Lemurs hopping through the Madagascar building.",
       "tags": [
         "primates",
@@ -151,12 +156,13 @@
         "question": "What did you notice about the Ring-tailed lemur?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "ring-tailed-lemur"
+      "catalog_id": "ring-tailed-lemur",
+      "presence": "template"
     },
     {
       "id": "nile_hippo",
       "label": "Nile hippo",
-      "emoji": "\ud83e\udd9b",
+      "emoji": "🦛",
       "one_liner": "Hippos near water features.",
       "tags": [
         "big",
@@ -173,12 +179,13 @@
         "question": "What did you notice about the Nile hippo?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "nile-hippo"
+      "catalog_id": "nile-hippo",
+      "presence": "template"
     },
     {
       "id": "zebra",
       "label": "Zebra",
-      "emoji": "\ud83e\udd93",
+      "emoji": "🦓",
       "one_liner": "Stripes mixed with the plains herds.",
       "tags": [
         "pattern",
@@ -195,12 +202,13 @@
         "question": "What did you notice about the Zebra?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "zebra"
+      "catalog_id": "zebra",
+      "presence": "template"
     },
     {
       "id": "red_panda",
       "label": "Red panda",
-      "emoji": "\ud83e\udd8a",
+      "emoji": "🦊",
       "one_liner": "Red panda fluff if scheduled on-view.",
       "tags": [
         "climb",
@@ -217,12 +225,13 @@
         "question": "What did you notice about the Red panda?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "red-panda"
+      "catalog_id": "red-panda",
+      "presence": "template"
     },
     {
       "id": "galapagos_tortoise",
-      "label": "Gal\u00e1pagos tortoise",
-      "emoji": "\ud83d\udc22",
+      "label": "Galápagos tortoise",
+      "emoji": "🐢",
       "one_liner": "Giant tortoises for a slow moment.",
       "tags": [
         "slow",
@@ -236,10 +245,11 @@
       ],
       "zone": "Reptiles",
       "qa_card": {
-        "question": "What did you notice about the Gal\u00e1pagos tortoise?",
+        "question": "What did you notice about the Galápagos tortoise?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "galapagos-tortoise"
+      "catalog_id": "galapagos-tortoise",
+      "presence": "template"
     }
   ],
   "content_mode": "curated",
@@ -247,7 +257,7 @@
     "visitor_map_url": "/field-pack/media/maps/bronx-zoo.jpg",
     "visitor_map_page": "https://bronxzoo.com/map",
     "visitor_map_kind": "image",
-    "map_attribution": "Official site \u00b7 Bronx Zoo",
+    "map_attribution": "Official site · Bronx Zoo",
     "print_map": "/field-pack/media/maps/bronx-zoo.jpg"
   },
   "parent_script": [
@@ -256,5 +266,6 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "research_notes": "map-img 2026-08-07 \u00b7 map-page 2026-08-07"
+  "research_notes": "map-img 2026-08-07 · map-page 2026-08-07",
+  "list_confidence": "template"
 }

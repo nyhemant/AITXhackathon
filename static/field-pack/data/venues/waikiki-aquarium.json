@@ -11,7 +11,7 @@
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Tiny ocean gem by the water \u2014 Hawaiian reef life, not a mega-aquarium.",
+  "tagline": "Tiny ocean gem by the water — Hawaiian reef life, not a mega-aquarium.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Small campus; check hours.",
@@ -23,7 +23,7 @@
     {
       "id": "shark",
       "label": "Shark",
-      "emoji": "\ud83e\udd88",
+      "emoji": "🦈",
       "one_liner": "Sharks in island tanks.",
       "tags": [
         "water",
@@ -40,12 +40,13 @@
         "question": "What did you notice about the Shark?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "shark"
+      "catalog_id": "shark",
+      "presence": "template"
     },
     {
       "id": "sea_turtle",
       "label": "Sea turtle",
-      "emoji": "\ud83d\udc22",
+      "emoji": "🐢",
       "one_liner": "Honu energy when on view.",
       "tags": [
         "water",
@@ -63,12 +64,13 @@
         "question": "What did you notice about the Sea turtle?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sea-turtle"
+      "catalog_id": "sea-turtle",
+      "presence": "template"
     },
     {
       "id": "jellyfish",
       "label": "Jellyfish",
-      "emoji": "\ud83c\udf90",
+      "emoji": "🎐",
       "one_liner": "Soft glow.",
       "tags": [
         "water",
@@ -85,12 +87,13 @@
         "question": "What did you notice about the Jellyfish?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "jellyfish"
+      "catalog_id": "jellyfish",
+      "presence": "template"
     },
     {
       "id": "octopus",
       "label": "Octopus",
-      "emoji": "\ud83d\udc19",
+      "emoji": "🐙",
       "one_liner": "Look carefully.",
       "tags": [
         "water",
@@ -107,12 +110,13 @@
         "question": "What did you notice about the Octopus?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "octopus"
+      "catalog_id": "octopus",
+      "presence": "template"
     },
     {
       "id": "clownfish",
       "label": "Clownfish",
-      "emoji": "\ud83d\udc20",
+      "emoji": "🐠",
       "one_liner": "Bright reef colors.",
       "tags": [
         "water",
@@ -129,13 +133,14 @@
         "question": "What did you notice about the Clownfish?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "clownfish"
+      "catalog_id": "clownfish",
+      "presence": "template"
     },
     {
       "id": "stingray",
       "label": "Stingray",
-      "emoji": "\u5c04\u7ebf",
-      "one_liner": "Flat swimmer \u2014 often in touch pools (gentle hands!).",
+      "emoji": "射线",
+      "one_liner": "Flat swimmer — often in touch pools (gentle hands!).",
       "tags": [
         "wow",
         "water"
@@ -151,12 +156,13 @@
         "question": "What did you notice about the Stingray?",
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
-      "catalog_id": "stingray"
+      "catalog_id": "stingray",
+      "presence": "template"
     },
     {
       "id": "seahorse",
       "label": "Seahorse",
-      "emoji": "\ud83c\udf0a",
+      "emoji": "🌊",
       "one_liner": "Tiny upright swimmer that holds on with its tail.",
       "tags": [
         "wow",
@@ -173,13 +179,14 @@
         "question": "What did you notice about the Seahorse?",
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
-      "catalog_id": "seahorse"
+      "catalog_id": "seahorse",
+      "presence": "template"
     },
     {
       "id": "eel",
       "label": "Eel",
-      "emoji": "\ud83d\udc0d",
-      "one_liner": "Long snaky fish \u2014 loves rocky hidey-holes.",
+      "emoji": "🐍",
+      "one_liner": "Long snaky fish — loves rocky hidey-holes.",
       "tags": [
         "wow",
         "water"
@@ -195,12 +202,13 @@
         "question": "What did you notice about the Eel?",
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
-      "catalog_id": "eel"
+      "catalog_id": "eel",
+      "presence": "template"
     },
     {
       "id": "crab",
       "label": "Crab",
-      "emoji": "\ud83e\udd80",
+      "emoji": "🦀",
       "one_liner": "Sideways walker with a hard shell and pinchers.",
       "tags": [
         "wow",
@@ -217,13 +225,14 @@
         "question": "What did you notice about the Crab?",
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
-      "catalog_id": "crab"
+      "catalog_id": "crab",
+      "presence": "template"
     },
     {
       "id": "starfish",
       "label": "Sea star",
-      "emoji": "\u2b50",
-      "one_liner": "Star-shaped ocean friend \u2014 often in touch tanks.",
+      "emoji": "⭐",
+      "one_liner": "Star-shaped ocean friend — often in touch tanks.",
       "tags": [
         "wow",
         "outdoor",
@@ -241,13 +250,14 @@
         "question": "What did you notice about the Sea star?",
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
-      "catalog_id": "starfish"
+      "catalog_id": "starfish",
+      "presence": "template"
     },
     {
       "id": "freshwater_fish",
       "label": "River / lake fish",
-      "emoji": "\ud83d\udc1f",
-      "one_liner": "Fish that live in fresh water \u2014 rivers, lakes, ponds.",
+      "emoji": "🐟",
+      "one_liner": "Fish that live in fresh water — rivers, lakes, ponds.",
       "tags": [
         "wow",
         "water"
@@ -263,13 +273,14 @@
         "question": "What did you notice about the River / lake fish?",
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
-      "catalog_id": "freshwater-fish"
+      "catalog_id": "freshwater-fish",
+      "presence": "template"
     },
     {
       "id": "asian_small_clawed_otter",
       "label": "Asian small-clawed otter",
-      "emoji": "\ud83e\udda6",
-      "one_liner": "Playful swimmer \u2014 smallest otter.",
+      "emoji": "🦦",
+      "one_liner": "Playful swimmer — smallest otter.",
       "tags": [
         "wow",
         "water",
@@ -288,7 +299,8 @@
         "question": "What did you notice about the Asian small-clawed otter?",
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
-      "catalog_id": "asian-small-clawed-otter"
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "template"
     }
   ],
   "content_mode": "hybrid",
@@ -296,7 +308,7 @@
     "visitor_map_url": "",
     "visitor_map_page": "https://www.waikikiaquarium.org/map/",
     "visitor_map_kind": "page",
-    "map_attribution": "Official map \u00b7 Waikiki Aquarium"
+    "map_attribution": "Official map · Waikiki Aquarium"
   },
   "parent_script": [
     "Bathroom first",
@@ -309,5 +321,6 @@
     "sea_turtle",
     "jellyfish"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 \u00b7 map-page 2026-08-07"
+  "research_notes": "R2 hybrid 2026-08-07 · map-page 2026-08-07",
+  "list_confidence": "template"
 }

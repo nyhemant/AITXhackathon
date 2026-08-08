@@ -11,17 +11,17 @@
   "last_verified": "2026-08-07",
   "verified_by": "owner",
   "status": "verified",
-  "tagline": "Play zones kids control \u2014 climb, make, splash.",
+  "tagline": "Play zones kids control — climb, make, splash.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Timed entry common on busy days \u2014 book ahead.",
+    "ticket_note": "Timed entry common on busy days — book ahead.",
     "transit_note": "Downtown Dallas; parking garages nearby."
   },
   "items": [
     {
       "id": "imaginarium",
       "label": "Imaginarium",
-      "emoji": "\ud83c\udfa8",
+      "emoji": "🎨",
       "one_liner": "Pretend worlds built for little directors.",
       "tags": [
         "pretend",
@@ -40,7 +40,7 @@
     {
       "id": "woven",
       "label": "Woven Wonders",
-      "emoji": "\ud83e\uddf6",
+      "emoji": "🧶",
       "one_liner": "Climb-through texture adventure.",
       "tags": [
         "climb",
@@ -58,7 +58,7 @@
     {
       "id": "water",
       "label": "Water play",
-      "emoji": "\ud83d\udca7",
+      "emoji": "💧",
       "one_liner": "Splash science without the deep end.",
       "tags": [
         "water",
@@ -77,7 +77,7 @@
     {
       "id": "makery",
       "label": "Makery",
-      "emoji": "\ud83d\udd27",
+      "emoji": "🔧",
       "one_liner": "Build and tinker with real tools (kid-safe).",
       "tags": [
         "hands",
@@ -95,7 +95,7 @@
     {
       "id": "toddler",
       "label": "Toddler Garden",
-      "emoji": "\ud83c\udf31",
+      "emoji": "🌱",
       "one_liner": "Soft space for the littlest explorers.",
       "tags": [
         "kids",
@@ -112,7 +112,7 @@
     {
       "id": "outdoor",
       "label": "Outdoor play",
-      "emoji": "\ud83c\udf1e",
+      "emoji": "🌞",
       "one_liner": "Run, climb, reset outside.",
       "tags": [
         "outdoor",
@@ -131,7 +131,7 @@
     {
       "id": "art",
       "label": "Art lab",
-      "emoji": "\ud83d\uddbc\ufe0f",
+      "emoji": "🖼️",
       "one_liner": "Messy-making that is allowed.",
       "tags": [
         "hands",
@@ -150,7 +150,7 @@
     {
       "id": "explore",
       "label": "Free explore",
-      "emoji": "\ud83d\udd0d",
+      "emoji": "🔍",
       "one_liner": "Wander and pick a new favorite corner.",
       "tags": [
         "explore",
@@ -168,7 +168,7 @@
     {
       "id": "quiet",
       "label": "Quiet corner",
-      "emoji": "\ud83e\udd2b",
+      "emoji": "🤫",
       "one_liner": "A calm spot when senses get full.",
       "tags": [
         "rest",
@@ -187,7 +187,7 @@
     "visitor_map_url": "/field-pack/media/maps/childrens-museum-perot.jpg",
     "visitor_map_page": "https://www.perotmuseum.org/visit/map/",
     "visitor_map_kind": "image",
-    "map_attribution": "Official site \u00b7 Children's Museum (Perot)",
+    "map_attribution": "Official site · Children's Museum (Perot)",
     "print_map": "/field-pack/media/maps/childrens-museum-perot.jpg"
   },
   "parent_script": [
@@ -196,5 +196,6 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "research_notes": "map-img 2026-08-07 \u00b7 map-page 2026-08-07"
+  "research_notes": "map-img 2026-08-07 · map-page 2026-08-07",
+  "list_confidence": "partial"
 }

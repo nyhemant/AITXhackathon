@@ -40,7 +40,8 @@
         "question": "What did you notice about the Caribbean flamingo?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "caribbean-flamingo"
+      "catalog_id": "caribbean-flamingo",
+      "presence": "template"
     },
     {
       "id": "african_penguin",
@@ -61,7 +62,8 @@
         "question": "What did you notice about the African penguin?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "african-penguin"
+      "catalog_id": "african-penguin",
+      "presence": "template"
     },
     {
       "id": "galapagos_tortoise",
@@ -82,7 +84,8 @@
         "question": "What did you notice about the Galápagos tortoise?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "galapagos-tortoise"
+      "catalog_id": "galapagos-tortoise",
+      "presence": "template"
     },
     {
       "id": "ring_tailed_lemur",
@@ -104,7 +107,8 @@
         "question": "What did you notice about the Ring-tailed lemur?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "ring-tailed-lemur"
+      "catalog_id": "ring-tailed-lemur",
+      "presence": "template"
     },
     {
       "id": "two_toed_sloth",
@@ -125,7 +129,8 @@
         "question": "What did you notice about the Two-toed sloth?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "two-toed-sloth"
+      "catalog_id": "two-toed-sloth",
+      "presence": "template"
     },
     {
       "id": "ostrich",
@@ -147,7 +152,8 @@
         "question": "What is special about the Ostrich?",
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
-      "catalog_id": "ostrich"
+      "catalog_id": "ostrich",
+      "presence": "template"
     },
     {
       "id": "zebra",
@@ -169,7 +175,8 @@
         "question": "What is special about the Zebra?",
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
-      "catalog_id": "zebra"
+      "catalog_id": "zebra",
+      "presence": "template"
     },
     {
       "id": "warthog",
@@ -192,7 +199,8 @@
         "question": "What is special about the Warthog?",
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
-      "catalog_id": "warthog"
+      "catalog_id": "warthog",
+      "presence": "template"
     },
     {
       "id": "nile_hippo",
@@ -214,7 +222,8 @@
         "question": "What is special about the Nile hippo?",
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
-      "catalog_id": "nile-hippo"
+      "catalog_id": "nile-hippo",
+      "presence": "template"
     },
     {
       "id": "reticulated_giraffe",
@@ -237,7 +246,8 @@
         "question": "What is special about the Reticulated giraffe?",
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
-      "catalog_id": "reticulated-giraffe"
+      "catalog_id": "reticulated-giraffe",
+      "presence": "template"
     },
     {
       "id": "asian_small_clawed_otter",
@@ -262,7 +272,8 @@
         "question": "What is special about the Asian small-clawed otter?",
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
-      "catalog_id": "asian-small-clawed-otter"
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "template"
     },
     {
       "id": "freshwater_fish",
@@ -284,7 +295,8 @@
         "question": "What did you notice about the River / lake fish?",
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
-      "catalog_id": "freshwater-fish"
+      "catalog_id": "freshwater-fish",
+      "presence": "template"
     }
   ],
   "content_mode": "hybrid",
@@ -305,5 +317,6 @@
     "african_penguin",
     "galapagos_tortoise"
   ],
-  "research_notes": "R3 2026-08-07"
+  "research_notes": "R3 2026-08-07",
+  "list_confidence": "template"
 }

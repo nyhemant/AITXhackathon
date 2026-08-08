@@ -365,16 +365,113 @@ process.stdout.write(JSON.stringify(mission));
 
 
 def content_mode_of(mission_venue: dict, catalog_v: dict | None = None) -> str:
+    """SEO body mode. Template / unaudited lists never show a fake species grid."""
+    conf = (mission_venue or {}).get("list_confidence") or ""
+    if conf == "template":
+        return "wonder"
     m = (mission_venue or {}).get("content_mode") or ""
     if m in ("wonder", "hybrid", "curated"):
+        # Hybrid without print-safe named items → wonder page body
+        if m == "hybrid" and not _print_safe_items(mission_venue):
+            return "wonder"
         return m
     by = (mission_venue or {}).get("verified_by") or ""
-    if by == "catalog-scaffold":
+    if by == "catalog-scaffold" or conf == "template":
         return "wonder"
-    if by in ("research", "owner"):
+    if by == "owner" or conf == "audited":
         return "curated"
+    # "research" alone is not a collection census
     q = (catalog_v or {}).get("quality") or ""
-    return "curated" if q == "full" else "wonder"
+    return "wonder" if conf == "template" else ("curated" if q == "full" and conf == "partial" else "wonder")
+
+
+def _do_not_list_keys(mission_venue: dict) -> set[str]:
+    keys: set[str] = set()
+    for row in (mission_venue or {}).get("do_not_list") or []:
+        if isinstance(row, str):
+            keys.add(row.lower())
+            continue
+        if not isinstance(row, dict):
+            continue
+        for k in ("catalog_id", "name", "id"):
+            if row.get(k):
+                keys.add(str(row[k]).lower())
+    return keys
+
+
+def _item_presence_ok(it: dict, mission_venue: dict) -> bool:
+    """Mirror mission-engine itemPresenceOk for SEO shortlist / start-here."""
+    if not it:
+        return False
+    fid = str(it.get("id") or "")
+    if fid.startswith("w_") or str(it.get("zone") or "").lower() == "wonder":
+        return True
+    p = str(it.get("presence") or "").lower()
+    if p == "absent":
+        return False
+    label = str(it.get("display_label") or it.get("label") or it.get("name") or "").lower()
+    cid = str(it.get("catalog_id") or "").lower()
+    for row in (mission_venue or {}).get("do_not_list") or []:
+        if isinstance(row, str):
+            ban_name, ban_cat = row.lower(), ""
+        elif isinstance(row, dict):
+            ban_name = str(row.get("name") or "").lower()
+            ban_cat = str(row.get("catalog_id") or "").lower()
+        else:
+            continue
+        if ban_name and len(ban_name) >= 4 and ban_name in label:
+            return False
+        if ban_cat and cid == ban_cat:
+            if p in ("verified", "high") and ban_name and ban_name not in label:
+                pass  # soft label + verified photo reuse
+            elif p not in ("verified", "high"):
+                return False
+            elif not ban_name:
+                return False
+    if p in ("template", "medium"):
+        return False
+    if p in ("verified", "high"):
+        return True
+    conf = (mission_venue or {}).get("list_confidence") or ""
+    if conf == "audited":
+        return True
+    if conf == "template":
+        return False
+    if conf == "partial":
+        return True
+    return False
+
+
+def _print_safe_items(mission_venue: dict) -> list[dict]:
+    return [it for it in (mission_venue or {}).get("items") or [] if _item_presence_ok(it, mission_venue)]
+
+
+def _item_sheet_label(it: dict) -> str:
+    return (it.get("display_label") or it.get("label") or it.get("name") or "").strip()
+
+
+def _featured_from_mission(mission_venue: dict, catalog_v: dict | None = None) -> list[dict]:
+    """Build SEO photo shortlist from print-safe mission items only."""
+    feat_by_id = {
+        f.get("id"): f for f in (catalog_v or {}).get("featured") or [] if f.get("id")
+    }
+    # Also index global catalog via mission catalog_id when available on catalog_v featured only
+    out: list[dict] = []
+    for it in _print_safe_items(mission_venue):
+        cid = (it.get("catalog_id") or "").strip()
+        iid = (it.get("id") or "").replace("_", "-")
+        feat = feat_by_id.get(cid) or feat_by_id.get(iid) or {}
+        name = _item_sheet_label(it) or feat.get("name") or "Stop"
+        out.append(
+            {
+                "id": cid or iid,
+                "name": name,
+                "emoji": it.get("emoji") or feat.get("emoji") or "",
+                "blurb": it.get("one_liner") or feat.get("blurb") or "",
+                "photo": feat.get("photo") or it.get("photo") or "",
+            }
+        )
+    return out
 
 
 def map_card_html(mission_venue: dict) -> str:
@@ -517,8 +614,9 @@ def _photo_src(photo: str) -> str:
 
 
 def _route_90m_picks(mission_venue: dict, mission: dict) -> list[dict]:
-    """Same pick order as the start-here section (route_90m, else mission finds)."""
-    items = {it.get("id"): it for it in (mission_venue.get("items") or [])}
+    """Same pick order as the start-here section (print-safe route_90m, else mission finds)."""
+    safe = _print_safe_items(mission_venue)
+    items = {it.get("id"): it for it in safe}
     picks: list[dict] = []
     for rid in (mission_venue.get("route_90m") or [])[:3]:
         if rid in items:
@@ -577,7 +675,7 @@ def route_90m_html(mission_venue: dict, mission: dict, catalog_v: dict | None = 
         if not feat and p.get("catalog_id"):
             feat = feat_by_id.get(p["catalog_id"]) or {}
         src = _photo_src(feat.get("photo") or p.get("photo") or "")
-        label = p.get("label") or feat.get("name") or "Stop"
+        label = _item_sheet_label(p) or feat.get("name") or "Stop"
         emoji = p.get("emoji") or feat.get("emoji") or ""
         one = _card_blurb(p.get("one_liner") or feat.get("blurb") or "")
         item_id = cat_id or (p.get("id") or "")
@@ -748,6 +846,13 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
     # Catalog ids already shown in “start here” — don’t repeat in shortlist grid
     start_exclude = _start_here_catalog_ids(mission_venue, mission)
     practical = mission_venue.get("practical") or {}
+    # Prefer print-safe mission items over catalog.js animal pack (stops false elephants)
+    v_body = dict(v)
+    safe_feat = _featured_from_mission(mission_venue, catalog_v=v)
+    if safe_feat:
+        v_body["featured"] = safe_feat
+    elif (mission_venue or {}).get("list_confidence") == "template":
+        v_body["featured"] = []  # never show template catalog pack
     if mode == "wonder":
         hunt = v.get("hunt") or []
         hunt_lis = "".join(
@@ -775,9 +880,9 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
         body = wonder_grid_html(mission) + hunt_sec
     elif mode == "hybrid":
         wonder_sec = wonder_grid_html(mission)
-        body = unique_body(v, exclude_ids=start_exclude) + wonder_sec
+        body = unique_body(v_body, exclude_ids=start_exclude) + wonder_sec
     else:
-        body = unique_body(v, exclude_ids=start_exclude)
+        body = unique_body(v_body, exclude_ids=start_exclude)
     h1 = h1_for(v)
     title = title_for(v)
     desc = meta_for(v)
@@ -817,7 +922,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <link rel="stylesheet" href="/shell/shell.css?v=5" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=64" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=23" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=24" />
   <link rel="stylesheet" href="/field-pack/css/mission.css?v=11" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
@@ -903,7 +1008,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <script src="/field-pack/js/catalog.js?v=23"></script>
   <script src="/field-pack/js/print-maps.js?v=2"></script>
   <script src="/field-pack/js/print-kit.js?v=9"></script>
-  <script src="/field-pack/js/mission/mission-engine.js?v=7"></script>
+  <script src="/field-pack/js/mission/mission-engine.js?v=8"></script>
   <script src="/field-pack/js/mission/mission-ui.js?v=13"></script>
 </body>
 </html>

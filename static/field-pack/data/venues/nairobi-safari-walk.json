@@ -11,7 +11,7 @@
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Nairobi Safari Walk \u2014 boardwalk wildlife near the national park edge.",
+  "tagline": "Nairobi Safari Walk — boardwalk wildlife near the national park edge.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "KWS site; pair carefully with park plans.",
@@ -23,7 +23,7 @@
     {
       "id": "reticulated_giraffe",
       "label": "Reticulated giraffe",
-      "emoji": "\ud83e\udd92",
+      "emoji": "🦒",
       "one_liner": "Giraffes from the walk.",
       "tags": [
         "tall",
@@ -40,12 +40,13 @@
         "question": "What did you notice about the Reticulated giraffe?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "reticulated-giraffe"
+      "catalog_id": "reticulated-giraffe",
+      "presence": "template"
     },
     {
       "id": "zebra",
       "label": "Zebra",
-      "emoji": "\ud83e\udd93",
+      "emoji": "🦓",
       "one_liner": "Zebras.",
       "tags": [
         "outdoor"
@@ -61,12 +62,13 @@
         "question": "What did you notice about the Zebra?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "zebra"
+      "catalog_id": "zebra",
+      "presence": "template"
     },
     {
       "id": "african_lion",
       "label": "African lion",
-      "emoji": "\ud83e\udd81",
+      "emoji": "🦁",
       "one_liner": "Lions if on the route that day.",
       "tags": [
         "big-cats"
@@ -82,12 +84,13 @@
         "question": "What did you notice about the African lion?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "african-lion"
+      "catalog_id": "african-lion",
+      "presence": "template"
     },
     {
       "id": "african_elephant",
       "label": "African elephant",
-      "emoji": "\ud83d\udc18",
+      "emoji": "🐘",
       "one_liner": "Elephants when visible.",
       "tags": [
         "big"
@@ -103,13 +106,14 @@
         "question": "What did you notice about the African elephant?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "african-elephant"
+      "catalog_id": "african-elephant",
+      "presence": "template"
     },
     {
       "id": "cm_outdoor",
       "label": "Outdoor Area",
-      "emoji": "\ud83c\udf33",
-      "one_liner": "Walk and notice \u2014 the path is the activity.",
+      "emoji": "🌳",
+      "one_liner": "Walk and notice — the path is the activity.",
       "tags": [
         "outdoor",
         "play"
@@ -125,13 +129,14 @@
         "question": "What did you notice about the Outdoor Area?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "cm-outdoor"
+      "catalog_id": "cm-outdoor",
+      "presence": "template"
     },
     {
       "id": "sumatran_tiger",
       "label": "Sumatran tiger",
-      "emoji": "\ud83d\udc2f",
-      "one_liner": "Stripy forest big cat \u2014 strong and stealthy.",
+      "emoji": "🐯",
+      "one_liner": "Stripy forest big cat — strong and stealthy.",
       "tags": [
         "wow",
         "big-cats",
@@ -148,15 +153,16 @@
       "zone": "Grounds",
       "qa_card": {
         "question": "What is special about the Sumatran tiger?",
-        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
-      "catalog_id": "sumatran-tiger"
+      "catalog_id": "sumatran-tiger",
+      "presence": "template"
     },
     {
       "id": "cheetah",
       "label": "Cheetah",
-      "emoji": "\ud83d\udc06",
-      "one_liner": "Fastest land animal \u2014 built to sprint.",
+      "emoji": "🐆",
+      "one_liner": "Fastest land animal — built to sprint.",
       "tags": [
         "wow",
         "big-cats",
@@ -171,14 +177,15 @@
       "zone": "Grounds",
       "qa_card": {
         "question": "What is special about the Cheetah?",
-        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
-      "catalog_id": "cheetah"
+      "catalog_id": "cheetah",
+      "presence": "template"
     },
     {
       "id": "western_lowland_gorilla",
       "label": "Western lowland gorilla",
-      "emoji": "\ud83e\udd8d",
+      "emoji": "🦍",
       "one_liner": "Strong gentle ape in family groups.",
       "tags": [
         "wow",
@@ -194,15 +201,16 @@
       "zone": "Grounds",
       "qa_card": {
         "question": "What is special about the Western lowland gorilla?",
-        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
-      "catalog_id": "western-lowland-gorilla"
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "template"
     },
     {
       "id": "chimpanzee",
       "label": "Chimpanzee",
-      "emoji": "\ud83d\udc35",
-      "one_liner": "Smart forest ape \u2014 climbs and tools.",
+      "emoji": "🐵",
+      "one_liner": "Smart forest ape — climbs and tools.",
       "tags": [
         "wow",
         "outdoor",
@@ -220,14 +228,15 @@
       "zone": "Grounds",
       "qa_card": {
         "question": "What is special about the Chimpanzee?",
-        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
-      "catalog_id": "chimpanzee"
+      "catalog_id": "chimpanzee",
+      "presence": "template"
     },
     {
       "id": "nile_hippo",
       "label": "Nile hippo",
-      "emoji": "\ud83e\udd9b",
+      "emoji": "🦛",
       "one_liner": "Huge river giant that loves the water.",
       "tags": [
         "wow",
@@ -242,14 +251,15 @@
       "zone": "Grounds",
       "qa_card": {
         "question": "What is special about the Nile hippo?",
-        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
-      "catalog_id": "nile-hippo"
+      "catalog_id": "nile-hippo",
+      "presence": "template"
     },
     {
       "id": "african_penguin",
       "label": "African penguin",
-      "emoji": "\ud83d\udc27",
+      "emoji": "🐧",
       "one_liner": "Waddle on land, zoom in water.",
       "tags": [
         "wow",
@@ -265,15 +275,16 @@
       "zone": "Grounds",
       "qa_card": {
         "question": "What is special about the African penguin?",
-        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
-      "catalog_id": "african-penguin"
+      "catalog_id": "african-penguin",
+      "presence": "template"
     },
     {
       "id": "ostrich",
       "label": "Ostrich",
-      "emoji": "\ud83e\udeb6",
-      "one_liner": "Biggest bird \u2014 can\u2019t fly, runs fast.",
+      "emoji": "🪶",
+      "one_liner": "Biggest bird — can’t fly, runs fast.",
       "tags": [
         "wow",
         "outdoor"
@@ -287,14 +298,15 @@
       "zone": "Grounds",
       "qa_card": {
         "question": "What is special about the Ostrich?",
-        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
-      "catalog_id": "ostrich"
+      "catalog_id": "ostrich",
+      "presence": "template"
     },
     {
       "id": "warthog",
       "label": "Warthog",
-      "emoji": "\ud83d\udc17",
+      "emoji": "🐗",
       "one_liner": "Savanna pig with tusks.",
       "tags": [
         "wow",
@@ -310,9 +322,10 @@
       "zone": "Grounds",
       "qa_card": {
         "question": "What is special about the Warthog?",
-        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
-      "catalog_id": "warthog"
+      "catalog_id": "warthog",
+      "presence": "template"
     }
   ],
   "content_mode": "hybrid",
@@ -333,5 +346,6 @@
     "zebra",
     "african_lion"
   ],
-  "research_notes": "R3 2026-08-07 \u00b7 map-page 2026-08-07"
+  "research_notes": "R3 2026-08-07 · map-page 2026-08-07",
+  "list_confidence": "template"
 }

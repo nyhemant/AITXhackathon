@@ -26,11 +26,108 @@
   function contentMode(venue) {
     const m = (venue && venue.content_mode) || "";
     if (m === "wonder" || m === "hybrid" || m === "curated") return m;
-    // Scaffolds default to wonder (honest long-tail)
+    // Scaffolds / unaudited templates: wonder-first (honest long-tail)
+    if ((venue && venue.list_confidence) === "template") return "wonder";
     if ((venue && venue.verified_by) === "catalog-scaffold") return "wonder";
-    if ((venue && venue.verified_by) === "research" || (venue && venue.verified_by) === "owner")
-      return "curated";
+    // Owner lists may be curated; plain "research" without content_mode is not a census
+    if ((venue && venue.verified_by) === "owner") return "curated";
+    if ((venue && venue.list_confidence) === "audited") return "curated";
     return "wonder";
+  }
+
+  /** Presence gate — never print a named find we only guessed. */
+  const PRESENCE_OK = new Set(["verified", "high"]);
+  const PRESENCE_BLOCK = new Set(["absent", "template", "medium"]);
+
+  function listConfidence(venue) {
+    const c = (venue && venue.list_confidence) || "";
+    if (c === "audited" || c === "partial" || c === "template") return c;
+    if ((venue && venue.verified_by) === "owner") return "partial";
+    if ((venue && venue.verified_by) === "catalog-scaffold") return "template";
+    // Hybrid "research" without a presence audit is template-risk
+    if ((venue && venue.content_mode) === "hybrid") return "template";
+    return "partial";
+  }
+
+  function doNotListSet(venue) {
+    const out = new Set();
+    for (const row of (venue && venue.do_not_list) || []) {
+      if (!row) continue;
+      if (typeof row === "string") {
+        out.add(row.toLowerCase());
+        continue;
+      }
+      if (row.catalog_id) out.add(String(row.catalog_id).toLowerCase());
+      if (row.name) out.add(String(row.name).toLowerCase());
+      if (row.id) out.add(String(row.id).toLowerCase());
+    }
+    return out;
+  }
+
+  function isWonderItem(it) {
+    if (!it) return false;
+    const id = String(it.id || "");
+    if (id.startsWith("w_")) return true;
+    if (String(it.zone || "").toLowerCase() === "wonder") return true;
+    if (it.kind === "wonder") return true;
+    return false;
+  }
+
+  /**
+   * Named animals/exhibits need presence confidence.
+   * Wonders always allowed. Grandfather: owner/partial venues may use
+   * items without a presence field until Wave A tags them.
+   */
+  function itemPresenceOk(it, venue) {
+    if (!it) return false;
+    if (isWonderItem(it)) return true;
+
+    const p = String(it.presence || "").toLowerCase();
+    if (p === "absent") return false;
+
+    // Sheet-facing label (soft names win over catalog species)
+    const label = String(it.display_label || it.label || it.name || "").toLowerCase();
+    const cid = String(it.catalog_id || "").toLowerCase();
+    const id = String(it.id || "").toLowerCase();
+
+    // do_not_list blocks by *name* always; catalog_id ban only if label wasn't softened
+    for (const row of (venue && venue.do_not_list) || []) {
+      if (!row) continue;
+      const banName = String((typeof row === "string" ? row : row.name) || "").toLowerCase();
+      const banCat = String((typeof row === "object" && row.catalog_id) || "").toLowerCase();
+      if (banName && banName.length >= 4 && label.includes(banName)) return false;
+      // catalog_id ban: skip when presence is verified/high and label differs from ban name
+      if (banCat && cid === banCat) {
+        if (PRESENCE_OK.has(p) && banName && !label.includes(banName)) {
+          /* photo reuse OK — e.g. catalog african-penguin + label "Penguin" */
+        } else if (!PRESENCE_OK.has(p)) {
+          return false;
+        } else if (!banName) {
+          return false;
+        }
+      }
+    }
+
+    if (PRESENCE_BLOCK.has(p)) return false;
+    if (PRESENCE_OK.has(p)) return true;
+
+    // No presence field yet
+    const conf = listConfidence(venue);
+    if (conf === "audited") return true; // venue-level audit without per-item tags
+    if (conf === "template") return false;
+    // partial (owner / museum halls): allow until per-item audit lands
+    if (conf === "partial") return true;
+    return false;
+  }
+
+  function printSafeItems(venue) {
+    return (venue.items || []).filter((it) => itemPresenceOk(it, venue));
+  }
+
+  /** Prefer display_label (soft species name) on sheets. */
+  function sheetLabel(it) {
+    if (!it) return "";
+    return (it.display_label || it.label || it.name || "").trim();
   }
 
   function mulberry32(a) {
@@ -106,13 +203,14 @@
     });
   }
 
-  /** Must-include stops: route_90m first, else first venue items (top shortlist). */
+  /** Must-include stops: route_90m first, else first print-safe venue items. */
   function anchorItems(venue, age) {
-    const items = venue.items || [];
+    const items = printSafeItems(venue);
     const byId = Object.fromEntries(items.map((it) => [it.id, it]));
     const out = [];
     const push = (it) => {
       if (!it || out.some((x) => x.id === it.id)) return;
+      if (!itemPresenceOk(it, venue)) return;
       const ages = it.age_fit || AGE_ORDER;
       if (!ages.includes(age)) return;
       out.push(it);
@@ -127,7 +225,7 @@
         push(it);
       }
     }
-    // If age filter emptied anchors, take raw route/items
+    // If age filter emptied anchors, take raw print-safe route/items
     if (!out.length) {
       for (const id of venue.route_90m || []) {
         if (out.length >= 3) break;
@@ -152,18 +250,27 @@
       hashSeed(venue.slug + "|" + mode + "|" + age + "|" + time + "|" + interest + "|" + seed)
     );
 
-    let sourceItems = venue.items || [];
+    const safeNamed = printSafeItems(venue);
+    let sourceItems = safeNamed;
     if (mode === "wonder" && wondersFile) {
       sourceItems = wonderPool(venue, wondersFile);
     } else if (mode === "hybrid" && wondersFile) {
-      // Real venue stops first, then venue-type-safe wonders only
-      const icons = filterByAge(venue.items || [], age);
+      // Print-safe venue stops first, then venue-type-safe wonders only
+      const icons = filterByAge(safeNamed, age);
+      const wonders = filterByAge(wonderPool(venue, wondersFile), age);
+      sourceItems = icons.concat(wonders.filter((w) => !icons.some((i) => i.id === w.id)));
+    } else if (mode === "curated" && wondersFile && safeNamed.length < need) {
+      // Top up audited lists with wonders if short — never with unsafe named pack
+      const icons = filterByAge(safeNamed, age);
       const wonders = filterByAge(wonderPool(venue, wondersFile), age);
       sourceItems = icons.concat(wonders.filter((w) => !icons.some((i) => i.id === w.id)));
     }
 
-    let pool = filterByAge(sourceItems, age);
-    if (!pool.length) pool = sourceItems.slice();
+    let pool = filterByAge(sourceItems, age).filter((it) => itemPresenceOk(it, venue) || isWonderItem(it));
+    if (!pool.length) {
+      // Last resort: type-safe wonders only (never unsafe named animals)
+      pool = wondersFile ? filterByAge(wonderPool(venue, wondersFile), age) : [];
+    }
 
     const ranked = pool
       .map((it, idx) => ({
@@ -174,7 +281,7 @@
       .sort((a, b) => b.score - a.score || a.idx - b.idx)
       .map((x) => x.it);
 
-    // Guarantee headline stops (route_90m / top items) before any filler wonders
+    // Guarantee headline stops (print-safe route_90m / top items) before fillers
     const anchors = mode === "wonder" ? [] : anchorItems(venue, age);
     const picked = [];
     const seen = new Set();
@@ -189,15 +296,20 @@
       picked.push(it);
       seen.add(it.id);
     }
-    if (picked.length < need) {
-      for (const it of sourceItems) {
+    if (picked.length < need && wondersFile) {
+      for (const it of wonderPool(venue, wondersFile)) {
         if (picked.length >= need) break;
         if (seen.has(it.id)) continue;
         picked.push(it);
         seen.add(it.id);
       }
     }
-    return picked.slice(0, need);
+    // Apply soft labels for sheet rendering
+    return picked.slice(0, need).map((it) => {
+      const lab = sheetLabel(it);
+      if (!lab || lab === it.label) return it;
+      return Object.assign({}, it, { label: lab });
+    });
   }
 
   function pickChallenges(challengesFile, venue, opts, selectedItems) {
@@ -302,6 +414,10 @@
     TIME_LABELS,
     defaultOptions,
     contentMode,
+    listConfidence,
+    itemPresenceOk,
+    printSafeItems,
+    sheetLabel,
     selectMission,
     interestOptions,
     collectTags,

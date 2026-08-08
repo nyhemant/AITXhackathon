@@ -11,7 +11,7 @@
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Pittsburgh Zoo & PPG Aquarium \u2014 hill campus with indoor water wow.",
+  "tagline": "Pittsburgh Zoo & PPG Aquarium — hill campus with indoor water wow.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Seasonal hours; parking on site.",
@@ -23,7 +23,7 @@
     {
       "id": "shark",
       "label": "Shark",
-      "emoji": "\ud83e\udd88",
+      "emoji": "🦈",
       "one_liner": "Sharks indoors.",
       "tags": [
         "water",
@@ -41,12 +41,13 @@
         "question": "What did you notice about the Shark?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "shark"
+      "catalog_id": "shark",
+      "presence": "template"
     },
     {
       "id": "african_elephant",
       "label": "African elephant",
-      "emoji": "\ud83d\udc18",
+      "emoji": "🐘",
       "one_liner": "Elephants outdoors.",
       "tags": [
         "big",
@@ -63,12 +64,13 @@
         "question": "What did you notice about the African elephant?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "african-elephant"
+      "catalog_id": "african-elephant",
+      "presence": "template"
     },
     {
       "id": "reticulated_giraffe",
       "label": "Reticulated giraffe",
-      "emoji": "\ud83e\udd92",
+      "emoji": "🦒",
       "one_liner": "Giraffes.",
       "tags": [
         "tall",
@@ -85,12 +87,13 @@
         "question": "What did you notice about the Reticulated giraffe?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "reticulated-giraffe"
+      "catalog_id": "reticulated-giraffe",
+      "presence": "template"
     },
     {
       "id": "sumatran_tiger",
       "label": "Sumatran tiger",
-      "emoji": "\ud83d\udc2f",
+      "emoji": "🐯",
       "one_liner": "Tigers.",
       "tags": [
         "big-cats",
@@ -107,12 +110,13 @@
         "question": "What did you notice about the Sumatran tiger?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sumatran-tiger"
+      "catalog_id": "sumatran-tiger",
+      "presence": "template"
     },
     {
       "id": "jellyfish",
       "label": "Jellyfish",
-      "emoji": "\ud83c\udf90",
+      "emoji": "🎐",
       "one_liner": "Jellies.",
       "tags": [
         "water",
@@ -129,13 +133,14 @@
         "question": "What did you notice about the Jellyfish?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "jellyfish"
+      "catalog_id": "jellyfish",
+      "presence": "template"
     },
     {
       "id": "sea_turtle",
       "label": "Sea turtle",
-      "emoji": "\ud83d\udc22",
-      "one_liner": "Shelled ocean traveler \u2014 flippers for swimming.",
+      "emoji": "🐢",
+      "one_liner": "Shelled ocean traveler — flippers for swimming.",
       "tags": [
         "wow",
         "water",
@@ -152,13 +157,14 @@
         "question": "What did you notice about the Sea turtle?",
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
-      "catalog_id": "sea-turtle"
+      "catalog_id": "sea-turtle",
+      "presence": "template"
     },
     {
       "id": "octopus",
       "label": "Octopus",
-      "emoji": "\ud83d\udc19",
-      "one_liner": "Eight arms and a big brain \u2014 master of hide-and-seek.",
+      "emoji": "🐙",
+      "one_liner": "Eight arms and a big brain — master of hide-and-seek.",
       "tags": [
         "wow",
         "water"
@@ -174,12 +180,13 @@
         "question": "What did you notice about the Octopus?",
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
-      "catalog_id": "octopus"
+      "catalog_id": "octopus",
+      "presence": "template"
     },
     {
       "id": "african_penguin",
       "label": "African penguin",
-      "emoji": "\ud83d\udc27",
+      "emoji": "🐧",
       "one_liner": "Waddle on land, zoom in water.",
       "tags": [
         "wow",
@@ -195,15 +202,16 @@
       "zone": "Grounds",
       "qa_card": {
         "question": "What is special about the African penguin?",
-        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
-      "catalog_id": "african-penguin"
+      "catalog_id": "african-penguin",
+      "presence": "template"
     },
     {
       "id": "stingray",
       "label": "Stingray",
-      "emoji": "\u5c04\u7ebf",
-      "one_liner": "Flat swimmer \u2014 often in touch pools (gentle hands!).",
+      "emoji": "射线",
+      "one_liner": "Flat swimmer — often in touch pools (gentle hands!).",
       "tags": [
         "wow",
         "water"
@@ -219,13 +227,14 @@
         "question": "What did you notice about the Stingray?",
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
-      "catalog_id": "stingray"
+      "catalog_id": "stingray",
+      "presence": "template"
     },
     {
       "id": "zebra",
       "label": "Zebra",
-      "emoji": "\ud83e\udd93",
-      "one_liner": "Striped grassland runner \u2014 every pattern is unique.",
+      "emoji": "🦓",
+      "one_liner": "Striped grassland runner — every pattern is unique.",
       "tags": [
         "wow",
         "outdoor"
@@ -239,9 +248,10 @@
       "zone": "Grounds",
       "qa_card": {
         "question": "What is special about the Zebra?",
-        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
-      "catalog_id": "zebra"
+      "catalog_id": "zebra",
+      "presence": "template"
     }
   ],
   "content_mode": "hybrid",
@@ -249,7 +259,7 @@
     "visitor_map_url": "/field-pack/media/maps/pittsburgh-zoo.jpg",
     "visitor_map_page": "https://www.pittsburghzoo.org/plan-your-visit/zoo-map/",
     "visitor_map_kind": "image",
-    "map_attribution": "Official map \u00b7 Pittsburgh Zoo & Aquarium",
+    "map_attribution": "Official map · Pittsburgh Zoo & Aquarium",
     "print_map": "/field-pack/media/maps/pittsburgh-zoo.jpg"
   },
   "parent_script": [
@@ -263,5 +273,6 @@
     "african_elephant",
     "reticulated_giraffe"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 \u00b7 map-img 2026-08-07 \u00b7 map-page 2026-08-07"
+  "research_notes": "R2 hybrid 2026-08-07 · map-img 2026-08-07 · map-page 2026-08-07",
+  "list_confidence": "template"
 }

@@ -11,18 +11,18 @@
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Griffith Park classic \u2014 elephants, chimps, and a finishable hillside loop.",
+  "tagline": "Griffith Park classic — elephants, chimps, and a finishable hillside loop.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Hills and sun \u2014 bring water and a stroller with good brakes.",
+    "ticket_note": "Hills and sun — bring water and a stroller with good brakes.",
     "transit_note": "Griffith Park; parking fills on weekends."
   },
   "items": [
     {
       "id": "african_elephant",
       "label": "African elephant",
-      "emoji": "\ud83d\udc18",
-      "one_liner": "LA\u2019s elephant habitat is a first stop for many families.",
+      "emoji": "🐘",
+      "one_liner": "LA’s elephant habitat is a first stop for many families.",
       "tags": [
         "big",
         "outdoor",
@@ -39,13 +39,14 @@
         "question": "What did you notice about the African elephant?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "african-elephant"
+      "catalog_id": "african-elephant",
+      "presence": "template"
     },
     {
       "id": "chimpanzee",
       "label": "Chimpanzee",
-      "emoji": "\ud83d\udc35",
-      "one_liner": "Chimp social hour \u2014 watch faces and gestures.",
+      "emoji": "🐵",
+      "one_liner": "Chimp social hour — watch faces and gestures.",
       "tags": [
         "primates",
         "outdoor",
@@ -62,12 +63,13 @@
         "question": "What did you notice about the Chimpanzee?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "chimpanzee"
+      "catalog_id": "chimpanzee",
+      "presence": "template"
     },
     {
       "id": "western_lowland_gorilla",
       "label": "Western lowland gorilla",
-      "emoji": "\ud83e\udd8d",
+      "emoji": "🦍",
       "one_liner": "Quiet strength in the gorilla yard.",
       "tags": [
         "primates",
@@ -84,12 +86,13 @@
         "question": "What did you notice about the Western lowland gorilla?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "western-lowland-gorilla"
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "template"
     },
     {
       "id": "reticulated_giraffe",
       "label": "Reticulated giraffe",
-      "emoji": "\ud83e\udd92",
+      "emoji": "🦒",
       "one_liner": "Tall necks above the path.",
       "tags": [
         "tall",
@@ -106,12 +109,13 @@
         "question": "What did you notice about the Reticulated giraffe?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "reticulated-giraffe"
+      "catalog_id": "reticulated-giraffe",
+      "presence": "template"
     },
     {
       "id": "african_lion",
       "label": "African lion",
-      "emoji": "\ud83e\udd81",
+      "emoji": "🦁",
       "one_liner": "Lions with a city-skyline backdrop vibe.",
       "tags": [
         "big-cats",
@@ -129,12 +133,13 @@
         "question": "What did you notice about the African lion?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "african-lion"
+      "catalog_id": "african-lion",
+      "presence": "template"
     },
     {
       "id": "sumatran_tiger",
       "label": "Sumatran tiger",
-      "emoji": "\ud83d\udc2f",
+      "emoji": "🐯",
       "one_liner": "Stripes in the forested cat areas.",
       "tags": [
         "big-cats",
@@ -151,13 +156,14 @@
         "question": "What did you notice about the Sumatran tiger?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sumatran-tiger"
+      "catalog_id": "sumatran-tiger",
+      "presence": "template"
     },
     {
       "id": "red_panda",
       "label": "Red panda",
-      "emoji": "\ud83e\udd8a",
-      "one_liner": "Red panda fluff if they\u2019re awake in the trees.",
+      "emoji": "🦊",
+      "one_liner": "Red panda fluff if they’re awake in the trees.",
       "tags": [
         "climb",
         "outdoor"
@@ -173,13 +179,14 @@
         "question": "What did you notice about the Red panda?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "red-panda"
+      "catalog_id": "red-panda",
+      "presence": "template"
     },
     {
       "id": "caribbean_flamingo",
       "label": "Caribbean flamingo",
-      "emoji": "\ud83e\udda9",
-      "one_liner": "Bright pink flock \u2014 easy first find.",
+      "emoji": "🦩",
+      "one_liner": "Bright pink flock — easy first find.",
       "tags": [
         "outdoor",
         "color"
@@ -195,12 +202,13 @@
         "question": "What did you notice about the Caribbean flamingo?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "caribbean-flamingo"
+      "catalog_id": "caribbean-flamingo",
+      "presence": "template"
     },
     {
       "id": "galapagos_tortoise",
-      "label": "Gal\u00e1pagos tortoise",
-      "emoji": "\ud83d\udc22",
+      "label": "Galápagos tortoise",
+      "emoji": "🐢",
       "one_liner": "Slow giants on land.",
       "tags": [
         "outdoor",
@@ -214,15 +222,16 @@
       ],
       "zone": "Reptiles",
       "qa_card": {
-        "question": "What did you notice about the Gal\u00e1pagos tortoise?",
+        "question": "What did you notice about the Galápagos tortoise?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "galapagos-tortoise"
+      "catalog_id": "galapagos-tortoise",
+      "presence": "template"
     },
     {
       "id": "ring_tailed_lemur",
       "label": "Ring-tailed lemur",
-      "emoji": "\ud83d\udc12",
+      "emoji": "🐒",
       "one_liner": "Ring tails and bright eyes.",
       "tags": [
         "primates",
@@ -239,7 +248,8 @@
         "question": "What did you notice about the Ring-tailed lemur?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "ring-tailed-lemur"
+      "catalog_id": "ring-tailed-lemur",
+      "presence": "template"
     }
   ],
   "content_mode": "curated",
@@ -247,7 +257,7 @@
     "visitor_map_url": "/field-pack/media/maps/la-zoo.jpg",
     "visitor_map_page": "https://lazoo.org/wp-content/uploads/2026/06/LAZooMap_May2026_web.pdf",
     "visitor_map_kind": "image",
-    "map_attribution": "Official site \u00b7 Los Angeles Zoo",
+    "map_attribution": "Official site · Los Angeles Zoo",
     "print_map": "/field-pack/media/maps/la-zoo.jpg"
   },
   "parent_script": [
@@ -256,5 +266,6 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "research_notes": "map-page 2026-08-07"
+  "research_notes": "map-page 2026-08-07",
+  "list_confidence": "template"
 }

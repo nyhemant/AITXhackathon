@@ -41,7 +41,8 @@
         "question": "What did you notice about the Shark?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "shark"
+      "catalog_id": "shark",
+      "presence": "template"
     },
     {
       "id": "stingray",
@@ -63,7 +64,8 @@
         "question": "What did you notice about the Stingray?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "stingray"
+      "catalog_id": "stingray",
+      "presence": "template"
     },
     {
       "id": "jellyfish",
@@ -85,7 +87,8 @@
         "question": "What did you notice about the Jellyfish?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "jellyfish"
+      "catalog_id": "jellyfish",
+      "presence": "template"
     },
     {
       "id": "sea_turtle",
@@ -107,7 +110,8 @@
         "question": "What did you notice about the Sea turtle?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sea-turtle"
+      "catalog_id": "sea-turtle",
+      "presence": "template"
     },
     {
       "id": "octopus",
@@ -129,7 +133,8 @@
         "question": "What did you notice about the Octopus?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "octopus"
+      "catalog_id": "octopus",
+      "presence": "template"
     },
     {
       "id": "clownfish",
@@ -151,7 +156,8 @@
         "question": "What did you notice about the Clownfish?",
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
-      "catalog_id": "clownfish"
+      "catalog_id": "clownfish",
+      "presence": "template"
     },
     {
       "id": "seahorse",
@@ -173,7 +179,8 @@
         "question": "What did you notice about the Seahorse?",
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
-      "catalog_id": "seahorse"
+      "catalog_id": "seahorse",
+      "presence": "template"
     },
     {
       "id": "eel",
@@ -195,7 +202,8 @@
         "question": "What did you notice about the Eel?",
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
-      "catalog_id": "eel"
+      "catalog_id": "eel",
+      "presence": "template"
     },
     {
       "id": "crab",
@@ -217,7 +225,8 @@
         "question": "What did you notice about the Crab?",
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
-      "catalog_id": "crab"
+      "catalog_id": "crab",
+      "presence": "template"
     },
     {
       "id": "starfish",
@@ -241,7 +250,8 @@
         "question": "What did you notice about the Sea star?",
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
-      "catalog_id": "starfish"
+      "catalog_id": "starfish",
+      "presence": "template"
     },
     {
       "id": "freshwater_fish",
@@ -263,7 +273,8 @@
         "question": "What did you notice about the River / lake fish?",
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
-      "catalog_id": "freshwater-fish"
+      "catalog_id": "freshwater-fish",
+      "presence": "template"
     },
     {
       "id": "asian_small_clawed_otter",
@@ -288,7 +299,8 @@
         "question": "What did you notice about the Asian small-clawed otter?",
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
-      "catalog_id": "asian-small-clawed-otter"
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "template"
     }
   ],
   "content_mode": "hybrid",
@@ -309,5 +321,6 @@
     "stingray",
     "jellyfish"
   ],
-  "research_notes": "R2b 2026-08-07"
+  "research_notes": "R2b 2026-08-07",
+  "list_confidence": "template"
 }

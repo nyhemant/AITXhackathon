@@ -11,11 +11,11 @@
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Skansen \u2014 open-air museum + Nordic animals.",
+  "tagline": "Skansen — open-air museum + Nordic animals.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Djurg\u00e5rden island access.",
-    "transit_note": "Ferry/tram to Djurg\u00e5rden.",
+    "ticket_note": "Djurgården island access.",
+    "transit_note": "Ferry/tram to Djurgården.",
     "energy_note": "hills",
     "best_start": "Kid pace through yards + animal stops."
   },
@@ -23,7 +23,7 @@
     {
       "id": "cm_outdoor",
       "label": "Outdoor Area",
-      "emoji": "\ud83c\udf33",
+      "emoji": "🌳",
       "one_liner": "Outdoor cultural paths.",
       "tags": [
         "outdoor",
@@ -45,7 +45,7 @@
     {
       "id": "cm_free_explore",
       "label": "Free explore",
-      "emoji": "\ud83e\udded",
+      "emoji": "🧭",
       "one_liner": "They pick a cottage or animal stop.",
       "tags": [
         "play"
@@ -66,7 +66,7 @@
     {
       "id": "red_panda",
       "label": "Red panda",
-      "emoji": "\ud83e\udd8a",
+      "emoji": "🦊",
       "one_liner": "Red pandas if on animal route.",
       "tags": [
         "climb"
@@ -87,7 +87,7 @@
     {
       "id": "sci_hands_on",
       "label": "Hands-on lab",
-      "emoji": "\ud83d\udd2c",
+      "emoji": "🔬",
       "one_liner": "Hands-on kids corners.",
       "tags": [
         "hands"
@@ -108,7 +108,7 @@
     {
       "id": "cm_toddler_garden",
       "label": "Toddler Garden",
-      "emoji": "\ud83c\udf31",
+      "emoji": "🌱",
       "one_liner": "Softer resets.",
       "tags": [
         "rest",
@@ -130,8 +130,8 @@
     {
       "id": "african_lion",
       "label": "African lion",
-      "emoji": "\ud83e\udd81",
-      "one_liner": "Big cat of the grassland pride \u2014 mighty roar!",
+      "emoji": "🦁",
+      "one_liner": "Big cat of the grassland pride — mighty roar!",
       "tags": [
         "wow",
         "big-cats",
@@ -146,15 +146,15 @@
       "zone": "Grounds",
       "qa_card": {
         "question": "What is special about the African lion?",
-        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "african-lion"
     },
     {
       "id": "sumatran_tiger",
       "label": "Sumatran tiger",
-      "emoji": "\ud83d\udc2f",
-      "one_liner": "Stripy forest big cat \u2014 strong and stealthy.",
+      "emoji": "🐯",
+      "one_liner": "Stripy forest big cat — strong and stealthy.",
       "tags": [
         "wow",
         "big-cats",
@@ -171,15 +171,15 @@
       "zone": "Grounds",
       "qa_card": {
         "question": "What is special about the Sumatran tiger?",
-        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "sumatran-tiger"
     },
     {
       "id": "reticulated_giraffe",
       "label": "Reticulated giraffe",
-      "emoji": "\ud83e\udd92",
-      "one_liner": "Tallest animal on long legs \u2014 look up!",
+      "emoji": "🦒",
+      "one_liner": "Tallest animal on long legs — look up!",
       "tags": [
         "wow",
         "tall",
@@ -194,15 +194,15 @@
       "zone": "Grounds",
       "qa_card": {
         "question": "What is special about the Reticulated giraffe?",
-        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "reticulated-giraffe"
     },
     {
       "id": "african_elephant",
       "label": "African elephant",
-      "emoji": "\ud83d\udc18",
-      "one_liner": "Biggest land animal \u2014 trunk to grab, spray, and say hello.",
+      "emoji": "🐘",
+      "one_liner": "Biggest land animal — trunk to grab, spray, and say hello.",
       "tags": [
         "wow",
         "big",
@@ -218,14 +218,14 @@
       "zone": "Grounds",
       "qa_card": {
         "question": "What is special about the African elephant?",
-        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "african-elephant"
     },
     {
       "id": "western_lowland_gorilla",
       "label": "Western lowland gorilla",
-      "emoji": "\ud83e\udd8d",
+      "emoji": "🦍",
       "one_liner": "Strong gentle ape in family groups.",
       "tags": [
         "wow",
@@ -241,14 +241,14 @@
       "zone": "Grounds",
       "qa_card": {
         "question": "What is special about the Western lowland gorilla?",
-        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "western-lowland-gorilla"
     },
     {
       "id": "african_penguin",
       "label": "African penguin",
-      "emoji": "\ud83d\udc27",
+      "emoji": "🐧",
       "one_liner": "Waddle on land, zoom in water.",
       "tags": [
         "wow",
@@ -264,15 +264,15 @@
       "zone": "Grounds",
       "qa_card": {
         "question": "What is special about the African penguin?",
-        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "african-penguin"
     },
     {
       "id": "chimpanzee",
       "label": "Chimpanzee",
-      "emoji": "\ud83d\udc35",
-      "one_liner": "Smart forest ape \u2014 climbs and tools.",
+      "emoji": "🐵",
+      "one_liner": "Smart forest ape — climbs and tools.",
       "tags": [
         "wow",
         "outdoor",
@@ -290,15 +290,15 @@
       "zone": "Grounds",
       "qa_card": {
         "question": "What is special about the Chimpanzee?",
-        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "chimpanzee"
     },
     {
       "id": "zebra",
       "label": "Zebra",
-      "emoji": "\ud83e\udd93",
-      "one_liner": "Striped grassland runner \u2014 every pattern is unique.",
+      "emoji": "🦓",
+      "one_liner": "Striped grassland runner — every pattern is unique.",
       "tags": [
         "wow",
         "outdoor"
@@ -312,15 +312,15 @@
       "zone": "Grounds",
       "qa_card": {
         "question": "What is special about the Zebra?",
-        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "zebra"
     },
     {
       "id": "asian_small_clawed_otter",
       "label": "Asian small-clawed otter",
-      "emoji": "\ud83e\udda6",
-      "one_liner": "Playful swimmer \u2014 smallest otter.",
+      "emoji": "🦦",
+      "one_liner": "Playful swimmer — smallest otter.",
       "tags": [
         "wow",
         "water",
@@ -337,7 +337,7 @@
       "zone": "Grounds",
       "qa_card": {
         "question": "What is special about the Asian small-clawed otter?",
-        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "asian-small-clawed-otter"
     }
@@ -360,5 +360,6 @@
     "cm_free_explore",
     "red_panda"
   ],
-  "research_notes": "R2b 2026-08-07 \u00b7 map-page 2026-08-07"
+  "research_notes": "R2b 2026-08-07 · map-page 2026-08-07",
+  "list_confidence": "partial"
 }

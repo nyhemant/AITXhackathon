@@ -11,7 +11,7 @@
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Miami science + aquarium energy \u2014 planetarium optional, tanks and hands-on first.",
+  "tagline": "Miami science + aquarium energy — planetarium optional, tanks and hands-on first.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Museum Park; combine carefully with heat outside.",
@@ -23,7 +23,7 @@
     {
       "id": "shark",
       "label": "Shark",
-      "emoji": "\ud83e\udd88",
+      "emoji": "🦈",
       "one_liner": "Sharks in the multi-level aquarium experience.",
       "tags": [
         "water",
@@ -46,7 +46,7 @@
     {
       "id": "stingray",
       "label": "Stingray",
-      "emoji": "\u5c04\u7ebf",
+      "emoji": "射线",
       "one_liner": "Rays gliding in open tanks.",
       "tags": [
         "water",
@@ -68,7 +68,7 @@
     {
       "id": "sci_planet",
       "label": "Planet / space hall",
-      "emoji": "\ud83e\ude90",
+      "emoji": "🪐",
       "one_liner": "Space show if you added tickets.",
       "tags": [
         "wow"
@@ -89,7 +89,7 @@
     {
       "id": "sci_hands_on",
       "label": "Hands-on lab",
-      "emoji": "\ud83d\udd2c",
+      "emoji": "🔬",
       "one_liner": "Buttons, builds, and experiments.",
       "tags": [
         "hands",
@@ -111,7 +111,7 @@
     {
       "id": "jellyfish",
       "label": "Jellyfish",
-      "emoji": "\ud83c\udf90",
+      "emoji": "🎐",
       "one_liner": "Glow jellies for a calm pause.",
       "tags": [
         "water",
@@ -133,7 +133,7 @@
     {
       "id": "sci_aquarium_zone",
       "label": "Aquarium zone",
-      "emoji": "\ud83d\udc20",
+      "emoji": "🐠",
       "one_liner": "Tanks and swimmers inside a bigger museum day.",
       "tags": [
         "wow",
@@ -155,7 +155,7 @@
     {
       "id": "cm_makery",
       "label": "Creative Makery",
-      "emoji": "\ud83d\udd27",
+      "emoji": "🔧",
       "one_liner": "Build, invent, problem-solve with your hands.",
       "tags": [
         "wow",
@@ -178,8 +178,8 @@
     {
       "id": "cm_free_explore",
       "label": "Free explore",
-      "emoji": "\ud83e\udded",
-      "one_liner": "Their choice path \u2014 whatever pulled them in!",
+      "emoji": "🧭",
+      "one_liner": "Their choice path — whatever pulled them in!",
       "tags": [
         "wow",
         "outdoor"
@@ -200,8 +200,8 @@
     {
       "id": "sci_dinosaur",
       "label": "Dinosaur hall",
-      "emoji": "\ud83e\udd96",
-      "one_liner": "Bones, giants, and deep time \u2014 look up!",
+      "emoji": "🦖",
+      "one_liner": "Bones, giants, and deep time — look up!",
       "tags": [
         "wow",
         "read"
@@ -225,7 +225,7 @@
     "visitor_map_url": "/field-pack/media/maps/frost-science.jpg",
     "visitor_map_page": "https://www.frostscience.org/museum-map-and-guides/",
     "visitor_map_kind": "image",
-    "map_attribution": "Visit \u00b7 Phillip and Patricia Frost Museum of Science",
+    "map_attribution": "Visit · Phillip and Patricia Frost Museum of Science",
     "print_map": "/field-pack/media/maps/frost-science.jpg"
   },
   "parent_script": [
@@ -239,5 +239,6 @@
     "stingray",
     "sci_planet"
   ],
-  "research_notes": "R1 hybrid 2026-08-07 \u00b7 map-page 2026-08-07"
+  "research_notes": "R1 hybrid 2026-08-07 · map-page 2026-08-07",
+  "list_confidence": "partial"
 }

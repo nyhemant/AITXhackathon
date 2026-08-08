@@ -40,7 +40,8 @@
         "question": "What did you notice about the African lion?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "african-lion"
+      "catalog_id": "african-lion",
+      "presence": "template"
     },
     {
       "id": "sumatran_tiger",
@@ -62,7 +63,8 @@
         "question": "What did you notice about the Sumatran tiger?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sumatran-tiger"
+      "catalog_id": "sumatran-tiger",
+      "presence": "template"
     },
     {
       "id": "african_elephant",
@@ -83,7 +85,8 @@
         "question": "What did you notice about the African elephant?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "african-elephant"
+      "catalog_id": "african-elephant",
+      "presence": "template"
     },
     {
       "id": "zebra",
@@ -104,7 +107,8 @@
         "question": "What did you notice about the Zebra?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "zebra"
+      "catalog_id": "zebra",
+      "presence": "template"
     },
     {
       "id": "reticulated_giraffe",
@@ -125,7 +129,8 @@
         "question": "What did you notice about the Reticulated giraffe?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "reticulated-giraffe"
+      "catalog_id": "reticulated-giraffe",
+      "presence": "template"
     },
     {
       "id": "cheetah",
@@ -148,7 +153,8 @@
         "question": "What is special about the Cheetah?",
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
-      "catalog_id": "cheetah"
+      "catalog_id": "cheetah",
+      "presence": "template"
     },
     {
       "id": "western_lowland_gorilla",
@@ -171,7 +177,8 @@
         "question": "What is special about the Western lowland gorilla?",
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
-      "catalog_id": "western-lowland-gorilla"
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "template"
     },
     {
       "id": "chimpanzee",
@@ -197,7 +204,8 @@
         "question": "What is special about the Chimpanzee?",
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
-      "catalog_id": "chimpanzee"
+      "catalog_id": "chimpanzee",
+      "presence": "template"
     },
     {
       "id": "nile_hippo",
@@ -219,7 +227,8 @@
         "question": "What is special about the Nile hippo?",
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
-      "catalog_id": "nile-hippo"
+      "catalog_id": "nile-hippo",
+      "presence": "template"
     },
     {
       "id": "african_penguin",
@@ -242,7 +251,8 @@
         "question": "What is special about the African penguin?",
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
-      "catalog_id": "african-penguin"
+      "catalog_id": "african-penguin",
+      "presence": "template"
     },
     {
       "id": "ostrich",
@@ -264,7 +274,8 @@
         "question": "What is special about the Ostrich?",
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
-      "catalog_id": "ostrich"
+      "catalog_id": "ostrich",
+      "presence": "template"
     },
     {
       "id": "warthog",
@@ -287,7 +298,8 @@
         "question": "What is special about the Warthog?",
         "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
-      "catalog_id": "warthog"
+      "catalog_id": "warthog",
+      "presence": "template"
     }
   ],
   "content_mode": "hybrid",
@@ -308,5 +320,6 @@
     "sumatran_tiger",
     "african_elephant"
   ],
-  "research_notes": "R3 2026-08-07"
+  "research_notes": "R3 2026-08-07",
+  "list_confidence": "template"
 }

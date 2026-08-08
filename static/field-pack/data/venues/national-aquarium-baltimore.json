@@ -11,7 +11,7 @@
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Inner Harbor towers of tanks \u2014 sharks, dolphins energy, and jellies.",
+  "tagline": "Inner Harbor towers of tanks — sharks, dolphins energy, and jellies.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Timed tickets recommended on weekends.",
@@ -21,7 +21,7 @@
     {
       "id": "shark",
       "label": "Shark",
-      "emoji": "\ud83e\udd88",
+      "emoji": "🦈",
       "one_liner": "Sharks glide past floor-to-ceiling glass.",
       "tags": [
         "water",
@@ -44,7 +44,7 @@
     {
       "id": "stingray",
       "label": "Stingray",
-      "emoji": "\u5c04\u7ebf",
+      "emoji": "射线",
       "one_liner": "Rays sweep the sandy bottom.",
       "tags": [
         "water",
@@ -66,7 +66,7 @@
     {
       "id": "jellyfish",
       "label": "Jellyfish",
-      "emoji": "\ud83c\udf90",
+      "emoji": "🎐",
       "one_liner": "A whole floor of floating jellies.",
       "tags": [
         "water",
@@ -89,7 +89,7 @@
     {
       "id": "sea_turtle",
       "label": "Sea turtle",
-      "emoji": "\ud83d\udc22",
+      "emoji": "🐢",
       "one_liner": "Sea turtles share the big ocean habitats.",
       "tags": [
         "water",
@@ -111,7 +111,7 @@
     {
       "id": "octopus",
       "label": "Octopus",
-      "emoji": "\ud83d\udc19",
+      "emoji": "🐙",
       "one_liner": "Look for arms and camouflage.",
       "tags": [
         "water",
@@ -133,7 +133,7 @@
     {
       "id": "african_penguin",
       "label": "African penguin",
-      "emoji": "\ud83d\udc27",
+      "emoji": "🐧",
       "one_liner": "Penguins on the Atlantic coast story.",
       "tags": [
         "water",
@@ -155,7 +155,7 @@
     {
       "id": "clownfish",
       "label": "Clownfish",
-      "emoji": "\ud83d\udc20",
+      "emoji": "🐠",
       "one_liner": "Bright fish after the rainforest walk.",
       "tags": [
         "water",
@@ -177,7 +177,7 @@
     {
       "id": "seahorse",
       "label": "Seahorse",
-      "emoji": "\ud83c\udf0a",
+      "emoji": "🌊",
       "one_liner": "Tiny dragons of the tanks.",
       "tags": [
         "water",
@@ -199,7 +199,7 @@
     {
       "id": "starfish",
       "label": "Sea star",
-      "emoji": "\u2b50",
+      "emoji": "⭐",
       "one_liner": "Touch pool stars when open.",
       "tags": [
         "water",
@@ -221,7 +221,7 @@
     {
       "id": "eel",
       "label": "Eel",
-      "emoji": "\ud83d\udc0d",
+      "emoji": "🐍",
       "one_liner": "Long eels in rocky hideouts.",
       "tags": [
         "water",
@@ -246,7 +246,7 @@
     "visitor_map_url": "/field-pack/media/maps/national-aquarium-baltimore.jpg",
     "visitor_map_page": "https://aqua.org/",
     "visitor_map_kind": "image",
-    "map_attribution": "Official site \u00b7 National Aquarium",
+    "map_attribution": "Official site · National Aquarium",
     "print_map": "/field-pack/media/maps/national-aquarium-baltimore.jpg"
   },
   "parent_script": [
@@ -254,5 +254,6 @@
     "One big wow",
     "Snack when needed",
     "Leave while happy"
-  ]
+  ],
+  "list_confidence": "partial"
 }

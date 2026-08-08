@@ -3068,28 +3068,26 @@ window.FIELD_PACK_VENUES = {
     location: "Royal Oak, MI",
     website: "https://detroitzoo.org/",
     mapUrl: "https://detroitzoo.org/",
-    blurb: "Big campus with indoor highlights; use the train when energy dips.",
+    blurb: "Penguin Conservation Center, great apes, and arctic icons — no elephants (gone since 2005).",
     itemLabel: "animals",
+    // Presence-audited 2026-08-08 vs detroitzoo.org — do not re-add elephant/hippo/cheetah pack fillers
     featuredAnimalIds: [
       "african-penguin",
-      "african-elephant",
       "reticulated-giraffe",
-      "sumatran-tiger",
-      "red-panda"
+      "western-lowland-gorilla",
+      "african-lion",
+      "chimpanzee"
     ],
     animalIds: [
-      "african-elephant",
-      "reticulated-giraffe",
-      "african-lion",
-      "sumatran-tiger",
-      "western-lowland-gorilla",
       "african-penguin",
-      "cheetah",
-      "nile-hippo",
-      "caribbean-flamingo",
-      "two-toed-sloth",
+      "reticulated-giraffe",
+      "western-lowland-gorilla",
+      "african-lion",
+      "chimpanzee",
+      "sumatran-tiger",
+      "red-panda",
       "zebra",
-      "galapagos-tortoise"
+      "warthog"
     ],
     treasureHunt: [
       { id: "th1", text: "Find an animal taller than a grown-up" },
@@ -3101,7 +3099,7 @@ window.FIELD_PACK_VENUES = {
       { id: "th7", text: "Find bright feathers" },
       { id: "th8", text: "Photo your favorite animal" }
     ],
-    updated: "2026-08-02",
+    updated: "2026-08-08",
   },
   "milwaukee-zoo": {
     id: "milwaukee-zoo",

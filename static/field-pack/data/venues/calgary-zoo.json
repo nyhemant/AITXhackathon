@@ -11,20 +11,20 @@
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Calgary Zoo \u2014 Canadian wilds + destination exhibits; cold-weather planning.",
+  "tagline": "Calgary Zoo — Canadian wilds + destination exhibits; cold-weather planning.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Tickets online; weather drives the day.",
     "transit_note": "East of downtown.",
     "energy_note": "stroller-easy",
-    "best_start": "Panda/destination exhibits only if currently featured \u2014 else Africa icons."
+    "best_start": "Panda/destination exhibits only if currently featured — else Africa icons."
   },
   "items": [
     {
       "id": "giant_panda",
       "label": "Giant panda",
-      "emoji": "\ud83d\udc3c",
-      "one_liner": "Pandas when present \u2014 confirm before promising.",
+      "emoji": "🐼",
+      "one_liner": "Pandas when present — confirm before promising.",
       "tags": [
         "wow",
         "big"
@@ -40,12 +40,13 @@
         "question": "What did you notice about the Giant panda?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "giant-panda"
+      "catalog_id": "giant-panda",
+      "presence": "template"
     },
     {
       "id": "african_elephant",
       "label": "African elephant",
-      "emoji": "\ud83d\udc18",
+      "emoji": "🐘",
       "one_liner": "Elephants.",
       "tags": [
         "big",
@@ -62,12 +63,13 @@
         "question": "What did you notice about the African elephant?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "african-elephant"
+      "catalog_id": "african-elephant",
+      "presence": "template"
     },
     {
       "id": "reticulated_giraffe",
       "label": "Reticulated giraffe",
-      "emoji": "\ud83e\udd92",
+      "emoji": "🦒",
       "one_liner": "Giraffes.",
       "tags": [
         "tall"
@@ -83,12 +85,13 @@
         "question": "What did you notice about the Reticulated giraffe?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "reticulated-giraffe"
+      "catalog_id": "reticulated-giraffe",
+      "presence": "template"
     },
     {
       "id": "sumatran_tiger",
       "label": "Sumatran tiger",
-      "emoji": "\ud83d\udc2f",
+      "emoji": "🐯",
       "one_liner": "Tigers.",
       "tags": [
         "big-cats"
@@ -104,12 +107,13 @@
         "question": "What did you notice about the Sumatran tiger?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sumatran-tiger"
+      "catalog_id": "sumatran-tiger",
+      "presence": "template"
     },
     {
       "id": "western_lowland_gorilla",
       "label": "Western lowland gorilla",
-      "emoji": "\ud83e\udd8d",
+      "emoji": "🦍",
       "one_liner": "Gorillas.",
       "tags": [
         "primates"
@@ -125,13 +129,14 @@
         "question": "What did you notice about the Western lowland gorilla?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "western-lowland-gorilla"
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "template"
     },
     {
       "id": "african_lion",
       "label": "African lion",
-      "emoji": "\ud83e\udd81",
-      "one_liner": "Big cat of the grassland pride \u2014 mighty roar!",
+      "emoji": "🦁",
+      "one_liner": "Big cat of the grassland pride — mighty roar!",
       "tags": [
         "wow",
         "big-cats",
@@ -146,15 +151,16 @@
       "zone": "Grounds",
       "qa_card": {
         "question": "What is special about the African lion?",
-        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
-      "catalog_id": "african-lion"
+      "catalog_id": "african-lion",
+      "presence": "template"
     },
     {
       "id": "zebra",
       "label": "Zebra",
-      "emoji": "\ud83e\udd93",
-      "one_liner": "Striped grassland runner \u2014 every pattern is unique.",
+      "emoji": "🦓",
+      "one_liner": "Striped grassland runner — every pattern is unique.",
       "tags": [
         "wow",
         "outdoor"
@@ -168,15 +174,16 @@
       "zone": "Grounds",
       "qa_card": {
         "question": "What is special about the Zebra?",
-        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
-      "catalog_id": "zebra"
+      "catalog_id": "zebra",
+      "presence": "template"
     },
     {
       "id": "chimpanzee",
       "label": "Chimpanzee",
-      "emoji": "\ud83d\udc35",
-      "one_liner": "Smart forest ape \u2014 climbs and tools.",
+      "emoji": "🐵",
+      "one_liner": "Smart forest ape — climbs and tools.",
       "tags": [
         "wow",
         "outdoor",
@@ -194,15 +201,16 @@
       "zone": "Grounds",
       "qa_card": {
         "question": "What is special about the Chimpanzee?",
-        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
-      "catalog_id": "chimpanzee"
+      "catalog_id": "chimpanzee",
+      "presence": "template"
     },
     {
       "id": "red_panda",
       "label": "Red panda",
-      "emoji": "\ud83e\udd8a",
-      "one_liner": "Rusty tree-climber with a ringed tail \u2014 not a giant panda!",
+      "emoji": "🦊",
+      "one_liner": "Rusty tree-climber with a ringed tail — not a giant panda!",
       "tags": [
         "wow",
         "outdoor",
@@ -218,14 +226,15 @@
       "zone": "Grounds",
       "qa_card": {
         "question": "What is special about the Red panda?",
-        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
-      "catalog_id": "red-panda"
+      "catalog_id": "red-panda",
+      "presence": "template"
     },
     {
       "id": "african_penguin",
       "label": "African penguin",
-      "emoji": "\ud83d\udc27",
+      "emoji": "🐧",
       "one_liner": "Waddle on land, zoom in water.",
       "tags": [
         "wow",
@@ -241,14 +250,15 @@
       "zone": "Grounds",
       "qa_card": {
         "question": "What is special about the African penguin?",
-        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
-      "catalog_id": "african-penguin"
+      "catalog_id": "african-penguin",
+      "presence": "template"
     },
     {
       "id": "nile_hippo",
       "label": "Nile hippo",
-      "emoji": "\ud83e\udd9b",
+      "emoji": "🦛",
       "one_liner": "Huge river giant that loves the water.",
       "tags": [
         "wow",
@@ -263,15 +273,16 @@
       "zone": "Grounds",
       "qa_card": {
         "question": "What is special about the Nile hippo?",
-        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
-      "catalog_id": "nile-hippo"
+      "catalog_id": "nile-hippo",
+      "presence": "template"
     },
     {
       "id": "galapagos_tortoise",
-      "label": "Gal\u00e1pagos tortoise",
-      "emoji": "\ud83d\udc22",
-      "one_liner": "Giant tortoise \u2014 slow and steady.",
+      "label": "Galápagos tortoise",
+      "emoji": "🐢",
+      "one_liner": "Giant tortoise — slow and steady.",
       "tags": [
         "wow",
         "outdoor"
@@ -284,10 +295,11 @@
       ],
       "zone": "Grounds",
       "qa_card": {
-        "question": "What is special about the Gal\u00e1pagos tortoise?",
-        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
+        "question": "What is special about the Galápagos tortoise?",
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
-      "catalog_id": "galapagos-tortoise"
+      "catalog_id": "galapagos-tortoise",
+      "presence": "template"
     }
   ],
   "content_mode": "hybrid",
@@ -295,7 +307,7 @@
     "visitor_map_url": "/field-pack/media/maps/calgary-zoo.jpg",
     "visitor_map_page": "https://www.calgaryzoo.com/plan-your-visit/zoo-map/",
     "visitor_map_kind": "image",
-    "map_attribution": "Official map \u00b7 Calgary Zoo",
+    "map_attribution": "Official map · Calgary Zoo",
     "print_map": "/field-pack/media/maps/calgary-zoo.jpg"
   },
   "parent_script": [
@@ -309,5 +321,6 @@
     "african_elephant",
     "reticulated_giraffe"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 \u00b7 map-img 2026-08-07 \u00b7 map-page 2026-08-07"
+  "research_notes": "R2 hybrid 2026-08-07 · map-img 2026-08-07 · map-page 2026-08-07",
+  "list_confidence": "template"
 }

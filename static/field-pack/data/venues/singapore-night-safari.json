@@ -11,7 +11,7 @@
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Night Safari \u2014 after-dark tram + walking trails; different energy than day zoo.",
+  "tagline": "Night Safari — after-dark tram + walking trails; different energy than day zoo.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Evening tickets; tram seats fill.",
@@ -23,7 +23,7 @@
     {
       "id": "asian_small_clawed_otter",
       "label": "Asian small-clawed otter",
-      "emoji": "\ud83e\udda6",
+      "emoji": "🦦",
       "one_liner": "Otters and nocturnal bustle.",
       "tags": [
         "water",
@@ -41,12 +41,13 @@
         "question": "What did you notice about the Asian small-clawed otter?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "asian-small-clawed-otter"
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "template"
     },
     {
       "id": "sumatran_tiger",
       "label": "Sumatran tiger",
-      "emoji": "\ud83d\udc2f",
+      "emoji": "🐯",
       "one_liner": "Tigers in night lighting.",
       "tags": [
         "big-cats",
@@ -63,12 +64,13 @@
         "question": "What did you notice about the Sumatran tiger?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sumatran-tiger"
+      "catalog_id": "sumatran-tiger",
+      "presence": "template"
     },
     {
       "id": "african_elephant",
       "label": "African elephant",
-      "emoji": "\ud83d\udc18",
+      "emoji": "🐘",
       "one_liner": "Elephants on the night route.",
       "tags": [
         "big"
@@ -84,12 +86,13 @@
         "question": "What did you notice about the African elephant?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "african-elephant"
+      "catalog_id": "african-elephant",
+      "presence": "template"
     },
     {
       "id": "red_panda",
       "label": "Red panda",
-      "emoji": "\ud83e\udd8a",
+      "emoji": "🦊",
       "one_liner": "Red pandas if on walking trails.",
       "tags": [
         "climb"
@@ -105,12 +108,13 @@
         "question": "What did you notice about the Red panda?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "red-panda"
+      "catalog_id": "red-panda",
+      "presence": "template"
     },
     {
       "id": "zebra",
       "label": "Zebra",
-      "emoji": "\ud83e\udd93",
+      "emoji": "🦓",
       "one_liner": "Plains animals from the tram.",
       "tags": [
         "outdoor"
@@ -126,13 +130,14 @@
         "question": "What did you notice about the Zebra?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "zebra"
+      "catalog_id": "zebra",
+      "presence": "template"
     },
     {
       "id": "african_lion",
       "label": "African lion",
-      "emoji": "\ud83e\udd81",
-      "one_liner": "Big cat of the grassland pride \u2014 mighty roar!",
+      "emoji": "🦁",
+      "one_liner": "Big cat of the grassland pride — mighty roar!",
       "tags": [
         "wow",
         "big-cats",
@@ -147,15 +152,16 @@
       "zone": "Grounds",
       "qa_card": {
         "question": "What is special about the African lion?",
-        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
-      "catalog_id": "african-lion"
+      "catalog_id": "african-lion",
+      "presence": "template"
     },
     {
       "id": "reticulated_giraffe",
       "label": "Reticulated giraffe",
-      "emoji": "\ud83e\udd92",
-      "one_liner": "Tallest animal on long legs \u2014 look up!",
+      "emoji": "🦒",
+      "one_liner": "Tallest animal on long legs — look up!",
       "tags": [
         "wow",
         "tall",
@@ -170,15 +176,16 @@
       "zone": "Grounds",
       "qa_card": {
         "question": "What is special about the Reticulated giraffe?",
-        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
-      "catalog_id": "reticulated-giraffe"
+      "catalog_id": "reticulated-giraffe",
+      "presence": "template"
     },
     {
       "id": "chimpanzee",
       "label": "Chimpanzee",
-      "emoji": "\ud83d\udc35",
-      "one_liner": "Smart forest ape \u2014 climbs and tools.",
+      "emoji": "🐵",
+      "one_liner": "Smart forest ape — climbs and tools.",
       "tags": [
         "wow",
         "outdoor",
@@ -196,14 +203,15 @@
       "zone": "Grounds",
       "qa_card": {
         "question": "What is special about the Chimpanzee?",
-        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
-      "catalog_id": "chimpanzee"
+      "catalog_id": "chimpanzee",
+      "presence": "template"
     },
     {
       "id": "nile_hippo",
       "label": "Nile hippo",
-      "emoji": "\ud83e\udd9b",
+      "emoji": "🦛",
       "one_liner": "Huge river giant that loves the water.",
       "tags": [
         "wow",
@@ -218,14 +226,15 @@
       "zone": "Grounds",
       "qa_card": {
         "question": "What is special about the Nile hippo?",
-        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
-      "catalog_id": "nile-hippo"
+      "catalog_id": "nile-hippo",
+      "presence": "template"
     },
     {
       "id": "ring_tailed_lemur",
       "label": "Ring-tailed lemur",
-      "emoji": "\ud83d\udc12",
+      "emoji": "🐒",
       "one_liner": "Stripy tail from Madagascar.",
       "tags": [
         "wow",
@@ -241,9 +250,10 @@
       "zone": "Grounds",
       "qa_card": {
         "question": "What is special about the Ring-tailed lemur?",
-        "answer": "Tell a grown-up one thing you noticed \u2014 size, color, sound, or how it moves!"
+        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
-      "catalog_id": "ring-tailed-lemur"
+      "catalog_id": "ring-tailed-lemur",
+      "presence": "template"
     }
   ],
   "content_mode": "hybrid",
@@ -264,5 +274,6 @@
     "sumatran_tiger",
     "african_elephant"
   ],
-  "research_notes": "R3 2026-08-07 \u00b7 map-page 2026-08-07"
+  "research_notes": "R3 2026-08-07 · map-page 2026-08-07",
+  "list_confidence": "template"
 }

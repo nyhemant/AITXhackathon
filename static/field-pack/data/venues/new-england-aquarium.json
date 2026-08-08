@@ -11,7 +11,7 @@
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Boston harbor classic \u2014 giant ocean tank and penguin colony.",
+  "tagline": "Boston harbor classic — giant ocean tank and penguin colony.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Harbor location; combine with the waterfront walk.",
@@ -21,7 +21,7 @@
     {
       "id": "shark",
       "label": "Shark",
-      "emoji": "\ud83e\udd88",
+      "emoji": "🦈",
       "one_liner": "Look into the huge cylindrical tank from every level.",
       "tags": [
         "water",
@@ -44,7 +44,7 @@
     {
       "id": "sea_turtle",
       "label": "Sea turtle",
-      "emoji": "\ud83d\udc22",
+      "emoji": "🐢",
       "one_liner": "Sea turtles cruise the big blue cylinder.",
       "tags": [
         "water",
@@ -67,7 +67,7 @@
     {
       "id": "african_penguin",
       "label": "African penguin",
-      "emoji": "\ud83d\udc27",
+      "emoji": "🐧",
       "one_liner": "African penguins chatter and splash.",
       "tags": [
         "water",
@@ -89,7 +89,7 @@
     {
       "id": "jellyfish",
       "label": "Jellyfish",
-      "emoji": "\ud83c\udf90",
+      "emoji": "🎐",
       "one_liner": "Dark room, bright jellies.",
       "tags": [
         "water",
@@ -111,7 +111,7 @@
     {
       "id": "octopus",
       "label": "Octopus",
-      "emoji": "\ud83d\udc19",
+      "emoji": "🐙",
       "one_liner": "A clever octopus may be out exploring.",
       "tags": [
         "water",
@@ -134,8 +134,8 @@
     {
       "id": "stingray",
       "label": "Stingray",
-      "emoji": "\u5c04\u7ebf",
-      "one_liner": "Touch tank when open \u2014 soft ray wings.",
+      "emoji": "射线",
+      "one_liner": "Touch tank when open — soft ray wings.",
       "tags": [
         "water",
         "touch",
@@ -157,7 +157,7 @@
     {
       "id": "seahorse",
       "label": "Seahorse",
-      "emoji": "\ud83c\udf0a",
+      "emoji": "🌊",
       "one_liner": "Seahorses and seadragon cousins.",
       "tags": [
         "water",
@@ -179,8 +179,8 @@
     {
       "id": "clownfish",
       "label": "Clownfish",
-      "emoji": "\ud83d\udc20",
-      "one_liner": "Reef colors for a quick \u201cfind three colors\u201d game.",
+      "emoji": "🐠",
+      "one_liner": "Reef colors for a quick “find three colors” game.",
       "tags": [
         "water",
         "color"
@@ -201,7 +201,7 @@
     {
       "id": "starfish",
       "label": "Sea star",
-      "emoji": "\u2b50",
+      "emoji": "⭐",
       "one_liner": "Stars and crabs in rocky pools.",
       "tags": [
         "water",
@@ -223,7 +223,7 @@
     {
       "id": "eel",
       "label": "Eel",
-      "emoji": "\ud83d\udc0d",
+      "emoji": "🐍",
       "one_liner": "Long bodies tucked into rock homes.",
       "tags": [
         "water",
@@ -248,7 +248,7 @@
     "visitor_map_url": "/field-pack/media/maps/new-england-aquarium.jpg",
     "visitor_map_page": "https://www.neaq.org/visit/aquarium-map-and-daily-presentations/",
     "visitor_map_kind": "image",
-    "map_attribution": "Official site \u00b7 New England Aquarium",
+    "map_attribution": "Official site · New England Aquarium",
     "print_map": "/field-pack/media/maps/new-england-aquarium.jpg"
   },
   "parent_script": [
@@ -257,5 +257,6 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "research_notes": "map-img 2026-08-07 \u00b7 map-page 2026-08-07"
+  "research_notes": "map-img 2026-08-07 · map-page 2026-08-07",
+  "list_confidence": "partial"
 }

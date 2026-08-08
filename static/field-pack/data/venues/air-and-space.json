@@ -11,10 +11,10 @@
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Mall airplanes and space \u2014 rockets overhead, walk-under wow.",
+  "tagline": "Mall airplanes and space — rockets overhead, walk-under wow.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Free Smithsonian entry; timed if required \u2014 check airandspace.si.edu.",
+    "ticket_note": "Free Smithsonian entry; timed if required — check airandspace.si.edu.",
     "transit_note": "Mall or Udvar-Hazy (separate campus).",
     "energy_note": "indoor",
     "best_start": "One giant aircraft, then rest legs."
@@ -23,7 +23,7 @@
     {
       "id": "sci_rocket",
       "label": "Rockets & launch",
-      "emoji": "\ud83d\ude80",
+      "emoji": "🚀",
       "one_liner": "Stand under real flight hardware.",
       "tags": [
         "wow",
@@ -45,7 +45,7 @@
     {
       "id": "sci_shuttle",
       "label": "Space shuttle / orbiter",
-      "emoji": "\ud83d\udef0\ufe0f",
+      "emoji": "🛰️",
       "one_liner": "Orbiter or space hardware when on that campus.",
       "tags": [
         "wow"
@@ -66,7 +66,7 @@
     {
       "id": "sci_astronaut",
       "label": "Astronaut life",
-      "emoji": "\ud83e\uddd1\u200d\ud83d\ude80",
+      "emoji": "🧑‍🚀",
       "one_liner": "People who left Earth.",
       "tags": [
         "read",
@@ -88,7 +88,7 @@
     {
       "id": "sci_planet",
       "label": "Planet / space hall",
-      "emoji": "\ud83e\ude90",
+      "emoji": "🪐",
       "one_liner": "Planets and stars stories.",
       "tags": [
         "wow"
@@ -109,7 +109,7 @@
     {
       "id": "cm_free_explore",
       "label": "Free explore",
-      "emoji": "\ud83e\udded",
+      "emoji": "🧭",
       "one_liner": "They choose the next giant machine.",
       "tags": [
         "play"
@@ -130,8 +130,8 @@
     {
       "id": "sci_hands_on",
       "label": "Hands-on lab",
-      "emoji": "\ud83d\udd2c",
-      "one_liner": "Touch, test, build \u2014 science you can try.",
+      "emoji": "🔬",
+      "one_liner": "Touch, test, build — science you can try.",
       "tags": [
         "wow",
         "hands",
@@ -153,8 +153,8 @@
     {
       "id": "cm_outdoor",
       "label": "Outdoor Area",
-      "emoji": "\ud83c\udf33",
-      "one_liner": "Outside play \u2014 waterfall, nature, big body movement.",
+      "emoji": "🌳",
+      "one_liner": "Outside play — waterfall, nature, big body movement.",
       "tags": [
         "wow",
         "hands",
@@ -176,8 +176,8 @@
     {
       "id": "cm_imaginarium",
       "label": "Imaginarium",
-      "emoji": "\u2728",
-      "one_liner": "Multi-sensory world \u2014 explore, notice, imagine.",
+      "emoji": "✨",
+      "one_liner": "Multi-sensory world — explore, notice, imagine.",
       "tags": [
         "wow",
         "outdoor"
@@ -215,5 +215,6 @@
     "sci_shuttle",
     "sci_astronaut"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 \u00b7 web-map 2026-08-07"
+  "research_notes": "R2 hybrid 2026-08-07 · web-map 2026-08-07",
+  "list_confidence": "partial"
 }

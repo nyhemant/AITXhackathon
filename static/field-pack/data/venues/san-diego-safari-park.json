@@ -11,7 +11,7 @@
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Open-range Africa feel \u2014 tram views of herds, plus rhino and big cat energy.",
+  "tagline": "Open-range Africa feel — tram views of herds, plus rhino and big cat energy.",
   "practical": {
     "typical_duration": "half to full day",
     "ticket_note": "Separate ticket from the Zoo; arrive early for parking.",
@@ -21,7 +21,7 @@
     {
       "id": "reticulated_giraffe",
       "label": "Reticulated giraffe",
-      "emoji": "\ud83e\udd92",
+      "emoji": "🦒",
       "one_liner": "Giraffes on wide open savanna-style fields.",
       "tags": [
         "tall",
@@ -39,12 +39,13 @@
         "question": "What did you notice about the Reticulated giraffe?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "reticulated-giraffe"
+      "catalog_id": "reticulated-giraffe",
+      "presence": "template"
     },
     {
       "id": "african_elephant",
       "label": "African elephant",
-      "emoji": "\ud83d\udc18",
+      "emoji": "🐘",
       "one_liner": "Elephants with room to roam.",
       "tags": [
         "big",
@@ -62,12 +63,13 @@
         "question": "What did you notice about the African elephant?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "african-elephant"
+      "catalog_id": "african-elephant",
+      "presence": "template"
     },
     {
       "id": "zebra",
       "label": "Zebra",
-      "emoji": "\ud83e\udd93",
+      "emoji": "🦓",
       "one_liner": "Stripes in mixed herds from the tram or overlooks.",
       "tags": [
         "outdoor",
@@ -84,12 +86,13 @@
         "question": "What did you notice about the Zebra?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "zebra"
+      "catalog_id": "zebra",
+      "presence": "template"
     },
     {
       "id": "african_lion",
       "label": "African lion",
-      "emoji": "\ud83e\udd81",
+      "emoji": "🦁",
       "one_liner": "Lions overlooking the park hills.",
       "tags": [
         "big-cats",
@@ -107,13 +110,14 @@
         "question": "What did you notice about the African lion?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "african-lion"
+      "catalog_id": "african-lion",
+      "presence": "template"
     },
     {
       "id": "cheetah",
       "label": "Cheetah",
-      "emoji": "\ud83d\udc06",
-      "one_liner": "The speed specialist \u2014 often stretched out resting.",
+      "emoji": "🐆",
+      "one_liner": "The speed specialist — often stretched out resting.",
       "tags": [
         "big-cats",
         "outdoor"
@@ -129,12 +133,13 @@
         "question": "What did you notice about the Cheetah?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "cheetah"
+      "catalog_id": "cheetah",
+      "presence": "template"
     },
     {
       "id": "western_lowland_gorilla",
       "label": "Western lowland gorilla",
-      "emoji": "\ud83e\udd8d",
+      "emoji": "🦍",
       "one_liner": "Gorillas in a lush walk-through habitat.",
       "tags": [
         "outdoor",
@@ -151,12 +156,13 @@
         "question": "What did you notice about the Western lowland gorilla?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "western-lowland-gorilla"
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "template"
     },
     {
       "id": "nile_hippo",
       "label": "Nile hippo",
-      "emoji": "\ud83e\udd9b",
+      "emoji": "🦛",
       "one_liner": "Hippos near water when on view.",
       "tags": [
         "big",
@@ -174,12 +180,13 @@
         "question": "What did you notice about the Nile hippo?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "nile-hippo"
+      "catalog_id": "nile-hippo",
+      "presence": "template"
     },
     {
       "id": "sumatran_tiger",
       "label": "Sumatran tiger",
-      "emoji": "\ud83d\udc2f",
+      "emoji": "🐯",
       "one_liner": "Tigers on the Asian side of the park.",
       "tags": [
         "big-cats",
@@ -196,12 +203,13 @@
         "question": "What did you notice about the Sumatran tiger?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sumatran-tiger"
+      "catalog_id": "sumatran-tiger",
+      "presence": "template"
     },
     {
       "id": "ostrich",
       "label": "Ostrich",
-      "emoji": "\ud83e\udeb6",
+      "emoji": "🪶",
       "one_liner": "Giant birds strutting the plains.",
       "tags": [
         "outdoor",
@@ -218,12 +226,13 @@
         "question": "What did you notice about the Ostrich?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "ostrich"
+      "catalog_id": "ostrich",
+      "presence": "template"
     },
     {
       "id": "warthog",
       "label": "Warthog",
-      "emoji": "\ud83d\udc17",
+      "emoji": "🐗",
       "one_liner": "Funny faces and little tusks on the savanna.",
       "tags": [
         "outdoor"
@@ -239,7 +248,8 @@
         "question": "What did you notice about the Warthog?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "warthog"
+      "catalog_id": "warthog",
+      "presence": "template"
     }
   ],
   "content_mode": "curated",
@@ -247,7 +257,7 @@
     "visitor_map_url": "/field-pack/media/maps/san-diego-safari-park.jpg",
     "visitor_map_page": "https://sandiegozoowildlifealliance.org/sites/default/files/2025-03/7539_SP25_Map148-Park-WEB.pdf",
     "visitor_map_kind": "image",
-    "map_attribution": "Official map \u00b7 San Diego Zoo Safari Park",
+    "map_attribution": "Official map · San Diego Zoo Safari Park",
     "print_map": "/field-pack/media/maps/san-diego-safari-park.jpg"
   },
   "parent_script": [
@@ -256,5 +266,6 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "research_notes": "web-map 2026-08-07"
+  "research_notes": "web-map 2026-08-07",
+  "list_confidence": "template"
 }

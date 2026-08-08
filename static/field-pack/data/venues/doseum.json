@@ -11,9 +11,9 @@
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "San Antonio play museum \u2014 compact enough to finish with a smile.",
+  "tagline": "San Antonio play museum — compact enough to finish with a smile.",
   "practical": {
-    "typical_duration": "2\u20133 hours",
+    "typical_duration": "2–3 hours",
     "ticket_note": "Check thedoseum.org for tickets and member hours.",
     "transit_note": "Broadway corridor; parking nearby.",
     "energy_note": "indoor",
@@ -23,7 +23,7 @@
     {
       "id": "cm_makery",
       "label": "Creative Makery",
-      "emoji": "\ud83d\udd27",
+      "emoji": "🔧",
       "one_liner": "Hands-on create.",
       "tags": [
         "hands",
@@ -45,7 +45,7 @@
     {
       "id": "cm_imaginarium",
       "label": "Imaginarium",
-      "emoji": "\u2728",
+      "emoji": "✨",
       "one_liner": "Pretend play worlds.",
       "tags": [
         "play"
@@ -66,7 +66,7 @@
     {
       "id": "cm_waterfall",
       "label": "Waterfall play",
-      "emoji": "\ud83d\udca7",
+      "emoji": "💧",
       "one_liner": "Splash or sensory when open.",
       "tags": [
         "water",
@@ -88,7 +88,7 @@
     {
       "id": "cm_outdoor",
       "label": "Outdoor Area",
-      "emoji": "\ud83c\udf33",
+      "emoji": "🌳",
       "one_liner": "Burn energy outside if weather allows.",
       "tags": [
         "outdoor",
@@ -110,7 +110,7 @@
     {
       "id": "cm_toddler_garden",
       "label": "Toddler Garden",
-      "emoji": "\ud83c\udf31",
+      "emoji": "🌱",
       "one_liner": "Toddler-friendly corners.",
       "tags": [
         "rest",
@@ -132,8 +132,8 @@
     {
       "id": "cm_woven",
       "label": "Woven Wonders",
-      "emoji": "\ud83e\uddd7",
-      "one_liner": "Colorful climbing structure \u2014 art you can climb!",
+      "emoji": "🧗",
+      "one_liner": "Colorful climbing structure — art you can climb!",
       "tags": [
         "wow",
         "hands",
@@ -155,7 +155,7 @@
     {
       "id": "cm_art_lab",
       "label": "Art Lab",
-      "emoji": "\ud83c\udfa8",
+      "emoji": "🎨",
       "one_liner": "Come-and-go art and reading activities.",
       "tags": [
         "wow",
@@ -178,8 +178,8 @@
     {
       "id": "cm_free_explore",
       "label": "Free explore",
-      "emoji": "\ud83e\udded",
-      "one_liner": "Their choice path \u2014 whatever pulled them in!",
+      "emoji": "🧭",
+      "one_liner": "Their choice path — whatever pulled them in!",
       "tags": [
         "wow",
         "outdoor"
@@ -203,7 +203,7 @@
     "visitor_map_url": "/field-pack/media/maps/doseum.jpg",
     "visitor_map_page": "https://www.thedoseum.org/",
     "visitor_map_kind": "image",
-    "map_attribution": "Visit \u00b7 The DoSeum",
+    "map_attribution": "Visit · The DoSeum",
     "print_map": "/field-pack/media/maps/doseum.jpg"
   },
   "parent_script": [
@@ -217,5 +217,6 @@
     "cm_imaginarium",
     "cm_waterfall"
   ],
-  "research_notes": "R1 hybrid 2026-08-07 \u00b7 map-page 2026-08-07 \u00b7 web-map 2026-08-07"
+  "research_notes": "R1 hybrid 2026-08-07 · map-page 2026-08-07 · web-map 2026-08-07",
+  "list_confidence": "partial"
 }

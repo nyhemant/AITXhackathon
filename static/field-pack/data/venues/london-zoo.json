@@ -11,7 +11,7 @@
   "last_verified": "2026-08-07",
   "verified_by": "owner",
   "status": "verified",
-  "tagline": "Regent's Park wildlife \u2014 gorillas and penguins (elephants live at Whipsnade).",
+  "tagline": "Regent's Park wildlife — gorillas and penguins (elephants live at Whipsnade).",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Book timed tickets online; busy school holidays.",
@@ -21,7 +21,7 @@
     {
       "id": "gorilla",
       "label": "Gorilla (Gorilla Kingdom)",
-      "emoji": "\ud83e\udd8d",
+      "emoji": "🦍",
       "one_liner": "Meet the troop in Gorilla Kingdom.",
       "tags": [
         "primates",
@@ -44,7 +44,7 @@
     {
       "id": "penguin",
       "label": "Penguin",
-      "emoji": "\ud83d\udc27",
+      "emoji": "🐧",
       "one_liner": "Dive-and-waddle stars of the penguin beach.",
       "tags": [
         "birds",
@@ -63,7 +63,7 @@
     {
       "id": "tiger",
       "label": "Tiger",
-      "emoji": "\ud83d\udc2f",
+      "emoji": "🐯",
       "one_liner": "Stripes in the tiger territory.",
       "tags": [
         "big-cats",
@@ -82,7 +82,7 @@
     {
       "id": "lion",
       "label": "Lion",
-      "emoji": "\ud83e\udd81",
+      "emoji": "🦁",
       "one_liner": "Asiatic lions on the pride rocks.",
       "tags": [
         "big-cats",
@@ -101,7 +101,7 @@
     {
       "id": "sloth",
       "label": "Two-toed sloth",
-      "emoji": "\ud83e\udda5",
+      "emoji": "🦥",
       "one_liner": "Slow climber hanging upside down.",
       "tags": [
         "climb",
@@ -120,7 +120,7 @@
     {
       "id": "lemur",
       "label": "Lemur / Madagascar",
-      "emoji": "\ud83d\udc12",
+      "emoji": "🐒",
       "one_liner": "Stripy tails and island energy.",
       "tags": [
         "primates",
@@ -138,7 +138,7 @@
     {
       "id": "tortoise",
       "label": "Giant tortoise",
-      "emoji": "\ud83d\udc22",
+      "emoji": "🐢",
       "one_liner": "Ancient shells on the move.",
       "tags": [
         "slow",
@@ -156,7 +156,7 @@
     {
       "id": "otter",
       "label": "Otter",
-      "emoji": "\ud83e\udda6",
+      "emoji": "🦦",
       "one_liner": "Splashy play in the water.",
       "tags": [
         "water",
@@ -174,7 +174,7 @@
     {
       "id": "chimp",
       "label": "Monkey / ape friends",
-      "emoji": "\ud83d\udc35",
+      "emoji": "🐵",
       "one_liner": "Climbing primates beyond the gorillas.",
       "tags": [
         "primates",
@@ -192,8 +192,8 @@
     {
       "id": "capybara",
       "label": "Capybara area",
-      "emoji": "\ud83d\udc39",
-      "one_liner": "World's largest rodent \u2014 chill by the water.",
+      "emoji": "🐹",
+      "one_liner": "World's largest rodent — chill by the water.",
       "tags": [
         "outdoor",
         "cute"
@@ -208,7 +208,7 @@
     {
       "id": "butterfly-or-indoor",
       "label": "Indoor rainforest moments",
-      "emoji": "\ud83c\udf3f",
+      "emoji": "🌿",
       "one_liner": "Warm indoor habitats when London is rainy.",
       "tags": [
         "indoor",
@@ -224,7 +224,7 @@
     {
       "id": "play",
       "label": "Play / under-5 reset",
-      "emoji": "\ud83d\udedd",
+      "emoji": "🛝",
       "one_liner": "Burn energy, then back on the path.",
       "tags": [
         "kids",
@@ -242,7 +242,7 @@
     "visitor_map_url": "/field-pack/media/maps/london-zoo.jpg",
     "visitor_map_page": "https://cms.londonzoo.org/sites/default/files/2025-11/LZ%20Map%20Nov%202025.pdf",
     "visitor_map_kind": "image",
-    "map_attribution": "Official map \u00b7 London Zoo",
+    "map_attribution": "Official map · London Zoo",
     "print_map": "/field-pack/media/maps/london-zoo.jpg"
   },
   "parent_script": [
@@ -251,5 +251,6 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "research_notes": "web-map 2026-08-07"
+  "research_notes": "web-map 2026-08-07",
+  "list_confidence": "partial"
 }

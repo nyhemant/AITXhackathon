@@ -11,7 +11,7 @@
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Downtown Dallas rainforest-under-a-roof \u2014 sloths, fish, and vertical wow.",
+  "tagline": "Downtown Dallas rainforest-under-a-roof — sloths, fish, and vertical wow.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Downtown parking; check dwazoo.com.",
@@ -23,7 +23,7 @@
     {
       "id": "two_toed_sloth",
       "label": "Two-toed sloth",
-      "emoji": "\ud83e\udda5",
+      "emoji": "🦥",
       "one_liner": "Sloths hanging in the greenery.",
       "tags": [
         "climb",
@@ -40,12 +40,13 @@
         "question": "What did you notice about the Two-toed sloth?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "two-toed-sloth"
+      "catalog_id": "two-toed-sloth",
+      "presence": "template"
     },
     {
       "id": "shark",
       "label": "Shark",
-      "emoji": "\ud83e\udd88",
+      "emoji": "🦈",
       "one_liner": "Sharks in the aquatic sections.",
       "tags": [
         "water",
@@ -62,12 +63,13 @@
         "question": "What did you notice about the Shark?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "shark"
+      "catalog_id": "shark",
+      "presence": "template"
     },
     {
       "id": "stingray",
       "label": "Stingray",
-      "emoji": "\u5c04\u7ebf",
+      "emoji": "射线",
       "one_liner": "Rays gliding past.",
       "tags": [
         "water",
@@ -84,12 +86,13 @@
         "question": "What did you notice about the Stingray?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "stingray"
+      "catalog_id": "stingray",
+      "presence": "template"
     },
     {
       "id": "ring_tailed_lemur",
       "label": "Ring-tailed lemur",
-      "emoji": "\ud83d\udc12",
+      "emoji": "🐒",
       "one_liner": "Lemur energy in rainforest settings.",
       "tags": [
         "primates",
@@ -106,12 +109,13 @@
         "question": "What did you notice about the Ring-tailed lemur?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "ring-tailed-lemur"
+      "catalog_id": "ring-tailed-lemur",
+      "presence": "template"
     },
     {
       "id": "jellyfish",
       "label": "Jellyfish",
-      "emoji": "\ud83c\udf90",
+      "emoji": "🎐",
       "one_liner": "Glow pause if present.",
       "tags": [
         "water",
@@ -128,12 +132,13 @@
         "question": "What did you notice about the Jellyfish?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "jellyfish"
+      "catalog_id": "jellyfish",
+      "presence": "template"
     },
     {
       "id": "seahorse",
       "label": "Seahorse",
-      "emoji": "\ud83c\udf0a",
+      "emoji": "🌊",
       "one_liner": "Tiny upright swimmer that holds on with its tail.",
       "tags": [
         "wow",
@@ -150,13 +155,14 @@
         "question": "What did you notice about the Seahorse?",
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
-      "catalog_id": "seahorse"
+      "catalog_id": "seahorse",
+      "presence": "template"
     },
     {
       "id": "clownfish",
       "label": "Clownfish",
-      "emoji": "\ud83d\udc20",
-      "one_liner": "Bright reef fish \u2014 friends with anemones.",
+      "emoji": "🐠",
+      "one_liner": "Bright reef fish — friends with anemones.",
       "tags": [
         "wow",
         "water"
@@ -172,13 +178,14 @@
         "question": "What did you notice about the Clownfish?",
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
-      "catalog_id": "clownfish"
+      "catalog_id": "clownfish",
+      "presence": "template"
     },
     {
       "id": "sea_turtle",
       "label": "Sea turtle",
-      "emoji": "\ud83d\udc22",
-      "one_liner": "Shelled ocean traveler \u2014 flippers for swimming.",
+      "emoji": "🐢",
+      "one_liner": "Shelled ocean traveler — flippers for swimming.",
       "tags": [
         "wow",
         "water",
@@ -195,13 +202,14 @@
         "question": "What did you notice about the Sea turtle?",
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
-      "catalog_id": "sea-turtle"
+      "catalog_id": "sea-turtle",
+      "presence": "template"
     },
     {
       "id": "octopus",
       "label": "Octopus",
-      "emoji": "\ud83d\udc19",
-      "one_liner": "Eight arms and a big brain \u2014 master of hide-and-seek.",
+      "emoji": "🐙",
+      "one_liner": "Eight arms and a big brain — master of hide-and-seek.",
       "tags": [
         "wow",
         "water"
@@ -217,13 +225,14 @@
         "question": "What did you notice about the Octopus?",
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
-      "catalog_id": "octopus"
+      "catalog_id": "octopus",
+      "presence": "template"
     },
     {
       "id": "eel",
       "label": "Eel",
-      "emoji": "\ud83d\udc0d",
-      "one_liner": "Long snaky fish \u2014 loves rocky hidey-holes.",
+      "emoji": "🐍",
+      "one_liner": "Long snaky fish — loves rocky hidey-holes.",
       "tags": [
         "wow",
         "water"
@@ -239,12 +248,13 @@
         "question": "What did you notice about the Eel?",
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
-      "catalog_id": "eel"
+      "catalog_id": "eel",
+      "presence": "template"
     },
     {
       "id": "crab",
       "label": "Crab",
-      "emoji": "\ud83e\udd80",
+      "emoji": "🦀",
       "one_liner": "Sideways walker with a hard shell and pinchers.",
       "tags": [
         "wow",
@@ -261,13 +271,14 @@
         "question": "What did you notice about the Crab?",
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
-      "catalog_id": "crab"
+      "catalog_id": "crab",
+      "presence": "template"
     },
     {
       "id": "starfish",
       "label": "Sea star",
-      "emoji": "\u2b50",
-      "one_liner": "Star-shaped ocean friend \u2014 often in touch tanks.",
+      "emoji": "⭐",
+      "one_liner": "Star-shaped ocean friend — often in touch tanks.",
       "tags": [
         "wow",
         "outdoor",
@@ -285,13 +296,14 @@
         "question": "What did you notice about the Sea star?",
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
-      "catalog_id": "starfish"
+      "catalog_id": "starfish",
+      "presence": "template"
     },
     {
       "id": "freshwater_fish",
       "label": "River / lake fish",
-      "emoji": "\ud83d\udc1f",
-      "one_liner": "Fish that live in fresh water \u2014 rivers, lakes, ponds.",
+      "emoji": "🐟",
+      "one_liner": "Fish that live in fresh water — rivers, lakes, ponds.",
       "tags": [
         "wow",
         "water"
@@ -307,13 +319,14 @@
         "question": "What did you notice about the River / lake fish?",
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
-      "catalog_id": "freshwater-fish"
+      "catalog_id": "freshwater-fish",
+      "presence": "template"
     },
     {
       "id": "asian_small_clawed_otter",
       "label": "Asian small-clawed otter",
-      "emoji": "\ud83e\udda6",
-      "one_liner": "Playful swimmer \u2014 smallest otter.",
+      "emoji": "🦦",
+      "one_liner": "Playful swimmer — smallest otter.",
       "tags": [
         "wow",
         "water",
@@ -332,7 +345,8 @@
         "question": "What did you notice about the Asian small-clawed otter?",
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
-      "catalog_id": "asian-small-clawed-otter"
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "template"
     }
   ],
   "content_mode": "hybrid",
@@ -354,5 +368,6 @@
     "shark",
     "stingray"
   ],
-  "research_notes": "R2 hybrid 2026-08-07"
+  "research_notes": "R2 hybrid 2026-08-07",
+  "list_confidence": "template"
 }

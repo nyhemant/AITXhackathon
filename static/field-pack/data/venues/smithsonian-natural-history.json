@@ -11,7 +11,7 @@
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Mall fossils and ocean hall \u2014 free, crowded, finishable if you pick two halls.",
+  "tagline": "Mall fossils and ocean hall — free, crowded, finishable if you pick two halls.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Free; lines at peak times.",
@@ -23,7 +23,7 @@
     {
       "id": "sci_dinosaur",
       "label": "Dinosaur hall",
-      "emoji": "\ud83e\udd96",
+      "emoji": "🦖",
       "one_liner": "Deep-time bones for instant wow.",
       "tags": [
         "wow",
@@ -45,7 +45,7 @@
     {
       "id": "sci_mammal_hall",
       "label": "Animal / mammal hall",
-      "emoji": "\ud83e\udd8c",
+      "emoji": "🦌",
       "one_liner": "Classic dioramas and big animals.",
       "tags": [
         "wow"
@@ -66,7 +66,7 @@
     {
       "id": "sci_aquarium_zone",
       "label": "Aquarium zone",
-      "emoji": "\ud83d\udc20",
+      "emoji": "🐠",
       "one_liner": "Ocean hall energy when open.",
       "tags": [
         "water",
@@ -88,7 +88,7 @@
     {
       "id": "sci_hands_on",
       "label": "Hands-on lab",
-      "emoji": "\ud83d\udd2c",
+      "emoji": "🔬",
       "one_liner": "Hands-on corners when available.",
       "tags": [
         "hands"
@@ -109,7 +109,7 @@
     {
       "id": "cm_free_explore",
       "label": "Free explore",
-      "emoji": "\ud83e\udded",
+      "emoji": "🧭",
       "one_liner": "Five minutes their choice.",
       "tags": [
         "play"
@@ -130,7 +130,7 @@
     {
       "id": "sci_planet",
       "label": "Planet / space hall",
-      "emoji": "\ud83e\ude90",
+      "emoji": "🪐",
       "one_liner": "Planets, stars, and big sky questions.",
       "tags": [
         "wow",
@@ -153,8 +153,8 @@
     {
       "id": "cm_imaginarium",
       "label": "Imaginarium",
-      "emoji": "\u2728",
-      "one_liner": "Multi-sensory world \u2014 explore, notice, imagine.",
+      "emoji": "✨",
+      "one_liner": "Multi-sensory world — explore, notice, imagine.",
       "tags": [
         "wow",
         "outdoor"
@@ -175,8 +175,8 @@
     {
       "id": "sci_rainforest",
       "label": "Rainforest dome",
-      "emoji": "\ud83c\udf3f",
-      "one_liner": "Warm, green, and full of life \u2014 look for layers of plants.",
+      "emoji": "🌿",
+      "one_liner": "Warm, green, and full of life — look for layers of plants.",
       "tags": [
         "wow",
         "rest",
@@ -201,7 +201,7 @@
     "visitor_map_url": "",
     "visitor_map_page": "https://naturalhistory.si.edu/visit/map",
     "visitor_map_kind": "page",
-    "map_attribution": "Official map \u00b7 National Museum of Natural History"
+    "map_attribution": "Official map · National Museum of Natural History"
   },
   "parent_script": [
     "Bathroom first",
@@ -214,5 +214,6 @@
     "sci_mammal_hall",
     "sci_aquarium_zone"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 \u00b7 web-map 2026-08-07"
+  "research_notes": "R2 hybrid 2026-08-07 · web-map 2026-08-07",
+  "list_confidence": "partial"
 }

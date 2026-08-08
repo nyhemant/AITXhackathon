@@ -11,7 +11,7 @@
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Lakefront Chicago \u2014 sharks, jellies, and a one-page sea hunt.",
+  "tagline": "Lakefront Chicago — sharks, jellies, and a one-page sea hunt.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "CityPASS and timed tickets available; weekends busy.",
@@ -21,7 +21,7 @@
     {
       "id": "shark",
       "label": "Shark",
-      "emoji": "\ud83e\udd88",
+      "emoji": "🦈",
       "one_liner": "Sharks cruise the big reef windows.",
       "tags": [
         "water",
@@ -44,7 +44,7 @@
     {
       "id": "stingray",
       "label": "Stingray",
-      "emoji": "\u5c04\u7ebf",
+      "emoji": "射线",
       "one_liner": "Flat rays glide over the sand.",
       "tags": [
         "water",
@@ -66,7 +66,7 @@
     {
       "id": "jellyfish",
       "label": "Jellyfish",
-      "emoji": "\ud83c\udf90",
+      "emoji": "🎐",
       "one_liner": "Quiet glowing jellies for a calm pause.",
       "tags": [
         "water",
@@ -88,7 +88,7 @@
     {
       "id": "sea_turtle",
       "label": "Sea turtle",
-      "emoji": "\ud83d\udc22",
+      "emoji": "🐢",
       "one_liner": "Sea turtles share the circular reef tank.",
       "tags": [
         "water",
@@ -110,7 +110,7 @@
     {
       "id": "african_penguin",
       "label": "African penguin",
-      "emoji": "\ud83d\udc27",
+      "emoji": "🐧",
       "one_liner": "Penguins waddle and zoom underwater.",
       "tags": [
         "water",
@@ -132,7 +132,7 @@
     {
       "id": "octopus",
       "label": "Octopus",
-      "emoji": "\ud83d\udc19",
+      "emoji": "🐙",
       "one_liner": "Look for an octopus that can vanish in plain sight.",
       "tags": [
         "water",
@@ -154,7 +154,7 @@
     {
       "id": "clownfish",
       "label": "Clownfish",
-      "emoji": "\ud83d\udc20",
+      "emoji": "🐠",
       "one_liner": "Bright little reef fish for a color hunt.",
       "tags": [
         "water",
@@ -176,8 +176,8 @@
     {
       "id": "seahorse",
       "label": "Seahorse",
-      "emoji": "\ud83c\udf0a",
-      "one_liner": "Tiny upright swimmers \u2014 patience pays off.",
+      "emoji": "🌊",
+      "one_liner": "Tiny upright swimmers — patience pays off.",
       "tags": [
         "water",
         "tiny"
@@ -198,8 +198,8 @@
     {
       "id": "asian_small_clawed_otter",
       "label": "Asian small-clawed otter",
-      "emoji": "\ud83e\udda6",
-      "one_liner": "Otter energy if they\u2019re on exhibit that day.",
+      "emoji": "🦦",
+      "one_liner": "Otter energy if they’re on exhibit that day.",
       "tags": [
         "water",
         "play"
@@ -220,8 +220,8 @@
     {
       "id": "starfish",
       "label": "Sea star",
-      "emoji": "\u2b50",
-      "one_liner": "Touch pools when open \u2014 gentle hands only.",
+      "emoji": "⭐",
+      "one_liner": "Touch pools when open — gentle hands only.",
       "tags": [
         "water",
         "touch"
@@ -245,7 +245,7 @@
     "visitor_map_url": "",
     "visitor_map_page": "https://www.sheddaquarium.org/map",
     "visitor_map_kind": "page",
-    "map_attribution": "Official map \u00b7 Shedd Aquarium"
+    "map_attribution": "Official map · Shedd Aquarium"
   },
   "parent_script": [
     "Bathroom first",
@@ -253,5 +253,6 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "research_notes": "web-map 2026-08-07"
+  "research_notes": "web-map 2026-08-07",
+  "list_confidence": "partial"
 }

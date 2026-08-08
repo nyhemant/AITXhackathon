@@ -1,6 +1,23 @@
-# Venue shortlist candidate database (reference only)
+# Venue data & presence confidence
 
-**Not wired into the live app.** Used for content planning and accuracy work.
+## Live print lists (`venues/*.json`)
+
+Authoritative for mission sheets and SEO start-here cards.
+
+| Field | Meaning |
+|-------|---------|
+| `list_confidence` | `audited` · `partial` · `template` |
+| `items[].presence` | `verified` · `high` · `medium` · `template` · `absent` |
+| `do_not_list` | Never print these names/catalog ids |
+| `last_presence_audit` | Date of collection check |
+
+**Engine rule:** named finds need `presence` ≥ high/verified (or venue `audited` / owner `partial` grandfather). Template zoo packs render **wonder** finds until audited.
+
+Report: `python3 scripts/audit_presence_report.py`
+
+## Shortlist candidates (planning only)
+
+**Partially wired** via manual audits → `venues/*.json`. Used for content planning and accuracy work.
 
 ## Files
 | File | Use |

@@ -11,10 +11,10 @@
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Charles River science \u2014 hands-on halls and optional planetarium/IMAX add-ons.",
+  "tagline": "Charles River science — hands-on halls and optional planetarium/IMAX add-ons.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Add-ons (planetarium/OMNI) are separate \u2014 don\u2019t overbuy.",
+    "ticket_note": "Add-ons (planetarium/OMNI) are separate — don’t overbuy.",
     "transit_note": "Science Park / West End; garage parking.",
     "energy_note": "indoor",
     "best_start": "Hands-on galleries first; show tickets only if energy allows."
@@ -23,7 +23,7 @@
     {
       "id": "sci_hands_on",
       "label": "Hands-on lab",
-      "emoji": "\ud83d\udd2c",
+      "emoji": "🔬",
       "one_liner": "Buttons, builds, and live demos energy.",
       "tags": [
         "hands",
@@ -46,7 +46,7 @@
     {
       "id": "sci_planet",
       "label": "Planet / space hall",
-      "emoji": "\ud83e\ude90",
+      "emoji": "🪐",
       "one_liner": "Space show if ticketed.",
       "tags": [
         "wow"
@@ -67,7 +67,7 @@
     {
       "id": "sci_dinosaur",
       "label": "Dinosaur hall",
-      "emoji": "\ud83e\udd96",
+      "emoji": "🦖",
       "one_liner": "Dino moments when on the route.",
       "tags": [
         "read",
@@ -89,7 +89,7 @@
     {
       "id": "sci_aquarium_zone",
       "label": "Aquarium zone",
-      "emoji": "\ud83d\udc20",
+      "emoji": "🐠",
       "one_liner": "Small live collections inside science floors.",
       "tags": [
         "water"
@@ -110,7 +110,7 @@
     {
       "id": "cm_free_explore",
       "label": "Free explore",
-      "emoji": "\ud83e\udded",
+      "emoji": "🧭",
       "one_liner": "Kid picks the next hall for five minutes.",
       "tags": [
         "play"
@@ -131,7 +131,7 @@
     {
       "id": "cm_makery",
       "label": "Creative Makery",
-      "emoji": "\ud83d\udd27",
+      "emoji": "🔧",
       "one_liner": "Build, invent, problem-solve with your hands.",
       "tags": [
         "wow",
@@ -154,8 +154,8 @@
     {
       "id": "cm_imaginarium",
       "label": "Imaginarium",
-      "emoji": "\u2728",
-      "one_liner": "Multi-sensory world \u2014 explore, notice, imagine.",
+      "emoji": "✨",
+      "one_liner": "Multi-sensory world — explore, notice, imagine.",
       "tags": [
         "wow",
         "outdoor"
@@ -176,8 +176,8 @@
     {
       "id": "sci_shuttle",
       "label": "Space shuttle / orbiter",
-      "emoji": "\ud83d\udef0\ufe0f",
-      "one_liner": "A real flying machine that went to space \u2014 walk around it.",
+      "emoji": "🛰️",
+      "one_liner": "A real flying machine that went to space — walk around it.",
       "tags": [
         "wow",
         "read"
@@ -198,7 +198,7 @@
     {
       "id": "sci_rocket",
       "label": "Rockets & launch",
-      "emoji": "\ud83d\ude80",
+      "emoji": "🚀",
       "one_liner": "Tall rockets and the power of liftoff.",
       "tags": [
         "wow",
@@ -223,7 +223,7 @@
     "visitor_map_url": "/field-pack/media/maps/museum-of-science-boston.jpg",
     "visitor_map_page": "https://www.mos.org/visit/map",
     "visitor_map_kind": "image",
-    "map_attribution": "Official map \u00b7 Museum of Science",
+    "map_attribution": "Official map · Museum of Science",
     "print_map": "/field-pack/media/maps/museum-of-science-boston.jpg"
   },
   "parent_script": [
@@ -237,5 +237,6 @@
     "sci_planet",
     "sci_dinosaur"
   ],
-  "research_notes": "R1 hybrid 2026-08-07 \u00b7 map-img 2026-08-07 \u00b7 map-page 2026-08-07"
+  "research_notes": "R1 hybrid 2026-08-07 · map-img 2026-08-07 · map-page 2026-08-07",
+  "list_confidence": "partial"
 }

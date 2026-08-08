@@ -11,17 +11,17 @@
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Desert Dome + jungle + aquarium \u2014 three \u201cworlds\u201d in one ticket.",
+  "tagline": "Desert Dome + jungle + aquarium — three “worlds” in one ticket.",
   "practical": {
     "typical_duration": "full day ideal; half day if you pick two worlds",
-    "ticket_note": "One of the great Midwest zoo days \u2014 arrive at open.",
+    "ticket_note": "One of the great Midwest zoo days — arrive at open.",
     "transit_note": "Omaha; car day."
   },
   "items": [
     {
       "id": "african_elephant",
       "label": "African elephant",
-      "emoji": "\ud83d\udc18",
+      "emoji": "🐘",
       "one_liner": "Elephants outdoors when weather allows.",
       "tags": [
         "big",
@@ -38,12 +38,13 @@
         "question": "What did you notice about the African elephant?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "african-elephant"
+      "catalog_id": "african-elephant",
+      "presence": "template"
     },
     {
       "id": "western_lowland_gorilla",
       "label": "Western lowland gorilla",
-      "emoji": "\ud83e\udd8d",
+      "emoji": "🦍",
       "one_liner": "Gorillas after the jungle wow.",
       "tags": [
         "primates",
@@ -60,12 +61,13 @@
         "question": "What did you notice about the Western lowland gorilla?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "western-lowland-gorilla"
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "template"
     },
     {
       "id": "sumatran_tiger",
       "label": "Sumatran tiger",
-      "emoji": "\ud83d\udc2f",
+      "emoji": "🐯",
       "one_liner": "Tigers in forested cat habitats.",
       "tags": [
         "big-cats",
@@ -82,12 +84,13 @@
         "question": "What did you notice about the Sumatran tiger?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sumatran-tiger"
+      "catalog_id": "sumatran-tiger",
+      "presence": "template"
     },
     {
       "id": "african_lion",
       "label": "African lion",
-      "emoji": "\ud83e\udd81",
+      "emoji": "🦁",
       "one_liner": "Lions on the grasslands.",
       "tags": [
         "big-cats",
@@ -104,12 +107,13 @@
         "question": "What did you notice about the African lion?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "african-lion"
+      "catalog_id": "african-lion",
+      "presence": "template"
     },
     {
       "id": "reticulated_giraffe",
       "label": "Reticulated giraffe",
-      "emoji": "\ud83e\udd92",
+      "emoji": "🦒",
       "one_liner": "Giraffe feeding opportunities some days.",
       "tags": [
         "tall",
@@ -127,12 +131,13 @@
         "question": "What did you notice about the Reticulated giraffe?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "reticulated-giraffe"
+      "catalog_id": "reticulated-giraffe",
+      "presence": "template"
     },
     {
       "id": "shark",
       "label": "Shark",
-      "emoji": "\ud83e\udd88",
+      "emoji": "🦈",
       "one_liner": "Sharks in the indoor aquarium wing.",
       "tags": [
         "water",
@@ -150,12 +155,13 @@
         "question": "What did you notice about the Shark?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "shark"
+      "catalog_id": "shark",
+      "presence": "template"
     },
     {
       "id": "stingray",
       "label": "Stingray",
-      "emoji": "\u5c04\u7ebf",
+      "emoji": "射线",
       "one_liner": "Rays in the aquarium galleries.",
       "tags": [
         "water",
@@ -172,12 +178,13 @@
         "question": "What did you notice about the Stingray?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "stingray"
+      "catalog_id": "stingray",
+      "presence": "template"
     },
     {
       "id": "african_penguin",
       "label": "African penguin",
-      "emoji": "\ud83d\udc27",
+      "emoji": "🐧",
       "one_liner": "Penguins as a cool-down stop.",
       "tags": [
         "water",
@@ -194,12 +201,13 @@
         "question": "What did you notice about the African penguin?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "african-penguin"
+      "catalog_id": "african-penguin",
+      "presence": "template"
     },
     {
       "id": "jellyfish",
       "label": "Jellyfish",
-      "emoji": "\ud83c\udf90",
+      "emoji": "🎐",
       "one_liner": "Jellies inside the dome complex story.",
       "tags": [
         "water",
@@ -216,12 +224,13 @@
         "question": "What did you notice about the Jellyfish?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "jellyfish"
+      "catalog_id": "jellyfish",
+      "presence": "template"
     },
     {
       "id": "orangutan",
       "label": "Orangutan",
-      "emoji": "\ud83e\udda7",
+      "emoji": "🦧",
       "one_liner": "Orangutans in lush indoor-outdoor spaces.",
       "tags": [
         "primates",
@@ -238,7 +247,8 @@
         "question": "What did you notice about the Orangutan?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "orangutan"
+      "catalog_id": "orangutan",
+      "presence": "template"
     }
   ],
   "content_mode": "curated",
@@ -246,7 +256,7 @@
     "visitor_map_url": "/field-pack/media/maps/omaha-henry-doorly.jpg",
     "visitor_map_page": "https://assets.speakcdn.com/assets/2140/zoo_map_summer_2026.pdf",
     "visitor_map_kind": "image",
-    "map_attribution": "Official site \u00b7 Omaha's Henry Doorly Zoo & Aquarium",
+    "map_attribution": "Official site · Omaha's Henry Doorly Zoo & Aquarium",
     "print_map": "/field-pack/media/maps/omaha-henry-doorly.jpg"
   },
   "parent_script": [
@@ -255,5 +265,6 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "research_notes": "map-page 2026-08-07"
+  "research_notes": "map-page 2026-08-07",
+  "list_confidence": "template"
 }

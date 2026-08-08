@@ -11,17 +11,17 @@
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "America\u2019s first zoo \u2014 big cats, apes, and a compact kid-friendly map.",
+  "tagline": "America’s first zoo — big cats, apes, and a compact kid-friendly map.",
   "practical": {
     "typical_duration": "half day",
-    "ticket_note": "Zoo360 animal trails may be active \u2014 look up!",
+    "ticket_note": "Zoo360 animal trails may be active — look up!",
     "transit_note": "Girard Ave; parking on site."
   },
   "items": [
     {
       "id": "sumatran_tiger",
       "label": "Sumatran tiger",
-      "emoji": "\ud83d\udc2f",
+      "emoji": "🐯",
       "one_liner": "Tigers on elevated trails sometimes overhead.",
       "tags": [
         "big-cats",
@@ -39,12 +39,13 @@
         "question": "What did you notice about the Sumatran tiger?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sumatran-tiger"
+      "catalog_id": "sumatran-tiger",
+      "presence": "template"
     },
     {
       "id": "african_lion",
       "label": "African lion",
-      "emoji": "\ud83e\udd81",
+      "emoji": "🦁",
       "one_liner": "Lions with classic zoo-front presence.",
       "tags": [
         "big-cats",
@@ -61,12 +62,13 @@
         "question": "What did you notice about the African lion?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "african-lion"
+      "catalog_id": "african-lion",
+      "presence": "template"
     },
     {
       "id": "western_lowland_gorilla",
       "label": "Western lowland gorilla",
-      "emoji": "\ud83e\udd8d",
+      "emoji": "🦍",
       "one_liner": "Gorilla families.",
       "tags": [
         "primates",
@@ -83,12 +85,13 @@
         "question": "What did you notice about the Western lowland gorilla?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "western-lowland-gorilla"
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "template"
     },
     {
       "id": "orangutan",
       "label": "Orangutan",
-      "emoji": "\ud83e\udda7",
+      "emoji": "🦧",
       "one_liner": "Orangutans using climbing structures.",
       "tags": [
         "primates",
@@ -105,12 +108,13 @@
         "question": "What did you notice about the Orangutan?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "orangutan"
+      "catalog_id": "orangutan",
+      "presence": "template"
     },
     {
       "id": "reticulated_giraffe",
       "label": "Reticulated giraffe",
-      "emoji": "\ud83e\udd92",
+      "emoji": "🦒",
       "one_liner": "Giraffe necks over the path.",
       "tags": [
         "tall",
@@ -127,12 +131,13 @@
         "question": "What did you notice about the Reticulated giraffe?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "reticulated-giraffe"
+      "catalog_id": "reticulated-giraffe",
+      "presence": "template"
     },
     {
       "id": "african_elephant",
       "label": "African elephant",
-      "emoji": "\ud83d\udc18",
+      "emoji": "🐘",
       "one_liner": "Elephants when on the loop.",
       "tags": [
         "big",
@@ -149,12 +154,13 @@
         "question": "What did you notice about the African elephant?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "african-elephant"
+      "catalog_id": "african-elephant",
+      "presence": "template"
     },
     {
       "id": "red_panda",
       "label": "Red panda",
-      "emoji": "\ud83e\udd8a",
+      "emoji": "🦊",
       "one_liner": "Red pandas in trees.",
       "tags": [
         "climb",
@@ -171,12 +177,13 @@
         "question": "What did you notice about the Red panda?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "red-panda"
+      "catalog_id": "red-panda",
+      "presence": "template"
     },
     {
       "id": "caribbean_flamingo",
       "label": "Caribbean flamingo",
-      "emoji": "\ud83e\udda9",
+      "emoji": "🦩",
       "one_liner": "Pink flock near water.",
       "tags": [
         "color",
@@ -193,12 +200,13 @@
         "question": "What did you notice about the Caribbean flamingo?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "caribbean-flamingo"
+      "catalog_id": "caribbean-flamingo",
+      "presence": "template"
     },
     {
       "id": "ring_tailed_lemur",
       "label": "Ring-tailed lemur",
-      "emoji": "\ud83d\udc12",
+      "emoji": "🐒",
       "one_liner": "Lemur energy for younger kids.",
       "tags": [
         "primates",
@@ -215,12 +223,13 @@
         "question": "What did you notice about the Ring-tailed lemur?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "ring-tailed-lemur"
+      "catalog_id": "ring-tailed-lemur",
+      "presence": "template"
     },
     {
       "id": "galapagos_tortoise",
-      "label": "Gal\u00e1pagos tortoise",
-      "emoji": "\ud83d\udc22",
+      "label": "Galápagos tortoise",
+      "emoji": "🐢",
       "one_liner": "Slow giants.",
       "tags": [
         "slow",
@@ -234,10 +243,11 @@
       ],
       "zone": "Reptile / outdoor",
       "qa_card": {
-        "question": "What did you notice about the Gal\u00e1pagos tortoise?",
+        "question": "What did you notice about the Galápagos tortoise?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "galapagos-tortoise"
+      "catalog_id": "galapagos-tortoise",
+      "presence": "template"
     }
   ],
   "content_mode": "curated",
@@ -245,7 +255,7 @@
     "visitor_map_url": "",
     "visitor_map_page": "https://www.philadelphiazoo.org/zoo-map/",
     "visitor_map_kind": "page",
-    "map_attribution": "Official site \u00b7 Philadelphia Zoo"
+    "map_attribution": "Official site · Philadelphia Zoo"
   },
   "parent_script": [
     "Bathroom first",
@@ -253,5 +263,6 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "research_notes": "map-page 2026-08-07"
+  "research_notes": "map-page 2026-08-07",
+  "list_confidence": "template"
 }
