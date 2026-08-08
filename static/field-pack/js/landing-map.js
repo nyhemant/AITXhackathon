@@ -1182,12 +1182,11 @@
         : city;
     detail.className = "pin-detail";
     detail.innerHTML = `
-      <p class="pin-detail-kicker">A few places here</p>
       <div class="pd-title-row">
         <h3>${escapeHtml(area)}</h3>
         <button type="button" class="pd-clear" id="pd-clear-selection" aria-label="Clear">×</button>
       </div>
-      <p class="pd-hint">Choose one to get a kid list and printable hunt.</p>
+      <p class="pd-hint">${places.length} places here — pick one.</p>
       <div class="nearby-list" role="listbox" aria-label="Places nearby">
         ${places
           .map(
@@ -1198,7 +1197,7 @@
               <strong>${escapeHtml(p.name)}</strong>
               <small>${escapeHtml([p.city, placeRegionLabel(p)].filter(Boolean).join(", "))}</small>
             </span>
-            <span class="nearby-go">Choose →</span>
+            <span class="nearby-go">→</span>
           </button>`
           )
           .join("")}
