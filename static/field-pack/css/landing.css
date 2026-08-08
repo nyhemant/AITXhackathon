@@ -1774,7 +1774,44 @@
 /* Filters live under the map so the visual leads */
 .map-controls-below {
   display: grid;
-  gap: 10px;
+  gap: 8px;
+  margin-top: 12px;
+}
+.map-cities-label {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 750;
+  color: var(--muted, #3d4f6f);
+}
+.map-filters-more {
+  margin: 2px 0 0;
+  max-width: 42rem;
+}
+.map-filters-more > summary {
+  cursor: pointer;
+  font-size: 0.86rem;
+  font-weight: 750;
+  color: var(--teal-deep, #0a4545);
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 0;
+  user-select: none;
+}
+.map-filters-more > summary::-webkit-details-marker {
+  display: none;
+}
+.map-filters-more > summary::before {
+  content: "▸";
+  font-size: 0.75rem;
+  color: var(--accent, #d9652e);
+}
+.map-filters-more[open] > summary::before {
+  content: "▾";
+}
+.map-filters-more .filter-row {
+  margin-top: 10px;
 }
 .city-chips-slim {
   margin: 0;

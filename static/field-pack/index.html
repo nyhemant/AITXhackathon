@@ -30,7 +30,7 @@
     <base href="/field-pack/" />
     <link rel="stylesheet" href="/shell/shell.css?v=5" />
     <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
-    <link rel="stylesheet" href="/field-pack/css/landing.css?v=48" />
+    <link rel="stylesheet" href="/field-pack/css/landing.css?v=49" />
     <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=11" />
     <script type="application/ld+json">
       {
@@ -227,18 +227,6 @@
             <p class="story-desc">Find them together on site</p>
           </li>
         </ol>
-
-        <aside class="starter-strip" aria-label="Popular starters">
-          <p class="starter-kicker">Or jump to a popular place</p>
-          <div class="pilot-mission-links" id="pilot-mission-links">
-            <a class="pilot-mission-link" href="/field-pack/dallas-zoo/">Dallas Zoo</a>
-            <a class="pilot-mission-link" href="/field-pack/georgia-aquarium/">Georgia Aquarium</a>
-            <a class="pilot-mission-link" href="/field-pack/lincoln-park-zoo/">Lincoln Park Zoo</a>
-            <a class="pilot-mission-link" href="/field-pack/san-diego-zoo/">San Diego Zoo</a>
-            <a class="pilot-mission-link" href="/field-pack/shedd-aquarium/">Shedd Aquarium</a>
-          </div>
-          <p class="starter-more" id="pilot-mission-more">More places on the map below</p>
-        </aside>
       </header>
 
       <!-- MAP FIRST -->
@@ -270,33 +258,36 @@
               <p class="pin-detail-kicker">What you get</p>
               <h3>Pick a place</h3>
               <p class="pd-hint">
-                Tap a pin (or use the lists under the map). You’ll get a <strong>short kid list</strong> and a
-                <strong>printable treasure hunt</strong> for that zoo, aquarium, or museum.
+                Tap a pin on the map. You’ll get a <strong>short kid list</strong> and a
+                <strong>printable treasure hunt</strong> for that place.
               </p>
             </div>
           </aside>
         </div>
 
-        <!-- Filters after the visual (secondary path) -->
+        <!-- City jumps + optional filters (one discovery path under the map) -->
         <div class="map-controls-below">
-          <div class="city-chips city-chips-slim" id="city-chips" aria-label="Jump to a city"></div>
-          <div class="filter-row dual-selects dual-selects-tight" role="group" aria-label="Filters">
-            <label class="select-field" id="metro-field">
-              <span class="select-label">Metroarea</span>
-              <select id="city-select" class="landing-select" aria-label="Choose metro area"></select>
-            </label>
-            <span class="filter-or" aria-hidden="true">OR</span>
-            <label class="select-field" id="state-field">
-              <span class="select-label">State</span>
-              <select id="state-select" class="landing-select" aria-label="Filter by state">
-                <option value="">All states</option>
-              </select>
-            </label>
-            <label class="select-field select-field-place" id="place-field">
-              <span class="select-label">Place</span>
-              <select id="venue-select-landing" class="landing-select" aria-label="Choose venue"></select>
-            </label>
-          </div>
+          <p class="map-cities-label" id="city-chips-label">Jump map to a city</p>
+          <div class="city-chips city-chips-slim" id="city-chips" aria-labelledby="city-chips-label"></div>
+          <details class="map-filters-more">
+            <summary>More filters</summary>
+            <div class="filter-row dual-selects dual-selects-tight" role="group" aria-label="Filters">
+              <label class="select-field" id="metro-field">
+                <span class="select-label">Metro</span>
+                <select id="city-select" class="landing-select" aria-label="Choose metro area"></select>
+              </label>
+              <label class="select-field" id="state-field">
+                <span class="select-label">State</span>
+                <select id="state-select" class="landing-select" aria-label="Filter by state">
+                  <option value="">All states</option>
+                </select>
+              </label>
+              <label class="select-field select-field-place" id="place-field">
+                <span class="select-label">Place</span>
+                <select id="venue-select-landing" class="landing-select" aria-label="Choose venue"></select>
+              </label>
+            </div>
+          </details>
           <p id="map-count" class="map-count-quiet">All places on the map</p>
         </div>
       </section>
@@ -549,6 +540,6 @@
     <script src="/field-pack/js/print-kit.js?v=8"></script>
     <script src="/field-pack/js/mission-pilots.js?v=4"></script>
     <script src="/field-pack/js/landing-map.js?v=50"></script>
-    <script src="/field-pack/js/landing-hook.js?v=12"></script>
+    <script src="/field-pack/js/landing-hook.js?v=13"></script>
   </body>
 </html>

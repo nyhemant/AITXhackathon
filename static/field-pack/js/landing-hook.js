@@ -20,43 +20,6 @@
       .replace(/"/g, "&quot;");
   }
 
-  // Few popular starters only — map is the full directory (avoid chip-cloud dump)
-  const pilotLinks = document.getElementById("pilot-mission-links");
-  const pilotMore = document.getElementById("pilot-mission-more");
-  const featuredIds = (window.FP_MISSION_PILOTS_FEATURED || []).slice(0, 5);
-  const allPilotIds = window.FP_MISSION_PILOTS || [];
-  if (pilotLinks && featuredIds.length) {
-    const shortName = (p) => {
-      if (!p) return "";
-      if (p.id === "childrens-aquarium-dallas") return "Children’s Aquarium";
-      if (p.id === "childrens-museum-perot") return "Perot Museum";
-      if (p.id === "monterey-bay-aquarium") return "Monterey Bay";
-      if (p.id === "san-diego-safari-park") return "Safari Park";
-      if (p.id === "kennedy-space-center") return "Kennedy Space";
-      if (p.id === "shedd-aquarium") return "Shedd Aquarium";
-      if (p.id === "lincoln-park-zoo") return "Lincoln Park Zoo";
-      if (p.id === "amnh") return "AMNH";
-      return p.name || p.id;
-    };
-    pilotLinks.innerHTML = featuredIds
-      .map((id) => {
-        const p = places.find((x) => x.id === id);
-        const label = shortName(p) || id;
-        return `<a class="pilot-mission-link" href="/field-pack/${encodeURIComponent(id)}/">${escapeHtml(
-          label
-        )}</a>`;
-      })
-      .join("");
-    if (pilotMore) {
-      pilotMore.hidden = false;
-      const extra = Math.max(0, allPilotIds.length - featuredIds.length);
-      pilotMore.textContent =
-        extra > 0
-          ? `${extra}+ more on the map below — tap a pin or search by city`
-          : "More places on the map below";
-    }
-  }
-
   // Smooth scroll primary CTA → map
   document.querySelectorAll('a.pitch-cta[href="#us-map"], a.story-jump[href="#us-map"]').forEach((a) => {
     a.addEventListener("click", (e) => {
