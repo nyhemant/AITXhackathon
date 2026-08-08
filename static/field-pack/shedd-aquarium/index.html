@@ -21,8 +21,8 @@
   <base href="/field-pack/" />
   <link rel="stylesheet" href="/shell/shell.css?v=5" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
-  <link rel="stylesheet" href="/field-pack/css/landing.css?v=45" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=8" />
+  <link rel="stylesheet" href="/field-pack/css/landing.css?v=46" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=9" />
   <link rel="stylesheet" href="/field-pack/css/mission.css?v=8" />
   <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "HowTo", "name": "Shedd Aquarium Scavenger Hunt for Kids (Free Printable)", "description": "Free printable Shedd Aquarium scavenger hunt for kids in Chicago. Short kid list of sea life, one-page treasure hunt — Field Trip Kit by 1Less.", "totalTime": "PT2H", "tool": [{"@type": "HowToTool", "name": "Printed one-page hunt sheet"}], "step": [{"@type": "HowToStep", "position": 1, "text": "Find something with fins"}, {"@type": "HowToStep", "position": 2, "text": "Spot a flat swimmer (like a ray)"}, {"@type": "HowToStep", "position": 3, "text": "Find a shell or hard cover"}, {"@type": "HowToStep", "position": 4, "text": "Watch bubbles or moving water"}, {"@type": "HowToStep", "position": 5, "text": "Find the longest animal in a tank"}, {"@type": "HowToStep", "position": 6, "text": "Spot a good hider"}, {"@type": "HowToStep", "position": 7, "text": "If allowed: gentle touch experience"}, {"@type": "HowToStep", "position": 8, "text": "Pick a favorite and tell why"}], "url": "https://1less.app/field-pack/shedd-aquarium/"}
@@ -123,6 +123,7 @@
     <section class="seo-parent-script no-print" aria-label="Calm day script">
       <ol class="seo-parent-steps"><li><span aria-hidden="true">🚻</span><span>Bathroom first</span></li><li><span aria-hidden="true">⭐</span><span>One big wow</span></li><li><span aria-hidden="true">🧃</span><span>Snack when needed</span></li><li><span aria-hidden="true">🚪</span><span>Leave while happy</span></li></ol>
     </section>
+      <div id="seo-play-target" class="seo-play-anchor" tabindex="-1"></div>
       
     <div class="seo-hero-photos" aria-hidden="false"><img src="photos/shark.jpg" alt="Shark — shortlist photo" width="400" height="280" loading="eager" decoding="async" /><img src="photos/stingray.jpg" alt="Stingray — shortlist photo" width="400" height="280" loading="eager" decoding="async" /><img src="photos/jellyfish.jpg" alt="Jellyfish — shortlist photo" width="400" height="280" loading="eager" decoding="async" /></div>
     <section class="seo-list-block seo-visual-shortlist" aria-labelledby="shortlist-heading">
@@ -235,10 +236,29 @@
 
       <section class="seo-how no-print" aria-labelledby="how-heading">
         <h2 id="how-heading">How it works</h2>
-        <ol class="how-steps how-steps-visual">
-          <li><span class="how-ico" aria-hidden="true">🖨️</span><strong>Print</strong><span>One-page mission</span></li>
-          <li><span class="how-ico" aria-hidden="true">👀</span><strong>Play</strong><span>Use the photo shortlist on site</span></li>
-          <li><span class="how-ico" aria-hidden="true">💬</span><strong>Optional</strong><span>Talk cards after</span></li>
+        <p class="how-hint">Tap a step to jump there.</p>
+        <ol class="how-steps how-steps-visual how-steps-linked">
+          <li>
+            <button type="button" class="how-step-btn" data-how="print" id="how-print-btn">
+              <span class="how-ico" aria-hidden="true">🖨️</span>
+              <strong>Print</strong>
+              <span>One-page mission</span>
+            </button>
+          </li>
+          <li>
+            <a class="how-step-btn" href="#seo-play-target" data-how="play" id="how-play-link">
+              <span class="how-ico" aria-hidden="true">👀</span>
+              <strong>Play</strong>
+              <span>Use the photo shortlist on site</span>
+            </a>
+          </li>
+          <li>
+            <a class="how-step-btn" href="/field-pack/app.html#/venue/shedd-aquarium" data-how="talk" id="how-talk-link">
+              <span class="how-ico" aria-hidden="true">💬</span>
+              <strong>Optional</strong>
+              <span>Talk cards after</span>
+            </a>
+          </li>
         </ol>
       </section>
 
@@ -724,6 +744,6 @@
   <script src="/field-pack/js/print-maps.js?v=2"></script>
   <script src="/field-pack/js/print-kit.js?v=7"></script>
   <script src="/field-pack/js/mission/mission-engine.js?v=6"></script>
-  <script src="/field-pack/js/mission/mission-ui.js?v=9"></script>
+  <script src="/field-pack/js/mission/mission-ui.js?v=10"></script>
 </body>
 </html>

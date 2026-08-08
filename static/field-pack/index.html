@@ -30,8 +30,8 @@
     <base href="/field-pack/" />
     <link rel="stylesheet" href="/shell/shell.css?v=5" />
     <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
-    <link rel="stylesheet" href="/field-pack/css/landing.css?v=45" />
-    <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=7" />
+    <link rel="stylesheet" href="/field-pack/css/landing.css?v=46" />
+    <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=9" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -108,31 +108,35 @@
       <div id="continue-chip" class="continue-chip" hidden></div>
       <p id="waiting-cities" class="waiting-cities" hidden></p>
 
-      <!-- Headline + visual how-it-works (aha before the real map) -->
+      <!-- One path: what it is → what you print → how → map -->
       <header class="landing-pitch">
-        <h1>Less chaos. More wonder.</h1>
-        <p class="pitch-line">
-          A printable field trip kit for zoo, aquarium, and museum days with kids.
-          <strong>No screens on the floor</strong> — just one sheet of paper and a short kid list.
-        </p>
-        <p class="pitch-sub">
-          Visiting somewhere new? Print the night before. Homeschool or class field trip? Print a stack — free, no app on site.
-        </p>
-        <aside class="pilot-mission-strip" aria-label="Personalized missions">
-          <p class="pilot-mission-kicker">Personalized missions</p>
-          <p class="pilot-mission-lead" id="pilot-mission-lead">
-            Age slider, time segments, optional name — live preview, one-page print.
-            Every place on the map can build a mission. Popular starters:
-          </p>
-          <div class="pilot-mission-links" id="pilot-mission-links">
-            <!-- filled by landing-hook from FP_MISSION_PILOTS_FEATURED -->
-            <a class="pilot-mission-link" href="/field-pack/dallas-zoo/">Dallas Zoo</a>
-            <a class="pilot-mission-link" href="/field-pack/georgia-aquarium/">Georgia Aquarium</a>
-            <a class="pilot-mission-link" href="/field-pack/shedd-aquarium/">Shedd Aquarium</a>
-            <a class="pilot-mission-link" href="/field-pack/london-zoo/">London Zoo</a>
+        <div class="pitch-hero">
+          <div class="pitch-copy">
+            <h1>Less chaos. More wonder.</h1>
+            <p class="pitch-line">
+              Free one-page hunt + short kid list for zoo, aquarium, and museum days.
+              <strong>Print tonight. Phones away on site.</strong>
+            </p>
+            <p class="pitch-trust">Free · one page · no account</p>
+            <div class="pitch-actions">
+              <a class="btn btn-primary btn-big pitch-cta" href="#us-map">Find your place</a>
+            </div>
           </div>
-          <p class="pilot-mission-more" id="pilot-mission-more" hidden></p>
-        </aside>
+          <figure class="pitch-artifact" aria-hidden="true">
+            <div class="artifact-sheet">
+              <div class="artifact-banner">Treasure hunt</div>
+              <ul class="artifact-rows">
+                <li><span class="artifact-box">✓</span><span class="artifact-emoji">🦁</span><span class="artifact-line"></span></li>
+                <li><span class="artifact-box"></span><span class="artifact-emoji">🦈</span><span class="artifact-line"></span></li>
+                <li><span class="artifact-box"></span><span class="artifact-emoji">⭐</span><span class="artifact-line"></span></li>
+                <li><span class="artifact-box"></span><span class="artifact-emoji">🦒</span><span class="artifact-line short"></span></li>
+              </ul>
+              <p class="artifact-foot">One page · mark as you go</p>
+            </div>
+            <figcaption class="artifact-cap">What you print</figcaption>
+          </figure>
+        </div>
+
         <ol class="story-flow" aria-label="How Field Trip Kit works">
           <li class="story-step story-step-map">
             <a class="story-jump" href="#us-map">
@@ -160,15 +164,11 @@
           </li>
           <li class="story-step story-step-print">
             <div class="story-art" aria-hidden="true">
-              <!-- Mini treasure-hunt sheet preview -->
               <svg class="story-svg story-svg-hunt" viewBox="0 0 96 78" width="96" height="78" focusable="false">
-                <!-- back sheet -->
                 <rect x="18" y="6" width="58" height="64" rx="6" fill="#f3faf6" stroke="#0f5c5c" stroke-width="1.5" transform="rotate(6 47 38)"/>
-                <!-- main hunt page -->
                 <rect x="10" y="8" width="58" height="64" rx="6" fill="#fffef8" stroke="#0f5c5c" stroke-width="2"/>
                 <rect x="18" y="14" width="42" height="8" rx="3" fill="#ffcf5a"/>
                 <text x="39" y="20" text-anchor="middle" font-size="6.5" font-family="system-ui,sans-serif" font-weight="800" fill="#0a4545">TREASURE HUNT</text>
-                <!-- find rows -->
                 <rect x="16" y="28" width="9" height="9" rx="2" fill="#fff" stroke="#0f5c5c" stroke-width="1.4"/>
                 <path d="M18 32.5l2 2 4-4" fill="none" stroke="#0f5c5c" stroke-width="1.5" stroke-linecap="round"/>
                 <text x="28" y="35" font-size="9" font-family="system-ui,sans-serif">🦁</text>
@@ -179,12 +179,6 @@
                 <rect x="16" y="56" width="9" height="9" rx="2" fill="#fff" stroke="#0f5c5c" stroke-width="1.4"/>
                 <text x="28" y="63" font-size="9" font-family="system-ui,sans-serif">⭐</text>
                 <path d="M40 61h16" stroke="#c5d0dc" stroke-width="2" stroke-linecap="round"/>
-                <!-- print badge -->
-                <g class="story-print-badge">
-                  <rect x="62" y="48" width="28" height="22" rx="5" fill="#e8f6f0" stroke="#0f5c5c" stroke-width="1.8"/>
-                  <rect x="68" y="42" width="16" height="10" rx="2" fill="#fff" stroke="#0f5c5c" stroke-width="1.4"/>
-                  <rect x="68" y="56" width="16" height="7" rx="1.5" fill="#fff" stroke="#d9652e" stroke-width="1.3"/>
-                </g>
               </svg>
             </div>
             <p class="story-label"><span class="story-num">2</span> Print</p>
@@ -210,10 +204,17 @@
           </li>
         </ol>
 
-        <p class="story-map-cue" aria-hidden="true">
-          <span class="story-map-cue-arrow">↓</span>
-          Start on the real map below
-        </p>
+        <aside class="starter-strip" aria-label="Popular starters">
+          <p class="starter-kicker">Or jump to a popular place</p>
+          <div class="pilot-mission-links" id="pilot-mission-links">
+            <a class="pilot-mission-link" href="/field-pack/dallas-zoo/">Dallas Zoo</a>
+            <a class="pilot-mission-link" href="/field-pack/georgia-aquarium/">Georgia Aquarium</a>
+            <a class="pilot-mission-link" href="/field-pack/lincoln-park-zoo/">Lincoln Park Zoo</a>
+            <a class="pilot-mission-link" href="/field-pack/san-diego-zoo/">San Diego Zoo</a>
+            <a class="pilot-mission-link" href="/field-pack/shedd-aquarium/">Shedd Aquarium</a>
+          </div>
+          <p class="starter-more" id="pilot-mission-more">More places on the map below</p>
+        </aside>
       </header>
 
       <!-- MAP FIRST -->
@@ -522,8 +523,8 @@
     <script src="/field-pack/js/catalog.js?v=21"></script>
     <script src="/field-pack/js/print-maps.js?v=2"></script>
     <script src="/field-pack/js/print-kit.js?v=7"></script>
-    <script src="/field-pack/js/mission-pilots.js?v=3"></script>
+    <script src="/field-pack/js/mission-pilots.js?v=4"></script>
     <script src="/field-pack/js/landing-map.js?v=50"></script>
-    <script src="/field-pack/js/landing-hook.js?v=11"></script>
+    <script src="/field-pack/js/landing-hook.js?v=12"></script>
   </body>
 </html>

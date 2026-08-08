@@ -1150,63 +1150,157 @@
   max-width: 1100px;
 }
 
-/* Breath of education — visual story, then map owns the page */
+/* First-run: copy + print artifact, then story, then few starters, then map */
 .landing-pitch {
-  margin: 2px 0 14px;
+  margin: 2px 0 12px;
   padding: 0 2px;
   text-align: left;
 }
+.pitch-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(140px, 0.75fr);
+  gap: 16px 28px;
+  align-items: center;
+  margin-bottom: 12px;
+}
 .landing-pitch h1 {
-  margin: 0 0 6px;
-  font-size: clamp(1.45rem, 3.5vw, 1.9rem);
-  font-weight: 800;
-  line-height: 1.1;
+  margin: 0 0 8px;
+  font-size: clamp(1.55rem, 4vw, 2.05rem);
+  font-weight: 850;
+  line-height: 1.08;
   color: var(--teal-deep, #0a4545);
-  letter-spacing: -0.03em;
+  letter-spacing: -0.035em;
 }
 .pitch-line {
   margin: 0 0 8px;
-  font-size: 0.98rem;
+  font-size: 1.02rem;
   font-weight: 600;
   color: var(--muted, #3d4f6f);
-  max-width: 38rem;
+  max-width: 34rem;
   line-height: 1.45;
+}
+.pitch-trust {
+  margin: 0 0 12px;
+  font-size: 0.82rem;
+  font-weight: 750;
+  letter-spacing: 0.02em;
+  color: #0a4545;
+  opacity: 0.85;
+}
+.pitch-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+.pitch-cta {
+  min-height: 48px;
+  padding: 12px 22px;
+  font-size: 1.05rem;
+  box-shadow: 0 6px 18px rgba(15, 92, 92, 0.18);
 }
 .pitch-sub {
-  margin: 0 0 14px;
-  font-size: 0.9rem;
-  font-weight: 550;
-  color: var(--muted, #3d4f6f);
-  max-width: 38rem;
-  line-height: 1.45;
-  opacity: 0.95;
+  display: none; /* retired — keep class for any legacy */
 }
 
-/* Pilot mission generator callout (landing) */
-.pilot-mission-strip {
-  margin: 0 0 16px;
-  padding: 14px 16px;
-  border-radius: 16px;
-  background:
-    linear-gradient(135deg, rgba(255, 248, 230, 0.98), rgba(232, 248, 240, 0.95));
-  border: 2px solid rgba(255, 138, 61, 0.45);
-  box-shadow: 0 6px 20px rgba(21, 34, 56, 0.07);
-  max-width: min(52rem, 100%);
+/* Print artifact — “what you walk out with” */
+.pitch-artifact {
+  margin: 0;
+  justify-self: end;
+  max-width: 200px;
+  width: 100%;
 }
-.pilot-mission-kicker {
-  margin: 0 0 4px;
-  font-size: 0.75rem;
+.artifact-sheet {
+  background: linear-gradient(165deg, #fffef8 0%, #f7fbf9 100%);
+  border: 2px solid #0f5c5c;
+  border-radius: 14px;
+  padding: 12px 12px 10px;
+  box-shadow:
+    6px 8px 0 rgba(15, 92, 92, 0.08),
+    0 12px 28px rgba(21, 34, 56, 0.1);
+  transform: rotate(2.5deg);
+}
+.artifact-banner {
+  background: #ffcf5a;
+  color: #0a4545;
   font-weight: 850;
-  letter-spacing: 0.06em;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: #c45a12;
+  text-align: center;
+  border-radius: 8px;
+  padding: 6px 8px;
+  margin-bottom: 10px;
+  border: 1.5px solid rgba(10, 69, 69, 0.2);
 }
-.pilot-mission-lead {
-  margin: 0 0 10px;
-  font-size: 0.92rem;
-  font-weight: 600;
-  color: var(--teal-deep, #0a4545);
-  line-height: 1.4;
+.artifact-rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+.artifact-rows li {
+  display: grid;
+  grid-template-columns: 18px 22px 1fr;
+  gap: 6px;
+  align-items: center;
+}
+.artifact-box {
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid #0f5c5c;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: #0f5c5c;
+  background: #fff;
+}
+.artifact-emoji {
+  font-size: 1rem;
+  line-height: 1;
+}
+.artifact-line {
+  height: 7px;
+  border-radius: 99px;
+  background: #d5dee8;
+}
+.artifact-line.short {
+  width: 65%;
+}
+.artifact-foot {
+  margin: 10px 0 0;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #5a6b82;
+  text-align: center;
+}
+.artifact-cap {
+  margin: 10px 0 0;
+  text-align: center;
+  font-size: 0.78rem;
+  font-weight: 750;
+  color: #c45a12;
+  transform: rotate(2.5deg);
+}
+
+/* Compact starters (not a directory dump) */
+.starter-strip {
+  margin: 10px 0 4px;
+  padding: 10px 12px 12px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1.5px solid rgba(15, 92, 92, 0.12);
+  max-width: min(40rem, 100%);
+}
+.starter-kicker {
+  margin: 0 0 8px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--muted, #3d4f6f);
 }
 .pilot-mission-links {
   display: flex;
@@ -1216,30 +1310,56 @@
 .pilot-mission-link {
   display: inline-flex;
   align-items: center;
-  padding: 8px 12px;
+  padding: 7px 12px;
   border-radius: 999px;
-  font-size: 0.88rem;
+  font-size: 0.86rem;
   font-weight: 750;
   text-decoration: none;
-  color: #fff;
-  background: #0f5c5c;
-  border: 1.5px solid #0a4545;
+  color: #0a4545;
+  background: #e8f6f0;
+  border: 1.5px solid rgba(15, 92, 92, 0.22);
 }
 .pilot-mission-link:hover,
 .pilot-mission-link:focus-visible {
-  background: #0a4545;
+  background: #0f5c5c;
+  color: #fff;
+  border-color: #0a4545;
   outline: 2px solid #ff8a3d;
   outline-offset: 2px;
 }
+.starter-more,
 .pilot-mission-more {
-  margin: 10px 0 0;
-  font-size: 0.85rem;
+  margin: 8px 0 0;
+  font-size: 0.82rem;
   font-weight: 650;
   color: var(--muted, #3d4f6f);
-  line-height: 1.4;
+  line-height: 1.35;
 }
-.pilot-mission-more strong {
-  color: var(--teal-deep, #0a4545);
+
+/* Legacy class names kept for any cached HTML */
+.pilot-mission-strip {
+  margin: 0 0 12px;
+}
+.pilot-mission-kicker,
+.pilot-mission-lead {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  .pitch-hero {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .pitch-artifact {
+    justify-self: start;
+    max-width: 168px;
+  }
+  .artifact-sheet {
+    transform: rotate(1.5deg);
+  }
+  .artifact-cap {
+    transform: none;
+  }
 }
 
 /* Map → Print → Play storyboard (aha strip) */

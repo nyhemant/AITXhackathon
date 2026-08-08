@@ -21,8 +21,8 @@
   <base href="/field-pack/" />
   <link rel="stylesheet" href="/shell/shell.css?v=5" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
-  <link rel="stylesheet" href="/field-pack/css/landing.css?v=45" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=8" />
+  <link rel="stylesheet" href="/field-pack/css/landing.css?v=46" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=9" />
   <link rel="stylesheet" href="/field-pack/css/mission.css?v=8" />
   <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "HowTo", "name": "Los Angeles Zoo Scavenger Hunt for Kids (Free Printable)", "description": "Free printable Los Angeles Zoo scavenger hunt for kids in Los Angeles. Short kid list of animals, one-page treasure hunt — Field Trip Kit by 1Less.", "totalTime": "PT2H", "tool": [{"@type": "HowToTool", "name": "Printed one-page hunt sheet"}], "step": [{"@type": "HowToStep", "position": 1, "text": "Find an animal taller than a grown-up"}, {"@type": "HowToStep", "position": 2, "text": "Spot stripes or spots"}, {"@type": "HowToStep", "position": 3, "text": "Watch something swim or splash"}, {"@type": "HowToStep", "position": 4, "text": "Find a long neck, trunk, or horns"}, {"@type": "HowToStep", "position": 5, "text": "Hear a loud sound (or a quiet one)"}, {"@type": "HowToStep", "position": 6, "text": "Point to where an animal might sleep"}, {"@type": "HowToStep", "position": 7, "text": "Find a bird with bright feathers"}, {"@type": "HowToStep", "position": 8, "text": "Photo your favorite animal"}], "url": "https://1less.app/field-pack/la-zoo/"}
@@ -129,6 +129,7 @@
     <section class="seo-parent-script no-print" aria-label="Calm day script">
       <ol class="seo-parent-steps"><li><span aria-hidden="true">🚻</span><span>Bathroom first</span></li><li><span aria-hidden="true">⭐</span><span>One big wow</span></li><li><span aria-hidden="true">🧃</span><span>Snack when needed</span></li><li><span aria-hidden="true">🚪</span><span>Leave while happy</span></li></ol>
     </section>
+      <div id="seo-play-target" class="seo-play-anchor" tabindex="-1"></div>
       
     <div class="seo-hero-photos" aria-hidden="false"><img src="photos/african-elephant.jpg" alt="African elephant — shortlist photo" width="400" height="280" loading="eager" decoding="async" /><img src="photos/chimpanzee.jpg" alt="Chimpanzee — shortlist photo" width="400" height="280" loading="eager" decoding="async" /><img src="photos/western-lowland-gorilla.jpg" alt="Western lowland gorilla — shortlist photo" width="400" height="280" loading="eager" decoding="async" /></div>
     <section class="seo-list-block seo-visual-shortlist" aria-labelledby="shortlist-heading">
@@ -241,10 +242,29 @@
 
       <section class="seo-how no-print" aria-labelledby="how-heading">
         <h2 id="how-heading">How it works</h2>
-        <ol class="how-steps how-steps-visual">
-          <li><span class="how-ico" aria-hidden="true">🖨️</span><strong>Print</strong><span>One-page mission</span></li>
-          <li><span class="how-ico" aria-hidden="true">👀</span><strong>Play</strong><span>Use the photo shortlist on site</span></li>
-          <li><span class="how-ico" aria-hidden="true">💬</span><strong>Optional</strong><span>Talk cards after</span></li>
+        <p class="how-hint">Tap a step to jump there.</p>
+        <ol class="how-steps how-steps-visual how-steps-linked">
+          <li>
+            <button type="button" class="how-step-btn" data-how="print" id="how-print-btn">
+              <span class="how-ico" aria-hidden="true">🖨️</span>
+              <strong>Print</strong>
+              <span>One-page mission</span>
+            </button>
+          </li>
+          <li>
+            <a class="how-step-btn" href="#seo-play-target" data-how="play" id="how-play-link">
+              <span class="how-ico" aria-hidden="true">👀</span>
+              <strong>Play</strong>
+              <span>Use the photo shortlist on site</span>
+            </a>
+          </li>
+          <li>
+            <a class="how-step-btn" href="/field-pack/app.html#/venue/la-zoo" data-how="talk" id="how-talk-link">
+              <span class="how-ico" aria-hidden="true">💬</span>
+              <strong>Optional</strong>
+              <span>Talk cards after</span>
+            </a>
+          </li>
         </ol>
       </section>
 
@@ -730,6 +750,6 @@
   <script src="/field-pack/js/print-maps.js?v=2"></script>
   <script src="/field-pack/js/print-kit.js?v=7"></script>
   <script src="/field-pack/js/mission/mission-engine.js?v=6"></script>
-  <script src="/field-pack/js/mission/mission-ui.js?v=9"></script>
+  <script src="/field-pack/js/mission/mission-ui.js?v=10"></script>
 </body>
 </html>

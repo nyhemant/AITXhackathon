@@ -748,8 +748,8 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <base href="/field-pack/" />
   <link rel="stylesheet" href="/shell/shell.css?v=5" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
-  <link rel="stylesheet" href="/field-pack/css/landing.css?v=45" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=8" />
+  <link rel="stylesheet" href="/field-pack/css/landing.css?v=46" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=9" />
   <link rel="stylesheet" href="/field-pack/css/mission.css?v=8" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
@@ -812,14 +812,34 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
       {map_card}
       {route90}
       {parent_sc}
+      <div id="seo-play-target" class="seo-play-anchor" tabindex="-1"></div>
       {body}
 
       <section class="seo-how no-print" aria-labelledby="how-heading">
         <h2 id="how-heading">How it works</h2>
-        <ol class="how-steps how-steps-visual">
-          <li><span class="how-ico" aria-hidden="true">🖨️</span><strong>Print</strong><span>One-page mission</span></li>
-          <li><span class="how-ico" aria-hidden="true">👀</span><strong>Play</strong><span>{esc(how_step2)}</span></li>
-          <li><span class="how-ico" aria-hidden="true">💬</span><strong>Optional</strong><span>Talk cards after</span></li>
+        <p class="how-hint">Tap a step to jump there.</p>
+        <ol class="how-steps how-steps-visual how-steps-linked">
+          <li>
+            <button type="button" class="how-step-btn" data-how="print" id="how-print-btn">
+              <span class="how-ico" aria-hidden="true">🖨️</span>
+              <strong>Print</strong>
+              <span>One-page mission</span>
+            </button>
+          </li>
+          <li>
+            <a class="how-step-btn" href="#seo-play-target" data-how="play" id="how-play-link">
+              <span class="how-ico" aria-hidden="true">👀</span>
+              <strong>Play</strong>
+              <span>{esc(how_step2)}</span>
+            </a>
+          </li>
+          <li>
+            <a class="how-step-btn" href="{esc(app_href)}" data-how="talk" id="how-talk-link">
+              <span class="how-ico" aria-hidden="true">💬</span>
+              <strong>Optional</strong>
+              <span>Talk cards after</span>
+            </a>
+          </li>
         </ol>
       </section>
 
@@ -851,7 +871,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <script src="/field-pack/js/print-maps.js?v=2"></script>
   <script src="/field-pack/js/print-kit.js?v=7"></script>
   <script src="/field-pack/js/mission/mission-engine.js?v=6"></script>
-  <script src="/field-pack/js/mission/mission-ui.js?v=9"></script>
+  <script src="/field-pack/js/mission/mission-ui.js?v=10"></script>
 </body>
 </html>
 """
@@ -912,8 +932,8 @@ def render_venue_page(v: dict) -> str:
   <base href="/field-pack/" />
   <link rel="stylesheet" href="/shell/shell.css?v=5" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
-  <link rel="stylesheet" href="/field-pack/css/landing.css?v=44" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=8" />
+  <link rel="stylesheet" href="/field-pack/css/landing.css?v=46" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=9" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
   </script>
@@ -970,14 +990,34 @@ def render_venue_page(v: dict) -> str:
         </div>
       </header>
 
+      <div id="seo-play-target" class="seo-play-anchor" tabindex="-1"></div>
       {body}
 
-      <section class="seo-how" aria-labelledby="how-heading">
+      <section class="seo-how no-print" aria-labelledby="how-heading">
         <h2 id="how-heading">How it works</h2>
-        <ol class="how-steps">
-          <li><strong>1</strong><span>Print the one-page hunt</span></li>
-          <li><strong>2</strong><span>Use the shortlist on site</span></li>
-          <li><strong>3</strong><span>Optional: open Q&amp;A cards after</span></li>
+        <p class="how-hint">Tap a step to jump there.</p>
+        <ol class="how-steps how-steps-visual how-steps-linked">
+          <li>
+            <button type="button" class="how-step-btn" data-how="print-hunt" id="how-print-btn">
+              <span class="how-ico" aria-hidden="true">🖨️</span>
+              <strong>Print</strong>
+              <span>One-page hunt</span>
+            </button>
+          </li>
+          <li>
+            <a class="how-step-btn" href="#seo-play-target" data-how="play" id="how-play-link">
+              <span class="how-ico" aria-hidden="true">👀</span>
+              <strong>Play</strong>
+              <span>Use the shortlist on site</span>
+            </a>
+          </li>
+          <li>
+            <a class="how-step-btn" href="{esc(app_href)}" data-how="talk" id="how-talk-link">
+              <span class="how-ico" aria-hidden="true">💬</span>
+              <strong>Optional</strong>
+              <span>Talk cards after</span>
+            </a>
+          </li>
         </ol>
       </section>
 
@@ -1006,12 +1046,31 @@ def render_venue_page(v: dict) -> str:
   <script>
     (function () {{
       var btn = document.getElementById("seo-print-hunt");
-      if (!btn || !window.FPPrint) return;
-      btn.addEventListener("click", function () {{
+      function printHunt() {{
+        if (!btn || !window.FPPrint) return false;
         var id = btn.getAttribute("data-venue");
-        if (!window.FPPrint.printTreasureForVenue(id)) {{
-          location.href = "/field-pack/app.html#/venue/" + encodeURIComponent(id);
-        }}
+        if (window.FPPrint.printTreasureForVenue(id)) return true;
+        location.href = "/field-pack/app.html#/venue/" + encodeURIComponent(id);
+        return false;
+      }}
+      if (btn) btn.addEventListener("click", printHunt);
+      document.querySelectorAll("[data-how]").forEach(function (el) {{
+        el.addEventListener("click", function (e) {{
+          var how = el.getAttribute("data-how");
+          if (how === "print-hunt" || how === "print") {{
+            e.preventDefault();
+            printHunt();
+            return;
+          }}
+          if (how === "play") {{
+            var t = document.getElementById("seo-play-target")
+              || document.getElementById("shortlist-heading");
+            if (t) {{
+              e.preventDefault();
+              t.scrollIntoView({{ behavior: "smooth", block: "start" }});
+            }}
+          }}
+        }});
       }});
     }})();
   </script>

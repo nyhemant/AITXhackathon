@@ -342,6 +342,48 @@
     const openBtn = $("#mission-open-btn");
     openBtn?.addEventListener("click", openDrawer);
 
+    // Bottom "How it works" steps → real actions
+    document.querySelectorAll("[data-how]").forEach((el) => {
+      el.addEventListener("click", (e) => {
+        const how = el.getAttribute("data-how");
+        if (how === "print") {
+          e.preventDefault();
+          openDrawer();
+          // Optional: auto-print after drawer paints
+          return;
+        }
+        if (how === "print-hunt") {
+          e.preventDefault();
+          const huntBtn = $("#seo-print-hunt");
+          if (huntBtn) {
+            huntBtn.click();
+            return;
+          }
+          if (window.FPPrint && venue && venue.slug) {
+            window.FPPrint.printTreasureForVenue(venue.slug);
+          }
+          return;
+        }
+        if (how === "play") {
+          // Let hash navigation work; ensure smooth scroll to shortlist/wonder
+          const target =
+            document.getElementById("seo-play-target") ||
+            document.getElementById("shortlist-heading") ||
+            document.getElementById("wonder-heading");
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+            try {
+              target.focus({ preventScroll: true });
+            } catch (_) {
+              /* ignore */
+            }
+          }
+        }
+        // talk → default link to app kid list / Q&A
+      });
+    });
+
     // Deep link: #mission opens drawer
     if (location.hash === "#mission") {
       openDrawer();

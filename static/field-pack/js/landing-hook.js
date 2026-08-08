@@ -20,11 +20,10 @@
       .replace(/"/g, "&quot;");
   }
 
-  // Personalized mission featured strip (full pilot set lives on every SEO venue page)
+  // Few popular starters only — map is the full directory (avoid chip-cloud dump)
   const pilotLinks = document.getElementById("pilot-mission-links");
   const pilotMore = document.getElementById("pilot-mission-more");
-  const pilotLead = document.getElementById("pilot-mission-lead");
-  const featuredIds = window.FP_MISSION_PILOTS_FEATURED || [];
+  const featuredIds = (window.FP_MISSION_PILOTS_FEATURED || []).slice(0, 5);
   const allPilotIds = window.FP_MISSION_PILOTS || [];
   if (pilotLinks && featuredIds.length) {
     const shortName = (p) => {
@@ -34,6 +33,8 @@
       if (p.id === "monterey-bay-aquarium") return "Monterey Bay";
       if (p.id === "san-diego-safari-park") return "Safari Park";
       if (p.id === "kennedy-space-center") return "Kennedy Space";
+      if (p.id === "shedd-aquarium") return "Shedd Aquarium";
+      if (p.id === "lincoln-park-zoo") return "Lincoln Park Zoo";
       if (p.id === "amnh") return "AMNH";
       return p.name || p.id;
     };
@@ -46,17 +47,26 @@
         )}</a>`;
       })
       .join("");
-    if (pilotLead) {
-      pilotLead.innerHTML = `Age slider, time segments, optional name — live preview, one-page print.
-        <strong>${allPilotIds.length} places</strong> have personalized missions. Popular starters:`;
-    }
-    if (pilotMore && allPilotIds.length > featuredIds.length) {
+    if (pilotMore) {
       pilotMore.hidden = false;
-      pilotMore.innerHTML = `Or pick any pin on the map → <strong>Build personalized mission</strong>. ${
-        allPilotIds.length - featuredIds.length
-      } more places ready.`;
+      const extra = Math.max(0, allPilotIds.length - featuredIds.length);
+      pilotMore.textContent =
+        extra > 0
+          ? `${extra}+ more on the map below — tap a pin or search by city`
+          : "More places on the map below";
     }
   }
+
+  // Smooth scroll primary CTA → map
+  document.querySelectorAll('a.pitch-cta[href="#us-map"], a.story-jump[href="#us-map"]').forEach((a) => {
+    a.addEventListener("click", (e) => {
+      const map = document.getElementById("us-map");
+      if (!map) return;
+      e.preventDefault();
+      map.scrollIntoView({ behavior: "smooth", block: "start" });
+      history.replaceState(null, "", "#us-map");
+    });
+  });
 
   // Ready cards open the map mini-panel for that venue (not the SEO static page)
   if (grid) {
