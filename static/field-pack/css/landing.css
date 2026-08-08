@@ -771,6 +771,15 @@
   margin: 14px 0 0;
 }
 
+.city-chip-wrap {
+  position: relative;
+  z-index: 1;
+}
+.city-chip-wrap:hover,
+.city-chip-wrap:focus-within {
+  z-index: 20;
+}
+
 .city-chip {
   appearance: none;
   border: 1.5px solid var(--border, rgba(15, 92, 92, 0.14));
@@ -790,7 +799,8 @@
     color var(--dur-fast, 120ms) ease;
 }
 
-.city-chip:hover {
+.city-chip:hover,
+.city-chip-wrap:focus-within .city-chip {
   background: #eef8f3;
   border-color: var(--teal, #0f5c5c);
 }
@@ -806,6 +816,45 @@
   opacity: 0.7;
   margin-left: 4px;
   font-size: 0.75rem;
+}
+
+/* Hover / focus menu: venues in that city */
+.city-chip-menu {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: calc(100% + 6px);
+  min-width: 12.5rem;
+  max-width: min(18rem, 85vw);
+  padding: 6px;
+  margin: 0;
+  border-radius: 14px;
+  background: #fff;
+  border: 1.5px solid rgba(15, 92, 92, 0.16);
+  box-shadow: 0 12px 28px rgba(21, 34, 56, 0.14);
+}
+.city-chip-wrap:hover .city-chip-menu,
+.city-chip-wrap:focus-within .city-chip-menu {
+  display: grid;
+  gap: 2px;
+}
+.city-chip-menu-item {
+  display: block;
+  padding: 9px 11px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #0a4545;
+  font-weight: 700;
+  font-size: 0.86rem;
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.city-chip-menu-item:hover,
+.city-chip-menu-item:focus-visible {
+  background: #e8f6f0;
+  outline: none;
 }
 
 .landing-hero h1 {
@@ -1782,6 +1831,11 @@
   font-size: 0.8rem;
   font-weight: 750;
   color: var(--muted, #3d4f6f);
+}
+.map-cities-hint {
+  font-weight: 600;
+  color: var(--muted-soft, #5a6b82);
+  font-size: 0.76rem;
 }
 .map-filters-more {
   margin: 2px 0 0;

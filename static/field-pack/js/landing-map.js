@@ -369,34 +369,24 @@
       venueSelect.value = "";
     }
     if (mapCount) {
-      const usCount = allPlaces.filter(isUSPlace).length;
-      const topN = allPlaces.filter((p) => isUSPlace(p) && (TOP_IDS.has(p.id) || p.tier === "top")).length;
+      // Quiet status only — no “tap a pin / pick from lists” coaching
       if (mapScope === "intl") {
-        const readyN = list.filter((p) => p.status === "ready").length;
         if (selectedCountry) {
-          const name =
-            (list[0] && list[0].countryName) ||
-            selectedCountry;
-          mapCount.textContent =
-            readyN > 0
-              ? `International · ${list.length} in ${name} (${readyN} ready to print)`
-              : `International · ${list.length} places in ${name}`;
+          const name = (list[0] && list[0].countryName) || selectedCountry;
+          mapCount.textContent = `${list.length} in ${name}`;
         } else {
-          mapCount.textContent =
-            readyN > 0
-              ? `International · ${list.length} on the world map · ${readyN} ready to print`
-              : `International · ${list.length} places on the world map`;
+          mapCount.textContent = `${list.length} worldwide`;
         }
       } else if (selectedState) {
-        mapCount.textContent = `Showing all ${list.length} places in ${selectedState} — pick one below or tap a pin`;
+        mapCount.textContent = `${list.length} in ${selectedState}`;
       } else if (selectedMetroId && selectedMetroId !== "all") {
         const m = METRO_DEFS.find((x) => x.id === selectedMetroId);
         const label = (m && m.label) || "this area";
-        mapCount.textContent = `Showing ${list.length} places in ${label}`;
+        mapCount.textContent = `${list.length} in ${label}`;
       } else if (mapScope === "top") {
-        mapCount.textContent = `Showing ${list.length} popular places — switch to “All places” for more`;
+        mapCount.textContent = `${list.length} popular`;
       } else {
-        mapCount.textContent = `Showing ${list.length} places — tap a pin or pick from the lists`;
+        mapCount.textContent = `${list.length} places`;
       }
     }
   }

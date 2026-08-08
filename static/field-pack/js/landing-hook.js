@@ -31,8 +31,8 @@
     });
   });
 
-  // Ready cards open the map mini-panel for that venue (not the SEO static page)
-  if (grid) {
+  // Ready cards (if present) open the map mini-panel for that venue
+  if (grid && READY.length) {
     grid.innerHTML = READY.map((p) => {
       const href = `/field-pack/#/venue/${encodeURIComponent(p.id)}`;
       const short =
@@ -53,7 +53,6 @@
       if (!a) return;
       const id = a.getAttribute("data-venue-id");
       if (!id) return;
-      // Prefer in-page map panel (no full reload) when already on the landing map
       if (typeof window.fpSelectVenueOnMap === "function") {
         e.preventDefault();
         window.fpSelectVenueOnMap(id);
@@ -61,36 +60,139 @@
     });
   }
 
+  /** City chips: hover/focus shows venue links; click jumps the map. */
   const chipDefs = [
-    { id: "dallas", label: "Dallas" },
-    { id: "nyc", label: "NYC" },
-    { id: "chicago", label: "Chicago" },
-    { id: "la", label: "LA" },
-    { id: "san-diego", label: "San Diego" },
-    { id: "austin", label: "Austin" },
+    {
+      id: "dallas",
+      label: "Dallas",
+      match: (p) => p.region === "dfw" || ["Dallas", "Fort Worth"].includes(p.city),
+    },
+    {
+      id: "nyc",
+      label: "NYC",
+      match: (p) => p.region === "nyc" || ["New York", "Bronx"].includes(p.city),
+    },
+    {
+      id: "la",
+      label: "LA",
+      match: (p) =>
+        p.region === "la" || ["Los Angeles", "Long Beach"].includes(p.city),
+    },
+    {
+      id: "san-diego",
+      label: "San Diego",
+      match: (p) =>
+        p.region === "san-diego" || ["San Diego", "Escondido"].includes(p.city),
+    },
+    {
+      id: "london",
+      label: "London",
+      intl: true,
+      match: (p) => p.city === "London",
+    },
+    {
+      id: "paris",
+      label: "Paris",
+      intl: true,
+      match: (p) => p.city === "Paris",
+    },
   ];
+
+  function venuesForChip(def) {
+    return places.filter((p) => def.match(p)).sort((a, b) => (a.name || "").localeCompare(b.name || ""));
+  }
+
+  function shortVenueLabel(p) {
+    if (!p) return "";
+    if (p.id === "childrens-aquarium-dallas") return "Children’s Aquarium";
+    if (p.id === "childrens-museum-perot") return "Children’s Museum";
+    if (p.id === "dallas-world-aquarium") return "World Aquarium";
+    if (p.id === "dallas-arboretum") return "Arboretum";
+    if (p.id === "perot-museum") return "Perot Museum";
+    if (p.id === "san-diego-safari-park") return "Safari Park";
+    if (p.id === "nhm-london") return "Natural History Museum";
+    if (p.id === "paris-zoo") return "Paris Zoo";
+    if (p.id === "amnh") return "AMNH";
+    if (p.id === "california-science-center") return "California Science Center";
+    return p.name || p.id;
+  }
+
+  function jumpMapToChip(def) {
+    document.getElementById("map-viewport")?.scrollIntoView({ behavior: "smooth", block: "center" });
+    if (def.intl) {
+      const intlBtn = document.getElementById("scope-intl");
+      if (intlBtn && intlBtn.getAttribute("aria-pressed") !== "true") {
+        intlBtn.click();
+      }
+      const first = venuesForChip(def)[0];
+      if (first && typeof window.fpSelectVenueOnMap === "function") {
+        // Allow intl basemap to swap before focusing a pin
+        setTimeout(() => window.fpSelectVenueOnMap(first.id), 120);
+      }
+      return;
+    }
+    // US metro: ensure All places, then filter via city select
+    const moreBtn = document.getElementById("scope-more");
+    if (moreBtn && moreBtn.getAttribute("aria-pressed") !== "true") {
+      moreBtn.click();
+    }
+    if (citySelect && citySelect.querySelector(`option[value="${def.id}"]`)) {
+      citySelect.value = def.id;
+      citySelect.dispatchEvent(new Event("change", { bubbles: true }));
+    }
+  }
 
   if (chips) {
     chips.innerHTML = chipDefs
-      .map(
-        (c) =>
-          `<button type="button" class="city-chip" data-city="${c.id}" aria-pressed="false">${escapeHtml(
-            c.label
-          )}</button>`
-      )
+      .map((c) => {
+        const venues = venuesForChip(c);
+        const menu =
+          venues.length > 0
+            ? `<div class="city-chip-menu" role="menu" aria-label="${escapeHtml(c.label)} places">
+            ${venues
+              .map((p) => {
+                const href = p.href || `/field-pack/${encodeURIComponent(p.id)}/`;
+                return `<a class="city-chip-menu-item" role="menuitem" href="${escapeHtml(href)}">${escapeHtml(
+                  p.emoji || "📍"
+                )} ${escapeHtml(shortVenueLabel(p))}</a>`;
+              })
+              .join("")}
+          </div>`
+            : "";
+        return `<div class="city-chip-wrap">
+          <button type="button" class="city-chip" data-city="${escapeHtml(c.id)}" data-intl="${
+            c.intl ? "1" : "0"
+          }" aria-pressed="false" aria-haspopup="true" aria-expanded="false">${escapeHtml(c.label)}</button>
+          ${menu}
+        </div>`;
+      })
       .join("");
 
     chips.addEventListener("click", (e) => {
+      // Links in menu navigate normally
+      if (e.target.closest("a.city-chip-menu-item")) return;
       const btn = e.target.closest(".city-chip");
       if (!btn) return;
       const id = btn.dataset.city;
-      chips.querySelectorAll(".city-chip").forEach((b) => b.setAttribute("aria-pressed", "false"));
+      const def = chipDefs.find((c) => c.id === id);
+      if (!def) return;
+      chips.querySelectorAll(".city-chip").forEach((b) => {
+        b.setAttribute("aria-pressed", "false");
+        b.setAttribute("aria-expanded", "false");
+      });
       btn.setAttribute("aria-pressed", "true");
-      if (citySelect && citySelect.querySelector(`option[value="${id}"]`)) {
-        citySelect.value = id;
-        citySelect.dispatchEvent(new Event("change", { bubbles: true }));
-      }
-      document.getElementById("map-viewport")?.scrollIntoView({ behavior: "smooth", block: "center" });
+      btn.setAttribute("aria-expanded", "true");
+      jumpMapToChip(def);
+    });
+
+    // Keep aria-expanded in sync for keyboard focus
+    chips.querySelectorAll(".city-chip-wrap").forEach((wrap) => {
+      const btn = wrap.querySelector(".city-chip");
+      if (!btn) return;
+      wrap.addEventListener("focusin", () => btn.setAttribute("aria-expanded", "true"));
+      wrap.addEventListener("focusout", (ev) => {
+        if (!wrap.contains(ev.relatedTarget)) btn.setAttribute("aria-expanded", "false");
+      });
     });
   }
 
