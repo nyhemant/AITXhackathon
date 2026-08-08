@@ -483,8 +483,9 @@ def page_mission_chrome_html() -> str:
     """Print button + time/age chips: button left, two chip rows right (synced by mission-ui.js)."""
     return """
         <div class="seo-mission-bar no-print" aria-label="Print mission options">
-          <button type="button" class="btn btn-primary btn-big seo-print-btn" id="mission-open-btn" aria-haspopup="dialog" aria-controls="mission-drawer">
-            Print mission
+          <button type="button" class="btn btn-primary btn-big seo-print-btn" id="mission-open-btn" aria-haspopup="dialog" aria-controls="mission-drawer" aria-label="Print mission">
+            <span class="seo-print-btn-line">Print</span>
+            <span class="seo-print-btn-line seo-print-btn-sub">mission</span>
           </button>
           <div class="seo-mission-chrome" id="seo-mission-chrome">
             <div class="seo-chip-row" role="group" aria-label="Time">
@@ -754,7 +755,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <link rel="stylesheet" href="/shell/shell.css?v=5" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=46" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=10" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=11" />
   <link rel="stylesheet" href="/field-pack/css/mission.css?v=8" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
@@ -933,7 +934,7 @@ def render_venue_page(v: dict) -> str:
   <link rel="stylesheet" href="/shell/shell.css?v=5" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=46" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=10" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=11" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
   </script>
