@@ -390,5 +390,95 @@
     "https://www.memphiszoo.org/zambezi-river-hippo-camp",
     "https://www.memphiszoo.org/herpetarium",
     "https://en.wikipedia.org/wiki/Memphis_Zoo"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "Memphis bonus · China / cats + Africa loop secrets",
+    "find_ids": [
+      "african_elephant",
+      "sumatran_tiger",
+      "western_lowland_gorilla",
+      "african_penguin",
+      "cheetah",
+      "nile_hippo",
+      "galapagos_tortoise",
+      "two_toed_sloth"
+    ],
+    "challenges": [
+      {
+        "id": "mem_el",
+        "text": "Elephant: trunk in water, dirt, or air?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "mem_tiger",
+        "text": "Tiger: 20 silent seconds — what changed?",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "mem_gorilla",
+        "text": "Gorilla: hands or rest",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "mem_penguin",
+        "text": "Penguin: water or land majority right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "mem_cheetah",
+        "text": "Cheetah: statue energy yes/no",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "mem_hippo",
+        "text": "Hippo: eyes/ears only or full face?",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "mem_sloth",
+        "text": "Sloth: any motion in 20s?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find China exhibit or cat house on a map even if crowds are thick",
+    "easter_egg_little": "★ Easter egg: after the hard list — one free minute of favorite stop",
+    "researched": "2026-08-08",
+    "status": "researched",
+    "sources": [
+      "https://www.memphiszoo.org/"
+    ]
+  }
 }

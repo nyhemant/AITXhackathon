@@ -390,5 +390,96 @@
   "do_not_list": [],
   "presence_sources": [
     "https://www.parquejaimeduque.com/"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "Jaime Duque Park Zoo bonus · second-loop secrets",
+    "find_ids": [
+      "cm_outdoor"
+    ],
+    "challenges": [
+      {
+        "id": "bogota_zoo_cm_outdoor_watch",
+        "text": "Park: take 15 seconds on the Outdoor Area — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "zoo_behavior",
+        "text": "Watch one animal do something for 15 full seconds (eat, climb, pace, rest)",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "zoo_pattern",
+        "text": "Match two patterns in different places (stripes, spots, shells)",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "zoo_tiny_big",
+        "text": "Find something tiny next to something huge",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "zoo_overlook",
+        "text": "Find a cool detail most visitors walk past",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "zoo_sound",
+        "text": "Stand still 20 seconds — loudest sound that isn’t people?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "zoo_water",
+        "text": "Find water used by animals (pool, moat, splash, drink)",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "zoo_little",
+        "text": "Copy an animal move once (stomp, stretch, tip-toe, roar soft)",
+        "age_fit": [
+          "2-3",
+          "4-5"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find a park map or zone sign — name one animal that lives that way",
+    "easter_egg_little": "★ Easter egg: pick a favorite bench — sit 60 seconds and name three sounds",
+    "researched": "2026-08-08",
+    "status": "thin",
+    "sources": [
+      "https://www.parquejaimeduque.com/"
+    ]
+  }
 }

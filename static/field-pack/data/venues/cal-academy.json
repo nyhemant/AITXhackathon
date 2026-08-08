@@ -300,5 +300,83 @@
   "presence_sources": [
     "https://www.calacademy.org/exhibits",
     "https://www.calacademy.org/"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "Cal Academy bonus · Rainforest + Steinhart + penguins",
+    "find_ids": [
+      "sci_rainforest",
+      "shark",
+      "african_penguin",
+      "jellyfish",
+      "octopus",
+      "stingray",
+      "sci_planet"
+    ],
+    "challenges": [
+      {
+        "id": "ca_rain",
+        "text": "Osher Rainforest: look up four levels — what’s living highest?",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "ca_penguin",
+        "text": "African Hall penguins: end-of-hall classic — dive or waddle?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "ca_shark",
+        "text": "Steinhart Aquarium: shark cruise past the glass twice",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "ca_jelly",
+        "text": "Jellies: hypnotic pulse — match one beat with a finger tap",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "ca_planet",
+        "text": "Morrison Planetarium: note a showtime even if you skip the show",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "ca_swamp",
+        "text": "Find an amphibian or swampy corner — damp life counts",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: Golden Gate Park exit orientation — which way is the ocean (guess, then check a map)",
+    "easter_egg_little": "★ Easter egg: penguin waddle for 5 steps outside the hall",
+    "sources": [
+      "https://www.calacademy.org/",
+      "Osher Rainforest, Steinhart Aquarium, African Hall penguins, Morrison Planetarium"
+    ],
+    "researched": "2026-08-08",
+    "status": "researched"
+  }
 }

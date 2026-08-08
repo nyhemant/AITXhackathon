@@ -257,5 +257,92 @@
   "presence_sources": [
     "https://www.pleasetouchmuseum.org/",
     "https://www.pleasetouchmuseum.org/exhibits/"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "Please Touch Museum bonus · Little kids",
+    "find_ids": [
+      "cm_art_lab",
+      "cm_toddler_garden",
+      "cm_free_explore",
+      "cm_waterfall",
+      "cm_outdoor"
+    ],
+    "challenges": [
+      {
+        "id": "auto_cm_art_lab",
+        "text": "Halls: 15 quiet seconds on the Art lab — moving, hiding, eating, or resting?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "auto_cm_toddler_garde",
+        "text": "Little kids: 15 quiet seconds on the Toddler zone — moving, hiding, eating, or resting?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "auto_cm_free_explore",
+        "text": "Halls: 15 quiet seconds on the Free explore — moving, hiding, eating, or resting?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "auto_cm_waterfall",
+        "text": "Water play: 15 quiet seconds on the Water play — moving, hiding, eating, or resting?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "auto_cm_outdoor",
+        "text": "Outdoor / park side: 15 quiet seconds on the Outdoor — moving, hiding, eating, or resting?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "mu_skip",
+        "text": "Find a tiny label or button most people skip",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "mu_body",
+        "text": "Use your body once: reach, crouch, or tip-toe",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find a map or hall name you’ve never noticed — point it out at Please Touch Museum",
+    "easter_egg_little": "★ Easter egg: pick a favorite bench — sit 60 seconds and name three sounds",
+    "researched": "2026-08-08",
+    "status": "solid",
+    "sources": [
+      "https://www.pleasetouchmuseum.org/"
+    ]
+  }
 }

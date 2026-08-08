@@ -397,5 +397,74 @@
     "https://www.zoovienna.at/en/",
     "https://www.zoovienna.at/en/zoo-and-visitors/welcome-worlds-oldest-zoo/",
     "https://en.wikipedia.org/wiki/Schönbrunn_Zoo"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "Schönbrunn bonus · rainforest house + polar energy",
+    "find_ids": [
+      "giant_panda",
+      "african_penguin",
+      "sumatran_tiger",
+      "african_lion",
+      "red_panda",
+      "zebra"
+    ],
+    "challenges": [
+      {
+        "id": "vie_panda",
+        "text": "Panda (if on view): eat, climb, or nap?",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "vie_polar",
+        "text": "Polar: swim glass or land",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "vie_el",
+        "text": "Elephant trunk job",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "vie_gorilla",
+        "text": "Gorilla hands",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "vie_tiger",
+        "text": "Tiger pace",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: palace/grounds view — point to one non-zoo building from a path",
+    "easter_egg_little": "★ Easter egg: after the hard list — one free minute of favorite stop",
+    "researched": "2026-08-08",
+    "status": "researched",
+    "sources": [
+      "https://www.zoovienna.at/"
+    ],
+    "notes": "Panda presence can change — treat as if-on-view."
+  }
 }

@@ -295,5 +295,85 @@
     "https://www.montereybayaquarium.org/",
     "https://www.montereybayaquarium.org/visit/exhibits",
     "https://www.montereybayaquarium.org/visit/exhibits/sea-otters"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "Monterey bonus · Open Sea + Jellies + Tentacles",
+    "find_ids": [
+      "jellyfish",
+      "shark",
+      "octopus",
+      "sea_turtle",
+      "seahorse",
+      "starfish",
+      "eel"
+    ],
+    "challenges": [
+      {
+        "id": "mba_open",
+        "text": "Open Sea: shark or turtle — who crosses your view first?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "mba_jelly",
+        "text": "Jellies: pick one color/shape and watch it pulse 10 times",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "mba_octo",
+        "text": "Tentacles / octopus: best hider — in plain sight or tucked?",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "mba_kelp",
+        "text": "Kelp/reef eel: head out or fully hidden?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "mba_tide",
+        "text": "Tide pool sea star: arms flat or curled?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "mba_sea",
+        "text": "Seahorse: upright drift or anchored?",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find the darkest glow corner — whisper one thing that moved",
+    "easter_egg_little": "★ Easter egg: after the hard list — one free minute of favorite stop",
+    "researched": "2026-08-08",
+    "status": "researched",
+    "sources": [
+      "https://www.montereybayaquarium.org/",
+      "Open Sea, Jellies, Tentacles, Kelp Forest"
+    ]
+  }
 }

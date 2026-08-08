@@ -232,5 +232,70 @@
   ],
   "presence_sources": [
     "https://www.azscience.org/"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "Arizona Science Center bonus · Planetarium + Kid pick",
+    "find_ids": [
+      "sci_hands_on",
+      "sci_planet",
+      "cm_free_explore"
+    ],
+    "challenges": [
+      {
+        "id": "auto_sci_hands_on",
+        "text": "Galleries: 15 quiet seconds on the Hands-on lab — moving, hiding, eating, or resting?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "auto_sci_planet",
+        "text": "Planetarium: 15 quiet seconds on the Planet / space hall — moving, hiding, eating, or resting?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "auto_cm_free_explore",
+        "text": "Kid pick: 15 quiet seconds on the Free explore — moving, hiding, eating, or resting?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "mu_skip",
+        "text": "Find a tiny label or button most people skip",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "mu_body",
+        "text": "Use your body once: reach, crouch, or tip-toe",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find a map or hall name you’ve never noticed — point it out at Arizona Science Center",
+    "easter_egg_little": "★ Easter egg: pick a favorite bench — sit 60 seconds and name three sounds",
+    "researched": "2026-08-08",
+    "status": "solid",
+    "sources": [
+      "https://www.azscience.org/"
+    ]
+  }
 }

@@ -396,5 +396,94 @@
     "https://detroitzoo.org/",
     "https://detroitzoo.org/animals/",
     "https://detroitzoo.org/things-to-do/"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "Detroit bonus · Penguin Center + Arctic + Asia deep cuts",
+    "find_ids": [
+      "polar_bear",
+      "amur_tiger",
+      "sloth_bear",
+      "chimpanzee",
+      "warthog",
+      "red_panda",
+      "gray_wolf",
+      "grevys_zebra"
+    ],
+    "challenges": [
+      {
+        "id": "dt_penguin",
+        "text": "Penguin Conservation Center: watch one bird enter or leave the water",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "dt_polar",
+        "text": "Arctic Ring of Life: is the polar bear swimming, pacing, or out of sight?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "dt_tiger",
+        "text": "Asian Forest tiger: count stripe clusters on one shoulder (best guess)",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "dt_sloth_bear",
+        "text": "Sloth bear: snout long or short compared to a “normal” bear face?",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "dt_apes",
+        "text": "Great Apes of Harambee: chimp vs gorilla — who uses hands more right now?",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "dt_warthog",
+        "text": "Warthog: trot, kneel, or mud — catch one move",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "dt_wolf",
+        "text": "Gray wolf: ears up or relaxed? Soft pack energy or solo?",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: ride or spot the zoo train route on a map (even if you don’t ride)",
+    "easter_egg_little": "★ Easter egg: tip-toe like a sneaky wolf for 10 steps after the list",
+    "sources": [
+      "https://detroitzoo.org/",
+      "Penguin Conservation Center, Arctic Ring of Life, Great Apes of Harambee, Asian Forest"
+    ],
+    "researched": "2026-08-08",
+    "status": "researched"
+  }
 }

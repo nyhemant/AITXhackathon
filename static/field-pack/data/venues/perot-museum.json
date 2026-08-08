@@ -234,5 +234,71 @@
   "presence_sources": [
     "https://www.perotmuseum.org/",
     "https://www.perotmuseum.org/explore/exhibits"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "Perot bonus · dinos + sports science side quests",
+    "find_ids": [
+      "sci_dinosaur",
+      "sci_planet",
+      "sci_hands_on",
+      "cm_free_explore",
+      "sci_mammal_hall"
+    ],
+    "challenges": [
+      {
+        "id": "pe_dino",
+        "text": "T. Boone Pickens Life Then and Now: find teeth OR footprints — which first?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "pe_sports",
+        "text": "Sports / being human: try one challenge that makes you breathe harder",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "pe_space",
+        "text": "Earth/space: point to something farther than the building (on a screen or model)",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "pe_detail",
+        "text": "Find a tiny label or button most people skip on a big exhibit",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "pe_compare",
+        "text": "Dino hall vs life sciences: which feels more “alive”? Why?",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: from a window or overlook, point to downtown Dallas — one building you’ll remember",
+    "easter_egg_little": "★ Easter egg: free explore only after two hard stops",
+    "sources": [
+      "https://www.perotmuseum.org/"
+    ],
+    "researched": "2026-08-08",
+    "status": "researched"
+  }
 }

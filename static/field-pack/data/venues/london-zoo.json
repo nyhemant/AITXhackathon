@@ -307,5 +307,96 @@
   "presence_sources": [
     "https://www.londonzoo.org/whats-here/animals",
     "https://www.londonzoo.org/whats-here/habitats"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "London bonus · Land of the Lions + Penguin Beach energy",
+    "find_ids": [
+      "lion",
+      "lemur",
+      "sloth",
+      "otter",
+      "tortoise",
+      "capybara",
+      "penguin",
+      "gorilla"
+    ],
+    "challenges": [
+      {
+        "id": "lz_lions",
+        "text": "Land of the Lions: Asiatic lions — mane big, small, or hard to see?",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "lz_penguin",
+        "text": "Penguin Beach: watch a porpoising leap or a long underwater glide",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "lz_gorilla",
+        "text": "Gorilla Kingdom: glass sit — who’s closest to visitors right now?",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "lz_madagascar",
+        "text": "Lemurs: hands or tail doing the interesting thing?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "lz_sloth",
+        "text": "Sloth: upside-down or right-side-up when you arrive?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "lz_otter",
+        "text": "Otters: splash contest — one big splash in 30 seconds?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "lz_capy",
+        "text": "Capybara: chill champions — are they in water or on land?",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find the Underground / tube-style zoo map vibe or a Blue badge sign — point it out",
+    "easter_egg_little": "★ Easter egg: play/under-5 area only after the hard list",
+    "sources": [
+      "https://www.londonzoo.org/",
+      "Gorilla Kingdom, Land of the Lions, Penguin Beach, Madagascar"
+    ],
+    "notes": "Humboldt-style penguins — soft label Penguin on sheet.",
+    "researched": "2026-08-08",
+    "status": "researched"
+  }
 }

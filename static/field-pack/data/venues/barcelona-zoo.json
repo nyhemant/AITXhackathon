@@ -391,5 +391,71 @@
   "presence_sources": [
     "https://www.zoobarcelona.cat/en/animals",
     "https://www.zoobarcelona.cat/en/animals/mammals"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "Barcelona Zoo bonus · second-loop primates + savanna",
+    "find_ids": [
+      "western_lowland_gorilla",
+      "african_elephant",
+      "reticulated_giraffe",
+      "african_lion"
+    ],
+    "challenges": [
+      {
+        "id": "bcn_gorilla",
+        "text": "Gorilla: hands or rest",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "bcn_el",
+        "text": "Elephant trunk job",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "bcn_giraffe",
+        "text": "Giraffe stretch",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "bcn_tiger",
+        "text": "Tiger pace vs statue",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "bcn_lion",
+        "text": "Lion alert check",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find a park map and name one zone at the far end",
+    "easter_egg_little": "★ Easter egg: after the hard list — one free minute of favorite stop",
+    "researched": "2026-08-08",
+    "status": "researched",
+    "sources": [
+      "https://www.zoobarcelona.cat/"
+    ]
+  }
 }

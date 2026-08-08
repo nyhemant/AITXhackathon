@@ -235,5 +235,92 @@
   ],
   "presence_sources": [
     "https://carnegiemnh.org/"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "Carnegie Museum of Natural History bonus · Kid pick + Explore",
+    "find_ids": [
+      "cm_free_explore",
+      "explore_7",
+      "sci_dinosaur",
+      "sci_mammal_hall",
+      "sci_hands_on"
+    ],
+    "challenges": [
+      {
+        "id": "auto_cm_free_explore",
+        "text": "Kid pick: 15 quiet seconds on the Free explore — moving, hiding, eating, or resting?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "auto_explore_7",
+        "text": "Explore: 15 quiet seconds on the Free explore — moving, hiding, eating, or resting?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "auto_sci_dinosaur",
+        "text": "Dinosaurs: 15 quiet seconds on the Dinosaur hall — moving, hiding, eating, or resting?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "auto_sci_mammal_hall",
+        "text": "Mammals / dioramas: 15 quiet seconds on the Animal / mammal hall — moving, hiding, eating, or resting?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "auto_sci_hands_on",
+        "text": "Discovery: 15 quiet seconds on the Hands-on / discovery — moving, hiding, eating, or resting?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "mu_skip",
+        "text": "Find a tiny label or button most people skip",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "mu_body",
+        "text": "Use your body once: reach, crouch, or tip-toe",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find a map or hall name you’ve never noticed — point it out at Carnegie Museum of Natural History",
+    "easter_egg_little": "★ Easter egg: pick a favorite bench — sit 60 seconds and name three sounds",
+    "researched": "2026-08-08",
+    "status": "solid",
+    "sources": [
+      "https://carnegiemnh.org/"
+    ]
+  }
 }

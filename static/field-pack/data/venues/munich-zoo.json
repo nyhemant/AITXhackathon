@@ -366,5 +366,70 @@
     "https://www.hellabrunn.de/en/",
     "https://www.hellabrunn.de/en/animals",
     "https://en.wikipedia.org/wiki/Hellabrunn_Zoo"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "Hellabrunn bonus · geo-zoo continents second loop",
+    "find_ids": [
+      "african_elephant",
+      "western_lowland_gorilla",
+      "zebra"
+    ],
+    "challenges": [
+      {
+        "id": "mun_el",
+        "text": "Elephant trunk",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "mun_gorilla",
+        "text": "Gorilla hands",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "mun_polar",
+        "text": "Polar swim or land",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "mun_giraffe",
+        "text": "Giraffe stretch",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "mun_pattern",
+        "text": "Two patterns two continents",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: name two continent zones from the map",
+    "easter_egg_little": "★ Easter egg: after the hard list — one free minute at a favorite stop",
+    "researched": "2026-08-08",
+    "status": "researched",
+    "sources": [
+      "https://www.hellabrunn.de/en/"
+    ]
+  }
 }

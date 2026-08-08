@@ -261,5 +261,104 @@
   "presence_sources": [
     "https://thinkeryaustin.org/",
     "existing full pack"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "Thinkery bonus · Imagine",
+    "find_ids": [
+      "cm_art_lab",
+      "cm_free_explore",
+      "cm_imaginarium",
+      "cm_outdoor",
+      "cm_waterfall",
+      "cm_makery",
+      "cm_toddler_garden"
+    ],
+    "challenges": [
+      {
+        "id": "auto_cm_art_lab",
+        "text": "Halls: 15 quiet seconds on the Art Lab — moving, hiding, eating, or resting?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "auto_cm_free_explore",
+        "text": "Halls: 15 quiet seconds on the Free explore — moving, hiding, eating, or resting?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "auto_cm_imaginarium",
+        "text": "Imagine: 15 quiet seconds on the Imaginarium — moving, hiding, eating, or resting?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "auto_cm_outdoor",
+        "text": "Outdoor: 15 quiet seconds on the Outdoor Area — moving, hiding, eating, or resting?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "auto_cm_waterfall",
+        "text": "Water: 15 quiet seconds on the Waterfall play — moving, hiding, eating, or resting?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "auto_cm_makery",
+        "text": "Make: 15 quiet seconds on the Creative Makery — moving, hiding, eating, or resting?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "mu_skip",
+        "text": "Find a tiny label or button most people skip",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "mu_body",
+        "text": "Use your body once: reach, crouch, or tip-toe",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find a map or hall name you’ve never noticed — point it out at Thinkery",
+    "easter_egg_little": "★ Easter egg: pick a favorite bench — sit 60 seconds and name three sounds",
+    "researched": "2026-08-08",
+    "status": "solid",
+    "sources": [
+      "https://thinkeryaustin.org/"
+    ]
+  }
 }

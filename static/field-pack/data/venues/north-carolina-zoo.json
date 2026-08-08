@@ -308,5 +308,82 @@
     "https://www.nczoo.org/wildlife/animals",
     "https://www.nczoo.org/experiences",
     "https://www.nczoo.org/experiences/habitats"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "NC Zoo bonus · Africa continent walk deep cuts",
+    "find_ids": [
+      "african_elephant",
+      "reticulated_giraffe",
+      "african_lion",
+      "western_lowland_gorilla",
+      "zebra"
+    ],
+    "challenges": [
+      {
+        "id": "nc_el",
+        "text": "Africa elephant: dust, drink, or walk?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "nc_giraffe",
+        "text": "Giraffe: far field spot then close path animal",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "nc_lion",
+        "text": "Lion: ears and eyes — alert or off-duty?",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "nc_gorilla",
+        "text": "Gorilla: hands story in one word",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "nc_zebra",
+        "text": "Zebra: count a “stripe family” on one shoulder (guess)",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "nc_far",
+        "text": "From one overlook: name farthest living thing you see",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: note how long the Africa walk is on the map — plan one bench",
+    "easter_egg_little": "★ Easter egg: after the hard list — one free minute of favorite stop",
+    "researched": "2026-08-08",
+    "status": "researched",
+    "sources": [
+      "https://www.nczoo.org/"
+    ]
+  }
 }

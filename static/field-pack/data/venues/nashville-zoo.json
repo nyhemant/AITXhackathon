@@ -406,5 +406,73 @@
     "https://www.nashvillezoo.org/",
     "https://www.nashvillezoo.org/leopard-forest",
     "https://www.nashvillezoo.org/our-blog/posts/elephant-herd-updates"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "Nashville Zoo bonus · Jungle Gym cool-down + Asia/Africa",
+    "find_ids": [
+      "sumatran_tiger",
+      "reticulated_giraffe",
+      "two_toed_sloth",
+      "galapagos_tortoise",
+      "ring_tailed_lemur",
+      "african_elephant"
+    ],
+    "challenges": [
+      {
+        "id": "nsh_tiger",
+        "text": "Tiger: 20 silent seconds",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "nsh_giraffe",
+        "text": "Giraffe browse check",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "nsh_cloud",
+        "text": "Clouded leopard or small cat: best hide",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "nsh_roo",
+        "text": "Roo/Aussie: still or bounce",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "nsh_otter",
+        "text": "Otter splash 15s",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: Jungle Gym only after the hard list — one free play minute",
+    "easter_egg_little": "★ Easter egg: after the hard list — one free minute of favorite stop",
+    "researched": "2026-08-08",
+    "status": "researched",
+    "sources": [
+      "https://www.nashvillezoo.org/"
+    ]
+  }
 }

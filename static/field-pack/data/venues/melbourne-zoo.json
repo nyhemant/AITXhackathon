@@ -331,5 +331,71 @@
     "https://www.zoo.org.au/melbourne/animals-and-habitats/australian-bush/",
     "https://www.zoo.org.au/melbourne/animals-and-habitats/main-trail/",
     "https://www.zoo.org.au/elephant-move-faqs/"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "Melbourne bonus · Orangutan Sanctuary + Trail of the Elephants",
+    "find_ids": [
+      "orangutan",
+      "sumatran_tiger",
+      "western_lowland_gorilla",
+      "reticulated_giraffe"
+    ],
+    "challenges": [
+      {
+        "id": "mel_orang",
+        "text": "Orangutan Sanctuary: hands vs feet cleverness",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "mel_el",
+        "text": "Elephants: trunk tool 15s",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "mel_tiger",
+        "text": "Tiger: silent 20s story",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "mel_gorilla",
+        "text": "Gorilla face one word",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "mel_local",
+        "text": "Aussie animal stop: awake or sleep mode?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find Trail of the Elephants or Orangutan Sanctuary on the map first",
+    "easter_egg_little": "★ Easter egg: after the hard list — one free minute of favorite stop",
+    "researched": "2026-08-08",
+    "status": "researched",
+    "sources": [
+      "https://www.zoo.org.au/melbourne/"
+    ]
+  }
 }

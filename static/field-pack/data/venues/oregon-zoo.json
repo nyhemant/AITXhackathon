@@ -376,5 +376,81 @@
     "https://www.oregonzoo.org/wildlife/animals",
     "https://www.oregonzoo.org/events/keeper-talks-and-animal-activities",
     "https://en.wikipedia.org/wiki/Oregon_Zoo"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "Oregon Zoo bonus · primates + polar/penguin energy",
+    "find_ids": [
+      "reticulated_giraffe",
+      "western_lowland_gorilla",
+      "african_penguin",
+      "red_panda",
+      "african_lion"
+    ],
+    "challenges": [
+      {
+        "id": "orz_giraffe",
+        "text": "Giraffe: highest leaf stretch you catch",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "orz_gorilla",
+        "text": "Primates gorilla: hands busy or rest?",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "orz_penguin",
+        "text": "Penguin: dive, waddle, or huddle",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "orz_panda",
+        "text": "Red panda: curl ball or tree climb?",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "orz_lion",
+        "text": "Lion: nap score 1–10",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "orz_tiger",
+        "text": "Tiger/predators: stripe busy-ness vs lion",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find a train or carousel on the map — only after hard list",
+    "easter_egg_little": "★ Easter egg: after the hard list — one free minute of favorite stop",
+    "researched": "2026-08-08",
+    "status": "researched",
+    "sources": [
+      "https://www.oregonzoo.org/"
+    ]
+  }
 }

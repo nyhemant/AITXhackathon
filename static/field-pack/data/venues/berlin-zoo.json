@@ -337,5 +337,71 @@
     "https://www.zoo-berlin.de/en/",
     "https://www.zoo-berlin.de/en/tickets-service/feedings-trainings",
     "https://www.zoo-berlin.de/en/about-the-zoo/numbers-dates-and-facts"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "Berlin Zoo bonus · panda garden cues + hippo house",
+    "find_ids": [
+      "nile_hippo",
+      "african_elephant",
+      "western_lowland_gorilla"
+    ],
+    "challenges": [
+      {
+        "id": "ber_panda",
+        "text": "Panda if on view: eat or climb?",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "ber_hippo",
+        "text": "Hippo house: underwater window yes/no",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "ber_el",
+        "text": "Elephant trunk",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "ber_gorilla",
+        "text": "Gorilla hands",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "ber_tiger",
+        "text": "Tiger silent 15s",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find the zoo gate/elephant gate on a postcard map moment",
+    "easter_egg_little": "★ Easter egg: after the hard list — one free minute at a favorite stop",
+    "researched": "2026-08-08",
+    "status": "researched",
+    "sources": [
+      "https://www.zoo-berlin.de/en"
+    ],
+    "notes": "Panda if-on-view only."
+  }
 }

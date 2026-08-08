@@ -341,5 +341,80 @@
     "https://denverzoo.org/",
     "https://denverzoo.org/things-to-do/",
     "https://denverzoo.org/annual-report/"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "Denver bonus · Tropical Discovery + predators loop",
+    "find_ids": [
+      "sumatran_tiger",
+      "western_lowland_gorilla",
+      "reticulated_giraffe",
+      "african_lion"
+    ],
+    "challenges": [
+      {
+        "id": "den_tiger",
+        "text": "Tiger: 20 silent seconds — what changed?",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "den_gorilla",
+        "text": "Gorilla: hands or rest?",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "den_giraffe",
+        "text": "Giraffe highest stretch",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "den_lion",
+        "text": "Lion nap score 1–10",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "den_pattern",
+        "text": "Two patterns in different yards",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "den_water",
+        "text": "Find water animals use (pool, moat, splash)",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find Tropical Discovery on the map before you go in",
+    "easter_egg_little": "★ Easter egg: after the hard list — one free minute at a favorite stop",
+    "researched": "2026-08-08",
+    "status": "researched",
+    "sources": [
+      "https://denverzoo.org/"
+    ]
+  }
 }

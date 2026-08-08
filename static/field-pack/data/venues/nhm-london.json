@@ -195,5 +195,70 @@
     "https://www.nhm.ac.uk/",
     "https://www.nhm.ac.uk/visit.html",
     "https://www.nhm.ac.uk/visit/exhibitions.html"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "NHM London bonus · dinosaurs + Hintze Hall energy",
+    "find_ids": [
+      "sci_dinosaur",
+      "sci_mammal_hall",
+      "sci_hands_on"
+    ],
+    "challenges": [
+      {
+        "id": "nhm_dino",
+        "text": "Dinosaurs: pick one skeleton — count visible teeth or claws (best guess)",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "nhm_whale",
+        "text": "Mammals / whale hall: stand under the big one — whisper one size word",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "nhm_earth",
+        "text": "Earth zone: find a volcano, quake, or planet cue",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "nhm_hands",
+        "text": "Hands-on / Investigate: touch or try one thing most people skip",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "nhm_detail",
+        "text": "Find a tiny label most visitors walk past",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find Hintze Hall / main hall name on a map or ceiling glance",
+    "easter_egg_little": "★ Easter egg: after the hard list — one free minute of favorite stop",
+    "researched": "2026-08-08",
+    "status": "researched",
+    "sources": [
+      "https://www.nhm.ac.uk/",
+      "Dinosaurs, Hintze Hall, mammals"
+    ]
+  }
 }

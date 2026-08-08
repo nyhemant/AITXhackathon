@@ -359,5 +359,82 @@
   "presence_sources": [
     "https://www.mandai.com/en/singapore-zoo.html",
     "https://www.mandai.com/en/singapore-zoo/animals-and-zones.html"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "Singapore bonus · orangutan free-range + Wild Africa",
+    "find_ids": [
+      "orangutan",
+      "reticulated_giraffe",
+      "sumatran_tiger",
+      "asian_small_clawed_otter",
+      "african_lion"
+    ],
+    "challenges": [
+      {
+        "id": "sg_orang",
+        "text": "Orangutan: free-range path or platform — where are the hands?",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "sg_giraffe",
+        "text": "Wild Africa giraffe: browse height — low leaf or high?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "sg_tiger",
+        "text": "Tiger: pacing loop or hidden?",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "sg_otter",
+        "text": "Otter: splash count in 15 seconds",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "sg_lion",
+        "text": "Lion: mane fluff or sleek face focus?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "sg_quiet",
+        "text": "Stand still 20s away from crowds — bird or insect wins?",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find Fragile Forest or Elephants of Asia on a map (even if you skip)",
+    "easter_egg_little": "★ Easter egg: after the hard list — one free minute of favorite stop",
+    "researched": "2026-08-08",
+    "status": "researched",
+    "sources": [
+      "https://www.mandai.com/en/singapore-zoo.html",
+      "Orangutan, Wild Africa, Mandai"
+    ]
+  }
 }

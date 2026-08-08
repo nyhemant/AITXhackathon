@@ -276,5 +276,84 @@
   "last_presence_audit": "2026-08-08",
   "presence_sources": [
     "https://www.columbuszoo.org/animals"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "Columbus bonus · Congo apes + aquarium side quests",
+    "find_ids": [
+      "western_lowland_gorilla",
+      "reticulated_giraffe",
+      "shark",
+      "stingray",
+      "sea_turtle",
+      "zebra"
+    ],
+    "challenges": [
+      {
+        "id": "clb_gorilla",
+        "text": "Congo/apes gorilla: groom, walk, or rest — call it",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "clb_giraffe",
+        "text": "Africa giraffe: tongue out or pure neck stretch?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "clb_shark",
+        "text": "Shark tank: crossings past your nose in 30s",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "clb_ray",
+        "text": "Ray: flap vs glide",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "clb_turtle",
+        "text": "Sea turtle: surface breath or deep cruise?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "clb_zebra",
+        "text": "Zebra stripes: wide near-shoulder vs thin rump?",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find the aquarium or manatee area on a map if posted",
+    "easter_egg_little": "★ Easter egg: after the hard list — one free minute of favorite stop",
+    "researched": "2026-08-08",
+    "status": "researched",
+    "sources": [
+      "https://www.columbuszoo.org/",
+      "Congo, Africa, aquarium"
+    ]
+  }
 }

@@ -209,5 +209,71 @@
   "presence_sources": [
     "https://www.dmns.org/",
     "https://www.dmns.org/exhibitions/permanent-exhibitions/"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "DMNS bonus · dioramas + space/planet deep cuts",
+    "find_ids": [
+      "sci_dinosaur",
+      "sci_mammal_hall",
+      "sci_planet",
+      "sci_hands_on"
+    ],
+    "challenges": [
+      {
+        "id": "dmns_dino",
+        "text": "Dino/fossil: count visible teeth or claws (guess)",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "dmns_dio",
+        "text": "Best diorama hide-and-seek animal",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "dmns_space",
+        "text": "Space/planet: name one world that isn’t Earth",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "dmns_hands",
+        "text": "Hands-on most people skip",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "dmns_detail",
+        "text": "Tiny label walk-past",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find Egyptian or space hall name on a map",
+    "easter_egg_little": "★ Easter egg: after the hard list — one free minute at a favorite stop",
+    "researched": "2026-08-08",
+    "status": "researched",
+    "sources": [
+      "https://www.dmns.org/"
+    ]
+  }
 }

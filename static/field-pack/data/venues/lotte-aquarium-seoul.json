@@ -351,5 +351,110 @@
   "do_not_list": [],
   "presence_sources": [
     "https://www.lotteworld.com/"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "Lotte World Aquarium bonus · deep tanks & hideouts",
+    "find_ids": [
+      "shark",
+      "stingray",
+      "jellyfish"
+    ],
+    "challenges": [
+      {
+        "id": "lotte_aquari_shark_watch",
+        "text": "Main tank: take 15 seconds on the Shark — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "lotte_aquari_stingray_watch",
+        "text": "Rays: take 15 seconds on the Stingray — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "lotte_aquari_jellyfish_watch",
+        "text": "Jellies: take 15 seconds on the Jellyfish — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "aq_dive",
+        "text": "Watch one animal swim past you twice — same direction or different?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "aq_camouflage",
+        "text": "Find the best hider in a tank (camouflage or nook)",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "aq_glow",
+        "text": "Jellies or dark exhibit: stand still 15 seconds — what moves first?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "aq_tiny_big",
+        "text": "Find something tiny in the same hall as something huge",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "aq_tunnel",
+        "text": "If there’s a tunnel or big window: name one animal above you and one beside you",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "aq_quiet",
+        "text": "Find the quietest tank corner — what’s the softest motion?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find the darkest or glowiest corner — whisper one thing that moved",
+    "easter_egg_little": "★ Easter egg: pick a favorite bench — sit 60 seconds and name three sounds",
+    "researched": "2026-08-08",
+    "status": "thin",
+    "sources": [
+      "https://www.lotteworld.com/"
+    ]
+  }
 }

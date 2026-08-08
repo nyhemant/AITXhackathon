@@ -357,5 +357,93 @@
   "do_not_list": [],
   "presence_sources": [
     "https://www.zoobudapest.com/en"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "Budapest Zoo bonus · Giraffes + Gorillas",
+    "find_ids": [
+      "zebra",
+      "reticulated_giraffe",
+      "western_lowland_gorilla",
+      "african_elephant",
+      "african_lion"
+    ],
+    "challenges": [
+      {
+        "id": "auto_zebra",
+        "text": "Grounds: 15 quiet seconds on the Zebra — moving, hiding, eating, or resting?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "auto_reticulated_gira",
+        "text": "Giraffes: 15 quiet seconds on the Giraffe — moving, hiding, eating, or resting?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "auto_western_lowland_",
+        "text": "Gorillas: 15 quiet seconds on the Western lowland gorilla — moving, hiding, eating, or resting?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "auto_african_elephant",
+        "text": "Elephants: 15 quiet seconds on the African elephant — moving, hiding, eating, or resting?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "auto_african_lion",
+        "text": "Grounds: 15 quiet seconds on the African lion — moving, hiding, eating, or resting?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "zoo_pattern",
+        "text": "Match two patterns in different places (stripes, spots, shells)",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "zoo_sound",
+        "text": "Stand still 20s — loudest non-people sound?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find a park map or zone sign — name one animal that lives that way",
+    "easter_egg_little": "★ Easter egg: pick a favorite bench — sit 60 seconds and name three sounds",
+    "researched": "2026-08-08",
+    "status": "solid",
+    "sources": [
+      "https://www.zoobudapest.com/en"
+    ]
+  }
 }

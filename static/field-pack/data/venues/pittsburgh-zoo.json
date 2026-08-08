@@ -311,5 +311,72 @@
     "https://www.pittsburghzoo.org/",
     "https://www.pittsburghzoo.org/our-animals/",
     "https://en.wikipedia.org/wiki/Pittsburgh_Zoo_%26_PPG_Aquarium"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "Pittsburgh bonus · PPGaquarium + Forest Passage",
+    "find_ids": [
+      "african_elephant",
+      "shark",
+      "jellyfish",
+      "reticulated_giraffe"
+    ],
+    "challenges": [
+      {
+        "id": "pit_gorilla",
+        "text": "Gorilla hands story",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "pit_el",
+        "text": "Elephant trunk",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "pit_shark",
+        "text": "Aquarium shark passes",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "pit_jelly",
+        "text": "Jelly pulses",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "pit_giraffe",
+        "text": "Giraffe stretch",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find the aquarium entrance on the map before the hill climb",
+    "easter_egg_little": "★ Easter egg: after the hard list — one free minute at a favorite stop",
+    "researched": "2026-08-08",
+    "status": "researched",
+    "sources": [
+      "https://www.pittsburghzoo.org/"
+    ]
+  }
 }

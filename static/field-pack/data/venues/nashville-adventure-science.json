@@ -53,8 +53,17 @@
       "label": "Adventure Tower",
       "emoji": "🧗",
       "one_liner": "Climb, crawl, and burn energy in the big tower.",
-      "tags": ["play", "wow", "tall"],
-      "age_fit": ["2-3", "4-5", "6-8", "9+"],
+      "tags": [
+        "play",
+        "wow",
+        "tall"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
       "zone": "Adventure Tower",
       "qa_card": {
         "question": "What was the wildest part of the tower?",
@@ -70,8 +79,16 @@
       "label": "BodyQuest",
       "emoji": "🫀",
       "one_liner": "Journey through the human body — heart, lungs, and more.",
-      "tags": ["hands", "wow", "play"],
-      "age_fit": ["4-5", "6-8", "9+"],
+      "tags": [
+        "hands",
+        "wow",
+        "play"
+      ],
+      "age_fit": [
+        "4-5",
+        "6-8",
+        "9+"
+      ],
       "zone": "BodyQuest",
       "qa_card": {
         "question": "What body part did you explore?",
@@ -87,8 +104,16 @@
       "label": "Fossil Frontiers",
       "emoji": "🦴",
       "one_liner": "Fossils from Middle Tennessee — dig into deep time.",
-      "tags": ["wow", "read"],
-      "age_fit": ["2-3", "4-5", "6-8", "9+"],
+      "tags": [
+        "wow",
+        "read"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
       "zone": "Fossil Frontiers",
       "qa_card": {
         "question": "What fossil shape stuck with you?",
@@ -104,8 +129,15 @@
       "label": "Makerspace",
       "emoji": "🔧",
       "one_liner": "Dream it up and build something with your hands.",
-      "tags": ["hands", "play"],
-      "age_fit": ["4-5", "6-8", "9+"],
+      "tags": [
+        "hands",
+        "play"
+      ],
+      "age_fit": [
+        "4-5",
+        "6-8",
+        "9+"
+      ],
       "zone": "Makerspace",
       "qa_card": {
         "question": "What did you make or try to invent?",
@@ -121,8 +153,15 @@
       "label": "Early Explorations",
       "emoji": "🌱",
       "one_liner": "Little-kid zone for ages about five and under.",
-      "tags": ["play", "rest", "kids"],
-      "age_fit": ["2-3", "4-5"],
+      "tags": [
+        "play",
+        "rest",
+        "kids"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5"
+      ],
       "zone": "Early Explorations",
       "qa_card": {
         "question": "What was your favorite little-kid stop?",
@@ -138,8 +177,15 @@
       "label": "Solar System Survey",
       "emoji": "🪐",
       "one_liner": "Compare Earth to other planets — light and gravity.",
-      "tags": ["wow", "read"],
-      "age_fit": ["4-5", "6-8", "9+"],
+      "tags": [
+        "wow",
+        "read"
+      ],
+      "age_fit": [
+        "4-5",
+        "6-8",
+        "9+"
+      ],
       "zone": "Space",
       "qa_card": {
         "question": "Which planet would you visit and why?",
@@ -155,8 +201,14 @@
       "label": "Wonders of the Universe",
       "emoji": "🚀",
       "one_liner": "Astronomy up close — look for the Curiosity rover model.",
-      "tags": ["wow", "read"],
-      "age_fit": ["6-8", "9+"],
+      "tags": [
+        "wow",
+        "read"
+      ],
+      "age_fit": [
+        "6-8",
+        "9+"
+      ],
       "zone": "Space",
       "qa_card": {
         "question": "What space tool or rover detail did you notice?",
@@ -172,8 +224,15 @@
       "label": "Physics of Flight",
       "emoji": "✈️",
       "one_liner": "Test wing shapes and how air lifts planes.",
-      "tags": ["hands", "play"],
-      "age_fit": ["4-5", "6-8", "9+"],
+      "tags": [
+        "hands",
+        "play"
+      ],
+      "age_fit": [
+        "4-5",
+        "6-8",
+        "9+"
+      ],
       "zone": "Flight",
       "qa_card": {
         "question": "Which wing shape worked best?",
@@ -189,8 +248,16 @@
       "label": "Galactic Gardens",
       "emoji": "🌿",
       "one_liner": "Outdoor learning when weather is friendly.",
-      "tags": ["outdoor", "play"],
-      "age_fit": ["2-3", "4-5", "6-8", "9+"],
+      "tags": [
+        "outdoor",
+        "play"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
       "zone": "Outdoors",
       "qa_card": {
         "question": "What living thing did you spot outside?",
@@ -206,8 +273,15 @@
       "label": "Sudekum Planetarium",
       "emoji": "🌌",
       "one_liner": "Sit back for a sky show (check showtimes).",
-      "tags": ["wow", "rest"],
-      "age_fit": ["4-5", "6-8", "9+"],
+      "tags": [
+        "wow",
+        "rest"
+      ],
+      "age_fit": [
+        "4-5",
+        "6-8",
+        "9+"
+      ],
       "zone": "Planetarium",
       "qa_card": {
         "question": "What was one cool thing in the sky show?",
@@ -244,5 +318,83 @@
     "https://www.adventuresci.org/exhibit/bodyquest/",
     "https://www.adventuresci.org/exhibit/fossil-frontiers/",
     "https://www.adventuresci.org/exhibit/makerspace/"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "Adventure Science bonus · Tower + BodyQuest + space",
+    "find_ids": [
+      "makerspace",
+      "solar_system_survey",
+      "wonders_universe",
+      "physics_flight",
+      "planetarium",
+      "fossil_frontiers",
+      "galactic_gardens",
+      "bodyquest"
+    ],
+    "challenges": [
+      {
+        "id": "na_tower",
+        "text": "Adventure Tower: one climb segment you almost skipped — do it or watch someone finish",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "na_body",
+        "text": "BodyQuest: heart or lungs moment — what did you feel in your own chest?",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "na_fossil",
+        "text": "Fossil Frontiers: find something from Middle Tennessee (label clue)",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "na_make",
+        "text": "Makerspace: build or test one idea in under 2 minutes",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "na_space",
+        "text": "Solar System Survey: which planet would you visit and why (one reason)",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "na_flight",
+        "text": "Physics of Flight: which wing shape “won” for you?",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: Sudekum Planetarium — check a showtime even if you don’t go in",
+    "easter_egg_little": "★ Easter egg: Early Explorations only after two big exhibits",
+    "sources": [
+      "https://www.adventuresci.org/"
+    ],
+    "researched": "2026-08-08",
+    "status": "researched"
+  }
 }

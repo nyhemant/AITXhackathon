@@ -384,5 +384,84 @@
     "https://www.zoomiami.org/animals",
     "https://www.zoomiami.org/zoo-map",
     "https://www.zoomiami.org/know-before-you-visit"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "Zoo Miami bonus · Africa megafauna + Asia apes",
+    "find_ids": [
+      "african_elephant",
+      "sumatran_tiger",
+      "orangutan",
+      "western_lowland_gorilla",
+      "african_lion",
+      "zebra",
+      "galapagos_tortoise",
+      "caribbean_flamingo"
+    ],
+    "challenges": [
+      {
+        "id": "mia_el",
+        "text": "Africa elephant: trunk tool or dust?",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "mia_tiger",
+        "text": "Asia tiger: pace vs hide",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "mia_orang",
+        "text": "Orangutan: clever hands moment",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "mia_gorilla",
+        "text": "Gorilla: chest or face focus?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "mia_pattern",
+        "text": "Zebra vs flamingo — pattern vs color wow",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "mia_tort",
+        "text": "Giant tortoise: mid-step or statue?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find Asia or Amazon-and-Beyond on a map (name one zone you skip today)",
+    "easter_egg_little": "★ Easter egg: after the hard list — one free minute of favorite stop",
+    "researched": "2026-08-08",
+    "status": "researched",
+    "sources": [
+      "https://www.zoomiami.org/"
+    ]
+  }
 }

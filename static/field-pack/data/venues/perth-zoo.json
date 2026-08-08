@@ -323,5 +323,70 @@
     "https://perthzoo.wa.gov.au/animals",
     "https://perthzoo.wa.gov.au/",
     "https://perthzoo.wa.gov.au/close-encounters"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "Perth Zoo bonus · Australian bush + Asian primates",
+    "find_ids": [
+      "orangutan",
+      "reticulated_giraffe",
+      "african_lion"
+    ],
+    "challenges": [
+      {
+        "id": "per_orang",
+        "text": "Orangutan: clever hands",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "per_local",
+        "text": "Aussie unique: still or scurrying?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "per_giraffe",
+        "text": "Giraffe stretch",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "per_tiger",
+        "text": "Tiger hide score",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "per_lion",
+        "text": "Lion nap score",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find the Australian bushwalk on the map",
+    "easter_egg_little": "★ Easter egg: after the hard list — one free minute of favorite stop",
+    "researched": "2026-08-08",
+    "status": "researched",
+    "sources": [
+      "https://perthzoo.wa.gov.au/"
+    ]
+  }
 }

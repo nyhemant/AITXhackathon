@@ -366,5 +366,73 @@
   "presence_sources": [
     "https://www.parczoologiquedeparis.fr/en",
     "https://en.wikipedia.org/wiki/Paris_Zoological_Park"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "Paris Zoological Park bonus · biozones second look",
+    "find_ids": [
+      "african_lion",
+      "nile_hippo",
+      "ring_tailed_lemur",
+      "zebra",
+      "western_lowland_gorilla",
+      "reticulated_giraffe"
+    ],
+    "challenges": [
+      {
+        "id": "par_lion",
+        "text": "Lion alert check",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "par_giraffe",
+        "text": "Giraffe",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "par_wolf",
+        "text": "Wolf ears",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "par_manatee",
+        "text": "Manatee glide",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "par_bio",
+        "text": "Name two biozones you crossed",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: grand rock landmark — point to it from two paths",
+    "easter_egg_little": "★ Easter egg: after the hard list — one free minute at a favorite stop",
+    "researched": "2026-08-08",
+    "status": "researched",
+    "sources": [
+      "https://www.parczoologiquedeparis.fr/en"
+    ]
+  }
 }

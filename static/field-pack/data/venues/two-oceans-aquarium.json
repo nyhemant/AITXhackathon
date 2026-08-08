@@ -365,5 +365,72 @@
   "do_not_list": [],
   "presence_sources": [
     "https://www.aquarium.co.za/"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "Two Oceans bonus · kelp + predators + tortoise cues",
+    "find_ids": [
+      "shark",
+      "jellyfish",
+      "eel",
+      "octopus"
+    ],
+    "challenges": [
+      {
+        "id": "toa_shark",
+        "text": "Predator exhibit: pass count",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "toa_kelp",
+        "text": "Kelp forest energy: still or sway?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "toa_penguin",
+        "text": "Penguin dive",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "toa_turtle",
+        "text": "Turtle cruise",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "toa_hide",
+        "text": "Best hider",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: stand where Atlantic and Indian ocean stories meet on a sign",
+    "easter_egg_little": "★ Easter egg: after the hard list — one free minute at a favorite stop",
+    "researched": "2026-08-08",
+    "status": "researched",
+    "sources": [
+      "https://www.aquarium.co.za/"
+    ]
+  }
 }

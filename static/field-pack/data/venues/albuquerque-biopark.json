@@ -286,5 +286,73 @@
   "presence_sources": [
     "https://www.cabq.gov/artsculture/biopark/zoo/zoo-animals",
     "https://www.bioparksociety.org/biopark-parent-animal-list/"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "ABQ BioPark bonus · Africa + Australia + Tingley cues",
+    "find_ids": [
+      "reticulated_giraffe",
+      "zebra",
+      "nile_hippo",
+      "african_lion",
+      "caribbean_flamingo",
+      "cheetah"
+    ],
+    "challenges": [
+      {
+        "id": "abq_el",
+        "text": "Elephant trunk job",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "abq_giraffe",
+        "text": "Giraffe stretch",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "abq_tiger",
+        "text": "Tiger hide score",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "abq_ape",
+        "text": "Orangutan or primate hands",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "abq_aus",
+        "text": "Australia stop: still or hop energy?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find aquarium or botanic garden on the BioPark map",
+    "easter_egg_little": "★ Easter egg: after the hard list — one free minute of favorite stop",
+    "researched": "2026-08-08",
+    "status": "researched",
+    "sources": [
+      "https://www.cabq.gov/culturalservices/biopark"
+    ]
+  }
 }

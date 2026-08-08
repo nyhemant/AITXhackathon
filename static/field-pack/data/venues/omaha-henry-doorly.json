@@ -314,5 +314,95 @@
     "https://www.omahazoo.com/scott-african-grasslands",
     "https://www.omahazoo.com/visitorexperiences",
     "https://en.wikipedia.org/wiki/Omaha%27s_Henry_Doorly_Zoo_and_Aquarium"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "Omaha bonus · Desert Dome energy + Aquarium + apes",
+    "find_ids": [
+      "african_elephant",
+      "orangutan",
+      "western_lowland_gorilla",
+      "sumatran_tiger",
+      "shark",
+      "stingray",
+      "jellyfish"
+    ],
+    "challenges": [
+      {
+        "id": "om_elephant",
+        "text": "African Grasslands elephants: trunk in use or resting? Watch 15s",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "om_orang",
+        "text": "Orangutan: hands or feet doing the clever work right now?",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "om_gorilla",
+        "text": "Gorilla: chest, face, or hands — what’s moving?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "om_tiger",
+        "text": "Asian Highlands tiger: pacing loop or statue?",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "om_shark",
+        "text": "Aquarium shark: count how many times it crosses your window",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "om_jelly",
+        "text": "Jellies: stand still 15s — what pulses first?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "om_ray",
+        "text": "Stingray: wing-flap or glide — name the motion",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: spot Desert Dome / Lied Jungle / Aquarium on a park map (name two)",
+    "easter_egg_little": "★ Easter egg: after the hard list — one free minute of favorite stop",
+    "researched": "2026-08-08",
+    "status": "researched",
+    "sources": [
+      "https://www.omahazoo.com/",
+      "African Grasslands, Hubbard apes, Aquarium, Desert Dome"
+    ]
+  }
 }

@@ -178,5 +178,70 @@
   "presence_sources": [
     "https://discoveryplace.org/",
     "https://discoveryplace.org/visit"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "Discovery Place Science bonus · Life / water + Labs",
+    "find_ids": [
+      "sci_aquarium_zone",
+      "sci_hands_on",
+      "sci_planet"
+    ],
+    "challenges": [
+      {
+        "id": "auto_sci_aquarium_zon",
+        "text": "Life / water: 15 quiet seconds on the World Alive aquariums — moving, hiding, eating, or resting?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "auto_sci_hands_on",
+        "text": "Labs: 15 quiet seconds on the Hands-on exhibits — moving, hiding, eating, or resting?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "auto_sci_planet",
+        "text": "Space / sky: 15 quiet seconds on the Planetarium / IMAX Dome — moving, hiding, eating, or resting?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "mu_skip",
+        "text": "Find a tiny label or button most people skip",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "mu_body",
+        "text": "Use your body once: reach, crouch, or tip-toe",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find a map or hall name you’ve never noticed — point it out at Discovery Place Science",
+    "easter_egg_little": "★ Easter egg: pick a favorite bench — sit 60 seconds and name three sounds",
+    "researched": "2026-08-08",
+    "status": "solid",
+    "sources": [
+      "https://discoveryplace.org/"
+    ]
+  }
 }

@@ -372,5 +372,73 @@
   "do_not_list": [],
   "presence_sources": [
     "https://www.bioparco.it/en/"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "Bioparco bonus · big mammals + garden paths",
+    "find_ids": [
+      "african_elephant",
+      "zebra",
+      "african_penguin",
+      "african_lion",
+      "western_lowland_gorilla",
+      "reticulated_giraffe"
+    ],
+    "challenges": [
+      {
+        "id": "rom_el",
+        "text": "Elephant trunk",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "rom_giraffe",
+        "text": "Giraffe",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "rom_lion",
+        "text": "Lion",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "rom_tiger",
+        "text": "Tiger silent 15s",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "rom_pattern",
+        "text": "Two patterns",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: villa/garden path — find a non-animal statue or fountain",
+    "easter_egg_little": "★ Easter egg: after the hard list — one free minute at a favorite stop",
+    "researched": "2026-08-08",
+    "status": "researched",
+    "sources": [
+      "https://www.bioparco.it/"
+    ]
+  }
 }

@@ -345,5 +345,72 @@
     "https://www.vanaqua.org/",
     "https://www.vanaqua.org/explore/animals/",
     "https://www.vanaqua.org/explore/animals/sea-otters/"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "Vancouver Aquarium bonus · jellies + octopus + BC waters",
+    "find_ids": [
+      "jellyfish",
+      "octopus",
+      "shark",
+      "starfish",
+      "eel"
+    ],
+    "challenges": [
+      {
+        "id": "van_jelly",
+        "text": "Jelly pulse count",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "van_octo",
+        "text": "Octopus hide score",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "van_otter",
+        "text": "Sea otter hands/tools?",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "van_local",
+        "text": "BC waters animal you might meet wild too",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "van_shark",
+        "text": "Shark pass count",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find a research or rescue cue on a sign — one sentence",
+    "easter_egg_little": "★ Easter egg: after the hard list — one free minute at a favorite stop",
+    "researched": "2026-08-08",
+    "status": "researched",
+    "sources": [
+      "https://www.vanaqua.org/"
+    ]
+  }
 }

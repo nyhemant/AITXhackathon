@@ -320,5 +320,87 @@
     "https://www.fortworthzoo.org/habitats",
     "https://www.fortworthzoo.org/babies",
     "https://www.fortworthzoo.org/keeper-chatsstage-show"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "Fort Worth bonus · Predators + Elephant Springs energy",
+    "find_ids": [
+      "penguin",
+      "hippo",
+      "otter",
+      "tiger",
+      "tortoise",
+      "lemur",
+      "zebra",
+      "gorilla"
+    ],
+    "challenges": [
+      {
+        "id": "fw_predators",
+        "text": "Predators of Asia & Africa: watch a big cat for 20 seconds without talking — what did it do?",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "fw_hippo",
+        "text": "Hippo stop: more underwater, mud, or bank? Guess why",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "fw_penguin",
+        "text": "Penguins (rockhoppers if on view): count waddles or a dive",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "fw_otter",
+        "text": "Otters: find the splashiest 10 seconds",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "fw_pattern",
+        "text": "Tiger stripes vs zebra stripes — which looks busier up close?",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "fw_tortoise",
+        "text": "Giant tortoise: is it mid-step or statue-still?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find Elephant Springs on a map/sign (herd may be off-view for habitat work — still count the place)",
+    "easter_egg_little": "★ Easter egg: kids play area only after the hard list — one free minute",
+    "sources": [
+      "https://www.fortworthzoo.org/",
+      "Predators of Asia & Africa reopening; Elephant Springs"
+    ],
+    "notes": "Elephants may be behind scenes for maintenance — egg is map/place not live elephant requirement.",
+    "researched": "2026-08-08",
+    "status": "researched"
+  }
 }

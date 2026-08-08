@@ -366,5 +366,80 @@
   "presence_sources": [
     "https://www.lpzoo.org/",
     "https://www.lpzoo.org/animals-gardens/animals-exhibits/"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "Lincoln Park bonus · Regenstein + big cats second loop",
+    "find_ids": [
+      "western_lowland_gorilla",
+      "african_lion",
+      "reticulated_giraffe"
+    ],
+    "challenges": [
+      {
+        "id": "lp_gorilla",
+        "text": "Regenstein/apes: gorilla hands story",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "lp_lion",
+        "text": "Lion alert ears yes/no",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "lp_giraffe",
+        "text": "Giraffe stretch",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "lp_polar",
+        "text": "Polar: swim or pace?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "lp_penguin",
+        "text": "Penguin water entry",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "lp_panda",
+        "text": "Red panda curl or climb",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: free zoo — still find a map kiosk and name one far zone",
+    "easter_egg_little": "★ Easter egg: after the hard list — one free minute at a favorite stop",
+    "researched": "2026-08-08",
+    "status": "researched",
+    "sources": [
+      "https://www.lpzoo.org/"
+    ]
+  }
 }

@@ -355,5 +355,71 @@
   "do_not_list": [],
   "presence_sources": [
     "https://www.flaquarium.org/"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "Florida Aquarium bonus · Wetlands + ocean journey",
+    "find_ids": [
+      "shark",
+      "sea_turtle",
+      "stingray"
+    ],
+    "challenges": [
+      {
+        "id": "fl_shark",
+        "text": "Shark pass",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "fl_turtle",
+        "text": "Turtle",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "fl_otter",
+        "text": "Otter splash",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "fl_wet",
+        "text": "Wetlands: still hunter or busy birds?",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "fl_ray",
+        "text": "Ray wing motion",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find Wetlands Trail on the map first",
+    "easter_egg_little": "★ Easter egg: after the hard list — one free minute at a favorite stop",
+    "researched": "2026-08-08",
+    "status": "researched",
+    "sources": [
+      "https://www.flaquarium.org/"
+    ]
+  }
 }

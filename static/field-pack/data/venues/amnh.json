@@ -230,5 +230,71 @@
     "https://www.amnh.org/exhibitions",
     "https://www.amnh.org/exhibitions/permanent",
     "https://www.amnh.org/"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "AMNH bonus · fossils + mammals + planetarium cue",
+    "find_ids": [
+      "sci_dinosaur",
+      "sci_mammal_hall",
+      "sci_planet",
+      "sci_hands_on",
+      "cm_free_explore"
+    ],
+    "challenges": [
+      {
+        "id": "am_dino",
+        "text": "Dinosaur halls: teeth-forward or horns-forward favorite?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "am_mammal",
+        "text": "Mammal dioramas: find a habitat that looks cold",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "am_scale",
+        "text": "Stand under something huge — whisper “taller than my house?”",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "am_planet",
+        "text": "Planetarium: note a show name/time even if you don’t go in",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "am_detail",
+        "text": "Diorama detective: one animal partially hidden behind plants",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: Central Park side — which exit would you take for the park? (map guess)",
+    "easter_egg_little": "★ Easter egg: T-rex arms pose for 3 seconds",
+    "sources": [
+      "https://www.amnh.org/"
+    ],
+    "researched": "2026-08-08",
+    "status": "researched"
+  }
 }

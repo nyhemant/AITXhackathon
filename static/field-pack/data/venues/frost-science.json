@@ -256,5 +256,92 @@
   "presence_sources": [
     "https://www.frostscience.org/",
     "https://www.frostscience.org/exhibitions-featured/"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "Phillip and Patricia Frost Museum of Science bonus · Floors / labs + Aquarium",
+    "find_ids": [
+      "sci_aquarium_zone",
+      "sci_hands_on",
+      "shark",
+      "sci_planet",
+      "stingray"
+    ],
+    "challenges": [
+      {
+        "id": "auto_sci_aquarium_zon",
+        "text": "Galleries: 15 quiet seconds on the Aquarium zone — moving, hiding, eating, or resting?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "auto_sci_hands_on",
+        "text": "Floors / labs: 15 quiet seconds on the Hands-on lab — moving, hiding, eating, or resting?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "auto_shark",
+        "text": "Aquarium: 15 quiet seconds on the Shark — moving, hiding, eating, or resting?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "auto_sci_planet",
+        "text": "Planetarium: 15 quiet seconds on the Frost Planetarium — moving, hiding, eating, or resting?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "auto_stingray",
+        "text": "Aquarium: 15 quiet seconds on the Stingray — moving, hiding, eating, or resting?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "mu_skip",
+        "text": "Find a tiny label or button most people skip",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "mu_body",
+        "text": "Use your body once: reach, crouch, or tip-toe",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find a map or hall name you’ve never noticed — point it out at Phillip and Patricia Frost Museum of Science",
+    "easter_egg_little": "★ Easter egg: pick a favorite bench — sit 60 seconds and name three sounds",
+    "researched": "2026-08-08",
+    "status": "solid",
+    "sources": [
+      "https://www.frostscience.org/"
+    ]
+  }
 }

@@ -352,7 +352,7 @@
     ],
     "challenges": [
       {
-        "id": "dz_penguin_dive",
+        "id": "dz_penguin",
         "text": "Penguins: watch one dive or zoom in the water for a full 10 seconds",
         "age_fit": [
           "2-3",
@@ -362,17 +362,8 @@
         ]
       },
       {
-        "id": "dz_elephant_mud",
-        "text": "Giants of the Savanna: spot mud, dust, or water play on an elephant (or the ground near them)",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "dz_giraffe_ridge",
-        "text": "Giraffe Ridge: find something taller than the fence line (animal or structure)",
+        "id": "dz_cheetah",
+        "text": "Cheetah: still statue or pacing? Time 15 quiet seconds",
         "age_fit": [
           "2-3",
           "4-5",
@@ -381,26 +372,8 @@
         ]
       },
       {
-        "id": "dz_silverback",
-        "text": "Gorilla Trail: who has big-silverback energy? Point and say why",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "dz_two_patterns",
-        "text": "Find zebra stripes AND tiger stripes — which pattern looks busier?",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "dz_hippo_still",
-        "text": "Hippo stop: mostly underwater, mud, or out? Guess why",
+        "id": "dz_hippo",
+        "text": "Hippo: more underwater, mud, or bank right now?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -409,8 +382,8 @@
         ]
       },
       {
-        "id": "dz_flock",
-        "text": "Flamingos: count five birds without double-counting",
+        "id": "dz_gorilla",
+        "text": "Gorillas: hands, mouth, or rest — what wins this minute?",
         "age_fit": [
           "4-5",
           "6-8",
@@ -418,18 +391,51 @@
         ]
       },
       {
-        "id": "dz_little_map",
-        "text": "Roar once near lions, then tip-toe past something resting",
+        "id": "dz_pattern",
+        "text": "Tiger stripes vs giraffe spots — which pattern is busier up close?",
         "age_fit": [
-          "2-3"
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "dz_flamingo",
+        "text": "Flamingos: how many are standing on one leg? (best guess)",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "dz_tortoise",
+        "text": "Giant tortoise: mid-step or statue-still?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "dz_overlook",
+        "text": "Find a cool detail most visitors walk past near ZooNorth or savanna",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
         ]
       }
     ],
-    "easter_egg": "★ Easter egg: find a ZooNorth sign or map — name one animal that lives that way",
-    "easter_egg_little": "★ Easter egg: Children's Zoo only after the hard list — one free play minute",
+    "easter_egg": "★ Easter egg: find the monorail or train on a map/sign even if you don’t ride",
+    "easter_egg_little": "★ Easter egg: tip-toe like a sneaky cheetah for 10 steps after the list",
     "researched": "2026-08-08",
+    "status": "researched",
     "sources": [
-      "dallaszoo.com habitats: Giants of the Savanna, Giraffe Ridge, Gorilla Trail, penguin colony / ZooNorth"
+      "https://www.dallaszoo.com/",
+      "ZooNorth, Giants of the Savanna"
     ]
   }
 }

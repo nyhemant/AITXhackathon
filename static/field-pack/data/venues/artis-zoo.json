@@ -304,5 +304,73 @@
   "presence_sources": [
     "https://www.artis.nl/en",
     "https://www.artis.nl/en/artis-zoo/what-to-explore-in-artis-zoo/gorilla-house"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "ARTIS bonus · historic houses + micronatura cues",
+    "find_ids": [
+      "african_penguin",
+      "chimpanzee",
+      "zebra",
+      "western_lowland_gorilla",
+      "african_lion",
+      "reticulated_giraffe"
+    ],
+    "challenges": [
+      {
+        "id": "art_el",
+        "text": "Elephant",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "art_gorilla",
+        "text": "Gorilla hands",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "art_hist",
+        "text": "Find an old building that isn’t just a cage label",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "art_penguin",
+        "text": "Penguin dive",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "art_tiny",
+        "text": "Micronature/tiny life: something smaller than your thumb",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: planetarium or micronature on the map",
+    "easter_egg_little": "★ Easter egg: after the hard list — one free minute at a favorite stop",
+    "researched": "2026-08-08",
+    "status": "researched",
+    "sources": [
+      "https://www.artis.nl/en/"
+    ]
+  }
 }

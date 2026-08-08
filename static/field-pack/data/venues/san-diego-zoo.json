@@ -320,5 +320,85 @@
     "https://zoo.sandiegozoo.org/",
     "https://zoo.sandiegozoo.org/wildlife",
     "https://sandiegozoowildlifealliance.org/pressroom/san-diego-zoo-fact-sheet"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "San Diego bonus · Panda Ridge + Outback + Lost Forest",
+    "find_ids": [
+      "koala",
+      "red_panda",
+      "orangutan",
+      "two_toed_sloth",
+      "sumatran_tiger",
+      "western_lowland_gorilla",
+      "reticulated_giraffe",
+      "african_lion"
+    ],
+    "challenges": [
+      {
+        "id": "sd_panda",
+        "text": "Panda area: bamboo chew or climb — catch one behavior",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "sd_koala",
+        "text": "Outback koala: eyes open or sleep mode?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "sd_orang",
+        "text": "Lost Forest orangutan: hands or feet doing the clever bit?",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "sd_sloth",
+        "text": "Sloth: how long for one arm move? (count Mississippis)",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "sd_tiger",
+        "text": "Tiger: water feature — yes/no in view?",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "sd_sky",
+        "text": "Look up: skytram or canopy path cue — point without leaving your spot",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find a bus/tram stop sign or route map — name your next loop",
+    "easter_egg_little": "★ Easter egg: koala pose (hug a tree pose) for 5 seconds after the list",
+    "sources": [
+      "https://zoo.sandiegozoo.org/",
+      "Panda Ridge, Outback, Lost Forest, Elephant Odyssey"
+    ],
+    "researched": "2026-08-08",
+    "status": "researched"
+  }
 }

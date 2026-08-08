@@ -954,7 +954,28 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
     venue_json = json.dumps(mission_venue, ensure_ascii=False)
     challenges_json = CHALLENGES_JSON.read_text(encoding="utf-8")
     wonders_json = WONDERS_JSON.read_text(encoding="utf-8") if WONDERS_JSON.is_file() else "{}"
-    bonus_json = BONUS_HUNTS_JSON.read_text(encoding="utf-8") if BONUS_HUNTS_JSON.is_file() else "{}"
+    # Per-venue bonus slice only — full catalog is huge; engine also reads venue.bonus_hunt.
+    bonus_json = "{}"
+    if BONUS_HUNTS_JSON.is_file():
+        try:
+            _bh_all = json.loads(BONUS_HUNTS_JSON.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            _bh_all = {}
+        _slug = mission_venue.get("slug") or v.get("id") or ""
+        _bh_slim = {
+            "version": _bh_all.get("version", 1),
+            "generic": _bh_all.get("generic") or {},
+        }
+        if _bh_all.get("kits"):
+            _bh_slim["kits"] = _bh_all["kits"]
+        _one = (_bh_all.get("venues") or {}).get(_slug)
+        if not _one and isinstance(mission_venue.get("bonus_hunt"), dict):
+            _one = mission_venue["bonus_hunt"]
+        if _one:
+            _bh_slim["venues"] = {_slug: _one}
+        else:
+            _bh_slim["venues"] = {}
+        bonus_json = json.dumps(_bh_slim, ensure_ascii=False)
     lead = (
         mission_venue.get("tagline")
         or v.get("blurb")

@@ -398,5 +398,73 @@
     "https://zootampa.org/",
     "https://zootampa.org/visit/animals/",
     "https://zootampa.org/animals/african-elephant-3/"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "ZooTampa bonus · manatees + Asia + safari cues",
+    "find_ids": [
+      "african_elephant",
+      "african_lion",
+      "caribbean_flamingo",
+      "galapagos_tortoise",
+      "zebra",
+      "nile_hippo"
+    ],
+    "challenges": [
+      {
+        "id": "tpa_manatee",
+        "text": "Manatee: roll, glide, or surface breath?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "tpa_tiger",
+        "text": "Tiger silent 20s",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "tpa_orang",
+        "text": "Orangutan hands",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "tpa_el",
+        "text": "Elephant trunk",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "tpa_koala",
+        "text": "Koala awake eyes?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find manatee indoor on the map when weather is hot",
+    "easter_egg_little": "★ Easter egg: after the hard list — one free minute at a favorite stop",
+    "researched": "2026-08-08",
+    "status": "researched",
+    "sources": [
+      "https://zootampa.org/"
+    ]
+  }
 }

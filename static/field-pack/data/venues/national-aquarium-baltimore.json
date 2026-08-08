@@ -310,5 +310,85 @@
     "https://aqua.org/explore/",
     "https://aqua.org/explore/exhibits/"
   ],
-  "research_notes": "presence-audit 2026-08-08 [minor]"
+  "research_notes": "presence-audit 2026-08-08 [minor]",
+  "bonus_hunt": {
+    "tagline": "Baltimore Aquarium bonus · Shark Alley + Jellies Invasion",
+    "find_ids": [
+      "shark",
+      "jellyfish",
+      "african_penguin",
+      "stingray",
+      "octopus",
+      "seahorse",
+      "clownfish"
+    ],
+    "challenges": [
+      {
+        "id": "nab_shark",
+        "text": "Shark Alley: count full circle passes you catch",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "nab_jelly",
+        "text": "Jellies Invasion: pick a glow and watch 10 pulses",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "nab_penguin",
+        "text": "Maryland/penguins: belly-slide, waddle, or dive?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "nab_octo",
+        "text": "Octopus: suckers visible or fully tucked?",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "nab_sea",
+        "text": "Seahorse: anchored or drifting upright?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "nab_reef",
+        "text": "Clownfish: how many in one anemone clump (best guess)?",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find Living Seashore or rainforest on the map — touch one safe texture if open",
+    "easter_egg_little": "★ Easter egg: after the hard list — one free minute of favorite stop",
+    "researched": "2026-08-08",
+    "status": "researched",
+    "sources": [
+      "https://aqua.org/",
+      "Shark Alley, Jellies Invasion, Maryland: Mountains to the Sea"
+    ]
+  }
 }

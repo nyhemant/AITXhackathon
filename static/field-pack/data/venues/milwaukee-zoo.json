@@ -356,5 +356,71 @@
     "https://milwaukeezoo.org/visit/meet-our-animals/",
     "https://milwaukeezoo.org/about-us/zoo-facts/",
     "https://milwaukeezoo.org/"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "Milwaukee bonus · Africa + Aquatic & Reptile Center cues",
+    "find_ids": [
+      "african_elephant",
+      "western_lowland_gorilla",
+      "reticulated_giraffe",
+      "african_lion"
+    ],
+    "challenges": [
+      {
+        "id": "mke_el",
+        "text": "Elephant: trunk job right now",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "mke_ape",
+        "text": "Ape (gorilla/bonobo): hands story",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "mke_giraffe",
+        "text": "Giraffe neck: S or I shape?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "mke_lion",
+        "text": "Lion nap score",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "mke_pattern",
+        "text": "Zebra vs something spotted — two patterns",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find the zoo train or carousel on a map after the list",
+    "easter_egg_little": "★ Easter egg: after the hard list — one free minute of favorite stop",
+    "researched": "2026-08-08",
+    "status": "researched",
+    "sources": [
+      "https://www.milwaukeezoo.org/"
+    ]
+  }
 }

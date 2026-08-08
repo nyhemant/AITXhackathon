@@ -197,5 +197,75 @@
     "Leave while happy"
   ],
   "research_notes": "map-img 2026-08-07 · map-page 2026-08-07",
-  "list_confidence": "partial"
+  "list_confidence": "partial",
+  "bonus_hunt": {
+    "tagline": "Children’s Museum Perot bonus · make, splash, climb",
+    "find_ids": [
+      "imaginarium",
+      "woven",
+      "water",
+      "makery",
+      "toddler",
+      "outdoor",
+      "art",
+      "explore"
+    ],
+    "challenges": [
+      {
+        "id": "cmp_make",
+        "text": "Make/create zone: finish one thing you can hold or show",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "cmp_water",
+        "text": "Water play if open: one rule you followed (sleeves, splash zone)",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "cmp_climb",
+        "text": "Climb/outdoor: highest safe spot you reached",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "cmp_quiet",
+        "text": "Find a calmer corner after a loud room — reset 20 seconds",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "cmp_teach",
+        "text": "Teach a grown-up how one exhibit works in one sentence",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: spot the Perot name on the building — you’re in a downtown play lab",
+    "easter_egg_little": "★ Easter egg: toddler garden/reset only after two big play zones",
+    "sources": [
+      "https://www.perotmuseum.org/"
+    ],
+    "researched": "2026-08-08",
+    "status": "researched"
+  }
 }

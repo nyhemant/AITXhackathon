@@ -322,5 +322,71 @@
     "https://www.dublinzoo.ie/",
     "https://www.dublinzoo.ie/plan-your-visit/zoo-habitats/",
     "https://www.dublinzoo.ie/plan-your-visit/"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "Dublin bonus · Kaziranga elephants + Family Farm cool-down",
+    "find_ids": [
+      "western_lowland_gorilla",
+      "reticulated_giraffe",
+      "nile_hippo",
+      "chimpanzee"
+    ],
+    "challenges": [
+      {
+        "id": "dub_el",
+        "text": "Kaziranga/elephants: trunk job 15s",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "dub_gorilla",
+        "text": "Gorilla Rainforest: hands or rest",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "dub_giraffe",
+        "text": "Giraffe browse",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "dub_penguin",
+        "text": "Penguin water or land",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "dub_pattern",
+        "text": "Zebra stripes vs tiger stripes",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: Family Farm only after the hard list — one free minute",
+    "easter_egg_little": "★ Easter egg: after the hard list — one free minute at a favorite stop",
+    "researched": "2026-08-08",
+    "status": "researched",
+    "sources": [
+      "https://www.dublinzoo.ie/"
+    ]
+  }
 }

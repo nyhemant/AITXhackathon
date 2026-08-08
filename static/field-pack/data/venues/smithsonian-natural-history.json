@@ -256,5 +256,72 @@
   "do_not_list": [],
   "presence_sources": [
     "https://naturalhistory.si.edu/"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "NMNH bonus · fossils + ocean hall energy",
+    "find_ids": [
+      "sci_dinosaur",
+      "sci_mammal_hall",
+      "sci_aquarium_zone",
+      "sci_hands_on",
+      "cm_free_explore"
+    ],
+    "challenges": [
+      {
+        "id": "si_fossil",
+        "text": "Fossil hall: find a skull and a footprint (or track cast)",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "si_ocean",
+        "text": "Ocean hall: point to the biggest blue thing you can see",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "si_mammal",
+        "text": "Mammals: one animal built for speed vs one built for armor",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "si_crowd",
+        "text": "Find a quieter corner of a busy hall — what do you hear?",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "si_free",
+        "text": "Free museum flex: smile at the fact tickets were $0",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: National Mall orientation — monuments left or right when you exit?",
+    "easter_egg_little": "★ Easter egg: whale/arms wide pose once",
+    "sources": [
+      "https://naturalhistory.si.edu/"
+    ],
+    "researched": "2026-08-08",
+    "status": "researched"
+  }
 }

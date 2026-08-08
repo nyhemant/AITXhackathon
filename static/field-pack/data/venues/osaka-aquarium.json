@@ -373,5 +373,71 @@
     "https://www.kaiyukan.com/language/eng/",
     "https://www.kaiyukan.com/language/eng/area/",
     "https://en.wikipedia.org/wiki/Osaka_Aquarium_Kaiyukan"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "Kaiyukan bonus · whale shark ring + pacific deep",
+    "find_ids": [
+      "shark",
+      "jellyfish",
+      "sea_turtle",
+      "eel"
+    ],
+    "challenges": [
+      {
+        "id": "osa_whale",
+        "text": "Whale shark: full pass time — slow or faster than you walk?",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "osa_ring",
+        "text": "Ring tank: name one animal above and one beside",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "osa_jelly",
+        "text": "Jelly softest motion",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "osa_turtle",
+        "text": "Turtle surface or cruise",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "osa_hide",
+        "text": "Best hider any tank",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: ride or spot the route spiral on the map from top down",
+    "easter_egg_little": "★ Easter egg: after the hard list — one free minute at a favorite stop",
+    "researched": "2026-08-08",
+    "status": "researched",
+    "sources": [
+      "https://www.kaiyukan.com/"
+    ]
+  }
 }

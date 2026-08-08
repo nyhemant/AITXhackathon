@@ -229,5 +229,82 @@
     "https://www.houstonzoo.org/explore/animals/",
     "https://www.houstonzoo.org/",
     "https://map.houstonzoo.org/map"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "Houston bonus · apes loop + cat side quests",
+    "find_ids": [
+      "chimpanzee",
+      "sumatran_tiger",
+      "zebra",
+      "western_lowland_gorilla",
+      "african_lion",
+      "reticulated_giraffe"
+    ],
+    "challenges": [
+      {
+        "id": "hz_chimp",
+        "text": "Chimps/apes: spot hands used like tools (hold, climb, poke)",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "hz_gorilla",
+        "text": "Gorillas: who looks calmest? Who looks in charge?",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "hz_tiger",
+        "text": "Tiger: find the water edge of the habitat — why put water there?",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "hz_zebra",
+        "text": "Zebra: pick one stripe set and “draw” it with a finger in the air",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "hz_giraffe",
+        "text": "Giraffe: tongue or no tongue? Watch 15 seconds",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "hz_quiet",
+        "text": "Find a quieter corner away from the main path — what do you hear?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: spot a zoo map and point to a habitat you have NOT visited yet",
+    "easter_egg_little": "★ Easter egg: stomp like a giraffe walk for 5 steps after the list",
+    "sources": [
+      "https://www.houstonzoo.org/"
+    ],
+    "researched": "2026-08-08",
+    "status": "researched"
+  }
 }

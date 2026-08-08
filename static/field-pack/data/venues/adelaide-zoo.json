@@ -248,5 +248,72 @@
     "https://www.adelaidezoo.com.au/animals/",
     "https://www.adelaidezoo.com.au/animals/giant-panda-xing-qiu-and-yi-lan/",
     "https://www.monartosafari.com.au/animals/"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "Adelaide bonus · giant panda (if on view) + second-loop Asia",
+    "find_ids": [
+      "giant_panda",
+      "sumatran_tiger",
+      "orangutan",
+      "reticulated_giraffe"
+    ],
+    "challenges": [
+      {
+        "id": "adl_panda",
+        "text": "Panda if on view: chew speed or climb?",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "adl_tiger",
+        "text": "Tiger silent watch",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "adl_orang",
+        "text": "Orangutan hands",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "adl_giraffe",
+        "text": "Giraffe neck geometry",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "adl_el",
+        "text": "Elephant trunk job",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: panda wall/queue art counts even if animals are off-view",
+    "easter_egg_little": "★ Easter egg: after the hard list — one free minute of favorite stop",
+    "researched": "2026-08-08",
+    "status": "researched",
+    "sources": [
+      "https://www.adelaidezoo.com.au/"
+    ],
+    "notes": "Panda status can change — if-on-view challenges only."
+  }
 }

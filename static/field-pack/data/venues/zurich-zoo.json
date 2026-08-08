@@ -383,5 +383,73 @@
   "presence_sources": [
     "https://www.zoo.ch/en",
     "https://www.zuerich.com/en/visit/nature/zurich-zoo-masoala-rainforest"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "Zürich Zoo bonus · Masoala rainforest + elephant park",
+    "find_ids": [
+      "reticulated_giraffe",
+      "western_lowland_gorilla",
+      "african_lion",
+      "zebra",
+      "red_panda",
+      "sumatran_tiger"
+    ],
+    "challenges": [
+      {
+        "id": "zur_mas",
+        "text": "Masoala: find a lemur or bird most people walk under",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "zur_orang",
+        "text": "Orangutan clever hands",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "zur_el",
+        "text": "Elephant park: trunk tool",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "zur_giraffe",
+        "text": "Giraffe stretch",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "zur_tiger",
+        "text": "Tiger pace vs hide",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: feel the humidity change entering Masoala — say it out loud",
+    "easter_egg_little": "★ Easter egg: after the hard list — one free minute at a favorite stop",
+    "researched": "2026-08-08",
+    "status": "researched",
+    "sources": [
+      "https://www.zoo.ch/en"
+    ]
+  }
 }

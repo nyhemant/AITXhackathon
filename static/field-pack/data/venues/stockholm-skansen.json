@@ -214,5 +214,71 @@
     "https://www.skansen.se/en/",
     "https://www.skansen.se/en/see-and-do/the-zoo/animals-at-skansen/",
     "https://www.skansen.se/en/see-and-do/the-zoo/animals-at-skansen/brown-bear/"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "Skansen bonus · Nordic animals + living history cues",
+    "find_ids": [
+      "sci_hands_on",
+      "cm_free_explore",
+      "cm_outdoor",
+      "cm_toddler_garden"
+    ],
+    "challenges": [
+      {
+        "id": "sk_nordic",
+        "text": "Biggest Nordic animal you can name here today",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "sk_wolf",
+        "text": "Wolf/pack energy: alert ears yes/no?",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "sk_seal",
+        "text": "Seal: water or rock majority",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "sk_hist",
+        "text": "Find one old building or craft cue that isn’t an animal",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "sk_quiet",
+        "text": "Quiet 20s — bird or breeze?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: point to a historic house roof from an animal path",
+    "easter_egg_little": "★ Easter egg: after the hard list — one free minute of favorite stop",
+    "researched": "2026-08-08",
+    "status": "researched",
+    "sources": [
+      "https://www.skansen.se/"
+    ]
+  }
 }

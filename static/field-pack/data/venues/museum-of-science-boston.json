@@ -242,5 +242,81 @@
   "presence_sources": [
     "https://www.mos.org/",
     "https://mos.org/exhibits-activities/exhibits"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "Museum of Science bonus · Open explore + Dinosaurs / life",
+    "find_ids": [
+      "cm_free_explore",
+      "sci_dinosaur",
+      "sci_hands_on",
+      "sci_planet"
+    ],
+    "challenges": [
+      {
+        "id": "auto_cm_free_explore",
+        "text": "Open explore: 15 quiet seconds on the Free explore — moving, hiding, eating, or resting?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "auto_sci_dinosaur",
+        "text": "Dinosaurs / life: 15 quiet seconds on the Dinosaurs — moving, hiding, eating, or resting?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "auto_sci_hands_on",
+        "text": "Interactive halls: 15 quiet seconds on the Hands-on exhibits — moving, hiding, eating, or resting?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "auto_sci_planet",
+        "text": "Planetarium: 15 quiet seconds on the Planetarium — moving, hiding, eating, or resting?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "mu_skip",
+        "text": "Find a tiny label or button most people skip",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "mu_body",
+        "text": "Use your body once: reach, crouch, or tip-toe",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find a map or hall name you’ve never noticed — point it out at Museum of Science",
+    "easter_egg_little": "★ Easter egg: pick a favorite bench — sit 60 seconds and name three sounds",
+    "researched": "2026-08-08",
+    "status": "solid",
+    "sources": [
+      "https://www.mos.org/"
+    ]
+  }
 }

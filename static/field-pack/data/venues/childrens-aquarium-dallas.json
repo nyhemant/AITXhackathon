@@ -303,5 +303,71 @@
   "presence_sources": [
     "https://www.childrensaquarium.com/"
   ],
-  "research_notes": "presence-audit 2026-08-08 [ok]"
+  "research_notes": "presence-audit 2026-08-08 [ok]",
+  "bonus_hunt": {
+    "tagline": "Children's Aquarium Dallas bonus · Main galleries + Turtle habitats",
+    "find_ids": [
+      "shark",
+      "sea_turtle",
+      "stingray"
+    ],
+    "challenges": [
+      {
+        "id": "auto_shark",
+        "text": "Main galleries: 15 quiet seconds on the Shark — moving, hiding, eating, or resting?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "auto_sea_turtle",
+        "text": "Turtle habitats: 15 quiet seconds on the Sea turtle — moving, hiding, eating, or resting?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "auto_stingray",
+        "text": "Touch pool: 15 quiet seconds on the Stingray — moving, hiding, eating, or resting?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "aq_hide",
+        "text": "Find the best hider in any tank",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "aq_pulse",
+        "text": "Jellies or dark corner: what moves first in 15s?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find the darkest or glowiest corner — whisper one thing that moved",
+    "easter_egg_little": "★ Easter egg: pick a favorite bench — sit 60 seconds and name three sounds",
+    "researched": "2026-08-08",
+    "status": "solid",
+    "sources": [
+      "https://www.childrensaquarium.com/"
+    ]
+  }
 }

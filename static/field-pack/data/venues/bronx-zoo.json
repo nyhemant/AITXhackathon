@@ -285,5 +285,84 @@
   "presence_sources": [
     "https://bronxzoo.com/",
     "https://bronxzoo.com/animals"
-  ]
+  ],
+  "bonus_hunt": {
+    "tagline": "Bronx bonus · Congo + Tiger Mountain + Madagascar",
+    "find_ids": [
+      "ring_tailed_lemur",
+      "red_panda",
+      "reticulated_giraffe",
+      "zebra",
+      "sumatran_tiger",
+      "western_lowland_gorilla",
+      "african_lion"
+    ],
+    "challenges": [
+      {
+        "id": "bx_congo",
+        "text": "Congo Gorilla Forest: humid-house energy — wipe your forehead (or pretend)",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "bx_tiger",
+        "text": "Tiger Mountain: find the highest perch or rock a cat might claim",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "bx_madagascar",
+        "text": "Lemurs: jump, hang, or stare contest?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "bx_plains",
+        "text": "African Plains: giraffe + zebra in one panorama if you can",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "bx_lion",
+        "text": "Lions: rest mode or patrol mode?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "bx_shuttle",
+        "text": "Listen: zoo shuttle/monorail cue or forest quiet — which wins 10 seconds?",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find a Bronx Zoo monorail/shuttle mention on a map — even if you walk",
+    "easter_egg_little": "★ Easter egg: lemur jump (small hop) after the list",
+    "sources": [
+      "https://bronxzoo.com/",
+      "Congo Gorilla Forest, Tiger Mountain, African Plains, Madagascar"
+    ],
+    "researched": "2026-08-08",
+    "status": "researched"
+  }
 }
