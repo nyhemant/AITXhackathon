@@ -1303,7 +1303,8 @@
       ? ""
       : isMissionPilot
         ? `<a class="btn btn-primary pd-mission-cta" href="${missionHref}">
-            <span class="pd-cta-main">Personalize mission by age &amp; print</span>
+            <span class="pd-cta-main pd-cta-long">Personalize mission by age &amp; print</span>
+            <span class="pd-cta-main pd-cta-short">Personalize &amp; print</span>
           </a>`
         : canPrintHunt
           ? `<button type="button" class="btn btn-primary" id="pd-print-hunt">Print one-page hunt</button>`

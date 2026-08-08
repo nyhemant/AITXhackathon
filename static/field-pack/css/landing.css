@@ -314,6 +314,9 @@
   font-weight: 800;
   font-size: 0.95rem;
 }
+.pin-detail.map-pin-card .pd-cta-short {
+  display: none;
+}
 .pin-detail.map-pin-card .pd-actions-secondary {
   margin-top: 0;
 }
@@ -323,6 +326,163 @@
   padding-left: 2px;
   font-size: 0.88rem;
   font-weight: 700;
+}
+
+/* Phone: dense bottom sheet so the card fits without eating the map */
+@media (max-width: 640px) {
+  .pin-detail.map-pin-card {
+    left: 6px;
+    right: 6px;
+    bottom: 6px;
+    width: auto;
+    max-width: none;
+    max-height: min(38vh, 280px);
+    padding: 8px 10px 8px;
+    border-radius: 14px;
+    gap: 0;
+    box-shadow: 0 10px 28px rgba(21, 34, 56, 0.2);
+  }
+  .pin-detail.map-pin-card.pin-detail-rich {
+    gap: 5px;
+  }
+  .pin-detail.map-pin-card .pin-detail-kicker {
+    margin: 0;
+    font-size: 0.58rem;
+    letter-spacing: 0.06em;
+    line-height: 1.2;
+  }
+  .pin-detail.map-pin-card .pd-title-row {
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .pin-detail.map-pin-card h3 {
+    font-size: 0.84rem;
+    line-height: 1.15;
+    font-weight: 800;
+  }
+  .pin-detail.map-pin-card .pd-clear {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    font-size: 1.15rem;
+    border-radius: 8px;
+    flex-shrink: 0;
+  }
+  .pin-detail.map-pin-card .pd-blurb {
+    margin: 0;
+    font-size: 0.7rem;
+    line-height: 1.25;
+    font-weight: 600;
+    -webkit-line-clamp: 1;
+  }
+  .pin-detail.map-pin-card .pd-hint {
+    margin: 0;
+    font-size: 0.7rem;
+    line-height: 1.25;
+  }
+  .pin-detail.map-pin-card .pd-status {
+    font-size: 0.62rem;
+    padding: 2px 7px;
+  }
+  .pin-detail.map-pin-card .pd-actions {
+    gap: 4px;
+  }
+  .pin-detail.map-pin-card .pd-mission-cta,
+  .pin-detail.map-pin-card .pd-actions .btn-primary {
+    padding: 8px 10px;
+    min-height: 36px;
+    border-radius: 10px;
+    font-size: 0.78rem;
+  }
+  .pin-detail.map-pin-card .pd-cta-long {
+    display: none;
+  }
+  .pin-detail.map-pin-card .pd-cta-short {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 800;
+  }
+  .pin-detail.map-pin-card .pd-sample-card {
+    grid-template-columns: 52px 1fr;
+    border-radius: 10px;
+    margin: 0;
+  }
+  .pin-detail.map-pin-card .pd-sample-card img,
+  .pin-detail.map-pin-card .pd-sample-fallback {
+    width: 52px;
+    min-height: 52px;
+    height: 52px;
+  }
+  .pin-detail.map-pin-card .pd-sample-fallback {
+    font-size: 1.25rem;
+  }
+  .pin-detail.map-pin-card .pd-sample-body {
+    padding: 5px 8px;
+    gap: 1px;
+  }
+  .pin-detail.map-pin-card .pd-sample-kicker {
+    font-size: 0.55rem;
+    letter-spacing: 0.04em;
+  }
+  .pin-detail.map-pin-card .pd-sample-name {
+    font-size: 0.75rem;
+    line-height: 1.15;
+  }
+  .pin-detail.map-pin-card .pd-sample-blurb {
+    display: none; /* name + CTA enough on phone */
+  }
+  .pin-detail.map-pin-card .pd-sample-cta {
+    font-size: 0.68rem;
+    margin: 0;
+  }
+  .pin-detail.map-pin-card .pd-actions-secondary {
+    margin: 0;
+  }
+  .pin-detail.map-pin-card .pd-actions-secondary .btn-ghost,
+  .pin-detail.map-pin-card .pd-actions-secondary .btn {
+    min-height: 0;
+    padding: 2px 0;
+    font-size: 0.72rem;
+    font-weight: 700;
+  }
+  /* Cluster picker list */
+  .pin-detail.map-pin-card .pd-hint {
+    font-size: 0.7rem;
+  }
+  .pin-detail.map-pin-card .nearby-list {
+    gap: 4px;
+  }
+  .pin-detail.map-pin-card .nearby-item {
+    padding: 6px 8px;
+    border-radius: 10px;
+    gap: 6px;
+  }
+  .pin-detail.map-pin-card .nearby-emoji {
+    font-size: 1rem;
+  }
+  .pin-detail.map-pin-card .nearby-copy strong {
+    font-size: 0.78rem;
+  }
+  .pin-detail.map-pin-card .nearby-copy small {
+    font-size: 0.65rem;
+  }
+}
+
+/* Very small phones (SE / mini): drop sample card so CTA + title always fit */
+@media (max-width: 380px) {
+  .pin-detail.map-pin-card {
+    max-height: min(34vh, 240px);
+    padding: 7px 8px;
+  }
+  .pin-detail.map-pin-card .pd-sample-card {
+    display: none;
+  }
+  .pin-detail.map-pin-card h3 {
+    font-size: 0.8rem;
+  }
+  .pin-detail.map-pin-card .pd-blurb {
+    font-size: 0.66rem;
+  }
 }
 
 .usa-real-map,
@@ -742,14 +902,6 @@
   .landing-hero,
   .promise-grid {
     grid-template-columns: 1fr;
-  }
-  .pin-detail.map-pin-card {
-    left: 8px;
-    right: 8px;
-    bottom: 8px;
-    width: auto;
-    max-width: none;
-    max-height: min(46vh, 360px);
   }
 
   .dual-selects {
@@ -2103,11 +2255,17 @@ body.landing-body {
   .landing-clean .map-viewport {
     min-height: 280px;
   }
+  .landing-clean .pin-detail.map-pin-card {
+    padding: 8px 10px;
+  }
   .landing-clean .pin-detail .pd-actions {
     flex-direction: column;
   }
   .landing-clean .pin-detail .pd-actions .btn {
     width: 100%;
+  }
+  .landing-clean .pin-detail.map-pin-card .pd-actions .btn {
+    font-size: 0.78rem;
   }
   .ready-slim .ready-card {
     flex-direction: row;
