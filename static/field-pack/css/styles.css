@@ -2038,17 +2038,41 @@ body.app-body {
   font-weight: 650;
   color: var(--muted, #3d4f6f);
 }
+.detail-qa-launch {
+  align-items: center;
+  margin-top: 4px;
+}
+.btn-more-questions {
+  font-weight: 800;
+}
 .advanced-qa {
   margin: 16px 0 8px;
   padding: 12px 14px;
   border-radius: var(--radius, 16px);
   background: rgba(255,255,255,0.75);
   border: 1.5px dashed var(--border, rgba(15, 92, 92, 0.18));
+  scroll-margin-top: 72px;
 }
 .advanced-qa summary {
   cursor: pointer;
   font-weight: 800;
   color: var(--teal-deep, #0a4545);
-  font-size: 0.95rem;
+  font-size: 1.02rem;
+  list-style: none;
 }
-.advanced-qa[open] summary { margin-bottom: 10px; }
+.advanced-qa summary::-webkit-details-marker {
+  display: none;
+}
+.advanced-qa summary::before {
+  content: "▾ ";
+  color: #d9652e;
+}
+.advanced-qa[open] summary {
+  margin-bottom: 10px;
+}
+.advanced-qa[open] summary::before {
+  content: "▴ ";
+}
+.progress-pill {
+  cursor: pointer;
+}

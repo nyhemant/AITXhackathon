@@ -36,6 +36,8 @@
     btnPictures: document.getElementById("btn-pictures"),
     btnMore: document.getElementById("btn-more"),
     btnTaught: document.getElementById("btn-taught"),
+    btnMoreQuestions: document.getElementById("btn-more-questions"),
+    advancedQa: document.getElementById("advanced-qa"),
     btnPrint: document.getElementById("btn-print"),
     btnSubmit: document.getElementById("btn-submit"),
     resultsPanel: document.getElementById("results-panel"),
@@ -279,10 +281,10 @@
       if (!item) continue;
       const st = itemState(trip, id);
       const done = answeredCount(trip, id, missions);
-      let status = "Optional tips";
-      if (st.submitted) status = "Answers checked ✓";
-      else if (st.taught) status = "Taught a grown-up ⭐";
-      else if (done) status = `${done} answered`;
+      let status = "Talk prompts · print card";
+      if (st.submitted) status = "Picks checked ✓";
+      else if (st.taught) status = "Spotted ⭐";
+      else if (done) status = `${done} pick-one started`;
       const btn = document.createElement("button");
       btn.type = "button";
       btn.className = "animal-card" + (done || st.taught || st.submitted ? " has-progress" : "");
@@ -414,11 +416,25 @@
     els.detailPhoto.src = item.photo;
     els.detailPhoto.alt = item.name;
     els.detailCredit.textContent = item.photoCredit || "";
-    els.btnCam.href = (item.links && item.links.cam) || "#";
-    els.btnPictures.href = (item.links && item.links.pictures) || "#";
-    els.btnMore.href = (item.links && item.links.more) || "#";
-    els.btnCam.textContent =
-      venue && venue.packTemplate === "exhibits" ? "Museum site" : "Look up";
+    const camUrl = (item.links && item.links.cam) || "";
+    const picUrl = (item.links && item.links.pictures) || "";
+    const moreUrl = (item.links && item.links.more) || "";
+    if (els.btnCam) {
+      els.btnCam.hidden = !camUrl;
+      els.btnCam.href = camUrl || "#";
+      els.btnCam.textContent = "Live cam";
+    }
+    if (els.btnPictures) {
+      els.btnPictures.hidden = !picUrl;
+      els.btnPictures.href = picUrl || "#";
+      els.btnPictures.textContent = "Photos";
+    }
+    if (els.btnMore) {
+      els.btnMore.hidden = !moreUrl;
+      els.btnMore.href = moreUrl || "#";
+      els.btnMore.textContent =
+        venue && venue.packTemplate === "exhibits" ? "Museum site" : "Learn more";
+    }
 
     const promptsEl = document.getElementById("floor-prompts");
     if (promptsEl) {
@@ -434,21 +450,31 @@
     }
 
     const done = answeredCount(trip, item.id, missions);
+    if (els.btnMoreQuestions) {
+      const n = missions.length;
+      if (showCheck) {
+        els.btnMoreQuestions.textContent = "See pick-one questions ↑";
+      } else if (done) {
+        els.btnMoreQuestions.textContent = `Continue pick-one (${done}/${n}) ↓`;
+      } else {
+        els.btnMoreQuestions.textContent = "Try pick-one questions ↓";
+      }
+    }
     if (els.progressPill) {
       els.progressPill.hidden = !showCheck && !done;
       els.progressPill.innerHTML = showCheck
         ? `Checked <span class="stamp">✅</span>`
         : done
-          ? `${done} of ${missions.length} answered`
-          : `Optional Q&A`;
+          ? `${done} of ${missions.length} picked`
+          : "";
     }
 
     els.teachBanner.classList.toggle("show", aState.taught);
     if (aState.taught) {
-      els.teachBanner.textContent = `⭐ They taught a grown-up about ${item.name}!`;
+      els.teachBanner.textContent = `⭐ Spotted ${item.name} — nice!`;
     }
-    els.btnTaught.textContent = aState.taught ? "Found it ⭐" : "Found it ⭐";
-    if (els.btnSubmit) els.btnSubmit.textContent = showCheck ? "Check again" : "Check answers";
+    els.btnTaught.textContent = aState.taught ? "Spotted it ⭐" : "Spotted it ⭐";
+    if (els.btnSubmit) els.btnSubmit.textContent = showCheck ? "Check again" : "Check my picks";
 
     els.missionGrid.innerHTML = "";
     missions.forEach((mission, index) => {
@@ -785,6 +811,28 @@
     renderDetail(trip, item, getVenue(trip.venueId));
     if (st.taught) showWinBanner(true);
   });
+  function openPickOneQuestions() {
+    const d = els.advancedQa;
+    if (!d) return;
+    d.open = true;
+    // Let layout paint open state, then scroll
+    requestAnimationFrame(() => {
+      d.scrollIntoView({ behavior: "smooth", block: "start" });
+      try {
+        d.querySelector("summary")?.focus({ preventScroll: true });
+      } catch (_) {
+        /* ignore */
+      }
+    });
+  }
+  if (els.btnMoreQuestions) {
+    els.btnMoreQuestions.addEventListener("click", openPickOneQuestions);
+  }
+  if (els.progressPill) {
+    els.progressPill.style.cursor = "pointer";
+    els.progressPill.title = "Open pick-one questions";
+    els.progressPill.addEventListener("click", openPickOneQuestions);
+  }
   els.btnPrint.addEventListener("click", printMissionCard);
   els.btnSubmit.addEventListener("click", submitAnswers);
   if (els.btnWinPrint) els.btnWinPrint.addEventListener("click", printTreasureHunt);

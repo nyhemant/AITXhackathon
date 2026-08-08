@@ -12,7 +12,7 @@
     <title>List &amp; hunt · Field Trip Kit · 1Less</title>
     <base href="/field-pack/" />
     <link rel="stylesheet" href="/shell/shell.css?v=5" />
-    <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
+    <link rel="stylesheet" href="/field-pack/css/styles.css?v=23" />
   </head>
   <body class="app-body">
     <div class="app app-outing">
@@ -102,37 +102,42 @@
             <figcaption id="detail-credit" class="photo-credit"></figcaption>
           </figure>
           <div class="detail-copy">
-            <p class="step-chip detail-kicker">Optional · after you spot something like this</p>
+            <p class="step-chip detail-kicker">At the venue — after you spot something like this</p>
             <h1 id="detail-name">Item</h1>
             <p id="detail-blurb" class="lead"></p>
             <p class="detail-missing-hint no-print">
               Not out today? Find something <strong>like</strong> it — big, striped, splashy, or quiet.
             </p>
-            <div id="floor-prompts" class="floor-prompts no-print" aria-label="Talk prompts"></div>
+            <div id="floor-prompts" class="floor-prompts no-print" aria-label="Things to notice and talk about"></div>
             <div class="action-row detail-tools">
               <button type="button" id="btn-print" class="btn btn-primary btn-print">Print this card</button>
               <button type="button" id="btn-taught" class="btn btn-secondary" aria-pressed="false">
-                Found it ⭐
+                Spotted it ⭐
               </button>
             </div>
             <div class="action-row detail-links">
-              <a id="btn-cam" class="btn btn-ghost" href="#" target="_blank" rel="noopener">Look up</a>
-              <a id="btn-pictures" class="btn btn-ghost" href="#" target="_blank" rel="noopener">Pictures</a>
+              <a id="btn-cam" class="btn btn-ghost" href="#" target="_blank" rel="noopener">Live cam</a>
+              <a id="btn-pictures" class="btn btn-ghost" href="#" target="_blank" rel="noopener">Photos</a>
               <a id="btn-more" class="btn btn-ghost" href="#" target="_blank" rel="noopener">Learn more</a>
             </div>
-            <span id="progress-pill" class="progress-pill" hidden>Optional Q&amp;A</span>
+            <div class="action-row detail-qa-launch no-print">
+              <button type="button" id="btn-more-questions" class="btn btn-secondary btn-more-questions">
+                Try pick-one questions ↓
+              </button>
+              <span id="progress-pill" class="progress-pill" hidden></span>
+            </div>
             <div id="teach-banner" class="teach-banner" role="status"></div>
           </div>
         </section>
 
         <details class="advanced-qa no-print" id="advanced-qa">
-          <summary>Advanced · multi-choice check</summary>
+          <summary>Pick-one questions</summary>
           <p class="footer-note mission-guide">
-            Optional quiz-style prompts. <strong>Not a grade</strong> — skip anytime.
+            Tap what you noticed. <strong>Not a test</strong> — skip anytime.
           </p>
-          <div id="mission-grid" class="mission-grid" aria-label="Optional questions"></div>
+          <div id="mission-grid" class="mission-grid" aria-label="Pick-one questions"></div>
           <section class="submit-bar">
-            <button type="button" id="btn-submit" class="btn btn-submit btn-big">Check answers</button>
+            <button type="button" id="btn-submit" class="btn btn-submit btn-big">Check my picks</button>
             <div id="results-panel" class="results-panel" hidden></div>
           </section>
         </details>
@@ -150,6 +155,6 @@
     <script src="/field-pack/js/catalog.js?v=23"></script>
     <script src="/field-pack/js/print-maps.js?v=2"></script>
     <script src="/field-pack/js/print-kit.js?v=9"></script>
-    <script src="/field-pack/js/app.js?v=24"></script>
+    <script src="/field-pack/js/app.js?v=25"></script>
   </body>
 </html>
