@@ -267,12 +267,15 @@
       });
     }
 
+    missions = missions.slice(0, 6);
+    // Single stream: prompts mirror mission questions (print + any leftover callers)
+    const missionPrompts = missions.map((m) => m.question || "");
     return {
       level: band,
       label,
       kicker,
-      prompts: prompts.slice(0, 6),
-      missions: missions.slice(0, 6),
+      prompts: missionPrompts,
+      missions,
     };
   }
 
@@ -1279,7 +1282,8 @@
     });
     const k = document.getElementById("floor-prompts-kicker");
     if (k) k.textContent = qaKickerFor(qaAge);
-    const wrap = document.querySelector(".floor-prompts-wrap");
+    const wrap =
+      document.getElementById("qa-level-wrap") || document.querySelector(".floor-prompts-wrap");
     if (wrap) {
       wrap.classList.toggle("is-bonus", qaAge === "bonus");
       wrap.classList.toggle("is-alpha", qaAge === "alpha");
@@ -1320,67 +1324,32 @@
     }
 
     syncQaAgeChips();
-    const promptsEl = document.getElementById("floor-prompts");
-    if (promptsEl) {
-      const prompts = pack.prompts;
-      const cardCls =
-        qaAge === "alpha" ? " floor-prompt-alpha" : qaAge === "bonus" ? " floor-prompt-bonus" : "";
-      // Always 1–6 — Bonus/Alpha is clear from the talk-level filter above
-      promptsEl.innerHTML = prompts
-        .map(
-          (text, i) =>
-            `<div class="floor-prompt-card${cardCls}"><span class="floor-prompt-n">${
-              i + 1
-            }</span><p>${escapeHtml(text)}</p></div>`
-        )
-        .join("");
-    }
-    // Guide copy under level chips
     const levelHint = document.getElementById("talk-level-hint");
     if (levelHint) {
       levelHint.textContent =
-        "Same level for talk prompts, pick-ones below, and the print card.";
+        "Six questions for " + pack.label + " — tap on screen or print the same list.";
+    }
+    const wrap = document.getElementById("qa-level-wrap") || document.querySelector(".floor-prompts-wrap");
+    if (wrap) {
+      wrap.classList.toggle("is-bonus", qaAge === "bonus");
+      wrap.classList.toggle("is-alpha", qaAge === "alpha");
     }
     if (els.btnPrint) {
-      els.btnPrint.textContent = "Print this card · " + pack.label;
-      els.btnPrint.setAttribute("aria-label", "Print Q&A card for " + pack.label);
+      els.btnPrint.textContent = "Print · " + pack.label;
+      els.btnPrint.setAttribute("aria-label", "Print the same 6 questions for " + pack.label);
     }
-    // Advanced pick-ones always available (same pack as prompts/print)
+    // Legacy jump control (removed from HTML) — keep safe if missing
     if (els.btnMoreQuestions) {
-      els.btnMoreQuestions.hidden = false;
-    }
-    const guide = document.querySelector("#advanced-qa .mission-guide");
-    if (guide) {
-      guide.innerHTML =
-        qaAge === "bonus" || qaAge === "alpha"
-          ? `Same <strong>${escapeHtml(pack.label)}</strong> questions as above — tap what fits. <strong>Not a test</strong>.`
-          : `Same talk level (<strong>${escapeHtml(pack.label)}</strong>). Tap what you noticed. <strong>Not a test</strong> — skip anytime.`;
-    }
-    const advSum = document.querySelector("#advanced-qa > summary");
-    if (advSum) {
-      advSum.textContent =
-        qaAge === "bonus" || qaAge === "alpha"
-          ? pack.label + " on-screen picks"
-          : "Pick-one questions · " + pack.label;
+      els.btnMoreQuestions.hidden = true;
     }
 
     const done = answeredCount(trip, item.id, missions, qaAge);
-    if (els.btnMoreQuestions) {
-      const n = missions.length;
-      if (showCheck) {
-        els.btnMoreQuestions.textContent = "See " + pack.label + " picks ↑";
-      } else if (done) {
-        els.btnMoreQuestions.textContent = `Continue ${pack.label} picks (${done}/${n}) ↓`;
-      } else {
-        els.btnMoreQuestions.textContent = pack.label + " pick-ones ↓";
-      }
-    }
     if (els.progressPill) {
       els.progressPill.hidden = !showCheck && !done;
       els.progressPill.innerHTML = showCheck
         ? `Checked <span class="stamp">✅</span>`
         : done
-          ? `${done} of ${missions.length} picked`
+          ? `${done} of ${missions.length}`
           : "";
     }
 
@@ -1531,11 +1500,11 @@
       window.FPPrint.fillQaPrintSheet(item, venue, {
         answers,
         missions: pack.missions,
-        prompts: pack.prompts,
+        prompts: [], // one stream: questions live on the 6 cards only
         talkLabel: pack.label,
         talkLevel: pack.level,
-        bannerNote: `${venue.name} · ${pack.label} · Circle or write · No scores`,
-        footer: "Same talk level as on screen · Field Trip Kit",
+        bannerNote: `${venue.name} · ${pack.label} · 6 questions · Circle answers · No scores`,
+        footer: "Same 6 questions as on screen · Field Trip Kit",
       });
       return;
     }
@@ -1745,18 +1714,8 @@
     if (st.taught) showWinBanner(true);
   });
   function openPickOneQuestions() {
-    const d = els.advancedQa;
-    if (!d) return;
-    d.open = true;
-    // Let layout paint open state, then scroll
-    requestAnimationFrame(() => {
-      d.scrollIntoView({ behavior: "smooth", block: "start" });
-      try {
-        d.querySelector("summary")?.focus({ preventScroll: true });
-      } catch (_) {
-        /* ignore */
-      }
-    });
+    const grid = document.getElementById("mission-grid");
+    if (grid) grid.scrollIntoView({ behavior: "smooth", block: "start" });
   }
   if (els.btnMoreQuestions) {
     els.btnMoreQuestions.addEventListener("click", openPickOneQuestions);

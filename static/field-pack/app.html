@@ -12,7 +12,7 @@
     <title>List &amp; hunt · Field Trip Kit · 1Less</title>
     <base href="/field-pack/" />
     <link rel="stylesheet" href="/shell/shell.css?v=5" />
-    <link rel="stylesheet" href="/field-pack/css/styles.css?v=33" />
+    <link rel="stylesheet" href="/field-pack/css/styles.css?v=34" />
   </head>
   <body class="app-body">
     <div class="app app-outing">
@@ -101,7 +101,7 @@
             <figcaption id="detail-credit" class="photo-credit"></figcaption>
           </figure>
           <div class="detail-copy">
-            <p class="step-chip detail-kicker">One level · talk · pick-ones · print</p>
+            <p class="step-chip detail-kicker">6 questions · talk, tap, or print</p>
             <h1 id="detail-name">Item</h1>
             <p id="detail-blurb" class="lead"></p>
             <div class="action-row detail-tools detail-tools-primary no-print">
@@ -111,16 +111,17 @@
               <button type="button" id="btn-taught" class="btn btn-secondary" aria-pressed="false">
                 Spotted it ⭐
               </button>
+              <span id="progress-pill" class="progress-pill" hidden></span>
             </div>
             <p class="detail-print-hint no-print">
-              Print uses the <strong>same talk level</strong> as the prompts and pick-ones below.
+              One set of <strong>6 questions</strong> for this level — print the same list for the bag.
             </p>
             <p class="detail-missing-hint no-print">
               Not out today? Find something <strong>like</strong> it — big, striped, splashy, or quiet.
             </p>
-            <div class="floor-prompts-wrap no-print">
+            <div class="floor-prompts-wrap no-print" id="qa-level-wrap">
               <div class="qa-level-bar">
-                <span class="qa-level-label" id="qa-level-label">Talk level</span>
+                <span class="qa-level-label" id="qa-level-label">Level</span>
                 <div class="qa-level-seg" role="group" aria-labelledby="qa-level-label">
                   <button type="button" class="qa-level-chip" data-qa-age="2-3">2–4</button>
                   <button type="button" class="qa-level-chip is-active" data-qa-age="4-5" aria-pressed="true">5–8</button>
@@ -129,36 +130,26 @@
                   <button type="button" class="qa-level-chip qa-level-alpha" data-qa-age="alpha">Alpha</button>
                 </div>
               </div>
-              <p class="submit-hint" id="talk-level-hint">Same level for talk prompts, pick-ones below, and the print card.</p>
               <p class="floor-prompts-kicker" id="floor-prompts-kicker">Notice &amp; talk</p>
-              <div id="floor-prompts" class="floor-prompts" aria-label="Things to notice and talk about"></div>
+              <p class="submit-hint" id="talk-level-hint">Tap answers on screen, or print and circle on paper. Not a test.</p>
             </div>
             <div class="action-row detail-links detail-links-quiet no-print">
               <a id="btn-cam" class="btn btn-ghost" href="#" target="_blank" rel="noopener">Live cam</a>
               <a id="btn-pictures" class="btn btn-ghost" href="#" target="_blank" rel="noopener">Photos</a>
               <a id="btn-more" class="btn btn-ghost" href="#" target="_blank" rel="noopener">Learn more</a>
             </div>
-            <div class="action-row detail-qa-launch no-print">
-              <button type="button" id="btn-more-questions" class="btn btn-ghost btn-more-questions">
-                Pick-ones for this level ↓
-              </button>
-              <span id="progress-pill" class="progress-pill" hidden></span>
-            </div>
             <div id="teach-banner" class="teach-banner" role="status"></div>
           </div>
         </section>
 
-        <details class="advanced-qa no-print" id="advanced-qa">
-          <summary>Pick-one questions · this level</summary>
-          <p class="footer-note mission-guide">
-            Same talk level as above. Tap what you noticed. <strong>Not a test</strong> — skip anytime.
-          </p>
-          <div id="mission-grid" class="mission-grid" aria-label="Pick-one questions"></div>
+        <!-- Single Q&A stream: 6 questions for the selected level -->
+        <section class="qa-questions no-print" id="advanced-qa" aria-label="Questions for this level">
+          <div id="mission-grid" class="mission-grid" aria-label="Questions"></div>
           <section class="submit-bar">
             <button type="button" id="btn-submit" class="btn btn-submit btn-big">Check my picks</button>
             <div id="results-panel" class="results-panel" hidden></div>
           </section>
-        </details>
+        </section>
       </main>
 
       <footer class="site-footer site-footer-slim no-print">
@@ -173,6 +164,6 @@
     <script src="/field-pack/js/catalog.js?v=23"></script>
     <script src="/field-pack/js/print-maps.js?v=2"></script>
     <script src="/field-pack/js/print-kit.js?v=11"></script>
-    <script src="/field-pack/js/app.js?v=33"></script>
+    <script src="/field-pack/js/app.js?v=34"></script>
   </body>
 </html>
