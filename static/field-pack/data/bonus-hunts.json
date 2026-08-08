@@ -48,31 +48,21 @@
   },
   "venues": {
     "dallas-zoo": {
-      "tagline": "Dallas bonus · ZooNorth + savanna secrets",
+      "tagline": "Dallas bonus · Penguin Cove + Hippo Outpost + savanna deep cuts",
       "find_ids": [
         "penguin",
-        "cheetah",
         "hippo",
-        "tortoise",
+        "cheetah",
         "gorilla",
-        "flamingo",
         "tiger",
-        "giraffe"
+        "tortoise",
+        "flamingo",
+        "zebra"
       ],
       "challenges": [
         {
           "id": "dz_penguin",
-          "text": "Penguins: watch one dive or zoom in the water for a full 10 seconds",
-          "age_fit": [
-            "2-3",
-            "4-5",
-            "6-8",
-            "adult"
-          ]
-        },
-        {
-          "id": "dz_cheetah",
-          "text": "Cheetah: still statue or pacing? Time 15 quiet seconds",
+          "text": "Penguin Cove: watch one bird enter or leave the water (full 10 seconds)",
           "age_fit": [
             "2-3",
             "4-5",
@@ -82,7 +72,17 @@
         },
         {
           "id": "dz_hippo",
-          "text": "Hippo: more underwater, mud, or bank right now?",
+          "text": "Simmons Hippo Outpost: underwater, mud, or bank — which wins right now?",
+          "age_fit": [
+            "2-3",
+            "4-5",
+            "6-8",
+            "adult"
+          ]
+        },
+        {
+          "id": "dz_cheetah",
+          "text": "Savanna cheetah: statue-still or pacing? Time 20 quiet seconds",
           "age_fit": [
             "2-3",
             "4-5",
@@ -92,7 +92,16 @@
         },
         {
           "id": "dz_gorilla",
-          "text": "Gorillas: hands, mouth, or rest — what wins this minute?",
+          "text": "Gorilla Trail: hands busy (groom/walk) or full rest?",
+          "age_fit": [
+            "4-5",
+            "6-8",
+            "adult"
+          ]
+        },
+        {
+          "id": "dz_tiger",
+          "text": "Endangered Tiger Habitat: count stripe clusters on one shoulder (best guess)",
           "age_fit": [
             "4-5",
             "6-8",
@@ -101,7 +110,7 @@
         },
         {
           "id": "dz_pattern",
-          "text": "Tiger stripes vs giraffe spots — which pattern is busier up close?",
+          "text": "Tiger stripes vs zebra stripes — which looks busier up close?",
           "age_fit": [
             "4-5",
             "6-8",
@@ -110,7 +119,7 @@
         },
         {
           "id": "dz_flamingo",
-          "text": "Flamingos: how many are standing on one leg? (best guess)",
+          "text": "ZooNorth flamingos: more than half on one leg? (yes/no + guess count)",
           "age_fit": [
             "2-3",
             "4-5",
@@ -119,7 +128,7 @@
           ]
         },
         {
-          "id": "dz_tortoise",
+          "id": "dz_tort",
           "text": "Giant tortoise: mid-step or statue-still?",
           "age_fit": [
             "2-3",
@@ -127,25 +136,18 @@
             "6-8",
             "adult"
           ]
-        },
-        {
-          "id": "dz_overlook",
-          "text": "Find a cool detail most visitors walk past near ZooNorth or savanna",
-          "age_fit": [
-            "4-5",
-            "6-8",
-            "adult"
-          ]
         }
       ],
-      "easter_egg": "★ Easter egg: find the monorail or train on a map/sign even if you don’t ride",
+      "easter_egg": "★ Easter egg: find the monorail route on a map/sign even if you don’t ride",
       "easter_egg_little": "★ Easter egg: tip-toe like a sneaky cheetah for 10 steps after the list",
       "researched": "2026-08-08",
       "status": "researched",
       "sources": [
         "https://www.dallaszoo.com/",
-        "ZooNorth, Giants of the Savanna"
-      ]
+        "https://www.dallaszoo.com/plan-your-visit/map-of-the-zoo/",
+        "Giants of the Savanna, Penguin Cove, Simmons Hippo Outpost, Gorilla Research Center, Endangered Tiger Habitat, Lacerte Family Children's Zoo"
+      ],
+      "notes": "African Shorelines / penguin habitat expansion in progress — Penguin Cove still valid find; colony size may change."
     },
     "adelaide-zoo": {
       "tagline": "Adelaide bonus · giant panda (if on view) + second-loop Asia",
@@ -1171,16 +1173,21 @@
       ]
     },
     "austin-zoo": {
-      "tagline": "Austin Zoo bonus · Cats + Reptiles",
+      "tagline": "Austin bonus · white tiger + tortoise barn + peacock grounds",
       "find_ids": [
+        "tiger",
         "african_lion",
         "galapagos_tortoise",
-        "ring_tailed_lemur"
+        "black_bear",
+        "wolf",
+        "peacock",
+        "capybara",
+        "cheetah"
       ],
       "challenges": [
         {
-          "id": "auto_african_lion",
-          "text": "Cats: 15 quiet seconds on the African lion — moving, hiding, eating, or resting?",
+          "id": "az_tiger",
+          "text": "Tiger: white coat or orange? Watch 15s — pace, rest, or water?",
           "age_fit": [
             "2-3",
             "4-5",
@@ -1189,8 +1196,8 @@
           ]
         },
         {
-          "id": "auto_galapagos_tortoi",
-          "text": "Reptiles: 15 quiet seconds on the Galápagos tortoise — moving, hiding, eating, or resting?",
+          "id": "az_lion",
+          "text": "Lions: mane fluff or sleek face — who looks more awake?",
           "age_fit": [
             "2-3",
             "4-5",
@@ -1199,8 +1206,8 @@
           ]
         },
         {
-          "id": "auto_ring_tailed_lemu",
-          "text": "Primates: 15 quiet seconds on the Ring-tailed lemur — moving, hiding, eating, or resting?",
+          "id": "az_tort",
+          "text": "Galápagos tortoise barn: mid-step or statue? (patience prize)",
           "age_fit": [
             "2-3",
             "4-5",
@@ -1209,8 +1216,8 @@
           ]
         },
         {
-          "id": "zoo_pattern",
-          "text": "Match two patterns in different places (stripes, spots, shells)",
+          "id": "az_bear",
+          "text": "Black bear: climb energy or ground forage?",
           "age_fit": [
             "4-5",
             "6-8",
@@ -1218,8 +1225,36 @@
           ]
         },
         {
-          "id": "zoo_sound",
-          "text": "Stand still 20s — loudest non-people sound?",
+          "id": "az_wolf",
+          "text": "Wolf: ears up/alert or relaxed pack nap?",
+          "age_fit": [
+            "4-5",
+            "6-8",
+            "adult"
+          ]
+        },
+        {
+          "id": "az_peacock",
+          "text": "Peacock: full train display or just strutting? Count eyespots if fanned",
+          "age_fit": [
+            "4-5",
+            "6-8",
+            "adult"
+          ]
+        },
+        {
+          "id": "az_capy",
+          "text": "Capybara: more like a giant guinea pig or a pig? Defend your answer",
+          "age_fit": [
+            "2-3",
+            "4-5",
+            "6-8",
+            "adult"
+          ]
+        },
+        {
+          "id": "az_cheetah",
+          "text": "Cheetah: statue score 1–10 after 20 quiet seconds",
           "age_fit": [
             "2-3",
             "4-5",
@@ -1228,13 +1263,16 @@
           ]
         }
       ],
-      "easter_egg": "★ Easter egg: find a park map or zone sign — name one animal that lives that way",
-      "easter_egg_little": "★ Easter egg: pick a favorite bench — sit 60 seconds and name three sounds",
+      "easter_egg": "★ Easter egg: find the Animal Feeding Area on the map — even if you skip the feed",
+      "easter_egg_little": "★ Easter egg: strut like a peacock for 5 steps after the list",
       "researched": "2026-08-08",
-      "status": "solid",
+      "status": "researched",
       "sources": [
-        "https://www.austinzoo.org/"
-      ]
+        "https://austinzoo.org/",
+        "https://austinzoo.org/plan-a-visit/",
+        "White Tiger Chat, Cheetah Chat, Black Bear, Wolves, Alligator, Capybara, Zebra/Ostrich, Galápagos encounters"
+      ],
+      "notes": "Rescue collection changes; white tiger is Bengal-type not Sumatran."
     },
     "bangalore-bannerghatta": {
       "tagline": "Bannerghatta Biological Park bonus · Tigers + Elephants",
@@ -11240,5 +11278,238 @@
         ]
       }
     ]
+  },
+  "alpha": {
+    "generic": {
+      "tagline": "Extra-hard · cool deep cuts",
+      "challenges": [
+        {
+          "id": "ah_patience",
+          "text": "Pick one stop: full 30 silent seconds — write one verb for what happened",
+          "age_fit": [
+            "4-5",
+            "6-8",
+            "adult"
+          ]
+        },
+        {
+          "id": "ah_overlook",
+          "text": "Find something cool most visitors walk past — point without talking",
+          "age_fit": [
+            "2-3",
+            "4-5",
+            "6-8",
+            "adult"
+          ]
+        },
+        {
+          "id": "ah_compare",
+          "text": "Compare two patterns or textures in different places — pick a winner",
+          "age_fit": [
+            "4-5",
+            "6-8",
+            "adult"
+          ]
+        },
+        {
+          "id": "ah_map",
+          "text": "From a map only: name a zone you have not visited yet",
+          "age_fit": [
+            "4-5",
+            "6-8",
+            "adult"
+          ]
+        }
+      ],
+      "easter_egg": "★ Alpha egg: ask staff one question — write the answer on the back"
+    },
+    "venues": {
+      "austin-zoo": {
+        "tagline": "Austin Alpha · rescue deep cuts + free-roamers",
+        "find_ids": [
+          "peacock",
+          "capybara",
+          "wolf",
+          "alligator",
+          "cheetah",
+          "ostrich",
+          "zebra",
+          "hoofstock_feed"
+        ],
+        "challenges": [
+          {
+            "id": "aza_peacock",
+            "text": "ALPHA · Spot a peacock somewhere unexpected (roof, path, fence) — mark where",
+            "age_fit": [
+              "4-5",
+              "6-8",
+              "adult"
+            ]
+          },
+          {
+            "id": "aza_capy",
+            "text": "ALPHA · Capybara: count visible individuals without pointing twice",
+            "age_fit": [
+              "2-3",
+              "4-5",
+              "6-8",
+              "adult"
+            ]
+          },
+          {
+            "id": "aza_wolf",
+            "text": "ALPHA · Wolf yard: 30 silent seconds — pack motion or still?",
+            "age_fit": [
+              "4-5",
+              "6-8",
+              "adult"
+            ]
+          },
+          {
+            "id": "aza_gator",
+            "text": "ALPHA · Alligator: only eyes/nostrils or full body line?",
+            "age_fit": [
+              "4-5",
+              "6-8",
+              "adult"
+            ]
+          },
+          {
+            "id": "aza_cheetah",
+            "text": "ALPHA · Cheetah: no talking 30s — one written verb",
+            "age_fit": [
+              "2-3",
+              "4-5",
+              "6-8",
+              "adult"
+            ]
+          },
+          {
+            "id": "aza_pattern",
+            "text": "ALPHA · Zebra stripes vs ostrich feathers — which is better camouflage here?",
+            "age_fit": [
+              "4-5",
+              "6-8",
+              "adult"
+            ]
+          },
+          {
+            "id": "aza_feed",
+            "text": "ALPHA · Feeding Area: name three hoofstock kinds without a sign cheat",
+            "age_fit": [
+              "2-3",
+              "4-5",
+              "6-8",
+              "adult"
+            ]
+          },
+          {
+            "id": "aza_rescue",
+            "text": "ALPHA · Read one rescue story sign — one sentence to a grown-up",
+            "age_fit": [
+              "4-5",
+              "6-8",
+              "adult"
+            ]
+          }
+        ],
+        "easter_egg": "★ Alpha egg: find a habitat sponsorship plaque and read the family/name aloud",
+        "easter_egg_little": "★ Alpha egg: tip-toe past peacocks so you don’t startle them",
+        "researched": "2026-08-08",
+        "status": "researched",
+        "sources": [
+          "https://austinzoo.org/plan-a-visit/",
+          "https://austinzoo.org/"
+        ]
+      },
+      "dallas-zoo": {
+        "tagline": "Dallas Alpha · patience + overlooks most people skip",
+        "find_ids": [
+          "cheetah",
+          "hippo",
+          "tortoise",
+          "flamingo",
+          "penguin",
+          "zebra",
+          "tiger"
+        ],
+        "challenges": [
+          {
+            "id": "dza_cheetah",
+            "text": "ALPHA · Cheetah: full 30 silent seconds — write one verb for what it did",
+            "age_fit": [
+              "4-5",
+              "6-8",
+              "adult"
+            ]
+          },
+          {
+            "id": "dza_hippo",
+            "text": "ALPHA · Hippo Outpost: find the underwater window — is a hippo in frame? yes/no",
+            "age_fit": [
+              "2-3",
+              "4-5",
+              "6-8",
+              "adult"
+            ]
+          },
+          {
+            "id": "dza_tort",
+            "text": "ALPHA · Tortoise: wait until you see a single step (or admit statue after 45s)",
+            "age_fit": [
+              "4-5",
+              "6-8",
+              "adult"
+            ]
+          },
+          {
+            "id": "dza_flam",
+            "text": "ALPHA · Flamingos: estimate flock size ±10 without counting twice",
+            "age_fit": [
+              "2-3",
+              "4-5",
+              "6-8",
+              "adult"
+            ]
+          },
+          {
+            "id": "dza_peng",
+            "text": "ALPHA · Penguin: same bird twice — did it reverse direction underwater?",
+            "age_fit": [
+              "2-3",
+              "4-5",
+              "6-8",
+              "adult"
+            ]
+          },
+          {
+            "id": "dza_zebra",
+            "text": "ALPHA · Zebra: find two different stripe widths (shoulder vs rump)",
+            "age_fit": [
+              "4-5",
+              "6-8",
+              "adult"
+            ]
+          },
+          {
+            "id": "dza_map",
+            "text": "ALPHA · Without staff help: name ZooNorth vs Wilds of Africa from a map only",
+            "age_fit": [
+              "4-5",
+              "6-8",
+              "adult"
+            ]
+          }
+        ],
+        "easter_egg": "★ Alpha egg: find a keeper talk time on a signboard — write the next talk animal",
+        "easter_egg_little": "★ Alpha egg: roar soft like a lion once, then whisper like a penguin",
+        "researched": "2026-08-08",
+        "status": "researched",
+        "sources": [
+          "https://www.dallaszoo.com/",
+          "map.dallaszoo.com"
+        ]
+      }
+    }
   }
 }

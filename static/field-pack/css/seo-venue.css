@@ -1204,7 +1204,7 @@ a.seo-map-card:focus-visible {
   font-weight: 650;
 }
 .seo-chrome-row-hunt .seo-chip-row-hunt {
-  max-width: 16rem;
+  max-width: 22rem;
 }
 .seo-hunt-chip.seo-hunt-bonus:not(.is-active) {
   color: #9a5b00;
@@ -1217,4 +1217,13 @@ a.seo-map-card:focus-visible {
 .seo-bonus-hint {
   color: #8a6d3b;
   font-weight: 650;
+}
+
+.seo-hunt-chip.seo-hunt-alpha:not(.is-active) {
+  color: #5b21b6;
+  font-weight: 800;
+}
+.seo-hunt-chip.seo-hunt-alpha.is-active {
+  background: #6d28d9;
+  color: #fff;
 }

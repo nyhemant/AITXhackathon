@@ -57,3 +57,13 @@ python3 scripts/generate_bdo_seo.py
 - Re-research thin packs when list_confidence leaves template.
 - Spot-check live Bonus chip on 5 cities after each deploy.
 - Add sources/notes when habitat closures matter (e.g. FW elephants, Ueno pandas absent).
+
+
+## Alpha hunt (2026-08-08+)
+
+Third Style tab: **Classic · Bonus · Alpha**.
+
+- Data: `venues/<slug>.alpha_hunt` + `bonus-hunts.json` → `alpha.venues` / `alpha.generic`
+- Pilots (researched): **dallas-zoo**, **austin-zoo**
+- Engine: `hunt: "alpha"` — extra-hard scoring, ultra challenges, easter egg
+- UI: purple Alpha chip; other venues fall back to bonus pack or generic alpha challenges until authored

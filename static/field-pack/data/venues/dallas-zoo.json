@@ -8,7 +8,7 @@
   "lat": 32.74,
   "lng": -96.82,
   "official_url": "https://www.dallaszoo.com/",
-  "last_verified": "2026-08-07",
+  "last_verified": "2026-08-08",
   "verified_by": "owner",
   "status": "verified",
   "tagline": "Big savanna views and a real giraffe feeding platform.",
@@ -117,7 +117,7 @@
         "6-8",
         "9+"
       ],
-      "zone": "Gorilla Trail",
+      "zone": "Gorilla Trail / Research Center",
       "catalog_id": "western-lowland-gorilla",
       "presence": "verified",
       "presence_checked": "2026-08-08",
@@ -128,7 +128,7 @@
       "id": "tiger",
       "label": "Sumatran tiger",
       "emoji": "🐯",
-      "one_liner": "Stripy forest big cat — strong and stealthy.",
+      "one_liner": "Sumatran tigers at Endangered Tiger Habitat.",
       "tags": [
         "big-cats",
         "pattern",
@@ -140,7 +140,7 @@
         "6-8",
         "9+"
       ],
-      "zone": "",
+      "zone": "Endangered Tiger Habitat",
       "catalog_id": "sumatran-tiger",
       "presence": "verified",
       "presence_checked": "2026-08-08",
@@ -151,7 +151,7 @@
       "id": "penguin",
       "label": "African penguin",
       "emoji": "🐧",
-      "one_liner": "Waddle on land, zoom in water.",
+      "one_liner": "African penguins — dive views at Penguin Cove (African Shorelines expansion underway).",
       "tags": [
         "birds",
         "water",
@@ -163,18 +163,19 @@
         "6-8",
         "9+"
       ],
-      "zone": "",
+      "zone": "Penguin Cove",
       "catalog_id": "african-penguin",
       "presence": "verified",
       "presence_checked": "2026-08-08",
       "presence_source": "official_animals_page",
-      "display_label": "African penguin"
+      "display_label": "African penguin",
+      "presence_note": "Penguin Cove; African Shorelines expansion will grow colony — still on-view habitat."
     },
     {
       "id": "hippo",
       "label": "Nile hippo",
       "emoji": "🦛",
-      "one_liner": "Huge river giant that loves the water.",
+      "one_liner": "Nile hippos at Simmons Hippo Outpost — look for underwater windows.",
       "tags": [
         "big",
         "water",
@@ -186,7 +187,7 @@
         "6-8",
         "9+"
       ],
-      "zone": "",
+      "zone": "Simmons Hippo Outpost",
       "catalog_id": "nile-hippo",
       "presence": "verified",
       "presence_checked": "2026-08-08",
@@ -209,7 +210,7 @@
         "6-8",
         "9+"
       ],
-      "zone": "",
+      "zone": "Giants of the Savanna",
       "catalog_id": "zebra",
       "presence": "high",
       "presence_checked": "2026-08-08",
@@ -233,7 +234,7 @@
         "6-8",
         "9+"
       ],
-      "zone": "",
+      "zone": "ZooNorth",
       "catalog_id": "caribbean-flamingo",
       "presence": "verified",
       "presence_checked": "2026-08-08",
@@ -244,7 +245,7 @@
       "id": "cheetah",
       "label": "Cheetah",
       "emoji": "🐆",
-      "one_liner": "Fastest land animal — built to sprint.",
+      "one_liner": "Cheetahs on the savanna loop — often still; patience pays.",
       "tags": [
         "big-cats",
         "outdoor",
@@ -256,7 +257,7 @@
         "6-8",
         "9+"
       ],
-      "zone": "",
+      "zone": "Giants of the Savanna",
       "catalog_id": "cheetah",
       "presence": "verified",
       "presence_checked": "2026-08-08",
@@ -300,7 +301,7 @@
         "6-8",
         "9+"
       ],
-      "zone": "",
+      "zone": "ZooNorth",
       "catalog_id": "galapagos-tortoise",
       "presence": "verified",
       "presence_checked": "2026-08-08",
@@ -323,7 +324,7 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "research_notes": "map-img 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [ok]",
+  "research_notes": "map-img 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [ok]\n[2026-08-08] Bonus+Alpha re-research: zones (Penguin Cove, Hippo Outpost, Tiger Habitat, Giants of the Savanna); Shorelines expansion noted.",
   "list_confidence": "audited",
   "do_not_list": [],
   "route_90m": [
@@ -339,31 +340,21 @@
     "https://www.dallaszoo.com/explore-the-zoo/encounters-experiences/"
   ],
   "bonus_hunt": {
-    "tagline": "Dallas bonus · ZooNorth + savanna secrets",
+    "tagline": "Dallas bonus · Penguin Cove + Hippo Outpost + savanna deep cuts",
     "find_ids": [
       "penguin",
-      "cheetah",
       "hippo",
-      "tortoise",
+      "cheetah",
       "gorilla",
-      "flamingo",
       "tiger",
-      "giraffe"
+      "tortoise",
+      "flamingo",
+      "zebra"
     ],
     "challenges": [
       {
         "id": "dz_penguin",
-        "text": "Penguins: watch one dive or zoom in the water for a full 10 seconds",
-        "age_fit": [
-          "2-3",
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "dz_cheetah",
-        "text": "Cheetah: still statue or pacing? Time 15 quiet seconds",
+        "text": "Penguin Cove: watch one bird enter or leave the water (full 10 seconds)",
         "age_fit": [
           "2-3",
           "4-5",
@@ -373,7 +364,17 @@
       },
       {
         "id": "dz_hippo",
-        "text": "Hippo: more underwater, mud, or bank right now?",
+        "text": "Simmons Hippo Outpost: underwater, mud, or bank — which wins right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "dz_cheetah",
+        "text": "Savanna cheetah: statue-still or pacing? Time 20 quiet seconds",
         "age_fit": [
           "2-3",
           "4-5",
@@ -383,7 +384,16 @@
       },
       {
         "id": "dz_gorilla",
-        "text": "Gorillas: hands, mouth, or rest — what wins this minute?",
+        "text": "Gorilla Trail: hands busy (groom/walk) or full rest?",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "dz_tiger",
+        "text": "Endangered Tiger Habitat: count stripe clusters on one shoulder (best guess)",
         "age_fit": [
           "4-5",
           "6-8",
@@ -392,7 +402,7 @@
       },
       {
         "id": "dz_pattern",
-        "text": "Tiger stripes vs giraffe spots — which pattern is busier up close?",
+        "text": "Tiger stripes vs zebra stripes — which looks busier up close?",
         "age_fit": [
           "4-5",
           "6-8",
@@ -401,7 +411,7 @@
       },
       {
         "id": "dz_flamingo",
-        "text": "Flamingos: how many are standing on one leg? (best guess)",
+        "text": "ZooNorth flamingos: more than half on one leg? (yes/no + guess count)",
         "age_fit": [
           "2-3",
           "4-5",
@@ -410,7 +420,7 @@
         ]
       },
       {
-        "id": "dz_tortoise",
+        "id": "dz_tort",
         "text": "Giant tortoise: mid-step or statue-still?",
         "age_fit": [
           "2-3",
@@ -418,10 +428,91 @@
           "6-8",
           "adult"
         ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find the monorail route on a map/sign even if you don’t ride",
+    "easter_egg_little": "★ Easter egg: tip-toe like a sneaky cheetah for 10 steps after the list",
+    "sources": [
+      "https://www.dallaszoo.com/",
+      "https://www.dallaszoo.com/plan-your-visit/map-of-the-zoo/",
+      "Giants of the Savanna, Penguin Cove, Simmons Hippo Outpost, Gorilla Research Center, Endangered Tiger Habitat, Lacerte Family Children's Zoo"
+    ],
+    "notes": "African Shorelines / penguin habitat expansion in progress — Penguin Cove still valid find; colony size may change.",
+    "researched": "2026-08-08",
+    "status": "researched"
+  },
+  "alpha_hunt": {
+    "tagline": "Dallas Alpha · patience + overlooks most people skip",
+    "find_ids": [
+      "cheetah",
+      "hippo",
+      "tortoise",
+      "flamingo",
+      "penguin",
+      "zebra",
+      "tiger"
+    ],
+    "challenges": [
+      {
+        "id": "dza_cheetah",
+        "text": "ALPHA · Cheetah: full 30 silent seconds — write one verb for what it did",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
       },
       {
-        "id": "dz_overlook",
-        "text": "Find a cool detail most visitors walk past near ZooNorth or savanna",
+        "id": "dza_hippo",
+        "text": "ALPHA · Hippo Outpost: find the underwater window — is a hippo in frame? yes/no",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "dza_tort",
+        "text": "ALPHA · Tortoise: wait until you see a single step (or admit statue after 45s)",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "dza_flam",
+        "text": "ALPHA · Flamingos: estimate flock size ±10 without counting twice",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "dza_peng",
+        "text": "ALPHA · Penguin: same bird twice — did it reverse direction underwater?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "dza_zebra",
+        "text": "ALPHA · Zebra: find two different stripe widths (shoulder vs rump)",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "dza_map",
+        "text": "ALPHA · Without staff help: name ZooNorth vs Wilds of Africa from a map only",
         "age_fit": [
           "4-5",
           "6-8",
@@ -429,13 +520,13 @@
         ]
       }
     ],
-    "easter_egg": "★ Easter egg: find the monorail or train on a map/sign even if you don’t ride",
-    "easter_egg_little": "★ Easter egg: tip-toe like a sneaky cheetah for 10 steps after the list",
-    "researched": "2026-08-08",
-    "status": "researched",
+    "easter_egg": "★ Alpha egg: find a keeper talk time on a signboard — write the next talk animal",
+    "easter_egg_little": "★ Alpha egg: roar soft like a lion once, then whisper like a penguin",
     "sources": [
       "https://www.dallaszoo.com/",
-      "ZooNorth, Giants of the Savanna"
-    ]
+      "map.dallaszoo.com"
+    ],
+    "researched": "2026-08-08",
+    "status": "researched"
   }
 }

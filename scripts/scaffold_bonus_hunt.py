@@ -242,10 +242,54 @@ def build_pack(venue: dict, *, status: str = "solid") -> dict:
     return pack
 
 
+PACK_KEYS = (
+    "tagline",
+    "find_ids",
+    "challenges",
+    "easter_egg",
+    "easter_egg_little",
+    "researched",
+    "status",
+    "sources",
+    "notes",
+)
+
+
 def sync_file_from_venues() -> int:
     data = load(BONUS_FILE) if BONUS_FILE.is_file() else {"version": 1, "generic": {}, "venues": {}}
     if "venues" not in data:
         data["venues"] = {}
+    if "alpha" not in data or not isinstance(data["alpha"], dict):
+        data["alpha"] = {"generic": {}, "venues": {}}
+    if "venues" not in data["alpha"]:
+        data["alpha"]["venues"] = {}
+    if not data["alpha"].get("generic"):
+        data["alpha"]["generic"] = {
+            "tagline": "Extra-hard · cool deep cuts",
+            "challenges": [
+                {
+                    "id": "ah_patience",
+                    "text": "Pick one stop: full 30 silent seconds — write one verb for what happened",
+                    "age_fit": ["4-5", "6-8", "adult"],
+                },
+                {
+                    "id": "ah_overlook",
+                    "text": "Find something cool most visitors walk past — point without talking",
+                    "age_fit": ["2-3", "4-5", "6-8", "adult"],
+                },
+                {
+                    "id": "ah_compare",
+                    "text": "Compare two patterns or textures in different places — pick a winner",
+                    "age_fit": ["4-5", "6-8", "adult"],
+                },
+                {
+                    "id": "ah_map",
+                    "text": "From a map only: name a zone you have not visited yet",
+                    "age_fit": ["4-5", "6-8", "adult"],
+                },
+            ],
+            "easter_egg": "★ Alpha egg: ask staff one question — write the answer on the back",
+        }
     # ensure kits exist
     if "kits" not in data:
         data["kits"] = {
@@ -257,26 +301,14 @@ def sync_file_from_venues() -> int:
     n = 0
     for p in sorted(VENUE_DIR.glob("*.json")):
         v = load(p)
-        bh = v.get("bonus_hunt")
-        if not bh:
-            continue
         slug = v.get("slug") or p.stem
-        data["venues"][slug] = {
-            k: bh[k]
-            for k in (
-                "tagline",
-                "find_ids",
-                "challenges",
-                "easter_egg",
-                "easter_egg_little",
-                "researched",
-                "status",
-                "sources",
-                "notes",
-            )
-            if k in bh
-        }
-        n += 1
+        bh = v.get("bonus_hunt")
+        if bh:
+            data["venues"][slug] = {k: bh[k] for k in PACK_KEYS if k in bh}
+            n += 1
+        ah = v.get("alpha_hunt")
+        if ah:
+            data["alpha"]["venues"][slug] = {k: ah[k] for k in PACK_KEYS if k in ah}
     save(BONUS_FILE, data)
     return n
 

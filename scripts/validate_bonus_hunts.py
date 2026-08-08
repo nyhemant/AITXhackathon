@@ -28,6 +28,27 @@ def item_ok(it: dict, venue: dict) -> bool:
     return p not in PRESENCE_BLOCK
 
 
+def validate_pack(slug: str, pack: dict, by_id: dict, venue: dict, kind: str) -> list[str]:
+    errs = []
+    prefix = f"{slug} {kind}"
+    for fid in pack.get("find_ids") or []:
+        it = by_id.get(fid)
+        if not it:
+            errs.append(f"{prefix}: find_id unknown {fid}")
+            continue
+        if not item_ok(it, venue):
+            errs.append(f"{prefix}: find_id not print-safe {fid} presence={it.get('presence')}")
+    ch = pack.get("challenges") or []
+    if len(ch) < 2:
+        errs.append(f"{prefix}: need ≥2 challenges")
+    if not (pack.get("easter_egg") or "").strip():
+        errs.append(f"{prefix}: missing easter_egg")
+    texts = [c.get("text") for c in ch if c.get("text")]
+    if len(texts) != len(set(texts)):
+        errs.append(f"{prefix}: duplicate challenge text")
+    return errs
+
+
 def validate_venue(path: Path) -> list[str]:
     errs = []
     v = json.loads(path.read_text(encoding="utf-8"))
@@ -37,21 +58,10 @@ def validate_venue(path: Path) -> list[str]:
         errs.append(f"{slug}: missing bonus_hunt")
         return errs
     by_id = {it.get("id"): it for it in (v.get("items") or []) if it.get("id")}
-    for fid in bh.get("find_ids") or []:
-        it = by_id.get(fid)
-        if not it:
-            errs.append(f"{slug}: find_id unknown {fid}")
-            continue
-        if not item_ok(it, v):
-            errs.append(f"{slug}: find_id not print-safe {fid} presence={it.get('presence')}")
-    ch = bh.get("challenges") or []
-    if len(ch) < 2:
-        errs.append(f"{slug}: need ≥2 challenges")
-    if not (bh.get("easter_egg") or "").strip():
-        errs.append(f"{slug}: missing easter_egg")
-    texts = [c.get("text") for c in ch if c.get("text")]
-    if len(texts) != len(set(texts)):
-        errs.append(f"{slug}: duplicate challenge text")
+    errs.extend(validate_pack(slug, bh, by_id, v, "bonus"))
+    ah = v.get("alpha_hunt")
+    if ah:
+        errs.extend(validate_pack(slug, ah, by_id, v, "alpha"))
     return errs
 
 
@@ -101,12 +111,45 @@ def main() -> int:
             continue
         errs.extend(validate_venue(p))
 
-    # Smoke a handful
-    for slug in ["dallas-zoo", "detroit-zoo", "fort-worth-zoo", "georgia-aquarium", "perot-museum"]:
+    # Smoke a handful (classic path via bonus smoke)
+    for slug in ["dallas-zoo", "detroit-zoo", "fort-worth-zoo", "georgia-aquarium", "perot-museum", "austin-zoo"]:
         if (VENUE_DIR / f"{slug}.json").is_file():
             e = node_smoke(slug)
             if e:
                 errs.append(e)
+
+    # Alpha smoke when pack exists
+    for slug in ["dallas-zoo", "austin-zoo"]:
+        if not (VENUE_DIR / f"{slug}.json").is_file():
+            continue
+        script = r"""
+const fs=require('fs');const vm=require('vm');
+const eng=fs.readFileSync(process.argv[1],'utf8');
+const ctx={};vm.createContext(ctx);vm.runInContext(eng,ctx);
+const ME=ctx.FPMission;
+const v=JSON.parse(fs.readFileSync(process.argv[2],'utf8'));
+const ch=JSON.parse(fs.readFileSync(process.argv[3],'utf8'));
+const w=JSON.parse(fs.readFileSync(process.argv[4],'utf8'));
+const b=JSON.parse(fs.readFileSync(process.argv[5],'utf8'));
+const m=ME.selectMission(v,ch,{age:'6-8',time:'half',seed:2,hunt:'alpha'},w,b);
+if(m.hunt!=='alpha') { console.error('hunt not alpha'); process.exit(3); }
+if(!m.finds||!m.finds.length) { console.error('no alpha finds'); process.exit(2); }
+console.log(JSON.stringify({slug:v.slug,n:m.finds.length,egg:!!m.easterEgg,title:m.title}));
+"""
+        try:
+            r = subprocess.run(
+                ["node", "-e", script, str(ENGINE), str(VENUE_DIR / f"{slug}.json"), str(CHALLENGES), str(WONDERS), str(BONUS)],
+                cwd=str(ROOT),
+                capture_output=True,
+                text=True,
+                timeout=30,
+                check=False,
+            )
+        except Exception as e:
+            errs.append(f"alpha smoke {slug}: {e}")
+            continue
+        if r.returncode != 0:
+            errs.append(f"alpha smoke {slug}: {r.stderr or r.stdout}")
 
     print(f"venues={len(paths)} missing_bonus={missing} errors={len(errs)}")
     for e in errs[:40]:

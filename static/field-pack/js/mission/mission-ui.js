@@ -138,7 +138,9 @@
       return window.FPMission.normalizeHunt(raw);
     }
     const h = String(raw || "classic").toLowerCase();
-    return h === "bonus" || h === "hard" ? "bonus" : "classic";
+    if (h === "alpha" || h === "ultra" || h === "expert") return "alpha";
+    if (h === "bonus" || h === "hard") return "bonus";
+    return "classic";
   }
 
   function setSegActive(rootSel, attr, value) {
@@ -196,17 +198,22 @@
     if (title) title.textContent = mission.title;
     if (meta) {
       const parts = [mission.ageLabel, mission.timeLabel];
-      if (mission.hunt === "bonus") parts.push(mission.huntLabel || "Bonus hunt");
+      if (mission.hunt === "alpha") parts.push(mission.huntLabel || "Alpha");
+      else if (mission.hunt === "bonus") parts.push(mission.huntLabel || "Bonus hunt");
       else if (mission.contentMode === "wonder") parts.push("Flexible finds");
-      if (mission.huntTagline && mission.hunt === "bonus") {
-        meta.innerHTML = `${esc(parts.join(" · "))}<br><span class="ms-hunt-tag">${esc(
+      if (mission.huntTagline && (mission.hunt === "bonus" || mission.hunt === "alpha")) {
+        const tagCls = mission.hunt === "alpha" ? "ms-hunt-tag ms-hunt-tag-alpha" : "ms-hunt-tag";
+        meta.innerHTML = `${esc(parts.join(" · "))}<br><span class="${tagCls}">${esc(
           mission.huntTagline
         )}</span>`;
       } else {
         meta.textContent = parts.join(" · ");
       }
     }
-    if (sheet) sheet.classList.toggle("ms-sheet-bonus", mission.hunt === "bonus");
+    if (sheet) {
+      sheet.classList.toggle("ms-sheet-bonus", mission.hunt === "bonus");
+      sheet.classList.toggle("ms-sheet-alpha", mission.hunt === "alpha");
+    }
     setSectionHeadings(mission);
     syncAudienceChrome(mission);
     if (findsEl) {
@@ -390,6 +397,24 @@
     setSegActive("#mission-time-seg .mission-seg-btn", "data-time", state.time);
     setSegActive(".seo-hunt-chip, #mission-hunt-seg .mission-seg-btn", "data-hunt", state.hunt);
     document.body.classList.toggle("mission-hunt-bonus", state.hunt === "bonus");
+    document.body.classList.toggle("mission-hunt-alpha", state.hunt === "alpha");
+    document.querySelectorAll(".mission-hunt-hint, .seo-bonus-hint").forEach((el) => {
+      if (el.classList.contains("seo-bonus-hint")) {
+        el.textContent =
+          state.hunt === "alpha"
+            ? "Alpha = extra-hard cool finds · patience + easter egg"
+            : state.hunt === "bonus"
+              ? "Bonus hunt = trickier second-visit finds."
+              : "Classic = first-visit shortlist.";
+      } else {
+        el.textContent =
+          state.hunt === "alpha"
+            ? "Alpha = extra-hard & cool · deep cuts + ultra challenges"
+            : state.hunt === "bonus"
+              ? "Bonus = second visit & curious kids · trickier finds + easter egg"
+              : "Classic = first-visit shortlist · easy win";
+      }
+    });
   }
 
   function recompute(fromShuffle) {

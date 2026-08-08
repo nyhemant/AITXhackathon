@@ -761,3 +761,26 @@ body.mission-hunt-bonus .mission-drawer-kicker {
     font-size: 11pt;
   }
 }
+
+.ms-hunt-tag-alpha {
+  color: #5b21b6;
+}
+.ms-sheet-alpha .ms-title {
+  color: #5b21b6;
+}
+.ms-sheet-alpha .ms-section {
+  color: #6d28d9;
+}
+.ms-sheet-alpha .ms-easter-egg {
+  border-color: rgba(109, 40, 217, 0.45);
+  background: #f5f3ff;
+  color: #3b0764;
+}
+.mission-seg-alpha.is-active,
+#mission-hunt-seg .mission-seg-btn[data-hunt="alpha"].is-active {
+  background: #6d28d9;
+  color: #fff;
+}
+body.mission-hunt-alpha .mission-drawer-kicker {
+  color: #6d28d9;
+}

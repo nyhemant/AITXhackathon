@@ -641,12 +641,13 @@ def page_mission_chrome_html() -> str:
               <span class="seo-chrome-k" id="seo-hunt-label">Style</span>
               <div class="seo-chip-row seo-chip-row-hunt" role="group" aria-labelledby="seo-hunt-label">
                 <button type="button" class="seo-hunt-chip is-active" data-hunt="classic" aria-pressed="true">Classic</button>
-                <button type="button" class="seo-hunt-chip seo-hunt-bonus" data-hunt="bonus">Bonus hunt</button>
+                <button type="button" class="seo-hunt-chip seo-hunt-bonus" data-hunt="bonus">Bonus</button>
+                <button type="button" class="seo-hunt-chip seo-hunt-alpha" data-hunt="alpha">Alpha</button>
               </div>
             </div>
           </div>
         </div>
-        <p class="seo-print-fallback no-print">No printer? Open the sheet on your phone, or print later. <span class="seo-bonus-hint">Bonus hunt = trickier second-visit finds.</span></p>"""
+        <p class="seo-print-fallback no-print">No printer? Open the sheet on your phone, or print later. <span class="seo-bonus-hint">Classic · Bonus · Alpha (extra-hard cool finds).</span></p>"""
 
 
 def _photo_src(photo: str) -> str:
@@ -830,9 +831,10 @@ def mission_drawer_html(mission_venue: dict, mission: dict) -> str:
             <span class="mission-field-label" id="mission-hunt-label">Mission style</span>
             <div class="mission-seg" id="mission-hunt-seg" role="group" aria-labelledby="mission-hunt-label">
               <button type="button" class="mission-seg-btn is-active" data-hunt="classic" aria-pressed="true">Classic</button>
-              <button type="button" class="mission-seg-btn mission-seg-bonus" data-hunt="bonus">Bonus hunt</button>
+              <button type="button" class="mission-seg-btn mission-seg-bonus" data-hunt="bonus">Bonus</button>
+              <button type="button" class="mission-seg-btn mission-seg-alpha" data-hunt="alpha">Alpha</button>
             </div>
-            <p class="mission-hunt-hint">Bonus = second visit &amp; curious kids · trickier finds + easter egg</p>
+            <p class="mission-hunt-hint">Classic = first visit · Bonus = trickier · Alpha = extra-hard cool finds</p>
           </div>
           <div class="mission-field">
             <label for="mission-interest">What are they into? <span class="mission-opt">(optional)</span></label>
@@ -975,6 +977,16 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
             _bh_slim["venues"] = {_slug: _one}
         else:
             _bh_slim["venues"] = {}
+        # Alpha slice (extra-hard mode)
+        _alpha_all = _bh_all.get("alpha") or {}
+        _alpha_one = (_alpha_all.get("venues") or {}).get(_slug)
+        if not _alpha_one and isinstance(mission_venue.get("alpha_hunt"), dict):
+            _alpha_one = mission_venue["alpha_hunt"]
+        _alpha_slim = {
+            "generic": _alpha_all.get("generic") or {},
+            "venues": {_slug: _alpha_one} if _alpha_one else {},
+        }
+        _bh_slim["alpha"] = _alpha_slim
         bonus_json = json.dumps(_bh_slim, ensure_ascii=False)
     lead = (
         mission_venue.get("tagline")
@@ -1007,8 +1019,8 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <link rel="stylesheet" href="/shell/shell.css?v=5" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=64" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=29" />
-  <link rel="stylesheet" href="/field-pack/css/mission.css?v=14" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=12" />
+  <link rel="stylesheet" href="/field-pack/css/mission.css?v=12" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
   </script>
@@ -1094,8 +1106,8 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <script src="/field-pack/js/catalog.js?v=23"></script>
   <script src="/field-pack/js/print-maps.js?v=2"></script>
   <script src="/field-pack/js/print-kit.js?v=9"></script>
-  <script src="/field-pack/js/mission/mission-engine.js?v=11"></script>
-  <script src="/field-pack/js/mission/mission-ui.js?v=18"></script>
+  <script src="/field-pack/js/mission/mission-engine.js?v=12"></script>
+  <script src="/field-pack/js/mission/mission-ui.js?v=12"></script>
 </body>
 </html>
 """
@@ -1157,7 +1169,7 @@ def render_venue_page(v: dict) -> str:
   <link rel="stylesheet" href="/shell/shell.css?v=5" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=52" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=21" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=12" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
   </script>

@@ -64,12 +64,22 @@
 
   function normalizeHunt(h) {
     const s = String(h || "classic").toLowerCase();
+    if (s === "alpha" || s === "ultra" || s === "expert") return "alpha";
     if (s === "bonus" || s === "hard" || s === "easter") return "bonus";
     return "classic";
   }
 
   function isBonusHunt(opts) {
     return normalizeHunt(opts && opts.hunt) === "bonus";
+  }
+
+  function isAlphaHunt(opts) {
+    return normalizeHunt(opts && opts.hunt) === "alpha";
+  }
+
+  function isSpecialHunt(opts) {
+    const h = normalizeHunt(opts && opts.hunt);
+    return h === "bonus" || h === "alpha";
   }
 
   /** Venue-authored bonus pack, optional file overlay via wonders-style global. */
@@ -80,6 +90,26 @@
     const file = bonusFile || (typeof window !== "undefined" && window.FP_BONUS_HUNTS) || null;
     if (file && file.venues && file.venues[slug]) return file.venues[slug];
     if (file && file.generic) return file.generic;
+    return null;
+  }
+
+  /** Alpha = extra-hard / cool second layer (venue.alpha_hunt or file.alpha). */
+  function alphaPack(venue, bonusFile) {
+    const slug = (venue && (venue.slug || venue.id)) || "";
+    const local = (venue && venue.alpha_hunt) || null;
+    if (local && (local.find_ids || local.challenges || local.easter_egg)) return local;
+    const file = bonusFile || (typeof window !== "undefined" && window.FP_BONUS_HUNTS) || null;
+    const alphaRoot = file && file.alpha;
+    if (alphaRoot && alphaRoot.venues && alphaRoot.venues[slug]) return alphaRoot.venues[slug];
+    if (alphaRoot && alphaRoot.generic) return alphaRoot.generic;
+    // Soft fallback: reuse bonus pack if no alpha authored yet
+    return bonusPack(venue, bonusFile);
+  }
+
+  function huntPack(venue, bonusFile, hunt) {
+    const h = normalizeHunt(hunt);
+    if (h === "alpha") return alphaPack(venue, bonusFile);
+    if (h === "bonus") return bonusPack(venue, bonusFile);
     return null;
   }
 
@@ -398,6 +428,23 @@
     if (tags.includes("wow") && !routeSet.has(id)) s += 0.6;
     return s;
   }
+  function scoreItemAlpha(item, interest, age, routeSet) {
+    let s = scoreItemBonus(item, interest, age, routeSet);
+    const id = String(item.id || "");
+    const cid = String(item.catalog_id || "").replace(/_/g, "-");
+    const lab = String(item.display_label || item.label || "").toLowerCase();
+    const tags = item.tags || [];
+    // Alpha: skip the tourist megafauna loop harder
+    if (routeSet.has(id)) s -= 2.5;
+    // Cool / patience finds
+    if (/cheetah|hippo|penguin|tortoise|otter|sloth|wolf|bear|alligator|peacock|capybara|jelly|octopus|eel|lemur|tiger|flamingo/.test(id + " " + cid + " " + lab)) {
+      s += 1.8;
+    }
+    if (tags.includes("kids") || tags.includes("rest") || tags.includes("play")) s -= 3;
+    if (tags.includes("wow") && !routeSet.has(id)) s += 1.2;
+    return s;
+  }
+
 
   function pickItems(venue, opts, wondersFile, bonusFile) {
     const age = normalizeAge(opts.age || "4-5");
@@ -406,11 +453,12 @@
     const need = needCount(time, age);
     const seed = opts.seed || 1;
     const mode = contentMode(venue);
-    const bonus = isBonusHunt(opts);
-    const pack = bonus ? bonusPack(venue, bonusFile) : null;
+    const hunt = normalizeHunt(opts.hunt);
+    const special = hunt === "bonus" || hunt === "alpha";
+    const pack = special ? huntPack(venue, bonusFile, hunt) : null;
     const rand = mulberry32(
       hashSeed(
-        venue.slug + "|" + mode + "|" + (bonus ? "bonus" : "classic") + "|" + age + "|" + time + "|" + interest + "|" + seed
+        venue.slug + "|" + mode + "|" + hunt + "|" + age + "|" + time + "|" + interest + "|" + seed
       )
     );
 
@@ -418,8 +466,8 @@
     const byId = Object.fromEntries(safeNamed.map((it) => [it.id, it]));
     const routeSet = new Set(venue.route_90m || []);
 
-    // Bonus: preferred find list from venue research (presence-filtered)
-    if (bonus && pack && Array.isArray(pack.find_ids) && pack.find_ids.length) {
+    // Bonus/Alpha: preferred find list from venue research (presence-filtered)
+    if (special && pack && Array.isArray(pack.find_ids) && pack.find_ids.length) {
       const preferred = [];
       const seenP = new Set();
       for (const rid of pack.find_ids) {
@@ -429,10 +477,11 @@
         preferred.push(it);
         seenP.add(it.id);
       }
-      // Top up with bonus-scored safe items
+      // Top up with hunt-scored safe items
+      const scorer = hunt === "alpha" ? scoreItemAlpha : scoreItemBonus;
       const rest = filterByAge(safeNamed, age)
         .filter((it) => itemPresenceOk(it, venue) && !seenP.has(it.id))
-        .map((it, idx) => ({ it, idx, score: scoreItemBonus(it, interest, age, routeSet) + rand() * 0.01 }))
+        .map((it, idx) => ({ it, idx, score: scorer(it, interest, age, routeSet) + rand() * 0.01 }))
         .sort((a, b) => b.score - a.score || a.idx - b.idx)
         .map((x) => x.it);
       const merged = preferred.concat(rest);
@@ -443,7 +492,8 @@
           const out = Object.assign({}, it);
           if (lab && lab !== it.label) out.label = lab;
           if (line) out.one_liner = line;
-          if (bonus) out._bonus = true;
+          if (special) out._bonus = true;
+          if (hunt === "alpha") out._alpha = true;
           return out;
         });
       }
@@ -472,17 +522,22 @@
         it,
         idx,
         score:
-          (bonus ? scoreItemBonus(it, interest, age, routeSet) : scoreItem(it, interest, age)) +
+          (hunt === "alpha"
+            ? scoreItemAlpha(it, interest, age, routeSet)
+            : hunt === "bonus"
+              ? scoreItemBonus(it, interest, age, routeSet)
+              : scoreItem(it, interest, age)) +
           rand() * 0.01,
       }))
       .sort((a, b) => b.score - a.score || a.idx - b.idx)
       .map((x) => x.it);
 
-    // Classic: guarantee route anchors. Bonus: at most 1–2 headline anchors, then deep cuts
+    // Classic: route anchors. Bonus: 1–2. Alpha: none (pure deep cuts) except littles get 1.
     let anchors = [];
     if (mode !== "wonder") {
       anchors = anchorItems(venue, age);
-      if (bonus) anchors = anchors.slice(0, age === "2-3" ? 1 : 2);
+      if (hunt === "alpha") anchors = age === "2-3" ? anchors.slice(0, 1) : [];
+      else if (hunt === "bonus") anchors = anchors.slice(0, age === "2-3" ? 1 : 2);
     }
     const picked = [];
     const seen = new Set();
@@ -511,7 +566,8 @@
       const out = Object.assign({}, it);
       if (lab && lab !== it.label) out.label = lab;
       if (line) out.one_liner = line;
-      if (bonus) out._bonus = true;
+      if (special) out._bonus = true;
+      if (hunt === "alpha") out._alpha = true;
       return out;
     });
   }
@@ -531,9 +587,10 @@
   function pickChallenges(challengesFile, venue, opts, selectedItems, bonusFile) {
     const age = normalizeAge(opts.age || "4-5");
     const seed = (opts.seed || 1) + 17;
-    const huntBonus = isBonusHunt(opts);
+    const hunt = normalizeHunt(opts.hunt);
+    const huntSpecial = hunt === "bonus" || hunt === "alpha";
     const rand = mulberry32(
-      hashSeed(venue.slug + "|ch|" + (huntBonus ? "bonus|" : "") + age + "|" + seed)
+      hashSeed(venue.slug + "|ch|" + (huntSpecial ? hunt + "|" : "") + age + "|" + seed)
     );
     const kind = normalizeVenueType(venue);
     const blocked = new Set();
@@ -541,16 +598,19 @@
 
     let pool = [];
 
-    // Bonus hunt: venue-researched challenges first
-    if (huntBonus) {
-      const pack = bonusPack(venue, bonusFile) || {};
-      const generic =
-        (bonusFile && bonusFile.generic && bonusFile.generic.challenges) ||
-        (typeof window !== "undefined" &&
-          window.FP_BONUS_HUNTS &&
-          window.FP_BONUS_HUNTS.generic &&
-          window.FP_BONUS_HUNTS.generic.challenges) ||
-        [];
+    // Bonus/Alpha: venue-researched challenges first
+    if (huntSpecial) {
+      const pack = huntPack(venue, bonusFile, hunt) || {};
+      const file = bonusFile || (typeof window !== "undefined" && window.FP_BONUS_HUNTS) || null;
+      let generic = [];
+      if (hunt === "alpha") {
+        generic =
+          (file && file.alpha && file.alpha.generic && file.alpha.generic.challenges) ||
+          (file && file.generic && file.generic.challenges) ||
+          [];
+      } else {
+        generic = (file && file.generic && file.generic.challenges) || [];
+      }
       const raw = [].concat(pack.challenges || [], generic);
       pool = raw
         .filter((c) => c && c.text)
@@ -561,10 +621,10 @@
           return fit.includes(age);
         })
         .map((c) => ({
-          id: c.id || "bh_" + String(c.text).slice(0, 12),
+          id: c.id || (hunt === "alpha" ? "ah_" : "bh_") + String(c.text).slice(0, 12),
           text: c.text,
           age_fit: c.age_fit || [],
-          tags: ["bonus"],
+          tags: hunt === "alpha" ? ["alpha", "bonus"] : ["bonus"],
           types: [kind],
         }));
     }
@@ -586,7 +646,8 @@
         let boost = 0;
         if (age === "2-3" && (tags.includes("rest") || tags.includes("play") || tags.includes("color"))) boost += 1;
         if (age === "adult" && tags.includes("adult")) boost += 2;
-        if (huntBonus && tags.includes("bonus")) boost += 2;
+        if (hunt === "alpha" && (tags.includes("alpha") || tags.includes("bonus"))) boost += 3;
+        else if (hunt === "bonus" && tags.includes("bonus")) boost += 2;
         return { c, idx, score: -overlap + boost + rand() };
       })
       .sort((a, b) => b.score - a.score || a.idx - b.idx)
@@ -612,7 +673,13 @@
   }
 
   function missionTitle(venue, name, age, hunt) {
-    if (normalizeHunt(hunt) === "bonus") {
+    const h = normalizeHunt(hunt);
+    if (h === "alpha") {
+      const n = (name || "").trim();
+      if (n) return `${n}'s Alpha Hunt · ${venue.name}`;
+      return `Alpha Hunt at ${venue.name}`;
+    }
+    if (h === "bonus") {
       const n = (name || "").trim();
       if (n) return `${n}'s Bonus Hunt · ${venue.name}`;
       return `Bonus Hunt at ${venue.name}`;
@@ -628,8 +695,8 @@
     return `${poss} Mission at ${venue.name}`;
   }
 
-  function easterEggLine(venue, age, bonusFile) {
-    const pack = bonusPack(venue, bonusFile);
+  function easterEggLine(venue, age, bonusFile, hunt) {
+    const pack = huntPack(venue, bonusFile, hunt || "bonus");
     if (!pack) return "";
     if (isLittle(age) && pack.easter_egg_little) return pack.easter_egg_little;
     return pack.easter_egg || "";
@@ -642,12 +709,27 @@
     if (opts.time === "90m") opts.time = "90m";
     if (opts.age === "adult") opts.name = (opts.name || "").trim();
     const mode = contentMode(venue);
-    const bonus = opts.hunt === "bonus";
-    const pack = bonus ? bonusPack(venue, bonusFile) : null;
+    const hunt = opts.hunt;
+    const special = hunt === "bonus" || hunt === "alpha";
+    const pack = special ? huntPack(venue, bonusFile, hunt) : null;
     const finds = pickItems(venue, opts, wondersFile, bonusFile);
     const challenges = pickChallenges(challengesFile, venue, opts, finds, bonusFile);
     const adult = opts.age === "adult";
-    const egg = bonus ? easterEggLine(venue, opts.age, bonusFile) : "";
+    const egg = special ? easterEggLine(venue, opts.age, bonusFile, hunt) : "";
+    const huntLabel =
+      hunt === "alpha" ? "Alpha" : hunt === "bonus" ? "Bonus hunt" : "Classic";
+    const huntTagline = special
+      ? (pack && pack.tagline) ||
+        (hunt === "alpha" ? "Extra-hard · cool deep cuts" : "Second visit · curious explorers")
+      : "";
+    let findsHeading = "Find these";
+    if (hunt === "alpha") findsHeading = isLittle(opts.age) ? "Cool hard finds" : "Alpha finds";
+    else if (hunt === "bonus") findsHeading = "Trickier finds";
+    else if (adult) findsHeading = "Don't miss";
+    else if (isLittle(opts.age)) findsHeading = "Go see";
+    let bonusHeading = adult ? "While you're there" : "Bonus";
+    if (hunt === "alpha") bonusHeading = "Ultra challenges";
+    else if (hunt === "bonus") bonusHeading = "Hard mode";
     return {
       title: missionTitle(venue, opts.name, opts.age, opts.hunt),
       venueName: venue.name,
@@ -657,24 +739,14 @@
       time: opts.time,
       timeLabel: TIME_LABELS[opts.time] || opts.time,
       hunt: opts.hunt,
-      huntLabel: bonus ? "Bonus hunt" : "Classic",
-      huntTagline: bonus
-        ? (pack && pack.tagline) || "Second visit · curious explorers"
-        : "",
+      huntLabel,
+      huntTagline,
       interest: opts.interest || "",
       personalized: Boolean((opts.name || "").trim()),
       contentMode: mode,
       audience: adult ? "adult" : "kid",
-      findsHeading: bonus
-        ? isLittle(opts.age)
-          ? "Trickier finds"
-          : "Trickier finds"
-        : adult
-          ? "Don't miss"
-          : isLittle(opts.age)
-            ? "Go see"
-            : "Find these",
-      bonusHeading: bonus ? "Hard mode" : adult ? "While you're there" : "Bonus",
+      findsHeading,
+      bonusHeading,
       nameLabel: adult ? "Your name (optional)" : "Kid name",
       easterEgg: egg,
       finds,
@@ -715,7 +787,11 @@
     normalizeHunt,
     isAdult,
     isBonusHunt,
+    isAlphaHunt,
+    isSpecialHunt,
     bonusPack,
+    alphaPack,
+    huntPack,
     contentMode,
     listConfidence,
     itemPresenceOk,
