@@ -169,18 +169,6 @@ def practical_chips_html(practical: dict | None, last_v: str = "") -> str:
         {checked}"""
 
 
-def parent_tip_html(practical: dict | None) -> str:
-    """One venue-specific first-stop tip — only if we have real copy."""
-    tip = ((practical or {}).get("best_start") or "").strip()
-    if not tip:
-        return ""
-    return f"""
-    <aside class="seo-tip" aria-label="First stop tip">
-      <span class="seo-tip-kicker">First stop</span>
-      <p>{esc(tip)}</p>
-    </aside>"""
-
-
 def unique_body(
     v: dict,
     exclude_ids: set[str] | None = None,
@@ -206,7 +194,7 @@ def unique_body(
         else:
             src = photo
         alt = f"{it.get('name') or 'Animal'} — shortlist photo"
-        item_blurb = it.get("blurb") or "A favorite stop for curious kids."
+        item_blurb = _card_blurb(it.get("blurb") or "") or "Worth a look if you have time."
         item_id = it.get("id") or ""
         card_inner = ""
         if src:
@@ -525,11 +513,23 @@ def _start_here_catalog_ids(mission_venue: dict, mission: dict) -> set[str]:
     return out
 
 
+def _card_blurb(text: str) -> str:
+    """Use a one-liner only if it reads as a full clue, not a 2–3 word stub."""
+    t = (text or "").strip()
+    if not t:
+        return ""
+    # Cryptic stubs create more questions than they answer
+    if len(t.split()) < 5 and len(t) < 28:
+        return ""
+    return t
+
+
 def route_90m_html(mission_venue: dict, mission: dict, catalog_v: dict | None = None) -> str:
     """Short-visit picks: 2–3 real stops with photos — the “start here” path.
 
     Exists so a half-day page still answers “we only have an hour.”
     Not a second shortlist: same finds, tighter cut, numbered.
+    No separate “First stop” tip — the numbered cards are the plan.
     """
     # catalog featured: id (sci-dinosaur) → photo/blurb
     feat_by_id = {f.get("id"): f for f in (catalog_v or {}).get("featured") or [] if f.get("id")}
@@ -538,6 +538,7 @@ def route_90m_html(mission_venue: dict, mission: dict, catalog_v: dict | None = 
         return ""
 
     slug = mission_venue.get("slug") or ""
+    n = min(3, len(picks))
     cards = []
     for i, p in enumerate(picks[:3], 1):
         cat_id = (p.get("catalog_id") or "").replace("_", "-") or (p.get("id") or "").replace("_", "-")
@@ -548,7 +549,7 @@ def route_90m_html(mission_venue: dict, mission: dict, catalog_v: dict | None = 
         src = _photo_src(feat.get("photo") or p.get("photo") or "")
         label = p.get("label") or feat.get("name") or "Stop"
         emoji = p.get("emoji") or feat.get("emoji") or ""
-        one = p.get("one_liner") or feat.get("blurb") or ""
+        one = _card_blurb(p.get("one_liner") or feat.get("blurb") or "")
         item_id = cat_id or (p.get("id") or "")
         href = (
             f"/field-pack/app.html#/venue/{esc(slug)}/item/{esc(item_id)}"
@@ -573,10 +574,14 @@ def route_90m_html(mission_venue: dict, mission: dict, catalog_v: dict | None = 
       </a>"""
         )
 
+    lead = (
+        f"Do these {n} in order if you can — enough for a short visit. "
+        "Print the mission when you want the full checklist."
+    )
     return f"""
     <section class="seo-start-here no-print" aria-labelledby="route90-heading">
       <h2 id="route90-heading">Short on time? Start here</h2>
-      <p class="seo-start-lead">Three stops that carry a short visit — print the mission and hit these first.</p>
+      <p class="seo-start-lead">{esc(lead)}</p>
       <div class="seo-start-grid">{"".join(cards)}</div>
     </section>"""
 
@@ -715,7 +720,6 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
     # Catalog ids already shown in “start here” — don’t repeat in shortlist grid
     start_exclude = _start_here_catalog_ids(mission_venue, mission)
     practical = mission_venue.get("practical") or {}
-    tip_html = parent_tip_html(practical)
     if mode == "wonder":
         hunt = v.get("hunt") or []
         hunt_lis = "".join(
@@ -787,7 +791,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <link rel="stylesheet" href="/shell/shell.css?v=5" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=52" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=18" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=19" />
   <link rel="stylesheet" href="/field-pack/css/mission.css?v=8" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
@@ -839,7 +843,6 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
 
       {map_card}
       {route90}
-      {tip_html}
       <div id="seo-play-target" class="seo-play-anchor" tabindex="-1"></div>
       {body}
 
@@ -961,7 +964,7 @@ def render_venue_page(v: dict) -> str:
   <link rel="stylesheet" href="/shell/shell.css?v=5" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=52" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=18" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=19" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
   </script>
