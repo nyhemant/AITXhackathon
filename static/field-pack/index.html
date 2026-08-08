@@ -30,7 +30,7 @@
     <base href="/field-pack/" />
     <link rel="stylesheet" href="/shell/shell.css?v=5" />
     <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
-    <link rel="stylesheet" href="/field-pack/css/landing.css?v=47" />
+    <link rel="stylesheet" href="/field-pack/css/landing.css?v=48" />
     <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=11" />
     <script type="application/ld+json">
       {
@@ -158,8 +158,20 @@
             </a>
           </li>
           <li class="story-arrow" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="22" height="22" focusable="false">
-              <path d="M4 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <svg class="story-arrow-svg" viewBox="0 0 40 28" width="40" height="28" focusable="false">
+              <defs>
+                <linearGradient id="story-arrow-grad-a" x1="0" y1="14" x2="40" y2="14" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#0f5c5c"/>
+                  <stop offset="55%" stop-color="#2a9d8f"/>
+                  <stop offset="100%" stop-color="#d9652e"/>
+                </linearGradient>
+                <linearGradient id="story-arrow-shine-a" x1="0" y1="4" x2="0" y2="24" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#fff" stop-opacity="0.45"/>
+                  <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <path d="M2 9.5h18.5V4.2c0-.9 1.05-1.35 1.7-.75L37.5 14 22.2 24.55c-.65.6-1.7.15-1.7-.75v-5.3H2c-1.1 0-2-.9-2-2v-5c0-1.1.9-2 2-2z" fill="url(#story-arrow-grad-a)"/>
+              <path d="M2 9.5h18.5V4.2c0-.9 1.05-1.35 1.7-.75L37.5 14 22.2 24.55c-.65.6-1.7.15-1.7-.75v-5.3H2c-1.1 0-2-.9-2-2v-5c0-1.1.9-2 2-2z" fill="url(#story-arrow-shine-a)"/>
             </svg>
           </li>
           <li class="story-step story-step-print">
@@ -185,11 +197,23 @@
             <p class="story-desc">Short list + treasure hunt</p>
           </li>
           <li class="story-arrow" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="22" height="22" focusable="false">
-              <path d="M4 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <svg class="story-arrow-svg" viewBox="0 0 40 28" width="40" height="28" focusable="false">
+              <defs>
+                <linearGradient id="story-arrow-grad-b" x1="0" y1="14" x2="40" y2="14" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#d9652e"/>
+                  <stop offset="50%" stop-color="#e8a838"/>
+                  <stop offset="100%" stop-color="#c9a227"/>
+                </linearGradient>
+                <linearGradient id="story-arrow-shine-b" x1="0" y1="4" x2="0" y2="24" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#fff" stop-opacity="0.4"/>
+                  <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <path d="M2 9.5h18.5V4.2c0-.9 1.05-1.35 1.7-.75L37.5 14 22.2 24.55c-.65.6-1.7.15-1.7-.75v-5.3H2c-1.1 0-2-.9-2-2v-5c0-1.1.9-2 2-2z" fill="url(#story-arrow-grad-b)"/>
+              <path d="M2 9.5h18.5V4.2c0-.9 1.05-1.35 1.7-.75L37.5 14 22.2 24.55c-.65.6-1.7.15-1.7-.75v-5.3H2c-1.1 0-2-.9-2-2v-5c0-1.1.9-2 2-2z" fill="url(#story-arrow-shine-b)"/>
             </svg>
           </li>
-          <li class="story-step">
+          <li class="story-step story-step-play">
             <div class="story-art" aria-hidden="true">
               <svg class="story-svg" viewBox="0 0 88 72" width="88" height="72" focusable="false">
                 <circle cx="36" cy="34" r="18" fill="#fff8e6" stroke="#0f5c5c" stroke-width="2"/>
