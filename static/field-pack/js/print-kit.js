@@ -376,15 +376,27 @@
     return null;
   }
 
-  function buildQaCardHtml(item, venue) {
+  /**
+   * One-letter-page Q&A card HTML (big bottom photo + wow fact).
+   * @param {object} item catalog animal/exhibit
+   * @param {object} venue
+   * @param {object} [opts]
+   * @param {Record<string, string[]>} [opts.answers] missionId → selected choice labels
+   * @param {string} [opts.bannerNote] line under FIELD TRIP KIT title
+   * @param {string} [opts.footer] footer line
+   */
+  function buildQaCardHtml(item, venue, opts) {
+    const o = opts || {};
+    const answerMap = o.answers || {};
     const missions = missionsFor(venue);
     const cards = missions
       .map((mission, index) => {
+        const selected = new Set(answerMap[mission.id] || []);
         const choices = (mission.choices || [])
-          .map(
-            (label) =>
-              `<div class="ps-choice"><span class="ps-dot"></span><span>${escapeHtml(label)}</span></div>`
-          )
+          .map((label) => {
+            const on = selected.has(label) ? " on" : "";
+            return `<div class="ps-choice${on}"><span class="ps-dot"></span><span>${escapeHtml(label)}</span></div>`;
+          })
           .join("");
         return `<section class="ps-card c${index}">
           <div class="ps-card-head"><span class="ps-num">${escapeHtml(mission.num)}</span>
@@ -415,10 +427,16 @@
           </div>`
         : "";
 
+    const bannerNote =
+      o.bannerNote ||
+      `${venue.name || ""} · Mission card · Circle answers · No scores`;
+    const footer =
+      o.footer || "Q&amp;A card · open the outing for more animals &amp; tips";
+
     return `
       <div class="ps-page${photo ? " ps-page-with-photo" : ""}">
         <div class="ps-banner"><h1>FIELD TRIP KIT</h1>
-        <p>${escapeHtml(venue.name)} · Sample mission card · Circle answers · No scores</p></div>
+        <p>${escapeHtml(bannerNote)}</p></div>
         <header class="ps-head">
           <h2>${escapeHtml(item.emoji || "")} ${escapeHtml(item.name)}</h2>
           <p class="ps-line"><strong>Explorer:</strong> <span class="write-in-line">________________</span>
@@ -426,7 +444,7 @@
         </header>
         <div class="ps-grid">${cards}</div>
         ${photoBlock}
-        <p class="ps-footer">Sample Q&amp;A · open the outing for more animals &amp; tips</p>
+        <p class="ps-footer">${footer}</p>
       </div>`;
   }
 
@@ -478,7 +496,10 @@
       console.warn("[FPPrint] sample Q&A unavailable for", venueId);
       return false;
     }
-    printSheet.innerHTML = buildQaCardHtml(item, venue);
+    printSheet.innerHTML = buildQaCardHtml(item, venue, {
+      bannerNote: `${venue.name} · Sample mission card · Circle answers · No scores`,
+      footer: "Sample Q&amp;A · open the outing for more animals &amp; tips",
+    });
     if (treasureSheet) treasureSheet.innerHTML = "";
     track("qa_sample_printed", {
       venue_slug: venue.id || venueId,
@@ -491,9 +512,25 @@
     return true;
   }
 
+  /**
+   * Fill #print-sheet with a Q&A card for any catalog item (shared by app print button).
+   * Does not call window.print — caller owns the dialog.
+   */
+  function fillQaPrintSheet(item, venue, opts) {
+    const { printSheet, treasureSheet } = sheets();
+    if (!item || !venue || !printSheet) return false;
+    printSheet.innerHTML = buildQaCardHtml(item, venue, opts);
+    if (treasureSheet) treasureSheet.innerHTML = "";
+    return true;
+  }
+
   window.FPPrint = {
     printTreasureForVenue,
     printSampleQaForVenue,
+    fillQaPrintSheet,
+    buildQaCardHtml,
+    itemPhotoSrc,
+    wowFactFromItem,
     topPickItemId,
     getVenue,
     getItem,

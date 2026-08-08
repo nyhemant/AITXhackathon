@@ -574,40 +574,39 @@
   }
 
   function buildPrintSheet(item, trip, venue) {
-    const missions = missionsFor(venue);
     const aState = itemState(trip, item.id);
-    const cards = missions
-      .map((mission, index) => {
-        const selected = new Set(aState.answers[mission.id] || []);
-        const choices = mission.choices
-          .map(
-            (label) =>
-              `<div class="ps-choice${selected.has(label) ? " on" : ""}"><span class="ps-dot"></span><span>${escapeHtml(
-                label
-              )}</span></div>`
-          )
-          .join("");
-        return `<section class="ps-card c${index}">
-          <div class="ps-card-head"><span class="ps-num">${mission.num}</span>
-          <p class="ps-title">${escapeHtml(mission.title)}</p></div>
-          <h3 class="ps-q">${escapeHtml(mission.question)}</h3>
-          <div class="ps-choices">${choices}</div></section>`;
-      })
-      .join("");
+    const answers = (aState && aState.answers) || {};
+    // Shared layout: big bottom photo + curated wow fact (print-kit.js)
+    if (window.FPPrint && typeof window.FPPrint.fillQaPrintSheet === "function") {
+      window.FPPrint.fillQaPrintSheet(item, venue, {
+        answers,
+        bannerNote: `${venue.name} · Mission card · Circle answers · No scores`,
+        footer: "Q&amp;A card · check on screen with Submit",
+      });
+      return;
+    }
+    // Fallback if print-kit failed to load (should not happen)
+    const photo =
+      item.photo && !/^https?:\/\//i.test(item.photo) && !item.photo.startsWith("/")
+        ? "/field-pack/" + String(item.photo).replace(/^\/+/, "")
+        : item.photo || "";
     els.printSheet.innerHTML = `
-      <div class="ps-banner"><h1>FIELD TRIP KIT</h1>
-      <p>${escapeHtml(venue.name)} · Mission card · Circle answers · No scores</p></div>
-      <section class="ps-hero">
-        <img src="${escapeAttr(item.photo)}" alt="" />
-        <div>
-          <h2>${escapeHtml(item.name)}</h2>
-          <p class="ps-meta">${escapeHtml(item.blurb || "")}</p>
-          <p class="ps-line"><strong>Explorer:</strong> <span class="write-in-line">________________</span> <span class="write-in-hint">(write name)</span></p>
-          <p class="ps-line"><strong>Place:</strong> ${escapeHtml(venue.name)}</p>
-        </div>
-      </section>
-      <div class="ps-grid">${cards}</div>
-      <p class="ps-footer">Q&A card · check on screen with Submit</p>`;
+      <div class="ps-page${photo ? " ps-page-with-photo" : ""}">
+        <div class="ps-banner"><h1>FIELD TRIP KIT</h1>
+        <p>${escapeHtml(venue.name)} · Mission card · Circle answers · No scores</p></div>
+        <header class="ps-head">
+          <h2>${escapeHtml(item.emoji || "")} ${escapeHtml(item.name)}</h2>
+          <p class="ps-line"><strong>Explorer:</strong> <span class="write-in-line">________________</span>
+          &nbsp;&nbsp; <strong>Place:</strong> ${escapeHtml(venue.name)}</p>
+        </header>
+        ${
+          photo
+            ? `<div class="ps-photo-fill"><div class="ps-photo-frame">
+                <img class="ps-photo-big" src="${escapeAttr(photo)}" alt="" /></div></div>`
+            : ""
+        }
+        <p class="ps-footer">Q&A card · check on screen with Submit</p>
+      </div>`;
   }
 
   function printMissionCard() {
@@ -615,7 +614,7 @@
     const item = getItem(currentItemId);
     if (!trip || !item) return;
     buildPrintSheet(item, trip, getVenue(trip.venueId));
-    els.treasureSheet.innerHTML = "";
+    if (els.treasureSheet) els.treasureSheet.innerHTML = "";
     requestAnimationFrame(() => requestAnimationFrame(() => window.print()));
   }
 
