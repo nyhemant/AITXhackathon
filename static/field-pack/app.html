@@ -12,7 +12,7 @@
     <title>List &amp; hunt · Field Trip Kit · 1Less</title>
     <base href="/field-pack/" />
     <link rel="stylesheet" href="/shell/shell.css?v=5" />
-    <link rel="stylesheet" href="/field-pack/css/styles.css?v=31" />
+    <link rel="stylesheet" href="/field-pack/css/styles.css?v=32" />
   </head>
   <body class="app-body">
     <div class="app app-outing">
@@ -101,7 +101,7 @@
             <figcaption id="detail-credit" class="photo-credit"></figcaption>
           </figure>
           <div class="detail-copy">
-            <p class="step-chip detail-kicker">Print a talk card · use it at the stop</p>
+            <p class="step-chip detail-kicker">One level · talk · pick-ones · print</p>
             <h1 id="detail-name">Item</h1>
             <p id="detail-blurb" class="lead"></p>
             <div class="action-row detail-tools detail-tools-primary no-print">
@@ -113,7 +113,7 @@
               </button>
             </div>
             <p class="detail-print-hint no-print">
-              One page for the bag — talk prompts print with the photo.
+              Print uses the <strong>same talk level</strong> as the prompts and pick-ones below.
             </p>
             <p class="detail-missing-hint no-print">
               Not out today? Find something <strong>like</strong> it — big, striped, splashy, or quiet.
@@ -129,6 +129,7 @@
                   <button type="button" class="qa-level-chip qa-level-alpha" data-qa-age="alpha">Alpha</button>
                 </div>
               </div>
+              <p class="submit-hint" id="talk-level-hint">Same level for talk prompts, pick-ones below, and the print card.</p>
               <p class="floor-prompts-kicker" id="floor-prompts-kicker">Notice &amp; talk</p>
               <div id="floor-prompts" class="floor-prompts" aria-label="Things to notice and talk about"></div>
             </div>
@@ -139,7 +140,7 @@
             </div>
             <div class="action-row detail-qa-launch no-print">
               <button type="button" id="btn-more-questions" class="btn btn-ghost btn-more-questions">
-                Optional pick-one questions ↓
+                Pick-ones for this level ↓
               </button>
               <span id="progress-pill" class="progress-pill" hidden></span>
             </div>
@@ -148,9 +149,9 @@
         </section>
 
         <details class="advanced-qa no-print" id="advanced-qa">
-          <summary>Pick-one questions</summary>
+          <summary>Pick-one questions · this level</summary>
           <p class="footer-note mission-guide">
-            Tap what you noticed. <strong>Not a test</strong> — skip anytime.
+            Same talk level as above. Tap what you noticed. <strong>Not a test</strong> — skip anytime.
           </p>
           <div id="mission-grid" class="mission-grid" aria-label="Pick-one questions"></div>
           <section class="submit-bar">
@@ -171,7 +172,7 @@
     <script src="/shell/shell.js?v=4"></script>
     <script src="/field-pack/js/catalog.js?v=23"></script>
     <script src="/field-pack/js/print-maps.js?v=2"></script>
-    <script src="/field-pack/js/print-kit.js?v=9"></script>
-    <script src="/field-pack/js/app.js?v=30"></script>
+    <script src="/field-pack/js/print-kit.js?v=10"></script>
+    <script src="/field-pack/js/app.js?v=31"></script>
   </body>
 </html>

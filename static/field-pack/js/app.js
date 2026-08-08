@@ -105,9 +105,179 @@
     return trip.animals[itemId];
   }
 
-  function answeredCount(trip, itemId, missions) {
+  /** Answers namespaced by talk level so switching 5–8 ↔ Bonus does not clash. */
+  function answerSlot(missionId, level) {
+    const lv = level || qaAge || "4-5";
+    return lv + "::" + missionId;
+  }
+
+  function getAnswers(aState, missionId, level) {
+    const slot = answerSlot(missionId, level);
+    if (Array.isArray(aState.answers[slot])) return aState.answers[slot];
+    // legacy un-namespaced
+    if (Array.isArray(aState.answers[missionId])) return aState.answers[missionId];
+    return [];
+  }
+
+  function setAnswers(aState, missionId, level, list) {
+    aState.answers[answerSlot(missionId, level)] = list;
+  }
+
+  function answeredCount(trip, itemId, missions, level) {
     const a = itemState(trip, itemId);
-    return missions.filter((m) => (a.answers[m.id] || []).length > 0).length;
+    const lv = level || qaAge || "4-5";
+    return missions.filter((m) => getAnswers(a, m.id, lv).length > 0).length;
+  }
+
+  function talkLevelLabel(age) {
+    if (age === "2-3") return "Ages 2–4";
+    if (age === "6-8") return "Ages 9–12";
+    if (age === "bonus") return "Bonus";
+    if (age === "alpha") return "Alpha";
+    return "Ages 5–8";
+  }
+
+  function stripPromptPrefix(text) {
+    return String(text || "")
+      .replace(/^ALPHA · /i, "")
+      .replace(/^★\s*/u, "")
+      .trim();
+  }
+
+  /**
+   * One talk pack drives floor prompts + pick-ones + print card.
+   * age: 2-3 | 4-5 | 6-8 | bonus | alpha
+   */
+  function talkPackFor(item, venue, age) {
+    const band = QA_AGE_ORDER.includes(age) ? age : "4-5";
+    const prompts = floorPromptsFor(item, venue, band);
+    const label = talkLevelLabel(band);
+    const kicker = qaKickerFor(band);
+    const base = missionsFor(venue) || [];
+    const byId = Object.fromEntries(base.map((m) => [m.id, m]));
+    const clone = (m, patch) => Object.assign({}, m, patch || {});
+
+    let missions = [];
+    if (band === "bonus" || band === "alpha") {
+      const tag = band === "alpha" ? "Alpha" : "Bonus";
+      const choices =
+        band === "alpha"
+          ? ["I noticed something real", "Still watching", "Told a grown-up", "Want another look"]
+          : ["I spotted it", "Not sure yet", "Told a grown-up", "Want to try later"];
+      missions = prompts.slice(0, 3).map((text, i) => ({
+        id: band + "_q" + (i + 1),
+        num: String(i + 1),
+        title: tag + " " + (i + 1),
+        question: stripPromptPrefix(text),
+        choices,
+        multi: false,
+        checkable: false,
+        openNote: "Your observation counts — not a test!",
+        talkLevel: band,
+      }));
+    } else if (band === "2-3") {
+      // Little kids: open / simple picks aligned to floor prompts
+      missions = [
+        {
+          id: "little_look",
+          num: "1",
+          title: "Look",
+          question: stripPromptPrefix(prompts[0] || "What do you see?"),
+          choices: ["Big", "Small", "Moving", "Still", "A color", "Not sure"],
+          multi: true,
+          checkable: false,
+          openNote: "Pointing counts!",
+          talkLevel: band,
+        },
+        {
+          id: "little_move",
+          num: "2",
+          title: "Move",
+          question: stripPromptPrefix(prompts[1] || "Is it moving or still?"),
+          choices: ["Moving", "Still", "I copied it", "Too far to see"],
+          multi: true,
+          checkable: false,
+          openNote: "Your body can answer!",
+          talkLevel: band,
+        },
+        {
+          id: "little_say",
+          num: "3",
+          title: "Say",
+          question: stripPromptPrefix(prompts[2] || "What color first?"),
+          choices: ["A color", "A sound", "A feeling", "Told a grown-up"],
+          multi: true,
+          checkable: false,
+          openNote: "Any true answer is great.",
+          talkLevel: band,
+        },
+      ];
+    } else if (band === "6-8") {
+      // Bigger kids: fuller pick-ones (keep catalog ids for answer keys)
+      const order = ["food", "home", "superpower", "grow", "try", "body", "senses"];
+      const picked = [];
+      for (const id of order) {
+        if (byId[id]) picked.push(byId[id]);
+        if (picked.length >= 4) break;
+      }
+      if (!picked.length) picked.push(...base.slice(0, 4));
+      missions = picked.map((m, i) =>
+        clone(m, {
+          num: String(i + 1),
+          question:
+            m.id === "food"
+              ? "What clues show what they eat?"
+              : m.id === "home"
+                ? "What habitat clues do you see here?"
+                : m.id === "superpower"
+                  ? "What body tool is working hardest right now?"
+                  : m.id === "grow"
+                    ? "Baby, young, or grown — and how can you tell?"
+                    : m.id === "try"
+                      ? "What did you actually do at this stop?"
+                      : m.id === "body"
+                        ? "How did your body work here?"
+                        : m.question,
+          talkLevel: band,
+        })
+      );
+    } else {
+      // 4-5 default: classic 3 checkable cores, simpler wording
+      const order = venue && venue.packTemplate === "exhibits" ? ["try", "body", "senses"] : ["food", "home", "superpower"];
+      const picked = [];
+      for (const id of order) {
+        if (byId[id]) picked.push(byId[id]);
+      }
+      if (!picked.length) picked.push(...base.slice(0, 3));
+      missions = picked.map((m, i) =>
+        clone(m, {
+          num: String(i + 1),
+          question:
+            m.id === "food"
+              ? "What do they eat?"
+              : m.id === "home"
+                ? "Where is home?"
+                : m.id === "superpower"
+                  ? "What is their superpower?"
+                  : m.id === "try"
+                    ? "What did I do here?"
+                    : m.id === "body"
+                      ? "How did I move?"
+                      : m.id === "senses"
+                        ? "What did I notice?"
+                        : m.question,
+          talkLevel: band,
+        })
+      );
+    }
+
+    return {
+      level: band,
+      label,
+      kicker,
+      prompts,
+      missions,
+    };
   }
 
   /** One active outing per venue — auto featured shortlist */
@@ -384,11 +554,12 @@
     };
   }
 
-  function evaluateItem(trip, item, missions) {
+    function evaluateItem(trip, item, missions, level) {
     const aState = itemState(trip, item.id);
+    const lv = level || qaAge || "4-5";
     return missions.map((mission) => ({
       mission,
-      result: evaluateMission(item, mission, aState.answers[mission.id] || []),
+      result: evaluateMission(item, mission, getAnswers(aState, mission.id, lv)),
     }));
   }
 
@@ -1000,10 +1171,12 @@
   }
 
   function renderDetail(trip, item, venue) {
-    const missions = missionsFor(venue);
+    loadQaAge();
+    const pack = talkPackFor(item, venue, qaAge);
+    const missions = pack.missions;
     const aState = itemState(trip, item.id);
     const showCheck = Boolean(aState.submitted);
-    const evals = showCheck ? evaluateItem(trip, item, missions) : null;
+    const evals = showCheck ? evaluateItem(trip, item, missions, qaAge) : null;
 
     els.detailName.textContent = `${item.emoji || ""} ${item.name}`;
     els.detailBlurb.textContent = item.blurb;
@@ -1030,41 +1203,60 @@
         venue && venue.packTemplate === "exhibits" ? "Museum site" : "Learn more";
     }
 
+    syncQaAgeChips();
     const promptsEl = document.getElementById("floor-prompts");
     if (promptsEl) {
-      loadQaAge();
-      syncQaAgeChips();
-      const prompts = floorPromptsFor(item, venue, qaAge);
-      const special = qaAge === "bonus" || qaAge === "alpha";
+      const prompts = pack.prompts;
       const cardCls =
         qaAge === "alpha" ? " floor-prompt-alpha" : qaAge === "bonus" ? " floor-prompt-bonus" : "";
       const mark = qaAge === "alpha" ? "◆" : qaAge === "bonus" ? "★" : null;
       promptsEl.innerHTML = prompts
         .map(
-          (t, i) =>
+          (text, i) =>
             `<div class="floor-prompt-card${cardCls}"><span class="floor-prompt-n">${
               mark || i + 1
-            }</span><p>${escapeHtml(t)}</p></div>`
+            }</span><p>${escapeHtml(text)}</p></div>`
         )
         .join("");
     }
-    // Pick-one is optional extra — quieter for little kids; Bonus/Alpha focus the cards
-    if (els.btnMoreQuestions) {
-      els.btnMoreQuestions.hidden = qaAge === "2-3" || qaAge === "alpha";
+    // Guide copy under level chips
+    const levelHint = document.getElementById("talk-level-hint");
+    if (levelHint) {
+      levelHint.textContent =
+        "Same level for talk prompts, pick-ones below, and the print card.";
     }
-    if (els.advancedQa && qaAge === "2-3" && els.advancedQa.open) {
-      els.advancedQa.open = false;
+    if (els.btnPrint) {
+      els.btnPrint.textContent = "Print this card · " + pack.label;
+      els.btnPrint.setAttribute("aria-label", "Print Q&A card for " + pack.label);
+    }
+    // Advanced pick-ones always available (same pack as prompts/print)
+    if (els.btnMoreQuestions) {
+      els.btnMoreQuestions.hidden = false;
+    }
+    const guide = document.querySelector("#advanced-qa .mission-guide");
+    if (guide) {
+      guide.innerHTML =
+        qaAge === "bonus" || qaAge === "alpha"
+          ? `Same <strong>${escapeHtml(pack.label)}</strong> questions as above — tap what fits. <strong>Not a test</strong>.`
+          : `Same talk level (<strong>${escapeHtml(pack.label)}</strong>). Tap what you noticed. <strong>Not a test</strong> — skip anytime.`;
+    }
+    const advSum = document.querySelector("#advanced-qa > summary");
+    if (advSum) {
+      advSum.textContent =
+        qaAge === "bonus" || qaAge === "alpha"
+          ? pack.label + " on-screen picks"
+          : "Pick-one questions · " + pack.label;
     }
 
-    const done = answeredCount(trip, item.id, missions);
+    const done = answeredCount(trip, item.id, missions, qaAge);
     if (els.btnMoreQuestions) {
       const n = missions.length;
       if (showCheck) {
-        els.btnMoreQuestions.textContent = "See pick-one questions ↑";
+        els.btnMoreQuestions.textContent = "See " + pack.label + " picks ↑";
       } else if (done) {
-        els.btnMoreQuestions.textContent = `Continue pick-one (${done}/${n}) ↓`;
+        els.btnMoreQuestions.textContent = `Continue ${pack.label} picks (${done}/${n}) ↓`;
       } else {
-        els.btnMoreQuestions.textContent = "Try pick-one questions ↓";
+        els.btnMoreQuestions.textContent = pack.label + " pick-ones ↓";
       }
     }
     if (els.progressPill) {
@@ -1085,7 +1277,7 @@
 
     els.missionGrid.innerHTML = "";
     missions.forEach((mission, index) => {
-      const selected = new Set(aState.answers[mission.id] || []);
+      const selected = new Set(getAnswers(aState, mission.id, qaAge));
       const ev = evals ? evals.find((e) => e.mission.id === mission.id).result : null;
       let missionClass = "mission" + (selected.size ? " done" : "");
       if (ev) {
@@ -1177,13 +1369,15 @@
 
   function toggleChoice(trip, item, mission, choice, venue) {
     const aState = itemState(trip, item.id);
-    let list = Array.isArray(aState.answers[mission.id]) ? [...aState.answers[mission.id]] : [];
+    let list = [...getAnswers(aState, mission.id, qaAge)];
     if (mission.multi) {
       list = list.includes(choice) ? list.filter((c) => c !== choice) : [...list, choice];
     } else {
       list = list.includes(choice) ? [] : [choice];
     }
-    aState.answers[mission.id] = list;
+    setAnswers(aState, mission.id, qaAge, list);
+    // clear submitted when changing answers at this level
+    if (aState.submitted) aState.submitted = false;
     trip.updatedAt = Date.now();
     saveStore();
     renderDetail(trip, item, venue);
@@ -1194,8 +1388,9 @@
     const item = getItem(currentItemId);
     const venue = trip ? getVenue(trip.venueId) : null;
     if (!trip || !item || !venue) return;
-    const missions = missionsFor(venue);
-    if (answeredCount(trip, item.id, missions) === 0) {
+    const pack = talkPackFor(item, venue, qaAge);
+    const missions = pack.missions;
+    if (answeredCount(trip, item.id, missions, qaAge) === 0) {
       alert("Circle at least one answer first!");
       return;
     }
@@ -1207,14 +1402,24 @@
   }
 
   function buildPrintSheet(item, trip, venue) {
+    loadQaAge();
+    const pack = talkPackFor(item, venue, qaAge);
     const aState = itemState(trip, item.id);
-    const answers = (aState && aState.answers) || {};
-    // Shared layout: big bottom photo + curated wow fact (print-kit.js)
+    // Flatten namespaced answers for this talk level into missionId → picks
+    const answers = {};
+    for (const m of pack.missions) {
+      answers[m.id] = getAnswers(aState, m.id, qaAge);
+    }
+    // Shared layout: talk prompts + level-matched pick-ones + photo
     if (window.FPPrint && typeof window.FPPrint.fillQaPrintSheet === "function") {
       window.FPPrint.fillQaPrintSheet(item, venue, {
         answers,
-        bannerNote: `${venue.name} · Mission card · Circle answers · No scores`,
-        footer: "Q&amp;A card · check on screen with Submit",
+        missions: pack.missions,
+        prompts: pack.prompts,
+        talkLabel: pack.label,
+        talkLevel: pack.level,
+        bannerNote: `${venue.name} · ${pack.label} · Circle or write · No scores`,
+        footer: "Same talk level as on screen · Field Trip Kit",
       });
       return;
     }

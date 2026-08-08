@@ -1404,6 +1404,38 @@ a {
     font-size: 9pt;
   }
 
+  .ps-talk {
+    flex: 0 0 auto;
+    margin: 0 0 5px;
+    padding: 5px 8px 6px;
+    border: 1.5px solid #1f6b4a;
+    border-radius: 7px;
+    background: #f3faf7;
+  }
+  .ps-talk-label {
+    margin: 0 0 3px;
+    font-size: 8pt;
+    font-weight: 850;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #0a4545;
+  }
+  .ps-talk-list {
+    margin: 0;
+    padding-left: 1.1em;
+    font-size: 9.5pt;
+    font-weight: 650;
+    color: #1a2b3c;
+    line-height: 1.28;
+  }
+  .ps-talk-list li {
+    margin: 0 0 2px;
+  }
+  .ps-write {
+    margin: 4px 0 0;
+    border-bottom: 1px solid #9aa8b8;
+    min-height: 14px;
+  }
   .ps-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;

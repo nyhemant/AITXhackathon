@@ -388,23 +388,43 @@
   function buildQaCardHtml(item, venue, opts) {
     const o = opts || {};
     const answerMap = o.answers || {};
-    const missions = missionsFor(venue);
+    // Prefer caller-supplied missions (talk-level pack); else venue defaults
+    const missions = Array.isArray(o.missions) && o.missions.length ? o.missions : missionsFor(venue);
+    const prompts = Array.isArray(o.prompts) ? o.prompts : [];
+    const talkLabel = o.talkLabel || o.talkLevel || "";
     const cards = missions
+      .slice(0, 6)
       .map((mission, index) => {
-        const selected = new Set(answerMap[mission.id] || []);
+        const mid = mission.id || String(index);
+        const selected = new Set(answerMap[mid] || answerMap[mission.id] || []);
         const choices = (mission.choices || [])
           .map((label) => {
             const on = selected.has(label) ? " on" : "";
             return `<div class="ps-choice${on}"><span class="ps-dot"></span><span>${escapeHtml(label)}</span></div>`;
           })
           .join("");
+        const writeIn =
+          !mission.choices || !mission.choices.length
+            ? `<p class="ps-write">________________________________</p><p class="ps-write">________________________________</p>`
+            : "";
         return `<section class="ps-card c${index}">
-          <div class="ps-card-head"><span class="ps-num">${escapeHtml(mission.num)}</span>
-          <p class="ps-title">${escapeHtml(mission.title)}</p></div>
-          <h3 class="ps-q">${escapeHtml(mission.question)}</h3>
-          <div class="ps-choices">${choices}</div></section>`;
+          <div class="ps-card-head"><span class="ps-num">${escapeHtml(mission.num || String(index + 1))}</span>
+          <p class="ps-title">${escapeHtml(mission.title || "Question")}</p></div>
+          <h3 class="ps-q">${escapeHtml(mission.question || "")}</h3>
+          <div class="ps-choices">${choices}</div>
+          ${writeIn}</section>`;
       })
       .join("");
+    const promptBlock =
+      prompts.length > 0
+        ? `<div class="ps-talk">
+            <p class="ps-talk-label">${escapeHtml(talkLabel ? talkLabel + " · talk prompts" : "Talk prompts")}</p>
+            <ol class="ps-talk-list">${prompts
+              .slice(0, 4)
+              .map((t) => `<li>${escapeHtml(String(t).replace(/^ALPHA · /, "").replace(/^★ /, ""))}</li>`)
+              .join("")}</ol>
+          </div>`
+        : "";
     const photo = itemPhotoSrc(item);
     const wow = wowFactFromItem(item);
     const wowHtml = wow
@@ -427,11 +447,12 @@
           </div>`
         : "";
 
+    const levelBit = talkLabel ? ` · ${talkLabel}` : "";
     const bannerNote =
       o.bannerNote ||
-      `${venue.name || ""} · Mission card · Circle answers · No scores`;
+      `${venue.name || ""} · Q&A card${levelBit} · Circle or write · No scores`;
     const footer =
-      o.footer || "Q&amp;A card · open the outing for more animals &amp; tips";
+      o.footer || "Q&amp;A card · same talk level as on screen";
 
     return `
       <div class="ps-page${photo ? " ps-page-with-photo" : ""}">
@@ -442,6 +463,7 @@
           <p class="ps-line"><strong>Explorer:</strong> <span class="write-in-line">________________</span>
           &nbsp;&nbsp; <strong>Place:</strong> ${escapeHtml(venue.name)}</p>
         </header>
+        ${promptBlock}
         <div class="ps-grid">${cards}</div>
         ${photoBlock}
         <p class="ps-footer">${footer}</p>
