@@ -2021,16 +2021,69 @@ body.app-body {
   line-height: 1.15;
 }
 .detail-copy .lead {
-  margin: 0 0 14px;
+  margin: 0 0 12px;
   font-size: 1.02rem;
   font-weight: 600;
   color: var(--muted);
   line-height: 1.45;
 }
+/* Print is the hero action — high, big, before wiki-style extras */
+.detail-tools-primary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 10px;
+  margin: 0 0 8px;
+}
+.detail-tools-primary .btn-print {
+  flex: 1 1 12rem;
+  min-height: 52px;
+  font-size: 1.08rem;
+  font-weight: 850;
+  box-shadow: 0 5px 16px rgba(44, 110, 73, 0.22);
+}
+.detail-tools-primary .btn-secondary {
+  flex: 0 1 auto;
+  min-height: 52px;
+  font-size: 0.95rem;
+}
+.detail-print-hint {
+  margin: 0 0 14px;
+  font-size: 0.85rem;
+  font-weight: 650;
+  color: var(--muted-soft, #5a6b82);
+  line-height: 1.35;
+}
 .detail-links .btn,
 .detail-tools .btn {
   min-height: 44px;
   font-size: 0.95rem;
+}
+.detail-links-quiet {
+  margin-top: 4px;
+  opacity: 0.92;
+}
+.detail-links-quiet .btn {
+  min-height: 40px;
+  font-size: 0.88rem;
+  font-weight: 650;
+}
+.detail-qa-launch {
+  margin-top: 6px;
+}
+.detail-qa-launch .btn-more-questions {
+  font-size: 0.88rem;
+  font-weight: 650;
+  min-height: 40px;
+}
+@media (max-width: 520px) {
+  .detail-tools-primary {
+    flex-direction: column;
+  }
+  .detail-tools-primary .btn-print,
+  .detail-tools-primary .btn-secondary {
+    width: 100%;
+  }
 }
 .progress-pill {
   border-width: 1.5px;
