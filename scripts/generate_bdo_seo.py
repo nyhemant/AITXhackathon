@@ -611,7 +611,7 @@ def wonder_grid_html(mission: dict) -> str:
 
 
 def page_mission_chrome_html() -> str:
-    """One primary Print CTA + labeled age/time chips (synced by mission-ui.js)."""
+    """One primary Print CTA + matching who/time chip rows (synced by mission-ui.js)."""
     return """
         <div class="seo-mission-bar no-print" aria-label="Print your mission">
           <button type="button" class="btn btn-primary btn-big seo-print-btn" id="mission-open-btn" aria-haspopup="dialog" aria-controls="mission-drawer" aria-label="Print your mission">
@@ -620,16 +620,22 @@ def page_mission_chrome_html() -> str:
           </button>
           <div class="seo-mission-chrome" id="seo-mission-chrome">
             <p class="seo-chrome-label">Customize</p>
-            <div class="seo-chip-row" role="group" aria-label="Time available">
-              <button type="button" class="seo-time-chip" data-time="90m">90 min</button>
-              <button type="button" class="seo-time-chip is-active" data-time="half" aria-pressed="true">Half day</button>
-              <button type="button" class="seo-time-chip" data-time="full">Full day</button>
+            <div class="seo-chrome-field">
+              <span class="seo-chrome-field-label" id="seo-who-label">Who’s going?</span>
+              <div class="seo-chip-row" role="group" aria-labelledby="seo-who-label">
+                <button type="button" class="seo-age-chip" data-age="2-3">2–4</button>
+                <button type="button" class="seo-age-chip is-active" data-age="4-5" aria-pressed="true">5–8</button>
+                <button type="button" class="seo-age-chip" data-age="6-8">9–12</button>
+                <button type="button" class="seo-age-chip" data-age="adult">Adults</button>
+              </div>
             </div>
-            <div class="seo-chip-row" role="group" aria-label="Kid age">
-              <button type="button" class="seo-age-chip" data-age-idx="0">2–4</button>
-              <button type="button" class="seo-age-chip is-active" data-age-idx="1" aria-pressed="true">5–8</button>
-              <button type="button" class="seo-age-chip" data-age-idx="2">9–12</button>
-              <button type="button" class="seo-age-chip" data-age-idx="3">Adults</button>
+            <div class="seo-chrome-field">
+              <span class="seo-chrome-field-label" id="seo-time-label">How long?</span>
+              <div class="seo-chip-row" role="group" aria-labelledby="seo-time-label">
+                <button type="button" class="seo-time-chip" data-time="90m">90 min</button>
+                <button type="button" class="seo-time-chip is-active" data-time="half" aria-pressed="true">Half day</button>
+                <button type="button" class="seo-time-chip" data-time="full">Full day</button>
+              </div>
             </div>
           </div>
         </div>
@@ -790,17 +796,21 @@ def mission_drawer_html(mission_venue: dict, mission: dict) -> str:
             <input type="text" id="mission-name" maxlength="24" placeholder="e.g. Arya" autocomplete="off" />
             <p class="mission-privacy">Stays on this page — never sent anywhere.</p>
           </div>
-          <div class="mission-field">
-            <label for="mission-age">Who’s going? <span class="mission-age-label" id="mission-age-label">Kids · 5–8</span></label>
-            <input type="range" id="mission-age" min="0" max="3" step="1" value="1" />
+          <div class="mission-field mission-field-who">
+            <span class="mission-field-label" id="mission-who-label">Who’s going?</span>
+            <div class="mission-seg" id="mission-who-seg" role="group" aria-labelledby="mission-who-label">
+              <button type="button" class="mission-seg-btn" data-age="2-3">2–4</button>
+              <button type="button" class="mission-seg-btn is-active" data-age="4-5" aria-pressed="true">5–8</button>
+              <button type="button" class="mission-seg-btn" data-age="6-8">9–12</button>
+              <button type="button" class="mission-seg-btn" data-age="adult">Adults</button>
+            </div>
           </div>
           <div class="mission-field mission-field-time">
-            <label>How long will you be there?</label>
-            <div class="mission-time-seg" role="group" aria-label="Time available">
-              <label><input type="radio" name="mission-time" value="1hr" /><span>~1 hr</span></label>
-              <label><input type="radio" name="mission-time" value="90m" /><span>90 min</span></label>
-              <label><input type="radio" name="mission-time" value="half" checked /><span>Half day</span></label>
-              <label><input type="radio" name="mission-time" value="full" /><span>Full day</span></label>
+            <span class="mission-field-label" id="mission-time-label">How long?</span>
+            <div class="mission-seg" id="mission-time-seg" role="group" aria-labelledby="mission-time-label">
+              <button type="button" class="mission-seg-btn" data-time="90m">90 min</button>
+              <button type="button" class="mission-seg-btn is-active" data-time="half" aria-pressed="true">Half day</button>
+              <button type="button" class="mission-seg-btn" data-time="full">Full day</button>
             </div>
           </div>
           <div class="mission-field">
@@ -954,8 +964,8 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <link rel="stylesheet" href="/shell/shell.css?v=5" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=64" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=25" />
-  <link rel="stylesheet" href="/field-pack/css/mission.css?v=12" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=26" />
+  <link rel="stylesheet" href="/field-pack/css/mission.css?v=13" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
   </script>
@@ -1041,7 +1051,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <script src="/field-pack/js/print-maps.js?v=2"></script>
   <script src="/field-pack/js/print-kit.js?v=9"></script>
   <script src="/field-pack/js/mission/mission-engine.js?v=10"></script>
-  <script src="/field-pack/js/mission/mission-ui.js?v=15"></script>
+  <script src="/field-pack/js/mission/mission-ui.js?v=16"></script>
 </body>
 </html>
 """

@@ -408,40 +408,67 @@
 }
 .seo-secondary-links a:hover { text-decoration: underline; }
 .seo-crumb-extra a { font-weight: 700; color: #0f5c5c; text-decoration: none; }
+.seo-chrome-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+.seo-chrome-field-label {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #5a6b82;
+}
 .seo-chip-row {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 6px;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  width: 100%;
+  max-width: 22rem;
+  border-radius: 999px;
+  border: 1.5px solid rgba(15, 92, 92, 0.18);
+  overflow: hidden;
+  background: #fff;
+  gap: 0;
 }
 .seo-time-chip,
 .seo-age-chip {
   appearance: none;
-  border: 1.5px solid rgba(15, 92, 92, 0.18);
-  background: #fff;
-  color: #0a4545;
+  flex: 1 1 0;
+  border: none;
+  border-right: 1px solid rgba(15, 92, 92, 0.12);
+  border-radius: 0;
+  background: transparent;
+  color: #3d4f6f;
   font: inherit;
   font-weight: 750;
-  font-size: 0.82rem;
-  padding: 7px 11px;
-  min-height: 36px;
-  border-radius: 999px;
+  font-size: 0.8rem;
+  padding: 8px 6px;
+  min-height: 38px;
   cursor: pointer;
-  transition:
-    background 0.12s ease,
-    border-color 0.12s ease,
-    color 0.12s ease;
+  transition: background 0.12s ease, color 0.12s ease;
+}
+.seo-time-chip:last-child,
+.seo-age-chip:last-child {
+  border-right: none;
 }
 .seo-time-chip:hover,
 .seo-age-chip:hover {
-  border-color: #0f5c5c;
   background: #f0faf6;
+  color: #0a4545;
 }
 .seo-time-chip.is-active,
 .seo-age-chip.is-active {
   background: #0f5c5c;
   color: #fff;
-  border-color: #0a4545;
+  border-color: transparent;
+}
+.seo-time-chip.is-active:hover,
+.seo-age-chip.is-active:hover {
+  background: #0a4545;
+  color: #fff;
 }
 
 @media (max-width: 520px) {

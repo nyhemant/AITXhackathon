@@ -114,11 +114,30 @@
   let lastFocus = null;
   let drawerReady = false;
 
-  function AGE_FROM_SLIDER(v) {
-    const order = (window.FPMission && window.FPMission.AGE_ORDER) || ["2-3", "4-5", "6-8", "adult"];
-    const n = parseInt(v, 10);
-    const idx = Number.isFinite(n) ? n : 1;
-    return order[Math.max(0, Math.min(order.length - 1, idx))] || "4-5";
+  function normalizeAgeKey(raw) {
+    if (window.FPMission && typeof window.FPMission.normalizeAge === "function") {
+      return window.FPMission.normalizeAge(raw);
+    }
+    const a = String(raw || "4-5");
+    if (a === "9+" || a === "adults" || a === "solo") return "adult";
+    if (a === "1hr") return "4-5";
+    return a || "4-5";
+  }
+
+  function normalizeTimeKey(raw) {
+    const t = String(raw || "half");
+    // Collapse legacy ~1 hr into 90 min (same find count)
+    if (t === "1hr") return "90m";
+    if (t === "90m" || t === "half" || t === "full") return t;
+    return "half";
+  }
+
+  function setSegActive(rootSel, attr, value) {
+    document.querySelectorAll(rootSel).forEach((btn) => {
+      const on = btn.getAttribute(attr) === value;
+      btn.classList.toggle("is-active", on);
+      btn.setAttribute("aria-pressed", on ? "true" : "false");
+    });
   }
 
   function setSectionHeadings(mission) {
@@ -311,38 +330,36 @@
 
   function readControls() {
     const nameEl = $("#mission-name");
-    const ageEl = $("#mission-age");
-    const timeEl = document.querySelector('input[name="mission-time"]:checked');
     const interestEl = $("#mission-interest");
     state.name = nameEl ? nameEl.value : "";
-    state.age = ageEl ? AGE_FROM_SLIDER(ageEl.value) : "4-5";
-    state.time = timeEl ? timeEl.value : "half";
-    state.interest = interestEl ? interestEl.value : "";
-    const ageLabel = $("#mission-age-label");
-    if (ageLabel && window.FPMission) {
-      ageLabel.textContent = window.FPMission.AGE_LABELS[state.age] || state.age;
+    // Prefer active drawer segments; fall back to page chips / existing state
+    const whoBtn =
+      document.querySelector("#mission-who-seg .mission-seg-btn.is-active") ||
+      document.querySelector(".seo-age-chip.is-active");
+    const timeBtn =
+      document.querySelector("#mission-time-seg .mission-seg-btn.is-active") ||
+      document.querySelector(".seo-time-chip.is-active");
+    if (whoBtn) {
+      state.age = normalizeAgeKey(whoBtn.getAttribute("data-age") || state.age);
+    } else {
+      state.age = normalizeAgeKey(state.age);
     }
+    if (timeBtn) {
+      state.time = normalizeTimeKey(timeBtn.getAttribute("data-time") || state.time);
+    } else {
+      state.time = normalizeTimeKey(state.time);
+    }
+    state.interest = interestEl ? interestEl.value : "";
   }
 
   function syncPageChrome() {
-    document.querySelectorAll(".seo-time-chip").forEach((btn) => {
-      const on = btn.getAttribute("data-time") === state.time;
-      btn.classList.toggle("is-active", on);
-      btn.setAttribute("aria-pressed", on ? "true" : "false");
-    });
-    const ageIdx = (window.FPMission.AGE_ORDER || []).indexOf(state.age);
-    document.querySelectorAll(".seo-age-chip").forEach((btn) => {
-      const idx = parseInt(btn.getAttribute("data-age-idx") || "1", 10);
-      const on = idx === ageIdx;
-      btn.classList.toggle("is-active", on);
-      btn.setAttribute("aria-pressed", on ? "true" : "false");
-    });
-    // Keep drawer controls in sync
-    const ageEl = $("#mission-age");
-    if (ageEl && ageIdx >= 0) ageEl.value = String(ageIdx);
-    document.querySelectorAll('input[name="mission-time"]').forEach((el) => {
-      el.checked = el.value === state.time || (state.time === "1hr" && el.value === "90m");
-    });
+    state.age = normalizeAgeKey(state.age);
+    state.time = normalizeTimeKey(state.time);
+    // Page bar + drawer use the same active pattern
+    setSegActive(".seo-age-chip", "data-age", state.age);
+    setSegActive(".seo-time-chip", "data-time", state.time);
+    setSegActive("#mission-who-seg .mission-seg-btn", "data-age", state.age);
+    setSegActive("#mission-time-seg .mission-seg-btn", "data-time", state.time);
   }
 
   function recompute(fromShuffle) {
@@ -401,29 +418,22 @@
   function wireControls() {
     if (drawerReady) return;
     drawerReady = true;
-    ["mission-name", "mission-age", "mission-interest"].forEach((id) => {
+    ["mission-name", "mission-interest"].forEach((id) => {
       const el = document.getElementById(id);
       if (!el) return;
       el.addEventListener("input", () => recompute(false));
       el.addEventListener("change", () => recompute(false));
     });
-    document.querySelectorAll('input[name="mission-time"]').forEach((el) => {
-      el.addEventListener("change", () => recompute(false));
-    });
-    document.querySelectorAll(".seo-time-chip").forEach((btn) => {
+    // Shared chip pattern: page bar + drawer segments
+    document.querySelectorAll(".seo-time-chip, #mission-time-seg .mission-seg-btn").forEach((btn) => {
       btn.addEventListener("click", () => {
-        state.time = btn.getAttribute("data-time") || "half";
-        const radio = document.querySelector(`input[name="mission-time"][value="${state.time}"]`);
-        if (radio) radio.checked = true;
+        state.time = normalizeTimeKey(btn.getAttribute("data-time") || "half");
         recompute(false);
       });
     });
-    document.querySelectorAll(".seo-age-chip").forEach((btn) => {
+    document.querySelectorAll(".seo-age-chip, #mission-who-seg .mission-seg-btn").forEach((btn) => {
       btn.addEventListener("click", () => {
-        const idx = parseInt(btn.getAttribute("data-age-idx") || "1", 10);
-        state.age = AGE_FROM_SLIDER(idx);
-        const ageEl = $("#mission-age");
-        if (ageEl) ageEl.value = String(idx);
+        state.age = normalizeAgeKey(btn.getAttribute("data-age") || "4-5");
         recompute(false);
       });
     });
@@ -477,8 +487,8 @@
       return;
     }
     populateInterest();
-    const age = $("#mission-age");
-    if (age) age.value = "1";
+    state.age = "4-5";
+    state.time = "half";
     wireControls();
     // Precompute default sheet (in drawer DOM) for print/SEO consistency
     recompute(false);

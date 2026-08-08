@@ -113,10 +113,12 @@
 .mission-field-name {
   grid-column: 1 / -1;
 }
+.mission-field-who,
 .mission-field-time {
   grid-column: 1 / -1;
 }
-.mission-field label {
+.mission-field label,
+.mission-field-label {
   font-size: 0.72rem;
   font-weight: 800;
   color: #0a4545;
@@ -130,13 +132,6 @@
   letter-spacing: 0;
   font-size: 0.72rem;
 }
-.mission-age-label {
-  text-transform: none;
-  font-weight: 750;
-  color: #0f5c5c;
-  letter-spacing: 0;
-  font-size: 0.78rem;
-}
 .mission-field input[type="text"],
 .mission-field select {
   font: inherit;
@@ -149,12 +144,8 @@
   width: 100%;
   box-sizing: border-box;
 }
-.mission-field input[type="range"] {
-  width: 100%;
-  accent-color: #0f5c5c;
-  min-height: 36px;
-}
-.mission-time-seg {
+/* Same control pattern for Who’s going? + How long? */
+.mission-seg {
   display: flex;
   width: 100%;
   border-radius: 999px;
@@ -162,28 +153,40 @@
   overflow: hidden;
   background: #fff;
 }
-.mission-time-seg label {
+.mission-seg-btn {
+  appearance: none;
   margin: 0;
   flex: 1 1 0;
-  text-transform: none;
+  border: none;
+  border-right: 1px solid rgba(15, 92, 92, 0.12);
+  background: transparent;
+  color: #3d4f6f;
+  font: inherit;
   font-size: 0.82rem;
   font-weight: 750;
-  cursor: pointer;
-  color: #3d4f6f;
   letter-spacing: 0;
   text-align: center;
+  padding: 10px 6px;
+  min-height: 42px;
+  cursor: pointer;
+  transition: background 0.12s ease, color 0.12s ease;
 }
-.mission-time-seg label span {
-  display: block;
-  padding: 9px 8px;
+.mission-seg-btn:last-child {
+  border-right: none;
 }
-.mission-time-seg input {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
+.mission-seg-btn:hover,
+.mission-seg-btn:focus-visible {
+  background: #f0faf6;
+  color: #0a4545;
+  outline: none;
 }
-.mission-time-seg label:has(input:checked) span {
+.mission-seg-btn.is-active {
   background: #0f5c5c;
+  color: #fff;
+}
+.mission-seg-btn.is-active:hover,
+.mission-seg-btn.is-active:focus-visible {
+  background: #0a4545;
   color: #fff;
 }
 .mission-filters-hint {
