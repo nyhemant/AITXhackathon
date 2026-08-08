@@ -289,53 +289,51 @@
 .seo-official a { color: #0f5c5c; font-weight: 800; }
 .seo-cta { flex-wrap: wrap; gap: 10px; }
 
-/* Print button (tall) | time row + age row stacked to the right */
+/*
+ * Mission bar
+ * Desktop: [ Print mission ]  Who [chips] / Time [chips]  (side by side)
+ * Phone:   Print full-width; then Who + Time rows with short labels
+ */
 .seo-mission-bar {
   display: flex;
-  flex-wrap: wrap;
-  align-items: stretch;
+  flex-wrap: nowrap;
+  align-items: center;
   gap: 12px 14px;
-  margin: 4px 0 6px;
-  max-width: 40rem;
+  margin: 6px 0 8px;
+  max-width: 44rem;
+  padding: 10px 12px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1.5px solid rgba(15, 92, 92, 0.12);
+  box-shadow: 0 4px 14px rgba(21, 34, 56, 0.05);
 }
 .seo-print-btn {
   flex: 0 0 auto;
-  align-self: stretch;
   display: inline-flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2px;
-  min-width: 7.25rem;
-  min-height: 5.5rem;
-  padding: 12px 18px;
-  font-size: 1.12rem;
+  white-space: nowrap;
+  min-height: 44px;
+  min-width: 0;
+  padding: 0 18px;
+  font-size: 1rem;
   font-weight: 850;
-  line-height: 1.15;
-  border-radius: 16px;
-  box-shadow: 0 6px 18px rgba(15, 92, 92, 0.16);
+  line-height: 1.2;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(15, 92, 92, 0.14);
   text-align: center;
 }
-.seo-print-btn-line {
-  display: block;
-}
+.seo-print-btn-line,
 .seo-print-btn-sub {
-  font-size: 0.92em;
-  font-weight: 800;
-  letter-spacing: 0.01em;
-  opacity: 0.95;
-}
-.seo-chrome-label {
-  margin: 0 0 2px;
-  font-size: 0.68rem;
-  font-weight: 850;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: #5a6b82;
+  display: inline;
+  font-size: inherit;
+  font-weight: inherit;
+  opacity: 1;
+  letter-spacing: inherit;
 }
 .seo-print-fallback {
-  margin: 8px 0 0;
-  font-size: 0.82rem;
+  margin: 6px 0 0;
+  font-size: 0.8rem;
   font-weight: 650;
   color: #5a6b82;
   line-height: 1.35;
@@ -351,13 +349,28 @@
   margin: 0 0.15em;
 }
 .seo-mission-chrome {
-  flex: 1 1 12rem;
+  flex: 1 1 auto;
   min-width: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 6px;
+}
+.seo-chrome-row {
+  display: flex;
+  align-items: center;
   gap: 8px;
+  min-width: 0;
+}
+.seo-chrome-k {
+  flex: 0 0 2.4rem;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #5a6b82;
+  line-height: 1.1;
 }
 .seo-hero-top {
   display: flex;
@@ -408,25 +421,13 @@
 }
 .seo-secondary-links a:hover { text-decoration: underline; }
 .seo-crumb-extra a { font-weight: 700; color: #0f5c5c; text-decoration: none; }
-.seo-chrome-field {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  min-width: 0;
-}
-.seo-chrome-field-label {
-  font-size: 0.68rem;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: #5a6b82;
-}
 .seo-chip-row {
   display: flex;
   flex-wrap: nowrap;
   align-items: stretch;
-  width: 100%;
-  max-width: 22rem;
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: none;
   border-radius: 999px;
   border: 1.5px solid rgba(15, 92, 92, 0.18);
   overflow: hidden;
@@ -444,9 +445,9 @@
   color: #3d4f6f;
   font: inherit;
   font-weight: 750;
-  font-size: 0.8rem;
-  padding: 8px 6px;
-  min-height: 38px;
+  font-size: 0.78rem;
+  padding: 7px 4px;
+  min-height: 36px;
   cursor: pointer;
   transition: background 0.12s ease, color 0.12s ease;
 }
@@ -471,18 +472,44 @@
   color: #fff;
 }
 
-@media (max-width: 520px) {
+/* Phone: stack print on top; keep who/time as two tight rows */
+@media (max-width: 640px) {
   .seo-mission-bar {
     flex-direction: column;
     align-items: stretch;
     max-width: none;
+    gap: 10px;
+    padding: 10px;
   }
   .seo-print-btn {
-    min-height: 52px;
     width: 100%;
+    min-height: 48px;
+    font-size: 1.05rem;
+    border-radius: 12px;
   }
   .seo-mission-chrome {
-    flex: 1 1 auto;
+    gap: 8px;
+  }
+  .seo-chrome-k {
+    flex-basis: 2.6rem;
+  }
+  .seo-time-chip,
+  .seo-age-chip {
+    min-height: 40px; /* finger-friendly */
+    font-size: 0.8rem;
+    padding: 8px 2px;
+  }
+}
+
+/* Very narrow: slightly shorter labels still readable */
+@media (max-width: 360px) {
+  .seo-chrome-k {
+    flex-basis: 2.2rem;
+    font-size: 0.62rem;
+  }
+  .seo-time-chip,
+  .seo-age-chip {
+    font-size: 0.72rem;
   }
 }
 

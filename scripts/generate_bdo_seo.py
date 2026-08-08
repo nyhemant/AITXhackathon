@@ -611,17 +611,15 @@ def wonder_grid_html(mission: dict) -> str:
 
 
 def page_mission_chrome_html() -> str:
-    """One primary Print CTA + matching who/time chip rows (synced by mission-ui.js)."""
+    """Primary print CTA + compact who/time chips (desktop row / phone stack)."""
     return """
         <div class="seo-mission-bar no-print" aria-label="Print your mission">
-          <button type="button" class="btn btn-primary btn-big seo-print-btn" id="mission-open-btn" aria-haspopup="dialog" aria-controls="mission-drawer" aria-label="Print your mission">
-            <span class="seo-print-btn-line">Print your</span>
-            <span class="seo-print-btn-line seo-print-btn-sub">mission</span>
+          <button type="button" class="btn btn-primary seo-print-btn" id="mission-open-btn" aria-haspopup="dialog" aria-controls="mission-drawer">
+            Print mission
           </button>
           <div class="seo-mission-chrome" id="seo-mission-chrome">
-            <p class="seo-chrome-label">Customize</p>
-            <div class="seo-chrome-field">
-              <span class="seo-chrome-field-label" id="seo-who-label">Who’s going?</span>
+            <div class="seo-chrome-row">
+              <span class="seo-chrome-k" id="seo-who-label">Who</span>
               <div class="seo-chip-row" role="group" aria-labelledby="seo-who-label">
                 <button type="button" class="seo-age-chip" data-age="2-3">2–4</button>
                 <button type="button" class="seo-age-chip is-active" data-age="4-5" aria-pressed="true">5–8</button>
@@ -629,8 +627,8 @@ def page_mission_chrome_html() -> str:
                 <button type="button" class="seo-age-chip" data-age="adult">Adults</button>
               </div>
             </div>
-            <div class="seo-chrome-field">
-              <span class="seo-chrome-field-label" id="seo-time-label">How long?</span>
+            <div class="seo-chrome-row">
+              <span class="seo-chrome-k" id="seo-time-label">Time</span>
               <div class="seo-chip-row" role="group" aria-labelledby="seo-time-label">
                 <button type="button" class="seo-time-chip" data-time="90m">90 min</button>
                 <button type="button" class="seo-time-chip is-active" data-time="half" aria-pressed="true">Half day</button>
@@ -639,7 +637,7 @@ def page_mission_chrome_html() -> str:
             </div>
           </div>
         </div>
-        <p class="seo-print-fallback no-print">No printer? Open the mission on your phone and keep the screen with you.</p>"""
+        <p class="seo-print-fallback no-print">No printer? Open the sheet on your phone, or print later.</p>"""
 
 
 def _photo_src(photo: str) -> str:
@@ -964,7 +962,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <link rel="stylesheet" href="/shell/shell.css?v=5" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=64" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=26" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=27" />
   <link rel="stylesheet" href="/field-pack/css/mission.css?v=13" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
