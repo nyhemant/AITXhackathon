@@ -1720,18 +1720,18 @@ a.pitch-sample-link:focus-visible .artifact-cap {
   }
 }
 
-/* Map → Print → Play storyboard — capped width, not a full-bleed bar */
+/* Map → Print → Play — full landing width on desktop */
 .story-flow {
   list-style: none;
-  margin: 0 auto 4px;
-  padding: 14px 16px;
+  margin: 0 0 10px;
+  padding: 18px 20px;
   display: flex;
   flex-wrap: nowrap;
-  align-items: center;
-  justify-content: center;
-  gap: 6px 10px;
+  align-items: stretch;
+  justify-content: stretch;
+  gap: 10px 14px;
   width: 100%;
-  max-width: 34rem;
+  max-width: none;
   box-sizing: border-box;
   border-radius: var(--radius-lg, 24px);
   background:
@@ -1742,13 +1742,14 @@ a.pitch-sample-link:focus-visible .artifact-cap {
 .story-step {
   flex: 1 1 0;
   min-width: 0;
-  max-width: 9.5rem;
+  max-width: none;
   display: grid;
   justify-items: center;
+  align-content: start;
   text-align: center;
-  gap: 5px;
-  padding: 8px 6px 10px;
-  border-radius: var(--radius, 16px);
+  gap: 8px;
+  padding: 14px 12px 16px;
+  border-radius: 18px;
   transition: background var(--dur-fast, 120ms) ease;
 }
 .story-step:hover {
@@ -1758,11 +1759,12 @@ a.pitch-sample-link:focus-visible .artifact-cap {
   display: grid;
   justify-items: center;
   text-align: center;
-  gap: 5px;
+  gap: 8px;
   text-decoration: none;
   color: inherit;
   width: 100%;
-  border-radius: var(--radius, 16px);
+  height: 100%;
+  border-radius: 18px;
   outline-offset: 3px;
 }
 .story-jump:focus-visible {
@@ -1937,46 +1939,46 @@ a.pitch-sample-link:focus-visible .artifact-cap {
   display: grid;
   place-items: center;
   width: 100%;
-  min-height: 68px;
+  min-height: 88px;
 }
 .story-svg {
   display: block;
-  width: min(80px, 100%);
+  width: min(112px, 72%);
   height: auto;
   filter: drop-shadow(0 4px 10px rgba(21, 34, 56, 0.08));
 }
 .story-svg-hunt {
-  width: min(88px, 100%);
+  width: min(120px, 78%);
 }
 .story-label {
   margin: 0;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  font-weight: 800;
-  font-size: 0.92rem;
+  gap: 8px;
+  font-weight: 850;
+  font-size: 1.12rem;
   letter-spacing: -0.02em;
   color: var(--teal-deep, #0a4545);
 }
 .story-num {
   display: grid;
   place-items: center;
-  width: 1.3rem;
-  height: 1.3rem;
+  width: 1.55rem;
+  height: 1.55rem;
   border-radius: 50%;
   background: var(--teal, #0f5c5c);
   color: #fff;
-  font-size: 0.7rem;
-  font-weight: 800;
+  font-size: 0.82rem;
+  font-weight: 850;
   flex: 0 0 auto;
 }
 .story-desc {
   margin: 0;
-  font-size: 0.78rem;
+  font-size: 0.95rem;
   font-weight: 650;
-  line-height: 1.3;
+  line-height: 1.35;
   color: var(--muted, #3d4f6f);
-  max-width: 13ch;
+  max-width: 18ch;
 }
 /* Thick filled arrows with teal → orange / warm gradient */
 .story-arrow {
@@ -1984,15 +1986,66 @@ a.pitch-sample-link:focus-visible .artifact-cap {
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
-  padding: 0 2px;
+  padding: 0 4px;
   align-self: center;
-  margin-top: -1.6rem; /* sit between the art blocks, not the labels */
+  margin-top: -2.2rem; /* sit between the art blocks, not the labels */
 }
 .story-arrow-svg {
   display: block;
-  width: 36px;
-  height: 26px;
+  width: 44px;
+  height: 32px;
   filter: drop-shadow(0 2px 4px rgba(21, 34, 56, 0.14));
+}
+
+/* Wide desktop: even bigger step cards */
+@media (min-width: 900px) {
+  .story-flow {
+    padding: 22px 28px 24px;
+    gap: 14px 20px;
+  }
+  .story-step {
+    padding: 18px 16px 20px;
+    gap: 10px;
+  }
+  .story-art {
+    min-height: 120px;
+  }
+  .story-svg {
+    width: min(140px, 70%);
+  }
+  .story-svg-hunt {
+    width: min(152px, 78%);
+  }
+  .story-label {
+    font-size: 1.28rem;
+    gap: 10px;
+  }
+  .story-num {
+    width: 1.75rem;
+    height: 1.75rem;
+    font-size: 0.92rem;
+  }
+  .story-desc {
+    font-size: 1.05rem;
+    max-width: 22ch;
+  }
+  .story-arrow {
+    margin-top: -2.8rem;
+  }
+  .story-arrow-svg {
+    width: 52px;
+    height: 36px;
+  }
+  .story-pop-animal {
+    width: min(280px, 28vw);
+  }
+  .story-pop-animal img {
+    width: 88px;
+    height: 88px;
+  }
+  .story-pop-hunt {
+    width: min(240px, 26vw);
+  }
 }
 .story-step-map .story-num { background: #0f5c5c; }
 .story-step-print .story-num { background: #d9652e; }
