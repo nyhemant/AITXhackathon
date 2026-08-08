@@ -309,27 +309,32 @@
 }
 .seo-print-btn {
   flex: 0 0 auto;
+  align-self: stretch;
   display: inline-flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  white-space: nowrap;
-  min-height: 44px;
-  min-width: 0;
-  padding: 0 18px;
-  font-size: 1rem;
+  gap: 1px;
+  min-height: 4.5rem;
+  min-width: 7.5rem;
+  padding: 12px 16px;
+  font-size: 1.08rem;
   font-weight: 850;
-  line-height: 1.2;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(15, 92, 92, 0.14);
+  line-height: 1.15;
+  border-radius: 14px;
+  box-shadow: 0 5px 16px rgba(15, 92, 92, 0.15);
   text-align: center;
+  white-space: normal;
 }
-.seo-print-btn-line,
+.seo-print-btn-line {
+  display: block;
+}
 .seo-print-btn-sub {
-  display: inline;
-  font-size: inherit;
-  font-weight: inherit;
+  display: block;
+  font-size: 1.05em;
+  font-weight: 850;
+  letter-spacing: -0.01em;
   opacity: 1;
-  letter-spacing: inherit;
 }
 .seo-print-fallback {
   margin: 6px 0 0;
@@ -483,9 +488,19 @@
   }
   .seo-print-btn {
     width: 100%;
-    min-height: 48px;
-    font-size: 1.05rem;
-    border-radius: 12px;
+    min-height: 3.75rem;
+    min-width: 0;
+    font-size: 1.12rem;
+    border-radius: 14px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.3em;
+    padding: 14px 16px;
+  }
+  .seo-print-btn-line,
+  .seo-print-btn-sub {
+    display: inline;
+    font-size: inherit;
   }
   .seo-mission-chrome {
     gap: 8px;

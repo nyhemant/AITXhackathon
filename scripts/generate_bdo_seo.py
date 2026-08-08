@@ -614,8 +614,9 @@ def page_mission_chrome_html() -> str:
     """Primary print CTA + compact who/time chips (desktop row / phone stack)."""
     return """
         <div class="seo-mission-bar no-print" aria-label="Print your mission">
-          <button type="button" class="btn btn-primary seo-print-btn" id="mission-open-btn" aria-haspopup="dialog" aria-controls="mission-drawer">
-            Print mission
+          <button type="button" class="btn btn-primary seo-print-btn" id="mission-open-btn" aria-haspopup="dialog" aria-controls="mission-drawer" aria-label="Print my mission">
+            <span class="seo-print-btn-line">Print my</span>
+            <span class="seo-print-btn-line seo-print-btn-sub">mission</span>
           </button>
           <div class="seo-mission-chrome" id="seo-mission-chrome">
             <div class="seo-chrome-row">
@@ -962,7 +963,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <link rel="stylesheet" href="/shell/shell.css?v=5" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=64" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=27" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=28" />
   <link rel="stylesheet" href="/field-pack/css/mission.css?v=13" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
