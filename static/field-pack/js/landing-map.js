@@ -1408,7 +1408,11 @@
     detail.innerHTML = `
       <p class="pin-detail-kicker">${escapeHtml(locLine)}</p>
       <div class="pd-title-row">
-        <h3>${escapeHtml(p.emoji || "")} ${escapeHtml(p.name)}</h3>
+        <h3>${
+          isSoon
+            ? `${escapeHtml(p.emoji || "")} ${escapeHtml(p.name)}`
+            : `<a class="pd-title-link" href="${appHref}">${escapeHtml(p.emoji || "")} ${escapeHtml(p.name)}</a>`
+        }</h3>
         <button type="button" class="pd-clear" id="pd-clear-selection" aria-label="Clear selection">×</button>
       </div>
       ${isSoon ? `<span class="pd-status soon">Coming soon</span>` : ""}
