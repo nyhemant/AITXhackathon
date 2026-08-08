@@ -142,7 +142,7 @@ def pick(seed: str, options: list[str]) -> str:
     return options[h % len(options)]
 
 
-def unique_body(v: dict) -> str:
+def unique_body(v: dict, exclude_ids: set[str] | None = None) -> str:
     """150–250+ words of unique, venue-specific copy."""
     place, things, hunt_word = type_bits(v)
     name = v["name"]
@@ -150,12 +150,16 @@ def unique_body(v: dict) -> str:
     state = v["state"] or ""
     loc = v["location"] or ", ".join(x for x in [city, state] if x)
     blurb = (v.get("blurb") or "").rstrip(".")
-    featured = v.get("featured") or []
+    featured_all = v.get("featured") or []
+    # Prefer remaining stops when “start here” already showed the first picks
+    exclude_ids = exclude_ids or set()
+    featured_rest = [it for it in featured_all if it.get("id") not in exclude_ids]
+    featured = featured_rest if len(featured_rest) >= 2 else featured_all
     hunt = v.get("hunt") or []
     label = v.get("itemLabel") or things
     emoji = v.get("emoji") or ""
 
-    feat_names = [f["name"] for f in featured[:6]]
+    feat_names = [f["name"] for f in featured_all[:6]]
     feat_phrase = (
         ", ".join(feat_names[:-1]) + f", and {feat_names[-1]}"
         if len(feat_names) > 1
@@ -217,7 +221,6 @@ def unique_body(v: dict) -> str:
           <div class="seo-animal-meta">
             <h3>{esc(it.get('emoji',''))} {esc(it['name'])}</h3>
             <p>{esc(blurb)}</p>
-            <p class="seo-card-hint">Open the interactive list for this Q&amp;A card</p>
           </div>"""
         if card_inner:
             # Link card to interactive app item for Q&A print path
@@ -245,30 +248,15 @@ def unique_body(v: dict) -> str:
             f"and museum treasure hunts for kids can use this {name} page as a ready-made plan for {loc}."
         )
 
-    # Hero strip: first 3 photos if available
-    hero_photos = []
-    for it in featured[:3]:
-        photo = (it.get("photo") or "").strip()
-        if not photo:
-            continue
-        if photo.startswith("/field-pack/"):
-            src = photo[len("/field-pack/") :]
-        else:
-            src = photo
-        hero_photos.append(
-            f'<img src="{esc(src)}" alt="{esc(it.get("name") or "Highlight")} — shortlist photo" width="400" height="280" loading="eager" decoding="async" />'
-        )
-    hero_strip = (
-        f'<div class="seo-hero-photos" aria-hidden="false">{"".join(hero_photos)}</div>'
-        if hero_photos
-        else ""
+    shortlist_lead = (
+        "More stops if you have the energy — tap a card for Q&amp;A."
+        if exclude_ids and featured is not featured_all and len(featured_all) > len(featured)
+        else "Tap a card for the interactive outing and printable Q&amp;A."
     )
-
     return f"""
-    {hero_strip}
     <section class="seo-list-block seo-visual-shortlist" aria-labelledby="shortlist-heading">
-      <h2 id="shortlist-heading">More Q&amp;A cards at {esc(name)}</h2>
-      <p>Photo cards for the kid shortlist — open any card for the interactive outing and printable Q&amp;A.</p>
+      <h2 id="shortlist-heading">{"More to find" if exclude_ids and featured is not featured_all else "Kid shortlist"}</h2>
+      <p>{shortlist_lead}</p>
       {cards_html}
       <ul class="seo-shortlist seo-shortlist-sr">
         {"".join(feat_html_parts) or "<li>Open the interactive outing for the full shortlist.</li>"}
@@ -292,13 +280,17 @@ def unique_body(v: dict) -> str:
 
 
 def h1_for(v: dict) -> str:
-    place, _, hunt_word = type_bits(v)
-    # Prefer scavenger hunt wording for SEO
+    """Visible page heading — venue name only. SEO phrase lives in title/meta."""
+    return v["name"]
+
+
+def seo_hunt_label(v: dict) -> str:
+    """Search/social title phrase (not the on-page H1)."""
     return f"{v['name']} Scavenger Hunt for Kids (Free Printable)"
 
 
 def title_for(v: dict) -> str:
-    return f"{h1_for(v)} · 1Less"
+    return f"{seo_hunt_label(v)} · 1Less"
 
 
 def meta_for(v: dict) -> str:
@@ -324,10 +316,11 @@ def venue_json_ld(v: dict, url: str) -> str:
     if not steps:
         steps = [{"@type": "HowToStep", "position": 1, "text": f"Explore {v['name']} with kids using the shortlist."}]
 
+    hunt_name = seo_hunt_label(v)
     howto = {
         "@context": "https://schema.org",
         "@type": "HowTo",
-        "name": h1_for(v),
+        "name": hunt_name,
         "description": meta_for(v),
         "totalTime": "PT2H",
         "tool": [{"@type": "HowToTool", "name": "Printed one-page hunt sheet"}],
@@ -337,7 +330,7 @@ def venue_json_ld(v: dict, url: str) -> str:
     article = {
         "@context": "https://schema.org",
         "@type": "Article",
-        "headline": h1_for(v),
+        "headline": hunt_name,
         "description": meta_for(v),
         "author": {"@type": "Organization", "name": "1Less"},
         "publisher": {"@type": "Organization", "name": "1Less", "url": SITE},
@@ -503,12 +496,20 @@ def page_mission_chrome_html() -> str:
         </div>"""
 
 
-def route_90m_html(mission_venue: dict, mission: dict) -> str:
-    """Visual 90-minute strip from route_90m or first 3 mission finds."""
+def _photo_src(photo: str) -> str:
+    photo = (photo or "").strip()
+    if not photo:
+        return ""
+    if photo.startswith("/field-pack/"):
+        return photo[len("/field-pack/") :]
+    return photo
+
+
+def _route_90m_picks(mission_venue: dict, mission: dict) -> list[dict]:
+    """Same pick order as the start-here section (route_90m, else mission finds)."""
     items = {it.get("id"): it for it in (mission_venue.get("items") or [])}
-    route_ids = mission_venue.get("route_90m") or []
-    picks = []
-    for rid in route_ids[:3]:
+    picks: list[dict] = []
+    for rid in (mission_venue.get("route_90m") or [])[:3]:
         if rid in items:
             picks.append(items[rid])
     if len(picks) < 3:
@@ -517,37 +518,73 @@ def route_90m_html(mission_venue: dict, mission: dict) -> str:
                 break
             if not any(p.get("id") == f.get("id") for p in picks):
                 picks.append(f)
+    return picks[:3]
+
+
+def _start_here_catalog_ids(mission_venue: dict, mission: dict) -> set[str]:
+    out: set[str] = set()
+    for p in _route_90m_picks(mission_venue, mission):
+        cid = (p.get("catalog_id") or "").strip()
+        if cid:
+            out.add(cid)
+        elif p.get("id"):
+            out.add(str(p["id"]).replace("_", "-"))
+    return out
+
+
+def route_90m_html(mission_venue: dict, mission: dict, catalog_v: dict | None = None) -> str:
+    """Short-visit picks: 2–3 real stops with photos — the “start here” path.
+
+    Exists so a half-day page still answers “we only have an hour.”
+    Not a second shortlist: same finds, tighter cut, numbered.
+    """
+    # catalog featured: id (sci-dinosaur) → photo/blurb
+    feat_by_id = {f.get("id"): f for f in (catalog_v or {}).get("featured") or [] if f.get("id")}
+    picks = _route_90m_picks(mission_venue, mission)
     if len(picks) < 2:
         return ""
-    tiles = "".join(
-        f"""<li class="seo-90-tile">
-        <span class="seo-90-emoji" aria-hidden="true">{esc(p.get("emoji") or "✨")}</span>
-        <strong>{esc(p.get("label") or "Find")}</strong>
-      </li>"""
-        for p in picks[:3]
-    )
-    return f"""
-    <section class="seo-90 no-print" aria-labelledby="route90-heading">
-      <h2 id="route90-heading"><span aria-hidden="true">⚡</span> If you only have 90 minutes</h2>
-      <ol class="seo-90-grid">{tiles}</ol>
-    </section>"""
 
+    slug = mission_venue.get("slug") or ""
+    cards = []
+    for i, p in enumerate(picks[:3], 1):
+        cat_id = (p.get("catalog_id") or "").replace("_", "-") or (p.get("id") or "").replace("_", "-")
+        feat = feat_by_id.get(cat_id) or feat_by_id.get(p.get("id") or "") or {}
+        # also try matching featured by name-ish catalog ids already hyphenated
+        if not feat and p.get("catalog_id"):
+            feat = feat_by_id.get(p["catalog_id"]) or {}
+        src = _photo_src(feat.get("photo") or p.get("photo") or "")
+        label = p.get("label") or feat.get("name") or "Stop"
+        emoji = p.get("emoji") or feat.get("emoji") or ""
+        one = p.get("one_liner") or feat.get("blurb") or ""
+        item_id = cat_id or (p.get("id") or "")
+        href = (
+            f"/field-pack/app.html#/venue/{esc(slug)}/item/{esc(item_id)}"
+            if slug and item_id
+            else (f"/field-pack/app.html#/venue/{esc(slug)}" if slug else "#")
+        )
+        if src:
+            media = (
+                f'<img src="{esc(src)}" alt="" width="640" height="400" '
+                f'loading="{"eager" if i == 1 else "lazy"}" decoding="async" />'
+            )
+        else:
+            media = f'<span class="seo-start-emoji" aria-hidden="true">{esc(emoji or "✨")}</span>'
+        cards.append(
+            f"""<a class="seo-start-card" href="{href}">
+        <span class="seo-start-num" aria-hidden="true">{i}</span>
+        {media}
+        <span class="seo-start-meta">
+          <strong>{esc(emoji + " " if emoji else "")}{esc(label)}</strong>
+          {f"<small>{esc(one)}</small>" if one else ""}
+        </span>
+      </a>"""
+        )
 
-def parent_script_html(mission_venue: dict) -> str:
-    steps = mission_venue.get("parent_script") or [
-        "Bathroom first",
-        "One big wow",
-        "Snack when needed",
-        "Leave while happy",
-    ]
-    icons = ["🚻", "⭐", "🧃", "🚪", "💛"]
-    lis = "".join(
-        f'<li><span aria-hidden="true">{icons[i % len(icons)]}</span><span>{esc(s)}</span></li>'
-        for i, s in enumerate(steps[:5])
-    )
     return f"""
-    <section class="seo-parent-script no-print" aria-label="Calm day script">
-      <ol class="seo-parent-steps">{lis}</ol>
+    <section class="seo-start-here no-print" aria-labelledby="route90-heading">
+      <h2 id="route90-heading">Short on time? Start here</h2>
+      <p class="seo-start-lead">Three stops that carry a short visit — print the mission and hit these first.</p>
+      <div class="seo-start-grid">{"".join(cards)}</div>
     </section>"""
 
 
@@ -677,37 +714,35 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
     mode = content_mode_of(mission_venue, v)
     last_v = (v.get("lastVerified") or mission_venue.get("last_verified") or "")[:7]
     if mode == "wonder":
-        badge = "Simple starter"
         quality_note = (
             "Short flexible list — skip anything you don’t see or don’t feel like chasing."
         )
     elif mode == "hybrid":
-        badge = "Starter list"
         quality_note = "A few local favorites, plus backup finds if plans change." + (
             f" Checked {last_v}." if last_v else ""
         )
     else:
-        badge = "Hand-picked"
         quality_note = "Short kid list meant for a half-day visit." + (
             f" List checked {last_v}." if last_v else ""
         )
 
     mission = default_mission_via_node(mission_venue)
     drawer = mission_drawer_html(mission_venue, mission)
+    map_card = map_card_html(mission_venue)
+    chrome = page_mission_chrome_html()
+    route90 = route_90m_html(mission_venue, mission, catalog_v=v)
+    # Catalog ids already shown in “start here” — don’t repeat in shortlist grid
+    start_exclude = _start_here_catalog_ids(mission_venue, mission)
     if mode == "wonder":
         body = wonder_grid_html(mission)
         how_step2 = "Check finds on the list as you go"
     elif mode == "hybrid":
         # Local icons as photos + flexible backup finds
-        body = unique_body(v) + wonder_grid_html(mission)
+        body = unique_body(v, exclude_ids=start_exclude) + wonder_grid_html(mission)
         how_step2 = "See a few favorites, then use the backup finds"
     else:
-        body = unique_body(v)
+        body = unique_body(v, exclude_ids=start_exclude)
         how_step2 = "Use the shortlist while you walk"
-    map_card = map_card_html(mission_venue)
-    chrome = page_mission_chrome_html()
-    route90 = route_90m_html(mission_venue, mission)
-    parent_sc = parent_script_html(mission_venue)
     h1 = h1_for(v)
     title = title_for(v)
     desc = meta_for(v)
@@ -755,7 +790,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <link rel="stylesheet" href="/shell/shell.css?v=5" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=52" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=15" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=16" />
   <link rel="stylesheet" href="/field-pack/css/mission.css?v=8" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
@@ -793,10 +828,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
 
     <article class="seo-article">
       <header class="seo-hero">
-        <div class="seo-hero-top">
-          <p class="promise-pill">{esc(loc_chip)}</p>
-          <span class="seo-trust-badge seo-trust-{esc(mode)}">{esc(badge)}</span>
-        </div>
+        <p class="promise-pill">{esc(loc_chip)}</p>
         <h1>{esc(v.get('emoji',''))} {esc(h1)}</h1>
         <p class="lead">{esc(lead)}</p>
         <p class="seo-quality-note">{esc(quality_note)}</p>
@@ -812,7 +844,6 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
 
       {map_card}
       {route90}
-      {parent_sc}
       <div id="seo-play-target" class="seo-play-anchor" tabindex="-1"></div>
       {body}
 
@@ -934,7 +965,7 @@ def render_venue_page(v: dict) -> str:
   <link rel="stylesheet" href="/shell/shell.css?v=5" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=52" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=15" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=16" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
   </script>
@@ -979,7 +1010,7 @@ def render_venue_page(v: dict) -> str:
             + (f' List checked {v["lastVerified"][:7]}.' if (v.get("lastVerified") or "")[:7] else "")
           )
           if (v.get("quality") or "starter") == "full"
-          else "Starter list — animals and exhibits change; skip anything closed or missing."
+          else "Short flexible list — animals and exhibits change; skip anything closed or missing."
         )}</p>
         <p class="seo-brand-note"><strong>Field Trip Kit</strong> by 1Less — free printable hunts for families.</p>
         <div class="landing-cta-row seo-cta no-print">
