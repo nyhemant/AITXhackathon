@@ -1424,7 +1424,7 @@
         isSoon
           ? ""
           : `<div class="pd-actions pd-actions-secondary">
-        <a class="btn btn-ghost" href="${appHref}">Full kid list</a>
+        <a class="btn btn-soft pd-details-btn" href="${appHref}">Details</a>
       </div>`
       }
     `;
