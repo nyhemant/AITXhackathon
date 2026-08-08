@@ -1470,6 +1470,10 @@
   align-items: center;
   margin-bottom: 12px;
 }
+.pitch-hero-copy-only {
+  grid-template-columns: 1fr;
+  max-width: 40rem;
+}
 .landing-pitch h1 {
   margin: 0 0 8px;
   font-size: clamp(1.55rem, 4vw, 2.05rem);
@@ -1773,6 +1777,9 @@ a.pitch-sample-link:focus-visible .artifact-cap {
   background: rgba(255, 244, 220, 0.9);
 }
 .story-step-print {
+  position: relative;
+  z-index: 2;
+  overflow: visible;
   background: rgba(255, 255, 255, 0.45);
 }
 .story-step-play {
@@ -1781,22 +1788,20 @@ a.pitch-sample-link:focus-visible .artifact-cap {
   overflow: visible;
   background: rgba(255, 252, 235, 0.4);
 }
-.story-play-link {
+.story-step-has-pop {
   position: relative;
   overflow: visible;
 }
-/* Hover/focus Play → lion sample card pops up; click goes to Q&A */
-.story-play-pop {
+.story-sample-link {
+  position: relative;
+  overflow: visible;
+}
+/* Sample pop: hover desktop; is-pop-open on touch (JS) */
+.story-pop {
   position: absolute;
   left: 50%;
   bottom: calc(100% + 10px);
   transform: translateX(-50%) translateY(8px) scale(0.96);
-  width: min(240px, 70vw);
-  display: grid;
-  grid-template-columns: 72px 1fr;
-  gap: 0;
-  align-items: stretch;
-  overflow: hidden;
   border-radius: 14px;
   border: 1.5px solid rgba(15, 92, 92, 0.2);
   background: #fff;
@@ -1808,45 +1813,124 @@ a.pitch-sample-link:focus-visible .artifact-cap {
   z-index: 30;
   text-align: left;
 }
-.story-play-pop img {
+.story-pop-animal {
+  width: min(240px, 70vw);
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 0;
+  align-items: stretch;
+  overflow: hidden;
+}
+.story-pop-animal img {
   width: 72px;
   height: 72px;
   object-fit: cover;
   display: block;
   background: #e8f0ea;
 }
-.story-play-pop .sample-watermark-sm {
+.story-pop-animal .sample-watermark-sm {
   inset: 0 auto 0 0;
   width: 72px;
 }
-.story-play-pop .story-animal-meta {
+.story-pop-animal .story-animal-meta {
   display: grid;
   gap: 2px;
   align-content: center;
   padding: 8px 10px;
   min-width: 0;
 }
-.story-play-pop .story-animal-meta strong {
+.story-pop-animal .story-animal-meta strong {
   font-size: 0.82rem;
   font-weight: 850;
   color: #0a4545;
   line-height: 1.15;
 }
-.story-play-pop .story-animal-meta small {
+.story-pop-animal .story-animal-meta small {
   font-size: 0.68rem;
   font-weight: 750;
   color: #0f5c5c;
   line-height: 1.2;
 }
-.story-step-play:hover,
-.story-step-play:focus-within {
+.story-pop-hunt {
+  width: min(200px, 72vw);
+  padding: 10px 10px 8px;
+  overflow: hidden;
+}
+.story-pop-hunt .sample-watermark {
+  font-size: 1.05rem;
+  color: rgba(217, 101, 46, 0.32);
+}
+.story-pop-hunt-sheet {
+  position: relative;
+  border: 1.5px solid #0f5c5c;
+  border-radius: 10px;
+  padding: 8px 8px 6px;
+  background: linear-gradient(165deg, #fffef8 0%, #f7fbf9 100%);
+}
+.story-pop-hunt .artifact-banner {
+  font-size: 0.68rem;
+  padding: 4px 6px;
+  margin-bottom: 6px;
+}
+.story-pop-hunt .artifact-rows {
+  gap: 5px;
+}
+.story-pop-hunt .artifact-rows li {
+  grid-template-columns: 14px 18px 1fr;
+  gap: 4px;
+}
+.story-pop-hunt .artifact-box {
+  width: 12px;
+  height: 12px;
+  font-size: 0.55rem;
+}
+.story-pop-hunt .artifact-emoji {
+  font-size: 0.85rem;
+}
+.story-pop-hunt .artifact-line {
+  height: 5px;
+}
+.story-pop-hunt .artifact-foot {
+  margin: 6px 0 0;
+  font-size: 0.6rem;
+}
+.story-pop-cta {
+  display: block;
+  margin-top: 6px;
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #d9652e;
+}
+.story-step-has-pop:hover,
+.story-step-has-pop:focus-within,
+.story-step-has-pop.is-pop-open {
   z-index: 25;
+}
+.story-step-print:hover,
+.story-step-print:focus-within,
+.story-step-print.is-pop-open {
+  background: rgba(255, 255, 255, 0.95);
+}
+.story-step-play:hover,
+.story-step-play:focus-within,
+.story-step-play.is-pop-open {
   background: rgba(255, 248, 220, 0.95);
 }
-.story-step-play:hover .story-play-pop,
-.story-step-play:focus-within .story-play-pop {
+/* Desktop: hover peeks. Touch uses .is-pop-open from JS. */
+@media (hover: hover) and (pointer: fine) {
+  .story-step-has-pop:hover .story-pop,
+  .story-step-has-pop:focus-within .story-pop {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
+.story-step-has-pop.is-pop-open .story-pop {
   opacity: 1;
   visibility: visible;
+  pointer-events: auto;
   transform: translateX(-50%) translateY(0) scale(1);
 }
 .story-art {
@@ -1991,18 +2075,23 @@ a.pitch-sample-link:focus-visible .artifact-cap {
     max-width: none;
     padding: 8px 6px;
   }
-  /* Phone: pop below Play so it isn’t clipped; still only on focus/hover */
-  .story-play-pop {
+  /* Phone: pop below step so it isn’t clipped */
+  .story-pop {
     bottom: auto;
     top: calc(100% + 6px);
     left: 0;
-    right: 0;
-    width: auto;
-    max-width: none;
+    right: auto;
+    width: min(260px, calc(100vw - 48px));
     transform: translateY(6px) scale(0.98);
   }
-  .story-step-play:hover .story-play-pop,
-  .story-step-play:focus-within .story-play-pop {
+  .story-pop-animal {
+    width: min(260px, calc(100vw - 48px));
+  }
+  .story-pop-hunt {
+    width: min(200px, calc(100vw - 48px));
+  }
+  .story-step-has-pop.is-pop-open .story-pop,
+  .story-step-has-pop:focus-within .story-pop {
     transform: translateY(0) scale(1);
   }
   .story-jump {

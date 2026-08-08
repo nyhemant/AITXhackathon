@@ -31,6 +31,60 @@
     });
   });
 
+  /**
+   * Sample pops (Print hunt / Play lion):
+   * Desktop — CSS hover. Touch — first tap opens pop; second tap (or tap pop) navigates.
+   */
+  (function wireSamplePops() {
+    const steps = Array.from(document.querySelectorAll(".story-step-has-pop"));
+    if (!steps.length) return;
+
+    function isCoarse() {
+      try {
+        return window.matchMedia("(hover: none), (pointer: coarse)").matches;
+      } catch (_) {
+        return "ontouchstart" in window;
+      }
+    }
+
+    function closeAll(except) {
+      steps.forEach((s) => {
+        if (s !== except) s.classList.remove("is-pop-open");
+      });
+    }
+
+    steps.forEach((step) => {
+      const link = step.querySelector("a.story-sample-link[data-sample-pop]");
+      if (!link) return;
+
+      link.addEventListener("click", (e) => {
+        if (!isCoarse()) return; // desktop: normal navigate (hover already showed pop)
+        if (!step.classList.contains("is-pop-open")) {
+          e.preventDefault();
+          e.stopPropagation();
+          closeAll(step);
+          step.classList.add("is-pop-open");
+          return;
+        }
+        // already open → allow navigation (default)
+      });
+    });
+
+    document.addEventListener(
+      "click",
+      (e) => {
+        if (!isCoarse()) return;
+        if (e.target.closest && e.target.closest(".story-step-has-pop.is-pop-open")) return;
+        closeAll();
+      },
+      true
+    );
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeAll();
+    });
+  })();
+
   // Ready cards (if present) open the map mini-panel for that venue
   if (grid && READY.length) {
     grid.innerHTML = READY.map((p) => {
