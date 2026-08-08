@@ -33,6 +33,99 @@
   color: #3d4f6f;
   font-size: 0.95rem;
 }
+.seo-hero .lead {
+  margin: 0 0 12px;
+  font-size: 1.05rem;
+  font-weight: 650;
+  line-height: 1.4;
+  color: #2a3d55;
+  max-width: 40rem;
+}
+/* Scannable visit facts — replace paragraph soup */
+.seo-fact-chips {
+  list-style: none;
+  margin: 0 0 8px;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.seo-fact-chip {
+  display: grid;
+  gap: 1px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  background: #f3f8f6;
+  border: 1.5px solid rgba(15, 92, 92, 0.12);
+  max-width: 100%;
+}
+.seo-fact-k {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #5a6f8a;
+}
+.seo-fact-v {
+  font-size: 0.88rem;
+  font-weight: 750;
+  color: #0a4545;
+  line-height: 1.25;
+}
+.seo-checked {
+  margin: 0 0 12px;
+  font-size: 0.78rem;
+  font-weight: 650;
+  color: #6a7d96;
+}
+.seo-tip {
+  display: grid;
+  gap: 4px;
+  margin: 0 0 18px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: #fff8e8;
+  border: 1.5px solid rgba(217, 101, 46, 0.22);
+}
+.seo-tip-kicker {
+  font-size: 0.72rem;
+  font-weight: 850;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #b45309;
+}
+.seo-tip p {
+  margin: 0;
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #0a4545;
+  line-height: 1.35;
+}
+.seo-hunt-list {
+  list-style: none;
+  padding-left: 0;
+  display: grid;
+  gap: 8px;
+}
+.seo-hunt-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: #fff;
+  border: 1.5px solid rgba(15, 92, 92, 0.12);
+  font-weight: 700;
+  color: #0a4545;
+}
+.seo-hunt-box {
+  flex: 0 0 auto;
+  font-size: 1.05rem;
+  line-height: 1.2;
+  color: #0f5c5c;
+  opacity: 0.75;
+}
 
 /* Top photo strip under CTAs */
 .seo-hero-photos {

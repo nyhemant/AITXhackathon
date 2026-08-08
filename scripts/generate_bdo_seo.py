@@ -142,63 +142,56 @@ def pick(seed: str, options: list[str]) -> str:
     return options[h % len(options)]
 
 
-def unique_body(v: dict, exclude_ids: set[str] | None = None) -> str:
-    """150–250+ words of unique, venue-specific copy."""
-    place, things, hunt_word = type_bits(v)
-    name = v["name"]
-    city = v["city"] or v["location"] or "your city"
-    state = v["state"] or ""
-    loc = v["location"] or ", ".join(x for x in [city, state] if x)
-    blurb = (v.get("blurb") or "").rstrip(".")
+def practical_chips_html(practical: dict | None, last_v: str = "") -> str:
+    """Scannable venue facts — duration, energy, tickets, transit. No paragraph soup."""
+    p = practical or {}
+    chips: list[tuple[str, str]] = []
+    if p.get("typical_duration"):
+        chips.append(("Time", str(p["typical_duration"])))
+    if p.get("energy_note"):
+        chips.append(("Vibe", str(p["energy_note"])))
+    if p.get("ticket_note"):
+        chips.append(("Tickets", str(p["ticket_note"])))
+    if p.get("transit_note"):
+        chips.append(("Get there", str(p["transit_note"])))
+    if not chips and not last_v:
+        return ""
+    lis = "".join(
+        f'<li class="seo-fact-chip"><span class="seo-fact-k">{esc(k)}</span>'
+        f'<span class="seo-fact-v">{esc(val)}</span></li>'
+        for k, val in chips
+    )
+    checked = (
+        f'<p class="seo-checked">List checked {esc(last_v)}</p>' if last_v else ""
+    )
+    return f"""
+        <ul class="seo-fact-chips" aria-label="Visit facts">{lis}</ul>
+        {checked}"""
+
+
+def parent_tip_html(practical: dict | None) -> str:
+    """One venue-specific first-stop tip — only if we have real copy."""
+    tip = ((practical or {}).get("best_start") or "").strip()
+    if not tip:
+        return ""
+    return f"""
+    <aside class="seo-tip" aria-label="First stop tip">
+      <span class="seo-tip-kicker">First stop</span>
+      <p>{esc(tip)}</p>
+    </aside>"""
+
+
+def unique_body(
+    v: dict,
+    exclude_ids: set[str] | None = None,
+) -> str:
+    """Visual shortlist + hunt checklist. No long SEO prose walls."""
     featured_all = v.get("featured") or []
     # Prefer remaining stops when “start here” already showed the first picks
     exclude_ids = exclude_ids or set()
     featured_rest = [it for it in featured_all if it.get("id") not in exclude_ids]
     featured = featured_rest if len(featured_rest) >= 2 else featured_all
     hunt = v.get("hunt") or []
-    label = v.get("itemLabel") or things
-    emoji = v.get("emoji") or ""
-
-    feat_names = [f["name"] for f in featured_all[:6]]
-    feat_phrase = (
-        ", ".join(feat_names[:-1]) + f", and {feat_names[-1]}"
-        if len(feat_names) > 1
-        else (feat_names[0] if feat_names else "kid favorites")
-    )
-
-    openers = [
-        f"Heading to {name} in {loc} with kids? Here’s a free printable {hunt_word} and a short list of {label} — so you’re not trying to do the whole place.",
-        f"A day at {name} goes better with a short plan. This free one-page {hunt_word} for {loc} gives kids something to look for without racing the map.",
-        f"Looking for a {name} scavenger hunt or printable checklist for {city}? This page is a short kid list plus one hunt sheet you can print at home.",
-        f"{emoji + ' ' if emoji else ''}{name} ({loc}) — use this free printable hunt if you want a clear “next stop” instead of wandering until everyone’s done.",
-    ]
-    middles = [
-        f"The shortlist includes {feat_phrase}. Each one has a short kid-friendly line so you can talk about it on the way.",
-        f"Start with a few big draws like {feat_phrase}. Skip anything closed, crowded, or out of juice — the list is a guide, not homework.",
-        f"Focus on {feat_phrase}. That set usually works from preschool through about age 10, with room to cut stops if legs get tired.",
-    ]
-    hunt_bits = "; ".join(hunt[:4]) if hunt else "spot something tall, find a pattern, and take a favorite photo"
-    hunt_para = [
-        f"The hunt is one page with checkboxes. Examples: {hunt_bits}. No scores — print at home (or hotel) and bring a pen.",
-        f"Kids check off finds like {hunt_bits}. You keep the day moving; the sheet is just a simple checklist.",
-    ]
-    tips = [
-        f"Tip for {city}: print the night before, pack a pen, and hit one easy favorite near the entrance first.",
-        f"At {name}, pick a first stop from the shortlist and treat the rest as optional. Leaving happy beats checking every box.",
-        f"If weather or crowds in {state or city} shift the plan, reorder the list — nothing here requires a fixed path.",
-    ]
-    closes = [
-        f"{blurb + '. ' if blurb else ''}Field Trip Kit is free. Use the full interactive list only if you want optional Q&A cards after; the one-page hunt is enough for most visits.",
-        f"{'About this place: ' + blurb + '. ' if blurb else ''}Print and share with whoever’s coming — co-parent, grandparent, or class helper.",
-        f"{blurb + '. ' if blurb else ''}Goal is simple: fewer “what now?” moments on a zoo, aquarium, or museum day.",
-    ]
-
-    seed = v["id"]
-    p1 = pick(seed + "a", openers)
-    p2 = pick(seed + "b", middles)
-    p3 = pick(seed + "c", hunt_para)
-    p4 = pick(seed + "d", tips)
-    p5 = pick(seed + "e", closes)
 
     # Photo cards first (visual), plus crawlable text for SEO
     cards = []
@@ -213,14 +206,14 @@ def unique_body(v: dict, exclude_ids: set[str] | None = None) -> str:
         else:
             src = photo
         alt = f"{it.get('name') or 'Animal'} — shortlist photo"
-        blurb = it.get("blurb") or "A favorite stop for curious kids."
+        item_blurb = it.get("blurb") or "A favorite stop for curious kids."
         item_id = it.get("id") or ""
         card_inner = ""
         if src:
             card_inner = f"""<img src="{esc(src)}" alt="{esc(alt)}" width="640" height="400" loading="lazy" decoding="async" />
           <div class="seo-animal-meta">
             <h3>{esc(it.get('emoji',''))} {esc(it['name'])}</h3>
-            <p>{esc(blurb)}</p>
+            <p>{esc(item_blurb)}</p>
           </div>"""
         if card_inner:
             # Link card to interactive app item for Q&A print path
@@ -231,47 +224,39 @@ def unique_body(v: dict, exclude_ids: set[str] | None = None) -> str:
         </a>"""
             )
         feat_html_parts.append(
-            f"<li><strong>{esc(it.get('emoji',''))} {esc(it['name'])}</strong> — {esc(blurb)}</li>"
+            f"<li><strong>{esc(it.get('emoji',''))} {esc(it['name'])}</strong> — {esc(item_blurb)}</li>"
         )
 
-    hunt_lis = "".join(f"<li>{esc(t)}</li>" for t in hunt[:8]) or "<li>Find your favorite stop and check it off</li>"
+    hunt_lis = "".join(
+        f'<li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>{esc(t)}</span></li>'
+        for t in hunt[:8]
+    ) or '<li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>Find your favorite stop and check it off</span></li>'
     cards_html = (
         f'<div class="seo-animal-grid" role="list">{"".join(cards)}</div>'
         if cards
         else ""
     )
 
-    words = " ".join([p1, p2, p3, p4, p5])
-    if len(words.split()) < 150:
-        p5 += (
-            f" Families comparing printable zoo scavenger hunts, aquarium checklists, "
-            f"and museum treasure hunts for kids can use this {name} page as a ready-made plan for {loc}."
-        )
-
+    showing_rest = bool(
+        exclude_ids and featured is not featured_all and len(featured_all) > len(featured)
+    )
     shortlist_lead = (
-        "More stops if you have the energy — tap a card for Q&amp;A."
-        if exclude_ids and featured is not featured_all and len(featured_all) > len(featured)
-        else "Tap a card for the interactive outing and printable Q&amp;A."
+        "More stops if you have the energy."
+        if showing_rest
+        else "Tap a card for printable Q&amp;A."
     )
     return f"""
     <section class="seo-list-block seo-visual-shortlist" aria-labelledby="shortlist-heading">
-      <h2 id="shortlist-heading">{"More to find" if exclude_ids and featured is not featured_all else "Kid shortlist"}</h2>
+      <h2 id="shortlist-heading">{"More to find" if showing_rest else "Kid shortlist"}</h2>
       <p>{shortlist_lead}</p>
       {cards_html}
       <ul class="seo-shortlist seo-shortlist-sr">
         {"".join(feat_html_parts) or "<li>Open the interactive outing for the full shortlist.</li>"}
       </ul>
     </section>
-    <section class="seo-prose">
-      <p>{esc(p1)}</p>
-      <p>{esc(p2)}</p>
-      <p>{esc(p3)}</p>
-      <p>{esc(p4)}</p>
-      <p>{esc(p5)}</p>
-    </section>
-    <section class="seo-list-block" aria-labelledby="hunt-heading">
-      <h2 id="hunt-heading">Treasure hunt checklist (printable)</h2>
-      <p>Sample finds from the free one-page hunt for {esc(name)}:</p>
+    <section class="seo-list-block seo-hunt-block" aria-labelledby="hunt-heading">
+      <h2 id="hunt-heading">On the printable page</h2>
+      <p>Checkbox finds kids can hunt — no scores, no app at the venue.</p>
       <ol class="seo-hunt-list">
         {hunt_lis}
       </ol>
@@ -713,18 +698,6 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
     )
     mode = content_mode_of(mission_venue, v)
     last_v = (v.get("lastVerified") or mission_venue.get("last_verified") or "")[:7]
-    if mode == "wonder":
-        quality_note = (
-            "Short flexible list — skip anything you don’t see or don’t feel like chasing."
-        )
-    elif mode == "hybrid":
-        quality_note = "A few local favorites, plus backup finds if plans change." + (
-            f" Checked {last_v}." if last_v else ""
-        )
-    else:
-        quality_note = "Short kid list meant for a half-day visit." + (
-            f" List checked {last_v}." if last_v else ""
-        )
 
     mission = default_mission_via_node(mission_venue)
     drawer = mission_drawer_html(mission_venue, mission)
@@ -733,11 +706,27 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
     route90 = route_90m_html(mission_venue, mission, catalog_v=v)
     # Catalog ids already shown in “start here” — don’t repeat in shortlist grid
     start_exclude = _start_here_catalog_ids(mission_venue, mission)
+    practical = mission_venue.get("practical") or {}
+    tip_html = parent_tip_html(practical)
     if mode == "wonder":
-        body = wonder_grid_html(mission)
+        hunt = v.get("hunt") or []
+        hunt_lis = "".join(
+            f'<li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>{esc(t)}</span></li>'
+            for t in hunt[:8]
+        )
+        hunt_sec = (
+            f"""
+    <section class="seo-list-block seo-hunt-block" aria-labelledby="hunt-heading">
+      <h2 id="hunt-heading">On the printable page</h2>
+      <p>Checkbox finds kids can hunt — no scores, no app at the venue.</p>
+      <ol class="seo-hunt-list">{hunt_lis}</ol>
+    </section>"""
+            if hunt_lis
+            else ""
+        )
+        body = wonder_grid_html(mission) + hunt_sec
         how_step2 = "Check finds on the list as you go"
     elif mode == "hybrid":
-        # Local icons as photos + flexible backup finds
         body = unique_body(v, exclude_ids=start_exclude) + wonder_grid_html(mission)
         how_step2 = "See a few favorites, then use the backup finds"
     else:
@@ -756,15 +745,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
         or v.get("blurb")
         or f"Free printable scavenger hunt and kid shortlist for {v['name']}."
     )
-    practical = mission_venue.get("practical") or {}
-    energy = practical.get("energy_note") or ""
-    ticket = practical.get("ticket_note") or ""
-    practical_bits = " · ".join(x for x in [practical.get("typical_duration"), energy, ticket] if x)
-    practical_html = (
-        f'<p class="seo-practical"><span aria-hidden="true">⏱️</span> {esc(practical_bits)}</p>'
-        if practical_bits
-        else ""
-    )
+    facts_html = practical_chips_html(practical, last_v)
 
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -790,7 +771,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <link rel="stylesheet" href="/shell/shell.css?v=5" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=52" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=16" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=17" />
   <link rel="stylesheet" href="/field-pack/css/mission.css?v=8" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
@@ -831,9 +812,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
         <p class="promise-pill">{esc(loc_chip)}</p>
         <h1>{esc(v.get('emoji',''))} {esc(h1)}</h1>
         <p class="lead">{esc(lead)}</p>
-        <p class="seo-quality-note">{esc(quality_note)}</p>
-        {practical_html}
-        <p class="seo-brand-note">Print one page at home. Bring it with you — no app required at the venue.</p>
+        {facts_html}
         {chrome}
         <p class="seo-secondary-links no-print">
           <a href="{esc(app_href)}">Full kid list</a>
@@ -844,6 +823,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
 
       {map_card}
       {route90}
+      {tip_html}
       <div id="seo-play-target" class="seo-play-anchor" tabindex="-1"></div>
       {body}
 
@@ -965,7 +945,7 @@ def render_venue_page(v: dict) -> str:
   <link rel="stylesheet" href="/shell/shell.css?v=5" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=52" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=16" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=17" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
   </script>
