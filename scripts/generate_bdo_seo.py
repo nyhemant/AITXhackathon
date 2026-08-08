@@ -433,22 +433,43 @@ def map_card_html(mission_venue: dict) -> str:
       <span class="seo-map-go" aria-hidden="true">→</span>
     </a>"""
 
+def is_wonder_find(find: dict) -> bool:
+    """True flexible backups (taller than you, three colors) — not real animals/exhibits.
+
+    Animals carry catalog_id and belong in photo shortlist / Q&A, not emoji stubs.
+    """
+    if not find:
+        return False
+    if find.get("catalog_id"):
+        return False
+    fid = str(find.get("id") or "")
+    if fid.startswith("w_"):
+        return True
+    # Wonder-pool items never use catalog_id; zone sometimes tagged Wonder
+    zone = str(find.get("zone") or "").lower()
+    if zone == "wonder":
+        return True
+    # Abstract backup: no catalog link and not a venue item id pattern
+    return not fid or fid.startswith("w")
+
+
 def wonder_grid_html(mission: dict) -> str:
-    finds = mission.get("finds") or []
+    """Emoji tiles for flexible backups only — animals stay out of this block."""
+    finds = [f for f in (mission.get("finds") or []) if is_wonder_find(f)][:8]
+    if not finds:
+        return ""
     tiles = "".join(
         f"""<li class="seo-wonder-tile">
         <span class="seo-wonder-emoji" aria-hidden="true">{esc(f.get("emoji") or "✨")}</span>
         <strong>{esc(f.get("label") or "Wonder")}</strong>
-        <small>{esc(f.get("one_liner") or "")}</small>
+        <small>{esc(_card_blurb(f.get("one_liner") or "") or f.get("one_liner") or "")}</small>
       </li>"""
-        for f in finds[:8]
+        for f in finds
     )
-    if not tiles:
-        return ""
     return f"""
     <section class="seo-wonder-block" aria-labelledby="wonder-heading">
       <h2 id="wonder-heading">Also look for</h2>
-      <p class="seo-wonder-lead">Backup finds if a favorite animal is napping, off exhibit, or the line is too long.</p>
+      <p class="seo-wonder-lead">Flexible backups if a favorite is closed, crowded, or napping — no fixed path.</p>
       <ul class="seo-wonder-grid">{tiles}</ul>
     </section>"""
 
@@ -747,8 +768,13 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
         body = wonder_grid_html(mission) + hunt_sec
         how_step2 = "Check finds on the list as you go"
     elif mode == "hybrid":
-        body = unique_body(v, exclude_ids=start_exclude) + wonder_grid_html(mission)
-        how_step2 = "See a few favorites, then use the backup finds"
+        wonder_sec = wonder_grid_html(mission)
+        body = unique_body(v, exclude_ids=start_exclude) + wonder_sec
+        how_step2 = (
+            "See favorites, then flexible backups"
+            if wonder_sec
+            else "Use the shortlist while you walk"
+        )
     else:
         body = unique_body(v, exclude_ids=start_exclude)
         how_step2 = "Use the shortlist while you walk"
@@ -791,7 +817,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <link rel="stylesheet" href="/shell/shell.css?v=5" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=52" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=19" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=20" />
   <link rel="stylesheet" href="/field-pack/css/mission.css?v=8" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
@@ -964,7 +990,7 @@ def render_venue_page(v: dict) -> str:
   <link rel="stylesheet" href="/shell/shell.css?v=5" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=52" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=19" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=20" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
   </script>
