@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="/shell/shell.css?v=5" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=52" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=17" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=18" />
   <link rel="stylesheet" href="/field-pack/css/mission.css?v=8" />
   <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "HowTo", "name": "London Zoo Scavenger Hunt for Kids (Free Printable)", "description": "Free printable London Zoo scavenger hunt for kids in London. Short kid list of animals, one-page treasure hunt — Field Trip Kit by 1Less.", "totalTime": "PT2H", "tool": [{"@type": "HowToTool", "name": "Printed one-page hunt sheet"}], "step": [{"@type": "HowToStep", "position": 1, "text": "Find the gorilla troop"}, {"@type": "HowToStep", "position": 2, "text": "Watch a penguin dive or waddle"}, {"@type": "HowToStep", "position": 3, "text": "Spot stripes on a big cat"}, {"@type": "HowToStep", "position": 4, "text": "Find a slow climber (like a sloth)"}, {"@type": "HowToStep", "position": 5, "text": "Hear a loud sound (or a quiet one)"}, {"@type": "HowToStep", "position": 6, "text": "Point to where an animal might sleep"}, {"@type": "HowToStep", "position": 7, "text": "Find a long tail or lemur ring"}, {"@type": "HowToStep", "position": 8, "text": "Photo your favorite animal"}], "url": "https://1less.app/field-pack/london-zoo/"}
@@ -190,11 +190,19 @@
       </ul>
     </section>
     <section class="seo-list-block seo-hunt-block" aria-labelledby="hunt-heading">
-      <h2 id="hunt-heading">On the printable page</h2>
-      <p>Checkbox finds kids can hunt — no scores, no app at the venue.</p>
-      <ol class="seo-hunt-list">
-        <li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>Find the gorilla troop</span></li><li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>Watch a penguin dive or waddle</span></li><li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>Spot stripes on a big cat</span></li><li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>Find a slow climber (like a sloth)</span></li><li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>Hear a loud sound (or a quiet one)</span></li><li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>Point to where an animal might sleep</span></li><li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>Find a long tail or lemur ring</span></li><li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>Photo your favorite animal</span></li>
-      </ol>
+      <h2 id="hunt-heading">Print your mission</h2>
+      <p>Pick age and time, then print one page — no app at the venue.</p>
+      <p class="seo-hunt-cta-wrap no-print">
+        <button type="button" class="btn btn-primary" id="seo-open-mission" data-how="print">
+          Personalize mission &amp; print
+        </button>
+      </p>
+      <details class="seo-hunt-examples">
+        <summary>Example finds that may appear on the sheet</summary>
+        <ol class="seo-hunt-list">
+          <li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>Find the gorilla troop</span></li><li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>Watch a penguin dive or waddle</span></li><li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>Spot stripes on a big cat</span></li><li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>Find a slow climber (like a sloth)</span></li><li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>Hear a loud sound (or a quiet one)</span></li><li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>Point to where an animal might sleep</span></li><li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>Find a long tail or lemur ring</span></li><li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>Photo your favorite animal</span></li>
+        </ol>
+      </details>
     </section>
 
 
@@ -206,7 +214,7 @@
             <button type="button" class="how-step-btn" data-how="print" id="how-print-btn">
               <span class="how-ico" aria-hidden="true">🖨️</span>
               <strong>Print</strong>
-              <span>One-page mission</span>
+              <span>Customize age &amp; time, then print</span>
             </button>
           </li>
           <li>
@@ -706,8 +714,8 @@
   <script src="/shell/shell.js?v=3"></script>
   <script src="/field-pack/js/catalog.js?v=23"></script>
   <script src="/field-pack/js/print-maps.js?v=2"></script>
-  <script src="/field-pack/js/print-kit.js?v=8"></script>
+  <script src="/field-pack/js/print-kit.js?v=9"></script>
   <script src="/field-pack/js/mission/mission-engine.js?v=6"></script>
-  <script src="/field-pack/js/mission/mission-ui.js?v=10"></script>
+  <script src="/field-pack/js/mission/mission-ui.js?v=11"></script>
 </body>
 </html>

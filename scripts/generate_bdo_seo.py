@@ -255,11 +255,19 @@ def unique_body(
       </ul>
     </section>
     <section class="seo-list-block seo-hunt-block" aria-labelledby="hunt-heading">
-      <h2 id="hunt-heading">On the printable page</h2>
-      <p>Checkbox finds kids can hunt — no scores, no app at the venue.</p>
-      <ol class="seo-hunt-list">
-        {hunt_lis}
-      </ol>
+      <h2 id="hunt-heading">Print your mission</h2>
+      <p>Pick age and time, then print one page — no app at the venue.</p>
+      <p class="seo-hunt-cta-wrap no-print">
+        <button type="button" class="btn btn-primary" id="seo-open-mission" data-how="print">
+          Personalize mission &amp; print
+        </button>
+      </p>
+      <details class="seo-hunt-examples">
+        <summary>Example finds that may appear on the sheet</summary>
+        <ol class="seo-hunt-list">
+          {hunt_lis}
+        </ol>
+      </details>
     </section>
 """
 
@@ -717,9 +725,17 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
         hunt_sec = (
             f"""
     <section class="seo-list-block seo-hunt-block" aria-labelledby="hunt-heading">
-      <h2 id="hunt-heading">On the printable page</h2>
-      <p>Checkbox finds kids can hunt — no scores, no app at the venue.</p>
-      <ol class="seo-hunt-list">{hunt_lis}</ol>
+      <h2 id="hunt-heading">Print your mission</h2>
+      <p>Pick age and time, then print one page — no app at the venue.</p>
+      <p class="seo-hunt-cta-wrap no-print">
+        <button type="button" class="btn btn-primary" id="seo-open-mission" data-how="print">
+          Personalize mission &amp; print
+        </button>
+      </p>
+      <details class="seo-hunt-examples">
+        <summary>Example finds that may appear on the sheet</summary>
+        <ol class="seo-hunt-list">{hunt_lis}</ol>
+      </details>
     </section>"""
             if hunt_lis
             else ""
@@ -771,7 +787,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <link rel="stylesheet" href="/shell/shell.css?v=5" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=52" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=17" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=18" />
   <link rel="stylesheet" href="/field-pack/css/mission.css?v=8" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
@@ -835,7 +851,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
             <button type="button" class="how-step-btn" data-how="print" id="how-print-btn">
               <span class="how-ico" aria-hidden="true">🖨️</span>
               <strong>Print</strong>
-              <span>One-page mission</span>
+              <span>Customize age &amp; time, then print</span>
             </button>
           </li>
           <li>
@@ -881,9 +897,9 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <script src="/shell/shell.js?v=3"></script>
   <script src="/field-pack/js/catalog.js?v=23"></script>
   <script src="/field-pack/js/print-maps.js?v=2"></script>
-  <script src="/field-pack/js/print-kit.js?v=8"></script>
+  <script src="/field-pack/js/print-kit.js?v=9"></script>
   <script src="/field-pack/js/mission/mission-engine.js?v=6"></script>
-  <script src="/field-pack/js/mission/mission-ui.js?v=10"></script>
+  <script src="/field-pack/js/mission/mission-ui.js?v=11"></script>
 </body>
 </html>
 """
@@ -945,7 +961,7 @@ def render_venue_page(v: dict) -> str:
   <link rel="stylesheet" href="/shell/shell.css?v=5" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=52" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=17" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=18" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
   </script>
@@ -1054,15 +1070,19 @@ def render_venue_page(v: dict) -> str:
   <script src="/shell/shell.js?v=3"></script>
   <script src="/field-pack/js/catalog.js?v=23"></script>
   <script src="/field-pack/js/print-maps.js?v=2"></script>
-  <script src="/field-pack/js/print-kit.js?v=8"></script>
+  <script src="/field-pack/js/print-kit.js?v=9"></script>
   <script>
     (function () {{
       var btn = document.getElementById("seo-print-hunt");
       function printHunt() {{
-        if (!btn || !window.FPPrint) return false;
-        var id = btn.getAttribute("data-venue");
-        if (window.FPPrint.printTreasureForVenue(id)) return true;
-        location.href = "/field-pack/app.html#/venue/" + encodeURIComponent(id);
+        // Prefer mission drawer when present; else legacy static treasure
+        if (window.FPPrint && window.FPPrint.printTreasureForVenue) {{
+          var id = (btn && btn.getAttribute("data-venue")) || "";
+          if (window.FPPrint.printTreasureForVenue(id)) return true;
+        }}
+        if (btn) {{
+          location.href = "/field-pack/app.html#/venue/" + encodeURIComponent(btn.getAttribute("data-venue") || "");
+        }}
         return false;
       }}
       if (btn) btn.addEventListener("click", printHunt);

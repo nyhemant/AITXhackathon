@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="/shell/shell.css?v=5" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=52" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=17" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=18" />
   <link rel="stylesheet" href="/field-pack/css/mission.css?v=8" />
   <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "HowTo", "name": "American Museum of Natural History Scavenger Hunt for Kids (Free Printable)", "description": "Free printable American Museum of Natural History scavenger hunt for kids in New York. Short kid list of exhibits, one-page treasure hunt — Field Trip Kit by ", "totalTime": "PT2H", "tool": [{"@type": "HowToTool", "name": "Printed one-page hunt sheet"}], "step": [{"@type": "HowToStep", "position": 1, "text": "Find something taller than you"}, {"@type": "HowToStep", "position": 2, "text": "Spot a model, bone, or real artifact"}, {"@type": "HowToStep", "position": 3, "text": "Try one hands-on activity"}, {"@type": "HowToStep", "position": 4, "text": "Read a kid label out loud"}, {"@type": "HowToStep", "position": 5, "text": "Find a planet, star, or sky clue"}, {"@type": "HowToStep", "position": 6, "text": "Notice three different materials"}, {"@type": "HowToStep", "position": 7, "text": "Ask a grown-up one wonder question"}, {"@type": "HowToStep", "position": 8, "text": "Photo your favorite stop"}], "url": "https://1less.app/field-pack/amnh/"}
@@ -184,11 +184,19 @@
       </ul>
     </section>
     <section class="seo-list-block seo-hunt-block" aria-labelledby="hunt-heading">
-      <h2 id="hunt-heading">On the printable page</h2>
-      <p>Checkbox finds kids can hunt — no scores, no app at the venue.</p>
-      <ol class="seo-hunt-list">
-        <li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>Find something taller than you</span></li><li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>Spot a model, bone, or real artifact</span></li><li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>Try one hands-on activity</span></li><li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>Read a kid label out loud</span></li><li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>Find a planet, star, or sky clue</span></li><li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>Notice three different materials</span></li><li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>Ask a grown-up one wonder question</span></li><li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>Photo your favorite stop</span></li>
-      </ol>
+      <h2 id="hunt-heading">Print your mission</h2>
+      <p>Pick age and time, then print one page — no app at the venue.</p>
+      <p class="seo-hunt-cta-wrap no-print">
+        <button type="button" class="btn btn-primary" id="seo-open-mission" data-how="print">
+          Personalize mission &amp; print
+        </button>
+      </p>
+      <details class="seo-hunt-examples">
+        <summary>Example finds that may appear on the sheet</summary>
+        <ol class="seo-hunt-list">
+          <li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>Find something taller than you</span></li><li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>Spot a model, bone, or real artifact</span></li><li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>Try one hands-on activity</span></li><li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>Read a kid label out loud</span></li><li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>Find a planet, star, or sky clue</span></li><li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>Notice three different materials</span></li><li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>Ask a grown-up one wonder question</span></li><li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>Photo your favorite stop</span></li>
+        </ol>
+      </details>
     </section>
 
 
@@ -200,7 +208,7 @@
             <button type="button" class="how-step-btn" data-how="print" id="how-print-btn">
               <span class="how-ico" aria-hidden="true">🖨️</span>
               <strong>Print</strong>
-              <span>One-page mission</span>
+              <span>Customize age &amp; time, then print</span>
             </button>
           </li>
           <li>
@@ -700,8 +708,8 @@
   <script src="/shell/shell.js?v=3"></script>
   <script src="/field-pack/js/catalog.js?v=23"></script>
   <script src="/field-pack/js/print-maps.js?v=2"></script>
-  <script src="/field-pack/js/print-kit.js?v=8"></script>
+  <script src="/field-pack/js/print-kit.js?v=9"></script>
   <script src="/field-pack/js/mission/mission-engine.js?v=6"></script>
-  <script src="/field-pack/js/mission/mission-ui.js?v=10"></script>
+  <script src="/field-pack/js/mission/mission-ui.js?v=11"></script>
 </body>
 </html>

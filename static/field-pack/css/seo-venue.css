@@ -126,6 +126,35 @@
   color: #0f5c5c;
   opacity: 0.75;
 }
+.seo-hunt-cta-wrap {
+  margin: 0 0 12px;
+}
+.seo-hunt-cta-wrap .btn {
+  font-weight: 800;
+}
+.seo-hunt-examples {
+  margin: 4px 0 0;
+  border-radius: 12px;
+  border: 1.5px solid rgba(15, 92, 92, 0.12);
+  background: rgba(255, 255, 255, 0.7);
+  padding: 0 12px;
+}
+.seo-hunt-examples summary {
+  cursor: pointer;
+  font-weight: 750;
+  font-size: 0.9rem;
+  color: #3d4f6f;
+  padding: 10px 0;
+  list-style: none;
+}
+.seo-hunt-examples summary::-webkit-details-marker { display: none; }
+.seo-hunt-examples[open] summary {
+  border-bottom: 1px solid rgba(15, 92, 92, 0.1);
+  margin-bottom: 8px;
+}
+.seo-hunt-examples .seo-hunt-list {
+  padding-bottom: 10px;
+}
 
 /* Top photo strip under CTAs */
 .seo-hero-photos {

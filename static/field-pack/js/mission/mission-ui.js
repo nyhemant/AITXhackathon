@@ -340,28 +340,24 @@
     recompute(false);
 
     const openBtn = $("#mission-open-btn");
-    openBtn?.addEventListener("click", openDrawer);
+    openBtn?.addEventListener("click", (e) => {
+      e.preventDefault();
+      openDrawer();
+    });
 
-    // Bottom "How it works" steps → real actions
-    document.querySelectorAll("[data-how]").forEach((el) => {
+    // Any print CTA on the venue page → mission drawer (never static treasure sheet)
+    document.querySelectorAll("[data-how], #seo-print-hunt, #seo-open-mission").forEach((el) => {
       el.addEventListener("click", (e) => {
-        const how = el.getAttribute("data-how");
-        if (how === "print") {
+        const how = el.getAttribute("data-how") || "";
+        const id = el.id || "";
+        if (
+          how === "print" ||
+          how === "print-hunt" ||
+          id === "seo-print-hunt" ||
+          id === "seo-open-mission"
+        ) {
           e.preventDefault();
           openDrawer();
-          // Optional: auto-print after drawer paints
-          return;
-        }
-        if (how === "print-hunt") {
-          e.preventDefault();
-          const huntBtn = $("#seo-print-hunt");
-          if (huntBtn) {
-            huntBtn.click();
-            return;
-          }
-          if (window.FPPrint && venue && venue.slug) {
-            window.FPPrint.printTreasureForVenue(venue.slug);
-          }
           return;
         }
         if (how === "play") {
@@ -384,13 +380,19 @@
       });
     });
 
-    // Deep link: #mission opens drawer
-    if (location.hash === "#mission") {
-      openDrawer();
-    }
-    window.addEventListener("hashchange", () => {
-      if (location.hash === "#mission") openDrawer();
-    });
+    // Deep link: #mission opens drawer (landing pin CTA, shared links)
+    const maybeOpenFromHash = () => {
+      if (location.hash === "#mission" || location.hash === "#print") openDrawer();
+    };
+    maybeOpenFromHash();
+    window.addEventListener("hashchange", maybeOpenFromHash);
+
+    window.FPMissionUI = {
+      open: openDrawer,
+      close: closeDrawer,
+      isOpen,
+      getVenue: () => venue,
+    };
   }
 
   if (document.readyState === "loading") {

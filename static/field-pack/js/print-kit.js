@@ -459,9 +459,33 @@
   }
 
   /**
-   * Print treasure hunt for a venue (full catalog hunt + star list).
+   * Prefer mission drawer (age/time/interest → live sheet) when this page has one.
+   * Falls back to legacy static treasure sheet only on app/landing without a drawer.
+   */
+  function openMissionDrawerIfPresent() {
+    if (window.FPMissionUI && typeof window.FPMissionUI.open === "function") {
+      window.FPMissionUI.open();
+      return true;
+    }
+    if (document.getElementById("mission-drawer") || document.getElementById("mission-open-btn")) {
+      if (location.hash !== "#mission") location.hash = "#mission";
+      else {
+        // Hash already set — still try click the open control
+        const btn = document.getElementById("mission-open-btn");
+        if (btn) btn.click();
+      }
+      return true;
+    }
+    return false;
+  }
+
+  /**
+   * Print treasure hunt for a venue.
+   * On SEO venue pages: opens customizable mission drawer (not static list).
    */
   function printTreasureForVenue(venueId) {
+    if (openMissionDrawerIfPresent()) return true;
+
     const venue = getVenue(venueId);
     const { printSheet, treasureSheet } = sheets();
     if (!venue || !treasureSheet) {

@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="/shell/shell.css?v=5" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=52" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=17" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=18" />
   <link rel="stylesheet" href="/field-pack/css/mission.css?v=8" />
   <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "HowTo", "name": "Children's Museum (Perot) Scavenger Hunt for Kids (Free Printable)", "description": "Free printable Children's Museum (Perot) scavenger hunt for kids in Dallas. Short kid list of play zones, one-page treasure hunt — Field Trip Kit by 1Less.", "totalTime": "PT2H", "tool": [{"@type": "HowToTool", "name": "Printed one-page hunt sheet"}], "step": [{"@type": "HowToStep", "position": 1, "text": "Climb something colorful"}, {"@type": "HowToStep", "position": 2, "text": "Make or build with your hands"}, {"@type": "HowToStep", "position": 3, "text": "Find water play (if open)"}, {"@type": "HowToStep", "position": 4, "text": "Try a quiet looking spot"}, {"@type": "HowToStep", "position": 5, "text": "Use imagination in a pretend world"}, {"@type": "HowToStep", "position": 6, "text": "Create art or try a make station"}, {"@type": "HowToStep", "position": 7, "text": "Move your whole body — run, jump, or balance"}, {"@type": "HowToStep", "position": 8, "text": "Teach a grown-up your favorite zone"}], "url": "https://1less.app/field-pack/childrens-museum-perot/"}
@@ -178,11 +178,19 @@
       </ul>
     </section>
     <section class="seo-list-block seo-hunt-block" aria-labelledby="hunt-heading">
-      <h2 id="hunt-heading">On the printable page</h2>
-      <p>Checkbox finds kids can hunt — no scores, no app at the venue.</p>
-      <ol class="seo-hunt-list">
-        <li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>Climb something colorful</span></li><li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>Make or build with your hands</span></li><li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>Find water play (if open)</span></li><li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>Try a quiet looking spot</span></li><li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>Use imagination in a pretend world</span></li><li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>Create art or try a make station</span></li><li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>Move your whole body — run, jump, or balance</span></li><li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>Teach a grown-up your favorite zone</span></li>
-      </ol>
+      <h2 id="hunt-heading">Print your mission</h2>
+      <p>Pick age and time, then print one page — no app at the venue.</p>
+      <p class="seo-hunt-cta-wrap no-print">
+        <button type="button" class="btn btn-primary" id="seo-open-mission" data-how="print">
+          Personalize mission &amp; print
+        </button>
+      </p>
+      <details class="seo-hunt-examples">
+        <summary>Example finds that may appear on the sheet</summary>
+        <ol class="seo-hunt-list">
+          <li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>Climb something colorful</span></li><li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>Make or build with your hands</span></li><li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>Find water play (if open)</span></li><li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>Try a quiet looking spot</span></li><li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>Use imagination in a pretend world</span></li><li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>Create art or try a make station</span></li><li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>Move your whole body — run, jump, or balance</span></li><li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>Teach a grown-up your favorite zone</span></li>
+        </ol>
+      </details>
     </section>
 
 
@@ -194,7 +202,7 @@
             <button type="button" class="how-step-btn" data-how="print" id="how-print-btn">
               <span class="how-ico" aria-hidden="true">🖨️</span>
               <strong>Print</strong>
-              <span>One-page mission</span>
+              <span>Customize age &amp; time, then print</span>
             </button>
           </li>
           <li>
@@ -694,8 +702,8 @@
   <script src="/shell/shell.js?v=3"></script>
   <script src="/field-pack/js/catalog.js?v=23"></script>
   <script src="/field-pack/js/print-maps.js?v=2"></script>
-  <script src="/field-pack/js/print-kit.js?v=8"></script>
+  <script src="/field-pack/js/print-kit.js?v=9"></script>
   <script src="/field-pack/js/mission/mission-engine.js?v=6"></script>
-  <script src="/field-pack/js/mission/mission-ui.js?v=10"></script>
+  <script src="/field-pack/js/mission/mission-ui.js?v=11"></script>
 </body>
 </html>
