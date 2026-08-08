@@ -867,7 +867,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <script type="application/json" id="challenges-data">{challenges_json}</script>
   <script type="application/json" id="wonders-data">{wonders_json}</script>
   <script src="/shell/shell.js?v=3"></script>
-  <script src="/field-pack/js/catalog.js?v=22"></script>
+  <script src="/field-pack/js/catalog.js?v=23"></script>
   <script src="/field-pack/js/print-maps.js?v=2"></script>
   <script src="/field-pack/js/print-kit.js?v=7"></script>
   <script src="/field-pack/js/mission/mission-engine.js?v=6"></script>
@@ -1040,7 +1040,7 @@ def render_venue_page(v: dict) -> str:
   <div id="treasure-sheet" class="print-sheet treasure-sheet" aria-hidden="true"></div>
 
   <script src="/shell/shell.js?v=3"></script>
-  <script src="/field-pack/js/catalog.js?v=22"></script>
+  <script src="/field-pack/js/catalog.js?v=23"></script>
   <script src="/field-pack/js/print-maps.js?v=2"></script>
   <script src="/field-pack/js/print-kit.js?v=7"></script>
   <script>
