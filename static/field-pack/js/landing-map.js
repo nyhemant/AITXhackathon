@@ -1207,22 +1207,10 @@
   }
 
   function showOverview() {
-    const list = filteredPlaces();
-    const readyN = mapScope === "intl" ? list.filter((p) => p.status === "ready").length : 0;
-    let scopeNote;
-    if (mapScope === "intl") {
-      scopeNote = `${list.length} places worldwide${readyN ? ` · ${readyN} ready` : ""}`;
-    } else if (mapScope === "top") {
-      scopeNote = `${list.length} popular places`;
-    } else {
-      scopeNote = `${list.length} places`;
-    }
+    // No coaching copy — Map→Print→Play above already explains. Keep panel empty until a pin is chosen.
     detail.className = "pin-detail empty";
-    detail.innerHTML = `
-      <h3>Tap a pin</h3>
-      <p class="pd-hint">Short list + one-page hunt for that place.</p>
-      <p class="pd-meta">${escapeHtml(scopeNote)}. Numbered pins share a spot — tap to choose.</p>
-    `;
+    detail.innerHTML = "";
+    detail.setAttribute("aria-label", "Place details appear when you select a pin");
   }
 
   function catalogVenue(venueId) {

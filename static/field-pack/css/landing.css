@@ -389,8 +389,13 @@
   flex-direction: column;
 }
 
-.pin-detail.empty h3 {
-  color: var(--teal-deep, #0a4545);
+/* Idle panel: no copy, less chrome — room returns when a pin is selected */
+.pin-detail.empty {
+  min-height: 0;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+  background: transparent;
 }
 
 .pin-detail-kicker {
@@ -1684,9 +1689,12 @@
   min-height: 200px;
   padding: 18px;
 }
-.landing-clean .pin-detail.empty h3 {
-  font-size: 1.3rem;
-  margin: 0 0 8px;
+.landing-clean .pin-detail.empty {
+  min-height: 0;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+  background: transparent;
 }
 .landing-clean .pd-hint {
   margin: 0 0 10px;
