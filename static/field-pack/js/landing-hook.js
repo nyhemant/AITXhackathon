@@ -212,8 +212,10 @@
 
     // US metro: US scope + metro filter, then pan to pin cluster
     const moreBtn = document.getElementById("scope-more");
+    let needBasemapWait = false;
     if (moreBtn && moreBtn.getAttribute("aria-pressed") !== "true") {
       moreBtn.click();
+      needBasemapWait = true;
     }
     const runFocus = () => {
       if (citySelect && citySelect.querySelector(`option[value="${def.id}"]`)) {
@@ -226,7 +228,7 @@
       }
     };
     // Allow US basemap restore if we just left International
-    setTimeout(runFocus, moreBtn && moreBtn.getAttribute("aria-pressed") === "true" ? 0 : 140);
+    setTimeout(runFocus, needBasemapWait ? 140 : 0);
   }
 
   if (chips) {
