@@ -1202,18 +1202,30 @@ a {
   }
 
   /* ---- Mission / Q&A card (one page) ---- */
+  .ps-page {
+    display: flex;
+    flex-direction: column;
+    max-height: 10.2in;
+    overflow: hidden;
+    color: #152238;
+  }
+  .ps-page-with-photo {
+    height: 10.2in;
+  }
+
   .ps-banner {
     background: #0f5c5c;
     color: white;
     text-align: center;
     border-radius: 8px;
     padding: 5px 8px;
-    margin-bottom: 6px;
+    margin-bottom: 5px;
+    flex: 0 0 auto;
   }
 
   .ps-banner h1 {
     margin: 0;
-    font-size: 13pt;
+    font-size: 12.5pt;
     line-height: 1.1;
   }
 
@@ -1223,6 +1235,26 @@ a {
     opacity: 0.95;
   }
 
+  /* Compact text header — photo moves to bottom fill */
+  .ps-head {
+    flex: 0 0 auto;
+    border: 1.5px solid #1f6b4a;
+    border-radius: 8px;
+    padding: 5px 8px;
+    margin-bottom: 5px;
+  }
+  .ps-head h2 {
+    margin: 0 0 2px;
+    font-size: 14pt;
+    line-height: 1.1;
+  }
+  .ps-head .ps-line {
+    margin: 0;
+    font-size: 9pt;
+    line-height: 1.3;
+  }
+
+  /* Legacy hero (if any older HTML) */
   .ps-hero {
     display: grid;
     grid-template-columns: 1.35in 1fr;
@@ -1262,7 +1294,70 @@ a {
   .ps-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 5px;
+    gap: 4px;
+    flex: 0 0 auto;
+    margin-bottom: 4px;
+  }
+
+  /* Big animal photo fills leftover white space */
+  .ps-photo-fill {
+    flex: 1 1 auto;
+    min-height: 2.4in;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    margin: 0 0 3px;
+  }
+  .ps-photo-frame {
+    flex: 1 1 auto;
+    min-height: 2.2in;
+    border: 1.5px solid #1f6b4a;
+    border-radius: 8px 8px 0 0;
+    overflow: hidden;
+    background: #eef3f8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ps-page-with-photo .ps-photo-frame {
+    border-radius: 8px 8px 0 0;
+  }
+  .ps-photo-big {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-height: 4.8in;
+    object-fit: cover;
+    object-position: center;
+  }
+  .ps-wow {
+    flex: 0 0 auto;
+    border: 1.5px solid #1f6b4a;
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    background: #fff8e8;
+    padding: 5px 8px 6px;
+  }
+  .ps-wow-solo {
+    border-top: 1.5px solid #1f6b4a;
+    border-radius: 8px;
+    margin-top: 4px;
+  }
+  .ps-wow-q {
+    display: block;
+    font-size: 8pt;
+    font-weight: 850;
+    color: #c45c26;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    margin: 0 0 1px;
+  }
+  .ps-wow-a {
+    display: block;
+    font-size: 10pt;
+    font-weight: 750;
+    color: #0a4545;
+    line-height: 1.25;
   }
 
   .ps-card {
@@ -1348,10 +1443,20 @@ a {
   }
 
   .ps-footer {
-    margin-top: 4px;
+    margin-top: 3px;
     text-align: center;
-    font-size: 7pt;
+    font-size: 6.5pt;
     color: #3d4f6f;
+    flex: 0 0 auto;
+  }
+  .ps-page-with-photo .ps-card {
+    padding: 4px 6px 3px;
+  }
+  .ps-page-with-photo .ps-q {
+    font-size: 8.5pt;
+  }
+  .ps-page-with-photo .ps-choice {
+    font-size: 7.5pt;
   }
 
   .ps-taught {

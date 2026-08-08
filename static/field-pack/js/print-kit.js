@@ -127,6 +127,52 @@
       </div>`;
   }
 
+  /** Resolve catalog photo path for print/screen. */
+  function itemPhotoSrc(item) {
+    const p = (item && item.photo) || "";
+    if (!p) return "";
+    if (/^https?:\/\//i.test(p) || p.startsWith("/")) return p;
+    // catalog uses "photos/foo.jpg"
+    if (p.startsWith("photos/")) return "/field-pack/" + p;
+    return "/field-pack/photos/" + p.replace(/^\/+/, "");
+  }
+
+  /**
+   * One kid/parent wow line — prefer blurb, else superpower / home fact.
+   * Returns { q, a } for a tight Did-you-know strip under the big photo.
+   */
+  function wowFactFromItem(item) {
+    if (!item) return null;
+    const key = item.key || {};
+    const superpower = [].concat(key.superpower || []).filter(Boolean);
+    const home = [].concat(key.home || []).filter(Boolean);
+    const food = [].concat(key.food || []).filter(Boolean);
+    const name = item.name || "This animal";
+
+    if (item.blurb && String(item.blurb).trim()) {
+      return { q: "Did you know?", a: String(item.blurb).trim() };
+    }
+    if (superpower.length) {
+      return {
+        q: `What's ${name}'s superpower?`,
+        a: superpower.slice(0, 2).join(" · "),
+      };
+    }
+    if (home.length) {
+      return {
+        q: `Where does a ${name} feel at home?`,
+        a: home.slice(0, 2).join(" · "),
+      };
+    }
+    if (food.length) {
+      return {
+        q: `What's on the menu?`,
+        a: food.slice(0, 2).join(" · "),
+      };
+    }
+    return null;
+  }
+
   function buildQaCardHtml(item, venue) {
     const missions = missionsFor(venue);
     const cards = missions
@@ -144,21 +190,41 @@
           <div class="ps-choices">${choices}</div></section>`;
       })
       .join("");
+    const photo = itemPhotoSrc(item);
+    const wow = wowFactFromItem(item);
+    const wowHtml = wow
+      ? `<div class="ps-wow">
+          <strong class="ps-wow-q">${escapeHtml(wow.q)}</strong>
+          <span class="ps-wow-a">${escapeHtml(wow.a)}</span>
+        </div>`
+      : "";
+    const photoBlock = photo
+      ? `<div class="ps-photo-fill">
+          <div class="ps-photo-frame">
+            <img class="ps-photo-big" src="${escapeAttr(photo)}" alt="${escapeAttr(item.name || "Animal")}" />
+          </div>
+          ${wowHtml}
+        </div>`
+      : wowHtml
+        ? `<div class="ps-wow ps-wow-solo">
+            <strong class="ps-wow-q">${escapeHtml(wow.q)}</strong>
+            <span class="ps-wow-a">${escapeHtml(wow.a)}</span>
+          </div>`
+        : "";
+
     return `
-      <div class="ps-banner"><h1>FIELD TRIP KIT</h1>
-      <p>${escapeHtml(venue.name)} · Sample mission card · Circle answers · No scores</p></div>
-      <section class="ps-hero">
-        <img src="${escapeAttr(item.photo || "")}" alt="" />
-        <div>
+      <div class="ps-page${photo ? " ps-page-with-photo" : ""}">
+        <div class="ps-banner"><h1>FIELD TRIP KIT</h1>
+        <p>${escapeHtml(venue.name)} · Sample mission card · Circle answers · No scores</p></div>
+        <header class="ps-head">
           <h2>${escapeHtml(item.emoji || "")} ${escapeHtml(item.name)}</h2>
-          <p class="ps-meta">${escapeHtml(item.blurb || "")}</p>
-          <p class="ps-line"><strong>Explorer:</strong> <span class="write-in-line">________________</span> <span class="write-in-hint">(write name)</span></p>
-          <p class="ps-line"><strong>Place:</strong> ${escapeHtml(venue.name)}</p>
-          <p class="ps-meta" style="margin-top:4px"><strong>Top pick sample</strong> — more cards on the outing list</p>
-        </div>
-      </section>
-      <div class="ps-grid">${cards}</div>
-      <p class="ps-footer">Sample Q&amp;A card · open the outing for more animals &amp; tips</p>`;
+          <p class="ps-line"><strong>Explorer:</strong> <span class="write-in-line">________________</span>
+          &nbsp;&nbsp; <strong>Place:</strong> ${escapeHtml(venue.name)}</p>
+        </header>
+        <div class="ps-grid">${cards}</div>
+        ${photoBlock}
+        <p class="ps-footer">Sample Q&amp;A · open the outing for more animals &amp; tips</p>
+      </div>`;
   }
 
   function runPrint({ treasure }) {
