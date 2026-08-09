@@ -1856,7 +1856,9 @@
     if (pitch) pitch.textContent = copy.pitch;
     const dirH = document.getElementById("dir-heading");
     if (dirH) dirH.textContent = copy.dir;
-    const dirP = document.querySelector("#all-places > p");
+    const dirP =
+      document.getElementById("dir-blurb") ||
+      document.querySelector("#all-places > p:not(#seo-dir-empty)");
     if (dirP) dirP.textContent = copy.blurb;
     document.body.setAttribute("data-place-type", selectedTypeKind || "all");
     filterDirectoryByType();
