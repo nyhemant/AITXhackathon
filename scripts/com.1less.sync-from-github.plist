@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Optional. On the Mini only, after you decide GitHub is allowed to update live:
+
+    mkdir -p ~/Library/LaunchAgents
+    cp scripts/com.1less.sync-from-github.plist ~/Library/LaunchAgents/
+    # edit the two /Users/arku/Projects/AITXhackathon paths if the repo lives elsewhere
+    launchctl load ~/Library/LaunchAgents/com.1less.sync-from-github.plist
+
+  Runs every 5 minutes. Will not overwrite unsaved Mini edits.
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.1less.sync-from-github</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>/Users/arku/Projects/AITXhackathon/scripts/sync-from-github.sh</string>
+  </array>
+  <key>WorkingDirectory</key>
+  <string>/Users/arku/Projects/AITXhackathon</string>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>HOME</key>
+    <string>/Users/arku</string>
+    <key>PATH</key>
+    <string>/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin:/usr/local/bin</string>
+    <key>GIT_TERMINAL_PROMPT</key>
+    <string>0</string>
+  </dict>
+  <key>StartInterval</key>
+  <integer>300</integer>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>StandardOutPath</key>
+  <string>/tmp/1less-sync-from-github.log</string>
+  <key>StandardErrorPath</key>
+  <string>/tmp/1less-sync-from-github.log</string>
+</dict>
+</plist>

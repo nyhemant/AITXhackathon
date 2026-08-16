@@ -58,7 +58,15 @@ From the repo root:
 python3 -m unittest discover -s tests
 ```
 
-Run the local web chat:
+Local QA (MacBook — same server as 1less.app, not live):
+
+```bash
+./scripts/dev-serve.sh
+```
+
+Then browse `http://127.0.0.1:8000/field-pack/`. Edit, refresh. When a chunk is good: `git push`. On the Mini (live): `./scripts/sync-from-github.sh` once, or leave it manual.
+
+Same server, any host/port:
 
 ```bash
 python3 -m busyparent_agent.web --host 0.0.0.0 --port 8000
