@@ -246,30 +246,16 @@
   stroke-linejoin: round;
 }
 .vz-trail-bed {
-  stroke: #f4ead6;
-  stroke-width: 11;
-  opacity: 0.5;
-}
-.vz-trail-dash {
-  stroke: #c4b48a;
-  stroke-width: 2.2;
-  stroke-dasharray: 9 11;
-  opacity: 0.55;
-  animation: vz-trail-flow 20s linear infinite;
-}
-.vz-map-wrap[data-kind="aquarium"] .vz-trail-bed {
-  stroke: #dce8e4;
-  opacity: 0.4;
-}
-.vz-map-wrap[data-kind="park"] .vz-trail-bed {
   stroke: #f7e2b2;
-  stroke-width: 8;
+  stroke-width: 10;
   opacity: 0.85;
 }
-.vz-map-wrap[data-kind="park"] .vz-trail-dash {
+.vz-trail-dash {
   stroke: #6b5340;
+  stroke-width: 2.6;
   stroke-dasharray: 10 8;
   opacity: 0.65;
+  animation: vz-trail-flow 20s linear infinite;
 }
 @keyframes vz-trail-flow {
   to { stroke-dashoffset: -20; }
