@@ -13,7 +13,7 @@
   "printHideSub": "Cut the cards. Hide them. Write in the box. Ask the question.",
   "printFooter": "1less.app/field-pack/virtual-field-trip/?tab=aquarium · Field Trip Kit",
   "storageKey": "fp-virtual-aquarium-stamps-v4",
-  "mapSvg": "/field-pack/media/virtual-aquarium/map.svg?v=8",
+  "mapSvg": "/field-pack/media/virtual-aquarium/map.svg?v=10",
   "habitats": [
     {
       "id": "clownfish",

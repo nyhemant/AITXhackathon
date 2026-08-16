@@ -14,7 +14,7 @@
   "printHideSub": "Cut the cards. Hide them. Write in the box. Ask the question.",
   "printFooter": "1less.app/field-pack/virtual-field-trip/?tab=parks · Field Trip Kit",
   "storageKey": "fp-virtual-parks-stamps-v2",
-  "mapSvg": "/field-pack/media/virtual-parks/map.svg?v=10",
+  "mapSvg": "/field-pack/media/virtual-parks/map.svg?v=11",
   "mapClass": "is-wide",
   "habitats": [
     {

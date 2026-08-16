@@ -212,8 +212,10 @@ def main() -> None:
         '<rect x="0" y="0" width="1000" height="620" fill="url(#water)"/>',
         f'<g fill="#f4ead6" stroke="#c9b48a" stroke-width="0.8" stroke-linejoin="round">{land_svg}</g>',
         f'<g fill="none" stroke="#d8c9a4" stroke-width="0.55" stroke-linejoin="round" opacity="0.85">{state_svg}</g>',
-        f'<path d="{road}" fill="none" stroke="#f7e2b2" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"/>',
-        f'<path d="{road}" fill="none" stroke="#c45c26" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 8"/>',
+        f'<g id="vz-trail" class="vz-trail" pointer-events="none">',
+        f'  <path class="vz-trail-bed" d="{road}" fill="none"/>',
+        f'  <path class="vz-trail-dash" d="{road}" fill="none"/>',
+        "</g>",
         f'<g id="vz-entry" class="vz-gate"><rect x="{in_x - 22:.1f}" y="{in_y - 13:.1f}" width="50" height="26" rx="7" fill="#0f5c5c"/><text x="{in_x + 3:.1f}" y="{in_y + 5:.1f}" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="700" fill="#fff">IN</text></g>',
         f'<g id="vz-exit" class="vz-gate"><rect x="{out_x - 24:.1f}" y="{out_y - 13:.1f}" width="54" height="26" rx="7" fill="#8a9aaf"/><text x="{out_x + 3:.1f}" y="{out_y + 5:.1f}" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="700" fill="#fff">OUT</text></g>',
     ]

@@ -14,11 +14,11 @@
     { id: "parks", label: "National parks" },
   ];
   const TAB_CONFIGS = {
-    zoo: "/field-pack/data/virtual-venues/virtual-zoo.json?v=18",
-    aquarium: "/field-pack/data/virtual-venues/virtual-aquarium.json?v=19",
+    zoo: "/field-pack/data/virtual-venues/virtual-zoo.json?v=19",
+    aquarium: "/field-pack/data/virtual-venues/virtual-aquarium.json?v=21",
     "natural-history": "/field-pack/data/virtual-venues/virtual-nhm.json?v=13",
-    science: "/field-pack/data/virtual-venues/virtual-science.json?v=13",
-    parks: "/field-pack/data/virtual-venues/virtual-parks.json?v=20",
+    science: "/field-pack/data/virtual-venues/virtual-science.json?v=14",
+    parks: "/field-pack/data/virtual-venues/virtual-parks.json?v=21",
   };
 
   const mapMount = document.getElementById("vz-map");

@@ -239,7 +239,41 @@
 .vz-map-wrap[data-kind="zoo"] { background: #9bb08a; }
 .vz-map-wrap[data-kind="science"] { background: #b8b0c8; }
 .vz-map-wrap[data-kind="natural_history"] { background: #c4b896; }
-.vz-trail-dash { display: none; }
+.vz-trail-bed,
+.vz-trail-dash {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.vz-trail-bed {
+  stroke: #f4ead6;
+  stroke-width: 11;
+  opacity: 0.5;
+}
+.vz-trail-dash {
+  stroke: #c4b48a;
+  stroke-width: 2.2;
+  stroke-dasharray: 9 11;
+  opacity: 0.55;
+  animation: vz-trail-flow 20s linear infinite;
+}
+.vz-map-wrap[data-kind="aquarium"] .vz-trail-bed {
+  stroke: #dce8e4;
+  opacity: 0.4;
+}
+.vz-map-wrap[data-kind="park"] .vz-trail-bed {
+  stroke: #f7e2b2;
+  stroke-width: 8;
+  opacity: 0.85;
+}
+.vz-map-wrap[data-kind="park"] .vz-trail-dash {
+  stroke: #6b5340;
+  stroke-dasharray: 10 8;
+  opacity: 0.65;
+}
+@keyframes vz-trail-flow {
+  to { stroke-dashoffset: -20; }
+}
 .vz-arrows { fill: #8a7d5e; }
 @media (min-width: 720px) {
   .vz-map-wrap,
@@ -283,7 +317,8 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .vz-bubble,
-  .vz-caustic { animation: none; }
+  .vz-caustic,
+  .vz-trail-dash { animation: none; }
   .vz-caustic { opacity: 0.4; }
 }
 .vz-bullet-disc {

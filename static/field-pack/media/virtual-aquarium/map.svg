@@ -14,13 +14,6 @@
     </radialGradient>
   </defs>
   <image href="/field-pack/media/virtual-aquarium/park-ground.jpg?v=5" x="0" y="0" width="800" height="800" preserveAspectRatio="xMidYMid slice"/>
-  <g id="vz-trail" class="vz-trail" pointer-events="none">
-    <path d="M365,755 C300,720 280,690 272,666 C200,580 160,530 148,488 C140,400 145,350 148,316 C150,230 148,180 148,148 C220,140 290,145 348,148 C460,150 530,145 588,148 C650,180 680,250 688,328 C640,330 540,300 488,298 C420,360 370,420 348,468 C380,560 450,620 498,666 C480,710 460,740 447,755" fill="none" stroke="#d8c9a4" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="0.22"/>
-  </g>
-  <g id="vz-arrows" class="vz-arrows" pointer-events="none" fill="#8a7d5e">
-    <path d="M328,728 L318,708 L338,716 Z" opacity="0.58"/>
-    <path d="M458,708 L470,726 L448,718 Z" opacity="0.58"/>
-  </g>
   <g id="vz-water" class="vz-water" pointer-events="none">
     <rect class="vz-caustic" x="0" y="0" width="800" height="800" fill="url(#vz-caustic-grad)"/>
     <circle class="vz-bubble vz-bubble-a" cx="250" cy="640" r="4.2"/>
@@ -30,6 +23,14 @@
     <circle class="vz-bubble vz-bubble-b" cx="590" cy="140" r="4"/>
     <circle class="vz-bubble vz-bubble-c" cx="490" cy="280" r="3.4"/>
     <circle class="vz-bubble vz-bubble-a" cx="688" cy="340" r="3"/>
+  </g>
+  <g id="vz-trail" class="vz-trail" pointer-events="none">
+    <path class="vz-trail-bed" d="M365,755 C300,720 280,690 272,666 C200,580 160,530 148,488 C140,400 145,350 148,316 C150,230 148,180 148,148 C220,140 290,145 348,148 C460,150 530,145 588,148 C650,180 680,250 688,328 C640,330 540,300 488,298 C420,360 370,420 348,468 C380,560 450,620 498,666 C480,710 460,740 447,755" fill="none"/>
+    <path class="vz-trail-dash" d="M365,755 C300,720 280,690 272,666 C200,580 160,530 148,488 C140,400 145,350 148,316 C150,230 148,180 148,148 C220,140 290,145 348,148 C460,150 530,145 588,148 C650,180 680,250 688,328 C640,330 540,300 488,298 C420,360 370,420 348,468 C380,560 450,620 498,666 C480,710 460,740 447,755" fill="none"/>
+  </g>
+  <g id="vz-arrows" class="vz-arrows" pointer-events="none" fill="#8a7d5e">
+    <path d="M328,728 L318,708 L338,716 Z" opacity="0.58"/>
+    <path d="M458,708 L470,726 L448,718 Z" opacity="0.58"/>
   </g>
   <g id="vz-entry" class="vz-gate"><rect x="340" y="742" width="50" height="26" rx="7" fill="#0f5c5c"/><text x="365" y="760" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="700" fill="#fff">IN</text></g>
   <g id="vz-exit" class="vz-gate"><rect x="420" y="742" width="54" height="26" rx="7" fill="#8a9aaf"/><text x="447" y="760" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="700" fill="#fff">OUT</text></g>
