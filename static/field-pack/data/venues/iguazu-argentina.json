@@ -1,0 +1,375 @@
+{
+  "slug": "iguazu-argentina",
+  "name": "Iguazú National Park (Argentina)",
+  "type": "national_park",
+  "city": "Puerto Iguazú",
+  "region": "Misiones",
+  "country": "AR",
+  "lat": -25.6953,
+  "lng": -54.4367,
+  "official_url": "https://www.argentina.gob.ar/interior/ambiente/parquesnacionales/iguazu",
+  "last_verified": "2026-08-09",
+  "verified_by": "research",
+  "status": "verified",
+  "tagline": "Iguazú — boardwalk circuits to the falls; one side’s paths, not both countries in one rush.",
+  "practical": {
+    "typical_duration": "full day",
+    "ticket_note": "Park entry tickets; train inside park optional fee.",
+    "transit_note": "Puerto Iguazú gateway; Brazil side is a separate park/day.",
+    "energy_note": "Humidity, stairs, spray — waterproof layers.",
+    "best_start": "Enter → boardwalk circuits toward Garganta viewpoints as open",
+    "slice_name": "Argentina boardwalk circuits",
+    "season_note": "Year-round; high water changes views."
+  },
+  "items": [
+    {
+      "id": "falls",
+      "label": "Iguazú Falls viewpoint",
+      "emoji": "💦",
+      "one_liner": "Thundering multi-drop curtain.",
+      "tags": [
+        "water",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Falls",
+      "qa_card": {
+        "question": "What did you notice at the Iguazú Falls viewpoint?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-iguazu-falls",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "official_park_research",
+      "display_label": "Iguazú Falls viewpoint"
+    },
+    {
+      "id": "boardwalk",
+      "label": "Upper or lower circuit boardwalk",
+      "emoji": "🪵",
+      "one_liner": "Spray zones — waterproof layer.",
+      "tags": [
+        "walk",
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Circuits",
+      "qa_card": {
+        "question": "What did you notice at the Upper or lower circuit boardwalk?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-boardwalk",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "official_park_research",
+      "display_label": "Upper or lower circuit boardwalk"
+    },
+    {
+      "id": "river",
+      "label": "Iguazú River above the falls",
+      "emoji": "🏞️",
+      "one_liner": "Power building before the drop.",
+      "tags": [
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "River",
+      "qa_card": {
+        "question": "What did you notice at the Iguazú River above the falls?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-river",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "official_park_research",
+      "display_label": "Iguazú River above the falls"
+    },
+    {
+      "id": "jungle",
+      "label": "Atlantic forest edge",
+      "emoji": "🌳",
+      "one_liner": "Humid shade between viewpoints.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Forest",
+      "qa_card": {
+        "question": "What did you notice at the Atlantic forest edge?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-giant-tree",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "official_park_research",
+      "display_label": "Atlantic forest edge"
+    },
+    {
+      "id": "sign",
+      "label": "Circuit map / trail sign",
+      "emoji": "🥾",
+      "one_liner": "One side’s paths today — Brazil is another day.",
+      "tags": [
+        "read"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Circuits",
+      "qa_card": {
+        "question": "What did you notice at the Circuit map / trail sign?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-trailhead-sign",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "official_park_research",
+      "display_label": "Circuit map / trail sign"
+    },
+    {
+      "id": "vc",
+      "label": "Park entrance / train info",
+      "emoji": "🏛️",
+      "one_liner": "Tickets and internal train.",
+      "tags": [
+        "rest"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Entrance",
+      "qa_card": {
+        "question": "What did you notice at the Park entrance / train info?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-visitor-center",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "official_park_research",
+      "display_label": "Park entrance / train info"
+    },
+    {
+      "id": "wetland",
+      "label": "River island / wet edge",
+      "emoji": "🦩",
+      "one_liner": "Mist and shallows near the falls.",
+      "tags": [
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Water",
+      "qa_card": {
+        "question": "What did you notice at the River island / wet edge?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-wetland",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "official_park_research",
+      "display_label": "River island / wet edge"
+    },
+    {
+      "id": "talk",
+      "label": "Guide talk (if offered)",
+      "emoji": "🗣️",
+      "one_liner": "Seasonal.",
+      "tags": [
+        "hands"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "VC",
+      "qa_card": {
+        "question": "What did you notice at the Guide talk (if offered)?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-ranger-program",
+      "presence": "medium",
+      "presence_checked": "2026-08-09",
+      "presence_source": "official_park_research",
+      "display_label": "Guide talk (if offered)"
+    }
+  ],
+  "content_mode": "curated",
+  "media": {
+    "visitor_map_url": "/field-pack/media/maps/iguazu-argentina.jpg",
+    "visitor_map_page": "https://www.argentina.gob.ar/interior/ambiente/parquesnacionales/iguazu",
+    "visitor_map_kind": "image",
+    "map_attribution": "Map: Wikimedia Commons (Iguaçu NP map — falls region)",
+    "hero_illustration": "/field-pack/photos/np-hero-iguazu-argentina.jpg",
+    "print_map": "/field-pack/media/maps/iguazu-argentina.jpg",
+    "visitor_map_full": "https://upload.wikimedia.org/wikipedia/commons/0/03/Parque_Nacional_do_Igua%C3%A7%C3%BA_-_Igua%C3%A7u_National_Park_-_Mapa_do_Parque_Nacional_-_National_Park_map_%2814119957904%29.jpg"
+  },
+  "parent_script": [
+    "Bathroom first",
+    "Water & weather check",
+    "One big view",
+    "Leave while happy"
+  ],
+  "route_90m": [
+    "falls",
+    "boardwalk",
+    "river"
+  ],
+  "research_notes": "NP intl Phase 1 2026-08-09 · slice-focused kit · slice labels + shared animal cards 2026-08-09",
+  "list_confidence": "partial",
+  "do_not_list": [],
+  "presence_sources": [
+    "https://www.argentina.gob.ar/interior/ambiente/parquesnacionales/iguazu"
+  ],
+  "last_presence_audit": "2026-08-09",
+  "bonus_hunt": {
+    "tagline": "Iguazú National Park bonus · second look on the trail",
+    "find_ids": [
+      "wetland",
+      "jungle",
+      "sign",
+      "vc",
+      "boardwalk",
+      "falls",
+      "river"
+    ],
+    "challenges": [
+      {
+        "id": "iguazu_argen_wetland_watch",
+        "text": "Water: take 15 seconds on the River island / wet edge — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "iguazu_argen_jungle_watch",
+        "text": "Forest: take 15 seconds on the Atlantic forest edge — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "iguazu_argen_sign_watch",
+        "text": "Circuits: take 15 seconds on the Circuit map / trail sign — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "iguazu_argen_vc_watch",
+        "text": "Entrance: take 15 seconds on the Park entrance / train info — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "iguazu_argen_boardwalk_watch",
+        "text": "Circuits: take 15 seconds on the Upper or lower circuit boardwalk — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_still",
+        "text": "Quiet 20 seconds on the trail — bird, wind, water, or people: what wins?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_far_near",
+        "text": "Name something far first — then something by your feet",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_camo",
+        "text": "Best natural camouflage (rock, bark, shadow) you can spot",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_map",
+        "text": "Find a map or zone name you haven’t noticed — point it out",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_tiny_huge",
+        "text": "Something tiny next to something huge in this area",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find a park map or zone sign — name one animal that lives that way",
+    "easter_egg_little": "★ Easter egg: pick a favorite bench — sit 60 seconds and name three sounds",
+    "researched": "2026-08-09",
+    "status": "solid",
+    "sources": [
+      "https://www.argentina.gob.ar/interior/ambiente/parquesnacionales/iguazu"
+    ]
+  }
+}

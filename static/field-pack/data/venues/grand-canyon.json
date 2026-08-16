@@ -1,0 +1,491 @@
+{
+  "slug": "grand-canyon",
+  "name": "Grand Canyon National Park",
+  "type": "national_park",
+  "city": "Grand Canyon Village",
+  "region": "AZ",
+  "country": "US",
+  "lat": 36.0544,
+  "lng": -112.1401,
+  "official_url": "https://www.nps.gov/grca/",
+  "last_verified": "2026-08-09",
+  "verified_by": "research",
+  "status": "verified",
+  "tagline": "South Rim village — rail overlooks and a short rim walk, not the whole canyon.",
+  "practical": {
+    "typical_duration": "half day",
+    "ticket_note": "Park entrance pass; South Rim is the main family slice.",
+    "transit_note": "Village parking fills early; free shuttle on the rim in season.",
+    "energy_note": "Altitude + sun; stay behind rails; little kids tire fast.",
+    "best_start": "Visitor center or Mather Point → one more overlook → snack",
+    "slice_name": "South Rim · Village area",
+    "season_note": "North Rim is seasonal and separate — this kit is South Rim only."
+  },
+  "items": [
+    {
+      "id": "grca_mather",
+      "label": "Mather Point",
+      "emoji": "🌄",
+      "one_liner": "Classic first-look rail — layers forever below you · Hold hands near the rim",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Mather Point",
+      "qa_card": {
+        "question": "What did you notice at Mather Point?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "grca-mather-point",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Mather Point",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/grca/planyourvisit/mather-point.htm"
+      },
+      "safety_note": "Hold hands near the rim",
+      "core": true
+    },
+    {
+      "id": "grca_yavapai",
+      "label": "Yavapai Point & Geology Museum",
+      "emoji": "🪨",
+      "one_liner": "Rim view plus rock-layer stories inside the small museum · Stay behind rails",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Yavapai Point",
+      "qa_card": {
+        "question": "What did you notice at Yavapai Point & Geology Museum?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "grca-yavapai-point",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Yavapai Point & Geology Museum",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/grca/"
+      },
+      "safety_note": "Stay behind rails",
+      "core": true
+    },
+    {
+      "id": "grca_rim_trail",
+      "label": "Rim Trail stroll",
+      "emoji": "🥾",
+      "one_liner": "Mostly paved rim walk between viewpoints — pick a short stretch · Hold hands near edges",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "South Rim",
+      "qa_card": {
+        "question": "What did you notice at Rim Trail stroll?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "grca-rim-trail",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Rim Trail stroll",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/grca/planyourvisit/rimtrail.htm"
+      },
+      "safety_note": "Hold hands near edges",
+      "core": true
+    },
+    {
+      "id": "grca_vc",
+      "label": "Grand Canyon Visitor Center",
+      "emoji": "🏛️",
+      "one_liner": "Orientation plaza near Mather — maps and restrooms",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Visitor Center plaza",
+      "qa_card": {
+        "question": "What did you notice at Grand Canyon Visitor Center?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "grca-vc",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Grand Canyon Visitor Center",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/grca/planyourvisit/visitorcenters.htm"
+      },
+      "safety_note": "",
+      "core": true
+    },
+    {
+      "id": "grca_second_view",
+      "label": "Second rim overlook",
+      "emoji": "🏞️",
+      "one_liner": "A second rail stop so you compare two canyon “windows” · Stay behind rails",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "South Rim",
+      "qa_card": {
+        "question": "What did you notice at Second rim overlook?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "grca-second-overlook",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Second rim overlook",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/grca/"
+      },
+      "safety_note": "Stay behind rails",
+      "core": true
+    },
+    {
+      "id": "grca_village_green",
+      "label": "Village green space",
+      "emoji": "🌾",
+      "one_liner": "Flat reset away from the rim edge — snack and legs",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Grand Canyon Village",
+      "qa_card": {
+        "question": "What did you notice at Village green space?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "grca-village-green",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Village green space",
+      "verify": {
+        "status": "todo",
+        "source": ""
+      },
+      "safety_note": "",
+      "core": true
+    },
+    {
+      "id": "grca_colorado_glimpse",
+      "label": "Colorado River glimpse",
+      "emoji": "🌊",
+      "one_liner": "Far below ribbon of water — binoculars help",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Rim",
+      "qa_card": {
+        "question": "What did you notice at Colorado River glimpse?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "grca-colorado-glimpse",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Colorado River glimpse",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/grca/"
+      },
+      "safety_note": "",
+      "core": true
+    },
+    {
+      "id": "grca_trail_sign",
+      "label": "Rim Trail distance sign",
+      "emoji": "🥾",
+      "one_liner": "Read how far to the next named viewpoint",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Rim Trail",
+      "qa_card": {
+        "question": "What did you notice at Rim Trail distance sign?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "grca-rim-sign",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Rim Trail distance sign",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/grca/"
+      },
+      "safety_note": "",
+      "core": true
+    },
+    {
+      "id": "grca_jr",
+      "label": "Grand Canyon Junior Ranger desk",
+      "emoji": "🎖️",
+      "one_liner": "Ask at a visitor center desk",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Visitor center",
+      "qa_card": {
+        "question": "What did you notice at Grand Canyon Junior Ranger desk?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "np-junior-ranger",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Grand Canyon Junior Ranger desk",
+      "verify": {
+        "status": "sourced",
+        "source": "generic-template"
+      },
+      "core": false
+    },
+    {
+      "id": "grca_talk",
+      "label": "Ranger talk (if offered)",
+      "emoji": "🗣️",
+      "one_liner": "Check the day’s program board",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "VC",
+      "qa_card": {
+        "question": "What did you notice at Ranger talk (if offered)?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "np-ranger-program",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Ranger talk (if offered)",
+      "verify": {
+        "status": "sourced",
+        "source": "generic-template"
+      },
+      "core": false
+    }
+  ],
+  "content_mode": "curated",
+  "media": {
+    "visitor_map_url": "/field-pack/media/maps/grand-canyon.jpg",
+    "visitor_map_page": "https://www.nps.gov/grca/planyourvisit/upload/GRCAmap2.pdf",
+    "visitor_map_kind": "image",
+    "map_attribution": "Map: National Park Service (public domain)",
+    "hero_illustration": "/field-pack/photos/np-hero-grand-canyon.jpg",
+    "print_map": "/field-pack/media/maps/grand-canyon.jpg",
+    "visitor_map_full": "https://www.nps.gov/grca/planyourvisit/upload/GRCAmap5s.jpg"
+  },
+  "parent_script": [
+    "Bathroom first",
+    "Water & sun check",
+    "One big view",
+    "Leave while happy"
+  ],
+  "route_90m": [
+    "grca_mather",
+    "grca_rim_trail",
+    "grca_yavapai"
+  ],
+  "research_notes": "NP Phase 1a pilot 2026-08-08 · slice-focused kit · label scrub 2026-08-09 · depth-pass top10 2026-08-09",
+  "list_confidence": "partial",
+  "do_not_list": [],
+  "presence_sources": [
+    "https://www.nps.gov/grca/"
+  ],
+  "last_presence_audit": "2026-08-08",
+  "bonus_hunt": {
+    "tagline": "Grand Canyon National Park bonus · second look on the trail",
+    "find_ids": [
+      "grca_colorado_glimpse",
+      "grca_second_view",
+      "grca_trail_sign",
+      "grca_vc",
+      "grca_village_green",
+      "grca_jr",
+      "grca_talk"
+    ],
+    "challenges": [
+      {
+        "id": "grand_canyon_grca_colorado_gl_watch",
+        "text": "Rim: take 15 seconds on the Colorado River glimpse — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "grand_canyon_grca_second_view_watch",
+        "text": "South Rim: take 15 seconds on the Second rim overlook — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "grand_canyon_grca_trail_sign_watch",
+        "text": "Rim Trail: take 15 seconds on the Rim Trail distance sign — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "grand_canyon_grca_vc_watch",
+        "text": "Visitor Center plaza: take 15 seconds on the Grand Canyon Visitor Center — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "grand_canyon_grca_village_gre_watch",
+        "text": "Grand Canyon Village: take 15 seconds on the Village green space — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_still",
+        "text": "Quiet 20 seconds on the trail — bird, wind, water, or people: what wins?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_far_near",
+        "text": "Name something far first — then something by your feet",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_camo",
+        "text": "Best natural camouflage (rock, bark, shadow) you can spot",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_map",
+        "text": "Find a map or zone name you haven’t noticed — point it out",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_tiny_huge",
+        "text": "Something tiny next to something huge in this area",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find a park map or zone sign — name one animal that lives that way",
+    "easter_egg_little": "★ Easter egg: pick a favorite bench — sit 60 seconds and name three sounds",
+    "researched": "2026-08-09",
+    "status": "solid",
+    "sources": [
+      "https://www.nps.gov/grca/"
+    ]
+  },
+  "slice_label": "South Rim Village",
+  "safety_footer": "Stay on boardwalks and trails · give wildlife lots of space · bring water"
+}

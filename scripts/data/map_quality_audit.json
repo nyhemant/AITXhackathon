@@ -1,0 +1,1268 @@
+{
+  "summary": {
+    "D": 2,
+    "C": 6,
+    "B": 24,
+    "A": 31
+  },
+  "parks": [
+    {
+      "slug": "shenandoah",
+      "grade": "D",
+      "score": 40,
+      "issues": [
+        "awkward aspect 0.373",
+        "white 57%",
+        "photo 22%",
+        "mscore -1.593"
+      ],
+      "metrics": {
+        "w": 820,
+        "h": 2200,
+        "min_edge": 820,
+        "bytes": 423653,
+        "aspect": 0.373,
+        "white_f": 0.567,
+        "photo_f": 0.224,
+        "map_score": -1.593
+      },
+      "src": "https://npmaps.com/wp-content/uploads/shenandoah-national-park-map.jpg",
+      "page": "https://www.nps.gov/shen/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "new-river-gorge",
+      "grade": "D",
+      "score": 48,
+      "issues": [
+        "white 61%",
+        "photo 22%",
+        "mscore -1.544"
+      ],
+      "metrics": {
+        "w": 2180,
+        "h": 2110,
+        "min_edge": 2110,
+        "bytes": 827418,
+        "aspect": 1.033,
+        "white_f": 0.608,
+        "photo_f": 0.224,
+        "map_score": -1.544
+      },
+      "src": "https://npmaps.com/wp-content/uploads/new-river-gorge-scenic-drive-map",
+      "page": "https://www.nps.gov/neri/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "great-smoky-mountains",
+      "grade": "C",
+      "score": 55,
+      "issues": [
+        "photo 49%",
+        "mscore -1.535"
+      ],
+      "metrics": {
+        "w": 2158,
+        "h": 1297,
+        "min_edge": 1297,
+        "bytes": 820841,
+        "aspect": 1.664,
+        "white_f": 0.109,
+        "photo_f": 0.493,
+        "map_score": -1.535
+      },
+      "src": "https://www.nps.gov/grsm/planyourvisit/upload/grsmmap_2024_reduced_508",
+      "page": "https://www.nps.gov/grsm/planyourvisit/upload/grsmmap_2024_reduced_508.pdf"
+    },
+    {
+      "slug": "mammoth-cave",
+      "grade": "C",
+      "score": 55,
+      "issues": [
+        "photo 46%",
+        "mscore -1.591"
+      ],
+      "metrics": {
+        "w": 2200,
+        "h": 1200,
+        "min_edge": 1200,
+        "bytes": 503393,
+        "aspect": 1.833,
+        "white_f": 0.06,
+        "photo_f": 0.457,
+        "map_score": -1.591
+      },
+      "src": "https://npmaps.com/wp-content/uploads/mammoth-cave-national-park-map.j",
+      "page": "https://www.nps.gov/maca/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "bryce-canyon",
+      "grade": "C",
+      "score": 59,
+      "issues": [
+        "awkward aspect 0.385",
+        "photo 37%",
+        "mscore -1.206"
+      ],
+      "metrics": {
+        "w": 847,
+        "h": 2200,
+        "min_edge": 847,
+        "bytes": 444657,
+        "aspect": 0.385,
+        "white_f": 0.023,
+        "photo_f": 0.368,
+        "map_score": -1.206
+      },
+      "src": "https://npmaps.com/wp-content/uploads/bryce-canyon-park-map.jpg",
+      "page": "https://www.nps.gov/brca/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "kings-canyon",
+      "grade": "C",
+      "score": 67,
+      "issues": [
+        "photo 36%",
+        "mscore -1.071"
+      ],
+      "metrics": {
+        "w": 1808,
+        "h": 2200,
+        "min_edge": 1808,
+        "bytes": 758939,
+        "aspect": 0.822,
+        "white_f": 0.011,
+        "photo_f": 0.362,
+        "map_score": -1.071
+      },
+      "src": "https://npmaps.com/wp-content/uploads/kings-canyon-sequoia-national-pa",
+      "page": "https://www.nps.gov/seki/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "north-cascades",
+      "grade": "C",
+      "score": 67,
+      "issues": [
+        "photo 38%",
+        "mscore -0.945"
+      ],
+      "metrics": {
+        "w": 2127,
+        "h": 2200,
+        "min_edge": 2127,
+        "bytes": 1247875,
+        "aspect": 0.967,
+        "white_f": 0.003,
+        "photo_f": 0.375,
+        "map_score": -0.945
+      },
+      "src": "https://npmaps.com/wp-content/uploads/north-cascades-national-park-map",
+      "page": "https://www.nps.gov/noca/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "theodore-roosevelt",
+      "grade": "C",
+      "score": 67,
+      "issues": [
+        "photo 42%",
+        "mscore -1.319"
+      ],
+      "metrics": {
+        "w": 1736,
+        "h": 1179,
+        "min_edge": 1179,
+        "bytes": 446655,
+        "aspect": 1.472,
+        "white_f": 0.075,
+        "photo_f": 0.418,
+        "map_score": -1.319
+      },
+      "src": "https://npmaps.com/wp-content/uploads/theodore-roosevelt-national-park",
+      "page": "https://www.nps.gov/thro/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "arches",
+      "grade": "B",
+      "score": 80,
+      "issues": [
+        "photo 28%",
+        "mscore -0.718"
+      ],
+      "metrics": {
+        "w": 1812,
+        "h": 2200,
+        "min_edge": 1812,
+        "bytes": 723911,
+        "aspect": 0.824,
+        "white_f": 0.001,
+        "photo_f": 0.28,
+        "map_score": -0.718
+      },
+      "src": "",
+      "page": "https://www.nps.gov/arch/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "badlands",
+      "grade": "B",
+      "score": 80,
+      "issues": [
+        "photo 29%",
+        "mscore -0.723"
+      ],
+      "metrics": {
+        "w": 2200,
+        "h": 1230,
+        "min_edge": 1230,
+        "bytes": 540275,
+        "aspect": 1.789,
+        "white_f": 0.024,
+        "photo_f": 0.287,
+        "map_score": -0.723
+      },
+      "src": "https://npmaps.com/wp-content/uploads/badlands-national-park-map.jpg",
+      "page": "https://www.nps.gov/badl/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "big-bend",
+      "grade": "B",
+      "score": 80,
+      "issues": [
+        "photo 31%",
+        "mscore -0.969"
+      ],
+      "metrics": {
+        "w": 888,
+        "h": 1125,
+        "min_edge": 888,
+        "bytes": 236280,
+        "aspect": 0.789,
+        "white_f": 0.008,
+        "photo_f": 0.311,
+        "map_score": -0.969
+      },
+      "src": "",
+      "page": "https://www.nps.gov/bibe/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "biscayne",
+      "grade": "B",
+      "score": 80,
+      "issues": [
+        "photo 23%",
+        "mscore -0.597"
+      ],
+      "metrics": {
+        "w": 1937,
+        "h": 2200,
+        "min_edge": 1937,
+        "bytes": 532993,
+        "aspect": 0.88,
+        "white_f": 0.123,
+        "photo_f": 0.233,
+        "map_score": -0.597
+      },
+      "src": "",
+      "page": "https://www.nps.gov/bisc/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "carlsbad-caverns",
+      "grade": "B",
+      "score": 80,
+      "issues": [
+        "photo 35%",
+        "mscore -0.953"
+      ],
+      "metrics": {
+        "w": 1061,
+        "h": 1022,
+        "min_edge": 1022,
+        "bytes": 140771,
+        "aspect": 1.038,
+        "white_f": 0.028,
+        "photo_f": 0.348,
+        "map_score": -0.953
+      },
+      "src": "",
+      "page": "https://www.nps.gov/cave/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "congaree",
+      "grade": "B",
+      "score": 80,
+      "issues": [
+        "photo 33%",
+        "mscore -0.967"
+      ],
+      "metrics": {
+        "w": 2200,
+        "h": 996,
+        "min_edge": 996,
+        "bytes": 407568,
+        "aspect": 2.209,
+        "white_f": 0.003,
+        "photo_f": 0.328,
+        "map_score": -0.967
+      },
+      "src": "https://npmaps.com/wp-content/uploads/congaree-national-park-map.jpg",
+      "page": "https://www.nps.gov/cong/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "death-valley",
+      "grade": "B",
+      "score": 80,
+      "issues": [
+        "photo 26%",
+        "mscore -0.567"
+      ],
+      "metrics": {
+        "w": 1363,
+        "h": 2200,
+        "min_edge": 1363,
+        "bytes": 751057,
+        "aspect": 0.62,
+        "white_f": 0.011,
+        "photo_f": 0.262,
+        "map_score": -0.567
+      },
+      "src": "",
+      "page": "https://www.nps.gov/deva/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "gateway-arch",
+      "grade": "B",
+      "score": 80,
+      "issues": [
+        "photo 28%",
+        "mscore -0.643"
+      ],
+      "metrics": {
+        "w": 2200,
+        "h": 1852,
+        "min_edge": 1852,
+        "bytes": 511534,
+        "aspect": 1.188,
+        "white_f": 0.002,
+        "photo_f": 0.28,
+        "map_score": -0.643
+      },
+      "src": "https://npmaps.com/wp-content/uploads/gateway-arch-national-park-map.j",
+      "page": "https://www.nps.gov/jeff/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "grand-canyon",
+      "grade": "B",
+      "score": 80,
+      "issues": [
+        "photo 34%",
+        "mscore -0.852"
+      ],
+      "metrics": {
+        "w": 2200,
+        "h": 993,
+        "min_edge": 993,
+        "bytes": 674439,
+        "aspect": 2.216,
+        "white_f": 0.024,
+        "photo_f": 0.344,
+        "map_score": -0.852
+      },
+      "src": "https://www.nps.gov/grca/planyourvisit/upload/GRCAmap5s.jpg",
+      "page": "https://www.nps.gov/grca/planyourvisit/upload/GRCAmap2.pdf"
+    },
+    {
+      "slug": "grand-teton",
+      "grade": "B",
+      "score": 80,
+      "issues": [
+        "photo 28%",
+        "mscore -0.714"
+      ],
+      "metrics": {
+        "w": 997,
+        "h": 2200,
+        "min_edge": 997,
+        "bytes": 603507,
+        "aspect": 0.453,
+        "white_f": 0.011,
+        "photo_f": 0.277,
+        "map_score": -0.714
+      },
+      "src": "",
+      "page": "https://www.nps.gov/grte/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "hot-springs",
+      "grade": "B",
+      "score": 80,
+      "issues": [
+        "photo 34%",
+        "mscore -0.8"
+      ],
+      "metrics": {
+        "w": 2200,
+        "h": 1137,
+        "min_edge": 1137,
+        "bytes": 479697,
+        "aspect": 1.935,
+        "white_f": 0.025,
+        "photo_f": 0.337,
+        "map_score": -0.8
+      },
+      "src": "",
+      "page": "https://www.nps.gov/hosp/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "indiana-dunes",
+      "grade": "B",
+      "score": 80,
+      "issues": [
+        "photo 23%",
+        "mscore -0.663"
+      ],
+      "metrics": {
+        "w": 2200,
+        "h": 1212,
+        "min_edge": 1212,
+        "bytes": 325859,
+        "aspect": 1.815,
+        "white_f": 0.167,
+        "photo_f": 0.227,
+        "map_score": -0.663
+      },
+      "src": "https://npmaps.com/wp-content/uploads/indiana-dunes-national-park-map.",
+      "page": "https://www.nps.gov/indu/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "joshua-tree",
+      "grade": "B",
+      "score": 80,
+      "issues": [
+        "photo 29%",
+        "mscore -0.971"
+      ],
+      "metrics": {
+        "w": 1263,
+        "h": 1130,
+        "min_edge": 1130,
+        "bytes": 139747,
+        "aspect": 1.118,
+        "white_f": 0.095,
+        "photo_f": 0.286,
+        "map_score": -0.971
+      },
+      "src": "",
+      "page": "https://www.nps.gov/jotr/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "lassen-volcanic",
+      "grade": "B",
+      "score": 80,
+      "issues": [
+        "photo 24%",
+        "mscore -0.598"
+      ],
+      "metrics": {
+        "w": 2200,
+        "h": 1133,
+        "min_edge": 1133,
+        "bytes": 535508,
+        "aspect": 1.942,
+        "white_f": 0.002,
+        "photo_f": 0.241,
+        "map_score": -0.598
+      },
+      "src": "https://npmaps.com/wp-content/uploads/lassen-volcanic-national-park-ma",
+      "page": "https://www.nps.gov/lavo/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "mount-rainier",
+      "grade": "B",
+      "score": 80,
+      "issues": [
+        "photo 27%",
+        "mscore -0.69"
+      ],
+      "metrics": {
+        "w": 2200,
+        "h": 2056,
+        "min_edge": 2056,
+        "bytes": 1049169,
+        "aspect": 1.07,
+        "white_f": 0.014,
+        "photo_f": 0.266,
+        "map_score": -0.69
+      },
+      "src": "https://npmaps.com/wp-content/uploads/mount-rainier-national-park-map.",
+      "page": "https://www.nps.gov/mora/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "olympic",
+      "grade": "B",
+      "score": 80,
+      "issues": [
+        "photo 28%",
+        "mscore -0.507"
+      ],
+      "metrics": {
+        "w": 2200,
+        "h": 1563,
+        "min_edge": 1563,
+        "bytes": 840705,
+        "aspect": 1.408,
+        "white_f": 0.008,
+        "photo_f": 0.275,
+        "map_score": -0.507
+      },
+      "src": "https://npmaps.com/wp-content/uploads/olympic-national-park-map.jpg",
+      "page": "https://www.nps.gov/olym/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "petrified-forest",
+      "grade": "B",
+      "score": 80,
+      "issues": [
+        "photo 28%",
+        "mscore -0.53"
+      ],
+      "metrics": {
+        "w": 1619,
+        "h": 1987,
+        "min_edge": 1619,
+        "bytes": 585688,
+        "aspect": 0.815,
+        "white_f": 0.001,
+        "photo_f": 0.285,
+        "map_score": -0.53
+      },
+      "src": "",
+      "page": "https://www.nps.gov/pefo/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "sequoia",
+      "grade": "B",
+      "score": 80,
+      "issues": [
+        "photo 27%",
+        "mscore -0.721"
+      ],
+      "metrics": {
+        "w": 1869,
+        "h": 2200,
+        "min_edge": 1869,
+        "bytes": 815725,
+        "aspect": 0.85,
+        "white_f": 0.0,
+        "photo_f": 0.271,
+        "map_score": -0.721
+      },
+      "src": "https://npmaps.com/wp-content/uploads/sequoia-kings-canyon-national-pa",
+      "page": "https://www.nps.gov/seki/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "virgin-islands",
+      "grade": "B",
+      "score": 80,
+      "issues": [
+        "modest 602",
+        "photo 29%"
+      ],
+      "metrics": {
+        "w": 781,
+        "h": 602,
+        "min_edge": 602,
+        "bytes": 138707,
+        "aspect": 1.297,
+        "white_f": 0.02,
+        "photo_f": 0.294,
+        "map_score": -0.195
+      },
+      "src": "",
+      "page": "https://www.nps.gov/viis/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "white-sands",
+      "grade": "B",
+      "score": 80,
+      "issues": [
+        "photo 34%",
+        "mscore -0.867"
+      ],
+      "metrics": {
+        "w": 2043,
+        "h": 2200,
+        "min_edge": 2043,
+        "bytes": 813610,
+        "aspect": 0.929,
+        "white_f": 0.146,
+        "photo_f": 0.342,
+        "map_score": -0.867
+      },
+      "src": "",
+      "page": "https://www.nps.gov/whsa/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "wind-cave",
+      "grade": "B",
+      "score": 80,
+      "issues": [
+        "photo 27%",
+        "mscore -0.861"
+      ],
+      "metrics": {
+        "w": 1150,
+        "h": 882,
+        "min_edge": 882,
+        "bytes": 191245,
+        "aspect": 1.304,
+        "white_f": 0.06,
+        "photo_f": 0.274,
+        "map_score": -0.861
+      },
+      "src": "",
+      "page": "https://www.nps.gov/wica/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "yellowstone",
+      "grade": "B",
+      "score": 80,
+      "issues": [
+        "photo 32%",
+        "mscore -0.815"
+      ],
+      "metrics": {
+        "w": 2002,
+        "h": 2200,
+        "min_edge": 2002,
+        "bytes": 1073756,
+        "aspect": 0.91,
+        "white_f": 0.024,
+        "photo_f": 0.318,
+        "map_score": -0.815
+      },
+      "src": "https://www.nps.gov/yell/planyourvisit/upload/2025_Yellowstone-Unigrid",
+      "page": "https://www.nps.gov/yell/planyourvisit/upload/2025_Yellowstone-Unigrid_Web-508.pdf"
+    },
+    {
+      "slug": "yosemite",
+      "grade": "B",
+      "score": 80,
+      "issues": [
+        "photo 28%",
+        "mscore -0.798"
+      ],
+      "metrics": {
+        "w": 2200,
+        "h": 1698,
+        "min_edge": 1698,
+        "bytes": 923070,
+        "aspect": 1.296,
+        "white_f": 0.039,
+        "photo_f": 0.277,
+        "map_score": -0.798
+      },
+      "src": "https://npmaps.com/wp-content/uploads/yosemite-map.jpg",
+      "page": "https://www.nps.gov/yose/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "kenai-fjords",
+      "grade": "B",
+      "score": 82,
+      "issues": [
+        "modest 628",
+        "small file"
+      ],
+      "metrics": {
+        "w": 907,
+        "h": 628,
+        "min_edge": 628,
+        "bytes": 79699,
+        "aspect": 1.444,
+        "white_f": 0.042,
+        "photo_f": 0.167,
+        "map_score": -0.222
+      },
+      "src": "",
+      "page": "https://www.nps.gov/kefj/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "black-canyon-gunnison",
+      "grade": "A",
+      "score": 88,
+      "issues": [
+        "photo 23%"
+      ],
+      "metrics": {
+        "w": 2200,
+        "h": 1556,
+        "min_edge": 1556,
+        "bytes": 809813,
+        "aspect": 1.414,
+        "white_f": 0.0,
+        "photo_f": 0.23,
+        "map_score": -0.159
+      },
+      "src": "",
+      "page": "https://www.nps.gov/blca/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "denali",
+      "grade": "A",
+      "score": 88,
+      "issues": [
+        "photo 26%"
+      ],
+      "metrics": {
+        "w": 2000,
+        "h": 1253,
+        "min_edge": 1253,
+        "bytes": 416167,
+        "aspect": 1.596,
+        "white_f": 0.001,
+        "photo_f": 0.263,
+        "map_score": -0.499
+      },
+      "src": "",
+      "page": "https://www.nps.gov/dena/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "everglades",
+      "grade": "A",
+      "score": 88,
+      "issues": [
+        "photo 23%"
+      ],
+      "metrics": {
+        "w": 2200,
+        "h": 2023,
+        "min_edge": 2023,
+        "bytes": 864416,
+        "aspect": 1.087,
+        "white_f": 0.03,
+        "photo_f": 0.233,
+        "map_score": -0.345
+      },
+      "src": "https://npmaps.com/wp-content/uploads/everglades-national-park-map.jpg",
+      "page": "https://www.nps.gov/ever/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "glacier",
+      "grade": "A",
+      "score": 88,
+      "issues": [
+        "photo 24%"
+      ],
+      "metrics": {
+        "w": 1976,
+        "h": 2200,
+        "min_edge": 1976,
+        "bytes": 1268501,
+        "aspect": 0.898,
+        "white_f": 0.001,
+        "photo_f": 0.236,
+        "map_score": -0.408
+      },
+      "src": "https://npmaps.com/wp-content/uploads/glacier-waterton-lakes-national-",
+      "page": "https://www.nps.gov/glac/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "glacier-bay",
+      "grade": "A",
+      "score": 88,
+      "issues": [
+        "photo 25%"
+      ],
+      "metrics": {
+        "w": 2200,
+        "h": 1628,
+        "min_edge": 1628,
+        "bytes": 737202,
+        "aspect": 1.351,
+        "white_f": 0.06,
+        "photo_f": 0.249,
+        "map_score": -0.456
+      },
+      "src": "",
+      "page": "https://www.nps.gov/glba/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "haleakala",
+      "grade": "A",
+      "score": 88,
+      "issues": [
+        "photo 23%"
+      ],
+      "metrics": {
+        "w": 2200,
+        "h": 1163,
+        "min_edge": 1163,
+        "bytes": 386347,
+        "aspect": 1.892,
+        "white_f": 0.001,
+        "photo_f": 0.234,
+        "map_score": -0.486
+      },
+      "src": "https://npmaps.com/wp-content/uploads/haleakala-map.jpg",
+      "page": "https://www.nps.gov/hale/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "rocky-mountain",
+      "grade": "A",
+      "score": 88,
+      "issues": [
+        "photo 24%"
+      ],
+      "metrics": {
+        "w": 1586,
+        "h": 2200,
+        "min_edge": 1586,
+        "bytes": 1037980,
+        "aspect": 0.721,
+        "white_f": 0.002,
+        "photo_f": 0.24,
+        "map_score": -0.359
+      },
+      "src": "",
+      "page": "https://www.nps.gov/romo/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "saguaro",
+      "grade": "A",
+      "score": 88,
+      "issues": [
+        "photo 26%"
+      ],
+      "metrics": {
+        "w": 1628,
+        "h": 995,
+        "min_edge": 995,
+        "bytes": 255513,
+        "aspect": 1.636,
+        "white_f": 0.008,
+        "photo_f": 0.263,
+        "map_score": -0.474
+      },
+      "src": "",
+      "page": "https://www.nps.gov/sagu/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "wrangell-st-elias",
+      "grade": "A",
+      "score": 88,
+      "issues": [
+        "photo 23%"
+      ],
+      "metrics": {
+        "w": 1556,
+        "h": 2200,
+        "min_edge": 1556,
+        "bytes": 978317,
+        "aspect": 0.707,
+        "white_f": 0.004,
+        "photo_f": 0.226,
+        "map_score": -0.274
+      },
+      "src": "",
+      "page": "https://www.nps.gov/wrst/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "zion",
+      "grade": "A",
+      "score": 88,
+      "issues": [
+        "photo 29%"
+      ],
+      "metrics": {
+        "w": 1556,
+        "h": 2200,
+        "min_edge": 1556,
+        "bytes": 992615,
+        "aspect": 0.707,
+        "white_f": 0.0,
+        "photo_f": 0.29,
+        "map_score": -0.226
+      },
+      "src": "https://www.nps.gov/zion/planyourvisit/upload/ZionUnigrid.pdf",
+      "page": "https://www.nps.gov/zion/planyourvisit/upload/ZionUnigrid.pdf"
+    },
+    {
+      "slug": "cuyahoga-valley",
+      "grade": "A",
+      "score": 92,
+      "issues": [
+        "mscore -0.52"
+      ],
+      "metrics": {
+        "w": 946,
+        "h": 2200,
+        "min_edge": 946,
+        "bytes": 359576,
+        "aspect": 0.43,
+        "white_f": 0.001,
+        "photo_f": 0.218,
+        "map_score": -0.52
+      },
+      "src": "https://www.nps.gov/cuva/planyourvisit/images/CUVAParkMap.jpg?maxwidth",
+      "page": "https://www.nps.gov/cuva/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "great-basin",
+      "grade": "A",
+      "score": 92,
+      "issues": [
+        "mscore -0.533"
+      ],
+      "metrics": {
+        "w": 2081,
+        "h": 2200,
+        "min_edge": 2081,
+        "bytes": 750226,
+        "aspect": 0.946,
+        "white_f": 0.006,
+        "photo_f": 0.212,
+        "map_score": -0.533
+      },
+      "src": "",
+      "page": "https://www.nps.gov/grba/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "acadia",
+      "grade": "A",
+      "score": 100,
+      "issues": [],
+      "metrics": {
+        "w": 2200,
+        "h": 1870,
+        "min_edge": 1870,
+        "bytes": 581083,
+        "aspect": 1.176,
+        "white_f": 0.0,
+        "photo_f": 0.136,
+        "map_score": 0.042
+      },
+      "src": "https://npmaps.com/wp-content/uploads/acadia-national-park-map.jpg",
+      "page": "https://www.nps.gov/acad/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "american-samoa",
+      "grade": "A",
+      "score": 100,
+      "issues": [],
+      "metrics": {
+        "w": 2200,
+        "h": 983,
+        "min_edge": 983,
+        "bytes": 341232,
+        "aspect": 2.238,
+        "white_f": 0.0,
+        "photo_f": 0.122,
+        "map_score": 0.115
+      },
+      "src": "https://npmaps.com/wp-content/uploads/american-samoa-national-park-map",
+      "page": "https://www.nps.gov/npsa/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "canyonlands",
+      "grade": "A",
+      "score": 100,
+      "issues": [],
+      "metrics": {
+        "w": 1633,
+        "h": 2200,
+        "min_edge": 1633,
+        "bytes": 810939,
+        "aspect": 0.742,
+        "white_f": 0.001,
+        "photo_f": 0.203,
+        "map_score": -0.289
+      },
+      "src": "https://npmaps.com/wp-content/uploads/canyonlands-park-map.jpg",
+      "page": "https://www.nps.gov/cany/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "capitol-reef",
+      "grade": "A",
+      "score": 100,
+      "issues": [],
+      "metrics": {
+        "w": 1556,
+        "h": 2200,
+        "min_edge": 1556,
+        "bytes": 911325,
+        "aspect": 0.707,
+        "white_f": 0.0,
+        "photo_f": 0.216,
+        "map_score": -0.248
+      },
+      "src": "",
+      "page": "https://www.nps.gov/care/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "channel-islands",
+      "grade": "A",
+      "score": 100,
+      "issues": [],
+      "metrics": {
+        "w": 1772,
+        "h": 1508,
+        "min_edge": 1508,
+        "bytes": 335298,
+        "aspect": 1.175,
+        "white_f": 0.0,
+        "photo_f": 0.171,
+        "map_score": -0.263
+      },
+      "src": "https://npmaps.com/wp-content/uploads/channel-islands-map.jpg",
+      "page": "https://www.nps.gov/chis/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "crater-lake",
+      "grade": "A",
+      "score": 100,
+      "issues": [],
+      "metrics": {
+        "w": 1645,
+        "h": 1916,
+        "min_edge": 1645,
+        "bytes": 711481,
+        "aspect": 0.859,
+        "white_f": 0.0,
+        "photo_f": 0.206,
+        "map_score": -0.391
+      },
+      "src": "",
+      "page": "https://www.nps.gov/crla/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "dry-tortugas",
+      "grade": "A",
+      "score": 100,
+      "issues": [],
+      "metrics": {
+        "w": 2200,
+        "h": 2074,
+        "min_edge": 2074,
+        "bytes": 606498,
+        "aspect": 1.061,
+        "white_f": 0.0,
+        "photo_f": 0.071,
+        "map_score": 0.392
+      },
+      "src": "",
+      "page": "https://www.nps.gov/drto/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "gates-of-arctic",
+      "grade": "A",
+      "score": 100,
+      "issues": [],
+      "metrics": {
+        "w": 1686,
+        "h": 1321,
+        "min_edge": 1321,
+        "bytes": 541208,
+        "aspect": 1.276,
+        "white_f": 0.007,
+        "photo_f": 0.219,
+        "map_score": -0.293
+      },
+      "src": "",
+      "page": "https://www.nps.gov/gaar/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "great-sand-dunes",
+      "grade": "A",
+      "score": 100,
+      "issues": [],
+      "metrics": {
+        "w": 1410,
+        "h": 1766,
+        "min_edge": 1410,
+        "bytes": 515475,
+        "aspect": 0.798,
+        "white_f": 0.001,
+        "photo_f": 0.161,
+        "map_score": -0.248
+      },
+      "src": "",
+      "page": "https://www.nps.gov/grsa/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "guadalupe-mountains",
+      "grade": "A",
+      "score": 100,
+      "issues": [],
+      "metrics": {
+        "w": 1981,
+        "h": 1522,
+        "min_edge": 1522,
+        "bytes": 446254,
+        "aspect": 1.302,
+        "white_f": 0.023,
+        "photo_f": 0.183,
+        "map_score": -0.414
+      },
+      "src": "",
+      "page": "https://www.nps.gov/gumo/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "hawaii-volcanoes",
+      "grade": "A",
+      "score": 100,
+      "issues": [],
+      "metrics": {
+        "w": 2200,
+        "h": 1079,
+        "min_edge": 1079,
+        "bytes": 492996,
+        "aspect": 2.039,
+        "white_f": 0.019,
+        "photo_f": 0.068,
+        "map_score": 0.295
+      },
+      "src": "",
+      "page": "https://www.nps.gov/havo/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "isle-royale",
+      "grade": "A",
+      "score": 100,
+      "issues": [],
+      "metrics": {
+        "w": 2200,
+        "h": 1317,
+        "min_edge": 1317,
+        "bytes": 365061,
+        "aspect": 1.67,
+        "white_f": 0.0,
+        "photo_f": 0.151,
+        "map_score": -0.124
+      },
+      "src": "https://npmaps.com/wp-content/uploads/isle-royale-national-park-map.jp",
+      "page": "https://www.nps.gov/isro/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "katmai",
+      "grade": "A",
+      "score": 100,
+      "issues": [],
+      "metrics": {
+        "w": 2200,
+        "h": 2177,
+        "min_edge": 2177,
+        "bytes": 840969,
+        "aspect": 1.011,
+        "white_f": 0.032,
+        "photo_f": 0.179,
+        "map_score": -0.155
+      },
+      "src": "",
+      "page": "https://www.nps.gov/katm/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "kobuk-valley",
+      "grade": "A",
+      "score": 100,
+      "issues": [],
+      "metrics": {
+        "w": 2200,
+        "h": 2029,
+        "min_edge": 2029,
+        "bytes": 785695,
+        "aspect": 1.084,
+        "white_f": 0.0,
+        "photo_f": 0.139,
+        "map_score": 0.028
+      },
+      "src": "",
+      "page": "https://www.nps.gov/kova/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "lake-clark",
+      "grade": "A",
+      "score": 100,
+      "issues": [],
+      "metrics": {
+        "w": 2000,
+        "h": 1331,
+        "min_edge": 1331,
+        "bytes": 528012,
+        "aspect": 1.503,
+        "white_f": 0.012,
+        "photo_f": 0.176,
+        "map_score": -0.091
+      },
+      "src": "",
+      "page": "https://www.nps.gov/lacl/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "mesa-verde",
+      "grade": "A",
+      "score": 100,
+      "issues": [],
+      "metrics": {
+        "w": 1471,
+        "h": 2200,
+        "min_edge": 1471,
+        "bytes": 527797,
+        "aspect": 0.669,
+        "white_f": 0.006,
+        "photo_f": 0.168,
+        "map_score": -0.293
+      },
+      "src": "",
+      "page": "https://www.nps.gov/meve/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "pinnacles",
+      "grade": "A",
+      "score": 100,
+      "issues": [],
+      "metrics": {
+        "w": 2200,
+        "h": 1390,
+        "min_edge": 1390,
+        "bytes": 667522,
+        "aspect": 1.583,
+        "white_f": 0.0,
+        "photo_f": 0.14,
+        "map_score": 0.07
+      },
+      "src": "https://npmaps.com/wp-content/uploads/pinnacles-national-park-map.jpg",
+      "page": "https://www.nps.gov/pinn/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "redwood",
+      "grade": "A",
+      "score": 100,
+      "issues": [],
+      "metrics": {
+        "w": 937,
+        "h": 2200,
+        "min_edge": 937,
+        "bytes": 266675,
+        "aspect": 0.426,
+        "white_f": 0.002,
+        "photo_f": 0.186,
+        "map_score": -0.23
+      },
+      "src": "https://npmaps.com/wp-content/uploads/redwood-national-park-map.jpg",
+      "page": "https://www.nps.gov/redw/planyourvisit/maps.htm"
+    },
+    {
+      "slug": "voyageurs",
+      "grade": "A",
+      "score": 100,
+      "issues": [],
+      "metrics": {
+        "w": 2000,
+        "h": 1501,
+        "min_edge": 1501,
+        "bytes": 175068,
+        "aspect": 1.332,
+        "white_f": 0.001,
+        "photo_f": 0.143,
+        "map_score": -0.037
+      },
+      "src": "",
+      "page": "https://www.nps.gov/voya/planyourvisit/maps.htm"
+    }
+  ]
+}

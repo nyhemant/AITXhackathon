@@ -1,0 +1,490 @@
+{
+  "slug": "rocky-mountain",
+  "name": "Rocky Mountain National Park",
+  "type": "national_park",
+  "city": "Estes Park",
+  "region": "CO",
+  "country": "US",
+  "lat": 40.3428,
+  "lng": -105.6836,
+  "official_url": "https://www.nps.gov/romo/",
+  "last_verified": "2026-08-09",
+  "verified_by": "research",
+  "status": "verified",
+  "tagline": "Beaver Meadows / easy alpine views — altitude-aware half day.",
+  "practical": {
+    "typical_duration": "half day",
+    "ticket_note": "Entrance pass; timed entry common in peak season.",
+    "transit_note": "Estes Park gateway; parking lots fill early.",
+    "energy_note": "Altitude — drink water, slow pace, watch little kids for fatigue.",
+    "best_start": "Beaver Meadows Visitor Center → short trail or overlook → wildlife watch from distance",
+    "slice_name": "Beaver Meadows · easy alpine view",
+    "season_note": "Trail Ridge Road is seasonal; this kit works without the full alpine road."
+  },
+  "items": [
+    {
+      "id": "romo_beaver_vc",
+      "label": "Beaver Meadows Visitor Center",
+      "emoji": "🏛️",
+      "one_liner": "Altitude-aware start — maps and weather sense-check",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Beaver Meadows",
+      "qa_card": {
+        "question": "What did you notice at Beaver Meadows Visitor Center?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "romo-beaver-vc",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Beaver Meadows Visitor Center",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/romo/planyourvisit/visitorcenters.htm"
+      },
+      "safety_note": "",
+      "core": true
+    },
+    {
+      "id": "romo_meadow",
+      "label": "Beaver Meadows open",
+      "emoji": "🌾",
+      "one_liner": "Wide meadow with mountain backdrop — easy first air",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Beaver Meadows",
+      "qa_card": {
+        "question": "What did you notice at Beaver Meadows open?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "romo-beaver-meadow",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Beaver Meadows open",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/romo/"
+      },
+      "safety_note": "",
+      "core": true
+    },
+    {
+      "id": "romo_longs",
+      "label": "Longs Peak view (if clear)",
+      "emoji": "⛰️",
+      "one_liner": "Famous flat-top peak on the skyline when clouds allow",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "East side views",
+      "qa_card": {
+        "question": "What did you notice at Longs Peak view (if clear)?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "romo-longs-view",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Longs Peak view (if clear)",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/romo/"
+      },
+      "safety_note": "",
+      "core": true
+    },
+    {
+      "id": "romo_elk",
+      "label": "Elk (from a safe distance)",
+      "emoji": "🦌",
+      "one_liner": "Often near meadows evenings — never approach or feed · Give wildlife lots of space",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Meadows / roads",
+      "qa_card": {
+        "question": "What did you notice at Elk (from a safe distance)?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "elk",
+      "presence": "high",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Elk (from a safe distance)",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/romo/"
+      },
+      "safety_note": "Give wildlife lots of space",
+      "core": true
+    },
+    {
+      "id": "romo_path",
+      "label": "Easy valley path",
+      "emoji": "🥾",
+      "one_liner": "Short flat walk before any higher drive",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Beaver Meadows area",
+      "qa_card": {
+        "question": "What did you notice at Easy valley path?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "romo-valley-path",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Easy valley path",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/romo/"
+      },
+      "safety_note": "",
+      "core": true
+    },
+    {
+      "id": "romo_creek",
+      "label": "Mountain creek",
+      "emoji": "🏞️",
+      "one_liner": "Cold clear water — keep a safe step from the bank · Safe step back",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Valley",
+      "qa_card": {
+        "question": "What did you notice at Mountain creek?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "romo-mountain-creek",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Mountain creek",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/romo/"
+      },
+      "safety_note": "Safe step back",
+      "core": true
+    },
+    {
+      "id": "romo_pines",
+      "label": "Lodgepole pines",
+      "emoji": "🌳",
+      "one_liner": "Skinny high-country pines along the path",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Valley edge",
+      "qa_card": {
+        "question": "What did you notice at Lodgepole pines?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "romo-lodgepole",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Lodgepole pines",
+      "verify": {
+        "status": "todo",
+        "source": ""
+      },
+      "safety_note": "",
+      "core": true
+    },
+    {
+      "id": "romo_sign",
+      "label": "Trail or park road sign",
+      "emoji": "🥾",
+      "one_liner": "Read elevation or distance before climbing higher",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Trail / road",
+      "qa_card": {
+        "question": "What did you notice at Trail or park road sign?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "romo-trail-sign",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Trail or park road sign",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/romo/"
+      },
+      "safety_note": "",
+      "core": true
+    },
+    {
+      "id": "romo_jr",
+      "label": "Rocky Junior Ranger desk",
+      "emoji": "🎖️",
+      "one_liner": "Ask at Beaver Meadows",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Visitor center",
+      "qa_card": {
+        "question": "What did you notice at Rocky Junior Ranger desk?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "np-junior-ranger",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Rocky Junior Ranger desk",
+      "verify": {
+        "status": "sourced",
+        "source": "generic-template"
+      },
+      "core": false
+    },
+    {
+      "id": "romo_view2",
+      "label": "Second easy overlook",
+      "emoji": "🌄",
+      "one_liner": "One more pullout view if energy remains",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Overlook",
+      "qa_card": {
+        "question": "What did you notice at Second easy overlook?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "np-scenic-overlook",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Second easy overlook",
+      "verify": {
+        "status": "sourced",
+        "source": "generic-template"
+      },
+      "core": false
+    }
+  ],
+  "content_mode": "curated",
+  "media": {
+    "visitor_map_url": "/field-pack/media/maps/rocky-mountain.jpg",
+    "visitor_map_page": "https://www.nps.gov/romo/planyourvisit/maps.htm",
+    "visitor_map_kind": "image",
+    "map_attribution": "Map: National Park Service (public domain)",
+    "hero_illustration": "/field-pack/photos/np-hero-rocky-mountain.jpg",
+    "print_map": "/field-pack/media/maps/rocky-mountain.jpg"
+  },
+  "parent_script": [
+    "Bathroom first",
+    "Water & sun check",
+    "One big view",
+    "Leave while happy"
+  ],
+  "route_90m": [
+    "romo_beaver_vc",
+    "romo_meadow",
+    "romo_longs"
+  ],
+  "research_notes": "NP Phase 1a pilot 2026-08-08 · slice-focused kit · label scrub 2026-08-09 · depth-pass top10 2026-08-09",
+  "list_confidence": "partial",
+  "do_not_list": [],
+  "presence_sources": [
+    "https://www.nps.gov/romo/"
+  ],
+  "last_presence_audit": "2026-08-08",
+  "bonus_hunt": {
+    "tagline": "Rocky Mountain National Park bonus · second look on the trail",
+    "find_ids": [
+      "romo_creek",
+      "romo_elk",
+      "romo_path",
+      "romo_pines",
+      "romo_sign",
+      "romo_jr",
+      "romo_view2"
+    ],
+    "challenges": [
+      {
+        "id": "rocky_mounta_romo_creek_watch",
+        "text": "Valley: take 15 seconds on the Mountain creek — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "rocky_mounta_romo_elk_watch",
+        "text": "Meadows / roads: take 15 seconds on the Elk (from a safe distance) — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "rocky_mounta_romo_path_watch",
+        "text": "Beaver Meadows area: take 15 seconds on the Easy valley path — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "rocky_mounta_romo_pines_watch",
+        "text": "Valley edge: take 15 seconds on the Lodgepole pines — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "rocky_mounta_romo_sign_watch",
+        "text": "Trail / road: take 15 seconds on the Trail or park road sign — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_still",
+        "text": "Quiet 20 seconds on the trail — bird, wind, water, or people: what wins?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_far_near",
+        "text": "Name something far first — then something by your feet",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_camo",
+        "text": "Best natural camouflage (rock, bark, shadow) you can spot",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_map",
+        "text": "Find a map or zone name you haven’t noticed — point it out",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_tiny_huge",
+        "text": "Something tiny next to something huge in this area",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find a park map or zone sign — name one animal that lives that way",
+    "easter_egg_little": "★ Easter egg: pick a favorite bench — sit 60 seconds and name three sounds",
+    "researched": "2026-08-09",
+    "status": "solid",
+    "sources": [
+      "https://www.nps.gov/romo/"
+    ]
+  },
+  "slice_label": "Beaver Meadows",
+  "safety_footer": "Stay on boardwalks and trails · give wildlife lots of space · bring water"
+}

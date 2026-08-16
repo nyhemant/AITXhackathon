@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>Virtual Zoo for Kids — Free At-Home Field Trip · Field Trip Kit</title>
+    <meta
+      name="description"
+      content="A free virtual zoo for kids — rainy day, sick day, or classroom virtual field trip. Tap 10 habitats, watch live zoo cams, and print a Home Safari map hunt or hide-and-seek cutouts. No account."
+    />
+    <link rel="canonical" href="https://1less.app/field-pack/virtual-zoo/" />
+    <meta name="robots" content="index,follow" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="1Less" />
+    <meta property="og:title" content="Virtual Zoo for Kids — Free At-Home Field Trip · Field Trip Kit" />
+    <meta
+      property="og:description"
+      content="Rainy day zoo at home: 10 habitats, live cams, and a printable Home Safari. Free virtual field trip for kids."
+    />
+    <meta property="og:url" content="https://1less.app/field-pack/virtual-zoo/" />
+    <meta property="og:image" content="https://1less.app/field-pack/photos/og-virtual-field-trip.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://1less.app/field-pack/photos/og-virtual-field-trip.jpg" />
+    <base href="/field-pack/" />
+    <link rel="stylesheet" href="/shell/shell.css?v=6" />
+    <link rel="stylesheet" href="/field-pack/css/styles.css?v=37" />
+    <link rel="stylesheet" href="/field-pack/css/landing.css?v=93" />
+    <link rel="stylesheet" href="/field-pack/css/virtual-venue.css?v=40" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Virtual Zoo for Kids",
+        "url": "https://1less.app/field-pack/virtual-zoo/",
+        "description": "Free virtual zoo and printable Home Safari for a rainy-day or classroom virtual field trip.",
+        "isPartOf": { "@type": "WebSite", "name": "1Less Field Trip Kit", "url": "https://1less.app/field-pack/" }
+      }
+    </script>
+  </head>
+  <body class="landing-body">
+    <div class="app" data-virtual-venue data-default-tab="zoo">
+      <header class="oneless-shell no-print" data-product="bdo">
+        <a class="shell-brand" href="/field-pack/" aria-label="Field Trip Kit home">
+          <img src="/1LessMark.png" alt="" width="52" height="52" />
+        </a>
+        <a class="shell-product" href="/field-pack/">Field Trip Kit <small>Zoo, aquarium, museum &amp; park days</small></a>
+        <div class="shell-more-wrap">
+          <button type="button" class="shell-more" aria-expanded="false" aria-haspopup="true" aria-controls="shell-menu">More</button>
+          <div id="shell-menu" class="shell-menu" hidden role="menu">
+            <a href="/field-pack/" role="menuitem">All places<small>Map &amp; outings</small></a>
+            <a href="/field-pack/cards/" role="menuitem">Animal cards<small>Q&amp;A printables</small></a>
+            <a href="/field-pack/virtual-field-trip/" role="menuitem">Virtual Field Trip<small>Study before you go</small></a>
+            <a href="/field-pack/#about" role="menuitem">About<small>1Less &amp; contact</small></a>
+          </div>
+        </div>
+      </header>
+
+      <main class="vz-page">
+        <p class="vz-crumbs"><a href="/field-pack/">Field Trip Kit</a> · <span id="vz-crumb-here">Virtual Zoo</span></p>
+        <h1 id="vz-title">Virtual Zoo — a field trip at home</h1>
+        <p class="vz-lead" id="vz-lead">
+          A field trip at home — tap the map, then print a hunt for the living room.
+          Free. No account.
+        </p>
+        <p class="vz-use" id="vz-use">For rainy days, studying before you go, or a classroom Friday.</p>
+
+        <!-- VFT:TABS:START -->
+        <nav class="vz-tabs no-print" id="vz-tabs" aria-label="Virtual field trip">
+          <a class="vz-tab" href="/field-pack/virtual-field-trip/?tab=zoo#zoo" data-tab="zoo">Zoo</a>
+          <a class="vz-tab" href="/field-pack/virtual-field-trip/?tab=aquarium#aquarium" data-tab="aquarium">Aquarium</a>
+          <a class="vz-tab" href="/field-pack/virtual-field-trip/?tab=natural-history#natural-history" data-tab="natural-history">Natural history</a>
+          <a class="vz-tab" href="/field-pack/virtual-field-trip/?tab=science#science" data-tab="science">Science museum</a>
+          <a class="vz-tab" href="/field-pack/virtual-field-trip/?tab=parks#parks" data-tab="parks">National parks</a>
+        </nav>
+        <!-- VFT:TABS:END -->
+
+        <p class="vz-map-hint no-print" id="vz-map-hint">Start at the gate. The next stop is marked Next.</p>
+        <div class="vz-map-wrap" id="vz-map" aria-label="Virtual zoo map"></div>
+
+        <p class="vz-progress no-print" id="vz-progress" aria-live="polite"></p>
+        <ul class="vz-stamps" id="vz-stamps" hidden></ul>
+        <span id="vz-pass-count" class="vz-pass-count" hidden></span>
+
+        <details class="vz-stops-drawer" id="vz-stops-drawer" open>
+          <summary>Stops and cards</summary>
+          <div id="vz-zoo-picker" class="vz-zoo-picker no-print" hidden></div>
+        <!-- VFT:PANELS:START -->
+<noscript><style>.vz-tab-panel[hidden]{display:block!important}</style></noscript>
+<div class="vz-static-panels">
+      <section class="vz-tab-panel" id="zoo" data-vz-panel="zoo">
+        <h2>Virtual Zoo</h2>
+        <p class="vz-static-count">10 stops · existing Field Trip Kit cards</p>
+        <ol class="vz-static-stops">
+          <li>
+            <a href="/field-pack/cards/caribbean-flamingo/">Flamingo Lagoon</a>
+            <p>Bright pink wader — long legs for shallow water.</p>
+            <a class="vz-static-cam" href="https://www.houstonzoo.org/explore/webcams/flamingo-cam/" rel="noopener">Live cam — Flamingo cam at the Houston Zoo</a>
+            <a class="vz-static-film" href="https://www.youtube.com/watch?v=u2k4lSTZxS4" rel="noopener">Pre-recorded — Flamingo chicks at the Houston Zoo</a>
+            <p class="vz-static-kind">Card</p>
+          </li>
+          <li>
+            <a href="/field-pack/cards/asian-small-clawed-otter/">Otter Creek</a>
+            <p>Playful swimmer — smallest otter.</p>
+            <a class="vz-static-cam" href="https://www.houstonzoo.org/explore/webcams/pantanal-otter-cam/" rel="noopener">Live cam — Otter cam at the Houston Zoo</a>
+            <a class="vz-static-film" href="https://www.youtube.com/watch?v=zboaajdMGHg" rel="noopener">Pre-recorded — Otters in their habitat at the National Zoo</a>
+            <p class="vz-static-kind">Card</p>
+          </li>
+          <li>
+            <a href="/field-pack/cards/african-penguin/">Penguin Beach</a>
+            <p>Waddle on land, zoom in water.</p>
+            <a class="vz-static-cam" href="https://zoo.sandiegozoo.org/cams/penguin-cam" rel="noopener">Live cam — Penguin cam at the San Diego Zoo</a>
+            <a class="vz-static-film" href="https://www.youtube.com/watch?v=RQ56IFZO6N0" rel="noopener">Pre-recorded — African penguins at the San Diego Zoo</a>
+            <p class="vz-static-kind">Card</p>
+          </li>
+          <li>
+            <a href="/field-pack/cards/nile-hippo/">Hippo Pool</a>
+            <p>Huge river giant that loves the water.</p>
+            <a class="vz-static-cam" href="https://zoo.sandiegozoo.org/cams/hippo-cam" rel="noopener">Live cam — Hippo cam at the San Diego Zoo</a>
+            <a class="vz-static-film" href="https://www.youtube.com/watch?v=Zdl4ndfjYBA" rel="noopener">Pre-recorded — Hippos at the San Diego Zoo</a>
+            <p class="vz-static-kind">Card</p>
+          </li>
+          <li>
+            <a href="/field-pack/cards/reticulated-giraffe/">Giraffe Grove</a>
+            <p>Tallest animal on long legs \u2014 look up!</p>
+            <a class="vz-static-cam" href="https://www.houstonzoo.org/explore/webcams/giraffe-feeding-platform/" rel="noopener">Live cam — Giraffe cam at the Houston Zoo</a>
+            <a class="vz-static-film" href="https://www.youtube.com/watch?v=TMvYXAkHIFo" rel="noopener">Pre-recorded — Giraffe calf at the Houston Zoo</a>
+            <p class="vz-static-kind">Card</p>
+          </li>
+          <li>
+            <a href="/field-pack/cards/african-elephant/">Elephant Walk</a>
+            <p>Biggest land animal — trunk to grab, spray, and say hello.</p>
+            <a class="vz-static-cam" href="https://nationalzoo.si.edu/webcams/elephants" rel="noopener">Live cam — Elephant cam at the Smithsonian National Zoo</a>
+            <a class="vz-static-film" href="https://www.youtube.com/watch?v=Qzy0r4MUlQk" rel="noopener">Pre-recorded — Asian elephants at the National Zoo</a>
+            <p class="vz-static-kind">Card</p>
+          </li>
+          <li>
+            <a href="/field-pack/cards/african-lion/">Lion Ridge</a>
+            <p>Big cat of the grassland pride — mighty roar!</p>
+            <a class="vz-static-cam" href="https://nationalzoo.si.edu/webcams/lion-cam" rel="noopener">Live cam — Lion cam at the Smithsonian National Zoo</a>
+            <a class="vz-static-film" href="https://www.youtube.com/watch?v=tlZwYsJpqjo" rel="noopener">Pre-recorded — African lions</a>
+            <p class="vz-static-kind">Card</p>
+          </li>
+          <li>
+            <a href="/field-pack/cards/sumatran-tiger/">Tiger Trail</a>
+            <p>Stripy forest big cat — strong and stealthy.</p>
+            <a class="vz-static-cam" href="https://sdzsafaripark.org/cams/tiger-cam" rel="noopener">Live cam — Tiger cam at the San Diego Zoo Safari Park</a>
+            <a class="vz-static-film" href="https://www.youtube.com/watch?v=04kwMlYsYis" rel="noopener">Pre-recorded — Sumatran tigers at the San Diego Zoo Safari Park</a>
+            <p class="vz-static-kind">Card</p>
+          </li>
+          <li>
+            <a href="/field-pack/cards/western-lowland-gorilla/">Gorilla Forest</a>
+            <p>Strong gentle ape in family groups.</p>
+            <a class="vz-static-cam" href="https://www.houstonzoo.org/explore/webcams/gorilla-habitat-cam/" rel="noopener">Live cam — Gorilla cam at the Houston Zoo</a>
+            <a class="vz-static-film" href="https://www.youtube.com/watch?v=1vIlFjl9iOk" rel="noopener">Pre-recorded — Gorillas at the National Zoo</a>
+            <p class="vz-static-kind">Card</p>
+          </li>
+          <li>
+            <a href="/field-pack/cards/giant-panda/">Panda House</a>
+            <p>Black-and-white bamboo lover — calm and famous.</p>
+            <a class="vz-static-cam" href="https://nationalzoo.si.edu/webcams/panda-cam" rel="noopener">Live cam — Panda cam at the Smithsonian National Zoo</a>
+            <a class="vz-static-film" href="https://www.youtube.com/watch?v=f9KVNw799aE" rel="noopener">Pre-recorded — Giant panda Qing Bao in her habitat</a>
+            <p class="vz-static-kind">Card</p>
+          </li>
+        </ol>
+      </section>
+      <section class="vz-tab-panel" id="aquarium" data-vz-panel="aquarium">
+        <h2>Virtual Aquarium Field Trip</h2>
+        <p class="vz-static-count">10 stops · existing Field Trip Kit cards</p>
+        <ol class="vz-static-stops">
+          <li>
+            <a href="/field-pack/cards/clownfish/">Clownfish Reef</a>
+            <p>Bright reef fish — friends with anemones.</p>
+            
+            <a class="vz-static-film" href="https://www.youtube.com/watch?v=rn6R4ncd2OU" rel="noopener">Pre-recorded — Clownfish on the reef</a>
+            <p class="vz-static-kind">Card</p>
+          </li>
+          <li>
+            <a href="/field-pack/cards/crab/">Crab Shore</a>
+            <p>Sideways walker with a hard shell and pinchers.</p>
+            
+            <a class="vz-static-film" href="https://www.youtube.com/watch?v=7tU4k4zjCCM" rel="noopener">Pre-recorded — Crabs at Monterey Bay Aquarium</a>
+            <p class="vz-static-kind">Card</p>
+          </li>
+          <li>
+            <a href="/field-pack/cards/seahorse/">Seahorse Garden</a>
+            <p>Tiny upright swimmer that holds on with its tail.</p>
+            
+            <a class="vz-static-film" href="https://www.youtube.com/watch?v=iOrMzleVoGs" rel="noopener">Pre-recorded — Seahorses at Monterey Bay Aquarium</a>
+            <p class="vz-static-kind">Card</p>
+          </li>
+          <li>
+            <a href="/field-pack/cards/octopus/">Octopus Den</a>
+            <p>Eight arms and a big brain — master of hide-and-seek.</p>
+            
+            <a class="vz-static-film" href="https://www.youtube.com/watch?v=9vQnKO_2kKk" rel="noopener">Pre-recorded — Giant Pacific octopus</a>
+            <p class="vz-static-kind">Card</p>
+          </li>
+          <li>
+            <a href="/field-pack/cards/stingray/">Ray Flats</a>
+            <p>Flat swimmer — often in touch pools (gentle hands!).</p>
+            <a class="vz-static-cam" href="https://www.montereybayaquarium.org/cams-videos/live-cams/shark-cam" rel="noopener">Live cam — Reef cam (rays + sharks) at Monterey Bay Aquarium</a>
+            <a class="vz-static-film" href="https://www.youtube.com/watch?v=qIyN4Bp-rvE" rel="noopener">Pre-recorded — Baby bat rays at Monterey Bay Aquarium</a>
+            <p class="vz-static-kind">Card</p>
+          </li>
+          <li>
+            <a href="/field-pack/cards/jellyfish/">Jelly Drift</a>
+            <p>Soft drifter — no bones, glows and pulses in the water.</p>
+            <a class="vz-static-cam" href="https://www.montereybayaquarium.org/cams-videos/live-cams/jelly-cam" rel="noopener">Live cam — Jelly cam at Monterey Bay Aquarium</a>
+            <a class="vz-static-film" href="https://www.youtube.com/watch?v=nbY7dSf3GYE" rel="noopener">Pre-recorded — Jellies at Monterey Bay Aquarium</a>
+            <p class="vz-static-kind">Card</p>
+          </li>
+          <li>
+            <a href="/field-pack/cards/starfish/">Sea Star Pool</a>
+            <p>Star-shaped ocean friend — often in touch tanks.</p>
+            
+            <a class="vz-static-film" href="https://www.youtube.com/watch?v=KjsmnveGmN8" rel="noopener">Pre-recorded — Sunflower sea star</a>
+            <p class="vz-static-kind">Card</p>
+          </li>
+          <li>
+            <a href="/field-pack/cards/shark/">Shark Reef</a>
+            <p>Ocean hunter with a strong swishy body.</p>
+            <a class="vz-static-cam" href="https://www.montereybayaquarium.org/cams-videos/live-cams/shark-cam" rel="noopener">Live cam — Shark cam at Monterey Bay Aquarium</a>
+            <a class="vz-static-film" href="https://www.youtube.com/watch?v=EjLu5_exInI" rel="noopener">Pre-recorded — Leopard sharks at Monterey Bay Aquarium</a>
+            <p class="vz-static-kind">Card</p>
+          </li>
+          <li>
+            <a href="/field-pack/cards/eel/">Eel Cave</a>
+            <p>Long snaky fish — loves rocky hidey-holes.</p>
+            
+            <a class="vz-static-film" href="https://www.youtube.com/watch?v=E-njRqPqr3Y" rel="noopener">Pre-recorded — Wolf eel</a>
+            <p class="vz-static-kind">Card</p>
+          </li>
+          <li>
+            <a href="/field-pack/cards/sea-turtle/">Turtle Current</a>
+            <p>Shelled ocean traveler — flippers for swimming.</p>
+            <a class="vz-static-cam" href="https://www.montereybayaquarium.org/cams-videos/live-cams/open-sea-cam" rel="noopener">Live cam — Open Sea cam at Monterey Bay Aquarium</a>
+            <a class="vz-static-film" href="https://www.youtube.com/watch?v=owf_zFHt_lQ" rel="noopener">Pre-recorded — Sea turtles at Monterey Bay Aquarium</a>
+            <p class="vz-static-kind">Card</p>
+          </li>
+        </ol>
+      </section>
+      <section class="vz-tab-panel" id="natural-history" data-vz-panel="natural-history">
+        <h2>Virtual Natural History Museum</h2>
+        <p class="vz-static-count">4 halls · existing Field Trip Kit cards</p>
+        <ol class="vz-static-stops">
+          <li>
+            <a href="/field-pack/cards/sci-aquarium-zone/">Ocean Hall</a>
+            <p>Tanks and swimmers inside a bigger museum day.</p>
+            
+            <a class="vz-static-film" href="https://www.youtube.com/watch?v=OmGn-nWuu8Y" rel="noopener">Pre-recorded — Smithsonian Ocean Hall</a>
+            <p class="vz-static-kind">Card</p>
+          </li>
+          <li>
+            <a href="/field-pack/cards/sci-rainforest/">Rainforest Hall</a>
+            <p>Warm, green, and full of life — look for layers of plants.</p>
+            
+            <a class="vz-static-film" href="https://www.youtube.com/watch?v=qUxVve-8dgU" rel="noopener">Pre-recorded — Inside a rainforest dome</a>
+            <p class="vz-static-kind">Card</p>
+          </li>
+          <li>
+            <a href="/field-pack/cards/sci-dinosaur/">Dinosaur Hall</a>
+            <p>Bones, giants, and deep time — look up!</p>
+            
+            <a class="vz-static-film" href="https://www.youtube.com/watch?v=11bQ-FFGF28" rel="noopener">Pre-recorded — Dinosaur hall at the Smithsonian</a>
+            <p class="vz-static-kind">Card</p>
+          </li>
+          <li>
+            <a href="/field-pack/cards/sci-mammal-hall/">Mammal Hall</a>
+            <p>Lifelike animals from around the world — spot fur, horns, and habitats.</p>
+            
+            <a class="vz-static-film" href="https://www.youtube.com/watch?v=NPgN5q9GZc8" rel="noopener">Pre-recorded — African mammal hall dioramas</a>
+            <p class="vz-static-kind">Card</p>
+          </li>
+        </ol>
+      </section>
+      <section class="vz-tab-panel" id="science" data-vz-panel="science">
+        <h2>Virtual Science Museum Field Trip</h2>
+        <p class="vz-static-count">10 stops · existing Field Trip Kit cards</p>
+        <ol class="vz-static-stops">
+          <li>
+            <a href="/field-pack/cards/cm-woven/">Woven Wonders</a>
+            <p>Colorful climbing structure — art you can climb!</p>
+            
+            <a class="vz-static-film" href="https://www.youtube.com/watch?v=UuNNzG5Lg7s" rel="noopener">Pre-recorded — Climbing a giant net at a science museum</a>
+            <p class="vz-static-kind">Card</p>
+          </li>
+          <li>
+            <a href="/field-pack/cards/cm-imaginarium/">Imaginarium</a>
+            <p>Multi-sensory world — explore, notice, imagine.</p>
+            
+            <a class="vz-static-film" href="https://www.youtube.com/watch?v=ndfT5uvFkmM" rel="noopener">Pre-recorded — A glowing sand table at the Exploratorium</a>
+            <p class="vz-static-kind">Card</p>
+          </li>
+          <li>
+            <a href="/field-pack/cards/sci-hands-on/">Hands-on Lab</a>
+            <p>Touch, test, build — science you can try.</p>
+            
+            <a class="vz-static-film" href="https://www.youtube.com/watch?v=5IbIjufI_cQ" rel="noopener">Pre-recorded — Hands-on floor at the Exploratorium</a>
+            <p class="vz-static-kind">Card</p>
+          </li>
+          <li>
+            <a href="/field-pack/cards/cm-makery/">Creative Makery</a>
+            <p>Build, invent, problem-solve with your hands.</p>
+            
+            <a class="vz-static-film" href="https://www.youtube.com/watch?v=QuiZpfYgC3o" rel="noopener">Pre-recorded — Making in the Exploratorium Tinkering Studio</a>
+            <p class="vz-static-kind">Card</p>
+          </li>
+          <li>
+            <a href="/field-pack/cards/cm-art-lab/">Art Lab</a>
+            <p>Come-and-go art and reading activities.</p>
+            
+            <a class="vz-static-film" href="https://www.youtube.com/watch?v=kURAFukvgSw" rel="noopener">Pre-recorded — Painting with soap film</a>
+            <p class="vz-static-kind">Card</p>
+          </li>
+          <li>
+            <a href="/field-pack/cards/cm-free-explore/">Free Explore</a>
+            <p>Their choice path — whatever pulled them in!</p>
+            
+            
+            <p class="vz-static-kind">Card</p>
+          </li>
+          <li>
+            <a href="/field-pack/cards/sci-shuttle/">Space Shuttle</a>
+            <p>A real flying machine that went to space — walk around it.</p>
+            
+            <a class="vz-static-film" href="https://www.youtube.com/watch?v=7aKYeRSYLB0" rel="noopener">Pre-recorded — Space Shuttle Atlantis lifts off</a>
+            <p class="vz-static-kind">Card</p>
+          </li>
+          <li>
+            <a href="/field-pack/cards/sci-astronaut/">Astronaut Life</a>
+            <p>Suits, food, and how humans live off Earth.</p>
+            
+            <a class="vz-static-film" href="https://www.youtube.com/watch?v=lQlYG8hOgAs" rel="noopener">Pre-recorded — Looking back at Earth from the cupola</a>
+            <p class="vz-static-kind">Card</p>
+          </li>
+          <li>
+            <a href="/field-pack/cards/sci-planet/">Planet Hall</a>
+            <p>Planets, stars, and big sky questions.</p>
+            
+            <a class="vz-static-film" href="https://www.youtube.com/watch?v=oFDeNcu3mnc" rel="noopener">Pre-recorded — Earth from the space station</a>
+            <p class="vz-static-kind">Card</p>
+          </li>
+          <li>
+            <a href="/field-pack/cards/sci-rocket/">Rockets</a>
+            <p>Tall rockets and the power of liftoff.</p>
+            
+            <a class="vz-static-film" href="https://www.youtube.com/watch?v=aWCCNYJV3Zw" rel="noopener">Pre-recorded — Artemis I moon rocket liftoff</a>
+            <p class="vz-static-kind">Card</p>
+          </li>
+        </ol>
+      </section>
+      <section class="vz-tab-panel" id="parks" data-vz-panel="parks">
+        <h2>Virtual National Parks Field Trip</h2>
+        <p class="vz-static-count">10 stops · existing Field Trip Kit park kits</p>
+        <ol class="vz-static-stops">
+          <li>
+            <a href="/field-pack/acadia/">Acadia</a>
+            <p>Coast + summit slice near Bar Harbor — plan timed entry for Cadillac.</p>
+            <a class="vz-static-cam" href="https://www.nps.gov/acad/learn/photosmultimedia/webcams.htm" rel="noopener">Live cam — Acadia webcams · National Park Service</a>
+            <a class="vz-static-film" href="https://www.youtube.com/watch?v=4bRKthFQfXo" rel="noopener">Pre-recorded — Acadia granite coast and Cadillac</a>
+            <p class="vz-static-kind">Park kit</p>
+          </li>
+          <li>
+            <a href="/field-pack/great-smoky-mountains/">Great Smoky Mountains</a>
+            <p>Smokies starter day near Gatlinburg — not Cades Cove full loop unless energy allows.</p>
+            <a class="vz-static-cam" href="https://www.nps.gov/grsm/learn/photosmultimedia/webcams.htm" rel="noopener">Live cam — Smokies webcams · National Park Service</a>
+            <a class="vz-static-film" href="https://www.youtube.com/watch?v=i_WME0gAO_g" rel="noopener">Pre-recorded — Smokies ridges in fall</a>
+            <p class="vz-static-kind">Park kit</p>
+          </li>
+          <li>
+            <a href="/field-pack/everglades/">Everglades</a>
+            <p>Boardwalk wetland day near Homestead — gators at a distance only.</p>
+            
+            <a class="vz-static-film" href="https://www.youtube.com/watch?v=LkNEBAZq0rM" rel="noopener">Pre-recorded — Everglades water and wildlife</a>
+            <p class="vz-static-kind">Park kit</p>
+          </li>
+          <li>
+            <a href="/field-pack/big-bend/">Big Bend</a>
+            <p>West Texas desert day — one basin or river stop, heat-smart.</p>
+            
+            <a class="vz-static-film" href="https://www.youtube.com/watch?v=D8X5w24VD1M" rel="noopener">Pre-recorded — Big Bend desert and river</a>
+            <p class="vz-static-kind">Park kit</p>
+          </li>
+          <li>
+            <a href="/field-pack/grand-canyon/">Grand Canyon</a>
+            <p>South Rim rails and short paths — big views without a rim-to-rim day.</p>
+            <a class="vz-static-cam" href="https://www.nps.gov/grca/learn/photosmultimedia/webcams.htm" rel="noopener">Live cam — Grand Canyon webcams · National Park Service</a>
+            <a class="vz-static-film" href="https://www.youtube.com/watch?v=xqSgpKD31DQ" rel="noopener">Pre-recorded — Grand Canyon from the rim</a>
+            <p class="vz-static-kind">Park kit</p>
+          </li>
+          <li>
+            <a href="/field-pack/yosemite/">Yosemite</a>
+            <p>Valley day: waterfalls and granite views — not Tioga or the backcountry.</p>
+            <a class="vz-static-cam" href="https://www.nps.gov/yose/learn/photosmultimedia/webcams.htm" rel="noopener">Live cam — Yosemite webcams · National Park Service</a>
+            <a class="vz-static-film" href="https://www.youtube.com/watch?v=HLmOkDBfxv0" rel="noopener">Pre-recorded — Yosemite granite and waterfalls</a>
+            <p class="vz-static-kind">Park kit</p>
+          </li>
+          <li>
+            <a href="/field-pack/olympic/">Olympic</a>
+            <p>One ecosystem day: rainforest boardwalk or coast or ridge views.</p>
+            <a class="vz-static-cam" href="https://www.nps.gov/olym/learn/photosmultimedia/webcams.htm" rel="noopener">Live cam — Olympic webcams · National Park Service</a>
+            <a class="vz-static-film" href="https://www.youtube.com/watch?v=6jQ_eu3b_BA" rel="noopener">Pre-recorded — Olympic rainforest, coast, and ridge</a>
+            <p class="vz-static-kind">Park kit</p>
+          </li>
+          <li>
+            <a href="/field-pack/glacier/">Glacier</a>
+            <p>Mountain lake day — one valley slice, not the whole Going-to-the-Sun epic.</p>
+            <a class="vz-static-cam" href="https://www.nps.gov/glac/learn/photosmultimedia/webcams.htm" rel="noopener">Live cam — Glacier webcams · National Park Service</a>
+            <a class="vz-static-film" href="https://www.youtube.com/watch?v=zrHlFPRI_0c" rel="noopener">Pre-recorded — Glacier lakes and peaks</a>
+            <p class="vz-static-kind">Park kit</p>
+          </li>
+          <li>
+            <a href="/field-pack/yellowstone/">Yellowstone</a>
+            <p>Geyser basin day: boardwalks, steam, and Old Faithful — not the whole park.</p>
+            <a class="vz-static-cam" href="https://www.nps.gov/yell/learn/photosmultimedia/webcams.htm" rel="noopener">Live cam — Yellowstone webcams · National Park Service</a>
+            <a class="vz-static-film" href="https://www.youtube.com/watch?v=635UZAPkElg" rel="noopener">Pre-recorded — Yellowstone Grand Prismatic Spring</a>
+            <p class="vz-static-kind">Park kit</p>
+          </li>
+          <li>
+            <a href="/field-pack/rocky-mountain/">Rocky Mountain</a>
+            <p>Gateway meadows and an overlook — not a full Trail Ridge marathon.</p>
+            <a class="vz-static-cam" href="https://www.nps.gov/romo/learn/photosmultimedia/webcams.htm" rel="noopener">Live cam — Rocky Mountain webcams · National Park Service</a>
+            <a class="vz-static-film" href="https://www.youtube.com/watch?v=9Gh44EYQ2zw" rel="noopener">Pre-recorded — Rocky Mountain high meadows</a>
+            <p class="vz-static-kind">Park kit</p>
+          </li>
+        </ol>
+      </section>
+      </div>
+        <!-- VFT:PANELS:END -->
+        </details>
+
+        <div class="vz-print-row no-print">
+          <button type="button" class="btn btn-secondary" id="vz-print-watch">Print cards<span class="vz-print-sub">(and maybe hide them for a hunt)</span></button>
+          <p class="vz-print-note">Print two-sided. Cut the photos; answers are on the back.</p>
+        </div>
+      </main>
+    </div>
+
+    <div id="vz-dialog" class="vz-dialog no-print" hidden aria-hidden="true">
+      <div id="vz-backdrop" class="vz-backdrop"></div>
+      <div
+        id="vz-sheet"
+        class="vz-sheet"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="vz-dialog-title"
+      >
+        <div class="vz-sheet-head">
+          <h2 id="vz-dialog-title" hidden></h2>
+          <button type="button" class="vz-close" id="vz-close" aria-label="Close">×</button>
+        </div>
+        <div class="vz-dialog-inner">
+          <div id="vz-photo" class="vz-photo"></div>
+          <div class="vz-dialog-copy">
+            <p class="vz-blurb" id="vz-blurb"></p>
+            <div class="vz-actions">
+            <div class="vz-watch" id="vz-watch" hidden>
+              <p class="vz-watch-label">Watch</p>
+              <div class="vz-watch-btns">
+                <a class="vz-cam" id="vz-cam" href="#" rel="noopener" hidden>Live</a>
+                <a class="vz-film" id="vz-film" href="#" rel="noopener" hidden>Pre-recorded</a>
+              </div>
+              <p class="vz-film-hint" id="vz-film-hint" hidden>If live looks empty, try Pre-recorded.</p>
+            </div>
+            <a class="vz-place" id="vz-place" hidden>Open park kit →</a>
+            <p class="vz-challenge" id="vz-challenge"></p>
+            <button type="button" class="btn btn-secondary" id="vz-print-card">Print this card</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="vz-cam-pop" class="vz-cam-pop no-print" hidden>
+      <div class="vz-cam-pop-card" role="dialog" aria-modal="true" aria-labelledby="vz-cam-pop-title">
+        <div class="vz-cam-pop-bar">
+          <h2 id="vz-cam-pop-title">Film</h2>
+          <button type="button" class="btn btn-primary" id="vz-cam-pop-back">Back to the map</button>
+        </div>
+        <iframe id="vz-cam-frame" class="vz-cam-frame" title="Film" hidden></iframe>
+        <p id="vz-cam-pop-note" hidden></p>
+      </div>
+    </div>
+
+    <div id="print-sheet" class="print-sheet" aria-hidden="true"></div>
+    <div id="treasure-sheet" class="print-sheet treasure-sheet" aria-hidden="true"></div>
+
+    <script src="/shell/shell.js?v=5"></script>
+    <script src="/field-pack/js/fp-analytics.js?v=1"></script>
+    <script src="/field-pack/js/catalog.js?v=30"></script>
+    <script src="/field-pack/js/print-kit.js?v=27"></script>
+    <script src="/field-pack/js/virtual-venue.js?v=71"></script>
+  </body>
+</html>

@@ -1,0 +1,491 @@
+{
+  "slug": "yellowstone",
+  "name": "Yellowstone National Park",
+  "type": "national_park",
+  "city": "Yellowstone",
+  "region": "WY",
+  "country": "US",
+  "lat": 44.4605,
+  "lng": -110.8281,
+  "official_url": "https://www.nps.gov/yell/",
+  "last_verified": "2026-08-09",
+  "verified_by": "research",
+  "status": "verified",
+  "tagline": "Old Faithful area — geysers, boardwalks, and one finishable basin loop.",
+  "practical": {
+    "typical_duration": "half day",
+    "ticket_note": "Park entrance pass required; summer crowds — arrive early.",
+    "transit_note": "Drive to Old Faithful area; boardwalks from the visitor complex.",
+    "energy_note": "Boardwalks can be icy or hot steam; stay on paths.",
+    "best_start": "Old Faithful visitor area → boardwalk loop → one more thermal stop",
+    "slice_name": "Upper Geyser Basin · Old Faithful",
+    "season_note": "Winter access limited; summer is peak boardwalk season."
+  },
+  "items": [
+    {
+      "id": "yell_old_faithful",
+      "label": "Old Faithful",
+      "emoji": "💨",
+      "one_liner": "Watch the famous geyser — check the prediction board first · Stay on boardwalks only",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Old Faithful",
+      "qa_card": {
+        "question": "What did you notice at Old Faithful?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "yell-old-faithful",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Old Faithful",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/yell/planyourvisit/exploreoldfaithful.htm"
+      },
+      "safety_note": "Stay on boardwalks only",
+      "core": true
+    },
+    {
+      "id": "yell_prediction_board",
+      "label": "Eruption prediction board",
+      "emoji": "📋",
+      "one_liner": "Find the next predicted time and plan your wait",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Old Faithful visitor complex",
+      "qa_card": {
+        "question": "What did you notice at Eruption prediction board?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "yell-prediction-board",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Eruption prediction board",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/yell/planyourvisit/exploreoldfaithful.htm"
+      },
+      "safety_note": "",
+      "core": true
+    },
+    {
+      "id": "yell_castle_geyser",
+      "label": "Castle Geyser",
+      "emoji": "🏰",
+      "one_liner": "Cone geyser up the basin boardwalk — steamy throne of rock · Boardwalks only — thin crust is dangerous",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Upper Geyser Basin",
+      "qa_card": {
+        "question": "What did you notice at Castle Geyser?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "yell-castle-geyser",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Castle Geyser",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/yell/"
+      },
+      "safety_note": "Boardwalks only — thin crust is dangerous",
+      "core": true
+    },
+    {
+      "id": "yell_morning_glory",
+      "label": "Morning Glory Pool",
+      "emoji": "💎",
+      "one_liner": "Bright thermal pool colors — look from the rail, never toss coins · Stay behind rails",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Upper Geyser Basin",
+      "qa_card": {
+        "question": "What did you notice at Morning Glory Pool?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "yell-morning-glory",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Morning Glory Pool",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/yell/"
+      },
+      "safety_note": "Stay behind rails",
+      "core": true
+    },
+    {
+      "id": "yell_ofi_lobby",
+      "label": "Old Faithful Inn lobby",
+      "emoji": "🪵",
+      "one_liner": "Giant log lobby — look up at the towering wooden interior",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Old Faithful Inn",
+      "qa_card": {
+        "question": "What did you notice at Old Faithful Inn lobby?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "yell-old-faithful-inn",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Old Faithful Inn lobby",
+      "verify": {
+        "status": "todo",
+        "source": ""
+      },
+      "safety_note": "",
+      "core": true
+    },
+    {
+      "id": "yell_basin_boardwalk",
+      "label": "Basin boardwalk loop",
+      "emoji": "🪵",
+      "one_liner": "Raised path over fragile thermal ground — pick a short loop · Boardwalks only",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Upper Geyser Basin",
+      "qa_card": {
+        "question": "What did you notice at Basin boardwalk loop?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "yell-basin-boardwalk",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Basin boardwalk loop",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/yell/"
+      },
+      "safety_note": "Boardwalks only",
+      "core": true
+    },
+    {
+      "id": "yell_firehole_glimpse",
+      "label": "Firehole River glimpse",
+      "emoji": "🏞️",
+      "one_liner": "River beside the basin — steam meets cold water · Safe step back from water",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Basin edge",
+      "qa_card": {
+        "question": "What did you notice at Firehole River glimpse?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "yell-firehole-glimpse",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Firehole River glimpse",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/yell/"
+      },
+      "safety_note": "Safe step back from water",
+      "core": true
+    },
+    {
+      "id": "yell_bison_distance",
+      "label": "Bison (if you see one)",
+      "emoji": "🦬",
+      "one_liner": "Huge park icon — never approach; car or far pullout only · Give wildlife lots of space",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Roads / meadows",
+      "qa_card": {
+        "question": "What did you notice at Bison (if you see one)?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "american-bison",
+      "presence": "high",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Bison (if you see one)",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/yell/"
+      },
+      "safety_note": "Give wildlife lots of space",
+      "core": true
+    },
+    {
+      "id": "np_jr_yell",
+      "label": "Yellowstone Junior Ranger desk",
+      "emoji": "🎖️",
+      "one_liner": "Ask about a badge at the visitor center",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Visitor center",
+      "qa_card": {
+        "question": "What did you notice at Yellowstone Junior Ranger desk?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "np-junior-ranger",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Yellowstone Junior Ranger desk",
+      "verify": {
+        "status": "sourced",
+        "source": "generic-template"
+      },
+      "core": false
+    },
+    {
+      "id": "np_steam_yell",
+      "label": "Extra steam vent",
+      "emoji": "💨",
+      "one_liner": "Any extra hissing vent along the boards",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Basin",
+      "qa_card": {
+        "question": "What did you notice at Extra steam vent?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "np-geyser-steam",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Extra steam vent",
+      "verify": {
+        "status": "sourced",
+        "source": "generic-template"
+      },
+      "core": false
+    }
+  ],
+  "content_mode": "curated",
+  "media": {
+    "visitor_map_url": "/field-pack/media/maps/yellowstone.jpg",
+    "visitor_map_page": "https://www.nps.gov/yell/planyourvisit/upload/2025_Yellowstone-Unigrid_Web-508.pdf",
+    "visitor_map_kind": "image",
+    "map_attribution": "Map: National Park Service (public domain)",
+    "hero_illustration": "/field-pack/photos/np-hero-yellowstone.jpg",
+    "print_map": "/field-pack/media/maps/yellowstone.jpg",
+    "visitor_map_full": "https://www.nps.gov/yell/planyourvisit/upload/2025_Yellowstone-Unigrid_Web-508.pdf"
+  },
+  "parent_script": [
+    "Bathroom first",
+    "Water & sun check",
+    "One big view",
+    "Leave while happy"
+  ],
+  "route_90m": [
+    "yell_old_faithful",
+    "yell_basin_boardwalk",
+    "yell_castle_geyser"
+  ],
+  "research_notes": "NP Phase 1a pilot 2026-08-08 · slice-focused kit · label scrub 2026-08-09 · depth-pass top10 2026-08-09",
+  "list_confidence": "partial",
+  "do_not_list": [],
+  "presence_sources": [
+    "https://www.nps.gov/yell/"
+  ],
+  "last_presence_audit": "2026-08-08",
+  "bonus_hunt": {
+    "tagline": "Yellowstone National Park bonus · second look on the trail",
+    "find_ids": [
+      "yell_bison_distance",
+      "yell_firehole_glimpse",
+      "yell_morning_glory",
+      "yell_ofi_lobby",
+      "yell_prediction_board",
+      "np_jr_yell",
+      "np_steam_yell"
+    ],
+    "challenges": [
+      {
+        "id": "yellowstone_yell_bison_dista_watch",
+        "text": "Roads / meadows: take 15 seconds on the Bison (if you see one) — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "yellowstone_yell_firehole_gl_watch",
+        "text": "Basin edge: take 15 seconds on the Firehole River glimpse — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "yellowstone_yell_morning_glo_watch",
+        "text": "Upper Geyser Basin: take 15 seconds on the Morning Glory Pool — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "yellowstone_yell_ofi_lobby_watch",
+        "text": "Old Faithful Inn: take 15 seconds on the Old Faithful Inn lobby — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "yellowstone_yell_prediction__watch",
+        "text": "Old Faithful visitor complex: take 15 seconds on the Eruption prediction board — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_still",
+        "text": "Quiet 20 seconds on the trail — bird, wind, water, or people: what wins?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_far_near",
+        "text": "Name something far first — then something by your feet",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_camo",
+        "text": "Best natural camouflage (rock, bark, shadow) you can spot",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_map",
+        "text": "Find a map or zone name you haven’t noticed — point it out",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_tiny_huge",
+        "text": "Something tiny next to something huge in this area",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find a park map or zone sign — name one animal that lives that way",
+    "easter_egg_little": "★ Easter egg: pick a favorite bench — sit 60 seconds and name three sounds",
+    "researched": "2026-08-09",
+    "status": "solid",
+    "sources": [
+      "https://www.nps.gov/yell/"
+    ]
+  },
+  "slice_label": "Old Faithful Basin",
+  "safety_footer": "Stay on boardwalks and trails · give wildlife lots of space · bring water"
+}

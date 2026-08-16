@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" role="img" aria-labelledby="vz-map-title">
+  <title id="vz-map-title">Illustrated zoo map. Follow the path from IN. Tap the glowing habitat photo.</title>
+  <defs>
+    <clipPath id="vz-photo-clip" clipPathUnits="objectBoundingBox">
+      <rect x="0" y="0" width="1" height="1" rx="0.14" ry="0.14"/>
+    </clipPath>
+    <filter id="pad-shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="5" stdDeviation="3.2" flood-color="#1a1814" flood-opacity="0.38"/>
+    </filter>
+  </defs>
+  <image href="/field-pack/media/virtual-zoo/park-ground.jpg?v=3" x="0" y="0" width="800" height="800" preserveAspectRatio="xMidYMid slice"/>
+  
+  <g id="vz-trail" class="vz-trail" pointer-events="none">
+    <path d="M379.0,756.0 Q347.5,716.0 316.0,676.0 Q266.0,616.0 216.0,556.0 Q152.0,458.0 88.0,360.0 Q224.0,340.0 360.0,320.0 Q348.0,198.0 336.0,76.0 Q430.0,78.0 524.0,80.0 Q616.0,144.0 708.0,208.0 Q708.0,294.0 708.0,380.0 Q692.0,468.0 676.0,556.0 Q587.0,616.0 498.0,676.0 Q498.5,716.0 499.0,756.0" fill="none" stroke="#d8c9a4" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="0.35"/>
+  </g>
+  <g id="vz-arrows" class="vz-arrows" pointer-events="none" fill="#8a7d5e">
+    <path d="M343.8,711.4 L356.7,718.8 L348.0,725.6 Z" opacity="0.58"/>
+    <path d="M498.7,731.0 L493.0,717.3 L504.0,717.2 Z" opacity="0.58"/>
+  </g>
+  <g id="vz-entry" class="vz-gate">
+    <rect x="352" y="742" width="54" height="28" rx="8" fill="#0f5c5c"/>
+    <text x="379" y="761" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="700" fill="#fff">IN</text>
+  </g>
+  <g id="vz-exit" class="vz-gate">
+    <rect x="470" y="742" width="58" height="28" rx="8" fill="#8a9aaf"/>
+    <text x="499" y="761" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="700" fill="#fff">OUT</text>
+  </g>
+
+  <a href="/field-pack/virtual-zoo/#habitat=caribbean-flamingo" id="habitat-caribbean-flamingo" class="vz-spot" data-habitat="caribbean-flamingo" aria-label="Stop 1">
+    <rect class="vz-hit" x="248" y="608" width="136" height="136" fill="transparent"/>
+    <rect class="vz-halo" x="249.0" y="609.0" width="134.0" height="134.0" rx="22.0"/>
+    <rect class="vz-silo" x="254" y="614" width="124" height="124" rx="18" fill="#fff" stroke="#1f2a2a" stroke-width="2.6" filter="url(#pad-shadow)"/>
+    <image href="/field-pack/photos/caribbean-flamingo.jpg?v=img2" x="258" y="618" width="116" height="116" preserveAspectRatio="xMidYMin slice" clip-path="url(#vz-photo-clip)"/>
+  </a>
+  <a href="/field-pack/virtual-zoo/#habitat=asian-small-clawed-otter" id="habitat-asian-small-clawed-otter" class="vz-spot" data-habitat="asian-small-clawed-otter" aria-label="Stop 2">
+    <rect class="vz-hit" x="148" y="488" width="136" height="136" fill="transparent"/>
+    <rect class="vz-halo" x="149.0" y="489.0" width="134.0" height="134.0" rx="22.0"/>
+    <rect class="vz-silo" x="154" y="494" width="124" height="124" rx="18" fill="#fff" stroke="#1f2a2a" stroke-width="2.6" filter="url(#pad-shadow)"/>
+    <image href="/field-pack/photos/asian-small-clawed-otter.jpg?v=img2" x="158" y="498" width="116" height="116" preserveAspectRatio="xMidYMin slice" clip-path="url(#vz-photo-clip)"/>
+  </a>
+  <a href="/field-pack/virtual-zoo/#habitat=african-penguin" id="habitat-african-penguin" class="vz-spot" data-habitat="african-penguin" aria-label="Stop 3">
+    <rect class="vz-hit" x="20" y="292" width="136" height="136" fill="transparent"/>
+    <rect class="vz-halo" x="21.0" y="293.0" width="134.0" height="134.0" rx="22.0"/>
+    <rect class="vz-silo" x="26" y="298" width="124" height="124" rx="18" fill="#fff" stroke="#1f2a2a" stroke-width="2.6" filter="url(#pad-shadow)"/>
+    <image href="/field-pack/photos/african-penguin.jpg?v=img2" x="30" y="302" width="116" height="116" preserveAspectRatio="xMidYMin slice" clip-path="url(#vz-photo-clip)"/>
+  </a>
+  <a href="/field-pack/virtual-zoo/#habitat=nile-hippo" id="habitat-nile-hippo" class="vz-spot" data-habitat="nile-hippo" aria-label="Stop 4">
+    <rect class="vz-hit" x="292" y="252" width="136" height="136" fill="transparent"/>
+    <rect class="vz-halo" x="293.0" y="253.0" width="134.0" height="134.0" rx="22.0"/>
+    <rect class="vz-silo" x="298" y="258" width="124" height="124" rx="18" fill="#fff" stroke="#1f2a2a" stroke-width="2.6" filter="url(#pad-shadow)"/>
+    <image href="/field-pack/photos/nile-hippo.jpg?v=img2" x="302" y="262" width="116" height="116" preserveAspectRatio="xMidYMin slice" clip-path="url(#vz-photo-clip)"/>
+  </a>
+  <a href="/field-pack/virtual-zoo/#habitat=reticulated-giraffe" id="habitat-reticulated-giraffe" class="vz-spot" data-habitat="reticulated-giraffe" aria-label="Stop 5">
+    <rect class="vz-hit" x="268" y="8" width="136" height="136" fill="transparent"/>
+    <rect class="vz-halo" x="269.0" y="9.0" width="134.0" height="134.0" rx="22.0"/>
+    <rect class="vz-silo" x="274" y="14" width="124" height="124" rx="18" fill="#fff" stroke="#1f2a2a" stroke-width="2.6" filter="url(#pad-shadow)"/>
+    <image href="/field-pack/photos/reticulated-giraffe.jpg?v=img2" x="278" y="18" width="116" height="116" preserveAspectRatio="xMidYMin slice" clip-path="url(#vz-photo-clip)"/>
+  </a>
+  <a href="/field-pack/virtual-zoo/#habitat=african-elephant" id="habitat-african-elephant" class="vz-spot" data-habitat="african-elephant" aria-label="Stop 6">
+    <rect class="vz-hit" x="456" y="12" width="136" height="136" fill="transparent"/>
+    <rect class="vz-halo" x="457.0" y="13.0" width="134.0" height="134.0" rx="22.0"/>
+    <rect class="vz-silo" x="462" y="18" width="124" height="124" rx="18" fill="#fff" stroke="#1f2a2a" stroke-width="2.6" filter="url(#pad-shadow)"/>
+    <image href="/field-pack/photos/african-elephant.jpg?v=img2" x="466" y="22" width="116" height="116" preserveAspectRatio="xMidYMin slice" clip-path="url(#vz-photo-clip)"/>
+  </a>
+  <a href="/field-pack/virtual-zoo/#habitat=african-lion" id="habitat-african-lion" class="vz-spot" data-habitat="african-lion" aria-label="Stop 7">
+    <rect class="vz-hit" x="640" y="140" width="136" height="136" fill="transparent"/>
+    <rect class="vz-halo" x="641.0" y="141.0" width="134.0" height="134.0" rx="22.0"/>
+    <rect class="vz-silo" x="646" y="146" width="124" height="124" rx="18" fill="#fff" stroke="#1f2a2a" stroke-width="2.6" filter="url(#pad-shadow)"/>
+    <image href="/field-pack/photos/african-lion.jpg?v=img2" x="650" y="150" width="116" height="116" preserveAspectRatio="xMidYMin slice" clip-path="url(#vz-photo-clip)"/>
+  </a>
+  <a href="/field-pack/virtual-zoo/#habitat=sumatran-tiger" id="habitat-sumatran-tiger" class="vz-spot" data-habitat="sumatran-tiger" aria-label="Stop 8">
+    <rect class="vz-hit" x="640" y="312" width="136" height="136" fill="transparent"/>
+    <rect class="vz-halo" x="641.0" y="313.0" width="134.0" height="134.0" rx="22.0"/>
+    <rect class="vz-silo" x="646" y="318" width="124" height="124" rx="18" fill="#fff" stroke="#1f2a2a" stroke-width="2.6" filter="url(#pad-shadow)"/>
+    <image href="/field-pack/photos/sumatran-tiger.jpg?v=img2" x="650" y="322" width="116" height="116" preserveAspectRatio="xMidYMin slice" clip-path="url(#vz-photo-clip)"/>
+  </a>
+  <a href="/field-pack/virtual-zoo/#habitat=western-lowland-gorilla" id="habitat-western-lowland-gorilla" class="vz-spot" data-habitat="western-lowland-gorilla" aria-label="Stop 9">
+    <rect class="vz-hit" x="608" y="488" width="136" height="136" fill="transparent"/>
+    <rect class="vz-halo" x="609.0" y="489.0" width="134.0" height="134.0" rx="22.0"/>
+    <rect class="vz-silo" x="614" y="494" width="124" height="124" rx="18" fill="#fff" stroke="#1f2a2a" stroke-width="2.6" filter="url(#pad-shadow)"/>
+    <image href="/field-pack/photos/western-lowland-gorilla.jpg?v=img2" x="618" y="498" width="116" height="116" preserveAspectRatio="xMidYMin slice" clip-path="url(#vz-photo-clip)"/>
+  </a>
+  <a href="/field-pack/virtual-zoo/#habitat=giant-panda" id="habitat-giant-panda" class="vz-spot" data-habitat="giant-panda" aria-label="Stop 10">
+    <rect class="vz-hit" x="430" y="608" width="136" height="136" fill="transparent"/>
+    <rect class="vz-halo" x="431.0" y="609.0" width="134.0" height="134.0" rx="22.0"/>
+    <rect class="vz-silo" x="436" y="614" width="124" height="124" rx="18" fill="#fff" stroke="#1f2a2a" stroke-width="2.6" filter="url(#pad-shadow)"/>
+    <image href="/field-pack/photos/giant-panda.jpg?v=img2" x="440" y="618" width="116" height="116" preserveAspectRatio="xMidYMin slice" clip-path="url(#vz-photo-clip)"/>
+  </a>
+</svg>

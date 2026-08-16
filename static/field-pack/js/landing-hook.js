@@ -20,26 +20,128 @@
       .replace(/"/g, "&quot;");
   }
 
-  /** Typeahead place search above the map */
-  (function wirePlaceSearch() {
-    const input = document.getElementById("place-search");
-    const results = document.getElementById("place-search-results");
-    if (!input || !results || !places.length) return;
+  function trackHero(name, params) {
+    if (typeof window.FPTrack === "function") {
+      window.FPTrack(name, params || {});
+      return;
+    }
+    const fn =
+      (window.OneLessAnalytics && window.OneLessAnalytics.track) || window.trackEvent;
+    if (typeof fn === "function") fn(name, params || {});
+  }
+
+  /** Build card search index from catalog (client-side). */
+  function buildCardIndex() {
+    const cat = window.FIELD_PACK_CATALOG || {};
+    const venues = window.FIELD_PACK_VENUES || {};
+    const home = {};
+    try {
+      for (const [vid, v] of Object.entries(venues)) {
+        const ids = [...(v.featuredAnimalIds || []), ...(v.animalIds || [])];
+        for (const id of ids) {
+          if (!home[id]) home[id] = { vid, name: v.shortName || v.name || vid };
+        }
+      }
+    } catch (_) {}
+    const out = [];
+    for (const [id, it] of Object.entries(cat)) {
+      if (!it || !it.name) continue;
+      if (String(id).startsWith("np-")) continue;
+      if (it.packTemplate === "park_features") continue;
+      const h = home[id] || {};
+      const group =
+        it.packTemplate === "exhibits" || String(id).startsWith("cm-") || String(id).startsWith("sci-")
+          ? "attractions"
+          : /shark|octopus|jelly|clown|turtle|ray|seal|whale|dolphin|seahorse|eel|penguin/.test(
+              (id + " " + (it.name || "")).toLowerCase()
+            )
+            ? "sealife"
+            : "wildlife";
+      out.push({
+        id,
+        name: it.name,
+        emoji: it.emoji || "🎴",
+        blurb: it.blurb || "",
+        group,
+        venueId: h.vid || "dallas-zoo",
+        venueName: h.name || "",
+        href: `/field-pack/cards/${encodeURIComponent(id)}/`,
+      });
+    }
+    return out;
+  }
+
+  let cardIndex = buildCardIndex();
+
+  /**
+   * Unified hero search — Places | Cards mode on one field.
+   * Place pick → venue page. Card pick → card URL. Empty submit → map (place) or #after (card).
+   */
+  function wireHeroSearch() {
+    const form = document.getElementById("hero-search-form");
+    const input = document.getElementById("hero-place-search");
+    const results = document.getElementById("hero-place-search-results");
+    const label = document.getElementById("hero-search-label");
+    const submitBtn = document.getElementById("hero-search-submit");
+    const block = document.getElementById("hero-search-block");
+    const modeBtns = document.querySelectorAll(".hero-mode-btn[data-search-mode]");
+    if (!form || !input || !results) return;
+
+    let mode = "place"; // place | card
+
+    function setMode(next) {
+      mode = next === "card" ? "card" : "place";
+      if (block) block.setAttribute("data-search-mode", mode);
+      form.classList.toggle("silo-place", mode === "place");
+      form.classList.toggle("silo-cards", mode === "card");
+      modeBtns.forEach((b) => {
+        const on = b.getAttribute("data-search-mode") === mode;
+        b.classList.toggle("is-active", on);
+        b.setAttribute("aria-pressed", on ? "true" : "false");
+      });
+      if (label) label.textContent = mode === "place" ? "Where are you going?" : "Find a card";
+      input.placeholder =
+        mode === "place" ? "Zoo, museum, park, or city…" : "Lion, shark, dinosaur…";
+      if (submitBtn) submitBtn.textContent = mode === "place" ? "Find place" : "Find card";
+      results.setAttribute("aria-label", mode === "place" ? "Matching places" : "Matching cards");
+      const hint = document.getElementById("hero-search-mode-hint");
+      if (hint) {
+        hint.innerHTML =
+          mode === "place"
+            ? 'Search <strong>places</strong> or switch to <strong>cards</strong>'
+            : 'Search <strong>cards</strong> or switch to <strong>places</strong>';
+      }
+      hide();
+      input.value = "";
+      trackHero("hero_search_mode", { search_mode: mode });
+    }
+
+    modeBtns.forEach((b) => {
+      b.addEventListener("click", () => setMode(b.getAttribute("data-search-mode") || "place"));
+    });
 
     function hide() {
       results.hidden = true;
       results.innerHTML = "";
     }
 
-    function go(id) {
+    function goPlace(id) {
       hide();
       input.value = "";
-      if (typeof window.fpSelectVenueOnMap === "function") {
-        window.fpSelectVenueOnMap(id);
-        document.getElementById("map-viewport")?.scrollIntoView({ behavior: "smooth", block: "center" });
-      } else {
-        location.href = `/field-pack/${encodeURIComponent(id)}/`;
-      }
+      trackHero("hero_search_used", { venue_slug: id || "", search_mode: "place", source: "hero" });
+      location.href = `/field-pack/${encodeURIComponent(id)}/`;
+    }
+
+    function goCard(card) {
+      hide();
+      input.value = "";
+      trackHero("hero_search_used", {
+        card_id: card.id || "",
+        search_mode: "card",
+        source: "hero",
+      });
+      trackHero("card_opened", { card_id: card.id || "", source: "hero_search" });
+      location.href = card.href;
     }
 
     function search(q) {
@@ -48,26 +150,54 @@
         hide();
         return;
       }
-      const hits = places
-        .filter((p) => {
-          const blob = [p.name, p.city, p.state, p.country, p.id, p.type]
-            .filter(Boolean)
-            .join(" ")
-            .toLowerCase();
+      if (mode === "place") {
+        const hits = places
+          .filter((p) => {
+            const blob = [p.name, p.city, p.state, p.country, p.id, p.type]
+              .filter(Boolean)
+              .join(" ")
+              .toLowerCase();
+            return blob.includes(needle);
+          })
+          .slice(0, 8);
+        if (!hits.length) {
+          results.innerHTML = `<li class="place-search-empty">No places match</li>`;
+          results.hidden = false;
+          return;
+        }
+        results.innerHTML = hits
+          .map((p) => {
+            const where = [p.city, p.state || p.country].filter(Boolean).join(", ");
+            return `<li role="option">
+            <button type="button" class="place-search-hit" data-kind="place" data-id="${escapeHtml(p.id)}">
+              <strong>${escapeHtml(p.emoji || "📍")} ${escapeHtml(p.name)}</strong>
+              <small>${escapeHtml(where)}</small>
+            </button>
+          </li>`;
+          })
+          .join("");
+        results.hidden = false;
+        return;
+      }
+      // cards
+      if (!cardIndex.length) cardIndex = buildCardIndex();
+      const hits = cardIndex
+        .filter((c) => {
+          const blob = [c.name, c.id, c.blurb, c.group, c.venueName].join(" ").toLowerCase();
           return blob.includes(needle);
         })
         .slice(0, 8);
       if (!hits.length) {
-        results.innerHTML = `<li class="place-search-empty">No matches</li>`;
+        results.innerHTML = `<li class="place-search-empty">No cards match</li>`;
         results.hidden = false;
         return;
       }
       results.innerHTML = hits
-        .map((p) => {
-          const where = [p.city, p.state || p.country].filter(Boolean).join(", ");
+        .map((c) => {
+          const where = c.venueName ? `· ${c.venueName}` : c.group;
           return `<li role="option">
-            <button type="button" class="place-search-hit" data-id="${escapeHtml(p.id)}">
-              <strong>${escapeHtml(p.emoji || "📍")} ${escapeHtml(p.name)}</strong>
+            <button type="button" class="place-search-hit" data-kind="card" data-id="${escapeHtml(c.id)}" data-href="${escapeHtml(c.href)}">
+              <strong>${escapeHtml(c.emoji || "🎴")} ${escapeHtml(c.name)}</strong>
               <small>${escapeHtml(where)}</small>
             </button>
           </li>`;
@@ -86,82 +216,192 @@
         hide();
         input.blur();
       }
+      if (e.key === "Enter") {
+        const first = results.querySelector(".place-search-hit");
+        if (first && !results.hidden) {
+          e.preventDefault();
+          first.click();
+        }
+      }
     });
     results.addEventListener("click", (e) => {
       const btn = e.target.closest(".place-search-hit");
       if (!btn) return;
-      go(btn.getAttribute("data-id"));
+      const kind = btn.getAttribute("data-kind") || "place";
+      if (kind === "card") {
+        const id = btn.getAttribute("data-id");
+        const href = btn.getAttribute("data-href");
+        const card = cardIndex.find((c) => c.id === id) || { id, href };
+        goCard(card);
+      } else {
+        goPlace(btn.getAttribute("data-id"));
+      }
     });
     document.addEventListener("click", (e) => {
       if (e.target.closest && e.target.closest(".place-search-wrap")) return;
       hide();
     });
-  })();
 
-  // Smooth scroll primary CTA → map
-  document.querySelectorAll('a.pitch-cta[href="#us-map"], a.story-jump[href="#us-map"]').forEach((a) => {
-    a.addEventListener("click", (e) => {
-      const map = document.getElementById("us-map");
-      if (!map) return;
+    form.addEventListener("submit", (e) => {
       e.preventDefault();
-      map.scrollIntoView({ behavior: "smooth", block: "start" });
-      history.replaceState(null, "", "#us-map");
+      const first = results.querySelector(".place-search-hit");
+      if (first && !results.hidden) {
+        first.click();
+        return;
+      }
+      const q = (input.value || "").trim();
+      if (q.length >= 2) {
+        input.dispatchEvent(new Event("input", { bubbles: true }));
+        return;
+      }
+      trackHero("hero_cta_clicked", { source: "hero_empty_submit", search_mode: mode });
+      if (mode === "card") {
+        document.getElementById("after")?.scrollIntoView({ behavior: "smooth", block: "start" });
+        history.replaceState(null, "", "#after");
+      } else {
+        const map = document.getElementById("during") || document.getElementById("us-map");
+        if (map) {
+          map.scrollIntoView({ behavior: "smooth", block: "start" });
+          history.replaceState(null, "", "#during");
+        }
+      }
+    });
+
+
+    // First visit: soft cue that Cards mode exists (once per browser session)
+    try {
+      if (!sessionStorage.getItem("fp_hero_mode_cue")) {
+        sessionStorage.setItem("fp_hero_mode_cue", "1");
+        const cardsBtn = document.getElementById("hero-mode-card");
+        if (cardsBtn) {
+          window.setTimeout(() => {
+            cardsBtn.classList.add("hero-mode-cue");
+            window.setTimeout(() => cardsBtn.classList.remove("hero-mode-cue"), 2800);
+          }, 900);
+        }
+      }
+    } catch (_) {}
+
+    // Deep-link ?mode=card
+    try {
+      const m = new URLSearchParams(location.search).get("mode");
+      if (m === "card" || location.hash === "#after-search") setMode("card");
+    } catch (_) {}
+  }
+
+  wireHeroSearch();
+
+  // T4b moment strip
+  document.querySelectorAll(".hero-moment-link[data-moment]").forEach((a) => {
+    a.addEventListener("click", () => {
+      trackHero("hero_moment_clicked", {
+        moment: a.getAttribute("data-moment") || "",
+        href: a.getAttribute("href") || "",
+        source: "hero_strip",
+      });
+    });
+  });
+  document.getElementById("hero-cards-link")?.addEventListener("click", () => {
+    trackHero("hero_cta_clicked", { source: "hero_cards_jump" });
+  });
+  document.getElementById("hero-map-link")?.addEventListener("click", () => {
+    trackHero("hero_cta_clicked", { source: "hero_map_jump" });
+  });
+  document.getElementById("hero-all-cards-link")?.addEventListener("click", () => {
+    trackHero("hero_cta_clicked", { source: "hero_all_cards" });
+  });
+
+  // T5 catalog: card pill filter + click events
+  // Mobile: 6 tiles (3 rows × 2). Desktop: 12. All uses data-featured-all only.
+  const cardGrid = document.getElementById("cat-card-grid");
+  const pills = document.querySelectorAll("#cat-cards-showcase [data-card-filter]");
+  if (pills.length && cardGrid) {
+    const cardMq = window.matchMedia("(max-width: 719px)");
+    let landingCardFilter = "all";
+    function cardLimit() {
+      return cardMq.matches ? 6 : 12;
+    }
+    function applyLandingCardFilter(f) {
+      landingCardFilter = f;
+      const limit = cardLimit();
+      let n = 0;
+      cardGrid.querySelectorAll(".cat-card-tile").forEach((tile) => {
+        const g = tile.getAttribute("data-card-group") || "";
+        const inAll = tile.hasAttribute("data-featured-all");
+        const match = f === "all" ? inAll : g === f;
+        if (match && n < limit) {
+          tile.hidden = false;
+          n += 1;
+        } else {
+          tile.hidden = true;
+        }
+      });
+    }
+    function ensureCardGridInView() {
+      const wrap = document.getElementById("cat-cards-showcase");
+      if (!wrap) return;
+      const header = document.querySelector(".oneless-shell");
+      const headerBottom = header ? header.getBoundingClientRect().bottom : 0;
+      const first = cardGrid.querySelector(".cat-card-tile:not([hidden])");
+      if (!first) return;
+      const firstBottom = first.getBoundingClientRect().bottom;
+      const tabs = wrap.querySelector(".place-type-tabs-cards");
+      const tabsTop = tabs ? tabs.getBoundingClientRect().top : first.getBoundingClientRect().top;
+      if (firstBottom < headerBottom + 24 || tabsTop < headerBottom - 8) {
+        wrap.scrollIntoView({ block: "start", behavior: "smooth" });
+      }
+    }
+    applyLandingCardFilter("all");
+    const onCardMq = () => applyLandingCardFilter(landingCardFilter);
+    if (cardMq.addEventListener) cardMq.addEventListener("change", onCardMq);
+    else if (cardMq.addListener) cardMq.addListener(onCardMq);
+    pills.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const f = btn.getAttribute("data-card-filter") || "all";
+        pills.forEach((b) => {
+          const on = b === btn;
+          b.classList.toggle("is-active", on);
+          b.setAttribute("aria-pressed", on ? "true" : "false");
+          b.setAttribute("aria-selected", on ? "true" : "false");
+        });
+        applyLandingCardFilter(f);
+        ensureCardGridInView();
+      });
+    });
+  }
+  document.querySelectorAll(".cat-card-tile-link[data-card-id]").forEach((a) => {
+    a.addEventListener("click", () => {
+      trackHero("card_opened", { card_id: a.getAttribute("data-card-id") || "", source: "catalog_teaser" });
+    });
+  });
+  document.querySelectorAll(".cat-place-hub[data-place-kind]").forEach((a) => {
+    a.addEventListener("click", () => {
+      trackHero("catalog_place_clicked", { place_kind: a.getAttribute("data-place-kind") || "", source: "catalog" });
+    });
+  });
+  document.querySelectorAll(".cat-popular-chip[data-venue-slug]").forEach((a) => {
+    a.addEventListener("click", () => {
+      trackHero("catalog_popular_clicked", { venue_slug: a.getAttribute("data-venue-slug") || "", source: "catalog" });
     });
   });
 
-  /**
-   * Sample pops (Print hunt / Play lion):
-   * Desktop — CSS hover. Touch — first tap opens pop; second tap (or tap pop) navigates.
-   */
-  (function wireSamplePops() {
-    const steps = Array.from(document.querySelectorAll(".story-step-has-pop"));
-    if (!steps.length) return;
+  // Trust strip count from live places data when present
+  const countEl = document.querySelector("[data-place-count]");
+  if (countEl && places.length) countEl.textContent = String(places.length);
 
-    function isCoarse() {
-      try {
-        return window.matchMedia("(hover: none), (pointer: coarse)").matches;
-      } catch (_) {
-        return "ontouchstart" in window;
+  // Smooth scroll legacy CTAs → map
+  document.querySelectorAll('a.pitch-cta[href="#us-map"], a.story-jump[href="#us-map"], a[href="#during"]').forEach((a) => {
+    a.addEventListener("click", (e) => {
+      const map = document.getElementById("during") || document.getElementById("us-map");
+      if (!map) return;
+      // let native hash work for plain anchors; enhance smooth scroll
+      if (a.getAttribute("href") === "#us-map" || a.classList.contains("pitch-cta")) {
+        e.preventDefault();
+        map.scrollIntoView({ behavior: "smooth", block: "start" });
+        history.replaceState(null, "", a.getAttribute("href") || "#during");
       }
-    }
-
-    function closeAll(except) {
-      steps.forEach((s) => {
-        if (s !== except) s.classList.remove("is-pop-open");
-      });
-    }
-
-    steps.forEach((step) => {
-      const link = step.querySelector("a.story-sample-link[data-sample-pop]");
-      if (!link) return;
-
-      link.addEventListener("click", (e) => {
-        if (!isCoarse()) return; // desktop: normal navigate (hover already showed pop)
-        if (!step.classList.contains("is-pop-open")) {
-          e.preventDefault();
-          e.stopPropagation();
-          closeAll(step);
-          step.classList.add("is-pop-open");
-          return;
-        }
-        // already open → allow navigation (default)
-      });
     });
-
-    document.addEventListener(
-      "click",
-      (e) => {
-        if (!isCoarse()) return;
-        if (e.target.closest && e.target.closest(".story-step-has-pop.is-pop-open")) return;
-        closeAll();
-      },
-      true
-    );
-
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeAll();
-    });
-  })();
+  });
 
   // Ready cards (if present) open the map mini-panel for that venue
   if (grid && READY.length) {
@@ -431,4 +671,19 @@
   }
   renderWaiting();
   window.addEventListener("1less-cities-saved", renderWaiting);
+
+  // Mission drawer “Different place?” → land on search, not another demo zoo
+  try {
+    if (new URLSearchParams(location.search).get("find") === "1") {
+      const input = document.getElementById("hero-place-search");
+      const block = document.getElementById("hero-search-block") || input;
+      if (block && block.scrollIntoView) block.scrollIntoView({ block: "center" });
+      if (input) {
+        input.focus();
+        input.setAttribute("placeholder", "Your zoo, aquarium, museum, or park…");
+      }
+    }
+  } catch (_) {
+    /* ignore */
+  }
 })();

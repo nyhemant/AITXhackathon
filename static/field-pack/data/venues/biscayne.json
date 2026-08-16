@@ -1,0 +1,373 @@
+{
+  "slug": "biscayne",
+  "name": "Biscayne National Park",
+  "type": "national_park",
+  "city": "Homestead",
+  "region": "FL",
+  "country": "US",
+  "lat": 25.4824,
+  "lng": -80.2083,
+  "official_url": "https://www.nps.gov/bisc/",
+  "last_verified": "2026-08-09",
+  "verified_by": "research",
+  "status": "verified",
+  "tagline": "Biscayne — mostly water; visitor center and jetty/shore when not on a boat.",
+  "practical": {
+    "typical_duration": "half day",
+    "ticket_note": "Shore free; boat tours extra and seasonal.",
+    "transit_note": "Homestead / Miami area.",
+    "energy_note": "Sun, bugs, limited shade on water.",
+    "best_start": "Visitor center → jetty/shore walk → exhibits",
+    "slice_name": "Visitor center shore",
+    "season_note": "Hurricane season can cancel boats."
+  },
+  "items": [
+    {
+      "id": "np_visitor_center",
+      "label": "Dante Fascell / Biscayne visitor center",
+      "emoji": "🏛️",
+      "one_liner": "Most of the park is water — plan boats carefully.",
+      "tags": [
+        "rest"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Entrance",
+      "qa_card": {
+        "question": "What did you notice at the Dante Fascell / Biscayne visitor center?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-visitor-center",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Dante Fascell / Biscayne visitor center"
+    },
+    {
+      "id": "np_tide_coast",
+      "label": "Jetty or shoreline walk",
+      "emoji": "🌊",
+      "one_liner": "Waves and shore — careful footing.",
+      "tags": [
+        "water",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Shore",
+      "qa_card": {
+        "question": "What did you notice at the Jetty or shoreline walk?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-tide-coast",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Jetty or shoreline walk"
+    },
+    {
+      "id": "np_wetland",
+      "label": "Mangrove edge",
+      "emoji": "🦩",
+      "one_liner": "Shallow water world — stay on the path.",
+      "tags": [
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Wetland",
+      "qa_card": {
+        "question": "What did you notice at the Mangrove edge?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-wetland",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Mangrove edge"
+    },
+    {
+      "id": "np_trailhead_sign",
+      "label": "Shore path sign",
+      "emoji": "🥾",
+      "one_liner": "Read distance and rules before you go.",
+      "tags": [
+        "read"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Trail",
+      "qa_card": {
+        "question": "What did you notice at the Shore path sign?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-trailhead-sign",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Shore path sign"
+    },
+    {
+      "id": "np_junior_ranger",
+      "label": "Biscayne Junior Ranger desk",
+      "emoji": "🎖️",
+      "one_liner": "Ask at the visitor center — hours and ages vary.",
+      "tags": [
+        "hands"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Visitor center",
+      "qa_card": {
+        "question": "What did you notice at the Biscayne Junior Ranger desk?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-junior-ranger",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Biscayne Junior Ranger desk"
+    },
+    {
+      "id": "np_boardwalk",
+      "label": "Visitor center boardwalk / jetty",
+      "emoji": "🪵",
+      "one_liner": "Stay on the path — fragile ground or wet edge.",
+      "tags": [
+        "walk"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Trail",
+      "qa_card": {
+        "question": "What did you notice at the Visitor center boardwalk / jetty?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-boardwalk",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Visitor center boardwalk / jetty"
+    },
+    {
+      "id": "np_scenic_overlook",
+      "label": "Bay view from shore",
+      "emoji": "🌄",
+      "one_liner": "One big view — stay behind rails.",
+      "tags": [
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Overlook",
+      "qa_card": {
+        "question": "What did you notice at the Bay view from shore?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-scenic-overlook",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Bay view from shore"
+    },
+    {
+      "id": "np_ranger_program",
+      "label": "Biscayne ranger talk (if offered)",
+      "emoji": "🗣️",
+      "one_liner": "Check the day’s board at the visitor center.",
+      "tags": [
+        "hands"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "VC",
+      "qa_card": {
+        "question": "What did you notice at the Biscayne ranger talk (if offered)?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-ranger-program",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Biscayne ranger talk (if offered)"
+    }
+  ],
+  "content_mode": "curated",
+  "media": {
+    "visitor_map_url": "/field-pack/media/maps/biscayne.jpg",
+    "visitor_map_page": "https://www.nps.gov/bisc/planyourvisit/maps.htm",
+    "visitor_map_kind": "image",
+    "map_attribution": "Map: NPS public domain (via NPMaps)",
+    "hero_illustration": "/field-pack/photos/np-hero-biscayne.jpg",
+    "print_map": "/field-pack/media/maps/biscayne.jpg"
+  },
+  "parent_script": [
+    "Bathroom first",
+    "Water & sun check",
+    "One big view",
+    "Leave while happy"
+  ],
+  "route_90m": [
+    "np_visitor_center",
+    "np_tide_coast",
+    "np_boardwalk"
+  ],
+  "research_notes": "NP Phase 1c long-tail 2026-08-08 · slice-focused kit · label scrub 2026-08-09",
+  "list_confidence": "partial",
+  "do_not_list": [],
+  "presence_sources": [
+    "https://www.nps.gov/bisc/"
+  ],
+  "last_presence_audit": "2026-08-08",
+  "bonus_hunt": {
+    "tagline": "Biscayne National Park bonus · second look on the trail",
+    "find_ids": [
+      "np_scenic_overlook",
+      "np_wetland",
+      "np_junior_ranger",
+      "np_trailhead_sign",
+      "np_tide_coast",
+      "np_boardwalk",
+      "np_visitor_center"
+    ],
+    "challenges": [
+      {
+        "id": "biscayne_np_scenic_overlo_watch",
+        "text": "Overlook: take 15 seconds on the Bay view from shore — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "biscayne_np_wetland_watch",
+        "text": "Wetland: take 15 seconds on the Mangrove edge — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "biscayne_np_junior_ranger_watch",
+        "text": "Visitor center: take 15 seconds on the Biscayne Junior Ranger desk — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "biscayne_np_trailhead_sig_watch",
+        "text": "Trail: take 15 seconds on the Shore path sign — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "biscayne_np_tide_coast_watch",
+        "text": "Shore: take 15 seconds on the Jetty or shoreline walk — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_still",
+        "text": "Quiet 20 seconds on the trail — bird, wind, water, or people: what wins?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_far_near",
+        "text": "Name something far first — then something by your feet",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_camo",
+        "text": "Best natural camouflage (rock, bark, shadow) you can spot",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_map",
+        "text": "Find a map or zone name you haven’t noticed — point it out",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_tiny_huge",
+        "text": "Something tiny next to something huge in this area",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find a park map or zone sign — name one animal that lives that way",
+    "easter_egg_little": "★ Easter egg: pick a favorite bench — sit 60 seconds and name three sounds",
+    "researched": "2026-08-09",
+    "status": "solid",
+    "sources": [
+      "https://www.nps.gov/bisc/"
+    ]
+  }
+}

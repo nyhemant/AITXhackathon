@@ -1,0 +1,373 @@
+{
+  "slug": "congaree",
+  "name": "Congaree National Park",
+  "type": "national_park",
+  "city": "Hopkins",
+  "region": "SC",
+  "country": "US",
+  "lat": 33.794,
+  "lng": -80.7821,
+  "official_url": "https://www.nps.gov/cong/",
+  "last_verified": "2026-08-09",
+  "verified_by": "research",
+  "status": "verified",
+  "tagline": "Congaree — boardwalk through old-growth bottomland forest.",
+  "practical": {
+    "typical_duration": "half day",
+    "ticket_note": "Free entry.",
+    "transit_note": "Near Columbia SC; visitor center start.",
+    "energy_note": "Bugs and heat in summer; boardwalk is the win.",
+    "best_start": "Visitor center → boardwalk loop (short or long)",
+    "slice_name": "Boardwalk loop",
+    "season_note": "Flooding can close sections; check conditions."
+  },
+  "items": [
+    {
+      "id": "np_visitor_center",
+      "label": "Congaree visitor center",
+      "emoji": "🏛️",
+      "one_liner": "Maps, restrooms, questions — start here.",
+      "tags": [
+        "rest"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Entrance",
+      "qa_card": {
+        "question": "What did you notice at the Congaree visitor center?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-visitor-center",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Congaree visitor center"
+    },
+    {
+      "id": "np_boardwalk",
+      "label": "Low boardwalk through bottomland",
+      "emoji": "🪵",
+      "one_liner": "Old-growth floodplain forest on boards.",
+      "tags": [
+        "walk"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Trail",
+      "qa_card": {
+        "question": "What did you notice at the Low boardwalk through bottomland?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-boardwalk",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Low boardwalk through bottomland"
+    },
+    {
+      "id": "np_giant_tree",
+      "label": "Champion bottomland hardwoods",
+      "emoji": "🌳",
+      "one_liner": "Look up — hug with your eyes only.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Forest",
+      "qa_card": {
+        "question": "What did you notice at the Champion bottomland hardwoods?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-giant-tree",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Champion bottomland hardwoods"
+    },
+    {
+      "id": "np_trailhead_sign",
+      "label": "Boardwalk loop sign",
+      "emoji": "🥾",
+      "one_liner": "Read distance and rules before you go.",
+      "tags": [
+        "read"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Trail",
+      "qa_card": {
+        "question": "What did you notice at the Boardwalk loop sign?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-trailhead-sign",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Boardwalk loop sign"
+    },
+    {
+      "id": "np_junior_ranger",
+      "label": "Congaree Junior Ranger desk",
+      "emoji": "🎖️",
+      "one_liner": "Ask at the visitor center — hours and ages vary.",
+      "tags": [
+        "hands"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Visitor center",
+      "qa_card": {
+        "question": "What did you notice at the Congaree Junior Ranger desk?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-junior-ranger",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Congaree Junior Ranger desk"
+    },
+    {
+      "id": "np_wetland",
+      "label": "Flooded forest pools",
+      "emoji": "🦩",
+      "one_liner": "Shallow water world — stay on the path.",
+      "tags": [
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Wetland",
+      "qa_card": {
+        "question": "What did you notice at the Flooded forest pools?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-wetland",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Flooded forest pools"
+    },
+    {
+      "id": "np_river",
+      "label": "Cedar Creek glimpse",
+      "emoji": "🏞️",
+      "one_liner": "Water edge — safe step back.",
+      "tags": [
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Water",
+      "qa_card": {
+        "question": "What did you notice at the Cedar Creek glimpse?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-river",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Cedar Creek glimpse"
+    },
+    {
+      "id": "np_meadow",
+      "label": "Boardwalk loop rest clearing",
+      "emoji": "🌾",
+      "one_liner": "Legs reset after the boards.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Open",
+      "qa_card": {
+        "question": "What did you notice at the Boardwalk loop open meadow?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-meadow",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Boardwalk loop rest clearing"
+    }
+  ],
+  "content_mode": "curated",
+  "media": {
+    "visitor_map_url": "/field-pack/media/maps/congaree.jpg",
+    "visitor_map_page": "https://www.nps.gov/cong/planyourvisit/maps.htm",
+    "visitor_map_kind": "image",
+    "map_attribution": "Map: NPS via NPMaps (public domain)",
+    "hero_illustration": "/field-pack/photos/np-hero-congaree.jpg",
+    "print_map": "/field-pack/media/maps/congaree.jpg",
+    "visitor_map_full": "https://npmaps.com/wp-content/uploads/congaree-national-park-map.jpg"
+  },
+  "parent_script": [
+    "Bathroom first",
+    "Water & sun check",
+    "One big view",
+    "Leave while happy"
+  ],
+  "route_90m": [
+    "np_visitor_center",
+    "np_boardwalk",
+    "np_giant_tree"
+  ],
+  "research_notes": "NP Phase 1b 2026-08-08 · slice-focused kit · label scrub 2026-08-09",
+  "list_confidence": "partial",
+  "do_not_list": [],
+  "presence_sources": [
+    "https://www.nps.gov/cong/"
+  ],
+  "last_presence_audit": "2026-08-08",
+  "bonus_hunt": {
+    "tagline": "Congaree National Park bonus · second look on the trail",
+    "find_ids": [
+      "np_river",
+      "np_wetland",
+      "np_junior_ranger",
+      "np_meadow",
+      "np_trailhead_sign",
+      "np_boardwalk",
+      "np_giant_tree"
+    ],
+    "challenges": [
+      {
+        "id": "congaree_np_river_watch",
+        "text": "Water: take 15 seconds on the Cedar Creek glimpse — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "congaree_np_wetland_watch",
+        "text": "Wetland: take 15 seconds on the Flooded forest pools — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "congaree_np_junior_ranger_watch",
+        "text": "Visitor center: take 15 seconds on the Congaree Junior Ranger desk — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "congaree_np_meadow_watch",
+        "text": "Open: take 15 seconds on the Boardwalk loop rest clearing — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "congaree_np_trailhead_sig_watch",
+        "text": "Trail: take 15 seconds on the Boardwalk loop sign — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_still",
+        "text": "Quiet 20 seconds on the trail — bird, wind, water, or people: what wins?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_far_near",
+        "text": "Name something far first — then something by your feet",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_camo",
+        "text": "Best natural camouflage (rock, bark, shadow) you can spot",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_map",
+        "text": "Find a map or zone name you haven’t noticed — point it out",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_tiny_huge",
+        "text": "Something tiny next to something huge in this area",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find a park map or zone sign — name one animal that lives that way",
+    "easter_egg_little": "★ Easter egg: pick a favorite bench — sit 60 seconds and name three sounds",
+    "researched": "2026-08-09",
+    "status": "solid",
+    "sources": [
+      "https://www.nps.gov/cong/"
+    ]
+  }
+}

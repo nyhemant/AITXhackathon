@@ -1,0 +1,370 @@
+{
+  "id": "virtual-zoo",
+  "kind": "zoo",
+  "tab": "zoo",
+  "path": "/field-pack/virtual-zoo/",
+  "title": "Virtual Zoo for Kids",
+  "h1": "Virtual Zoo — a field trip at home",
+  "crumb": "Zoo",
+  "lead": "Study before you go. Start at the gate and follow the path — one glowing stop at a time. Watch a live cam, then walk on. Free. No account.",
+  "printBanner": "HOME SAFARI · Map hunt",
+  "printSub": "Check each stop. Doodle if you want. Page 2 cuts into hide-and-seek cards.",
+  "printHideBanner": "Hide-and-seek at home",
+  "printHideSub": "Cut the cards. Hide them. Write in the box. Ask the question.",
+  "printFooter": "Cams at 1less.app/field-pack/virtual-zoo/ · Field Trip Kit",
+  "storageKey": "fp-virtual-zoo-stamps-v1",
+  "mapSvg": "/field-pack/media/virtual-zoo/map.svg?v=9",
+  "habitats": [
+    {
+      "id": "caribbean-flamingo",
+      "cardId": "caribbean-flamingo",
+      "label": "Flamingo Lagoon",
+      "challenge": "Why do flamingos have long legs? Why stand on one?",
+      "hotspot": {
+        "svgId": "habitat-caribbean-flamingo"
+      },
+      "cam": {
+        "url": "https://www.houstonzoo.org/explore/webcams/flamingo-cam/",
+        "provider": "houston_zoo",
+        "embed": null,
+        "hours": "Usually 7a–7p CDT",
+        "camLabel": "Flamingo cam at the Houston Zoo",
+        "speciesNote": null,
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.houstonzoo.org/explore/webcams/flamingo-cam/",
+          "checked": "2026-08-13"
+        }
+      },
+      "video": {
+        "url": "https://www.youtube.com/watch?v=u2k4lSTZxS4",
+        "title": "Flamingo chicks at the Houston Zoo",
+        "provider": "youtube",
+        "channel": "Houston Zoo",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=u2k4lSTZxS4",
+          "checked": "2026-08-14"
+        }
+      },
+      "seq": 1,
+      "printAnswer": "Long legs let them wade and find food. Standing on one leg rests the other and can help them stay warm."
+    },
+    {
+      "id": "asian-small-clawed-otter",
+      "cardId": "asian-small-clawed-otter",
+      "label": "Otter Creek",
+      "challenge": "Why do otters have whiskers? Why do they love water so much?",
+      "hotspot": {
+        "svgId": "habitat-asian-small-clawed-otter"
+      },
+      "cam": {
+        "url": "https://www.houstonzoo.org/explore/webcams/pantanal-otter-cam/",
+        "provider": "houston_zoo",
+        "embed": null,
+        "hours": "Usually 7a–7p CDT",
+        "camLabel": "Otter cam at the Houston Zoo",
+        "speciesNote": null,
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.houstonzoo.org/explore/webcams/pantanal-otter-cam/",
+          "checked": "2026-08-13"
+        }
+      },
+      "video": {
+        "url": "https://www.youtube.com/watch?v=zboaajdMGHg",
+        "title": "Otters in their habitat at the National Zoo",
+        "provider": "youtube",
+        "channel": "Smithsonian's National Zoo",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=zboaajdMGHg",
+          "checked": "2026-08-14"
+        }
+      },
+      "seq": 2,
+      "printAnswer": "Whiskers feel fish moving in dark water. Otters hunt and play in water, and thick fur keeps them warm."
+    },
+    {
+      "id": "african-penguin",
+      "cardId": "african-penguin",
+      "label": "Penguin Beach",
+      "challenge": "Why can’t penguins fly? Why the black-and-white coat?",
+      "hotspot": {
+        "svgId": "habitat-african-penguin"
+      },
+      "cam": {
+        "url": "https://zoo.sandiegozoo.org/cams/penguin-cam",
+        "provider": "sdz",
+        "embed": null,
+        "hours": "Daylight, then same-day replay",
+        "camLabel": "Penguin cam at the San Diego Zoo",
+        "speciesNote": null,
+        "verify": {
+          "status": "sourced",
+          "source": "https://zoo.sandiegozoo.org/cams/penguin-cam",
+          "checked": "2026-08-13"
+        }
+      },
+      "video": {
+        "url": "https://www.youtube.com/watch?v=RQ56IFZO6N0",
+        "title": "African penguins at the San Diego Zoo",
+        "provider": "youtube",
+        "channel": "San Diego Zoo",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=RQ56IFZO6N0",
+          "checked": "2026-08-14"
+        }
+      },
+      "seq": 3,
+      "printAnswer": "Their wings became flippers for swimming. Dark backs and white bellies help them hide from above and below."
+    },
+    {
+      "id": "nile-hippo",
+      "cardId": "nile-hippo",
+      "label": "Hippo Pool",
+      "challenge": "Why does a hippo spend so much time in water? Can it really swim?",
+      "hotspot": {
+        "svgId": "habitat-nile-hippo"
+      },
+      "cam": {
+        "url": "https://zoo.sandiegozoo.org/cams/hippo-cam",
+        "provider": "sdz",
+        "embed": null,
+        "hours": "Daylight, then same-day replay",
+        "camLabel": "Hippo cam at the San Diego Zoo",
+        "speciesNote": null,
+        "verify": {
+          "status": "sourced",
+          "source": "https://zoo.sandiegozoo.org/cams/hippo-cam",
+          "checked": "2026-08-13"
+        }
+      },
+      "video": {
+        "url": "https://www.youtube.com/watch?v=Zdl4ndfjYBA",
+        "title": "Hippos at the San Diego Zoo",
+        "provider": "youtube",
+        "channel": "San Diego Zoo",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=Zdl4ndfjYBA",
+          "checked": "2026-08-14"
+        }
+      },
+      "seq": 4,
+      "printAnswer": "Water keeps them cool and their skin safe from the sun. They mostly walk on the bottom — they are not strong swimmers."
+    },
+    {
+      "id": "reticulated-giraffe",
+      "cardId": "reticulated-giraffe",
+      "label": "Giraffe Grove",
+      "challenge": "Why is a giraffe’s neck so long? How does it drink?",
+      "hotspot": {
+        "svgId": "habitat-reticulated-giraffe"
+      },
+      "cam": {
+        "url": "https://www.houstonzoo.org/explore/webcams/giraffe-feeding-platform/",
+        "provider": "houston_zoo",
+        "embed": null,
+        "hours": "Usually 7a–7p CDT",
+        "camLabel": "Giraffe cam at the Houston Zoo",
+        "speciesNote": null,
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.houstonzoo.org/explore/webcams/giraffe-feeding-platform/",
+          "checked": "2026-08-13"
+        }
+      },
+      "video": {
+        "url": "https://www.youtube.com/watch?v=TMvYXAkHIFo",
+        "title": "Giraffe calf at the Houston Zoo",
+        "provider": "youtube",
+        "channel": "Houston Zoo",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=TMvYXAkHIFo",
+          "checked": "2026-08-14"
+        }
+      },
+      "seq": 5,
+      "printAnswer": "A long neck reaches high leaves. To drink, a giraffe spreads its front legs and bends down carefully."
+    },
+    {
+      "id": "african-elephant",
+      "cardId": "african-elephant",
+      "label": "Elephant Walk",
+      "challenge": "Why do elephants have huge ears? What is a trunk for?",
+      "hotspot": {
+        "svgId": "habitat-african-elephant"
+      },
+      "cam": {
+        "url": "https://nationalzoo.si.edu/webcams/elephants",
+        "provider": "smithsonian",
+        "embed": null,
+        "hours": "Usually 7a–7p ET",
+        "camLabel": "Elephant cam at the Smithsonian National Zoo",
+        "speciesNote": null,
+        "verify": {
+          "status": "sourced",
+          "source": "https://nationalzoo.si.edu/webcams/elephants",
+          "checked": "2026-08-13"
+        }
+      },
+      "video": {
+        "url": "https://www.youtube.com/watch?v=Qzy0r4MUlQk",
+        "title": "Asian elephants at the National Zoo",
+        "provider": "youtube",
+        "channel": "Smithsonian's National Zoo",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=Qzy0r4MUlQk",
+          "checked": "2026-08-14"
+        }
+      },
+      "seq": 6,
+      "printAnswer": "Big ears let heat out, like fans. The trunk smells, grabs food, drinks, and says hello."
+    },
+    {
+      "id": "african-lion",
+      "cardId": "african-lion",
+      "label": "Lion Ridge",
+      "challenge": "Why does a lion have a mane? Why do they live in a pride?",
+      "hotspot": {
+        "svgId": "habitat-african-lion"
+      },
+      "cam": {
+        "url": "https://nationalzoo.si.edu/webcams/lion-cam",
+        "provider": "smithsonian",
+        "embed": null,
+        "hours": "Live on the National Zoo page",
+        "camLabel": "Lion cam at the Smithsonian National Zoo",
+        "speciesNote": null,
+        "verify": {
+          "status": "sourced",
+          "source": "https://nationalzoo.si.edu/webcams/lion-cam",
+          "checked": "2026-08-13"
+        }
+      },
+      "video": {
+        "url": "https://www.youtube.com/watch?v=tlZwYsJpqjo",
+        "title": "African lions",
+        "provider": "youtube",
+        "channel": "Nat Geo Kids",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=tlZwYsJpqjo",
+          "checked": "2026-08-14"
+        }
+      },
+      "seq": 7,
+      "printAnswer": "A mane makes a lion look bigger and protects the neck. A pride is a family that hunts and raises cubs together."
+    },
+    {
+      "id": "sumatran-tiger",
+      "cardId": "sumatran-tiger",
+      "label": "Tiger Trail",
+      "challenge": "Why does a tiger have stripes? Are they like a house cat?",
+      "hotspot": {
+        "svgId": "habitat-sumatran-tiger"
+      },
+      "cam": {
+        "url": "https://sdzsafaripark.org/cams/tiger-cam",
+        "provider": "sdz_safari",
+        "embed": null,
+        "hours": "Daylight, then same-day replay",
+        "camLabel": "Tiger cam at the San Diego Zoo Safari Park",
+        "speciesNote": null,
+        "verify": {
+          "status": "sourced",
+          "source": "https://sdzsafaripark.org/cams/tiger-cam",
+          "checked": "2026-08-13"
+        }
+      },
+      "video": {
+        "url": "https://www.youtube.com/watch?v=04kwMlYsYis",
+        "title": "Sumatran tigers at the San Diego Zoo Safari Park",
+        "provider": "youtube",
+        "channel": "San Diego Zoo",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=04kwMlYsYis",
+          "checked": "2026-08-14"
+        }
+      },
+      "seq": 8,
+      "printAnswer": "Stripes break up their shape in grass and shade. Yes — tigers are big cats in the same family as house cats."
+    },
+    {
+      "id": "western-lowland-gorilla",
+      "cardId": "western-lowland-gorilla",
+      "label": "Gorilla Forest",
+      "challenge": "Why are gorillas so strong? Do they live in families?",
+      "hotspot": {
+        "svgId": "habitat-western-lowland-gorilla"
+      },
+      "cam": {
+        "url": "https://www.houstonzoo.org/explore/webcams/gorilla-habitat-cam/",
+        "provider": "houston_zoo",
+        "embed": null,
+        "hours": "Usually 7a–7p CDT",
+        "camLabel": "Gorilla cam at the Houston Zoo",
+        "speciesNote": null,
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.houstonzoo.org/explore/webcams/gorilla-habitat-cam/",
+          "checked": "2026-08-13"
+        }
+      },
+      "video": {
+        "url": "https://www.youtube.com/watch?v=1vIlFjl9iOk",
+        "title": "Gorillas at the National Zoo",
+        "provider": "youtube",
+        "channel": "Smithsonian's National Zoo",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=1vIlFjl9iOk",
+          "checked": "2026-08-14"
+        }
+      },
+      "seq": 9,
+      "printAnswer": "Strong arms help them climb and pull plants. They live in family groups led by a silverback."
+    },
+    {
+      "id": "giant-panda",
+      "cardId": "giant-panda",
+      "label": "Panda House",
+      "challenge": "Why do pandas eat bamboo? Why the black-and-white fur?",
+      "hotspot": {
+        "svgId": "habitat-giant-panda"
+      },
+      "cam": {
+        "url": "https://nationalzoo.si.edu/webcams/panda-cam",
+        "provider": "smithsonian",
+        "embed": null,
+        "hours": "Usually 7a–7p ET",
+        "camLabel": "Panda cam at the Smithsonian National Zoo",
+        "speciesNote": null,
+        "verify": {
+          "status": "sourced",
+          "source": "https://nationalzoo.si.edu/webcams/panda-cam",
+          "checked": "2026-08-13"
+        }
+      },
+      "video": {
+        "url": "https://www.youtube.com/watch?v=f9KVNw799aE",
+        "title": "Giant panda Qing Bao in her habitat",
+        "provider": "youtube",
+        "channel": "Smithsonian's National Zoo",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=f9KVNw799aE",
+          "checked": "2026-08-14"
+        }
+      },
+      "seq": 10,
+      "printAnswer": "Bamboo is almost all they eat, even though they are bears. The colors may help them hide or spot each other."
+    }
+  ],
+  "sequential": true
+}

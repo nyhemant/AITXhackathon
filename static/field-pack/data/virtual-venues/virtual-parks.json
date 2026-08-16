@@ -1,0 +1,362 @@
+{
+  "id": "virtual-parks",
+  "kind": "park",
+  "tab": "parks",
+  "path": "/field-pack/virtual-field-trip/?tab=parks",
+  "title": "Virtual National Parks for Kids",
+  "h1": "National parks — a road trip at home",
+  "crumb": "National parks",
+  "lead": "Ten famous parks on a real map of the lower 48. Follow the road from Maine to the Rockies. Free. No account.",
+  "use": "For rainy days, a classroom Friday, or beside a local park day.",
+  "printBanner": "HOME ROAD TRIP · Map hunt",
+  "printSub": "Check each stop. Doodle if you want. Page 2 cuts into hide-and-seek cards.",
+  "printHideBanner": "Hide-and-seek at home",
+  "printHideSub": "Cut the cards. Hide them. Write in the box. Ask the question.",
+  "printFooter": "1less.app/field-pack/virtual-field-trip/?tab=parks · Field Trip Kit",
+  "storageKey": "fp-virtual-parks-stamps-v2",
+  "mapSvg": "/field-pack/media/virtual-parks/map.svg?v=10",
+  "mapClass": "is-wide",
+  "habitats": [
+    {
+      "id": "acadia",
+      "label": "Acadia",
+      "emoji": "🌅",
+      "photo": "/field-pack/photos/np-hero-acadia.jpg?v=q3",
+      "blurb": "Coast + summit slice near Bar Harbor — plan timed entry for Cadillac.",
+      "challenge": "Why is ocean water salty? What happens when waves hit rock?",
+      "placeHref": "/field-pack/acadia/",
+      "hotspot": {
+        "svgId": "habitat-acadia"
+      },
+      "cam": {
+        "url": "https://www.nps.gov/acad/learn/photosmultimedia/webcams.htm",
+        "provider": "nps",
+        "hours": "NPS webcam page",
+        "camLabel": "Acadia webcams · National Park Service",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.nps.gov/acad/learn/photosmultimedia/webcams.htm",
+          "checked": "2026-08-13"
+        }
+      },
+      "seq": 1,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=4bRKthFQfXo",
+        "title": "Acadia granite coast and Cadillac",
+        "provider": "youtube",
+        "channel": "More Than Just Parks",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=4bRKthFQfXo",
+          "checked": "2026-08-15"
+        }
+      },
+      "printAnswer": "Rivers carry a little salt from rocks, and it stays in the sea. Waves slowly wear the rock away."
+    },
+    {
+      "id": "great-smoky-mountains",
+      "label": "Great Smoky Mountains",
+      "emoji": "🌫️",
+      "photo": "/field-pack/photos/np-hero-great-smoky-mountains.jpg?v=q3",
+      "blurb": "Smokies starter day near Gatlinburg — not Cades Cove full loop unless energy allows.",
+      "challenge": "Why do faraway mountains look blue or smoky?",
+      "placeHref": "/field-pack/great-smoky-mountains/",
+      "hotspot": {
+        "svgId": "habitat-great-smoky-mountains"
+      },
+      "cam": {
+        "url": "https://www.nps.gov/grsm/learn/photosmultimedia/webcams.htm",
+        "provider": "nps",
+        "hours": "NPS webcam page",
+        "camLabel": "Smokies webcams · National Park Service",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.nps.gov/grsm/learn/photosmultimedia/webcams.htm",
+          "checked": "2026-08-13"
+        }
+      },
+      "seq": 2,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=i_WME0gAO_g",
+        "title": "Smokies ridges in fall",
+        "provider": "youtube",
+        "channel": "More Than Just Parks",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=i_WME0gAO_g",
+          "checked": "2026-08-15"
+        }
+      },
+      "printAnswer": "Air and tiny drops scatter light, so far ridges look blue or hazy."
+    },
+    {
+      "id": "everglades",
+      "label": "Everglades",
+      "emoji": "🐊",
+      "photo": "/field-pack/photos/np-hero-everglades.jpg?v=q3",
+      "blurb": "Boardwalk wetland day near Homestead — gators at a distance only.",
+      "challenge": "Why is a wetland so important? Who lives in the sawgrass?",
+      "placeHref": "/field-pack/everglades/",
+      "hotspot": {
+        "svgId": "habitat-everglades"
+      },
+      "cam": {},
+      "seq": 3,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=LkNEBAZq0rM",
+        "title": "Everglades water and wildlife",
+        "provider": "youtube",
+        "channel": "finleyholiday",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=LkNEBAZq0rM",
+          "checked": "2026-08-15"
+        }
+      },
+      "printAnswer": "Wetlands clean water and make a home for birds, fish, and gators. Sawgrass is a wet prairie, not a dry field."
+    },
+    {
+      "id": "big-bend",
+      "label": "Big Bend",
+      "emoji": "🏜️",
+      "photo": "/field-pack/photos/np-hero-big-bend.jpg?v=q3",
+      "blurb": "West Texas desert day — one basin or river stop, heat-smart.",
+      "challenge": "How can a river cut through a desert? Where does the water go?",
+      "placeHref": "/field-pack/big-bend/",
+      "hotspot": {
+        "svgId": "habitat-big-bend"
+      },
+      "cam": {},
+      "seq": 4,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=D8X5w24VD1M",
+        "title": "Big Bend desert and river",
+        "provider": "youtube",
+        "channel": "GoTraveler",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=D8X5w24VD1M",
+          "checked": "2026-08-15"
+        }
+      },
+      "printAnswer": "Even a dry place can have a strong river. The water carved the land for a long time and keeps flowing on."
+    },
+    {
+      "id": "grand-canyon",
+      "label": "Grand Canyon",
+      "emoji": "🏞️",
+      "photo": "/field-pack/photos/np-hero-grand-canyon.jpg?v=q2",
+      "blurb": "South Rim rails and short paths — big views without a rim-to-rim day.",
+      "challenge": "How did a river cut a canyon this deep?",
+      "placeHref": "/field-pack/grand-canyon/",
+      "hotspot": {
+        "svgId": "habitat-grand-canyon"
+      },
+      "cam": {
+        "url": "https://www.nps.gov/grca/learn/photosmultimedia/webcams.htm",
+        "provider": "nps",
+        "hours": "NPS webcam page",
+        "camLabel": "Grand Canyon webcams · National Park Service",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.nps.gov/grca/learn/photosmultimedia/webcams.htm",
+          "checked": "2026-08-13"
+        }
+      },
+      "seq": 5,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=xqSgpKD31DQ",
+        "title": "Grand Canyon from the rim",
+        "provider": "youtube",
+        "channel": "PrimoMedia - Chris Biela",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=xqSgpKD31DQ",
+          "checked": "2026-08-15"
+        }
+      },
+      "printAnswer": "The Colorado River wore away rock, grain by grain, for millions of years. Slow water can cut a huge canyon."
+    },
+    {
+      "id": "yosemite",
+      "label": "Yosemite",
+      "emoji": "⛰️",
+      "photo": "/field-pack/photos/np-hero-yosemite.jpg?v=q2",
+      "blurb": "Valley day: waterfalls and granite views — not Tioga or the backcountry.",
+      "challenge": "How does a waterfall start? Why is granite so steep?",
+      "placeHref": "/field-pack/yosemite/",
+      "hotspot": {
+        "svgId": "habitat-yosemite"
+      },
+      "cam": {
+        "url": "https://www.nps.gov/yose/learn/photosmultimedia/webcams.htm",
+        "provider": "nps",
+        "hours": "NPS webcam page",
+        "camLabel": "Yosemite webcams · National Park Service",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.nps.gov/yose/learn/photosmultimedia/webcams.htm",
+          "checked": "2026-08-13"
+        }
+      },
+      "seq": 6,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=HLmOkDBfxv0",
+        "title": "Yosemite granite and waterfalls",
+        "provider": "youtube",
+        "channel": "Amazing Places on Our Planet",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=HLmOkDBfxv0",
+          "checked": "2026-08-15"
+        }
+      },
+      "printAnswer": "A river falls where the land drops. Ice and rock-cracking made the granite walls steep."
+    },
+    {
+      "id": "olympic",
+      "label": "Olympic",
+      "emoji": "🌲",
+      "photo": "/field-pack/photos/np-hero-olympic.jpg?v=q3",
+      "blurb": "One ecosystem day: rainforest boardwalk or coast or ridge views.",
+      "challenge": "Why can one park have rain forest and ocean?",
+      "placeHref": "/field-pack/olympic/",
+      "hotspot": {
+        "svgId": "habitat-olympic"
+      },
+      "cam": {
+        "url": "https://www.nps.gov/olym/learn/photosmultimedia/webcams.htm",
+        "provider": "nps",
+        "hours": "NPS webcam page",
+        "camLabel": "Olympic webcams · National Park Service",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.nps.gov/olym/learn/photosmultimedia/webcams.htm",
+          "checked": "2026-08-13"
+        }
+      },
+      "seq": 7,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=6jQ_eu3b_BA",
+        "title": "Olympic rainforest, coast, and ridge",
+        "provider": "youtube",
+        "channel": "More Than Just Parks",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=6jQ_eu3b_BA",
+          "checked": "2026-08-15"
+        }
+      },
+      "printAnswer": "Mountains catch wet air from the sea. One side stays rainy and green; the coast stays wild and salty."
+    },
+    {
+      "id": "glacier",
+      "label": "Glacier",
+      "emoji": "🏔️",
+      "photo": "/field-pack/photos/np-hero-glacier.jpg?v=q3",
+      "blurb": "Mountain lake day — one valley slice, not the whole Going-to-the-Sun epic.",
+      "challenge": "Why is glacier ice blue? How does a glacier move?",
+      "placeHref": "/field-pack/glacier/",
+      "hotspot": {
+        "svgId": "habitat-glacier"
+      },
+      "cam": {
+        "url": "https://www.nps.gov/glac/learn/photosmultimedia/webcams.htm",
+        "provider": "nps",
+        "hours": "NPS webcam page",
+        "camLabel": "Glacier webcams · National Park Service",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.nps.gov/glac/learn/photosmultimedia/webcams.htm",
+          "checked": "2026-08-14"
+        }
+      },
+      "seq": 8,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=zrHlFPRI_0c",
+        "title": "Glacier lakes and peaks",
+        "provider": "youtube",
+        "channel": "Amazing Places on Our Planet",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=zrHlFPRI_0c",
+          "checked": "2026-08-15"
+        }
+      },
+      "printAnswer": "Thick ice swallows other colors and lets blue through. The ice is a slow river — it slides under its own weight."
+    },
+    {
+      "id": "yellowstone",
+      "label": "Yellowstone",
+      "emoji": "💨",
+      "photo": "/field-pack/photos/np-hero-yellowstone.jpg?v=q2",
+      "blurb": "Geyser basin day: boardwalks, steam, and Old Faithful — not the whole park.",
+      "challenge": "Why does a geyser shoot up? What’s under the ground?",
+      "placeHref": "/field-pack/yellowstone/",
+      "hotspot": {
+        "svgId": "habitat-yellowstone"
+      },
+      "cam": {
+        "url": "https://www.nps.gov/yell/learn/photosmultimedia/webcams.htm",
+        "provider": "nps",
+        "hours": "NPS webcam page",
+        "camLabel": "Yellowstone webcams · National Park Service",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.nps.gov/yell/learn/photosmultimedia/webcams.htm",
+          "checked": "2026-08-13"
+        }
+      },
+      "seq": 9,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=635UZAPkElg",
+        "title": "Yellowstone Grand Prismatic Spring",
+        "provider": "youtube",
+        "channel": "Amazing Places on Our Planet",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=635UZAPkElg",
+          "checked": "2026-08-15"
+        }
+      },
+      "printAnswer": "Water soaks down, hits hot rock, and blasts out as steam. A huge heat source sits under the park."
+    },
+    {
+      "id": "rocky-mountain",
+      "label": "Rocky Mountain",
+      "emoji": "🏔️",
+      "photo": "/field-pack/photos/np-hero-rocky-mountain.jpg?v=q2",
+      "blurb": "Gateway meadows and an overlook — not a full Trail Ridge marathon.",
+      "challenge": "Why is it harder to breathe up high? Why are mountains snowy?",
+      "placeHref": "/field-pack/rocky-mountain/",
+      "hotspot": {
+        "svgId": "habitat-rocky-mountain"
+      },
+      "cam": {
+        "url": "https://www.nps.gov/romo/learn/photosmultimedia/webcams.htm",
+        "provider": "nps",
+        "hours": "NPS webcam page",
+        "camLabel": "Rocky Mountain webcams · National Park Service",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.nps.gov/romo/learn/photosmultimedia/webcams.htm",
+          "checked": "2026-08-13"
+        }
+      },
+      "seq": 10,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=9Gh44EYQ2zw",
+        "title": "Rocky Mountain high meadows",
+        "provider": "youtube",
+        "channel": "More Than Just Parks",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=9Gh44EYQ2zw",
+          "checked": "2026-08-15"
+        }
+      },
+      "printAnswer": "The air is thinner up high, so each breath has less oxygen. It stays colder, so snow can last."
+    }
+  ],
+  "sequential": true
+}

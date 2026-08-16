@@ -85,8 +85,28 @@
   })();
   window.FPMapPreview = MapPreview;
 
+  function venueTypeForAnalytics(mission) {
+    const t = String((mission && mission.venue_type) || (mission && mission.type) || "").toLowerCase();
+    if (t === "national_park" || t === "park") return "park";
+    if (t === "aquarium") return "aquarium";
+    if (t === "museum" || t === "science_museum" || t === "children_museum") return "museum";
+    if (t === "zoo" || t === "safari_zoo") return "zoo";
+    // fallback from slug-less venue blob on sheet
+    const v = window.__FP_MISSION_VENUE || null;
+    const vt = String((v && v.type) || "").toLowerCase();
+    if (vt === "national_park") return "park";
+    if (vt.includes("aquarium")) return "aquarium";
+    if (vt.includes("museum")) return "museum";
+    if (vt.includes("zoo")) return "zoo";
+    return vt || "unknown";
+  }
+
   function track(event, params) {
     try {
+      if (typeof window.FPTrack === "function") {
+        window.FPTrack(event, params || {});
+        return;
+      }
       if (typeof gtag === "function") {
         gtag("event", event, params || {});
       } else if (window.dataLayer) {
@@ -295,6 +315,31 @@
       if (foot) sheetEl.insertBefore(fav, foot);
       else sheetEl.appendChild(fav);
     }
+
+    // Park safety line (print + screen) — parks only
+    if (sheetEl) {
+      let safety = sheetEl.querySelector(".ms-safety-footer");
+      const safetyText =
+        (mission && mission.safetyFooter) ||
+        (window.FPMission && window.FPMission.parkSafetyFooter
+          ? window.FPMission.parkSafetyFooter(venue)
+          : "");
+      if (safetyText) {
+        if (!safety) {
+          safety = document.createElement("p");
+          safety.className = "ms-safety-footer";
+          const foot = sheetEl.querySelector(".ms-footer");
+          if (foot) sheetEl.insertBefore(safety, foot);
+          else sheetEl.appendChild(safety);
+        }
+        safety.hidden = false;
+        safety.textContent = safetyText;
+      } else if (safety) {
+        safety.hidden = true;
+        safety.textContent = "";
+      }
+    }
+
     renderMapHint(/* forPrint */ false);
   }
 
@@ -337,6 +382,8 @@
     if (img) {
       const refpol = img.startsWith("/") ? "" : ' referrerpolicy="no-referrer"';
       const ext = page || img;
+      const extIsPdf = /\.pdf(\?|#|$)/i.test(String(ext));
+      const extLabel = extIsPdf ? "Open full map PDF ↗" : "Official site ↗";
       mapHint.className = "ms-map-hint ms-map-has-preview";
       mapHint.innerHTML = `
           <div class="ms-map-card" data-map-preview>
@@ -349,13 +396,13 @@
             <span class="ms-map-card-text">
               <strong>Park map</strong>
               <small>${esc(attr)} · click to enlarge</small>
-              <a class="seo-map-ext-link" href="${esc(ext)}" target="_blank" rel="noopener noreferrer">Official site ↗</a>
+              <a class="seo-map-ext-link" href="${esc(ext)}" target="_blank" rel="noopener noreferrer">${extLabel}</a>
             </span>
             <div class="ms-map-preview seo-map-preview" role="dialog" aria-label="Enlarged park map" hidden>
               <button type="button" class="seo-map-preview-close" aria-label="Close enlarged map">×</button>
               <img src="${esc(img)}" alt="Enlarged park map" loading="lazy" decoding="async"${refpol} />
               <span class="seo-map-preview-cap">
-                <a class="seo-map-preview-ext" href="${esc(ext)}" target="_blank" rel="noopener noreferrer">Open on official site ↗</a>
+                <a class="seo-map-preview-ext" href="${esc(ext)}" target="_blank" rel="noopener noreferrer">${extLabel}</a>
               </span>
             </div>
           </div>`;
@@ -370,11 +417,32 @@
     }
   }
 
+  function trackVenueViewOnce() {
+    try {
+      const v = window.__FP_MISSION_VENUE || venue;
+      if (!v) return;
+      const slug = v.slug || v.id || "";
+      const rawType = v.type || "";
+      if (typeof window.FPTrackVenuePageView === "function") {
+        window.FPTrackVenuePageView({ venue_slug: slug, venue_type: rawType });
+      } else {
+        track("venue_page_viewed", {
+          venue_slug: slug,
+          venue_type: venueTypeForAnalytics(v),
+        });
+      }
+    } catch (_) {}
+  }
+
   function printMission(mission) {
     track("mission_printed", {
       venue: mission.slug,
+      venue_slug: mission.slug,
+      venue_type: venueTypeForAnalytics(mission),
       age_band: mission.age,
+      time_length: mission.time,
       time_budget: mission.time,
+      style: mission.hunt || "classic",
       hunt_style: mission.hunt || "classic",
       personalized: mission.personalized ? "1" : "0",
     });
@@ -455,6 +523,8 @@
     if (genTimer) clearTimeout(genTimer);
     genTimer = setTimeout(() => {
       track("mission_generated", {
+        venue_type: venueTypeForAnalytics({ type: (venue && venue.type) || "", slug: venue && venue.slug }),
+        venue_slug: venue && venue.slug,
         venue: venue.slug,
         age_band: state.age,
         time_budget: state.time,
@@ -595,6 +665,7 @@
     state.age = "4-5";
     state.time = "half";
     state.hunt = "classic";
+    wireChangePlace();
     wireControls();
     // Precompute default sheet (in drawer DOM) for print/SEO consistency
     recompute(false);
@@ -657,9 +728,40 @@
     MapPreview.wire(document);
   }
 
+  function wireChangePlace() {
+    const kicker = $(".mission-drawer-kicker");
+    if (!kicker || kicker.querySelector(".mission-change-place")) return;
+    let name = "";
+    try {
+      const raw = document.getElementById("venue-data");
+      if (raw && raw.textContent) name = JSON.parse(raw.textContent).name || "";
+    } catch (_) {
+      name = "";
+    }
+    if (!name) {
+      const h1 = document.querySelector("h1");
+      name = (h1 && h1.textContent) || "";
+      name = name.replace(/\s+scavenger hunt.*$/i, "").trim();
+    }
+    if (!name) name = "This place";
+    const home = document.createElement("a");
+    home.className = "mission-home";
+    home.href = "/field-pack/";
+    home.textContent = "Field Trip Kit";
+    const now = document.createElement("span");
+    now.className = "mission-place-now";
+    now.textContent = name;
+    const a = document.createElement("a");
+    a.className = "mission-change-place";
+    a.href = "/field-pack/?find=1";
+    a.textContent = "Different place?";
+    kicker.replaceChildren(home, document.createTextNode(" · "), now, document.createTextNode(" · "), a);
+  }
+
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", boot);
   } else {
-    boot();
+    trackVenueViewOnce();
+  boot();
   }
 })();

@@ -16,6 +16,10 @@
   }
 
   function track(name, params) {
+    if (typeof window.FPTrack === "function") {
+      window.FPTrack(name, params || {});
+      return;
+    }
     const fn =
       (window.OneLessAnalytics && window.OneLessAnalytics.track) || window.trackEvent;
     if (typeof fn === "function") fn(name, params || {});
@@ -32,8 +36,13 @@
     return typeof window.fpGetVenue === "function" ? window.fpGetVenue(id) : null;
   }
 
-  function getItem(id) {
-    return (window.FIELD_PACK_CATALOG && window.FIELD_PACK_CATALOG[id]) || null;
+  function getItem(id, venue) {
+    const base = (window.FIELD_PACK_CATALOG && window.FIELD_PACK_CATALOG[id]) || null;
+    if (!base) return null;
+    const names = venue && venue.itemDisplayNames;
+    const custom = names && (names[id] || names[base.id]);
+    if (!custom) return base;
+    return Object.assign({}, base, { name: custom, displayName: custom });
   }
 
   function missionsFor(venue) {
@@ -88,7 +97,7 @@
     const ids = (starIds && starIds.length ? starIds : venue.featuredAnimalIds || []).slice(0, 6);
     const stars = ids
       .map((id) => {
-        const it = getItem(id);
+        const it = getItem(id, venue);
         return it ? `<span class="th-chip">${it.emoji || "•"} ${escapeHtml(it.name)}</span>` : "";
       })
       .join("");
@@ -107,7 +116,7 @@
     return `
       <div class="th-page${mapSrc ? " th-page-with-map" : ""}">
         <div class="th-banner">
-          <h1>🗺️ Your mission</h1>
+          <h1>🗺️ Your mission${venue && (venue.sliceLabel || venue.slice_label || (venue.practical && venue.practical.slice_name)) ? ` · ${escapeHtml(venue.sliceLabel || venue.slice_label || venue.practical.slice_name)}` : ""}</h1>
           <p>${escapeHtml(venue.name)} · One-page hunt · Field Trip Kit</p>
         </div>
         <div class="th-meta">
@@ -123,6 +132,19 @@
           <div class="th-chips">${stars}</div>
         </div>
         ${mapBlock}
+        ${
+          (venue.safetyFooter ||
+            venue.safety_footer ||
+            (String(venue.type || "").toLowerCase() === "national_park"
+              ? "Stay on boardwalks and trails · give wildlife lots of space · bring water"
+              : ""))
+            ? `<p class="th-safety">${escapeHtml(
+                venue.safetyFooter ||
+                  venue.safety_footer ||
+                  "Stay on boardwalks and trails · give wildlife lots of space · bring water"
+              )}</p>`
+            : ""
+        }
         <p class="th-footer">Optional after: open Field Trip Kit → tap a card → Q&A</p>
       </div>`;
   }
@@ -389,14 +411,16 @@
     const o = opts || {};
     const answerMap = o.answers || {};
     // Prefer caller-supplied missions (talk-level pack); else venue defaults
+    // Hard cap content so letter print never needs page 2
     const missions = (Array.isArray(o.missions) && o.missions.length ? o.missions : missionsFor(venue)).slice(0, 6);
-    const prompts = (Array.isArray(o.prompts) ? o.prompts : []).slice(0, 6);
+    const prompts = (Array.isArray(o.prompts) ? o.prompts : []).slice(0, 4);
     const talkLabel = o.talkLabel || o.talkLevel || "";
     const cards = missions
       .map((mission, index) => {
         const mid = mission.id || String(index);
         const selected = new Set(answerMap[mid] || answerMap[mission.id] || []);
         const choices = (mission.choices || [])
+          .slice(0, 6)
           .map((label) => {
             const on = selected.has(label) ? " on" : "";
             return `<div class="ps-choice${on}"><span class="ps-dot"></span><span>${escapeHtml(label)}</span></div>`;
@@ -432,10 +456,15 @@
           <span class="ps-wow-a">${escapeHtml(wow.a)}</span>
         </div>`
       : "";
+    // Head-shot bias: catalog photoPosition (e.g. "50% 0%") overrides CSS default
+    const photoPos = (item && (item.photoPosition || item.photoFocus)) || "";
+    const photoPosStyle = photoPos
+      ? ` style="--ps-photo-pos:${escapeAttr(String(photoPos))};object-position:${escapeAttr(String(photoPos))}"`
+      : "";
     const photoBlock = photo
       ? `<div class="ps-photo-fill">
           <div class="ps-photo-frame">
-            <img class="ps-photo-big" src="${escapeAttr(photo)}" alt="${escapeAttr(item.name || "Animal")}" />
+            <img class="ps-photo-big" src="${escapeAttr(photo)}" alt="${escapeAttr(item.name || "Animal")}" decoding="async"${photoPosStyle} />
           </div>
           ${wowHtml}
         </div>`
@@ -469,14 +498,52 @@
       </div>`;
   }
 
-  function runPrint({ treasure }) {
+  function setSafariLandscape(on) {
+    let el = document.getElementById("hs-print-page-rule");
+    if (on) {
+      if (!el) {
+        el = document.createElement("style");
+        el.id = "hs-print-page-rule";
+        el.textContent = "@page { size: letter landscape; margin: 0.35in; }";
+        document.head.appendChild(el);
+      }
+    } else if (el) {
+      el.remove();
+    }
+  }
+
+  function runPrint({ treasure, safari }) {
     document.body.classList.toggle("printing-treasure", Boolean(treasure));
+    document.body.classList.toggle("printing-safari", Boolean(safari));
+    setSafariLandscape(Boolean(safari));
     const cleanup = () => {
       document.body.classList.remove("printing-treasure");
+      document.body.classList.remove("printing-safari");
+      setSafariLandscape(false);
       window.removeEventListener("afterprint", cleanup);
     };
     window.addEventListener("afterprint", cleanup);
     requestAnimationFrame(() => requestAnimationFrame(() => window.print()));
+  }
+
+  function waitForPrintImages(root) {
+    const imgs = root ? [...root.querySelectorAll("img")] : [];
+    if (!imgs.length) return Promise.resolve();
+    return Promise.all(
+      imgs.map(
+        (img) =>
+          new Promise((resolve) => {
+            if (img.complete) {
+              resolve();
+              return;
+            }
+            const done = () => resolve();
+            img.addEventListener("load", done, { once: true });
+            img.addEventListener("error", done, { once: true });
+            setTimeout(done, 2500);
+          })
+      )
+    );
   }
 
   /**
@@ -535,7 +602,7 @@
   function printSampleQaForVenue(venueId) {
     const venue = getVenue(venueId);
     const itemId = topPickItemId(venue);
-    const item = itemId ? getItem(itemId) : null;
+    const item = itemId ? getItem(itemId, venue) : null;
     const { printSheet, treasureSheet } = sheets();
     if (!venue || !item || !printSheet) {
       console.warn("[FPPrint] sample Q&A unavailable for", venueId);
@@ -569,14 +636,215 @@
     return true;
   }
 
+  /** First venue that lists this catalog item (for standalone card print). */
+  function venueIdForItem(itemId) {
+    if (!itemId) return null;
+    const venues = window.FIELD_PACK_VENUES || {};
+    for (const [vid, v] of Object.entries(venues)) {
+      const ids = [...(v.featuredAnimalIds || []), ...(v.animalIds || [])];
+      if (ids.includes(itemId)) return vid;
+    }
+    return null;
+  }
+
+  /**
+   * Print a Q&A one-pager for any catalog item (animal / attraction).
+   * Uses preferredVenueId when provided; else first venue that lists the item;
+   * else a lightweight synthetic venue with animal missions.
+   */
+  function printQaForItem(itemId, preferredVenueId) {
+    const item = getItem(itemId, null);
+    if (!item) {
+      console.warn("[FPPrint] unknown item", itemId);
+      return false;
+    }
+    const vid = preferredVenueId || venueIdForItem(itemId);
+    let venue = vid ? getVenue(vid) : null;
+    if (!venue) {
+      venue = {
+        id: "catalog",
+        name: "Field Trip Kit",
+        packTemplate:
+          itemId && String(itemId).startsWith("sci-")
+            ? "exhibits"
+            : itemId && String(itemId).startsWith("cm-")
+              ? "exhibits"
+              : "animals",
+        animalIds: [itemId],
+        featuredAnimalIds: [itemId],
+      };
+    }
+    const resolved = getItem(itemId, venue) || item;
+    const { printSheet, treasureSheet } = sheets();
+    if (!printSheet) return false;
+    printSheet.innerHTML = buildQaCardHtml(resolved, venue, {
+      bannerNote: `${resolved.name || itemId} · Q&A card · Circle answers · No scores`,
+      footer: "Catalog card · Field Trip Kit",
+    });
+    if (treasureSheet) treasureSheet.innerHTML = "";
+    track("qa_catalog_printed", {
+      item_id: resolved.id || itemId,
+      item_name: resolved.name || "",
+      venue_slug: venue.id || "",
+      product: "babys_day_out",
+      source: "catalog",
+    });
+    runPrint({ treasure: false });
+    return true;
+  }
+
+  function habitatEmoji(h) {
+    if (!h) return "";
+    if (h.emoji) return h.emoji;
+    const id = h.cardId || h.id;
+    const item = getItem(id, null);
+    return (item && item.emoji) || "🐾";
+  }
+
+  function habitatName(h) {
+    if (!h) return "";
+    const id = h.cardId || h.id;
+    const item = getItem(id, null);
+    return (item && item.name) || h.label || id || "";
+  }
+
+  function habitatPhoto(h) {
+    if (!h) return "";
+    if (h.photo) {
+      const p = h.photo;
+      if (/^https?:\/\//i.test(p) || p.startsWith("/")) return p;
+      if (p.startsWith("photos/")) return "/field-pack/" + p;
+      return "/field-pack/photos/" + String(p).replace(/^\/+/, "");
+    }
+    const id = h.cardId || h.id;
+    const item = getItem(id, null);
+    return item ? itemPhotoSrc(item) : "";
+  }
+
+  const HS_SLOTS = 10;
+  const HS_COLS = 5;
+
+  function padHuntSlots(habitats) {
+    const list = (habitats || []).slice(0, HS_SLOTS);
+    while (list.length < HS_SLOTS) list.push(null);
+    return list;
+  }
+
+  /**
+   * Two landscape pages for duplex: photo+question, then answers.
+   * Landscape two-sided (flip on the long edge) swaps top and bottom only.
+   * Page 2 is row-mirrored + 180° type so each answer sits on the back of its photo.
+   */
+  function printHomeSafari(config, habitats) {
+    const { printSheet, treasureSheet } = sheets();
+    if (!printSheet || !config) return false;
+    const raw = (Array.isArray(habitats) && habitats.length ? habitats : config.habitats) || [];
+    const list = padHuntSlots(raw);
+    printSheet.innerHTML = buildCutPageHtml(config, list) + buildAnswerPageHtml(config, list);
+    if (treasureSheet) treasureSheet.innerHTML = "";
+    track("home_mission_printed", {
+      mode: "cut+answers",
+      venue_kind: config.kind || "zoo",
+      tab: config.tab || config.kind || "zoo",
+      count: list.length,
+      product: "field_trip_kit",
+    });
+    waitForPrintImages(printSheet).then(() => runPrint({ treasure: false, safari: true }));
+    return true;
+  }
+
+  function habitatAnswer(h) {
+    return (h && (h.printAnswer || h.answer)) || "";
+  }
+
+  function cutCardHtml(h) {
+    if (!h) return `<article class="hs-cut is-blank" aria-hidden="true"></article>`;
+    const src = habitatPhoto(h);
+    const media = src
+      ? `<img class="hs-cut-photo" src="${escapeAttr(src)}" alt="" />`
+      : `<span class="hs-cut-emoji">${escapeHtml(habitatEmoji(h))}</span>`;
+    const ask = h.challenge
+      ? `<p class="hs-cut-ask">${escapeHtml(h.challenge)}</p>`
+      : "";
+    return `<article class="hs-cut">
+      <div class="hs-cut-media">${media}<span class="hs-box" title="Found" aria-hidden="true"></span></div>
+      <div class="hs-cut-write" aria-hidden="true"><span class="hs-cut-rule"></span><span class="hs-cut-rule"></span></div>
+      <div class="hs-cut-foot">
+        <span class="hs-cut-name">${escapeHtml(habitatName(h))}</span>
+        ${ask}
+      </div>
+    </article>`;
+  }
+
+  function answerCardHtml(h) {
+    if (!h) return `<article class="hs-cut hs-cut-answer is-blank" aria-hidden="true"></article>`;
+    const ans = habitatAnswer(h);
+    return `<article class="hs-cut hs-cut-answer">
+      <div class="hs-answer-turn">
+        <span class="hs-cut-name">${escapeHtml(habitatName(h))}</span>
+        ${ans ? `<p class="hs-cut-ans">${escapeHtml(ans)}</p>` : ""}
+      </div>
+    </article>`;
+  }
+
+  function huntGridCols(n) {
+    if (n <= 2) return Math.max(n, 1);
+    if (n <= 4) return 2;
+    if (n <= 6) return 3;
+    if (n <= 8) return 4;
+    if (n === 9) return 3;
+    return 5;
+  }
+
+  function longEdgeMirrorIndex(i, n, cols) {
+    const col = i % cols;
+    const row = Math.floor(i / cols);
+    const rows = Math.max(1, Math.ceil(n / cols));
+    return (rows - 1 - row) * cols + col;
+  }
+
+  function buildCutPageHtml(config, habitats) {
+    const banner = (config && config.printHideBanner) || "Hide-and-seek at home";
+    const sub =
+      (config && config.printHideSub) ||
+      "Cut the cards. Hide them. Write in the box. Ask the question.";
+    const footer = (config && config.printFooter) || "1less.app/field-pack/virtual-field-trip/ · Field Trip Kit";
+    const cols = HS_COLS;
+    return `<div class="hs-page hs-page-cut">
+      <div class="hs-banner"><h1>${escapeHtml(banner)}</h1>
+      <p>${escapeHtml(sub)}</p></div>
+      <div class="hs-cuts" style="--hs-cols:${cols}">${habitats.map(cutCardHtml).join("")}</div>
+      <p class="hs-footer">${escapeHtml(footer)}</p>
+    </div>`;
+  }
+
+  function buildAnswerPageHtml(config, habitats) {
+    const banner = (config && config.printHideBanner) || "Hide-and-seek at home";
+    const sub = "Answers. Print two-sided.";
+    const footer = (config && config.printFooter) || "1less.app/field-pack/virtual-field-trip/ · Field Trip Kit";
+    const cols = HS_COLS;
+    const cards = habitats
+      .map((_, i) => answerCardHtml(habitats[longEdgeMirrorIndex(i, habitats.length, cols)]))
+      .join("");
+    return `<div class="hs-page hs-page-answers">
+      <div class="hs-banner"><h1>${escapeHtml(banner)}</h1>
+      <p>${escapeHtml(sub)}</p></div>
+      <div class="hs-cuts" style="--hs-cols:${cols}">${cards}</div>
+      <p class="hs-footer">${escapeHtml(footer)}</p>
+    </div>`;
+  }
+
   window.FPPrint = {
     printTreasureForVenue,
     printSampleQaForVenue,
+    printQaForItem,
     fillQaPrintSheet,
+    printHomeSafari,
     buildQaCardHtml,
     itemPhotoSrc,
     wowFactFromItem,
     topPickItemId,
+    venueIdForItem,
     getVenue,
     getItem,
   };

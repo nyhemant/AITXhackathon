@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" role="img">
+  <title>Virtual aquarium. Follow the path.</title>
+  <defs>
+    <clipPath id="vz-photo-clip" clipPathUnits="objectBoundingBox">
+      <rect x="0" y="0" width="1" height="1" rx="0.14" ry="0.14"/>
+    </clipPath>
+    <filter id="pad-shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="5" stdDeviation="3.2" flood-color="#1a1814" flood-opacity="0.38"/>
+    </filter>
+    <radialGradient id="vz-caustic-grad" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.22"/>
+      <stop offset="55%" stop-color="#9ad4e0" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <image href="/field-pack/media/virtual-aquarium/park-ground.jpg?v=5" x="0" y="0" width="800" height="800" preserveAspectRatio="xMidYMid slice"/>
+  <g id="vz-trail" class="vz-trail" pointer-events="none">
+    <path d="M365,755 C300,720 280,690 272,666 C200,580 160,530 148,488 C140,400 145,350 148,316 C150,230 148,180 148,148 C220,140 290,145 348,148 C460,150 530,145 588,148 C650,180 680,250 688,328 C640,330 540,300 488,298 C420,360 370,420 348,468 C380,560 450,620 498,666 C480,710 460,740 447,755" fill="none" stroke="#d8c9a4" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="0.22"/>
+  </g>
+  <g id="vz-arrows" class="vz-arrows" pointer-events="none" fill="#8a7d5e">
+    <path d="M328,728 L318,708 L338,716 Z" opacity="0.58"/>
+    <path d="M458,708 L470,726 L448,718 Z" opacity="0.58"/>
+  </g>
+  <g id="vz-water" class="vz-water" pointer-events="none">
+    <rect class="vz-caustic" x="0" y="0" width="800" height="800" fill="url(#vz-caustic-grad)"/>
+    <circle class="vz-bubble vz-bubble-a" cx="250" cy="640" r="4.2"/>
+    <circle class="vz-bubble vz-bubble-b" cx="300" cy="680" r="3"/>
+    <circle class="vz-bubble vz-bubble-c" cx="500" cy="650" r="3.6"/>
+    <circle class="vz-bubble vz-bubble-a" cx="148" cy="300" r="3.2"/>
+    <circle class="vz-bubble vz-bubble-b" cx="590" cy="140" r="4"/>
+    <circle class="vz-bubble vz-bubble-c" cx="490" cy="280" r="3.4"/>
+    <circle class="vz-bubble vz-bubble-a" cx="688" cy="340" r="3"/>
+  </g>
+  <g id="vz-entry" class="vz-gate"><rect x="340" y="742" width="50" height="26" rx="7" fill="#0f5c5c"/><text x="365" y="760" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="700" fill="#fff">IN</text></g>
+  <g id="vz-exit" class="vz-gate"><rect x="420" y="742" width="54" height="26" rx="7" fill="#8a9aaf"/><text x="447" y="760" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="700" fill="#fff">OUT</text></g>
+  <a href="/field-pack/virtual-field-trip/?tab=aquarium#habitat=clownfish" id="habitat-clownfish" class="vz-spot" data-habitat="clownfish" aria-label="clownfish">
+    <rect class="vz-hit" x="204" y="598" width="136" height="136" fill="transparent"/>
+    <rect class="vz-halo" x="205" y="599" width="134" height="134" rx="22.0"/>
+    <rect class="vz-silo" x="210" y="604" width="124" height="124" rx="18" fill="#fff" stroke="#1f2a2a" stroke-width="2.6" filter="url(#pad-shadow)"/>
+    <image href="/field-pack/photos/clownfish.jpg?v=img2" x="214" y="608" width="116" height="116" preserveAspectRatio="xMidYMin slice" clip-path="url(#vz-photo-clip)"/>
+  </a>
+  <a href="/field-pack/virtual-field-trip/?tab=aquarium#habitat=jellyfish" id="habitat-jellyfish" class="vz-spot" data-habitat="jellyfish" aria-label="jellyfish">
+    <rect class="vz-hit" x="520" y="80" width="136" height="136" fill="transparent"/>
+    <rect class="vz-halo" x="521" y="81" width="134" height="134" rx="22.0"/>
+    <rect class="vz-silo" x="526" y="86" width="124" height="124" rx="18" fill="#fff" stroke="#1f2a2a" stroke-width="2.6" filter="url(#pad-shadow)"/>
+    <image href="/field-pack/photos/jellyfish.jpg?v=img2" x="530" y="90" width="116" height="116" preserveAspectRatio="xMidYMin slice" clip-path="url(#vz-photo-clip)"/>
+  </a>
+  <a href="/field-pack/virtual-field-trip/?tab=aquarium#habitat=octopus" id="habitat-octopus" class="vz-spot" data-habitat="octopus" aria-label="octopus">
+    <rect class="vz-hit" x="80" y="80" width="136" height="136" fill="transparent"/>
+    <rect class="vz-halo" x="81" y="81" width="134" height="134" rx="22.0"/>
+    <rect class="vz-silo" x="86" y="86" width="124" height="124" rx="18" fill="#fff" stroke="#1f2a2a" stroke-width="2.6" filter="url(#pad-shadow)"/>
+    <image href="/field-pack/photos/octopus.jpg?v=img2" x="90" y="90" width="116" height="116" preserveAspectRatio="xMidYMin slice" clip-path="url(#vz-photo-clip)"/>
+  </a>
+  <a href="/field-pack/virtual-field-trip/?tab=aquarium#habitat=seahorse" id="habitat-seahorse" class="vz-spot" data-habitat="seahorse" aria-label="seahorse">
+    <rect class="vz-hit" x="80" y="248" width="136" height="136" fill="transparent"/>
+    <rect class="vz-halo" x="81" y="249" width="134" height="134" rx="22.0"/>
+    <rect class="vz-silo" x="86" y="254" width="124" height="124" rx="18" fill="#fff" stroke="#1f2a2a" stroke-width="2.6" filter="url(#pad-shadow)"/>
+    <image href="/field-pack/photos/seahorse.jpg?v=img2" x="90" y="258" width="116" height="116" preserveAspectRatio="xMidYMin slice" clip-path="url(#vz-photo-clip)"/>
+  </a>
+  <a href="/field-pack/virtual-field-trip/?tab=aquarium#habitat=starfish" id="habitat-starfish" class="vz-spot" data-habitat="starfish" aria-label="starfish">
+    <rect class="vz-hit" x="620" y="260" width="136" height="136" fill="transparent"/>
+    <rect class="vz-halo" x="621" y="261" width="134" height="134" rx="22.0"/>
+    <rect class="vz-silo" x="626" y="266" width="124" height="124" rx="18" fill="#fff" stroke="#1f2a2a" stroke-width="2.6" filter="url(#pad-shadow)"/>
+    <image href="/field-pack/photos/starfish.jpg?v=img2" x="630" y="270" width="116" height="116" preserveAspectRatio="xMidYMin slice" clip-path="url(#vz-photo-clip)"/>
+  </a>
+  <a href="/field-pack/virtual-field-trip/?tab=aquarium#habitat=crab" id="habitat-crab" class="vz-spot" data-habitat="crab" aria-label="crab">
+    <rect class="vz-hit" x="80" y="420" width="136" height="136" fill="transparent"/>
+    <rect class="vz-halo" x="81" y="421" width="134" height="134" rx="22.0"/>
+    <rect class="vz-silo" x="86" y="426" width="124" height="124" rx="18" fill="#fff" stroke="#1f2a2a" stroke-width="2.6" filter="url(#pad-shadow)"/>
+    <image href="/field-pack/photos/crab.jpg?v=img2" x="90" y="430" width="116" height="116" preserveAspectRatio="xMidYMin slice" clip-path="url(#vz-photo-clip)"/>
+  </a>
+  <a href="/field-pack/virtual-field-trip/?tab=aquarium#habitat=stingray" id="habitat-stingray" class="vz-spot" data-habitat="stingray" aria-label="stingray">
+    <rect class="vz-hit" x="280" y="80" width="136" height="136" fill="transparent"/>
+    <rect class="vz-halo" x="281" y="81" width="134" height="134" rx="22.0"/>
+    <rect class="vz-silo" x="286" y="86" width="124" height="124" rx="18" fill="#fff" stroke="#1f2a2a" stroke-width="2.6" filter="url(#pad-shadow)"/>
+    <image href="/field-pack/photos/stingray.jpg?v=img2" x="290" y="90" width="116" height="116" preserveAspectRatio="xMidYMin slice" clip-path="url(#vz-photo-clip)"/>
+  </a>
+  <a href="/field-pack/virtual-field-trip/?tab=aquarium#habitat=sea-turtle" id="habitat-sea-turtle" class="vz-spot" data-habitat="sea-turtle" aria-label="sea-turtle">
+    <rect class="vz-hit" x="430" y="598" width="136" height="136" fill="transparent"/>
+    <rect class="vz-halo" x="431" y="599" width="134" height="134" rx="22.0"/>
+    <rect class="vz-silo" x="436" y="604" width="124" height="124" rx="18" fill="#fff" stroke="#1f2a2a" stroke-width="2.6" filter="url(#pad-shadow)"/>
+    <image href="/field-pack/photos/sea-turtle.jpg?v=img2" x="440" y="608" width="116" height="116" preserveAspectRatio="xMidYMin slice" clip-path="url(#vz-photo-clip)"/>
+  </a>
+  <a href="/field-pack/virtual-field-trip/?tab=aquarium#habitat=eel" id="habitat-eel" class="vz-spot" data-habitat="eel" aria-label="eel">
+    <rect class="vz-hit" x="280" y="400" width="136" height="136" fill="transparent"/>
+    <rect class="vz-halo" x="281" y="401" width="134" height="134" rx="22.0"/>
+    <rect class="vz-silo" x="286" y="406" width="124" height="124" rx="18" fill="#fff" stroke="#1f2a2a" stroke-width="2.6" filter="url(#pad-shadow)"/>
+    <image href="/field-pack/photos/eel.jpg?v=img2" x="290" y="410" width="116" height="116" preserveAspectRatio="xMidYMin slice" clip-path="url(#vz-photo-clip)"/>
+  </a>
+  <a href="/field-pack/virtual-field-trip/?tab=aquarium#habitat=shark" id="habitat-shark" class="vz-spot" data-habitat="shark" aria-label="shark">
+    <rect class="vz-hit" x="420" y="230" width="136" height="136" fill="transparent"/>
+    <rect class="vz-halo" x="421" y="231" width="134" height="134" rx="22.0"/>
+    <rect class="vz-silo" x="426" y="236" width="124" height="124" rx="18" fill="#fff" stroke="#1f2a2a" stroke-width="2.6" filter="url(#pad-shadow)"/>
+    <image href="/field-pack/photos/shark.jpg?v=img2" x="430" y="240" width="116" height="116" preserveAspectRatio="xMidYMin slice" clip-path="url(#vz-photo-clip)"/>
+  </a>
+</svg>

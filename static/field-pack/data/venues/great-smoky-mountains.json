@@ -1,0 +1,491 @@
+{
+  "slug": "great-smoky-mountains",
+  "name": "Great Smoky Mountains National Park",
+  "type": "national_park",
+  "city": "Gatlinburg",
+  "region": "TN",
+  "country": "US",
+  "lat": 35.6532,
+  "lng": -83.507,
+  "official_url": "https://www.nps.gov/grsm/",
+  "last_verified": "2026-08-09",
+  "verified_by": "research",
+  "status": "verified",
+  "tagline": "Sugarlands side — visitor center, easy forest paths, waterfall stop.",
+  "practical": {
+    "typical_duration": "half day",
+    "ticket_note": "No entrance fee at GRSM; parking tags may apply in busy areas — check NPS.",
+    "transit_note": "Gatlinburg / Pigeon Forge gateways; roads get busy on weekends.",
+    "energy_note": "Humidity + hills; pick one waterfall, not five.",
+    "best_start": "Sugarlands Visitor Center → short nature trail or easy falls → picnic",
+    "slice_name": "Sugarlands · easy waterfall stop",
+    "season_note": "Fall color crowds; summer thunderstorms possible."
+  },
+  "items": [
+    {
+      "id": "grsm_sugarlands_vc",
+      "label": "Sugarlands Visitor Center",
+      "emoji": "🏛️",
+      "one_liner": "Busy gateway hub — maps, restrooms, trail tips",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Sugarlands",
+      "qa_card": {
+        "question": "What did you notice at Sugarlands Visitor Center?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "grsm-sugarlands-vc",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Sugarlands Visitor Center",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/grsm/planyourvisit/visitorcenters.htm"
+      },
+      "safety_note": "",
+      "core": true
+    },
+    {
+      "id": "grsm_laurel",
+      "label": "Laurel Falls path (or easy falls stop)",
+      "emoji": "💦",
+      "one_liner": "Popular waterfall walk — turn around when legs say so · Stay on the trail",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Fighting Creek / Laurel",
+      "qa_card": {
+        "question": "What did you notice at Laurel Falls path (or easy falls stop)?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "grsm-laurel-falls",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Laurel Falls path (or easy falls stop)",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/grsm/planyourvisit/laurelf.htm"
+      },
+      "safety_note": "Stay on the trail",
+      "core": true
+    },
+    {
+      "id": "grsm_cove_forest",
+      "label": "Cove hardwood forest",
+      "emoji": "🌳",
+      "one_liner": "Lush Appalachian trees — look for different leaf shapes",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Sugarlands trails",
+      "qa_card": {
+        "question": "What did you notice at Cove hardwood forest?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "grsm-cove-forest",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Cove hardwood forest",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/grsm/"
+      },
+      "safety_note": "",
+      "core": true
+    },
+    {
+      "id": "grsm_fighting_creek",
+      "label": "Fighting Creek nature trail stretch",
+      "emoji": "🥾",
+      "one_liner": "Short self-guiding path near the visitor center",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Sugarlands",
+      "qa_card": {
+        "question": "What did you notice at Fighting Creek nature trail stretch?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "grsm-fighting-creek",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Fighting Creek nature trail stretch",
+      "verify": {
+        "status": "todo",
+        "source": ""
+      },
+      "safety_note": "",
+      "core": true
+    },
+    {
+      "id": "grsm_stream",
+      "label": "Mountain stream",
+      "emoji": "🏞️",
+      "one_liner": "Clear water over stones — keep feet on the bank · Safe step back",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Sugarlands",
+      "qa_card": {
+        "question": "What did you notice at Mountain stream?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "grsm-mountain-stream",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Mountain stream",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/grsm/"
+      },
+      "safety_note": "Safe step back",
+      "core": true
+    },
+    {
+      "id": "grsm_overlook",
+      "label": "Newfound Gap or valley view",
+      "emoji": "🌄",
+      "one_liner": "If you drive higher later — one big mountain overlook",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Parkway",
+      "qa_card": {
+        "question": "What did you notice at Newfound Gap or valley view?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "grsm-gap-view",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Newfound Gap or valley view",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/grsm/"
+      },
+      "safety_note": "",
+      "core": true
+    },
+    {
+      "id": "grsm_sign",
+      "label": "Trailhead distance sign",
+      "emoji": "🥾",
+      "one_liner": "Read miles before you commit little legs",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Trail start",
+      "qa_card": {
+        "question": "What did you notice at Trailhead distance sign?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "grsm-trail-sign",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Trailhead distance sign",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/grsm/"
+      },
+      "safety_note": "",
+      "core": true
+    },
+    {
+      "id": "grsm_meadow_edge",
+      "label": "Open valley edge",
+      "emoji": "🌾",
+      "one_liner": "Sky break between forest walks",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Sugarlands",
+      "qa_card": {
+        "question": "What did you notice at Open valley edge?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "grsm-valley-edge",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Open valley edge",
+      "verify": {
+        "status": "todo",
+        "source": ""
+      },
+      "safety_note": "",
+      "core": true
+    },
+    {
+      "id": "grsm_jr",
+      "label": "Smokies Junior Ranger desk",
+      "emoji": "🎖️",
+      "one_liner": "Ask at Sugarlands",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Visitor center",
+      "qa_card": {
+        "question": "What did you notice at Smokies Junior Ranger desk?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "np-junior-ranger",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Smokies Junior Ranger desk",
+      "verify": {
+        "status": "sourced",
+        "source": "generic-template"
+      },
+      "core": false
+    },
+    {
+      "id": "grsm_talk",
+      "label": "Ranger program (if offered)",
+      "emoji": "🗣️",
+      "one_liner": "Check the board at Sugarlands",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "VC",
+      "qa_card": {
+        "question": "What did you notice at Ranger program (if offered)?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "np-ranger-program",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Ranger program (if offered)",
+      "verify": {
+        "status": "sourced",
+        "source": "generic-template"
+      },
+      "core": false
+    }
+  ],
+  "content_mode": "curated",
+  "media": {
+    "visitor_map_url": "/field-pack/media/maps/great-smoky-mountains.jpg",
+    "visitor_map_page": "https://www.nps.gov/grsm/planyourvisit/upload/grsmmap_2024_reduced_508.pdf",
+    "visitor_map_kind": "image",
+    "map_attribution": "Map: NPS via NPMaps (public domain)",
+    "hero_illustration": "/field-pack/photos/np-hero-great-smoky-mountains.jpg",
+    "print_map": "/field-pack/media/maps/great-smoky-mountains.jpg",
+    "visitor_map_full": "https://www.nps.gov/grsm/planyourvisit/upload/grsmmap_2024_reduced_508.pdf"
+  },
+  "parent_script": [
+    "Bathroom first",
+    "Water & sun check",
+    "One big view",
+    "Leave while happy"
+  ],
+  "route_90m": [
+    "grsm_sugarlands_vc",
+    "grsm_fighting_creek",
+    "grsm_laurel"
+  ],
+  "research_notes": "NP Phase 1a pilot 2026-08-08 · slice-focused kit · label scrub 2026-08-09 · depth-pass top10 2026-08-09",
+  "list_confidence": "partial",
+  "do_not_list": [],
+  "presence_sources": [
+    "https://www.nps.gov/grsm/"
+  ],
+  "last_presence_audit": "2026-08-08",
+  "bonus_hunt": {
+    "tagline": "Great Smoky Mountains National Park bonus · second look on the trail",
+    "find_ids": [
+      "grsm_cove_forest",
+      "grsm_meadow_edge",
+      "grsm_overlook",
+      "grsm_sign",
+      "grsm_stream",
+      "grsm_jr",
+      "grsm_talk"
+    ],
+    "challenges": [
+      {
+        "id": "great_smoky__grsm_cove_forest_watch",
+        "text": "Sugarlands trails: take 15 seconds on the Cove hardwood forest — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "great_smoky__grsm_meadow_edge_watch",
+        "text": "Sugarlands: take 15 seconds on the Open valley edge — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "great_smoky__grsm_overlook_watch",
+        "text": "Parkway: take 15 seconds on the Newfound Gap or valley view — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "great_smoky__grsm_sign_watch",
+        "text": "Trail start: take 15 seconds on the Trailhead distance sign — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "great_smoky__grsm_stream_watch",
+        "text": "Sugarlands: take 15 seconds on the Mountain stream — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_still",
+        "text": "Quiet 20 seconds on the trail — bird, wind, water, or people: what wins?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_far_near",
+        "text": "Name something far first — then something by your feet",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_camo",
+        "text": "Best natural camouflage (rock, bark, shadow) you can spot",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_map",
+        "text": "Find a map or zone name you haven’t noticed — point it out",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_tiny_huge",
+        "text": "Something tiny next to something huge in this area",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find a park map or zone sign — name one animal that lives that way",
+    "easter_egg_little": "★ Easter egg: pick a favorite bench — sit 60 seconds and name three sounds",
+    "researched": "2026-08-09",
+    "status": "solid",
+    "sources": [
+      "https://www.nps.gov/grsm/"
+    ]
+  },
+  "slice_label": "Sugarlands side",
+  "safety_footer": "Stay on boardwalks and trails · give wildlife lots of space · bring water"
+}

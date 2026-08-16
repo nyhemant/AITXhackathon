@@ -1,0 +1,374 @@
+{
+  "slug": "snowdonia",
+  "name": "Eryri (Snowdonia) National Park",
+  "type": "national_park",
+  "city": "Llanberis",
+  "region": "Wales",
+  "country": "GB",
+  "lat": 53.0685,
+  "lng": -4.0762,
+  "official_url": "https://www.eryri.llyw.cymru/",
+  "last_verified": "2026-08-09",
+  "verified_by": "research",
+  "status": "verified",
+  "tagline": "Eryri/Snowdonia — Llanberis lake and valley views; summit only if energy and weather allow.",
+  "practical": {
+    "typical_duration": "half day",
+    "ticket_note": "Park free to enter; railway/parking fees separate.",
+    "transit_note": "Llanberis is a classic family base.",
+    "energy_note": "Weather turns fast; wet rock is slippery.",
+    "best_start": "Lakeshore path → viewpoint → café reset",
+    "slice_name": "Llanberis lakeshore",
+    "season_note": "Year-round; winter summits serious."
+  },
+  "items": [
+    {
+      "id": "llanberis_lake",
+      "label": "Llanberis lakeshore",
+      "emoji": "🏞️",
+      "one_liner": "Easy water edge under the peaks.",
+      "tags": [
+        "water",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Llanberis",
+      "qa_card": {
+        "question": "What did you notice at the Llanberis lakeshore?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-river",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "official_park_research",
+      "display_label": "Llanberis lakeshore"
+    },
+    {
+      "id": "valley_view",
+      "label": "Glyderau / valley view",
+      "emoji": "🌄",
+      "one_liner": "Welsh mountains without forcing the summit.",
+      "tags": [
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Overlook",
+      "qa_card": {
+        "question": "What did you notice at the Glyderau / valley view?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-scenic-overlook",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "official_park_research",
+      "display_label": "Glyderau / valley view"
+    },
+    {
+      "id": "path_sign",
+      "label": "Lakeshore or lower path sign",
+      "emoji": "🥾",
+      "one_liner": "Weather turns fast — pick a short route.",
+      "tags": [
+        "read"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Trail",
+      "qa_card": {
+        "question": "What did you notice at the Lakeshore or lower path sign?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-trailhead-sign",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "official_park_research",
+      "display_label": "Lakeshore or lower path sign"
+    },
+    {
+      "id": "vc",
+      "label": "National Park / visitor info",
+      "emoji": "🏛️",
+      "one_liner": "Maps and weather sense-check.",
+      "tags": [
+        "rest"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Town",
+      "qa_card": {
+        "question": "What did you notice at the National Park / visitor info?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-visitor-center",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "official_park_research",
+      "display_label": "National Park / visitor info"
+    },
+    {
+      "id": "meadow",
+      "label": "Valley pasture or open ground",
+      "emoji": "🌾",
+      "one_liner": "Sheep country sky.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Open",
+      "qa_card": {
+        "question": "What did you notice at the Valley pasture or open ground?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-meadow",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "official_park_research",
+      "display_label": "Valley pasture or open ground"
+    },
+    {
+      "id": "forest",
+      "label": "Wooded lakeside stretch",
+      "emoji": "🌳",
+      "one_liner": "Mossy shade after rain.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Forest",
+      "qa_card": {
+        "question": "What did you notice at the Wooded lakeside stretch?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-giant-tree",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "official_park_research",
+      "display_label": "Wooded lakeside stretch"
+    },
+    {
+      "id": "falls",
+      "label": "Small falls or stream (if on route)",
+      "emoji": "💦",
+      "one_liner": "Listen for water on wet rock.",
+      "tags": [
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Trail",
+      "qa_card": {
+        "question": "What did you notice at the Small falls or stream (if on route)?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-waterfall",
+      "presence": "high",
+      "presence_checked": "2026-08-09",
+      "presence_source": "official_park_research",
+      "display_label": "Small falls or stream (if on route)"
+    },
+    {
+      "id": "talk",
+      "label": "Eryri (Snowdonia) ranger talk (if offered)",
+      "emoji": "🗣️",
+      "one_liner": "Check the day’s board at the visitor center.",
+      "tags": [
+        "hands"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "VC",
+      "qa_card": {
+        "question": "What did you notice at the Eryri (Snowdonia) ranger talk (if offered)?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-ranger-program",
+      "presence": "medium",
+      "presence_checked": "2026-08-09",
+      "presence_source": "official_park_research",
+      "display_label": "Eryri (Snowdonia) ranger talk (if offered)"
+    }
+  ],
+  "content_mode": "curated",
+  "media": {
+    "visitor_map_url": "/field-pack/media/maps/snowdonia.jpg",
+    "visitor_map_page": "https://www.eryri.llyw.cymru/",
+    "visitor_map_kind": "image",
+    "map_attribution": "Map: Wikimedia Commons (Snowdonia/Eryri park boundary)",
+    "hero_illustration": "/field-pack/photos/np-hero-snowdonia.jpg",
+    "print_map": "/field-pack/media/maps/snowdonia.jpg",
+    "visitor_map_full": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Snowdonia_National_Park_UK_location_map.svg"
+  },
+  "parent_script": [
+    "Bathroom first",
+    "Water & weather check",
+    "One big view",
+    "Leave while happy"
+  ],
+  "route_90m": [
+    "llanberis_lake",
+    "valley_view",
+    "path_sign"
+  ],
+  "research_notes": "NP intl Phase 1 2026-08-09 · slice-focused kit · slice labels + shared animal cards 2026-08-09 · label scrub 2026-08-09",
+  "list_confidence": "partial",
+  "do_not_list": [],
+  "presence_sources": [
+    "https://www.eryri.llyw.cymru/"
+  ],
+  "last_presence_audit": "2026-08-09",
+  "bonus_hunt": {
+    "tagline": "Eryri bonus · second look on the trail",
+    "find_ids": [
+      "falls",
+      "forest",
+      "meadow",
+      "vc",
+      "llanberis_lake",
+      "valley_view",
+      "path_sign"
+    ],
+    "challenges": [
+      {
+        "id": "snowdonia_falls_watch",
+        "text": "Trail: take 15 seconds on the Small falls or stream (if on route) — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "snowdonia_forest_watch",
+        "text": "Forest: take 15 seconds on the Wooded lakeside stretch — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "snowdonia_meadow_watch",
+        "text": "Open: take 15 seconds on the Valley pasture or open ground — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "snowdonia_vc_watch",
+        "text": "Town: take 15 seconds on the National Park / visitor info — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "snowdonia_llanberis_lake_watch",
+        "text": "Llanberis: take 15 seconds on the Llanberis lakeshore — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_still",
+        "text": "Quiet 20 seconds on the trail — bird, wind, water, or people: what wins?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_far_near",
+        "text": "Name something far first — then something by your feet",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_camo",
+        "text": "Best natural camouflage (rock, bark, shadow) you can spot",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_map",
+        "text": "Find a map or zone name you haven’t noticed — point it out",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_tiny_huge",
+        "text": "Something tiny next to something huge in this area",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find a park map or zone sign — name one animal that lives that way",
+    "easter_egg_little": "★ Easter egg: pick a favorite bench — sit 60 seconds and name three sounds",
+    "researched": "2026-08-09",
+    "status": "solid",
+    "sources": [
+      "https://www.eryri.llyw.cymru/"
+    ]
+  }
+}

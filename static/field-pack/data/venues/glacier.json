@@ -1,0 +1,491 @@
+{
+  "slug": "glacier",
+  "name": "Glacier National Park",
+  "type": "national_park",
+  "city": "West Glacier",
+  "region": "MT",
+  "country": "US",
+  "lat": 48.7596,
+  "lng": -113.787,
+  "official_url": "https://www.nps.gov/glac/",
+  "last_verified": "2026-08-09",
+  "verified_by": "research",
+  "status": "verified",
+  "tagline": "Glacier — short valley or lake stops; Going-to-the-Sun is seasonal.",
+  "practical": {
+    "typical_duration": "half day",
+    "ticket_note": "Entrance pass; vehicle reservations common in peak season.",
+    "transit_note": "West Glacier / Apgar gateway.",
+    "energy_note": "Cold water, bears — food storage rules; altitude mild at lakes.",
+    "best_start": "Apgar visitor area → lakeshore stroll → one short trail",
+    "slice_name": "Apgar / Lake McDonald",
+    "season_note": "Going-to-the-Sun Road seasonal; many services summer-only."
+  },
+  "items": [
+    {
+      "id": "glac_mcdonald",
+      "label": "Lake McDonald shore",
+      "emoji": "🏞️",
+      "one_liner": "Big valley lake with colored pebbles — easy wow without the full Going-to-the-Sun epic · Safe step back from water",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Lake McDonald",
+      "qa_card": {
+        "question": "What did you notice at Lake McDonald shore?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "glac-mcdonald-shore",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Lake McDonald shore",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/glac/"
+      },
+      "safety_note": "Safe step back from water",
+      "core": true
+    },
+    {
+      "id": "glac_apgar_vc",
+      "label": "Apgar Visitor Center",
+      "emoji": "🏛️",
+      "one_liner": "West-side hub — maps and trail conditions",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Apgar",
+      "qa_card": {
+        "question": "What did you notice at Apgar Visitor Center?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "glac-apgar-vc",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Apgar Visitor Center",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/glac/planyourvisit/visitorcenters.htm"
+      },
+      "safety_note": "",
+      "core": true
+    },
+    {
+      "id": "glac_pebbles",
+      "label": "Colored lake pebbles",
+      "emoji": "🪨",
+      "one_liner": "Look (don’t pocket) the rainbow stones under clear water · Leave stones where they are",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Lake McDonald shore",
+      "qa_card": {
+        "question": "What did you notice at Colored lake pebbles?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "glac-colored-pebbles",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Colored lake pebbles",
+      "verify": {
+        "status": "todo",
+        "source": ""
+      },
+      "safety_note": "Leave stones where they are",
+      "core": true
+    },
+    {
+      "id": "glac_cedar",
+      "label": "Cedar–hemlock forest",
+      "emoji": "🌳",
+      "one_liner": "Tall damp forest near the lake — smell the green",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Apgar area",
+      "qa_card": {
+        "question": "What did you notice at Cedar–hemlock forest?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "glac-cedar-forest",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Cedar–hemlock forest",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/glac/"
+      },
+      "safety_note": "",
+      "core": true
+    },
+    {
+      "id": "glac_valley_view",
+      "label": "McDonald valley view",
+      "emoji": "🌄",
+      "one_liner": "Mountains wrapping the lake corridor",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "West side",
+      "qa_card": {
+        "question": "What did you notice at McDonald valley view?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "glac-valley-view",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "McDonald valley view",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/glac/"
+      },
+      "safety_note": "",
+      "core": true
+    },
+    {
+      "id": "glac_path",
+      "label": "Apgar lakeside path",
+      "emoji": "🥾",
+      "one_liner": "Easy walk between village and shore",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Apgar",
+      "qa_card": {
+        "question": "What did you notice at Apgar lakeside path?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "glac-apgar-path",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Apgar lakeside path",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/glac/"
+      },
+      "safety_note": "",
+      "core": true
+    },
+    {
+      "id": "glac_sign",
+      "label": "Trail or lake access sign",
+      "emoji": "🥾",
+      "one_liner": "Read before you wander farther up-valley",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Apgar",
+      "qa_card": {
+        "question": "What did you notice at Trail or lake access sign?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "glac-trail-sign",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Trail or lake access sign",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/glac/"
+      },
+      "safety_note": "",
+      "core": true
+    },
+    {
+      "id": "glac_wildlife",
+      "label": "Deer or sheep (from distance)",
+      "emoji": "🦌",
+      "one_liner": "Wildlife near roads — never approach or feed · Give wildlife lots of space",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Roads / meadows",
+      "qa_card": {
+        "question": "What did you notice at Deer or sheep (from distance)?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "elk",
+      "presence": "high",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Deer or sheep (from distance)",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/glac/"
+      },
+      "safety_note": "Give wildlife lots of space",
+      "core": true
+    },
+    {
+      "id": "glac_jr",
+      "label": "Glacier Junior Ranger desk",
+      "emoji": "🎖️",
+      "one_liner": "Ask at Apgar or another VC",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Visitor center",
+      "qa_card": {
+        "question": "What did you notice at Glacier Junior Ranger desk?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "np-junior-ranger",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Glacier Junior Ranger desk",
+      "verify": {
+        "status": "sourced",
+        "source": "generic-template"
+      },
+      "core": false
+    },
+    {
+      "id": "glac_talk",
+      "label": "Ranger talk (if offered)",
+      "emoji": "🗣️",
+      "one_liner": "Check the Apgar board",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "VC",
+      "qa_card": {
+        "question": "What did you notice at Ranger talk (if offered)?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "np-ranger-program",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Ranger talk (if offered)",
+      "verify": {
+        "status": "sourced",
+        "source": "generic-template"
+      },
+      "core": false
+    }
+  ],
+  "content_mode": "curated",
+  "media": {
+    "visitor_map_url": "/field-pack/media/maps/glacier.jpg",
+    "visitor_map_page": "https://www.nps.gov/glac/planyourvisit/maps.htm",
+    "visitor_map_kind": "image",
+    "map_attribution": "Map: NPS via NPMaps (public domain)",
+    "hero_illustration": "/field-pack/photos/np-hero-glacier.jpg",
+    "print_map": "/field-pack/media/maps/glacier.jpg",
+    "visitor_map_full": "https://npmaps.com/wp-content/uploads/glacier-waterton-lakes-national-park-map.jpg"
+  },
+  "parent_script": [
+    "Bathroom first",
+    "Water & sun check",
+    "One big view",
+    "Leave while happy"
+  ],
+  "route_90m": [
+    "glac_apgar_vc",
+    "glac_mcdonald",
+    "glac_cedar"
+  ],
+  "research_notes": "NP Phase 1b 2026-08-08 · slice-focused kit · label scrub 2026-08-09 · depth-pass top10 2026-08-09",
+  "list_confidence": "partial",
+  "do_not_list": [],
+  "presence_sources": [
+    "https://www.nps.gov/glac/"
+  ],
+  "last_presence_audit": "2026-08-08",
+  "bonus_hunt": {
+    "tagline": "Glacier National Park bonus · second look on the trail",
+    "find_ids": [
+      "glac_path",
+      "glac_pebbles",
+      "glac_sign",
+      "glac_valley_view",
+      "glac_wildlife",
+      "glac_jr",
+      "glac_talk"
+    ],
+    "challenges": [
+      {
+        "id": "glacier_glac_path_watch",
+        "text": "Apgar: take 15 seconds on the Apgar lakeside path — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "glacier_glac_pebbles_watch",
+        "text": "Lake McDonald shore: take 15 seconds on the Colored lake pebbles — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "glacier_glac_sign_watch",
+        "text": "Apgar: take 15 seconds on the Trail or lake access sign — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "glacier_glac_valley_view_watch",
+        "text": "West side: take 15 seconds on the McDonald valley view — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "glacier_glac_wildlife_watch",
+        "text": "Roads / meadows: take 15 seconds on the Deer or sheep (from distance) — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_still",
+        "text": "Quiet 20 seconds on the trail — bird, wind, water, or people: what wins?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_far_near",
+        "text": "Name something far first — then something by your feet",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_camo",
+        "text": "Best natural camouflage (rock, bark, shadow) you can spot",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_map",
+        "text": "Find a map or zone name you haven’t noticed — point it out",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_tiny_huge",
+        "text": "Something tiny next to something huge in this area",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find a park map or zone sign — name one animal that lives that way",
+    "easter_egg_little": "★ Easter egg: pick a favorite bench — sit 60 seconds and name three sounds",
+    "researched": "2026-08-09",
+    "status": "solid",
+    "sources": [
+      "https://www.nps.gov/glac/"
+    ]
+  },
+  "slice_label": "Apgar / Lake McDonald",
+  "safety_footer": "Stay on boardwalks and trails · give wildlife lots of space · bring water"
+}

@@ -1,0 +1,15 @@
+{
+  "updated": "2026-08-11",
+  "tool": "Grok Imagine image_edit (Image 2.0 Quality via Build)",
+  "prompt_guide": "scripts/data/ftk_imagine_prompt.md",
+  "policy": {
+    "animals": "Enhance weak headshots for print; credit Enhanced for print \u00b7 Field Trip Kit; originals in photos/_orig_backup/",
+    "illustrations_cm_sci": "AI watercolor polish; credit Illustration \u00b7 Field Trip Kit",
+    "parks": "No AI park heroes/maps"
+  },
+  "counts": {
+    "enhanced_animals": 35,
+    "img2_assets": 52,
+    "illustrations": 17
+  }
+}

@@ -1,0 +1,3075 @@
+[
+  {
+    "slug": "yellowstone",
+    "name": "Yellowstone National Park",
+    "city": "Yellowstone",
+    "region": "WY",
+    "state": "WY",
+    "lat": 44.4605,
+    "lng": -110.8281,
+    "official_url": "https://www.nps.gov/yell/",
+    "emoji": "💨",
+    "tagline": "Old Faithful area — geysers, boardwalks, and one finishable basin loop.",
+    "blurb": "Geyser basin day: boardwalks, steam, and Old Faithful — not the whole park.",
+    "slice_name": "Upper Geyser Basin · Old Faithful",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Park entrance pass required; summer crowds — arrive early.",
+      "transit_note": "Drive to Old Faithful area; boardwalks from the visitor complex.",
+      "energy_note": "Boardwalks can be icy or hot steam; stay on paths.",
+      "best_start": "Old Faithful visitor area → boardwalk loop → one more thermal stop",
+      "slice_name": "Upper Geyser Basin · Old Faithful",
+      "season_note": "Winter access limited; summer is peak boardwalk season."
+    },
+    "items": [
+      {
+        "id": "old_faithful",
+        "label": "Old Faithful",
+        "emoji": "💨",
+        "one_liner": "Famous geyser — wait for a predicted erupt if you can.",
+        "tags": [
+          "wow",
+          "outdoor"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Old Faithful",
+        "qa_card": {
+          "question": "What did you notice at the Old Faithful?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "old-faithful",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Old Faithful"
+      },
+      {
+        "id": "np_geyser_steam",
+        "label": "Geyser steam",
+        "emoji": "💨",
+        "one_liner": "Steam from the ground — boardwalks only.",
+        "tags": [
+          "wow",
+          "outdoor"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Basin",
+        "qa_card": {
+          "question": "What did you notice at the Geyser steam?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-geyser-steam",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Geyser steam"
+      },
+      {
+        "id": "np_boardwalk",
+        "label": "Basin boardwalk",
+        "emoji": "🪵",
+        "one_liner": "Raised path over fragile ground — stay on it.",
+        "tags": [
+          "walk",
+          "outdoor"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Basin",
+        "qa_card": {
+          "question": "What did you notice at the Basin boardwalk?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-boardwalk",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Basin boardwalk"
+      },
+      {
+        "id": "np_visitor_center",
+        "label": "Visitor center",
+        "emoji": "🏛️",
+        "one_liner": "Maps, restrooms, eruption predictions.",
+        "tags": [
+          "rest"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Old Faithful",
+        "qa_card": {
+          "question": "What did you notice at the Visitor center?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-visitor-center",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Visitor center"
+      },
+      {
+        "id": "np_trailhead_sign",
+        "label": "Trail / basin sign",
+        "emoji": "🥾",
+        "one_liner": "Read a boardwalk map before you walk.",
+        "tags": [
+          "read"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Basin",
+        "qa_card": {
+          "question": "What did you notice at the Trail / basin sign?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-trailhead-sign",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Trail / basin sign"
+      },
+      {
+        "id": "np_wildlife_bison",
+        "label": "Bison (if you see one)",
+        "emoji": "🦬",
+        "one_liner": "Huge — never approach; watch from a safe distance.",
+        "tags": [
+          "wow",
+          "outdoor"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Roads / meadows",
+        "qa_card": {
+          "question": "What did you notice at the Bison (if you see one)?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-wildlife-bison",
+        "presence": "high",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Bison (if you see one)"
+      },
+      {
+        "id": "np_scenic_overlook",
+        "label": "Basin overlook",
+        "emoji": "🌄",
+        "one_liner": "Wide steam landscape view.",
+        "tags": [
+          "wow"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Basin",
+        "qa_card": {
+          "question": "What did you notice at the Basin overlook?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-scenic-overlook",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Basin overlook"
+      },
+      {
+        "id": "np_junior_ranger",
+        "label": "Junior Ranger desk",
+        "emoji": "🎖️",
+        "one_liner": "Ask at the visitor center — hours vary.",
+        "tags": [
+          "hands"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Visitor center",
+        "qa_card": {
+          "question": "What did you notice at the Junior Ranger desk?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-junior-ranger",
+        "presence": "high",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Junior Ranger desk"
+      },
+      {
+        "id": "np_river",
+        "label": "Firehole River glimpse",
+        "emoji": "🏞️",
+        "one_liner": "River near the basin — keep a safe step back.",
+        "tags": [
+          "water"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Basin edges",
+        "qa_card": {
+          "question": "What did you notice at the Firehole River glimpse?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-river",
+        "presence": "high",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Firehole River glimpse"
+      }
+    ],
+    "route_90m": [
+      "old_faithful",
+      "np_boardwalk",
+      "np_geyser_steam"
+    ]
+  },
+  {
+    "slug": "grand-canyon",
+    "name": "Grand Canyon National Park",
+    "city": "Grand Canyon Village",
+    "region": "AZ",
+    "state": "AZ",
+    "lat": 36.0544,
+    "lng": -112.1401,
+    "official_url": "https://www.nps.gov/grca/",
+    "emoji": "🏞️",
+    "tagline": "South Rim village — rail overlooks and a short rim walk, not the whole canyon.",
+    "blurb": "South Rim rails and short paths — big views without a rim-to-rim day.",
+    "slice_name": "South Rim · Village area",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Park entrance pass; South Rim is the main family slice.",
+      "transit_note": "Village parking fills early; free shuttle on the rim in season.",
+      "energy_note": "Altitude + sun; stay behind rails; little kids tire fast.",
+      "best_start": "Visitor center or Mather Point → one more overlook → snack",
+      "slice_name": "South Rim · Village area",
+      "season_note": "North Rim is seasonal and separate — this kit is South Rim only."
+    },
+    "items": [
+      {
+        "id": "south_rim_view",
+        "label": "South Rim overlook",
+        "emoji": "🏞️",
+        "one_liner": "Endless rock layers from a safe rail.",
+        "tags": [
+          "wow",
+          "outdoor"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "South Rim",
+        "qa_card": {
+          "question": "What did you notice at the South Rim overlook?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "south-rim-view",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "South Rim overlook"
+      },
+      {
+        "id": "np_canyon_rim",
+        "label": "Canyon rim walk",
+        "emoji": "🥾",
+        "one_liner": "Short paved rim path — stay behind barriers.",
+        "tags": [
+          "walk",
+          "outdoor"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Village rim",
+        "qa_card": {
+          "question": "What did you notice at the Canyon rim walk?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-canyon-rim",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Canyon rim walk"
+      },
+      {
+        "id": "np_visitor_center",
+        "label": "Visitor center",
+        "emoji": "🏛️",
+        "one_liner": "Maps, restrooms, Junior Ranger info.",
+        "tags": [
+          "rest"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Village",
+        "qa_card": {
+          "question": "What did you notice at the Visitor center?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-visitor-center",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Visitor center"
+      },
+      {
+        "id": "np_scenic_overlook",
+        "label": "Second overlook",
+        "emoji": "🌄",
+        "one_liner": "Walk or shuttle to one more viewpoint.",
+        "tags": [
+          "wow"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "South Rim",
+        "qa_card": {
+          "question": "What did you notice at the Second overlook?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-scenic-overlook",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Second overlook"
+      },
+      {
+        "id": "np_trailhead_sign",
+        "label": "Rim trail sign",
+        "emoji": "🥾",
+        "one_liner": "Read distance before you commit.",
+        "tags": [
+          "read"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Rim",
+        "qa_card": {
+          "question": "What did you notice at the Rim trail sign?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-trailhead-sign",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Rim trail sign"
+      },
+      {
+        "id": "np_junior_ranger",
+        "label": "Junior Ranger desk",
+        "emoji": "🎖️",
+        "one_liner": "Ask at a visitor center — hours vary.",
+        "tags": [
+          "hands"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Village",
+        "qa_card": {
+          "question": "What did you notice at the Junior Ranger desk?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-junior-ranger",
+        "presence": "high",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Junior Ranger desk"
+      },
+      {
+        "id": "np_meadow",
+        "label": "Village green space",
+        "emoji": "🌾",
+        "one_liner": "A flat rest stop away from the edge.",
+        "tags": [
+          "rest"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Village",
+        "qa_card": {
+          "question": "What did you notice at the Village green space?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-meadow",
+        "presence": "high",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Village green space"
+      },
+      {
+        "id": "np_ranger_program",
+        "label": "Ranger talk (if offered)",
+        "emoji": "🗣️",
+        "one_liner": "Check the day’s program board.",
+        "tags": [
+          "hands"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Village",
+        "qa_card": {
+          "question": "What did you notice at the Ranger talk (if offered)?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-ranger-program",
+        "presence": "medium",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Ranger talk (if offered)"
+      },
+      {
+        "id": "np_river",
+        "label": "Colorado River glimpse",
+        "emoji": "🏞️",
+        "one_liner": "Far below — binoculars help; never climb for a better look.",
+        "tags": [
+          "wow"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Overlook",
+        "qa_card": {
+          "question": "What did you notice at the Colorado River glimpse?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-river",
+        "presence": "high",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Colorado River glimpse"
+      }
+    ],
+    "route_90m": [
+      "south_rim_view",
+      "np_visitor_center",
+      "np_canyon_rim"
+    ]
+  },
+  {
+    "slug": "yosemite",
+    "name": "Yosemite National Park",
+    "city": "Yosemite Valley",
+    "region": "CA",
+    "state": "CA",
+    "lat": 37.7459,
+    "lng": -119.5936,
+    "official_url": "https://www.nps.gov/yose/",
+    "emoji": "⛰️",
+    "tagline": "Yosemite Valley icons — falls, meadow, and Half Dome from the floor.",
+    "blurb": "Valley day: waterfalls and granite views — not Tioga or the backcountry.",
+    "slice_name": "Yosemite Valley",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Peak-season timed entry often required — check nps.gov/yose before you go.",
+      "transit_note": "Valley shuttle helps; parking fills early in summer.",
+      "energy_note": "Crowds + walking; stroller-friendly valley paths exist.",
+      "best_start": "Valley Visitor Center → falls viewpoint → meadow look at Half Dome",
+      "slice_name": "Yosemite Valley",
+      "season_note": "Falls roar in spring; late summer can be thinner water."
+    },
+    "items": [
+      {
+        "id": "yosemite_falls",
+        "label": "Yosemite Falls",
+        "emoji": "💦",
+        "one_liner": "Valley icon waterfall — best with spring energy.",
+        "tags": [
+          "wow",
+          "water"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Valley",
+        "qa_card": {
+          "question": "What did you notice at the Yosemite Falls?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "yosemite-falls",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Yosemite Falls"
+      },
+      {
+        "id": "half_dome_view",
+        "label": "Half Dome view",
+        "emoji": "⛰️",
+        "one_liner": "Granite icon from the valley floor — no summit hike.",
+        "tags": [
+          "wow"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Valley viewpoints",
+        "qa_card": {
+          "question": "What did you notice at the Half Dome view?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "half-dome-view",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Half Dome view"
+      },
+      {
+        "id": "np_meadow",
+        "label": "Valley meadow",
+        "emoji": "🌾",
+        "one_liner": "Open grass and sky — stay on paths.",
+        "tags": [
+          "outdoor"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Valley",
+        "qa_card": {
+          "question": "What did you notice at the Valley meadow?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-meadow",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Valley meadow"
+      },
+      {
+        "id": "np_visitor_center",
+        "label": "Valley Visitor Center",
+        "emoji": "🏛️",
+        "one_liner": "Maps, restrooms, programs.",
+        "tags": [
+          "rest"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Valley",
+        "qa_card": {
+          "question": "What did you notice at the Valley Visitor Center?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-visitor-center",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Valley Visitor Center"
+      },
+      {
+        "id": "np_river",
+        "label": "Merced River",
+        "emoji": "🏞️",
+        "one_liner": "River through the valley — keep kids back from edges.",
+        "tags": [
+          "water"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Valley",
+        "qa_card": {
+          "question": "What did you notice at the Merced River?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-river",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Merced River"
+      },
+      {
+        "id": "np_giant_tree",
+        "label": "Big valley trees",
+        "emoji": "🌳",
+        "one_liner": "Tall pines and oaks along the roads.",
+        "tags": [
+          "outdoor"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Valley",
+        "qa_card": {
+          "question": "What did you notice at the Big valley trees?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-giant-tree",
+        "presence": "high",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Big valley trees"
+      },
+      {
+        "id": "np_scenic_overlook",
+        "label": "Valley viewpoint",
+        "emoji": "🌄",
+        "one_liner": "Pullout or short walk for a wide granite view.",
+        "tags": [
+          "wow"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Valley",
+        "qa_card": {
+          "question": "What did you notice at the Valley viewpoint?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-scenic-overlook",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Valley viewpoint"
+      },
+      {
+        "id": "np_junior_ranger",
+        "label": "Junior Ranger desk",
+        "emoji": "🎖️",
+        "one_liner": "Ask at the visitor center.",
+        "tags": [
+          "hands"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Valley",
+        "qa_card": {
+          "question": "What did you notice at the Junior Ranger desk?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-junior-ranger",
+        "presence": "high",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Junior Ranger desk"
+      },
+      {
+        "id": "np_trailhead_sign",
+        "label": "Valley trail sign",
+        "emoji": "🥾",
+        "one_liner": "Pick a short paved path name.",
+        "tags": [
+          "read"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Valley",
+        "qa_card": {
+          "question": "What did you notice at the Valley trail sign?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-trailhead-sign",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Valley trail sign"
+      }
+    ],
+    "route_90m": [
+      "yosemite_falls",
+      "half_dome_view",
+      "np_meadow"
+    ]
+  },
+  {
+    "slug": "zion",
+    "name": "Zion National Park",
+    "city": "Springdale",
+    "region": "UT",
+    "state": "UT",
+    "lat": 37.2982,
+    "lng": -113.0263,
+    "official_url": "https://www.nps.gov/zion/",
+    "emoji": "🏜️",
+    "tagline": "Zion Canyon shuttle corridor — red walls and riverside paths, not the full Narrows hike.",
+    "blurb": "Canyon floor day with shuttle stops — skip technical hikes for little kids.",
+    "slice_name": "Zion Canyon · shuttle corridor",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Entrance pass; seasonal shuttle required in the main canyon.",
+      "transit_note": "Park in Springdale or visitor area and ride the shuttle.",
+      "energy_note": "Heat in summer; shade is limited at midday.",
+      "best_start": "Visitor center → shuttle to one riverside stop → second stop if energy",
+      "slice_name": "Zion Canyon · shuttle corridor",
+      "season_note": "Shuttle season vs private cars changes by year — check NPS."
+    },
+    "items": [
+      {
+        "id": "zion_canyon_walls",
+        "label": "Canyon walls",
+        "emoji": "🏜️",
+        "one_liner": "Red cliffs rising on both sides.",
+        "tags": [
+          "wow"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Zion Canyon",
+        "qa_card": {
+          "question": "What did you notice at the Canyon walls?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "zion-canyon-walls",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Canyon walls"
+      },
+      {
+        "id": "np_river",
+        "label": "Virgin River",
+        "emoji": "🏞️",
+        "one_liner": "River on the canyon floor — feet wet only where allowed and safe.",
+        "tags": [
+          "water"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Canyon",
+        "qa_card": {
+          "question": "What did you notice at the Virgin River?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-river",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Virgin River"
+      },
+      {
+        "id": "np_visitor_center",
+        "label": "Visitor center",
+        "emoji": "🏛️",
+        "one_liner": "Shuttle info, maps, restrooms.",
+        "tags": [
+          "rest"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "South entrance",
+        "qa_card": {
+          "question": "What did you notice at the Visitor center?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-visitor-center",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Visitor center"
+      },
+      {
+        "id": "np_scenic_overlook",
+        "label": "Canyon viewpoint",
+        "emoji": "🌄",
+        "one_liner": "A stop with a big wall view.",
+        "tags": [
+          "wow"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Shuttle stop",
+        "qa_card": {
+          "question": "What did you notice at the Canyon viewpoint?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-scenic-overlook",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Canyon viewpoint"
+      },
+      {
+        "id": "np_trailhead_sign",
+        "label": "Trailhead sign",
+        "emoji": "🥾",
+        "one_liner": "Read difficulty before you start.",
+        "tags": [
+          "read"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Canyon",
+        "qa_card": {
+          "question": "What did you notice at the Trailhead sign?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-trailhead-sign",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Trailhead sign"
+      },
+      {
+        "id": "np_boardwalk",
+        "label": "Riverside path",
+        "emoji": "🪵",
+        "one_liner": "Easy path near water — stay on trail.",
+        "tags": [
+          "walk"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Canyon floor",
+        "qa_card": {
+          "question": "What did you notice at the Riverside path?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-boardwalk",
+        "presence": "high",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Riverside path"
+      },
+      {
+        "id": "np_junior_ranger",
+        "label": "Junior Ranger desk",
+        "emoji": "🎖️",
+        "one_liner": "Ask at the visitor center.",
+        "tags": [
+          "hands"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "VC",
+        "qa_card": {
+          "question": "What did you notice at the Junior Ranger desk?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-junior-ranger",
+        "presence": "high",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Junior Ranger desk"
+      },
+      {
+        "id": "np_meadow",
+        "label": "Cottonwood shade",
+        "emoji": "🌾",
+        "one_liner": "A shady rest under trees if you find one.",
+        "tags": [
+          "rest"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Canyon",
+        "qa_card": {
+          "question": "What did you notice at the Cottonwood shade?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-meadow",
+        "presence": "high",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Cottonwood shade"
+      },
+      {
+        "id": "np_ranger_program",
+        "label": "Ranger program (if offered)",
+        "emoji": "🗣️",
+        "one_liner": "Check the board near the visitor center.",
+        "tags": [
+          "hands"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "VC",
+        "qa_card": {
+          "question": "What did you notice at the Ranger program (if offered)?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-ranger-program",
+        "presence": "medium",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Ranger program (if offered)"
+      }
+    ],
+    "route_90m": [
+      "np_visitor_center",
+      "zion_canyon_walls",
+      "np_river"
+    ]
+  },
+  {
+    "slug": "rocky-mountain",
+    "name": "Rocky Mountain National Park",
+    "city": "Estes Park",
+    "region": "CO",
+    "state": "CO",
+    "lat": 40.3428,
+    "lng": -105.6836,
+    "official_url": "https://www.nps.gov/romo/",
+    "emoji": "🏔️",
+    "tagline": "Beaver Meadows / easy alpine views — altitude-aware half day.",
+    "blurb": "Gateway meadows and an overlook — not a full Trail Ridge marathon.",
+    "slice_name": "Beaver Meadows · easy alpine view",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Entrance pass; timed entry common in peak season.",
+      "transit_note": "Estes Park gateway; parking lots fill early.",
+      "energy_note": "Altitude — drink water, slow pace, watch little kids for fatigue.",
+      "best_start": "Beaver Meadows Visitor Center → short trail or overlook → wildlife watch from distance",
+      "slice_name": "Beaver Meadows · easy alpine view",
+      "season_note": "Trail Ridge Road is seasonal; this kit works without the full alpine road."
+    },
+    "items": [
+      {
+        "id": "rocky_alpine_view",
+        "label": "Alpine overlook",
+        "emoji": "🏔️",
+        "one_liner": "High peaks view — take it slow.",
+        "tags": [
+          "wow"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Overlook",
+        "qa_card": {
+          "question": "What did you notice at the Alpine overlook?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "rocky-alpine-view",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Alpine overlook"
+      },
+      {
+        "id": "np_visitor_center",
+        "label": "Beaver Meadows Visitor Center",
+        "emoji": "🏛️",
+        "one_liner": "Maps, restrooms, altitude tips.",
+        "tags": [
+          "rest"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Entrance",
+        "qa_card": {
+          "question": "What did you notice at the Beaver Meadows Visitor Center?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-visitor-center",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Beaver Meadows Visitor Center"
+      },
+      {
+        "id": "np_meadow",
+        "label": "Mountain meadow",
+        "emoji": "🌾",
+        "one_liner": "Open grass with peak backdrop.",
+        "tags": [
+          "outdoor"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Meadows",
+        "qa_card": {
+          "question": "What did you notice at the Mountain meadow?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-meadow",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Mountain meadow"
+      },
+      {
+        "id": "np_wildlife_elk",
+        "label": "Elk (if you spot one)",
+        "emoji": "🦌",
+        "one_liner": "Often near meadows — stay far back.",
+        "tags": [
+          "wow"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Meadows",
+        "qa_card": {
+          "question": "What did you notice at the Elk (if you spot one)?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-wildlife-elk",
+        "presence": "high",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Elk (if you spot one)"
+      },
+      {
+        "id": "np_trailhead_sign",
+        "label": "Trailhead sign",
+        "emoji": "🥾",
+        "one_liner": "Pick a short easy trail.",
+        "tags": [
+          "read"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Trails",
+        "qa_card": {
+          "question": "What did you notice at the Trailhead sign?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-trailhead-sign",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Trailhead sign"
+      },
+      {
+        "id": "np_scenic_overlook",
+        "label": "Peak viewpoint",
+        "emoji": "🌄",
+        "one_liner": "Pullout or short walk for big mountains.",
+        "tags": [
+          "wow"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Road / trail",
+        "qa_card": {
+          "question": "What did you notice at the Peak viewpoint?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-scenic-overlook",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Peak viewpoint"
+      },
+      {
+        "id": "np_junior_ranger",
+        "label": "Junior Ranger desk",
+        "emoji": "🎖️",
+        "one_liner": "Ask at the visitor center.",
+        "tags": [
+          "hands"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "VC",
+        "qa_card": {
+          "question": "What did you notice at the Junior Ranger desk?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-junior-ranger",
+        "presence": "high",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Junior Ranger desk"
+      },
+      {
+        "id": "np_river",
+        "label": "Mountain creek",
+        "emoji": "🏞️",
+        "one_liner": "Cold clear water — keep a safe step back.",
+        "tags": [
+          "water"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Creek",
+        "qa_card": {
+          "question": "What did you notice at the Mountain creek?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-river",
+        "presence": "high",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Mountain creek"
+      },
+      {
+        "id": "np_giant_tree",
+        "label": "Evergreen forest",
+        "emoji": "🌳",
+        "one_liner": "Smell the pines along a short path.",
+        "tags": [
+          "outdoor"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Forest",
+        "qa_card": {
+          "question": "What did you notice at the Evergreen forest?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-giant-tree",
+        "presence": "high",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Evergreen forest"
+      }
+    ],
+    "route_90m": [
+      "np_visitor_center",
+      "np_meadow",
+      "rocky_alpine_view"
+    ]
+  },
+  {
+    "slug": "great-smoky-mountains",
+    "name": "Great Smoky Mountains National Park",
+    "city": "Gatlinburg",
+    "region": "TN",
+    "state": "TN",
+    "lat": 35.6532,
+    "lng": -83.507,
+    "official_url": "https://www.nps.gov/grsm/",
+    "emoji": "🌫️",
+    "tagline": "Sugarlands side — visitor center, easy forest paths, waterfall stop.",
+    "blurb": "Smokies starter day near Gatlinburg — not Cades Cove full loop unless energy allows.",
+    "slice_name": "Sugarlands · easy waterfall stop",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "No entrance fee at GRSM; parking tags may apply in busy areas — check NPS.",
+      "transit_note": "Gatlinburg / Pigeon Forge gateways; roads get busy on weekends.",
+      "energy_note": "Humidity + hills; pick one waterfall, not five.",
+      "best_start": "Sugarlands Visitor Center → short nature trail or easy falls → picnic",
+      "slice_name": "Sugarlands · easy waterfall stop",
+      "season_note": "Fall color crowds; summer thunderstorms possible."
+    },
+    "items": [
+      {
+        "id": "smokies_waterfall",
+        "label": "Waterfall stop",
+        "emoji": "💦",
+        "one_liner": "Easy forest waterfall near main roads.",
+        "tags": [
+          "wow",
+          "water"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Sugarlands area",
+        "qa_card": {
+          "question": "What did you notice at the Waterfall stop?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "smokies-waterfall",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Waterfall stop"
+      },
+      {
+        "id": "np_visitor_center",
+        "label": "Sugarlands Visitor Center",
+        "emoji": "🏛️",
+        "one_liner": "Maps, restrooms, exhibits.",
+        "tags": [
+          "rest"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Sugarlands",
+        "qa_card": {
+          "question": "What did you notice at the Sugarlands Visitor Center?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-visitor-center",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Sugarlands Visitor Center"
+      },
+      {
+        "id": "np_giant_tree",
+        "label": "Forest giants",
+        "emoji": "🌳",
+        "one_liner": "Tall hardwoods and hemlocks along the path.",
+        "tags": [
+          "outdoor"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Forest",
+        "qa_card": {
+          "question": "What did you notice at the Forest giants?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-giant-tree",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Forest giants"
+      },
+      {
+        "id": "np_trailhead_sign",
+        "label": "Trailhead sign",
+        "emoji": "🥾",
+        "one_liner": "Choose a short easy trail name.",
+        "tags": [
+          "read"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Trails",
+        "qa_card": {
+          "question": "What did you notice at the Trailhead sign?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-trailhead-sign",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Trailhead sign"
+      },
+      {
+        "id": "np_river",
+        "label": "Mountain stream",
+        "emoji": "🏞️",
+        "one_liner": "Clear water over rocks — stay off slippery edges.",
+        "tags": [
+          "water"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Creek",
+        "qa_card": {
+          "question": "What did you notice at the Mountain stream?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-river",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Mountain stream"
+      },
+      {
+        "id": "np_scenic_overlook",
+        "label": "Mountain overlook",
+        "emoji": "🌄",
+        "one_liner": "Pullout with layered blue ridges.",
+        "tags": [
+          "wow"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Road",
+        "qa_card": {
+          "question": "What did you notice at the Mountain overlook?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-scenic-overlook",
+        "presence": "high",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Mountain overlook"
+      },
+      {
+        "id": "np_junior_ranger",
+        "label": "Junior Ranger desk",
+        "emoji": "🎖️",
+        "one_liner": "Ask at Sugarlands.",
+        "tags": [
+          "hands"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "VC",
+        "qa_card": {
+          "question": "What did you notice at the Junior Ranger desk?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-junior-ranger",
+        "presence": "high",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Junior Ranger desk"
+      },
+      {
+        "id": "np_meadow",
+        "label": "Open valley view",
+        "emoji": "🌾",
+        "one_liner": "A wider sky break between trees.",
+        "tags": [
+          "outdoor"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Valley",
+        "qa_card": {
+          "question": "What did you notice at the Open valley view?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-meadow",
+        "presence": "high",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Open valley view"
+      },
+      {
+        "id": "np_wildlife_elk",
+        "label": "Wildlife watch (from distance)",
+        "emoji": "🦌",
+        "one_liner": "Never feed; use car pullouts if animals are near roads.",
+        "tags": [
+          "outdoor"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Roads",
+        "qa_card": {
+          "question": "What did you notice at the Wildlife watch (from distance)?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-wildlife-elk",
+        "presence": "medium",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Wildlife watch (from distance)"
+      }
+    ],
+    "route_90m": [
+      "np_visitor_center",
+      "smokies_waterfall",
+      "np_giant_tree"
+    ]
+  },
+  {
+    "slug": "acadia",
+    "name": "Acadia National Park",
+    "city": "Bar Harbor",
+    "region": "ME",
+    "state": "ME",
+    "lat": 44.3386,
+    "lng": -68.2733,
+    "official_url": "https://www.nps.gov/acad/",
+    "emoji": "🌅",
+    "tagline": "Cadillac views and coast loops — timed entry often needed for the summit road.",
+    "blurb": "Coast + summit slice near Bar Harbor — plan timed entry for Cadillac.",
+    "slice_name": "Cadillac · coast loop",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Entrance pass; Cadillac Summit Road often needs timed reservations.",
+      "transit_note": "Bar Harbor gateway; Island Explorer bus in season.",
+      "energy_note": "Granite can be slippery when wet; fog common.",
+      "best_start": "Visitor center or Hulls Cove → coast stop → Cadillac if reserved",
+      "slice_name": "Cadillac · coast loop",
+      "season_note": "Peak summer/fall; some roads seasonal."
+    },
+    "items": [
+      {
+        "id": "cadillac_summit",
+        "label": "Cadillac Mountain view",
+        "emoji": "🌅",
+        "one_liner": "High granite views — reservation often required for the road.",
+        "tags": [
+          "wow"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Cadillac",
+        "qa_card": {
+          "question": "What did you notice at the Cadillac Mountain view?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "cadillac-summit",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Cadillac Mountain view"
+      },
+      {
+        "id": "np_tide_coast",
+        "label": "Coastal shore",
+        "emoji": "🌊",
+        "one_liner": "Waves and rocks — watch footing.",
+        "tags": [
+          "water",
+          "wow"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Coast",
+        "qa_card": {
+          "question": "What did you notice at the Coastal shore?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-tide-coast",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Coastal shore"
+      },
+      {
+        "id": "np_visitor_center",
+        "label": "Visitor center",
+        "emoji": "🏛️",
+        "one_liner": "Maps, bus info, restrooms.",
+        "tags": [
+          "rest"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Hulls Cove area",
+        "qa_card": {
+          "question": "What did you notice at the Visitor center?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-visitor-center",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Visitor center"
+      },
+      {
+        "id": "np_scenic_overlook",
+        "label": "Ocean overlook",
+        "emoji": "🌄",
+        "one_liner": "Cliff or pullout with island views.",
+        "tags": [
+          "wow"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Park Loop",
+        "qa_card": {
+          "question": "What did you notice at the Ocean overlook?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-scenic-overlook",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Ocean overlook"
+      },
+      {
+        "id": "np_trailhead_sign",
+        "label": "Carriage / trail sign",
+        "emoji": "🥾",
+        "one_liner": "Pick a short easy path.",
+        "tags": [
+          "read"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Trails",
+        "qa_card": {
+          "question": "What did you notice at the Carriage / trail sign?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-trailhead-sign",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Carriage / trail sign"
+      },
+      {
+        "id": "np_giant_tree",
+        "label": "Coastal forest",
+        "emoji": "🌳",
+        "one_liner": "Spruce and granite together.",
+        "tags": [
+          "outdoor"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Woods",
+        "qa_card": {
+          "question": "What did you notice at the Coastal forest?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-giant-tree",
+        "presence": "high",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Coastal forest"
+      },
+      {
+        "id": "np_junior_ranger",
+        "label": "Junior Ranger desk",
+        "emoji": "🎖️",
+        "one_liner": "Ask at a visitor center.",
+        "tags": [
+          "hands"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "VC",
+        "qa_card": {
+          "question": "What did you notice at the Junior Ranger desk?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-junior-ranger",
+        "presence": "high",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Junior Ranger desk"
+      },
+      {
+        "id": "np_boardwalk",
+        "label": "Easy path section",
+        "emoji": "🪵",
+        "one_liner": "Firm path for little legs.",
+        "tags": [
+          "walk"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Loop",
+        "qa_card": {
+          "question": "What did you notice at the Easy path section?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-boardwalk",
+        "presence": "high",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Easy path section"
+      },
+      {
+        "id": "np_meadow",
+        "label": "Open granite bald",
+        "emoji": "🌾",
+        "one_liner": "Wide rock with sky — stay back from edges.",
+        "tags": [
+          "outdoor"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Summit / bald",
+        "qa_card": {
+          "question": "What did you notice at the Open granite bald?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-meadow",
+        "presence": "high",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Open granite bald"
+      }
+    ],
+    "route_90m": [
+      "np_visitor_center",
+      "np_tide_coast",
+      "cadillac_summit"
+    ]
+  },
+  {
+    "slug": "arches",
+    "name": "Arches National Park",
+    "city": "Moab",
+    "region": "UT",
+    "state": "UT",
+    "lat": 38.7331,
+    "lng": -109.5925,
+    "official_url": "https://www.nps.gov/arch/",
+    "emoji": "🪨",
+    "tagline": "Windows / Delicate area — short desert loops and iconic arches.",
+    "blurb": "Desert arch day near Moab — heat-smart, short hikes only.",
+    "slice_name": "Windows · Delicate viewpoint options",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Entrance pass; timed entry common in peak months.",
+      "transit_note": "Moab gateway; no shuttle — drive the scenic road.",
+      "energy_note": "Heat and sun are the limit; carry water; little shade.",
+      "best_start": "Visitor center → Windows area short loops → Delicate only if energy/time",
+      "slice_name": "Windows · Delicate viewpoint options",
+      "season_note": "Spring/fall best; summer is extreme heat."
+    },
+    "items": [
+      {
+        "id": "delicate_arch_view",
+        "label": "Delicate Arch viewpoint",
+        "emoji": "🪨",
+        "one_liner": "Famous arch — short view or longer hike; match kid energy.",
+        "tags": [
+          "wow"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Delicate area",
+        "qa_card": {
+          "question": "What did you notice at the Delicate Arch viewpoint?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "delicate-arch-view",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Delicate Arch viewpoint"
+      },
+      {
+        "id": "np_arch_rock",
+        "label": "Windows arches",
+        "emoji": "🪨",
+        "one_liner": "Multiple arches in a short loop area.",
+        "tags": [
+          "wow"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Windows",
+        "qa_card": {
+          "question": "What did you notice at the Windows arches?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-arch-rock",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Windows arches"
+      },
+      {
+        "id": "np_visitor_center",
+        "label": "Visitor center",
+        "emoji": "🏛️",
+        "one_liner": "Maps, water fill, heat tips.",
+        "tags": [
+          "rest"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Entrance",
+        "qa_card": {
+          "question": "What did you notice at the Visitor center?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-visitor-center",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Visitor center"
+      },
+      {
+        "id": "np_scenic_overlook",
+        "label": "Desert overlook",
+        "emoji": "🌄",
+        "one_liner": "Red rock panorama from a pullout.",
+        "tags": [
+          "wow"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Scenic drive",
+        "qa_card": {
+          "question": "What did you notice at the Desert overlook?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-scenic-overlook",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Desert overlook"
+      },
+      {
+        "id": "np_trailhead_sign",
+        "label": "Trailhead sign",
+        "emoji": "🥾",
+        "one_liner": "Check distance and heat warning.",
+        "tags": [
+          "read"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Trails",
+        "qa_card": {
+          "question": "What did you notice at the Trailhead sign?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-trailhead-sign",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Trailhead sign"
+      },
+      {
+        "id": "np_junior_ranger",
+        "label": "Junior Ranger desk",
+        "emoji": "🎖️",
+        "one_liner": "Ask at the visitor center.",
+        "tags": [
+          "hands"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "VC",
+        "qa_card": {
+          "question": "What did you notice at the Junior Ranger desk?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-junior-ranger",
+        "presence": "high",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Junior Ranger desk"
+      },
+      {
+        "id": "np_meadow",
+        "label": "Open desert flat",
+        "emoji": "🌾",
+        "one_liner": "Wide sky between fins of rock.",
+        "tags": [
+          "outdoor"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Windows area",
+        "qa_card": {
+          "question": "What did you notice at the Open desert flat?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-meadow",
+        "presence": "high",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Open desert flat"
+      },
+      {
+        "id": "np_canyon_rim",
+        "label": "Rock fin viewpoint",
+        "emoji": "🏞️",
+        "one_liner": "Look along towering sandstone walls.",
+        "tags": [
+          "wow"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Fins",
+        "qa_card": {
+          "question": "What did you notice at the Rock fin viewpoint?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-canyon-rim",
+        "presence": "high",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Rock fin viewpoint"
+      },
+      {
+        "id": "np_second_trail_sign",
+        "label": "Second trail sign",
+        "emoji": "🥾",
+        "one_liner": "Compare two short trail names.",
+        "tags": [
+          "read"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Windows",
+        "qa_card": {
+          "question": "What did you notice at the Second trail sign?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-trailhead-sign",
+        "presence": "high",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Second trail sign"
+      }
+    ],
+    "route_90m": [
+      "np_visitor_center",
+      "np_arch_rock",
+      "delicate_arch_view"
+    ]
+  },
+  {
+    "slug": "bryce-canyon",
+    "name": "Bryce Canyon National Park",
+    "city": "Bryce Canyon City",
+    "region": "UT",
+    "state": "UT",
+    "lat": 37.593,
+    "lng": -112.1871,
+    "official_url": "https://www.nps.gov/brca/",
+    "emoji": "🪨",
+    "tagline": "Rim overlooks of orange hoodoos — skip the full amphitheater hike for little kids.",
+    "blurb": "Rim-rail day among hoodoos — altitude and short overlook walks.",
+    "slice_name": "Bryce Amphitheater · rim overlooks",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Entrance pass required.",
+      "transit_note": "Scenic drive + short walks to overlooks; shuttle in peak season sometimes.",
+      "energy_note": "High elevation; cold mornings even in summer.",
+      "best_start": "Visitor center → Sunrise/Sunset Point style overlook → second rim stop",
+      "slice_name": "Bryce Amphitheater · rim overlooks",
+      "season_note": "Snow possible late spring; summer storms afternoon."
+    },
+    "items": [
+      {
+        "id": "bryce_hoodoos",
+        "label": "Hoodoo overlook",
+        "emoji": "🪨",
+        "one_liner": "Orange rock spires from the rim.",
+        "tags": [
+          "wow"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Amphitheater rim",
+        "qa_card": {
+          "question": "What did you notice at the Hoodoo overlook?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "bryce-hoodoos",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Hoodoo overlook"
+      },
+      {
+        "id": "np_scenic_overlook",
+        "label": "Second rim view",
+        "emoji": "🌄",
+        "one_liner": "Walk the rim path to another viewpoint.",
+        "tags": [
+          "wow"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Rim",
+        "qa_card": {
+          "question": "What did you notice at the Second rim view?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-scenic-overlook",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Second rim view"
+      },
+      {
+        "id": "np_visitor_center",
+        "label": "Visitor center",
+        "emoji": "🏛️",
+        "one_liner": "Maps, restrooms, altitude tips.",
+        "tags": [
+          "rest"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Entrance",
+        "qa_card": {
+          "question": "What did you notice at the Visitor center?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-visitor-center",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Visitor center"
+      },
+      {
+        "id": "np_trailhead_sign",
+        "label": "Rim trail sign",
+        "emoji": "🥾",
+        "one_liner": "Stay on rim unless ready for steep descents.",
+        "tags": [
+          "read"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Rim",
+        "qa_card": {
+          "question": "What did you notice at the Rim trail sign?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-trailhead-sign",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Rim trail sign"
+      },
+      {
+        "id": "np_arch_rock",
+        "label": "Hoodoo shapes",
+        "emoji": "🪨",
+        "one_liner": "Pick a spire that looks like an animal or tower.",
+        "tags": [
+          "wow"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Overlook",
+        "qa_card": {
+          "question": "What did you notice at the Hoodoo shapes?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-arch-rock",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Hoodoo shapes"
+      },
+      {
+        "id": "np_junior_ranger",
+        "label": "Junior Ranger desk",
+        "emoji": "🎖️",
+        "one_liner": "Ask at the visitor center.",
+        "tags": [
+          "hands"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "VC",
+        "qa_card": {
+          "question": "What did you notice at the Junior Ranger desk?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-junior-ranger",
+        "presence": "high",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Junior Ranger desk"
+      },
+      {
+        "id": "np_meadow",
+        "label": "Rim forest edge",
+        "emoji": "🌾",
+        "one_liner": "Pines along the rim path.",
+        "tags": [
+          "outdoor"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Rim",
+        "qa_card": {
+          "question": "What did you notice at the Rim forest edge?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-meadow",
+        "presence": "high",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Rim forest edge"
+      },
+      {
+        "id": "np_canyon_rim",
+        "label": "Amphitheater edge",
+        "emoji": "🏞️",
+        "one_liner": "Rail views into the bowl of hoodoos.",
+        "tags": [
+          "wow"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Rim",
+        "qa_card": {
+          "question": "What did you notice at the Amphitheater edge?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-canyon-rim",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Amphitheater edge"
+      },
+      {
+        "id": "np_ranger_program",
+        "label": "Ranger talk (if offered)",
+        "emoji": "🗣️",
+        "one_liner": "Check the day’s board.",
+        "tags": [
+          "hands"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "VC",
+        "qa_card": {
+          "question": "What did you notice at the Ranger talk (if offered)?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-ranger-program",
+        "presence": "medium",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Ranger talk (if offered)"
+      }
+    ],
+    "route_90m": [
+      "np_visitor_center",
+      "bryce_hoodoos",
+      "np_scenic_overlook"
+    ]
+  },
+  {
+    "slug": "everglades",
+    "name": "Everglades National Park",
+    "city": "Homestead",
+    "region": "FL",
+    "state": "FL",
+    "lat": 25.2866,
+    "lng": -80.8987,
+    "official_url": "https://www.nps.gov/ever/",
+    "emoji": "🐊",
+    "tagline": "Anhinga / boardwalk wildlife — short wetland loop, not the whole 'Glades.",
+    "blurb": "Boardwalk wetland day near Homestead — gators at a distance only.",
+    "slice_name": "Royal Palm · Anhinga boardwalk",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Entrance pass; mosquito season is real — repellent helps.",
+      "transit_note": "Homestead / Florida City gateway to the main park road.",
+      "energy_note": "Heat, sun, bugs; boardwalks are the win for little kids.",
+      "best_start": "Ernest Coe or Royal Palm area → Anhinga boardwalk → visitor exhibits",
+      "slice_name": "Royal Palm · Anhinga boardwalk",
+      "season_note": "Dry season (winter) is easier for wildlife viewing and bugs."
+    },
+    "items": [
+      {
+        "id": "anhinga_boardwalk",
+        "label": "Anhinga boardwalk",
+        "emoji": "🐊",
+        "one_liner": "Classic wetland loop — birds and gators from the boardwalk only.",
+        "tags": [
+          "wow",
+          "water"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Royal Palm",
+        "qa_card": {
+          "question": "What did you notice at the Anhinga boardwalk?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "anhinga-boardwalk",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Anhinga boardwalk"
+      },
+      {
+        "id": "np_wetland",
+        "label": "Wetland views",
+        "emoji": "🦩",
+        "one_liner": "Shallow water world from a safe path.",
+        "tags": [
+          "water",
+          "outdoor"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Boardwalk",
+        "qa_card": {
+          "question": "What did you notice at the Wetland views?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-wetland",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Wetland views"
+      },
+      {
+        "id": "np_boardwalk",
+        "label": "Boardwalk path",
+        "emoji": "🪵",
+        "one_liner": "Stay on the raised path the whole way.",
+        "tags": [
+          "walk"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Royal Palm",
+        "qa_card": {
+          "question": "What did you notice at the Boardwalk path?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-boardwalk",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Boardwalk path"
+      },
+      {
+        "id": "np_visitor_center",
+        "label": "Visitor center",
+        "emoji": "🏛️",
+        "one_liner": "Maps, restrooms, bug tips.",
+        "tags": [
+          "rest"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Entrance / Royal Palm",
+        "qa_card": {
+          "question": "What did you notice at the Visitor center?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-visitor-center",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Visitor center"
+      },
+      {
+        "id": "np_trailhead_sign",
+        "label": "Trail sign",
+        "emoji": "🥾",
+        "one_liner": "Read the short loop description.",
+        "tags": [
+          "read"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Royal Palm",
+        "qa_card": {
+          "question": "What did you notice at the Trail sign?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-trailhead-sign",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Trail sign"
+      },
+      {
+        "id": "np_junior_ranger",
+        "label": "Junior Ranger desk",
+        "emoji": "🎖️",
+        "one_liner": "Ask at a visitor center.",
+        "tags": [
+          "hands"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "VC",
+        "qa_card": {
+          "question": "What did you notice at the Junior Ranger desk?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-junior-ranger",
+        "presence": "high",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Junior Ranger desk"
+      },
+      {
+        "id": "np_scenic_overlook",
+        "label": "Marsh overlook",
+        "emoji": "🌄",
+        "one_liner": "Wide wet prairie view if available on your route.",
+        "tags": [
+          "wow"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Road / trail",
+        "qa_card": {
+          "question": "What did you notice at the Marsh overlook?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-scenic-overlook",
+        "presence": "high",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Marsh overlook"
+      },
+      {
+        "id": "np_wildlife_watch",
+        "label": "Wildlife (from distance)",
+        "emoji": "🐊",
+        "one_liner": "Alligators and wading birds — never approach or feed.",
+        "tags": [
+          "wow"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Boardwalk",
+        "qa_card": {
+          "question": "What did you notice at the Wildlife (from distance)?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "anhinga-boardwalk",
+        "presence": "high",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Wildlife (from distance)"
+      },
+      {
+        "id": "np_river",
+        "label": "Slough water",
+        "emoji": "🏞️",
+        "one_liner": "Slow water under the boardwalk.",
+        "tags": [
+          "water"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Boardwalk",
+        "qa_card": {
+          "question": "What did you notice at the Slough water?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-river",
+        "presence": "high",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Slough water"
+      }
+    ],
+    "route_90m": [
+      "np_visitor_center",
+      "anhinga_boardwalk",
+      "np_wetland"
+    ]
+  },
+  {
+    "slug": "sequoia",
+    "name": "Sequoia National Park",
+    "city": "Three Rivers",
+    "region": "CA",
+    "state": "CA",
+    "lat": 36.4864,
+    "lng": -118.5658,
+    "official_url": "https://www.nps.gov/seki/",
+    "emoji": "🌲",
+    "tagline": "Giant Forest short loops — enormous trees without a wilderness epic.",
+    "blurb": "Giant Forest day — sequoia trunks and short paved paths.",
+    "slice_name": "Giant Forest",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Entrance pass; Sequoia & Kings Canyon are paired parks — this kit is Giant Forest.",
+      "transit_note": "Winding mountain roads; winter tire/chain rules possible.",
+      "energy_note": "Altitude + hills; short paved loops are the kid win.",
+      "best_start": "Giant Forest Museum area → big tree loop → one more grove stop",
+      "slice_name": "Giant Forest",
+      "season_note": "Snow can close roads; summer is easiest for first visits."
+    },
+    "items": [
+      {
+        "id": "sequoia_general_sherman",
+        "label": "Giant sequoia grove",
+        "emoji": "🌲",
+        "one_liner": "Enormous trunks — hug with your eyes.",
+        "tags": [
+          "wow"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Giant Forest",
+        "qa_card": {
+          "question": "What did you notice at the Giant sequoia grove?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "sequoia-general-sherman",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Giant sequoia grove"
+      },
+      {
+        "id": "np_giant_tree",
+        "label": "Record-size tree stop",
+        "emoji": "🌳",
+        "one_liner": "Stand next to a trunk wider than a car.",
+        "tags": [
+          "wow"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Giant Forest",
+        "qa_card": {
+          "question": "What did you notice at the Record-size tree stop?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-giant-tree",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Record-size tree stop"
+      },
+      {
+        "id": "np_visitor_center",
+        "label": "Giant Forest Museum / VC",
+        "emoji": "🏛️",
+        "one_liner": "Maps, restrooms, tree science exhibits.",
+        "tags": [
+          "rest"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Giant Forest",
+        "qa_card": {
+          "question": "What did you notice at the Giant Forest Museum / VC?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-visitor-center",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Giant Forest Museum / VC"
+      },
+      {
+        "id": "np_trailhead_sign",
+        "label": "Grove trail sign",
+        "emoji": "🥾",
+        "one_liner": "Pick a short paved loop.",
+        "tags": [
+          "read"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Giant Forest",
+        "qa_card": {
+          "question": "What did you notice at the Grove trail sign?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-trailhead-sign",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Grove trail sign"
+      },
+      {
+        "id": "np_boardwalk",
+        "label": "Paved grove path",
+        "emoji": "🪵",
+        "one_liner": "Easy surface among giants.",
+        "tags": [
+          "walk"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Giant Forest",
+        "qa_card": {
+          "question": "What did you notice at the Paved grove path?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-boardwalk",
+        "presence": "high",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Paved grove path"
+      },
+      {
+        "id": "np_scenic_overlook",
+        "label": "Sierra view",
+        "emoji": "🌄",
+        "one_liner": "Mountain pullout if on your drive.",
+        "tags": [
+          "wow"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Road",
+        "qa_card": {
+          "question": "What did you notice at the Sierra view?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-scenic-overlook",
+        "presence": "high",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Sierra view"
+      },
+      {
+        "id": "np_junior_ranger",
+        "label": "Junior Ranger desk",
+        "emoji": "🎖️",
+        "one_liner": "Ask at a visitor center.",
+        "tags": [
+          "hands"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "VC",
+        "qa_card": {
+          "question": "What did you notice at the Junior Ranger desk?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-junior-ranger",
+        "presence": "high",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Junior Ranger desk"
+      },
+      {
+        "id": "np_meadow",
+        "label": "Forest meadow edge",
+        "emoji": "🌾",
+        "one_liner": "Open light between big trees.",
+        "tags": [
+          "outdoor"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Grove",
+        "qa_card": {
+          "question": "What did you notice at the Forest meadow edge?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-meadow",
+        "presence": "high",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Forest meadow edge"
+      },
+      {
+        "id": "np_river",
+        "label": "Mountain creek",
+        "emoji": "🏞️",
+        "one_liner": "Cold water nearby on some loops — stay back.",
+        "tags": [
+          "water"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Creek",
+        "qa_card": {
+          "question": "What did you notice at the Mountain creek?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-river",
+        "presence": "medium",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Mountain creek"
+      }
+    ],
+    "route_90m": [
+      "np_visitor_center",
+      "sequoia_general_sherman",
+      "np_giant_tree"
+    ]
+  },
+  {
+    "slug": "cuyahoga-valley",
+    "name": "Cuyahoga Valley National Park",
+    "city": "Peninsula",
+    "region": "OH",
+    "state": "OH",
+    "lat": 41.2808,
+    "lng": -81.5678,
+    "official_url": "https://www.nps.gov/cuva/",
+    "emoji": "🚲",
+    "tagline": "Near-city towpath day — flat canal path and easy nature stops.",
+    "blurb": "Midwest national park day — towpath miles without a flight out west.",
+    "slice_name": "Towpath · Peninsula area",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Generally free entry; some sites may have separate fees.",
+      "transit_note": "Between Cleveland and Akron; Peninsula is a classic hub.",
+      "energy_note": "Flat towpath is stroller- and little-kid friendly.",
+      "best_start": "Peninsula / visitor info → towpath stretch → waterfall or boardwalk if nearby",
+      "slice_name": "Towpath · Peninsula area",
+      "season_note": "Year-round; muddy after rain; beautiful fall color."
+    },
+    "items": [
+      {
+        "id": "cuyahoga_towpath",
+        "label": "Towpath trail",
+        "emoji": "🚲",
+        "one_liner": "Flat multi-use path along the old canal.",
+        "tags": [
+          "walk",
+          "outdoor"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Towpath",
+        "qa_card": {
+          "question": "What did you notice at the Towpath trail?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "cuyahoga-towpath",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Towpath trail"
+      },
+      {
+        "id": "np_visitor_center",
+        "label": "Visitor center / info",
+        "emoji": "🏛️",
+        "one_liner": "Maps and restrooms near main hubs.",
+        "tags": [
+          "rest"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Peninsula area",
+        "qa_card": {
+          "question": "What did you notice at the Visitor center / info?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-visitor-center",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Visitor center / info"
+      },
+      {
+        "id": "np_river",
+        "label": "Cuyahoga River",
+        "emoji": "🏞️",
+        "one_liner": "River beside the path — stay on the bank.",
+        "tags": [
+          "water"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Towpath",
+        "qa_card": {
+          "question": "What did you notice at the Cuyahoga River?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-river",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Cuyahoga River"
+      },
+      {
+        "id": "np_boardwalk",
+        "label": "Boardwalk or firm path",
+        "emoji": "🪵",
+        "one_liner": "Easy surface for little legs.",
+        "tags": [
+          "walk"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Trails",
+        "qa_card": {
+          "question": "What did you notice at the Boardwalk or firm path?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-boardwalk",
+        "presence": "high",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Boardwalk or firm path"
+      },
+      {
+        "id": "np_waterfall",
+        "label": "Waterfall stop (if on route)",
+        "emoji": "💦",
+        "one_liner": "Short side stop when open and easy.",
+        "tags": [
+          "water",
+          "wow"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Area trails",
+        "qa_card": {
+          "question": "What did you notice at the Waterfall stop (if on route)?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-waterfall",
+        "presence": "high",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Waterfall stop (if on route)"
+      },
+      {
+        "id": "np_trailhead_sign",
+        "label": "Trailhead sign",
+        "emoji": "🥾",
+        "one_liner": "Pick a short out-and-back.",
+        "tags": [
+          "read"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Trails",
+        "qa_card": {
+          "question": "What did you notice at the Trailhead sign?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-trailhead-sign",
+        "presence": "verified",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Trailhead sign"
+      },
+      {
+        "id": "np_scenic_overlook",
+        "label": "Valley view",
+        "emoji": "🌄",
+        "one_liner": "A bridge or hill view of the valley.",
+        "tags": [
+          "wow"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Towpath area",
+        "qa_card": {
+          "question": "What did you notice at the Valley view?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-scenic-overlook",
+        "presence": "high",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Valley view"
+      },
+      {
+        "id": "np_junior_ranger",
+        "label": "Junior Ranger desk",
+        "emoji": "🎖️",
+        "one_liner": "Ask at a visitor center when staffed.",
+        "tags": [
+          "hands"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "VC",
+        "qa_card": {
+          "question": "What did you notice at the Junior Ranger desk?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-junior-ranger",
+        "presence": "high",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Junior Ranger desk"
+      },
+      {
+        "id": "np_meadow",
+        "label": "Canal-side open space",
+        "emoji": "🌾",
+        "one_liner": "Picnic eyes and wide sky.",
+        "tags": [
+          "rest"
+        ],
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "9+"
+        ],
+        "zone": "Towpath",
+        "qa_card": {
+          "question": "What did you notice at the Canal-side open space?",
+          "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+        },
+        "catalog_id": "np-meadow",
+        "presence": "high",
+        "presence_checked": "2026-08-08",
+        "presence_source": "nps_official_research",
+        "display_label": "Canal-side open space"
+      }
+    ],
+    "route_90m": [
+      "np_visitor_center",
+      "cuyahoga_towpath",
+      "np_river"
+    ]
+  }
+]

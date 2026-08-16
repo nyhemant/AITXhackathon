@@ -1,0 +1,102 @@
+[
+  {
+    "slug": "american-samoa",
+    "score": 40,
+    "url": "https://www.nps.gov/npsa/planyourvisit/upload/Area_Map.pdf"
+  },
+  {
+    "slug": "big-bend",
+    "score": 10,
+    "url": "gov/bibe/planyourvisit/upload/2023-Wild-and-Scenic-Rivers-Brochure.pdf"
+  },
+  {
+    "slug": "black-canyon-gunnison",
+    "score": 100,
+    "url": "ps.gov/blca/planyourvisit/upload/Black_Canyon_unigrid_2023_508_web.pdf"
+  },
+  {
+    "slug": "canyonlands",
+    "score": 10,
+    "url": "/cany/planyourvisit/upload/IslandRoadsandTrailsUpdated24-508forweb.pdf"
+  },
+  {
+    "slug": "channel-islands",
+    "score": 40,
+    "url": "ourvisit/upload/Santa-Rosa-Hiking-Map-and-Guide-October-2023v2-ADA.pdf"
+  },
+  {
+    "slug": "death-valley",
+    "score": 10,
+    "url": "ttps://www.nps.gov/deva/planyourvisit/upload/Routes-from-Las-Vegas.pdf"
+  },
+  {
+    "slug": "denali",
+    "score": 40,
+    "url": "ttps://www.nps.gov/dena/planyourvisit/upload/trail-map-letter-size.pdf"
+  },
+  {
+    "slug": "gates-of-arctic",
+    "score": 95,
+    "url": "https://www.nps.gov/carto/hfc/carto/media/gaarmap1.pdf"
+  },
+  {
+    "slug": "glacier-bay",
+    "score": 40,
+    "url": "urvisit/upload/GLBA-Compendium-Bartlett-Cove-Docking-Map-2024-508c.pdf"
+  },
+  {
+    "slug": "katmai",
+    "score": 40,
+    "url": "planyourvisit/upload/Geographic_Harbor_Special_Designated_Area_Map.pdf"
+  },
+  {
+    "slug": "kings-canyon",
+    "score": 100,
+    "url": "/www.nps.gov/seki/planyourvisit/upload/20210826-Unigrid-French-508.pdf"
+  },
+  {
+    "slug": "mount-rainier",
+    "score": 40,
+    "url": "anyourvisit/upload/Ohanapecosh-Area-Trails-2026-closures-w-Map_508.pdf"
+  },
+  {
+    "slug": "north-cascades",
+    "score": 10,
+    "url": "v/noca/planyourvisit/upload/Ross_Lake_Trip_Planner_for_Website_508.pdf"
+  },
+  {
+    "slug": "pinnacles",
+    "score": 40,
+    "url": "ps://www.nps.gov/pinn/planyourvisit/upload/2019-map-update-DRAFT-2.pdf"
+  },
+  {
+    "slug": "redwood",
+    "score": 10,
+    "url": "://www.nps.gov/redw/planyourvisit/upload/HorseTrails_SB_2021-508-2.pdf"
+  },
+  {
+    "slug": "rocky-mountain",
+    "score": 10,
+    "url": "gs-Peak-Keyhole-Route-Site-Bulletin-print_PDF-Remediated-July-2025.pdf"
+  },
+  {
+    "slug": "sequoia",
+    "score": 100,
+    "url": "/www.nps.gov/seki/planyourvisit/upload/20210826-Unigrid-French-508.pdf"
+  },
+  {
+    "slug": "shenandoah",
+    "score": 10,
+    "url": "https://www.nps.gov/shen/planyourvisit/upload/Bearfence_RoadTrail.pdf"
+  },
+  {
+    "slug": "white-sands",
+    "score": 100,
+    "url": "https://www.nps.gov/whsa/planyourvisit/upload/WHSA_Unigrid_2022.pdf"
+  },
+  {
+    "slug": "wrangell-st-elias",
+    "score": 100,
+    "url": "ps.gov/wrst/learn/photosmultimedia/upload/WRST_Unigrid_English-508.pdf"
+  }
+]

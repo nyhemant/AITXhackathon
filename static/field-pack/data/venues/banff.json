@@ -1,0 +1,375 @@
+{
+  "slug": "banff",
+  "name": "Banff National Park",
+  "type": "national_park",
+  "city": "Banff",
+  "region": "AB",
+  "country": "CA",
+  "lat": 51.4968,
+  "lng": -115.9281,
+  "official_url": "https://parks.canada.ca/pn-np/ab/banff",
+  "last_verified": "2026-08-09",
+  "verified_by": "research",
+  "status": "verified",
+  "tagline": "Banff — Lake Louise shoreline and townsite views; not the whole Rockies.",
+  "practical": {
+    "typical_duration": "half day",
+    "ticket_note": "Parks Canada discovery pass or day fee; parking fills early at Louise.",
+    "transit_note": "Banff town + shuttle options to Lake Louise in peak season.",
+    "energy_note": "Altitude mild; cold water; crowds summer/fall.",
+    "best_start": "Lake Louise shoreline stroll → one viewpoint → town if energy",
+    "slice_name": "Lake Louise shore",
+    "season_note": "Peak July–Sept; winter icewalks different trip."
+  },
+  "items": [
+    {
+      "id": "lake_louise_shore",
+      "label": "Lake Louise shoreline",
+      "emoji": "🏞️",
+      "one_liner": "Turquoise glacial lake + peaks — the postcard stop.",
+      "tags": [
+        "wow",
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Lake Louise",
+      "qa_card": {
+        "question": "What did you notice at the Lake Louise shoreline?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-lake-louise",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "official_park_research",
+      "display_label": "Lake Louise shoreline"
+    },
+    {
+      "id": "louise_path_sign",
+      "label": "Shore path distance sign",
+      "emoji": "🥾",
+      "one_liner": "Check how far before little legs tire.",
+      "tags": [
+        "read"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Lake Louise",
+      "qa_card": {
+        "question": "What did you notice at the Shore path distance sign?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-trailhead-sign",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "official_park_research",
+      "display_label": "Shore path distance sign"
+    },
+    {
+      "id": "banff_vc",
+      "label": "Lake Louise / Banff visitor centre",
+      "emoji": "🏛️",
+      "one_liner": "Maps, restrooms, shuttle questions.",
+      "tags": [
+        "rest"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Entrance",
+      "qa_card": {
+        "question": "What did you notice at the Lake Louise / Banff visitor centre?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-visitor-center",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "official_park_research",
+      "display_label": "Lake Louise / Banff visitor centre"
+    },
+    {
+      "id": "valley_overlook",
+      "label": "Valley or lakeshore overlook",
+      "emoji": "🌄",
+      "one_liner": "One big view — not every pullout.",
+      "tags": [
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Overlook",
+      "qa_card": {
+        "question": "What did you notice at the Valley or lakeshore overlook?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-scenic-overlook",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "official_park_research",
+      "display_label": "Valley or lakeshore overlook"
+    },
+    {
+      "id": "elk_watch",
+      "label": "Elk (from a safe distance)",
+      "emoji": "🦌",
+      "one_liner": "Often near meadows/roads — never approach or feed.",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Roads / meadows",
+      "qa_card": {
+        "question": "What did you notice at the Elk (from a safe distance)?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "elk",
+      "presence": "high",
+      "presence_checked": "2026-08-09",
+      "presence_source": "official_park_research",
+      "display_label": "Elk (from a safe distance)"
+    },
+    {
+      "id": "meadow_break",
+      "label": "Lake Louise shore open meadow",
+      "emoji": "🌾",
+      "one_liner": "Wide sky break.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Open",
+      "qa_card": {
+        "question": "What did you notice at the Lake Louise shore open meadow?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-meadow",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "official_park_research",
+      "display_label": "Lake Louise shore open meadow"
+    },
+    {
+      "id": "evergreen_edge",
+      "label": "Evergreen forest edge",
+      "emoji": "🌳",
+      "one_liner": "Tall fir and spruce along the shore path.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Forest",
+      "qa_card": {
+        "question": "What did you notice at the Evergreen forest edge?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-giant-tree",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "official_park_research",
+      "display_label": "Evergreen forest edge"
+    },
+    {
+      "id": "park_talk",
+      "label": "Parks Canada talk (if offered)",
+      "emoji": "🗣️",
+      "one_liner": "Check the day’s board at the centre.",
+      "tags": [
+        "hands"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "VC",
+      "qa_card": {
+        "question": "What did you notice at the Parks Canada talk (if offered)?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-ranger-program",
+      "presence": "medium",
+      "presence_checked": "2026-08-09",
+      "presence_source": "official_park_research",
+      "display_label": "Parks Canada talk (if offered)"
+    }
+  ],
+  "content_mode": "curated",
+  "media": {
+    "visitor_map_url": "/field-pack/media/maps/banff.jpg",
+    "visitor_map_page": "https://parks.canada.ca/pn-np/ab/banff",
+    "visitor_map_kind": "image",
+    "map_attribution": "Map: Wikimedia Commons (see file page)",
+    "hero_illustration": "/field-pack/photos/np-hero-banff.jpg",
+    "print_map": "/field-pack/media/maps/banff.jpg",
+    "visitor_map_full": "https://commons.wikimedia.org/wiki/Special:FilePath/Banffmapv2.jpg"
+  },
+  "parent_script": [
+    "Bathroom first",
+    "Water & weather check",
+    "One big view",
+    "Leave while happy"
+  ],
+  "route_90m": [
+    "lake_louise_shore",
+    "louise_path_sign",
+    "banff_vc"
+  ],
+  "research_notes": "NP intl Phase 1 2026-08-09 · slice-focused kit · slice labels + shared animal cards 2026-08-09 · label scrub 2026-08-09",
+  "list_confidence": "partial",
+  "do_not_list": [],
+  "presence_sources": [
+    "https://parks.canada.ca/pn-np/ab/banff"
+  ],
+  "last_presence_audit": "2026-08-09",
+  "bonus_hunt": {
+    "tagline": "Banff National Park bonus · second look on the trail",
+    "find_ids": [
+      "elk_watch",
+      "valley_overlook",
+      "evergreen_edge",
+      "meadow_break",
+      "lake_louise_shore",
+      "banff_vc",
+      "louise_path_sign"
+    ],
+    "challenges": [
+      {
+        "id": "banff_elk_watch_watch",
+        "text": "Roads / meadows: take 15 seconds on the Elk (from a safe distance) — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "banff_valley_overlook_watch",
+        "text": "Overlook: take 15 seconds on the Valley or lakeshore overlook — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "banff_evergreen_edge_watch",
+        "text": "Forest: take 15 seconds on the Evergreen forest edge — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "banff_meadow_break_watch",
+        "text": "Open: take 15 seconds on the Lake Louise shore open meadow — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "banff_lake_louise_shor_watch",
+        "text": "Lake Louise: take 15 seconds on the Lake Louise shoreline — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_still",
+        "text": "Quiet 20 seconds on the trail — bird, wind, water, or people: what wins?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_far_near",
+        "text": "Name something far first — then something by your feet",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_camo",
+        "text": "Best natural camouflage (rock, bark, shadow) you can spot",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_map",
+        "text": "Find a map or zone name you haven’t noticed — point it out",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_tiny_huge",
+        "text": "Something tiny next to something huge in this area",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find a park map or zone sign — name one animal that lives that way",
+    "easter_egg_little": "★ Easter egg: pick a favorite bench — sit 60 seconds and name three sounds",
+    "researched": "2026-08-09",
+    "status": "solid",
+    "sources": [
+      "https://parks.canada.ca/pn-np/ab/banff"
+    ]
+  }
+}

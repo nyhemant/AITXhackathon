@@ -751,6 +751,7 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertEqual(SECURITY_HEADERS["X-Content-Type-Options"], "nosniff")
         self.assertEqual(SECURITY_HEADERS["X-Frame-Options"], "DENY")
         self.assertIn("frame-ancestors 'none'", SECURITY_HEADERS["Content-Security-Policy"])
+        self.assertIn("frame-src 'self' https://www.youtube-nocookie.com https://www.youtube.com", SECURITY_HEADERS["Content-Security-Policy"])
         self.assertIn("object-src 'none'", SECURITY_HEADERS["Content-Security-Policy"])
         self.assertIn("form-action 'self'", SECURITY_HEADERS["Content-Security-Policy"])
         self.assertIn("camera=()", SECURITY_HEADERS["Permissions-Policy"])

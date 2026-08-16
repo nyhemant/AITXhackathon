@@ -1,0 +1,806 @@
+[
+  {
+    "slug": "white-sands",
+    "score": 120,
+    "reasons": [
+      "pdf",
+      "unigrid",
+      "dark_header"
+    ],
+    "size": [
+      2043,
+      2200
+    ],
+    "src": "https://www.nps.gov/whsa/planyourvisit/upload/WHSA_Unigrid_2022.pdf",
+    "kind": "pdf",
+    "bytes": 813610
+  },
+  {
+    "slug": "zion",
+    "score": 120,
+    "reasons": [
+      "pdf",
+      "unigrid",
+      "dark_header"
+    ],
+    "size": [
+      1556,
+      2200
+    ],
+    "src": "https://www.nps.gov/zion/planyourvisit/upload/ZionUnigrid.pdf",
+    "kind": "pdf",
+    "bytes": 992615
+  },
+  {
+    "slug": "black-canyon-gunnison",
+    "score": 90,
+    "reasons": [
+      "pdf",
+      "unigrid"
+    ],
+    "size": [
+      2200,
+      1556
+    ],
+    "src": "https://www.nps.gov/blca/planyourvisit/upload/Black_Canyon_unigrid_2023_508_web.pdf",
+    "kind": "pdf",
+    "bytes": 809813
+  },
+  {
+    "slug": "capitol-reef",
+    "score": 90,
+    "reasons": [
+      "pdf",
+      "unigrid"
+    ],
+    "size": [
+      1556,
+      2200
+    ],
+    "src": "https://www.nps.gov/care/planyourvisit/upload/CARE_Unigrid-map-2021.pdf",
+    "kind": "pdf",
+    "bytes": 911325
+  },
+  {
+    "slug": "kings-canyon",
+    "score": 90,
+    "reasons": [
+      "pdf",
+      "unigrid"
+    ],
+    "size": [
+      1808,
+      2200
+    ],
+    "src": "https://npmaps.com/wp-content/uploads/kings-canyon-sequoia-national-park-map.jpg",
+    "kind": "pdf",
+    "bytes": 758939
+  },
+  {
+    "slug": "sequoia",
+    "score": 90,
+    "reasons": [
+      "pdf",
+      "unigrid"
+    ],
+    "size": [
+      1869,
+      2200
+    ],
+    "src": "https://npmaps.com/wp-content/uploads/sequoia-kings-canyon-national-park-map.jpg",
+    "kind": "pdf",
+    "bytes": 815725
+  },
+  {
+    "slug": "wrangell-st-elias",
+    "score": 90,
+    "reasons": [
+      "pdf",
+      "unigrid"
+    ],
+    "size": [
+      1556,
+      2200
+    ],
+    "src": "https://www.nps.gov/wrst/learn/photosmultimedia/upload/WRST_Unigrid_English-508.pdf",
+    "kind": "pdf",
+    "bytes": 978317
+  },
+  {
+    "slug": "yellowstone",
+    "score": 90,
+    "reasons": [
+      "pdf",
+      "unigrid"
+    ],
+    "size": [
+      1783,
+      2200
+    ],
+    "src": "https://www.nps.gov/yell/planyourvisit/upload/2025_Yellowstone-Unigrid_Web-508.pdf",
+    "kind": "pdf",
+    "bytes": 1111538
+  },
+  {
+    "slug": "american-samoa",
+    "score": 50,
+    "reasons": [
+      "pdf"
+    ],
+    "size": [
+      2200,
+      983
+    ],
+    "src": "https://npmaps.com/wp-content/uploads/american-samoa-national-park-map.jpg",
+    "kind": "pdf",
+    "bytes": 341232
+  },
+  {
+    "slug": "gates-of-arctic",
+    "score": 50,
+    "reasons": [
+      "pdf"
+    ],
+    "size": [
+      1686,
+      1321
+    ],
+    "src": "https://www.nps.gov/carto/hfc/carto/media/gaarmap1.pdf",
+    "kind": "pdf",
+    "bytes": 541208
+  },
+  {
+    "slug": "grand-canyon",
+    "score": 50,
+    "reasons": [
+      "pdf"
+    ],
+    "size": [
+      2200,
+      993
+    ],
+    "src": "https://www.nps.gov/grca/planyourvisit/upload/GRCAmap5s.jpg",
+    "kind": "pdf",
+    "bytes": 674439
+  },
+  {
+    "slug": "great-smoky-mountains",
+    "score": 50,
+    "reasons": [
+      "pdf"
+    ],
+    "size": [
+      2200,
+      1211
+    ],
+    "src": "https://npmaps.com/wp-content/uploads/great-smoky-mountains-park-map.jpg",
+    "kind": "pdf",
+    "bytes": 751201
+  },
+  {
+    "slug": "north-cascades",
+    "score": 50,
+    "reasons": [
+      "pdf"
+    ],
+    "size": [
+      2127,
+      2200
+    ],
+    "src": "https://npmaps.com/wp-content/uploads/north-cascades-national-park-map.jpg",
+    "kind": "pdf",
+    "bytes": 1247875
+  },
+  {
+    "slug": "pinnacles",
+    "score": 50,
+    "reasons": [
+      "pdf"
+    ],
+    "size": [
+      2200,
+      1390
+    ],
+    "src": "https://npmaps.com/wp-content/uploads/pinnacles-national-park-map.jpg",
+    "kind": "pdf",
+    "bytes": 667522
+  },
+  {
+    "slug": "death-valley",
+    "score": 30,
+    "reasons": [
+      "dark_header"
+    ],
+    "size": [
+      1363,
+      2200
+    ],
+    "src": "https://www.nps.gov/deva/planyourvisit/maps.htm",
+    "kind": "",
+    "bytes": 751057
+  },
+  {
+    "slug": "lake-clark",
+    "score": 30,
+    "reasons": [
+      "dark_header"
+    ],
+    "size": [
+      2000,
+      1331
+    ],
+    "src": "https://www.nps.gov/lacl/planyourvisit/maps.htm",
+    "kind": "",
+    "bytes": 528012
+  },
+  {
+    "slug": "mesa-verde",
+    "score": 30,
+    "reasons": [
+      "dark_header"
+    ],
+    "size": [
+      1471,
+      2200
+    ],
+    "src": "https://www.nps.gov/meve/planyourvisit/maps.htm",
+    "kind": "",
+    "bytes": 527797
+  },
+  {
+    "slug": "olympic",
+    "score": 30,
+    "reasons": [
+      "dark_header"
+    ],
+    "size": [
+      2200,
+      1563
+    ],
+    "src": "https://npmaps.com/wp-content/uploads/olympic-national-park-map.jpg",
+    "kind": "",
+    "bytes": 840705
+  },
+  {
+    "slug": "voyageurs",
+    "score": 30,
+    "reasons": [
+      "dark_header"
+    ],
+    "size": [
+      2000,
+      1501
+    ],
+    "src": "https://www.nps.gov/voya/planyourvisit/maps.htm",
+    "kind": "",
+    "bytes": 175068
+  },
+  {
+    "slug": "acadia",
+    "score": 0,
+    "reasons": [],
+    "size": [
+      2200,
+      1870
+    ],
+    "src": "https://npmaps.com/wp-content/uploads/acadia-national-park-map.jpg",
+    "kind": "",
+    "bytes": 581083
+  },
+  {
+    "slug": "arches",
+    "score": 0,
+    "reasons": [],
+    "size": [
+      1812,
+      2200
+    ],
+    "src": "https://www.nps.gov/arch/planyourvisit/maps.htm",
+    "kind": "",
+    "bytes": 723911
+  },
+  {
+    "slug": "badlands",
+    "score": 0,
+    "reasons": [],
+    "size": [
+      2200,
+      1230
+    ],
+    "src": "https://npmaps.com/wp-content/uploads/badlands-national-park-map.jpg",
+    "kind": "",
+    "bytes": 540275
+  },
+  {
+    "slug": "big-bend",
+    "score": 0,
+    "reasons": [],
+    "size": [
+      888,
+      1125
+    ],
+    "src": "https://www.nps.gov/bibe/planyourvisit/maps.htm",
+    "kind": "",
+    "bytes": 236280
+  },
+  {
+    "slug": "biscayne",
+    "score": 0,
+    "reasons": [],
+    "size": [
+      1937,
+      2200
+    ],
+    "src": "https://www.nps.gov/bisc/planyourvisit/maps.htm",
+    "kind": "",
+    "bytes": 532993
+  },
+  {
+    "slug": "bryce-canyon",
+    "score": 0,
+    "reasons": [],
+    "size": [
+      847,
+      2200
+    ],
+    "src": "https://npmaps.com/wp-content/uploads/bryce-canyon-park-map.jpg",
+    "kind": "",
+    "bytes": 444657
+  },
+  {
+    "slug": "canyonlands",
+    "score": 0,
+    "reasons": [],
+    "size": [
+      1633,
+      2200
+    ],
+    "src": "https://npmaps.com/wp-content/uploads/canyonlands-park-map.jpg",
+    "kind": "",
+    "bytes": 810939
+  },
+  {
+    "slug": "carlsbad-caverns",
+    "score": 0,
+    "reasons": [],
+    "size": [
+      1061,
+      1022
+    ],
+    "src": "https://www.nps.gov/cave/planyourvisit/maps.htm",
+    "kind": "",
+    "bytes": 140771
+  },
+  {
+    "slug": "channel-islands",
+    "score": 0,
+    "reasons": [],
+    "size": [
+      1772,
+      1508
+    ],
+    "src": "https://npmaps.com/wp-content/uploads/channel-islands-map.jpg",
+    "kind": "",
+    "bytes": 335298
+  },
+  {
+    "slug": "congaree",
+    "score": 0,
+    "reasons": [],
+    "size": [
+      2200,
+      996
+    ],
+    "src": "https://npmaps.com/wp-content/uploads/congaree-national-park-map.jpg",
+    "kind": "",
+    "bytes": 407568
+  },
+  {
+    "slug": "crater-lake",
+    "score": 0,
+    "reasons": [],
+    "size": [
+      1645,
+      1916
+    ],
+    "src": "https://www.nps.gov/crla/planyourvisit/maps.htm",
+    "kind": "",
+    "bytes": 711481
+  },
+  {
+    "slug": "cuyahoga-valley",
+    "score": 0,
+    "reasons": [],
+    "size": [
+      946,
+      2200
+    ],
+    "src": "https://www.nps.gov/cuva/planyourvisit/images/CUVAParkMap.jpg?maxwidth=2000&autorotate=false",
+    "kind": "",
+    "bytes": 359576
+  },
+  {
+    "slug": "denali",
+    "score": 0,
+    "reasons": [],
+    "size": [
+      2000,
+      1253
+    ],
+    "src": "https://www.nps.gov/dena/planyourvisit/maps.htm",
+    "kind": "",
+    "bytes": 416167
+  },
+  {
+    "slug": "dry-tortugas",
+    "score": 0,
+    "reasons": [],
+    "size": [
+      2200,
+      2074
+    ],
+    "src": "https://www.nps.gov/drto/planyourvisit/maps.htm",
+    "kind": "",
+    "bytes": 606498
+  },
+  {
+    "slug": "everglades",
+    "score": 0,
+    "reasons": [],
+    "size": [
+      2200,
+      2023
+    ],
+    "src": "https://npmaps.com/wp-content/uploads/everglades-national-park-map.jpg",
+    "kind": "",
+    "bytes": 864416
+  },
+  {
+    "slug": "gateway-arch",
+    "score": 0,
+    "reasons": [],
+    "size": [
+      2200,
+      1852
+    ],
+    "src": "https://npmaps.com/wp-content/uploads/gateway-arch-national-park-map.jpg",
+    "kind": "",
+    "bytes": 511534
+  },
+  {
+    "slug": "glacier",
+    "score": 0,
+    "reasons": [],
+    "size": [
+      1976,
+      2200
+    ],
+    "src": "https://npmaps.com/wp-content/uploads/glacier-waterton-lakes-national-park-map.jpg",
+    "kind": "",
+    "bytes": 1268501
+  },
+  {
+    "slug": "glacier-bay",
+    "score": 0,
+    "reasons": [],
+    "size": [
+      2200,
+      1628
+    ],
+    "src": "https://www.nps.gov/glba/planyourvisit/maps.htm",
+    "kind": "",
+    "bytes": 737202
+  },
+  {
+    "slug": "grand-teton",
+    "score": 0,
+    "reasons": [],
+    "size": [
+      997,
+      2200
+    ],
+    "src": "https://www.nps.gov/grte/planyourvisit/maps.htm",
+    "kind": "",
+    "bytes": 603507
+  },
+  {
+    "slug": "great-basin",
+    "score": 0,
+    "reasons": [],
+    "size": [
+      2081,
+      2200
+    ],
+    "src": "https://www.nps.gov/grba/planyourvisit/maps.htm",
+    "kind": "",
+    "bytes": 750226
+  },
+  {
+    "slug": "great-sand-dunes",
+    "score": 0,
+    "reasons": [],
+    "size": [
+      1410,
+      1766
+    ],
+    "src": "https://www.nps.gov/grsa/planyourvisit/maps.htm",
+    "kind": "",
+    "bytes": 515475
+  },
+  {
+    "slug": "guadalupe-mountains",
+    "score": 0,
+    "reasons": [],
+    "size": [
+      1981,
+      1522
+    ],
+    "src": "https://www.nps.gov/gumo/planyourvisit/maps.htm",
+    "kind": "",
+    "bytes": 446254
+  },
+  {
+    "slug": "haleakala",
+    "score": 0,
+    "reasons": [],
+    "size": [
+      2200,
+      1163
+    ],
+    "src": "https://npmaps.com/wp-content/uploads/haleakala-map.jpg",
+    "kind": "",
+    "bytes": 386347
+  },
+  {
+    "slug": "hawaii-volcanoes",
+    "score": 0,
+    "reasons": [],
+    "size": [
+      2200,
+      1079
+    ],
+    "src": "https://www.nps.gov/havo/planyourvisit/maps.htm",
+    "kind": "",
+    "bytes": 492996
+  },
+  {
+    "slug": "hot-springs",
+    "score": 0,
+    "reasons": [],
+    "size": [
+      2200,
+      1137
+    ],
+    "src": "https://www.nps.gov/hosp/planyourvisit/maps.htm",
+    "kind": "",
+    "bytes": 479697
+  },
+  {
+    "slug": "indiana-dunes",
+    "score": 0,
+    "reasons": [],
+    "size": [
+      2200,
+      1212
+    ],
+    "src": "https://npmaps.com/wp-content/uploads/indiana-dunes-national-park-map.jpg",
+    "kind": "",
+    "bytes": 325859
+  },
+  {
+    "slug": "isle-royale",
+    "score": 0,
+    "reasons": [],
+    "size": [
+      2200,
+      1317
+    ],
+    "src": "https://npmaps.com/wp-content/uploads/isle-royale-national-park-map.jpg",
+    "kind": "",
+    "bytes": 365061
+  },
+  {
+    "slug": "joshua-tree",
+    "score": 0,
+    "reasons": [],
+    "size": [
+      1263,
+      1130
+    ],
+    "src": "https://www.nps.gov/jotr/planyourvisit/maps.htm",
+    "kind": "",
+    "bytes": 139747
+  },
+  {
+    "slug": "katmai",
+    "score": 0,
+    "reasons": [],
+    "size": [
+      2200,
+      2177
+    ],
+    "src": "https://www.nps.gov/katm/planyourvisit/maps.htm",
+    "kind": "",
+    "bytes": 840969
+  },
+  {
+    "slug": "kenai-fjords",
+    "score": 0,
+    "reasons": [],
+    "size": [
+      2200,
+      2023
+    ],
+    "src": "https://npmaps.com/wp-content/uploads/kenai-fjords-national-park-map.jpg",
+    "kind": "",
+    "bytes": 1122842
+  },
+  {
+    "slug": "kobuk-valley",
+    "score": 0,
+    "reasons": [],
+    "size": [
+      2200,
+      2029
+    ],
+    "src": "https://www.nps.gov/kova/planyourvisit/maps.htm",
+    "kind": "",
+    "bytes": 785695
+  },
+  {
+    "slug": "lassen-volcanic",
+    "score": 0,
+    "reasons": [],
+    "size": [
+      2200,
+      1133
+    ],
+    "src": "https://npmaps.com/wp-content/uploads/lassen-volcanic-national-park-map.jpg",
+    "kind": "",
+    "bytes": 535508
+  },
+  {
+    "slug": "mammoth-cave",
+    "score": 0,
+    "reasons": [],
+    "size": [
+      2200,
+      1200
+    ],
+    "src": "https://npmaps.com/wp-content/uploads/mammoth-cave-national-park-map.jpg",
+    "kind": "",
+    "bytes": 503393
+  },
+  {
+    "slug": "mount-rainier",
+    "score": 0,
+    "reasons": [],
+    "size": [
+      2200,
+      2056
+    ],
+    "src": "https://npmaps.com/wp-content/uploads/mount-rainier-national-park-map.jpg",
+    "kind": "",
+    "bytes": 1049169
+  },
+  {
+    "slug": "new-river-gorge",
+    "score": 0,
+    "reasons": [],
+    "size": [
+      2180,
+      2110
+    ],
+    "src": "https://npmaps.com/wp-content/uploads/new-river-gorge-scenic-drive-map.jpg",
+    "kind": "",
+    "bytes": 827418
+  },
+  {
+    "slug": "petrified-forest",
+    "score": 0,
+    "reasons": [],
+    "size": [
+      1619,
+      1987
+    ],
+    "src": "https://www.nps.gov/pefo/planyourvisit/maps.htm",
+    "kind": "",
+    "bytes": 585688
+  },
+  {
+    "slug": "redwood",
+    "score": 0,
+    "reasons": [],
+    "size": [
+      937,
+      2200
+    ],
+    "src": "https://npmaps.com/wp-content/uploads/redwood-national-park-map.jpg",
+    "kind": "",
+    "bytes": 266675
+  },
+  {
+    "slug": "rocky-mountain",
+    "score": 0,
+    "reasons": [],
+    "size": [
+      1586,
+      2200
+    ],
+    "src": "https://www.nps.gov/romo/planyourvisit/maps.htm",
+    "kind": "",
+    "bytes": 1037980
+  },
+  {
+    "slug": "saguaro",
+    "score": 0,
+    "reasons": [],
+    "size": [
+      1628,
+      995
+    ],
+    "src": "https://www.nps.gov/sagu/planyourvisit/maps.htm",
+    "kind": "",
+    "bytes": 255513
+  },
+  {
+    "slug": "shenandoah",
+    "score": 0,
+    "reasons": [],
+    "size": [
+      820,
+      2200
+    ],
+    "src": "https://npmaps.com/wp-content/uploads/shenandoah-national-park-map.jpg",
+    "kind": "",
+    "bytes": 423653
+  },
+  {
+    "slug": "theodore-roosevelt",
+    "score": 0,
+    "reasons": [],
+    "size": [
+      1736,
+      1179
+    ],
+    "src": "https://npmaps.com/wp-content/uploads/theodore-roosevelt-national-park-south-unit-map.jpg",
+    "kind": "",
+    "bytes": 446655
+  },
+  {
+    "slug": "virgin-islands",
+    "score": 0,
+    "reasons": [],
+    "size": [
+      781,
+      602
+    ],
+    "src": "https://www.nps.gov/viis/planyourvisit/maps.htm",
+    "kind": "",
+    "bytes": 138707
+  },
+  {
+    "slug": "wind-cave",
+    "score": 0,
+    "reasons": [],
+    "size": [
+      1150,
+      882
+    ],
+    "src": "https://www.nps.gov/wica/planyourvisit/maps.htm",
+    "kind": "",
+    "bytes": 191245
+  },
+  {
+    "slug": "yosemite",
+    "score": 0,
+    "reasons": [],
+    "size": [
+      2200,
+      1698
+    ],
+    "src": "https://npmaps.com/wp-content/uploads/yosemite-map.jpg",
+    "kind": "image",
+    "bytes": 923070
+  }
+]

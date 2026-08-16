@@ -1,0 +1,211 @@
+{
+  "id": "science-film-library",
+  "checked": "2026-08-15",
+  "note": "Pick-path ingredients for the science museum tab. Default tour is the current 10, including still-only Free Explore. Outdoor, toddler garden, and waterfall stay off the picker until an honest exhibit film is locked. NHM halls are not in this library.",
+  "omit": [
+    {
+      "cardId": "cm-outdoor",
+      "reason": "No picture-first outdoor-play exhibit film. Official Exploratorium Fog Bridge is art mist, not a kids-museum yard."
+    },
+    {
+      "cardId": "cm-toddler-garden",
+      "reason": "Only news and social clips; no exhibit-first film."
+    },
+    {
+      "cardId": "cm-waterfall",
+      "reason": "No official picture-first waterfall-play film."
+    }
+  ],
+  "cards": [
+    {
+      "cardId": "cm-woven",
+      "label": "Woven Wonders",
+      "challenge": "Why do people weave patterns? What can cloth tell us?",
+      "defaultTour": true,
+      "seq": 1,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=UuNNzG5Lg7s",
+        "title": "Climbing a giant net at a science museum",
+        "provider": "youtube",
+        "channel": "MrFunClips",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=UuNNzG5Lg7s",
+          "checked": "2026-08-15"
+        }
+      },
+      "cam": {},
+      "printAnswer": "Patterns can mean stories, families, or just play. Cloth shows what people had and what they cared about."
+    },
+    {
+      "cardId": "cm-imaginarium",
+      "label": "Imaginarium",
+      "challenge": "What is imagination for? Could you invent a new animal?",
+      "defaultTour": true,
+      "seq": 2,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=ndfT5uvFkmM",
+        "title": "A glowing sand table at the Exploratorium",
+        "provider": "youtube",
+        "channel": "Exploratorium",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=ndfT5uvFkmM",
+          "checked": "2026-08-15"
+        }
+      },
+      "cam": {},
+      "printAnswer": "Imagination lets us try ideas before they are real. Yes — mix parts and tell how your animal lives."
+    },
+    {
+      "cardId": "sci-hands-on",
+      "label": "Hands-on Lab",
+      "challenge": "Why do scientists do tests? What would you try?",
+      "defaultTour": true,
+      "seq": 3,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=5IbIjufI_cQ",
+        "title": "Hands-on floor at the Exploratorium",
+        "provider": "youtube",
+        "channel": "VentureFull",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=5IbIjufI_cQ",
+          "checked": "2026-08-15"
+        }
+      },
+      "cam": {},
+      "printAnswer": "A test is how we check a guess. Pick one question and change just one thing."
+    },
+    {
+      "cardId": "cm-makery",
+      "label": "Creative Makery",
+      "challenge": "Why do makers try, fail, and try again?",
+      "defaultTour": true,
+      "seq": 4,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=QuiZpfYgC3o",
+        "title": "Making in the Exploratorium Tinkering Studio",
+        "provider": "youtube",
+        "channel": "Exploratorium",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=QuiZpfYgC3o",
+          "checked": "2026-08-15"
+        }
+      },
+      "cam": {},
+      "printAnswer": "Most first tries do not work. Each fail shows what to change next."
+    },
+    {
+      "cardId": "cm-art-lab",
+      "label": "Art Lab",
+      "challenge": "Why do colors mix the way they do?",
+      "defaultTour": true,
+      "seq": 5,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=kURAFukvgSw",
+        "title": "Painting with soap film",
+        "provider": "youtube",
+        "channel": "Exploratorium Teacher Institute",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=kURAFukvgSw",
+          "checked": "2026-08-15"
+        }
+      },
+      "cam": {},
+      "printAnswer": "Paints mix by subtracting light; screens mix by adding light. Red and blue do not make the same thing both ways."
+    },
+    {
+      "cardId": "cm-free-explore",
+      "label": "Free Explore",
+      "challenge": "What makes you curious? What would you look up?",
+      "defaultTour": true,
+      "seq": 6,
+      "video": {},
+      "cam": {},
+      "printAnswer": "Curious is your brain asking why. Write the question and hunt for one true clue."
+    },
+    {
+      "cardId": "sci-shuttle",
+      "label": "Space Shuttle",
+      "challenge": "Why do rockets need such a big boost? Where does the crew sit?",
+      "defaultTour": true,
+      "seq": 7,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=7aKYeRSYLB0",
+        "title": "Space Shuttle Atlantis lifts off",
+        "provider": "youtube",
+        "channel": "NASA's Kennedy Space Center",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=7aKYeRSYLB0",
+          "checked": "2026-08-15"
+        }
+      },
+      "cam": {},
+      "printAnswer": "Leaving Earth takes a huge push against gravity. The crew sits in a small cabin at the top."
+    },
+    {
+      "cardId": "sci-astronaut",
+      "label": "Astronaut Life",
+      "challenge": "Why is food weird in space? What would you pack?",
+      "defaultTour": true,
+      "seq": 8,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=lQlYG8hOgAs",
+        "title": "Looking back at Earth from the cupola",
+        "provider": "youtube",
+        "channel": "NASA Johnson",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=lQlYG8hOgAs",
+          "checked": "2026-08-15"
+        }
+      },
+      "cam": {},
+      "printAnswer": "There is no down, so crumbs float. Pack food that sticks together and will not make a mess."
+    },
+    {
+      "cardId": "sci-planet",
+      "label": "Planet Hall",
+      "challenge": "Why do planets look different? Which would you visit, and why?",
+      "defaultTour": true,
+      "seq": 9,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=oFDeNcu3mnc",
+        "title": "Earth from the space station",
+        "provider": "youtube",
+        "channel": "NASA Johnson",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=oFDeNcu3mnc",
+          "checked": "2026-08-15"
+        }
+      },
+      "cam": {},
+      "printAnswer": "Each planet is a different mix of rock, gas, heat, and distance from the sun. Pick one and say what you would go see."
+    },
+    {
+      "cardId": "sci-rocket",
+      "label": "Rockets",
+      "challenge": "How does a rocket leave Earth? Why so tall?",
+      "defaultTour": true,
+      "seq": 10,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=aWCCNYJV3Zw",
+        "title": "Artemis I moon rocket liftoff",
+        "provider": "youtube",
+        "channel": "NASA's Kennedy Space Center",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=aWCCNYJV3Zw",
+          "checked": "2026-08-15"
+        }
+      },
+      "cam": {},
+      "printAnswer": "Hot gas blasts down so the rocket goes up. It is tall because it stacks fuel under the crew."
+    }
+  ]
+}

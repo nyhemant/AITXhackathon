@@ -1,0 +1,35 @@
+{
+  "banff": [
+    {
+      "title": "File:Banffmapv2.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/7/77/Banffmapv2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "w": 961,
+      "h": 1140,
+      "size": 1081791,
+      "mime": "image/jpeg"
+    }
+  ],
+  "jasper": [
+    {
+      "title": "File:Canadian Rocky Mountain parks map.svg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/0/01/Canadian_Rocky_Mountain_parks_map.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "w": 408,
+      "h": 424,
+      "size": 180632,
+      "mime": "image/svg+xml"
+    }
+  ],
+  "yoho": [],
+  "blue-mountains": [],
+  "fiordland": [],
+  "fuji-hakone-izu": [],
+  "iguazu-argentina": [],
+  "killarney": [],
+  "kruger": [],
+  "lake-district": [],
+  "nikko": [],
+  "plitvice-lakes": [],
+  "snowdonia": [],
+  "table-mountain": [],
+  "torres-del-paine": []
+}

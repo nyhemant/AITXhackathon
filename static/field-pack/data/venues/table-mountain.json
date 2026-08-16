@@ -1,0 +1,373 @@
+{
+  "slug": "table-mountain",
+  "name": "Table Mountain National Park",
+  "type": "national_park",
+  "city": "Cape Town",
+  "region": "Western Cape",
+  "country": "ZA",
+  "lat": -33.9628,
+  "lng": 18.4098,
+  "official_url": "https://www.sanparks.org/parks/table-mountain",
+  "last_verified": "2026-08-09",
+  "verified_by": "research",
+  "status": "verified",
+  "tagline": "Table Mountain — cableway top paths or Signal Hill/shore alternative if wind closes cable.",
+  "practical": {
+    "typical_duration": "half day",
+    "ticket_note": "Cableway tickets separate; park areas fee zones.",
+    "transit_note": "Cape Town; wind often stops cableway — have a backup.",
+    "energy_note": "Altitude/wind on top; sun strong.",
+    "best_start": "If cable open: upper paths + views; else coastal park stretch",
+    "slice_name": "Summit paths or shore backup",
+    "season_note": "Summer windy; check cable status morning-of."
+  },
+  "items": [
+    {
+      "id": "table_top",
+      "label": "Table Mountain flat-top view",
+      "emoji": "⛰️",
+      "one_liner": "Cableway upper paths when wind allows.",
+      "tags": [
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Summit",
+      "qa_card": {
+        "question": "What did you notice at the Table Mountain flat-top view?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-table-mountain",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "official_park_research",
+      "display_label": "Table Mountain flat-top view"
+    },
+    {
+      "id": "summit_board",
+      "label": "Summit boardwalk / path",
+      "emoji": "🪵",
+      "one_liner": "Stay on marked paths — cliffs.",
+      "tags": [
+        "walk"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Summit",
+      "qa_card": {
+        "question": "What did you notice at the Summit boardwalk / path?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-boardwalk",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "official_park_research",
+      "display_label": "Summit boardwalk / path"
+    },
+    {
+      "id": "ocean_view",
+      "label": "Atlantic / city overlook",
+      "emoji": "🌄",
+      "one_liner": "Cape Town and ocean spread below.",
+      "tags": [
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Summit",
+      "qa_card": {
+        "question": "What did you notice at the Atlantic / city overlook?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-scenic-overlook",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "official_park_research",
+      "display_label": "Atlantic / city overlook"
+    },
+    {
+      "id": "sign",
+      "label": "Cable / path status sign",
+      "emoji": "🥾",
+      "one_liner": "Wind often stops the cable — have a backup.",
+      "tags": [
+        "read"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Station",
+      "qa_card": {
+        "question": "What did you notice at the Cable / path status sign?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-trailhead-sign",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "official_park_research",
+      "display_label": "Cable / path status sign"
+    },
+    {
+      "id": "vc",
+      "label": "Lower station / park info",
+      "emoji": "🏛️",
+      "one_liner": "Tickets and weather board.",
+      "tags": [
+        "rest"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Base",
+      "qa_card": {
+        "question": "What did you notice at the Lower station / park info?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-visitor-center",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "official_park_research",
+      "display_label": "Lower station / park info"
+    },
+    {
+      "id": "fynbos",
+      "label": "Fynbos plant stretch",
+      "emoji": "🌾",
+      "one_liner": "Tough shrubs of the Cape.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Summit",
+      "qa_card": {
+        "question": "What did you notice at the Fynbos plant stretch?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-meadow",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "official_park_research",
+      "display_label": "Fynbos plant stretch"
+    },
+    {
+      "id": "shore_backup",
+      "label": "Coastal park backup (if cable closed)",
+      "emoji": "🌊",
+      "one_liner": "Shore alternative day.",
+      "tags": [
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Coast",
+      "qa_card": {
+        "question": "What did you notice at the Coastal park backup (if cable closed)?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-tide-coast",
+      "presence": "high",
+      "presence_checked": "2026-08-09",
+      "presence_source": "official_park_research",
+      "display_label": "Coastal park backup (if cable closed)"
+    },
+    {
+      "id": "talk",
+      "label": "Guide or talk (if offered)",
+      "emoji": "🗣️",
+      "one_liner": "Seasonal.",
+      "tags": [
+        "hands"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Station",
+      "qa_card": {
+        "question": "What did you notice at the Guide or talk (if offered)?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-ranger-program",
+      "presence": "medium",
+      "presence_checked": "2026-08-09",
+      "presence_source": "official_park_research",
+      "display_label": "Guide or talk (if offered)"
+    }
+  ],
+  "content_mode": "curated",
+  "media": {
+    "visitor_map_url": "/field-pack/media/maps/table-mountain.jpg",
+    "visitor_map_page": "https://www.sanparks.org/parks/table-mountain/travel/maps",
+    "visitor_map_kind": "image",
+    "map_attribution": "Map: Wikimedia Commons (Cape Peninsula)",
+    "hero_illustration": "/field-pack/photos/np-hero-table-mountain.jpg",
+    "print_map": "/field-pack/media/maps/table-mountain.jpg",
+    "visitor_map_full": "https://upload.wikimedia.org/wikipedia/commons/0/0c/Map-South_Africa-Western_Cape-Cape_Peninsula.png"
+  },
+  "parent_script": [
+    "Bathroom first",
+    "Water & weather check",
+    "One big view",
+    "Leave while happy"
+  ],
+  "route_90m": [
+    "table_top",
+    "summit_board",
+    "ocean_view"
+  ],
+  "research_notes": "NP intl Phase 1 2026-08-09 · slice-focused kit · slice labels + shared animal cards 2026-08-09",
+  "list_confidence": "partial",
+  "do_not_list": [],
+  "presence_sources": [
+    "https://www.sanparks.org/parks/table-mountain"
+  ],
+  "last_presence_audit": "2026-08-09",
+  "bonus_hunt": {
+    "tagline": "Table Mountain National Park bonus · second look on the trail",
+    "find_ids": [
+      "shore_backup",
+      "fynbos",
+      "sign",
+      "vc",
+      "ocean_view",
+      "table_top",
+      "summit_board"
+    ],
+    "challenges": [
+      {
+        "id": "table_mounta_shore_backup_watch",
+        "text": "Coast: take 15 seconds on the Coastal park backup (if cable closed) — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "table_mounta_fynbos_watch",
+        "text": "Summit: take 15 seconds on the Fynbos plant stretch — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "table_mounta_sign_watch",
+        "text": "Station: take 15 seconds on the Cable / path status sign — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "table_mounta_vc_watch",
+        "text": "Base: take 15 seconds on the Lower station / park info — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "table_mounta_ocean_view_watch",
+        "text": "Summit: take 15 seconds on the Atlantic / city overlook — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_still",
+        "text": "Quiet 20 seconds on the trail — bird, wind, water, or people: what wins?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_far_near",
+        "text": "Name something far first — then something by your feet",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_camo",
+        "text": "Best natural camouflage (rock, bark, shadow) you can spot",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_map",
+        "text": "Find a map or zone name you haven’t noticed — point it out",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_tiny_huge",
+        "text": "Something tiny next to something huge in this area",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find a park map or zone sign — name one animal that lives that way",
+    "easter_egg_little": "★ Easter egg: pick a favorite bench — sit 60 seconds and name three sounds",
+    "researched": "2026-08-09",
+    "status": "solid",
+    "sources": [
+      "https://www.sanparks.org/parks/table-mountain"
+    ]
+  }
+}

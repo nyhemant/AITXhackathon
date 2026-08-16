@@ -1,0 +1,59 @@
+{
+  "updated": "2026-08-10",
+  "results": [
+    {
+      "slug": "yosemite",
+      "code": "yose",
+      "status": "ok",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/9/93/NPS_yosemite-geologic-map.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "kind": "image",
+      "path": "static/field-pack/media/maps/yosemite.jpg",
+      "error": "",
+      "candidates": [
+        {
+          "score": 70,
+          "kind": "image",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/9/93/NPS_yosemite-geologic-map.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+        },
+        {
+          "score": 70,
+          "kind": "image",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/c/cc/NPS_yosemite-map.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+        },
+        {
+          "score": 70,
+          "kind": "pdf",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/4/40/NPS_yosemite-map.pdf?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+        },
+        {
+          "score": 70,
+          "kind": "image",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/8/8c/NPS_yosemite-recent-rockfall-map.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+        },
+        {
+          "score": 70,
+          "kind": "image",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/5/5c/NPS_yosemite-valley-map.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+        },
+        {
+          "score": 70,
+          "kind": "pdf",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/0/01/NPS_yosemite-valley-map.pdf?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+        },
+        {
+          "score": 70,
+          "kind": "image",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/f/f9/NPS_yosemite-valley-shuttle-bus-map.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+        },
+        {
+          "score": 70,
+          "kind": "pdf",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/b/bb/NPS_yosemite-valley-shuttle-bus-map.pdf?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+        }
+      ],
+      "score": 70,
+      "bytes": 1600911,
+      "deep_link": "https://www.nps.gov/yose/planyourvisit/maps.htm"
+    }
+  ]
+}

@@ -43,7 +43,172 @@ RESERVED = {
     "photos",
     "places",
     "seo-venues.json",
+    "zoos",
+    "aquariums",
+    "museums",
+    "national-parks",
+    "parks",
+    "media",
+    "cards",
 }
+
+# Type hub landings: path segment → filter + copy
+HEADER_TAGLINE = "Zoo, aquarium, museum &amp; park days"
+OG_SHARE_IMAGE = f"{SITE}/field-pack/photos/sample-mission-dallas-zoo.jpg"
+
+# Landing catalog seeds (T5) — review in POLISH-TASKS completion notes
+FEATURED_CARD_IDS = (
+    "african-lion",
+    "shark",
+    "sci-dinosaur",
+    "reticulated-giraffe",
+    "octopus",
+    "sci-rocket",
+    "giant-panda",
+    "jellyfish",
+    "cm-makery",
+    "african-elephant",
+    "clownfish",
+    "sea-turtle",
+)
+FEATURED_BY_GROUP = {
+    "wildlife": (
+        "african-lion",
+        "reticulated-giraffe",
+        "giant-panda",
+        "african-elephant",
+        "western-lowland-gorilla",
+        "sumatran-tiger",
+        "nile-hippo",
+        "african-penguin",
+        "caribbean-flamingo",
+        "asian-small-clawed-otter",
+        "cheetah",
+        "chimpanzee",
+    ),
+    "sealife": (
+        "shark",
+        "octopus",
+        "jellyfish",
+        "clownfish",
+        "sea-turtle",
+        "stingray",
+        "seahorse",
+        "eel",
+        "crab",
+        "starfish",
+        "freshwater-fish",
+    ),
+    "attractions": (
+        "sci-rocket",
+        "sci-dinosaur",
+        "cm-makery",
+        "sci-hands-on",
+        "sci-mammal-hall",
+        "sci-planet",
+        "sci-rainforest",
+        "cm-art-lab",
+        "cm-imaginarium",
+        "sci-astronaut",
+        "cm-woven",
+        "sci-aquarium-zone",
+    ),
+}
+POPULAR_VENUE_IDS = (
+    "dallas-zoo",
+    "san-diego-zoo",
+    "bronx-zoo",
+    "national-zoo",
+    "georgia-aquarium",
+    "monterey-bay-aquarium",
+    "amnh",
+    "childrens-museum-perot",
+    "yellowstone",
+    "grand-canyon",
+    "yosemite",
+    "zion",
+)
+
+TYPE_LANDINGS = [
+    {
+        "path": "zoos",
+        "kind": "zoo",
+        "nav": "Zoos",
+        "title": "Zoo Scavenger Hunts for Kids — Free Printable Missions · Field Trip Kit",
+        "h1": "Zoo scavenger hunts for kids",
+        "blurb": "Free one-page missions and short must-see lists for zoos and safari parks. Pick a place, print, and go.",
+        "map_type": "zoo",
+        "pitch": "A one-page mission for your next zoo day",
+    },
+    {
+        "path": "aquariums",
+        "kind": "aquarium",
+        "nav": "Aquariums",
+        "title": "Aquarium Scavenger Hunts for Kids — Free Printable Missions · Field Trip Kit",
+        "h1": "Aquarium scavenger hunts for kids",
+        "blurb": "Free printable hunts for aquariums — sharks, jellies, touch pools, and finishable half-day lists.",
+        "map_type": "aquarium",
+        "pitch": "A one-page mission for your next aquarium day",
+    },
+    {
+        "path": "museums",
+        "kind": "museum",
+        "nav": "Museums",
+        "title": "Museum Scavenger Hunts for Kids — Science, Nature & Kids Museums · Field Trip Kit",
+        "h1": "Museum scavenger hunts for kids",
+        "blurb": "Free printable missions for science, natural history, space, and children’s museums.",
+        "map_type": "museum",
+        "pitch": "A one-page mission for your next museum day",
+    },
+    {
+        "path": "national-parks",
+        "kind": "park",
+        "nav": "Parks",
+        "title": "National & World Park Scavenger Hunts for Kids · Field Trip Kit",
+        "h1": "National & world park scavenger hunts",
+        "blurb": "Free printable missions for U.S. and international parks — one finishable slice (rim, boardwalk, lakeshore), not the whole park.",
+        "map_type": "park",
+        "pitch": "A one-page mission for your next park day — US or worldwide",
+    },
+]
+
+
+def venue_type_kind(v: dict) -> str:
+    """Map venue/place type → zoo | aquarium | museum | park | other."""
+    raw = str(v.get("type") or v.get("placeType") or "").lower().strip()
+    t = raw.replace("-", "_").replace(" ", "_")
+    # Short catalog codes first
+    if t in ("aq",) or "aquarium" in t:
+        return "aquarium"
+    if t in ("national_park", "park") or "national_park" in t:
+        return "park"
+    if t in ("safari_zoo",) or "safari" in t:
+        return "zoo"
+    if t in ("zoo", "zoo_aq") or t.endswith("_zoo") or t.startswith("zoo"):
+        return "zoo"
+    if t in (
+        "sci",
+        "nh",
+        "cm",
+        "sci_aq",
+        "science",
+        "natural_history",
+        "childrens_museum",
+        "space",
+    ) or any(
+        x in t
+        for x in (
+            "museum",
+            "science",
+            "natural",
+            "history",
+            "children",
+            "space",
+            "air",
+        )
+    ):
+        return "museum"
+    return "other"
 
 TYPE_PHRASE = {
     "zoo": ("zoo", "animals", "scavenger hunt"),
@@ -59,6 +224,8 @@ TYPE_PHRASE = {
     "natural_history": ("natural history museum", "exhibits", "scavenger hunt"),
     "nh": ("natural history museum", "exhibits", "scavenger hunt"),
     "space": ("space center", "exhibits", "scavenger hunt"),
+    "national_park": ("national park", "trails and overlooks", "scavenger hunt"),
+    "park": ("national park", "trails and overlooks", "scavenger hunt"),
 }
 
 
@@ -105,13 +272,17 @@ const out = Object.keys(venues).map(id => {
     id,
     name: ven.name,
     shortName: ven.shortName || ven.name,
-    location: ven.location || [pl.city, pl.state].filter(Boolean).join(', '),
+    location: ven.location || [pl.city, pl.state || pl.country].filter(Boolean).join(', '),
     city: pl.city || '',
     state: pl.state || '',
+    country: pl.country || ven.country || '',
+    lat: pl.lat != null ? pl.lat : (ven.lat != null ? ven.lat : null),
+    lng: pl.lon != null ? pl.lon : (pl.lng != null ? pl.lng : (ven.lng != null ? ven.lng : null)),
     type: ven.type || pl.type || 'zoo',
     blurb: ven.blurb || pl.blurb || '',
     website: ven.website || '',
     emoji: pl.emoji || '',
+    tier: pl.tier || '',
     itemLabel: ven.itemLabel || 'things',
     packTemplate: ven.packTemplate || 'animals',
     quality: ven.quality || 'starter',
@@ -238,7 +409,11 @@ def unique_body(
           </div>"""
         if card_inner:
             # Link card to interactive app item for Q&A print path
-            href = f"/field-pack/app.html#/venue/{esc(v['id'])}/item/{esc(item_id)}" if item_id else f"/field-pack/app.html#/venue/{esc(v['id'])}"
+            href = (
+                f"/field-pack/cards/{esc(item_id)}/"
+                if item_id
+                else f"/field-pack/{esc(v['id'])}/#mission"
+            )
             cards.append(
                 f"""<a class="seo-animal-card" href="{href}" role="listitem">
           {card_inner}
@@ -276,15 +451,10 @@ def unique_body(
       </ul>
     </section>
     <section class="seo-list-block seo-hunt-block" aria-labelledby="hunt-heading">
-      <h2 id="hunt-heading">Create and print your mission</h2>
-      <p>Pick age and time, then print one page — no app at the venue.</p>
-      <p class="seo-hunt-cta-wrap no-print">
-        <button type="button" class="btn btn-secondary" id="seo-open-mission" data-how="print">
-          Open print options
-        </button>
-      </p>
+      <h2 id="hunt-heading">What the sheet may include</h2>
+      <p>Print from the button at the top of this page. No app at the venue.</p>
       <details class="seo-hunt-examples">
-        <summary>Example finds that may appear on the sheet</summary>
+        <summary>Example finds</summary>
         <ol class="seo-hunt-list">
           {hunt_lis}
         </ol>
@@ -528,6 +698,17 @@ def map_card_html(mission_venue: dict) -> str:
 
     has_img = _safe_map_img(img)
     is_pdf = ".pdf" in href.lower() or href.lower().endswith("/pdf")
+    vt = str((mission_venue or {}).get("type") or "").lower()
+    if "aquarium" in vt:
+        map_kicker = "Aquarium map"
+    elif "museum" in vt:
+        map_kicker = "Museum map"
+    elif "zoo" in vt:
+        map_kicker = "Zoo map"
+    elif "park" in vt:
+        map_kicker = "Park map"
+    else:
+        map_kicker = "Visitor map"
     # Prefer image mode whenever we have a verified map image (kind may lag)
     if has_img and kind in ("image", "page", ""):
         # Local previews don't need no-referrer; remote maps keep it for fewer hotlink blocks
@@ -536,21 +717,21 @@ def map_card_html(mission_venue: dict) -> str:
         # Click pins enlarge in-page; external leave is a small secondary link only
         return f"""
     <div class="seo-map-card seo-map-card-image seo-map-has-preview no-print" data-map-preview>
-      <button type="button" class="seo-map-enlarge-hit" aria-expanded="false" aria-controls="seo-map-preview-panel" aria-label="Enlarge park map">
+      <button type="button" class="seo-map-enlarge-hit" aria-expanded="false" aria-controls="seo-map-preview-panel" aria-label="Enlarge visitor map">
         <span class="seo-map-thumb-wrap">
-          <img class="seo-map-thumb" src="{esc(img)}" alt="Park map preview" width="640" height="400" loading="lazy" decoding="async"{refpol} />
+          <img class="seo-map-thumb" src="{esc(img)}" alt="Visitor map preview" width="640" height="400" loading="lazy" decoding="async"{refpol} />
           <span class="seo-map-hover-hint" aria-hidden="true">Tap to enlarge</span>
         </span>
       </button>
       <div class="seo-map-card-body">
-        <span class="seo-map-kicker">Park map</span>
+        <span class="seo-map-kicker">{esc(map_kicker)}</span>
         <strong>Visitor map</strong>
         <small>{esc(attr)} · tap to enlarge</small>
         <a class="seo-map-ext-link" href="{esc(href)}" target="_blank" rel="noopener noreferrer">{esc(ext_label)}</a>
       </div>
-      <div class="seo-map-preview" id="seo-map-preview-panel" role="dialog" aria-label="Enlarged park map" hidden>
+      <div class="seo-map-preview" id="seo-map-preview-panel" role="dialog" aria-label="Enlarged visitor map" hidden>
         <button type="button" class="seo-map-preview-close" aria-label="Close enlarged map">×</button>
-        <img src="{esc(img)}" alt="Enlarged park map" loading="lazy" decoding="async"{refpol} />
+        <img src="{esc(img)}" alt="Enlarged visitor map" loading="lazy" decoding="async"{refpol} />
         <span class="seo-map-preview-cap">
           {esc(attr)}
           · <a class="seo-map-preview-ext" href="{esc(href)}" target="_blank" rel="noopener noreferrer">{esc(ext_label)}</a>
@@ -724,18 +905,20 @@ def route_90m_html(mission_venue: dict, mission: dict, catalog_v: dict | None = 
         if not feat and p.get("catalog_id"):
             feat = feat_by_id.get(p["catalog_id"]) or {}
         src = _photo_src(feat.get("photo") or p.get("photo") or "")
+        if not src:
+            for cand in (cat_id, p.get("catalog_id"), p.get("id")):
+                cid = str(cand or "").replace("_", "-").strip()
+                if cid and (FIELD / "photos" / f"{cid}.jpg").is_file():
+                    src = f"photos/{cid}.jpg?v=img2"
+                    break
         label = _item_sheet_label(p) or feat.get("name") or "Stop"
         emoji = p.get("emoji") or feat.get("emoji") or ""
         one = _card_blurb(p.get("one_liner") or feat.get("blurb") or "")
         # Prefer catalog id for app Q&A cards; underscore venue ids won't resolve in catalog
         item_id = (p.get("catalog_id") or "").strip() or cat_id
         # Has a real catalog photo/entry → deep-link to talk card; else venue list in app
-        if item_id and feat:
-            href = f"/field-pack/app.html#/venue/{esc(slug)}/item/{esc(item_id)}"
-        elif item_id and p.get("catalog_id"):
-            href = f"/field-pack/app.html#/venue/{esc(slug)}/item/{esc(item_id)}"
-        else:
-            href = f"/field-pack/app.html#/venue/{esc(slug)}" if slug else "/field-pack/app.html"
+        # Stay on the place page (During = print). Card Q&A lives at /cards/{id}/.
+        href = f"/field-pack/{esc(slug)}/#mission" if slug else "/field-pack/"
         if src:
             media = (
                 f'<img src="{esc(src)}" alt="" width="640" height="400" '
@@ -756,7 +939,7 @@ def route_90m_html(mission_venue: dict, mission: dict, catalog_v: dict | None = 
 
     lead = (
         f"Do these {n} in order if you can — enough for a short visit. "
-        "Tap a stop for talk tips &amp; photos. Create and print your mission is above."
+        "Tap a stop for talk tips & photos. Create and print your mission is above."
     )
     return f"""
     <section class="seo-start-here no-print" aria-labelledby="route90-heading">
@@ -801,7 +984,7 @@ def mission_drawer_html(mission_venue: dict, mission: dict) -> str:
     >
       <header class="mission-drawer-head">
         <div>
-          <p class="mission-drawer-kicker">Field Trip Kit</p>
+          <p class="mission-drawer-kicker"><a class="mission-home" href="/field-pack/">Field Trip Kit</a> · <span class="mission-place-now">{esc(v.get("shortName") or v.get("name") or "This place")}</span> · <a class="mission-change-place" href="/field-pack/?find=1">Different place?</a></p>
           <h2 id="mission-heading">Create and print your mission</h2>
         </div>
         <button type="button" class="mission-drawer-close" id="mission-close" aria-label="Close">×</button>
@@ -874,6 +1057,40 @@ def mission_drawer_html(mission_venue: dict, mission: dict) -> str:
 """
 
 
+def hero_illustration_path(mission_venue: dict | None, venue_id: str = "") -> str:
+    """Relative path under /field-pack/ for park (or any) hero art, or empty."""
+    media = (mission_venue or {}).get("media") or {}
+    raw = (media.get("hero_illustration") or "").strip()
+    if not raw and venue_id:
+        candidate = FIELD / "photos" / f"np-hero-{venue_id}.jpg"
+        if candidate.is_file():
+            raw = f"/field-pack/photos/np-hero-{venue_id}.jpg"
+    if not raw:
+        return ""
+    if raw.startswith("http"):
+        return raw
+    if raw.startswith("/field-pack/"):
+        return raw
+    if raw.startswith("/"):
+        return raw
+    return f"/field-pack/{raw.lstrip('/')}"
+
+
+def hero_img_src(mission_venue: dict | None, venue_id: str = "", bust: str = "q2") -> str:
+    """Browser-relative src (base href=/field-pack/) for hero image."""
+    path = hero_illustration_path(mission_venue, venue_id)
+    if not path:
+        return ""
+    # Strip /field-pack/ for base-relative URLs used on SEO pages
+    if path.startswith("/field-pack/"):
+        rel = path[len("/field-pack/") :]
+    elif path.startswith("http"):
+        return f"{path}?v={bust}" if "?" not in path else path
+    else:
+        rel = path.lstrip("/")
+    return f"{rel}?v={bust}"
+
+
 def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
     """Full SEO venue page (photos + shortlist); mission opens in a drawer."""
     vid = v["id"]
@@ -930,15 +1147,10 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
         hunt_sec = (
             f"""
     <section class="seo-list-block seo-hunt-block" aria-labelledby="hunt-heading">
-      <h2 id="hunt-heading">Create and print your mission</h2>
-      <p>Pick age and time, then print one page — no app at the venue.</p>
-      <p class="seo-hunt-cta-wrap no-print">
-        <button type="button" class="btn btn-secondary" id="seo-open-mission" data-how="print">
-          Open print options
-        </button>
-      </p>
+      <h2 id="hunt-heading">What the sheet may include</h2>
+      <p>Print from the button at the top of this page. No app at the venue.</p>
       <details class="seo-hunt-examples">
-        <summary>Example finds that may appear on the sheet</summary>
+        <summary>Example finds</summary>
         <ol class="seo-hunt-list">{hunt_lis}</ol>
       </details>
     </section>"""
@@ -954,7 +1166,22 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
     h1 = h1_for(v)
     title = title_for(v)
     desc = meta_for(v)
-    og_img = f"{SITE}/1LessMark.png"
+    hero_abs = hero_illustration_path(mission_venue, vid)
+    hero_src = hero_img_src(mission_venue, vid, bust="q2")
+    if hero_abs.startswith("http"):
+        og_img = hero_abs.split("?")[0]
+    elif hero_abs.startswith("/"):
+        og_img = f"{SITE}{hero_abs.split('?')[0]}"
+    else:
+        og_img = OG_SHARE_IMAGE
+    hero_banner = ""
+    if hero_src:
+        hero_banner = (
+            f'<div class="seo-park-hero no-print">'
+            f'<img src="{esc(hero_src)}" alt="{esc(v.get("name") or vid)} — illustrated park day" '
+            f'width="1280" height="720" loading="eager" decoding="async" />'
+            f"</div>"
+        )
     json_ld = venue_json_ld(v, url)
     venue_json = json.dumps(mission_venue, ensure_ascii=False)
     challenges_json = CHALLENGES_JSON.read_text(encoding="utf-8")
@@ -1013,17 +1240,17 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <meta property="og:description" content="{esc(desc)}" />
   <meta property="og:url" content="{esc(url)}" />
   <meta property="og:image" content="{esc(og_img)}" />
-  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="{esc(title)}" />
   <meta name="twitter:description" content="{esc(desc)}" />
   <meta name="twitter:image" content="{esc(og_img)}" />
   <meta name="color-scheme" content="light" />
   <base href="/field-pack/" />
-  <link rel="stylesheet" href="/shell/shell.css?v=5" />
-  <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
-  <link rel="stylesheet" href="/field-pack/css/landing.css?v=64" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=13" />
-  <link rel="stylesheet" href="/field-pack/css/mission.css?v=13" />
+  <link rel="stylesheet" href="/shell/shell.css?v=6" />
+  <link rel="stylesheet" href="/field-pack/css/styles.css?v=24" />
+  <link rel="stylesheet" href="/field-pack/css/landing.css?v=72" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=15" />
+  <link rel="stylesheet" href="/field-pack/css/mission.css?v=16" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
   </script>
@@ -1037,14 +1264,16 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
       <a class="shell-brand" href="/field-pack/" aria-label="Field Trip Kit home">
         <img src="/1LessMark.png" alt="" width="52" height="52" />
       </a>
-      <p class="shell-product">
+      <a class="shell-product" href="/field-pack/">
         Field Trip Kit
-        <small>Zoo, aquarium &amp; museum days</small>
-      </p>
+        <small>{HEADER_TAGLINE}</small>
+      </a>
       <div class="shell-more-wrap">
         <button type="button" class="shell-more" aria-expanded="false" aria-haspopup="true" aria-controls="shell-menu">More</button>
         <div id="shell-menu" class="shell-menu" hidden role="menu">
           <a href="/field-pack/" role="menuitem">All places<small>Map &amp; outings</small></a>
+          <a href="/field-pack/cards/" role="menuitem">Animal cards<small>Q&amp;A printables</small></a>
+          <a href="/field-pack/virtual-field-trip/" role="menuitem">Virtual Field Trip<small>Study before you go</small></a>
           <a href="/field-pack/#about" role="menuitem">About<small>1Less &amp; contact</small></a>
         </div>
       </div>
@@ -1062,10 +1291,11 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
         <p class="promise-pill">{esc(loc_chip)}</p>
         <h1>{esc(v.get('emoji',''))} {esc(h1)}</h1>
         <p class="lead">{esc(lead)}</p>
+        {hero_banner}
         {facts_html}
         {chrome}
         <p class="seo-secondary-links no-print">
-          <a href="{esc(app_href)}">Stops &amp; talk cards</a>
+          <a href="/field-pack/cards/">Talk cards</a>
           <span aria-hidden="true"> · </span>
           <a href="{esc(map_href)}">Find on map</a>
         </p>
@@ -1088,6 +1318,8 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
         <span class="footer-dot">·</span>
         <a href="/field-pack/">All places</a>
         <span class="footer-dot">·</span>
+        <a href="/field-pack/cards/">Cards</a>
+        <span class="footer-dot">·</span>
         <a href="/field-pack/#about">About</a>
         <span class="footer-dot">·</span>
         <a href="mailto:hello@1less.app">Contact</a>
@@ -1105,12 +1337,13 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <script type="application/json" id="challenges-data">{challenges_json}</script>
   <script type="application/json" id="wonders-data">{wonders_json}</script>
   <script type="application/json" id="bonus-hunts-data">{bonus_json}</script>
-  <script src="/shell/shell.js?v=4"></script>
+  <script src="/shell/shell.js?v=5"></script>
+  <script src="/field-pack/js/fp-analytics.js?v=1"></script>
   <script src="/field-pack/js/catalog.js?v=23"></script>
-  <script src="/field-pack/js/print-maps.js?v=2"></script>
-  <script src="/field-pack/js/print-kit.js?v=9"></script>
+  <script src="/field-pack/js/print-maps.js?v=4"></script>
+  <script src="/field-pack/js/print-kit.js?v=10"></script>
   <script src="/field-pack/js/mission/mission-engine.js?v=13"></script>
-  <script src="/field-pack/js/mission/mission-ui.js?v=13"></script>
+  <script src="/field-pack/js/mission/mission-ui.js?v=15"></script>
 </body>
 </html>
 """
@@ -1145,7 +1378,7 @@ def render_venue_page(v: dict) -> str:
     h1 = h1_for(v)
     title = title_for(v)
     desc = meta_for(v)
-    og_img = f"{SITE}/1LessMark.png"
+    og_img = OG_SHARE_IMAGE
     json_ld = venue_json_ld(v, url)
 
     return f"""<!DOCTYPE html>
@@ -1169,8 +1402,8 @@ def render_venue_page(v: dict) -> str:
   <meta name="twitter:image" content="{esc(og_img)}" />
   <meta name="color-scheme" content="light" />
   <base href="/field-pack/" />
-  <link rel="stylesheet" href="/shell/shell.css?v=5" />
-  <link rel="stylesheet" href="/field-pack/css/styles.css?v=22" />
+  <link rel="stylesheet" href="/shell/shell.css?v=6" />
+  <link rel="stylesheet" href="/field-pack/css/styles.css?v=24" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=52" />
   <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=13" />
   <script type="application/ld+json">
@@ -1186,14 +1419,16 @@ def render_venue_page(v: dict) -> str:
       <a class="shell-brand" href="/field-pack/" aria-label="Field Trip Kit home">
         <img src="/1LessMark.png" alt="" width="52" height="52" />
       </a>
-      <p class="shell-product">
+      <a class="shell-product" href="/field-pack/">
         Field Trip Kit
-        <small>Zoo, aquarium &amp; museum days</small>
-      </p>
+        <small>{HEADER_TAGLINE}</small>
+      </a>
       <div class="shell-more-wrap">
         <button type="button" class="shell-more" aria-expanded="false" aria-haspopup="true" aria-controls="shell-menu">More</button>
         <div id="shell-menu" class="shell-menu" hidden role="menu">
           <a href="/field-pack/" role="menuitem">All places<small>Map &amp; outings</small></a>
+          <a href="/field-pack/cards/" role="menuitem">Animal cards<small>Q&amp;A printables</small></a>
+          <a href="/field-pack/virtual-field-trip/" role="menuitem">Virtual Field Trip<small>Study before you go</small></a>
           <a href="/field-pack/#about" role="menuitem">About<small>1Less &amp; contact</small></a>
         </div>
       </div>
@@ -1277,10 +1512,11 @@ def render_venue_page(v: dict) -> str:
   <div id="print-sheet" class="print-sheet" aria-hidden="true"></div>
   <div id="treasure-sheet" class="print-sheet treasure-sheet" aria-hidden="true"></div>
 
-  <script src="/shell/shell.js?v=4"></script>
+  <script src="/shell/shell.js?v=5"></script>
+  <script src="/field-pack/js/fp-analytics.js?v=1"></script>
   <script src="/field-pack/js/catalog.js?v=23"></script>
-  <script src="/field-pack/js/print-maps.js?v=2"></script>
-  <script src="/field-pack/js/print-kit.js?v=9"></script>
+  <script src="/field-pack/js/print-maps.js?v=4"></script>
+  <script src="/field-pack/js/print-kit.js?v=10"></script>
   <script>
     (function () {{
       var btn = document.getElementById("seo-print-hunt");
@@ -1321,16 +1557,275 @@ def render_venue_page(v: dict) -> str:
 """
 
 
-def write_sitemap(venues: list[dict]) -> None:
+def write_type_landing(meta: dict, venues: list[dict]) -> str:
+    """Write /field-pack/<path>/index.html type hub. Returns path URL."""
+    kind = meta["kind"]
+    path = meta["path"]
+    filtered = [v for v in venues if venue_type_kind(v) == kind]
+    filtered.sort(key=lambda v: ((v.get("city") or "").lower(), (v.get("name") or "").lower()))
+
+    # Directory by continent (same as main landing)
+    buckets: dict[str, list[dict]] = {c: [] for c in _CONTINENT_ORDER}
+    for v in filtered:
+        cont = _venue_continent(v)
+        buckets.setdefault(cont, []).append(v)
+    parts = [
+        _dir_continent_html(title, buckets[title])
+        for title in _CONTINENT_ORDER
+        if buckets.get(title)
+    ]
+    for title, vs in buckets.items():
+        if title not in _CONTINENT_ORDER and vs:
+            parts.append(_dir_continent_html(title, vs))
+    dir_html = "\n        ".join(parts) or "<p>Kits are rolling out — check the map soon.</p>"
+
+    # Featured cards (first 6) — park heroes when available
+    feat_bits = []
+    # Prefer popular / named heroes first for parks hub
+    featured_pool = list(filtered)
+    prefer_by_kind = {
+        "park": [
+            "yellowstone",
+            "grand-canyon",
+            "yosemite",
+            "zion",
+            "acadia",
+            "rocky-mountain",
+            "great-smoky-mountains",
+            "arches",
+            "sequoia",
+            "everglades",
+            "mount-rainier",
+            "joshua-tree",
+        ],
+        "zoo": [
+            "dallas-zoo",
+            "san-diego-zoo",
+            "bronx-zoo",
+            "national-zoo",
+            "houston-zoo",
+            "fort-worth-zoo",
+        ],
+        "aquarium": [
+            "georgia-aquarium",
+            "monterey-bay-aquarium",
+            "childrens-aquarium-dallas",
+            "shedd-aquarium",
+            "aquarium-of-the-pacific",
+            "seattle-aquarium",
+        ],
+        "museum": [
+            "amnh",
+            "childrens-museum-perot",
+            "field-museum",
+            "california-science-center",
+            "air-and-space",
+            "please-touch-museum",
+        ],
+    }
+    if kind in prefer_by_kind:
+        prefer = prefer_by_kind[kind]
+        by_id = {v["id"]: v for v in filtered}
+        ordered = [by_id[s] for s in prefer if s in by_id]
+        rest = [v for v in filtered if v["id"] not in prefer]
+        featured_pool = ordered + rest
+    for v in featured_pool[:6]:
+        emoji = esc(v.get("emoji") or "📍")
+        name = esc(v.get("name") or v["id"])
+        city = esc(v.get("city") or "")
+        blurb = esc((v.get("blurb") or "")[:120])
+        slug = esc(v["id"])
+        mv = load_mission_venue(v["id"]) if kind == "park" else None
+        hero = hero_img_src(mv, v["id"], bust="q2") if kind == "park" else ""
+        if not hero and kind == "park":
+            # base-relative for type pages (base=/field-pack/)
+            cand = f"photos/np-hero-{v['id']}.jpg"
+            if (FIELD / cand).is_file():
+                hero = f"{cand}?v=q2"
+        thumb = (
+            f'<span class="type-feat-thumb"><img src="{esc(hero)}" alt="" width="640" height="360" loading="lazy" decoding="async" /></span>'
+            if hero
+            else f'<span class="type-feat-emoji" aria-hidden="true">{emoji}</span>'
+        )
+        feat_bits.append(
+            f'<a class="type-feat-card{" type-feat-has-hero" if hero else ""}" href="/field-pack/{slug}/">'
+            f"{thumb}"
+            f"<strong>{name}</strong>"
+            f"<small>{city}</small>"
+            f'<span class="type-feat-blurb">{blurb}</span>'
+            f"</a>"
+        )
+    featured = "\n          ".join(feat_bits) if feat_bits else ""
+
+    url = f"{SITE}/field-pack/{path}/"
+    map_href = f"/field-pack/?type={esc(meta['map_type'])}"
+    nav_bits = []
+    for t in TYPE_LANDINGS:
+        cur = ' aria-current="page"' if t["path"] == path else ""
+        nav_bits.append(
+            f'<a class="place-type-tab{" is-active" if t["path"] == path else ""}" '
+            f'href="/field-pack/{t["path"]}/"{cur}>{esc(t["nav"])}</a>'
+        )
+    type_nav = "\n            ".join(nav_bits)
+
+    item_list = ", ".join(
+        f'{{"@type":"ListItem","position":{i+1},"url":"{SITE}/field-pack/{esc(v["id"])}/","name":{json.dumps(v.get("name") or v["id"])}}}'
+        for i, v in enumerate(filtered[:40])
+    )
+    json_ld = (
+        "{"
+        f'"@context":"https://schema.org","@type":"CollectionPage","name":{json.dumps(meta["h1"])},'
+        f'"url":{json.dumps(url)},"description":{json.dumps(meta["blurb"])},'
+        f'"isPartOf":{{"@type":"WebSite","name":"1Less Field Trip Kit","url":"{SITE}/field-pack/"}},'
+        f'"mainEntity":{{"@type":"ItemList","numberOfItems":{len(filtered)},"itemListElement":[{item_list}]}}'
+        "}"
+    )
+
+    html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{esc(meta["title"])}</title>
+  <meta name="description" content="{esc(meta["blurb"])}" />
+  <link rel="canonical" href="{esc(url)}" />
+  <meta name="robots" content="index,follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="1Less" />
+  <meta property="og:title" content="{esc(meta["title"])}" />
+  <meta property="og:description" content="{esc(meta["blurb"])}" />
+  <meta property="og:url" content="{esc(url)}" />
+  <meta property="og:image" content="{OG_SHARE_IMAGE}" />
+  <base href="/field-pack/" />
+  <link rel="stylesheet" href="/shell/shell.css?v=6" />
+  <link rel="stylesheet" href="/field-pack/css/styles.css?v=24" />
+  <link rel="stylesheet" href="/field-pack/css/landing.css?v=70" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=14" />
+  <script type="application/ld+json">
+{json_ld}
+  </script>
+  <style>
+    .type-landing {{ max-width: 56rem; margin: 0 auto 2rem; padding: 0 1rem 2rem; }}
+    .type-landing h1 {{ margin: 0.5rem 0 0.75rem; font-size: clamp(1.5rem, 4vw, 2rem); color: #0a4545; }}
+    .type-landing .type-lead {{ color: #3d4f6f; font-size: 1.05rem; line-height: 1.45; max-width: 40rem; }}
+    .type-feat-grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(11.5rem, 1fr)); gap: 0.85rem; margin: 1.25rem 0 1.5rem; }}
+    .type-feat-card {{ display: flex; flex-direction: column; gap: 0.25rem; padding: 0.65rem 0.65rem 0.85rem; border-radius: 14px;
+      background: rgba(255,255,255,0.92); border: 1.5px solid rgba(15,92,92,0.12); text-decoration: none; color: inherit;
+      overflow: hidden; }}
+    .type-feat-card:hover {{ border-color: #0f5c5c; }}
+    .type-feat-emoji {{ font-size: 1.4rem; padding: 0.2rem 0.25rem 0; }}
+    .type-feat-thumb {{ display: block; margin: -0.65rem -0.65rem 0.35rem; border-radius: 12px 12px 0 0; overflow: hidden;
+      aspect-ratio: 16/10; background: #e8f2ee; }}
+    .type-feat-thumb img {{ width: 100%; height: 100%; object-fit: cover; display: block; }}
+    .type-feat-card strong {{ font-size: 0.92rem; color: #0a4545; padding: 0 0.25rem; }}
+    .type-feat-card small {{ color: #5a6a84; padding: 0 0.25rem; }}
+    .type-feat-blurb {{ font-size: 0.8rem; color: #3d4f6f; line-height: 1.3; padding: 0 0.25rem; }}
+    .type-cta-row {{ display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1rem 0 1.5rem; }}
+    .type-cta-row a {{ display: inline-flex; align-items: center; padding: 0.55rem 1rem; border-radius: 999px;
+      font-weight: 750; text-decoration: none; }}
+    .type-cta-primary {{ background: #0f5c5c; color: #fff; }}
+    .type-cta-secondary {{ background: #fff; color: #0a4545; border: 1.5px solid rgba(15,92,92,0.2); }}
+    .type-count {{ font-weight: 700; color: #0f5c5c; }}
+    .place-type-tabs a.place-type-tab {{ text-decoration: none; }}
+  </style>
+</head>
+<body class="seo-venue-body type-hub-body" data-place-type="{esc(meta["map_type"])}">
+  <div class="app-shell">
+    <header class="shell-bar no-print">
+      <a class="shell-brand" href="/field-pack/" aria-label="Field Trip Kit home">
+        <img src="/1LessMark.png" alt="" width="52" height="52" />
+      </a>
+      <a class="shell-product" href="/field-pack/">
+        Field Trip Kit
+        <small>{HEADER_TAGLINE}</small>
+      </a>
+    </header>
+
+    <nav class="place-type-tabs no-print" aria-label="Place type">
+      <div class="place-type-seg" role="navigation">
+        <a class="place-type-tab" href="/field-pack/">All</a>
+        {type_nav}
+      </div>
+    </nav>
+
+    <main class="type-landing">
+      <p class="seo-crumbs"><a href="/field-pack/">Field Trip Kit</a> · {esc(meta["nav"])}</p>
+      <h1>{esc(meta["h1"])}</h1>
+      <p class="type-lead">{esc(meta["blurb"])}</p>
+      <p class="type-count">{len(filtered)} places</p>
+      <div class="type-cta-row">
+        <a class="type-cta-primary" href="{map_href}">Open map · {esc(meta["nav"])}</a>
+        <a class="type-cta-secondary" href="/field-pack/">All places</a>
+      </div>
+      {"<h2>Start here</h2><div class=\"type-feat-grid\">" + featured + "</div>" if featured else ""}
+      <h2 id="dir-heading">{esc(meta["nav"])}</h2>
+      <p id="dir-blurb">{esc(meta["pitch"])}</p>
+      <div id="seo-venue-directory" class="seo-dir-body">
+        {dir_html}
+      </div>
+    </main>
+  </div>
+  <script src="/shell/shell.js?v=5" defer></script>
+</body>
+</html>
+"""
+    out_dir = FIELD / path
+    out_dir.mkdir(parents=True, exist_ok=True)
+    (out_dir / "index.html").write_text(html, encoding="utf-8")
+    return f"/field-pack/{path}/"
+
+
+def write_parks_alias() -> None:
+    """ /field-pack/parks/ → national-parks (meta refresh + link). """
+    out_dir = FIELD / "parks"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    html = """<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>National Parks · Field Trip Kit</title>
+  <link rel="canonical" href="https://1less.app/field-pack/national-parks/" />
+  <meta http-equiv="refresh" content="0;url=/field-pack/national-parks/" />
+  <script>location.replace("/field-pack/national-parks/");</script>
+</head>
+<body>
+  <p><a href="/field-pack/national-parks/">National &amp; world park scavenger hunts</a></p>
+</body>
+</html>
+"""
+    (out_dir / "index.html").write_text(html, encoding="utf-8")
+
+
+def write_type_landings(venues: list[dict]) -> list[str]:
+    urls = []
+    for meta in TYPE_LANDINGS:
+        u = write_type_landing(meta, venues)
+        urls.append(u)
+        print(f"  type landing {u} ({sum(1 for v in venues if venue_type_kind(v) == meta['kind'])} places)")
+    write_parks_alias()
+    print("  type landing alias /field-pack/parks/ → national-parks")
+    return urls
+
+
+def write_sitemap(venues: list[dict], extra_urls: list[str] | None = None) -> None:
     urls = [f"{SITE}/field-pack/"]
+    for u in extra_urls or []:
+        if u.startswith("http"):
+            urls.append(u)
+        else:
+            urls.append(f"{SITE}{u}")
     urls += [f"{SITE}/field-pack/{v['id']}/" for v in venues]
     # also root redirect target
     body = [
         '<?xml version="1.0" encoding="UTF-8"?>',
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
     ]
+    seen = set()
     for u in urls:
-        pri = "1.0" if u.endswith("/field-pack/") else "0.8"
+        if u in seen:
+            continue
+        seen.add(u)
+        pri = "1.0" if u.rstrip("/").endswith("field-pack") else ("0.9" if any(x in u for x in ("/zoos", "/aquariums", "/museums", "/national-parks", "/cards", "/virtual-zoo", "/virtual-field-trip")) else "0.8")
         body.append("  <url>")
         body.append(f"    <loc>{esc(u)}</loc>")
         body.append(f"    <lastmod>{TODAY}</lastmod>")
@@ -1678,6 +2173,16 @@ _COUNTRY_CONTINENT = {
     "hong kong": "Asia",
     "australia": "Oceania",
     "new zealand": "Oceania",
+    "croatia": "Europe",
+    "ireland": "Europe",
+    "wales": "Europe",
+    "scotland": "Europe",
+    "england": "Europe",
+    "u.s. virgin islands": "North America",
+    "us virgin islands": "North America",
+    "virgin islands": "North America",
+    "american samoa": "Oceania",
+    "puerto rico": "North America",
 }
 
 
@@ -1704,28 +2209,70 @@ def _venue_country_label(v: dict) -> str:
 
 
 def _venue_continent(v: dict) -> str:
-    st = (v.get("state") or "").strip()
-    # US/CA style state codes → North America
-    if st and len(st) <= 3 and st.isalpha():
-        # TX, CA, ON-style; DC too
-        if st.upper() not in ("UAE",):  # not a US state
-            # International places rarely have 2-letter US states
-            if st.upper() in {
-                "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FL", "GA", "HI",
-                "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN",
-                "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH",
-                "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA",
-                "WV", "WI", "WY",
-            }:
-                return "North America"
+    """Bucket venues for directory headings. Prefer explicit country codes."""
+    # Explicit ISO / territory codes on venue JSON
+    cc = (v.get("country") or "").strip().upper()
+    st0 = (v.get("state") or v.get("region") or "").strip().upper()
+    # American Samoa is a US territory in Oceania (check before broad US → NA)
+    if cc in {"AS"} or st0 == "AS":
+        return "Oceania"
+    if cc in {"US", "USA", "CA", "MX", "PR", "VI", "GU", "MP"}:
+        return "North America"
+    if cc in {"BR", "AR", "CL", "PE", "CO", "EC", "UY", "PY", "BO", "VE"}:
+        return "South America"
+    if cc in {"GB", "UK", "IE", "FR", "DE", "ES", "IT", "NL", "BE", "AT", "CH", "PT",
+              "SE", "NO", "FI", "DK", "PL", "HU", "CZ", "GR", "RU", "TR", "HR", "RO", "UA"}:
+        return "Europe"
+    if cc in {"ZA", "KE", "EG", "AE", "MA", "NG", "TZ", "UG", "ET"}:
+        return "Africa & Middle East"
+    if cc in {"JP", "CN", "KR", "IN", "SG", "TW", "TH", "ID", "PH", "MY", "HK", "VN"}:
+        return "Asia"
+    if cc in {"AU", "NZ", "FJ", "PG", "WS"}:
+        return "Oceania"
+
+    st = (v.get("state") or v.get("region") or "").strip().upper()
+    # US states + DC
+    _US_STATES = {
+        "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FL", "GA", "HI",
+        "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN",
+        "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH",
+        "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA",
+        "WV", "WI", "WY",
+    }
+    # US Caribbean / Pacific territories (not states)
+    _US_TERR_NA = {"PR", "VI", "GU", "MP"}  # North America / Caribbean / western Pacific US
+    _US_TERR_OC = {"AS"}  # American Samoa → Oceania
+    if st in _US_STATES or st in _US_TERR_NA:
+        return "North America"
+    if st in _US_TERR_OC:
+        return "Oceania"
+    # Canadian provinces commonly appear as 2-letter codes
+    if st in {"AB", "BC", "MB", "NB", "NL", "NS", "NT", "NU", "ON", "PE", "QC", "SK", "YT"}:
+        return "North America"
+
     country = _venue_country_label(v)
     key = country.lower()
+    # Territory names that appear after comma in location strings
+    if key in {"vi", "u.s. virgin islands", "us virgin islands", "virgin islands",
+               "puerto rico", "pr", "guam", "northern mariana islands"}:
+        return "North America"
+    if key in {"as", "american samoa"}:
+        return "Oceania"
     if key in _COUNTRY_CONTINENT:
         return _COUNTRY_CONTINENT[key]
-    # Fallback: city match
     city = (v.get("city") or "").strip().lower()
     if city in _COUNTRY_CONTINENT:
         return _COUNTRY_CONTINENT[city]
+    # Last resort: lat/lon hemisphere hints for known gaps
+    try:
+        lat = float(v.get("lat") or 0)
+        lng = float(v.get("lng") or v.get("lon") or 0)
+        if 17 <= lat <= 19 and -66 <= lng <= -64:  # USVI
+            return "North America"
+        if -15 <= lat <= -13 and -172 <= lng <= -169:  # American Samoa
+            return "Oceania"
+    except (TypeError, ValueError):
+        pass
     return "Asia"  # rare unknown intl → Asia bucket rather than orphan
 
 
@@ -1750,10 +2297,15 @@ def _dir_region_slug(title: str) -> str:
     )
 
 
-def _dir_continent_html(title: str, venues: list[dict]) -> str:
-    """Always-open section — venue names stay visible (light structure only)."""
+def _dir_continent_html(title: str, venues: list[dict], *, heading: str = "h4") -> str:
+    """Always-open region section — venue names stay visible (light structure only).
+
+    heading: h3 when region is top-level (hubs); h4 when nested under day-type (landing).
+    """
     if not venues:
         return ""
+    if heading not in {"h3", "h4"}:
+        heading = "h4"
     venues = sorted(
         venues,
         key=lambda x: ((x.get("city") or "").lower(), (x.get("name") or "").lower()),
@@ -1762,50 +2314,1461 @@ def _dir_continent_html(title: str, venues: list[dict]) -> str:
     slug = esc(_dir_region_slug(title))
     return (
         f'<section class="seo-dir-region" data-region="{slug}">\n'
-        f'          <h3 class="seo-dir-region-title">{esc(title)} '
-        f'<span class="seo-dir-count">{len(venues)}</span></h3>\n'
+        f'          <{heading} class="seo-dir-region-title">{esc(title)} '
+        f'<span class="seo-dir-count">{len(venues)}</span></{heading}>\n'
         f'          <ul class="seo-dir-grid">\n            {items}\n          </ul>\n'
         f"        </section>"
     )
 
 
-def patch_landing_directory(venues: list[dict]) -> None:
-    """Fill landing directory in a few continent groups; names always visible."""
-    index = FIELD / "index.html"
-    html = index.read_text(encoding="utf-8")
+# Landing catalog: Places (type→region→venue) + Cards (group→item)
+# Collapsed <details>; ~3 sample links visible before expand.
+_DIR_SAMPLE_N = 10
 
-    buckets: dict[str, list[dict]] = {c: [] for c in _CONTINENT_ORDER}
+_TYPE_DIR_META = (
+    {
+        "kind": "zoo",
+        "id": "dir-zoos",
+        "label": "Zoos &amp; safaris",
+        "hub": "/field-pack/zoos/",
+        "hub_label": "All zoos",
+        "sample_ids": ("dallas-zoo", "san-diego-zoo", "bronx-zoo", "singapore-zoo", "london-zoo"),
+    },
+    {
+        "kind": "aquarium",
+        "id": "dir-aquariums",
+        "label": "Aquariums",
+        "hub": "/field-pack/aquariums/",
+        "hub_label": "All aquariums",
+        "sample_ids": (
+            "georgia-aquarium",
+            "monterey-bay-aquarium",
+            "national-aquarium-baltimore",
+            "shedd-aquarium",
+        ),
+    },
+    {
+        "kind": "museum",
+        "id": "dir-museums",
+        "label": "Museums &amp; science",
+        "hub": "/field-pack/museums/",
+        "hub_label": "All museums",
+        "sample_ids": (
+            "kennedy-space-center",
+            "air-and-space",
+            "amnh",
+            "childrens-museum-perot",
+            "thinkery",
+        ),
+    },
+    {
+        "kind": "park",
+        "id": "dir-parks",
+        "label": "Parks",
+        "hub": "/field-pack/national-parks/",
+        "hub_label": "All parks",
+        "sample_ids": ("yellowstone", "yosemite", "grand-canyon", "zion", "banff"),
+    },
+)
+
+# Card families pair with place types (top tabs):
+#   wildlife → zoos | sealife → aquariums | attractions → museums
+_WILDLIFE_GROUP_ORDER = (
+    ("mammals", "Mammals", ("african-lion", "reticulated-giraffe", "giant-panda")),
+    ("birds", "Birds", ("african-penguin", "caribbean-flamingo", "ostrich")),
+    ("reptiles", "Reptiles", ("galapagos-tortoise",)),
+)
+
+_WILDLIFE_GROUP_BY_ID = {
+    "african-elephant": "mammals",
+    "african-lion": "mammals",
+    "asian-small-clawed-otter": "mammals",
+    "cheetah": "mammals",
+    "chimpanzee": "mammals",
+    "giant-panda": "mammals",
+    "koala": "mammals",
+    "nile-hippo": "mammals",
+    "orangutan": "mammals",
+    "red-panda": "mammals",
+    "reticulated-giraffe": "mammals",
+    "ring-tailed-lemur": "mammals",
+    "sumatran-tiger": "mammals",
+    "two-toed-sloth": "mammals",
+    "warthog": "mammals",
+    "western-lowland-gorilla": "mammals",
+    "zebra": "mammals",
+    "african-penguin": "birds",
+    "caribbean-flamingo": "birds",
+    "ostrich": "birds",
+    "galapagos-tortoise": "reptiles",
+}
+
+_SEALIFE_GROUP_ORDER = (
+    (
+        "fish",
+        "Sharks, fish &amp; turtles",
+        ("shark", "clownfish", "stingray", "sea-turtle", "seahorse"),
+    ),
+    (
+        "inverts",
+        "Jellies &amp; ocean invertebrates",
+        ("octopus", "jellyfish", "crab", "starfish"),
+    ),
+)
+
+_SEALIFE_GROUP_BY_ID = {
+    "clownfish": "fish",
+    "eel": "fish",
+    "freshwater-fish": "fish",
+    "seahorse": "fish",
+    "shark": "fish",
+    "stingray": "fish",
+    "sea-turtle": "fish",
+    "crab": "inverts",
+    "jellyfish": "inverts",
+    "octopus": "inverts",
+    "starfish": "inverts",
+}
+
+# Back-compat aliases used nowhere new — keep empty maps for safety
+_ANIMAL_GROUP_ORDER = _WILDLIFE_GROUP_ORDER
+_ANIMAL_GROUP_BY_ID = {**_WILDLIFE_GROUP_BY_ID, **_SEALIFE_GROUP_BY_ID}
+
+# Museum / science attraction cards
+_ATTRACTION_GROUP_ORDER = (
+    ("space", "Space &amp; rockets", ("sci-rocket", "sci-shuttle", "sci-astronaut", "sci-planet")),
+    (
+        "nature-halls",
+        "Dinosaurs &amp; nature halls",
+        ("sci-dinosaur", "sci-mammal-hall", "sci-rainforest", "sci-aquarium-zone"),
+    ),
+    (
+        "kids-play",
+        "Kids play zones",
+        (
+            "cm-makery",
+            "cm-imaginarium",
+            "cm-toddler-garden",
+            "cm-art-lab",
+            "cm-waterfall",
+            "cm-woven",
+            "cm-free-explore",
+            "sci-hands-on",
+        ),
+    ),
+)
+
+_ATTRACTION_GROUP_BY_ID = {
+    "sci-rocket": "space",
+    "sci-shuttle": "space",
+    "sci-astronaut": "space",
+    "sci-planet": "space",
+    "sci-dinosaur": "nature-halls",
+    "sci-mammal-hall": "nature-halls",
+    "sci-rainforest": "nature-halls",
+    "sci-aquarium-zone": "nature-halls",
+    "cm-makery": "kids-play",
+    "cm-imaginarium": "kids-play",
+    "cm-toddler-garden": "kids-play",
+    "cm-art-lab": "kids-play",
+    "cm-waterfall": "kids-play",
+    "cm-woven": "kids-play",
+    "cm-free-explore": "kids-play",
+    "sci-hands-on": "kids-play",
+}
+
+
+def _sort_venues(venues: list[dict]) -> list[dict]:
+    return sorted(
+        venues,
+        key=lambda x: ((x.get("city") or "").lower(), (x.get("name") or "").lower()),
+    )
+
+
+def _pick_samples(items: list[dict], preferred_ids: tuple[str, ...] | list[str], n: int = _DIR_SAMPLE_N) -> list[dict]:
+    """Prefer curated ids, then fill from sorted list."""
+    by_id = {str(x.get("id") or ""): x for x in items}
+    out: list[dict] = []
+    seen: set[str] = set()
+    for pid in preferred_ids or ():
+        it = by_id.get(pid)
+        if it and pid not in seen:
+            out.append(it)
+            seen.add(pid)
+        if len(out) >= n:
+            return out
+    for it in items:
+        iid = str(it.get("id") or "")
+        if not iid or iid in seen:
+            continue
+        out.append(it)
+        seen.add(iid)
+        if len(out) >= n:
+            break
+    return out
+
+
+def _venue_li_html(v: dict) -> str:
+    return _dir_item_html(v)
+
+
+def _item_li_html(it: dict) -> str:
+    """Printable card row — print via JS; fallback link opens outing with that card."""
+    iid = esc(it["id"])
+    venue = esc(it.get("venue") or "")
+    name = esc(it.get("name") or it["id"])
+    emoji = esc(it.get("emoji") or "")
+    label = f"{emoji} {name}".strip()
+    href = f"/field-pack/cards/{iid}/"
+    return (
+        f'<li class="seo-dir-card-item">'
+        f'<a class="seo-dir-card-link" href="{href}" data-print-item="{iid}"'
+        f'{f" data-print-venue=\"{venue}\"" if venue else ""}>'
+        f"{label}</a>"
+        f'<button type="button" class="seo-dir-print-btn no-print" data-print-item="{iid}"'
+        f'{f" data-print-venue=\"{venue}\"" if venue else ""} aria-label="Print {name}">Print</button>'
+        f"</li>"
+    )
+
+
+def _samples_and_rest_html(
+    items: list[dict],
+    *,
+    li_fn,
+    preferred_ids: tuple[str, ...] = (),
+    list_class: str = "seo-dir-grid",
+    rest_label: str | None = None,
+) -> str:
+    """Always show ~3 samples; full list behind one nested details if longer."""
+    if not items:
+        return ""
+    samples = _pick_samples(items, preferred_ids, _DIR_SAMPLE_N)
+    sample_ids = {str(s.get("id") or "") for s in samples}
+    rest = [x for x in items if str(x.get("id") or "") not in sample_ids]
+    sample_ul = (
+        f'<ul class="{list_class} seo-dir-samples">\n            '
+        + "\n            ".join(li_fn(x) for x in samples)
+        + "\n          </ul>"
+    )
+    if not rest:
+        return sample_ul
+    label = rest_label or f"Show all {len(items)}"
+    rest_ul = (
+        f'<ul class="{list_class}">\n            '
+        + "\n            ".join(li_fn(x) for x in items)
+        + "\n          </ul>"
+    )
+    return (
+        f"{sample_ul}\n"
+        f'          <details class="seo-dir-more">\n'
+        f'            <summary class="seo-dir-more-sum">{esc(label)}</summary>\n'
+        f"            {rest_ul}\n"
+        f"          </details>"
+    )
+
+
+def _place_is_us(v: dict) -> bool:
+    """US + territories; intl has explicit non-US country or no US state."""
+    cc = (v.get("country") or "").strip().upper()
+    st = (v.get("state") or "").strip().upper()
+    if cc in {"CA", "GB", "UK", "AU", "NZ", "ZA", "JP", "FR", "HR", "AR", "CL", "PE", "KE",
+              "MX", "BR", "DE", "ES", "IT", "NL", "BE", "AT", "CH", "PT", "SE", "NO", "FI",
+              "DK", "PL", "HU", "CZ", "GR", "RU", "TR", "IE", "SG", "KR", "CN", "IN", "TH",
+              "ID", "PH", "MY", "HK", "TW", "AE", "EG", "CO", "PE"}:
+        return False
+    if cc in {"US", "USA", "PR", "VI", "GU", "MP"}:
+        return True
+    if cc == "AS":
+        return True  # American Samoa NP still “US system”
+    if st and len(st) == 2:
+        return True
+    # Domestic places-data often omits country and uses state
+    if not cc and st:
+        return True
+    if not cc and not st:
+        # Heuristic: US city list isn't available — treat missing as US only if lat in US box
+        try:
+            lat = float(v.get("lat") or 0)
+            lng = float(v.get("lng") or 0)
+            if 24 <= lat <= 50 and -125 <= lng <= -66:
+                return True
+        except (TypeError, ValueError):
+            pass
+        return False
+    return cc in {"US", "USA"} or not cc
+
+
+# --- Smart L2 categories (not geography — map handles region) ---
+# Only emit a category when it has enough venues (see _MIN_CAT).
+
+_MIN_CAT = 4
+
+_ZOO_SAFARI_IDS = frozenset(
+    {
+        "san-diego-safari-park",
+        "singapore-night-safari",
+        "nairobi-safari-walk",
+        "bangalore-bannerghatta",
+        "bangkok-safari-world",
+        "hong-kong-ocean-park",
+    }
+)
+_ZOO_LARGE_IDS = frozenset(
+    {
+        # US flagships / major metros
+        "dallas-zoo",
+        "fort-worth-zoo",
+        "houston-zoo",
+        "san-diego-zoo",
+        "la-zoo",
+        "bronx-zoo",
+        "national-zoo",
+        "national-zoo",
+        "omaha-henry-doorly",
+        "columbus-zoo",
+        "st-louis-zoo",
+        "cincinnati-zoo",
+        "philadelphia-zoo",
+        "detroit-zoo",
+        "denver-zoo",
+        "minnesota-zoo",
+        "north-carolina-zoo",
+        "oregon-zoo",
+        "woodland-park-zoo",
+        "miami-zoo",
+        "toronto-zoo",
+        "calgary-zoo",
+        # World flagships
+        "london-zoo",
+        "singapore-zoo",
+        "berlin-zoo",
+        "beijing-zoo",
+        "ueno-zoo",
+        "taronga-zoo",
+        "melbourne-zoo",
+        "perth-zoo",
+        "auckland-zoo",
+        "prague-zoo",
+        "vienna-zoo",
+        "artis-zoo",
+        "antwerp-zoo",
+        "barcelona-zoo",
+        "paris-zoo",
+        "munich-zoo",
+        "copenhagen-zoo",
+        "dublin-zoo",
+        "edinburgh-zoo",
+        "budapest-zoo",
+        "warsaw-zoo",
+        "moscow-zoo",
+        "seoul-zoo",
+        "taipei-zoo",
+        "jakarta-ragunan",
+        "chapultepec-zoo",
+        "sao-paulo-zoo",
+        "johannesburg-zoo",
+        "cairo-zoo",
+        "delhi-zoo",
+        "mumbai-byculla-zoo",
+        "manila-zoo",
+        "zurich-zoo",
+        "ecoparque-ba",
+    }
+)
+_ZOO_SMALL_IDS = frozenset(
+    {
+        "austin-zoo",
+        "adelaide-zoo",
+        "wellington-zoo",
+        "honolulu-zoo",
+        "oslo-zoo",
+        "helsinki-zoo",
+        "stockholm-skansen",
+        "athens-attica-zoo",
+        "al-ain-zoo",
+        "point-defiance-zoo",
+        "hogle-zoo",
+        "audubon-zoo",
+        "lima-leyendas",
+        "bogota-zoo",
+        "santiago-zoo",
+        "rio-zoo",
+        "nashville-zoo",
+        "memphis-zoo",
+    }
+)
+
+_AQ_COMPACT_IDS = frozenset(
+    {
+        "childrens-aquarium-dallas",
+        "dallas-world-aquarium",
+        "waikiki-aquarium",
+        "lotte-aquarium-seoul",
+    }
+)
+
+
+def _zoo_category(v: dict) -> str:
+    vid = str(v.get("id") or "")
+    name = f"{v.get('name') or ''} {v.get('type') or ''}".lower()
+    if vid in _ZOO_SAFARI_IDS or "safari" in name or "wildlife park" in name or "biological park" in name:
+        return "safari"
+    if vid in _ZOO_SMALL_IDS:
+        return "small"
+    blurb = (v.get("blurb") or "").lower()
+    if any(
+        x in blurb
+        for x in (
+            "without a stadium",
+            "compact",
+            "short walkable",
+            "small loop",
+            "perfect first",
+            "first zoo",
+        )
+    ):
+        return "small"
+    if vid in _ZOO_LARGE_IDS or (v.get("tier") or "") == "top":
+        return "large"
+    # quality full + many featured often = major day
+    feat = v.get("featured") or []
+    if (v.get("quality") or "") == "full" and len(feat) >= 10 and vid not in _ZOO_SMALL_IDS:
+        return "large"
+    return "other"
+
+
+def _aquarium_category(v: dict) -> str:
+    vid = str(v.get("id") or "")
+    name = (v.get("name") or "").lower()
+    if vid in _AQ_COMPACT_IDS or "children" in name or "kids" in name:
+        return "compact"
+    return "major"
+
+
+def _museum_category(v: dict) -> str:
+    raw = str(v.get("type") or "").lower().strip()
+    t = raw.replace("-", " ").replace("_", " ")
+    name = (v.get("name") or "").lower()
+    vid = str(v.get("id") or "")
+    if (
+        "children" in t
+        or raw in {"cm", "childrens_museum"}
+        or "children" in name
+        or "please touch" in name
+        or "doseum" in name
+        or "thinkery" in name
+    ):
+        return "childrens"
+    # Natural history — short codes + names (before generic "science")
+    if raw in {"nh", "natural_history"} or "natural history" in t or "natural history" in name:
+        return "natural_history"
+    if any(
+        x in vid
+        for x in (
+            "field-museum",
+            "amnh",
+            "smithsonian-natural",
+            "carnegie-natural",
+            "nhm-london",
+            "denver-museum-nature",
+        )
+    ):
+        return "natural_history"
+    # Space folds into science & space (not enough for its own bucket)
+    return "science"
+
+
+def _park_category(v: dict) -> str:
+    return "us" if _place_is_us(v) else "world"
+
+
+# kind → ordered (cat_id, label, sample_ids)
+_PLACE_CATS: dict[str, tuple[tuple[str, str, tuple[str, ...]], ...]] = {
+    "zoo": (
+        ("large", "Large city zoos", ("dallas-zoo", "san-diego-zoo", "bronx-zoo", "singapore-zoo", "london-zoo", "berlin-zoo", "national-zoo", "houston-zoo", "taronga-zoo", "beijing-zoo")),
+        ("safari", "Safari &amp; wildlife parks", ("san-diego-safari-park", "singapore-night-safari", "bangkok-safari-world", "nairobi-safari-walk", "bangalore-bannerghatta")),
+        ("small", "Smaller &amp; local zoos", ("austin-zoo", "honolulu-zoo", "wellington-zoo", "adelaide-zoo", "audubon-zoo", "hogle-zoo")),
+        ("other", "More zoos", ("phoenix-zoo", "milwaukee-zoo", "kansas-city-zoo", "pittsburgh-zoo", "madrid-zoo", "rome-bioparco")),
+    ),
+    "aquarium": (
+        ("major", "Major aquariums", ("georgia-aquarium", "monterey-bay-aquarium", "shedd-aquarium", "national-aquarium-baltimore", "osaka-aquarium", "two-oceans-aquarium")),
+        ("compact", "Compact &amp; kids aquariums", ("childrens-aquarium-dallas", "waikiki-aquarium", "dallas-world-aquarium", "lotte-aquarium-seoul")),
+    ),
+    "museum": (
+        ("science", "Science &amp; space", ("kennedy-space-center", "air-and-space", "california-science-center", "perot-museum", "frost-science", "museum-of-science-boston")),
+        ("natural_history", "Natural history", ("amnh", "field-museum", "smithsonian-natural-history", "carnegie-natural-history", "nhm-london")),
+        ("childrens", "Children’s museums", ("childrens-museum-perot", "thinkery", "doseum", "indy-childrens-museum", "please-touch-museum")),
+    ),
+    "park": (
+        ("us", "US national parks", ("yellowstone", "yosemite", "grand-canyon", "zion", "acadia", "rocky-mountain", "olympic", "glacier")),
+        ("world", "Parks worldwide", ("banff", "kruger", "plitvice-lakes", "torres-del-paine", "fiordland", "table-mountain", "iguazu-argentina")),
+    ),
+}
+
+
+def _classify_place(kind: str, v: dict) -> str:
+    if kind == "zoo":
+        return _zoo_category(v)
+    if kind == "aquarium":
+        return _aquarium_category(v)
+    if kind == "museum":
+        return _museum_category(v)
+    if kind == "park":
+        return _park_category(v)
+    return "other"
+
+
+def _dir_cat_details_html(
+    cat_id: str,
+    title: str,
+    venues: list[dict],
+    preferred_ids: tuple[str, ...] = (),
+) -> str:
+    """L2 smart category under a place type — collapsed, samples + expand all."""
+    if not venues:
+        return ""
+    venues = _sort_venues(venues)
+    slug = esc(cat_id)
+    body = _samples_and_rest_html(
+        venues,
+        li_fn=_venue_li_html,
+        preferred_ids=preferred_ids,
+        rest_label=f"Show all {len(venues)}",
+    )
+    return (
+        f'<details class="seo-dir-region seo-dir-cat" data-cat="{slug}">\n'
+        f'            <summary class="seo-dir-region-sum">'
+        f'<span class="seo-dir-region-label">{title}</span> '
+        f'<span class="seo-dir-count">{len(venues)}</span></summary>\n'
+        f"            {body}\n"
+        f"          </details>"
+    )
+
+
+def _bucket_places(kind: str, venues: list[dict]) -> list[tuple[str, str, tuple[str, ...], list[dict]]]:
+    """Return non-empty categories; merge undersized into 'other' / last bucket."""
+    specs = list(_PLACE_CATS.get(kind) or (("other", "More", ()),))
+    buckets: dict[str, list[dict]] = {sid: [] for sid, _, _ in specs}
     for v in venues:
-        cont = _venue_continent(v)
-        if cont not in buckets:
-            buckets[cont] = []
-        buckets[cont].append(v)
+        cid = _classify_place(kind, v)
+        if cid not in buckets:
+            # map unknown → last bucket
+            cid = specs[-1][0]
+        buckets[cid].append(v)
+
+    # Merge tiny categories into a fallthrough bucket
+    fallthrough = "other" if "other" in buckets else specs[-1][0]
+    if fallthrough not in buckets:
+        buckets[fallthrough] = []
+        specs.append((fallthrough, "More", ()))
+
+    for sid, label, pref in list(specs):
+        if sid == fallthrough:
+            continue
+        items = buckets.get(sid) or []
+        if 0 < len(items) < _MIN_CAT:
+            buckets[fallthrough].extend(items)
+            buckets[sid] = []
+
+    out: list[tuple[str, str, tuple[str, ...], list[dict]]] = []
+    for sid, label, pref in specs:
+        items = buckets.get(sid) or []
+        if not items:
+            continue
+        # If only one category would remain after filters, still show it
+        out.append((sid, label, pref, items))
+
+    # If everything collapsed to one group, rename label to plain list feel
+    if len(out) == 1:
+        sid, label, pref, items = out[0]
+        out = [(sid, "All", pref, items)]
+    return out
+
+
+def _dir_type_details_html(meta: dict, venues: list[dict]) -> str:
+    """L1 place type — collapsed; samples + smart categories (not continents)."""
+    if not venues:
+        return ""
+    venues = _sort_venues(venues)
+    kind = meta["kind"]
+    cats = _bucket_places(kind, venues)
+    cat_html = "\n          ".join(
+        _dir_cat_details_html(cid, label, items, pref)
+        for cid, label, pref, items in cats
+    )
+    sample_only = _pick_samples(venues, tuple(meta.get("sample_ids") or ()), _DIR_SAMPLE_N)
+    sample_ul = (
+        f'<ul class="seo-dir-grid seo-dir-samples">\n            '
+        + "\n            ".join(_venue_li_html(v) for v in sample_only)
+        + "\n          </ul>"
+    )
+    kind_esc = esc(kind)
+    return (
+        f'<details class="seo-dir-type" data-place-type="{kind_esc}" id="{esc(meta["id"])}">\n'
+        f'          <summary class="seo-dir-type-sum">'
+        f'<span class="seo-dir-type-label">{meta["label"]}</span> '
+        f'<span class="seo-dir-count">{len(venues)}</span>'
+        f'<a class="seo-dir-hub" href="{esc(meta["hub"])}" onclick="event.stopPropagation()">{esc(meta["hub_label"])}</a>'
+        f"</summary>\n"
+        f'          <div class="seo-dir-type-body">\n'
+        f'            <p class="seo-dir-hint">Samples — open a category for more (map above filters by place)</p>\n'
+        f"            {sample_ul}\n"
+        f'            <div class="seo-dir-regions seo-dir-cats">\n          {cat_html}\n            </div>\n'
+        f"          </div>\n"
+        f"        </details>"
+    )
+
+
+
+def load_all_catalog_cards() -> list[dict]:
+    """Every FIELD_PACK_CATALOG entry with a name (for cards hub completeness)."""
+    script = r"""
+const fs = require('fs');
+const vm = require('vm');
+const ctx = { window: {}, console };
+vm.createContext(ctx);
+vm.runInContext(fs.readFileSync(process.argv[1], 'utf8'), ctx);
+const cat = ctx.window.FIELD_PACK_CATALOG || {};
+const venues = ctx.window.FIELD_PACK_VENUES || {};
+const home = {};
+for (const [vid, v] of Object.entries(venues)) {
+  for (const id of new Set([...(v.featuredAnimalIds || []), ...(v.animalIds || [])])) {
+    if (!home[id]) home[id] = vid;
+  }
+}
+const out = [];
+for (const [id, it] of Object.entries(cat)) {
+  if (!it || !it.name) continue;
+  if (/^np-/.test(id)) continue;
+  if (it.packTemplate === 'park_features') continue;
+  if (/^(grsm|yell|zion|yose|grca|romo|acad|glac|arch|olym|npsa)[-_]/.test(id)) continue;
+  if (/-(view|overlook|boardwalk|trail|path|summit|falls|waterfall|hoodoo|shore|meadow|grove|sign|vc|shuttle|lodge|basin|rim|creek|pebbles|fins)/.test(id)) continue;
+  if (/^(cadillac|sequoia|old-faithful|yosemite-falls|smokies-)/.test(id)) continue;
+  if (!home[id]) continue;
+  out.push({
+    id,
+    name: it.name,
+    emoji: it.emoji || '',
+    photo: String(it.photo || ''),
+    blurb: String(it.blurb || it.one_liner || '').slice(0, 160),
+    pt: it.packTemplate || (String(id).startsWith('cm-') || String(id).startsWith('sci-') ? 'exhibits' : 'animals'),
+    venue: home[id],
+  });
+}
+process.stdout.write(JSON.stringify(out));
+"""
+    cat_js = FIELD / "js" / "catalog.js"
+    raw = subprocess.check_output(["node", "-e", script, str(cat_js)], text=True)
+    return json.loads(raw)
+
+
+def load_print_cards() -> list[dict]:
+    """Animals + exhibit cards with a home venue for print/app deep links."""
+    script = r"""
+const fs = require('fs');
+const vm = require('vm');
+const ctx = { window: {}, console };
+vm.createContext(ctx);
+vm.runInContext(fs.readFileSync(process.argv[1], 'utf8'), ctx);
+const cat = ctx.window.FIELD_PACK_CATALOG || {};
+const venues = ctx.window.FIELD_PACK_VENUES || {};
+const byId = {};
+for (const [vid, v] of Object.entries(venues)) {
+  const pt = v.packTemplate || 'animals';
+  for (const id of new Set([...(v.featuredAnimalIds || []), ...(v.animalIds || [])])) {
+    if (!byId[id]) byId[id] = { counts: {}, venues: [] };
+    byId[id].counts[pt] = (byId[id].counts[pt] || 0) + 1;
+    if (byId[id].venues.length < 12) byId[id].venues.push(vid);
+  }
+}
+function pri(c) {
+  return Object.entries(c).sort((a, b) => b[1] - a[1])[0][0];
+}
+const out = [];
+for (const [id, rec] of Object.entries(byId)) {
+  const it = cat[id];
+  if (!it || !it.name) continue;
+  const pt = pri(rec.counts);
+  if (pt === 'park_features') continue;
+  if (pt === 'animals' && /^(cm-|sci-)/.test(id)) continue;
+  if (/^(grsm|yell|zion|yose|grca|romo|acad|glac|arch|olym)[-_]/.test(id)) continue;
+  if (/^(cadillac|sequoia|old-faithful|yosemite-falls|smokies-)/.test(id)) continue;
+  out.push({
+    id,
+    name: it.name,
+    emoji: it.emoji || '',
+    photo: String(it.photo || ''),
+    blurb: String(it.blurb || it.one_liner || '').slice(0, 160),
+    pt,
+    venue: rec.venues[0] || '',
+  });
+}
+process.stdout.write(JSON.stringify(out));
+"""
+    import subprocess
+
+    cat_js = FIELD / "js" / "catalog.js"
+    raw = subprocess.check_output(
+        ["node", "-e", script, str(cat_js)],
+        text=True,
+    )
+    return json.loads(raw)
+
+
+def _dir_card_group_html(
+    group_id: str,
+    label: str,
+    items: list[dict],
+    preferred_ids: tuple[str, ...] = (),
+) -> str:
+    if not items:
+        return ""
+    items = sorted(items, key=lambda x: (x.get("name") or "").lower())
+    body = _samples_and_rest_html(
+        items,
+        li_fn=_item_li_html,
+        preferred_ids=preferred_ids,
+        list_class="seo-dir-grid seo-dir-card-grid",
+        rest_label=f"Show all {len(items)}",
+    )
+    return (
+        f'<details class="seo-dir-card-group" data-card-group="{esc(group_id)}">\n'
+        f'            <summary class="seo-dir-region-sum">'
+        f'<span class="seo-dir-region-label">{label}</span> '
+        f'<span class="seo-dir-count">{len(items)}</span></summary>\n'
+        f"            {body}\n"
+        f"          </details>"
+    )
+
+
+def _split_creature_cards(cards: list[dict]) -> tuple[list[dict], list[dict]]:
+    """Animal-pack cards → wildlife (land) vs sea life (aquarium)."""
+    wildlife: list[dict] = []
+    sealife: list[dict] = []
+    for c in cards:
+        if c.get("pt") != "animals":
+            continue
+        iid = c.get("id") or ""
+        if iid in _SEALIFE_GROUP_BY_ID:
+            sealife.append(c)
+        else:
+            wildlife.append(c)
+    return wildlife, sealife
+
+
+def _card_family_html(
+    *,
+    catalog_id: str,
+    pairs_place: str,
+    dom_id: str,
+    label: str,
+    hint: str,
+    items: list[dict],
+    group_order: tuple,
+    group_by_id: dict,
+    sample_prefs: tuple[str, ...],
+    extra_label: str,
+) -> str:
+    if not items:
+        return ""
+    buckets: dict[str, list[dict]] = {gid: [] for gid, _, _ in group_order}
+    for c in items:
+        gid = group_by_id.get(c["id"], group_order[0][0] if group_order else "other")
+        buckets.setdefault(gid, []).append(c)
+    groups = [
+        _dir_card_group_html(gid, glabel, buckets.get(gid) or [], pref)
+        for gid, glabel, pref in group_order
+    ]
+    mapped = set(group_by_id)
+    extra = [c for c in items if c["id"] not in mapped]
+    if extra:
+        groups.append(_dir_card_group_html(f"more-{catalog_id}", extra_label, extra))
+    body = "\n          ".join(g for g in groups if g)
+    samples = _pick_samples(
+        sorted(items, key=lambda x: (x.get("name") or "").lower()),
+        sample_prefs,
+        _DIR_SAMPLE_N,
+    )
+    sample_ul = (
+        f'<ul class="seo-dir-grid seo-dir-card-grid seo-dir-samples">\n            '
+        + "\n            ".join(_item_li_html(x) for x in samples)
+        + "\n          </ul>"
+        if samples
+        else ""
+    )
+    return (
+        f'<details class="seo-dir-type seo-dir-cards" data-catalog="{esc(catalog_id)}" '
+        f'data-pairs-place="{esc(pairs_place)}" id="{esc(dom_id)}">\n'
+        f'          <summary class="seo-dir-type-sum">'
+        f'<span class="seo-dir-type-label">{label}</span> '
+        f'<span class="seo-dir-count">{len(items)}</span></summary>\n'
+        f'          <div class="seo-dir-type-body">\n'
+        f'            <p class="seo-dir-hint">{hint}</p>\n'
+        f"            {sample_ul}\n"
+        f'            <div class="seo-dir-regions">\n          {body}\n            </div>\n'
+        f"          </div>\n"
+        f"        </details>"
+    )
+
+
+def _dir_cards_rail_html(cards: list[dict]) -> str:
+    """Wildlife (→zoos), sea life (→aquariums), attractions (→museums)."""
+    wildlife, sealife = _split_creature_cards(cards)
+    exhibits = [c for c in cards if c.get("pt") == "exhibits"]
 
     parts = [
-        _dir_continent_html(title, buckets[title])
-        for title in _CONTINENT_ORDER
-        if buckets.get(title)
+        _card_family_html(
+            catalog_id="wildlife",
+            pairs_place="zoo",
+            dom_id="dir-wildlife",
+            label="Wildlife",
+            hint="Zoo-day Q&amp;A cards — mammals, birds, reptiles",
+            items=wildlife,
+            group_order=_WILDLIFE_GROUP_ORDER,
+            group_by_id=_WILDLIFE_GROUP_BY_ID,
+            sample_prefs=("african-lion", "reticulated-giraffe", "giant-panda", "galapagos-tortoise"),
+            extra_label="More wildlife",
+        ),
+        _card_family_html(
+            catalog_id="sealife",
+            pairs_place="aquarium",
+            dom_id="dir-sealife",
+            label="Sea life",
+            hint="Aquarium-day Q&amp;A cards — sharks, fish, jellies…",
+            items=sealife,
+            group_order=_SEALIFE_GROUP_ORDER,
+            group_by_id=_SEALIFE_GROUP_BY_ID,
+            sample_prefs=("shark", "octopus", "jellyfish", "clownfish", "sea-turtle"),
+            extra_label="More sea life",
+        ),
+        _card_family_html(
+            catalog_id="attractions",
+            pairs_place="museum",
+            dom_id="dir-attractions",
+            label="Attractions",
+            hint="Museum-day cards — rockets, dinos, play zones",
+            items=exhibits,
+            group_order=_ATTRACTION_GROUP_ORDER,
+            group_by_id=_ATTRACTION_GROUP_BY_ID,
+            sample_prefs=("sci-rocket", "sci-dinosaur", "cm-makery"),
+            extra_label="More attractions",
+        ),
     ]
-    # Any leftover continents not in order
-    for title, vs in buckets.items():
-        if title not in _CONTINENT_ORDER and vs:
-            parts.append(_dir_continent_html(title, vs))
+    return "\n        ".join(p for p in parts if p)
 
-    block = "\n        ".join(parts)
-    pattern = re.compile(
+
+def _card_href(card: dict) -> str:
+    iid = card.get("id") or ""
+    return f"/field-pack/cards/{esc(iid)}/"
+
+
+def _card_venue_label(card: dict, venues_by_id: dict[str, dict]) -> str:
+    vid = card.get("venue") or ""
+    v = venues_by_id.get(vid) or {}
+    name = v.get("shortName") or v.get("name") or vid.replace("-", " ").title()
+    if not name:
+        return ""
+    return f"· {esc(name)}"
+
+
+def _featured_cards(cards: list[dict]) -> list[dict]:
+    by_id = {c["id"]: c for c in cards}
+    out = []
+    for cid in FEATURED_CARD_IDS:
+        if cid in by_id:
+            c = dict(by_id[cid])
+            c["featured"] = True
+            out.append(c)
+    if len(out) < 12:
+        for c in cards:
+            if c["id"] in {x["id"] for x in out}:
+                continue
+            out.append(dict(c, featured=True))
+            if len(out) >= 12:
+                break
+    return out[:12]
+
+
+def _pick_group_cards(cards: list[dict], group: str, n: int = 12) -> list[dict]:
+    by_id = {c["id"]: c for c in cards if (c.get("group") or _card_group_key(c)) == group}
+    out: list[dict] = []
+    seen: set[str] = set()
+    for cid in FEATURED_BY_GROUP.get(group) or ():
+        if cid in by_id and cid not in seen:
+            out.append(by_id[cid])
+            seen.add(cid)
+        if len(out) >= n:
+            return out
+    for c in sorted(by_id.values(), key=lambda x: (x.get("name") or "").lower()):
+        if c["id"] in seen:
+            continue
+        out.append(c)
+        seen.add(c["id"])
+        if len(out) >= n:
+            break
+    return out
+
+
+def _landing_teaser_cards(all_cards: list[dict]) -> list[dict]:
+    """All-row featured 12 (interleaved so mobile All can show 6 mixed) plus up to 12 per group."""
+    featured = _featured_cards(all_cards)
+    feat_ids = {c["id"] for c in featured}
+    by_id: dict[str, dict] = {}
+    for c in featured:
+        cc = dict(c)
+        cc["featured_all"] = True
+        by_id[cc["id"]] = cc
+    ordered = [by_id[c["id"]] for c in featured]
+    for g in ("wildlife", "sealife", "attractions"):
+        for c in _pick_group_cards(all_cards, g, 12):
+            if c["id"] in by_id:
+                continue
+            cc = dict(c)
+            cc["featured_all"] = False
+            by_id[cc["id"]] = cc
+            ordered.append(cc)
+    return ordered
+
+
+def _card_group_key(card: dict) -> str:
+    pt = card.get("pt") or "animals"
+    if pt == "exhibits":
+        return "attractions"
+    if card.get("id") in _SEALIFE_GROUP_BY_ID:
+        return "sealife"
+    if pt == "animals":
+        return "wildlife"
+    return "wildlife"
+
+
+def write_cards_hub(venues: list[dict]) -> str:
+    """Static crawlable index of every Q&A card → /field-pack/cards/."""
+    cards: list[dict] = []
+    try:
+        cards = load_all_catalog_cards()
+    except Exception as e:
+        print(f"  WARN: load_all_catalog_cards failed: {e}")
+        try:
+            cards = load_print_cards()
+        except Exception as e2:
+            print(f"  WARN: load_print_cards failed for cards hub: {e2}")
+            return "/field-pack/cards/"
+
+    venues_by_id = {v["id"]: v for v in venues}
+    wildlife, sealife = _split_creature_cards(cards)
+    exhibits = [c for c in cards if c.get("pt") == "exhibits"]
+    sections = [
+        ("wildlife", "Wildlife", wildlife),
+        ("sealife", "Sea life", sealife),
+        ("attractions", "Attractions", exhibits),
+    ]
+    total = sum(len(s[2]) for s in sections)
+
+    def section_html(sid: str, label: str, items: list[dict]) -> str:
+        if not items:
+            return ""
+        items = sorted(items, key=lambda x: (x.get("name") or "").lower())
+        lis = []
+        for c in items:
+            blurb = esc((c.get("blurb") or "").strip() or "Printable Q&A card for kids.")
+            href = _card_href(c)
+            cid = c.get("id") or ""
+            photo = (c.get("photo") or "").strip()
+            if photo.startswith("photos/"):
+                src = "/field-pack/" + photo.split("?")[0]
+            elif photo.startswith("/field-pack/"):
+                src = photo.split("?")[0]
+            elif (FIELD / "photos" / f"{cid}.jpg").is_file():
+                src = f"/field-pack/photos/{cid}.jpg"
+            else:
+                src = ""
+            media = (
+                f'<img class="cards-hub-thumb" src="{esc(src)}" alt="" width="120" height="90" loading="lazy" decoding="async" />'
+                if src
+                else f'<span class="cards-hub-emoji" aria-hidden="true">{esc(c.get("emoji") or "🎴")}</span>'
+            )
+            lis.append(
+                f'<li class="cards-hub-item" data-card-id="{esc(cid)}" data-card-group="{esc(sid)}" '
+                f'data-card-search="{esc((c.get("name") or "") + " " + (c.get("blurb") or "") + " " + cid)}">'
+                f'<a class="cards-hub-link" href="{href}" data-card-id="{esc(cid)}">'
+                f"{media}"
+                f'<span class="cards-hub-copy">'
+                f'<span class="cards-hub-name">{esc(c.get("name") or cid)}</span>'
+                f'<span class="cards-hub-teaser">{blurb}</span>'
+                f"</span>"
+                f"</a></li>"
+            )
+        return (
+            f'<section class="cards-hub-section" id="cards-{esc(sid)}" aria-labelledby="h-{esc(sid)}">\n'
+            f'  <h2 id="h-{esc(sid)}">{label} <span class="seo-dir-count">{len(items)}</span></h2>\n'
+            f'  <ul class="cards-hub-list">\n    '
+            + "\n    ".join(lis)
+            + "\n  </ul>\n</section>"
+        )
+
+    body_sections = "\n".join(section_html(*s) for s in sections if s[2])
+    title = "Printable Animal & Discovery Cards for Kids · Field Trip Kit"
+    desc = (
+        "Free printable Q&A cards for kids — animal facts, sea life, and museum attractions. "
+        f"Browse all {total} cards, then print from any place kit. No account."
+    )
+    url = f"{SITE}/field-pack/cards/"
+    html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{esc(title)}</title>
+  <meta name="description" content="{esc(desc)}" />
+  <link rel="canonical" href="{esc(url)}" />
+  <meta name="robots" content="index,follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="1Less" />
+  <meta property="og:title" content="{esc(title)}" />
+  <meta property="og:description" content="{esc(desc)}" />
+  <meta property="og:url" content="{esc(url)}" />
+  <meta property="og:image" content="{OG_SHARE_IMAGE}" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="{OG_SHARE_IMAGE}" />
+  <base href="/field-pack/" />
+  <link rel="stylesheet" href="/shell/shell.css?v=6" />
+  <link rel="stylesheet" href="/field-pack/css/styles.css?v=26" />
+  <link rel="stylesheet" href="/field-pack/css/landing.css?v=89" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=21" />
+  <style>
+    .cards-hub {{ max-width: 52rem; margin: 0 auto; padding: 0.75rem 1rem 3rem; }}
+    .cards-hub h1 {{ font-size: clamp(1.45rem, 4vw, 2rem); color: #0a4545; margin: 0.5rem 0 0.5rem; }}
+    .cards-hub-lead {{ color: #3d4f6f; line-height: 1.45; max-width: 40rem; }}
+    .cards-hub-count {{ font-weight: 700; color: #0f5c5c; margin: 0.5rem 0 1.25rem; }}
+    .cards-hub-section {{ margin: 1.5rem 0; }}
+    .cards-hub-section h2 {{ font-size: 1.15rem; color: #0a4545; margin: 0 0 0.65rem; }}
+    .cards-hub-search-label {{ display: block; font-weight: 750; font-size: 0.88rem; margin: 0.75rem 0 0.35rem; color: #0a4545; }}
+    .cards-hub-search {{ width: 100%; max-width: 28rem; min-height: 46px; font: inherit; font-size: 1rem; padding: 0.55rem 0.75rem; border-radius: 12px; border: 1.5px solid rgba(15,92,92,0.22); box-sizing: border-box; }}
+    .cards-hub-list {{ list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; }}
+    @media (min-width: 720px) {{
+      .cards-hub-list {{ grid-template-columns: 1fr 1fr; }}
+    }}
+    .cards-hub-link {{
+      display: grid; grid-template-columns: 100px 1fr; gap: 0.7rem; align-items: center;
+      padding: 0.5rem; border: 1.5px solid rgba(196,92,38,0.22); border-radius: 14px;
+      text-decoration: none; color: inherit; background: #fff; min-height: 88px;
+    }}
+    .cards-hub-link:hover, .cards-hub-link:focus-visible {{ border-color: #c45c26; outline: 2px solid #c45c26; outline-offset: 2px; }}
+    .cards-hub-thumb {{ width: 100px; height: 75px; object-fit: cover; object-position: 50% 18%; border-radius: 10px; background: #f4f1ea; }}
+    .cards-hub-emoji {{ font-size: 2.2rem; text-align: center; width: 100px; }}
+    .cards-hub-copy {{ display: flex; flex-direction: column; gap: 0.2rem; min-width: 0; }}
+    .cards-hub-name {{ font-weight: 800; color: #0a4545; font-size: 0.95rem; }}
+    .cards-hub-teaser {{
+      color: #3d4f6f; font-size: 0.84rem; line-height: 1.3;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    }}
+    .cards-hub-item[hidden] {{ display: none !important; }}
+    .cards-hub-crumbs {{ font-size: 0.9rem; color: #5a6a84; }}
+    .cards-hub-crumbs a {{ color: #0f5c5c; }}
+  </style>
+</head>
+<body class="landing-body seo-venue-body">
+  <div class="app landing-app">
+    <header class="oneless-shell no-print" data-product="bdo">
+      <a class="shell-brand" href="/field-pack/" aria-label="Field Trip Kit home">
+        <img src="/1LessMark.png" alt="" width="52" height="52" />
+      </a>
+      <a class="shell-product" href="/field-pack/">
+        Field Trip Kit
+        <small>{HEADER_TAGLINE}</small>
+      </a>
+      <div class="shell-more-wrap">
+        <button type="button" class="shell-more" aria-expanded="false" aria-haspopup="true" aria-controls="shell-menu">More</button>
+        <div id="shell-menu" class="shell-menu" hidden role="menu">
+          <a href="/field-pack/" role="menuitem">All places<small>Map &amp; outings</small></a>
+          <a href="/field-pack/cards/" aria-current="page" role="menuitem">Animal cards<small>Q&amp;A printables</small></a>
+          <a href="/field-pack/virtual-field-trip/" role="menuitem">Virtual Field Trip<small>Study before you go</small></a>
+          <a href="/field-pack/#about" role="menuitem">About<small>1Less &amp; contact</small></a>
+        </div>
+      </div>
+    </header>
+    <main class="cards-hub">
+      <p class="cards-hub-crumbs"><a href="/field-pack/">Field Trip Kit</a> · Cards</p>
+      <h1>Printable Animal &amp; Discovery Cards for Kids</h1>
+      <p class="cards-hub-lead">
+        Animal facts, sea life, and museum attractions — Q&amp;A cards kids can explore at home before or after a visit.
+        Open any card to print. Free. No account.
+      </p>
+      <p class="cards-hub-count">{total} cards · from Field Trip Kit place lists</p>
+      <label class="cards-hub-search-label" for="cards-hub-search">Find a card</label>
+      <input type="search" id="cards-hub-search" class="cards-hub-search" placeholder="Lion, shark, dinosaur…" autocomplete="off" />
+      <nav class="place-type-tabs place-type-tabs-cards no-print" aria-label="Filter cards">
+        <div class="place-type-seg" role="tablist" aria-label="Card type">
+          <button type="button" class="place-type-tab is-active" role="tab" data-card-filter="all" aria-selected="true">All</button>
+          <button type="button" class="place-type-tab" role="tab" data-card-filter="wildlife" aria-selected="false">Wildlife</button>
+          <button type="button" class="place-type-tab" role="tab" data-card-filter="sealife" aria-selected="false">Sea life</button>
+          <button type="button" class="place-type-tab" role="tab" data-card-filter="attractions" aria-selected="false">Attractions</button>
+        </div>
+      </nav>
+      {body_sections}
+    </main>
+  </div>
+  <script src="/shell/shell.js?v=5"></script>
+  <script src="/field-pack/js/fp-analytics.js?v=1"></script>
+  <script>
+    (function () {{
+      if (typeof FPTrack === "function") FPTrack("cards_hub_visited", {{ source: "cards_hub" }});
+      document.querySelectorAll("a.cards-hub-link[data-card-id]").forEach(function (a) {{
+        a.addEventListener("click", function () {{
+          if (typeof FPTrack === "function") FPTrack("card_opened", {{ card_id: a.getAttribute("data-card-id") || "", source: "cards_hub" }});
+        }});
+      }});
+      var q = document.getElementById("cards-hub-search");
+      var tabs = document.querySelectorAll(".place-type-tab[data-card-filter]");
+      var filter = "all";
+      function applyHubFilter() {{
+        var n = q ? (q.value || "").trim().toLowerCase() : "";
+        var searching = n.length >= 2;
+        document.querySelectorAll(".cards-hub-section").forEach(function (sec) {{
+          var gid = (sec.id || "").replace("cards-", "");
+          sec.hidden = !searching && filter !== "all" && gid !== filter;
+        }});
+        document.querySelectorAll(".cards-hub-item").forEach(function (li) {{
+          var blob = (li.getAttribute("data-card-search") || li.textContent || "").toLowerCase();
+          var g = li.getAttribute("data-card-group") || "";
+          var missSearch = searching && blob.indexOf(n) === -1;
+          var missFilter = !searching && filter !== "all" && g !== filter;
+          li.hidden = missSearch || missFilter;
+        }});
+      }}
+      tabs.forEach(function (btn) {{
+        btn.addEventListener("click", function () {{
+          filter = btn.getAttribute("data-card-filter") || "all";
+          tabs.forEach(function (b) {{
+            var on = b === btn;
+            b.classList.toggle("is-active", on);
+            b.setAttribute("aria-selected", on ? "true" : "false");
+          }});
+          applyHubFilter();
+        }});
+      }});
+      if (q) q.addEventListener("input", applyHubFilter);
+    }})();
+  </script>
+</body>
+</html>
+"""
+    out_dir = FIELD / "cards"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    (out_dir / "index.html").write_text(html, encoding="utf-8")
+    extra = write_card_pages(cards, venues_by_id)
+    print(f"  cards hub → /field-pack/cards/ ({total} cards) + {len(extra)} card pages")
+    return ["/field-pack/cards/"] + extra
+
+
+
+def write_card_pages(cards: list[dict], venues_by_id: dict[str, dict]) -> list[str]:
+    """Static /field-pack/cards/<id>/ pages — print Q&A without app.html."""
+    urls: list[str] = []
+    for c in cards:
+        cid = (c.get("id") or "").strip()
+        if not cid or "/" in cid or ".." in cid:
+            continue
+        name = c.get("name") or cid
+        emoji = c.get("emoji") or "🎴"
+        blurb = (c.get("blurb") or "").strip()
+        vid = c.get("venue") or ""
+        v = venues_by_id.get(vid) or {}
+        vname = v.get("shortName") or v.get("name") or ""
+        venue_line = f" · {esc(vname)}" if vname else ""
+        venue_href = f"/field-pack/{esc(vid)}/" if vid else "/field-pack/"
+        photo = ""
+        if (FIELD / "photos" / f"{cid}.jpg").is_file():
+            photo = f"/field-pack/photos/{cid}.jpg?v=img2"
+        img_html = (
+            f'<img class="card-page-photo" src="{esc(photo)}" alt="" width="640" height="400" decoding="async" />'
+            if photo
+            else f'<p class="card-page-emoji" aria-hidden="true">{esc(emoji)}</p>'
+        )
+        title = f"{name} Q&A Card for Kids · Field Trip Kit"
+        desc = (
+            f"Free printable {name} Q&A card for kids. "
+            + (blurb + " " if blurb else "")
+            + "Print one page. No account."
+        )
+        url = f"{SITE}/field-pack/cards/{cid}/"
+        alias = f"/field-pack/app.html#/venue/{vid}/item/{cid}" if vid else f"/field-pack/app.html#/item/{cid}"
+        html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{esc(title)}</title>
+  <meta name="description" content="{esc(desc)}" />
+  <link rel="canonical" href="{esc(url)}" />
+  <meta name="robots" content="index,follow" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="{esc(title)}" />
+  <meta property="og:description" content="{esc(desc)}" />
+  <meta property="og:url" content="{esc(url)}" />
+  <meta property="og:image" content="{OG_SHARE_IMAGE}" />
+  <link rel="stylesheet" href="/shell/shell.css?v=6" />
+  <link rel="stylesheet" href="/field-pack/css/styles.css?v=26" />
+  <link rel="stylesheet" href="/field-pack/css/landing.css?v=88" />
+  <style>
+    .card-page {{ max-width: 28rem; margin: 0 auto; padding: 1rem 1rem 3rem; }}
+    .card-page h1 {{ font-size: clamp(1.35rem, 4vw, 1.75rem); color: #0a4545; margin: 0.4rem 0; }}
+    .card-page-venue a {{ color: #0f5c5c; font-weight: 750; }}
+    .card-page-photo {{ width: 100%; height: auto; border-radius: 14px; border: 1.5px solid rgba(15,92,92,.14); }}
+    .card-page-emoji {{ font-size: 3rem; margin: 0.5rem 0; }}
+    .card-page-blurb {{ color: #3d4f6f; line-height: 1.45; }}
+    .card-page-actions {{ display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem; }}
+    .card-page-crumbs {{ font-size: 0.9rem; color: #5a6a84; }}
+    .card-page-crumbs a {{ color: #0f5c5c; }}
+  </style>
+</head>
+<body class="landing-body">
+  <div class="app">
+    <header class="oneless-shell no-print" data-product="bdo">
+      <a class="shell-brand" href="/field-pack/" aria-label="Field Trip Kit home">
+        <img src="/1LessMark.png" alt="" width="52" height="52" />
+      </a>
+      <a class="shell-product" href="/field-pack/">Field Trip Kit <small>{HEADER_TAGLINE}</small></a>
+    </header>
+    <main class="card-page">
+      <p class="card-page-crumbs"><a href="/field-pack/">Field Trip Kit</a> · <a href="/field-pack/cards/">Cards</a></p>
+      <h1>{esc(emoji)} {esc(name)}</h1>
+      <p class="card-page-venue">Printable Q&amp;A card{venue_line}
+        {f'· <a href="{venue_href}">Place page</a>' if vid else ""}</p>
+      {img_html}
+      <p class="card-page-blurb">{esc(blurb) if blurb else "Print this card and talk it through at home."}</p>
+      <p class="card-page-actions">
+        <button type="button" class="btn btn-primary" id="print-this-card" data-card-id="{esc(cid)}" data-venue="{esc(vid)}">Print this card</button>
+        <a class="btn btn-secondary" href="/field-pack/cards/">All cards</a>
+      </p>
+      <p class="card-page-alias"><a href="{esc(alias)}">Open in outing view</a> (alias)</p>
+    </main>
+  </div>
+  <div id="print-sheet" class="print-sheet" aria-hidden="true"></div>
+  <div id="treasure-sheet" class="print-sheet treasure-sheet" aria-hidden="true"></div>
+  <script src="/shell/shell.js?v=5"></script>
+  <script src="/field-pack/js/fp-analytics.js?v=1"></script>
+  <script src="/field-pack/js/catalog.js?v=28"></script>
+  <script src="/field-pack/js/print-kit.js?v=12"></script>
+  <script>
+    (function () {{
+      if (typeof FPTrack === "function") FPTrack("card_page_viewed", {{ card_id: "{esc(cid)}" }});
+      var btn = document.getElementById("print-this-card");
+      if (btn) btn.addEventListener("click", function () {{
+        var id = btn.getAttribute("data-card-id") || "";
+        var vid = btn.getAttribute("data-venue") || "";
+        if (typeof FPTrack === "function") FPTrack("card_opened", {{ card_id: id, source: "card_page_print" }});
+        if (window.FPPrint && FPPrint.printQaForItem) FPPrint.printQaForItem(id, vid || null);
+      }});
+    }})();
+  </script>
+</body>
+</html>
+"""
+        dest = FIELD / "cards" / cid
+        dest.mkdir(parents=True, exist_ok=True)
+        (dest / "index.html").write_text(html, encoding="utf-8")
+        urls.append(f"/field-pack/cards/{cid}/")
+    return urls
+
+
+def patch_landing_directory(venues: list[dict]) -> None:
+    """T5: cards showcase + compact places (no full dual-rail lists on landing)."""
+    index = FIELD / "index.html"
+    html = index.read_text(encoding="utf-8")
+    venues_by_id = {v["id"]: v for v in venues}
+
+    by_type: dict[str, list[dict]] = {m["kind"]: [] for m in _TYPE_DIR_META}
+    for v in venues:
+        kind = venue_type_kind(v)
+        if kind in by_type:
+            by_type[kind].append(v)
+
+    cards: list[dict] = []
+    try:
+        cards = load_print_cards()
+    except Exception as e:
+        print(f"  WARN: load_print_cards failed: {e}")
+    all_cards: list[dict] = []
+    try:
+        all_cards = load_all_catalog_cards()
+    except Exception:
+        all_cards = cards
+
+    for c in cards:
+        c.setdefault("blurb", "")
+        c["group"] = _card_group_key(c)
+    for c in all_cards:
+        c.setdefault("blurb", "")
+        c["group"] = _card_group_key(c)
+
+    pool = all_cards if all_cards else cards
+    featured = _landing_teaser_cards(pool)
+    n_cards = len(all_cards) if all_cards else len(cards)
+
+    tile_lis = []
+    for c in featured:
+        g = c.get("group") or "wildlife"
+        cid = c.get("id") or ""
+        src = ""
+        if (FIELD / "photos" / f"{cid}.jpg").is_file():
+            src = f"/field-pack/photos/{cid}.jpg?v=img2"
+        elif (c.get("photo") or "").startswith("photos/"):
+            src = "/field-pack/" + str(c["photo"]).split("?")[0]
+        if src:
+            media = (
+                f'<span class="cat-card-media">'
+                f'<img class="cat-card-thumb" src="{esc(src)}" alt="" width="320" height="240" loading="lazy" decoding="async" />'
+                f"</span>"
+            )
+        else:
+            media = (
+                f'<span class="cat-card-media cat-card-media-emoji">'
+                f'<span class="cat-card-emoji" aria-hidden="true">{esc(c.get("emoji") or "🎴")}</span>'
+                f"</span>"
+            )
+        tile_lis.append(
+            f'<li class="cat-card-tile" data-card-group="{esc(g)}" data-card-id="{esc(cid)}"'
+            f'{" data-featured-all=\"1\"" if c.get("featured_all") else " hidden"}>'
+            f'<a class="cat-card-tile-link" href="{_card_href(c)}" data-card-id="{esc(cid)}">'
+            f"{media}"
+            f'<span class="cat-card-name">{esc(c.get("name") or cid)}</span>'
+            f"</a></li>"
+        )
+    tiles_ul = (
+        '<ul class="cat-card-grid" id="cat-card-grid">\n            '
+        + "\n            ".join(tile_lis)
+        + "\n          </ul>"
+    )
+
+    hub_meta = [
+        ("zoo", "Zoos & safaris", "🦁", "/field-pack/zoos/"),
+        ("aquarium", "Aquariums", "🦈", "/field-pack/aquariums/"),
+        ("museum", "Museums & science", "🦕", "/field-pack/museums/"),
+        ("park", "National parks", "🏞️", "/field-pack/national-parks/"),
+    ]
+    hub_cards = []
+    for kind, label, emoji, href in hub_meta:
+        n = len(by_type.get(kind) or [])
+        hub_cards.append(
+            f'<a class="cat-place-hub" href="{href}" data-place-kind="{esc(kind)}">'
+            f'<span class="cat-place-emoji" aria-hidden="true">{emoji}</span>'
+            f'<span class="cat-place-label">{esc(label)}</span>'
+            f'<span class="cat-place-count">{n}</span>'
+            f"</a>"
+        )
+    hubs_html = (
+        '<div class="cat-place-hubs" id="cat-place-hubs">\n          '
+        + "\n          ".join(hub_cards)
+        + "\n        </div>"
+    )
+
+    pop_chips = []
+    for pid in POPULAR_VENUE_IDS:
+        v = venues_by_id.get(pid)
+        if not v:
+            continue
+        name = v.get("shortName") or v.get("name") or pid
+        emoji = v.get("emoji") or "📍"
+        pop_chips.append(
+            f'<a class="cat-popular-chip" href="/field-pack/{esc(pid)}/" data-venue-slug="{esc(pid)}">'
+            f"{esc(emoji)} {esc(name)}</a>"
+        )
+    popular_html = (
+        '<div class="cat-popular" id="cat-popular">'
+        '<p class="cat-popular-label">Popular places</p>'
+        '<div class="cat-popular-chips">'
+        + "".join(pop_chips)
+        + "</div></div>"
+    )
+
+    n_places = len(venues)
+
+    places_inner = (
+        f'<div class="cat-places-compact" id="cat-places-compact">\n'
+        f"            {hubs_html}\n"
+        f"            {popular_html}\n"
+        f"          </div>"
+    )
+    cards_inner = (
+        f'<div class="cat-cards-showcase" id="cat-cards-showcase">\n'
+        f'            <nav class="place-type-tabs place-type-tabs-cards no-print" aria-label="Filter cards">\n'
+        f'              <div class="place-type-seg" role="tablist" aria-label="Card type">\n'
+        f'                <button type="button" class="place-type-tab is-active" role="tab" data-card-filter="all" aria-selected="true">All</button>\n'
+        f'                <button type="button" class="place-type-tab" role="tab" data-card-filter="wildlife" aria-selected="false">Wildlife</button>\n'
+        f'                <button type="button" class="place-type-tab" role="tab" data-card-filter="sealife" aria-selected="false">Sea life</button>\n'
+        f'                <button type="button" class="place-type-tab" role="tab" data-card-filter="attractions" aria-selected="false">Attractions</button>\n'
+        f"              </div>\n"
+        f"            </nav>\n"
+        f"            {tiles_ul}\n"
+        f'            <p class="cat-cards-all"><a href="/field-pack/cards/" id="cat-all-cards-link">All {n_cards} cards →</a></p>\n'
+        f"          </div>"
+    )
+    cards_block = (
+        f'<div id="seo-venue-directory" class="seo-dir-body seo-dir-body-compact seo-dir-cards-only" '
+        f'data-place-count-build="{n_places}" data-card-count-build="{n_cards}">\n'
+        f"          {cards_inner}\n"
+        f"        </div>"
+    )
+
+    places_pat = re.compile(
+        r"(<!-- SEO:PLACES-BODY:START -->)([\s\S]*?)(<!-- SEO:PLACES-BODY:END -->)",
+        re.M,
+    )
+    cards_pat = re.compile(
+        r"(<!-- SEO:CARDS-BODY:START -->)([\s\S]*?)(<!-- SEO:CARDS-BODY:END -->)",
+        re.M,
+    )
+    dir_pat = re.compile(
         r"(<!-- SEO:DIR-BODY:START -->)([\s\S]*?)(<!-- SEO:DIR-BODY:END -->)",
         re.M,
     )
-    if not pattern.search(html):
+
+    if places_pat.search(html):
+        html = places_pat.sub(rf"\1\n          {places_inner}\n          \3", html)
+    if cards_pat.search(html):
+        html = cards_pat.sub(rf"\1\n        {cards_block}\n        \3", html)
+    elif dir_pat.search(html):
+        # legacy single block
+        legacy = (
+            f'<div id="seo-venue-directory" class="seo-dir-body seo-dir-body-compact" '
+            f'data-place-count-build="{n_places}" data-card-count-build="{n_cards}">\n'
+            f"          {cards_inner}\n"
+            f"          {places_inner}\n"
+            f"        </div>"
+        )
+        html = dir_pat.sub(rf"\1\n        {legacy}\n        \3", html)
+    else:
         print("  WARN: landing directory marker not found")
         return
-    html = pattern.sub(
-        rf'\1\n        <div id="seo-venue-directory" class="seo-dir-body">\n        {block}\n        </div>\n        \3',
+
+    html = re.sub(
+        r'(<section class="seo-directory"[^>]*>\s*)<h2 id="dir-heading">[^<]*</h2>\s*<p id="dir-blurb">[\s\S]*?</p>',
+        r"\1",
         html,
+        count=1,
     )
+
+    html = re.sub(
+        r"<span data-place-count>\d+</span>",
+        f"<span data-place-count>{n_places}</span>",
+        html,
+        count=1,
+    )
+
+    if 'href="/field-pack/cards/"' not in html:
+        html = html.replace(
+            '<a href="/field-pack/" aria-current="page" role="menuitem">All places<small>Map &amp; outings</small></a>\n            <a href="/field-pack/#about"',
+            '<a href="/field-pack/" aria-current="page" role="menuitem">All places<small>Map &amp; outings</small></a>\n            <a href="/field-pack/cards/" role="menuitem">Animal cards<small>Q&amp;A printables</small></a>\n            <a href="/field-pack/#about"',
+            1,
+        )
+
     index.write_text(html, encoding="utf-8")
-    counts = {t: len(buckets[t]) for t in _CONTINENT_ORDER if buckets.get(t)}
-    print(f"  patched landing venue directory (continents: {counts})")
+    counts = {m["kind"]: len(by_type[m["kind"]]) for m in _TYPE_DIR_META}
+    print(
+        f"  patched landing compact catalog places={counts} "
+        f"featured_cards={len(featured)} total_cards={n_cards} popular={len(pop_chips)}"
+    )
 
 
 def patch_places_data_hrefs(venues: list[dict]) -> None:
@@ -1871,21 +3834,27 @@ def main() -> int:
 
     patch_landing_directory(venues)
     patch_places_data_hrefs(venues)
-    write_sitemap(venues)
+    type_urls = write_type_landings(venues)
+    cards_urls = write_cards_hub(venues)
+    if isinstance(cards_urls, str):
+        cards_urls = [cards_urls]
+    write_sitemap(venues, extra_urls=type_urls + cards_urls + ["/field-pack/virtual-zoo/", "/field-pack/virtual-field-trip/"])
     write_robots()
     manifest = {
         "generated": TODAY,
         "count": len(urls),
         "urls": [f"{SITE}{u}" for u in urls],
+        "type_landings": [f"{SITE}{u}" for u in type_urls],
         "landing": f"{SITE}/field-pack/",
     }
     (FIELD / "seo-venues.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
     # human-readable URL list for Search Console
     (FIELD / "SEO_URLS.txt").write_text(
-        "\n".join([manifest["landing"]] + manifest["urls"]) + "\n",
+        "\n".join([manifest["landing"]] + manifest["type_landings"] + manifest["urls"]) + "\n",
         encoding="utf-8",
     )
     print(f"  wrote {len(urls)} venue pages")
+    print(f"  wrote {len(type_urls)} type landings")
     print(f"  sitemap → static/sitemap.xml")
     print(f"  robots  → static/robots.txt")
     print(f"  URL list → static/field-pack/SEO_URLS.txt")

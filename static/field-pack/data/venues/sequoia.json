@@ -1,0 +1,398 @@
+{
+  "slug": "sequoia",
+  "name": "Sequoia National Park",
+  "type": "national_park",
+  "city": "Three Rivers",
+  "region": "CA",
+  "country": "US",
+  "lat": 36.4864,
+  "lng": -118.5658,
+  "official_url": "https://www.nps.gov/seki/",
+  "last_verified": "2026-08-09",
+  "verified_by": "research",
+  "status": "verified",
+  "tagline": "Giant Forest short loops — enormous trees without a wilderness epic.",
+  "practical": {
+    "typical_duration": "half day",
+    "ticket_note": "Entrance pass; Sequoia & Kings Canyon are paired parks — this kit is Giant Forest.",
+    "transit_note": "Winding mountain roads; winter tire/chain rules possible.",
+    "energy_note": "Altitude + hills; short paved loops are the kid win.",
+    "best_start": "Giant Forest Museum area → big tree loop → one more grove stop",
+    "slice_name": "Giant Forest",
+    "season_note": "Snow can close roads; summer is easiest for first visits."
+  },
+  "items": [
+    {
+      "id": "sequoia_general_sherman",
+      "label": "Giant sequoia grove",
+      "emoji": "🌳",
+      "one_liner": "Look up — hug with your eyes only.",
+      "tags": [
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Forest",
+      "qa_card": {
+        "question": "What did you notice at the Giant sequoia grove?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-giant-tree",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Giant sequoia grove"
+    },
+    {
+      "id": "np_giant_tree",
+      "label": "General Sherman Tree area",
+      "emoji": "🌳",
+      "one_liner": "Enormous trunks — short paved loops.",
+      "tags": [
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Forest",
+      "qa_card": {
+        "question": "What did you notice at the General Sherman Tree area?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-giant-tree",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "General Sherman Tree area"
+    },
+    {
+      "id": "np_visitor_center",
+      "label": "Giant Forest / Lodgepole visitor center",
+      "emoji": "🏛️",
+      "one_liner": "Maps, restrooms, questions — start here.",
+      "tags": [
+        "rest"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Entrance",
+      "qa_card": {
+        "question": "What did you notice at the Giant Forest / Lodgepole visitor center?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-visitor-center",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Giant Forest / Lodgepole visitor center"
+    },
+    {
+      "id": "np_trailhead_sign",
+      "label": "Sherman Tree trail sign",
+      "emoji": "🥾",
+      "one_liner": "Read distance and rules before you go.",
+      "tags": [
+        "read"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Trail",
+      "qa_card": {
+        "question": "What did you notice at the Sherman Tree trail sign?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-trailhead-sign",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Sherman Tree trail sign"
+    },
+    {
+      "id": "np_boardwalk",
+      "label": "Giant Forest paved loop",
+      "emoji": "🪵",
+      "one_liner": "Stay on the path — fragile ground or wet edge.",
+      "tags": [
+        "walk"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Trail",
+      "qa_card": {
+        "question": "What did you notice at the Giant Forest paved loop?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-boardwalk",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Giant Forest paved loop"
+    },
+    {
+      "id": "np_scenic_overlook",
+      "label": "Sierra vista",
+      "emoji": "🌄",
+      "one_liner": "One big view — stay behind rails.",
+      "tags": [
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Overlook",
+      "qa_card": {
+        "question": "What did you notice at the Sierra vista?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-scenic-overlook",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Sierra vista"
+    },
+    {
+      "id": "np_junior_ranger",
+      "label": "Sequoia Junior Ranger desk",
+      "emoji": "🎖️",
+      "one_liner": "Ask at the visitor center — hours and ages vary.",
+      "tags": [
+        "hands"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Visitor center",
+      "qa_card": {
+        "question": "What did you notice at the Sequoia Junior Ranger desk?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-junior-ranger",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Sequoia Junior Ranger desk"
+    },
+    {
+      "id": "np_meadow",
+      "label": "Round Meadow edge",
+      "emoji": "🌾",
+      "one_liner": "Wide sky break.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Open",
+      "qa_card": {
+        "question": "What did you notice at the Round Meadow edge?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-meadow",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Round Meadow edge"
+    },
+    {
+      "id": "np_river",
+      "label": "Mountain creek",
+      "emoji": "🏞️",
+      "one_liner": "Water edge — safe step back.",
+      "tags": [
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Water",
+      "qa_card": {
+        "question": "What did you notice at the Mountain creek?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-river",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Mountain creek"
+    }
+  ],
+  "content_mode": "curated",
+  "media": {
+    "visitor_map_url": "/field-pack/media/maps/sequoia.jpg",
+    "visitor_map_page": "https://www.nps.gov/seki/planyourvisit/upload/20210826-Unigrid-Spanish-508.pdf",
+    "visitor_map_kind": "image",
+    "map_attribution": "Map: NPS via NPMaps (public domain)",
+    "hero_illustration": "/field-pack/photos/np-hero-sequoia.jpg",
+    "print_map": "/field-pack/media/maps/sequoia.jpg",
+    "visitor_map_full": "https://npmaps.com/wp-content/uploads/sequoia-kings-canyon-national-park-map.jpg"
+  },
+  "parent_script": [
+    "Bathroom first",
+    "Water & sun check",
+    "One big view",
+    "Leave while happy"
+  ],
+  "route_90m": [
+    "np_visitor_center",
+    "sequoia_general_sherman",
+    "np_giant_tree"
+  ],
+  "research_notes": "NP Phase 1a pilot 2026-08-08 · slice-focused kit · label scrub 2026-08-09",
+  "list_confidence": "partial",
+  "do_not_list": [],
+  "presence_sources": [
+    "https://www.nps.gov/seki/"
+  ],
+  "last_presence_audit": "2026-08-08",
+  "bonus_hunt": {
+    "tagline": "Sequoia National Park bonus · second look on the trail",
+    "find_ids": [
+      "np_scenic_overlook",
+      "np_boardwalk",
+      "np_junior_ranger",
+      "np_meadow",
+      "np_trailhead_sign",
+      "np_giant_tree",
+      "sequoia_general_sherman"
+    ],
+    "challenges": [
+      {
+        "id": "sequoia_np_scenic_overlo_watch",
+        "text": "Overlook: take 15 seconds on the Sierra vista — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "sequoia_np_boardwalk_watch",
+        "text": "Trail: take 15 seconds on the Giant Forest paved loop — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "sequoia_np_junior_ranger_watch",
+        "text": "Visitor center: take 15 seconds on the Sequoia Junior Ranger desk — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "sequoia_np_meadow_watch",
+        "text": "Open: take 15 seconds on the Round Meadow edge — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "sequoia_np_trailhead_sig_watch",
+        "text": "Trail: take 15 seconds on the Sherman Tree trail sign — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_still",
+        "text": "Quiet 20 seconds on the trail — bird, wind, water, or people: what wins?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_far_near",
+        "text": "Name something far first — then something by your feet",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_camo",
+        "text": "Best natural camouflage (rock, bark, shadow) you can spot",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_map",
+        "text": "Find a map or zone name you haven’t noticed — point it out",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_tiny_huge",
+        "text": "Something tiny next to something huge in this area",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find a park map or zone sign — name one animal that lives that way",
+    "easter_egg_little": "★ Easter egg: pick a favorite bench — sit 60 seconds and name three sounds",
+    "researched": "2026-08-09",
+    "status": "solid",
+    "sources": [
+      "https://www.nps.gov/seki/"
+    ]
+  }
+}

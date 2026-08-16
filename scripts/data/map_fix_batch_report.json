@@ -1,0 +1,310 @@
+[
+  {
+    "slug": "sequoia",
+    "ok": true,
+    "out_size": [
+      1869,
+      2200
+    ],
+    "bytes": 815725,
+    "area_kept": 0.893,
+    "crop_rejected": null,
+    "chosen_page": null,
+    "source": "https://npmaps.com/wp-content/uploads/sequoia-kings-canyon-national-park-map.jpg",
+    "deep": "https://www.nps.gov/seki/planyourvisit/maps.htm"
+  },
+  {
+    "slug": "kings-canyon",
+    "ok": true,
+    "out_size": [
+      1808,
+      2200
+    ],
+    "bytes": 758939,
+    "area_kept": 0.582,
+    "crop_rejected": null,
+    "chosen_page": null,
+    "source": "https://npmaps.com/wp-content/uploads/kings-canyon-sequoia-national-park-map.jpg",
+    "deep": "https://www.nps.gov/seki/planyourvisit/maps.htm"
+  },
+  {
+    "slug": "shenandoah",
+    "ok": true,
+    "out_size": [
+      820,
+      2200
+    ],
+    "bytes": 423653,
+    "area_kept": 1.0,
+    "crop_rejected": "area_and_min_edge",
+    "chosen_page": null,
+    "source": "https://npmaps.com/wp-content/uploads/shenandoah-national-park-map.jpg",
+    "deep": "https://www.nps.gov/shen/planyourvisit/maps.htm"
+  },
+  {
+    "slug": "olympic",
+    "ok": true,
+    "out_size": [
+      2200,
+      1563
+    ],
+    "bytes": 840705,
+    "area_kept": 1.0,
+    "crop_rejected": null,
+    "chosen_page": null,
+    "source": "https://npmaps.com/wp-content/uploads/olympic-national-park-map.jpg",
+    "deep": "https://www.nps.gov/olym/planyourvisit/maps.htm"
+  },
+  {
+    "slug": "gateway-arch",
+    "ok": true,
+    "out_size": [
+      2200,
+      1852
+    ],
+    "bytes": 511534,
+    "area_kept": 1.0,
+    "crop_rejected": null,
+    "chosen_page": null,
+    "source": "https://npmaps.com/wp-content/uploads/gateway-arch-national-park-map.jpg",
+    "deep": "https://www.nps.gov/jeff/planyourvisit/maps.htm"
+  },
+  {
+    "slug": "isle-royale",
+    "ok": true,
+    "out_size": [
+      2200,
+      1317
+    ],
+    "bytes": 365061,
+    "area_kept": 1.0,
+    "crop_rejected": null,
+    "chosen_page": null,
+    "source": "https://npmaps.com/wp-content/uploads/isle-royale-national-park-map.jpg",
+    "deep": "https://www.nps.gov/isro/planyourvisit/maps.htm"
+  },
+  {
+    "slug": "theodore-roosevelt",
+    "ok": true,
+    "out_size": [
+      1736,
+      1179
+    ],
+    "bytes": 446655,
+    "area_kept": 0.352,
+    "crop_rejected": null,
+    "chosen_page": null,
+    "source": "https://npmaps.com/wp-content/uploads/theodore-roosevelt-national-park-south-unit-map.jpg",
+    "deep": "https://www.nps.gov/thro/planyourvisit/maps.htm"
+  },
+  {
+    "slug": "channel-islands",
+    "ok": true,
+    "out_size": [
+      1772,
+      1508
+    ],
+    "bytes": 335298,
+    "area_kept": 0.648,
+    "crop_rejected": null,
+    "chosen_page": null,
+    "source": "https://npmaps.com/wp-content/uploads/channel-islands-map.jpg",
+    "deep": "https://www.nps.gov/chis/planyourvisit/maps.htm"
+  },
+  {
+    "slug": "canyonlands",
+    "ok": true,
+    "out_size": [
+      1633,
+      2200
+    ],
+    "bytes": 810939,
+    "area_kept": 0.759,
+    "crop_rejected": null,
+    "chosen_page": null,
+    "source": "https://npmaps.com/wp-content/uploads/canyonlands-park-map.jpg",
+    "deep": "https://www.nps.gov/cany/planyourvisit/maps.htm"
+  },
+  {
+    "slug": "north-cascades",
+    "ok": true,
+    "out_size": [
+      2127,
+      2200
+    ],
+    "bytes": 1247875,
+    "area_kept": 0.954,
+    "crop_rejected": null,
+    "chosen_page": null,
+    "source": "https://npmaps.com/wp-content/uploads/north-cascades-national-park-map.jpg",
+    "deep": "https://www.nps.gov/noca/planyourvisit/maps.htm"
+  },
+  {
+    "slug": "great-smoky-mountains",
+    "ok": true,
+    "out_size": [
+      2158,
+      1297
+    ],
+    "bytes": 820841,
+    "area_kept": 0.89,
+    "crop_rejected": null,
+    "chosen_page": "page-1.jpg",
+    "source": "https://www.nps.gov/grsm/planyourvisit/upload/grsmmap_2024_reduced_508.pdf",
+    "deep": "https://www.nps.gov/grsm/planyourvisit/upload/grsmmap_2024_reduced_508.pdf"
+  },
+  {
+    "slug": "new-river-gorge",
+    "ok": true,
+    "out_size": [
+      918,
+      2200
+    ],
+    "bytes": 519532,
+    "area_kept": 0.783,
+    "crop_rejected": null,
+    "chosen_page": null,
+    "source": "https://npmaps.com/wp-content/uploads/new-river-gorge-map.jpg",
+    "deep": "https://www.nps.gov/neri/planyourvisit/maps.htm"
+  },
+  {
+    "slug": "yosemite",
+    "ok": true,
+    "out_size": [
+      2200,
+      1698
+    ],
+    "bytes": 923070,
+    "area_kept": 0.718,
+    "crop_rejected": null,
+    "chosen_page": null,
+    "source": "https://npmaps.com/wp-content/uploads/yosemite-map.jpg",
+    "deep": "https://www.nps.gov/yose/planyourvisit/maps.htm"
+  },
+  {
+    "slug": "bryce-canyon",
+    "ok": true,
+    "out_size": [
+      1033,
+      1513
+    ],
+    "bytes": 313176,
+    "area_kept": 0.368,
+    "crop_rejected": null,
+    "chosen_page": null,
+    "source": "https://npmaps.com/wp-content/uploads/bryce-canyon-detail-map.jpg",
+    "deep": "https://www.nps.gov/brca/planyourvisit/maps.htm"
+  },
+  {
+    "slug": "acadia",
+    "ok": true,
+    "out_size": [
+      2200,
+      1870
+    ],
+    "bytes": 581083,
+    "area_kept": 1.0,
+    "crop_rejected": null,
+    "chosen_page": null,
+    "source": "https://npmaps.com/wp-content/uploads/acadia-national-park-map.jpg",
+    "deep": "https://www.nps.gov/acad/planyourvisit/maps.htm"
+  },
+  {
+    "slug": "badlands",
+    "ok": true,
+    "out_size": [
+      2200,
+      1230
+    ],
+    "bytes": 540275,
+    "area_kept": 0.654,
+    "crop_rejected": null,
+    "chosen_page": null,
+    "source": "https://npmaps.com/wp-content/uploads/badlands-national-park-map.jpg",
+    "deep": "https://www.nps.gov/badl/planyourvisit/maps.htm"
+  },
+  {
+    "slug": "cuyahoga-valley",
+    "ok": true,
+    "out_size": [
+      903,
+      2200
+    ],
+    "bytes": 405510,
+    "area_kept": 0.431,
+    "crop_rejected": null,
+    "chosen_page": null,
+    "source": "https://npmaps.com/wp-content/uploads/cuyahoga-valley-national-park-map.png",
+    "deep": "https://www.nps.gov/cuva/planyourvisit/maps.htm"
+  },
+  {
+    "slug": "mammoth-cave",
+    "ok": true,
+    "out_size": [
+      2200,
+      1200
+    ],
+    "bytes": 503393,
+    "area_kept": 0.531,
+    "crop_rejected": null,
+    "chosen_page": null,
+    "source": "https://npmaps.com/wp-content/uploads/mammoth-cave-national-park-map.jpg",
+    "deep": "https://www.nps.gov/maca/planyourvisit/maps.htm"
+  },
+  {
+    "slug": "redwood",
+    "ok": true,
+    "out_size": [
+      715,
+      2200
+    ],
+    "bytes": 285011,
+    "area_kept": 0.693,
+    "crop_rejected": null,
+    "chosen_page": null,
+    "source": "https://www.nps.gov/redw/planyourvisit/upload/REDW-Map-2020.jpg",
+    "deep": "https://www.nps.gov/redw/planyourvisit/maps.htm"
+  },
+  {
+    "slug": "pinnacles",
+    "ok": true,
+    "out_size": [
+      2200,
+      1390
+    ],
+    "bytes": 667522,
+    "area_kept": 0.608,
+    "crop_rejected": null,
+    "chosen_page": null,
+    "source": "https://npmaps.com/wp-content/uploads/pinnacles-national-park-map.jpg",
+    "deep": "https://www.nps.gov/pinn/planyourvisit/maps.htm"
+  },
+  {
+    "slug": "american-samoa",
+    "ok": true,
+    "out_size": [
+      2200,
+      983
+    ],
+    "bytes": 341232,
+    "area_kept": 1.0,
+    "crop_rejected": null,
+    "chosen_page": null,
+    "source": "https://npmaps.com/wp-content/uploads/american-samoa-national-park-map.jpg",
+    "deep": "https://www.nps.gov/npsa/planyourvisit/maps.htm"
+  },
+  {
+    "slug": "grand-canyon",
+    "ok": true,
+    "out_size": [
+      2200,
+      993
+    ],
+    "bytes": 674439,
+    "area_kept": 1.0,
+    "crop_rejected": null,
+    "chosen_page": null,
+    "source": "https://www.nps.gov/grca/planyourvisit/upload/GRCAmap5s.jpg",
+    "deep": "https://www.nps.gov/grca/planyourvisit/upload/GRCAmap2.pdf"
+  }
+]

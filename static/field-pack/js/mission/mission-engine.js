@@ -324,7 +324,7 @@
     return part.slice(0, 40).trim() + "…";
   }
 
-  /** Normalize venue.type → wonder/challenge pool keys: zoo | aquarium | museum | safari_zoo */
+  /** Normalize venue.type → wonder/challenge pool keys: zoo | aquarium | museum | safari_zoo | national_park */
   function normalizeVenueType(venue) {
     const raw = String((venue && venue.type) || "zoo")
       .toLowerCase()
@@ -334,6 +334,14 @@
     }
     if (raw.includes("safari")) return "safari_zoo";
     if (raw.includes("zoo")) return "zoo";
+    if (
+      raw.includes("national_park") ||
+      raw === "park" ||
+      raw.includes("nationalpark") ||
+      (raw.includes("park") && !raw.includes("safari"))
+    ) {
+      return "national_park";
+    }
     if (
       /museum|science|natural|history|children|space|air|^sci$|^nh$|^cm$|childrens/.test(raw)
     ) {
@@ -347,6 +355,10 @@
     if (!types.length) return true;
     if (types.includes(kind)) return true;
     if (kind === "safari_zoo" && types.includes("zoo")) return true;
+    // Park kits may reuse outdoor wonder/challenge pools tagged "park"
+    if (kind === "national_park" && (types.includes("park") || types.includes("national_park"))) {
+      return true;
+    }
     return false;
   }
 
@@ -672,27 +684,63 @@
     return out.slice(0, want);
   }
 
+  function sliceLabelOf(venue) {
+    if (!venue) return "";
+    return (
+      venue.slice_label ||
+      venue.sliceLabel ||
+      (venue.practical && venue.practical.slice_name) ||
+      ""
+    ).trim();
+  }
+
+  function placeTitle(venue) {
+    const slice = sliceLabelOf(venue);
+    const name = (venue && venue.name) || "this place";
+    if (slice) {
+      // "Yellowstone National Park" + "Old Faithful Basin" → "Yellowstone — Old Faithful Basin"
+      const short = String(name)
+        .replace(/\s+National Park.*$/i, "")
+        .replace(/\s+National Park & Preserve.*$/i, "")
+        .trim();
+      return `${short} — ${slice}`;
+    }
+    return name;
+  }
+
   function missionTitle(venue, name, age, hunt) {
     const h = normalizeHunt(hunt);
+    const place = placeTitle(venue);
     if (h === "alpha") {
       const n = (name || "").trim();
-      if (n) return `${n}'s Alpha Hunt · ${venue.name}`;
-      return `Alpha Hunt at ${venue.name}`;
+      if (n) return `${n}'s Alpha Hunt · ${place}`;
+      return `Alpha Hunt at ${place}`;
     }
     if (h === "bonus") {
       const n = (name || "").trim();
-      if (n) return `${n}'s Bonus Hunt · ${venue.name}`;
-      return `Bonus Hunt at ${venue.name}`;
+      if (n) return `${n}'s Bonus Hunt · ${place}`;
+      return `Bonus Hunt at ${place}`;
     }
     if (isAdult(age)) {
       const n = (name || "").trim();
-      if (n) return `${n} · ${venue.name}`;
-      return `Solo day at ${venue.name}`;
+      if (n) return `${n} · ${place}`;
+      return `Solo day at ${place}`;
     }
     const n = (name || "").trim();
-    if (!n) return `Your Mission at ${venue.name}`;
+    if (!n) return `Your Mission at ${place}`;
     const poss = /s$/i.test(n) ? `${n}'` : `${n}'s`;
-    return `${poss} Mission at ${venue.name}`;
+    return `${poss} Mission at ${place}`;
+  }
+
+  function parkSafetyFooter(venue) {
+    if (!venue) return "";
+    const custom = venue.safety_footer || venue.safetyFooter || "";
+    if (custom) return custom;
+    const t = String(venue.type || "").toLowerCase();
+    if (t === "national_park" || venue.packTemplate === "park_features") {
+      return "Stay on boardwalks and trails · give wildlife lots of space · bring water";
+    }
+    return "";
   }
 
   function easterEggLine(venue, age, bonusFile, hunt) {
@@ -732,6 +780,11 @@
     else if (hunt === "bonus") bonusHeading = "Hard mode";
     return {
       title: missionTitle(venue, opts.name, opts.age, opts.hunt),
+      slug: venue.slug || venue.id || "",
+      type: venue.type || "",
+      venue_type: venue.type || "",
+      sliceLabel: sliceLabelOf(venue),
+      safetyFooter: parkSafetyFooter(venue),
       venueName: venue.name,
       slug: venue.slug,
       age: opts.age,
@@ -802,6 +855,9 @@
     interestOptions,
     collectTags,
     missionTitle,
+    placeTitle,
+    sliceLabelOf,
+    parkSafetyFooter,
     wonderPool,
   };
 })(typeof window !== "undefined" ? window : globalThis);

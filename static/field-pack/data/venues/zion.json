@@ -1,0 +1,491 @@
+{
+  "slug": "zion",
+  "name": "Zion National Park",
+  "type": "national_park",
+  "city": "Springdale",
+  "region": "UT",
+  "country": "US",
+  "lat": 37.2982,
+  "lng": -113.0263,
+  "official_url": "https://www.nps.gov/zion/",
+  "last_verified": "2026-08-09",
+  "verified_by": "research",
+  "status": "verified",
+  "tagline": "Zion Canyon shuttle corridor — red walls and riverside paths, not the full Narrows hike.",
+  "practical": {
+    "typical_duration": "half day",
+    "ticket_note": "Entrance pass; seasonal shuttle required in the main canyon.",
+    "transit_note": "Park in Springdale or visitor area and ride the shuttle.",
+    "energy_note": "Heat in summer; shade is limited at midday.",
+    "best_start": "Visitor center → shuttle to one riverside stop → second stop if energy",
+    "slice_name": "Zion Canyon · shuttle corridor",
+    "season_note": "Shuttle season vs private cars changes by year — check NPS."
+  },
+  "items": [
+    {
+      "id": "zion_vc",
+      "label": "Zion Canyon Visitor Center",
+      "emoji": "🏛️",
+      "one_liner": "Maps, shuttle info, and water-fill before you ride",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Canyon entrance",
+      "qa_card": {
+        "question": "What did you notice at Zion Canyon Visitor Center?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "zion-canyon-vc",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Zion Canyon Visitor Center",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/zion/planyourvisit/index.htm"
+      },
+      "safety_note": "",
+      "core": true
+    },
+    {
+      "id": "zion_shuttle",
+      "label": "Canyon shuttle ride",
+      "emoji": "🚌",
+      "one_liner": "The ride itself is a stop — watch red walls slide by the window",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Shuttle corridor",
+      "qa_card": {
+        "question": "What did you notice at Canyon shuttle ride?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "zion-shuttle-ride",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Canyon shuttle ride",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/zion/planyourvisit/zionshuttle.htm"
+      },
+      "safety_note": "",
+      "core": true
+    },
+    {
+      "id": "zion_patriarchs",
+      "label": "Court of the Patriarchs viewpoint",
+      "emoji": "⛰️",
+      "one_liner": "Three named peaks in a row — short walk from the shuttle stop",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Court of the Patriarchs",
+      "qa_card": {
+        "question": "What did you notice at Court of the Patriarchs viewpoint?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "zion-patriarchs",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Court of the Patriarchs viewpoint",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/zion/"
+      },
+      "safety_note": "",
+      "core": true
+    },
+    {
+      "id": "zion_lodge_lawn",
+      "label": "Zion Lodge lawn",
+      "emoji": "🌾",
+      "one_liner": "Green reset in the canyon floor — shade and snack space",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Zion Lodge",
+      "qa_card": {
+        "question": "What did you notice at Zion Lodge lawn?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "zion-lodge-lawn",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Zion Lodge lawn",
+      "verify": {
+        "status": "todo",
+        "source": ""
+      },
+      "safety_note": "",
+      "core": true
+    },
+    {
+      "id": "zion_riverside",
+      "label": "Riverside Walk",
+      "emoji": "🪵",
+      "one_liner": "Paved path beside the Virgin River toward the Narrows gateway · Stay on the path near water",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Temple of Sinawava",
+      "qa_card": {
+        "question": "What did you notice at Riverside Walk?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "zion-riverside-walk",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Riverside Walk",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/zion/planyourvisit/riversidewalk.htm"
+      },
+      "safety_note": "Stay on the path near water",
+      "core": true
+    },
+    {
+      "id": "zion_virgin",
+      "label": "Virgin River edge",
+      "emoji": "🏞️",
+      "one_liner": "Cool water sound under red walls — feet stay dry unless planned · Safe step back",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Canyon floor",
+      "qa_card": {
+        "question": "What did you notice at Virgin River edge?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "zion-virgin-river",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Virgin River edge",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/zion/"
+      },
+      "safety_note": "Safe step back",
+      "core": true
+    },
+    {
+      "id": "zion_walls",
+      "label": "Towering canyon walls",
+      "emoji": "🧗",
+      "one_liner": "Tilt your head back — how many rock layers can you count?",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Canyon corridor",
+      "qa_card": {
+        "question": "What did you notice at Towering canyon walls?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "zion-canyon-walls",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Towering canyon walls",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/zion/"
+      },
+      "safety_note": "",
+      "core": true
+    },
+    {
+      "id": "zion_cottonwood",
+      "label": "Cottonwood shade",
+      "emoji": "🌳",
+      "one_liner": "Leafy trees on the canyon floor — listen for wind in the leaves",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Canyon floor",
+      "qa_card": {
+        "question": "What did you notice at Cottonwood shade?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "zion-cottonwood",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Cottonwood shade",
+      "verify": {
+        "status": "todo",
+        "source": ""
+      },
+      "safety_note": "",
+      "core": true
+    },
+    {
+      "id": "zion_jr",
+      "label": "Zion Junior Ranger desk",
+      "emoji": "🎖️",
+      "one_liner": "Badge questions at the visitor center",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Visitor center",
+      "qa_card": {
+        "question": "What did you notice at Zion Junior Ranger desk?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "np-junior-ranger",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Zion Junior Ranger desk",
+      "verify": {
+        "status": "sourced",
+        "source": "generic-template"
+      },
+      "core": false
+    },
+    {
+      "id": "zion_sign",
+      "label": "Shuttle stop trail sign",
+      "emoji": "🥾",
+      "one_liner": "Read one stop name out loud",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Shuttle",
+      "qa_card": {
+        "question": "What did you notice at Shuttle stop trail sign?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "np-trailhead-sign",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Shuttle stop trail sign",
+      "verify": {
+        "status": "sourced",
+        "source": "generic-template"
+      },
+      "core": false
+    }
+  ],
+  "content_mode": "curated",
+  "media": {
+    "visitor_map_url": "/field-pack/media/maps/zion.jpg",
+    "visitor_map_page": "https://www.nps.gov/zion/planyourvisit/upload/ZionUnigrid.pdf",
+    "visitor_map_kind": "image",
+    "map_attribution": "Map: National Park Service (public domain)",
+    "hero_illustration": "/field-pack/photos/np-hero-zion.jpg",
+    "print_map": "/field-pack/media/maps/zion.jpg",
+    "visitor_map_full": "https://www.nps.gov/zion/planyourvisit/upload/ZionUnigrid.pdf"
+  },
+  "parent_script": [
+    "Bathroom first",
+    "Water & sun check",
+    "One big view",
+    "Leave while happy"
+  ],
+  "route_90m": [
+    "zion_shuttle",
+    "zion_patriarchs",
+    "zion_riverside"
+  ],
+  "research_notes": "NP Phase 1a pilot 2026-08-08 · slice-focused kit · label scrub 2026-08-09 · depth-pass top10 2026-08-09",
+  "list_confidence": "partial",
+  "do_not_list": [],
+  "presence_sources": [
+    "https://www.nps.gov/zion/"
+  ],
+  "last_presence_audit": "2026-08-08",
+  "bonus_hunt": {
+    "tagline": "Zion National Park bonus · second look on the trail",
+    "find_ids": [
+      "zion_cottonwood",
+      "zion_lodge_lawn",
+      "zion_vc",
+      "zion_virgin",
+      "zion_walls",
+      "zion_jr",
+      "zion_sign"
+    ],
+    "challenges": [
+      {
+        "id": "zion_zion_cottonwood_watch",
+        "text": "Canyon floor: take 15 seconds on the Cottonwood shade — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "zion_zion_lodge_lawn_watch",
+        "text": "Zion Lodge: take 15 seconds on the Zion Lodge lawn — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "zion_zion_vc_watch",
+        "text": "Canyon entrance: take 15 seconds on the Zion Canyon Visitor Center — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "zion_zion_virgin_watch",
+        "text": "Canyon floor: take 15 seconds on the Virgin River edge — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "zion_zion_walls_watch",
+        "text": "Canyon corridor: take 15 seconds on the Towering canyon walls — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_still",
+        "text": "Quiet 20 seconds on the trail — bird, wind, water, or people: what wins?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_far_near",
+        "text": "Name something far first — then something by your feet",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_camo",
+        "text": "Best natural camouflage (rock, bark, shadow) you can spot",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_map",
+        "text": "Find a map or zone name you haven’t noticed — point it out",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_tiny_huge",
+        "text": "Something tiny next to something huge in this area",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find a park map or zone sign — name one animal that lives that way",
+    "easter_egg_little": "★ Easter egg: pick a favorite bench — sit 60 seconds and name three sounds",
+    "researched": "2026-08-09",
+    "status": "solid",
+    "sources": [
+      "https://www.nps.gov/zion/"
+    ]
+  },
+  "slice_label": "Zion Canyon corridor",
+  "safety_footer": "Stay on boardwalks and trails · give wildlife lots of space · bring water"
+}

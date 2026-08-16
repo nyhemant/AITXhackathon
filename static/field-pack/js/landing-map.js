@@ -164,12 +164,21 @@
     return type || "Place";
   }
 
-  /** Map pin color family: zoo | aquarium | museum | other */
+  /** Map pin color family: zoo | aquarium | museum | park | other */
   function pinTypeKind(type) {
     const t = (type || "").toLowerCase();
     // Aquarium before zoo (handles "Science + aquarium")
     if (t.includes("aquarium")) return "aquarium";
     if (t.includes("zoo") || t.includes("safari")) return "zoo";
+    // National park before generic "park" in museum names is rare; check park first
+    if (
+      t.includes("national park") ||
+      t === "national_park" ||
+      t === "park" ||
+      t.includes("national_park")
+    ) {
+      return "park";
+    }
     if (
       t.includes("museum") ||
       t.includes("science") ||
@@ -1379,6 +1388,15 @@
     const appHref = p.appHref || `/field-pack/app.html#/venue/${encodeURIComponent(venueId)}`;
     const missionHref = `/field-pack/${encodeURIComponent(venueId)}/#mission`;
     const isMissionPilot = MISSION_PILOTS.has(venueId);
+    // Park (and any) hero illustration when present on disk
+    const isPark =
+      pinTypeKind(p.type) === "park" ||
+      (ven && String(ven.type || "").toLowerCase().includes("national_park"));
+    let heroSrc = "";
+    if (isPark) {
+      const heroPath = `/field-pack/photos/np-hero-${encodeURIComponent(venueId)}.jpg?v=q2`;
+      heroSrc = heroPath;
+    }
 
     const sampleCard = sample
       ? `<button type="button" class="pd-sample-card" id="pd-print-sample" aria-label="Print sample Q&A card for ${escapeHtml(sample.name)}">
@@ -1410,6 +1428,13 @@
         : canPrintHunt
           ? `<button type="button" class="btn btn-primary" id="pd-print-hunt">Print one-page hunt</button>`
           : "";
+    const heroBlock = heroSrc
+      ? `<div class="pd-park-hero">
+          <img src="${escapeHtml(heroSrc)}" alt="${escapeHtml(p.name || "Park")} — illustrated day"
+            width="640" height="360" loading="lazy" decoding="async"
+            onerror="this.parentElement.hidden=true" />
+        </div>`
+      : "";
     detail.innerHTML = `
       <p class="pin-detail-kicker">${escapeHtml(locLine)}</p>
       <div class="pd-title-row">
@@ -1420,6 +1445,7 @@
         }</h3>
         <button type="button" class="pd-clear" id="pd-clear-selection" aria-label="Clear selection">×</button>
       </div>
+      ${heroBlock}
       ${isSoon ? `<span class="pd-status soon">Coming soon</span>` : ""}
       ${blurb ? `<p class="pd-blurb">${escapeHtml(blurb)}</p>` : ""}
       ${
@@ -1523,7 +1549,7 @@
     }
     if (!skipHash) syncVenueHash(venueId);
     if (opts.scroll !== false) {
-      document.getElementById("us-map")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      (document.getElementById("during") || document.getElementById("us-map"))?.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   }
 
@@ -1776,6 +1802,7 @@
 
     // Type tabs: All | Zoos | Aquariums | Museums (filters map + directory)
     wirePlaceTypeTabs();
+    bindCatalogPrintClicks();
 
     // Deep link: /field-pack/#/venue/dallas-zoo (intl ids switch basemap)
     const fromHash = venueIdFromHash();
@@ -1822,26 +1849,41 @@
 
   boot();
 
+  /** Place tab → paired card family (data-pairs-place / data-catalog). */
+  const PLACE_CARD_PAIR = {
+    zoo: "wildlife",
+    aquarium: "sealife",
+    museum: "attractions",
+    park: null,
+  };
+
   const TYPE_TAB_COPY = {
     all: {
       pitch: "A one-page mission for your next zoo or museum day",
-      dir: "All places",
-      blurb: "Each one has a free printable hunt and a short kid list.",
+      dir: "Printable catalog",
+      blurb:
+        "Tabs above filter the map and this catalog together. Each day type pairs places with matching cards (zoos↔wildlife, aquariums↔sea life, museums↔attractions).",
     },
     zoo: {
       pitch: "A one-page mission for your next zoo day",
-      dir: "Zoos",
-      blurb: "Printable hunts and kid shortlists for zoos and safari parks.",
+      dir: "Zoos · wildlife cards",
+      blurb: "Map shows zoos. Catalog: wildlife Q&A cards + zoo places.",
     },
     aquarium: {
       pitch: "A one-page mission for your next aquarium day",
-      dir: "Aquariums",
-      blurb: "Printable hunts and kid shortlists for aquariums.",
+      dir: "Aquariums · sea life cards",
+      blurb: "Map shows aquariums. Catalog: sea life Q&A cards + aquarium places.",
     },
     museum: {
-      pitch: "A one-page mission for your next museum day",
-      dir: "Museums",
-      blurb: "Printable hunts and kid shortlists for science, nature, space & kids museums.",
+      pitch: "A one-page mission for your next museum or science day",
+      dir: "Museums · attraction cards",
+      blurb: "Map shows museums. Catalog: attraction cards + museum places.",
+    },
+    park: {
+      pitch: "A one-page mission for your next park day",
+      dir: "Parks",
+      blurb:
+        "Map shows parks. One finishable slice (rim, boardwalk, lakeshore) — not the whole park.",
     },
   };
 
@@ -1852,8 +1894,7 @@
       btn.setAttribute("aria-selected", on ? "true" : "false");
     });
     const copy = TYPE_TAB_COPY[selectedTypeKind] || TYPE_TAB_COPY.all;
-    const pitch = document.getElementById("pitch-heading");
-    if (pitch) pitch.textContent = copy.pitch;
+    // Hero H1 stays outcome-led (do not overwrite #pitch-heading from type tabs)
     const dirH = document.getElementById("dir-heading");
     if (dirH) dirH.textContent = copy.dir;
     const dirP =
@@ -1866,36 +1907,138 @@
 
   function filterDirectoryByType() {
     const root = document.getElementById("seo-venue-directory");
-    if (!root || !allPlaces || !allPlaces.length) return;
-    const byId = Object.fromEntries(allPlaces.map((p) => [p.id, p]));
-    let visibleTotal = 0;
-    root.querySelectorAll(".seo-dir-region").forEach((region) => {
-      let n = 0;
-      region.querySelectorAll("li").forEach((li) => {
-        const a = li.querySelector("a[href]");
-        if (!a) return;
-        const m = String(a.getAttribute("href") || "").match(/\/field-pack\/([^/]+)\/?/);
-        const id = m ? m[1] : "";
-        const place = byId[id];
-        const kind = place ? pinTypeKind(place.type) : "other";
-        const show =
-          !selectedTypeKind ||
-          selectedTypeKind === "all" ||
-          kind === selectedTypeKind;
-        li.hidden = !show;
-        if (show) n += 1;
+    if (!root) return;
+    const byId = Object.fromEntries((allPlaces || []).map((p) => [p.id, p]));
+    const filterKind =
+      selectedTypeKind && selectedTypeKind !== "all" ? selectedTypeKind : null;
+    // T5: map tabs no longer drive landing catalog (compact showcase)
+    if (document.querySelector(".seo-dir-body-compact")) {
+      return;
+    }
+    const pairCard = filterKind ? PLACE_CARD_PAIR[filterKind] : null;
+    let visiblePlaces = 0;
+    let visibleCards = 0;
+
+    const placesRail = root.querySelector('#dir-places, [data-rail="places"]');
+    const cardsRail = root.querySelector('#dir-printables, [data-rail="cards"]');
+
+    // --- Places: show only matching day type ---
+    const placeBlocks = root.querySelectorAll(
+      ".seo-dir-type[data-place-type]:not([data-catalog])"
+    );
+    placeBlocks.forEach((block) => {
+      const blockKind = block.getAttribute("data-place-type") || "";
+      const blockMatch = !filterKind || blockKind === filterKind;
+      let blockCount = 0;
+      block.querySelectorAll(".seo-dir-region, .seo-dir-cat").forEach((region) => {
+        let n = 0;
+        region.querySelectorAll("li").forEach((li) => {
+          const a = li.querySelector("a[href*='/field-pack/']");
+          if (!a || a.hasAttribute("data-print-item")) return;
+          const m = String(a.getAttribute("href") || "").match(
+            /\/field-pack\/([^/#]+)\/?/
+          );
+          const id = m ? m[1] : "";
+          if (!id || id === "app.html") return;
+          const place = byId[id];
+          const kind = place ? pinTypeKind(place.type) : blockKind || "other";
+          const show = blockMatch && (!filterKind || kind === filterKind);
+          li.hidden = !show;
+          if (show) n += 1;
+        });
+        region.hidden = n === 0;
+        const countEl = region.querySelector(
+          ":scope > summary .seo-dir-count, :scope > .seo-dir-count"
+        );
+        if (countEl) countEl.textContent = String(n);
+        blockCount += n;
       });
-      region.hidden = n === 0;
-      const countEl = region.querySelector(".seo-dir-count");
-      if (countEl) countEl.textContent = String(n);
-      visibleTotal += n;
+      block
+        .querySelectorAll(":scope > .seo-dir-type-body > .seo-dir-samples li")
+        .forEach((li) => {
+          const a = li.querySelector("a[href*='/field-pack/']");
+          if (!a || a.hasAttribute("data-print-item")) return;
+          const m = String(a.getAttribute("href") || "").match(
+            /\/field-pack\/([^/#]+)\/?/
+          );
+          const id = m ? m[1] : "";
+          const place = byId[id];
+          const kind = place ? pinTypeKind(place.type) : blockKind || "other";
+          li.hidden = !(blockMatch && (!filterKind || kind === filterKind));
+        });
+      block.hidden = !blockMatch;
+      if (blockMatch) {
+        if (filterKind) block.open = true;
+        visiblePlaces += 1;
+      }
+      const typeCount = block.querySelector(
+        ":scope > summary .seo-dir-count, .seo-dir-type-sum .seo-dir-count"
+      );
+      if (typeCount && blockCount) typeCount.textContent = String(blockCount);
     });
+
+    // --- Cards: pair with place type (wildlife↔zoo, sealife↔aquarium, attractions↔museum) ---
+    const cardBlocks = root.querySelectorAll(".seo-dir-type[data-catalog]");
+    cardBlocks.forEach((block) => {
+      const catalog = block.getAttribute("data-catalog") || "";
+      const pairs = block.getAttribute("data-pairs-place") || "";
+      const show =
+        !filterKind ||
+        (pairCard && (catalog === pairCard || pairs === filterKind));
+      block.hidden = !show;
+      if (show) {
+        visibleCards += 1;
+        if (filterKind) block.open = true;
+      }
+    });
+
+    if (placesRail) {
+      placesRail.hidden = ![...placeBlocks].some((b) => !b.hidden);
+    }
+    if (cardsRail) {
+      // Parks have no card family — hide cards rail
+      if (filterKind === "park") cardsRail.hidden = true;
+      else cardsRail.hidden = ![...cardBlocks].some((b) => !b.hidden);
+    }
+
+    const jumps = document.querySelector(".seo-dir-jumps");
+    if (jumps) jumps.hidden = true; // unified top tabs only
+
     const empty = document.getElementById("seo-dir-empty");
-    if (empty) empty.hidden = visibleTotal > 0;
+    if (empty) {
+      const any =
+        (placesRail && !placesRail.hidden) || (cardsRail && !cardsRail.hidden);
+      empty.hidden = !!any;
+    }
+  }
+
+  /** Catalog Print buttons + card links (prevent full navigation when print works). */
+  function bindCatalogPrintClicks() {
+    const root = document.getElementById("seo-venue-directory");
+    if (!root || root.dataset.printBound === "1") return;
+    root.dataset.printBound = "1";
+    root.addEventListener("click", (e) => {
+      const t = e.target;
+      if (!(t instanceof Element)) return;
+      const btn = t.closest("[data-print-item]");
+      if (!btn) return;
+      // Only intercept Print buttons; plain card links navigate to app
+      if (btn.tagName !== "BUTTON" && !btn.classList.contains("seo-dir-print-btn")) {
+        return;
+      }
+      const itemId = btn.getAttribute("data-print-item");
+      const venueId = btn.getAttribute("data-print-venue") || "";
+      if (!itemId || !window.FPPrint || typeof window.FPPrint.printQaForItem !== "function") {
+        return;
+      }
+      e.preventDefault();
+      e.stopPropagation();
+      window.FPPrint.printQaForItem(itemId, venueId || null);
+    });
   }
 
   function setPlaceType(kind, opts) {
-    const k = ["all", "zoo", "aquarium", "museum"].includes(kind) ? kind : "all";
+    const k = ["all", "zoo", "aquarium", "museum", "park"].includes(kind) ? kind : "all";
     selectedTypeKind = k;
     syncTypeTabs();
     // Refresh map pins + selectors for the type slice
@@ -1926,14 +2069,17 @@
     const root = document.getElementById("place-type-tabs");
     if (!root) return;
     root.querySelectorAll(".place-type-tab[data-place-type]").forEach((btn) => {
-      btn.addEventListener("click", () => {
+      btn.addEventListener("click", (ev) => {
+        // Left-click filters the map in place; middle-click / modified click keep href (SEO landings).
+        if (ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.altKey || ev.button === 1) return;
+        if (typeof ev.preventDefault === "function") ev.preventDefault();
         setPlaceType(btn.getAttribute("data-place-type") || "all");
       });
     });
-    // Deep-link ?type=zoo|aquarium|museum
+    // Deep-link ?type=zoo|aquarium|museum|park
     try {
       const q = new URLSearchParams(location.search).get("type");
-      if (q && ["zoo", "aquarium", "museum", "all"].includes(q)) {
+      if (q && ["zoo", "aquarium", "museum", "park", "all"].includes(q)) {
         selectedTypeKind = q;
       }
     } catch (_) {

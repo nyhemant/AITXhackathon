@@ -1,0 +1,704 @@
+[
+  {
+    "slug": "joshua-tree",
+    "name": "Joshua Tree National Park",
+    "city": "Twentynine Palms",
+    "region": "CA",
+    "state": "CA",
+    "lat": 34.1347,
+    "lng": -116.3131,
+    "url": "https://www.nps.gov/jotr/",
+    "emoji": "🌵",
+    "tagline": "Joshua Tree — desert gardens and rock piles; short loops near the visitor center.",
+    "blurb": "Desert park day: Joshua trees, rocks, and easy overlooks — heat-smart.",
+    "slice": "Hidden Valley / visitor center area",
+    "art": "Joshua Tree National Park desert with spiky Joshua trees and granite boulders at golden hour",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Entrance pass; timed entry possible peak seasons.",
+      "transit_note": "Twentynine Palms / Joshua Tree town gateways.",
+      "energy_note": "Extreme heat in summer — water, shade, early start.",
+      "best_start": "Visitor center → short nature loop → one rock overlook",
+      "slice_name": "Hidden Valley / VC area",
+      "season_note": "Spring/fall best; summer is dangerous heat."
+    },
+    "keys": [
+      "vc",
+      "tree",
+      "arch",
+      "over",
+      "sign",
+      "jr",
+      "meadow",
+      "ranger"
+    ],
+    "route": [
+      "np_visitor_center",
+      "np_giant_tree",
+      "np_scenic_overlook"
+    ]
+  },
+  {
+    "slug": "capitol-reef",
+    "name": "Capitol Reef National Park",
+    "city": "Torrey",
+    "region": "UT",
+    "state": "UT",
+    "lat": 38.367,
+    "lng": -111.2615,
+    "url": "https://www.nps.gov/care/",
+    "emoji": "🍎",
+    "tagline": "Capitol Reef — orchard valley and red cliffs; short scenic drive stops.",
+    "blurb": "Waterpocket Fold day near Torrey — cliffs, orchards, easy pullouts.",
+    "slice": "Fruita / scenic drive pullouts",
+    "art": "Capitol Reef red cliffs and green orchard valley under blue sky",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Entrance pass for scenic drive areas.",
+      "transit_note": "Torrey gateway; scenic drive is the main slice.",
+      "energy_note": "Sun and dry air; little shade on rocks.",
+      "best_start": "Visitor center → Fruita area → one scenic pullout",
+      "slice_name": "Fruita / scenic drive",
+      "season_note": "Orchard fruit seasons vary; roads can close in storms."
+    },
+    "keys": [
+      "vc",
+      "canyon",
+      "meadow",
+      "over",
+      "sign",
+      "jr",
+      "river",
+      "ranger"
+    ],
+    "route": [
+      "np_visitor_center",
+      "np_canyon_rim",
+      "np_scenic_overlook"
+    ]
+  },
+  {
+    "slug": "saguaro",
+    "name": "Saguaro National Park",
+    "city": "Tucson",
+    "region": "AZ",
+    "state": "AZ",
+    "lat": 32.2967,
+    "lng": -111.1666,
+    "url": "https://www.nps.gov/sagu/",
+    "emoji": "🌵",
+    "tagline": "Saguaro — giant cactus forest loops near Tucson; two districts, pick one.",
+    "blurb": "Desert cactus day — short paved loops among towering saguaros.",
+    "slice": "One district loop (east or west)",
+    "art": "Sonoran Desert with tall saguaro cacti and purple mountains at sunset",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Entrance pass; two separate districts.",
+      "transit_note": "Tucson; choose Rincon (east) or Tucson Mountain (west) for one day.",
+      "energy_note": "Heat — morning visits.",
+      "best_start": "Visitor center → short cactus loop → overlook",
+      "slice_name": "One district loop",
+      "season_note": "Winter/spring nicest; summer very hot."
+    },
+    "keys": [
+      "vc",
+      "tree",
+      "over",
+      "sign",
+      "jr",
+      "meadow",
+      "board",
+      "ranger"
+    ],
+    "route": [
+      "np_visitor_center",
+      "np_giant_tree",
+      "np_scenic_overlook"
+    ]
+  },
+  {
+    "slug": "olympic",
+    "name": "Olympic National Park",
+    "city": "Port Angeles",
+    "region": "WA",
+    "state": "WA",
+    "lat": 48.0414,
+    "lng": -123.4186,
+    "url": "https://www.nps.gov/olym/",
+    "emoji": "🌲",
+    "tagline": "Olympic — pick one: rainforest, coast, or hurricane ridge — not all three.",
+    "blurb": "One ecosystem day: rainforest boardwalk or coast or ridge views.",
+    "slice": "Hoh / coast / Hurricane — choose one",
+    "art": "Olympic temperate rainforest with mossy trees and soft mist light",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Entrance pass; long drives between zones.",
+      "transit_note": "Port Angeles hub; distances are huge — one zone only.",
+      "energy_note": "Rain gear; muddy trails.",
+      "best_start": "Pick one visitor center zone → short trail or beach",
+      "slice_name": "One ecosystem slice",
+      "season_note": "Hurricane Ridge seasonal; rainforests year-round wet."
+    },
+    "keys": [
+      "vc",
+      "tree",
+      "board",
+      "fall",
+      "coast",
+      "sign",
+      "jr",
+      "meadow"
+    ],
+    "route": [
+      "np_visitor_center",
+      "np_giant_tree",
+      "np_boardwalk"
+    ]
+  },
+  {
+    "slug": "redwood",
+    "name": "Redwood National and State Parks",
+    "city": "Crescent City",
+    "region": "CA",
+    "state": "CA",
+    "lat": 41.2132,
+    "lng": -124.0046,
+    "url": "https://www.nps.gov/redw/",
+    "emoji": "🌲",
+    "tagline": "Redwoods — tall-tree groves and short understory walks.",
+    "blurb": "Coast redwood day — enormous trunks on short trails.",
+    "slice": "Prairie Creek / Lady Bird grove-style short walk",
+    "art": "Coast redwood forest with towering straight trunks and ferns",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Partner state parks may have day fees; check NPS.",
+      "transit_note": "US-101 corridor; multiple grove pullouts.",
+      "energy_note": "Cool and damp; easy walking.",
+      "best_start": "Visitor info → short grove trail → one more stop",
+      "slice_name": "Short grove walk",
+      "season_note": "Fog common; year-round."
+    },
+    "keys": [
+      "vc",
+      "tree",
+      "board",
+      "sign",
+      "jr",
+      "meadow",
+      "river",
+      "over"
+    ],
+    "route": [
+      "np_visitor_center",
+      "np_giant_tree",
+      "np_boardwalk"
+    ]
+  },
+  {
+    "slug": "death-valley",
+    "name": "Death Valley National Park",
+    "city": "Furnace Creek",
+    "region": "CA",
+    "state": "CA",
+    "lat": 36.5054,
+    "lng": -117.0794,
+    "url": "https://www.nps.gov/deva/",
+    "emoji": "🏜️",
+    "tagline": "Death Valley — short cool-season stops only; heat is the limit.",
+    "blurb": "Cool-season desert day — overlooks and short walks; never midday summer hikes.",
+    "slice": "Furnace Creek / Zabriskie-style short stops",
+    "art": "Death Valley golden badlands and wide desert basin under huge sky",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Entrance pass.",
+      "transit_note": "Furnace Creek services; vast distances.",
+      "energy_note": "HEAT KILLS — winter/spring only for most families; gallons of water.",
+      "best_start": "Visitor center → one overlook → short badlands path if cool",
+      "slice_name": "Furnace Creek short stops",
+      "season_note": "Summer often unsafe for outdoor walking."
+    },
+    "keys": [
+      "vc",
+      "over",
+      "arch",
+      "sign",
+      "jr",
+      "canyon",
+      "meadow",
+      "ranger"
+    ],
+    "route": [
+      "np_visitor_center",
+      "np_scenic_overlook",
+      "np_canyon_rim"
+    ]
+  },
+  {
+    "slug": "hawaii-volcanoes",
+    "name": "Hawaiʻi Volcanoes National Park",
+    "city": "Hilo",
+    "region": "HI",
+    "state": "HI",
+    "lat": 19.4194,
+    "lng": -155.2885,
+    "url": "https://www.nps.gov/havo/",
+    "emoji": "🌋",
+    "tagline": "Hawaiʻi Volcanoes — crater rim and steam vents; conditions change with activity.",
+    "blurb": "Volcano rim day — steam, craters, and short paved walks when open.",
+    "slice": "Kīlauea visitor area / rim",
+    "art": "Volcanic crater rim with steam vents and black rock under tropical sky",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Entrance pass; check eruption/closure alerts before you go.",
+      "transit_note": "From Hilo side; Chain of Craters may be long.",
+      "energy_note": "Sulfur air can bother lungs; stay on marked paths.",
+      "best_start": "Visitor center → rim walk or steam vents → museum",
+      "slice_name": "Kīlauea visitor / rim",
+      "season_note": "Access changes with volcanic activity — verify NPS alerts."
+    },
+    "keys": [
+      "vc",
+      "over",
+      "sign",
+      "jr",
+      "board",
+      "meadow",
+      "ranger",
+      "arch"
+    ],
+    "route": [
+      "np_visitor_center",
+      "np_scenic_overlook",
+      "np_boardwalk"
+    ]
+  },
+  {
+    "slug": "glacier",
+    "name": "Glacier National Park",
+    "city": "West Glacier",
+    "region": "MT",
+    "state": "MT",
+    "lat": 48.7596,
+    "lng": -113.787,
+    "url": "https://www.nps.gov/glac/",
+    "emoji": "🏔️",
+    "tagline": "Glacier — short valley or lake stops; Going-to-the-Sun is seasonal.",
+    "blurb": "Mountain lake day — one valley slice, not the whole Going-to-the-Sun epic.",
+    "slice": "Apgar / Lake McDonald area (or open segment)",
+    "art": "Glacier National Park turquoise lake and sharp peaks with evergreens",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Entrance pass; vehicle reservations common in peak season.",
+      "transit_note": "West Glacier / Apgar gateway.",
+      "energy_note": "Cold water, bears — food storage rules; altitude mild at lakes.",
+      "best_start": "Apgar visitor area → lakeshore stroll → one short trail",
+      "slice_name": "Apgar / Lake McDonald",
+      "season_note": "Going-to-the-Sun Road seasonal; many services summer-only."
+    },
+    "keys": [
+      "vc",
+      "river",
+      "over",
+      "tree",
+      "sign",
+      "jr",
+      "meadow",
+      "elk"
+    ],
+    "route": [
+      "np_visitor_center",
+      "np_river",
+      "np_scenic_overlook"
+    ]
+  },
+  {
+    "slug": "grand-teton",
+    "name": "Grand Teton National Park",
+    "city": "Moose",
+    "region": "WY",
+    "state": "WY",
+    "lat": 43.7904,
+    "lng": -110.6818,
+    "url": "https://www.nps.gov/grte/",
+    "emoji": "⛰️",
+    "tagline": "Grand Teton — mountain backdrop pullouts and Jenny Lake area shorts.",
+    "blurb": "Teton view day — lakes and pullouts without a full cascade canyon hike.",
+    "slice": "Jenny Lake / Moose corridor",
+    "art": "Grand Teton jagged peaks reflecting in a calm blue lake",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Entrance pass.",
+      "transit_note": "Moose / Jackson gateways.",
+      "energy_note": "Wildlife on roads; cold mornings.",
+      "best_start": "Visitor center → lake viewpoint → one short path",
+      "slice_name": "Jenny Lake / Moose",
+      "season_note": "Snow shoulder seasons; summer busy."
+    },
+    "keys": [
+      "vc",
+      "over",
+      "river",
+      "meadow",
+      "sign",
+      "jr",
+      "elk",
+      "tree"
+    ],
+    "route": [
+      "np_visitor_center",
+      "np_scenic_overlook",
+      "np_meadow"
+    ]
+  },
+  {
+    "slug": "badlands",
+    "name": "Badlands National Park",
+    "city": "Interior",
+    "region": "SD",
+    "state": "SD",
+    "lat": 43.8554,
+    "lng": -102.3397,
+    "url": "https://www.nps.gov/badl/",
+    "emoji": "🏜️",
+    "tagline": "Badlands — loop road overlooks and a short fossil/boardwalk stop.",
+    "blurb": "Striped badlands day — pullouts and one easy walk.",
+    "slice": "Badlands Loop Road overlooks",
+    "art": "Badlands striped pink and tan formations under wide prairie sky",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Entrance pass.",
+      "transit_note": "Interior / Wall gateways; loop road is the slice.",
+      "energy_note": "Sun and wind; little shade.",
+      "best_start": "Visitor center → two overlooks → short boardwalk if open",
+      "slice_name": "Loop road overlooks",
+      "season_note": "Hot summers, cold winters; spring/fall sweet spot."
+    },
+    "keys": [
+      "vc",
+      "over",
+      "board",
+      "sign",
+      "jr",
+      "bison",
+      "meadow",
+      "canyon"
+    ],
+    "route": [
+      "np_visitor_center",
+      "np_scenic_overlook",
+      "np_boardwalk"
+    ]
+  },
+  {
+    "slug": "theodore-roosevelt",
+    "name": "Theodore Roosevelt National Park",
+    "city": "Medora",
+    "region": "ND",
+    "state": "ND",
+    "lat": 46.979,
+    "lng": -103.5387,
+    "url": "https://www.nps.gov/thro/",
+    "emoji": "🦬",
+    "tagline": "Theodore Roosevelt — South Unit scenic drive and prairie dog towns.",
+    "blurb": "Badlands prairie day near Medora — wildlife from the car and short stops.",
+    "slice": "South Unit scenic drive",
+    "art": "North Dakota badlands and prairie with bison in the distance",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Entrance pass.",
+      "transit_note": "Medora gateway (South Unit).",
+      "energy_note": "Wind and sun; wildlife distance rules.",
+      "best_start": "South Unit visitor center → scenic drive pullouts",
+      "slice_name": "South Unit scenic drive",
+      "season_note": "Winter harsh; summer thunderstorms."
+    },
+    "keys": [
+      "vc",
+      "over",
+      "bison",
+      "meadow",
+      "sign",
+      "jr",
+      "canyon",
+      "elk"
+    ],
+    "route": [
+      "np_visitor_center",
+      "np_scenic_overlook",
+      "np_wildlife_bison"
+    ]
+  },
+  {
+    "slug": "shenandoah",
+    "name": "Shenandoah National Park",
+    "city": "Luray",
+    "region": "VA",
+    "state": "VA",
+    "lat": 38.2928,
+    "lng": -78.6796,
+    "url": "https://www.nps.gov/shen/",
+    "emoji": "🍂",
+    "tagline": "Shenandoah — Skyline Drive overlooks and one short waterfall or trail.",
+    "blurb": "Blue Ridge day — overlooks on Skyline Drive, not a full AT thru-hike.",
+    "slice": "Skyline Drive segment + one short stop",
+    "art": "Shenandoah Blue Ridge mountains with layered blue ridges at golden hour",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Entrance pass.",
+      "transit_note": "Multiple entrances; Skyline Drive is the spine.",
+      "energy_note": "Altitude mild; fog common.",
+      "best_start": "Entrance station → two overlooks → short trail if energy",
+      "slice_name": "Skyline Drive segment",
+      "season_note": "Fall color crowds; winter ice on drive."
+    },
+    "keys": [
+      "vc",
+      "over",
+      "fall",
+      "tree",
+      "sign",
+      "jr",
+      "meadow",
+      "ranger"
+    ],
+    "route": [
+      "np_scenic_overlook",
+      "np_visitor_center",
+      "np_waterfall"
+    ]
+  },
+  {
+    "slug": "mammoth-cave",
+    "name": "Mammoth Cave National Park",
+    "city": "Mammoth Cave",
+    "region": "KY",
+    "state": "KY",
+    "lat": 37.1862,
+    "lng": -86.1,
+    "url": "https://www.nps.gov/maca/",
+    "emoji": "🕳️",
+    "tagline": "Mammoth Cave — visitor center and a timed cave tour; surface trails optional.",
+    "blurb": "Cave day — reserve a tour; surface boardwalks if tickets are full.",
+    "slice": "Visitor center + cave tour",
+    "art": "Cave entrance hillside with forest and a path into a dark limestone mouth",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Cave tours often require advance tickets.",
+      "transit_note": "Cave City / Park City gateways.",
+      "energy_note": "Cave is cool year-round; stairs on many tours.",
+      "best_start": "Visitor center → reserved tour → short surface path",
+      "slice_name": "VC + cave tour",
+      "season_note": "Tours sell out summer holidays."
+    },
+    "keys": [
+      "vc",
+      "cave",
+      "sign",
+      "jr",
+      "board",
+      "tree",
+      "meadow",
+      "ranger"
+    ],
+    "route": [
+      "np_visitor_center",
+      "np_cave_entrance",
+      "np_boardwalk"
+    ]
+  },
+  {
+    "slug": "indiana-dunes",
+    "name": "Indiana Dunes National Park",
+    "city": "Porter",
+    "region": "IN",
+    "state": "IN",
+    "lat": 41.6533,
+    "lng": -87.0524,
+    "url": "https://www.nps.gov/indu/",
+    "emoji": "🏖️",
+    "tagline": "Indiana Dunes — lake beach and dune trail near Chicago.",
+    "blurb": "Great Lakes beach day — dunes and shoreline without a long drive west.",
+    "slice": "West Beach / popular dune access",
+    "art": "Indiana Dunes sandy hills and Lake Michigan blue water with beach grass",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Some beach lots have day fees; check NPS.",
+      "transit_note": "Near Chicago; parking fills summer weekends.",
+      "energy_note": "Sand is hard work for little legs; sun and wind.",
+      "best_start": "Beach/parking → shoreline → short dune path",
+      "slice_name": "Beach + short dune",
+      "season_note": "Summer swim season; winter windy."
+    },
+    "keys": [
+      "vc",
+      "coast",
+      "over",
+      "sign",
+      "jr",
+      "board",
+      "meadow",
+      "ranger"
+    ],
+    "route": [
+      "np_tide_coast",
+      "np_boardwalk",
+      "np_scenic_overlook"
+    ]
+  },
+  {
+    "slug": "hot-springs",
+    "name": "Hot Springs National Park",
+    "city": "Hot Springs",
+    "region": "AR",
+    "state": "AR",
+    "lat": 34.5217,
+    "lng": -93.0422,
+    "url": "https://www.nps.gov/hosp/",
+    "emoji": "♨️",
+    "tagline": "Hot Springs — Bathhouse Row and a short mountain trail or overlook.",
+    "blurb": "Town park day — historic bathhouses and an easy hillside walk.",
+    "slice": "Bathhouse Row / downtown corridor",
+    "art": "Historic bathhouse row with grand old buildings and a green hillside park",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Park is free to walk; bathhouse spa experiences cost extra.",
+      "transit_note": "Downtown Hot Springs is the hub.",
+      "energy_note": "Easy urban walking; hills optional.",
+      "best_start": "Visitor center on Bathhouse Row → promenade → short trail if energy",
+      "slice_name": "Bathhouse Row",
+      "season_note": "Year-round; summer humid."
+    },
+    "keys": [
+      "vc",
+      "sign",
+      "jr",
+      "over",
+      "board",
+      "meadow",
+      "ranger",
+      "tree"
+    ],
+    "route": [
+      "np_visitor_center",
+      "np_boardwalk",
+      "np_scenic_overlook"
+    ]
+  },
+  {
+    "slug": "congaree",
+    "name": "Congaree National Park",
+    "city": "Hopkins",
+    "region": "SC",
+    "state": "SC",
+    "lat": 33.794,
+    "lng": -80.7821,
+    "url": "https://www.nps.gov/cong/",
+    "emoji": "🌳",
+    "tagline": "Congaree — boardwalk through old-growth bottomland forest.",
+    "blurb": "Floodplain forest day — long boardwalk, big trees, mosquitoes in season.",
+    "slice": "Boardwalk loop from visitor center",
+    "art": "Congaree swamp boardwalk through tall bald cypress and green canopy",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Free entry.",
+      "transit_note": "Near Columbia SC; visitor center start.",
+      "energy_note": "Bugs and heat in summer; boardwalk is the win.",
+      "best_start": "Visitor center → boardwalk loop (short or long)",
+      "slice_name": "Boardwalk loop",
+      "season_note": "Flooding can close sections; check conditions."
+    },
+    "keys": [
+      "vc",
+      "board",
+      "tree",
+      "sign",
+      "jr",
+      "wet",
+      "river",
+      "meadow"
+    ],
+    "route": [
+      "np_visitor_center",
+      "np_boardwalk",
+      "np_giant_tree"
+    ]
+  },
+  {
+    "slug": "gateway-arch",
+    "name": "Gateway Arch National Park",
+    "city": "St. Louis",
+    "region": "MO",
+    "state": "MO",
+    "lat": 38.6247,
+    "lng": -90.1848,
+    "url": "https://www.nps.gov/jeff/",
+    "emoji": "🏗️",
+    "tagline": "Gateway Arch — riverfront park and arch grounds; tram tickets separate.",
+    "blurb": "Urban national park hour — arch views, museum, river steps.",
+    "slice": "Arch grounds / museum",
+    "art": "Gateway Arch silver curve over green park lawn and river city skyline soft background",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Grounds free; tram/museum tickets often timed.",
+      "transit_note": "Downtown St. Louis; MetroLink nearby.",
+      "energy_note": "Easy walking; sun on the lawn.",
+      "best_start": "Visitor center/museum → arch base views → riverfront",
+      "slice_name": "Arch grounds",
+      "season_note": "Year-round; summer hot on open plaza."
+    },
+    "keys": [
+      "vc",
+      "over",
+      "sign",
+      "jr",
+      "meadow",
+      "board",
+      "ranger",
+      "river"
+    ],
+    "route": [
+      "np_visitor_center",
+      "np_scenic_overlook",
+      "np_meadow"
+    ]
+  },
+  {
+    "slug": "petrified-forest",
+    "name": "Petrified Forest National Park",
+    "city": "Holbrook",
+    "region": "AZ",
+    "state": "AZ",
+    "lat": 34.909,
+    "lng": -109.8068,
+    "url": "https://www.nps.gov/pefo/",
+    "emoji": "🪨",
+    "tagline": "Petrified Forest — painted desert views and short fossil wood loops.",
+    "blurb": "Colorful desert day — scenic drive pullouts and easy fossil walks.",
+    "slice": "Scenic drive + one short loop",
+    "art": "Petrified Forest painted desert badlands with colorful layered hills",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Entrance pass; park hours are daytime-only (gates close).",
+      "transit_note": "I-40 near Holbrook; drive-through park.",
+      "energy_note": "Sun and wind; stay on trails (fossils protected).",
+      "best_start": "North or south entrance → overlooks → short loop",
+      "slice_name": "Scenic drive short loops",
+      "season_note": "Gates close at posted hours — don’t get locked in."
+    },
+    "keys": [
+      "vc",
+      "over",
+      "arch",
+      "sign",
+      "jr",
+      "canyon",
+      "meadow",
+      "board"
+    ],
+    "route": [
+      "np_visitor_center",
+      "np_scenic_overlook",
+      "np_arch_rock"
+    ]
+  }
+]

@@ -1,0 +1,230 @@
+# Item uniqueness report
+Venues scanned: **218**
+
+## Descriptions in >3 venues (36)
+- (57) `read distance and rules before you go.` → american-samoa, badlands, big-bend, biscayne, black-canyon-gunnison, blue-mountains, bryce-canyon, canyonlands, capitol-reef, carlsbad-caverns, channel-islands, congaree…
+- (53) `ask at the visitor center — hours and ages vary.` → american-samoa, badlands, big-bend, biscayne, black-canyon-gunnison, bryce-canyon, canyonlands, capitol-reef, carlsbad-caverns, channel-islands, congaree, crater-lake…
+- (49) `wide sky break.` → badlands, banff, big-bend, black-canyon-gunnison, bryce-canyon, canyonlands, capitol-reef, carlsbad-caverns, channel-islands, crater-lake, death-valley, denali…
+- (44) `one big view — stay behind rails.` → american-samoa, big-bend, biscayne, black-canyon-gunnison, bryce-canyon, canyonlands, capitol-reef, carlsbad-caverns, channel-islands, cuyahoga-valley, death-valley, dry-tortugas…
+- (42) `maps, restrooms, questions — start here.` → badlands, big-bend, black-canyon-gunnison, blue-mountains, bryce-canyon, canyonlands, capitol-reef, carlsbad-caverns, congaree, crater-lake, cuyahoga-valley, everglades…
+- (40) `check the day’s board at the visitor center.` → american-samoa, big-bend, biscayne, black-canyon-gunnison, blue-mountains, canyonlands, capitol-reef, channel-islands, crater-lake, death-valley, denali, dry-tortugas…
+- (39) `waddle on land, zoom in water.` → al-ain-zoo, athens-attica-zoo, auckland-zoo, audubon-zoo, barcelona-zoo, bogota-zoo, cairo-zoo, calgary-zoo, chapultepec-zoo, cincinnati-zoo, cleveland-metroparks-zoo, denver-zoo…
+- (36) `big cat of the grassland pride — mighty roar!` → albuquerque-biopark, antwerp-zoo, audubon-zoo, barcelona-zoo, beijing-zoo, berlin-zoo, budapest-zoo, calgary-zoo, cincinnati-zoo, cleveland-metroparks-zoo, dallas-zoo, dublin-zoo…
+- (30) `striped grassland runner — every pattern is unique.` → albuquerque-biopark, antwerp-zoo, artis-zoo, athens-attica-zoo, auckland-zoo, beijing-zoo, berlin-zoo, budapest-zoo, calgary-zoo, columbus-zoo, copenhagen-zoo, dallas-zoo…
+- (29) `smart forest ape — climbs and tools.` → antwerp-zoo, artis-zoo, athens-attica-zoo, barcelona-zoo, budapest-zoo, calgary-zoo, copenhagen-zoo, dublin-zoo, edinburgh-zoo, helsinki-zoo, lima-leyendas, lisbon-zoo…
+- (25) `strong gentle ape in family groups.` → al-ain-zoo, artis-zoo, bangkok-safari-world, beijing-zoo, bogota-zoo, cairo-zoo, chapultepec-zoo, dallas-zoo, hogle-zoo, honolulu-zoo, jakarta-ragunan, johannesburg-zoo…
+- (23) `look up — hug with your eyes only.` → american-samoa, black-canyon-gunnison, blue-mountains, congaree, crater-lake, denali, glacier-bay, grand-teton, great-basin, guadalupe-mountains, hot-springs, isle-royale…
+- (23) `stay on the path — fragile ground or wet edge.` → american-samoa, badlands, biscayne, blue-mountains, channel-islands, dry-tortugas, everglades, gateway-arch, great-sand-dunes, hawaii-volcanoes, hot-springs, indiana-dunes…
+- (18) `fastest land animal — built to sprint.` → albuquerque-biopark, audubon-zoo, bangalore-bannerghatta, bangkok-safari-world, cleveland-metroparks-zoo, denver-zoo, hogle-zoo, kansas-city-zoo, lincoln-park-zoo, memphis-zoo, miami-zoo, milwaukee-zoo…
+- (17) `huge river giant that loves the water.` → bangalore-bannerghatta, berlin-zoo, calgary-zoo, cleveland-metroparks-zoo, copenhagen-zoo, delhi-zoo, denver-zoo, dublin-zoo, hogle-zoo, lincoln-park-zoo, memphis-zoo, milwaukee-zoo…
+- (15) `layers of rock from a safe rail.` → badlands, big-bend, blue-mountains, bryce-canyon, canyonlands, capitol-reef, crater-lake, death-valley, guadalupe-mountains, haleakala, mesa-verde, new-river-gorge…
+- (14) `water edge — safe step back.` → capitol-reef, congaree, cuyahoga-valley, gates-of-arctic, gateway-arch, grand-teton, jasper, katmai, kenai-fjords, kobuk-valley, new-river-gorge, north-cascades…
+- (13) `tiny upright swimmer that holds on with its tail.` → audubon-aquarium, dallas-world-aquarium, dubai-aquarium, florida-aquarium, istanbul-aquarium, lotte-aquarium-seoul, osaka-aquarium, seattle-aquarium, shanghai-ocean-aquarium, two-oceans-aquarium, vancouver-aquarium, virginia-aquarium…
+- (11) `eight arms and a big brain — master of hide-and-seek.` → audubon-aquarium, columbus-zoo, dubai-aquarium, istanbul-aquarium, lotte-aquarium-seoul, milan-aquarium, pittsburgh-zoo, point-defiance-zoo, shanghai-ocean-aquarium, two-oceans-aquarium, virginia-aquarium
+- (10) `playful swimmer — smallest otter.` → adelaide-zoo, auckland-zoo, delhi-zoo, dubai-aquarium, dublin-zoo, hong-kong-ocean-park, melbourne-zoo, perth-zoo, singapore-zoo, wellington-zoo
+- (10) `shapes carved by wind and water.` → canyonlands, death-valley, haleakala, hawaii-volcanoes, joshua-tree, kobuk-valley, mesa-verde, pinnacles, torres-del-paine, white-sands
+- (9) `stripy forest big cat — strong and stealthy.` → al-ain-zoo, bangkok-safari-world, bogota-zoo, cairo-zoo, chapultepec-zoo, johannesburg-zoo, lima-leyendas, lincoln-park-zoo, milwaukee-zoo
+- (8) `rusty tree-climber with a ringed tail — not a giant panda!` → antwerp-zoo, artis-zoo, calgary-zoo, delhi-zoo, melbourne-zoo, perth-zoo, taronga-zoo, toronto-zoo
+- (8) `bright reef fish — friends with anemones.` → audubon-aquarium, dallas-world-aquarium, florida-aquarium, osaka-aquarium, seattle-aquarium, two-oceans-aquarium, vancouver-aquarium, virginia-aquarium
+- (8) `waves and shore — careful footing.` → biscayne, channel-islands, dry-tortugas, glacier-bay, indiana-dunes, isle-royale, lake-clark, voyageurs
+- (8) `long snaky fish — loves rocky hidey-holes.` → florida-aquarium, istanbul-aquarium, lotte-aquarium-seoul, milan-aquarium, osaka-aquarium, shanghai-ocean-aquarium, vancouver-aquarium, waikiki-aquarium
+- (7) `bright pink wader — long legs for shallow water.` → albuquerque-biopark, cincinnati-zoo, denver-zoo, minnesota-zoo, north-carolina-zoo, phoenix-zoo, woodland-park-zoo
+- (7) `shelled ocean traveler — flippers for swimming.` → columbus-zoo, dallas-world-aquarium, hong-kong-ocean-park, milan-aquarium, montreal-biodome, pittsburgh-zoo, point-defiance-zoo
+- (6) `tallest animal on long legs — look up!` → cincinnati-zoo, edinburgh-zoo, melbourne-zoo, oregon-zoo, perth-zoo, wellington-zoo
+- (6) `their choice path — whatever pulled them in!` → doseum, frost-science, indy-childrens-museum, perot-museum, please-touch-museum, thinkery
+- (5) `slow forest climber — hangs upside down.` → albuquerque-biopark, minnesota-zoo, north-carolina-zoo, phoenix-zoo, woodland-park-zoo
+- (5) `build, invent, problem-solve with your hands.` → arizona-science-center, museum-of-science-boston, oregon-museum-science-industry, orlando-science-center, union-station-kc-science
+- (5) `flat swimmer — often in touch pools (gentle hands!).` → columbus-zoo, hong-kong-ocean-park, seattle-aquarium, vancouver-aquarium, waikiki-aquarium
+- (5) `come-and-go art and reading activities.` → dallas-arboretum, doseum, indy-childrens-museum, please-touch-museum, thinkery
+- (4) `check the day’s board.` → gates-of-arctic, glacier-bay, mesa-verde, wind-cave
+- (4) `biggest land animal — trunk to grab, spray, and say hello.` → helsinki-zoo, kuala-lumpur-zoo, paris-zoo, point-defiance-zoo
+
+## Core lists with >2 generic (`np-*`) ids
+- **american-samoa** (national_park): 8/8 generic → np-visitor-center, np-tide-coast, np-giant-tree, np-trailhead-sign, np-junior-ranger, np-boardwalk, np-scenic-overlook, np-ranger-program
+- **big-bend** (national_park): 8/8 generic → np-visitor-center, np-scenic-overlook, np-canyon-rim, np-trailhead-sign, np-junior-ranger, np-meadow, np-river, np-ranger-program
+- **biscayne** (national_park): 8/8 generic → np-visitor-center, np-tide-coast, np-wetland, np-trailhead-sign, np-junior-ranger, np-boardwalk, np-scenic-overlook, np-ranger-program
+- **black-canyon-gunnison** (national_park): 8/8 generic → np-visitor-center, np-canyon-rim, np-scenic-overlook, np-trailhead-sign, np-junior-ranger, np-meadow, np-ranger-program, np-giant-tree
+- **blue-mountains** (national_park): 8/8 generic → np-three-sisters, np-scenic-overlook, np-canyon-rim, np-boardwalk, np-trailhead-sign, np-visitor-center, np-giant-tree, np-ranger-program
+- **canyonlands** (national_park): 8/8 generic → np-visitor-center, np-scenic-overlook, np-canyon-rim, np-arch-rock, np-trailhead-sign, np-junior-ranger, np-meadow, np-ranger-program
+- **capitol-reef** (national_park): 8/8 generic → np-visitor-center, np-canyon-rim, np-meadow, np-scenic-overlook, np-trailhead-sign, np-junior-ranger, np-river, np-ranger-program
+- **carlsbad-caverns** (national_park): 8/8 generic → np-visitor-center, np-cave-entrance, np-trailhead-sign, np-junior-ranger, np-boardwalk, np-meadow, np-ranger-program, np-scenic-overlook
+- **channel-islands** (national_park): 8/8 generic → np-visitor-center, np-tide-coast, np-scenic-overlook, np-trailhead-sign, np-junior-ranger, np-meadow, np-ranger-program, np-boardwalk
+- **congaree** (national_park): 8/8 generic → np-visitor-center, np-boardwalk, np-giant-tree, np-trailhead-sign, np-junior-ranger, np-wetland, np-river, np-meadow
+- **crater-lake** (national_park): 8/8 generic → np-visitor-center, np-scenic-overlook, np-trailhead-sign, np-junior-ranger, np-meadow, np-giant-tree, np-ranger-program, np-canyon-rim
+- **death-valley** (national_park): 8/8 generic → np-visitor-center, np-scenic-overlook, np-arch-rock, np-trailhead-sign, np-junior-ranger, np-canyon-rim, np-meadow, np-ranger-program
+- **dry-tortugas** (national_park): 8/8 generic → np-visitor-center, np-tide-coast, np-scenic-overlook, np-trailhead-sign, np-junior-ranger, np-boardwalk, np-meadow, np-ranger-program
+- **fiordland** (national_park): 8/8 generic → np-milford-sound, np-tide-coast, np-waterfall, np-trailhead-sign, np-visitor-center, np-giant-tree, np-meadow, np-ranger-program
+- **fuji-hakone-izu** (national_park): 8/8 generic → np-mount-fuji-lake, np-river, np-scenic-overlook, np-trailhead-sign, np-visitor-center, np-meadow, np-giant-tree, np-boardwalk
+- **gateway-arch** (national_park): 8/8 generic → np-visitor-center, np-scenic-overlook, np-trailhead-sign, np-junior-ranger, np-meadow, np-boardwalk, np-ranger-program, np-river
+- **glacier-bay** (national_park): 8/8 generic → np-visitor-center, np-tide-coast, np-scenic-overlook, np-trailhead-sign, np-junior-ranger, np-meadow, np-ranger-program, np-giant-tree
+- **great-basin** (national_park): 8/8 generic → np-visitor-center, np-scenic-overlook, np-cave-entrance, np-trailhead-sign, np-junior-ranger, np-giant-tree, np-meadow, np-ranger-program
+- **great-sand-dunes** (national_park): 8/8 generic → np-visitor-center, np-scenic-overlook, np-meadow, np-trailhead-sign, np-junior-ranger, np-river, np-ranger-program, np-boardwalk
+- **guadalupe-mountains** (national_park): 8/8 generic → np-visitor-center, np-scenic-overlook, np-trailhead-sign, np-junior-ranger, np-meadow, np-canyon-rim, np-giant-tree, np-ranger-program
+- **haleakala** (national_park): 8/8 generic → np-visitor-center, np-scenic-overlook, np-trailhead-sign, np-junior-ranger, np-meadow, np-arch-rock, np-ranger-program, np-canyon-rim
+- **hawaii-volcanoes** (national_park): 8/8 generic → np-visitor-center, np-scenic-overlook, np-trailhead-sign, np-junior-ranger, np-boardwalk, np-meadow, np-ranger-program, np-arch-rock
+- **hot-springs** (national_park): 8/8 generic → np-visitor-center, np-trailhead-sign, np-junior-ranger, np-scenic-overlook, np-boardwalk, np-meadow, np-ranger-program, np-giant-tree
+- **iguazu-argentina** (national_park): 8/8 generic → np-iguazu-falls, np-boardwalk, np-river, np-giant-tree, np-trailhead-sign, np-visitor-center, np-wetland, np-ranger-program
+- **indiana-dunes** (national_park): 8/8 generic → np-visitor-center, np-tide-coast, np-scenic-overlook, np-trailhead-sign, np-junior-ranger, np-boardwalk, np-meadow, np-ranger-program
+- **isle-royale** (national_park): 8/8 generic → np-visitor-center, np-tide-coast, np-boardwalk, np-trailhead-sign, np-junior-ranger, np-giant-tree, np-meadow, np-ranger-program
+- **joshua-tree** (national_park): 8/8 generic → np-visitor-center, np-giant-tree, np-arch-rock, np-scenic-overlook, np-trailhead-sign, np-junior-ranger, np-meadow, np-ranger-program
+- **katmai** (national_park): 8/8 generic → np-visitor-center, np-scenic-overlook, np-river, np-trailhead-sign, np-junior-ranger, np-meadow, np-ranger-program, np-waterfall
+- **kenai-fjords** (national_park): 8/8 generic → np-visitor-center, np-scenic-overlook, np-trailhead-sign, np-junior-ranger, np-river, np-meadow, np-ranger-program, np-giant-tree
+- **kings-canyon** (national_park): 8/8 generic → np-visitor-center, np-giant-tree, np-boardwalk, np-trailhead-sign, np-junior-ranger, np-meadow, np-scenic-overlook, np-waterfall
+- **kobuk-valley** (national_park): 8/8 generic → np-visitor-center, np-scenic-overlook, np-meadow, np-trailhead-sign, np-junior-ranger, np-river, np-ranger-program, np-arch-rock
+- **lake-clark** (national_park): 8/8 generic → np-visitor-center, np-tide-coast, np-scenic-overlook, np-trailhead-sign, np-junior-ranger, np-giant-tree, np-meadow, np-ranger-program
+- **lake-district** (national_park): 8/8 generic → np-river, np-scenic-overlook, np-boardwalk, np-trailhead-sign, np-visitor-center, np-meadow, np-giant-tree, np-ranger-program
+- **lassen-volcanic** (national_park): 8/8 generic → np-visitor-center, np-geyser-steam, np-boardwalk, np-scenic-overlook, np-trailhead-sign, np-junior-ranger, np-meadow, np-ranger-program
+- **mammoth-cave** (national_park): 8/8 generic → np-visitor-center, np-cave-entrance, np-trailhead-sign, np-junior-ranger, np-boardwalk, np-giant-tree, np-meadow, np-ranger-program
+- **mesa-verde** (national_park): 8/8 generic → np-visitor-center, np-scenic-overlook, np-canyon-rim, np-trailhead-sign, np-junior-ranger, np-meadow, np-ranger-program, np-arch-rock
+- **mount-rainier** (national_park): 8/8 generic → np-visitor-center, np-scenic-overlook, np-meadow, np-waterfall, np-trailhead-sign, np-junior-ranger, np-giant-tree, np-ranger-program
+- **new-river-gorge** (national_park): 8/8 generic → np-visitor-center, np-scenic-overlook, np-canyon-rim, np-boardwalk, np-trailhead-sign, np-junior-ranger, np-river, np-ranger-program
+- **nikko** (national_park): 8/8 generic → np-river, np-waterfall, np-giant-tree, np-scenic-overlook, np-trailhead-sign, np-visitor-center, np-boardwalk, np-meadow
+- **north-cascades** (national_park): 8/8 generic → np-visitor-center, np-scenic-overlook, np-river, np-giant-tree, np-trailhead-sign, np-junior-ranger, np-meadow, np-ranger-program
+- **petrified-forest** (national_park): 8/8 generic → np-visitor-center, np-scenic-overlook, np-arch-rock, np-trailhead-sign, np-junior-ranger, np-canyon-rim, np-meadow, np-boardwalk
+- **pinnacles** (national_park): 8/8 generic → np-visitor-center, np-arch-rock, np-cave-entrance, np-scenic-overlook, np-trailhead-sign, np-junior-ranger, np-meadow, np-ranger-program
+- **plitvice-lakes** (national_park): 8/8 generic → np-plitvice-lakes, np-waterfall, np-scenic-overlook, np-trailhead-sign, np-visitor-center, np-giant-tree, np-river, np-meadow
+- **redwood** (national_park): 8/8 generic → np-visitor-center, np-giant-tree, np-boardwalk, np-trailhead-sign, np-junior-ranger, np-meadow, np-river, np-scenic-overlook
+- **saguaro** (national_park): 8/8 generic → np-visitor-center, np-giant-tree, np-scenic-overlook, np-trailhead-sign, np-junior-ranger, np-meadow, np-boardwalk, np-ranger-program
+- **shenandoah** (national_park): 8/8 generic → np-visitor-center, np-scenic-overlook, np-waterfall, np-giant-tree, np-trailhead-sign, np-junior-ranger, np-meadow, np-ranger-program
+- **snowdonia** (national_park): 8/8 generic → np-river, np-scenic-overlook, np-trailhead-sign, np-visitor-center, np-meadow, np-giant-tree, np-waterfall, np-ranger-program
+- **table-mountain** (national_park): 8/8 generic → np-table-mountain, np-boardwalk, np-scenic-overlook, np-trailhead-sign, np-visitor-center, np-meadow, np-tide-coast, np-ranger-program
+- **torres-del-paine** (national_park): 8/8 generic → np-torres-towers, np-river, np-trailhead-sign, np-visitor-center, np-meadow, np-arch-rock, np-canyon-rim, np-ranger-program
+- **virgin-islands** (national_park): 8/8 generic → np-visitor-center, np-tide-coast, np-boardwalk, np-trailhead-sign, np-junior-ranger, np-giant-tree, np-scenic-overlook, np-ranger-program
+- **voyageurs** (national_park): 8/8 generic → np-visitor-center, np-tide-coast, np-boardwalk, np-trailhead-sign, np-junior-ranger, np-giant-tree, np-wetland, np-ranger-program
+- **white-sands** (national_park): 8/8 generic → np-visitor-center, np-scenic-overlook, np-meadow, np-trailhead-sign, np-junior-ranger, np-boardwalk, np-ranger-program, np-arch-rock
+- **wrangell-st-elias** (national_park): 8/8 generic → np-visitor-center, np-scenic-overlook, np-trailhead-sign, np-junior-ranger, np-meadow, np-river, np-ranger-program, np-giant-tree
+- **yoho** (national_park): 8/8 generic → np-river, np-scenic-overlook, np-boardwalk, np-trailhead-sign, np-visitor-center, np-meadow, np-giant-tree, np-ranger-program
+- **badlands** (national_park): 7/8 generic → np-visitor-center, np-scenic-overlook, np-boardwalk, np-trailhead-sign, np-junior-ranger, np-meadow, np-canyon-rim
+- **banff** (national_park): 7/8 generic → np-lake-louise, np-trailhead-sign, np-visitor-center, np-scenic-overlook, np-meadow, np-giant-tree, np-ranger-program
+- **bryce-canyon** (national_park): 7/8 generic → np-scenic-overlook, np-visitor-center, np-trailhead-sign, np-arch-rock, np-junior-ranger, np-meadow, np-canyon-rim
+- **cuyahoga-valley** (national_park): 7/8 generic → np-visitor-center, np-river, np-boardwalk, np-waterfall, np-trailhead-sign, np-scenic-overlook, np-junior-ranger
+- **denali** (national_park): 7/8 generic → np-visitor-center, np-scenic-overlook, np-trailhead-sign, np-junior-ranger, np-meadow, np-giant-tree, np-ranger-program
+- **gates-of-arctic** (national_park): 7/8 generic → np-visitor-center, np-scenic-overlook, np-meadow, np-trailhead-sign, np-junior-ranger, np-river, np-ranger-program
+- **grand-teton** (national_park): 7/8 generic → np-visitor-center, np-scenic-overlook, np-river, np-meadow, np-trailhead-sign, np-junior-ranger, np-giant-tree
+- **jasper** (national_park): 7/8 generic → np-visitor-center, np-river, np-scenic-overlook, np-trailhead-sign, np-meadow, np-giant-tree, np-ranger-program
+- **killarney** (national_park): 7/8 generic → np-river, np-giant-tree, np-meadow, np-scenic-overlook, np-trailhead-sign, np-visitor-center, np-boardwalk
+- **sequoia** (national_park): 7/7 generic → np-giant-tree, np-visitor-center, np-trailhead-sign, np-boardwalk, np-scenic-overlook, np-junior-ranger, np-meadow
+- **wind-cave** (national_park): 7/8 generic → np-visitor-center, np-cave-entrance, np-scenic-overlook, np-trailhead-sign, np-junior-ranger, np-meadow, np-ranger-program
+- **everglades** (national_park): 6/7 generic → np-boardwalk, np-wetland, np-visitor-center, np-trailhead-sign, np-junior-ranger, np-scenic-overlook
+- **theodore-roosevelt** (national_park): 6/8 generic → np-visitor-center, np-scenic-overlook, np-meadow, np-trailhead-sign, np-junior-ranger, np-canyon-rim
+- **kruger** (national_park): 3/8 generic → np-visitor-center, np-scenic-overlook, np-trailhead-sign
+
+## Same-type pairs sharing >50% core catalog ids
+- **national_park** `american-samoa` ↔ `virgin-islands`: 100% shared (np-boardwalk, np-giant-tree, np-junior-ranger, np-ranger-program, np-scenic-overlook, np-tide-coast, np-trailhead-sign, np-visitor-center)
+- **national_park** `big-bend` ↔ `capitol-reef`: 100% shared (np-canyon-rim, np-junior-ranger, np-meadow, np-ranger-program, np-river, np-scenic-overlook, np-trailhead-sign, np-visitor-center)
+- **national_park** `black-canyon-gunnison` ↔ `crater-lake`: 100% shared (np-canyon-rim, np-giant-tree, np-junior-ranger, np-meadow, np-ranger-program, np-scenic-overlook, np-trailhead-sign, np-visitor-center)
+- **national_park** `black-canyon-gunnison` ↔ `guadalupe-mountains`: 100% shared (np-canyon-rim, np-giant-tree, np-junior-ranger, np-meadow, np-ranger-program, np-scenic-overlook, np-trailhead-sign, np-visitor-center)
+- **national_park** `canyonlands` ↔ `death-valley`: 100% shared (np-arch-rock, np-canyon-rim, np-junior-ranger, np-meadow, np-ranger-program, np-scenic-overlook, np-trailhead-sign, np-visitor-center)
+- **national_park** `canyonlands` ↔ `haleakala`: 100% shared (np-arch-rock, np-canyon-rim, np-junior-ranger, np-meadow, np-ranger-program, np-scenic-overlook, np-trailhead-sign, np-visitor-center)
+- **national_park** `canyonlands` ↔ `mesa-verde`: 100% shared (np-arch-rock, np-canyon-rim, np-junior-ranger, np-meadow, np-ranger-program, np-scenic-overlook, np-trailhead-sign, np-visitor-center)
+- **national_park** `channel-islands` ↔ `dry-tortugas`: 100% shared (np-boardwalk, np-junior-ranger, np-meadow, np-ranger-program, np-scenic-overlook, np-tide-coast, np-trailhead-sign, np-visitor-center)
+- **national_park** `channel-islands` ↔ `indiana-dunes`: 100% shared (np-boardwalk, np-junior-ranger, np-meadow, np-ranger-program, np-scenic-overlook, np-tide-coast, np-trailhead-sign, np-visitor-center)
+- **national_park** `crater-lake` ↔ `guadalupe-mountains`: 100% shared (np-canyon-rim, np-giant-tree, np-junior-ranger, np-meadow, np-ranger-program, np-scenic-overlook, np-trailhead-sign, np-visitor-center)
+- **national_park** `death-valley` ↔ `haleakala`: 100% shared (np-arch-rock, np-canyon-rim, np-junior-ranger, np-meadow, np-ranger-program, np-scenic-overlook, np-trailhead-sign, np-visitor-center)
+- **national_park** `death-valley` ↔ `mesa-verde`: 100% shared (np-arch-rock, np-canyon-rim, np-junior-ranger, np-meadow, np-ranger-program, np-scenic-overlook, np-trailhead-sign, np-visitor-center)
+- **national_park** `dry-tortugas` ↔ `indiana-dunes`: 100% shared (np-boardwalk, np-junior-ranger, np-meadow, np-ranger-program, np-scenic-overlook, np-tide-coast, np-trailhead-sign, np-visitor-center)
+- **national_park** `gateway-arch` ↔ `great-sand-dunes`: 100% shared (np-boardwalk, np-junior-ranger, np-meadow, np-ranger-program, np-river, np-scenic-overlook, np-trailhead-sign, np-visitor-center)
+- **national_park** `glacier-bay` ↔ `lake-clark`: 100% shared (np-giant-tree, np-junior-ranger, np-meadow, np-ranger-program, np-scenic-overlook, np-tide-coast, np-trailhead-sign, np-visitor-center)
+- **national_park** `haleakala` ↔ `mesa-verde`: 100% shared (np-arch-rock, np-canyon-rim, np-junior-ranger, np-meadow, np-ranger-program, np-scenic-overlook, np-trailhead-sign, np-visitor-center)
+- **national_park** `hawaii-volcanoes` ↔ `white-sands`: 100% shared (np-arch-rock, np-boardwalk, np-junior-ranger, np-meadow, np-ranger-program, np-scenic-overlook, np-trailhead-sign, np-visitor-center)
+- **national_park** `hot-springs` ↔ `saguaro`: 100% shared (np-boardwalk, np-giant-tree, np-junior-ranger, np-meadow, np-ranger-program, np-scenic-overlook, np-trailhead-sign, np-visitor-center)
+- **national_park** `hot-springs` ↔ `sequoia`: 100% shared (np-boardwalk, np-giant-tree, np-junior-ranger, np-meadow, np-scenic-overlook, np-trailhead-sign, np-visitor-center)
+- **national_park** `kenai-fjords` ↔ `north-cascades`: 100% shared (np-giant-tree, np-junior-ranger, np-meadow, np-ranger-program, np-river, np-scenic-overlook, np-trailhead-sign, np-visitor-center)
+- **national_park** `kenai-fjords` ↔ `wrangell-st-elias`: 100% shared (np-giant-tree, np-junior-ranger, np-meadow, np-ranger-program, np-river, np-scenic-overlook, np-trailhead-sign, np-visitor-center)
+- **national_park** `kings-canyon` ↔ `sequoia`: 100% shared (np-boardwalk, np-giant-tree, np-junior-ranger, np-meadow, np-scenic-overlook, np-trailhead-sign, np-visitor-center)
+- **national_park** `lake-district` ↔ `yoho`: 100% shared (np-boardwalk, np-giant-tree, np-meadow, np-ranger-program, np-river, np-scenic-overlook, np-trailhead-sign, np-visitor-center)
+- **national_park** `mount-rainier` ↔ `shenandoah`: 100% shared (np-giant-tree, np-junior-ranger, np-meadow, np-ranger-program, np-scenic-overlook, np-trailhead-sign, np-visitor-center, np-waterfall)
+- **national_park** `north-cascades` ↔ `wrangell-st-elias`: 100% shared (np-giant-tree, np-junior-ranger, np-meadow, np-ranger-program, np-river, np-scenic-overlook, np-trailhead-sign, np-visitor-center)
+- **national_park** `redwood` ↔ `sequoia`: 100% shared (np-boardwalk, np-giant-tree, np-junior-ranger, np-meadow, np-scenic-overlook, np-trailhead-sign, np-visitor-center)
+- **national_park** `saguaro` ↔ `sequoia`: 100% shared (np-boardwalk, np-giant-tree, np-junior-ranger, np-meadow, np-scenic-overlook, np-trailhead-sign, np-visitor-center)
+- **zoo** `al-ain-zoo` ↔ `berlin-zoo`: 100% shared (african-elephant, african-lion, african-penguin, nile-hippo, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
+- **zoo** `al-ain-zoo` ↔ `cairo-zoo`: 100% shared (african-elephant, african-lion, african-penguin, nile-hippo, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
+- **zoo** `al-ain-zoo` ↔ `dallas-zoo`: 100% shared (african-elephant, african-lion, african-penguin, nile-hippo, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
+- **zoo** `al-ain-zoo` ↔ `johannesburg-zoo`: 100% shared (african-elephant, african-lion, african-penguin, nile-hippo, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
+- **zoo** `al-ain-zoo` ↔ `paris-zoo`: 100% shared (african-elephant, african-lion, african-penguin, nile-hippo, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
+- **zoo** `antwerp-zoo` ↔ `artis-zoo`: 100% shared (african-lion, african-penguin, chimpanzee, red-panda, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
+- **zoo** `antwerp-zoo` ↔ `houston-zoo`: 100% shared (african-lion, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
+- **zoo** `artis-zoo` ↔ `houston-zoo`: 100% shared (african-lion, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
+- **zoo** `athens-attica-zoo` ↔ `budapest-zoo`: 100% shared (african-elephant, african-lion, african-penguin, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
+- **zoo** `athens-attica-zoo` ↔ `houston-zoo`: 100% shared (african-lion, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
+- **zoo** `athens-attica-zoo` ↔ `lisbon-zoo`: 100% shared (african-elephant, african-lion, african-penguin, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
+- **zoo** `athens-attica-zoo` ↔ `moscow-zoo`: 100% shared (african-elephant, african-lion, african-penguin, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
+- **zoo** `athens-attica-zoo` ↔ `munich-zoo`: 100% shared (african-elephant, african-lion, african-penguin, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
+- **zoo** `athens-attica-zoo` ↔ `rome-bioparco`: 100% shared (african-elephant, african-lion, african-penguin, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
+- **zoo** `athens-attica-zoo` ↔ `warsaw-zoo`: 100% shared (african-elephant, african-lion, african-penguin, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
+- **zoo** `audubon-zoo` ↔ `hogle-zoo`: 100% shared (african-elephant, african-lion, african-penguin, cheetah, nile-hippo, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla)
+- **zoo** `audubon-zoo` ↔ `memphis-zoo`: 100% shared (african-elephant, african-lion, african-penguin, cheetah, nile-hippo, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla)
+- **zoo** `berlin-zoo` ↔ `cairo-zoo`: 100% shared (african-elephant, african-lion, african-penguin, nile-hippo, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
+- **zoo** `berlin-zoo` ↔ `dallas-zoo`: 100% shared (african-elephant, african-lion, african-penguin, nile-hippo, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
+- **zoo** `berlin-zoo` ↔ `johannesburg-zoo`: 100% shared (african-elephant, african-lion, african-penguin, nile-hippo, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
+- **zoo** `berlin-zoo` ↔ `paris-zoo`: 100% shared (african-elephant, african-lion, african-penguin, nile-hippo, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
+- **zoo** `bogota-zoo` ↔ `mumbai-byculla-zoo`: 100% shared (african-elephant, african-lion, cm-outdoor, reticulated-giraffe, sumatran-tiger, zebra)
+- **zoo** `budapest-zoo` ↔ `houston-zoo`: 100% shared (african-lion, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
+- **zoo** `budapest-zoo` ↔ `lisbon-zoo`: 100% shared (african-elephant, african-lion, african-penguin, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
+- **zoo** `budapest-zoo` ↔ `moscow-zoo`: 100% shared (african-elephant, african-lion, african-penguin, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
+- **zoo** `budapest-zoo` ↔ `munich-zoo`: 100% shared (african-elephant, african-lion, african-penguin, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
+- **zoo** `budapest-zoo` ↔ `rome-bioparco`: 100% shared (african-elephant, african-lion, african-penguin, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
+- **zoo** `budapest-zoo` ↔ `warsaw-zoo`: 100% shared (african-elephant, african-lion, african-penguin, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
+- **zoo** `cairo-zoo` ↔ `dallas-zoo`: 100% shared (african-elephant, african-lion, african-penguin, nile-hippo, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
+- **zoo** `cairo-zoo` ↔ `johannesburg-zoo`: 100% shared (african-elephant, african-lion, african-penguin, nile-hippo, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
+- **zoo** `cairo-zoo` ↔ `paris-zoo`: 100% shared (african-elephant, african-lion, african-penguin, nile-hippo, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
+- **zoo** `cincinnati-zoo` ↔ `denver-zoo`: 100% shared (african-lion, african-penguin, caribbean-flamingo, cheetah, nile-hippo, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla)
+- **zoo** `cincinnati-zoo` ↔ `san-antonio-zoo`: 100% shared (african-lion, african-penguin, caribbean-flamingo, cheetah, nile-hippo, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla)
+- **zoo** `copenhagen-zoo` ↔ `houston-zoo`: 100% shared (african-lion, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
+- **zoo** `dallas-zoo` ↔ `johannesburg-zoo`: 100% shared (african-elephant, african-lion, african-penguin, nile-hippo, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
+- **zoo** `dallas-zoo` ↔ `paris-zoo`: 100% shared (african-elephant, african-lion, african-penguin, nile-hippo, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
+- **zoo** `denver-zoo` ↔ `san-antonio-zoo`: 100% shared (african-lion, african-penguin, caribbean-flamingo, cheetah, nile-hippo, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla)
+- **zoo** `dublin-zoo` ↔ `houston-zoo`: 100% shared (african-lion, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
+- **zoo** `helsinki-zoo` ↔ `prague-zoo`: 100% shared (african-elephant, african-lion, african-penguin, chimpanzee, red-panda, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla)
+- **zoo** `helsinki-zoo` ↔ `seoul-zoo`: 100% shared (african-elephant, african-lion, african-penguin, chimpanzee, red-panda, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla)
+- **zoo** `hogle-zoo` ↔ `memphis-zoo`: 100% shared (african-elephant, african-lion, african-penguin, cheetah, nile-hippo, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla)
+- **zoo** `houston-zoo` ↔ `lisbon-zoo`: 100% shared (african-lion, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
+- **zoo** `houston-zoo` ↔ `moscow-zoo`: 100% shared (african-lion, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
+- **zoo** `houston-zoo` ↔ `munich-zoo`: 100% shared (african-lion, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
+- **zoo** `houston-zoo` ↔ `rome-bioparco`: 100% shared (african-lion, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
+- **zoo** `houston-zoo` ↔ `taronga-zoo`: 100% shared (african-lion, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
+- **zoo** `houston-zoo` ↔ `warsaw-zoo`: 100% shared (african-lion, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
+- **zoo** `johannesburg-zoo` ↔ `paris-zoo`: 100% shared (african-elephant, african-lion, african-penguin, nile-hippo, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
+- **zoo** `lima-leyendas` ↔ `rio-zoo`: 100% shared (african-elephant, african-lion, african-penguin, chimpanzee, reticulated-giraffe, sumatran-tiger, two-toed-sloth, western-lowland-gorilla)
+- **zoo** `lima-leyendas` ↔ `sao-paulo-zoo`: 100% shared (african-elephant, african-lion, african-penguin, chimpanzee, reticulated-giraffe, sumatran-tiger, two-toed-sloth, western-lowland-gorilla)
+- **zoo** `lincoln-park-zoo` ↔ `oregon-zoo`: 100% shared (african-lion, african-penguin, cheetah, nile-hippo, red-panda, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla)
+- **zoo** `lisbon-zoo` ↔ `moscow-zoo`: 100% shared (african-elephant, african-lion, african-penguin, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
+- **zoo** `lisbon-zoo` ↔ `munich-zoo`: 100% shared (african-elephant, african-lion, african-penguin, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
+- **zoo** `lisbon-zoo` ↔ `rome-bioparco`: 100% shared (african-elephant, african-lion, african-penguin, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
+- **zoo** `lisbon-zoo` ↔ `warsaw-zoo`: 100% shared (african-elephant, african-lion, african-penguin, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
+- **zoo** `moscow-zoo` ↔ `munich-zoo`: 100% shared (african-elephant, african-lion, african-penguin, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
+- **zoo** `moscow-zoo` ↔ `rome-bioparco`: 100% shared (african-elephant, african-lion, african-penguin, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
+- **zoo** `moscow-zoo` ↔ `warsaw-zoo`: 100% shared (african-elephant, african-lion, african-penguin, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
+- **zoo** `munich-zoo` ↔ `rome-bioparco`: 100% shared (african-elephant, african-lion, african-penguin, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
+- **zoo** `munich-zoo` ↔ `warsaw-zoo`: 100% shared (african-elephant, african-lion, african-penguin, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
+- **zoo** `prague-zoo` ↔ `seoul-zoo`: 100% shared (african-elephant, african-lion, african-penguin, chimpanzee, red-panda, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla)
+- **zoo** `rio-zoo` ↔ `sao-paulo-zoo`: 100% shared (african-elephant, african-lion, african-penguin, chimpanzee, reticulated-giraffe, sumatran-tiger, two-toed-sloth, western-lowland-gorilla)
+- **zoo** `rome-bioparco` ↔ `warsaw-zoo`: 100% shared (african-elephant, african-lion, african-penguin, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
+- **museum** `air-and-space` ↔ `kennedy-space-center`: 100% shared (cm-free-explore, cm-outdoor, sci-astronaut, sci-hands-on, sci-planet, sci-rocket, sci-shuttle)
+- **museum** `amnh` ↔ `carnegie-natural-history`: 100% shared (cm-free-explore, sci-dinosaur, sci-hands-on, sci-mammal-hall, sci-planet, sci-rainforest)
+- **museum** `amnh` ↔ `denver-museum-nature-science`: 100% shared (cm-free-explore, sci-dinosaur, sci-hands-on, sci-mammal-hall, sci-planet)
+- **museum** `amnh` ↔ `discovery-place`: 100% shared (cm-free-explore, sci-aquarium-zone, sci-hands-on, sci-planet)
+- **museum** `amnh` ↔ `field-museum`: 100% shared (cm-free-explore, sci-dinosaur, sci-hands-on, sci-mammal-hall, sci-rainforest)
+- **museum** `amnh` ↔ `nhm-london`: 100% shared (cm-free-explore, sci-dinosaur, sci-hands-on, sci-mammal-hall, sci-planet)
+- **museum** `amnh` ↔ `smithsonian-natural-history`: 100% shared (cm-free-explore, sci-aquarium-zone, sci-dinosaur, sci-hands-on, sci-mammal-hall, sci-planet, sci-rainforest)
+- **museum** `arizona-science-center` ↔ `oregon-museum-science-industry`: 100% shared (cm-free-explore, cm-makery, sci-dinosaur, sci-hands-on, sci-planet, sci-rocket)
+- **museum** `arizona-science-center` ↔ `orlando-science-center`: 100% shared (cm-free-explore, cm-makery, sci-dinosaur, sci-hands-on, sci-planet, sci-rocket)
+- **museum** `arizona-science-center` ↔ `union-station-kc-science`: 100% shared (cm-free-explore, cm-makery, sci-dinosaur, sci-hands-on, sci-planet, sci-rocket, sci-shuttle)
+
+## Top-10 depth parks (expect clean)
+- **great-smoky-mountains**: core=8 generic_np=0 slice=Sugarlands · easy waterfall stop
+- **zion**: core=8 generic_np=0 slice=Zion Canyon · shuttle corridor
+- **yellowstone**: core=8 generic_np=0 slice=Upper Geyser Basin · Old Faithful
+- **grand-canyon**: core=8 generic_np=0 slice=South Rim · Village area
+- **yosemite**: core=8 generic_np=0 slice=Yosemite Valley
+- **rocky-mountain**: core=8 generic_np=0 slice=Beaver Meadows · easy alpine view
+- **acadia**: core=8 generic_np=0 slice=Cadillac · coast loop
+- **glacier**: core=8 generic_np=0 slice=Apgar / Lake McDonald
+- **arches**: core=8 generic_np=0 slice=Windows · Delicate viewpoint options
+- **olympic**: core=8 generic_np=0 slice=Hoh Rain Forest slice
+
+## Summary
+- Description offenders: 36
+- Generic-core offenders: 68
+- Pairwise share offenders: 4511
+- Top-10 clean: YES

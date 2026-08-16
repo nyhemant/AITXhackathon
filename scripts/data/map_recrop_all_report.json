@@ -1,0 +1,2209 @@
+[
+  {
+    "slug": "acadia",
+    "status": "img_refetch_crop",
+    "pdf": "",
+    "before_size": [
+      2200,
+      1870
+    ],
+    "after_size": [
+      2200,
+      1870
+    ],
+    "before_dark": 0.0,
+    "after_dark": 0.0,
+    "before_score": 0.034,
+    "after_score": 0.034,
+    "meta": {
+      "area_kept": 1.0,
+      "box": [
+        0,
+        0,
+        5354,
+        4551
+      ],
+      "src_size": [
+        5354,
+        4551
+      ],
+      "out_size": [
+        2200,
+        1870
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "american-samoa",
+    "status": "pdf_crop",
+    "pdf": "https://www.nps.gov/npsa/planyourvisit/upload/Area_Map.pdf",
+    "before_size": [
+      2200,
+      983
+    ],
+    "after_size": [
+      2200,
+      864
+    ],
+    "before_dark": 0.0,
+    "after_dark": 0.246,
+    "before_score": 0.111,
+    "after_score": -0.454,
+    "meta": {
+      "chosen_page": "page-2.jpg",
+      "pages": 2,
+      "area_kept": 1.0,
+      "box": [
+        0,
+        0,
+        3360,
+        1320
+      ],
+      "src_size": [
+        3360,
+        1320
+      ],
+      "out_size": [
+        2200,
+        864
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "arches",
+    "status": "img_local_crop",
+    "pdf": "",
+    "before_size": [
+      1812,
+      2200
+    ],
+    "after_size": [
+      1812,
+      2200
+    ],
+    "before_dark": 0.0,
+    "after_dark": 0.0,
+    "before_score": -0.675,
+    "after_score": -0.681,
+    "meta": {
+      "area_kept": 1.0,
+      "box": [
+        0,
+        0,
+        1812,
+        2200
+      ],
+      "src_size": [
+        1812,
+        2200
+      ],
+      "out_size": [
+        1812,
+        2200
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "badlands",
+    "status": "img_refetch_crop",
+    "pdf": "",
+    "before_size": [
+      2200,
+      1230
+    ],
+    "after_size": [
+      2200,
+      1222
+    ],
+    "before_dark": 0.0,
+    "after_dark": 0.0,
+    "before_score": -0.909,
+    "after_score": -0.898,
+    "meta": {
+      "area_kept": 0.65,
+      "box": [
+        358,
+        337,
+        4078,
+        2404
+      ],
+      "src_size": [
+        4176,
+        2831
+      ],
+      "out_size": [
+        2200,
+        1222
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "big-bend",
+    "status": "img_local_crop",
+    "pdf": "",
+    "before_size": [
+      888,
+      1125
+    ],
+    "after_size": [
+      673,
+      645
+    ],
+    "before_dark": 0.0,
+    "after_dark": 0.0,
+    "before_score": -1.011,
+    "after_score": -1.05,
+    "meta": {
+      "area_kept": 0.435,
+      "box": [
+        0,
+        204,
+        673,
+        849
+      ],
+      "src_size": [
+        888,
+        1125
+      ],
+      "out_size": [
+        673,
+        645
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "biscayne",
+    "status": "img_local_crop",
+    "pdf": "",
+    "before_size": [
+      1937,
+      2200
+    ],
+    "after_size": [
+      1937,
+      2200
+    ],
+    "before_dark": 0.0,
+    "after_dark": 0.0,
+    "before_score": -0.404,
+    "after_score": -0.409,
+    "meta": {
+      "area_kept": 1.0,
+      "box": [
+        0,
+        0,
+        1937,
+        2200
+      ],
+      "src_size": [
+        1937,
+        2200
+      ],
+      "out_size": [
+        1937,
+        2200
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "black-canyon-gunnison",
+    "status": "pdf_crop",
+    "pdf": "https://www.nps.gov/blca/planyourvisit/upload/Black_Canyon_unigrid_2023_508_web.pdf",
+    "before_size": [
+      2200,
+      1556
+    ],
+    "after_size": [
+      2200,
+      1525
+    ],
+    "before_dark": 0.003,
+    "after_dark": 0.002,
+    "before_score": -0.136,
+    "after_score": -0.145,
+    "meta": {
+      "chosen_page": "page-2.jpg",
+      "pages": 2,
+      "area_kept": 0.98,
+      "box": [
+        0,
+        0,
+        3742,
+        2594
+      ],
+      "src_size": [
+        3742,
+        2646
+      ],
+      "out_size": [
+        2200,
+        1525
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "bryce-canyon",
+    "status": "img_refetch_crop",
+    "pdf": "",
+    "before_size": [
+      847,
+      2200
+    ],
+    "after_size": [
+      847,
+      2200
+    ],
+    "before_dark": 0.0,
+    "after_dark": 0.0,
+    "before_score": -1.435,
+    "after_score": -1.435,
+    "meta": {
+      "area_kept": 1.0,
+      "box": [
+        0,
+        0,
+        1328,
+        3449
+      ],
+      "crop_rejected": "area_and_min_edge",
+      "src_size": [
+        1328,
+        3449
+      ],
+      "out_size": [
+        847,
+        2200
+      ]
+    },
+    "reject_reason": "safe_reject:area_and_min_edge"
+  },
+  {
+    "slug": "canyonlands",
+    "status": "img_refetch_crop",
+    "pdf": "",
+    "before_size": [
+      1633,
+      2200
+    ],
+    "after_size": [
+      2043,
+      2200
+    ],
+    "before_dark": 0.0,
+    "after_dark": 0.0,
+    "before_score": -0.211,
+    "after_score": -0.577,
+    "meta": {
+      "area_kept": 0.606,
+      "box": [
+        273,
+        1060,
+        4736,
+        5865
+      ],
+      "src_size": [
+        5010,
+        7059
+      ],
+      "out_size": [
+        2043,
+        2200
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "capitol-reef",
+    "status": "pdf_crop",
+    "pdf": "https://www.nps.gov/care/planyourvisit/upload/CARE_Unigrid-map-2021.pdf",
+    "before_size": [
+      1556,
+      2200
+    ],
+    "after_size": [
+      1556,
+      2200
+    ],
+    "before_dark": 0.082,
+    "after_dark": 0.082,
+    "before_score": -0.035,
+    "after_score": -0.035,
+    "meta": {
+      "chosen_page": "page-1.jpg",
+      "pages": 1,
+      "area_kept": 1.0,
+      "box": [
+        0,
+        0,
+        2646,
+        3742
+      ],
+      "src_size": [
+        2646,
+        3742
+      ],
+      "out_size": [
+        1556,
+        2200
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "carlsbad-caverns",
+    "status": "img_local_crop",
+    "pdf": "",
+    "before_size": [
+      1061,
+      1022
+    ],
+    "after_size": [
+      803,
+      849
+    ],
+    "before_dark": 0.0,
+    "after_dark": 0.0,
+    "before_score": -1.89,
+    "after_score": -1.851,
+    "meta": {
+      "area_kept": 0.629,
+      "box": [
+        0,
+        0,
+        803,
+        849
+      ],
+      "src_size": [
+        1061,
+        1022
+      ],
+      "out_size": [
+        803,
+        849
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "channel-islands",
+    "status": "img_refetch_crop",
+    "pdf": "",
+    "before_size": [
+      1772,
+      1508
+    ],
+    "after_size": [
+      1772,
+      1504
+    ],
+    "before_dark": 0.0,
+    "after_dark": 0.0,
+    "before_score": -0.284,
+    "after_score": -0.271,
+    "meta": {
+      "area_kept": 0.646,
+      "box": [
+        0,
+        406,
+        1772,
+        1910
+      ],
+      "src_size": [
+        2160,
+        1910
+      ],
+      "out_size": [
+        1772,
+        1504
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "congaree",
+    "status": "img_refetch_crop",
+    "pdf": "",
+    "before_size": [
+      2200,
+      996
+    ],
+    "after_size": [
+      2200,
+      960
+    ],
+    "before_dark": 0.0,
+    "after_dark": 0.0,
+    "before_score": -1.091,
+    "after_score": -1.149,
+    "meta": {
+      "area_kept": 0.541,
+      "box": [
+        186,
+        571,
+        3333,
+        1944
+      ],
+      "src_size": [
+        3413,
+        2340
+      ],
+      "out_size": [
+        2200,
+        960
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "crater-lake",
+    "status": "img_local_crop",
+    "pdf": "",
+    "before_size": [
+      1645,
+      1916
+    ],
+    "after_size": [
+      1645,
+      1916
+    ],
+    "before_dark": 0.0,
+    "after_dark": 0.0,
+    "before_score": -0.284,
+    "after_score": -0.286,
+    "meta": {
+      "area_kept": 1.0,
+      "box": [
+        0,
+        0,
+        1645,
+        1916
+      ],
+      "src_size": [
+        1645,
+        1916
+      ],
+      "out_size": [
+        1645,
+        1916
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "cuyahoga-valley",
+    "status": "img_refetch_crop",
+    "pdf": "",
+    "before_size": [
+      946,
+      2200
+    ],
+    "after_size": [
+      690,
+      1598
+    ],
+    "before_dark": 0.0,
+    "after_dark": 0.0,
+    "before_score": -0.586,
+    "after_score": -0.929,
+    "meta": {
+      "area_kept": 0.407,
+      "box": [
+        194,
+        298,
+        884,
+        1896
+      ],
+      "src_size": [
+        1079,
+        2509
+      ],
+      "out_size": [
+        690,
+        1598
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "death-valley",
+    "status": "img_local_crop",
+    "pdf": "",
+    "before_size": [
+      1363,
+      2200
+    ],
+    "after_size": [
+      1363,
+      2200
+    ],
+    "before_dark": 0.188,
+    "after_dark": 0.188,
+    "before_score": -0.785,
+    "after_score": -0.79,
+    "meta": {
+      "area_kept": 1.0,
+      "box": [
+        0,
+        0,
+        1363,
+        2200
+      ],
+      "src_size": [
+        1363,
+        2200
+      ],
+      "out_size": [
+        1363,
+        2200
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "denali",
+    "status": "img_local_crop",
+    "pdf": "",
+    "before_size": [
+      2000,
+      1253
+    ],
+    "after_size": [
+      2000,
+      1253
+    ],
+    "before_dark": 0.0,
+    "after_dark": 0.0,
+    "before_score": -0.528,
+    "after_score": -0.528,
+    "meta": {
+      "area_kept": 1.0,
+      "box": [
+        0,
+        0,
+        2000,
+        1253
+      ],
+      "src_size": [
+        2000,
+        1253
+      ],
+      "out_size": [
+        2000,
+        1253
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "dry-tortugas",
+    "status": "img_local_crop",
+    "pdf": "",
+    "before_size": [
+      2200,
+      2074
+    ],
+    "after_size": [
+      2200,
+      2074
+    ],
+    "before_dark": 0.126,
+    "after_dark": 0.122,
+    "before_score": 0.362,
+    "after_score": 0.378,
+    "meta": {
+      "area_kept": 1.0,
+      "box": [
+        0,
+        0,
+        2200,
+        2074
+      ],
+      "src_size": [
+        2200,
+        2074
+      ],
+      "out_size": [
+        2200,
+        2074
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "everglades",
+    "status": "img_refetch_crop",
+    "pdf": "",
+    "before_size": [
+      2200,
+      2023
+    ],
+    "after_size": [
+      2200,
+      2023
+    ],
+    "before_dark": 0.0,
+    "after_dark": 0.0,
+    "before_score": -0.168,
+    "after_score": -0.168,
+    "meta": {
+      "area_kept": 1.0,
+      "box": [
+        0,
+        0,
+        4960,
+        4561
+      ],
+      "src_size": [
+        4960,
+        4561
+      ],
+      "out_size": [
+        2200,
+        2023
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "gates-of-arctic",
+    "status": "fail",
+    "error": "Syntax Warning: May not be a PDF file (continuing anyway)\nSyntax Error (2): Illegal character <21> in hex string\nSyntax Error (4): Illegal character <6f> in hex string\nSyntax Error (6): Illegal charac"
+  },
+  {
+    "slug": "gateway-arch",
+    "status": "img_refetch_crop",
+    "pdf": "",
+    "before_size": [
+      2200,
+      1852
+    ],
+    "after_size": [
+      2200,
+      1852
+    ],
+    "before_dark": 0.0,
+    "after_dark": 0.0,
+    "before_score": -0.652,
+    "after_score": -0.652,
+    "meta": {
+      "area_kept": 1.0,
+      "box": [
+        0,
+        0,
+        3000,
+        2525
+      ],
+      "src_size": [
+        3000,
+        2525
+      ],
+      "out_size": [
+        2200,
+        1852
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "glacier-bay",
+    "status": "img_local_crop",
+    "pdf": "",
+    "before_size": [
+      2200,
+      1628
+    ],
+    "after_size": [
+      2200,
+      1628
+    ],
+    "before_dark": 0.0,
+    "after_dark": 0.0,
+    "before_score": -0.327,
+    "after_score": -0.335,
+    "meta": {
+      "area_kept": 1.0,
+      "box": [
+        0,
+        0,
+        2200,
+        1628
+      ],
+      "src_size": [
+        2200,
+        1628
+      ],
+      "out_size": [
+        2200,
+        1628
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "glacier",
+    "status": "img_refetch_crop",
+    "pdf": "",
+    "before_size": [
+      1976,
+      2200
+    ],
+    "after_size": [
+      2200,
+      2117
+    ],
+    "before_dark": 0.0,
+    "after_dark": 0.0,
+    "before_score": -0.361,
+    "after_score": -0.495,
+    "meta": {
+      "area_kept": 0.638,
+      "box": [
+        196,
+        351,
+        3281,
+        3320
+      ],
+      "src_size": [
+        3590,
+        3997
+      ],
+      "out_size": [
+        2200,
+        2117
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "grand-canyon",
+    "status": "pdf_crop",
+    "pdf": "https://www.nps.gov/grca/planyourvisit/upload/GRCAmap2.pdf",
+    "before_size": [
+      2200,
+      993
+    ],
+    "after_size": [
+      974,
+      892
+    ],
+    "before_dark": 0.0,
+    "after_dark": 0.0,
+    "before_score": -0.848,
+    "after_score": -0.822,
+    "meta": {
+      "chosen_page": "page-1.jpg",
+      "pages": 1,
+      "area_kept": 0.453,
+      "box": [
+        238,
+        105,
+        1212,
+        997
+      ],
+      "src_size": [
+        1600,
+        1200
+      ],
+      "out_size": [
+        974,
+        892
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "grand-teton",
+    "status": "img_local_crop",
+    "pdf": "",
+    "before_size": [
+      997,
+      2200
+    ],
+    "after_size": [
+      997,
+      1126
+    ],
+    "before_dark": 0.0,
+    "after_dark": 0.0,
+    "before_score": -0.755,
+    "after_score": -1.298,
+    "meta": {
+      "area_kept": 0.512,
+      "box": [
+        0,
+        537,
+        997,
+        1663
+      ],
+      "src_size": [
+        997,
+        2200
+      ],
+      "out_size": [
+        997,
+        1126
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "great-basin",
+    "status": "img_local_crop",
+    "pdf": "",
+    "before_size": [
+      2081,
+      2200
+    ],
+    "after_size": [
+      2081,
+      1539
+    ],
+    "before_dark": 0.0,
+    "after_dark": 0.0,
+    "before_score": -0.649,
+    "after_score": -1.102,
+    "meta": {
+      "area_kept": 0.7,
+      "box": [
+        0,
+        124,
+        2081,
+        1663
+      ],
+      "src_size": [
+        2081,
+        2200
+      ],
+      "out_size": [
+        2081,
+        1539
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "great-sand-dunes",
+    "status": "img_local_crop",
+    "pdf": "",
+    "before_size": [
+      1410,
+      1766
+    ],
+    "after_size": [
+      1410,
+      1598
+    ],
+    "before_dark": 0.0,
+    "after_dark": 0.0,
+    "before_score": -0.288,
+    "after_score": -0.348,
+    "meta": {
+      "area_kept": 0.905,
+      "box": [
+        0,
+        45,
+        1410,
+        1643
+      ],
+      "src_size": [
+        1410,
+        1766
+      ],
+      "out_size": [
+        1410,
+        1598
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "great-smoky-mountains",
+    "status": "pdf_crop",
+    "pdf": "https://www.nps.gov/grsm/planyourvisit/upload/grsmmap_2024_reduced_508.pdf",
+    "before_size": [
+      2200,
+      1211
+    ],
+    "after_size": [
+      2158,
+      1118
+    ],
+    "before_dark": 0.0,
+    "after_dark": 0.008,
+    "before_score": -1.586,
+    "after_score": -1.707,
+    "meta": {
+      "chosen_page": "page-1.jpg",
+      "pages": 1,
+      "area_kept": 0.767,
+      "box": [
+        0,
+        128,
+        2158,
+        1246
+      ],
+      "src_size": [
+        2158,
+        1457
+      ],
+      "out_size": [
+        2158,
+        1118
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "guadalupe-mountains",
+    "status": "img_local_crop",
+    "pdf": "",
+    "before_size": [
+      1981,
+      1522
+    ],
+    "after_size": [
+      1981,
+      1264
+    ],
+    "before_dark": 0.0,
+    "after_dark": 0.0,
+    "before_score": -0.534,
+    "after_score": -0.658,
+    "meta": {
+      "area_kept": 0.83,
+      "box": [
+        0,
+        0,
+        1981,
+        1264
+      ],
+      "src_size": [
+        1981,
+        1522
+      ],
+      "out_size": [
+        1981,
+        1264
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "haleakala",
+    "status": "img_refetch_crop",
+    "pdf": "",
+    "before_size": [
+      2200,
+      1163
+    ],
+    "after_size": [
+      2200,
+      1160
+    ],
+    "before_dark": 0.0,
+    "after_dark": 0.0,
+    "before_score": -0.319,
+    "after_score": -0.224,
+    "meta": {
+      "area_kept": 0.738,
+      "box": [
+        67,
+        485,
+        2909,
+        1984
+      ],
+      "src_size": [
+        2909,
+        1984
+      ],
+      "out_size": [
+        2200,
+        1160
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "hawaii-volcanoes",
+    "status": "img_local_crop",
+    "pdf": "",
+    "before_size": [
+      2200,
+      1079
+    ],
+    "after_size": [
+      2200,
+      1079
+    ],
+    "before_dark": 0.0,
+    "after_dark": 0.0,
+    "before_score": 0.292,
+    "after_score": 0.297,
+    "meta": {
+      "area_kept": 1.0,
+      "box": [
+        0,
+        0,
+        2200,
+        1079
+      ],
+      "src_size": [
+        2200,
+        1079
+      ],
+      "out_size": [
+        2200,
+        1079
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "hot-springs",
+    "status": "img_local_crop",
+    "pdf": "",
+    "before_size": [
+      2200,
+      1137
+    ],
+    "after_size": [
+      2200,
+      1137
+    ],
+    "before_dark": 0.0,
+    "after_dark": 0.0,
+    "before_score": -0.642,
+    "after_score": -0.627,
+    "meta": {
+      "area_kept": 1.0,
+      "box": [
+        0,
+        0,
+        2200,
+        1137
+      ],
+      "src_size": [
+        2200,
+        1137
+      ],
+      "out_size": [
+        2200,
+        1137
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "indiana-dunes",
+    "status": "img_refetch_crop",
+    "pdf": "",
+    "before_size": [
+      2200,
+      1212
+    ],
+    "after_size": [
+      2200,
+      1209
+    ],
+    "before_dark": 0.0,
+    "after_dark": 0.0,
+    "before_score": -0.865,
+    "after_score": -0.832,
+    "meta": {
+      "area_kept": 0.573,
+      "box": [
+        0,
+        0,
+        3398,
+        1867
+      ],
+      "src_size": [
+        4484,
+        2471
+      ],
+      "out_size": [
+        2200,
+        1209
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "isle-royale",
+    "status": "img_refetch_crop",
+    "pdf": "",
+    "before_size": [
+      2200,
+      1317
+    ],
+    "after_size": [
+      2200,
+      1317
+    ],
+    "before_dark": 0.0,
+    "after_dark": 0.0,
+    "before_score": -0.226,
+    "after_score": -0.226,
+    "meta": {
+      "area_kept": 1.0,
+      "box": [
+        0,
+        0,
+        3564,
+        2133
+      ],
+      "src_size": [
+        3564,
+        2133
+      ],
+      "out_size": [
+        2200,
+        1317
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "joshua-tree",
+    "status": "img_local_crop",
+    "pdf": "",
+    "before_size": [
+      1263,
+      1130
+    ],
+    "after_size": [
+      1234,
+      662
+    ],
+    "before_dark": 0.002,
+    "after_dark": 0.0,
+    "before_score": -1.218,
+    "after_score": -1.137,
+    "meta": {
+      "area_kept": 0.572,
+      "box": [
+        29,
+        276,
+        1263,
+        938
+      ],
+      "src_size": [
+        1263,
+        1130
+      ],
+      "out_size": [
+        1234,
+        662
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "katmai",
+    "status": "img_local_crop",
+    "pdf": "",
+    "before_size": [
+      2200,
+      2177
+    ],
+    "after_size": [
+      2200,
+      2177
+    ],
+    "before_dark": 0.01,
+    "after_dark": 0.01,
+    "before_score": -0.248,
+    "after_score": -0.249,
+    "meta": {
+      "area_kept": 1.0,
+      "box": [
+        0,
+        0,
+        2200,
+        2177
+      ],
+      "src_size": [
+        2200,
+        2177
+      ],
+      "out_size": [
+        2200,
+        2177
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "kenai-fjords",
+    "status": "img_refetch_crop",
+    "pdf": "",
+    "before_size": [
+      2200,
+      2023
+    ],
+    "after_size": [
+      2200,
+      2023
+    ],
+    "before_dark": 0.0,
+    "after_dark": 0.0,
+    "before_score": -0.556,
+    "after_score": -0.556,
+    "meta": {
+      "area_kept": 1.0,
+      "box": [
+        0,
+        0,
+        3614,
+        3324
+      ],
+      "src_size": [
+        3614,
+        3324
+      ],
+      "out_size": [
+        2200,
+        2023
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "kings-canyon",
+    "status": "pdf_crop",
+    "pdf": "https://www.nps.gov/seki/planyourvisit/upload/20210826-Unigrid-Spanish-508.pdf",
+    "before_size": [
+      1808,
+      2200
+    ],
+    "after_size": [
+      1336,
+      2200
+    ],
+    "before_dark": 0.0,
+    "after_dark": 0.0,
+    "before_score": -1.262,
+    "after_score": -3.973,
+    "meta": {
+      "chosen_page": "page-2.jpg",
+      "pages": 2,
+      "area_kept": 1.0,
+      "box": [
+        0,
+        0,
+        1360,
+        2240
+      ],
+      "crop_rejected": "area_and_min_edge",
+      "src_size": [
+        1360,
+        2240
+      ],
+      "out_size": [
+        1336,
+        2200
+      ]
+    },
+    "reject_reason": "safe_reject:area_and_min_edge"
+  },
+  {
+    "slug": "kobuk-valley",
+    "status": "img_local_crop",
+    "pdf": "",
+    "before_size": [
+      2200,
+      2029
+    ],
+    "after_size": [
+      2200,
+      2029
+    ],
+    "before_dark": 0.0,
+    "after_dark": 0.0,
+    "before_score": 0.109,
+    "after_score": 0.102,
+    "meta": {
+      "area_kept": 1.0,
+      "box": [
+        0,
+        0,
+        2200,
+        2029
+      ],
+      "src_size": [
+        2200,
+        2029
+      ],
+      "out_size": [
+        2200,
+        2029
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "lake-clark",
+    "status": "img_local_crop",
+    "pdf": "",
+    "before_size": [
+      2000,
+      1331
+    ],
+    "after_size": [
+      2000,
+      1331
+    ],
+    "before_dark": 0.681,
+    "after_dark": 0.68,
+    "before_score": -0.056,
+    "after_score": -0.065,
+    "meta": {
+      "area_kept": 1.0,
+      "box": [
+        0,
+        0,
+        2000,
+        1331
+      ],
+      "src_size": [
+        2000,
+        1331
+      ],
+      "out_size": [
+        2000,
+        1331
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "lassen-volcanic",
+    "status": "img_refetch_crop",
+    "pdf": "",
+    "before_size": [
+      2200,
+      1133
+    ],
+    "after_size": [
+      2200,
+      1091
+    ],
+    "before_dark": 0.0,
+    "after_dark": 0.0,
+    "before_score": -0.697,
+    "after_score": -0.654,
+    "meta": {
+      "area_kept": 0.413,
+      "box": [
+        245,
+        653,
+        3411,
+        2223
+      ],
+      "src_size": [
+        4500,
+        2676
+      ],
+      "out_size": [
+        2200,
+        1091
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "mammoth-cave",
+    "status": "img_refetch_crop",
+    "pdf": "",
+    "before_size": [
+      2200,
+      1200
+    ],
+    "after_size": [
+      2200,
+      1192
+    ],
+    "before_dark": 0.0,
+    "after_dark": 0.0,
+    "before_score": -1.669,
+    "after_score": -1.739,
+    "meta": {
+      "area_kept": 0.527,
+      "box": [
+        594,
+        649,
+        4795,
+        2926
+      ],
+      "src_size": [
+        5073,
+        3576
+      ],
+      "out_size": [
+        2200,
+        1192
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "mesa-verde",
+    "status": "img_local_crop",
+    "pdf": "",
+    "before_size": [
+      1471,
+      2200
+    ],
+    "after_size": [
+      1356,
+      2200
+    ],
+    "before_dark": 0.158,
+    "after_dark": 0.163,
+    "before_score": -0.444,
+    "after_score": -0.446,
+    "meta": {
+      "area_kept": 0.922,
+      "box": [
+        34,
+        0,
+        1390,
+        2200
+      ],
+      "src_size": [
+        1471,
+        2200
+      ],
+      "out_size": [
+        1356,
+        2200
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "mount-rainier",
+    "status": "img_refetch_crop",
+    "pdf": "",
+    "before_size": [
+      2200,
+      2056
+    ],
+    "after_size": [
+      2200,
+      2030
+    ],
+    "before_dark": 0.0,
+    "after_dark": 0.0,
+    "before_score": -0.499,
+    "after_score": -0.569,
+    "meta": {
+      "area_kept": 0.57,
+      "box": [
+        569,
+        159,
+        3148,
+        2539
+      ],
+      "src_size": [
+        3838,
+        2804
+      ],
+      "out_size": [
+        2200,
+        2030
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "new-river-gorge",
+    "status": "img_refetch_crop",
+    "pdf": "",
+    "before_size": [
+      2180,
+      2110
+    ],
+    "after_size": [
+      2180,
+      2110
+    ],
+    "before_dark": 0.0,
+    "after_dark": 0.0,
+    "before_score": -1.726,
+    "after_score": -1.726,
+    "meta": {
+      "area_kept": 1.0,
+      "box": [
+        0,
+        0,
+        2180,
+        2110
+      ],
+      "crop_rejected": "area_and_min_edge",
+      "src_size": [
+        2180,
+        2110
+      ],
+      "out_size": [
+        2180,
+        2110
+      ]
+    },
+    "reject_reason": "safe_reject:area_and_min_edge"
+  },
+  {
+    "slug": "north-cascades",
+    "status": "reverted:score_drop",
+    "pdf": "https://www.nps.gov/noca/planyourvisit/upload/Ross_Lake_Trip_Planner_for_Website_508.pdf",
+    "before_size": [
+      2127,
+      2200
+    ],
+    "after_size": [
+      2127,
+      2200
+    ],
+    "before_dark": 0.0,
+    "after_dark": 0.0,
+    "before_score": -0.719,
+    "after_score": -0.719,
+    "meta": {
+      "chosen_page": "page-1.jpg",
+      "pages": 1,
+      "area_kept": 0.667,
+      "box": [
+        114,
+        138,
+        1208,
+        1649
+      ],
+      "src_size": [
+        1323,
+        1872
+      ],
+      "out_size": [
+        1094,
+        1511
+      ]
+    },
+    "reject_reason": "score_drop"
+  },
+  {
+    "slug": "olympic",
+    "status": "img_refetch_crop",
+    "pdf": "",
+    "before_size": [
+      2200,
+      1563
+    ],
+    "after_size": [
+      2200,
+      1563
+    ],
+    "before_dark": 0.167,
+    "after_dark": 0.167,
+    "before_score": -0.315,
+    "after_score": -0.315,
+    "meta": {
+      "area_kept": 1.0,
+      "box": [
+        0,
+        0,
+        5865,
+        4168
+      ],
+      "src_size": [
+        5865,
+        4168
+      ],
+      "out_size": [
+        2200,
+        1563
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "petrified-forest",
+    "status": "img_local_crop",
+    "pdf": "",
+    "before_size": [
+      1619,
+      1987
+    ],
+    "after_size": [
+      1542,
+      1948
+    ],
+    "before_dark": 0.0,
+    "after_dark": 0.0,
+    "before_score": -0.623,
+    "after_score": -0.636,
+    "meta": {
+      "area_kept": 0.934,
+      "box": [
+        38,
+        0,
+        1580,
+        1948
+      ],
+      "src_size": [
+        1619,
+        1987
+      ],
+      "out_size": [
+        1542,
+        1948
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "pinnacles",
+    "status": "pdf_crop",
+    "pdf": "https://www.nps.gov/pinn/planyourvisit/upload/2019-map-update-DRAFT-2.pdf",
+    "before_size": [
+      2200,
+      1390
+    ],
+    "after_size": [
+      1467,
+      2200
+    ],
+    "before_dark": 0.0,
+    "after_dark": 0.0,
+    "before_score": 0.003,
+    "after_score": -0.708,
+    "meta": {
+      "chosen_page": "page-1.jpg",
+      "pages": 1,
+      "area_kept": 1.0,
+      "box": [
+        0,
+        0,
+        2560,
+        3840
+      ],
+      "crop_rejected": "area_and_min_edge",
+      "src_size": [
+        2560,
+        3840
+      ],
+      "out_size": [
+        1467,
+        2200
+      ]
+    },
+    "reject_reason": "safe_reject:area_and_min_edge"
+  },
+  {
+    "slug": "redwood",
+    "status": "img_refetch_crop",
+    "pdf": "",
+    "before_size": [
+      937,
+      2200
+    ],
+    "after_size": [
+      937,
+      2200
+    ],
+    "before_dark": 0.0,
+    "after_dark": 0.0,
+    "before_score": -0.261,
+    "after_score": -0.261,
+    "meta": {
+      "area_kept": 0.758,
+      "box": [
+        0,
+        0,
+        2368,
+        5561
+      ],
+      "src_size": [
+        3125,
+        5561
+      ],
+      "out_size": [
+        937,
+        2200
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "rocky-mountain",
+    "status": "img_local_crop",
+    "pdf": "",
+    "before_size": [
+      1586,
+      2200
+    ],
+    "after_size": [
+      1586,
+      2089
+    ],
+    "before_dark": 0.0,
+    "after_dark": 0.0,
+    "before_score": -0.437,
+    "after_score": -0.414,
+    "meta": {
+      "area_kept": 0.95,
+      "box": [
+        0,
+        55,
+        1586,
+        2144
+      ],
+      "src_size": [
+        1586,
+        2200
+      ],
+      "out_size": [
+        1586,
+        2089
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "saguaro",
+    "status": "img_local_crop",
+    "pdf": "",
+    "before_size": [
+      1628,
+      995
+    ],
+    "after_size": [
+      1591,
+      975
+    ],
+    "before_dark": 0.0,
+    "after_dark": 0.0,
+    "before_score": -0.697,
+    "after_score": -0.605,
+    "meta": {
+      "area_kept": 0.958,
+      "box": [
+        37,
+        0,
+        1628,
+        975
+      ],
+      "src_size": [
+        1628,
+        995
+      ],
+      "out_size": [
+        1591,
+        975
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "sequoia",
+    "status": "reverted:score_drop",
+    "pdf": "https://www.nps.gov/seki/planyourvisit/upload/20210826-Unigrid-Spanish-508.pdf",
+    "before_size": [
+      1869,
+      2200
+    ],
+    "after_size": [
+      1869,
+      2200
+    ],
+    "before_dark": 0.0,
+    "after_dark": 0.0,
+    "before_score": -0.673,
+    "after_score": -0.673,
+    "meta": {
+      "chosen_page": "page-2.jpg",
+      "pages": 2,
+      "area_kept": 1.0,
+      "box": [
+        0,
+        0,
+        1360,
+        2240
+      ],
+      "crop_rejected": "area_and_min_edge",
+      "src_size": [
+        1360,
+        2240
+      ],
+      "out_size": [
+        1336,
+        2200
+      ]
+    },
+    "reject_reason": "score_drop"
+  },
+  {
+    "slug": "shenandoah",
+    "status": "img_refetch_crop",
+    "pdf": "",
+    "before_size": [
+      820,
+      2200
+    ],
+    "after_size": [
+      820,
+      2200
+    ],
+    "before_dark": 0.0,
+    "after_dark": 0.0,
+    "before_score": -1.913,
+    "after_score": -1.913,
+    "meta": {
+      "area_kept": 1.0,
+      "box": [
+        0,
+        0,
+        2527,
+        6776
+      ],
+      "crop_rejected": "area_and_min_edge",
+      "src_size": [
+        2527,
+        6776
+      ],
+      "out_size": [
+        820,
+        2200
+      ]
+    },
+    "reject_reason": "safe_reject:area_and_min_edge"
+  },
+  {
+    "slug": "theodore-roosevelt",
+    "status": "img_refetch_crop",
+    "pdf": "",
+    "before_size": [
+      1736,
+      1179
+    ],
+    "after_size": [
+      1736,
+      1135
+    ],
+    "before_dark": 0.0,
+    "after_dark": 0.0,
+    "before_score": -1.601,
+    "after_score": -1.555,
+    "meta": {
+      "area_kept": 0.339,
+      "box": [
+        538,
+        473,
+        2274,
+        1608
+      ],
+      "src_size": [
+        3000,
+        1936
+      ],
+      "out_size": [
+        1736,
+        1135
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "virgin-islands",
+    "status": "img_local_crop",
+    "pdf": "",
+    "before_size": [
+      781,
+      602
+    ],
+    "after_size": [
+      781,
+      602
+    ],
+    "before_dark": 0.182,
+    "after_dark": 0.184,
+    "before_score": -0.258,
+    "after_score": -0.273,
+    "meta": {
+      "area_kept": 1.0,
+      "box": [
+        0,
+        0,
+        781,
+        602
+      ],
+      "src_size": [
+        781,
+        602
+      ],
+      "out_size": [
+        781,
+        602
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "voyageurs",
+    "status": "img_local_crop",
+    "pdf": "",
+    "before_size": [
+      2000,
+      1501
+    ],
+    "after_size": [
+      2000,
+      1501
+    ],
+    "before_dark": 0.597,
+    "after_dark": 0.597,
+    "before_score": -0.153,
+    "after_score": -0.156,
+    "meta": {
+      "area_kept": 1.0,
+      "box": [
+        0,
+        0,
+        2000,
+        1501
+      ],
+      "src_size": [
+        2000,
+        1501
+      ],
+      "out_size": [
+        2000,
+        1501
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "white-sands",
+    "status": "pdf_crop",
+    "pdf": "https://www.nps.gov/whsa/planyourvisit/upload/WHSA_Unigrid_2022.pdf",
+    "before_size": [
+      2043,
+      2200
+    ],
+    "after_size": [
+      2061,
+      2200
+    ],
+    "before_dark": 0.382,
+    "after_dark": 0.38,
+    "before_score": -1.202,
+    "after_score": -1.114,
+    "meta": {
+      "chosen_page": "page-1.jpg",
+      "pages": 2,
+      "area_kept": 0.906,
+      "box": [
+        0,
+        0,
+        2646,
+        2825
+      ],
+      "src_size": [
+        2646,
+        3119
+      ],
+      "out_size": [
+        2061,
+        2200
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "wind-cave",
+    "status": "img_local_crop",
+    "pdf": "",
+    "before_size": [
+      1150,
+      882
+    ],
+    "after_size": [
+      871,
+      672
+    ],
+    "before_dark": 0.0,
+    "after_dark": 0.0,
+    "before_score": -1.151,
+    "after_score": -1.236,
+    "meta": {
+      "area_kept": 0.577,
+      "box": [
+        0,
+        77,
+        871,
+        749
+      ],
+      "src_size": [
+        1150,
+        882
+      ],
+      "out_size": [
+        871,
+        672
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "wrangell-st-elias",
+    "status": "pdf_crop",
+    "pdf": "https://www.nps.gov/wrst/learn/photosmultimedia/upload/WRST_Unigrid_English-508.pdf",
+    "before_size": [
+      1556,
+      2200
+    ],
+    "after_size": [
+      1556,
+      2200
+    ],
+    "before_dark": 0.076,
+    "after_dark": 0.076,
+    "before_score": -0.326,
+    "after_score": -0.326,
+    "meta": {
+      "chosen_page": "page-2.jpg",
+      "pages": 2,
+      "area_kept": 1.0,
+      "box": [
+        0,
+        0,
+        2646,
+        3742
+      ],
+      "src_size": [
+        2646,
+        3742
+      ],
+      "out_size": [
+        1556,
+        2200
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "yellowstone",
+    "status": "pdf_crop",
+    "pdf": "https://www.nps.gov/yell/planyourvisit/upload/2025_Yellowstone-Unigrid_Web-508.pdf",
+    "before_size": [
+      1783,
+      2200
+    ],
+    "after_size": [
+      2029,
+      2200
+    ],
+    "before_dark": 0.0,
+    "after_dark": 0.0,
+    "before_score": -0.998,
+    "after_score": -0.969,
+    "meta": {
+      "chosen_page": "page-2.jpg",
+      "pages": 2,
+      "area_kept": 0.732,
+      "box": [
+        61,
+        586,
+        2646,
+        3389
+      ],
+      "src_size": [
+        2646,
+        3742
+      ],
+      "out_size": [
+        2029,
+        2200
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "yosemite",
+    "status": "img_refetch_crop",
+    "pdf": "",
+    "before_size": [
+      2200,
+      1698
+    ],
+    "after_size": [
+      2200,
+      1501
+    ],
+    "before_dark": 0.0,
+    "after_dark": 0.0,
+    "before_score": -0.799,
+    "after_score": -0.806,
+    "meta": {
+      "area_kept": 0.634,
+      "box": [
+        77,
+        614,
+        3300,
+        2813
+      ],
+      "src_size": [
+        3300,
+        3386
+      ],
+      "out_size": [
+        2200,
+        1501
+      ]
+    },
+    "reject_reason": ""
+  },
+  {
+    "slug": "zion",
+    "status": "pdf_crop",
+    "pdf": "https://www.nps.gov/zion/planyourvisit/upload/ZionUnigrid.pdf",
+    "before_size": [
+      1556,
+      2200
+    ],
+    "after_size": [
+      1556,
+      2200
+    ],
+    "before_dark": 0.239,
+    "after_dark": 0.239,
+    "before_score": -0.006,
+    "after_score": -0.006,
+    "meta": {
+      "chosen_page": "page-1.jpg",
+      "pages": 2,
+      "area_kept": 1.0,
+      "box": [
+        0,
+        0,
+        2646,
+        3742
+      ],
+      "src_size": [
+        2646,
+        3742
+      ],
+      "out_size": [
+        1556,
+        2200
+      ]
+    },
+    "reject_reason": ""
+  }
+]

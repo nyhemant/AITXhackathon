@@ -1,0 +1,294 @@
+{
+  "id": "virtual-aquarium",
+  "kind": "aquarium",
+  "tab": "aquarium",
+  "path": "/field-pack/virtual-field-trip/?tab=aquarium",
+  "title": "Virtual Aquarium for Kids",
+  "h1": "Virtual Aquarium — a field trip at home",
+  "crumb": "Aquarium",
+  "lead": "Study before you go. Start at the door and follow the path from pool to pool. Watch a live cam when there is one, then walk on. Free. No account.",
+  "printBanner": "HOME AQUARIUM · Map hunt",
+  "printSub": "Check each stop. Doodle if you want. Page 2 cuts into hide-and-seek cards.",
+  "printHideBanner": "Hide-and-seek at home",
+  "printHideSub": "Cut the cards. Hide them. Write in the box. Ask the question.",
+  "printFooter": "1less.app/field-pack/virtual-field-trip/?tab=aquarium · Field Trip Kit",
+  "storageKey": "fp-virtual-aquarium-stamps-v4",
+  "mapSvg": "/field-pack/media/virtual-aquarium/map.svg?v=8",
+  "habitats": [
+    {
+      "id": "clownfish",
+      "cardId": "clownfish",
+      "label": "Clownfish Reef",
+      "challenge": "Why do clownfish have orange-and-white stripes? Why hide in those wiggly tentacles?",
+      "hotspot": {
+        "svgId": "habitat-clownfish"
+      },
+      "cam": {},
+      "video": {
+        "url": "https://www.youtube.com/watch?v=rn6R4ncd2OU",
+        "title": "Clownfish on the reef",
+        "provider": "youtube",
+        "channel": "BBC Earth",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=rn6R4ncd2OU",
+          "checked": "2026-08-14"
+        }
+      },
+      "seq": 1,
+      "printAnswer": "The stripes help them belong on the reef. They hide in a sea anemone. Those tentacles sting other fish, but a clownfish’s slime keeps it safe."
+    },
+    {
+      "id": "crab",
+      "cardId": "crab",
+      "label": "Crab Shore",
+      "challenge": "Why do crabs walk sideways? What’s the shell for?",
+      "hotspot": {
+        "svgId": "habitat-crab"
+      },
+      "cam": {},
+      "video": {
+        "url": "https://www.youtube.com/watch?v=7tU4k4zjCCM",
+        "title": "Crabs at Monterey Bay Aquarium",
+        "provider": "youtube",
+        "channel": "Monterey Bay Aquarium",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=7tU4k4zjCCM",
+          "checked": "2026-08-14"
+        }
+      },
+      "seq": 2,
+      "printAnswer": "Their legs bend that way, so sideways is easiest. The shell is armor. When they grow, they crawl out and make a new one."
+    },
+    {
+      "id": "eel",
+      "cardId": "eel",
+      "label": "Eel Cave",
+      "challenge": "Why does an eel look like a snake? Where does it hide, and why?",
+      "hotspot": {
+        "svgId": "habitat-eel"
+      },
+      "cam": {},
+      "video": {
+        "url": "https://www.youtube.com/watch?v=E-njRqPqr3Y",
+        "title": "Wolf eel",
+        "provider": "youtube",
+        "channel": "Nat Geo Kids",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=E-njRqPqr3Y",
+          "checked": "2026-08-14"
+        }
+      },
+      "seq": 9,
+      "printAnswer": "A long body slips into holes in the reef. It hides to stay safe and to surprise food."
+    },
+    {
+      "id": "sea-turtle",
+      "cardId": "sea-turtle",
+      "label": "Turtle Current",
+      "challenge": "Why do sea turtles have flippers instead of feet?",
+      "hotspot": {
+        "svgId": "habitat-sea-turtle"
+      },
+      "cam": {
+        "url": "https://www.montereybayaquarium.org/cams-videos/live-cams/open-sea-cam",
+        "provider": "monterey_bay",
+        "embed": null,
+        "hours": "Usually 7a–7p PT",
+        "camLabel": "Open Sea cam at Monterey Bay Aquarium",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.montereybayaquarium.org/cams-videos/live-cams/open-sea-cam",
+          "checked": "2026-08-13"
+        }
+      },
+      "video": {
+        "url": "https://www.youtube.com/watch?v=owf_zFHt_lQ",
+        "title": "Sea turtles at Monterey Bay Aquarium",
+        "provider": "youtube",
+        "channel": "Monterey Bay Aquarium",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=owf_zFHt_lQ",
+          "checked": "2026-08-14"
+        }
+      },
+      "seq": 10,
+      "printAnswer": "Flippers are for swimming far. Feet would be better on land, but sea turtles live in the water."
+    },
+    {
+      "id": "seahorse",
+      "cardId": "seahorse",
+      "label": "Seahorse Garden",
+      "challenge": "Why does a seahorse swim upright? Who carries the babies?",
+      "hotspot": {
+        "svgId": "habitat-seahorse"
+      },
+      "cam": {},
+      "video": {
+        "url": "https://www.youtube.com/watch?v=iOrMzleVoGs",
+        "title": "Seahorses at Monterey Bay Aquarium",
+        "provider": "youtube",
+        "channel": "Monterey Bay Aquarium",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=iOrMzleVoGs",
+          "checked": "2026-08-14"
+        }
+      },
+      "seq": 3,
+      "printAnswer": "An upright body and a holding tail fit in sea grass. The dad carries the eggs in a pouch."
+    },
+    {
+      "id": "shark",
+      "cardId": "shark",
+      "label": "Shark Reef",
+      "challenge": "Why do sharks have so many teeth? Do they ever sleep?",
+      "hotspot": {
+        "svgId": "habitat-shark"
+      },
+      "cam": {
+        "url": "https://www.montereybayaquarium.org/cams-videos/live-cams/shark-cam",
+        "provider": "monterey_bay",
+        "embed": null,
+        "hours": "Usually 7a–7p PT",
+        "camLabel": "Shark cam at Monterey Bay Aquarium",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.montereybayaquarium.org/cams-videos/live-cams/shark-cam",
+          "checked": "2026-08-13"
+        }
+      },
+      "video": {
+        "url": "https://www.youtube.com/watch?v=EjLu5_exInI",
+        "title": "Leopard sharks at Monterey Bay Aquarium",
+        "provider": "youtube",
+        "channel": "Monterey Bay Aquarium",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=EjLu5_exInI",
+          "checked": "2026-08-14"
+        }
+      },
+      "seq": 8,
+      "printAnswer": "Teeth fall out and new ones grow in. Sharks rest, but not like we sleep in a bed."
+    },
+    {
+      "id": "starfish",
+      "cardId": "starfish",
+      "label": "Sea Star Pool",
+      "challenge": "How does a sea star eat? What if it loses an arm?",
+      "hotspot": {
+        "svgId": "habitat-starfish"
+      },
+      "cam": {},
+      "video": {
+        "url": "https://www.youtube.com/watch?v=KjsmnveGmN8",
+        "title": "Sunflower sea star",
+        "provider": "youtube",
+        "channel": "MBARI",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=KjsmnveGmN8",
+          "checked": "2026-08-14"
+        }
+      },
+      "seq": 7,
+      "printAnswer": "It can push its stomach out onto its food. If it loses an arm, it can often grow a new one."
+    },
+    {
+      "id": "octopus",
+      "cardId": "octopus",
+      "label": "Octopus Den",
+      "challenge": "How does an octopus hide? Why eight arms?",
+      "hotspot": {
+        "svgId": "habitat-octopus"
+      },
+      "cam": {},
+      "video": {
+        "url": "https://www.youtube.com/watch?v=9vQnKO_2kKk",
+        "title": "Giant Pacific octopus",
+        "provider": "youtube",
+        "channel": "Nat Geo Kids",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=9vQnKO_2kKk",
+          "checked": "2026-08-14"
+        }
+      },
+      "seq": 4,
+      "printAnswer": "It can change color and squeeze into tiny holes. Eight arms grab food and feel the way."
+    },
+    {
+      "id": "stingray",
+      "cardId": "stingray",
+      "label": "Ray Flats",
+      "challenge": "Why is a stingray so flat? Where is its mouth?",
+      "hotspot": {
+        "svgId": "habitat-stingray"
+      },
+      "cam": {
+        "url": "https://www.montereybayaquarium.org/cams-videos/live-cams/shark-cam",
+        "provider": "monterey_bay",
+        "embed": null,
+        "hours": "Usually 7a–7p PT",
+        "camLabel": "Reef cam (rays + sharks) at Monterey Bay Aquarium",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.montereybayaquarium.org/cams-videos/live-cams/shark-cam",
+          "checked": "2026-08-13"
+        }
+      },
+      "video": {
+        "url": "https://www.youtube.com/watch?v=qIyN4Bp-rvE",
+        "title": "Baby bat rays at Monterey Bay Aquarium",
+        "provider": "youtube",
+        "channel": "Monterey Bay Aquarium",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=qIyN4Bp-rvE",
+          "checked": "2026-08-14"
+        }
+      },
+      "seq": 5,
+      "printAnswer": "A flat body hides on the sand. The mouth is on the bottom, so it can eat what it finds there."
+    },
+    {
+      "id": "jellyfish",
+      "cardId": "jellyfish",
+      "label": "Jelly Drift",
+      "challenge": "Why can a jellyfish sting? Does it have a brain?",
+      "hotspot": {
+        "svgId": "habitat-jellyfish"
+      },
+      "cam": {
+        "url": "https://www.montereybayaquarium.org/cams-videos/live-cams/jelly-cam",
+        "provider": "monterey_bay",
+        "embed": null,
+        "hours": "Usually 7a–7p PT",
+        "camLabel": "Jelly cam at Monterey Bay Aquarium",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.montereybayaquarium.org/cams-videos/live-cams/jelly-cam",
+          "checked": "2026-08-13"
+        }
+      },
+      "video": {
+        "url": "https://www.youtube.com/watch?v=nbY7dSf3GYE",
+        "title": "Jellies at Monterey Bay Aquarium",
+        "provider": "youtube",
+        "channel": "Monterey Bay Aquarium",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=nbY7dSf3GYE",
+          "checked": "2026-08-14"
+        }
+      },
+      "seq": 6,
+      "printAnswer": "The sting catches food. A jellyfish has no brain — just a simple body that drifts and pulses."
+    }
+  ],
+  "sequential": true
+}

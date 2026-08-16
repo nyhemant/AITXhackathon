@@ -1,0 +1,385 @@
+{
+  "id": "aquarium-film-library",
+  "checked": "2026-08-16",
+  "note": "Pick-path ingredients for the aquarium tab. Default tour is the current 10. Bench extras are typical large-aquarium wow stops with picture-first official films.",
+  "omit": [
+    {
+      "cardId": "freshwater-fish",
+      "reason": "No short official habitat clip. Visitor river-gallery tours and talking paddlefish episodes only."
+    },
+    {
+      "cardId": "california-sea-lion",
+      "reason": "BBC Big Blue Live is a diver-host swim, not habitat-first."
+    },
+    {
+      "cardId": "manatee",
+      "reason": "BBC clips are host-led dives."
+    },
+    {
+      "cardId": "leafy-sea-dragon",
+      "reason": "BBC weedy-dragon clip is host-led. No picture-first official lock."
+    }
+  ],
+  "cards": [
+    {
+      "cardId": "clownfish",
+      "label": "Clownfish Reef",
+      "challenge": "Why do clownfish have orange-and-white stripes? Why hide in those wiggly tentacles?",
+      "defaultTour": true,
+      "seq": 1,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=rn6R4ncd2OU",
+        "title": "Clownfish on the reef",
+        "provider": "youtube",
+        "channel": "BBC Earth",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=rn6R4ncd2OU",
+          "checked": "2026-08-14"
+        }
+      },
+      "cam": {},
+      "printAnswer": "The stripes help them belong on the reef. They hide in a sea anemone. Those tentacles sting other fish, but a clownfish’s slime keeps it safe."
+    },
+    {
+      "cardId": "crab",
+      "label": "Crab Shore",
+      "challenge": "Why do crabs walk sideways? What’s the shell for?",
+      "defaultTour": true,
+      "seq": 2,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=7tU4k4zjCCM",
+        "title": "Crabs at Monterey Bay Aquarium",
+        "provider": "youtube",
+        "channel": "Monterey Bay Aquarium",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=7tU4k4zjCCM",
+          "checked": "2026-08-14"
+        }
+      },
+      "cam": {},
+      "printAnswer": "Their legs bend that way, so sideways is easiest. The shell is armor. When they grow, they crawl out and make a new one."
+    },
+    {
+      "cardId": "seahorse",
+      "label": "Seahorse Garden",
+      "challenge": "Why does a seahorse swim upright? Who carries the babies?",
+      "defaultTour": true,
+      "seq": 3,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=iOrMzleVoGs",
+        "title": "Seahorses at Monterey Bay Aquarium",
+        "provider": "youtube",
+        "channel": "Monterey Bay Aquarium",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=iOrMzleVoGs",
+          "checked": "2026-08-14"
+        }
+      },
+      "cam": {},
+      "printAnswer": "An upright body and a holding tail fit in sea grass. The dad carries the eggs in a pouch."
+    },
+    {
+      "cardId": "octopus",
+      "label": "Octopus Den",
+      "challenge": "How does an octopus hide? Why eight arms?",
+      "defaultTour": true,
+      "seq": 4,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=9vQnKO_2kKk",
+        "title": "Giant Pacific octopus",
+        "provider": "youtube",
+        "channel": "Nat Geo Kids",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=9vQnKO_2kKk",
+          "checked": "2026-08-14"
+        }
+      },
+      "cam": {},
+      "printAnswer": "It can change color and squeeze into tiny holes. Eight arms grab food and feel the way."
+    },
+    {
+      "cardId": "stingray",
+      "label": "Ray Flats",
+      "challenge": "Why is a stingray so flat? Where is its mouth?",
+      "defaultTour": true,
+      "seq": 5,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=qIyN4Bp-rvE",
+        "title": "Baby bat rays at Monterey Bay Aquarium",
+        "provider": "youtube",
+        "channel": "Monterey Bay Aquarium",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=qIyN4Bp-rvE",
+          "checked": "2026-08-14"
+        }
+      },
+      "cam": {
+        "url": "https://www.montereybayaquarium.org/cams-videos/live-cams/shark-cam",
+        "camLabel": "Reef cam (rays + sharks) at Monterey Bay Aquarium"
+      },
+      "printAnswer": "A flat body hides on the sand. The mouth is on the bottom, so it can eat what it finds there."
+    },
+    {
+      "cardId": "jellyfish",
+      "label": "Jelly Drift",
+      "challenge": "Why can a jellyfish sting? Does it have a brain?",
+      "defaultTour": true,
+      "seq": 6,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=nbY7dSf3GYE",
+        "title": "Jellies at Monterey Bay Aquarium",
+        "provider": "youtube",
+        "channel": "Monterey Bay Aquarium",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=nbY7dSf3GYE",
+          "checked": "2026-08-14"
+        }
+      },
+      "cam": {
+        "url": "https://www.montereybayaquarium.org/cams-videos/live-cams/jelly-cam",
+        "camLabel": "Jelly cam at Monterey Bay Aquarium"
+      },
+      "printAnswer": "The sting catches food. A jellyfish has no brain — just a simple body that drifts and pulses."
+    },
+    {
+      "cardId": "starfish",
+      "label": "Sea Star Pool",
+      "challenge": "How does a sea star eat? What if it loses an arm?",
+      "defaultTour": true,
+      "seq": 7,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=KjsmnveGmN8",
+        "title": "Sunflower sea star",
+        "provider": "youtube",
+        "channel": "MBARI",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=KjsmnveGmN8",
+          "checked": "2026-08-14"
+        }
+      },
+      "cam": {},
+      "printAnswer": "It can push its stomach out onto its food. If it loses an arm, it can often grow a new one."
+    },
+    {
+      "cardId": "shark",
+      "label": "Shark Reef",
+      "challenge": "Why do sharks have so many teeth? Do they ever sleep?",
+      "defaultTour": true,
+      "seq": 8,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=EjLu5_exInI",
+        "title": "Leopard sharks at Monterey Bay Aquarium",
+        "provider": "youtube",
+        "channel": "Monterey Bay Aquarium",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=EjLu5_exInI",
+          "checked": "2026-08-14"
+        }
+      },
+      "cam": {
+        "url": "https://www.montereybayaquarium.org/cams-videos/live-cams/shark-cam",
+        "camLabel": "Shark cam at Monterey Bay Aquarium"
+      },
+      "printAnswer": "Teeth fall out and new ones grow in. Sharks rest, but not like we sleep in a bed."
+    },
+    {
+      "cardId": "eel",
+      "label": "Eel Cave",
+      "challenge": "Why does an eel look like a snake? Where does it hide, and why?",
+      "defaultTour": true,
+      "seq": 9,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=E-njRqPqr3Y",
+        "title": "Wolf eel",
+        "provider": "youtube",
+        "channel": "Nat Geo Kids",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=E-njRqPqr3Y",
+          "checked": "2026-08-14"
+        }
+      },
+      "cam": {},
+      "printAnswer": "A long body slips into holes in the reef. It hides to stay safe and to surprise food."
+    },
+    {
+      "cardId": "sea-turtle",
+      "label": "Turtle Current",
+      "challenge": "Why do sea turtles have flippers instead of feet?",
+      "defaultTour": true,
+      "seq": 10,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=owf_zFHt_lQ",
+        "title": "Sea turtles at Monterey Bay Aquarium",
+        "provider": "youtube",
+        "channel": "Monterey Bay Aquarium",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=owf_zFHt_lQ",
+          "checked": "2026-08-14"
+        }
+      },
+      "cam": {
+        "url": "https://www.montereybayaquarium.org/cams-videos/live-cams/open-sea-cam",
+        "camLabel": "Open Sea cam at Monterey Bay Aquarium"
+      },
+      "printAnswer": "Flippers are for swimming far. Feet would be better on land, but sea turtles live in the water."
+    },
+    {
+      "cardId": "african-penguin",
+      "label": "Penguin Beach",
+      "challenge": "Why can’t penguins fly? Why the black-and-white coat?",
+      "defaultTour": false,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=RQ56IFZO6N0",
+        "title": "African penguins at the San Diego Zoo",
+        "provider": "youtube",
+        "channel": "San Diego Zoo",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=RQ56IFZO6N0",
+          "checked": "2026-08-14"
+        }
+      },
+      "cam": {
+        "url": "https://zoo.sandiegozoo.org/cams/penguin-cam",
+        "camLabel": "Penguin cam at the San Diego Zoo"
+      },
+      "printAnswer": "Their wings became flippers for swimming. Dark backs and white bellies help them hide from above and below."
+    },
+    {
+      "cardId": "sea-otter",
+      "label": "Otter Cove",
+      "challenge": "Why do sea otters float on their backs? Why wrap up in kelp?",
+      "defaultTour": false,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=FukcZF9ARy8",
+        "title": "Sea otters hold on in kelp",
+        "provider": "youtube",
+        "channel": "BBC Earth",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=FukcZF9ARy8",
+          "checked": "2026-08-16"
+        }
+      },
+      "cam": {
+        "url": "https://www.montereybayaquarium.org/cams-videos/live-cams/sea-otter-cam",
+        "camLabel": "Sea otter cam at Monterey Bay Aquarium"
+      },
+      "printAnswer": "A back-float lets them use their belly like a table. Kelp is an anchor so they don’t drift away while they rest."
+    },
+    {
+      "cardId": "whale-shark",
+      "label": "Whale Shark Hall",
+      "challenge": "Why is a whale shark so huge if it eats tiny food? Is it a whale?",
+      "defaultTour": false,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=uQrBwN39LJI",
+        "title": "Whale shark",
+        "provider": "youtube",
+        "channel": "National Geographic",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=uQrBwN39LJI",
+          "checked": "2026-08-16"
+        }
+      },
+      "cam": {
+        "url": "https://www.georgiaaquarium.org/webcam/ocean-voyager/",
+        "camLabel": "Ocean Voyager cam at Georgia Aquarium"
+      },
+      "printAnswer": "A giant mouth sifts tiny plants and animals from the water. It is a shark, not a whale — the biggest fish in the sea."
+    },
+    {
+      "cardId": "cuttlefish",
+      "label": "Cuttlefish Den",
+      "challenge": "How can a cuttlefish change colors so fast? Why does it do that?",
+      "defaultTour": false,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=M0vh51AlBKQ",
+        "title": "How a tiny cuttlefish outsmarts a giant",
+        "provider": "youtube",
+        "channel": "BBC Earth",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=M0vh51AlBKQ",
+          "checked": "2026-08-16"
+        }
+      },
+      "cam": {},
+      "printAnswer": "Tiny skin spots open and close like pixels. Colors help it hide, talk, and trick other animals."
+    },
+    {
+      "cardId": "puffin",
+      "label": "Puffin Cliff",
+      "challenge": "How can a puffin fly and also swim? Why the colorful beak?",
+      "defaultTour": false,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=EIUJfXk3_3w",
+        "title": "Puffin hunts fish to feed a puffling",
+        "provider": "youtube",
+        "channel": "BBC Earth",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=EIUJfXk3_3w",
+          "checked": "2026-08-16"
+        }
+      },
+      "cam": {},
+      "printAnswer": "Short wings work as flippers underwater and as wings in the air. The bright beak helps them find a mate."
+    },
+    {
+      "cardId": "manta-ray",
+      "label": "Manta Wing",
+      "challenge": "Why is a manta ray so wide and flat? Why visit a cleaning station?",
+      "defaultTour": false,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=QbYyLI6njW8",
+        "title": "Manta ray gets a spring clean",
+        "provider": "youtube",
+        "channel": "BBC Earth",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=QbYyLI6njW8",
+          "checked": "2026-08-16"
+        }
+      },
+      "cam": {
+        "url": "https://www.georgiaaquarium.org/webcam/ocean-voyager/",
+        "camLabel": "Ocean Voyager cam at Georgia Aquarium"
+      },
+      "printAnswer": "Wide wings let it glide and scoop tiny food. Little fish nibble parasites off its skin — a spa for a giant."
+    },
+    {
+      "cardId": "kelp-forest",
+      "label": "Kelp Forest",
+      "challenge": "Why does kelp grow so tall so fast? Who hides in this underwater forest?",
+      "defaultTour": false,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=sSbABWGgRh0",
+        "title": "Kelp Forest exhibit at Monterey Bay Aquarium",
+        "provider": "youtube",
+        "channel": "Monterey Bay Aquarium",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=sSbABWGgRh0",
+          "checked": "2026-08-16"
+        }
+      },
+      "cam": {
+        "url": "https://www.montereybayaquarium.org/cams-videos/live-cams/kelp-forest-cam",
+        "camLabel": "Kelp Forest cam at Monterey Bay Aquarium"
+      },
+      "printAnswer": "Sunlight and the surge of waves help it grow. Fish, otters, and crabs hide in the kelp like trees."
+    }
+  ]
+}

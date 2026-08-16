@@ -1,0 +1,1289 @@
+[
+  {
+    "slug": "big-bend",
+    "name": "Big Bend National Park",
+    "city": "Big Bend",
+    "region": "TX",
+    "state": "TX",
+    "lat": 29.1275,
+    "lng": -103.2425,
+    "url": "https://www.nps.gov/bibe/",
+    "emoji": "🏜️",
+    "tagline": "Big Bend — desert mountains and Rio Grande; pick one short area, not the whole park.",
+    "blurb": "West Texas desert day — one basin or river stop, heat-smart.",
+    "slice": "Panther Junction / Chisos area short stops",
+    "art": "Big Bend desert mountains and Rio Grande canyon under huge Texas sky",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Entrance pass; services sparse.",
+      "transit_note": "Long drives from cities; stock water and fuel.",
+      "energy_note": "Heat and distance — early start.",
+      "best_start": "Visitor center → one overlook or short basin walk",
+      "slice_name": "One visitor area",
+      "season_note": "Summer extreme heat; spring/fall best."
+    },
+    "keys": [
+      "vc",
+      "over",
+      "canyon",
+      "sign",
+      "jr",
+      "meadow",
+      "river",
+      "ranger"
+    ],
+    "route": [
+      "np_visitor_center",
+      "np_scenic_overlook",
+      "np_canyon_rim"
+    ]
+  },
+  {
+    "slug": "biscayne",
+    "name": "Biscayne National Park",
+    "city": "Homestead",
+    "region": "FL",
+    "state": "FL",
+    "lat": 25.4824,
+    "lng": -80.2083,
+    "url": "https://www.nps.gov/bisc/",
+    "emoji": "🏝️",
+    "tagline": "Biscayne — mostly water; visitor center and jetty/shore when not on a boat.",
+    "blurb": "Bay park day — shore and visitor center if you skip boat tours.",
+    "slice": "Dante Fascell Visitor Center / jetty",
+    "art": "Biscayne turquoise bay water with mangroves and soft Florida sky",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Shore free; boat tours extra and seasonal.",
+      "transit_note": "Homestead / Miami area.",
+      "energy_note": "Sun, bugs, limited shade on water.",
+      "best_start": "Visitor center → jetty/shore walk → exhibits",
+      "slice_name": "Visitor center shore",
+      "season_note": "Hurricane season can cancel boats."
+    },
+    "keys": [
+      "vc",
+      "coast",
+      "wet",
+      "sign",
+      "jr",
+      "board",
+      "over",
+      "ranger"
+    ],
+    "route": [
+      "np_visitor_center",
+      "np_tide_coast",
+      "np_boardwalk"
+    ]
+  },
+  {
+    "slug": "black-canyon-gunnison",
+    "name": "Black Canyon of the Gunnison National Park",
+    "city": "Montrose",
+    "region": "CO",
+    "state": "CO",
+    "lat": 38.5754,
+    "lng": -107.7416,
+    "url": "https://www.nps.gov/blca/",
+    "emoji": "🌑",
+    "tagline": "Black Canyon — South Rim overlooks; stay behind rails on sheer drops.",
+    "blurb": "Deep dark canyon day — rim pullouts, not the inner canyon.",
+    "slice": "South Rim drive overlooks",
+    "art": "Black Canyon of the Gunnison steep dark cliffs and narrow river far below",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Entrance pass.",
+      "transit_note": "Montrose gateway; South Rim is main family slice.",
+      "energy_note": "Altitude + sheer cliffs — hold hands at rails.",
+      "best_start": "Visitor center → two rim overlooks",
+      "slice_name": "South Rim overlooks",
+      "season_note": "North Rim seasonal; winters snowy."
+    },
+    "keys": [
+      "vc",
+      "canyon",
+      "over",
+      "sign",
+      "jr",
+      "meadow",
+      "ranger",
+      "tree"
+    ],
+    "route": [
+      "np_visitor_center",
+      "np_canyon_rim",
+      "np_scenic_overlook"
+    ]
+  },
+  {
+    "slug": "canyonlands",
+    "name": "Canyonlands National Park",
+    "city": "Moab",
+    "region": "UT",
+    "state": "UT",
+    "lat": 38.3269,
+    "lng": -109.8783,
+    "url": "https://www.nps.gov/cany/",
+    "emoji": "🏜️",
+    "tagline": "Canyonlands — Island in the Sky overlooks; one mesa, not all districts.",
+    "blurb": "Mesa top day near Moab — big views from short walks.",
+    "slice": "Island in the Sky",
+    "art": "Canyonlands Island in the Sky mesa overlook with layered red canyons",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Entrance pass; districts far apart.",
+      "transit_note": "Moab; Island in the Sky is closest for most families.",
+      "energy_note": "Sun and exposure; no shade at many rails.",
+      "best_start": "Visitor center → Mesa Arch or Grand View area short stop",
+      "slice_name": "Island in the Sky",
+      "season_note": "Hot summers; combine carefully with Arches crowds."
+    },
+    "keys": [
+      "vc",
+      "over",
+      "canyon",
+      "arch",
+      "sign",
+      "jr",
+      "meadow",
+      "ranger"
+    ],
+    "route": [
+      "np_visitor_center",
+      "np_scenic_overlook",
+      "np_canyon_rim"
+    ]
+  },
+  {
+    "slug": "carlsbad-caverns",
+    "name": "Carlsbad Caverns National Park",
+    "city": "Carlsbad",
+    "region": "NM",
+    "state": "NM",
+    "lat": 32.1479,
+    "lng": -104.5567,
+    "url": "https://www.nps.gov/cave/",
+    "emoji": "🦇",
+    "tagline": "Carlsbad — Big Room cave (self-guided or tour) and visitor center.",
+    "blurb": "Cave day — cool underground loop; bat flight seasonal evenings.",
+    "slice": "Visitor center + Big Room",
+    "art": "Carlsbad Caverns huge cave chamber with stalactites soft blue lighting",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Timed entry tickets often required for cave.",
+      "transit_note": "Carlsbad NM gateway; elevator or natural entrance.",
+      "energy_note": "Lots of walking underground; jacket helps.",
+      "best_start": "Visitor center → cave entry → Big Room pace",
+      "slice_name": "Big Room",
+      "season_note": "Bat flight program seasonal; check tickets."
+    },
+    "keys": [
+      "vc",
+      "cave",
+      "sign",
+      "jr",
+      "board",
+      "meadow",
+      "ranger",
+      "over"
+    ],
+    "route": [
+      "np_visitor_center",
+      "np_cave_entrance",
+      "np_boardwalk"
+    ]
+  },
+  {
+    "slug": "channel-islands",
+    "name": "Channel Islands National Park",
+    "city": "Ventura",
+    "region": "CA",
+    "state": "CA",
+    "lat": 34.0069,
+    "lng": -119.7785,
+    "url": "https://www.nps.gov/chis/",
+    "emoji": "⛵",
+    "tagline": "Channel Islands — mainland visitor center if not on a boat day.",
+    "blurb": "Island park — plan boat transit; or do mainland exhibits only.",
+    "slice": "Ventura visitor center (or one island if boating)",
+    "art": "Channel Islands coastal cliffs and blue Pacific with island silhouette",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Boat to islands is separate concession; weather dependent.",
+      "transit_note": "Ventura / Oxnard harbors.",
+      "energy_note": "Seasickness risk; pack layers.",
+      "best_start": "Mainland visitor center → harbor look → island only if booked",
+      "slice_name": "Mainland VC or one island",
+      "season_note": "Winter swells cancel boats often."
+    },
+    "keys": [
+      "vc",
+      "coast",
+      "over",
+      "sign",
+      "jr",
+      "meadow",
+      "ranger",
+      "board"
+    ],
+    "route": [
+      "np_visitor_center",
+      "np_tide_coast",
+      "np_scenic_overlook"
+    ]
+  },
+  {
+    "slug": "crater-lake",
+    "name": "Crater Lake National Park",
+    "city": "Crater Lake",
+    "region": "OR",
+    "state": "OR",
+    "lat": 42.8684,
+    "lng": -122.1685,
+    "url": "https://www.nps.gov/crla/",
+    "emoji": "💙",
+    "tagline": "Crater Lake — rim overlooks of the deep blue caldera; rim drive seasonal.",
+    "blurb": "Caldera view day — short rim walks, not a full rim drive marathon.",
+    "slice": "Rim Village / visitor overlooks",
+    "art": "Crater Lake deep blue caldera water and snowy rim cliffs",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Entrance pass.",
+      "transit_note": "Long mountain access roads; snow into summer some years.",
+      "energy_note": "Altitude and cold wind on rim.",
+      "best_start": "Rim Village visitor area → two overlooks",
+      "slice_name": "Rim Village overlooks",
+      "season_note": "Rim Drive often closed late fall–early summer."
+    },
+    "keys": [
+      "vc",
+      "over",
+      "sign",
+      "jr",
+      "meadow",
+      "tree",
+      "ranger",
+      "canyon"
+    ],
+    "route": [
+      "np_visitor_center",
+      "np_scenic_overlook",
+      "np_meadow"
+    ]
+  },
+  {
+    "slug": "denali",
+    "name": "Denali National Park",
+    "city": "Denali Park",
+    "region": "AK",
+    "state": "AK",
+    "lat": 63.1148,
+    "lng": -151.1926,
+    "url": "https://www.nps.gov/dena/",
+    "emoji": "🏔️",
+    "tagline": "Denali — park entrance / visitor center day; buses needed for deeper park.",
+    "blurb": "Alaska gateway day — visitor center and short trails near the entrance.",
+    "slice": "Entrance / Denali Visitor Center area",
+    "art": "Denali massive snowy mountain peak over tundra and spruce",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Entrance fee; park road buses are the deep-park option.",
+      "transit_note": "Parks Highway; most family time is near entrance without a bus.",
+      "energy_note": "Weather swings; wildlife distance rules.",
+      "best_start": "Visitor center → short trail → exhibits",
+      "slice_name": "Entrance area",
+      "season_note": "Peak summer only for most services; mountain often clouded."
+    },
+    "keys": [
+      "vc",
+      "over",
+      "sign",
+      "jr",
+      "meadow",
+      "tree",
+      "elk",
+      "ranger"
+    ],
+    "route": [
+      "np_visitor_center",
+      "np_meadow",
+      "np_scenic_overlook"
+    ]
+  },
+  {
+    "slug": "dry-tortugas",
+    "name": "Dry Tortugas National Park",
+    "city": "Key West",
+    "region": "FL",
+    "state": "FL",
+    "lat": 24.6285,
+    "lng": -82.8732,
+    "url": "https://www.nps.gov/drto/",
+    "emoji": "🏰",
+    "tagline": "Dry Tortugas — ferry or seaplane day to Fort Jefferson; plan transit first.",
+    "blurb": "Fort and reef day — only if you booked the boat/plane.",
+    "slice": "Garden Key / Fort Jefferson",
+    "art": "Dry Tortugas brick fort in turquoise water with tropical sky",
+    "practical": {
+      "typical_duration": "full day",
+      "ticket_note": "Ferry/seaplane tickets required and sell out.",
+      "transit_note": "From Key West only; rough seas possible.",
+      "energy_note": "Sun, limited shade, bring all water/food per boat rules.",
+      "best_start": "Arrive Garden Key → fort walls → beach/snorkel zone if open",
+      "slice_name": "Garden Key",
+      "season_note": "Weather cancellations common."
+    },
+    "keys": [
+      "vc",
+      "coast",
+      "over",
+      "sign",
+      "jr",
+      "board",
+      "meadow",
+      "ranger"
+    ],
+    "route": [
+      "np_scenic_overlook",
+      "np_tide_coast",
+      "np_boardwalk"
+    ]
+  },
+  {
+    "slug": "great-basin",
+    "name": "Great Basin National Park",
+    "city": "Baker",
+    "region": "NV",
+    "state": "NV",
+    "lat": 38.9833,
+    "lng": -114.3,
+    "url": "https://www.nps.gov/grba/",
+    "emoji": "🌌",
+    "tagline": "Great Basin — Wheeler Peak scenic drive and short alpine or cave options.",
+    "blurb": "Nevada mountain day — overlooks and bristlecones if open.",
+    "slice": "Visitor center / Wheeler Peak road short stops",
+    "art": "Great Basin mountain peaks and starry-feeling high desert night tones soft daylight version",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Park free; Lehman Caves tours ticketed.",
+      "transit_note": "Remote Baker NV; fuel up early.",
+      "energy_note": "Altitude on Wheeler Peak road.",
+      "best_start": "Visitor center → scenic drive pullout or cave tour",
+      "slice_name": "VC / scenic road",
+      "season_note": "High road seasonal; dark skies famous at night."
+    },
+    "keys": [
+      "vc",
+      "over",
+      "cave",
+      "sign",
+      "jr",
+      "tree",
+      "meadow",
+      "ranger"
+    ],
+    "route": [
+      "np_visitor_center",
+      "np_scenic_overlook",
+      "np_cave_entrance"
+    ]
+  },
+  {
+    "slug": "great-sand-dunes",
+    "name": "Great Sand Dunes National Park",
+    "city": "Mosca",
+    "region": "CO",
+    "state": "CO",
+    "lat": 37.7916,
+    "lng": -105.5943,
+    "url": "https://www.nps.gov/grsa/",
+    "emoji": "🏜️",
+    "tagline": "Great Sand Dunes — dune field edge and Medano Creek when flowing.",
+    "blurb": "Sand mountain day — play at the dune base; summit is optional hard work.",
+    "slice": "Dunes parking / creek edge",
+    "art": "Great Sand Dunes golden sand mountains with Sangre de Cristo peaks behind",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Entrance pass.",
+      "transit_note": "Mosca / Alamosa area.",
+      "energy_note": "Sand is exhausting; sun extreme; shoes heat up.",
+      "best_start": "Visitor center → dune edge play → creek if flowing",
+      "slice_name": "Dune field edge",
+      "season_note": "Creek peak late spring; summer storms."
+    },
+    "keys": [
+      "vc",
+      "over",
+      "meadow",
+      "sign",
+      "jr",
+      "river",
+      "ranger",
+      "board"
+    ],
+    "route": [
+      "np_visitor_center",
+      "np_scenic_overlook",
+      "np_meadow"
+    ]
+  },
+  {
+    "slug": "guadalupe-mountains",
+    "name": "Guadalupe Mountains National Park",
+    "city": "Salt Flat",
+    "region": "TX",
+    "state": "TX",
+    "lat": 31.9231,
+    "lng": -104.8645,
+    "url": "https://www.nps.gov/gumo/",
+    "emoji": "⛰️",
+    "tagline": "Guadalupe Mountains — visitor center and short desert foothill walks.",
+    "blurb": "West Texas mountain day — easy trails near HQ, not Guadalupe Peak summit.",
+    "slice": "Pine Springs visitor area",
+    "art": "Guadalupe Mountains rugged desert peaks and Chihuahuan Desert scrub",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Entrance pass.",
+      "transit_note": "Remote on US-62/180; no gas in park.",
+      "energy_note": "Heat and wind; peak hikes are hard.",
+      "best_start": "Visitor center → short foothill path → overlook if any",
+      "slice_name": "Pine Springs area",
+      "season_note": "Summer very hot; winter can be icy on peaks."
+    },
+    "keys": [
+      "vc",
+      "over",
+      "sign",
+      "jr",
+      "meadow",
+      "canyon",
+      "tree",
+      "ranger"
+    ],
+    "route": [
+      "np_visitor_center",
+      "np_scenic_overlook",
+      "np_trailhead_sign"
+    ]
+  },
+  {
+    "slug": "haleakala",
+    "name": "Haleakalā National Park",
+    "city": "Kula",
+    "region": "HI",
+    "state": "HI",
+    "lat": 20.7204,
+    "lng": -156.1552,
+    "url": "https://www.nps.gov/hale/",
+    "emoji": "🌅",
+    "tagline": "Haleakalā — summit crater views; reservations often required for sunrise.",
+    "blurb": "Maui volcano day — summit overlooks or coastal Kipahulu, not both casually.",
+    "slice": "Summit district overlooks",
+    "art": "Haleakala volcanic crater summit with cinder cones and soft sunrise colors",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Entrance pass; sunrise vehicles often need reservation.",
+      "transit_note": "Long winding drive to summit; cold at top.",
+      "energy_note": "Altitude + cold wind; dress in layers.",
+      "best_start": "Summit visitor area → crater overlooks",
+      "slice_name": "Summit overlooks",
+      "season_note": "Clouds common; Kipahulu is a separate long drive."
+    },
+    "keys": [
+      "vc",
+      "over",
+      "sign",
+      "jr",
+      "meadow",
+      "arch",
+      "ranger",
+      "canyon"
+    ],
+    "route": [
+      "np_visitor_center",
+      "np_scenic_overlook",
+      "np_meadow"
+    ]
+  },
+  {
+    "slug": "kings-canyon",
+    "name": "Kings Canyon National Park",
+    "city": "Three Rivers",
+    "region": "CA",
+    "state": "CA",
+    "lat": 36.8879,
+    "lng": -118.5551,
+    "url": "https://www.nps.gov/seki/",
+    "emoji": "🌲",
+    "tagline": "Kings Canyon — Grant Grove big trees; pair carefully with Sequoia.",
+    "blurb": "Giant sequoia grove day on the Kings side — short paved loops.",
+    "slice": "Grant Grove",
+    "art": "Kings Canyon Grant Grove giant sequoia trunks in sunlit forest",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Same SEKI entrance pass as Sequoia.",
+      "transit_note": "Grant Grove is the easy Kings Canyon family slice.",
+      "energy_note": "Altitude and hills.",
+      "best_start": "Grant Grove visitor area → big tree loop",
+      "slice_name": "Grant Grove",
+      "season_note": "Snow can close roads; summer easiest."
+    },
+    "keys": [
+      "vc",
+      "tree",
+      "board",
+      "sign",
+      "jr",
+      "meadow",
+      "over",
+      "fall"
+    ],
+    "route": [
+      "np_visitor_center",
+      "np_giant_tree",
+      "np_boardwalk"
+    ]
+  },
+  {
+    "slug": "lassen-volcanic",
+    "name": "Lassen Volcanic National Park",
+    "city": "Mineral",
+    "region": "CA",
+    "state": "CA",
+    "lat": 40.4977,
+    "lng": -121.4207,
+    "url": "https://www.nps.gov/lavo/",
+    "emoji": "🌋",
+    "tagline": "Lassen — hydrothermal boardwalks and peak views when road is open.",
+    "blurb": "Volcano park day — Bumpass Hell-style boardwalks if open, or lake stops.",
+    "slice": "Manzanita / hydrothermal area short stops",
+    "art": "Lassen Volcanic steaming geothermal boardwalk and volcanic peaks",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Entrance pass.",
+      "transit_note": "Main park road often snow-closed late into summer.",
+      "energy_note": "Stay on boardwalks near thermal areas.",
+      "best_start": "Visitor center → hydrothermal boardwalk or lake overlook",
+      "slice_name": "Hydrothermal / lake stop",
+      "season_note": "Road plow timing varies yearly."
+    },
+    "keys": [
+      "vc",
+      "steam",
+      "board",
+      "over",
+      "sign",
+      "jr",
+      "meadow",
+      "ranger"
+    ],
+    "route": [
+      "np_visitor_center",
+      "np_boardwalk",
+      "np_geyser_steam"
+    ]
+  },
+  {
+    "slug": "mesa-verde",
+    "name": "Mesa Verde National Park",
+    "city": "Mesa Verde",
+    "region": "CO",
+    "state": "CO",
+    "lat": 37.2309,
+    "lng": -108.4618,
+    "url": "https://www.nps.gov/meve/",
+    "emoji": "🏛️",
+    "tagline": "Mesa Verde — cliff dwelling overlooks; many tours need tickets.",
+    "blurb": "Ancestral Pueblo cliff day — overlooks and museum; ladders only if tour-ready.",
+    "slice": "Chapin Mesa / visitor center overlooks",
+    "art": "Mesa Verde cliff dwelling alcoves in sandstone canyon walls",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Some dwelling tours ticketed and strenuous.",
+      "transit_note": "Cortez / Mancos area; mesa roads windy.",
+      "energy_note": "Altitude; cliff edges — hold kids.",
+      "best_start": "Visitor center → overlook of dwellings → museum",
+      "slice_name": "Chapin Mesa overlooks",
+      "season_note": "Some sites close seasonally."
+    },
+    "keys": [
+      "vc",
+      "over",
+      "canyon",
+      "sign",
+      "jr",
+      "meadow",
+      "ranger",
+      "arch"
+    ],
+    "route": [
+      "np_visitor_center",
+      "np_scenic_overlook",
+      "np_canyon_rim"
+    ]
+  },
+  {
+    "slug": "mount-rainier",
+    "name": "Mount Rainier National Park",
+    "city": "Ashford",
+    "region": "WA",
+    "state": "WA",
+    "lat": 46.88,
+    "lng": -121.7269,
+    "url": "https://www.nps.gov/mora/",
+    "emoji": "🗻",
+    "tagline": "Mount Rainier — Paradise or Sunrise wildflower/views; one entrance only.",
+    "blurb": "Volcano view day — short paved paths with the mountain as backdrop.",
+    "slice": "Paradise area (or Sunrise if open)",
+    "art": "Mount Rainier snowy volcano peak above wildflower meadows",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Entrance pass; timed entry possible peak season.",
+      "transit_note": "Ashford / Paradise is classic family slice.",
+      "energy_note": "Altitude, cold, sudden weather.",
+      "best_start": "Visitor center → short paved meadow path → viewpoint",
+      "slice_name": "Paradise short paths",
+      "season_note": "Snow lingers; Sunrise road seasonal."
+    },
+    "keys": [
+      "vc",
+      "over",
+      "meadow",
+      "fall",
+      "sign",
+      "jr",
+      "tree",
+      "ranger"
+    ],
+    "route": [
+      "np_visitor_center",
+      "np_meadow",
+      "np_scenic_overlook"
+    ]
+  },
+  {
+    "slug": "new-river-gorge",
+    "name": "New River Gorge National Park",
+    "city": "Glen Jean",
+    "region": "WV",
+    "state": "WV",
+    "lat": 37.9608,
+    "lng": -81.0787,
+    "url": "https://www.nps.gov/neri/",
+    "emoji": "🌉",
+    "tagline": "New River Gorge — canyon rim overlooks and bridge views.",
+    "blurb": "West Virginia gorge day — rim walks and the famous bridge vista.",
+    "slice": "Canyon Rim Visitor Center area",
+    "art": "New River Gorge bridge and deep green river canyon",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Generally free.",
+      "transit_note": "Near Fayetteville / Lansing WV.",
+      "energy_note": "Rim edges; hold hands.",
+      "best_start": "Canyon Rim visitor center → bridge overlook boardwalk",
+      "slice_name": "Canyon Rim",
+      "season_note": "Bridge Day special event crowds in October."
+    },
+    "keys": [
+      "vc",
+      "over",
+      "canyon",
+      "board",
+      "sign",
+      "jr",
+      "river",
+      "ranger"
+    ],
+    "route": [
+      "np_visitor_center",
+      "np_scenic_overlook",
+      "np_boardwalk"
+    ]
+  },
+  {
+    "slug": "north-cascades",
+    "name": "North Cascades National Park",
+    "city": "Marblemount",
+    "region": "WA",
+    "state": "WA",
+    "lat": 48.7718,
+    "lng": -121.2985,
+    "url": "https://www.nps.gov/noca/",
+    "emoji": "🏔️",
+    "tagline": "North Cascades — highway overlooks and short lakeside stops.",
+    "blurb": "Alpine highway day — Diablo/Ross area views without a multi-day backpack.",
+    "slice": "North Cascades Highway scenic stops",
+    "art": "North Cascades sharp jagged peaks and turquoise alpine lake",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Many overlooks free along highway.",
+      "transit_note": "SR-20 seasonal in winter east of park complex.",
+      "energy_note": "Cool weather even in summer.",
+      "best_start": "Visitor center → lake overlook → short path",
+      "slice_name": "Highway lake overlooks",
+      "season_note": "Highway closes in winter sections."
+    },
+    "keys": [
+      "vc",
+      "over",
+      "river",
+      "tree",
+      "sign",
+      "jr",
+      "meadow",
+      "ranger"
+    ],
+    "route": [
+      "np_visitor_center",
+      "np_scenic_overlook",
+      "np_river"
+    ]
+  },
+  {
+    "slug": "pinnacles",
+    "name": "Pinnacles National Park",
+    "city": "Paicines",
+    "region": "CA",
+    "state": "CA",
+    "lat": 36.4906,
+    "lng": -121.1825,
+    "url": "https://www.nps.gov/pinn/",
+    "emoji": "🪨",
+    "tagline": "Pinnacles — rock spires and short cave or bench trails; one entrance.",
+    "blurb": "Central Coast rock day — easy valley trails and spire views.",
+    "slice": "East or West entrance short trail (pick one)",
+    "art": "Pinnacles National Park volcanic rock spires and oak-studded hills",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Entrance pass; no road connects east/west inside park.",
+      "transit_note": "Choose one entrance and stay there.",
+      "energy_note": "Heat in summer; talus caves dark and uneven.",
+      "best_start": "Visitor contact → short valley trail → spire viewpoint",
+      "slice_name": "One entrance valley",
+      "season_note": "Spring wildflowers; summer hot."
+    },
+    "keys": [
+      "vc",
+      "arch",
+      "cave",
+      "over",
+      "sign",
+      "jr",
+      "meadow",
+      "ranger"
+    ],
+    "route": [
+      "np_visitor_center",
+      "np_arch_rock",
+      "np_scenic_overlook"
+    ]
+  },
+  {
+    "slug": "voyageurs",
+    "name": "Voyageurs National Park",
+    "city": "International Falls",
+    "region": "MN",
+    "state": "MN",
+    "lat": 48.4839,
+    "lng": -92.8386,
+    "url": "https://www.nps.gov/voya/",
+    "emoji": "🛶",
+    "tagline": "Voyageurs — water park; visitor center and short shore trails without a boat.",
+    "blurb": "Northwoods lake day — shore and exhibits if you skip boat access.",
+    "slice": "Rainy Lake / visitor center shore",
+    "art": "Voyageurs lake country with rocky islands and northern forest",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Shore free; boat needed for most interior.",
+      "transit_note": "International Falls area visitor centers.",
+      "energy_note": "Bugs in summer; cool water.",
+      "best_start": "Visitor center → shore boardwalk or dock views",
+      "slice_name": "Visitor center shore",
+      "season_note": "Winter ice travel is specialist; summer boats."
+    },
+    "keys": [
+      "vc",
+      "coast",
+      "board",
+      "sign",
+      "jr",
+      "tree",
+      "wet",
+      "ranger"
+    ],
+    "route": [
+      "np_visitor_center",
+      "np_boardwalk",
+      "np_tide_coast"
+    ]
+  },
+  {
+    "slug": "white-sands",
+    "name": "White Sands National Park",
+    "city": "Alamogordo",
+    "region": "NM",
+    "state": "NM",
+    "lat": 32.7797,
+    "lng": -106.1717,
+    "url": "https://www.nps.gov/whsa/",
+    "emoji": "⬜",
+    "tagline": "White Sands — dune drive and sled hills of gypsum sand.",
+    "blurb": "White dune day — short walks and play; check missile-range closures.",
+    "slice": "Dunes Drive loop",
+    "art": "White Sands endless white gypsum dunes under blue New Mexico sky",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Entrance pass; occasional full park closures for tests.",
+      "transit_note": "Alamogordo / Holloman area.",
+      "energy_note": "Sun glare extreme; sunglasses and water.",
+      "best_start": "Visitor center → Dunes Drive → play/hike short",
+      "slice_name": "Dunes Drive",
+      "season_note": "Check NPS for closure alerts before driving out."
+    },
+    "keys": [
+      "vc",
+      "over",
+      "meadow",
+      "sign",
+      "jr",
+      "board",
+      "ranger",
+      "arch"
+    ],
+    "route": [
+      "np_visitor_center",
+      "np_scenic_overlook",
+      "np_meadow"
+    ]
+  },
+  {
+    "slug": "wind-cave",
+    "name": "Wind Cave National Park",
+    "city": "Hot Springs",
+    "region": "SD",
+    "state": "SD",
+    "lat": 43.6046,
+    "lng": -103.4213,
+    "url": "https://www.nps.gov/wica/",
+    "emoji": "🦬",
+    "tagline": "Wind Cave — cave tour plus prairie wildlife above ground.",
+    "blurb": "Cave + prairie day — tour underground, then look for bison from the road.",
+    "slice": "Visitor center cave tour + prairie drive",
+    "art": "Wind Cave prairie hills with bison and a cave entrance hillside",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Cave tours ticketed; sell out.",
+      "transit_note": "Near Hot Springs SD; close to Black Hills.",
+      "energy_note": "Cave stairs; prairie sun.",
+      "best_start": "Visitor center → cave tour → short prairie pullouts",
+      "slice_name": "Cave + prairie",
+      "season_note": "Summer tour demand high."
+    },
+    "keys": [
+      "vc",
+      "cave",
+      "bison",
+      "over",
+      "sign",
+      "jr",
+      "meadow",
+      "ranger"
+    ],
+    "route": [
+      "np_visitor_center",
+      "np_cave_entrance",
+      "np_wildlife_bison"
+    ]
+  },
+  {
+    "slug": "glacier-bay",
+    "name": "Glacier Bay National Park",
+    "city": "Gustavus",
+    "region": "AK",
+    "state": "AK",
+    "lat": 58.6658,
+    "lng": -136.9002,
+    "url": "https://www.nps.gov/glba/",
+    "emoji": "🧊",
+    "tagline": "Glacier Bay — usually a cruise or boat day; Bartlett Cove if you fly in.",
+    "blurb": "Tidewater glacier park — plan transport first; shore options limited.",
+    "slice": "Bartlett Cove / visitor facilities if accessible",
+    "art": "Glacier Bay tidewater glacier calving into blue-gray water with mountains",
+    "practical": {
+      "typical_duration": "full day",
+      "ticket_note": "Most visits via cruise or tour boat.",
+      "transit_note": "Fly to Gustavus or boat only; no road from mainland highway.",
+      "energy_note": "Cold, wet weather.",
+      "best_start": "If ashore: visitor center → shore trail; if boat: deck wildlife watch",
+      "slice_name": "Bartlett Cove or boat deck",
+      "season_note": "Peak summer only for most services."
+    },
+    "keys": [
+      "vc",
+      "coast",
+      "over",
+      "sign",
+      "jr",
+      "meadow",
+      "ranger",
+      "tree"
+    ],
+    "route": [
+      "np_visitor_center",
+      "np_tide_coast",
+      "np_scenic_overlook"
+    ]
+  },
+  {
+    "slug": "kenai-fjords",
+    "name": "Kenai Fjords National Park",
+    "city": "Seward",
+    "region": "AK",
+    "state": "AK",
+    "lat": 59.8486,
+    "lng": -150.1665,
+    "url": "https://www.nps.gov/kefj/",
+    "emoji": "🧊",
+    "tagline": "Kenai Fjords — Exit Glacier area short trails near Seward.",
+    "blurb": "Glacier edge day — Exit Glacier trails without a full fjord cruise.",
+    "slice": "Exit Glacier / Harding Icefield trailhead area",
+    "art": "Kenai Fjords Exit Glacier blue ice and rocky moraine near mountain",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Exit Glacier area accessible by road; boat tours extra.",
+      "transit_note": "Seward AK.",
+      "energy_note": "Cold wind near ice; stay off glacier ice without guides.",
+      "best_start": "Nature center → short glacier view trail",
+      "slice_name": "Exit Glacier",
+      "season_note": "Road/trails snowy shoulder seasons."
+    },
+    "keys": [
+      "vc",
+      "over",
+      "sign",
+      "jr",
+      "river",
+      "meadow",
+      "ranger",
+      "tree"
+    ],
+    "route": [
+      "np_visitor_center",
+      "np_scenic_overlook",
+      "np_trailhead_sign"
+    ]
+  },
+  {
+    "slug": "katmai",
+    "name": "Katmai National Park",
+    "city": "King Salmon",
+    "region": "AK",
+    "state": "AK",
+    "lat": 58.6126,
+    "lng": -155.0631,
+    "url": "https://www.nps.gov/katm/",
+    "emoji": "🐻",
+    "tagline": "Katmai — famous for bears at Brooks Falls; fly-in only for most visitors.",
+    "blurb": "Bear viewing park — logistics-heavy; not a casual drive-up day.",
+    "slice": "Brooks Camp area (if permitted/booked)",
+    "art": "Katmai Brooks Falls with brown bears fishing stylized friendly distant view",
+    "practical": {
+      "typical_duration": "full day",
+      "ticket_note": "Complex permits/lodging/day use in peak bear season.",
+      "transit_note": "Fly from King Salmon; no road system.",
+      "energy_note": "Bear safety rules are mandatory.",
+      "best_start": "Only with booked access: falls platform → camp trails",
+      "slice_name": "Brooks Camp if booked",
+      "season_note": "July peak for salmon/bears; book far ahead."
+    },
+    "keys": [
+      "vc",
+      "over",
+      "river",
+      "sign",
+      "jr",
+      "meadow",
+      "ranger",
+      "fall"
+    ],
+    "route": [
+      "np_scenic_overlook",
+      "np_river",
+      "np_trailhead_sign"
+    ]
+  },
+  {
+    "slug": "isle-royale",
+    "name": "Isle Royale National Park",
+    "city": "Houghton",
+    "region": "MI",
+    "state": "MI",
+    "lat": 48.0,
+    "lng": -88.9,
+    "url": "https://www.nps.gov/isro/",
+    "emoji": "🐺",
+    "tagline": "Isle Royale — wilderness island; ferry required, multi-day for most.",
+    "blurb": "Lake Superior island — only with ferry plans; mainland info centers help prepare.",
+    "slice": "Rock Harbor or Windigo if ferrying (else mainland prep)",
+    "art": "Isle Royale rocky Lake Superior shore with boreal forest and clear water",
+    "practical": {
+      "typical_duration": "full day",
+      "ticket_note": "Ferry required; park is remote wilderness.",
+      "transit_note": "Ferries from MI/MN; weather cancellations.",
+      "energy_note": "No cars; pack all needs.",
+      "best_start": "If on island: visitor contact → short shore trail",
+      "slice_name": "Ferry landing area",
+      "season_note": "Summer only for ferries; closed in winter."
+    },
+    "keys": [
+      "vc",
+      "coast",
+      "board",
+      "sign",
+      "jr",
+      "tree",
+      "meadow",
+      "ranger"
+    ],
+    "route": [
+      "np_visitor_center",
+      "np_tide_coast",
+      "np_boardwalk"
+    ]
+  },
+  {
+    "slug": "american-samoa",
+    "name": "National Park of American Samoa",
+    "city": "Pago Pago",
+    "region": "AS",
+    "state": "AS",
+    "lat": -14.2583,
+    "lng": -170.6833,
+    "url": "https://www.nps.gov/npsa/",
+    "emoji": "🌴",
+    "tagline": "American Samoa — tropical rainforest and reef; local access and cultural respect.",
+    "blurb": "South Pacific park day — short village-linked trails when open.",
+    "slice": "Tutuila visitor contact / short trail",
+    "art": "American Samoa tropical rainforest meeting turquoise reef water",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Free; some trails cross village lands — follow local guidance.",
+      "transit_note": "Tutuila island access only via international travel.",
+      "energy_note": "Heat, humidity, steep trails.",
+      "best_start": "Visitor information → one short coastal or forest trail",
+      "slice_name": "Tutuila short trail",
+      "season_note": "Rainy season trails slick."
+    },
+    "keys": [
+      "vc",
+      "coast",
+      "tree",
+      "sign",
+      "jr",
+      "board",
+      "over",
+      "ranger"
+    ],
+    "route": [
+      "np_visitor_center",
+      "np_giant_tree",
+      "np_tide_coast"
+    ]
+  },
+  {
+    "slug": "virgin-islands",
+    "name": "Virgin Islands National Park",
+    "city": "Cruz Bay",
+    "region": "VI",
+    "state": "VI",
+    "lat": 18.342,
+    "lng": -64.7486,
+    "url": "https://www.nps.gov/viis/",
+    "emoji": "🏝️",
+    "tagline": "Virgin Islands — St. John beaches and easy shore trails.",
+    "blurb": "Caribbean park day — beach + short trail; ferry from St. Thomas common.",
+    "slice": "Cruz Bay / Trunk Bay area short stop",
+    "art": "Virgin Islands turquoise bay beach with green hills",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Beach fees may apply some sites; park free to enter.",
+      "transit_note": "Ferry to St. John; taxis/jeeps on island.",
+      "energy_note": "Sun and heat; snorkel optional.",
+      "best_start": "Cruz Bay visitor contact → one beach + short path",
+      "slice_name": "Beach + short trail",
+      "season_note": "Hurricane season mid-year; peak winter tourism."
+    },
+    "keys": [
+      "vc",
+      "coast",
+      "board",
+      "sign",
+      "jr",
+      "tree",
+      "over",
+      "ranger"
+    ],
+    "route": [
+      "np_visitor_center",
+      "np_tide_coast",
+      "np_boardwalk"
+    ]
+  },
+  {
+    "slug": "gates-of-arctic",
+    "name": "Gates of the Arctic National Park",
+    "city": "Bettles",
+    "region": "AK",
+    "state": "AK",
+    "lat": 67.78,
+    "lng": -153.29,
+    "url": "https://www.nps.gov/gaar/",
+    "emoji": "🧭",
+    "tagline": "Gates of the Arctic — true wilderness; no roads or trails system for casual visits.",
+    "blurb": "Remote Brooks Range park — expedition-level only; use info centers to learn.",
+    "slice": "Gateway community info (Bettles/Fairbanks prep)",
+    "art": "Gates of the Arctic remote tundra mountains and endless arctic light",
+    "practical": {
+      "typical_duration": "full day",
+      "ticket_note": "No entrance station; access is fly-in wilderness.",
+      "transit_note": "No park roads; bush plane required.",
+      "energy_note": "Full wilderness skills required — not a toddler outing.",
+      "best_start": "Prep at regional visitor centers; only enter with guided/expedition plan",
+      "slice_name": "Gateway prep only for most families",
+      "season_note": "Brief summer window; serious logistics."
+    },
+    "keys": [
+      "vc",
+      "over",
+      "meadow",
+      "sign",
+      "jr",
+      "river",
+      "ranger",
+      "elk"
+    ],
+    "route": [
+      "np_visitor_center",
+      "np_scenic_overlook",
+      "np_meadow"
+    ]
+  },
+  {
+    "slug": "kobuk-valley",
+    "name": "Kobuk Valley National Park",
+    "city": "Kotzebue",
+    "region": "AK",
+    "state": "AK",
+    "lat": 67.34,
+    "lng": -159.1,
+    "url": "https://www.nps.gov/kova/",
+    "emoji": "🏜️",
+    "tagline": "Kobuk Valley — arctic sand dunes; fly-in wilderness access only.",
+    "blurb": "Remote northwest Alaska — expedition access, not a drive-up kit.",
+    "slice": "Kotzebue regional info / expedition only",
+    "art": "Kobuk Valley arctic sand dunes and tundra under wide northern sky",
+    "practical": {
+      "typical_duration": "full day",
+      "ticket_note": "No road access; charters required.",
+      "transit_note": "Kotzebue hub then bush plane.",
+      "energy_note": "Wilderness only.",
+      "best_start": "Regional visitor center education stop unless on guided trip",
+      "slice_name": "Gateway education / expedition",
+      "season_note": "Summer only for most travel."
+    },
+    "keys": [
+      "vc",
+      "over",
+      "meadow",
+      "sign",
+      "jr",
+      "river",
+      "ranger",
+      "arch"
+    ],
+    "route": [
+      "np_visitor_center",
+      "np_scenic_overlook",
+      "np_meadow"
+    ]
+  },
+  {
+    "slug": "lake-clark",
+    "name": "Lake Clark National Park",
+    "city": "Port Alsworth",
+    "region": "AK",
+    "state": "AK",
+    "lat": 60.97,
+    "lng": -153.42,
+    "url": "https://www.nps.gov/lacl/",
+    "emoji": "🏞️",
+    "tagline": "Lake Clark — fly-in lakes and volcanoes; Port Alsworth is the tiny hub.",
+    "blurb": "Remote lake park — plane access; short shore walks if you make it in.",
+    "slice": "Port Alsworth shore / visitor contact if available",
+    "art": "Lake Clark blue mountain lake with volcano peak and spruce shore",
+    "practical": {
+      "typical_duration": "full day",
+      "ticket_note": "Fly-in; limited lodging.",
+      "transit_note": "Air taxi from Anchorage area hubs.",
+      "energy_note": "Weather delays common.",
+      "best_start": "If in Port Alsworth: visitor contact → shore path",
+      "slice_name": "Port Alsworth shore",
+      "season_note": "Summer primary season."
+    },
+    "keys": [
+      "vc",
+      "coast",
+      "over",
+      "sign",
+      "jr",
+      "tree",
+      "meadow",
+      "ranger"
+    ],
+    "route": [
+      "np_visitor_center",
+      "np_tide_coast",
+      "np_scenic_overlook"
+    ]
+  },
+  {
+    "slug": "wrangell-st-elias",
+    "name": "Wrangell–St. Elias National Park",
+    "city": "Copper Center",
+    "region": "AK",
+    "state": "AK",
+    "lat": 61.71,
+    "lng": -142.99,
+    "url": "https://www.nps.gov/wrst/",
+    "emoji": "⛰️",
+    "tagline": "Wrangell–St. Elias — enormous park; visitor center and one road-accessible slice.",
+    "blurb": "Biggest US park — Copper Center exhibits + McCarthy road only if prepared.",
+    "slice": "Copper Center visitor center area",
+    "art": "Wrangell St Elias vast mountain range and glacier valley",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Visitor centers free; remote roads rough.",
+      "transit_note": "Richardson Highway visitor center is the easy win.",
+      "energy_note": "McCarthy Road is long gravel — not casual with toddlers.",
+      "best_start": "Copper Center visitor center → short interpretive path",
+      "slice_name": "Copper Center",
+      "season_note": "Summer access best; winter extreme."
+    },
+    "keys": [
+      "vc",
+      "over",
+      "sign",
+      "jr",
+      "meadow",
+      "river",
+      "ranger",
+      "tree"
+    ],
+    "route": [
+      "np_visitor_center",
+      "np_scenic_overlook",
+      "np_meadow"
+    ]
+  }
+]

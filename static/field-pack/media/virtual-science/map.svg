@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" role="img">
+  <title>Science museum. Follow the glowing hall.</title>
+  <defs>
+    <clipPath id="vz-photo-clip" clipPathUnits="objectBoundingBox">
+      <rect x="0" y="0" width="1" height="1" rx="0.14" ry="0.14"/>
+    </clipPath>
+    <filter id="pad-shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="5" stdDeviation="3.2" flood-color="#1a1814" flood-opacity="0.38"/>
+    </filter>
+  </defs>
+  <image href="/field-pack/media/virtual-science/park-ground.jpg?v=2" x="0" y="0" width="800" height="800" preserveAspectRatio="xMidYMid slice"/>
+  
+  <g id="vz-trail" class="vz-trail" pointer-events="none">
+    <path d="M365.0,755.0 Q316.5,710.5 268.0,666.0 Q208.0,587.0 148.0,508.0 Q148.0,428.0 148.0,348.0 Q148.0,258.0 148.0,168.0 Q238.0,138.0 328.0,108.0 Q418.0,108.0 508.0,108.0 Q598.0,128.0 688.0,148.0 Q688.0,233.0 688.0,318.0 Q688.0,408.0 688.0,498.0 Q598.0,582.0 508.0,666.0 Q477.5,710.5 447.0,755.0" fill="none" stroke="#d8c9a4" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="0.35"/>
+  </g>
+  <g id="vz-arrows" class="vz-arrows" pointer-events="none" fill="#8a7d5e">
+    <path d="M313.2,707.5 L327.1,712.8 L319.7,720.9 Z" opacity="0.58"/>
+    <path d="M468.2,724.0 L471.5,709.6 L480.5,715.8 Z" opacity="0.58"/>
+  </g>
+  <g id="vz-entry" class="vz-gate"><rect x="340" y="742" width="50" height="26" rx="7" fill="#0f5c5c"/><text x="365" y="760" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="700" fill="#fff">IN</text></g>
+  <g id="vz-exit" class="vz-gate"><rect x="420" y="742" width="54" height="26" rx="7" fill="#8a9aaf"/><text x="447" y="760" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="700" fill="#fff">OUT</text></g>
+  <a href="/field-pack/virtual-field-trip/?tab=science#habitat=sci-hands-on" id="habitat-sci-hands-on" class="vz-spot" data-habitat="sci-hands-on" aria-label="sci-hands-on">
+    <rect class="vz-hit" x="80" y="280" width="136" height="136" fill="transparent"/>
+    <rect class="vz-halo" x="81" y="281" width="134.0" height="134.0" rx="22.0"/>
+    <rect class="vz-silo" x="86" y="286" width="124" height="124" rx="18" fill="#fff" stroke="#1f2a2a" stroke-width="2.6" filter="url(#pad-shadow)"/>
+    <image href="/field-pack/photos/sci-hands-on.jpg?v=img2" x="90" y="290" width="116" height="116" preserveAspectRatio="xMidYMin slice" clip-path="url(#vz-photo-clip)"/>
+  </a>
+  <a href="/field-pack/virtual-field-trip/?tab=science#habitat=cm-makery" id="habitat-cm-makery" class="vz-spot" data-habitat="cm-makery" aria-label="cm-makery">
+    <rect class="vz-hit" x="80" y="100" width="136" height="136" fill="transparent"/>
+    <rect class="vz-halo" x="81" y="101" width="134.0" height="134.0" rx="22.0"/>
+    <rect class="vz-silo" x="86" y="106" width="124" height="124" rx="18" fill="#fff" stroke="#1f2a2a" stroke-width="2.6" filter="url(#pad-shadow)"/>
+    <image href="/field-pack/photos/cm-makery.jpg?v=img2" x="90" y="110" width="116" height="116" preserveAspectRatio="xMidYMin slice" clip-path="url(#vz-photo-clip)"/>
+  </a>
+  <a href="/field-pack/virtual-field-trip/?tab=science#habitat=cm-art-lab" id="habitat-cm-art-lab" class="vz-spot" data-habitat="cm-art-lab" aria-label="cm-art-lab">
+    <rect class="vz-hit" x="260" y="40" width="136" height="136" fill="transparent"/>
+    <rect class="vz-halo" x="261" y="41" width="134.0" height="134.0" rx="22.0"/>
+    <rect class="vz-silo" x="266" y="46" width="124" height="124" rx="18" fill="#fff" stroke="#1f2a2a" stroke-width="2.6" filter="url(#pad-shadow)"/>
+    <image href="/field-pack/photos/cm-art.jpg?v=img2" x="270" y="50" width="116" height="116" preserveAspectRatio="xMidYMin slice" clip-path="url(#vz-photo-clip)"/>
+  </a>
+  <a href="/field-pack/virtual-field-trip/?tab=science#habitat=cm-imaginarium" id="habitat-cm-imaginarium" class="vz-spot" data-habitat="cm-imaginarium" aria-label="cm-imaginarium">
+    <rect class="vz-hit" x="80" y="440" width="136" height="136" fill="transparent"/>
+    <rect class="vz-halo" x="81" y="441" width="134.0" height="134.0" rx="22.0"/>
+    <rect class="vz-silo" x="86" y="446" width="124" height="124" rx="18" fill="#fff" stroke="#1f2a2a" stroke-width="2.6" filter="url(#pad-shadow)"/>
+    <image href="/field-pack/photos/cm-imaginarium.jpg?v=img2" x="90" y="450" width="116" height="116" preserveAspectRatio="xMidYMin slice" clip-path="url(#vz-photo-clip)"/>
+  </a>
+  <a href="/field-pack/virtual-field-trip/?tab=science#habitat=cm-woven" id="habitat-cm-woven" class="vz-spot" data-habitat="cm-woven" aria-label="cm-woven">
+    <rect class="vz-hit" x="200" y="598" width="136" height="136" fill="transparent"/>
+    <rect class="vz-halo" x="201" y="599" width="134.0" height="134.0" rx="22.0"/>
+    <rect class="vz-silo" x="206" y="604" width="124" height="124" rx="18" fill="#fff" stroke="#1f2a2a" stroke-width="2.6" filter="url(#pad-shadow)"/>
+    <image href="/field-pack/photos/cm-woven.jpg?v=img2" x="210" y="608" width="116" height="116" preserveAspectRatio="xMidYMin slice" clip-path="url(#vz-photo-clip)"/>
+  </a>
+  <a href="/field-pack/virtual-field-trip/?tab=science#habitat=cm-free-explore" id="habitat-cm-free-explore" class="vz-spot" data-habitat="cm-free-explore" aria-label="cm-free-explore">
+    <rect class="vz-hit" x="440" y="40" width="136" height="136" fill="transparent"/>
+    <rect class="vz-halo" x="441" y="41" width="134.0" height="134.0" rx="22.0"/>
+    <rect class="vz-silo" x="446" y="46" width="124" height="124" rx="18" fill="#fff" stroke="#1f2a2a" stroke-width="2.6" filter="url(#pad-shadow)"/>
+    <image href="/field-pack/photos/cm-explore.jpg?v=img2" x="450" y="50" width="116" height="116" preserveAspectRatio="xMidYMin slice" clip-path="url(#vz-photo-clip)"/>
+  </a>
+  <a href="/field-pack/virtual-field-trip/?tab=science#habitat=sci-planet" id="habitat-sci-planet" class="vz-spot" data-habitat="sci-planet" aria-label="sci-planet">
+    <rect class="vz-hit" x="620" y="430" width="136" height="136" fill="transparent"/>
+    <rect class="vz-halo" x="621" y="431" width="134.0" height="134.0" rx="22.0"/>
+    <rect class="vz-silo" x="626" y="436" width="124" height="124" rx="18" fill="#fff" stroke="#1f2a2a" stroke-width="2.6" filter="url(#pad-shadow)"/>
+    <image href="/field-pack/photos/sci-planet.jpg?v=img2" x="630" y="440" width="116" height="116" preserveAspectRatio="xMidYMin slice" clip-path="url(#vz-photo-clip)"/>
+  </a>
+  <a href="/field-pack/virtual-field-trip/?tab=science#habitat=sci-astronaut" id="habitat-sci-astronaut" class="vz-spot" data-habitat="sci-astronaut" aria-label="sci-astronaut">
+    <rect class="vz-hit" x="620" y="250" width="136" height="136" fill="transparent"/>
+    <rect class="vz-halo" x="621" y="251" width="134.0" height="134.0" rx="22.0"/>
+    <rect class="vz-silo" x="626" y="256" width="124" height="124" rx="18" fill="#fff" stroke="#1f2a2a" stroke-width="2.6" filter="url(#pad-shadow)"/>
+    <image href="/field-pack/photos/sci-astronaut.jpg?v=img2" x="630" y="260" width="116" height="116" preserveAspectRatio="xMidYMin slice" clip-path="url(#vz-photo-clip)"/>
+  </a>
+  <a href="/field-pack/virtual-field-trip/?tab=science#habitat=sci-shuttle" id="habitat-sci-shuttle" class="vz-spot" data-habitat="sci-shuttle" aria-label="sci-shuttle">
+    <rect class="vz-hit" x="620" y="80" width="136" height="136" fill="transparent"/>
+    <rect class="vz-halo" x="621" y="81" width="134.0" height="134.0" rx="22.0"/>
+    <rect class="vz-silo" x="626" y="86" width="124" height="124" rx="18" fill="#fff" stroke="#1f2a2a" stroke-width="2.6" filter="url(#pad-shadow)"/>
+    <image href="/field-pack/photos/sci-shuttle.jpg?v=img2" x="630" y="90" width="116" height="116" preserveAspectRatio="xMidYMin slice" clip-path="url(#vz-photo-clip)"/>
+  </a>
+  <a href="/field-pack/virtual-field-trip/?tab=science#habitat=sci-rocket" id="habitat-sci-rocket" class="vz-spot" data-habitat="sci-rocket" aria-label="sci-rocket">
+    <rect class="vz-hit" x="440" y="598" width="136" height="136" fill="transparent"/>
+    <rect class="vz-halo" x="441" y="599" width="134.0" height="134.0" rx="22.0"/>
+    <rect class="vz-silo" x="446" y="604" width="124" height="124" rx="18" fill="#fff" stroke="#1f2a2a" stroke-width="2.6" filter="url(#pad-shadow)"/>
+    <image href="/field-pack/photos/sci-rocket.jpg?v=img2" x="450" y="608" width="116" height="116" preserveAspectRatio="xMidYMin slice" clip-path="url(#vz-photo-clip)"/>
+  </a>
+</svg>

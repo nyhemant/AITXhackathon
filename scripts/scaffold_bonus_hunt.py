@@ -60,6 +60,10 @@ def venue_type(venue: dict) -> str:
         return "aquarium"
     if "safari" in t:
         return "safari_zoo"
+    if "national_park" in t or t in ("park", "national park") or (
+        "park" in t and "safari" not in t and "zoo" not in t
+    ):
+        return "national_park"
     if any(x in t for x in ("museum", "science", "history", "children", "space")):
         return "museum"
     return "zoo"
@@ -132,6 +136,16 @@ def challenge_templates(vtype: str) -> list[dict]:
             {"id": "sf_pair", "text": "Two different patterns in one loop (stripes, spots, or horns)", "age_fit": big},
             {"id": "sf_quiet", "text": "Quiet 20 seconds — bird, insect, or vehicle: what wins?", "age_fit": all_ages},
             {"id": "sf_tall", "text": "Point to the tallest living thing you can see from here", "age_fit": all_ages},
+        ]
+    if vtype == "national_park":
+        return [
+            {"id": "np_still", "text": "Quiet 20 seconds on the trail — bird, wind, water, or people: what wins?", "age_fit": all_ages},
+            {"id": "np_far_near", "text": "Name something far first — then something by your feet", "age_fit": all_ages},
+            {"id": "np_camo", "text": "Best natural camouflage (rock, bark, shadow) you can spot", "age_fit": big},
+            {"id": "np_map", "text": "Find a map or zone name you haven’t noticed — point it out", "age_fit": big},
+            {"id": "np_tiny_huge", "text": "Something tiny next to something huge in this area", "age_fit": all_ages},
+            {"id": "np_safe_edge", "text": "Stay on the path: find the edge marker, rail, or stay-back sign", "age_fit": all_ages},
+            {"id": "np_little", "text": "Copy a nature move once (tiptoe, big stretch, quiet freeze)", "age_fit": ["2-3", "4-5"]},
         ]
     # zoo default
     return [
@@ -226,6 +240,7 @@ def build_pack(venue: dict, *, status: str = "solid") -> dict:
         "aquarium": f"{short} bonus · deep tanks & hideouts",
         "museum": f"{short} bonus · halls worth a second look",
         "safari_zoo": f"{short} bonus · far sights & camouflage",
+        "national_park": f"{short} bonus · second look on the trail",
     }.get(vtype, f"{short} bonus · curious explorers")
     pack = {
         "tagline": tag,

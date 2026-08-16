@@ -1093,13 +1093,286 @@ a.seo-map-card:focus-visible {
 }
 .seo-dir-body {
   display: grid;
-  gap: 14px;
+  gap: 22px;
 }
-.seo-dir-region {
+.seo-dir-body-dual {
+  gap: 28px;
+}
+/* Dual rails: Cards (first) | Places */
+.seo-dir-rail {
   margin: 0;
-  padding: 14px 14px 12px;
-  border-radius: 16px;
+  scroll-margin-top: 5.5rem;
+  padding: 14px 14px 16px;
+  border-radius: 20px;
   border: 1.5px solid transparent;
+}
+.seo-dir-rail-cards {
+  background: linear-gradient(165deg, #fff6ef 0%, #fffaf6 55%, #fff 100%);
+  border-color: rgba(196, 105, 48, 0.2);
+}
+.seo-dir-rail-places {
+  background: linear-gradient(165deg, #eef8f4 0%, #f6fbf9 55%, #fff 100%);
+  border-color: rgba(15, 92, 92, 0.14);
+}
+.seo-dir-rail-title {
+  margin: 0 0 4px;
+  font-size: 1.2rem;
+  font-weight: 850;
+  color: #0a4545;
+  letter-spacing: -0.02em;
+}
+.seo-dir-rail-cards .seo-dir-rail-title {
+  color: #8a4010;
+}
+.seo-dir-rail-places .seo-dir-rail-title {
+  color: #0a4545;
+}
+.seo-dir-rail-blurb {
+  margin: 0 0 12px !important;
+  font-size: 0.9rem !important;
+  font-weight: 600 !important;
+  color: #5a6b82 !important;
+}
+/* Jump nav: super group headings + pills (no Places/Cards pills) */
+.seo-dir-jumps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem 1.35rem;
+  margin: 0 0 18px;
+  align-items: flex-end;
+}
+.seo-dir-jump-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: min(100%, 12rem);
+}
+.seo-dir-jump-super {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #5a6b82;
+}
+.seo-dir-jump-group-cards .seo-dir-jump-super {
+  color: #a85a20;
+}
+.seo-dir-jump-group-places .seo-dir-jump-super {
+  color: #0f5c5c;
+}
+.seo-dir-jump-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.45rem;
+}
+.seo-dir-jump {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  font-weight: 750;
+  text-decoration: none;
+  color: #0a4545;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1.5px solid rgba(15, 92, 92, 0.18);
+  scroll-margin-top: 5.5rem;
+}
+.seo-dir-jump-card {
+  color: #7a3a0c;
+  border-color: rgba(196, 105, 48, 0.28);
+  background: #fff8f2;
+}
+.seo-dir-jump-card:hover {
+  border-color: #c46930;
+  color: #8a4010;
+  background: #fff;
+}
+.seo-dir-jump-place {
+  color: #0a4545;
+  border-color: rgba(15, 92, 92, 0.2);
+  background: #f3faf7;
+}
+.seo-dir-jump-place:hover {
+  border-color: #0f5c5c;
+  color: #0f5c5c;
+  background: #fff;
+}
+.seo-dir-jump:hover {
+  border-color: #0f5c5c;
+  color: #0f5c5c;
+  background: #fff;
+}
+/* Collapsed L1 / L2 details */
+.seo-dir-type {
+  margin: 0 0 10px;
+  scroll-margin-top: 5.5rem;
+  border-radius: 16px;
+  border: 1.5px solid rgba(15, 92, 92, 0.12);
+  background: rgba(255, 255, 255, 0.72);
+  overflow: hidden;
+}
+.seo-dir-type-sum,
+.seo-dir-region-sum,
+.seo-dir-more-sum {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 0.65rem;
+  padding: 12px 14px;
+  font-weight: 800;
+  color: #0a4545;
+  user-select: none;
+}
+.seo-dir-type-sum::-webkit-details-marker,
+.seo-dir-region-sum::-webkit-details-marker,
+.seo-dir-more-sum::-webkit-details-marker {
+  display: none;
+}
+.seo-dir-type-sum::before,
+.seo-dir-region-sum::before,
+.seo-dir-more-sum::before {
+  content: "▸";
+  display: inline-block;
+  width: 1em;
+  color: #0f5c5c;
+  transition: transform 0.15s ease;
+  font-weight: 700;
+}
+.seo-dir-type[open] > .seo-dir-type-sum::before,
+.seo-dir-region[open] > .seo-dir-region-sum::before,
+.seo-dir-more[open] > .seo-dir-more-sum::before,
+.seo-dir-card-group[open] > .seo-dir-region-sum::before {
+  transform: rotate(90deg);
+}
+.seo-dir-type-label {
+  font-size: 1.08rem;
+  letter-spacing: -0.02em;
+}
+.seo-dir-region-label {
+  font-size: 0.95rem;
+  font-weight: 750;
+}
+.seo-dir-hub {
+  margin-left: auto;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #0f5c5c;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(15, 92, 92, 0.28);
+  white-space: nowrap;
+}
+.seo-dir-hub:hover {
+  border-bottom-color: #0f5c5c;
+}
+.seo-dir-type-body {
+  display: grid;
+  gap: 10px;
+  padding: 0 14px 14px;
+}
+.seo-dir-hint {
+  margin: 0 !important;
+  font-size: 0.82rem !important;
+  font-weight: 600 !important;
+  color: #5a6b82 !important;
+}
+.seo-dir-regions {
+  display: grid;
+  gap: 8px;
+}
+.seo-dir-region,
+.seo-dir-card-group,
+.seo-dir-more {
+  margin: 0;
+  border-radius: 12px;
+  border: 1.5px solid transparent;
+  background: rgba(255, 255, 255, 0.55);
+}
+.seo-dir-region > .seo-dir-samples,
+.seo-dir-region > .seo-dir-more,
+.seo-dir-card-group > .seo-dir-samples,
+.seo-dir-card-group > .seo-dir-more,
+.seo-dir-more > .seo-dir-grid {
+  padding: 0 12px 12px;
+}
+.seo-dir-more-sum {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #0f5c5c;
+  padding: 8px 12px 10px;
+}
+.seo-dir-samples {
+  margin-top: 0;
+}
+/* Card rows with Print button */
+.seo-dir-card-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 0.65rem;
+}
+.seo-dir-print-btn {
+  appearance: none;
+  border: 1.5px solid rgba(196, 105, 48, 0.35);
+  background: #fff;
+  color: #a85a20;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 750;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+.seo-dir-print-btn:hover {
+  border-color: #c46930;
+  background: #fff0e4;
+  color: #8a4010;
+}
+/* Cards (wildlife / attractions) — warm accent vs teal places */
+.seo-dir-rail-cards .seo-dir-type {
+  border-color: rgba(196, 105, 48, 0.2);
+  background: rgba(255, 255, 255, 0.88);
+}
+.seo-dir-cards .seo-dir-type-sum {
+  background: linear-gradient(165deg, #ffe8d4 0%, #fff8f2 100%);
+  color: #6b3010;
+}
+.seo-dir-cards .seo-dir-type-sum::before {
+  color: #c46930;
+}
+.seo-dir-cards .seo-dir-type-label {
+  color: #6b3010;
+}
+.seo-dir-cards .seo-dir-count {
+  background: rgba(255, 248, 242, 0.95);
+  border-color: rgba(196, 105, 48, 0.15);
+  color: #8a4010;
+}
+.seo-dir-cards .seo-dir-card-group,
+.seo-dir-cards .seo-dir-more {
+  background: rgba(255, 250, 245, 0.9);
+  border-color: rgba(196, 105, 48, 0.12);
+}
+.seo-dir-cards .seo-dir-more-sum {
+  color: #a85a20;
+}
+.seo-dir-cards .seo-dir-card-link {
+  color: #6b3010;
+  border-bottom-color: rgba(196, 105, 48, 0.35);
+}
+.seo-dir-cards .seo-dir-card-link:hover {
+  color: #8a4010;
+  border-bottom-color: #c46930;
+}
+/* Places — teal family */
+.seo-dir-rail-places .seo-dir-type {
+  border-color: rgba(15, 92, 92, 0.14);
+}
+.seo-dir-rail-places .seo-dir-type-sum {
+  background: linear-gradient(165deg, #e4f4ee 0%, #f7fcfa 100%);
 }
 /* Soft distinct tints per continent — easier to scan, still calm */
 .seo-dir-region[data-region="north-america"] {
@@ -1128,7 +1401,7 @@ a.seo-map-card:focus-visible {
 }
 .seo-dir-region-title {
   margin: 0 0 10px;
-  font-size: 1.05rem;
+  font-size: 0.98rem;
   font-weight: 800;
   color: #0a4545;
   letter-spacing: -0.02em;
@@ -1137,6 +1410,12 @@ a.seo-map-card:focus-visible {
   gap: 8px;
   padding-bottom: 6px;
   border-bottom: 1.5px solid rgba(15, 92, 92, 0.1);
+}
+/* Nested under day-type: region is quieter than L1 type title */
+.seo-dir-type .seo-dir-region-title {
+  font-size: 0.95rem;
+  font-weight: 750;
+  color: #1a3d3d;
 }
 .seo-dir-count {
   font-size: 0.78rem;
@@ -1253,4 +1532,45 @@ a.seo-map-card:focus-visible {
 .seo-hunt-chip.seo-hunt-alpha.is-active {
   background: #4a5568;
   color: #fff;
+}
+
+/* National park / venue hero illustration */
+.seo-park-hero {
+  margin: 0.85rem 0 1.1rem;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1.5px solid rgba(15, 92, 92, 0.12);
+  box-shadow: 0 10px 28px rgba(21, 34, 56, 0.1);
+  background: #e8f2ee;
+  aspect-ratio: 16 / 9;
+  max-height: 340px;
+}
+.seo-park-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+@media (max-width: 560px) {
+  .seo-park-hero { max-height: 200px; border-radius: 14px; }
+}
+
+.th-safety {
+  font-size: 0.78rem;
+  line-height: 1.25;
+  margin: 0.35rem 0 0.2rem;
+  padding: 0.3rem 0.45rem;
+  border-radius: 6px;
+  background: #eef5ea;
+  border: 1px solid #cfe0c8;
+  color: #2f3d2c;
+}
+@media print {
+  .th-safety {
+    font-size: 7.5pt;
+    margin: 2pt 0;
+    padding: 2pt 4pt;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
 }

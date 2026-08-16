@@ -1,0 +1,87 @@
+[
+  {
+    "slug": "banff",
+    "ok": true,
+    "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Banffmapv2.jpg",
+    "size": [
+      961,
+      1140
+    ],
+    "bytes": 429374
+  },
+  {
+    "slug": "jasper",
+    "ok": false,
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "slug": "yoho",
+    "ok": false,
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "slug": "kruger",
+    "ok": true,
+    "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Kruger_Nationalpark_%28de%29.png",
+    "size": [
+      934,
+      2071
+    ],
+    "bytes": 582085
+  },
+  {
+    "slug": "table-mountain",
+    "ok": false,
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "slug": "plitvice-lakes",
+    "ok": false,
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "slug": "torres-del-paine",
+    "ok": false,
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "slug": "iguazu-argentina",
+    "ok": false,
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "slug": "snowdonia",
+    "ok": false,
+    "error": "<urlopen error [Errno 60] Operation timed out>"
+  },
+  {
+    "slug": "lake-district",
+    "ok": false,
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "slug": "killarney",
+    "ok": false,
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "slug": "fiordland",
+    "ok": false,
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "slug": "blue-mountains",
+    "ok": false,
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "slug": "fuji-hakone-izu",
+    "ok": false,
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "slug": "nikko",
+    "ok": false,
+    "error": "HTTP Error 404: Not Found"
+  }
+]

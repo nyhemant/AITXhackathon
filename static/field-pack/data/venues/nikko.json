@@ -1,0 +1,376 @@
+{
+  "slug": "nikko",
+  "name": "Nikkō National Park",
+  "type": "national_park",
+  "city": "Nikko",
+  "region": "Tochigi",
+  "country": "JP",
+  "lat": 36.7581,
+  "lng": 139.599,
+  "official_url": "https://www.env.go.jp/en/nature/nps/park/nikko/",
+  "last_verified": "2026-08-09",
+  "verified_by": "research",
+  "status": "verified",
+  "tagline": "Nikkō — lake and waterfall short stops; shrines nearby are separate tickets.",
+  "practical": {
+    "typical_duration": "half day",
+    "ticket_note": "Park free; temple/shrine entries separate.",
+    "transit_note": "Nikko town + buses up to Chuzenji.",
+    "energy_note": "Stairs and buses; weather cool.",
+    "best_start": "Lake shore or waterfall stop → forest path",
+    "slice_name": "Chuzenji / falls short",
+    "season_note": "Autumn color peak crowded."
+  },
+  "items": [
+    {
+      "id": "chuzenji",
+      "label": "Lake Chūzenji shore",
+      "emoji": "🏞️",
+      "one_liner": "Mountain lake above Nikkō town.",
+      "tags": [
+        "water",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Chūzenji",
+      "qa_card": {
+        "question": "What did you notice at the Lake Chūzenji shore?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-river",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "official_park_research",
+      "display_label": "Lake Chūzenji shore"
+    },
+    {
+      "id": "kegon_or_falls",
+      "label": "Kegon or nearby waterfall stop",
+      "emoji": "💦",
+      "one_liner": "Mist and stairs — hold hands.",
+      "tags": [
+        "water",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Falls",
+      "qa_card": {
+        "question": "What did you notice at the Kegon or nearby waterfall stop?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-waterfall",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "official_park_research",
+      "display_label": "Kegon or nearby waterfall stop"
+    },
+    {
+      "id": "cedar",
+      "label": "Cedar avenue / forest giant",
+      "emoji": "🌳",
+      "one_liner": "Tall cryptomeria mood.",
+      "tags": [
+        "outdoor",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Forest",
+      "qa_card": {
+        "question": "What did you notice at the Cedar avenue / forest giant?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-giant-tree",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "official_park_research",
+      "display_label": "Cedar avenue / forest giant"
+    },
+    {
+      "id": "view",
+      "label": "Lake or gorge viewpoint",
+      "emoji": "🌄",
+      "one_liner": "One overlook is enough.",
+      "tags": [
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Overlook",
+      "qa_card": {
+        "question": "What did you notice at the Lake or gorge viewpoint?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-scenic-overlook",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "official_park_research",
+      "display_label": "Lake or gorge viewpoint"
+    },
+    {
+      "id": "path_sign",
+      "label": "Bus stop / trail sign",
+      "emoji": "🥾",
+      "one_liner": "Chūzenji buses fill up.",
+      "tags": [
+        "read"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Trail",
+      "qa_card": {
+        "question": "What did you notice at the Bus stop / trail sign?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-trailhead-sign",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "official_park_research",
+      "display_label": "Bus stop / trail sign"
+    },
+    {
+      "id": "vc",
+      "label": "Park or tourist info",
+      "emoji": "🏛️",
+      "one_liner": "Temple tickets are separate.",
+      "tags": [
+        "rest"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Town",
+      "qa_card": {
+        "question": "What did you notice at the Park or tourist info?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-visitor-center",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "official_park_research",
+      "display_label": "Park or tourist info"
+    },
+    {
+      "id": "board",
+      "label": "Easy path section",
+      "emoji": "🪵",
+      "one_liner": "Between lake and falls.",
+      "tags": [
+        "walk"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Trail",
+      "qa_card": {
+        "question": "What did you notice at the Easy path section?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-boardwalk",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "official_park_research",
+      "display_label": "Easy path section"
+    },
+    {
+      "id": "meadow",
+      "label": "Open rest clearing",
+      "emoji": "🌾",
+      "one_liner": "Legs after stairs.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Open",
+      "qa_card": {
+        "question": "What did you notice at the Open rest clearing?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-meadow",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "official_park_research",
+      "display_label": "Open rest clearing"
+    }
+  ],
+  "content_mode": "curated",
+  "media": {
+    "visitor_map_url": "/field-pack/media/maps/nikko.jpg",
+    "visitor_map_page": "https://www.env.go.jp/en/nature/nps/park/nikko/",
+    "visitor_map_kind": "image",
+    "map_attribution": "Map: © OpenStreetMap contributors",
+    "hero_illustration": "/field-pack/photos/np-hero-nikko.jpg",
+    "print_map": "/field-pack/media/maps/nikko.jpg",
+    "visitor_map_full": "https://www.openstreetmap.org/#map=10/36.7581/139.599"
+  },
+  "parent_script": [
+    "Bathroom first",
+    "Water & weather check",
+    "One big view",
+    "Leave while happy"
+  ],
+  "route_90m": [
+    "chuzenji",
+    "kegon_or_falls",
+    "cedar"
+  ],
+  "research_notes": "NP intl Phase 1 2026-08-09 · slice-focused kit · slice labels + shared animal cards 2026-08-09",
+  "list_confidence": "partial",
+  "do_not_list": [],
+  "presence_sources": [
+    "https://www.env.go.jp/en/nature/nps/park/nikko/"
+  ],
+  "last_presence_audit": "2026-08-09",
+  "bonus_hunt": {
+    "tagline": "Nikkō National Park bonus · second look on the trail",
+    "find_ids": [
+      "view",
+      "board",
+      "meadow",
+      "path_sign",
+      "vc",
+      "cedar",
+      "chuzenji"
+    ],
+    "challenges": [
+      {
+        "id": "nikko_view_watch",
+        "text": "Overlook: take 15 seconds on the Lake or gorge viewpoint — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "nikko_board_watch",
+        "text": "Trail: take 15 seconds on the Easy path section — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "nikko_meadow_watch",
+        "text": "Open: take 15 seconds on the Open rest clearing — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "nikko_path_sign_watch",
+        "text": "Trail: take 15 seconds on the Bus stop / trail sign — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "nikko_vc_watch",
+        "text": "Town: take 15 seconds on the Park or tourist info — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_still",
+        "text": "Quiet 20 seconds on the trail — bird, wind, water, or people: what wins?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_far_near",
+        "text": "Name something far first — then something by your feet",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_camo",
+        "text": "Best natural camouflage (rock, bark, shadow) you can spot",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_map",
+        "text": "Find a map or zone name you haven’t noticed — point it out",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_tiny_huge",
+        "text": "Something tiny next to something huge in this area",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find a park map or zone sign — name one animal that lives that way",
+    "easter_egg_little": "★ Easter egg: pick a favorite bench — sit 60 seconds and name three sounds",
+    "researched": "2026-08-09",
+    "status": "solid",
+    "sources": [
+      "https://www.env.go.jp/en/nature/nps/park/nikko/"
+    ]
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "id": "virtual-nhm",
+  "kind": "natural_history",
+  "tab": "natural-history",
+  "path": "/field-pack/virtual-field-trip/?tab=natural-history",
+  "title": "Virtual Natural History Museum for Kids",
+  "h1": "Natural history — four halls",
+  "crumb": "Natural history",
+  "lead": "Four halls on one floor. Tap Ocean Hall, Rainforest Hall, Dinosaur Hall, or Mammal Hall. Free. No account.",
+  "printBanner": "HOME MUSEUM · Hall hunt",
+  "printSub": "Check each hall. Doodle if you want. Page 2 cuts into hide-and-seek cards.",
+  "printHideBanner": "Hide-and-seek at home",
+  "printHideSub": "Cut the cards. Hide them. Write in the box. Ask the question.",
+  "printFooter": "1less.app/field-pack/virtual-field-trip/?tab=natural-history · Field Trip Kit",
+  "storageKey": "fp-virtual-nhm-stamps-v1",
+  "mapSvg": "/field-pack/media/virtual-nhm/map.svg?v=7",
+  "pinLabels": true,
+  "habitats": [
+    {
+      "id": "sci-aquarium-zone",
+      "cardId": "sci-aquarium-zone",
+      "label": "Ocean Hall",
+      "challenge": "Why is the ocean salty? What’s the biggest animal that ever lived?",
+      "hotspot": {
+        "svgId": "habitat-sci-aquarium-zone"
+      },
+      "cam": {},
+      "seq": 1,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=OmGn-nWuu8Y",
+        "title": "Smithsonian Ocean Hall",
+        "provider": "youtube",
+        "channel": "Smithsonian's National Museum of Natural History",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=OmGn-nWuu8Y",
+          "checked": "2026-08-15"
+        }
+      },
+      "printAnswer": "Salt from rocks washes into the sea and stays. The blue whale is the biggest animal we know."
+    },
+    {
+      "id": "sci-rainforest",
+      "cardId": "sci-rainforest",
+      "label": "Rainforest Hall",
+      "challenge": "Why are rainforests so green? Why so many kinds of animals?",
+      "hotspot": {
+        "svgId": "habitat-sci-rainforest"
+      },
+      "cam": {},
+      "seq": 2,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=qUxVve-8dgU",
+        "title": "Inside a rainforest dome",
+        "provider": "youtube",
+        "channel": "Cage World",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=qUxVve-8dgU",
+          "checked": "2026-08-15"
+        }
+      },
+      "printAnswer": "Lots of rain and sun grow plants in layers. More plants mean more places to eat and hide."
+    },
+    {
+      "id": "sci-dinosaur",
+      "cardId": "sci-dinosaur",
+      "label": "Dinosaur Hall",
+      "challenge": "Why did dinosaurs get so big? Why aren’t they here now?",
+      "hotspot": {
+        "svgId": "habitat-sci-dinosaur"
+      },
+      "cam": {},
+      "seq": 3,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=11bQ-FFGF28",
+        "title": "Dinosaur hall at the Smithsonian",
+        "provider": "youtube",
+        "channel": "Smithsonian's National Museum of Natural History",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=11bQ-FFGF28",
+          "checked": "2026-08-15"
+        }
+      },
+      "printAnswer": "Some grew huge on plants or as hunters. A giant space rock and climate change ended most of them. Birds are their relatives."
+    },
+    {
+      "id": "sci-mammal-hall",
+      "cardId": "sci-mammal-hall",
+      "label": "Mammal Hall",
+      "challenge": "What makes a mammal a mammal? Why fur, horns, or hooves?",
+      "hotspot": {
+        "svgId": "habitat-sci-mammal-hall"
+      },
+      "cam": {},
+      "seq": 4,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=NPgN5q9GZc8",
+        "title": "African mammal hall dioramas",
+        "provider": "youtube",
+        "channel": "Soumik Samadder",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=NPgN5q9GZc8",
+          "checked": "2026-08-15"
+        }
+      },
+      "printAnswer": "Mammals make milk for babies and are warm-blooded. Fur keeps heat in; horns and hooves are tools and armor."
+    }
+  ],
+  "sequential": false
+}

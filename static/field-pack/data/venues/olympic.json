@@ -1,0 +1,491 @@
+{
+  "slug": "olympic",
+  "name": "Olympic National Park",
+  "type": "national_park",
+  "city": "Port Angeles",
+  "region": "WA",
+  "country": "US",
+  "lat": 48.0414,
+  "lng": -123.4186,
+  "official_url": "https://www.nps.gov/olym/",
+  "last_verified": "2026-08-09",
+  "verified_by": "research",
+  "status": "verified",
+  "tagline": "Olympic — pick one: rainforest, coast, or hurricane ridge — not all three.",
+  "practical": {
+    "typical_duration": "half day",
+    "ticket_note": "Entrance pass; long drives between zones.",
+    "transit_note": "Port Angeles hub; distances are huge — one zone only.",
+    "energy_note": "Rain gear; muddy trails.",
+    "best_start": "Pick one visitor center zone → short trail or beach",
+    "slice_name": "Hoh Rain Forest slice",
+    "season_note": "Hurricane Ridge seasonal; rainforests year-round wet."
+  },
+  "items": [
+    {
+      "id": "olym_hoh_vc",
+      "label": "Hoh Rain Forest Visitor Center",
+      "emoji": "🏛️",
+      "one_liner": "Mossy-world gateway — maps and restrooms",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Hoh",
+      "qa_card": {
+        "question": "What did you notice at Hoh Rain Forest Visitor Center?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "olym-hoh-vc",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Hoh Rain Forest Visitor Center",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/olym/planyourvisit/visitorcenters.htm"
+      },
+      "safety_note": "",
+      "core": true
+    },
+    {
+      "id": "olym_hall_mosses",
+      "label": "Hall of Mosses trail",
+      "emoji": "🌿",
+      "one_liner": "Short loop under maple drapes of moss — classic Hoh magic · Stay on the path",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Hoh Rain Forest",
+      "qa_card": {
+        "question": "What did you notice at Hall of Mosses trail?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "olym-hall-of-mosses",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Hall of Mosses trail",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/olym/planyourvisit/hoh.htm"
+      },
+      "safety_note": "Stay on the path",
+      "core": true
+    },
+    {
+      "id": "olym_spruce",
+      "label": "Giant spruce and fir",
+      "emoji": "🌳",
+      "one_liner": "Huge trunks in the temperate rainforest",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Hoh",
+      "qa_card": {
+        "question": "What did you notice at Giant spruce and fir?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "olym-giant-spruce",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Giant spruce and fir",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/olym/"
+      },
+      "safety_note": "",
+      "core": true
+    },
+    {
+      "id": "olym_hoh_river",
+      "label": "Hoh River glimpse",
+      "emoji": "🏞️",
+      "one_liner": "Glacial-milk river through the forest · Safe step back",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Hoh",
+      "qa_card": {
+        "question": "What did you notice at Hoh River glimpse?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "olym-hoh-river",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Hoh River glimpse",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/olym/"
+      },
+      "safety_note": "Safe step back",
+      "core": true
+    },
+    {
+      "id": "olym_nurse_log",
+      "label": "Nurse log",
+      "emoji": "🪵",
+      "one_liner": "Fallen log growing new trees — forest recycling in action",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Hoh trails",
+      "qa_card": {
+        "question": "What did you notice at Nurse log?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "olym-nurse-log",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Nurse log",
+      "verify": {
+        "status": "todo",
+        "source": ""
+      },
+      "safety_note": "",
+      "core": true
+    },
+    {
+      "id": "olym_sign",
+      "label": "Hall of Mosses trail sign",
+      "emoji": "🥾",
+      "one_liner": "Read loop distance before you start",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Hoh",
+      "qa_card": {
+        "question": "What did you notice at Hall of Mosses trail sign?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "olym-mosses-sign",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Hall of Mosses trail sign",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/olym/"
+      },
+      "safety_note": "",
+      "core": true
+    },
+    {
+      "id": "olym_clearing",
+      "label": "Rainforest clearing",
+      "emoji": "🌾",
+      "one_liner": "Brief sky break in the green tunnel",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Hoh",
+      "qa_card": {
+        "question": "What did you notice at Rainforest clearing?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "olym-rain-clearing",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Rainforest clearing",
+      "verify": {
+        "status": "todo",
+        "source": ""
+      },
+      "safety_note": "",
+      "core": true
+    },
+    {
+      "id": "olym_hurricane_alt",
+      "label": "Hurricane Ridge view (alternate slice)",
+      "emoji": "🌄",
+      "one_liner": "If you chose mountains instead of moss — big alpine overlook",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Hurricane Ridge",
+      "qa_card": {
+        "question": "What did you notice at Hurricane Ridge view (alternate slice)?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "olym-hurricane-ridge",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Hurricane Ridge view (alternate slice)",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/olym/planyourvisit/hurricane.htm"
+      },
+      "safety_note": "",
+      "core": true
+    },
+    {
+      "id": "olym_jr",
+      "label": "Olympic Junior Ranger desk",
+      "emoji": "🎖️",
+      "one_liner": "Ask at Hoh or another VC",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Visitor center",
+      "qa_card": {
+        "question": "What did you notice at Olympic Junior Ranger desk?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "np-junior-ranger",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Olympic Junior Ranger desk",
+      "verify": {
+        "status": "sourced",
+        "source": "generic-template"
+      },
+      "core": false
+    },
+    {
+      "id": "olym_talk",
+      "label": "Ranger talk (if offered)",
+      "emoji": "🗣️",
+      "one_liner": "Check the Hoh board",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "VC",
+      "qa_card": {
+        "question": "What did you notice at Ranger talk (if offered)?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "np-ranger-program",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Ranger talk (if offered)",
+      "verify": {
+        "status": "sourced",
+        "source": "generic-template"
+      },
+      "core": false
+    }
+  ],
+  "content_mode": "curated",
+  "media": {
+    "visitor_map_url": "/field-pack/media/maps/olympic.jpg",
+    "visitor_map_page": "https://www.nps.gov/olym/planyourvisit/maps.htm",
+    "visitor_map_kind": "image",
+    "map_attribution": "Map: NPS via NPMaps (public domain)",
+    "hero_illustration": "/field-pack/photos/np-hero-olympic.jpg",
+    "print_map": "/field-pack/media/maps/olympic.jpg",
+    "visitor_map_full": "https://npmaps.com/wp-content/uploads/olympic-national-park-map.jpg"
+  },
+  "parent_script": [
+    "Bathroom first",
+    "Water & sun check",
+    "One big view",
+    "Leave while happy"
+  ],
+  "route_90m": [
+    "olym_hoh_vc",
+    "olym_hall_mosses",
+    "olym_spruce"
+  ],
+  "research_notes": "NP Phase 1b 2026-08-08 · slice-focused kit · label scrub 2026-08-09 · depth-pass top10 2026-08-09",
+  "list_confidence": "partial",
+  "do_not_list": [],
+  "presence_sources": [
+    "https://www.nps.gov/olym/"
+  ],
+  "last_presence_audit": "2026-08-08",
+  "bonus_hunt": {
+    "tagline": "Olympic National Park bonus · second look on the trail",
+    "find_ids": [
+      "olym_clearing",
+      "olym_hoh_river",
+      "olym_hurricane_alt",
+      "olym_nurse_log",
+      "olym_sign",
+      "olym_jr",
+      "olym_talk"
+    ],
+    "challenges": [
+      {
+        "id": "olympic_olym_clearing_watch",
+        "text": "Hoh: take 15 seconds on the Rainforest clearing — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "olympic_olym_hoh_river_watch",
+        "text": "Hoh: take 15 seconds on the Hoh River glimpse — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "olympic_olym_hurricane_a_watch",
+        "text": "Hurricane Ridge: take 15 seconds on the Hurricane Ridge view (alternate slice) — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "olympic_olym_nurse_log_watch",
+        "text": "Hoh trails: take 15 seconds on the Nurse log — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "olympic_olym_sign_watch",
+        "text": "Hoh: take 15 seconds on the Hall of Mosses trail sign — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_still",
+        "text": "Quiet 20 seconds on the trail — bird, wind, water, or people: what wins?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_far_near",
+        "text": "Name something far first — then something by your feet",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_camo",
+        "text": "Best natural camouflage (rock, bark, shadow) you can spot",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_map",
+        "text": "Find a map or zone name you haven’t noticed — point it out",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_tiny_huge",
+        "text": "Something tiny next to something huge in this area",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find a park map or zone sign — name one animal that lives that way",
+    "easter_egg_little": "★ Easter egg: pick a favorite bench — sit 60 seconds and name three sounds",
+    "researched": "2026-08-09",
+    "status": "solid",
+    "sources": [
+      "https://www.nps.gov/olym/"
+    ]
+  },
+  "slice_label": "Hoh Rain Forest",
+  "safety_footer": "Stay on boardwalks and trails · give wildlife lots of space · bring water"
+}

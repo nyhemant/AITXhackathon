@@ -1,0 +1,239 @@
+{
+  "id": "virtual-science",
+  "kind": "science",
+  "tab": "science",
+  "path": "/field-pack/virtual-field-trip/?tab=science",
+  "title": "Virtual Science Museum for Kids",
+  "h1": "Science museum — a field trip at home",
+  "crumb": "Science",
+  "lead": "Study before you go. Start at the door and follow the glowing hall — labs first, then space. Free. No account.",
+  "printBanner": "HOME LAB · Map hunt",
+  "printSub": "Check each stop. Doodle if you want. Page 2 cuts into hide-and-seek cards.",
+  "printHideBanner": "Hide-and-seek at home",
+  "printHideSub": "Cut the cards. Hide them. Write in the box. Ask the question.",
+  "printFooter": "1less.app/field-pack/virtual-field-trip/?tab=science · Field Trip Kit",
+  "storageKey": "fp-virtual-science-stamps-v2",
+  "mapSvg": "/field-pack/media/virtual-science/map.svg?v=5",
+  "habitats": [
+    {
+      "id": "cm-woven",
+      "cardId": "cm-woven",
+      "label": "Woven Wonders",
+      "challenge": "Why do people weave patterns? What can cloth tell us?",
+      "hotspot": {
+        "svgId": "habitat-cm-woven"
+      },
+      "cam": {},
+      "seq": 1,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=UuNNzG5Lg7s",
+        "title": "Climbing a giant net at a science museum",
+        "provider": "youtube",
+        "channel": "MrFunClips",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=UuNNzG5Lg7s",
+          "checked": "2026-08-15"
+        }
+      },
+      "printAnswer": "Patterns can mean stories, families, or just play. Cloth shows what people had and what they cared about."
+    },
+    {
+      "id": "cm-imaginarium",
+      "cardId": "cm-imaginarium",
+      "label": "Imaginarium",
+      "challenge": "What is imagination for? Could you invent a new animal?",
+      "hotspot": {
+        "svgId": "habitat-cm-imaginarium"
+      },
+      "cam": {},
+      "seq": 2,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=ndfT5uvFkmM",
+        "title": "A glowing sand table at the Exploratorium",
+        "provider": "youtube",
+        "channel": "Exploratorium",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=ndfT5uvFkmM",
+          "checked": "2026-08-15"
+        }
+      },
+      "printAnswer": "Imagination lets us try ideas before they are real. Yes — mix parts and tell how your animal lives."
+    },
+    {
+      "id": "sci-hands-on",
+      "cardId": "sci-hands-on",
+      "label": "Hands-on Lab",
+      "challenge": "Why do scientists do tests? What would you try?",
+      "hotspot": {
+        "svgId": "habitat-sci-hands-on"
+      },
+      "cam": {},
+      "seq": 3,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=5IbIjufI_cQ",
+        "title": "Hands-on floor at the Exploratorium",
+        "provider": "youtube",
+        "channel": "VentureFull",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=5IbIjufI_cQ",
+          "checked": "2026-08-15"
+        }
+      },
+      "printAnswer": "A test is how we check a guess. Pick one question and change just one thing."
+    },
+    {
+      "id": "cm-makery",
+      "cardId": "cm-makery",
+      "label": "Creative Makery",
+      "challenge": "Why do makers try, fail, and try again?",
+      "hotspot": {
+        "svgId": "habitat-cm-makery"
+      },
+      "cam": {},
+      "seq": 4,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=QuiZpfYgC3o",
+        "title": "Making in the Exploratorium Tinkering Studio",
+        "provider": "youtube",
+        "channel": "Exploratorium",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=QuiZpfYgC3o",
+          "checked": "2026-08-15"
+        }
+      },
+      "printAnswer": "Most first tries do not work. Each fail shows what to change next."
+    },
+    {
+      "id": "cm-art-lab",
+      "cardId": "cm-art-lab",
+      "label": "Art Lab",
+      "challenge": "Why do colors mix the way they do?",
+      "hotspot": {
+        "svgId": "habitat-cm-art-lab"
+      },
+      "cam": {},
+      "seq": 5,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=kURAFukvgSw",
+        "title": "Painting with soap film",
+        "provider": "youtube",
+        "channel": "Exploratorium Teacher Institute",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=kURAFukvgSw",
+          "checked": "2026-08-15"
+        }
+      },
+      "printAnswer": "Paints mix by subtracting light; screens mix by adding light. Red and blue do not make the same thing both ways."
+    },
+    {
+      "id": "cm-free-explore",
+      "cardId": "cm-free-explore",
+      "label": "Free Explore",
+      "challenge": "What makes you curious? What would you look up?",
+      "hotspot": {
+        "svgId": "habitat-cm-free-explore"
+      },
+      "cam": {},
+      "seq": 6,
+      "printAnswer": "Curious is your brain asking why. Write the question and hunt for one true clue."
+    },
+    {
+      "id": "sci-shuttle",
+      "cardId": "sci-shuttle",
+      "label": "Space Shuttle",
+      "challenge": "Why do rockets need such a big boost? Where does the crew sit?",
+      "hotspot": {
+        "svgId": "habitat-sci-shuttle"
+      },
+      "cam": {},
+      "seq": 7,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=7aKYeRSYLB0",
+        "title": "Space Shuttle Atlantis lifts off",
+        "provider": "youtube",
+        "channel": "NASA's Kennedy Space Center",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=7aKYeRSYLB0",
+          "checked": "2026-08-15"
+        }
+      },
+      "printAnswer": "Leaving Earth takes a huge push against gravity. The crew sits in a small cabin at the top."
+    },
+    {
+      "id": "sci-astronaut",
+      "cardId": "sci-astronaut",
+      "label": "Astronaut Life",
+      "challenge": "Why is food weird in space? What would you pack?",
+      "hotspot": {
+        "svgId": "habitat-sci-astronaut"
+      },
+      "cam": {},
+      "seq": 8,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=lQlYG8hOgAs",
+        "title": "Looking back at Earth from the cupola",
+        "provider": "youtube",
+        "channel": "NASA Johnson",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=lQlYG8hOgAs",
+          "checked": "2026-08-15"
+        }
+      },
+      "printAnswer": "There is no down, so crumbs float. Pack food that sticks together and will not make a mess."
+    },
+    {
+      "id": "sci-planet",
+      "cardId": "sci-planet",
+      "label": "Planet Hall",
+      "challenge": "Why do planets look different? Which would you visit, and why?",
+      "hotspot": {
+        "svgId": "habitat-sci-planet"
+      },
+      "cam": {},
+      "seq": 9,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=oFDeNcu3mnc",
+        "title": "Earth from the space station",
+        "provider": "youtube",
+        "channel": "NASA Johnson",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=oFDeNcu3mnc",
+          "checked": "2026-08-15"
+        }
+      },
+      "printAnswer": "Each planet is a different mix of rock, gas, heat, and distance from the sun. Pick one and say what you would go see."
+    },
+    {
+      "id": "sci-rocket",
+      "cardId": "sci-rocket",
+      "label": "Rockets",
+      "challenge": "How does a rocket leave Earth? Why so tall?",
+      "hotspot": {
+        "svgId": "habitat-sci-rocket"
+      },
+      "cam": {},
+      "seq": 10,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=aWCCNYJV3Zw",
+        "title": "Artemis I moon rocket liftoff",
+        "provider": "youtube",
+        "channel": "NASA's Kennedy Space Center",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=aWCCNYJV3Zw",
+          "checked": "2026-08-15"
+        }
+      },
+      "printAnswer": "Hot gas blasts down so the rocket goes up. It is tall because it stacks fuel under the crew."
+    }
+  ],
+  "sequential": true
+}

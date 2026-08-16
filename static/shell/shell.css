@@ -97,6 +97,12 @@
   color: var(--ink, #152238);
   line-height: 1.2;
   letter-spacing: -0.01em;
+  text-decoration: none;
+}
+a.shell-product:hover,
+a.shell-product:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .oneless-shell .shell-product small {

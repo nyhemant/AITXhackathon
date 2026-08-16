@@ -1,0 +1,491 @@
+{
+  "slug": "acadia",
+  "name": "Acadia National Park",
+  "type": "national_park",
+  "city": "Bar Harbor",
+  "region": "ME",
+  "country": "US",
+  "lat": 44.3386,
+  "lng": -68.2733,
+  "official_url": "https://www.nps.gov/acad/",
+  "last_verified": "2026-08-09",
+  "verified_by": "research",
+  "status": "verified",
+  "tagline": "Cadillac views and coast loops — timed entry often needed for the summit road.",
+  "practical": {
+    "typical_duration": "half day",
+    "ticket_note": "Entrance pass; Cadillac Summit Road often needs timed reservations.",
+    "transit_note": "Bar Harbor gateway; Island Explorer bus in season.",
+    "energy_note": "Granite can be slippery when wet; fog common.",
+    "best_start": "Visitor center or Hulls Cove → coast stop → Cadillac if reserved",
+    "slice_name": "Cadillac · coast loop",
+    "season_note": "Peak summer/fall; some roads seasonal."
+  },
+  "items": [
+    {
+      "id": "acad_cadillac",
+      "label": "Cadillac Mountain view",
+      "emoji": "🌄",
+      "one_liner": "High granite views — timed entry often needed for the summit road · Stay on rock paths",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Cadillac Mountain",
+      "qa_card": {
+        "question": "What did you notice at Cadillac Mountain view?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "acad-cadillac-view",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Cadillac Mountain view",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/acad/planyourvisit/cadillac.htm"
+      },
+      "safety_note": "Stay on rock paths",
+      "core": true
+    },
+    {
+      "id": "acad_jordan",
+      "label": "Jordan Pond shore",
+      "emoji": "🏞️",
+      "one_liner": "Clear pond with Bubble mountains — easy shore stroll",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Jordan Pond",
+      "qa_card": {
+        "question": "What did you notice at Jordan Pond shore?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "acad-jordan-pond",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Jordan Pond shore",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/acad/planyourvisit/jordanpond.htm"
+      },
+      "safety_note": "",
+      "core": true
+    },
+    {
+      "id": "acad_shore",
+      "label": "Atlantic rocky shore",
+      "emoji": "🌊",
+      "one_liner": "Pink granite and tide smell — careful wet rocks · Careful footing",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Park Loop coast",
+      "qa_card": {
+        "question": "What did you notice at Atlantic rocky shore?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "acad-rocky-shore",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Atlantic rocky shore",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/acad/"
+      },
+      "safety_note": "Careful footing",
+      "core": true
+    },
+    {
+      "id": "acad_carriage",
+      "label": "Carriage road stretch",
+      "emoji": "🚲",
+      "one_liner": "Wide crushed-stone path — walk a short peaceful section",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Carriage roads",
+      "qa_card": {
+        "question": "What did you notice at Carriage road stretch?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "acad-carriage-road",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Carriage road stretch",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/acad/planyourvisit/carriage.htm"
+      },
+      "safety_note": "",
+      "core": true
+    },
+    {
+      "id": "acad_vc",
+      "label": "Hulls Cove Visitor Center",
+      "emoji": "🏛️",
+      "one_liner": "Park Loop orientation and maps",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Hulls Cove",
+      "qa_card": {
+        "question": "What did you notice at Hulls Cove Visitor Center?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "acad-hulls-vc",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Hulls Cove Visitor Center",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/acad/planyourvisit/visitorcenters.htm"
+      },
+      "safety_note": "",
+      "core": true
+    },
+    {
+      "id": "acad_spruce",
+      "label": "Coastal spruce forest",
+      "emoji": "🌳",
+      "one_liner": "Salty air through evergreen trees",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Coast loop",
+      "qa_card": {
+        "question": "What did you notice at Coastal spruce forest?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "acad-spruce",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Coastal spruce forest",
+      "verify": {
+        "status": "todo",
+        "source": ""
+      },
+      "safety_note": "",
+      "core": true
+    },
+    {
+      "id": "acad_granite",
+      "label": "Open granite bald",
+      "emoji": "🪨",
+      "one_liner": "Bare rock under the sky — sun can be strong",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Cadillac / coast",
+      "qa_card": {
+        "question": "What did you notice at Open granite bald?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "acad-granite-bald",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Open granite bald",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/acad/"
+      },
+      "safety_note": "",
+      "core": true
+    },
+    {
+      "id": "acad_sign",
+      "label": "Carriage or shore path sign",
+      "emoji": "🥾",
+      "one_liner": "Read the next destination before you choose",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Path",
+      "qa_card": {
+        "question": "What did you notice at Carriage or shore path sign?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "acad-path-sign",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Carriage or shore path sign",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/acad/"
+      },
+      "safety_note": "",
+      "core": true
+    },
+    {
+      "id": "acad_jr",
+      "label": "Acadia Junior Ranger desk",
+      "emoji": "🎖️",
+      "one_liner": "Ask at a visitor center",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Visitor center",
+      "qa_card": {
+        "question": "What did you notice at Acadia Junior Ranger desk?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "np-junior-ranger",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Acadia Junior Ranger desk",
+      "verify": {
+        "status": "sourced",
+        "source": "generic-template"
+      },
+      "core": false
+    },
+    {
+      "id": "acad_tide",
+      "label": "Tide pool peek (if timed)",
+      "emoji": "🌊",
+      "one_liner": "Look only — leave creatures in place",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Shore",
+      "qa_card": {
+        "question": "What did you notice at Tide pool peek (if timed)?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "np-tide-coast",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Tide pool peek (if timed)",
+      "verify": {
+        "status": "sourced",
+        "source": "generic-template"
+      },
+      "core": false
+    }
+  ],
+  "content_mode": "curated",
+  "media": {
+    "visitor_map_url": "/field-pack/media/maps/acadia.jpg",
+    "visitor_map_page": "https://www.nps.gov/acad/planyourvisit/maps.htm",
+    "visitor_map_kind": "image",
+    "map_attribution": "Map: NPS via NPMaps (public domain)",
+    "hero_illustration": "/field-pack/photos/np-hero-acadia.jpg",
+    "print_map": "/field-pack/media/maps/acadia.jpg",
+    "visitor_map_full": "https://npmaps.com/wp-content/uploads/acadia-national-park-map.jpg"
+  },
+  "parent_script": [
+    "Bathroom first",
+    "Water & sun check",
+    "One big view",
+    "Leave while happy"
+  ],
+  "route_90m": [
+    "acad_vc",
+    "acad_jordan",
+    "acad_cadillac"
+  ],
+  "research_notes": "NP Phase 1a pilot 2026-08-08 · slice-focused kit · label scrub 2026-08-09 · depth-pass top10 2026-08-09",
+  "list_confidence": "partial",
+  "do_not_list": [],
+  "presence_sources": [
+    "https://www.nps.gov/acad/"
+  ],
+  "last_presence_audit": "2026-08-08",
+  "bonus_hunt": {
+    "tagline": "Acadia National Park bonus · second look on the trail",
+    "find_ids": [
+      "acad_carriage",
+      "acad_granite",
+      "acad_shore",
+      "acad_sign",
+      "acad_spruce",
+      "acad_jr",
+      "acad_tide"
+    ],
+    "challenges": [
+      {
+        "id": "acadia_acad_carriage_watch",
+        "text": "Carriage roads: take 15 seconds on the Carriage road stretch — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "acadia_acad_granite_watch",
+        "text": "Cadillac / coast: take 15 seconds on the Open granite bald — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "acadia_acad_shore_watch",
+        "text": "Park Loop coast: take 15 seconds on the Atlantic rocky shore — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "acadia_acad_sign_watch",
+        "text": "Path: take 15 seconds on the Carriage or shore path sign — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "acadia_acad_spruce_watch",
+        "text": "Coast loop: take 15 seconds on the Coastal spruce forest — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_still",
+        "text": "Quiet 20 seconds on the trail — bird, wind, water, or people: what wins?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_far_near",
+        "text": "Name something far first — then something by your feet",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_camo",
+        "text": "Best natural camouflage (rock, bark, shadow) you can spot",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_map",
+        "text": "Find a map or zone name you haven’t noticed — point it out",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_tiny_huge",
+        "text": "Something tiny next to something huge in this area",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find a park map or zone sign — name one animal that lives that way",
+    "easter_egg_little": "★ Easter egg: pick a favorite bench — sit 60 seconds and name three sounds",
+    "researched": "2026-08-09",
+    "status": "solid",
+    "sources": [
+      "https://www.nps.gov/acad/"
+    ]
+  },
+  "slice_label": "Cadillac & coast loop",
+  "safety_footer": "Stay on boardwalks and trails · give wildlife lots of space · bring water"
+}

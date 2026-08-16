@@ -1,0 +1,372 @@
+{
+  "slug": "denali",
+  "name": "Denali National Park",
+  "type": "national_park",
+  "city": "Denali Park",
+  "region": "AK",
+  "country": "US",
+  "lat": 63.1148,
+  "lng": -151.1926,
+  "official_url": "https://www.nps.gov/dena/",
+  "last_verified": "2026-08-09",
+  "verified_by": "research",
+  "status": "verified",
+  "tagline": "Denali — park entrance / visitor center day; buses needed for deeper park.",
+  "practical": {
+    "typical_duration": "half day",
+    "ticket_note": "Entrance fee; park road buses are the deep-park option.",
+    "transit_note": "Parks Highway; most family time is near entrance without a bus.",
+    "energy_note": "Weather swings; wildlife distance rules.",
+    "best_start": "Visitor center → short trail → exhibits",
+    "slice_name": "Entrance area",
+    "season_note": "Peak summer only for most services; mountain often clouded."
+  },
+  "items": [
+    {
+      "id": "np_visitor_center",
+      "label": "Denali visitor center",
+      "emoji": "🏛️",
+      "one_liner": "Entrance area day — buses deeper are a different trip.",
+      "tags": [
+        "rest"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Entrance",
+      "qa_card": {
+        "question": "What did you notice at the Denali visitor center?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-visitor-center",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Denali visitor center"
+    },
+    {
+      "id": "np_scenic_overlook",
+      "label": "Entrance-area mountain view",
+      "emoji": "🌄",
+      "one_liner": "The high peak hides often — still beautiful.",
+      "tags": [
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Overlook",
+      "qa_card": {
+        "question": "What did you notice at the Entrance-area mountain view?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-scenic-overlook",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Entrance-area mountain view"
+    },
+    {
+      "id": "np_trailhead_sign",
+      "label": "Entrance trail sign",
+      "emoji": "🥾",
+      "one_liner": "Read distance and rules before you go.",
+      "tags": [
+        "read"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Trail",
+      "qa_card": {
+        "question": "What did you notice at the Entrance trail sign?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-trailhead-sign",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Entrance trail sign"
+    },
+    {
+      "id": "np_junior_ranger",
+      "label": "Denali Junior Ranger desk",
+      "emoji": "🎖️",
+      "one_liner": "Ask at the visitor center — hours and ages vary.",
+      "tags": [
+        "hands"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Visitor center",
+      "qa_card": {
+        "question": "What did you notice at the Denali Junior Ranger desk?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-junior-ranger",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Denali Junior Ranger desk"
+    },
+    {
+      "id": "np_meadow",
+      "label": "Tundra or open entrance flats",
+      "emoji": "🌾",
+      "one_liner": "Wide sky break.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Open",
+      "qa_card": {
+        "question": "What did you notice at the Tundra or open entrance flats?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-meadow",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Tundra or open entrance flats"
+    },
+    {
+      "id": "np_giant_tree",
+      "label": "Boreal forest strip",
+      "emoji": "🌳",
+      "one_liner": "Look up — hug with your eyes only.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Forest",
+      "qa_card": {
+        "question": "What did you notice at the Boreal forest strip?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-giant-tree",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Boreal forest strip"
+    },
+    {
+      "id": "np_wildlife_elk",
+      "label": "Caribou or moose (if seen)",
+      "emoji": "🦌",
+      "one_liner": "Large wildlife from distance only.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Roads / meadows",
+      "qa_card": {
+        "question": "What did you notice at the Caribou or moose (if seen)?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "elk",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Caribou or moose (if seen)"
+    },
+    {
+      "id": "np_ranger_program",
+      "label": "Denali ranger talk (if offered)",
+      "emoji": "🗣️",
+      "one_liner": "Check the day’s board at the visitor center.",
+      "tags": [
+        "hands"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "VC",
+      "qa_card": {
+        "question": "What did you notice at the Denali ranger talk (if offered)?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-ranger-program",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Denali ranger talk (if offered)"
+    }
+  ],
+  "content_mode": "curated",
+  "media": {
+    "visitor_map_url": "/field-pack/media/maps/denali.jpg",
+    "visitor_map_page": "https://www.nps.gov/dena/planyourvisit/maps.htm",
+    "visitor_map_kind": "image",
+    "map_attribution": "Map: National Park Service (public domain)",
+    "hero_illustration": "/field-pack/photos/np-hero-denali.jpg",
+    "print_map": "/field-pack/media/maps/denali.jpg"
+  },
+  "parent_script": [
+    "Bathroom first",
+    "Water & sun check",
+    "One big view",
+    "Leave while happy"
+  ],
+  "route_90m": [
+    "np_visitor_center",
+    "np_meadow",
+    "np_scenic_overlook"
+  ],
+  "research_notes": "NP Phase 1c long-tail 2026-08-08 · slice-focused kit · label scrub 2026-08-09",
+  "list_confidence": "partial",
+  "do_not_list": [],
+  "presence_sources": [
+    "https://www.nps.gov/dena/"
+  ],
+  "last_presence_audit": "2026-08-08",
+  "bonus_hunt": {
+    "tagline": "Denali National Park bonus · second look on the trail",
+    "find_ids": [
+      "np_giant_tree",
+      "np_junior_ranger",
+      "np_trailhead_sign",
+      "np_wildlife_elk",
+      "np_scenic_overlook",
+      "np_meadow",
+      "np_visitor_center"
+    ],
+    "challenges": [
+      {
+        "id": "denali_np_giant_tree_watch",
+        "text": "Forest: take 15 seconds on the Boreal forest strip — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "denali_np_junior_ranger_watch",
+        "text": "Visitor center: take 15 seconds on the Denali Junior Ranger desk — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "denali_np_trailhead_sig_watch",
+        "text": "Trail: take 15 seconds on the Entrance trail sign — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "denali_np_wildlife_elk_watch",
+        "text": "Roads / meadows: take 15 seconds on the Caribou or moose (if seen) — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "denali_np_scenic_overlo_watch",
+        "text": "Overlook: take 15 seconds on the Entrance-area mountain view — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_still",
+        "text": "Quiet 20 seconds on the trail — bird, wind, water, or people: what wins?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_far_near",
+        "text": "Name something far first — then something by your feet",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_camo",
+        "text": "Best natural camouflage (rock, bark, shadow) you can spot",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_map",
+        "text": "Find a map or zone name you haven’t noticed — point it out",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_tiny_huge",
+        "text": "Something tiny next to something huge in this area",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find a park map or zone sign — name one animal that lives that way",
+    "easter_egg_little": "★ Easter egg: pick a favorite bench — sit 60 seconds and name three sounds",
+    "researched": "2026-08-09",
+    "status": "solid",
+    "sources": [
+      "https://www.nps.gov/dena/"
+    ]
+  }
+}

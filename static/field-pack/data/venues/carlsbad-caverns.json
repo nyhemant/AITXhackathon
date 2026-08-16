@@ -1,0 +1,372 @@
+{
+  "slug": "carlsbad-caverns",
+  "name": "Carlsbad Caverns National Park",
+  "type": "national_park",
+  "city": "Carlsbad",
+  "region": "NM",
+  "country": "US",
+  "lat": 32.1479,
+  "lng": -104.5567,
+  "official_url": "https://www.nps.gov/cave/",
+  "last_verified": "2026-08-09",
+  "verified_by": "research",
+  "status": "verified",
+  "tagline": "Carlsbad — Big Room cave (self-guided or tour) and visitor center.",
+  "practical": {
+    "typical_duration": "half day",
+    "ticket_note": "Timed entry tickets often required for cave.",
+    "transit_note": "Carlsbad NM gateway; elevator or natural entrance.",
+    "energy_note": "Lots of walking underground; jacket helps.",
+    "best_start": "Visitor center → cave entry → Big Room pace",
+    "slice_name": "Big Room",
+    "season_note": "Bat flight program seasonal; check tickets."
+  },
+  "items": [
+    {
+      "id": "np_visitor_center",
+      "label": "Carlsbad Caverns visitor center",
+      "emoji": "🏛️",
+      "one_liner": "Maps, restrooms, questions — start here.",
+      "tags": [
+        "rest"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Entrance",
+      "qa_card": {
+        "question": "What did you notice at the Carlsbad Caverns visitor center?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-visitor-center",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Carlsbad Caverns visitor center"
+    },
+    {
+      "id": "np_cave_entrance",
+      "label": "Big Room cave entrance / elevator",
+      "emoji": "🕳️",
+      "one_liner": "Self-guided Big Room or ranger tour — tickets timed.",
+      "tags": [
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Cave",
+      "qa_card": {
+        "question": "What did you notice at the Big Room cave entrance / elevator?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-cave-entrance",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Big Room cave entrance / elevator"
+    },
+    {
+      "id": "np_trailhead_sign",
+      "label": "Cave trail or natural entrance sign",
+      "emoji": "🥾",
+      "one_liner": "Read distance and rules before you go.",
+      "tags": [
+        "read"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Trail",
+      "qa_card": {
+        "question": "What did you notice at the Cave trail or natural entrance sign?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-trailhead-sign",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Cave trail or natural entrance sign"
+    },
+    {
+      "id": "np_junior_ranger",
+      "label": "Carlsbad Caverns Junior Ranger desk",
+      "emoji": "🎖️",
+      "one_liner": "Ask at the visitor center — hours and ages vary.",
+      "tags": [
+        "hands"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Visitor center",
+      "qa_card": {
+        "question": "What did you notice at the Carlsbad Caverns Junior Ranger desk?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-junior-ranger",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Carlsbad Caverns Junior Ranger desk"
+    },
+    {
+      "id": "np_boardwalk",
+      "label": "Cave paved path",
+      "emoji": "🪵",
+      "one_liner": "Stay on the path in the dark.",
+      "tags": [
+        "walk"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Trail",
+      "qa_card": {
+        "question": "What did you notice at the Cave paved path?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-boardwalk",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Cave paved path"
+    },
+    {
+      "id": "np_meadow",
+      "label": "Desert flats above the cave",
+      "emoji": "🌾",
+      "one_liner": "Wide sky break.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Open",
+      "qa_card": {
+        "question": "What did you notice at the Desert flats above the cave?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-meadow",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Desert flats above the cave"
+    },
+    {
+      "id": "np_ranger_program",
+      "label": "Bat flight talk (seasonal)",
+      "emoji": "🗣️",
+      "one_liner": "Evening program when bats fly — check schedule.",
+      "tags": [
+        "hands"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "VC",
+      "qa_card": {
+        "question": "What did you notice at the Bat flight talk (seasonal)?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-ranger-program",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Bat flight talk (seasonal)"
+    },
+    {
+      "id": "np_scenic_overlook",
+      "label": "Chihuahuan Desert overlook",
+      "emoji": "🌄",
+      "one_liner": "One big view — stay behind rails.",
+      "tags": [
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Overlook",
+      "qa_card": {
+        "question": "What did you notice at the Chihuahuan Desert overlook?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-scenic-overlook",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Chihuahuan Desert overlook"
+    }
+  ],
+  "content_mode": "curated",
+  "media": {
+    "visitor_map_url": "/field-pack/media/maps/carlsbad-caverns.jpg",
+    "visitor_map_page": "https://www.nps.gov/cave/planyourvisit/maps.htm",
+    "visitor_map_kind": "image",
+    "map_attribution": "Map: National Park Service (public domain)",
+    "hero_illustration": "/field-pack/photos/np-hero-carlsbad-caverns.jpg",
+    "print_map": "/field-pack/media/maps/carlsbad-caverns.jpg"
+  },
+  "parent_script": [
+    "Bathroom first",
+    "Water & sun check",
+    "One big view",
+    "Leave while happy"
+  ],
+  "route_90m": [
+    "np_visitor_center",
+    "np_cave_entrance",
+    "np_boardwalk"
+  ],
+  "research_notes": "NP Phase 1c long-tail 2026-08-08 · slice-focused kit · label scrub 2026-08-09",
+  "list_confidence": "partial",
+  "do_not_list": [],
+  "presence_sources": [
+    "https://www.nps.gov/cave/"
+  ],
+  "last_presence_audit": "2026-08-08",
+  "bonus_hunt": {
+    "tagline": "Carlsbad Caverns National Park bonus · second look on the trail",
+    "find_ids": [
+      "np_scenic_overlook",
+      "np_junior_ranger",
+      "np_meadow",
+      "np_trailhead_sign",
+      "np_cave_entrance",
+      "np_boardwalk",
+      "np_visitor_center"
+    ],
+    "challenges": [
+      {
+        "id": "carlsbad_cav_np_scenic_overlo_watch",
+        "text": "Overlook: take 15 seconds on the Chihuahuan Desert overlook — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "carlsbad_cav_np_junior_ranger_watch",
+        "text": "Visitor center: take 15 seconds on the Carlsbad Caverns Junior Ranger desk — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "carlsbad_cav_np_meadow_watch",
+        "text": "Open: take 15 seconds on the Desert flats above the cave — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "carlsbad_cav_np_trailhead_sig_watch",
+        "text": "Trail: take 15 seconds on the Cave trail or natural entrance sign — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "carlsbad_cav_np_cave_entrance_watch",
+        "text": "Cave: take 15 seconds on the Big Room cave entrance / elevator — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_still",
+        "text": "Quiet 20 seconds on the trail — bird, wind, water, or people: what wins?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_far_near",
+        "text": "Name something far first — then something by your feet",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_camo",
+        "text": "Best natural camouflage (rock, bark, shadow) you can spot",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_map",
+        "text": "Find a map or zone name you haven’t noticed — point it out",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_tiny_huge",
+        "text": "Something tiny next to something huge in this area",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find a park map or zone sign — name one animal that lives that way",
+    "easter_egg_little": "★ Easter egg: pick a favorite bench — sit 60 seconds and name three sounds",
+    "researched": "2026-08-09",
+    "status": "solid",
+    "sources": [
+      "https://www.nps.gov/cave/"
+    ]
+  }
+}

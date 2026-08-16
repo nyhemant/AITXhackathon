@@ -43,3 +43,12 @@ Lower number = higher content ROI (1 = flagship accuracy risk / tourist demand).
 
 ## Regenerating
 Built from `places-data.js` + `catalog.js` plus hand research blocks in the generator script session. Re-run research when official collections change (e.g. pandas).
+
+## National Parks (Phase 1)
+
+- Type: `national_park` in venue JSON; places-data `type: "National park"`; pin kind `park` (green).
+- **Slice-first:** `practical.best_start` / `slice_name` name the half-day area — never promise the whole park.
+- Items are trail/feature stops (`packTemplate: park_features`), not zoo animals.
+- **Art:** illustrated cards under `photos/np-*.jpg` with `photoCredit: "Illustration · Field Trip Kit"` (not stock photos).
+- Bonus kit key: `national_park` in `bonus-hunts.json`.
+- Validators: same presence rules; wildlife is soft-language only.

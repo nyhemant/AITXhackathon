@@ -1,0 +1,400 @@
+{
+  "slug": "everglades",
+  "name": "Everglades National Park",
+  "type": "national_park",
+  "city": "Homestead",
+  "region": "FL",
+  "country": "US",
+  "lat": 25.2866,
+  "lng": -80.8987,
+  "official_url": "https://www.nps.gov/ever/",
+  "last_verified": "2026-08-09",
+  "verified_by": "research",
+  "status": "verified",
+  "tagline": "Anhinga / boardwalk wildlife — short wetland loop, not the whole 'Glades.",
+  "practical": {
+    "typical_duration": "half day",
+    "ticket_note": "Entrance pass; mosquito season is real — repellent helps.",
+    "transit_note": "Homestead / Florida City gateway to the main park road.",
+    "energy_note": "Heat, sun, bugs; boardwalks are the win for little kids.",
+    "best_start": "Ernest Coe or Royal Palm area → Anhinga boardwalk → visitor exhibits",
+    "slice_name": "Royal Palm · Anhinga boardwalk",
+    "season_note": "Dry season (winter) is easier for wildlife viewing and bugs."
+  },
+  "items": [
+    {
+      "id": "anhinga_boardwalk",
+      "label": "Anhinga boardwalk",
+      "emoji": "🪵",
+      "one_liner": "Stay on the path — fragile ground or wet edge.",
+      "tags": [
+        "wow",
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Trail",
+      "qa_card": {
+        "question": "What did you notice at the Anhinga boardwalk?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-boardwalk",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Anhinga boardwalk"
+    },
+    {
+      "id": "np_wetland",
+      "label": "Sawgrass and slough views",
+      "emoji": "🦩",
+      "one_liner": "Shallow water world — stay on the path.",
+      "tags": [
+        "water",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Wetland",
+      "qa_card": {
+        "question": "What did you notice at the Sawgrass and slough views?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-wetland",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Sawgrass and slough views"
+    },
+    {
+      "id": "np_boardwalk",
+      "label": "Anhinga boardwalk",
+      "emoji": "🪵",
+      "one_liner": "Stay on the path — fragile ground or wet edge.",
+      "tags": [
+        "walk"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Trail",
+      "qa_card": {
+        "question": "What did you notice at the Anhinga boardwalk?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-boardwalk",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Anhinga boardwalk"
+    },
+    {
+      "id": "np_visitor_center",
+      "label": "Royal Palm / Ernest Coe visitor center",
+      "emoji": "🏛️",
+      "one_liner": "Maps, restrooms, questions — start here.",
+      "tags": [
+        "rest"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Entrance",
+      "qa_card": {
+        "question": "What did you notice at the Royal Palm / Ernest Coe visitor center?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-visitor-center",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Royal Palm / Ernest Coe visitor center"
+    },
+    {
+      "id": "np_trailhead_sign",
+      "label": "Anhinga trail sign",
+      "emoji": "🥾",
+      "one_liner": "Read distance and rules before you go.",
+      "tags": [
+        "read"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Trail",
+      "qa_card": {
+        "question": "What did you notice at the Anhinga trail sign?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-trailhead-sign",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Anhinga trail sign"
+    },
+    {
+      "id": "np_junior_ranger",
+      "label": "Everglades Junior Ranger desk",
+      "emoji": "🎖️",
+      "one_liner": "Ask at the visitor center — hours and ages vary.",
+      "tags": [
+        "hands"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Visitor center",
+      "qa_card": {
+        "question": "What did you notice at the Everglades Junior Ranger desk?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-junior-ranger",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Everglades Junior Ranger desk"
+    },
+    {
+      "id": "np_scenic_overlook",
+      "label": "Marsh overlook",
+      "emoji": "🌄",
+      "one_liner": "One big view — stay behind rails.",
+      "tags": [
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Overlook",
+      "qa_card": {
+        "question": "What did you notice at the Marsh overlook?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-scenic-overlook",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Marsh overlook"
+    },
+    {
+      "id": "np_wildlife_watch",
+      "label": "American alligator (from boardwalk)",
+      "emoji": "🐊",
+      "one_liner": "Stay on the boardwalk — never lean to the water.",
+      "tags": [
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Boardwalk",
+      "qa_card": {
+        "question": "What did you notice at the American alligator (from boardwalk)?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "american-alligator",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "American alligator (from boardwalk)"
+    },
+    {
+      "id": "np_river",
+      "label": "Slough water",
+      "emoji": "🏞️",
+      "one_liner": "Water edge — safe step back.",
+      "tags": [
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Water",
+      "qa_card": {
+        "question": "What did you notice at the Slough water?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-river",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Slough water"
+    }
+  ],
+  "content_mode": "curated",
+  "media": {
+    "visitor_map_url": "/field-pack/media/maps/everglades.jpg",
+    "visitor_map_page": "https://www.nps.gov/ever/planyourvisit/maps.htm",
+    "visitor_map_kind": "image",
+    "map_attribution": "Map: NPS via NPMaps (public domain)",
+    "hero_illustration": "/field-pack/photos/np-hero-everglades.jpg",
+    "print_map": "/field-pack/media/maps/everglades.jpg",
+    "visitor_map_full": "https://npmaps.com/wp-content/uploads/everglades-national-park-map.jpg"
+  },
+  "parent_script": [
+    "Bathroom first",
+    "Water & sun check",
+    "One big view",
+    "Leave while happy"
+  ],
+  "route_90m": [
+    "np_visitor_center",
+    "anhinga_boardwalk",
+    "np_wetland"
+  ],
+  "research_notes": "NP Phase 1a pilot 2026-08-08 · slice-focused kit · label scrub 2026-08-09",
+  "list_confidence": "partial",
+  "do_not_list": [],
+  "presence_sources": [
+    "https://www.nps.gov/ever/"
+  ],
+  "last_presence_audit": "2026-08-08",
+  "bonus_hunt": {
+    "tagline": "Everglades National Park bonus · second look on the trail",
+    "find_ids": [
+      "np_river",
+      "np_scenic_overlook",
+      "np_wildlife_watch",
+      "np_boardwalk",
+      "np_junior_ranger",
+      "np_trailhead_sign",
+      "anhinga_boardwalk"
+    ],
+    "challenges": [
+      {
+        "id": "everglades_np_river_watch",
+        "text": "Water: take 15 seconds on the Slough water — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "everglades_np_scenic_overlo_watch",
+        "text": "Overlook: take 15 seconds on the Marsh overlook — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "everglades_np_wildlife_watc_watch",
+        "text": "Boardwalk: take 15 seconds on the American alligator (from boardwalk) — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "everglades_np_boardwalk_watch",
+        "text": "Trail: take 15 seconds on the Anhinga boardwalk — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "everglades_np_junior_ranger_watch",
+        "text": "Visitor center: take 15 seconds on the Everglades Junior Ranger desk — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_still",
+        "text": "Quiet 20 seconds on the trail — bird, wind, water, or people: what wins?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_far_near",
+        "text": "Name something far first — then something by your feet",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_camo",
+        "text": "Best natural camouflage (rock, bark, shadow) you can spot",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_map",
+        "text": "Find a map or zone name you haven’t noticed — point it out",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_tiny_huge",
+        "text": "Something tiny next to something huge in this area",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find a park map or zone sign — name one animal that lives that way",
+    "easter_egg_little": "★ Easter egg: pick a favorite bench — sit 60 seconds and name three sounds",
+    "researched": "2026-08-09",
+    "status": "solid",
+    "sources": [
+      "https://www.nps.gov/ever/"
+    ]
+  }
+}

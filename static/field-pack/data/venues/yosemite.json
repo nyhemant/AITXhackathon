@@ -1,0 +1,491 @@
+{
+  "slug": "yosemite",
+  "name": "Yosemite National Park",
+  "type": "national_park",
+  "city": "Yosemite Valley",
+  "region": "CA",
+  "country": "US",
+  "lat": 37.7459,
+  "lng": -119.5936,
+  "official_url": "https://www.nps.gov/yose/",
+  "last_verified": "2026-08-09",
+  "verified_by": "research",
+  "status": "verified",
+  "tagline": "Yosemite Valley icons — falls, meadow, and Half Dome from the floor.",
+  "practical": {
+    "typical_duration": "half day",
+    "ticket_note": "Peak-season timed entry often required — check nps.gov/yose before you go.",
+    "transit_note": "Valley shuttle helps; parking fills early in summer.",
+    "energy_note": "Crowds + walking; stroller-friendly valley paths exist.",
+    "best_start": "Valley Visitor Center → falls viewpoint → meadow look at Half Dome",
+    "slice_name": "Yosemite Valley",
+    "season_note": "Falls roar in spring; late summer can be thinner water."
+  },
+  "items": [
+    {
+      "id": "yose_falls",
+      "label": "Yosemite Falls view",
+      "emoji": "💦",
+      "one_liner": "Tall waterfall on the valley wall — mist if the wind is right",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Yosemite Valley",
+      "qa_card": {
+        "question": "What did you notice at Yosemite Falls view?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "yose-falls-view",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Yosemite Falls view",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/yose/planyourvisit/fallshike.htm"
+      },
+      "safety_note": "",
+      "core": true
+    },
+    {
+      "id": "yose_half_dome",
+      "label": "Half Dome view",
+      "emoji": "🪨",
+      "one_liner": "The famous sliced granite dome from the valley floor",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Valley viewpoints",
+      "qa_card": {
+        "question": "What did you notice at Half Dome view?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "yose-half-dome-view",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Half Dome view",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/yose/"
+      },
+      "safety_note": "",
+      "core": true
+    },
+    {
+      "id": "yose_el_cap",
+      "label": "El Capitan view",
+      "emoji": "🧗",
+      "one_liner": "Giant granite wall — look for tiny climbers only with binoculars",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Valley west",
+      "qa_card": {
+        "question": "What did you notice at El Capitan view?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "yose-el-cap-view",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "El Capitan view",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/yose/"
+      },
+      "safety_note": "",
+      "core": true
+    },
+    {
+      "id": "yose_meadow",
+      "label": "Valley meadow",
+      "emoji": "🌾",
+      "one_liner": "Open green with big sky and granite walls around you",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Valley floor",
+      "qa_card": {
+        "question": "What did you notice at Valley meadow?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "yose-valley-meadow",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Valley meadow",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/yose/"
+      },
+      "safety_note": "",
+      "core": true
+    },
+    {
+      "id": "yose_merced",
+      "label": "Merced River",
+      "emoji": "🏞️",
+      "one_liner": "River through the valley — keep a safe step from the bank · Safe step back",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Valley floor",
+      "qa_card": {
+        "question": "What did you notice at Merced River?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "yose-merced-river",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Merced River",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/yose/"
+      },
+      "safety_note": "Safe step back",
+      "core": true
+    },
+    {
+      "id": "yose_vc",
+      "label": "Valley Visitor Center",
+      "emoji": "🏛️",
+      "one_liner": "Maps, restrooms, and “what’s open today” answers",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Yosemite Village",
+      "qa_card": {
+        "question": "What did you notice at Valley Visitor Center?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "yose-valley-vc",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Valley Visitor Center",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/yose/planyourvisit/valleyvisitorcenter.htm"
+      },
+      "safety_note": "",
+      "core": true
+    },
+    {
+      "id": "yose_pines",
+      "label": "Valley pines",
+      "emoji": "🌳",
+      "one_liner": "Tall pines along the meadow edge — smell the resin",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Valley floor",
+      "qa_card": {
+        "question": "What did you notice at Valley pines?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "yose-valley-pines",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Valley pines",
+      "verify": {
+        "status": "todo",
+        "source": ""
+      },
+      "safety_note": "",
+      "core": true
+    },
+    {
+      "id": "yose_bike_path",
+      "label": "Valley path stretch",
+      "emoji": "🥾",
+      "one_liner": "Flat paved path section — easy legs between views",
+      "tags": [
+        "wow",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Valley floor",
+      "qa_card": {
+        "question": "What did you notice at Valley path stretch?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "yose-valley-path",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Valley path stretch",
+      "verify": {
+        "status": "sourced",
+        "source": "https://www.nps.gov/yose/"
+      },
+      "safety_note": "",
+      "core": true
+    },
+    {
+      "id": "yose_jr",
+      "label": "Yosemite Junior Ranger desk",
+      "emoji": "🎖️",
+      "one_liner": "Ask at the visitor center",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Village",
+      "qa_card": {
+        "question": "What did you notice at Yosemite Junior Ranger desk?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "np-junior-ranger",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Yosemite Junior Ranger desk",
+      "verify": {
+        "status": "sourced",
+        "source": "generic-template"
+      },
+      "core": false
+    },
+    {
+      "id": "yose_sign",
+      "label": "Valley trail sign",
+      "emoji": "🥾",
+      "one_liner": "Read a distance before you go farther",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Trail",
+      "qa_card": {
+        "question": "What did you notice at Valley trail sign?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "np-trailhead-sign",
+      "presence": "verified",
+      "presence_checked": "2026-08-09",
+      "presence_source": "nps_official_research",
+      "display_label": "Valley trail sign",
+      "verify": {
+        "status": "sourced",
+        "source": "generic-template"
+      },
+      "core": false
+    }
+  ],
+  "content_mode": "curated",
+  "media": {
+    "visitor_map_url": "/field-pack/media/maps/yosemite.jpg",
+    "visitor_map_page": "https://www.nps.gov/yose/planyourvisit/maps.htm",
+    "visitor_map_kind": "image",
+    "map_attribution": "Map: NPS via NPMaps (public domain)",
+    "hero_illustration": "/field-pack/photos/np-hero-yosemite.jpg",
+    "print_map": "/field-pack/media/maps/yosemite.jpg",
+    "visitor_map_full": "https://npmaps.com/wp-content/uploads/yosemite-map.jpg"
+  },
+  "parent_script": [
+    "Bathroom first",
+    "Water & sun check",
+    "One big view",
+    "Leave while happy"
+  ],
+  "route_90m": [
+    "yose_falls",
+    "yose_meadow",
+    "yose_half_dome"
+  ],
+  "research_notes": "NP Phase 1a pilot 2026-08-08 · slice-focused kit · label scrub 2026-08-09 · depth-pass top10 2026-08-09",
+  "list_confidence": "partial",
+  "do_not_list": [],
+  "presence_sources": [
+    "https://www.nps.gov/yose/"
+  ],
+  "last_presence_audit": "2026-08-08",
+  "bonus_hunt": {
+    "tagline": "Yosemite National Park bonus · second look on the trail",
+    "find_ids": [
+      "yose_bike_path",
+      "yose_el_cap",
+      "yose_merced",
+      "yose_pines",
+      "yose_vc",
+      "yose_jr",
+      "yose_sign"
+    ],
+    "challenges": [
+      {
+        "id": "yosemite_yose_bike_path_watch",
+        "text": "Valley floor: take 15 seconds on the Valley path stretch — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "yosemite_yose_el_cap_watch",
+        "text": "Valley west: take 15 seconds on the El Capitan view — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "yosemite_yose_merced_watch",
+        "text": "Valley floor: take 15 seconds on the Merced River — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "yosemite_yose_pines_watch",
+        "text": "Valley floor: take 15 seconds on the Valley pines — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "yosemite_yose_vc_watch",
+        "text": "Yosemite Village: take 15 seconds on the Valley Visitor Center — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_still",
+        "text": "Quiet 20 seconds on the trail — bird, wind, water, or people: what wins?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_far_near",
+        "text": "Name something far first — then something by your feet",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_camo",
+        "text": "Best natural camouflage (rock, bark, shadow) you can spot",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_map",
+        "text": "Find a map or zone name you haven’t noticed — point it out",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_tiny_huge",
+        "text": "Something tiny next to something huge in this area",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find a park map or zone sign — name one animal that lives that way",
+    "easter_egg_little": "★ Easter egg: pick a favorite bench — sit 60 seconds and name three sounds",
+    "researched": "2026-08-09",
+    "status": "solid",
+    "sources": [
+      "https://www.nps.gov/yose/"
+    ]
+  },
+  "slice_label": "Yosemite Valley floor",
+  "safety_footer": "Stay on boardwalks and trails · give wildlife lots of space · bring water"
+}

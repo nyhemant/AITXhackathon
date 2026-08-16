@@ -1,0 +1,372 @@
+{
+  "slug": "gates-of-arctic",
+  "name": "Gates of the Arctic National Park",
+  "type": "national_park",
+  "city": "Bettles",
+  "region": "AK",
+  "country": "US",
+  "lat": 67.78,
+  "lng": -153.29,
+  "official_url": "https://www.nps.gov/gaar/",
+  "last_verified": "2026-08-09",
+  "verified_by": "research",
+  "status": "verified",
+  "tagline": "Gates of the Arctic — true wilderness; no roads or trails system for casual visits.",
+  "practical": {
+    "typical_duration": "full day",
+    "ticket_note": "No entrance station; access is fly-in wilderness.",
+    "transit_note": "No park roads; bush plane required.",
+    "energy_note": "Full wilderness skills required — not a toddler outing.",
+    "best_start": "Prep at regional visitor centers; only enter with guided/expedition plan",
+    "slice_name": "Gateway prep only for most families",
+    "season_note": "Brief summer window; serious logistics."
+  },
+  "items": [
+    {
+      "id": "np_visitor_center",
+      "label": "Fairbanks or Bettles gateway visitor center",
+      "emoji": "🏛️",
+      "one_liner": "No road into the park — prep and education day for most families.",
+      "tags": [
+        "rest"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Entrance",
+      "qa_card": {
+        "question": "What did you notice at the Fairbanks or Bettles gateway visitor center?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-visitor-center",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Fairbanks or Bettles gateway visitor center"
+    },
+    {
+      "id": "np_scenic_overlook",
+      "label": "Gateway landscape view",
+      "emoji": "🌄",
+      "one_liner": "One big view — stay behind rails.",
+      "tags": [
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Overlook",
+      "qa_card": {
+        "question": "What did you notice at the Gateway landscape view?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-scenic-overlook",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Gateway landscape view"
+    },
+    {
+      "id": "np_meadow",
+      "label": "Open arctic or river flats (if in field)",
+      "emoji": "🌾",
+      "one_liner": "Wide sky break.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Open",
+      "qa_card": {
+        "question": "What did you notice at the Open arctic or river flats (if in field)?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-meadow",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Open arctic or river flats (if in field)"
+    },
+    {
+      "id": "np_trailhead_sign",
+      "label": "Expedition briefing board",
+      "emoji": "🥾",
+      "one_liner": "Read distance and rules before you go.",
+      "tags": [
+        "read"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Trail",
+      "qa_card": {
+        "question": "What did you notice at the Expedition briefing board?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-trailhead-sign",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Expedition briefing board"
+    },
+    {
+      "id": "np_junior_ranger",
+      "label": "Gates of the Arctic Junior Ranger desk",
+      "emoji": "🎖️",
+      "one_liner": "Ask at the visitor center — hours and ages vary.",
+      "tags": [
+        "hands"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Visitor center",
+      "qa_card": {
+        "question": "What did you notice at the Gates of the Arctic Junior Ranger desk?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-junior-ranger",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Gates of the Arctic Junior Ranger desk"
+    },
+    {
+      "id": "np_river",
+      "label": "Wild river talk / map",
+      "emoji": "🏞️",
+      "one_liner": "Water edge — safe step back.",
+      "tags": [
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Water",
+      "qa_card": {
+        "question": "What did you notice at the Wild river talk / map?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-river",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Wild river talk / map"
+    },
+    {
+      "id": "np_ranger_program",
+      "label": "Wilderness orientation (if offered)",
+      "emoji": "🗣️",
+      "one_liner": "Check the day’s board.",
+      "tags": [
+        "hands"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "VC",
+      "qa_card": {
+        "question": "What did you notice at the Wilderness orientation (if offered)?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-ranger-program",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Wilderness orientation (if offered)"
+    },
+    {
+      "id": "np_wildlife_elk",
+      "label": "Elk (from a safe distance)",
+      "emoji": "🦌",
+      "one_liner": "Never approach or feed.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Roads",
+      "qa_card": {
+        "question": "What did you notice at the Wildlife (from distance)?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "elk",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Elk (from a safe distance)"
+    }
+  ],
+  "content_mode": "curated",
+  "media": {
+    "visitor_map_url": "/field-pack/media/maps/gates-of-arctic.jpg",
+    "visitor_map_page": "https://www.nps.gov/carto/hfc/carto/media/gaarmap1.pdf",
+    "visitor_map_kind": "image",
+    "map_attribution": "Map: National Park Service (public domain)",
+    "hero_illustration": "/field-pack/photos/np-hero-gates-of-arctic.jpg",
+    "print_map": "/field-pack/media/maps/gates-of-arctic.jpg"
+  },
+  "parent_script": [
+    "Bathroom first",
+    "Water & sun check",
+    "One big view",
+    "Leave while happy"
+  ],
+  "route_90m": [
+    "np_visitor_center",
+    "np_scenic_overlook",
+    "np_meadow"
+  ],
+  "research_notes": "NP Phase 1c long-tail 2026-08-08 · slice-focused kit · label scrub 2026-08-09",
+  "list_confidence": "partial",
+  "do_not_list": [],
+  "presence_sources": [
+    "https://www.nps.gov/gaar/"
+  ],
+  "last_presence_audit": "2026-08-08",
+  "bonus_hunt": {
+    "tagline": "Gates of the Arctic National Park bonus · second look on the trail",
+    "find_ids": [
+      "np_river",
+      "np_junior_ranger",
+      "np_trailhead_sign",
+      "np_wildlife_elk",
+      "np_scenic_overlook",
+      "np_meadow",
+      "np_visitor_center"
+    ],
+    "challenges": [
+      {
+        "id": "gates_of_arc_np_river_watch",
+        "text": "Water: take 15 seconds on the Wild river talk / map — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "gates_of_arc_np_junior_ranger_watch",
+        "text": "Visitor center: take 15 seconds on the Gates of the Arctic Junior Ranger desk — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "gates_of_arc_np_trailhead_sig_watch",
+        "text": "Trail: take 15 seconds on the Expedition briefing board — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "gates_of_arc_np_wildlife_elk_watch",
+        "text": "Roads: take 15 seconds on the Elk (from a safe distance) — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "gates_of_arc_np_scenic_overlo_watch",
+        "text": "Overlook: take 15 seconds on the Gateway landscape view — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_still",
+        "text": "Quiet 20 seconds on the trail — bird, wind, water, or people: what wins?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_far_near",
+        "text": "Name something far first — then something by your feet",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_camo",
+        "text": "Best natural camouflage (rock, bark, shadow) you can spot",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_map",
+        "text": "Find a map or zone name you haven’t noticed — point it out",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_tiny_huge",
+        "text": "Something tiny next to something huge in this area",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find a park map or zone sign — name one animal that lives that way",
+    "easter_egg_little": "★ Easter egg: pick a favorite bench — sit 60 seconds and name three sounds",
+    "researched": "2026-08-09",
+    "status": "solid",
+    "sources": [
+      "https://www.nps.gov/gaar/"
+    ]
+  }
+}

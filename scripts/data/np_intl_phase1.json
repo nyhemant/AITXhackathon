@@ -1,0 +1,617 @@
+[
+  {
+    "slug": "banff",
+    "name": "Banff National Park",
+    "city": "Banff",
+    "region": "AB",
+    "state": "",
+    "country": "CA",
+    "countryName": "Canada",
+    "lat": 51.4968,
+    "lng": -115.9281,
+    "url": "https://parks.canada.ca/pn-np/ab/banff",
+    "emoji": "🏔️",
+    "tagline": "Banff — Lake Louise shoreline and townsite views; not the whole Rockies.",
+    "blurb": "Canadian Rockies day — lakeshore loop and one overlook, heat-and-crowd smart.",
+    "slice": "Lake Louise shoreline / Banff town views",
+    "art": "Banff Lake Louise turquoise glacial lake and snowy peaks at golden hour empty shore",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Parks Canada discovery pass or day fee; parking fills early at Louise.",
+      "transit_note": "Banff town + shuttle options to Lake Louise in peak season.",
+      "energy_note": "Altitude mild; cold water; crowds summer/fall.",
+      "best_start": "Lake Louise shoreline stroll → one viewpoint → town if energy",
+      "slice_name": "Lake Louise shore",
+      "season_note": "Peak July–Sept; winter icewalks different trip."
+    },
+    "keys": [
+      "vc",
+      "over",
+      "river",
+      "sign",
+      "meadow",
+      "tree",
+      "elk",
+      "ranger"
+    ],
+    "route": [
+      "np_scenic_overlook",
+      "np_river",
+      "np_meadow"
+    ]
+  },
+  {
+    "slug": "jasper",
+    "name": "Jasper National Park",
+    "city": "Jasper",
+    "region": "AB",
+    "state": "",
+    "country": "CA",
+    "countryName": "Canada",
+    "lat": 52.8737,
+    "lng": -117.9543,
+    "url": "https://parks.canada.ca/pn-np/ab/jasper",
+    "emoji": "🦌",
+    "tagline": "Jasper — townsite paths and a lake or canyon short stop.",
+    "blurb": "Quieter Rockies day than Banff — one valley slice near town.",
+    "slice": "Jasper townsite / nearby lake or canyon short",
+    "art": "Jasper National Park mountain valley turquoise river and evergreen forest empty vista",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Parks Canada pass/day fee.",
+      "transit_note": "Jasper town is the hub; Icefields Parkway is a separate long drive.",
+      "energy_note": "Wildlife on roads — never approach.",
+      "best_start": "Visitor centre → short lakeshore or canyon walk",
+      "slice_name": "Townsite short stop",
+      "season_note": "Summer peak; winter cold and services thinner."
+    },
+    "keys": [
+      "vc",
+      "over",
+      "river",
+      "sign",
+      "meadow",
+      "tree",
+      "elk",
+      "ranger"
+    ],
+    "route": [
+      "np_visitor_center",
+      "np_river",
+      "np_scenic_overlook"
+    ]
+  },
+  {
+    "slug": "yoho",
+    "name": "Yoho National Park",
+    "city": "Field",
+    "region": "BC",
+    "state": "",
+    "country": "CA",
+    "countryName": "Canada",
+    "lat": 51.495,
+    "lng": -116.49,
+    "url": "https://parks.canada.ca/pn-np/bc/yoho",
+    "emoji": "💎",
+    "tagline": "Yoho — Emerald Lake easy shore path; not a full alpine scramble.",
+    "blurb": "BC Rockies jewel — shoreline loop around Emerald Lake.",
+    "slice": "Emerald Lake shore",
+    "art": "Yoho Emerald Lake bright green glacial water and mountain ring empty shore",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Parks Canada pass; parking limited.",
+      "transit_note": "Near Field BC / Trans-Canada.",
+      "energy_note": "Easy shore path; water is icy.",
+      "best_start": "Emerald Lake shore circuit (as open) → picnic eyes",
+      "slice_name": "Emerald Lake shore",
+      "season_note": "Road and services peak summer."
+    },
+    "keys": [
+      "vc",
+      "river",
+      "over",
+      "sign",
+      "meadow",
+      "tree",
+      "board",
+      "ranger"
+    ],
+    "route": [
+      "np_river",
+      "np_scenic_overlook",
+      "np_boardwalk"
+    ]
+  },
+  {
+    "slug": "plitvice-lakes",
+    "name": "Plitvice Lakes National Park",
+    "city": "Plitvička Jezera",
+    "region": "Croatia",
+    "state": "",
+    "country": "HR",
+    "countryName": "Croatia",
+    "lat": 44.8654,
+    "lng": 15.582,
+    "url": "https://np-plitvicka-jezera.hr/en/",
+    "emoji": "💧",
+    "tagline": "Plitvice — boardwalk lakes and waterfalls; one entrance loop, not every trail.",
+    "blurb": "Croatia’s turquoise lakes — boardwalk day with stairs and crowds.",
+    "slice": "Upper or Lower lakes boardwalk circuit (pick one entrance plan)",
+    "art": "Plitvice Lakes turquoise cascading lakes wooden boardwalks empty landscape golden light",
+    "practical": {
+      "typical_duration": "full day",
+      "ticket_note": "Timed tickets often required; buy ahead in peak season.",
+      "transit_note": "Two main entrances; buses from Zagreb/Zadar.",
+      "energy_note": "Lots of walking and stairs; strollers hard on boardwalks.",
+      "best_start": "Ticketed entry → boardwalk lake circuit → exit shuttle if offered",
+      "slice_name": "Boardwalk lakes loop",
+      "season_note": "Peak summer crowded; shoulder seasons nicer."
+    },
+    "keys": [
+      "board",
+      "fall",
+      "river",
+      "over",
+      "sign",
+      "vc",
+      "tree",
+      "meadow"
+    ],
+    "route": [
+      "np_boardwalk",
+      "np_waterfall",
+      "np_river"
+    ]
+  },
+  {
+    "slug": "snowdonia",
+    "name": "Eryri (Snowdonia) National Park",
+    "city": "Llanberis",
+    "region": "Wales",
+    "state": "",
+    "country": "GB",
+    "countryName": "United Kingdom",
+    "lat": 53.0685,
+    "lng": -4.0762,
+    "url": "https://www.eryri.llyw.cymru/",
+    "emoji": "⛰️",
+    "tagline": "Eryri/Snowdonia — Llanberis lake and valley views; summit only if energy and weather allow.",
+    "blurb": "North Wales mountain day — lakeshore and valley, not a forced summit.",
+    "slice": "Llanberis / lakeshore short",
+    "art": "Snowdonia Welsh mountains slate green valley and lake empty landscape",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Park free to enter; railway/parking fees separate.",
+      "transit_note": "Llanberis is a classic family base.",
+      "energy_note": "Weather turns fast; wet rock is slippery.",
+      "best_start": "Lakeshore path → viewpoint → café reset",
+      "slice_name": "Llanberis lakeshore",
+      "season_note": "Year-round; winter summits serious."
+    },
+    "keys": [
+      "vc",
+      "over",
+      "river",
+      "sign",
+      "meadow",
+      "tree",
+      "fall",
+      "ranger"
+    ],
+    "route": [
+      "np_river",
+      "np_scenic_overlook",
+      "np_meadow"
+    ]
+  },
+  {
+    "slug": "lake-district",
+    "name": "Lake District National Park",
+    "city": "Keswick",
+    "region": "England",
+    "state": "",
+    "country": "GB",
+    "countryName": "United Kingdom",
+    "lat": 54.6,
+    "lng": -3.137,
+    "url": "https://www.lakedistrict.gov.uk/",
+    "emoji": "🏞️",
+    "tagline": "Lake District — Derwentwater shore or similar easy lakeside; not every fell.",
+    "blurb": "England’s lakes — one shoreline stroll and a view.",
+    "slice": "Keswick / Derwentwater shore",
+    "art": "Lake District calm lake reflection green fells and soft English light empty shore",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Park free; boat/parking fees separate.",
+      "transit_note": "Keswick or Windermere towns as hubs.",
+      "energy_note": "Mud and rain common; easy shore paths exist.",
+      "best_start": "Lakeshore path → jetty views → town treat",
+      "slice_name": "Lakeshore short",
+      "season_note": "Summer busy; winter wet and dark early."
+    },
+    "keys": [
+      "over",
+      "river",
+      "sign",
+      "meadow",
+      "tree",
+      "board",
+      "vc",
+      "ranger"
+    ],
+    "route": [
+      "np_river",
+      "np_scenic_overlook",
+      "np_meadow"
+    ]
+  },
+  {
+    "slug": "killarney",
+    "name": "Killarney National Park",
+    "city": "Killarney",
+    "region": "Kerry",
+    "state": "",
+    "country": "IE",
+    "countryName": "Ireland",
+    "lat": 52.0023,
+    "lng": -9.5117,
+    "url": "https://www.nationalparks.ie/killarney/",
+    "emoji": "🦌",
+    "tagline": "Killarney — Muckross shore and woodland paths; not a full Ring of Kerry day.",
+    "blurb": "Ireland’s lakes and woods — one shore loop near Muckross.",
+    "slice": "Muckross / lakeshore short",
+    "art": "Killarney National Park green Irish lakes mountains and woodland empty shore",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Park free; house/parking may fee.",
+      "transit_note": "Killarney town gateway.",
+      "energy_note": "Rain likely; paths can be muddy.",
+      "best_start": "Muckross area shore/woodland loop → viewpoint",
+      "slice_name": "Muckross shore",
+      "season_note": "Year-round green; summer coach crowds."
+    },
+    "keys": [
+      "vc",
+      "river",
+      "tree",
+      "sign",
+      "meadow",
+      "over",
+      "board",
+      "elk"
+    ],
+    "route": [
+      "np_river",
+      "np_giant_tree",
+      "np_meadow"
+    ]
+  },
+  {
+    "slug": "fuji-hakone-izu",
+    "name": "Fuji-Hakone-Izu National Park",
+    "city": "Fujikawaguchiko",
+    "region": "Yamanashi",
+    "state": "",
+    "country": "JP",
+    "countryName": "Japan",
+    "lat": 35.4981,
+    "lng": 138.759,
+    "url": "https://www.env.go.jp/en/nature/nps/park/fujihakone/",
+    "emoji": "🗻",
+    "tagline": "Fuji area — lakeshore views of the mountain; not a summit climb.",
+    "blurb": "Japan icon day — Kawaguchiko shore views when Fuji is out.",
+    "slice": "Kawaguchiko / Fuji five lakes shore view",
+    "art": "Mount Fuji snowy cone reflected in calm lake with autumn colors empty shore Japan",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Park areas free; ropeways/buses extra.",
+      "transit_note": "Kawaguchiko is the classic family view base; weather may hide Fuji.",
+      "energy_note": "Easy shore paths; cold wind off the lake.",
+      "best_start": "Lakeshore promenade → Fuji viewpoint → onsen town rest",
+      "slice_name": "Kawaguchiko shore view",
+      "season_note": "Clear winter views often best; summer hazy."
+    },
+    "keys": [
+      "over",
+      "river",
+      "sign",
+      "meadow",
+      "vc",
+      "tree",
+      "board",
+      "ranger"
+    ],
+    "route": [
+      "np_scenic_overlook",
+      "np_river",
+      "np_meadow"
+    ]
+  },
+  {
+    "slug": "nikko",
+    "name": "Nikkō National Park",
+    "city": "Nikko",
+    "region": "Tochigi",
+    "state": "",
+    "country": "JP",
+    "countryName": "Japan",
+    "lat": 36.7581,
+    "lng": 139.599,
+    "url": "https://www.env.go.jp/en/nature/nps/park/nikko/",
+    "emoji": "⛩️",
+    "tagline": "Nikkō — lake and waterfall short stops; shrines nearby are separate tickets.",
+    "blurb": "Tochigi mountains — Chuzenji lake or a waterfall stop plus forest air.",
+    "slice": "Lake Chūzenji / nearby falls short",
+    "art": "Nikko mountain lake cedar forest and waterfall mist Japan empty landscape",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Park free; temple/shrine entries separate.",
+      "transit_note": "Nikko town + buses up to Chuzenji.",
+      "energy_note": "Stairs and buses; weather cool.",
+      "best_start": "Lake shore or waterfall stop → forest path",
+      "slice_name": "Chuzenji / falls short",
+      "season_note": "Autumn color peak crowded."
+    },
+    "keys": [
+      "fall",
+      "river",
+      "tree",
+      "over",
+      "sign",
+      "vc",
+      "board",
+      "meadow"
+    ],
+    "route": [
+      "np_waterfall",
+      "np_river",
+      "np_giant_tree"
+    ]
+  },
+  {
+    "slug": "fiordland",
+    "name": "Fiordland National Park",
+    "city": "Te Anau",
+    "region": "Southland",
+    "state": "",
+    "country": "NZ",
+    "countryName": "New Zealand",
+    "lat": -45.4167,
+    "lng": 167.7167,
+    "url": "https://www.doc.govt.nz/parks-and-recreation/places-to-go/fiordland/",
+    "emoji": "🛳️",
+    "tagline": "Fiordland — Milford Sound lookout or Te Anau short; not a multi-day track.",
+    "blurb": "NZ fiords — one lookout day if weather and road allow.",
+    "slice": "Milford Sound viewing area / Te Anau edge",
+    "art": "Fiordland misty sheer cliffs dark water and waterfall empty dramatic fiord",
+    "practical": {
+      "typical_duration": "full day",
+      "ticket_note": "Park free; cruises and parking extra.",
+      "transit_note": "Long drive Te Anau–Milford; weather closes road sometimes.",
+      "energy_note": "Sandflies; rain common; dress waterproof.",
+      "best_start": "If road open: lookout/shore views; else Te Anau lakeshore",
+      "slice_name": "Milford lookout or Te Anau",
+      "season_note": "Summer busiest; winter ice on road."
+    },
+    "keys": [
+      "over",
+      "coast",
+      "fall",
+      "sign",
+      "vc",
+      "tree",
+      "meadow",
+      "ranger"
+    ],
+    "route": [
+      "np_scenic_overlook",
+      "np_tide_coast",
+      "np_waterfall"
+    ]
+  },
+  {
+    "slug": "blue-mountains",
+    "name": "Blue Mountains National Park",
+    "city": "Katoomba",
+    "region": "NSW",
+    "state": "",
+    "country": "AU",
+    "countryName": "Australia",
+    "lat": -33.72,
+    "lng": 150.31,
+    "url": "https://www.nationalparks.nsw.gov.au/visit-a-park/parks/blue-mountains-national-park",
+    "emoji": "🟦",
+    "tagline": "Blue Mountains — Three Sisters lookout and a short cliff-top walk.",
+    "blurb": "Near Sydney — eucalyptus haze views and one famous overlook.",
+    "slice": "Echo Point / Three Sisters lookout",
+    "art": "Blue Mountains Three Sisters sandstone cliffs blue eucalyptus haze empty lookout",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Park free; some attractions fee.",
+      "transit_note": "Katoomba / Echo Point; train from Sydney possible.",
+      "energy_note": "Cliff edges — hold hands; windy.",
+      "best_start": "Echo Point lookout → short cliff walk as open",
+      "slice_name": "Echo Point lookout",
+      "season_note": "Year-round; fog can hide views."
+    },
+    "keys": [
+      "over",
+      "canyon",
+      "sign",
+      "vc",
+      "tree",
+      "meadow",
+      "board",
+      "ranger"
+    ],
+    "route": [
+      "np_scenic_overlook",
+      "np_canyon_rim",
+      "np_boardwalk"
+    ]
+  },
+  {
+    "slug": "kruger",
+    "name": "Kruger National Park",
+    "city": "Skukuza",
+    "region": "Mpumalanga",
+    "state": "",
+    "country": "ZA",
+    "countryName": "South Africa",
+    "lat": -24.9947,
+    "lng": 31.5969,
+    "url": "https://www.sanparks.org/parks/kruger",
+    "emoji": "🦁",
+    "tagline": "Kruger — rest-camp and short paved loop day; wildlife never guaranteed.",
+    "blurb": "Safari park day — camp paths and a slow drive loop if you have a vehicle.",
+    "slice": "Rest camp + nearby tar road short loop",
+    "art": "Kruger golden savanna acacia trees and distant wildlife silhouettes empty landscape no people",
+    "practical": {
+      "typical_duration": "full day",
+      "ticket_note": "SANParks conservation fees; gates close strictly.",
+      "transit_note": "Self-drive or guided; rest camps are the safe base.",
+      "energy_note": "Heat; never leave vehicle except in camps; malaria risk in some seasons.",
+      "best_start": "Rest camp paths → short tar loop with adult driving → back before gate time",
+      "slice_name": "Rest camp short loop",
+      "season_note": "Dry season often better wildlife viewing; always soft expectations."
+    },
+    "keys": [
+      "vc",
+      "over",
+      "sign",
+      "meadow",
+      "bison",
+      "elk",
+      "tree",
+      "ranger"
+    ],
+    "route": [
+      "np_visitor_center",
+      "np_meadow",
+      "np_scenic_overlook"
+    ]
+  },
+  {
+    "slug": "table-mountain",
+    "name": "Table Mountain National Park",
+    "city": "Cape Town",
+    "region": "Western Cape",
+    "state": "",
+    "country": "ZA",
+    "countryName": "South Africa",
+    "lat": -33.9628,
+    "lng": 18.4098,
+    "url": "https://www.sanparks.org/parks/table-mountain",
+    "emoji": "⛰️",
+    "tagline": "Table Mountain — cableway top paths or Signal Hill/shore alternative if wind closes cable.",
+    "blurb": "Cape Town icon — summit boardwalks when the cableway runs.",
+    "slice": "Cableway upper station paths (or shore alternative)",
+    "art": "Table Mountain flat-topped massif over Cape Town ocean golden light empty mountain",
+    "practical": {
+      "typical_duration": "half day",
+      "ticket_note": "Cableway tickets separate; park areas fee zones.",
+      "transit_note": "Cape Town; wind often stops cableway — have a backup.",
+      "energy_note": "Altitude/wind on top; sun strong.",
+      "best_start": "If cable open: upper paths + views; else coastal park stretch",
+      "slice_name": "Summit paths or shore backup",
+      "season_note": "Summer windy; check cable status morning-of."
+    },
+    "keys": [
+      "over",
+      "board",
+      "sign",
+      "vc",
+      "meadow",
+      "coast",
+      "tree",
+      "ranger"
+    ],
+    "route": [
+      "np_scenic_overlook",
+      "np_boardwalk",
+      "np_meadow"
+    ]
+  },
+  {
+    "slug": "torres-del-paine",
+    "name": "Torres del Paine National Park",
+    "city": "Puerto Natales",
+    "region": "Magallanes",
+    "state": "",
+    "country": "CL",
+    "countryName": "Chile",
+    "lat": -50.9423,
+    "lng": -73.4068,
+    "url": "https://www.conaf.cl/parques/parque-nacional-torres-del-paine/",
+    "emoji": "🔷",
+    "tagline": "Torres del Paine — a mirador or lakeshore short; not the W trek.",
+    "blurb": "Patagonia towers — one viewpoint day when weather allows.",
+    "slice": "Mirador / lakeshore short (not full W circuit)",
+    "art": "Torres del Paine granite towers turquoise lake Patagonia empty dramatic landscape",
+    "practical": {
+      "typical_duration": "full day",
+      "ticket_note": "CONAF entry tickets; book peak season.",
+      "transit_note": "From Puerto Natales; long bus/transfer day.",
+      "energy_note": "Fierce wind; cold; weather cancels views often.",
+      "best_start": "Park entry → one official mirador or shore stop → back before dark",
+      "slice_name": "Single mirador short",
+      "season_note": "Austral summer peak; shoulder seasons windy."
+    },
+    "keys": [
+      "over",
+      "river",
+      "sign",
+      "vc",
+      "meadow",
+      "arch",
+      "canyon",
+      "ranger"
+    ],
+    "route": [
+      "np_scenic_overlook",
+      "np_meadow",
+      "np_river"
+    ]
+  },
+  {
+    "slug": "iguazu-argentina",
+    "name": "Iguazú National Park (Argentina)",
+    "city": "Puerto Iguazú",
+    "region": "Misiones",
+    "state": "",
+    "country": "AR",
+    "countryName": "Argentina",
+    "lat": -25.6953,
+    "lng": -54.4367,
+    "url": "https://www.argentina.gob.ar/interior/ambiente/parquesnacionales/iguazu",
+    "emoji": "💦",
+    "tagline": "Iguazú — boardwalk circuits to the falls; one side’s paths, not both countries in one rush.",
+    "blurb": "Thundering falls — boardwalk day on the Argentina circuits.",
+    "slice": "Lower and/or upper circuit boardwalks",
+    "art": "Iguazu Falls massive cascading water jungle mist empty boardwalk viewpoint landscape",
+    "practical": {
+      "typical_duration": "full day",
+      "ticket_note": "Park entry tickets; train inside park optional fee.",
+      "transit_note": "Puerto Iguazú gateway; Brazil side is a separate park/day.",
+      "energy_note": "Humidity, stairs, spray — waterproof layers.",
+      "best_start": "Enter → boardwalk circuits toward Garganta viewpoints as open",
+      "slice_name": "Argentina boardwalk circuits",
+      "season_note": "Year-round; high water changes views."
+    },
+    "keys": [
+      "board",
+      "fall",
+      "river",
+      "sign",
+      "vc",
+      "tree",
+      "wet",
+      "ranger"
+    ],
+    "route": [
+      "np_boardwalk",
+      "np_waterfall",
+      "np_river"
+    ]
+  }
+]

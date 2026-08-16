@@ -1,0 +1,248 @@
+[
+  {
+    "slug": "zion",
+    "ok": true,
+    "page": "page-1.jpg",
+    "pages": 2,
+    "page_scores": [
+      [
+        -0.10444544378288922,
+        "page-1.jpg"
+      ],
+      [
+        -1.0497660162384426,
+        "page-2.jpg"
+      ]
+    ],
+    "top_frac": 0.4396044895777659,
+    "size": [
+      2200,
+      1797
+    ],
+    "dark": 0.49142857142857144,
+    "bytes": 1201625
+  },
+  {
+    "slug": "white-sands",
+    "ok": true,
+    "page": "page-1.jpg",
+    "pages": 2,
+    "page_scores": [
+      [
+        -1.174015287278969,
+        "page-1.jpg"
+      ],
+      [
+        -1.6060941675282292,
+        "page-2.jpg"
+      ]
+    ],
+    "top_frac": 0.058672651490862454,
+    "size": [
+      2200,
+      2048
+    ],
+    "dark": 0.0,
+    "bytes": 820445
+  },
+  {
+    "slug": "capitol-reef",
+    "ok": true,
+    "page": "page-1.jpg",
+    "pages": 1,
+    "page_scores": [
+      [
+        -0.09537417537118853,
+        "page-1.jpg"
+      ]
+    ],
+    "top_frac": 0.0,
+    "size": [
+      1509,
+      2200
+    ],
+    "dark": 0.07142857142857142,
+    "bytes": 976481
+  },
+  {
+    "slug": "wrangell-st-elias",
+    "ok": true,
+    "page": "page-2.jpg",
+    "pages": 2,
+    "page_scores": [
+      [
+        -0.23939869959617688,
+        "page-2.jpg"
+      ],
+      [
+        -2.400309534046843,
+        "page-1.jpg"
+      ]
+    ],
+    "top_frac": 0.0,
+    "size": [
+      1509,
+      2200
+    ],
+    "dark": 0.06928571428571428,
+    "bytes": 1052108
+  },
+  {
+    "slug": "black-canyon-gunnison",
+    "ok": true,
+    "page": "page-2.jpg",
+    "pages": 2,
+    "page_scores": [
+      [
+        -0.11460474679402899,
+        "page-2.jpg"
+      ],
+      [
+        -1.3935741251120335,
+        "page-1.jpg"
+      ]
+    ],
+    "top_frac": 0.0,
+    "size": [
+      2200,
+      1604
+    ],
+    "dark": 0.0014285714285714286,
+    "bytes": 890760
+  },
+  {
+    "slug": "american-samoa",
+    "ok": true,
+    "page": "page-2.jpg",
+    "pages": 2,
+    "page_scores": [
+      [
+        -0.33448620533075557,
+        "page-2.jpg"
+      ],
+      [
+        -1.5388006817977282,
+        "page-1.jpg"
+      ]
+    ],
+    "top_frac": 0.0,
+    "size": [
+      2200,
+      891
+    ],
+    "dark": 0.21357142857142858,
+    "bytes": 410919
+  },
+  {
+    "slug": "yellowstone",
+    "ok": true,
+    "page": "page-2.jpg",
+    "pages": 2,
+    "page_scores": [
+      [
+        -0.9832696000919057,
+        "page-2.jpg"
+      ],
+      [
+        -1.4612028296948065,
+        "page-1.jpg"
+      ]
+    ],
+    "top_frac": 0.16541956173169428,
+    "size": [
+      1808,
+      2200
+    ],
+    "dark": 0.0,
+    "bytes": 1119967
+  },
+  {
+    "slug": "kings-canyon",
+    "ok": true,
+    "src": "https://npmaps.com/wp-content/uploads/kings-canyon-sequoia-national-park-map.jpg",
+    "dark": 0.0
+  },
+  {
+    "slug": "sequoia",
+    "ok": true,
+    "src": "https://npmaps.com/wp-content/uploads/sequoia-kings-canyon-national-park-map.jpg",
+    "dark": 0.0
+  },
+  {
+    "slug": "big-bend",
+    "ok": true,
+    "src": "https://npmaps.com/wp-content/uploads/big-bend-national-park-map.jpg",
+    "dark": 0.0
+  },
+  {
+    "slug": "grand-teton",
+    "ok": true,
+    "src": "https://npmaps.com/wp-content/uploads/grand-teton-national-park-map.jpg",
+    "dark": 0.0
+  },
+  {
+    "slug": "cuyahoga-valley",
+    "ok": true,
+    "src": "https://npmaps.com/wp-content/uploads/cuyahoga-valley-national-park-map.png",
+    "dark": 0.0
+  },
+  {
+    "slug": "grand-canyon",
+    "ok": true,
+    "src": "https://www.nps.gov/grca/planyourvisit/upload/GRCAmap5s.jpg",
+    "dark": 0.0
+  },
+  {
+    "slug": "great-basin",
+    "ok": true,
+    "src": "https://npmaps.com/wp-content/uploads/great-basin-national-park-map.jpg",
+    "dark": 0.0
+  },
+  {
+    "slug": "joshua-tree",
+    "ok": true,
+    "src": "https://npmaps.com/wp-content/uploads/joshua-tree-national-park-map.jpg",
+    "dark": 0.0
+  },
+  {
+    "slug": "death-valley",
+    "ok": true,
+    "src": "https://npmaps.com/wp-content/uploads/death-valley-national-park-map.jpg",
+    "dark": 0.0
+  },
+  {
+    "slug": "mesa-verde",
+    "ok": true,
+    "src": "https://npmaps.com/wp-content/uploads/mesa-verde-national-park-map.jpg",
+    "dark": 0.0
+  },
+  {
+    "slug": "olympic",
+    "ok": true,
+    "src": "https://npmaps.com/wp-content/uploads/olympic-national-park-map.jpg",
+    "dark": 0.14285714285714285
+  },
+  {
+    "slug": "voyageurs",
+    "ok": false,
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "slug": "lake-clark",
+    "ok": true,
+    "src": "https://npmaps.com/wp-content/uploads/lake-clark-national-park-map.jpg",
+    "dark": 0.0
+  },
+  {
+    "slug": "virgin-islands",
+    "ok": true,
+    "src": "https://npmaps.com/wp-content/uploads/virgin-islands-national-park-map.jpg",
+    "dark": 0.0
+  },
+  {
+    "slug": "dry-tortugas",
+    "ok": true,
+    "src": "https://npmaps.com/wp-content/uploads/dry-tortugas-national-park-map.jpg",
+    "dark": 0.0
+  }
+]

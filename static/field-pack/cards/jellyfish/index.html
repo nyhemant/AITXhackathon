@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jellyfish Q&amp;A Card for Kids · Field Trip Kit</title>
+  <meta name="description" content="Free printable Jellyfish Q&amp;A card for kids. Soft drifter — no bones, glows and pulses in the water. Print one page. No account." />
+  <link rel="canonical" href="https://1less.app/field-pack/cards/jellyfish/" />
+  <meta name="robots" content="index,follow" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Jellyfish Q&amp;A Card for Kids · Field Trip Kit" />
+  <meta property="og:description" content="Free printable Jellyfish Q&amp;A card for kids. Soft drifter — no bones, glows and pulses in the water. Print one page. No account." />
+  <meta property="og:url" content="https://1less.app/field-pack/cards/jellyfish/" />
+  <meta property="og:image" content="https://1less.app/field-pack/photos/sample-mission-dallas-zoo.jpg" />
+  <link rel="stylesheet" href="/shell/shell.css?v=6" />
+  <link rel="stylesheet" href="/field-pack/css/styles.css?v=26" />
+  <link rel="stylesheet" href="/field-pack/css/landing.css?v=88" />
+  <style>
+    .card-page { max-width: 28rem; margin: 0 auto; padding: 1rem 1rem 3rem; }
+    .card-page h1 { font-size: clamp(1.35rem, 4vw, 1.75rem); color: #0a4545; margin: 0.4rem 0; }
+    .card-page-venue a { color: #0f5c5c; font-weight: 750; }
+    .card-page-photo { width: 100%; height: auto; border-radius: 14px; border: 1.5px solid rgba(15,92,92,.14); }
+    .card-page-emoji { font-size: 3rem; margin: 0.5rem 0; }
+    .card-page-blurb { color: #3d4f6f; line-height: 1.45; }
+    .card-page-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem; }
+    .card-page-crumbs { font-size: 0.9rem; color: #5a6a84; }
+    .card-page-crumbs a { color: #0f5c5c; }
+  </style>
+</head>
+<body class="landing-body">
+  <div class="app">
+    <header class="oneless-shell no-print" data-product="bdo">
+      <a class="shell-brand" href="/field-pack/" aria-label="Field Trip Kit home">
+        <img src="/1LessMark.png" alt="" width="52" height="52" />
+      </a>
+      <a class="shell-product" href="/field-pack/">Field Trip Kit <small>Zoo, aquarium, museum &amp; park days</small></a>
+    </header>
+    <main class="card-page">
+      <p class="card-page-crumbs"><a href="/field-pack/">Field Trip Kit</a> · <a href="/field-pack/cards/">Cards</a></p>
+      <h1>🎐 Jellyfish</h1>
+      <p class="card-page-venue">Printable Q&amp;A card · Children's Aquarium
+        · <a href="/field-pack/childrens-aquarium-dallas/">Place page</a></p>
+      <img class="card-page-photo" src="/field-pack/photos/jellyfish.jpg?v=img2" alt="" width="640" height="400" decoding="async" />
+      <p class="card-page-blurb">Soft drifter — no bones, glows and pulses in the water.</p>
+      <p class="card-page-actions">
+        <button type="button" class="btn btn-primary" id="print-this-card" data-card-id="jellyfish" data-venue="childrens-aquarium-dallas">Print this card</button>
+        <a class="btn btn-secondary" href="/field-pack/cards/">All cards</a>
+      </p>
+      <p class="card-page-alias"><a href="/field-pack/app.html#/venue/childrens-aquarium-dallas/item/jellyfish">Open in outing view</a> (alias)</p>
+    </main>
+  </div>
+  <div id="print-sheet" class="print-sheet" aria-hidden="true"></div>
+  <div id="treasure-sheet" class="print-sheet treasure-sheet" aria-hidden="true"></div>
+  <script src="/shell/shell.js?v=5"></script>
+  <script src="/field-pack/js/fp-analytics.js?v=1"></script>
+  <script src="/field-pack/js/catalog.js?v=28"></script>
+  <script src="/field-pack/js/print-kit.js?v=12"></script>
+  <script>
+    (function () {
+      if (typeof FPTrack === "function") FPTrack("card_page_viewed", { card_id: "jellyfish" });
+      var btn = document.getElementById("print-this-card");
+      if (btn) btn.addEventListener("click", function () {
+        var id = btn.getAttribute("data-card-id") || "";
+        var vid = btn.getAttribute("data-venue") || "";
+        if (typeof FPTrack === "function") FPTrack("card_opened", { card_id: id, source: "card_page_print" });
+        if (window.FPPrint && FPPrint.printQaForItem) FPPrint.printQaForItem(id, vid || null);
+      });
+    })();
+  </script>
+</body>
+</html>

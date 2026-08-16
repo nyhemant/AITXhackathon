@@ -1,0 +1,67 @@
+[
+  {
+    "slug": "yellowstone",
+    "label": "Old Faithful Inn lobby",
+    "id": "yell_ofi_lobby"
+  },
+  {
+    "slug": "zion",
+    "label": "Zion Lodge lawn",
+    "id": "zion_lodge_lawn"
+  },
+  {
+    "slug": "zion",
+    "label": "Cottonwood shade",
+    "id": "zion_cottonwood"
+  },
+  {
+    "slug": "yosemite",
+    "label": "Valley pines",
+    "id": "yose_pines"
+  },
+  {
+    "slug": "grand-canyon",
+    "label": "Village green space",
+    "id": "grca_village_green"
+  },
+  {
+    "slug": "great-smoky-mountains",
+    "label": "Fighting Creek nature trail stretch",
+    "id": "grsm_fighting_creek"
+  },
+  {
+    "slug": "great-smoky-mountains",
+    "label": "Open valley edge",
+    "id": "grsm_meadow_edge"
+  },
+  {
+    "slug": "rocky-mountain",
+    "label": "Lodgepole pines",
+    "id": "romo_pines"
+  },
+  {
+    "slug": "acadia",
+    "label": "Coastal spruce forest",
+    "id": "acad_spruce"
+  },
+  {
+    "slug": "glacier",
+    "label": "Colored lake pebbles",
+    "id": "glac_pebbles"
+  },
+  {
+    "slug": "arches",
+    "label": "Desert flats between fins",
+    "id": "arch_flats"
+  },
+  {
+    "slug": "olympic",
+    "label": "Nurse log",
+    "id": "olym_nurse_log"
+  },
+  {
+    "slug": "olympic",
+    "label": "Rainforest clearing",
+    "id": "olym_clearing"
+  }
+]

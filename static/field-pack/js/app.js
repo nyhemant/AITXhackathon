@@ -86,8 +86,15 @@
   function getVenue(id) {
     return window.fpGetVenue(id);
   }
-  function getItem(id) {
-    return catalog[id] || null;
+  function getItem(id, venue) {
+    const base = catalog[id] || null;
+    if (!base) return null;
+    if (!venue) return base;
+    const names = venue.itemDisplayNames || null;
+    const custom = names && (names[id] || names[base.id]);
+    if (!custom) return base;
+    // Shallow copy so park-specific labels don't mutate shared catalog cards.
+    return Object.assign({}, base, { name: custom, displayName: custom });
   }
   function getTrip(id) {
     return store.trips.find((t) => t.id === id) || null;
@@ -418,7 +425,7 @@
       (window.FPPrint && window.FPPrint.topPickItemId(venue)) ||
       (venue.featuredAnimalIds && venue.featuredAnimalIds[0]) ||
       null;
-    const topItem = topId ? getItem(topId) : null;
+    const topItem = topId ? getItem(topId, venue) : null;
     if (els.btnSampleQa) {
       const canSample = Boolean(topItem);
       els.btnSampleQa.hidden = !canSample;
@@ -447,8 +454,10 @@
 
   function showItem(tripId, itemId) {
     const trip = getTrip(tripId) || ensureOuting(selectedVenueId);
-    const item = getItem(itemId);
-    if (!trip || !item) return showOuting(selectedVenueId);
+    if (!trip) return showOuting(selectedVenueId);
+    const venueEarly = getVenue(trip.venueId);
+    const item = getItem(itemId, venueEarly);
+    if (!item) return showOuting(selectedVenueId);
     if (!trip.selectedAnimalIds.includes(itemId)) {
       // allow opening from customize even if temporarily off
       if (!(getVenue(trip.venueId).animalIds || []).includes(itemId)) return showOuting(trip.venueId);
@@ -480,7 +489,7 @@
     els.outingGrid.innerHTML = "";
     els.outingEmpty.classList.toggle("hidden", ids.length > 0);
     for (const id of ids) {
-      const item = getItem(id);
+      const item = getItem(id, venue);
       if (!item) continue;
       const st = itemState(trip, id);
       const done = answeredCount(trip, id, missions);
@@ -511,7 +520,7 @@
     const selected = new Set(trip.selectedAnimalIds || []);
     els.customizeGrid.innerHTML = "";
     for (const id of all) {
-      const item = getItem(id);
+      const item = getItem(id, venue);
       if (!item) continue;
       const on = selected.has(id);
       const btn = document.createElement("button");
@@ -1470,8 +1479,8 @@
 
   function submitAnswers() {
     const trip = getTrip(currentTripId);
-    const item = getItem(currentItemId);
     const venue = trip ? getVenue(trip.venueId) : null;
+    const item = getItem(currentItemId, venue);
     if (!trip || !item || !venue) return;
     const pack = talkPackFor(item, venue, qaAge);
     const missions = pack.missions;
@@ -1534,9 +1543,10 @@
 
   function printMissionCard() {
     const trip = getTrip(currentTripId);
-    const item = getItem(currentItemId);
+    const venue = trip ? getVenue(trip.venueId) : null;
+    const item = getItem(currentItemId, venue);
     if (!trip || !item) return;
-    buildPrintSheet(item, trip, getVenue(trip.venueId));
+    buildPrintSheet(item, trip, venue);
     if (els.treasureSheet) els.treasureSheet.innerHTML = "";
     requestAnimationFrame(() => requestAnimationFrame(() => window.print()));
   }
@@ -1558,14 +1568,38 @@
     const stars = ids
       .slice(0, 6)
       .map((id) => {
-        const it = getItem(id);
+        const it = getItem(id, venue);
         return it ? `<span class="th-chip">${it.emoji || "•"} ${escapeHtml(it.name)}</span>` : "";
       })
       .join("");
+    // Prefer official local map (FP_PRINT_MAPS / venue.media); doodle only as fallback
+    const mapId = venue.id || venue.slug || "";
+    const mapFromReg = (window.FP_PRINT_MAPS && mapId && window.FP_PRINT_MAPS[mapId]) || "";
+    const mapFromMedia = (() => {
+      const m = venue.media || {};
+      const u = m.print_map || m.visitor_map_url || "";
+      return u && String(u).startsWith("/field-pack/media/maps/") ? u : "";
+    })();
+    const mapSrc = mapFromReg || mapFromMedia || "";
+    const mapBlock = mapSrc
+      ? `<div class="th-map th-map-has-photo">
+          <p class="th-map-title">Park map — mark start → favorite → end</p>
+          <div class="th-map-photo-wrap">
+            <img class="th-map-photo" src="${escapeAttr(mapSrc)}" alt="Official visitor map" />
+          </div>
+        </div>`
+      : `<div class="th-map">
+          <p class="th-map-title">Path doodle <span class="th-map-hint">— start → favorite → end</span></p>
+          <div class="th-map-box"></div>
+        </div>`;
     els.treasureSheet.innerHTML = `
-      <div class="th-page">
+      <div class="th-page${mapSrc ? " th-page-with-map" : ""}">
         <div class="th-banner">
-          <h1>🗺️ Your mission</h1>
+          <h1>🗺️ Your mission${
+          venue && (venue.sliceLabel || venue.slice_label || (venue.practical && venue.practical.slice_name))
+            ? " · " + escapeHtml(venue.sliceLabel || venue.slice_label || venue.practical.slice_name)
+            : ""
+        }</h1>
           <p>${escapeHtml(venue.name)} · One-page hunt · Field Trip Kit</p>
         </div>
         <div class="th-meta">
@@ -1580,10 +1614,20 @@
           <p class="th-stars-title">Star list (top picks)</p>
           <div class="th-chips">${stars}</div>
         </div>
-        <div class="th-map">
-          <p class="th-map-title">Path doodle <span class="th-map-hint">— start → favorite → end</span></p>
-          <div class="th-map-box"></div>
-        </div>
+        ${mapBlock}
+        ${
+          (venue.safetyFooter ||
+            venue.safety_footer ||
+            (String(venue.type || "").toLowerCase() === "national_park"
+              ? "Stay on boardwalks and trails · give wildlife lots of space · bring water"
+              : ""))
+            ? `<p class="th-safety">${escapeHtml(
+                venue.safetyFooter ||
+                  venue.safety_footer ||
+                  "Stay on boardwalks and trails · give wildlife lots of space · bring water"
+              )}</p>`
+            : ""
+        }
         <p class="th-footer">Optional after: open Field Trip Kit → tap a card → Q&A</p>
       </div>`;
   }
@@ -1601,6 +1645,10 @@
       track("hunt_generated", {
         venue_slug: venue.id || selectedVenueId,
         venue_name: venue.name || "",
+        venue_type:
+          String(venue.type || "").toLowerCase() === "national_park"
+            ? "park"
+            : String(venue.type || "unknown"),
         product: "babys_day_out",
       });
     }
@@ -1704,13 +1752,14 @@
   els.backBtn.addEventListener("click", () => showOuting(selectedVenueId));
   els.btnTaught.addEventListener("click", () => {
     const trip = getTrip(currentTripId);
-    const item = getItem(currentItemId);
+    const venue = trip ? getVenue(trip.venueId) : null;
+    const item = getItem(currentItemId, venue);
     if (!trip || !item) return;
     const st = itemState(trip, item.id);
     st.taught = !st.taught;
     trip.updatedAt = Date.now();
     saveStore();
-    renderDetail(trip, item, getVenue(trip.venueId));
+    renderDetail(trip, item, venue);
     if (st.taught) showWinBanner(true);
   });
   function openPickOneQuestions() {
@@ -1729,8 +1778,8 @@
       saveQaAge(btn.getAttribute("data-qa-age") || "4-5");
       syncQaAgeChips();
       const trip = getTrip(currentTripId);
-      const item = currentItemId ? getItem(currentItemId) : null;
       const venue = trip ? getVenue(trip.venueId) : null;
+      const item = currentItemId ? getItem(currentItemId, venue) : null;
       if (trip && item && venue) renderDetail(trip, item, venue);
     });
   });

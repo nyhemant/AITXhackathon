@@ -1,0 +1,82 @@
+[
+  {
+    "slug": "iguazu-argentina",
+    "ok": true,
+    "url": "https://upload.wikimedia.org/wikipedia/commons/0/03/Parque_Nacional_do_Igua%C3%A7%C3%BA_-_Igua%C3%A7u_National_Park_-_Mapa_do_Parque_Nacional_-_National_Park_map_%2814119957904%29.jpg",
+    "size": [
+      2200,
+      1462
+    ],
+    "bytes": 830685
+  },
+  {
+    "slug": "table-mountain",
+    "ok": true,
+    "url": "https://upload.wikimedia.org/wikipedia/commons/0/0c/Map-South_Africa-Western_Cape-Cape_Peninsula.png",
+    "size": [
+      950,
+      1302
+    ],
+    "bytes": 110135
+  },
+  {
+    "slug": "torres-del-paine",
+    "ok": true,
+    "url": "https://torresdelpaine.com/wp-content/uploads/sites/6/2023/09/Red-caminera-chile-magallanes-orginal.jpg",
+    "size": [
+      1405,
+      2200
+    ],
+    "bytes": 780797
+  },
+  {
+    "slug": "plitvice-lakes",
+    "ok": true,
+    "url": "https://whc.unesco.org/document/154774",
+    "size": [
+      1012,
+      1373
+    ],
+    "bytes": 340001
+  },
+  {
+    "slug": "snowdonia",
+    "ok": true,
+    "url": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Snowdonia_National_Park_UK_location_map.svg",
+    "size": [
+      1687,
+      2200
+    ],
+    "bytes": 420091
+  },
+  {
+    "slug": "lake-district",
+    "ok": false
+  },
+  {
+    "slug": "fiordland",
+    "ok": false
+  },
+  {
+    "slug": "killarney",
+    "ok": false
+  },
+  {
+    "slug": "blue-mountains",
+    "ok": false
+  },
+  {
+    "slug": "fuji-hakone-izu",
+    "ok": true,
+    "url": "https://upload.wikimedia.org/wikipedia/commons/9/98/Japan_location_map_with_side_map_of_the_Ryukyu_Islands.svg",
+    "size": [
+      2200,
+      1988
+    ],
+    "bytes": 228808
+  },
+  {
+    "slug": "nikko",
+    "ok": false
+  }
+]

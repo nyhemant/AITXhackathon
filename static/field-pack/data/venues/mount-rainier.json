@@ -1,0 +1,374 @@
+{
+  "slug": "mount-rainier",
+  "name": "Mount Rainier National Park",
+  "type": "national_park",
+  "city": "Ashford",
+  "region": "WA",
+  "country": "US",
+  "lat": 46.88,
+  "lng": -121.7269,
+  "official_url": "https://www.nps.gov/mora/",
+  "last_verified": "2026-08-09",
+  "verified_by": "research",
+  "status": "verified",
+  "tagline": "Mount Rainier — Paradise or Sunrise wildflower/views; one entrance only.",
+  "practical": {
+    "typical_duration": "half day",
+    "ticket_note": "Entrance pass; timed entry possible peak season.",
+    "transit_note": "Ashford / Paradise is classic family slice.",
+    "energy_note": "Altitude, cold, sudden weather.",
+    "best_start": "Visitor center → short paved meadow path → viewpoint",
+    "slice_name": "Paradise short paths",
+    "season_note": "Snow lingers; Sunrise road seasonal."
+  },
+  "items": [
+    {
+      "id": "np_visitor_center",
+      "label": "Paradise or Sunrise visitor center",
+      "emoji": "🏛️",
+      "one_liner": "Maps, restrooms, questions — start here.",
+      "tags": [
+        "rest"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Entrance",
+      "qa_card": {
+        "question": "What did you notice at the Paradise or Sunrise visitor center?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-visitor-center",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Paradise or Sunrise visitor center"
+    },
+    {
+      "id": "np_scenic_overlook",
+      "label": "Rainier summit view",
+      "emoji": "🌄",
+      "one_liner": "The mountain fills the sky on a clear day.",
+      "tags": [
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Overlook",
+      "qa_card": {
+        "question": "What did you notice at the Rainier summit view?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-scenic-overlook",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Rainier summit view"
+    },
+    {
+      "id": "np_meadow",
+      "label": "Paradise wildflower meadows (seasonal)",
+      "emoji": "🌾",
+      "one_liner": "Wide sky break.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Open",
+      "qa_card": {
+        "question": "What did you notice at the Paradise wildflower meadows (seasonal)?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-meadow",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Paradise wildflower meadows (seasonal)"
+    },
+    {
+      "id": "np_waterfall",
+      "label": "Myrtle Falls or cascade stop",
+      "emoji": "💦",
+      "one_liner": "Listen for water before you see it.",
+      "tags": [
+        "water",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Trail",
+      "qa_card": {
+        "question": "What did you notice at the Myrtle Falls or cascade stop?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-waterfall",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Myrtle Falls or cascade stop"
+    },
+    {
+      "id": "np_trailhead_sign",
+      "label": "Paradise short path sign",
+      "emoji": "🥾",
+      "one_liner": "Read distance and rules before you go.",
+      "tags": [
+        "read"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Trail",
+      "qa_card": {
+        "question": "What did you notice at the Paradise short path sign?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-trailhead-sign",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Paradise short path sign"
+    },
+    {
+      "id": "np_junior_ranger",
+      "label": "Mount Rainier Junior Ranger desk",
+      "emoji": "🎖️",
+      "one_liner": "Ask at the visitor center — hours and ages vary.",
+      "tags": [
+        "hands"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Visitor center",
+      "qa_card": {
+        "question": "What did you notice at the Mount Rainier Junior Ranger desk?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-junior-ranger",
+      "presence": "high",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Mount Rainier Junior Ranger desk"
+    },
+    {
+      "id": "np_giant_tree",
+      "label": "Subalpine fir edge",
+      "emoji": "🌳",
+      "one_liner": "Look up — hug with your eyes only.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Forest",
+      "qa_card": {
+        "question": "What did you notice at the Subalpine fir edge?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-giant-tree",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Subalpine fir edge"
+    },
+    {
+      "id": "np_ranger_program",
+      "label": "Mount Rainier ranger talk (if offered)",
+      "emoji": "🗣️",
+      "one_liner": "Check the day’s board at the visitor center.",
+      "tags": [
+        "hands"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "VC",
+      "qa_card": {
+        "question": "What did you notice at the Mount Rainier ranger talk (if offered)?",
+        "answer": "Tell a grown-up one thing you saw, heard, or felt!"
+      },
+      "catalog_id": "np-ranger-program",
+      "presence": "medium",
+      "presence_checked": "2026-08-08",
+      "presence_source": "nps_official_research",
+      "display_label": "Mount Rainier ranger talk (if offered)"
+    }
+  ],
+  "content_mode": "curated",
+  "media": {
+    "visitor_map_url": "/field-pack/media/maps/mount-rainier.jpg",
+    "visitor_map_page": "https://www.nps.gov/mora/planyourvisit/maps.htm",
+    "visitor_map_kind": "image",
+    "map_attribution": "Map: NPS via NPMaps (public domain)",
+    "hero_illustration": "/field-pack/photos/np-hero-mount-rainier.jpg",
+    "print_map": "/field-pack/media/maps/mount-rainier.jpg",
+    "visitor_map_full": "https://npmaps.com/wp-content/uploads/mount-rainier-national-park-map.jpg"
+  },
+  "parent_script": [
+    "Bathroom first",
+    "Water & sun check",
+    "One big view",
+    "Leave while happy"
+  ],
+  "route_90m": [
+    "np_visitor_center",
+    "np_meadow",
+    "np_scenic_overlook"
+  ],
+  "research_notes": "NP Phase 1c long-tail 2026-08-08 · slice-focused kit · label scrub 2026-08-09",
+  "list_confidence": "partial",
+  "do_not_list": [],
+  "presence_sources": [
+    "https://www.nps.gov/mora/"
+  ],
+  "last_presence_audit": "2026-08-08",
+  "bonus_hunt": {
+    "tagline": "Mount Rainier National Park bonus · second look on the trail",
+    "find_ids": [
+      "np_waterfall",
+      "np_giant_tree",
+      "np_junior_ranger",
+      "np_trailhead_sign",
+      "np_scenic_overlook",
+      "np_meadow",
+      "np_visitor_center"
+    ],
+    "challenges": [
+      {
+        "id": "mount_rainie_np_waterfall_watch",
+        "text": "Trail: take 15 seconds on the Myrtle Falls or cascade stop — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "mount_rainie_np_giant_tree_watch",
+        "text": "Forest: take 15 seconds on the Subalpine fir edge — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "mount_rainie_np_junior_ranger_watch",
+        "text": "Visitor center: take 15 seconds on the Mount Rainier Junior Ranger desk — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "mount_rainie_np_trailhead_sig_watch",
+        "text": "Trail: take 15 seconds on the Paradise short path sign — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "mount_rainie_np_scenic_overlo_watch",
+        "text": "Overlook: take 15 seconds on the Rainier summit view — what is it doing right now?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_still",
+        "text": "Quiet 20 seconds on the trail — bird, wind, water, or people: what wins?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_far_near",
+        "text": "Name something far first — then something by your feet",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_camo",
+        "text": "Best natural camouflage (rock, bark, shadow) you can spot",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_map",
+        "text": "Find a map or zone name you haven’t noticed — point it out",
+        "age_fit": [
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "np_tiny_huge",
+        "text": "Something tiny next to something huge in this area",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      }
+    ],
+    "easter_egg": "★ Easter egg: find a park map or zone sign — name one animal that lives that way",
+    "easter_egg_little": "★ Easter egg: pick a favorite bench — sit 60 seconds and name three sounds",
+    "researched": "2026-08-09",
+    "status": "solid",
+    "sources": [
+      "https://www.nps.gov/mora/"
+    ]
+  }
+}
