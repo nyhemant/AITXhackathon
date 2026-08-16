@@ -18,7 +18,7 @@
     aquarium: "/field-pack/data/virtual-venues/virtual-aquarium.json?v=21",
     "natural-history": "/field-pack/data/virtual-venues/virtual-nhm.json?v=13",
     science: "/field-pack/data/virtual-venues/virtual-science.json?v=14",
-    parks: "/field-pack/data/virtual-venues/virtual-parks.json?v=21",
+    parks: "/field-pack/data/virtual-venues/virtual-parks.json?v=22",
   };
 
   const mapMount = document.getElementById("vz-map");
@@ -47,6 +47,14 @@
       title: "Create your own virtual science museum",
       noun: "science museum",
       track: "science_picks_saved",
+    },
+    park: {
+      key: "fp-virtual-parks-picks-v1",
+      libUrl: "/field-pack/data/virtual-venues/parks-map-library.json?v=1",
+      title: "Make your own parks map",
+      noun: "road trip",
+      track: "parks_picks_saved",
+      layout: "set",
     },
   };
   const pickLibs = {};
@@ -211,6 +219,46 @@
     } catch (_) {}
   }
 
+  function parkPickState() {
+    const spec = pickSpec();
+    if (!spec || spec.layout !== "set") return { mode: "tour", unset: true };
+    try {
+      const raw = localStorage.getItem(spec.key);
+      if (raw == null) return { mode: "tour", unset: true };
+      const parsed = JSON.parse(raw);
+      if (parsed && parsed.mode === "custom" && Array.isArray(parsed.ids)) return parsed;
+      return { mode: "tour" };
+    } catch (_) {
+      return { mode: "tour", unset: true };
+    }
+  }
+
+  function saveParkPickState(state) {
+    const spec = pickSpec();
+    if (!spec) return;
+    try {
+      localStorage.setItem(spec.key, JSON.stringify(state));
+    } catch (_) {}
+  }
+
+  function isParkCustom() {
+    const spec = pickSpec();
+    return Boolean(spec && spec.layout === "set" && parkPickState().mode === "custom");
+  }
+
+  function normalizeParkIds(ids, lib) {
+    const allowed = new Set((lib.cards || []).map((c) => c.cardId));
+    const seen = new Set();
+    const out = [];
+    (ids || []).forEach((id) => {
+      if (id && allowed.has(id) && !seen.has(id) && out.length < 10) {
+        out.push(id);
+        seen.add(id);
+      }
+    });
+    return out;
+  }
+
   function pickLibById(lib) {
     const byId = {};
     ((lib && lib.cards) || []).forEach((c) => {
@@ -240,7 +288,20 @@
     return slots;
   }
 
+  function parkSlots(ids, lib) {
+    const filled = normalizeParkIds(ids, lib);
+    const slots = filled.slice();
+    while (slots.length < 10) slots.push("");
+    return slots;
+  }
+
   function pickerDraft(spec, lib) {
+    if (spec && spec.layout === "set") {
+      const state = parkPickState();
+      if (state.unset) return Array.from({ length: 10 }, () => "");
+      if (state.mode === "custom") return parkSlots(state.ids, lib);
+      return parkSlots(pickDefaultIds(lib), lib);
+    }
     const saved = loadPicks(spec);
     if (saved == null) return Array.from({ length: 10 }, () => "");
     return normalizePicks(saved, lib);
@@ -250,10 +311,59 @@
     return (slots || []).filter(Boolean);
   }
 
+  function habitatFromParkCard(card, i) {
+    return {
+      id: card.cardId,
+      cardId: card.cardId,
+      label: card.label,
+      emoji: card.emoji || "🏞️",
+      photo: card.photo || "",
+      blurb: card.blurb || "",
+      challenge: card.challenge || "",
+      printAnswer: card.printAnswer || "",
+      placeHref: card.placeHref || "/field-pack/" + card.cardId + "/",
+      hotspot: { svgId: "habitat-" + card.cardId },
+      cam: card.cam && card.cam.url ? card.cam : {},
+      video: card.video && card.video.url ? card.video : {},
+      seq: i + 1,
+      x: card.x,
+      y: card.y,
+      short: card.short || card.label,
+    };
+  }
+
+  function applyParkPicks(cfg) {
+    const spec = pickSpec(cfg && cfg.kind);
+    const lib = pickLibrary(cfg && cfg.kind);
+    if (!cfg || !spec || !lib) return;
+    if (!pickBaseHabitats || !pickBaseHabitats.length) {
+      pickBaseHabitats = JSON.parse(JSON.stringify(cfg.habitats || []));
+    }
+    const state = parkPickState();
+    if (state.mode !== "custom") {
+      cfg.habitats = JSON.parse(JSON.stringify(pickBaseHabitats));
+      cfg.sequential = true;
+      return;
+    }
+    const byId = pickLibById(lib);
+    const ids = normalizeParkIds(state.ids, lib);
+    if (!ids.length) {
+      cfg.habitats = JSON.parse(JSON.stringify(pickBaseHabitats));
+      cfg.sequential = true;
+      return;
+    }
+    cfg.habitats = ids.map((id, i) => habitatFromParkCard(byId[id], i)).filter(Boolean);
+    cfg.sequential = false;
+  }
+
   function applyPicks(cfg) {
     const spec = pickSpec(cfg && cfg.kind);
     const lib = pickLibrary(cfg && cfg.kind);
     if (!cfg || !spec || !lib) return;
+    if (spec.layout === "set") {
+      applyParkPicks(cfg);
+      return;
+    }
     if (!pickBaseHabitats || !pickBaseHabitats.length) {
       pickBaseHabitats = JSON.parse(JSON.stringify(cfg.habitats || []));
     }
@@ -302,9 +412,147 @@
     return String(id).replace(/([^a-zA-Z0-9_-])/g, "\\$1");
   }
 
+  const PARK_PAD = 72;
+
+  function parkMarkParts(spot) {
+    const pin = spot.previousElementSibling;
+    const label = spot.nextElementSibling;
+    return {
+      pin: pin && pin.tagName && pin.tagName.toLowerCase() === "circle" ? pin : null,
+      label: label && label.tagName && label.tagName.toLowerCase() === "text" ? label : null,
+    };
+  }
+
+  function setParkMarkVisible(spot, on) {
+    const parts = parkMarkParts(spot);
+    [spot, parts.pin, parts.label].forEach((el) => {
+      if (!el) return;
+      el.style.display = on ? "" : "none";
+    });
+    if (on) {
+      spot.removeAttribute("data-empty");
+      spot.removeAttribute("aria-hidden");
+    } else {
+      spot.setAttribute("data-empty", "1");
+      spot.setAttribute("aria-hidden", "true");
+      spot.setAttribute("data-habitat", "");
+    }
+  }
+
+  function injectParkMark(h) {
+    const svg = mapMount.querySelector("svg");
+    if (!svg || h.x == null || h.y == null) return;
+    const NS = "http://www.w3.org/2000/svg";
+    const cx = Number(h.x);
+    const cy = Number(h.y);
+    const half = PARK_PAD / 2;
+    const px = Math.min(Math.max(cx, half + 8), 1000 - half - 8);
+    const py = Math.min(Math.max(cy, half + 8), 620 - half - 22);
+    const x = px - half;
+    const y = py - half;
+    const g = document.createElementNS(NS, "g");
+    g.setAttribute("class", "vz-park-extra");
+    const pin = document.createElementNS(NS, "circle");
+    pin.setAttribute("cx", String(cx));
+    pin.setAttribute("cy", String(cy));
+    pin.setAttribute("r", "3.4");
+    pin.setAttribute("fill", "#0f5c5c");
+    pin.setAttribute("stroke", "#fff");
+    pin.setAttribute("stroke-width", "1.4");
+    const a = document.createElementNS(NS, "a");
+    a.setAttribute("href", "/field-pack/virtual-field-trip/?tab=parks#habitat=" + encodeURIComponent(h.id));
+    a.setAttribute("id", "habitat-" + h.id);
+    a.setAttribute("class", "vz-spot");
+    a.setAttribute("data-habitat", h.id);
+    a.setAttribute("aria-label", h.label || h.id);
+    const hit = document.createElementNS(NS, "rect");
+    hit.setAttribute("class", "vz-hit");
+    hit.setAttribute("x", String(x));
+    hit.setAttribute("y", String(y));
+    hit.setAttribute("width", String(PARK_PAD));
+    hit.setAttribute("height", String(PARK_PAD));
+    hit.setAttribute("fill", "transparent");
+    const halo = document.createElementNS(NS, "rect");
+    halo.setAttribute("class", "vz-halo");
+    halo.setAttribute("x", String(x - 2));
+    halo.setAttribute("y", String(y - 2));
+    halo.setAttribute("width", String(PARK_PAD + 4));
+    halo.setAttribute("height", String(PARK_PAD + 4));
+    halo.setAttribute("rx", "16");
+    const silo = document.createElementNS(NS, "rect");
+    silo.setAttribute("class", "vz-silo");
+    silo.setAttribute("x", String(x + 3));
+    silo.setAttribute("y", String(y + 3));
+    silo.setAttribute("width", String(PARK_PAD - 6));
+    silo.setAttribute("height", String(PARK_PAD - 6));
+    silo.setAttribute("rx", "12");
+    silo.setAttribute("fill", "#fff");
+    silo.setAttribute("stroke", "#1f2a2a");
+    silo.setAttribute("stroke-width", "2.6");
+    silo.setAttribute("filter", "url(#pad-shadow)");
+    const img = document.createElementNS(NS, "image");
+    const src = h.photo || "";
+    img.setAttribute("href", src);
+    img.setAttributeNS("http://www.w3.org/1999/xlink", "href", src);
+    img.setAttribute("x", String(x + 6));
+    img.setAttribute("y", String(y + 6));
+    img.setAttribute("width", String(PARK_PAD - 12));
+    img.setAttribute("height", String(PARK_PAD - 12));
+    img.setAttribute("preserveAspectRatio", "xMidYMin slice");
+    img.setAttribute("clip-path", "url(#vz-photo-clip)");
+    a.appendChild(hit);
+    a.appendChild(halo);
+    a.appendChild(silo);
+    a.appendChild(img);
+    const t = document.createElementNS(NS, "text");
+    t.setAttribute("x", String(px));
+    t.setAttribute("y", String(y + PARK_PAD + 13));
+    t.setAttribute("text-anchor", "middle");
+    t.setAttribute("font-family", "Georgia,serif");
+    t.setAttribute("font-size", "11");
+    t.setAttribute("font-weight", "700");
+    t.setAttribute("fill", "#0a4545");
+    t.textContent = h.short || h.label || h.id;
+    g.appendChild(pin);
+    g.appendChild(a);
+    g.appendChild(t);
+    svg.appendChild(g);
+    wrapPad(a);
+    wireSpot(a);
+  }
+
+  function applyParkMap() {
+    const spec = pickSpec();
+    if (!mapMount || !config || !spec || spec.layout !== "set") return;
+    const custom = isParkCustom();
+    mapMount.classList.toggle("is-park-custom", custom);
+    ["vz-trail", "vz-arrows", "vz-entry", "vz-exit"].forEach((id) => {
+      const el = mapMount.querySelector("#" + id);
+      if (el) el.style.display = custom ? "none" : "";
+    });
+    mapMount.querySelectorAll(".vz-park-extra").forEach((n) => n.remove());
+    const live = new Set(walkList().map((h) => h.id));
+    mapMount.querySelectorAll("a.vz-spot").forEach((el) => {
+      if (el.closest(".vz-park-extra")) return;
+      const id = (el.getAttribute("id") || "").replace(/^habitat-/, "");
+      const on = live.has(id);
+      setParkMarkVisible(el, on);
+      if (on) {
+        const h = habitatById(id);
+        el.setAttribute("data-habitat", h ? h.id : id);
+        el.setAttribute("aria-label", (h && h.label) || id);
+      }
+    });
+    if (!custom) return;
+    walkList().forEach((h) => {
+      if (mapMount.querySelector("#habitat-" + cssEscape(h.id))) return;
+      injectParkMark(h);
+    });
+  }
+
   function remapPickPads() {
     const spec = pickSpec();
-    if (!mapMount || !config || !spec) return;
+    if (!mapMount || !config || !spec || spec.layout === "set") return;
     const bySvg = {};
     walkList().forEach((h) => {
       const svgId = h.hotspot && h.hotspot.svgId;
@@ -344,7 +592,9 @@
   }
 
   function pickCardThumb(cardId) {
-    const src = cardPhotoSrc(cardId);
+    const lib = pickLibrary();
+    const card = pickLibById(lib)[cardId];
+    const src = (card && card.photo) || cardPhotoSrc(cardId);
     return src ? `<img src="${escapeHtml(src)}" alt="" width="120" height="90" loading="lazy" decoding="async" />` : "";
   }
 
@@ -358,6 +608,10 @@
       pathPicker.innerHTML = "";
       pickDraft = null;
       pickHold = null;
+      return;
+    }
+    if (spec.layout === "set") {
+      renderParkPicker(spec, lib);
       return;
     }
     if (!pickDraft || pickDraft.length !== 10) {
@@ -421,6 +675,68 @@
     if (defaultsBtn) defaultsBtn.addEventListener("click", autoDesignPath);
   }
 
+  function renderParkPicker(spec, lib) {
+    if (!pickDraft || pickDraft.length !== 10) {
+      pickDraft = pickerDraft(spec, lib).slice();
+      while (pickDraft.length < 10) pickDraft.push("");
+      pickHold = null;
+    }
+    const used = new Set(pickDraft.filter(Boolean));
+    const n = filledPicks(pickDraft).length;
+    const bench = (lib.cards || []).filter((c) => !used.has(c.cardId) && cardHasFilm(c));
+    const holdSlot = pickHold && pickHold.type === "slot" ? pickHold.i : -1;
+    const holdCard = pickHold && pickHold.type === "bench" ? pickHold.cardId : "";
+    pathPicker.innerHTML = `
+      <p class="vz-pick-lead">Empty boxes first — tap a park waiting below to drop it in. Tap two boxes to swap. Auto-design fills the Maine-to-Rockies road trip. Show these parks drops the road and leaves them where they really are.</p>
+      <ol class="vz-slot-row">
+        ${pickDraft
+          .map((id, i) => {
+            const on = holdSlot === i ? " is-hold" : "";
+            const empty = id ? "" : " is-empty";
+            const body = id
+              ? `${pickCardThumb(id)}<span>${escapeHtml(pickCardName(id, lib))}</span>`
+              : `<span class="vz-slot-empty">Add</span>`;
+            return `<li>
+              <button type="button" class="vz-slot${on}${empty}" data-slot="${i}">
+                <span class="vz-slot-num">${i + 1}</span>
+                ${body}
+              </button>
+            </li>`;
+          })
+          .join("")}
+      </ol>
+      <p class="vz-pick-count">${n} of 10 on the map</p>
+      <p class="vz-pick-bench-label">Waiting</p>
+      <ul class="vz-pick-grid">
+        ${bench
+          .map((c) => {
+            const on = holdCard === c.cardId ? " is-hold" : "";
+            return `<li>
+              <button type="button" class="vz-pick-card${on}" data-bench="${escapeHtml(c.cardId)}">
+                ${pickCardThumb(c.cardId)}
+                <span>${escapeHtml(pickCardName(c.cardId, lib))}</span>
+              </button>
+            </li>`;
+          })
+          .join("")}
+      </ul>
+      <div class="vz-pick-actions">
+        <button type="button" class="btn btn-primary" id="vz-pick-defaults"${draftIsDefaults(lib) ? " disabled" : ""}>Auto-design the road trip</button>
+        <button type="button" class="btn btn-secondary" id="vz-pick-apply"${n ? "" : " disabled"}>Show these parks</button>
+      </div>
+    `;
+    pathPicker.querySelectorAll("[data-slot]").forEach((btn) => {
+      btn.addEventListener("click", () => tapPickSlot(parseInt(btn.getAttribute("data-slot"), 10)));
+    });
+    pathPicker.querySelectorAll("[data-bench]").forEach((btn) => {
+      btn.addEventListener("click", () => tapPickBench(btn.getAttribute("data-bench")));
+    });
+    const applyBtn = pathPicker.querySelector("#vz-pick-apply");
+    if (applyBtn) applyBtn.addEventListener("click", commitParkCustom);
+    const defaultsBtn = pathPicker.querySelector("#vz-pick-defaults");
+    if (defaultsBtn) defaultsBtn.addEventListener("click", autoDesignPath);
+  }
+
   function draftIsDefaults(lib) {
     const ids = pickDefaultIds(lib).slice(0, 10);
     while (ids.length < 10) ids.push("");
@@ -430,14 +746,59 @@
   function fillPickDefaults() {
     const lib = pickLibrary();
     if (!lib) return;
-    pickDraft = pickDefaultIds(lib).slice(0, 10);
-    while (pickDraft.length < 10) pickDraft.push("");
+    pickDraft = parkSlots(pickDefaultIds(lib), lib);
     pickHold = null;
   }
 
   function autoDesignPath() {
     fillPickDefaults();
-    commitPickPath();
+    const spec = pickSpec();
+    if (spec && spec.layout === "set") commitParkTour();
+    else commitPickPath();
+  }
+
+  function refreshAfterPicks(spec) {
+    if (config.storageKey) {
+      stamps = [];
+      saveStamps(config.storageKey, stamps);
+    }
+    root.dataset.passportFired = "";
+    applyPicks(config);
+    remapPickPads();
+    applyParkMap();
+    applyMapPhotos();
+    renderPassport();
+    markMapStamps();
+    mapMount?.querySelectorAll("[data-habitat]").forEach((el) => {
+      if (el.getAttribute("data-habitat")) wrapPad(el);
+    });
+    wireMap();
+    closeDialog();
+    pickHold = null;
+    renderPathPicker();
+    if (stopsDrawer) stopsDrawer.open = false;
+    applyChrome();
+    track(spec.track, { count: walkList().length, tab: currentTab(), mode: isParkCustom() ? "custom" : "tour" });
+  }
+
+  function commitParkTour() {
+    const spec = pickSpec();
+    const lib = pickLibrary();
+    if (!spec || !lib || !config) return;
+    saveParkPickState({ mode: "tour" });
+    pickDraft = parkSlots(pickDefaultIds(lib), lib);
+    refreshAfterPicks(spec);
+  }
+
+  function commitParkCustom() {
+    const spec = pickSpec();
+    const lib = pickLibrary();
+    if (!spec || !lib || !config) return;
+    const ids = normalizeParkIds(pickDraft, lib);
+    if (!ids.length) return;
+    saveParkPickState({ mode: "custom", ids });
+    pickDraft = parkSlots(ids, lib);
+    refreshAfterPicks(spec);
   }
 
   function tapPickSlot(i) {
@@ -500,6 +861,7 @@
     root.dataset.passportFired = "";
     applyPicks(config);
     remapPickPads();
+    applyParkMap();
     applyMapPhotos();
     renderPassport();
     markMapStamps();
@@ -808,7 +1170,11 @@
     const title = document.getElementById("vz-title");
     const lead = document.getElementById("vz-lead");
     if (title && config && config.h1) title.textContent = config.h1;
-    if (lead && config && config.lead) lead.textContent = config.lead;
+    if (lead && config && config.lead) {
+      lead.textContent = isParkCustom()
+        ? "Your parks on a real map of the lower 48. Tap any one. Free. No account."
+        : config.lead;
+    }
     const useEl = document.getElementById("vz-use");
     if (useEl) {
       useEl.textContent =
@@ -823,7 +1189,9 @@
       const hint = document.getElementById("vz-map-hint");
       const isPark = config.kind === "park";
       const line = !isSequential()
-        ? "Tap any hall. Each photo has a name."
+        ? isPark
+          ? "Tap any park. They sit where they really are — no road."
+          : "Tap any hall. Each photo has a name."
         : isPark
           ? "Follow the road from Start to Finish. The next stop is marked Next."
           : "Start at the gate. The next stop is marked Next.";
@@ -838,7 +1206,7 @@
     if (!config) return;
     const habs = walkList();
     const nxt = nextHabitat();
-    const unit = isSequential() ? "stops" : "halls";
+    const unit = isSequential() ? "stops" : config.kind === "park" ? "parks" : "halls";
     const count = `${stamps.length} of ${habs.length} ${unit}`;
     const extra = isSequential()
       ? nxt
@@ -847,7 +1215,9 @@
           ? " · Path complete"
           : ""
       : habs.length
-        ? " · Tap any hall"
+        ? config.kind === "park"
+          ? " · Tap any park"
+          : " · Tap any hall"
         : "";
     if (progressEl) progressEl.textContent = count + extra;
     if (passCount) passCount.textContent = `${stamps.length}/${habs.length}`;
@@ -1242,22 +1612,26 @@
     else closeDialog();
   }
 
+  function wireSpot(el) {
+    if (!el || el.dataset.clickWired === "1") return;
+    el.dataset.clickWired = "1";
+    el.addEventListener("click", (e) => {
+      e.preventDefault();
+      const id = el.getAttribute("data-habitat");
+      if (!id) return;
+      openHabitat(id, el);
+    });
+    el.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        openHabitat(el.getAttribute("data-habitat"), el);
+      }
+    });
+  }
+
   function wireMap() {
     if (!mapMount) return;
-    mapMount.querySelectorAll("[data-habitat]").forEach((el) => {
-      el.addEventListener("click", (e) => {
-        e.preventDefault();
-        const id = el.getAttribute("data-habitat");
-        if (!id) return;
-        openHabitat(id, el);
-      });
-      el.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          openHabitat(el.getAttribute("data-habitat"), el);
-        }
-      });
-    });
+    mapMount.querySelectorAll("[data-habitat]").forEach(wireSpot);
   }
 
   function printMode() {
@@ -1328,6 +1702,7 @@
         pickDraft = null;
         pickHold = null;
         remapPickPads();
+        applyParkMap();
         applyMapPhotos();
         renderPathPicker();
         renderPassport();

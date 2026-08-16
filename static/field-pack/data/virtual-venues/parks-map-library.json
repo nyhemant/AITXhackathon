@@ -1,0 +1,1640 @@
+{
+  "id": "parks-map-library",
+  "checked": "2026-08-16",
+  "note": "Lower-48 park kits for the virtual map picker. Default tour is the Maine-to-Rockies road. Custom maps hide the road and pin parks at true lat/lon. Films skip title cards (video.start) so autoplay opens on the iconic shot. Alaska, Hawaii, and territories omitted \u2014 they do not sit on this CONUS SVG.",
+  "omit": [
+    {
+      "cardId": "denali",
+      "reason": "Alaska \u2014 off this map"
+    },
+    {
+      "cardId": "hawaii-volcanoes",
+      "reason": "Hawaii \u2014 off this map"
+    }
+  ],
+  "proj": {
+    "s": 1224.583708,
+    "bx": 510.6128,
+    "by": 335.0658
+  },
+  "cards": [
+    {
+      "cardId": "acadia",
+      "label": "Acadia",
+      "short": "Acadia",
+      "emoji": "\ud83c\udf05",
+      "photo": "/field-pack/photos/np-hero-acadia.jpg?v=q3",
+      "blurb": "Cadillac views and coast loops \u2014 timed entry often needed for the summit road.",
+      "challenge": "Why is ocean water salty? What happens when waves hit rock?",
+      "printAnswer": "Rivers carry a little salt from rocks, and it stays in the sea. Waves slowly wear the rock away.",
+      "placeHref": "/field-pack/acadia/",
+      "lat": 44.3386,
+      "lng": -68.2733,
+      "x": 927.3,
+      "y": 126.6,
+      "defaultTour": true,
+      "seq": 1,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=4bRKthFQfXo",
+        "title": "Acadia granite coast and Cadillac",
+        "provider": "youtube",
+        "channel": "More Than Just Parks",
+        "start": 6,
+        "icon": "Atlantic granite + Cadillac",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=4bRKthFQfXo",
+          "checked": "2026-08-16"
+        }
+      },
+      "cam": {
+        "url": "https://www.nps.gov/acad/learn/photosmultimedia/webcams.htm",
+        "provider": "nps",
+        "hours": "NPS webcam page",
+        "camLabel": "Acadia webcams \u00b7 National Park Service",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.nps.gov/acad/learn/photosmultimedia/webcams.htm",
+          "checked": "2026-08-13"
+        }
+      }
+    },
+    {
+      "cardId": "great-smoky-mountains",
+      "label": "Great Smoky Mountains",
+      "short": "Smokies",
+      "emoji": "\ud83c\udf2b\ufe0f",
+      "photo": "/field-pack/photos/np-hero-great-smoky-mountains.jpg?v=q3",
+      "blurb": "Sugarlands side \u2014 visitor center, easy forest paths, waterfall stop.",
+      "challenge": "Why do faraway mountains look blue or smoky?",
+      "printAnswer": "Air and tiny drops scatter light, so far ridges look blue or hazy.",
+      "placeHref": "/field-pack/great-smoky-mountains/",
+      "lat": 35.6532,
+      "lng": -83.507,
+      "x": 725.0,
+      "y": 360.8,
+      "defaultTour": true,
+      "seq": 2,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=i_WME0gAO_g",
+        "title": "Smokies ridges in fall",
+        "provider": "youtube",
+        "channel": "More Than Just Parks",
+        "start": 6,
+        "icon": "blue ridgelines",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=i_WME0gAO_g",
+          "checked": "2026-08-16"
+        }
+      },
+      "cam": {
+        "url": "https://www.nps.gov/grsm/learn/photosmultimedia/webcams.htm",
+        "provider": "nps",
+        "hours": "NPS webcam page",
+        "camLabel": "Smokies webcams \u00b7 National Park Service",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.nps.gov/grsm/learn/photosmultimedia/webcams.htm",
+          "checked": "2026-08-13"
+        }
+      }
+    },
+    {
+      "cardId": "everglades",
+      "label": "Everglades",
+      "short": "Everglades",
+      "emoji": "\ud83d\udc0a",
+      "photo": "/field-pack/photos/np-hero-everglades.jpg?v=q3",
+      "blurb": "Anhinga / boardwalk wildlife \u2014 short wetland loop, not the whole 'Glades.",
+      "challenge": "Why is a wetland so important? Who lives in the sawgrass?",
+      "printAnswer": "Wetlands clean water and make a home for birds, fish, and gators. Sawgrass is a wet prairie, not a dry field.",
+      "placeHref": "/field-pack/everglades/",
+      "lat": 25.2866,
+      "lng": -80.8987,
+      "x": 804.5,
+      "y": 573.3,
+      "defaultTour": true,
+      "seq": 3,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=4IFn0t0rkiE",
+        "title": "Alligators and wildlife of the Everglades",
+        "provider": "youtube",
+        "channel": "4K Relaxation Channel",
+        "start": 8,
+        "icon": "gators in the water",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=4IFn0t0rkiE",
+          "checked": "2026-08-16"
+        }
+      }
+    },
+    {
+      "cardId": "big-bend",
+      "label": "Big Bend",
+      "short": "Big Bend",
+      "emoji": "\ud83c\udfdc\ufe0f",
+      "photo": "/field-pack/photos/np-hero-big-bend.jpg?v=q3",
+      "blurb": "Big Bend \u2014 desert mountains and Rio Grande; pick one short area, not the whole park.",
+      "challenge": "How can a river cut through a desert? Where does the water go?",
+      "printAnswer": "Even a dry place can have a strong river. The water carved the land for a long time and keeps flowing on.",
+      "placeHref": "/field-pack/big-bend/",
+      "lat": 29.1275,
+      "lng": -103.2425,
+      "x": 375.4,
+      "y": 509.9,
+      "defaultTour": true,
+      "seq": 4,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=izPFPJS3Ohs",
+        "title": "Big Bend Chisos mountains and canyons",
+        "provider": "youtube",
+        "channel": "4K Healing Scenery",
+        "start": 5,
+        "icon": "Chisos desert mountains",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=izPFPJS3Ohs",
+          "checked": "2026-08-16"
+        }
+      }
+    },
+    {
+      "cardId": "grand-canyon",
+      "label": "Grand Canyon",
+      "short": "Grand Canyon",
+      "emoji": "\ud83c\udfde\ufe0f",
+      "photo": "/field-pack/photos/np-hero-grand-canyon.jpg?v=q3",
+      "blurb": "South Rim village \u2014 rail overlooks and a short rim walk, not the whole canyon.",
+      "challenge": "How did a river cut a canyon this deep?",
+      "printAnswer": "The Colorado River wore away rock, grain by grain, for millions of years. Slow water can cut a huge canyon.",
+      "placeHref": "/field-pack/grand-canyon/",
+      "lat": 36.0544,
+      "lng": -112.1401,
+      "x": 235.6,
+      "y": 342.9,
+      "defaultTour": true,
+      "seq": 5,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=LtEG2UEbD4U",
+        "title": "Grand Canyon from the rim",
+        "provider": "youtube",
+        "channel": "Amazing Places on Our Planet",
+        "start": 8,
+        "icon": "rim abyss",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=LtEG2UEbD4U",
+          "checked": "2026-08-16"
+        }
+      },
+      "cam": {
+        "url": "https://www.nps.gov/grca/learn/photosmultimedia/webcams.htm",
+        "provider": "nps",
+        "hours": "NPS webcam page",
+        "camLabel": "Grand Canyon webcams \u00b7 National Park Service",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.nps.gov/grca/learn/photosmultimedia/webcams.htm",
+          "checked": "2026-08-13"
+        }
+      }
+    },
+    {
+      "cardId": "yosemite",
+      "label": "Yosemite",
+      "short": "Yosemite",
+      "emoji": "\u26f0\ufe0f",
+      "photo": "/field-pack/photos/np-hero-yosemite.jpg?v=q3",
+      "blurb": "Yosemite Valley icons \u2014 falls, meadow, and Half Dome from the floor.",
+      "challenge": "How does a waterfall start? Why is granite so steep?",
+      "printAnswer": "A river falls where the land drops. Ice and rock-cracking made the granite walls steep.",
+      "placeHref": "/field-pack/yosemite/",
+      "lat": 37.7459,
+      "lng": -119.5936,
+      "x": 119.8,
+      "y": 281.0,
+      "defaultTour": true,
+      "seq": 6,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=HLmOkDBfxv0",
+        "title": "Yosemite granite and waterfalls",
+        "provider": "youtube",
+        "channel": "Amazing Places on Our Planet",
+        "start": 8,
+        "icon": "valley granite / falls",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=HLmOkDBfxv0",
+          "checked": "2026-08-16"
+        }
+      },
+      "cam": {
+        "url": "https://www.nps.gov/yose/learn/photosmultimedia/webcams.htm",
+        "provider": "nps",
+        "hours": "NPS webcam page",
+        "camLabel": "Yosemite webcams \u00b7 National Park Service",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.nps.gov/yose/learn/photosmultimedia/webcams.htm",
+          "checked": "2026-08-13"
+        }
+      }
+    },
+    {
+      "cardId": "olympic",
+      "label": "Olympic",
+      "short": "Olympic",
+      "emoji": "\ud83c\udf32",
+      "photo": "/field-pack/photos/np-hero-olympic.jpg?v=q3",
+      "blurb": "Olympic \u2014 pick one: rainforest, coast, or hurricane ridge \u2014 not all three.",
+      "challenge": "Why can one park have rain forest and ocean?",
+      "printAnswer": "Mountains catch wet air from the sea. One side stays rainy and green; the coast stays wild and salty.",
+      "placeHref": "/field-pack/olympic/",
+      "lat": 48.0414,
+      "lng": -123.4186,
+      "x": 120.9,
+      "y": 52.2,
+      "defaultTour": true,
+      "seq": 7,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=6jQ_eu3b_BA",
+        "title": "Olympic rainforest, coast, and ridge",
+        "provider": "youtube",
+        "channel": "More Than Just Parks",
+        "start": 6,
+        "icon": "moss forest + coast",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=6jQ_eu3b_BA",
+          "checked": "2026-08-16"
+        }
+      },
+      "cam": {
+        "url": "https://www.nps.gov/olym/learn/photosmultimedia/webcams.htm",
+        "provider": "nps",
+        "hours": "NPS webcam page",
+        "camLabel": "Olympic webcams \u00b7 National Park Service",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.nps.gov/olym/learn/photosmultimedia/webcams.htm",
+          "checked": "2026-08-13"
+        }
+      }
+    },
+    {
+      "cardId": "glacier",
+      "label": "Glacier",
+      "short": "Glacier",
+      "emoji": "\ud83c\udfd4\ufe0f",
+      "photo": "/field-pack/photos/np-hero-glacier.jpg?v=q3",
+      "blurb": "Glacier \u2014 short valley or lake stops; Going-to-the-Sun is seasonal.",
+      "challenge": "Why is glacier ice blue? How does a glacier move?",
+      "printAnswer": "Thick ice swallows other colors and lets blue through. The ice is a slow river \u2014 it slides under its own weight.",
+      "placeHref": "/field-pack/glacier/",
+      "lat": 48.7596,
+      "lng": -113.787,
+      "x": 258.6,
+      "y": 70.0,
+      "defaultTour": true,
+      "seq": 8,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=zrHlFPRI_0c",
+        "title": "Glacier lakes and peaks",
+        "provider": "youtube",
+        "channel": "Amazing Places on Our Planet",
+        "start": 8,
+        "icon": "Going-to-the-Sun peaks",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=zrHlFPRI_0c",
+          "checked": "2026-08-16"
+        }
+      },
+      "cam": {
+        "url": "https://www.nps.gov/glac/learn/photosmultimedia/webcams.htm",
+        "provider": "nps",
+        "hours": "NPS webcam page",
+        "camLabel": "Glacier webcams \u00b7 National Park Service",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.nps.gov/glac/learn/photosmultimedia/webcams.htm",
+          "checked": "2026-08-14"
+        }
+      }
+    },
+    {
+      "cardId": "yellowstone",
+      "label": "Yellowstone",
+      "short": "Yellowstone",
+      "emoji": "\ud83d\udca8",
+      "photo": "/field-pack/photos/np-hero-yellowstone.jpg?v=q3",
+      "blurb": "Old Faithful area \u2014 geysers, boardwalks, and one finishable basin loop.",
+      "challenge": "Why does a geyser shoot up? What\u2019s under the ground?",
+      "printAnswer": "Water soaks down, hits hot rock, and blasts out as steam. A huge heat source sits under the park.",
+      "placeHref": "/field-pack/yellowstone/",
+      "lat": 44.4605,
+      "lng": -110.8281,
+      "x": 285.9,
+      "y": 167.6,
+      "defaultTour": true,
+      "seq": 9,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=635UZAPkElg",
+        "title": "Yellowstone Grand Prismatic Spring",
+        "provider": "youtube",
+        "channel": "Amazing Places on Our Planet",
+        "start": 2,
+        "icon": "Grand Prismatic from above",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=635UZAPkElg",
+          "checked": "2026-08-16"
+        }
+      },
+      "cam": {
+        "url": "https://www.nps.gov/yell/learn/photosmultimedia/webcams.htm",
+        "provider": "nps",
+        "hours": "NPS webcam page",
+        "camLabel": "Yellowstone webcams \u00b7 National Park Service",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.nps.gov/yell/learn/photosmultimedia/webcams.htm",
+          "checked": "2026-08-13"
+        }
+      }
+    },
+    {
+      "cardId": "rocky-mountain",
+      "label": "Rocky Mountain",
+      "short": "Rocky Mtn",
+      "emoji": "\ud83c\udfd4\ufe0f",
+      "photo": "/field-pack/photos/np-hero-rocky-mountain.jpg?v=q3",
+      "blurb": "Beaver Meadows / easy alpine views \u2014 altitude-aware half day.",
+      "challenge": "Why is it harder to breathe up high? Why are mountains snowy?",
+      "printAnswer": "The air is thinner up high, so each breath has less oxygen. It stays colder, so snow can last.",
+      "placeHref": "/field-pack/rocky-mountain/",
+      "lat": 40.3428,
+      "lng": -105.6836,
+      "x": 354.5,
+      "y": 265.8,
+      "defaultTour": true,
+      "seq": 10,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=9Gh44EYQ2zw",
+        "title": "Rocky Mountain high meadows",
+        "provider": "youtube",
+        "channel": "More Than Just Parks",
+        "start": 6,
+        "icon": "alpine meadows",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=9Gh44EYQ2zw",
+          "checked": "2026-08-16"
+        }
+      },
+      "cam": {
+        "url": "https://www.nps.gov/romo/learn/photosmultimedia/webcams.htm",
+        "provider": "nps",
+        "hours": "NPS webcam page",
+        "camLabel": "Rocky Mountain webcams \u00b7 National Park Service",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.nps.gov/romo/learn/photosmultimedia/webcams.htm",
+          "checked": "2026-08-13"
+        }
+      }
+    },
+    {
+      "cardId": "arches",
+      "label": "Arches",
+      "short": "Arches",
+      "emoji": "\ud83e\udea8",
+      "photo": "/field-pack/photos/np-hero-arches.jpg?v=q3",
+      "blurb": "Windows / Delicate area \u2014 short desert loops and iconic arches.",
+      "challenge": "How does a rock become an arch?",
+      "printAnswer": "Softer rock underneath wears away first. The harder rock on top stays, and a window opens.",
+      "placeHref": "/field-pack/arches/",
+      "lat": 38.7331,
+      "lng": -109.5925,
+      "x": 286.9,
+      "y": 292.4,
+      "defaultTour": false,
+      "seq": 99,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=cgkizvteN0M",
+        "title": "Arches \u2014 sunrise through South Window",
+        "provider": "youtube",
+        "channel": "Amazing Places on Our Planet",
+        "start": 7,
+        "icon": "sunrise through South Window",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=cgkizvteN0M",
+          "checked": "2026-08-16"
+        }
+      }
+    },
+    {
+      "cardId": "badlands",
+      "label": "Badlands",
+      "short": "Badlands",
+      "emoji": "\ud83e\udde1",
+      "photo": "/field-pack/photos/np-hero-badlands.jpg?v=q3",
+      "blurb": "Badlands \u2014 loop road overlooks and a short fossil/boardwalk stop.",
+      "challenge": "Why are the hills striped with color?",
+      "printAnswer": "Each stripe is a different layer of old mud and ash. Wind and rain cut them into sharp hills.",
+      "placeHref": "/field-pack/badlands/",
+      "lat": 43.8554,
+      "lng": -102.3397,
+      "x": 413.4,
+      "y": 194.9,
+      "defaultTour": false,
+      "seq": 99,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=Wp3yXVTIugQ",
+        "title": "Badlands striped buttes",
+        "provider": "youtube",
+        "channel": "More Than Just Parks",
+        "start": 6,
+        "icon": "banded badlands",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=Wp3yXVTIugQ",
+          "checked": "2026-08-16"
+        }
+      }
+    },
+    {
+      "cardId": "biscayne",
+      "label": "Biscayne",
+      "short": "Biscayne",
+      "emoji": "\ud83d\udc20",
+      "photo": "/field-pack/photos/np-hero-biscayne.jpg?v=q3",
+      "blurb": "Biscayne \u2014 mostly water; visitor center and jetty/shore when not on a boat.",
+      "challenge": "Why is the water so blue-green here?",
+      "printAnswer": "Shallow water over sand and coral lets light bounce back. The sea is a home, not just a swimming pool.",
+      "placeHref": "/field-pack/biscayne/",
+      "lat": 25.4824,
+      "lng": -80.2083,
+      "x": 817.2,
+      "y": 567.0,
+      "defaultTour": false,
+      "seq": 99,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=taSrHXYX7uc",
+        "title": "Biscayne water and reef",
+        "provider": "youtube",
+        "channel": "A Glimpse of the Journey",
+        "start": 6,
+        "icon": "turquoise bay",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=taSrHXYX7uc",
+          "checked": "2026-08-16"
+        }
+      }
+    },
+    {
+      "cardId": "black-canyon-gunnison",
+      "label": "Black Canyon",
+      "short": "Black Canyon",
+      "emoji": "\ud83c\udf11",
+      "photo": "/field-pack/photos/np-hero-black-canyon-gunnison.jpg?v=q3",
+      "blurb": "Black Canyon \u2014 South Rim overlooks; stay behind rails on sheer drops.",
+      "challenge": "Why is this canyon so dark and skinny?",
+      "printAnswer": "Hard rock and a fast river cut down more than they cut sideways. Sunlight barely reaches the bottom.",
+      "placeHref": "/field-pack/black-canyon-gunnison/",
+      "lat": 38.5754,
+      "lng": -107.7416,
+      "x": 316.8,
+      "y": 299.9,
+      "defaultTour": false,
+      "seq": 99,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=Sa3DcKwikj0",
+        "title": "Black Canyon of the Gunnison walls",
+        "provider": "youtube",
+        "channel": "Amazing Places on Our Planet",
+        "start": 8,
+        "icon": "dark narrow canyon",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=Sa3DcKwikj0",
+          "checked": "2026-08-16"
+        }
+      }
+    },
+    {
+      "cardId": "bryce-canyon",
+      "label": "Bryce Canyon",
+      "short": "Bryce Canyon",
+      "emoji": "\ud83e\udde1",
+      "photo": "/field-pack/photos/np-hero-bryce-canyon.jpg?v=q3",
+      "blurb": "Rim overlooks of orange hoodoos \u2014 skip the full amphitheater hike for little kids.",
+      "challenge": "What are hoodoos? How do they stand up?",
+      "printAnswer": "Hoodoos are skinny rock towers. Ice and rain nibble the sides but leave a harder cap on top.",
+      "placeHref": "/field-pack/bryce-canyon/",
+      "lat": 37.593,
+      "lng": -112.1871,
+      "x": 240.5,
+      "y": 310.0,
+      "defaultTour": false,
+      "seq": 99,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=mn7Zv1ZNF4s",
+        "title": "Bryce Canyon hoodoos",
+        "provider": "youtube",
+        "channel": "Amazing Places on Our Planet",
+        "start": 8,
+        "icon": "amphitheater hoodoos",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=mn7Zv1ZNF4s",
+          "checked": "2026-08-16"
+        }
+      }
+    },
+    {
+      "cardId": "canyonlands",
+      "label": "Canyonlands",
+      "short": "Canyonlands",
+      "emoji": "\ud83d\uddfa\ufe0f",
+      "photo": "/field-pack/photos/np-hero-canyonlands.jpg?v=q3",
+      "blurb": "Canyonlands \u2014 Island in the Sky overlooks; one mesa, not all districts.",
+      "challenge": "Why do rivers make such a maze of canyons?",
+      "printAnswer": "Two rivers cut down through stacked rock. Side washes join in, so the land looks like a puzzle.",
+      "placeHref": "/field-pack/canyonlands/",
+      "lat": 38.3269,
+      "lng": -109.8783,
+      "x": 281.0,
+      "y": 300.4,
+      "defaultTour": false,
+      "seq": 99,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=MOzSqGyhKbs",
+        "title": "Canyonlands Island in the Sky",
+        "provider": "youtube",
+        "channel": "More Than Just Parks",
+        "start": 6,
+        "icon": "mesa and canyon drop",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=MOzSqGyhKbs",
+          "checked": "2026-08-16"
+        }
+      }
+    },
+    {
+      "cardId": "capitol-reef",
+      "label": "Capitol Reef",
+      "short": "Capitol Reef",
+      "emoji": "\ud83c\udfdb\ufe0f",
+      "photo": "/field-pack/photos/np-hero-capitol-reef.jpg?v=q3",
+      "blurb": "Capitol Reef \u2014 orchard valley and red cliffs; short scenic drive stops.",
+      "challenge": "What is a fold in the earth?",
+      "printAnswer": "Layers of rock got pushed and bent like a rug. The fold makes cliffs, domes, and a wrinkle you can see.",
+      "placeHref": "/field-pack/capitol-reef/",
+      "lat": 38.367,
+      "lng": -111.2615,
+      "x": 258.4,
+      "y": 296.1,
+      "defaultTour": false,
+      "seq": 99,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=a99ioa2tszw",
+        "title": "Capitol Reef Waterpocket Fold",
+        "provider": "youtube",
+        "channel": "More Than Just Parks",
+        "start": 6,
+        "icon": "red fold and white domes",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=a99ioa2tszw",
+          "checked": "2026-08-16"
+        }
+      }
+    },
+    {
+      "cardId": "carlsbad-caverns",
+      "label": "Carlsbad",
+      "short": "Carlsbad",
+      "emoji": "\ud83e\udd87",
+      "photo": "/field-pack/photos/np-hero-carlsbad-caverns.jpg?v=q3",
+      "blurb": "Carlsbad \u2014 Big Room cave (self-guided or tour) and visitor center.",
+      "challenge": "How does a cave get so huge underground?",
+      "printAnswer": "Water dissolved limestone for a very long time. Drips built stone icicles after the rooms were hollow.",
+      "placeHref": "/field-pack/carlsbad-caverns/",
+      "lat": 32.1479,
+      "lng": -104.5567,
+      "x": 356.8,
+      "y": 443.4,
+      "defaultTour": false,
+      "seq": 99,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=R0Otx2OmIyk",
+        "title": "Carlsbad Caverns Big Room \u2014 no talking",
+        "provider": "youtube",
+        "channel": "Rain Hours",
+        "start": 45,
+        "icon": "underground Big Room",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=R0Otx2OmIyk",
+          "checked": "2026-08-16"
+        }
+      }
+    },
+    {
+      "cardId": "channel-islands",
+      "label": "Channel Is.",
+      "short": "Channel Is.",
+      "emoji": "\ud83e\uddad",
+      "photo": "/field-pack/photos/np-hero-channel-islands.jpg?v=q3",
+      "blurb": "Channel Islands \u2014 mainland visitor center if not on a boat day.",
+      "challenge": "Why do islands have animals you don\u2019t see on the mainland?",
+      "printAnswer": "Water isolates them. Animals change over time when they can\u2019t mix with the shore.",
+      "placeHref": "/field-pack/channel-islands/",
+      "lat": 34.0069,
+      "lng": -119.7785,
+      "x": 96.8,
+      "y": 358.4,
+      "defaultTour": false,
+      "seq": 99,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=SicHkn869kQ",
+        "title": "Channel Islands from the sea",
+        "provider": "youtube",
+        "channel": "Ventura Harbor",
+        "start": 8,
+        "icon": "islands in the Pacific",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=SicHkn869kQ",
+          "checked": "2026-08-16"
+        }
+      }
+    },
+    {
+      "cardId": "congaree",
+      "label": "Congaree",
+      "short": "Congaree",
+      "emoji": "\ud83c\udf33",
+      "photo": "/field-pack/photos/np-hero-congaree.jpg?v=q3",
+      "blurb": "Congaree \u2014 boardwalk through old-growth bottomland forest.",
+      "challenge": "Why are these trees so tall in a swamp?",
+      "printAnswer": "Floods bring rich mud. The trees drink it and race upward for light.",
+      "placeHref": "/field-pack/congaree/",
+      "lat": 33.794,
+      "lng": -80.7821,
+      "x": 777.8,
+      "y": 393.5,
+      "defaultTour": false,
+      "seq": 99,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=oIvUfKDgvno",
+        "title": "Congaree floodplain forest walk",
+        "provider": "youtube",
+        "channel": "MileMarker4K",
+        "start": 5,
+        "icon": "boardwalk among giants",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=oIvUfKDgvno",
+          "checked": "2026-08-16"
+        }
+      }
+    },
+    {
+      "cardId": "crater-lake",
+      "label": "Crater Lake",
+      "short": "Crater Lake",
+      "emoji": "\ud83d\udd35",
+      "photo": "/field-pack/photos/np-hero-crater-lake.jpg?v=q3",
+      "blurb": "Crater Lake \u2014 rim overlooks of the deep blue caldera; rim drive seasonal.",
+      "challenge": "How did a lake get inside a mountain?",
+      "printAnswer": "A volcano collapsed and left a bowl. Rain and snow filled it with very deep, clear water.",
+      "placeHref": "/field-pack/crater-lake/",
+      "lat": 42.8684,
+      "lng": -122.1685,
+      "x": 108.2,
+      "y": 163.6,
+      "defaultTour": false,
+      "seq": 99,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=GFskQm2vAV0",
+        "title": "Crater Lake blue water",
+        "provider": "youtube",
+        "channel": "Amazing Places on Our Planet",
+        "start": 8,
+        "icon": "caldera blue + Wizard Island",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=GFskQm2vAV0",
+          "checked": "2026-08-16"
+        }
+      }
+    },
+    {
+      "cardId": "cuyahoga-valley",
+      "label": "Cuyahoga",
+      "short": "Cuyahoga",
+      "emoji": "\ud83c\udf42",
+      "photo": "/field-pack/photos/np-hero-cuyahoga-valley.jpg?v=q3",
+      "blurb": "Near-city towpath day \u2014 flat canal path and easy nature stops.",
+      "challenge": "How can a river park sit next to a city?",
+      "printAnswer": "The river kept a wild strip. Trails and a towpath follow water that carved the valley.",
+      "placeHref": "/field-pack/cuyahoga-valley/",
+      "lat": 41.2808,
+      "lng": -81.5678,
+      "x": 739.7,
+      "y": 236.1,
+      "defaultTour": false,
+      "seq": 99,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=D3leZ5R5aGw",
+        "title": "Cuyahoga Ledges Trail",
+        "provider": "youtube",
+        "channel": "DroneRoamer",
+        "start": 0,
+        "icon": "ledges and forest",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=D3leZ5R5aGw",
+          "checked": "2026-08-16"
+        }
+      }
+    },
+    {
+      "cardId": "death-valley",
+      "label": "Death Valley",
+      "short": "Death Valley",
+      "emoji": "\u2600\ufe0f",
+      "photo": "/field-pack/photos/np-hero-death-valley.jpg?v=q3",
+      "blurb": "Death Valley \u2014 short cool-season stops only; heat is the limit.",
+      "challenge": "Why is this one of the hottest, lowest places?",
+      "printAnswer": "Mountains trap heat and dry air. The floor sits below sea level, so heat piles up.",
+      "placeHref": "/field-pack/death-valley/",
+      "lat": 36.5054,
+      "lng": -117.0794,
+      "x": 154.8,
+      "y": 316.9,
+      "defaultTour": false,
+      "seq": 99,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=uvJfZutjpHA",
+        "title": "Death Valley dunes and Badwater",
+        "provider": "youtube",
+        "channel": "More Than Just Parks",
+        "start": 6,
+        "icon": "dunes / salt flats",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=uvJfZutjpHA",
+          "checked": "2026-08-16"
+        }
+      }
+    },
+    {
+      "cardId": "dry-tortugas",
+      "label": "Dry Tortugas",
+      "short": "Dry Tortugas",
+      "emoji": "\ud83c\udff0",
+      "photo": "/field-pack/photos/np-hero-dry-tortugas.jpg?v=q3",
+      "blurb": "Dry Tortugas \u2014 ferry or seaplane day to Fort Jefferson; plan transit first.",
+      "challenge": "Why is there a huge brick fort in the ocean?",
+      "printAnswer": "Ships needed a lookout. Builders used an island of coral and sand far from the mainland.",
+      "placeHref": "/field-pack/dry-tortugas/",
+      "lat": 24.6285,
+      "lng": -82.8732,
+      "x": 768.3,
+      "y": 592.8,
+      "defaultTour": false,
+      "seq": 99,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=F6o2EZPNSRA",
+        "title": "Dry Tortugas Fort Jefferson",
+        "provider": "youtube",
+        "channel": "VISIT FLORIDA",
+        "start": 8,
+        "icon": "brick fort in turquoise water",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=F6o2EZPNSRA",
+          "checked": "2026-08-16"
+        }
+      }
+    },
+    {
+      "cardId": "gateway-arch",
+      "label": "Gateway Arch",
+      "short": "Gateway Arch",
+      "emoji": "\ud83c\udf09",
+      "photo": "/field-pack/photos/np-hero-gateway-arch.jpg?v=q3",
+      "blurb": "Gateway Arch \u2014 riverfront park and arch grounds; tram tickets separate.",
+      "challenge": "Why is the Arch a giant curve?",
+      "printAnswer": "A catenary curve is strong \u2014 like a chain hanging, flipped up. It marks the river gateway.",
+      "placeHref": "/field-pack/gateway-arch/",
+      "lat": 38.6247,
+      "lng": -90.1848,
+      "x": 606.7,
+      "y": 307.9,
+      "defaultTour": false,
+      "seq": 99,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=DwnLsWZsKfs",
+        "title": "Gateway Arch on the river",
+        "provider": "youtube",
+        "channel": "MileMarker4K",
+        "start": 5,
+        "icon": "the Arch",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=DwnLsWZsKfs",
+          "checked": "2026-08-16"
+        }
+      }
+    },
+    {
+      "cardId": "grand-teton",
+      "label": "Grand Teton",
+      "short": "Grand Teton",
+      "emoji": "\u26f0\ufe0f",
+      "photo": "/field-pack/photos/np-hero-grand-teton.jpg?v=q3",
+      "blurb": "Grand Teton \u2014 mountain backdrop pullouts and Jenny Lake area shorts.",
+      "challenge": "Why do these peaks look so sharp and sudden?",
+      "printAnswer": "A fault lifted the range. Ice carved the horns. The valley floor sits close to the wall.",
+      "placeHref": "/field-pack/grand-teton/",
+      "lat": 43.7904,
+      "lng": -110.6818,
+      "x": 285.9,
+      "y": 182.1,
+      "defaultTour": false,
+      "seq": 99,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=oRxLvMHLI3I",
+        "title": "Grand Teton peaks and wildlife",
+        "provider": "youtube",
+        "channel": "More Than Just Parks",
+        "start": 6,
+        "icon": "Teton skyline",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=oRxLvMHLI3I",
+          "checked": "2026-08-16"
+        }
+      }
+    },
+    {
+      "cardId": "great-basin",
+      "label": "Great Basin",
+      "short": "Great Basin",
+      "emoji": "\ud83c\udf32",
+      "photo": "/field-pack/photos/np-hero-great-basin.jpg?v=q3",
+      "blurb": "Great Basin \u2014 Wheeler Peak scenic drive and short alpine or cave options.",
+      "challenge": "Why can trees live thousands of years here?",
+      "printAnswer": "High, dry, and slow. Bristlecones grow a little each year and hold on in tough rock.",
+      "placeHref": "/field-pack/great-basin/",
+      "lat": 38.9833,
+      "lng": -114.3,
+      "x": 211.3,
+      "y": 274.2,
+      "defaultTour": false,
+      "seq": 99,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=km7dBhMGx_U",
+        "title": "Great Basin National Park film",
+        "provider": "youtube",
+        "channel": "GreatBasinNPS",
+        "start": 8,
+        "icon": "Wheeler Peak / bristlecones",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=km7dBhMGx_U",
+          "checked": "2026-08-16"
+        }
+      }
+    },
+    {
+      "cardId": "guadalupe-mountains",
+      "label": "Guadalupe",
+      "short": "Guadalupe",
+      "emoji": "\u26f0\ufe0f",
+      "photo": "/field-pack/photos/np-hero-guadalupe-mountains.jpg?v=q3",
+      "blurb": "Guadalupe Mountains \u2014 visitor center and short desert foothill walks.",
+      "challenge": "What was this mountain when it was under the sea?",
+      "printAnswer": "An ancient reef. The sea left, and the reef became a mountain of limestone.",
+      "placeHref": "/field-pack/guadalupe-mountains/",
+      "lat": 31.9231,
+      "lng": -104.8645,
+      "x": 350.8,
+      "y": 447.7,
+      "defaultTour": false,
+      "seq": 99,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=3yR5x3SSeTA",
+        "title": "Guadalupe Mountains scenic drive",
+        "provider": "youtube",
+        "channel": "Adventure Theater",
+        "start": 8,
+        "icon": "El Capitan reef mountain",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=3yR5x3SSeTA",
+          "checked": "2026-08-16"
+        }
+      }
+    },
+    {
+      "cardId": "hot-springs",
+      "label": "Hot Springs",
+      "short": "Hot Springs",
+      "emoji": "\u2668\ufe0f",
+      "photo": "/field-pack/photos/np-hero-hot-springs.jpg?v=q3",
+      "blurb": "Hot Springs \u2014 Bathhouse Row and a short mountain trail or overlook.",
+      "challenge": "Why is the water hot coming out of the ground?",
+      "printAnswer": "Rain soaks deep, hits hot rock, and rises again. People built bathhouses on the springs.",
+      "placeHref": "/field-pack/hot-springs/",
+      "lat": 34.5217,
+      "lng": -93.0422,
+      "x": 562.3,
+      "y": 398.5,
+      "defaultTour": false,
+      "seq": 99,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=Dn3nkDip3P4",
+        "title": "Hot Springs historic bathhouse row",
+        "provider": "youtube",
+        "channel": "Adventure Theater",
+        "start": 8,
+        "icon": "Bathhouse Row",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=Dn3nkDip3P4",
+          "checked": "2026-08-16"
+        }
+      }
+    },
+    {
+      "cardId": "indiana-dunes",
+      "label": "Ind. Dunes",
+      "short": "Ind. Dunes",
+      "emoji": "\ud83c\udfd6\ufe0f",
+      "photo": "/field-pack/photos/np-hero-indiana-dunes.jpg?v=q3",
+      "blurb": "Indiana Dunes \u2014 lake beach and dune trail near Chicago.",
+      "challenge": "How do dunes form on a lake, not an ocean?",
+      "printAnswer": "Wind pushes beach sand inland. Plants grab it, and the piles grow along the shore.",
+      "placeHref": "/field-pack/indiana-dunes/",
+      "lat": 41.6533,
+      "lng": -87.0524,
+      "x": 652.2,
+      "y": 238.8,
+      "defaultTour": false,
+      "seq": 99,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=k12qsuez4Ec",
+        "title": "Indiana Dunes from the air",
+        "provider": "youtube",
+        "channel": "TAPP Channel",
+        "start": 3,
+        "icon": "dunes on Lake Michigan",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=k12qsuez4Ec",
+          "checked": "2026-08-16"
+        }
+      }
+    },
+    {
+      "cardId": "isle-royale",
+      "label": "Isle Royale",
+      "short": "Isle Royale",
+      "emoji": "\ud83d\udc3a",
+      "photo": "/field-pack/photos/np-hero-isle-royale.jpg?v=q3",
+      "blurb": "Isle Royale \u2014 wilderness island; ferry required, multi-day for most.",
+      "challenge": "Why is this park mostly reached by boat?",
+      "printAnswer": "It\u2019s an island in a huge cold lake. Water protects the quiet and the wolves and moose.",
+      "placeHref": "/field-pack/isle-royale/",
+      "lat": 48.0,
+      "lng": -88.9,
+      "x": 612.9,
+      "y": 105.9,
+      "defaultTour": false,
+      "seq": 99,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=4cxWWTSHui4",
+        "title": "Isle Royale from the water",
+        "provider": "youtube",
+        "channel": "Pure Michigan",
+        "start": 8,
+        "icon": "island wilderness",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=4cxWWTSHui4",
+          "checked": "2026-08-16"
+        }
+      }
+    },
+    {
+      "cardId": "joshua-tree",
+      "label": "Joshua Tree",
+      "short": "Joshua Tree",
+      "emoji": "\ud83c\udf35",
+      "photo": "/field-pack/photos/np-hero-joshua-tree.jpg?v=q3",
+      "blurb": "Joshua Tree \u2014 desert gardens and rock piles; short loops near the visitor center.",
+      "challenge": "Why do Joshua trees look so spiky?",
+      "printAnswer": "They\u2019re yuccas built for dry heat. Spikes save water and make shade in tiny pieces.",
+      "placeHref": "/field-pack/joshua-tree/",
+      "lat": 34.1347,
+      "lng": -116.3131,
+      "x": 156.7,
+      "y": 369.7,
+      "defaultTour": false,
+      "seq": 99,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=rbHTLIxdCCg",
+        "title": "Joshua Tree boulders and night sky",
+        "provider": "youtube",
+        "channel": "More Than Just Parks",
+        "start": 6,
+        "icon": "Joshua trees + rocks",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=rbHTLIxdCCg",
+          "checked": "2026-08-16"
+        }
+      }
+    },
+    {
+      "cardId": "kings-canyon",
+      "label": "Kings Canyon",
+      "short": "Kings Canyon",
+      "emoji": "\ud83c\udf32",
+      "photo": "/field-pack/photos/np-hero-kings-canyon.jpg?v=q3",
+      "blurb": "Kings Canyon \u2014 Grant Grove big trees; pair carefully with Sequoia.",
+      "challenge": "Why is this canyon so deep?",
+      "printAnswer": "A river and old ice cut granite. The walls stay steep because the rock is tough.",
+      "placeHref": "/field-pack/kings-canyon/",
+      "lat": 36.8879,
+      "lng": -118.5551,
+      "x": 132.3,
+      "y": 303.2,
+      "defaultTour": false,
+      "seq": 99,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=DUFqAAuSwog",
+        "title": "Kings Canyon sequoias and granite",
+        "provider": "youtube",
+        "channel": "World Scenery 4K",
+        "start": 5,
+        "icon": "deep granite canyon",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=DUFqAAuSwog",
+          "checked": "2026-08-16"
+        }
+      }
+    },
+    {
+      "cardId": "lassen-volcanic",
+      "label": "Lassen",
+      "short": "Lassen",
+      "emoji": "\ud83c\udf0b",
+      "photo": "/field-pack/photos/np-hero-lassen-volcanic.jpg?v=q3",
+      "blurb": "Lassen \u2014 hydrothermal boardwalks and peak views when road is open.",
+      "challenge": "What clues show a volcano is still around?",
+      "printAnswer": "Steam vents, hot ground, and a big peak. The mountain is quieter now, but the heat is still under it.",
+      "placeHref": "/field-pack/lassen-volcanic/",
+      "lat": 40.4977,
+      "lng": -121.4207,
+      "x": 105.9,
+      "y": 215.9,
+      "defaultTour": false,
+      "seq": 99,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=z_u7iz2LyGk",
+        "title": "Lassen volcanic peaks and lakes",
+        "provider": "youtube",
+        "channel": "PrimoMedia - Chris Biela",
+        "start": 8,
+        "icon": "Lassen Peak",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=z_u7iz2LyGk",
+          "checked": "2026-08-16"
+        }
+      }
+    },
+    {
+      "cardId": "mammoth-cave",
+      "label": "Mammoth Cave",
+      "short": "Mammoth Cave",
+      "emoji": "\ud83d\udd6f\ufe0f",
+      "photo": "/field-pack/photos/np-hero-mammoth-cave.jpg?v=q3",
+      "blurb": "Mammoth Cave \u2014 visitor center and a timed cave tour; surface trails optional.",
+      "challenge": "How can a cave be hundreds of miles long?",
+      "printAnswer": "Limestone and water. Passages join like underground streets on many levels.",
+      "placeHref": "/field-pack/mammoth-cave/",
+      "lat": 37.1862,
+      "lng": -86.1,
+      "x": 677.3,
+      "y": 333.2,
+      "defaultTour": false,
+      "seq": 99,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=fo-zi_83U5I",
+        "title": "Mammoth Cave historic tour walk",
+        "provider": "youtube",
+        "channel": "The Perfect Walk",
+        "start": 20,
+        "icon": "lit cave passage",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=fo-zi_83U5I",
+          "checked": "2026-08-16"
+        }
+      }
+    },
+    {
+      "cardId": "mesa-verde",
+      "label": "Mesa Verde",
+      "short": "Mesa Verde",
+      "emoji": "\ud83c\udfd8\ufe0f",
+      "photo": "/field-pack/photos/np-hero-mesa-verde.jpg?v=q3",
+      "blurb": "Mesa Verde \u2014 cliff dwelling overlooks; many tours need tickets.",
+      "challenge": "Why build homes in a cliff?",
+      "printAnswer": "Overhangs shade and shelter. People farmed the mesa top and lived in the alcove.",
+      "placeHref": "/field-pack/mesa-verde/",
+      "lat": 37.2309,
+      "lng": -108.4618,
+      "x": 301.2,
+      "y": 327.1,
+      "defaultTour": false,
+      "seq": 99,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=bCbryviVgwY",
+        "title": "Mesa Verde cliff dwellings",
+        "provider": "youtube",
+        "channel": "Amazing Places on Our Planet",
+        "start": 8,
+        "icon": "Cliff Palace",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=bCbryviVgwY",
+          "checked": "2026-08-16"
+        }
+      }
+    },
+    {
+      "cardId": "north-cascades",
+      "label": "N. Cascades",
+      "short": "N. Cascades",
+      "emoji": "\u2744\ufe0f",
+      "photo": "/field-pack/photos/np-hero-north-cascades.jpg?v=q3",
+      "blurb": "North Cascades \u2014 highway overlooks and short lakeside stops.",
+      "challenge": "Why are these mountains so jagged?",
+      "printAnswer": "Ice chewed the peaks. What\u2019s left are sharp horns and hanging glaciers.",
+      "placeHref": "/field-pack/north-cascades/",
+      "lat": 48.7718,
+      "lng": -121.2985,
+      "x": 154.4,
+      "y": 45.7,
+      "defaultTour": false,
+      "seq": 99,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=duGVGKvyKiI",
+        "title": "North Cascades jagged peaks",
+        "provider": "youtube",
+        "channel": "Amazing Places on Our Planet",
+        "start": 8,
+        "icon": "ice and spires",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=duGVGKvyKiI",
+          "checked": "2026-08-16"
+        }
+      }
+    },
+    {
+      "cardId": "new-river-gorge",
+      "label": "New River",
+      "short": "New River",
+      "emoji": "\ud83c\udf09",
+      "photo": "/field-pack/photos/np-hero-new-river-gorge.jpg?v=q3",
+      "blurb": "New River Gorge \u2014 canyon rim overlooks and bridge views.",
+      "challenge": "Is the New River actually new?",
+      "printAnswer": "The name is old and a little backwards \u2014 the river is ancient. It cut a deep gorge through the plateau.",
+      "placeHref": "/field-pack/new-river-gorge/",
+      "lat": 37.9608,
+      "lng": -81.0787,
+      "x": 758.6,
+      "y": 305.6,
+      "defaultTour": false,
+      "seq": 99,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=__lLTJmTsp4",
+        "title": "New River Gorge bridge and gorge",
+        "provider": "youtube",
+        "channel": "More Than Just Parks",
+        "start": 6,
+        "icon": "bridge over the gorge",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=__lLTJmTsp4",
+          "checked": "2026-08-16"
+        }
+      }
+    },
+    {
+      "cardId": "petrified-forest",
+      "label": "Petrified",
+      "short": "Petrified",
+      "emoji": "\ud83e\udeb5",
+      "photo": "/field-pack/photos/np-hero-petrified-forest.jpg?v=q3",
+      "blurb": "Petrified Forest \u2014 painted desert views and short fossil wood loops.",
+      "challenge": "How does wood turn to stone?",
+      "printAnswer": "Trees buried in mud. Minerals soak in and copy the wood, cell by cell.",
+      "placeHref": "/field-pack/petrified-forest/",
+      "lat": 34.909,
+      "lng": -109.8068,
+      "x": 271.5,
+      "y": 373.6,
+      "defaultTour": false,
+      "seq": 99,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=4vHCYNa5yq0",
+        "title": "Petrified Forest painted desert",
+        "provider": "youtube",
+        "channel": "Alaskan Ram Travel Adventures",
+        "start": 6,
+        "icon": "petrified logs + painted desert",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=4vHCYNa5yq0",
+          "checked": "2026-08-16"
+        }
+      }
+    },
+    {
+      "cardId": "pinnacles",
+      "label": "Pinnacles",
+      "short": "Pinnacles",
+      "emoji": "\ud83e\udd85",
+      "photo": "/field-pack/photos/np-hero-pinnacles.jpg?v=q3",
+      "blurb": "Pinnacles \u2014 rock spires and short cave or bench trails; one entrance.",
+      "challenge": "Where did these pointy rocks come from?",
+      "printAnswer": "An old volcano. The mountain split and moved. What\u2019s left are spires and caves.",
+      "placeHref": "/field-pack/pinnacles/",
+      "lat": 36.4906,
+      "lng": -121.1825,
+      "x": 87.0,
+      "y": 300.4,
+      "defaultTour": false,
+      "seq": 99,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=sm_1PUZoW5A",
+        "title": "Pinnacles rock spires",
+        "provider": "youtube",
+        "channel": "Machine Bazi",
+        "start": 5,
+        "icon": "volcanic spires",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=sm_1PUZoW5A",
+          "checked": "2026-08-16"
+        }
+      }
+    },
+    {
+      "cardId": "mount-rainier",
+      "label": "Rainier",
+      "short": "Rainier",
+      "emoji": "\ud83d\uddfb",
+      "photo": "/field-pack/photos/np-hero-mount-rainier.jpg?v=q3",
+      "blurb": "Mount Rainier \u2014 Paradise or Sunrise wildflower/views; one entrance only.",
+      "challenge": "Why does this mountain wear a white hat all year?",
+      "printAnswer": "It\u2019s tall and cold. Snow piles into glaciers that creep down the sides.",
+      "placeHref": "/field-pack/mount-rainier/",
+      "lat": 46.88,
+      "lng": -121.7269,
+      "x": 137.8,
+      "y": 82.7,
+      "defaultTour": false,
+      "seq": 99,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=n4uOuy3Zac4",
+        "title": "Mount Rainier meadows and glacier",
+        "provider": "youtube",
+        "channel": "Amazing Places on Our Planet",
+        "start": 8,
+        "icon": "Rainier above wildflowers",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=n4uOuy3Zac4",
+          "checked": "2026-08-16"
+        }
+      }
+    },
+    {
+      "cardId": "redwood",
+      "label": "Redwood",
+      "short": "Redwood",
+      "emoji": "\ud83c\udf32",
+      "photo": "/field-pack/photos/np-hero-redwood.jpg?v=q3",
+      "blurb": "Redwoods \u2014 tall-tree groves and short understory walks.",
+      "challenge": "Why are redwoods so tall?",
+      "printAnswer": "Fog drips water onto the needles. They grow toward light for centuries.",
+      "placeHref": "/field-pack/redwood/",
+      "lat": 41.2132,
+      "lng": -124.0046,
+      "x": 70.4,
+      "y": 189.6,
+      "defaultTour": false,
+      "seq": 99,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=LKavDOPMq4o",
+        "title": "Redwood cathedral forest",
+        "provider": "youtube",
+        "channel": "More Than Just Parks",
+        "start": 6,
+        "icon": "looking up the trunks",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=LKavDOPMq4o",
+          "checked": "2026-08-16"
+        }
+      }
+    },
+    {
+      "cardId": "saguaro",
+      "label": "Saguaro",
+      "short": "Saguaro",
+      "emoji": "\ud83c\udf35",
+      "photo": "/field-pack/photos/np-hero-saguaro.jpg?v=q3",
+      "blurb": "Saguaro \u2014 giant cactus forest loops near Tucson; two districts, pick one.",
+      "challenge": "How does a cactus store water in a desert?",
+      "printAnswer": "Pleats expand like an accordion. Spines shade the skin and slow the wind.",
+      "placeHref": "/field-pack/saguaro/",
+      "lat": 32.2967,
+      "lng": -111.1666,
+      "x": 239.2,
+      "y": 425.5,
+      "defaultTour": false,
+      "seq": 99,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=xGzHrrozRH8",
+        "title": "Saguaro desert forest",
+        "provider": "youtube",
+        "channel": "More Than Just Parks",
+        "start": 6,
+        "icon": "saguaro skyline",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=xGzHrrozRH8",
+          "checked": "2026-08-16"
+        }
+      }
+    },
+    {
+      "cardId": "great-sand-dunes",
+      "label": "Sand Dunes",
+      "short": "Sand Dunes",
+      "emoji": "\ud83c\udfdc\ufe0f",
+      "photo": "/field-pack/photos/np-hero-great-sand-dunes.jpg?v=q3",
+      "blurb": "Great Sand Dunes \u2014 dune field edge and Medano Creek when flowing.",
+      "challenge": "How did sand piles get so tall next to mountains?",
+      "printAnswer": "Wind drops sand when it hits the range. The piles grow into the tallest dunes in North America.",
+      "placeHref": "/field-pack/great-sand-dunes/",
+      "lat": 37.7916,
+      "lng": -105.5943,
+      "x": 350.4,
+      "y": 320.7,
+      "defaultTour": false,
+      "seq": 99,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=5UDssG7XlgY",
+        "title": "Great Sand Dunes against the mountains",
+        "provider": "youtube",
+        "channel": "Amazing Places on Our Planet",
+        "start": 8,
+        "icon": "dunes + Sangre de Cristo",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=5UDssG7XlgY",
+          "checked": "2026-08-16"
+        }
+      }
+    },
+    {
+      "cardId": "sequoia",
+      "label": "Sequoia",
+      "short": "Sequoia",
+      "emoji": "\ud83c\udf32",
+      "photo": "/field-pack/photos/np-hero-sequoia.jpg?v=q3",
+      "blurb": "Giant Forest short loops \u2014 enormous trees without a wilderness epic.",
+      "challenge": "How can a tree get this thick?",
+      "printAnswer": "It adds a ring every year for thousands of years. Fire can hollow it and it still lives.",
+      "placeHref": "/field-pack/sequoia/",
+      "lat": 36.4864,
+      "lng": -118.5658,
+      "x": 130.1,
+      "y": 311.6,
+      "defaultTour": false,
+      "seq": 99,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=WWorX7kqC9g",
+        "title": "Sequoia Giant Forest",
+        "provider": "youtube",
+        "channel": "At Home In Wild Spaces",
+        "start": 5,
+        "icon": "Giant Forest trunks",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=WWorX7kqC9g",
+          "checked": "2026-08-16"
+        }
+      }
+    },
+    {
+      "cardId": "shenandoah",
+      "label": "Shenandoah",
+      "short": "Shenandoah",
+      "emoji": "\ud83c\udf04",
+      "photo": "/field-pack/photos/np-hero-shenandoah.jpg?v=q3",
+      "blurb": "Shenandoah \u2014 Skyline Drive overlooks and one short waterfall or trail.",
+      "challenge": "Why do these mountains look soft and blue?",
+      "printAnswer": "They\u2019re old and worn. Haze and distance turn ridges blue from Skyline Drive.",
+      "placeHref": "/field-pack/shenandoah/",
+      "lat": 38.2928,
+      "lng": -78.6796,
+      "x": 796.7,
+      "y": 291.8,
+      "defaultTour": false,
+      "seq": 99,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=1GfyOs__FIg",
+        "title": "Shenandoah Skyline Drive in summer",
+        "provider": "youtube",
+        "channel": "New Horizons",
+        "start": 6,
+        "icon": "Blue Ridge overlook",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=1GfyOs__FIg",
+          "checked": "2026-08-16"
+        }
+      }
+    },
+    {
+      "cardId": "theodore-roosevelt",
+      "label": "T. Roosevelt",
+      "short": "T. Roosevelt",
+      "emoji": "\ud83e\uddac",
+      "photo": "/field-pack/photos/np-hero-theodore-roosevelt.jpg?v=q3",
+      "blurb": "Theodore Roosevelt \u2014 South Unit scenic drive and prairie dog towns.",
+      "challenge": "What carved these North Dakota badlands?",
+      "printAnswer": "The Little Missouri and weather. Soft rock cuts fast into buttes and valleys.",
+      "placeHref": "/field-pack/theodore-roosevelt/",
+      "lat": 46.979,
+      "lng": -103.5387,
+      "x": 400.3,
+      "y": 127.0,
+      "defaultTour": false,
+      "seq": 99,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=o7X2oPGLGq8",
+        "title": "Theodore Roosevelt badlands",
+        "provider": "youtube",
+        "channel": "More Than Just Parks",
+        "start": 6,
+        "icon": "Little Missouri badlands",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=o7X2oPGLGq8",
+          "checked": "2026-08-16"
+        }
+      }
+    },
+    {
+      "cardId": "voyageurs",
+      "label": "Voyageurs",
+      "short": "Voyageurs",
+      "emoji": "\ud83d\udef6",
+      "photo": "/field-pack/photos/np-hero-voyageurs.jpg?v=q3",
+      "blurb": "Voyageurs \u2014 water park; visitor center and short shore trails without a boat.",
+      "challenge": "Why is this park a maze of lakes?",
+      "printAnswer": "Ice gouged the rock. Water filled the scratches, so you travel more by boat than by trail.",
+      "placeHref": "/field-pack/voyageurs/",
+      "lat": 48.4839,
+      "lng": -92.8386,
+      "x": 555.9,
+      "y": 98.7,
+      "defaultTour": false,
+      "seq": 99,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=2_GQ7oS3orE",
+        "title": "Voyageurs lakes and islands",
+        "provider": "youtube",
+        "channel": "More Than Just Parks",
+        "start": 6,
+        "icon": "glassy lake country",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=2_GQ7oS3orE",
+          "checked": "2026-08-16"
+        }
+      }
+    },
+    {
+      "cardId": "white-sands",
+      "label": "White Sands",
+      "short": "White Sands",
+      "emoji": "\u2b1c",
+      "photo": "/field-pack/photos/np-hero-white-sands.jpg?v=q3",
+      "blurb": "White Sands \u2014 dune drive and sled hills of gypsum sand.",
+      "challenge": "Why is the sand white, not yellow?",
+      "printAnswer": "It\u2019s gypsum, not beach quartz. The crystals stay bright and cool on your feet.",
+      "placeHref": "/field-pack/white-sands/",
+      "lat": 32.7797,
+      "lng": -106.1717,
+      "x": 329.3,
+      "y": 427.1,
+      "defaultTour": false,
+      "seq": 99,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=tSruWf7iaQM",
+        "title": "White Sands gypsum dunes",
+        "provider": "youtube",
+        "channel": "Amazing Places on Our Planet",
+        "start": 8,
+        "icon": "white dune field",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=tSruWf7iaQM",
+          "checked": "2026-08-16"
+        }
+      }
+    },
+    {
+      "cardId": "wind-cave",
+      "label": "Wind Cave",
+      "short": "Wind Cave",
+      "emoji": "\ud83c\udf2c\ufe0f",
+      "photo": "/field-pack/photos/np-hero-wind-cave.jpg?v=q3",
+      "blurb": "Wind Cave \u2014 cave tour plus prairie wildlife above ground.",
+      "challenge": "What\u2019s special about the cave\u2019s boxwork?",
+      "printAnswer": "Thin fins of harder rock stick out of the walls. Wind and water left a honeycomb.",
+      "placeHref": "/field-pack/wind-cave/",
+      "lat": 43.6046,
+      "lng": -103.4213,
+      "x": 396.4,
+      "y": 199.1,
+      "defaultTour": false,
+      "seq": 99,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=8HtADDs3Xq4",
+        "title": "Wind Cave prairie and cave",
+        "provider": "youtube",
+        "channel": "More Than Just Parks",
+        "start": 6,
+        "icon": "prairie + cave",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=8HtADDs3Xq4",
+          "checked": "2026-08-16"
+        }
+      }
+    },
+    {
+      "cardId": "zion",
+      "label": "Zion",
+      "short": "Zion",
+      "emoji": "\ud83d\udd34",
+      "photo": "/field-pack/photos/np-hero-zion.jpg?v=q3",
+      "blurb": "Zion Canyon shuttle corridor \u2014 red walls and riverside paths, not the full Narrows hike.",
+      "challenge": "How did a river cut such tall red walls?",
+      "printAnswer": "The Virgin River cut down through sandstone. The walls stay steep because the rock is stacked.",
+      "placeHref": "/field-pack/zion/",
+      "lat": 37.2982,
+      "lng": -113.0263,
+      "x": 225.5,
+      "y": 313.8,
+      "defaultTour": false,
+      "seq": 99,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=ecc7t3PkkiM",
+        "title": "Zion Canyon in fall",
+        "provider": "youtube",
+        "channel": "More Than Just Parks",
+        "start": 6,
+        "icon": "red Zion Canyon",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=ecc7t3PkkiM",
+          "checked": "2026-08-16"
+        }
+      }
+    }
+  ]
+}

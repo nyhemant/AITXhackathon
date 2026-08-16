@@ -479,9 +479,30 @@
   cursor: pointer;
   text-align: left;
 }
+.vz-pick-card.is-on {
+  border-color: #0f5c5c;
+  box-shadow: 0 0 0 2px rgba(15, 92, 92, 0.28);
+  background: #f3faf8;
+}
 .vz-pick-card.is-hold {
   border-color: #c4a35a;
   box-shadow: 0 0 0 2px #e8b923;
+}
+.vz-pick-card:disabled {
+  opacity: 0.45;
+  pointer-events: none;
+}
+.vz-pick-empty {
+  grid-column: 1 / -1;
+  color: #5a6a84;
+  font-weight: 650;
+  padding: 0.4rem 0.2rem;
+}
+#vz-map.is-park-custom #vz-trail,
+#vz-map.is-park-custom #vz-arrows,
+#vz-map.is-park-custom #vz-entry,
+#vz-map.is-park-custom #vz-exit {
+  display: none !important;
 }
 .vz-pick-card img {
   width: 100%;

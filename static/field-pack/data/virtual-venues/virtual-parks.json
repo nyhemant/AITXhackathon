@@ -45,6 +45,7 @@
         "title": "Acadia granite coast and Cadillac",
         "provider": "youtube",
         "channel": "More Than Just Parks",
+        "start": 6,
         "verify": {
           "status": "sourced",
           "source": "https://www.youtube.com/watch?v=4bRKthFQfXo",
@@ -81,6 +82,7 @@
         "title": "Smokies ridges in fall",
         "provider": "youtube",
         "channel": "More Than Just Parks",
+        "start": 6,
         "verify": {
           "status": "sourced",
           "source": "https://www.youtube.com/watch?v=i_WME0gAO_g",
@@ -103,14 +105,15 @@
       "cam": {},
       "seq": 3,
       "video": {
-        "url": "https://www.youtube.com/watch?v=LkNEBAZq0rM",
-        "title": "Everglades water and wildlife",
+        "url": "https://www.youtube.com/watch?v=4IFn0t0rkiE",
+        "title": "Alligators and wildlife of the Everglades",
         "provider": "youtube",
-        "channel": "finleyholiday",
+        "channel": "4K Relaxation Channel",
+        "start": 8,
         "verify": {
           "status": "sourced",
-          "source": "https://www.youtube.com/watch?v=LkNEBAZq0rM",
-          "checked": "2026-08-15"
+          "source": "https://www.youtube.com/watch?v=4IFn0t0rkiE",
+          "checked": "2026-08-16"
         }
       },
       "printAnswer": "Wetlands clean water and make a home for birds, fish, and gators. Sawgrass is a wet prairie, not a dry field."
@@ -129,14 +132,15 @@
       "cam": {},
       "seq": 4,
       "video": {
-        "url": "https://www.youtube.com/watch?v=D8X5w24VD1M",
-        "title": "Big Bend desert and river",
+        "url": "https://www.youtube.com/watch?v=izPFPJS3Ohs",
+        "title": "Big Bend Chisos mountains and canyons",
         "provider": "youtube",
-        "channel": "GoTraveler",
+        "channel": "4K Healing Scenery",
+        "start": 5,
         "verify": {
           "status": "sourced",
-          "source": "https://www.youtube.com/watch?v=D8X5w24VD1M",
-          "checked": "2026-08-15"
+          "source": "https://www.youtube.com/watch?v=izPFPJS3Ohs",
+          "checked": "2026-08-16"
         }
       },
       "printAnswer": "Even a dry place can have a strong river. The water carved the land for a long time and keeps flowing on."
@@ -165,14 +169,15 @@
       },
       "seq": 5,
       "video": {
-        "url": "https://www.youtube.com/watch?v=xqSgpKD31DQ",
+        "url": "https://www.youtube.com/watch?v=LtEG2UEbD4U",
         "title": "Grand Canyon from the rim",
         "provider": "youtube",
-        "channel": "PrimoMedia - Chris Biela",
+        "channel": "Amazing Places on Our Planet",
+        "start": 8,
         "verify": {
           "status": "sourced",
-          "source": "https://www.youtube.com/watch?v=xqSgpKD31DQ",
-          "checked": "2026-08-15"
+          "source": "https://www.youtube.com/watch?v=LtEG2UEbD4U",
+          "checked": "2026-08-16"
         }
       },
       "printAnswer": "The Colorado River wore away rock, grain by grain, for millions of years. Slow water can cut a huge canyon."
@@ -205,6 +210,7 @@
         "title": "Yosemite granite and waterfalls",
         "provider": "youtube",
         "channel": "Amazing Places on Our Planet",
+        "start": 8,
         "verify": {
           "status": "sourced",
           "source": "https://www.youtube.com/watch?v=HLmOkDBfxv0",
@@ -241,6 +247,7 @@
         "title": "Olympic rainforest, coast, and ridge",
         "provider": "youtube",
         "channel": "More Than Just Parks",
+        "start": 6,
         "verify": {
           "status": "sourced",
           "source": "https://www.youtube.com/watch?v=6jQ_eu3b_BA",
@@ -277,6 +284,7 @@
         "title": "Glacier lakes and peaks",
         "provider": "youtube",
         "channel": "Amazing Places on Our Planet",
+        "start": 8,
         "verify": {
           "status": "sourced",
           "source": "https://www.youtube.com/watch?v=zrHlFPRI_0c",
@@ -313,6 +321,7 @@
         "title": "Yellowstone Grand Prismatic Spring",
         "provider": "youtube",
         "channel": "Amazing Places on Our Planet",
+        "start": 2,
         "verify": {
           "status": "sourced",
           "source": "https://www.youtube.com/watch?v=635UZAPkElg",
@@ -349,6 +358,7 @@
         "title": "Rocky Mountain high meadows",
         "provider": "youtube",
         "channel": "More Than Just Parks",
+        "start": 6,
         "verify": {
           "status": "sourced",
           "source": "https://www.youtube.com/watch?v=9Gh44EYQ2zw",
