@@ -31,18 +31,21 @@
       key: "fp-virtual-zoo-picks-v1",
       libUrl: "/field-pack/data/virtual-venues/zoo-film-library.json?v=4",
       title: "Create your own virtual zoo",
+      noun: "zoo",
       track: "zoo_picks_saved",
     },
     aquarium: {
       key: "fp-virtual-aquarium-picks-v1",
       libUrl: "/field-pack/data/virtual-venues/aquarium-film-library.json?v=2",
       title: "Create your own virtual aquarium",
+      noun: "aquarium",
       track: "aquarium_picks_saved",
     },
     science: {
       key: "fp-virtual-science-picks-v1",
       libUrl: "/field-pack/data/virtual-venues/science-film-library.json?v=1",
       title: "Create your own virtual science museum",
+      noun: "science museum",
       track: "science_picks_saved",
     },
   };
@@ -368,7 +371,7 @@
     const holdSlot = pickHold && pickHold.type === "slot" ? pickHold.i : -1;
     const holdCard = pickHold && pickHold.type === "bench" ? pickHold.cardId : "";
     pathPicker.innerHTML = `
-      <p class="vz-pick-lead">Build the walk here. Empty slots first — tap something waiting to drop it in. Tap two slots to swap. Then walk this path.</p>
+      <p class="vz-pick-lead">Build the walk here. Empty slots first — tap something waiting to drop it in. Tap two slots to swap. Or auto-design the ${escapeHtml(spec.noun)} if you want it done.</p>
       <ol class="vz-slot-row">
         ${pickDraft
           .map((id, i) => {
@@ -401,7 +404,10 @@
           })
           .join("")}
       </ul>
-      <button type="button" class="btn btn-primary" id="vz-pick-apply"${n ? "" : " disabled"}>Walk this path</button>
+      <div class="vz-pick-actions">
+        <button type="button" class="btn btn-primary" id="vz-pick-defaults"${draftIsDefaults(lib) ? " disabled" : ""}>Auto-design the ${escapeHtml(spec.noun)}</button>
+        <button type="button" class="btn btn-secondary" id="vz-pick-apply"${n ? "" : " disabled"}>Create your own ${escapeHtml(spec.noun)}</button>
+      </div>
     `;
     pathPicker.querySelectorAll("[data-slot]").forEach((btn) => {
       btn.addEventListener("click", () => tapPickSlot(parseInt(btn.getAttribute("data-slot"), 10)));
@@ -411,6 +417,27 @@
     });
     const applyBtn = pathPicker.querySelector("#vz-pick-apply");
     if (applyBtn) applyBtn.addEventListener("click", commitPickPath);
+    const defaultsBtn = pathPicker.querySelector("#vz-pick-defaults");
+    if (defaultsBtn) defaultsBtn.addEventListener("click", autoDesignPath);
+  }
+
+  function draftIsDefaults(lib) {
+    const ids = pickDefaultIds(lib).slice(0, 10);
+    while (ids.length < 10) ids.push("");
+    return Boolean(pickDraft && pickDraft.length === ids.length && pickDraft.every((id, i) => id === ids[i]));
+  }
+
+  function fillPickDefaults() {
+    const lib = pickLibrary();
+    if (!lib) return;
+    pickDraft = pickDefaultIds(lib).slice(0, 10);
+    while (pickDraft.length < 10) pickDraft.push("");
+    pickHold = null;
+  }
+
+  function autoDesignPath() {
+    fillPickDefaults();
+    commitPickPath();
   }
 
   function tapPickSlot(i) {
