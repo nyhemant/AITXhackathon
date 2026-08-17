@@ -43,7 +43,7 @@
     },
     science: {
       key: "fp-virtual-science-picks-v1",
-      libUrl: "/field-pack/data/virtual-venues/science-film-library.json?v=1",
+      libUrl: "/field-pack/data/virtual-venues/science-film-library.json?v=2",
       title: "Create your own virtual science museum",
       noun: "science museum",
       track: "science_picks_saved",

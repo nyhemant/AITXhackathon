@@ -470,6 +470,30 @@
       q: "Did you know?",
       a: "Astronauts sleep strapped in — without gravity you’d float off the bed.",
     },
+    "sci-magnet": {
+      q: "Why does the black sand make spikes?",
+      a: "The sand is magnetite — tiny bits of iron. Each grain becomes a little magnet and lines up along the field, so you can see the push and pull.",
+    },
+    "sci-light": {
+      q: "Why can a shadow be red, green, or blue?",
+      a: "Three lights mix to make white on the wall. Your body blocks one color, so the leftover mix paints a colored shadow.",
+    },
+    "sci-flight": {
+      q: "How did the first airplane leave the ground?",
+      a: "Moving air over a wing makes lift. Long wings help that air do more work, so a light plane can rise.",
+    },
+    "sci-robot": {
+      q: "How can a robot fly where there is almost no air?",
+      a: "Mars air is thin, so the blades spin very fast to grab enough lift. A computer flies it because a person on Earth is too far away to steer in time.",
+    },
+    "sci-lightning": {
+      q: "Why does lightning jump?",
+      a: "Storm clouds build opposite charges until a spark jumps. Light is fast; thunder is the boom of air that got super-hot, so sound arrives later.",
+    },
+    "sci-storm": {
+      q: "Why does a giant storm spin?",
+      a: "Warm ocean air rises and the spinning Earth twists it into a swirl. The eye is calmer because the strongest winds circle around it.",
+    },
   };
 
   /**

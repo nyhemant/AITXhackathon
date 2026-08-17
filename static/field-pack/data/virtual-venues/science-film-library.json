@@ -1,7 +1,7 @@
 {
   "id": "science-film-library",
-  "checked": "2026-08-15",
-  "note": "Pick-path ingredients for the science museum tab. Default tour is the current 10, including still-only Free Explore. Outdoor, toddler garden, and waterfall stay off the picker until an honest exhibit film is locked. NHM halls are not in this library.",
+  "checked": "2026-08-16",
+  "note": "Pick-path ingredients for the science museum tab. Default tour is the current 10, including still-only Free Explore. Bench extras need an exhibit- or phenomenon-first film (official museum, NASA, Exploratorium, or NOAA weather satellite). Mute autoplay uses video.start to skip logos and teacher intros. NHM halls, extra space, Tesla shows, and talking STEM 101s stay omitted.",
   "omit": [
     {
       "cardId": "cm-outdoor",
@@ -14,6 +14,78 @@
     {
       "cardId": "cm-waterfall",
       "reason": "No official picture-first waterfall-play film."
+    },
+    {
+      "cardId": "sci-dinosaur",
+      "reason": "Natural-history hall. Stays on the natural history tab."
+    },
+    {
+      "cardId": "sci-mammal-hall",
+      "reason": "Natural-history hall. Stays on the natural history tab."
+    },
+    {
+      "cardId": "sci-rainforest",
+      "reason": "Natural-history hall. Stays on the natural history tab."
+    },
+    {
+      "cardId": "sci-aquarium-zone",
+      "reason": "Natural-history hall. Stays on the natural history tab."
+    },
+    {
+      "cardId": "sci-tornado",
+      "reason": "Griffin MSI Science Storms How It Works is developer talk over the vortex, not exhibit-first. Mission Unstoppable is a host show."
+    },
+    {
+      "cardId": "sci-heart",
+      "reason": "No official Franklin Institute Giant Heart exhibit-first lock (news packages and visitor walkthroughs only)."
+    },
+    {
+      "cardId": "sci-pendulum",
+      "reason": "Exploratorium Chaotic Pendulum has no embeddable YouTube lock."
+    },
+    {
+      "cardId": "sci-sound",
+      "reason": "No official exhibit-first sound film. Sound Column is gone from Pier 15; cymatics clips are unofficial."
+    },
+    {
+      "cardId": "sci-chemistry",
+      "reason": "No official exhibit-first chemistry lock (classroom elephant-toothpaste and talking 101s only)."
+    },
+    {
+      "cardId": "sci-energy",
+      "reason": "No official wind-turbine or energy-hall exhibit-first lock."
+    },
+    {
+      "cardId": "sci-water",
+      "reason": "No indoor water-table exhibit-first lock. NASA rain-cycle films are talking data 101s."
+    },
+    {
+      "cardId": "u505",
+      "reason": "On-board U-505 tour discusses wartime casualties. Not a kid mute-autoplay lock."
+    },
+    {
+      "cardId": "sci-tesla",
+      "reason": "Tesla-coil clips are stage shows, not exhibit-first mute autoplay."
+    },
+    {
+      "cardId": "fairy-castle",
+      "reason": "Fairy castle is a dollhouse tour, not a science-museum wow exhibit."
+    },
+    {
+      "cardId": "sci-moon",
+      "reason": "Extra space card. The default walk already has shuttle, astronaut, planet, and rockets."
+    },
+    {
+      "cardId": "sci-mars",
+      "reason": "Extra space card. Ingenuity lives on Robot Lab, not a fifth space hall."
+    },
+    {
+      "cardId": "sci-iss",
+      "reason": "Extra space card. Earth-from-station already lives on Planet Hall and Astronaut Life."
+    },
+    {
+      "cardId": "sci-planetarium",
+      "reason": "Extra space card. Planet Hall already covers the sky."
     }
   ],
   "cards": [
@@ -108,10 +180,11 @@
         "title": "Painting with soap film",
         "provider": "youtube",
         "channel": "Exploratorium Teacher Institute",
+        "start": 8,
         "verify": {
           "status": "sourced",
           "source": "https://www.youtube.com/watch?v=kURAFukvgSw",
-          "checked": "2026-08-15"
+          "checked": "2026-08-16"
         }
       },
       "cam": {},
@@ -206,6 +279,123 @@
       },
       "cam": {},
       "printAnswer": "Hot gas blasts down so the rocket goes up. It is tall because it stacks fuel under the crew."
+    },
+    {
+      "cardId": "sci-magnet",
+      "label": "Magnet Sand",
+      "challenge": "Why does the black sand make spikes? What is the invisible thing between the magnets?",
+      "defaultTour": false,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=2w3T1Gkq-H4",
+        "title": "Black Sand at the Exploratorium",
+        "provider": "youtube",
+        "channel": "Exploratorium",
+        "start": 8,
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=2w3T1Gkq-H4",
+          "checked": "2026-08-16"
+        }
+      },
+      "cam": {},
+      "printAnswer": "The sand is magnetite — tiny bits of iron. Each grain becomes a little magnet and lines up along the field, so you can see the push and pull."
+    },
+    {
+      "cardId": "sci-light",
+      "label": "Colored Shadows",
+      "challenge": "Why can a shadow be red, green, or blue? What color is the wall when nobody stands there?",
+      "defaultTour": false,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=q_xMoXQwAy0",
+        "title": "Colored Shadows at the Exploratorium",
+        "provider": "youtube",
+        "channel": "Exploratorium Teacher Institute",
+        "start": 8,
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=q_xMoXQwAy0",
+          "checked": "2026-08-16"
+        }
+      },
+      "cam": {},
+      "printAnswer": "Three lights mix to make white on the wall. Your body blocks one color, so the leftover mix paints a colored shadow."
+    },
+    {
+      "cardId": "sci-flight",
+      "label": "Flight Hall",
+      "challenge": "How did the first airplane leave the ground? Why are the wings so long and skinny?",
+      "defaultTour": false,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=KF9s4EIBN6A",
+        "title": "Wright Brothers exhibition at the National Air and Space Museum",
+        "provider": "youtube",
+        "channel": "Smithsonian National Air and Space Museum",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=KF9s4EIBN6A",
+          "checked": "2026-08-16"
+        }
+      },
+      "cam": {},
+      "printAnswer": "Moving air over a wing makes lift. Long wings help that air do more work, so a light plane can rise."
+    },
+    {
+      "cardId": "sci-robot",
+      "label": "Robot Lab",
+      "challenge": "How can a robot fly where there is almost no air? Why are the blades so fast?",
+      "defaultTour": false,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=wMnOo2zcjXA",
+        "title": "Ingenuity’s first flight on Mars",
+        "provider": "youtube",
+        "channel": "NASA Jet Propulsion Laboratory",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=wMnOo2zcjXA",
+          "checked": "2026-08-16"
+        }
+      },
+      "cam": {},
+      "printAnswer": "Mars air is thin, so the blades spin very fast to grab enough lift. A computer flies it because a person on Earth is too far away to steer in time."
+    },
+    {
+      "cardId": "sci-lightning",
+      "label": "Lightning",
+      "challenge": "Why does lightning jump? Why do we hear thunder after we see the flash?",
+      "defaultTour": false,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=Jcx7gv-LaKs",
+        "title": "Lightning from NOAA’s GOES-16 mapper",
+        "provider": "youtube",
+        "channel": "NOAASatellites",
+        "start": 3,
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=Jcx7gv-LaKs",
+          "checked": "2026-08-16"
+        }
+      },
+      "cam": {},
+      "printAnswer": "Storm clouds build opposite charges until a spark jumps. Light is fast; thunder is the boom of air that got super-hot, so sound arrives later."
+    },
+    {
+      "cardId": "sci-storm",
+      "label": "Giant Storm",
+      "challenge": "Why does a giant storm spin? What is the quiet hole in the middle?",
+      "defaultTour": false,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=weoWlAs4Dr4",
+        "title": "Hurricane Florence from the space station",
+        "provider": "youtube",
+        "channel": "NASA",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=weoWlAs4Dr4",
+          "checked": "2026-08-16"
+        }
+      },
+      "cam": {},
+      "printAnswer": "Warm ocean air rises and the spinning Earth twists it into a swirl. The eye is calmer because the strongest winds circle around it."
     }
   ]
 }
