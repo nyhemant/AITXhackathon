@@ -8,10 +8,10 @@
   "lat": 29.72,
   "lng": -95.39,
   "official_url": "https://www.houstonzoo.org/",
-  "last_verified": "2026-08-07",
+  "last_verified": "2026-08-16",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Hermann Park favorite — elephants, giraffes, and a tight kid loop.",
+  "tagline": "Hermann Park apes, Africa loop, and a red panda.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Members lines move faster; summers are hot — go early.",
@@ -22,7 +22,7 @@
       "id": "reticulated_giraffe",
       "label": "Giraffe",
       "emoji": "🦒",
-      "one_liner": "Feeding times are popular — check the board.",
+      "one_liner": "Giraffe tongue watch — 15 seconds at the feeding rail.",
       "tags": [
         "tall",
         "outdoor",
@@ -44,13 +44,14 @@
       "presence_checked": "2026-08-08",
       "presence_source": "official_animals_page",
       "display_label": "Giraffe",
-      "presence_note": "Wrong subspecies label; soft Giraffe OK"
+      "presence_note": "Wrong subspecies label; soft Giraffe OK",
+      "core": true
     },
     {
       "id": "western_lowland_gorilla",
       "label": "Western lowland gorilla",
       "emoji": "🦍",
-      "one_liner": "Gorilla families up close.",
+      "one_liner": "McGovern gorillas — who looks calmest?",
       "tags": [
         "primates",
         "outdoor"
@@ -70,13 +71,14 @@
       "presence": "verified",
       "presence_checked": "2026-08-08",
       "presence_source": "official_animals_page",
-      "display_label": "Western lowland gorilla"
+      "display_label": "Western lowland gorilla",
+      "core": true
     },
     {
       "id": "chimpanzee",
       "label": "Chimpanzee",
       "emoji": "🐵",
-      "one_liner": "Chimp play and chatter.",
+      "one_liner": "Chimp play and chatter on the ape side.",
       "tags": [
         "primates",
         "play"
@@ -96,13 +98,14 @@
       "presence": "verified",
       "presence_checked": "2026-08-08",
       "presence_source": "official_animals_page",
-      "display_label": "Chimpanzee"
+      "display_label": "Chimpanzee",
+      "core": true
     },
     {
       "id": "african_lion",
       "label": "African lion",
       "emoji": "🦁",
-      "one_liner": "Lions lounging in the Texas sun.",
+      "one_liner": "Houston lion pride — listen for a roar, then wait.",
       "tags": [
         "big-cats",
         "outdoor"
@@ -122,13 +125,14 @@
       "presence": "verified",
       "presence_checked": "2026-08-08",
       "presence_source": "official_animals_page",
-      "display_label": "African lion"
+      "display_label": "African lion",
+      "core": true
     },
     {
       "id": "sumatran_tiger",
       "label": "Tiger",
       "emoji": "🐯",
-      "one_liner": "Tigers on the cat walk.",
+      "one_liner": "Tiger water’s edge — why put a pool in the habitat?",
       "tags": [
         "big-cats",
         "outdoor"
@@ -149,13 +153,14 @@
       "presence_checked": "2026-08-08",
       "presence_source": "official_animals_page",
       "display_label": "Tiger",
-      "presence_note": "Not Sumatran"
+      "presence_note": "Not Sumatran",
+      "core": true
     },
     {
       "id": "zebra",
       "label": "Zebra",
       "emoji": "🦓",
-      "one_liner": "Stripes on the Africa side.",
+      "one_liner": "Africa zebra — pick one stripe set and draw it in the air.",
       "tags": [
         "outdoor",
         "pattern"
@@ -175,7 +180,170 @@
       "presence": "verified",
       "presence_checked": "2026-08-08",
       "presence_source": "official_animals_page",
-      "display_label": "Zebra"
+      "display_label": "Zebra",
+      "core": true
+    },
+    {
+      "id": "red_panda",
+      "label": "Red panda",
+            "emoji": "🦊",
+      "one_liner": "Hermann Park red panda — rusty coat, not a mini giant panda.",
+      "tags": [
+        "climb",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Asia / red pandas",
+      "qa_card": {
+        "question": "What did you notice about the red panda?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "red-panda",
+      "presence": "verified",
+      "presence_checked": "2026-08-16",
+      "presence_source": "official_animals_page",
+      "display_label": "Red panda",
+      "core": true
+    },
+    {
+      "id": "warthog",
+      "label": "Warthog",
+      "emoji": "🐗",
+      "one_liner": "African forest warthog — snout, tusks, and a trot.",
+      "tags": [
+        "outdoor",
+        "africa"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Africa",
+      "qa_card": {
+        "question": "What did you notice about the warthog?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "warthog",
+      "presence": "verified",
+      "presence_checked": "2026-08-16",
+      "presence_source": "official_animals_page",
+      "display_label": "Warthog",
+      "core": true
+    },
+    {
+      "id": "ostrich",
+      "label": "Ostrich",
+      "emoji": "🪶",
+      "one_liner": "Biggest bird on the Africa loop — look at those legs.",
+      "tags": [
+        "birds",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Africa",
+      "qa_card": {
+        "question": "What did you notice about the ostrich?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "ostrich",
+      "presence": "verified",
+      "presence_checked": "2026-08-16",
+      "presence_source": "official_animals_page",
+      "display_label": "Ostrich",
+      "core": true
+    },
+    {
+      "id": "caribbean_flamingo",
+      "label": "Caribbean flamingo",
+      "emoji": "🦩",
+      "one_liner": "Houston flamingo flock — pink on the water’s edge.",
+      "tags": [
+        "birds",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Birds",
+      "qa_card": {
+        "question": "What did you notice about the caribbean flamingo?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "caribbean-flamingo",
+      "presence": "verified",
+      "presence_checked": "2026-08-16",
+      "presence_source": "official_animals_page",
+      "display_label": "Caribbean flamingo",
+      "core": false
+    },
+    {
+      "id": "galapagos_tortoise",
+      "label": "Galápagos tortoise",
+      "emoji": "🐢",
+      "one_liner": "Island giant — slow walk, huge shell.",
+      "tags": [
+        "outdoor",
+        "slow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Reptiles",
+      "qa_card": {
+        "question": "What did you notice about the galápagos tortoise?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "galapagos-tortoise",
+      "presence": "verified",
+      "presence_checked": "2026-08-16",
+      "presence_source": "official_animals_page",
+      "display_label": "Galápagos tortoise",
+      "core": false
+    },
+    {
+      "id": "cheetah",
+      "label": "Cheetah",
+      "emoji": "🐆",
+      "one_liner": "Fast cat on the Africa side — tear marks, not a lion mane.",
+      "tags": [
+        "big-cats",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Big cats",
+      "qa_card": {
+        "question": "What did you notice about the cheetah?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "cheetah",
+      "presence": "verified",
+      "presence_checked": "2026-08-16",
+      "presence_source": "official_animals_page",
+      "display_label": "Cheetah",
+      "core": false
     }
   ],
   "content_mode": "curated",

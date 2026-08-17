@@ -9,33 +9,33 @@ Venues scanned: **218**
 - (42) `maps, restrooms, questions — start here.` → badlands, big-bend, black-canyon-gunnison, blue-mountains, bryce-canyon, canyonlands, capitol-reef, carlsbad-caverns, congaree, crater-lake, cuyahoga-valley, everglades…
 - (40) `check the day’s board at the visitor center.` → american-samoa, big-bend, biscayne, black-canyon-gunnison, blue-mountains, canyonlands, capitol-reef, channel-islands, crater-lake, death-valley, denali, dry-tortugas…
 - (39) `waddle on land, zoom in water.` → al-ain-zoo, athens-attica-zoo, auckland-zoo, audubon-zoo, barcelona-zoo, bogota-zoo, cairo-zoo, calgary-zoo, chapultepec-zoo, cincinnati-zoo, cleveland-metroparks-zoo, denver-zoo…
-- (36) `big cat of the grassland pride — mighty roar!` → albuquerque-biopark, antwerp-zoo, audubon-zoo, barcelona-zoo, beijing-zoo, berlin-zoo, budapest-zoo, calgary-zoo, cincinnati-zoo, cleveland-metroparks-zoo, dallas-zoo, dublin-zoo…
-- (30) `striped grassland runner — every pattern is unique.` → albuquerque-biopark, antwerp-zoo, artis-zoo, athens-attica-zoo, auckland-zoo, beijing-zoo, berlin-zoo, budapest-zoo, calgary-zoo, columbus-zoo, copenhagen-zoo, dallas-zoo…
+- (35) `big cat of the grassland pride — mighty roar!` → albuquerque-biopark, antwerp-zoo, audubon-zoo, barcelona-zoo, beijing-zoo, berlin-zoo, budapest-zoo, calgary-zoo, cincinnati-zoo, cleveland-metroparks-zoo, dublin-zoo, edinburgh-zoo…
+- (29) `striped grassland runner — every pattern is unique.` → albuquerque-biopark, antwerp-zoo, artis-zoo, athens-attica-zoo, auckland-zoo, beijing-zoo, berlin-zoo, budapest-zoo, calgary-zoo, columbus-zoo, copenhagen-zoo, delhi-zoo…
 - (29) `smart forest ape — climbs and tools.` → antwerp-zoo, artis-zoo, athens-attica-zoo, barcelona-zoo, budapest-zoo, calgary-zoo, copenhagen-zoo, dublin-zoo, edinburgh-zoo, helsinki-zoo, lima-leyendas, lisbon-zoo…
-- (25) `strong gentle ape in family groups.` → al-ain-zoo, artis-zoo, bangkok-safari-world, beijing-zoo, bogota-zoo, cairo-zoo, chapultepec-zoo, dallas-zoo, hogle-zoo, honolulu-zoo, jakarta-ragunan, johannesburg-zoo…
+- (24) `strong gentle ape in family groups.` → al-ain-zoo, artis-zoo, bangkok-safari-world, beijing-zoo, bogota-zoo, cairo-zoo, chapultepec-zoo, hogle-zoo, honolulu-zoo, jakarta-ragunan, johannesburg-zoo, kansas-city-zoo…
 - (23) `look up — hug with your eyes only.` → american-samoa, black-canyon-gunnison, blue-mountains, congaree, crater-lake, denali, glacier-bay, grand-teton, great-basin, guadalupe-mountains, hot-springs, isle-royale…
 - (23) `stay on the path — fragile ground or wet edge.` → american-samoa, badlands, biscayne, blue-mountains, channel-islands, dry-tortugas, everglades, gateway-arch, great-sand-dunes, hawaii-volcanoes, hot-springs, indiana-dunes…
 - (18) `fastest land animal — built to sprint.` → albuquerque-biopark, audubon-zoo, bangalore-bannerghatta, bangkok-safari-world, cleveland-metroparks-zoo, denver-zoo, hogle-zoo, kansas-city-zoo, lincoln-park-zoo, memphis-zoo, miami-zoo, milwaukee-zoo…
 - (17) `huge river giant that loves the water.` → bangalore-bannerghatta, berlin-zoo, calgary-zoo, cleveland-metroparks-zoo, copenhagen-zoo, delhi-zoo, denver-zoo, dublin-zoo, hogle-zoo, lincoln-park-zoo, memphis-zoo, milwaukee-zoo…
 - (15) `layers of rock from a safe rail.` → badlands, big-bend, blue-mountains, bryce-canyon, canyonlands, capitol-reef, crater-lake, death-valley, guadalupe-mountains, haleakala, mesa-verde, new-river-gorge…
 - (14) `water edge — safe step back.` → capitol-reef, congaree, cuyahoga-valley, gates-of-arctic, gateway-arch, grand-teton, jasper, katmai, kenai-fjords, kobuk-valley, new-river-gorge, north-cascades…
-- (13) `tiny upright swimmer that holds on with its tail.` → audubon-aquarium, dallas-world-aquarium, dubai-aquarium, florida-aquarium, istanbul-aquarium, lotte-aquarium-seoul, osaka-aquarium, seattle-aquarium, shanghai-ocean-aquarium, two-oceans-aquarium, vancouver-aquarium, virginia-aquarium…
+- (12) `tiny upright swimmer that holds on with its tail.` → audubon-aquarium, dubai-aquarium, florida-aquarium, istanbul-aquarium, lotte-aquarium-seoul, osaka-aquarium, seattle-aquarium, shanghai-ocean-aquarium, two-oceans-aquarium, vancouver-aquarium, virginia-aquarium, waikiki-aquarium
 - (11) `eight arms and a big brain — master of hide-and-seek.` → audubon-aquarium, columbus-zoo, dubai-aquarium, istanbul-aquarium, lotte-aquarium-seoul, milan-aquarium, pittsburgh-zoo, point-defiance-zoo, shanghai-ocean-aquarium, two-oceans-aquarium, virginia-aquarium
 - (10) `playful swimmer — smallest otter.` → adelaide-zoo, auckland-zoo, delhi-zoo, dubai-aquarium, dublin-zoo, hong-kong-ocean-park, melbourne-zoo, perth-zoo, singapore-zoo, wellington-zoo
 - (10) `shapes carved by wind and water.` → canyonlands, death-valley, haleakala, hawaii-volcanoes, joshua-tree, kobuk-valley, mesa-verde, pinnacles, torres-del-paine, white-sands
 - (9) `stripy forest big cat — strong and stealthy.` → al-ain-zoo, bangkok-safari-world, bogota-zoo, cairo-zoo, chapultepec-zoo, johannesburg-zoo, lima-leyendas, lincoln-park-zoo, milwaukee-zoo
 - (8) `rusty tree-climber with a ringed tail — not a giant panda!` → antwerp-zoo, artis-zoo, calgary-zoo, delhi-zoo, melbourne-zoo, perth-zoo, taronga-zoo, toronto-zoo
-- (8) `bright reef fish — friends with anemones.` → audubon-aquarium, dallas-world-aquarium, florida-aquarium, osaka-aquarium, seattle-aquarium, two-oceans-aquarium, vancouver-aquarium, virginia-aquarium
 - (8) `waves and shore — careful footing.` → biscayne, channel-islands, dry-tortugas, glacier-bay, indiana-dunes, isle-royale, lake-clark, voyageurs
 - (8) `long snaky fish — loves rocky hidey-holes.` → florida-aquarium, istanbul-aquarium, lotte-aquarium-seoul, milan-aquarium, osaka-aquarium, shanghai-ocean-aquarium, vancouver-aquarium, waikiki-aquarium
 - (7) `bright pink wader — long legs for shallow water.` → albuquerque-biopark, cincinnati-zoo, denver-zoo, minnesota-zoo, north-carolina-zoo, phoenix-zoo, woodland-park-zoo
-- (7) `shelled ocean traveler — flippers for swimming.` → columbus-zoo, dallas-world-aquarium, hong-kong-ocean-park, milan-aquarium, montreal-biodome, pittsburgh-zoo, point-defiance-zoo
+- (7) `bright reef fish — friends with anemones.` → audubon-aquarium, florida-aquarium, osaka-aquarium, seattle-aquarium, two-oceans-aquarium, vancouver-aquarium, virginia-aquarium
 - (6) `tallest animal on long legs — look up!` → cincinnati-zoo, edinburgh-zoo, melbourne-zoo, oregon-zoo, perth-zoo, wellington-zoo
-- (6) `their choice path — whatever pulled them in!` → doseum, frost-science, indy-childrens-museum, perot-museum, please-touch-museum, thinkery
+- (6) `shelled ocean traveler — flippers for swimming.` → columbus-zoo, hong-kong-ocean-park, milan-aquarium, montreal-biodome, pittsburgh-zoo, point-defiance-zoo
 - (5) `slow forest climber — hangs upside down.` → albuquerque-biopark, minnesota-zoo, north-carolina-zoo, phoenix-zoo, woodland-park-zoo
 - (5) `build, invent, problem-solve with your hands.` → arizona-science-center, museum-of-science-boston, oregon-museum-science-industry, orlando-science-center, union-station-kc-science
 - (5) `flat swimmer — often in touch pools (gentle hands!).` → columbus-zoo, hong-kong-ocean-park, seattle-aquarium, vancouver-aquarium, waikiki-aquarium
 - (5) `come-and-go art and reading activities.` → dallas-arboretum, doseum, indy-childrens-museum, please-touch-museum, thinkery
+- (5) `their choice path — whatever pulled them in!` → doseum, frost-science, indy-childrens-museum, please-touch-museum, thinkery
 - (4) `check the day’s board.` → gates-of-arctic, glacier-bay, mesa-verde, wind-cave
 - (4) `biggest land animal — trunk to grab, spray, and say hello.` → helsinki-zoo, kuala-lumpur-zoo, paris-zoo, point-defiance-zoo
 
@@ -139,14 +139,10 @@ Venues scanned: **218**
 - **national_park** `saguaro` ↔ `sequoia`: 100% shared (np-boardwalk, np-giant-tree, np-junior-ranger, np-meadow, np-scenic-overlook, np-trailhead-sign, np-visitor-center)
 - **zoo** `al-ain-zoo` ↔ `berlin-zoo`: 100% shared (african-elephant, african-lion, african-penguin, nile-hippo, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
 - **zoo** `al-ain-zoo` ↔ `cairo-zoo`: 100% shared (african-elephant, african-lion, african-penguin, nile-hippo, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
-- **zoo** `al-ain-zoo` ↔ `dallas-zoo`: 100% shared (african-elephant, african-lion, african-penguin, nile-hippo, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
 - **zoo** `al-ain-zoo` ↔ `johannesburg-zoo`: 100% shared (african-elephant, african-lion, african-penguin, nile-hippo, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
 - **zoo** `al-ain-zoo` ↔ `paris-zoo`: 100% shared (african-elephant, african-lion, african-penguin, nile-hippo, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
 - **zoo** `antwerp-zoo` ↔ `artis-zoo`: 100% shared (african-lion, african-penguin, chimpanzee, red-panda, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
-- **zoo** `antwerp-zoo` ↔ `houston-zoo`: 100% shared (african-lion, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
-- **zoo** `artis-zoo` ↔ `houston-zoo`: 100% shared (african-lion, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
 - **zoo** `athens-attica-zoo` ↔ `budapest-zoo`: 100% shared (african-elephant, african-lion, african-penguin, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
-- **zoo** `athens-attica-zoo` ↔ `houston-zoo`: 100% shared (african-lion, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
 - **zoo** `athens-attica-zoo` ↔ `lisbon-zoo`: 100% shared (african-elephant, african-lion, african-penguin, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
 - **zoo** `athens-attica-zoo` ↔ `moscow-zoo`: 100% shared (african-elephant, african-lion, african-penguin, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
 - **zoo** `athens-attica-zoo` ↔ `munich-zoo`: 100% shared (african-elephant, african-lion, african-penguin, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
@@ -155,35 +151,22 @@ Venues scanned: **218**
 - **zoo** `audubon-zoo` ↔ `hogle-zoo`: 100% shared (african-elephant, african-lion, african-penguin, cheetah, nile-hippo, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla)
 - **zoo** `audubon-zoo` ↔ `memphis-zoo`: 100% shared (african-elephant, african-lion, african-penguin, cheetah, nile-hippo, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla)
 - **zoo** `berlin-zoo` ↔ `cairo-zoo`: 100% shared (african-elephant, african-lion, african-penguin, nile-hippo, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
-- **zoo** `berlin-zoo` ↔ `dallas-zoo`: 100% shared (african-elephant, african-lion, african-penguin, nile-hippo, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
 - **zoo** `berlin-zoo` ↔ `johannesburg-zoo`: 100% shared (african-elephant, african-lion, african-penguin, nile-hippo, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
 - **zoo** `berlin-zoo` ↔ `paris-zoo`: 100% shared (african-elephant, african-lion, african-penguin, nile-hippo, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
 - **zoo** `bogota-zoo` ↔ `mumbai-byculla-zoo`: 100% shared (african-elephant, african-lion, cm-outdoor, reticulated-giraffe, sumatran-tiger, zebra)
-- **zoo** `budapest-zoo` ↔ `houston-zoo`: 100% shared (african-lion, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
 - **zoo** `budapest-zoo` ↔ `lisbon-zoo`: 100% shared (african-elephant, african-lion, african-penguin, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
 - **zoo** `budapest-zoo` ↔ `moscow-zoo`: 100% shared (african-elephant, african-lion, african-penguin, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
 - **zoo** `budapest-zoo` ↔ `munich-zoo`: 100% shared (african-elephant, african-lion, african-penguin, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
 - **zoo** `budapest-zoo` ↔ `rome-bioparco`: 100% shared (african-elephant, african-lion, african-penguin, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
 - **zoo** `budapest-zoo` ↔ `warsaw-zoo`: 100% shared (african-elephant, african-lion, african-penguin, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
-- **zoo** `cairo-zoo` ↔ `dallas-zoo`: 100% shared (african-elephant, african-lion, african-penguin, nile-hippo, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
 - **zoo** `cairo-zoo` ↔ `johannesburg-zoo`: 100% shared (african-elephant, african-lion, african-penguin, nile-hippo, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
 - **zoo** `cairo-zoo` ↔ `paris-zoo`: 100% shared (african-elephant, african-lion, african-penguin, nile-hippo, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
 - **zoo** `cincinnati-zoo` ↔ `denver-zoo`: 100% shared (african-lion, african-penguin, caribbean-flamingo, cheetah, nile-hippo, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla)
 - **zoo** `cincinnati-zoo` ↔ `san-antonio-zoo`: 100% shared (african-lion, african-penguin, caribbean-flamingo, cheetah, nile-hippo, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla)
-- **zoo** `copenhagen-zoo` ↔ `houston-zoo`: 100% shared (african-lion, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
-- **zoo** `dallas-zoo` ↔ `johannesburg-zoo`: 100% shared (african-elephant, african-lion, african-penguin, nile-hippo, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
-- **zoo** `dallas-zoo` ↔ `paris-zoo`: 100% shared (african-elephant, african-lion, african-penguin, nile-hippo, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
 - **zoo** `denver-zoo` ↔ `san-antonio-zoo`: 100% shared (african-lion, african-penguin, caribbean-flamingo, cheetah, nile-hippo, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla)
-- **zoo** `dublin-zoo` ↔ `houston-zoo`: 100% shared (african-lion, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
 - **zoo** `helsinki-zoo` ↔ `prague-zoo`: 100% shared (african-elephant, african-lion, african-penguin, chimpanzee, red-panda, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla)
 - **zoo** `helsinki-zoo` ↔ `seoul-zoo`: 100% shared (african-elephant, african-lion, african-penguin, chimpanzee, red-panda, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla)
 - **zoo** `hogle-zoo` ↔ `memphis-zoo`: 100% shared (african-elephant, african-lion, african-penguin, cheetah, nile-hippo, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla)
-- **zoo** `houston-zoo` ↔ `lisbon-zoo`: 100% shared (african-lion, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
-- **zoo** `houston-zoo` ↔ `moscow-zoo`: 100% shared (african-lion, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
-- **zoo** `houston-zoo` ↔ `munich-zoo`: 100% shared (african-lion, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
-- **zoo** `houston-zoo` ↔ `rome-bioparco`: 100% shared (african-lion, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
-- **zoo** `houston-zoo` ↔ `taronga-zoo`: 100% shared (african-lion, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
-- **zoo** `houston-zoo` ↔ `warsaw-zoo`: 100% shared (african-lion, chimpanzee, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
 - **zoo** `johannesburg-zoo` ↔ `paris-zoo`: 100% shared (african-elephant, african-lion, african-penguin, nile-hippo, reticulated-giraffe, sumatran-tiger, western-lowland-gorilla, zebra)
 - **zoo** `lima-leyendas` ↔ `rio-zoo`: 100% shared (african-elephant, african-lion, african-penguin, chimpanzee, reticulated-giraffe, sumatran-tiger, two-toed-sloth, western-lowland-gorilla)
 - **zoo** `lima-leyendas` ↔ `sao-paulo-zoo`: 100% shared (african-elephant, african-lion, african-penguin, chimpanzee, reticulated-giraffe, sumatran-tiger, two-toed-sloth, western-lowland-gorilla)
@@ -210,6 +193,23 @@ Venues scanned: **218**
 - **museum** `arizona-science-center` ↔ `oregon-museum-science-industry`: 100% shared (cm-free-explore, cm-makery, sci-dinosaur, sci-hands-on, sci-planet, sci-rocket)
 - **museum** `arizona-science-center` ↔ `orlando-science-center`: 100% shared (cm-free-explore, cm-makery, sci-dinosaur, sci-hands-on, sci-planet, sci-rocket)
 - **museum** `arizona-science-center` ↔ `union-station-kc-science`: 100% shared (cm-free-explore, cm-makery, sci-dinosaur, sci-hands-on, sci-planet, sci-rocket, sci-shuttle)
+- **museum** `carnegie-natural-history` ↔ `denver-museum-nature-science`: 100% shared (cm-free-explore, sci-dinosaur, sci-hands-on, sci-mammal-hall, sci-planet)
+- **museum** `carnegie-natural-history` ↔ `field-museum`: 100% shared (cm-free-explore, sci-dinosaur, sci-hands-on, sci-mammal-hall, sci-rainforest)
+- **museum** `carnegie-natural-history` ↔ `nhm-london`: 100% shared (cm-free-explore, sci-dinosaur, sci-hands-on, sci-mammal-hall, sci-planet)
+- **museum** `carnegie-natural-history` ↔ `smithsonian-natural-history`: 100% shared (cm-free-explore, sci-dinosaur, sci-hands-on, sci-mammal-hall, sci-planet, sci-rainforest)
+- **museum** `childrens-museum-perot` ↔ `doseum`: 100% shared (cm-art-lab, cm-free-explore, cm-makery, cm-outdoor, cm-toddler-garden, cm-waterfall)
+- **museum** `childrens-museum-perot` ↔ `please-touch-museum`: 100% shared (cm-art-lab, cm-free-explore, cm-imaginarium, cm-makery, cm-outdoor, cm-toddler-garden, cm-waterfall, cm-woven)
+- **museum** `childrens-museum-perot` ↔ `thinkery`: 100% shared (cm-art-lab, cm-free-explore, cm-imaginarium, cm-makery, cm-outdoor, cm-toddler-garden, cm-waterfall, cm-woven)
+- **museum** `dallas-arboretum` ↔ `indy-childrens-museum`: 100% shared (cm-art-lab, cm-free-explore, cm-outdoor, cm-toddler-garden, cm-waterfall, sci-hands-on)
+- **museum** `dallas-arboretum` ↔ `stockholm-skansen`: 100% shared (cm-free-explore, cm-outdoor, cm-toddler-garden, sci-hands-on)
+- **museum** `denver-museum-nature-science` ↔ `nhm-london`: 100% shared (cm-free-explore, sci-dinosaur, sci-hands-on, sci-mammal-hall, sci-planet)
+- **museum** `denver-museum-nature-science` ↔ `perot-museum`: 100% shared (cm-free-explore, sci-dinosaur, sci-hands-on, sci-mammal-hall, sci-planet)
+- **museum** `denver-museum-nature-science` ↔ `smithsonian-natural-history`: 100% shared (cm-free-explore, sci-dinosaur, sci-hands-on, sci-mammal-hall, sci-planet)
+- **museum** `discovery-place` ↔ `frost-science`: 100% shared (cm-free-explore, sci-aquarium-zone, sci-hands-on, sci-planet)
+- **museum** `discovery-place` ↔ `museum-of-science-boston`: 100% shared (cm-free-explore, sci-aquarium-zone, sci-hands-on, sci-planet)
+- **museum** `discovery-place` ↔ `smithsonian-natural-history`: 100% shared (cm-free-explore, sci-aquarium-zone, sci-hands-on, sci-planet)
+- **museum** `doseum` ↔ `please-touch-museum`: 100% shared (cm-art-lab, cm-free-explore, cm-makery, cm-outdoor, cm-toddler-garden, cm-waterfall)
+- **museum** `doseum` ↔ `thinkery`: 100% shared (cm-art-lab, cm-free-explore, cm-makery, cm-outdoor, cm-toddler-garden, cm-waterfall)
 
 ## Top-10 depth parks (expect clean)
 - **great-smoky-mountains**: core=8 generic_np=0 slice=Sugarlands · easy waterfall stop
@@ -226,5 +226,5 @@ Venues scanned: **218**
 ## Summary
 - Description offenders: 36
 - Generic-core offenders: 68
-- Pairwise share offenders: 4511
+- Pairwise share offenders: 4434
 - Top-10 clean: YES

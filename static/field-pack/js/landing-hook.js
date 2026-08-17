@@ -5,10 +5,13 @@
   const continueChip = document.getElementById("continue-chip");
   const citySelect = document.getElementById("city-select");
 
-  const FEATURED_READY_IDS = [
+  const FEATURED_READY_IDS = (window.FP_READY_STRIP && window.FP_READY_STRIP.us) || [
     "dallas-zoo",
     "childrens-aquarium-dallas",
     "childrens-museum-perot",
+    "houston-zoo",
+    "san-diego-zoo",
+    "national-zoo",
   ];
   const READY = FEATURED_READY_IDS.map((id) => places.find((p) => p.id === id)).filter(Boolean);
 

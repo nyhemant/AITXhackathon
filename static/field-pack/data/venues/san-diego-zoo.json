@@ -8,10 +8,10 @@
   "lat": 32.74,
   "lng": -117.15,
   "official_url": "https://zoo.sandiegozoo.org/",
-  "last_verified": "2026-08-07",
+  "last_verified": "2026-08-16",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Giant pandas are back, plus the famous koala colony — tourist icons first.",
+  "tagline": "Pandas and koalas first, then Elephant Odyssey.",
   "practical": {
     "typical_duration": "full day if you can; half day for icons",
     "ticket_note": "Panda viewing may use timed entry — check on arrival.",
@@ -22,7 +22,7 @@
       "id": "giant_panda",
       "label": "Giant panda",
       "emoji": "🐼",
-      "one_liner": "Yun Chuan & Xin Bao — the star return attraction.",
+      "one_liner": "Panda Ridge — bamboo breakfast if the line allows.",
       "tags": [
         "wow",
         "outdoor",
@@ -44,13 +44,14 @@
       "presence_checked": "2026-08-08",
       "presence_source": "official_animals_page",
       "display_label": "Giant panda",
-      "presence_note": "Yun Chuan & Xin Bao at Denny Sanford Panda Ridge (returned 2024; featured 2026)."
+      "presence_note": "Yun Chuan & Xin Bao at Denny Sanford Panda Ridge (returned 2024; featured 2026).",
+      "core": true
     },
     {
       "id": "koala",
       "label": "Koala",
       "emoji": "🐨",
-      "one_liner": "Largest koala colony outside Australia — look up in the trees.",
+      "one_liner": "Outback koalas — sleepy in the eucalyptus.",
       "tags": [
         "outdoor",
         "wow",
@@ -72,7 +73,8 @@
       "presence_checked": "2026-08-08",
       "presence_source": "official_animals_page",
       "display_label": "Koala",
-      "presence_note": "Largest koala colony outside Australia."
+      "presence_note": "Largest koala colony outside Australia.",
+      "core": true
     },
     {
       "id": "red_panda",
@@ -99,13 +101,14 @@
       "presence_checked": "2026-08-08",
       "presence_source": "official_animals_page",
       "display_label": "Red panda",
-      "presence_note": "Official red panda page."
+      "presence_note": "Official red panda page.",
+      "core": false
     },
     {
       "id": "african_elephant",
       "label": "African elephant",
       "emoji": "🐘",
-      "one_liner": "Huge elephants on a big California hillside.",
+      "one_liner": "Elephant Odyssey — a real walking giant.",
       "tags": [
         "big",
         "outdoor",
@@ -127,13 +130,14 @@
       "presence_checked": "2026-08-08",
       "presence_source": "official_animals_page",
       "display_label": "African elephant",
-      "presence_note": "African elephants at Elephant Odyssey."
+      "presence_note": "African elephants at Elephant Odyssey.",
+      "core": true
     },
     {
       "id": "western_lowland_gorilla",
       "label": "Western lowland gorilla",
       "emoji": "🦍",
-      "one_liner": "Gorilla families in lush habitat.",
+      "one_liner": "Lost Forest gorilla family.",
       "tags": [
         "outdoor",
         "primates"
@@ -154,13 +158,14 @@
       "presence_checked": "2026-08-08",
       "presence_source": "official_animals_page",
       "display_label": "Western lowland gorilla",
-      "presence_note": "Gorilla Tropics."
+      "presence_note": "Gorilla Tropics.",
+      "core": true
     },
     {
       "id": "orangutan",
       "label": "Orangutan",
       "emoji": "🦧",
-      "one_liner": "Long-armed orangutans in the trees.",
+      "one_liner": "Lost Forest orangutan — long arms in the trees.",
       "tags": [
         "outdoor",
         "climb"
@@ -181,7 +186,8 @@
       "presence_checked": "2026-08-08",
       "presence_source": "official_animals_page",
       "display_label": "Orangutan",
-      "presence_note": "Sumatran orangutan on Orangutan Trail."
+      "presence_note": "Sumatran orangutan on Orangutan Trail.",
+      "core": true
     },
     {
       "id": "african_lion",
@@ -209,13 +215,14 @@
       "presence_checked": "2026-08-08",
       "presence_source": "official_animals_page",
       "display_label": "African lion",
-      "presence_note": "Official lion page."
+      "presence_note": "Official lion page.",
+      "core": false
     },
     {
       "id": "sumatran_tiger",
       "label": "Tiger",
       "emoji": "🐯",
-      "one_liner": "Stripy tigers on the Asia side.",
+      "one_liner": "Asian Passage tiger — stripes in the shade.",
       "tags": [
         "big-cats",
         "outdoor"
@@ -236,13 +243,14 @@
       "presence_checked": "2026-08-08",
       "presence_source": "official_animals_page",
       "display_label": "Tiger",
-      "presence_note": "Tiger Trail present; Malayan reported on-display 2025 — soft Tiger."
+      "presence_note": "Tiger Trail present; Malayan reported on-display 2025 — soft Tiger.",
+      "core": true
     },
     {
       "id": "reticulated_giraffe",
       "label": "Giraffe",
       "emoji": "🦒",
-      "one_liner": "Tall necks above the crowd.",
+      "one_liner": "Africa giraffe — tall against the canyon.",
       "tags": [
         "tall",
         "outdoor"
@@ -263,13 +271,14 @@
       "presence_checked": "2026-08-08",
       "presence_source": "official_animals_page",
       "display_label": "Giraffe",
-      "presence_note": "Masai giraffes at Urban Jungle — soft Giraffe."
+      "presence_note": "Masai giraffes at Urban Jungle — soft Giraffe.",
+      "core": true
     },
     {
       "id": "two_toed_sloth",
       "label": "Two-toed sloth",
       "emoji": "🦥",
-      "one_liner": "Slow-motion mammal if you spot one hanging out.",
+      "one_liner": "Rainforest sloth — hang and look twice.",
       "tags": [
         "climb",
         "outdoor"
@@ -290,7 +299,8 @@
       "presence_checked": "2026-08-08",
       "presence_source": "official_animals_page",
       "display_label": "Two-toed sloth",
-      "presence_note": "Official two-toed sloth page (ambassador appearances)."
+      "presence_note": "Official two-toed sloth page (ambassador appearances).",
+      "core": true
     }
   ],
   "content_mode": "curated",

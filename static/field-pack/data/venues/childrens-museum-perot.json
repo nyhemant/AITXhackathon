@@ -8,10 +8,10 @@
   "lat": 32.79,
   "lng": -96.81,
   "official_url": "https://www.perotmuseum.org/",
-  "last_verified": "2026-08-07",
+  "last_verified": "2026-08-16",
   "verified_by": "owner",
   "status": "verified",
-  "tagline": "Play zones kids control — climb, make, splash.",
+  "tagline": "Climb, make, splash, imagine — the Perot kids floors.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Timed entry common on busy days — book ahead.",
@@ -22,7 +22,7 @@
       "id": "imaginarium",
       "label": "Imaginarium",
       "emoji": "🎨",
-      "one_liner": "Pretend worlds built for little directors.",
+      "one_liner": "Multi-sensory pretend world on the kids floors.",
       "tags": [
         "pretend",
         "kids",
@@ -35,13 +35,14 @@
         "6-8"
       ],
       "zone": "Imaginarium",
-      "catalog_id": "cm-imaginarium"
+      "catalog_id": "cm-imaginarium",
+      "core": true
     },
     {
       "id": "woven",
       "label": "Woven Wonders",
       "emoji": "🧶",
-      "one_liner": "Climb-through texture adventure.",
+      "one_liner": "Woven Wonders — climb the colorful net.",
       "tags": [
         "climb",
         "kids",
@@ -53,13 +54,14 @@
         "6-8"
       ],
       "zone": "Woven Wonders",
-      "catalog_id": "cm-woven"
+      "catalog_id": "cm-woven",
+      "core": true
     },
     {
       "id": "water",
       "label": "Water play",
       "emoji": "💧",
-      "one_liner": "Splash science without the deep end.",
+      "one_liner": "Water play if the pumps are on.",
       "tags": [
         "water",
         "hands",
@@ -72,13 +74,14 @@
         "6-8"
       ],
       "zone": "Water",
-      "catalog_id": "cm-waterfall"
+      "catalog_id": "cm-waterfall",
+      "core": true
     },
     {
       "id": "makery",
       "label": "Makery",
       "emoji": "🔧",
-      "one_liner": "Build and tinker with real tools (kid-safe).",
+      "one_liner": "Make something with your hands, then take it or toss it.",
       "tags": [
         "hands",
         "build",
@@ -90,13 +93,14 @@
         "9+"
       ],
       "zone": "Makery",
-      "catalog_id": "cm-makery"
+      "catalog_id": "cm-makery",
+      "core": true
     },
     {
       "id": "toddler",
       "label": "Toddler Garden",
       "emoji": "🌱",
-      "one_liner": "Soft space for the littlest explorers.",
+      "one_liner": "Toddler Garden — the same path twice is the point.",
       "tags": [
         "kids",
         "rest",
@@ -107,13 +111,14 @@
         "4-5"
       ],
       "zone": "Toddler Garden",
-      "catalog_id": "cm-toddler-garden"
+      "catalog_id": "cm-toddler-garden",
+      "core": true
     },
     {
       "id": "outdoor",
       "label": "Outdoor play",
       "emoji": "🌞",
-      "one_liner": "Run, climb, reset outside.",
+      "one_liner": "Outdoor play when weather allows.",
       "tags": [
         "outdoor",
         "climb",
@@ -126,13 +131,14 @@
         "9+"
       ],
       "zone": "Outdoor",
-      "catalog_id": "cm-outdoor"
+      "catalog_id": "cm-outdoor",
+      "core": true
     },
     {
       "id": "art",
       "label": "Art lab",
       "emoji": "🖼️",
-      "one_liner": "Messy-making that is allowed.",
+      "one_liner": "Come-and-go art — mess is allowed.",
       "tags": [
         "hands",
         "art",
@@ -145,13 +151,14 @@
         "9+"
       ],
       "zone": "",
-      "catalog_id": "cm-art-lab"
+      "catalog_id": "cm-art-lab",
+      "core": true
     },
     {
       "id": "explore",
       "label": "Free explore",
       "emoji": "🔍",
-      "one_liner": "Wander and pick a new favorite corner.",
+      "one_liner": "Let them pick the next zone for five minutes.",
       "tags": [
         "explore",
         "indoor"
@@ -163,13 +170,14 @@
         "9+"
       ],
       "zone": "",
-      "catalog_id": "cm-free-explore"
+      "catalog_id": "cm-free-explore",
+      "core": true
     },
     {
       "id": "quiet",
       "label": "Quiet corner",
       "emoji": "🤫",
-      "one_liner": "A calm spot when senses get full.",
+      "one_liner": "A quiet corner when the floors get loud.",
       "tags": [
         "rest",
         "indoor"
@@ -179,7 +187,8 @@
         "4-5",
         "6-8"
       ],
-      "zone": ""
+      "zone": "",
+      "core": false
     }
   ],
   "content_mode": "curated",

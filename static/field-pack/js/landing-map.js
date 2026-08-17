@@ -1,5 +1,16 @@
 (() => {
   const allPlaces = window.FP_PLACES || [];
+  window.FP_READY_STRIP = {
+    us: [
+      "dallas-zoo",
+      "childrens-aquarium-dallas",
+      "childrens-museum-perot",
+      "houston-zoo",
+      "san-diego-zoo",
+      "national-zoo",
+    ],
+    intl: ["london-zoo", "singapore-zoo", "ueno-zoo"],
+  };
   const TOP_IDS = new Set(window.FP_TOP_PLACE_IDS || []);
   const INTL_IDS = new Set(window.FP_INTL_PLACE_IDS || []);
   const detail = document.getElementById("pin-detail");
@@ -1819,31 +1830,30 @@
     });
   }
 
-  /** Swap “Or try …” ready cards for US vs international visitors. */
+  /** Swap Ready strip for US vs international map scope. */
   function updateReadyChips(isIntl) {
     const heading = document.getElementById("ready-heading");
     const grid = document.getElementById("ready-grid");
     if (!heading || !grid) return;
-    const usCards = [
-      { id: "dallas-zoo", emoji: "🦁", name: "Dallas Zoo" },
-      { id: "childrens-aquarium-dallas", emoji: "🦈", name: "Children’s Aquarium" },
-      { id: "childrens-museum-perot", emoji: "🎨", name: "Children’s Museum" },
-    ];
-    const intlCards = [
-      { id: "london-zoo", emoji: "🦁", name: "London Zoo" },
-      { id: "singapore-zoo", emoji: "🦍", name: "Singapore Zoo" },
-      { id: "ueno-zoo", emoji: "🐯", name: "Ueno Zoo" },
-    ];
-    const cards = isIntl ? intlCards : usCards;
-    heading.textContent = isIntl ? "Or try a world favorite" : "Or try Dallas";
-    grid.innerHTML = cards
-      .map(
-        (c) => `<a class="ready-card" href="/field-pack/#/venue/${c.id}" data-venue-id="${c.id}">
-            <span class="rc-emoji" aria-hidden="true">${c.emoji}</span>
-            <h3>${c.name}</h3>
+    const spec = window.FP_READY_STRIP || { us: [], intl: [] };
+    const ids = isIntl ? spec.intl : spec.us;
+    const shortName = {
+      "childrens-aquarium-dallas": "Children’s Aquarium",
+      "childrens-museum-perot": "Children’s Museum",
+      "national-zoo": "National Zoo",
+    };
+    heading.textContent = isIntl ? "Try a place" : "Ready to print";
+    grid.innerHTML = ids
+      .map((id) => {
+        const p = placeById(id) || {};
+        const emoji = p.emoji || "📍";
+        const name = shortName[id] || p.name || id;
+        return `<a class="ready-card" href="/field-pack/#/venue/${id}" data-venue-id="${id}">
+            <span class="rc-emoji" aria-hidden="true">${emoji}</span>
+            <h3>${name}</h3>
             <span class="rc-cta">Open on map →</span>
-          </a>`
-      )
+          </a>`;
+      })
       .join("");
   }
 

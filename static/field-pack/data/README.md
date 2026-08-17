@@ -49,6 +49,6 @@ Built from `places-data.js` + `catalog.js` plus hand research blocks in the gene
 - Type: `national_park` in venue JSON; places-data `type: "National park"`; pin kind `park` (green).
 - **Slice-first:** `practical.best_start` / `slice_name` name the half-day area — never promise the whole park.
 - Items are trail/feature stops (`packTemplate: park_features`), not zoo animals.
-- **Art:** illustrated cards under `photos/np-*.jpg` with `photoCredit: "Illustration · Field Trip Kit"` (not stock photos).
+- **Photos:** real Wikimedia/Commons park heroes and stop cards (`photos/np-*.jpg`, `photoCredit: "Photo via Wikimedia Commons"`). Museum `cm-*` / `sci-*` cards may still be illustrated.
 - Bonus kit key: `national_park` in `bonus-hunts.json`.
 - Validators: same presence rules; wildlife is soft-language only.

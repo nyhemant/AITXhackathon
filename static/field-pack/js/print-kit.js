@@ -82,6 +82,24 @@
     return "";
   }
 
+  function printMapCredit(venue) {
+    const id = (venue && (venue.id || venue.slug)) || "";
+    const credits = window.FP_PRINT_MAP_CREDITS || {};
+    if (id && credits[id]) return String(credits[id]);
+    try {
+      const el = document.getElementById("venue-data");
+      if (el && el.textContent) {
+        const data = JSON.parse(el.textContent);
+        const a = ((data && data.media) || {}).map_attribution;
+        if (a) return String(a);
+      }
+    } catch (_) {
+      /* ignore */
+    }
+    const a = ((venue && venue.media) || {}).map_attribution;
+    return a ? String(a) : "";
+  }
+
   function buildTreasureHtml(venue, starIds) {
     const hunts = (venue.treasureHunt || []).slice(0, 8);
     const huntHtml = hunts
@@ -102,12 +120,15 @@
       })
       .join("");
     const mapSrc = printMapForVenue(venue);
+    const mapCredit = printMapCredit(venue);
+    const mapAlt = mapCredit && /openstreetmap/i.test(mapCredit) ? "Park map" : "Visitor map";
     const mapBlock = mapSrc
       ? `<div class="th-map th-map-has-photo">
           <p class="th-map-title">Park map — mark start → favorite → end</p>
           <div class="th-map-photo-wrap">
-            <img class="th-map-photo" src="${escapeAttr(mapSrc)}" alt="Official visitor map" />
+            <img class="th-map-photo" src="${escapeAttr(mapSrc)}" alt="${escapeAttr(mapAlt)}" />
           </div>
+          ${mapCredit ? `<p class="th-map-credit">${escapeHtml(mapCredit)}</p>` : ""}
         </div>`
       : `<div class="th-map">
           <p class="th-map-title">Path doodle <span class="th-map-hint">— start → favorite → end</span></p>

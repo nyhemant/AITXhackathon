@@ -8,10 +8,10 @@
   "lat": 38.93,
   "lng": -77.05,
   "official_url": "https://nationalzoo.si.edu/",
-  "last_verified": "2026-08-07",
+  "last_verified": "2026-08-16",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Free Smithsonian zoo — giant pandas Bao Li & Qing Bao lead the day.",
+  "tagline": "Asia Trail pandas and otters, then the O Line.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Free admission; timed entry may apply — reserve on the Zoo site.",
@@ -22,7 +22,7 @@
       "id": "giant_panda",
       "label": "Giant panda",
       "emoji": "🐼",
-      "one_liner": "Bao Li and Qing Bao in the renovated panda habitat.",
+      "one_liner": "Asia Trail pandas — the Smithsonian pair.",
       "tags": [
         "wow",
         "outdoor",
@@ -44,13 +44,14 @@
       "presence_checked": "2026-08-08",
       "presence_source": "official_animals_page",
       "display_label": "Giant panda",
-      "presence_note": "Bao Li & Qing Bao on Asia Trail."
+      "presence_note": "Bao Li & Qing Bao on Asia Trail.",
+      "core": true
     },
     {
       "id": "asian_small_clawed_otter",
       "label": "Asian small-clawed otter",
       "emoji": "🦦",
-      "one_liner": "Otters near the Asia path energy.",
+      "one_liner": "Asia Trail otters — smallest otter, biggest splash.",
       "tags": [
         "play",
         "water"
@@ -71,13 +72,14 @@
       "presence_checked": "2026-08-08",
       "presence_source": "official_animals_page",
       "display_label": "Asian small-clawed otter",
-      "presence_note": "Asia Trail: Asian small-clawed otters."
+      "presence_note": "Asia Trail: Asian small-clawed otters.",
+      "core": true
     },
     {
       "id": "red_panda",
       "label": "Red panda",
       "emoji": "🦊",
-      "one_liner": "Red pandas in the trees if awake.",
+      "one_liner": "Asia Trail red panda — rusty and tree-high.",
       "tags": [
         "climb",
         "outdoor"
@@ -98,13 +100,14 @@
       "presence_checked": "2026-08-08",
       "presence_source": "official_animals_page",
       "display_label": "Red panda",
-      "presence_note": "Asia Trail: red pandas."
+      "presence_note": "Asia Trail: red pandas.",
+      "core": true
     },
     {
       "id": "african_lion",
       "label": "Lion",
       "emoji": "🦁",
-      "one_liner": "Lions on the cat walk.",
+      "one_liner": "Great Cats lion — listen for a roar on the Mall side.",
       "tags": [
         "big-cats",
         "outdoor",
@@ -126,13 +129,14 @@
       "presence_checked": "2026-08-08",
       "presence_source": "official_animals_page",
       "display_label": "Lion",
-      "presence_note": "Great Cats: Lion."
+      "presence_note": "Great Cats: Lion.",
+      "core": true
     },
     {
       "id": "sumatran_tiger",
       "label": "Tiger",
       "emoji": "🐯",
-      "one_liner": "Tigers pacing or napping in the shade.",
+      "one_liner": "Great Cats tiger next door to the lions.",
       "tags": [
         "big-cats",
         "outdoor"
@@ -153,13 +157,14 @@
       "presence_checked": "2026-08-08",
       "presence_source": "official_animals_page",
       "display_label": "Tiger",
-      "presence_note": "Great Cats: Tiger present; subspecies mix historically. Soft Tiger."
+      "presence_note": "Great Cats: Tiger present; subspecies mix historically. Soft Tiger.",
+      "core": true
     },
     {
       "id": "western_lowland_gorilla",
       "label": "Gorilla",
       "emoji": "🦍",
-      "one_liner": "Gorillas face-to-face through glass.",
+      "one_liner": "Great Ape House gorilla family.",
       "tags": [
         "primates",
         "outdoor"
@@ -179,13 +184,14 @@
       "presence": "high",
       "presence_checked": "2026-08-08",
       "display_label": "Gorilla",
-      "presence_note": "Primates area historically includes gorillas; confirm current individuals on animals list. Soft Gorilla."
+      "presence_note": "Primates area historically includes gorillas; confirm current individuals on animals list. Soft Gorilla.",
+      "core": true
     },
     {
       "id": "orangutan",
       "label": "Orangutan",
       "emoji": "🦧",
-      "one_liner": "Orangutans — watch for sky-cable travel on some days.",
+      "one_liner": "O Line orangutans — watch them travel above the path.",
       "tags": [
         "primates",
         "climb"
@@ -206,13 +212,14 @@
       "presence_checked": "2026-08-08",
       "presence_source": "official_animals_page",
       "display_label": "Orangutan",
-      "presence_note": "Bornean orangutan on animals list."
+      "presence_note": "Bornean orangutan on animals list.",
+      "core": true
     },
     {
       "id": "caribbean_flamingo",
       "label": "Flamingo",
       "emoji": "🦩",
-      "one_liner": "Pink flock for an easy win.",
+      "one_liner": "Bird House flamingo flock on the National Mall side.",
       "tags": [
         "color",
         "outdoor"
@@ -232,7 +239,8 @@
       "presence": "high",
       "presence_checked": "2026-08-08",
       "display_label": "Flamingo",
-      "presence_note": "Bird House includes flamingos on maps. Soft Flamingo."
+      "presence_note": "Bird House includes flamingos on maps. Soft Flamingo.",
+      "core": true
     }
   ],
   "content_mode": "curated",

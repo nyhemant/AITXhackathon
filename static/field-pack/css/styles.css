@@ -1881,6 +1881,13 @@ a {
     object-fit: contain;
     object-position: center;
   }
+  .th-map-credit {
+    margin: 2px 0 0;
+    font-size: 6.5pt;
+    color: #3d4f6f;
+    font-weight: 600;
+    line-height: 1.2;
+  }
 
   .th-footer {
     margin-top: 3px;

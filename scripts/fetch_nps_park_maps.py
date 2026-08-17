@@ -478,9 +478,10 @@ def smart_crop_to(dest: Path, pdf_path: Path | None = None) -> dict:
 
 
 def rebuild_print_maps_js() -> int:
-    """Rebuild FP_PRINT_MAPS from all media/maps/*.jpg that match a venue slug."""
+    """Rebuild FP_PRINT_MAPS + FP_PRINT_MAP_CREDITS from maps + venue JSON."""
     venue_slugs = {p.stem for p in VENUE_DIR.glob("*.json")}
     entries = []
+    credits = []
     for img in sorted(MAP_DIR.glob("*.jpg")):
         slug = img.stem
         if slug not in venue_slugs:
@@ -488,6 +489,14 @@ def rebuild_print_maps_js() -> int:
         if img.stat().st_size < 20000:
             continue
         entries.append((slug, f"/field-pack/media/maps/{slug}.jpg"))
+        vp = VENUE_DIR / f"{slug}.json"
+        try:
+            media = (json.loads(vp.read_text(encoding="utf-8")).get("media") or {})
+            attr = (media.get("map_attribution") or "").strip()
+            if attr:
+                credits.append((slug, attr))
+        except Exception:
+            pass
     lines = [
         "/* Auto-generated print-safe local map paths for hunt one-pager */\n",
         "window.FP_PRINT_MAPS = {\n",
@@ -495,6 +504,12 @@ def rebuild_print_maps_js() -> int:
     for i, (slug, path) in enumerate(entries):
         comma = "," if i < len(entries) - 1 else ""
         lines.append(f'  "{slug}": "{path}"{comma}\n')
+    lines.append("};\n")
+    lines.append("window.FP_PRINT_MAP_CREDITS = {\n")
+    for i, (slug, attr) in enumerate(credits):
+        comma = "," if i < len(credits) - 1 else ""
+        safe = attr.replace("\\", "\\\\").replace('"', '\\"')
+        lines.append(f'  "{slug}": "{safe}"{comma}\n')
     lines.append("};\n")
     PRINT_MAPS_JS.write_text("".join(lines), encoding="utf-8")
     return len(entries)
@@ -644,12 +659,72 @@ def process_venue(v: dict, dry: bool = False) -> dict:
     return result
 
 
+def ledger_from_disk() -> int:
+    """Rebuild nps_park_maps_ledger.json from venue media + map files (no download)."""
+    old = {}
+    if LEDGER.exists():
+        for r in json.loads(LEDGER.read_text(encoding="utf-8")).get("results") or []:
+            if r.get("slug"):
+                old[r["slug"]] = r
+    results = []
+    for p in sorted(VENUE_DIR.glob("*.json")):
+        v = json.loads(p.read_text(encoding="utf-8"))
+        if v.get("type") != "national_park":
+            continue
+        slug = v.get("slug") or p.stem
+        dest = MAP_DIR / f"{slug}.jpg"
+        media = v.get("media") or {}
+        prev = old.get(slug) or {}
+        page = str(media.get("visitor_map_page") or "")
+        kind = prev.get("kind") or ("pdf" if page.lower().endswith(".pdf") else "image")
+        source = (
+            prev.get("source")
+            or media.get("visitor_map_full")
+            or page
+            or ""
+        )
+        exists = dest.exists() and dest.stat().st_size >= 20000
+        results.append(
+            {
+                "slug": slug,
+                "code": park_code(v),
+                "status": "ok" if exists else "missing",
+                "source": source,
+                "kind": kind,
+                "path": str(dest.relative_to(ROOT)) if dest.exists() else "",
+                "error": "" if exists else "map jpg missing on disk",
+                "bytes": dest.stat().st_size if dest.exists() else 0,
+                "deep_link": page,
+                "map_attribution": media.get("map_attribution") or "",
+            }
+        )
+    LEDGER.parent.mkdir(parents=True, exist_ok=True)
+    LEDGER.write_text(
+        json.dumps({"updated": TODAY, "source": "disk", "results": results}, indent=2)
+        + "\n",
+        encoding="utf-8",
+    )
+    return len(results)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--slug", default="")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--limit", type=int, default=0)
+    ap.add_argument(
+        "--ledger-from-disk",
+        action="store_true",
+        help="Refresh ledger + print-maps.js from existing files (no download)",
+    )
     args = ap.parse_args()
+
+    if args.ledger_from_disk:
+        n = ledger_from_disk()
+        n_maps = rebuild_print_maps_js()
+        print(f"ledger from disk: {n} parks → {LEDGER}")
+        print(f"print_maps_entries={n_maps}")
+        return
 
     venues = []
     for p in sorted(VENUE_DIR.glob("*.json")):

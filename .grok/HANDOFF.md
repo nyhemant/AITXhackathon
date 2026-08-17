@@ -1,128 +1,96 @@
 # 1Less — session handoff
 
-**Last updated:** 2026-08-09 (Intl parks P1 ship)  
+**Last updated:** 2026-08-17 (unique lists + Ready 6 + park polish)  
 **Session:** `1less`  
 **Pre-rearch restore:** `git checkout snapshot/pre-rearch-2026-08-02`
 
 ## Product
-- **1Less** brand · **Baby's Day Out** default (`/` → `/field-pack/`) · **Dinner** secondary (`/dinner` via More)
+- **1Less** brand · **Field Trip Kit** default (`/` → `/field-pack/`) · **Dinner** secondary (`/dinner` via More)
+- Kid printables: **mission**. Do not use “Baby’s Day Out” in new user-facing copy.
 
 ## Shell
 - `static/shell/` — logo **52px** (44px mobile), product name, More menu
-- CSS cache: `shell.css?v=2`
+- CSS cache: `shell.css?v=6`
 
-## BDO landing
-- Hook hero + Ready now cards + city chips + map
-- Map ready venue: **Start outing** primary, Place info secondary
-- Soon city: **Save this city** → `localStorage` `1less-saved-cities`
-- Waiting line + continue last outing (deep-link `#/trip/id`)
-
-## Planner
-- Print treasure hunt promoted on home
-- Win banner after submit/teach
-- Storage: `1less-babys-day-out-trips-v1`
-
-## Smoke
-```bash
-curl -sI http://localhost:8000/ | grep Location
-curl -sf -o /dev/null -w "%{http_code}\n" http://localhost:8000/field-pack/ http://localhost:8000/dinner http://localhost:8000/shell/shell.css
-```
-
-## Next optional
-- Email notify for saved cities
-- `/outings` alias
-- More ready packs
-
-## Voice & polish
-- Voice: no Arya; kid-neutral; print blank explorer name
-- Ready cards static HTML fallback; logo 52px attrs
-- Missions framed optional after visit; planner topbar compact under shell
+## Landing
+- Hook hero + search + map + **Ready to print** (6 cards) + Popular SEO chips
+- Ready IDs: one list `window.FP_READY_STRIP` in `landing-map.js` (US six + intl London / Singapore / Ueno)
+- US six: Dallas Zoo, Children’s Aquarium Dallas, Children’s Museum (Perot), Houston Zoo, San Diego Zoo, National Zoo
+- Ready CTA is **Open on map / Start outing**. Popular chips go to `/field-pack/{slug}/`
+- Copy: **Ready to print** / **Try a place** — not “Or try Dallas”
+- Cache: `landing.css?v=94`, `landing-map.js?v=82`, `landing-hook.js?v=32`, `catalog.js?v=34`
 
 ## Flow (3 levels — current)
 1. **Home** `/` → `/field-pack/` — city + venue
 2. **Outing** `app.html#/venue/{id}` — item list + print treasure hunt (+ optional customize)
 3. **Item** `#/venue/{id}/item/{itemId}` — optional Q&A + print card
 
-Removed from main path: planner home, build-shortlist step, saved-trips list, required place brochure hop.
+## Unique lists — wave 1 (2026-08-17)
+Dual-write `catalog.js` + `data/venues/{slug}.json` for **8 packs only** (not all 218):
 
-## National MVP packs (2026-08-02)
-- **23 venues ready** (shared catalog reuse). Home Ready strip still **Dallas 3 only**.
-- All map cities/venues open outing packs: shortlist + hunt + optional Q&A.
-- New shared items: giant-panda, red-panda, zebra, sci-* exhibit cards.
-- Depth is MVP (not zoo-specific unique animals). Unique polish later.
+| Pack | Distinctive featured |
+|------|----------------------|
+| `dallas-zoo` | Giraffe Ridge / elephant / penguin / hippo / flamingo / cheetah |
+| `childrens-aquarium-dallas` | Small-tank list (no DWA clone, no otter) |
+| `childrens-museum-perot` | `cm-*` kids floor |
+| `dallas-world-aquarium` | Sloth / lemur rainforest — **no** Asian small-clawed otter |
+| `perot-museum` | Dinos + sports/energy, not generic `sci-*` deck |
+| `houston-zoo` | Apes + red panda / zebra / warthog / ostrich (not Dallas first six) |
+| `san-diego-zoo` | Panda / koala-led |
+| `national-zoo` | Smithsonian pandas + otter / red panda |
 
-## National Parks — complete Phase 1 ship (2026-08-08)
+- Hunt lines are venue-specific (not the cloned “taller than a grown-up” block)
+- Honesty: Houston has no African elephant / African penguin / Nile hippo / otter; National Zoo has no African elephant / giraffe
+- Out of scope: Virtual Zoo films, intl zoo clones, AMNH/Field Museum NHM decks
+- Lint: wave-1 pairwise core share ≤50%. Global lint still flags the other ~210 venues
+- SEO regen: `python3 scripts/generate_bdo_seo.py` (mission renderer `v` NameError in drawer kicker is fixed)
 
-### Waves done
-1. **Imagine art** — 62 `photos/np-*.jpg` via grok-imagine-image (style anchor + shared + landmarks + 30 heroes). Credit: Illustration · Field Trip Kit.
-2. **SEO type landings** — `/field-pack/zoos|aquariums|museums|national-parks/` (+ `/parks/` alias). Tabs on home are crawlable `<a>` (left-click still filters map).
-3. **P1b** — **63 US National Parks** full designated set (1a+1b+1c long-tail). Dual-write + bonus solid + SEO.
+## Ready strip (2026-08-17)
+- Restored after T4b hero removed the HTML
+- 6 cards, 2-up on mobile (`max-width: 720px`), emoji+text only
+- Static no-JS fallback: `#ready-heading` + `#ready-grid` in `index.html`
 
-### Smoke
+## National parks — photos done + polish (2026-08-17)
+- **78/78 heroes are real Wikimedia** (not Imagine). Policy: no AI park heroes/cards
+- Parks hub `og:image` → `np-hero-yellowstone.jpg`. Zoo/aquarium/museum hubs keep Dallas Zoo sample
+- SEO hero alt is **“park day”** (not “illustrated park day”)
+- Print maps: `FP_PRINT_MAP_CREDITS` in `print-maps.js`; `print-kit.js` shows `map_attribution` (not hardcoded “Official visitor map”)
+- Cache: `print-maps.js?v=5`, `print-kit.js?v=13`, `styles.css?v=35`
+- US D/C recrop: Shenandoah + New River Gorge then six C-grades via `crop_park_map.py`. In-place trim helped some C-grades; D-grades were already fully cropped (tall unigrid source). Re-fetch blocked: Python SSL certs + no `pdftoppm`
+- Intl OSM (Blue Mountains, Fuji-Hakone-Izu, Killarney, Nikkō): **accepted gaps** — official visitor maps are not freely licensable for hosting. See `MAP_STATUS.md`
+- Ledger: `nps_park_maps_ledger.json` rebuilt from disk (78/78 ok). Unique stop/wildlife `source_url`: copied from shared paths + 3 hero landmark matches; 25 unique JPEGs still empty (Commons lookup needs working Python SSL)
+- **P2 later:** `np_intl_phase2.json` not started. No new parks this pass
+
+## Smoke
+Local: `./scripts/dev-serve.sh` → `http://127.0.0.1:8000/field-pack/`
+
 ```bash
-curl -sf -o /dev/null -w "%{http_code}
-" \
-  http://localhost:8000/field-pack/ \
-  http://localhost:8000/field-pack/national-parks/ \
-  http://localhost:8000/field-pack/zoos/ \
-  http://localhost:8000/field-pack/yellowstone/ \
-  http://localhost:8000/field-pack/joshua-tree/ \
-  http://localhost:8000/field-pack/photos/np-hero-yellowstone.jpg
+curl -sI http://127.0.0.1:8000/ | grep Location
+curl -sf -o /dev/null -w "%{http_code}\n" \
+  http://127.0.0.1:8000/field-pack/ \
+  http://127.0.0.1:8000/field-pack/national-parks/ \
+  http://127.0.0.1:8000/field-pack/dallas-zoo/ \
+  http://127.0.0.1:8000/field-pack/houston-zoo/ \
+  http://127.0.0.1:8000/field-pack/san-diego-zoo/ \
+  http://127.0.0.1:8000/field-pack/yellowstone/ \
+  http://127.0.0.1:8000/field-pack/photos/np-hero-yellowstone.jpg
 ```
 
-### Regen
+Landing (~390px): search + map + six Ready cards; Dallas Zoo Ready opens map pin; Popular chips → `/field-pack/{slug}/`  
+App: `#/venue/dallas-zoo` vs Houston vs San Diego featured chips differ; DWA shortlist includes sloth, not CAD otter  
+Park: Yellowstone / Banff alt is not “illustrated”; `/field-pack/national-parks/` og:image is a park hero; print sheet shows map credit
+
+## Regen
 ```bash
 python3 scripts/generate_bdo_seo.py
-python3 scripts/scaffold_bonus_hunt.py --sync-file
-python3 scripts/validate_bonus_hunts.py
+python3 scripts/lint_item_uniqueness.py
+python3 scripts/fetch_nps_park_maps.py --ledger-from-disk
+scripts/.venv-maps/bin/python scripts/crop_park_map.py --slug shenandoah
 ```
 
-### Park image wow (2026-08-09)
-- Heroes **wired**: SEO banner + og:image, `/national-parks/` featured thumbs, map pin `pd-park-hero`.
-- Regenerated with **`grok-imagine-image-quality`** (95+ assets: US heroes + shared stops + landmarks + intl).
-- Cache `?v=q2` after scale-policy regen. Prompts: `scripts/data/np_hero_prompts.json`.
-- **Scale policy:** vast vistas = no people; near scenes only = family ~1/9–1/7 frame; wildlife = animals only.
-
-### International parks — P1 ship (2026-08-09)
-- **78 parks total** = 63 US + **15 intl pilots**. Same `national_park` type; map `tier: "intl"` + `country`/`countryName`.
-- Pilots: Banff, Jasper, Yoho, Plitvice, Eryri/Snowdonia, Lake District, Killarney, Fuji-Hakone-Izu, Nikkō, Fiordland, Blue Mountains, Kruger, Table Mountain, Torres del Paine, Iguazú (AR).
-- Source list: `scripts/data/np_intl_phase1.json`. Dual-write venues + places + catalog; bonus solid (7 finds); SEO mission pages; hub copy worldwide (78 on `/national-parks/`).
-- Unique landmarks: `np-lake-louise`, `np-plitvice-lakes`, `np-mount-fuji-lake`, `np-three-sisters`, `np-torres-towers`, `np-iguazu-falls`, `np-milford-sound`, `np-table-mountain` (inside `FIELD_PACK_CATALOG` — never inject outside the object).
-- **Slice-specific cards (2026-08-09):** All **78** park venue JSON labels scrubbed (US + intl). No generic “Visitor center / Scenic overlook / Trailhead sign” left. SEO/mission uses `display_label`.
-- **App parity:** `FIELD_PACK_VENUES[slug].itemDisplayNames` maps catalog id → park label; `app.js` / `print-kit.js` `getItem(id, venue)` applies it without mutating shared catalog cards.
-- **Shared living cards with zoos:** parks use the same catalog ids + Wikimedia photos as zoos when practical (`african-lion`, `zebra`, `american-bison`, `elk`, `american-alligator`, …). Infra stops (VC, boardwalk, overlook) stay illustrated `np-*`. Do **not** global-replace catalog keys (duplicates last-wins).
-- **P2 later:** more per region, contact-sheet art audit, optional country hubs. Not started.
-
-### Smoke (intl + US regression)
-```bash
-python3 -m http.server 8000 --directory static
-curl -sf -o /dev/null -w "%{http_code}\n" \
-  http://localhost:8000/field-pack/national-parks/ \
-  http://localhost:8000/field-pack/banff/ \
-  http://localhost:8000/field-pack/plitvice-lakes/ \
-  http://localhost:8000/field-pack/fuji-hakone-izu/ \
-  http://localhost:8000/field-pack/kruger/ \
-  http://localhost:8000/field-pack/photos/np-hero-banff.jpg \
-  http://localhost:8000/field-pack/yellowstone/ \
-  http://localhost:8000/field-pack/dallas-zoo/
-```
-
-### Parks polish pass (pre-release, 2026-08-09)
-- Continent: VI→NA, AS→Oceania; `_venue_continent` prefers country/territory codes.
-- Header tagline unified: "Zoo, aquarium, museum & park days". Landing H1 includes parks.
-- Map count: live JS only (no hardcoded 74).
-- Top-10 depth packs with unique cores + `verify` fields; lint `scripts/lint_item_uniqueness.py`.
-- Maps `/field-pack/media/maps/{slug}.jpg`; stop photos Commons; print slice title + park safety footer.
-- Analytics `mission_printed`: venue_type, venue_slug, age_band, time_length, style.
-- Summary: `scripts/data/np-polish-pass-summary.md`.
-
-### Park photos = real only (in progress)
-- Policy: no AI park heroes/cards. Tools: `scripts/audit_park_photos.py`, `scripts/fetch_park_photo.py`, ledger `scripts/data/park_photo_ledger.json`.
-- Done: all shared `np-*` templates → Wikimedia real photos; top-10 heroes real; depth-pass cards recredited when using shared files.
-- All **78 park heroes** now real Wikimedia/Commons photos (batch + quality pass). Shared np-* templates real. Ledger: scripts/data/park_photo_ledger.json.
-
-### NPS official maps (2026-08-10)
-- **63/63 US parks** have local official/NPS-sourced maps at `media/maps/{slug}.jpg` + `media.print_map` + `FP_PRINT_MAPS`.
-- Fetcher: `scripts/fetch_nps_park_maps.py` (nps.gov unigrid/PDF/map images; fallbacks NPMaps/Commons).
-- Print: SEO mission + print-kit + **app treasure sheet** show map photo when available; doodle only as fallback.
-- Attribution: `Map: National Park Service (public domain)` (or via NPMaps/Commons where noted).
+## Next optional
+- Intl parks P2 (new countries / hubs) — not started
+- Unique lists for remaining ~210 venues
+- Python SSL / `pdftoppm` so D-grade maps can re-fetch NPS PDFs
+- Commons `source_url` backfill for 25 unique stop JPEGs
+- Email notify for saved cities

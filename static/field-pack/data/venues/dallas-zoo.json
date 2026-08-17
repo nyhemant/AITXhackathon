@@ -8,10 +8,10 @@
   "lat": 32.74,
   "lng": -96.82,
   "official_url": "https://www.dallaszoo.com/",
-  "last_verified": "2026-08-08",
+  "last_verified": "2026-08-16",
   "verified_by": "owner",
   "status": "verified",
-  "tagline": "Big savanna views and a real giraffe feeding platform.",
+  "tagline": "Giraffe Ridge feeding plus Penguin Cove and a hippo window.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Buy tickets online; weekends can sell out.",
@@ -19,39 +19,10 @@
   },
   "items": [
     {
-      "id": "elephant",
-      "label": "African elephant",
-      "emoji": "🐘",
-      "one_liner": "Biggest land animal — trunk to grab and spray.",
-      "tags": [
-        "big",
-        "outdoor",
-        "wow",
-        "savanna"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Giants of the Savanna",
-      "qa_card": {
-        "question": "What does an elephant use its trunk for?",
-        "answer": "To smell, grab food, drink, and spray water!"
-      },
-      "catalog_id": "african-elephant",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "African elephant",
-      "presence_note": "Baby elephant + adopt list"
-    },
-    {
       "id": "giraffe",
       "label": "Reticulated giraffe",
       "emoji": "🦒",
-      "one_liner": "Tallest animal — feed one from the platform!",
+      "one_liner": "Feed one from the Giraffe Ridge platform.",
       "tags": [
         "tall",
         "feeding",
@@ -75,7 +46,184 @@
       "presence_checked": "2026-08-08",
       "presence_source": "official_animals_page",
       "display_label": "Reticulated giraffe",
-      "presence_note": "Giraffe Ridge feeding platform"
+      "presence_note": "Giraffe Ridge feeding platform",
+      "core": true
+    },
+    {
+      "id": "elephant",
+      "label": "African elephant",
+      "emoji": "🐘",
+      "one_liner": "Baby elephant plus the Giants of the Savanna herd.",
+      "tags": [
+        "big",
+        "outdoor",
+        "wow",
+        "savanna"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Giants of the Savanna",
+      "qa_card": {
+        "question": "What does an elephant use its trunk for?",
+        "answer": "To smell, grab food, drink, and spray water!"
+      },
+      "catalog_id": "african-elephant",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "African elephant",
+      "presence_note": "Baby elephant + adopt list",
+      "core": true
+    },
+    {
+      "id": "penguin",
+      "label": "African penguin",
+      "emoji": "🐧",
+      "one_liner": "Penguin Cove — waddle, then zoom in the water.",
+      "tags": [
+        "birds",
+        "water",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Penguin Cove",
+      "catalog_id": "african-penguin",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "African penguin",
+      "presence_note": "Penguin Cove; African Shorelines expansion will grow colony — still on-view habitat.",
+      "core": true
+    },
+    {
+      "id": "hippo",
+      "label": "Nile hippo",
+      "emoji": "🦛",
+      "one_liner": "Simmons Hippo Outpost — watch the underwater window.",
+      "tags": [
+        "big",
+        "water",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Simmons Hippo Outpost",
+      "catalog_id": "nile-hippo",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Nile hippo",
+      "core": true
+    },
+    {
+      "id": "flamingo",
+      "label": "Caribbean flamingo",
+      "emoji": "🦩",
+      "one_liner": "ZooNorth pink flock — long legs in the shallows.",
+      "tags": [
+        "birds",
+        "color",
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "ZooNorth",
+      "catalog_id": "caribbean-flamingo",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Caribbean flamingo",
+      "core": true
+    },
+    {
+      "id": "cheetah",
+      "label": "Cheetah",
+      "emoji": "🐆",
+      "one_liner": "Savanna sprinter — spots, not stripes.",
+      "tags": [
+        "big-cats",
+        "outdoor",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Giants of the Savanna",
+      "catalog_id": "cheetah",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Cheetah",
+      "presence_note": "Protecting the Twelve",
+      "core": true
+    },
+    {
+      "id": "tortoise",
+      "label": "Galápagos tortoise",
+      "emoji": "🐢",
+      "one_liner": "ZooNorth giant — slow steps, huge shell.",
+      "tags": [
+        "outdoor",
+        "slow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "ZooNorth",
+      "catalog_id": "galapagos-tortoise",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Galápagos tortoise",
+      "presence_note": "Tortoise feeding ZooNorth",
+      "core": true
+    },
+    {
+      "id": "tiger",
+      "label": "Sumatran tiger",
+      "emoji": "🐯",
+      "one_liner": "Endangered Tiger Habitat — orange stripes in the trees.",
+      "tags": [
+        "big-cats",
+        "pattern",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Endangered Tiger Habitat",
+      "catalog_id": "sumatran-tiger",
+      "presence": "verified",
+      "presence_checked": "2026-08-08",
+      "presence_source": "official_animals_page",
+      "display_label": "Sumatran tiger",
+      "core": true
     },
     {
       "id": "lion",
@@ -99,7 +247,8 @@
       "presence": "verified",
       "presence_checked": "2026-08-08",
       "presence_source": "official_animals_page",
-      "display_label": "African lion"
+      "display_label": "African lion",
+      "core": false
     },
     {
       "id": "gorilla",
@@ -122,77 +271,8 @@
       "presence": "verified",
       "presence_checked": "2026-08-08",
       "presence_source": "official_animals_page",
-      "display_label": "Western lowland gorilla"
-    },
-    {
-      "id": "tiger",
-      "label": "Sumatran tiger",
-      "emoji": "🐯",
-      "one_liner": "Sumatran tigers at Endangered Tiger Habitat.",
-      "tags": [
-        "big-cats",
-        "pattern",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Endangered Tiger Habitat",
-      "catalog_id": "sumatran-tiger",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Sumatran tiger"
-    },
-    {
-      "id": "penguin",
-      "label": "African penguin",
-      "emoji": "🐧",
-      "one_liner": "African penguins — dive views at Penguin Cove (African Shorelines expansion underway).",
-      "tags": [
-        "birds",
-        "water",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Penguin Cove",
-      "catalog_id": "african-penguin",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "African penguin",
-      "presence_note": "Penguin Cove; African Shorelines expansion will grow colony — still on-view habitat."
-    },
-    {
-      "id": "hippo",
-      "label": "Nile hippo",
-      "emoji": "🦛",
-      "one_liner": "Nile hippos at Simmons Hippo Outpost — look for underwater windows.",
-      "tags": [
-        "big",
-        "water",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Simmons Hippo Outpost",
-      "catalog_id": "nile-hippo",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Nile hippo"
+      "display_label": "Western lowland gorilla",
+      "core": false
     },
     {
       "id": "zebra",
@@ -216,60 +296,14 @@
       "presence_checked": "2026-08-08",
       "presence_source": "official_animals_page",
       "display_label": "Zebra",
-      "presence_note": "Species list reports mountain zebra; soft-label Zebra OK"
-    },
-    {
-      "id": "flamingo",
-      "label": "Caribbean flamingo",
-      "emoji": "🦩",
-      "one_liner": "Bright pink wader — long legs for shallow water.",
-      "tags": [
-        "birds",
-        "color",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "ZooNorth",
-      "catalog_id": "caribbean-flamingo",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Caribbean flamingo"
-    },
-    {
-      "id": "cheetah",
-      "label": "Cheetah",
-      "emoji": "🐆",
-      "one_liner": "Cheetahs on the savanna loop — often still; patience pays.",
-      "tags": [
-        "big-cats",
-        "outdoor",
-        "wow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Giants of the Savanna",
-      "catalog_id": "cheetah",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Cheetah",
-      "presence_note": "Protecting the Twelve"
+      "presence_note": "Species list reports mountain zebra; soft-label Zebra OK",
+      "core": false
     },
     {
       "id": "kids-zoo",
       "label": "Children's Zoo",
       "emoji": "🎠",
-      "one_liner": "Little-kid reset zone — farm friends and play.",
+      "one_liner": "Play yard after the savanna — goats and a breather.",
       "tags": [
         "kids",
         "rest",
@@ -284,30 +318,8 @@
       "presence": "verified",
       "presence_checked": "2026-08-08",
       "presence_source": "official_animals_page",
-      "display_label": "Children's Zoo"
-    },
-    {
-      "id": "tortoise",
-      "label": "Galápagos tortoise",
-      "emoji": "🐢",
-      "one_liner": "Giant tortoise — slow and steady.",
-      "tags": [
-        "outdoor",
-        "slow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "ZooNorth",
-      "catalog_id": "galapagos-tortoise",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Galápagos tortoise",
-      "presence_note": "Tortoise feeding ZooNorth"
+      "display_label": "Children's Zoo",
+      "core": false
     }
   ],
   "content_mode": "curated",

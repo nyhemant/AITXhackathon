@@ -55,6 +55,7 @@ RESERVED = {
 # Type hub landings: path segment → filter + copy
 HEADER_TAGLINE = "Zoo, aquarium, museum &amp; park days"
 OG_SHARE_IMAGE = f"{SITE}/field-pack/photos/sample-mission-dallas-zoo.jpg"
+PARK_OG_IMAGE = f"{SITE}/field-pack/photos/np-hero-yellowstone.jpg"
 
 # Landing catalog seeds (T5) — review in POLISH-TASKS completion notes
 FEATURED_CARD_IDS = (
@@ -984,7 +985,7 @@ def mission_drawer_html(mission_venue: dict, mission: dict) -> str:
     >
       <header class="mission-drawer-head">
         <div>
-          <p class="mission-drawer-kicker"><a class="mission-home" href="/field-pack/">Field Trip Kit</a> · <span class="mission-place-now">{esc(v.get("shortName") or v.get("name") or "This place")}</span> · <a class="mission-change-place" href="/field-pack/?find=1">Different place?</a></p>
+          <p class="mission-drawer-kicker"><a class="mission-home" href="/field-pack/">Field Trip Kit</a> · <span class="mission-place-now">{esc(mission_venue.get("short_name") or mission_venue.get("name") or "This place")}</span> · <a class="mission-change-place" href="/field-pack/?find=1">Different place?</a></p>
           <h2 id="mission-heading">Create and print your mission</h2>
         </div>
         <button type="button" class="mission-drawer-close" id="mission-close" aria-label="Close">×</button>
@@ -1178,7 +1179,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
     if hero_src:
         hero_banner = (
             f'<div class="seo-park-hero no-print">'
-            f'<img src="{esc(hero_src)}" alt="{esc(v.get("name") or vid)} — illustrated park day" '
+            f'<img src="{esc(hero_src)}" alt="{esc(v.get("name") or vid)} park day" '
             f'width="1280" height="720" loading="eager" decoding="async" />'
             f"</div>"
         )
@@ -1247,8 +1248,8 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <meta name="color-scheme" content="light" />
   <base href="/field-pack/" />
   <link rel="stylesheet" href="/shell/shell.css?v=6" />
-  <link rel="stylesheet" href="/field-pack/css/styles.css?v=24" />
-  <link rel="stylesheet" href="/field-pack/css/landing.css?v=72" />
+  <link rel="stylesheet" href="/field-pack/css/styles.css?v=35" />
+  <link rel="stylesheet" href="/field-pack/css/landing.css?v=94" />
   <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=15" />
   <link rel="stylesheet" href="/field-pack/css/mission.css?v=16" />
   <script type="application/ld+json">
@@ -1339,9 +1340,9 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <script type="application/json" id="bonus-hunts-data">{bonus_json}</script>
   <script src="/shell/shell.js?v=5"></script>
   <script src="/field-pack/js/fp-analytics.js?v=1"></script>
-  <script src="/field-pack/js/catalog.js?v=23"></script>
-  <script src="/field-pack/js/print-maps.js?v=4"></script>
-  <script src="/field-pack/js/print-kit.js?v=10"></script>
+  <script src="/field-pack/js/catalog.js?v=34"></script>
+  <script src="/field-pack/js/print-maps.js?v=5"></script>
+  <script src="/field-pack/js/print-kit.js?v=13"></script>
   <script src="/field-pack/js/mission/mission-engine.js?v=13"></script>
   <script src="/field-pack/js/mission/mission-ui.js?v=15"></script>
 </body>
@@ -1403,7 +1404,7 @@ def render_venue_page(v: dict) -> str:
   <meta name="color-scheme" content="light" />
   <base href="/field-pack/" />
   <link rel="stylesheet" href="/shell/shell.css?v=6" />
-  <link rel="stylesheet" href="/field-pack/css/styles.css?v=24" />
+  <link rel="stylesheet" href="/field-pack/css/styles.css?v=35" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=52" />
   <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=13" />
   <script type="application/ld+json">
@@ -1514,9 +1515,9 @@ def render_venue_page(v: dict) -> str:
 
   <script src="/shell/shell.js?v=5"></script>
   <script src="/field-pack/js/fp-analytics.js?v=1"></script>
-  <script src="/field-pack/js/catalog.js?v=23"></script>
-  <script src="/field-pack/js/print-maps.js?v=4"></script>
-  <script src="/field-pack/js/print-kit.js?v=10"></script>
+  <script src="/field-pack/js/catalog.js?v=34"></script>
+  <script src="/field-pack/js/print-maps.js?v=5"></script>
+  <script src="/field-pack/js/print-kit.js?v=13"></script>
   <script>
     (function () {{
       var btn = document.getElementById("seo-print-hunt");
@@ -1681,6 +1682,7 @@ def write_type_landing(meta: dict, venues: list[dict]) -> str:
         "}"
     )
 
+    og_img = PARK_OG_IMAGE if meta.get("kind") == "park" else OG_SHARE_IMAGE
     html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1695,10 +1697,10 @@ def write_type_landing(meta: dict, venues: list[dict]) -> str:
   <meta property="og:title" content="{esc(meta["title"])}" />
   <meta property="og:description" content="{esc(meta["blurb"])}" />
   <meta property="og:url" content="{esc(url)}" />
-  <meta property="og:image" content="{OG_SHARE_IMAGE}" />
+  <meta property="og:image" content="{og_img}" />
   <base href="/field-pack/" />
   <link rel="stylesheet" href="/shell/shell.css?v=6" />
-  <link rel="stylesheet" href="/field-pack/css/styles.css?v=24" />
+  <link rel="stylesheet" href="/field-pack/css/styles.css?v=35" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=70" />
   <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=14" />
   <script type="application/ld+json">
@@ -3548,8 +3550,8 @@ def write_card_pages(cards: list[dict], venues_by_id: dict[str, dict]) -> list[s
   <div id="treasure-sheet" class="print-sheet treasure-sheet" aria-hidden="true"></div>
   <script src="/shell/shell.js?v=5"></script>
   <script src="/field-pack/js/fp-analytics.js?v=1"></script>
-  <script src="/field-pack/js/catalog.js?v=28"></script>
-  <script src="/field-pack/js/print-kit.js?v=12"></script>
+  <script src="/field-pack/js/catalog.js?v=34"></script>
+  <script src="/field-pack/js/print-kit.js?v=13"></script>
   <script>
     (function () {{
       if (typeof FPTrack === "function") FPTrack("card_page_viewed", {{ card_id: "{esc(cid)}" }});

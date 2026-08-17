@@ -1,5 +1,5 @@
 # National park map status
-Updated: 2026-08-10
+Updated: 2026-08-17
 
 ## Summary
 - **US parks:** 63/63 local map images; **14/63** deep-link to a PDF
@@ -52,6 +52,6 @@ Updated: 2026-08-10
 
 ## Remaining gaps (accepted)
 - Some US parks have no clean park-wide PDF on maps.htm — link stays on maps.htm
-- 4 intl parks use denser OSM orientation maps (Blue Mountains, Fuji, Killarney, Nikkō)
+- 4 intl parks use denser OSM orientation maps (Blue Mountains, Fuji, Killarney, Nikkō). Rechecked 2026-08-17: NSW / Japan MoE / NPWS visitor maps are not freely licensable for hosting, so OSM stays.
 - Fiordland uses NZ parks locator (no free high-res park unigrid found)
 - Zoo/museum maps are separate product (brochure floor plans)

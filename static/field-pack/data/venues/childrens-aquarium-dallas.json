@@ -8,10 +8,10 @@
   "lat": 32.78,
   "lng": -96.76,
   "official_url": "https://www.childrensaquarium.com/",
-  "last_verified": "2026-08-07",
+  "last_verified": "2026-08-16",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Kid-scale tanks and touch pools — a half-day water wonder without the mega-crowds.",
+  "tagline": "Fair Park first aquarium: sharks, rays, turtles, and a touch pool.",
   "practical": {
     "typical_duration": "2–3 hours",
     "ticket_note": "Fair Park location; check event-day parking.",
@@ -22,7 +22,7 @@
       "id": "shark",
       "label": "Shark",
       "emoji": "🦈",
-      "one_liner": "Smaller shark tanks kids can see eye-to-eye.",
+      "one_liner": "Fair Park shark tank — first big fish for little kids.",
       "tags": [
         "water",
         "wow"
@@ -42,13 +42,14 @@
       "presence": "verified",
       "presence_checked": "2026-08-08",
       "presence_source": "official_animals_page",
-      "display_label": "Shark"
+      "display_label": "Shark",
+      "core": true
     },
     {
       "id": "stingray",
       "label": "Stingray",
       "emoji": "射线",
-      "one_liner": "Soft ray wings when the touch pool is open.",
+      "one_liner": "Touch pool rays — gentle hands if the pool is open.",
       "tags": [
         "water",
         "touch",
@@ -69,13 +70,14 @@
       "presence": "verified",
       "presence_checked": "2026-08-08",
       "display_label": "Stingray",
-      "presence_note": "Cownose stingrays featured."
+      "presence_note": "Cownose stingrays featured.",
+      "core": true
     },
     {
       "id": "sea_turtle",
       "label": "Sea turtle",
       "emoji": "🐢",
-      "one_liner": "Sea turtles paddle slowly past the glass.",
+      "one_liner": "Turtle habitats — flippers, not feet.",
       "tags": [
         "water",
         "shell"
@@ -95,13 +97,14 @@
       "presence": "verified",
       "presence_checked": "2026-08-08",
       "display_label": "Sea turtle",
-      "presence_note": "Loggerhead sea turtles featured in marketing."
+      "presence_note": "Loggerhead sea turtles featured in marketing.",
+      "core": true
     },
     {
       "id": "jellyfish",
       "label": "Jellyfish",
       "emoji": "🎐",
-      "one_liner": "Glow jellies for a quiet minute.",
+      "one_liner": "Soft drifters in the jellies gallery.",
       "tags": [
         "water",
         "glow"
@@ -121,13 +124,14 @@
       "presence": "medium",
       "presence_checked": "2026-08-08",
       "display_label": "Jellyfish",
-      "presence_note": "Not highlighted on homepage extract — medium."
+      "presence_note": "Not highlighted on homepage extract — medium.",
+      "core": false
     },
     {
       "id": "clownfish",
       "label": "Clownfish",
       "emoji": "🐠",
-      "one_liner": "Find Nemo-style colors in the reef tanks.",
+      "one_liner": "Small reef tank — orange stripes in the anemone.",
       "tags": [
         "water",
         "color"
@@ -147,13 +151,14 @@
       "presence": "medium",
       "presence_checked": "2026-08-08",
       "display_label": "Clownfish",
-      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract."
+      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract.",
+      "core": true
     },
     {
       "id": "seahorse",
       "label": "Seahorse",
       "emoji": "🌊",
-      "one_liner": "Hunt for tiny upright swimmers.",
+      "one_liner": "Upright swimmers holding on with a tail.",
       "tags": [
         "water",
         "tiny"
@@ -173,13 +178,14 @@
       "presence": "medium",
       "presence_checked": "2026-08-08",
       "display_label": "Seahorse",
-      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract."
+      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract.",
+      "core": true
     },
     {
       "id": "octopus",
       "label": "Octopus",
       "emoji": "🐙",
-      "one_liner": "Camouflage games — is it rock or octopus?",
+      "one_liner": "Special-exhibit octopus — eight arms, one hide.",
       "tags": [
         "water",
         "hide"
@@ -199,13 +205,14 @@
       "presence": "medium",
       "presence_checked": "2026-08-08",
       "display_label": "Octopus",
-      "presence_note": "Not confirmed on official sources reviewed in this audit pass."
+      "presence_note": "Not confirmed on official sources reviewed in this audit pass.",
+      "core": false
     },
     {
       "id": "crab",
       "label": "Crab",
       "emoji": "🦀",
-      "one_liner": "Sideways walkers and shells.",
+      "one_liner": "Tide creatures — sideways walkers.",
       "tags": [
         "water",
         "shell"
@@ -225,13 +232,14 @@
       "presence": "medium",
       "presence_checked": "2026-08-08",
       "display_label": "Crab",
-      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract."
+      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract.",
+      "core": true
     },
     {
       "id": "starfish",
       "label": "Sea star",
       "emoji": "⭐",
-      "one_liner": "Stars and friends if touch is open.",
+      "one_liner": "Touch-tank sea star — count the arms.",
       "tags": [
         "water",
         "touch"
@@ -251,13 +259,14 @@
       "presence": "medium",
       "presence_checked": "2026-08-08",
       "display_label": "Sea star",
-      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract."
+      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract.",
+      "core": true
     },
     {
       "id": "eel",
       "label": "Eel",
       "emoji": "🐍",
-      "one_liner": "Long bodies tucked into dens.",
+      "one_liner": "Rocky hidey-hole — a long snaky fish.",
       "tags": [
         "water",
         "long"
@@ -277,7 +286,8 @@
       "presence": "medium",
       "presence_checked": "2026-08-08",
       "display_label": "Eel",
-      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract."
+      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract.",
+      "core": true
     }
   ],
   "content_mode": "curated",

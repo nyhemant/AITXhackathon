@@ -8,10 +8,10 @@
   "lat": 32.79,
   "lng": -96.81,
   "official_url": "https://www.perotmuseum.org/",
-  "last_verified": "2026-08-07",
+  "last_verified": "2026-08-16",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Dallas Perot — dinosaurs, sports hall energy, and kids’ museum levels.",
+  "tagline": "Dinosaurs plus one sports or space hall — skip the rainforest dome.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Victory Park; timed tickets peak times.",
@@ -24,7 +24,7 @@
       "id": "sci_dinosaur",
       "label": "Dinosaurs",
       "emoji": "🦖",
-      "one_liner": "Dinos are the magnet.",
+      "one_liner": "T. Boone Pickens Life Then and Now — look up at the giants.",
       "tags": [
         "wow",
         "read"
@@ -45,13 +45,14 @@
       "presence_checked": "2026-08-08",
       "presence_source": "official_animals_page",
       "display_label": "Dinosaurs",
-      "presence_note": "T. rex / paleo halls are Perot signature."
+      "presence_note": "T. rex / paleo halls are Perot signature.",
+      "core": true
     },
     {
       "id": "sci_hands_on",
       "label": "Hands-on",
       "emoji": "🔬",
-      "one_liner": "Body science fun.",
+      "one_liner": "Sports / being human — try one test with your body.",
       "tags": [
         "hands",
         "play"
@@ -71,13 +72,14 @@
       "presence": "verified",
       "presence_checked": "2026-08-08",
       "display_label": "Hands-on",
-      "presence_note": "Interactive science floors."
+      "presence_note": "Interactive science floors.",
+      "core": true
     },
     {
       "id": "cm_imaginarium",
       "label": "Kids explore",
       "emoji": "✨",
-      "one_liner": "Play and pretend.",
+      "one_liner": "Kids explore rooms inside the big museum day.",
       "tags": [
         "play"
       ],
@@ -96,13 +98,14 @@
       "presence": "medium",
       "presence_checked": "2026-08-08",
       "display_label": "Kids explore",
-      "presence_note": "Children’s museum level exists under other branding. Soft kids zone."
+      "presence_note": "Children’s museum level exists under other branding. Soft kids zone.",
+      "core": true
     },
     {
       "id": "sci_planet",
       "label": "Space",
       "emoji": "🪐",
-      "one_liner": "Earth and beyond.",
+      "one_liner": "Earth and space hall — point to a planet or the Moon.",
       "tags": [
         "wow"
       ],
@@ -121,13 +124,14 @@
       "presence": "high",
       "presence_checked": "2026-08-08",
       "display_label": "Space",
-      "presence_note": "Space/astronomy content + adjacent planetarium programming. Soft Space."
+      "presence_note": "Space/astronomy content + adjacent planetarium programming. Soft Space.",
+      "core": true
     },
     {
       "id": "cm_makery",
       "label": "Make",
       "emoji": "🔧",
-      "one_liner": "Create something.",
+      "one_liner": "Make floor — build, then try again.",
       "tags": [
         "hands"
       ],
@@ -146,13 +150,14 @@
       "presence": "medium",
       "presence_checked": "2026-08-08",
       "display_label": "Make",
-      "presence_note": "Engineering/design interactives."
+      "presence_note": "Engineering/design interactives.",
+      "core": true
     },
     {
       "id": "sci_mammal_hall",
       "label": "Life sciences",
       "emoji": "🦌",
-      "one_liner": "Lifelike animals from around the world — spot fur, horns, and habitats.",
+      "one_liner": "Life sciences halls — bones, bodies, and habitats.",
       "tags": [
         "wow",
         "outdoor"
@@ -172,13 +177,14 @@
       "presence": "medium",
       "presence_checked": "2026-08-08",
       "display_label": "Life sciences",
-      "presence_note": "Life sciences / sports hall etc. — not classic mammal dioramas. Soft Life sciences."
+      "presence_note": "Life sciences / sports hall etc. — not classic mammal dioramas. Soft Life sciences.",
+      "core": true
     },
     {
       "id": "cm_free_explore",
       "label": "Free explore",
       "emoji": "🧭",
-      "one_liner": "Their choice path — whatever pulled them in!",
+      "one_liner": "One extra hall they pick.",
       "tags": [
         "wow",
         "outdoor"
@@ -198,7 +204,8 @@
       "presence": "verified",
       "presence_checked": "2026-08-08",
       "display_label": "Free explore",
-      "presence_note": "Valid."
+      "presence_note": "Valid.",
+      "core": true
     }
   ],
   "content_mode": "curated",
