@@ -29,14 +29,14 @@
   const PICK_BY_KIND = {
     zoo: {
       key: "fp-virtual-zoo-picks-v1",
-      libUrl: "/field-pack/data/virtual-venues/zoo-film-library.json?v=4",
+      libUrl: "/field-pack/data/virtual-venues/zoo-film-library.json?v=5",
       title: "Create your own virtual zoo",
       noun: "zoo",
       track: "zoo_picks_saved",
     },
     aquarium: {
       key: "fp-virtual-aquarium-picks-v1",
-      libUrl: "/field-pack/data/virtual-venues/aquarium-film-library.json?v=2",
+      libUrl: "/field-pack/data/virtual-venues/aquarium-film-library.json?v=3",
       title: "Create your own virtual aquarium",
       noun: "aquarium",
       track: "aquarium_picks_saved",
@@ -50,7 +50,7 @@
     },
     park: {
       key: "fp-virtual-parks-picks-v1",
-      libUrl: "/field-pack/data/virtual-venues/parks-map-library.json?v=1",
+      libUrl: "/field-pack/data/virtual-venues/parks-map-library.json?v=2",
       title: "Make your own parks map",
       noun: "road trip",
       track: "parks_picks_saved",
@@ -312,6 +312,7 @@
   }
 
   function habitatFromParkCard(card, i) {
+    if (!card) return null;
     return {
       id: card.cardId,
       cardId: card.cardId,
@@ -439,9 +440,22 @@
     }
   }
 
+  function customParksLayer() {
+    const svg = mapMount && mapMount.querySelector("svg");
+    if (!svg) return null;
+    const NS = "http://www.w3.org/2000/svg";
+    let layer = svg.querySelector("#vz-custom-parks");
+    if (!layer) {
+      layer = document.createElementNS(NS, "g");
+      layer.setAttribute("id", "vz-custom-parks");
+      svg.appendChild(layer);
+    }
+    return layer;
+  }
+
   function injectParkMark(h) {
-    const svg = mapMount.querySelector("svg");
-    if (!svg || h.x == null || h.y == null) return;
+    const layer = customParksLayer();
+    if (!layer || h.x == null || h.y == null) return;
     const NS = "http://www.w3.org/2000/svg";
     const cx = Number(h.x);
     const cy = Number(h.y);
@@ -516,7 +530,7 @@
     g.appendChild(pin);
     g.appendChild(a);
     g.appendChild(t);
-    svg.appendChild(g);
+    layer.appendChild(g);
     wrapPad(a);
     wireSpot(a);
   }
@@ -530,6 +544,8 @@
       const el = mapMount.querySelector("#" + id);
       if (el) el.style.display = custom ? "none" : "";
     });
+    const extras = mapMount.querySelector("#vz-custom-parks");
+    if (extras) extras.replaceChildren();
     mapMount.querySelectorAll(".vz-park-extra").forEach((n) => n.remove());
     const live = new Set(walkList().map((h) => h.id));
     mapMount.querySelectorAll("a.vz-spot").forEach((el) => {
@@ -683,11 +699,11 @@
     }
     const used = new Set(pickDraft.filter(Boolean));
     const n = filledPicks(pickDraft).length;
-    const bench = (lib.cards || []).filter((c) => !used.has(c.cardId) && cardHasFilm(c));
+    const bench = (lib.cards || []).filter((c) => !used.has(c.cardId));
     const holdSlot = pickHold && pickHold.type === "slot" ? pickHold.i : -1;
     const holdCard = pickHold && pickHold.type === "bench" ? pickHold.cardId : "";
     pathPicker.innerHTML = `
-      <p class="vz-pick-lead">Empty boxes first — tap a park waiting below to drop it in. Tap two boxes to swap. Auto-design fills the Maine-to-Rockies road trip. Show these parks drops the road and leaves them where they really are.</p>
+      <p class="vz-pick-lead">Empty boxes first — tap a park waiting below to drop it in. Tap two boxes to swap. Auto-design fills the Maine-to-Rockies road trip. Show these parks drops the road and leaves them where they really are. This map is the lower 48.</p>
       <ol class="vz-slot-row">
         ${pickDraft
           .map((id, i) => {

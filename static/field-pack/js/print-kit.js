@@ -209,6 +209,10 @@
       q: "How fast can a cheetah run?",
       a: "About 60–70 mph in short bursts — fastest land animal on Earth.",
     },
+    "american-alligator": {
+      q: "Why does an alligator look like a log?",
+      a: "Still water and a bumpy back hide it so fish and birds come close.",
+    },
     "two-toed-sloth": {
       q: "How slow is a sloth?",
       a: "So slow that algae grows in its fur — free camouflage!",
@@ -273,6 +277,78 @@
       q: "What’s different about river fish?",
       a: "They live in lakes and rivers, not the salty ocean — same “fish,” different neighborhoods.",
     },
+    "sea-otter": {
+      q: "Why do sea otters float on their backs?",
+      a: "A back-float turns the belly into a table. Kelp is an anchor so they don’t drift away.",
+    },
+    "whale-shark": {
+      q: "Is a whale shark a whale?",
+      a: "Nope — it’s a shark, the biggest fish in the sea. A giant mouth sifts tiny food from the water.",
+    },
+    cuttlefish: {
+      q: "How can a cuttlefish change color so fast?",
+      a: "Tiny skin spots open and close like pixels — for hiding, talking, and tricking.",
+    },
+    puffin: {
+      q: "How can a puffin fly and also swim?",
+      a: "Short wings work as flippers underwater and as wings in the air.",
+    },
+    "manta-ray": {
+      q: "Why is a manta ray so wide and flat?",
+      a: "Wide wings let it glide and scoop tiny food. Little fish even nibble it clean.",
+    },
+    "kelp-forest": {
+      q: "Why does kelp grow so tall so fast?",
+      a: "Sunlight and waving water help it shoot up. Fish and otters hide in it like a forest.",
+    },
+    beluga: {
+      q: "Why do people call a beluga a sea canary?",
+      a: "It clicks, whistles, and chirps — a whole song to talk with its pod.",
+    },
+    walrus: {
+      q: "What are walrus tusks for?",
+      a: "They help it haul onto ice and keep a spot in a crowded herd. Blubber keeps it warm.",
+    },
+    piranha: {
+      q: "Do piranhas really hunt in a big group?",
+      a: "They often swim in schools. Sharp teeth cut food fast, and they find it by smell and movement.",
+    },
+    shrimp: {
+      q: "How does a shrimp escape so fast?",
+      a: "A tail flick shoots it backward. Some shrimp also change color to match the reef.",
+    },
+    nudibranch: {
+      q: "Why is a nudibranch so colorful with no shell?",
+      a: "Bright colors warn “I taste bad.” The frills on its back are gills for breathing.",
+    },
+    "weedy-sea-dragon": {
+      q: "Who carries sea dragon eggs?",
+      a: "Dad does — like a seahorse. The leafy bits hide the dragon in kelp.",
+    },
+    "coral-reef": {
+      q: "Are corals plants or animals?",
+      a: "Animals! Tiny coral polyps build rocky homes. Algae living inside them help make food.",
+    },
+    "sea-anemone": {
+      q: "Why don’t clownfish get stung by anemones?",
+      a: "A special slime coat protects them — the anemone is their fortress home.",
+    },
+    "giant-clam": {
+      q: "Why is a giant clam so colorful inside?",
+      a: "Tiny algae live in its lips and make extra food — and those rainbow colors.",
+    },
+    "ocean-sunfish": {
+      q: "Why does a mola look like a giant swimming head?",
+      a: "It is the heaviest bony fish — a huge body with a tiny tail. It often eats jellies.",
+    },
+    frogfish: {
+      q: "How does a frogfish catch dinner without chasing?",
+      a: "It waits in camouflage, wiggles a worm-like lure, then gulps.",
+    },
+    nautilus: {
+      q: "How does a nautilus go up and down?",
+      a: "It pumps water in and out of shell chambers — a living submarine.",
+    },
     orangutan: {
       q: "How long are orangutan arms?",
       a: "Longer than their legs — perfect for swinging through the canopy.",
@@ -292,6 +368,38 @@
     zebra: {
       q: "Why do zebras have stripes?",
       a: "Each pattern is unique — and stripes may confuse flies and predators.",
+    },
+    "polar-bear": {
+      q: "Why is a polar bear’s fur white?",
+      a: "The coat helps it hide on ice and snow. Underneath, the skin is actually black.",
+    },
+    "panther-chameleon": {
+      q: "Why can a chameleon change color?",
+      a: "Tiny crystals in the skin shift how light bounces — for mood, heat, and hiding.",
+    },
+    "saltwater-crocodile": {
+      q: "Why does a crocodile look like a log?",
+      a: "Still water and a bumpy back hide it so fish and birds come close.",
+    },
+    "red-kangaroo": {
+      q: "Why does a kangaroo have a pouch?",
+      a: "A joey is born tiny. The pouch is a warm pocket where it drinks milk and grows.",
+    },
+    "snow-leopard": {
+      q: "Why does a snow leopard have a huge tail?",
+      a: "The tail is a balance pole on cliffs and a scarf it wraps around itself to stay warm.",
+    },
+    "monarch-butterfly": {
+      q: "How can a tiny butterfly travel so far?",
+      a: "Monarchs ride wind and rest on flowers for fuel. It takes generations to finish the trip.",
+    },
+    "black-rhino": {
+      q: "What’s a rhino horn made of?",
+      a: "The same stuff as your hair and nails — keratin — packed tight, not bone.",
+    },
+    "hyacinth-macaw": {
+      q: "Why is a macaw’s beak so huge?",
+      a: "It cracks hard nuts. Two toes forward and two back help it climb like a parrot ladder.",
     },
     /* Children’s museum / science “wow” hooks (same strip UI) */
     "cm-outdoor": {

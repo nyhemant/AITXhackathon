@@ -1,16 +1,8 @@
 {
   "id": "zoo-film-library",
-  "checked": "2026-08-15",
-  "note": "Phase 1 ingredients for zoo pick-10. Cards without a picture-first official film are omitted from picker. Default tour is the current 10. Elephant film is Asian elephants at the National Zoo (no honest African-elephant yard clip locked).",
+  "checked": "2026-08-16",
+  "note": "Pick-10 ingredients for the zoo tab. Default tour is the current 10. Bench extras need an animal-first film (official zoo, Nat Geo Kids, or BBC Earth). Mute autoplay uses video.start to skip logos. Warthog, ostrich, and a few house animals stay omitted until a yard-first clip locks.",
   "omit": [
-    {
-      "cardId": "cheetah",
-      "reason": "No short official habitat clip; Cincinnati run is a 14-min talking Home Safari."
-    },
-    {
-      "cardId": "two-toed-sloth",
-      "reason": "Only keeper-talk Houston replay found."
-    },
     {
       "cardId": "warthog",
       "reason": "No official habitat film; visitor clips only."
@@ -18,6 +10,30 @@
     {
       "cardId": "ostrich",
       "reason": "Only mixed savanna tours, not an ostrich-first film."
+    },
+    {
+      "cardId": "komodo-dragon",
+      "reason": "Official zoo clips are debut teasers or talking facts, not a habitat-first lock."
+    },
+    {
+      "cardId": "meerkat",
+      "reason": "Nat Geo clip centers on hunting scorpions — too kill-first for this sheet."
+    },
+    {
+      "cardId": "capybara",
+      "reason": "No short official habitat-first film locked."
+    },
+    {
+      "cardId": "indian-peafowl",
+      "reason": "Nat Geo Kids clip is a keeper hunt for Edward, not a display-first film."
+    },
+    {
+      "cardId": "toco-toucan",
+      "reason": "No short official habitat-first film locked."
+    },
+    {
+      "cardId": "bald-eagle",
+      "reason": "Houston news piece is keeper-talk, not bird-first."
     }
   ],
   "cards": [
@@ -170,6 +186,7 @@
         "title": "African lions",
         "provider": "youtube",
         "channel": "Nat Geo Kids",
+        "start": 8,
         "verify": {
           "status": "sourced",
           "source": "https://www.youtube.com/watch?v=tlZwYsJpqjo",
@@ -395,6 +412,220 @@
         "camLabel": "Koala cam at the San Diego Zoo"
       },
       "printAnswer": "Eucalyptus leaves give little energy, so they sleep a lot. That plant is their food — most animals cannot eat it."
+    },
+    {
+      "cardId": "two-toed-sloth",
+      "label": "Sloth hang",
+      "challenge": "Why is a sloth so slow? Why hang upside down?",
+      "defaultTour": false,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=ZuHroVftvvA",
+        "title": "Two-toed sloth Athena at the National Zoo",
+        "provider": "youtube",
+        "channel": "Smithsonian's National Zoo",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=ZuHroVftvvA",
+          "checked": "2026-08-16"
+        }
+      },
+      "cam": {},
+      "printAnswer": "Slow saving energy is the point — leaves are a low-fuel food. Hooked claws let it hang so it can eat without standing."
+    },
+    {
+      "cardId": "cheetah",
+      "label": "Cheetah run",
+      "challenge": "Why is a cheetah the fastest land animal? Why only for a short burst?",
+      "defaultTour": false,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=J20eXhZTHEo",
+        "title": "Cheetah",
+        "provider": "youtube",
+        "channel": "Nat Geo Kids",
+        "start": 8,
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=J20eXhZTHEo",
+          "checked": "2026-08-16"
+        }
+      },
+      "cam": {},
+      "printAnswer": "A flexible spine and long legs cover huge strides. The sprint makes them overheat, so they stop after about 15 seconds."
+    },
+    {
+      "cardId": "polar-bear",
+      "label": "Polar bear plunge",
+      "challenge": "Why is a polar bear white? How does it stay warm in ice water?",
+      "defaultTour": false,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=GbiCrDsGPa0",
+        "title": "Polar bears frolic in snow at the San Diego Zoo",
+        "provider": "youtube",
+        "channel": "San Diego Zoo",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=GbiCrDsGPa0",
+          "checked": "2026-08-16"
+        }
+      },
+      "cam": {},
+      "printAnswer": "White fur hides it on snow. A thick fat layer and water-shedding coat keep heat in when it swims."
+    },
+    {
+      "cardId": "panther-chameleon",
+      "label": "Chameleon perch",
+      "challenge": "Why can a chameleon change color? How does that tongue work?",
+      "defaultTour": false,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=z3oh73amxQo",
+        "title": "Chameleon tongue in slow motion",
+        "provider": "youtube",
+        "channel": "BBC Earth",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=z3oh73amxQo",
+          "checked": "2026-08-16"
+        }
+      },
+      "cam": {},
+      "printAnswer": "Skin crystals shift color for mood, heat, and hiding. The tongue shoots out like a sticky missile, then reels the snack back."
+    },
+    {
+      "cardId": "american-alligator",
+      "label": "Alligator bank",
+      "challenge": "Why does an alligator lie so still? What’s the armor for?",
+      "defaultTour": false,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=4IFn0t0rkiE",
+        "title": "Alligators and wildlife of the Everglades",
+        "provider": "youtube",
+        "channel": "4K Relaxation Channel",
+        "start": 8,
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=4IFn0t0rkiE",
+          "checked": "2026-08-16"
+        }
+      },
+      "cam": {},
+      "printAnswer": "Still water and a bumpy back make it look like a log. The bony plates are armor, and the tail is a strong swim paddle."
+    },
+    {
+      "cardId": "saltwater-crocodile",
+      "label": "Crocodile shore",
+      "challenge": "Why is a saltwater crocodile so big? Can it live in the ocean?",
+      "defaultTour": false,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=qyTNzTYFqlw",
+        "title": "Crocodile",
+        "provider": "youtube",
+        "channel": "Nat Geo Kids",
+        "start": 8,
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=qyTNzTYFqlw",
+          "checked": "2026-08-16"
+        }
+      },
+      "cam": {},
+      "printAnswer": "It is the largest living reptile. Special glands let it handle salt water as well as rivers."
+    },
+    {
+      "cardId": "red-kangaroo",
+      "label": "Kangaroo hop",
+      "challenge": "Why does a kangaroo hop? What’s the pouch for?",
+      "defaultTour": false,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=bbaX1yeSatQ",
+        "title": "Red kangaroos staying cool",
+        "provider": "youtube",
+        "channel": "BBC Earth",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=bbaX1yeSatQ",
+          "checked": "2026-08-16"
+        }
+      },
+      "cam": {},
+      "printAnswer": "Hopping is an energy-saving bounce on big back legs. A joey is born tiny and finishes growing in the pouch."
+    },
+    {
+      "cardId": "snow-leopard",
+      "label": "Snow leopard ridge",
+      "challenge": "Why does a snow leopard have such a long tail? How does it hide on rocks?",
+      "defaultTour": false,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=3ed6VavLTRI",
+        "title": "Lynx and snow leopard snow days at the San Diego Zoo",
+        "provider": "youtube",
+        "channel": "San Diego Zoo",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=3ed6VavLTRI",
+          "checked": "2026-08-16"
+        }
+      },
+      "cam": {},
+      "printAnswer": "The tail is a balance pole and a warm wrap. Spots break up its shape on gray rock and snow."
+    },
+    {
+      "cardId": "monarch-butterfly",
+      "label": "Butterfly house",
+      "challenge": "How can a tiny butterfly fly so far? Why are the wings orange?",
+      "defaultTour": false,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=1b87rwtXGzA",
+        "title": "Monarch butterfly",
+        "provider": "youtube",
+        "channel": "Nat Geo Kids",
+        "start": 8,
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=1b87rwtXGzA",
+          "checked": "2026-08-16"
+        }
+      },
+      "cam": {},
+      "printAnswer": "Monarchs ride wind and sip flower nectar for fuel. Bright orange warns birds: this snack tastes bad."
+    },
+    {
+      "cardId": "black-rhino",
+      "label": "Rhino yard",
+      "challenge": "What’s a rhino horn made of? Why the thick skin?",
+      "defaultTour": false,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=ST_83Hkrbk4",
+        "title": "Black rhino",
+        "provider": "youtube",
+        "channel": "Nat Geo Kids",
+        "start": 8,
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=ST_83Hkrbk4",
+          "checked": "2026-08-16"
+        }
+      },
+      "cam": {},
+      "printAnswer": "The horn is keratin, like hair packed tight. Thick skin is sun and thorn armor, and mud is extra sunscreen."
+    },
+    {
+      "cardId": "hyacinth-macaw",
+      "label": "Macaw perch",
+      "challenge": "Why is a macaw so blue? What’s the giant beak for?",
+      "defaultTour": false,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=1hKZmdH2UC4",
+        "title": "Hyacinth macaw at the San Diego Zoo",
+        "provider": "youtube",
+        "channel": "San Diego Zoo Kids",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=1hKZmdH2UC4",
+          "checked": "2026-08-16"
+        }
+      },
+      "cam": {},
+      "printAnswer": "Blue feathers help it belong in bright forest light. The beak cracks hard nuts, and the feet climb like a second pair of hands."
     }
   ]
 }

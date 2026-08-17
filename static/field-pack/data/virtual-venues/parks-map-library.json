@@ -8,8 +8,48 @@
       "reason": "Alaska \u2014 off this map"
     },
     {
+      "cardId": "gates-of-arctic",
+      "reason": "Alaska \u2014 off this map"
+    },
+    {
+      "cardId": "glacier-bay",
+      "reason": "Alaska \u2014 off this map"
+    },
+    {
+      "cardId": "katmai",
+      "reason": "Alaska \u2014 off this map"
+    },
+    {
+      "cardId": "kenai-fjords",
+      "reason": "Alaska \u2014 off this map"
+    },
+    {
+      "cardId": "kobuk-valley",
+      "reason": "Alaska \u2014 off this map"
+    },
+    {
+      "cardId": "lake-clark",
+      "reason": "Alaska \u2014 off this map"
+    },
+    {
+      "cardId": "wrangell-st-elias",
+      "reason": "Alaska \u2014 off this map"
+    },
+    {
+      "cardId": "haleakala",
+      "reason": "Hawaii \u2014 off this map"
+    },
+    {
       "cardId": "hawaii-volcanoes",
       "reason": "Hawaii \u2014 off this map"
+    },
+    {
+      "cardId": "american-samoa",
+      "reason": "Territory \u2014 off this map"
+    },
+    {
+      "cardId": "virgin-islands",
+      "reason": "Territory \u2014 off this map"
     }
   ],
   "proj": {

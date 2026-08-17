@@ -1,23 +1,35 @@
 {
   "id": "aquarium-film-library",
   "checked": "2026-08-16",
-  "note": "Pick-path ingredients for the aquarium tab. Default tour is the current 10. Bench extras are typical large-aquarium wow stops with picture-first official films.",
+  "note": "Pick-path ingredients for the aquarium tab. Default tour is the current 10. Bench extras need an animal-first film (official aquarium, Nat Geo Kids, BBC Earth, or National Geographic). Mute autoplay uses video.start to skip logos. Sea lion, manatee, leafy dragon, axolotl, horseshoe crab, and lobster stay omitted until a habitat-first clip locks.",
   "omit": [
     {
       "cardId": "freshwater-fish",
-      "reason": "No short official habitat clip. Visitor river-gallery tours and talking paddlefish episodes only."
+      "reason": "Generic river gallery is not a card. Red-bellied piranha is the freshwater species on the bench."
     },
     {
       "cardId": "california-sea-lion",
-      "reason": "BBC Big Blue Live is a diver-host swim, not habitat-first."
+      "reason": "BBC Big Blue Live is a diver-host swim, not habitat-first. Georgia clips are encounters or tooth-brushing."
     },
     {
       "cardId": "manatee",
-      "reason": "BBC clips are host-led dives."
+      "reason": "BBC clips are host-led dives. Nat Geo Wild is a talking 101, not tank-first."
     },
     {
       "cardId": "leafy-sea-dragon",
-      "reason": "BBC weedy-dragon clip is host-led. No picture-first official lock."
+      "reason": "BBC weedy-dragon clip is a host-led hunt. Weedy sea dragon (Monterey babies) is on the bench instead."
+    },
+    {
+      "cardId": "axolotl",
+      "reason": "National Geographic clip is talking conservation, not a habitat-first lock."
+    },
+    {
+      "cardId": "horseshoe-crab",
+      "reason": "No kid-safe official habitat-first lock (Nat Geo spawn title is not usable here)."
+    },
+    {
+      "cardId": "spiny-lobster",
+      "reason": "Monterey Critter Corner is talking. BBC lobster clips are fights, not a march-first lock."
     }
   ],
   "cards": [
@@ -92,6 +104,7 @@
         "title": "Giant Pacific octopus",
         "provider": "youtube",
         "channel": "Nat Geo Kids",
+        "start": 8,
         "verify": {
           "status": "sourced",
           "source": "https://www.youtube.com/watch?v=9vQnKO_2kKk",
@@ -201,6 +214,7 @@
         "title": "Wolf eel",
         "provider": "youtube",
         "channel": "Nat Geo Kids",
+        "start": 8,
         "verify": {
           "status": "sourced",
           "source": "https://www.youtube.com/watch?v=E-njRqPqr3Y",
@@ -380,6 +394,245 @@
         "camLabel": "Kelp Forest cam at Monterey Bay Aquarium"
       },
       "printAnswer": "Sunlight and the surge of waves help it grow. Fish, otters, and crabs hide in the kelp like trees."
+    },
+    {
+      "cardId": "beluga",
+      "label": "Beluga Bay",
+      "challenge": "Why is a beluga white? Why do people call it a sea canary?",
+      "defaultTour": false,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=MXgegfeyzgs",
+        "title": "A serenade for the beluga whales",
+        "provider": "youtube",
+        "channel": "Shedd Aquarium",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=MXgegfeyzgs",
+          "checked": "2026-08-16"
+        }
+      },
+      "cam": {
+        "url": "https://www.georgiaaquarium.org/webcam/beluga-whale-webcam/",
+        "camLabel": "Beluga cam at Georgia Aquarium"
+      },
+      "printAnswer": "White skin hides it in icy water. Clicks and whistles sound like singing — that’s how a pod talks."
+    },
+    {
+      "cardId": "walrus",
+      "label": "Walrus Ice",
+      "challenge": "Why does a walrus have such long tusks? How does it stay warm in icy water?",
+      "defaultTour": false,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=r35i6WFbPa0",
+        "title": "Walrus",
+        "provider": "youtube",
+        "channel": "Nat Geo Kids",
+        "start": 8,
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=r35i6WFbPa0",
+          "checked": "2026-08-16"
+        }
+      },
+      "cam": {},
+      "printAnswer": "Tusks help it haul onto ice and find a spot in the herd. Thick blubber is a warm winter coat."
+    },
+    {
+      "cardId": "piranha",
+      "label": "Piranha River",
+      "challenge": "Why do piranhas have such sharp teeth? Do they really hunt in a big group?",
+      "defaultTour": false,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=HsrBdPaewLg",
+        "title": "Red-bellied piranhas",
+        "provider": "youtube",
+        "channel": "Nat Geo Kids",
+        "start": 8,
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=HsrBdPaewLg",
+          "checked": "2026-08-16"
+        }
+      },
+      "cam": {},
+      "printAnswer": "Sharp teeth cut food fast. They often swim in schools, and they find food by smell and movement."
+    },
+    {
+      "cardId": "shrimp",
+      "label": "Shrimp Garden",
+      "challenge": "Why can a shrimp be so hard to see? How does it swim so fast backward?",
+      "defaultTour": false,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=P8sdXkVAHbY",
+        "title": "Shrimp",
+        "provider": "youtube",
+        "channel": "Nat Geo Kids",
+        "start": 8,
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=P8sdXkVAHbY",
+          "checked": "2026-08-16"
+        }
+      },
+      "cam": {},
+      "printAnswer": "Some shrimp change color to match the reef. A tail flick shoots them backward to escape."
+    },
+    {
+      "cardId": "nudibranch",
+      "label": "Nudibranch Garden",
+      "challenge": "Why is a nudibranch so colorful if it has no shell? What does the name mean?",
+      "defaultTour": false,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=nHVoV0MVwSc",
+        "title": "Nudibranch sea slugs",
+        "provider": "youtube",
+        "channel": "National Geographic",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=nHVoV0MVwSc",
+          "checked": "2026-08-16"
+        }
+      },
+      "cam": {},
+      "printAnswer": "Bright colors warn “I taste bad.” The name means “naked gills” — those frills on its back help it breathe."
+    },
+    {
+      "cardId": "weedy-sea-dragon",
+      "label": "Sea Dragon Kelp",
+      "challenge": "Why does a sea dragon look like seaweed? Who carries the eggs?",
+      "defaultTour": false,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=DEXFDkIvyRA",
+        "title": "Daddy weedy sea dragon has babies",
+        "provider": "youtube",
+        "channel": "Monterey Bay Aquarium",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=DEXFDkIvyRA",
+          "checked": "2026-08-16"
+        }
+      },
+      "cam": {},
+      "printAnswer": "Leafy bits hide it in kelp. Like a seahorse, the dad carries the eggs."
+    },
+    {
+      "cardId": "coral-reef",
+      "label": "Coral Reef",
+      "challenge": "Why does a coral reef look like a city? Are corals plants or animals?",
+      "defaultTour": false,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=g3PWYH1P7Oo",
+        "title": "Tropical coral reef fishes at Monterey Bay Aquarium",
+        "provider": "youtube",
+        "channel": "Monterey Bay Aquarium",
+        "start": 8,
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=g3PWYH1P7Oo",
+          "checked": "2026-08-16"
+        }
+      },
+      "cam": {},
+      "printAnswer": "Tiny coral animals build rocky homes that fish hide in. Corals are animals, and algae living inside them help make food."
+    },
+    {
+      "cardId": "sea-anemone",
+      "label": "Anemone Garden",
+      "challenge": "Why does a sea anemone look like a flower? Why don’t clownfish get stung?",
+      "defaultTour": false,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=SVkZqZDeLlk",
+        "title": "Anemone life",
+        "provider": "youtube",
+        "channel": "Monterey Bay Aquarium",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=SVkZqZDeLlk",
+          "checked": "2026-08-16"
+        }
+      },
+      "cam": {},
+      "printAnswer": "Tentacles sting and catch food. A clownfish’s slime coat lets it hide safely in the tentacles."
+    },
+    {
+      "cardId": "giant-clam",
+      "label": "Giant Clam",
+      "challenge": "Why is a giant clam so huge? Why is it so colorful inside?",
+      "defaultTour": false,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=GpY72fCo6JM",
+        "title": "Giant clam opens up",
+        "provider": "youtube",
+        "channel": "New England Aquarium",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=GpY72fCo6JM",
+          "checked": "2026-08-16"
+        }
+      },
+      "cam": {},
+      "printAnswer": "A giant shell is armor, and it filters food from the water. Tiny algae in its lips make extra food and color."
+    },
+    {
+      "cardId": "ocean-sunfish",
+      "label": "Mola Drift",
+      "challenge": "Why does a mola look like a giant swimming head? What does it eat?",
+      "defaultTour": false,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=JhHaMtgyHlQ",
+        "title": "Giant bizarre fish",
+        "provider": "youtube",
+        "channel": "National Geographic",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=JhHaMtgyHlQ",
+          "checked": "2026-08-16"
+        }
+      },
+      "cam": {
+        "url": "https://www.montereybayaquarium.org/cams-videos/live-cams/open-sea-cam",
+        "camLabel": "Open Sea cam at Monterey Bay Aquarium"
+      },
+      "printAnswer": "It is the heaviest bony fish — a huge body with a tiny tail. It often eats jellies."
+    },
+    {
+      "cardId": "frogfish",
+      "label": "Frogfish Hide",
+      "challenge": "Why does a frogfish look like a sponge? How does it catch dinner without chasing?",
+      "defaultTour": false,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=MVIt_m3GcAk",
+        "title": "Frogfish",
+        "provider": "youtube",
+        "channel": "Nat Geo Kids",
+        "start": 8,
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=MVIt_m3GcAk",
+          "checked": "2026-08-16"
+        }
+      },
+      "cam": {},
+      "printAnswer": "Camouflage lets it wait. A worm-like lure and a sudden gulp pull food in."
+    },
+    {
+      "cardId": "nautilus",
+      "label": "Nautilus Spiral",
+      "challenge": "Why does a nautilus live in a spiral shell? How does it go up and down?",
+      "defaultTour": false,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=qmE2gZMYC8A",
+        "title": "Nautilus on the go",
+        "provider": "youtube",
+        "channel": "Monterey Bay Aquarium",
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=qmE2gZMYC8A",
+          "checked": "2026-08-16"
+        }
+      },
+      "cam": {},
+      "printAnswer": "The shell is a home and a float. It pumps water in and out of chambers to rise or sink."
     }
   ]
 }
