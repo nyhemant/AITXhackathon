@@ -99,6 +99,19 @@ Print-first live site flipped to a standalone virtual session. Printable hunts k
 
 QA: landing, dallas-zoo, san-diego-zoo, cards/african-lion, virtual-field-trip, sitemap 200, dinner files unchanged.
 
+## Honesty badges + freshness (2026-08-20)
+
+Place pages show one of two kit-tier labels from existing venue JSON only:
+
+- **Verified kit · checked {Mon YYYY}** when `list_confidence == "audited"` and `last_presence_audit` is a real ISO date (52 venues). Month is formatted from that field — no new dates.
+- **Starter list** for every other venue (166), including `content_mode: curated` / `status: verified` / `last_verified` without an audit. Those flags are not a presence check.
+
+Freshness is static: “Was this list accurate?” with `accurate` / `something changed` mailto links to hello@1less.app (subject includes the venue slug). Same line on the print-sheet footer. Print header reuses the two labels. Dinner, cards, and VFT spec untouched.
+
+QA: `python3 -m unittest tests.test_card_kind tests.test_field_pack_session tests.test_field_pack_sitemap tests.test_kit_tier` · regen `python3 scripts/generate_bdo_seo.py`.
+
+ParentTest nits (same PR): card-page 6-Q grid stays 1-up so “Meat” / “Run fast” chips wrap instead of clipping; Art Lab footer is “This museum's cards” (venue-kind CTA — zoo/aquarium/museum/park/place). No Q&A rewrite.
+
 ## Follow-on (Grok 4.6 live review) — 2026-08-12
 
 | ID | Title | Status | Note |

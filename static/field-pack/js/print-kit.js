@@ -15,6 +15,23 @@
     return escapeHtml(s).replaceAll("'", "&#39;");
   }
 
+  function freshnessMailto(slug, kind) {
+    const label = kind === "accurate" ? "accurate" : "something changed";
+    const subject = `Field Trip Kit · ${slug} · ${label}`;
+    return `mailto:hello@1less.app?subject=${encodeURIComponent(subject)}`;
+  }
+
+  function freshnessFooterHtml(venue) {
+    const slug = (venue && (venue.slug || venue.id)) || "";
+    if (!slug) return "Was this list accurate?";
+    return (
+      `Was this list accurate? ` +
+      `<a href="${escapeAttr(freshnessMailto(slug, "accurate"))}">accurate</a>` +
+      ` · ` +
+      `<a href="${escapeAttr(freshnessMailto(slug, "changed"))}">something changed</a>`
+    );
+  }
+
   function track(name, params) {
     if (typeof window.FPTrack === "function") {
       window.FPTrack(name, params || {});
@@ -166,7 +183,7 @@
               )}</p>`
             : ""
         }
-        <p class="th-footer">Optional after: open Field Trip Kit → tap a card → Q&A</p>
+        <p class="th-footer">${freshnessFooterHtml(venue)} · Optional after: open Field Trip Kit → tap a card → Q&A</p>
       </div>`;
   }
 

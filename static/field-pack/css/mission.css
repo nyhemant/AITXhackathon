@@ -258,6 +258,12 @@
   font-weight: 700;
   color: #3d4f6f;
 }
+.ms-kit-tier {
+  margin: 0 0 8px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #0a4545;
+}
 .ms-section {
   margin: 12px 0 4px;
   font-size: 0.9rem;
@@ -318,6 +324,7 @@
   font-weight: 650;
   color: #3d4f6f;
 }
+.ms-freshness a { color: #0a4545; }
 
 .mission-drawer-foot {
   flex: 0 0 auto;
@@ -486,6 +493,11 @@ body.mission-drawer-open {
   }
   body.printing-mission .ms-meta {
     font-size: 8.5pt;
+    margin: 0 0 3pt;
+    flex: 0 0 auto;
+  }
+  body.printing-mission .ms-kit-tier {
+    font-size: 8pt;
     margin: 0 0 3pt;
     flex: 0 0 auto;
   }
