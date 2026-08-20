@@ -1805,3 +1805,91 @@ a.seo-map-card:focus-visible {
     grid-template-columns: 1fr 1fr;
   }
 }
+
+/*
+ * One-handed phone session (390×844 proven):
+ * no sideways page scroll, 44px session CTAs, safe-area on venue/card,
+ * Start here / Next not covered by the sticky shell, Next before the talk stack.
+ */
+body.landing-body,
+body.seo-venue-body {
+  padding-top: max(12px, env(safe-area-inset-top, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-bottom: max(28px, env(safe-area-inset-bottom, 0px));
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  overflow-x: clip;
+}
+.seo-article,
+.card-page,
+.seo-watch-row,
+.seo-watch-link,
+.seo-home-card {
+  min-width: 0;
+  max-width: 100%;
+}
+.seo-watch-row,
+.seo-watch-link,
+.seo-watch-source,
+.seo-watch-detail {
+  overflow-wrap: anywhere;
+}
+.seo-venue-body img,
+.card-page img {
+  max-width: 100%;
+}
+.seo-start-here,
+#start-here,
+#route90-heading,
+#at-home,
+#home-session-heading,
+.card-page-next {
+  scroll-margin-top: calc(10rem + env(safe-area-inset-top, 0px));
+}
+.card-page {
+  display: flex;
+  flex-direction: column;
+}
+.card-page-next {
+  order: 1;
+}
+.card-page .card-talk-pack {
+  order: 2;
+}
+.card-page-actions {
+  order: 3;
+}
+
+@media (max-width: 640px) {
+  body.landing-body .oneless-shell,
+  body.seo-venue-body .oneless-shell {
+    top: max(6px, env(safe-area-inset-top, 0px));
+  }
+  .seo-start-actions {
+    gap: 8px;
+    align-items: stretch;
+  }
+  .seo-start-talk,
+  .seo-start-hunt {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    min-width: 44px;
+    padding: 8px 12px;
+    box-sizing: border-box;
+  }
+  .card-page {
+    padding-left: max(1rem, env(safe-area-inset-left, 0px));
+    padding-right: max(1rem, env(safe-area-inset-right, 0px));
+    padding-bottom: max(3rem, calc(2rem + env(safe-area-inset-bottom, 0px)));
+  }
+  .card-page-next a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    min-width: 44px;
+    padding: 10px 12px;
+    box-sizing: border-box;
+  }
+}
