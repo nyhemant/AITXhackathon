@@ -242,10 +242,12 @@ OUTING_TALK_EXHIBIT = (
     },
 )
 
-SEO_CSS_VER = "26"
+SEO_CSS_VER = "27"
 LANDING_CSS_VER = "95"
 STYLES_CSS_VER = "36"
 CATALOG_JS_VER = "35"
+VIEWPORT = "width=device-width, initial-scale=1, viewport-fit=cover"
+MISSION_CSS_VER = "18"
 
 # Landing catalog seeds (T5) — review in POLISH-TASKS completion notes
 FEATURED_CARD_IDS = (
@@ -1883,7 +1885,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="{VIEWPORT}" />
   <title>{esc(title)}</title>
   <meta name="description" content="{esc(desc)}" />
   <link rel="canonical" href="{esc(url)}" />
@@ -1904,7 +1906,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <link rel="stylesheet" href="/field-pack/css/styles.css?v={STYLES_CSS_VER}" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v={LANDING_CSS_VER}" />
   <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v={SEO_CSS_VER}" />
-  <link rel="stylesheet" href="/field-pack/css/mission.css?v=17" />
+  <link rel="stylesheet" href="/field-pack/css/mission.css?v={MISSION_CSS_VER}" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
   </script>
@@ -2040,7 +2042,7 @@ def render_venue_page(v: dict) -> str:
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="{VIEWPORT}" />
   <title>{esc(title)}</title>
   <meta name="description" content="{esc(desc)}" />
   <link rel="canonical" href="{esc(url)}" />
@@ -2334,7 +2336,7 @@ def write_type_landing(meta: dict, venues: list[dict]) -> str:
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="{VIEWPORT}" />
   <title>{esc(meta["title"])}</title>
   <meta name="description" content="{esc(meta["blurb"])}" />
   <link rel="canonical" href="{esc(url)}" />
@@ -4019,7 +4021,7 @@ def write_cards_hub(venues: list[dict]) -> str:
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="{VIEWPORT}" />
   <title>{esc(title)}</title>
   <meta name="description" content="{esc(desc)}" />
   <link rel="canonical" href="{esc(url)}" />
@@ -4214,7 +4216,7 @@ def write_card_pages(
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="{VIEWPORT}" />
   <title>{esc(title)}</title>
   <meta name="description" content="{esc(desc)}" />
   <link rel="canonical" href="{esc(url)}" />
@@ -4259,8 +4261,8 @@ def write_card_pages(
       <p class="card-page-blurb">{esc(blurb) if blurb else "Talk this card through at home — print only if you want paper."}</p>
       {more_links}
       {watch_html}
-      {talk_html}
       {next_html}
+      {talk_html}
       <p class="card-page-actions">
         <a class="btn btn-secondary" href="{venue_href}">{esc(cards_cta) if vid else esc(CTA_EXPLORE_HOME)}</a>
         <button type="button" class="btn btn-secondary" id="print-this-card" data-card-id="{esc(cid)}" data-venue="{esc(vid)}">{esc(CTA_PRINT_CARD)}</button>

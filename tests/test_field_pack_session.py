@@ -196,6 +196,45 @@ class FlagshipSessionTests(unittest.TestCase):
         self.assertNotIn("sci-dinosaur", grid)
         self.assertNotIn("sci-rocket", grid)
 
+    def test_giraffe_next_is_before_talk_pack(self):
+        html = (FP / "cards" / "reticulated-giraffe" / "index.html").read_text(encoding="utf-8")
+        next_at = html.find("Next: African elephant")
+        talk_at = html.find('class="card-talk-pack"')
+        watch_at = html.find('class="seo-watch-row"')
+        self.assertNotEqual(next_at, -1)
+        self.assertNotEqual(talk_at, -1)
+        self.assertLess(watch_at, next_at)
+        self.assertLess(next_at, talk_at)
+        elephant = (FP / "cards" / "african-elephant" / "index.html").read_text(encoding="utf-8")
+        self.assertLess(
+            elephant.find('class="card-page-next" hidden data-next-from="dallas-zoo"'),
+            elephant.find('class="card-talk-pack"'),
+        )
+
+    def test_phone_session_css_locks(self):
+        seo = (FP / "css" / "seo-venue.css").read_text(encoding="utf-8")
+        mission = (FP / "css" / "mission.css").read_text(encoding="utf-8")
+        self.assertIn("overflow-x: clip", seo)
+        self.assertIn("safe-area-inset-top", seo)
+        self.assertIn("safe-area-inset-bottom", seo)
+        self.assertIn("safe-area-inset-left", seo)
+        self.assertIn(".seo-start-here", seo)
+        self.assertIn("scroll-margin-top: calc(10rem + env(safe-area-inset-top, 0px))", seo)
+        self.assertIn(".seo-start-talk", seo)
+        self.assertIn(".card-page-next a", seo)
+        self.assertIn("min-height: 44px", seo)
+        self.assertIn(".card-page-next {\n  order: 1;", seo)
+        self.assertIn("safe-area-inset-top", mission)
+        self.assertIn("min-width: 44px", mission)
+        self.assertIn("min-height: 44px", mission)
+        dallas = (FP / "dallas-zoo" / "index.html").read_text(encoding="utf-8")
+        giraffe = (FP / "cards" / "reticulated-giraffe" / "index.html").read_text(encoding="utf-8")
+        landing = (FP / "index.html").read_text(encoding="utf-8")
+        self.assertIn("viewport-fit=cover", dallas)
+        self.assertIn("viewport-fit=cover", giraffe)
+        self.assertIn("viewport-fit=cover", landing)
+        self.assertIn("Live from Houston Zoo", giraffe)
+
 
 if __name__ == "__main__":
     unittest.main()
