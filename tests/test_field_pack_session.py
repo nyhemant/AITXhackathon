@@ -1,7 +1,6 @@
 """Flagship at-home session: honest start-here, 6-Q cards, no notice-stubs."""
 
 from pathlib import Path
-import re
 import unittest
 
 REPO = Path(__file__).resolve().parents[1]
@@ -159,11 +158,10 @@ class FlagshipSessionTests(unittest.TestCase):
         html = (FP / "cards" / "reticulated-giraffe" / "index.html").read_text(encoding="utf-8")
         watch = html.split('class="seo-watch-row"', 1)[1].split("</p>", 1)[0]
         first_link = watch.split("<a", 1)[1].split("</a>", 1)[0]
-        lines = [ln.strip() for ln in re.sub(r"<[^>]+>", "\n", first_link).splitlines() if ln.strip()]
-        self.assertTrue(lines)
-        self.assertTrue(lines[0].startswith("Live from"))
-        self.assertIn("Houston Zoo", lines[0])
-        self.assertNotIn("Dallas", lines[0])
+        source = first_link.split('class="seo-watch-source"', 1)[1].split(">", 1)[1].split("<", 1)[0].strip()
+        self.assertEqual(source, "Live from Houston Zoo")
+        self.assertLess(first_link.find("Live from Houston Zoo"), first_link.find("Giraffe cam at the Houston Zoo"))
+        self.assertNotIn("Dallas", source)
 
     def test_dallas_does_not_duplicate_more_if_you_have_energy(self):
         visible = self._visible((FP / "dallas-zoo" / "index.html").read_text(encoding="utf-8"))
