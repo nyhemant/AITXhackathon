@@ -135,6 +135,52 @@ class FlagshipSessionTests(unittest.TestCase):
         self.assertIn(".card-page .card-talk-pack .mission-grid", seo)
         self.assertIn("grid-template-columns: 1fr", seo)
 
+    def test_dallas_start_here_is_above_at_home_dump(self):
+        visible = self._visible((FP / "dallas-zoo" / "index.html").read_text(encoding="utf-8"))
+        start = visible.find('id="route90-heading"')
+        dump = visible.find('id="at-home"')
+        self.assertNotEqual(start, -1)
+        self.assertNotEqual(dump, -1)
+        self.assertLess(start, dump)
+        start_block = visible.split('id="route90-heading"', 1)[1].split("</section>", 1)[0]
+        self.assertIn("Reticulated giraffe", start_block)
+        self.assertIn("African elephant", start_block)
+        self.assertIn("African lion", start_block)
+
+    def test_dallas_giraffe_card_has_next_elephant(self):
+        html = (FP / "cards" / "reticulated-giraffe" / "index.html").read_text(encoding="utf-8")
+        self.assertIn("Next: African elephant", html)
+        self.assertIn('href="/field-pack/cards/african-elephant/?from=dallas-zoo"', html)
+        dallas = self._visible((FP / "dallas-zoo" / "index.html").read_text(encoding="utf-8"))
+        start = dallas.split('id="route90-heading"', 1)[1].split("</section>", 1)[0]
+        self.assertIn("/field-pack/cards/african-elephant/?from=dallas-zoo", start)
+        sd = self._visible((FP / "san-diego-zoo" / "index.html").read_text(encoding="utf-8"))
+        sd_start = sd.split('id="route90-heading"', 1)[1].split("</section>", 1)[0]
+        self.assertNotIn("from=dallas-zoo", sd_start)
+
+    def test_elephant_next_lion_only_from_dallas(self):
+        html = (FP / "cards" / "african-elephant" / "index.html").read_text(encoding="utf-8")
+        self.assertIn('class="card-page-next" hidden data-next-from="dallas-zoo"', html)
+        self.assertIn("Next: African lion", html)
+        self.assertIn('get("from")', html)
+        self.assertIn('from === nextEl.getAttribute("data-next-from")', html)
+        show = lambda q: q == "dallas-zoo"
+        self.assertFalse(show(None))
+        self.assertFalse(show("san-diego-zoo"))
+        self.assertTrue(show("dallas-zoo"))
+        koala = (FP / "cards" / "koala" / "index.html").read_text(encoding="utf-8")
+        self.assertIn("Next: African elephant", koala)
+        self.assertNotIn("from=dallas-zoo", koala)
+
+    def test_cousin_cam_first_visible_line_names_source_zoo(self):
+        html = (FP / "cards" / "reticulated-giraffe" / "index.html").read_text(encoding="utf-8")
+        watch = html.split('class="seo-watch-row"', 1)[1].split("</p>", 1)[0]
+        first_link = watch.split("<a", 1)[1].split("</a>", 1)[0]
+        source = first_link.split('class="seo-watch-source"', 1)[1].split(">", 1)[1].split("<", 1)[0].strip()
+        self.assertEqual(source, "Live from Houston Zoo")
+        self.assertLess(first_link.find("Live from Houston Zoo"), first_link.find("Giraffe cam at the Houston Zoo"))
+        self.assertNotIn("Dallas", source)
+
     def test_dallas_does_not_duplicate_more_if_you_have_energy(self):
         visible = self._visible((FP / "dallas-zoo" / "index.html").read_text(encoding="utf-8"))
         self.assertNotIn("More if you have energy", visible)

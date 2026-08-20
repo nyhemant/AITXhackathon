@@ -110,7 +110,35 @@ Freshness is static: “Was this list accurate?” with `accurate` / `something 
 
 QA: `python3 -m unittest tests.test_card_kind tests.test_field_pack_session tests.test_field_pack_sitemap tests.test_kit_tier` · regen `python3 scripts/generate_bdo_seo.py`.
 
+## Dallas Zoo session path (2026-08-20)
+
+At-home path is giraffe → elephant → lion without a 12-card dump first.
+
+| Area | Change |
+|------|--------|
+| Dallas place page | Start here (existing `route_90m` 3) above `#at-home` dump. No new animals. |
+| Public cards | Dallas chain Next links: giraffe → African elephant → African lion. SD same-template free: panda → koala → African elephant (Dallas owns the shared elephant card). |
+| Cousin cams | First visible line on a cam/film link is `Live from {zoo}` / `Film from {zoo}` parsed from existing VFT labels. |
+| SD place page | Same start-here-first template reorder + cam first-line. No new SD animals. |
+| Dinner / VFT / SEO factory | Untouched / no mass regen. |
+
+QA: `python3 -m unittest tests.test_card_kind tests.test_field_pack_session tests.test_field_pack_sitemap tests.test_kit_tier`.
+
 ParentTest nits (same PR): card-page 6-Q grid stays 1-up so “Meat” / “Run fast” chips wrap instead of clipping; Art Lab footer is “This museum's cards” (venue-kind CTA — zoo/aquarium/museum/park/place). No Q&A rewrite.
+
+## Dallas Zoo session path (2026-08-20)
+
+At-home path is giraffe → elephant → lion without a 12-card dump first.
+
+| Area | Change |
+|------|--------|
+| Dallas place page | Start here (existing `route_90m` 3) above `#at-home` dump. No new animals. |
+| Public cards | Dallas chain Next links: giraffe → African elephant → African lion. SD same-template free: panda → koala → African elephant (Dallas owns the shared elephant card). |
+| Cousin cams | First visible line on a cam/film link is `Live from {zoo}` / `Film from {zoo}` parsed from existing VFT labels. |
+| SD place page | Same start-here-first template reorder + cam first-line. No new SD animals. |
+| Dinner / VFT / SEO factory | Untouched / no mass regen. |
+
+QA: `python3 -m unittest tests.test_card_kind tests.test_field_pack_session tests.test_field_pack_sitemap tests.test_kit_tier`.
 
 ## Follow-on (Grok 4.6 live review) — 2026-08-12
 

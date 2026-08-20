@@ -1729,8 +1729,29 @@ a.seo-map-card:focus-visible {
   line-height: 1.4;
 }
 .seo-watch-link {
+  display: inline-block;
+  vertical-align: top;
   color: #0f5c5c;
   font-weight: 750;
+}
+.seo-watch-source {
+  display: block;
+  font-weight: 800;
+  color: #0a4545;
+  line-height: 1.25;
+}
+.seo-watch-detail {
+  display: block;
+  font-size: 0.86em;
+  font-weight: 650;
+  color: #3d4f6f;
+}
+.card-page-next {
+  margin: 0.75rem 0 0;
+  font-weight: 800;
+}
+.card-page-next a {
+  color: #0f5c5c;
 }
 .seo-home-card-more {
   margin: 0.45rem 0 0;
