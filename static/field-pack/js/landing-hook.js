@@ -102,7 +102,7 @@
         b.classList.toggle("is-active", on);
         b.setAttribute("aria-pressed", on ? "true" : "false");
       });
-      if (label) label.textContent = mode === "place" ? "Where are you going?" : "Find a card";
+      if (label) label.textContent = mode === "place" ? "Find a place" : "Find a card";
       input.placeholder =
         mode === "place" ? "Zoo, museum, park, or city…" : "Lion, shark, dinosaur…";
       if (submitBtn) submitBtn.textContent = mode === "place" ? "Find place" : "Find card";
@@ -406,10 +406,10 @@
     });
   });
 
-  // Ready cards (if present) open the map mini-panel for that venue
+  // Ready cards go to the place page (at-home session). Hash /#/venue/ stays as a map alias.
   if (grid && READY.length) {
     grid.innerHTML = READY.map((p) => {
-      const href = `/field-pack/#/venue/${encodeURIComponent(p.id)}`;
+      const href = `/field-pack/${encodeURIComponent(p.id)}/`;
       const short =
         p.id === "childrens-aquarium-dallas"
           ? "Children’s Aquarium"
@@ -419,20 +419,9 @@
       return `<a class="ready-card" href="${escapeHtml(href)}" data-venue-id="${escapeHtml(p.id)}">
         <span class="rc-emoji" aria-hidden="true">${escapeHtml(p.emoji || "")}</span>
         <h3>${escapeHtml(short)}</h3>
-        <span class="rc-cta">Open on map →</span>
+        <span class="rc-cta">Explore →</span>
       </a>`;
     }).join("");
-
-    grid.addEventListener("click", (e) => {
-      const a = e.target.closest("a.ready-card[data-venue-id]");
-      if (!a) return;
-      const id = a.getAttribute("data-venue-id");
-      if (!id) return;
-      if (typeof window.fpSelectVenueOnMap === "function") {
-        e.preventDefault();
-        window.fpSelectVenueOnMap(id);
-      }
-    });
   }
 
   /** City chips: hover/focus shows venue links; click jumps the map. */

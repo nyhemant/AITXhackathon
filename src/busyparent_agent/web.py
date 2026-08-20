@@ -968,6 +968,10 @@ def _static_content_type(path: Path) -> str:
         return "image/x-icon"
     if suffix == ".map":
         return "application/json; charset=utf-8"
+    if suffix == ".xml":
+        return "application/xml; charset=utf-8"
+    if suffix == ".txt":
+        return "text/plain; charset=utf-8"
     return "application/octet-stream"
 
 
@@ -1047,6 +1051,29 @@ def _safe_static_root_file(url_path: str) -> Path | None:
     return candidate if candidate.is_file() else None
 
 
+_SITEMAP_URLS = ("/sitemap.xml", "/field-pack/sitemap.xml")
+_MINIMAL_SITEMAP = """<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://1less.app/field-pack/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>
+"""
+
+
+def _sitemap_bytes() -> bytes:
+    """Static sitemap only — never generate URLs at request time."""
+    for candidate in (STATIC_ROOT / "sitemap.xml", FIELD_PACK_ROOT / "sitemap.xml"):
+        try:
+            if candidate.is_file():
+                return candidate.read_bytes()
+        except OSError:
+            continue
+    return _MINIMAL_SITEMAP.encode("utf-8")
+
+
 class WebHandler(BaseHTTPRequestHandler):
     def do_GET(self) -> None:
         path = urlsplit(self.path).path
@@ -1059,7 +1086,16 @@ class WebHandler(BaseHTTPRequestHandler):
         if path == "/analytics/status":
             self._handle_analytics_status()
             return
-        # SEO: robots + sitemap at site root
+        # SEO: robots + sitemap (root and /field-pack/). Never 500 — static file or tiny fallback.
+        if path in _SITEMAP_URLS:
+            body = _sitemap_bytes()
+            self.send_response(200)
+            self.send_header("Content-Type", "application/xml; charset=utf-8")
+            self.send_header("Content-Length", str(len(body)))
+            self.send_header("Cache-Control", "public, max-age=3600")
+            self.end_headers()
+            self.wfile.write(body)
+            return
         root_static = _safe_static_root_file(path)
         if root_static is not None:
             body = root_static.read_bytes()
@@ -1144,6 +1180,14 @@ class WebHandler(BaseHTTPRequestHandler):
             self.send_response(302)
             self.send_header("Location", FIELD_PACK_PREFIX + "/")
             self.send_header("Content-Length", "0")
+            self.end_headers()
+            return
+        if path in _SITEMAP_URLS:
+            body = _sitemap_bytes()
+            self.send_response(200)
+            self.send_header("Content-Type", "application/xml; charset=utf-8")
+            self.send_header("Content-Length", str(len(body)))
+            self.send_header("Cache-Control", "public, max-age=3600")
             self.end_headers()
             return
         root_static = _safe_static_root_file(path)

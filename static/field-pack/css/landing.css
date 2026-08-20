@@ -4037,3 +4037,40 @@ a.hero-moment#hero-after-link:focus-visible {
   background: var(--silo-cards, #c45c26);
   color: #fff;
 }
+
+/* No-JS / failed-fetch map fallback — never leave crawlers on “Places loading…” */
+.map-fallback {
+  margin: 0.75rem 0 0;
+  padding: 0.75rem 0.85rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1.5px solid rgba(15, 92, 92, 0.12);
+}
+.map-fallback-lead {
+  margin: 0 0 0.5rem;
+  color: var(--muted, #3d4f6f);
+  font-weight: 650;
+  font-size: 0.92rem;
+}
+.map-fallback-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+.map-fallback-list a {
+  display: inline-block;
+  padding: 0.4rem 0.7rem;
+  border-radius: 999px;
+  background: #fff;
+  border: 1.5px solid rgba(15, 92, 92, 0.18);
+  color: #0a4545;
+  font-weight: 750;
+  text-decoration: none;
+  font-size: 0.88rem;
+}
+.map-js-ready .map-fallback-js {
+  display: none;
+}

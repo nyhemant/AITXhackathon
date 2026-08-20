@@ -1589,6 +1589,10 @@
       const svgText = await res.text();
       if (token !== mapLoadToken) return;
       mapHost.innerHTML = svgText;
+      const shell = mapHost.closest(".map-canvas-wrap") || document.getElementById("during");
+      if (shell) shell.classList.add("map-js-ready");
+      const fallback = document.getElementById("map-fallback");
+      if (fallback) fallback.hidden = true;
       svgEl = mapHost.querySelector("svg");
       if (svgEl) {
         svgEl.removeAttribute("width");
@@ -1610,7 +1614,19 @@
       applyMapTransform();
     } catch (err) {
       if (token !== mapLoadToken) return;
-      mapHost.innerHTML = `<p class="map-loading">Map unavailable — use the menus.</p>`;
+      const popular = (window.FP_READY_STRIP && window.FP_READY_STRIP.us) || [];
+      const chips = popular
+        .map((id) => {
+          const p = placeById(id) || {};
+          const name = p.name || id;
+          return `<li><a href="/field-pack/${id}/">${p.emoji || "📍"} ${name}</a></li>`;
+        })
+        .join("");
+      mapHost.innerHTML = chips
+        ? `<p class="map-fallback-lead">Map didn’t load. Explore a place:</p><ul class="map-fallback-list">${chips}</ul>`
+        : `<p class="map-loading">Map unavailable — use the place list below.</p>`;
+      const fallback = document.getElementById("map-fallback");
+      if (fallback) fallback.hidden = false;
       console.error(err);
       svgEl = null;
       pinsLayer = null;
@@ -1644,6 +1660,8 @@
   }
 
   async function boot() {
+    const jsFallback = document.getElementById("map-fallback");
+    if (jsFallback) jsFallback.hidden = true;
     if (scopeTop) scopeTop.addEventListener("click", () => void setScope("top"));
     if (scopeMore) scopeMore.addEventListener("click", () => void setScope("more"));
     if (scopeIntl) scopeIntl.addEventListener("click", () => void setScope("intl"));
@@ -1842,16 +1860,16 @@
       "childrens-museum-perot": "Children’s Museum",
       "national-zoo": "National Zoo",
     };
-    heading.textContent = isIntl ? "Try a place" : "Ready to print";
+    heading.textContent = isIntl ? "Try a place" : "Explore a place at home";
     grid.innerHTML = ids
       .map((id) => {
         const p = placeById(id) || {};
         const emoji = p.emoji || "📍";
         const name = shortName[id] || p.name || id;
-        return `<a class="ready-card" href="/field-pack/#/venue/${id}" data-venue-id="${id}">
+        return `<a class="ready-card" href="/field-pack/${id}/" data-venue-id="${id}">
             <span class="rc-emoji" aria-hidden="true">${emoji}</span>
             <h3>${name}</h3>
-            <span class="rc-cta">Open on map →</span>
+            <span class="rc-cta">Explore →</span>
           </a>`;
       })
       .join("");
@@ -1869,28 +1887,28 @@
 
   const TYPE_TAB_COPY = {
     all: {
-      pitch: "A one-page mission for your next zoo or museum day",
-      dir: "Printable catalog",
+      pitch: "Explore a place at home — or print a hunt for the visit",
+      dir: "Cards & places",
       blurb:
         "Tabs above filter the map and this catalog together. Each day type pairs places with matching cards (zoos↔wildlife, aquariums↔sea life, museums↔attractions).",
     },
     zoo: {
-      pitch: "A one-page mission for your next zoo day",
+      pitch: "Explore a zoo at home — or print a hunt for the visit",
       dir: "Zoos · wildlife cards",
-      blurb: "Map shows zoos. Catalog: wildlife Q&A cards + zoo places.",
+      blurb: "Map shows zoos. Catalog: wildlife cards + zoo places.",
     },
     aquarium: {
-      pitch: "A one-page mission for your next aquarium day",
+      pitch: "Explore an aquarium at home — or print a hunt for the visit",
       dir: "Aquariums · sea life cards",
-      blurb: "Map shows aquariums. Catalog: sea life Q&A cards + aquarium places.",
+      blurb: "Map shows aquariums. Catalog: sea life cards + aquarium places.",
     },
     museum: {
-      pitch: "A one-page mission for your next museum or science day",
+      pitch: "Explore a museum at home — or print a hunt for the visit",
       dir: "Museums · attraction cards",
       blurb: "Map shows museums. Catalog: attraction cards + museum places.",
     },
     park: {
-      pitch: "A one-page mission for your next park day",
+      pitch: "Explore a park at home — or print a hunt for the visit",
       dir: "Parks",
       blurb:
         "Map shows parks. One finishable slice (rim, boardwalk, lakeshore) — not the whole park.",
