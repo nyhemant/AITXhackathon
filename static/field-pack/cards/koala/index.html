@@ -63,6 +63,11 @@
   <script src="/field-pack/js/print-kit.js?v=14"></script>
   <script>
     (function () {
+      var nextEl = document.querySelector(".card-page-next[data-next-from]");
+      if (nextEl) {
+        var from = new URLSearchParams(window.location.search).get("from");
+        if (from === nextEl.getAttribute("data-next-from")) nextEl.removeAttribute("hidden");
+      }
       if (typeof FPTrack === "function") FPTrack("card_page_viewed", { card_id: "koala" });
       var btn = document.getElementById("print-this-card");
       if (btn) btn.addEventListener("click", function () {

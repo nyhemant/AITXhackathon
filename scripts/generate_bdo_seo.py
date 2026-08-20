@@ -760,8 +760,21 @@ def watch_links_html(item: dict) -> str:
 
 # Dallas start-here is required. San Diego uses the same 3-stop template — same
 # next-link only, no new animals. Not a site-wide next-animal system.
+# Shared african-elephant: Next: lion only when ?from=dallas-zoo (query, not a session model).
 _START_HERE_NEXT_SLUGS = ("dallas-zoo", "san-diego-zoo")
 _START_HERE_NEXT: dict[str, dict[str, str]] | None = None
+DALLAS_FROM_Q = "dallas-zoo"
+SHARED_ELEPHANT_ID = "african-elephant"
+
+
+def start_here_card_href(item_id: str, slug: str = "") -> str:
+    """Public card href. Dallas start-here → elephant keeps ?from=dallas-zoo."""
+    if not item_id:
+        return f"/field-pack/{esc(slug)}/#at-home" if slug else "/field-pack/"
+    href = f"/field-pack/cards/{esc(item_id)}/"
+    if slug == DALLAS_FROM_Q and item_id == SHARED_ELEPHANT_ID:
+        href += f"?from={DALLAS_FROM_Q}"
+    return href
 
 
 def start_here_next_by_card() -> dict[str, dict[str, str]]:
@@ -794,9 +807,19 @@ def card_next_html(cid: str) -> str:
     nxt = start_here_next_by_card().get(cid or "")
     if not nxt:
         return ""
+    href = f"/field-pack/cards/{esc(nxt['id'])}/"
+    # Keep ?from=dallas-zoo on the Dallas chain only (giraffe → elephant → lion).
+    if cid == "reticulated-giraffe" and nxt["id"] == SHARED_ELEPHANT_ID:
+        href += f"?from={DALLAS_FROM_Q}"
+    if cid == SHARED_ELEPHANT_ID:
+        return (
+            f'<p class="card-page-next" hidden data-next-from="{DALLAS_FROM_Q}">'
+            f'<a href="{href}">Next: {esc(nxt["name"])}</a>'
+            f"</p>"
+        )
     return (
         f'<p class="card-page-next">'
-        f'<a href="/field-pack/cards/{esc(nxt["id"])}/">Next: {esc(nxt["name"])}</a>'
+        f'<a href="{href}">Next: {esc(nxt["name"])}</a>'
         f"</p>"
     )
 
@@ -1535,9 +1558,7 @@ def route_90m_html(mission_venue: dict, mission: dict, catalog_v: dict | None = 
         one = _card_blurb(p.get("one_liner") or feat.get("blurb") or "")
         # Prefer catalog id for public card pages; underscore venue ids won't resolve in catalog
         item_id = (p.get("catalog_id") or "").strip() or cat_id
-        href = f"/field-pack/cards/{esc(item_id)}/" if item_id else (
-            f"/field-pack/{esc(slug)}/#at-home" if slug else "/field-pack/"
-        )
+        href = start_here_card_href(item_id, slug)
         if src:
             media = (
                 f'<img src="{esc(src)}" alt="" width="640" height="400" '
@@ -4254,6 +4275,11 @@ def write_card_pages(
   <script src="/field-pack/js/print-kit.js?v=14"></script>
   <script>
     (function () {{
+      var nextEl = document.querySelector(".card-page-next[data-next-from]");
+      if (nextEl) {{
+        var from = new URLSearchParams(window.location.search).get("from");
+        if (from === nextEl.getAttribute("data-next-from")) nextEl.removeAttribute("hidden");
+      }}
       if (typeof FPTrack === "function") FPTrack("card_page_viewed", {{ card_id: "{esc(cid)}" }});
       var btn = document.getElementById("print-this-card");
       if (btn) btn.addEventListener("click", function () {{
