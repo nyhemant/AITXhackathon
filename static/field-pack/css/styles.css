@@ -1018,6 +1018,7 @@ a {
   display: flex;
   align-items: center;
   gap: 10px;
+  min-width: 0;
   min-height: 52px;
   padding: 10px 12px;
   border-radius: 14px;
@@ -1027,7 +1028,14 @@ a {
   font-size: 1.05rem;
   text-align: left;
   color: var(--ink);
+  overflow: visible;
   transition: background 0.12s ease, border-color 0.12s ease, transform 0.1s ease;
+}
+.choice > span:not(.dot) {
+  min-width: 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  line-height: 1.2;
 }
 
 .choice:hover {

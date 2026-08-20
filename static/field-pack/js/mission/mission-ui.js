@@ -4,13 +4,24 @@
  */
 (function () {
 
+  function checkedMonthLabel(raw) {
+    const m = String(raw || "").trim().match(/^(\d{4})-(\d{2})/);
+    if (!m) return "";
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const month = Number(m[2]);
+    if (month < 1 || month > 12) return "";
+    return `${months[month - 1]} ${m[1]}`;
+  }
+
   function statusLineFromVenue(venue) {
+    // Same two labels as generate_bdo_seo / field_pack_kit_tier.py.
+    // Verified only when list_confidence is audited AND last_presence_audit is a real date.
     const conf = (venue && venue.list_confidence) || "";
-    const audited = (venue && venue.last_presence_audit) || "";
-    const month = audited.length >= 7 ? audited.slice(0, 7) : "";
-    if (conf === "audited" && month) return `Verified ${month}`;
-    if (conf === "partial") return "Confirm on arrival";
-    return "Flexible finds";
+    if (conf === "audited") {
+      const month = checkedMonthLabel(venue && venue.last_presence_audit);
+      if (month) return `Verified kit · checked ${month}`;
+    }
+    return "Starter list";
   }
 
   function $(sel, root) {

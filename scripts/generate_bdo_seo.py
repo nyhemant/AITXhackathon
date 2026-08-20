@@ -31,6 +31,12 @@ from field_pack_card_kind import (  # noqa: E402
     group_cards_by_hub_section,
     hub_section_id,
 )
+from field_pack_kit_tier import (  # noqa: E402
+    freshness_html,
+    freshness_span_html,
+    print_status_line,
+    status_chip_html,
+)
 
 FIELD = REPO / "static" / "field-pack"
 VENUE_DATA_DIR = FIELD / "data" / "venues"
@@ -94,6 +100,10 @@ START_HERE_LEAD = (
 CTA_TALK_HOME = "Talk at home"
 CTA_ADD_HUNT = "Add to hunt"
 CTA_ZOO_CARDS = "This zoo's cards"
+CTA_AQUARIUM_CARDS = "This aquarium's cards"
+CTA_MUSEUM_CARDS = "This museum's cards"
+CTA_PARK_CARDS = "This park's cards"
+CTA_PLACE_CARDS = "This place's cards"
 HOME_CARD_MORE = "Open card — 6 talk questions"
 SHORTLIST_LEAD = "Open a card for talk tips, photos, and Q&amp;A."
 HUNT_BLOCK_P = (
@@ -232,9 +242,9 @@ OUTING_TALK_EXHIBIT = (
     },
 )
 
-SEO_CSS_VER = "23"
+SEO_CSS_VER = "25"
 LANDING_CSS_VER = "95"
-STYLES_CSS_VER = "35"
+STYLES_CSS_VER = "36"
 CATALOG_JS_VER = "35"
 
 # Landing catalog seeds (T5) — review in POLISH-TASKS completion notes
@@ -408,6 +418,16 @@ TYPE_PHRASE = {
     "national_park": ("national park", "trails and overlooks", "scavenger hunt"),
     "park": ("national park", "trails and overlooks", "scavenger hunt"),
 }
+
+
+def place_cards_cta(kind: str) -> str:
+    """Footer / secondary link — zoo only when the venue kind is a zoo."""
+    return {
+        "zoo": CTA_ZOO_CARDS,
+        "aquarium": CTA_AQUARIUM_CARDS,
+        "museum": CTA_MUSEUM_CARDS,
+        "park": CTA_PARK_CARDS,
+    }.get((kind or "").strip().lower(), CTA_PLACE_CARDS)
 
 
 def esc(s: str) -> str:
@@ -852,41 +872,6 @@ def pick(seed: str, options: list[str]) -> str:
     h = int(hashlib.md5(seed.encode()).hexdigest(), 16)
     return options[h % len(options)]
 
-
-
-def status_chip_html(mission_venue: dict) -> str:
-    """Honest list status — never claim Verified without presence audit."""
-    conf = (mission_venue or {}).get("list_confidence") or ""
-    audited = (mission_venue or {}).get("last_presence_audit") or ""
-    month = audited[:7] if len(audited) >= 7 else ""
-    if conf == "audited" and month:
-        return (
-            f'<p class="seo-checked seo-checked-verified">'
-            f'✓ Verified with venue website · {esc(month)}</p>'
-        )
-    if conf == "partial":
-        m = month or ((mission_venue or {}).get("last_verified") or "")[:7]
-        extra = f" · {esc(m)}" if m else ""
-        return (
-            f'<p class="seo-checked seo-checked-partial">'
-            f'Local shortlist · confirm on arrival{extra}</p>'
-        )
-    # template / unknown
-    return (
-        '<p class="seo-checked seo-checked-starter">'
-        'Starter hunt · flexible finds — skip anything closed</p>'
-    )
-
-
-def print_status_line(mission_venue: dict) -> str:
-    conf = (mission_venue or {}).get("list_confidence") or ""
-    audited = (mission_venue or {}).get("last_presence_audit") or ""
-    month = audited[:7] if len(audited) >= 7 else ""
-    if conf == "audited" and month:
-        return f"Verified {month}"
-    if conf == "partial":
-        return "Confirm on arrival"
-    return "Flexible finds"
 
 
 def practical_chips_html(practical: dict | None, last_v: str = "") -> str:
@@ -1602,13 +1587,14 @@ def mission_drawer_html(mission_venue: dict, mission: dict) -> str:
             <p class="ms-brand">Field Trip Kit{f' · {esc(loc)}' if loc else ""}</p>
             <h3 class="ms-title" id="mission-title">{mission_title}</h3>
             <p class="ms-meta" id="mission-meta">{age_label} · {time_label}</p>
+            <p class="ms-kit-tier" id="mission-verified">{esc(verified_line)}</p>
             <h4 class="ms-section" id="mission-finds-heading">Find these</h4>
             <ol class="mission-finds" id="mission-finds" aria-label="Finds">{finds_html}</ol>
             <h4 class="ms-section" id="mission-bonus-heading">Bonus</h4>
             <ul class="mission-challenges" id="mission-challenges" aria-label="Challenges">{ch_html}</ul>
             <p class="ms-favorite">My favorite was _______________________</p>
             <p class="ms-footer">
-              <span id="mission-verified">{esc(verified_line)}</span>
+              {freshness_span_html(vid)}
               · free at 1less.app/field-pack/{esc(vid)}/
             </p>
             <p class="ms-map-hint" id="mission-map-hint"></p>
@@ -1794,7 +1780,11 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
         or v.get("blurb")
         or f"Explore {v['name']} at home with cards, photos, and talk prompts — or print a hunt for the visit."
     )
-    facts_html = practical_chips_html(practical, last_v) + status_chip_html(mission_venue)
+    facts_html = (
+        practical_chips_html(practical, last_v)
+        + status_chip_html(mission_venue)
+        + freshness_html(vid, "no-print")
+    )
 
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -1821,7 +1811,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <link rel="stylesheet" href="/field-pack/css/styles.css?v={STYLES_CSS_VER}" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v={LANDING_CSS_VER}" />
   <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v={SEO_CSS_VER}" />
-  <link rel="stylesheet" href="/field-pack/css/mission.css?v=16" />
+  <link rel="stylesheet" href="/field-pack/css/mission.css?v=17" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
   </script>
@@ -1862,7 +1852,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
           <span aria-hidden="true"> · </span>
           <a href="/field-pack/virtual-field-trip/">{esc(HOME_SESSION_VFT)}</a>
           <span aria-hidden="true"> · </span>
-          <a href="#at-home">{esc(CTA_ZOO_CARDS)}</a>
+          <a href="#at-home">{esc(place_cards_cta(venue_type_kind(mission_venue or v)))}</a>
           <span aria-hidden="true"> · </span>
           <a href="{esc(map_href)}">Find on map</a>
         </p>
@@ -1909,9 +1899,9 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <script src="/field-pack/js/fp-analytics.js?v=1"></script>
   <script src="/field-pack/js/catalog.js?v={CATALOG_JS_VER}"></script>
   <script src="/field-pack/js/print-maps.js?v=5"></script>
-  <script src="/field-pack/js/print-kit.js?v=13"></script>
+  <script src="/field-pack/js/print-kit.js?v=14"></script>
   <script src="/field-pack/js/mission/mission-engine.js?v=13"></script>
-  <script src="/field-pack/js/mission/mission-ui.js?v=16"></script>
+  <script src="/field-pack/js/mission/mission-ui.js?v=17"></script>
 </body>
 </html>
 """
@@ -2081,7 +2071,7 @@ def render_venue_page(v: dict) -> str:
   <script src="/field-pack/js/fp-analytics.js?v=1"></script>
   <script src="/field-pack/js/catalog.js?v={CATALOG_JS_VER}"></script>
   <script src="/field-pack/js/print-maps.js?v=5"></script>
-  <script src="/field-pack/js/print-kit.js?v=13"></script>
+  <script src="/field-pack/js/print-kit.js?v=14"></script>
   <script>
     (function () {{
       var btn = document.getElementById("seo-print-hunt");
@@ -4096,8 +4086,10 @@ def write_card_pages(cards: list[dict], venues_by_id: dict[str, dict]) -> list[s
         if attr:
             vname = attr["venue_name"]
             vid = attr["venue_slug"] or vid
+            v = venues_by_id.get(vid) or v
         venue_line = f" · {esc(vname)}" if vname else ""
         venue_href = f"/field-pack/{esc(vid)}/#at-home" if vid else "/field-pack/"
+        cards_cta = place_cards_cta(venue_type_kind(v or {"type": c.get("venue_type") or ""}))
         photo = ""
         if (FIELD / "photos" / f"{cid}.jpg").is_file():
             photo = f"/field-pack/photos/{cid}.jpg?v=img2"
@@ -4167,7 +4159,7 @@ def write_card_pages(cards: list[dict], venues_by_id: dict[str, dict]) -> list[s
       {watch_html}
       {talk_html}
       <p class="card-page-actions">
-        <a class="btn btn-secondary" href="{venue_href}">{esc(CTA_ZOO_CARDS) if vid else esc(CTA_EXPLORE_HOME)}</a>
+        <a class="btn btn-secondary" href="{venue_href}">{esc(cards_cta) if vid else esc(CTA_EXPLORE_HOME)}</a>
         <button type="button" class="btn btn-secondary" id="print-this-card" data-card-id="{esc(cid)}" data-venue="{esc(vid)}">{esc(CTA_PRINT_CARD)}</button>
       </p>
     </main>
@@ -4177,7 +4169,7 @@ def write_card_pages(cards: list[dict], venues_by_id: dict[str, dict]) -> list[s
   <script src="/shell/shell.js?v=5"></script>
   <script src="/field-pack/js/fp-analytics.js?v=1"></script>
   <script src="/field-pack/js/catalog.js?v={CATALOG_JS_VER}"></script>
-  <script src="/field-pack/js/print-kit.js?v=13"></script>
+  <script src="/field-pack/js/print-kit.js?v=14"></script>
   <script>
     (function () {{
       if (typeof FPTrack === "function") FPTrack("card_page_viewed", {{ card_id: "{esc(cid)}" }});

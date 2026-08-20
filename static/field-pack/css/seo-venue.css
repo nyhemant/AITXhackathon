@@ -1530,11 +1530,18 @@ a.seo-map-card:focus-visible {
   .seo-animal-card img, .seo-hero-photos img { height: 160px; }
 }
 
-/* Honest list status */
+/* Honest list status — two labels only (Verified kit / Starter list) */
 .seo-checked { margin: 0.35rem 0 0; font-size: 0.88rem; font-weight: 650; }
 .seo-checked-verified { color: #0a4545; }
 .seo-checked-partial { color: #5a6b82; font-weight: 600; }
 .seo-checked-starter { color: #8a6d3b; font-weight: 600; }
+.seo-freshness {
+  margin: 0.25rem 0 0;
+  font-size: 0.82rem;
+  font-weight: 550;
+  color: #3d4f6f;
+}
+.seo-freshness a { color: #0a4545; }
 
 /* Adults chip — not a kid age band */
 .seo-age-chip[data-age="adult"] {
@@ -1751,6 +1758,21 @@ a.seo-map-card:focus-visible {
 }
 .card-talk-pack .mission-grid {
   gap: 0.65rem;
+}
+/* Card column is ~28rem. A 2/3-up grid clips “Meat” / “Run fast”. */
+.card-page .card-talk-pack .mission-grid {
+  grid-template-columns: 1fr;
+}
+.card-page .card-talk-pack .mission {
+  height: auto;
+  min-height: 0;
+}
+.card-page .card-talk-pack .mission-q {
+  min-height: 0;
+}
+.card-page .card-talk-pack .choices {
+  margin-top: 0.5rem;
+  min-width: 0;
 }
 .card-talk-note {
   margin: 0.4rem 0 0;

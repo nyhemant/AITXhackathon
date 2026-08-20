@@ -118,9 +118,22 @@ class FlagshipSessionTests(unittest.TestCase):
         html = (FP / "cards" / "cm-art-lab" / "index.html").read_text(encoding="utf-8")
         self.assertIn("· Perot Museum", html)
         self.assertIn("/field-pack/childrens-museum-perot/#at-home", html)
+        self.assertNotIn("This zoo's cards", html)
+        self.assertIn("This museum's cards", html)
         hub = (FP / "cards" / "index.html").read_text(encoding="utf-8")
         art = [line for line in hub.splitlines() if "cm-art-lab" in line][0]
         self.assertIn("Perot Museum", art)
+
+    def test_lion_card_keeps_zoo_cards_cta_and_chip_labels(self):
+        html = (FP / "cards" / "african-lion" / "index.html").read_text(encoding="utf-8")
+        self.assertIn("This zoo's cards", html)
+        self.assertIn("Meat", html)
+        self.assertIn("Run fast", html)
+        css = (FP / "css" / "styles.css").read_text(encoding="utf-8")
+        seo = (FP / "css" / "seo-venue.css").read_text(encoding="utf-8")
+        self.assertIn("overflow-wrap: anywhere", css)
+        self.assertIn(".card-page .card-talk-pack .mission-grid", seo)
+        self.assertIn("grid-template-columns: 1fr", seo)
 
     def test_dallas_does_not_duplicate_more_if_you_have_energy(self):
         visible = self._visible((FP / "dallas-zoo" / "index.html").read_text(encoding="utf-8"))
