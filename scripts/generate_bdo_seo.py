@@ -1538,6 +1538,8 @@ def mission_drawer_html(mission_venue: dict, mission: dict) -> str:
         for c in mission.get("challenges") or []
     )
     return f"""
+  <span id="mission" class="mission-hash-alias" hidden></span>
+  <span id="print" class="mission-hash-alias" hidden></span>
   <div class="mission-overlay no-print" id="mission-overlay" hidden>
     <div
       class="mission-drawer"
@@ -1909,7 +1911,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <script src="/field-pack/js/print-maps.js?v=5"></script>
   <script src="/field-pack/js/print-kit.js?v=13"></script>
   <script src="/field-pack/js/mission/mission-engine.js?v=13"></script>
-  <script src="/field-pack/js/mission/mission-ui.js?v=15"></script>
+  <script src="/field-pack/js/mission/mission-ui.js?v=16"></script>
 </body>
 </html>
 """

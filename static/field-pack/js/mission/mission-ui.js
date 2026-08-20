@@ -711,9 +711,14 @@
       });
     });
 
-    // Deep link: #mission opens drawer (landing pin CTA, shared links)
+    // Deep link: #mission / #print / #mission-drawer open the hunt drawer.
+    // Venue pages use <base href="/field-pack/">. If #mission has no element,
+    // some browsers resolve the fragment to /field-pack/#mission (landing)
+    // before this script runs — print never opens. Keep the ids as aliases
+    // in the page HTML; treat all three hashes here.
     const maybeOpenFromHash = () => {
-      if (location.hash === "#mission" || location.hash === "#print") openDrawer();
+      const h = location.hash;
+      if (h === "#mission" || h === "#print" || h === "#mission-drawer") openDrawer();
     };
     maybeOpenFromHash();
     window.addEventListener("hashchange", maybeOpenFromHash);

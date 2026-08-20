@@ -13,6 +13,12 @@ class FlagshipSessionTests(unittest.TestCase):
         self.assertNotIn("Places loading", html)
         self.assertIn("218 places worldwide", html)
         self.assertIn("<noscript><p class=\"map-count-quiet\">218 places worldwide</p></noscript>", html)
+        self.assertIn('href="/field-pack/dallas-zoo/#mission"', html)
+        self.assertIn(
+            "Use the at-home cards and session together; print is optional for a group visit.",
+            html,
+        )
+        self.assertNotIn("Print one sheet per child or share one for the group.", html)
 
     def _visible(self, html: str) -> str:
         return html.split('id="venue-data"', 1)[0]
@@ -31,6 +37,13 @@ class FlagshipSessionTests(unittest.TestCase):
         start = visible.split('id="route90-heading"', 1)[1].split("</section>", 1)[0]
         self.assertNotIn('class="seo-start-card" href="#mission"', start)
         self.assertNotIn("What did you notice about", visible)
+        self.assertIn('id="mission"', html)
+        self.assertIn('id="print"', html)
+        self.assertIn('id="mission-drawer"', html)
+        ui = (FP / "js" / "mission" / "mission-ui.js").read_text(encoding="utf-8")
+        self.assertIn('h === "#mission"', ui)
+        self.assertIn('h === "#print"', ui)
+        self.assertIn('h === "#mission-drawer"', ui)
 
     def test_san_diego_start_here_is_dual_cta(self):
         html = (FP / "san-diego-zoo" / "index.html").read_text(encoding="utf-8")
