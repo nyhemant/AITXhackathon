@@ -242,7 +242,7 @@ OUTING_TALK_EXHIBIT = (
     },
 )
 
-SEO_CSS_VER = "25"
+SEO_CSS_VER = "26"
 LANDING_CSS_VER = "95"
 STYLES_CSS_VER = "36"
 CATALOG_JS_VER = "35"
@@ -707,20 +707,48 @@ def venue_real_qa_for_card(cid: str, vid: str) -> dict:
     return {}
 
 
+def cousin_source_from_label(label: str) -> str:
+    """Named zoo/park already in a VFT/catalog cam or film label. Never invent."""
+    t = (label or "").strip()
+    if not t:
+        return ""
+    m = re.search(r"\bat (?:the )?(.+)$", t, flags=re.I)
+    if m:
+        src = m.group(1).strip(" .")
+        if src:
+            return src
+    if " · " in t:
+        src = t.split(" · ", 1)[1].strip(" .")
+        if src:
+            return src
+    return ""
+
+
+def watch_link_html(url: str, label: str, *, kind: str) -> str:
+    """Cam/film anchor: first visible line names the real zoo when the label has one."""
+    src = cousin_source_from_label(label)
+    if src:
+        prefix = "Film from" if kind == "film" else "Live from"
+        inner = (
+            f'<span class="seo-watch-source">{esc(prefix)} {esc(src)}</span>'
+            f'<span class="seo-watch-detail">{esc(label)}</span>'
+        )
+    else:
+        inner = esc(label)
+    extra = "" if kind == "vft" else ' target="_blank" rel="noopener noreferrer"'
+    return f'<a class="seo-watch-link" href="{esc(url)}"{extra}>{inner}</a>'
+
+
 def watch_links_html(item: dict) -> str:
     """Live cam / film only when Virtual Field Trip already has a sourced URL."""
     vft = item.get("vft") or {}
     links: list[str] = []
     if vft.get("cam_url"):
         label = vft.get("cam_label") or "Watch live cam"
-        links.append(
-            f'<a class="seo-watch-link" href="{esc(vft["cam_url"])}" target="_blank" rel="noopener noreferrer">{esc(label)}</a>'
-        )
+        links.append(watch_link_html(str(vft["cam_url"]), label, kind="cam"))
     if vft.get("film_url"):
         label = vft.get("film_title") or "Watch a short film"
-        links.append(
-            f'<a class="seo-watch-link" href="{esc(vft["film_url"])}" target="_blank" rel="noopener noreferrer">{esc(label)}</a>'
-        )
+        links.append(watch_link_html(str(vft["film_url"]), label, kind="film"))
     if vft.get("vft_href") and (vft.get("cam_url") or vft.get("film_url")):
         links.append(
             f'<a class="seo-watch-link" href="{vft["vft_href"]}">{esc(HOME_SESSION_VFT)}</a>'
@@ -728,6 +756,49 @@ def watch_links_html(item: dict) -> str:
     if not links:
         return ""
     return f'<p class="seo-watch-row">{" · ".join(links)}</p>'
+
+
+# Dallas start-here is required. San Diego uses the same 3-stop template — same
+# next-link only, no new animals. Not a site-wide next-animal system.
+_START_HERE_NEXT_SLUGS = ("dallas-zoo", "san-diego-zoo")
+_START_HERE_NEXT: dict[str, dict[str, str]] | None = None
+
+
+def start_here_next_by_card() -> dict[str, dict[str, str]]:
+    """catalog_id → next stop from listed start-here routes. Dallas wins on overlap."""
+    global _START_HERE_NEXT
+    if _START_HERE_NEXT is not None:
+        return _START_HERE_NEXT
+    out: dict[str, dict[str, str]] = {}
+    for slug in _START_HERE_NEXT_SLUGS:
+        mv = load_mission_venue(slug) or {}
+        items = {it.get("id"): it for it in (mv.get("items") or []) if it.get("id")}
+        route_ids = [rid for rid in (mv.get("route_90m") or [])[:3] if rid in items]
+        if len(route_ids) < 2:
+            continue
+        for i, rid in enumerate(route_ids[:-1]):
+            cur = items[rid]
+            nxt = items[route_ids[i + 1]]
+            cid = str(cur.get("catalog_id") or "").strip()
+            nid = str(nxt.get("catalog_id") or "").strip()
+            name = str(nxt.get("display_label") or nxt.get("label") or "").strip()
+            if not cid or not nid or not name or cid in out:
+                continue
+            out[cid] = {"id": nid, "name": name}
+    _START_HERE_NEXT = out
+    return out
+
+
+def card_next_html(cid: str) -> str:
+    """Cheap Next: {animal} for a start-here chain card. No invented animals."""
+    nxt = start_here_next_by_card().get(cid or "")
+    if not nxt:
+        return ""
+    return (
+        f'<p class="card-page-next">'
+        f'<a href="/field-pack/cards/{esc(nxt["id"])}/">Next: {esc(nxt["name"])}</a>'
+        f"</p>"
+    )
 
 
 def home_session_html(items: list[dict], *, venue_kind: str = "") -> str:
@@ -1339,11 +1410,12 @@ def wonder_grid_html(mission: dict) -> str:
     </section>"""
 
 
-def page_mission_chrome_html() -> str:
+def page_mission_chrome_html(home_href: str = "#at-home") -> str:
     """Dual CTA: at-home session first, print hunt secondary. Chips still drive the drawer."""
+    href = home_href or "#at-home"
     return f"""
         <div class="seo-mission-bar no-print" aria-label="{esc(CTA_EXPLORE_HOME)} or {esc(CTA_PRINT_VISIT)}">
-          <a class="btn btn-primary seo-home-btn" href="#at-home">{esc(CTA_EXPLORE_HOME)}</a>
+          <a class="btn btn-primary seo-home-btn" href="{esc(href)}">{esc(CTA_EXPLORE_HOME)}</a>
           <button type="button" class="btn btn-secondary seo-print-btn" id="mission-open-btn" aria-haspopup="dialog" aria-controls="mission-drawer" aria-label="{esc(CTA_PRINT_VISIT)}">
             <span class="seo-print-btn-long">
               <span class="seo-print-btn-line">{esc(CTA_PRINT_VISIT)}</span>
@@ -1492,7 +1564,7 @@ def route_90m_html(mission_venue: dict, mission: dict, catalog_v: dict | None = 
 
     lead = START_HERE_LEAD
     return f"""
-    <section class="seo-start-here no-print" aria-labelledby="route90-heading">
+    <section class="seo-start-here no-print" id="start-here" aria-labelledby="route90-heading">
       <h2 id="route90-heading">{esc(START_HERE_H2)}</h2>
       <p class="seo-start-lead">{esc(lead)}</p>
       <div class="seo-start-grid">{"".join(cards)}</div>
@@ -1679,8 +1751,8 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
     mission = default_mission_via_node(mission_venue)
     drawer = mission_drawer_html(mission_venue, mission)
     map_card = map_card_html(mission_venue)
-    chrome = page_mission_chrome_html()
     route90 = route_90m_html(mission_venue, mission, catalog_v=v)
+    chrome = page_mission_chrome_html(home_href="#start-here" if route90 else "#at-home")
     # Catalog ids already shown in “start here” — don’t repeat in shortlist grid
     start_exclude = _start_here_catalog_ids(mission_venue, mission)
     practical = mission_venue.get("practical") or {}
@@ -1858,9 +1930,9 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
         </p>
       </header>
 
+      {route90}
       {home_sec}
       {map_card}
-      {route90}
       <div id="seo-play-target" class="seo-play-anchor" tabindex="-1"></div>
       {body}
 
@@ -4065,12 +4137,18 @@ def write_cards_hub(venues: list[dict]) -> str:
 
 
 
-def write_card_pages(cards: list[dict], venues_by_id: dict[str, dict]) -> list[str]:
+def write_card_pages(
+    cards: list[dict],
+    venues_by_id: dict[str, dict],
+    only_ids: set[str] | None = None,
+) -> list[str]:
     """Static /field-pack/cards/<id>/ pages — catalog 6-Q + real extras + VFT cam/film."""
     urls: list[str] = []
     for c in cards:
         cid = (c.get("id") or "").strip()
         if not cid or "/" in cid or ".." in cid:
+            continue
+        if only_ids is not None and cid not in only_ids:
             continue
         item = enrich_item(c)
         vid = c.get("venue") or ""
@@ -4103,6 +4181,7 @@ def write_card_pages(cards: list[dict], venues_by_id: dict[str, dict]) -> list[s
         talk_html = outing_talk_html(item)
         more_links = catalog_more_links_html(item)
         watch_html = watch_links_html(item)
+        next_html = card_next_html(cid)
         title = f"{name} for Kids — Talk, Photos & Q&A · Field Trip Kit"
         desc = (
             f"Explore the {name} card at home: photo, six talk questions, and Q&A. "
@@ -4138,6 +4217,8 @@ def write_card_pages(cards: list[dict], venues_by_id: dict[str, dict]) -> list[s
     .card-page-actions {{ display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem; }}
     .card-page-crumbs {{ font-size: 0.9rem; color: #5a6a84; }}
     .card-page-crumbs a {{ color: #0f5c5c; }}
+    .card-page-next {{ margin: 0.75rem 0 0; font-weight: 800; }}
+    .card-page-next a {{ color: #0f5c5c; }}
   </style>
 </head>
 <body class="landing-body">
@@ -4158,6 +4239,7 @@ def write_card_pages(cards: list[dict], venues_by_id: dict[str, dict]) -> list[s
       {more_links}
       {watch_html}
       {talk_html}
+      {next_html}
       <p class="card-page-actions">
         <a class="btn btn-secondary" href="{venue_href}">{esc(cards_cta) if vid else esc(CTA_EXPLORE_HOME)}</a>
         <button type="button" class="btn btn-secondary" id="print-this-card" data-card-id="{esc(cid)}" data-venue="{esc(vid)}">{esc(CTA_PRINT_CARD)}</button>
@@ -4414,7 +4496,24 @@ def patch_places_data_hrefs(venues: list[dict]) -> None:
     print("  patched places-data.js hrefs → /field-pack/<id>/")
 
 
+def _csv_flag(args: list[str], flag: str) -> set[str]:
+    out: set[str] = set()
+    i = 0
+    while i < len(args):
+        if args[i] == flag and i + 1 < len(args):
+            out.update(x.strip() for x in args[i + 1].split(",") if x.strip())
+            i += 2
+            continue
+        if args[i].startswith(flag + "="):
+            out.update(x.strip() for x in args[i].split("=", 1)[1].split(",") if x.strip())
+        i += 1
+    return out
+
+
 def main() -> int:
+    only_venues = _csv_flag(sys.argv[1:], "--only")
+    only_cards = _csv_flag(sys.argv[1:], "--cards")
+    targeted = bool(only_venues or only_cards)
     print("Loading venues…")
     venues = load_venues()
     venues.sort(key=lambda v: (v.get("state") or "", v.get("city") or "", v["name"]))
@@ -4440,6 +4539,10 @@ def main() -> int:
 
     urls = []
     for v in venues:
+        if only_venues and v["id"] not in only_venues:
+            continue
+        if targeted and only_cards and not only_venues:
+            break
         out_dir = FIELD / v["id"]
         out_dir.mkdir(parents=True, exist_ok=True)
         mission_v = load_mission_venue(v["id"])
@@ -4458,6 +4561,18 @@ def main() -> int:
         words = len(re.findall(r"\w+", text))
         if words < 120:
             print(f"  WARN thin page {v['id']}: ~{words} words")
+
+    if targeted:
+        if only_cards:
+            try:
+                cards = load_all_catalog_cards()
+            except Exception:
+                cards = load_print_cards()
+            venues_by_id = {v["id"]: v for v in venues}
+            written = write_card_pages(cards, venues_by_id, only_ids=only_cards)
+            print(f"  wrote {len(written)} targeted card pages")
+        print(f"  wrote {len(urls)} venue pages (targeted; skipped landing/sitemap/hubs)")
+        return 0
 
     patch_landing_directory(venues)
     patch_places_data_hrefs(venues)

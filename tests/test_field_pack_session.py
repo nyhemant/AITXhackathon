@@ -1,6 +1,7 @@
 """Flagship at-home session: honest start-here, 6-Q cards, no notice-stubs."""
 
 from pathlib import Path
+import re
 import unittest
 
 REPO = Path(__file__).resolve().parents[1]
@@ -134,6 +135,35 @@ class FlagshipSessionTests(unittest.TestCase):
         self.assertIn("overflow-wrap: anywhere", css)
         self.assertIn(".card-page .card-talk-pack .mission-grid", seo)
         self.assertIn("grid-template-columns: 1fr", seo)
+
+    def test_dallas_start_here_is_above_at_home_dump(self):
+        visible = self._visible((FP / "dallas-zoo" / "index.html").read_text(encoding="utf-8"))
+        start = visible.find('id="route90-heading"')
+        dump = visible.find('id="at-home"')
+        self.assertNotEqual(start, -1)
+        self.assertNotEqual(dump, -1)
+        self.assertLess(start, dump)
+        start_block = visible.split('id="route90-heading"', 1)[1].split("</section>", 1)[0]
+        self.assertIn("Reticulated giraffe", start_block)
+        self.assertIn("African elephant", start_block)
+        self.assertIn("African lion", start_block)
+
+    def test_dallas_giraffe_card_has_next_elephant(self):
+        html = (FP / "cards" / "reticulated-giraffe" / "index.html").read_text(encoding="utf-8")
+        self.assertIn("Next: African elephant", html)
+        self.assertIn('href="/field-pack/cards/african-elephant/"', html)
+        elephant = (FP / "cards" / "african-elephant" / "index.html").read_text(encoding="utf-8")
+        self.assertIn("Next: African lion", elephant)
+
+    def test_cousin_cam_first_visible_line_names_source_zoo(self):
+        html = (FP / "cards" / "reticulated-giraffe" / "index.html").read_text(encoding="utf-8")
+        watch = html.split('class="seo-watch-row"', 1)[1].split("</p>", 1)[0]
+        first_link = watch.split("<a", 1)[1].split("</a>", 1)[0]
+        lines = [ln.strip() for ln in re.sub(r"<[^>]+>", "\n", first_link).splitlines() if ln.strip()]
+        self.assertTrue(lines)
+        self.assertTrue(lines[0].startswith("Live from"))
+        self.assertIn("Houston Zoo", lines[0])
+        self.assertNotIn("Dallas", lines[0])
 
     def test_dallas_does_not_duplicate_more_if_you_have_energy(self):
         visible = self._visible((FP / "dallas-zoo" / "index.html").read_text(encoding="utf-8"))
