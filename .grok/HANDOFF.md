@@ -13,11 +13,11 @@
 - CSS cache: `shell.css?v=6`
 
 ## Landing
-- Hook hero + search + map + **Ready to print** (6 cards) + Popular SEO chips
+- Hook hero + search + map + **Explore a place at home** (6 cards → place pages) + Popular SEO chips
 - Ready IDs: one list `window.FP_READY_STRIP` in `landing-map.js` (US six + intl London / Singapore / Ueno)
 - US six: Dallas Zoo, Children’s Aquarium Dallas, Children’s Museum (Perot), Houston Zoo, San Diego Zoo, National Zoo
 - Ready CTA is **Open on map / Start outing**. Popular chips go to `/field-pack/{slug}/`
-- Copy: **Ready to print** / **Try a place** — not “Or try Dallas”
+- Copy: **Explore a place at home** / **Try a place** — print hunt is optional companion
 - Cache: `landing.css?v=94`, `landing-map.js?v=82`, `landing-hook.js?v=32`, `catalog.js?v=34`
 
 ## Flow (3 levels — current)

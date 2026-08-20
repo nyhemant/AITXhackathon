@@ -1195,7 +1195,7 @@
     if (useEl) {
       useEl.textContent =
         (config && config.use) ||
-        "For rainy days, studying before you go, or a classroom Friday.";
+        "For rainy days, a classroom Friday, or any day you want a field trip at home.";
     }
     if (config && config.title) document.title = config.title;
     if (mapMount && config) {

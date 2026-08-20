@@ -85,6 +85,20 @@ scripts/smoke_field_pack_polish.sh
 ```
 
 
+## Dual-mode at-home session (2026-08-20)
+
+Print-first live site flipped to a standalone virtual session. Printable hunts kept as optional companion.
+
+| Area | Change |
+|------|--------|
+| Homepage | H1/Ready/About/FAQ/nav: at-home first. Ready cards → place pages. VFT subtitle “Explore at home”. Map noscript + failed-fetch fallback. |
+| Place pages | Generator: dual CTA, `#at-home` cards with catalog Q&A + existing VFT cams/films. Title/meta not print-only. Hunt drawer stays. |
+| Card pages | Render catalog DEPTH (photo, talk Q&A from `key` + missions). VFT cam/film when already sourced. Print secondary. |
+| Sitemap | `/sitemap.xml` + `/field-pack/sitemap.xml` serve static XML 200 (`web.py`). |
+| Dinner | Untouched. |
+
+QA: landing, dallas-zoo, san-diego-zoo, cards/african-lion, virtual-field-trip, sitemap 200, dinner files unchanged.
+
 ## Follow-on (Grok 4.6 live review) — 2026-08-12
 
 | ID | Title | Status | Note |

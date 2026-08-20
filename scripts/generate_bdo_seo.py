@@ -57,6 +57,56 @@ HEADER_TAGLINE = "Zoo, aquarium, museum &amp; park days"
 OG_SHARE_IMAGE = f"{SITE}/field-pack/photos/sample-mission-dallas-zoo.jpg"
 PARK_OG_IMAGE = f"{SITE}/field-pack/photos/np-hero-yellowstone.jpg"
 
+# Dual-mode framing — at home stands alone; print is an optional visit companion.
+# Swap these strings only; templates read the constants.
+NAV_PLACES_SUB = "Map &amp; places"
+NAV_CARDS_SUB = "Talk, photos &amp; Q&amp;A"
+NAV_VFT_SUB = "Explore at home"
+NAV_ABOUT_SUB = "1Less &amp; contact"
+
+CTA_EXPLORE_HOME = "Explore at home"
+CTA_PRINT_VISIT = "Print a hunt for the visit"
+CTA_PRINT_VISIT_SHORT = "Print a hunt"
+CTA_PRINT_CARD = "Print this card"
+CTA_READY = "Explore →"
+
+HOME_SESSION_H2 = "Explore at home"
+HOME_SESSION_LEAD = (
+    "Talk through the cards, look at the photos, and open a live cam or film when we have one. "
+    "This works on a phone or laptop — no printer needed."
+)
+HOME_SESSION_VFT = "Open Virtual Field Trip"
+START_HERE_H2 = "Going tomorrow? Start here"
+START_HERE_LEAD = (
+    "Do these {n} in order if you can — enough for a short visit. "
+    "Open a card for talk tips and photos. Print a hunt for the visit if you want paper."
+)
+SHORTLIST_LEAD = "Open a card for talk tips, photos, and Q&amp;A."
+HUNT_BLOCK_P = (
+    "Optional for a real visit. Print a one-page hunt from the button above, "
+    "or skip paper and use the cards on this page."
+)
+PRINT_FALLBACK = (
+    "At home? Use the cards below — no printer needed. "
+    "Going in person? Print a hunt, or open the sheet on your phone."
+)
+
+# Catalog Q&A questions — same wording as FIELD_PACK_MISSIONS_* in catalog.js. Do not invent new Q&A.
+TALK_QA_ANIMAL = (
+    ("food", "What do they eat?"),
+    ("home", "Where is home?"),
+    ("superpower", "What is their superpower?"),
+)
+TALK_QA_EXHIBIT = (
+    ("try", "What did I do here?"),
+    ("body", "How did I move?"),
+    ("senses", "What did I notice?"),
+)
+
+SEO_CSS_VER = "22"
+LANDING_CSS_VER = "95"
+STYLES_CSS_VER = "35"
+
 # Landing catalog seeds (T5) — review in POLISH-TASKS completion notes
 FEATURED_CARD_IDS = (
     "african-lion",
@@ -135,41 +185,41 @@ TYPE_LANDINGS = [
         "path": "zoos",
         "kind": "zoo",
         "nav": "Zoos",
-        "title": "Zoo Scavenger Hunts for Kids — Free Printable Missions · Field Trip Kit",
-        "h1": "Zoo scavenger hunts for kids",
-        "blurb": "Free one-page missions and short must-see lists for zoos and safari parks. Pick a place, print, and go.",
+        "title": "Virtual Zoo Days & Printable Hunts for Kids · Field Trip Kit",
+        "h1": "Explore a zoo at home — or print a hunt",
+        "blurb": "Animal cards, talk prompts, photos, and live cams for a zoo session at home. Optional one-page hunt if you’re going in person.",
         "map_type": "zoo",
-        "pitch": "A one-page mission for your next zoo day",
+        "pitch": "Cards and cams at home · optional hunt for the visit",
     },
     {
         "path": "aquariums",
         "kind": "aquarium",
         "nav": "Aquariums",
-        "title": "Aquarium Scavenger Hunts for Kids — Free Printable Missions · Field Trip Kit",
-        "h1": "Aquarium scavenger hunts for kids",
-        "blurb": "Free printable hunts for aquariums — sharks, jellies, touch pools, and finishable half-day lists.",
+        "title": "Virtual Aquarium Days & Printable Hunts for Kids · Field Trip Kit",
+        "h1": "Explore an aquarium at home — or print a hunt",
+        "blurb": "Sea-life cards, talk prompts, photos, and live cams when we have them. Optional one-page hunt for a real visit.",
         "map_type": "aquarium",
-        "pitch": "A one-page mission for your next aquarium day",
+        "pitch": "Cards and cams at home · optional hunt for the visit",
     },
     {
         "path": "museums",
         "kind": "museum",
         "nav": "Museums",
-        "title": "Museum Scavenger Hunts for Kids — Science, Nature & Kids Museums · Field Trip Kit",
-        "h1": "Museum scavenger hunts for kids",
-        "blurb": "Free printable missions for science, natural history, space, and children’s museums.",
+        "title": "Virtual Museum Days & Printable Hunts for Kids · Field Trip Kit",
+        "h1": "Explore a museum at home — or print a hunt",
+        "blurb": "Attraction cards, talk prompts, and photos for science, natural history, space, and children’s museums. Optional printable hunt for the visit.",
         "map_type": "museum",
-        "pitch": "A one-page mission for your next museum day",
+        "pitch": "Cards at home · optional hunt for the visit",
     },
     {
         "path": "national-parks",
         "kind": "park",
         "nav": "Parks",
-        "title": "National & World Park Scavenger Hunts for Kids · Field Trip Kit",
-        "h1": "National & world park scavenger hunts",
-        "blurb": "Free printable missions for U.S. and international parks — one finishable slice (rim, boardwalk, lakeshore), not the whole park.",
+        "title": "Virtual Park Days & Printable Hunts for Kids · Field Trip Kit",
+        "h1": "Explore a park at home — or print a hunt",
+        "blurb": "Maps, photos, and Virtual Field Trip stops for U.S. and international parks. Optional one-page hunt for one finishable slice (rim, boardwalk, lakeshore).",
         "map_type": "park",
-        "pitch": "A one-page mission for your next park day — US or worldwide",
+        "pitch": "Explore at home · optional hunt for one park slice",
     },
 ]
 
@@ -240,6 +290,270 @@ def esc(s: str) -> str:
     )
 
 
+def nav_more_menu_html(*, current: str = "") -> str:
+    """Shared More menu — keep VFT subtitle dual-mode, not print-first."""
+
+    def item(href: str, label: str, sub: str, key: str) -> str:
+        cur = ' aria-current="page"' if current == key else ""
+        return (
+            f'<a href="{href}"{cur} role="menuitem">{label}<small>{sub}</small></a>'
+        )
+
+    return f"""      <div class="shell-more-wrap">
+        <button type="button" class="shell-more" aria-expanded="false" aria-haspopup="true" aria-controls="shell-menu">More</button>
+        <div id="shell-menu" class="shell-menu" hidden role="menu">
+          {item("/field-pack/", "All places", NAV_PLACES_SUB, "places")}
+          {item("/field-pack/cards/", "Animal cards", NAV_CARDS_SUB, "cards")}
+          {item("/field-pack/virtual-field-trip/", "Virtual Field Trip", NAV_VFT_SUB, "vft")}
+          {item("/field-pack/#about", "About", NAV_ABOUT_SUB, "about")}
+        </div>
+      </div>"""
+
+
+_CATALOG_DEPTH: dict[str, dict] | None = None
+_VFT_BY_CARD: dict[str, dict] | None = None
+
+
+def load_catalog_depth() -> dict[str, dict]:
+    """FIELD_PACK_CATALOG entries with talk keys + links. No new facts."""
+    script = r"""
+const fs = require('fs');
+const vm = require('vm');
+const ctx = { window: {}, console };
+vm.createContext(ctx);
+vm.runInContext(fs.readFileSync(process.argv[1], 'utf8'), ctx);
+const cat = ctx.window.FIELD_PACK_CATALOG || {};
+const out = {};
+for (const [id, it] of Object.entries(cat)) {
+  if (!it || !it.name) continue;
+  out[id] = {
+    id,
+    name: it.name,
+    emoji: it.emoji || '',
+    photo: String(it.photo || ''),
+    blurb: String(it.blurb || it.one_liner || ''),
+    key: it.key && typeof it.key === 'object' ? it.key : {},
+    links: it.links && typeof it.links === 'object' ? it.links : {},
+    packTemplate: it.packTemplate || (String(id).startsWith('cm-') || String(id).startsWith('sci-') ? 'exhibits' : 'animals'),
+  };
+}
+process.stdout.write(JSON.stringify(out));
+"""
+    raw = subprocess.check_output(["node", "-e", script, str(CATALOG_JS)], text=True)
+    return json.loads(raw)
+
+
+def catalog_depth() -> dict[str, dict]:
+    global _CATALOG_DEPTH
+    if _CATALOG_DEPTH is None:
+        try:
+            _CATALOG_DEPTH = load_catalog_depth()
+        except Exception:
+            _CATALOG_DEPTH = {}
+    return _CATALOG_DEPTH
+
+
+def load_vft_by_card() -> dict[str, dict]:
+    """Index Virtual Field Trip habitats by catalog cardId. Cams/films only if already sourced."""
+    out: dict[str, dict] = {}
+    vdir = FIELD / "data" / "virtual-venues"
+    files = (
+        "virtual-zoo.json",
+        "virtual-aquarium.json",
+        "virtual-nhm.json",
+        "virtual-science.json",
+        "virtual-parks.json",
+    )
+    for name in files:
+        path = vdir / name
+        if not path.is_file():
+            continue
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            continue
+        tab = str(data.get("tab") or data.get("kind") or "").strip()
+        for h in data.get("habitats") or []:
+            cid = str(h.get("cardId") or h.get("id") or "").strip()
+            if not cid or cid in out:
+                continue
+            cam = h.get("cam") or {}
+            video = h.get("video") or {}
+            cam_url = str(cam.get("url") or "").strip()
+            film_url = str(video.get("url") or "").strip()
+            hid = str(h.get("id") or cid)
+            out[cid] = {
+                "tab": tab,
+                "habitat_id": hid,
+                "label": h.get("label") or "",
+                "challenge": str(h.get("challenge") or "").strip(),
+                "printAnswer": str(h.get("printAnswer") or "").strip(),
+                "cam_url": cam_url,
+                "cam_label": str(cam.get("camLabel") or "").strip(),
+                "film_url": film_url,
+                "film_title": str(video.get("title") or "").strip(),
+                "vft_href": f"/field-pack/virtual-field-trip/?tab={esc(tab)}#habitat={esc(hid)}",
+            }
+    return out
+
+
+def vft_by_card() -> dict[str, dict]:
+    global _VFT_BY_CARD
+    if _VFT_BY_CARD is None:
+        _VFT_BY_CARD = load_vft_by_card()
+    return _VFT_BY_CARD
+
+
+def enrich_item(it: dict) -> dict:
+    """Merge catalog DEPTH + VFT onto a shortlist/card item. Never invent facts."""
+    cid = str(it.get("id") or "").strip()
+    depth = catalog_depth().get(cid) or {}
+    out = dict(it)
+    if depth.get("key") and not out.get("key"):
+        out["key"] = depth["key"]
+    if depth.get("links") and not out.get("links"):
+        out["links"] = depth["links"]
+    if depth.get("photo") and not out.get("photo"):
+        out["photo"] = depth["photo"]
+    if depth.get("blurb") and not _card_blurb(out.get("blurb") or ""):
+        if not out.get("blurb"):
+            out["blurb"] = depth.get("blurb") or ""
+    if depth.get("emoji") and not out.get("emoji"):
+        out["emoji"] = depth["emoji"]
+    if depth.get("name") and not out.get("name"):
+        out["name"] = depth["name"]
+    out["packTemplate"] = out.get("packTemplate") or depth.get("packTemplate") or "animals"
+    out["vft"] = vft_by_card().get(cid) or {}
+    return out
+
+
+def talk_qa_pairs(item: dict) -> list[tuple[str, str]]:
+    """Existing catalog.key answers paired with catalog mission questions. No new Q&A."""
+    key = item.get("key") or {}
+    if not isinstance(key, dict) or not key:
+        return []
+    pt = str(item.get("packTemplate") or "")
+    schema = TALK_QA_EXHIBIT if pt == "exhibits" or any(k in key for k in ("try", "body", "senses")) else TALK_QA_ANIMAL
+    pairs: list[tuple[str, str]] = []
+    for field, question in schema:
+        raw = key.get(field)
+        if isinstance(raw, list):
+            answer = ", ".join(str(x) for x in raw if x)
+        else:
+            answer = str(raw or "").strip()
+        if answer:
+            pairs.append((question, answer))
+    return pairs
+
+
+def talk_qa_html(item: dict, *, heading: str = "Talk &amp; Q&amp;A") -> str:
+    pairs = talk_qa_pairs(item)
+    vft = item.get("vft") or {}
+    extra_q = (vft.get("challenge") or "").strip()
+    extra_a = (vft.get("printAnswer") or "").strip()
+    bits: list[str] = []
+    for q, a in pairs:
+        bits.append(f"<dt>{esc(q)}</dt><dd>{esc(a)}</dd>")
+    if extra_q and extra_a:
+        bits.append(f"<dt>{esc(extra_q)}</dt><dd>{esc(extra_a)}</dd>")
+    if not bits:
+        return ""
+    return (
+        f'<div class="seo-talk-qa">'
+        f"<h3>{heading}</h3>"
+        f"<dl>{''.join(bits)}</dl>"
+        f"</div>"
+    )
+
+
+def watch_links_html(item: dict) -> str:
+    """Live cam / film only when Virtual Field Trip already has a sourced URL."""
+    vft = item.get("vft") or {}
+    links: list[str] = []
+    if vft.get("cam_url"):
+        label = vft.get("cam_label") or "Watch live cam"
+        links.append(
+            f'<a class="seo-watch-link" href="{esc(vft["cam_url"])}" target="_blank" rel="noopener noreferrer">{esc(label)}</a>'
+        )
+    if vft.get("film_url"):
+        label = vft.get("film_title") or "Watch a short film"
+        links.append(
+            f'<a class="seo-watch-link" href="{esc(vft["film_url"])}" target="_blank" rel="noopener noreferrer">{esc(label)}</a>'
+        )
+    if vft.get("vft_href") and (vft.get("cam_url") or vft.get("film_url") or vft.get("challenge")):
+        links.append(
+            f'<a class="seo-watch-link" href="{vft["vft_href"]}">{esc(HOME_SESSION_VFT)}</a>'
+        )
+    if not links:
+        return ""
+    return f'<p class="seo-watch-row">{" · ".join(links)}</p>'
+
+
+def home_session_html(items: list[dict], *, venue_kind: str = "") -> str:
+    """First-class at-home block: catalog cards + talk Q&A + existing VFT cams/films."""
+    cards: list[str] = []
+    for raw in items[:12]:
+        it = enrich_item(raw)
+        cid = str(it.get("id") or "").strip()
+        if not cid:
+            continue
+        src = _photo_src(it.get("photo") or "")
+        if not src:
+            if (FIELD / "photos" / f"{cid}.jpg").is_file():
+                src = f"photos/{cid}.jpg?v=img2"
+        emoji = it.get("emoji") or ""
+        name = it.get("name") or cid
+        blurb = _card_blurb(it.get("blurb") or "") or (it.get("blurb") or "")
+        qa = talk_qa_html(it)
+        watch = watch_links_html(it)
+        href = f"/field-pack/cards/{esc(cid)}/"
+        if src:
+            media = (
+                f'<img src="{esc(src)}" alt="" width="640" height="400" loading="lazy" decoding="async" />'
+            )
+        else:
+            media = f'<span class="seo-start-emoji" aria-hidden="true">{esc(emoji or "✨")}</span>'
+        cards.append(
+            f"""<article class="seo-home-card" id="home-{esc(cid)}">
+        <a class="seo-home-card-media" href="{href}">{media}</a>
+        <div class="seo-home-card-body">
+          <h3><a href="{href}">{esc(emoji + " " if emoji else "")}{esc(name)}</a></h3>
+          {f"<p class='seo-home-blurb'>{esc(blurb)}</p>" if blurb else ""}
+          {qa}
+          {watch}
+          <p class="seo-home-card-more"><a href="{href}">Open full card</a></p>
+        </div>
+      </article>"""
+        )
+    kind = (venue_kind or "").lower()
+    if "aquarium" in kind:
+        vft_tab = "aquarium"
+    elif "museum" in kind or kind in {"sci", "nh", "cm"}:
+        vft_tab = "science"
+    elif "park" in kind:
+        vft_tab = "parks"
+    else:
+        vft_tab = "zoo"
+    vft_href = f"/field-pack/virtual-field-trip/?tab={vft_tab}"
+    grid = f'<div class="seo-home-grid">{"".join(cards)}</div>' if cards else ""
+    empty = (
+        ""
+        if cards
+        else (
+            f'<p class="seo-home-empty">No animal cards for this place yet. '
+            f'<a href="{esc(vft_href)}">{esc(HOME_SESSION_VFT)}</a> still works at home.</p>'
+        )
+    )
+    return f"""
+    <section class="seo-home-session" id="at-home" aria-labelledby="home-session-heading">
+      <h2 id="home-session-heading">{esc(HOME_SESSION_H2)}</h2>
+      <p class="seo-home-lead">{esc(HOME_SESSION_LEAD)}</p>
+      <p class="seo-home-vft"><a class="btn btn-secondary" href="{esc(vft_href)}">{esc(HOME_SESSION_VFT)}</a></p>
+      {grid}
+      {empty}
+    </section>"""
+
+
 def load_venues() -> list[dict]:
     """Extract venues via Node (same source of truth as the app)."""
     script = r"""
@@ -266,6 +580,9 @@ const out = Object.keys(venues).map(id => {
       emoji: it.emoji || '',
       blurb: it.blurb || '',
       photo: it.photo || '',
+      key: it.key && typeof it.key === 'object' ? it.key : {},
+      links: it.links && typeof it.links === 'object' ? it.links : {},
+      packTemplate: it.packTemplate || '',
     };
   }).filter(Boolean);
   const hunt = (ven.treasureHunt || []).map(h => h.text);
@@ -440,7 +757,7 @@ def unique_body(
     shortlist_lead = (
         "More stops if you have the energy."
         if showing_rest
-        else "Tap a card for printable Q&amp;A."
+        else SHORTLIST_LEAD
     )
     return f"""
     <section class="seo-list-block seo-visual-shortlist" aria-labelledby="shortlist-heading">
@@ -452,8 +769,8 @@ def unique_body(
       </ul>
     </section>
     <section class="seo-list-block seo-hunt-block" aria-labelledby="hunt-heading">
-      <h2 id="hunt-heading">What the sheet may include</h2>
-      <p>Print from the button at the top of this page. No app at the venue.</p>
+      <h2 id="hunt-heading">Optional hunt for the visit</h2>
+      <p>{HUNT_BLOCK_P}</p>
       <details class="seo-hunt-examples">
         <summary>Example finds</summary>
         <ol class="seo-hunt-list">
@@ -470,8 +787,8 @@ def h1_for(v: dict) -> str:
 
 
 def seo_hunt_label(v: dict) -> str:
-    """Search/social title phrase (not the on-page H1)."""
-    return f"{v['name']} Scavenger Hunt for Kids (Free Printable)"
+    """Search/social title phrase (not the on-page H1). Dual-mode — not print-only."""
+    return f"{v['name']} for Kids — Explore at Home or Print a Hunt"
 
 
 def title_for(v: dict) -> str:
@@ -483,9 +800,13 @@ def meta_for(v: dict) -> str:
     place, things, _ = type_bits(v)
     # Keep well under ~155 chars so SERP/OG don't truncate mid-word
     name = v["name"]
-    base = f"Printable {name} scavenger hunt for kids in {city}. Short list + one-page mission — Field Trip Kit."
+    loc = f" in {city}" if city else ""
+    base = (
+        f"{name}{loc}: animal cards, talk prompts, photos, and live cams at home. "
+        "Optional printable hunt — Field Trip Kit."
+    )
     if len(base) > 155:
-        base = f"{name} scavenger hunt for kids ({city}). One-page printable mission — Field Trip Kit."
+        base = f"{name}{loc}: explore cards at home, or print a hunt — Field Trip Kit."
     return base[:155].rsplit(" ", 1)[0] if len(base) > 155 else base
 
 
@@ -509,7 +830,10 @@ def venue_json_ld(v: dict, url: str) -> str:
         "name": hunt_name,
         "description": meta_for(v),
         "totalTime": "PT2H",
-        "tool": [{"@type": "HowToTool", "name": "Printed one-page hunt sheet"}],
+        "tool": [
+            {"@type": "HowToTool", "name": "Phone or laptop (cards, photos, cams)"},
+            {"@type": "HowToTool", "name": "Optional printed one-page hunt sheet"},
+        ],
         "step": steps,
         "url": url,
     }
@@ -667,13 +991,18 @@ def _featured_from_mission(mission_venue: dict, catalog_v: dict | None = None) -
         feat = feat_by_id.get(cid) or feat_by_id.get(iid) or {}
         name = _item_sheet_label(it) or feat.get("name") or "Stop"
         out.append(
-            {
-                "id": cid or iid,
-                "name": name,
-                "emoji": it.get("emoji") or feat.get("emoji") or "",
-                "blurb": it.get("one_liner") or feat.get("blurb") or "",
-                "photo": feat.get("photo") or it.get("photo") or "",
-            }
+            enrich_item(
+                {
+                    "id": cid or iid,
+                    "name": name,
+                    "emoji": it.get("emoji") or feat.get("emoji") or "",
+                    "blurb": it.get("one_liner") or feat.get("blurb") or "",
+                    "photo": feat.get("photo") or it.get("photo") or "",
+                    "key": feat.get("key") or {},
+                    "links": feat.get("links") or {},
+                    "packTemplate": feat.get("packTemplate") or "",
+                }
+            )
         )
     return out
 
@@ -794,15 +1123,15 @@ def wonder_grid_html(mission: dict) -> str:
 
 
 def page_mission_chrome_html() -> str:
-    """Primary print CTA + compact who/time chips (desktop row / phone stack)."""
-    return """
-        <div class="seo-mission-bar no-print" aria-label="Create and print your mission">
-          <button type="button" class="btn btn-primary seo-print-btn" id="mission-open-btn" aria-haspopup="dialog" aria-controls="mission-drawer" aria-label="Create and print your mission">
+    """Dual CTA: at-home session first, print hunt secondary. Chips still drive the drawer."""
+    return f"""
+        <div class="seo-mission-bar no-print" aria-label="{esc(CTA_EXPLORE_HOME)} or {esc(CTA_PRINT_VISIT)}">
+          <a class="btn btn-primary seo-home-btn" href="#at-home">{esc(CTA_EXPLORE_HOME)}</a>
+          <button type="button" class="btn btn-secondary seo-print-btn" id="mission-open-btn" aria-haspopup="dialog" aria-controls="mission-drawer" aria-label="{esc(CTA_PRINT_VISIT)}">
             <span class="seo-print-btn-long">
-              <span class="seo-print-btn-line">Create and print</span>
-              <span class="seo-print-btn-line seo-print-btn-sub">your mission</span>
+              <span class="seo-print-btn-line">{esc(CTA_PRINT_VISIT)}</span>
             </span>
-            <span class="seo-print-btn-short">Create/print mission</span>
+            <span class="seo-print-btn-short">{esc(CTA_PRINT_VISIT_SHORT)}</span>
           </button>
           <div class="seo-mission-chrome" id="seo-mission-chrome">
             <div class="seo-chrome-row">
@@ -832,7 +1161,7 @@ def page_mission_chrome_html() -> str:
             </div>
           </div>
         </div>
-        <p class="seo-print-fallback no-print">No printer? Open the sheet on your phone, or print later. <span class="seo-bonus-hint">Classic · Bonus · Alpha (extra-hard cool finds).</span></p>"""
+        <p class="seo-print-fallback no-print">{esc(PRINT_FALLBACK)} <span class="seo-bonus-hint">Classic · Bonus · Alpha (extra-hard cool finds).</span></p>"""
 
 
 def _photo_src(photo: str) -> str:
@@ -918,8 +1247,10 @@ def route_90m_html(mission_venue: dict, mission: dict, catalog_v: dict | None = 
         # Prefer catalog id for app Q&A cards; underscore venue ids won't resolve in catalog
         item_id = (p.get("catalog_id") or "").strip() or cat_id
         # Has a real catalog photo/entry → deep-link to talk card; else venue list in app
-        # Stay on the place page (During = print). Card Q&A lives at /cards/{id}/.
-        href = f"/field-pack/{esc(slug)}/#mission" if slug else "/field-pack/"
+        # At-home card (talk + Q&A) is first-class; #mission remains an alias for the hunt drawer.
+        href = f"/field-pack/cards/{esc(item_id)}/" if item_id else (
+            f"/field-pack/{esc(slug)}/#at-home" if slug else "/field-pack/"
+        )
         if src:
             media = (
                 f'<img src="{esc(src)}" alt="" width="640" height="400" '
@@ -938,13 +1269,10 @@ def route_90m_html(mission_venue: dict, mission: dict, catalog_v: dict | None = 
       </a>"""
         )
 
-    lead = (
-        f"Do these {n} in order if you can — enough for a short visit. "
-        "Tap a stop for talk tips & photos. Create and print your mission is above."
-    )
+    lead = START_HERE_LEAD.format(n=n)
     return f"""
     <section class="seo-start-here no-print" aria-labelledby="route90-heading">
-      <h2 id="route90-heading">Short on time? Start here</h2>
+      <h2 id="route90-heading">{esc(START_HERE_H2)}</h2>
       <p class="seo-start-lead">{esc(lead)}</p>
       <div class="seo-start-grid">{"".join(cards)}</div>
     </section>"""
@@ -1139,6 +1467,8 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
         v_body["featured"] = safe_feat
     elif (mission_venue or {}).get("list_confidence") == "template":
         v_body["featured"] = []  # never show template catalog pack
+    home_items = [enrich_item(it) for it in (v_body.get("featured") or v.get("featured") or [])]
+    home_sec = home_session_html(home_items, venue_kind=str(v.get("type") or ""))
     if mode == "wonder":
         hunt = v.get("hunt") or []
         hunt_lis = "".join(
@@ -1148,8 +1478,8 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
         hunt_sec = (
             f"""
     <section class="seo-list-block seo-hunt-block" aria-labelledby="hunt-heading">
-      <h2 id="hunt-heading">What the sheet may include</h2>
-      <p>Print from the button at the top of this page. No app at the venue.</p>
+      <h2 id="hunt-heading">Optional hunt for the visit</h2>
+      <p>{HUNT_BLOCK_P}</p>
       <details class="seo-hunt-examples">
         <summary>Example finds</summary>
         <ol class="seo-hunt-list">{hunt_lis}</ol>
@@ -1222,7 +1552,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
     lead = (
         mission_venue.get("tagline")
         or v.get("blurb")
-        or f"Free printable scavenger hunt and kid shortlist for {v['name']}."
+        or f"Explore {v['name']} at home with cards, photos, and talk prompts — or print a hunt for the visit."
     )
     facts_html = practical_chips_html(practical, last_v) + status_chip_html(mission_venue)
 
@@ -1248,9 +1578,9 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <meta name="color-scheme" content="light" />
   <base href="/field-pack/" />
   <link rel="stylesheet" href="/shell/shell.css?v=6" />
-  <link rel="stylesheet" href="/field-pack/css/styles.css?v=35" />
-  <link rel="stylesheet" href="/field-pack/css/landing.css?v=94" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=15" />
+  <link rel="stylesheet" href="/field-pack/css/styles.css?v={STYLES_CSS_VER}" />
+  <link rel="stylesheet" href="/field-pack/css/landing.css?v={LANDING_CSS_VER}" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v={SEO_CSS_VER}" />
   <link rel="stylesheet" href="/field-pack/css/mission.css?v=16" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
@@ -1269,15 +1599,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
         Field Trip Kit
         <small>{HEADER_TAGLINE}</small>
       </a>
-      <div class="shell-more-wrap">
-        <button type="button" class="shell-more" aria-expanded="false" aria-haspopup="true" aria-controls="shell-menu">More</button>
-        <div id="shell-menu" class="shell-menu" hidden role="menu">
-          <a href="/field-pack/" role="menuitem">All places<small>Map &amp; outings</small></a>
-          <a href="/field-pack/cards/" role="menuitem">Animal cards<small>Q&amp;A printables</small></a>
-          <a href="/field-pack/virtual-field-trip/" role="menuitem">Virtual Field Trip<small>Study before you go</small></a>
-          <a href="/field-pack/#about" role="menuitem">About<small>1Less &amp; contact</small></a>
-        </div>
-      </div>
+{nav_more_menu_html()}
     </header>
 
     <nav class="seo-crumbs no-print" aria-label="Breadcrumb">
@@ -1296,12 +1618,17 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
         {facts_html}
         {chrome}
         <p class="seo-secondary-links no-print">
-          <a href="/field-pack/cards/">Talk cards</a>
+          <a href="#at-home">{esc(CTA_EXPLORE_HOME)}</a>
+          <span aria-hidden="true"> · </span>
+          <a href="/field-pack/virtual-field-trip/">{esc(HOME_SESSION_VFT)}</a>
+          <span aria-hidden="true"> · </span>
+          <a href="/field-pack/cards/">All cards</a>
           <span aria-hidden="true"> · </span>
           <a href="{esc(map_href)}">Find on map</a>
         </p>
       </header>
 
+      {home_sec}
       {map_card}
       {route90}
       <div id="seo-play-target" class="seo-play-anchor" tabindex="-1"></div>
@@ -1376,6 +1703,10 @@ def render_venue_page(v: dict) -> str:
         x for x in [soft_title(place.replace("_", " ")), v.get("location") or ""] if x
     )
     body = unique_body(v)
+    home_sec = home_session_html(
+        [enrich_item(it) for it in (v.get("featured") or [])],
+        venue_kind=str(v.get("type") or ""),
+    )
     h1 = h1_for(v)
     title = title_for(v)
     desc = meta_for(v)
@@ -1404,9 +1735,9 @@ def render_venue_page(v: dict) -> str:
   <meta name="color-scheme" content="light" />
   <base href="/field-pack/" />
   <link rel="stylesheet" href="/shell/shell.css?v=6" />
-  <link rel="stylesheet" href="/field-pack/css/styles.css?v=35" />
-  <link rel="stylesheet" href="/field-pack/css/landing.css?v=52" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=13" />
+  <link rel="stylesheet" href="/field-pack/css/styles.css?v={STYLES_CSS_VER}" />
+  <link rel="stylesheet" href="/field-pack/css/landing.css?v={LANDING_CSS_VER}" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v={SEO_CSS_VER}" />
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
   </script>
@@ -1424,15 +1755,7 @@ def render_venue_page(v: dict) -> str:
         Field Trip Kit
         <small>{HEADER_TAGLINE}</small>
       </a>
-      <div class="shell-more-wrap">
-        <button type="button" class="shell-more" aria-expanded="false" aria-haspopup="true" aria-controls="shell-menu">More</button>
-        <div id="shell-menu" class="shell-menu" hidden role="menu">
-          <a href="/field-pack/" role="menuitem">All places<small>Map &amp; outings</small></a>
-          <a href="/field-pack/cards/" role="menuitem">Animal cards<small>Q&amp;A printables</small></a>
-          <a href="/field-pack/virtual-field-trip/" role="menuitem">Virtual Field Trip<small>Study before you go</small></a>
-          <a href="/field-pack/#about" role="menuitem">About<small>1Less &amp; contact</small></a>
-        </div>
-      </div>
+{nav_more_menu_html()}
     </header>
 
     <nav class="seo-crumbs no-print" aria-label="Breadcrumb">
@@ -1445,7 +1768,7 @@ def render_venue_page(v: dict) -> str:
       <header class="seo-hero">
         <p class="promise-pill">{esc(loc_chip)}</p>
         <h1>{esc(v.get('emoji',''))} {esc(h1)}</h1>
-        <p class="lead">{esc(v.get('blurb') or f'Free printable scavenger hunt and kid shortlist for {v["name"]}.')}</p>
+        <p class="lead">{esc(v.get('blurb') or f'Explore {v["name"]} at home with cards and talk prompts — or print a hunt for the visit.')}</p>
         <p class="seo-quality-note">{esc(
           (
             "Short kid list for a half-day visit."
@@ -1464,6 +1787,7 @@ def render_venue_page(v: dict) -> str:
         </div>
       </header>
 
+      {home_sec}
       <div id="seo-play-target" class="seo-play-anchor" tabindex="-1"></div>
       {body}
 
@@ -1472,24 +1796,24 @@ def render_venue_page(v: dict) -> str:
         <p class="how-hint">Tap a step to jump there.</p>
         <ol class="how-steps how-steps-visual how-steps-linked">
           <li>
-            <button type="button" class="how-step-btn" data-how="print-hunt" id="how-print-btn">
-              <span class="how-ico" aria-hidden="true">🖨️</span>
-              <strong>Print</strong>
-              <span>One-page hunt</span>
-            </button>
+            <a class="how-step-btn" href="#at-home" data-how="home" id="how-home-link">
+              <span class="how-ico" aria-hidden="true">🏠</span>
+              <strong>At home</strong>
+              <span>Cards, photos, talk</span>
+            </a>
           </li>
           <li>
-            <a class="how-step-btn" href="#seo-play-target" data-how="play" id="how-play-link">
-              <span class="how-ico" aria-hidden="true">👀</span>
-              <strong>Play</strong>
-              <span>Use the shortlist on site</span>
-            </a>
+            <button type="button" class="how-step-btn" data-how="print-hunt" id="how-print-btn">
+              <span class="how-ico" aria-hidden="true">🖨️</span>
+              <strong>Visit</strong>
+              <span>Optional one-page hunt</span>
+            </button>
           </li>
           <li>
             <a class="how-step-btn" href="{esc(app_href)}" data-how="talk" id="how-talk-link">
               <span class="how-ico" aria-hidden="true">💬</span>
-              <strong>Optional</strong>
-              <span>Talk cards after</span>
+              <strong>Cards</strong>
+              <span>Talk again after</span>
             </a>
           </li>
         </ol>
@@ -1700,9 +2024,9 @@ def write_type_landing(meta: dict, venues: list[dict]) -> str:
   <meta property="og:image" content="{og_img}" />
   <base href="/field-pack/" />
   <link rel="stylesheet" href="/shell/shell.css?v=6" />
-  <link rel="stylesheet" href="/field-pack/css/styles.css?v=35" />
-  <link rel="stylesheet" href="/field-pack/css/landing.css?v=70" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=14" />
+  <link rel="stylesheet" href="/field-pack/css/styles.css?v={STYLES_CSS_VER}" />
+  <link rel="stylesheet" href="/field-pack/css/landing.css?v={LANDING_CSS_VER}" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v={SEO_CSS_VER}" />
   <script type="application/ld+json">
 {json_ld}
   </script>
@@ -1756,8 +2080,9 @@ def write_type_landing(meta: dict, venues: list[dict]) -> str:
       <p class="type-lead">{esc(meta["blurb"])}</p>
       <p class="type-count">{len(filtered)} places</p>
       <div class="type-cta-row">
-        <a class="type-cta-primary" href="{map_href}">Open map · {esc(meta["nav"])}</a>
-        <a class="type-cta-secondary" href="/field-pack/">All places</a>
+        <a class="type-cta-primary" href="/field-pack/virtual-field-trip/">{esc(CTA_EXPLORE_HOME)}</a>
+        <a class="type-cta-secondary" href="{map_href}">Open map · {esc(meta["nav"])}</a>
+        <a class="type-cta-secondary" href="/field-pack/">{esc(CTA_PRINT_VISIT)}</a>
       </div>
       {"<h2>Start here</h2><div class=\"type-feat-grid\">" + featured + "</div>" if featured else ""}
       <h2 id="dir-heading">{esc(meta["nav"])}</h2>
@@ -2954,6 +3279,9 @@ for (const [id, it] of Object.entries(cat)) {
     photo: String(it.photo || ''),
     blurb: String(it.blurb || it.one_liner || '').slice(0, 160),
     pt: it.packTemplate || (String(id).startsWith('cm-') || String(id).startsWith('sci-') ? 'exhibits' : 'animals'),
+    packTemplate: it.packTemplate || (String(id).startsWith('cm-') || String(id).startsWith('sci-') ? 'exhibits' : 'animals'),
+    key: it.key && typeof it.key === 'object' ? it.key : {},
+    links: it.links && typeof it.links === 'object' ? it.links : {},
     venue: home[id],
   });
 }
@@ -3309,10 +3637,10 @@ def write_cards_hub(venues: list[dict]) -> str:
         )
 
     body_sections = "\n".join(section_html(*s) for s in sections if s[2])
-    title = "Printable Animal & Discovery Cards for Kids · Field Trip Kit"
+    title = "Animal & Discovery Cards for Kids — Talk, Photos & Q&A · Field Trip Kit"
     desc = (
-        "Free printable Q&A cards for kids — animal facts, sea life, and museum attractions. "
-        f"Browse all {total} cards, then print from any place kit. No account."
+        "Explore animal, sea-life, and museum cards at home — photos, talk prompts, and Q&A. "
+        f"Browse all {total} cards. Print is optional. No account."
     )
     url = f"{SITE}/field-pack/cards/"
     html = f"""<!DOCTYPE html>
@@ -3382,19 +3710,19 @@ def write_cards_hub(venues: list[dict]) -> str:
       <div class="shell-more-wrap">
         <button type="button" class="shell-more" aria-expanded="false" aria-haspopup="true" aria-controls="shell-menu">More</button>
         <div id="shell-menu" class="shell-menu" hidden role="menu">
-          <a href="/field-pack/" role="menuitem">All places<small>Map &amp; outings</small></a>
-          <a href="/field-pack/cards/" aria-current="page" role="menuitem">Animal cards<small>Q&amp;A printables</small></a>
-          <a href="/field-pack/virtual-field-trip/" role="menuitem">Virtual Field Trip<small>Study before you go</small></a>
-          <a href="/field-pack/#about" role="menuitem">About<small>1Less &amp; contact</small></a>
+          <a href="/field-pack/" role="menuitem">All places<small>{NAV_PLACES_SUB}</small></a>
+          <a href="/field-pack/cards/" aria-current="page" role="menuitem">Animal cards<small>{NAV_CARDS_SUB}</small></a>
+          <a href="/field-pack/virtual-field-trip/" role="menuitem">Virtual Field Trip<small>{NAV_VFT_SUB}</small></a>
+          <a href="/field-pack/#about" role="menuitem">About<small>{NAV_ABOUT_SUB}</small></a>
         </div>
       </div>
     </header>
     <main class="cards-hub">
       <p class="cards-hub-crumbs"><a href="/field-pack/">Field Trip Kit</a> · Cards</p>
-      <h1>Printable Animal &amp; Discovery Cards for Kids</h1>
+      <h1>Animal &amp; Discovery Cards for Kids</h1>
       <p class="cards-hub-lead">
-        Animal facts, sea life, and museum attractions — Q&amp;A cards kids can explore at home before or after a visit.
-        Open any card to print. Free. No account.
+        Talk prompts, photos, and Q&amp;A for a session at home — wildlife, sea life, and museum attractions.
+        Print a card if you want paper. Free. No account.
       </p>
       <p class="cards-hub-count">{total} cards · from Field Trip Kit place lists</p>
       <label class="cards-hub-search-label" for="cards-hub-search">Find a card</label>
@@ -3465,15 +3793,16 @@ def write_cards_hub(venues: list[dict]) -> str:
 
 
 def write_card_pages(cards: list[dict], venues_by_id: dict[str, dict]) -> list[str]:
-    """Static /field-pack/cards/<id>/ pages — print Q&A without app.html."""
+    """Static /field-pack/cards/<id>/ pages — catalog DEPTH + VFT cam/film on the page."""
     urls: list[str] = []
     for c in cards:
         cid = (c.get("id") or "").strip()
         if not cid or "/" in cid or ".." in cid:
             continue
-        name = c.get("name") or cid
-        emoji = c.get("emoji") or "🎴"
-        blurb = (c.get("blurb") or "").strip()
+        item = enrich_item(c)
+        name = item.get("name") or cid
+        emoji = item.get("emoji") or "🎴"
+        blurb = (item.get("blurb") or "").strip()
         vid = c.get("venue") or ""
         v = venues_by_id.get(vid) or {}
         vname = v.get("shortName") or v.get("name") or ""
@@ -3482,16 +3811,20 @@ def write_card_pages(cards: list[dict], venues_by_id: dict[str, dict]) -> list[s
         photo = ""
         if (FIELD / "photos" / f"{cid}.jpg").is_file():
             photo = f"/field-pack/photos/{cid}.jpg?v=img2"
+        elif (item.get("photo") or "").startswith("photos/"):
+            photo = "/field-pack/" + str(item["photo"]).split("?")[0]
         img_html = (
             f'<img class="card-page-photo" src="{esc(photo)}" alt="" width="640" height="400" decoding="async" />'
             if photo
             else f'<p class="card-page-emoji" aria-hidden="true">{esc(emoji)}</p>'
         )
-        title = f"{name} Q&A Card for Kids · Field Trip Kit"
+        qa_html = talk_qa_html(item, heading="Talk prompts &amp; Q&amp;A")
+        watch_html = watch_links_html(item)
+        title = f"{name} for Kids — Talk, Photos & Q&A · Field Trip Kit"
         desc = (
-            f"Free printable {name} Q&A card for kids. "
+            f"Explore the {name} card at home: photo, talk prompts, and Q&A. "
             + (blurb + " " if blurb else "")
-            + "Print one page. No account."
+            + "Print is optional. No account."
         )
         url = f"{SITE}/field-pack/cards/{cid}/"
         alias = f"/field-pack/app.html#/venue/{vid}/item/{cid}" if vid else f"/field-pack/app.html#/item/{cid}"
@@ -3510,8 +3843,9 @@ def write_card_pages(cards: list[dict], venues_by_id: dict[str, dict]) -> list[s
   <meta property="og:url" content="{esc(url)}" />
   <meta property="og:image" content="{OG_SHARE_IMAGE}" />
   <link rel="stylesheet" href="/shell/shell.css?v=6" />
-  <link rel="stylesheet" href="/field-pack/css/styles.css?v=26" />
-  <link rel="stylesheet" href="/field-pack/css/landing.css?v=88" />
+  <link rel="stylesheet" href="/field-pack/css/styles.css?v={STYLES_CSS_VER}" />
+  <link rel="stylesheet" href="/field-pack/css/landing.css?v={LANDING_CSS_VER}" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v={SEO_CSS_VER}" />
   <style>
     .card-page {{ max-width: 28rem; margin: 0 auto; padding: 1rem 1rem 3rem; }}
     .card-page h1 {{ font-size: clamp(1.35rem, 4vw, 1.75rem); color: #0a4545; margin: 0.4rem 0; }}
@@ -3535,12 +3869,15 @@ def write_card_pages(cards: list[dict], venues_by_id: dict[str, dict]) -> list[s
     <main class="card-page">
       <p class="card-page-crumbs"><a href="/field-pack/">Field Trip Kit</a> · <a href="/field-pack/cards/">Cards</a></p>
       <h1>{esc(emoji)} {esc(name)}</h1>
-      <p class="card-page-venue">Printable Q&amp;A card{venue_line}
+      <p class="card-page-venue">At-home card{venue_line}
         {f'· <a href="{venue_href}">Place page</a>' if vid else ""}</p>
       {img_html}
-      <p class="card-page-blurb">{esc(blurb) if blurb else "Print this card and talk it through at home."}</p>
+      <p class="card-page-blurb">{esc(blurb) if blurb else "Talk this card through at home — print only if you want paper."}</p>
+      {qa_html}
+      {watch_html}
       <p class="card-page-actions">
-        <button type="button" class="btn btn-primary" id="print-this-card" data-card-id="{esc(cid)}" data-venue="{esc(vid)}">Print this card</button>
+        <a class="btn btn-primary" href="{venue_href}">{esc(CTA_EXPLORE_HOME)}</a>
+        <button type="button" class="btn btn-secondary" id="print-this-card" data-card-id="{esc(cid)}" data-venue="{esc(vid)}">{esc(CTA_PRINT_CARD)}</button>
         <a class="btn btn-secondary" href="/field-pack/cards/">All cards</a>
       </p>
       <p class="card-page-alias"><a href="{esc(alias)}">Open in outing view</a> (alias)</p>
@@ -3760,8 +4097,8 @@ def patch_landing_directory(venues: list[dict]) -> None:
 
     if 'href="/field-pack/cards/"' not in html:
         html = html.replace(
-            '<a href="/field-pack/" aria-current="page" role="menuitem">All places<small>Map &amp; outings</small></a>\n            <a href="/field-pack/#about"',
-            '<a href="/field-pack/" aria-current="page" role="menuitem">All places<small>Map &amp; outings</small></a>\n            <a href="/field-pack/cards/" role="menuitem">Animal cards<small>Q&amp;A printables</small></a>\n            <a href="/field-pack/#about"',
+            f'<a href="/field-pack/" aria-current="page" role="menuitem">All places<small>{NAV_PLACES_SUB}</small></a>\n            <a href="/field-pack/#about"',
+            f'<a href="/field-pack/" aria-current="page" role="menuitem">All places<small>{NAV_PLACES_SUB}</small></a>\n            <a href="/field-pack/cards/" role="menuitem">Animal cards<small>{NAV_CARDS_SUB}</small></a>\n            <a href="/field-pack/#about"',
             1,
         )
 
