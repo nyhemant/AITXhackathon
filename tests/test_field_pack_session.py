@@ -90,6 +90,40 @@ class FlagshipSessionTests(unittest.TestCase):
         web = (REPO / "src" / "busyparent_agent" / "web.py").read_text(encoding="utf-8")
         self.assertIn('DINNER_PATH = "/dinner"', web)
 
+    def test_hub_towpath_is_parks_not_wildlife(self):
+        hub = (FP / "cards" / "index.html").read_text(encoding="utf-8")
+        self.assertIn('id="cards-parks"', hub)
+        self.assertIn('data-card-id="cuyahoga-towpath"', hub)
+        self.assertIn('data-card-kind="place_feature"', hub)
+        wildlife = hub.split('id="cards-wildlife"', 1)[1].split('id="cards-', 1)[0]
+        parks = hub.split('id="cards-parks"', 1)[1].split("</section>", 1)[0]
+        self.assertNotIn("cuyahoga-towpath", wildlife)
+        self.assertIn("cuyahoga-towpath", parks)
+        self.assertIn('data-card-filter="parks"', hub)
+
+    def test_art_lab_renders_perot_attribution(self):
+        html = (FP / "cards" / "cm-art-lab" / "index.html").read_text(encoding="utf-8")
+        self.assertIn("· Perot Museum", html)
+        self.assertIn("/field-pack/childrens-museum-perot/#at-home", html)
+        hub = (FP / "cards" / "index.html").read_text(encoding="utf-8")
+        art = [line for line in hub.splitlines() if "cm-art-lab" in line][0]
+        self.assertIn("Perot Museum", art)
+
+    def test_dallas_does_not_duplicate_more_if_you_have_energy(self):
+        visible = self._visible((FP / "dallas-zoo" / "index.html").read_text(encoding="utf-8"))
+        self.assertNotIn("More if you have energy", visible)
+        self.assertIn("Optional hunt for the visit", visible)
+        self.assertIn('id="at-home"', visible)
+
+    def test_landing_featured_skips_illustration_heroes(self):
+        landing = (FP / "index.html").read_text(encoding="utf-8")
+        grid = landing.split('id="cat-card-grid"', 1)[1].split("</ul>", 1)[0]
+        self.assertNotIn("cm-art-lab", grid)
+        self.assertNotIn("cm-woven", grid)
+        self.assertNotIn("cm-makery", grid)
+        self.assertNotIn("sci-dinosaur", grid)
+        self.assertNotIn("sci-rocket", grid)
+
 
 if __name__ == "__main__":
     unittest.main()

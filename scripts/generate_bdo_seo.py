@@ -22,6 +22,16 @@ from datetime import date
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from field_pack_card_kind import (  # noqa: E402
+    HUB_SECTIONS,
+    attraction_venue_attribution,
+    card_kind,
+    card_may_feature,
+    group_cards_by_hub_section,
+    hub_section_id,
+)
+
 FIELD = REPO / "static" / "field-pack"
 VENUE_DATA_DIR = FIELD / "data" / "venues"
 CHALLENGES_JSON = FIELD / "data" / "challenges.json"
@@ -225,6 +235,7 @@ OUTING_TALK_EXHIBIT = (
 SEO_CSS_VER = "23"
 LANDING_CSS_VER = "95"
 STYLES_CSS_VER = "35"
+CATALOG_JS_VER = "35"
 
 # Landing catalog seeds (T5) — review in POLISH-TASKS completion notes
 FEATURED_CARD_IDS = (
@@ -905,15 +916,16 @@ def unique_body(
     v: dict,
     exclude_ids: set[str] | None = None,
 ) -> str:
-    """Visual shortlist + hunt checklist. No long SEO prose walls."""
+    """Visual shortlist + hunt checklist. No long SEO prose walls.
+
+    Do not re-list cards already shown in start-here or #at-home. No twin
+    “More if you have energy” text list when the photo grid is present.
+    """
     featured_all = v.get("featured") or []
-    # Prefer remaining stops when “start here” already showed the first picks
     exclude_ids = exclude_ids or set()
-    featured_rest = [it for it in featured_all if it.get("id") not in exclude_ids]
-    featured = featured_rest if len(featured_rest) >= 2 else featured_all
+    featured = [it for it in featured_all if it.get("id") not in exclude_ids]
     hunt = v.get("hunt") or []
 
-    # Photo cards first (visual), plus crawlable text for SEO
     cards = []
     feat_html_parts = []
     for it in featured[:12]:
@@ -961,23 +973,32 @@ def unique_body(
         else ""
     )
 
-    showing_rest = bool(
-        exclude_ids and featured is not featured_all and len(featured_all) > len(featured)
-    )
+    showing_rest = bool(exclude_ids and featured)
     shortlist_lead = (
         "More stops if you have the energy."
         if showing_rest
         else SHORTLIST_LEAD
     )
-    return f"""
+    shortlist_sec = ""
+    if featured:
+        # Photo grid already has names/blurbs — skip the screen-reader twin list.
+        extra_list = (
+            ""
+            if cards_html
+            else (
+                f'<ul class="seo-shortlist seo-shortlist-sr">'
+                f'{"".join(feat_html_parts) or "<li>Open the interactive outing for the full shortlist.</li>"}'
+                f"</ul>"
+            )
+        )
+        shortlist_sec = f"""
     <section class="seo-list-block seo-visual-shortlist" aria-labelledby="shortlist-heading">
       <h2 id="shortlist-heading">{"More if you have energy" if showing_rest else "Kid shortlist"}</h2>
       <p>{shortlist_lead}</p>
       {cards_html}
-      <ul class="seo-shortlist seo-shortlist-sr">
-        {"".join(feat_html_parts) or "<li>Open the interactive outing for the full shortlist.</li>"}
-      </ul>
-    </section>
+      {extra_list}
+    </section>"""
+    return f"""{shortlist_sec}
     <section class="seo-list-block seo-hunt-block" aria-labelledby="hunt-heading">
       <h2 id="hunt-heading">Optional hunt for the visit</h2>
       <p>{HUNT_BLOCK_P}</p>
@@ -1684,6 +1705,8 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
         v_body["featured"] = []  # never show template catalog pack
     home_items = [enrich_item(it) for it in (v_body.get("featured") or v.get("featured") or [])]
     home_sec = home_session_html(home_items, venue_kind=str(v.get("type") or ""))
+    home_ids = {str(it.get("id") or "") for it in home_items if it.get("id")}
+    shortlist_exclude = set(start_exclude) | home_ids
     if mode == "wonder":
         hunt = v.get("hunt") or []
         hunt_lis = "".join(
@@ -1706,9 +1729,9 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
         body = wonder_grid_html(mission) + hunt_sec
     elif mode == "hybrid":
         wonder_sec = wonder_grid_html(mission)
-        body = unique_body(v_body, exclude_ids=start_exclude) + wonder_sec
+        body = unique_body(v_body, exclude_ids=shortlist_exclude) + wonder_sec
     else:
-        body = unique_body(v_body, exclude_ids=start_exclude)
+        body = unique_body(v_body, exclude_ids=shortlist_exclude)
     h1 = h1_for(v)
     title = title_for(v)
     desc = meta_for(v)
@@ -1882,7 +1905,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <script type="application/json" id="bonus-hunts-data">{bonus_json}</script>
   <script src="/shell/shell.js?v=5"></script>
   <script src="/field-pack/js/fp-analytics.js?v=1"></script>
-  <script src="/field-pack/js/catalog.js?v=34"></script>
+  <script src="/field-pack/js/catalog.js?v={CATALOG_JS_VER}"></script>
   <script src="/field-pack/js/print-maps.js?v=5"></script>
   <script src="/field-pack/js/print-kit.js?v=13"></script>
   <script src="/field-pack/js/mission/mission-engine.js?v=13"></script>
@@ -2054,7 +2077,7 @@ def render_venue_page(v: dict) -> str:
 
   <script src="/shell/shell.js?v=5"></script>
   <script src="/field-pack/js/fp-analytics.js?v=1"></script>
-  <script src="/field-pack/js/catalog.js?v=34"></script>
+  <script src="/field-pack/js/catalog.js?v={CATALOG_JS_VER}"></script>
   <script src="/field-pack/js/print-maps.js?v=5"></script>
   <script src="/field-pack/js/print-kit.js?v=13"></script>
   <script>
@@ -3487,17 +3510,25 @@ for (const [id, it] of Object.entries(cat)) {
   if (/-(view|overlook|boardwalk|trail|path|summit|falls|waterfall|hoodoo|shore|meadow|grove|sign|vc|shuttle|lodge|basin|rim|creek|pebbles|fins)/.test(id)) continue;
   if (/^(cadillac|sequoia|old-faithful|yosemite-falls|smokies-)/.test(id)) continue;
   if (!home[id]) continue;
+  const homeVen = venues[home[id]] || {};
   out.push({
     id,
     name: it.name,
     emoji: it.emoji || '',
     photo: String(it.photo || ''),
+    photoCredit: String(it.photoCredit || ''),
+    status: String(it.status || ''),
     blurb: String(it.blurb || it.one_liner || '').slice(0, 160),
-    pt: it.packTemplate || (String(id).startsWith('cm-') || String(id).startsWith('sci-') ? 'exhibits' : 'animals'),
-    packTemplate: it.packTemplate || (String(id).startsWith('cm-') || String(id).startsWith('sci-') ? 'exhibits' : 'animals'),
+    kind: it.kind || '',
+    pt: it.packTemplate || '',
+    packTemplate: it.packTemplate || '',
     key: it.key && typeof it.key === 'object' ? it.key : {},
     links: it.links && typeof it.links === 'object' ? it.links : {},
     venue: home[id],
+    venue_type: homeVen.type || '',
+    venue_attribution: it.venue_attribution && typeof it.venue_attribution === 'object'
+      ? it.venue_attribution
+      : null,
   });
 }
 process.stdout.write(JSON.stringify(out));
@@ -3538,14 +3569,23 @@ for (const [id, rec] of Object.entries(byId)) {
   if (pt === 'animals' && /^(cm-|sci-)/.test(id)) continue;
   if (/^(grsm|yell|zion|yose|grca|romo|acad|glac|arch|olym)[-_]/.test(id)) continue;
   if (/^(cadillac|sequoia|old-faithful|yosemite-falls|smokies-)/.test(id)) continue;
+  const homeVen = venues[rec.venues[0]] || {};
   out.push({
     id,
     name: it.name,
     emoji: it.emoji || '',
     photo: String(it.photo || ''),
+    photoCredit: String(it.photoCredit || ''),
+    status: String(it.status || ''),
     blurb: String(it.blurb || it.one_liner || '').slice(0, 160),
+    kind: it.kind || '',
     pt,
+    packTemplate: it.packTemplate || pt,
     venue: rec.venues[0] || '',
+    venue_type: homeVen.type || '',
+    venue_attribution: it.venue_attribution && typeof it.venue_attribution === 'object'
+      ? it.venue_attribution
+      : null,
   });
 }
 process.stdout.write(JSON.stringify(out));
@@ -3708,6 +3748,9 @@ def _card_href(card: dict) -> str:
 
 
 def _card_venue_label(card: dict, venues_by_id: dict[str, dict]) -> str:
+    attr = attraction_venue_attribution(card, venues_by_id)
+    if attr:
+        return f"· {esc(attr['venue_name'])}"
     vid = card.get("venue") or ""
     v = venues_by_id.get(vid) or {}
     name = v.get("shortName") or v.get("name") or vid.replace("-", " ").title()
@@ -3717,7 +3760,7 @@ def _card_venue_label(card: dict, venues_by_id: dict[str, dict]) -> str:
 
 
 def _featured_cards(cards: list[dict]) -> list[dict]:
-    by_id = {c["id"]: c for c in cards}
+    by_id = {c["id"]: c for c in cards if card_may_feature(c)}
     out = []
     for cid in FEATURED_CARD_IDS:
         if cid in by_id:
@@ -3728,6 +3771,8 @@ def _featured_cards(cards: list[dict]) -> list[dict]:
         for c in cards:
             if c["id"] in {x["id"] for x in out}:
                 continue
+            if not card_may_feature(c):
+                continue
             out.append(dict(c, featured=True))
             if len(out) >= 12:
                 break
@@ -3735,7 +3780,11 @@ def _featured_cards(cards: list[dict]) -> list[dict]:
 
 
 def _pick_group_cards(cards: list[dict], group: str, n: int = 12) -> list[dict]:
-    by_id = {c["id"]: c for c in cards if (c.get("group") or _card_group_key(c)) == group}
+    by_id = {
+        c["id"]: c
+        for c in cards
+        if (c.get("group") or _card_group_key(c)) == group and card_may_feature(c)
+    }
     out: list[dict] = []
     seen: set[str] = set()
     for cid in FEATURED_BY_GROUP.get(group) or ():
@@ -3757,15 +3806,17 @@ def _pick_group_cards(cards: list[dict], group: str, n: int = 12) -> list[dict]:
 def _landing_teaser_cards(all_cards: list[dict]) -> list[dict]:
     """All-row featured 12 (interleaved so mobile All can show 6 mixed) plus up to 12 per group."""
     featured = _featured_cards(all_cards)
-    feat_ids = {c["id"] for c in featured}
     by_id: dict[str, dict] = {}
     for c in featured:
         cc = dict(c)
         cc["featured_all"] = True
         by_id[cc["id"]] = cc
     ordered = [by_id[c["id"]] for c in featured]
-    for g in ("wildlife", "sealife", "attractions"):
-        for c in _pick_group_cards(all_cards, g, 12):
+    grouped = group_cards_by_hub_section(all_cards)
+    for sid, _label, _kind in HUB_SECTIONS:
+        if not grouped.get(sid):
+            continue
+        for c in _pick_group_cards(all_cards, sid, 12):
             if c["id"] in by_id:
                 continue
             cc = dict(c)
@@ -3776,14 +3827,27 @@ def _landing_teaser_cards(all_cards: list[dict]) -> list[dict]:
 
 
 def _card_group_key(card: dict) -> str:
-    pt = card.get("pt") or "animals"
-    if pt == "exhibits":
-        return "attractions"
-    if card.get("id") in _SEALIFE_GROUP_BY_ID:
-        return "sealife"
-    if pt == "animals":
-        return "wildlife"
-    return "wildlife"
+    return hub_section_id(card_kind(card))
+
+
+def _hub_filter_tabs_html(section_ids: list[str]) -> str:
+    """Filter tabs derived from present kind sections — never a hardcoded Wildlife/Parks list."""
+    buttons = [
+        '<button type="button" class="place-type-tab is-active" role="tab" data-card-filter="all" aria-selected="true">All</button>'
+    ]
+    present = set(section_ids)
+    for sid, label, _kind in HUB_SECTIONS:
+        if sid not in present:
+            continue
+        buttons.append(
+            f'<button type="button" class="place-type-tab" role="tab" data-card-filter="{esc(sid)}" aria-selected="false">{label}</button>'
+        )
+    return (
+        '<nav class="place-type-tabs place-type-tabs-cards no-print" aria-label="Filter cards">\n'
+        '        <div class="place-type-seg" role="tablist" aria-label="Card type">\n          '
+        + "\n          ".join(buttons)
+        + "\n        </div>\n      </nav>"
+    )
 
 
 def write_cards_hub(venues: list[dict]) -> str:
@@ -3800,12 +3864,11 @@ def write_cards_hub(venues: list[dict]) -> str:
             return "/field-pack/cards/"
 
     venues_by_id = {v["id"]: v for v in venues}
-    wildlife, sealife = _split_creature_cards(cards)
-    exhibits = [c for c in cards if c.get("pt") == "exhibits"]
+    grouped = group_cards_by_hub_section(cards)
     sections = [
-        ("wildlife", "Wildlife", wildlife),
-        ("sealife", "Sea life", sealife),
-        ("attractions", "Attractions", exhibits),
+        (sid, label, grouped.get(sid) or [])
+        for sid, label, _kind in HUB_SECTIONS
+        if grouped.get(sid)
     ]
     total = sum(len(s[2]) for s in sections)
 
@@ -3832,13 +3895,22 @@ def write_cards_hub(venues: list[dict]) -> str:
                 if src
                 else f'<span class="cards-hub-emoji" aria-hidden="true">{esc(c.get("emoji") or "🎴")}</span>'
             )
+            venue_bit = _card_venue_label(c, venues_by_id)
+            kind = card_kind(c)
+            venue_html = (
+                f'<span class="cards-hub-venue">{venue_bit}</span>'
+                if venue_bit and kind == "attraction"
+                else ""
+            )
             lis.append(
                 f'<li class="cards-hub-item" data-card-id="{esc(cid)}" data-card-group="{esc(sid)}" '
+                f'data-card-kind="{esc(kind)}" '
                 f'data-card-search="{esc((c.get("name") or "") + " " + (c.get("blurb") or "") + " " + cid)}">'
                 f'<a class="cards-hub-link" href="{href}" data-card-id="{esc(cid)}">'
                 f"{media}"
                 f'<span class="cards-hub-copy">'
                 f'<span class="cards-hub-name">{esc(c.get("name") or cid)}</span>'
+                f"{venue_html}"
                 f'<span class="cards-hub-teaser">{blurb}</span>'
                 f"</span>"
                 f"</a></li>"
@@ -3854,7 +3926,7 @@ def write_cards_hub(venues: list[dict]) -> str:
     body_sections = "\n".join(section_html(*s) for s in sections if s[2])
     title = "Animal & Discovery Cards for Kids — Talk, Photos & Q&A · Field Trip Kit"
     desc = (
-        "Explore animal, sea-life, and museum cards at home — photos, talk prompts, and Q&A. "
+        "Explore animal, sea-life, museum, and park cards at home — photos, talk prompts, and Q&A. "
         f"Browse all {total} cards. Print is optional. No account."
     )
     url = f"{SITE}/field-pack/cards/"
@@ -3903,6 +3975,7 @@ def write_cards_hub(venues: list[dict]) -> str:
     .cards-hub-emoji {{ font-size: 2.2rem; text-align: center; width: 100px; }}
     .cards-hub-copy {{ display: flex; flex-direction: column; gap: 0.2rem; min-width: 0; }}
     .cards-hub-name {{ font-weight: 800; color: #0a4545; font-size: 0.95rem; }}
+    .cards-hub-venue {{ color: #0f5c5c; font-size: 0.8rem; font-weight: 700; }}
     .cards-hub-teaser {{
       color: #3d4f6f; font-size: 0.84rem; line-height: 1.3;
       display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
@@ -3936,20 +4009,13 @@ def write_cards_hub(venues: list[dict]) -> str:
       <p class="cards-hub-crumbs"><a href="/field-pack/">Field Trip Kit</a> · Cards</p>
       <h1>Animal &amp; Discovery Cards for Kids</h1>
       <p class="cards-hub-lead">
-        Talk prompts, photos, and Q&amp;A for a session at home — wildlife, sea life, and museum attractions.
+        Talk prompts, photos, and Q&amp;A for a session at home — wildlife, sea life, museum attractions, and park trails.
         Print a card if you want paper. Free. No account.
       </p>
       <p class="cards-hub-count">{total} cards · from Field Trip Kit place lists</p>
       <label class="cards-hub-search-label" for="cards-hub-search">Find a card</label>
       <input type="search" id="cards-hub-search" class="cards-hub-search" placeholder="Lion, shark, dinosaur…" autocomplete="off" />
-      <nav class="place-type-tabs place-type-tabs-cards no-print" aria-label="Filter cards">
-        <div class="place-type-seg" role="tablist" aria-label="Card type">
-          <button type="button" class="place-type-tab is-active" role="tab" data-card-filter="all" aria-selected="true">All</button>
-          <button type="button" class="place-type-tab" role="tab" data-card-filter="wildlife" aria-selected="false">Wildlife</button>
-          <button type="button" class="place-type-tab" role="tab" data-card-filter="sealife" aria-selected="false">Sea life</button>
-          <button type="button" class="place-type-tab" role="tab" data-card-filter="attractions" aria-selected="false">Attractions</button>
-        </div>
-      </nav>
+      {_hub_filter_tabs_html([s[0] for s in sections])}
       {body_sections}
     </main>
   </div>
@@ -4024,6 +4090,10 @@ def write_card_pages(cards: list[dict], venues_by_id: dict[str, dict]) -> list[s
         blurb = (item.get("blurb") or "").strip()
         v = venues_by_id.get(vid) or {}
         vname = v.get("shortName") or v.get("name") or ""
+        attr = attraction_venue_attribution(c, venues_by_id)
+        if attr:
+            vname = attr["venue_name"]
+            vid = attr["venue_slug"] or vid
         venue_line = f" · {esc(vname)}" if vname else ""
         venue_href = f"/field-pack/{esc(vid)}/#at-home" if vid else "/field-pack/"
         photo = ""
@@ -4104,7 +4174,7 @@ def write_card_pages(cards: list[dict], venues_by_id: dict[str, dict]) -> list[s
   <div id="treasure-sheet" class="print-sheet treasure-sheet" aria-hidden="true"></div>
   <script src="/shell/shell.js?v=5"></script>
   <script src="/field-pack/js/fp-analytics.js?v=1"></script>
-  <script src="/field-pack/js/catalog.js?v=34"></script>
+  <script src="/field-pack/js/catalog.js?v={CATALOG_JS_VER}"></script>
   <script src="/field-pack/js/print-kit.js?v=13"></script>
   <script>
     (function () {{
@@ -4259,16 +4329,10 @@ def patch_landing_directory(venues: list[dict]) -> None:
         f"            {popular_html}\n"
         f"          </div>"
     )
+    present_groups = sorted({c.get("group") or _card_group_key(c) for c in pool})
     cards_inner = (
         f'<div class="cat-cards-showcase" id="cat-cards-showcase">\n'
-        f'            <nav class="place-type-tabs place-type-tabs-cards no-print" aria-label="Filter cards">\n'
-        f'              <div class="place-type-seg" role="tablist" aria-label="Card type">\n'
-        f'                <button type="button" class="place-type-tab is-active" role="tab" data-card-filter="all" aria-selected="true">All</button>\n'
-        f'                <button type="button" class="place-type-tab" role="tab" data-card-filter="wildlife" aria-selected="false">Wildlife</button>\n'
-        f'                <button type="button" class="place-type-tab" role="tab" data-card-filter="sealife" aria-selected="false">Sea life</button>\n'
-        f'                <button type="button" class="place-type-tab" role="tab" data-card-filter="attractions" aria-selected="false">Attractions</button>\n'
-        f"              </div>\n"
-        f"            </nav>\n"
+        f"            {_hub_filter_tabs_html(present_groups)}\n"
         f"            {tiles_ul}\n"
         f'            <p class="cat-cards-all"><a href="/field-pack/cards/" id="cat-all-cards-link">All {n_cards} cards →</a></p>\n'
         f"          </div>"

@@ -866,6 +866,7 @@ window.FIELD_PACK_CATALOG = {
     emoji: "🌳",
     photo: "photos/cm-outdoor.jpg?v=img2",
     photoCredit: "Illustration · Field Trip Kit",
+    venue_attribution: { venue_slug: "childrens-museum-perot", venue_name: "Perot Museum" },
     blurb: "Outside play — waterfall, nature, big body movement.",
     links: {
       pictures: "https://www.perotmuseum.org/exhibits/halls/childrens-museum/",
@@ -884,6 +885,7 @@ window.FIELD_PACK_CATALOG = {
     emoji: "🌱",
     photo: "photos/cm-toddler.jpg?v=img2",
     photoCredit: "Illustration · Field Trip Kit",
+    venue_attribution: { venue_slug: "childrens-museum-perot", venue_name: "Perot Museum" },
     blurb: "Gentler outdoor/garden space for little explorers.",
     links: {
       pictures: "https://www.perotmuseum.org/exhibits/halls/childrens-museum/",
@@ -902,6 +904,7 @@ window.FIELD_PACK_CATALOG = {
     emoji: "✨",
     photo: "photos/cm-imaginarium.jpg?v=img2",
     photoCredit: "Illustration · Field Trip Kit",
+    venue_attribution: { venue_slug: "childrens-museum-perot", venue_name: "Perot Museum" },
     blurb: "Multi-sensory world — explore, notice, imagine.",
     links: {
       pictures: "https://www.perotmuseum.org/exhibits/halls/childrens-museum/",
@@ -920,6 +923,7 @@ window.FIELD_PACK_CATALOG = {
     emoji: "🧗",
     photo: "photos/cm-woven.jpg?v=img2",
     photoCredit: "Illustration · Field Trip Kit",
+    venue_attribution: { venue_slug: "childrens-museum-perot", venue_name: "Perot Museum" },
     blurb: "Colorful climbing structure — art you can climb!",
     links: {
       pictures: "https://www.perotmuseum.org/exhibits/halls/childrens-museum/",
@@ -938,6 +942,7 @@ window.FIELD_PACK_CATALOG = {
     emoji: "🔧",
     photo: "photos/cm-makery.jpg?v=img2",
     photoCredit: "Illustration · Field Trip Kit",
+    venue_attribution: { venue_slug: "childrens-museum-perot", venue_name: "Perot Museum" },
     blurb: "Build, invent, problem-solve with your hands.",
     links: {
       pictures: "https://www.perotmuseum.org/exhibits/halls/childrens-museum/",
@@ -956,6 +961,7 @@ window.FIELD_PACK_CATALOG = {
     emoji: "🎨",
     photo: "photos/cm-art.jpg?v=img2",
     photoCredit: "Illustration · Field Trip Kit",
+    venue_attribution: { venue_slug: "childrens-museum-perot", venue_name: "Perot Museum" },
     blurb: "Come-and-go art and reading activities.",
     links: {
       pictures: "https://www.perotmuseum.org/exhibits/halls/childrens-museum/",
@@ -974,6 +980,7 @@ window.FIELD_PACK_CATALOG = {
     emoji: "🧭",
     photo: "photos/cm-explore.jpg?v=img2",
     photoCredit: "Illustration · Field Trip Kit",
+    venue_attribution: { venue_slug: "childrens-museum-perot", venue_name: "Perot Museum" },
     blurb: "Their choice path — whatever pulled them in!",
     links: {
       pictures: "https://www.perotmuseum.org/exhibits/halls/childrens-museum/",
@@ -992,6 +999,7 @@ window.FIELD_PACK_CATALOG = {
     emoji: "💧",
     photo: "photos/cm-water.jpg?v=img2",
     photoCredit: "Illustration · Field Trip Kit",
+    venue_attribution: { venue_slug: "childrens-museum-perot", venue_name: "Perot Museum" },
     blurb: "Programmable waterfall / water play outdoors.",
     links: {
       pictures: "https://www.perotmuseum.org/exhibits/halls/childrens-museum/",
