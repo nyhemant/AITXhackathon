@@ -505,8 +505,6 @@ def load_vft_by_card() -> dict[str, dict]:
                 "tab": tab,
                 "habitat_id": hid,
                 "label": h.get("label") or "",
-                "challenge": str(h.get("challenge") or "").strip(),
-                "printAnswer": str(h.get("printAnswer") or "").strip(),
                 "cam_url": cam_url,
                 "cam_label": str(cam.get("camLabel") or "").strip(),
                 "film_url": film_url,
@@ -576,24 +574,14 @@ def outing_missions_for(item: dict) -> tuple[dict, ...]:
 
 
 def real_extra_qa_pairs(item: dict) -> list[tuple[str, str]]:
-    """Existing real Qs only: venue qa_card (non-stub) + sourced VFT challenge/answer."""
+    """Venue qa_card only when it is not a notice stub. VFT stops own no facts."""
     pairs: list[tuple[str, str]] = []
-    seen: set[str] = set()
-
-    def add(q: str, a: str) -> None:
-        q, a = (q or "").strip(), (a or "").strip()
-        if not q or not a or is_generic_notice_qa(q, a):
-            return
-        if q.lower() in seen:
-            return
-        seen.add(q.lower())
-        pairs.append((q, a))
-
     qa = item.get("qa_card") or {}
-    if isinstance(qa, dict):
-        add(str(qa.get("question") or ""), str(qa.get("answer") or ""))
-    vft = item.get("vft") or {}
-    add(str(vft.get("challenge") or ""), str(vft.get("printAnswer") or ""))
+    if not isinstance(qa, dict):
+        return pairs
+    q, a = str(qa.get("question") or "").strip(), str(qa.get("answer") or "").strip()
+    if q and a and not is_generic_notice_qa(q, a):
+        pairs.append((q, a))
     return pairs
 
 
@@ -702,7 +690,7 @@ def watch_links_html(item: dict) -> str:
         links.append(
             f'<a class="seo-watch-link" href="{esc(vft["film_url"])}" target="_blank" rel="noopener noreferrer">{esc(label)}</a>'
         )
-    if vft.get("vft_href") and (vft.get("cam_url") or vft.get("film_url") or vft.get("challenge")):
+    if vft.get("vft_href") and (vft.get("cam_url") or vft.get("film_url")):
         links.append(
             f'<a class="seo-watch-link" href="{vft["vft_href"]}">{esc(HOME_SESSION_VFT)}</a>'
         )

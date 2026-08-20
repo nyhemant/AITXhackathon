@@ -57,6 +57,9 @@ class FlagshipSessionTests(unittest.TestCase):
         self.assertIn("Print this card", html)
         self.assertNotIn("Open in outing view", html)
         self.assertNotIn("What did you notice about", html)
+        # VFT stop may have a challenge; it does not own card facts.
+        self.assertNotIn("Why does a lion have a mane?", html)
+        self.assertNotIn("A pride is a family that hunts and raises cubs together.", html)
 
     def test_flagship_cards_reuse_vft_cams_when_present(self):
         expect = {
@@ -80,6 +83,8 @@ class FlagshipSessionTests(unittest.TestCase):
         self.assertIn("How does a giraffe drink water?", giraffe)
         self.assertIn("What does an elephant use its trunk for?", (FP / "cards" / "african-elephant" / "index.html").read_text(encoding="utf-8"))
         self.assertNotIn("What did you notice about", dallas)
+        self.assertNotIn("A long neck reaches high leaves.", dallas)
+        self.assertNotIn("Why can’t penguins fly?", dallas)
 
     def test_dinner_route_still_defined(self):
         web = (REPO / "src" / "busyparent_agent" / "web.py").read_text(encoding="utf-8")
