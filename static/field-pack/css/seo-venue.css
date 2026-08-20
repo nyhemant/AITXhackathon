@@ -975,22 +975,30 @@ a.seo-map-card:focus-visible {
 .seo-start-card {
   position: relative;
   display: grid;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto auto;
   border-radius: 16px;
   overflow: hidden;
   background: #fff;
   border: 1.5px solid rgba(15, 92, 92, 0.14);
-  text-decoration: none;
   color: inherit;
   box-shadow: 0 6px 18px rgba(21, 34, 56, 0.06);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
   min-height: 0;
 }
-.seo-start-card:hover,
-.seo-start-card:focus-visible {
+.seo-start-card-main {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  text-decoration: none;
+  color: inherit;
+  min-height: 0;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.seo-start-card-main:hover,
+.seo-start-card-main:focus-visible {
   transform: translateY(-2px);
-  box-shadow: 0 10px 24px rgba(21, 34, 56, 0.12);
   outline: none;
+}
+.seo-start-card:focus-within {
+  box-shadow: 0 10px 24px rgba(21, 34, 56, 0.12);
   border-color: rgba(15, 92, 92, 0.35);
 }
 .seo-start-card img {
@@ -999,6 +1007,30 @@ a.seo-map-card:focus-visible {
   object-fit: cover;
   display: block;
   background: #e8f0ea;
+}
+.seo-start-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.8rem;
+  padding: 0 11px 10px;
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 750;
+}
+.seo-start-talk {
+  color: #0f5c5c;
+}
+.seo-start-hunt {
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  font-weight: 750;
+  color: #0f5c5c;
+  text-decoration: underline;
+  cursor: pointer;
 }
 .seo-start-emoji {
   display: grid;
@@ -1063,6 +1095,10 @@ a.seo-map-card:focus-visible {
   .how-steps-visual { grid-template-columns: 1fr; }
   .seo-start-grid { grid-template-columns: 1fr; }
   .seo-start-card {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+  }
+  .seo-start-card-main {
     grid-template-columns: 110px 1fr;
     grid-template-rows: 1fr;
     align-items: stretch;
@@ -1699,8 +1735,27 @@ a.seo-map-card:focus-visible {
   font-weight: 750;
 }
 .card-page .seo-talk-qa,
-.card-page .seo-watch-row {
+.card-page .seo-watch-row,
+.card-page .card-talk-pack {
   margin-top: 0.85rem;
+}
+.card-talk-pack .step-chip {
+  display: inline-block;
+  margin: 0 0 0.55rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(15, 92, 92, 0.08);
+  color: #0a4545;
+  font-size: 0.78rem;
+  font-weight: 750;
+}
+.card-talk-pack .mission-grid {
+  gap: 0.65rem;
+}
+.card-talk-note {
+  margin: 0.4rem 0 0;
+  color: #5a6a84;
+  font-size: 0.82rem;
 }
 @media (min-width: 720px) {
   .seo-home-grid {

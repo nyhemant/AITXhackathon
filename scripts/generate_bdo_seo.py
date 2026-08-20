@@ -76,11 +76,15 @@ HOME_SESSION_LEAD = (
     "This works on a phone or laptop — no printer needed."
 )
 HOME_SESSION_VFT = "Open Virtual Field Trip"
-START_HERE_H2 = "Going tomorrow? Start here"
+START_HERE_H2 = "Start here"
 START_HERE_LEAD = (
-    "Do these {n} in order if you can — enough for a short visit. "
-    "Open a card for talk tips and photos. Print a hunt for the visit if you want paper."
+    "At home, open a card for talk, photos, and a cam when we have one. "
+    "Going in person? Add a stop to the hunt — print only if you want paper."
 )
+CTA_TALK_HOME = "Talk at home"
+CTA_ADD_HUNT = "Add to hunt"
+CTA_ZOO_CARDS = "This zoo's cards"
+HOME_CARD_MORE = "Open card — 6 talk questions"
 SHORTLIST_LEAD = "Open a card for talk tips, photos, and Q&amp;A."
 HUNT_BLOCK_P = (
     "Optional for a real visit. Print a one-page hunt from the button above, "
@@ -91,19 +95,134 @@ PRINT_FALLBACK = (
     "Going in person? Print a hunt, or open the sheet on your phone."
 )
 
-# Catalog Q&A questions — same wording as FIELD_PACK_MISSIONS_* in catalog.js. Do not invent new Q&A.
-TALK_QA_ANIMAL = (
-    ("food", "What do they eat?"),
-    ("home", "Where is home?"),
-    ("superpower", "What is their superpower?"),
+# Catalog outing template — same wording as FIELD_PACK_MISSIONS_* in catalog.js.
+# Public cards use this 6-question set. Do not invent new Q&A. Do not ship notice-stubs as “full.”
+OUTING_TALK_ANIMAL = (
+    {
+        "id": "food",
+        "num": "1",
+        "title": "Food detective",
+        "question": "What do they eat?",
+        "choices": ["Plants / leaves", "Meat", "Both", "Insects", "Fish", "Bamboo / special"],
+        "multi": True,
+        "key_field": "food",
+        "open_note": "",
+    },
+    {
+        "id": "home",
+        "num": "2",
+        "title": "Home map",
+        "question": "Where is home?",
+        "choices": ["Forest", "Water / wet", "Desert / dry", "Cold / snow", "Grassland", "Zoo / tank house"],
+        "multi": True,
+        "key_field": "home",
+        "open_note": "",
+    },
+    {
+        "id": "superpower",
+        "num": "3",
+        "title": "Superpower",
+        "question": "What is their superpower?",
+        "choices": ["Climb", "Swim", "Hide", "Run fast", "Stomp / strong", "Fly"],
+        "multi": True,
+        "key_field": "superpower",
+        "open_note": "",
+    },
+    {
+        "id": "grow",
+        "num": "4",
+        "title": "Grow up",
+        "question": "Baby or grown-up?",
+        "choices": ["Baby / young", "Grown-up", "Not sure yet"],
+        "multi": False,
+        "key_field": "",
+        "open_note": "Your eyes decide — baby or grown-up from what you saw!",
+    },
+    {
+        "id": "cam",
+        "num": "5",
+        "title": "Live check",
+        "question": "Did we see one live?",
+        "choices": ["Yes — at the place", "Yes — on a screen/cam", "Not today", "Want to try later"],
+        "multi": True,
+        "key_field": "",
+        "open_note": "Your adventure — whatever is true for you!",
+    },
+    {
+        "id": "teach",
+        "num": "6",
+        "title": "Teach time",
+        "question": "I want to teach about…",
+        "choices": ["Their food", "Their home", "Their body", "Baby / family", "A fun fact", "My photo"],
+        "multi": True,
+        "key_field": "",
+        "open_note": "You pick what to teach a grown-up!",
+    },
 )
-TALK_QA_EXHIBIT = (
-    ("try", "What did I do here?"),
-    ("body", "How did I move?"),
-    ("senses", "What did I notice?"),
+OUTING_TALK_EXHIBIT = (
+    {
+        "id": "try",
+        "num": "1",
+        "title": "I tried",
+        "question": "What did I do here?",
+        "choices": ["Climb", "Build / make", "Splash / water", "Pretend play", "Art / create", "Quiet look"],
+        "multi": True,
+        "key_field": "try",
+        "open_note": "",
+    },
+    {
+        "id": "body",
+        "num": "2",
+        "title": "My body",
+        "question": "How did I move?",
+        "choices": ["Ran / jumped", "Climbed high", "Used hands a lot", "Sat and focused", "Splashed", "Slow and careful"],
+        "multi": True,
+        "key_field": "body",
+        "open_note": "",
+    },
+    {
+        "id": "senses",
+        "num": "3",
+        "title": "Senses",
+        "question": "What did I notice?",
+        "choices": ["Colors", "Sounds", "Textures / touch", "Water", "Something funny", "Something new"],
+        "multi": True,
+        "key_field": "senses",
+        "open_note": "",
+    },
+    {
+        "id": "feel",
+        "num": "4",
+        "title": "Feelings",
+        "question": "How did it feel?",
+        "choices": ["Exciting", "Calm", "Tricky", "Proud", "Silly", "Not sure yet"],
+        "multi": True,
+        "key_field": "",
+        "open_note": "All feelings are OK — this is your story!",
+    },
+    {
+        "id": "again",
+        "num": "5",
+        "title": "Again?",
+        "question": "Would I do this again?",
+        "choices": ["Yes — favorite!", "Yes — once more", "Maybe later", "No thanks"],
+        "multi": False,
+        "key_field": "",
+        "open_note": "Your choice!",
+    },
+    {
+        "id": "teach",
+        "num": "6",
+        "title": "Teach time",
+        "question": "I want to teach about…",
+        "choices": ["How to play here", "What I built", "A funny moment", "A tip for next time", "My favorite part", "A photo"],
+        "multi": True,
+        "key_field": "",
+        "open_note": "You pick what to teach a grown-up!",
+    },
 )
 
-SEO_CSS_VER = "22"
+SEO_CSS_VER = "23"
 LANDING_CSS_VER = "95"
 STYLES_CSS_VER = "35"
 
@@ -424,38 +543,62 @@ def enrich_item(it: dict) -> dict:
         out["name"] = depth["name"]
     out["packTemplate"] = out.get("packTemplate") or depth.get("packTemplate") or "animals"
     out["vft"] = vft_by_card().get(cid) or {}
+    if it.get("qa_card") and not out.get("qa_card"):
+        out["qa_card"] = it["qa_card"]
     return out
 
 
-def talk_qa_pairs(item: dict) -> list[tuple[str, str]]:
-    """Existing catalog.key answers paired with catalog mission questions. No new Q&A."""
-    key = item.get("key") or {}
-    if not isinstance(key, dict) or not key:
-        return []
+def is_generic_notice_qa(question: str, answer: str) -> bool:
+    """Venue stubs like “What did you notice about X?” are not full Q&A."""
+    q = (question or "").strip().lower()
+    a = (answer or "").strip().lower()
+    if q.startswith("what did you notice about"):
+        return True
+    if "tell a grown-up one thing you saw" in a:
+        return True
+    return False
+
+
+def _key_values(key: dict, field: str) -> set[str]:
+    raw = (key or {}).get(field)
+    if isinstance(raw, list):
+        return {str(x).strip() for x in raw if str(x).strip()}
+    val = str(raw or "").strip()
+    return {val} if val else set()
+
+
+def outing_missions_for(item: dict) -> tuple[dict, ...]:
     pt = str(item.get("packTemplate") or "")
-    schema = TALK_QA_EXHIBIT if pt == "exhibits" or any(k in key for k in ("try", "body", "senses")) else TALK_QA_ANIMAL
+    key = item.get("key") or {}
+    if pt == "exhibits" or any(k in key for k in ("try", "body", "senses")):
+        return OUTING_TALK_EXHIBIT
+    return OUTING_TALK_ANIMAL
+
+
+def real_extra_qa_pairs(item: dict) -> list[tuple[str, str]]:
+    """Existing real Qs only: venue qa_card (non-stub) + sourced VFT challenge/answer."""
     pairs: list[tuple[str, str]] = []
-    for field, question in schema:
-        raw = key.get(field)
-        if isinstance(raw, list):
-            answer = ", ".join(str(x) for x in raw if x)
-        else:
-            answer = str(raw or "").strip()
-        if answer:
-            pairs.append((question, answer))
+    seen: set[str] = set()
+
+    def add(q: str, a: str) -> None:
+        q, a = (q or "").strip(), (a or "").strip()
+        if not q or not a or is_generic_notice_qa(q, a):
+            return
+        if q.lower() in seen:
+            return
+        seen.add(q.lower())
+        pairs.append((q, a))
+
+    qa = item.get("qa_card") or {}
+    if isinstance(qa, dict):
+        add(str(qa.get("question") or ""), str(qa.get("answer") or ""))
+    vft = item.get("vft") or {}
+    add(str(vft.get("challenge") or ""), str(vft.get("printAnswer") or ""))
     return pairs
 
 
-def talk_qa_html(item: dict, *, heading: str = "Talk &amp; Q&amp;A") -> str:
-    pairs = talk_qa_pairs(item)
-    vft = item.get("vft") or {}
-    extra_q = (vft.get("challenge") or "").strip()
-    extra_a = (vft.get("printAnswer") or "").strip()
-    bits: list[str] = []
-    for q, a in pairs:
-        bits.append(f"<dt>{esc(q)}</dt><dd>{esc(a)}</dd>")
-    if extra_q and extra_a:
-        bits.append(f"<dt>{esc(extra_q)}</dt><dd>{esc(extra_a)}</dd>")
+def real_extra_qa_html(item: dict, *, heading: str = "More talk") -> str:
+    bits = [f"<dt>{esc(q)}</dt><dd>{esc(a)}</dd>" for q, a in real_extra_qa_pairs(item)]
     if not bits:
         return ""
     return (
@@ -464,6 +607,85 @@ def talk_qa_html(item: dict, *, heading: str = "Talk &amp; Q&amp;A") -> str:
         f"<dl>{''.join(bits)}</dl>"
         f"</div>"
     )
+
+
+def outing_talk_html(item: dict) -> str:
+    """On-screen 6-question outing template from catalog.js. No invented Q&A."""
+    key = item.get("key") or {}
+    cards: list[str] = []
+    for m in outing_missions_for(item):
+        hints = _key_values(key, m["key_field"]) if m.get("key_field") else set()
+        choices = []
+        for label in m["choices"]:
+            on = label in hints
+            choices.append(
+                f'<button type="button" class="choice" data-choice="{esc(label)}" '
+                f'aria-pressed="{"true" if on else "false"}">'
+                f'<span class="dot" aria-hidden="true"></span>'
+                f"<span>{esc(label)}</span></button>"
+            )
+        note = f'<p class="card-talk-note">{esc(m["open_note"])}</p>' if m.get("open_note") else ""
+        cards.append(
+            f'<section class="mission card-talk-q" data-mission="{esc(m["id"])}">'
+            f'<div class="mission-head"><span class="badge">{esc(m["num"])}</span>'
+            f'<p class="mission-title">{esc(m["title"])}</p></div>'
+            f'<h3 class="mission-q">{esc(m["question"])}</h3>'
+            f'<div class="choices" data-multi="{"1" if m.get("multi") else "0"}">'
+            f"{''.join(choices)}</div>{note}</section>"
+        )
+    extra = real_extra_qa_html(item)
+    return (
+        f'<section class="card-talk-pack" aria-label="Six talk questions">'
+        f'<p class="step-chip">6 questions · talk, tap, or print</p>'
+        f'<div class="mission-grid">{"".join(cards)}</div>'
+        f"{extra}</section>"
+    )
+
+
+def catalog_more_links_html(item: dict) -> str:
+    """Photos / learn-more from catalog.links. Prefer VFT cam over catalog cam."""
+    links = item.get("links") or {}
+    vft = item.get("vft") or {}
+    bits: list[str] = []
+    if not vft.get("cam_url"):
+        cam = str(links.get("cam") or "").strip()
+        if cam:
+            bits.append(
+                f'<a class="btn btn-ghost" href="{esc(cam)}" target="_blank" rel="noopener noreferrer">Live cam</a>'
+            )
+    pics = str(links.get("pictures") or "").strip()
+    if pics:
+        bits.append(
+            f'<a class="btn btn-ghost" href="{esc(pics)}" target="_blank" rel="noopener noreferrer">Photos</a>'
+        )
+    more = str(links.get("more") or "").strip()
+    if more:
+        bits.append(
+            f'<a class="btn btn-ghost" href="{esc(more)}" target="_blank" rel="noopener noreferrer">Learn more</a>'
+        )
+    if not bits:
+        return ""
+    return f'<div class="action-row detail-links detail-links-quiet no-print">{"".join(bits)}</div>'
+
+
+def venue_real_qa_for_card(cid: str, vid: str) -> dict:
+    """Real qa_card from this card’s home venue JSON, if it is not a notice stub."""
+    if not cid or not vid:
+        return {}
+    mv = load_mission_venue(vid)
+    if not mv:
+        return {}
+    for it in mv.get("items") or []:
+        if (it.get("catalog_id") or "").strip() != cid:
+            continue
+        qa = it.get("qa_card") or {}
+        if not isinstance(qa, dict):
+            return {}
+        q, a = str(qa.get("question") or ""), str(qa.get("answer") or "")
+        if q and a and not is_generic_notice_qa(q, a):
+            return {"question": q, "answer": a}
+        return {}
+    return {}
 
 
 def watch_links_html(item: dict) -> str:
@@ -504,7 +726,7 @@ def home_session_html(items: list[dict], *, venue_kind: str = "") -> str:
         emoji = it.get("emoji") or ""
         name = it.get("name") or cid
         blurb = _card_blurb(it.get("blurb") or "") or (it.get("blurb") or "")
-        qa = talk_qa_html(it)
+        extra = real_extra_qa_html(it)
         watch = watch_links_html(it)
         href = f"/field-pack/cards/{esc(cid)}/"
         if src:
@@ -519,9 +741,9 @@ def home_session_html(items: list[dict], *, venue_kind: str = "") -> str:
         <div class="seo-home-card-body">
           <h3><a href="{href}">{esc(emoji + " " if emoji else "")}{esc(name)}</a></h3>
           {f"<p class='seo-home-blurb'>{esc(blurb)}</p>" if blurb else ""}
-          {qa}
+          {extra}
           {watch}
-          <p class="seo-home-card-more"><a href="{href}">Open full card</a></p>
+          <p class="seo-home-card-more"><a href="{href}">{esc(HOME_CARD_MORE)}</a></p>
         </div>
       </article>"""
         )
@@ -726,11 +948,11 @@ def unique_body(
             <p>{esc(item_blurb)}</p>
           </div>"""
         if card_inner:
-            # Link card to interactive app item for Q&A print path
+            # At-home card session. Hunt drawer stays on the print button.
             href = (
                 f"/field-pack/cards/{esc(item_id)}/"
                 if item_id
-                else f"/field-pack/{esc(v['id'])}/#mission"
+                else f"/field-pack/{esc(v['id'])}/#at-home"
             )
             cards.append(
                 f"""<a class="seo-animal-card" href="{href}" role="listitem">
@@ -1001,6 +1223,7 @@ def _featured_from_mission(mission_venue: dict, catalog_v: dict | None = None) -
                     "key": feat.get("key") or {},
                     "links": feat.get("links") or {},
                     "packTemplate": feat.get("packTemplate") or "",
+                    "qa_card": it.get("qa_card") or {},
                 }
             )
         )
@@ -1244,10 +1467,8 @@ def route_90m_html(mission_venue: dict, mission: dict, catalog_v: dict | None = 
         label = _item_sheet_label(p) or feat.get("name") or "Stop"
         emoji = p.get("emoji") or feat.get("emoji") or ""
         one = _card_blurb(p.get("one_liner") or feat.get("blurb") or "")
-        # Prefer catalog id for app Q&A cards; underscore venue ids won't resolve in catalog
+        # Prefer catalog id for public card pages; underscore venue ids won't resolve in catalog
         item_id = (p.get("catalog_id") or "").strip() or cat_id
-        # Has a real catalog photo/entry → deep-link to talk card; else venue list in app
-        # At-home card (talk + Q&A) is first-class; #mission remains an alias for the hunt drawer.
         href = f"/field-pack/cards/{esc(item_id)}/" if item_id else (
             f"/field-pack/{esc(slug)}/#at-home" if slug else "/field-pack/"
         )
@@ -1259,17 +1480,23 @@ def route_90m_html(mission_venue: dict, mission: dict, catalog_v: dict | None = 
         else:
             media = f'<span class="seo-start-emoji" aria-hidden="true">{esc(emoji or "✨")}</span>'
         cards.append(
-            f"""<a class="seo-start-card" href="{href}">
-        <span class="seo-start-num" aria-hidden="true">{i}</span>
-        {media}
-        <span class="seo-start-meta">
-          <strong>{esc(emoji + " " if emoji else "")}{esc(label)}</strong>
-          {f"<small>{esc(one)}</small>" if one else ""}
-        </span>
-      </a>"""
+            f"""<article class="seo-start-card">
+        <a class="seo-start-card-main" href="{href}">
+          <span class="seo-start-num" aria-hidden="true">{i}</span>
+          {media}
+          <span class="seo-start-meta">
+            <strong>{esc(emoji + " " if emoji else "")}{esc(label)}</strong>
+            {f"<small>{esc(one)}</small>" if one else ""}
+          </span>
+        </a>
+        <p class="seo-start-actions">
+          <a class="seo-start-talk" href="{href}">{esc(CTA_TALK_HOME)}</a>
+          <button type="button" class="seo-start-hunt" data-how="print-hunt">{esc(CTA_ADD_HUNT)}</button>
+        </p>
+      </article>"""
         )
 
-    lead = START_HERE_LEAD.format(n=n)
+    lead = START_HERE_LEAD
     return f"""
     <section class="seo-start-here no-print" aria-labelledby="route90-heading">
       <h2 id="route90-heading">{esc(START_HERE_H2)}</h2>
@@ -1622,7 +1849,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
           <span aria-hidden="true"> · </span>
           <a href="/field-pack/virtual-field-trip/">{esc(HOME_SESSION_VFT)}</a>
           <span aria-hidden="true"> · </span>
-          <a href="/field-pack/cards/">All cards</a>
+          <a href="#at-home">{esc(CTA_ZOO_CARDS)}</a>
           <span aria-hidden="true"> · </span>
           <a href="{esc(map_href)}">Find on map</a>
         </p>
@@ -1810,7 +2037,7 @@ def render_venue_page(v: dict) -> str:
             </button>
           </li>
           <li>
-            <a class="how-step-btn" href="{esc(app_href)}" data-how="talk" id="how-talk-link">
+            <a class="how-step-btn" href="#at-home" data-how="talk" id="how-talk-link">
               <span class="how-ico" aria-hidden="true">💬</span>
               <strong>Cards</strong>
               <span>Talk again after</span>
@@ -3793,21 +4020,24 @@ def write_cards_hub(venues: list[dict]) -> str:
 
 
 def write_card_pages(cards: list[dict], venues_by_id: dict[str, dict]) -> list[str]:
-    """Static /field-pack/cards/<id>/ pages — catalog DEPTH + VFT cam/film on the page."""
+    """Static /field-pack/cards/<id>/ pages — catalog 6-Q + real extras + VFT cam/film."""
     urls: list[str] = []
     for c in cards:
         cid = (c.get("id") or "").strip()
         if not cid or "/" in cid or ".." in cid:
             continue
         item = enrich_item(c)
+        vid = c.get("venue") or ""
+        real_qa = venue_real_qa_for_card(cid, vid)
+        if real_qa:
+            item["qa_card"] = real_qa
         name = item.get("name") or cid
         emoji = item.get("emoji") or "🎴"
         blurb = (item.get("blurb") or "").strip()
-        vid = c.get("venue") or ""
         v = venues_by_id.get(vid) or {}
         vname = v.get("shortName") or v.get("name") or ""
         venue_line = f" · {esc(vname)}" if vname else ""
-        venue_href = f"/field-pack/{esc(vid)}/" if vid else "/field-pack/"
+        venue_href = f"/field-pack/{esc(vid)}/#at-home" if vid else "/field-pack/"
         photo = ""
         if (FIELD / "photos" / f"{cid}.jpg").is_file():
             photo = f"/field-pack/photos/{cid}.jpg?v=img2"
@@ -3818,16 +4048,16 @@ def write_card_pages(cards: list[dict], venues_by_id: dict[str, dict]) -> list[s
             if photo
             else f'<p class="card-page-emoji" aria-hidden="true">{esc(emoji)}</p>'
         )
-        qa_html = talk_qa_html(item, heading="Talk prompts &amp; Q&amp;A")
+        talk_html = outing_talk_html(item)
+        more_links = catalog_more_links_html(item)
         watch_html = watch_links_html(item)
         title = f"{name} for Kids — Talk, Photos & Q&A · Field Trip Kit"
         desc = (
-            f"Explore the {name} card at home: photo, talk prompts, and Q&A. "
+            f"Explore the {name} card at home: photo, six talk questions, and Q&A. "
             + (blurb + " " if blurb else "")
             + "Print is optional. No account."
         )
         url = f"{SITE}/field-pack/cards/{cid}/"
-        alias = f"/field-pack/app.html#/venue/{vid}/item/{cid}" if vid else f"/field-pack/app.html#/item/{cid}"
         html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -3873,14 +4103,13 @@ def write_card_pages(cards: list[dict], venues_by_id: dict[str, dict]) -> list[s
         {f'· <a href="{venue_href}">Place page</a>' if vid else ""}</p>
       {img_html}
       <p class="card-page-blurb">{esc(blurb) if blurb else "Talk this card through at home — print only if you want paper."}</p>
-      {qa_html}
+      {more_links}
       {watch_html}
+      {talk_html}
       <p class="card-page-actions">
-        <a class="btn btn-primary" href="{venue_href}">{esc(CTA_EXPLORE_HOME)}</a>
+        <a class="btn btn-secondary" href="{venue_href}">{esc(CTA_ZOO_CARDS) if vid else esc(CTA_EXPLORE_HOME)}</a>
         <button type="button" class="btn btn-secondary" id="print-this-card" data-card-id="{esc(cid)}" data-venue="{esc(vid)}">{esc(CTA_PRINT_CARD)}</button>
-        <a class="btn btn-secondary" href="/field-pack/cards/">All cards</a>
       </p>
-      <p class="card-page-alias"><a href="{esc(alias)}">Open in outing view</a> (alias)</p>
     </main>
   </div>
   <div id="print-sheet" class="print-sheet" aria-hidden="true"></div>
@@ -3898,6 +4127,19 @@ def write_card_pages(cards: list[dict], venues_by_id: dict[str, dict]) -> list[s
         var vid = btn.getAttribute("data-venue") || "";
         if (typeof FPTrack === "function") FPTrack("card_opened", {{ card_id: id, source: "card_page_print" }});
         if (window.FPPrint && FPPrint.printQaForItem) FPPrint.printQaForItem(id, vid || null);
+      }});
+      document.querySelectorAll(".card-talk-pack .choice").forEach(function (choice) {{
+        choice.addEventListener("click", function () {{
+          var group = choice.parentElement;
+          var multi = group && group.getAttribute("data-multi") === "1";
+          var on = choice.getAttribute("aria-pressed") === "true";
+          if (!multi && group) {{
+            group.querySelectorAll(".choice").forEach(function (b) {{
+              b.setAttribute("aria-pressed", "false");
+            }});
+          }}
+          choice.setAttribute("aria-pressed", on && multi ? "false" : (on ? "false" : "true"));
+        }});
       }});
     }})();
   </script>
