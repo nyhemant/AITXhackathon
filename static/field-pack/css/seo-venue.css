@@ -210,7 +210,8 @@
 }
 .seo-animal-card img {
   width: 100%;
-  height: 132px;
+  height: auto;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   background: linear-gradient(145deg, #e8f0f8, #d4e4d8);
   display: block;
@@ -1003,7 +1004,8 @@ a.seo-map-card:focus-visible {
 }
 .seo-start-card img {
   width: 100%;
-  height: 120px;
+  height: auto;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   display: block;
   background: #e8f0ea;
@@ -1035,7 +1037,8 @@ a.seo-map-card:focus-visible {
 .seo-start-emoji {
   display: grid;
   place-items: center;
-  height: 100px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
   font-size: 2.4rem;
   background: linear-gradient(160deg, #fff4e0, #e8f6f0);
 }
@@ -1099,14 +1102,14 @@ a.seo-map-card:focus-visible {
     grid-template-rows: auto auto;
   }
   .seo-start-card-main {
-    grid-template-columns: 110px 1fr;
-    grid-template-rows: 1fr;
-    align-items: stretch;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
   }
   .seo-start-card img,
   .seo-start-emoji {
-    height: 100%;
-    min-height: 96px;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
   }
 }
 .seo-directory {
@@ -1527,7 +1530,7 @@ a.seo-map-card:focus-visible {
   .seo-article { padding: 16px; }
   .seo-animal-grid { grid-template-columns: 1fr; }
   .seo-hero-photos { grid-template-columns: 1fr 1fr; }
-  .seo-animal-card img, .seo-hero-photos img { height: 160px; }
+  .seo-hero-photos img { height: 160px; }
 }
 
 /* Honest list status — two labels only (Verified kit / Starter list) */
@@ -1683,7 +1686,7 @@ a.seo-map-card:focus-visible {
 .seo-home-card-media img {
   width: 100%;
   height: auto;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 10px;
   display: block;
@@ -1745,6 +1748,12 @@ a.seo-map-card:focus-visible {
   font-size: 0.86em;
   font-weight: 650;
   color: #3d4f6f;
+}
+.card-page img.card-page-photo {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
 }
 .card-page-next {
   margin: 0.75rem 0 0;

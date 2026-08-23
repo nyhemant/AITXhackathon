@@ -1,9 +1,11 @@
 """Flagship at-home session: honest start-here, 6-Q cards, no notice-stubs."""
 
 from pathlib import Path
+import sys
 import unittest
 
 REPO = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(REPO / "scripts"))
 FP = REPO / "static" / "field-pack"
 
 
@@ -234,6 +236,59 @@ class FlagshipSessionTests(unittest.TestCase):
         self.assertIn("viewport-fit=cover", giraffe)
         self.assertIn("viewport-fit=cover", landing)
         self.assertIn("Live from Houston Zoo", giraffe)
+
+    def _css_rule(self, css: str, selector: str) -> str:
+        needle = selector + " {"
+        start = css.find(needle)
+        self.assertNotEqual(start, -1, selector)
+        end = css.find("}", start)
+        self.assertNotEqual(end, -1, selector)
+        return css[start : end + 1]
+
+    def test_place_page_card_photos_are_square(self):
+        """Start here + at-home/shortlist thumbs are 1:1; park hero stays a scene."""
+        seo = (FP / "css" / "seo-venue.css").read_text(encoding="utf-8")
+        start_img = self._css_rule(seo, ".seo-start-card img")
+        animal_img = self._css_rule(seo, ".seo-animal-card img")
+        home_img = self._css_rule(seo, ".seo-home-card-media img")
+        park_hero = self._css_rule(seo, ".seo-park-hero")
+        for rule in (start_img, animal_img, home_img):
+            self.assertIn("aspect-ratio: 1 / 1", rule)
+            self.assertIn("object-fit: cover", rule)
+            self.assertNotIn("height: 132px", rule)
+            self.assertNotIn("height: 120px", rule)
+            self.assertNotIn("aspect-ratio: 16 / 10", rule)
+        self.assertIn("aspect-ratio: 16 / 9", park_hero)
+        self.assertNotIn(".seo-animal-card img, .seo-hero-photos img { height: 160px; }", seo)
+        self.assertIn("min-height: 44px", seo)
+        self.assertIn(".seo-start-talk", seo)
+        self.assertIn(".card-page-next a", seo)
+
+        dallas = self._visible((FP / "dallas-zoo" / "index.html").read_text(encoding="utf-8"))
+        start = dallas.split('id="route90-heading"', 1)[1].split("</section>", 1)[0]
+        home = dallas.split('id="at-home"', 1)[1].split("</section>", 1)[0]
+        self.assertIn('width="640" height="640"', start)
+        self.assertIn('width="640" height="640"', home)
+        self.assertIn('style="object-position: 50% 18%"', start)
+        self.assertIn("photos/reticulated-giraffe.jpg", start)
+        self.assertNotIn('width="640" height="400"', start)
+        self.assertNotIn('width="640" height="400"', home)
+
+        card = (FP / "cards" / "reticulated-giraffe" / "index.html").read_text(encoding="utf-8")
+        self.assertIn('class="card-page-photo"', card)
+        self.assertIn('width="640" height="640"', card)
+        self.assertIn("aspect-ratio: 1 / 1", card)
+        self.assertIn("object-fit: cover", card)
+        self.assertIn('style="object-position: 50% 18%"', card)
+
+        from generate_bdo_seo import _card_thumb_img, _photo_position
+
+        self.assertEqual(_photo_position({"photoPosition": "50% 18%"}), "50% 18%")
+        self.assertEqual(_photo_position({"photoFocus": "center top"}), "center top")
+        self.assertEqual(_photo_position({"photoPosition": "url(evil)"}), "")
+        self.assertIn('width="640" height="640"', _card_thumb_img("photos/x.jpg", pos="50% 22%"))
+        self.assertIn('style="object-position: 50% 22%"', _card_thumb_img("photos/x.jpg", pos="50% 22%"))
+        self.assertNotIn("object-position", _card_thumb_img("photos/x.jpg"))
 
 
 if __name__ == "__main__":

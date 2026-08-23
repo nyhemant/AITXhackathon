@@ -242,7 +242,7 @@ OUTING_TALK_EXHIBIT = (
     },
 )
 
-SEO_CSS_VER = "27"
+SEO_CSS_VER = "28"
 LANDING_CSS_VER = "95"
 STYLES_CSS_VER = "36"
 CATALOG_JS_VER = "36"
@@ -483,6 +483,7 @@ for (const [id, it] of Object.entries(cat)) {
     name: it.name,
     emoji: it.emoji || '',
     photo: String(it.photo || ''),
+    photoPosition: String(it.photoPosition || it.photoFocus || ''),
     blurb: String(it.blurb || it.one_liner || ''),
     key: it.key && typeof it.key === 'object' ? it.key : {},
     links: it.links && typeof it.links === 'object' ? it.links : {},
@@ -565,6 +566,8 @@ def enrich_item(it: dict) -> dict:
         out["links"] = depth["links"]
     if depth.get("photo") and not out.get("photo"):
         out["photo"] = depth["photo"]
+    if depth.get("photoPosition") and not out.get("photoPosition"):
+        out["photoPosition"] = depth["photoPosition"]
     if depth.get("blurb") and not _card_blurb(out.get("blurb") or ""):
         if not out.get("blurb"):
             out["blurb"] = depth.get("blurb") or ""
@@ -877,10 +880,11 @@ def home_session_html(items: list[dict], *, venue_kind: str = "", venue_id: str 
         extra = real_extra_qa_html(it)
         watch = watch_links_html(it)
         href = item_public_href(cid, venue_id)
+        # No public card page — stay on this place-page card, do not invent one.
+        if cid not in published_card_ids():
+            href = f"#home-{esc(cid)}"
         if src:
-            media = (
-                f'<img src="{esc(src)}" alt="" width="640" height="400" loading="lazy" decoding="async" />'
-            )
+            media = _card_thumb_img(src, pos=_photo_position(it))
         else:
             media = f'<span class="seo-start-emoji" aria-hidden="true">{esc(emoji or "✨")}</span>'
         cards.append(
@@ -950,6 +954,7 @@ const out = Object.keys(venues).map(id => {
       emoji: it.emoji || '',
       blurb: it.blurb || '',
       photo: it.photo || '',
+      photoPosition: it.photoPosition || it.photoFocus || '',
       key: it.key && typeof it.key === 'object' ? it.key : {},
       links: it.links && typeof it.links === 'object' ? it.links : {},
       packTemplate: it.packTemplate || '',
@@ -1054,9 +1059,10 @@ def unique_body(
         alt = f"{it.get('name') or 'Animal'} — shortlist photo"
         item_blurb = _card_blurb(it.get("blurb") or "") or "Worth a look if you have time."
         item_id = it.get("id") or ""
+        depth = catalog_depth().get(item_id) or {}
         card_inner = ""
         if src:
-            card_inner = f"""<img src="{esc(src)}" alt="{esc(alt)}" width="640" height="400" loading="lazy" decoding="async" />
+            card_inner = f"""{_card_thumb_img(src, alt=alt, pos=_photo_position(it, depth))}
           <div class="seo-animal-meta">
             <h3>{esc(it.get('emoji',''))} {esc(it['name'])}</h3>
             <p>{esc(item_blurb)}</p>
@@ -1520,6 +1526,48 @@ def _photo_src(photo: str) -> str:
     return photo
 
 
+# Catalog photoPosition values are "50% 22%" style object-position hints.
+_PHOTO_POS_RE = re.compile(
+    r"^(?:"
+    r"(?:\d{1,3}(?:\.\d+)?%|0|left|center|right|top|bottom)"
+    r"(?:\s+(?:\d{1,3}(?:\.\d+)?%|0|left|center|right|top|bottom))?"
+    r")$"
+)
+
+
+def _photo_position(*sources: dict | None) -> str:
+    """First valid catalog photoPosition / photoFocus. Empty if none."""
+    for src in sources:
+        if not src:
+            continue
+        raw = str(src.get("photoPosition") or src.get("photoFocus") or "").strip()
+        if raw and _PHOTO_POS_RE.fullmatch(raw):
+            return raw
+    return ""
+
+
+def _photo_position_attr(pos: str) -> str:
+    if not pos:
+        return ""
+    return f' style="object-position: {esc(pos)}"'
+
+
+def _card_thumb_img(
+    src: str,
+    *,
+    alt: str = "",
+    pos: str = "",
+    loading: str = "lazy",
+) -> str:
+    """Square card thumbnail. CSS frames to 1:1; honor catalog crop when present."""
+    pos_attr = _photo_position_attr(pos)
+    alt_attr = f' alt="{esc(alt)}"' if alt else ' alt=""'
+    return (
+        f'<img src="{esc(src)}"{alt_attr} width="640" height="640" '
+        f'loading="{loading}" decoding="async"{pos_attr} />'
+    )
+
+
 def _route_90m_picks(mission_venue: dict, mission: dict) -> list[dict]:
     """Same pick order as the start-here section (print-safe route_90m, else mission finds)."""
     safe = _print_safe_items(mission_venue)
@@ -1595,9 +1643,11 @@ def route_90m_html(mission_venue: dict, mission: dict, catalog_v: dict | None = 
         item_id = (p.get("catalog_id") or "").strip() or cat_id
         href = start_here_card_href(item_id, slug)
         if src:
-            media = (
-                f'<img src="{esc(src)}" alt="" width="640" height="400" '
-                f'loading="{"eager" if i == 1 else "lazy"}" decoding="async" />'
+            depth = catalog_depth().get(cat_id) or catalog_depth().get(p.get("catalog_id") or "") or {}
+            media = _card_thumb_img(
+                src,
+                pos=_photo_position(feat, p, depth),
+                loading="eager" if i == 1 else "lazy",
             )
         else:
             media = f'<span class="seo-start-emoji" aria-hidden="true">{esc(emoji or "✨")}</span>'
@@ -2631,7 +2681,8 @@ SEO_CSS = """/* SEO venue pages — visual-first, same brand language as outing 
 }
 .seo-animal-card img {
   width: 100%;
-  height: 132px;
+  height: auto;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   background: linear-gradient(145deg, #e8f0f8, #d4e4d8);
   display: block;
@@ -2791,7 +2842,7 @@ SEO_CSS = """/* SEO venue pages — visual-first, same brand language as outing 
   .seo-article { padding: 16px; }
   .seo-animal-grid { grid-template-columns: 1fr; }
   .seo-hero-photos { grid-template-columns: 1fr 1fr; }
-  .seo-animal-card img, .seo-hero-photos img { height: 160px; }
+  .seo-hero-photos img { height: 160px; }
 }
 """
 
@@ -3639,6 +3690,7 @@ for (const [id, it] of Object.entries(cat)) {
     name: it.name,
     emoji: it.emoji || '',
     photo: String(it.photo || ''),
+    photoPosition: String(it.photoPosition || it.photoFocus || ''),
     photoCredit: String(it.photoCredit || ''),
     status: String(it.status || ''),
     blurb: String(it.blurb || it.one_liner || '').slice(0, 160),
@@ -3698,6 +3750,7 @@ for (const [id, rec] of Object.entries(byId)) {
     name: it.name,
     emoji: it.emoji || '',
     photo: String(it.photo || ''),
+    photoPosition: String(it.photoPosition || it.photoFocus || ''),
     photoCredit: String(it.photoCredit || ''),
     status: String(it.status || ''),
     blurb: String(it.blurb || it.one_liner || '').slice(0, 160),
@@ -4232,8 +4285,9 @@ def write_card_pages(
             photo = f"/field-pack/photos/{cid}.jpg?v=img2"
         elif (item.get("photo") or "").startswith("photos/"):
             photo = "/field-pack/" + str(item["photo"]).split("?")[0]
+        pos_attr = _photo_position_attr(_photo_position(item, c))
         img_html = (
-            f'<img class="card-page-photo" src="{esc(photo)}" alt="" width="640" height="400" decoding="async" />'
+            f'<img class="card-page-photo" src="{esc(photo)}" alt="" width="640" height="640" decoding="async"{pos_attr} />'
             if photo
             else f'<p class="card-page-emoji" aria-hidden="true">{esc(emoji)}</p>'
         )
@@ -4270,7 +4324,7 @@ def write_card_pages(
     .card-page {{ max-width: 28rem; margin: 0 auto; padding: 1rem 1rem 3rem; }}
     .card-page h1 {{ font-size: clamp(1.35rem, 4vw, 1.75rem); color: #0a4545; margin: 0.4rem 0; }}
     .card-page-venue a {{ color: #0f5c5c; font-weight: 750; }}
-    .card-page-photo {{ width: 100%; height: auto; border-radius: 14px; border: 1.5px solid rgba(15,92,92,.14); }}
+    .card-page-photo {{ width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 14px; border: 1.5px solid rgba(15,92,92,.14); }}
     .card-page-emoji {{ font-size: 3rem; margin: 0.5rem 0; }}
     .card-page-blurb {{ color: #3d4f6f; line-height: 1.45; }}
     .card-page-actions {{ display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem; }}
