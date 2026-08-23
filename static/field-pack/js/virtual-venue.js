@@ -1500,10 +1500,13 @@
     }
   }
 
-  function openHabitat(id, fromEl) {
+  function openHabitat(id, fromEl, opts) {
     const h = habitatById(id);
     if (!h || !dialog) return;
-    if (!canOpen(id)) {
+    const fromHash = Boolean(opts && opts.fromHash);
+    // Deep links (?tab=zoo#habitat=giraffe) skip the sequential "next stop"
+    // lock so Open Virtual Field Trip lands on that animal. Map taps still walk.
+    if (!fromHash && !canOpen(id)) {
       const n = nextHabitat();
       if (n && n.id !== id) {
         const el = mapMount && mapMount.querySelector(`[data-habitat="${n.id}"]`);
@@ -1624,7 +1627,7 @@
 
   function onHash() {
     const m = (location.hash || "").match(/habitat=([^&]+)/);
-    if (m) openHabitat(decodeURIComponent(m[1]));
+    if (m) openHabitat(decodeURIComponent(m[1]), null, { fromHash: true });
     else closeDialog();
   }
 
