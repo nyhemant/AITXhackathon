@@ -376,7 +376,7 @@ class FieldPackInternalLinkTests(unittest.TestCase):
 
         elephant = (FP / "cards" / "african-elephant" / "index.html").read_text(encoding="utf-8")
         self.assertIn('data-next-from="dallas-zoo"', elephant)
-        self.assertIn('href="/field-pack/cards/african-lion/"', elephant)
+        self.assertIn('href="/field-pack/cards/african-lion/?from=dallas-zoo"', elephant)
         self.assertIn("Next: African lion", elephant)
 
         for cid, href in DALLAS_CHAIN:
