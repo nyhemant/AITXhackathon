@@ -8,7 +8,7 @@
   "lat": 32.74,
   "lng": -117.15,
   "official_url": "https://zoo.sandiegozoo.org/",
-  "last_verified": "2026-08-16",
+  "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",
   "tagline": "Pandas and koalas first, then Elephant Odyssey.",
@@ -41,7 +41,7 @@
       },
       "catalog_id": "giant-panda",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "Giant panda",
       "presence_note": "Yun Chuan & Xin Bao at Denny Sanford Panda Ridge (returned 2024; featured 2026).",
@@ -70,39 +70,11 @@
       },
       "catalog_id": "koala",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "Koala",
       "presence_note": "Largest koala colony outside Australia.",
       "core": true
-    },
-    {
-      "id": "red_panda",
-      "label": "Red panda",
-      "emoji": "🦊",
-      "one_liner": "Red panda cousins near the giant pandas.",
-      "tags": [
-        "outdoor",
-        "climb"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Panda Ridge / Asia",
-      "qa_card": {
-        "question": "What did you notice about the Red panda?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "red-panda",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Red panda",
-      "presence_note": "Official red panda page.",
-      "core": false
     },
     {
       "id": "african_elephant",
@@ -127,20 +99,21 @@
       },
       "catalog_id": "african-elephant",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "African elephant",
       "presence_note": "African elephants at Elephant Odyssey.",
       "core": true
     },
     {
-      "id": "western_lowland_gorilla",
-      "label": "Western lowland gorilla",
-      "emoji": "🦍",
-      "one_liner": "Lost Forest gorilla family.",
+      "id": "african_penguin",
+      "label": "African penguin",
+      "emoji": "🐧",
+      "one_liner": "Africa Rocks penguin — waddle, then zoom in the water.",
       "tags": [
-        "outdoor",
-        "primates"
+        "birds",
+        "water",
+        "outdoor"
       ],
       "age_fit": [
         "2-3",
@@ -148,17 +121,60 @@
         "6-8",
         "9+"
       ],
-      "zone": "Lost Forest",
-      "qa_card": {
-        "question": "What did you notice about the Western lowland gorilla?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "western-lowland-gorilla",
+      "zone": "Africa Rocks",
+      "catalog_id": "african-penguin",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Western lowland gorilla",
-      "presence_note": "Gorilla Tropics.",
+      "display_label": "African penguin",
+      "core": true
+    },
+    {
+      "id": "polar_bear",
+      "label": "Polar bear",
+      "emoji": "🐻‍❄️",
+      "one_liner": "Northern Frontier polar bear — white coat, ice-and-water yard.",
+      "tags": [
+        "big",
+        "outdoor",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Northern Frontier",
+      "catalog_id": "polar-bear",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Polar bear",
+      "core": true
+    },
+    {
+      "id": "nile_hippo",
+      "label": "Nile hippo",
+      "emoji": "🦛",
+      "one_liner": "Urban Jungle hippo — watch the underwater window.",
+      "tags": [
+        "big",
+        "water",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Urban Jungle",
+      "catalog_id": "nile-hippo",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Nile hippo",
       "core": true
     },
     {
@@ -183,11 +199,39 @@
       },
       "catalog_id": "orangutan",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "Orangutan",
       "presence_note": "Sumatran orangutan on Orangutan Trail.",
-      "core": true
+      "core": false
+    },
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "emoji": "🦍",
+      "one_liner": "Lost Forest gorilla family.",
+      "tags": [
+        "outdoor",
+        "primates"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Lost Forest",
+      "qa_card": {
+        "question": "What did you notice about the Western lowland gorilla?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Western lowland gorilla",
+      "presence_note": "Gorilla Tropics.",
+      "core": false
     },
     {
       "id": "african_lion",
@@ -212,20 +256,20 @@
       },
       "catalog_id": "african-lion",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "African lion",
       "presence_note": "Official lion page.",
       "core": false
     },
     {
-      "id": "sumatran_tiger",
-      "label": "Tiger",
-      "emoji": "🐯",
-      "one_liner": "Asian Passage tiger — stripes in the shade.",
+      "id": "red_panda",
+      "label": "Red panda",
+      "emoji": "🦊",
+      "one_liner": "Red panda cousins near the giant pandas.",
       "tags": [
-        "big-cats",
-        "outdoor"
+        "outdoor",
+        "climb"
       ],
       "age_fit": [
         "2-3",
@@ -233,74 +277,18 @@
         "6-8",
         "9+"
       ],
-      "zone": "Asian Passage",
+      "zone": "Panda Ridge / Asia",
       "qa_card": {
-        "question": "What did you notice about the Sumatran tiger?",
+        "question": "What did you notice about the Red panda?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sumatran-tiger",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Tiger",
-      "presence_note": "Tiger Trail present; Malayan reported on-display 2025 — soft Tiger.",
-      "core": true
-    },
-    {
-      "id": "reticulated_giraffe",
-      "label": "Giraffe",
-      "emoji": "🦒",
-      "one_liner": "Africa giraffe — tall against the canyon.",
-      "tags": [
-        "tall",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Africa",
-      "qa_card": {
-        "question": "What did you notice about the Reticulated giraffe?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "reticulated-giraffe",
+      "catalog_id": "red-panda",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Giraffe",
-      "presence_note": "Masai giraffes at Urban Jungle — soft Giraffe.",
-      "core": true
-    },
-    {
-      "id": "two_toed_sloth",
-      "label": "Two-toed sloth",
-      "emoji": "🦥",
-      "one_liner": "Rainforest sloth — hang and look twice.",
-      "tags": [
-        "climb",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Special / rainforest",
-      "qa_card": {
-        "question": "What did you notice about the Two-toed sloth?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "two-toed-sloth",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Two-toed sloth",
-      "presence_note": "Official two-toed sloth page (ambassador appearances).",
-      "core": true
+      "display_label": "Red panda",
+      "presence_note": "Official red panda page.",
+      "core": false
     }
   ],
   "content_mode": "curated",
@@ -317,9 +305,28 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "research_notes": "map-img 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [minor]",
+  "research_notes": "map-img 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [minor]\n[2026-08-23] Official-source Wave 1 public list pass.",
   "list_confidence": "audited",
-  "do_not_list": [],
+  "do_not_list": [
+    {
+      "catalog_id": "reticulated-giraffe",
+      "name": "Reticulated giraffe",
+      "reason": "Wrong species label (Masai giraffes); dropped from Wave 1 list.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "sumatran-tiger",
+      "name": "Sumatran tiger",
+      "reason": "Wrong species label; dropped from Wave 1 list.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "two-toed-sloth",
+      "name": "Two-toed sloth",
+      "reason": "Ambassador appearances only; dropped from Wave 1 list.",
+      "as_of": "2026-08-23"
+    }
+  ],
   "route_90m": [
     "giant_panda",
     "koala",
@@ -337,10 +344,7 @@
       "koala",
       "red_panda",
       "orangutan",
-      "two_toed_sloth",
-      "sumatran_tiger",
       "western_lowland_gorilla",
-      "reticulated_giraffe",
       "african_lion"
     ],
     "challenges": [
@@ -367,24 +371,6 @@
       {
         "id": "sd_orang",
         "text": "Lost Forest orangutan: hands or feet doing the clever bit?",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "sd_sloth",
-        "text": "Sloth: how long for one arm move? (count Mississippis)",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "sd_tiger",
-        "text": "Tiger: water feature — yes/no in view?",
         "age_fit": [
           "4-5",
           "6-8",
