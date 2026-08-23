@@ -264,15 +264,44 @@ class FlagshipSessionTests(unittest.TestCase):
         self.assertIn(".seo-start-talk", seo)
         self.assertIn(".card-page-next a", seo)
 
+        # Shared selectors (not zoo-only) cover every place-page venue type.
+        self.assertNotIn("zoo-start-card", seo)
+        self.assertNotIn("zoo-animal-card", seo)
+
+        for slug in (
+            "dallas-zoo",
+            "houston-zoo",
+            "monterey-bay-aquarium",
+            "perot-museum",
+            "yellowstone",
+        ):
+            page = self._visible((FP / slug / "index.html").read_text(encoding="utf-8"))
+            start = page.split('id="route90-heading"', 1)[1].split("</section>", 1)[0]
+            home = page.split('id="at-home"', 1)[1].split("</section>", 1)[0]
+            self.assertIn('width="640" height="640"', start, slug)
+            self.assertIn('width="640" height="640"', home, slug)
+            self.assertNotIn('width="640" height="400"', start, slug)
+            self.assertNotIn('width="640" height="400"', home, slug)
+
         dallas = self._visible((FP / "dallas-zoo" / "index.html").read_text(encoding="utf-8"))
         start = dallas.split('id="route90-heading"', 1)[1].split("</section>", 1)[0]
-        home = dallas.split('id="at-home"', 1)[1].split("</section>", 1)[0]
-        self.assertIn('width="640" height="640"', start)
-        self.assertIn('width="640" height="640"', home)
         self.assertIn('style="object-position: 50% 18%"', start)
         self.assertIn("photos/reticulated-giraffe.jpg", start)
-        self.assertNotIn('width="640" height="400"', start)
-        self.assertNotIn('width="640" height="400"', home)
+
+        houston = self._visible((FP / "houston-zoo" / "index.html").read_text(encoding="utf-8"))
+        houston_start = houston.split('id="route90-heading"', 1)[1].split("</section>", 1)[0]
+        self.assertLess(
+            houston_start.find("western-lowland-gorilla"),
+            houston_start.find("chimpanzee"),
+        )
+        self.assertLess(
+            houston_start.find("chimpanzee"),
+            houston_start.find("african-lion"),
+        )
+
+        yellowstone = (FP / "yellowstone" / "index.html").read_text(encoding="utf-8")
+        self.assertIn('class="seo-park-hero', yellowstone)
+        self.assertIn('width="1280" height="720"', yellowstone)
 
         card = (FP / "cards" / "reticulated-giraffe" / "index.html").read_text(encoding="utf-8")
         self.assertIn('class="card-page-photo"', card)
