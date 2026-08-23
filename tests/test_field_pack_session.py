@@ -1,6 +1,9 @@
 """Flagship at-home session: honest start-here, 6-Q cards, no notice-stubs."""
 
+from collections import Counter
 from pathlib import Path
+import json
+import re
 import sys
 import unittest
 
@@ -318,6 +321,58 @@ class FlagshipSessionTests(unittest.TestCase):
         self.assertIn('width="640" height="640"', _card_thumb_img("photos/x.jpg", pos="50% 22%"))
         self.assertIn('style="object-position: 50% 22%"', _card_thumb_img("photos/x.jpg", pos="50% 22%"))
         self.assertNotIn("object-position", _card_thumb_img("photos/x.jpg"))
+
+    def test_every_catalog_place_page_uses_shared_square_frames(self):
+        """Zoo, aquarium, museum, and park place pages all share the 1:1 card rules."""
+        from generate_bdo_seo import venue_type_kind
+
+        seo = (FP / "css" / "seo-venue.css").read_text(encoding="utf-8")
+        self.assertNotRegex(seo, r"\.(zoo|aquarium|museum)-start-card")
+        self.assertNotRegex(seo, r"\.(zoo|aquarium|museum)-animal-card")
+        self.assertNotRegex(seo, r"\.(zoo|aquarium|museum)-home-card")
+        self.assertNotIn("data-venue-type", seo)
+        self.assertIn(".seo-start-card img", seo)
+        self.assertIn(".seo-home-card-media img", seo)
+        self.assertIn(".seo-animal-card img", seo)
+
+        img_wh = re.compile(r'width="(\d+)" height="(\d+)"')
+        kinds = Counter()
+        for path in sorted((FP / "data" / "venues").glob("*.json")):
+            venue = json.loads(path.read_text(encoding="utf-8"))
+            slug = venue.get("slug") or path.stem
+            kind = venue_type_kind(venue)
+            kinds[kind] += 1
+            html = (FP / slug / "index.html").read_text(encoding="utf-8")
+            visible = self._visible(html)
+            self.assertIn("seo-venue.css?v=28", html, slug)
+            start = visible.split('id="route90-heading"', 1)[1].split("</section>", 1)[0]
+            home = visible.split('id="at-home"', 1)[1].split("</section>", 1)[0]
+            for label, block in (("start", start), ("home", home)):
+                dims = img_wh.findall(block)
+                if dims:
+                    self.assertTrue(
+                        all(dim == ("640", "640") for dim in dims),
+                        f"{kind}/{slug} {label} not square: {dims}",
+                    )
+                else:
+                    self.assertIn(
+                        "seo-start-emoji",
+                        block,
+                        f"{kind}/{slug} {label} has neither square photo nor 1:1 emoji frame",
+                    )
+            if kind == "park":
+                self.assertIn('class="seo-park-hero', visible, slug)
+                hero = visible.split('class="seo-park-hero', 1)[1].split("</div>", 1)[0]
+                hero_dims = img_wh.findall(hero)
+                self.assertTrue(hero_dims, slug)
+                self.assertTrue(
+                    all(w != h for w, h in hero_dims),
+                    f"{slug} park hero is not a wide scene: {hero_dims}",
+                )
+
+        for kind in ("zoo", "aquarium", "museum", "park"):
+            self.assertGreater(kinds[kind], 0, kind)
+        self.assertEqual(sum(kinds.values()), 218)
 
 
 if __name__ == "__main__":
