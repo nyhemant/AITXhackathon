@@ -75,6 +75,9 @@ class HubVenueHashTests(unittest.TestCase):
         self.assertIn('href="/field-pack/#us-map">Map</a>', yellowstone)
 
     def test_hub_leaves_on_hash_and_pin_click(self):
+        index = (FP / "index.html").read_text(encoding="utf-8")
+        self.assertIn("location.replace(\"/field-pack/\" + encodeURIComponent(id) + \"/\")", index)
+        self.assertLess(index.find("location.replace(\"/field-pack/\""), index.find("landing-map.js"))
         js = MAP_JS.read_text(encoding="utf-8")
         self.assertIn("function resolveHubVenueHash(hash)", js)
         self.assertIn("function goToPlacePage(venueId, opts)", js)

@@ -2,6 +2,18 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      /* Hub #/venue/{id} is not a venue page — leave for /field-pack/{id}/ before the map paints. */
+      (function () {
+        var m = String(location.hash || "").match(/^#\/?venue\/([^/?#]+)/i);
+        if (!m) return;
+        try {
+          var id = decodeURIComponent(m[1]).trim();
+          if (!id || /[/?#\\]/.test(id) || id.indexOf("..") !== -1) return;
+          location.replace("/field-pack/" + encodeURIComponent(id) + "/");
+        } catch (e) {}
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="color-scheme" content="light" />
     <title>Field Trip Kit — Explore a Zoo at Home or Print a Hunt · 1Less</title>
