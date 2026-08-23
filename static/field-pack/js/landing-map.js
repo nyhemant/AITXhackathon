@@ -1252,7 +1252,7 @@
 
       const activate = () => {
         if (n > 1) showClusterPicker(cl.places);
-        else setVenue(cl.places[0].id, { fromPin: true });
+        else goToPlacePage(cl.places[0].id);
       };
 
       g.addEventListener("click", (e) => {
@@ -1322,7 +1322,7 @@
       btn.addEventListener("click", () => {
         const id = btn.getAttribute("data-venue-id");
         clusterFocusIds = [];
-        setVenue(id, { fromPin: true });
+        goToPlacePage(id);
       });
     });
   }
@@ -1366,17 +1366,46 @@
     return `/field-pack/${photo}`;
   }
 
+  function placePagePath(venueId) {
+    const id = String(venueId || "").trim();
+    if (!id || /[/?#\\]/.test(id) || id.includes("..")) return "";
+    return `/field-pack/${encodeURIComponent(id)}/`;
+  }
+
+  /** Hub hashes that used to open a second venue panel. Place page is canonical. */
+  function resolveHubVenueHash(hash) {
+    const m = String(hash || "").match(/^#\/?venue\/([^/?#]+)/i);
+    if (!m) return "";
+    try {
+      return placePagePath(decodeURIComponent(m[1]));
+    } catch {
+      return "";
+    }
+  }
+
+  function goToPlacePage(venueId, opts) {
+    const href = placePagePath(venueId);
+    if (!href) return false;
+    if (opts && opts.replace) location.replace(href);
+    else location.assign(href);
+    return true;
+  }
+
   function syncVenueHash(venueId) {
-    const next = venueId ? `#/venue/${encodeURIComponent(venueId)}` : "#us-map";
-    if (location.hash !== next) {
-      history.replaceState(null, "", next);
+    // Do not write #/venue/{id} on the hub — that hash now leaves for the place page.
+    if (venueId) return;
+    if (/^#\/?venue\//i.test(location.hash || "")) {
+      history.replaceState(null, "", "#us-map");
     }
   }
 
   function venueIdFromHash() {
-    const m = (location.hash || "").match(/^#\/venue\/([^/?#]+)/);
+    const m = (location.hash || "").match(/^#\/?venue\/([^/?#]+)/i);
     return m ? decodeURIComponent(m[1]) : "";
   }
+
+  window.fpPlacePagePath = placePagePath;
+  window.fpResolveHubVenueHash = resolveHubVenueHash;
 
   /** SEO pages with live mission generator — full set from mission-pilots.js */
   const MISSION_PILOTS =
@@ -1487,6 +1516,7 @@
 
   async function setVenue(venueId, opts = {}) {
     const skipHash = opts.skipHash === true;
+    const stayOnMap = opts.stayOnMap === true;
     if (!venueId) {
       selectedVenueId = "";
       clusterFocusIds = [];
@@ -1496,6 +1526,9 @@
       if (!skipHash) syncVenueHash("");
       return;
     }
+    // Pin, dropdown, and hash: leave the hub for the SEO place page.
+    // stayOnMap is only for city-chip focus (not a second venue page).
+    if (!stayOnMap && goToPlacePage(venueId)) return;
     clusterFocusIds = [];
     selectedVenueId = venueId;
     const p = placeById(venueId);
@@ -1550,7 +1583,8 @@
     fillLocationSelect();
     fillVenueSelect();
     venueSelect.value = venueId;
-    showVenueDetail(venueId);
+    // Mid-browse map focus: pin chip only — not a second full venue page.
+    showOverview();
     renderPins();
     // Frame the place without hiding siblings
     if (p && opts.fromPin !== false) {
@@ -1564,9 +1598,9 @@
     }
   }
 
-  // Allow ready-cards / external links: /field-pack/#/venue/dallas-zoo
+  // City-chip fallback: focus the pin. Venue clicks use goToPlacePage.
   window.fpSelectVenueOnMap = (id) => {
-    void setVenue(id);
+    void setVenue(id, { stayOnMap: true, skipHash: true });
   };
 
   async function loadBasemap(kind) {
@@ -1660,6 +1694,23 @@
   }
 
   async function boot() {
+    // Deep link: /field-pack/#/venue/houston-zoo → /field-pack/houston-zoo/
+    const fromHash = resolveHubVenueHash(location.hash);
+    if (fromHash) {
+      location.replace(fromHash);
+      return;
+    }
+    window.addEventListener("hashchange", () => {
+      const dest = resolveHubVenueHash(location.hash);
+      if (dest) {
+        location.replace(dest);
+        return;
+      }
+      if (!venueIdFromHash() && selectedVenueId) {
+        void setVenue("", { skipHash: true });
+      }
+    });
+
     const jsFallback = document.getElementById("map-fallback");
     if (jsFallback) jsFallback.hidden = true;
     if (scopeTop) scopeTop.addEventListener("click", () => void setScope("top"));
@@ -1726,7 +1777,11 @@
         else setZoom(mapScope === "more" ? 1.15 : 1);
       });
     }
-    venueSelect.addEventListener("change", () => void setVenue(venueSelect.value));
+    venueSelect.addEventListener("change", () => {
+      const id = venueSelect.value;
+      if (id) goToPlacePage(id);
+      else void setVenue("");
+    });
 
     btnZoomIn?.addEventListener("click", () => {
       if (!mapViewport) return setZoom(zoom * 1.35);
@@ -1832,20 +1887,6 @@
     // Type tabs: All | Zoos | Aquariums | Museums (filters map + directory)
     wirePlaceTypeTabs();
     bindCatalogPrintClicks();
-
-    // Deep link: /field-pack/#/venue/dallas-zoo (intl ids switch basemap)
-    const fromHash = venueIdFromHash();
-    if (fromHash && placeById(fromHash)) {
-      await setVenue(fromHash, { skipHash: true, scroll: true });
-    }
-    window.addEventListener("hashchange", () => {
-      const id = venueIdFromHash();
-      if (id && placeById(id)) {
-        if (id !== selectedVenueId) void setVenue(id, { skipHash: true, scroll: true });
-      } else if (!id && selectedVenueId) {
-        void setVenue("", { skipHash: true });
-      }
-    });
   }
 
   /** Swap Ready strip for US vs international map scope. */

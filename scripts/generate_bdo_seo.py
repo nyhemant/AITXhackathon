@@ -1829,7 +1829,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
         raise SystemExit(f"Venue id collides with reserved path: {vid}")
     url = f"{SITE}/field-pack/{vid}/"
     app_href = f"/field-pack/app.html#/venue/{vid}"
-    map_href = f"/field-pack/#/venue/{vid}"
+    map_href = "/field-pack/#us-map"
     place, _, _ = type_bits(v)
 
     def soft_title(s: str) -> str:
@@ -2094,7 +2094,7 @@ def render_venue_page(v: dict) -> str:
         raise SystemExit(f"Venue id collides with reserved path: {vid}")
     url = f"{SITE}/field-pack/{vid}/"
     app_href = f"/field-pack/app.html#/venue/{vid}"
-    map_href = f"/field-pack/#/venue/{vid}"
+    map_href = "/field-pack/#us-map"
     place, things, _ = type_bits(v)
     # Apostrophe-safe title case (avoid Children'S)
     def soft_title(s: str) -> str:

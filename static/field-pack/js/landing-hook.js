@@ -406,7 +406,7 @@
     });
   });
 
-  // Ready cards go to the place page (at-home session). Hash /#/venue/ stays as a map alias.
+  // Ready cards go to the place page (at-home session). Hub /#/venue/{id} also leaves for that page.
   if (grid && READY.length) {
     grid.innerHTML = READY.map((p) => {
       const href = `/field-pack/${encodeURIComponent(p.id)}/`;
