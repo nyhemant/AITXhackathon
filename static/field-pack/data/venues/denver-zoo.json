@@ -8,8 +8,9 @@
   "lat": 39.75,
   "lng": -104.95,
   "official_url": "https://denverzoo.org/",
+  "last_verified": "2026-08-07",
   "verified_by": "research",
-  "status": "partial",
+  "status": "verified",
   "tagline": "Starter list from published zoo cards still honest on official Denver pages.",
   "practical": {
     "typical_duration": "half day",

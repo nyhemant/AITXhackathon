@@ -807,6 +807,8 @@ _START_HERE_NEXT_SLUGS = (
 _START_HERE_NEXT: dict[str, list[dict[str, str]]] | None = None
 _START_HERE_KITS: dict[str, list[str]] | None = None
 _START_HERE_SITES: dict[str, str] | None = None
+# Catalog animals with no published card page (Wave 1 polar-bear). Do not invent one.
+NEVER_PUBLISH_CARD_IDS = frozenset({"polar-bear"})
 _PUBLISHED_CARD_IDS: set[str] | None = None
 
 
@@ -823,7 +825,7 @@ def published_card_ids() -> set[str]:
         _PUBLISHED_CARD_IDS = {
             p.parent.name
             for p in (FIELD / "cards").glob("*/index.html")
-            if p.is_file()
+            if p.is_file() and p.parent.name not in NEVER_PUBLISH_CARD_IDS
         }
     return _PUBLISHED_CARD_IDS
 
@@ -832,7 +834,8 @@ def item_public_href(item_id: str, venue_id: str = "", *, extra_query: str = "")
     """Parent-facing item URL.
 
     Published cards keep /field-pack/cards/<id>/. Unpublished cards are not
-    invented — retarget to the outing item hash on that venue.
+    invented — stay on the place page. Wonder w-* ids are not outing cards
+    and must not emit #/venue/<id>/item/<w-*> hashes (itemOnVenue rewrites them).
     """
     iid = (item_id or "").strip()
     vid = (venue_id or "").strip()
@@ -845,12 +848,15 @@ def item_public_href(item_id: str, venue_id: str = "", *, extra_query: str = "")
             href += "?" + q
         return href
     if vid:
-        return f"/field-pack/app.html#/venue/{esc(vid)}/item/{esc(iid)}"
+        return f"/field-pack/{esc(vid)}/#at-home"
     return "/field-pack/cards/"
 
 
 def start_here_card_href(item_id: str, slug: str = "") -> str:
     """Public card href. Wave 1 + Wave 2a start-here cards keep ?from={slug}."""
+    iid = (item_id or "").strip()
+    if iid and iid not in published_card_ids():
+        return "#at-home"
     return item_public_href(item_id, slug, extra_query=kit_from_query(slug))
 
 
@@ -1165,6 +1171,8 @@ def unique_body(
                 if item_id
                 else f"/field-pack/{esc(v['id'])}/#at-home"
             )
+            if item_id and item_id not in published_card_ids():
+                href = "#at-home"
             cards.append(
                 f"""<a class="seo-animal-card" href="{href}" role="listitem">
           {card_inner}
@@ -4133,6 +4141,7 @@ def write_cards_hub(venues: list[dict]) -> str:
             return "/field-pack/cards/"
 
     venues_by_id = {v["id"]: v for v in venues}
+    cards = [c for c in cards if (c.get("id") or "") in published_card_ids()]
     grouped = group_cards_by_hub_section(cards)
     sections = [
         (sid, label, grouped.get(sid) or [])
@@ -4354,6 +4363,8 @@ def write_card_pages(
         if not cid or "/" in cid or ".." in cid:
             continue
         if only_ids is not None and cid not in only_ids:
+            continue
+        if cid not in published_card_ids():
             continue
         item = enrich_item(c)
         vid = c.get("venue") or ""

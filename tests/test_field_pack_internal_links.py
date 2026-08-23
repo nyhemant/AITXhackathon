@@ -84,7 +84,7 @@ VFT_JSON = {
 }
 DALLAS_CHAIN = (
     ("reticulated-giraffe", "/field-pack/cards/african-elephant/?from=dallas-zoo"),
-    ("african-elephant", "/field-pack/cards/african-lion/"),
+    ("african-elephant", "/field-pack/cards/african-lion/?from=dallas-zoo"),
 )
 
 

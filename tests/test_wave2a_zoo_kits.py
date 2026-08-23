@@ -266,6 +266,9 @@ class StartHereFromAndNextTests(unittest.TestCase):
         self.assertIn("from=national-zoo", html)
         self.assertIn("from=san-diego-zoo", html)
 
+    def test_polar_bear_stays_unpublished(self):
+        self.assertFalse((FP / "cards" / "polar-bear" / "index.html").is_file())
+
     def test_no_aquarium_only_on_wave2a_place_pages(self):
         kinds = load_card_kinds()
         aquarium = [s for s, row in kinds.items() if row["kind"] == AQUARIUM_ONLY_KIND]
