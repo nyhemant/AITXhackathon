@@ -8,10 +8,10 @@
   "lat": 34.15,
   "lng": -118.28,
   "official_url": "https://www.lazoo.org/",
-  "last_verified": "2026-08-07",
+  "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Griffith Park classic — elephants, chimps, and a finishable hillside loop.",
+  "tagline": "Chimps, gorillas, and orangutans — the elephant program is paused.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Hills and sun — bring water and a stroller with good brakes.",
@@ -22,10 +22,9 @@
       "id": "chimpanzee",
       "label": "Chimpanzee",
       "emoji": "🐵",
-      "one_liner": "Chimp social hour — watch faces and gestures.",
+      "one_liner": "One of the largest chimp troops in a U.S. zoo.",
       "tags": [
         "primates",
-        "outdoor",
         "play"
       ],
       "age_fit": [
@@ -34,22 +33,23 @@
         "6-8",
         "9+"
       ],
-      "zone": "Chimps",
+      "zone": "Chimpanzees of the Mahale Mountains",
       "qa_card": {
         "question": "What did you notice about the Chimpanzee?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "chimpanzee",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Chimpanzee"
+      "display_label": "Chimpanzee",
+      "core": true
     },
     {
       "id": "western_lowland_gorilla",
       "label": "Western lowland gorilla",
       "emoji": "🦍",
-      "one_liner": "Quiet strength in the gorilla yard.",
+      "one_liner": "Campo gorillas — gentle giants in the reserve.",
       "tags": [
         "primates",
         "outdoor"
@@ -60,24 +60,26 @@
         "6-8",
         "9+"
       ],
-      "zone": "Gorillas",
+      "zone": "Campo Gorilla Reserve",
       "qa_card": {
         "question": "What did you notice about the Western lowland gorilla?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "western-lowland-gorilla",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Western lowland gorilla"
+      "display_label": "Western lowland gorilla",
+      "core": true
     },
     {
-      "id": "reticulated_giraffe",
-      "label": "Giraffe",
-      "emoji": "🦒",
-      "one_liner": "Tall necks above the path.",
+      "id": "orangutan",
+      "label": "Orangutan",
+      "emoji": "🦧",
+      "one_liner": "Bornean orangutan — long arms in the trees.",
       "tags": [
-        "tall",
+        "primates",
+        "climb",
         "outdoor"
       ],
       "age_fit": [
@@ -86,51 +88,26 @@
         "6-8",
         "9+"
       ],
-      "zone": "Giraffes",
+      "zone": "Red Ape Rainforest",
       "qa_card": {
-        "question": "What did you notice about the Reticulated giraffe?",
+        "question": "What did you notice about the Orangutan?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "reticulated-giraffe",
+      "catalog_id": "orangutan",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Giraffe",
-      "presence_note": "Masai not reticulated"
-    },
-    {
-      "id": "african_lion",
-      "label": "African lion",
-      "emoji": "🦁",
-      "one_liner": "Lions with a city-skyline backdrop vibe.",
-      "tags": [
-        "big-cats",
-        "outdoor",
-        "sound"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Big cats",
-      "qa_card": {
-        "question": "What did you notice about the African lion?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "african-lion",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "African lion"
+      "display_label": "Orangutan",
+      "core": true
     },
     {
       "id": "sumatran_tiger",
-      "label": "Tiger",
+      "label": "Sumatran tiger",
       "emoji": "🐯",
-      "one_liner": "Stripes in the forested cat areas.",
+      "one_liner": "Sumatran tiger — orange stripes in the trees.",
       "tags": [
         "big-cats",
+        "pattern",
         "outdoor"
       ],
       "age_fit": [
@@ -139,21 +116,52 @@
         "6-8",
         "9+"
       ],
-      "zone": "Big cats",
+      "zone": "Mammals",
       "qa_card": {
         "question": "What did you notice about the Sumatran tiger?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sumatran-tiger",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Tiger"
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Sumatran tiger",
+      "core": true
     },
     {
-      "id": "red_panda",
-      "label": "Red panda",
-      "emoji": "🦊",
-      "one_liner": "Red panda fluff if they’re awake in the trees.",
+      "id": "zebra",
+      "label": "Zebra",
+      "emoji": "🦓",
+      "one_liner": "Grevy's zebra — every stripe set is unique.",
+      "tags": [
+        "pattern",
+        "outdoor",
+        "savanna"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Africa",
+      "qa_card": {
+        "question": "What did you notice about the Zebra?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "zebra",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Zebra",
+      "core": true,
+      "presence_note": "Official mammals list: Grevy's zebra."
+    },
+    {
+      "id": "two_toed_sloth",
+      "label": "Two-toed sloth",
+      "emoji": "🦥",
+      "one_liner": "Linné's two-toed sloth — hang and look twice.",
       "tags": [
         "climb",
         "outdoor"
@@ -164,24 +172,55 @@
         "6-8",
         "9+"
       ],
-      "zone": "Asia",
+      "zone": "Mammals",
       "qa_card": {
-        "question": "What did you notice about the Red panda?",
+        "question": "What did you notice about the Two-toed sloth?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "red-panda",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Red panda"
+      "catalog_id": "two-toed-sloth",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Two-toed sloth",
+      "core": false
+    },
+    {
+      "id": "ring_tailed_lemur",
+      "label": "Ring-tailed lemur",
+      "emoji": "🐒",
+      "one_liner": "Ring-tailed lemur — striped tail and a long stare.",
+      "tags": [
+        "primates",
+        "pattern",
+        "climb"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Mammals",
+      "qa_card": {
+        "question": "What did you notice about the Ring-tailed lemur?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "ring-tailed-lemur",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Ring-tailed lemur",
+      "core": false
     },
     {
       "id": "caribbean_flamingo",
       "label": "Flamingo",
       "emoji": "🦩",
-      "one_liner": "Bright pink flock — easy first find.",
+      "one_liner": "Flamingo Mingle flock — long legs in the shallows.",
       "tags": [
-        "outdoor",
-        "color"
+        "birds",
+        "color",
+        "water"
       ],
       "age_fit": [
         "2-3",
@@ -191,63 +230,16 @@
       ],
       "zone": "Birds",
       "qa_card": {
-        "question": "What did you notice about the Caribbean flamingo?",
+        "question": "What did you notice about the Flamingo?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "caribbean-flamingo",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Flamingo"
-    },
-    {
-      "id": "galapagos_tortoise",
-      "label": "Galápagos tortoise",
-      "emoji": "🐢",
-      "one_liner": "Slow giants on land.",
-      "tags": [
-        "outdoor",
-        "slow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Reptiles",
-      "qa_card": {
-        "question": "What did you notice about the Galápagos tortoise?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "galapagos-tortoise",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Galápagos tortoise"
-    },
-    {
-      "id": "ring_tailed_lemur",
-      "label": "Ring-tailed lemur",
-      "emoji": "🐒",
-      "one_liner": "Ring tails and bright eyes.",
-      "tags": [
-        "primates",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Primates",
-      "qa_card": {
-        "question": "What did you notice about the Ring-tailed lemur?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "ring-tailed-lemur",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Ring-tailed lemur"
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Flamingo",
+      "core": false,
+      "presence_note": "Official calendar lists Flamingo Mingle; soft Flamingo."
     }
   ],
   "content_mode": "curated",
@@ -264,75 +256,70 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "research_notes": "map-page 2026-08-07 · presence-audit 2026-08-08 [critical]",
-  "list_confidence": "partial",
+  "research_notes": "[2026-08-23] Official-source Wave 2a public list pass (lazoo.org mammals + elephant relocation news).",
+  "list_confidence": "audited",
   "do_not_list": [
     {
       "catalog_id": "african-elephant",
       "name": "African elephant",
-      "reason": "LA Zoo ended elephant program 2025; remaining Asian elephants moved to Tulsa. Exhibit empty.",
-      "as_of": "2026-08-08"
+      "reason": "Official Apr 2025: remaining Asian elephants moved to Tulsa; elephant program paused.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "reticulated-giraffe",
+      "name": "Reticulated giraffe",
+      "reason": "Official mammals list: Masai giraffe, not reticulated.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "nile-hippo",
+      "name": "Nile hippo",
+      "reason": "Not on the current official mammals list.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "african-lion",
+      "name": "African lion",
+      "reason": "Not on the current official mammals list.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "Not on the current official animals list.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "koala",
+      "name": "Koala",
+      "reason": "Not on the current official mammals list.",
+      "as_of": "2026-08-23"
     }
   ],
   "route_90m": [
-    "western_lowland_gorilla",
     "chimpanzee",
-    "reticulated_giraffe"
+    "western_lowland_gorilla",
+    "orangutan"
   ],
   "presence_sources": [
-    "https://lazoo.org/",
+    "https://www.lazoo.org/",
     "https://lazoo.org/explore-your-zoo/our-animals/mammals/",
-    "https://lazoo.org/2025/04/elephantnews/"
+    "https://lazoo.org/2025/04/elephantnews/",
+    "https://lazoo.org/plan-your-visit/shows-activities/"
   ],
   "bonus_hunt": {
-    "tagline": "LA Zoo bonus · rainforest + elephants + condor cues",
+    "tagline": "LA Zoo bonus · great apes + tiger + flamingo mingle",
     "find_ids": [
-      "western_lowland_gorilla",
-      "reticulated_giraffe",
-      "chimpanzee"
+      "sumatran_tiger",
+      "zebra",
+      "two_toed_sloth",
+      "ring_tailed_lemur",
+      "caribbean_flamingo"
     ],
     "challenges": [
       {
-        "id": "la_gorilla",
-        "text": "Gorilla hands or rest",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "la_el",
-        "text": "Elephant trunk job",
-        "age_fit": [
-          "2-3",
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "la_giraffe",
-        "text": "Giraffe neck geometry",
-        "age_fit": [
-          "2-3",
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
         "id": "la_chimp",
-        "text": "Chimp face one word",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "la_local",
-        "text": "Koala or Aussie: awake or sleep?",
+        "text": "Chimp Chat yard: hands used like tools (hold, climb, poke)?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -341,8 +328,28 @@
         ]
       },
       {
-        "id": "la_meerkat",
-        "text": "Meerkat sentry pose yes/no",
+        "id": "la_gorilla",
+        "text": "Gorilla Talk: who looks calmest?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "la_orang",
+        "text": "Orangutan: hands or feet doing the clever bit?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "la_flam",
+        "text": "Flamingo Mingle: more than half on one leg?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -351,12 +358,13 @@
         ]
       }
     ],
-    "easter_egg": "★ Easter egg: find condor or rainforest on the map",
-    "easter_egg_little": "★ Easter egg: after the hard list — one free minute at a favorite stop",
-    "researched": "2026-08-08",
-    "status": "researched",
+    "easter_egg": "★ Easter egg: find this zoo on a map/sign and point to a habitat you have not visited yet",
+    "easter_egg_little": "★ Easter egg: pick a favorite stop and tell a grown-up why",
     "sources": [
-      "https://www.lazoo.org/"
-    ]
-  }
+      "https://lazoo.org/explore-your-zoo/our-animals/mammals/"
+    ],
+    "researched": "2026-08-23",
+    "status": "researched"
+  },
+  "last_presence_audit": "2026-08-23"
 }

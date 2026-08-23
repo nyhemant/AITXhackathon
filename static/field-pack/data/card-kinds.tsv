@@ -1,0 +1,58 @@
+slug	title	hub	kind
+african-elephant	African elephant	wildlife	zoo
+african-lion	African lion	wildlife	zoo
+cheetah	Cheetah	wildlife	zoo
+chimpanzee	Chimpanzee	wildlife	zoo
+galapagos-tortoise	Galápagos tortoise	wildlife	zoo
+giant-panda	Giant panda	wildlife	zoo
+koala	Koala	wildlife	zoo
+nile-hippo	Nile hippo	wildlife	zoo
+orangutan	Orangutan	wildlife	zoo
+ostrich	Ostrich	wildlife	zoo
+red-panda	Red panda	wildlife	zoo
+reticulated-giraffe	Reticulated giraffe	wildlife	zoo
+ring-tailed-lemur	Ring-tailed lemur	wildlife	zoo
+sumatran-tiger	Sumatran tiger	wildlife	zoo
+warthog	Warthog	wildlife	zoo
+western-lowland-gorilla	Western lowland gorilla	wildlife	zoo
+zebra	Zebra	wildlife	zoo
+african-penguin	African penguin	wildlife	both
+asian-small-clawed-otter	Asian small-clawed otter	wildlife	both
+caribbean-flamingo	Caribbean flamingo	wildlife	both
+two-toed-sloth	Two-toed sloth	wildlife	both
+freshwater-fish	River / lake fish	sealife	both
+shark	Shark	sealife	both
+clownfish	Clownfish	sealife	aquarium
+crab	Crab	sealife	aquarium
+eel	Eel	sealife	aquarium
+jellyfish	Jellyfish	sealife	aquarium
+octopus	Octopus	sealife	aquarium
+starfish	Sea star	sealife	aquarium
+sea-turtle	Sea turtle	sealife	aquarium
+seahorse	Seahorse	sealife	aquarium
+stingray	Stingray	sealife	aquarium
+puffin	Puffin	sealife	aquarium
+sea-otter	Sea otter	sealife	aquarium
+manta-ray	Manta ray	sealife	aquarium
+kelp-forest	Kelp forest	sealife	aquarium
+cuttlefish	Cuttlefish	sealife	aquarium
+whale-shark	Whale shark	sealife	aquarium
+cm-outdoor	Outdoor Area	attractions	neither
+cm-toddler-garden	Toddler Garden	attractions	neither
+cm-imaginarium	Imaginarium	attractions	neither
+cm-woven	Woven Wonders	attractions	neither
+cm-makery	Makery	attractions	neither
+cm-art-lab	Art Lab	attractions	neither
+cm-free-explore	Free explore	attractions	neither
+sci-dinosaur	Dinosaur hall	attractions	neither
+sci-mammal-hall	Animal / mammal hall	attractions	neither
+sci-planet	Planet / space hall	attractions	neither
+sci-hands-on	Hands-on lab	attractions	neither
+sci-rainforest	Rainforest dome	attractions	neither
+sci-aquarium-zone	Aquarium zone	attractions	neither
+sci-rocket	Rockets & launch	attractions	neither
+sci-astronaut	Astronaut training	attractions	neither
+american-alligator	American alligator	parks	neither
+american-bison	American bison	parks	neither
+elk	Elk	parks	neither
+cuyahoga-towpath	Towpath trail	parks	neither

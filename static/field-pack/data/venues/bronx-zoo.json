@@ -8,10 +8,10 @@
   "lat": 40.85,
   "lng": -73.88,
   "official_url": "https://bronxzoo.com/",
-  "last_verified": "2026-08-07",
+  "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "NYC’s big zoo day — Congo gorillas, Madagascar, and tiger mountain energy.",
+  "tagline": "Congo Gorilla Forest, then a Himalayan red panda and flamingo flock.",
   "practical": {
     "typical_duration": "half to full day",
     "ticket_note": "Pay-what-you-wish Wednesdays historically — confirm current rules.",
@@ -20,13 +20,12 @@
   "items": [
     {
       "id": "western_lowland_gorilla",
-      "label": "Western lowland gorilla",
+      "label": "Gorilla",
       "emoji": "🦍",
-      "one_liner": "Immersive gorilla habitat — a Bronx signature.",
+      "one_liner": "Congo gorillas — each has a unique personality.",
       "tags": [
         "primates",
-        "outdoor",
-        "wow"
+        "outdoor"
       ],
       "age_fit": [
         "2-3",
@@ -36,22 +35,78 @@
       ],
       "zone": "Congo Gorilla Forest",
       "qa_card": {
-        "question": "What did you notice about the Western lowland gorilla?",
+        "question": "What did you notice about the Gorilla?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "western-lowland-gorilla",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Western lowland gorilla",
-      "presence_note": "Congo Gorilla Forest flagship."
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Gorilla",
+      "core": true
     },
     {
-      "id": "sumatran_tiger",
-      "label": "Sumatran tiger",
-      "emoji": "🐯",
-      "one_liner": "Tigers at eye level through glass.",
+      "id": "red_panda",
+      "label": "Red panda",
+      "emoji": "🦊",
+      "one_liner": "Himalayan Highlands red panda — rusty and tree-high.",
       "tags": [
-        "big-cats",
+        "climb",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Himalayan Highlands",
+      "qa_card": {
+        "question": "What did you notice about the Red panda?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "red-panda",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Red panda",
+      "core": true
+    },
+    {
+      "id": "caribbean_flamingo",
+      "label": "Caribbean flamingo",
+      "emoji": "🦩",
+      "one_liner": "Sea Bird Aviary flamingo flock — long legs in the shallows.",
+      "tags": [
+        "birds",
+        "color",
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Aquatic Bird House",
+      "qa_card": {
+        "question": "What did you notice about the Caribbean flamingo?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "caribbean-flamingo",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Caribbean flamingo",
+      "core": true
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Giraffe",
+      "emoji": "🦒",
+      "one_liner": "Carter giraffe — indoor or African Plains outdoor yard.",
+      "tags": [
+        "tall",
         "outdoor",
         "wow"
       ],
@@ -61,155 +116,28 @@
         "6-8",
         "9+"
       ],
-      "zone": "Tiger Mountain",
+      "zone": "Carter Giraffe Building",
       "qa_card": {
-        "question": "What did you notice about the Sumatran tiger?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "sumatran-tiger",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Sumatran tiger",
-      "presence_note": "Tiger mountain / Madagascan etc. — tiger program strong; Sumatran historically used."
-    },
-    {
-      "id": "african_lion",
-      "label": "African lion",
-      "emoji": "🦁",
-      "one_liner": "Lions on the plains overlook.",
-      "tags": [
-        "big-cats",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "African Plains",
-      "qa_card": {
-        "question": "What did you notice about the African lion?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "african-lion",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "African lion",
-      "presence_note": "African Plains."
-    },
-    {
-      "id": "african_elephant",
-      "label": "African elephant",
-      "emoji": "🐘",
-      "one_liner": "Elephants when on the walking route.",
-      "tags": [
-        "big",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Elephants",
-      "qa_card": {
-        "question": "What did you notice about the African elephant?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "african-elephant",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "African elephant",
-      "presence_note": "Elephant family / African plains — confirm current."
-    },
-    {
-      "id": "reticulated_giraffe",
-      "label": "Giraffe",
-      "emoji": "🦒",
-      "one_liner": "Giraffes above the acacias.",
-      "tags": [
-        "tall",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "African Plains",
-      "qa_card": {
-        "question": "What did you notice about the Reticulated giraffe?",
+        "question": "What did you notice about the Giraffe?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "reticulated-giraffe",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Giraffe"
-    },
-    {
-      "id": "ring_tailed_lemur",
-      "label": "Ring-tailed lemur",
-      "emoji": "🐒",
-      "one_liner": "Lemurs hopping through the Madagascar building.",
-      "tags": [
-        "primates",
-        "play",
-        "wow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Madagascar",
-      "qa_card": {
-        "question": "What did you notice about the Ring-tailed lemur?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "ring-tailed-lemur",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Ring-tailed lemur",
-      "presence_note": "Madagascar!"
-    },
-    {
-      "id": "nile_hippo",
-      "label": "Nile hippo",
-      "emoji": "🦛",
-      "one_liner": "Hippos near water features.",
-      "tags": [
-        "big",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Africa",
-      "qa_card": {
-        "question": "What did you notice about the Nile hippo?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "nile-hippo",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Nile hippo",
-      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract."
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Giraffe",
+      "core": true,
+      "presence_note": "Official Our Animals lists Giraffe; soft Giraffe."
     },
     {
       "id": "zebra",
       "label": "Zebra",
       "emoji": "🦓",
-      "one_liner": "Stripes mixed with the plains herds.",
+      "one_liner": "Grevy's zebra on African Plains — every pattern is unique.",
       "tags": [
         "pattern",
-        "outdoor"
+        "outdoor",
+        "savanna"
       ],
       "age_fit": [
         "2-3",
@@ -223,15 +151,18 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "zebra",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Zebra"
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Zebra",
+      "core": true,
+      "presence_note": "Official: Grevy's zebra."
     },
     {
-      "id": "red_panda",
-      "label": "Red panda",
-      "emoji": "🦊",
-      "one_liner": "Red panda fluff if scheduled on-view.",
+      "id": "two_toed_sloth",
+      "label": "Two-toed sloth",
+      "emoji": "🦥",
+      "one_liner": "Linne's two-toed sloth — hang and look twice.",
       "tags": [
         "climb",
         "outdoor"
@@ -242,15 +173,44 @@
         "6-8",
         "9+"
       ],
-      "zone": "Wild Asia / special",
+      "zone": "Children's Zoo",
       "qa_card": {
-        "question": "What did you notice about the Red panda?",
+        "question": "What did you notice about the Two-toed sloth?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "red-panda",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Red panda"
+      "catalog_id": "two-toed-sloth",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Two-toed sloth",
+      "core": false
+    },
+    {
+      "id": "asian_small_clawed_otter",
+      "label": "Asian small-clawed otter",
+      "emoji": "🦦",
+      "one_liner": "JungleWorld otters — smallest otter, biggest splash.",
+      "tags": [
+        "play",
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "JungleWorld",
+      "qa_card": {
+        "question": "What did you notice about the Asian small-clawed otter?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Asian small-clawed otter",
+      "core": false
     }
   ],
   "content_mode": "curated",
@@ -267,40 +227,74 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "research_notes": "map-img 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [minor]",
-  "list_confidence": "partial",
+  "research_notes": "[2026-08-23] Official-source Wave 2a public list pass (bronxzoo.com/animals/our-animals).",
+  "list_confidence": "audited",
   "do_not_list": [
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Official: Asian Elephant on the Wild Asia Monorail.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "sumatran-tiger",
+      "name": "Sumatran tiger",
+      "reason": "Official: Amur tiger and Malayan tiger at Tiger Mountain.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "Official: little penguin and Magellanic penguin, not African.",
+      "as_of": "2026-08-23"
+    },
     {
       "catalog_id": "galapagos-tortoise",
       "name": "Galápagos tortoise",
-      "reason": "Bronx animals imagery features Aldabra tortoise.",
-      "as_of": "2026-08-08"
+      "reason": "Official: Aldabra tortoise at Zoo Center.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "ring-tailed-lemur",
+      "name": "Ring-tailed lemur",
+      "reason": "Official Madagascar list: red ruffed lemur, not ring-tailed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "african-lion",
+      "name": "African lion",
+      "reason": "Not on the current official Our Animals list.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "nile-hippo",
+      "name": "Nile hippo",
+      "reason": "Not on the current official Our Animals list.",
+      "as_of": "2026-08-23"
     }
   ],
   "route_90m": [
     "western_lowland_gorilla",
-    "sumatran_tiger",
-    "african_lion"
+    "red_panda",
+    "caribbean_flamingo"
   ],
   "presence_sources": [
     "https://bronxzoo.com/",
-    "https://bronxzoo.com/animals"
+    "https://bronxzoo.com/animals/our-animals",
+    "https://bronxzoo.com/things-to-do/exhibits"
   ],
   "bonus_hunt": {
-    "tagline": "Bronx bonus · Congo + Tiger Mountain + Madagascar",
+    "tagline": "Bronx bonus · Congo + Highlands + African Plains",
     "find_ids": [
-      "ring_tailed_lemur",
-      "red_panda",
       "reticulated_giraffe",
       "zebra",
-      "sumatran_tiger",
-      "western_lowland_gorilla",
-      "african_lion"
+      "two_toed_sloth",
+      "asian_small_clawed_otter"
     ],
     "challenges": [
       {
-        "id": "bx_congo",
-        "text": "Congo Gorilla Forest: humid-house energy — wipe your forehead (or pretend)",
+        "id": "bx_gorilla",
+        "text": "Congo Gorilla Forest: cautious, playful, or nurturing today?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -309,17 +303,8 @@
         ]
       },
       {
-        "id": "bx_tiger",
-        "text": "Tiger Mountain: find the highest perch or rock a cat might claim",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "bx_madagascar",
-        "text": "Lemurs: jump, hang, or stare contest?",
+        "id": "bx_panda",
+        "text": "Red panda: climb or curl-up?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -328,17 +313,8 @@
         ]
       },
       {
-        "id": "bx_plains",
-        "text": "African Plains: giraffe + zebra in one panorama if you can",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "bx_lion",
-        "text": "Lions: rest mode or patrol mode?",
+        "id": "bx_flam",
+        "text": "Flamingos: pinkest bird in the flock — point once.",
         "age_fit": [
           "2-3",
           "4-5",
@@ -347,22 +323,23 @@
         ]
       },
       {
-        "id": "bx_shuttle",
-        "text": "Listen: zoo shuttle/monorail cue or forest quiet — which wins 10 seconds?",
+        "id": "bx_zebra",
+        "text": "African Plains: Grevy's stripes — shoulder vs rump.",
         "age_fit": [
+          "2-3",
           "4-5",
           "6-8",
           "adult"
         ]
       }
     ],
-    "easter_egg": "★ Easter egg: find a Bronx Zoo monorail/shuttle mention on a map — even if you walk",
-    "easter_egg_little": "★ Easter egg: lemur jump (small hop) after the list",
+    "easter_egg": "★ Easter egg: find this zoo on a map/sign and point to a habitat you have not visited yet",
+    "easter_egg_little": "★ Easter egg: pick a favorite stop and tell a grown-up why",
     "sources": [
-      "https://bronxzoo.com/",
-      "Congo Gorilla Forest, Tiger Mountain, African Plains, Madagascar"
+      "https://bronxzoo.com/animals/our-animals"
     ],
-    "researched": "2026-08-08",
+    "researched": "2026-08-23",
     "status": "researched"
-  }
+  },
+  "last_presence_audit": "2026-08-23"
 }

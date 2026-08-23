@@ -8,10 +8,10 @@
   "lat": 40.16,
   "lng": -83.12,
   "official_url": "https://www.columbuszoo.org/",
-  "last_verified": "2026-08-07",
+  "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Huge Ohio campus — pick regions like countries; never ‘see everything.’",
+  "tagline": "Congo gorillas, then Heart of Africa lions and cheetahs — zoo-side cards only.",
   "practical": {
     "typical_duration": "half to full day",
     "ticket_note": "Large parking lots; stroller or wagon strongly recommended.",
@@ -24,9 +24,230 @@
       "id": "western_lowland_gorilla",
       "label": "Western lowland gorilla",
       "emoji": "🦍",
-      "one_liner": "Gorillas in immersive habitats.",
+      "one_liner": "Congo Expedition gorillas — who looks in charge?",
       "tags": [
         "primates",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Congo Expedition",
+      "qa_card": {
+        "question": "What did you notice about the Western lowland gorilla?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Western lowland gorilla",
+      "core": true
+    },
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "emoji": "🦁",
+      "one_liner": "Heart of Africa lion pride — listen for a roar.",
+      "tags": [
+        "big-cats",
+        "outdoor",
+        "sound"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Heart of Africa",
+      "qa_card": {
+        "question": "What did you notice about the African lion?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "african-lion",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "African lion",
+      "core": true
+    },
+    {
+      "id": "cheetah",
+      "label": "Cheetah",
+      "emoji": "🐆",
+      "one_liner": "Heart of Africa cheetah — tear marks, not a lion mane.",
+      "tags": [
+        "big-cats",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Heart of Africa",
+      "qa_card": {
+        "question": "What did you notice about the Cheetah?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "cheetah",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Cheetah",
+      "core": true
+    },
+    {
+      "id": "orangutan",
+      "label": "Orangutan",
+      "emoji": "🦧",
+      "one_liner": "Bornean orangutan — long arms in the trees.",
+      "tags": [
+        "primates",
+        "climb",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Animals",
+      "qa_card": {
+        "question": "What did you notice about the Orangutan?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "orangutan",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Orangutan",
+      "core": true
+    },
+    {
+      "id": "red_panda",
+      "label": "Red panda",
+      "emoji": "🦊",
+      "one_liner": "Asia Quest red panda — rusty and tree-high.",
+      "tags": [
+        "climb",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Asia Quest",
+      "qa_card": {
+        "question": "What did you notice about the Red panda?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "red-panda",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Red panda",
+      "core": true
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "emoji": "🦓",
+      "one_liner": "Grant's zebra — pick one stripe set and draw it in the air.",
+      "tags": [
+        "pattern",
+        "outdoor",
+        "savanna"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Heart of Africa",
+      "qa_card": {
+        "question": "What did you notice about the Zebra?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "zebra",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Zebra",
+      "core": true,
+      "presence_note": "Official: Grant's zebra."
+    },
+    {
+      "id": "ostrich",
+      "label": "Ostrich",
+      "emoji": "🪶",
+      "one_liner": "Heart of Africa ostrich — look at those legs.",
+      "tags": [
+        "birds",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Heart of Africa",
+      "qa_card": {
+        "question": "What did you notice about the Ostrich?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "ostrich",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Ostrich",
+      "core": false
+    },
+    {
+      "id": "warthog",
+      "label": "Warthog",
+      "emoji": "🐗",
+      "one_liner": "Common warthog — snout, tusks, and a trot.",
+      "tags": [
+        "outdoor",
+        "africa"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Heart of Africa",
+      "qa_card": {
+        "question": "What did you notice about the Warthog?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "warthog",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Warthog",
+      "core": false
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Giraffe",
+      "emoji": "🦒",
+      "one_liner": "Heart of Africa giraffe — feedings seasonally.",
+      "tags": [
+        "tall",
+        "outdoor",
         "wow"
       ],
       "age_fit": [
@@ -35,49 +256,26 @@
         "6-8",
         "9+"
       ],
-      "zone": "Congo / apes",
+      "zone": "Heart of Africa",
       "qa_card": {
-        "question": "What did you notice about the Western lowland gorilla?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "western-lowland-gorilla",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Western lowland gorilla"
-    },
-    {
-      "id": "reticulated_giraffe",
-      "label": "Giraffe",
-      "emoji": "🦒",
-      "one_liner": "Giraffes on long loops — stroller helps.",
-      "tags": [
-        "tall",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Africa",
-      "qa_card": {
-        "question": "What did you notice about the Reticulated giraffe?",
+        "question": "What did you notice about the Giraffe?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "reticulated-giraffe",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "display_label": "Giraffe"
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Giraffe",
+      "core": false,
+      "presence_note": "Official animals list: Giraffe; soft Giraffe."
     },
     {
-      "id": "shark",
-      "label": "Shark",
-      "emoji": "🦈",
-      "one_liner": "Ocean hunter with a strong swishy body.",
+      "id": "asian_small_clawed_otter",
+      "label": "Asian small-clawed otter",
+      "emoji": "🦦",
+      "one_liner": "Asian small-clawed otter — smallest otter, biggest splash.",
       "tags": [
-        "wow",
+        "play",
         "water"
       ],
       "age_fit": [
@@ -86,144 +284,17 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Animals",
       "qa_card": {
-        "question": "What did you notice about the Shark?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
+        "question": "What did you notice about the Asian small-clawed otter?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "shark",
+      "catalog_id": "asian-small-clawed-otter",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "display_label": "Shark",
-      "presence_note": "Aquarium section."
-    },
-    {
-      "id": "jellyfish",
-      "label": "Jellyfish",
-      "emoji": "🎐",
-      "one_liner": "Soft drifter — no bones, glows and pulses in the water.",
-      "tags": [
-        "wow",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What did you notice about the Jellyfish?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "jellyfish",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Jellyfish",
-      "presence_note": "Likely in aquarium; not named on abbreviated list extract."
-    },
-    {
-      "id": "sea_turtle",
-      "label": "Sea turtle",
-      "emoji": "🐢",
-      "one_liner": "Shelled ocean traveler — flippers for swimming.",
-      "tags": [
-        "wow",
-        "water",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What did you notice about the Sea turtle?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "sea-turtle",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "display_label": "Sea turtle"
-    },
-    {
-      "id": "octopus",
-      "label": "Octopus",
-      "emoji": "🐙",
-      "one_liner": "Eight arms and a big brain — master of hide-and-seek.",
-      "tags": [
-        "wow",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What did you notice about the Octopus?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "octopus",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Octopus",
-      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract."
-    },
-    {
-      "id": "stingray",
-      "label": "Stingray",
-      "emoji": "射线",
-      "one_liner": "Flat swimmer — often in touch pools (gentle hands!).",
-      "tags": [
-        "wow",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What did you notice about the Stingray?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "stingray",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "display_label": "Stingray"
-    },
-    {
-      "id": "zebra",
-      "label": "Zebra",
-      "emoji": "🦓",
-      "one_liner": "Striped grassland runner — every pattern is unique.",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Zebra?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "zebra",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "display_label": "Zebra"
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Asian small-clawed otter",
+      "core": false
     }
   ],
   "content_mode": "curated",
@@ -242,64 +313,74 @@
   ],
   "route_90m": [
     "western_lowland_gorilla",
-    "reticulated_giraffe",
-    "shark"
+    "african_lion",
+    "cheetah"
   ],
-  "research_notes": "R1 hybrid 2026-08-07 · map-img 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [critical]",
+  "research_notes": "[2026-08-23] Official-source Wave 2a public list pass. Zoo-side only; Discovery Reef aquarium-only cards dropped.",
   "list_confidence": "audited",
   "do_not_list": [
     {
       "catalog_id": "african-elephant",
       "name": "African elephant",
       "reason": "Official animals list: Asian Elephant.",
-      "as_of": "2026-08-08"
+      "as_of": "2026-08-23"
     },
     {
       "catalog_id": "sumatran-tiger",
       "name": "Sumatran tiger",
-      "reason": "Official list: Amur Tiger (Sarang recently joined).",
-      "as_of": "2026-08-08"
-    },
-    {
-      "catalog_id": "nile-hippo",
-      "name": "Nile hippo",
-      "reason": "Not on current official animals list.",
-      "as_of": "2026-08-08"
+      "reason": "Official animals list: Amur Tiger.",
+      "as_of": "2026-08-23"
     },
     {
       "catalog_id": "african-penguin",
       "name": "African penguin",
-      "reason": "Official: Humboldt Penguin, not African.",
-      "as_of": "2026-08-08"
+      "reason": "Official: Humboldt penguin at Shores, not African.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "nile-hippo",
+      "name": "Nile hippo",
+      "reason": "Not on the current official animals list.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "chimpanzee",
+      "name": "Chimpanzee",
+      "reason": "Official Congo list: bonobos, not chimpanzees.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "galapagos-tortoise",
+      "name": "Galápagos tortoise",
+      "reason": "Official: Aldabra tortoise at Shores.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "shark",
+      "name": "Shark",
+      "reason": "Discovery Reef aquarium-side; not a zoo-side card for this kit.",
+      "as_of": "2026-08-23"
     }
   ],
-  "last_presence_audit": "2026-08-08",
+  "last_presence_audit": "2026-08-23",
   "presence_sources": [
+    "https://www.columbuszoo.org/",
     "https://www.columbuszoo.org/animals"
   ],
   "bonus_hunt": {
-    "tagline": "Columbus bonus · Congo apes + aquarium side quests",
+    "tagline": "Columbus bonus · Congo + Heart of Africa (zoo-side)",
     "find_ids": [
-      "western_lowland_gorilla",
-      "reticulated_giraffe",
-      "shark",
-      "stingray",
-      "sea_turtle",
-      "zebra"
+      "orangutan",
+      "red_panda",
+      "zebra",
+      "ostrich",
+      "warthog",
+      "asian_small_clawed_otter"
     ],
     "challenges": [
       {
-        "id": "clb_gorilla",
-        "text": "Congo/apes gorilla: groom, walk, or rest — call it",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "clb_giraffe",
-        "text": "Africa giraffe: tongue out or pure neck stretch?",
+        "id": "cz_gorilla",
+        "text": "Congo: gorilla family — who looks calmest?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -308,8 +389,8 @@
         ]
       },
       {
-        "id": "clb_shark",
-        "text": "Shark tank: crossings past your nose in 30s",
+        "id": "cz_lion",
+        "text": "Heart of Africa: roar or a quiet pride?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -318,8 +399,8 @@
         ]
       },
       {
-        "id": "clb_ray",
-        "text": "Ray: flap vs glide",
+        "id": "cz_cheetah",
+        "text": "Cheetah: statue score 1–10 after 20 quiet seconds.",
         "age_fit": [
           "2-3",
           "4-5",
@@ -328,32 +409,22 @@
         ]
       },
       {
-        "id": "clb_turtle",
-        "text": "Sea turtle: surface breath or deep cruise?",
+        "id": "cz_zebra",
+        "text": "Grant's zebra: draw one stripe set in the air.",
         "age_fit": [
           "2-3",
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "clb_zebra",
-        "text": "Zebra stripes: wide near-shoulder vs thin rump?",
-        "age_fit": [
           "4-5",
           "6-8",
           "adult"
         ]
       }
     ],
-    "easter_egg": "★ Easter egg: find the aquarium or manatee area on a map if posted",
-    "easter_egg_little": "★ Easter egg: after the hard list — one free minute of favorite stop",
-    "researched": "2026-08-08",
-    "status": "researched",
+    "easter_egg": "★ Easter egg: find this zoo on a map/sign and point to a habitat you have not visited yet",
+    "easter_egg_little": "★ Easter egg: pick a favorite stop and tell a grown-up why",
     "sources": [
-      "https://www.columbuszoo.org/",
-      "Congo, Africa, aquarium"
-    ]
+      "https://www.columbuszoo.org/animals"
+    ],
+    "researched": "2026-08-23",
+    "status": "researched"
   }
 }

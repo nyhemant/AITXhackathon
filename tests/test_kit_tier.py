@@ -135,8 +135,8 @@ class KitTierPageTests(unittest.TestCase):
             else:
                 starter += 1
         self.assertEqual(verified + starter, 218)
-        self.assertEqual(verified, 52)
-        self.assertEqual(starter, 166)
+        self.assertEqual(verified, 59)
+        self.assertEqual(starter, 159)
         self.assertNotIn("Local shortlist", (FP / "dallas-zoo" / "index.html").read_text())
 
 

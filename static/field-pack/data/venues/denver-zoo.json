@@ -8,10 +8,9 @@
   "lat": 39.75,
   "lng": -104.95,
   "official_url": "https://denverzoo.org/",
-  "last_verified": "2026-08-07",
   "verified_by": "research",
-  "status": "verified",
-  "tagline": "City Park classic — elephants, apes, and a manageable loop at altitude.",
+  "status": "partial",
+  "tagline": "Starter list from published zoo cards still honest on official Denver pages.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Altitude + sun — water and hats matter more than at sea level.",
@@ -24,7 +23,7 @@
       "id": "western_lowland_gorilla",
       "label": "Western lowland gorilla",
       "emoji": "🦍",
-      "one_liner": "Gorillas in lush habitats.",
+      "one_liner": "Lowland gorilla viewing — who looks calmest?",
       "tags": [
         "primates",
         "outdoor"
@@ -35,24 +34,26 @@
         "6-8",
         "9+"
       ],
-      "zone": "Primates",
+      "zone": "Gorillas",
       "qa_card": {
         "question": "What did you notice about the Western lowland gorilla?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "western-lowland-gorilla",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Western lowland gorilla"
+      "display_label": "Western lowland gorilla",
+      "core": true
     },
     {
-      "id": "reticulated_giraffe",
-      "label": "Giraffe",
-      "emoji": "🦒",
-      "one_liner": "Tall necks over the paths.",
+      "id": "orangutan",
+      "label": "Orangutan",
+      "emoji": "🦧",
+      "one_liner": "Sumatran orangutan — long arms in the trees.",
       "tags": [
-        "tall",
+        "primates",
+        "climb",
         "outdoor"
       ],
       "age_fit": [
@@ -61,76 +62,25 @@
         "6-8",
         "9+"
       ],
-      "zone": "Hoofstock",
+      "zone": "Asia",
       "qa_card": {
-        "question": "What did you notice about the Reticulated giraffe?",
+        "question": "What did you notice about the Orangutan?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "reticulated-giraffe",
+      "catalog_id": "orangutan",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Giraffe"
-    },
-    {
-      "id": "african_lion",
-      "label": "African lion",
-      "emoji": "🦁",
-      "one_liner": "Lions lounging in Colorado sun.",
-      "tags": [
-        "big-cats",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Big cats",
-      "qa_card": {
-        "question": "What did you notice about the African lion?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "african-lion",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "African lion",
-      "presence_note": "Lion presence commonly cited; confirm current habitat"
-    },
-    {
-      "id": "sumatran_tiger",
-      "label": "Tiger",
-      "emoji": "🐯",
-      "one_liner": "Stripes for a cat-side loop.",
-      "tags": [
-        "big-cats",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Big cats",
-      "qa_card": {
-        "question": "What did you notice about the Sumatran tiger?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "sumatran-tiger",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Tiger",
-      "presence_note": "Soft Tiger; subspecies confirm"
+      "display_label": "Orangutan",
+      "core": true
     },
     {
       "id": "african_penguin",
       "label": "African penguin",
       "emoji": "🐧",
-      "one_liner": "Waddle on land, zoom in water.",
+      "one_liner": "Penguin Point — waddle, then zoom in the water.",
       "tags": [
-        "wow",
+        "birds",
         "water",
         "outdoor"
       ],
@@ -140,130 +90,27 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "African Penguin Point",
       "qa_card": {
-        "question": "What is special about the African penguin?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the African penguin?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-penguin",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "African penguin"
-    },
-    {
-      "id": "cheetah",
-      "label": "Cheetah",
-      "emoji": "🐆",
-      "one_liner": "Fastest land animal — built to sprint.",
-      "tags": [
-        "wow",
-        "big-cats",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Cheetah?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "cheetah",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Cheetah"
-    },
-    {
-      "id": "nile_hippo",
-      "label": "Nile hippo",
-      "emoji": "🦛",
-      "one_liner": "Huge river giant that loves the water.",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Nile hippo?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "nile-hippo",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Nile hippo"
-    },
-    {
-      "id": "caribbean_flamingo",
-      "label": "Flamingo",
-      "emoji": "🦩",
-      "one_liner": "Bright pink wader — long legs for shallow water.",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Caribbean flamingo?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "caribbean-flamingo",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Flamingo"
-    },
-    {
-      "id": "two_toed_sloth",
-      "label": "Two-toed sloth",
-      "emoji": "🦥",
-      "one_liner": "Slow forest climber — hangs upside down.",
-      "tags": [
-        "wow",
-        "hands",
-        "play",
-        "rest",
-        "kids"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Two-toed sloth?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "two-toed-sloth",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Two-toed sloth"
+      "display_label": "African penguin",
+      "core": true
     },
     {
       "id": "zebra",
       "label": "Zebra",
       "emoji": "🦓",
-      "one_liner": "Striped grassland runner — every pattern is unique.",
+      "one_liner": "Grevy's zebra — every stripe set is unique.",
       "tags": [
-        "wow",
-        "outdoor"
+        "pattern",
+        "outdoor",
+        "savanna"
       ],
       "age_fit": [
         "2-3",
@@ -271,23 +118,26 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Africa",
       "qa_card": {
-        "question": "What is special about the Zebra?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Zebra?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "zebra",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Zebra"
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Zebra",
+      "core": true,
+      "presence_note": "Official animals page: Grevy's zebra."
     },
     {
-      "id": "galapagos_tortoise",
-      "label": "Galápagos tortoise",
-      "emoji": "🐢",
-      "one_liner": "Giant tortoise — slow and steady.",
+      "id": "two_toed_sloth",
+      "label": "Two-toed sloth",
+      "emoji": "🦥",
+      "one_liner": "Linne's two-toed sloth — hang and look twice.",
       "tags": [
-        "wow",
+        "climb",
         "outdoor"
       ],
       "age_fit": [
@@ -296,19 +146,21 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Animals",
       "qa_card": {
-        "question": "What is special about the Galápagos tortoise?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Two-toed sloth?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "galapagos-tortoise",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Galápagos tortoise",
-      "presence_note": "Tropical Discovery has tortoises; species unclear"
+      "catalog_id": "two-toed-sloth",
+      "presence": "high",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Two-toed sloth",
+      "core": false,
+      "presence_note": "Official 2024 report lists Linne's two-toed sloth young."
     }
   ],
-  "content_mode": "hybrid",
+  "content_mode": "curated",
   "media": {
     "visitor_map_url": "/field-pack/media/maps/denver-zoo.jpg",
     "visitor_map_page": "https://denverzoo.org/map/",
@@ -324,54 +176,40 @@
   ],
   "route_90m": [
     "western_lowland_gorilla",
-    "reticulated_giraffe",
+    "orangutan",
     "african_penguin"
   ],
-  "research_notes": "R1 hybrid 2026-08-07 · map-img 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "research_notes": "[2026-08-23] Wave 2a: official animals index is incomplete (“not all animals represented”). Short Starter list from published zoo/both cards named on official Denver pages. No invented verify date.",
   "list_confidence": "partial",
   "do_not_list": [
     {
       "catalog_id": "african-elephant",
       "name": "African elephant",
-      "reason": "Denver holds Asian elephants (Elephant Passage / demos).",
-      "as_of": "2026-08-08"
+      "reason": "Official / sensory materials: Asian elephants at Elephant Passage.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "ring-tailed-lemur",
+      "name": "Ring-tailed lemur",
+      "reason": "Official animals page lists red-ruffed lemur, not ring-tailed.",
+      "as_of": "2026-08-23"
     }
   ],
   "presence_sources": [
     "https://denverzoo.org/",
-    "https://denverzoo.org/things-to-do/",
+    "https://denverzoo.org/animals/",
     "https://denverzoo.org/annual-report/"
   ],
   "bonus_hunt": {
-    "tagline": "Denver bonus · Tropical Discovery + predators loop",
+    "tagline": "Denver bonus · gorillas + orangutans + Penguin Point",
     "find_ids": [
-      "sumatran_tiger",
-      "western_lowland_gorilla",
-      "reticulated_giraffe",
-      "african_lion"
+      "zebra",
+      "two_toed_sloth"
     ],
     "challenges": [
       {
-        "id": "den_tiger",
-        "text": "Tiger: 20 silent seconds — what changed?",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "den_gorilla",
-        "text": "Gorilla: hands or rest?",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "den_giraffe",
-        "text": "Giraffe highest stretch",
+        "id": "dv_gorilla",
+        "text": "Gorilla yard: who looks in charge?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -380,8 +218,8 @@
         ]
       },
       {
-        "id": "den_lion",
-        "text": "Lion nap score 1–10",
+        "id": "dv_orang",
+        "text": "Orangutan: hands or feet doing the clever bit?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -390,17 +228,18 @@
         ]
       },
       {
-        "id": "den_pattern",
-        "text": "Two patterns in different yards",
+        "id": "dv_penguin",
+        "text": "Penguin Point: watch one bird enter or leave the water.",
         "age_fit": [
+          "2-3",
           "4-5",
           "6-8",
           "adult"
         ]
       },
       {
-        "id": "den_water",
-        "text": "Find water animals use (pool, moat, splash)",
+        "id": "dv_zebra",
+        "text": "Grevy's zebra: shoulder stripes vs rump.",
         "age_fit": [
           "2-3",
           "4-5",
@@ -409,12 +248,12 @@
         ]
       }
     ],
-    "easter_egg": "★ Easter egg: find Tropical Discovery on the map before you go in",
-    "easter_egg_little": "★ Easter egg: after the hard list — one free minute at a favorite stop",
-    "researched": "2026-08-08",
-    "status": "researched",
+    "easter_egg": "★ Easter egg: find this zoo on a map/sign and point to a habitat you have not visited yet",
+    "easter_egg_little": "★ Easter egg: pick a favorite stop and tell a grown-up why",
     "sources": [
-      "https://denverzoo.org/"
-    ]
+      "https://denverzoo.org/animals/"
+    ],
+    "researched": "2026-08-23",
+    "status": "researched"
   }
 }

@@ -8,10 +8,10 @@
   "lat": 45.51,
   "lng": -122.72,
   "official_url": "https://www.oregonzoo.org/",
-  "last_verified": "2026-08-07",
+  "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Portland hills zoo — elephants, elephants lore, and forested paths.",
+  "tagline": "Red pandas and chimps first — Asian elephants, not African.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Rain happens — layers help year-round.",
@@ -21,89 +21,10 @@
   },
   "items": [
     {
-      "id": "sumatran_tiger",
-      "label": "Tiger",
-      "emoji": "🐯",
-      "one_liner": "Tigers in forested habitats.",
-      "tags": [
-        "big-cats",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Predators",
-      "qa_card": {
-        "question": "What did you notice about the Sumatran tiger?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "sumatran-tiger",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Tiger",
-      "presence_note": "Big cats; subspecies medium. Soft Tiger."
-    },
-    {
-      "id": "western_lowland_gorilla",
-      "label": "Gorilla",
-      "emoji": "🦍",
-      "one_liner": "Gorillas in green NW light.",
-      "tags": [
-        "primates",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Primates",
-      "qa_card": {
-        "question": "What did you notice about the Western lowland gorilla?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "western-lowland-gorilla",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Gorilla",
-      "presence_note": "Africa Rainforest gorillas known. Soft Gorilla."
-    },
-    {
-      "id": "african_penguin",
-      "label": "Penguin",
-      "emoji": "🐧",
-      "one_liner": "Penguins for a cooler habitat break.",
-      "tags": [
-        "water",
-        "wow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Birds / polar-ish",
-      "qa_card": {
-        "question": "What did you notice about the African penguin?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "african-penguin",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Penguin",
-      "presence_note": "Penguin feeding on daily schedule. Soft Penguin; confirm African."
-    },
-    {
       "id": "red_panda",
       "label": "Red panda",
       "emoji": "🦊",
-      "one_liner": "Red pandas in trees when active.",
+      "one_liner": "Discovery Zone red panda — rusty and tree-high.",
       "tags": [
         "climb",
         "outdoor"
@@ -114,26 +35,26 @@
         "6-8",
         "9+"
       ],
-      "zone": "Asia",
+      "zone": "Discovery Zone",
       "qa_card": {
         "question": "What did you notice about the Red panda?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "red-panda",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
       "display_label": "Red panda",
-      "presence_note": "Commonly listed; soft Red panda."
+      "core": true
     },
     {
-      "id": "reticulated_giraffe",
-      "label": "Giraffe",
-      "emoji": "🦒",
-      "one_liner": "Tallest animal on long legs — look up!",
+      "id": "chimpanzee",
+      "label": "Chimpanzee",
+      "emoji": "🐵",
+      "one_liner": "Primate Forest chimp play and chatter.",
       "tags": [
-        "wow",
-        "tall",
-        "outdoor"
+        "primates",
+        "play"
       ],
       "age_fit": [
         "2-3",
@@ -141,27 +62,27 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Primate Forest",
       "qa_card": {
-        "question": "What is special about the Reticulated giraffe?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Chimpanzee?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "reticulated-giraffe",
+      "catalog_id": "chimpanzee",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Giraffe",
-      "presence_note": "Giraffe keeper talks daily. Soft Giraffe."
+      "display_label": "Chimpanzee",
+      "core": true
     },
     {
       "id": "african_lion",
       "label": "Lion",
       "emoji": "🦁",
-      "one_liner": "Big cat of the grassland pride — mighty roar!",
+      "one_liner": "Oregon lion pride — listen for a roar, then wait.",
       "tags": [
-        "wow",
         "big-cats",
-        "outdoor"
+        "outdoor",
+        "sound"
       ],
       "age_fit": [
         "2-3",
@@ -169,26 +90,27 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Africa",
       "qa_card": {
-        "question": "What is special about the African lion?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Lion?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-lion",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "Lion",
-      "presence_note": "Predators of the Serengeti lions."
+      "core": true,
+      "presence_note": "Official map lists Lions; news names the African lion pride."
     },
     {
-      "id": "cheetah",
-      "label": "Cheetah",
-      "emoji": "🐆",
-      "one_liner": "Fastest land animal — built to sprint.",
+      "id": "orangutan",
+      "label": "Orangutan",
+      "emoji": "🦧",
+      "one_liner": "Primate Forest orangutan — long arms in the trees.",
       "tags": [
-        "wow",
-        "big-cats",
+        "primates",
+        "climb",
         "outdoor"
       ],
       "age_fit": [
@@ -197,25 +119,27 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Primate Forest",
       "qa_card": {
-        "question": "What is special about the Cheetah?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Orangutan?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "cheetah",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Cheetah",
-      "presence_note": "Not confirmed this pass."
+      "catalog_id": "orangutan",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Orangutan",
+      "core": true
     },
     {
-      "id": "nile_hippo",
-      "label": "Nile hippo",
-      "emoji": "🦛",
-      "one_liner": "Huge river giant that loves the water.",
+      "id": "ring_tailed_lemur",
+      "label": "Ring-tailed lemur",
+      "emoji": "🐒",
+      "one_liner": "Ring-tailed lemur — striped tail on the primate side.",
       "tags": [
-        "wow",
-        "outdoor"
+        "primates",
+        "pattern",
+        "climb"
       ],
       "age_fit": [
         "2-3",
@@ -223,25 +147,27 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Animals",
       "qa_card": {
-        "question": "What is special about the Nile hippo?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Ring-tailed lemur?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "nile-hippo",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Nile hippo",
-      "presence_note": "Not confirmed."
+      "catalog_id": "ring-tailed-lemur",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Ring-tailed lemur",
+      "core": true
     },
     {
-      "id": "caribbean_flamingo",
-      "label": "Caribbean flamingo",
-      "emoji": "🦩",
-      "one_liner": "Bright pink wader — long legs for shallow water.",
+      "id": "reticulated_giraffe",
+      "label": "Giraffe",
+      "emoji": "🦒",
+      "one_liner": "Africa giraffe — look up from the path.",
       "tags": [
-        "wow",
-        "outdoor"
+        "tall",
+        "outdoor",
+        "wow"
       ],
       "age_fit": [
         "2-3",
@@ -249,97 +175,18 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Africa",
       "qa_card": {
-        "question": "What is special about the Caribbean flamingo?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Giraffe?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "caribbean-flamingo",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Caribbean flamingo",
-      "presence_note": "Not confirmed."
-    },
-    {
-      "id": "two_toed_sloth",
-      "label": "Two-toed sloth",
-      "emoji": "🦥",
-      "one_liner": "Slow forest climber — hangs upside down.",
-      "tags": [
-        "wow",
-        "hands",
-        "play",
-        "rest",
-        "kids"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Two-toed sloth?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "two-toed-sloth",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Two-toed sloth",
-      "presence_note": "Not confirmed."
-    },
-    {
-      "id": "zebra",
-      "label": "Zebra (verify)",
-      "emoji": "🦓",
-      "one_liner": "Striped grassland runner — every pattern is unique.",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Zebra?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "zebra",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Zebra (verify)",
-      "presence_note": "Africa savanna hoofstock possible."
-    },
-    {
-      "id": "galapagos_tortoise",
-      "label": "Galápagos tortoise",
-      "emoji": "🐢",
-      "one_liner": "Giant tortoise — slow and steady.",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Galápagos tortoise?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "galapagos-tortoise",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Galápagos tortoise",
-      "presence_note": "Not confirmed (African spurred/pancake tortoises appear on animals list instead)."
+      "catalog_id": "reticulated-giraffe",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Giraffe",
+      "core": false,
+      "presence_note": "Official map lists Giraffe; soft Giraffe."
     }
   ],
   "content_mode": "curated",
@@ -357,39 +204,67 @@
     "Leave while happy"
   ],
   "route_90m": [
-    "reticulated_giraffe",
-    "western_lowland_gorilla"
+    "red_panda",
+    "chimpanzee",
+    "african_lion"
   ],
-  "research_notes": "R1 hybrid 2026-08-07 · map-img 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "research_notes": "[2026-08-23] Official-source Wave 2a public list pass (map.oregonzoo.org animals + oregonzoo.org news).",
   "list_confidence": "audited",
   "do_not_list": [
     {
       "catalog_id": "african-elephant",
       "name": "African elephant",
-      "reason": "Oregon Zoo elephants are Asian (Elephant Lands).",
-      "as_of": "2026-08-08"
+      "reason": "Official: Asian elephant at Elephant Lands.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "sumatran-tiger",
+      "name": "Sumatran tiger",
+      "reason": "Official: Amur tiger in Discovery Zone.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "Official: Humboldt penguin at Pacific Shores.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "caribbean-flamingo",
+      "name": "Caribbean flamingo",
+      "reason": "Official: lesser flamingo, not Caribbean.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "western-lowland-gorilla",
+      "name": "Western lowland gorilla",
+      "reason": "Not on the official animals map.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "nile-hippo",
+      "name": "Nile hippo",
+      "reason": "Not on the official animals map.",
+      "as_of": "2026-08-23"
     }
   ],
-  "last_presence_audit": "2026-08-08",
+  "last_presence_audit": "2026-08-23",
   "presence_sources": [
     "https://www.oregonzoo.org/",
-    "https://www.oregonzoo.org/wildlife/animals",
-    "https://www.oregonzoo.org/events/keeper-talks-and-animal-activities",
-    "https://en.wikipedia.org/wiki/Oregon_Zoo"
+    "https://map.oregonzoo.org/place-types/169-animals",
+    "https://www.oregonzoo.org/news"
   ],
   "bonus_hunt": {
-    "tagline": "Oregon Zoo bonus · primates + polar/penguin energy",
+    "tagline": "Oregon bonus · red panda + Primate Forest + lions",
     "find_ids": [
-      "reticulated_giraffe",
-      "western_lowland_gorilla",
-      "african_penguin",
-      "red_panda",
-      "african_lion"
+      "orangutan",
+      "ring_tailed_lemur",
+      "reticulated_giraffe"
     ],
     "challenges": [
       {
-        "id": "orz_giraffe",
-        "text": "Giraffe: highest leaf stretch you catch",
+        "id": "or_panda",
+        "text": "Red panda: climb or curl-up?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -398,17 +273,8 @@
         ]
       },
       {
-        "id": "orz_gorilla",
-        "text": "Primates gorilla: hands busy or rest?",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "orz_penguin",
-        "text": "Penguin: dive, waddle, or huddle",
+        "id": "or_chimp",
+        "text": "Chimps: spot hands used like tools.",
         "age_fit": [
           "2-3",
           "4-5",
@@ -417,17 +283,8 @@
         ]
       },
       {
-        "id": "orz_panda",
-        "text": "Red panda: curl ball or tree climb?",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "orz_lion",
-        "text": "Lion: nap score 1–10",
+        "id": "or_lion",
+        "text": "Lions: roar or a quiet pride?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -436,21 +293,22 @@
         ]
       },
       {
-        "id": "orz_tiger",
-        "text": "Tiger/predators: stripe busy-ness vs lion",
+        "id": "or_orang",
+        "text": "Orangutan: hands or feet doing the clever bit?",
         "age_fit": [
+          "2-3",
           "4-5",
           "6-8",
           "adult"
         ]
       }
     ],
-    "easter_egg": "★ Easter egg: find a train or carousel on the map — only after hard list",
-    "easter_egg_little": "★ Easter egg: after the hard list — one free minute of favorite stop",
-    "researched": "2026-08-08",
-    "status": "researched",
+    "easter_egg": "★ Easter egg: find this zoo on a map/sign and point to a habitat you have not visited yet",
+    "easter_egg_little": "★ Easter egg: pick a favorite stop and tell a grown-up why",
     "sources": [
-      "https://www.oregonzoo.org/"
-    ]
+      "https://map.oregonzoo.org/place-types/169-animals"
+    ],
+    "researched": "2026-08-23",
+    "status": "researched"
   }
 }

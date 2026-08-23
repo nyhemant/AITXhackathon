@@ -8,10 +8,10 @@
   "lat": 32.72,
   "lng": -97.36,
   "official_url": "https://www.fortworthzoo.org/",
-  "last_verified": "2026-08-07",
-  "verified_by": "owner",
+  "last_verified": "2026-08-23",
+  "verified_by": "research",
   "status": "verified",
-  "tagline": "Classic Texas zoo day — big animals without the long drive.",
+  "tagline": "Predators of Asia & Africa, then the Savanna hippo river.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Check summer hours; arrive early for parking.",
@@ -19,33 +19,10 @@
   },
   "items": [
     {
-      "id": "giraffe",
-      "label": "Giraffe",
-      "emoji": "🦒",
-      "one_liner": "Sky-high neck — look up!",
-      "tags": [
-        "tall",
-        "outdoor",
-        "wow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "",
-      "catalog_id": "reticulated-giraffe",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Giraffe"
-    },
-    {
-      "id": "lion",
-      "label": "Lion",
+      "id": "african_lion",
+      "label": "African lion",
       "emoji": "🦁",
-      "one_liner": "King of the pride — listen for a roar.",
+      "one_liner": "Predators habitat — listen for a roar.",
       "tags": [
         "big-cats",
         "outdoor",
@@ -57,18 +34,23 @@
         "6-8",
         "9+"
       ],
-      "zone": "",
+      "zone": "Predators of Asia & Africa",
+      "qa_card": {
+        "question": "What did you notice about the African lion?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
       "catalog_id": "african-lion",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Lion"
+      "display_label": "African lion",
+      "core": true
     },
     {
-      "id": "tiger",
-      "label": "Tiger",
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
       "emoji": "🐯",
-      "one_liner": "Orange stripes built for stealth.",
+      "one_liner": "Predators of Asia — orange stripes in the trees.",
       "tags": [
         "big-cats",
         "pattern",
@@ -80,66 +62,192 @@
         "6-8",
         "9+"
       ],
-      "zone": "",
+      "zone": "Predators of Asia & Africa",
+      "qa_card": {
+        "question": "What did you notice about the Sumatran tiger?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
       "catalog_id": "sumatran-tiger",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Tiger",
-      "presence_note": "Malayan not Sumatran; soft Tiger OK"
-    },
-    {
-      "id": "gorilla",
-      "label": "Gorilla",
-      "emoji": "🦍",
-      "one_liner": "Gentle giant of the ape world.",
-      "tags": [
-        "primates",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "",
-      "catalog_id": "western-lowland-gorilla",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Gorilla"
+      "display_label": "Sumatran tiger",
+      "core": true
     },
     {
-      "id": "penguin",
-      "label": "Penguin",
-      "emoji": "🐧",
-      "one_liner": "Penguins on site (rockhoppers; African colony moved).",
-      "tags": [
-        "birds",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "",
-      "catalog_id": "african-penguin",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Penguin",
-      "presence_note": "African penguins moved to Waco; rockhoppers still on site. Soft Penguin if listing."
-    },
-    {
-      "id": "hippo",
-      "label": "Hippo",
+      "id": "nile_hippo",
+      "label": "Nile hippo",
       "emoji": "🦛",
-      "one_liner": "River tank with a huge smile.",
+      "one_liner": "Savanna hippo river — watch the underwater window.",
       "tags": [
         "big",
+        "water",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "African Savanna",
+      "qa_card": {
+        "question": "What did you notice about the Nile hippo?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "nile-hippo",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Nile hippo",
+      "core": true
+    },
+    {
+      "id": "cheetah",
+      "label": "Cheetah",
+      "emoji": "🐆",
+      "one_liner": "Fast cat on the Predators path — tear marks, not a lion mane.",
+      "tags": [
+        "big-cats",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Predators of Asia & Africa",
+      "qa_card": {
+        "question": "What did you notice about the Cheetah?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "cheetah",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Cheetah",
+      "core": true
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Giraffe",
+      "emoji": "🦒",
+      "one_liner": "Savanna giraffe — look up from the feeding deck.",
+      "tags": [
+        "tall",
+        "outdoor",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "African Savanna",
+      "qa_card": {
+        "question": "What did you notice about the Giraffe?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "reticulated-giraffe",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Giraffe",
+      "core": true,
+      "presence_note": "Official habitats list giraffes; soft Giraffe."
+    },
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Gorilla",
+      "emoji": "🦍",
+      "one_liner": "World of Primates gorilla troop in the forest yard.",
+      "tags": [
+        "primates",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "World of Primates",
+      "qa_card": {
+        "question": "What did you notice about the Gorilla?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Gorilla",
+      "core": true
+    },
+    {
+      "id": "orangutan",
+      "label": "Orangutan",
+      "emoji": "🦧",
+      "one_liner": "World of Primates orangutan — long arms in the trees.",
+      "tags": [
+        "primates",
+        "climb",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "World of Primates",
+      "qa_card": {
+        "question": "What did you notice about the Orangutan?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "orangutan",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Orangutan",
+      "core": true
+    },
+    {
+      "id": "ostrich",
+      "label": "Ostrich",
+      "emoji": "🪶",
+      "one_liner": "Savanna ostrich — look at those legs.",
+      "tags": [
+        "birds",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "African Savanna",
+      "qa_card": {
+        "question": "What did you notice about the Ostrich?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "ostrich",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Ostrich",
+      "core": false
+    },
+    {
+      "id": "caribbean_flamingo",
+      "label": "Caribbean flamingo",
+      "emoji": "🦩",
+      "one_liner": "Pink flock near the entrance — long legs in the shallows.",
+      "tags": [
+        "birds",
+        "color",
         "water"
       ],
       "age_fit": [
@@ -148,20 +256,25 @@
         "6-8",
         "9+"
       ],
-      "zone": "",
-      "catalog_id": "nile-hippo",
+      "zone": "Flamingo flock / entrance",
+      "qa_card": {
+        "question": "What did you notice about the Caribbean flamingo?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "caribbean-flamingo",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Hippo"
+      "display_label": "Caribbean flamingo",
+      "core": false
     },
     {
-      "id": "zebra",
-      "label": "Zebra",
-      "emoji": "🦓",
-      "one_liner": "Walking barcode of the savanna.",
+      "id": "two_toed_sloth",
+      "label": "Two-toed sloth",
+      "emoji": "🦥",
+      "one_liner": "Olive the two-toed sloth — hang and look twice.",
       "tags": [
-        "pattern",
+        "climb",
         "outdoor"
       ],
       "age_fit": [
@@ -170,102 +283,17 @@
         "6-8",
         "9+"
       ],
-      "zone": "",
-      "catalog_id": "zebra",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Zebra",
-      "presence_note": "Savanna ungulates present; confirm current zebra spp."
-    },
-    {
-      "id": "otter",
-      "label": "Otter",
-      "emoji": "🦦",
-      "one_liner": "Splashy swimmer — always busy.",
-      "tags": [
-        "water",
-        "active"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "",
-      "catalog_id": "asian-small-clawed-otter",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
+      "zone": "World of Primates",
+      "qa_card": {
+        "question": "What did you notice about the Two-toed sloth?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "two-toed-sloth",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Otter",
-      "presence_note": "Wrong catalog species; soft Otter OK"
-    },
-    {
-      "id": "lemur",
-      "label": "Ring-tailed lemur",
-      "emoji": "🐒",
-      "one_liner": "Stripy tail from Madagascar.",
-      "tags": [
-        "primates",
-        "pattern",
-        "climb"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "",
-      "catalog_id": "ring-tailed-lemur",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Ring-tailed lemur",
-      "presence_note": "Listed in MOLA residents historically"
-    },
-    {
-      "id": "tortoise",
-      "label": "Giant tortoise",
-      "emoji": "🐢",
-      "one_liner": "Slow steps, long life.",
-      "tags": [
-        "slow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "",
-      "catalog_id": "galapagos-tortoise",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Giant tortoise",
-      "presence_note": "Not Galápagos"
-    },
-    {
-      "id": "kids-area",
-      "label": "Kids play / rest stop",
-      "emoji": "🛝",
-      "one_liner": "Burn energy, then back to animals.",
-      "tags": [
-        "kids",
-        "rest"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8"
-      ],
-      "zone": "",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Kids play / rest stop",
-      "presence_note": "Play/rest amenities present; soft place-type OK"
+      "display_label": "Two-toed sloth",
+      "core": false
     }
   ],
   "content_mode": "curated",
@@ -282,62 +310,77 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "research_notes": "map-img 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [critical]",
-  "list_confidence": "partial",
+  "research_notes": "[2026-08-23] Official-source Wave 2a public list pass (habitats + Predators + construction updates).",
+  "list_confidence": "audited",
   "do_not_list": [
     {
       "catalog_id": "african-elephant",
       "name": "African elephant",
-      "reason": "Zoo holds Asian elephants only (Elephant Springs).",
-      "as_of": "2026-08-08"
+      "reason": "Official: Asian elephants at Elephant Springs.",
+      "as_of": "2026-08-23"
     },
     {
       "catalog_id": "african-penguin",
       "name": "African penguin",
       "reason": "Official: African penguins moved to Waco; remaining penguins are southern rockhopper.",
-      "as_of": "2026-08-08"
+      "as_of": "2026-08-23"
     },
     {
       "catalog_id": "galapagos-tortoise",
       "name": "Galápagos tortoise",
-      "reason": "Keeper chats list Aldabra tortoise; not Galápagos.",
-      "as_of": "2026-08-08"
+      "reason": "Official herpetarium / chats list Aldabra tortoise, not Galápagos.",
+      "as_of": "2026-08-23"
     },
     {
       "catalog_id": "asian-small-clawed-otter",
       "name": "Asian small-clawed otter",
-      "reason": "Keeper chats list North American river otter.",
-      "as_of": "2026-08-08"
+      "reason": "Official: North American river otter, not Asian small-clawed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "chimpanzee",
+      "name": "Chimpanzee",
+      "reason": "Official World of Primates lists bonobos, not chimpanzees.",
+      "as_of": "2026-08-23"
     }
   ],
   "route_90m": [
-    "giraffe",
-    "lion",
-    "gorilla"
+    "african_lion",
+    "sumatran_tiger",
+    "nile_hippo"
   ],
   "presence_sources": [
     "https://www.fortworthzoo.org/",
     "https://www.fortworthzoo.org/habitats",
-    "https://www.fortworthzoo.org/babies",
-    "https://www.fortworthzoo.org/keeper-chatsstage-show"
+    "https://www.fortworthzoo.org/predators",
+    "https://www.fortworthzoo.org/construction-updates"
   ],
   "bonus_hunt": {
-    "tagline": "Fort Worth bonus · Predators + Elephant Springs energy",
+    "tagline": "Fort Worth bonus · Predators + Savanna + Primates",
     "find_ids": [
-      "penguin",
-      "hippo",
-      "otter",
-      "tiger",
-      "tortoise",
-      "lemur",
-      "zebra",
-      "gorilla"
+      "cheetah",
+      "reticulated_giraffe",
+      "western_lowland_gorilla",
+      "orangutan",
+      "caribbean_flamingo",
+      "two_toed_sloth"
     ],
     "challenges": [
       {
-        "id": "fw_predators",
-        "text": "Predators of Asia & Africa: watch a big cat for 20 seconds without talking — what did it do?",
+        "id": "fw_lion",
+        "text": "Predators: watch a lion for 20 seconds — roar, rest, or pace?",
         "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "fw_tiger",
+        "text": "Tiger yard: count stripe clusters on one shoulder (best guess).",
+        "age_fit": [
+          "2-3",
           "4-5",
           "6-8",
           "adult"
@@ -345,7 +388,7 @@
       },
       {
         "id": "fw_hippo",
-        "text": "Hippo stop: more underwater, mud, or bank? Guess why",
+        "text": "Hippo river: more underwater, mud, or bank?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -354,37 +397,8 @@
         ]
       },
       {
-        "id": "fw_penguin",
-        "text": "Penguins (rockhoppers if on view): count waddles or a dive",
-        "age_fit": [
-          "2-3",
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "fw_otter",
-        "text": "Otters: find the splashiest 10 seconds",
-        "age_fit": [
-          "2-3",
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "fw_pattern",
-        "text": "Tiger stripes vs zebra stripes — which looks busier up close?",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "fw_tortoise",
-        "text": "Giant tortoise: is it mid-step or statue-still?",
+        "id": "fw_sloth",
+        "text": "World of Primates sloth: mid-reach or statue-still?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -393,14 +407,14 @@
         ]
       }
     ],
-    "easter_egg": "★ Easter egg: find Elephant Springs on a map/sign (herd may be off-view for habitat work — still count the place)",
-    "easter_egg_little": "★ Easter egg: kids play area only after the hard list — one free minute",
+    "easter_egg": "★ Easter egg: find this zoo on a map/sign and point to a habitat you have not visited yet",
+    "easter_egg_little": "★ Easter egg: pick a favorite stop and tell a grown-up why",
     "sources": [
-      "https://www.fortworthzoo.org/",
-      "Predators of Asia & Africa reopening; Elephant Springs"
+      "https://www.fortworthzoo.org/habitats",
+      "https://www.fortworthzoo.org/predators"
     ],
-    "notes": "Elephants may be behind scenes for maintenance — egg is map/place not live elephant requirement.",
-    "researched": "2026-08-08",
+    "researched": "2026-08-23",
     "status": "researched"
-  }
+  },
+  "last_presence_audit": "2026-08-23"
 }

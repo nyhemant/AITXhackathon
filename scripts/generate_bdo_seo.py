@@ -247,7 +247,7 @@ OUTING_TALK_EXHIBIT = (
 SEO_CSS_VER = "28"
 LANDING_CSS_VER = "95"
 STYLES_CSS_VER = "36"
-CATALOG_JS_VER = "36"
+CATALOG_JS_VER = "37"
 VIEWPORT = "width=device-width, initial-scale=1, viewport-fit=cover"
 MISSION_CSS_VER = "18"
 
@@ -783,15 +783,37 @@ def watch_links_html(item: dict) -> str:
     return f'<p class="seo-watch-row">{" · ".join(links)}</p>'
 
 
-# Wave 1 Start here kits share animal cards. Next / Print / Learn more follow
-# ?from=<slug> (or the place-page referrer). Not a site-wide next-animal system.
-# Shared african-elephant: Next: lion only when the parent came from Dallas
-# (San Diego’s Start here ends on elephant).
-_START_HERE_NEXT_SLUGS = ("dallas-zoo", "san-diego-zoo", "houston-zoo", "national-zoo")
+# Wave 1 + Wave 2a Start here kits share animal cards. Next / Print / Learn
+# more follow ?from=<slug> (or the place-page referrer). Not a site-wide
+# next-animal system. Shared african-elephant: Next: lion only when the
+# parent came from Dallas (San Diego’s Start here ends on elephant).
+# Shared giant-panda: San Diego → koala, National → otter.
+_START_HERE_NEXT_SLUGS = (
+    "dallas-zoo",
+    "san-diego-zoo",
+    "houston-zoo",
+    "national-zoo",
+    "fort-worth-zoo",
+    "san-antonio-zoo",
+    "austin-zoo",
+    "lincoln-park-zoo",
+    "bronx-zoo",
+    "la-zoo",
+    "oregon-zoo",
+    "columbus-zoo",
+    "denver-zoo",
+    "st-louis-zoo",
+)
 _START_HERE_NEXT: dict[str, list[dict[str, str]]] | None = None
 _START_HERE_KITS: dict[str, list[str]] | None = None
 _START_HERE_SITES: dict[str, str] | None = None
 _PUBLISHED_CARD_IDS: set[str] | None = None
+
+
+def kit_from_query(slug: str) -> str:
+    """?from= slug for Wave 1 + Wave 2a start-here / open-card links."""
+    s = (slug or "").strip()
+    return f"from={s}" if s in _START_HERE_NEXT_SLUGS else ""
 
 
 def published_card_ids() -> set[str]:
@@ -828,9 +850,8 @@ def item_public_href(item_id: str, venue_id: str = "", *, extra_query: str = "")
 
 
 def start_here_card_href(item_id: str, slug: str = "") -> str:
-    """Public card href. Wave 1 Start here keeps ?from=<kit> so Next stays on that path."""
-    extra = f"from={slug}" if slug in _START_HERE_NEXT_SLUGS else ""
-    return item_public_href(item_id, slug, extra_query=extra)
+    """Public card href. Wave 1 + Wave 2a start-here cards keep ?from={slug}."""
+    return item_public_href(item_id, slug, extra_query=kit_from_query(slug))
 
 
 def _load_start_here_index() -> None:
@@ -875,7 +896,7 @@ def start_here_next_by_card() -> dict[str, list[dict[str, str]]]:
 
 
 def start_here_kits_for(cid: str) -> list[str]:
-    """Wave 1 kits that list this catalog id on Start here (including the last stop)."""
+    """Kits that list this catalog id on Start here (including the last stop)."""
     _load_start_here_index()
     return list((_START_HERE_KITS or {}).get(cid or "") or [])
 
@@ -883,6 +904,26 @@ def start_here_kits_for(cid: str) -> list[str]:
 def start_here_official_urls() -> dict[str, str]:
     _load_start_here_index()
     return dict(_START_HERE_SITES or {})
+
+
+def start_here_next_by_kit() -> dict[str, dict[str, dict[str, str]]]:
+    """slug → catalog_id → next stop for that kit's start-here 3."""
+    out: dict[str, dict[str, dict[str, str]]] = {}
+    for cid, nexts in start_here_next_by_card().items():
+        for nxt in nexts:
+            slug = nxt["from"]
+            out.setdefault(slug, {})[cid] = {"id": nxt["id"], "name": nxt["name"]}
+    return out
+
+
+def card_next_matches(cid: str) -> list[tuple[str, dict[str, str]]]:
+    """(from_slug, next) pairs for a start-here card."""
+    cid = cid or ""
+    return [
+        (slug, nxt)
+        for slug, kit in start_here_next_by_kit().items()
+        if (nxt := kit.get(cid))
+    ]
 
 
 def card_next_html(cid: str) -> str:
@@ -1116,7 +1157,11 @@ def unique_body(
         if card_inner:
             # At-home card session. Hunt drawer stays on the print button.
             href = (
-                item_public_href(item_id, v.get("id") or "")
+                item_public_href(
+                    item_id,
+                    v.get("id") or "",
+                    extra_query=kit_from_query(str(v.get("id") or "")),
+                )
                 if item_id
                 else f"/field-pack/{esc(v['id'])}/#at-home"
             )

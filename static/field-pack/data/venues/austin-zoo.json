@@ -8,10 +8,10 @@
   "lat": 30.24,
   "lng": -97.93,
   "official_url": "https://www.austinzoo.org/",
-  "last_verified": "2026-08-08",
+  "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Hill Country rescue zoo — big cats, bears, tortoises, free-roaming peacocks; not a megafauna safari.",
+  "tagline": "Hill Country rescue zoo — lions, cheetahs, tortoises; not a megafauna safari.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Rescue zoo (not AZA megafauna). Expect lions, tigers, bears, wolves, tortoises, hoofstock feed — no elephants/giraffes/hippos.",
@@ -28,7 +28,7 @@
       "tags": [
         "big-cats",
         "outdoor",
-        "wow"
+        "sound"
       ],
       "age_fit": [
         "2-3",
@@ -42,37 +42,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-lion",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
       "display_label": "African lion",
-      "presence_note": "Featured cats; keeper chats / pair names in public materials."
-    },
-    {
-      "id": "tiger",
-      "label": "Tiger",
-      "emoji": "🐅",
-      "one_liner": "White Bengal tiger (rescue) — soft-label Tiger, not Sumatran.",
-      "tags": [
-        "big-cats",
-        "outdoor",
-        "wow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Big cats",
-      "qa_card": {
-        "question": "What did you notice about the Tiger?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "tiger",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Tiger",
-      "presence_note": "White tiger chats on official schedule (e.g. Zulema rescue story). Not Sumatran."
+      "core": true
     },
     {
       "id": "cheetah",
@@ -95,63 +69,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "cheetah",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
       "display_label": "Cheetah",
-      "presence_note": "Cheetah Chat on plan-a-visit schedule."
-    },
-    {
-      "id": "black_bear",
-      "label": "Black bear",
-      "emoji": "🐻",
-      "one_liner": "Rescue black bears — keeper chats / feedings listed.",
-      "tags": [
-        "big",
-        "outdoor",
-        "wow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Bears",
-      "qa_card": {
-        "question": "What did you notice about the Black bear?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "black-bear",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Black bear",
-      "presence_note": "Black Bear keeper chat/feeding on official schedule."
-    },
-    {
-      "id": "wolf",
-      "label": "Wolf",
-      "emoji": "🐺",
-      "one_liner": "Wolf feedings on the daily schedule.",
-      "tags": [
-        "outdoor",
-        "wow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Canids",
-      "qa_card": {
-        "question": "What did you notice about the Wolf?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "wolf",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Wolf",
-      "presence_note": "Wolves Feeding listed on plan-a-visit."
+      "core": true
     },
     {
       "id": "galapagos_tortoise",
@@ -159,9 +81,8 @@
       "emoji": "🐢",
       "one_liner": "Giant tortoises + private encounters marketed.",
       "tags": [
-        "slow",
         "outdoor",
-        "wow"
+        "slow"
       ],
       "age_fit": [
         "2-3",
@@ -176,88 +97,10 @@
       },
       "catalog_id": "galapagos-tortoise",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
       "display_label": "Galápagos tortoise",
-      "presence_note": "Official encounters + tortoise barn sponsorships."
-    },
-    {
-      "id": "alligator",
-      "label": "Alligator",
-      "emoji": "🐊",
-      "one_liner": "Alligator feeding times on the schedule.",
-      "tags": [
-        "outdoor",
-        "wow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Reptiles",
-      "qa_card": {
-        "question": "What did you notice about the Alligator?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "alligator",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Alligator",
-      "presence_note": "Alligator Feeding on official plan-a-visit schedule."
-    },
-    {
-      "id": "ring_tailed_lemur",
-      "label": "Ring-tailed lemur",
-      "emoji": "🐒",
-      "one_liner": "Lemur hop energy; lemur feedings listed.",
-      "tags": [
-        "primates",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Primates",
-      "qa_card": {
-        "question": "What did you notice about the Ring-tailed lemur?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "ring-tailed-lemur",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Ring-tailed lemur",
-      "presence_note": "Brown lemur feeding on schedule; ring-tails on visitor reports."
-    },
-    {
-      "id": "capybara",
-      "label": "Capybara",
-      "emoji": "🐹",
-      "one_liner": "Largest rodent — private encounters offered.",
-      "tags": [
-        "outdoor",
-        "wow",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "South America",
-      "qa_card": {
-        "question": "What did you notice about the Capybara?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "capybara",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Capybara",
-      "presence_note": "Capybara Feeding + private encounters on official site."
+      "core": true
     },
     {
       "id": "zebra",
@@ -265,8 +108,9 @@
       "emoji": "🦓",
       "one_liner": "Zebra/ostrich chats on the schedule.",
       "tags": [
+        "pattern",
         "outdoor",
-        "wow"
+        "savanna"
       ],
       "age_fit": [
         "2-3",
@@ -280,19 +124,20 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "zebra",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
       "display_label": "Zebra",
-      "presence_note": "Zebra/Ostrich Chat on plan-a-visit."
+      "core": true
     },
     {
       "id": "ostrich",
       "label": "Ostrich",
-      "emoji": "🪿",
+      "emoji": "🪶",
       "one_liner": "Big flightless bird with zebra yard energy.",
       "tags": [
-        "outdoor",
-        "wow"
+        "birds",
+        "outdoor"
       ],
       "age_fit": [
         "2-3",
@@ -306,67 +151,14 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "ostrich",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Ostrich",
-      "presence_note": "Paired with zebra on official chats."
-    },
-    {
-      "id": "peacock",
-      "label": "Peacock",
-      "emoji": "🦚",
-      "one_liner": "Free-roaming peafowl — look underfoot and on roofs.",
-      "tags": [
-        "outdoor",
-        "wow",
-        "color"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What did you notice about the Peacock?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "peacock",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Peacock",
-      "presence_note": "Widely reported free-roaming peacocks on grounds."
-    },
-    {
-      "id": "hoofstock_feed",
-      "label": "Hoofstock feed yard",
-      "emoji": "🐐",
-      "one_liner": "Sheep, deer, goats, llamas, alpacas — feed area.",
-      "tags": [
-        "kids",
-        "play",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Animal Feeding Area",
-      "qa_card": {
-        "question": "What did you notice about the Hoofstock feed yard?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "hoofstock-feed",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "display_label": "Hoofstock feed yard",
-      "presence_note": "Official Animal Feeding Area on homepage."
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Ostrich",
+      "core": false
     }
   ],
-  "content_mode": "hybrid",
+  "content_mode": "curated",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://www.austinzoo.org/",
@@ -381,71 +173,61 @@
   ],
   "route_90m": [
     "african_lion",
-    "tiger",
+    "cheetah",
     "galapagos_tortoise"
   ],
-  "research_notes": "[2026-08-08] Re-research from austinzoo.org plan-a-visit schedule + homepage feeding area/encounters. Inventory expanded; Bonus+Alpha packs authored.",
-  "list_confidence": "partial",
+  "research_notes": "[2026-08-23] Official-source Wave 2a public list pass (austinzoo.org plan-a-visit + sponsors). Rescue collection; published zoo/both cards only.",
+  "list_confidence": "audited",
   "do_not_list": [
     {
       "catalog_id": "sumatran-tiger",
       "name": "Sumatran tiger",
-      "reason": "Has white Bengal / tiger — not confirmed Sumatran. Use soft label Tiger only.",
-      "as_of": "2026-08-08"
+      "reason": "Official: white tiger / tiger habitats — not Sumatran.",
+      "as_of": "2026-08-23"
     },
     {
       "catalog_id": "reticulated-giraffe",
       "name": "Reticulated giraffe",
       "reason": "Rescue zoo; giraffes not a featured species.",
-      "as_of": "2026-08-08"
-    },
-    {
-      "catalog_id": "red-panda",
-      "name": "Red panda",
-      "reason": "Not indicated.",
-      "as_of": "2026-08-08"
-    },
-    {
-      "catalog_id": "nile-hippo",
-      "name": "Nile hippo",
-      "reason": "No hippo program.",
-      "as_of": "2026-08-08"
+      "as_of": "2026-08-23"
     },
     {
       "catalog_id": "african-elephant",
       "name": "African elephant",
       "reason": "No elephant program.",
-      "as_of": "2026-08-08"
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "nile-hippo",
+      "name": "Nile hippo",
+      "reason": "No hippo program.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "red-panda",
+      "name": "Red panda",
+      "reason": "Not on the official visit / sponsor list.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "ring-tailed-lemur",
+      "name": "Ring-tailed lemur",
+      "reason": "Official schedule lists brown lemur feeding, not ring-tailed.",
+      "as_of": "2026-08-23"
     }
   ],
   "presence_sources": [
     "https://austinzoo.org/",
     "https://austinzoo.org/plan-a-visit/",
-    "Official schedule: White Tiger Chat, Cheetah Chat, Black Bear, Wolves Feeding, Alligator Feeding, Capybara, Zebra/Ostrich, Galapagos encounters, Hoofstock Feeding Area"
+    "https://austinzoo.org/sponsors/"
   ],
   "bonus_hunt": {
-    "tagline": "Austin bonus · white tiger + tortoise barn + peacock grounds",
+    "tagline": "Austin bonus · rescue cats + tortoise barn + hoofstock",
     "find_ids": [
-      "tiger",
-      "african_lion",
-      "galapagos_tortoise",
-      "black_bear",
-      "wolf",
-      "peacock",
-      "capybara",
-      "cheetah"
+      "zebra",
+      "ostrich"
     ],
     "challenges": [
-      {
-        "id": "az_tiger",
-        "text": "Tiger: white coat or orange? Watch 15s — pace, rest, or water?",
-        "age_fit": [
-          "2-3",
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
       {
         "id": "az_lion",
         "text": "Lions: mane fluff or sleek face — who looks more awake?",
@@ -457,55 +239,28 @@
         ]
       },
       {
-        "id": "az_tort",
-        "text": "Galápagos tortoise barn: mid-step or statue? (patience prize)",
-        "age_fit": [
-          "2-3",
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "az_bear",
-        "text": "Black bear: climb energy or ground forage?",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "az_wolf",
-        "text": "Wolf: ears up/alert or relaxed pack nap?",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "az_peacock",
-        "text": "Peacock: full train display or just strutting? Count eyespots if fanned",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "az_capy",
-        "text": "Capybara: more like a giant guinea pig or a pig? Defend your answer",
-        "age_fit": [
-          "2-3",
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
         "id": "az_cheetah",
-        "text": "Cheetah: statue score 1–10 after 20 quiet seconds",
+        "text": "Cheetah: statue score 1–10 after 20 quiet seconds.",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "az_tort",
+        "text": "Galápagos tortoise barn: mid-step or statue?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "az_zebra",
+        "text": "Zebra/ostrich yard: stripes vs feathers — which is busier?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -514,18 +269,16 @@
         ]
       }
     ],
-    "easter_egg": "★ Easter egg: find the Animal Feeding Area on the map — even if you skip the feed",
-    "easter_egg_little": "★ Easter egg: strut like a peacock for 5 steps after the list",
+    "easter_egg": "★ Easter egg: find this zoo on a map/sign and point to a habitat you have not visited yet",
+    "easter_egg_little": "★ Easter egg: pick a favorite stop and tell a grown-up why",
     "sources": [
-      "https://austinzoo.org/",
       "https://austinzoo.org/plan-a-visit/",
-      "White Tiger Chat, Cheetah Chat, Black Bear, Wolves, Alligator, Capybara, Zebra/Ostrich, Galápagos encounters"
+      "https://austinzoo.org/sponsors/"
     ],
-    "notes": "Rescue collection changes; white tiger is Bengal-type not Sumatran.",
-    "researched": "2026-08-08",
+    "researched": "2026-08-23",
     "status": "researched"
   },
-  "last_presence_audit": "2026-08-08",
+  "last_presence_audit": "2026-08-23",
   "alpha_hunt": {
     "tagline": "Austin Alpha · rescue deep cuts + free-roamers",
     "find_ids": [
