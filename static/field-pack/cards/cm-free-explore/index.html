@@ -58,11 +58,11 @@
   <div id="treasure-sheet" class="print-sheet treasure-sheet" aria-hidden="true"></div>
   <script src="/shell/shell.js?v=5"></script>
   <script src="/field-pack/js/fp-analytics.js?v=1"></script>
-  <script src="/field-pack/js/catalog.js?v=36"></script>
+  <script src="/field-pack/js/catalog.js?v=37"></script>
   <script src="/field-pack/js/print-kit.js?v=14"></script>
   <script>
     (function () {
-      var KIT_SITES = {"dallas-zoo":"https://www.dallaszoo.com/","san-diego-zoo":"https://zoo.sandiegozoo.org/","houston-zoo":"https://www.houstonzoo.org/","national-zoo":"https://nationalzoo.si.edu/"};
+      var KIT_SITES = {"dallas-zoo":"https://www.dallaszoo.com/","san-diego-zoo":"https://zoo.sandiegozoo.org/","houston-zoo":"https://www.houstonzoo.org/","national-zoo":"https://nationalzoo.si.edu/","fort-worth-zoo":"https://www.fortworthzoo.org/","san-antonio-zoo":"https://sazoo.org/","austin-zoo":"https://www.austinzoo.org/","lincoln-park-zoo":"https://www.lpzoo.org/","bronx-zoo":"https://bronxzoo.com/","la-zoo":"https://www.lazoo.org/","oregon-zoo":"https://www.oregonzoo.org/","columbus-zoo":"https://www.columbuszoo.org/","denver-zoo":"https://denverzoo.org/","st-louis-zoo":"https://www.stlzoo.org/"};
       var from = new URLSearchParams(window.location.search).get("from");
       if (!from || !KIT_SITES[from]) {
         try {
