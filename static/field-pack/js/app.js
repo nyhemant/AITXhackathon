@@ -452,19 +452,25 @@
     history.replaceState(null, "", `#/venue/${venue.id}`);
   }
 
+  function itemOnVenue(venue, itemId) {
+    if (!venue || !itemId) return false;
+    if ((venue.animalIds || []).includes(itemId)) return true;
+    return (venue.items || []).some((x) => x && x.id === itemId);
+  }
+
   function showItem(tripId, itemId) {
     const trip = getTrip(tripId) || ensureOuting(selectedVenueId);
     if (!trip) return showOuting(selectedVenueId);
     const venueEarly = getVenue(trip.venueId);
+    if (!venueEarly || !itemOnVenue(venueEarly, itemId)) {
+      return showOuting((venueEarly && venueEarly.id) || selectedVenueId);
+    }
     const item = getItem(itemId, venueEarly);
-    if (!item) return showOuting(selectedVenueId);
+    if (!item) return showOuting(venueEarly.id);
     if (!trip.selectedAnimalIds.includes(itemId)) {
       // allow opening from customize even if temporarily off
-      if (!(getVenue(trip.venueId).animalIds || []).includes(itemId)) return showOuting(trip.venueId);
-      if (!trip.selectedAnimalIds.includes(itemId)) {
-        trip.selectedAnimalIds.push(itemId);
-        saveStore();
-      }
+      trip.selectedAnimalIds.push(itemId);
+      saveStore();
     }
     currentTripId = trip.id;
     currentItemId = itemId;
@@ -1299,6 +1305,21 @@
     }
   }
 
+  function setExternalAction(link, url) {
+    if (!link) return;
+    if (!url || !/^https?:\/\//.test(url)) {
+      link.hidden = true;
+      link.removeAttribute("href");
+      link.setAttribute("aria-disabled", "true");
+      return;
+    }
+    link.hidden = false;
+    link.href = url;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.removeAttribute("aria-disabled");
+  }
+
   function renderDetail(trip, item, venue) {
     loadQaAge();
     const pack = talkPackFor(item, venue, qaAge);
@@ -1316,18 +1337,15 @@
     const picUrl = (item.links && item.links.pictures) || "";
     const moreUrl = (item.links && item.links.more) || "";
     if (els.btnCam) {
-      els.btnCam.hidden = !camUrl;
-      els.btnCam.href = camUrl || "#";
+      setExternalAction(els.btnCam, camUrl);
       els.btnCam.textContent = "Live cam";
     }
     if (els.btnPictures) {
-      els.btnPictures.hidden = !picUrl;
-      els.btnPictures.href = picUrl || "#";
+      setExternalAction(els.btnPictures, picUrl);
       els.btnPictures.textContent = "Photos";
     }
     if (els.btnMore) {
-      els.btnMore.hidden = !moreUrl;
-      els.btnMore.href = moreUrl || "#";
+      setExternalAction(els.btnMore, moreUrl);
       els.btnMore.textContent =
         venue && venue.packTemplate === "exhibits" ? "Museum site" : "Learn more";
     }

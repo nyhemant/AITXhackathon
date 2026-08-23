@@ -245,6 +245,13 @@ a {
     border-color var(--dur-fast) var(--ease);
 }
 
+/* .btn { display: inline-flex } beats the UA [hidden] rule — keep dead actions gone. */
+.btn[hidden],
+.detail-links .btn[hidden],
+.detail-links-quiet a.btn[hidden] {
+  display: none !important;
+}
+
 .btn:hover {
   transform: translateY(-1px);
   box-shadow: var(--shadow);
