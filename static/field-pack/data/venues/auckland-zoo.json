@@ -8,10 +8,10 @@
   "lat": -36.864,
   "lng": 174.719,
   "official_url": "https://www.aucklandzoo.co.nz/",
-  "last_verified": "2026-08-07",
+  "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Auckland Zoo — NZ city zoo with solid kids’ zoo energy.",
+  "tagline": "Sumatran tigers first, then a named Galápagos tortoise and Bornean orangutan — elephants have left.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Western Springs; check aucklandzoo.co.nz.",
@@ -24,9 +24,148 @@
       "id": "sumatran_tiger",
       "label": "Sumatran tiger",
       "emoji": "🐯",
-      "one_liner": "Tigers.",
+      "one_liner": "Sumatran tiger — Ramah, Zayana, and Cahya.",
       "tags": [
         "big-cats",
+        "pattern",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Mammals",
+      "qa_card": {
+        "question": "What did you notice about the Sumatran tiger?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sumatran-tiger",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Sumatran tiger",
+      "core": true
+    },
+    {
+      "id": "galapagos_tortoise",
+      "label": "Galápagos tortoise",
+      "emoji": "🐢",
+      "one_liner": "Named Galápagos tortoise residents — mid-step or statue?",
+      "tags": [
+        "outdoor",
+        "slow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Ectotherms",
+      "qa_card": {
+        "question": "What did you notice about the Galápagos tortoise?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "galapagos-tortoise",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Galápagos tortoise",
+      "core": true
+    },
+    {
+      "id": "orangutan",
+      "label": "Orangutan",
+      "emoji": "🦧",
+      "one_liner": "Bornean orangutan — long arms at High Canopy.",
+      "tags": [
+        "primates",
+        "climb",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "South East Asia",
+      "qa_card": {
+        "question": "What did you notice about the Orangutan?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "orangutan",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Orangutan",
+      "core": true
+    },
+    {
+      "id": "cheetah",
+      "label": "Cheetah",
+      "emoji": "🐆",
+      "one_liner": "Cheetah — tear marks, not a lion mane.",
+      "tags": [
+        "big-cats",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Mammals",
+      "qa_card": {
+        "question": "What did you notice about the Cheetah?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "cheetah",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Cheetah",
+      "core": true
+    },
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "emoji": "🦁",
+      "one_liner": "African lion — listen for a roar.",
+      "tags": [
+        "big-cats",
+        "outdoor",
+        "sound"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Mammals",
+      "qa_card": {
+        "question": "What did you notice about the African lion?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "african-lion",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "African lion",
+      "core": true
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Giraffe",
+      "emoji": "🦒",
+      "one_liner": "Pridelands giraffe — look up from the path.",
+      "tags": [
+        "tall",
+        "outdoor",
         "wow"
       ],
       "age_fit": [
@@ -35,49 +174,28 @@
         "6-8",
         "9+"
       ],
-      "zone": "Tigers",
+      "zone": "Pridelands",
       "qa_card": {
-        "question": "What did you notice about the Sumatran tiger?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "sumatran-tiger",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Sumatran tiger"
-    },
-    {
-      "id": "reticulated_giraffe",
-      "label": "Giraffe",
-      "emoji": "🦒",
-      "one_liner": "Giraffes.",
-      "tags": [
-        "tall"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Giraffes",
-      "qa_card": {
-        "question": "What did you notice about the Reticulated giraffe?",
+        "question": "What did you notice about the Giraffe?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "reticulated-giraffe",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Giraffe"
+      "display_label": "Giraffe",
+      "core": true,
+      "presence_note": "Official mammals page: Giraffe. Soft Giraffe."
     },
     {
-      "id": "african_lion",
-      "label": "African lion",
-      "emoji": "🦁",
-      "one_liner": "Lions.",
+      "id": "zebra",
+      "label": "Zebra",
+      "emoji": "🦓",
+      "one_liner": "Pridelands zebra with ostrich and giraffe.",
       "tags": [
-        "big-cats"
+        "pattern",
+        "outdoor",
+        "savanna"
       ],
       "age_fit": [
         "2-3",
@@ -85,24 +203,26 @@
         "6-8",
         "9+"
       ],
-      "zone": "Lions",
+      "zone": "Pridelands",
       "qa_card": {
-        "question": "What did you notice about the African lion?",
+        "question": "What did you notice about the Zebra?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "african-lion",
+      "catalog_id": "zebra",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "African lion"
+      "display_label": "Zebra",
+      "core": false
     },
     {
       "id": "red_panda",
       "label": "Red panda",
       "emoji": "🦊",
-      "one_liner": "Red pandas.",
+      "one_liner": "Red panda — rusty and tree-high.",
       "tags": [
-        "climb"
+        "climb",
+        "outdoor"
       ],
       "age_fit": [
         "2-3",
@@ -110,107 +230,26 @@
         "6-8",
         "9+"
       ],
-      "zone": "Red pandas",
+      "zone": "Mammals",
       "qa_card": {
         "question": "What did you notice about the Red panda?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "red-panda",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Red panda"
-    },
-    {
-      "id": "african_penguin",
-      "label": "African penguin",
-      "emoji": "🐧",
-      "one_liner": "Waddle on land, zoom in water.",
-      "tags": [
-        "wow",
-        "water",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the African penguin?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "african-penguin",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "African penguin",
-      "presence_note": "Not confirmed on mammals page (birds separate)."
-    },
-    {
-      "id": "zebra",
-      "label": "Zebra",
-      "emoji": "🦓",
-      "one_liner": "Striped grassland runner — every pattern is unique.",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Zebra?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "zebra",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Zebra"
-    },
-    {
-      "id": "galapagos_tortoise",
-      "label": "Galápagos tortoise",
-      "emoji": "🐢",
-      "one_liner": "Giant tortoise — slow and steady.",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Galápagos tortoise?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "galapagos-tortoise",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Galápagos tortoise",
-      "presence_note": "Not on mammals list."
+      "display_label": "Red panda",
+      "core": false
     },
     {
       "id": "asian_small_clawed_otter",
       "label": "Asian small-clawed otter",
       "emoji": "🦦",
-      "one_liner": "Playful swimmer — smallest otter.",
+      "one_liner": "Asian small-clawed otter — smallest otter, biggest splash.",
       "tags": [
-        "wow",
-        "water",
-        "outdoor",
-        "hands",
-        "play"
+        "play",
+        "water"
       ],
       "age_fit": [
         "2-3",
@@ -218,16 +257,44 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Mammals",
       "qa_card": {
-        "question": "What is special about the Asian small-clawed otter?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Asian small-clawed otter?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "asian-small-clawed-otter",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Asian small-clawed otter"
+      "display_label": "Asian small-clawed otter",
+      "core": false
+    },
+    {
+      "id": "ostrich",
+      "label": "Ostrich",
+      "emoji": "🪶",
+      "one_liner": "Common ostrich — four females on Pridelands.",
+      "tags": [
+        "birds",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Pridelands",
+      "qa_card": {
+        "question": "What did you notice about the Ostrich?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "ostrich",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Ostrich",
+      "core": false
     }
   ],
   "content_mode": "curated",
@@ -246,66 +313,76 @@
   ],
   "route_90m": [
     "sumatran_tiger",
-    "african_lion",
-    "red_panda"
+    "galapagos_tortoise",
+    "orangutan"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 · map-img 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [critical]",
+  "research_notes": "[2026-08-23] Official-source Wave 3a public list pass (aucklandzoo.co.nz mammals + birds + ectotherms).",
   "list_confidence": "audited",
   "do_not_list": [
     {
-      "catalog_id": "western-lowland-gorilla",
-      "name": "Western lowland gorilla",
-      "reason": "Not on current mammals list.",
-      "as_of": "2026-08-08"
-    },
-    {
       "catalog_id": "african-elephant",
       "name": "African elephant",
-      "reason": "Official: Asian elephants relocated November 2024 — none on site.",
-      "as_of": "2026-08-08"
+      "reason": "Official: Asian elephants moved November 2024; none remain at Auckland Zoo.",
+      "as_of": "2026-08-23"
     },
     {
-      "catalog_id": "chimpanzee",
-      "name": "Chimpanzee",
-      "reason": "Not on mammals list; orangutan/siamang present instead.",
-      "as_of": "2026-08-08"
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "Official birds list: Kororā / little penguin.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "caribbean-flamingo",
+      "name": "Caribbean flamingo",
+      "reason": "Official birds list: Greater Flamingo.",
+      "as_of": "2026-08-23"
     },
     {
       "catalog_id": "nile-hippo",
       "name": "Nile hippo",
-      "reason": "Not on current mammals list.",
-      "as_of": "2026-08-08"
+      "reason": "Not on the official mammals directory.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "western-lowland-gorilla",
+      "name": "Western lowland gorilla",
+      "reason": "Not on the official mammals directory.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "chimpanzee",
+      "name": "Chimpanzee",
+      "reason": "Not on the official mammals directory.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "koala",
+      "name": "Koala",
+      "reason": "Not on the official mammals directory.",
+      "as_of": "2026-08-23"
     }
   ],
-  "last_presence_audit": "2026-08-08",
+  "last_presence_audit": "2026-08-23",
   "presence_sources": [
+    "https://www.aucklandzoo.co.nz/animals",
     "https://www.aucklandzoo.co.nz/animals/mammals",
-    "https://www.aucklandzoo.co.nz/animals/asian-elephant",
-    "https://www.aucklandzoo.co.nz/"
+    "https://www.aucklandzoo.co.nz/animals/birds",
+    "https://www.aucklandzoo.co.nz/animals/ectotherms"
   ],
   "bonus_hunt": {
-    "tagline": "Auckland Zoo bonus · Te Wao Nui + Africa",
+    "tagline": "Auckland bonus · tiger + tortoise + High Canopy",
     "find_ids": [
-      "sumatran_tiger",
-      "reticulated_giraffe",
-      "asian_small_clawed_otter",
-      "zebra",
+      "cheetah",
       "african_lion",
-      "red_panda"
+      "reticulated_giraffe",
+      "zebra",
+      "red_panda",
+      "asian_small_clawed_otter"
     ],
     "challenges": [
       {
-        "id": "auk_orang",
-        "text": "Orangutan clever hands",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
         "id": "auk_tiger",
-        "text": "Tiger pace vs hide",
+        "text": "Sumatran tiger: count stripe clusters on one shoulder.",
         "age_fit": [
           "2-3",
           "4-5",
@@ -314,8 +391,8 @@
         ]
       },
       {
-        "id": "auk_local",
-        "text": "NZ native stop: still or active?",
+        "id": "auk_tort",
+        "text": "Galápagos tortoise: mid-step or statue-still?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -324,8 +401,8 @@
         ]
       },
       {
-        "id": "auk_giraffe",
-        "text": "Giraffe stretch",
+        "id": "auk_orang",
+        "text": "Bornean orangutan: hands or feet doing the clever bit?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -334,21 +411,23 @@
         ]
       },
       {
-        "id": "auk_gorilla",
-        "text": "Gorilla rest or busy",
+        "id": "auk_cheetah",
+        "text": "Cheetah: statue score 1–10 after 20 quiet seconds.",
         "age_fit": [
+          "2-3",
           "4-5",
           "6-8",
           "adult"
         ]
       }
     ],
-    "easter_egg": "★ Easter egg: find Te Wao Nui on the map before you wander",
-    "easter_egg_little": "★ Easter egg: after the hard list — one free minute of favorite stop",
-    "researched": "2026-08-08",
-    "status": "researched",
+    "easter_egg": "★ Easter egg: find this zoo on a map/sign and point to a habitat you have not visited yet",
+    "easter_egg_little": "★ Easter egg: pick a favorite stop and tell a grown-up why",
     "sources": [
-      "https://www.aucklandzoo.co.nz/"
-    ]
+      "https://www.aucklandzoo.co.nz/animals",
+      "https://www.aucklandzoo.co.nz/animals/mammals"
+    ],
+    "researched": "2026-08-23",
+    "status": "researched"
   }
 }

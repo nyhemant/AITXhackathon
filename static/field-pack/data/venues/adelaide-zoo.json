@@ -8,10 +8,10 @@
   "lat": -34.914,
   "lng": 138.606,
   "official_url": "https://www.zoossa.com.au/adelaide-zoo/",
-  "last_verified": "2026-08-07",
+  "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Adelaide Zoo — compact city zoo; giant pandas when viewing is open.",
+  "tagline": "Giant pandas Xing Qiu and Yi Lan first, then a southern koala and Sumatran orangutan.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "City zoo; giant panda talks ~1:15pm — confirm adelaidezoo.com.au. Large African species mostly at Monarto Safari Park (separate ticket/site).",
@@ -24,10 +24,10 @@
       "id": "giant_panda",
       "label": "Giant panda",
       "emoji": "🐼",
-      "one_liner": "Pandas when accessible — the magnet stop.",
+      "one_liner": "Giant pandas Xing Qiu and Yi Lan — bamboo first.",
       "tags": [
-        "wow",
-        "big"
+        "climb",
+        "outdoor"
       ],
       "age_fit": [
         "2-3",
@@ -42,18 +42,19 @@
       },
       "catalog_id": "giant-panda",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "Giant panda",
-      "presence_note": "New pair on official animals list and keeper talks."
+      "core": true
     },
     {
-      "id": "red_panda",
-      "label": "Red panda",
-      "emoji": "🦊",
-      "one_liner": "Red pandas nearby energy.",
+      "id": "koala",
+      "label": "Koala",
+      "emoji": "🐨",
+      "one_liner": "Southern koala — sleepy eucalyptus eater.",
       "tags": [
-        "climb"
+        "climb",
+        "outdoor"
       ],
       "age_fit": [
         "2-3",
@@ -61,24 +62,55 @@
         "6-8",
         "9+"
       ],
-      "zone": "Red pandas",
+      "zone": "Animals",
       "qa_card": {
-        "question": "What did you notice about the Red panda?",
+        "question": "What did you notice about the Koala?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "red-panda",
+      "catalog_id": "koala",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Red panda"
+      "display_label": "Koala",
+      "core": true
+    },
+    {
+      "id": "orangutan",
+      "label": "Orangutan",
+      "emoji": "🦧",
+      "one_liner": "Sumatran orangutan — long arms in the trees.",
+      "tags": [
+        "primates",
+        "climb",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Animals",
+      "qa_card": {
+        "question": "What did you notice about the Orangutan?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "orangutan",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Orangutan",
+      "core": true
     },
     {
       "id": "sumatran_tiger",
       "label": "Sumatran tiger",
       "emoji": "🐯",
-      "one_liner": "Tigers.",
+      "one_liner": "Sumatran tiger — orange stripes in the trees.",
       "tags": [
-        "big-cats"
+        "big-cats",
+        "pattern",
+        "outdoor"
       ],
       "age_fit": [
         "2-3",
@@ -86,24 +118,26 @@
         "6-8",
         "9+"
       ],
-      "zone": "Tigers",
+      "zone": "Animals",
       "qa_card": {
         "question": "What did you notice about the Sumatran tiger?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sumatran-tiger",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Sumatran tiger"
+      "display_label": "Sumatran tiger",
+      "core": true
     },
     {
-      "id": "reticulated_giraffe",
-      "label": "Giraffe",
-      "emoji": "🦒",
-      "one_liner": "Giraffes.",
+      "id": "red_panda",
+      "label": "Red panda",
+      "emoji": "🦊",
+      "one_liner": "Red panda — rusty and tree-high.",
       "tags": [
-        "tall"
+        "climb",
+        "outdoor"
       ],
       "age_fit": [
         "2-3",
@@ -111,25 +145,26 @@
         "6-8",
         "9+"
       ],
-      "zone": "Giraffes",
+      "zone": "Animals",
       "qa_card": {
-        "question": "What did you notice about the Reticulated giraffe?",
+        "question": "What did you notice about the Red panda?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "reticulated-giraffe",
+      "catalog_id": "red-panda",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Giraffe",
-      "presence_note": "Listed as Giraffe; subspecies not specified on card."
+      "display_label": "Red panda",
+      "core": true
     },
     {
-      "id": "orangutan",
-      "label": "Sumatran orangutan",
-      "emoji": "🦧",
-      "one_liner": "Orangutans / great apes when on route.",
+      "id": "reticulated_giraffe",
+      "label": "Giraffe",
+      "emoji": "🦒",
+      "one_liner": "Giraffe Kimya — look up from the path.",
       "tags": [
-        "primates",
+        "tall",
+        "outdoor",
         "wow"
       ],
       "age_fit": [
@@ -138,28 +173,27 @@
         "6-8",
         "9+"
       ],
-      "zone": "Primates",
+      "zone": "Animals",
       "qa_card": {
-        "question": "What did you notice about the Orangutan?",
+        "question": "What did you notice about the Giraffe?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "orangutan",
+      "catalog_id": "reticulated-giraffe",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Sumatran orangutan"
+      "display_label": "Giraffe",
+      "core": true,
+      "presence_note": "Official animals page: Giraffe. Soft Giraffe."
     },
     {
       "id": "asian_small_clawed_otter",
       "label": "Asian small-clawed otter",
       "emoji": "🦦",
-      "one_liner": "Playful swimmer — smallest otter.",
+      "one_liner": "Asian small-clawed otter — smallest otter, biggest splash.",
       "tags": [
-        "wow",
-        "water",
-        "outdoor",
-        "hands",
-        "play"
+        "play",
+        "water"
       ],
       "age_fit": [
         "2-3",
@@ -167,16 +201,45 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Animals",
       "qa_card": {
-        "question": "What is special about the Asian small-clawed otter?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Asian small-clawed otter?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "asian-small-clawed-otter",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Asian small-clawed otter"
+      "display_label": "Asian small-clawed otter",
+      "core": false
+    },
+    {
+      "id": "ring_tailed_lemur",
+      "label": "Ring-tailed lemur",
+      "emoji": "🐒",
+      "one_liner": "Ring-tailed lemur — striped tail and a long stare.",
+      "tags": [
+        "primates",
+        "pattern",
+        "climb"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Animals",
+      "qa_card": {
+        "question": "What did you notice about the Ring-tailed lemur?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "ring-tailed-lemur",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Ring-tailed lemur",
+      "core": false
     }
   ],
   "content_mode": "curated",
@@ -194,82 +257,85 @@
   ],
   "route_90m": [
     "giant_panda",
-    "sumatran_tiger",
+    "koala",
     "orangutan"
   ],
-  "research_notes": "R3 2026-08-07 · presence-audit 2026-08-08 [critical]",
+  "research_notes": "[2026-08-23] Official-source Wave 3a public list pass (adelaidezoo.com.au animals A–Z). Do not import Monarto Safari Park megafauna.",
   "list_confidence": "audited",
   "do_not_list": [
     {
-      "catalog_id": "african-lion",
-      "name": "African lion",
-      "reason": "Not on Adelaide Zoo animals list; African lions listed at sister Monarto Safari Park.",
-      "as_of": "2026-08-08"
-    },
-    {
-      "catalog_id": "african-elephant",
-      "name": "African elephant",
-      "reason": "Not at Adelaide Zoo; Asian elephants at Monarto Safari Park.",
-      "as_of": "2026-08-08"
-    },
-    {
-      "catalog_id": "western-lowland-gorilla",
-      "name": "Western lowland gorilla",
-      "reason": "Not on official Adelaide Zoo animals list.",
-      "as_of": "2026-08-08"
-    },
-    {
-      "catalog_id": "chimpanzee",
-      "name": "Chimpanzee",
-      "reason": "Chimpanzees listed at Monarto, not Adelaide city zoo animals page.",
-      "as_of": "2026-08-08"
-    },
-    {
-      "catalog_id": "zebra",
-      "name": "Zebra",
-      "reason": "Plains zebra at Monarto; not on Adelaide animals list.",
-      "as_of": "2026-08-08"
+      "catalog_id": "nile-hippo",
+      "name": "Nile hippo",
+      "reason": "Official animals directory: Pygmy Hippo.",
+      "as_of": "2026-08-23"
     },
     {
       "catalog_id": "african-penguin",
       "name": "African penguin",
-      "reason": "Has Little (fairy) penguin, not African penguin. Soft-label to Little penguin if keeping a penguin stop.",
-      "as_of": "2026-08-08"
+      "reason": "Official animals directory: Little Penguin.",
+      "as_of": "2026-08-23"
     },
     {
       "catalog_id": "galapagos-tortoise",
       "name": "Galápagos tortoise",
-      "reason": "Official list has Aldabra tortoise, not Galápagos.",
-      "as_of": "2026-08-08"
+      "reason": "Official: Aldabra tortoise / Western swamp tortoise, not Galápagos.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "african-lion",
+      "name": "African lion",
+      "reason": "Not on the Adelaide Zoo animals list (lions are at Monarto Safari Park).",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Not on the Adelaide Zoo animals list.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "western-lowland-gorilla",
+      "name": "Western lowland gorilla",
+      "reason": "Not on the Adelaide Zoo animals list.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "chimpanzee",
+      "name": "Chimpanzee",
+      "reason": "Not on the Adelaide Zoo animals list.",
+      "as_of": "2026-08-23"
     }
   ],
-  "last_presence_audit": "2026-08-08",
+  "last_presence_audit": "2026-08-23",
   "presence_sources": [
     "https://www.adelaidezoo.com.au/animals/",
-    "https://www.adelaidezoo.com.au/animals/giant-panda-xing-qiu-and-yi-lan/",
-    "https://www.monartosafari.com.au/animals/"
+    "https://www.adelaidezoo.com.au/",
+    "https://www.adelaidezoo.com.au/animals/giraffe/",
+    "https://www.adelaidezoo.com.au/animals/asian-small-clawed-otter/"
   ],
   "bonus_hunt": {
-    "tagline": "Adelaide bonus · giant panda (if on view) + second-loop Asia",
+    "tagline": "Adelaide bonus · pandas + koala + orangutan",
     "find_ids": [
-      "giant_panda",
       "sumatran_tiger",
-      "orangutan",
-      "reticulated_giraffe"
+      "red_panda",
+      "reticulated_giraffe",
+      "asian_small_clawed_otter",
+      "ring_tailed_lemur"
     ],
     "challenges": [
       {
         "id": "adl_panda",
-        "text": "Panda if on view: chew speed or climb?",
+        "text": "Giant panda: bamboo busy or a full rest?",
         "age_fit": [
+          "2-3",
           "4-5",
           "6-8",
           "adult"
         ]
       },
       {
-        "id": "adl_tiger",
-        "text": "Tiger silent watch",
+        "id": "adl_koala",
+        "text": "Southern koala: eyes open or a daytime nap?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -279,16 +345,7 @@
       },
       {
         "id": "adl_orang",
-        "text": "Orangutan hands",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "adl_giraffe",
-        "text": "Giraffe neck geometry",
+        "text": "Sumatran orangutan: hands or feet doing the clever bit?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -297,8 +354,8 @@
         ]
       },
       {
-        "id": "adl_el",
-        "text": "Elephant trunk job",
+        "id": "adl_tiger",
+        "text": "Sumatran tiger: count stripe clusters on one shoulder.",
         "age_fit": [
           "2-3",
           "4-5",
@@ -307,13 +364,13 @@
         ]
       }
     ],
-    "easter_egg": "★ Easter egg: panda wall/queue art counts even if animals are off-view",
-    "easter_egg_little": "★ Easter egg: after the hard list — one free minute of favorite stop",
-    "researched": "2026-08-08",
-    "status": "researched",
+    "easter_egg": "★ Easter egg: find this zoo on a map/sign and point to a habitat you have not visited yet",
+    "easter_egg_little": "★ Easter egg: pick a favorite stop and tell a grown-up why",
     "sources": [
+      "https://www.adelaidezoo.com.au/animals/",
       "https://www.adelaidezoo.com.au/"
     ],
-    "notes": "Panda status can change — if-on-view challenges only."
+    "researched": "2026-08-23",
+    "status": "researched"
   }
 }

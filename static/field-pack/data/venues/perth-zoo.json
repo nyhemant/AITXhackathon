@@ -8,10 +8,9 @@
   "lat": -31.974,
   "lng": 115.854,
   "official_url": "https://perthzoo.wa.gov.au/",
-  "last_verified": "2026-08-07",
   "verified_by": "research",
-  "status": "verified",
-  "tagline": "Perth Zoo — intimate Aussie zoo with strong kids’ focus.",
+  "status": "partial",
+  "tagline": "Starter list: Australian Bushwalk koala, then a Sumatran orangutan and Galápagos tortoise.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "South Perth.",
@@ -24,9 +23,10 @@
       "id": "koala",
       "label": "Koala",
       "emoji": "🐨",
-      "one_liner": "Koalas.",
+      "one_liner": "Koala — sleepy eucalyptus eater.",
       "tags": [
-        "wow"
+        "climb",
+        "outdoor"
       ],
       "age_fit": [
         "2-3",
@@ -34,26 +34,109 @@
         "6-8",
         "9+"
       ],
-      "zone": "Australian",
+      "zone": "Australian Bushwalk",
       "qa_card": {
         "question": "What did you notice about the Koala?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "koala",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "Koala",
-      "presence_note": "Koala on animals list."
+      "core": true
     },
     {
       "id": "orangutan",
       "label": "Orangutan",
       "emoji": "🦧",
-      "one_liner": "Orangutans.",
+      "one_liner": "Sumatran orangutan — long arms in the trees.",
       "tags": [
         "primates",
         "climb",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Animals",
+      "qa_card": {
+        "question": "What did you notice about the Orangutan?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "orangutan",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Orangutan",
+      "core": true
+    },
+    {
+      "id": "galapagos_tortoise",
+      "label": "Galápagos tortoise",
+      "emoji": "🐢",
+      "one_liner": "Galápagos tortoise — mid-step or statue?",
+      "tags": [
+        "outdoor",
+        "slow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Animals",
+      "qa_card": {
+        "question": "What did you notice about the Galápagos tortoise?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "galapagos-tortoise",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Galápagos tortoise",
+      "core": true
+    },
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "emoji": "🦁",
+      "one_liner": "African lion — listen for a roar.",
+      "tags": [
+        "big-cats",
+        "outdoor",
+        "sound"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "African Savannah",
+      "qa_card": {
+        "question": "What did you notice about the African lion?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "african-lion",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "African lion",
+      "core": true
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Giraffe",
+      "emoji": "🦒",
+      "one_liner": "Giraffe — look up from the path.",
+      "tags": [
+        "tall",
+        "outdoor",
         "wow"
       ],
       "age_fit": [
@@ -62,105 +145,28 @@
         "6-8",
         "9+"
       ],
-      "zone": "Orangutans",
+      "zone": "Animals",
       "qa_card": {
-        "question": "What did you notice about the Orangutan?",
+        "question": "What did you notice about the Giraffe?",
         "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "orangutan",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Orangutan",
-      "presence_note": "Sumatran Orangutan."
-    },
-    {
-      "id": "african_lion",
-      "label": "African lion",
-      "emoji": "🦁",
-      "one_liner": "Lions.",
-      "tags": [
-        "big-cats"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Lions",
-      "qa_card": {
-        "question": "What did you notice about the African lion?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "african-lion",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "African lion",
-      "presence_note": "African Lion."
-    },
-    {
-      "id": "sumatran_tiger",
-      "label": "Tiger (verify)",
-      "emoji": "🐯",
-      "one_liner": "Tigers.",
-      "tags": [
-        "big-cats"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Tigers",
-      "qa_card": {
-        "question": "What did you notice about the Sumatran tiger?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "sumatran-tiger",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Tiger (verify)",
-      "presence_note": "Historically present; confirm current. Soft Tiger."
-    },
-    {
-      "id": "reticulated_giraffe",
-      "label": "Giraffe",
-      "emoji": "🦒",
-      "one_liner": "Tallest animal on long legs — look up!",
-      "tags": [
-        "wow",
-        "tall",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Reticulated giraffe?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
       },
       "catalog_id": "reticulated-giraffe",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "Giraffe",
-      "presence_note": "Giraffe listed. Soft Giraffe."
+      "core": true,
+      "presence_note": "Official fact sheet: Giraffe (Giraffa camelopardalis). Soft Giraffe."
     },
     {
       "id": "zebra",
       "label": "Zebra",
       "emoji": "🦓",
-      "one_liner": "Striped grassland runner — every pattern is unique.",
+      "one_liner": "Plains zebra — pick one stripe set and draw it in the air.",
       "tags": [
-        "wow",
-        "outdoor"
+        "pattern",
+        "outdoor",
+        "savanna"
       ],
       "age_fit": [
         "2-3",
@@ -168,57 +174,27 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Animals",
       "qa_card": {
-        "question": "What is special about the Zebra?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Zebra?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "zebra",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "Zebra",
-      "presence_note": "Plains Zebra listed."
-    },
-    {
-      "id": "red_panda",
-      "label": "Red panda",
-      "emoji": "🦊",
-      "one_liner": "Rusty tree-climber with a ringed tail — not a giant panda!",
-      "tags": [
-        "wow",
-        "outdoor",
-        "hands",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Red panda?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "red-panda",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Red panda",
-      "presence_note": "Red pandas historically bred; confirm current. Soft Red panda."
+      "core": true,
+      "presence_note": "Official animals index: Plains Zebra."
     },
     {
       "id": "asian_small_clawed_otter",
       "label": "Asian small-clawed otter",
       "emoji": "🦦",
-      "one_liner": "Playful swimmer — smallest otter.",
+      "one_liner": "Asian small-clawed otter — smallest otter, biggest splash.",
       "tags": [
-        "wow",
-        "water",
-        "outdoor",
-        "hands",
-        "play"
+        "play",
+        "water"
       ],
       "age_fit": [
         "2-3",
@@ -226,25 +202,26 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Animals",
       "qa_card": {
-        "question": "What is special about the Asian small-clawed otter?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Asian small-clawed otter?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "asian-small-clawed-otter",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "Asian small-clawed otter",
-      "presence_note": "Asian Small-clawed Otter listed."
+      "core": false
     },
     {
-      "id": "galapagos_tortoise",
-      "label": "Galápagos tortoise",
-      "emoji": "🐢",
-      "one_liner": "Giant tortoise — slow and steady.",
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "emoji": "🐯",
+      "one_liner": "Sumatran tiger — official FAQ names the species they keep.",
       "tags": [
-        "wow",
+        "big-cats",
+        "pattern",
         "outdoor"
       ],
       "age_fit": [
@@ -253,17 +230,17 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Animals",
       "qa_card": {
-        "question": "What is special about the Galápagos tortoise?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Sumatran tiger?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "galapagos-tortoise",
+      "catalog_id": "sumatran-tiger",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Galápagos tortoise",
-      "presence_note": "Galapagos Tortoise listed."
+      "display_label": "Sumatran tiger",
+      "core": false
     }
   ],
   "content_mode": "curated",
@@ -282,68 +259,60 @@
   "route_90m": [
     "koala",
     "orangutan",
-    "african_lion"
+    "galapagos_tortoise"
   ],
-  "research_notes": "R2b 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [critical]",
-  "list_confidence": "audited",
+  "research_notes": "[2026-08-23] Wave 3a: official perthzoo.wa.gov.au animal fact sheets + FAQ. Full 156-species index was not fully downloaded here. No invented verify date.",
+  "list_confidence": "partial",
   "do_not_list": [
-    {
-      "catalog_id": "african-elephant",
-      "name": "African elephant",
-      "reason": "Perth Zoo no longer keeps elephants.",
-      "as_of": "2026-08-08"
-    },
-    {
-      "catalog_id": "western-lowland-gorilla",
-      "name": "Western lowland gorilla",
-      "reason": "No gorillas at Perth Zoo; orangutans are the ape highlight.",
-      "as_of": "2026-08-08"
-    },
     {
       "catalog_id": "african-penguin",
       "name": "African penguin",
-      "reason": "Official species is Little Penguin, not African penguin.",
-      "as_of": "2026-08-08"
+      "reason": "Official Penguin Plunge page is Little Penguin, not African.",
+      "as_of": "2026-08-23"
     },
     {
       "catalog_id": "nile-hippo",
       "name": "Nile hippo",
-      "reason": "Not on Perth animals list reviewed.",
-      "as_of": "2026-08-08"
+      "reason": "Official FAQ: the collection does not include hippopotamus.",
+      "as_of": "2026-08-23"
     },
     {
-      "catalog_id": "chimpanzee",
-      "name": "Chimpanzee",
-      "reason": "Not on animals list extract (primates are orangutan/gibbon/lemur/tamarin etc.).",
-      "as_of": "2026-08-08"
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Official articles: former Asian elephants; Perth Zoo is no longer home to elephants.",
+      "as_of": "2026-08-23"
     }
   ],
-  "last_presence_audit": "2026-08-08",
   "presence_sources": [
     "https://perthzoo.wa.gov.au/animals",
-    "https://perthzoo.wa.gov.au/",
-    "https://perthzoo.wa.gov.au/close-encounters"
+    "https://perthzoo.wa.gov.au/animal/koala",
+    "https://perthzoo.wa.gov.au/animal/sumatran-orangutan",
+    "https://perthzoo.wa.gov.au/animal/african-lion",
+    "https://perthzoo.wa.gov.au/about-perth-zoo/frequently-asked-questions"
   ],
   "bonus_hunt": {
-    "tagline": "Perth Zoo bonus · Australian bush + Asian primates",
+    "tagline": "Perth bonus · koala + orangutan + tortoise",
     "find_ids": [
-      "orangutan",
+      "african_lion",
       "reticulated_giraffe",
-      "african_lion"
+      "zebra",
+      "asian_small_clawed_otter",
+      "sumatran_tiger"
     ],
     "challenges": [
       {
+        "id": "per_koala",
+        "text": "Australian Bushwalk koala: eyes open or a daytime nap?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
         "id": "per_orang",
-        "text": "Orangutan: clever hands",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "per_local",
-        "text": "Aussie unique: still or scurrying?",
+        "text": "Sumatran orangutan: hands or feet doing the clever bit?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -352,19 +321,10 @@
         ]
       },
       {
-        "id": "per_giraffe",
-        "text": "Giraffe stretch",
+        "id": "per_tort",
+        "text": "Galápagos tortoise: mid-step or statue-still?",
         "age_fit": [
           "2-3",
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "per_tiger",
-        "text": "Tiger hide score",
-        "age_fit": [
           "4-5",
           "6-8",
           "adult"
@@ -372,7 +332,7 @@
       },
       {
         "id": "per_lion",
-        "text": "Lion nap score",
+        "text": "African Savannah: roar or a quiet pride?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -381,12 +341,13 @@
         ]
       }
     ],
-    "easter_egg": "★ Easter egg: find the Australian bushwalk on the map",
-    "easter_egg_little": "★ Easter egg: after the hard list — one free minute of favorite stop",
-    "researched": "2026-08-08",
-    "status": "researched",
+    "easter_egg": "★ Easter egg: find this zoo on a map/sign and point to a habitat you have not visited yet",
+    "easter_egg_little": "★ Easter egg: pick a favorite stop and tell a grown-up why",
     "sources": [
-      "https://perthzoo.wa.gov.au/"
-    ]
+      "https://perthzoo.wa.gov.au/animals",
+      "https://perthzoo.wa.gov.au/animal/koala"
+    ],
+    "researched": "2026-08-23",
+    "status": "researched"
   }
 }

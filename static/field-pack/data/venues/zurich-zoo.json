@@ -8,10 +8,10 @@
   "lat": 47.385,
   "lng": 8.5744,
   "official_url": "https://www.zoo.ch/en",
-  "last_verified": "2026-08-07",
+  "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Zurich Zoo — Masoala rainforest hall is the signature indoor wow.",
+  "tagline": "Koala, then a Sumatran orangutan and western lowland gorilla — Asiatic lions and Asian elephants.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Zürichberg hillside zoo.",
@@ -21,12 +21,12 @@
   },
   "items": [
     {
-      "id": "cm_outdoor",
-      "label": "Masoala Rainforest",
-      "emoji": "🌳",
-      "one_liner": "Rainforest hall — warm humid wow indoors.",
+      "id": "koala",
+      "label": "Koala",
+      "emoji": "🐨",
+      "one_liner": "Koala — look twice in the Australian habitat.",
       "tags": [
-        "wow",
+        "climb",
         "outdoor"
       ],
       "age_fit": [
@@ -35,103 +35,26 @@
         "6-8",
         "9+"
       ],
-      "zone": "Masoala",
+      "zone": "Australien",
       "qa_card": {
-        "question": "What did you notice about the Outdoor Area?",
+        "question": "What did you notice about the Koala?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "cm-outdoor",
+      "catalog_id": "koala",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Masoala Rainforest",
-      "presence_note": "Masoala Rainforest is the signature hall (plus outdoor habitats)."
+      "display_label": "Koala",
+      "core": true
     },
     {
-      "id": "sumatran_tiger",
-      "label": "Tiger",
-      "emoji": "🐯",
-      "one_liner": "Tigers.",
+      "id": "orangutan",
+      "label": "Orangutan",
+      "emoji": "🦧",
+      "one_liner": "Sumatra orangutan — long arms in the great-ape house.",
       "tags": [
-        "big-cats"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Tigers",
-      "qa_card": {
-        "question": "What did you notice about the Sumatran tiger?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "sumatran-tiger",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Tiger",
-      "presence_note": "Tigers present in Asian habitats; soft Tiger."
-    },
-    {
-      "id": "reticulated_giraffe",
-      "label": "Giraffe",
-      "emoji": "🦒",
-      "one_liner": "Giraffes.",
-      "tags": [
-        "tall"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Giraffes",
-      "qa_card": {
-        "question": "What did you notice about the Reticulated giraffe?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "reticulated-giraffe",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Giraffe",
-      "presence_note": "Lewa Savanna giraffes; soft Giraffe."
-    },
-    {
-      "id": "red_panda",
-      "label": "Red panda",
-      "emoji": "🦊",
-      "one_liner": "Red pandas.",
-      "tags": [
-        "climb"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Red pandas",
-      "qa_card": {
-        "question": "What did you notice about the Red panda?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "red-panda",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Red panda",
-      "presence_note": "Common European zoo species; confirm on map."
-    },
-    {
-      "id": "african_lion",
-      "label": "African lion",
-      "emoji": "🦁",
-      "one_liner": "Big cat of the grassland pride — mighty roar!",
-      "tags": [
-        "wow",
-        "big-cats",
+        "primates",
+        "climb",
         "outdoor"
       ],
       "age_fit": [
@@ -140,54 +63,25 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Menschenaffenhaus",
       "qa_card": {
-        "question": "What is special about the African lion?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Orangutan?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "african-lion",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
+      "catalog_id": "orangutan",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "African lion",
-      "presence_note": "Lewa Savanna predators likely."
+      "display_label": "Orangutan",
+      "core": true
     },
     {
       "id": "western_lowland_gorilla",
       "label": "Western lowland gorilla",
       "emoji": "🦍",
-      "one_liner": "Strong gentle ape in family groups.",
+      "one_liner": "Western lowland gorilla — who looks in charge?",
       "tags": [
-        "wow",
-        "outdoor",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Western lowland gorilla?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "western-lowland-gorilla",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Western lowland gorilla",
-      "presence_note": "Gorillas present; Ndoki Forest expansion planned."
-    },
-    {
-      "id": "african_penguin",
-      "label": "African penguin",
-      "emoji": "🐧",
-      "one_liner": "Waddle on land, zoom in water.",
-      "tags": [
-        "wow",
-        "water",
+        "primates",
         "outdoor"
       ],
       "age_fit": [
@@ -196,29 +90,27 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Menschenaffenhaus",
       "qa_card": {
-        "question": "What is special about the African penguin?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Western lowland gorilla?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "african-penguin",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "African penguin",
-      "presence_note": "Confirm."
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Western lowland gorilla",
+      "core": true
     },
     {
-      "id": "chimpanzee",
-      "label": "Chimpanzee",
-      "emoji": "🐵",
-      "one_liner": "Smart forest ape — climbs and tools.",
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "emoji": "🦒",
+      "one_liner": "Official reticulated giraffe since 2019 — look up from the path.",
       "tags": [
-        "wow",
+        "tall",
         "outdoor",
-        "play",
-        "hands",
-        "rest",
-        "kids"
+        "wow"
       ],
       "age_fit": [
         "2-3",
@@ -226,25 +118,27 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Lewa Savanna",
       "qa_card": {
-        "question": "What is special about the Chimpanzee?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Reticulated giraffe?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "chimpanzee",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Chimpanzee",
-      "presence_note": "Confirm vs other primates."
+      "catalog_id": "reticulated-giraffe",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Reticulated giraffe",
+      "core": true
     },
     {
       "id": "zebra",
       "label": "Zebra",
       "emoji": "🦓",
-      "one_liner": "Striped grassland runner — every pattern is unique.",
+      "one_liner": "Grevy zebra — every stripe set is unique.",
       "tags": [
-        "wow",
-        "outdoor"
+        "pattern",
+        "outdoor",
+        "savanna"
       ],
       "age_fit": [
         "2-3",
@@ -252,53 +146,26 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Lewa Savanna",
       "qa_card": {
-        "question": "What is special about the Zebra?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Zebra?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "zebra",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
       "display_label": "Zebra",
-      "presence_note": "Savanna hoofstock."
+      "core": true,
+      "presence_note": "Official DE lexicon: Grevyzebra."
     },
     {
-      "id": "asian_small_clawed_otter",
-      "label": "Asian small-clawed otter",
-      "emoji": "🦦",
-      "one_liner": "Playful swimmer — smallest otter.",
+      "id": "red_panda",
+      "label": "Red panda",
+      "emoji": "🦊",
+      "one_liner": "Kleiner Panda — rusty and tree-high.",
       "tags": [
-        "wow",
-        "water",
-        "outdoor",
-        "hands",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Asian small-clawed otter?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "asian-small-clawed-otter",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Asian small-clawed otter",
-      "presence_note": "Confirm."
-    },
-    {
-      "id": "nile_hippo",
-      "label": "Nile hippo",
-      "emoji": "🦛",
-      "one_liner": "Huge river giant that loves the water.",
-      "tags": [
-        "wow",
+        "climb",
         "outdoor"
       ],
       "age_fit": [
@@ -307,24 +174,25 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Animals",
       "qa_card": {
-        "question": "What is special about the Nile hippo?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Red panda?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "nile-hippo",
-      "presence": "template",
-      "presence_checked": "2026-08-08",
-      "display_label": "Nile hippo",
-      "presence_note": "Pygmy hippo in future Ndoki plans; Nile not confirmed."
+      "catalog_id": "red-panda",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Red panda",
+      "core": true
     },
     {
-      "id": "galapagos_tortoise",
-      "label": "Galápagos tortoise",
-      "emoji": "🐢",
-      "one_liner": "Giant tortoise — slow and steady.",
+      "id": "ostrich",
+      "label": "Ostrich",
+      "emoji": "🪶",
+      "one_liner": "South African blue-necked ostrich since 2020.",
       "tags": [
-        "wow",
+        "birds",
         "outdoor"
       ],
       "age_fit": [
@@ -333,19 +201,20 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Lewa Savanna",
       "qa_card": {
-        "question": "What is special about the Galápagos tortoise?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Ostrich?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "galapagos-tortoise",
-      "presence": "template",
-      "presence_checked": "2026-08-08",
-      "display_label": "Galápagos tortoise",
-      "presence_note": "Unconfirmed."
+      "catalog_id": "ostrich",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Ostrich",
+      "core": false
     }
   ],
-  "content_mode": "hybrid",
+  "content_mode": "curated",
   "media": {
     "visitor_map_url": "/field-pack/media/maps/zurich-zoo.jpg",
     "visitor_map_page": "https://www.zoo.ch/en/plan-your-visit/zoo-map",
@@ -360,53 +229,81 @@
     "Leave while happy"
   ],
   "route_90m": [
-    "cm_outdoor",
-    "sumatran_tiger",
-    "reticulated_giraffe"
+    "koala",
+    "orangutan",
+    "western_lowland_gorilla"
   ],
-  "research_notes": "R3 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [major]",
-  "list_confidence": "partial",
+  "research_notes": "[2026-08-23] Official-source Wave 3a public list pass (zoo.ch German encyclopedia). English encyclopedia is intentionally incomplete. Dropped cloned cm-outdoor neither card.",
+  "list_confidence": "audited",
   "do_not_list": [
     {
       "catalog_id": "african-elephant",
       "name": "African elephant",
-      "reason": "Kaeng Krachan holds Asian elephants — wrong species.",
-      "as_of": "2026-08-08"
+      "reason": "Official Kaeng Krachan Elephant Park: Asian elephant.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "african-lion",
+      "name": "African lion",
+      "reason": "Official encyclopedia: Asiatischer Löwe (Panthera leo persica).",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "sumatran-tiger",
+      "name": "Sumatran tiger",
+      "reason": "Official lexicon lists Amurtiger.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "Official: Königspinguin and Humboldtpinguin.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "caribbean-flamingo",
+      "name": "Caribbean flamingo",
+      "reason": "Official: Chileflamingo — the flamingo kept at Zoo Zürich.",
+      "as_of": "2026-08-23"
     },
     {
       "catalog_id": "galapagos-tortoise",
       "name": "Galápagos tortoise",
-      "reason": "Not confirmed as print icon.",
-      "as_of": "2026-08-08"
+      "reason": "Official lexicon: Aldabra-Riesenschildkröte.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "ring-tailed-lemur",
+      "name": "Ring-tailed lemur",
+      "reason": "Masoala lemurs are red ruffed and black lemur, not ring-tailed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "cm-outdoor",
+      "name": "Outdoor Area",
+      "reason": "kind=neither — not a zoo/both card. Masoala is a habitat, not a published animal card.",
+      "as_of": "2026-08-23"
     }
   ],
   "presence_sources": [
     "https://www.zoo.ch/en",
-    "https://www.zuerich.com/en/visit/nature/zurich-zoo-masoala-rainforest"
+    "https://www.zoo.ch/de/naturschutz-tiere/tier-pflanzenlexikon",
+    "https://www.zoo.ch/en/reticulated-giraffe",
+    "https://www.zoo.ch/en/asian-elephant",
+    "https://www.zoo.ch/de/naturschutz-tiere/tier-pflanzenlexikon/asiatischer-loewe"
   ],
   "bonus_hunt": {
-    "tagline": "Zürich Zoo bonus · Masoala rainforest + elephant park",
+    "tagline": "Zurich bonus · koala + Menschenaffenhaus + Lewa Savanna",
     "find_ids": [
       "reticulated_giraffe",
-      "western_lowland_gorilla",
-      "african_lion",
       "zebra",
       "red_panda",
-      "sumatran_tiger"
+      "ostrich"
     ],
     "challenges": [
       {
-        "id": "zur_mas",
-        "text": "Masoala: find a lemur or bird most people walk under",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "zur_orang",
-        "text": "Orangutan clever hands",
+        "id": "zur_koala",
+        "text": "Koala: eyes open or a daytime nap?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -415,8 +312,18 @@
         ]
       },
       {
-        "id": "zur_el",
-        "text": "Elephant park: trunk tool",
+        "id": "zur_orang",
+        "text": "Sumatra orangutan: hands or feet doing the clever bit?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "zur_gorilla",
+        "text": "Gorilla: who looks calmest?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -426,30 +333,23 @@
       },
       {
         "id": "zur_giraffe",
-        "text": "Giraffe stretch",
+        "text": "Reticulated giraffe: count the spots you can see on one neck.",
         "age_fit": [
           "2-3",
           "4-5",
           "6-8",
           "adult"
         ]
-      },
-      {
-        "id": "zur_tiger",
-        "text": "Tiger pace vs hide",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
       }
     ],
-    "easter_egg": "★ Easter egg: feel the humidity change entering Masoala — say it out loud",
-    "easter_egg_little": "★ Easter egg: after the hard list — one free minute at a favorite stop",
-    "researched": "2026-08-08",
-    "status": "researched",
+    "easter_egg": "★ Easter egg: find this zoo on a map/sign and point to a habitat you have not visited yet",
+    "easter_egg_little": "★ Easter egg: pick a favorite stop and tell a grown-up why",
     "sources": [
-      "https://www.zoo.ch/en"
-    ]
-  }
+      "https://www.zoo.ch/en",
+      "https://www.zoo.ch/de/naturschutz-tiere/tier-pflanzenlexikon"
+    ],
+    "researched": "2026-08-23",
+    "status": "researched"
+  },
+  "last_presence_audit": "2026-08-23"
 }

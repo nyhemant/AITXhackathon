@@ -8,10 +8,10 @@
   "lat": -41.319,
   "lng": 174.784,
   "official_url": "https://wellingtonzoo.com/",
-  "last_verified": "2026-08-07",
+  "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Wellington Zoo — hilltop city zoo, compact visit.",
+  "tagline": "Chimpanzee troop first, then Sumatran tiger Senja and red panda Ngima — kororā, not African penguins.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Hill suburb.",
@@ -21,37 +21,10 @@
   },
   "items": [
     {
-      "id": "sumatran_tiger",
-      "label": "Sumatran tiger",
-      "emoji": "🐯",
-      "one_liner": "Tigers.",
-      "tags": [
-        "big-cats",
-        "wow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Tigers",
-      "qa_card": {
-        "question": "What did you notice about the Sumatran tiger?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "sumatran-tiger",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Sumatran tiger",
-      "presence_note": "Sumatran tigers long-standing (since 1990s)."
-    },
-    {
       "id": "chimpanzee",
       "label": "Chimpanzee",
       "emoji": "🐵",
-      "one_liner": "Chimps.",
+      "one_liner": "Chimpanzee troop of nine — daily Chimpanzee Talk.",
       "tags": [
         "primates",
         "play"
@@ -62,24 +35,166 @@
         "6-8",
         "9+"
       ],
-      "zone": "Chimps",
+      "zone": "Meet the animals",
       "qa_card": {
         "question": "What did you notice about the Chimpanzee?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "chimpanzee",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "Chimpanzee",
-      "presence_note": "Chimp troop is a major Wellington Zoo exhibit."
+      "core": true
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "emoji": "🐯",
+      "one_liner": "Sumatran tiger Senja — orange stripes and a Tiger Talk.",
+      "tags": [
+        "big-cats",
+        "pattern",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Meet the animals",
+      "qa_card": {
+        "question": "What did you notice about the Sumatran tiger?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sumatran-tiger",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Sumatran tiger",
+      "core": true
     },
     {
       "id": "red_panda",
       "label": "Red panda",
       "emoji": "🦊",
-      "one_liner": "Red pandas.",
+      "one_liner": "Red panda Ngima — rusty and tree-high.",
       "tags": [
+        "climb",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Meet the animals",
+      "qa_card": {
+        "question": "What did you notice about the Red panda?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "red-panda",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Red panda",
+      "core": true
+    },
+    {
+      "id": "african_lion",
+      "label": "Lion",
+      "emoji": "🦁",
+      "one_liner": "Lion brothers — listen for a roar.",
+      "tags": [
+        "big-cats",
+        "outdoor",
+        "sound"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Lion habitat",
+      "qa_card": {
+        "question": "What did you notice about the Lion?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "african-lion",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Lion",
+      "core": true,
+      "presence_note": "Official Meet the Animals title is Lion; copy is sub-Saharan. Soft Lion."
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Giraffe",
+      "emoji": "🦒",
+      "one_liner": "Giraffe herd of four — Giraffe Talk on the savannah.",
+      "tags": [
+        "tall",
+        "outdoor",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "African Savannah",
+      "qa_card": {
+        "question": "What did you notice about the Giraffe?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "reticulated-giraffe",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Giraffe",
+      "core": true,
+      "presence_note": "Official: Giraffe. Soft Giraffe."
+    },
+    {
+      "id": "asian_small_clawed_otter",
+      "label": "Asian small-clawed otter",
+      "emoji": "🦦",
+      "one_liner": "Asian small-clawed otter — first habitat and Otter Talk.",
+      "tags": [
+        "play",
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Meet the animals",
+      "qa_card": {
+        "question": "What did you notice about the Asian small-clawed otter?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Asian small-clawed otter",
+      "core": true
+    },
+    {
+      "id": "ring_tailed_lemur",
+      "label": "Ring-tailed lemur",
+      "emoji": "🐒",
+      "one_liner": "Ring-tailed lemur beside Australian Neighbours.",
+      "tags": [
+        "primates",
+        "pattern",
         "climb"
       ],
       "age_fit": [
@@ -88,52 +203,25 @@
         "6-8",
         "9+"
       ],
-      "zone": "Red pandas",
+      "zone": "Meet the animals",
       "qa_card": {
-        "question": "What did you notice about the Red panda?",
+        "question": "What did you notice about the Ring-tailed lemur?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "red-panda",
+      "catalog_id": "ring-tailed-lemur",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Red panda",
-      "presence_note": "Red pandas listed among omnivores."
+      "display_label": "Ring-tailed lemur",
+      "core": false
     },
     {
-      "id": "african_lion",
-      "label": "African lion",
-      "emoji": "🦁",
-      "one_liner": "Lions.",
+      "id": "ostrich",
+      "label": "Ostrich",
+      "emoji": "🪶",
+      "one_liner": "Two female ostriches with giraffe and nyala.",
       "tags": [
-        "big-cats"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Lions",
-      "qa_card": {
-        "question": "What did you notice about the African lion?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "african-lion",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "African lion",
-      "presence_note": "Lions listed."
-    },
-    {
-      "id": "reticulated_giraffe",
-      "label": "Giraffe",
-      "emoji": "🦒",
-      "one_liner": "Tallest animal on long legs — look up!",
-      "tags": [
-        "wow",
-        "tall",
+        "birds",
         "outdoor"
       ],
       "age_fit": [
@@ -142,73 +230,17 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "African Savannah",
       "qa_card": {
-        "question": "What is special about the Reticulated giraffe?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Ostrich?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "reticulated-giraffe",
+      "catalog_id": "ostrich",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Giraffe",
-      "presence_note": "Giraffes listed."
-    },
-    {
-      "id": "zebra",
-      "label": "Zebra",
-      "emoji": "🦓",
-      "one_liner": "Striped grassland runner — every pattern is unique.",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Zebra?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "zebra",
-      "presence": "template",
-      "presence_checked": "2026-08-08",
-      "display_label": "Zebra",
-      "presence_note": "Not clearly listed on overview table this pass."
-    },
-    {
-      "id": "asian_small_clawed_otter",
-      "label": "Asian small-clawed otter",
-      "emoji": "🦦",
-      "one_liner": "Playful swimmer — smallest otter.",
-      "tags": [
-        "wow",
-        "water",
-        "outdoor",
-        "hands",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Asian small-clawed otter?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "asian-small-clawed-otter",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Asian small-clawed otter",
-      "presence_note": "Asian small-clawed otters listed."
+      "display_label": "Ostrich",
+      "core": false
     }
   ],
   "content_mode": "curated",
@@ -226,73 +258,75 @@
     "Leave while happy"
   ],
   "route_90m": [
-    "sumatran_tiger",
     "chimpanzee",
-    "reticulated_giraffe"
+    "sumatran_tiger",
+    "red_panda"
   ],
-  "research_notes": "R2b 2026-08-07 · map-img 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [critical]",
+  "research_notes": "[2026-08-23] Official-source Wave 3a public list pass (wellingtonzoo.com Meet the Animals, 44 animals).",
   "list_confidence": "audited",
   "do_not_list": [
     {
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "Official Penguin Point: Little Blue Penguin (Kororā).",
+      "as_of": "2026-08-23"
+    },
+    {
       "catalog_id": "african-elephant",
       "name": "African elephant",
-      "reason": "Wellington Zoo does not keep elephants.",
-      "as_of": "2026-08-08"
+      "reason": "Not on the official 44-animal Meet the Animals list.",
+      "as_of": "2026-08-23"
     },
     {
       "catalog_id": "nile-hippo",
       "name": "Nile hippo",
-      "reason": "Not on Wikipedia current mammal table / not a known exhibit.",
-      "as_of": "2026-08-08"
+      "reason": "Not on the official Meet the Animals list.",
+      "as_of": "2026-08-23"
     },
     {
       "catalog_id": "western-lowland-gorilla",
       "name": "Western lowland gorilla",
-      "reason": "Not listed in current public species overview — do not promise.",
-      "as_of": "2026-08-08"
+      "reason": "Not on the official list (gibbon is listed).",
+      "as_of": "2026-08-23"
     },
     {
-      "catalog_id": "african-penguin",
-      "name": "African penguin",
-      "reason": "Not confirmed on current species overview.",
-      "as_of": "2026-08-08"
+      "catalog_id": "koala",
+      "name": "Koala",
+      "reason": "Not on the official list.",
+      "as_of": "2026-08-23"
     },
     {
-      "catalog_id": "galapagos-tortoise",
-      "name": "Galápagos tortoise",
-      "reason": "Not confirmed.",
-      "as_of": "2026-08-08"
+      "catalog_id": "orangutan",
+      "name": "Orangutan",
+      "reason": "Not on the official list.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "zebra",
+      "name": "Zebra",
+      "reason": "Not on the official Meet the Animals list.",
+      "as_of": "2026-08-23"
     }
   ],
-  "last_presence_audit": "2026-08-08",
+  "last_presence_audit": "2026-08-23",
   "presence_sources": [
-    "https://wellingtonzoo.com/",
-    "https://wellingtonzoo.com/animals/meet-the-animals",
-    "https://en.wikipedia.org/wiki/Wellington_Zoo"
+    "https://wellingtonzoo.com/animals/meet-the-animals/",
+    "https://wellingtonzoo.com/visit/plan-your-day/",
+    "https://wellingtonzoo.com/"
   ],
   "bonus_hunt": {
-    "tagline": "Wellington Zoo bonus · collared animals + hill views",
+    "tagline": "Wellington bonus · chimps + tiger Senja + red panda",
     "find_ids": [
-      "sumatran_tiger",
+      "african_lion",
       "reticulated_giraffe",
       "asian_small_clawed_otter",
-      "african_lion",
-      "red_panda",
-      "chimpanzee"
+      "ring_tailed_lemur",
+      "ostrich"
     ],
     "challenges": [
       {
-        "id": "wel_tiger",
-        "text": "Tiger silent 15s",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
         "id": "wel_chimp",
-        "text": "Chimp face one word",
+        "text": "Chimps: spot hands used like tools.",
         "age_fit": [
           "2-3",
           "4-5",
@@ -301,8 +335,8 @@
         ]
       },
       {
-        "id": "wel_local",
-        "text": "NZ bird/native: noisy or stealth?",
+        "id": "wel_tiger",
+        "text": "Tiger Senja: count stripe clusters on one shoulder.",
         "age_fit": [
           "2-3",
           "4-5",
@@ -311,8 +345,8 @@
         ]
       },
       {
-        "id": "wel_giraffe",
-        "text": "Giraffe stretch",
+        "id": "wel_panda",
+        "text": "Red panda Ngima: climb or curl-up?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -322,7 +356,7 @@
       },
       {
         "id": "wel_otter",
-        "text": "Otter splash count",
+        "text": "Asian small-clawed otter: find the splashiest 10 seconds.",
         "age_fit": [
           "2-3",
           "4-5",
@@ -331,12 +365,13 @@
         ]
       }
     ],
-    "easter_egg": "★ Easter egg: catch a city/hill view from the zoo and name one landmark",
-    "easter_egg_little": "★ Easter egg: after the hard list — one free minute of favorite stop",
-    "researched": "2026-08-08",
-    "status": "researched",
+    "easter_egg": "★ Easter egg: find this zoo on a map/sign and point to a habitat you have not visited yet",
+    "easter_egg_little": "★ Easter egg: pick a favorite stop and tell a grown-up why",
     "sources": [
-      "https://wellingtonzoo.com/"
-    ]
+      "https://wellingtonzoo.com/animals/meet-the-animals/",
+      "https://wellingtonzoo.com/visit/plan-your-day/"
+    ],
+    "researched": "2026-08-23",
+    "status": "researched"
   }
 }

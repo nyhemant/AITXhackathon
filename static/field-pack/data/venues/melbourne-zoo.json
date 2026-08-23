@@ -8,10 +8,9 @@
   "lat": -37.7841,
   "lng": 144.9515,
   "official_url": "https://www.zoo.org.au/melbourne/",
-  "last_verified": "2026-08-07",
   "verified_by": "research",
-  "status": "verified",
-  "tagline": "Melbourne Zoo — gardens setting, orangutans, and a calm Aussie pace.",
+  "status": "partial",
+  "tagline": "Starter list: Australian Bush koalas, then Gorilla Rainforest and Forest of Wonder orangutans.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Royal Park; tram access.",
@@ -21,66 +20,13 @@
   },
   "items": [
     {
-      "id": "orangutan",
-      "label": "Orangutan",
-      "emoji": "🦧",
-      "one_liner": "Orangutan sanctuary energy.",
-      "tags": [
-        "primates",
-        "climb",
-        "wow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Orangutans",
-      "qa_card": {
-        "question": "What did you notice about the Orangutan?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "orangutan",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Orangutan",
-      "presence_note": "Forest of Wonder lists Orangutan with Sumatran tiger and siamang."
-    },
-    {
-      "id": "sumatran_tiger",
-      "label": "Sumatran tiger",
-      "emoji": "🐯",
-      "one_liner": "Tigers.",
-      "tags": [
-        "big-cats"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Tigers",
-      "qa_card": {
-        "question": "What did you notice about the Sumatran tiger?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "sumatran-tiger",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Sumatran tiger",
-      "presence_note": "Forest of Wonder / Lion Gorge: Sumatran Tiger."
-    },
-    {
       "id": "koala",
       "label": "Koala",
       "emoji": "🐨",
-      "one_liner": "Koalas.",
+      "one_liner": "Southern koala — sleepy eucalyptus eater.",
       "tags": [
-        "wow"
+        "climb",
+        "outdoor"
       ],
       "age_fit": [
         "2-3",
@@ -88,25 +34,26 @@
         "6-8",
         "9+"
       ],
-      "zone": "Australian",
+      "zone": "Australian Bush",
       "qa_card": {
         "question": "What did you notice about the Koala?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "koala",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "Koala",
-      "presence_note": "Australian Bush: Koala."
+      "core": true
     },
     {
       "id": "western_lowland_gorilla",
-      "label": "Gorilla",
+      "label": "Western lowland gorilla",
       "emoji": "🦍",
-      "one_liner": "Gorillas.",
+      "one_liner": "Western lowland gorilla — who looks in charge?",
       "tags": [
-        "primates"
+        "primates",
+        "outdoor"
       ],
       "age_fit": [
         "2-3",
@@ -114,26 +61,26 @@
         "6-8",
         "9+"
       ],
-      "zone": "Gorillas",
+      "zone": "Gorilla Rainforest",
       "qa_card": {
         "question": "What did you notice about the Western lowland gorilla?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "western-lowland-gorilla",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Gorilla",
-      "presence_note": "Gorilla Rainforest: Western Lowland Gorilla."
+      "display_label": "Western lowland gorilla",
+      "core": true
     },
     {
-      "id": "african_lion",
-      "label": "Lion",
-      "emoji": "🦁",
-      "one_liner": "Big cat of the grassland pride — mighty roar!",
+      "id": "orangutan",
+      "label": "Orangutan",
+      "emoji": "🦧",
+      "one_liner": "Orangutan — long arms in the Sumatran rainforest trail.",
       "tags": [
-        "wow",
-        "big-cats",
+        "primates",
+        "climb",
         "outdoor"
       ],
       "age_fit": [
@@ -142,26 +89,110 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Forest of Wonder",
       "qa_card": {
-        "question": "What is special about the African lion?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Orangutan?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "orangutan",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Orangutan",
+      "core": true
+    },
+    {
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
+      "emoji": "🐯",
+      "one_liner": "Sumatran tiger — orange stripes in Lion Gorge / Forest of Wonder.",
+      "tags": [
+        "big-cats",
+        "pattern",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Forest of Wonder",
+      "qa_card": {
+        "question": "What did you notice about the Sumatran tiger?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sumatran-tiger",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Sumatran tiger",
+      "core": true
+    },
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "emoji": "🦁",
+      "one_liner": "African lion — listen for a roar.",
+      "tags": [
+        "big-cats",
+        "outdoor",
+        "sound"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Lion Gorge",
+      "qa_card": {
+        "question": "What did you notice about the African lion?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-lion",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Lion",
-      "presence_note": "Lion Gorge: Lion."
+      "display_label": "African lion",
+      "core": true
     },
     {
       "id": "reticulated_giraffe",
       "label": "Giraffe",
       "emoji": "🦒",
-      "one_liner": "Tallest animal on long legs — look up!",
+      "one_liner": "Main Trail giraffe — look up from the path.",
       "tags": [
-        "wow",
         "tall",
+        "outdoor",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Main Trail",
+      "qa_card": {
+        "question": "What did you notice about the Giraffe?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "reticulated-giraffe",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Giraffe",
+      "core": true,
+      "presence_note": "Official habitat pages list Giraffe. Soft Giraffe."
+    },
+    {
+      "id": "red_panda",
+      "label": "Red panda",
+      "emoji": "🦊",
+      "one_liner": "Red panda — rusty and tree-high.",
+      "tags": [
+        "climb",
         "outdoor"
       ],
       "age_fit": [
@@ -170,29 +201,54 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Main Trail",
       "qa_card": {
-        "question": "What is special about the Reticulated giraffe?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Red panda?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "reticulated-giraffe",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
+      "catalog_id": "red-panda",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Giraffe",
-      "presence_note": "Main Trail lists Giraffe; subspecies not specified on habitat page — soft Giraffe label."
+      "display_label": "Red panda",
+      "core": false
+    },
+    {
+      "id": "ring_tailed_lemur",
+      "label": "Ring-tailed lemur",
+      "emoji": "🐒",
+      "one_liner": "Ring-tailed lemur — striped tail and a long stare.",
+      "tags": [
+        "primates",
+        "pattern",
+        "climb"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Gorilla Rainforest",
+      "qa_card": {
+        "question": "What did you notice about the Ring-tailed lemur?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "ring-tailed-lemur",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Ring-tailed lemur",
+      "core": false
     },
     {
       "id": "asian_small_clawed_otter",
       "label": "Asian small-clawed otter",
       "emoji": "🦦",
-      "one_liner": "Playful swimmer — smallest otter.",
+      "one_liner": "Asian small-clawed otter — smallest otter, biggest splash.",
       "tags": [
-        "wow",
-        "water",
-        "outdoor",
-        "hands",
-        "play"
+        "play",
+        "water"
       ],
       "age_fit": [
         "2-3",
@@ -200,28 +256,25 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Forest of Wonder",
       "qa_card": {
-        "question": "What is special about the Asian small-clawed otter?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Asian small-clawed otter?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "asian-small-clawed-otter",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "Asian small-clawed otter",
-      "presence_note": "Forest of Wonder: Asian Small-clawed Otter."
+      "core": false
     },
     {
-      "id": "red_panda",
-      "label": "Red panda",
-      "emoji": "🦊",
-      "one_liner": "Rusty tree-climber with a ringed tail — not a giant panda!",
+      "id": "shark",
+      "label": "Shark",
+      "emoji": "🦈",
+      "one_liner": "Port Jackson shark — watch the swim.",
       "tags": [
-        "wow",
-        "outdoor",
-        "hands",
-        "play"
+        "water"
       ],
       "age_fit": [
         "2-3",
@@ -229,45 +282,18 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Wild Sea",
       "qa_card": {
-        "question": "What is special about the Red panda?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Shark?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "red-panda",
+      "catalog_id": "shark",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Red panda",
-      "presence_note": "Main Trail: Red Panda."
-    },
-    {
-      "id": "ring_tailed_lemur",
-      "label": "Lemur",
-      "emoji": "🐒",
-      "one_liner": "Stripy tail from Madagascar.",
-      "tags": [
-        "wow",
-        "outdoor",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Ring-tailed lemur?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "ring-tailed-lemur",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Lemur",
-      "presence_note": "Gorilla Rainforest: Lemur (ring-tailed among lemur experiences). Soft Lemur OK."
+      "display_label": "Shark",
+      "core": false,
+      "presence_note": "Official Wild Sea habitat names Port Jackson Shark."
     }
   ],
   "content_mode": "curated",
@@ -284,75 +310,73 @@
     "Leave while happy"
   ],
   "route_90m": [
-    "orangutan",
-    "sumatran_tiger",
-    "koala"
+    "koala",
+    "western_lowland_gorilla",
+    "orangutan"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [critical]",
-  "list_confidence": "audited",
+  "research_notes": "[2026-08-23] Wave 3a: official habitat pages only; no complete species inventory. No invented verify date. Werribee Open Range animals omitted.",
+  "list_confidence": "partial",
   "do_not_list": [
     {
       "catalog_id": "african-elephant",
       "name": "African elephant",
-      "reason": "No elephants at Melbourne Zoo after Feb 2025 move of Asian elephant herd to Werribee Open Range Zoo. Never African.",
-      "as_of": "2026-08-08"
+      "reason": "Official Trail of the Elephants: Asian elephants.",
+      "as_of": "2026-08-23"
     },
     {
-      "catalog_id": "chimpanzee",
-      "name": "Chimpanzee",
-      "reason": "Not listed on current Melbourne Zoo habitat pages (Gorilla Rainforest features gorillas/lemurs/gibbons, not chimps).",
-      "as_of": "2026-08-08"
-    },
-    {
-      "catalog_id": "zebra",
-      "name": "Zebra",
-      "reason": "Not listed on current Melbourne Zoo habitat animal pages reviewed.",
-      "as_of": "2026-08-08"
+      "catalog_id": "nile-hippo",
+      "name": "Nile hippo",
+      "reason": "Official Gorilla Rainforest: pygmy hippopotamus.",
+      "as_of": "2026-08-23"
     },
     {
       "catalog_id": "african-penguin",
       "name": "African penguin",
-      "reason": "Do not label African penguin; Wild Sea penguins are not confirmed as African species.",
-      "as_of": "2026-08-08"
-    },
-    {
-      "catalog_id": "galapagos-tortoise",
-      "name": "Galápagos tortoise",
-      "reason": "Official Main Trail animal is Aldabra giant tortoise, not Galápagos.",
-      "as_of": "2026-08-08"
+      "reason": "Official Wild Sea: Little Penguin, not African.",
+      "as_of": "2026-08-23"
     }
   ],
-  "last_presence_audit": "2026-08-08",
   "presence_sources": [
     "https://www.zoo.org.au/melbourne/animals-and-habitats/",
-    "https://www.zoo.org.au/melbourne/animals-and-habitats/forest-of-wonder/",
-    "https://www.zoo.org.au/melbourne/animals-and-habitats/lion-gorge/",
     "https://www.zoo.org.au/melbourne/animals-and-habitats/gorilla-rainforest/",
+    "https://www.zoo.org.au/melbourne/animals-and-habitats/forest-of-wonder/",
     "https://www.zoo.org.au/melbourne/animals-and-habitats/australian-bush/",
-    "https://www.zoo.org.au/melbourne/animals-and-habitats/main-trail/",
-    "https://www.zoo.org.au/elephant-move-faqs/"
+    "https://www.zoo.org.au/melbourne/animals-and-habitats/wild-sea/"
   ],
   "bonus_hunt": {
-    "tagline": "Melbourne bonus · Orangutan Sanctuary + Trail of the Elephants",
+    "tagline": "Melbourne bonus · koalas + gorillas + Forest of Wonder",
     "find_ids": [
-      "orangutan",
       "sumatran_tiger",
-      "western_lowland_gorilla",
-      "reticulated_giraffe"
+      "african_lion",
+      "reticulated_giraffe",
+      "red_panda",
+      "ring_tailed_lemur",
+      "asian_small_clawed_otter"
     ],
     "challenges": [
       {
-        "id": "mel_orang",
-        "text": "Orangutan Sanctuary: hands vs feet cleverness",
+        "id": "mel_koala",
+        "text": "Australian Bush koala: eyes open or a daytime nap?",
         "age_fit": [
+          "2-3",
           "4-5",
           "6-8",
           "adult"
         ]
       },
       {
-        "id": "mel_el",
-        "text": "Elephants: trunk tool 15s",
+        "id": "mel_gorilla",
+        "text": "Gorilla Rainforest: who looks calmest?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "mel_orang",
+        "text": "Forest of Wonder orangutan: hands or feet doing the clever bit?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -362,26 +386,7 @@
       },
       {
         "id": "mel_tiger",
-        "text": "Tiger: silent 20s story",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "mel_gorilla",
-        "text": "Gorilla face one word",
-        "age_fit": [
-          "2-3",
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "mel_local",
-        "text": "Aussie animal stop: awake or sleep mode?",
+        "text": "Sumatran tiger: count stripe clusters on one shoulder.",
         "age_fit": [
           "2-3",
           "4-5",
@@ -390,12 +395,13 @@
         ]
       }
     ],
-    "easter_egg": "★ Easter egg: find Trail of the Elephants or Orangutan Sanctuary on the map first",
-    "easter_egg_little": "★ Easter egg: after the hard list — one free minute of favorite stop",
-    "researched": "2026-08-08",
-    "status": "researched",
+    "easter_egg": "★ Easter egg: find this zoo on a map/sign and point to a habitat you have not visited yet",
+    "easter_egg_little": "★ Easter egg: pick a favorite stop and tell a grown-up why",
     "sources": [
-      "https://www.zoo.org.au/melbourne/"
-    ]
+      "https://www.zoo.org.au/melbourne/animals-and-habitats/",
+      "https://www.zoo.org.au/melbourne/animals-and-habitats/gorilla-rainforest/"
+    ],
+    "researched": "2026-08-23",
+    "status": "researched"
   }
 }

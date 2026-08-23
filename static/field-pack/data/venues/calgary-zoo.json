@@ -8,10 +8,10 @@
   "lat": 51.0455,
   "lng": -114.024,
   "official_url": "https://www.calgaryzoo.com/",
-  "last_verified": "2026-08-07",
+  "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Calgary Zoo — Canadian wilds + destination exhibits; cold-weather planning.",
+  "tagline": "Destination Africa gorillas and hippos, then Exploration Asia red pandas — Humboldt penguins, not African.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "West gate/Imagine Asia construction may alter paths through 2028/29 — check calgaryzoo.com before visit.",
@@ -21,37 +21,13 @@
   },
   "items": [
     {
-      "id": "reticulated_giraffe",
-      "label": "Giraffe",
-      "emoji": "🦒",
-      "one_liner": "Giraffes.",
-      "tags": [
-        "tall"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Africa",
-      "qa_card": {
-        "question": "What did you notice about the Reticulated giraffe?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "reticulated-giraffe",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Giraffe"
-    },
-    {
       "id": "western_lowland_gorilla",
       "label": "Western lowland gorilla",
       "emoji": "🦍",
-      "one_liner": "Gorillas.",
+      "one_liner": "Western lowland gorilla — who looks in charge?",
       "tags": [
-        "primates"
+        "primates",
+        "outdoor"
       ],
       "age_fit": [
         "2-3",
@@ -59,134 +35,25 @@
         "6-8",
         "9+"
       ],
-      "zone": "Primates",
+      "zone": "Destination Africa",
       "qa_card": {
         "question": "What did you notice about the Western lowland gorilla?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "western-lowland-gorilla",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Western lowland gorilla"
+      "display_label": "Western lowland gorilla",
+      "core": true
     },
     {
-      "id": "african_lion",
-      "label": "African lion",
-      "emoji": "🦁",
-      "one_liner": "Big cat of the grassland pride — mighty roar!",
+      "id": "nile_hippo",
+      "label": "Hippo",
+      "emoji": "🦛",
+      "one_liner": "Hippopotamus — world's third-largest land mammal in the water.",
       "tags": [
-        "wow",
-        "big-cats",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the African lion?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "african-lion",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "African lion"
-    },
-    {
-      "id": "zebra",
-      "label": "Hartmann's mountain zebra",
-      "emoji": "🦓",
-      "one_liner": "Striped grassland runner — every pattern is unique.",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Zebra?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "zebra",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "display_label": "Hartmann's mountain zebra"
-    },
-    {
-      "id": "chimpanzee",
-      "label": "Chimpanzee",
-      "emoji": "🐵",
-      "one_liner": "Smart forest ape — climbs and tools.",
-      "tags": [
-        "wow",
-        "outdoor",
-        "play",
-        "hands",
-        "rest",
-        "kids"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Chimpanzee?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "chimpanzee",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Chimpanzee",
-      "presence_note": "Not on mammals list extract."
-    },
-    {
-      "id": "red_panda",
-      "label": "Red panda",
-      "emoji": "🦊",
-      "one_liner": "Rusty tree-climber with a ringed tail — not a giant panda!",
-      "tags": [
-        "wow",
-        "outdoor",
-        "hands",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Red panda?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "red-panda",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "display_label": "Red panda",
-      "presence_note": "Returning/returned with Imagine Asia work — listed on mammals page."
-    },
-    {
-      "id": "african_penguin",
-      "label": "African penguin",
-      "emoji": "🐧",
-      "one_liner": "Waddle on land, zoom in water.",
-      "tags": [
-        "wow",
+        "big",
         "water",
         "outdoor"
       ],
@@ -196,50 +63,26 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Destination Africa",
       "qa_card": {
-        "question": "What is special about the African penguin?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "african-penguin",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "African penguin",
-      "presence_note": "Check birds list separately."
-    },
-    {
-      "id": "nile_hippo",
-      "label": "Nile hippo",
-      "emoji": "🦛",
-      "one_liner": "Huge river giant that loves the water.",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Nile hippo?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Hippo?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "nile-hippo",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Nile hippo"
+      "display_label": "Hippo",
+      "core": true,
+      "presence_note": "Official hippo page describes common/Nile hippo size and rivers, not pygmy."
     },
     {
-      "id": "galapagos_tortoise",
-      "label": "Galápagos tortoise",
-      "emoji": "🐢",
-      "one_liner": "Giant tortoise — slow and steady.",
+      "id": "red_panda",
+      "label": "Red panda",
+      "emoji": "🦊",
+      "one_liner": "Red panda — rusty and tree-high.",
       "tags": [
-        "wow",
+        "climb",
         "outdoor"
       ],
       "age_fit": [
@@ -248,16 +91,158 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Exploration Asia",
       "qa_card": {
-        "question": "What is special about the Galápagos tortoise?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Red panda?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "galapagos-tortoise",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Galápagos tortoise",
-      "presence_note": "Not confirmed on official sources reviewed in this audit pass."
+      "catalog_id": "red-panda",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Red panda",
+      "core": true
+    },
+    {
+      "id": "african_lion",
+      "label": "African lion",
+      "emoji": "🦁",
+      "one_liner": "African lion pride — listen for a roar.",
+      "tags": [
+        "big-cats",
+        "outdoor",
+        "sound"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Destination Africa",
+      "qa_card": {
+        "question": "What did you notice about the African lion?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "african-lion",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "African lion",
+      "core": true
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Giraffe",
+      "emoji": "🦒",
+      "one_liner": "Giraffes Amani, Nabo, and Moshi — look up from the path.",
+      "tags": [
+        "tall",
+        "outdoor",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Destination Africa",
+      "qa_card": {
+        "question": "What did you notice about the Giraffe?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "reticulated-giraffe",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Giraffe",
+      "core": true,
+      "presence_note": "Official Destination Africa: Giraffes. Soft Giraffe."
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "emoji": "🦓",
+      "one_liner": "Hartmann's mountain zebra — every stripe set is unique.",
+      "tags": [
+        "pattern",
+        "outdoor",
+        "savanna"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Destination Africa",
+      "qa_card": {
+        "question": "What did you notice about the Zebra?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "zebra",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Zebra",
+      "core": true,
+      "presence_note": "Official: Hartmann's mountain zebras."
+    },
+    {
+      "id": "ring_tailed_lemur",
+      "label": "Ring-tailed lemur",
+      "emoji": "🐒",
+      "one_liner": "Ring-tailed lemur — striped tail and a long stare.",
+      "tags": [
+        "primates",
+        "pattern",
+        "climb"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Land of Lemurs",
+      "qa_card": {
+        "question": "What did you notice about the Ring-tailed lemur?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "ring-tailed-lemur",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Ring-tailed lemur",
+      "core": false
+    },
+    {
+      "id": "ostrich",
+      "label": "Ostrich",
+      "emoji": "🪶",
+      "one_liner": "Southern ostrich — look at those legs.",
+      "tags": [
+        "birds",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Destination Africa",
+      "qa_card": {
+        "question": "What did you notice about the Ostrich?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "ostrich",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Ostrich",
+      "core": false
     }
   ],
   "content_mode": "curated",
@@ -276,69 +261,75 @@
   ],
   "route_90m": [
     "western_lowland_gorilla",
-    "african_lion",
-    "reticulated_giraffe"
+    "nile_hippo",
+    "red_panda"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 · map-img 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [critical]",
+  "research_notes": "[2026-08-23] Official-source Wave 3a public list pass (calgaryzoo.com mammals + Destination Africa + Penguin Plunge).",
   "list_confidence": "audited",
   "do_not_list": [
     {
-      "catalog_id": "giant-panda",
-      "name": "Giant panda",
-      "reason": "Giant pandas left Calgary (returned to China ~2020); not on current mammals list.",
-      "as_of": "2026-08-08"
+      "catalog_id": "sumatran-tiger",
+      "name": "Sumatran tiger",
+      "reason": "Official mammals list: Amur tigers.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "Penguin Plunge: Humboldt, gentoo, rockhopper, and king — not African.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "caribbean-flamingo",
+      "name": "Caribbean flamingo",
+      "reason": "Official birds list: Chilean flamingos.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "asian-small-clawed-otter",
+      "name": "Asian small-clawed otter",
+      "reason": "Official otter is North American river otter.",
+      "as_of": "2026-08-23"
     },
     {
       "catalog_id": "african-elephant",
       "name": "African elephant",
-      "reason": "Elephant program closed 2014; herd relocated. Not on mammals list.",
-      "as_of": "2026-08-08"
+      "reason": "Not on the official mammals directory.",
+      "as_of": "2026-08-23"
     },
     {
-      "catalog_id": "sumatran-tiger",
-      "name": "Sumatran tiger",
-      "reason": "Official list: Amur tigers, not Sumatran.",
-      "as_of": "2026-08-08"
+      "catalog_id": "giant-panda",
+      "name": "Giant panda",
+      "reason": "Not on the official mammals directory (red pandas only).",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "galapagos-tortoise",
+      "name": "Galápagos tortoise",
+      "reason": "Destination Africa lists Egyptian / leopard tortoises, not Galápagos.",
+      "as_of": "2026-08-23"
     }
   ],
-  "last_presence_audit": "2026-08-08",
+  "last_presence_audit": "2026-08-23",
   "presence_sources": [
     "https://www.calgaryzoo.com/care-conservation/our-animals/mammals/",
-    "https://www.calgaryzoo.com/"
+    "https://www.calgaryzoo.com/plan-your-visit/animal-zones/destination-africa/",
+    "https://www.calgaryzoo.com/plan-your-visit/animal-zones/penguin-plunge/",
+    "https://www.calgaryzoo.com/plan-your-visit/animal-zones/exploration-asia/red-pandas/"
   ],
   "bonus_hunt": {
-    "tagline": "Calgary bonus · Destination Africa + Canadian Wilds",
+    "tagline": "Calgary bonus · Destination Africa + Exploration Asia",
     "find_ids": [
-      "western_lowland_gorilla",
+      "african_lion",
       "reticulated_giraffe",
-      "nile_hippo",
-      "red_panda",
       "zebra",
-      "african_lion"
+      "ring_tailed_lemur",
+      "ostrich"
     ],
     "challenges": [
       {
-        "id": "cal_africa",
-        "text": "Africa: elephant or giraffe first wow",
-        "age_fit": [
-          "2-3",
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
         "id": "cal_gorilla",
-        "text": "Gorilla hands story",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "cal_wilds",
-        "text": "Canadian Wilds: biggest mammal you can name here",
+        "text": "Destination Africa: who looks calmest in the gorilla family?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -347,17 +338,28 @@
         ]
       },
       {
-        "id": "cal_tiger",
-        "text": "Tiger silent 15s",
+        "id": "cal_hippo",
+        "text": "Hippo: underwater, mud, or bank?",
         "age_fit": [
+          "2-3",
           "4-5",
           "6-8",
           "adult"
         ]
       },
       {
-        "id": "cal_cold",
-        "text": "Find something built for cold weather (fur, fat, behavior)",
+        "id": "cal_panda",
+        "text": "Red panda: climb or curl-up?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "cal_lion",
+        "text": "African lions: roar or a quiet pride?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -366,12 +368,13 @@
         ]
       }
     ],
-    "easter_egg": "★ Easter egg: find Prehistoric Park or Canada zone on the map",
-    "easter_egg_little": "★ Easter egg: after the hard list — one free minute of favorite stop",
-    "researched": "2026-08-08",
-    "status": "researched",
+    "easter_egg": "★ Easter egg: find this zoo on a map/sign and point to a habitat you have not visited yet",
+    "easter_egg_little": "★ Easter egg: pick a favorite stop and tell a grown-up why",
     "sources": [
-      "https://www.calgaryzoo.com/"
-    ]
+      "https://www.calgaryzoo.com/care-conservation/our-animals/mammals/",
+      "https://www.calgaryzoo.com/plan-your-visit/animal-zones/destination-africa/"
+    ],
+    "researched": "2026-08-23",
+    "status": "researched"
   }
 }

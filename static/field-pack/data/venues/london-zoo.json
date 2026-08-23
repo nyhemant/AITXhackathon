@@ -8,10 +8,10 @@
   "lat": 51.5353,
   "lng": -0.1534,
   "official_url": "https://www.londonzoo.org/",
-  "last_verified": "2026-08-07",
-  "verified_by": "owner",
+  "last_verified": "2026-08-23",
+  "verified_by": "research",
   "status": "verified",
-  "tagline": "Regent's Park wildlife — gorillas and penguins (elephants live at Whipsnade).",
+  "tagline": "Gorilla Kingdom and Tiger Territory first, then a Rainforest Life sloth — Humboldt penguins, not African.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Book timed tickets online; busy school holidays.",
@@ -19,13 +19,12 @@
   },
   "items": [
     {
-      "id": "gorilla",
-      "label": "Gorilla (Gorilla Kingdom)",
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
       "emoji": "🦍",
-      "one_liner": "Meet the troop in Gorilla Kingdom.",
+      "one_liner": "Gorilla Kingdom troop — who looks in charge?",
       "tags": [
         "primates",
-        "wow",
         "outdoor"
       ],
       "age_fit": [
@@ -36,47 +35,79 @@
       ],
       "zone": "Gorilla Kingdom",
       "qa_card": {
-        "question": "Are gorillas mean?",
-        "answer": "They are strong but mostly gentle plant-eaters who live in families."
+        "question": "What did you notice about the Western lowland gorilla?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "western-lowland-gorilla",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Gorilla (Gorilla Kingdom)"
+      "display_label": "Western lowland gorilla",
+      "core": true
     },
     {
-      "id": "penguin",
-      "label": "Penguin",
-      "emoji": "🐧",
-      "one_liner": "Dive-and-waddle stars of the penguin beach.",
-      "tags": [
-        "birds",
-        "water",
-        "wow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "",
-      "catalog_id": "african-penguin",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Penguin",
-      "presence_note": "Not African"
-    },
-    {
-      "id": "tiger",
-      "label": "Tiger",
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
       "emoji": "🐯",
-      "one_liner": "Stripes in the tiger territory.",
+      "one_liner": "Tiger Territory — orange stripes in the trees.",
       "tags": [
         "big-cats",
         "pattern",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Tiger Territory",
+      "qa_card": {
+        "question": "What did you notice about the Sumatran tiger?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sumatran-tiger",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Sumatran tiger",
+      "core": true
+    },
+    {
+      "id": "two_toed_sloth",
+      "label": "Two-toed sloth",
+      "emoji": "🦥",
+      "one_liner": "Linne's two-toed sloth — hang and look twice.",
+      "tags": [
+        "climb",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Rainforest Life",
+      "qa_card": {
+        "question": "What did you notice about the Two-toed sloth?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "two-toed-sloth",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Two-toed sloth",
+      "core": true
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Giraffe",
+      "emoji": "🦒",
+      "one_liner": "Into Africa giraffe — look up from the path.",
+      "tags": [
+        "tall",
+        "outdoor",
         "wow"
       ],
       "age_fit": [
@@ -85,22 +116,28 @@
         "6-8",
         "9+"
       ],
-      "zone": "",
-      "catalog_id": "sumatran-tiger",
+      "zone": "Into Africa",
+      "qa_card": {
+        "question": "What did you notice about the Giraffe?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "reticulated-giraffe",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Tiger"
+      "display_label": "Giraffe",
+      "core": true,
+      "presence_note": "Official animals page: Giraffe (Giraffa camelopardalis). Soft Giraffe."
     },
     {
-      "id": "lion",
-      "label": "Asiatic lion",
-      "emoji": "🦁",
-      "one_liner": "Asiatic lions on the pride rocks.",
+      "id": "zebra",
+      "label": "Zebra",
+      "emoji": "🦓",
+      "one_liner": "Chapman's zebra — every stripe set is unique.",
       "tags": [
-        "big-cats",
-        "sound",
-        "outdoor"
+        "pattern",
+        "outdoor",
+        "savanna"
       ],
       "age_fit": [
         "2-3",
@@ -108,23 +145,27 @@
         "6-8",
         "9+"
       ],
-      "zone": "Land of the Lions",
-      "catalog_id": "african-lion",
+      "zone": "Into Africa",
+      "qa_card": {
+        "question": "What did you notice about the Zebra?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "zebra",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Asiatic lion",
-      "presence_note": "Wrong catalog african-lion"
+      "display_label": "Zebra",
+      "core": true,
+      "presence_note": "Official: Chapman's zebra / plains zebra."
     },
     {
-      "id": "sloth",
-      "label": "Two-toed sloth",
-      "emoji": "🦥",
-      "one_liner": "Slow climber hanging upside down.",
+      "id": "warthog",
+      "label": "Warthog",
+      "emoji": "🐗",
+      "one_liner": "Warthog — snout, tusks, and a trot.",
       "tags": [
-        "climb",
-        "slow",
-        "indoor"
+        "outdoor",
+        "africa"
       ],
       "age_fit": [
         "2-3",
@@ -132,41 +173,26 @@
         "6-8",
         "9+"
       ],
-      "zone": "",
-      "catalog_id": "two-toed-sloth",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Two-toed sloth"
+      "zone": "Into Africa",
+      "qa_card": {
+        "question": "What did you notice about the Warthog?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "warthog",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Warthog",
+      "core": true
     },
     {
-      "id": "lemur",
-      "label": "Lemur",
-      "emoji": "🐒",
-      "one_liner": "Stripy tails and island energy.",
-      "tags": [
-        "primates",
-        "pattern"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Madagascar",
-      "catalog_id": "ring-tailed-lemur",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Lemur"
-    },
-    {
-      "id": "tortoise",
-      "label": "Giant tortoise",
+      "id": "galapagos_tortoise",
+      "label": "Galápagos tortoise",
       "emoji": "🐢",
-      "one_liner": "Ancient shells on the move.",
+      "one_liner": "Galápagos tortoise — mid-step or statue?",
       "tags": [
-        "slow",
-        "outdoor"
+        "outdoor",
+        "slow"
       ],
       "age_fit": [
         "2-3",
@@ -174,41 +200,26 @@
         "6-8",
         "9+"
       ],
-      "zone": "",
+      "zone": "Giants of the Galápagos",
+      "qa_card": {
+        "question": "What did you notice about the Galápagos tortoise?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
       "catalog_id": "galapagos-tortoise",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "display_label": "Giant tortoise",
-      "presence_note": "Giants of the Galapagos"
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Galápagos tortoise",
+      "core": false
     },
     {
-      "id": "otter",
-      "label": "Otter",
-      "emoji": "🦦",
-      "one_liner": "Splashy play in the water.",
-      "tags": [
-        "water",
-        "active"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "",
-      "catalog_id": "asian-small-clawed-otter",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Otter"
-    },
-    {
-      "id": "chimp",
-      "label": "Monkeys & apes",
-      "emoji": "🐵",
-      "one_liner": "Climbing primates beyond the gorillas.",
+      "id": "ring_tailed_lemur",
+      "label": "Ring-tailed lemur",
+      "emoji": "🐒",
+      "one_liner": "Ring-tailed lemur — striped tail and a long stare.",
       "tags": [
         "primates",
+        "pattern",
         "climb"
       ],
       "age_fit": [
@@ -217,68 +228,45 @@
         "6-8",
         "9+"
       ],
-      "zone": "",
-      "catalog_id": "chimpanzee",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Monkeys & apes",
-      "presence_note": "Soft; confirm chimps specifically"
+      "zone": "In with the Lemurs",
+      "qa_card": {
+        "question": "What did you notice about the Ring-tailed lemur?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "ring-tailed-lemur",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Ring-tailed lemur",
+      "core": false
     },
     {
-      "id": "capybara",
-      "label": "Capybara area",
-      "emoji": "🐹",
-      "one_liner": "World's largest rodent — chill by the water.",
+      "id": "asian_small_clawed_otter",
+      "label": "Asian small-clawed otter",
+      "emoji": "🦦",
+      "one_liner": "Asian short-clawed otter — smallest otter, biggest splash.",
       "tags": [
-        "outdoor",
-        "cute"
+        "play",
+        "water"
       ],
       "age_fit": [
+        "2-3",
         "4-5",
         "6-8",
         "9+"
       ],
-      "zone": "",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Capybara area"
-    },
-    {
-      "id": "butterfly-or-indoor",
-      "label": "Indoor rainforest / Blackburn Pavilion area",
-      "emoji": "🌿",
-      "one_liner": "Warm indoor habitats when London is rainy.",
-      "tags": [
-        "indoor",
-        "explore"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8"
-      ],
-      "zone": "",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Indoor rainforest / Blackburn Pavilion area"
-    },
-    {
-      "id": "play",
-      "label": "Play / under-5 reset",
-      "emoji": "🛝",
-      "one_liner": "Burn energy, then back on the path.",
-      "tags": [
-        "kids",
-        "rest"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5"
-      ],
-      "zone": "",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Play / under-5 reset"
+      "zone": "Animals",
+      "qa_card": {
+        "question": "What did you notice about the Asian small-clawed otter?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Asian small-clawed otter",
+      "core": false,
+      "presence_note": "Official animals page: Asian short-clawed otter (Aonyx cinerea)."
     }
   ],
   "content_mode": "curated",
@@ -295,44 +283,85 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "research_notes": "web-map 2026-08-07 · presence-audit 2026-08-08 [minor]",
+  "research_notes": "[2026-08-23] Official-source Wave 3a public list pass (londonzoo.org animals + habitats). Asiatic lion / Humboldt penguin / pygmy hippo dropped as false labels.",
   "list_confidence": "audited",
-  "do_not_list": [],
-  "route_90m": [
-    "gorilla",
-    "penguin",
-    "tiger"
+  "do_not_list": [
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Official animals index: elephants live at Whipsnade Zoo, not London.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "red-panda",
+      "name": "Red panda",
+      "reason": "Official animals index: red pandas live at Whipsnade Zoo.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "chimpanzee",
+      "name": "Chimpanzee",
+      "reason": "Official gorilla page: chimps are at Whipsnade Zoo.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "african-lion",
+      "name": "African lion",
+      "reason": "Official: Asiatic lion (Panthera leo persica) at Land of the Lions.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "nile-hippo",
+      "name": "Nile hippo",
+      "reason": "Official: pygmy hippo at Into Africa, not Nile / common hippo.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "Official Penguin Beach: Humboldt penguin (Spheniscus humboldti).",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "caribbean-flamingo",
+      "name": "Caribbean flamingo",
+      "reason": "Official: Greater flamingo (Phoenicopterus roseus), not Caribbean/American.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "cheetah",
+      "name": "Cheetah",
+      "reason": "Not on the official animals / habitats pages reviewed.",
+      "as_of": "2026-08-23"
+    }
   ],
-  "last_presence_audit": "2026-08-08",
+  "route_90m": [
+    "western_lowland_gorilla",
+    "sumatran_tiger",
+    "two_toed_sloth"
+  ],
+  "last_presence_audit": "2026-08-23",
   "presence_sources": [
     "https://www.londonzoo.org/whats-here/animals",
-    "https://www.londonzoo.org/whats-here/habitats"
+    "https://www.londonzoo.org/whats-here/habitats",
+    "https://www.londonzoo.org/whats-here/animals/western-lowland-gorilla",
+    "https://www.londonzoo.org/whats-here/animals/sumatran-tiger",
+    "https://www.londonzoo.org/whats-here/habitats/penguin-beach"
   ],
   "bonus_hunt": {
-    "tagline": "London bonus · Land of the Lions + Penguin Beach energy",
+    "tagline": "London bonus · Gorilla Kingdom + Tiger Territory + Rainforest Life",
     "find_ids": [
-      "lion",
-      "lemur",
-      "sloth",
-      "otter",
-      "tortoise",
-      "capybara",
-      "penguin",
-      "gorilla"
+      "reticulated_giraffe",
+      "zebra",
+      "warthog",
+      "galapagos_tortoise",
+      "ring_tailed_lemur",
+      "asian_small_clawed_otter"
     ],
     "challenges": [
       {
-        "id": "lz_lions",
-        "text": "Land of the Lions: Asiatic lions — mane big, small, or hard to see?",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "lz_penguin",
-        "text": "Penguin Beach: watch a porpoising leap or a long underwater glide",
+        "id": "lon_gorilla",
+        "text": "Gorilla Kingdom: who looks calmest?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -341,17 +370,8 @@
         ]
       },
       {
-        "id": "lz_gorilla",
-        "text": "Gorilla Kingdom: glass sit — who’s closest to visitors right now?",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "lz_madagascar",
-        "text": "Lemurs: hands or tail doing the interesting thing?",
+        "id": "lon_tiger",
+        "text": "Tiger Territory: count stripe clusters on one shoulder.",
         "age_fit": [
           "2-3",
           "4-5",
@@ -360,8 +380,8 @@
         ]
       },
       {
-        "id": "lz_sloth",
-        "text": "Sloth: upside-down or right-side-up when you arrive?",
+        "id": "lon_sloth",
+        "text": "Rainforest Life sloth: mid-reach or statue-still?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -370,33 +390,23 @@
         ]
       },
       {
-        "id": "lz_otter",
-        "text": "Otters: splash contest — one big splash in 30 seconds?",
+        "id": "lon_giraffe",
+        "text": "Into Africa giraffe: count the spots you can see on one neck.",
         "age_fit": [
           "2-3",
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "lz_capy",
-        "text": "Capybara: chill champions — are they in water or on land?",
-        "age_fit": [
           "4-5",
           "6-8",
           "adult"
         ]
       }
     ],
-    "easter_egg": "★ Easter egg: find the Underground / tube-style zoo map vibe or a Blue badge sign — point it out",
-    "easter_egg_little": "★ Easter egg: play/under-5 area only after the hard list",
+    "easter_egg": "★ Easter egg: find this zoo on a map/sign and point to a habitat you have not visited yet",
+    "easter_egg_little": "★ Easter egg: pick a favorite stop and tell a grown-up why",
     "sources": [
-      "https://www.londonzoo.org/",
-      "Gorilla Kingdom, Land of the Lions, Penguin Beach, Madagascar"
+      "https://www.londonzoo.org/whats-here/animals",
+      "https://www.londonzoo.org/whats-here/habitats"
     ],
-    "notes": "Humboldt-style penguins — soft label Penguin on sheet.",
-    "researched": "2026-08-08",
+    "researched": "2026-08-23",
     "status": "researched"
   }
 }
