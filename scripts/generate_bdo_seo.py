@@ -767,16 +767,48 @@ _START_HERE_NEXT_SLUGS = ("dallas-zoo", "san-diego-zoo")
 _START_HERE_NEXT: dict[str, dict[str, str]] | None = None
 DALLAS_FROM_Q = "dallas-zoo"
 SHARED_ELEPHANT_ID = "african-elephant"
+_PUBLISHED_CARD_IDS: set[str] | None = None
+
+
+def published_card_ids() -> set[str]:
+    """Standalone /field-pack/cards/<id>/ pages that actually exist on disk."""
+    global _PUBLISHED_CARD_IDS
+    if _PUBLISHED_CARD_IDS is None:
+        _PUBLISHED_CARD_IDS = {
+            p.parent.name
+            for p in (FIELD / "cards").glob("*/index.html")
+            if p.is_file()
+        }
+    return _PUBLISHED_CARD_IDS
+
+
+def item_public_href(item_id: str, venue_id: str = "", *, extra_query: str = "") -> str:
+    """Parent-facing item URL.
+
+    Published cards keep /field-pack/cards/<id>/. Unpublished cards are not
+    invented — retarget to the outing item hash on that venue.
+    """
+    iid = (item_id or "").strip()
+    vid = (venue_id or "").strip()
+    if not iid:
+        return f"/field-pack/{esc(vid)}/#at-home" if vid else "/field-pack/"
+    if iid in published_card_ids():
+        href = f"/field-pack/cards/{esc(iid)}/"
+        q = (extra_query or "").lstrip("?&")
+        if q:
+            href += "?" + q
+        return href
+    if vid:
+        return f"/field-pack/app.html#/venue/{esc(vid)}/item/{esc(iid)}"
+    return "/field-pack/cards/"
 
 
 def start_here_card_href(item_id: str, slug: str = "") -> str:
     """Public card href. Dallas start-here → elephant keeps ?from=dallas-zoo."""
-    if not item_id:
-        return f"/field-pack/{esc(slug)}/#at-home" if slug else "/field-pack/"
-    href = f"/field-pack/cards/{esc(item_id)}/"
+    extra = ""
     if slug == DALLAS_FROM_Q and item_id == SHARED_ELEPHANT_ID:
-        href += f"?from={DALLAS_FROM_Q}"
-    return href
+        extra = f"from={DALLAS_FROM_Q}"
+    return item_public_href(item_id, slug, extra_query=extra)
 
 
 def start_here_next_by_card() -> dict[str, dict[str, str]]:
@@ -809,10 +841,11 @@ def card_next_html(cid: str) -> str:
     nxt = start_here_next_by_card().get(cid or "")
     if not nxt:
         return ""
-    href = f"/field-pack/cards/{esc(nxt['id'])}/"
+    extra = ""
     # Keep ?from=dallas-zoo on the Dallas chain only (giraffe → elephant → lion).
     if cid == "reticulated-giraffe" and nxt["id"] == SHARED_ELEPHANT_ID:
-        href += f"?from={DALLAS_FROM_Q}"
+        extra = f"from={DALLAS_FROM_Q}"
+    href = item_public_href(nxt["id"], extra_query=extra)
     if cid == SHARED_ELEPHANT_ID:
         return (
             f'<p class="card-page-next" hidden data-next-from="{DALLAS_FROM_Q}">'
@@ -826,7 +859,7 @@ def card_next_html(cid: str) -> str:
     )
 
 
-def home_session_html(items: list[dict], *, venue_kind: str = "") -> str:
+def home_session_html(items: list[dict], *, venue_kind: str = "", venue_id: str = "") -> str:
     """First-class at-home block: catalog cards + talk Q&A + existing VFT cams/films."""
     cards: list[str] = []
     for raw in items[:12]:
@@ -843,7 +876,7 @@ def home_session_html(items: list[dict], *, venue_kind: str = "") -> str:
         blurb = _card_blurb(it.get("blurb") or "") or (it.get("blurb") or "")
         extra = real_extra_qa_html(it)
         watch = watch_links_html(it)
-        href = f"/field-pack/cards/{esc(cid)}/"
+        href = item_public_href(cid, venue_id)
         if src:
             media = (
                 f'<img src="{esc(src)}" alt="" width="640" height="400" loading="lazy" decoding="async" />'
@@ -1031,7 +1064,7 @@ def unique_body(
         if card_inner:
             # At-home card session. Hunt drawer stays on the print button.
             href = (
-                f"/field-pack/cards/{esc(item_id)}/"
+                item_public_href(item_id, v.get("id") or "")
                 if item_id
                 else f"/field-pack/{esc(v['id'])}/#at-home"
             )
@@ -1787,7 +1820,9 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
     elif (mission_venue or {}).get("list_confidence") == "template":
         v_body["featured"] = []  # never show template catalog pack
     home_items = [enrich_item(it) for it in (v_body.get("featured") or v.get("featured") or [])]
-    home_sec = home_session_html(home_items, venue_kind=str(v.get("type") or ""))
+    home_sec = home_session_html(
+        home_items, venue_kind=str(v.get("type") or ""), venue_id=str(v.get("id") or "")
+    )
     home_ids = {str(it.get("id") or "") for it in home_items if it.get("id")}
     shortlist_exclude = set(start_exclude) | home_ids
     if mode == "wonder":
@@ -2031,6 +2066,7 @@ def render_venue_page(v: dict) -> str:
     home_sec = home_session_html(
         [enrich_item(it) for it in (v.get("featured") or [])],
         venue_kind=str(v.get("type") or ""),
+        venue_id=str(v.get("id") or ""),
     )
     h1 = h1_for(v)
     title = title_for(v)
@@ -3171,7 +3207,7 @@ def _item_li_html(it: dict) -> str:
     name = esc(it.get("name") or it["id"])
     emoji = esc(it.get("emoji") or "")
     label = f"{emoji} {name}".strip()
-    href = f"/field-pack/cards/{iid}/"
+    href = item_public_href(it["id"], it.get("venue") or "")
     return (
         f'<li class="seo-dir-card-item">'
         f'<a class="seo-dir-card-link" href="{href}" data-print-item="{iid}"'
@@ -3831,7 +3867,7 @@ def _dir_cards_rail_html(cards: list[dict]) -> str:
 
 def _card_href(card: dict) -> str:
     iid = card.get("id") or ""
-    return f"/field-pack/cards/{esc(iid)}/"
+    return item_public_href(iid, card.get("venue") or "")
 
 
 def _card_venue_label(card: dict, venues_by_id: dict[str, dict]) -> str:
