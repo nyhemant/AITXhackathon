@@ -229,7 +229,7 @@ window.FIELD_PACK_CATALOG = {
     photoCredit: "Enhanced for print · Field Trip Kit",
     blurb: "Big cat of the grassland pride — mighty roar!",
     links: {
-      pictures: "https://kids.nationalgeographic.com/animals/mammals/facts/african-lion",
+      pictures: "https://kids.nationalgeographic.com/animals/mammals/facts/lion",
       more: "https://www.dallaszoo.com/",
       cam: "https://zoo.sandiegozoo.org/cams",
     },
@@ -244,7 +244,7 @@ window.FIELD_PACK_CATALOG = {
     photoCredit: "Enhanced for print · Field Trip Kit",
     blurb: "Stripy forest big cat — strong and stealthy.",
     links: {
-      pictures: "https://kids.nationalgeographic.com/animals/mammals/facts/bengal-tiger",
+      pictures: "https://kids.nationalgeographic.com/animals/mammals/facts/tiger",
       more: "https://www.dallaszoo.com/",
       cam: "https://zoo.sandiegozoo.org/cams/tiger-cam",
     },
@@ -304,7 +304,7 @@ window.FIELD_PACK_CATALOG = {
     photoCredit: "Enhanced for print · Field Trip Kit",
     blurb: "Bright pink wader — long legs for shallow water.",
     links: {
-      pictures: "https://kids.nationalgeographic.com/animals/birds/facts/caribbean-flamingo",
+      pictures: "https://kids.nationalgeographic.com/animals/birds/facts/flamingo",
       more: "https://www.dallaszoo.com/",
       cam: "https://zoo.sandiegozoo.org/cams",
     },
@@ -364,7 +364,7 @@ window.FIELD_PACK_CATALOG = {
     photoCredit: "Enhanced for print · Field Trip Kit",
     blurb: "Slow forest climber — hangs upside down.",
     links: {
-      pictures: "https://kids.nationalgeographic.com/animals/mammals/facts/three-toed-sloth",
+      pictures: "https://kids.nationalgeographic.com/animals/mammals/facts/sloth",
       more: "https://www.dallaszoo.com/",
       cam: "https://zoo.sandiegozoo.org/cams",
     },
@@ -456,7 +456,7 @@ window.FIELD_PACK_CATALOG = {
     photoCredit: "Enhanced for print · Field Trip Kit",
     blurb: "Flat swimmer — often in touch pools (gentle hands!).",
     links: {
-      pictures: "https://kids.nationalgeographic.com/animals/fish/facts/southern-stingray",
+      pictures: "https://kids.nationalgeographic.com/animals/fish/facts/stingray",
       more: "https://www.childrensaquarium.com/",
       cam: "https://www.montereybayaquarium.org/animals/live-cams",
     },
@@ -1080,7 +1080,7 @@ window.FIELD_PACK_CATALOG = {
     photoCredit: "Enhanced for print · Field Trip Kit",
     blurb: "Striped grassland runner — every pattern is unique.",
     links: {
-      pictures: "https://kids.nationalgeographic.com/animals/mammals/facts/plains-zebra",
+      pictures: "https://kids.nationalgeographic.com/animals/mammals/facts/zebra",
       more: "https://www.dallaszoo.com/",
       cam: "https://zoo.sandiegozoo.org/cams",
     },
@@ -1137,7 +1137,7 @@ window.FIELD_PACK_CATALOG = {
     photoCredit: "Enhanced for print · Field Trip Kit",
     blurb: "Biggest hopper — joey rides in a pouch.",
     links: {
-      pictures: "https://kids.nationalgeographic.com/animals/mammals/facts/red-kangaroo",
+      pictures: "https://kids.nationalgeographic.com/animals/mammals/facts/kangaroo",
       more: "https://zoo.sandiegozoo.org/",
     },
     key: { food: ["Plants / leaves"], home: ["Grassland", "Desert / dry"], superpower: ["Run fast"] },
@@ -1179,7 +1179,7 @@ window.FIELD_PACK_CATALOG = {
     photoCredit: "Enhanced for print · Field Trip Kit",
     blurb: "Armor on legs — a pointed lip for grabbing branches.",
     links: {
-      pictures: "https://kids.nationalgeographic.com/animals/mammals/facts/black-rhinoceros",
+      pictures: "https://kids.nationalgeographic.com/animals/mammals/facts/black-rhino",
       more: "https://www.houstonzoo.org/",
     },
     key: { food: ["Plants / leaves"], home: ["Grassland"], superpower: ["Stomp / strong"] },

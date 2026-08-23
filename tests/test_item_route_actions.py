@@ -177,6 +177,53 @@ class ItemRouteActionTests(unittest.TestCase):
         )
         self.assertEqual(failures, [], "\n".join(failures[:40]))
 
+    def test_african_lion_photos_uses_live_natgeo_slug(self):
+        """ParentTest: Photos on african-lion must be the working NatGeo Kids page."""
+        lion_pictures = (
+            "https://kids.nationalgeographic.com/animals/mammals/facts/lion"
+        )
+        catalog = CATALOG_JS.read_text(encoding="utf-8")
+        self.assertIn(f'pictures: "{lion_pictures}"', catalog)
+        self.assertNotIn(
+            "https://kids.nationalgeographic.com/animals/mammals/facts/african-lion",
+            catalog,
+        )
+        card = (FP / "cards" / "african-lion" / "index.html").read_text(encoding="utf-8")
+        self.assertIn(f'href="{lion_pictures}"', card)
+        self.assertNotIn("/facts/african-lion", card)
+
+        lion_routes = [r for r in self.routes if r["itemId"] == "african-lion"]
+        self.assertGreater(len(lion_routes), 0)
+        for row in lion_routes:
+            photos = next(a for a in row["actions"] if a["name"] == "Photos")
+            self.assertFalse(photos["hidden"], row["route"])
+            self.assertEqual(photos["href"], lion_pictures, row["route"])
+
+    def test_catalog_avoids_known_dead_natgeo_slugs(self):
+        """Static denylist — no live crawl. Same class as /facts/african-lion 404."""
+        dead_slugs = (
+            "/animals/mammals/facts/african-lion",
+            "/animals/mammals/facts/bengal-tiger",
+            "/animals/birds/facts/caribbean-flamingo",
+            "/animals/mammals/facts/three-toed-sloth",
+            "/animals/fish/facts/southern-stingray",
+            "/animals/mammals/facts/plains-zebra",
+            "/animals/mammals/facts/red-kangaroo",
+            "/animals/mammals/facts/black-rhinoceros",
+        )
+        hits = []
+        for row in self.routes:
+            for action in row["actions"]:
+                href = str(action.get("href") or "")
+                for slug in dead_slugs:
+                    if slug in href:
+                        hits.append(f"{row['route']} {action['name']} {href}")
+        catalog = CATALOG_JS.read_text(encoding="utf-8")
+        for slug in dead_slugs:
+            if slug in catalog:
+                hits.append(f"catalog.js still has {slug}")
+        self.assertEqual(hits, [], "\n".join(hits[:20]))
+
 
 if __name__ == "__main__":
     unittest.main()
