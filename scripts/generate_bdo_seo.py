@@ -20,6 +20,7 @@ import subprocess
 import sys
 from datetime import date
 from pathlib import Path
+from urllib.parse import urlparse
 
 REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -667,8 +668,20 @@ def outing_talk_html(item: dict) -> str:
     )
 
 
-def catalog_more_links_html(item: dict) -> str:
-    """Photos / learn-more from catalog.links. Prefer VFT cam over catalog cam."""
+def is_place_site_url(url: str) -> bool:
+    """Zoo / aquarium / museum homepage — not a kid encyclopedia page."""
+    host = (urlparse(url or "").hostname or "").lower()
+    if host.startswith("www."):
+        host = host[4:]
+    return any(tok in host for tok in ("zoo", "aquarium", "museum"))
+
+
+def catalog_more_links_html(item: dict, *, shared: bool = False) -> str:
+    """Photos / learn-more from catalog.links. Prefer VFT cam over catalog cam.
+
+    Shared animal / sea-life cards drop a hardcoded home-zoo Learn more.
+    Kit-aware Learn more is filled in from ?from= / referrer (see card page JS).
+    """
     links = item.get("links") or {}
     vft = item.get("vft") or {}
     bits: list[str] = []
@@ -684,9 +697,15 @@ def catalog_more_links_html(item: dict) -> str:
             f'<a class="btn btn-ghost" href="{esc(pics)}" target="_blank" rel="noopener noreferrer">Photos</a>'
         )
     more = str(links.get("more") or "").strip()
+    if shared and more and is_place_site_url(more):
+        more = ""
     if more:
         bits.append(
             f'<a class="btn btn-ghost" href="{esc(more)}" target="_blank" rel="noopener noreferrer">Learn more</a>'
+        )
+    elif shared:
+        bits.append(
+            '<a class="btn btn-ghost card-learn-more" hidden target="_blank" rel="noopener noreferrer">Learn more</a>'
         )
     if not bits:
         return ""
@@ -764,13 +783,14 @@ def watch_links_html(item: dict) -> str:
     return f'<p class="seo-watch-row">{" · ".join(links)}</p>'
 
 
-# Dallas start-here is required. San Diego uses the same 3-stop template — same
-# next-link only, no new animals. Not a site-wide next-animal system.
-# Shared african-elephant: Next: lion only when ?from=dallas-zoo (query, not a session model).
+# Wave 1 Start here kits share animal cards. Next / Print / Learn more follow
+# ?from=<slug> (or the place-page referrer). Not a site-wide next-animal system.
+# Shared african-elephant: Next: lion only when the parent came from Dallas
+# (San Diego’s Start here ends on elephant).
 _START_HERE_NEXT_SLUGS = ("dallas-zoo", "san-diego-zoo", "houston-zoo", "national-zoo")
-_START_HERE_NEXT: dict[str, dict[str, str]] | None = None
-DALLAS_FROM_Q = "dallas-zoo"
-SHARED_ELEPHANT_ID = "african-elephant"
+_START_HERE_NEXT: dict[str, list[dict[str, str]]] | None = None
+_START_HERE_KITS: dict[str, list[str]] | None = None
+_START_HERE_SITES: dict[str, str] | None = None
 _PUBLISHED_CARD_IDS: set[str] | None = None
 
 
@@ -808,59 +828,84 @@ def item_public_href(item_id: str, venue_id: str = "", *, extra_query: str = "")
 
 
 def start_here_card_href(item_id: str, slug: str = "") -> str:
-    """Public card href. Dallas start-here → elephant keeps ?from=dallas-zoo."""
-    extra = ""
-    if slug == DALLAS_FROM_Q and item_id == SHARED_ELEPHANT_ID:
-        extra = f"from={DALLAS_FROM_Q}"
+    """Public card href. Wave 1 Start here keeps ?from=<kit> so Next stays on that path."""
+    extra = f"from={slug}" if slug in _START_HERE_NEXT_SLUGS else ""
     return item_public_href(item_id, slug, extra_query=extra)
 
 
-def start_here_next_by_card() -> dict[str, dict[str, str]]:
-    """catalog_id → next stop from listed start-here routes. Dallas wins on overlap."""
-    global _START_HERE_NEXT
+def _load_start_here_index() -> None:
+    """Build per-kit Start here nexts, membership, and official URLs once."""
+    global _START_HERE_NEXT, _START_HERE_KITS, _START_HERE_SITES
     if _START_HERE_NEXT is not None:
-        return _START_HERE_NEXT
-    out: dict[str, dict[str, str]] = {}
+        return
+    nexts: dict[str, list[dict[str, str]]] = {}
+    kits: dict[str, list[str]] = {}
+    sites: dict[str, str] = {}
     for slug in _START_HERE_NEXT_SLUGS:
         mv = load_mission_venue(slug) or {}
+        official = str(mv.get("official_url") or "").strip()
+        if official:
+            sites[slug] = official
         items = {it.get("id"): it for it in (mv.get("items") or []) if it.get("id")}
         route_ids = [rid for rid in (mv.get("route_90m") or [])[:3] if rid in items]
         if len(route_ids) < 2:
             continue
+        for rid in route_ids:
+            cid = str(items[rid].get("catalog_id") or "").strip()
+            if cid and slug not in kits.setdefault(cid, []):
+                kits[cid].append(slug)
         for i, rid in enumerate(route_ids[:-1]):
             cur = items[rid]
             nxt = items[route_ids[i + 1]]
             cid = str(cur.get("catalog_id") or "").strip()
             nid = str(nxt.get("catalog_id") or "").strip()
             name = str(nxt.get("display_label") or nxt.get("label") or "").strip()
-            if not cid or not nid or not name or cid in out:
+            if not cid or not nid or not name:
                 continue
-            out[cid] = {"id": nid, "name": name}
-    _START_HERE_NEXT = out
-    return out
+            nexts.setdefault(cid, []).append({"from": slug, "id": nid, "name": name})
+    _START_HERE_NEXT = nexts
+    _START_HERE_KITS = kits
+    _START_HERE_SITES = sites
+
+
+def start_here_next_by_card() -> dict[str, list[dict[str, str]]]:
+    """catalog_id → Start here nexts, one entry per kit (panda has SD + National)."""
+    _load_start_here_index()
+    return _START_HERE_NEXT or {}
+
+
+def start_here_kits_for(cid: str) -> list[str]:
+    """Wave 1 kits that list this catalog id on Start here (including the last stop)."""
+    _load_start_here_index()
+    return list((_START_HERE_KITS or {}).get(cid or "") or [])
+
+
+def start_here_official_urls() -> dict[str, str]:
+    _load_start_here_index()
+    return dict(_START_HERE_SITES or {})
 
 
 def card_next_html(cid: str) -> str:
-    """Cheap Next: {animal} for a start-here chain card. No invented animals."""
-    nxt = start_here_next_by_card().get(cid or "")
-    if not nxt:
+    """Cheap Next: {animal} for a start-here chain card. No invented animals.
+
+    One kit only → show Next. Shared across kits → hide each next until ?from=
+    (or the place-page referrer) matches, so National panda is otter, not koala.
+    """
+    nexts = start_here_next_by_card().get(cid or "") or []
+    if not nexts:
         return ""
-    extra = ""
-    # Keep ?from=dallas-zoo on the Dallas chain only (giraffe → elephant → lion).
-    if cid == "reticulated-giraffe" and nxt["id"] == SHARED_ELEPHANT_ID:
-        extra = f"from={DALLAS_FROM_Q}"
-    href = item_public_href(nxt["id"], extra_query=extra)
-    if cid == SHARED_ELEPHANT_ID:
-        return (
-            f'<p class="card-page-next" hidden data-next-from="{DALLAS_FROM_Q}">'
+    hide_all = len(start_here_kits_for(cid)) > 1
+    parts: list[str] = []
+    for nxt in nexts:
+        href = item_public_href(nxt["id"], extra_query=f"from={nxt['from']}")
+        hidden = " hidden" if hide_all else ""
+        data = f' data-next-from="{esc(nxt["from"])}"' if hide_all else ""
+        parts.append(
+            f'<p class="card-page-next"{hidden}{data}>'
             f'<a href="{href}">Next: {esc(nxt["name"])}</a>'
             f"</p>"
         )
-    return (
-        f'<p class="card-page-next">'
-        f'<a href="{href}">Next: {esc(nxt["name"])}</a>'
-        f"</p>"
-    )
+    return "".join(parts)
 
 
 def home_session_html(items: list[dict], *, venue_kind: str = "", venue_id: str = "") -> str:
@@ -880,7 +925,7 @@ def home_session_html(items: list[dict], *, venue_kind: str = "", venue_id: str 
         blurb = _card_blurb(it.get("blurb") or "") or (it.get("blurb") or "")
         extra = real_extra_qa_html(it)
         watch = watch_links_html(it)
-        href = item_public_href(cid, venue_id)
+        href = start_here_card_href(cid, venue_id)
         # No public card page — stay on this place-page card, do not invent one.
         if cid not in published_card_ids():
             href = f"#home-{esc(cid)}"
@@ -4308,9 +4353,11 @@ def write_card_pages(
             else f'<p class="card-page-emoji" aria-hidden="true">{esc(emoji)}</p>'
         )
         talk_html = outing_talk_html(item)
-        more_links = catalog_more_links_html(item)
+        more_links = catalog_more_links_html(item, shared=not show_venue_chrome)
         watch_html = watch_links_html(item)
         next_html = card_next_html(cid)
+        print_venue_attr = f' data-venue="{esc(vid)}"' if show_venue_chrome and vid else ""
+        kit_sites_js = json.dumps(start_here_official_urls(), separators=(",", ":"))
         title = f"{name} for Kids — Talk, Photos & Q&A · Field Trip Kit"
         desc = (
             f"Explore the {name} card at home: photo, six talk questions, and Q&A. "
@@ -4370,7 +4417,7 @@ def write_card_pages(
       {talk_html}
       <p class="card-page-actions">
         <a class="btn btn-secondary" href="{venue_href}">{esc(cards_cta)}</a>
-        <button type="button" class="btn btn-secondary" id="print-this-card" data-card-id="{esc(cid)}" data-venue="{esc(vid)}">{esc(CTA_PRINT_CARD)}</button>
+        <button type="button" class="btn btn-secondary" id="print-this-card" data-card-id="{esc(cid)}"{print_venue_attr}>{esc(CTA_PRINT_CARD)}</button>
       </p>
     </main>
   </div>
@@ -4382,16 +4429,29 @@ def write_card_pages(
   <script src="/field-pack/js/print-kit.js?v=14"></script>
   <script>
     (function () {{
-      var nextEl = document.querySelector(".card-page-next[data-next-from]");
-      if (nextEl) {{
-        var from = new URLSearchParams(window.location.search).get("from");
+      var KIT_SITES = {kit_sites_js};
+      var from = new URLSearchParams(window.location.search).get("from");
+      if (!from || !KIT_SITES[from]) {{
+        try {{
+          var refPath = new URL(document.referrer || "", window.location.href).pathname || "";
+          var m = refPath.match(/^\\/field-pack\\/([a-z0-9-]+)\\/?/);
+          if (m && KIT_SITES[m[1]]) from = m[1];
+        }} catch (e) {{}}
+      }}
+      document.querySelectorAll(".card-page-next[data-next-from]").forEach(function (nextEl) {{
         if (from === nextEl.getAttribute("data-next-from")) nextEl.removeAttribute("hidden");
+      }});
+      var more = document.querySelector("a.card-learn-more");
+      if (more && from && KIT_SITES[from]) {{
+        more.href = KIT_SITES[from];
+        more.removeAttribute("hidden");
       }}
       if (typeof FPTrack === "function") FPTrack("card_page_viewed", {{ card_id: "{esc(cid)}" }});
       var btn = document.getElementById("print-this-card");
       if (btn) btn.addEventListener("click", function () {{
         var id = btn.getAttribute("data-card-id") || "";
         var vid = btn.getAttribute("data-venue") || "";
+        if (!vid && from && KIT_SITES[from]) vid = from;
         if (typeof FPTrack === "function") FPTrack("card_opened", {{ card_id: id, source: "card_page_print" }});
         if (window.FPPrint && FPPrint.printQaForItem) FPPrint.printQaForItem(id, vid || null);
       }});

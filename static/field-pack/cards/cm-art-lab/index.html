@@ -41,8 +41,7 @@
     <main class="card-page">
       <p class="card-page-crumbs"><a href="/field-pack/">Field Trip Kit</a> · <a href="/field-pack/cards/">Cards</a></p>
       <h1>🎨 Art Lab</h1>
-      <p class="card-page-venue">At-home card · Perot Museum
-        · <a href="/field-pack/childrens-museum-perot/#at-home">Place page</a></p>
+      <p class="card-page-venue">At-home card · Perot Museum · <a href="/field-pack/childrens-museum-perot/#at-home">Place page</a></p>
       <img class="card-page-photo" src="/field-pack/photos/cm-art.jpg" alt="" width="640" height="640" decoding="async" />
       <p class="card-page-blurb">Come-and-go art and reading activities.</p>
       <div class="action-row detail-links detail-links-quiet no-print"><a class="btn btn-ghost" href="https://www.perotmuseum.org/" target="_blank" rel="noopener noreferrer">Live cam</a><a class="btn btn-ghost" href="https://www.perotmuseum.org/exhibits/halls/childrens-museum/" target="_blank" rel="noopener noreferrer">Photos</a><a class="btn btn-ghost" href="https://www.perotmuseum.org/exhibits/halls/childrens-museum/" target="_blank" rel="noopener noreferrer">Learn more</a></div>
@@ -59,20 +58,33 @@
   <div id="treasure-sheet" class="print-sheet treasure-sheet" aria-hidden="true"></div>
   <script src="/shell/shell.js?v=5"></script>
   <script src="/field-pack/js/fp-analytics.js?v=1"></script>
-  <script src="/field-pack/js/catalog.js?v=35"></script>
+  <script src="/field-pack/js/catalog.js?v=36"></script>
   <script src="/field-pack/js/print-kit.js?v=14"></script>
   <script>
     (function () {
-      var nextEl = document.querySelector(".card-page-next[data-next-from]");
-      if (nextEl) {
-        var from = new URLSearchParams(window.location.search).get("from");
+      var KIT_SITES = {"dallas-zoo":"https://www.dallaszoo.com/","san-diego-zoo":"https://zoo.sandiegozoo.org/","houston-zoo":"https://www.houstonzoo.org/","national-zoo":"https://nationalzoo.si.edu/"};
+      var from = new URLSearchParams(window.location.search).get("from");
+      if (!from || !KIT_SITES[from]) {
+        try {
+          var refPath = new URL(document.referrer || "", window.location.href).pathname || "";
+          var m = refPath.match(/^\/field-pack\/([a-z0-9-]+)\/?/);
+          if (m && KIT_SITES[m[1]]) from = m[1];
+        } catch (e) {}
+      }
+      document.querySelectorAll(".card-page-next[data-next-from]").forEach(function (nextEl) {
         if (from === nextEl.getAttribute("data-next-from")) nextEl.removeAttribute("hidden");
+      });
+      var more = document.querySelector("a.card-learn-more");
+      if (more && from && KIT_SITES[from]) {
+        more.href = KIT_SITES[from];
+        more.removeAttribute("hidden");
       }
       if (typeof FPTrack === "function") FPTrack("card_page_viewed", { card_id: "cm-art-lab" });
       var btn = document.getElementById("print-this-card");
       if (btn) btn.addEventListener("click", function () {
         var id = btn.getAttribute("data-card-id") || "";
         var vid = btn.getAttribute("data-venue") || "";
+        if (!vid && from && KIT_SITES[from]) vid = from;
         if (typeof FPTrack === "function") FPTrack("card_opened", { card_id: id, source: "card_page_print" });
         if (window.FPPrint && FPPrint.printQaForItem) FPPrint.printQaForItem(id, vid || null);
       });

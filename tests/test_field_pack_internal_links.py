@@ -366,9 +366,9 @@ class FieldPackInternalLinkTests(unittest.TestCase):
         dallas = (FP / "dallas-zoo" / "index.html").read_text(encoding="utf-8")
         visible = dallas.split('id="venue-data"', 1)[0]
         start = visible.split('id="route90-heading"', 1)[1].split("</section>", 1)[0]
-        self.assertIn("/field-pack/cards/reticulated-giraffe/", start)
+        self.assertIn("/field-pack/cards/reticulated-giraffe/?from=dallas-zoo", start)
         self.assertIn("/field-pack/cards/african-elephant/?from=dallas-zoo", start)
-        self.assertIn("/field-pack/cards/african-lion/", start)
+        self.assertIn("/field-pack/cards/african-lion/?from=dallas-zoo", start)
 
         giraffe = (FP / "cards" / "reticulated-giraffe" / "index.html").read_text(encoding="utf-8")
         self.assertIn('href="/field-pack/cards/african-elephant/?from=dallas-zoo"', giraffe)

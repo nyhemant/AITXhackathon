@@ -141,9 +141,9 @@ class FlagshipSessionTests(unittest.TestCase):
         self.assertIn("Houston Zoo", houston)
         self.assertIn("San Diego Zoo", san_diego)
         self.assertIn("National Zoo", national)
-        self.assertIn('href="/field-pack/cards/western-lowland-gorilla/"', houston)
-        self.assertIn('href="/field-pack/cards/giant-panda/"', san_diego)
-        self.assertIn('href="/field-pack/cards/giant-panda/"', national)
+        self.assertIn('href="/field-pack/cards/western-lowland-gorilla/?from=houston-zoo"', houston)
+        self.assertIn('href="/field-pack/cards/giant-panda/?from=san-diego-zoo"', san_diego)
+        self.assertIn('href="/field-pack/cards/giant-panda/?from=national-zoo"', national)
 
         art = self._card_chrome((FP / "cards" / "cm-art-lab" / "index.html").read_text(encoding="utf-8"))
         towpath = self._card_chrome(
@@ -242,7 +242,82 @@ class FlagshipSessionTests(unittest.TestCase):
         self.assertTrue(show("dallas-zoo"))
         koala = (FP / "cards" / "koala" / "index.html").read_text(encoding="utf-8")
         self.assertIn("Next: African elephant", koala)
+        self.assertIn("from=san-diego-zoo", koala)
         self.assertNotIn("from=dallas-zoo", koala)
+
+    def test_national_panda_next_is_otter_not_koala(self):
+        """Shared panda card: National Start here → otter; San Diego → koala."""
+        national = self._visible((FP / "national-zoo" / "index.html").read_text(encoding="utf-8"))
+        start = national.split('id="route90-heading"', 1)[1].split("</section>", 1)[0]
+        self.assertIn("/field-pack/cards/giant-panda/?from=national-zoo", start)
+        self.assertNotIn("from=san-diego-zoo", start)
+
+        panda = (FP / "cards" / "giant-panda" / "index.html").read_text(encoding="utf-8")
+        self.assertIn('class="card-page-next" hidden data-next-from="national-zoo"', panda)
+        self.assertIn('href="/field-pack/cards/asian-small-clawed-otter/?from=national-zoo"', panda)
+        self.assertIn("Next: Asian small-clawed otter", panda)
+        self.assertIn('class="card-page-next" hidden data-next-from="san-diego-zoo"', panda)
+        self.assertIn('href="/field-pack/cards/koala/?from=san-diego-zoo"', panda)
+        self.assertIn("Next: Koala", panda)
+
+        def shown_next(from_q: str | None) -> str:
+            import re as _re
+
+            shown = []
+            for m in _re.finditer(
+                r'<p class="card-page-next"([^>]*)><a href="([^"]+)">Next: ([^<]+)</a></p>',
+                panda,
+            ):
+                attrs, href, label = m.group(1), m.group(2), m.group(3)
+                hidden = " hidden" in f" {attrs} "
+                data_from = ""
+                dm = _re.search(r'data-next-from="([^"]+)"', attrs)
+                if dm:
+                    data_from = dm.group(1)
+                if hidden and from_q != data_from:
+                    continue
+                shown.append((label, href))
+            return shown
+
+        self.assertEqual(
+            shown_next("national-zoo"),
+            [("Asian small-clawed otter", "/field-pack/cards/asian-small-clawed-otter/?from=national-zoo")],
+        )
+        self.assertEqual(
+            shown_next("san-diego-zoo"),
+            [("Koala", "/field-pack/cards/koala/?from=san-diego-zoo")],
+        )
+        self.assertEqual(shown_next(None), [])
+        self.assertEqual(shown_next("houston-zoo"), [])
+
+        sd = self._visible((FP / "san-diego-zoo" / "index.html").read_text(encoding="utf-8"))
+        sd_start = sd.split('id="route90-heading"', 1)[1].split("</section>", 1)[0]
+        self.assertIn("/field-pack/cards/giant-panda/?from=san-diego-zoo", sd_start)
+
+    def test_houston_gorilla_card_chrome_is_not_dallas(self):
+        """Houston gorilla Print / Learn more must not stamp Dallas Zoo."""
+        houston = self._visible((FP / "houston-zoo" / "index.html").read_text(encoding="utf-8"))
+        start = houston.split('id="route90-heading"', 1)[1].split("</section>", 1)[0]
+        self.assertIn("/field-pack/cards/western-lowland-gorilla/?from=houston-zoo", start)
+
+        gorilla = (FP / "cards" / "western-lowland-gorilla" / "index.html").read_text(encoding="utf-8")
+        chrome = self._card_chrome(gorilla)
+        self.assertNotIn("dallas-zoo", chrome)
+        self.assertNotIn("dallaszoo.com", chrome)
+        self.assertNotIn('data-venue="dallas-zoo"', gorilla)
+        more = gorilla.split('class="detail-links', 1)[1].split("</div>", 1)[0]
+        self.assertNotIn("dallaszoo.com", more)
+        self.assertNotIn("dallas-zoo", more)
+        self.assertIn('class="card-learn-more"', gorilla)
+        self.assertIn("Next: Chimpanzee", gorilla)
+        self.assertIn('href="/field-pack/cards/chimpanzee/?from=houston-zoo"', gorilla)
+        self.assertIn('"houston-zoo":"https://www.houstonzoo.org/"', gorilla)
+
+        from generate_bdo_seo import is_place_site_url
+
+        self.assertTrue(is_place_site_url("https://www.dallaszoo.com/"))
+        self.assertTrue(is_place_site_url("https://nationalzoo.si.edu/animals/giant-panda"))
+        self.assertFalse(is_place_site_url("https://kids.nationalgeographic.com/animals/mammals/facts/mountain-gorilla"))
 
     def test_cousin_cam_first_visible_line_names_source_zoo(self):
         html = (FP / "cards" / "reticulated-giraffe" / "index.html").read_text(encoding="utf-8")
