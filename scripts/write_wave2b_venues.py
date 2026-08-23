@@ -689,7 +689,7 @@ def main() -> None:
             item("red-panda", zone="Asia", one="Red panda near the Asian cats — rusty and tree-high.", core=True),
             item("reticulated-giraffe", zone="Giraffe Crossing", one="Giraffe Crossing — look up from the path.", core=False, label="Giraffe", note="Official chats/habitat: giraffes; conservation copy names Masai. Soft Giraffe."),
             item("african-lion", zone="Africa", one="Lion family / Lion Chat — listen for a roar.", core=False, label="Lion", note="Official chats: lion family. Soft Lion."),
-            item("nile-hippo", zone="Hippo", one="Hippo Chat — Liberty and Cairo at the water.", core=False, label="Hippo", note="Official Hippo Chat names Liberty and Cairo (not pygmy). Soft Hippo."),
+            item("nile-hippo", zone="Hippo", one="Hippo Chat — watch Liberty at the water window.", core=False, label="Hippo", note="Official Hippo Chat names the pair (not pygmy). Soft Hippo."),
             item("zebra", zone="African Sky Safari", one="African Sky Safari zebras — every pattern is unique.", core=False),
         ],
         bans=[

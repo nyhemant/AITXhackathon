@@ -245,7 +245,7 @@
       "id": "nile_hippo",
       "label": "Hippo",
       "emoji": "🦛",
-      "one_liner": "Hippo Chat — Liberty and Cairo at the water.",
+      "one_liner": "Hippo Chat — watch Liberty at the water window.",
       "tags": [
         "big",
         "water",
@@ -268,7 +268,7 @@
       "presence_source": "official_animals_page",
       "display_label": "Hippo",
       "core": false,
-      "presence_note": "Official Hippo Chat names Liberty and Cairo (not pygmy). Soft Hippo."
+      "presence_note": "Official Hippo Chat names the pair (not pygmy). Soft Hippo."
     },
     {
       "id": "zebra",

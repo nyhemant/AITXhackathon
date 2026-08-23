@@ -23,18 +23,98 @@ from generate_bdo_seo import (  # noqa: E402
     start_here_card_href,
     start_here_next_by_kit,
 )
-from test_wave2a_zoo_kits import (  # noqa: E402
-    WAVE1,
-    WAVE1_ITEMS,
-    WAVE1_ROUTES,
-    WAVE2A,
-    _load_catalog_venues,
-    _load_venue,
-    _start_here,
-    _visible,
-)
 
 FP = REPO / "static" / "field-pack"
+VENUES = FP / "data" / "venues"
+CATALOG_JS = FP / "js" / "catalog.js"
+
+WAVE1 = ("dallas-zoo", "houston-zoo", "san-diego-zoo", "national-zoo")
+WAVE1_ITEMS = {
+    "dallas-zoo": [
+        "reticulated-giraffe",
+        "african-elephant",
+        "african-lion",
+        "zebra",
+        "nile-hippo",
+        "african-penguin",
+        "caribbean-flamingo",
+        "galapagos-tortoise",
+        "sumatran-tiger",
+        "western-lowland-gorilla",
+    ],
+    "houston-zoo": [
+        "western-lowland-gorilla",
+        "chimpanzee",
+        "african-lion",
+        "orangutan",
+        "galapagos-tortoise",
+        "cheetah",
+        "zebra",
+        "ostrich",
+        "ring-tailed-lemur",
+        "warthog",
+    ],
+    "san-diego-zoo": [
+        "giant-panda",
+        "koala",
+        "african-elephant",
+        "african-penguin",
+        "polar-bear",
+        "nile-hippo",
+        "orangutan",
+        "western-lowland-gorilla",
+        "african-lion",
+        "red-panda",
+    ],
+    "national-zoo": [
+        "giant-panda",
+        "asian-small-clawed-otter",
+        "red-panda",
+        "african-lion",
+        "sumatran-tiger",
+        "western-lowland-gorilla",
+        "orangutan",
+        "ring-tailed-lemur",
+        "two-toed-sloth",
+        "caribbean-flamingo",
+    ],
+}
+WAVE1_ROUTES = {
+    "dallas-zoo": ["giraffe", "elephant", "lion"],
+    "houston-zoo": ["western_lowland_gorilla", "chimpanzee", "african_lion"],
+    "san-diego-zoo": ["giant_panda", "koala", "african_elephant"],
+    "national-zoo": ["giant_panda", "asian_small_clawed_otter", "red_panda"],
+}
+
+
+def _load_venue(slug: str) -> dict:
+    return json.loads((VENUES / f"{slug}.json").read_text(encoding="utf-8"))
+
+
+def _load_catalog_venues() -> dict:
+    js = r"""
+const fs = require("fs");
+const vm = require("vm");
+const window = {};
+vm.runInNewContext(fs.readFileSync(process.argv[1], "utf8"), { window });
+process.stdout.write(JSON.stringify(window.FIELD_PACK_VENUES));
+"""
+    proc = subprocess.run(
+        ["node", "-e", js, str(CATALOG_JS)],
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    return json.loads(proc.stdout)
+
+
+def _visible(html: str) -> str:
+    return html.split('id="venue-data"', 1)[0]
+
+
+def _start_here(slug: str) -> str:
+    html = _visible((FP / slug / "index.html").read_text(encoding="utf-8"))
+    return html.split('id="route90-heading"', 1)[1].split("</section>", 1)[0]
 
 WAVE2B = (
     "albuquerque-biopark",
