@@ -273,28 +273,6 @@
       "presence_source": "official_animals_page",
       "display_label": "Western lowland gorilla",
       "core": false
-    },
-    {
-      "id": "kids-zoo",
-      "label": "Children's Zoo",
-      "emoji": "🎠",
-      "one_liner": "Play yard after the savanna — goats and a breather.",
-      "tags": [
-        "kids",
-        "rest",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8"
-      ],
-      "zone": "Lacerte Family Children's Zoo",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Children's Zoo",
-      "core": false
     }
   ],
   "content_mode": "curated",
