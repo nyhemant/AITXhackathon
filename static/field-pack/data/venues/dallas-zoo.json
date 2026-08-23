@@ -8,7 +8,7 @@
   "lat": 32.74,
   "lng": -96.82,
   "official_url": "https://www.dallaszoo.com/",
-  "last_verified": "2026-08-16",
+  "last_verified": "2026-08-23",
   "verified_by": "owner",
   "status": "verified",
   "tagline": "Giraffe Ridge feeding plus Penguin Cove and a hippo window.",
@@ -43,7 +43,7 @@
       },
       "catalog_id": "reticulated-giraffe",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "Reticulated giraffe",
       "presence_note": "Giraffe Ridge feeding platform",
@@ -73,156 +73,10 @@
       },
       "catalog_id": "african-elephant",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "African elephant",
       "presence_note": "Baby elephant + adopt list",
-      "core": true
-    },
-    {
-      "id": "penguin",
-      "label": "African penguin",
-      "emoji": "🐧",
-      "one_liner": "Penguin Cove — waddle, then zoom in the water.",
-      "tags": [
-        "birds",
-        "water",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Penguin Cove",
-      "catalog_id": "african-penguin",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "African penguin",
-      "presence_note": "Penguin Cove; African Shorelines expansion will grow colony — still on-view habitat.",
-      "core": true
-    },
-    {
-      "id": "hippo",
-      "label": "Nile hippo",
-      "emoji": "🦛",
-      "one_liner": "Simmons Hippo Outpost — watch the underwater window.",
-      "tags": [
-        "big",
-        "water",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Simmons Hippo Outpost",
-      "catalog_id": "nile-hippo",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Nile hippo",
-      "core": true
-    },
-    {
-      "id": "flamingo",
-      "label": "Caribbean flamingo",
-      "emoji": "🦩",
-      "one_liner": "ZooNorth pink flock — long legs in the shallows.",
-      "tags": [
-        "birds",
-        "color",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "ZooNorth",
-      "catalog_id": "caribbean-flamingo",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Caribbean flamingo",
-      "core": true
-    },
-    {
-      "id": "cheetah",
-      "label": "Cheetah",
-      "emoji": "🐆",
-      "one_liner": "Savanna sprinter — spots, not stripes.",
-      "tags": [
-        "big-cats",
-        "outdoor",
-        "wow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Giants of the Savanna",
-      "catalog_id": "cheetah",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Cheetah",
-      "presence_note": "Protecting the Twelve",
-      "core": true
-    },
-    {
-      "id": "tortoise",
-      "label": "Galápagos tortoise",
-      "emoji": "🐢",
-      "one_liner": "ZooNorth giant — slow steps, huge shell.",
-      "tags": [
-        "outdoor",
-        "slow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "ZooNorth",
-      "catalog_id": "galapagos-tortoise",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Galápagos tortoise",
-      "presence_note": "Tortoise feeding ZooNorth",
-      "core": true
-    },
-    {
-      "id": "tiger",
-      "label": "Sumatran tiger",
-      "emoji": "🐯",
-      "one_liner": "Endangered Tiger Habitat — orange stripes in the trees.",
-      "tags": [
-        "big-cats",
-        "pattern",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Endangered Tiger Habitat",
-      "catalog_id": "sumatran-tiger",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Sumatran tiger",
       "core": true
     },
     {
@@ -245,9 +99,155 @@
       "zone": "Giants of the Savanna",
       "catalog_id": "african-lion",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "African lion",
+      "core": true
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "emoji": "🦓",
+      "one_liner": "Striped grassland runner — every pattern is unique.",
+      "tags": [
+        "pattern",
+        "outdoor",
+        "savanna"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Giants of the Savanna",
+      "catalog_id": "zebra",
+      "presence": "high",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Zebra",
+      "presence_note": "Species list reports mountain zebra; soft-label Zebra OK",
+      "core": true
+    },
+    {
+      "id": "hippo",
+      "label": "Nile hippo",
+      "emoji": "🦛",
+      "one_liner": "Simmons Hippo Outpost — watch the underwater window.",
+      "tags": [
+        "big",
+        "water",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Simmons Hippo Outpost",
+      "catalog_id": "nile-hippo",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Nile hippo",
+      "core": true
+    },
+    {
+      "id": "penguin",
+      "label": "African penguin",
+      "emoji": "🐧",
+      "one_liner": "Penguin Cove — waddle, then zoom in the water.",
+      "tags": [
+        "birds",
+        "water",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Penguin Cove",
+      "catalog_id": "african-penguin",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "African penguin",
+      "presence_note": "Penguin Cove; African Shorelines expansion will grow colony — still on-view habitat.",
+      "core": true
+    },
+    {
+      "id": "flamingo",
+      "label": "Caribbean flamingo",
+      "emoji": "🦩",
+      "one_liner": "ZooNorth pink flock — long legs in the shallows.",
+      "tags": [
+        "birds",
+        "color",
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "ZooNorth",
+      "catalog_id": "caribbean-flamingo",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Caribbean flamingo",
+      "core": false
+    },
+    {
+      "id": "tortoise",
+      "label": "Galápagos tortoise",
+      "emoji": "🐢",
+      "one_liner": "ZooNorth giant — slow steps, huge shell.",
+      "tags": [
+        "outdoor",
+        "slow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "ZooNorth",
+      "catalog_id": "galapagos-tortoise",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Galápagos tortoise",
+      "presence_note": "Tortoise feeding ZooNorth",
+      "core": false
+    },
+    {
+      "id": "tiger",
+      "label": "Sumatran tiger",
+      "emoji": "🐯",
+      "one_liner": "Endangered Tiger Habitat — orange stripes in the trees.",
+      "tags": [
+        "big-cats",
+        "pattern",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Endangered Tiger Habitat",
+      "catalog_id": "sumatran-tiger",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Sumatran tiger",
       "core": false
     },
     {
@@ -269,34 +269,9 @@
       "zone": "Gorilla Trail / Research Center",
       "catalog_id": "western-lowland-gorilla",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "Western lowland gorilla",
-      "core": false
-    },
-    {
-      "id": "zebra",
-      "label": "Zebra",
-      "emoji": "🦓",
-      "one_liner": "Striped grassland runner — every pattern is unique.",
-      "tags": [
-        "pattern",
-        "outdoor",
-        "savanna"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Giants of the Savanna",
-      "catalog_id": "zebra",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Zebra",
-      "presence_note": "Species list reports mountain zebra; soft-label Zebra OK",
       "core": false
     },
     {
@@ -336,9 +311,16 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "research_notes": "map-img 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [ok]\n[2026-08-08] Bonus+Alpha re-research: zones (Penguin Cove, Hippo Outpost, Tiger Habitat, Giants of the Savanna); Shorelines expansion noted.",
+  "research_notes": "map-img 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [ok]\n[2026-08-08] Bonus+Alpha re-research: zones (Penguin Cove, Hippo Outpost, Tiger Habitat, Giants of the Savanna); Shorelines expansion noted.\n[2026-08-23] Official-source Wave 1 public list pass.",
   "list_confidence": "audited",
-  "do_not_list": [],
+  "do_not_list": [
+    {
+      "catalog_id": "cheetah",
+      "name": "Cheetah",
+      "reason": "Not on the official public animal map.",
+      "as_of": "2026-08-23"
+    }
+  ],
   "route_90m": [
     "giraffe",
     "elephant",
@@ -356,7 +338,6 @@
     "find_ids": [
       "penguin",
       "hippo",
-      "cheetah",
       "gorilla",
       "tiger",
       "tortoise",
@@ -377,16 +358,6 @@
       {
         "id": "dz_hippo",
         "text": "Simmons Hippo Outpost: underwater, mud, or bank — which wins right now?",
-        "age_fit": [
-          "2-3",
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "dz_cheetah",
-        "text": "Savanna cheetah: statue-still or pacing? Time 20 quiet seconds",
         "age_fit": [
           "2-3",
           "4-5",
@@ -443,7 +414,7 @@
       }
     ],
     "easter_egg": "★ Easter egg: find the monorail route on a map/sign even if you don’t ride",
-    "easter_egg_little": "★ Easter egg: tip-toe like a sneaky cheetah for 10 steps after the list",
+    "easter_egg_little": "★ Easter egg: tip-toe like a sneaky lion for 10 steps after the list",
     "sources": [
       "https://www.dallaszoo.com/",
       "https://www.dallaszoo.com/plan-your-visit/map-of-the-zoo/",
@@ -456,7 +427,6 @@
   "alpha_hunt": {
     "tagline": "Dallas Alpha · patience + overlooks most people skip",
     "find_ids": [
-      "cheetah",
       "hippo",
       "tortoise",
       "flamingo",
@@ -465,15 +435,6 @@
       "tiger"
     ],
     "challenges": [
-      {
-        "id": "dza_cheetah",
-        "text": "ALPHA · Cheetah: full 30 silent seconds — write one verb for what it did",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
       {
         "id": "dza_hippo",
         "text": "ALPHA · Hippo Outpost: find the underwater window — is a hippo in frame? yes/no",

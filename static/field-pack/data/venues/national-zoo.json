@@ -8,7 +8,7 @@
   "lat": 38.93,
   "lng": -77.05,
   "official_url": "https://nationalzoo.si.edu/",
-  "last_verified": "2026-08-16",
+  "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",
   "tagline": "Asia Trail pandas and otters, then the O Line.",
@@ -41,7 +41,7 @@
       },
       "catalog_id": "giant-panda",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "Giant panda",
       "presence_note": "Bao Li & Qing Bao on Asia Trail.",
@@ -69,7 +69,7 @@
       },
       "catalog_id": "asian-small-clawed-otter",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "Asian small-clawed otter",
       "presence_note": "Asia Trail: Asian small-clawed otters.",
@@ -97,7 +97,7 @@
       },
       "catalog_id": "red-panda",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "Red panda",
       "presence_note": "Asia Trail: red pandas.",
@@ -126,7 +126,7 @@
       },
       "catalog_id": "african-lion",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "Lion",
       "presence_note": "Great Cats: Lion.",
@@ -154,7 +154,7 @@
       },
       "catalog_id": "sumatran-tiger",
       "presence": "high",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "Tiger",
       "presence_note": "Great Cats: Tiger present; subspecies mix historically. Soft Tiger.",
@@ -182,7 +182,7 @@
       },
       "catalog_id": "western-lowland-gorilla",
       "presence": "high",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "display_label": "Gorilla",
       "presence_note": "Primates area historically includes gorillas; confirm current individuals on animals list. Soft Gorilla.",
       "core": true
@@ -209,11 +209,57 @@
       },
       "catalog_id": "orangutan",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "Orangutan",
       "presence_note": "Bornean orangutan on animals list.",
-      "core": true
+      "core": false
+    },
+    {
+      "id": "ring_tailed_lemur",
+      "label": "Ring-tailed lemur",
+      "emoji": "🐒",
+      "one_liner": "Lemur Island — ring tails and a long stare.",
+      "tags": [
+        "primates",
+        "play"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Lemur Island",
+      "catalog_id": "ring-tailed-lemur",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Ring-tailed lemur",
+      "core": false
+    },
+    {
+      "id": "two_toed_sloth",
+      "label": "Two-toed sloth",
+      "emoji": "🦥",
+      "one_liner": "Small Mammal House sloth — hang and look twice.",
+      "tags": [
+        "climb",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Small Mammal House",
+      "catalog_id": "two-toed-sloth",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Two-toed sloth",
+      "core": false
     },
     {
       "id": "caribbean_flamingo",
@@ -237,10 +283,10 @@
       },
       "catalog_id": "caribbean-flamingo",
       "presence": "high",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "display_label": "Flamingo",
       "presence_note": "Bird House includes flamingos on maps. Soft Flamingo.",
-      "core": true
+      "core": false
     }
   ],
   "content_mode": "curated",
@@ -257,7 +303,7 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "research_notes": "map-img 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [critical]",
+  "research_notes": "map-img 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [critical]\n[2026-08-23] Official-source Wave 1 public list pass.",
   "list_confidence": "audited",
   "do_not_list": [
     {

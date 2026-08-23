@@ -245,7 +245,7 @@ OUTING_TALK_EXHIBIT = (
 SEO_CSS_VER = "27"
 LANDING_CSS_VER = "95"
 STYLES_CSS_VER = "36"
-CATALOG_JS_VER = "35"
+CATALOG_JS_VER = "36"
 VIEWPORT = "width=device-width, initial-scale=1, viewport-fit=cover"
 MISSION_CSS_VER = "18"
 
@@ -763,7 +763,7 @@ def watch_links_html(item: dict) -> str:
 # Dallas start-here is required. San Diego uses the same 3-stop template — same
 # next-link only, no new animals. Not a site-wide next-animal system.
 # Shared african-elephant: Next: lion only when ?from=dallas-zoo (query, not a session model).
-_START_HERE_NEXT_SLUGS = ("dallas-zoo", "san-diego-zoo")
+_START_HERE_NEXT_SLUGS = ("dallas-zoo", "san-diego-zoo", "houston-zoo", "national-zoo")
 _START_HERE_NEXT: dict[str, dict[str, str]] | None = None
 DALLAS_FROM_Q = "dallas-zoo"
 SHARED_ELEPHANT_ID = "african-elephant"
