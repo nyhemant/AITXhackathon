@@ -146,3 +146,11 @@ def catalog_has_venue_attribution(card: dict | None) -> bool:
     if not isinstance(raw, dict):
         return False
     return bool(str(raw.get("venue_slug") or "").strip() and str(raw.get("venue_name") or "").strip())
+
+
+def card_shows_venue_attribution(card: dict | None) -> bool:
+    """Animal and sea-life cards are shared across zoos/aquariums — no home-venue chrome.
+
+    Attractions and place_feature cards may still name their venue.
+    """
+    return card_kind(card) not in {"animal", "sea_life"}

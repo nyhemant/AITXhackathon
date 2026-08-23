@@ -11,6 +11,7 @@ from field_pack_card_kind import (  # noqa: E402
     attraction_venue_attribution,
     card_kind,
     card_may_feature,
+    card_shows_venue_attribution,
     group_cards_by_hub_section,
 )
 
@@ -80,6 +81,26 @@ class CardKindTests(unittest.TestCase):
         self.assertEqual(
             attraction_venue_attribution(card, {}),
             {"venue_slug": "childrens-museum-perot", "venue_name": "Perot Museum"},
+        )
+
+    def test_animal_and_sea_life_hide_venue_attribution(self):
+        self.assertFalse(
+            card_shows_venue_attribution(
+                {"id": "western-lowland-gorilla", "pt": "animals", "venue_type": "zoo"}
+            )
+        )
+        self.assertFalse(
+            card_shows_venue_attribution({"id": "giant-panda", "pt": "animals", "venue_type": "zoo"})
+        )
+        self.assertFalse(card_shows_venue_attribution({"id": "octopus", "pt": "animals"}))
+        self.assertTrue(card_shows_venue_attribution({"id": "cm-art-lab"}))
+        self.assertTrue(
+            card_shows_venue_attribution(
+                {"id": "cuyahoga-towpath", "venue_type": "national_park"}
+            )
+        )
+        self.assertTrue(
+            card_shows_venue_attribution({"id": "sci-rocket", "pt": "exhibits"})
         )
 
 

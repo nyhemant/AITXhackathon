@@ -28,6 +28,7 @@ from field_pack_card_kind import (  # noqa: E402
     attraction_venue_attribution,
     card_kind,
     card_may_feature,
+    card_shows_venue_attribution,
     group_cards_by_hub_section,
     hub_section_id,
 )
@@ -3924,6 +3925,8 @@ def _card_href(card: dict) -> str:
 
 
 def _card_venue_label(card: dict, venues_by_id: dict[str, dict]) -> str:
+    if not card_shows_venue_attribution(card):
+        return ""
     attr = attraction_venue_attribution(card, venues_by_id)
     if attr:
         return f"· {esc(attr['venue_name'])}"
@@ -4277,9 +4280,22 @@ def write_card_pages(
             vname = attr["venue_name"]
             vid = attr["venue_slug"] or vid
             v = venues_by_id.get(vid) or v
+        # Shared animal / sea-life cards are not a home zoo or aquarium.
+        show_venue_chrome = card_shows_venue_attribution(c)
+        if not show_venue_chrome:
+            vname = ""
+            chrome_vid = ""
+        else:
+            chrome_vid = vid
         venue_line = f" · {esc(vname)}" if vname else ""
-        venue_href = f"/field-pack/{esc(vid)}/#at-home" if vid else "/field-pack/"
-        cards_cta = place_cards_cta(venue_type_kind(v or {"type": c.get("venue_type") or ""}))
+        venue_href = f"/field-pack/{esc(chrome_vid)}/#at-home" if chrome_vid else "/field-pack/cards/"
+        cards_cta = (
+            place_cards_cta(venue_type_kind(v or {"type": c.get("venue_type") or ""}))
+            if chrome_vid
+            else CTA_EXPLORE_HOME
+        )
+        place_link = f' · <a href="{venue_href}">Place page</a>' if chrome_vid else ""
+        venue_chrome = f'<p class="card-page-venue">At-home card{venue_line}{place_link}</p>'
         photo = ""
         if (FIELD / "photos" / f"{cid}.jpg").is_file():
             photo = f"/field-pack/photos/{cid}.jpg?v=img2"
@@ -4345,8 +4361,7 @@ def write_card_pages(
     <main class="card-page">
       <p class="card-page-crumbs"><a href="/field-pack/">Field Trip Kit</a> · <a href="/field-pack/cards/">Cards</a></p>
       <h1>{esc(emoji)} {esc(name)}</h1>
-      <p class="card-page-venue">At-home card{venue_line}
-        {f'· <a href="{venue_href}">Place page</a>' if vid else ""}</p>
+      {venue_chrome}
       {img_html}
       <p class="card-page-blurb">{esc(blurb) if blurb else "Talk this card through at home — print only if you want paper."}</p>
       {more_links}
@@ -4354,7 +4369,7 @@ def write_card_pages(
       {next_html}
       {talk_html}
       <p class="card-page-actions">
-        <a class="btn btn-secondary" href="{venue_href}">{esc(cards_cta) if vid else esc(CTA_EXPLORE_HOME)}</a>
+        <a class="btn btn-secondary" href="{venue_href}">{esc(cards_cta)}</a>
         <button type="button" class="btn btn-secondary" id="print-this-card" data-card-id="{esc(cid)}" data-venue="{esc(vid)}">{esc(CTA_PRINT_CARD)}</button>
       </p>
     </main>

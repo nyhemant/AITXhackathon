@@ -95,6 +95,70 @@ class FlagshipSessionTests(unittest.TestCase):
         self.assertIn("What do they eat?", koala)
         self.assertNotIn("What did you notice about the Koala?", koala)
 
+    def _card_chrome(self, html: str) -> str:
+        venue = ""
+        actions = ""
+        if 'class="card-page-venue"' in html:
+            venue = html.split('class="card-page-venue"', 1)[1].split("</p>", 1)[0]
+        if 'class="card-page-actions"' in html:
+            actions = html.split('class="card-page-actions"', 1)[1].split("</p>", 1)[0]
+        return venue + "\n" + actions
+
+    def test_shared_animal_cards_have_no_home_zoo_chrome(self):
+        """Gorilla / panda cards are shared — no other zoo's name in page chrome."""
+        gorilla = (FP / "cards" / "western-lowland-gorilla" / "index.html").read_text(encoding="utf-8")
+        panda = (FP / "cards" / "giant-panda" / "index.html").read_text(encoding="utf-8")
+        seahorse = (FP / "cards" / "seahorse" / "index.html").read_text(encoding="utf-8")
+
+        for html, cid in (
+            (gorilla, "western-lowland-gorilla"),
+            (panda, "giant-panda"),
+            (seahorse, "seahorse"),
+        ):
+            chrome = self._card_chrome(html)
+            self.assertIn("At-home card", chrome, cid)
+            self.assertNotIn("Place page", chrome, cid)
+            self.assertNotIn("This zoo's cards", chrome, cid)
+            self.assertNotIn("This aquarium's cards", chrome, cid)
+            for name in (
+                "Dallas Zoo",
+                "Houston Zoo",
+                "San Diego Zoo",
+                "National Zoo",
+                "Smithsonian",
+                "Fort Worth Zoo",
+                "Children's Aquarium",
+            ):
+                self.assertNotIn(name, chrome, f"{cid} chrome names {name}")
+            self.assertNotIn("/field-pack/dallas-zoo/", chrome, cid)
+            self.assertNotIn("/field-pack/houston-zoo/", chrome, cid)
+            self.assertNotIn("/field-pack/san-diego-zoo/", chrome, cid)
+            self.assertNotIn("/field-pack/national-zoo/", chrome, cid)
+
+        houston = self._visible((FP / "houston-zoo" / "index.html").read_text(encoding="utf-8"))
+        san_diego = self._visible((FP / "san-diego-zoo" / "index.html").read_text(encoding="utf-8"))
+        national = self._visible((FP / "national-zoo" / "index.html").read_text(encoding="utf-8"))
+        self.assertIn("Houston Zoo", houston)
+        self.assertIn("San Diego Zoo", san_diego)
+        self.assertIn("National Zoo", national)
+        self.assertIn('href="/field-pack/cards/western-lowland-gorilla/"', houston)
+        self.assertIn('href="/field-pack/cards/giant-panda/"', san_diego)
+        self.assertIn('href="/field-pack/cards/giant-panda/"', national)
+
+        art = self._card_chrome((FP / "cards" / "cm-art-lab" / "index.html").read_text(encoding="utf-8"))
+        towpath = self._card_chrome(
+            (FP / "cards" / "cuyahoga-towpath" / "index.html").read_text(encoding="utf-8")
+        )
+        bison = self._card_chrome(
+            (FP / "cards" / "american-bison" / "index.html").read_text(encoding="utf-8")
+        )
+        rocket = self._card_chrome((FP / "cards" / "sci-rocket" / "index.html").read_text(encoding="utf-8"))
+        self.assertIn("Perot Museum", art)
+        self.assertIn("Place page", art)
+        self.assertIn("Cuyahoga Valley", towpath)
+        self.assertIn("Yellowstone", bison)
+        self.assertIn("CA Science Center", rocket)
+
     def test_dallas_real_qa_kept_generic_notice_not_shipped(self):
         dallas = self._visible((FP / "dallas-zoo" / "index.html").read_text(encoding="utf-8"))
         giraffe = (FP / "cards" / "reticulated-giraffe" / "index.html").read_text(encoding="utf-8")
