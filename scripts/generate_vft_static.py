@@ -94,11 +94,14 @@ def teaser(h: dict, cat: dict) -> str:
     return (h.get("blurb") or item.get("blurb") or "").strip()
 
 
-def card_href(h: dict) -> tuple[str, str]:
+def card_href(h: dict, tab: str = "zoo") -> tuple[str, str]:
     if h.get("placeHref"):
         return h["placeHref"], "Park kit"
     cid = h.get("cardId") or h.get("id")
-    return f"/field-pack/cards/{cid}/", "Card"
+    if cid and (ROOT / "cards" / cid / "index.html").is_file():
+        return f"/field-pack/cards/{cid}/", "Card"
+    hid = h.get("id") or cid or ""
+    return f"/field-pack/virtual-field-trip/?tab={tab}#habitat={hid}", "Card"
 
 
 def cam_line(h: dict) -> str:
@@ -131,7 +134,7 @@ def render_panels(cat: dict) -> str:
         for h in habs:
             name = h.get("label") or (cat.get(h.get("cardId") or h.get("id")) or {}).get("name") or h.get("id")
             line = teaser(h, cat)
-            href, kind = card_href(h)
+            href, kind = card_href(h, spec["id"])
             cam = cam_line(h)
             film = film_line(h)
             items.append(
