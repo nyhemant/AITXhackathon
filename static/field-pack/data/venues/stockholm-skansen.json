@@ -8,10 +8,9 @@
   "lat": 59.327,
   "lng": 18.103,
   "official_url": "https://www.skansen.se/en/",
-  "last_verified": "2026-08-07",
   "verified_by": "research",
-  "status": "verified",
-  "tagline": "Skansen — open-air museum + Nordic animals.",
+  "status": "partial",
+  "tagline": "Starter: official Skansen zoo is Nordic (bear, moose, lynx) — no published catalog zoo-card overlap.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Djurgården island access.",
@@ -19,114 +18,7 @@
     "energy_note": "hills",
     "best_start": "Kid pace through yards + animal stops."
   },
-  "items": [
-    {
-      "id": "cm_outdoor",
-      "label": "Outdoor Area",
-      "emoji": "🌳",
-      "one_liner": "Outdoor cultural paths.",
-      "tags": [
-        "outdoor",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Historic yards",
-      "qa_card": {
-        "question": "What did you notice about the Outdoor Area?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "cm-outdoor",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Outdoor Area",
-      "presence_note": "Open-air museum + Nordic zoo outdoor yards."
-    },
-    {
-      "id": "cm_free_explore",
-      "label": "Free explore",
-      "emoji": "🧭",
-      "one_liner": "They pick a cottage or animal stop.",
-      "tags": [
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Kid lead",
-      "qa_card": {
-        "question": "What did you notice about the Free explore?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "cm-free-explore",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Free explore",
-      "presence_note": "Core Skansen mode."
-    },
-    {
-      "id": "sci_hands_on",
-      "label": "Hands-on lab",
-      "emoji": "🔬",
-      "one_liner": "Hands-on kids corners.",
-      "tags": [
-        "hands"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Discovery",
-      "qa_card": {
-        "question": "What did you notice about the Hands-on lab?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "sci-hands-on",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Hands-on lab",
-      "presence_note": "Historic crafts/farm hands-on energy."
-    },
-    {
-      "id": "cm_toddler_garden",
-      "label": "Toddler Garden",
-      "emoji": "🌱",
-      "one_liner": "Softer resets.",
-      "tags": [
-        "rest",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Little kids",
-      "qa_card": {
-        "question": "What did you notice about the Toddler Garden?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "cm-toddler-garden",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Toddler Garden",
-      "presence_note": "Family/kids spaces on grounds."
-    }
-  ],
+  "items": [],
   "content_mode": "curated",
   "media": {
     "visitor_map_url": "",
@@ -140,93 +32,166 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "route_90m": [
-    "cm_outdoor",
-    "cm_free_explore",
-    "cm_toddler_garden"
-  ],
-  "research_notes": "R2b 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [critical]",
-  "list_confidence": "audited",
+  "route_90m": [],
+  "research_notes": "[2026-08-23] Official-source Wave 3b public list pass (skansen.se zoo). Nordic list has no published zoo|both catalog cards. Starter, no invented cards.",
+  "list_confidence": "partial",
   "do_not_list": [
     {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Not confirmed as African elephant on the official public list.",
+      "as_of": "2026-08-23"
+    },
+    {
       "catalog_id": "african-lion",
-      "name": "african-lion",
-      "reason": "Skansen is Nordic wildlife + historic farm — not tropical zoo megafauna.",
-      "as_of": "2026-08-08"
+      "name": "African lion",
+      "reason": "Not confirmed as African lion on the official public list.",
+      "as_of": "2026-08-23"
     },
     {
       "catalog_id": "sumatran-tiger",
-      "name": "sumatran-tiger",
-      "reason": "Skansen is Nordic wildlife + historic farm — not tropical zoo megafauna.",
-      "as_of": "2026-08-08"
-    },
-    {
-      "catalog_id": "reticulated-giraffe",
-      "name": "reticulated-giraffe",
-      "reason": "Skansen is Nordic wildlife + historic farm — not tropical zoo megafauna.",
-      "as_of": "2026-08-08"
-    },
-    {
-      "catalog_id": "african-elephant",
-      "name": "african-elephant",
-      "reason": "Skansen is Nordic wildlife + historic farm — not tropical zoo megafauna.",
-      "as_of": "2026-08-08"
-    },
-    {
-      "catalog_id": "western-lowland-gorilla",
-      "name": "western-lowland-gorilla",
-      "reason": "Skansen is Nordic wildlife + historic farm — not tropical zoo megafauna.",
-      "as_of": "2026-08-08"
+      "name": "Sumatran tiger",
+      "reason": "Official tiger (if any) is not Sumatran.",
+      "as_of": "2026-08-23"
     },
     {
       "catalog_id": "african-penguin",
-      "name": "african-penguin",
-      "reason": "Skansen is Nordic wildlife + historic farm — not tropical zoo megafauna.",
-      "as_of": "2026-08-08"
+      "name": "African penguin",
+      "reason": "Official penguins (if any) are not African.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "western-lowland-gorilla",
+      "name": "Western lowland gorilla",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
     },
     {
       "catalog_id": "chimpanzee",
-      "name": "chimpanzee",
-      "reason": "Skansen is Nordic wildlife + historic farm — not tropical zoo megafauna.",
-      "as_of": "2026-08-08"
+      "name": "Chimpanzee",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "reticulated-giraffe",
+      "name": "Reticulated giraffe",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
     },
     {
       "catalog_id": "zebra",
-      "name": "zebra",
-      "reason": "Skansen is Nordic wildlife + historic farm — not tropical zoo megafauna.",
-      "as_of": "2026-08-08"
-    },
-    {
-      "catalog_id": "asian-small-clawed-otter",
-      "name": "asian-small-clawed-otter",
-      "reason": "Skansen is Nordic wildlife + historic farm — not tropical zoo megafauna.",
-      "as_of": "2026-08-08"
+      "name": "Zebra",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
     },
     {
       "catalog_id": "red-panda",
-      "name": "red-panda",
-      "reason": "Skansen is Nordic wildlife + historic farm — not tropical zoo megafauna.",
-      "as_of": "2026-08-08"
+      "name": "Red panda",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "asian-small-clawed-otter",
+      "name": "Asian small-clawed otter",
+      "reason": "Official otter (if any) is a different species.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "nile-hippo",
+      "name": "Nile hippo",
+      "reason": "Official hippo (if any) is not Nile / common hippo.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "galapagos-tortoise",
+      "name": "Galápagos tortoise",
+      "reason": "Official tortoise (if any) is not Galápagos.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "orangutan",
+      "name": "Orangutan",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "cheetah",
+      "name": "Cheetah",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "koala",
+      "name": "Koala",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "giant-panda",
+      "name": "Giant panda",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "caribbean-flamingo",
+      "name": "Caribbean flamingo",
+      "reason": "Official flamingo (if any) is not Caribbean/American.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "two-toed-sloth",
+      "name": "Two-toed sloth",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "shark",
+      "name": "Shark",
+      "reason": "Aquarium-side or not named on the official zoo list.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "cm-outdoor",
+      "name": "Outdoor Area",
+      "reason": "Neither-kind leftover; zoo kits list zoo|both cards only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "freshwater-fish",
+      "name": "River / lake fish",
+      "reason": "Baltic Sea Science Center is brackish/marine, not the freshwater-fish card.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "cm-free-explore",
+      "name": "cm-free-explore",
+      "reason": "Neither-kind leftover; zoo kits list zoo|both cards only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "cm-toddler-garden",
+      "name": "cm-toddler-garden",
+      "reason": "Neither-kind leftover; zoo kits list zoo|both cards only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "sci-hands-on",
+      "name": "sci-hands-on",
+      "reason": "Neither-kind leftover; zoo kits list zoo|both cards only.",
+      "as_of": "2026-08-23"
     }
   ],
-  "last_presence_audit": "2026-08-08",
   "presence_sources": [
-    "https://www.skansen.se/en/",
-    "https://www.skansen.se/en/see-and-do/the-zoo/animals-at-skansen/",
-    "https://www.skansen.se/en/see-and-do/the-zoo/animals-at-skansen/brown-bear/"
+    "https://www.skansen.se/en/see-and-do/the-zoo/",
+    "https://www.skansen.se/en/see-and-do/the-zoo/animals-at-skansen/"
   ],
   "bonus_hunt": {
-    "tagline": "Skansen bonus · Nordic animals + living history cues",
-    "find_ids": [
-      "sci_hands_on",
-      "cm_free_explore",
-      "cm_outdoor",
-      "cm_toddler_garden"
-    ],
+    "tagline": "Skansen bonus · Nordic zoo map",
+    "find_ids": [],
     "challenges": [
       {
-        "id": "sk_nordic",
-        "text": "Biggest Nordic animal you can name here today",
+        "id": "sk_map",
+        "text": "Find the official zoo map and point to one habitat.",
         "age_fit": [
           "2-3",
           "4-5",
@@ -235,36 +200,8 @@
         ]
       },
       {
-        "id": "sk_wolf",
-        "text": "Wolf/pack energy: alert ears yes/no?",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "sk_seal",
-        "text": "Seal: water or rock majority",
-        "age_fit": [
-          "2-3",
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "sk_hist",
-        "text": "Find one old building or craft cue that isn’t an animal",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "sk_quiet",
-        "text": "Quiet 20s — bird or breeze?",
+        "id": "sk_fav",
+        "text": "Pick a Nordic animal and tell a grown-up why.",
         "age_fit": [
           "2-3",
           "4-5",
@@ -273,12 +210,13 @@
         ]
       }
     ],
-    "easter_egg": "★ Easter egg: point to a historic house roof from an animal path",
-    "easter_egg_little": "★ Easter egg: after the hard list — one free minute of favorite stop",
-    "researched": "2026-08-08",
-    "status": "researched",
+    "easter_egg": "★ Easter egg: find this zoo on a map/sign and point to a habitat you have not visited yet",
+    "easter_egg_little": "★ Easter egg: pick a favorite stop and tell a grown-up why",
     "sources": [
-      "https://www.skansen.se/"
-    ]
+      "https://www.skansen.se/en/see-and-do/the-zoo/",
+      "https://www.skansen.se/en/see-and-do/the-zoo/animals-at-skansen/"
+    ],
+    "researched": "2026-08-23",
+    "status": "researched"
   }
 }

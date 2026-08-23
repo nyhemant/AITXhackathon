@@ -8,10 +8,9 @@
   "lat": 24.1758,
   "lng": 55.7394,
   "official_url": "https://www.alainzoo.ae/",
-  "last_verified": "2026-08-07",
   "verified_by": "research",
-  "status": "verified",
-  "tagline": "Al Ain Zoo — desert oasis zoo day; heat is the real boss.",
+  "status": "partial",
+  "tagline": "Starter list: giraffe breakfast, lions, and zebra — official animal directory is a thin SPA.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Desert heat — start early.",
@@ -21,13 +20,43 @@
   },
   "items": [
     {
+      "id": "reticulated_giraffe",
+      "label": "Giraffe",
+      "emoji": "🦒",
+      "one_liner": "Breakfast with Giraffes — look up from the path.",
+      "tags": [
+        "tall",
+        "outdoor",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Giraffe experience",
+      "qa_card": {
+        "question": "What did you notice about the Giraffe?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "reticulated-giraffe",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Giraffe",
+      "core": true,
+      "presence_note": "Official booking: Breakfast with Giraffes. Soft Giraffe."
+    },
+    {
       "id": "african_lion",
-      "label": "African lion",
+      "label": "Lion",
       "emoji": "🦁",
-      "one_liner": "Lions — big cat wow.",
+      "one_liner": "Dinner with Lions — listen for a roar.",
       "tags": [
         "big-cats",
-        "wow"
+        "outdoor",
+        "sound"
       ],
       "age_fit": [
         "2-3",
@@ -37,98 +66,26 @@
       ],
       "zone": "Lions",
       "qa_card": {
-        "question": "What did you notice about the African lion?",
+        "question": "What did you notice about the Lion?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-lion",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "African lion",
-      "presence_note": "Lions including white lions widely documented; official animal carousel JS-limited."
-    },
-    {
-      "id": "reticulated_giraffe",
-      "label": "Giraffe",
-      "emoji": "🦒",
-      "one_liner": "Giraffes.",
-      "tags": [
-        "tall"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Giraffes",
-      "qa_card": {
-        "question": "What did you notice about the Reticulated giraffe?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "reticulated-giraffe",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Giraffe",
-      "presence_note": "Giraffe feeding is a featured experience; Nubian/other giraffe reported."
-    },
-    {
-      "id": "african_elephant",
-      "label": "African elephant",
-      "emoji": "🐘",
-      "one_liner": "Elephants.",
-      "tags": [
-        "big"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Elephants",
-      "qa_card": {
-        "question": "What did you notice about the African elephant?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "african-elephant",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "African elephant",
-      "presence_note": "Elephant herd referenced by zoo management communications."
-    },
-    {
-      "id": "nile_hippo",
-      "label": "Nile hippo",
-      "emoji": "🦛",
-      "one_liner": "Hippos if on the loop.",
-      "tags": [
-        "big",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Hippos",
-      "qa_card": {
-        "question": "What did you notice about the Nile hippo?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "nile-hippo",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Nile hippo",
-      "presence_note": "Hippos cited on visitor guides/trip summaries."
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Lion",
+      "core": true,
+      "presence_note": "Official: majestic lions / Dinner with Lions. Soft Lion."
     },
     {
       "id": "zebra",
       "label": "Zebra",
       "emoji": "🦓",
-      "one_liner": "Zebras and open views.",
+      "one_liner": "Homepage zebra beside scimitar-horned oryx — pick one stripe set.",
       "tags": [
-        "outdoor"
+        "pattern",
+        "outdoor",
+        "savanna"
       ],
       "age_fit": [
         "2-3",
@@ -136,80 +93,25 @@
         "6-8",
         "9+"
       ],
-      "zone": "Plains",
+      "zone": "Safari views",
       "qa_card": {
         "question": "What did you notice about the Zebra?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "zebra",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
       "display_label": "Zebra",
-      "presence_note": "Plausible ungulate collection; not confirmed on static official list extract."
+      "core": true
     },
     {
-      "id": "sumatran_tiger",
-      "label": "Tiger",
-      "emoji": "🐯",
-      "one_liner": "Stripy forest big cat — strong and stealthy.",
+      "id": "nile_hippo",
+      "label": "Hippo",
+      "emoji": "🦛",
+      "one_liner": "Two hippos swimming — watch the water.",
       "tags": [
-        "wow",
-        "big-cats",
-        "outdoor",
-        "rest",
-        "kids"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Sumatran tiger?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "sumatran-tiger",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Tiger",
-      "presence_note": "Tigers present; Sumatran subspecies not confirmed — soft-label Tiger."
-    },
-    {
-      "id": "western_lowland_gorilla",
-      "label": "Western lowland gorilla",
-      "emoji": "🦍",
-      "one_liner": "Strong gentle ape in family groups.",
-      "tags": [
-        "wow",
-        "outdoor",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Western lowland gorilla?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "western-lowland-gorilla",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Western lowland gorilla",
-      "presence_note": "No solid official confirmation in audit window."
-    },
-    {
-      "id": "african_penguin",
-      "label": "African penguin",
-      "emoji": "🐧",
-      "one_liner": "Waddle on land, zoom in water.",
-      "tags": [
-        "wow",
+        "big",
         "water",
         "outdoor"
       ],
@@ -219,132 +121,21 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Water",
       "qa_card": {
-        "question": "What is special about the African penguin?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Hippo?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "african-penguin",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "African penguin",
-      "presence_note": "Not confirmed."
-    },
-    {
-      "id": "chimpanzee",
-      "label": "Chimpanzee",
-      "emoji": "🐵",
-      "one_liner": "Smart forest ape — climbs and tools.",
-      "tags": [
-        "wow",
-        "outdoor",
-        "play",
-        "hands",
-        "rest",
-        "kids"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Chimpanzee?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "chimpanzee",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Chimpanzee",
-      "presence_note": "Chimps mentioned in secondary sources."
-    },
-    {
-      "id": "red_panda",
-      "label": "Red panda",
-      "emoji": "🦊",
-      "one_liner": "Rusty tree-climber with a ringed tail — not a giant panda!",
-      "tags": [
-        "wow",
-        "outdoor",
-        "hands",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Red panda?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "red-panda",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Red panda",
-      "presence_note": "Not confirmed on official materials reviewed."
-    },
-    {
-      "id": "asian_small_clawed_otter",
-      "label": "Asian small-clawed otter",
-      "emoji": "🦦",
-      "one_liner": "Playful swimmer — smallest otter.",
-      "tags": [
-        "wow",
-        "water",
-        "outdoor",
-        "hands",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Asian small-clawed otter?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "asian-small-clawed-otter",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Asian small-clawed otter",
-      "presence_note": "Not confirmed."
-    },
-    {
-      "id": "galapagos_tortoise",
-      "label": "Galápagos tortoise",
-      "emoji": "🐢",
-      "one_liner": "Giant tortoise — slow and steady.",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Galápagos tortoise?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "galapagos-tortoise",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Galápagos tortoise",
-      "presence_note": "Not confirmed."
+      "catalog_id": "nile-hippo",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Hippo",
+      "core": false,
+      "presence_note": "Official homepage alt: Two hippos swimming. Soft Hippo."
     }
   ],
-  "content_mode": "hybrid",
+  "content_mode": "curated",
   "media": {
     "visitor_map_url": "/field-pack/media/maps/al-ain-zoo.jpg",
     "visitor_map_page": "https://www.alainzoo.ae/",
@@ -359,30 +150,131 @@
     "Leave while happy"
   ],
   "route_90m": [
-    "african_lion",
     "reticulated_giraffe",
-    "african_elephant"
+    "african_lion",
+    "zebra"
   ],
-  "research_notes": "R3 2026-08-07 · web-map 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "research_notes": "[2026-08-23] Official-source Wave 3b public list pass (alainzoo.ae SPA + booking). No working English mammal directory — Starter.",
   "list_confidence": "partial",
-  "do_not_list": [],
+  "do_not_list": [
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Not confirmed as African elephant on the official public list.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "sumatran-tiger",
+      "name": "Sumatran tiger",
+      "reason": "Official tiger (if any) is not Sumatran.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "Official penguins (if any) are not African.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "western-lowland-gorilla",
+      "name": "Western lowland gorilla",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "chimpanzee",
+      "name": "Chimpanzee",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "red-panda",
+      "name": "Red panda",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "asian-small-clawed-otter",
+      "name": "Asian small-clawed otter",
+      "reason": "Official otter (if any) is a different species.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "galapagos-tortoise",
+      "name": "Galápagos tortoise",
+      "reason": "Official tortoise (if any) is not Galápagos.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "orangutan",
+      "name": "Orangutan",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "cheetah",
+      "name": "Cheetah",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "koala",
+      "name": "Koala",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "giant-panda",
+      "name": "Giant panda",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "caribbean-flamingo",
+      "name": "Caribbean flamingo",
+      "reason": "Official flamingo (if any) is not Caribbean/American.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "two-toed-sloth",
+      "name": "Two-toed sloth",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "shark",
+      "name": "Shark",
+      "reason": "Aquarium-side or not named on the official zoo list.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "cm-outdoor",
+      "name": "Outdoor Area",
+      "reason": "Neither-kind leftover; zoo kits list zoo|both cards only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "ring-tailed-lemur",
+      "name": "Ring-tailed lemur",
+      "reason": "Lemur Walk exists; species unnamed.",
+      "as_of": "2026-08-23"
+    }
+  ],
   "presence_sources": [
-    "https://www.alainzoo.com/en/discover/animals",
     "https://www.alainzoo.ae/",
-    "https://en.wikipedia.org/wiki/Al_Ain_Zoo"
+    "https://alainzoo.ae/en",
+    "https://online.alainzoo.ae/",
+    "https://alainzoo.ae/explore-zoo/animals/reptiles"
   ],
   "bonus_hunt": {
-    "tagline": "Al Ain Zoo bonus · Hippos + Elephants",
+    "tagline": "Al Ain bonus · giraffes + lions + zebra",
     "find_ids": [
-      "nile_hippo",
-      "african_elephant",
-      "african_lion",
-      "reticulated_giraffe"
+      "nile_hippo"
     ],
     "challenges": [
       {
-        "id": "auto_nile_hippo",
-        "text": "Hippos: 15 quiet seconds on the Nile hippo — moving, hiding, eating, or resting?",
+        "id": "ain_giraffe",
+        "text": "Giraffe: count the spots you can see on one neck.",
         "age_fit": [
           "2-3",
           "4-5",
@@ -391,8 +283,8 @@
         ]
       },
       {
-        "id": "auto_african_elephant",
-        "text": "Elephants: 15 quiet seconds on the African elephant — moving, hiding, eating, or resting?",
+        "id": "ain_lion",
+        "text": "Lions: roar or a quiet pride?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -401,8 +293,8 @@
         ]
       },
       {
-        "id": "auto_african_lion",
-        "text": "Lions: 15 quiet seconds on the African lion — moving, hiding, eating, or resting?",
+        "id": "ain_zebra",
+        "text": "Zebra: draw one stripe set in the air.",
         "age_fit": [
           "2-3",
           "4-5",
@@ -411,27 +303,8 @@
         ]
       },
       {
-        "id": "auto_reticulated_gira",
-        "text": "Giraffes: 15 quiet seconds on the Giraffe — moving, hiding, eating, or resting?",
-        "age_fit": [
-          "2-3",
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "zoo_pattern",
-        "text": "Match two patterns in different places (stripes, spots, shells)",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "zoo_sound",
-        "text": "Stand still 20s — loudest non-people sound?",
+        "id": "ain_hippo",
+        "text": "Hippo: underwater, mud, or bank?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -440,12 +313,13 @@
         ]
       }
     ],
-    "easter_egg": "★ Easter egg: find a park map or zone sign — name one animal that lives that way",
-    "easter_egg_little": "★ Easter egg: pick a favorite bench — sit 60 seconds and name three sounds",
-    "researched": "2026-08-08",
-    "status": "solid",
+    "easter_egg": "★ Easter egg: find this zoo on a map/sign and point to a habitat you have not visited yet",
+    "easter_egg_little": "★ Easter egg: pick a favorite stop and tell a grown-up why",
     "sources": [
-      "https://www.alainzoo.ae/"
-    ]
+      "https://www.alainzoo.ae/",
+      "https://alainzoo.ae/en"
+    ],
+    "researched": "2026-08-23",
+    "status": "researched"
   }
 }

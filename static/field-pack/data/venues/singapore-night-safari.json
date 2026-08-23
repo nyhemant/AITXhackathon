@@ -8,10 +8,10 @@
   "lat": 1.4021,
   "lng": 103.7881,
   "official_url": "https://www.mandai.com/en/night-safari.html",
-  "last_verified": "2026-08-07",
+  "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Night Safari — after-dark tram + walking trails; different energy than day zoo.",
+  "tagline": "Night Safari only: Asian small-clawed otter — not the day-zoo orangutan → sloth → cheetah path.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Evening tickets; tram seats fill.",
@@ -24,11 +24,10 @@
       "id": "asian_small_clawed_otter",
       "label": "Asian small-clawed otter",
       "emoji": "🦦",
-      "one_liner": "Otters and nocturnal bustle.",
+      "one_liner": "Asian small-clawed otter on the nocturnal trail.",
       "tags": [
-        "water",
         "play",
-        "wow"
+        "water"
       ],
       "age_fit": [
         "2-3",
@@ -36,46 +35,20 @@
         "6-8",
         "9+"
       ],
-      "zone": "Trails",
+      "zone": "Pangolin Trail",
       "qa_card": {
         "question": "What did you notice about the Asian small-clawed otter?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "asian-small-clawed-otter",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "Asian small-clawed otter",
-      "presence_note": "Pangolin Trail official list."
-    },
-    {
-      "id": "nile_hippo",
-      "label": "Nile hippo",
-      "emoji": "🦛",
-      "one_liner": "Huge river giant that loves the water.",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Nile hippo?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "nile-hippo",
-      "presence": "template",
-      "presence_checked": "2026-08-08",
-      "display_label": "Nile hippo",
-      "presence_note": "Not on main Mandai list this pass — do not promise."
+      "core": true
     }
   ],
-  "content_mode": "hybrid",
+  "content_mode": "curated",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://www.mandai.com/en/plan-your-visit/maps.html",
@@ -91,71 +64,136 @@
   "route_90m": [
     "asian_small_clawed_otter"
   ],
-  "research_notes": "R3 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [critical]",
-  "list_confidence": "partial",
+  "research_notes": "[2026-08-23] Official-source Wave 3b public list pass (mandai.com Night Safari animals). One published catalog overlap; short stays short. Not Singapore Zoo.",
+  "list_confidence": "audited",
   "do_not_list": [
     {
       "catalog_id": "african-elephant",
       "name": "African elephant",
-      "reason": "Asian elephants only.",
-      "as_of": "2026-08-08"
+      "reason": "Not confirmed as African elephant on the official public list.",
+      "as_of": "2026-08-23"
     },
     {
       "catalog_id": "african-lion",
       "name": "African lion",
-      "reason": "Asian lion on official list.",
-      "as_of": "2026-08-08"
+      "reason": "Not confirmed as African lion on the official public list.",
+      "as_of": "2026-08-23"
     },
     {
       "catalog_id": "sumatran-tiger",
       "name": "Sumatran tiger",
-      "reason": "White tigers at Night Safari; not Sumatran label.",
-      "as_of": "2026-08-08"
+      "reason": "Official tiger (if any) is not Sumatran.",
+      "as_of": "2026-08-23"
     },
     {
-      "catalog_id": "red-panda",
-      "name": "Red panda",
-      "reason": "Not on official animals list.",
-      "as_of": "2026-08-08"
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "Official penguins (if any) are not African.",
+      "as_of": "2026-08-23"
     },
     {
-      "catalog_id": "zebra",
-      "name": "Zebra",
-      "reason": "Not on official animals list.",
-      "as_of": "2026-08-08"
-    },
-    {
-      "catalog_id": "reticulated-giraffe",
-      "name": "Giraffe",
-      "reason": "Not on official animals list.",
-      "as_of": "2026-08-08"
+      "catalog_id": "western-lowland-gorilla",
+      "name": "Western lowland gorilla",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
     },
     {
       "catalog_id": "chimpanzee",
       "name": "Chimpanzee",
-      "reason": "Not on official animals list.",
-      "as_of": "2026-08-08"
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
     },
     {
-      "catalog_id": "ring-tailed-lemur",
-      "name": "Ring-tailed lemur",
-      "reason": "Not on official animals list.",
-      "as_of": "2026-08-08"
+      "catalog_id": "reticulated-giraffe",
+      "name": "Reticulated giraffe",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "zebra",
+      "name": "Zebra",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "red-panda",
+      "name": "Red panda",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "nile-hippo",
+      "name": "Nile hippo",
+      "reason": "Official hippo (if any) is not Nile / common hippo.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "galapagos-tortoise",
+      "name": "Galápagos tortoise",
+      "reason": "Official tortoise (if any) is not Galápagos.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "orangutan",
+      "name": "Orangutan",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "cheetah",
+      "name": "Cheetah",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "koala",
+      "name": "Koala",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "giant-panda",
+      "name": "Giant panda",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "caribbean-flamingo",
+      "name": "Caribbean flamingo",
+      "reason": "Official flamingo (if any) is not Caribbean/American.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "two-toed-sloth",
+      "name": "Two-toed sloth",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "shark",
+      "name": "Shark",
+      "reason": "Aquarium-side or not named on the official zoo list.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "cm-outdoor",
+      "name": "Outdoor Area",
+      "reason": "Neither-kind leftover; zoo kits list zoo|both cards only.",
+      "as_of": "2026-08-23"
     }
   ],
   "presence_sources": [
     "https://www.mandai.com/en/night-safari.html",
-    "https://www.mandai.com/en/night-safari/animals-and-zones.html"
+    "https://www.mandai.com/en/night-safari/animals-and-zones.html",
+    "https://www.mandai.com/en/night-safari/animals-and-zones/white-tiger.html"
   ],
   "bonus_hunt": {
-    "tagline": "Night Safari bonus · far sights & camouflage",
-    "find_ids": [
-      "asian_small_clawed_otter"
-    ],
+    "tagline": "Night Safari bonus · otter on Pangolin Trail",
+    "find_ids": [],
     "challenges": [
       {
-        "id": "singapore_ni_asian_small_claw_watch",
-        "text": "Trails: take 15 seconds on the Asian small-clawed otter — what is it doing right now?",
+        "id": "ns_otter",
+        "text": "Otter: smallest otter, biggest splash?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -164,46 +202,8 @@
         ]
       },
       {
-        "id": "sf_far",
-        "text": "Spot an animal far away first — then one close to the path",
-        "age_fit": [
-          "2-3",
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "sf_still",
-        "text": "Find something almost camouflaged against grass or trees",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "sf_pair",
-        "text": "Two different patterns in one loop (stripes, spots, or horns)",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "sf_quiet",
-        "text": "Quiet 20 seconds — bird, insect, or vehicle: what wins?",
-        "age_fit": [
-          "2-3",
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "sf_tall",
-        "text": "Point to the tallest living thing you can see from here",
+        "id": "ns_map",
+        "text": "Find the official Night Safari map and point to a trail you have not walked yet.",
         "age_fit": [
           "2-3",
           "4-5",
@@ -212,12 +212,14 @@
         ]
       }
     ],
-    "easter_egg": "★ Easter egg: find a park map or zone sign — name one animal that lives that way",
-    "easter_egg_little": "★ Easter egg: pick a favorite bench — sit 60 seconds and name three sounds",
-    "researched": "2026-08-08",
-    "status": "thin",
+    "easter_egg": "★ Easter egg: find this zoo on a map/sign and point to a habitat you have not visited yet",
+    "easter_egg_little": "★ Easter egg: pick a favorite stop and tell a grown-up why",
     "sources": [
-      "https://www.mandai.com/en/night-safari.html"
-    ]
-  }
+      "https://www.mandai.com/en/night-safari.html",
+      "https://www.mandai.com/en/night-safari/animals-and-zones.html"
+    ],
+    "researched": "2026-08-23",
+    "status": "researched"
+  },
+  "last_presence_audit": "2026-08-23"
 }

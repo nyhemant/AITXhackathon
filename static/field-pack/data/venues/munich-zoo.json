@@ -8,10 +8,10 @@
   "lat": 48.097,
   "lng": 11.5586,
   "official_url": "https://www.hellabrunn.de/en/",
-  "last_verified": "2026-08-07",
+  "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Hellabrunn Munich — geo-zoo idea, Isar river setting.",
+  "tagline": "Gorillas, orangutans, then reticulated giraffe — Asian elephants, Siberian tigers, Humboldt/king penguins.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Check hellabrunn.de.",
@@ -21,12 +21,68 @@
   },
   "items": [
     {
-      "id": "african_elephant",
-      "label": "Elephant",
-      "emoji": "🐘",
-      "one_liner": "Elephants.",
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "emoji": "🦍",
+      "one_liner": "Western lowland gorilla — who looks in charge?",
       "tags": [
-        "big",
+        "primates",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Apes",
+      "qa_card": {
+        "question": "What did you notice about the Western lowland gorilla?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Western lowland gorilla",
+      "core": true
+    },
+    {
+      "id": "orangutan",
+      "label": "Orangutan",
+      "emoji": "🦧",
+      "one_liner": "Sumatran orangutan — long arms in the trees.",
+      "tags": [
+        "primates",
+        "climb",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Asia",
+      "qa_card": {
+        "question": "What did you notice about the Orangutan?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "orangutan",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Orangutan",
+      "core": true
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "emoji": "🦒",
+      "one_liner": "Reticulated giraffe — look up from the path.",
+      "tags": [
+        "tall",
+        "outdoor",
         "wow"
       ],
       "age_fit": [
@@ -35,100 +91,27 @@
         "6-8",
         "9+"
       ],
-      "zone": "Elephants",
-      "qa_card": {
-        "question": "What did you notice about the African elephant?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "african-elephant",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Elephant",
-      "presence_note": "Hellabrunn long known for elephants (geo-zoo). Soft Elephant; confirm African."
-    },
-    {
-      "id": "western_lowland_gorilla",
-      "label": "Gorilla",
-      "emoji": "🦍",
-      "one_liner": "Gorillas.",
-      "tags": [
-        "primates"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Gorillas",
-      "qa_card": {
-        "question": "What did you notice about the Western lowland gorilla?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "western-lowland-gorilla",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Gorilla",
-      "presence_note": "Gorillas are a known Hellabrunn highlight."
-    },
-    {
-      "id": "reticulated_giraffe",
-      "label": "Giraffe",
-      "emoji": "🦒",
-      "one_liner": "Giraffes.",
-      "tags": [
-        "tall"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Giraffes",
+      "zone": "Africa",
       "qa_card": {
         "question": "What did you notice about the Reticulated giraffe?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "reticulated-giraffe",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Giraffe",
-      "presence_note": "Giraffes present; subspecies soft."
-    },
-    {
-      "id": "sumatran_tiger",
-      "label": "Tiger",
-      "emoji": "🐯",
-      "one_liner": "Tigers.",
-      "tags": [
-        "big-cats"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Tigers",
-      "qa_card": {
-        "question": "What did you notice about the Sumatran tiger?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "sumatran-tiger",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Tiger",
-      "presence_note": "Tigers; subspecies unverified. Soft Tiger."
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Reticulated giraffe",
+      "core": true
     },
     {
       "id": "african_lion",
-      "label": "Lion",
+      "label": "African lion",
       "emoji": "🦁",
-      "one_liner": "Lions.",
+      "one_liner": "Lion — listen for a roar.",
       "tags": [
-        "big-cats"
+        "big-cats",
+        "outdoor",
+        "sound"
       ],
       "age_fit": [
         "2-3",
@@ -136,56 +119,26 @@
         "6-8",
         "9+"
       ],
-      "zone": "Lions",
+      "zone": "Africa",
       "qa_card": {
         "question": "What did you notice about the African lion?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-lion",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Lion",
-      "presence_note": "Lions in Africa area."
-    },
-    {
-      "id": "african_penguin",
-      "label": "Penguin (verify)",
-      "emoji": "🐧",
-      "one_liner": "Waddle on land, zoom in water.",
-      "tags": [
-        "wow",
-        "water",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the African penguin?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "african-penguin",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Penguin (verify)",
-      "presence_note": "Penguins may be present; African label medium."
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "African lion",
+      "core": true
     },
     {
       "id": "chimpanzee",
       "label": "Chimpanzee",
       "emoji": "🐵",
-      "one_liner": "Smart forest ape — climbs and tools.",
+      "one_liner": "Chimpanzee — hands used like tools.",
       "tags": [
-        "wow",
-        "outdoor",
-        "play",
-        "hands",
-        "rest",
-        "kids"
+        "primates",
+        "play"
       ],
       "age_fit": [
         "2-3",
@@ -193,24 +146,25 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Apes",
       "qa_card": {
-        "question": "What is special about the Chimpanzee?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Chimpanzee?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "chimpanzee",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
       "display_label": "Chimpanzee",
-      "presence_note": "Primates house — chimps known historically."
+      "core": true
     },
     {
-      "id": "zebra",
-      "label": "Zebra",
-      "emoji": "🦓",
-      "one_liner": "Striped grassland runner — every pattern is unique.",
+      "id": "two_toed_sloth",
+      "label": "Two-toed sloth",
+      "emoji": "🦥",
+      "one_liner": "Two-toed sloth — hang and look twice.",
       "tags": [
-        "wow",
+        "climb",
         "outdoor"
       ],
       "age_fit": [
@@ -219,27 +173,26 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Animals",
       "qa_card": {
-        "question": "What is special about the Zebra?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Two-toed sloth?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "zebra",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Zebra",
-      "presence_note": "Africa hoofstock."
+      "catalog_id": "two-toed-sloth",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Two-toed sloth",
+      "core": true
     },
     {
       "id": "red_panda",
       "label": "Red panda",
       "emoji": "🦊",
-      "one_liner": "Rusty tree-climber with a ringed tail — not a giant panda!",
+      "one_liner": "Red panda — rusty and tree-high.",
       "tags": [
-        "wow",
-        "outdoor",
-        "hands",
-        "play"
+        "climb",
+        "outdoor"
       ],
       "age_fit": [
         "2-3",
@@ -247,28 +200,54 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Asia",
       "qa_card": {
-        "question": "What is special about the Red panda?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Red panda?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "red-panda",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
       "display_label": "Red panda",
-      "presence_note": "Often present in European zoos; not verified."
+      "core": false
+    },
+    {
+      "id": "ring_tailed_lemur",
+      "label": "Ring-tailed lemur",
+      "emoji": "🐒",
+      "one_liner": "Ring-tailed lemur — striped tail and a long stare.",
+      "tags": [
+        "primates",
+        "pattern",
+        "climb"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Animals",
+      "qa_card": {
+        "question": "What did you notice about the Ring-tailed lemur?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "ring-tailed-lemur",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Ring-tailed lemur",
+      "core": false
     },
     {
       "id": "asian_small_clawed_otter",
       "label": "Asian small-clawed otter",
       "emoji": "🦦",
-      "one_liner": "Playful swimmer — smallest otter.",
+      "one_liner": "Asian small-clawed otter — smallest otter, biggest splash.",
       "tags": [
-        "wow",
-        "water",
-        "outdoor",
-        "hands",
-        "play"
+        "play",
+        "water"
       ],
       "age_fit": [
         "2-3",
@@ -276,25 +255,27 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Animals",
       "qa_card": {
-        "question": "What is special about the Asian small-clawed otter?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Asian small-clawed otter?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "asian-small-clawed-otter",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
       "display_label": "Asian small-clawed otter",
-      "presence_note": "Common; not verified."
+      "core": false
     },
     {
-      "id": "nile_hippo",
-      "label": "Nile hippo",
-      "emoji": "🦛",
-      "one_liner": "Huge river giant that loves the water.",
+      "id": "zebra",
+      "label": "Zebra",
+      "emoji": "🦓",
+      "one_liner": "Hartmann's mountain zebra — every stripe set is unique.",
       "tags": [
-        "wow",
-        "outdoor"
+        "pattern",
+        "outdoor",
+        "savanna"
       ],
       "age_fit": [
         "2-3",
@@ -302,45 +283,20 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Africa",
       "qa_card": {
-        "question": "What is special about the Nile hippo?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Zebra?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "nile-hippo",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Nile hippo",
-      "presence_note": "Hippos historically at Hellabrunn; verify current."
-    },
-    {
-      "id": "galapagos_tortoise",
-      "label": "Galápagos tortoise",
-      "emoji": "🐢",
-      "one_liner": "Giant tortoise — slow and steady.",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Galápagos tortoise?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "galapagos-tortoise",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Galápagos tortoise",
-      "presence_note": "Not verified."
+      "catalog_id": "zebra",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Zebra",
+      "core": false
     }
   ],
-  "content_mode": "hybrid",
+  "content_mode": "curated",
   "media": {
     "visitor_map_url": "/field-pack/media/maps/munich-zoo.jpg",
     "visitor_map_page": "https://www.hellabrunn.de/en/park-visit/general-information/map-of-the-zoo",
@@ -355,29 +311,106 @@
     "Leave while happy"
   ],
   "route_90m": [
-    "african_elephant",
     "western_lowland_gorilla",
+    "orangutan",
     "reticulated_giraffe"
   ],
-  "research_notes": "R2b 2026-08-07 · map-page 2026-08-07 · web-map 2026-08-07 · presence-audit 2026-08-08 [minor]",
-  "list_confidence": "partial",
-  "do_not_list": [],
+  "research_notes": "[2026-08-23] Official-source Wave 3b public list pass (hellabrunn.de English A–Z).",
+  "list_confidence": "audited",
+  "do_not_list": [
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Not confirmed as African elephant on the official public list.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "sumatran-tiger",
+      "name": "Sumatran tiger",
+      "reason": "Official tiger (if any) is not Sumatran.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "Official penguins (if any) are not African.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "nile-hippo",
+      "name": "Nile hippo",
+      "reason": "Official hippo (if any) is not Nile / common hippo.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "galapagos-tortoise",
+      "name": "Galápagos tortoise",
+      "reason": "Official tortoise (if any) is not Galápagos.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "cheetah",
+      "name": "Cheetah",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "koala",
+      "name": "Koala",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "giant-panda",
+      "name": "Giant panda",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "caribbean-flamingo",
+      "name": "Caribbean flamingo",
+      "reason": "Official flamingo (if any) is not Caribbean/American.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "shark",
+      "name": "Shark",
+      "reason": "Aquarium-side or not named on the official zoo list.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "cm-outdoor",
+      "name": "Outdoor Area",
+      "reason": "Neither-kind leftover; zoo kits list zoo|both cards only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "warthog",
+      "name": "Warthog",
+      "reason": "Official pigs are red river hog and Visayan warty pig.",
+      "as_of": "2026-08-23"
+    }
+  ],
   "presence_sources": [
-    "https://www.hellabrunn.de/en/",
-    "https://www.hellabrunn.de/en/animals",
-    "https://en.wikipedia.org/wiki/Hellabrunn_Zoo"
+    "https://www.hellabrunn.de/en/animals/wildlife-from-a-to-z",
+    "https://www.hellabrunn.de/en/animals/asia/asian-elephant",
+    "https://www.hellabrunn.de/en/animals/asia/siberian-tiger",
+    "https://www.hellabrunn.de/en/animals/africa/reticulated-giraffe",
+    "https://www.hellabrunn.de/en/animals/world-of-birds/humboldt-penguin"
   ],
   "bonus_hunt": {
-    "tagline": "Hellabrunn bonus · geo-zoo continents second loop",
+    "tagline": "Hellabrunn bonus · gorillas + orangutans + giraffe",
     "find_ids": [
-      "african_elephant",
-      "western_lowland_gorilla",
-      "zebra"
+      "african_lion",
+      "chimpanzee",
+      "two_toed_sloth",
+      "red_panda",
+      "ring_tailed_lemur"
     ],
     "challenges": [
       {
-        "id": "mun_el",
-        "text": "Elephant trunk",
+        "id": "mun_gorilla",
+        "text": "Gorilla: who looks calmest?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -386,17 +419,8 @@
         ]
       },
       {
-        "id": "mun_gorilla",
-        "text": "Gorilla hands",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "mun_polar",
-        "text": "Polar swim or land",
+        "id": "mun_orang",
+        "text": "Orangutan: hands or feet doing the clever bit?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -406,7 +430,7 @@
       },
       {
         "id": "mun_giraffe",
-        "text": "Giraffe stretch",
+        "text": "Reticulated giraffe: count the spots you can see on one neck.",
         "age_fit": [
           "2-3",
           "4-5",
@@ -415,21 +439,24 @@
         ]
       },
       {
-        "id": "mun_pattern",
-        "text": "Two patterns two continents",
+        "id": "mun_sloth",
+        "text": "Sloth: mid-reach or statue-still?",
         "age_fit": [
+          "2-3",
           "4-5",
           "6-8",
           "adult"
         ]
       }
     ],
-    "easter_egg": "★ Easter egg: name two continent zones from the map",
-    "easter_egg_little": "★ Easter egg: after the hard list — one free minute at a favorite stop",
-    "researched": "2026-08-08",
-    "status": "researched",
+    "easter_egg": "★ Easter egg: find this zoo on a map/sign and point to a habitat you have not visited yet",
+    "easter_egg_little": "★ Easter egg: pick a favorite stop and tell a grown-up why",
     "sources": [
-      "https://www.hellabrunn.de/en/"
-    ]
-  }
+      "https://www.hellabrunn.de/en/animals/wildlife-from-a-to-z",
+      "https://www.hellabrunn.de/en/animals/asia/asian-elephant"
+    ],
+    "researched": "2026-08-23",
+    "status": "researched"
+  },
+  "last_presence_audit": "2026-08-23"
 }

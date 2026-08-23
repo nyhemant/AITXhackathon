@@ -8,10 +8,9 @@
   "lat": -23.65,
   "lng": -46.62,
   "official_url": "https://www.zoologico.com.br/",
-  "last_verified": "2026-08-07",
   "verified_by": "research",
-  "status": "verified",
-  "tagline": "São Paulo Zoo — large Atlantic-forest-edge campus; pick one area.",
+  "status": "partial",
+  "tagline": "Starter homepage: lion, chimpanzees, hippos — elephants unnamed (not African); animals directory is JS-thin.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "South zone; plan a dedicated half day.",
@@ -21,145 +20,14 @@
   },
   "items": [
     {
-      "id": "western_lowland_gorilla",
-      "label": "Western lowland gorilla",
-      "emoji": "🦍",
-      "one_liner": "Gorillas / primates.",
-      "tags": [
-        "primates",
-        "wow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Primates",
-      "qa_card": {
-        "question": "What did you notice about the Western lowland gorilla?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "western-lowland-gorilla",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Western lowland gorilla",
-      "presence_note": "Large international collection historically."
-    },
-    {
-      "id": "sumatran_tiger",
-      "label": "Tiger",
-      "emoji": "🐯",
-      "one_liner": "Tigers.",
-      "tags": [
-        "big-cats"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Tigers",
-      "qa_card": {
-        "question": "What did you notice about the Sumatran tiger?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "sumatran-tiger",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Tiger",
-      "presence_note": "Subspecies unconfirmed."
-    },
-    {
-      "id": "reticulated_giraffe",
-      "label": "Giraffe",
-      "emoji": "🦒",
-      "one_liner": "Giraffes.",
-      "tags": [
-        "tall"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Giraffes",
-      "qa_card": {
-        "question": "What did you notice about the Reticulated giraffe?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "reticulated-giraffe",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Giraffe",
-      "presence_note": "Confirm."
-    },
-    {
-      "id": "african_elephant",
-      "label": "African elephant",
-      "emoji": "🐘",
-      "one_liner": "Elephants.",
-      "tags": [
-        "big"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Elephants",
-      "qa_card": {
-        "question": "What did you notice about the African elephant?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "african-elephant",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "African elephant",
-      "presence_note": "Confirm live elephants."
-    },
-    {
-      "id": "two_toed_sloth",
-      "label": "Two-toed sloth",
-      "emoji": "🦥",
-      "one_liner": "Sloths / regional animals.",
-      "tags": [
-        "climb"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "South America",
-      "qa_card": {
-        "question": "What did you notice about the Two-toed sloth?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "two-toed-sloth",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Two-toed sloth",
-      "presence_note": "Strong Neotropical mammal collection."
-    },
-    {
       "id": "african_lion",
       "label": "African lion",
       "emoji": "🦁",
-      "one_liner": "Big cat of the grassland pride — mighty roar!",
+      "one_liner": "Lion — listen for a roar.",
       "tags": [
-        "wow",
         "big-cats",
-        "outdoor"
+        "outdoor",
+        "sound"
       ],
       "age_fit": [
         "2-3",
@@ -167,112 +35,25 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Homepage",
       "qa_card": {
-        "question": "What is special about the African lion?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the African lion?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-lion",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "African lion",
-      "presence_note": "Confirm."
-    },
-    {
-      "id": "african_penguin",
-      "label": "African penguin",
-      "emoji": "🐧",
-      "one_liner": "Waddle on land, zoom in water.",
-      "tags": [
-        "wow",
-        "water",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the African penguin?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "african-penguin",
-      "presence": "template",
-      "presence_checked": "2026-08-08",
-      "display_label": "African penguin",
-      "presence_note": "Unconfirmed."
+      "core": true
     },
     {
       "id": "chimpanzee",
       "label": "Chimpanzee",
       "emoji": "🐵",
-      "one_liner": "Smart forest ape — climbs and tools.",
+      "one_liner": "Chimpanzees — hands used like tools.",
       "tags": [
-        "wow",
-        "outdoor",
-        "play",
-        "hands",
-        "rest",
-        "kids"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Chimpanzee?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "chimpanzee",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Chimpanzee",
-      "presence_note": "Confirm."
-    },
-    {
-      "id": "zebra",
-      "label": "Zebra",
-      "emoji": "🦓",
-      "one_liner": "Striped grassland runner — every pattern is unique.",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Zebra?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "zebra",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Zebra",
-      "presence_note": "Confirm."
-    },
-    {
-      "id": "red_panda",
-      "label": "Red panda",
-      "emoji": "🦊",
-      "one_liner": "Rusty tree-climber with a ringed tail — not a giant panda!",
-      "tags": [
-        "wow",
-        "outdoor",
-        "hands",
+        "primates",
         "play"
       ],
       "age_fit": [
@@ -281,50 +62,26 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Homepage",
       "qa_card": {
-        "question": "What is special about the Red panda?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Chimpanzee?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "red-panda",
-      "presence": "template",
-      "presence_checked": "2026-08-08",
-      "display_label": "Red panda",
-      "presence_note": "Unconfirmed."
-    },
-    {
-      "id": "galapagos_tortoise",
-      "label": "Galápagos tortoise",
-      "emoji": "🐢",
-      "one_liner": "Giant tortoise — slow and steady.",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Galápagos tortoise?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "galapagos-tortoise",
-      "presence": "template",
-      "presence_checked": "2026-08-08",
-      "display_label": "Galápagos tortoise",
-      "presence_note": "Unconfirmed."
+      "catalog_id": "chimpanzee",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Chimpanzee",
+      "core": true
     },
     {
       "id": "nile_hippo",
-      "label": "Nile hippo",
+      "label": "Hippo",
       "emoji": "🦛",
-      "one_liner": "Huge river giant that loves the water.",
+      "one_liner": "Hippos — watch the water.",
       "tags": [
-        "wow",
+        "big",
+        "water",
         "outdoor"
       ],
       "age_fit": [
@@ -333,48 +90,21 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Homepage",
       "qa_card": {
-        "question": "What is special about the Nile hippo?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Hippo?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "nile-hippo",
-      "presence": "template",
-      "presence_checked": "2026-08-08",
-      "display_label": "Nile hippo",
-      "presence_note": "Unconfirmed."
-    },
-    {
-      "id": "asian_small_clawed_otter",
-      "label": "Asian small-clawed otter",
-      "emoji": "🦦",
-      "one_liner": "Playful swimmer — smallest otter.",
-      "tags": [
-        "wow",
-        "water",
-        "outdoor",
-        "hands",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Asian small-clawed otter?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "asian-small-clawed-otter",
-      "presence": "template",
-      "presence_checked": "2026-08-08",
-      "display_label": "Asian small-clawed otter",
-      "presence_note": "Unconfirmed."
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Hippo",
+      "core": true,
+      "presence_note": "Official homepage: hippos. Soft Hippo."
     }
   ],
-  "content_mode": "hybrid",
+  "content_mode": "curated",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://www.zoologico.com.br/",
@@ -388,30 +118,127 @@
     "Leave while happy"
   ],
   "route_90m": [
-    "two_toed_sloth"
+    "african_lion",
+    "chimpanzee",
+    "nile_hippo"
   ],
-  "research_notes": "R3 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "research_notes": "[2026-08-23] Official-source Wave 3b public list pass (zoologico.com.br homepage). Animals page is JS-thin — Starter.",
   "list_confidence": "partial",
   "do_not_list": [
     {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Not confirmed as African elephant on the official public list.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "sumatran-tiger",
+      "name": "Sumatran tiger",
+      "reason": "Official tiger (if any) is not Sumatran.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "Official penguins (if any) are not African.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "western-lowland-gorilla",
+      "name": "Western lowland gorilla",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "reticulated-giraffe",
+      "name": "Reticulated giraffe",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "zebra",
+      "name": "Zebra",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
       "catalog_id": "red-panda",
       "name": "Red panda",
-      "reason": "Not confirmed this pass.",
-      "as_of": "2026-08-08"
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "asian-small-clawed-otter",
+      "name": "Asian small-clawed otter",
+      "reason": "Official otter (if any) is a different species.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "galapagos-tortoise",
+      "name": "Galápagos tortoise",
+      "reason": "Official tortoise (if any) is not Galápagos.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "orangutan",
+      "name": "Orangutan",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "cheetah",
+      "name": "Cheetah",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "koala",
+      "name": "Koala",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "giant-panda",
+      "name": "Giant panda",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "caribbean-flamingo",
+      "name": "Caribbean flamingo",
+      "reason": "Official flamingo (if any) is not Caribbean/American.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "two-toed-sloth",
+      "name": "Two-toed sloth",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "shark",
+      "name": "Shark",
+      "reason": "Aquarium-side or not named on the official zoo list.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "cm-outdoor",
+      "name": "Outdoor Area",
+      "reason": "Neither-kind leftover; zoo kits list zoo|both cards only.",
+      "as_of": "2026-08-23"
     }
   ],
   "presence_sources": [
-    "https://www.zoologico.com.br/"
+    "https://www.zoologico.com.br/en",
+    "https://zoologico.com.br/animals"
   ],
   "bonus_hunt": {
-    "tagline": "São Paulo Zoo bonus · second-loop secrets",
-    "find_ids": [
-      "two_toed_sloth"
-    ],
+    "tagline": "São Paulo bonus · lion + chimp + hippo",
+    "find_ids": [],
     "challenges": [
       {
-        "id": "sao_paulo_zo_two_toed_sloth_watch",
-        "text": "South America: take 15 seconds on the Two-toed sloth — what is it doing right now?",
+        "id": "sp_lion",
+        "text": "Lion: roar or a quiet pride?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -420,8 +247,8 @@
         ]
       },
       {
-        "id": "zoo_behavior",
-        "text": "Watch one animal do something for 15 full seconds (eat, climb, pace, rest)",
+        "id": "sp_chimp",
+        "text": "Chimp: spot hands used like tools.",
         "age_fit": [
           "2-3",
           "4-5",
@@ -430,68 +257,23 @@
         ]
       },
       {
-        "id": "zoo_pattern",
-        "text": "Match two patterns in different places (stripes, spots, shells)",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "zoo_tiny_big",
-        "text": "Find something tiny next to something huge",
+        "id": "sp_hippo",
+        "text": "Hippo: underwater, mud, or bank?",
         "age_fit": [
           "2-3",
           "4-5",
           "6-8",
           "adult"
-        ]
-      },
-      {
-        "id": "zoo_overlook",
-        "text": "Find a cool detail most visitors walk past",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "zoo_sound",
-        "text": "Stand still 20 seconds — loudest sound that isn’t people?",
-        "age_fit": [
-          "2-3",
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "zoo_water",
-        "text": "Find water used by animals (pool, moat, splash, drink)",
-        "age_fit": [
-          "2-3",
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "zoo_little",
-        "text": "Copy an animal move once (stomp, stretch, tip-toe, roar soft)",
-        "age_fit": [
-          "2-3",
-          "4-5"
         ]
       }
     ],
-    "easter_egg": "★ Easter egg: find a park map or zone sign — name one animal that lives that way",
-    "easter_egg_little": "★ Easter egg: pick a favorite bench — sit 60 seconds and name three sounds",
-    "researched": "2026-08-08",
-    "status": "thin",
+    "easter_egg": "★ Easter egg: find this zoo on a map/sign and point to a habitat you have not visited yet",
+    "easter_egg_little": "★ Easter egg: pick a favorite stop and tell a grown-up why",
     "sources": [
-      "https://www.zoologico.com.br/"
-    ]
+      "https://www.zoologico.com.br/en",
+      "https://zoologico.com.br/animals"
+    ],
+    "researched": "2026-08-23",
+    "status": "researched"
   }
 }

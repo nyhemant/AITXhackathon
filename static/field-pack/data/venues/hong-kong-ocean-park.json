@@ -8,10 +8,10 @@
   "lat": 22.246,
   "lng": 114.175,
   "official_url": "https://www.oceanpark.com.hk/en",
-  "last_verified": "2026-08-07",
+  "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Ocean Park — theme-park-scale; cable car + ocean/land zones.",
+  "tagline": "Giant pandas, red pandas, then a two-toed sloth — king/gentoo/rockhopper penguins, no aquarium-only cards.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Timed tickets; huge day possible.",
@@ -21,164 +21,12 @@
   },
   "items": [
     {
-      "id": "shark",
-      "label": "Shark",
-      "emoji": "🦈",
-      "one_liner": "Sharks and ocean tanks.",
+      "id": "giant_panda",
+      "label": "Giant panda",
+      "emoji": "🐼",
+      "one_liner": "Ying Ying, Le Le, and Hong Kong's panda twins.",
       "tags": [
-        "water",
-        "big",
-        "wow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Ocean",
-      "qa_card": {
-        "question": "What did you notice about the Shark?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "shark",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Shark"
-    },
-    {
-      "id": "jellyfish",
-      "label": "Jellyfish",
-      "emoji": "🎐",
-      "one_liner": "Jellies.",
-      "tags": [
-        "water",
-        "glow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Jellies",
-      "qa_card": {
-        "question": "What did you notice about the Jellyfish?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "jellyfish",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Jellyfish"
-    },
-    {
-      "id": "african_penguin",
-      "label": "Penguin",
-      "emoji": "🐧",
-      "one_liner": "Penguins.",
-      "tags": [
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Penguins",
-      "qa_card": {
-        "question": "What did you notice about the African penguin?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "african-penguin",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Penguin"
-    },
-    {
-      "id": "sumatran_tiger",
-      "label": "Tiger",
-      "emoji": "🐯",
-      "one_liner": "Big cats on land side.",
-      "tags": [
-        "big-cats"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Land / Asia",
-      "qa_card": {
-        "question": "What did you notice about the Sumatran tiger?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "sumatran-tiger",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Tiger"
-    },
-    {
-      "id": "red_panda",
-      "label": "Red panda",
-      "emoji": "🦊",
-      "one_liner": "Red pandas.",
-      "tags": [
-        "climb"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Asia",
-      "qa_card": {
-        "question": "What did you notice about the Red panda?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "red-panda",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Red panda"
-    },
-    {
-      "id": "asian_small_clawed_otter",
-      "label": "Asian small-clawed otter",
-      "emoji": "🦦",
-      "one_liner": "Playful swimmer — smallest otter.",
-      "tags": [
-        "wow",
-        "water",
-        "outdoor",
-        "hands",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Asian small-clawed otter?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "asian-small-clawed-otter",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Asian small-clawed otter"
-    },
-    {
-      "id": "sea_turtle",
-      "label": "Sea turtle",
-      "emoji": "🐢",
-      "one_liner": "Shelled ocean traveler — flippers for swimming.",
-      "tags": [
-        "wow",
-        "water",
+        "climb",
         "outdoor"
       ],
       "age_fit": [
@@ -187,24 +35,26 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Giant Panda Adventure",
       "qa_card": {
-        "question": "What did you notice about the Sea turtle?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
+        "question": "What did you notice about the Giant panda?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sea-turtle",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Sea turtle"
+      "catalog_id": "giant-panda",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Giant panda",
+      "core": true
     },
     {
-      "id": "stingray",
-      "label": "Stingray",
-      "emoji": "射线",
-      "one_liner": "Flat swimmer — often in touch pools (gentle hands!).",
+      "id": "red_panda",
+      "label": "Red panda",
+      "emoji": "🦊",
+      "one_liner": "Red pandas beside the giant pandas.",
       "tags": [
-        "wow",
-        "water"
+        "climb",
+        "outdoor"
       ],
       "age_fit": [
         "2-3",
@@ -212,24 +62,26 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Panda Village",
       "qa_card": {
-        "question": "What did you notice about the Stingray?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
+        "question": "What did you notice about the Red panda?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "stingray",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Stingray"
+      "catalog_id": "red-panda",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Red panda",
+      "core": true
     },
     {
-      "id": "clownfish",
-      "label": "Clownfish",
-      "emoji": "🐠",
-      "one_liner": "Bright reef fish — friends with anemones.",
+      "id": "two_toed_sloth",
+      "label": "Two-toed sloth",
+      "emoji": "🦥",
+      "one_liner": "Southern two-toed sloths — hang and look twice.",
       "tags": [
-        "wow",
-        "water"
+        "climb",
+        "outdoor"
       ],
       "age_fit": [
         "2-3",
@@ -237,74 +89,24 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Sloth and Friends Studio",
       "qa_card": {
-        "question": "What did you notice about the Clownfish?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
+        "question": "What did you notice about the Two-toed sloth?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "clownfish",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Clownfish"
+      "catalog_id": "two-toed-sloth",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Two-toed sloth",
+      "core": true
     },
     {
-      "id": "octopus",
-      "label": "Octopus",
-      "emoji": "🐙",
-      "one_liner": "Eight arms and a big brain — master of hide-and-seek.",
+      "id": "asian_small_clawed_otter",
+      "label": "Asian small-clawed otter",
+      "emoji": "🦦",
+      "one_liner": "Asian small-clawed otter — Asia's smallest otter.",
       "tags": [
-        "wow",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What did you notice about the Octopus?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "octopus",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Octopus"
-    },
-    {
-      "id": "seahorse",
-      "label": "Seahorse",
-      "emoji": "🌊",
-      "one_liner": "Tiny upright swimmer that holds on with its tail.",
-      "tags": [
-        "wow",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What did you notice about the Seahorse?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "seahorse",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Seahorse"
-    },
-    {
-      "id": "starfish",
-      "label": "Sea star",
-      "emoji": "⭐",
-      "one_liner": "Star-shaped ocean friend — often in touch tanks.",
-      "tags": [
-        "wow",
-        "outdoor",
         "play",
         "water"
       ],
@@ -314,43 +116,20 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Animals",
       "qa_card": {
-        "question": "What is special about the Sea star?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Asian small-clawed otter?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "starfish",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Sea star"
-    },
-    {
-      "id": "eel",
-      "label": "Eel",
-      "emoji": "🐍",
-      "one_liner": "Long snaky fish — loves rocky hidey-holes.",
-      "tags": [
-        "wow",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Eel?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "eel",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Eel"
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Asian small-clawed otter",
+      "core": true
     }
   ],
-  "content_mode": "hybrid",
+  "content_mode": "curated",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://www.oceanpark.com.hk/en/zoo-map-print",
@@ -364,25 +143,162 @@
     "Leave while happy"
   ],
   "route_90m": [
-    "shark",
-    "jellyfish"
+    "giant_panda",
+    "red_panda",
+    "two_toed_sloth"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [major]",
-  "list_confidence": "partial",
-  "do_not_list": [],
+  "research_notes": "[2026-08-23] Official-source Wave 3b public list pass (oceanpark.com.hk). Zoo|both cards only; aquarium-only leftovers dropped.",
+  "list_confidence": "audited",
+  "do_not_list": [
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Not confirmed as African elephant on the official public list.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "african-lion",
+      "name": "African lion",
+      "reason": "Not confirmed as African lion on the official public list.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "sumatran-tiger",
+      "name": "Sumatran tiger",
+      "reason": "Official tiger (if any) is not Sumatran.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "Official penguins (if any) are not African.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "western-lowland-gorilla",
+      "name": "Western lowland gorilla",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "chimpanzee",
+      "name": "Chimpanzee",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "reticulated-giraffe",
+      "name": "Reticulated giraffe",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "zebra",
+      "name": "Zebra",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "nile-hippo",
+      "name": "Nile hippo",
+      "reason": "Official hippo (if any) is not Nile / common hippo.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "galapagos-tortoise",
+      "name": "Galápagos tortoise",
+      "reason": "Official tortoise (if any) is not Galápagos.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "orangutan",
+      "name": "Orangutan",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "cheetah",
+      "name": "Cheetah",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "koala",
+      "name": "Koala",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "caribbean-flamingo",
+      "name": "Caribbean flamingo",
+      "reason": "Official flamingo (if any) is not Caribbean/American.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "shark",
+      "name": "Shark",
+      "reason": "Aquarium-side or not named on the official zoo list.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "cm-outdoor",
+      "name": "Outdoor Area",
+      "reason": "Neither-kind leftover; zoo kits list zoo|both cards only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "jellyfish",
+      "name": "jellyfish",
+      "reason": "Aquarium-only card — out of scope for a zoo kit.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "octopus",
+      "name": "octopus",
+      "reason": "Aquarium-only card — out of scope for a zoo kit.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "sea-turtle",
+      "name": "sea-turtle",
+      "reason": "Aquarium-only card — out of scope for a zoo kit.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "stingray",
+      "name": "stingray",
+      "reason": "Aquarium-only card — out of scope for a zoo kit.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "clownfish",
+      "name": "clownfish",
+      "reason": "Aquarium-only card — out of scope for a zoo kit.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "seahorse",
+      "name": "seahorse",
+      "reason": "Aquarium-only card — out of scope for a zoo kit.",
+      "as_of": "2026-08-23"
+    }
+  ],
   "presence_sources": [
-    "https://www.oceanpark.com.hk/en"
+    "https://www.oceanpark.com.hk/en",
+    "https://www.oceanpark.com.hk/en/experience/attractions/attractions/giant-panda-adventure",
+    "https://www.oceanpark.com.hk/en/experience/attractions/attractions/panda-village",
+    "https://www.oceanpark.com.hk/en/park-experience/sloth-and-friends-studio",
+    "https://www.oceanpark.com.hk/en/experience/attractions/attractions/south-pole-spectacular"
   ],
   "bonus_hunt": {
-    "tagline": "Ocean Park Hong Kong bonus · second-loop secrets",
+    "tagline": "Ocean Park bonus · pandas + sloth + otter",
     "find_ids": [
-      "shark",
-      "jellyfish"
+      "asian_small_clawed_otter"
     ],
     "challenges": [
       {
-        "id": "hong_kong_oc_shark_watch",
-        "text": "Ocean: take 15 seconds on the Shark — what is it doing right now?",
+        "id": "hk_panda",
+        "text": "Giant panda: bamboo busy or a full rest?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -391,8 +307,8 @@
         ]
       },
       {
-        "id": "hong_kong_oc_jellyfish_watch",
-        "text": "Jellies: take 15 seconds on the Jellyfish — what is it doing right now?",
+        "id": "hk_red",
+        "text": "Red panda: climb or curl-up?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -401,8 +317,8 @@
         ]
       },
       {
-        "id": "zoo_behavior",
-        "text": "Watch one animal do something for 15 full seconds (eat, climb, pace, rest)",
+        "id": "hk_sloth",
+        "text": "Sloth: mid-reach or statue-still?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -411,68 +327,24 @@
         ]
       },
       {
-        "id": "zoo_pattern",
-        "text": "Match two patterns in different places (stripes, spots, shells)",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "zoo_tiny_big",
-        "text": "Find something tiny next to something huge",
+        "id": "hk_otter",
+        "text": "Otter: smallest otter, biggest splash?",
         "age_fit": [
           "2-3",
           "4-5",
           "6-8",
           "adult"
-        ]
-      },
-      {
-        "id": "zoo_overlook",
-        "text": "Find a cool detail most visitors walk past",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "zoo_sound",
-        "text": "Stand still 20 seconds — loudest sound that isn’t people?",
-        "age_fit": [
-          "2-3",
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "zoo_water",
-        "text": "Find water used by animals (pool, moat, splash, drink)",
-        "age_fit": [
-          "2-3",
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "zoo_little",
-        "text": "Copy an animal move once (stomp, stretch, tip-toe, roar soft)",
-        "age_fit": [
-          "2-3",
-          "4-5"
         ]
       }
     ],
-    "easter_egg": "★ Easter egg: find a park map or zone sign — name one animal that lives that way",
-    "easter_egg_little": "★ Easter egg: pick a favorite bench — sit 60 seconds and name three sounds",
-    "researched": "2026-08-08",
-    "status": "thin",
+    "easter_egg": "★ Easter egg: find this zoo on a map/sign and point to a habitat you have not visited yet",
+    "easter_egg_little": "★ Easter egg: pick a favorite stop and tell a grown-up why",
     "sources": [
-      "https://www.oceanpark.com.hk/en"
-    ]
-  }
+      "https://www.oceanpark.com.hk/en",
+      "https://www.oceanpark.com.hk/en/experience/attractions/attractions/giant-panda-adventure"
+    ],
+    "researched": "2026-08-23",
+    "status": "researched"
+  },
+  "last_presence_audit": "2026-08-23"
 }

@@ -7,11 +7,10 @@
   "country": "MX",
   "lat": 19.4246,
   "lng": -99.1915,
-  "official_url": "https://www.sedema.cdmx.gob.mx/",
-  "last_verified": "2026-08-07",
+  "official_url": "http://www.data.sedema.cdmx.gob.mx/zoo_chapultepec/",
   "verified_by": "research",
-  "status": "verified",
-  "tagline": "Chapultepec Zoo — free Mexico City classic inside the big park.",
+  "status": "partial",
+  "tagline": "Starter featured guests: Xin Xin the giant panda, African lion, orangutan — Bengal tiger, Humboldt penguin.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Often free/low-cost public zoo; expect crowds — confirm hours on CDMX sites.",
@@ -24,10 +23,10 @@
       "id": "giant_panda",
       "label": "Giant panda",
       "emoji": "🐼",
-      "one_liner": "Pandas when accessible.",
+      "one_liner": "Xin Xin — still on official view in Latin America.",
       "tags": [
-        "wow",
-        "big"
+        "climb",
+        "outdoor"
       ],
       "age_fit": [
         "2-3",
@@ -35,24 +34,27 @@
         "6-8",
         "9+"
       ],
-      "zone": "Pandas",
+      "zone": "Panda gigante",
       "qa_card": {
         "question": "What did you notice about the Giant panda?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "giant-panda",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
       "display_label": "Giant panda",
-      "presence_note": "Historic panda program; Xin Xin long-term resident — confirm still on view (aging last Mexican-born line)."
+      "core": true
     },
     {
       "id": "african_lion",
       "label": "African lion",
       "emoji": "🦁",
-      "one_liner": "Lions.",
+      "one_liner": "León africano — listen for a roar.",
       "tags": [
-        "big-cats"
+        "big-cats",
+        "outdoor",
+        "sound"
       ],
       "age_fit": [
         "2-3",
@@ -60,155 +62,26 @@
         "6-8",
         "9+"
       ],
-      "zone": "Lions",
+      "zone": "León africano",
       "qa_card": {
         "question": "What did you notice about the African lion?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-lion",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "African lion"
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "African lion",
+      "core": true
     },
     {
-      "id": "reticulated_giraffe",
-      "label": "Giraffe",
-      "emoji": "🦒",
-      "one_liner": "Giraffes.",
+      "id": "orangutan",
+      "label": "Orangutan",
+      "emoji": "🦧",
+      "one_liner": "Orangután — long arms in the trees.",
       "tags": [
-        "tall"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Giraffes",
-      "qa_card": {
-        "question": "What did you notice about the Reticulated giraffe?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "reticulated-giraffe",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Giraffe"
-    },
-    {
-      "id": "african_elephant",
-      "label": "Elephant",
-      "emoji": "🐘",
-      "one_liner": "Elephants.",
-      "tags": [
-        "big"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Elephants",
-      "qa_card": {
-        "question": "What did you notice about the African elephant?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "african-elephant",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Elephant",
-      "presence_note": "Elephants listed among emblematic residents."
-    },
-    {
-      "id": "cm_outdoor",
-      "label": "Outdoor Area",
-      "emoji": "🌳",
-      "one_liner": "Park paths for a soft finish.",
-      "tags": [
-        "outdoor",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Park edge",
-      "qa_card": {
-        "question": "What did you notice about the Outdoor Area?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "cm-outdoor",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Outdoor Area",
-      "presence_note": "Large park setting in Bosque de Chapultepec."
-    },
-    {
-      "id": "sumatran_tiger",
-      "label": "Tiger",
-      "emoji": "🐯",
-      "one_liner": "Stripy forest big cat — strong and stealthy.",
-      "tags": [
-        "wow",
-        "big-cats",
-        "outdoor",
-        "rest",
-        "kids"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Sumatran tiger?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "sumatran-tiger",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Tiger",
-      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract."
-    },
-    {
-      "id": "western_lowland_gorilla",
-      "label": "Western lowland gorilla",
-      "emoji": "🦍",
-      "one_liner": "Strong gentle ape in family groups.",
-      "tags": [
-        "wow",
-        "outdoor",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Western lowland gorilla?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "western-lowland-gorilla",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Western lowland gorilla",
-      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract."
-    },
-    {
-      "id": "african_penguin",
-      "label": "African penguin",
-      "emoji": "🐧",
-      "one_liner": "Waddle on land, zoom in water.",
-      "tags": [
-        "wow",
-        "water",
+        "primates",
+        "climb",
         "outdoor"
       ],
       "age_fit": [
@@ -217,83 +90,26 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Orangután",
       "qa_card": {
-        "question": "What is special about the African penguin?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Orangutan?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "african-penguin",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "African penguin",
-      "presence_note": "Not confirmed on official sources reviewed in this audit pass."
-    },
-    {
-      "id": "chimpanzee",
-      "label": "Chimpanzee",
-      "emoji": "🐵",
-      "one_liner": "Smart forest ape — climbs and tools.",
-      "tags": [
-        "wow",
-        "outdoor",
-        "play",
-        "hands",
-        "rest",
-        "kids"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Chimpanzee?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "chimpanzee",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Chimpanzee",
-      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract."
-    },
-    {
-      "id": "zebra",
-      "label": "Zebra",
-      "emoji": "🦓",
-      "one_liner": "Striped grassland runner — every pattern is unique.",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Zebra?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "zebra",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Zebra",
-      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract."
+      "catalog_id": "orangutan",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Orangutan",
+      "core": true
     },
     {
       "id": "red_panda",
       "label": "Red panda",
       "emoji": "🦊",
-      "one_liner": "Rusty tree-climber with a ringed tail — not a giant panda!",
+      "one_liner": "Panda rojo — rusty and tree-high.",
       "tags": [
-        "wow",
-        "outdoor",
-        "hands",
-        "play"
+        "climb",
+        "outdoor"
       ],
       "age_fit": [
         "2-3",
@@ -301,27 +117,25 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Panda rojo",
       "qa_card": {
-        "question": "What is special about the Red panda?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Red panda?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "red-panda",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
       "display_label": "Red panda",
-      "presence_note": "Older notes said red panda gone."
+      "core": true
     },
     {
-      "id": "asian_small_clawed_otter",
-      "label": "Asian small-clawed otter",
-      "emoji": "🦦",
-      "one_liner": "Playful swimmer — smallest otter.",
+      "id": "chimpanzee",
+      "label": "Chimpanzee",
+      "emoji": "🐵",
+      "one_liner": "Chimpancé on the official map — hands used like tools.",
       "tags": [
-        "wow",
-        "water",
-        "outdoor",
-        "hands",
+        "primates",
         "play"
       ],
       "age_fit": [
@@ -330,24 +144,55 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Map",
       "qa_card": {
-        "question": "What is special about the Asian small-clawed otter?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Chimpanzee?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "asian-small-clawed-otter",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Asian small-clawed otter",
-      "presence_note": "Not confirmed on official sources reviewed in this audit pass."
+      "catalog_id": "chimpanzee",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Chimpanzee",
+      "core": true
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Giraffe",
+      "emoji": "🦒",
+      "one_liner": "Jirafa — look up from the path.",
+      "tags": [
+        "tall",
+        "outdoor",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Jirafa",
+      "qa_card": {
+        "question": "What did you notice about the Giraffe?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "reticulated-giraffe",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Giraffe",
+      "core": false,
+      "presence_note": "Official collection: Jirafa. Soft Giraffe."
     },
     {
       "id": "nile_hippo",
-      "label": "Nile hippo",
+      "label": "Hippo",
       "emoji": "🦛",
-      "one_liner": "Huge river giant that loves the water.",
+      "one_liner": "Hipopótamo — watch the water.",
       "tags": [
-        "wow",
+        "big",
+        "water",
         "outdoor"
       ],
       "age_fit": [
@@ -356,24 +201,26 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Hipopótamo",
       "qa_card": {
-        "question": "What is special about the Nile hippo?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Hippo?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "nile-hippo",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Nile hippo",
-      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract."
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Hippo",
+      "core": false,
+      "presence_note": "Official collection: Hipopótamo. Soft Hippo."
     },
     {
-      "id": "galapagos_tortoise",
-      "label": "Galápagos tortoise",
-      "emoji": "🐢",
-      "one_liner": "Giant tortoise — slow and steady.",
+      "id": "western_lowland_gorilla",
+      "label": "Gorilla",
+      "emoji": "🦍",
+      "one_liner": "Gorila de tierras bajas on the official map.",
       "tags": [
-        "wow",
+        "primates",
         "outdoor"
       ],
       "age_fit": [
@@ -382,19 +229,21 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Map",
       "qa_card": {
-        "question": "What is special about the Galápagos tortoise?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Gorilla?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "galapagos-tortoise",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Galápagos tortoise",
-      "presence_note": "Not confirmed on official sources reviewed in this audit pass."
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Gorilla",
+      "core": false,
+      "presence_note": "Official map: Gorila de tierras bajas. Soft Gorilla."
     }
   ],
-  "content_mode": "hybrid",
+  "content_mode": "curated",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://www.sedema.cdmx.gob.mx/",
@@ -410,28 +259,101 @@
   "route_90m": [
     "giant_panda",
     "african_lion",
-    "reticulated_giraffe"
+    "orangutan"
   ],
-  "research_notes": "R3 2026-08-07 · presence-audit 2026-08-08 [minor]",
+  "research_notes": "[2026-08-23] Official-source Wave 3b public list pass (SEDEMA Chapultepec collection). Featured subset only — Starter. Pandas have not left.",
   "list_confidence": "partial",
-  "do_not_list": [],
+  "do_not_list": [
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Not confirmed as African elephant on the official public list.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "sumatran-tiger",
+      "name": "Sumatran tiger",
+      "reason": "Official tiger (if any) is not Sumatran.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "Official penguins (if any) are not African.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "zebra",
+      "name": "Zebra",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "asian-small-clawed-otter",
+      "name": "Asian small-clawed otter",
+      "reason": "Official otter (if any) is a different species.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "galapagos-tortoise",
+      "name": "Galápagos tortoise",
+      "reason": "Official tortoise (if any) is not Galápagos.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "cheetah",
+      "name": "Cheetah",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "koala",
+      "name": "Koala",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "caribbean-flamingo",
+      "name": "Caribbean flamingo",
+      "reason": "Official flamingo (if any) is not Caribbean/American.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "two-toed-sloth",
+      "name": "Two-toed sloth",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "shark",
+      "name": "Shark",
+      "reason": "Aquarium-side or not named on the official zoo list.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "cm-outdoor",
+      "name": "Outdoor Area",
+      "reason": "Neither-kind leftover; zoo kits list zoo|both cards only.",
+      "as_of": "2026-08-23"
+    }
+  ],
   "presence_sources": [
-    "https://mexicocity.cdmx.gob.mx/venues/chapultepec-zoo/?lang=en",
-    "https://en.wikipedia.org/wiki/Chapultepec_Zoo"
+    "http://www.data.sedema.cdmx.gob.mx/zoo_chapultepec/index.php/aprende/coleccion-animal",
+    "http://www.data.sedema.cdmx.gob.mx/zoo_chapultepec/index.php/aprende/coleccion-animal/52-panda-gigante",
+    "https://www.sedema.cdmx.gob.mx/comunicacion/nota/gobcdmx-loteria-nacional-y-embajada-de-china-rinden-homenaje-historico-xin-xin-la-unica-panda-de-latinoamerica"
   ],
   "bonus_hunt": {
-    "tagline": "Chapultepec Zoo bonus · Elephants + Park edge",
+    "tagline": "Chapultepec bonus · panda + lion + orangutan",
     "find_ids": [
-      "african_elephant",
-      "cm_outdoor",
-      "giant_panda",
-      "african_lion",
-      "reticulated_giraffe"
+      "red_panda",
+      "chimpanzee",
+      "reticulated_giraffe",
+      "nile_hippo"
     ],
     "challenges": [
       {
-        "id": "auto_african_elephant",
-        "text": "Elephants: 15 quiet seconds on the Elephant — moving, hiding, eating, or resting?",
+        "id": "chap_panda",
+        "text": "Xin Xin: bamboo busy or a full rest?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -440,8 +362,8 @@
         ]
       },
       {
-        "id": "auto_cm_outdoor",
-        "text": "Park edge: 15 quiet seconds on the Outdoor Area — moving, hiding, eating, or resting?",
+        "id": "chap_lion",
+        "text": "African lion: roar or a quiet pride?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -450,8 +372,8 @@
         ]
       },
       {
-        "id": "auto_giant_panda",
-        "text": "Pandas: 15 quiet seconds on the Giant panda — moving, hiding, eating, or resting?",
+        "id": "chap_orang",
+        "text": "Orangutan: hands or feet doing the clever bit?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -460,37 +382,8 @@
         ]
       },
       {
-        "id": "auto_african_lion",
-        "text": "Lions: 15 quiet seconds on the African lion — moving, hiding, eating, or resting?",
-        "age_fit": [
-          "2-3",
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "auto_reticulated_gira",
-        "text": "Giraffes: 15 quiet seconds on the Giraffe — moving, hiding, eating, or resting?",
-        "age_fit": [
-          "2-3",
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "zoo_pattern",
-        "text": "Match two patterns in different places (stripes, spots, shells)",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "zoo_sound",
-        "text": "Stand still 20s — loudest non-people sound?",
+        "id": "chap_hippo",
+        "text": "Hippo: underwater, mud, or bank?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -499,12 +392,13 @@
         ]
       }
     ],
-    "easter_egg": "★ Easter egg: find a park map or zone sign — name one animal that lives that way",
-    "easter_egg_little": "★ Easter egg: pick a favorite bench — sit 60 seconds and name three sounds",
-    "researched": "2026-08-08",
-    "status": "solid",
+    "easter_egg": "★ Easter egg: find this zoo on a map/sign and point to a habitat you have not visited yet",
+    "easter_egg_little": "★ Easter egg: pick a favorite stop and tell a grown-up why",
     "sources": [
-      "https://www.sedema.cdmx.gob.mx/"
-    ]
+      "http://www.data.sedema.cdmx.gob.mx/zoo_chapultepec/index.php/aprende/coleccion-animal",
+      "http://www.data.sedema.cdmx.gob.mx/zoo_chapultepec/index.php/aprende/coleccion-animal/52-panda-gigante"
+    ],
+    "researched": "2026-08-23",
+    "status": "researched"
   }
 }

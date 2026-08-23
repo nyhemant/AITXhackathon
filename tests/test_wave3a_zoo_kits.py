@@ -180,7 +180,6 @@ STARTER = {
 }
 
 AQUARIUM_ONLY = ("jellyfish", "octopus", "sea-turtle", "stingray", "clownfish", "seahorse")
-OUT_OF_SCOPE = ("madrid-zoo", "singapore-night-safari")
 
 
 def _load_venue(slug: str) -> dict:
@@ -230,10 +229,9 @@ class PriorWavesUnchangedTests(unittest.TestCase):
             self.assertEqual(_load_venue(slug).get("route_90m"), route, slug)
 
     def test_out_of_scope_venues_untouched(self):
-        madrid = _load_venue("madrid-zoo")
-        self.assertNotEqual(madrid.get("last_presence_audit"), "2026-08-23")
-        night = _load_venue("singapore-night-safari")
-        self.assertNotEqual(night.get("last_presence_audit"), "2026-08-23")
+        # Madrid Zoo Aquarium and Night Safari moved to Wave 3b; 3a kits stay intact.
+        self.assertEqual(_load_venue("singapore-zoo").get("route_90m"), WAVE3A_ROUTES["singapore-zoo"])
+        self.assertEqual(_load_venue("london-zoo").get("route_90m"), WAVE3A_ROUTES["london-zoo"])
 
 
 class Wave3aKindFilterTests(unittest.TestCase):
@@ -345,8 +343,6 @@ class StartHereFromAndNextTests(unittest.TestCase):
         self.assertEqual(kit_from_query("singapore-zoo"), "from=singapore-zoo")
         self.assertEqual(kit_from_query("copenhagen-zoo"), "from=copenhagen-zoo")
         self.assertEqual(kit_from_query("yellowstone"), "")
-        self.assertEqual(kit_from_query("singapore-night-safari"), "")
-        self.assertEqual(kit_from_query("madrid-zoo"), "")
 
     def test_start_here_hrefs_include_from(self):
         for slug in WAVE3A:

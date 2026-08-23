@@ -7,11 +7,11 @@
   "country": "JP",
   "lat": 35.7167,
   "lng": 139.7713,
-  "official_url": "https://www.tokyo-zoo.net/english/ueno/",
-  "last_verified": "2026-08-07",
-  "verified_by": "owner",
+  "official_url": "https://www.tokyo-zoo.net/en/ueno/",
+  "last_verified": "2026-08-23",
+  "verified_by": "research",
   "status": "verified",
-  "tagline": "Tokyo classic — no giant pandas now; red pandas and big cats still wow.",
+  "tagline": "Red panda, Sumatran tiger, western lowland gorilla — giant pandas left; Asian elephant; American flamingo.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Closed some Mondays; check calendar. Hills between east/west garden.",
@@ -19,14 +19,12 @@
   },
   "items": [
     {
-      "id": "red-panda",
+      "id": "red_panda",
       "label": "Red panda",
       "emoji": "🦊",
-      "one_liner": "Rusty tree-climber with a ringed tail — still a panda favorite!",
+      "one_liner": "Styan's red panda — rusty and tree-high.",
       "tags": [
         "climb",
-        "cute",
-        "wow",
         "outdoor"
       ],
       "age_fit": [
@@ -35,27 +33,27 @@
         "6-8",
         "9+"
       ],
-      "zone": "",
+      "zone": "East Garden",
       "qa_card": {
-        "question": "Is a red panda a giant panda?",
-        "answer": "No — red pandas are their own species. They love climbing!"
+        "question": "What did you notice about the Red panda?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "red-panda",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "Red panda",
-      "presence_note": "Red pandas remain after giant panda exit."
+      "core": true
     },
     {
-      "id": "tiger",
-      "label": "Tiger",
+      "id": "sumatran_tiger",
+      "label": "Sumatran tiger",
       "emoji": "🐯",
-      "one_liner": "Stripy big cat — strong and stealthy.",
+      "one_liner": "Sumatran tiger — orange stripes in the forest.",
       "tags": [
         "big-cats",
         "pattern",
-        "wow"
+        "outdoor"
       ],
       "age_fit": [
         "2-3",
@@ -63,19 +61,23 @@
         "6-8",
         "9+"
       ],
-      "zone": "",
+      "zone": "Gorilla and Tiger Forest",
+      "qa_card": {
+        "question": "What did you notice about the Sumatran tiger?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
       "catalog_id": "sumatran-tiger",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Tiger",
-      "presence_note": "Tigers present; soft Tiger."
+      "display_label": "Sumatran tiger",
+      "core": true
     },
     {
-      "id": "gorilla",
-      "label": "Gorilla",
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
       "emoji": "🦍",
-      "one_liner": "Gentle ape family to watch quietly.",
+      "one_liner": "Western lowland gorilla — who looks in charge?",
       "tags": [
         "primates",
         "outdoor"
@@ -86,21 +88,26 @@
         "6-8",
         "9+"
       ],
-      "zone": "",
+      "zone": "Gorilla and Tiger Forest",
+      "qa_card": {
+        "question": "What did you notice about the Western lowland gorilla?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
       "catalog_id": "western-lowland-gorilla",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Gorilla",
-      "presence_note": "Gorillas classic Ueno exhibit."
+      "display_label": "Western lowland gorilla",
+      "core": true
     },
     {
-      "id": "giraffe",
-      "label": "Giraffe",
-      "emoji": "🦒",
-      "one_liner": "Long neck above the path — look up!",
+      "id": "african_penguin",
+      "label": "African penguin",
+      "emoji": "🐧",
+      "one_liner": "African penguin — waddle, then zoom in the water.",
       "tags": [
-        "tall",
+        "birds",
+        "water",
         "outdoor"
       ],
       "age_fit": [
@@ -109,65 +116,26 @@
         "6-8",
         "9+"
       ],
-      "zone": "",
-      "catalog_id": "reticulated-giraffe",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
+      "zone": "Animals of Africa",
+      "qa_card": {
+        "question": "What did you notice about the African penguin?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "african-penguin",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Giraffe",
-      "presence_note": "Giraffes present."
+      "display_label": "African penguin",
+      "core": true
     },
     {
-      "id": "otter",
-      "label": "Otter",
-      "emoji": "🦦",
-      "one_liner": "Busy swimmer — always on the move.",
-      "tags": [
-        "water",
-        "active"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "",
-      "catalog_id": "asian-small-clawed-otter",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Otter",
-      "presence_note": "Confirm otter species."
-    },
-    {
-      "id": "lemur",
+      "id": "ring_tailed_lemur",
       "label": "Ring-tailed lemur",
       "emoji": "🐒",
-      "one_liner": "Stripy tail and curious eyes.",
+      "one_liner": "Ring-tailed lemur — striped tail and a long stare.",
       "tags": [
         "primates",
-        "pattern"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "",
-      "catalog_id": "ring-tailed-lemur",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Ring-tailed lemur",
-      "presence_note": "Confirm."
-    },
-    {
-      "id": "chimp",
-      "label": "Chimpanzee",
-      "emoji": "🐵",
-      "one_liner": "Smart forest ape — tools and climbs.",
-      "tags": [
-        "primates",
+        "pattern",
         "climb"
       ],
       "age_fit": [
@@ -176,18 +144,81 @@
         "6-8",
         "9+"
       ],
-      "zone": "",
-      "catalog_id": "chimpanzee",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Chimpanzee",
-      "presence_note": "Confirm."
+      "zone": "Animals",
+      "qa_card": {
+        "question": "What did you notice about the Ring-tailed lemur?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "ring-tailed-lemur",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Ring-tailed lemur",
+      "core": true
     },
     {
-      "id": "flamingo",
+      "id": "reticulated_giraffe",
+      "label": "Giraffe",
+      "emoji": "🦒",
+      "one_liner": "Giraffe — look up from the path.",
+      "tags": [
+        "tall",
+        "outdoor",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Animals of Africa",
+      "qa_card": {
+        "question": "What did you notice about the Giraffe?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "reticulated-giraffe",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Giraffe",
+      "core": true,
+      "presence_note": "Official Africa page: Giraffe. Soft Giraffe."
+    },
+    {
+      "id": "nile_hippo",
+      "label": "Hippo",
+      "emoji": "🦛",
+      "one_liner": "Hippo — watch the water.",
+      "tags": [
+        "big",
+        "water",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Animals of Africa",
+      "qa_card": {
+        "question": "What did you notice about the Hippo?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "nile-hippo",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Hippo",
+      "core": false,
+      "presence_note": "Official: Hippopotamus vs Pygmy Hippopotamus. Soft Hippo."
+    },
+    {
+      "id": "caribbean_flamingo",
       "label": "Flamingo",
       "emoji": "🦩",
-      "one_liner": "Pink waders in a splashy group.",
+      "one_liner": "American flamingo flock — more than half on one leg?",
       "tags": [
         "birds",
         "color",
@@ -199,100 +230,18 @@
         "6-8",
         "9+"
       ],
-      "zone": "",
+      "zone": "Birds of West Garden",
+      "qa_card": {
+        "question": "What did you notice about the Flamingo?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
       "catalog_id": "caribbean-flamingo",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "Flamingo",
-      "presence_note": "American flamingo noted in zoo news."
-    },
-    {
-      "id": "tortoise",
-      "label": "Giant tortoise",
-      "emoji": "🐢",
-      "one_liner": "Slow steps, long life.",
-      "tags": [
-        "slow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "",
-      "catalog_id": "galapagos-tortoise",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Giant tortoise",
-      "presence_note": "Tortoises; species unconfirmed."
-    },
-    {
-      "id": "small-mammals",
-      "label": "Small Mammal House",
-      "emoji": "🦇",
-      "one_liner": "Tiny mammals and clever exhibits indoors.",
-      "tags": [
-        "indoor",
-        "tiny",
-        "explore"
-      ],
-      "age_fit": [
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Small Mammal House",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Small Mammal House",
-      "presence_note": "Small Mammal House is a Ueno classic."
-    },
-    {
-      "id": "kids-zoo",
-      "label": "Children's Zoo",
-      "emoji": "🐥",
-      "one_liner": "Farm friends for little legs.",
-      "tags": [
-        "kids",
-        "rest"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8"
-      ],
-      "zone": "",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Children's Zoo",
-      "presence_note": "Children's Zoo present (official news mentions exhibits there)."
-    },
-    {
-      "id": "zebra",
-      "label": "Zebra",
-      "emoji": "🦓",
-      "one_liner": "Walking stripes on the savanna side.",
-      "tags": [
-        "pattern",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "",
-      "catalog_id": "zebra",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Zebra",
-      "presence_note": "Confirm."
+      "core": false,
+      "presence_note": "Official: American Flamingo (Phoenicopterus ruber). Soft Flamingo."
     }
   ],
   "content_mode": "curated",
@@ -311,45 +260,110 @@
   "list_confidence": "audited",
   "do_not_list": [
     {
-      "catalog_id": "giant-panda",
-      "name": "Giant panda",
-      "reason": "Left Ueno Jan 27 2026 — Japan has no giant pandas.",
-      "as_of": "2026-08-08"
-    },
-    {
       "catalog_id": "african-elephant",
       "name": "African elephant",
-      "reason": "Ueno elephants are Asian if present — never African label.",
-      "as_of": "2026-08-08"
+      "reason": "Not confirmed as African elephant on the official public list.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "african-lion",
+      "name": "African lion",
+      "reason": "Not confirmed as African lion on the official public list.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "chimpanzee",
+      "name": "Chimpanzee",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "zebra",
+      "name": "Zebra",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "asian-small-clawed-otter",
+      "name": "Asian small-clawed otter",
+      "reason": "Official otter (if any) is a different species.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "galapagos-tortoise",
+      "name": "Galápagos tortoise",
+      "reason": "Official tortoise (if any) is not Galápagos.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "orangutan",
+      "name": "Orangutan",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "cheetah",
+      "name": "Cheetah",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "koala",
+      "name": "Koala",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "giant-panda",
+      "name": "Giant panda",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "two-toed-sloth",
+      "name": "Two-toed sloth",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "shark",
+      "name": "Shark",
+      "reason": "Aquarium-side or not named on the official zoo list.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "cm-outdoor",
+      "name": "Outdoor Area",
+      "reason": "Neither-kind leftover; zoo kits list zoo|both cards only.",
+      "as_of": "2026-08-23"
     }
   ],
   "route_90m": [
-    "red-panda",
-    "tiger",
-    "gorilla"
+    "red_panda",
+    "sumatran_tiger",
+    "western_lowland_gorilla"
   ],
-  "last_presence_audit": "2026-08-08",
+  "last_presence_audit": "2026-08-23",
   "presence_sources": [
-    "https://www.tokyo-zoo.net/english/ueno/",
     "https://www.tokyo-zoo.net/en/ueno/",
-    "https://www.giantpandaglobal.com/en/zoo/ueno-zoo"
+    "https://www.tokyo-zoo.net/en/ueno/animals/index.html",
+    "https://www.tokyo-zoo.net/en/ueno/exhibits/gorilla-and-tiger-forest/index.html",
+    "https://www.tokyo-zoo.net/en/ueno/exhibits/panda-forest/index.html",
+    "https://www.tokyo-zoo.net/en/ueno/exhibits/animals-of-africa/index.html"
   ],
-  "research_notes": "presence-audit 2026-08-08 [minor]",
+  "research_notes": "[2026-08-23] Official-source Wave 3b public list pass (tokyo-zoo.net/en/ueno exhibits). Pandas gone; American flamingo maps to the Caribbean card.",
   "bonus_hunt": {
-    "tagline": "Ueno bonus · red panda + Small Mammal House + big cats",
+    "tagline": "Ueno bonus · red panda + tiger forest + gorilla",
     "find_ids": [
-      "red-panda",
-      "tiger",
-      "gorilla",
-      "giraffe",
-      "small-mammals",
-      "flamingo",
-      "kids-zoo"
+      "african_penguin",
+      "ring_tailed_lemur",
+      "reticulated_giraffe",
+      "nile_hippo"
     ],
     "challenges": [
       {
-        "id": "ue_panda",
-        "text": "Red panda: curl, climb, or snack hands?",
+        "id": "ueno_panda",
+        "text": "Red panda: climb or curl-up?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -358,17 +372,8 @@
         ]
       },
       {
-        "id": "ue_tiger",
-        "text": "Tiger: pace loop or statue",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "ue_gorilla",
-        "text": "Gorilla: face expression one word",
+        "id": "ueno_tiger",
+        "text": "Sumatran tiger: count stripe clusters on one shoulder.",
         "age_fit": [
           "2-3",
           "4-5",
@@ -377,8 +382,8 @@
         ]
       },
       {
-        "id": "ue_giraffe",
-        "text": "Giraffe: highest stretch",
+        "id": "ueno_gorilla",
+        "text": "Gorilla: who looks calmest?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -387,17 +392,8 @@
         ]
       },
       {
-        "id": "ue_sm",
-        "text": "Small Mammal House: find the best hider",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "ue_flam",
-        "text": "Flamingo one-leg majority yes/no?",
+        "id": "ueno_penguin",
+        "text": "African penguin: watch one bird enter or leave the water.",
         "age_fit": [
           "2-3",
           "4-5",
@@ -406,13 +402,13 @@
         ]
       }
     ],
-    "easter_egg": "★ Easter egg: Children’s Zoo only after the hard list — one free play minute",
-    "easter_egg_little": "★ Easter egg: tip-toe like a red panda for 10 steps",
-    "researched": "2026-08-08",
-    "status": "researched",
+    "easter_egg": "★ Easter egg: find this zoo on a map/sign and point to a habitat you have not visited yet",
+    "easter_egg_little": "★ Easter egg: pick a favorite stop and tell a grown-up why",
     "sources": [
-      "https://www.tokyo-zoo.net/english/ueno/"
+      "https://www.tokyo-zoo.net/en/ueno/",
+      "https://www.tokyo-zoo.net/en/ueno/animals/index.html"
     ],
-    "notes": "Giant pandas absent as of 2026 — do not promise pandas."
+    "researched": "2026-08-23",
+    "status": "researched"
   }
 }

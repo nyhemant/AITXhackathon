@@ -247,7 +247,7 @@ OUTING_TALK_EXHIBIT = (
 SEO_CSS_VER = "28"
 LANDING_CSS_VER = "95"
 STYLES_CSS_VER = "36"
-CATALOG_JS_VER = "39"
+CATALOG_JS_VER = "40"
 VIEWPORT = "width=device-width, initial-scale=1, viewport-fit=cover"
 MISSION_CSS_VER = "18"
 
@@ -846,6 +846,42 @@ _START_HERE_NEXT_SLUGS = (
     "vienna-zoo",
     "zurich-zoo",
     "copenhagen-zoo",
+    "al-ain-zoo",
+    "antwerp-zoo",
+    "athens-attica-zoo",
+    "bangalore-bannerghatta",
+    "bangkok-safari-world",
+    "beijing-zoo",
+    "bogota-zoo",
+    "budapest-zoo",
+    "cairo-zoo",
+    "chapultepec-zoo",
+    "delhi-zoo",
+    "ecoparque-ba",
+    "helsinki-zoo",
+    "hong-kong-ocean-park",
+    "jakarta-ragunan",
+    "johannesburg-zoo",
+    "kuala-lumpur-zoo",
+    "lima-leyendas",
+    "lisbon-zoo",
+    "madrid-zoo",
+    "manila-zoo",
+    "moscow-zoo",
+    "mumbai-byculla-zoo",
+    "munich-zoo",
+    "nairobi-safari-walk",
+    "oslo-zoo",
+    "rio-zoo",
+    "rome-bioparco",
+    "santiago-zoo",
+    "sao-paulo-zoo",
+    "seoul-zoo",
+    "singapore-night-safari",
+    "stockholm-skansen",
+    "taipei-zoo",
+    "ueno-zoo",
+    "warsaw-zoo",
 )
 _START_HERE_NEXT: dict[str, list[dict[str, str]]] | None = None
 _START_HERE_KITS: dict[str, list[str]] | None = None
@@ -856,7 +892,7 @@ _PUBLISHED_CARD_IDS: set[str] | None = None
 
 
 def kit_from_query(slug: str) -> str:
-    """?from= slug for Wave 1 + Wave 2a + Wave 2b + Wave 3a start-here / open-card links."""
+    """?from= slug for Wave 1 + Wave 2a + Wave 2b + Wave 3a + Wave 3b start-here / open-card links."""
     s = (slug or "").strip()
     return f"from={s}" if s in _START_HERE_NEXT_SLUGS else ""
 
@@ -898,7 +934,7 @@ def item_public_href(item_id: str, venue_id: str = "", *, extra_query: str = "")
 
 
 def start_here_card_href(item_id: str, slug: str = "") -> str:
-    """Public card href. Wave 1–3a start-here cards keep ?from={slug}."""
+    """Public card href. Wave 1–3b start-here cards keep ?from={slug}."""
     iid = (item_id or "").strip()
     if iid and iid not in published_card_ids():
         return "#at-home"

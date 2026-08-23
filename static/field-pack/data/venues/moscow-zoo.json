@@ -7,11 +7,10 @@
   "country": "RU",
   "lat": 55.7614,
   "lng": 37.5783,
-  "official_url": "https://moscowzoo.ru/en/",
-  "last_verified": "2026-08-07",
+  "official_url": "https://moscowzoo.ru/",
   "verified_by": "research",
-  "status": "verified",
-  "tagline": "Moscow Zoo — large historic city zoo; dress for weather extremes.",
+  "status": "partial",
+  "tagline": "Starter expositions: giant pandas, gorillas, orangutans — Asian elephants, pygmy hippo, Amur tiger.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Central zoo; tickets online in peak.",
@@ -21,12 +20,124 @@
   },
   "items": [
     {
-      "id": "african_lion",
-      "label": "Lion",
-      "emoji": "🦁",
-      "one_liner": "Lions.",
+      "id": "giant_panda",
+      "label": "Giant panda",
+      "emoji": "🐼",
+      "one_liner": "Большие панды Жу́и и Диндин.",
       "tags": [
-        "big-cats",
+        "climb",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Фауна Китая",
+      "qa_card": {
+        "question": "What did you notice about the Giant panda?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "giant-panda",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Giant panda",
+      "core": true
+    },
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Gorilla",
+      "emoji": "🦍",
+      "one_liner": "Равнинная горилла family — who looks in charge?",
+      "tags": [
+        "primates",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Дом приматов",
+      "qa_card": {
+        "question": "What did you notice about the Gorilla?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Gorilla",
+      "core": true,
+      "presence_note": "Official Primate House: равнинная горилла."
+    },
+    {
+      "id": "orangutan",
+      "label": "Orangutan",
+      "emoji": "🦧",
+      "one_liner": "Orangutans from Sumatra and Borneo — long arms.",
+      "tags": [
+        "primates",
+        "climb",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Дом приматов",
+      "qa_card": {
+        "question": "What did you notice about the Orangutan?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "orangutan",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Orangutan",
+      "core": true
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "emoji": "🐧",
+      "one_liner": "African penguins share the bird house with Humboldt and gentoo.",
+      "tags": [
+        "birds",
+        "water",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Дом птиц",
+      "qa_card": {
+        "question": "What did you notice about the African penguin?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "african-penguin",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "African penguin",
+      "core": true
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Giraffe",
+      "emoji": "🦒",
+      "one_liner": "South African giraffe — look up from the path.",
+      "tags": [
+        "tall",
+        "outdoor",
         "wow"
       ],
       "age_fit": [
@@ -35,183 +146,28 @@
         "6-8",
         "9+"
       ],
-      "zone": "Lions",
+      "zone": "Животные Африки",
       "qa_card": {
-        "question": "What did you notice about the African lion?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "african-lion",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Lion",
-      "presence_note": "Major zoo; lions long-term collection. Soft Lion."
-    },
-    {
-      "id": "reticulated_giraffe",
-      "label": "Giraffe",
-      "emoji": "🦒",
-      "one_liner": "Giraffes.",
-      "tags": [
-        "tall"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Giraffes",
-      "qa_card": {
-        "question": "What did you notice about the Reticulated giraffe?",
+        "question": "What did you notice about the Giraffe?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "reticulated-giraffe",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
       "display_label": "Giraffe",
-      "presence_note": "Giraffes long associated; subspecies unconfirmed. Soft Giraffe."
-    },
-    {
-      "id": "african_elephant",
-      "label": "Elephant (verify species)",
-      "emoji": "🐘",
-      "one_liner": "Elephants.",
-      "tags": [
-        "big"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Elephants",
-      "qa_card": {
-        "question": "What did you notice about the African elephant?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "african-elephant",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Elephant (verify species)",
-      "presence_note": "Elephants historically present; species (African vs Asian) and current status need confirm."
-    },
-    {
-      "id": "sumatran_tiger",
-      "label": "Tiger",
-      "emoji": "🐯",
-      "one_liner": "Tigers.",
-      "tags": [
-        "big-cats"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Tigers",
-      "qa_card": {
-        "question": "What did you notice about the Sumatran tiger?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "sumatran-tiger",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Tiger",
-      "presence_note": "Tigers present historically; Sumatran label unverified — soft Tiger."
-    },
-    {
-      "id": "western_lowland_gorilla",
-      "label": "Gorilla (verify)",
-      "emoji": "🦍",
-      "one_liner": "Gorillas.",
-      "tags": [
-        "primates"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Primates",
-      "qa_card": {
-        "question": "What did you notice about the Western lowland gorilla?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "western-lowland-gorilla",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Gorilla (verify)",
-      "presence_note": "Primates complex; gorilla status medium."
-    },
-    {
-      "id": "african_penguin",
-      "label": "Penguin (verify)",
-      "emoji": "🐧",
-      "one_liner": "Waddle on land, zoom in water.",
-      "tags": [
-        "wow",
-        "water",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the African penguin?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "african-penguin",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Penguin (verify)",
-      "presence_note": "Penguins often present; African label unverified."
-    },
-    {
-      "id": "chimpanzee",
-      "label": "Chimpanzee",
-      "emoji": "🐵",
-      "one_liner": "Smart forest ape — climbs and tools.",
-      "tags": [
-        "wow",
-        "outdoor",
-        "play",
-        "hands",
-        "rest",
-        "kids"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Chimpanzee?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "chimpanzee",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Chimpanzee",
-      "presence_note": "Likely; not verified this pass."
+      "core": false,
+      "presence_note": "Official Africa: южноафриканский жираф. Soft Giraffe."
     },
     {
       "id": "zebra",
       "label": "Zebra",
       "emoji": "🦓",
-      "one_liner": "Striped grassland runner — every pattern is unique.",
+      "one_liner": "Grevy's zebra on the African meadow.",
       "tags": [
-        "wow",
-        "outdoor"
+        "pattern",
+        "outdoor",
+        "savanna"
       ],
       "age_fit": [
         "2-3",
@@ -219,128 +175,20 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Животные Африки",
       "qa_card": {
-        "question": "What is special about the Zebra?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Zebra?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "zebra",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
       "display_label": "Zebra",
-      "presence_note": "Hoofstock common. Soft Zebra."
-    },
-    {
-      "id": "red_panda",
-      "label": "Red panda",
-      "emoji": "🦊",
-      "one_liner": "Rusty tree-climber with a ringed tail — not a giant panda!",
-      "tags": [
-        "wow",
-        "outdoor",
-        "hands",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Red panda?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "red-panda",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Red panda",
-      "presence_note": "Often in collection; not verified."
-    },
-    {
-      "id": "asian_small_clawed_otter",
-      "label": "Asian small-clawed otter",
-      "emoji": "🦦",
-      "one_liner": "Playful swimmer — smallest otter.",
-      "tags": [
-        "wow",
-        "water",
-        "outdoor",
-        "hands",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Asian small-clawed otter?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "asian-small-clawed-otter",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Asian small-clawed otter",
-      "presence_note": "Not verified."
-    },
-    {
-      "id": "nile_hippo",
-      "label": "Nile hippo",
-      "emoji": "🦛",
-      "one_liner": "Huge river giant that loves the water.",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Nile hippo?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "nile-hippo",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Nile hippo",
-      "presence_note": "Hippos historically; not verified."
-    },
-    {
-      "id": "galapagos_tortoise",
-      "label": "Galápagos tortoise",
-      "emoji": "🐢",
-      "one_liner": "Giant tortoise — slow and steady.",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Galápagos tortoise?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "galapagos-tortoise",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Galápagos tortoise",
-      "presence_note": "Not verified."
+      "core": false
     }
   ],
-  "content_mode": "hybrid",
+  "content_mode": "curated",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://moscowzoo.ru/zoo-map-print",
@@ -354,28 +202,116 @@
     "Leave while happy"
   ],
   "route_90m": [
-    "african_lion",
-    "reticulated_giraffe",
-    "zebra"
+    "giant_panda",
+    "western_lowland_gorilla",
+    "orangutan"
   ],
-  "research_notes": "R3 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "research_notes": "[2026-08-23] Official-source Wave 3b public list pass (moscowzoo.ru expositions). English hub 404; incomplete — Starter.",
   "list_confidence": "partial",
-  "do_not_list": [],
+  "do_not_list": [
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Not confirmed as African elephant on the official public list.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "african-lion",
+      "name": "African lion",
+      "reason": "Not confirmed as African lion on the official public list.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "sumatran-tiger",
+      "name": "Sumatran tiger",
+      "reason": "Official tiger (if any) is not Sumatran.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "chimpanzee",
+      "name": "Chimpanzee",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "red-panda",
+      "name": "Red panda",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "asian-small-clawed-otter",
+      "name": "Asian small-clawed otter",
+      "reason": "Official otter (if any) is a different species.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "nile-hippo",
+      "name": "Nile hippo",
+      "reason": "Official hippo (if any) is not Nile / common hippo.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "galapagos-tortoise",
+      "name": "Galápagos tortoise",
+      "reason": "Official tortoise (if any) is not Galápagos.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "cheetah",
+      "name": "Cheetah",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "koala",
+      "name": "Koala",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "caribbean-flamingo",
+      "name": "Caribbean flamingo",
+      "reason": "Official flamingo (if any) is not Caribbean/American.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "two-toed-sloth",
+      "name": "Two-toed sloth",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "shark",
+      "name": "Shark",
+      "reason": "Aquarium-side or not named on the official zoo list.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "cm-outdoor",
+      "name": "Outdoor Area",
+      "reason": "Neither-kind leftover; zoo kits list zoo|both cards only.",
+      "as_of": "2026-08-23"
+    }
+  ],
   "presence_sources": [
-    "https://moscowzoo.ru/en/",
-    "https://en.wikipedia.org/wiki/Moscow_Zoo"
+    "https://moscowzoo.ru/visitors/expositions",
+    "https://moscowzoo.ru/visitors/expositions/fauna_kitaya",
+    "https://moscowzoo.ru/visitors/expositions/dom_primatov",
+    "https://moscowzoo.ru/visitors/expositions/zhivotnye_afriki",
+    "https://moscowzoo.ru/visitors/expositions/dom_ptic"
   ],
   "bonus_hunt": {
-    "tagline": "Moscow Zoo bonus · Lions + Giraffes",
+    "tagline": "Moscow bonus · pandas + primates + penguins",
     "find_ids": [
-      "african_lion",
-      "zebra",
-      "reticulated_giraffe"
+      "african_penguin",
+      "reticulated_giraffe",
+      "zebra"
     ],
     "challenges": [
       {
-        "id": "auto_african_lion",
-        "text": "Lions: 15 quiet seconds on the Lion — moving, hiding, eating, or resting?",
+        "id": "msk_panda",
+        "text": "Giant panda: bamboo busy or a full rest?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -384,8 +320,8 @@
         ]
       },
       {
-        "id": "auto_zebra",
-        "text": "Grounds: 15 quiet seconds on the Zebra — moving, hiding, eating, or resting?",
+        "id": "msk_gorilla",
+        "text": "Gorilla family: who looks calmest?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -394,8 +330,8 @@
         ]
       },
       {
-        "id": "auto_reticulated_gira",
-        "text": "Giraffes: 15 quiet seconds on the Giraffe — moving, hiding, eating, or resting?",
+        "id": "msk_orang",
+        "text": "Orangutan: hands or feet doing the clever bit?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -404,17 +340,8 @@
         ]
       },
       {
-        "id": "zoo_pattern",
-        "text": "Match two patterns in different places (stripes, spots, shells)",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "zoo_sound",
-        "text": "Stand still 20s — loudest non-people sound?",
+        "id": "msk_penguin",
+        "text": "African penguin: watch one bird enter or leave the water.",
         "age_fit": [
           "2-3",
           "4-5",
@@ -423,12 +350,13 @@
         ]
       }
     ],
-    "easter_egg": "★ Easter egg: find a park map or zone sign — name one animal that lives that way",
-    "easter_egg_little": "★ Easter egg: pick a favorite bench — sit 60 seconds and name three sounds",
-    "researched": "2026-08-08",
-    "status": "solid",
+    "easter_egg": "★ Easter egg: find this zoo on a map/sign and point to a habitat you have not visited yet",
+    "easter_egg_little": "★ Easter egg: pick a favorite stop and tell a grown-up why",
     "sources": [
-      "https://moscowzoo.ru/en/"
-    ]
+      "https://moscowzoo.ru/visitors/expositions",
+      "https://moscowzoo.ru/visitors/expositions/fauna_kitaya"
+    ],
+    "researched": "2026-08-23",
+    "status": "researched"
   }
 }

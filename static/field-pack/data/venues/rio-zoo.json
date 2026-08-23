@@ -8,10 +8,9 @@
   "lat": -22.9058,
   "lng": -43.228,
   "official_url": "https://www.bioparque.org.br/",
-  "last_verified": "2026-08-07",
   "verified_by": "research",
-  "status": "verified",
-  "tagline": "BioParque do Rio — modern Rio zoo day; heat and hills nearby.",
+  "status": "partial",
+  "tagline": "Starter city circuit: lion, orangutan, sloth — Asian-sector elephant, unnamed tiger.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Quinta da Boa Vista area.",
@@ -24,9 +23,11 @@
       "id": "african_lion",
       "label": "African lion",
       "emoji": "🦁",
-      "one_liner": "Lions.",
+      "one_liner": "Leão Simba — listen for a roar.",
       "tags": [
-        "big-cats"
+        "big-cats",
+        "outdoor",
+        "sound"
       ],
       "age_fit": [
         "2-3",
@@ -34,25 +35,27 @@
         "6-8",
         "9+"
       ],
-      "zone": "Lions",
+      "zone": "Savana",
       "qa_card": {
         "question": "What did you notice about the African lion?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-lion",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "African lion",
-      "presence_note": "Likely large-zoo roster; confirm live map."
+      "core": true
     },
     {
-      "id": "reticulated_giraffe",
-      "label": "Reticulated giraffe",
-      "emoji": "🦒",
-      "one_liner": "Giraffes.",
+      "id": "orangutan",
+      "label": "Orangutan",
+      "emoji": "🦧",
+      "one_liner": "Irmãs orangotango — long arms in the trees.",
       "tags": [
-        "tall"
+        "primates",
+        "climb",
+        "outdoor"
       ],
       "age_fit": [
         "2-3",
@@ -60,76 +63,26 @@
         "6-8",
         "9+"
       ],
-      "zone": "Giraffes",
+      "zone": "Asiáticos",
       "qa_card": {
-        "question": "What did you notice about the Reticulated giraffe?",
+        "question": "What did you notice about the Orangutan?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "reticulated-giraffe",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
+      "catalog_id": "orangutan",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Reticulated giraffe",
-      "presence_note": "Likely; subspecies unconfirmed."
-    },
-    {
-      "id": "african_elephant",
-      "label": "African elephant",
-      "emoji": "🐘",
-      "one_liner": "Elephants.",
-      "tags": [
-        "big"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Elephants",
-      "qa_card": {
-        "question": "What did you notice about the African elephant?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "african-elephant",
-      "presence": "template",
-      "presence_checked": "2026-08-08",
-      "display_label": "African elephant",
-      "presence_note": "High-risk template — not confirmed."
-    },
-    {
-      "id": "sumatran_tiger",
-      "label": "Tiger",
-      "emoji": "🐯",
-      "one_liner": "Tigers.",
-      "tags": [
-        "big-cats"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Tigers",
-      "qa_card": {
-        "question": "What did you notice about the Sumatran tiger?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "sumatran-tiger",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Tiger",
-      "presence_note": "Tigers possible; subspecies unconfirmed — soft Tiger."
+      "display_label": "Orangutan",
+      "core": true
     },
     {
       "id": "two_toed_sloth",
-      "label": "Two-toed sloth",
+      "label": "Sloth",
       "emoji": "🦥",
-      "one_liner": "Sloths / regional animals.",
+      "one_liner": "Bicho-preguiça — hang and look twice.",
       "tags": [
-        "climb"
+        "climb",
+        "outdoor"
       ],
       "age_fit": [
         "2-3",
@@ -137,193 +90,27 @@
         "6-8",
         "9+"
       ],
-      "zone": "South America",
+      "zone": "Imersão Tropical",
       "qa_card": {
-        "question": "What did you notice about the Two-toed sloth?",
+        "question": "What did you notice about the Sloth?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "two-toed-sloth",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Two-toed sloth",
-      "presence_note": "South American mammal; BioParque emphasizes regional fauna."
-    },
-    {
-      "id": "western_lowland_gorilla",
-      "label": "Western lowland gorilla",
-      "emoji": "🦍",
-      "one_liner": "Strong gentle ape in family groups.",
-      "tags": [
-        "wow",
-        "outdoor",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Western lowland gorilla?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "western-lowland-gorilla",
-      "presence": "template",
-      "presence_checked": "2026-08-08",
-      "display_label": "Western lowland gorilla",
-      "presence_note": "Not confirmed."
-    },
-    {
-      "id": "african_penguin",
-      "label": "African penguin",
-      "emoji": "🐧",
-      "one_liner": "Waddle on land, zoom in water.",
-      "tags": [
-        "wow",
-        "water",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the African penguin?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "african-penguin",
-      "presence": "template",
-      "presence_checked": "2026-08-08",
-      "display_label": "African penguin",
-      "presence_note": "Not confirmed."
-    },
-    {
-      "id": "chimpanzee",
-      "label": "Chimpanzee",
-      "emoji": "🐵",
-      "one_liner": "Smart forest ape — climbs and tools.",
-      "tags": [
-        "wow",
-        "outdoor",
-        "play",
-        "hands",
-        "rest",
-        "kids"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Chimpanzee?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "chimpanzee",
-      "presence": "template",
-      "presence_checked": "2026-08-08",
-      "display_label": "Chimpanzee",
-      "presence_note": "Not confirmed."
-    },
-    {
-      "id": "zebra",
-      "label": "Zebra",
-      "emoji": "🦓",
-      "one_liner": "Striped grassland runner — every pattern is unique.",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Zebra?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "zebra",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Zebra",
-      "presence_note": "Possible Africa section."
-    },
-    {
-      "id": "red_panda",
-      "label": "Red panda",
-      "emoji": "🦊",
-      "one_liner": "Rusty tree-climber with a ringed tail — not a giant panda!",
-      "tags": [
-        "wow",
-        "outdoor",
-        "hands",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Red panda?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "red-panda",
-      "presence": "template",
-      "presence_checked": "2026-08-08",
-      "display_label": "Red panda",
-      "presence_note": "Not confirmed."
-    },
-    {
-      "id": "asian_small_clawed_otter",
-      "label": "Asian small-clawed otter",
-      "emoji": "🦦",
-      "one_liner": "Playful swimmer — smallest otter.",
-      "tags": [
-        "wow",
-        "water",
-        "outdoor",
-        "hands",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Asian small-clawed otter?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "asian-small-clawed-otter",
-      "presence": "template",
-      "presence_checked": "2026-08-08",
-      "display_label": "Asian small-clawed otter",
-      "presence_note": "Not confirmed."
+      "display_label": "Sloth",
+      "core": true,
+      "presence_note": "Official city circuit: bicho-preguiça. Soft Sloth."
     },
     {
       "id": "nile_hippo",
-      "label": "Nile hippo",
+      "label": "Hippo",
       "emoji": "🦛",
-      "one_liner": "Huge river giant that loves the water.",
+      "one_liner": "Hipopótamos Bocão e Tim — watch the water.",
       "tags": [
-        "wow",
+        "big",
+        "water",
         "outdoor"
       ],
       "age_fit": [
@@ -332,45 +119,21 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Savana",
       "qa_card": {
-        "question": "What is special about the Nile hippo?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Hippo?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "nile-hippo",
-      "presence": "template",
-      "presence_checked": "2026-08-08",
-      "display_label": "Nile hippo",
-      "presence_note": "Not confirmed."
-    },
-    {
-      "id": "galapagos_tortoise",
-      "label": "Galápagos tortoise",
-      "emoji": "🐢",
-      "one_liner": "Giant tortoise — slow and steady.",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Galápagos tortoise?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "galapagos-tortoise",
-      "presence": "template",
-      "presence_checked": "2026-08-08",
-      "display_label": "Galápagos tortoise",
-      "presence_note": "Not confirmed."
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Hippo",
+      "core": false,
+      "presence_note": "Official city circuit: hipopótamos. Soft Hippo."
     }
   ],
-  "content_mode": "wonder",
+  "content_mode": "curated",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://www.bioparque.org.br/",
@@ -384,48 +147,123 @@
     "Leave while happy"
   ],
   "route_90m": [
+    "african_lion",
+    "orangutan",
     "two_toed_sloth"
   ],
-  "research_notes": "R3 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "research_notes": "[2026-08-23] Official-source Wave 3b public list pass (bioparquedorio.com.br + Prefeitura 2021 circuit). bioparque.org.br was down — Starter.",
   "list_confidence": "partial",
   "do_not_list": [
     {
       "catalog_id": "african-elephant",
       "name": "African elephant",
-      "reason": "Not confirmed on official BioParque sources this pass.",
-      "as_of": "2026-08-08"
+      "reason": "Not confirmed as African elephant on the official public list.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "sumatran-tiger",
+      "name": "Sumatran tiger",
+      "reason": "Official tiger (if any) is not Sumatran.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "Official penguins (if any) are not African.",
+      "as_of": "2026-08-23"
     },
     {
       "catalog_id": "western-lowland-gorilla",
       "name": "Western lowland gorilla",
-      "reason": "Not confirmed present.",
-      "as_of": "2026-08-08"
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
     },
     {
-      "catalog_id": "nile-hippo",
-      "name": "Nile hippo",
-      "reason": "Not confirmed present.",
-      "as_of": "2026-08-08"
+      "catalog_id": "chimpanzee",
+      "name": "Chimpanzee",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "reticulated-giraffe",
+      "name": "Reticulated giraffe",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "zebra",
+      "name": "Zebra",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
     },
     {
       "catalog_id": "red-panda",
       "name": "Red panda",
-      "reason": "Not confirmed present.",
-      "as_of": "2026-08-08"
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "asian-small-clawed-otter",
+      "name": "Asian small-clawed otter",
+      "reason": "Official otter (if any) is a different species.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "galapagos-tortoise",
+      "name": "Galápagos tortoise",
+      "reason": "Official tortoise (if any) is not Galápagos.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "cheetah",
+      "name": "Cheetah",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "koala",
+      "name": "Koala",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "giant-panda",
+      "name": "Giant panda",
+      "reason": "Not on the official public list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "caribbean-flamingo",
+      "name": "Caribbean flamingo",
+      "reason": "Official flamingo (if any) is not Caribbean/American.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "shark",
+      "name": "Shark",
+      "reason": "Aquarium-side or not named on the official zoo list.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "cm-outdoor",
+      "name": "Outdoor Area",
+      "reason": "Neither-kind leftover; zoo kits list zoo|both cards only.",
+      "as_of": "2026-08-23"
     }
   ],
   "presence_sources": [
-    "https://www.bioparque.org.br/"
+    "https://bioparquedorio.com.br/visite/",
+    "https://prefeitura.rio/cidade/conheca-o-circuito-de-visitacao-do-bioparque-rio/"
   ],
   "bonus_hunt": {
-    "tagline": "BioParque do Rio bonus · second-loop secrets",
+    "tagline": "BioParque bonus · lion + orangutan + sloth",
     "find_ids": [
-      "two_toed_sloth"
+      "nile_hippo"
     ],
     "challenges": [
       {
-        "id": "rio_zoo_two_toed_sloth_watch",
-        "text": "South America: take 15 seconds on the Two-toed sloth — what is it doing right now?",
+        "id": "rio_lion",
+        "text": "Leão: roar or a quiet pride?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -434,8 +272,8 @@
         ]
       },
       {
-        "id": "zoo_behavior",
-        "text": "Watch one animal do something for 15 full seconds (eat, climb, pace, rest)",
+        "id": "rio_orang",
+        "text": "Orangutan: hands or feet doing the clever bit?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -444,17 +282,8 @@
         ]
       },
       {
-        "id": "zoo_pattern",
-        "text": "Match two patterns in different places (stripes, spots, shells)",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "zoo_tiny_big",
-        "text": "Find something tiny next to something huge",
+        "id": "rio_sloth",
+        "text": "Preguiça: mid-reach or statue-still?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -463,49 +292,23 @@
         ]
       },
       {
-        "id": "zoo_overlook",
-        "text": "Find a cool detail most visitors walk past",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "zoo_sound",
-        "text": "Stand still 20 seconds — loudest sound that isn’t people?",
+        "id": "rio_hippo",
+        "text": "Hippo: underwater, mud, or bank?",
         "age_fit": [
           "2-3",
           "4-5",
           "6-8",
           "adult"
-        ]
-      },
-      {
-        "id": "zoo_water",
-        "text": "Find water used by animals (pool, moat, splash, drink)",
-        "age_fit": [
-          "2-3",
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "zoo_little",
-        "text": "Copy an animal move once (stomp, stretch, tip-toe, roar soft)",
-        "age_fit": [
-          "2-3",
-          "4-5"
         ]
       }
     ],
-    "easter_egg": "★ Easter egg: find a park map or zone sign — name one animal that lives that way",
-    "easter_egg_little": "★ Easter egg: pick a favorite bench — sit 60 seconds and name three sounds",
-    "researched": "2026-08-08",
-    "status": "thin",
+    "easter_egg": "★ Easter egg: find this zoo on a map/sign and point to a habitat you have not visited yet",
+    "easter_egg_little": "★ Easter egg: pick a favorite stop and tell a grown-up why",
     "sources": [
-      "https://www.bioparque.org.br/"
-    ]
+      "https://bioparquedorio.com.br/visite/",
+      "https://prefeitura.rio/cidade/conheca-o-circuito-de-visitacao-do-bioparque-rio/"
+    ],
+    "researched": "2026-08-23",
+    "status": "researched"
   }
 }
