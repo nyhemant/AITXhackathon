@@ -783,11 +783,11 @@ def watch_links_html(item: dict) -> str:
     return f'<p class="seo-watch-row">{" · ".join(links)}</p>'
 
 
-# Wave 1 + Wave 2a + Wave 2b + Wave 3a Start here kits share animal cards. Next /
-# Print / Learn more follow ?from=<slug> (or the place-page referrer). Not a
-# site-wide next-animal system. Shared african-elephant: Next: lion only when the
-# parent came from Dallas (San Diego Zoo’s Start here ends on elephant;
-# Safari Park’s Start here is elephant → giraffe → tiger).
+# Wave 1 + Wave 2a + Wave 2b + Wave 3a + Wave 3b + Wave 4 Start here kits share
+# animal cards. Next / Print / Learn more follow ?from=<slug> (or the place-page
+# referrer). Not a site-wide next-animal system. Shared african-elephant: Next:
+# lion only when the parent came from Dallas (San Diego Zoo’s Start here ends on
+# elephant; Safari Park’s Start here is elephant → giraffe → tiger).
 # Shared giant-panda: San Diego Zoo → koala, National → otter.
 _START_HERE_NEXT_SLUGS = (
     "dallas-zoo",
@@ -882,6 +882,27 @@ _START_HERE_NEXT_SLUGS = (
     "taipei-zoo",
     "ueno-zoo",
     "warsaw-zoo",
+    "aquarium-of-the-pacific",
+    "audubon-aquarium",
+    "childrens-aquarium-dallas",
+    "dallas-world-aquarium",
+    "dubai-aquarium",
+    "florida-aquarium",
+    "georgia-aquarium",
+    "istanbul-aquarium",
+    "lotte-aquarium-seoul",
+    "milan-aquarium",
+    "monterey-bay-aquarium",
+    "national-aquarium-baltimore",
+    "new-england-aquarium",
+    "osaka-aquarium",
+    "seattle-aquarium",
+    "shanghai-ocean-aquarium",
+    "shedd-aquarium",
+    "two-oceans-aquarium",
+    "vancouver-aquarium",
+    "virginia-aquarium",
+    "waikiki-aquarium",
 )
 _START_HERE_NEXT: dict[str, list[dict[str, str]]] | None = None
 _START_HERE_KITS: dict[str, list[str]] | None = None
@@ -892,7 +913,7 @@ _PUBLISHED_CARD_IDS: set[str] | None = None
 
 
 def kit_from_query(slug: str) -> str:
-    """?from= slug for Wave 1 + Wave 2a + Wave 2b + Wave 3a + Wave 3b start-here / open-card links."""
+    """?from= slug for Wave 1–3b zoo + Wave 4 aquarium start-here / open-card links."""
     s = (slug or "").strip()
     return f"from={s}" if s in _START_HERE_NEXT_SLUGS else ""
 
@@ -934,7 +955,7 @@ def item_public_href(item_id: str, venue_id: str = "", *, extra_query: str = "")
 
 
 def start_here_card_href(item_id: str, slug: str = "") -> str:
-    """Public card href. Wave 1–3b start-here cards keep ?from={slug}."""
+    """Public card href. Wave 1–4 start-here cards keep ?from={slug}."""
     iid = (item_id or "").strip()
     if iid and iid not in published_card_ids():
         return "#at-home"

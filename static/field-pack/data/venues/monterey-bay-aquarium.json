@@ -8,10 +8,10 @@
   "lat": 36.62,
   "lng": -121.9,
   "official_url": "https://www.montereybayaquarium.org/",
-  "last_verified": "2026-08-07",
+  "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Start at the jellies, then sea otters and open-ocean icons on the bay.",
+  "tagline": "Jellies first, then southern sea otters and the Kelp Forest — Magellanic penguins are not a Start here.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Timed entry; weekends book up.",
@@ -26,7 +26,7 @@
       "tags": [
         "water",
         "glow",
-        "wow"
+        "soft"
       ],
       "age_fit": [
         "2-3",
@@ -34,26 +34,26 @@
         "6-8",
         "9+"
       ],
-      "zone": "Jellies",
+      "zone": "Jellies / Into the Deep",
       "qa_card": {
         "question": "What did you notice about the Jellyfish?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "jellyfish",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "Jellyfish",
-      "presence_note": "Jellies galleries — signature exhibit."
+      "core": true
     },
     {
-      "id": "shark",
-      "label": "Shark",
-      "emoji": "🦈",
-      "one_liner": "Big open-ocean swimmers circle the giant tank.",
+      "id": "sea_otter",
+      "label": "Sea otter",
+      "emoji": "🦦",
+      "one_liner": "Southern sea otter — romp, tumble, and a back-float snack.",
       "tags": [
         "water",
-        "big",
+        "play",
         "wow"
       ],
       "age_fit": [
@@ -62,23 +62,76 @@
         "6-8",
         "9+"
       ],
-      "zone": "Open Sea",
+      "zone": "Sea Otters",
+      "qa_card": {
+        "question": "What did you notice about the Sea otter?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sea-otter",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Sea otter",
+      "core": true
+    },
+    {
+      "id": "kelp_forest",
+      "label": "Kelp forest",
+      "emoji": "🌿",
+      "one_liner": "28-foot kelp forest — sardines, leopard sharks, and wolf-eels.",
+      "tags": [
+        "water",
+        "hide"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Kelp Forest",
+      "qa_card": {
+        "question": "What did you notice about the Kelp forest?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "kelp-forest",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Kelp forest",
+      "core": true
+    },
+    {
+      "id": "shark",
+      "label": "Shark",
+      "emoji": "🦈",
+      "one_liner": "Leopard and swell sharks weave through kelp and sandy seafloor.",
+      "tags": [
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Kelp Forest / Monterey Bay Habitats",
       "qa_card": {
         "question": "What did you notice about the Shark?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "shark",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "Shark",
-      "presence_note": "Open Sea / Kelp Forest: sharks (incl. hammerheads historically, leopard sharks)."
+      "core": true
     },
     {
       "id": "sea_turtle",
       "label": "Sea turtle",
       "emoji": "🐢",
-      "one_liner": "A green sea turtle often shares the big blue.",
+      "one_liner": "Sea turtles drift past the 90-foot Open Sea windows.",
       "tags": [
         "water",
         "shell"
@@ -95,17 +148,17 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sea-turtle",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "Sea turtle",
-      "presence_note": "Open Sea ocean travelers include sea turtles."
+      "core": true
     },
     {
       "id": "octopus",
       "label": "Octopus",
       "emoji": "🐙",
-      "one_liner": "Octopus hide-and-seek — check the corners.",
+      "one_liner": "Giant Pacific octopus — master of disguise.",
       "tags": [
         "water",
         "hide",
@@ -117,26 +170,26 @@
         "6-8",
         "9+"
       ],
-      "zone": "Tentacles",
+      "zone": "Giant Pacific octopus",
       "qa_card": {
         "question": "What did you notice about the Octopus?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "octopus",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
       "display_label": "Octopus",
-      "presence_note": "Deep/cephalopod exhibits historically and currently featured. Soft Octopus."
+      "core": true
     },
     {
-      "id": "stingray",
-      "label": "Ray",
-      "emoji": "射线",
-      "one_liner": "If open: soft rays in shallow touch pools.",
+      "id": "puffin",
+      "label": "Puffin",
+      "emoji": "🐦",
+      "one_liner": "Tufted puffin on official Open Sea animal links.",
       "tags": [
-        "water",
-        "touch",
-        "flat"
+        "birds",
+        "water"
       ],
       "age_fit": [
         "2-3",
@@ -144,74 +197,51 @@
         "6-8",
         "9+"
       ],
-      "zone": "Touch pools",
+      "zone": "Open Sea",
+      "qa_card": {
+        "question": "What did you notice about the Puffin?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "puffin",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Puffin",
+      "core": false
+    },
+    {
+      "id": "stingray",
+      "label": "Stingray",
+      "emoji": "🐟",
+      "one_liner": "Rays on official habitat pages — gentle hands if a pool is open.",
+      "tags": [
+        "water",
+        "flat",
+        "touch"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Touch / habitats",
       "qa_card": {
         "question": "What did you notice about the Stingray?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "stingray",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Ray",
-      "presence_note": "Rays in various exhibits; touch pool status varies — medium."
-    },
-    {
-      "id": "seahorse",
-      "label": "Seahorse",
-      "emoji": "🌊",
-      "one_liner": "Seahorses and tiny dragons of the tanks.",
-      "tags": [
-        "water",
-        "tiny"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Hot water / special",
-      "qa_card": {
-        "question": "What did you notice about the Seahorse?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "seahorse",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Seahorse",
-      "presence_note": "Hot water/seahorse exhibits commonly featured."
-    },
-    {
-      "id": "clownfish",
-      "label": "Clownfish",
-      "emoji": "🐠",
-      "one_liner": "Bright reef fish for a color hunt.",
-      "tags": [
-        "water",
-        "color"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Coral reef",
-      "qa_card": {
-        "question": "What did you notice about the Clownfish?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "clownfish",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Clownfish",
-      "presence_note": "Reef exhibits may include anemonefish; not a signature icon — medium."
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Stingray",
+      "core": false
     },
     {
       "id": "starfish",
       "label": "Sea star",
       "emoji": "⭐",
-      "one_liner": "Look for stars and crabs in rocky pools.",
+      "one_liner": "Sea stars on the rocky shore.",
       "tags": [
         "water",
         "touch"
@@ -222,26 +252,26 @@
         "6-8",
         "9+"
       ],
-      "zone": "Tide pool",
+      "zone": "Rocky Shore",
       "qa_card": {
         "question": "What did you notice about the Sea star?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "starfish",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
       "display_label": "Sea star",
-      "presence_note": "Rocky shore / tide pool sea stars."
+      "core": false
     },
     {
       "id": "eel",
       "label": "Eel",
       "emoji": "🐍",
-      "one_liner": "Long eels peek from rocky homes.",
+      "one_liner": "Wolf-eel among the kelp.",
       "tags": [
         "water",
-        "hide",
-        "long"
+        "hide"
       ],
       "age_fit": [
         "2-3",
@@ -249,17 +279,17 @@
         "6-8",
         "9+"
       ],
-      "zone": "Kelp / reef",
+      "zone": "Kelp Forest",
       "qa_card": {
         "question": "What did you notice about the Eel?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "eel",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "Eel",
-      "presence_note": "Kelp Forest wolf-eels and other eels."
+      "core": false
     }
   ],
   "content_mode": "curated",
@@ -276,41 +306,163 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "research_notes": "map-img 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "research_notes": "[2026-08-23] Official-source Wave 4 public list pass (montereybayaquarium.org exhibits). Distinctive cards: jellyfish, sea-otter, kelp-forest.",
   "list_confidence": "audited",
   "do_not_list": [
     {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "african-lion",
+      "name": "African lion",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "sumatran-tiger",
+      "name": "Sumatran tiger",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "western-lowland-gorilla",
+      "name": "Western lowland gorilla",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "chimpanzee",
+      "name": "Chimpanzee",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "reticulated-giraffe",
+      "name": "Reticulated giraffe",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "zebra",
+      "name": "Zebra",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "red-panda",
+      "name": "Red panda",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "nile-hippo",
+      "name": "Nile hippo",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "galapagos-tortoise",
+      "name": "Galápagos tortoise",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "orangutan",
+      "name": "Orangutan",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "cheetah",
+      "name": "Cheetah",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "koala",
+      "name": "Koala",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "giant-panda",
+      "name": "Giant panda",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "ring-tailed-lemur",
+      "name": "Ring-tailed lemur",
+      "reason": "Zoo-only card — drop even if an official rainforest list names a lemur.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "cm-outdoor",
+      "name": "Outdoor Area",
+      "reason": "Neither-kind leftover — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "clownfish",
+      "name": "Clownfish",
+      "reason": "Not named on official exhibit pages reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "seahorse",
+      "name": "Seahorse",
+      "reason": "Official names pipefish, not seahorse.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "No African penguin exhibit on the official exhibits list.",
+      "as_of": "2026-08-23"
+    },
+    {
       "catalog_id": "asian-small-clawed-otter",
       "name": "Asian small-clawed otter",
-      "reason": "Wrong species: Monterey has southern sea otters. Do not list under ASC otter catalog without display override to Sea otter.",
-      "as_of": "2026-08-08"
+      "reason": "Official otter is southern sea otter.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "freshwater-fish",
+      "name": "River / lake fish",
+      "reason": "Not named on official exhibit pages reviewed.",
+      "as_of": "2026-08-23"
     }
   ],
   "route_90m": [
     "jellyfish",
-    "shark"
+    "sea_otter",
+    "kelp_forest"
   ],
-  "last_presence_audit": "2026-08-08",
+  "last_presence_audit": "2026-08-23",
   "presence_sources": [
-    "https://www.montereybayaquarium.org/",
     "https://www.montereybayaquarium.org/visit/exhibits",
-    "https://www.montereybayaquarium.org/visit/exhibits/sea-otters"
+    "https://www.montereybayaquarium.org/visit/exhibits/kelp-forest",
+    "https://www.montereybayaquarium.org/visit/exhibits/sea-otters",
+    "https://www.montereybayaquarium.org/visit/exhibits/open-sea",
+    "https://www.montereybayaquarium.org/visit/exhibits/giant-pacific-octopus"
   ],
   "bonus_hunt": {
-    "tagline": "Monterey bonus · Open Sea + Jellies + Tentacles",
+    "tagline": "Monterey bonus · jellies + sea otters + Kelp Forest",
     "find_ids": [
-      "jellyfish",
       "shark",
-      "octopus",
       "sea_turtle",
-      "seahorse",
-      "starfish",
-      "eel"
+      "octopus",
+      "puffin",
+      "stingray",
+      "starfish"
     ],
     "challenges": [
       {
-        "id": "mba_open",
-        "text": "Open Sea: shark or turtle — who crosses your view first?",
+        "id": "mba_jelly",
+        "text": "Jellies: watch one pulse from top to bottom.",
         "age_fit": [
           "2-3",
           "4-5",
@@ -319,8 +471,18 @@
         ]
       },
       {
-        "id": "mba_jelly",
-        "text": "Jellies: pick one color/shape and watch it pulse 10 times",
+        "id": "mba_otter",
+        "text": "Sea otter: snack on the belly or a back float?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "mba_kelp",
+        "text": "Kelp Forest: count the fish you can see in one glance.",
         "age_fit": [
           "2-3",
           "4-5",
@@ -330,50 +492,22 @@
       },
       {
         "id": "mba_octo",
-        "text": "Tentacles / octopus: best hider — in plain sight or tucked?",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "mba_kelp",
-        "text": "Kelp/reef eel: head out or fully hidden?",
+        "text": "Giant Pacific octopus: how long until you spot an arm?",
         "age_fit": [
           "2-3",
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "mba_tide",
-        "text": "Tide pool sea star: arms flat or curled?",
-        "age_fit": [
-          "2-3",
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "mba_sea",
-        "text": "Seahorse: upright drift or anchored?",
-        "age_fit": [
           "4-5",
           "6-8",
           "adult"
         ]
       }
     ],
-    "easter_egg": "★ Easter egg: find the darkest glow corner — whisper one thing that moved",
-    "easter_egg_little": "★ Easter egg: after the hard list — one free minute of favorite stop",
-    "researched": "2026-08-08",
-    "status": "researched",
+    "easter_egg": "★ Easter egg: find this zoo on a map/sign and point to a habitat you have not visited yet",
+    "easter_egg_little": "★ Easter egg: pick a favorite stop and tell a grown-up why",
     "sources": [
-      "https://www.montereybayaquarium.org/",
-      "Open Sea, Jellies, Tentacles, Kelp Forest"
-    ]
+      "https://www.montereybayaquarium.org/visit/exhibits",
+      "https://www.montereybayaquarium.org/visit/exhibits/kelp-forest"
+    ],
+    "researched": "2026-08-23",
+    "status": "researched"
   }
 }

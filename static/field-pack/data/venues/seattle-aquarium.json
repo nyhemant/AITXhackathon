@@ -8,10 +8,9 @@
   "lat": 47.61,
   "lng": -122.34,
   "official_url": "https://www.seattleaquarium.org/",
-  "last_verified": "2026-08-07",
   "verified_by": "research",
-  "status": "verified",
-  "tagline": "Pier tanks on Elliott Bay — otters and local Salish Sea life.",
+  "status": "partial",
+  "tagline": "Starter list: sea otters, tufted puffins, then a giant Pacific octopus — river otters are a different stop.",
   "practical": {
     "typical_duration": "2 hours",
     "ticket_note": "Timed tickets recommended on peak days.",
@@ -21,13 +20,68 @@
   },
   "items": [
     {
+      "id": "sea_otter",
+      "label": "Sea otter",
+      "emoji": "🦦",
+      "one_liner": "Sea otter — floats, snacks, and steals the show.",
+      "tags": [
+        "water",
+        "play",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Mammals",
+      "qa_card": {
+        "question": "What did you notice about the Sea otter?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sea-otter",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Sea otter",
+      "core": true
+    },
+    {
+      "id": "puffin",
+      "label": "Puffin",
+      "emoji": "🐦",
+      "one_liner": "Tufted puffin — a beak full of fish.",
+      "tags": [
+        "birds",
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Birds",
+      "qa_card": {
+        "question": "What did you notice about the Puffin?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "puffin",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Puffin",
+      "core": true
+    },
+    {
       "id": "octopus",
       "label": "Octopus",
       "emoji": "🐙",
-      "one_liner": "Giant Pacific octopus lore — look carefully.",
+      "one_liner": "Giant Pacific octopus — check the corners.",
       "tags": [
-        "hide",
         "water",
+        "hide",
         "smart"
       ],
       "age_fit": [
@@ -36,26 +90,27 @@
         "6-8",
         "9+"
       ],
-      "zone": "Pacific exhibits",
+      "zone": "Invertebrates",
       "qa_card": {
         "question": "What did you notice about the Octopus?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "octopus",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "Octopus",
-      "presence_note": "Giant Pacific octopus is a PNW aquarium icon."
+      "core": true
     },
     {
       "id": "jellyfish",
       "label": "Jellyfish",
       "emoji": "🎐",
-      "one_liner": "Calm glow rooms.",
+      "one_liner": "Jellies — watch them pulse.",
       "tags": [
+        "water",
         "glow",
-        "water"
+        "soft"
       ],
       "age_fit": [
         "2-3",
@@ -63,25 +118,51 @@
         "6-8",
         "9+"
       ],
-      "zone": "Jellies",
+      "zone": "Invertebrates",
       "qa_card": {
         "question": "What did you notice about the Jellyfish?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "jellyfish",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "Jellyfish",
-      "presence_note": "Jellies common permanent exhibit."
+      "core": true
     },
     {
-      "id": "sea_turtle",
-      "label": "Sea turtle",
-      "emoji": "🐢",
-      "one_liner": "Turtles when on the path.",
+      "id": "cuttlefish",
+      "label": "Cuttlefish",
+      "emoji": "🦑",
+      "one_liner": "Dwarf cuttlefish — a living disguise.",
       "tags": [
-        "shell",
+        "water",
+        "hide"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Invertebrates",
+      "qa_card": {
+        "question": "What did you notice about the Cuttlefish?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "cuttlefish",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Cuttlefish",
+      "core": true
+    },
+    {
+      "id": "shark",
+      "label": "Shark",
+      "emoji": "🦈",
+      "one_liner": "Blacktip reef, dogfish, and Indo-Pacific leopard sharks.",
+      "tags": [
         "water"
       ],
       "age_fit": [
@@ -90,25 +171,108 @@
         "6-8",
         "9+"
       ],
-      "zone": "Turtles / special",
+      "zone": "Fish",
       "qa_card": {
-        "question": "What did you notice about the Sea turtle?",
+        "question": "What did you notice about the Shark?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sea-turtle",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Sea turtle",
-      "presence_note": "Not a signature exhibit; confirm tropical gallery."
+      "catalog_id": "shark",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Shark",
+      "core": true
+    },
+    {
+      "id": "stingray",
+      "label": "Stingray",
+      "emoji": "🐟",
+      "one_liner": "Blue-spotted, leopard whiptail, and spotted eagle rays.",
+      "tags": [
+        "water",
+        "flat",
+        "touch"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Fish",
+      "qa_card": {
+        "question": "What did you notice about the Stingray?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "stingray",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Stingray",
+      "core": false
+    },
+    {
+      "id": "seahorse",
+      "label": "Seahorse",
+      "emoji": "🌊",
+      "one_liner": "Seahorses on the official animals page.",
+      "tags": [
+        "water",
+        "tiny"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Fish",
+      "qa_card": {
+        "question": "What did you notice about the Seahorse?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "seahorse",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Seahorse",
+      "core": false
+    },
+    {
+      "id": "clownfish",
+      "label": "Clownfish",
+      "emoji": "🐠",
+      "one_liner": "Clownfish on the official animals page.",
+      "tags": [
+        "water",
+        "color"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Fish",
+      "qa_card": {
+        "question": "What did you notice about the Clownfish?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "clownfish",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Clownfish",
+      "core": false
     },
     {
       "id": "starfish",
       "label": "Sea star",
       "emoji": "⭐",
-      "one_liner": "Stars and tide-pool finds when open.",
+      "one_liner": "Sea stars on the official animals page.",
       "tags": [
-        "touch",
-        "water"
+        "water",
+        "touch"
       ],
       "age_fit": [
         "2-3",
@@ -116,203 +280,20 @@
         "6-8",
         "9+"
       ],
-      "zone": "Tide pool / touch",
+      "zone": "Invertebrates",
       "qa_card": {
         "question": "What did you notice about the Sea star?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "starfish",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "Sea star",
-      "presence_note": "Touch-pool / invertebrate galleries (sea stars)."
-    },
-    {
-      "id": "shark",
-      "label": "Shark",
-      "emoji": "🦈",
-      "one_liner": "Ocean hunter with a strong swishy body.",
-      "tags": [
-        "wow",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "What did you notice about the Shark?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "shark",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Shark",
-      "presence_note": "Sharks in ocean galleries."
-    },
-    {
-      "id": "stingray",
-      "label": "Stingray",
-      "emoji": "射线",
-      "one_liner": "Flat swimmer — often in touch pools (gentle hands!).",
-      "tags": [
-        "wow",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "What did you notice about the Stingray?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "stingray",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Stingray",
-      "presence_note": "Confirm ray/touch habitat."
-    },
-    {
-      "id": "seahorse",
-      "label": "Seahorse",
-      "emoji": "🌊",
-      "one_liner": "Tiny upright swimmer that holds on with its tail.",
-      "tags": [
-        "wow",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "What did you notice about the Seahorse?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "seahorse",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Seahorse",
-      "presence_note": "Often in tropical; unconfirmed."
-    },
-    {
-      "id": "clownfish",
-      "label": "Clownfish",
-      "emoji": "🐠",
-      "one_liner": "Bright reef fish — friends with anemones.",
-      "tags": [
-        "wow",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "What did you notice about the Clownfish?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "clownfish",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Clownfish",
-      "presence_note": "Tropical reef possible; not PNW signature."
-    },
-    {
-      "id": "eel",
-      "label": "Eel",
-      "emoji": "🐍",
-      "one_liner": "Long snaky fish — loves rocky hidey-holes.",
-      "tags": [
-        "wow",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "What did you notice about the Eel?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "eel",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Eel",
-      "presence_note": "Wolf eels / morays common in PNW aquariums."
-    },
-    {
-      "id": "crab",
-      "label": "Crab",
-      "emoji": "🦀",
-      "one_liner": "Sideways walker with a hard shell and pinchers.",
-      "tags": [
-        "wow",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "What did you notice about the Crab?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "crab",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Crab",
-      "presence_note": "Local crustaceans."
-    },
-    {
-      "id": "freshwater_fish",
-      "label": "River / lake fish",
-      "emoji": "🐟",
-      "one_liner": "Fish that live in fresh water — rivers, lakes, ponds.",
-      "tags": [
-        "wow",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "What did you notice about the River / lake fish?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "freshwater-fish",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "River / lake fish",
-      "presence_note": "Salmon/local freshwater stories are core."
+      "core": false
     }
   ],
-  "content_mode": "hybrid",
+  "content_mode": "curated",
   "media": {
     "visitor_map_url": "/field-pack/media/maps/seattle-aquarium.jpg",
     "visitor_map_page": "https://www.seattleaquarium.org/visit/plan-your-visit/aquarium-map/",
@@ -327,41 +308,155 @@
     "Leave while happy"
   ],
   "route_90m": [
-    "octopus",
-    "shark",
-    "starfish"
+    "sea_otter",
+    "puffin",
+    "octopus"
   ],
-  "research_notes": "R1 hybrid 2026-08-07 · map-img 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "research_notes": "[2026-08-23] Wave 4: seattleaquarium.org animals page is featured categories, not a full inventory. No invented verify date.",
   "list_confidence": "partial",
   "do_not_list": [
     {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "african-lion",
+      "name": "African lion",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "sumatran-tiger",
+      "name": "Sumatran tiger",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "western-lowland-gorilla",
+      "name": "Western lowland gorilla",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "chimpanzee",
+      "name": "Chimpanzee",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "reticulated-giraffe",
+      "name": "Reticulated giraffe",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "zebra",
+      "name": "Zebra",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "red-panda",
+      "name": "Red panda",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "nile-hippo",
+      "name": "Nile hippo",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "galapagos-tortoise",
+      "name": "Galápagos tortoise",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "orangutan",
+      "name": "Orangutan",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "cheetah",
+      "name": "Cheetah",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "koala",
+      "name": "Koala",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "giant-panda",
+      "name": "Giant panda",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "ring-tailed-lemur",
+      "name": "Ring-tailed lemur",
+      "reason": "Zoo-only card — drop even if an official rainforest list names a lemur.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "cm-outdoor",
+      "name": "Outdoor Area",
+      "reason": "Neither-kind leftover — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "sea-turtle",
+      "name": "Sea turtle",
+      "reason": "Not named on the official 'just a few' animals page.",
+      "as_of": "2026-08-23"
+    },
+    {
       "catalog_id": "asian-small-clawed-otter",
       "name": "Asian small-clawed otter",
-      "reason": "Wrong otter species — venue has sea otters and river otters.",
-      "as_of": "2026-08-08"
+      "reason": "Official second otter is river otter, not Asian small-clawed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "No penguin on the official animals page.",
+      "as_of": "2026-08-23"
     }
   ],
   "presence_sources": [
-    "https://www.seattleaquarium.org/",
-    "https://www.seattleaquarium.org/animals/",
-    "https://www.seattleaquarium.org/animal/sea-otter/",
-    "https://www.seattleaquarium.org/explore-the-aquarium/campus/pier-60/"
+    "https://www.seattleaquarium.org/animals/"
   ],
   "bonus_hunt": {
-    "tagline": "Seattle Aquarium bonus · Window on Washington Waters + jellies",
+    "tagline": "Seattle bonus · sea otter + puffin + octopus",
     "find_ids": [
       "jellyfish",
-      "octopus",
+      "cuttlefish",
       "shark",
-      "eel",
-      "starfish",
-      "crab",
-      "freshwater_fish"
+      "stingray",
+      "seahorse",
+      "starfish"
     ],
     "challenges": [
       {
-        "id": "sea_jelly",
-        "text": "Jellies: 10 soft pulses",
+        "id": "sea_otter",
+        "text": "Sea otter: snack on the belly or a back float?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "sea_puffin",
+        "text": "Tufted puffin: beak empty or a fish stack?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -371,16 +466,7 @@
       },
       {
         "id": "sea_octo",
-        "text": "Octopus: best hide score 1–10",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "sea_shark",
-        "text": "Shark pass count in 30s",
+        "text": "Giant Pacific octopus: how long until you spot an arm?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -389,27 +475,8 @@
         ]
       },
       {
-        "id": "sea_local",
-        "text": "Washington waters: name one animal that lives near here too",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "sea_tide",
-        "text": "Tide/touch: safest texture name",
-        "age_fit": [
-          "2-3",
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "sea_eel",
-        "text": "Eel: head out or tucked?",
+        "id": "sea_cuttle",
+        "text": "Dwarf cuttlefish: which color did it try first?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -418,12 +485,12 @@
         ]
       }
     ],
-    "easter_egg": "★ Easter egg: find the underwater dome/window and look straight up once",
-    "easter_egg_little": "★ Easter egg: after the hard list — one free minute at a favorite stop",
-    "researched": "2026-08-08",
-    "status": "researched",
+    "easter_egg": "★ Easter egg: find this zoo on a map/sign and point to a habitat you have not visited yet",
+    "easter_egg_little": "★ Easter egg: pick a favorite stop and tell a grown-up why",
     "sources": [
-      "https://www.seattleaquarium.org/"
-    ]
+      "https://www.seattleaquarium.org/animals/"
+    ],
+    "researched": "2026-08-23",
+    "status": "researched"
   }
 }

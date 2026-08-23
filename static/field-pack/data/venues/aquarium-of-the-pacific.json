@@ -8,10 +8,10 @@
   "lat": 33.76,
   "lng": -118.2,
   "official_url": "https://www.aquariumofpacific.org/",
-  "last_verified": "2026-08-07",
+  "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Long Beach Pacific galleries — seals, sharks, and a kid-friendly loop.",
+  "tagline": "Southern sea otters and tufted puffins first, then Shark Lagoon — Magellanic penguins, not African.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Waterfront; easy with a stroller.",
@@ -19,14 +19,68 @@
   },
   "items": [
     {
+      "id": "sea_otter",
+      "label": "Sea otter",
+      "emoji": "🦦",
+      "one_liner": "Southern sea otter — floats, snacks, and steals the show.",
+      "tags": [
+        "water",
+        "play",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Sea Otter Habitat",
+      "qa_card": {
+        "question": "What did you notice about the Sea otter?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sea-otter",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Sea otter",
+      "core": true
+    },
+    {
+      "id": "puffin",
+      "label": "Puffin",
+      "emoji": "🐦",
+      "one_liner": "Tufted puffin — a beak full of fish.",
+      "tags": [
+        "birds",
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Diving Birds",
+      "qa_card": {
+        "question": "What did you notice about the Puffin?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "puffin",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Puffin",
+      "core": true,
+      "presence_note": "Official Northern Pacific / Diving Birds: tufted puffin."
+    },
+    {
       "id": "shark",
       "label": "Shark",
       "emoji": "🦈",
-      "one_liner": "Sharks and rays in the big outdoor lagoon vibe.",
+      "one_liner": "Shark Lagoon — zebra, reef, and bamboo sharks.",
       "tags": [
-        "water",
-        "big",
-        "wow"
+        "water"
       ],
       "age_fit": [
         "2-3",
@@ -41,15 +95,16 @@
       },
       "catalog_id": "shark",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Shark"
+      "display_label": "Shark",
+      "core": true
     },
     {
       "id": "stingray",
       "label": "Stingray",
-      "emoji": "射线",
-      "one_liner": "Rays glide in shallow water — watch from above.",
+      "emoji": "🐟",
+      "one_liner": "Rays share Shark Lagoon and the Tropical Reef.",
       "tags": [
         "water",
         "flat",
@@ -68,16 +123,44 @@
       },
       "catalog_id": "stingray",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "Stingray",
-      "presence_note": "Shark Lagoon touch experiences include rays."
+      "core": true
+    },
+    {
+      "id": "jellyfish",
+      "label": "Jellyfish",
+      "emoji": "🎐",
+      "one_liner": "Jelly Dreamscapes — slow down and watch them pulse.",
+      "tags": [
+        "water",
+        "glow",
+        "soft"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Jelly Dreamscapes",
+      "qa_card": {
+        "question": "What did you notice about the Jellyfish?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "jellyfish",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Jellyfish",
+      "core": true
     },
     {
       "id": "sea_turtle",
       "label": "Sea turtle",
       "emoji": "🐢",
-      "one_liner": "Sea turtles on the Pacific side.",
+      "one_liner": "Olive Ridley sea turtle in the Tropical Reef.",
       "tags": [
         "water",
         "shell"
@@ -88,51 +171,27 @@
         "6-8",
         "9+"
       ],
-      "zone": "Pacific galleries",
+      "zone": "Tropical Pacific",
       "qa_card": {
         "question": "What did you notice about the Sea turtle?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sea-turtle",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "display_label": "Sea turtle",
-      "presence_note": "Featured with Shark Lagoon imagery/habitats."
-    },
-    {
-      "id": "jellyfish",
-      "label": "Jellyfish",
-      "emoji": "🎐",
-      "one_liner": "Glow-room jellies for a calm break.",
-      "tags": [
-        "water",
-        "glow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Jellies",
-      "qa_card": {
-        "question": "What did you notice about the Jellyfish?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "jellyfish",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Jellyfish"
+      "display_label": "Sea turtle",
+      "core": true
     },
     {
       "id": "octopus",
       "label": "Octopus",
       "emoji": "🐙",
-      "one_liner": "Camouflage king — check rockwork carefully.",
+      "one_liner": "Giant Pacific octopus — check the corners.",
       "tags": [
         "water",
-        "hide"
+        "hide",
+        "smart"
       ],
       "age_fit": [
         "2-3",
@@ -140,49 +199,23 @@
         "6-8",
         "9+"
       ],
-      "zone": "June Keyes Penguin / special",
+      "zone": "Northern Pacific",
       "qa_card": {
         "question": "What did you notice about the Octopus?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "octopus",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Octopus",
-      "presence_note": "Southern California Gallery features octopus imagery/animals."
-    },
-    {
-      "id": "african_penguin",
-      "label": "Penguin",
-      "emoji": "🐧",
-      "one_liner": "Penguins waddle and dive.",
-      "tags": [
-        "water",
-        "wow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "June Keyes Penguin Habitat",
-      "qa_card": {
-        "question": "What did you notice about the African penguin?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "african-penguin",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Penguin",
-      "presence_note": "Penguin habitat verified; confirm species on-site (often Magellanic/others at AOP) — soft-label Penguin if species uncertain."
+      "display_label": "Octopus",
+      "core": false
     },
     {
       "id": "clownfish",
       "label": "Clownfish",
       "emoji": "🐠",
-      "one_liner": "Bright reef fish for color spotting.",
+      "one_liner": "Clownfish darting through the Tropical Reef.",
       "tags": [
         "water",
         "color"
@@ -199,19 +232,20 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "clownfish",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
       "display_label": "Clownfish",
-      "presence_note": "Tropical Pacific Gallery typical reef species."
+      "core": false
     },
     {
-      "id": "seahorse",
-      "label": "Seahorse",
-      "emoji": "🌊",
-      "one_liner": "Tiny upright swimmers.",
+      "id": "eel",
+      "label": "Eel",
+      "emoji": "🐍",
+      "one_liner": "Moray eel — a long stare from a rocky hole.",
       "tags": [
         "water",
-        "tiny"
+        "hide"
       ],
       "age_fit": [
         "2-3",
@@ -219,25 +253,26 @@
         "6-8",
         "9+"
       ],
-      "zone": "Seahorse gallery",
+      "zone": "Southern California / Tropical",
       "qa_card": {
-        "question": "What did you notice about the Seahorse?",
+        "question": "What did you notice about the Eel?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "seahorse",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Seahorse",
-      "presence_note": "Common AOP exhibit animal; treat high."
+      "catalog_id": "eel",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Eel",
+      "core": false
     },
     {
-      "id": "starfish",
-      "label": "Sea star",
-      "emoji": "⭐",
-      "one_liner": "Touch experiences when open.",
+      "id": "kelp_forest",
+      "label": "Kelp forest",
+      "emoji": "🌿",
+      "one_liner": "Casino Point kelp forest — an underwater forest.",
       "tags": [
         "water",
-        "touch"
+        "hide"
       ],
       "age_fit": [
         "2-3",
@@ -245,16 +280,17 @@
         "6-8",
         "9+"
       ],
-      "zone": "Touch labs",
+      "zone": "Southern California Gallery",
       "qa_card": {
-        "question": "What did you notice about the Sea star?",
+        "question": "What did you notice about the Kelp forest?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "starfish",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Sea star",
-      "presence_note": "Touch/intertidal experiences common."
+      "catalog_id": "kelp-forest",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Kelp forest",
+      "core": false
     }
   ],
   "content_mode": "curated",
@@ -273,39 +309,174 @@
   "list_confidence": "audited",
   "do_not_list": [
     {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "african-lion",
+      "name": "African lion",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "sumatran-tiger",
+      "name": "Sumatran tiger",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "western-lowland-gorilla",
+      "name": "Western lowland gorilla",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "chimpanzee",
+      "name": "Chimpanzee",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "reticulated-giraffe",
+      "name": "Reticulated giraffe",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "zebra",
+      "name": "Zebra",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "red-panda",
+      "name": "Red panda",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "nile-hippo",
+      "name": "Nile hippo",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "galapagos-tortoise",
+      "name": "Galápagos tortoise",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "orangutan",
+      "name": "Orangutan",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "cheetah",
+      "name": "Cheetah",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "koala",
+      "name": "Koala",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "giant-panda",
+      "name": "Giant panda",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "ring-tailed-lemur",
+      "name": "Ring-tailed lemur",
+      "reason": "Zoo-only card — drop even if an official rainforest list names a lemur.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "cm-outdoor",
+      "name": "Outdoor Area",
+      "reason": "Neither-kind leftover — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "Official June Keyes Penguin Habitat is Magellanic penguin.",
+      "as_of": "2026-08-23"
+    },
+    {
       "catalog_id": "asian-small-clawed-otter",
       "name": "Asian small-clawed otter",
-      "reason": "Has sea otters, not Asian small-clawed otters.",
-      "as_of": "2026-08-08"
+      "reason": "Official otter is southern sea otter.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "seahorse",
+      "name": "Seahorse",
+      "reason": "Not named on official exhibit pages reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "starfish",
+      "name": "Sea star",
+      "reason": "Stars of the Sea not confirmed as a current exhibit.",
+      "as_of": "2026-08-23"
     }
   ],
   "route_90m": [
-    "shark",
-    "jellyfish",
-    "sea_turtle"
+    "sea_otter",
+    "puffin",
+    "shark"
   ],
-  "last_presence_audit": "2026-08-08",
+  "last_presence_audit": "2026-08-23",
   "presence_sources": [
     "https://www.aquariumofpacific.org/exhibits/",
-    "https://www.aquariumofpacific.org/exhibits/shark_lagoon",
+    "https://www.aquariumofpacific.org/exhibits/otters",
     "https://www.aquariumofpacific.org/exhibits/penguin_habitat",
-    "https://www.aquariumofpacific.org/exhibits/otters"
+    "https://www.aquariumofpacific.org/exhibits/shark_lagoon",
+    "https://www.aquariumofpacific.org/exhibits/jellydreamscapes"
   ],
-  "research_notes": "presence-audit 2026-08-08 [major]",
+  "research_notes": "[2026-08-23] Official-source Wave 4 public list pass (aquariumofpacific.org exhibits). Magellanic penguin ≠ African.",
   "bonus_hunt": {
-    "tagline": "AQ Pacific bonus · Blue Cavern + Lorikeet/Shark Lagoon energy",
+    "tagline": "Pacific bonus · sea otter + puffin + Shark Lagoon",
     "find_ids": [
-      "shark",
+      "stingray",
       "jellyfish",
       "sea_turtle",
       "octopus",
-      "stingray",
-      "seahorse"
+      "clownfish",
+      "kelp_forest"
     ],
     "challenges": [
       {
+        "id": "aop_otter",
+        "text": "Sea otter: snack on the belly or a back float?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "aop_puffin",
+        "text": "Tufted puffin: beak empty or a fish stack?",
+        "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
         "id": "aop_shark",
-        "text": "Shark area: full-pass count in 30s",
+        "text": "Shark Lagoon: count the fins you can see at once.",
         "age_fit": [
           "2-3",
           "4-5",
@@ -315,59 +486,22 @@
       },
       {
         "id": "aop_jelly",
-        "text": "Jellies: pulse rhythm — slow or frantic?",
+        "text": "Jelly Dreamscapes: watch one pulse from top to bottom.",
         "age_fit": [
           "2-3",
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "aop_turtle",
-        "text": "Sea turtle: surface or cruise",
-        "age_fit": [
-          "2-3",
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "aop_octo",
-        "text": "Octopus: camouflage score 1–10",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "aop_ray",
-        "text": "Ray touch pool or tank: wing motion name",
-        "age_fit": [
-          "2-3",
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "aop_hide",
-        "text": "Best hider in any tank this visit",
-        "age_fit": [
           "4-5",
           "6-8",
           "adult"
         ]
       }
     ],
-    "easter_egg": "★ Easter egg: find Lorikeet Forest or Sealion on the map even if you skip",
-    "easter_egg_little": "★ Easter egg: after the hard list — one free minute of favorite stop",
-    "researched": "2026-08-08",
-    "status": "researched",
+    "easter_egg": "★ Easter egg: find this zoo on a map/sign and point to a habitat you have not visited yet",
+    "easter_egg_little": "★ Easter egg: pick a favorite stop and tell a grown-up why",
     "sources": [
-      "https://www.aquariumofpacific.org/"
-    ]
+      "https://www.aquariumofpacific.org/exhibits/",
+      "https://www.aquariumofpacific.org/exhibits/otters"
+    ],
+    "researched": "2026-08-23",
+    "status": "researched"
   }
 }

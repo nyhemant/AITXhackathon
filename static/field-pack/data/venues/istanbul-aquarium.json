@@ -8,10 +8,9 @@
   "lat": 40.966,
   "lng": 28.797,
   "official_url": "https://www.istanbulakvaryum.com/en",
-  "last_verified": "2026-08-07",
   "verified_by": "research",
-  "status": "verified",
-  "tagline": "Istanbul Aquarium — big indoor tunnel day by the sea.",
+  "status": "partial",
+  "tagline": "Starter list: lemon and sand-tiger sharks, then cownose rays and clownfish — Gentoo penguins, not African.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Florya area; tickets online help.",
@@ -24,11 +23,9 @@
       "id": "shark",
       "label": "Shark",
       "emoji": "🦈",
-      "one_liner": "Sharks — overhead wow.",
+      "one_liner": "Lemon shark and sand tiger shark on the official creatures list.",
       "tags": [
-        "water",
-        "big",
-        "wow"
+        "water"
       ],
       "age_fit": [
         "2-3",
@@ -36,24 +33,27 @@
         "6-8",
         "9+"
       ],
-      "zone": "Big tanks",
+      "zone": "Themes",
       "qa_card": {
         "question": "What did you notice about the Shark?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "shark",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Shark"
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Shark",
+      "core": true
     },
     {
       "id": "stingray",
       "label": "Stingray",
-      "emoji": "射线",
-      "one_liner": "Rays.",
+      "emoji": "🐟",
+      "one_liner": "Cownose and eagle rays.",
       "tags": [
         "water",
-        "flat"
+        "flat",
+        "touch"
       ],
       "age_fit": [
         "2-3",
@@ -61,71 +61,23 @@
         "6-8",
         "9+"
       ],
-      "zone": "Rays",
+      "zone": "Themes",
       "qa_card": {
         "question": "What did you notice about the Stingray?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "stingray",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Stingray"
-    },
-    {
-      "id": "jellyfish",
-      "label": "Jellyfish",
-      "emoji": "🎐",
-      "one_liner": "Jellies glow stop.",
-      "tags": [
-        "water",
-        "glow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Jellies",
-      "qa_card": {
-        "question": "What did you notice about the Jellyfish?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "jellyfish",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Jellyfish"
-    },
-    {
-      "id": "sea_turtle",
-      "label": "Sea turtle",
-      "emoji": "🐢",
-      "one_liner": "Turtles.",
-      "tags": [
-        "water",
-        "shell"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Turtles",
-      "qa_card": {
-        "question": "What did you notice about the Sea turtle?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "sea-turtle",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Sea turtle"
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Stingray",
+      "core": true
     },
     {
       "id": "clownfish",
       "label": "Clownfish",
       "emoji": "🐠",
-      "one_liner": "Bright reef fish.",
+      "one_liner": "Palyaço balığı — Amphiprion ocellaris.",
       "tags": [
         "water",
         "color"
@@ -136,74 +88,26 @@
         "6-8",
         "9+"
       ],
-      "zone": "Reef",
+      "zone": "Themes",
       "qa_card": {
         "question": "What did you notice about the Clownfish?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "clownfish",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Clownfish"
-    },
-    {
-      "id": "octopus",
-      "label": "Octopus",
-      "emoji": "🐙",
-      "one_liner": "Eight arms and a big brain — master of hide-and-seek.",
-      "tags": [
-        "wow",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "What did you notice about the Octopus?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "octopus",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Octopus"
-    },
-    {
-      "id": "seahorse",
-      "label": "Seahorse",
-      "emoji": "🌊",
-      "one_liner": "Tiny upright swimmer that holds on with its tail.",
-      "tags": [
-        "wow",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "What did you notice about the Seahorse?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "seahorse",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Seahorse"
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Clownfish",
+      "core": true
     },
     {
       "id": "eel",
       "label": "Eel",
       "emoji": "🐍",
-      "one_liner": "Long snaky fish — loves rocky hidey-holes.",
+      "one_liner": "Mediterranean moray and spotted garden moray.",
       "tags": [
-        "wow",
-        "water"
+        "water",
+        "hide"
       ],
       "age_fit": [
         "2-3",
@@ -211,24 +115,26 @@
         "6-8",
         "9+"
       ],
-      "zone": "Galleries",
+      "zone": "Mediterranean / themes",
       "qa_card": {
         "question": "What did you notice about the Eel?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "eel",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Eel"
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Eel",
+      "core": true
     },
     {
-      "id": "crab",
-      "label": "Crab",
-      "emoji": "🦀",
-      "one_liner": "Sideways walker with a hard shell and pinchers.",
+      "id": "sea_turtle",
+      "label": "Sea turtle",
+      "emoji": "🐢",
+      "one_liner": "Loggerhead (Caretta caretta) in the West Atlantic tank.",
       "tags": [
-        "wow",
-        "water"
+        "water",
+        "shell"
       ],
       "age_fit": [
         "2-3",
@@ -236,26 +142,26 @@
         "6-8",
         "9+"
       ],
-      "zone": "Galleries",
+      "zone": "West Atlantic",
       "qa_card": {
-        "question": "What did you notice about the Crab?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
+        "question": "What did you notice about the Sea turtle?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "crab",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Crab"
+      "catalog_id": "sea-turtle",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Sea turtle",
+      "core": true
     },
     {
-      "id": "starfish",
-      "label": "Sea star",
-      "emoji": "⭐",
-      "one_liner": "Star-shaped ocean friend — often in touch tanks.",
+      "id": "seahorse",
+      "label": "Seahorse",
+      "emoji": "🌊",
+      "one_liner": "Seahorse in the Aegean theme.",
       "tags": [
-        "wow",
-        "outdoor",
-        "play",
-        "water"
+        "water",
+        "tiny"
       ],
       "age_fit": [
         "2-3",
@@ -263,23 +169,24 @@
         "6-8",
         "9+"
       ],
-      "zone": "Galleries",
+      "zone": "Aegean",
       "qa_card": {
-        "question": "What did you notice about the Sea star?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
+        "question": "What did you notice about the Seahorse?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "starfish",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Sea star"
+      "catalog_id": "seahorse",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Seahorse",
+      "core": false
     },
     {
       "id": "freshwater_fish",
       "label": "River / lake fish",
       "emoji": "🐟",
-      "one_liner": "Fish that live in fresh water — rivers, lakes, ponds.",
+      "one_liner": "Red-bellied piranha and endemic toothcarp.",
       "tags": [
-        "wow",
         "water"
       ],
       "age_fit": [
@@ -288,46 +195,20 @@
         "6-8",
         "9+"
       ],
-      "zone": "Galleries",
+      "zone": "Amazon",
       "qa_card": {
         "question": "What did you notice about the River / lake fish?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "freshwater-fish",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "River / lake fish"
-    },
-    {
-      "id": "asian_small_clawed_otter",
-      "label": "Asian small-clawed otter",
-      "emoji": "🦦",
-      "one_liner": "Playful swimmer — smallest otter.",
-      "tags": [
-        "wow",
-        "water",
-        "outdoor",
-        "hands",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "What did you notice about the Asian small-clawed otter?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "asian-small-clawed-otter",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Asian small-clawed otter"
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "River / lake fish",
+      "core": false
     }
   ],
-  "content_mode": "hybrid",
+  "content_mode": "curated",
   "media": {
     "visitor_map_url": "/field-pack/media/maps/istanbul-aquarium.jpg",
     "visitor_map_page": "https://www.istanbulakvaryum.com/zoo-map-print",
@@ -344,25 +225,149 @@
   "route_90m": [
     "shark",
     "stingray",
-    "jellyfish"
+    "clownfish"
   ],
-  "research_notes": "R3 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [minor]",
-  "list_confidence": "template",
-  "do_not_list": [],
+  "research_notes": "[2026-08-23] Wave 4: istanbulakvaryum.com popular animals + themes. Not the claimed 1,500-species list. No invented verify date.",
+  "list_confidence": "partial",
+  "do_not_list": [
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "african-lion",
+      "name": "African lion",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "sumatran-tiger",
+      "name": "Sumatran tiger",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "western-lowland-gorilla",
+      "name": "Western lowland gorilla",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "chimpanzee",
+      "name": "Chimpanzee",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "reticulated-giraffe",
+      "name": "Reticulated giraffe",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "zebra",
+      "name": "Zebra",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "red-panda",
+      "name": "Red panda",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "nile-hippo",
+      "name": "Nile hippo",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "galapagos-tortoise",
+      "name": "Galápagos tortoise",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "orangutan",
+      "name": "Orangutan",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "cheetah",
+      "name": "Cheetah",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "koala",
+      "name": "Koala",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "giant-panda",
+      "name": "Giant panda",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "ring-tailed-lemur",
+      "name": "Ring-tailed lemur",
+      "reason": "Zoo-only card — drop even if an official rainforest list names a lemur.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "cm-outdoor",
+      "name": "Outdoor Area",
+      "reason": "Neither-kind leftover — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "Official homepage / creatures hub: Gentoo penguin.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "asian-small-clawed-otter",
+      "name": "Asian small-clawed otter",
+      "reason": "Not named on official popular-animals pages.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "jellyfish",
+      "name": "Jellyfish",
+      "reason": "Not on the published popular-animals list reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "octopus",
+      "name": "Octopus",
+      "reason": "Not on the published popular-animals list reviewed.",
+      "as_of": "2026-08-23"
+    }
+  ],
   "presence_sources": [
-    "https://www.istanbulakvaryum.com/en"
+    "https://www.istanbulakvaryum.com/en",
+    "https://www.istanbulakvaryum.com/canlilar",
+    "https://www.istanbulakvaryum.com/temalar"
   ],
   "bonus_hunt": {
-    "tagline": "Istanbul Aquarium bonus · deep tanks & hideouts",
+    "tagline": "Istanbul bonus · sharks + rays + clownfish",
     "find_ids": [
-      "shark",
-      "stingray",
-      "jellyfish"
+      "eel",
+      "sea_turtle",
+      "seahorse",
+      "freshwater_fish"
     ],
     "challenges": [
       {
-        "id": "istanbul_aqu_shark_watch",
-        "text": "Big tanks: take 15 seconds on the Shark — what is it doing right now?",
+        "id": "ist_shark",
+        "text": "Shark: count the fins you can see at once.",
         "age_fit": [
           "2-3",
           "4-5",
@@ -371,8 +376,8 @@
         ]
       },
       {
-        "id": "istanbul_aqu_stingray_watch",
-        "text": "Rays: take 15 seconds on the Stingray — what is it doing right now?",
+        "id": "ist_ray",
+        "text": "Cownose ray: glide, rest, or a splash?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -381,8 +386,8 @@
         ]
       },
       {
-        "id": "istanbul_aqu_jellyfish_watch",
-        "text": "Jellies: take 15 seconds on the Jellyfish — what is it doing right now?",
+        "id": "ist_clown",
+        "text": "Clownfish: who hides in the anemone first?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -391,56 +396,8 @@
         ]
       },
       {
-        "id": "aq_dive",
-        "text": "Watch one animal swim past you twice — same direction or different?",
-        "age_fit": [
-          "2-3",
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "aq_camouflage",
-        "text": "Find the best hider in a tank (camouflage or nook)",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "aq_glow",
-        "text": "Jellies or dark exhibit: stand still 15 seconds — what moves first?",
-        "age_fit": [
-          "2-3",
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "aq_tiny_big",
-        "text": "Find something tiny in the same hall as something huge",
-        "age_fit": [
-          "2-3",
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "aq_tunnel",
-        "text": "If there’s a tunnel or big window: name one animal above you and one beside you",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "aq_quiet",
-        "text": "Find the quietest tank corner — what’s the softest motion?",
+        "id": "ist_turtle",
+        "text": "Loggerhead: flippers busy or a still float?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -449,12 +406,13 @@
         ]
       }
     ],
-    "easter_egg": "★ Easter egg: find the darkest or glowiest corner — whisper one thing that moved",
-    "easter_egg_little": "★ Easter egg: pick a favorite bench — sit 60 seconds and name three sounds",
-    "researched": "2026-08-08",
-    "status": "thin",
+    "easter_egg": "★ Easter egg: find this zoo on a map/sign and point to a habitat you have not visited yet",
+    "easter_egg_little": "★ Easter egg: pick a favorite stop and tell a grown-up why",
     "sources": [
-      "https://www.istanbulakvaryum.com/en"
-    ]
+      "https://www.istanbulakvaryum.com/en",
+      "https://www.istanbulakvaryum.com/canlilar"
+    ],
+    "researched": "2026-08-23",
+    "status": "researched"
   }
 }

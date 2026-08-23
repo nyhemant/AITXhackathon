@@ -7,11 +7,10 @@
   "country": "CN",
   "lat": 31.241,
   "lng": 121.496,
-  "official_url": "https://www.aquarium.sh.com/",
-  "last_verified": "2026-08-07",
+  "official_url": "https://www.sh-aquarium.com/",
   "verified_by": "research",
-  "status": "verified",
-  "tagline": "Shanghai ocean tunnel — long underwater walk wow.",
+  "status": "partial",
+  "tagline": "Starter list: Shark Bay, then a green sea turtle and Pacific sea nettles — Magellanic penguins, not African.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Lujiazui / Oriental Pearl area (Pudong) — not People’s Square.",
@@ -24,7 +23,169 @@
       "id": "shark",
       "label": "Shark",
       "emoji": "🦈",
-      "one_liner": "Sharks overhead.",
+      "one_liner": "Sand tiger shark plus Shark Bay's named shark species.",
+      "tags": [
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Shark Bay",
+      "qa_card": {
+        "question": "What did you notice about the Shark?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "shark",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Shark",
+      "core": true
+    },
+    {
+      "id": "sea_turtle",
+      "label": "Sea turtle",
+      "emoji": "🐢",
+      "one_liner": "Green sea turtle in the deep-sea tunnel.",
+      "tags": [
+        "water",
+        "shell"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Deep-sea tunnel",
+      "qa_card": {
+        "question": "What did you notice about the Sea turtle?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sea-turtle",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Sea turtle",
+      "core": true
+    },
+    {
+      "id": "jellyfish",
+      "label": "Jellyfish",
+      "emoji": "🎐",
+      "one_liner": "Pacific sea nettle — watch them pulse.",
+      "tags": [
+        "water",
+        "glow",
+        "soft"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Themes",
+      "qa_card": {
+        "question": "What did you notice about the Jellyfish?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "jellyfish",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Jellyfish",
+      "core": true
+    },
+    {
+      "id": "stingray",
+      "label": "Stingray",
+      "emoji": "🐟",
+      "one_liner": "Cownose ray.",
+      "tags": [
+        "water",
+        "flat",
+        "touch"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Themes",
+      "qa_card": {
+        "question": "What did you notice about the Stingray?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "stingray",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Stingray",
+      "core": true
+    },
+    {
+      "id": "seahorse",
+      "label": "Seahorse",
+      "emoji": "🌊",
+      "one_liner": "Big-belly seahorse (膨腹海马).",
+      "tags": [
+        "water",
+        "tiny"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Themes",
+      "qa_card": {
+        "question": "What did you notice about the Seahorse?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "seahorse",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Seahorse",
+      "core": true
+    },
+    {
+      "id": "freshwater_fish",
+      "label": "River / lake fish",
+      "emoji": "🐟",
+      "one_liner": "Freshwater galleries — look for a flash.",
+      "tags": [
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Yangtze / Amazon / Africa",
+      "qa_card": {
+        "question": "What did you notice about the River / lake fish?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "freshwater-fish",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "River / lake fish",
+      "core": false
+    },
+    {
+      "id": "manta_ray",
+      "label": "Manta ray",
+      "emoji": "🐟",
+      "one_liner": "Mobulid / 蝠鲼科 flying-fish feeding.",
       "tags": [
         "water",
         "big",
@@ -36,321 +197,20 @@
         "6-8",
         "9+"
       ],
-      "zone": "Tunnel",
+      "zone": "Feeding",
       "qa_card": {
-        "question": "What did you notice about the Shark?",
+        "question": "What did you notice about the Manta ray?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "shark",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
+      "catalog_id": "manta-ray",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Shark",
-      "presence_note": "Core mega-aquarium taxa; long underwater tunnel."
-    },
-    {
-      "id": "stingray",
-      "label": "Stingray",
-      "emoji": "🐟",
-      "one_liner": "Rays.",
-      "tags": [
-        "water",
-        "flat"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Tanks",
-      "qa_card": {
-        "question": "What did you notice about the Stingray?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "stingray",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Stingray",
-      "presence_note": "Core taxa."
-    },
-    {
-      "id": "jellyfish",
-      "label": "Jellyfish",
-      "emoji": "🎐",
-      "one_liner": "Jellies.",
-      "tags": [
-        "water",
-        "glow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Jellies",
-      "qa_card": {
-        "question": "What did you notice about the Jellyfish?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "jellyfish",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Jellyfish",
-      "presence_note": "Core taxa."
-    },
-    {
-      "id": "sea_turtle",
-      "label": "Sea turtle",
-      "emoji": "🐢",
-      "one_liner": "Turtles.",
-      "tags": [
-        "water",
-        "shell"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Turtles",
-      "qa_card": {
-        "question": "What did you notice about the Sea turtle?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "sea-turtle",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Sea turtle",
-      "presence_note": "Core taxa."
-    },
-    {
-      "id": "clownfish",
-      "label": "Clownfish",
-      "emoji": "🐠",
-      "one_liner": "Reef colors.",
-      "tags": [
-        "water",
-        "color"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Reef",
-      "qa_card": {
-        "question": "What did you notice about the Clownfish?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "clownfish",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Clownfish",
-      "presence_note": "Reef galleries."
-    },
-    {
-      "id": "octopus",
-      "label": "Octopus",
-      "emoji": "🐙",
-      "one_liner": "Eight arms and a big brain — master of hide-and-seek.",
-      "tags": [
-        "wow",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "What did you notice about the Octopus?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "octopus",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Octopus",
-      "presence_note": "Core taxa."
-    },
-    {
-      "id": "seahorse",
-      "label": "Seahorse",
-      "emoji": "🌊",
-      "one_liner": "Tiny upright swimmer that holds on with its tail.",
-      "tags": [
-        "wow",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "What did you notice about the Seahorse?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "seahorse",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Seahorse",
-      "presence_note": "Core taxa."
-    },
-    {
-      "id": "eel",
-      "label": "Eel",
-      "emoji": "🐍",
-      "one_liner": "Long snaky fish — loves rocky hidey-holes.",
-      "tags": [
-        "wow",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "What did you notice about the Eel?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "eel",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Eel",
-      "presence_note": "Core taxa."
-    },
-    {
-      "id": "crab",
-      "label": "Crab",
-      "emoji": "🦀",
-      "one_liner": "Sideways walker with a hard shell and pinchers.",
-      "tags": [
-        "wow",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "What did you notice about the Crab?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "crab",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Crab",
-      "presence_note": "Core taxa."
-    },
-    {
-      "id": "starfish",
-      "label": "Sea star",
-      "emoji": "⭐",
-      "one_liner": "Star-shaped ocean friend — often in touch tanks.",
-      "tags": [
-        "wow",
-        "outdoor",
-        "play",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "What did you notice about the Sea star?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "starfish",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Sea star",
-      "presence_note": "Core taxa."
-    },
-    {
-      "id": "freshwater_fish",
-      "label": "River / lake fish",
-      "emoji": "🐟",
-      "one_liner": "Fish that live in fresh water — rivers, lakes, ponds.",
-      "tags": [
-        "wow",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "What did you notice about the River / lake fish?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "freshwater-fish",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "River / lake fish",
-      "presence_note": "Yangtze / freshwater zone is SOA signature theme."
-    },
-    {
-      "id": "asian_small_clawed_otter",
-      "label": "Asian small-clawed otter",
-      "emoji": "🦦",
-      "one_liner": "Playful swimmer — smallest otter.",
-      "tags": [
-        "wow",
-        "water",
-        "outdoor",
-        "hands",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "What did you notice about the Asian small-clawed otter?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "asian-small-clawed-otter",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Asian small-clawed otter",
-      "presence_note": "Confirm before print."
+      "display_label": "Manta ray",
+      "core": false
     }
   ],
-  "content_mode": "hybrid",
+  "content_mode": "curated",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://www.aquarium.sh.com/",
@@ -368,45 +228,153 @@
     "sea_turtle",
     "jellyfish"
   ],
-  "research_notes": "R2b 2026-08-07 · presence-audit 2026-08-08 [minor]",
+  "research_notes": "[2026-08-23] Wave 4: sh-aquarium.com themed zones + featured species (aquarium.sh.com timed out). No invented verify date.",
   "list_confidence": "partial",
-  "do_not_list": [],
-  "presence_sources": [
-    "https://www.aquarium.sh.com/"
+  "do_not_list": [
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "african-lion",
+      "name": "African lion",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "sumatran-tiger",
+      "name": "Sumatran tiger",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "western-lowland-gorilla",
+      "name": "Western lowland gorilla",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "chimpanzee",
+      "name": "Chimpanzee",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "reticulated-giraffe",
+      "name": "Reticulated giraffe",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "zebra",
+      "name": "Zebra",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "red-panda",
+      "name": "Red panda",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "nile-hippo",
+      "name": "Nile hippo",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "galapagos-tortoise",
+      "name": "Galápagos tortoise",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "orangutan",
+      "name": "Orangutan",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "cheetah",
+      "name": "Cheetah",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "koala",
+      "name": "Koala",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "giant-panda",
+      "name": "Giant panda",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "ring-tailed-lemur",
+      "name": "Ring-tailed lemur",
+      "reason": "Zoo-only card — drop even if an official rainforest list names a lemur.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "cm-outdoor",
+      "name": "Outdoor Area",
+      "reason": "Neither-kind leftover — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "Official penguin is Magellanic (麦哲伦企鹅).",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "asian-small-clawed-otter",
+      "name": "Asian small-clawed otter",
+      "reason": "Not named on official exhibition-area pages.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "eel",
+      "name": "Eel",
+      "reason": "Official electric-eel copy says it is not an eel.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "clownfish",
+      "name": "Clownfish",
+      "reason": "Not named on official exhibition-area pages reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "octopus",
+      "name": "Octopus",
+      "reason": "Not named on official exhibition-area pages reviewed.",
+      "as_of": "2026-08-23"
+    }
   ],
-  "last_presence_audit": "2026-08-08",
+  "presence_sources": [
+    "https://www.sh-aquarium.com/",
+    "https://www.sh-aquarium.com/ExhibitionArea/index.aspx",
+    "https://www.sh-aquarium.com/ParkNavigation/index.aspx"
+  ],
   "bonus_hunt": {
-    "tagline": "Shanghai Ocean bonus · long tunnel + rare fish deep cuts",
+    "tagline": "Shanghai bonus · Shark Bay + tunnel turtle + nettles",
     "find_ids": [
-      "shark",
-      "jellyfish",
-      "sea_turtle",
-      "eel",
-      "octopus"
+      "stingray",
+      "seahorse",
+      "freshwater_fish",
+      "manta_ray"
     ],
     "challenges": [
       {
-        "id": "sha_tunnel",
-        "text": "Tunnel: animal above and beside in one minute",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
         "id": "sha_shark",
-        "text": "Shark pass",
-        "age_fit": [
-          "2-3",
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "sha_jelly",
-        "text": "Jelly glow",
+        "text": "Shark Bay: count the fins you can see at once.",
         "age_fit": [
           "2-3",
           "4-5",
@@ -416,7 +384,7 @@
       },
       {
         "id": "sha_turtle",
-        "text": "Turtle surface?",
+        "text": "Green sea turtle: flippers busy or a still float?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -425,21 +393,33 @@
         ]
       },
       {
-        "id": "sha_hide",
-        "text": "Best hider",
+        "id": "sha_jelly",
+        "text": "Pacific sea nettle: watch one pulse from top to bottom.",
         "age_fit": [
+          "2-3",
+          "4-5",
+          "6-8",
+          "adult"
+        ]
+      },
+      {
+        "id": "sha_horse",
+        "text": "Big-belly seahorse: tail wrapped or swimming free?",
+        "age_fit": [
+          "2-3",
           "4-5",
           "6-8",
           "adult"
         ]
       }
     ],
-    "easter_egg": "★ Easter egg: find the longest tunnel stretch and walk it once without stopping",
-    "easter_egg_little": "★ Easter egg: after the hard list — one free minute at a favorite stop",
-    "researched": "2026-08-08",
-    "status": "researched",
+    "easter_egg": "★ Easter egg: find this zoo on a map/sign and point to a habitat you have not visited yet",
+    "easter_egg_little": "★ Easter egg: pick a favorite stop and tell a grown-up why",
     "sources": [
-      "https://www.aquarium.sh.cn/"
-    ]
+      "https://www.sh-aquarium.com/",
+      "https://www.sh-aquarium.com/ExhibitionArea/index.aspx"
+    ],
+    "researched": "2026-08-23",
+    "status": "researched"
   }
 }

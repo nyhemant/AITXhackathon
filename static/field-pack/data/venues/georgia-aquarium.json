@@ -8,10 +8,10 @@
   "lat": 33.76,
   "lng": -84.4,
   "official_url": "https://www.georgiaaquarium.org/",
-  "last_verified": "2026-08-07",
+  "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Whale sharks, belugas, and giant ocean windows — Atlanta’s kid wow tank.",
+  "tagline": "Whale sharks and manta rays first, then African penguins — southern sea otters, not a generic otter.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Timed tickets often sell out on weekends — book ahead.",
@@ -19,8 +19,8 @@
   },
   "items": [
     {
-      "id": "shark",
-      "label": "Shark",
+      "id": "whale_shark",
+      "label": "Whale shark",
       "emoji": "🦈",
       "one_liner": "Home of the whale sharks — look for the biggest fish in the tank.",
       "tags": [
@@ -36,24 +36,161 @@
       ],
       "zone": "Ocean Voyager",
       "qa_card": {
-        "question": "Which fish looks the biggest?",
-        "answer": "Whale sharks are the biggest fish in the world — gentle giants!"
+        "question": "What did you notice about the Whale shark?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "whale-shark",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Whale shark",
+      "core": true
+    },
+    {
+      "id": "manta_ray",
+      "label": "Manta ray",
+      "emoji": "🐟",
+      "one_liner": "Manta rays glide by the tunnel like underwater birds.",
+      "tags": [
+        "water",
+        "big",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Ocean Voyager",
+      "qa_card": {
+        "question": "What did you notice about the Manta ray?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "manta-ray",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Manta ray",
+      "core": true
+    },
+    {
+      "id": "african_penguin",
+      "label": "African penguin",
+      "emoji": "🐧",
+      "one_liner": "African penguin colony — more than 25 nesting areas.",
+      "tags": [
+        "birds",
+        "water",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Cold Water Quest",
+      "qa_card": {
+        "question": "What did you notice about the African penguin?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "african-penguin",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "African penguin",
+      "core": true
+    },
+    {
+      "id": "sea_otter",
+      "label": "Sea otter",
+      "emoji": "🦦",
+      "one_liner": "Southern sea otter — deck view plus a sneak-peek window.",
+      "tags": [
+        "water",
+        "play",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Cold Water Quest",
+      "qa_card": {
+        "question": "What did you notice about the Sea otter?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "sea-otter",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Sea otter",
+      "core": true
+    },
+    {
+      "id": "asian_small_clawed_otter",
+      "label": "Asian small-clawed otter",
+      "emoji": "🦦",
+      "one_liner": "Asian small-clawed otter on the official animal guide.",
+      "tags": [
+        "play",
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Animal guide",
+      "qa_card": {
+        "question": "What did you notice about the Asian small-clawed otter?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Asian small-clawed otter",
+      "core": true
+    },
+    {
+      "id": "shark",
+      "label": "Shark",
+      "emoji": "🦈",
+      "one_liner": "Reef and other sharks share Ocean Voyager with the whale sharks.",
+      "tags": [
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Ocean Voyager",
+      "qa_card": {
+        "question": "What did you notice about the Shark?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "shark",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Shark"
+      "display_label": "Shark",
+      "core": true
     },
     {
-      "id": "stingray",
-      "label": "Stingray",
-      "emoji": "射线",
-      "one_liner": "Manta-sized rays glide by the glass like underwater birds.",
+      "id": "puffin",
+      "label": "Puffin",
+      "emoji": "🐦",
+      "one_liner": "Horned and tufted puffin on the official animal guide.",
       "tags": [
-        "water",
-        "flat",
-        "wow"
+        "birds",
+        "water"
       ],
       "age_fit": [
         "2-3",
@@ -61,25 +198,27 @@
         "6-8",
         "9+"
       ],
-      "zone": "Ocean Voyager",
+      "zone": "Cold Water Quest",
       "qa_card": {
-        "question": "What did you notice about the Stingray?",
+        "question": "What did you notice about the Puffin?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "stingray",
+      "catalog_id": "puffin",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "display_label": "Stingray"
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Puffin",
+      "core": false
     },
     {
-      "id": "sea_turtle",
-      "label": "Sea turtle",
-      "emoji": "🐢",
-      "one_liner": "Sea turtles paddle past the tunnel windows.",
+      "id": "octopus",
+      "label": "Octopus",
+      "emoji": "🐙",
+      "one_liner": "A camouflage master — look carefully.",
       "tags": [
         "water",
-        "shell",
-        "wow"
+        "hide",
+        "smart"
       ],
       "age_fit": [
         "2-3",
@@ -87,21 +226,23 @@
         "6-8",
         "9+"
       ],
-      "zone": "Ocean Voyager",
+      "zone": "Tropical Diver",
       "qa_card": {
-        "question": "What did you notice about the Sea turtle?",
+        "question": "What did you notice about the Octopus?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sea-turtle",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Sea turtle"
+      "catalog_id": "octopus",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Octopus",
+      "core": false
     },
     {
       "id": "jellyfish",
       "label": "Jellyfish",
       "emoji": "🎐",
-      "one_liner": "Soft glow jellies in dark rooms — mesmerizing.",
+      "one_liner": "Soft glow jellies in the cold-water rooms.",
       "tags": [
         "water",
         "glow",
@@ -120,19 +261,19 @@
       },
       "catalog_id": "jellyfish",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
       "display_label": "Jellyfish",
-      "presence_note": "Jellies webcam"
+      "core": false
     },
     {
-      "id": "african_penguin",
-      "label": "African penguin",
-      "emoji": "🐧",
-      "one_liner": "Waddling African penguins on rocky shores.",
+      "id": "sea_turtle",
+      "label": "Sea turtle",
+      "emoji": "🐢",
+      "one_liner": "Sea turtles paddle past the tunnel windows.",
       "tags": [
         "water",
-        "outdoor",
-        "wow"
+        "shell"
       ],
       "age_fit": [
         "2-3",
@@ -140,144 +281,17 @@
         "6-8",
         "9+"
       ],
-      "zone": "Cold Water Quest",
+      "zone": "Ocean Voyager",
       "qa_card": {
-        "question": "What did you notice about the African penguin?",
+        "question": "What did you notice about the Sea turtle?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "african-penguin",
+      "catalog_id": "sea-turtle",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "African penguin"
-    },
-    {
-      "id": "asian_small_clawed_otter",
-      "label": "Asian small-clawed otter",
-      "emoji": "🦦",
-      "one_liner": "Playful sea otters (and otter friends) on the cold side.",
-      "tags": [
-        "water",
-        "play",
-        "wow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Cold Water Quest",
-      "qa_card": {
-        "question": "What did you notice about the Asian small-clawed otter?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "asian-small-clawed-otter",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Asian small-clawed otter"
-    },
-    {
-      "id": "octopus",
-      "label": "Octopus",
-      "emoji": "🐙",
-      "one_liner": "A camouflage master — look carefully!",
-      "tags": [
-        "water",
-        "hide",
-        "smart"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Tropical Diver",
-      "qa_card": {
-        "question": "What did you notice about the Octopus?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "octopus",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Octopus"
-    },
-    {
-      "id": "seahorse",
-      "label": "Seahorse",
-      "emoji": "🌊",
-      "one_liner": "Tiny upright swimmers in the reef.",
-      "tags": [
-        "water",
-        "tiny"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Tropical Diver",
-      "qa_card": {
-        "question": "What did you notice about the Seahorse?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "seahorse",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Seahorse"
-    },
-    {
-      "id": "clownfish",
-      "label": "Clownfish",
-      "emoji": "🐠",
-      "one_liner": "Bright reef fish darting through coral.",
-      "tags": [
-        "water",
-        "color"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Tropical Diver",
-      "qa_card": {
-        "question": "What did you notice about the Clownfish?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "clownfish",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Clownfish"
-    },
-    {
-      "id": "starfish",
-      "label": "Sea star",
-      "emoji": "⭐",
-      "one_liner": "If open: gentle touch pools with stars and friends.",
-      "tags": [
-        "water",
-        "touch"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Touch experiences",
-      "qa_card": {
-        "question": "What did you notice about the Sea star?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "starfish",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Sea star"
+      "display_label": "Sea turtle",
+      "core": false
     }
   ],
   "content_mode": "curated",
@@ -294,42 +308,156 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "research_notes": "map-img 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [ok]",
+  "research_notes": "[2026-08-23] Official-source Wave 4 public list pass (georgiaaquarium.org animal guide + galleries). Distinctive cards: whale-shark, manta-ray, sea-otter.",
   "list_confidence": "audited",
-  "do_not_list": [],
-  "route_90m": [
-    "shark",
-    "african_penguin",
-    "asian_small_clawed_otter"
+  "do_not_list": [
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "african-lion",
+      "name": "African lion",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "sumatran-tiger",
+      "name": "Sumatran tiger",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "western-lowland-gorilla",
+      "name": "Western lowland gorilla",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "chimpanzee",
+      "name": "Chimpanzee",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "reticulated-giraffe",
+      "name": "Reticulated giraffe",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "zebra",
+      "name": "Zebra",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "red-panda",
+      "name": "Red panda",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "nile-hippo",
+      "name": "Nile hippo",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "galapagos-tortoise",
+      "name": "Galápagos tortoise",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "orangutan",
+      "name": "Orangutan",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "cheetah",
+      "name": "Cheetah",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "koala",
+      "name": "Koala",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "giant-panda",
+      "name": "Giant panda",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "ring-tailed-lemur",
+      "name": "Ring-tailed lemur",
+      "reason": "Zoo-only card — drop even if an official rainforest list names a lemur.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "cm-outdoor",
+      "name": "Outdoor Area",
+      "reason": "Neither-kind leftover — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "kelp-forest",
+      "name": "Kelp forest",
+      "reason": "Kelp-associated fish appear; no official kelp-forest exhibit named.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "caribbean-flamingo",
+      "name": "Caribbean flamingo",
+      "reason": "Not on the official animal guide reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "two-toed-sloth",
+      "name": "Two-toed sloth",
+      "reason": "Not on the official animal guide reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "cuttlefish",
+      "name": "Cuttlefish",
+      "reason": "Not named as a public exhibit animal on pages reviewed.",
+      "as_of": "2026-08-23"
+    }
   ],
-  "last_presence_audit": "2026-08-08",
+  "route_90m": [
+    "whale_shark",
+    "manta_ray",
+    "african_penguin"
+  ],
+  "last_presence_audit": "2026-08-23",
   "presence_sources": [
+    "https://www.georgiaaquarium.org/",
     "https://www.georgiaaquarium.org/animal-guide/",
-    "https://www.georgiaaquarium.org/"
+    "https://www.georgiaaquarium.org/gallery/ocean-voyager/",
+    "https://www.georgiaaquarium.org/gallery/cold-water-quest/"
   ],
   "bonus_hunt": {
-    "tagline": "Georgia Aquarium bonus · Ocean Voyager + Cold Water Quest",
+    "tagline": "Georgia bonus · Ocean Voyager + Cold Water Quest",
     "find_ids": [
-      "stingray",
-      "jellyfish",
-      "sea_turtle",
-      "african_penguin",
+      "sea_otter",
       "asian_small_clawed_otter",
-      "shark"
+      "shark",
+      "puffin",
+      "octopus",
+      "jellyfish"
     ],
     "challenges": [
       {
-        "id": "ga_ov",
-        "text": "Ocean Voyager window: name one fish school and one big slow swimmer",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "ga_ray",
-        "text": "Rays: wing-flap or glide — which did you catch?",
+        "id": "ga_whale",
+        "text": "Whale shark: who looks biggest in the tunnel?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -338,9 +466,10 @@
         ]
       },
       {
-        "id": "ga_jelly",
-        "text": "Jellies: pulse count — how many beats in 10 seconds?",
+        "id": "ga_manta",
+        "text": "Manta ray: winged glide or a banked turn?",
         "age_fit": [
+          "2-3",
           "4-5",
           "6-8",
           "adult"
@@ -348,7 +477,7 @@
       },
       {
         "id": "ga_penguin",
-        "text": "Cold Water Quest penguins: waddle race or dive?",
+        "text": "African penguin: watch one bird enter or leave the water.",
         "age_fit": [
           "2-3",
           "4-5",
@@ -358,16 +487,7 @@
       },
       {
         "id": "ga_otter",
-        "text": "Otters: tool? toy? pure chaos? Pick one word",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "ga_turtle",
-        "text": "Sea turtle: flipper stroke slow-mo for 10 seconds",
+        "text": "Southern sea otter: snack on the belly or a back float?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -376,13 +496,13 @@
         ]
       }
     ],
-    "easter_egg": "★ Easter egg: stand under the biggest window and whisper the largest animal you can see",
-    "easter_egg_little": "★ Easter egg: make a fish face in the reflection (quietly)",
+    "easter_egg": "★ Easter egg: find this zoo on a map/sign and point to a habitat you have not visited yet",
+    "easter_egg_little": "★ Easter egg: pick a favorite stop and tell a grown-up why",
     "sources": [
       "https://www.georgiaaquarium.org/",
-      "Ocean Voyager, Cold Water Quest"
+      "https://www.georgiaaquarium.org/animal-guide/"
     ],
-    "researched": "2026-08-08",
+    "researched": "2026-08-23",
     "status": "researched"
   }
 }

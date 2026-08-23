@@ -7,11 +7,10 @@
   "country": "AE",
   "lat": 25.1972,
   "lng": 55.2744,
-  "official_url": "https://www.dubaiaquarium.com/",
-  "last_verified": "2026-08-07",
+  "official_url": "https://www.thedubaiaquarium.com/",
   "verified_by": "research",
-  "status": "verified",
-  "tagline": "Dubai Mall aquarium tunnel — short, spectacular, stroller-possible.",
+  "status": "partial",
+  "tagline": "Starter list: Asian small-clawed otters, then the tunnel sharks and rays — Gentoo penguins, not African.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Mall entry; attraction tickets inside.",
@@ -21,14 +20,39 @@
   },
   "items": [
     {
+      "id": "asian_small_clawed_otter",
+      "label": "Asian small-clawed otter",
+      "emoji": "🦦",
+      "one_liner": "Asian small-clawed otter encounter — smallest otter, biggest splash.",
+      "tags": [
+        "play",
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Underwater Zoo",
+      "qa_card": {
+        "question": "What did you notice about the Asian small-clawed otter?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "asian-small-clawed-otter",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Asian small-clawed otter",
+      "core": true
+    },
+    {
       "id": "shark",
       "label": "Shark",
       "emoji": "🦈",
-      "one_liner": "Sharks overhead in the tunnel.",
+      "one_liner": "Tunnel sharks — watch the swim from below.",
       "tags": [
-        "water",
-        "big",
-        "wow"
+        "water"
       ],
       "age_fit": [
         "2-3",
@@ -43,18 +67,20 @@
       },
       "catalog_id": "shark",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
       "display_label": "Shark",
-      "presence_note": "King crocs/shark tunnel iconic"
+      "core": true
     },
     {
       "id": "stingray",
       "label": "Stingray",
-      "emoji": "射线",
-      "one_liner": "Rays gliding by.",
+      "emoji": "🐟",
+      "one_liner": "Ray Encounter — flat swimmers glide by.",
       "tags": [
         "water",
-        "flat"
+        "flat",
+        "touch"
       ],
       "age_fit": [
         "2-3",
@@ -62,153 +88,26 @@
         "6-8",
         "9+"
       ],
-      "zone": "Tunnel / tanks",
+      "zone": "Ray Encounter",
       "qa_card": {
         "question": "What did you notice about the Stingray?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "stingray",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Stingray"
-    },
-    {
-      "id": "sea_turtle",
-      "label": "Sea turtle",
-      "emoji": "🐢",
-      "one_liner": "Turtles.",
-      "tags": [
-        "water",
-        "shell"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Tanks",
-      "qa_card": {
-        "question": "What did you notice about the Sea turtle?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "sea-turtle",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Sea turtle"
-    },
-    {
-      "id": "clownfish",
-      "label": "Clownfish",
-      "emoji": "🐠",
-      "one_liner": "Bright reef fish.",
-      "tags": [
-        "water",
-        "color"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Reef",
-      "qa_card": {
-        "question": "What did you notice about the Clownfish?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "clownfish",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Clownfish"
-    },
-    {
-      "id": "jellyfish",
-      "label": "Jellyfish",
-      "emoji": "🎐",
-      "one_liner": "Jellies if on path.",
-      "tags": [
-        "water",
-        "glow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Jellies",
-      "qa_card": {
-        "question": "What did you notice about the Jellyfish?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "jellyfish",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Jellyfish"
-    },
-    {
-      "id": "octopus",
-      "label": "Octopus",
-      "emoji": "🐙",
-      "one_liner": "Eight arms and a big brain — master of hide-and-seek.",
-      "tags": [
-        "wow",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "What did you notice about the Octopus?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "octopus",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Octopus"
-    },
-    {
-      "id": "asian_small_clawed_otter",
-      "label": "Asian small-clawed otter",
-      "emoji": "🦦",
-      "one_liner": "Playful swimmer — smallest otter.",
-      "tags": [
-        "wow",
-        "water",
-        "outdoor",
-        "hands",
-        "play"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "What did you notice about the Asian small-clawed otter?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "asian-small-clawed-otter",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Asian small-clawed otter",
-      "presence_note": "Underwater Zoo commonly lists otters"
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Stingray",
+      "core": true
     },
     {
       "id": "seahorse",
       "label": "Seahorse",
       "emoji": "🌊",
-      "one_liner": "Tiny upright swimmer that holds on with its tail.",
+      "one_liner": "Graceful seahorses in the Underwater Zoo.",
       "tags": [
-        "wow",
-        "water"
+        "water",
+        "tiny"
       ],
       "age_fit": [
         "2-3",
@@ -216,100 +115,24 @@
         "6-8",
         "9+"
       ],
-      "zone": "Galleries",
+      "zone": "Underwater Zoo",
       "qa_card": {
         "question": "What did you notice about the Seahorse?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "seahorse",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Seahorse"
-    },
-    {
-      "id": "eel",
-      "label": "Eel",
-      "emoji": "🐍",
-      "one_liner": "Long snaky fish — loves rocky hidey-holes.",
-      "tags": [
-        "wow",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "What did you notice about the Eel?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "eel",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Eel"
-    },
-    {
-      "id": "crab",
-      "label": "Crab",
-      "emoji": "🦀",
-      "one_liner": "Sideways walker with a hard shell and pinchers.",
-      "tags": [
-        "wow",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "What did you notice about the Crab?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "crab",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Crab"
-    },
-    {
-      "id": "starfish",
-      "label": "Sea star",
-      "emoji": "⭐",
-      "one_liner": "Star-shaped ocean friend — often in touch tanks.",
-      "tags": [
-        "wow",
-        "outdoor",
-        "play",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "What did you notice about the Sea star?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "starfish",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Sea star"
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Seahorse",
+      "core": false
     },
     {
       "id": "freshwater_fish",
       "label": "River / lake fish",
       "emoji": "🐟",
-      "one_liner": "Fish that live in fresh water — rivers, lakes, ponds.",
+      "one_liner": "Piranhas — look for a flash in the water.",
       "tags": [
-        "wow",
         "water"
       ],
       "age_fit": [
@@ -318,18 +141,20 @@
         "6-8",
         "9+"
       ],
-      "zone": "Galleries",
+      "zone": "Underwater Zoo",
       "qa_card": {
         "question": "What did you notice about the River / lake fish?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "freshwater-fish",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "River / lake fish"
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "River / lake fish",
+      "core": false
     }
   ],
-  "content_mode": "hybrid",
+  "content_mode": "curated",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://www.dubaiaquarium.com/",
@@ -343,28 +168,168 @@
     "Leave while happy"
   ],
   "route_90m": [
+    "asian_small_clawed_otter",
     "shark",
-    "stingray",
-    "sea_turtle"
+    "stingray"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 · presence-audit 2026-08-08 [minor]",
+  "research_notes": "[2026-08-23] Wave 4: thedubaiaquarium.com encounters + ticket copy. No public species inventory. Short overlap. No invented verify date.",
   "list_confidence": "partial",
-  "do_not_list": [],
+  "do_not_list": [
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "african-lion",
+      "name": "African lion",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "sumatran-tiger",
+      "name": "Sumatran tiger",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "western-lowland-gorilla",
+      "name": "Western lowland gorilla",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "chimpanzee",
+      "name": "Chimpanzee",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "reticulated-giraffe",
+      "name": "Reticulated giraffe",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "zebra",
+      "name": "Zebra",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "red-panda",
+      "name": "Red panda",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "nile-hippo",
+      "name": "Nile hippo",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "galapagos-tortoise",
+      "name": "Galápagos tortoise",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "orangutan",
+      "name": "Orangutan",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "cheetah",
+      "name": "Cheetah",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "koala",
+      "name": "Koala",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "giant-panda",
+      "name": "Giant panda",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "ring-tailed-lemur",
+      "name": "Ring-tailed lemur",
+      "reason": "Zoo-only card — drop even if an official rainforest list names a lemur.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "cm-outdoor",
+      "name": "Outdoor Area",
+      "reason": "Neither-kind leftover — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "Official Penguin Cove is Gentoo penguin.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "sea-otter",
+      "name": "Sea otter",
+      "reason": "Official otter is Asian small-clawed, not sea otter.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "two-toed-sloth",
+      "name": "Two-toed sloth",
+      "reason": "Sloths are mentioned; species unnamed — not mapped.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "sea-turtle",
+      "name": "Sea turtle",
+      "reason": "Not named on official encounter / ticket pages reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "clownfish",
+      "name": "Clownfish",
+      "reason": "Not named on official public pages reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "jellyfish",
+      "name": "Jellyfish",
+      "reason": "Not named on official public pages reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "octopus",
+      "name": "Octopus",
+      "reason": "Not named on official public pages reviewed.",
+      "as_of": "2026-08-23"
+    }
+  ],
   "presence_sources": [
-    "https://www.dubaiaquarium.com/"
+    "https://www.thedubaiaquarium.com/",
+    "https://www.thedubaiaquarium.com/experiences/otter-encounter/",
+    "https://www.thedubaiaquarium.com/experiences/ray-encounter/",
+    "https://www.thedubaiaquarium.com/addon/shark-trainer-encounter/"
   ],
   "bonus_hunt": {
-    "tagline": "Dubai Aquarium & Underwater Zoo bonus · Tunnel + Tanks",
+    "tagline": "Dubai bonus · otters + tunnel sharks + rays",
     "find_ids": [
-      "asian_small_clawed_otter",
-      "shark",
-      "sea_turtle",
-      "stingray"
+      "seahorse",
+      "freshwater_fish"
     ],
     "challenges": [
       {
-        "id": "auto_asian_small_claw",
-        "text": "Galleries: 15 quiet seconds on the Asian small-clawed otter — moving, hiding, eating, or resting?",
+        "id": "dxb_otter",
+        "text": "Asian small-clawed otter: find the splashiest 10 seconds.",
         "age_fit": [
           "2-3",
           "4-5",
@@ -373,8 +338,8 @@
         ]
       },
       {
-        "id": "auto_shark",
-        "text": "Tunnel: 15 quiet seconds on the Shark — moving, hiding, eating, or resting?",
+        "id": "dxb_shark",
+        "text": "Tunnel shark: count the fins you can see at once.",
         "age_fit": [
           "2-3",
           "4-5",
@@ -383,37 +348,8 @@
         ]
       },
       {
-        "id": "auto_sea_turtle",
-        "text": "Tanks: 15 quiet seconds on the Sea turtle — moving, hiding, eating, or resting?",
-        "age_fit": [
-          "2-3",
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "auto_stingray",
-        "text": "Tunnel / tanks: 15 quiet seconds on the Stingray — moving, hiding, eating, or resting?",
-        "age_fit": [
-          "2-3",
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "aq_hide",
-        "text": "Find the best hider in any tank",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "aq_pulse",
-        "text": "Jellies or dark corner: what moves first in 15s?",
+        "id": "dxb_ray",
+        "text": "Ray: glide, rest, or a splash?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -422,12 +358,13 @@
         ]
       }
     ],
-    "easter_egg": "★ Easter egg: find the darkest or glowiest corner — whisper one thing that moved",
-    "easter_egg_little": "★ Easter egg: pick a favorite bench — sit 60 seconds and name three sounds",
-    "researched": "2026-08-08",
-    "status": "solid",
+    "easter_egg": "★ Easter egg: find this zoo on a map/sign and point to a habitat you have not visited yet",
+    "easter_egg_little": "★ Easter egg: pick a favorite stop and tell a grown-up why",
     "sources": [
-      "https://www.dubaiaquarium.com/"
-    ]
+      "https://www.thedubaiaquarium.com/",
+      "https://www.thedubaiaquarium.com/experiences/otter-encounter/"
+    ],
+    "researched": "2026-08-23",
+    "status": "researched"
   }
 }

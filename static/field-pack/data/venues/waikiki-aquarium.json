@@ -8,10 +8,10 @@
   "lat": 21.27,
   "lng": -157.82,
   "official_url": "https://www.waikikiaquarium.org/",
-  "last_verified": "2026-08-07",
+  "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Tiny ocean gem by the water — Hawaiian reef life, not a mega-aquarium.",
+  "tagline": "Seahorses first, then Ocean Drifters jellies and Hunters on the Reef sharks — green sea turtle is not on exhibit.",
   "practical": {
     "typical_duration": "1–2 hours",
     "ticket_note": "Small campus; check hours.",
@@ -21,13 +21,13 @@
   },
   "items": [
     {
-      "id": "shark",
-      "label": "Shark",
-      "emoji": "🦈",
-      "one_liner": "Sharks in island tanks.",
+      "id": "seahorse",
+      "label": "Seahorse",
+      "emoji": "🌊",
+      "one_liner": "Seahorses in Amazing Adaptations — tail hold-on.",
       "tags": [
         "water",
-        "wow"
+        "tiny"
       ],
       "age_fit": [
         "2-3",
@@ -35,54 +35,27 @@
         "6-8",
         "9+"
       ],
-      "zone": "Reef / ocean",
+      "zone": "Amazing Adaptations",
       "qa_card": {
-        "question": "What did you notice about the Shark?",
+        "question": "What did you notice about the Seahorse?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "shark",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
+      "catalog_id": "seahorse",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Shark",
-      "presence_note": "Hawaiian reef sharks/gallery fishes."
-    },
-    {
-      "id": "sea_turtle",
-      "label": "Sea turtle",
-      "emoji": "🐢",
-      "one_liner": "Honu energy when on view.",
-      "tags": [
-        "water",
-        "shell",
-        "wow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Turtles",
-      "qa_card": {
-        "question": "What did you notice about the Sea turtle?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "sea-turtle",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Sea turtle",
-      "presence_note": "Sea turtles common Hawaiian aquarium highlight."
+      "display_label": "Seahorse",
+      "core": true
     },
     {
       "id": "jellyfish",
       "label": "Jellyfish",
       "emoji": "🎐",
-      "one_liner": "Soft glow.",
+      "one_liner": "Ocean Drifters jellies — watch them pulse.",
       "tags": [
         "water",
-        "glow"
+        "glow",
+        "soft"
       ],
       "age_fit": [
         "2-3",
@@ -90,23 +63,77 @@
         "6-8",
         "9+"
       ],
-      "zone": "Jellies",
+      "zone": "Ocean Drifters",
       "qa_card": {
         "question": "What did you notice about the Jellyfish?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "jellyfish",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "Jellyfish",
-      "presence_note": "Jellies common."
+      "core": true
+    },
+    {
+      "id": "shark",
+      "label": "Shark",
+      "emoji": "🦈",
+      "one_liner": "Hunters on the Reef sharks (zebra shark on exhibit).",
+      "tags": [
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Hunters on the Reef",
+      "qa_card": {
+        "question": "What did you notice about the Shark?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "shark",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Shark",
+      "core": true
     },
     {
       "id": "octopus",
       "label": "Octopus",
       "emoji": "🐙",
-      "one_liner": "Look carefully.",
+      "one_liner": "Octopus on the official animal guide.",
+      "tags": [
+        "water",
+        "hide",
+        "smart"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Animal guide",
+      "qa_card": {
+        "question": "What did you notice about the Octopus?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "octopus",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Octopus",
+      "core": true
+    },
+    {
+      "id": "cuttlefish",
+      "label": "Cuttlefish",
+      "emoji": "🦑",
+      "one_liner": "Cuttlefish on the official animal guide.",
       "tags": [
         "water",
         "hide"
@@ -117,161 +144,26 @@
         "6-8",
         "9+"
       ],
-      "zone": "Camouflage",
+      "zone": "Animal guide",
       "qa_card": {
-        "question": "What did you notice about the Octopus?",
+        "question": "What did you notice about the Cuttlefish?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "octopus",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
+      "catalog_id": "cuttlefish",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Octopus",
-      "presence_note": "Hawaiian day octopus etc. common."
-    },
-    {
-      "id": "clownfish",
-      "label": "Clownfish",
-      "emoji": "🐠",
-      "one_liner": "Bright reef colors.",
-      "tags": [
-        "water",
-        "color"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Reef",
-      "qa_card": {
-        "question": "What did you notice about the Clownfish?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "clownfish",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Clownfish",
-      "presence_note": "Reef fishes."
-    },
-    {
-      "id": "stingray",
-      "label": "Stingray",
-      "emoji": "射线",
-      "one_liner": "Flat swimmer — often in touch pools (gentle hands!).",
-      "tags": [
-        "wow",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "What did you notice about the Stingray?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "stingray",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Stingray",
-      "presence_note": "Confirm."
-    },
-    {
-      "id": "seahorse",
-      "label": "Seahorse",
-      "emoji": "🌊",
-      "one_liner": "Tiny upright swimmer that holds on with its tail.",
-      "tags": [
-        "wow",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "What did you notice about the Seahorse?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "seahorse",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Seahorse",
-      "presence_note": "Often featured."
-    },
-    {
-      "id": "eel",
-      "label": "Eel",
-      "emoji": "🐍",
-      "one_liner": "Long snaky fish — loves rocky hidey-holes.",
-      "tags": [
-        "wow",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "What did you notice about the Eel?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "eel",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Eel",
-      "presence_note": "Moray eels common Hawaiian reef."
-    },
-    {
-      "id": "crab",
-      "label": "Crab",
-      "emoji": "🦀",
-      "one_liner": "Sideways walker with a hard shell and pinchers.",
-      "tags": [
-        "wow",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Galleries",
-      "qa_card": {
-        "question": "What did you notice about the Crab?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "crab",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Crab",
-      "presence_note": "Invertebrates common."
+      "display_label": "Cuttlefish",
+      "core": true
     },
     {
       "id": "starfish",
       "label": "Sea star",
       "emoji": "⭐",
-      "one_liner": "Star-shaped ocean friend — often in touch tanks.",
+      "one_liner": "Linckia sea star.",
       "tags": [
-        "wow",
-        "outdoor",
-        "play",
-        "water"
+        "water",
+        "touch"
       ],
       "age_fit": [
         "2-3",
@@ -279,19 +171,102 @@
         "6-8",
         "9+"
       ],
-      "zone": "Galleries",
+      "zone": "Animal guide",
       "qa_card": {
         "question": "What did you notice about the Sea star?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "starfish",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
       "display_label": "Sea star",
-      "presence_note": "Sea stars common."
+      "core": true
+    },
+    {
+      "id": "crab",
+      "label": "Crab",
+      "emoji": "🦀",
+      "one_liner": "Box, ghost, and hermit crabs.",
+      "tags": [
+        "water",
+        "shell"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Animal guide",
+      "qa_card": {
+        "question": "What did you notice about the Crab?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "crab",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Crab",
+      "core": false
+    },
+    {
+      "id": "eel",
+      "label": "Eel",
+      "emoji": "🐍",
+      "one_liner": "Eels on the official animal guide.",
+      "tags": [
+        "water",
+        "hide"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Animal guide",
+      "qa_card": {
+        "question": "What did you notice about the Eel?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "eel",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Eel",
+      "core": false
+    },
+    {
+      "id": "stingray",
+      "label": "Stingray",
+      "emoji": "🐟",
+      "one_liner": "Freshwater stingray in the sharks-and-rays guide.",
+      "tags": [
+        "water",
+        "flat",
+        "touch"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Sharks and rays",
+      "qa_card": {
+        "question": "What did you notice about the Stingray?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "stingray",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Stingray",
+      "core": false
     }
   ],
-  "content_mode": "hybrid",
+  "content_mode": "curated",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://www.waikikiaquarium.org/map/",
@@ -305,47 +280,163 @@
     "Leave while happy"
   ],
   "route_90m": [
-    "sea_turtle",
-    "shark",
-    "octopus"
+    "seahorse",
+    "jellyfish",
+    "shark"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [major]",
-  "list_confidence": "partial",
+  "research_notes": "[2026-08-23] Official-source Wave 4 public list pass (waikikiaquarium.org exhibits + animal guide). Green sea turtle marked not on exhibit.",
+  "list_confidence": "audited",
   "do_not_list": [
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "african-lion",
+      "name": "African lion",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "sumatran-tiger",
+      "name": "Sumatran tiger",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "western-lowland-gorilla",
+      "name": "Western lowland gorilla",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "chimpanzee",
+      "name": "Chimpanzee",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "reticulated-giraffe",
+      "name": "Reticulated giraffe",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "zebra",
+      "name": "Zebra",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "red-panda",
+      "name": "Red panda",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "nile-hippo",
+      "name": "Nile hippo",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "galapagos-tortoise",
+      "name": "Galápagos tortoise",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "orangutan",
+      "name": "Orangutan",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "cheetah",
+      "name": "Cheetah",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "koala",
+      "name": "Koala",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "giant-panda",
+      "name": "Giant panda",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "ring-tailed-lemur",
+      "name": "Ring-tailed lemur",
+      "reason": "Zoo-only card — drop even if an official rainforest list names a lemur.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "cm-outdoor",
+      "name": "Outdoor Area",
+      "reason": "Neither-kind leftover — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "sea-turtle",
+      "name": "Sea turtle",
+      "reason": "Official animal guide: green sea turtle is not on exhibit.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "clownfish",
+      "name": "Clownfish",
+      "reason": "Damselfish pages are sergeants, not clownfish.",
+      "as_of": "2026-08-23"
+    },
     {
       "catalog_id": "asian-small-clawed-otter",
       "name": "Asian small-clawed otter",
-      "reason": "Not present; Hawaiian monk seals are the mammal exhibit.",
-      "as_of": "2026-08-08"
+      "reason": "Not on the official animal guide.",
+      "as_of": "2026-08-23"
     },
     {
       "catalog_id": "freshwater-fish",
       "name": "River / lake fish",
-      "reason": "Not a freshwater aquarium — Hawaiian marine focus.",
-      "as_of": "2026-08-08"
+      "reason": "Not used — freshwater stingray maps to stingray, not this card.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "No penguin on the official animal guide.",
+      "as_of": "2026-08-23"
     }
   ],
   "presence_sources": [
-    "https://www.waikikiaquarium.org/",
-    "https://www.waikikiaquarium.org/experience/animal-guide/marine-mammals/hawaiian-monk-seal/",
-    "https://www.hawaii.edu/news/2025/09/26/monk-seal-returns-waikiki-aquarium/"
+    "https://www.waikikiaquarium.org/experience/exhibits/",
+    "https://www.waikikiaquarium.org/experience/animal-guide/",
+    "https://www.waikikiaquarium.org/experience/exhibits/amazing-adaptations/",
+    "https://www.waikikiaquarium.org/experience/exhibits/ocean-drifters/",
+    "https://www.waikikiaquarium.org/experience/exhibits/hunters-on-the-reef/"
   ],
   "bonus_hunt": {
-    "tagline": "Waikīkī Aquarium bonus · Hawaiian reef specialists",
+    "tagline": "Waikiki bonus · seahorses + Ocean Drifters + reef hunters",
     "find_ids": [
-      "jellyfish",
-      "shark",
-      "seahorse",
-      "eel",
+      "octopus",
+      "cuttlefish",
       "starfish",
       "crab",
-      "octopus"
+      "eel",
+      "stingray"
     ],
     "challenges": [
       {
-        "id": "wai_reef",
-        "text": "Hawaiian species: name one you won’t see on the mainland easily",
+        "id": "wai_horse",
+        "text": "Seahorse: tail wrapped or swimming free?",
         "age_fit": [
+          "2-3",
           "4-5",
           "6-8",
           "adult"
@@ -353,7 +444,7 @@
       },
       {
         "id": "wai_jelly",
-        "text": "Jelly soft motion",
+        "text": "Ocean Drifters: watch one pulse from top to bottom.",
         "age_fit": [
           "2-3",
           "4-5",
@@ -362,8 +453,8 @@
         ]
       },
       {
-        "id": "wai_eel",
-        "text": "Eel head out?",
+        "id": "wai_shark",
+        "text": "Hunters on the Reef: count the fins you can see at once.",
         "age_fit": [
           "2-3",
           "4-5",
@@ -372,31 +463,24 @@
         ]
       },
       {
-        "id": "wai_hide",
-        "text": "Best hider",
+        "id": "wai_cuttle",
+        "text": "Cuttlefish: which color did it try first?",
         "age_fit": [
           "2-3",
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "wai_sea",
-        "text": "Seahorse anchor or drift?",
-        "age_fit": [
           "4-5",
           "6-8",
           "adult"
         ]
       }
     ],
-    "easter_egg": "★ Easter egg: ocean side — point to the real Pacific after a tank",
-    "easter_egg_little": "★ Easter egg: after the hard list — one free minute at a favorite stop",
-    "researched": "2026-08-08",
-    "status": "researched",
+    "easter_egg": "★ Easter egg: find this zoo on a map/sign and point to a habitat you have not visited yet",
+    "easter_egg_little": "★ Easter egg: pick a favorite stop and tell a grown-up why",
     "sources": [
-      "https://www.waikikiaquarium.org/"
-    ]
-  }
+      "https://www.waikikiaquarium.org/experience/exhibits/",
+      "https://www.waikikiaquarium.org/experience/animal-guide/"
+    ],
+    "researched": "2026-08-23",
+    "status": "researched"
+  },
+  "last_presence_audit": "2026-08-23"
 }

@@ -2,6 +2,7 @@
 
 Source of truth: static/field-pack/data/card-kinds.tsv
 A zoo kit may list kind=zoo or kind=both only.
+An aquarium kit may list kind=aquarium or kind=both only.
 """
 
 from __future__ import annotations
@@ -12,7 +13,9 @@ REPO = Path(__file__).resolve().parents[1]
 CARD_KINDS_TSV = REPO / "static" / "field-pack" / "data" / "card-kinds.tsv"
 
 ZOO_OK_KINDS = frozenset({"zoo", "both"})
+AQUARIUM_OK_KINDS = frozenset({"aquarium", "both"})
 AQUARIUM_ONLY_KIND = "aquarium"
+ZOO_ONLY_KIND = "zoo"
 NEITHER_KIND = "neither"
 
 
@@ -39,3 +42,7 @@ def card_venue_kind(slug: str, kinds: dict[str, dict[str, str]] | None = None) -
 
 def card_ok_on_zoo_kit(slug: str, kinds: dict[str, dict[str, str]] | None = None) -> bool:
     return card_venue_kind(slug, kinds) in ZOO_OK_KINDS
+
+
+def card_ok_on_aquarium_kit(slug: str, kinds: dict[str, dict[str, str]] | None = None) -> bool:
+    return card_venue_kind(slug, kinds) in AQUARIUM_OK_KINDS

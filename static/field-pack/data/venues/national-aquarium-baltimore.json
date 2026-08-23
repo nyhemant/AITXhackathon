@@ -8,10 +8,10 @@
   "lat": 39.28,
   "lng": -76.61,
   "official_url": "https://aqua.org/",
-  "last_verified": "2026-08-07",
+  "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Inner Harbor towers of tanks — sharks, dolphins energy, and jellies.",
+  "tagline": "Atlantic puffins first, then a rainforest two-toed sloth and Jellies Invasion — no African penguin on the directory.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Timed tickets recommended on weekends.",
@@ -19,14 +19,13 @@
   },
   "items": [
     {
-      "id": "shark",
-      "label": "Shark",
-      "emoji": "🦈",
-      "one_liner": "Sharks glide past floor-to-ceiling glass.",
+      "id": "puffin",
+      "label": "Puffin",
+      "emoji": "🐦",
+      "one_liner": "Atlantic puffin — a triangular red-orange bill.",
       "tags": [
-        "water",
-        "big",
-        "wow"
+        "birds",
+        "water"
       ],
       "age_fit": [
         "2-3",
@@ -34,26 +33,26 @@
         "6-8",
         "9+"
       ],
-      "zone": "Shark Alley / Atlantic",
+      "zone": "North Atlantic",
       "qa_card": {
-        "question": "What did you notice about the Shark?",
+        "question": "What did you notice about the Puffin?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "shark",
+      "catalog_id": "puffin",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Shark",
-      "presence_note": "Shark Alley / sharks featured."
+      "display_label": "Puffin",
+      "core": true
     },
     {
-      "id": "stingray",
-      "label": "Stingray",
-      "emoji": "射线",
-      "one_liner": "Rays sweep the sandy bottom.",
+      "id": "two_toed_sloth",
+      "label": "Two-toed sloth",
+      "emoji": "🦥",
+      "one_liner": "Linne's two-toed sloth — hang and look twice.",
       "tags": [
-        "water",
-        "flat"
+        "climb",
+        "outdoor"
       ],
       "age_fit": [
         "2-3",
@@ -61,26 +60,27 @@
         "6-8",
         "9+"
       ],
-      "zone": "Atlantic coral",
+      "zone": "Upland Tropical Rain Forest",
       "qa_card": {
-        "question": "What did you notice about the Stingray?",
+        "question": "What did you notice about the Two-toed sloth?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "stingray",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Stingray",
-      "presence_note": "Rays commonly in touch/exhibits. Soft Ray."
+      "catalog_id": "two-toed-sloth",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Two-toed sloth",
+      "core": true
     },
     {
       "id": "jellyfish",
       "label": "Jellyfish",
       "emoji": "🎐",
-      "one_liner": "A whole floor of floating jellies.",
+      "one_liner": "Jellies Invasion — watch them pulse.",
       "tags": [
         "water",
         "glow",
-        "wow"
+        "soft"
       ],
       "age_fit": [
         "2-3",
@@ -95,16 +95,98 @@
       },
       "catalog_id": "jellyfish",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "Jellyfish",
-      "presence_note": "Jellies / blue blubber jelly content."
+      "core": true
+    },
+    {
+      "id": "shark",
+      "label": "Shark",
+      "emoji": "🦈",
+      "one_liner": "Blacktip reef shark and Shark Alley.",
+      "tags": [
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Blacktip Reef / Shark Alley",
+      "qa_card": {
+        "question": "What did you notice about the Shark?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "shark",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Shark",
+      "core": true
+    },
+    {
+      "id": "stingray",
+      "label": "Stingray",
+      "emoji": "🐟",
+      "one_liner": "Atlantic stingray and Australian whipray.",
+      "tags": [
+        "water",
+        "flat",
+        "touch"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Animals",
+      "qa_card": {
+        "question": "What did you notice about the Stingray?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "stingray",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Stingray",
+      "core": true
+    },
+    {
+      "id": "octopus",
+      "label": "Octopus",
+      "emoji": "🐙",
+      "one_liner": "Octopus on the official 86-animal directory.",
+      "tags": [
+        "water",
+        "hide",
+        "smart"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Animals",
+      "qa_card": {
+        "question": "What did you notice about the Octopus?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "octopus",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Octopus",
+      "core": true
     },
     {
       "id": "sea_turtle",
       "label": "Sea turtle",
       "emoji": "🐢",
-      "one_liner": "Sea turtles share the big ocean habitats.",
+      "one_liner": "Green and Kemp’s ridley sea turtles.",
       "tags": [
         "water",
         "shell"
@@ -115,74 +197,23 @@
         "6-8",
         "9+"
       ],
-      "zone": "Atlantic",
+      "zone": "Animals",
       "qa_card": {
         "question": "What did you notice about the Sea turtle?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sea-turtle",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
       "display_label": "Sea turtle",
-      "presence_note": "Turtle Odyssey / sea turtles."
-    },
-    {
-      "id": "octopus",
-      "label": "Octopus",
-      "emoji": "🐙",
-      "one_liner": "Look for arms and camouflage.",
-      "tags": [
-        "water",
-        "hide"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Living Seashore / special",
-      "qa_card": {
-        "question": "What did you notice about the Octopus?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "octopus",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Octopus",
-      "presence_note": "Octopus exhibits historically/current. Soft Octopus."
-    },
-    {
-      "id": "african_penguin",
-      "label": "African penguin",
-      "emoji": "🐧",
-      "one_liner": "Penguins on the Atlantic coast story.",
-      "tags": [
-        "water",
-        "wow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Maryland: Mountains to the Sea",
-      "qa_card": {
-        "question": "What did you notice about the African penguin?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "african-penguin",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "African penguin",
-      "presence_note": "Penguin colony is a signature; African/black-footed typical. Soft Penguin if unsure."
+      "core": false
     },
     {
       "id": "clownfish",
       "label": "Clownfish",
       "emoji": "🐠",
-      "one_liner": "Bright fish after the rainforest walk.",
+      "one_liner": "Percula clownfish on the official directory.",
       "tags": [
         "water",
         "color"
@@ -193,48 +224,23 @@
         "6-8",
         "9+"
       ],
-      "zone": "Tropical rain forest / reef",
+      "zone": "Animals",
       "qa_card": {
         "question": "What did you notice about the Clownfish?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "clownfish",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
       "display_label": "Clownfish",
-      "presence_note": "Reef exhibits."
-    },
-    {
-      "id": "seahorse",
-      "label": "Seahorse",
-      "emoji": "🌊",
-      "one_liner": "Tiny dragons of the tanks.",
-      "tags": [
-        "water",
-        "tiny"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Seahorse exhibit",
-      "qa_card": {
-        "question": "What did you notice about the Seahorse?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "seahorse",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Seahorse",
-      "presence_note": "Seahorses commonly exhibited."
+      "core": false
     },
     {
       "id": "starfish",
       "label": "Sea star",
       "emoji": "⭐",
-      "one_liner": "Touch pool stars when open.",
+      "one_liner": "Sea stars on the official directory.",
       "tags": [
         "water",
         "touch"
@@ -251,19 +257,20 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "starfish",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
       "display_label": "Sea star",
-      "presence_note": "Touch/rocky exhibits."
+      "core": false
     },
     {
       "id": "eel",
       "label": "Eel",
       "emoji": "🐍",
-      "one_liner": "Long eels in rocky hideouts.",
+      "one_liner": "Eels on the official directory.",
       "tags": [
         "water",
-        "long"
+        "hide"
       ],
       "age_fit": [
         "2-3",
@@ -271,16 +278,17 @@
         "6-8",
         "9+"
       ],
-      "zone": "Atlantic",
+      "zone": "Animals",
       "qa_card": {
         "question": "What did you notice about the Eel?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "eel",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
       "display_label": "Eel",
-      "presence_note": "Morays etc. common; medium."
+      "core": false
     }
   ],
   "content_mode": "curated",
@@ -298,34 +306,160 @@
     "Leave while happy"
   ],
   "list_confidence": "audited",
-  "do_not_list": [],
+  "do_not_list": [
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "african-lion",
+      "name": "African lion",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "sumatran-tiger",
+      "name": "Sumatran tiger",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "western-lowland-gorilla",
+      "name": "Western lowland gorilla",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "chimpanzee",
+      "name": "Chimpanzee",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "reticulated-giraffe",
+      "name": "Reticulated giraffe",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "zebra",
+      "name": "Zebra",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "red-panda",
+      "name": "Red panda",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "nile-hippo",
+      "name": "Nile hippo",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "galapagos-tortoise",
+      "name": "Galápagos tortoise",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "orangutan",
+      "name": "Orangutan",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "cheetah",
+      "name": "Cheetah",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "koala",
+      "name": "Koala",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "giant-panda",
+      "name": "Giant panda",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "ring-tailed-lemur",
+      "name": "Ring-tailed lemur",
+      "reason": "Zoo-only card — drop even if an official rainforest list names a lemur.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "cm-outdoor",
+      "name": "Outdoor Area",
+      "reason": "Neither-kind leftover — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "Not on the official aqua.org animals directory; puffins are the featured alcid.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "seahorse",
+      "name": "Seahorse",
+      "reason": "Not on the official 86-animal directory reviewed.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "asian-small-clawed-otter",
+      "name": "Asian small-clawed otter",
+      "reason": "Not on the official animals directory.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "sea-otter",
+      "name": "Sea otter",
+      "reason": "Not on the official animals directory.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "caribbean-flamingo",
+      "name": "Caribbean flamingo",
+      "reason": "Not on the official animals directory.",
+      "as_of": "2026-08-23"
+    }
+  ],
   "route_90m": [
-    "shark",
-    "jellyfish",
-    "african_penguin"
+    "puffin",
+    "two_toed_sloth",
+    "jellyfish"
   ],
-  "last_presence_audit": "2026-08-08",
+  "last_presence_audit": "2026-08-23",
   "presence_sources": [
-    "https://aqua.org/",
-    "https://aqua.org/explore/",
-    "https://aqua.org/explore/exhibits/"
+    "https://aqua.org/explore/animals",
+    "https://aqua.org/explore/exhibits",
+    "https://aqua.org/explore/exhibits/north-atlantic-to-the-pacific"
   ],
-  "research_notes": "presence-audit 2026-08-08 [minor]",
+  "research_notes": "[2026-08-23] Official-source Wave 4 public list pass (aqua.org animals directory). African penguin leftover dropped.",
   "bonus_hunt": {
-    "tagline": "Baltimore Aquarium bonus · Shark Alley + Jellies Invasion",
+    "tagline": "National Aquarium bonus · puffin + sloth + jellies",
     "find_ids": [
       "shark",
-      "jellyfish",
-      "african_penguin",
       "stingray",
       "octopus",
-      "seahorse",
-      "clownfish"
+      "sea_turtle",
+      "clownfish",
+      "starfish"
     ],
     "challenges": [
       {
-        "id": "nab_shark",
-        "text": "Shark Alley: count full circle passes you catch",
+        "id": "na_puffin",
+        "text": "Atlantic puffin: beak empty or a fish stack?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -334,8 +468,8 @@
         ]
       },
       {
-        "id": "nab_jelly",
-        "text": "Jellies Invasion: pick a glow and watch 10 pulses",
+        "id": "na_sloth",
+        "text": "Rainforest sloth: mid-reach or statue-still?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -344,8 +478,8 @@
         ]
       },
       {
-        "id": "nab_penguin",
-        "text": "Maryland/penguins: belly-slide, waddle, or dive?",
+        "id": "na_jelly",
+        "text": "Jellies Invasion: watch one pulse from top to bottom.",
         "age_fit": [
           "2-3",
           "4-5",
@@ -354,41 +488,23 @@
         ]
       },
       {
-        "id": "nab_octo",
-        "text": "Octopus: suckers visible or fully tucked?",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "nab_sea",
-        "text": "Seahorse: anchored or drifting upright?",
+        "id": "na_shark",
+        "text": "Blacktip Reef: count the fins you can see at once.",
         "age_fit": [
           "2-3",
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "nab_reef",
-        "text": "Clownfish: how many in one anemone clump (best guess)?",
-        "age_fit": [
           "4-5",
           "6-8",
           "adult"
         ]
       }
     ],
-    "easter_egg": "★ Easter egg: find Living Seashore or rainforest on the map — touch one safe texture if open",
-    "easter_egg_little": "★ Easter egg: after the hard list — one free minute of favorite stop",
-    "researched": "2026-08-08",
-    "status": "researched",
+    "easter_egg": "★ Easter egg: find this zoo on a map/sign and point to a habitat you have not visited yet",
+    "easter_egg_little": "★ Easter egg: pick a favorite stop and tell a grown-up why",
     "sources": [
-      "https://aqua.org/",
-      "Shark Alley, Jellies Invasion, Maryland: Mountains to the Sea"
-    ]
+      "https://aqua.org/explore/animals",
+      "https://aqua.org/explore/exhibits"
+    ],
+    "researched": "2026-08-23",
+    "status": "researched"
   }
 }

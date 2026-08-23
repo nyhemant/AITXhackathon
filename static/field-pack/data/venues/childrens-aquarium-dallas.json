@@ -8,10 +8,9 @@
   "lat": 32.78,
   "lng": -96.76,
   "official_url": "https://www.childrensaquarium.com/",
-  "last_verified": "2026-08-16",
   "verified_by": "research",
-  "status": "verified",
-  "tagline": "Fair Park first aquarium: sharks, rays, turtles, and a touch pool.",
+  "status": "partial",
+  "tagline": "Starter Fair Park list: nurse sharks, cownose rays, then a giant Pacific octopus.",
   "practical": {
     "typical_duration": "2–3 hours",
     "ticket_note": "Fair Park location; check event-day parking.",
@@ -22,10 +21,9 @@
       "id": "shark",
       "label": "Shark",
       "emoji": "🦈",
-      "one_liner": "Fair Park shark tank — first big fish for little kids.",
+      "one_liner": "Nurse and sandbar sharks — first big fish for little kids.",
       "tags": [
-        "water",
-        "wow"
+        "water"
       ],
       "age_fit": [
         "2-3",
@@ -40,7 +38,7 @@
       },
       "catalog_id": "shark",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "Shark",
       "core": true
@@ -48,12 +46,12 @@
     {
       "id": "stingray",
       "label": "Stingray",
-      "emoji": "射线",
-      "one_liner": "Touch pool rays — gentle hands if the pool is open.",
+      "emoji": "🐟",
+      "one_liner": "Cownose stingrays — gentle hands if the pool is open.",
       "tags": [
         "water",
-        "touch",
-        "flat"
+        "flat",
+        "touch"
       ],
       "age_fit": [
         "2-3",
@@ -61,134 +59,27 @@
         "6-8",
         "9+"
       ],
-      "zone": "Touch pool",
+      "zone": "Touch tank",
       "qa_card": {
         "question": "What did you notice about the Stingray?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "stingray",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
       "display_label": "Stingray",
-      "presence_note": "Cownose stingrays featured.",
-      "core": true
-    },
-    {
-      "id": "sea_turtle",
-      "label": "Sea turtle",
-      "emoji": "🐢",
-      "one_liner": "Turtle habitats — flippers, not feet.",
-      "tags": [
-        "water",
-        "shell"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Turtle habitats",
-      "qa_card": {
-        "question": "What did you notice about the Sea turtle?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "sea-turtle",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "display_label": "Sea turtle",
-      "presence_note": "Loggerhead sea turtles featured in marketing.",
-      "core": true
-    },
-    {
-      "id": "jellyfish",
-      "label": "Jellyfish",
-      "emoji": "🎐",
-      "one_liner": "Soft drifters in the jellies gallery.",
-      "tags": [
-        "water",
-        "glow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Jellies",
-      "qa_card": {
-        "question": "What did you notice about the Jellyfish?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "jellyfish",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Jellyfish",
-      "presence_note": "Not highlighted on homepage extract — medium.",
-      "core": false
-    },
-    {
-      "id": "clownfish",
-      "label": "Clownfish",
-      "emoji": "🐠",
-      "one_liner": "Small reef tank — orange stripes in the anemone.",
-      "tags": [
-        "water",
-        "color"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Reef",
-      "qa_card": {
-        "question": "What did you notice about the Clownfish?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "clownfish",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Clownfish",
-      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract.",
-      "core": true
-    },
-    {
-      "id": "seahorse",
-      "label": "Seahorse",
-      "emoji": "🌊",
-      "one_liner": "Upright swimmers holding on with a tail.",
-      "tags": [
-        "water",
-        "tiny"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Seahorses",
-      "qa_card": {
-        "question": "What did you notice about the Seahorse?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "seahorse",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Seahorse",
-      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract.",
       "core": true
     },
     {
       "id": "octopus",
       "label": "Octopus",
       "emoji": "🐙",
-      "one_liner": "Special-exhibit octopus — eight arms, one hide.",
+      "one_liner": "Giant Pacific octopus — check the corners.",
       "tags": [
         "water",
-        "hide"
+        "hide",
+        "smart"
       ],
       "age_fit": [
         "2-3",
@@ -196,23 +87,23 @@
         "6-8",
         "9+"
       ],
-      "zone": "Special exhibits",
+      "zone": "Main galleries",
       "qa_card": {
         "question": "What did you notice about the Octopus?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "octopus",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
       "display_label": "Octopus",
-      "presence_note": "Not confirmed on official sources reviewed in this audit pass.",
-      "core": false
+      "core": true
     },
     {
-      "id": "crab",
-      "label": "Crab",
-      "emoji": "🦀",
-      "one_liner": "Tide creatures — sideways walkers.",
+      "id": "sea_turtle",
+      "label": "Sea turtle",
+      "emoji": "🐢",
+      "one_liner": "Loggerhead sea turtle — flippers, not feet.",
       "tags": [
         "water",
         "shell"
@@ -223,23 +114,49 @@
         "6-8",
         "9+"
       ],
-      "zone": "Tide creatures",
+      "zone": "Main galleries",
       "qa_card": {
-        "question": "What did you notice about the Crab?",
+        "question": "What did you notice about the Sea turtle?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "crab",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Crab",
-      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract.",
+      "catalog_id": "sea-turtle",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Sea turtle",
+      "core": true
+    },
+    {
+      "id": "freshwater_fish",
+      "label": "River / lake fish",
+      "emoji": "🐟",
+      "one_liner": "Australian rainbows and blind cavefish — look for a flash.",
+      "tags": [
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Freshwater",
+      "qa_card": {
+        "question": "What did you notice about the River / lake fish?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "freshwater-fish",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "River / lake fish",
       "core": true
     },
     {
       "id": "starfish",
       "label": "Sea star",
       "emoji": "⭐",
-      "one_liner": "Touch-tank sea star — count the arms.",
+      "one_liner": "Touch-tank sea stars with urchins (if open).",
       "tags": [
         "water",
         "touch"
@@ -250,26 +167,26 @@
         "6-8",
         "9+"
       ],
-      "zone": "Touch",
+      "zone": "Touch tank",
       "qa_card": {
         "question": "What did you notice about the Sea star?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "starfish",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
       "display_label": "Sea star",
-      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract.",
-      "core": true
+      "core": false
     },
     {
       "id": "eel",
       "label": "Eel",
       "emoji": "🐍",
-      "one_liner": "Rocky hidey-hole — a long snaky fish.",
+      "one_liner": "Graceful eels — a long stare from a rocky hole.",
       "tags": [
         "water",
-        "long"
+        "hide"
       ],
       "age_fit": [
         "2-3",
@@ -277,17 +194,17 @@
         "6-8",
         "9+"
       ],
-      "zone": "Rocky tanks",
+      "zone": "Main galleries",
       "qa_card": {
         "question": "What did you notice about the Eel?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "eel",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
       "display_label": "Eel",
-      "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract.",
-      "core": true
+      "core": false
     }
   ],
   "content_mode": "curated",
@@ -304,27 +221,162 @@
     "Leave while happy"
   ],
   "list_confidence": "partial",
-  "do_not_list": [],
+  "do_not_list": [
+    {
+      "catalog_id": "african-elephant",
+      "name": "African elephant",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "african-lion",
+      "name": "African lion",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "sumatran-tiger",
+      "name": "Sumatran tiger",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "western-lowland-gorilla",
+      "name": "Western lowland gorilla",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "chimpanzee",
+      "name": "Chimpanzee",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "reticulated-giraffe",
+      "name": "Reticulated giraffe",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "zebra",
+      "name": "Zebra",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "red-panda",
+      "name": "Red panda",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "nile-hippo",
+      "name": "Nile hippo",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "galapagos-tortoise",
+      "name": "Galápagos tortoise",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "orangutan",
+      "name": "Orangutan",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "cheetah",
+      "name": "Cheetah",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "koala",
+      "name": "Koala",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "giant-panda",
+      "name": "Giant panda",
+      "reason": "Zoo-only card — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "ring-tailed-lemur",
+      "name": "Ring-tailed lemur",
+      "reason": "Zoo-only card — drop even if an official rainforest list names a lemur.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "cm-outdoor",
+      "name": "Outdoor Area",
+      "reason": "Neither-kind leftover — aquarium kits list aquarium|both only.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "crab",
+      "name": "Crab",
+      "reason": "Official touch tank names horseshoe crabs — not the crab card.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "jellyfish",
+      "name": "Jellyfish",
+      "reason": "Not named on official animal-exhibits pages.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "seahorse",
+      "name": "Seahorse",
+      "reason": "Not named on official animal-exhibits pages.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "clownfish",
+      "name": "Clownfish",
+      "reason": "Not named on official animal-exhibits pages.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "asian-small-clawed-otter",
+      "name": "Asian small-clawed otter",
+      "reason": "No otter on the official Children's Aquarium Dallas list.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "two-toed-sloth",
+      "name": "Two-toed sloth",
+      "reason": "DWA rainforest leftover — not a Fair Park animal.",
+      "as_of": "2026-08-23"
+    }
+  ],
   "route_90m": [
     "shark",
     "stingray",
-    "sea_turtle"
+    "octopus"
   ],
   "presence_sources": [
-    "https://www.childrensaquarium.com/"
+    "https://www.childrensaquarium.com/",
+    "https://www.childrensaquarium.com/animal-exhibits/"
   ],
-  "research_notes": "presence-audit 2026-08-08 [ok]",
+  "research_notes": "[2026-08-23] Wave 4: official childrensaquarium.com homepage + animal-exhibits. Small-tank list, not a DWA clone. No invented verify date.",
   "bonus_hunt": {
-    "tagline": "Children's Aquarium Dallas bonus · Main galleries + Turtle habitats",
+    "tagline": "CAD bonus · sharks + rays + octopus",
     "find_ids": [
-      "shark",
       "sea_turtle",
-      "stingray"
+      "freshwater_fish",
+      "starfish",
+      "eel"
     ],
     "challenges": [
       {
-        "id": "auto_shark",
-        "text": "Main galleries: 15 quiet seconds on the Shark — moving, hiding, eating, or resting?",
+        "id": "cad_shark",
+        "text": "Shark tank: count the fins you can see at once.",
         "age_fit": [
           "2-3",
           "4-5",
@@ -333,8 +385,8 @@
         ]
       },
       {
-        "id": "auto_sea_turtle",
-        "text": "Turtle habitats: 15 quiet seconds on the Sea turtle — moving, hiding, eating, or resting?",
+        "id": "cad_ray",
+        "text": "Cownose ray: glide, rest, or a splash?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -343,8 +395,8 @@
         ]
       },
       {
-        "id": "auto_stingray",
-        "text": "Touch pool: 15 quiet seconds on the Stingray — moving, hiding, eating, or resting?",
+        "id": "cad_octo",
+        "text": "Giant Pacific octopus: how long until you spot an arm?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -353,17 +405,8 @@
         ]
       },
       {
-        "id": "aq_hide",
-        "text": "Find the best hider in any tank",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "aq_pulse",
-        "text": "Jellies or dark corner: what moves first in 15s?",
+        "id": "cad_turtle",
+        "text": "Loggerhead: flippers busy or a still float?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -372,12 +415,13 @@
         ]
       }
     ],
-    "easter_egg": "★ Easter egg: find the darkest or glowiest corner — whisper one thing that moved",
-    "easter_egg_little": "★ Easter egg: pick a favorite bench — sit 60 seconds and name three sounds",
-    "researched": "2026-08-08",
-    "status": "solid",
+    "easter_egg": "★ Easter egg: find this zoo on a map/sign and point to a habitat you have not visited yet",
+    "easter_egg_little": "★ Easter egg: pick a favorite stop and tell a grown-up why",
     "sources": [
-      "https://www.childrensaquarium.com/"
-    ]
+      "https://www.childrensaquarium.com/",
+      "https://www.childrensaquarium.com/animal-exhibits/"
+    ],
+    "researched": "2026-08-23",
+    "status": "researched"
   }
 }
