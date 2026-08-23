@@ -193,11 +193,14 @@ class FlagshipSessionTests(unittest.TestCase):
         art = [line for line in hub.splitlines() if "cm-art-lab" in line][0]
         self.assertIn("Perot Museum", art)
 
-    def test_lion_card_keeps_zoo_cards_cta_and_chip_labels(self):
+    def test_lion_card_keeps_chip_labels_without_home_zoo_cta(self):
         html = (FP / "cards" / "african-lion" / "index.html").read_text(encoding="utf-8")
-        self.assertIn("This zoo's cards", html)
+        self.assertNotIn("This zoo's cards", html)
+        self.assertIn("Explore at home", html)
         self.assertIn("Meat", html)
         self.assertIn("Run fast", html)
+        dallas = self._visible((FP / "dallas-zoo" / "index.html").read_text(encoding="utf-8"))
+        self.assertIn("This zoo's cards", dallas)
         css = (FP / "css" / "styles.css").read_text(encoding="utf-8")
         seo = (FP / "css" / "seo-venue.css").read_text(encoding="utf-8")
         self.assertIn("overflow-wrap: anywhere", css)
