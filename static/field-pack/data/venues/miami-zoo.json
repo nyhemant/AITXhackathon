@@ -8,10 +8,9 @@
   "lat": 25.61,
   "lng": -80.4,
   "official_url": "https://www.zoomiami.org/",
-  "last_verified": "2026-08-07",
   "verified_by": "research",
-  "status": "verified",
-  "tagline": "Zoo Miami — huge open campus; wagon/stroller and early start required.",
+  "status": "partial",
+  "tagline": "Starter list: African elephants, then a Sumatran tiger and Bornean orangutan.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "South Dade heat is real — water, hats, early entry.",
@@ -24,7 +23,7 @@
       "id": "african_elephant",
       "label": "African elephant",
       "emoji": "🐘",
-      "one_liner": "Elephants on open range-style views.",
+      "one_liner": "Official African elephants — look at that trunk.",
       "tags": [
         "big",
         "outdoor",
@@ -43,45 +42,19 @@
       },
       "catalog_id": "african-elephant",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "African elephant",
-      "presence_note": "Animals page: African Elephants and Asian Elephant both listed."
-    },
-    {
-      "id": "reticulated_giraffe",
-      "label": "Giraffe",
-      "emoji": "🦒",
-      "one_liner": "Giraffes.",
-      "tags": [
-        "tall",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Africa",
-      "qa_card": {
-        "question": "What did you notice about the Reticulated giraffe?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "reticulated-giraffe",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Giraffe",
-      "presence_note": "Giraffe on animals list; subspecies not forced — soft Giraffe."
+      "core": true
     },
     {
       "id": "sumatran_tiger",
       "label": "Sumatran tiger",
       "emoji": "🐯",
-      "one_liner": "Tigers.",
+      "one_liner": "Sumatran tiger — orange stripes in the trees.",
       "tags": [
         "big-cats",
+        "pattern",
         "outdoor"
       ],
       "age_fit": [
@@ -97,46 +70,19 @@
       },
       "catalog_id": "sumatran-tiger",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "Sumatran tiger",
-      "presence_note": "Sumatran Tiger on animals list."
+      "core": true
     },
     {
       "id": "orangutan",
       "label": "Orangutan",
       "emoji": "🦧",
-      "one_liner": "Orangutans.",
+      "one_liner": "Bornean orangutan — long arms in the trees.",
       "tags": [
         "primates",
-        "climb"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Asia / primates",
-      "qa_card": {
-        "question": "What did you notice about the Orangutan?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "orangutan",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Orangutan",
-      "presence_note": "Bornean Orangutan."
-    },
-    {
-      "id": "african_lion",
-      "label": "Lion",
-      "emoji": "🦁",
-      "one_liner": "Big cat of the grassland pride — mighty roar!",
-      "tags": [
-        "wow",
-        "big-cats",
+        "climb",
         "outdoor"
       ],
       "age_fit": [
@@ -145,26 +91,53 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Asia",
       "qa_card": {
-        "question": "What is special about the African lion?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Orangutan?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "african-lion",
+      "catalog_id": "orangutan",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Lion",
-      "presence_note": "Lion on animals list."
+      "display_label": "Orangutan",
+      "core": true
     },
     {
       "id": "western_lowland_gorilla",
       "label": "Gorilla",
       "emoji": "🦍",
-      "one_liner": "Strong gentle ape in family groups.",
+      "one_liner": "Lowland gorilla family — who looks in charge?",
       "tags": [
-        "wow",
-        "outdoor",
+        "primates",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Africa",
+      "qa_card": {
+        "question": "What did you notice about the Gorilla?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Gorilla",
+      "core": true,
+      "presence_note": "Official: Lowland Gorilla / Western lowland gorillas."
+    },
+    {
+      "id": "chimpanzee",
+      "label": "Chimpanzee",
+      "emoji": "🐵",
+      "one_liner": "Chimpanzee play and chatter.",
+      "tags": [
+        "primates",
         "play"
       ],
       "age_fit": [
@@ -173,26 +146,25 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Africa",
       "qa_card": {
-        "question": "What is special about the Western lowland gorilla?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Chimpanzee?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "western-lowland-gorilla",
+      "catalog_id": "chimpanzee",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Gorilla",
-      "presence_note": "Lowland Gorilla."
+      "display_label": "Chimpanzee",
+      "core": true
     },
     {
-      "id": "african_penguin",
-      "label": "African penguin",
-      "emoji": "🐧",
-      "one_liner": "Waddle on land, zoom in water.",
+      "id": "koala",
+      "label": "Koala",
+      "emoji": "🐨",
+      "one_liner": "Official koala — sleepy eucalyptus eater.",
       "tags": [
-        "wow",
-        "water",
+        "climb",
         "outdoor"
       ],
       "age_fit": [
@@ -201,135 +173,53 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Australia",
       "qa_card": {
-        "question": "What is special about the African penguin?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Koala?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "african-penguin",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "African penguin",
-      "presence_note": "Not confirmed on animals map extract."
-    },
-    {
-      "id": "cheetah",
-      "label": "Cheetah",
-      "emoji": "🐆",
-      "one_liner": "Fastest land animal — built to sprint.",
-      "tags": [
-        "wow",
-        "big-cats",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Cheetah?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "cheetah",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Cheetah",
-      "presence_note": "Not confirmed on animals map extract."
-    },
-    {
-      "id": "caribbean_flamingo",
-      "label": "Flamingo",
-      "emoji": "🦩",
-      "one_liner": "Bright pink wader — long legs for shallow water.",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Caribbean flamingo?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "caribbean-flamingo",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Flamingo",
-      "presence_note": "American/Florida Flamingos listed. Soft Flamingo."
-    },
-    {
-      "id": "two_toed_sloth",
-      "label": "Two-toed sloth",
-      "emoji": "🦥",
-      "one_liner": "Slow forest climber — hangs upside down.",
-      "tags": [
-        "wow",
-        "hands",
-        "play",
-        "rest",
-        "kids"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Two-toed sloth?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "two-toed-sloth",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Two-toed sloth",
-      "presence_note": "Not confirmed on animals map extract."
-    },
-    {
-      "id": "zebra",
-      "label": "Zebra",
-      "emoji": "🦓",
-      "one_liner": "Striped grassland runner — every pattern is unique.",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Zebra?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "zebra",
+      "catalog_id": "koala",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Zebra",
-      "presence_note": "Grevy's Zebra listed."
+      "display_label": "Koala",
+      "core": true
+    },
+    {
+      "id": "warthog",
+      "label": "Warthog",
+      "emoji": "🐗",
+      "one_liner": "Warthog — snout, tusks, and a trot.",
+      "tags": [
+        "outdoor",
+        "africa"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Africa",
+      "qa_card": {
+        "question": "What did you notice about the Warthog?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "warthog",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Warthog",
+      "core": false
     },
     {
       "id": "galapagos_tortoise",
       "label": "Galápagos tortoise",
       "emoji": "🐢",
-      "one_liner": "Giant tortoise — slow and steady.",
+      "one_liner": "Galápagos tortoise — mid-step or statue?",
       "tags": [
-        "wow",
-        "outdoor"
+        "outdoor",
+        "slow"
       ],
       "age_fit": [
         "2-3",
@@ -337,17 +227,74 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Reptiles",
       "qa_card": {
-        "question": "What is special about the Galápagos tortoise?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Galápagos tortoise?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "galapagos-tortoise",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "Galápagos tortoise",
-      "presence_note": "Galapagos Tortoise listed."
+      "core": false
+    },
+    {
+      "id": "caribbean_flamingo",
+      "label": "Flamingo",
+      "emoji": "🦩",
+      "one_liner": "American flamingo flock — long legs in the shallows.",
+      "tags": [
+        "birds",
+        "color",
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Florida",
+      "qa_card": {
+        "question": "What did you notice about the Flamingo?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "caribbean-flamingo",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Flamingo",
+      "core": false,
+      "presence_note": "Official: American Flamingos (Phoenicopterus ruber). Soft Flamingo."
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Reticulated giraffe",
+      "emoji": "🦒",
+      "one_liner": "Official reticulated giraffe — look up from the path.",
+      "tags": [
+        "tall",
+        "outdoor",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Africa",
+      "qa_card": {
+        "question": "What did you notice about the Reticulated giraffe?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "reticulated-giraffe",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Reticulated giraffe",
+      "core": false
     }
   ],
   "content_mode": "curated",
@@ -369,39 +316,43 @@
     "sumatran_tiger",
     "orangutan"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [major]",
-  "list_confidence": "audited",
+  "research_notes": "[2026-08-23] Wave 2b: official zoo-map + adopt/animals pages. Also keeps Asian elephants — do not fold into the African card. No invented verify date.",
+  "list_confidence": "partial",
   "do_not_list": [
     {
       "catalog_id": "nile-hippo",
       "name": "Nile hippo",
-      "reason": "Official listing shows pygmy hippo; do not label Nile hippo without confirmation.",
-      "as_of": "2026-08-08"
+      "reason": "Official listing: pygmy hippopotamus, not Nile hippo.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "asian-small-clawed-otter",
+      "name": "Asian small-clawed otter",
+      "reason": "Official map/adopt lists giant otter and North American river otter.",
+      "as_of": "2026-08-23"
     }
   ],
-  "last_presence_audit": "2026-08-08",
   "presence_sources": [
     "https://www.zoomiami.org/animals",
     "https://www.zoomiami.org/zoo-map",
-    "https://www.zoomiami.org/know-before-you-visit"
+    "https://www.zoomiami.org/wildlife-guardians"
   ],
   "bonus_hunt": {
-    "tagline": "Zoo Miami bonus · Africa megafauna + Asia apes",
+    "tagline": "Zoo Miami bonus · elephants + tiger + orangutan",
     "find_ids": [
-      "african_elephant",
-      "sumatran_tiger",
-      "orangutan",
       "western_lowland_gorilla",
-      "african_lion",
-      "zebra",
+      "chimpanzee",
+      "koala",
+      "warthog",
       "galapagos_tortoise",
       "caribbean_flamingo"
     ],
     "challenges": [
       {
-        "id": "mia_el",
-        "text": "Africa elephant: trunk tool or dust?",
+        "id": "mia_elephant",
+        "text": "African elephants: trunk busy or a full rest?",
         "age_fit": [
+          "2-3",
           "4-5",
           "6-8",
           "adult"
@@ -409,7 +360,7 @@
       },
       {
         "id": "mia_tiger",
-        "text": "Asia tiger: pace vs hide",
+        "text": "Sumatran tiger: count stripe clusters on one shoulder.",
         "age_fit": [
           "2-3",
           "4-5",
@@ -419,16 +370,7 @@
       },
       {
         "id": "mia_orang",
-        "text": "Orangutan: clever hands moment",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "mia_gorilla",
-        "text": "Gorilla: chest or face focus?",
+        "text": "Orangutan: hands or feet doing the clever bit?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -437,17 +379,8 @@
         ]
       },
       {
-        "id": "mia_pattern",
-        "text": "Zebra vs flamingo — pattern vs color wow",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "mia_tort",
-        "text": "Giant tortoise: mid-step or statue?",
+        "id": "mia_koala",
+        "text": "Koala: eyes open or a daytime nap?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -456,12 +389,13 @@
         ]
       }
     ],
-    "easter_egg": "★ Easter egg: find Asia or Amazon-and-Beyond on a map (name one zone you skip today)",
-    "easter_egg_little": "★ Easter egg: after the hard list — one free minute of favorite stop",
-    "researched": "2026-08-08",
-    "status": "researched",
+    "easter_egg": "★ Easter egg: find this zoo on a map/sign and point to a habitat you have not visited yet",
+    "easter_egg_little": "★ Easter egg: pick a favorite stop and tell a grown-up why",
     "sources": [
-      "https://www.zoomiami.org/"
-    ]
+      "https://www.zoomiami.org/animals",
+      "https://www.zoomiami.org/zoo-map"
+    ],
+    "researched": "2026-08-23",
+    "status": "researched"
   }
 }

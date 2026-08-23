@@ -8,10 +8,9 @@
   "lat": 47.3,
   "lng": -122.52,
   "official_url": "https://www.pdza.org/",
-  "last_verified": "2026-08-07",
   "verified_by": "research",
-  "status": "verified",
-  "tagline": "Tacoma zoo + aquarium hybrid — red wolves, ocean, and compact NW day.",
+  "status": "partial",
+  "tagline": "Starter zoo-side list: Sumatran tiger, Asian small-clawed otter, then ring-tailed lemurs — no aquarium cards.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Point Defiance Park; parking can fill on sunny weekends.",
@@ -24,11 +23,11 @@
       "id": "sumatran_tiger",
       "label": "Sumatran tiger",
       "emoji": "🐯",
-      "one_liner": "Tigers in a NW zoo setting.",
+      "one_liner": "Asian Forest Sumatran tiger (Bintang) — orange stripes in the trees.",
       "tags": [
         "big-cats",
-        "outdoor",
-        "wow"
+        "pattern",
+        "outdoor"
       ],
       "age_fit": [
         "2-3",
@@ -36,76 +35,23 @@
         "6-8",
         "9+"
       ],
-      "zone": "Asian Forest",
+      "zone": "Asian Forest Sanctuary",
       "qa_card": {
         "question": "What did you notice about the Sumatran tiger?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sumatran-tiger",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "Sumatran tiger",
-      "presence_note": "Asian Forest Sanctuary: Sumatran tiger (e.g. Bintang)."
-    },
-    {
-      "id": "shark",
-      "label": "Shark",
-      "emoji": "🦈",
-      "one_liner": "Sharks indoors when weather turns.",
-      "tags": [
-        "water",
-        "big"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Aquarium",
-      "qa_card": {
-        "question": "What did you notice about the Shark?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "shark",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Shark",
-      "presence_note": "Pacific Seas / Tropical Reef aquariums — sharks (incl. dive with sharks marketing)."
-    },
-    {
-      "id": "jellyfish",
-      "label": "Jellyfish",
-      "emoji": "🎐",
-      "one_liner": "Jellies for a calm indoor stop.",
-      "tags": [
-        "water",
-        "glow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Aquarium",
-      "qa_card": {
-        "question": "What did you notice about the Jellyfish?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "jellyfish",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Jellyfish",
-      "presence_note": "Aquarium jellies. Soft Jellyfish."
+      "core": true
     },
     {
       "id": "asian_small_clawed_otter",
       "label": "Asian small-clawed otter",
       "emoji": "🦦",
-      "one_liner": "Otter play if on exhibit.",
+      "one_liner": "Asian Forest otters — smallest otter, biggest splash.",
       "tags": [
         "play",
         "water"
@@ -116,26 +62,27 @@
         "6-8",
         "9+"
       ],
-      "zone": "Otters / marine",
+      "zone": "Asian Forest Sanctuary",
       "qa_card": {
         "question": "What did you notice about the Asian small-clawed otter?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "asian-small-clawed-otter",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "Asian small-clawed otter",
-      "presence_note": "Asian Forest: Asian small-clawed otter."
+      "core": true
     },
     {
-      "id": "red_panda",
-      "label": "Red panda",
-      "emoji": "🦊",
-      "one_liner": "Red pandas in trees.",
+      "id": "ring_tailed_lemur",
+      "label": "Ring-tailed lemur",
+      "emoji": "🐒",
+      "one_liner": "Kids' Zone ring-tailed lemurs — striped tail and a long stare.",
       "tags": [
-        "climb",
-        "outdoor"
+        "primates",
+        "pattern",
+        "climb"
       ],
       "age_fit": [
         "2-3",
@@ -143,151 +90,18 @@
         "6-8",
         "9+"
       ],
-      "zone": "Asia",
+      "zone": "Kids' Zone",
       "qa_card": {
-        "question": "What did you notice about the Red panda?",
+        "question": "What did you notice about the Ring-tailed lemur?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "red-panda",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Red panda",
-      "presence_note": "Not on Asian Forest animal list extract (tiger, clouded leopard, gibbon, tapir, anoa, siamang, otter)."
-    },
-    {
-      "id": "african_elephant",
-      "label": "Elephant (verify Asian)",
-      "emoji": "🐘",
-      "one_liner": "Biggest land animal — trunk to grab, spray, and say hello.",
-      "tags": [
-        "wow",
-        "big",
-        "outdoor",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the African elephant?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "african-elephant",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Elephant (verify Asian)",
-      "presence_note": "Asian elephant historically (Suki); status/species label — not African. Medium pending live confirm."
-    },
-    {
-      "id": "sea_turtle",
-      "label": "Sea turtle",
-      "emoji": "🐢",
-      "one_liner": "Shelled ocean traveler — flippers for swimming.",
-      "tags": [
-        "wow",
-        "water",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What did you notice about the Sea turtle?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "sea-turtle",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Sea turtle",
-      "presence_note": "Aquarium sea turtles likely. Soft Sea turtle."
-    },
-    {
-      "id": "octopus",
-      "label": "Octopus",
-      "emoji": "🐙",
-      "one_liner": "Eight arms and a big brain — master of hide-and-seek.",
-      "tags": [
-        "wow",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What did you notice about the Octopus?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "octopus",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Octopus",
-      "presence_note": "Aquarium. Soft Octopus."
-    },
-    {
-      "id": "african_penguin",
-      "label": "Penguin",
-      "emoji": "🐧",
-      "one_liner": "Waddle on land, zoom in water.",
-      "tags": [
-        "wow",
-        "water",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the African penguin?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "african-penguin",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
+      "catalog_id": "ring-tailed-lemur",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Penguin",
-      "presence_note": "Penguin Point. Soft Penguin; confirm African."
-    },
-    {
-      "id": "stingray",
-      "label": "Stingray",
-      "emoji": "射线",
-      "one_liner": "Flat swimmer — often in touch pools (gentle hands!).",
-      "tags": [
-        "wow",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What did you notice about the Stingray?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "stingray",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Stingray",
-      "presence_note": "Aquarium rays. Soft Ray."
+      "display_label": "Ring-tailed lemur",
+      "core": true,
+      "presence_note": "Official story names ring-tailed lemurs Bobbi and Freedom; Kids' Zone also has ruffed lemurs."
     }
   ],
   "content_mode": "curated",
@@ -306,58 +120,62 @@
   ],
   "route_90m": [
     "sumatran_tiger",
-    "shark",
-    "jellyfish"
+    "asian_small_clawed_otter",
+    "ring_tailed_lemur"
   ],
-  "research_notes": "R1 hybrid 2026-08-07 · web-map 2026-08-07 · presence-audit 2026-08-08 [major]",
-  "list_confidence": "audited",
+  "research_notes": "[2026-08-23] Wave 2b: zoo-side habitat pages only. Aquarium shark/jelly/turtle/ray dropped. Short published-card list. No invented verify date.",
+  "list_confidence": "partial",
   "do_not_list": [
     {
-      "catalog_id": "reticulated-giraffe",
-      "name": "Reticulated giraffe",
-      "reason": "Not a Point Defiance focus/collection species on habitat pages.",
-      "as_of": "2026-08-08"
-    },
-    {
-      "catalog_id": "zebra",
-      "name": "Zebra",
-      "reason": "Not on PDZA habitat lineup.",
-      "as_of": "2026-08-08"
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "Official Penguin Point: Magellanic penguins, not African.",
+      "as_of": "2026-08-23"
     },
     {
       "catalog_id": "african-elephant",
       "name": "African elephant",
-      "reason": "If elephant present it is Asian; African label false. Confirm live status of elephant program.",
-      "as_of": "2026-08-08"
+      "reason": "Former elephant barn is being converted; historical elephant was Asian.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "reticulated-giraffe",
+      "name": "Reticulated giraffe",
+      "reason": "Not on official habitat animal lists.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "zebra",
+      "name": "Zebra",
+      "reason": "Not on official habitat animal lists.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "shark",
+      "name": "Shark",
+      "reason": "Sharks are Pacific Seas / Tropical Reef aquarium habitats — not a zoo-side card.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "red-panda",
+      "name": "Red panda",
+      "reason": "Not on the official Asian Forest animal list.",
+      "as_of": "2026-08-23"
     }
   ],
-  "last_presence_audit": "2026-08-08",
   "presence_sources": [
-    "https://www.pdza.org/",
     "https://www.pdza.org/animals/",
     "https://www.pdza.org/animals/asian-forest-sanctuary/",
-    "https://www.pdza.org/animals/pacific-seas-aquarium/"
+    "https://www.pdza.org/animals/rocky-shores/penguin-point/",
+    "https://www.pdza.org/animals/kids-zone/"
   ],
   "bonus_hunt": {
-    "tagline": "Point Defiance bonus · Rocky shores + Asian Forest",
-    "find_ids": [
-      "sumatran_tiger",
-      "shark",
-      "jellyfish"
-    ],
+    "tagline": "Point Defiance bonus · Asian Forest + Kids' Zone (zoo-side)",
+    "find_ids": [],
     "challenges": [
       {
-        "id": "pd_tiger",
-        "text": "Asian Forest tiger: 20 silent seconds",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "pd_panda",
-        "text": "Red panda: curl or climb",
+        "id": "pdza_tiger",
+        "text": "Sumatran tiger: count stripe clusters on one shoulder.",
         "age_fit": [
           "2-3",
           "4-5",
@@ -366,8 +184,8 @@
         ]
       },
       {
-        "id": "pd_polar",
-        "text": "Polar bear: swim or land pace?",
+        "id": "pdza_otter",
+        "text": "Asian small-clawed otter: find the splashiest 10 seconds.",
         "age_fit": [
           "2-3",
           "4-5",
@@ -376,17 +194,18 @@
         ]
       },
       {
-        "id": "pd_otter",
-        "text": "Sea otter: tools/hands or float?",
+        "id": "pdza_lemur",
+        "text": "Ring-tailed lemur: striped tail up or a long sit?",
         "age_fit": [
+          "2-3",
           "4-5",
           "6-8",
           "adult"
         ]
       },
       {
-        "id": "pd_aq",
-        "text": "Aquarium shark or jelly — pick a pulse or pass",
+        "id": "pdza_map",
+        "text": "Point to Asian Forest on a map, then Kids' Zone.",
         "age_fit": [
           "2-3",
           "4-5",
@@ -395,12 +214,13 @@
         ]
       }
     ],
-    "easter_egg": "★ Easter egg: find rocky beach/shore exhibit on the map",
-    "easter_egg_little": "★ Easter egg: after the hard list — one free minute of favorite stop",
-    "researched": "2026-08-08",
-    "status": "researched",
+    "easter_egg": "★ Easter egg: find this zoo on a map/sign and point to a habitat you have not visited yet",
+    "easter_egg_little": "★ Easter egg: pick a favorite stop and tell a grown-up why",
     "sources": [
-      "https://www.pdza.org/"
-    ]
+      "https://www.pdza.org/animals/",
+      "https://www.pdza.org/animals/asian-forest-sanctuary/"
+    ],
+    "researched": "2026-08-23",
+    "status": "researched"
   }
 }

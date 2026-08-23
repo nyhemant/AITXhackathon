@@ -8,10 +8,10 @@
   "lat": 33.1,
   "lng": -117,
   "official_url": "https://sdzsafaripark.org/",
-  "last_verified": "2026-08-07",
+  "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Open-range Africa feel — tram views of herds, plus rhino and big cat energy.",
+  "tagline": "Elephant Valley first, then a giraffe and Tiger Trail — not the Zoo’s panda path.",
   "practical": {
     "typical_duration": "half to full day",
     "ticket_note": "Separate ticket from the Zoo; arrive early for parking.",
@@ -19,38 +19,10 @@
   },
   "items": [
     {
-      "id": "reticulated_giraffe",
-      "label": "Giraffe",
-      "emoji": "🦒",
-      "one_liner": "Giraffes on wide open savanna-style fields.",
-      "tags": [
-        "tall",
-        "outdoor",
-        "wow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Africa field / walk",
-      "qa_card": {
-        "question": "What did you notice about the Reticulated giraffe?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "reticulated-giraffe",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Giraffe",
-      "presence_note": "Official animals page features giraffe."
-    },
-    {
       "id": "african_elephant",
       "label": "African elephant",
       "emoji": "🐘",
-      "one_liner": "Elephants with room to roam.",
+      "one_liner": "African elephant herd — two large habitat areas to roam.",
       "tags": [
         "big",
         "outdoor",
@@ -69,19 +41,20 @@
       },
       "catalog_id": "african-elephant",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "African elephant",
-      "presence_note": "African elephant herd / Elephant Valley."
+      "core": true
     },
     {
-      "id": "zebra",
-      "label": "Zebra",
-      "emoji": "🦓",
-      "one_liner": "Stripes in mixed herds from the tram or overlooks.",
+      "id": "reticulated_giraffe",
+      "label": "Giraffe",
+      "emoji": "🦒",
+      "one_liner": "Safari Park giraffe — look up from the tram or walk.",
       "tags": [
+        "tall",
         "outdoor",
-        "pattern"
+        "wow"
       ],
       "age_fit": [
         "2-3",
@@ -91,132 +64,25 @@
       ],
       "zone": "Africa field",
       "qa_card": {
-        "question": "What did you notice about the Zebra?",
+        "question": "What did you notice about the Giraffe?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "zebra",
+      "catalog_id": "reticulated-giraffe",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Zebra",
-      "presence_note": "Grévy's zebra on official animals page."
-    },
-    {
-      "id": "african_lion",
-      "label": "African lion",
-      "emoji": "🦁",
-      "one_liner": "Lions overlooking the park hills.",
-      "tags": [
-        "big-cats",
-        "outdoor",
-        "sound"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Lion camp",
-      "qa_card": {
-        "question": "What did you notice about the African lion?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "african-lion",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "African lion",
-      "presence_note": "Lion on official animals page."
-    },
-    {
-      "id": "cheetah",
-      "label": "Cheetah",
-      "emoji": "🐆",
-      "one_liner": "The speed specialist — often stretched out resting.",
-      "tags": [
-        "big-cats",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Passports to Africa / cats",
-      "qa_card": {
-        "question": "What did you notice about the Cheetah?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "cheetah",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Cheetah",
-      "presence_note": "Cheetah on official animals page."
-    },
-    {
-      "id": "western_lowland_gorilla",
-      "label": "Western lowland gorilla",
-      "emoji": "🦍",
-      "one_liner": "Gorillas in a lush walk-through habitat.",
-      "tags": [
-        "outdoor",
-        "primates"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Gorilla Forest",
-      "qa_card": {
-        "question": "What did you notice about the Western lowland gorilla?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "western-lowland-gorilla",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Western lowland gorilla",
-      "presence_note": "Gorilla / Gorilla Forest."
-    },
-    {
-      "id": "nile_hippo",
-      "label": "Nile hippo",
-      "emoji": "🦛",
-      "one_liner": "Hippos near water when on view.",
-      "tags": [
-        "big",
-        "water",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Watering hole areas",
-      "qa_card": {
-        "question": "What did you notice about the Nile hippo?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "nile-hippo",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Nile hippo",
-      "presence_note": "Not highlighted on main animals hub this pass."
+      "display_label": "Giraffe",
+      "core": true,
+      "presence_note": "Official animals-gardens card: GIRAFFE. Soft Giraffe."
     },
     {
       "id": "sumatran_tiger",
       "label": "Sumatran tiger",
       "emoji": "🐯",
-      "one_liner": "Tigers on the Asian side of the park.",
+      "one_liner": "Tiger Trail Sumatran tiger — the toughest to spot.",
       "tags": [
         "big-cats",
+        "pattern",
         "outdoor"
       ],
       "age_fit": [
@@ -232,43 +98,18 @@
       },
       "catalog_id": "sumatran-tiger",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "Sumatran tiger",
-      "presence_note": "Sumatran tiger / Tiger Trail on official page."
+      "core": true
     },
     {
-      "id": "ostrich",
-      "label": "Ostrich",
-      "emoji": "🪶",
-      "one_liner": "Giant birds strutting the plains.",
+      "id": "cheetah",
+      "label": "Cheetah",
+      "emoji": "🐆",
+      "one_liner": "Cheetah — built to sprint across short distances.",
       "tags": [
-        "outdoor",
-        "tall"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Africa field",
-      "qa_card": {
-        "question": "What did you notice about the Ostrich?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "ostrich",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Ostrich",
-      "presence_note": "Africa field birds typically include ostrich."
-    },
-    {
-      "id": "warthog",
-      "label": "Warthog",
-      "emoji": "🐗",
-      "one_liner": "Funny faces and little tusks on the savanna.",
-      "tags": [
+        "big-cats",
         "outdoor"
       ],
       "age_fit": [
@@ -279,14 +120,130 @@
       ],
       "zone": "Africa",
       "qa_card": {
-        "question": "What did you notice about the Warthog?",
+        "question": "What did you notice about the Cheetah?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "warthog",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Warthog",
-      "presence_note": "Africa savanna species; secondary confirmation."
+      "catalog_id": "cheetah",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Cheetah",
+      "core": true
+    },
+    {
+      "id": "western_lowland_gorilla",
+      "label": "Gorilla",
+      "emoji": "🦍",
+      "one_liner": "Gorilla Forest — largest of all primates.",
+      "tags": [
+        "primates",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Gorilla Forest",
+      "qa_card": {
+        "question": "What did you notice about the Gorilla?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Gorilla",
+      "core": true,
+      "presence_note": "Official animals-gardens card: GORILLA. Soft Gorilla."
+    },
+    {
+      "id": "african_lion",
+      "label": "Lion",
+      "emoji": "🦁",
+      "one_liner": "Lion camp — short bursts of action, then a long rest.",
+      "tags": [
+        "big-cats",
+        "outdoor",
+        "sound"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Lion camp",
+      "qa_card": {
+        "question": "What did you notice about the Lion?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "african-lion",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Lion",
+      "core": true,
+      "presence_note": "Official animals-gardens card: LION. Soft Lion."
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "emoji": "🦓",
+      "one_liner": "Grevy's zebra — every stripe set is unique.",
+      "tags": [
+        "pattern",
+        "outdoor",
+        "savanna"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Africa field",
+      "qa_card": {
+        "question": "What did you notice about the Zebra?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "zebra",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Zebra",
+      "core": false,
+      "presence_note": "Official: GREVY'S ZEBRA."
+    },
+    {
+      "id": "caribbean_flamingo",
+      "label": "Flamingo",
+      "emoji": "🦩",
+      "one_liner": "Largest greater-flamingo flock in North America — long legs in the shallows.",
+      "tags": [
+        "birds",
+        "color",
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Flamingo",
+      "qa_card": {
+        "question": "What did you notice about the Flamingo?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "caribbean-flamingo",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Flamingo",
+      "core": false,
+      "presence_note": "Official animals-gardens card: FLAMINGO. Soft Flamingo."
     }
   ],
   "content_mode": "curated",
@@ -303,35 +260,65 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "research_notes": "web-map 2026-08-07 · presence-audit 2026-08-08 [ok]",
+  "research_notes": "[2026-08-23] Official-source Wave 2b public list pass (sdzsafaripark.org/animals-gardens). safari_zoo — do not copy San Diego Zoo panda→koala→elephant.",
   "list_confidence": "audited",
-  "do_not_list": [],
+  "do_not_list": [
+    {
+      "catalog_id": "giant-panda",
+      "name": "Giant panda",
+      "reason": "Giant pandas are at San Diego Zoo, not Safari Park.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "koala",
+      "name": "Koala",
+      "reason": "Walkabout Australia does not list koala as a park animal; koalas are at the Zoo.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "nile-hippo",
+      "name": "Nile hippo",
+      "reason": "Not on the official animals-gardens list.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "ostrich",
+      "name": "Ostrich",
+      "reason": "Not on the current official animals-gardens cards.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "warthog",
+      "name": "Warthog",
+      "reason": "Official list names red river hog, not warthog.",
+      "as_of": "2026-08-23"
+    }
+  ],
   "route_90m": [
-    "reticulated_giraffe",
     "african_elephant",
+    "reticulated_giraffe",
     "sumatran_tiger"
   ],
-  "last_presence_audit": "2026-08-08",
+  "last_presence_audit": "2026-08-23",
   "presence_sources": [
-    "https://sdzsafaripark.org/",
-    "https://sdzsafaripark.org/animals-gardens"
+    "https://sdzsafaripark.org/animals-gardens",
+    "https://sdzsafaripark.org/animals/elephant",
+    "https://sdzsafaripark.org/animals/sumatran-tiger",
+    "https://sdzsafaripark.org/elephant-valley"
   ],
   "bonus_hunt": {
-    "tagline": "Safari Park bonus · Africa field + Tiger Trail + Elephant Valley",
+    "tagline": "Safari Park bonus · Elephant Valley + Tiger Trail + Africa field",
     "find_ids": [
-      "reticulated_giraffe",
-      "african_elephant",
-      "sumatran_tiger",
-      "african_lion",
       "cheetah",
-      "zebra",
       "western_lowland_gorilla",
-      "ostrich"
+      "african_lion",
+      "zebra",
+      "caribbean_flamingo"
     ],
     "challenges": [
       {
-        "id": "sdp_field",
-        "text": "Africa field: spot something far first — then something close to the path",
+        "id": "ssp_elephant",
+        "text": "Elephant Valley: trunk busy or a full rest?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -340,26 +327,8 @@
         ]
       },
       {
-        "id": "sdp_elephant",
-        "text": "Elephant Valley: trunk tool use or dust bath? Watch 20s",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "sdp_tiger",
-        "text": "Tiger Trail: count stripe clusters on one shoulder (best guess)",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "sdp_cheetah",
-        "text": "Cheetah: statue or stretch?",
+        "id": "ssp_giraffe",
+        "text": "Giraffe: count the spots you can see on one neck.",
         "age_fit": [
           "2-3",
           "4-5",
@@ -368,17 +337,8 @@
         ]
       },
       {
-        "id": "sdp_pattern",
-        "text": "Zebra vs ostrich — two patterns in one loop",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "sdp_gorilla",
-        "text": "Gorilla Forest: hands or rest mode?",
+        "id": "ssp_tiger",
+        "text": "Tiger Trail: how long until you spot stripes?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -387,8 +347,8 @@
         ]
       },
       {
-        "id": "sdp_quiet",
-        "text": "Quiet 20s on a field overlook — bird, insect, or vehicle wins?",
+        "id": "ssp_cheetah",
+        "text": "Cheetah: statue score 1–10 after 20 quiet seconds.",
         "age_fit": [
           "2-3",
           "4-5",
@@ -397,13 +357,13 @@
         ]
       }
     ],
-    "easter_egg": "★ Easter egg: find a tram/Africa tram route on the map even if you don’t ride",
-    "easter_egg_little": "★ Easter egg: after the hard list — one free minute of favorite stop",
-    "researched": "2026-08-08",
-    "status": "researched",
+    "easter_egg": "★ Easter egg: find this zoo on a map/sign and point to a habitat you have not visited yet",
+    "easter_egg_little": "★ Easter egg: pick a favorite stop and tell a grown-up why",
     "sources": [
-      "https://sdzsafaripark.org/",
-      "Africa field exhibits, Tiger Trail, Elephant Valley"
-    ]
+      "https://sdzsafaripark.org/animals-gardens",
+      "https://sdzsafaripark.org/animals/elephant"
+    ],
+    "researched": "2026-08-23",
+    "status": "researched"
   }
 }

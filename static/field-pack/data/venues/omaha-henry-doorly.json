@@ -8,10 +8,9 @@
   "lat": 41.22,
   "lng": -95.93,
   "official_url": "https://www.omahazoo.com/",
-  "last_verified": "2026-08-07",
   "verified_by": "research",
-  "status": "verified",
-  "tagline": "Desert Dome + jungle + aquarium — three “worlds” in one ticket.",
+  "status": "partial",
+  "tagline": "Starter zoo-side list: African elephants, Hubbard gorillas, then orangutans — no aquarium cards.",
   "practical": {
     "typical_duration": "full day ideal; half day if you pick two worlds",
     "ticket_note": "One of the great Midwest zoo days — arrive at open.",
@@ -22,10 +21,11 @@
       "id": "african_elephant",
       "label": "African elephant",
       "emoji": "🐘",
-      "one_liner": "Elephants outdoors when weather allows.",
+      "one_liner": "African elephant herd — look at that trunk.",
       "tags": [
         "big",
-        "outdoor"
+        "outdoor",
+        "wow"
       ],
       "age_fit": [
         "2-3",
@@ -33,23 +33,23 @@
         "6-8",
         "9+"
       ],
-      "zone": "African Grasslands",
+      "zone": "Scott African Grasslands",
       "qa_card": {
         "question": "What did you notice about the African elephant?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-elephant",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "African elephant",
-      "presence_note": "African elephant herd / Elephant Family Quarters / experiences."
+      "core": true
     },
     {
       "id": "western_lowland_gorilla",
-      "label": "Gorilla",
+      "label": "Western lowland gorilla",
       "emoji": "🦍",
-      "one_liner": "Gorillas after the jungle wow.",
+      "one_liner": "Hubbard gorillas — who looks in charge?",
       "tags": [
         "primates",
         "outdoor"
@@ -60,211 +60,195 @@
         "6-8",
         "9+"
       ],
-      "zone": "Hubbard / apes",
+      "zone": "Hubbard Gorilla Valley",
       "qa_card": {
         "question": "What did you notice about the Western lowland gorilla?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "western-lowland-gorilla",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Gorilla",
-      "presence_note": "Hubbard Gorilla Valley."
-    },
-    {
-      "id": "sumatran_tiger",
-      "label": "Tiger",
-      "emoji": "🐯",
-      "one_liner": "Tigers in forested cat habitats.",
-      "tags": [
-        "big-cats",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Asian Highlands",
-      "qa_card": {
-        "question": "What did you notice about the Sumatran tiger?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "sumatran-tiger",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Tiger",
-      "presence_note": "Asian Highlands tigers; soft Tiger if subspecies uncertain."
-    },
-    {
-      "id": "african_lion",
-      "label": "Lion",
-      "emoji": "🦁",
-      "one_liner": "Lions on the grasslands.",
-      "tags": [
-        "big-cats",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "African Grasslands",
-      "qa_card": {
-        "question": "What did you notice about the African lion?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "african-lion",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Lion",
-      "presence_note": "African Grasslands predators. Soft Lion."
-    },
-    {
-      "id": "reticulated_giraffe",
-      "label": "Giraffe",
-      "emoji": "🦒",
-      "one_liner": "Giraffe feeding opportunities some days.",
-      "tags": [
-        "tall",
-        "outdoor",
-        "feeding"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "African Grasslands",
-      "qa_card": {
-        "question": "What did you notice about the Reticulated giraffe?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "reticulated-giraffe",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Giraffe",
-      "presence_note": "Giraffe experience offered. Soft Giraffe."
-    },
-    {
-      "id": "shark",
-      "label": "Shark",
-      "emoji": "🦈",
-      "one_liner": "Sharks in the indoor aquarium wing.",
-      "tags": [
-        "water",
-        "big",
-        "wow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Aquarium",
-      "qa_card": {
-        "question": "What did you notice about the Shark?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "shark",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Shark",
-      "presence_note": "Scott Aquarium. Soft Shark."
-    },
-    {
-      "id": "stingray",
-      "label": "Stingray",
-      "emoji": "射线",
-      "one_liner": "Rays in the aquarium galleries.",
-      "tags": [
-        "water",
-        "flat"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Aquarium",
-      "qa_card": {
-        "question": "What did you notice about the Stingray?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "stingray",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Stingray",
-      "presence_note": "Stingray Beach."
-    },
-    {
-      "id": "african_penguin",
-      "label": "Penguin (verify)",
-      "emoji": "🐧",
-      "one_liner": "Penguins as a cool-down stop.",
-      "tags": [
-        "water",
-        "wow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Aquarium / penguins",
-      "qa_card": {
-        "question": "What did you notice about the African penguin?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "african-penguin",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Penguin (verify)",
-      "presence_note": "Confirm species."
-    },
-    {
-      "id": "jellyfish",
-      "label": "Jellyfish",
-      "emoji": "🎐",
-      "one_liner": "Jellies inside the dome complex story.",
-      "tags": [
-        "water",
-        "glow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Aquarium",
-      "qa_card": {
-        "question": "What did you notice about the Jellyfish?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "jellyfish",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Jellyfish",
-      "presence_note": "Aquarium jellies common. Soft Jellyfish."
+      "display_label": "Western lowland gorilla",
+      "core": true
     },
     {
       "id": "orangutan",
       "label": "Orangutan",
       "emoji": "🦧",
-      "one_liner": "Orangutans in lush indoor-outdoor spaces.",
+      "one_liner": "Hubbard orangutans — long arms in the trees.",
       "tags": [
         "primates",
+        "climb",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Hubbard Orangutan Forest",
+      "qa_card": {
+        "question": "What did you notice about the Orangutan?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "orangutan",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Orangutan",
+      "core": true
+    },
+    {
+      "id": "cheetah",
+      "label": "Cheetah",
+      "emoji": "🐆",
+      "one_liner": "Cheetah exhibit — tear marks, not a lion mane.",
+      "tags": [
+        "big-cats",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "African Grasslands",
+      "qa_card": {
+        "question": "What did you notice about the Cheetah?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "cheetah",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Cheetah",
+      "core": true
+    },
+    {
+      "id": "african_lion",
+      "label": "Lion",
+      "emoji": "🦁",
+      "one_liner": "Lion's Pride — listen for a roar.",
+      "tags": [
+        "big-cats",
+        "outdoor",
+        "sound"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Hawks Foundation Lion's Pride",
+      "qa_card": {
+        "question": "What did you notice about the Lion?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "african-lion",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Lion",
+      "core": true,
+      "presence_note": "Official: African lions. Soft Lion."
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Giraffe",
+      "emoji": "🦒",
+      "one_liner": "Giraffe Encounter — look up from the path.",
+      "tags": [
+        "tall",
+        "outdoor",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Hawkins Giraffe Encounter",
+      "qa_card": {
+        "question": "What did you notice about the Giraffe?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "reticulated-giraffe",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Giraffe",
+      "core": true,
+      "presence_note": "Official grasslands: giraffes. Soft Giraffe."
+    },
+    {
+      "id": "zebra",
+      "label": "Zebra",
+      "emoji": "🦓",
+      "one_liner": "Plains zebra beside the elephant habitat.",
+      "tags": [
+        "pattern",
+        "outdoor",
+        "savanna"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Grewcock Elephant and Zebra Habitat",
+      "qa_card": {
+        "question": "What did you notice about the Zebra?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "zebra",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Zebra",
+      "core": false,
+      "presence_note": "Official: plains zebra."
+    },
+    {
+      "id": "ostrich",
+      "label": "Ostrich",
+      "emoji": "🪶",
+      "one_liner": "Grasslands ostrich roaming with giraffes.",
+      "tags": [
+        "birds",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "African Grasslands",
+      "qa_card": {
+        "question": "What did you notice about the Ostrich?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "ostrich",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Ostrich",
+      "core": false
+    },
+    {
+      "id": "ring_tailed_lemur",
+      "label": "Ring-tailed lemur",
+      "emoji": "🐒",
+      "one_liner": "Madagascar ring-tailed lemur — striped tail.",
+      "tags": [
+        "primates",
+        "pattern",
         "climb"
       ],
       "age_fit": [
@@ -273,17 +257,45 @@
         "6-8",
         "9+"
       ],
-      "zone": "Jungle / apes",
+      "zone": "Hubbard Expedition Madagascar",
       "qa_card": {
-        "question": "What did you notice about the Orangutan?",
+        "question": "What did you notice about the Ring-tailed lemur?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "orangutan",
+      "catalog_id": "ring-tailed-lemur",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Orangutan",
-      "presence_note": "Hubbard Orangutan Forest."
+      "display_label": "Ring-tailed lemur",
+      "core": false
+    },
+    {
+      "id": "two_toed_sloth",
+      "label": "Two-toed sloth",
+      "emoji": "🦥",
+      "one_liner": "Hoffmann's two-toed sloth — hang and look twice.",
+      "tags": [
+        "climb",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Kingdoms of the Night",
+      "qa_card": {
+        "question": "What did you notice about the Two-toed sloth?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "two-toed-sloth",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Two-toed sloth",
+      "core": false,
+      "presence_note": "Official adopt list: Hoffmann's Two-toed Sloth in Kingdoms of the Night (zoo-side nocturnal)."
     }
   ],
   "content_mode": "curated",
@@ -300,36 +312,66 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "research_notes": "map-page 2026-08-07 · presence-audit 2026-08-08 [minor]",
-  "list_confidence": "audited",
-  "do_not_list": [],
+  "research_notes": "[2026-08-23] Wave 2b: zoo-side exhibit pages only. Scott Aquarium shark/penguin/stingray dropped. No invented verify date.",
+  "list_confidence": "partial",
+  "do_not_list": [
+    {
+      "catalog_id": "sumatran-tiger",
+      "name": "Sumatran tiger",
+      "reason": "Official Asian Highlands: Amur tigers.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "nile-hippo",
+      "name": "Nile hippo",
+      "reason": "Official Lied Jungle: pygmy hippos, not Nile hippo.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "King, gentoo, and rockhopper penguins are in Scott Aquarium — not a zoo-side card.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "shark",
+      "name": "Shark",
+      "reason": "Shark Tunnel is Scott Aquarium — not a zoo-side card for this kit.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "asian-small-clawed-otter",
+      "name": "Asian small-clawed otter",
+      "reason": "Adopt copy places Asian small-clawed otter in the Aquarium.",
+      "as_of": "2026-08-23"
+    }
+  ],
   "route_90m": [
     "african_elephant",
     "western_lowland_gorilla",
     "orangutan"
   ],
-  "last_presence_audit": "2026-08-08",
   "presence_sources": [
     "https://www.omahazoo.com/",
     "https://www.omahazoo.com/scott-african-grasslands",
-    "https://www.omahazoo.com/visitorexperiences",
-    "https://en.wikipedia.org/wiki/Omaha%27s_Henry_Doorly_Zoo_and_Aquarium"
+    "https://www.omahazoo.com/hubbard-gorilla-valley",
+    "https://www.omahazoo.com/hubbard-orangutan-forest",
+    "https://www.omahazoo.com/plan-your-visit"
   ],
   "bonus_hunt": {
-    "tagline": "Omaha bonus · Desert Dome energy + Aquarium + apes",
+    "tagline": "Omaha bonus · Grasslands + Hubbard apes (zoo-side)",
     "find_ids": [
-      "african_elephant",
-      "orangutan",
-      "western_lowland_gorilla",
-      "sumatran_tiger",
-      "shark",
-      "stingray",
-      "jellyfish"
+      "cheetah",
+      "african_lion",
+      "reticulated_giraffe",
+      "zebra",
+      "ostrich",
+      "ring_tailed_lemur"
     ],
     "challenges": [
       {
-        "id": "om_elephant",
-        "text": "African Grasslands elephants: trunk in use or resting? Watch 15s",
+        "id": "oma_elephant",
+        "text": "African Grasslands: trunk busy or a full rest?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -338,17 +380,8 @@
         ]
       },
       {
-        "id": "om_orang",
-        "text": "Orangutan: hands or feet doing the clever work right now?",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "om_gorilla",
-        "text": "Gorilla: chest, face, or hands — what’s moving?",
+        "id": "oma_gorilla",
+        "text": "Hubbard Gorilla Valley: who looks calmest?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -357,17 +390,8 @@
         ]
       },
       {
-        "id": "om_tiger",
-        "text": "Asian Highlands tiger: pacing loop or statue?",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "om_shark",
-        "text": "Aquarium shark: count how many times it crosses your window",
+        "id": "oma_orang",
+        "text": "Orangutan Forest: hands or feet doing the clever bit?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -376,18 +400,8 @@
         ]
       },
       {
-        "id": "om_jelly",
-        "text": "Jellies: stand still 15s — what pulses first?",
-        "age_fit": [
-          "2-3",
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "om_ray",
-        "text": "Stingray: wing-flap or glide — name the motion",
+        "id": "oma_lion",
+        "text": "Lion's Pride: roar or a quiet pride?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -396,13 +410,13 @@
         ]
       }
     ],
-    "easter_egg": "★ Easter egg: spot Desert Dome / Lied Jungle / Aquarium on a park map (name two)",
-    "easter_egg_little": "★ Easter egg: after the hard list — one free minute of favorite stop",
-    "researched": "2026-08-08",
-    "status": "researched",
+    "easter_egg": "★ Easter egg: find this zoo on a map/sign and point to a habitat you have not visited yet",
+    "easter_egg_little": "★ Easter egg: pick a favorite stop and tell a grown-up why",
     "sources": [
       "https://www.omahazoo.com/",
-      "African Grasslands, Hubbard apes, Aquarium, Desert Dome"
-    ]
+      "https://www.omahazoo.com/scott-african-grasslands"
+    ],
+    "researched": "2026-08-23",
+    "status": "researched"
   }
 }

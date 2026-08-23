@@ -8,10 +8,9 @@
   "lat": 41.45,
   "lng": -81.71,
   "official_url": "https://www.clevelandmetroparks.com/zoo",
-  "last_verified": "2026-08-07",
   "verified_by": "research",
-  "status": "verified",
-  "tagline": "Cleveland Metroparks — rainforest building + outdoor loops.",
+  "status": "partial",
+  "tagline": "Starter list: African Elephant Crossing, gorillas, then cheetahs on the savanna path.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Metroparks tickets; parking on site.",
@@ -21,12 +20,13 @@
   },
   "items": [
     {
-      "id": "western_lowland_gorilla",
-      "label": "Western lowland gorilla",
-      "emoji": "🦍",
-      "one_liner": "Gorillas in lush indoor-outdoor spaces.",
+      "id": "african_elephant",
+      "label": "African elephant",
+      "emoji": "🐘",
+      "one_liner": "Four African elephants at Elephant Crossing.",
       "tags": [
-        "primates",
+        "big",
+        "outdoor",
         "wow"
       ],
       "age_fit": [
@@ -35,50 +35,25 @@
         "6-8",
         "9+"
       ],
-      "zone": "Primates / rainforest",
-      "qa_card": {
-        "question": "What did you notice about the Western lowland gorilla?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "western-lowland-gorilla",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Western lowland gorilla"
-    },
-    {
-      "id": "african_elephant",
-      "label": "African elephant",
-      "emoji": "🐘",
-      "one_liner": "Elephants on outdoor paths.",
-      "tags": [
-        "big",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Elephants",
+      "zone": "African Elephant Crossing",
       "qa_card": {
         "question": "What did you notice about the African elephant?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-elephant",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "African elephant"
+      "display_label": "African elephant",
+      "core": true
     },
     {
-      "id": "reticulated_giraffe",
-      "label": "Masai giraffe",
-      "emoji": "🦒",
-      "one_liner": "Tall necks.",
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "emoji": "🦍",
+      "one_liner": "Western lowland gorilla — who looks in charge?",
       "tags": [
-        "tall",
+        "primates",
         "outdoor"
       ],
       "age_fit": [
@@ -87,103 +62,24 @@
         "6-8",
         "9+"
       ],
-      "zone": "Hoofstock",
+      "zone": "Primate, Cat & Aquatics",
       "qa_card": {
-        "question": "What did you notice about the Reticulated giraffe?",
+        "question": "What did you notice about the Western lowland gorilla?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "reticulated-giraffe",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Masai giraffe",
-      "presence_note": "Masai not reticulated on materials."
-    },
-    {
-      "id": "two_toed_sloth",
-      "label": "Two-toed sloth",
-      "emoji": "🦥",
-      "one_liner": "Slow climbers if you spot them.",
-      "tags": [
-        "climb"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Rainforest",
-      "qa_card": {
-        "question": "What did you notice about the Two-toed sloth?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "two-toed-sloth",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Two-toed sloth",
-      "presence_note": "RainForest / species lists include two-toed sloth."
-    },
-    {
-      "id": "african_lion",
-      "label": "African lion",
-      "emoji": "🦁",
-      "one_liner": "Big cat of the grassland pride — mighty roar!",
-      "tags": [
-        "wow",
-        "big-cats",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the African lion?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "african-lion",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "African lion",
-      "presence_note": "African Savanna."
-    },
-    {
-      "id": "african_penguin",
-      "label": "African penguin",
-      "emoji": "🐧",
-      "one_liner": "Waddle on land, zoom in water.",
-      "tags": [
-        "wow",
-        "water",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the African penguin?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "african-penguin",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "African penguin",
-      "presence_note": "Penguin Shores history; confirm current."
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Western lowland gorilla",
+      "core": true
     },
     {
       "id": "cheetah",
       "label": "Cheetah",
       "emoji": "🐆",
-      "one_liner": "Fastest land animal — built to sprint.",
+      "one_liner": "Savanna cheetahs — the zoo’s speediest animals.",
       "tags": [
-        "wow",
         "big-cats",
         "outdoor"
       ],
@@ -193,26 +89,27 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "African Savanna",
       "qa_card": {
-        "question": "What is special about the Cheetah?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Cheetah?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "cheetah",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "Cheetah",
-      "presence_note": "Across from Aldabra tortoises."
+      "core": true
     },
     {
-      "id": "nile_hippo",
-      "label": "Nile hippo",
-      "emoji": "🦛",
-      "one_liner": "Huge river giant that loves the water.",
+      "id": "african_lion",
+      "label": "African lion",
+      "emoji": "🦁",
+      "one_liner": "African Lion habitat — listen for a roar.",
       "tags": [
-        "wow",
-        "outdoor"
+        "big-cats",
+        "outdoor",
+        "sound"
       ],
       "age_fit": [
         "2-3",
@@ -220,50 +117,82 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "African Savanna",
       "qa_card": {
-        "question": "What is special about the Nile hippo?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the African lion?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "nile-hippo",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Nile hippo",
-      "presence_note": "Pygmy hippo historic; Nile not confirmed current."
-    },
-    {
-      "id": "caribbean_flamingo",
-      "label": "Flamingo",
-      "emoji": "🦩",
-      "one_liner": "Bright pink wader — long legs for shallow water.",
-      "tags": [
-        "wow",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the Caribbean flamingo?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "caribbean-flamingo",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Flamingo",
-      "presence_note": "Chilean flamingos noted in materials."
+      "catalog_id": "african-lion",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "African lion",
+      "core": true
     },
     {
       "id": "zebra",
       "label": "Zebra",
       "emoji": "🦓",
-      "one_liner": "Striped grassland runner — every pattern is unique.",
+      "one_liner": "Savanna zebra — pick one stripe set and draw it in the air.",
       "tags": [
-        "wow",
+        "pattern",
+        "outdoor",
+        "savanna"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "African Savanna",
+      "qa_card": {
+        "question": "What did you notice about the Zebra?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "zebra",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Zebra",
+      "core": true
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Giraffe",
+      "emoji": "🦒",
+      "one_liner": "Giraffe Encounter — look up from the path.",
+      "tags": [
+        "tall",
+        "outdoor",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Ben Gogolick Giraffe Encounter",
+      "qa_card": {
+        "question": "What did you notice about the Giraffe?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "reticulated-giraffe",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Giraffe",
+      "core": true,
+      "presence_note": "Official habitat pages list giraffes; soft Giraffe."
+    },
+    {
+      "id": "koala",
+      "label": "Koala",
+      "emoji": "🐨",
+      "one_liner": "Official location pages: visit koalas year-round.",
+      "tags": [
+        "climb",
         "outdoor"
       ],
       "age_fit": [
@@ -272,15 +201,17 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Australian Adventure",
       "qa_card": {
-        "question": "What is special about the Zebra?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Koala?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "zebra",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Zebra"
+      "catalog_id": "koala",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Koala",
+      "core": false
     }
   ],
   "content_mode": "curated",
@@ -298,56 +229,72 @@
     "Leave while happy"
   ],
   "route_90m": [
-    "western_lowland_gorilla",
     "african_elephant",
+    "western_lowland_gorilla",
     "cheetah"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 · map-img 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [major]",
-  "list_confidence": "audited",
+  "research_notes": "[2026-08-23] Wave 2b: habitat pages only; no complete current A–Z. Resource library is historical. RainForest sloth/orangutan omitted (closed). No invented verify date.",
+  "list_confidence": "partial",
   "do_not_list": [
     {
       "catalog_id": "sumatran-tiger",
       "name": "Sumatran tiger",
-      "reason": "Official materials feature Amur tiger, not Sumatran.",
-      "as_of": "2026-08-08"
+      "reason": "Official: Amur tigers at Rosebrough Tiger Passage.",
+      "as_of": "2026-08-23"
     },
     {
       "catalog_id": "galapagos-tortoise",
       "name": "Galápagos tortoise",
-      "reason": "Aldabra, not Galápagos.",
-      "as_of": "2026-08-08"
+      "reason": "Official habitat pages: Aldabra tortoises, not Galápagos.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "nile-hippo",
+      "name": "Nile hippo",
+      "reason": "No current official Nile hippo habitat page.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "two-toed-sloth",
+      "name": "Two-toed sloth",
+      "reason": "RainForest (sloths) is closed for Primate Forest construction.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "orangutan",
+      "name": "Orangutan",
+      "reason": "RainForest (orangutans) is closed for Primate Forest construction.",
+      "as_of": "2026-08-23"
     }
   ],
-  "last_presence_audit": "2026-08-08",
   "presence_sources": [
     "https://www.clevelandmetroparks.com/zoo",
-    "https://www.clevelandmetroparks.com/zoo/zoo-locations/primate-cat-and-aquatics",
-    "https://en.wikipedia.org/wiki/Cleveland_Metroparks_Zoo"
+    "https://www.clevelandmetroparks.com/zoo/zoo-locations/african-elephant-crossing",
+    "https://www.clevelandmetroparks.com/zoo/zoo-locations/african-savanna",
+    "https://www.clevelandmetroparks.com/zoo/zoo-locations/primate-cat-and-aquatics"
   ],
   "bonus_hunt": {
-    "tagline": "Cleveland bonus · RainForest + African Elephant Crossing",
+    "tagline": "Cleveland bonus · Elephant Crossing + gorillas + savanna",
     "find_ids": [
-      "western_lowland_gorilla",
-      "african_elephant",
-      "cheetah",
-      "reticulated_giraffe",
-      "two_toed_sloth",
       "african_lion",
-      "zebra"
+      "zebra",
+      "reticulated_giraffe",
+      "koala"
     ],
     "challenges": [
       {
-        "id": "cle_rain",
-        "text": "RainForest/primates: gorilla hands vs sloth stillness — opposite energy",
+        "id": "cle_elephant",
+        "text": "Elephant Crossing: trunk busy or a full rest?",
         "age_fit": [
+          "2-3",
           "4-5",
           "6-8",
           "adult"
         ]
       },
       {
-        "id": "cle_el",
-        "text": "Elephant Crossing: trunk tool watch 15s",
+        "id": "cle_gorilla",
+        "text": "Gorilla: who looks in charge?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -357,7 +304,7 @@
       },
       {
         "id": "cle_cheetah",
-        "text": "Cheetah: stretch, sit, or pace",
+        "text": "Cheetah: statue score 1–10 after 20 quiet seconds.",
         "age_fit": [
           "2-3",
           "4-5",
@@ -366,41 +313,23 @@
         ]
       },
       {
-        "id": "cle_giraffe",
-        "text": "Giraffe: neck geometry — S-curve or straight up?",
+        "id": "cle_koala",
+        "text": "Koala: eyes open or a daytime nap?",
         "age_fit": [
           "2-3",
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "cle_lion",
-        "text": "Lion: roar face or sleepy eyes?",
-        "age_fit": [
-          "2-3",
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "cle_zebra",
-        "text": "Zebra stripe quiz: shoulder vs belly width",
-        "age_fit": [
           "4-5",
           "6-8",
           "adult"
         ]
       }
     ],
-    "easter_egg": "★ Easter egg: find RainForest building entrance on the map before you go in",
-    "easter_egg_little": "★ Easter egg: after the hard list — one free minute of favorite stop",
-    "researched": "2026-08-08",
-    "status": "researched",
+    "easter_egg": "★ Easter egg: find this zoo on a map/sign and point to a habitat you have not visited yet",
+    "easter_egg_little": "★ Easter egg: pick a favorite stop and tell a grown-up why",
     "sources": [
-      "https://www.clevelandmetroparks.com/zoo"
-    ]
+      "https://www.clevelandmetroparks.com/zoo",
+      "https://www.clevelandmetroparks.com/zoo/zoo-locations/african-elephant-crossing"
+    ],
+    "researched": "2026-08-23",
+    "status": "researched"
   }
 }

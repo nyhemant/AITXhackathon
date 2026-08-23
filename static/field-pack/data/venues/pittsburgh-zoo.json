@@ -8,10 +8,9 @@
   "lat": 40.48,
   "lng": -79.92,
   "official_url": "https://www.pittsburghzoo.org/",
-  "last_verified": "2026-08-07",
   "verified_by": "research",
-  "status": "verified",
-  "tagline": "Pittsburgh Zoo & PPG Aquarium — hill campus with indoor water wow.",
+  "status": "partial",
+  "tagline": "Starter zoo-side list: African elephants, then African lions and a red panda — no PPG Aquarium cards.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Seasonal hours; parking on site.",
@@ -21,67 +20,14 @@
   },
   "items": [
     {
-      "id": "shark",
-      "label": "Shark",
-      "emoji": "🦈",
-      "one_liner": "Sharks indoors.",
-      "tags": [
-        "water",
-        "big",
-        "wow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "PPG Aquarium",
-      "qa_card": {
-        "question": "What did you notice about the Shark?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "shark",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Shark",
-      "presence_note": "PPG Aquarium sharks."
-    },
-    {
       "id": "african_elephant",
       "label": "African elephant",
       "emoji": "🐘",
-      "one_liner": "Elephants outdoors.",
+      "one_liner": "African elephant — look at that trunk.",
       "tags": [
         "big",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Elephants",
-      "qa_card": {
-        "question": "What did you notice about the African elephant?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "african-elephant",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "African elephant",
-      "presence_note": "Elephants historically/current outdoor — soft Elephant confirm African."
-    },
-    {
-      "id": "reticulated_giraffe",
-      "label": "Giraffe",
-      "emoji": "🦒",
-      "one_liner": "Giraffes.",
-      "tags": [
-        "tall",
-        "outdoor"
+        "outdoor",
+        "wow"
       ],
       "age_fit": [
         "2-3",
@@ -91,20 +37,76 @@
       ],
       "zone": "Africa",
       "qa_card": {
-        "question": "What did you notice about the Reticulated giraffe?",
+        "question": "What did you notice about the African elephant?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "reticulated-giraffe",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Giraffe",
-      "presence_note": "Africa section giraffes. Soft Giraffe."
+      "catalog_id": "african-elephant",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "African elephant",
+      "core": true
     },
     {
-      "id": "sumatran_tiger",
-      "label": "Tiger",
-      "emoji": "🐯",
-      "one_liner": "Tigers.",
+      "id": "african_lion",
+      "label": "African lion",
+      "emoji": "🦁",
+      "one_liner": "African lion pride — listen for a roar.",
+      "tags": [
+        "big-cats",
+        "outdoor",
+        "sound"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Africa",
+      "qa_card": {
+        "question": "What did you notice about the African lion?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "african-lion",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "African lion",
+      "core": true
+    },
+    {
+      "id": "red_panda",
+      "label": "Red panda",
+      "emoji": "🦊",
+      "one_liner": "Red panda — rusty and tree-high.",
+      "tags": [
+        "climb",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Asia",
+      "qa_card": {
+        "question": "What did you notice about the Red panda?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "red-panda",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Red panda",
+      "core": true
+    },
+    {
+      "id": "cheetah",
+      "label": "Cheetah",
+      "emoji": "🐆",
+      "one_liner": "Cheetah — tear marks, not a lion mane.",
       "tags": [
         "big-cats",
         "outdoor"
@@ -115,51 +117,25 @@
         "6-8",
         "9+"
       ],
-      "zone": "Cats",
+      "zone": "Africa",
       "qa_card": {
-        "question": "What did you notice about the Sumatran tiger?",
+        "question": "What did you notice about the Cheetah?",
         "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sumatran-tiger",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Tiger",
-      "presence_note": "Tigers; subspecies medium. Soft Tiger."
+      "catalog_id": "cheetah",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Cheetah",
+      "core": true
     },
     {
-      "id": "jellyfish",
-      "label": "Jellyfish",
-      "emoji": "🎐",
-      "one_liner": "Jellies.",
+      "id": "western_lowland_gorilla",
+      "label": "Western lowland gorilla",
+      "emoji": "🦍",
+      "one_liner": "Western lowland gorillas — who looks in charge?",
       "tags": [
-        "water",
-        "glow"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Aquarium",
-      "qa_card": {
-        "question": "What did you notice about the Jellyfish?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "jellyfish",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Jellyfish",
-      "presence_note": "Aquarium jellies. Soft Jellyfish."
-    },
-    {
-      "id": "sea_turtle",
-      "label": "Sea turtle",
-      "emoji": "🐢",
-      "one_liner": "Shelled ocean traveler — flippers for swimming.",
-      "tags": [
-        "wow",
-        "water",
+        "primates",
         "outdoor"
       ],
       "age_fit": [
@@ -168,25 +144,28 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Forest",
       "qa_card": {
-        "question": "What did you notice about the Sea turtle?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
+        "question": "What did you notice about the Western lowland gorilla?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "sea-turtle",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Sea turtle",
-      "presence_note": "Aquarium turtles. Soft Sea turtle."
+      "catalog_id": "western-lowland-gorilla",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Western lowland gorilla",
+      "core": true,
+      "presence_note": "Official 2026 news names western lowland gorillas Moka and Ibo."
     },
     {
-      "id": "octopus",
-      "label": "Octopus",
-      "emoji": "🐙",
-      "one_liner": "Eight arms and a big brain — master of hide-and-seek.",
+      "id": "reticulated_giraffe",
+      "label": "Giraffe",
+      "emoji": "🦒",
+      "one_liner": "Masai giraffe — look up from the path.",
       "tags": [
-        "wow",
-        "water"
+        "tall",
+        "outdoor",
+        "wow"
       ],
       "age_fit": [
         "2-3",
@@ -194,77 +173,55 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Africa",
       "qa_card": {
-        "question": "What did you notice about the Octopus?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
+        "question": "What did you notice about the Giraffe?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "octopus",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Octopus",
-      "presence_note": "Possible aquarium species."
-    },
-    {
-      "id": "african_penguin",
-      "label": "Penguin",
-      "emoji": "🐧",
-      "one_liner": "Waddle on land, zoom in water.",
-      "tags": [
-        "wow",
-        "water",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What is special about the African penguin?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
-      },
-      "catalog_id": "african-penguin",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Penguin",
-      "presence_note": "Penguins common at PPG; confirm African. Soft Penguin."
-    },
-    {
-      "id": "stingray",
-      "label": "Stingray",
-      "emoji": "射线",
-      "one_liner": "Flat swimmer — often in touch pools (gentle hands!).",
-      "tags": [
-        "wow",
-        "water"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Grounds",
-      "qa_card": {
-        "question": "What did you notice about the Stingray?",
-        "answer": "Something about how it moves, its shape, or its home in the water!"
-      },
-      "catalog_id": "stingray",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Stingray",
-      "presence_note": "Aquarium rays. Soft Ray."
+      "catalog_id": "reticulated-giraffe",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Giraffe",
+      "core": true,
+      "presence_note": "Official animals list: Masai Giraffe. Soft Giraffe."
     },
     {
       "id": "zebra",
       "label": "Zebra",
       "emoji": "🦓",
-      "one_liner": "Striped grassland runner — every pattern is unique.",
+      "one_liner": "Grant's zebra — pick one stripe set and draw it in the air.",
       "tags": [
-        "wow",
+        "pattern",
+        "outdoor",
+        "savanna"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Africa",
+      "qa_card": {
+        "question": "What did you notice about the Zebra?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "zebra",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Zebra",
+      "core": false,
+      "presence_note": "Official: Grant's Zebra."
+    },
+    {
+      "id": "ostrich",
+      "label": "Ostrich",
+      "emoji": "🪶",
+      "one_liner": "Ostrich — look at those legs.",
+      "tags": [
+        "birds",
         "outdoor"
       ],
       "age_fit": [
@@ -273,19 +230,49 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Africa",
       "qa_card": {
-        "question": "What is special about the Zebra?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Ostrich?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "zebra",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Zebra",
-      "presence_note": "Africa hoofstock. Soft Zebra."
+      "catalog_id": "ostrich",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Ostrich",
+      "core": false
+    },
+    {
+      "id": "caribbean_flamingo",
+      "label": "Flamingo",
+      "emoji": "🦩",
+      "one_liner": "Flamingo flock — long legs in the shallows.",
+      "tags": [
+        "birds",
+        "color",
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Birds",
+      "qa_card": {
+        "question": "What did you notice about the Flamingo?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "caribbean-flamingo",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Flamingo",
+      "core": false,
+      "presence_note": "Official animals list: Flamingo (species not named). Soft Flamingo."
     }
   ],
-  "content_mode": "hybrid",
+  "content_mode": "curated",
   "media": {
     "visitor_map_url": "/field-pack/media/maps/pittsburgh-zoo.jpg",
     "visitor_map_page": "https://www.pittsburghzoo.org/plan-your-visit/zoo-map/",
@@ -300,39 +287,70 @@
     "Leave while happy"
   ],
   "route_90m": [
-    "shark",
     "african_elephant",
-    "reticulated_giraffe"
+    "african_lion",
+    "red_panda"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 · map-img 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [minor]",
+  "research_notes": "[2026-08-23] Wave 2b: zoo-side official animals pages (list still incomplete). PPG Aquarium shark/jelly/turtle/ray dropped. No invented verify date.",
   "list_confidence": "partial",
-  "do_not_list": [],
+  "do_not_list": [
+    {
+      "catalog_id": "sumatran-tiger",
+      "name": "Sumatran tiger",
+      "reason": "Official animals list: Amur Tiger.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "nile-hippo",
+      "name": "Nile hippo",
+      "reason": "Official animals list: Pygmy Hippo, not Nile hippo.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "galapagos-tortoise",
+      "name": "Galápagos tortoise",
+      "reason": "Official animals list: Aldabra Tortoise.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "african-penguin",
+      "name": "African penguin",
+      "reason": "Official: Gentoo and Macaroni penguins, not African.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "shark",
+      "name": "Shark",
+      "reason": "Blacktip reef shark is listed under PPG Aquarium — not a zoo-side card.",
+      "as_of": "2026-08-23"
+    },
+    {
+      "catalog_id": "asian-small-clawed-otter",
+      "name": "Asian small-clawed otter",
+      "reason": "Official: North American River Otter.",
+      "as_of": "2026-08-23"
+    }
+  ],
   "presence_sources": [
-    "https://www.pittsburghzoo.org/",
     "https://www.pittsburghzoo.org/our-animals/",
-    "https://en.wikipedia.org/wiki/Pittsburgh_Zoo_%26_PPG_Aquarium"
+    "https://www.pittsburghzoo.org/animals/",
+    "https://www.pittsburghzoo.org/animal/elephant-african/",
+    "https://www.pittsburghzoo.org/animal/red-panda/"
   ],
   "bonus_hunt": {
-    "tagline": "Pittsburgh bonus · PPGaquarium + Forest Passage",
+    "tagline": "Pittsburgh bonus · Africa + red panda (zoo-side)",
     "find_ids": [
-      "african_elephant",
-      "shark",
-      "jellyfish",
-      "reticulated_giraffe"
+      "cheetah",
+      "western_lowland_gorilla",
+      "reticulated_giraffe",
+      "zebra",
+      "ostrich",
+      "caribbean_flamingo"
     ],
     "challenges": [
       {
-        "id": "pit_gorilla",
-        "text": "Gorilla hands story",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "pit_el",
-        "text": "Elephant trunk",
+        "id": "pit_elephant",
+        "text": "African elephant: trunk busy or a full rest?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -341,8 +359,8 @@
         ]
       },
       {
-        "id": "pit_shark",
-        "text": "Aquarium shark passes",
+        "id": "pit_lion",
+        "text": "Lions: roar or a quiet pride?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -351,8 +369,8 @@
         ]
       },
       {
-        "id": "pit_jelly",
-        "text": "Jelly pulses",
+        "id": "pit_panda",
+        "text": "Red panda: climb or curl-up?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -362,7 +380,7 @@
       },
       {
         "id": "pit_giraffe",
-        "text": "Giraffe stretch",
+        "text": "Masai giraffe: count the spots you can see on one neck.",
         "age_fit": [
           "2-3",
           "4-5",
@@ -371,12 +389,13 @@
         ]
       }
     ],
-    "easter_egg": "★ Easter egg: find the aquarium entrance on the map before the hill climb",
-    "easter_egg_little": "★ Easter egg: after the hard list — one free minute at a favorite stop",
-    "researched": "2026-08-08",
-    "status": "researched",
+    "easter_egg": "★ Easter egg: find this zoo on a map/sign and point to a habitat you have not visited yet",
+    "easter_egg_little": "★ Easter egg: pick a favorite stop and tell a grown-up why",
     "sources": [
-      "https://www.pittsburghzoo.org/"
-    ]
+      "https://www.pittsburghzoo.org/our-animals/",
+      "https://www.pittsburghzoo.org/animals/"
+    ],
+    "researched": "2026-08-23",
+    "status": "researched"
   }
 }

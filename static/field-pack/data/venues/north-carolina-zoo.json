@@ -8,10 +8,10 @@
   "lat": 35.63,
   "lng": -79.76,
   "official_url": "https://www.nczoo.org/",
-  "last_verified": "2026-08-07",
+  "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "America’s largest natural habitat zoo — miles of paths; plan like a hike with animals.",
+  "tagline": "African elephants, then western lowland gorillas and African lions — Asia continent is not open yet.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Asheboro; full day only if you must. Stroller/wagon mandatory.",
@@ -24,7 +24,7 @@
       "id": "african_elephant",
       "label": "African elephant",
       "emoji": "🐘",
-      "one_liner": "Elephants in spacious habitats.",
+      "one_liner": "African elephant habitat — look at that trunk.",
       "tags": [
         "big",
         "outdoor",
@@ -43,70 +43,16 @@
       },
       "catalog_id": "african-elephant",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "African elephant",
-      "presence_note": "African Elephant on animals list + elephant habitat talks."
-    },
-    {
-      "id": "reticulated_giraffe",
-      "label": "Giraffe",
-      "emoji": "🦒",
-      "one_liner": "Giraffes on long views.",
-      "tags": [
-        "tall",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Africa",
-      "qa_card": {
-        "question": "What did you notice about the Reticulated giraffe?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "reticulated-giraffe",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Giraffe",
-      "presence_note": "Giraffe on list/talks; soft Giraffe."
-    },
-    {
-      "id": "african_lion",
-      "label": "African lion",
-      "emoji": "🦁",
-      "one_liner": "Lions.",
-      "tags": [
-        "big-cats",
-        "outdoor"
-      ],
-      "age_fit": [
-        "2-3",
-        "4-5",
-        "6-8",
-        "9+"
-      ],
-      "zone": "Africa",
-      "qa_card": {
-        "question": "What did you notice about the African lion?",
-        "answer": "Tell a grown-up one thing you saw!"
-      },
-      "catalog_id": "african-lion",
-      "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "African lion",
-      "presence_note": "African Lion listed."
+      "core": true
     },
     {
       "id": "western_lowland_gorilla",
-      "label": "Gorilla",
+      "label": "Western lowland gorilla",
       "emoji": "🦍",
-      "one_liner": "Gorillas.",
+      "one_liner": "Western lowland gorilla family — who looks in charge?",
       "tags": [
         "primates",
         "outdoor"
@@ -124,19 +70,20 @@
       },
       "catalog_id": "western-lowland-gorilla",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
-      "display_label": "Gorilla",
-      "presence_note": "Western Lowland Gorilla listed."
+      "display_label": "Western lowland gorilla",
+      "core": true
     },
     {
-      "id": "caribbean_flamingo",
-      "label": "Caribbean flamingo",
-      "emoji": "🦩",
-      "one_liner": "Bright pink wader — long legs for shallow water.",
+      "id": "african_lion",
+      "label": "African lion",
+      "emoji": "🦁",
+      "one_liner": "African lion — listen for a roar.",
       "tags": [
-        "wow",
-        "outdoor"
+        "big-cats",
+        "outdoor",
+        "sound"
       ],
       "age_fit": [
         "2-3",
@@ -144,28 +91,26 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Africa",
       "qa_card": {
-        "question": "What is special about the Caribbean flamingo?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the African lion?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "caribbean-flamingo",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Caribbean flamingo",
-      "presence_note": "Not confirmed."
+      "catalog_id": "african-lion",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "African lion",
+      "core": true
     },
     {
-      "id": "two_toed_sloth",
-      "label": "Two-toed sloth",
-      "emoji": "🦥",
-      "one_liner": "Slow forest climber — hangs upside down.",
+      "id": "chimpanzee",
+      "label": "Chimpanzee",
+      "emoji": "🐵",
+      "one_liner": "Chimp play and chatter on the Africa loop.",
       "tags": [
-        "wow",
-        "hands",
-        "play",
-        "rest",
-        "kids"
+        "primates",
+        "play"
       ],
       "age_fit": [
         "2-3",
@@ -173,25 +118,56 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Africa",
       "qa_card": {
-        "question": "What is special about the Two-toed sloth?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Chimpanzee?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "two-toed-sloth",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Two-toed sloth",
-      "presence_note": "Not confirmed."
+      "catalog_id": "chimpanzee",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Chimpanzee",
+      "core": true
+    },
+    {
+      "id": "reticulated_giraffe",
+      "label": "Giraffe",
+      "emoji": "🦒",
+      "one_liner": "Africa giraffe — look up from the path.",
+      "tags": [
+        "tall",
+        "outdoor",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Africa",
+      "qa_card": {
+        "question": "What did you notice about the Giraffe?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "catalog_id": "reticulated-giraffe",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Giraffe",
+      "core": true,
+      "presence_note": "Official animals list: Giraffe. Soft Giraffe."
     },
     {
       "id": "zebra",
       "label": "Zebra",
       "emoji": "🦓",
-      "one_liner": "Striped grassland runner — every pattern is unique.",
+      "one_liner": "Africa zebra — pick one stripe set and draw it in the air.",
       "tags": [
-        "wow",
-        "outdoor"
+        "pattern",
+        "outdoor",
+        "savanna"
       ],
       "age_fit": [
         "2-3",
@@ -199,25 +175,25 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Africa",
       "qa_card": {
-        "question": "What is special about the Zebra?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Zebra?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "zebra",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "Zebra",
-      "presence_note": "Zebra listed; Africa habitats."
+      "core": true
     },
     {
-      "id": "galapagos_tortoise",
-      "label": "Galápagos tortoise",
-      "emoji": "🐢",
-      "one_liner": "Giant tortoise — slow and steady.",
+      "id": "ostrich",
+      "label": "Ostrich",
+      "emoji": "🪶",
+      "one_liner": "Africa ostrich — look at those legs.",
       "tags": [
-        "wow",
+        "birds",
         "outdoor"
       ],
       "age_fit": [
@@ -226,16 +202,17 @@
         "6-8",
         "9+"
       ],
-      "zone": "Grounds",
+      "zone": "Africa",
       "qa_card": {
-        "question": "What is special about the Galápagos tortoise?",
-        "answer": "Tell a grown-up one thing you noticed — size, color, sound, or how it moves!"
+        "question": "What did you notice about the Ostrich?",
+        "answer": "Tell a grown-up one thing you saw!"
       },
-      "catalog_id": "galapagos-tortoise",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Galápagos tortoise",
-      "presence_note": "Not confirmed."
+      "catalog_id": "ostrich",
+      "presence": "verified",
+      "presence_checked": "2026-08-23",
+      "presence_source": "official_animals_page",
+      "display_label": "Ostrich",
+      "core": false
     }
   ],
   "content_mode": "curated",
@@ -254,74 +231,67 @@
   ],
   "route_90m": [
     "african_elephant",
-    "reticulated_giraffe",
-    "western_lowland_gorilla"
+    "western_lowland_gorilla",
+    "african_lion"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "research_notes": "[2026-08-23] Official-source Wave 2b public list pass (nczoo.org/wildlife/animals).",
   "list_confidence": "audited",
   "do_not_list": [
     {
       "catalog_id": "sumatran-tiger",
       "name": "Sumatran tiger",
-      "reason": "Asia continent not open yet; tigers not currently promiseable as on-exhibit.",
-      "as_of": "2026-08-08"
+      "reason": "Asia continent is not open yet; tigers are not on the current official animals list.",
+      "as_of": "2026-08-23"
     },
     {
       "catalog_id": "nile-hippo",
       "name": "Nile hippo",
-      "reason": "Not on official animals list reviewed.",
-      "as_of": "2026-08-08"
+      "reason": "Not on the official animals list.",
+      "as_of": "2026-08-23"
     },
     {
       "catalog_id": "african-penguin",
       "name": "African penguin",
-      "reason": "Not on official animals list reviewed.",
-      "as_of": "2026-08-08"
+      "reason": "Not on the official animals list.",
+      "as_of": "2026-08-23"
     },
     {
       "catalog_id": "cheetah",
       "name": "Cheetah",
-      "reason": "Not on official animals list reviewed.",
-      "as_of": "2026-08-08"
+      "reason": "Not on the official animals list.",
+      "as_of": "2026-08-23"
     },
     {
-      "catalog_id": "caribbean-flamingo",
-      "name": "Caribbean flamingo",
-      "reason": "Not confirmed.",
-      "as_of": "2026-08-08"
-    },
-    {
-      "catalog_id": "two-toed-sloth",
-      "name": "Two-toed sloth",
-      "reason": "Not confirmed.",
-      "as_of": "2026-08-08"
+      "catalog_id": "ring-tailed-lemur",
+      "name": "Ring-tailed lemur",
+      "reason": "Official list: red-ruffed lemur, not ring-tailed.",
+      "as_of": "2026-08-23"
     },
     {
       "catalog_id": "galapagos-tortoise",
       "name": "Galápagos tortoise",
-      "reason": "Not confirmed.",
-      "as_of": "2026-08-08"
+      "reason": "Not on the official animals list.",
+      "as_of": "2026-08-23"
     }
   ],
-  "last_presence_audit": "2026-08-08",
+  "last_presence_audit": "2026-08-23",
   "presence_sources": [
     "https://www.nczoo.org/wildlife/animals",
     "https://www.nczoo.org/experiences",
-    "https://www.nczoo.org/experiences/habitats"
+    "https://www.nczoo.org/"
   ],
   "bonus_hunt": {
-    "tagline": "NC Zoo bonus · Africa continent walk deep cuts",
+    "tagline": "North Carolina bonus · Africa loop",
     "find_ids": [
-      "african_elephant",
+      "chimpanzee",
       "reticulated_giraffe",
-      "african_lion",
-      "western_lowland_gorilla",
-      "zebra"
+      "zebra",
+      "ostrich"
     ],
     "challenges": [
       {
-        "id": "nc_el",
-        "text": "Africa elephant: dust, drink, or walk?",
+        "id": "nc_elephant",
+        "text": "African elephant: trunk busy or a full rest?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -330,8 +300,8 @@
         ]
       },
       {
-        "id": "nc_giraffe",
-        "text": "Giraffe: far field spot then close path animal",
+        "id": "nc_gorilla",
+        "text": "Gorilla family: who looks calmest?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -341,25 +311,7 @@
       },
       {
         "id": "nc_lion",
-        "text": "Lion: ears and eyes — alert or off-duty?",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "nc_gorilla",
-        "text": "Gorilla: hands story in one word",
-        "age_fit": [
-          "4-5",
-          "6-8",
-          "adult"
-        ]
-      },
-      {
-        "id": "nc_zebra",
-        "text": "Zebra: count a “stripe family” on one shoulder (guess)",
+        "text": "Lions: roar or a quiet pride?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -368,8 +320,8 @@
         ]
       },
       {
-        "id": "nc_far",
-        "text": "From one overlook: name farthest living thing you see",
+        "id": "nc_chimp",
+        "text": "Chimps: spot hands used like tools.",
         "age_fit": [
           "2-3",
           "4-5",
@@ -378,12 +330,13 @@
         ]
       }
     ],
-    "easter_egg": "★ Easter egg: note how long the Africa walk is on the map — plan one bench",
-    "easter_egg_little": "★ Easter egg: after the hard list — one free minute of favorite stop",
-    "researched": "2026-08-08",
-    "status": "researched",
+    "easter_egg": "★ Easter egg: find this zoo on a map/sign and point to a habitat you have not visited yet",
+    "easter_egg_little": "★ Easter egg: pick a favorite stop and tell a grown-up why",
     "sources": [
-      "https://www.nczoo.org/"
-    ]
+      "https://www.nczoo.org/wildlife/animals",
+      "https://www.nczoo.org/experiences"
+    ],
+    "researched": "2026-08-23",
+    "status": "researched"
   }
 }
