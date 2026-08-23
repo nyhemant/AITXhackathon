@@ -833,9 +833,9 @@ def published_card_ids() -> set[str]:
 def item_public_href(item_id: str, venue_id: str = "", *, extra_query: str = "") -> str:
     """Parent-facing item URL.
 
-    Published cards keep /field-pack/cards/<id>/. Unpublished cards are not
-    invented — stay on the place page. Wonder w-* ids are not outing cards
-    and must not emit #/venue/<id>/item/<w-*> hashes (itemOnVenue rewrites them).
+    Published cards keep /field-pack/cards/<id>/. Unpublished catalog animals
+    retarget to the outing item hash on that venue. Wonder w-* ids are not
+    outing cards — stay on the place page (itemOnVenue would rewrite them).
     """
     iid = (item_id or "").strip()
     vid = (venue_id or "").strip()
@@ -847,8 +847,10 @@ def item_public_href(item_id: str, venue_id: str = "", *, extra_query: str = "")
         if q:
             href += "?" + q
         return href
-    if vid:
+    if vid and (iid.startswith("w-") or iid.startswith("w_")):
         return f"/field-pack/{esc(vid)}/#at-home"
+    if vid:
+        return f"/field-pack/app.html#/venue/{esc(vid)}/item/{esc(iid)}"
     return "/field-pack/cards/"
 
 
