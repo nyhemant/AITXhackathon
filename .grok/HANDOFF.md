@@ -13,12 +13,12 @@
 - CSS cache: `shell.css?v=6`
 
 ## Landing
-- Hook hero + search + map + **Explore a place at home** (6 cards → place pages) + Popular SEO chips
+- First screen: giraffe headline + real Dallas giraffe card + **Open Dallas Zoo** → `/field-pack/dallas-zoo/`
+- Map, search, Ready strip, and catalog stay **below the fold** (not a twin first homepage)
 - Ready IDs: one list `window.FP_READY_STRIP` in `landing-map.js` (US six + intl London / Singapore / Ueno)
 - US six: Dallas Zoo, Children’s Aquarium Dallas, Children’s Museum (Perot), Houston Zoo, San Diego Zoo, National Zoo
-- Ready CTA is **Open on map / Start outing**. Popular chips go to `/field-pack/{slug}/`
-- Copy: **Explore a place at home** / **Try a place** — print hunt is optional companion
-- Cache: `landing.css?v=94`, `landing-map.js?v=82`, `landing-hook.js?v=32`, `catalog.js?v=34`
+- Popular chips go to `/field-pack/{slug}/`
+- Cache: `home-first.css?v=1`, `home-first.js?v=1`, `landing.css?v=95`, `landing-map.js?v=84`, `landing-hook.js?v=34`, `catalog.js?v=36`
 
 ## Flow (3 levels — current)
 1. **Home** `/` → `/field-pack/` — city + venue
@@ -76,7 +76,7 @@ curl -sf -o /dev/null -w "%{http_code}\n" \
   http://127.0.0.1:8000/field-pack/photos/np-hero-yellowstone.jpg
 ```
 
-Landing (~390px): search + map + six Ready cards; Dallas Zoo Ready opens map pin; Popular chips → `/field-pack/{slug}/`  
+Landing (~390px): giraffe headline + real card + Open Dallas Zoo; map/search/Ready stay below the fold; Popular chips → `/field-pack/{slug}/`  
 App: `#/venue/dallas-zoo` vs Houston vs San Diego featured chips differ; DWA shortlist includes sloth, not CAD otter  
 Park: Yellowstone / Banff alt is not “illustrated”; `/field-pack/national-parks/` og:image is a park hero; print sheet shows map credit
 

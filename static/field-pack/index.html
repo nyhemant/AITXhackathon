@@ -16,41 +16,42 @@
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="color-scheme" content="light" />
-    <title>Field Trip Kit — Explore a Zoo at Home or Print a Hunt · 1Less</title>
+    <title>Giraffe first. Then elephant. Then you’re done. · Field Trip Kit · 1Less</title>
     <meta
       name="description"
-      content="Field Trip Kit by 1Less — explore a zoo, aquarium, museum, or park at home with cards, talk prompts, photos, and live cams. Print a hunt if you’re going in person."
+      content="A short zoo or aquarium hour. At home, or before you go."
     />
     <link rel="canonical" href="https://1less.app/field-pack/" />
     <meta name="robots" content="index,follow" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="1Less" />
-    <meta property="og:title" content="Field Trip Kit — Explore a Zoo at Home or Print a Hunt · 1Less" />
+    <meta property="og:title" content="Giraffe first. Then elephant. Then you’re done. · Field Trip Kit · 1Less" />
     <meta
       property="og:description"
-      content="Field Trip Kit by 1Less — explore a zoo, aquarium, museum, or park at home with cards, talk prompts, photos, and live cams. Print a hunt if you’re going in person."
+      content="A short zoo or aquarium hour. At home, or before you go."
     />
     <meta property="og:url" content="https://1less.app/field-pack/" />
-    <meta property="og:image" content="https://1less.app/field-pack/photos/sample-mission-dallas-zoo.jpg" />
+    <meta property="og:image" content="https://1less.app/field-pack/photos/reticulated-giraffe.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Field Trip Kit — Explore a Zoo at Home or Print a Hunt · 1Less" />
+    <meta name="twitter:title" content="Giraffe first. Then elephant. Then you’re done. · Field Trip Kit · 1Less" />
     <meta
       name="twitter:description"
-      content="Field Trip Kit by 1Less — explore a zoo, aquarium, museum, or park at home with cards, talk prompts, photos, and live cams. Print a hunt if you’re going in person."
+      content="A short zoo or aquarium hour. At home, or before you go."
     />
-    <meta name="twitter:image" content="https://1less.app/field-pack/photos/sample-mission-dallas-zoo.jpg" />
+    <meta name="twitter:image" content="https://1less.app/field-pack/photos/reticulated-giraffe.jpg" />
     <base href="/field-pack/" />
     <link rel="stylesheet" href="/shell/shell.css?v=6" />
     <link rel="stylesheet" href="/field-pack/css/styles.css?v=35" />
     <link rel="stylesheet" href="/field-pack/css/landing.css?v=95" />
     <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=28" />
+    <link rel="stylesheet" href="/field-pack/css/home-first.css?v=1" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "WebSite",
         "name": "1Less Field Trip Kit",
         "url": "https://1less.app/field-pack/",
-        "description": "Explore zoos, aquariums, museums, and parks at home with cards, talk prompts, photos, and live cams — or print a hunt for a visit.",
+        "description": "A short zoo or aquarium hour. At home, or before you go.",
         "publisher": { "@type": "Organization", "name": "1Less", "url": "https://1less.app" }
       }
     </script>
@@ -103,7 +104,7 @@
       }
     </script>
   </head>
-  <body class="landing-body">
+  <body class="landing-body landing-first">
     <div class="app landing-app landing-clean">
       <header class="oneless-shell no-print" data-product="bdo">
         <a class="shell-brand" href="/field-pack/" aria-label="Field Trip Kit home">
@@ -129,134 +130,64 @@
       <div id="continue-chip" class="continue-chip" hidden></div>
       <p id="waiting-cities" class="waiting-cities" hidden></p>
 
-      <!-- Hero T4b: H1 → moment strip → search → trust -->
-      <header class="landing-pitch landing-pitch-t4b" id="landing-hero">
-        <!--
-          H1 constant for A/B swaps (keep id="pitch-heading"):
-          Default (live): Explore a zoo, aquarium, or park at home
-          Alt A: Give your kid a mission for the zoo, museum, or park
-          Alt B: A printable treasure hunt for your next zoo, aquarium, museum, or park day
-
-          Retired live copy (revert if needed):
-          H1: Turn your next zoo, museum, or park day into a treasure hunt
-          Differentiator: Print one page at home. Leave the phone in the bag.
-          Subhead: Pick your place, your kid's age, and how much time you have — get a short
-          must-see list and a one-page scavenger-hunt mission. Free. No account.
-        -->
-        <h1 id="pitch-heading">Explore a zoo, aquarium, or park at home</h1>
-
-        <ul class="hero-moment-strip" aria-label="Before, during, and after your visit">
-          <li class="hero-moment-card silo-cards">
+      <header class="home-first" id="landing-hero">
+        <div class="home-first-copy">
+          <p class="home-first-who">For kids, with a parent.</p>
+          <h1 id="pitch-heading">Giraffe first. Then elephant. Then you’re done.</h1>
+          <p class="home-first-sub">A short zoo or aquarium hour. At home, or before you go.</p>
+          <div class="home-first-cta-row">
             <a
-              class="hero-moment-link"
-              id="hero-moment-before"
-              href="/field-pack/virtual-field-trip/"
-              data-moment="before"
-              aria-labelledby="hero-moment-before-kicker hero-moment-before-label"
-            >
-              <span id="hero-moment-before-kicker" class="hero-moment-kicker">Before</span>
-              <span class="hero-moment-visual">
-                <img
-                  class="hero-moment-img"
-                  src="/field-pack/photos/moment-before-virtual-zoo.jpg?v=1"
-                  width="180"
-                  height="234"
-                  alt=""
-                  decoding="async"
-                  fetchpriority="high"
-                />
-              </span>
-              <span id="hero-moment-before-label" class="hero-moment-label">At home · cards, cams &amp; films</span>
-            </a>
-          </li>
-          <li class="hero-moment-card silo-place">
-            <a
-              class="hero-moment-link"
-              id="hero-moment-during"
+              class="btn btn-primary home-first-cta"
+              id="home-open-dallas"
               href="/field-pack/dallas-zoo/"
-              data-moment="during"
               data-no-place-default="verified"
-              aria-labelledby="hero-moment-during-kicker hero-moment-during-label"
-            >
-              <span id="hero-moment-during-kicker" class="hero-moment-kicker">During</span>
-              <span class="hero-moment-visual">
-                <img
-                  class="hero-moment-img"
-                  src="/field-pack/photos/moment-during-mission.jpg?v=1"
-                  width="180"
-                  height="234"
-                  alt=""
-                  decoding="async"
-                  fetchpriority="high"
-                />
-              </span>
-              <span id="hero-moment-during-label" class="hero-moment-label">Optional hunt · for the visit</span>
-            </a>
-          </li>
-          <li class="hero-moment-card silo-cards">
-            <a
-              class="hero-moment-link"
-              id="hero-moment-after"
-              href="/field-pack/cards/"
-              data-moment="after"
-              aria-labelledby="hero-moment-after-kicker hero-moment-after-label"
-            >
-              <span id="hero-moment-after-kicker" class="hero-moment-kicker">After</span>
-              <span class="hero-moment-visual">
-                <img
-                  class="hero-moment-img"
-                  src="/field-pack/photos/moment-after-lion.jpg?v=1"
-                  width="180"
-                  height="234"
-                  alt=""
-                  decoding="async"
-                  fetchpriority="high"
-                />
-              </span>
-              <span id="hero-moment-after-label" class="hero-moment-label">What did we notice?</span>
-            </a>
-          </li>
-        </ul>
-
-        <div class="pitch-cta-block" id="hero-search-block" data-search-mode="place">
-          <form class="hero-search-form place-search-wrap silo-place" id="hero-search-form" role="search" action="/field-pack/" method="get">
-            <div class="hero-search-mode" role="group" aria-label="Search places or cards">
-              <button type="button" class="hero-mode-btn is-active" data-search-mode="place" aria-pressed="true" id="hero-mode-place" title="Search zoos, museums, parks">Places</button>
-              <button type="button" class="hero-mode-btn" data-search-mode="card" aria-pressed="false" id="hero-mode-card" title="Search animal and attraction cards">Cards</button>
-            </div>
-            <p class="hero-search-mode-hint" id="hero-search-mode-hint">Search <strong>places</strong> or switch to <strong>cards</strong></p>
-            <label class="place-search-label" for="hero-place-search" id="hero-search-label">Find a place</label>
-            <div class="hero-search-row">
-              <input
-                type="search"
-                id="hero-place-search"
-                name="q"
-                class="place-search-input hero-place-search-input"
-                placeholder="Zoo, museum, park, or city…"
-                autocomplete="off"
-                enterkeyhint="search"
-                aria-autocomplete="list"
-                aria-controls="hero-place-search-results"
-              />
-              <button type="submit" class="btn btn-primary hero-search-submit" id="hero-search-submit">
-                Find place
-              </button>
-            </div>
-            <ul id="hero-place-search-results" class="place-search-results hero-place-search-results" hidden role="listbox" aria-label="Matching places"></ul>
-          </form>
-          <p class="pitch-secondary pitch-jumps">
-            <a class="pitch-jump silo-place-link" href="#during" id="hero-map-link">Browse map ↓</a>
-            <span class="pitch-jump-dot" aria-hidden="true">·</span>
-            <a class="pitch-jump silo-cards-link" href="/field-pack/virtual-field-trip/" id="hero-cards-link">Virtual Field Trip →</a>
-            <span class="pitch-jump-dot" aria-hidden="true">·</span>
-            <a class="pitch-jump silo-cards-link" href="/field-pack/cards/" id="hero-all-cards-link">All cards →</a>
-          </p>
+            >Open Dallas Zoo</a>
+            <p class="home-first-proof">
+              <span class="home-first-badge">Verified</span>
+              Dallas Zoo · checked Aug 2026
+            </p>
+          </div>
         </div>
-
-        <p class="pitch-trust-strip" id="pitch-trust-strip">
-          Free · No account · <span data-place-count>218</span> places · Cards, cams &amp; Q&amp;A at home · Optional printable hunts
-        </p>
+        <article class="home-giraffe-card" id="home-giraffe-card">
+          <a class="home-giraffe-card-hit" href="/field-pack/dallas-zoo/" aria-labelledby="home-giraffe-name">
+            <img
+              class="home-giraffe-photo"
+              src="/field-pack/photos/reticulated-giraffe.jpg?v=img2"
+              alt=""
+              width="640"
+              height="640"
+              decoding="async"
+              fetchpriority="high"
+              style="object-position: 50% 18%"
+            />
+            <h2 class="home-giraffe-name" id="home-giraffe-name">🦒 Reticulated giraffe</h2>
+            <p class="home-giraffe-teaser">Tallest animal on long legs — look up!</p>
+          </a>
+          <div class="home-giraffe-peek" id="home-giraffe-peek" role="tooltip">
+            <p class="home-giraffe-peek-kicker">Talk</p>
+            <p class="home-giraffe-peek-talk">What do they eat?</p>
+            <div class="seo-talk-qa">
+              <h3>More talk</h3>
+              <dl>
+                <dt>How does a giraffe drink water?</dt>
+                <dd>It spreads its front legs wide and bends way down.</dd>
+              </dl>
+            </div>
+          </div>
+        </article>
       </header>
+
+      <section class="home-second" id="home-second" aria-label="Going in person or staying in">
+        <div>
+          <h2>Going in person</h2>
+          <p>Same giraffe, then elephant, then lion at the zoo. Print a hunt later if you want paper.</p>
+        </div>
+        <div>
+          <h2>Staying in</h2>
+          <p>Same cards, plus live cams when we have one.</p>
+        </div>
+        <p class="home-also">Also <a href="/field-pack/museums/">museums</a> and <a href="/field-pack/national-parks/">parks</a>. <a href="#during">More places</a></p>
+      </section>
 
 
 
@@ -267,6 +198,33 @@
           <p class="silo-chip silo-chip-place">Place</p>
           <h2 id="during-heading" class="during-heading">Map &amp; places</h2>
           <p class="journey-lead">Open a place for an at-home session — or print a hunt if you’re going tomorrow.</p>
+          <div class="pitch-cta-block" id="hero-search-block" data-search-mode="place">
+            <form class="hero-search-form place-search-wrap silo-place" id="hero-search-form" role="search" action="/field-pack/" method="get">
+              <div class="hero-search-mode" role="group" aria-label="Search places or cards">
+                <button type="button" class="hero-mode-btn is-active" data-search-mode="place" aria-pressed="true" id="hero-mode-place" title="Search zoos, museums, parks">Places</button>
+                <button type="button" class="hero-mode-btn" data-search-mode="card" aria-pressed="false" id="hero-mode-card" title="Search animal and attraction cards">Cards</button>
+              </div>
+              <p class="hero-search-mode-hint" id="hero-search-mode-hint">Search <strong>places</strong> or switch to <strong>cards</strong></p>
+              <label class="place-search-label" for="hero-place-search" id="hero-search-label">Find a place</label>
+              <div class="hero-search-row">
+                <input
+                  type="search"
+                  id="hero-place-search"
+                  name="q"
+                  class="place-search-input hero-place-search-input"
+                  placeholder="Zoo, museum, park, or city…"
+                  autocomplete="off"
+                  enterkeyhint="search"
+                  aria-autocomplete="list"
+                  aria-controls="hero-place-search-results"
+                />
+                <button type="submit" class="btn btn-primary hero-search-submit" id="hero-search-submit">
+                  Find place
+                </button>
+              </div>
+              <ul id="hero-place-search-results" class="place-search-results hero-place-search-results" hidden role="listbox" aria-label="Matching places"></ul>
+            </form>
+          </div>
         </header>
         <nav class="place-type-tabs place-type-tabs-map no-print" id="place-type-tabs" aria-label="Filter map by day type">
           <div class="place-type-seg" role="tablist" aria-label="Day type — filters map">
@@ -480,10 +438,9 @@
       <section class="seo-about no-print" id="about" aria-labelledby="about-heading">
         <h2 id="about-heading">About</h2>
         <p>
-          Field Trip Kit is an at-home virtual zoo (and aquarium, museum, and park) session —
-          cards, talk prompts, photos, live cams, Q&amp;A, and maps. A printable hunt is an
+          Field Trip Kit is a short zoo or aquarium hour —
+          cards, talk prompts, photos, live cams, and Q&amp;A. A printable hunt is an
           optional companion if you’re going in person.
-          Part of <strong>1Less</strong> — also <a href="/dinner">Dinner</a> for tonight’s meal.
           Questions or a venue to suggest? <a href="mailto:hello@1less.app">hello@1less.app</a>
         </p>
       </section>
@@ -584,5 +541,6 @@
     <script src="/field-pack/js/mission-pilots.js?v=4"></script>
     <script src="/field-pack/js/landing-map.js?v=84"></script>
     <script src="/field-pack/js/landing-hook.js?v=34"></script>
+    <script src="/field-pack/js/home-first.js?v=1"></script>
   </body>
 </html>
