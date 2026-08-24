@@ -29,6 +29,25 @@ class SitemapTests(unittest.TestCase):
         self.assertTrue((REPO / "static" / "sitemap.xml").is_file())
         self.assertTrue((REPO / "static" / "field-pack" / "sitemap.xml").is_file())
 
+    def test_both_sitemaps_include_live_card_urls(self):
+        expected_locs = (
+            "https://1less.app/field-pack/cards/cuttlefish/",
+            "https://1less.app/field-pack/cards/kelp-forest/",
+            "https://1less.app/field-pack/cards/manta-ray/",
+            "https://1less.app/field-pack/cards/puffin/",
+            "https://1less.app/field-pack/cards/sea-otter/",
+            "https://1less.app/field-pack/cards/whale-shark/",
+        )
+        sitemap_paths = (
+            REPO / "static" / "sitemap.xml",
+            REPO / "static" / "field-pack" / "sitemap.xml",
+        )
+
+        for sitemap_path in sitemap_paths:
+            sitemap_text = sitemap_path.read_text(encoding="utf-8")
+            for loc in expected_locs:
+                self.assertIn(f"<loc>{loc}</loc>", sitemap_text)
+
     def test_handler_serves_sitemap_200(self):
         class FakeHandler(WebHandler):
             def __init__(self):

@@ -2881,8 +2881,7 @@
       "find_ids": [
         "two_toed_sloth",
         "shark",
-        "stingray",
-        "ring_tailed_lemur"
+        "stingray"
       ],
       "challenges": [
         {
@@ -2907,16 +2906,6 @@
         {
           "id": "dwa_ray",
           "text": "Ray: wing-wave count in 15s",
-          "age_fit": [
-            "2-3",
-            "4-5",
-            "6-8",
-            "adult"
-          ]
-        },
-        {
-          "id": "dwa_lemur",
-          "text": "Lemur: jump or cling",
           "age_fit": [
             "2-3",
             "4-5",
