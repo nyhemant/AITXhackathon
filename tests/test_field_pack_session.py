@@ -30,7 +30,7 @@ class FlagshipSessionTests(unittest.TestCase):
         self.assertNotIn("Print one sheet per child or share one for the group.", html)
 
     def test_hub_first_tap_is_not_dallas_print(self):
-        """Hub first tap starts a place session, not the Dallas print drawer."""
+        """No-place first tap is a Verified kit session, not print, Houston, or a park."""
         html = (FP / "index.html").read_text(encoding="utf-8")
         hero = html.split('id="hero-search-block"', 1)[0]
         moment_hrefs = re.findall(
