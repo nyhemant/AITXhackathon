@@ -9,7 +9,12 @@ import unittest
 
 REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO / "scripts"))
+from field_pack_kit_tier import kit_tier_label  # noqa: E402
+
 FP = REPO / "static" / "field-pack"
+VENUES = FP / "data" / "venues"
+NO_PLACE_DEFAULT_SLUGS = frozenset({"dallas-zoo", "san-diego-zoo"})
+NO_PLACE_FORBIDDEN_SLUGS = frozenset({"houston-zoo", "yellowstone", "national-parks"})
 
 
 class FlagshipSessionTests(unittest.TestCase):
@@ -43,10 +48,28 @@ class FlagshipSessionTests(unittest.TestCase):
             hero,
         )
         self.assertIsNotNone(during)
-        self.assertEqual(during.group(1), "/field-pack/dallas-zoo/")
+        href = during.group(1)
+        self.assertTrue(href.startswith("/field-pack/"))
+        self.assertTrue(href.endswith("/"))
+        slug = href.rstrip("/").rsplit("/", 1)[-1]
+        self.assertIn(slug, NO_PLACE_DEFAULT_SLUGS)
+        self.assertNotIn(slug, NO_PLACE_FORBIDDEN_SLUGS)
+        self.assertIn('data-no-place-default="verified"', hero)
+
+        venue = json.loads((VENUES / f"{slug}.json").read_text(encoding="utf-8"))
+        self.assertTrue(kit_tier_label(venue).startswith("Verified kit"))
+        place = (FP / slug / "index.html").read_text(encoding="utf-8")
+        visible = place.split('id="venue-data"', 1)[0]
+        self.assertIn("Verified kit · checked", visible)
+        self.assertIn('id="mission"', place)
+
+        houston = (FP / "houston-zoo" / "index.html").read_text(encoding="utf-8")
+        houston_visible = houston.split('id="venue-data"', 1)[0]
+        self.assertIn("Starter list", houston_visible)
+        self.assertNotIn("Verified kit", houston_visible)
 
         self.assertNotIn('href="/field-pack/dallas-zoo/#mission"', html)
-        self.assertIn('href="/field-pack/dallas-zoo/"', html)
+        self.assertNotIn('href="/field-pack/houston-zoo/"', hero)
         self.assertIn('id="during"', html)
         self.assertIn('href="#during"', html)
 
