@@ -18,12 +18,37 @@ class FlagshipSessionTests(unittest.TestCase):
         self.assertNotIn("Places loading", html)
         self.assertIn("218 places worldwide", html)
         self.assertIn("<noscript><p class=\"map-count-quiet\">218 places worldwide</p></noscript>", html)
-        self.assertIn('href="/field-pack/dallas-zoo/#mission"', html)
         self.assertIn(
             "Use the at-home cards and session together; print is optional for a group visit.",
             html,
         )
         self.assertNotIn("Print one sheet per child or share one for the group.", html)
+
+    def test_hub_first_tap_is_not_dallas_print(self):
+        """Hub first tap starts a place session, not the Dallas print drawer."""
+        html = (FP / "index.html").read_text(encoding="utf-8")
+        hero = html.split('id="hero-search-block"', 1)[0]
+        moment_hrefs = re.findall(
+            r'class="hero-moment-link"[\s\S]*?href="([^"]+)"',
+            hero,
+        )
+        self.assertEqual(len(moment_hrefs), 3, moment_hrefs)
+        for href in moment_hrefs:
+            self.assertNotIn("#mission", href)
+            self.assertNotIn("#print", href)
+            self.assertNotIn("#mission-drawer", href)
+
+        during = re.search(
+            r'id="hero-moment-during"[\s\S]*?href="([^"]+)"',
+            hero,
+        )
+        self.assertIsNotNone(during)
+        self.assertEqual(during.group(1), "/field-pack/dallas-zoo/")
+
+        self.assertNotIn('href="/field-pack/dallas-zoo/#mission"', html)
+        self.assertIn('href="/field-pack/dallas-zoo/"', html)
+        self.assertIn('id="during"', html)
+        self.assertIn('href="#during"', html)
 
     def _visible(self, html: str) -> str:
         return html.split('id="venue-data"', 1)[0]
