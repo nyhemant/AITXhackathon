@@ -18,7 +18,7 @@
 - Ready IDs: one list `window.FP_READY_STRIP` in `landing-map.js` (US six + intl London / Singapore / Ueno)
 - US six: Dallas Zoo, Children’s Aquarium Dallas, Children’s Museum (Perot), Houston Zoo, San Diego Zoo, National Zoo
 - Popular chips go to `/field-pack/{slug}/`
-- Cache: `home-first.css?v=1`, `home-first.js?v=1`, `landing.css?v=95`, `landing-map.js?v=84`, `landing-hook.js?v=34`, `catalog.js?v=36`
+- Cache: `home-first.css?v=2`, `home-first.js?v=1`, `landing.css?v=95`, `landing-map.js?v=84`, `landing-hook.js?v=34`, `catalog.js?v=36`
 
 ## Flow (3 levels — current)
 1. **Home** `/` → `/field-pack/` — city + venue
