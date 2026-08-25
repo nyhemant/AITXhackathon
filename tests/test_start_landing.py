@@ -120,6 +120,38 @@ class StartLandingTests(unittest.TestCase):
         self.assertIsNone(_safe_start_path("/start/../field-pack/index.html"))
         self.assertIsNotNone(_safe_field_pack_path("/field-pack/"))
 
+    def test_hero_is_local_giraffe_still(self):
+        hero = re.search(r'<section class="start-hero"[\s\S]*?</section>', self.html)
+        self.assertIsNotNone(hero)
+        chapter = hero.group(0)
+        self.assertLess(self.html.find('id="start-hero"'), self.html.find('id="start-outcome"'))
+        self.assertIn('id="start-heading"', chapter)
+        self.assertIn("A ready-to-use field trip for curious kids.", chapter)
+        self.assertIn('class="start-hero-still"', chapter)
+        self.assertIn('src="/start/hero-giraffe.jpg"', chapter)
+        self.assertIn("srcset=", chapter)
+        self.assertIn("/start/hero-giraffe-480.jpg 480w", chapter)
+        self.assertIn("/start/hero-giraffe-640.jpg 640w", chapter)
+        self.assertIn("/start/hero-giraffe.jpg 896w", chapter)
+        self.assertIn('width="896"', chapter)
+        self.assertIn('height="1136"', chapter)
+        self.assertNotIn("http://", chapter)
+        self.assertNotIn("https://", chapter)
+        self.assertNotIn("I need an activity for today", chapter)
+        self.assertNotIn("Free · No account · At home or on location", chapter)
+        self.assertNotIn("At home or before you go.", chapter)
+        self.assertNotIn("us-map", chapter)
+        self.assertNotIn("start-door", chapter)
+        self.assertTrue((START / "hero-giraffe.jpg").is_file())
+        self.assertTrue((START / "hero-giraffe-640.jpg").is_file())
+        self.assertTrue((START / "hero-giraffe-480.jpg").is_file())
+        self.assertIn("object-fit: cover", self.css)
+        self.assertIn("object-position: 52% 28%", self.css)
+        self.assertIn("100svh", self.css)
+        self.assertIn("prefers-reduced-motion", self.css)
+        self.assertNotIn("webgl", self.css.lower())
+        self.assertNotIn("parallax", self.css.lower())
+
     def test_locked_headline_sub_and_trust(self):
         self.assertEqual(
             _heading_text(self.html),
