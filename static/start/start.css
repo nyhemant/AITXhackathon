@@ -99,6 +99,79 @@ body.start-body {
   text-shadow: 0 1px 18px rgba(12, 10, 8, 0.35);
 }
 
+.start-chapter {
+  position: relative;
+  isolation: isolate;
+  min-height: 100svh;
+  min-height: 100vh;
+  margin-top: 4.25rem;
+  overflow: hidden;
+  background: #2a2118;
+}
+
+.start-chapter-still {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 38%;
+}
+
+.start-chapter::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: min(42%, 20rem);
+  background: linear-gradient(to top, rgba(22, 16, 10, 0.62), rgba(22, 16, 10, 0.14) 64%, transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.start-chapter-copy {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  max-width: 32rem;
+  padding: 0 clamp(1.25rem, 5vw, 4rem) calc(2.4rem + env(safe-area-inset-bottom, 0px));
+}
+
+.start-chapter .start-kicker {
+  color: rgba(255, 252, 247, 0.78);
+}
+
+.start-chapter-line {
+  margin: 0 0 0.85rem;
+  color: #fffcf7;
+  font-size: clamp(1.35rem, 3.4vw, 1.85rem);
+  font-weight: 600;
+  line-height: 1.22;
+  letter-spacing: -0.02em;
+  text-shadow: 0 1px 18px rgba(12, 10, 8, 0.35);
+}
+
+.start-chapter-link {
+  display: inline-block;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 550;
+  color: rgba(255, 252, 247, 0.92);
+  text-decoration: underline;
+  text-underline-offset: 0.22em;
+  text-decoration-thickness: 1px;
+}
+
+.start-chapter-link:hover {
+  color: #fffcf7;
+}
+
+.start-chapter-link:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
 .start-page {
   width: min(72rem, calc(100% - 2.5rem));
   margin: 0 auto;
@@ -301,12 +374,21 @@ body.start-body {
     padding-top: 3rem;
   }
 
-  .start-hero-copy {
+  .start-hero-copy,
+  .start-chapter-copy {
     padding-bottom: calc(1.75rem + env(safe-area-inset-bottom, 0px));
   }
 
   .start-hero h1 {
     font-size: clamp(1.7rem, 7.4vw, 2.2rem);
+  }
+
+  .start-chapter {
+    margin-top: 3rem;
+  }
+
+  .start-chapter-line {
+    font-size: clamp(1.2rem, 5.6vw, 1.5rem);
   }
 
   .start-top {
@@ -336,7 +418,8 @@ body.start-body {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .start-hero-copy {
+  .start-hero-copy,
+  .start-chapter-copy {
     animation: start-hero-fade 700ms var(--ease) both;
   }
 }
@@ -353,7 +436,8 @@ body.start-body {
 @media (prefers-reduced-motion: reduce) {
   .start-door,
   .start-door:hover,
-  .start-hero-copy {
+  .start-hero-copy,
+  .start-chapter-copy {
     transition: none;
     transform: none;
     animation: none;

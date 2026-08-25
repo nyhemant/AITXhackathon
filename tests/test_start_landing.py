@@ -117,8 +117,13 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn("I need an activity for today", body)
         self.assertIsNotNone(_safe_start_path("/start/"))
         self.assertIsNotNone(_safe_start_path("/start/start.css"))
+        self.assertIsNotNone(_safe_start_path("/start/home-print-table.jpg"))
         self.assertIsNone(_safe_start_path("/start/../field-pack/index.html"))
         self.assertIsNotNone(_safe_field_pack_path("/field-pack/"))
+
+        still = _get("/start/home-print-table.jpg")
+        self.assertEqual(still._code, 200)
+        self.assertTrue(still.wfile.getvalue().startswith(b"\xff\xd8"))
 
     def test_hero_is_local_giraffe_still(self):
         hero = re.search(r'<section class="start-hero"[\s\S]*?</section>', self.html)
@@ -152,6 +157,40 @@ class StartLandingTests(unittest.TestCase):
         self.assertNotIn("webgl", self.css.lower())
         self.assertNotIn("parallax", self.css.lower())
 
+    def test_home_chapter_is_local_print_table(self):
+        home = re.search(r'<section class="start-chapter"[\s\S]*?</section>', self.html)
+        self.assertIsNotNone(home)
+        chapter = home.group(0)
+        self.assertLess(self.html.find('id="start-hero"'), self.html.find('id="start-home"'))
+        self.assertLess(self.html.find('id="start-home"'), self.html.find('id="start-outcome"'))
+        self.assertIn("At home this afternoon", chapter)
+        self.assertIn("The trip is already on the table — a print sheet and six questions.", chapter)
+        self.assertIn('class="start-chapter-still"', chapter)
+        self.assertIn('src="/start/home-print-table.jpg"', chapter)
+        self.assertIn("srcset=", chapter)
+        self.assertIn("/start/home-print-table-480.jpg 480w", chapter)
+        self.assertIn("/start/home-print-table-640.jpg 640w", chapter)
+        self.assertIn("/start/home-print-table.jpg 1024w", chapter)
+        self.assertIn('width="1024"', chapter)
+        self.assertIn('height="1536"', chapter)
+        self.assertIn('href="/field-pack/dallas-zoo/"', chapter)
+        self.assertNotIn("#mission", chapter)
+        self.assertNotIn("#print", chapter)
+        self.assertNotIn("http://", chapter)
+        self.assertNotIn("https://", chapter)
+        self.assertNotIn("I need an activity for today", chapter)
+        self.assertNotIn("Free · No account · At home or on location", chapter)
+        self.assertNotIn("At home or before you go.", chapter)
+        self.assertNotIn("start-door", chapter)
+        self.assertNotIn("us-map", chapter)
+        self.assertTrue((START / "home-print-table.jpg").is_file())
+        self.assertTrue((START / "home-print-table-640.jpg").is_file())
+        self.assertTrue((START / "home-print-table-480.jpg").is_file())
+        self.assertIn(".start-chapter", self.css)
+        self.assertIn("object-position: 50% 38%", self.css)
+        self.assertNotIn("webgl", self.css.lower())
+        self.assertNotIn("parallax", self.css.lower())
+
     def test_locked_headline_sub_and_trust(self):
         self.assertEqual(
             _heading_text(self.html),
@@ -171,10 +210,12 @@ class StartLandingTests(unittest.TestCase):
         self.assertNotIn("testimonial", self.html.lower())
 
     def test_outcome_then_three_equal_doors(self):
+        hero = self.html.find('id="start-hero"')
+        home = self.html.find('id="start-home"')
         outcome = self.html.find('id="start-outcome"')
         doors = self.html.find('id="start-doors"')
         proof = self.html.find('id="start-proof"')
-        self.assertTrue(0 < outcome < doors < proof)
+        self.assertTrue(0 < hero < home < outcome < doors < proof)
         self.assertEqual(len(self.doors), 3)
         self.assertIn("I need an activity for today", self.html)
         self.assertIn("Pick an animal or a place. Start now.", self.html)
