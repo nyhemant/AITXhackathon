@@ -119,6 +119,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertIsNotNone(_safe_start_path("/start/start.css"))
         self.assertIsNotNone(_safe_start_path("/start/home-print-table.jpg"))
         self.assertIsNotNone(_safe_start_path("/start/going-giraffe.jpg"))
+        self.assertIsNotNone(_safe_start_path("/start/teach-card.jpg"))
         self.assertIsNone(_safe_start_path("/start/../field-pack/index.html"))
         self.assertIsNotNone(_safe_field_pack_path("/field-pack/"))
 
@@ -129,6 +130,10 @@ class StartLandingTests(unittest.TestCase):
         going = _get("/start/going-giraffe.jpg")
         self.assertEqual(going._code, 200)
         self.assertTrue(going.wfile.getvalue().startswith(b"\xff\xd8"))
+
+        teach = _get("/start/teach-card.jpg")
+        self.assertEqual(teach._code, 200)
+        self.assertTrue(teach.wfile.getvalue().startswith(b"\xff\xd8"))
 
     def test_hero_is_local_giraffe_still(self):
         hero = re.search(r'<section class="start-hero"[\s\S]*?</section>', self.html)
@@ -170,7 +175,9 @@ class StartLandingTests(unittest.TestCase):
         self.assertLess(self.html.find('id="start-rest"'), self.html.find('id="start-home"'))
         self.assertLess(self.html.find('id="start-home"'), self.html.find('id="start-rest-2"'))
         self.assertLess(self.html.find('id="start-rest-2"'), self.html.find('id="start-going"'))
-        self.assertLess(self.html.find('id="start-going"'), self.html.find('id="start-outcome"'))
+        self.assertLess(self.html.find('id="start-going"'), self.html.find('id="start-rest-3"'))
+        self.assertLess(self.html.find('id="start-rest-3"'), self.html.find('id="start-teach"'))
+        self.assertLess(self.html.find('id="start-teach"'), self.html.find('id="start-outcome"'))
         self.assertIn("At home this afternoon", chapter)
         self.assertIn("The trip is already on the table — a print sheet and six questions.", chapter)
         self.assertIn('class="start-chapter-still"', chapter)
@@ -199,15 +206,17 @@ class StartLandingTests(unittest.TestCase):
         self.assertNotIn("webgl", self.css.lower())
         self.assertNotIn("parallax", self.css.lower())
 
-    def test_two_empty_cream_rests(self):
+    def test_three_empty_cream_rests(self):
         rests = re.findall(r'<div class="start-rest"[^>]*>\s*</div>', self.html)
-        self.assertEqual(len(rests), 2)
+        self.assertEqual(len(rests), 3)
         self.assertIn('id="start-rest"', rests[0])
         self.assertIn('id="start-rest-2"', rests[1])
+        self.assertIn('id="start-rest-3"', rests[2])
         for rest in rests:
             self.assertIn('aria-hidden="true"', rest)
             self.assertNotIn("At home this afternoon", rest)
             self.assertNotIn("Going this week", rest)
+            self.assertNotIn("Teaching a group", rest)
             self.assertNotIn("Open Dallas Zoo", rest)
             self.assertNotIn("start-door", rest)
             self.assertNotIn("<img", rest)
@@ -216,8 +225,10 @@ class StartLandingTests(unittest.TestCase):
         self.assertLess(self.html.find('id="start-rest"'), self.html.find('id="start-home"'))
         self.assertLess(self.html.find('id="start-home"'), self.html.find('id="start-rest-2"'))
         self.assertLess(self.html.find('id="start-rest-2"'), self.html.find('id="start-going"'))
-        self.assertEqual(self.html.count('class="start-rest"'), 2)
-        self.assertEqual(self.html.count('class="start-chapter"'), 2)
+        self.assertLess(self.html.find('id="start-going"'), self.html.find('id="start-rest-3"'))
+        self.assertLess(self.html.find('id="start-rest-3"'), self.html.find('id="start-teach"'))
+        self.assertEqual(self.html.count('class="start-rest"'), 3)
+        self.assertEqual(self.html.count('class="start-chapter"'), 3)
         self.assertIn("min-height: 42vh", self.css)
         self.assertIn("background: #f6f1ea", self.css)
 
@@ -230,7 +241,8 @@ class StartLandingTests(unittest.TestCase):
         chapter = going.group(0)
         self.assertLess(self.html.find('id="start-home"'), self.html.find('id="start-rest-2"'))
         self.assertLess(self.html.find('id="start-rest-2"'), self.html.find('id="start-going"'))
-        self.assertLess(self.html.find('id="start-going"'), self.html.find('id="start-outcome"'))
+        self.assertLess(self.html.find('id="start-going"'), self.html.find('id="start-rest-3"'))
+        self.assertLess(self.html.find('id="start-rest-3"'), self.html.find('id="start-teach"'))
         self.assertIn("Going this week", chapter)
         self.assertIn("Same animal. Real place.", chapter)
         self.assertIn("Open the place first. Print only if you want paper.", chapter)
@@ -261,6 +273,47 @@ class StartLandingTests(unittest.TestCase):
         self.assertNotIn("webgl", self.css.lower())
         self.assertNotIn("parallax", self.css.lower())
 
+    def test_teach_chapter_is_local_jpeg(self):
+        teach = re.search(
+            r'<section class="start-chapter" id="start-teach"[\s\S]*?</section>',
+            self.html,
+        )
+        self.assertIsNotNone(teach)
+        chapter = teach.group(0)
+        self.assertLess(self.html.find('id="start-going"'), self.html.find('id="start-rest-3"'))
+        self.assertLess(self.html.find('id="start-rest-3"'), self.html.find('id="start-teach"'))
+        self.assertLess(self.html.find('id="start-teach"'), self.html.find('id="start-outcome"'))
+        self.assertIn("Teaching a group", chapter)
+        self.assertIn("Cards already laid out.", chapter)
+        self.assertIn("One lesson, no extra setup.", chapter)
+        self.assertIn('class="start-chapter-still"', chapter)
+        self.assertIn('src="/start/teach-card.jpg"', chapter)
+        self.assertIn("srcset=", chapter)
+        self.assertIn("/start/teach-card-480.jpg 480w", chapter)
+        self.assertIn("/start/teach-card-640.jpg 640w", chapter)
+        self.assertIn("/start/teach-card.jpg 1440w", chapter)
+        self.assertIn('width="1440"', chapter)
+        self.assertIn('height="1864"', chapter)
+        self.assertNotIn("start-chapter-link", chapter)
+        self.assertNotIn("/field-pack/dallas-zoo/", chapter)
+        self.assertNotIn("#mission", chapter)
+        self.assertNotIn("#print", chapter)
+        self.assertNotIn("http://", chapter)
+        self.assertNotIn("https://", chapter)
+        self.assertNotIn("I need an activity for today", chapter)
+        self.assertNotIn("Free · No account · At home or on location", chapter)
+        self.assertNotIn("At home or before you go.", chapter)
+        self.assertNotIn("start-door", chapter)
+        self.assertNotIn("us-map", chapter)
+        self.assertTrue((START / "teach-card.jpg").is_file())
+        self.assertTrue((START / "teach-card-640.jpg").is_file())
+        self.assertTrue((START / "teach-card-480.jpg").is_file())
+        self.assertTrue((START / "teach-card.jpg").read_bytes().startswith(b"\xff\xd8"))
+        self.assertIn(".start-chapter", self.css)
+        self.assertIn(".start-chapter-quiet", self.css)
+        self.assertNotIn("webgl", self.css.lower())
+        self.assertNotIn("parallax", self.css.lower())
+
     def test_locked_headline_sub_and_trust(self):
         self.assertEqual(
             _heading_text(self.html),
@@ -285,10 +338,14 @@ class StartLandingTests(unittest.TestCase):
         home = self.html.find('id="start-home"')
         rest2 = self.html.find('id="start-rest-2"')
         going = self.html.find('id="start-going"')
+        rest3 = self.html.find('id="start-rest-3"')
+        teach = self.html.find('id="start-teach"')
         outcome = self.html.find('id="start-outcome"')
         doors = self.html.find('id="start-doors"')
         proof = self.html.find('id="start-proof"')
-        self.assertTrue(0 < hero < rest < home < rest2 < going < outcome < doors < proof)
+        self.assertTrue(
+            0 < hero < rest < home < rest2 < going < rest3 < teach < outcome < doors < proof
+        )
         self.assertEqual(len(self.doors), 3)
         self.assertIn("I need an activity for today", self.html)
         self.assertIn("Pick an animal or a place. Start now.", self.html)
@@ -350,7 +407,8 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn("Zoo and aquarium first. Museums and parks are here when you want them.", self.html)
         self.assertNotIn("/field-pack/museums/", self.html)
         self.assertNotIn("/field-pack/national-parks/", self.html)
-        self.assertNotIn("lesson", self.html.lower())
+        self.assertIn("One lesson, no extra setup.", self.html)
+        self.assertNotIn("lesson plan", self.html.lower())
         self.assertNotIn("grade", self.html.lower())
 
     def test_motion_is_optional_and_tappable(self):
