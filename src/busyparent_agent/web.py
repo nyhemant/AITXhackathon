@@ -31,6 +31,9 @@ STATIC_ROOT = REPO_ROOT / "static"
 # Baby's Day Out static site (trips, missions, treasure hunt)
 FIELD_PACK_ROOT = REPO_ROOT / "static" / "field-pack"
 FIELD_PACK_PREFIX = "/field-pack"
+# First-time Field Trip Kit landing — does not replace / or /field-pack/
+START_ROOT = REPO_ROOT / "static" / "start"
+START_PREFIX = "/start"
 SHELL_ROOT = REPO_ROOT / "static" / "shell"
 SHELL_PREFIX = "/shell"
 DINNER_PATH = "/dinner"
@@ -996,19 +999,19 @@ def _safe_shell_path(url_path: str) -> Path | None:
     return None
 
 
-def _safe_field_pack_path(url_path: str) -> Path | None:
-    """Resolve /field-pack/... to a file under FIELD_PACK_ROOT, or None."""
-    if url_path != FIELD_PACK_PREFIX and not url_path.startswith(FIELD_PACK_PREFIX + "/"):
+def _safe_mounted_static(url_path: str, prefix: str, mount_root: Path) -> Path | None:
+    """Resolve a prefix mount (e.g. /field-pack/, /start/) to a file, or None."""
+    if url_path != prefix and not url_path.startswith(prefix + "/"):
         return None
-    if not FIELD_PACK_ROOT.is_dir():
+    if not mount_root.is_dir():
         return None
-    rest = unquote(url_path[len(FIELD_PACK_PREFIX) :]).lstrip("/")
+    rest = unquote(url_path[len(prefix) :]).lstrip("/")
     # Block sneaky path segments early
     if ".." in Path(rest).parts:
         return None
-    candidate = FIELD_PACK_ROOT / (rest if rest else "index.html")
+    candidate = mount_root / (rest if rest else "index.html")
     try:
-        root = FIELD_PACK_ROOT.resolve()
+        root = mount_root.resolve()
         resolved = candidate.resolve()
         resolved.relative_to(root)
     except (OSError, ValueError):
@@ -1022,6 +1025,16 @@ def _safe_field_pack_path(url_path: str) -> Path | None:
     if not resolved.is_file():
         return None
     return resolved
+
+
+def _safe_field_pack_path(url_path: str) -> Path | None:
+    """Resolve /field-pack/... to a file under FIELD_PACK_ROOT, or None."""
+    return _safe_mounted_static(url_path, FIELD_PACK_PREFIX, FIELD_PACK_ROOT)
+
+
+def _safe_start_path(url_path: str) -> Path | None:
+    """Resolve /start/... to a file under START_ROOT, or None."""
+    return _safe_mounted_static(url_path, START_PREFIX, START_ROOT)
 
 
 def _dinner_preview_text(message_text: str) -> str:
@@ -1119,6 +1132,13 @@ class WebHandler(BaseHTTPRequestHandler):
         if path in {DINNER_PATH, DINNER_PATH + "/"}:
             self._send_text(_html_for_request(self.headers.get("Cookie")), "text/html; charset=utf-8")
             return
+        # First-time Field Trip Kit landing at /start/ (does not replace / or /field-pack/)
+        if path == START_PREFIX:
+            self.send_response(301)
+            self.send_header("Location", START_PREFIX + "/")
+            self.send_header("Content-Length", "0")
+            self.end_headers()
+            return
         # Trailing slash so relative CSS/JS/photo URLs resolve under /field-pack/
         if path == FIELD_PACK_PREFIX:
             self.send_response(301)
@@ -1154,6 +1174,20 @@ class WebHandler(BaseHTTPRequestHandler):
             self.send_header("Content-Type", content_type)
             self.send_header("Content-Length", str(len(body)))
             self.send_header("Cache-Control", "no-cache")
+            self.end_headers()
+            self.wfile.write(body)
+            return
+        start_file = _safe_start_path(path)
+        if start_file is not None:
+            body = start_file.read_bytes()
+            content_type = _static_content_type(start_file)
+            self.send_response(200)
+            self.send_header("Content-Type", content_type)
+            self.send_header("Content-Length", str(len(body)))
+            if start_file.suffix.lower() in {".css", ".js", ".html", ".htm"}:
+                self.send_header("Cache-Control", "no-cache")
+            else:
+                self.send_header("Cache-Control", "public, max-age=86400")
             self.end_headers()
             self.wfile.write(body)
             return
@@ -1207,6 +1241,12 @@ class WebHandler(BaseHTTPRequestHandler):
             self.send_header("Content-Length", str(length))
             self.end_headers()
             return
+        if path == START_PREFIX:
+            self.send_response(301)
+            self.send_header("Location", START_PREFIX + "/")
+            self.send_header("Content-Length", "0")
+            self.end_headers()
+            return
         if path.startswith(FIELD_PACK_PREFIX + "/places/"):
             slug = path[len(FIELD_PACK_PREFIX + "/places/") :]
             if slug.endswith(".html"):
@@ -1217,6 +1257,7 @@ class WebHandler(BaseHTTPRequestHandler):
                 return
         asset_path = LOGO_ASSETS.get(path.lstrip("/"))
         shell_file = _safe_shell_path(path)
+        start_file = _safe_start_path(path)
         field_pack_file = _safe_field_pack_path(path)
         if asset_path is not None and asset_path.exists():
             content_type = _image_content_type(asset_path)
@@ -1224,6 +1265,9 @@ class WebHandler(BaseHTTPRequestHandler):
         elif shell_file is not None:
             content_type = _static_content_type(shell_file)
             length = shell_file.stat().st_size
+        elif start_file is not None:
+            content_type = _static_content_type(start_file)
+            length = start_file.stat().st_size
         elif field_pack_file is not None:
             content_type = _static_content_type(field_pack_file)
             length = field_pack_file.stat().st_size

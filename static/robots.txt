@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
 Allow: /field-pack/
+Allow: /start/
 Disallow: /dinner
 Disallow: /analytics/
 Disallow: /api/

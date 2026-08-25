@@ -53,10 +53,12 @@ from busyparent_agent.web import (
     DINNER_PATH,
     FIELD_PACK_PREFIX,
     LOGO_ASSETS,
+    START_PREFIX,
     WebHandler,
     _SITEMAP_URLS,
     _safe_field_pack_path,
     _safe_shell_path,
+    _safe_start_path,
     _safe_static_root_file,
 )
 
@@ -235,6 +237,10 @@ def _served_status(path: str) -> int:
     if path in _SITEMAP_URLS or _safe_static_root_file(path) is not None:
         return 200
     if path in {DINNER_PATH, DINNER_PATH + "/"}:
+        return 200
+    if path == START_PREFIX:
+        return 301
+    if _safe_start_path(path) is not None:
         return 200
     if path == FIELD_PACK_PREFIX:
         return 301
@@ -465,6 +471,8 @@ class FieldPackInternalLinkTests(unittest.TestCase):
             "/field-pack/virtual-field-trip/": 200,
             "/field-pack/app.html": 200,
             "/dinner": 200,
+            "/start/": 200,
+            "/start": 301,
             "/field-pack": 301,
             "/": 302,
             "/field-pack/cards/acad-cadillac-view/": 404,
