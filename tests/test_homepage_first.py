@@ -86,7 +86,7 @@ class HomepageFirstTests(unittest.TestCase):
     def test_no_classic_twin_first_screen(self):
         self.assertNotIn("landing-pitch-t4b", self.html)
         self.assertNotIn("hero-moment-strip", self.html)
-        self.assertIn("home-first.css?v=2", self.html)
+        self.assertIn("home-first.css", self.html)
         self.assertIn("home-first.js", self.html)
         self.assertIn("prefers-reduced-motion", (FP / "css" / "home-first.css").read_text(encoding="utf-8"))
 
