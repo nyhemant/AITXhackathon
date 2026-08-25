@@ -99,12 +99,16 @@ body.start-body {
   text-shadow: 0 1px 18px rgba(12, 10, 8, 0.35);
 }
 
+.start-rest {
+  min-height: 42vh;
+  background: #f6f1ea;
+}
+
 .start-chapter {
   position: relative;
   isolation: isolate;
   min-height: 100svh;
   min-height: 100vh;
-  margin-top: 4.25rem;
   overflow: hidden;
   background: #2a2118;
 }
@@ -381,10 +385,6 @@ body.start-body {
 
   .start-hero h1 {
     font-size: clamp(1.7rem, 7.4vw, 2.2rem);
-  }
-
-  .start-chapter {
-    margin-top: 3rem;
   }
 
   .start-chapter-line {

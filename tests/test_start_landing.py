@@ -161,7 +161,8 @@ class StartLandingTests(unittest.TestCase):
         home = re.search(r'<section class="start-chapter"[\s\S]*?</section>', self.html)
         self.assertIsNotNone(home)
         chapter = home.group(0)
-        self.assertLess(self.html.find('id="start-hero"'), self.html.find('id="start-home"'))
+        self.assertLess(self.html.find('id="start-hero"'), self.html.find('id="start-rest"'))
+        self.assertLess(self.html.find('id="start-rest"'), self.html.find('id="start-home"'))
         self.assertLess(self.html.find('id="start-home"'), self.html.find('id="start-outcome"'))
         self.assertIn("At home this afternoon", chapter)
         self.assertIn("The trip is already on the table — a print sheet and six questions.", chapter)
@@ -191,6 +192,24 @@ class StartLandingTests(unittest.TestCase):
         self.assertNotIn("webgl", self.css.lower())
         self.assertNotIn("parallax", self.css.lower())
 
+    def test_one_cream_rest_between_hero_and_home(self):
+        rests = re.findall(r'<div class="start-rest"[^>]*>\s*</div>', self.html)
+        self.assertEqual(len(rests), 1)
+        rest = rests[0]
+        self.assertIn('id="start-rest"', rest)
+        self.assertIn('aria-hidden="true"', rest)
+        self.assertNotIn("At home this afternoon", rest)
+        self.assertNotIn("Open Dallas Zoo", rest)
+        self.assertNotIn("start-door", rest)
+        self.assertNotIn("<img", rest)
+        self.assertNotIn("<a", rest)
+        self.assertLess(self.html.find('id="start-hero"'), self.html.find('id="start-rest"'))
+        self.assertLess(self.html.find('id="start-rest"'), self.html.find('id="start-home"'))
+        self.assertEqual(self.html.count('class="start-rest"'), 1)
+        self.assertEqual(self.html.count('class="start-chapter"'), 1)
+        self.assertIn("min-height: 42vh", self.css)
+        self.assertIn("background: #f6f1ea", self.css)
+
     def test_locked_headline_sub_and_trust(self):
         self.assertEqual(
             _heading_text(self.html),
@@ -211,11 +230,12 @@ class StartLandingTests(unittest.TestCase):
 
     def test_outcome_then_three_equal_doors(self):
         hero = self.html.find('id="start-hero"')
+        rest = self.html.find('id="start-rest"')
         home = self.html.find('id="start-home"')
         outcome = self.html.find('id="start-outcome"')
         doors = self.html.find('id="start-doors"')
         proof = self.html.find('id="start-proof"')
-        self.assertTrue(0 < hero < home < outcome < doors < proof)
+        self.assertTrue(0 < hero < rest < home < outcome < doors < proof)
         self.assertEqual(len(self.doors), 3)
         self.assertIn("I need an activity for today", self.html)
         self.assertIn("Pick an animal or a place. Start now.", self.html)
