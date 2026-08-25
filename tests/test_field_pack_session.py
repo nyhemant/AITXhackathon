@@ -32,19 +32,25 @@ class FlagshipSessionTests(unittest.TestCase):
     def test_hub_first_tap_is_not_dallas_print(self):
         """No-place first tap is a Verified kit session, not print, Houston, or a park."""
         html = (FP / "index.html").read_text(encoding="utf-8")
-        hero = html.split('id="during"', 1)[0]
-        cta = re.search(
-            r'id="home-open-dallas"[\s\S]*?href="([^"]+)"',
+        hero = html.split('id="hero-search-block"', 1)[0]
+        moment_hrefs = re.findall(
+            r'class="hero-moment-link"[\s\S]*?href="([^"]+)"',
             hero,
         )
-        self.assertIsNotNone(cta)
-        href = cta.group(1)
-        self.assertEqual(href, "/field-pack/dallas-zoo/")
-        self.assertNotIn("#mission", href)
-        self.assertNotIn("#print", href)
-        self.assertNotIn("#mission-drawer", href)
-        self.assertNotIn("youtube", href.lower())
+        self.assertEqual(len(moment_hrefs), 3, moment_hrefs)
+        for href in moment_hrefs:
+            self.assertNotIn("#mission", href)
+            self.assertNotIn("#print", href)
+            self.assertNotIn("#mission-drawer", href)
 
+        during = re.search(
+            r'id="hero-moment-during"[\s\S]*?href="([^"]+)"',
+            hero,
+        )
+        self.assertIsNotNone(during)
+        href = during.group(1)
+        self.assertTrue(href.startswith("/field-pack/"))
+        self.assertTrue(href.endswith("/"))
         slug = href.rstrip("/").rsplit("/", 1)[-1]
         self.assertIn(slug, NO_PLACE_DEFAULT_SLUGS)
         self.assertNotIn(slug, NO_PLACE_FORBIDDEN_SLUGS)
