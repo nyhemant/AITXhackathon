@@ -13,7 +13,7 @@
 - CSS cache: `shell.css?v=6`
 
 ## Landing
-- Live home stays `/` → `/field-pack/` (map hub). First-time alternate is `/start/` — giraffe hero, then home print-table chapter, then trust, three doors, and proof. Do not replace the home.
+- Live home stays `/` → `/field-pack/` (map hub). First-time alternate is `/start/` — giraffe hero, cream rest, home print-table, cream rest, going chapter, then trust, three doors, and proof. Do not replace the home.
 - Hook hero + search + map + **Explore a place at home** (6 cards → place pages) + Popular SEO chips
 - Ready IDs: one list `window.FP_READY_STRIP` in `landing-map.js` (US six + intl London / Singapore / Ueno)
 - US six: Dallas Zoo, Children’s Aquarium Dallas, Children’s Museum (Perot), Houston Zoo, San Diego Zoo, National Zoo
