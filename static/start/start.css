@@ -122,6 +122,14 @@ body.start-body {
   object-position: 50% 38%;
 }
 
+.start-chapter-elephant .start-chapter-still {
+  object-position: 50% 28%;
+}
+
+.start-chapter-lion .start-chapter-still {
+  object-position: 50% 22%;
+}
+
 .start-chapter::after {
   content: "";
   position: absolute;
