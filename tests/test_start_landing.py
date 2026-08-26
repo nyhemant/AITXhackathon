@@ -117,11 +117,21 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn("I need an activity for today", body)
         self.assertIsNotNone(_safe_start_path("/start/"))
         self.assertIsNotNone(_safe_start_path("/start/start.css"))
+        self.assertIsNotNone(_safe_start_path("/start/still-elephant.jpg"))
+        self.assertIsNotNone(_safe_start_path("/start/still-lion.jpg"))
         self.assertIsNotNone(_safe_start_path("/start/home-print-table.jpg"))
         self.assertIsNotNone(_safe_start_path("/start/going-giraffe.jpg"))
         self.assertIsNotNone(_safe_start_path("/start/teach-card.jpg"))
         self.assertIsNone(_safe_start_path("/start/../field-pack/index.html"))
         self.assertIsNotNone(_safe_field_pack_path("/field-pack/"))
+
+        elephant = _get("/start/still-elephant.jpg")
+        self.assertEqual(elephant._code, 200)
+        self.assertTrue(elephant.wfile.getvalue().startswith(b"\xff\xd8"))
+
+        lion = _get("/start/still-lion.jpg")
+        self.assertEqual(lion._code, 200)
+        self.assertTrue(lion.wfile.getvalue().startswith(b"\xff\xd8"))
 
         still = _get("/start/home-print-table.jpg")
         self.assertEqual(still._code, 200)
@@ -167,11 +177,59 @@ class StartLandingTests(unittest.TestCase):
         self.assertNotIn("webgl", self.css.lower())
         self.assertNotIn("parallax", self.css.lower())
 
+    def test_elephant_and_lion_stills_follow_giraffe(self):
+        elephant = re.search(
+            r'<section class="start-chapter start-chapter-elephant" id="start-elephant"[\s\S]*?</section>',
+            self.html,
+        )
+        lion = re.search(
+            r'<section class="start-chapter start-chapter-lion" id="start-lion"[\s\S]*?</section>',
+            self.html,
+        )
+        self.assertIsNotNone(elephant)
+        self.assertIsNotNone(lion)
+        e_html = elephant.group(0)
+        l_html = lion.group(0)
+        self.assertLess(self.html.find('id="start-hero"'), self.html.find('id="start-elephant"'))
+        self.assertLess(self.html.find('id="start-elephant"'), self.html.find('id="start-lion"'))
+        self.assertLess(self.html.find('id="start-lion"'), self.html.find('id="start-rest"'))
+        self.assertIn("African elephant", e_html)
+        self.assertIn("Baby elephant plus the Giants of the Savanna herd.", e_html)
+        self.assertIn('src="/start/still-elephant.jpg"', e_html)
+        self.assertIn("/start/still-elephant-480.jpg 480w", e_html)
+        self.assertIn("/start/still-elephant-640.jpg 640w", e_html)
+        self.assertIn("/start/still-elephant.jpg 976w", e_html)
+        self.assertIn('width="976"', e_html)
+        self.assertIn('height="1056"', e_html)
+        self.assertNotIn("start-door", e_html)
+        self.assertNotIn("http://", e_html)
+        self.assertNotIn("https://", e_html)
+        self.assertIn("African lion", l_html)
+        self.assertIn("Big cat of the grassland pride — mighty roar!", l_html)
+        self.assertIn('src="/start/still-lion.jpg"', l_html)
+        self.assertIn("/start/still-lion-480.jpg 480w", l_html)
+        self.assertIn("/start/still-lion-640.jpg 640w", l_html)
+        self.assertIn("/start/still-lion.jpg 1248w", l_html)
+        self.assertIn('width="1248"', l_html)
+        self.assertIn('height="832"', l_html)
+        self.assertNotIn("start-door", l_html)
+        self.assertNotIn("http://", l_html)
+        self.assertNotIn("https://", l_html)
+        self.assertTrue((START / "still-elephant.jpg").is_file())
+        self.assertTrue((START / "still-lion.jpg").is_file())
+        self.assertTrue((START / "still-elephant.jpg").read_bytes().startswith(b"\xff\xd8"))
+        self.assertTrue((START / "still-lion.jpg").read_bytes().startswith(b"\xff\xd8"))
+        self.assertIn("object-position: 50% 28%", self.css)
+        self.assertIn("object-position: 50% 22%", self.css)
+
     def test_home_chapter_is_local_print_table(self):
-        home = re.search(r'<section class="start-chapter"[\s\S]*?</section>', self.html)
+        home = re.search(
+            r'<section class="start-chapter" id="start-home"[\s\S]*?</section>',
+            self.html,
+        )
         self.assertIsNotNone(home)
         chapter = home.group(0)
-        self.assertLess(self.html.find('id="start-hero"'), self.html.find('id="start-rest"'))
+        self.assertLess(self.html.find('id="start-lion"'), self.html.find('id="start-rest"'))
         self.assertLess(self.html.find('id="start-rest"'), self.html.find('id="start-home"'))
         self.assertLess(self.html.find('id="start-home"'), self.html.find('id="start-rest-2"'))
         self.assertLess(self.html.find('id="start-rest-2"'), self.html.find('id="start-going"'))
@@ -228,7 +286,9 @@ class StartLandingTests(unittest.TestCase):
         self.assertLess(self.html.find('id="start-going"'), self.html.find('id="start-rest-3"'))
         self.assertLess(self.html.find('id="start-rest-3"'), self.html.find('id="start-teach"'))
         self.assertEqual(self.html.count('class="start-rest"'), 3)
-        self.assertEqual(self.html.count('class="start-chapter"'), 3)
+        self.assertEqual(self.html.count('id="start-home"'), 1)
+        self.assertEqual(self.html.count('id="start-elephant"'), 1)
+        self.assertEqual(self.html.count('id="start-lion"'), 1)
         self.assertIn("min-height: 42vh", self.css)
         self.assertIn("background: #f6f1ea", self.css)
 
@@ -345,8 +405,10 @@ class StartLandingTests(unittest.TestCase):
         outcome = self.html.find('id="start-outcome"')
         doors = self.html.find('id="start-doors"')
         proof = self.html.find('id="start-proof"')
+        elephant = self.html.find('id="start-elephant"')
+        lion = self.html.find('id="start-lion"')
         self.assertTrue(
-            0 < hero < rest < home < rest2 < going < rest3 < teach < outcome < doors < proof
+            0 < hero < elephant < lion < rest < home < rest2 < going < rest3 < teach < outcome < doors < proof
         )
         self.assertEqual(len(self.doors), 3)
         self.assertIn("I need an activity for today", self.html)
@@ -411,7 +473,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertNotIn("/field-pack/national-parks/", self.html)
         self.assertIn("One lesson, no extra setup.", self.html)
         self.assertNotIn("lesson plan", self.html.lower())
-        self.assertNotIn("grade", self.html.lower())
+        self.assertIsNone(re.search(r"\bgrade\b", self.html.lower()))
 
     def test_motion_is_optional_and_tappable(self):
         self.assertIn("prefers-reduced-motion", self.css)
