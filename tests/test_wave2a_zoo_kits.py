@@ -160,8 +160,6 @@ class Wave1UnchangedTests(unittest.TestCase):
     def test_wave1_catalog_animal_ids(self):
         venues = _load_catalog_venues()
         for slug, expect in WAVE1_ITEMS.items():
-            catalog_ids = [cid for cid in expect if cid != "polar-bear"]
-            # polar-bear stays on San Diego JSON/catalog; published-card filter is SEO-only
             self.assertEqual(venues[slug]["animalIds"], expect, slug)
             self.assertEqual(venues[slug]["featuredAnimalIds"], expect[:6], slug)
 
@@ -266,8 +264,14 @@ class StartHereFromAndNextTests(unittest.TestCase):
         self.assertIn("from=national-zoo", html)
         self.assertIn("from=san-diego-zoo", html)
 
-    def test_polar_bear_stays_unpublished(self):
-        self.assertFalse((FP / "cards" / "polar-bear" / "index.html").is_file())
+    def test_polar_bear_is_published(self):
+        html = (FP / "cards" / "polar-bear" / "index.html").read_text(encoding="utf-8")
+        self.assertIn("Polar bear", html)
+        self.assertIn("Arctic swimmer in a white coat — built for ice.", html)
+        self.assertIn('card_id: "polar-bear"', html)
+        sd = (FP / "san-diego-zoo" / "index.html").read_text(encoding="utf-8")
+        self.assertIn("/field-pack/cards/polar-bear/?from=san-diego-zoo", sd)
+        self.assertNotIn('href="#home-polar-bear"', sd)
 
     def test_no_aquarium_only_on_wave2a_place_pages(self):
         kinds = load_card_kinds()
