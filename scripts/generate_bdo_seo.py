@@ -907,8 +907,9 @@ _START_HERE_NEXT_SLUGS = (
 _START_HERE_NEXT: dict[str, list[dict[str, str]]] | None = None
 _START_HERE_KITS: dict[str, list[str]] | None = None
 _START_HERE_SITES: dict[str, str] | None = None
-# Catalog animals with no published card page (Wave 1 polar-bear). Do not invent one.
-NEVER_PUBLISH_CARD_IDS = frozenset({"polar-bear"})
+# Hold-back list for catalog animals that must not get a public card page.
+# Polar bear is published — keep this empty unless a future catalog id is intentionally withheld.
+NEVER_PUBLISH_CARD_IDS = frozenset()
 _PUBLISHED_CARD_IDS: set[str] | None = None
 
 
