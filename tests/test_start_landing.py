@@ -333,7 +333,12 @@ class StartLandingTests(unittest.TestCase):
         self.assertNotIn("flashcard", chapter.lower())
         self.assertNotIn('alt="African lion"', chapter)
         self.assertNotIn("lion portrait", chapter.lower())
-        self.assertNotIn("start-chapter-link", chapter)
+        links = re.findall(r'<a class="start-chapter-link"[^>]*>[\s\S]*?</a>', chapter)
+        self.assertEqual(len(links), 1, links)
+        self.assertIn('href="/field-pack/cards/"', links[0])
+        self.assertIn("Explore cards", links[0])
+        self.assertIn('class="start-teach-hit"', chapter)
+        self.assertIn('href="/field-pack/cards/reticulated-giraffe/"', chapter)
         self.assertNotIn("/field-pack/dallas-zoo/", chapter)
         self.assertNotIn("#mission", chapter)
         self.assertNotIn("#print", chapter)
@@ -402,13 +407,17 @@ class StartLandingTests(unittest.TestCase):
 
     def test_each_door_opens_dallas_session_not_print(self):
         self.assertEqual(len(self.doors), 3)
+        hrefs = []
         for door in self.doors:
             href = re.search(r'href="([^"]+)"', door)
             self.assertIsNotNone(href)
-            self.assertEqual(href.group(1), "/field-pack/dallas-zoo/")
+            hrefs.append(href.group(1))
             self.assertNotIn("#mission", door)
             self.assertNotIn("#print", door)
             self.assertNotIn("youtube", door.lower())
+        self.assertEqual(hrefs[0], "/field-pack/dallas-zoo/")
+        self.assertEqual(hrefs[1], "/field-pack/dallas-zoo/")
+        self.assertEqual(hrefs[2], "/field-pack/cards/")
         self.assertIn('id="door-today"', self.html)
         self.assertIn('id="door-visiting"', self.html)
         self.assertIn('id="door-teaching"', self.html)

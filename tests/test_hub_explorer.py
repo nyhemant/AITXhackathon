@@ -99,7 +99,7 @@ class HubExplorerTests(unittest.TestCase):
         self.assertIn('href="/field-pack/dallas-zoo/"', chapter)
         self.assertIn('class="start-going-hit"', chapter)
         self.assertIn("Open Dallas Zoo", self.start)
-        self.assertEqual(self.start.count('href="/field-pack/dallas-zoo/"'), 5)
+        self.assertEqual(self.start.count('href="/field-pack/dallas-zoo/"'), 4)
 
     def test_hub_is_map_first_place_explorer(self):
         self.assertIn("landing-hub", self.html)
