@@ -5,9 +5,11 @@ import re
 import unittest
 
 from busyparent_agent.web import (
+    ABOUT_PREFIX,
     FIELD_PACK_PREFIX,
     START_PREFIX,
     WebHandler,
+    _safe_about_path,
     _safe_field_pack_path,
     _safe_start_path,
 )
@@ -107,6 +109,16 @@ class StartLandingTests(unittest.TestCase):
         self.assertIsNotNone(_safe_start_path("/start/teach-card.jpg"))
         self.assertIsNone(_safe_start_path("/start/../field-pack/index.html"))
         self.assertIsNotNone(_safe_field_pack_path("/field-pack/"))
+
+        about_slash = _get("/about")
+        self.assertEqual(about_slash._code, 301)
+        self.assertEqual(about_slash._headers.get("Location"), ABOUT_PREFIX + "/")
+        about = _get("/about/")
+        self.assertEqual(about._code, 200)
+        self.assertIn(b"<title>About · Field Trip Kit · 1Less</title>", about.wfile.getvalue())
+        self.assertIsNotNone(_safe_about_path("/about/"))
+        self.assertIsNotNone(_safe_about_path("/about/about.css"))
+        self.assertIsNone(_safe_about_path("/about/../field-pack/index.html"))
 
         still = _get("/start/home-print-table.jpg")
         self.assertEqual(still._code, 200)
@@ -433,6 +445,11 @@ class StartLandingTests(unittest.TestCase):
         self.assertNotIn('id="door-today"', self.home)
         self.assertNotIn("A ready-to-use field trip for curious kids.", self.home)
         self.assertIn("Zoo and aquarium first. Museums and parks are here when you want them.", self.html)
+        foot = re.search(r'<footer class="start-foot">[\s\S]*?</footer>', self.html)
+        self.assertIsNotNone(foot)
+        self.assertIn('href="/about/"', foot.group(0))
+        self.assertNotIn('class="start-door"', foot.group(0))
+        self.assertEqual(len(re.findall(r'class="start-door"', self.html)), 3)
         self.assertNotIn("/field-pack/museums/", self.html)
         self.assertNotIn("/field-pack/national-parks/", self.html)
         self.assertIn("Printouts, one lesson, no extra setup.", self.html)

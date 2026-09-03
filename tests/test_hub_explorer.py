@@ -4,7 +4,7 @@ from pathlib import Path
 import re
 import unittest
 
-from busyparent_agent.web import FIELD_PACK_PREFIX, START_PREFIX, WebHandler
+from busyparent_agent.web import ABOUT_PREFIX, FIELD_PACK_PREFIX, START_PREFIX, WebHandler
 
 
 REPO = Path(__file__).resolve().parents[1]
@@ -67,6 +67,7 @@ COMPAT_PATHS = (
     "/field-pack/virtual-zoo/",
     "/field-pack/dallas-zoo/",
     "/start/",
+    "/about/",
     "/dinner",
 )
 
@@ -134,7 +135,10 @@ class HubExplorerTests(unittest.TestCase):
         self.assertNotIn(">After<", self.html)
         self.assertIn('id="after"', self.html)
         self.assertIn('id="about"', self.html)
-        self.assertIn('id="faq"', self.html)
+        self.assertNotIn('id="faq"', self.html)
+        self.assertNotIn("Common questions", self.html)
+        self.assertNotIn("FAQPage", self.html)
+        self.assertIn('href="/about/"', self.html)
         self.assertIn("hub-secondary", self.html)
         self.assertIn('id="cat-card-grid"', self.html)
         self.assertIn('href="/field-pack/cards/"', self.html)
@@ -153,6 +157,31 @@ class HubExplorerTests(unittest.TestCase):
         self.assertIn(b"Virtual Field Trip", vft.wfile.getvalue())
         vz = _get("/field-pack/virtual-zoo/")
         self.assertIn(vz._code, {200, 301, 302}, vz._code)
+
+    def test_about_is_seek_out_not_a_landing(self):
+        slash = _get("/about")
+        self.assertEqual(slash._code, 301)
+        self.assertEqual(slash._headers.get("Location"), ABOUT_PREFIX + "/")
+        page = _get("/about/")
+        self.assertEqual(page._code, 200)
+        body = page.wfile.getvalue().decode("utf-8")
+        self.assertIn("<title>About · Field Trip Kit · 1Less</title>", body)
+        self.assertIn("Field Trip Kit is an at-home virtual zoo", body)
+        self.assertIn("Use the at-home cards and session together; print is optional for a group visit.", body)
+        self.assertIn("What should I see at the zoo with a toddler?", body)
+        self.assertIn("Can teachers or homeschool groups use this?", body)
+        self.assertNotIn('class="start-hero"', body)
+        self.assertNotIn('id="door-today"', body)
+        heading = re.search(r"<h1[^>]*>([\s\S]*?)</h1>", body)
+        self.assertIsNotNone(heading)
+        self.assertEqual(heading.group(1).strip(), "About")
+        self.assertIn('href="/start/"', self.start)
+        foot = re.search(r'<footer class="start-foot">[\s\S]*?</footer>', self.start)
+        self.assertIsNotNone(foot)
+        self.assertIn('href="/about/"', foot.group(0))
+        self.assertNotIn('id="door-about"', self.start)
+        doors = re.findall(r'class="start-door"', self.start)
+        self.assertEqual(len(doors), 3)
 
 
 if __name__ == "__main__":

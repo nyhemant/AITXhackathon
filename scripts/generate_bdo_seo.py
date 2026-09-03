@@ -4932,7 +4932,7 @@ def main() -> int:
     cards_urls = write_cards_hub(venues)
     if isinstance(cards_urls, str):
         cards_urls = [cards_urls]
-    write_sitemap(venues, extra_urls=type_urls + cards_urls + ["/field-pack/virtual-zoo/", "/field-pack/virtual-field-trip/"])
+    write_sitemap(venues, extra_urls=type_urls + cards_urls + ["/field-pack/virtual-zoo/", "/field-pack/virtual-field-trip/", "/start/", "/about/"])
     write_robots()
     manifest = {
         "generated": TODAY,

@@ -18,12 +18,17 @@ VENUES = FP / "data" / "venues"
 class FlagshipSessionTests(unittest.TestCase):
     def test_map_count_never_places_loading(self):
         html = (FP / "index.html").read_text(encoding="utf-8")
+        about = (REPO / "static" / "about" / "index.html").read_text(encoding="utf-8")
         self.assertNotIn("Places loading", html)
         self.assertIn("218 places worldwide", html)
         self.assertIn("<noscript><p class=\"map-count-quiet\">218 places worldwide</p></noscript>", html)
-        self.assertIn(
+        self.assertNotIn(
             "Use the at-home cards and session together; print is optional for a group visit.",
             html,
+        )
+        self.assertIn(
+            "Use the at-home cards and session together; print is optional for a group visit.",
+            about,
         )
         self.assertNotIn("Print one sheet per child or share one for the group.", html)
 

@@ -15,6 +15,7 @@ class SitemapTests(unittest.TestCase):
         self.assertTrue(body.startswith(b"<?xml"))
         self.assertIn(b"<urlset", body)
         self.assertIn(b"https://1less.app/field-pack/", body)
+        self.assertIn(b"https://1less.app/about/", body)
 
     def test_sitemap_paths_are_the_robots_and_alias_urls(self):
         self.assertEqual(_SITEMAP_URLS, ("/sitemap.xml", "/field-pack/sitemap.xml"))
@@ -37,6 +38,7 @@ class SitemapTests(unittest.TestCase):
             "https://1less.app/field-pack/cards/puffin/",
             "https://1less.app/field-pack/cards/sea-otter/",
             "https://1less.app/field-pack/cards/whale-shark/",
+            "https://1less.app/about/",
         )
         sitemap_paths = (
             REPO / "static" / "sitemap.xml",

@@ -407,6 +407,21 @@ body.start-body {
   color: var(--muted);
 }
 
+.start-foot-more {
+  margin-top: 0.7rem;
+  font-size: 0.76rem;
+}
+
+.start-foot-more a {
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+}
+
+.start-foot-more a:hover {
+  color: var(--teal);
+}
+
 @media (max-width: 860px) {
   .start-doors {
     grid-template-columns: 1fr;

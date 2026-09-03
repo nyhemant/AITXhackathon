@@ -34,6 +34,9 @@ FIELD_PACK_PREFIX = "/field-pack"
 # First-time Field Trip Kit landing — does not replace / or /field-pack/
 START_ROOT = REPO_ROOT / "static" / "start"
 START_PREFIX = "/start"
+# Educational About / FAQ — seek-out only; not a landing
+ABOUT_ROOT = REPO_ROOT / "static" / "about"
+ABOUT_PREFIX = "/about"
 SHELL_ROOT = REPO_ROOT / "static" / "shell"
 SHELL_PREFIX = "/shell"
 DINNER_PATH = "/dinner"
@@ -1000,7 +1003,7 @@ def _safe_shell_path(url_path: str) -> Path | None:
 
 
 def _safe_mounted_static(url_path: str, prefix: str, mount_root: Path) -> Path | None:
-    """Resolve a prefix mount (e.g. /field-pack/, /start/) to a file, or None."""
+    """Resolve a prefix mount (e.g. /field-pack/, /start/, /about/) to a file, or None."""
     if url_path != prefix and not url_path.startswith(prefix + "/"):
         return None
     if not mount_root.is_dir():
@@ -1035,6 +1038,11 @@ def _safe_field_pack_path(url_path: str) -> Path | None:
 def _safe_start_path(url_path: str) -> Path | None:
     """Resolve /start/... to a file under START_ROOT, or None."""
     return _safe_mounted_static(url_path, START_PREFIX, START_ROOT)
+
+
+def _safe_about_path(url_path: str) -> Path | None:
+    """Resolve /about/... to a file under ABOUT_ROOT, or None."""
+    return _safe_mounted_static(url_path, ABOUT_PREFIX, ABOUT_ROOT)
 
 
 def _dinner_preview_text(message_text: str) -> str:
@@ -1139,6 +1147,12 @@ class WebHandler(BaseHTTPRequestHandler):
             self.send_header("Content-Length", "0")
             self.end_headers()
             return
+        if path == ABOUT_PREFIX:
+            self.send_response(301)
+            self.send_header("Location", ABOUT_PREFIX + "/")
+            self.send_header("Content-Length", "0")
+            self.end_headers()
+            return
         # Trailing slash so relative CSS/JS/photo URLs resolve under /field-pack/
         if path == FIELD_PACK_PREFIX:
             self.send_response(301)
@@ -1185,6 +1199,20 @@ class WebHandler(BaseHTTPRequestHandler):
             self.send_header("Content-Type", content_type)
             self.send_header("Content-Length", str(len(body)))
             if start_file.suffix.lower() in {".css", ".js", ".html", ".htm"}:
+                self.send_header("Cache-Control", "no-cache")
+            else:
+                self.send_header("Cache-Control", "public, max-age=86400")
+            self.end_headers()
+            self.wfile.write(body)
+            return
+        about_file = _safe_about_path(path)
+        if about_file is not None:
+            body = about_file.read_bytes()
+            content_type = _static_content_type(about_file)
+            self.send_response(200)
+            self.send_header("Content-Type", content_type)
+            self.send_header("Content-Length", str(len(body)))
+            if about_file.suffix.lower() in {".css", ".js", ".html", ".htm"}:
                 self.send_header("Cache-Control", "no-cache")
             else:
                 self.send_header("Cache-Control", "public, max-age=86400")
@@ -1247,6 +1275,12 @@ class WebHandler(BaseHTTPRequestHandler):
             self.send_header("Content-Length", "0")
             self.end_headers()
             return
+        if path == ABOUT_PREFIX:
+            self.send_response(301)
+            self.send_header("Location", ABOUT_PREFIX + "/")
+            self.send_header("Content-Length", "0")
+            self.end_headers()
+            return
         if path.startswith(FIELD_PACK_PREFIX + "/places/"):
             slug = path[len(FIELD_PACK_PREFIX + "/places/") :]
             if slug.endswith(".html"):
@@ -1258,6 +1292,7 @@ class WebHandler(BaseHTTPRequestHandler):
         asset_path = LOGO_ASSETS.get(path.lstrip("/"))
         shell_file = _safe_shell_path(path)
         start_file = _safe_start_path(path)
+        about_file = _safe_about_path(path)
         field_pack_file = _safe_field_pack_path(path)
         if asset_path is not None and asset_path.exists():
             content_type = _image_content_type(asset_path)
@@ -1268,6 +1303,9 @@ class WebHandler(BaseHTTPRequestHandler):
         elif start_file is not None:
             content_type = _static_content_type(start_file)
             length = start_file.stat().st_size
+        elif about_file is not None:
+            content_type = _static_content_type(about_file)
+            length = about_file.stat().st_size
         elif field_pack_file is not None:
             content_type = _static_content_type(field_pack_file)
             length = field_pack_file.stat().st_size
