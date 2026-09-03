@@ -489,6 +489,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertEqual(self.html.count('class="start-pill"'), 6)
         self.assertNotIn("Open Dallas Zoo", self.html)
         self.assertIn("min-height: 44px", self.css)
+        self.assertIn("font-size: 1.0625rem", self.css)
         self.assertIn(".start-chapter-pills", self.css)
         self.assertIn(".start-chapter-box", self.css)
         self.assertIn("flex-wrap: wrap", self.css)
