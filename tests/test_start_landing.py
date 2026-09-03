@@ -115,7 +115,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertEqual(about_slash._headers.get("Location"), ABOUT_PREFIX + "/")
         about = _get("/about/")
         self.assertEqual(about._code, 200)
-        self.assertIn(b"<title>About · Field Trip Kit · 1Less</title>", about.wfile.getvalue())
+        self.assertIn("About · Field Trip Kit · 1Less", about.wfile.getvalue().decode("utf-8"))
         self.assertIsNotNone(_safe_about_path("/about/"))
         self.assertIsNotNone(_safe_about_path("/about/about.css"))
         self.assertIsNone(_safe_about_path("/about/../field-pack/index.html"))
