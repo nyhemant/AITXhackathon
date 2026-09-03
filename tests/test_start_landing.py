@@ -77,10 +77,7 @@ class StartLandingTests(unittest.TestCase):
         self.css = (START / "start.css").read_text(encoding="utf-8")
         self.js = (START / "start.js").read_text(encoding="utf-8")
         self.home = HOME.read_text(encoding="utf-8")
-        self.doors = re.findall(
-            r'<a\s+class="start-door"[\s\S]*?</a>',
-            self.html,
-        )
+        self.pills = re.findall(r'<a class="start-pill"[^>]*>[\s\S]*?</a>', self.html)
 
     def test_route_is_start_not_home(self):
         root = _get("/")
@@ -101,7 +98,8 @@ class StartLandingTests(unittest.TestCase):
         self.assertEqual(start._code, 200)
         body = start.wfile.getvalue().decode("utf-8")
         self.assertIn("A ready-to-use field trip for curious kids.", body)
-        self.assertIn("I need an activity for today", body)
+        self.assertIn("Watch Live", body)
+        self.assertNotIn("I need an activity for today", body)
         self.assertIsNotNone(_safe_start_path("/start/"))
         self.assertIsNotNone(_safe_start_path("/start/start.css"))
         self.assertIsNotNone(_safe_start_path("/start/home-print-table.jpg"))
@@ -136,7 +134,7 @@ class StartLandingTests(unittest.TestCase):
         hero = re.search(r'<section class="start-hero"[\s\S]*?</section>', self.html)
         self.assertIsNotNone(hero)
         chapter = hero.group(0)
-        self.assertLess(self.html.find('id="start-hero"'), self.html.find('id="start-outcome"'))
+        self.assertLess(self.html.find('id="start-hero"'), self.html.find('id="start-home"'))
         self.assertIn('id="start-heading"', chapter)
         self.assertIn("A ready-to-use field trip for curious kids.", chapter)
         self.assertIn('class="start-hero-still"', chapter)
@@ -174,7 +172,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertLess(self.html.find('id="start-rest-2"'), self.html.find('id="start-going"'))
         self.assertLess(self.html.find('id="start-going"'), self.html.find('id="start-rest-3"'))
         self.assertLess(self.html.find('id="start-rest-3"'), self.html.find('id="start-teach"'))
-        self.assertLess(self.html.find('id="start-teach"'), self.html.find('id="start-outcome"'))
+        self.assertLess(self.html.find('id="start-teach"'), self.html.find('start-foot'))
         self.assertIn("At home this afternoon", chapter)
         self.assertIn("The cam is on. The cards are already on the table.", chapter)
         self.assertIn("Find the cutouts. Talk through one card.", chapter)
@@ -285,7 +283,7 @@ class StartLandingTests(unittest.TestCase):
         pills = re.findall(r'<a class="start-pill"[^>]*>[\s\S]*?</a>', chapter)
         self.assertEqual(len(pills), 2, pills)
         self.assertIn('href="/field-pack/dallas-zoo/"', pills[0])
-        self.assertIn("Sample Zoo Visit Prep", pills[0])
+        self.assertIn("Sample visit", pills[0])
         self.assertIn('href="/field-pack/"', pills[1])
         self.assertIn("Explore Places Near You", pills[1])
         self.assertNotIn('href="/field-pack/zoos/"', chapter)
@@ -328,7 +326,7 @@ class StartLandingTests(unittest.TestCase):
         chapter = teach.group(0)
         self.assertLess(self.html.find('id="start-going"'), self.html.find('id="start-rest-3"'))
         self.assertLess(self.html.find('id="start-rest-3"'), self.html.find('id="start-teach"'))
-        self.assertLess(self.html.find('id="start-teach"'), self.html.find('id="start-outcome"'))
+        self.assertLess(self.html.find('id="start-teach"'), self.html.find('start-foot'))
         self.assertIn("Teaching a group", chapter)
         self.assertIn("Cards already laid out.", chapter)
         self.assertIn("Printouts, one lesson, no extra setup.", chapter)
@@ -350,7 +348,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn('href="/field-pack/cards/reticulated-giraffe/"', pills[0])
         self.assertIn("Sample Animal", pills[0])
         self.assertIn('href="/field-pack/cards/"', pills[1])
-        self.assertIn("Explore More", pills[1])
+        self.assertIn("Explore cards", pills[1])
         self.assertIn("start-teach-hit", chapter)
         self.assertIn('href="/field-pack/cards/reticulated-giraffe/"', chapter)
         self.assertNotIn("/field-pack/dallas-zoo/", chapter)
@@ -372,16 +370,14 @@ class StartLandingTests(unittest.TestCase):
         self.assertNotIn("webgl", self.css.lower())
         self.assertNotIn("parallax", self.css.lower())
 
-    def test_locked_headline_sub_and_trust(self):
+    def test_locked_headline_and_no_marketing_stats(self):
         self.assertEqual(
             _heading_text(self.html),
             "A ready-to-use field trip for curious kids.",
         )
-        self.assertIn(
-            "At home or before you go. Pick a place or an animal. Get a short activity with real photos, questions to ask, and an optional mission to print.",
-            self.html,
-        )
-        self.assertIn("Free · No account · At home or on location", self.html)
+        self.assertNotIn("I need an activity for today", self.html)
+        self.assertNotIn("We’re visiting somewhere soon", self.html)
+        self.assertNotIn("I’m teaching a group", self.html)
         self.assertNotIn("Ages 4–10", self.html)
         self.assertNotIn("Ages 4-10", self.html)
         self.assertNotIn("5–20 minutes", self.html)
@@ -390,7 +386,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertNotIn("10,000 families", self.html)
         self.assertNotIn("testimonial", self.html.lower())
 
-    def test_outcome_then_three_equal_doors(self):
+    def test_page_is_hero_chapters_and_about_footer(self):
         hero = self.html.find('id="start-hero"')
         rest = self.html.find('id="start-rest"')
         home = self.html.find('id="start-home"')
@@ -398,43 +394,23 @@ class StartLandingTests(unittest.TestCase):
         going = self.html.find('id="start-going"')
         rest3 = self.html.find('id="start-rest-3"')
         teach = self.html.find('id="start-teach"')
-        outcome = self.html.find('id="start-outcome"')
-        doors = self.html.find('id="start-doors"')
-        proof = self.html.find('id="start-proof"')
-        self.assertTrue(
-            0 < hero < rest < home < rest2 < going < rest3 < teach < outcome < doors < proof
-        )
-        self.assertEqual(len(self.doors), 3)
-        self.assertIn("I need an activity for today", self.html)
-        self.assertIn("Pick an animal or a place. Start now.", self.html)
-        self.assertIn("We’re visiting somewhere soon", self.html)
-        self.assertIn("Make the outing easier to finish. Same cards, optional print later.", self.html)
-        self.assertIn("I’m teaching a group", self.html)
-        self.assertIn(
-            "For classrooms and homeschool: open a place, show the visuals, ask the prompts, optional printable follow-up.",
-            self.html,
-        )
-        self.assertIn("grid-template-columns: repeat(3, minmax(0, 1fr))", self.css)
-        self.assertNotIn("Before", "".join(self.doors))
-        self.assertNotIn("During", "".join(self.doors))
-        self.assertNotIn("After", "".join(self.doors))
+        foot = self.html.find("start-foot")
+        self.assertTrue(0 < hero < rest < home < rest2 < going < rest3 < teach < foot)
+        self.assertEqual(self.html.count('class="start-chapter"'), 3)
+        self.assertEqual(len(self.pills), 6)
+        self.assertNotIn('id="start-outcome"', self.html)
+        self.assertNotIn('id="start-doors"', self.html)
+        self.assertNotIn('id="start-proof"', self.html)
+        self.assertNotIn("start-door", self.html)
+        self.assertNotIn('id="door-today"', self.html)
+        self.assertNotIn('id="door-visiting"', self.html)
+        self.assertNotIn('id="door-teaching"', self.html)
+        self.assertNotIn("I need an activity for today", self.html)
+        self.assertNotIn("We’re visiting somewhere soon", self.html)
+        self.assertNotIn("I’m teaching a group", self.html)
 
-    def test_each_door_opens_dallas_session_not_print(self):
-        self.assertEqual(len(self.doors), 3)
-        hrefs = []
-        for door in self.doors:
-            href = re.search(r'href="([^"]+)"', door)
-            self.assertIsNotNone(href)
-            hrefs.append(href.group(1))
-            self.assertNotIn("#mission", door)
-            self.assertNotIn("#print", door)
-            self.assertNotIn("youtube", door.lower())
-        self.assertEqual(hrefs[0], "/field-pack/dallas-zoo/")
-        self.assertEqual(hrefs[1], "/field-pack/dallas-zoo/")
-        self.assertEqual(hrefs[2], "/field-pack/cards/")
-        self.assertIn('id="door-today"', self.html)
-        self.assertIn('id="door-visiting"', self.html)
-        self.assertIn('id="door-teaching"', self.html)
+    def test_no_intent_tiles_or_youtube(self):
+        self.assertEqual(len(re.findall(r'class="start-door"', self.html)), 0)
         self.assertNotIn("/field-pack/dallas-zoo/#mission", self.html)
         self.assertNotIn("/field-pack/dallas-zoo/#print", self.html)
         self.assertNotIn("youtube.com", self.html)
@@ -443,6 +419,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertNotIn("map-host", self.html)
         self.assertTrue(DALLAS.is_file())
         self.assertIsNotNone(_safe_field_pack_path("/field-pack/dallas-zoo/"))
+        self.assertEqual(self.html.count('href="/field-pack/dallas-zoo/"'), 2)
 
     def test_chapter_pills_are_locked_and_under_the_box(self):
         chapters = {
@@ -465,12 +442,12 @@ class StartLandingTests(unittest.TestCase):
                 ("/field-pack/cards/", "Pick Cards To Play"),
             ],
             "start-going": [
-                ("/field-pack/dallas-zoo/", "Sample Zoo Visit Prep"),
+                ("/field-pack/dallas-zoo/", "Sample visit"),
                 ("/field-pack/", "Explore Places Near You"),
             ],
             "start-teach": [
                 ("/field-pack/cards/reticulated-giraffe/", "Sample Animal"),
-                ("/field-pack/cards/", "Explore More"),
+                ("/field-pack/cards/", "Explore cards"),
             ],
         }
         for chapter_id, match in chapters.items():
@@ -494,19 +471,15 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn(".start-chapter-box", self.css)
         self.assertIn("flex-wrap: wrap", self.css)
 
-    def test_proof_is_existing_dallas_giraffe(self):
-        proof = re.search(r'<figure class="start-proof-card">[\s\S]*?</figure>', self.html)
-        self.assertIsNotNone(proof)
-        card = proof.group(0)
+    def test_proof_block_is_gone_giraffe_card_still_exists(self):
+        self.assertNotIn("start-proof", self.html)
+        self.assertNotIn("What you get", self.html)
+        self.assertTrue(GIRAFFE.is_file())
+        self.assertTrue(DALLAS.is_file())
         giraffe = GIRAFFE.read_text(encoding="utf-8")
         dallas = DALLAS.read_text(encoding="utf-8")
-        self.assertIn("/field-pack/photos/reticulated-giraffe.jpg?v=img2", card)
-        self.assertIn("Reticulated giraffe", card)
-        self.assertIn("Feed one from the Giraffe Ridge platform.", card)
-        self.assertIn("Feed one from the Giraffe Ridge platform.", dallas)
         self.assertIn("reticulated-giraffe.jpg", giraffe)
-        self.assertNotIn("Dallas Zoo", card)
-        self.assertNotIn("/field-pack/cards/", card)
+        self.assertIn("Feed one from the Giraffe Ridge platform.", dallas)
 
     def test_no_dinner_age_picker_or_home_replacement(self):
         self.assertNotIn("/dinner", self.html)
@@ -522,7 +495,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertIsNotNone(foot)
         self.assertIn('href="/about/"', foot.group(0))
         self.assertNotIn('class="start-door"', foot.group(0))
-        self.assertEqual(len(re.findall(r'class="start-door"', self.html)), 3)
+        self.assertEqual(len(re.findall(r'class="start-door"', self.html)), 0)
         self.assertNotIn("/field-pack/museums/", self.html)
         self.assertNotIn("/field-pack/national-parks/", self.html)
         self.assertIn("Printouts, one lesson, no extra setup.", self.html)
@@ -534,9 +507,11 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn(":focus-visible", self.css)
         self.assertNotIn("autoplay", self.html)
         self.assertNotIn("<video", self.html)
-        self.assertIn(".start-door", self.js)
-        for door in self.doors:
-            self.assertTrue(door.startswith("<a"))
+        self.assertIn(".start-pill", self.js)
+        self.assertNotIn(".start-door", self.js)
+        self.assertEqual(len(self.pills), 6)
+        for pill in self.pills:
+            self.assertTrue(pill.startswith("<a"))
 
 
 if __name__ == "__main__":

@@ -103,13 +103,12 @@ class CardsExplorerTests(unittest.TestCase):
         )
         self.assertIsNotNone(teach)
         chapter = teach.group(0)
-        self.assertIn("Explore More", chapter)
+        self.assertIn("Explore cards", chapter)
+        self.assertIn("Sample Animal", chapter)
         self.assertIn('href="/field-pack/cards/"', chapter)
         self.assertIn('href="/field-pack/cards/reticulated-giraffe/"', chapter)
         self.assertNotIn("/field-pack/dallas-zoo/", chapter)
-        door = re.search(r'<a[^>]*id="door-teaching"[^>]*>', self.start)
-        self.assertIsNotNone(door)
-        self.assertIn('href="/field-pack/cards/"', door.group(0))
+        self.assertNotIn('id="door-teaching"', self.start)
 
 
 if __name__ == "__main__":

@@ -93,7 +93,7 @@ class HubExplorerTests(unittest.TestCase):
         pills = re.findall(r'<a class="start-pill"[^>]*>[\s\S]*?</a>', chapter)
         self.assertEqual(len(pills), 2, pills)
         self.assertIn('href="/field-pack/dallas-zoo/"', pills[0])
-        self.assertIn("Sample Zoo Visit Prep", pills[0])
+        self.assertIn("Sample visit", pills[0])
         self.assertIn('href="/field-pack/"', pills[1])
         self.assertIn("Explore Places Near You", pills[1])
         self.assertNotIn("Explore zoos", chapter)
@@ -107,7 +107,7 @@ class HubExplorerTests(unittest.TestCase):
         self.assertIsNotNone(home)
         self.assertNotIn("/field-pack/dallas-zoo/", home.group(0))
         self.assertNotIn("Open Dallas Zoo", self.start)
-        self.assertEqual(self.start.count('href="/field-pack/dallas-zoo/"'), 4)
+        self.assertEqual(self.start.count('href="/field-pack/dallas-zoo/"'), 2)
 
     def test_hub_is_map_first_place_explorer(self):
         self.assertIn("landing-hub", self.html)
@@ -131,6 +131,29 @@ class HubExplorerTests(unittest.TestCase):
         self.assertIn('href="/field-pack/museums/"', self.html)
         self.assertIn('href="/field-pack/national-parks/"', self.html)
         self.assertIn("location.replace(\"/field-pack/\" + encodeURIComponent(id) + \"/\")", self.html)
+
+    def test_try_a_place_leads_with_dallas_us_samples(self):
+        js = (FP / "js" / "landing-map.js").read_text(encoding="utf-8")
+        self.assertIn("landing-map.js?v=85", self.html)
+        ready = re.search(r"window\.FP_READY_STRIP = \{([\s\S]*?)\n  \};", js)
+        self.assertIsNotNone(ready)
+        block = ready.group(1)
+        us = re.search(r"us:\s*\[([\s\S]*?)\]", block)
+        intl = re.search(r"intl:\s*\[([\s\S]*?)\]", block)
+        self.assertIsNotNone(us)
+        self.assertIsNotNone(intl)
+        us_ids = re.findall(r'"([^"]+)"', us.group(1))
+        intl_ids = re.findall(r'"([^"]+)"', intl.group(1))
+        self.assertEqual(us_ids[0], "dallas-zoo")
+        self.assertEqual(intl_ids[0], "dallas-zoo")
+        for banned in ("london-zoo", "singapore-zoo", "ueno-zoo"):
+            self.assertNotIn(banned, us_ids)
+            self.assertNotIn(banned, intl_ids)
+        self.assertIn("const ids = spec.us && spec.us.length ? spec.us : spec.intl;", js)
+        html_ready = self.html.split('id="ready-grid"', 1)[1].split("</div>", 1)[0]
+        first = re.search(r'data-venue-id="([^"]+)"', html_ready)
+        self.assertIsNotNone(first)
+        self.assertEqual(first.group(1), "dallas-zoo")
 
     def test_hub_has_start_path_and_no_primary_pitch(self):
         self.assertIn('href="/start/"', self.html)
@@ -189,7 +212,7 @@ class HubExplorerTests(unittest.TestCase):
         self.assertIn('href="/about/"', foot.group(0))
         self.assertNotIn('id="door-about"', self.start)
         doors = re.findall(r'class="start-door"', self.start)
-        self.assertEqual(len(doors), 3)
+        self.assertEqual(len(doors), 0)
 
 
 if __name__ == "__main__":

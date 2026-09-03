@@ -1,5 +1,5 @@
 (() => {
-  const doors = document.querySelectorAll(".start-door");
+  const pills = document.querySelectorAll(".start-pill");
 
   function track(name, params) {
     if (typeof window.FPTrack === "function") {
@@ -11,11 +11,13 @@
     if (typeof fn === "function") fn(name, params || {});
   }
 
-  doors.forEach((door) => {
-    door.addEventListener("click", () => {
+  pills.forEach((pill) => {
+    pill.addEventListener("click", () => {
+      const href = pill.getAttribute("href") || "";
       track("hero_cta_clicked", {
-        source: door.id || "start_door",
-        venue_slug: "dallas-zoo",
+        source: "start_pill",
+        label: (pill.textContent || "").trim(),
+        href,
       });
     });
   });
