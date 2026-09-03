@@ -103,7 +103,7 @@ class CardsExplorerTests(unittest.TestCase):
         )
         self.assertIsNotNone(teach)
         chapter = teach.group(0)
-        self.assertIn("Explore cards", chapter)
+        self.assertIn("Explore More", chapter)
         self.assertIn('href="/field-pack/cards/"', chapter)
         self.assertIn('href="/field-pack/cards/reticulated-giraffe/"', chapter)
         self.assertNotIn("/field-pack/dallas-zoo/", chapter)

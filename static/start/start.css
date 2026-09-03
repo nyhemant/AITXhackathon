@@ -107,8 +107,14 @@ body.start-body {
 .start-chapter {
   position: relative;
   isolation: isolate;
-  min-height: 100svh;
-  min-height: 100vh;
+  background: var(--paper);
+}
+
+.start-chapter-box {
+  position: relative;
+  isolation: isolate;
+  min-height: calc(100svh - 4.75rem);
+  min-height: calc(100vh - 4.75rem);
   overflow: hidden;
   background: #2a2118;
 }
@@ -122,7 +128,24 @@ body.start-body {
   object-position: 50% 38%;
 }
 
-.start-chapter::after {
+.start-chapter-hit,
+.start-going-hit,
+.start-teach-hit {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  color: inherit;
+  text-decoration: none;
+}
+
+.start-chapter-hit:focus-visible,
+.start-going-hit:focus-visible,
+.start-teach-hit:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: -6px;
+}
+
+.start-chapter-hit::after {
   content: "";
   position: absolute;
   inset: auto 0 0;
@@ -139,7 +162,8 @@ body.start-body {
   bottom: 0;
   z-index: 2;
   max-width: 32rem;
-  padding: 0 clamp(1.25rem, 5vw, 4rem) calc(2.4rem + env(safe-area-inset-bottom, 0px));
+  padding: 0 clamp(1.25rem, 5vw, 4rem) calc(1.6rem + env(safe-area-inset-bottom, 0px));
+  pointer-events: none;
 }
 
 .start-chapter .start-kicker {
@@ -157,7 +181,7 @@ body.start-body {
 }
 
 .start-chapter-quiet {
-  margin: 0 0 0.85rem;
+  margin: 0;
   max-width: 28rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
   font-size: 0.98rem;
@@ -166,94 +190,43 @@ body.start-body {
   text-shadow: 0 1px 14px rgba(12, 10, 8, 0.3);
 }
 
-.start-chapter-link {
-  display: inline-block;
+.start-chapter-pills {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 0.5rem 0.6rem;
+  padding: 0.7rem clamp(1.15rem, 5vw, 4rem) 0.95rem;
+  background: var(--paper);
+}
+
+.start-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.4rem 0.95rem;
+  border: 1px solid rgba(27, 25, 22, 0.16);
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--teal);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-  font-size: 0.95rem;
-  font-weight: 550;
-  color: rgba(255, 252, 247, 0.92);
-  text-decoration: underline;
-  text-underline-offset: 0.22em;
-  text-decoration-thickness: 1px;
+  font-size: 0.78rem;
+  font-weight: 650;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  text-decoration: none;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.75) inset;
 }
 
-.start-chapter-link:hover {
-  color: #fffcf7;
+.start-pill:hover {
+  background: #f3ebe0;
+  border-color: rgba(10, 69, 69, 0.3);
+  color: #083838;
 }
 
-.start-chapter-link:focus-visible {
+.start-pill:focus-visible {
   outline: 3px solid var(--focus);
   outline-offset: 3px;
-}
-
-#start-going .start-going-hit {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  color: inherit;
-  text-decoration: none;
-}
-
-#start-going .start-going-hit:focus-visible {
-  outline: 3px solid var(--focus);
-  outline-offset: -6px;
-}
-
-#start-going .start-chapter-copy {
-  padding-bottom: calc(4.1rem + env(safe-area-inset-bottom, 0px));
-}
-
-#start-going .start-going-explore {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 3;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.65rem 1.25rem;
-  max-width: 32rem;
-  padding: 0 clamp(1.25rem, 5vw, 4rem) calc(2.4rem + env(safe-area-inset-bottom, 0px));
-  pointer-events: none;
-}
-
-#start-going .start-going-explore .start-chapter-link {
-  pointer-events: auto;
-}
-
-#start-teach .start-teach-hit {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  color: inherit;
-  text-decoration: none;
-}
-
-#start-teach .start-teach-hit:focus-visible {
-  outline: 3px solid var(--focus);
-  outline-offset: -6px;
-}
-
-#start-teach .start-chapter-copy {
-  padding-bottom: calc(4.1rem + env(safe-area-inset-bottom, 0px));
-}
-
-#start-teach .start-teach-explore {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 3;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.65rem 1.25rem;
-  max-width: 32rem;
-  padding: 0 clamp(1.25rem, 5vw, 4rem) calc(2.4rem + env(safe-area-inset-bottom, 0px));
-  pointer-events: none;
-}
-
-#start-teach .start-teach-explore .start-chapter-link {
-  pointer-events: auto;
 }
 
 .start-page {
@@ -478,20 +451,13 @@ body.start-body {
     padding-bottom: calc(1.75rem + env(safe-area-inset-bottom, 0px));
   }
 
-  #start-going .start-chapter-copy {
-    padding-bottom: calc(3.4rem + env(safe-area-inset-bottom, 0px));
+  .start-chapter-box {
+    min-height: calc(100svh - 6.75rem);
+    min-height: calc(100vh - 6.75rem);
   }
 
-  #start-going .start-going-explore {
-    padding-bottom: calc(1.75rem + env(safe-area-inset-bottom, 0px));
-  }
-
-  #start-teach .start-chapter-copy {
-    padding-bottom: calc(3.4rem + env(safe-area-inset-bottom, 0px));
-  }
-
-  #start-teach .start-teach-explore {
-    padding-bottom: calc(1.75rem + env(safe-area-inset-bottom, 0px));
+  .start-chapter-pills {
+    padding: 0.65rem 1.15rem 0.9rem;
   }
 
   .start-hero h1 {

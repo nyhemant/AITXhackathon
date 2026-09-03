@@ -90,15 +90,23 @@ class HubExplorerTests(unittest.TestCase):
         )
         self.assertIsNotNone(going)
         chapter = going.group(0)
-        links = re.findall(r'<a class="start-chapter-link"[^>]*>[\s\S]*?</a>', chapter)
-        self.assertEqual(len(links), 1, links)
-        self.assertIn('href="/field-pack/"', links[0])
-        self.assertIn("Explore places near you", links[0])
+        pills = re.findall(r'<a class="start-pill"[^>]*>[\s\S]*?</a>', chapter)
+        self.assertEqual(len(pills), 2, pills)
+        self.assertIn('href="/field-pack/dallas-zoo/"', pills[0])
+        self.assertIn("Sample Zoo Visit Prep", pills[0])
+        self.assertIn('href="/field-pack/"', pills[1])
+        self.assertIn("Explore Places Near You", pills[1])
         self.assertNotIn("Explore zoos", chapter)
         self.assertNotIn("Explore aquariums", chapter)
         self.assertIn('href="/field-pack/dallas-zoo/"', chapter)
-        self.assertIn('class="start-going-hit"', chapter)
-        self.assertIn("Open Dallas Zoo", self.start)
+        self.assertIn("start-going-hit", chapter)
+        home = re.search(
+            r'<section class="start-chapter" id="start-home"[\s\S]*?</section>',
+            self.start,
+        )
+        self.assertIsNotNone(home)
+        self.assertNotIn("/field-pack/dallas-zoo/", home.group(0))
+        self.assertNotIn("Open Dallas Zoo", self.start)
         self.assertEqual(self.start.count('href="/field-pack/dallas-zoo/"'), 4)
 
     def test_hub_is_map_first_place_explorer(self):

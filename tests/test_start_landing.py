@@ -189,8 +189,20 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn("tiger live cam", chapter.lower())
         self.assertIn("animal cards", chapter.lower())
         self.assertNotIn("print sheet", chapter.lower())
-        self.assertIn("Open Dallas Zoo", chapter)
-        self.assertIn('href="/field-pack/dallas-zoo/"', chapter)
+        self.assertNotIn("Open Dallas Zoo", chapter)
+        self.assertNotIn('href="/field-pack/dallas-zoo/"', chapter)
+        self.assertIn('class="start-chapter-hit"', chapter)
+        hit = re.search(r'<a class="start-chapter-hit"[^>]*>[\s\S]*?</a>', chapter)
+        self.assertIsNotNone(hit)
+        self.assertIn('href="/field-pack/virtual-field-trip/"', hit.group(0))
+        pills = re.findall(r'<a class="start-pill"[^>]*>[\s\S]*?</a>', chapter)
+        self.assertEqual(len(pills), 2, pills)
+        self.assertIn('href="/field-pack/virtual-field-trip/"', pills[0])
+        self.assertIn("Watch Live", pills[0])
+        self.assertIn('href="/field-pack/cards/"', pills[1])
+        self.assertIn("Pick Cards To Play", pills[1])
+        self.assertNotIn("youtube.com", chapter)
+        self.assertNotIn("target=\"_blank\"", chapter)
         self.assertNotIn("#mission", chapter)
         self.assertNotIn("#print", chapter)
         self.assertNotIn("http://", chapter)
@@ -259,8 +271,8 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn('height="1536"', chapter)
         self.assertIn("mission page", chapter.lower())
         self.assertIn("reticulated giraffe", chapter.lower())
-        self.assertIn('class="start-going-hit"', chapter)
-        hit = re.search(r'<a class="start-going-hit"[^>]*>[\s\S]*?</a>', chapter)
+        self.assertIn("start-going-hit", chapter)
+        hit = re.search(r'<a class="start-chapter-hit start-going-hit"[^>]*>[\s\S]*?</a>', chapter)
         self.assertIsNotNone(hit)
         self.assertIn('href="/field-pack/dallas-zoo/"', hit.group(0))
         self.assertIn('src="/start/going-giraffe.jpg"', hit.group(0))
@@ -270,13 +282,12 @@ class StartLandingTests(unittest.TestCase):
         self.assertNotIn("Explore zoos", hit.group(0))
         self.assertNotIn("Explore aquariums", hit.group(0))
         self.assertIn('href="/field-pack/dallas-zoo/"', chapter)
-        explore = re.findall(
-            r'<a class="start-chapter-link"[^>]*>[\s\S]*?</a>',
-            chapter,
-        )
-        self.assertEqual(len(explore), 1, explore)
-        self.assertIn('href="/field-pack/"', explore[0])
-        self.assertIn("Explore places near you", explore[0])
+        pills = re.findall(r'<a class="start-pill"[^>]*>[\s\S]*?</a>', chapter)
+        self.assertEqual(len(pills), 2, pills)
+        self.assertIn('href="/field-pack/dallas-zoo/"', pills[0])
+        self.assertIn("Sample Zoo Visit Prep", pills[0])
+        self.assertIn('href="/field-pack/"', pills[1])
+        self.assertIn("Explore Places Near You", pills[1])
         self.assertNotIn('href="/field-pack/zoos/"', chapter)
         self.assertNotIn('href="/field-pack/aquariums/"', chapter)
         self.assertNotIn("Explore zoos", chapter)
@@ -303,7 +314,8 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn(".start-chapter", self.css)
         self.assertIn(".start-chapter-quiet", self.css)
         self.assertIn(".start-going-hit", self.css)
-        self.assertIn(".start-going-explore", self.css)
+        self.assertIn(".start-chapter-pills", self.css)
+        self.assertIn(".start-pill", self.css)
         self.assertNotIn("webgl", self.css.lower())
         self.assertNotIn("parallax", self.css.lower())
 
@@ -333,11 +345,13 @@ class StartLandingTests(unittest.TestCase):
         self.assertNotIn("flashcard", chapter.lower())
         self.assertNotIn('alt="African lion"', chapter)
         self.assertNotIn("lion portrait", chapter.lower())
-        links = re.findall(r'<a class="start-chapter-link"[^>]*>[\s\S]*?</a>', chapter)
-        self.assertEqual(len(links), 1, links)
-        self.assertIn('href="/field-pack/cards/"', links[0])
-        self.assertIn("Explore cards", links[0])
-        self.assertIn('class="start-teach-hit"', chapter)
+        pills = re.findall(r'<a class="start-pill"[^>]*>[\s\S]*?</a>', chapter)
+        self.assertEqual(len(pills), 2, pills)
+        self.assertIn('href="/field-pack/cards/reticulated-giraffe/"', pills[0])
+        self.assertIn("Sample Animal", pills[0])
+        self.assertIn('href="/field-pack/cards/"', pills[1])
+        self.assertIn("Explore More", pills[1])
+        self.assertIn("start-teach-hit", chapter)
         self.assertIn('href="/field-pack/cards/reticulated-giraffe/"', chapter)
         self.assertNotIn("/field-pack/dallas-zoo/", chapter)
         self.assertNotIn("#mission", chapter)
@@ -429,6 +443,55 @@ class StartLandingTests(unittest.TestCase):
         self.assertNotIn("map-host", self.html)
         self.assertTrue(DALLAS.is_file())
         self.assertIsNotNone(_safe_field_pack_path("/field-pack/dallas-zoo/"))
+
+    def test_chapter_pills_are_locked_and_under_the_box(self):
+        chapters = {
+            "start-home": re.search(
+                r'<section class="start-chapter" id="start-home"[\s\S]*?</section>',
+                self.html,
+            ),
+            "start-going": re.search(
+                r'<section class="start-chapter" id="start-going"[\s\S]*?</section>',
+                self.html,
+            ),
+            "start-teach": re.search(
+                r'<section class="start-chapter" id="start-teach"[\s\S]*?</section>',
+                self.html,
+            ),
+        }
+        expected = {
+            "start-home": [
+                ("/field-pack/virtual-field-trip/", "Watch Live"),
+                ("/field-pack/cards/", "Pick Cards To Play"),
+            ],
+            "start-going": [
+                ("/field-pack/dallas-zoo/", "Sample Zoo Visit Prep"),
+                ("/field-pack/", "Explore Places Near You"),
+            ],
+            "start-teach": [
+                ("/field-pack/cards/reticulated-giraffe/", "Sample Animal"),
+                ("/field-pack/cards/", "Explore More"),
+            ],
+        }
+        for chapter_id, match in chapters.items():
+            self.assertIsNotNone(match, chapter_id)
+            chapter = match.group(0)
+            self.assertIn('class="start-chapter-box"', chapter)
+            self.assertLess(chapter.find("start-chapter-box"), chapter.find("start-chapter-pills"))
+            pills = re.findall(r'<a class="start-pill" href="([^"]+)">([^<]+)</a>', chapter)
+            self.assertEqual(pills, expected[chapter_id], chapter_id)
+            self.assertNotIn("start-chapter-link", chapter)
+            self.assertNotIn("Open Dallas Zoo", chapter)
+        home = chapters["start-home"].group(0)
+        self.assertNotIn("/field-pack/dallas-zoo/", home)
+        self.assertNotIn("youtube.com", home)
+        self.assertNotIn("target=\"_blank\"", home)
+        self.assertEqual(self.html.count('class="start-pill"'), 6)
+        self.assertNotIn("Open Dallas Zoo", self.html)
+        self.assertIn("min-height: 44px", self.css)
+        self.assertIn(".start-chapter-pills", self.css)
+        self.assertIn(".start-chapter-box", self.css)
+        self.assertIn("flex-wrap: wrap", self.css)
 
     def test_proof_is_existing_dallas_giraffe(self):
         proof = re.search(r'<figure class="start-proof-card">[\s\S]*?</figure>', self.html)
