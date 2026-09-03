@@ -175,7 +175,7 @@ class HubExplorerTests(unittest.TestCase):
         heading = re.search(r"<h1[^>]*>([\s\S]*?)</h1>", body)
         self.assertIsNotNone(heading)
         self.assertEqual(heading.group(1).strip(), "About")
-        self.assertIn('href="/start/"', self.start)
+        self.assertIn('href="/start/"', body)
         foot = re.search(r'<footer class="start-foot">[\s\S]*?</footer>', self.start)
         self.assertIsNotNone(foot)
         self.assertIn('href="/about/"', foot.group(0))
