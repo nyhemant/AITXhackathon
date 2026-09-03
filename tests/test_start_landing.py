@@ -344,13 +344,26 @@ class StartLandingTests(unittest.TestCase):
         self.assertNotIn('alt="African lion"', chapter)
         self.assertNotIn("lion portrait", chapter.lower())
         pills = re.findall(r'<a class="start-pill"[^>]*>[\s\S]*?</a>', chapter)
-        self.assertEqual(len(pills), 2, pills)
-        self.assertIn('href="/field-pack/cards/reticulated-giraffe/"', pills[0])
-        self.assertIn("Sample Animal", pills[0])
-        self.assertIn('href="/field-pack/cards/"', pills[1])
-        self.assertIn("Explore cards", pills[1])
-        self.assertIn("start-teach-hit", chapter)
+        self.assertEqual(len(pills), 1, pills)
+        self.assertIn('href="/field-pack/cards/"', pills[0])
+        self.assertIn("Explore cards", pills[0])
+        self.assertNotIn("Sample Animal", chapter)
+        self.assertNotIn("start-teach-hit", chapter)
+        self.assertIn("Open a card:", chapter)
+        self.assertIn('href="/field-pack/cards/african-lion/"', chapter)
+        self.assertIn(">Lion<", chapter)
+        self.assertIn('href="/field-pack/cards/african-elephant/"', chapter)
+        self.assertIn(">Elephant<", chapter)
         self.assertIn('href="/field-pack/cards/reticulated-giraffe/"', chapter)
+        self.assertIn(">Giraffe<", chapter)
+        self.assertLess(chapter.find("start-chapter-box"), chapter.find("start-open-cards"))
+        self.assertLess(chapter.find("start-open-cards"), chapter.find("start-chapter-pills"))
+        self.assertNotIn("grid-template-columns: repeat(3", chapter)
+        lion = FP / "cards" / "african-lion" / "index.html"
+        elephant = FP / "cards" / "african-elephant" / "index.html"
+        self.assertTrue(lion.is_file())
+        self.assertTrue(elephant.is_file())
+        self.assertTrue(GIRAFFE.is_file())
         self.assertNotIn("/field-pack/dallas-zoo/", chapter)
         self.assertNotIn("#mission", chapter)
         self.assertNotIn("#print", chapter)
@@ -397,7 +410,7 @@ class StartLandingTests(unittest.TestCase):
         foot = self.html.find("start-foot")
         self.assertTrue(0 < hero < rest < home < rest2 < going < rest3 < teach < foot)
         self.assertEqual(self.html.count('class="start-chapter"'), 3)
-        self.assertEqual(len(self.pills), 6)
+        self.assertEqual(len(self.pills), 5)
         self.assertNotIn('id="start-outcome"', self.html)
         self.assertNotIn('id="start-doors"', self.html)
         self.assertNotIn('id="start-proof"', self.html)
@@ -446,7 +459,6 @@ class StartLandingTests(unittest.TestCase):
                 ("/field-pack/", "Explore Places Near You"),
             ],
             "start-teach": [
-                ("/field-pack/cards/reticulated-giraffe/", "Sample Animal"),
                 ("/field-pack/cards/", "Explore cards"),
             ],
         }
@@ -459,11 +471,25 @@ class StartLandingTests(unittest.TestCase):
             self.assertEqual(pills, expected[chapter_id], chapter_id)
             self.assertNotIn("start-chapter-link", chapter)
             self.assertNotIn("Open Dallas Zoo", chapter)
+            self.assertNotIn("Sample Animal", chapter)
         home = chapters["start-home"].group(0)
         self.assertNotIn("/field-pack/dallas-zoo/", home)
         self.assertNotIn("youtube.com", home)
         self.assertNotIn("target=\"_blank\"", home)
-        self.assertEqual(self.html.count('class="start-pill"'), 6)
+        self.assertEqual(self.html.count('class="start-pill"'), 5)
+        teach = chapters["start-teach"].group(0)
+        open_cards = re.search(r'<p class="start-open-cards">([\s\S]*?)</p>', teach)
+        self.assertIsNotNone(open_cards)
+        row = re.sub(r"\s+", " ", open_cards.group(1))
+        self.assertIn("Open a card:", row)
+        self.assertEqual(
+            re.findall(r'<a href="([^"]+)">([^<]+)</a>', open_cards.group(1)),
+            [
+                ("/field-pack/cards/african-lion/", "Lion"),
+                ("/field-pack/cards/african-elephant/", "Elephant"),
+                ("/field-pack/cards/reticulated-giraffe/", "Giraffe"),
+            ],
+        )
         self.assertNotIn("Open Dallas Zoo", self.html)
         self.assertIn("min-height: 44px", self.css)
         self.assertIn("font-size: 1.0625rem", self.css)
@@ -509,7 +535,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertNotIn("<video", self.html)
         self.assertIn(".start-pill", self.js)
         self.assertNotIn(".start-door", self.js)
-        self.assertEqual(len(self.pills), 6)
+        self.assertEqual(len(self.pills), 5)
         for pill in self.pills:
             self.assertTrue(pill.startswith("<a"))
 

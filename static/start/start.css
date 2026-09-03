@@ -199,6 +199,62 @@ body.start-body {
   background: var(--paper);
 }
 
+.start-chapter-under {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+  padding: 0.55rem clamp(1.15rem, 5vw, 4rem) 0.9rem;
+  background: var(--paper);
+}
+
+.start-chapter-under .start-chapter-pills {
+  padding: 0;
+}
+
+.start-open-cards {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.start-open-cards a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--teal);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(10, 69, 69, 0.22);
+}
+
+.start-open-cards a:hover {
+  color: #083838;
+  border-bottom-color: rgba(10, 69, 69, 0.45);
+}
+
+.start-open-cards a:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+#start-teach .start-chapter-box {
+  min-height: calc(100svh - 8.25rem);
+  min-height: calc(100vh - 8.25rem);
+}
+
+#start-teach .start-chapter-box::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: min(42%, 20rem);
+  background: linear-gradient(to top, rgba(22, 16, 10, 0.62), rgba(22, 16, 10, 0.14) 64%, transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+
 .start-pill {
   display: inline-flex;
   align-items: center;
@@ -334,6 +390,15 @@ body.start-body {
 
   .start-top {
     margin-bottom: 2.25rem;
+  }
+
+  #start-teach .start-chapter-box {
+    min-height: calc(100svh - 9.25rem);
+    min-height: calc(100vh - 9.25rem);
+  }
+
+  .start-chapter-under {
+    padding: 0.45rem 1.15rem 0.85rem;
   }
 }
 
