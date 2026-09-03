@@ -40,9 +40,9 @@
     />
     <meta name="twitter:image" content="https://1less.app/field-pack/photos/sample-mission-dallas-zoo.jpg" />
     <base href="/field-pack/" />
-    <link rel="stylesheet" href="/shell/shell.css?v=6" />
+    <link rel="stylesheet" href="/shell/shell.css?v=7" />
     <link rel="stylesheet" href="/field-pack/css/styles.css?v=35" />
-    <link rel="stylesheet" href="/field-pack/css/landing.css?v=95" />
+    <link rel="stylesheet" href="/field-pack/css/landing.css?v=96" />
     <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=28" />
     <script type="application/ld+json">
       {
@@ -103,7 +103,7 @@
       }
     </script>
   </head>
-  <body class="landing-body">
+  <body class="landing-body landing-hub">
     <div class="app landing-app landing-clean">
       <header class="oneless-shell no-print" data-product="bdo">
         <a class="shell-brand" href="/field-pack/" aria-label="Field Trip Kit home">
@@ -113,119 +113,31 @@
           Field Trip Kit
           <small>Zoo, aquarium, museum &amp; park days</small>
         </a>
-        <div class="shell-more-wrap">
-          <button type="button" class="shell-more" aria-expanded="false" aria-haspopup="true" aria-controls="shell-menu">
-            More
-          </button>
-          <div id="shell-menu" class="shell-menu" hidden role="menu">
-            <a href="/field-pack/" aria-current="page" role="menuitem">All places<small>Map &amp; places</small></a>
-            <a href="/field-pack/cards/" role="menuitem">Animal cards<small>Talk, photos &amp; Q&amp;A</small></a>
-            <a href="/field-pack/virtual-field-trip/" role="menuitem">Virtual Field Trip<small>Explore at home</small></a>
-            <a href="/field-pack/#about" role="menuitem">About<small>1Less &amp; contact</small></a>
+        <nav class="shell-nav" aria-label="Site">
+          <a class="shell-start" href="/start/">Start</a>
+          <div class="shell-more-wrap">
+            <button type="button" class="shell-more" aria-expanded="false" aria-haspopup="true" aria-controls="shell-menu">
+              More
+            </button>
+            <div id="shell-menu" class="shell-menu" hidden role="menu">
+              <a href="/start/" role="menuitem">Start</a>
+              <a href="/field-pack/" aria-current="page" role="menuitem">All places<small>Map &amp; places</small></a>
+              <a href="/field-pack/cards/" role="menuitem">Animal cards<small>Talk, photos &amp; Q&amp;A</small></a>
+              <a href="/field-pack/virtual-field-trip/" role="menuitem">Virtual Field Trip<small>Explore at home</small></a>
+              <a href="/field-pack/#about" role="menuitem">About<small>1Less &amp; contact</small></a>
+            </div>
           </div>
-        </div>
+        </nav>
       </header>
 
       <div id="continue-chip" class="continue-chip" hidden></div>
       <p id="waiting-cities" class="waiting-cities" hidden></p>
 
-      <!-- Hero T4b: H1 → moment strip → search → trust -->
-      <header class="landing-pitch landing-pitch-t4b" id="landing-hero">
-        <!--
-          H1 constant for A/B swaps (keep id="pitch-heading"):
-          Default (live): Explore a zoo, aquarium, or park at home
-          Alt A: Give your kid a mission for the zoo, museum, or park
-          Alt B: A printable treasure hunt for your next zoo, aquarium, museum, or park day
-
-          Retired live copy (revert if needed):
-          H1: Turn your next zoo, museum, or park day into a treasure hunt
-          Differentiator: Print one page at home. Leave the phone in the bag.
-          Subhead: Pick your place, your kid's age, and how much time you have — get a short
-          must-see list and a one-page scavenger-hunt mission. Free. No account.
-        -->
-        <h1 id="pitch-heading">Explore a zoo, aquarium, or park at home</h1>
-
-        <ul class="hero-moment-strip" aria-label="Before, during, and after your visit">
-          <li class="hero-moment-card silo-cards">
-            <a
-              class="hero-moment-link"
-              id="hero-moment-before"
-              href="/field-pack/virtual-field-trip/"
-              data-moment="before"
-              aria-labelledby="hero-moment-before-kicker hero-moment-before-label"
-            >
-              <span id="hero-moment-before-kicker" class="hero-moment-kicker">Before</span>
-              <span class="hero-moment-visual">
-                <img
-                  class="hero-moment-img"
-                  src="/field-pack/photos/moment-before-virtual-zoo.jpg?v=1"
-                  width="180"
-                  height="234"
-                  alt=""
-                  decoding="async"
-                  fetchpriority="high"
-                />
-              </span>
-              <span id="hero-moment-before-label" class="hero-moment-label">At home · cards, cams &amp; films</span>
-            </a>
-          </li>
-          <li class="hero-moment-card silo-place">
-            <a
-              class="hero-moment-link"
-              id="hero-moment-during"
-              href="/field-pack/dallas-zoo/"
-              data-moment="during"
-              data-no-place-default="verified"
-              aria-labelledby="hero-moment-during-kicker hero-moment-during-label"
-            >
-              <span id="hero-moment-during-kicker" class="hero-moment-kicker">During</span>
-              <span class="hero-moment-visual">
-                <img
-                  class="hero-moment-img"
-                  src="/field-pack/photos/moment-during-mission.jpg?v=1"
-                  width="180"
-                  height="234"
-                  alt=""
-                  decoding="async"
-                  fetchpriority="high"
-                />
-              </span>
-              <span id="hero-moment-during-label" class="hero-moment-label">Optional hunt · for the visit</span>
-            </a>
-          </li>
-          <li class="hero-moment-card silo-cards">
-            <a
-              class="hero-moment-link"
-              id="hero-moment-after"
-              href="/field-pack/cards/"
-              data-moment="after"
-              aria-labelledby="hero-moment-after-kicker hero-moment-after-label"
-            >
-              <span id="hero-moment-after-kicker" class="hero-moment-kicker">After</span>
-              <span class="hero-moment-visual">
-                <img
-                  class="hero-moment-img"
-                  src="/field-pack/photos/moment-after-lion.jpg?v=1"
-                  width="180"
-                  height="234"
-                  alt=""
-                  decoding="async"
-                  fetchpriority="high"
-                />
-              </span>
-              <span id="hero-moment-after-label" class="hero-moment-label">What did we notice?</span>
-            </a>
-          </li>
-        </ul>
-
+      <header class="hub-find" id="landing-hero">
+        <h1 id="pitch-heading">Find a place</h1>
         <div class="pitch-cta-block" id="hero-search-block" data-search-mode="place">
           <form class="hero-search-form place-search-wrap silo-place" id="hero-search-form" role="search" action="/field-pack/" method="get">
-            <div class="hero-search-mode" role="group" aria-label="Search places or cards">
-              <button type="button" class="hero-mode-btn is-active" data-search-mode="place" aria-pressed="true" id="hero-mode-place" title="Search zoos, museums, parks">Places</button>
-              <button type="button" class="hero-mode-btn" data-search-mode="card" aria-pressed="false" id="hero-mode-card" title="Search animal and attraction cards">Cards</button>
-            </div>
-            <p class="hero-search-mode-hint" id="hero-search-mode-hint">Search <strong>places</strong> or switch to <strong>cards</strong></p>
-            <label class="place-search-label" for="hero-place-search" id="hero-search-label">Find a place</label>
+            <label class="place-search-label sr-only" for="hero-place-search" id="hero-search-label">Find a place</label>
             <div class="hero-search-row">
               <input
                 type="search"
@@ -244,30 +156,13 @@
             </div>
             <ul id="hero-place-search-results" class="place-search-results hero-place-search-results" hidden role="listbox" aria-label="Matching places"></ul>
           </form>
-          <p class="pitch-secondary pitch-jumps">
-            <a class="pitch-jump silo-place-link" href="#during" id="hero-map-link">Browse map ↓</a>
-            <span class="pitch-jump-dot" aria-hidden="true">·</span>
-            <a class="pitch-jump silo-cards-link" href="/field-pack/virtual-field-trip/" id="hero-cards-link">Virtual Field Trip →</a>
-            <span class="pitch-jump-dot" aria-hidden="true">·</span>
-            <a class="pitch-jump silo-cards-link" href="/field-pack/cards/" id="hero-all-cards-link">All cards →</a>
-          </p>
         </div>
-
-        <p class="pitch-trust-strip" id="pitch-trust-strip">
-          Free · No account · <span data-place-count>218</span> places · Cards, cams &amp; Q&amp;A at home · Optional printable hunts
-        </p>
       </header>
-
-
 
       <!-- DURING: map + places -->
       <section class="map-section map-first journey-section journey-during silo-place-section" id="during" aria-labelledby="during-heading">
         <div id="us-map" class="during-map-anchor"></div>
-        <header class="journey-head journey-head-place">
-          <p class="silo-chip silo-chip-place">Place</p>
-          <h2 id="during-heading" class="during-heading">Map &amp; places</h2>
-          <p class="journey-lead">Open a place for an at-home session — or print a hunt if you’re going tomorrow.</p>
-        </header>
+        <h2 id="during-heading" class="sr-only">Map &amp; places</h2>
         <nav class="place-type-tabs place-type-tabs-map no-print" id="place-type-tabs" aria-label="Filter map by day type">
           <div class="place-type-seg" role="tablist" aria-label="Day type — filters map">
             <a class="place-type-tab is-active" role="tab" aria-selected="true" data-place-type="all" id="tab-type-all" href="/field-pack/">All</a>
@@ -364,7 +259,6 @@
 
         <section class="ready-now ready-slim" aria-labelledby="ready-heading">
           <h2 id="ready-heading">Explore a place at home</h2>
-          <p class="ready-lead">Open a place for cards, talk prompts, photos, and live cams. Print a hunt if you’re going in person.</p>
           <div class="ready-grid" id="ready-grid">
             <a class="ready-card" href="/field-pack/dallas-zoo/" data-venue-id="dallas-zoo">
               <span class="rc-emoji" aria-hidden="true">🦁</span>
@@ -419,13 +313,9 @@
 
 
 
-      <!-- AFTER: cards -->
-      <section class="seo-directory journey-section journey-after silo-cards-section" id="after" aria-labelledby="after-heading">
-        <header class="journey-head journey-head-cards">
-          <p class="silo-chip silo-chip-cards">Cards</p>
-          <h2 id="after-heading" class="cat-cards-h2">Explore the cards</h2>
-          <p class="journey-lead cat-cards-blurb">Talk prompts, photos, and Q&amp;A — a full session at home. Print is optional.</p>
-        </header>
+      <section class="hub-secondary seo-directory journey-section journey-after silo-cards-section" id="after" aria-labelledby="after-heading">
+        <details class="hub-more">
+          <summary id="after-heading">Animal cards</summary>
         <p id="seo-dir-empty" class="seo-dir-empty" hidden>Nothing in this category for the current filter.</p>
         <!-- SEO:DIR-BODY:START -->
         <!-- SEO:CARDS-BODY:START -->
@@ -474,10 +364,11 @@
         </div>
         <!-- SEO:CARDS-BODY:END -->
         <!-- SEO:DIR-BODY:END -->
+        </details>
       </section>
       <!-- SEO:VENUE-DIR:END -->
 
-      <section class="seo-about no-print" id="about" aria-labelledby="about-heading">
+      <section class="seo-about hub-about no-print" id="about" aria-labelledby="about-heading">
         <h2 id="about-heading">About</h2>
         <p>
           Field Trip Kit is an at-home virtual zoo (and aquarium, museum, and park) session —
@@ -487,14 +378,12 @@
           Questions or a venue to suggest? <a href="mailto:hello@1less.app">hello@1less.app</a>
         </p>
       </section>
-
-
-      <p class="story-extras-note catalog-extras-note no-print" id="optional-extras">
+      <p class="story-extras-note catalog-extras-note hub-extras no-print" id="optional-extras">
         Cards, photos, live cams, Q&amp;A, and maps are first-class. The paper hunt is optional for a real visit.
       </p>
 
       <!-- SEO:FAQ:START -->
-      <section class="seo-faq" id="faq" aria-labelledby="faq-heading">
+      <section class="seo-faq hub-faq" id="faq" aria-labelledby="faq-heading">
         <h2 id="faq-heading">Common questions</h2>
         <details name="faq">
           <summary>What should I see at the zoo with a toddler?</summary>
@@ -561,9 +450,13 @@
         <p>
           <strong>Field Trip Kit</strong>
           <span class="footer-dot">·</span>
+          <a href="/start/">Start</a>
+          <span class="footer-dot">·</span>
           <a href="/field-pack/">All places</a>
           <span class="footer-dot">·</span>
           <a href="/field-pack/cards/">Cards</a>
+          <span class="footer-dot">·</span>
+          <a href="/field-pack/virtual-field-trip/">Virtual Field Trip</a>
           <span class="footer-dot">·</span>
           <a href="#about">About</a>
           <span class="footer-dot">·</span>
@@ -583,6 +476,6 @@
     <script src="/field-pack/js/print-kit.js?v=14"></script>
     <script src="/field-pack/js/mission-pilots.js?v=4"></script>
     <script src="/field-pack/js/landing-map.js?v=84"></script>
-    <script src="/field-pack/js/landing-hook.js?v=34"></script>
+    <script src="/field-pack/js/landing-hook.js?v=35"></script>
   </body>
 </html>

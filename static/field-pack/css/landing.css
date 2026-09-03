@@ -4074,3 +4074,189 @@ a.hero-moment#hero-after-link:focus-visible {
 .map-js-ready .map-fallback-js {
   display: none;
 }
+
+/* —— Hub workspace: map-first place explorer —— */
+body.landing-hub {
+  background: #f6f1ea;
+}
+
+body.landing-hub.landing-body {
+  padding-top: 10px;
+  padding-bottom: 24px;
+}
+
+.landing-hub .landing-app {
+  max-width: 42rem;
+}
+
+.landing-hub .oneless-shell {
+  margin-bottom: 10px;
+  background: rgba(255, 252, 247, 0.94);
+  border-color: rgba(27, 25, 22, 0.1);
+  box-shadow: none;
+}
+
+.landing-hub .oneless-shell[data-product="bdo"] .shell-product small {
+  background: rgba(255, 207, 90, 0.28);
+  color: #7a3e12;
+}
+
+.landing-hub .hub-find {
+  margin: 0 0 12px;
+  padding: 2px 2px 0;
+}
+
+.landing-hub .hub-find #pitch-heading {
+  margin: 0 0 12px;
+  font-size: clamp(1.55rem, 5vw, 2.05rem);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: #0a4545;
+}
+
+.landing-hub .hub-find .place-search-wrap {
+  max-width: none;
+  margin: 0;
+}
+
+.landing-hub .hub-find .hero-place-search-input,
+.landing-hub .hub-find .hero-search-submit {
+  min-height: 48px;
+}
+
+.landing-hub .journey-during {
+  margin-top: 0;
+}
+
+.landing-hub .place-type-tabs-map {
+  padding-bottom: 8px;
+}
+
+.landing-hub .map-viewport {
+  min-height: 360px;
+  border-radius: 16px;
+}
+
+.landing-hub .ready-slim {
+  margin-top: 18px;
+}
+
+.landing-hub .ready-slim h2,
+.landing-hub .cat-places-h3 {
+  font-size: 1.05rem;
+  font-weight: 750;
+  color: #0a4545;
+}
+
+.landing-hub .hub-secondary {
+  margin: 18px 0 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.landing-hub .hub-more {
+  border: 1px solid rgba(27, 25, 22, 0.1);
+  border-radius: 14px;
+  background: #fffcf7;
+  padding: 0;
+}
+
+.landing-hub .hub-more > summary {
+  list-style: none;
+  cursor: pointer;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  font-weight: 750;
+  font-size: 0.95rem;
+  color: #0a4545;
+}
+
+.landing-hub .hub-more > summary::-webkit-details-marker {
+  display: none;
+}
+
+.landing-hub .hub-more[open] > summary {
+  border-bottom: 1px solid rgba(27, 25, 22, 0.08);
+}
+
+.landing-hub .hub-more .seo-dir-body,
+.landing-hub .hub-more .cat-cards-showcase {
+  padding: 12px 12px 14px;
+}
+
+.landing-hub .hub-about,
+.landing-hub .hub-faq {
+  margin: 14px 0 0;
+  padding: 12px 14px;
+  border: 1px solid rgba(27, 25, 22, 0.1);
+  border-radius: 14px;
+  background: #fffcf7;
+  max-width: none;
+  box-shadow: none;
+}
+
+.landing-hub .hub-about h2,
+.landing-hub .hub-faq h2 {
+  margin: 0 0 6px;
+  font-size: 0.95rem;
+}
+
+.landing-hub .hub-about p,
+.landing-hub .hub-faq details p {
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.landing-hub .hub-faq details {
+  margin: 0;
+  border-bottom: 1px solid rgba(27, 25, 22, 0.08);
+}
+
+.landing-hub .hub-faq details:last-child {
+  border-bottom: 0;
+}
+
+.landing-hub .hub-faq summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.landing-hub .hub-extras {
+  display: none;
+}
+
+.landing-hub .site-footer-slim {
+  margin-top: 18px;
+}
+
+.landing-hub .site-footer-slim p {
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 720px) {
+  .landing-hub .map-viewport {
+    min-height: 280px;
+  }
+
+  .landing-hub .hub-find #pitch-heading {
+    font-size: clamp(1.4rem, 7vw, 1.7rem);
+  }
+
+  .landing-hub .place-type-tabs-map .place-type-tab {
+    min-height: 44px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-hub .ready-card:hover,
+  .landing-hub .btn:hover {
+    transform: none;
+  }
+}

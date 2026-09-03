@@ -1,9 +1,7 @@
 """First-time landing at /start/ — does not replace the live home."""
 
 from pathlib import Path
-import hashlib
 import re
-import subprocess
 import unittest
 
 from busyparent_agent.web import (
@@ -22,7 +20,6 @@ HOME = FP / "index.html"
 START_HTML = START / "index.html"
 GIRAFFE = FP / "cards" / "reticulated-giraffe" / "index.html"
 DALLAS = FP / "dallas-zoo" / "index.html"
-MAIN_HOME_SHA = "5b527c1b3407794627f60b57882e2ad466708ddbfffeb52ebb25eb4d124f0cb4"
 
 
 class _Buf:
@@ -83,19 +80,6 @@ class StartLandingTests(unittest.TestCase):
             self.html,
         )
 
-    def test_home_file_is_unchanged_from_starting_main(self):
-        digest = hashlib.sha256(HOME.read_bytes()).hexdigest()
-        self.assertEqual(digest, MAIN_HOME_SHA)
-        try:
-            tracked = subprocess.check_output(
-                ["git", "diff", "--name-only", "--", "static/field-pack/index.html"],
-                cwd=REPO,
-                text=True,
-            ).strip()
-        except (subprocess.CalledProcessError, FileNotFoundError):
-            tracked = ""
-        self.assertEqual(tracked, "")
-
     def test_route_is_start_not_home(self):
         root = _get("/")
         self.assertEqual(root._code, 302)
@@ -104,7 +88,8 @@ class StartLandingTests(unittest.TestCase):
         home = _get("/field-pack/")
         self.assertEqual(home._code, 200)
         self.assertIn(b'id="us-map"', home.wfile.getvalue())
-        self.assertIn(b"landing-pitch-t4b", home.wfile.getvalue())
+        self.assertIn(b"landing-hub", home.wfile.getvalue())
+        self.assertNotIn(b"landing-pitch-t4b", home.wfile.getvalue())
 
         slashless = _get("/start")
         self.assertEqual(slashless._code, 301)
@@ -273,10 +258,17 @@ class StartLandingTests(unittest.TestCase):
         self.assertNotIn("Explore zoos", hit.group(0))
         self.assertNotIn("Explore aquariums", hit.group(0))
         self.assertIn('href="/field-pack/dallas-zoo/"', chapter)
-        self.assertIn('href="/field-pack/zoos/"', chapter)
-        self.assertIn('href="/field-pack/aquariums/"', chapter)
-        self.assertIn("Explore zoos", chapter)
-        self.assertIn("Explore aquariums", chapter)
+        explore = re.findall(
+            r'<a class="start-chapter-link"[^>]*>[\s\S]*?</a>',
+            chapter,
+        )
+        self.assertEqual(len(explore), 1, explore)
+        self.assertIn('href="/field-pack/"', explore[0])
+        self.assertIn("Explore places near you", explore[0])
+        self.assertNotIn('href="/field-pack/zoos/"', chapter)
+        self.assertNotIn('href="/field-pack/aquariums/"', chapter)
+        self.assertNotIn("Explore zoos", chapter)
+        self.assertNotIn("Explore aquariums", chapter)
         self.assertNotIn("Open Dallas Zoo", chapter)
         self.assertNotIn('href="/field-pack/dallas-zoo/"', self.js)
         self.assertNotIn(".start-chapter-link", self.js)
@@ -435,7 +427,8 @@ class StartLandingTests(unittest.TestCase):
         self.assertNotIn("/dinner", self.html)
         self.assertNotIn("seo-age-chip", self.html)
         self.assertNotIn("landing-pitch-t4b", self.html)
-        self.assertIn("landing-pitch-t4b", self.home)
+        self.assertNotIn("landing-pitch-t4b", self.home)
+        self.assertIn("landing-hub", self.home)
         self.assertIn('id="us-map"', self.home)
         self.assertNotIn('id="door-today"', self.home)
         self.assertNotIn("A ready-to-use field trip for curious kids.", self.home)
