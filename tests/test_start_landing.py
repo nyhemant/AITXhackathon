@@ -82,7 +82,7 @@ class StartLandingTests(unittest.TestCase):
     def test_route_is_start_not_home(self):
         root = _get("/")
         self.assertEqual(root._code, 302)
-        self.assertEqual(root._headers.get("Location"), FIELD_PACK_PREFIX + "/")
+        self.assertEqual(root._headers.get("Location"), START_PREFIX + "/")
 
         home = _get("/field-pack/")
         self.assertEqual(home._code, 200)
@@ -105,6 +105,9 @@ class StartLandingTests(unittest.TestCase):
         self.assertIsNotNone(_safe_start_path("/start/home-print-table.jpg"))
         self.assertIsNotNone(_safe_start_path("/start/going-giraffe.jpg"))
         self.assertIsNotNone(_safe_start_path("/start/teach-card.jpg"))
+        self.assertIsNotNone(_safe_start_path("/start/teach-lion.jpg"))
+        self.assertIsNotNone(_safe_start_path("/start/teach-elephant.jpg"))
+        self.assertIsNotNone(_safe_start_path("/start/teach-giraffe.jpg"))
         self.assertIsNone(_safe_start_path("/start/../field-pack/index.html"))
         self.assertIsNotNone(_safe_field_pack_path("/field-pack/"))
 
@@ -129,6 +132,11 @@ class StartLandingTests(unittest.TestCase):
         teach = _get("/start/teach-card.jpg")
         self.assertEqual(teach._code, 200)
         self.assertTrue(teach.wfile.getvalue().startswith(b"\xff\xd8"))
+
+        for panel in ("teach-lion.jpg", "teach-elephant.jpg", "teach-giraffe.jpg"):
+            panel_res = _get(f"/start/{panel}")
+            self.assertEqual(panel_res._code, 200, panel)
+            self.assertTrue(panel_res.wfile.getvalue().startswith(b"\xff\xd8"), panel)
 
     def test_hero_is_local_giraffe_still(self):
         hero = re.search(r'<section class="start-hero"[\s\S]*?</section>', self.html)
@@ -356,8 +364,29 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn(">Elephant<", chapter)
         self.assertIn('href="/field-pack/cards/reticulated-giraffe/"', chapter)
         self.assertIn(">Giraffe<", chapter)
+        slides = re.findall(
+            r'<a class="start-teach-slide" href="([^"]+)">',
+            chapter,
+        )
+        self.assertEqual(
+            slides,
+            [
+                "/field-pack/cards/african-lion/",
+                "/field-pack/cards/african-elephant/",
+                "/field-pack/cards/reticulated-giraffe/",
+            ],
+        )
+        self.assertIn('src="/start/teach-lion.jpg"', chapter)
+        self.assertIn('src="/start/teach-elephant.jpg"', chapter)
+        self.assertIn('src="/start/teach-giraffe.jpg"', chapter)
+        self.assertIn("/start/teach-lion-480.jpg 480w", chapter)
+        self.assertIn("/start/teach-elephant-480.jpg 480w", chapter)
+        self.assertIn("/start/teach-giraffe-480.jpg 480w", chapter)
+        self.assertIn('class="start-teach-carousel"', chapter)
+        self.assertIn('class="start-chapter-still"', chapter)
         self.assertLess(chapter.find("start-chapter-box"), chapter.find("start-open-cards"))
         self.assertLess(chapter.find("start-open-cards"), chapter.find("start-chapter-pills"))
+        self.assertLess(chapter.find("start-teach-carousel"), chapter.find("start-open-cards"))
         self.assertNotIn("grid-template-columns: repeat(3", chapter)
         lion = FP / "cards" / "african-lion" / "index.html"
         elephant = FP / "cards" / "african-elephant" / "index.html"
@@ -378,8 +407,26 @@ class StartLandingTests(unittest.TestCase):
         self.assertTrue((START / "teach-card-640.jpg").is_file())
         self.assertTrue((START / "teach-card-480.jpg").is_file())
         self.assertTrue((START / "teach-card.jpg").read_bytes().startswith(b"\xff\xd8"))
+        for name in (
+            "teach-lion.jpg",
+            "teach-lion-480.jpg",
+            "teach-elephant.jpg",
+            "teach-elephant-480.jpg",
+            "teach-giraffe.jpg",
+            "teach-giraffe-480.jpg",
+        ):
+            panel = START / name
+            self.assertTrue(panel.is_file(), name)
+            self.assertTrue(panel.read_bytes().startswith(b"\xff\xd8"), name)
         self.assertIn(".start-chapter", self.css)
         self.assertIn(".start-chapter-quiet", self.css)
+        self.assertIn(".start-teach-carousel", self.css)
+        self.assertIn(".start-teach-slide", self.css)
+        self.assertIn("scroll-snap-type: x mandatory", self.css)
+        self.assertIn("@media (max-width: 640px)", self.css)
+        self.assertIn("@media (min-width: 641px)", self.css)
+        self.assertNotIn("grid-template-columns: repeat(3", self.css)
+        self.assertIn("start-teach-track", self.js)
         self.assertNotIn("webgl", self.css.lower())
         self.assertNotIn("parallax", self.css.lower())
 
