@@ -79,7 +79,7 @@
 }
 .mission-drawer-head h2 {
   margin: 0;
-  font-size: 1.25rem;
+  font-size: clamp(1.35rem, 3vw, 1.6rem);
   font-weight: 850;
   color: #0a4545;
   letter-spacing: -0.02em;
