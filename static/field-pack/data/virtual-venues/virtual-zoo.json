@@ -26,7 +26,7 @@
       "cam": {
         "url": "https://www.houstonzoo.org/explore/webcams/flamingo-cam/",
         "provider": "houston_zoo",
-        "embed": null,
+        "embed": "https://ams-28635.antmedia.cloud:5443/live/play.html?id=flamingo-camera&playOrder=hls",
         "hours": "Usually 7a–7p CDT",
         "camLabel": "Flamingo cam at the Houston Zoo",
         "speciesNote": null,
