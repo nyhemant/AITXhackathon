@@ -6,7 +6,7 @@ import json
 import re
 from pathlib import Path
 
-ROOT = Path("/Users/arku/Projects/AITXhackathon/static/field-pack")
+ROOT = Path(__file__).resolve().parents[1] / "static" / "field-pack"
 VENUES = ROOT / "data/virtual-venues"
 CATALOG = ROOT / "js/catalog.js"
 PAGES = [
@@ -113,13 +113,23 @@ def cam_line(h: dict) -> str:
     return f'<a class="vz-static-cam" href="{esc(url)}" rel="noopener">Live cam — {esc(label)}</a>'
 
 
-def film_line(h: dict) -> str:
+def film_line(h: dict, tab: str = "zoo") -> str:
     video = h.get("video") or {}
     url = video.get("url")
     if not url:
         return ""
     label = video.get("title") or "A short film"
-    return f'<a class="vz-static-film" href="{esc(url)}" rel="noopener">Pre-recorded — {esc(label)}</a>'
+    hid = h.get("id") or h.get("cardId") or ""
+    href = f"/field-pack/virtual-field-trip/?tab={tab}#habitat={hid}"
+    primary = (
+        f'<a class="vz-static-film" href="{esc(href)}" data-habitat="{esc(hid)}" role="button">'
+        f"Pre-recorded — {esc(label)}</a>"
+    )
+    noscript = (
+        f'<noscript><a class="vz-static-film-offsite" href="{esc(url)}" rel="noopener noreferrer">'
+        f"Watch on YouTube — {esc(label)}</a></noscript>"
+    )
+    return primary + noscript
 
 
 def render_panels(cat: dict) -> str:
@@ -136,7 +146,7 @@ def render_panels(cat: dict) -> str:
             line = teaser(h, cat)
             href, kind = card_href(h, spec["id"])
             cam = cam_line(h)
-            film = film_line(h)
+            film = film_line(h, spec["id"])
             items.append(
                 f"""          <li>
             <a href="{esc(href)}">{esc(name)}</a>
