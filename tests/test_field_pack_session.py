@@ -13,55 +13,52 @@ from field_pack_kit_tier import kit_tier_label  # noqa: E402
 
 FP = REPO / "static" / "field-pack"
 VENUES = FP / "data" / "venues"
-NO_PLACE_DEFAULT_SLUGS = frozenset({"dallas-zoo", "san-diego-zoo"})
-NO_PLACE_FORBIDDEN_SLUGS = frozenset({"houston-zoo", "yellowstone", "national-parks"})
 
 
 class FlagshipSessionTests(unittest.TestCase):
     def test_map_count_never_places_loading(self):
         html = (FP / "index.html").read_text(encoding="utf-8")
+        about = (REPO / "static" / "about" / "index.html").read_text(encoding="utf-8")
         self.assertNotIn("Places loading", html)
         self.assertIn("218 places worldwide", html)
         self.assertIn("<noscript><p class=\"map-count-quiet\">218 places worldwide</p></noscript>", html)
-        self.assertIn(
+        self.assertNotIn(
             "Use the at-home cards and session together; print is optional for a group visit.",
             html,
+        )
+        self.assertIn(
+            "Use the at-home cards and session together; print is optional for a group visit.",
+            about,
         )
         self.assertNotIn("Print one sheet per child or share one for the group.", html)
 
     def test_hub_first_tap_is_not_dallas_print(self):
-        """No-place first tap is a Verified kit session, not print, Houston, or a park."""
+        """Hub first path is find-a-place, not print, Houston, or a park."""
         html = (FP / "index.html").read_text(encoding="utf-8")
         hero = html.split('id="hero-search-block"', 1)[0]
-        moment_hrefs = re.findall(
-            r'class="hero-moment-link"[\s\S]*?href="([^"]+)"',
-            hero,
-        )
-        self.assertEqual(len(moment_hrefs), 3, moment_hrefs)
-        for href in moment_hrefs:
+        self.assertNotIn("hero-moment-link", html)
+        self.assertNotIn("hero-moment-during", html)
+        self.assertIn('id="pitch-heading"', hero)
+        self.assertIn("Find a place", hero)
+
+        ready = html.split('id="ready-grid"', 1)[1].split("</div>", 1)[0]
+        ready_hrefs = re.findall(r'href="([^"]+)"', ready)
+        self.assertTrue(ready_hrefs)
+        for href in ready_hrefs:
+            self.assertTrue(href.startswith("/field-pack/"), href)
+            self.assertTrue(href.endswith("/"), href)
             self.assertNotIn("#mission", href)
             self.assertNotIn("#print", href)
             self.assertNotIn("#mission-drawer", href)
+        self.assertIn("/field-pack/dallas-zoo/", ready)
+        self.assertNotIn("/field-pack/houston-zoo/", hero)
 
-        during = re.search(
-            r'id="hero-moment-during"[\s\S]*?href="([^"]+)"',
-            hero,
-        )
-        self.assertIsNotNone(during)
-        href = during.group(1)
-        self.assertTrue(href.startswith("/field-pack/"))
-        self.assertTrue(href.endswith("/"))
-        slug = href.rstrip("/").rsplit("/", 1)[-1]
-        self.assertIn(slug, NO_PLACE_DEFAULT_SLUGS)
-        self.assertNotIn(slug, NO_PLACE_FORBIDDEN_SLUGS)
-        self.assertIn('data-no-place-default="verified"', hero)
-
-        venue = json.loads((VENUES / f"{slug}.json").read_text(encoding="utf-8"))
+        dallas = (FP / "dallas-zoo" / "index.html").read_text(encoding="utf-8")
+        dallas_visible = dallas.split('id="venue-data"', 1)[0]
+        self.assertIn("Verified kit · checked", dallas_visible)
+        self.assertIn('id="mission"', dallas)
+        venue = json.loads((VENUES / "dallas-zoo.json").read_text(encoding="utf-8"))
         self.assertTrue(kit_tier_label(venue).startswith("Verified kit"))
-        place = (FP / slug / "index.html").read_text(encoding="utf-8")
-        visible = place.split('id="venue-data"', 1)[0]
-        self.assertIn("Verified kit · checked", visible)
-        self.assertIn('id="mission"', place)
 
         houston = (FP / "houston-zoo" / "index.html").read_text(encoding="utf-8")
         houston_visible = houston.split('id="venue-data"', 1)[0]
@@ -69,9 +66,8 @@ class FlagshipSessionTests(unittest.TestCase):
         self.assertNotIn("Verified kit", houston_visible)
 
         self.assertNotIn('href="/field-pack/dallas-zoo/#mission"', html)
-        self.assertNotIn('href="/field-pack/houston-zoo/"', hero)
         self.assertIn('id="during"', html)
-        self.assertIn('href="#during"', html)
+        self.assertIn('id="us-map"', html)
 
     def _visible(self, html: str) -> str:
         return html.split('id="venue-data"', 1)[0]

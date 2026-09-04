@@ -50,12 +50,14 @@ from pathlib import Path
 from urllib.parse import unquote, urljoin, urlsplit
 
 from busyparent_agent.web import (
+    ABOUT_PREFIX,
     DINNER_PATH,
     FIELD_PACK_PREFIX,
     LOGO_ASSETS,
     START_PREFIX,
     WebHandler,
     _SITEMAP_URLS,
+    _safe_about_path,
     _safe_field_pack_path,
     _safe_shell_path,
     _safe_start_path,
@@ -241,6 +243,10 @@ def _served_status(path: str) -> int:
     if path == START_PREFIX:
         return 301
     if _safe_start_path(path) is not None:
+        return 200
+    if path == ABOUT_PREFIX:
+        return 301
+    if _safe_about_path(path) is not None:
         return 200
     if path == FIELD_PACK_PREFIX:
         return 301
@@ -473,6 +479,8 @@ class FieldPackInternalLinkTests(unittest.TestCase):
             "/dinner": 200,
             "/start/": 200,
             "/start": 301,
+            "/about/": 200,
+            "/about": 301,
             "/field-pack": 301,
             "/": 302,
             "/field-pack/cards/acad-cadillac-view/": 404,

@@ -142,8 +142,44 @@ a.shell-product:focus-visible {
   max-width: 100%;
 }
 
+.oneless-shell .shell-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.oneless-shell .shell-start {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  min-width: 44px;
+  padding: 9px 14px;
+  border-radius: var(--radius-pill, 999px);
+  color: var(--teal-deep, #0a4545);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.86rem;
+}
+
+.oneless-shell .shell-start:hover,
+.oneless-shell .shell-start:focus-visible {
+  background: #e8f6f0;
+  color: var(--teal, #0f5c5c);
+}
+
+.oneless-shell .shell-start:focus-visible {
+  outline: 3px solid var(--sun, #ffcf5a);
+  outline-offset: 2px;
+}
+
 .oneless-shell .shell-more-wrap {
   position: relative;
+  margin-left: 0;
+}
+
+.oneless-shell > .shell-more-wrap {
   margin-left: auto;
 }
 

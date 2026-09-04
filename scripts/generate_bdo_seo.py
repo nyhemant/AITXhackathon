@@ -4230,6 +4230,9 @@ def _hub_filter_tabs_html(section_ids: list[str]) -> str:
     )
 
 
+TRY_CARD_IDS = ("reticulated-giraffe", "african-elephant", "african-lion")
+
+
 def write_cards_hub(venues: list[dict]) -> str:
     """Static crawlable index of every Q&A card → /field-pack/cards/."""
     cards: list[dict] = []
@@ -4311,6 +4314,28 @@ def write_cards_hub(venues: list[dict]) -> str:
         f"Browse all {total} cards. Print is optional. No account."
     )
     url = f"{SITE}/field-pack/cards/"
+    cards_by_id = {c.get("id"): c for c in cards}
+    try_bits = []
+    for cid in TRY_CARD_IDS:
+        c = cards_by_id.get(cid)
+        if not c:
+            continue
+        photo = (c.get("photo") or "").strip()
+        if photo.startswith("photos/"):
+            src = "/field-pack/" + photo.split("?")[0] + "?v=img2"
+        elif (FIELD / "photos" / f"{cid}.jpg").is_file():
+            src = f"/field-pack/photos/{cid}.jpg?v=img2"
+        else:
+            src = ""
+        blurb = esc((c.get("blurb") or "").strip())
+        try_bits.append(
+            f'<a class="try-card" href="{_card_href(c)}" data-card-id="{esc(cid)}">'
+            f'<img src="{esc(src)}" alt="" width="320" height="320" loading="lazy" decoding="async" />'
+            f'<span class="try-card-name">{esc(c.get("name") or cid)}</span>'
+            f'<span class="try-card-teaser">{blurb}</span>'
+            f"</a>"
+        )
+    try_row = "\n          ".join(try_bits)
     html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -4329,45 +4354,13 @@ def write_cards_hub(venues: list[dict]) -> str:
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content="{OG_SHARE_IMAGE}" />
   <base href="/field-pack/" />
-  <link rel="stylesheet" href="/shell/shell.css?v=6" />
-  <link rel="stylesheet" href="/field-pack/css/styles.css?v=26" />
-  <link rel="stylesheet" href="/field-pack/css/landing.css?v=89" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=21" />
-  <style>
-    .cards-hub {{ max-width: 52rem; margin: 0 auto; padding: 0.75rem 1rem 3rem; }}
-    .cards-hub h1 {{ font-size: clamp(1.45rem, 4vw, 2rem); color: #0a4545; margin: 0.5rem 0 0.5rem; }}
-    .cards-hub-lead {{ color: #3d4f6f; line-height: 1.45; max-width: 40rem; }}
-    .cards-hub-count {{ font-weight: 700; color: #0f5c5c; margin: 0.5rem 0 1.25rem; }}
-    .cards-hub-section {{ margin: 1.5rem 0; }}
-    .cards-hub-section h2 {{ font-size: 1.15rem; color: #0a4545; margin: 0 0 0.65rem; }}
-    .cards-hub-search-label {{ display: block; font-weight: 750; font-size: 0.88rem; margin: 0.75rem 0 0.35rem; color: #0a4545; }}
-    .cards-hub-search {{ width: 100%; max-width: 28rem; min-height: 46px; font: inherit; font-size: 1rem; padding: 0.55rem 0.75rem; border-radius: 12px; border: 1.5px solid rgba(15,92,92,0.22); box-sizing: border-box; }}
-    .cards-hub-list {{ list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; }}
-    @media (min-width: 720px) {{
-      .cards-hub-list {{ grid-template-columns: 1fr 1fr; }}
-    }}
-    .cards-hub-link {{
-      display: grid; grid-template-columns: 100px 1fr; gap: 0.7rem; align-items: center;
-      padding: 0.5rem; border: 1.5px solid rgba(196,92,38,0.22); border-radius: 14px;
-      text-decoration: none; color: inherit; background: #fff; min-height: 88px;
-    }}
-    .cards-hub-link:hover, .cards-hub-link:focus-visible {{ border-color: #c45c26; outline: 2px solid #c45c26; outline-offset: 2px; }}
-    .cards-hub-thumb {{ width: 100px; height: 75px; object-fit: cover; object-position: 50% 18%; border-radius: 10px; background: #f4f1ea; }}
-    .cards-hub-emoji {{ font-size: 2.2rem; text-align: center; width: 100px; }}
-    .cards-hub-copy {{ display: flex; flex-direction: column; gap: 0.2rem; min-width: 0; }}
-    .cards-hub-name {{ font-weight: 800; color: #0a4545; font-size: 0.95rem; }}
-    .cards-hub-venue {{ color: #0f5c5c; font-size: 0.8rem; font-weight: 700; }}
-    .cards-hub-teaser {{
-      color: #3d4f6f; font-size: 0.84rem; line-height: 1.3;
-      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
-    }}
-    .cards-hub-item[hidden] {{ display: none !important; }}
-    .cards-hub-crumbs {{ font-size: 0.9rem; color: #5a6a84; }}
-    .cards-hub-crumbs a {{ color: #0f5c5c; }}
-  </style>
+  <link rel="stylesheet" href="/shell/shell.css?v=8" />
+  <link rel="stylesheet" href="/field-pack/css/styles.css?v=35" />
+  <link rel="stylesheet" href="/field-pack/css/landing.css?v=97" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=28" />
 </head>
-<body class="landing-body seo-venue-body">
-  <div class="app landing-app">
+<body class="landing-body landing-hub cards-explorer">
+  <div class="app landing-app landing-clean">
     <header class="oneless-shell no-print" data-product="bdo">
       <a class="shell-brand" href="/field-pack/" aria-label="Field Trip Kit home">
         <img src="/1LessMark.png" alt="" width="52" height="52" />
@@ -4376,72 +4369,68 @@ def write_cards_hub(venues: list[dict]) -> str:
         Field Trip Kit
         <small>{HEADER_TAGLINE}</small>
       </a>
-      <div class="shell-more-wrap">
-        <button type="button" class="shell-more" aria-expanded="false" aria-haspopup="true" aria-controls="shell-menu">More</button>
-        <div id="shell-menu" class="shell-menu" hidden role="menu">
-          <a href="/field-pack/" role="menuitem">All places<small>{NAV_PLACES_SUB}</small></a>
-          <a href="/field-pack/cards/" aria-current="page" role="menuitem">Animal cards<small>{NAV_CARDS_SUB}</small></a>
-          <a href="/field-pack/virtual-field-trip/" role="menuitem">Virtual Field Trip<small>{NAV_VFT_SUB}</small></a>
-          <a href="/field-pack/#about" role="menuitem">About<small>{NAV_ABOUT_SUB}</small></a>
+      <nav class="shell-nav" aria-label="Site">
+        <a class="shell-start" href="/start/">Start</a>
+        <a class="shell-start" href="/field-pack/">Places</a>
+        <div class="shell-more-wrap">
+          <button type="button" class="shell-more" aria-expanded="false" aria-haspopup="true" aria-controls="shell-menu">More</button>
+          <div id="shell-menu" class="shell-menu" hidden role="menu">
+            <a href="/start/" role="menuitem">Start</a>
+            <a href="/field-pack/" role="menuitem">All places<small>{NAV_PLACES_SUB}</small></a>
+            <a href="/field-pack/cards/" aria-current="page" role="menuitem">Animal cards<small>{NAV_CARDS_SUB}</small></a>
+            <a href="/field-pack/virtual-field-trip/" role="menuitem">Virtual Field Trip<small>{NAV_VFT_SUB}</small></a>
+            <a href="/about/" role="menuitem">About<small>{NAV_ABOUT_SUB}</small></a>
+          </div>
         </div>
+      </nav>
+    </header>
+    <header class="hub-find" id="cards-find">
+      <h1 id="pitch-heading">Find a card</h1>
+      <div class="pitch-cta-block" data-search-mode="card">
+        <form class="hero-search-form place-search-wrap silo-place" id="cards-hub-form" role="search" action="/field-pack/cards/" method="get">
+          <label class="place-search-label sr-only" for="cards-hub-search" id="cards-search-label">Find a card</label>
+          <div class="hero-search-row">
+            <input type="search" id="cards-hub-search" name="q" class="place-search-input hero-place-search-input cards-hub-search" placeholder="Lion, shark, dinosaur…" autocomplete="off" enterkeyhint="search" />
+            <button type="submit" class="btn btn-primary hero-search-submit">Find card</button>
+          </div>
+        </form>
       </div>
     </header>
-    <main class="cards-hub">
-      <p class="cards-hub-crumbs"><a href="/field-pack/">Field Trip Kit</a> · Cards</p>
-      <h1>Animal &amp; Discovery Cards for Kids</h1>
-      <p class="cards-hub-lead">
-        Talk prompts, photos, and Q&amp;A for a session at home — wildlife, sea life, museum attractions, and park trails.
-        Print a card if you want paper. Free. No account.
-      </p>
-      <p class="cards-hub-count">{total} cards · from Field Trip Kit place lists</p>
-      <label class="cards-hub-search-label" for="cards-hub-search">Find a card</label>
-      <input type="search" id="cards-hub-search" class="cards-hub-search" placeholder="Lion, shark, dinosaur…" autocomplete="off" />
+    <main class="cards-hub" id="cards-hub">
       {_hub_filter_tabs_html([s[0] for s in sections])}
-      {body_sections}
+      <p class="cards-hub-count" id="cards-hub-count">{total} cards · from Field Trip Kit place lists</p>
+      <section class="ready-now ready-slim try-card-row" id="try-a-card" aria-labelledby="try-card-heading">
+        <h2 id="try-card-heading">Try a card</h2>
+        <div class="try-card-grid" id="try-card-grid">
+          {try_row}
+        </div>
+      </section>
+      <details class="hub-more cards-all-wrap" id="cards-all-wrap">
+        <summary>All {total} cards</summary>
+        <div class="cards-all-body">
+{body_sections}
+        </div>
+      </details>
     </main>
+    <footer class="site-footer site-footer-slim no-print">
+      <p>
+        <strong>Field Trip Kit</strong>
+        <span class="footer-dot">·</span>
+        <a href="/start/">Start</a>
+        <span class="footer-dot">·</span>
+        <a href="/field-pack/">All places</a>
+        <span class="footer-dot">·</span>
+        <a href="/field-pack/cards/">Cards</a>
+        <span class="footer-dot">·</span>
+        <a href="/about/">About</a>
+        <span class="footer-dot">·</span>
+        <a href="mailto:hello@1less.app">Contact</a>
+      </p>
+    </footer>
   </div>
   <script src="/shell/shell.js?v=5"></script>
   <script src="/field-pack/js/fp-analytics.js?v=1"></script>
-  <script>
-    (function () {{
-      if (typeof FPTrack === "function") FPTrack("cards_hub_visited", {{ source: "cards_hub" }});
-      document.querySelectorAll("a.cards-hub-link[data-card-id]").forEach(function (a) {{
-        a.addEventListener("click", function () {{
-          if (typeof FPTrack === "function") FPTrack("card_opened", {{ card_id: a.getAttribute("data-card-id") || "", source: "cards_hub" }});
-        }});
-      }});
-      var q = document.getElementById("cards-hub-search");
-      var tabs = document.querySelectorAll(".place-type-tab[data-card-filter]");
-      var filter = "all";
-      function applyHubFilter() {{
-        var n = q ? (q.value || "").trim().toLowerCase() : "";
-        var searching = n.length >= 2;
-        document.querySelectorAll(".cards-hub-section").forEach(function (sec) {{
-          var gid = (sec.id || "").replace("cards-", "");
-          sec.hidden = !searching && filter !== "all" && gid !== filter;
-        }});
-        document.querySelectorAll(".cards-hub-item").forEach(function (li) {{
-          var blob = (li.getAttribute("data-card-search") || li.textContent || "").toLowerCase();
-          var g = li.getAttribute("data-card-group") || "";
-          var missSearch = searching && blob.indexOf(n) === -1;
-          var missFilter = !searching && filter !== "all" && g !== filter;
-          li.hidden = missSearch || missFilter;
-        }});
-      }}
-      tabs.forEach(function (btn) {{
-        btn.addEventListener("click", function () {{
-          filter = btn.getAttribute("data-card-filter") || "all";
-          tabs.forEach(function (b) {{
-            var on = b === btn;
-            b.classList.toggle("is-active", on);
-            b.setAttribute("aria-selected", on ? "true" : "false");
-          }});
-          applyHubFilter();
-        }});
-      }});
-      if (q) q.addEventListener("input", applyHubFilter);
-    }})();
-  </script>
+  <script src="/field-pack/js/cards-explorer.js?v=1"></script>
 </body>
 </html>
 """
@@ -4932,7 +4921,7 @@ def main() -> int:
     cards_urls = write_cards_hub(venues)
     if isinstance(cards_urls, str):
         cards_urls = [cards_urls]
-    write_sitemap(venues, extra_urls=type_urls + cards_urls + ["/field-pack/virtual-zoo/", "/field-pack/virtual-field-trip/"])
+    write_sitemap(venues, extra_urls=type_urls + cards_urls + ["/field-pack/virtual-zoo/", "/field-pack/virtual-field-trip/", "/start/", "/about/"])
     write_robots()
     manifest = {
         "generated": TODAY,

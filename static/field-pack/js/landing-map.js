@@ -9,7 +9,14 @@
       "san-diego-zoo",
       "national-zoo",
     ],
-    intl: ["london-zoo", "singapore-zoo", "ueno-zoo"],
+    intl: [
+      "dallas-zoo",
+      "childrens-aquarium-dallas",
+      "childrens-museum-perot",
+      "houston-zoo",
+      "san-diego-zoo",
+      "national-zoo",
+    ],
   };
   const TOP_IDS = new Set(window.FP_TOP_PLACE_IDS || []);
   const INTL_IDS = new Set(window.FP_INTL_PLACE_IDS || []);
@@ -1895,7 +1902,7 @@
     const grid = document.getElementById("ready-grid");
     if (!heading || !grid) return;
     const spec = window.FP_READY_STRIP || { us: [], intl: [] };
-    const ids = isIntl ? spec.intl : spec.us;
+    const ids = spec.us && spec.us.length ? spec.us : spec.intl;
     const shortName = {
       "childrens-aquarium-dallas": "Children’s Aquarium",
       "childrens-museum-perot": "Children’s Museum",
