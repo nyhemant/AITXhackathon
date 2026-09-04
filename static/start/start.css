@@ -255,6 +255,10 @@ body.start-body {
   z-index: 1;
 }
 
+.start-teach-carousel {
+  display: none;
+}
+
 .start-pill {
   display: inline-flex;
   align-items: center;
@@ -402,6 +406,125 @@ body.start-body {
   }
 }
 
+@media (max-width: 640px) {
+  #start-teach .start-chapter-still {
+    display: none;
+  }
+
+  .start-teach-carousel {
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .start-teach-track {
+    display: flex;
+    height: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: auto;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .start-teach-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .start-teach-slide {
+    position: relative;
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+    min-height: 44px;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .start-teach-slide:focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: -6px;
+  }
+
+  .start-teach-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 32%;
+  }
+
+  .start-teach-slide-name {
+    position: absolute;
+    top: 0.85rem;
+    left: 1rem;
+    z-index: 2;
+    padding: 0.18rem 0.5rem;
+    border-radius: 999px;
+    background: rgba(12, 10, 8, 0.42);
+    color: #fffcf7;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    font-size: 0.72rem;
+    font-weight: 650;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .start-teach-cue,
+  .start-teach-dots {
+    position: absolute;
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  .start-teach-cue {
+    top: 0.85rem;
+    right: 1rem;
+    margin: 0;
+    color: rgba(255, 252, 247, 0.88);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    font-size: 0.78rem;
+    font-weight: 650;
+    letter-spacing: 0.04em;
+    text-shadow: 0 1px 10px rgba(12, 10, 8, 0.45);
+  }
+
+  .start-teach-dots {
+    top: 2.35rem;
+    right: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.35rem;
+  }
+
+  .start-teach-dots span {
+    width: 0.42rem;
+    height: 0.42rem;
+    border-radius: 999px;
+    background: rgba(255, 252, 247, 0.38);
+    box-shadow: 0 0 0 1px rgba(12, 10, 8, 0.18);
+  }
+
+  .start-teach-dots span.is-current {
+    background: rgba(255, 252, 247, 0.92);
+  }
+}
+
+@media (min-width: 641px) {
+  .start-teach-carousel {
+    display: none;
+  }
+
+  #start-teach .start-chapter-still {
+    display: block;
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .start-hero-copy,
   .start-chapter-copy {
@@ -425,5 +548,9 @@ body.start-body {
     transition: none;
     transform: none;
     animation: none;
+  }
+
+  .start-teach-track {
+    scroll-behavior: auto;
   }
 }
