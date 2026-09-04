@@ -99,6 +99,7 @@ class VftFirstRunTests(unittest.TestCase):
         self.assertIn("function onHash()", self.js)
 
     def test_css_hides_tabs_map_picker_until_flamingo_engaged(self):
+        self.assertIn('html:not([data-vft-chrome="tour"]):not([data-vft-chrome="path"]) .vz-venues', self.css)
         self.assertIn('html:not([data-vft-chrome="tour"]):not([data-vft-chrome="path"]) .vz-tabs', self.css)
         self.assertIn('html:not([data-vft-chrome="tour"]):not([data-vft-chrome="path"]) .vz-map-wrap', self.css)
         self.assertIn('html:not([data-vft-chrome="tour"]):not([data-vft-chrome="path"]) .vz-stops-drawer', self.css)
@@ -119,9 +120,9 @@ class VftFirstRunTests(unittest.TestCase):
 
     def test_cache_bumps_point_at_new_assets(self):
         for html in self.pages.values():
-            self.assertIn("virtual-venue.css?v=50", html)
-            self.assertIn("virtual-venue.js?v=86", html)
-        self.assertIn("virtual-zoo.json?v=21", self.js)
+            self.assertIn("virtual-venue.css?v=51", html)
+            self.assertIn("virtual-venue.js?v=87", html)
+        self.assertIn("virtual-zoo.json?v=22", self.js)
 
 
 if __name__ == "__main__":

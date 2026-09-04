@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="/shell/shell.css?v=6" />
     <link rel="stylesheet" href="/field-pack/css/styles.css?v=37" />
     <link rel="stylesheet" href="/field-pack/css/landing.css?v=93" />
-    <link rel="stylesheet" href="/field-pack/css/virtual-venue.css?v=50" />
+    <link rel="stylesheet" href="/field-pack/css/virtual-venue.css?v=51" />
     <script>
       (function () {
         try {
@@ -83,12 +83,23 @@
 
       <main class="vz-page">
         <p class="vz-crumbs"><a href="/start/">Field Trip Kit</a> · <span id="vz-crumb-here">Virtual Zoo</span></p>
-        <h1 id="vz-title">Virtual Zoo — a field trip at home</h1>
-        <p class="vz-lead" id="vz-lead">
-          A field trip at home — tap the map, then print a hunt for the living room.
-          Free. No account.
-        </p>
-        <p class="vz-use" id="vz-use">For rainy days, a classroom Friday, or any day you want a zoo at home.</p>
+        <h1 id="vz-title">A zoo day at home</h1>
+        <p class="vz-lead" id="vz-lead">Live cams · short films · free</p>
+
+        <!-- VFT:TABS:START -->
+        <nav class="vz-venues no-print" id="vz-venues" aria-label="Choose a venue">
+          <div class="vz-tabs" id="vz-tabs">
+            <a class="vz-tab" href="/field-pack/virtual-field-trip/?tab=zoo#zoo" data-tab="zoo">Zoo</a>
+            <a class="vz-tab" href="/field-pack/virtual-field-trip/?tab=aquarium#aquarium" data-tab="aquarium">Aquarium</a>
+            <a class="vz-tab" href="/field-pack/virtual-field-trip/?tab=natural-history#natural-history" data-tab="museum" data-venue="museum">Museum</a>
+            <a class="vz-tab" href="/field-pack/virtual-field-trip/?tab=parks#parks" data-tab="parks">Parks</a>
+          </div>
+          <div class="vz-chips" id="vz-museum-chips" hidden role="group" aria-label="Museum floor">
+            <a class="vz-chip" href="/field-pack/virtual-field-trip/?tab=natural-history#natural-history" data-tab="natural-history">Natural history</a>
+            <a class="vz-chip" href="/field-pack/virtual-field-trip/?tab=science#science" data-tab="science">Science</a>
+          </div>
+        </nav>
+        <!-- VFT:TABS:END -->
 
         <section class="vz-first-run no-print" id="vz-first-run" data-habitat="caribbean-flamingo">
           <p class="vz-first-run-kicker">Stop 1 · Flamingo Lagoon</p>
@@ -108,18 +119,7 @@
           </p>
         </section>
 
-        <!-- VFT:TABS:START -->
-        <nav class="vz-tabs no-print" id="vz-tabs" aria-label="Virtual field trip">
-          <a class="vz-tab" href="/field-pack/virtual-field-trip/?tab=zoo#zoo" data-tab="zoo">Zoo</a>
-          <a class="vz-tab" href="/field-pack/virtual-field-trip/?tab=aquarium#aquarium" data-tab="aquarium">Aquarium</a>
-          <a class="vz-tab" href="/field-pack/virtual-field-trip/?tab=natural-history#natural-history" data-tab="natural-history">Natural history</a>
-          <a class="vz-tab" href="/field-pack/virtual-field-trip/?tab=science#science" data-tab="science">Science museum</a>
-          <a class="vz-tab" href="/field-pack/virtual-field-trip/?tab=parks#parks" data-tab="parks">National parks</a>
-        </nav>
-        <!-- VFT:TABS:END -->
-
-        <p class="vz-map-hint no-print" id="vz-map-hint">Tap any stop. A suggested Next is marked if you want a path.</p>
-        <div class="vz-map-wrap" id="vz-map" aria-label="Virtual zoo map"></div>
+        <div class="vz-map-wrap" id="vz-map" aria-label="Zoo map"></div>
 
         <p class="vz-progress no-print" id="vz-progress" aria-live="polite"></p>
         <ul class="vz-stamps" id="vz-stamps" hidden></ul>
@@ -537,6 +537,6 @@
     <script src="/field-pack/js/fp-analytics.js?v=1"></script>
     <script src="/field-pack/js/catalog.js?v=34"></script>
     <script src="/field-pack/js/print-kit.js?v=30"></script>
-    <script src="/field-pack/js/virtual-venue.js?v=86"></script>
+    <script src="/field-pack/js/virtual-venue.js?v=87"></script>
   </body>
 </html>

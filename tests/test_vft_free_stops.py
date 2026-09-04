@@ -78,13 +78,17 @@ class VftFreeStopsTests(unittest.TestCase):
         self.assertNotIn('aria-disabled", locked', body)
         self.assertIn("data-next", body)
 
-    def test_hint_invites_any_stop_not_only_next(self):
-        self.assertIn(HINT, self.js)
+    def test_map_hint_sentence_removed(self):
+        self.assertNotIn(HINT, self.js)
+        self.assertNotIn("Tap any park. A suggested Next", self.js)
+        self.assertNotIn("Tap any hall. A suggested Next", self.js)
+        self.assertNotIn('id="vz-map-hint"', self.js)
         self.assertNotIn("Start at the gate. The next stop is marked Next.", self.js)
         self.assertNotIn("Follow the road from Start to Finish.", self.js)
         for path, html in self.pages.items():
             with self.subTest(page=str(path.relative_to(REPO))):
-                self.assertIn(HINT, html)
+                self.assertNotIn(HINT, html)
+                self.assertNotIn('id="vz-map-hint"', html)
                 self.assertNotIn("Start at the gate.", html)
 
     def test_every_zoo_stop_is_openable_without_prior_stamps(self):
@@ -115,12 +119,13 @@ class VftFreeStopsTests(unittest.TestCase):
 
     def test_cache_bump(self):
         for html in self.pages.values():
-            self.assertIn("virtual-venue.js?v=86", html)
-            self.assertIn("virtual-venue.css?v=50", html)
-        self.assertIn("virtual-zoo.json?v=21", self.js)
-        self.assertIn("virtual-aquarium.json?v=22", self.js)
-        self.assertIn("virtual-science.json?v=15", self.js)
-        self.assertIn("virtual-parks.json?v=23", self.js)
+            self.assertIn("virtual-venue.js?v=87", html)
+            self.assertIn("virtual-venue.css?v=51", html)
+        self.assertIn("virtual-zoo.json?v=22", self.js)
+        self.assertIn("virtual-aquarium.json?v=23", self.js)
+        self.assertIn("virtual-nhm.json?v=14", self.js)
+        self.assertIn("virtual-science.json?v=16", self.js)
+        self.assertIn("virtual-parks.json?v=24", self.js)
 
 
 if __name__ == "__main__":

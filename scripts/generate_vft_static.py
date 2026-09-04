@@ -36,21 +36,21 @@ TABS = [
         "json": "virtual-nhm.json",
         "h2": "Virtual Natural History Museum",
         "href": "/field-pack/virtual-field-trip/?tab=natural-history#natural-history",
-        "label": "Natural history",
+        "label": "Museum",
     },
     {
         "id": "science",
         "json": "virtual-science.json",
         "h2": "Virtual Science Museum Field Trip",
         "href": "/field-pack/virtual-field-trip/?tab=science#science",
-        "label": "Science museum",
+        "label": "Science",
     },
     {
         "id": "parks",
         "json": "virtual-parks.json",
         "h2": "Virtual National Parks Field Trip",
         "href": "/field-pack/virtual-field-trip/?tab=parks#parks",
-        "label": "National parks",
+        "label": "Parks",
     },
 ]
 
@@ -170,15 +170,19 @@ def render_panels(cat: dict) -> str:
 
 
 def render_tabs() -> str:
-    links = []
-    for spec in TABS:
-        links.append(
-            f'<a class="vz-tab" href="{esc(spec["href"])}" data-tab="{esc(spec["id"])}">{esc(spec["label"])}</a>'
-        )
     return (
-        '        <nav class="vz-tabs no-print" id="vz-tabs" aria-label="Virtual field trip">\n          '
-        + "\n          ".join(links)
-        + "\n        </nav>"
+        '        <nav class="vz-venues no-print" id="vz-venues" aria-label="Choose a venue">\n'
+        '          <div class="vz-tabs" id="vz-tabs">\n'
+        '            <a class="vz-tab" href="/field-pack/virtual-field-trip/?tab=zoo#zoo" data-tab="zoo">Zoo</a>\n'
+        '            <a class="vz-tab" href="/field-pack/virtual-field-trip/?tab=aquarium#aquarium" data-tab="aquarium">Aquarium</a>\n'
+        '            <a class="vz-tab" href="/field-pack/virtual-field-trip/?tab=natural-history#natural-history" data-tab="museum" data-venue="museum">Museum</a>\n'
+        '            <a class="vz-tab" href="/field-pack/virtual-field-trip/?tab=parks#parks" data-tab="parks">Parks</a>\n'
+        "          </div>\n"
+        '          <div class="vz-chips" id="vz-museum-chips" hidden role="group" aria-label="Museum floor">\n'
+        '            <a class="vz-chip" href="/field-pack/virtual-field-trip/?tab=natural-history#natural-history" data-tab="natural-history">Natural history</a>\n'
+        '            <a class="vz-chip" href="/field-pack/virtual-field-trip/?tab=science#science" data-tab="science">Science</a>\n'
+        "          </div>\n"
+        "        </nav>"
     )
 
 
