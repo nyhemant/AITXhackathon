@@ -74,6 +74,8 @@ RESERVED = {
 HEADER_TAGLINE = "Zoo, aquarium, museum &amp; park days"
 OG_SHARE_IMAGE = f"{SITE}/field-pack/photos/sample-mission-dallas-zoo.jpg"
 PARK_OG_IMAGE = f"{SITE}/field-pack/photos/np-hero-yellowstone.jpg"
+# Brand / product home. Map explorer stays at /field-pack/ — do not point logo/title there.
+HOME_HREF = "/start/"
 
 # Dual-mode framing — at home stands alone; print is an optional visit companion.
 # Swap these strings only; templates read the constants.
@@ -1916,7 +1918,7 @@ def mission_drawer_html(mission_venue: dict, mission: dict) -> str:
     >
       <header class="mission-drawer-head">
         <div>
-          <p class="mission-drawer-kicker"><a class="mission-home" href="/field-pack/">Field Trip Kit</a> · <span class="mission-place-now">{esc(mission_venue.get("short_name") or mission_venue.get("name") or "This place")}</span> · <a class="mission-change-place" href="/field-pack/?find=1">Different place?</a></p>
+          <p class="mission-drawer-kicker"><a class="mission-home" href="{HOME_HREF}">Field Trip Kit</a> · <span class="mission-place-now">{esc(mission_venue.get("short_name") or mission_venue.get("name") or "This place")}</span> · <a class="mission-change-place" href="/field-pack/?find=1">Different place?</a></p>
           <h2 id="mission-heading">Create and print your mission</h2>
         </div>
         <button type="button" class="mission-drawer-close" id="mission-close" aria-label="Close">×</button>
@@ -2204,10 +2206,10 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
 <body class="landing-body seo-venue-body mission-venue-body" data-content-mode="{esc(mode)}">
   <div class="app landing-app seo-venue">
     <header class="oneless-shell no-print" data-product="bdo">
-      <a class="shell-brand" href="/field-pack/" aria-label="Field Trip Kit home">
+      <a class="shell-brand" href="{HOME_HREF}" aria-label="Field Trip Kit home">
         <img src="/1LessMark.png" alt="" width="52" height="52" />
       </a>
-      <a class="shell-product" href="/field-pack/">
+      <a class="shell-product" href="{HOME_HREF}">
         Field Trip Kit
         <small>{HEADER_TAGLINE}</small>
       </a>
@@ -2361,10 +2363,10 @@ def render_venue_page(v: dict) -> str:
 <body class="landing-body seo-venue-body">
   <div class="app landing-app seo-venue">
     <header class="oneless-shell no-print" data-product="bdo">
-      <a class="shell-brand" href="/field-pack/" aria-label="Field Trip Kit home">
+      <a class="shell-brand" href="{HOME_HREF}" aria-label="Field Trip Kit home">
         <img src="/1LessMark.png" alt="" width="52" height="52" />
       </a>
-      <a class="shell-product" href="/field-pack/">
+      <a class="shell-product" href="{HOME_HREF}">
         Field Trip Kit
         <small>{HEADER_TAGLINE}</small>
       </a>
@@ -2671,10 +2673,10 @@ def write_type_landing(meta: dict, venues: list[dict]) -> str:
 <body class="seo-venue-body type-hub-body" data-place-type="{esc(meta["map_type"])}">
   <div class="app-shell">
     <header class="shell-bar no-print">
-      <a class="shell-brand" href="/field-pack/" aria-label="Field Trip Kit home">
+      <a class="shell-brand" href="{HOME_HREF}" aria-label="Field Trip Kit home">
         <img src="/1LessMark.png" alt="" width="52" height="52" />
       </a>
-      <a class="shell-product" href="/field-pack/">
+      <a class="shell-product" href="{HOME_HREF}">
         Field Trip Kit
         <small>{HEADER_TAGLINE}</small>
       </a>
@@ -2688,7 +2690,7 @@ def write_type_landing(meta: dict, venues: list[dict]) -> str:
     </nav>
 
     <main class="type-landing">
-      <p class="seo-crumbs"><a href="/field-pack/">Field Trip Kit</a> · {esc(meta["nav"])}</p>
+      <p class="seo-crumbs"><a href="{HOME_HREF}">Field Trip Kit</a> · {esc(meta["nav"])}</p>
       <h1>{esc(meta["h1"])}</h1>
       <p class="type-lead">{esc(meta["blurb"])}</p>
       <p class="type-count">{len(filtered)} places</p>
@@ -4362,10 +4364,10 @@ def write_cards_hub(venues: list[dict]) -> str:
 <body class="landing-body landing-hub cards-explorer">
   <div class="app landing-app landing-clean">
     <header class="oneless-shell no-print" data-product="bdo">
-      <a class="shell-brand" href="/field-pack/" aria-label="Field Trip Kit home">
+      <a class="shell-brand" href="{HOME_HREF}" aria-label="Field Trip Kit home">
         <img src="/1LessMark.png" alt="" width="52" height="52" />
       </a>
-      <a class="shell-product" href="/field-pack/">
+      <a class="shell-product" href="{HOME_HREF}">
         Field Trip Kit
         <small>{HEADER_TAGLINE}</small>
       </a>
@@ -4548,13 +4550,13 @@ def write_card_pages(
 <body class="landing-body">
   <div class="app">
     <header class="oneless-shell no-print" data-product="bdo">
-      <a class="shell-brand" href="/field-pack/" aria-label="Field Trip Kit home">
+      <a class="shell-brand" href="{HOME_HREF}" aria-label="Field Trip Kit home">
         <img src="/1LessMark.png" alt="" width="52" height="52" />
       </a>
-      <a class="shell-product" href="/field-pack/">Field Trip Kit <small>{HEADER_TAGLINE}</small></a>
+      <a class="shell-product" href="{HOME_HREF}">Field Trip Kit <small>{HEADER_TAGLINE}</small></a>
     </header>
     <main class="card-page">
-      <p class="card-page-crumbs"><a href="/field-pack/">Field Trip Kit</a> · <a href="/field-pack/cards/">Cards</a></p>
+      <p class="card-page-crumbs"><a href="{HOME_HREF}">Field Trip Kit</a> · <a href="/field-pack/cards/">Cards</a></p>
       <h1>{esc(emoji)} {esc(name)}</h1>
       {venue_chrome}
       {img_html}
