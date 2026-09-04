@@ -260,10 +260,18 @@
     nextBtn?.addEventListener("click", () => continueFirstRun());
     filmA?.addEventListener("click", (e) => {
       e.preventDefault();
-      engageFirstRun();
-      setVftChrome("tour");
-      openHabitat(FIRST_RUN_STOP, filmA, { fromHash: true });
+      playFirstRunFilm(filmA);
     });
+    filmA?.addEventListener("auxclick", (e) => {
+      e.preventDefault();
+      playFirstRunFilm(filmA);
+    });
+  }
+
+  function playFirstRunFilm(fromEl) {
+    engageFirstRun();
+    setVftChrome("tour");
+    openHabitat(FIRST_RUN_STOP, fromEl, { fromHash: true });
   }
 
   function track(name, params) {
@@ -1301,7 +1309,7 @@
   }
 
   function habitatById(id) {
-    return (config.habitats || []).find((h) => h.id === id || h.cardId === id) || null;
+    return ((config && config.habitats) || []).find((h) => h.id === id || h.cardId === id) || null;
   }
 
   function itemFor(h) {
@@ -1511,6 +1519,69 @@
     return `https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?rel=0&modestbranding=1&playsinline=1${extra}${start}&origin=${origin}`;
   }
 
+  function isYoutubeWatchUrl(url) {
+    return Boolean(youtubeId(url));
+  }
+
+  function inPageFilmHref(habitatId) {
+    return habitatId ? tabUrl(currentTab(), habitatId) : "#";
+  }
+
+  function sealFilmControl(el, habitatId) {
+    if (!el) return;
+    if (el.tagName === "A") {
+      const href = el.getAttribute("href") || "";
+      if (!href || href === "#" || isYoutubeWatchUrl(href)) {
+        el.setAttribute("href", habitatId ? inPageFilmHref(habitatId) : "#");
+      }
+      el.removeAttribute("target");
+      if (!el.getAttribute("role")) el.setAttribute("role", "button");
+    }
+    if (habitatId && !el.getAttribute("data-habitat")) {
+      el.setAttribute("data-habitat", habitatId);
+    }
+  }
+
+  function habitatFromFilmControl(el) {
+    if (!el || !config) return null;
+    const hid = el.getAttribute("data-habitat");
+    if (hid) return habitatById(hid);
+    const href = el.getAttribute("href") || "";
+    const m = href.match(/[#?&]habitat=([^&]+)/);
+    if (m) return habitatById(decodeURIComponent(m[1]));
+    return (config.habitats || []).find((x) => x.video && x.video.url === href) || null;
+  }
+
+  function sealStaticFilms() {
+    document.querySelectorAll("a.vz-static-film").forEach((a) => {
+      const hab = habitatFromFilmControl(a);
+      const href = a.getAttribute("href") || "";
+      if (hab) {
+        a.setAttribute("data-habitat", hab.id);
+        if (isYoutubeWatchUrl(href) || !href || href === "#") {
+          a.setAttribute("href", inPageFilmHref(hab.id));
+        }
+        a.removeAttribute("target");
+        if (!a.getAttribute("role")) a.setAttribute("role", "button");
+        return;
+      }
+      if (isYoutubeWatchUrl(href)) {
+        a.setAttribute("href", "#");
+        a.removeAttribute("target");
+        a.setAttribute("role", "button");
+      }
+    });
+    sealFilmControl(document.getElementById("vz-first-run-film"), FIRST_RUN_STOP);
+    if (filmLink) sealFilmControl(filmLink, currentCardId);
+  }
+
+  function filmControlFromEvent(e) {
+    const t = e.target && e.target.closest ? e.target.closest("a, button") : null;
+    if (!t) return null;
+    if (t.id === "vz-film" || t.id === "vz-first-run-film" || t.classList.contains("vz-static-film")) return t;
+    return null;
+  }
+
   function ytCommand(frame, func) {
     if (!frame || !frame.contentWindow) return;
     try {
@@ -1612,6 +1683,7 @@
         camPopBack?.focus();
         return;
       }
+      return;
     }
     if (local && camFrame) {
       if (camWin && !camWin.closed) {
@@ -1743,7 +1815,9 @@
     if (filmLink) {
       filmLink.hidden = cinema || !hasFilm;
       if (hasFilm) {
-        filmLink.href = video.url;
+        filmLink.href = inPageFilmHref(h.id);
+        filmLink.setAttribute("role", "button");
+        filmLink.removeAttribute("target");
         filmLink.innerHTML = `Pre-recorded<small>${escapeHtml(video.title || "A short video")}</small>`;
         filmLink.onclick = (e) => {
           e.preventDefault();
@@ -1904,6 +1978,7 @@
         onHash();
         wireFirstRun();
         syncFirstRun();
+        sealStaticFilms();
       })
       .catch((err) => {
         if (gen !== loadGen) return;
@@ -1913,6 +1988,47 @@
   }
 
   camPopBack?.addEventListener("click", closeCamPopup);
+  ["click", "auxclick"].forEach((type) => {
+    document.addEventListener(
+      type,
+      (e) => {
+        const filmEl = filmControlFromEvent(e);
+        if (!filmEl) return;
+        e.preventDefault();
+      },
+      true
+    );
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== " " && e.key !== "Spacebar") return;
+    const t = filmControlFromEvent(e);
+    if (!t) return;
+    e.preventDefault();
+    t.click();
+  });
+  document.addEventListener("auxclick", (e) => {
+    const t = filmControlFromEvent(e);
+    if (!t) return;
+    e.preventDefault();
+    if (t.id === "vz-first-run-film") {
+      playFirstRunFilm(t);
+      return;
+    }
+    if (t.id === "vz-film") {
+      const h = currentCardId ? habitatById(currentCardId) : null;
+      const video = (h && h.video) || {};
+      if (video.url) playFilmInline(video.url, video.title || (h && h.label) || "Pre-recorded", video.start);
+      return;
+    }
+    if (t.classList.contains("vz-static-film")) {
+      const hab = habitatFromFilmControl(t);
+      if (hab) {
+        openHabitat(hab.id, t, { fromHash: true });
+        const video = hab.video || {};
+        if (video.url) playFilmInline(video.url, video.title || hab.label || "Pre-recorded", video.start);
+      }
+    }
+  });
   document.addEventListener("click", (e) => {
     const t = e.target && e.target.closest ? e.target.closest("a") : null;
     if (!t || !t.getAttribute("href")) return;
@@ -1924,12 +2040,12 @@
     }
     if (t.classList.contains("vz-static-film")) {
       e.preventDefault();
-      const href = t.getAttribute("href");
-      const label = t.textContent.replace(/^Pre-recorded — /, "").trim() || "Pre-recorded";
-      const habs = (config && config.habitats) || [];
-      const hab = habs.find((x) => x.video && x.video.url === href);
-      if (hab) openHabitat(hab.id, t);
-      openCamPopup(href, label, "film");
+      const hab = habitatFromFilmControl(t);
+      if (hab) {
+        openHabitat(hab.id, t, { fromHash: true });
+        const video = hab.video || {};
+        if (video.url) playFilmInline(video.url, video.title || hab.label || "Pre-recorded", video.start);
+      }
       track("film_clicked", { animal_id: (hab && (hab.cardId || hab.id)) || "static", venue_kind: (config && config.kind) || "zoo", tab: currentTab() });
       return;
     }
@@ -1988,6 +2104,7 @@
   });
 
   wireFirstRun();
+  sealFilmControl(document.getElementById("vz-first-run-film"), FIRST_RUN_STOP);
   if (shouldSkipFirstRun()) setVftChrome("tour");
   loadVenue();
 })();

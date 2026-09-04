@@ -68,6 +68,10 @@ class VftFirstRunTests(unittest.TestCase):
                 self.assertNotIn("youtube.com", start.lower())
                 wrap = html.split('id="vz-first-run-film-wrap"', 1)[1].split(">", 1)[0]
                 self.assertIn("hidden", wrap)
+                film = html.split('id="vz-first-run-film"', 1)[1].split(">", 1)[0]
+                self.assertNotIn("youtube.com", film.lower())
+                self.assertIn("habitat=caribbean-flamingo", film)
+                self.assertIn('role="button"', film)
 
     def test_early_script_skips_intro_for_progress_and_deep_links(self):
         for path, html in self.pages.items():
@@ -116,7 +120,7 @@ class VftFirstRunTests(unittest.TestCase):
     def test_cache_bumps_point_at_new_assets(self):
         for html in self.pages.values():
             self.assertIn("virtual-venue.css?v=48", html)
-            self.assertIn("virtual-venue.js?v=82", html)
+            self.assertIn("virtual-venue.js?v=83", html)
         self.assertIn("virtual-zoo.json?v=20", self.js)
 
 
