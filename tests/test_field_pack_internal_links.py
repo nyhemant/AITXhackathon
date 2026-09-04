@@ -31,8 +31,9 @@ How a target is judged
   must match an id= on that page.
 - Virtual Field Trip #habitat=<animal> : the VFT page itself must load.
   Open Virtual Field Trip uses #habitat=… ; virtual-venue.js opens that
-  animal from the hash (deep links skip the sequential “next stop” lock).
-  An unknown habitat still loads the VFT page; the dialog stays closed.
+  animal from the hash. Map taps and drawer links also open any stop
+  (Next is a suggestion, not a lock). An unknown habitat still loads
+  the VFT page; the dialog stays closed.
 
 Run
 ---

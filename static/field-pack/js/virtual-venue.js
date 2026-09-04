@@ -16,11 +16,11 @@
     { id: "parks", label: "National parks" },
   ];
   const TAB_CONFIGS = {
-    zoo: "/field-pack/data/virtual-venues/virtual-zoo.json?v=20",
-    aquarium: "/field-pack/data/virtual-venues/virtual-aquarium.json?v=21",
+    zoo: "/field-pack/data/virtual-venues/virtual-zoo.json?v=21",
+    aquarium: "/field-pack/data/virtual-venues/virtual-aquarium.json?v=22",
     "natural-history": "/field-pack/data/virtual-venues/virtual-nhm.json?v=13",
-    science: "/field-pack/data/virtual-venues/virtual-science.json?v=14",
-    parks: "/field-pack/data/virtual-venues/virtual-parks.json?v=22",
+    science: "/field-pack/data/virtual-venues/virtual-science.json?v=15",
+    parks: "/field-pack/data/virtual-venues/virtual-parks.json?v=23",
   };
 
   const mapMount = document.getElementById("vz-map");
@@ -1258,10 +1258,8 @@
   }
 
   function canOpen(id) {
-    if (!isSequential()) return true;
-    if (stamps.includes(id)) return true;
-    const n = nextHabitat();
-    return Boolean(n && n.id === id);
+    // Free map: any habitat/stop opens. Sequential "Next" is a hint only.
+    return Boolean(id);
   }
 
   function placePinLabel(el, name) {
@@ -1384,13 +1382,11 @@
       mapMount.setAttribute("data-kind", config.kind || tab);
       const hint = document.getElementById("vz-map-hint");
       const isPark = config.kind === "park";
-      const line = !isSequential()
-        ? isPark
-          ? "Tap any park. They sit where they really are — no road."
-          : "Tap any hall. Each photo has a name."
-        : isPark
-          ? "Follow the road from Start to Finish. The next stop is marked Next."
-          : "Start at the gate. The next stop is marked Next.";
+      const line = isPark
+        ? "Tap any park. A suggested Next is marked if you want a path."
+        : config.kind === "science" || config.kind === "natural_history"
+          ? "Tap any hall. A suggested Next is marked if you want a path."
+          : "Tap any stop. A suggested Next is marked if you want a path.";
       mapMount.setAttribute("aria-label", (config.h1 || "Virtual field trip") + ". " + line);
       if (hint) hint.textContent = line;
     }
@@ -1440,13 +1436,12 @@
       const id = el.getAttribute("data-habitat");
       if (!id) return;
       const done = stamps.includes(id);
-      const isNext = isSequential() && Boolean(nxt && nxt.id === id);
+      const isNext = Boolean(nxt && nxt.id === id);
       el.setAttribute("data-stamped", done ? "1" : "0");
       el.setAttribute("data-next", isNext ? "1" : "0");
-      const locked = isSequential() && !done && !isNext;
-      el.setAttribute("data-lock", locked ? "1" : "0");
-      el.setAttribute("tabindex", locked ? "-1" : "0");
-      el.setAttribute("aria-disabled", locked ? "true" : "false");
+      el.setAttribute("data-lock", "0");
+      el.setAttribute("tabindex", "0");
+      el.removeAttribute("aria-disabled");
       const hab = habitatById(id);
       const label = (hab && hab.label) || id;
       const num = stopNum(id);
@@ -1461,9 +1456,7 @@
           ? `Next: stop ${num}, ${label}`
           : done
             ? `Open again: ${label}`
-            : isSequential()
-              ? `Stop ${num}, ${label}`
-              : label
+            : `Stop ${num}, ${label}`
       );
       if (isNext) el.setAttribute("aria-current", "step");
       else el.removeAttribute("aria-current");
@@ -1510,11 +1503,19 @@
     return "";
   }
 
+  const FILM_START_DEFAULT = 20;
+
+  function filmStartSec(start) {
+    const n = Math.floor(Number(start));
+    if (Number.isFinite(n) && n > FILM_START_DEFAULT) return n;
+    return FILM_START_DEFAULT;
+  }
+
   function youtubeEmbed(url, opts) {
     const id = youtubeId(url);
     if (!id) return "";
     const extra = opts && opts.autoplay ? "&autoplay=1&mute=1&enablejsapi=1" : "";
-    const start = opts && opts.start ? `&start=${encodeURIComponent(String(opts.start))}` : "";
+    const start = `&start=${encodeURIComponent(String(filmStartSec(opts && opts.start)))}`;
     const origin = encodeURIComponent(location.origin);
     return `https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?rel=0&modestbranding=1&playsinline=1${extra}${start}&origin=${origin}`;
   }
@@ -1605,6 +1606,7 @@
     photoEl.innerHTML = currentPhotoSrc
       ? `<img src="${escapeHtml(currentPhotoSrc)}" alt="" width="640" height="400" decoding="async" />`
       : "";
+    hideSoundTip(true);
   }
 
   function stopWatchPlayer() {
@@ -1613,8 +1615,58 @@
     fillPhoto();
   }
 
+  const SOUND_TIP_KEY = "fp-vft-sound-tip-v1";
+  const SOUND_TIP_MS = 7000;
+  let soundTipTimer = 0;
+
+  function soundTipEl() {
+    return document.getElementById("vz-sound-tip");
+  }
+
+  function hideSoundTip(immediate) {
+    const el = soundTipEl();
+    if (soundTipTimer) {
+      clearTimeout(soundTipTimer);
+      soundTipTimer = 0;
+    }
+    if (!el) return;
+    el.classList.remove("is-on");
+    if (immediate) {
+      el.hidden = true;
+      return;
+    }
+    soundTipTimer = setTimeout(() => {
+      el.hidden = true;
+      soundTipTimer = 0;
+    }, 380);
+  }
+
+  function soundTipSeen() {
+    try {
+      return sessionStorage.getItem(SOUND_TIP_KEY) === "1";
+    } catch (_) {
+      return false;
+    }
+  }
+
+  function markSoundTipSeen() {
+    try {
+      sessionStorage.setItem(SOUND_TIP_KEY, "1");
+    } catch (_) {}
+  }
+
+  function showSoundTip() {
+    const el = soundTipEl();
+    if (!el || soundTipSeen()) return;
+    markSoundTipSeen();
+    el.hidden = false;
+    requestAnimationFrame(() => el.classList.add("is-on"));
+    if (soundTipTimer) clearTimeout(soundTipTimer);
+    soundTipTimer = setTimeout(() => hideSoundTip(false), SOUND_TIP_MS);
+  }
+
   function playFilmInline(url, label, start) {
-    const embed = youtubeEmbed(url, { autoplay: true, start: start });
+    const embed = youtubeEmbed(url, { autoplay: true, start: filmStartSec(start) });
     if (!embed || !photoEl) return false;
     photoEl.classList.add("is-playing");
     photoEl.innerHTML = `<iframe class="vz-watch-frame" title="${escapeHtml(label || "Pre-recorded")}" src="${embed}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
@@ -1626,6 +1678,7 @@
       frame.addEventListener("load", kick, { once: true });
       kick();
     }
+    showSoundTip();
     return true;
   }
 
@@ -1710,6 +1763,7 @@
     sheet?.classList.remove("is-cinema");
     dialog?.classList.remove("is-cinema");
     if (blurbEl) blurbEl.hidden = false;
+    hideSoundTip(true);
     if (!dialog || dialog.hidden) return;
     dialog.hidden = true;
     dialog.setAttribute("aria-hidden", "true");
@@ -1749,16 +1803,9 @@
     if (!h || !dialog) return;
     if (id !== FIRST_RUN_STOP && vftChrome() !== "tour") setVftChrome("tour");
     const fromHash = Boolean(opts && opts.fromHash);
-    // Deep links (?tab=zoo#habitat=giraffe) skip the sequential "next stop"
-    // lock so Open Virtual Field Trip lands on that animal. Map taps still walk.
-    if (!fromHash && !canOpen(id)) {
-      const n = nextHabitat();
-      if (n && n.id !== id) {
-        const el = mapMount && mapMount.querySelector(`[data-habitat="${n.id}"]`);
-        if (el && el.scrollIntoView) el.scrollIntoView({ block: "nearest", behavior: "smooth" });
-      }
-      return;
-    }
+    // Map taps, drawer links, and deep links (?tab=zoo#habitat=giraffe)
+    // all open the same stop dialog. Next is a suggestion, not a gate.
+    if (!canOpen(id)) return;
     stopWatchPlayer();
     lastFocus = fromEl || document.activeElement;
     const item = itemFor(h);
@@ -2064,6 +2111,7 @@
       openCamPopup(href, stopA.textContent.trim() || "Park kit");
     }
   });
+  document.getElementById("vz-sound-tip-dismiss")?.addEventListener("click", () => hideSoundTip(true));
   closeBtn?.addEventListener("click", closeDialog);
   backdrop?.addEventListener("click", closeDialog);
   dialog?.addEventListener("keydown", (e) => {

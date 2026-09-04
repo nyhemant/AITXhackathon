@@ -57,7 +57,8 @@
 .vz-watch[hidden],
 .vz-cam[hidden],
 .vz-film[hidden],
-.vz-film-hint[hidden] { display: none !important; }
+.vz-film-hint[hidden],
+.vz-sound-tip[hidden] { display: none !important; }
 .vz-map-wrap.is-wide {
   background: #d7e4ee;
 }
@@ -288,7 +289,7 @@ html[data-vft-chrome="tour"] .vz-first-run {
   outline: none;
 }
 .vz-spot[data-lock="1"] {
-  cursor: default;
+  cursor: pointer;
 }
 .vz-spot .vz-silo {
   transition: stroke 0.15s ease, stroke-width 0.15s ease;
@@ -411,7 +412,7 @@ html[data-vft-chrome="tour"] .vz-first-run {
   fill: #7a868e;
 }
 .vz-spot[data-lock="1"] .vz-bullet-disc {
-  fill: #9aa3a8;
+  fill: #7a868e;
 }
 .vz-spot[data-next="1"] .vz-bullet-disc {
   fill: #c4a35a;
@@ -936,6 +937,39 @@ html[data-vft-chrome="tour"] .vz-first-run {
   font-weight: 650;
   color: #3d4f6f;
   line-height: 1.35;
+}
+.vz-sound-tip {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.55rem;
+  margin: 0 0 0.7rem;
+  padding: 0.5rem 0.65rem;
+  border-radius: 10px;
+  background: #fff7ee;
+  border: 1.5px solid rgba(196, 92, 38, 0.28);
+  color: #5a3a22;
+  font-size: 0.88rem;
+  font-weight: 650;
+  line-height: 1.35;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.vz-sound-tip.is-on { opacity: 1; }
+.vz-sound-tip-dismiss {
+  flex: 0 0 auto;
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: #c45c26;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  min-height: 44px;
+  padding: 0 0.2rem;
+}
+@media (prefers-reduced-motion: reduce) {
+  .vz-sound-tip { transition: none; }
 }
 
 .vz-cam-pop {

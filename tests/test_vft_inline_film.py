@@ -118,9 +118,48 @@ class VftInlineFilmTests(unittest.TestCase):
             first_cam = visible.split('id="vz-first-run-cam"', 1)[1].split(">", 1)[0]
             self.assertIn("houstonzoo.org", first_cam)
 
+    def test_sound_tip_shows_when_in_page_film_starts(self):
+        film = self.js.split("function playFilmInline(", 1)[1].split("function closeCamPopup", 1)[0]
+        self.assertIn("showSoundTip()", film)
+        self.assertIn('const SOUND_TIP_KEY = "fp-vft-sound-tip-v1"', self.js)
+        self.assertIn("sessionStorage.getItem(SOUND_TIP_KEY)", self.js)
+        self.assertIn("sessionStorage.setItem(SOUND_TIP_KEY, \"1\")", self.js)
+        show = self.js.split("function showSoundTip()", 1)[1].split("function playFilmInline", 1)[0]
+        self.assertIn("soundTipSeen()", show)
+        self.assertNotIn("openCamPopup", show)
+        first_run = self.js.split("function playFirstRunFilm(", 1)[1].split("function track(", 1)[0]
+        self.assertNotIn("showSoundTip", first_run)
+        for path, html in self.pages.items():
+            with self.subTest(page=str(path.relative_to(REPO))):
+                first = html.split('id="vz-first-run"', 1)[1].split('id="vz-dialog"', 1)[0]
+                self.assertNotIn("vz-sound-tip", first)
+                self.assertIn('id="vz-sound-tip"', html)
+                self.assertIn("Sound is often off — tap the volume control on the film to listen.", html)
+                self.assertIn('id="vz-sound-tip-dismiss"', html)
+        css = (FP / "css" / "virtual-venue.css").read_text(encoding="utf-8")
+        self.assertIn(".vz-sound-tip", css)
+        self.assertIn(".vz-sound-tip-dismiss", css)
+
+    def test_pre_recorded_defaults_to_twenty_second_inpoint(self):
+        self.assertIn("const FILM_START_DEFAULT = 20", self.js)
+        self.assertIn("function filmStartSec(", self.js)
+        body = self.js.split("function filmStartSec(", 1)[1].split("function youtubeEmbed", 1)[0]
+        self.assertIn("FILM_START_DEFAULT", body)
+        self.assertIn("n > FILM_START_DEFAULT", body)
+        embed = self.js.split("function youtubeEmbed(", 1)[1].split("function isYoutubeWatchUrl", 1)[0]
+        self.assertIn("filmStartSec(opts && opts.start)", embed)
+        self.assertIn("&start=", embed)
+        film = self.js.split("function playFilmInline(", 1)[1].split("function closeCamPopup", 1)[0]
+        self.assertIn("filmStartSec(start)", film)
+        cam = self.js.split("function openCamPopup(", 1)[1].split("function closeDialog", 1)[0]
+        self.assertNotIn("filmStartSec", cam.split("if (film)", 1)[0])
+        zoo = (FP / "data" / "virtual-venues" / "virtual-zoo.json").read_text(encoding="utf-8")
+        self.assertNotIn('"start":', zoo)
+
     def test_cache_bump(self):
         for html in self.pages.values():
-            self.assertIn("virtual-venue.js?v=83", html)
+            self.assertIn("virtual-venue.js?v=86", html)
+            self.assertIn("virtual-venue.css?v=50", html)
 
 
 if __name__ == "__main__":
