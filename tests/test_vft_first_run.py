@@ -120,7 +120,7 @@ class VftFirstRunTests(unittest.TestCase):
     def test_cache_bumps_point_at_new_assets(self):
         for html in self.pages.values():
             self.assertIn("virtual-venue.css?v=50", html)
-            self.assertIn("virtual-venue.js?v=85", html)
+            self.assertIn("virtual-venue.js?v=86", html)
         self.assertIn("virtual-zoo.json?v=21", self.js)
 
 

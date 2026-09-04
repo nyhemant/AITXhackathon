@@ -140,9 +140,25 @@ class VftInlineFilmTests(unittest.TestCase):
         self.assertIn(".vz-sound-tip", css)
         self.assertIn(".vz-sound-tip-dismiss", css)
 
+    def test_pre_recorded_defaults_to_twenty_second_inpoint(self):
+        self.assertIn("const FILM_START_DEFAULT = 20", self.js)
+        self.assertIn("function filmStartSec(", self.js)
+        body = self.js.split("function filmStartSec(", 1)[1].split("function youtubeEmbed", 1)[0]
+        self.assertIn("FILM_START_DEFAULT", body)
+        self.assertIn("n > FILM_START_DEFAULT", body)
+        embed = self.js.split("function youtubeEmbed(", 1)[1].split("function isYoutubeWatchUrl", 1)[0]
+        self.assertIn("filmStartSec(opts && opts.start)", embed)
+        self.assertIn("&start=", embed)
+        film = self.js.split("function playFilmInline(", 1)[1].split("function closeCamPopup", 1)[0]
+        self.assertIn("filmStartSec(start)", film)
+        cam = self.js.split("function openCamPopup(", 1)[1].split("function closeDialog", 1)[0]
+        self.assertNotIn("filmStartSec", cam.split("if (film)", 1)[0])
+        zoo = (FP / "data" / "virtual-venues" / "virtual-zoo.json").read_text(encoding="utf-8")
+        self.assertNotIn('"start":', zoo)
+
     def test_cache_bump(self):
         for html in self.pages.values():
-            self.assertIn("virtual-venue.js?v=85", html)
+            self.assertIn("virtual-venue.js?v=86", html)
             self.assertIn("virtual-venue.css?v=50", html)
 
 

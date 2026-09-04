@@ -1503,11 +1503,19 @@
     return "";
   }
 
+  const FILM_START_DEFAULT = 20;
+
+  function filmStartSec(start) {
+    const n = Math.floor(Number(start));
+    if (Number.isFinite(n) && n > FILM_START_DEFAULT) return n;
+    return FILM_START_DEFAULT;
+  }
+
   function youtubeEmbed(url, opts) {
     const id = youtubeId(url);
     if (!id) return "";
     const extra = opts && opts.autoplay ? "&autoplay=1&mute=1&enablejsapi=1" : "";
-    const start = opts && opts.start ? `&start=${encodeURIComponent(String(opts.start))}` : "";
+    const start = `&start=${encodeURIComponent(String(filmStartSec(opts && opts.start)))}`;
     const origin = encodeURIComponent(location.origin);
     return `https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?rel=0&modestbranding=1&playsinline=1${extra}${start}&origin=${origin}`;
   }
@@ -1658,7 +1666,7 @@
   }
 
   function playFilmInline(url, label, start) {
-    const embed = youtubeEmbed(url, { autoplay: true, start: start });
+    const embed = youtubeEmbed(url, { autoplay: true, start: filmStartSec(start) });
     if (!embed || !photoEl) return false;
     photoEl.classList.add("is-playing");
     photoEl.innerHTML = `<iframe class="vz-watch-frame" title="${escapeHtml(label || "Pre-recorded")}" src="${embed}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
