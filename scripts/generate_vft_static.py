@@ -124,7 +124,7 @@ def film_line(h: dict) -> str:
 
 def render_panels(cat: dict) -> str:
     chunks = [
-        '<noscript><style>.vz-tab-panel[hidden]{display:block!important}</style></noscript>',
+        '<noscript><style>.vz-tab-panel[hidden]{display:block!important}html:not([data-vft-chrome="tour"]) .vz-stops-drawer{display:block!important}</style></noscript>',
         '<div class="vz-static-panels">',
     ]
     for spec in TABS:

@@ -60,7 +60,7 @@ SECURITY_HEADERS = {
         "font-src 'self'; "
         "base-uri 'self'; "
         "object-src 'none'; "
-        "frame-src 'self' https://www.youtube-nocookie.com https://www.youtube.com; "
+        "frame-src 'self' https://www.youtube-nocookie.com https://www.youtube.com https://ams-28635.antmedia.cloud:5443; "
         "frame-ancestors 'none'; "
         "form-action 'self'"
     ),
