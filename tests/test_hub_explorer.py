@@ -1,10 +1,10 @@
-"""Field Trip Kit hub is a place explorer. Root still points at /field-pack/."""
+"""Field Trip Kit hub is a place explorer. Root 302s to /start/; explorer stays at /field-pack/."""
 
 from pathlib import Path
 import re
 import unittest
 
-from busyparent_agent.web import ABOUT_PREFIX, FIELD_PACK_PREFIX, START_PREFIX, WebHandler
+from busyparent_agent.web import ABOUT_PREFIX, START_PREFIX, WebHandler
 
 
 REPO = Path(__file__).resolve().parents[1]
@@ -77,11 +77,14 @@ class HubExplorerTests(unittest.TestCase):
         self.html = HOME.read_text(encoding="utf-8")
         self.start = START_HTML.read_text(encoding="utf-8")
 
-    def test_root_redirect_is_unchanged(self):
+    def test_root_redirects_to_start_explorer_stays(self):
         root = _get("/")
         self.assertEqual(root._code, 302)
-        self.assertEqual(root._headers.get("Location"), FIELD_PACK_PREFIX + "/")
-        self.assertNotEqual(root._headers.get("Location"), START_PREFIX + "/")
+        self.assertEqual(root._headers.get("Location"), START_PREFIX + "/")
+        explorer = _get("/field-pack/")
+        self.assertEqual(explorer._code, 200)
+        self.assertIsNone(explorer._headers.get("Location"))
+        self.assertIn(b"landing-hub", explorer.wfile.getvalue())
 
     def test_start_has_one_explore_places_cta(self):
         going = re.search(

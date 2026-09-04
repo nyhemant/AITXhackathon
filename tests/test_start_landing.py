@@ -98,6 +98,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertEqual(start._code, 200)
         body = start.wfile.getvalue().decode("utf-8")
         self.assertIn("A ready-to-use field trip for curious kids.", body)
+        self.assertIn('class="start-brand" href="/start/"', body)
         self.assertIn("Watch Live", body)
         self.assertNotIn("I need an activity for today", body)
         self.assertIsNotNone(_safe_start_path("/start/"))
