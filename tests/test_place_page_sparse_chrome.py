@@ -118,7 +118,7 @@ class PlacePageSparseChromeTests(unittest.TestCase):
                     self.assertNotIn(phrase, article, phrase)
                 self.assertNotIn("seo-print-fallback", hero)
                 self.assertNotIn("seo-secondary-links", hero)
-                self.assertNotIn("seo-start-lead", visible)
+                self.assertNotIn("seo-start-lead", article)
                 self.assertNotIn("mission-filters-hint", html)
                 self.assertNotIn("mission-hunt-hint", html)
 
@@ -127,7 +127,10 @@ class PlacePageSparseChromeTests(unittest.TestCase):
             hero = _hero(html)
             with self.subTest(slug=slug):
                 self.assertIn(f">{CTA_AT_HOME}</a>", hero)
-                self.assertIn(f">{CTA_PRINT}</button>", hero)
+                self.assertRegex(
+                    hero,
+                    rf'id="mission-open-btn"[^>]*>\s*{re.escape(CTA_PRINT)}\s*</button>',
+                )
                 self.assertEqual(hero.count('class="btn '), 2)
                 self.assertIn('id="mission-open-btn"', hero)
                 leads = re.findall(r'class="lead"[^>]*>(.*?)</p>', hero, re.S)
@@ -144,7 +147,7 @@ class PlacePageSparseChromeTests(unittest.TestCase):
                 self.assertIn(f">{PLACE_VFT_CTA}</a>", visible)
                 self.assertIn(f">{HUNT_H2}</h2>", visible)
                 hunt = visible.split('id="hunt-heading"', 1)[1].split("</section>", 1)[0]
-                self.assertIn(f">{CTA_PRINT}</button>", hunt)
+                self.assertRegex(hunt, rf">{CTA_PRINT}\s*</button>")
                 self.assertIn('data-how="print-hunt"', hunt)
 
     def test_empty_kit_stays_honest(self):

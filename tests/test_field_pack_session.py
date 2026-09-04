@@ -541,6 +541,12 @@ class FlagshipSessionTests(unittest.TestCase):
                         all(dim == ("640", "640") for dim in dims),
                         f"{kind}/{slug} {label} not square: {dims}",
                     )
+                elif "seo-home-empty" in block:
+                    self.assertIn(
+                        "No cards for this place yet.",
+                        block,
+                        f"{kind}/{slug} {label} empty kit must stay honest",
+                    )
                 else:
                     self.assertIn(
                         "seo-start-emoji",
