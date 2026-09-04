@@ -1598,12 +1598,63 @@
     photoEl.innerHTML = currentPhotoSrc
       ? `<img src="${escapeHtml(currentPhotoSrc)}" alt="" width="640" height="400" decoding="async" />`
       : "";
+    hideSoundTip(true);
   }
 
   function stopWatchPlayer() {
     const frame = photoEl && photoEl.querySelector("iframe.vz-watch-frame");
     if (frame) frame.removeAttribute("src");
     fillPhoto();
+  }
+
+  const SOUND_TIP_KEY = "fp-vft-sound-tip-v1";
+  const SOUND_TIP_MS = 7000;
+  let soundTipTimer = 0;
+
+  function soundTipEl() {
+    return document.getElementById("vz-sound-tip");
+  }
+
+  function hideSoundTip(immediate) {
+    const el = soundTipEl();
+    if (soundTipTimer) {
+      clearTimeout(soundTipTimer);
+      soundTipTimer = 0;
+    }
+    if (!el) return;
+    el.classList.remove("is-on");
+    if (immediate) {
+      el.hidden = true;
+      return;
+    }
+    soundTipTimer = setTimeout(() => {
+      el.hidden = true;
+      soundTipTimer = 0;
+    }, 380);
+  }
+
+  function soundTipSeen() {
+    try {
+      return sessionStorage.getItem(SOUND_TIP_KEY) === "1";
+    } catch (_) {
+      return false;
+    }
+  }
+
+  function markSoundTipSeen() {
+    try {
+      sessionStorage.setItem(SOUND_TIP_KEY, "1");
+    } catch (_) {}
+  }
+
+  function showSoundTip() {
+    const el = soundTipEl();
+    if (!el || soundTipSeen()) return;
+    markSoundTipSeen();
+    el.hidden = false;
+    requestAnimationFrame(() => el.classList.add("is-on"));
+    if (soundTipTimer) clearTimeout(soundTipTimer);
+    soundTipTimer = setTimeout(() => hideSoundTip(false), SOUND_TIP_MS);
   }
 
   function playFilmInline(url, label, start) {
@@ -1619,6 +1670,7 @@
       frame.addEventListener("load", kick, { once: true });
       kick();
     }
+    showSoundTip();
     return true;
   }
 
@@ -1703,6 +1755,7 @@
     sheet?.classList.remove("is-cinema");
     dialog?.classList.remove("is-cinema");
     if (blurbEl) blurbEl.hidden = false;
+    hideSoundTip(true);
     if (!dialog || dialog.hidden) return;
     dialog.hidden = true;
     dialog.setAttribute("aria-hidden", "true");
@@ -2050,6 +2103,7 @@
       openCamPopup(href, stopA.textContent.trim() || "Park kit");
     }
   });
+  document.getElementById("vz-sound-tip-dismiss")?.addEventListener("click", () => hideSoundTip(true));
   closeBtn?.addEventListener("click", closeDialog);
   backdrop?.addEventListener("click", closeDialog);
   dialog?.addEventListener("keydown", (e) => {
