@@ -1128,10 +1128,10 @@ class WebHandler(BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(body)
             return
-        # Default home = Baby's Day Out
+        # Default home = Start (first-time Field Trip Kit landing)
         if path in {"/", "/index.html"}:
             self.send_response(302)
-            self.send_header("Location", FIELD_PACK_PREFIX + "/")
+            self.send_header("Location", START_PREFIX + "/")
             self.send_header("Cache-Control", "no-cache")
             self.send_header("Content-Length", "0")
             self.end_headers()
@@ -1240,7 +1240,7 @@ class WebHandler(BaseHTTPRequestHandler):
         path = urlsplit(self.path).path
         if path in {"/", "/index.html"}:
             self.send_response(302)
-            self.send_header("Location", FIELD_PACK_PREFIX + "/")
+            self.send_header("Location", START_PREFIX + "/")
             self.send_header("Content-Length", "0")
             self.end_headers()
             return
