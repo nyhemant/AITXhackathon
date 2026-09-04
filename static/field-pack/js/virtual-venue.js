@@ -11,16 +11,21 @@
   const TAB_ORDER = [
     { id: "zoo", label: "Zoo" },
     { id: "aquarium", label: "Aquarium" },
-    { id: "natural-history", label: "Natural history" },
-    { id: "science", label: "Science museum" },
-    { id: "parks", label: "National parks" },
+    { id: "museum", label: "Museum", tabs: ["natural-history", "science"], defaultTab: "natural-history" },
+    { id: "parks", label: "Parks" },
   ];
+  const MUSEUM_TABS = ["natural-history", "science"];
+  const MUSEUM_CHIPS = [
+    { id: "natural-history", label: "Natural history" },
+    { id: "science", label: "Science" },
+  ];
+  const MUSEUM_LAST_KEY = "fp-vft-museum-tab";
   const TAB_CONFIGS = {
-    zoo: "/field-pack/data/virtual-venues/virtual-zoo.json?v=21",
-    aquarium: "/field-pack/data/virtual-venues/virtual-aquarium.json?v=22",
-    "natural-history": "/field-pack/data/virtual-venues/virtual-nhm.json?v=13",
-    science: "/field-pack/data/virtual-venues/virtual-science.json?v=15",
-    parks: "/field-pack/data/virtual-venues/virtual-parks.json?v=23",
+    zoo: "/field-pack/data/virtual-venues/virtual-zoo.json?v=22",
+    aquarium: "/field-pack/data/virtual-venues/virtual-aquarium.json?v=23",
+    "natural-history": "/field-pack/data/virtual-venues/virtual-nhm.json?v=14",
+    science: "/field-pack/data/virtual-venues/virtual-science.json?v=16",
+    parks: "/field-pack/data/virtual-venues/virtual-parks.json?v=24",
   };
 
   const mapMount = document.getElementById("vz-map");
@@ -291,6 +296,30 @@
     const q = "?tab=" + encodeURIComponent(id);
     const hash = habitat ? "#habitat=" + encodeURIComponent(habitat) : "#" + id;
     return location.pathname + q + hash;
+  }
+
+  function isMuseumTab(id) {
+    return MUSEUM_TABS.indexOf(id) !== -1;
+  }
+
+  function lastMuseumTab() {
+    try {
+      const last = sessionStorage.getItem(MUSEUM_LAST_KEY);
+      if (isMuseumTab(last)) return last;
+    } catch (_) {}
+    return "natural-history";
+  }
+
+  function rememberMuseumTab(id) {
+    if (!isMuseumTab(id)) return;
+    try {
+      sessionStorage.setItem(MUSEUM_LAST_KEY, id);
+    } catch (_) {}
+  }
+
+  function resolveVenueTab(id) {
+    if (id === "museum") return lastMuseumTab();
+    return id;
   }
 
   function showPanels(tab) {
@@ -1330,16 +1359,18 @@
     return fromCat;
   }
 
-  function renderTabs() {
-    const nav = document.getElementById("vz-tabs");
-    if (!nav) return;
-    const tab = currentTab();
-    if (!nav.querySelector("[data-tab]")) {
-      nav.innerHTML = TAB_ORDER.map((t) => {
-        return `<a class="vz-tab" href="${escapeHtml(tabUrl(t.id))}" data-tab="${escapeHtml(t.id)}">${escapeHtml(t.label)}</a>`;
+  function renderMuseumChips(tab) {
+    const row = document.getElementById("vz-museum-chips");
+    if (!row) return;
+    const show = isMuseumTab(tab);
+    row.hidden = !show;
+    row.classList.toggle("is-on", show);
+    if (!row.querySelector("[data-tab]")) {
+      row.innerHTML = MUSEUM_CHIPS.map((c) => {
+        return `<a class="vz-chip" href="${escapeHtml(tabUrl(c.id))}" data-tab="${escapeHtml(c.id)}">${escapeHtml(c.label)}</a>`;
       }).join("");
     }
-    nav.querySelectorAll("[data-tab]").forEach((a) => {
+    row.querySelectorAll("[data-tab]").forEach((a) => {
       const id = a.getAttribute("data-tab");
       const on = id === tab;
       a.classList.toggle("is-on", on);
@@ -1356,6 +1387,38 @@
     });
   }
 
+  function renderTabs() {
+    const nav = document.getElementById("vz-tabs");
+    if (!nav) return;
+    const tab = currentTab();
+    rememberMuseumTab(tab);
+    if (!nav.querySelector("[data-tab]")) {
+      nav.innerHTML = TAB_ORDER.map((t) => {
+        const target = t.id === "museum" ? lastMuseumTab() : t.id;
+        const venue = t.id === "museum" ? ' data-venue="museum"' : "";
+        return `<a class="vz-tab" href="${escapeHtml(tabUrl(target))}" data-tab="${escapeHtml(t.id)}"${venue}>${escapeHtml(t.label)}</a>`;
+      }).join("");
+    }
+    nav.querySelectorAll("[data-tab]").forEach((a) => {
+      const id = a.getAttribute("data-tab");
+      const venue = a.getAttribute("data-venue") || id;
+      const on = venue === "museum" ? isMuseumTab(tab) : id === tab;
+      a.classList.toggle("is-on", on);
+      if (on) a.setAttribute("aria-current", "page");
+      else a.removeAttribute("aria-current");
+      const hrefId = venue === "museum" ? lastMuseumTab() : id;
+      a.setAttribute("href", tabUrl(hrefId));
+      if (!a.dataset.wired) {
+        a.dataset.wired = "1";
+        a.addEventListener("click", (e) => {
+          e.preventDefault();
+          switchTab(resolveVenueTab(a.getAttribute("data-tab")));
+        });
+      }
+    });
+    renderMuseumChips(tab);
+  }
+
   function applyChrome() {
     const tab = currentTab();
     showPanels(tab);
@@ -1365,30 +1428,24 @@
     const lead = document.getElementById("vz-lead");
     if (title && config && config.h1) title.textContent = config.h1;
     if (lead && config && config.lead) {
-      lead.textContent = isParkCustom()
-        ? "Your parks on a real map of the lower 48. Tap any one. Free. No account."
-        : config.lead;
-    }
-    const useEl = document.getElementById("vz-use");
-    if (useEl) {
-      useEl.textContent =
-        (config && config.use) ||
-        "For rainy days, a classroom Friday, or any day you want a field trip at home.";
+      lead.textContent = isParkCustom() ? "Your parks · lower 48 · free" : config.lead;
     }
     if (config && config.title) document.title = config.title;
     if (mapMount && config) {
       mapMount.classList.toggle("is-wide", Boolean(config.mapClass) || config.kind === "park");
       mapMount.classList.toggle("is-pictorial", config.kind !== "park");
       mapMount.setAttribute("data-kind", config.kind || tab);
-      const hint = document.getElementById("vz-map-hint");
-      const isPark = config.kind === "park";
-      const line = isPark
-        ? "Tap any park. A suggested Next is marked if you want a path."
-        : config.kind === "science" || config.kind === "natural_history"
-          ? "Tap any hall. A suggested Next is marked if you want a path."
-          : "Tap any stop. A suggested Next is marked if you want a path.";
-      mapMount.setAttribute("aria-label", (config.h1 || "Virtual field trip") + ". " + line);
-      if (hint) hint.textContent = line;
+      const where =
+        config.kind === "park"
+          ? "National parks map"
+          : config.kind === "science"
+            ? "Science museum map"
+            : config.kind === "natural_history"
+              ? "Natural history museum map"
+              : config.kind === "aquarium"
+                ? "Aquarium map"
+                : "Zoo map";
+      mapMount.setAttribute("aria-label", where);
     }
     if (config) root.setAttribute("data-kind", config.kind || tab);
     if (stampList) stampList.classList.toggle("is-few", walkList().length <= 4);
@@ -1406,11 +1463,7 @@
         : habs.length
           ? " · Path complete"
           : ""
-      : habs.length
-        ? config.kind === "park"
-          ? " · Tap any park"
-          : " · Tap any hall"
-        : "";
+      : "";
     if (progressEl) progressEl.textContent = count + extra;
     if (passCount) passCount.textContent = `${stamps.length}/${habs.length}`;
     if (stopsDrawer) {
