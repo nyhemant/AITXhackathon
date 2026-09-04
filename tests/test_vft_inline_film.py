@@ -120,7 +120,7 @@ class VftInlineFilmTests(unittest.TestCase):
 
     def test_cache_bump(self):
         for html in self.pages.values():
-            self.assertIn("virtual-venue.js?v=83", html)
+            self.assertIn("virtual-venue.js?v=84", html)
 
 
 if __name__ == "__main__":

@@ -288,7 +288,7 @@ html[data-vft-chrome="tour"] .vz-first-run {
   outline: none;
 }
 .vz-spot[data-lock="1"] {
-  cursor: default;
+  cursor: pointer;
 }
 .vz-spot .vz-silo {
   transition: stroke 0.15s ease, stroke-width 0.15s ease;
@@ -411,7 +411,7 @@ html[data-vft-chrome="tour"] .vz-first-run {
   fill: #7a868e;
 }
 .vz-spot[data-lock="1"] .vz-bullet-disc {
-  fill: #9aa3a8;
+  fill: #7a868e;
 }
 .vz-spot[data-next="1"] .vz-bullet-disc {
   fill: #c4a35a;
