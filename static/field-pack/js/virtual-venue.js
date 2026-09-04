@@ -1309,7 +1309,7 @@
   }
 
   function habitatById(id) {
-    return (config.habitats || []).find((h) => h.id === id || h.cardId === id) || null;
+    return ((config && config.habitats) || []).find((h) => h.id === id || h.cardId === id) || null;
   }
 
   function itemFor(h) {

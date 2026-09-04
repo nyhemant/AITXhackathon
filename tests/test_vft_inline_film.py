@@ -69,6 +69,7 @@ class VftInlineFilmTests(unittest.TestCase):
         self.assertIn("function sealStaticFilms(", self.js)
         self.assertIn("function playFirstRunFilm(", self.js)
         self.assertIn("function habitatFromFilmControl(", self.js)
+        self.assertIn("((config && config.habitats) || [])", self.js)
         self.assertIn("filmLink.href = inPageFilmHref(h.id)", self.js)
         self.assertIn("openHabitat(hab.id, t, { fromHash: true })", self.js)
         self.assertIn("playFilmInline(video.url", self.js)
