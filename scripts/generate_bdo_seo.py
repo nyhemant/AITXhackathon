@@ -78,29 +78,29 @@ PARK_OG_IMAGE = f"{SITE}/field-pack/photos/np-hero-yellowstone.jpg"
 HOME_HREF = "/start/"
 
 # Dual-mode framing — at home stands alone; print is an optional visit companion.
-# Swap these strings only; templates read the constants.
+# Place-page chrome is sparse: images + two short actions. Swap these strings
+# only; templates read the constants. Do not reintroduce tutorial essays.
 NAV_PLACES_SUB = "Map &amp; places"
 NAV_CARDS_SUB = "Talk, photos &amp; Q&amp;A"
 NAV_VFT_SUB = "Explore at home"
 NAV_ABOUT_SUB = "1Less &amp; contact"
 
+# Place-page primary actions (short). Card pages keep the longer explore label.
+CTA_AT_HOME = "At home"
+CTA_PRINT = "Print"
 CTA_EXPLORE_HOME = "Explore at home"
-CTA_PRINT_VISIT = "Print a hunt for the visit"
-CTA_PRINT_VISIT_SHORT = "Print a hunt"
+CTA_PRINT_VISIT = CTA_PRINT
+CTA_PRINT_VISIT_SHORT = CTA_PRINT
 CTA_PRINT_CARD = "Print this card"
 CTA_READY = "Explore →"
 
-HOME_SESSION_H2 = "Explore at home"
-HOME_SESSION_LEAD = (
-    "Talk through the cards, look at the photos, and open a live cam or film when we have one. "
-    "This works on a phone or laptop — no printer needed."
-)
+HOME_SESSION_H2 = CTA_AT_HOME
+HOME_SESSION_LEAD = "Cards, photos, and a cam when we have one."
 HOME_SESSION_VFT = "Open Virtual Field Trip"
+PLACE_VFT_CTA = "Virtual Field Trip"
+HOME_EMPTY = "No cards for this place yet."
 START_HERE_H2 = "Start here"
-START_HERE_LEAD = (
-    "At home, open a card for talk, photos, and a cam when we have one. "
-    "Going in person? Add a stop to the hunt — print only if you want paper."
-)
+START_HERE_LEAD = ""
 CTA_TALK_HOME = "Talk at home"
 CTA_ADD_HUNT = "Add to hunt"
 CTA_ZOO_CARDS = "This zoo's cards"
@@ -108,16 +108,19 @@ CTA_AQUARIUM_CARDS = "This aquarium's cards"
 CTA_MUSEUM_CARDS = "This museum's cards"
 CTA_PARK_CARDS = "This park's cards"
 CTA_PLACE_CARDS = "This place's cards"
-HOME_CARD_MORE = "Open card — 6 talk questions"
-SHORTLIST_LEAD = "Open a card for talk tips, photos, and Q&amp;A."
-HUNT_BLOCK_P = (
-    "Optional for a real visit. Print a one-page hunt from the button above, "
-    "or skip paper and use the cards on this page."
-)
-PRINT_FALLBACK = (
-    "At home? Use the cards below — no printer needed. "
-    "Going in person? Print a hunt, or open the sheet on your phone."
-)
+HOME_CARD_MORE = "Open card"
+SHORTLIST_H2 = "More"
+SHORTLIST_H2_REST = "More"
+SHORTLIST_LEAD = ""
+HUNT_H2 = "Hunt"
+HUNT_BLOCK_P = ""
+HUNT_EXAMPLES_SUMMARY = "Finds"
+MISSION_DRAWER_H2 = CTA_PRINT
+MISSION_PRINT_BTN = CTA_PRINT
+MISSION_FILTERS_HINT = ""
+MISSION_HUNT_HINT = ""
+PRINT_FALLBACK = ""
+TYPE_HUB_LEAD = HOME_SESSION_LEAD
 
 # Catalog outing template — same wording as FIELD_PACK_MISSIONS_* in catalog.js.
 # Public cards use this 6-question set. Do not invent new Q&A. Do not ship notice-stubs as “full.”
@@ -246,12 +249,12 @@ OUTING_TALK_EXHIBIT = (
     },
 )
 
-SEO_CSS_VER = "28"
+SEO_CSS_VER = "29"
 LANDING_CSS_VER = "95"
 STYLES_CSS_VER = "36"
 CATALOG_JS_VER = "40"
 VIEWPORT = "width=device-width, initial-scale=1, viewport-fit=cover"
-MISSION_CSS_VER = "18"
+MISSION_CSS_VER = "19"
 
 # Landing catalog seeds (T5) — review in POLISH-TASKS completion notes
 FEATURED_CARD_IDS = (
@@ -331,41 +334,41 @@ TYPE_LANDINGS = [
         "path": "zoos",
         "kind": "zoo",
         "nav": "Zoos",
-        "title": "Virtual Zoo Days & Printable Hunts for Kids · Field Trip Kit",
-        "h1": "Explore a zoo at home — or print a hunt",
-        "blurb": "Animal cards, talk prompts, photos, and live cams for a zoo session at home. Optional one-page hunt if you’re going in person.",
+        "title": "Zoos · Field Trip Kit",
+        "h1": "Zoos",
+        "blurb": TYPE_HUB_LEAD,
         "map_type": "zoo",
-        "pitch": "Cards and cams at home · optional hunt for the visit",
+        "pitch": "",
     },
     {
         "path": "aquariums",
         "kind": "aquarium",
         "nav": "Aquariums",
-        "title": "Virtual Aquarium Days & Printable Hunts for Kids · Field Trip Kit",
-        "h1": "Explore an aquarium at home — or print a hunt",
-        "blurb": "Sea-life cards, talk prompts, photos, and live cams when we have them. Optional one-page hunt for a real visit.",
+        "title": "Aquariums · Field Trip Kit",
+        "h1": "Aquariums",
+        "blurb": TYPE_HUB_LEAD,
         "map_type": "aquarium",
-        "pitch": "Cards and cams at home · optional hunt for the visit",
+        "pitch": "",
     },
     {
         "path": "museums",
         "kind": "museum",
         "nav": "Museums",
-        "title": "Virtual Museum Days & Printable Hunts for Kids · Field Trip Kit",
-        "h1": "Explore a museum at home — or print a hunt",
-        "blurb": "Attraction cards, talk prompts, and photos for science, natural history, space, and children’s museums. Optional printable hunt for the visit.",
+        "title": "Museums · Field Trip Kit",
+        "h1": "Museums",
+        "blurb": TYPE_HUB_LEAD,
         "map_type": "museum",
-        "pitch": "Cards at home · optional hunt for the visit",
+        "pitch": "",
     },
     {
         "path": "national-parks",
         "kind": "park",
         "nav": "Parks",
-        "title": "Virtual Park Days & Printable Hunts for Kids · Field Trip Kit",
-        "h1": "Explore a park at home — or print a hunt",
-        "blurb": "Maps, photos, and Virtual Field Trip stops for U.S. and international parks. Optional one-page hunt for one finishable slice (rim, boardwalk, lakeshore).",
+        "title": "Parks · Field Trip Kit",
+        "h1": "Parks",
+        "blurb": TYPE_HUB_LEAD,
         "map_type": "park",
-        "pitch": "Explore at home · optional hunt for one park slice",
+        "pitch": "",
     },
 ]
 
@@ -1111,16 +1114,18 @@ def home_session_html(items: list[dict], *, venue_kind: str = "", venue_id: str 
     empty = (
         ""
         if cards
-        else (
-            f'<p class="seo-home-empty">No animal cards for this place yet. '
-            f'<a href="{esc(vft_href)}">{esc(HOME_SESSION_VFT)}</a> still works at home.</p>'
-        )
+        else f'<p class="seo-home-empty">{esc(HOME_EMPTY)}</p>'
+    )
+    lead_html = (
+        f'<p class="seo-home-lead">{esc(HOME_SESSION_LEAD)}</p>'
+        if HOME_SESSION_LEAD
+        else ""
     )
     return f"""
     <section class="seo-home-session" id="at-home" aria-labelledby="home-session-heading">
       <h2 id="home-session-heading">{esc(HOME_SESSION_H2)}</h2>
-      <p class="seo-home-lead">{esc(HOME_SESSION_LEAD)}</p>
-      <p class="seo-home-vft"><a class="btn btn-secondary" href="{esc(vft_href)}">{esc(HOME_SESSION_VFT)}</a></p>
+      {lead_html}
+      <p class="seo-home-vft"><a class="btn btn-secondary" href="{esc(vft_href)}">{esc(PLACE_VFT_CTA)}</a></p>
       {grid}
       {empty}
     </section>"""
@@ -1298,11 +1303,6 @@ def unique_body(
     )
 
     showing_rest = bool(exclude_ids and featured)
-    shortlist_lead = (
-        "More stops if you have the energy."
-        if showing_rest
-        else SHORTLIST_LEAD
-    )
     shortlist_sec = ""
     if featured:
         # Photo grid already has names/blurbs — skip the screen-reader twin list.
@@ -1315,24 +1315,19 @@ def unique_body(
                 f"</ul>"
             )
         )
+        shortlist_h2 = SHORTLIST_H2_REST if showing_rest else SHORTLIST_H2
+        shortlist_lead = (
+            f"<p>{SHORTLIST_LEAD}</p>" if SHORTLIST_LEAD else ""
+        )
         shortlist_sec = f"""
     <section class="seo-list-block seo-visual-shortlist" aria-labelledby="shortlist-heading">
-      <h2 id="shortlist-heading">{"More if you have energy" if showing_rest else "Kid shortlist"}</h2>
-      <p>{shortlist_lead}</p>
+      <h2 id="shortlist-heading">{esc(shortlist_h2)}</h2>
+      {shortlist_lead}
       {cards_html}
       {extra_list}
     </section>"""
     return f"""{shortlist_sec}
-    <section class="seo-list-block seo-hunt-block" aria-labelledby="hunt-heading">
-      <h2 id="hunt-heading">Optional hunt for the visit</h2>
-      <p>{HUNT_BLOCK_P}</p>
-      <details class="seo-hunt-examples">
-        <summary>Example finds</summary>
-        <ol class="seo-hunt-list">
-          {hunt_lis}
-        </ol>
-      </details>
-    </section>
+{hunt_teaser_html(hunt_lis)}
 """
 
 
@@ -1657,6 +1652,42 @@ def is_wonder_find(find: dict) -> bool:
     return not fid or fid.startswith("w")
 
 
+def hunt_teaser_html(hunt_lis: str) -> str:
+    """Short title + one print action. Example finds stay collapsed."""
+    if not (hunt_lis or "").strip():
+        return ""
+    essay = f"<p>{HUNT_BLOCK_P}</p>" if HUNT_BLOCK_P else ""
+    return f"""
+    <section class="seo-list-block seo-hunt-block" aria-labelledby="hunt-heading">
+      <h2 id="hunt-heading">{esc(HUNT_H2)}</h2>
+      {essay}
+      <p class="seo-hunt-action"><button type="button" class="btn btn-secondary" data-how="print-hunt">{esc(CTA_PRINT)}</button></p>
+      <details class="seo-hunt-examples">
+        <summary>{esc(HUNT_EXAMPLES_SUMMARY)}</summary>
+        <ol class="seo-hunt-list">
+          {hunt_lis}
+        </ol>
+      </details>
+    </section>"""
+
+
+def quiet_hero_lead(v: dict, mission_venue: dict | None = None) -> str:
+    """One quiet line from the venue tagline/blurb. Drop dual-mode essays."""
+    raw = (
+        ((mission_venue or {}).get("tagline") or "").strip()
+        or (v.get("blurb") or "").strip()
+    )
+    if not raw:
+        return ""
+    low = raw.lower()
+    if "print a hunt" in low or "talk prompts" in low:
+        return ""
+    line = raw.split(". ")[0].strip()
+    if line.endswith("."):
+        line = line[:-1]
+    return line
+
+
 def wonder_grid_html(mission: dict) -> str:
     """Emoji tiles for flexible backups only — animals stay out of this block."""
     finds = [f for f in (mission.get("finds") or []) if is_wonder_find(f)][:8]
@@ -1673,22 +1704,18 @@ def wonder_grid_html(mission: dict) -> str:
     return f"""
     <section class="seo-wonder-block" aria-labelledby="wonder-heading">
       <h2 id="wonder-heading">Also look for</h2>
-      <p class="seo-wonder-lead">Flexible backups if a favorite is closed, crowded, or napping — no fixed path.</p>
       <ul class="seo-wonder-grid">{tiles}</ul>
     </section>"""
 
 
 def page_mission_chrome_html(home_href: str = "#at-home") -> str:
-    """Dual CTA: at-home session first, print hunt secondary. Chips still drive the drawer."""
+    """Two short CTAs. Chips still drive the drawer. No essay under the buttons."""
     href = home_href or "#at-home"
     return f"""
-        <div class="seo-mission-bar no-print" aria-label="{esc(CTA_EXPLORE_HOME)} or {esc(CTA_PRINT_VISIT)}">
-          <a class="btn btn-primary seo-home-btn" href="{esc(href)}">{esc(CTA_EXPLORE_HOME)}</a>
-          <button type="button" class="btn btn-secondary seo-print-btn" id="mission-open-btn" aria-haspopup="dialog" aria-controls="mission-drawer" aria-label="{esc(CTA_PRINT_VISIT)}">
-            <span class="seo-print-btn-long">
-              <span class="seo-print-btn-line">{esc(CTA_PRINT_VISIT)}</span>
-            </span>
-            <span class="seo-print-btn-short">{esc(CTA_PRINT_VISIT_SHORT)}</span>
+        <div class="seo-mission-bar no-print" aria-label="{esc(CTA_AT_HOME)} or {esc(CTA_PRINT)}">
+          <a class="btn btn-primary seo-home-btn" href="{esc(href)}">{esc(CTA_AT_HOME)}</a>
+          <button type="button" class="btn btn-secondary seo-print-btn" id="mission-open-btn" aria-haspopup="dialog" aria-controls="mission-drawer" aria-label="{esc(CTA_PRINT)}">
+            {esc(CTA_PRINT)}
           </button>
           <div class="seo-mission-chrome" id="seo-mission-chrome">
             <div class="seo-chrome-row">
@@ -1717,8 +1744,7 @@ def page_mission_chrome_html(home_href: str = "#at-home") -> str:
               </div>
             </div>
           </div>
-        </div>
-        <p class="seo-print-fallback no-print">{esc(PRINT_FALLBACK)} <span class="seo-bonus-hint">Classic · Bonus · Alpha (extra-hard cool finds).</span></p>"""
+        </div>"""
 
 
 def _photo_src(photo: str) -> str:
@@ -1872,11 +1898,15 @@ def route_90m_html(mission_venue: dict, mission: dict, catalog_v: dict | None = 
       </article>"""
         )
 
-    lead = START_HERE_LEAD
+    lead_html = (
+        f'<p class="seo-start-lead">{esc(START_HERE_LEAD)}</p>'
+        if START_HERE_LEAD
+        else ""
+    )
     return f"""
     <section class="seo-start-here no-print" id="start-here" aria-labelledby="route90-heading">
       <h2 id="route90-heading">{esc(START_HERE_H2)}</h2>
-      <p class="seo-start-lead">{esc(lead)}</p>
+      {lead_html}
       <div class="seo-start-grid">{"".join(cards)}</div>
     </section>"""
 
@@ -1919,7 +1949,7 @@ def mission_drawer_html(mission_venue: dict, mission: dict) -> str:
       <header class="mission-drawer-head">
         <div>
           <p class="mission-drawer-kicker"><a class="mission-home" href="{HOME_HREF}">Field Trip Kit</a> · <span class="mission-place-now">{esc(mission_venue.get("short_name") or mission_venue.get("name") or "This place")}</span> · <a class="mission-change-place" href="/field-pack/?find=1">Different place?</a></p>
-          <h2 id="mission-heading">Create and print your mission</h2>
+          <h2 id="mission-heading">{esc(MISSION_DRAWER_H2)}</h2>
         </div>
         <button type="button" class="mission-drawer-close" id="mission-close" aria-label="Close">×</button>
       </header>
@@ -1954,7 +1984,6 @@ def mission_drawer_html(mission_venue: dict, mission: dict) -> str:
               <button type="button" class="mission-seg-btn mission-seg-bonus" data-hunt="bonus">Bonus</button>
               <button type="button" class="mission-seg-btn mission-seg-alpha" data-hunt="alpha">Alpha</button>
             </div>
-            <p class="mission-hunt-hint">Classic = first visit · Bonus = trickier · Alpha = extra-hard cool finds</p>
           </div>
           <div class="mission-field">
             <label for="mission-interest">What are they into? <span class="mission-opt">(optional)</span></label>
@@ -1962,7 +1991,6 @@ def mission_drawer_html(mission_venue: dict, mission: dict) -> str:
               <option value="">Any</option>
             </select>
           </div>
-          <p class="mission-filters-hint">Sheet updates live — then print one page.</p>
         </aside>
         <div class="mission-preview">
           <div class="mission-sheet" id="mission-sheet">
@@ -1985,7 +2013,7 @@ def mission_drawer_html(mission_venue: dict, mission: dict) -> str:
       </div>
       <footer class="mission-drawer-foot">
         <button type="button" class="btn btn-ghost" id="mission-shuffle-btn">Give me different stops</button>
-        <button type="button" class="btn btn-primary btn-big" id="mission-print-btn">Create and print your mission</button>
+        <button type="button" class="btn btn-primary btn-big" id="mission-print-btn">{esc(MISSION_PRINT_BTN)}</button>
       </footer>
     </div>
   </div>
@@ -2085,19 +2113,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
             f'<li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>{esc(t)}</span></li>'
             for t in hunt[:8]
         )
-        hunt_sec = (
-            f"""
-    <section class="seo-list-block seo-hunt-block" aria-labelledby="hunt-heading">
-      <h2 id="hunt-heading">Optional hunt for the visit</h2>
-      <p>{HUNT_BLOCK_P}</p>
-      <details class="seo-hunt-examples">
-        <summary>Example finds</summary>
-        <ol class="seo-hunt-list">{hunt_lis}</ol>
-      </details>
-    </section>"""
-            if hunt_lis
-            else ""
-        )
+        hunt_sec = hunt_teaser_html(hunt_lis) if hunt_lis else ""
         body = wonder_grid_html(mission) + hunt_sec
     elif mode == "hybrid":
         wonder_sec = wonder_grid_html(mission)
@@ -2159,11 +2175,8 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
         }
         _bh_slim["alpha"] = _alpha_slim
         bonus_json = json.dumps(_bh_slim, ensure_ascii=False)
-    lead = (
-        mission_venue.get("tagline")
-        or v.get("blurb")
-        or f"Explore {v['name']} at home with cards, photos, and talk prompts — or print a hunt for the visit."
-    )
+    lead = quiet_hero_lead(v, mission_venue)
+    lead_html = f'<p class="lead">{esc(lead)}</p>' if lead else ""
     facts_html = (
         practical_chips_html(practical, last_v)
         + status_chip_html(mission_venue)
@@ -2227,19 +2240,10 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
       <header class="seo-hero">
         <p class="promise-pill">{esc(loc_chip)}</p>
         <h1>{esc(v.get('emoji',''))} {esc(h1)}</h1>
-        <p class="lead">{esc(lead)}</p>
+        {lead_html}
         {hero_banner}
         {facts_html}
         {chrome}
-        <p class="seo-secondary-links no-print">
-          <a href="#at-home">{esc(CTA_EXPLORE_HOME)}</a>
-          <span aria-hidden="true"> · </span>
-          <a href="/field-pack/virtual-field-trip/">{esc(HOME_SESSION_VFT)}</a>
-          <span aria-hidden="true"> · </span>
-          <a href="#at-home">{esc(place_cards_cta(venue_type_kind(mission_venue or v)))}</a>
-          <span aria-hidden="true"> · </span>
-          <a href="{esc(map_href)}">Find on map</a>
-        </p>
       </header>
 
       {route90}
@@ -2383,56 +2387,13 @@ def render_venue_page(v: dict) -> str:
       <header class="seo-hero">
         <p class="promise-pill">{esc(loc_chip)}</p>
         <h1>{esc(v.get('emoji',''))} {esc(h1)}</h1>
-        <p class="lead">{esc(v.get('blurb') or f'Explore {v["name"]} at home with cards and talk prompts — or print a hunt for the visit.')}</p>
-        <p class="seo-quality-note">{esc(
-          (
-            "Short kid list for a half-day visit."
-            + (f' Status {v["lastVerified"][:7]}.' if (v.get("lastVerified") or "")[:7] else "")
-          )
-          if (v.get("quality") or "starter") == "full"
-          else "Short flexible list — animals and exhibits change; skip anything closed or missing."
-        )}</p>
-        <p class="seo-brand-note"><strong>Field Trip Kit</strong> by 1Less — free printable hunts for families.</p>
-        <div class="landing-cta-row seo-cta no-print">
-          <a class="btn btn-primary btn-big" href="{esc(map_href)}">Open on map →</a>
-          <button type="button" class="btn btn-secondary btn-big" id="seo-print-hunt" data-venue="{esc(vid)}">
-            One-page hunt to print
-          </button>
-          <a class="btn btn-ghost" href="{esc(app_href)}">Full interactive list →</a>
-        </div>
+        {f'<p class="lead">{esc(quiet_hero_lead(v))}</p>' if quiet_hero_lead(v) else ""}
+        {page_mission_chrome_html()}
       </header>
 
       {home_sec}
       <div id="seo-play-target" class="seo-play-anchor" tabindex="-1"></div>
       {body}
-
-      <section class="seo-how no-print" aria-labelledby="how-heading">
-        <h2 id="how-heading">How it works</h2>
-        <p class="how-hint">Tap a step to jump there.</p>
-        <ol class="how-steps how-steps-visual how-steps-linked">
-          <li>
-            <a class="how-step-btn" href="#at-home" data-how="home" id="how-home-link">
-              <span class="how-ico" aria-hidden="true">🏠</span>
-              <strong>At home</strong>
-              <span>Cards, photos, talk</span>
-            </a>
-          </li>
-          <li>
-            <button type="button" class="how-step-btn" data-how="print-hunt" id="how-print-btn">
-              <span class="how-ico" aria-hidden="true">🖨️</span>
-              <strong>Visit</strong>
-              <span>Optional one-page hunt</span>
-            </button>
-          </li>
-          <li>
-            <a class="how-step-btn" href="#at-home" data-how="talk" id="how-talk-link">
-              <span class="how-ico" aria-hidden="true">💬</span>
-              <strong>Cards</strong>
-              <span>Talk again after</span>
-            </a>
-          </li>
-        </ol>
-      </section>
 
       <p class="seo-official">
         {f'Official site: <a href="{esc(v["website"])}" rel="noopener noreferrer" target="_blank">{esc(v["name"])} website</a>.' if v.get("website") else ""}
@@ -2647,8 +2608,8 @@ def write_type_landing(meta: dict, venues: list[dict]) -> str:
   </script>
   <style>
     .type-landing {{ max-width: 56rem; margin: 0 auto 2rem; padding: 0 1rem 2rem; }}
-    .type-landing h1 {{ margin: 0.5rem 0 0.75rem; font-size: clamp(1.5rem, 4vw, 2rem); color: #0a4545; }}
-    .type-landing .type-lead {{ color: #3d4f6f; font-size: 1.05rem; line-height: 1.45; max-width: 40rem; }}
+    .type-landing h1 {{ margin: 0.5rem 0 0.75rem; font-size: clamp(1.85rem, 5.5vw, 2.75rem); color: #0a4545; letter-spacing: -0.03em; }}
+    .type-landing .type-lead {{ color: #3d4f6f; font-size: 1.05rem; line-height: 1.4; max-width: 36rem; font-weight: 650; }}
     .type-feat-grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(11.5rem, 1fr)); gap: 0.85rem; margin: 1.25rem 0 1.5rem; }}
     .type-feat-card {{ display: flex; flex-direction: column; gap: 0.25rem; padding: 0.65rem 0.65rem 0.85rem; border-radius: 14px;
       background: rgba(255,255,255,0.92); border: 1.5px solid rgba(15,92,92,0.12); text-decoration: none; color: inherit;
@@ -2692,16 +2653,15 @@ def write_type_landing(meta: dict, venues: list[dict]) -> str:
     <main class="type-landing">
       <p class="seo-crumbs"><a href="{HOME_HREF}">Field Trip Kit</a> · {esc(meta["nav"])}</p>
       <h1>{esc(meta["h1"])}</h1>
-      <p class="type-lead">{esc(meta["blurb"])}</p>
+      {f'<p class="type-lead">{esc(meta["blurb"])}</p>' if meta.get("blurb") else ""}
       <p class="type-count">{len(filtered)} places</p>
       <div class="type-cta-row">
-        <a class="type-cta-primary" href="/field-pack/virtual-field-trip/">{esc(CTA_EXPLORE_HOME)}</a>
-        <a class="type-cta-secondary" href="{map_href}">Open map · {esc(meta["nav"])}</a>
-        <a class="type-cta-secondary" href="/field-pack/">{esc(CTA_PRINT_VISIT)}</a>
+        <a class="type-cta-primary" href="/field-pack/virtual-field-trip/">{esc(CTA_AT_HOME)}</a>
+        <a class="type-cta-secondary" href="{map_href}">Map</a>
       </div>
       {"<h2>Start here</h2><div class=\"type-feat-grid\">" + featured + "</div>" if featured else ""}
       <h2 id="dir-heading">{esc(meta["nav"])}</h2>
-      <p id="dir-blurb">{esc(meta["pitch"])}</p>
+      {f'<p id="dir-blurb">{esc(meta["pitch"])}</p>' if meta.get("pitch") else ""}
       <div id="seo-venue-directory" class="seo-dir-body">
         {dir_html}
       </div>

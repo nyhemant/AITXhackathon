@@ -81,8 +81,8 @@ class FlagshipSessionTests(unittest.TestCase):
         self.assertIn('href="/field-pack/cards/african-elephant/?from=dallas-zoo"', visible)
         self.assertIn('href="/field-pack/cards/african-lion/?from=dallas-zoo"', visible)
         self.assertIn('data-how="print-hunt"', visible)
-        self.assertIn("This zoo's cards", visible)
-        self.assertIn('href="#at-home"', visible)
+        self.assertIn("At home", visible)
+        self.assertIn('href="#start-here"', visible)
         start = visible.split('id="route90-heading"', 1)[1].split("</section>", 1)[0]
         self.assertNotIn('class="seo-start-card" href="#mission"', start)
         self.assertNotIn("What did you notice about", visible)
@@ -101,7 +101,7 @@ class FlagshipSessionTests(unittest.TestCase):
         self.assertIn("Add to hunt", visible)
         self.assertIn('href="/field-pack/cards/giant-panda/?from=san-diego-zoo"', visible)
         self.assertIn('href="/field-pack/cards/koala/?from=san-diego-zoo"', visible)
-        self.assertIn("This zoo's cards", visible)
+        self.assertIn("At home", visible)
         self.assertNotIn("What did you notice about the Koala?", visible)
 
     def test_lion_card_has_outing_six_and_cam(self):
@@ -244,7 +244,8 @@ class FlagshipSessionTests(unittest.TestCase):
         self.assertIn("Meat", html)
         self.assertIn("Run fast", html)
         dallas = self._visible((FP / "dallas-zoo" / "index.html").read_text(encoding="utf-8"))
-        self.assertIn("This zoo's cards", dallas)
+        self.assertIn("At home", dallas)
+        self.assertIn("Start here", dallas)
         css = (FP / "css" / "styles.css").read_text(encoding="utf-8")
         seo = (FP / "css" / "seo-venue.css").read_text(encoding="utf-8")
         self.assertIn("overflow-wrap: anywhere", css)
@@ -375,7 +376,7 @@ class FlagshipSessionTests(unittest.TestCase):
     def test_dallas_does_not_duplicate_more_if_you_have_energy(self):
         visible = self._visible((FP / "dallas-zoo" / "index.html").read_text(encoding="utf-8"))
         self.assertNotIn("More if you have energy", visible)
-        self.assertIn("Optional hunt for the visit", visible)
+        self.assertIn(">Hunt</h2>", visible)
         self.assertIn('id="at-home"', visible)
 
     def test_landing_featured_skips_illustration_heroes(self):
@@ -530,7 +531,7 @@ class FlagshipSessionTests(unittest.TestCase):
             kinds[kind] += 1
             html = (FP / slug / "index.html").read_text(encoding="utf-8")
             visible = self._visible(html)
-            self.assertIn("seo-venue.css?v=28", html, slug)
+            self.assertIn("seo-venue.css?v=29", html, slug)
             start = visible.split('id="route90-heading"', 1)[1].split("</section>", 1)[0]
             home = visible.split('id="at-home"', 1)[1].split("</section>", 1)[0]
             for label, block in (("start", start), ("home", home)):
@@ -539,6 +540,12 @@ class FlagshipSessionTests(unittest.TestCase):
                     self.assertTrue(
                         all(dim == ("640", "640") for dim in dims),
                         f"{kind}/{slug} {label} not square: {dims}",
+                    )
+                elif "seo-home-empty" in block:
+                    self.assertIn(
+                        "No cards for this place yet.",
+                        block,
+                        f"{kind}/{slug} {label} empty kit must stay honest",
                     )
                 else:
                     self.assertIn(
