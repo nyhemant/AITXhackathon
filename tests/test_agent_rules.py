@@ -754,6 +754,7 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertIn("frame-src 'self' https://www.youtube-nocookie.com https://www.youtube.com", SECURITY_HEADERS["Content-Security-Policy"])
         self.assertIn("object-src 'none'", SECURITY_HEADERS["Content-Security-Policy"])
         self.assertIn("form-action 'self'", SECURITY_HEADERS["Content-Security-Policy"])
+        self.assertIn("worker-src 'self'", SECURITY_HEADERS["Content-Security-Policy"])
         self.assertIn("camera=()", SECURITY_HEADERS["Permissions-Policy"])
         self.assertIn("payment=()", SECURITY_HEADERS["Permissions-Policy"])
 
