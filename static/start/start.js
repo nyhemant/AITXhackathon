@@ -243,24 +243,15 @@
     }
 
     if ("IntersectionObserver" in window) {
-      let leaveTimer = 0;
       const io = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (reduceMotion || hardFail) return;
             if (entry.isIntersecting || entry.intersectionRatio > 0) {
-              if (leaveTimer) window.clearTimeout(leaveTimer);
-              leaveTimer = 0;
               intersecting = true;
               playTeaser();
             } else {
-              if (leaveTimer) window.clearTimeout(leaveTimer);
-              leaveTimer = window.setTimeout(() => {
-                intersecting = false;
-                try {
-                  video.pause();
-                } catch (_) {}
-              }, 280);
+              intersecting = false;
             }
           });
         },
