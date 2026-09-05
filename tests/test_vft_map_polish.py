@@ -90,17 +90,22 @@ class VftMapPolishTests(unittest.TestCase):
         self.assertIn("stroke-width: 16", self.css)
         self.assertIn(".vz-trail-shadow", self.css)
         self.assertIn("stroke-width: 20", self.css)
-        self.assertIn("function windTrailD(", self.js)
+        self.assertIn("function catmullRomPath(", self.js)
+        self.assertIn("function zooTrailPoints(", self.js)
         self.assertIn("function polishTrail(", self.js)
         self.assertIn("vz-trail-shadow", self.js)
+        self.assertNotIn("function windTrailD(", self.js)
 
-    def test_zoo_svg_has_circular_clip_and_winding_quads(self):
+    def test_zoo_svg_has_circular_clip_and_habitat_cubics(self):
         self.assertIn('<circle cx="0.5" cy="0.5" r="0.5"/>', self.zoo_svg)
         self.assertNotIn('rx="0.14"', self.zoo_svg)
-        self.assertIn("Q368.3,699.6", self.zoo_svg)
+        self.assertIn("C369.3,744.0", self.zoo_svg)
+        self.assertNotIn("Q368.3,699.6", self.zoo_svg)
         self.assertNotIn("Q347.5,716.0", self.zoo_svg)
         self.assertIn('class="vz-trail-shadow"', self.zoo_svg)
-        self.assertEqual(self.zoo["mapSvg"], "/field-pack/media/virtual-zoo/map.svg?v=11")
+        cubics = re.findall(r"C-?\d", self.zoo_svg)
+        self.assertGreaterEqual(len(cubics), 20)
+        self.assertEqual(self.zoo["mapSvg"], "/field-pack/media/virtual-zoo/map.svg?v=12")
         habs = sorted(self.zoo.get("habitats") or [], key=lambda h: h.get("seq") or 0)
         self.assertEqual(habs[0]["id"], "caribbean-flamingo")
 
@@ -111,14 +116,35 @@ class VftMapPolishTests(unittest.TestCase):
         self.assertIn('const DEFAULT_ZOO_STOP = "caribbean-flamingo"', self.js)
         for html in self.pages.values():
             self.assertIn("Print the cutouts", html)
-            self.assertIn("virtual-venue.js?v=94", html)
+            self.assertIn("virtual-venue.js?v=95", html)
             self.assertIn("virtual-venue.css?v=55", html)
 
-    def test_wind_trail_offsets_midpoint_quads(self):
-        body = _fn_body(self.js, "windTrailD")
-        self.assertIn("nearMid", body)
-        self.assertIn("0.26", body)
-        self.assertIn("bulge", body)
+    def test_zoo_trail_is_catmull_rom_not_global_bulge(self):
+        self.assertIn("const ZOO_TRAIL_WAYPOINTS", self.js)
+        self.assertIn("beside", self.js)
+        self.assertIn("{ via:", self.js)
+        body = _fn_body(self.js, "catmullRomPath")
+        self.assertIn("alpha = 0.5", body)
+        self.assertIn("toFixed(1)", body)
+        polish = _fn_body(self.js, "polishTrail")
+        self.assertIn('kind === "zoo"', polish)
+        self.assertIn("zooTrailPoints()", polish)
+        self.assertIn('data-trail"', polish)
+        self.assertNotIn("nearMid", self.js)
+        self.assertNotIn("0.26", _fn_body(self.js, "polishTrail"))
+        for hid in (
+            "caribbean-flamingo",
+            "asian-small-clawed-otter",
+            "african-penguin",
+            "nile-hippo",
+            "reticulated-giraffe",
+            "african-elephant",
+            "african-lion",
+            "sumatran-tiger",
+            "western-lowland-gorilla",
+            "giant-panda",
+        ):
+            self.assertIn(f'stop: "{hid}"', self.js)
 
     def test_desktop_pictorial_pins_are_larger_than_phase1(self):
         rest = _fn_body(self.js, "padRestScale")

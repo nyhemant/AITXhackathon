@@ -21,7 +21,7 @@
   ];
   const MUSEUM_LAST_KEY = "fp-vft-museum-tab";
   const TAB_CONFIGS = {
-    zoo: "/field-pack/data/virtual-venues/virtual-zoo.json?v=25",
+    zoo: "/field-pack/data/virtual-venues/virtual-zoo.json?v=26",
     aquarium: "/field-pack/data/virtual-venues/virtual-aquarium.json?v=26",
     "natural-history": "/field-pack/data/virtual-venues/virtual-nhm.json?v=15",
     science: "/field-pack/data/virtual-venues/virtual-science.json?v=17",
@@ -487,16 +487,84 @@
     return "http://www.w3.org/2000/svg";
   }
 
-  function windTrailD(d, bulge) {
-    if (!d) return d;
+  // Zoo trail: Catmull-Rom through pin centers + small beside offsets and
+  // landscape vias (river / savanna / forest). Replaces the Phase 1 global
+  // midpoint bulge so each stop gets its own curve.
+  const ZOO_TRAIL_WAYPOINTS = [
+    { gate: "in" },
+    { via: [350, 720] },
+    { stop: "caribbean-flamingo", beside: [-16, -28] },
+    { via: [248, 608] },
+    { stop: "asian-small-clawed-otter", beside: [-18, -14] },
+    { via: [148, 458] },
+    { via: [115, 405] },
+    { stop: "african-penguin", beside: [28, 0] },
+    { via: [168, 292] },
+    { via: [260, 278] },
+    { stop: "nile-hippo", beside: [-14, 20] },
+    { via: [312, 208] },
+    { via: [300, 132] },
+    { stop: "reticulated-giraffe", beside: [6, 30] },
+    { via: [430, 50] },
+    { stop: "african-elephant", beside: [0, 26] },
+    { via: [600, 122] },
+    { via: [650, 168] },
+    { stop: "african-lion", beside: [-24, 10] },
+    { via: [655, 298] },
+    { stop: "sumatran-tiger", beside: [-26, 2] },
+    { via: [690, 472] },
+    { stop: "western-lowland-gorilla", beside: [-22, -12] },
+    { via: [575, 622] },
+    { stop: "giant-panda", beside: [6, -24] },
+    { gate: "out" },
+  ];
+
+  function trailPt(x, y) {
+    return { x: x, y: y };
+  }
+
+  function catmullRomPath(points) {
+    if (!points || points.length < 2) return "";
+    const pts = points.map((p) => trailPt(p.x, p.y));
+    const dist = (a, b) => Math.hypot(b.x - a.x, b.y - a.y) || 1e-6;
+    const alpha = 0.5;
+    const handles = (p0, p1, p2, p3) => {
+      const t0 = 0;
+      const t1 = Math.pow(dist(p0, p1), alpha);
+      const t2 = t1 + Math.pow(dist(p1, p2), alpha);
+      const t3 = t2 + Math.pow(dist(p2, p3), alpha);
+      const dt = t2 - t1 || 1e-6;
+      return {
+        c1: {
+          x: p1.x + ((p2.x - p0.x) * dt) / ((t2 - t0) || 1e-6) / 3,
+          y: p1.y + ((p2.y - p0.y) * dt) / ((t2 - t0) || 1e-6) / 3,
+        },
+        c2: {
+          x: p2.x - ((p3.x - p1.x) * dt) / ((t3 - t1) || 1e-6) / 3,
+          y: p2.y - ((p3.y - p1.y) * dt) / ((t3 - t1) || 1e-6) / 3,
+        },
+      };
+    };
+    const parts = [`M${pts[0].x.toFixed(1)},${pts[0].y.toFixed(1)}`];
+    for (let i = 0; i < pts.length - 1; i++) {
+      const p0 = i > 0 ? pts[i - 1] : pts[i];
+      const p1 = pts[i];
+      const p2 = pts[i + 1];
+      const p3 = i + 2 < pts.length ? pts[i + 2] : pts[i + 1];
+      const h = handles(p0, p1, p2, p3);
+      parts.push(
+        `C${h.c1.x.toFixed(1)},${h.c1.y.toFixed(1)} ${h.c2.x.toFixed(1)},${h.c2.y.toFixed(1)} ${p2.x.toFixed(1)},${p2.y.toFixed(1)}`
+      );
+    }
+    return parts.join(" ");
+  }
+
+  function pathDestinations(d) {
+    if (!d) return [];
     const tokens = d.match(/[MLQCZmlqcz]|-?\d*\.?\d+(?:e[-+]?\d+)?/g);
-    if (!tokens || !tokens.length) return d;
+    if (!tokens || !tokens.length) return [];
     let i = 0;
-    let lastX = 0;
-    let lastY = 0;
-    let sign = 1;
-    const out = [];
-    const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
+    const pts = [];
     const num = () => {
       const n = parseFloat(tokens[i]);
       i += 1;
@@ -507,65 +575,94 @@
       if (!/^[MLQCZmlqcz]$/.test(raw)) break;
       const cmd = raw.toUpperCase();
       i += 1;
-      if (cmd === "Z") {
-        out.push("Z");
-        continue;
-      }
-      if (cmd === "M") {
-        lastX = num();
-        lastY = num();
-        out.push(`M${lastX},${lastY}`);
-        continue;
-      }
-      if (cmd === "L") {
-        lastX = num();
-        lastY = num();
-        out.push(`L${lastX},${lastY}`);
+      if (cmd === "Z") continue;
+      if (cmd === "M" || cmd === "L") {
+        pts.push(trailPt(num(), num()));
         continue;
       }
       if (cmd === "Q") {
         while (i < tokens.length && !/^[MLQCZmlqcz]$/.test(tokens[i])) {
-          const cx = num();
-          const cy = num();
-          const x = num();
-          const y = num();
-          const mx = (lastX + x) / 2;
-          const my = (lastY + y) / 2;
-          const nearMid = Math.hypot(cx - mx, cy - my) < 8;
-          let ncx = cx;
-          let ncy = cy;
-          if (nearMid) {
-            const dx = x - lastX;
-            const dy = y - lastY;
-            const len = Math.hypot(dx, dy) || 1;
-            const off = Math.min(bulge, len * 0.26);
-            ncx = clamp(mx - (dy / len) * off * sign, 24, 776);
-            ncy = clamp(my + (dx / len) * off * sign, 24, 776);
-            sign *= -1;
-          }
-          out.push(`Q${ncx.toFixed(1)},${ncy.toFixed(1)} ${x},${y}`);
-          lastX = x;
-          lastY = y;
+          num();
+          num();
+          pts.push(trailPt(num(), num()));
         }
         continue;
       }
       if (cmd === "C") {
         while (i < tokens.length && !/^[MLQCZmlqcz]$/.test(tokens[i])) {
-          const x1 = num();
-          const y1 = num();
-          const x2 = num();
-          const y2 = num();
-          const x = num();
-          const y = num();
-          out.push(`C${x1},${y1} ${x2},${y2} ${x},${y}`);
-          lastX = x;
-          lastY = y;
+          num();
+          num();
+          num();
+          num();
+          pts.push(trailPt(num(), num()));
         }
         continue;
       }
-      out.push(raw);
     }
-    return out.join(" ");
+    return pts;
+  }
+
+  function spotCenter(el) {
+    if (!el) return null;
+    const hit = el.querySelector(".vz-hit") || el.querySelector(".vz-silo");
+    if (!hit) return null;
+    const x = parseFloat(hit.getAttribute("x") || "0");
+    const y = parseFloat(hit.getAttribute("y") || "0");
+    const w = parseFloat(hit.getAttribute("width") || "0");
+    const h = parseFloat(hit.getAttribute("height") || "0");
+    return trailPt(x + w / 2, y + h / 2);
+  }
+
+  function gateCenter(which) {
+    const id = which === "out" ? "vz-exit" : "vz-entry";
+    const g = mapMount && mapMount.querySelector("#" + id);
+    const r = g && g.querySelector("rect");
+    if (!r) return null;
+    return trailPt(
+      parseFloat(r.getAttribute("x") || "0") + parseFloat(r.getAttribute("width") || "0") / 2,
+      parseFloat(r.getAttribute("y") || "0") + parseFloat(r.getAttribute("height") || "0") / 2
+    );
+  }
+
+  function zooTrailPoints() {
+    const byId = {};
+    walkList().forEach((h) => {
+      const svgId = h.hotspot && h.hotspot.svgId;
+      const el = svgId && mapMount.querySelector("#" + cssEscape(svgId));
+      const c = spotCenter(el);
+      if (c) byId[h.id] = c;
+    });
+    const pts = [];
+    ZOO_TRAIL_WAYPOINTS.forEach((step) => {
+      if (step.gate) {
+        const g = gateCenter(step.gate);
+        if (g) pts.push(g);
+        return;
+      }
+      if (step.via) {
+        pts.push(trailPt(step.via[0], step.via[1]));
+        return;
+      }
+      if (!step.stop) return;
+      const c = byId[step.stop];
+      if (!c) return;
+      const b = step.beside || [0, 0];
+      pts.push(trailPt(c.x + b[0], c.y + b[1]));
+    });
+    return pts;
+  }
+
+  function applyTrailD(g, d) {
+    if (!d) return;
+    g.querySelectorAll("path").forEach((p) => p.setAttribute("d", d));
+    let sh = g.querySelector(".vz-trail-shadow");
+    if (!sh) {
+      sh = document.createElementNS(svgNS(), "path");
+      sh.setAttribute("class", "vz-trail-shadow");
+      sh.setAttribute("fill", "none");
+      g.insertBefore(sh, g.firstChild);
+    }
+    sh.setAttribute("d", d);
   }
 
   function circlePhotoClip() {
@@ -615,16 +712,26 @@
     const dash = g.querySelector(".vz-trail-dash");
     const src = bed || dash;
     if (!src) return;
-    const d = windTrailD(src.getAttribute("d") || "", 36);
-    g.querySelectorAll("path").forEach((p) => p.setAttribute("d", d));
-    if (!g.querySelector(".vz-trail-shadow")) {
-      const sh = document.createElementNS(svgNS(), "path");
-      sh.setAttribute("class", "vz-trail-shadow");
-      sh.setAttribute("d", d);
-      sh.setAttribute("fill", "none");
-      g.insertBefore(sh, g.firstChild);
+    const authored = src.getAttribute("d") || "";
+    let d = authored;
+    let mode = "authored";
+    const kind = config && config.kind;
+    if (kind === "zoo") {
+      const pts = zooTrailPoints();
+      if (pts.length >= 3) {
+        d = catmullRomPath(pts);
+        mode = "hug";
+      }
+    } else if (kind !== "aquarium" && kind !== "park" && /[Qq]/.test(authored)) {
+      const pts = pathDestinations(authored);
+      if (pts.length >= 3) {
+        d = catmullRomPath(pts);
+        mode = "smooth";
+      }
     }
+    applyTrailD(g, d);
     g.setAttribute("data-polished", "1");
+    g.setAttribute("data-trail", mode);
   }
 
   function polishPictorialMap() {
