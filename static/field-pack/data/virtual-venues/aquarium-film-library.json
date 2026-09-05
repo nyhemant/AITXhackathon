@@ -1,6 +1,6 @@
 {
   "id": "aquarium-film-library",
-  "checked": "2026-08-16",
+  "checked": "2026-09-05",
   "note": "Pick-path ingredients for the aquarium tab. Default tour is the current 10. Bench extras need an animal-first film (official aquarium, Nat Geo Kids, BBC Earth, or National Geographic). Mute autoplay uses video.start to skip logos. Sea lion, manatee, leafy dragon, axolotl, horseshoe crab, and lobster stay omitted until a habitat-first clip locks.",
   "omit": [
     {
@@ -60,14 +60,15 @@
       "defaultTour": true,
       "seq": 2,
       "video": {
-        "url": "https://www.youtube.com/watch?v=7tU4k4zjCCM",
-        "title": "Crabs at Monterey Bay Aquarium",
+        "url": "https://www.youtube.com/watch?v=f1dnocPQXDQ",
+        "title": "Hermit crabs trade shells",
         "provider": "youtube",
-        "channel": "Monterey Bay Aquarium",
+        "channel": "BBC Earth",
+        "start": 0,
         "verify": {
           "status": "sourced",
-          "source": "https://www.youtube.com/watch?v=7tU4k4zjCCM",
-          "checked": "2026-08-14"
+          "source": "https://www.youtube.com/watch?v=f1dnocPQXDQ",
+          "checked": "2026-09-05"
         }
       },
       "cam": {},
@@ -144,21 +145,48 @@
       "defaultTour": true,
       "seq": 6,
       "video": {
-        "url": "https://www.youtube.com/watch?v=nbY7dSf3GYE",
-        "title": "Jellies at Monterey Bay Aquarium",
+        "url": "https://www.youtube.com/watch?v=8C3fzRYXSNE",
+        "title": "Wild sea nettles in Monterey Bay",
         "provider": "youtube",
         "channel": "Monterey Bay Aquarium",
+        "start": 0,
         "verify": {
           "status": "sourced",
-          "source": "https://www.youtube.com/watch?v=nbY7dSf3GYE",
-          "checked": "2026-08-14"
+          "source": "https://www.youtube.com/watch?v=8C3fzRYXSNE",
+          "checked": "2026-09-05"
         }
       },
       "cam": {
         "url": "https://www.montereybayaquarium.org/cams-videos/live-cams/jelly-cam",
         "camLabel": "Jelly cam at Monterey Bay Aquarium"
       },
-      "printAnswer": "The sting catches food. A jellyfish has no brain — just a simple body that drifts and pulses."
+      "printAnswer": "The sting catches food. A jellyfish has no brain — just a simple body that drifts and pulses.",
+      "videos": [
+        {
+          "url": "https://www.youtube.com/watch?v=8C3fzRYXSNE",
+          "title": "Wild sea nettles in Monterey Bay",
+          "provider": "youtube",
+          "channel": "Monterey Bay Aquarium",
+          "start": 0,
+          "verify": {
+            "status": "sourced",
+            "source": "https://www.youtube.com/watch?v=8C3fzRYXSNE",
+            "checked": "2026-09-05"
+          }
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=uhJoXRgVd_8",
+          "title": "Bloody-belly comb jellies at Monterey Bay Aquarium",
+          "provider": "youtube",
+          "channel": "Monterey Bay Aquarium",
+          "start": 0,
+          "verify": {
+            "status": "sourced",
+            "source": "https://www.youtube.com/watch?v=uhJoXRgVd_8",
+            "checked": "2026-09-05"
+          }
+        }
+      ]
     },
     {
       "cardId": "starfish",
@@ -187,14 +215,15 @@
       "defaultTour": true,
       "seq": 8,
       "video": {
-        "url": "https://www.youtube.com/watch?v=EjLu5_exInI",
-        "title": "Leopard sharks at Monterey Bay Aquarium",
+        "url": "https://www.youtube.com/watch?v=o_I_pO-bttQ",
+        "title": "Great white shark on exhibit at Monterey Bay Aquarium",
         "provider": "youtube",
         "channel": "Monterey Bay Aquarium",
+        "start": 0,
         "verify": {
           "status": "sourced",
-          "source": "https://www.youtube.com/watch?v=EjLu5_exInI",
-          "checked": "2026-08-14"
+          "source": "https://www.youtube.com/watch?v=o_I_pO-bttQ",
+          "checked": "2026-09-05"
         }
       },
       "cam": {
@@ -231,14 +260,15 @@
       "defaultTour": true,
       "seq": 10,
       "video": {
-        "url": "https://www.youtube.com/watch?v=owf_zFHt_lQ",
-        "title": "Sea turtles at Monterey Bay Aquarium",
+        "url": "https://www.youtube.com/watch?v=rXuaU2XRx2U",
+        "title": "A sea turtle feeds on the reef",
         "provider": "youtube",
-        "channel": "Monterey Bay Aquarium",
+        "channel": "BBC Earth",
+        "start": 0,
         "verify": {
           "status": "sourced",
-          "source": "https://www.youtube.com/watch?v=owf_zFHt_lQ",
-          "checked": "2026-08-14"
+          "source": "https://www.youtube.com/watch?v=rXuaU2XRx2U",
+          "checked": "2026-09-05"
         }
       },
       "cam": {
@@ -253,14 +283,15 @@
       "challenge": "Why can’t penguins fly? Why the black-and-white coat?",
       "defaultTour": false,
       "video": {
-        "url": "https://www.youtube.com/watch?v=RQ56IFZO6N0",
-        "title": "African penguins at the San Diego Zoo",
+        "url": "https://www.youtube.com/watch?v=ol5_zk1skx0",
+        "title": "African penguins in the African sun",
         "provider": "youtube",
-        "channel": "San Diego Zoo",
+        "channel": "BBC Earth",
+        "start": 0,
         "verify": {
           "status": "sourced",
-          "source": "https://www.youtube.com/watch?v=RQ56IFZO6N0",
-          "checked": "2026-08-14"
+          "source": "https://www.youtube.com/watch?v=ol5_zk1skx0",
+          "checked": "2026-09-05"
         }
       },
       "cam": {
@@ -483,14 +514,15 @@
       "challenge": "Why is a nudibranch so colorful if it has no shell? What does the name mean?",
       "defaultTour": false,
       "video": {
-        "url": "https://www.youtube.com/watch?v=nHVoV0MVwSc",
-        "title": "Nudibranch sea slugs",
+        "url": "https://www.youtube.com/watch?v=FOeQVbL0Dgc",
+        "title": "Nudibranchs at Monterey Bay Aquarium",
         "provider": "youtube",
-        "channel": "National Geographic",
+        "channel": "Monterey Bay Aquarium",
+        "start": 0,
         "verify": {
           "status": "sourced",
-          "source": "https://www.youtube.com/watch?v=nHVoV0MVwSc",
-          "checked": "2026-08-16"
+          "source": "https://www.youtube.com/watch?v=FOeQVbL0Dgc",
+          "checked": "2026-09-05"
         }
       },
       "cam": {},
@@ -541,14 +573,15 @@
       "challenge": "Why does a sea anemone look like a flower? Why don’t clownfish get stung?",
       "defaultTour": false,
       "video": {
-        "url": "https://www.youtube.com/watch?v=SVkZqZDeLlk",
-        "title": "Anemone life",
+        "url": "https://www.youtube.com/watch?v=vfYDCpNCPNg",
+        "title": "A pom-pom anemone on the deep seafloor",
         "provider": "youtube",
-        "channel": "Monterey Bay Aquarium",
+        "channel": "MBARI",
+        "start": 0,
         "verify": {
           "status": "sourced",
-          "source": "https://www.youtube.com/watch?v=SVkZqZDeLlk",
-          "checked": "2026-08-16"
+          "source": "https://www.youtube.com/watch?v=vfYDCpNCPNg",
+          "checked": "2026-09-05"
         }
       },
       "cam": {},

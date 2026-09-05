@@ -37,18 +37,57 @@
         }
       },
       "video": {
-        "url": "https://www.youtube.com/watch?v=u2k4lSTZxS4",
-        "title": "Flamingo chicks at the Houston Zoo",
+        "url": "https://www.youtube.com/watch?v=7nK3gZqtlOM",
+        "title": "Flamingos gather at Lake Bogoria",
         "provider": "youtube",
-        "channel": "Houston Zoo",
+        "channel": "BBC Earth",
+        "start": 0,
         "verify": {
           "status": "sourced",
-          "source": "https://www.youtube.com/watch?v=u2k4lSTZxS4",
-          "checked": "2026-08-14"
+          "source": "https://www.youtube.com/watch?v=7nK3gZqtlOM",
+          "checked": "2026-09-05"
         }
       },
       "seq": 1,
-      "printAnswer": "Long legs let them wade and find food. Standing on one leg rests the other and can help them stay warm."
+      "printAnswer": "Long legs let them wade and find food. Standing on one leg rests the other and can help them stay warm.",
+      "videos": [
+        {
+          "url": "https://www.youtube.com/watch?v=7nK3gZqtlOM",
+          "title": "Flamingos gather at Lake Bogoria",
+          "provider": "youtube",
+          "channel": "BBC Earth",
+          "start": 0,
+          "verify": {
+            "status": "sourced",
+            "source": "https://www.youtube.com/watch?v=7nK3gZqtlOM",
+            "checked": "2026-09-05"
+          }
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=a3GkW5vuhAo",
+          "title": "West Indian flamingos make shrimp soup",
+          "provider": "youtube",
+          "channel": "BBC Earth",
+          "start": 0,
+          "verify": {
+            "status": "sourced",
+            "source": "https://www.youtube.com/watch?v=a3GkW5vuhAo",
+            "checked": "2026-09-05"
+          }
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=-1BF2XqboOo",
+          "title": "Underwater flamingo feeding at the San Diego Zoo",
+          "provider": "youtube",
+          "channel": "San Diego Zoo",
+          "start": 0,
+          "verify": {
+            "status": "sourced",
+            "source": "https://www.youtube.com/watch?v=-1BF2XqboOo",
+            "checked": "2026-09-05"
+          }
+        }
+      ]
     },
     {
       "id": "asian-small-clawed-otter",
@@ -72,18 +111,45 @@
         }
       },
       "video": {
-        "url": "https://www.youtube.com/watch?v=zboaajdMGHg",
-        "title": "Otters in their habitat at the National Zoo",
+        "url": "https://www.youtube.com/watch?v=9IR2Ij9375w",
+        "title": "Asian small-clawed otters at the Houston Zoo",
         "provider": "youtube",
-        "channel": "Smithsonian's National Zoo",
+        "channel": "Houston Zoo",
+        "start": 0,
         "verify": {
           "status": "sourced",
-          "source": "https://www.youtube.com/watch?v=zboaajdMGHg",
-          "checked": "2026-08-14"
+          "source": "https://www.youtube.com/watch?v=9IR2Ij9375w",
+          "checked": "2026-09-05"
         }
       },
       "seq": 2,
-      "printAnswer": "Whiskers feel fish moving in dark water. Otters hunt and play in water, and thick fur keeps them warm."
+      "printAnswer": "Whiskers feel fish moving in dark water. Otters hunt and play in water, and thick fur keeps them warm.",
+      "videos": [
+        {
+          "url": "https://www.youtube.com/watch?v=9IR2Ij9375w",
+          "title": "Asian small-clawed otters at the Houston Zoo",
+          "provider": "youtube",
+          "channel": "Houston Zoo",
+          "start": 0,
+          "verify": {
+            "status": "sourced",
+            "source": "https://www.youtube.com/watch?v=9IR2Ij9375w",
+            "checked": "2026-09-05"
+          }
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=XQGB3AT90o8",
+          "title": "Asian small-clawed otters on a January day",
+          "provider": "youtube",
+          "channel": "Houston Zoo",
+          "start": 0,
+          "verify": {
+            "status": "sourced",
+            "source": "https://www.youtube.com/watch?v=XQGB3AT90o8",
+            "checked": "2026-09-05"
+          }
+        }
+      ]
     },
     {
       "id": "african-penguin",
@@ -107,14 +173,15 @@
         }
       },
       "video": {
-        "url": "https://www.youtube.com/watch?v=RQ56IFZO6N0",
-        "title": "African penguins at the San Diego Zoo",
+        "url": "https://www.youtube.com/watch?v=ol5_zk1skx0",
+        "title": "African penguins in the African sun",
         "provider": "youtube",
-        "channel": "San Diego Zoo",
+        "channel": "BBC Earth",
+        "start": 0,
         "verify": {
           "status": "sourced",
-          "source": "https://www.youtube.com/watch?v=RQ56IFZO6N0",
-          "checked": "2026-08-14"
+          "source": "https://www.youtube.com/watch?v=ol5_zk1skx0",
+          "checked": "2026-09-05"
         }
       },
       "seq": 3,
@@ -177,18 +244,45 @@
         }
       },
       "video": {
-        "url": "https://www.youtube.com/watch?v=TMvYXAkHIFo",
-        "title": "Giraffe calf at the Houston Zoo",
+        "url": "https://www.youtube.com/watch?v=WXsrwyNhfYw",
+        "title": "Giraffes in the wild",
         "provider": "youtube",
-        "channel": "Houston Zoo",
+        "channel": "BBC Earth Relax and BBC Earth",
+        "start": 0,
         "verify": {
           "status": "sourced",
-          "source": "https://www.youtube.com/watch?v=TMvYXAkHIFo",
-          "checked": "2026-08-14"
+          "source": "https://www.youtube.com/watch?v=WXsrwyNhfYw",
+          "checked": "2026-09-05"
         }
       },
       "seq": 5,
-      "printAnswer": "A long neck reaches high leaves. To drink, a giraffe spreads its front legs and bends down carefully."
+      "printAnswer": "A long neck reaches high leaves. To drink, a giraffe spreads its front legs and bends down carefully.",
+      "videos": [
+        {
+          "url": "https://www.youtube.com/watch?v=WXsrwyNhfYw",
+          "title": "Giraffes in the wild",
+          "provider": "youtube",
+          "channel": "BBC Earth Relax and BBC Earth",
+          "start": 0,
+          "verify": {
+            "status": "sourced",
+            "source": "https://www.youtube.com/watch?v=WXsrwyNhfYw",
+            "checked": "2026-09-05"
+          }
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=9L7RAUD8pu4",
+          "title": "Masai giraffes at the Houston Zoo",
+          "provider": "youtube",
+          "channel": "Houston Zoo",
+          "start": 0,
+          "verify": {
+            "status": "sourced",
+            "source": "https://www.youtube.com/watch?v=9L7RAUD8pu4",
+            "checked": "2026-09-05"
+          }
+        }
+      ]
     },
     {
       "id": "african-elephant",
@@ -352,14 +446,15 @@
         }
       },
       "video": {
-        "url": "https://www.youtube.com/watch?v=f9KVNw799aE",
-        "title": "Giant panda Qing Bao in her habitat",
+        "url": "https://www.youtube.com/watch?v=wTVtbr-R4yA",
+        "title": "Giant pandas Bao Li and Qing Bao in their habitat",
         "provider": "youtube",
         "channel": "Smithsonian's National Zoo",
+        "start": 0,
         "verify": {
           "status": "sourced",
-          "source": "https://www.youtube.com/watch?v=f9KVNw799aE",
-          "checked": "2026-08-14"
+          "source": "https://www.youtube.com/watch?v=wTVtbr-R4yA",
+          "checked": "2026-09-05"
         }
       },
       "seq": 10,

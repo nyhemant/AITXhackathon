@@ -48,14 +48,15 @@
       },
       "cam": {},
       "video": {
-        "url": "https://www.youtube.com/watch?v=7tU4k4zjCCM",
-        "title": "Crabs at Monterey Bay Aquarium",
+        "url": "https://www.youtube.com/watch?v=f1dnocPQXDQ",
+        "title": "Hermit crabs trade shells",
         "provider": "youtube",
-        "channel": "Monterey Bay Aquarium",
+        "channel": "BBC Earth",
+        "start": 0,
         "verify": {
           "status": "sourced",
-          "source": "https://www.youtube.com/watch?v=7tU4k4zjCCM",
-          "checked": "2026-08-14"
+          "source": "https://www.youtube.com/watch?v=f1dnocPQXDQ",
+          "checked": "2026-09-05"
         }
       },
       "seq": 2,
@@ -105,14 +106,15 @@
         }
       },
       "video": {
-        "url": "https://www.youtube.com/watch?v=owf_zFHt_lQ",
-        "title": "Sea turtles at Monterey Bay Aquarium",
+        "url": "https://www.youtube.com/watch?v=rXuaU2XRx2U",
+        "title": "A sea turtle feeds on the reef",
         "provider": "youtube",
-        "channel": "Monterey Bay Aquarium",
+        "channel": "BBC Earth",
+        "start": 0,
         "verify": {
           "status": "sourced",
-          "source": "https://www.youtube.com/watch?v=owf_zFHt_lQ",
-          "checked": "2026-08-14"
+          "source": "https://www.youtube.com/watch?v=rXuaU2XRx2U",
+          "checked": "2026-09-05"
         }
       },
       "seq": 10,
@@ -162,14 +164,15 @@
         }
       },
       "video": {
-        "url": "https://www.youtube.com/watch?v=EjLu5_exInI",
-        "title": "Leopard sharks at Monterey Bay Aquarium",
+        "url": "https://www.youtube.com/watch?v=o_I_pO-bttQ",
+        "title": "Great white shark on exhibit at Monterey Bay Aquarium",
         "provider": "youtube",
         "channel": "Monterey Bay Aquarium",
+        "start": 0,
         "verify": {
           "status": "sourced",
-          "source": "https://www.youtube.com/watch?v=EjLu5_exInI",
-          "checked": "2026-08-14"
+          "source": "https://www.youtube.com/watch?v=o_I_pO-bttQ",
+          "checked": "2026-09-05"
         }
       },
       "seq": 8,
@@ -276,18 +279,45 @@
         }
       },
       "video": {
-        "url": "https://www.youtube.com/watch?v=nbY7dSf3GYE",
-        "title": "Jellies at Monterey Bay Aquarium",
+        "url": "https://www.youtube.com/watch?v=8C3fzRYXSNE",
+        "title": "Wild sea nettles in Monterey Bay",
         "provider": "youtube",
         "channel": "Monterey Bay Aquarium",
+        "start": 0,
         "verify": {
           "status": "sourced",
-          "source": "https://www.youtube.com/watch?v=nbY7dSf3GYE",
-          "checked": "2026-08-14"
+          "source": "https://www.youtube.com/watch?v=8C3fzRYXSNE",
+          "checked": "2026-09-05"
         }
       },
       "seq": 6,
-      "printAnswer": "The sting catches food. A jellyfish has no brain — just a simple body that drifts and pulses."
+      "printAnswer": "The sting catches food. A jellyfish has no brain — just a simple body that drifts and pulses.",
+      "videos": [
+        {
+          "url": "https://www.youtube.com/watch?v=8C3fzRYXSNE",
+          "title": "Wild sea nettles in Monterey Bay",
+          "provider": "youtube",
+          "channel": "Monterey Bay Aquarium",
+          "start": 0,
+          "verify": {
+            "status": "sourced",
+            "source": "https://www.youtube.com/watch?v=8C3fzRYXSNE",
+            "checked": "2026-09-05"
+          }
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=uhJoXRgVd_8",
+          "title": "Bloody-belly comb jellies at Monterey Bay Aquarium",
+          "provider": "youtube",
+          "channel": "Monterey Bay Aquarium",
+          "start": 0,
+          "verify": {
+            "status": "sourced",
+            "source": "https://www.youtube.com/watch?v=uhJoXRgVd_8",
+            "checked": "2026-09-05"
+          }
+        }
+      ]
     }
   ],
   "sequential": true
