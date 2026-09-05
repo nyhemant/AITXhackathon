@@ -1,19 +1,8 @@
 (() => {
   const places = window.FP_PLACES || [];
-  const grid = document.getElementById("ready-grid");
   const chips = document.getElementById("city-chips");
   const continueChip = document.getElementById("continue-chip");
   const citySelect = document.getElementById("city-select");
-
-  const FEATURED_READY_IDS = (window.FP_READY_STRIP && window.FP_READY_STRIP.us) || [
-    "dallas-zoo",
-    "childrens-aquarium-dallas",
-    "childrens-museum-perot",
-    "houston-zoo",
-    "san-diego-zoo",
-    "national-zoo",
-  ];
-  const READY = FEATURED_READY_IDS.map((id) => places.find((p) => p.id === id)).filter(Boolean);
 
   function escapeHtml(s) {
     return String(s)
@@ -105,7 +94,7 @@
       if (label) label.textContent = mode === "place" ? "Find a place" : "Find a card";
       input.placeholder =
         mode === "place" ? "Zoo, museum, park, or city…" : "Lion, shark, dinosaur…";
-      if (submitBtn) submitBtn.textContent = mode === "place" ? "Find place" : "Find card";
+      if (submitBtn) submitBtn.textContent = "Find";
       results.setAttribute("aria-label", mode === "place" ? "Matching places" : "Matching cards");
       const hint = document.getElementById("hero-search-mode-hint");
       if (hint) {
@@ -406,24 +395,6 @@
     });
   });
 
-  // Ready cards go to the place page (at-home session). Hub /#/venue/{id} also leaves for that page.
-  if (grid && READY.length) {
-    grid.innerHTML = READY.map((p) => {
-      const href = `/field-pack/${encodeURIComponent(p.id)}/`;
-      const short =
-        p.id === "childrens-aquarium-dallas"
-          ? "Children’s Aquarium"
-          : p.id === "childrens-museum-perot"
-            ? "Children’s Museum"
-            : p.name;
-      return `<a class="ready-card" href="${escapeHtml(href)}" data-venue-id="${escapeHtml(p.id)}">
-        <span class="rc-emoji" aria-hidden="true">${escapeHtml(p.emoji || "")}</span>
-        <h3>${escapeHtml(short)}</h3>
-        <span class="rc-cta">Explore →</span>
-      </a>`;
-    }).join("");
-  }
-
   /** City chips: hover/focus shows venue links; click jumps the map. */
   const chipDefs = [
     {
@@ -631,9 +602,9 @@
         continueChip.hidden = false;
         continueChip.removeAttribute("hidden");
         continueChip.style.display = "block";
-        continueChip.innerHTML = `Pick up where you left off at <strong>${escapeHtml(
+        continueChip.innerHTML = `Continue: <strong>${escapeHtml(
           label
-        )}</strong>. <a href="${href}">Continue →</a>`;
+        )}</strong> <a href="${href}">Open</a>`;
       }
     }
   } catch {

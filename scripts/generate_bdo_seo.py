@@ -92,7 +92,12 @@ CTA_EXPLORE_HOME = "Explore at home"
 CTA_PRINT_VISIT = CTA_PRINT
 CTA_PRINT_VISIT_SHORT = CTA_PRINT
 CTA_PRINT_CARD = CTA_PRINT
-CTA_READY = "Explore →"
+CTA_READY = "Open"
+CTA_FIND = "Find"
+# Map explorer (/field-pack/) — short title, no sales/FAQ essay. Do not redirect to /start/.
+EXPLORER_H1 = "Find a place"
+EXPLORER_TITLE = "Find a place · Field Trip Kit"
+EXPLORER_DESC = "Find a zoo, aquarium, museum, or park."
 
 HOME_SESSION_H2 = CTA_AT_HOME
 HOME_SESSION_LEAD = "Cards, photos, and a cam when we have one."
@@ -255,7 +260,9 @@ OUTING_TALK_EXHIBIT = (
 
 SEO_CSS_VER = "29"
 CARD_SEO_CSS_VER = "30"
-LANDING_CSS_VER = "95"
+LANDING_CSS_VER = "99"
+LANDING_MAP_JS_VER = "87"
+LANDING_HOOK_JS_VER = "37"
 STYLES_CSS_VER = "36"
 CATALOG_JS_VER = "40"
 VIEWPORT = "width=device-width, initial-scale=1, viewport-fit=cover"
@@ -3255,7 +3262,7 @@ _TYPE_DIR_META = (
     {
         "kind": "zoo",
         "id": "dir-zoos",
-        "label": "Zoos &amp; safaris",
+        "label": "Zoos",
         "hub": "/field-pack/zoos/",
         "hub_label": "All zoos",
         "sample_ids": ("dallas-zoo", "san-diego-zoo", "bronx-zoo", "singapore-zoo", "london-zoo"),
@@ -3276,7 +3283,7 @@ _TYPE_DIR_META = (
     {
         "kind": "museum",
         "id": "dir-museums",
-        "label": "Museums &amp; science",
+        "label": "Museums",
         "hub": "/field-pack/museums/",
         "hub_label": "All museums",
         "sample_ids": (
@@ -4686,10 +4693,10 @@ def patch_landing_directory(venues: list[dict]) -> None:
     )
 
     hub_meta = [
-        ("zoo", "Zoos & safaris", "🦁", "/field-pack/zoos/"),
+        ("zoo", "Zoos", "🦁", "/field-pack/zoos/"),
         ("aquarium", "Aquariums", "🦈", "/field-pack/aquariums/"),
-        ("museum", "Museums & science", "🦕", "/field-pack/museums/"),
-        ("park", "National parks", "🏞️", "/field-pack/national-parks/"),
+        ("museum", "Museums", "🦕", "/field-pack/museums/"),
+        ("park", "Parks", "🏞️", "/field-pack/national-parks/"),
     ]
     hub_cards = []
     for kind, label, emoji, href in hub_meta:
@@ -4720,7 +4727,7 @@ def patch_landing_directory(venues: list[dict]) -> None:
         )
     popular_html = (
         '<div class="cat-popular" id="cat-popular">'
-        '<p class="cat-popular-label">Popular places</p>'
+        '<p class="cat-popular-label">Popular</p>'
         '<div class="cat-popular-chips">'
         + "".join(pop_chips)
         + "</div></div>"

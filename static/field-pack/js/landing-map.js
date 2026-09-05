@@ -1304,7 +1304,7 @@
         <h3>${escapeHtml(area)}</h3>
         <button type="button" class="pd-clear" id="pd-clear-selection" aria-label="Clear">×</button>
       </div>
-      <p class="pd-hint">${places.length} places here — pick one.</p>
+      <p class="pd-hint">${places.length} places</p>
       <div class="nearby-list" role="listbox" aria-label="Places nearby">
         ${places
           .map(
@@ -1453,10 +1453,10 @@
               : `<span class="pd-sample-fallback" aria-hidden="true">${escapeHtml(sample.emoji || "⭐")}</span>`
           }
           <span class="pd-sample-body">
-            <span class="pd-sample-kicker">Sample Q&amp;A card</span>
+            <span class="pd-sample-kicker">Card</span>
             <span class="pd-sample-name">${escapeHtml(sample.emoji || "")} ${escapeHtml(sample.name)}</span>
-            <span class="pd-sample-blurb">${escapeHtml(sample.blurb || "Tap to print a one-page sample card.")}</span>
-            <span class="pd-sample-cta">Tap to print this card →</span>
+            <span class="pd-sample-blurb">${escapeHtml(sample.blurb || "")}</span>
+            <span class="pd-sample-cta">Print</span>
           </span>
         </button>`
       : "";
@@ -1469,11 +1469,10 @@
       ? ""
       : isMissionPilot
         ? `<a class="btn btn-primary pd-mission-cta" href="${missionHref}">
-            <span class="pd-cta-main pd-cta-long">Create and print your mission</span>
-            <span class="pd-cta-main pd-cta-short">Create/print mission</span>
+            <span class="pd-cta-main">Open</span>
           </a>`
         : canPrintHunt
-          ? `<button type="button" class="btn btn-primary" id="pd-print-hunt">Print one-page hunt</button>`
+          ? `<button type="button" class="btn btn-primary" id="pd-print-hunt">Print</button>`
           : "";
     const heroBlock = heroSrc
       ? `<div class="pd-park-hero">
@@ -1497,7 +1496,7 @@
       ${blurb ? `<p class="pd-blurb">${escapeHtml(blurb)}</p>` : ""}
       ${
         isSoon
-          ? `<p class="pd-hint">Pack in progress — shortlist and printable hunt coming next.</p>`
+          ? `<p class="pd-hint">Coming next.</p>`
           : ""
       }
       ${primaryCta ? `<div class="pd-actions">${primaryCta}</div>` : ""}
@@ -1664,7 +1663,7 @@
         })
         .join("");
       mapHost.innerHTML = chips
-        ? `<p class="map-fallback-lead">Map didn’t load. Explore a place:</p><ul class="map-fallback-list">${chips}</ul>`
+        ? `<p class="map-fallback-lead">Places</p><ul class="map-fallback-list">${chips}</ul>`
         : `<p class="map-loading">Map unavailable — use the place list below.</p>`;
       const fallback = document.getElementById("map-fallback");
       if (fallback) fallback.hidden = false;
@@ -1866,7 +1865,6 @@
     setScope = async function (scope) {
       await _setScope(scope);
       persistScopePreference(scope === "intl" ? "intl" : "us");
-      updateReadyChips(scope === "intl");
     };
 
     const preferIntl = detectPreferIntl();
@@ -1889,38 +1887,9 @@
       showOverview();
       if (zoom < 1.2) setZoom(1.15);
     }
-    updateReadyChips(mapScope === "intl");
-
     // Type tabs: All | Zoos | Aquariums | Museums (filters map + directory)
     wirePlaceTypeTabs();
     bindCatalogPrintClicks();
-  }
-
-  /** Swap Ready strip for US vs international map scope. */
-  function updateReadyChips(isIntl) {
-    const heading = document.getElementById("ready-heading");
-    const grid = document.getElementById("ready-grid");
-    if (!heading || !grid) return;
-    const spec = window.FP_READY_STRIP || { us: [], intl: [] };
-    const ids = spec.us && spec.us.length ? spec.us : spec.intl;
-    const shortName = {
-      "childrens-aquarium-dallas": "Children’s Aquarium",
-      "childrens-museum-perot": "Children’s Museum",
-      "national-zoo": "National Zoo",
-    };
-    heading.textContent = isIntl ? "Try a place" : "Explore a place at home";
-    grid.innerHTML = ids
-      .map((id) => {
-        const p = placeById(id) || {};
-        const emoji = p.emoji || "📍";
-        const name = shortName[id] || p.name || id;
-        return `<a class="ready-card" href="/field-pack/${id}/" data-venue-id="${id}">
-            <span class="rc-emoji" aria-hidden="true">${emoji}</span>
-            <h3>${name}</h3>
-            <span class="rc-cta">Explore →</span>
-          </a>`;
-      })
-      .join("");
   }
 
   boot();
@@ -1934,33 +1903,11 @@
   };
 
   const TYPE_TAB_COPY = {
-    all: {
-      pitch: "Explore a place at home — or print a hunt for the visit",
-      dir: "Cards & places",
-      blurb:
-        "Tabs above filter the map and this catalog together. Each day type pairs places with matching cards (zoos↔wildlife, aquariums↔sea life, museums↔attractions).",
-    },
-    zoo: {
-      pitch: "Explore a zoo at home — or print a hunt for the visit",
-      dir: "Zoos · wildlife cards",
-      blurb: "Map shows zoos. Catalog: wildlife cards + zoo places.",
-    },
-    aquarium: {
-      pitch: "Explore an aquarium at home — or print a hunt for the visit",
-      dir: "Aquariums · sea life cards",
-      blurb: "Map shows aquariums. Catalog: sea life cards + aquarium places.",
-    },
-    museum: {
-      pitch: "Explore a museum at home — or print a hunt for the visit",
-      dir: "Museums · attraction cards",
-      blurb: "Map shows museums. Catalog: attraction cards + museum places.",
-    },
-    park: {
-      pitch: "Explore a park at home — or print a hunt for the visit",
-      dir: "Parks",
-      blurb:
-        "Map shows parks. One finishable slice (rim, boardwalk, lakeshore) — not the whole park.",
-    },
+    all: { pitch: "", dir: "Places", blurb: "" },
+    zoo: { pitch: "", dir: "Zoos", blurb: "" },
+    aquarium: { pitch: "", dir: "Aquariums", blurb: "" },
+    museum: { pitch: "", dir: "Museums", blurb: "" },
+    park: { pitch: "", dir: "Parks", blurb: "" },
   };
 
   function syncTypeTabs() {
