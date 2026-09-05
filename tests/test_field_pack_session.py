@@ -499,11 +499,13 @@ class FlagshipSessionTests(unittest.TestCase):
         self.assertIn('width="1280" height="720"', yellowstone)
 
         card = (FP / "cards" / "reticulated-giraffe" / "index.html").read_text(encoding="utf-8")
+        seo = (FP / "css" / "seo-venue.css").read_text(encoding="utf-8")
         self.assertIn('class="card-page-photo"', card)
         self.assertIn('width="640" height="640"', card)
-        self.assertIn("aspect-ratio: 1 / 1", card)
-        self.assertIn("object-fit: cover", card)
         self.assertIn('style="object-position: 50% 18%"', card)
+        self.assertIn(".card-page img.card-page-photo", seo)
+        self.assertIn("aspect-ratio: 1 / 1", seo)
+        self.assertIn("object-fit: cover", seo)
 
         from generate_bdo_seo import _card_thumb_img, _photo_position
 
