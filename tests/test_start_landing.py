@@ -645,7 +645,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn("autoplay", self.html)
         self.assertIn('preload="auto"', self.html)
         self.assertNotIn('preload="none"', self.html)
-        self.assertIn('start.js?v=8', self.html)
+        self.assertIn('start.js?v=9', self.html)
         self.assertIn(" loop ", self.html)
         self.assertNotIn("youtube.com", self.html)
         self.assertNotIn("youtube-nocookie.com", self.html)
@@ -703,12 +703,13 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn("entry.isIntersecting", self.js)
         self.assertIn("playTeaser()", self.js)
         io = re.search(
-            r"IntersectionObserver\(\s*\(entries\) => \{([\s\S]*?)\},\s*\{ threshold: 0.35 \}",
+            r"IntersectionObserver\(\s*\(entries\) => \{([\s\S]*?)\},\s*\{ threshold: \[0, 0.15, 0.35\] \}",
             self.js,
         )
         self.assertIsNotNone(io)
         self.assertIn("playTeaser()", io.group(1))
         self.assertIn("intersecting = true", io.group(1))
+        self.assertIn("intersectionRatio > 0", io.group(1))
         self.assertNotIn("p.catch(() => {})", io.group(1))
         error = re.search(
             r'video.addEventListener\("error",\s*\(\) => \{([\s\S]*?)\n    \}\);',
