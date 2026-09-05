@@ -85,19 +85,23 @@ NAV_CARDS_SUB = "Talk, photos &amp; Q&amp;A"
 NAV_VFT_SUB = "Explore at home"
 NAV_ABOUT_SUB = "1Less &amp; contact"
 
-# Place-page primary actions (short). Card pages keep the longer explore label.
+# Place-page primary actions (short). Card pages use CARD_* / CTA_PRINT / PLACE_VFT_CTA.
 CTA_AT_HOME = "At home"
 CTA_PRINT = "Print"
 CTA_EXPLORE_HOME = "Explore at home"
 CTA_PRINT_VISIT = CTA_PRINT
 CTA_PRINT_VISIT_SHORT = CTA_PRINT
-CTA_PRINT_CARD = "Print this card"
+CTA_PRINT_CARD = CTA_PRINT
 CTA_READY = "Explore →"
 
 HOME_SESSION_H2 = CTA_AT_HOME
 HOME_SESSION_LEAD = "Cards, photos, and a cam when we have one."
 HOME_SESSION_VFT = "Open Virtual Field Trip"
 PLACE_VFT_CTA = "Virtual Field Trip"
+# Card-page chrome — short labels. Do not reintroduce tutorial essays.
+CARD_TALK_H2 = "Talk"
+CTA_CARDS_HUB = "Cards"
+CTA_CARD_PLACE = "Place"
 HOME_EMPTY = "No cards for this place yet."
 START_HERE_H2 = "Start here"
 START_HERE_LEAD = ""
@@ -250,6 +254,7 @@ OUTING_TALK_EXHIBIT = (
 )
 
 SEO_CSS_VER = "29"
+CARD_SEO_CSS_VER = "30"
 LANDING_CSS_VER = "95"
 STYLES_CSS_VER = "36"
 CATALOG_JS_VER = "40"
@@ -666,8 +671,8 @@ def outing_talk_html(item: dict) -> str:
         )
     extra = real_extra_qa_html(item)
     return (
-        f'<section class="card-talk-pack" aria-label="Six talk questions">'
-        f'<p class="step-chip">6 questions · talk, tap, or print</p>'
+        f'<section class="card-talk-pack" aria-label="{esc(CARD_TALK_H2)}">'
+        f'<h2 class="card-talk-h">{esc(CARD_TALK_H2)}</h2>'
         f'<div class="mission-grid">{"".join(cards)}</div>'
         f"{extra}</section>"
     )
@@ -754,11 +759,18 @@ def cousin_source_from_label(label: str) -> str:
     return ""
 
 
+def is_youtube_url(url: str) -> bool:
+    host = (urlparse(url or "").hostname or "").lower()
+    if host.startswith("www."):
+        host = host[4:]
+    return host in {"youtube.com", "youtu.be", "m.youtube.com", "youtube-nocookie.com"}
+
+
 def watch_link_html(url: str, label: str, *, kind: str) -> str:
     """Cam/film anchor: first visible line names the real zoo when the label has one."""
     src = cousin_source_from_label(label)
     if src:
-        prefix = "Film from" if kind == "film" else "Live from"
+        prefix = "Live from" if kind == "cam" else "Film from"
         inner = (
             f'<span class="seo-watch-source">{esc(prefix)} {esc(src)}</span>'
             f'<span class="seo-watch-detail">{esc(label)}</span>'
@@ -769,19 +781,30 @@ def watch_link_html(url: str, label: str, *, kind: str) -> str:
     return f'<a class="seo-watch-link" href="{esc(url)}"{extra}>{inner}</a>'
 
 
-def watch_links_html(item: dict) -> str:
-    """Live cam / film only when Virtual Field Trip already has a sourced URL."""
+def watch_links_html(item: dict, *, film_via_vft: bool = False) -> str:
+    """Live cam / film only when Virtual Field Trip already has a sourced URL.
+
+    Card pages pass film_via_vft=True so Pre-recorded YouTube tabs open the
+    in-page VFT habitat instead. Place pages keep the existing film URLs.
+    """
     vft = item.get("vft") or {}
     links: list[str] = []
+    film_used_vft = False
     if vft.get("cam_url"):
         label = vft.get("cam_label") or "Watch live cam"
         links.append(watch_link_html(str(vft["cam_url"]), label, kind="cam"))
     if vft.get("film_url"):
         label = vft.get("film_title") or "Watch a short film"
-        links.append(watch_link_html(str(vft["film_url"]), label, kind="film"))
-    if vft.get("vft_href") and (vft.get("cam_url") or vft.get("film_url")):
+        film_url = str(vft["film_url"])
+        if film_via_vft and vft.get("vft_href") and is_youtube_url(film_url):
+            links.append(watch_link_html(str(vft["vft_href"]), label, kind="vft"))
+            film_used_vft = True
+        else:
+            links.append(watch_link_html(film_url, label, kind="film"))
+    if vft.get("vft_href") and (vft.get("cam_url") or vft.get("film_url")) and not film_used_vft:
+        cta = PLACE_VFT_CTA if film_via_vft else HOME_SESSION_VFT
         links.append(
-            f'<a class="seo-watch-link" href="{vft["vft_href"]}">{esc(HOME_SESSION_VFT)}</a>'
+            f'<a class="seo-watch-link" href="{vft["vft_href"]}">{esc(cta)}</a>'
         )
     if not links:
         return ""
@@ -4224,7 +4247,6 @@ def write_cards_hub(venues: list[dict]) -> str:
         items = sorted(items, key=lambda x: (x.get("name") or "").lower())
         lis = []
         for c in items:
-            blurb = esc((c.get("blurb") or "").strip() or "Printable Q&A card for kids.")
             href = _card_href(c)
             cid = c.get("id") or ""
             photo = (c.get("photo") or "").strip()
@@ -4257,7 +4279,6 @@ def write_cards_hub(venues: list[dict]) -> str:
                 f'<span class="cards-hub-copy">'
                 f'<span class="cards-hub-name">{esc(c.get("name") or cid)}</span>'
                 f"{venue_html}"
-                f'<span class="cards-hub-teaser">{blurb}</span>'
                 f"</span>"
                 f"</a></li>"
             )
@@ -4270,11 +4291,8 @@ def write_cards_hub(venues: list[dict]) -> str:
         )
 
     body_sections = "\n".join(section_html(*s) for s in sections if s[2])
-    title = "Animal & Discovery Cards for Kids — Talk, Photos & Q&A · Field Trip Kit"
-    desc = (
-        "Explore animal, sea-life, museum, and park cards at home — photos, talk prompts, and Q&A. "
-        f"Browse all {total} cards. Print is optional. No account."
-    )
+    title = "Animal cards · Field Trip Kit"
+    desc = f"{total} animal, sea-life, museum, and park cards — photos and talk prompts."
     url = f"{SITE}/field-pack/cards/"
     cards_by_id = {c.get("id"): c for c in cards}
     try_bits = []
@@ -4317,9 +4335,9 @@ def write_cards_hub(venues: list[dict]) -> str:
   <meta name="twitter:image" content="{OG_SHARE_IMAGE}" />
   <base href="/field-pack/" />
   <link rel="stylesheet" href="/shell/shell.css?v=8" />
-  <link rel="stylesheet" href="/field-pack/css/styles.css?v=35" />
-  <link rel="stylesheet" href="/field-pack/css/landing.css?v=97" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=28" />
+  <link rel="stylesheet" href="/field-pack/css/styles.css?v={STYLES_CSS_VER}" />
+  <link rel="stylesheet" href="/field-pack/css/landing.css?v=98" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v={CARD_SEO_CSS_VER}" />
 </head>
 <body class="landing-body landing-hub cards-explorer">
   <div class="app landing-app landing-clean">
@@ -4360,7 +4378,7 @@ def write_cards_hub(venues: list[dict]) -> str:
     </header>
     <main class="cards-hub" id="cards-hub">
       {_hub_filter_tabs_html([s[0] for s in sections])}
-      <p class="cards-hub-count" id="cards-hub-count">{total} cards · from Field Trip Kit place lists</p>
+      <p class="cards-hub-count" id="cards-hub-count">{total} cards</p>
       <section class="ready-now ready-slim try-card-row" id="try-a-card" aria-labelledby="try-card-heading">
         <h2 id="try-card-heading">Try a card</h2>
         <div class="try-card-grid" id="try-card-grid">
@@ -4392,7 +4410,7 @@ def write_cards_hub(venues: list[dict]) -> str:
   </div>
   <script src="/shell/shell.js?v=5"></script>
   <script src="/field-pack/js/fp-analytics.js?v=1"></script>
-  <script src="/field-pack/js/cards-explorer.js?v=1"></script>
+  <script src="/field-pack/js/cards-explorer.js?v=2"></script>
 </body>
 </html>
 """
@@ -4442,15 +4460,12 @@ def write_card_pages(
             chrome_vid = ""
         else:
             chrome_vid = vid
-        venue_line = f" · {esc(vname)}" if vname else ""
         venue_href = f"/field-pack/{esc(chrome_vid)}/#at-home" if chrome_vid else "/field-pack/cards/"
-        cards_cta = (
-            place_cards_cta(venue_type_kind(v or {"type": c.get("venue_type") or ""}))
-            if chrome_vid
-            else CTA_EXPLORE_HOME
+        venue_chrome = (
+            f'<p class="card-page-venue">{esc(CTA_AT_HOME)} · {esc(vname)}</p>'
+            if show_venue_chrome and vname
+            else ""
         )
-        place_link = f' · <a href="{venue_href}">Place page</a>' if chrome_vid else ""
-        venue_chrome = f'<p class="card-page-venue">At-home card{venue_line}{place_link}</p>'
         photo = ""
         if (FIELD / "photos" / f"{cid}.jpg").is_file():
             photo = f"/field-pack/photos/{cid}.jpg?v=img2"
@@ -4458,22 +4473,38 @@ def write_card_pages(
             photo = "/field-pack/" + str(item["photo"]).split("?")[0]
         pos_attr = _photo_position_attr(_photo_position(item, c))
         img_html = (
-            f'<img class="card-page-photo" src="{esc(photo)}" alt="" width="640" height="640" decoding="async"{pos_attr} />'
+            f'<img class="card-page-photo" src="{esc(photo)}" alt="{esc(name)}" width="640" height="640" decoding="async"{pos_attr} />'
             if photo
             else f'<p class="card-page-emoji" aria-hidden="true">{esc(emoji)}</p>'
         )
         talk_html = outing_talk_html(item)
         more_links = catalog_more_links_html(item, shared=not show_venue_chrome)
-        watch_html = watch_links_html(item)
+        watch_html = watch_links_html(item, film_via_vft=True)
         next_html = card_next_html(cid)
         print_venue_attr = f' data-venue="{esc(vid)}"' if show_venue_chrome and vid else ""
         kit_sites_js = json.dumps(start_here_official_urls(), separators=(",", ":"))
-        title = f"{name} for Kids — Talk, Photos & Q&A · Field Trip Kit"
-        desc = (
-            f"Explore the {name} card at home: photo, six talk questions, and Q&A. "
-            + (blurb + " " if blurb else "")
-            + "Print is optional. No account."
+        vft = item.get("vft") or {}
+        vft_href = vft.get("vft_href") or ""
+        action_bits: list[str] = []
+        if vft_href:
+            action_bits.append(
+                f'<a class="btn btn-secondary" href="{vft_href}">{esc(PLACE_VFT_CTA)}</a>'
+            )
+        if chrome_vid:
+            action_bits.append(
+                f'<a class="btn btn-secondary" href="{venue_href}">{esc(CTA_CARD_PLACE)}</a>'
+            )
+        elif not vft_href:
+            action_bits.append(
+                f'<a class="btn btn-secondary" href="/field-pack/cards/">{esc(CTA_CARDS_HUB)}</a>'
+            )
+        action_bits.append(
+            f'<button type="button" class="btn btn-secondary" id="print-this-card" data-card-id="{esc(cid)}"{print_venue_attr}>{esc(CTA_PRINT)}</button>'
         )
+        actions_html = "\n        ".join(action_bits)
+        blurb_html = f'<p class="card-page-blurb">{esc(blurb)}</p>' if blurb else ""
+        title = f"{name} — Field Trip Kit"
+        desc = (blurb + " " if blurb else "") + f"{name} card: photo and talk prompts."
         url = f"{SITE}/field-pack/cards/{cid}/"
         html = f"""<!DOCTYPE html>
 <html lang="en">
@@ -4492,42 +4523,37 @@ def write_card_pages(
   <link rel="stylesheet" href="/shell/shell.css?v=6" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v={STYLES_CSS_VER}" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v={LANDING_CSS_VER}" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v={SEO_CSS_VER}" />
-  <style>
-    .card-page {{ max-width: 28rem; margin: 0 auto; padding: 1rem 1rem 3rem; }}
-    .card-page h1 {{ font-size: clamp(1.35rem, 4vw, 1.75rem); color: #0a4545; margin: 0.4rem 0; }}
-    .card-page-venue a {{ color: #0f5c5c; font-weight: 750; }}
-    .card-page-photo {{ width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 14px; border: 1.5px solid rgba(15,92,92,.14); }}
-    .card-page-emoji {{ font-size: 3rem; margin: 0.5rem 0; }}
-    .card-page-blurb {{ color: #3d4f6f; line-height: 1.45; }}
-    .card-page-actions {{ display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem; }}
-    .card-page-crumbs {{ font-size: 0.9rem; color: #5a6a84; }}
-    .card-page-crumbs a {{ color: #0f5c5c; }}
-    .card-page-next {{ margin: 0.75rem 0 0; font-weight: 800; }}
-    .card-page-next a {{ color: #0f5c5c; }}
-  </style>
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v={CARD_SEO_CSS_VER}" />
 </head>
-<body class="landing-body">
+<body class="landing-body card-page-body">
   <div class="app">
     <header class="oneless-shell no-print" data-product="bdo">
       <a class="shell-brand" href="{HOME_HREF}" aria-label="Field Trip Kit home">
         <img src="/1LessMark.png" alt="" width="52" height="52" />
       </a>
       <a class="shell-product" href="{HOME_HREF}">Field Trip Kit <small>{HEADER_TAGLINE}</small></a>
+      <div class="shell-more-wrap">
+        <button type="button" class="shell-more" aria-expanded="false" aria-haspopup="true" aria-controls="shell-menu">More</button>
+        <div id="shell-menu" class="shell-menu" hidden role="menu">
+          <a href="/field-pack/" role="menuitem">All places<small>{NAV_PLACES_SUB}</small></a>
+          <a href="/field-pack/cards/" aria-current="page" role="menuitem">Animal cards<small>{NAV_CARDS_SUB}</small></a>
+          <a href="/field-pack/virtual-field-trip/" role="menuitem">Virtual Field Trip<small>{NAV_VFT_SUB}</small></a>
+          <a href="/about/" role="menuitem">About<small>{NAV_ABOUT_SUB}</small></a>
+        </div>
+      </div>
     </header>
     <main class="card-page">
       <p class="card-page-crumbs"><a href="{HOME_HREF}">Field Trip Kit</a> · <a href="/field-pack/cards/">Cards</a></p>
+      {img_html}
       <h1>{esc(emoji)} {esc(name)}</h1>
       {venue_chrome}
-      {img_html}
-      <p class="card-page-blurb">{esc(blurb) if blurb else "Talk this card through at home — print only if you want paper."}</p>
+      {blurb_html}
       {more_links}
       {watch_html}
       {next_html}
       {talk_html}
       <p class="card-page-actions">
-        <a class="btn btn-secondary" href="{venue_href}">{esc(cards_cta)}</a>
-        <button type="button" class="btn btn-secondary" id="print-this-card" data-card-id="{esc(cid)}"{print_venue_attr}>{esc(CTA_PRINT_CARD)}</button>
+        {actions_html}
       </p>
     </main>
   </div>
@@ -4816,7 +4842,8 @@ def _csv_flag(args: list[str], flag: str) -> set[str]:
 def main() -> int:
     only_venues = _csv_flag(sys.argv[1:], "--only")
     only_cards = _csv_flag(sys.argv[1:], "--cards")
-    targeted = bool(only_venues or only_cards)
+    cards_only = "--cards-only" in sys.argv[1:]
+    targeted = bool(only_venues or only_cards or cards_only)
     print("Loading venues…")
     venues = load_venues()
     venues.sort(key=lambda v: (v.get("state") or "", v.get("city") or "", v["name"]))
@@ -4842,6 +4869,8 @@ def main() -> int:
 
     urls = []
     for v in venues:
+        if cards_only and not only_venues:
+            break
         if only_venues and v["id"] not in only_venues:
             continue
         if targeted and only_cards and not only_venues:
@@ -4866,6 +4895,12 @@ def main() -> int:
             print(f"  WARN thin page {v['id']}: ~{words} words")
 
     if targeted:
+        if cards_only and not only_venues and not only_cards:
+            cards_urls = write_cards_hub(venues)
+            if isinstance(cards_urls, str):
+                cards_urls = [cards_urls]
+            print(f"  wrote {len(cards_urls)} card URLs (cards-only; skipped venue pages)")
+            return 0
         if only_cards:
             try:
                 cards = load_all_catalog_cards()

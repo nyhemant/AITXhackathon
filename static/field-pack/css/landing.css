@@ -4322,7 +4322,7 @@ body.landing-hub.landing-body {
 .cards-explorer .try-card-name {
   padding: 8px 10px 0;
   font-weight: 750;
-  font-size: 0.88rem;
+  font-size: 1.05rem;
   color: #0a4545;
 }
 
@@ -4357,27 +4357,29 @@ body.landing-hub.landing-body {
   margin: 0;
   padding: 0;
   display: grid;
-  gap: 0.6rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.7rem;
 }
 
 @media (min-width: 720px) {
   .cards-explorer .cards-hub-list {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
 .cards-explorer .cards-hub-link {
-  display: grid;
-  grid-template-columns: 100px 1fr;
-  gap: 0.7rem;
-  align-items: center;
-  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  align-items: stretch;
+  padding: 0;
   border: 1px solid rgba(27, 25, 22, 0.1);
   border-radius: 14px;
+  overflow: hidden;
   text-decoration: none;
   color: inherit;
   background: #fffcf7;
-  min-height: 88px;
+  min-height: 0;
 }
 
 .cards-explorer .cards-hub-link:hover,
@@ -4390,26 +4392,36 @@ body.landing-hub.landing-body {
   outline-offset: 2px;
 }
 
-.cards-explorer .cards-hub-thumb {
-  width: 100px;
-  height: 75px;
+.cards-explorer .cards-hub-thumb,
+.cards-explorer .cards-hub-emoji {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   object-position: 50% 18%;
-  border-radius: 10px;
+  border-radius: 0;
   background: #f4f1ea;
+  display: block;
+}
+.cards-explorer .cards-hub-emoji {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.4rem;
 }
 
 .cards-explorer .cards-hub-copy {
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  gap: 0.15rem;
   min-width: 0;
+  padding: 8px 10px 10px;
 }
 
 .cards-explorer .cards-hub-name {
   font-weight: 750;
   color: #0a4545;
-  font-size: 0.95rem;
+  font-size: 1.02rem;
 }
 
 .cards-explorer .cards-hub-venue {
