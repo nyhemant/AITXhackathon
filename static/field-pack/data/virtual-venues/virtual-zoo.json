@@ -37,14 +37,15 @@
         }
       },
       "video": {
-        "url": "https://www.youtube.com/watch?v=u2k4lSTZxS4",
-        "title": "Flamingo chicks at the Houston Zoo",
+        "url": "https://www.youtube.com/watch?v=7nK3gZqtlOM",
+        "title": "Flamingos gather at Lake Bogoria",
         "provider": "youtube",
-        "channel": "Houston Zoo",
+        "channel": "BBC Earth",
+        "start": 0,
         "verify": {
           "status": "sourced",
-          "source": "https://www.youtube.com/watch?v=u2k4lSTZxS4",
-          "checked": "2026-08-14"
+          "source": "https://www.youtube.com/watch?v=7nK3gZqtlOM",
+          "checked": "2026-09-05"
         }
       },
       "seq": 1,
@@ -72,14 +73,15 @@
         }
       },
       "video": {
-        "url": "https://www.youtube.com/watch?v=zboaajdMGHg",
-        "title": "Otters in their habitat at the National Zoo",
+        "url": "https://www.youtube.com/watch?v=9IR2Ij9375w",
+        "title": "Asian small-clawed otters at the Houston Zoo",
         "provider": "youtube",
-        "channel": "Smithsonian's National Zoo",
+        "channel": "Houston Zoo",
+        "start": 0,
         "verify": {
           "status": "sourced",
-          "source": "https://www.youtube.com/watch?v=zboaajdMGHg",
-          "checked": "2026-08-14"
+          "source": "https://www.youtube.com/watch?v=9IR2Ij9375w",
+          "checked": "2026-09-05"
         }
       },
       "seq": 2,
@@ -107,14 +109,15 @@
         }
       },
       "video": {
-        "url": "https://www.youtube.com/watch?v=RQ56IFZO6N0",
-        "title": "African penguins at the San Diego Zoo",
+        "url": "https://www.youtube.com/watch?v=ol5_zk1skx0",
+        "title": "African penguins in the African sun",
         "provider": "youtube",
-        "channel": "San Diego Zoo",
+        "channel": "BBC Earth",
+        "start": 0,
         "verify": {
           "status": "sourced",
-          "source": "https://www.youtube.com/watch?v=RQ56IFZO6N0",
-          "checked": "2026-08-14"
+          "source": "https://www.youtube.com/watch?v=ol5_zk1skx0",
+          "checked": "2026-09-05"
         }
       },
       "seq": 3,
@@ -177,14 +180,15 @@
         }
       },
       "video": {
-        "url": "https://www.youtube.com/watch?v=TMvYXAkHIFo",
-        "title": "Giraffe calf at the Houston Zoo",
+        "url": "https://www.youtube.com/watch?v=WXsrwyNhfYw",
+        "title": "Giraffes in the wild",
         "provider": "youtube",
-        "channel": "Houston Zoo",
+        "channel": "BBC Earth Relax and BBC Earth",
+        "start": 0,
         "verify": {
           "status": "sourced",
-          "source": "https://www.youtube.com/watch?v=TMvYXAkHIFo",
-          "checked": "2026-08-14"
+          "source": "https://www.youtube.com/watch?v=WXsrwyNhfYw",
+          "checked": "2026-09-05"
         }
       },
       "seq": 5,
@@ -352,14 +356,15 @@
         }
       },
       "video": {
-        "url": "https://www.youtube.com/watch?v=f9KVNw799aE",
-        "title": "Giant panda Qing Bao in her habitat",
+        "url": "https://www.youtube.com/watch?v=wTVtbr-R4yA",
+        "title": "Giant pandas Bao Li and Qing Bao in their habitat",
         "provider": "youtube",
         "channel": "Smithsonian's National Zoo",
+        "start": 0,
         "verify": {
           "status": "sourced",
-          "source": "https://www.youtube.com/watch?v=f9KVNw799aE",
-          "checked": "2026-08-14"
+          "source": "https://www.youtube.com/watch?v=wTVtbr-R4yA",
+          "checked": "2026-09-05"
         }
       },
       "seq": 10,

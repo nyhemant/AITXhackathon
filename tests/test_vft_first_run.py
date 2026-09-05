@@ -28,7 +28,7 @@ ZOO_JSON = FP / "data" / "virtual-venues" / "virtual-zoo.json"
 FLAMINGO_PHOTO = "/field-pack/photos/caribbean-flamingo.jpg"
 HOUSTON_CAM = "https://www.houstonzoo.org/explore/webcams/flamingo-cam/"
 HOUSTON_PLAYER = "https://ams-28635.antmedia.cloud:5443/live/play.html?id=flamingo-camera&playOrder=hls"
-FLAMINGO_FILM = "https://www.youtube.com/watch?v=u2k4lSTZxS4"
+FLAMINGO_FILM = "https://www.youtube.com/watch?v=7nK3gZqtlOM"
 FIRST_RUN_KEY = "fp-virtual-zoo-firstrun-v1"
 STAMPS_KEY = "fp-virtual-zoo-stamps-v1"
 
@@ -121,8 +121,8 @@ class VftFirstRunTests(unittest.TestCase):
     def test_cache_bumps_point_at_new_assets(self):
         for html in self.pages.values():
             self.assertIn("virtual-venue.css?v=51", html)
-            self.assertIn("virtual-venue.js?v=87", html)
-        self.assertIn("virtual-zoo.json?v=22", self.js)
+            self.assertIn("virtual-venue.js?v=88", html)
+        self.assertIn("virtual-zoo.json?v=23", self.js)
 
 
 if __name__ == "__main__":

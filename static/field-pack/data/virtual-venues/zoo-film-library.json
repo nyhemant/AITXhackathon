@@ -1,6 +1,6 @@
 {
   "id": "zoo-film-library",
-  "checked": "2026-08-16",
+  "checked": "2026-09-05",
   "note": "Pick-10 ingredients for the zoo tab. Default tour is the current 10. Bench extras need an animal-first film (official zoo, Nat Geo Kids, or BBC Earth). Mute autoplay uses video.start to skip logos. Warthog, ostrich, and a few house animals stay omitted until a yard-first clip locks.",
   "omit": [
     {
@@ -44,14 +44,15 @@
       "defaultTour": true,
       "seq": 1,
       "video": {
-        "url": "https://www.youtube.com/watch?v=u2k4lSTZxS4",
-        "title": "Flamingo chicks at the Houston Zoo",
+        "url": "https://www.youtube.com/watch?v=7nK3gZqtlOM",
+        "title": "Flamingos gather at Lake Bogoria",
         "provider": "youtube",
-        "channel": "Houston Zoo",
+        "channel": "BBC Earth",
+        "start": 0,
         "verify": {
           "status": "sourced",
-          "source": "https://www.youtube.com/watch?v=u2k4lSTZxS4",
-          "checked": "2026-08-14"
+          "source": "https://www.youtube.com/watch?v=7nK3gZqtlOM",
+          "checked": "2026-09-05"
         }
       },
       "cam": {
@@ -67,14 +68,15 @@
       "defaultTour": true,
       "seq": 2,
       "video": {
-        "url": "https://www.youtube.com/watch?v=zboaajdMGHg",
-        "title": "Otters in their habitat at the National Zoo",
+        "url": "https://www.youtube.com/watch?v=9IR2Ij9375w",
+        "title": "Asian small-clawed otters at the Houston Zoo",
         "provider": "youtube",
-        "channel": "Smithsonian's National Zoo",
+        "channel": "Houston Zoo",
+        "start": 0,
         "verify": {
           "status": "sourced",
-          "source": "https://www.youtube.com/watch?v=zboaajdMGHg",
-          "checked": "2026-08-14"
+          "source": "https://www.youtube.com/watch?v=9IR2Ij9375w",
+          "checked": "2026-09-05"
         }
       },
       "cam": {
@@ -90,14 +92,15 @@
       "defaultTour": true,
       "seq": 3,
       "video": {
-        "url": "https://www.youtube.com/watch?v=RQ56IFZO6N0",
-        "title": "African penguins at the San Diego Zoo",
+        "url": "https://www.youtube.com/watch?v=ol5_zk1skx0",
+        "title": "African penguins in the African sun",
         "provider": "youtube",
-        "channel": "San Diego Zoo",
+        "channel": "BBC Earth",
+        "start": 0,
         "verify": {
           "status": "sourced",
-          "source": "https://www.youtube.com/watch?v=RQ56IFZO6N0",
-          "checked": "2026-08-14"
+          "source": "https://www.youtube.com/watch?v=ol5_zk1skx0",
+          "checked": "2026-09-05"
         }
       },
       "cam": {
@@ -136,14 +139,15 @@
       "defaultTour": true,
       "seq": 5,
       "video": {
-        "url": "https://www.youtube.com/watch?v=TMvYXAkHIFo",
-        "title": "Giraffe calf at the Houston Zoo",
+        "url": "https://www.youtube.com/watch?v=WXsrwyNhfYw",
+        "title": "Giraffes in the wild",
         "provider": "youtube",
-        "channel": "Houston Zoo",
+        "channel": "BBC Earth Relax and BBC Earth",
+        "start": 0,
         "verify": {
           "status": "sourced",
-          "source": "https://www.youtube.com/watch?v=TMvYXAkHIFo",
-          "checked": "2026-08-14"
+          "source": "https://www.youtube.com/watch?v=WXsrwyNhfYw",
+          "checked": "2026-09-05"
         }
       },
       "cam": {
@@ -252,14 +256,15 @@
       "defaultTour": true,
       "seq": 10,
       "video": {
-        "url": "https://www.youtube.com/watch?v=f9KVNw799aE",
-        "title": "Giant panda Qing Bao in her habitat",
+        "url": "https://www.youtube.com/watch?v=wTVtbr-R4yA",
+        "title": "Giant pandas Bao Li and Qing Bao in their habitat",
         "provider": "youtube",
         "channel": "Smithsonian's National Zoo",
+        "start": 0,
         "verify": {
           "status": "sourced",
-          "source": "https://www.youtube.com/watch?v=f9KVNw799aE",
-          "checked": "2026-08-14"
+          "source": "https://www.youtube.com/watch?v=wTVtbr-R4yA",
+          "checked": "2026-09-05"
         }
       },
       "cam": {
@@ -274,14 +279,15 @@
       "challenge": "Why does a zebra have stripes? Are any two the same?",
       "defaultTour": false,
       "video": {
-        "url": "https://www.youtube.com/watch?v=Gz97AbXjebU",
-        "title": "Grant's zebras at the Houston Zoo",
+        "url": "https://www.youtube.com/watch?v=U1Ysr2DKHFI",
+        "title": "Zebras on a wild journey",
         "provider": "youtube",
-        "channel": "Houston Zoo",
+        "channel": "BBC Earth",
+        "start": 0,
         "verify": {
           "status": "sourced",
-          "source": "https://www.youtube.com/watch?v=Gz97AbXjebU",
-          "checked": "2026-08-15"
+          "source": "https://www.youtube.com/watch?v=U1Ysr2DKHFI",
+          "checked": "2026-09-05"
         }
       },
       "cam": {},
@@ -356,14 +362,15 @@
       "challenge": "Why does a lemur have a striped tail? Why do they sit in the sun?",
       "defaultTour": false,
       "video": {
-        "url": "https://www.youtube.com/watch?v=jtBo_LU53Vo",
-        "title": "Ring-tailed lemurs at the Safari Park",
+        "url": "https://www.youtube.com/watch?v=11_c7iiWHhg",
+        "title": "Ring-tailed lemurs forage for food",
         "provider": "youtube",
-        "channel": "San Diego Zoo Safari Park",
+        "channel": "BBC Earth",
+        "start": 0,
         "verify": {
           "status": "sourced",
-          "source": "https://www.youtube.com/watch?v=jtBo_LU53Vo",
-          "checked": "2026-08-15"
+          "source": "https://www.youtube.com/watch?v=11_c7iiWHhg",
+          "checked": "2026-09-05"
         }
       },
       "cam": {},
@@ -458,14 +465,15 @@
       "challenge": "Why is a polar bear white? How does it stay warm in ice water?",
       "defaultTour": false,
       "video": {
-        "url": "https://www.youtube.com/watch?v=GbiCrDsGPa0",
-        "title": "Polar bears frolic in snow at the San Diego Zoo",
+        "url": "https://www.youtube.com/watch?v=mLVkICcHUys",
+        "title": "Polar bears pounce and play in snow",
         "provider": "youtube",
         "channel": "San Diego Zoo",
+        "start": 0,
         "verify": {
           "status": "sourced",
-          "source": "https://www.youtube.com/watch?v=GbiCrDsGPa0",
-          "checked": "2026-08-16"
+          "source": "https://www.youtube.com/watch?v=mLVkICcHUys",
+          "checked": "2026-09-05"
         }
       },
       "cam": {},
@@ -477,14 +485,15 @@
       "challenge": "Why can a chameleon change color? How does that tongue work?",
       "defaultTour": false,
       "video": {
-        "url": "https://www.youtube.com/watch?v=z3oh73amxQo",
-        "title": "Chameleon tongue in slow motion",
+        "url": "https://www.youtube.com/watch?v=CtrbDRZTc8g",
+        "title": "A chameleon’s race against time in Madagascar",
         "provider": "youtube",
         "channel": "BBC Earth",
+        "start": 0,
         "verify": {
           "status": "sourced",
-          "source": "https://www.youtube.com/watch?v=z3oh73amxQo",
-          "checked": "2026-08-16"
+          "source": "https://www.youtube.com/watch?v=CtrbDRZTc8g",
+          "checked": "2026-09-05"
         }
       },
       "cam": {},

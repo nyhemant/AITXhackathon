@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import re
 import sys
 import unittest
@@ -140,12 +141,13 @@ class VftInlineFilmTests(unittest.TestCase):
         self.assertIn(".vz-sound-tip", css)
         self.assertIn(".vz-sound-tip-dismiss", css)
 
-    def test_pre_recorded_defaults_to_twenty_second_inpoint(self):
+    def test_pre_recorded_honors_explicit_start_including_zero(self):
         self.assertIn("const FILM_START_DEFAULT = 20", self.js)
         self.assertIn("function filmStartSec(", self.js)
         body = self.js.split("function filmStartSec(", 1)[1].split("function youtubeEmbed", 1)[0]
         self.assertIn("FILM_START_DEFAULT", body)
-        self.assertIn("n > FILM_START_DEFAULT", body)
+        self.assertIn("n >= 0", body)
+        self.assertNotIn("n > FILM_START_DEFAULT", body)
         embed = self.js.split("function youtubeEmbed(", 1)[1].split("function isYoutubeWatchUrl", 1)[0]
         self.assertIn("filmStartSec(opts && opts.start)", embed)
         self.assertIn("&start=", embed)
@@ -153,12 +155,44 @@ class VftInlineFilmTests(unittest.TestCase):
         self.assertIn("filmStartSec(start)", film)
         cam = self.js.split("function openCamPopup(", 1)[1].split("function closeDialog", 1)[0]
         self.assertNotIn("filmStartSec", cam.split("if (film)", 1)[0])
-        zoo = (FP / "data" / "virtual-venues" / "virtual-zoo.json").read_text(encoding="utf-8")
-        self.assertNotIn('"start":', zoo)
+        zoo = json.loads((FP / "data" / "virtual-venues" / "virtual-zoo.json").read_text(encoding="utf-8"))
+        flamingo = next(h for h in zoo["habitats"] if h["id"] == "caribbean-flamingo")
+        self.assertEqual(flamingo["video"]["start"], 0)
+
+    def test_pre_recorded_embed_loops_the_same_video(self):
+        embed = self.js.split("function youtubeEmbed(", 1)[1].split("function isYoutubeWatchUrl", 1)[0]
+        self.assertIn("&loop=1", embed)
+        self.assertIn("&playlist=", embed)
+        self.assertIn("encodeURIComponent(id)", embed)
+        self.assertIn("youtube-nocookie.com/embed/", embed)
+        self.assertIn("rel=0", embed)
+        self.assertIn("modestbranding=1", embed)
+        self.assertIn("playsinline=1", embed)
+        self.assertIn("autoplay=1&mute=1", embed)
+
+    def test_immersive_default_films_replaced(self):
+        zoo = json.loads((FP / "data" / "virtual-venues" / "virtual-zoo.json").read_text(encoding="utf-8"))
+        aqua = json.loads((FP / "data" / "virtual-venues" / "virtual-aquarium.json").read_text(encoding="utf-8"))
+        by_id = {h["id"]: h for h in zoo["habitats"] + aqua["habitats"]}
+        expected = {
+            "caribbean-flamingo": "7nK3gZqtlOM",
+            "asian-small-clawed-otter": "9IR2Ij9375w",
+            "reticulated-giraffe": "WXsrwyNhfYw",
+            "jellyfish": "8C3fzRYXSNE",
+        }
+        for hid, vid in expected.items():
+            url = by_id[hid]["video"]["url"]
+            self.assertIn(vid, url, hid)
+            self.assertNotIn("live", url.lower())
+            self.assertEqual(by_id[hid]["video"]["start"], 0)
+        stale = ("u2k4lSTZxS4", "zboaajdMGHg", "TMvYXAkHIFo", "nbY7dSf3GYE")
+        blob = json.dumps(zoo) + json.dumps(aqua)
+        for old in stale:
+            self.assertNotIn(old, blob)
 
     def test_cache_bump(self):
         for html in self.pages.values():
-            self.assertIn("virtual-venue.js?v=87", html)
+            self.assertIn("virtual-venue.js?v=88", html)
             self.assertIn("virtual-venue.css?v=51", html)
 
 

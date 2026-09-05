@@ -1,6 +1,6 @@
 {
   "id": "science-film-library",
-  "checked": "2026-08-16",
+  "checked": "2026-09-05",
   "note": "Pick-path ingredients for the science museum tab. Default tour is the current 10, including still-only Free Explore. Bench extras need an exhibit- or phenomenon-first film (official museum, NASA, Exploratorium, or NOAA weather satellite). Mute autoplay uses video.start to skip logos and teacher intros. NHM halls, extra space, Tesla shows, and talking STEM 101s stay omitted.",
   "omit": [
     {
@@ -364,15 +364,15 @@
       "challenge": "Why does lightning jump? Why do we hear thunder after we see the flash?",
       "defaultTour": false,
       "video": {
-        "url": "https://www.youtube.com/watch?v=Jcx7gv-LaKs",
-        "title": "Lightning from NOAA’s GOES-16 mapper",
+        "url": "https://www.youtube.com/watch?v=ngn7rpqaw5E",
+        "title": "Lightning from NOAA’s GOES-19 mapper",
         "provider": "youtube",
         "channel": "NOAASatellites",
-        "start": 3,
+        "start": 0,
         "verify": {
           "status": "sourced",
-          "source": "https://www.youtube.com/watch?v=Jcx7gv-LaKs",
-          "checked": "2026-08-16"
+          "source": "https://www.youtube.com/watch?v=ngn7rpqaw5E",
+          "checked": "2026-09-05"
         }
       },
       "cam": {},

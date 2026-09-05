@@ -21,8 +21,8 @@
   ];
   const MUSEUM_LAST_KEY = "fp-vft-museum-tab";
   const TAB_CONFIGS = {
-    zoo: "/field-pack/data/virtual-venues/virtual-zoo.json?v=22",
-    aquarium: "/field-pack/data/virtual-venues/virtual-aquarium.json?v=23",
+    zoo: "/field-pack/data/virtual-venues/virtual-zoo.json?v=23",
+    aquarium: "/field-pack/data/virtual-venues/virtual-aquarium.json?v=24",
     "natural-history": "/field-pack/data/virtual-venues/virtual-nhm.json?v=14",
     science: "/field-pack/data/virtual-venues/virtual-science.json?v=16",
     parks: "/field-pack/data/virtual-venues/virtual-parks.json?v=24",
@@ -36,21 +36,21 @@
   const PICK_BY_KIND = {
     zoo: {
       key: "fp-virtual-zoo-picks-v1",
-      libUrl: "/field-pack/data/virtual-venues/zoo-film-library.json?v=5",
+      libUrl: "/field-pack/data/virtual-venues/zoo-film-library.json?v=6",
       title: "Create your own virtual zoo",
       noun: "zoo",
       track: "zoo_picks_saved",
     },
     aquarium: {
       key: "fp-virtual-aquarium-picks-v1",
-      libUrl: "/field-pack/data/virtual-venues/aquarium-film-library.json?v=3",
+      libUrl: "/field-pack/data/virtual-venues/aquarium-film-library.json?v=4",
       title: "Create your own virtual aquarium",
       noun: "aquarium",
       track: "aquarium_picks_saved",
     },
     science: {
       key: "fp-virtual-science-picks-v1",
-      libUrl: "/field-pack/data/virtual-venues/science-film-library.json?v=2",
+      libUrl: "/field-pack/data/virtual-venues/science-film-library.json?v=3",
       title: "Create your own virtual science museum",
       noun: "science museum",
       track: "science_picks_saved",
@@ -1559,8 +1559,9 @@
   const FILM_START_DEFAULT = 20;
 
   function filmStartSec(start) {
+    if (start === undefined || start === null || start === "") return FILM_START_DEFAULT;
     const n = Math.floor(Number(start));
-    if (Number.isFinite(n) && n > FILM_START_DEFAULT) return n;
+    if (Number.isFinite(n) && n >= 0) return n;
     return FILM_START_DEFAULT;
   }
 
@@ -1569,8 +1570,9 @@
     if (!id) return "";
     const extra = opts && opts.autoplay ? "&autoplay=1&mute=1&enablejsapi=1" : "";
     const start = `&start=${encodeURIComponent(String(filmStartSec(opts && opts.start)))}`;
+    const loop = `&loop=1&playlist=${encodeURIComponent(id)}`;
     const origin = encodeURIComponent(location.origin);
-    return `https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?rel=0&modestbranding=1&playsinline=1${extra}${start}&origin=${origin}`;
+    return `https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?rel=0&modestbranding=1&playsinline=1${extra}${start}${loop}&origin=${origin}`;
   }
 
   function isYoutubeWatchUrl(url) {
