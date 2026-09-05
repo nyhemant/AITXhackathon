@@ -116,7 +116,7 @@
     continueEl.setAttribute("aria-label", `Continue to Watch Live — ${teaser.label}`);
 
     let aligned = false;
-    let ended = false;
+    let continueShown = false;
     let hardFail = false;
     let armed = false;
     let intersecting = !("IntersectionObserver" in window);
@@ -150,17 +150,14 @@
     }
 
     function showContinue() {
-      if (ended) return;
-      ended = true;
+      if (continueShown) return;
+      continueShown = true;
       if (maxTimer) window.clearTimeout(maxTimer);
-      try {
-        video.pause();
-      } catch (_) {}
       continueEl.hidden = false;
     }
 
     function ensureContinueTimer() {
-      if (maxTimer || ended) return;
+      if (maxTimer || continueShown) return;
       maxTimer = window.setTimeout(showContinue, MAX_SEC * 1000);
     }
 
@@ -168,9 +165,11 @@
       video.muted = true;
       video.defaultMuted = true;
       video.autoplay = true;
+      video.loop = true;
       video.playsInline = true;
       video.setAttribute("muted", "");
       video.setAttribute("autoplay", "");
+      video.setAttribute("loop", "");
       video.setAttribute("playsinline", "");
       video.setAttribute("webkit-playsinline", "");
       video.preload = "auto";
@@ -196,7 +195,7 @@
         showStill();
         return;
       }
-      if (hardFail || ended || !aligned || !intersecting) return;
+      if (hardFail || !aligned || !intersecting) return;
       armTeaser();
       if (video.readyState < 2) holdPoster();
       if (!video.paused && !video.ended) {
@@ -207,14 +206,18 @@
       const kick = video.play();
       if (kick && typeof kick.catch === "function") {
         kick.catch(() => {
-          if (hardFail || ended) return;
+          if (hardFail) return;
           holdPoster();
         });
       }
       ensureContinueTimer();
     }
 
-    video.addEventListener("ended", showContinue);
+    video.addEventListener("ended", () => {
+      if (reduceMotion || hardFail) return;
+      showContinue();
+      if (intersecting) playTeaser();
+    });
     video.addEventListener("error", () => {
       hardFail = true;
       showStill();
@@ -227,14 +230,11 @@
     video.addEventListener("canplay", () => {
       if (intersecting) playTeaser();
     });
-    video.addEventListener("timeupdate", () => {
-      if (video.currentTime >= MAX_SEC) showContinue();
-    });
 
     const home = document.getElementById("start-home");
     if (home) {
       const unlock = () => {
-        if (reduceMotion || hardFail || ended) return;
+        if (reduceMotion || hardFail) return;
         intersecting = true;
         playTeaser();
       };
@@ -247,7 +247,7 @@
       const io = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
-            if (reduceMotion || ended || hardFail) return;
+            if (reduceMotion || hardFail) return;
             if (entry.isIntersecting) {
               intersecting = true;
               playTeaser();
