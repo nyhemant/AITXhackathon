@@ -1663,7 +1663,7 @@
         })
         .join("");
       mapHost.innerHTML = chips
-        ? `<p class="map-fallback-lead">Map didn’t load. Explore a place:</p><ul class="map-fallback-list">${chips}</ul>`
+        ? `<p class="map-fallback-lead">Places</p><ul class="map-fallback-list">${chips}</ul>`
         : `<p class="map-loading">Map unavailable — use the place list below.</p>`;
       const fallback = document.getElementById("map-fallback");
       if (fallback) fallback.hidden = false;
@@ -1865,7 +1865,6 @@
     setScope = async function (scope) {
       await _setScope(scope);
       persistScopePreference(scope === "intl" ? "intl" : "us");
-      updateReadyChips(scope === "intl");
     };
 
     const preferIntl = detectPreferIntl();
@@ -1888,38 +1887,9 @@
       showOverview();
       if (zoom < 1.2) setZoom(1.15);
     }
-    updateReadyChips(mapScope === "intl");
-
     // Type tabs: All | Zoos | Aquariums | Museums (filters map + directory)
     wirePlaceTypeTabs();
     bindCatalogPrintClicks();
-  }
-
-  /** Swap Ready strip for US vs international map scope. */
-  function updateReadyChips(isIntl) {
-    const heading = document.getElementById("ready-heading");
-    const grid = document.getElementById("ready-grid");
-    if (!heading || !grid) return;
-    const spec = window.FP_READY_STRIP || { us: [], intl: [] };
-    const ids = spec.us && spec.us.length ? spec.us : spec.intl;
-    const shortName = {
-      "childrens-aquarium-dallas": "Children’s Aquarium",
-      "childrens-museum-perot": "Children’s Museum",
-      "national-zoo": "National Zoo",
-    };
-    heading.textContent = "Places";
-    grid.innerHTML = ids
-      .map((id) => {
-        const p = placeById(id) || {};
-        const emoji = p.emoji || "📍";
-        const name = shortName[id] || p.name || id;
-        return `<a class="ready-card" href="/field-pack/${id}/" data-venue-id="${id}">
-            <span class="rc-emoji" aria-hidden="true">${emoji}</span>
-            <h3>${name}</h3>
-            <span class="rc-cta">Open</span>
-          </a>`;
-      })
-      .join("");
   }
 
   boot();

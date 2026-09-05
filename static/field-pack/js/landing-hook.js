@@ -1,19 +1,8 @@
 (() => {
   const places = window.FP_PLACES || [];
-  const grid = document.getElementById("ready-grid");
   const chips = document.getElementById("city-chips");
   const continueChip = document.getElementById("continue-chip");
   const citySelect = document.getElementById("city-select");
-
-  const FEATURED_READY_IDS = (window.FP_READY_STRIP && window.FP_READY_STRIP.us) || [
-    "dallas-zoo",
-    "childrens-aquarium-dallas",
-    "childrens-museum-perot",
-    "houston-zoo",
-    "san-diego-zoo",
-    "national-zoo",
-  ];
-  const READY = FEATURED_READY_IDS.map((id) => places.find((p) => p.id === id)).filter(Boolean);
 
   function escapeHtml(s) {
     return String(s)
@@ -405,24 +394,6 @@
       }
     });
   });
-
-  // Ready cards go to the place page (at-home session). Hub /#/venue/{id} also leaves for that page.
-  if (grid && READY.length) {
-    grid.innerHTML = READY.map((p) => {
-      const href = `/field-pack/${encodeURIComponent(p.id)}/`;
-      const short =
-        p.id === "childrens-aquarium-dallas"
-          ? "Children’s Aquarium"
-          : p.id === "childrens-museum-perot"
-            ? "Children’s Museum"
-            : p.name;
-      return `<a class="ready-card" href="${escapeHtml(href)}" data-venue-id="${escapeHtml(p.id)}">
-        <span class="rc-emoji" aria-hidden="true">${escapeHtml(p.emoji || "")}</span>
-        <h3>${escapeHtml(short)}</h3>
-        <span class="rc-cta">Open</span>
-      </a>`;
-    }).join("");
-  }
 
   /** City chips: hover/focus shows venue links; click jumps the map. */
   const chipDefs = [

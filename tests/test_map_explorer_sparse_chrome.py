@@ -15,7 +15,6 @@ sys.path.insert(0, str(REPO / "scripts"))
 
 from generate_bdo_seo import (  # noqa: E402
     CTA_FIND,
-    CTA_READY,
     EXPLORER_H1,
     EXPLORER_TITLE,
     LANDING_CSS_VER,
@@ -37,6 +36,10 @@ WORDY = (
     "Print a hunt if you're going in person",
     "or print a hunt for the visit",
     "Explore a place at home",
+    "Explore a place:",
+    "Explore a place (no map needed)",
+    "Map needs JavaScript",
+    "Map didn’t load",
     "Explore a zoo at home",
     "Explore an aquarium at home",
     "Explore a museum at home",
@@ -130,10 +133,8 @@ class MapExplorerSparseChromeTests(unittest.TestCase):
         self.assertEqual(EXPLORER_H1, "Find a place")
         self.assertEqual(EXPLORER_TITLE, "Find a place · Field Trip Kit")
         self.assertEqual(CTA_FIND, "Find")
-        self.assertEqual(CTA_READY, "Open")
         self.assertLessEqual(len(EXPLORER_H1), 16)
         self.assertIn('EXPLORER_H1 = "Find a place"', self.gen)
-        self.assertIn('CTA_READY = "Open"', self.gen)
         self.assertNotIn('CTA_READY = "Explore →"', self.gen)
         self.assertIn(f"LANDING_CSS_VER = \"{LANDING_CSS_VER}\"", self.gen)
 
@@ -167,7 +168,8 @@ class MapExplorerSparseChromeTests(unittest.TestCase):
         self.assertIn('data-place-type="aquarium"', self.html)
         self.assertIn('data-place-type="museum"', self.html)
         self.assertIn('data-place-type="park"', self.html)
-        self.assertIn('id="ready-grid"', self.html)
+        self.assertNotIn('id="ready-grid"', self.html)
+        self.assertNotIn('id="ready-heading"', self.html)
         self.assertIn('id="cat-places-compact"', self.html)
         self.assertIn('id="cat-popular"', self.html)
         self.assertIn("218 places worldwide", self.html)
@@ -179,10 +181,13 @@ class MapExplorerSparseChromeTests(unittest.TestCase):
         self.assertNotIn('id="faq"', self.html)
         self.assertNotIn("FAQPage", self.html)
         self.assertNotIn("landing-pitch-t4b", self.html)
-        self.assertIn(">Places</h2>", chrome)
+        self.assertNotIn("ready-now", chrome)
+        self.assertNotIn("ready-card", chrome)
+        self.assertNotIn("Explore →", chrome)
+        for lead in re.findall(r'class="map-fallback-lead"[^>]*>(.*?)</p>', chrome, re.S):
+            self.assertEqual(_text(lead), "Places")
         self.assertIn(">Places</h3>", chrome)
         self.assertIn(">Popular</p>", chrome)
-        self.assertIn(f">{CTA_READY}</span>", chrome)
         self.assertIn(">Zoos</span>", chrome)
         self.assertIn(">Museums</span>", chrome)
         self.assertIn(">Parks</span>", chrome)
@@ -204,9 +209,7 @@ class MapExplorerSparseChromeTests(unittest.TestCase):
         self.assertNotIn("Explore a place at home", self.map_js)
         self.assertNotIn("Tabs above filter the map", self.map_js)
         self.assertNotIn("Catalog: wildlife cards", self.map_js)
-        self.assertIn('heading.textContent = "Places"', self.map_js)
-        self.assertIn(f">{CTA_READY}</span>", self.map_js)
-        self.assertIn(f">{CTA_READY}</span>", self.hook)
+        self.assertNotIn("function updateReadyChips(", self.map_js)
         self.assertNotIn("Create and print your mission", self.map_js)
         self.assertNotIn("Pick up where you left off", self.hook)
 

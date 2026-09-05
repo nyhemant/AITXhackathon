@@ -41,16 +41,17 @@ class FlagshipSessionTests(unittest.TestCase):
         self.assertIn('id="pitch-heading"', hero)
         self.assertIn("Find a place", hero)
 
-        ready = html.split('id="ready-grid"', 1)[1].split("</div>", 1)[0]
-        ready_hrefs = re.findall(r'href="([^"]+)"', ready)
-        self.assertTrue(ready_hrefs)
-        for href in ready_hrefs:
+        self.assertNotIn('id="ready-grid"', html)
+        popular = html.split('id="cat-popular"', 1)[1].split("</div>", 1)[0]
+        popular_hrefs = re.findall(r'href="([^"]+)"', popular)
+        self.assertTrue(popular_hrefs)
+        for href in popular_hrefs:
             self.assertTrue(href.startswith("/field-pack/"), href)
             self.assertTrue(href.endswith("/"), href)
             self.assertNotIn("#mission", href)
             self.assertNotIn("#print", href)
             self.assertNotIn("#mission-drawer", href)
-        self.assertIn("/field-pack/dallas-zoo/", ready)
+        self.assertIn("/field-pack/dallas-zoo/", popular)
         self.assertNotIn("/field-pack/houston-zoo/", hero)
 
         dallas = (FP / "dallas-zoo" / "index.html").read_text(encoding="utf-8")
