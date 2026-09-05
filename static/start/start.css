@@ -131,14 +131,16 @@ body.start-body {
 
 /*
   At-home plate is the original home-print-table.jpg (not a generated still).
-  Crop the kitchen top so the slanted laptop stays a small curiosity teaser.
   Laptop LCD inner-bezel hotbox on the 1024×1536 still, TL→TR→BR→BL:
     8.20% 20.57% / 55.76% 17.12% / 60.84% 40.56% / 15.53% 47.33%
-  JS maps those image-space corners through object-fit:cover + this
-  object-position into a matrix3d so the muted clip sits in the real bezel.
+  Framing is viewport-specific (one crop cannot serve all shapes):
+    desktop — 36% 24% crops kitchen top for a small-screen tease
+    ~390 portrait — 12% 22% keeps the whole laptop display on-screen
+  JS refines object-position from the live box size, then maps the hotbox
+  through object-fit:cover into a matrix3d so the clip sits in the bezel.
 */
 #start-home .start-chapter-still {
-  object-position: 42% 28%;
+  object-position: 36% 24%;
 }
 
 .start-home-tease {
@@ -483,6 +485,10 @@ body.start-body {
 }
 
 @media (max-width: 640px) {
+  #start-home .start-chapter-still {
+    object-position: 12% 22%;
+  }
+
   .start-rest {
     min-height: 10vh;
   }

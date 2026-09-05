@@ -66,8 +66,9 @@
     const MAX_SEC = 8;
     /*
       Laptop LCD inner bezel on home-print-table.jpg (1024×1536).
-      Image-space % corners TL → TR → BR → BL. JS maps them through
-      object-fit:cover + object-position (42% 28%) into matrix3d.
+      Image-space % corners TL → TR → BR → BL. framePlate() sets
+      object-position per viewport (full LCD on ~390 portrait; top
+      tease-crop on desktop), then map through cover into matrix3d.
     */
     const HOTBOX = [
       { x: 8.2, y: 20.57 },
@@ -120,6 +121,7 @@
 
     function align() {
       if (!plate.naturalWidth || !plate.naturalHeight) return;
+      framePlate(plate, box, HOTBOX);
       const boxRect = box.getBoundingClientRect();
       const corners = HOTBOX.map((pt) => imagePctToBox(pt, plate, boxRect));
       applyScreenTransform(screen, corners);
@@ -224,6 +226,56 @@
       sessionStorage.setItem(key, JSON.stringify(next));
     } catch (_) {}
     return pick;
+  }
+
+  function isMobilePortrait() {
+    return (
+      window.matchMedia("(max-width: 640px)").matches &&
+      window.matchMedia("(orientation: portrait)").matches
+    );
+  }
+
+  function framePlate(img, box, hotbox) {
+    const nw = img.naturalWidth;
+    const nh = img.naturalHeight;
+    const boxW = box.clientWidth;
+    const boxH = box.clientHeight;
+    if (!nw || !nh || !boxW || !boxH) return;
+    const mobilePortrait = isMobilePortrait();
+    const pos = fitHotboxPosition(boxW, boxH, nw, nh, hotbox, mobilePortrait);
+    img.style.objectPosition = `${(pos.x * 100).toFixed(2)}% ${(pos.y * 100).toFixed(2)}%`;
+  }
+
+  function fitHotboxPosition(boxW, boxH, nw, nh, hotbox, mobilePortrait) {
+    const scale = Math.max(boxW / nw, boxH / nh);
+    const visW = boxW / scale;
+    const visH = boxH / scale;
+    const xs = hotbox.map((p) => (p.x / 100) * nw);
+    const ys = hotbox.map((p) => (p.y / 100) * nh);
+    const padX = 12;
+    const padY = 16;
+    const want = {
+      x0: Math.min.apply(null, xs) - padX,
+      x1: Math.max.apply(null, xs) + padX,
+      y0: Math.min.apply(null, ys) - padY,
+      y1: Math.max.apply(null, ys) + padY,
+    };
+    const preferX = mobilePortrait ? 0.22 : 0.4;
+    const preferY = mobilePortrait ? 0.35 : 0;
+    return {
+      x: axisOrigin(want.x0, want.x1, nw, visW, preferX),
+      y: axisOrigin(want.y0, want.y1, nh, visH, preferY),
+    };
+  }
+
+  function axisOrigin(want0, want1, imgLen, visLen, prefer) {
+    if (visLen >= imgLen - 0.5) return 0.5;
+    const slack = visLen - (want1 - want0);
+    let origin;
+    if (slack >= 0) origin = want0 - slack * prefer;
+    else origin = (want0 + want1) / 2 - visLen / 2;
+    origin = Math.max(0, Math.min(imgLen - visLen, origin));
+    return origin / (imgLen - visLen);
   }
 
   function parseObjectPosition(value) {
