@@ -105,7 +105,7 @@
       if (label) label.textContent = mode === "place" ? "Find a place" : "Find a card";
       input.placeholder =
         mode === "place" ? "Zoo, museum, park, or city…" : "Lion, shark, dinosaur…";
-      if (submitBtn) submitBtn.textContent = mode === "place" ? "Find place" : "Find card";
+      if (submitBtn) submitBtn.textContent = "Find";
       results.setAttribute("aria-label", mode === "place" ? "Matching places" : "Matching cards");
       const hint = document.getElementById("hero-search-mode-hint");
       if (hint) {
@@ -419,7 +419,7 @@
       return `<a class="ready-card" href="${escapeHtml(href)}" data-venue-id="${escapeHtml(p.id)}">
         <span class="rc-emoji" aria-hidden="true">${escapeHtml(p.emoji || "")}</span>
         <h3>${escapeHtml(short)}</h3>
-        <span class="rc-cta">Explore →</span>
+        <span class="rc-cta">Open</span>
       </a>`;
     }).join("");
   }
@@ -631,9 +631,9 @@
         continueChip.hidden = false;
         continueChip.removeAttribute("hidden");
         continueChip.style.display = "block";
-        continueChip.innerHTML = `Pick up where you left off at <strong>${escapeHtml(
+        continueChip.innerHTML = `Continue: <strong>${escapeHtml(
           label
-        )}</strong>. <a href="${href}">Continue →</a>`;
+        )}</strong> <a href="${href}">Open</a>`;
       }
     }
   } catch {
