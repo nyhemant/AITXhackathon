@@ -1580,18 +1580,7 @@
     if (!id) return "";
     const extra = opts && opts.autoplay ? "&autoplay=1&mute=1&enablejsapi=1" : "";
     const start = `&start=${encodeURIComponent(String(filmStartSec(opts && opts.start)))}`;
-    const raw = opts && Array.isArray(opts.playlist) ? opts.playlist : [];
-    const rest = [];
-    const seen = new Set([id]);
-    raw.forEach((item) => {
-      const pid = youtubeId(item) || String(item || "").replace(/[^A-Za-z0-9_-]/g, "");
-      if (pid && !seen.has(pid)) {
-        seen.add(pid);
-        rest.push(pid);
-      }
-    });
-    const playlist = [id].concat(rest);
-    const loop = `&loop=1&playlist=${encodeURIComponent(playlist.join(","))}`;
+    const loop = `&loop=1&playlist=${encodeURIComponent(id)}`;
     const origin = encodeURIComponent(location.origin);
     return `https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?rel=0&modestbranding=1&playsinline=1${extra}${start}${loop}&origin=${origin}`;
   }
@@ -1694,6 +1683,7 @@
   }
 
   const SOUND_TIP_KEY = "fp-vft-sound-tip-v1";
+  const FILM_SEEN_KEY = "fp-vft-film-seen-v1";
   const SOUND_TIP_MS = 7000;
   let soundTipTimer = 0;
 
@@ -1743,23 +1733,57 @@
     soundTipTimer = setTimeout(() => hideSoundTip(false), SOUND_TIP_MS);
   }
 
-  function playHabitatFilm(h) {
-    const films = habitatFilms(h);
-    const first = films[0];
-    if (!first) return false;
-    return playFilmInline(
-      first.url,
-      first.title || (h && h.label) || "Pre-recorded",
-      first.start,
-      films.map((f) => f.url)
-    );
+  function loadFilmSeen() {
+    try {
+      const raw = sessionStorage.getItem(FILM_SEEN_KEY);
+      const data = raw ? JSON.parse(raw) : {};
+      return data && typeof data === "object" && !Array.isArray(data) ? data : {};
+    } catch (_) {
+      return {};
+    }
   }
 
-  function playFilmInline(url, label, start, playlist) {
+  function saveFilmSeen(data) {
+    try {
+      sessionStorage.setItem(FILM_SEEN_KEY, JSON.stringify(data));
+    } catch (_) {}
+  }
+
+  function habitatFilmKey(h) {
+    return (h && (h.id || h.cardId)) || "";
+  }
+
+  function pickHabitatFilm(h) {
+    const films = habitatFilms(h);
+    if (!films.length) return null;
+    const key = habitatFilmKey(h);
+    const seenMap = loadFilmSeen();
+    const shown = Array.isArray(seenMap[key]) ? seenMap[key].map(String) : [];
+    const shownSet = new Set(shown);
+    const unseen = films.filter((f) => {
+      const id = youtubeId(f.url);
+      return id && !shownSet.has(id);
+    });
+    const pool = unseen.length ? unseen : films;
+    const pick = pool[Math.floor(Math.random() * pool.length)];
+    const pickId = pick && youtubeId(pick.url);
+    if (key && pickId) {
+      seenMap[key] = unseen.length ? shown.concat([pickId]) : [pickId];
+      saveFilmSeen(seenMap);
+    }
+    return pick || null;
+  }
+
+  function playHabitatFilm(h) {
+    const film = pickHabitatFilm(h);
+    if (!film) return false;
+    return playFilmInline(film.url, film.title || (h && h.label) || "Pre-recorded", film.start);
+  }
+
+  function playFilmInline(url, label, start) {
     const embed = youtubeEmbed(url, {
       autoplay: true,
       start: filmStartSec(start),
-      playlist: playlist,
     });
     if (!embed || !photoEl) return false;
     photoEl.classList.add("is-playing");
