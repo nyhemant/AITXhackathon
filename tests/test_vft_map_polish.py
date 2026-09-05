@@ -111,14 +111,33 @@ class VftMapPolishTests(unittest.TestCase):
         self.assertIn('const DEFAULT_ZOO_STOP = "caribbean-flamingo"', self.js)
         for html in self.pages.values():
             self.assertIn("Print the cutouts", html)
-            self.assertIn("virtual-venue.js?v=93", html)
-            self.assertIn("virtual-venue.css?v=54", html)
+            self.assertIn("virtual-venue.js?v=94", html)
+            self.assertIn("virtual-venue.css?v=55", html)
 
     def test_wind_trail_offsets_midpoint_quads(self):
         body = _fn_body(self.js, "windTrailD")
         self.assertIn("nearMid", body)
         self.assertIn("0.26", body)
         self.assertIn("bulge", body)
+
+    def test_desktop_pictorial_pins_are_larger_than_phase1(self):
+        rest = _fn_body(self.js, "padRestScale")
+        pop = _fn_body(self.js, "padPopScale")
+        self.assertIn("if (!isDesk()) return 1", rest)
+        self.assertIn("DESK_PICTORIAL_REST", rest)
+        self.assertIn("DESK_PICTORIAL_NEXT", rest)
+        self.assertIn("const DESK_PICTORIAL_REST = 0.8", self.js)
+        self.assertIn("const DESK_PICTORIAL_NEXT = 0.9", self.js)
+        self.assertGreater(0.8, 0.56)
+        self.assertGreater(0.9, 0.68)
+        self.assertIn("isPictorialMap()", rest)
+        self.assertIn("isPictorialMap()", pop)
+        self.assertIn("return 1.22", pop)
+        bullet = _fn_body(self.js, "placeBullet")
+        self.assertIn("desk ? 16 : 13", bullet)
+        self.assertIn("desk ? 23 : 19", bullet)
+        self.assertIn("@media (min-width: 720px)", self.css)
+        self.assertIn("Pin diameter is JS padRestScale", self.css)
 
 
 if __name__ == "__main__":
