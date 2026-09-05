@@ -1,7 +1,7 @@
 /**
  * Virtual Field Trip engine — zoo / aquarium / museums / parks.
  * Tabs load a JSON + map SVG. Cams are link-out; films embed.
- * Zoo first-run only: flamingo stop may frame Houston's official Ant Media player.
+ * Zoo tab with no #habitat= deep link opens flamingo as the default stop.
  * Kid name is not collected.
  */
 (() => {
@@ -100,183 +100,16 @@
   let currentCardId = "";
   let currentPrint = { type: "qa", id: "" };
   let loadGen = 0;
-  const FIRST_RUN_KEY = "fp-virtual-zoo-firstrun-v1";
-  const FIRST_RUN_STOP = "caribbean-flamingo";
-  const ZOO_STAMPS_KEY = "fp-virtual-zoo-stamps-v1";
-  const ZOO_PICKS_KEY = "fp-virtual-zoo-picks-v1";
-  let firstRunWired = false;
-  let firstRunLive = false;
+  const DEFAULT_ZOO_STOP = "caribbean-flamingo";
 
-  function vftChrome() {
-    return document.documentElement.getAttribute("data-vft-chrome") || "intro";
+  function setTourChrome() {
+    document.documentElement.setAttribute("data-vft-chrome", "tour");
+    root.classList.remove("is-vft-first-run");
   }
 
-  function setVftChrome(mode) {
-    const next = mode === "path" || mode === "tour" ? mode : "intro";
-    if (next === "intro") document.documentElement.removeAttribute("data-vft-chrome");
-    else document.documentElement.setAttribute("data-vft-chrome", next);
-    root.classList.toggle("is-vft-first-run", next === "intro");
-    const panel = document.getElementById("vz-first-run");
-    if (panel) panel.hidden = next === "tour";
-  }
-
-  function hasVftDeepLink() {
-    const hash = location.hash || "";
-    if (hash.indexOf("habitat=") !== -1) return true;
-    const tab = new URLSearchParams(location.search).get("tab");
-    return Boolean(tab && tab !== "zoo");
-  }
-
-  function shouldSkipFirstRun() {
-    if (hasVftDeepLink()) return true;
-    try {
-      if (localStorage.getItem(FIRST_RUN_KEY) === "1") return true;
-    } catch (_) {}
-    try {
-      const raw = JSON.parse(localStorage.getItem(ZOO_STAMPS_KEY) || "[]");
-      if (Array.isArray(raw) && raw.length) return true;
-    } catch (_) {}
-    try {
-      if (localStorage.getItem(ZOO_PICKS_KEY) != null) return true;
-    } catch (_) {}
-    return false;
-  }
-
-  function markFirstRunDone() {
-    try {
-      localStorage.setItem(FIRST_RUN_KEY, "1");
-    } catch (_) {}
-  }
-
-  function stampStop(id) {
-    if (!id || !config || stamps.includes(id)) return;
-    stamps = stamps.concat([id]);
-    saveStamps(config.storageKey, stamps);
-    renderPassport();
-    markMapStamps();
-  }
-
-  function firstRunStop() {
-    if (!config) return null;
-    const h = habitatById(FIRST_RUN_STOP);
-    return h && h.id === FIRST_RUN_STOP ? h : null;
-  }
-
-  function showFirstRunFollowUp(on) {
-    const wrap = document.getElementById("vz-first-run-film-wrap");
-    const nextBtn = document.getElementById("vz-first-run-next");
-    if (wrap) wrap.hidden = !on;
-    if (nextBtn) nextBtn.hidden = !on;
-  }
-
-  function tryFlamingoLiveEmbed(h) {
-    const stage = document.getElementById("vz-first-run-stage");
-    const embed = h && h.cam && h.cam.embed;
-    if (!stage || !embed || firstRunLive) return Boolean(firstRunLive);
-    const frame = document.createElement("iframe");
-    frame.className = "vz-first-run-frame";
-    frame.title = (h.cam && h.cam.camLabel) || "Flamingo cam at the Houston Zoo";
-    frame.src = embed;
-    frame.setAttribute("allow", "autoplay; encrypted-media; fullscreen");
-    frame.setAttribute("allowfullscreen", "");
-    frame.referrerPolicy = "strict-origin-when-cross-origin";
-    const note = document.createElement("p");
-    note.className = "vz-first-run-live-label";
-    note.textContent = (h.cam && h.cam.camLabel) || "Flamingo cam at the Houston Zoo";
-    stage.appendChild(note);
-    stage.appendChild(frame);
-    stage.classList.add("is-live");
-    firstRunLive = true;
-    return true;
-  }
-
-  function labelFirstRunNext() {
-    const nextBtn = document.getElementById("vz-first-run-next");
-    const walk = walkList();
-    const nxt = walk.find((h) => h.id !== FIRST_RUN_STOP) || walk[1];
-    if (nextBtn && nxt) nextBtn.textContent = "Next: " + nxt.label;
-  }
-
-  function engageFirstRun() {
-    const h = firstRunStop();
-    markFirstRunDone();
-    if (h) stampStop(h.id);
-    showFirstRunFollowUp(true);
-    setVftChrome("path");
-    labelFirstRunNext();
-    renderPassport();
-    markMapStamps();
-  }
-
-  function continueFirstRun() {
-    engageFirstRun();
-    setVftChrome("tour");
-    const nxt = nextHabitat();
-    if (nxt) openHabitat(nxt.id, document.getElementById("vz-first-run-next"));
-  }
-
-  function syncFirstRun() {
-    const panel = document.getElementById("vz-first-run");
-    if (!panel) return;
-    if (currentTab() !== "zoo" || shouldSkipFirstRun() || !firstRunStop()) {
-      setVftChrome("tour");
-      return;
-    }
-    if (vftChrome() === "tour") return;
-    if (vftChrome() !== "path") setVftChrome("intro");
-    if (vftChrome() === "intro") {
-      tryFlamingoLiveEmbed(firstRunStop());
-      showFirstRunFollowUp(false);
-      labelFirstRunNext();
-    }
-  }
-
-  function wireFirstRun() {
-    if (firstRunWired) return;
-    firstRunWired = true;
-    const startBtn = document.getElementById("vz-first-run-start");
-    const camA = document.getElementById("vz-first-run-cam");
-    const nextBtn = document.getElementById("vz-first-run-next");
-    const filmA = document.getElementById("vz-first-run-film");
-    startBtn?.addEventListener("click", () => {
-      tryFlamingoLiveEmbed(firstRunStop());
-      engageFirstRun();
-      track("habitat_opened", {
-        animal_id: FIRST_RUN_STOP,
-        venue_kind: "zoo",
-        tab: "zoo",
-        first_run: true,
-      });
-    });
-    camA?.addEventListener("click", (e) => {
-      e.preventDefault();
-      const h = firstRunStop();
-      const cam = (h && h.cam) || {};
-      const embedded = tryFlamingoLiveEmbed(h);
-      engageFirstRun();
-      if (!embedded && cam.url) openCamPopup(cam.url, cam.camLabel || "Live");
-      track("cam_clicked", {
-        animal_id: FIRST_RUN_STOP,
-        venue_kind: "zoo",
-        tab: "zoo",
-        first_run: true,
-      });
-    });
-    nextBtn?.addEventListener("click", () => continueFirstRun());
-    filmA?.addEventListener("click", (e) => {
-      e.preventDefault();
-      playFirstRunFilm(filmA);
-    });
-    filmA?.addEventListener("auxclick", (e) => {
-      e.preventDefault();
-      playFirstRunFilm(filmA);
-    });
-  }
-
-  function playFirstRunFilm(fromEl) {
-    engageFirstRun();
-    setVftChrome("tour");
-    openHabitat(FIRST_RUN_STOP, fromEl, { fromHash: true });
+  function habitatHashId() {
+    const m = (location.hash || "").match(/habitat=([^&]+)/);
+    return m ? decodeURIComponent(m[1]) : "";
   }
 
   function track(name, params) {
@@ -1639,14 +1472,13 @@
         a.setAttribute("role", "button");
       }
     });
-    sealFilmControl(document.getElementById("vz-first-run-film"), FIRST_RUN_STOP);
     if (filmLink) sealFilmControl(filmLink, currentCardId);
   }
 
   function filmControlFromEvent(e) {
     const t = e.target && e.target.closest ? e.target.closest("a, button") : null;
     if (!t) return null;
-    if (t.id === "vz-film" || t.id === "vz-first-run-film" || t.classList.contains("vz-static-film")) return t;
+    if (t.id === "vz-film" || t.classList.contains("vz-static-film")) return t;
     return null;
   }
 
@@ -1919,7 +1751,6 @@
   function openHabitat(id, fromEl, opts) {
     const h = habitatById(id);
     if (!h || !dialog) return;
-    if (id !== FIRST_RUN_STOP && vftChrome() !== "tour") setVftChrome("tour");
     const fromHash = Boolean(opts && opts.fromHash);
     // Map taps, drawer links, and deep links (?tab=zoo#habitat=giraffe)
     // all open the same stop dialog. Next is a suggestion, not a gate.
@@ -1996,7 +1827,7 @@
       }
     }
     if (filmHint) filmHint.hidden = true;
-    const skipFilm = Boolean(opts && opts.skipFilm) || vftChrome() === "intro";
+    const skipFilm = Boolean(opts && opts.skipFilm);
     if (hasFilm && !skipFilm) playHabitatFilm(h);
     if (placeLink) {
       if (h.placeHref) {
@@ -2040,9 +1871,16 @@
   }
 
   function onHash() {
-    const m = (location.hash || "").match(/habitat=([^&]+)/);
-    if (m) openHabitat(decodeURIComponent(m[1]), null, { fromHash: true });
-    else closeDialog();
+    const hid = habitatHashId();
+    if (hid) {
+      openHabitat(hid, null, { fromHash: true });
+      return;
+    }
+    if (currentTab() === "zoo") {
+      openHabitat(DEFAULT_ZOO_STOP, null, { fromHash: true });
+      return;
+    }
+    closeDialog();
   }
 
   function wireSpot(el) {
@@ -2142,8 +1980,6 @@
         markMapStamps();
         wireMap();
         onHash();
-        wireFirstRun();
-        syncFirstRun();
         sealStaticFilms();
       })
       .catch((err) => {
@@ -2176,10 +2012,6 @@
     const t = filmControlFromEvent(e);
     if (!t) return;
     e.preventDefault();
-    if (t.id === "vz-first-run-film") {
-      playFirstRunFilm(t);
-      return;
-    }
     if (t.id === "vz-film") {
       const h = currentCardId ? habitatById(currentCardId) : null;
       if (h) playHabitatFilm(h);
@@ -2267,8 +2099,6 @@
     }
   });
 
-  wireFirstRun();
-  sealFilmControl(document.getElementById("vz-first-run-film"), FIRST_RUN_STOP);
-  if (shouldSkipFirstRun()) setVftChrome("tour");
+  setTourChrome();
   loadVenue();
 })();
