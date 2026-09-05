@@ -544,6 +544,31 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn(".start-chapter-pills", self.css)
         self.assertIn(".start-chapter-box", self.css)
         self.assertIn("flex-wrap: wrap", self.css)
+        self.assertIn('class="start-open-label"', teach)
+        self.assertIn("Open a card:", teach)
+
+    def test_mobile_scrub_keeps_thumb_targets(self):
+        mobile = re.search(
+            r"@media \(max-width: 640px\) \{([\s\S]*?)\n\}",
+            self.css,
+        )
+        self.assertIsNotNone(mobile)
+        block = mobile.group(1)
+        self.assertIn("flex-direction: column", block)
+        self.assertIn("min-height: 48px", block)
+        self.assertIn("font-size: 1.125rem", block)
+        self.assertIn("width: 100%", block)
+        self.assertIn(".start-open-label", block)
+        self.assertIn("flex: 1 0 100%", block)
+        self.assertIn("scroll-snap-type: x mandatory", block)
+        self.assertIn("overflow-x: auto", block)
+        self.assertIn("overflow-x: clip", self.css)
+        self.assertIn(".start-chapter-pills {\n    flex-direction: column", self.css)
+        self.assertIn('href="/start/"', self.html)
+        self.assertIn('href="/field-pack/"', self.html)
+        self.assertIn('href="/field-pack/cards/"', self.html)
+        self.assertIn('href="/field-pack/virtual-field-trip/"', self.html)
+        self.assertNotIn('href="/field-pack/"', self.js)
 
     def test_proof_block_is_gone_giraffe_card_still_exists(self):
         self.assertNotIn("start-proof", self.html)

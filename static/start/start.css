@@ -26,6 +26,7 @@ html,
 body {
   margin: 0;
   min-height: 100%;
+  overflow-x: clip;
 }
 
 body.start-body {
@@ -213,11 +214,19 @@ body.start-body {
 }
 
 .start-open-cards {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.15rem 0.45rem;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
   font-size: 1rem;
   line-height: 1.45;
   color: var(--muted);
+}
+
+.start-open-label {
+  flex: 0 0 auto;
 }
 
 .start-open-cards a {
@@ -350,6 +359,9 @@ body.start-body {
 }
 
 .start-foot-more a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   color: var(--muted);
   text-decoration: none;
   border-bottom: 1px solid var(--line);
@@ -365,48 +377,115 @@ body.start-body {
     padding-top: 1.15rem;
   }
 
-  .start-hero-copy,
-  .start-chapter-copy {
-    padding-bottom: calc(1.75rem + env(safe-area-inset-bottom, 0px));
-  }
-
-  .start-chapter-box {
-    min-height: calc(100svh - 6.75rem);
-    min-height: calc(100vh - 6.75rem);
-  }
-
-  .start-chapter-pills {
-    padding: 0.65rem 1.15rem 0.9rem;
-  }
-
-  .start-pill {
-    font-size: 1rem;
-    padding: 0.4rem 0.95rem;
-  }
-
-  .start-hero h1 {
-    font-size: clamp(1.7rem, 7.4vw, 2.2rem);
-  }
-
-  .start-chapter-line {
-    font-size: clamp(1.2rem, 5.6vw, 1.5rem);
-  }
-
   .start-top {
     margin-bottom: 2.25rem;
-  }
-
-  #start-teach .start-chapter-box {
-    min-height: calc(100svh - 9.25rem);
-    min-height: calc(100vh - 9.25rem);
-  }
-
-  .start-chapter-under {
-    padding: 0.45rem 1.15rem 0.85rem;
   }
 }
 
 @media (max-width: 640px) {
+  .start-rest {
+    min-height: 10vh;
+  }
+
+  .start-hero-copy,
+  .start-chapter-copy {
+    padding-bottom: calc(1.85rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  .start-hero h1 {
+    font-size: clamp(1.95rem, 8vw, 2.4rem);
+  }
+
+  .start-kicker {
+    font-size: 0.88rem;
+    margin-bottom: 0.7rem;
+  }
+
+  .start-chapter-line {
+    font-size: clamp(1.45rem, 6.5vw, 1.75rem);
+  }
+
+  .start-chapter-quiet {
+    font-size: 1.05rem;
+  }
+
+  .start-brand {
+    min-height: 44px;
+    font-size: 1rem;
+  }
+
+  .start-brand img {
+    width: 44px;
+    height: 44px;
+  }
+
+  .start-chapter-box {
+    min-height: calc(100svh - 8.75rem);
+    min-height: calc(100vh - 8.75rem);
+  }
+
+  .start-chapter-pills {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.55rem;
+    padding: 0.85rem 1.15rem 1.05rem;
+  }
+
+  .start-pill {
+    width: 100%;
+    min-height: 48px;
+    padding: 0.7rem 1.15rem;
+    font-size: 1.125rem;
+  }
+
+  .start-chapter-under {
+    gap: 0.6rem;
+    padding: 0.75rem 1.15rem 1.15rem;
+  }
+
+  .start-chapter-under .start-chapter-pills {
+    width: 100%;
+    padding: 0;
+  }
+
+  .start-open-cards {
+    gap: 0.45rem;
+    width: 100%;
+    font-size: 1.05rem;
+  }
+
+  .start-open-label {
+    flex: 1 0 100%;
+  }
+
+  .start-open-cards > span[aria-hidden] {
+    display: none;
+  }
+
+  .start-open-cards a {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0.4rem 0.95rem;
+    border: 1px solid rgba(10, 69, 69, 0.22);
+    border-radius: 999px;
+    background: var(--card);
+    border-bottom: 1px solid rgba(10, 69, 69, 0.22);
+  }
+
+  .start-foot p {
+    font-size: 0.95rem;
+  }
+
+  .start-foot-more {
+    margin-top: 0.35rem;
+    font-size: 1rem;
+  }
+
+  #start-teach .start-chapter-box {
+    min-height: calc(100svh - 12rem);
+    min-height: calc(100vh - 12rem);
+  }
+
   #start-teach .start-chapter-still {
     display: none;
   }
@@ -463,12 +542,12 @@ body.start-body {
     top: 0.85rem;
     left: 1rem;
     z-index: 2;
-    padding: 0.18rem 0.5rem;
+    padding: 0.28rem 0.65rem;
     border-radius: 999px;
     background: rgba(12, 10, 8, 0.42);
     color: #fffcf7;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-    font-size: 0.72rem;
+    font-size: 0.86rem;
     font-weight: 650;
     letter-spacing: 0.06em;
     text-transform: uppercase;
@@ -487,24 +566,24 @@ body.start-body {
     margin: 0;
     color: rgba(255, 252, 247, 0.88);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-    font-size: 0.78rem;
+    font-size: 0.9rem;
     font-weight: 650;
     letter-spacing: 0.04em;
     text-shadow: 0 1px 10px rgba(12, 10, 8, 0.45);
   }
 
   .start-teach-dots {
-    top: 2.35rem;
+    top: 2.5rem;
     right: 1rem;
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    gap: 0.35rem;
+    gap: 0.4rem;
   }
 
   .start-teach-dots span {
-    width: 0.42rem;
-    height: 0.42rem;
+    width: 0.5rem;
+    height: 0.5rem;
     border-radius: 999px;
     background: rgba(255, 252, 247, 0.38);
     box-shadow: 0 0 0 1px rgba(12, 10, 8, 0.18);
