@@ -13,7 +13,7 @@
   "printHideSub": "Cut the cards. Hide them. Write in the box. Ask the question.",
   "printFooter": "1less.app/field-pack/virtual-field-trip/?tab=science · Field Trip Kit",
   "storageKey": "fp-virtual-science-stamps-v2",
-  "mapSvg": "/field-pack/media/virtual-science/map.svg?v=6",
+  "mapSvg": "/field-pack/media/virtual-science/map.svg?v=7",
   "habitats": [
     {
       "id": "cm-woven",

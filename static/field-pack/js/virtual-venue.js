@@ -21,10 +21,10 @@
   ];
   const MUSEUM_LAST_KEY = "fp-vft-museum-tab";
   const TAB_CONFIGS = {
-    zoo: "/field-pack/data/virtual-venues/virtual-zoo.json?v=24",
-    aquarium: "/field-pack/data/virtual-venues/virtual-aquarium.json?v=25",
-    "natural-history": "/field-pack/data/virtual-venues/virtual-nhm.json?v=14",
-    science: "/field-pack/data/virtual-venues/virtual-science.json?v=16",
+    zoo: "/field-pack/data/virtual-venues/virtual-zoo.json?v=25",
+    aquarium: "/field-pack/data/virtual-venues/virtual-aquarium.json?v=26",
+    "natural-history": "/field-pack/data/virtual-venues/virtual-nhm.json?v=15",
+    science: "/field-pack/data/virtual-venues/virtual-science.json?v=17",
     parks: "/field-pack/data/virtual-venues/virtual-parks.json?v=24",
   };
 
@@ -483,6 +483,159 @@
     });
   }
 
+  function svgNS() {
+    return "http://www.w3.org/2000/svg";
+  }
+
+  function windTrailD(d, bulge) {
+    if (!d) return d;
+    const tokens = d.match(/[MLQCZmlqcz]|-?\d*\.?\d+(?:e[-+]?\d+)?/g);
+    if (!tokens || !tokens.length) return d;
+    let i = 0;
+    let lastX = 0;
+    let lastY = 0;
+    let sign = 1;
+    const out = [];
+    const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
+    const num = () => {
+      const n = parseFloat(tokens[i]);
+      i += 1;
+      return Number.isFinite(n) ? n : 0;
+    };
+    while (i < tokens.length) {
+      const raw = tokens[i];
+      if (!/^[MLQCZmlqcz]$/.test(raw)) break;
+      const cmd = raw.toUpperCase();
+      i += 1;
+      if (cmd === "Z") {
+        out.push("Z");
+        continue;
+      }
+      if (cmd === "M") {
+        lastX = num();
+        lastY = num();
+        out.push(`M${lastX},${lastY}`);
+        continue;
+      }
+      if (cmd === "L") {
+        lastX = num();
+        lastY = num();
+        out.push(`L${lastX},${lastY}`);
+        continue;
+      }
+      if (cmd === "Q") {
+        while (i < tokens.length && !/^[MLQCZmlqcz]$/.test(tokens[i])) {
+          const cx = num();
+          const cy = num();
+          const x = num();
+          const y = num();
+          const mx = (lastX + x) / 2;
+          const my = (lastY + y) / 2;
+          const nearMid = Math.hypot(cx - mx, cy - my) < 8;
+          let ncx = cx;
+          let ncy = cy;
+          if (nearMid) {
+            const dx = x - lastX;
+            const dy = y - lastY;
+            const len = Math.hypot(dx, dy) || 1;
+            const off = Math.min(bulge, len * 0.26);
+            ncx = clamp(mx - (dy / len) * off * sign, 24, 776);
+            ncy = clamp(my + (dx / len) * off * sign, 24, 776);
+            sign *= -1;
+          }
+          out.push(`Q${ncx.toFixed(1)},${ncy.toFixed(1)} ${x},${y}`);
+          lastX = x;
+          lastY = y;
+        }
+        continue;
+      }
+      if (cmd === "C") {
+        while (i < tokens.length && !/^[MLQCZmlqcz]$/.test(tokens[i])) {
+          const x1 = num();
+          const y1 = num();
+          const x2 = num();
+          const y2 = num();
+          const x = num();
+          const y = num();
+          out.push(`C${x1},${y1} ${x2},${y2} ${x},${y}`);
+          lastX = x;
+          lastY = y;
+        }
+        continue;
+      }
+      out.push(raw);
+    }
+    return out.join(" ");
+  }
+
+  function circlePhotoClip() {
+    const svg = mapMount && mapMount.querySelector("svg");
+    if (!svg) return;
+    let defs = svg.querySelector("defs");
+    if (!defs) {
+      defs = document.createElementNS(svgNS(), "defs");
+      svg.insertBefore(defs, svg.firstChild);
+    }
+    let clip = svg.querySelector("#vz-photo-clip");
+    if (!clip) {
+      clip = document.createElementNS(svgNS(), "clipPath");
+      clip.setAttribute("id", "vz-photo-clip");
+      clip.setAttribute("clipPathUnits", "objectBoundingBox");
+      defs.appendChild(clip);
+    }
+    if (clip.querySelector("circle")) return;
+    while (clip.firstChild) clip.removeChild(clip.firstChild);
+    const c = document.createElementNS(svgNS(), "circle");
+    c.setAttribute("cx", "0.5");
+    c.setAttribute("cy", "0.5");
+    c.setAttribute("r", "0.5");
+    clip.appendChild(c);
+  }
+
+  function roundPictorialPins() {
+    if (!mapMount) return;
+    mapMount.querySelectorAll(".vz-silo, .vz-halo").forEach((el) => {
+      const w = parseFloat(el.getAttribute("width") || "0");
+      const h = parseFloat(el.getAttribute("height") || "0");
+      if (!w || !h) return;
+      const r = Math.min(w, h) / 2;
+      el.setAttribute("rx", String(r));
+      el.setAttribute("ry", String(r));
+    });
+    mapMount.querySelectorAll(".vz-spot image").forEach((img) => {
+      img.setAttribute("clip-path", "url(#vz-photo-clip)");
+    });
+  }
+
+  function polishTrail() {
+    if (!mapMount) return;
+    const g = mapMount.querySelector("#vz-trail");
+    if (!g || g.getAttribute("data-polished") === "1") return;
+    const bed = g.querySelector(".vz-trail-bed");
+    const dash = g.querySelector(".vz-trail-dash");
+    const src = bed || dash;
+    if (!src) return;
+    const d = windTrailD(src.getAttribute("d") || "", 36);
+    g.querySelectorAll("path").forEach((p) => p.setAttribute("d", d));
+    if (!g.querySelector(".vz-trail-shadow")) {
+      const sh = document.createElementNS(svgNS(), "path");
+      sh.setAttribute("class", "vz-trail-shadow");
+      sh.setAttribute("d", d);
+      sh.setAttribute("fill", "none");
+      g.insertBefore(sh, g.firstChild);
+    }
+    g.setAttribute("data-polished", "1");
+  }
+
+  function polishPictorialMap() {
+    if (!mapMount) return;
+    if (mapMount.classList.contains("is-pictorial")) {
+      circlePhotoClip();
+      roundPictorialPins();
+    }
+    polishTrail();
+  }
+
   function cssEscape(id) {
     if (window.CSS && CSS.escape) return CSS.escape(id);
     return String(id).replace(/([^a-zA-Z0-9_-])/g, "\\$1");
@@ -858,6 +1011,7 @@
     remapPickPads();
     applyParkMap();
     applyMapPhotos();
+    polishPictorialMap();
     renderPassport();
     markMapStamps();
     mapMount?.querySelectorAll("[data-habitat]").forEach((el) => {
@@ -954,6 +1108,7 @@
     remapPickPads();
     applyParkMap();
     applyMapPhotos();
+    polishPictorialMap();
     renderPassport();
     markMapStamps();
     mapMount?.querySelectorAll("[data-habitat]").forEach((el) => {
@@ -987,7 +1142,7 @@
   }
 
   function padPopScale() {
-    if (!isDesk()) return 1;
+    if (!isDesk()) return 1.08;
     if (config && config.kind === "park") return 3.4;
     return 1.14;
   }
@@ -1048,8 +1203,9 @@
       [...el.children].forEach((kid) => {
         if (kid === hit || kid.classList.contains("vz-hit")) return;
         if (kid.classList.contains("vz-spot-label-g") || kid.classList.contains("vz-spot-label")) return;
-        if (kid.classList.contains("vz-next-tag")) return;
+        if (kid.classList.contains("vz-next-tag") || kid.classList.contains("vz-open-chip")) return;
         if (kid.classList.contains("vz-play-mark") || kid.classList.contains("vz-bullet")) return;
+        if (kid.classList.contains("vz-stamp-mark")) return;
         g.appendChild(kid);
       });
       el.appendChild(g);
@@ -1083,9 +1239,9 @@
     const x = parseFloat(hit.getAttribute("x")) || 0;
     const y = parseFloat(hit.getAttribute("y")) || 0;
     const w = parseFloat(hit.getAttribute("width")) || 80;
-    const r = Math.max(11, Math.min(17, w * 0.125));
-    const cx = x + r + 3;
-    const cy = y + r + 3;
+    const r = Math.max(13, Math.min(19, w * 0.14));
+    const cx = x + r + 2;
+    const cy = y + r + 2;
     if (!g) {
       g = document.createElementNS(NS, "g");
       g.setAttribute("class", "vz-bullet");
@@ -1155,6 +1311,86 @@
   function canOpen(id) {
     // Free map: any habitat/stop opens. Sequential "Next" is a hint only.
     return Boolean(id);
+  }
+
+  function placeStampMark(el, done) {
+    if (!el) return;
+    const old = el.querySelector(".vz-stamp-mark");
+    if (!done || (config && config.pinLabels)) {
+      if (old) old.remove();
+      return;
+    }
+    const hit = el.querySelector(".vz-hit");
+    if (!hit) return;
+    let g = old;
+    if (!g) {
+      g = document.createElementNS(svgNS(), "g");
+      g.setAttribute("class", "vz-stamp-mark");
+      g.setAttribute("pointer-events", "none");
+      const c = document.createElementNS(svgNS(), "circle");
+      c.setAttribute("class", "vz-stamp-mark-disc");
+      const check = document.createElementNS(svgNS(), "path");
+      check.setAttribute("class", "vz-stamp-mark-check");
+      g.appendChild(c);
+      g.appendChild(check);
+      el.appendChild(g);
+    }
+    const x = parseFloat(hit.getAttribute("x")) || 0;
+    const y = parseFloat(hit.getAttribute("y")) || 0;
+    const w = parseFloat(hit.getAttribute("width")) || 80;
+    const h = parseFloat(hit.getAttribute("height")) || 80;
+    const r = Math.max(8, Math.min(12, w * 0.09));
+    const cx = x + r + 3;
+    const cy = y + h - r - 4;
+    g.querySelector(".vz-stamp-mark-disc").setAttribute("cx", String(cx));
+    g.querySelector(".vz-stamp-mark-disc").setAttribute("cy", String(cy));
+    g.querySelector(".vz-stamp-mark-disc").setAttribute("r", String(r));
+    const s = r * 0.45;
+    g.querySelector(".vz-stamp-mark-check").setAttribute(
+      "d",
+      `M${cx - s},${cy} L${cx - s * 0.15},${cy + s * 0.85} L${cx + s},${cy - s * 0.7}`
+    );
+  }
+
+  function refreshOpenChip() {
+    if (!mapMount) return;
+    mapMount.querySelectorAll(".vz-open-chip").forEach((n) => n.remove());
+    if (config && config.pinLabels) return;
+    const open = mapMount.querySelector(".vz-spot.is-open");
+    if (!open) return;
+    const hit = open.querySelector(".vz-hit");
+    if (!hit) return;
+    const id = open.getAttribute("data-habitat");
+    const hab = habitatById(id);
+    const name = (hab && hab.label) || id;
+    if (!name) return;
+    const x = parseFloat(hit.getAttribute("x")) || 0;
+    const y = parseFloat(hit.getAttribute("y")) || 0;
+    const w = parseFloat(hit.getAttribute("width")) || 0;
+    const fs = 13;
+    const lx = x + w / 2;
+    const ly = Math.max(16, y - 8);
+    const boxW = Math.max(72, name.length * fs * 0.56) + 16;
+    const boxH = 20;
+    const g = document.createElementNS(svgNS(), "g");
+    g.setAttribute("class", "vz-open-chip");
+    g.setAttribute("pointer-events", "none");
+    const bg = document.createElementNS(svgNS(), "rect");
+    bg.setAttribute("class", "vz-open-chip-bg");
+    bg.setAttribute("x", String(lx - boxW / 2));
+    bg.setAttribute("y", String(ly - fs * 0.85));
+    bg.setAttribute("width", String(boxW));
+    bg.setAttribute("height", String(boxH));
+    bg.setAttribute("rx", "10");
+    const t = document.createElementNS(svgNS(), "text");
+    t.setAttribute("class", "vz-open-chip-text");
+    t.setAttribute("x", String(lx));
+    t.setAttribute("y", String(ly + 2));
+    t.setAttribute("text-anchor", "middle");
+    t.textContent = name;
+    g.appendChild(bg);
+    g.appendChild(t);
+    open.appendChild(g);
   }
 
   function placePinLabel(el, name) {
@@ -1369,6 +1605,7 @@
       wrapPad(el);
       placePinLabel(el, label);
       placePlayMark(el, habitatFilms(hab).length > 0);
+      placeStampMark(el, done);
       el.setAttribute(
         "aria-label",
         isNext
@@ -1396,6 +1633,7 @@
         nextEl.appendChild(t);
       }
     }
+    refreshOpenChip();
     const exit = mapMount.querySelector("#vz-exit");
     if (exit) exit.setAttribute("data-open", nxt ? "0" : "1");
   }
@@ -1744,6 +1982,7 @@
       el.classList.remove("is-open");
       wrapPad(el);
     });
+    refreshOpenChip();
     if (titleEl) {
       titleEl.hidden = true;
       titleEl.textContent = "";
@@ -1884,6 +2123,7 @@
       el.classList.toggle("is-open", el.getAttribute("data-habitat") === h.id);
       wrapPad(el);
     });
+    refreshOpenChip();
 
     dialog.hidden = false;
     dialog.setAttribute("aria-hidden", "false");
@@ -2002,6 +2242,7 @@
         remapPickPads();
         applyParkMap();
         applyMapPhotos();
+        polishPictorialMap();
         renderPathPicker();
         renderPassport();
         markMapStamps();

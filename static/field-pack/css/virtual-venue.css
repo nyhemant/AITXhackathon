@@ -124,6 +124,9 @@
   stroke: #fff;
   stroke-width: 3px;
 }
+.vz-open-chip {
+  pointer-events: none;
+}
 .vz-spot-label-g {
   cursor: pointer;
 }
@@ -141,6 +144,9 @@
 }
 .vz-spot[data-next="1"] .vz-silo {
   stroke-dasharray: 7 4;
+}
+.vz-map-wrap.is-pictorial .vz-spot[data-next="1"] .vz-silo {
+  stroke-dasharray: none;
 }
 .vz-static-panels {
   margin: 1.5rem 0 0;
@@ -265,49 +271,73 @@ html[data-vft-print="1"] .vz-print-row,
   opacity: 1;
 }
 
-/* Pictorial maps: photo sits in a window so the floor shows around it */
+/* Pictorial maps: circular photo pins (theme-park / map-POI) */
 .vz-map-wrap.is-pictorial .vz-spot .vz-halo {
-  fill: #8fd0dc;
-  opacity: 0.18;
+  fill: #f4e6c4;
+  opacity: 0;
+}
+.vz-map-wrap.is-pictorial .vz-spot .vz-silo,
+.vz-map-wrap.is-pictorial .vz-spot .vz-halo {
+  rx: 50%;
+  ry: 50%;
 }
 .vz-map-wrap.is-pictorial .vz-spot .vz-silo {
-  fill: none;
-  stroke: #c5e8ef;
-  stroke-width: 3.2;
-  filter: none;
+  fill: #fff;
+  stroke: #fff;
+  stroke-width: 6.5;
+  filter: url(#pad-shadow);
 }
-.vz-map-wrap.is-pictorial .vz-spot[data-next="1"] .vz-silo,
+.vz-map-wrap.is-pictorial .vz-spot image {
+  clip-path: circle(50% at 50% 50%);
+}
+.vz-map-wrap.is-pictorial .vz-spot[data-next="1"] .vz-halo {
+  fill: #2a8a80;
+  opacity: 0.28;
+}
+.vz-map-wrap.is-pictorial .vz-spot.is-open .vz-halo,
+.vz-map-wrap.is-pictorial .vz-spot:focus-visible .vz-halo {
+  fill: #e8b923;
+  opacity: 0.42;
+}
+.vz-map-wrap.is-pictorial .vz-spot[data-next="1"] .vz-silo {
+  stroke: #2a8a80;
+  stroke-width: 6.5;
+}
+.vz-map-wrap.is-pictorial .vz-spot[data-stamped="1"] .vz-silo {
+  stroke: #8ed4c2;
+  stroke-width: 5.5;
+}
 .vz-map-wrap.is-pictorial .vz-spot:focus-visible .vz-silo,
 .vz-map-wrap.is-pictorial .vz-spot.is-open .vz-silo {
   stroke: #e8b923;
-}
-.vz-map-wrap.is-pictorial .vz-spot[data-stamped="1"] .vz-silo {
-  stroke: #7ec8b4;
+  stroke-width: 8;
 }
 .vz-map-wrap[data-kind="aquarium"] { background: #8aa8b4; }
 .vz-map-wrap[data-kind="zoo"] { background: #9bb08a; }
 .vz-map-wrap[data-kind="science"] { background: #b8b0c8; }
 .vz-map-wrap[data-kind="natural_history"] { background: #c4b896; }
+.vz-trail-shadow,
 .vz-trail-bed,
 .vz-trail-dash {
   fill: none;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
+.vz-trail-shadow {
+  stroke: #2a2418;
+  stroke-width: 20;
+  opacity: 0.2;
+}
 .vz-trail-bed {
-  stroke: #f7e2b2;
-  stroke-width: 10;
-  opacity: 0.85;
+  stroke: #3f6f69;
+  stroke-width: 16;
+  opacity: 0.95;
 }
 .vz-trail-dash {
-  stroke: #6b5340;
-  stroke-width: 2.6;
-  stroke-dasharray: 10 8;
-  opacity: 0.65;
-  animation: vz-trail-flow 20s linear infinite;
-}
-@keyframes vz-trail-flow {
-  to { stroke-dashoffset: -20; }
+  stroke: #f3e4c0;
+  stroke-width: 9.5;
+  stroke-dasharray: none;
+  opacity: 1;
 }
 .vz-arrows { fill: #8a7d5e; }
 @media (min-width: 720px) {
@@ -367,6 +397,45 @@ html[data-vft-print="1"] .vz-print-row,
 }
 .vz-spot[data-stamped="1"] .vz-bullet-disc {
   fill: #5a7f7a;
+}
+.vz-map-wrap.is-pictorial .vz-bullet-disc {
+  fill: #0f5c5c;
+  stroke: #fff;
+  stroke-width: 2.2;
+}
+.vz-map-wrap.is-pictorial .vz-spot[data-next="1"] .vz-bullet-disc {
+  fill: #c45c26;
+}
+.vz-map-wrap.is-pictorial .vz-spot.is-open .vz-bullet-disc,
+.vz-map-wrap.is-pictorial .vz-spot:focus-visible .vz-bullet-disc {
+  fill: #c4a35a;
+}
+.vz-map-wrap.is-pictorial .vz-spot[data-stamped="1"] .vz-bullet-disc {
+  fill: #2f7a6e;
+}
+.vz-open-chip-bg {
+  fill: #0a4545;
+  fill-opacity: 0.92;
+  stroke: #fff;
+  stroke-width: 1.6;
+}
+.vz-open-chip-text {
+  font-family: Georgia, serif;
+  font-size: 13px;
+  font-weight: 700;
+  fill: #fffaf2;
+}
+.vz-stamp-mark-disc {
+  fill: #2f7a6e;
+  stroke: #fff;
+  stroke-width: 1.8;
+}
+.vz-stamp-mark-check {
+  fill: none;
+  stroke: #fffaf2;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 .vz-bullet-num {
   fill: #f6f3ec;

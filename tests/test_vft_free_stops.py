@@ -119,12 +119,12 @@ class VftFreeStopsTests(unittest.TestCase):
 
     def test_cache_bump(self):
         for html in self.pages.values():
-            self.assertIn("virtual-venue.js?v=92", html)
-            self.assertIn("virtual-venue.css?v=53", html)
-        self.assertIn("virtual-zoo.json?v=24", self.js)
-        self.assertIn("virtual-aquarium.json?v=25", self.js)
-        self.assertIn("virtual-nhm.json?v=14", self.js)
-        self.assertIn("virtual-science.json?v=16", self.js)
+            self.assertIn("virtual-venue.js?v=93", html)
+            self.assertIn("virtual-venue.css?v=54", html)
+        self.assertIn("virtual-zoo.json?v=25", self.js)
+        self.assertIn("virtual-aquarium.json?v=26", self.js)
+        self.assertIn("virtual-nhm.json?v=15", self.js)
+        self.assertIn("virtual-science.json?v=17", self.js)
         self.assertIn("virtual-parks.json?v=24", self.js)
 
 
