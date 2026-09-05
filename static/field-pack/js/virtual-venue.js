@@ -1135,15 +1135,28 @@
     return window.matchMedia("(min-width: 720px)").matches;
   }
 
+  function isPictorialMap() {
+    return Boolean(mapMount && mapMount.classList.contains("is-pictorial"));
+  }
+
+  // Desktop pictorial pins were 0.56 / 0.68 of the SVG pad and looked small
+  // on the wide map. Mobile keeps scale 1 (the authored ~136 unit pad).
+  const DESK_PICTORIAL_REST = 0.8;
+  const DESK_PICTORIAL_NEXT = 0.9;
+
   function padRestScale(el) {
     if (!isDesk()) return 1;
     if (walkList().length <= 4) return 0.9;
+    if (isPictorialMap()) {
+      return el.getAttribute("data-next") === "1" ? DESK_PICTORIAL_NEXT : DESK_PICTORIAL_REST;
+    }
     return el.getAttribute("data-next") === "1" ? 0.68 : 0.56;
   }
 
   function padPopScale() {
     if (!isDesk()) return 1.08;
     if (config && config.kind === "park") return 3.4;
+    if (isPictorialMap()) return 1.22;
     return 1.14;
   }
 
@@ -1171,9 +1184,12 @@
     const cy = box.y + box.h / 2;
     if (s === 1) g.removeAttribute("transform");
     else g.setAttribute("transform", `translate(${cx} ${cy}) scale(${s}) translate(${-cx} ${-cy})`);
-    if (s > 1) {
-      const nw = box.w * s;
-      const nh = box.h * s;
+    // Grow the tap target with the visual pin on desktop pictorial maps.
+    // Mobile keeps the authored hit rect (scale 1).
+    const hitScale = isDesk() && isPictorialMap() ? Math.max(s, 1) : s > 1 ? s : 1;
+    if (hitScale > 1) {
+      const nw = box.w * hitScale;
+      const nh = box.h * hitScale;
       hit.setAttribute("x", String(cx - nw / 2));
       hit.setAttribute("y", String(cy - nh / 2));
       hit.setAttribute("width", String(nw));
@@ -1239,7 +1255,8 @@
     const x = parseFloat(hit.getAttribute("x")) || 0;
     const y = parseFloat(hit.getAttribute("y")) || 0;
     const w = parseFloat(hit.getAttribute("width")) || 80;
-    const r = Math.max(13, Math.min(19, w * 0.14));
+    const desk = isDesk() && isPictorialMap();
+    const r = Math.max(desk ? 16 : 13, Math.min(desk ? 23 : 19, w * (desk ? 0.16 : 0.14)));
     const cx = x + r + 2;
     const cy = y + r + 2;
     if (!g) {
@@ -1339,7 +1356,8 @@
     const y = parseFloat(hit.getAttribute("y")) || 0;
     const w = parseFloat(hit.getAttribute("width")) || 80;
     const h = parseFloat(hit.getAttribute("height")) || 80;
-    const r = Math.max(8, Math.min(12, w * 0.09));
+    const desk = isDesk() && isPictorialMap();
+    const r = Math.max(desk ? 10 : 8, Math.min(desk ? 14 : 12, w * (desk ? 0.105 : 0.09)));
     const cx = x + r + 3;
     const cy = y + h - r - 4;
     g.querySelector(".vz-stamp-mark-disc").setAttribute("cx", String(cx));

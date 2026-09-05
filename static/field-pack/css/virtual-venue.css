@@ -359,6 +359,13 @@ html[data-vft-print="1"] .vz-print-row,
   .vz-map-wrap.is-wide .vz-spot.is-open .vz-next-tag {
     display: none;
   }
+  /* Pin diameter is JS padRestScale (0.8 / 0.9). Keep chrome proportional. */
+  .vz-map-wrap.is-pictorial .vz-bullet-disc {
+    stroke-width: 2.6;
+  }
+  .vz-map-wrap.is-pictorial .vz-open-chip-text {
+    font-size: 14px;
+  }
 }
 .vz-bubble {
   fill: rgba(255, 255, 255, 0.48);
