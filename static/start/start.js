@@ -197,7 +197,6 @@
       }
       if (hardFail || !aligned || !intersecting) return;
       armTeaser();
-      if (video.readyState < 2) holdPoster();
       if (!video.paused && !video.ended) {
         fallback.hidden = true;
         ensureContinueTimer();
