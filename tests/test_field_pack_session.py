@@ -116,7 +116,7 @@ class FlagshipSessionTests(unittest.TestCase):
         ):
             self.assertIn(q, html)
         self.assertIn("nationalzoo.si.edu/webcams/lion-cam", html)
-        self.assertIn("Print this card", html)
+        self.assertIn("Print", html)
         self.assertNotIn("Open in outing view", html)
         self.assertNotIn("What did you notice about", html)
         # VFT stop may have a challenge; it does not own card facts.
@@ -160,7 +160,8 @@ class FlagshipSessionTests(unittest.TestCase):
             (seahorse, "seahorse"),
         ):
             chrome = self._card_chrome(html)
-            self.assertIn("At-home card", chrome, cid)
+            self.assertNotIn("At-home card", chrome, cid)
+            self.assertNotIn("Explore at home", chrome, cid)
             self.assertNotIn("Place page", chrome, cid)
             self.assertNotIn("This zoo's cards", chrome, cid)
             self.assertNotIn("This aquarium's cards", chrome, cid)
@@ -198,7 +199,7 @@ class FlagshipSessionTests(unittest.TestCase):
         )
         rocket = self._card_chrome((FP / "cards" / "sci-rocket" / "index.html").read_text(encoding="utf-8"))
         self.assertIn("Perot Museum", art)
-        self.assertIn("Place page", art)
+        self.assertIn("Place", art)
         self.assertIn("Cuyahoga Valley", towpath)
         self.assertIn("Yellowstone", bison)
         self.assertIn("CA Science Center", rocket)
@@ -232,7 +233,8 @@ class FlagshipSessionTests(unittest.TestCase):
         self.assertIn("· Perot Museum", html)
         self.assertIn("/field-pack/childrens-museum-perot/#at-home", html)
         self.assertNotIn("This zoo's cards", html)
-        self.assertIn("This museum's cards", html)
+        self.assertNotIn("This museum's cards", html)
+        self.assertIn(">Place</a>", html)
         hub = (FP / "cards" / "index.html").read_text(encoding="utf-8")
         art = [line for line in hub.splitlines() if "cm-art-lab" in line][0]
         self.assertIn("Perot Museum", art)
@@ -240,7 +242,10 @@ class FlagshipSessionTests(unittest.TestCase):
     def test_lion_card_keeps_chip_labels_without_home_zoo_cta(self):
         html = (FP / "cards" / "african-lion" / "index.html").read_text(encoding="utf-8")
         self.assertNotIn("This zoo's cards", html)
-        self.assertIn("Explore at home", html)
+        lion_main = html.split('<main class="card-page">', 1)[1].split("</main>", 1)[0]
+        self.assertNotIn("Explore at home", lion_main)
+        self.assertIn("Virtual Field Trip", lion_main)
+        self.assertIn("Print", lion_main)
         self.assertIn("Meat", html)
         self.assertIn("Run fast", html)
         dallas = self._visible((FP / "dallas-zoo" / "index.html").read_text(encoding="utf-8"))

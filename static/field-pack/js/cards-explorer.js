@@ -49,7 +49,7 @@
       if (searching || filtering) {
         countEl.textContent = visible === 1 ? "1 card" : visible + " cards";
       } else {
-        countEl.textContent = TOTAL + " cards · from Field Trip Kit place lists";
+        countEl.textContent = TOTAL + " cards";
       }
     }
   }

@@ -1757,11 +1757,61 @@ a.seo-map-card:focus-visible {
   font-weight: 650;
   color: #3d4f6f;
 }
+.card-page {
+  max-width: 34rem;
+  margin: 0 auto;
+  padding: 0.75rem 1rem 3rem;
+}
+.card-page h1 {
+  font-size: clamp(1.7rem, 5.5vw, 2.35rem);
+  line-height: 1.15;
+  color: #0a4545;
+  margin: 0.65rem 0 0.25rem;
+}
+.card-page-venue {
+  margin: 0 0 0.35rem;
+  font-size: 0.95rem;
+  font-weight: 750;
+  color: #0f5c5c;
+}
+.card-page-venue a {
+  color: #0f5c5c;
+  font-weight: 750;
+}
 .card-page img.card-page-photo {
   width: 100%;
   height: auto;
   aspect-ratio: 1 / 1;
   object-fit: cover;
+  border-radius: 16px;
+  border: 1.5px solid rgba(15, 92, 92, 0.14);
+}
+.card-page-emoji {
+  font-size: 3.5rem;
+  margin: 0.4rem 0;
+}
+.card-page-blurb {
+  margin: 0.2rem 0 0;
+  color: #3d4f6f;
+  font-size: 1.08rem;
+  line-height: 1.4;
+}
+.card-page-crumbs {
+  font-size: 0.8rem;
+  color: #5a6a84;
+  margin: 0 0 0.65rem;
+}
+.card-page-crumbs a {
+  color: #0f5c5c;
+}
+.card-talk-pack .card-talk-h,
+.card-page .card-talk-h {
+  font-size: clamp(1.4rem, 4vw, 1.85rem);
+  margin: 1.15rem 0 0.55rem;
+  color: #0a4545;
+}
+.card-page .card-talk-pack .mission-q {
+  font-size: 1.2rem;
 }
 .card-page-next {
   margin: 0.75rem 0 0;
@@ -1865,6 +1915,7 @@ body.seo-venue-body {
 .card-page {
   display: flex;
   flex-direction: column;
+  max-width: 34rem;
 }
 .card-page-next {
   order: 1;
@@ -1874,6 +1925,14 @@ body.seo-venue-body {
 }
 .card-page-actions {
   order: 3;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1.1rem;
+}
+.card-page-actions .btn {
+  font-size: 1.05rem;
+  min-height: 44px;
 }
 
 @media (max-width: 640px) {

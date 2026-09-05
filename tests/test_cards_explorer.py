@@ -80,7 +80,8 @@ class CardsExplorerTests(unittest.TestCase):
         self.assertIn('data-card-filter="sealife"', self.html)
         self.assertIn('data-card-filter="attractions"', self.html)
         self.assertIn('data-card-filter="parks"', self.html)
-        self.assertIn("58 cards · from Field Trip Kit place lists", self.html)
+        self.assertIn("58 cards", self.html)
+        self.assertNotIn("from Field Trip Kit place lists", self.html)
 
     def test_nav_pairs_with_places_and_start(self):
         self.assertIn('href="/start/"', self.html)
