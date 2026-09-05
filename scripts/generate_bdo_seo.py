@@ -770,7 +770,7 @@ def watch_link_html(url: str, label: str, *, kind: str) -> str:
     """Cam/film anchor: first visible line names the real zoo when the label has one."""
     src = cousin_source_from_label(label)
     if src:
-        prefix = "Film from" if kind == "film" else "Live from"
+        prefix = "Live from" if kind == "cam" else "Film from"
         inner = (
             f'<span class="seo-watch-source">{esc(prefix)} {esc(src)}</span>'
             f'<span class="seo-watch-detail">{esc(label)}</span>'

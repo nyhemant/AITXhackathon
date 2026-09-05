@@ -130,7 +130,7 @@ class CardPageSparseChromeTests(unittest.TestCase):
                 "cam_url": "https://nationalzoo.si.edu/webcams/lion-cam",
                 "cam_label": "Lion cam at the Smithsonian National Zoo",
                 "film_url": "https://www.youtube.com/watch?v=tlZwYsJpqjo",
-                "film_title": "African lions",
+                "film_title": "Giraffe calf at the Houston Zoo",
                 "vft_href": "/field-pack/virtual-field-trip/?tab=zoo#habitat=african-lion",
             }
         }
@@ -139,6 +139,8 @@ class CardPageSparseChromeTests(unittest.TestCase):
         self.assertIn("youtube.com", place)
         self.assertNotIn("youtube.com", card)
         self.assertIn("/field-pack/virtual-field-trip/?tab=zoo#habitat=african-lion", card)
+        self.assertIn("Film from Houston Zoo", card)
+        self.assertIn("Live from Smithsonian National Zoo", card)
         self.assertTrue(is_youtube_url("https://www.youtube.com/watch?v=tlZwYsJpqjo"))
         self.assertFalse(is_youtube_url("https://nationalzoo.si.edu/webcams/lion-cam"))
 
