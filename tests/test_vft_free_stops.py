@@ -2,7 +2,7 @@
 
 Map pins and the stops drawer must not wait for stop 1, then 2, then 3.
 A suggested Next may still highlight the first unvisited habitat, but it
-must not gate openHabitat. Flamingo first-run stays a separate intro.
+must not gate openHabitat. There is no first-run Stop 1 shell.
 """
 
 from __future__ import annotations
@@ -103,14 +103,14 @@ class VftFreeStopsTests(unittest.TestCase):
             self.assertTrue(hid, hid)
             self.assertIn("return Boolean(id)", can_open)
 
-    def test_flamingo_first_run_still_present(self):
-        self.assertIn('const FIRST_RUN_KEY = "fp-virtual-zoo-firstrun-v1"', self.js)
-        self.assertIn('const FIRST_RUN_STOP = "caribbean-flamingo"', self.js)
-        self.assertIn("function shouldSkipFirstRun()", self.js)
-        self.assertIn("function engageFirstRun()", self.js)
+    def test_flamingo_first_run_shell_is_gone(self):
+        self.assertNotIn("fp-virtual-zoo-firstrun-v1", self.js)
+        self.assertNotIn("function shouldSkipFirstRun()", self.js)
+        self.assertNotIn("function engageFirstRun()", self.js)
+        self.assertIn('const DEFAULT_ZOO_STOP = "caribbean-flamingo"', self.js)
         for html in self.pages.values():
-            self.assertIn('id="vz-first-run"', html)
-            self.assertIn("Start with the flamingo", html)
+            self.assertNotIn('id="vz-first-run"', html)
+            self.assertNotIn("Start with the flamingo", html)
 
     def test_locked_pin_css_does_not_look_dead(self):
         lock = self.css.split('.vz-spot[data-lock="1"] {', 1)[1].split("}", 1)[0]
@@ -119,8 +119,8 @@ class VftFreeStopsTests(unittest.TestCase):
 
     def test_cache_bump(self):
         for html in self.pages.values():
-            self.assertIn("virtual-venue.js?v=90", html)
-            self.assertIn("virtual-venue.css?v=51", html)
+            self.assertIn("virtual-venue.js?v=91", html)
+            self.assertIn("virtual-venue.css?v=52", html)
         self.assertIn("virtual-zoo.json?v=24", self.js)
         self.assertIn("virtual-aquarium.json?v=25", self.js)
         self.assertIn("virtual-nhm.json?v=14", self.js)

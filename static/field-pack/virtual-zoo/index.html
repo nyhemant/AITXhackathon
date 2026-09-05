@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-vft-chrome="tour">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -26,32 +26,7 @@
     <link rel="stylesheet" href="/shell/shell.css?v=6" />
     <link rel="stylesheet" href="/field-pack/css/styles.css?v=37" />
     <link rel="stylesheet" href="/field-pack/css/landing.css?v=93" />
-    <link rel="stylesheet" href="/field-pack/css/virtual-venue.css?v=51" />
-    <script>
-      (function () {
-        try {
-          var q = new URLSearchParams(location.search);
-          var tab = q.get("tab") || "";
-          var hash = location.hash || "";
-          if ((tab && tab !== "zoo") || hash.indexOf("habitat=") !== -1) {
-            document.documentElement.setAttribute("data-vft-chrome", "tour");
-            return;
-          }
-          if (localStorage.getItem("fp-virtual-zoo-firstrun-v1") === "1") {
-            document.documentElement.setAttribute("data-vft-chrome", "tour");
-            return;
-          }
-          var stamps = JSON.parse(localStorage.getItem("fp-virtual-zoo-stamps-v1") || "[]");
-          if (Array.isArray(stamps) && stamps.length) {
-            document.documentElement.setAttribute("data-vft-chrome", "tour");
-            return;
-          }
-          if (localStorage.getItem("fp-virtual-zoo-picks-v1") != null) {
-            document.documentElement.setAttribute("data-vft-chrome", "tour");
-          }
-        } catch (e) {}
-      })();
-    </script>
+    <link rel="stylesheet" href="/field-pack/css/virtual-venue.css?v=52" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -101,24 +76,6 @@
         </nav>
         <!-- VFT:TABS:END -->
 
-        <section class="vz-first-run no-print" id="vz-first-run" data-habitat="caribbean-flamingo">
-          <p class="vz-first-run-kicker">Stop 1 · Flamingo Lagoon</p>
-          <h2 class="vz-first-run-title">🦩 Flamingo Lagoon</h2>
-          <div class="vz-first-run-stage" id="vz-first-run-stage">
-            <img src="/field-pack/photos/caribbean-flamingo.jpg?v=img2" alt="" width="640" height="640" decoding="async" style="object-position: 50% 18%" />
-          </div>
-          <p class="vz-first-run-blurb">Bright pink wader — long legs for shallow water.</p>
-          <p class="vz-first-run-challenge">Why do flamingos have long legs? Why stand on one?</p>
-          <div class="vz-first-run-actions">
-            <button type="button" class="btn btn-primary" id="vz-first-run-start">Start with the flamingo</button>
-            <a class="vz-cam" id="vz-first-run-cam" href="https://www.houstonzoo.org/explore/webcams/flamingo-cam/" rel="noopener">Watch live<small>Flamingo cam at the Houston Zoo · Usually 7a–7p CDT</small></a>
-            <button type="button" class="btn btn-secondary" id="vz-first-run-next" hidden>Next: Otter Creek</button>
-          </div>
-          <p class="vz-first-run-film" id="vz-first-run-film-wrap" hidden>
-            <a class="vz-film" id="vz-first-run-film" href="/field-pack/virtual-zoo/?tab=zoo#habitat=caribbean-flamingo" role="button">Pre-recorded<small>Flamingo chicks at the Houston Zoo</small></a>
-          </p>
-        </section>
-
         <div class="vz-map-wrap" id="vz-map" aria-label="Zoo map"></div>
 
         <p class="vz-progress no-print" id="vz-progress" aria-live="polite"></p>
@@ -129,7 +86,7 @@
           <summary>Stops and cards</summary>
           <div id="vz-zoo-picker" class="vz-zoo-picker no-print" hidden></div>
         <!-- VFT:PANELS:START -->
-<noscript><style>.vz-tab-panel[hidden]{display:block!important}html:not([data-vft-chrome="tour"]) .vz-stops-drawer{display:block!important}</style></noscript>
+<noscript><style>.vz-tab-panel[hidden]{display:block!important}</style></noscript>
 <div class="vz-static-panels">
       <section class="vz-tab-panel" id="zoo" data-vz-panel="zoo">
         <h2>Virtual Zoo</h2>
@@ -537,6 +494,6 @@
     <script src="/field-pack/js/fp-analytics.js?v=1"></script>
     <script src="/field-pack/js/catalog.js?v=34"></script>
     <script src="/field-pack/js/print-kit.js?v=30"></script>
-    <script src="/field-pack/js/virtual-venue.js?v=90"></script>
+    <script src="/field-pack/js/virtual-venue.js?v=91"></script>
   </body>
 </html>

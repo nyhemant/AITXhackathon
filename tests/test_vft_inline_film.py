@@ -29,14 +29,11 @@ class VftInlineFilmTests(unittest.TestCase):
         cls.pages = {p: p.read_text(encoding="utf-8") for p in VFT_PAGES}
         cls.js = VFT_JS.read_text(encoding="utf-8")
 
-    def test_first_run_and_dialog_film_are_not_youtube_hrefs(self):
+    def test_dialog_film_is_not_a_youtube_href(self):
         for path, html in self.pages.items():
             with self.subTest(page=str(path.relative_to(REPO))):
                 visible = without_noscript(html)
-                first = visible.split('id="vz-first-run-film"', 1)[1].split(">", 1)[0]
-                self.assertNotIn("youtube.com", first.lower())
-                self.assertNotIn("youtu.be", first.lower())
-                self.assertIn("habitat=caribbean-flamingo", first)
+                self.assertNotIn("vz-first-run-film", visible)
                 dialog = visible.split('id="vz-film"', 1)[1].split(">", 1)[0]
                 self.assertNotIn("youtube.com", dialog.lower())
                 self.assertIn('href="#"', dialog)
@@ -68,7 +65,7 @@ class VftInlineFilmTests(unittest.TestCase):
         self.assertIn("function youtubeEmbed(", self.js)
         self.assertIn("function sealFilmControl(", self.js)
         self.assertIn("function sealStaticFilms(", self.js)
-        self.assertIn("function playFirstRunFilm(", self.js)
+        self.assertNotIn("function playFirstRunFilm(", self.js)
         self.assertIn("function habitatFromFilmControl(", self.js)
         self.assertIn("((config && config.habitats) || [])", self.js)
         self.assertIn("filmLink.href = inPageFilmHref(h.id)", self.js)
@@ -90,7 +87,7 @@ class VftInlineFilmTests(unittest.TestCase):
     def test_js_intercepts_modified_clicks_on_film_controls(self):
         self.assertIn('["click", "auxclick"]', self.js)
         self.assertIn("filmControlFromEvent", self.js)
-        self.assertIn("playFirstRunFilm", self.js)
+        self.assertNotIn("playFirstRunFilm", self.js)
 
     def test_generator_primary_film_action_is_in_page(self):
         sys.path.insert(0, str(REPO / "scripts"))
@@ -119,8 +116,7 @@ class VftInlineFilmTests(unittest.TestCase):
         for html in self.pages.values():
             visible = without_noscript(html)
             self.assertIn('class="vz-static-cam" href="https://www.houstonzoo.org/', visible)
-            first_cam = visible.split('id="vz-first-run-cam"', 1)[1].split(">", 1)[0]
-            self.assertIn("houstonzoo.org", first_cam)
+            self.assertNotIn("vz-first-run-cam", visible)
 
     def test_sound_tip_shows_when_in_page_film_starts(self):
         film = self.js.split("function playFilmInline(", 1)[1].split("function closeCamPopup", 1)[0]
@@ -131,12 +127,10 @@ class VftInlineFilmTests(unittest.TestCase):
         show = self.js.split("function showSoundTip()", 1)[1].split("function playFilmInline", 1)[0]
         self.assertIn("soundTipSeen()", show)
         self.assertNotIn("openCamPopup", show)
-        first_run = self.js.split("function playFirstRunFilm(", 1)[1].split("function track(", 1)[0]
-        self.assertNotIn("showSoundTip", first_run)
+        self.assertNotIn("function playFirstRunFilm(", self.js)
         for path, html in self.pages.items():
             with self.subTest(page=str(path.relative_to(REPO))):
-                first = html.split('id="vz-first-run"', 1)[1].split('id="vz-dialog"', 1)[0]
-                self.assertNotIn("vz-sound-tip", first)
+                self.assertNotIn("vz-first-run", html)
                 self.assertIn('id="vz-sound-tip"', html)
                 self.assertIn("Sound is often off — tap the volume control on the film to listen.", html)
                 self.assertIn('id="vz-sound-tip-dismiss"', html)
@@ -241,8 +235,8 @@ class VftInlineFilmTests(unittest.TestCase):
 
     def test_cache_bump(self):
         for html in self.pages.values():
-            self.assertIn("virtual-venue.js?v=90", html)
-            self.assertIn("virtual-venue.css?v=51", html)
+            self.assertIn("virtual-venue.js?v=91", html)
+            self.assertIn("virtual-venue.css?v=52", html)
 
 
 if __name__ == "__main__":
