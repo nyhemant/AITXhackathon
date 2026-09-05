@@ -1,0 +1,10 @@
+/* Standalone (Add to Home Screen) safe-area — VFT / Field Trip Kit shells. */
+@media (display-mode: standalone) {
+  .landing-body {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  .oneless-shell {
+    top: max(8px, env(safe-area-inset-top, 0px));
+  }
+}

@@ -517,6 +517,42 @@ body.start-body {
   color: var(--teal);
 }
 
+.start-pwa-tip {
+  margin-top: 0.85rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.75rem;
+  color: var(--muted);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  font-size: 0.82rem;
+}
+
+.start-pwa-tip button {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--teal);
+  font: inherit;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0 0.15rem;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 0.16em;
+}
+
+.start-pwa-tip button:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+@media (display-mode: standalone) {
+  .start-body {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+}
+
 @media (max-width: 520px) {
   .start-page {
     width: min(72rem, calc(100% - 1.75rem));

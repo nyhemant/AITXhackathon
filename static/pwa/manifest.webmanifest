@@ -1,0 +1,71 @@
+{
+  "id": "/field-trip-kit",
+  "name": "Field Trip Kit",
+  "short_name": "1less",
+  "description": "A calm zoo-day-at-home app for busy parents — live cams, cards, and a ready field trip for curious kids.",
+  "start_url": "/start/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["standalone", "browser"],
+  "background_color": "#f6f3ec",
+  "theme_color": "#0a4545",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["education", "kids"],
+  "icons": [
+    {
+      "src": "/pwa/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa/icon-192-maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/pwa/icon-512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Watch Live",
+      "short_name": "Watch Live",
+      "description": "Open the Virtual Field Trip",
+      "url": "/field-pack/virtual-field-trip/?source=pwa"
+    },
+    {
+      "name": "Explore Places Near You",
+      "short_name": "Places",
+      "description": "Map and places near you",
+      "url": "/field-pack/?source=pwa"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/pwa/screenshot-start-narrow.jpg",
+      "sizes": "1080x1920",
+      "type": "image/jpeg",
+      "form_factor": "narrow",
+      "label": "Field Trip Kit start"
+    },
+    {
+      "src": "/pwa/screenshot-cards-wide.jpg",
+      "sizes": "1920x1080",
+      "type": "image/jpeg",
+      "form_factor": "wide",
+      "label": "Cards already laid out"
+    }
+  ]
+}

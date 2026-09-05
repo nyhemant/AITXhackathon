@@ -39,6 +39,13 @@ ABOUT_ROOT = REPO_ROOT / "static" / "about"
 ABOUT_PREFIX = "/about"
 SHELL_ROOT = REPO_ROOT / "static" / "shell"
 SHELL_PREFIX = "/shell"
+# PWA assets (icons, register.js). Manifest + SW are also served at site root.
+PWA_ROOT = STATIC_ROOT / "pwa"
+PWA_PREFIX = "/pwa"
+PWA_ROOT_FILES = {
+    "/manifest.webmanifest": "manifest.webmanifest",
+    "/sw.js": "sw.js",
+}
 DINNER_PATH = "/dinner"
 MAX_REQUEST_BYTES = 24_000
 ANALYTICS_COOKIE = "one_less_analytics"
@@ -62,6 +69,7 @@ SECURITY_HEADERS = {
         "object-src 'none'; "
         "frame-src 'self' https://www.youtube-nocookie.com https://www.youtube.com https://ams-28635.antmedia.cloud:5443; "
         "frame-ancestors 'none'; "
+        "worker-src 'self'; "
         "form-action 'self'"
     ),
     "Permissions-Policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=(), bluetooth=()",
@@ -966,6 +974,8 @@ def _static_content_type(path: Path) -> str:
         return "application/javascript; charset=utf-8"
     if suffix == ".json":
         return "application/json; charset=utf-8"
+    if suffix == ".webmanifest":
+        return "application/manifest+json"
     if suffix == ".svg":
         return "image/svg+xml"
     if suffix in {".jpg", ".jpeg", ".png", ".webp", ".gif"}:
@@ -1045,6 +1055,24 @@ def _safe_start_path(url_path: str) -> Path | None:
 def _safe_about_path(url_path: str) -> Path | None:
     """Resolve /about/... to a file under ABOUT_ROOT, or None."""
     return _safe_mounted_static(url_path, ABOUT_PREFIX, ABOUT_ROOT)
+
+
+def _safe_pwa_path(url_path: str) -> Path | None:
+    """Resolve /pwa/... to a file under PWA_ROOT, or None."""
+    return _safe_mounted_static(url_path, PWA_PREFIX, PWA_ROOT)
+
+
+def _safe_pwa_root_file(url_path: str) -> Path | None:
+    """Serve /manifest.webmanifest and /sw.js from PWA_ROOT at the site root."""
+    name = PWA_ROOT_FILES.get(url_path)
+    if not name or not PWA_ROOT.is_dir():
+        return None
+    candidate = (PWA_ROOT / name).resolve()
+    try:
+        candidate.relative_to(PWA_ROOT.resolve())
+    except ValueError:
+        return None
+    return candidate if candidate.is_file() else None
 
 
 def _dinner_preview_text(message_text: str) -> str:
@@ -1130,6 +1158,18 @@ class WebHandler(BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(body)
             return
+        pwa_root = _safe_pwa_root_file(path)
+        if pwa_root is not None:
+            body = pwa_root.read_bytes()
+            self.send_response(200)
+            self.send_header("Content-Type", _static_content_type(pwa_root))
+            self.send_header("Content-Length", str(len(body)))
+            self.send_header("Cache-Control", "no-cache")
+            if pwa_root.name == "sw.js":
+                self.send_header("Service-Worker-Allowed", "/")
+            self.end_headers()
+            self.wfile.write(body)
+            return
         # Default home = Start (first-time Field Trip Kit landing)
         if path in {"/", "/index.html"}:
             self.send_response(302)
@@ -1190,6 +1230,20 @@ class WebHandler(BaseHTTPRequestHandler):
             self.send_header("Content-Type", content_type)
             self.send_header("Content-Length", str(len(body)))
             self.send_header("Cache-Control", "no-cache")
+            self.end_headers()
+            self.wfile.write(body)
+            return
+        pwa_file = _safe_pwa_path(path)
+        if pwa_file is not None:
+            body = pwa_file.read_bytes()
+            content_type = _static_content_type(pwa_file)
+            self.send_response(200)
+            self.send_header("Content-Type", content_type)
+            self.send_header("Content-Length", str(len(body)))
+            if pwa_file.suffix.lower() in {".js", ".webmanifest"}:
+                self.send_header("Cache-Control", "no-cache")
+            else:
+                self.send_header("Cache-Control", "public, max-age=86400")
             self.end_headers()
             self.wfile.write(body)
             return
@@ -1263,6 +1317,16 @@ class WebHandler(BaseHTTPRequestHandler):
             self.send_header("Cache-Control", "public, max-age=3600")
             self.end_headers()
             return
+        pwa_root = _safe_pwa_root_file(path)
+        if pwa_root is not None:
+            self.send_response(200)
+            self.send_header("Content-Type", _static_content_type(pwa_root))
+            self.send_header("Content-Length", str(pwa_root.stat().st_size))
+            self.send_header("Cache-Control", "no-cache")
+            if pwa_root.name == "sw.js":
+                self.send_header("Service-Worker-Allowed", "/")
+            self.end_headers()
+            return
         if path in {DINNER_PATH, DINNER_PATH + "/"}:
             content_type = "text/html; charset=utf-8"
             length = len(_html_for_request(self.headers.get("Cookie")).encode("utf-8"))
@@ -1293,6 +1357,7 @@ class WebHandler(BaseHTTPRequestHandler):
                 return
         asset_path = LOGO_ASSETS.get(path.lstrip("/"))
         shell_file = _safe_shell_path(path)
+        pwa_file = _safe_pwa_path(path)
         start_file = _safe_start_path(path)
         about_file = _safe_about_path(path)
         field_pack_file = _safe_field_pack_path(path)
@@ -1302,6 +1367,9 @@ class WebHandler(BaseHTTPRequestHandler):
         elif shell_file is not None:
             content_type = _static_content_type(shell_file)
             length = shell_file.stat().st_size
+        elif pwa_file is not None:
+            content_type = _static_content_type(pwa_file)
+            length = pwa_file.stat().st_size
         elif start_file is not None:
             content_type = _static_content_type(start_file)
             length = start_file.stat().st_size
