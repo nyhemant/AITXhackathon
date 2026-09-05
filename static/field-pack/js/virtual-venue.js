@@ -1492,11 +1492,12 @@
     const x = parseFloat(hit.getAttribute("x")) || 0;
     const y = parseFloat(hit.getAttribute("y")) || 0;
     const w = parseFloat(hit.getAttribute("width")) || 0;
-    const fs = 13;
+    const desk = isDesk() && isPictorialMap();
+    const fs = desk ? 15 : 13;
     const lx = x + w / 2;
-    const ly = Math.max(16, y - 8);
-    const boxW = Math.max(72, name.length * fs * 0.56) + 16;
-    const boxH = 20;
+    const ly = Math.max(18, y - (desk ? 22 : 8));
+    const boxW = Math.max(desk ? 88 : 72, name.length * fs * 0.56) + (desk ? 22 : 16);
+    const boxH = desk ? 24 : 20;
     const g = document.createElementNS(svgNS(), "g");
     g.setAttribute("class", "vz-open-chip");
     g.setAttribute("pointer-events", "none");
