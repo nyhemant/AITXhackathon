@@ -12,7 +12,12 @@ REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO / "scripts"))
 
 from generate_bdo_seo import (  # noqa: E402
+    CARD_PRINT_NOTE,
     CARD_TALK_H2,
+    CARDS_PLAY_BROWSE,
+    CARDS_PLAY_CTA,
+    CARDS_PLAY_H1,
+    CARDS_PLAY_PRINT_HREF,
     CTA_AT_HOME,
     CTA_CARD_PLACE,
     CTA_CARDS_HUB,
@@ -69,17 +74,22 @@ class CardPageSparseChromeTests(unittest.TestCase):
     def test_generator_locks_sparse_strings(self):
         self.assertEqual(CTA_AT_HOME, "At home")
         self.assertEqual(CTA_PRINT, "Print")
-        self.assertEqual(CTA_PRINT_CARD, CTA_PRINT)
+        self.assertEqual(CTA_PRINT_CARD, "Print this card")
+        self.assertEqual(CARD_PRINT_NOTE, "One animal sheet — not the hide-and-seek cutouts")
+        self.assertEqual(CARDS_PLAY_H1, "Print cutouts to play")
+        self.assertEqual(CARDS_PLAY_CTA, "Print the cutouts")
+        self.assertEqual(CARDS_PLAY_BROWSE, "Browse cards on the screen")
+        self.assertEqual(CARDS_PLAY_PRINT_HREF, "/field-pack/virtual-zoo/?print=1")
         self.assertEqual(CARD_TALK_H2, "Talk")
         self.assertEqual(CTA_CARDS_HUB, "Cards")
         self.assertEqual(CTA_CARD_PLACE, "Place")
         self.assertEqual(PLACE_VFT_CTA, "Virtual Field Trip")
         self.assertIn('CARD_TALK_H2 = "Talk"', self.gen)
         self.assertIn('CTA_CARD_PLACE = "Place"', self.gen)
+        self.assertIn('CTA_PRINT_CARD = "Print this card"', self.gen)
         self.assertIn("film_via_vft", self.gen)
         self.assertIn("def is_youtube_url(", self.gen)
         self.assertIn("--cards-only", self.gen)
-        self.assertNotIn('CTA_PRINT_CARD = "Print this card"', self.gen)
         self.assertNotIn("6 questions · talk, tap, or print", self.gen)
 
     def test_card_pages_drop_instructional_chrome(self):
@@ -90,7 +100,8 @@ class CardPageSparseChromeTests(unittest.TestCase):
                     self.assertNotIn(phrase, main, phrase)
                 self.assertNotIn("step-chip", main)
                 self.assertIn(f">{CARD_TALK_H2}</h2>", main)
-                self.assertIn(f">{CTA_PRINT}</button>", main)
+                self.assertIn(f">{CTA_PRINT_CARD}</button>", main)
+                self.assertIn(CARD_PRINT_NOTE, main)
 
     def test_photo_is_first_and_dominant(self):
         for cid, html in self.pages.items():
@@ -112,7 +123,7 @@ class CardPageSparseChromeTests(unittest.TestCase):
             actions = main.split('class="card-page-actions"', 1)[1]
             with self.subTest(card=cid):
                 self.assertIn(f">{PLACE_VFT_CTA}</a>", actions)
-                self.assertIn(f">{CTA_PRINT}</button>", actions)
+                self.assertIn(f">{CTA_PRINT_CARD}</button>", actions)
                 self.assertNotIn("Explore at home", actions)
                 self.assertLessEqual(actions.count('class="btn '), 3)
 
@@ -153,6 +164,7 @@ class CardPageSparseChromeTests(unittest.TestCase):
             self.assertIn('href="/field-pack/cards/"', html)
 
     def test_cards_hub_stays_a_finder_without_sales_copy(self):
+        self.assertIn("Print cutouts to play", self.hub)
         self.assertIn("Find a card", self.hub)
         self.assertIn('id="cards-hub-search"', self.hub)
         self.assertIn('data-card-filter="wildlife"', self.hub)

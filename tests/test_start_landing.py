@@ -184,7 +184,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertLess(self.html.find('id="start-teach"'), self.html.find('start-foot'))
         self.assertIn("At home this afternoon", chapter)
         self.assertIn("The cam is on. The cards are already on the table.", chapter)
-        self.assertIn("Find the cutouts. Talk through one card.", chapter)
+        self.assertIn("Print. Cut. Hide. Then hunt.", chapter)
         self.assertIn('class="start-chapter-still"', chapter)
         self.assertIn('src="/start/home-print-table.jpg"', chapter)
         self.assertIn("srcset=", chapter)

@@ -91,7 +91,15 @@ CTA_PRINT = "Print"
 CTA_EXPLORE_HOME = "Explore at home"
 CTA_PRINT_VISIT = CTA_PRINT
 CTA_PRINT_VISIT_SHORT = CTA_PRINT
-CTA_PRINT_CARD = CTA_PRINT
+CTA_PRINT_CARD = "Print this card"
+CARD_PRINT_NOTE = "One animal sheet — not the hide-and-seek cutouts"
+CARDS_PLAY_H1 = "Print cutouts to play"
+CARDS_PLAY_CTA = "Print the cutouts"
+CARDS_PLAY_BROWSE = "Browse cards on the screen"
+CARDS_PLAY_PRINT_HREF = "/field-pack/virtual-zoo/?print=1"
+CARDS_HUB_TITLE = "Print cutouts to play · Animal cards · Field Trip Kit"
+CARDS_HUB_DESC = "Print animal cutouts, hide them at home, then hunt. Or browse cards on the screen."
+CARDS_LANDING_CSS_VER = "100"
 CTA_READY = "Open"
 CTA_FIND = "Find"
 # Map explorer (/field-pack/) — short title, no sales/FAQ essay. Do not redirect to /start/.
@@ -259,7 +267,7 @@ OUTING_TALK_EXHIBIT = (
 )
 
 SEO_CSS_VER = "29"
-CARD_SEO_CSS_VER = "30"
+CARD_SEO_CSS_VER = "31"
 LANDING_CSS_VER = "99"
 LANDING_MAP_JS_VER = "87"
 LANDING_HOOK_JS_VER = "37"
@@ -4298,9 +4306,10 @@ def write_cards_hub(venues: list[dict]) -> str:
         )
 
     body_sections = "\n".join(section_html(*s) for s in sections if s[2])
-    title = "Animal cards · Field Trip Kit"
-    desc = f"{total} animal, sea-life, museum, and park cards — photos and talk prompts."
+    title = CARDS_HUB_TITLE
+    desc = CARDS_HUB_DESC
     url = f"{SITE}/field-pack/cards/"
+    play_og = f"{SITE}/start/home-print-table.jpg"
     cards_by_id = {c.get("id"): c for c in cards}
     try_bits = []
     for cid in TRY_CARD_IDS:
@@ -4337,13 +4346,13 @@ def write_cards_hub(venues: list[dict]) -> str:
   <meta property="og:title" content="{esc(title)}" />
   <meta property="og:description" content="{esc(desc)}" />
   <meta property="og:url" content="{esc(url)}" />
-  <meta property="og:image" content="{OG_SHARE_IMAGE}" />
+  <meta property="og:image" content="{play_og}" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content="{OG_SHARE_IMAGE}" />
+  <meta name="twitter:image" content="{play_og}" />
   <base href="/field-pack/" />
   <link rel="stylesheet" href="/shell/shell.css?v=8" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v={STYLES_CSS_VER}" />
-  <link rel="stylesheet" href="/field-pack/css/landing.css?v=98" />
+  <link rel="stylesheet" href="/field-pack/css/landing.css?v={CARDS_LANDING_CSS_VER}" />
   <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v={CARD_SEO_CSS_VER}" />
 </head>
 <body class="landing-body landing-hub cards-explorer">
@@ -4371,8 +4380,49 @@ def write_cards_hub(venues: list[dict]) -> str:
         </div>
       </nav>
     </header>
+    <section class="cards-play" id="cards-play" aria-labelledby="cards-play-heading">
+      <img
+        class="cards-play-still"
+        src="/start/home-print-table.jpg"
+        srcset="/start/home-print-table-480.jpg 480w, /start/home-print-table-640.jpg 640w, /start/home-print-table.jpg 1024w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        width="1024"
+        height="1536"
+        alt="Animal cards on a kitchen table, ready to print, cut, and hide"
+        decoding="async"
+      />
+      <div class="cards-play-copy">
+        <p class="cards-play-kicker">Hide-and-seek at home</p>
+        <h1 id="cards-play-heading">{esc(CARDS_PLAY_H1)}</h1>
+        <ol class="cards-play-steps">
+          <li>
+            <span class="cards-play-step-num">1</span>
+            <span class="cards-play-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" width="48" height="48"><rect x="10" y="8" width="28" height="32" rx="3" fill="#fff" stroke="#0a4545" stroke-width="2.4"/><path d="M16 16h16M16 22h16M16 28h10" stroke="#0a4545" stroke-width="2.2" stroke-linecap="round"/></svg>
+            </span>
+            <span class="cards-play-step-word">Print</span>
+          </li>
+          <li>
+            <span class="cards-play-step-num">2</span>
+            <span class="cards-play-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" width="48" height="48"><path d="M16 8l16 32M32 8L16 40" stroke="#0a4545" stroke-width="2.4" stroke-linecap="round"/><circle cx="14" cy="14" r="5" fill="none" stroke="#c45c26" stroke-width="2.4"/><circle cx="34" cy="14" r="5" fill="none" stroke="#c45c26" stroke-width="2.4"/></svg>
+            </span>
+            <span class="cards-play-step-word">Cut</span>
+          </li>
+          <li>
+            <span class="cards-play-step-num">3</span>
+            <span class="cards-play-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" width="48" height="48"><rect x="6" y="14" width="22" height="26" rx="3" fill="#0a4545"/><rect x="20" y="8" width="20" height="26" rx="3" fill="#fff" stroke="#c45c26" stroke-width="2.4"/><circle cx="30" cy="18" r="3" fill="#c45c26"/></svg>
+            </span>
+            <span class="cards-play-step-word">Hide</span>
+          </li>
+        </ol>
+        <a class="btn btn-primary cards-play-cta" href="{CARDS_PLAY_PRINT_HREF}">{esc(CARDS_PLAY_CTA)}</a>
+        <a class="cards-play-browse" href="/field-pack/cards/#try-a-card">{esc(CARDS_PLAY_BROWSE)}</a>
+      </div>
+    </section>
     <header class="hub-find" id="cards-find">
-      <h1 id="pitch-heading">Find a card</h1>
+      <h2 id="pitch-heading">Find a card</h2>
       <div class="pitch-cta-block" data-search-mode="card">
         <form class="hero-search-form place-search-wrap silo-place" id="cards-hub-form" role="search" action="/field-pack/cards/" method="get">
           <label class="place-search-label sr-only" for="cards-hub-search" id="cards-search-label">Find a card</label>
@@ -4506,7 +4556,7 @@ def write_card_pages(
                 f'<a class="btn btn-secondary" href="/field-pack/cards/">{esc(CTA_CARDS_HUB)}</a>'
             )
         action_bits.append(
-            f'<button type="button" class="btn btn-secondary" id="print-this-card" data-card-id="{esc(cid)}"{print_venue_attr}>{esc(CTA_PRINT)}</button>'
+            f'<button type="button" class="btn btn-secondary" id="print-this-card" data-card-id="{esc(cid)}"{print_venue_attr}>{esc(CTA_PRINT_CARD)}</button>'
         )
         actions_html = "\n        ".join(action_bits)
         blurb_html = f'<p class="card-page-blurb">{esc(blurb)}</p>' if blurb else ""
@@ -4562,6 +4612,7 @@ def write_card_pages(
       <p class="card-page-actions">
         {actions_html}
       </p>
+      <p class="card-print-note">{esc(CARD_PRINT_NOTE)}</p>
     </main>
   </div>
   <div id="print-sheet" class="print-sheet" aria-hidden="true"></div>

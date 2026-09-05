@@ -112,6 +112,29 @@
     return m ? decodeURIComponent(m[1]) : "";
   }
 
+  function wantsCutoutPrint() {
+    try {
+      if (new URLSearchParams(location.search).get("print") === "1") return true;
+    } catch (_) {}
+    const hash = (location.hash || "").replace(/^#/, "");
+    return hash === "print";
+  }
+
+  function revealPrintReady() {
+    if (!wantsCutoutPrint()) return;
+    const row = document.getElementById("print") || printWatch?.closest(".vz-print-row");
+    if (!row) return;
+    row.classList.add("is-print-ready");
+    document.documentElement.setAttribute("data-vft-print", "1");
+    setTourChrome();
+    const go = () => {
+      row.scrollIntoView({ block: "center", behavior: "smooth" });
+      printWatch?.focus({ preventScroll: true });
+    };
+    if (typeof requestAnimationFrame === "function") requestAnimationFrame(go);
+    else go();
+  }
+
   function track(name, params) {
     if (typeof window.FPTrack === "function") window.FPTrack(name, params || {});
   }
@@ -1876,6 +1899,10 @@
       openHabitat(hid, null, { fromHash: true });
       return;
     }
+    if (wantsCutoutPrint()) {
+      closeDialog();
+      return;
+    }
     if (currentTab() === "zoo") {
       openHabitat(DEFAULT_ZOO_STOP, null, { fromHash: true });
       return;
@@ -1981,6 +2008,7 @@
         wireMap();
         onHash();
         sealStaticFilms();
+        revealPrintReady();
       })
       .catch((err) => {
         if (gen !== loadGen) return;
