@@ -81,6 +81,12 @@ class VftMapPolishTests(unittest.TestCase):
         self.assertIn("function placeStampMark(", self.js)
         self.assertIn("function refreshOpenChip(", self.js)
         self.assertIn("vz-open-chip", self.js)
+        chip = _fn_body(self.js, "refreshOpenChip")
+        self.assertIn("isDesk()", chip)
+        self.assertIn("isPictorialMap()", chip)
+        self.assertIn("desk ? 15 : 13", chip)
+        self.assertIn("desk ? 22 : 8", chip)
+        self.assertIn("font-size: 15px", self.css)
 
     def test_trail_is_dual_stroke_not_yellow_dash(self):
         self.assertIn("stroke-dasharray: none", self.css)
@@ -116,8 +122,10 @@ class VftMapPolishTests(unittest.TestCase):
         self.assertIn('const DEFAULT_ZOO_STOP = "caribbean-flamingo"', self.js)
         for html in self.pages.values():
             self.assertIn("Print the cutouts", html)
-            self.assertIn("virtual-venue.js?v=95", html)
-            self.assertIn("virtual-venue.css?v=55", html)
+            self.assertIn("virtual-venue.js?v=96", html)
+            self.assertIn("virtual-venue.css?v=56", html)
+            self.assertIn('class="btn btn-secondary" id="vz-print-watch"', html)
+            self.assertNotIn('class="btn btn-primary" id="vz-print-watch"', html)
 
     def test_zoo_trail_is_catmull_rom_not_global_bulge(self):
         self.assertIn("const ZOO_TRAIL_WAYPOINTS", self.js)

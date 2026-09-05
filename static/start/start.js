@@ -1,5 +1,6 @@
 (() => {
   const pills = document.querySelectorAll(".start-pill");
+  const routes = document.querySelectorAll(".start-route");
 
   function track(name, params) {
     if (typeof window.FPTrack === "function") {
@@ -17,6 +18,17 @@
       track("hero_cta_clicked", {
         source: "start_pill",
         label: (pill.textContent || "").trim(),
+        href,
+      });
+    });
+  });
+
+  routes.forEach((route) => {
+    route.addEventListener("click", () => {
+      const href = route.getAttribute("href") || "";
+      track("hero_cta_clicked", {
+        source: "start_route",
+        label: (route.textContent || "").trim(),
         href,
       });
     });

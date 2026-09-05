@@ -154,6 +154,10 @@ class StartLandingTests(unittest.TestCase):
         self.assertLess(self.html.find('id="start-hero"'), self.html.find('id="start-home"'))
         self.assertIn('id="start-heading"', chapter)
         self.assertIn("A ready-to-use field trip for curious kids.", chapter)
+        self.assertIn('class="start-routes"', chapter)
+        self.assertIn('href="#start-home"', chapter)
+        self.assertIn('href="#start-going"', chapter)
+        self.assertIn('href="#start-teach"', chapter)
         self.assertIn('class="start-hero-still"', chapter)
         self.assertIn('src="/start/hero-giraffe.jpg"', chapter)
         self.assertIn("srcset=", chapter)
@@ -178,6 +182,33 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn("prefers-reduced-motion", self.css)
         self.assertNotIn("webgl", self.css.lower())
         self.assertNotIn("parallax", self.css.lower())
+
+    def test_hero_has_quiet_chapter_routes(self):
+        hero = re.search(r'<section class="start-hero"[\s\S]*?</section>', self.html)
+        self.assertIsNotNone(hero)
+        chapter = hero.group(0)
+        nav = re.search(r'<nav class="start-routes"[^>]*>([\s\S]*?)</nav>', chapter)
+        self.assertIsNotNone(nav)
+        self.assertIn('aria-label="Choose a path"', nav.group(0))
+        routes = re.findall(r'<a class="start-route" href="([^"]+)">([^<]+)</a>', chapter)
+        self.assertEqual(
+            routes,
+            [
+                ("#start-home", "At home"),
+                ("#start-going", "Going this week"),
+                ("#start-teach", "Teaching"),
+            ],
+        )
+        self.assertLess(chapter.find("start-heading"), chapter.find("start-routes"))
+        self.assertEqual(self.html.count('class="start-route"'), 3)
+        self.assertNotIn("start-pill", chapter)
+        self.assertNotIn("Watch Live", chapter)
+        self.assertNotIn("Pick Cards To Play", chapter)
+        self.assertIn(".start-routes", self.css)
+        self.assertIn(".start-route", self.css)
+        self.assertIn("scroll-margin-top", self.css)
+        self.assertIn("min-height: 8vh", self.css)
+        self.assertIn("min-height: 5vh", self.css)
 
     def test_home_chapter_is_local_print_table(self):
         home = re.search(r'<section class="start-chapter"[\s\S]*?</section>', self.html)
@@ -283,7 +314,9 @@ class StartLandingTests(unittest.TestCase):
         self.assertLess(self.html.find('id="start-rest-3"'), self.html.find('id="start-teach"'))
         self.assertEqual(self.html.count('class="start-rest"'), 3)
         self.assertEqual(self.html.count('class="start-chapter"'), 3)
-        self.assertIn("min-height: 16vh", self.css)
+        self.assertIn("min-height: 8vh", self.css)
+        self.assertIn("min-height: 5vh", self.css)
+        self.assertNotIn("min-height: 16vh", self.css)
         self.assertNotIn("min-height: 42vh", self.css)
         self.assertIn("background: #f6f1ea", self.css)
 
@@ -645,7 +678,8 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn("autoplay", self.html)
         self.assertIn('preload="auto"', self.html)
         self.assertNotIn('preload="none"', self.html)
-        self.assertIn('start.js?v=10', self.html)
+        self.assertIn('start.js?v=11', self.html)
+        self.assertIn("start.css?v=20", self.html)
         self.assertIn(" loop ", self.html)
         self.assertNotIn("youtube.com", self.html)
         self.assertNotIn("youtube-nocookie.com", self.html)
@@ -656,6 +690,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn("min-width: 44px", self.css)
         self.assertIn("min-height: 44px", self.css)
         self.assertIn(".start-pill", self.js)
+        self.assertIn(".start-route", self.js)
         self.assertNotIn(".start-door", self.js)
         self.assertEqual(len(self.pills), 5)
         for pill in self.pills:

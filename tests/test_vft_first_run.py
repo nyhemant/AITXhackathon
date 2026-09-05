@@ -166,8 +166,8 @@ class VftFirstRunTests(unittest.TestCase):
 
     def test_cache_bumps_point_at_new_assets(self):
         for html in self.pages.values():
-            self.assertIn("virtual-venue.css?v=55", html)
-            self.assertIn("virtual-venue.js?v=95", html)
+            self.assertIn("virtual-venue.css?v=56", html)
+            self.assertIn("virtual-venue.js?v=96", html)
         self.assertIn("virtual-zoo.json?v=26", self.js)
 
     def test_print_row_is_the_cutout_hunt_and_has_print_anchor(self):
@@ -176,6 +176,7 @@ class VftFirstRunTests(unittest.TestCase):
                 row = re.search(r'<div class="vz-print-row[^"]*" id="print">[\s\S]*?</button>', html)
                 self.assertIsNotNone(row)
                 self.assertIn('id="vz-print-watch"', row.group(0))
+                self.assertIn("btn-secondary", row.group(0))
                 self.assertIn("Print the cutouts", row.group(0))
                 self.assertIn(">Print</span>", html)
                 self.assertIn(">Cut</span>", html)

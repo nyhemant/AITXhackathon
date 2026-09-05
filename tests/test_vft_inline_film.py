@@ -235,8 +235,8 @@ class VftInlineFilmTests(unittest.TestCase):
 
     def test_cache_bump(self):
         for html in self.pages.values():
-            self.assertIn("virtual-venue.js?v=95", html)
-            self.assertIn("virtual-venue.css?v=55", html)
+            self.assertIn("virtual-venue.js?v=96", html)
+            self.assertIn("virtual-venue.css?v=56", html)
 
 
 if __name__ == "__main__":
