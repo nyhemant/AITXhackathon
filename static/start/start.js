@@ -117,6 +117,9 @@
 
     let aligned = false;
     let ended = false;
+    let hardFail = false;
+    let armed = false;
+    let intersecting = !("IntersectionObserver" in window);
     let maxTimer = 0;
 
     function align() {
@@ -138,6 +141,14 @@
       continueEl.hidden = false;
     }
 
+    function holdPoster() {
+      tease.hidden = false;
+      video.hidden = false;
+      fallback.hidden = false;
+      fallback.alt = "";
+      if (!fallback.getAttribute("src")) fallback.src = teaser.poster;
+    }
+
     function showContinue() {
       if (ended) return;
       ended = true;
@@ -148,27 +159,110 @@
       continueEl.hidden = false;
     }
 
-    function playTeaser() {
-      tease.hidden = false;
-      fallback.hidden = true;
-      video.hidden = false;
-      video.muted = true;
-      video.playsInline = true;
-      video.setAttribute("playsinline", "");
-      video.poster = teaser.poster;
-      video.src = teaser.src;
-      const kick = video.play();
-      if (kick && typeof kick.catch === "function") {
-        kick.catch(() => showStill());
-      }
+    function ensureContinueTimer() {
+      if (maxTimer || ended) return;
       maxTimer = window.setTimeout(showContinue, MAX_SEC * 1000);
     }
 
+    function lockAutoplay() {
+      video.muted = true;
+      video.defaultMuted = true;
+      video.autoplay = true;
+      video.playsInline = true;
+      video.setAttribute("muted", "");
+      video.setAttribute("autoplay", "");
+      video.setAttribute("playsinline", "");
+      video.setAttribute("webkit-playsinline", "");
+      video.preload = "auto";
+      video.setAttribute("preload", "auto");
+    }
+
+    function armTeaser() {
+      tease.hidden = false;
+      video.hidden = false;
+      lockAutoplay();
+      video.poster = teaser.poster;
+      if (!armed) {
+        video.src = teaser.src;
+        try {
+          video.load();
+        } catch (_) {}
+        armed = true;
+      }
+    }
+
+    function playTeaser() {
+      if (reduceMotion) {
+        showStill();
+        return;
+      }
+      if (hardFail || ended || !aligned || !intersecting) return;
+      armTeaser();
+      if (video.readyState < 2) holdPoster();
+      if (!video.paused && !video.ended) {
+        fallback.hidden = true;
+        ensureContinueTimer();
+        return;
+      }
+      const kick = video.play();
+      if (kick && typeof kick.catch === "function") {
+        kick.catch(() => {
+          if (hardFail || ended) return;
+          holdPoster();
+        });
+      }
+      ensureContinueTimer();
+    }
+
     video.addEventListener("ended", showContinue);
-    video.addEventListener("error", showStill);
+    video.addEventListener("error", () => {
+      hardFail = true;
+      showStill();
+    });
+    video.addEventListener("playing", () => {
+      fallback.hidden = true;
+      video.hidden = false;
+      ensureContinueTimer();
+    });
+    video.addEventListener("canplay", () => {
+      if (intersecting) playTeaser();
+    });
     video.addEventListener("timeupdate", () => {
       if (video.currentTime >= MAX_SEC) showContinue();
     });
+
+    const home = document.getElementById("start-home");
+    if (home) {
+      const unlock = () => {
+        if (reduceMotion || hardFail || ended) return;
+        intersecting = true;
+        playTeaser();
+      };
+      home.addEventListener("pointerdown", unlock, { passive: true });
+      home.addEventListener("touchstart", unlock, { passive: true });
+      home.addEventListener("click", unlock);
+    }
+
+    if ("IntersectionObserver" in window) {
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (reduceMotion || ended || hardFail) return;
+            if (entry.isIntersecting) {
+              intersecting = true;
+              playTeaser();
+            } else {
+              intersecting = false;
+              try {
+                video.pause();
+              } catch (_) {}
+            }
+          });
+        },
+        { threshold: 0.35 }
+      );
+      io.observe(box);
+    }
 
     function onReady() {
       align();
@@ -177,6 +271,7 @@
         showStill();
         return;
       }
+      armTeaser();
       playTeaser();
     }
 
@@ -184,24 +279,6 @@
     else plate.addEventListener("load", onReady, { once: true });
 
     window.addEventListener("resize", align);
-
-    if ("IntersectionObserver" in window) {
-      const io = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (reduceMotion || ended || !video.src) return;
-            if (entry.isIntersecting) {
-              const p = video.play();
-              if (p && typeof p.catch === "function") p.catch(() => {});
-            } else {
-              video.pause();
-            }
-          });
-        },
-        { threshold: 0.35 }
-      );
-      io.observe(box);
-    }
   }
 
   function watchHref(base, teaser) {

@@ -642,6 +642,10 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn("start-home-video", self.html)
         self.assertIn("muted", self.html)
         self.assertIn("playsinline", self.html)
+        self.assertIn("autoplay", self.html)
+        self.assertIn('preload="auto"', self.html)
+        self.assertNotIn('preload="none"', self.html)
+        self.assertIn('start.js?v=7', self.html)
         self.assertNotIn("youtube.com", self.html)
         self.assertNotIn("youtube-nocookie.com", self.html)
         self.assertNotIn("<iframe", self.html)
@@ -655,6 +659,54 @@ class StartLandingTests(unittest.TestCase):
         self.assertEqual(len(self.pills), 5)
         for pill in self.pills:
             self.assertTrue(pill.startswith("<a"))
+
+    def test_home_teaser_retries_play_instead_of_still(self):
+        lock = self.js.find("function lockAutoplay()")
+        src = self.js.find("video.src = teaser.src")
+        play = self.js.find("function playTeaser()")
+        still = self.js.find("function showStill()")
+        hold = self.js.find("function holdPoster()")
+        self.assertGreater(lock, 0)
+        self.assertGreater(src, lock)
+        self.assertGreater(play, src)
+        self.assertGreater(hold, still)
+        lock_fn = self.js[lock:src]
+        self.assertIn("video.muted = true", lock_fn)
+        self.assertIn("video.defaultMuted = true", lock_fn)
+        self.assertIn("video.autoplay = true", lock_fn)
+        self.assertIn("video.playsInline = true", lock_fn)
+        self.assertIn('video.setAttribute("playsinline"', lock_fn)
+        self.assertIn('video.setAttribute("autoplay"', lock_fn)
+        self.assertIn('video.setAttribute("muted"', lock_fn)
+        self.assertIn('preload = "auto"', lock_fn)
+        self.assertIn("video.load()", self.js)
+        play_fn = re.search(r"function playTeaser\(\) \{([\s\S]*?)\n    \}", self.js)
+        self.assertIsNotNone(play_fn)
+        self.assertIn("if (reduceMotion)", play_fn.group(1))
+        self.assertIn("holdPoster()", play_fn.group(1))
+        self.assertIn("kick.catch(() => {\n          if (hardFail || ended) return;\n          holdPoster();", self.js)
+        self.assertNotIn("kick.catch(() => showStill())", self.js)
+        self.assertIn('home.addEventListener("pointerdown"', self.js)
+        self.assertIn('home.addEventListener("touchstart"', self.js)
+        self.assertIn('home.addEventListener("click"', self.js)
+        self.assertIn("entry.isIntersecting", self.js)
+        self.assertIn("playTeaser()", self.js)
+        io = re.search(
+            r"IntersectionObserver\(\s*\(entries\) => \{([\s\S]*?)\},\s*\{ threshold: 0.35 \}",
+            self.js,
+        )
+        self.assertIsNotNone(io)
+        self.assertIn("playTeaser()", io.group(1))
+        self.assertIn("intersecting = true", io.group(1))
+        self.assertNotIn("p.catch(() => {})", io.group(1))
+        error = re.search(
+            r'video.addEventListener\("error",\s*\(\) => \{([\s\S]*?)\n    \}\);',
+            self.js,
+        )
+        self.assertIsNotNone(error)
+        self.assertIn("showStill();", error.group(1))
+        self.assertIn("hardFail = true", error.group(1))
+        self.assertIn("prefers-reduced-motion: reduce", self.js)
 
     def test_home_teaser_files_are_local_mp4s(self):
         teasers = START / "teasers"
