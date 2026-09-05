@@ -73,11 +73,14 @@ class VftInlineFilmTests(unittest.TestCase):
         self.assertIn("((config && config.habitats) || [])", self.js)
         self.assertIn("filmLink.href = inPageFilmHref(h.id)", self.js)
         self.assertIn("openHabitat(hab.id, t, { fromHash: true })", self.js)
-        self.assertIn("playFilmInline(video.url", self.js)
+        self.assertIn("function playHabitatFilm(", self.js)
+        self.assertIn("function habitatFilms(", self.js)
+        self.assertIn("playHabitatFilm(h)", self.js)
+        self.assertIn("playFilmInline(", self.js)
         static_film = self.js.split('if (t.classList.contains("vz-static-film")) {', 2)[2]
         static_film = static_film.split("const stopA", 1)[0]
         self.assertNotIn("openCamPopup", static_film)
-        self.assertIn("playFilmInline", static_film)
+        self.assertIn("playHabitatFilm", static_film)
         film_fn = self.js.split("function openCamPopup", 1)[1].split("function closeDialog", 1)[0]
         film_branch = film_fn.split("if (film)", 1)[1]
         self.assertIn("playFilmInline(url, label)", film_branch)
@@ -159,16 +162,21 @@ class VftInlineFilmTests(unittest.TestCase):
         flamingo = next(h for h in zoo["habitats"] if h["id"] == "caribbean-flamingo")
         self.assertEqual(flamingo["video"]["start"], 0)
 
-    def test_pre_recorded_embed_loops_the_same_video(self):
+    def test_pre_recorded_embed_loops_the_playlist(self):
         embed = self.js.split("function youtubeEmbed(", 1)[1].split("function isYoutubeWatchUrl", 1)[0]
         self.assertIn("&loop=1", embed)
         self.assertIn("&playlist=", embed)
-        self.assertIn("encodeURIComponent(id)", embed)
+        self.assertIn("playlist.join(\",\")", embed)
         self.assertIn("youtube-nocookie.com/embed/", embed)
         self.assertIn("rel=0", embed)
         self.assertIn("modestbranding=1", embed)
         self.assertIn("playsinline=1", embed)
         self.assertIn("autoplay=1&mute=1", embed)
+        self.assertIn("function playHabitatFilm(", self.js)
+        self.assertIn("function habitatFilms(", self.js)
+        films = self.js.split("function habitatFilms(", 1)[1].split("function cardHasFilm", 1)[0]
+        self.assertIn("h.videos", films)
+        self.assertIn("h.video && h.video.url", films)
 
     def test_immersive_default_films_replaced(self):
         zoo = json.loads((FP / "data" / "virtual-venues" / "virtual-zoo.json").read_text(encoding="utf-8"))
@@ -190,9 +198,29 @@ class VftInlineFilmTests(unittest.TestCase):
         for old in stale:
             self.assertNotIn(old, blob)
 
+    def test_default_tour_playlists_keep_legacy_video_as_opener(self):
+        zoo = json.loads((FP / "data" / "virtual-venues" / "virtual-zoo.json").read_text(encoding="utf-8"))
+        aqua = json.loads((FP / "data" / "virtual-venues" / "virtual-aquarium.json").read_text(encoding="utf-8"))
+        by_id = {h["id"]: h for h in zoo["habitats"] + aqua["habitats"]}
+        expected = {
+            "caribbean-flamingo": ["7nK3gZqtlOM", "a3GkW5vuhAo", "-1BF2XqboOo"],
+            "asian-small-clawed-otter": ["9IR2Ij9375w", "XQGB3AT90o8"],
+            "reticulated-giraffe": ["WXsrwyNhfYw", "9L7RAUD8pu4"],
+            "jellyfish": ["8C3fzRYXSNE", "uhJoXRgVd_8"],
+        }
+        for hid, ids in expected.items():
+            hab = by_id[hid]
+            videos = hab["videos"]
+            self.assertEqual([v["url"].split("v=", 1)[1] for v in videos], ids)
+            self.assertEqual(hab["video"]["url"], videos[0]["url"])
+            self.assertEqual(videos[0]["start"], 0)
+            for v in videos:
+                self.assertNotIn("live", v["url"].lower())
+                self.assertEqual(v["verify"]["status"], "sourced")
+
     def test_cache_bump(self):
         for html in self.pages.values():
-            self.assertIn("virtual-venue.js?v=88", html)
+            self.assertIn("virtual-venue.js?v=89", html)
             self.assertIn("virtual-venue.css?v=51", html)
 
 

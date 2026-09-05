@@ -91,7 +91,7 @@ class VftFirstRunTests(unittest.TestCase):
         self.assertIn("function continueFirstRun()", self.js)
         self.assertIn("syncFirstRun()", self.js)
         self.assertIn("const skipFilm = Boolean(opts && opts.skipFilm) || vftChrome() === \"intro\"", self.js)
-        self.assertIn("if (hasFilm && !skipFilm) playFilmInline", self.js)
+        self.assertIn("if (hasFilm && !skipFilm) playHabitatFilm", self.js)
         self.assertIn("hasVftDeepLink()", self.js)
         # Do not rewrite every stop's cam into an embed.
         self.assertEqual(self.js.count("tryFlamingoLiveEmbed"), 4)
@@ -121,8 +121,8 @@ class VftFirstRunTests(unittest.TestCase):
     def test_cache_bumps_point_at_new_assets(self):
         for html in self.pages.values():
             self.assertIn("virtual-venue.css?v=51", html)
-            self.assertIn("virtual-venue.js?v=88", html)
-        self.assertIn("virtual-zoo.json?v=23", self.js)
+            self.assertIn("virtual-venue.js?v=89", html)
+        self.assertIn("virtual-zoo.json?v=24", self.js)
 
 
 if __name__ == "__main__":

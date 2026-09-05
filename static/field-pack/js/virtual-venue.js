@@ -21,8 +21,8 @@
   ];
   const MUSEUM_LAST_KEY = "fp-vft-museum-tab";
   const TAB_CONFIGS = {
-    zoo: "/field-pack/data/virtual-venues/virtual-zoo.json?v=23",
-    aquarium: "/field-pack/data/virtual-venues/virtual-aquarium.json?v=24",
+    zoo: "/field-pack/data/virtual-venues/virtual-zoo.json?v=24",
+    aquarium: "/field-pack/data/virtual-venues/virtual-aquarium.json?v=25",
     "natural-history": "/field-pack/data/virtual-venues/virtual-nhm.json?v=14",
     science: "/field-pack/data/virtual-venues/virtual-science.json?v=16",
     parks: "/field-pack/data/virtual-venues/virtual-parks.json?v=24",
@@ -36,14 +36,14 @@
   const PICK_BY_KIND = {
     zoo: {
       key: "fp-virtual-zoo-picks-v1",
-      libUrl: "/field-pack/data/virtual-venues/zoo-film-library.json?v=6",
+      libUrl: "/field-pack/data/virtual-venues/zoo-film-library.json?v=7",
       title: "Create your own virtual zoo",
       noun: "zoo",
       track: "zoo_picks_saved",
     },
     aquarium: {
       key: "fp-virtual-aquarium-picks-v1",
-      libUrl: "/field-pack/data/virtual-venues/aquarium-film-library.json?v=4",
+      libUrl: "/field-pack/data/virtual-venues/aquarium-film-library.json?v=5",
       title: "Create your own virtual aquarium",
       noun: "aquarium",
       track: "aquarium_picks_saved",
@@ -476,8 +476,15 @@
     return byId;
   }
 
+  function habitatFilms(h) {
+    if (!h) return [];
+    const listed = Array.isArray(h.videos) ? h.videos.filter((v) => v && v.url) : [];
+    if (listed.length) return listed;
+    return h.video && h.video.url ? [h.video] : [];
+  }
+
   function cardHasFilm(card) {
-    return Boolean(card && card.video && card.video.url);
+    return habitatFilms(card).length > 0;
   }
 
   function normalizePicks(saved, lib) {
@@ -535,6 +542,7 @@
       hotspot: { svgId: "habitat-" + card.cardId },
       cam: card.cam && card.cam.url ? card.cam : {},
       video: card.video && card.video.url ? card.video : {},
+      videos: Array.isArray(card.videos) ? card.videos : undefined,
       seq: i + 1,
       x: card.x,
       y: card.y,
@@ -595,6 +603,8 @@
       slot.challenge = card.challenge || slot.challenge;
       slot.printAnswer = card.printAnswer || slot.printAnswer;
       slot.video = card.video && card.video.url ? card.video : {};
+      if (Array.isArray(card.videos) && card.videos.length) slot.videos = card.videos;
+      else delete slot.videos;
       slot.cam = card.cam && card.cam.url ? card.cam : {};
       slot.seq = next.length + 1;
       next.push(slot);
@@ -1502,7 +1512,7 @@
       placeBullet(el, num);
       wrapPad(el);
       placePinLabel(el, label);
-      placePlayMark(el, Boolean(hab && hab.video && hab.video.url));
+      placePlayMark(el, habitatFilms(hab).length > 0);
       el.setAttribute(
         "aria-label",
         isNext
@@ -1570,7 +1580,18 @@
     if (!id) return "";
     const extra = opts && opts.autoplay ? "&autoplay=1&mute=1&enablejsapi=1" : "";
     const start = `&start=${encodeURIComponent(String(filmStartSec(opts && opts.start)))}`;
-    const loop = `&loop=1&playlist=${encodeURIComponent(id)}`;
+    const raw = opts && Array.isArray(opts.playlist) ? opts.playlist : [];
+    const rest = [];
+    const seen = new Set([id]);
+    raw.forEach((item) => {
+      const pid = youtubeId(item) || String(item || "").replace(/[^A-Za-z0-9_-]/g, "");
+      if (pid && !seen.has(pid)) {
+        seen.add(pid);
+        rest.push(pid);
+      }
+    });
+    const playlist = [id].concat(rest);
+    const loop = `&loop=1&playlist=${encodeURIComponent(playlist.join(","))}`;
     const origin = encodeURIComponent(location.origin);
     return `https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?rel=0&modestbranding=1&playsinline=1${extra}${start}${loop}&origin=${origin}`;
   }
@@ -1605,7 +1626,9 @@
     const href = el.getAttribute("href") || "";
     const m = href.match(/[#?&]habitat=([^&]+)/);
     if (m) return habitatById(decodeURIComponent(m[1]));
-    return (config.habitats || []).find((x) => x.video && x.video.url === href) || null;
+    return (
+      (config.habitats || []).find((x) => habitatFilms(x).some((v) => v.url === href)) || null
+    );
   }
 
   function sealStaticFilms() {
@@ -1720,8 +1743,24 @@
     soundTipTimer = setTimeout(() => hideSoundTip(false), SOUND_TIP_MS);
   }
 
-  function playFilmInline(url, label, start) {
-    const embed = youtubeEmbed(url, { autoplay: true, start: filmStartSec(start) });
+  function playHabitatFilm(h) {
+    const films = habitatFilms(h);
+    const first = films[0];
+    if (!first) return false;
+    return playFilmInline(
+      first.url,
+      first.title || (h && h.label) || "Pre-recorded",
+      first.start,
+      films.map((f) => f.url)
+    );
+  }
+
+  function playFilmInline(url, label, start, playlist) {
+    const embed = youtubeEmbed(url, {
+      autoplay: true,
+      start: filmStartSec(start),
+      playlist: playlist,
+    });
     if (!embed || !photoEl) return false;
     photoEl.classList.add("is-playing");
     photoEl.innerHTML = `<iframe class="vz-watch-frame" title="${escapeHtml(label || "Pre-recorded")}" src="${embed}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
@@ -1877,7 +1916,8 @@
       "";
     fillPhoto();
     const cam = h.cam || {};
-    const video = h.video || {};
+    const films = habitatFilms(h);
+    const video = films[0] || {};
     const hasCam = Boolean(cam.url);
     const hasFilm = Boolean(video.url);
     const cinema = hasFilm && Boolean(config && (config.kind === "park" || config.kind === "science" || config.kind === "natural_history"));
@@ -1923,7 +1963,7 @@
         filmLink.innerHTML = `Pre-recorded<small>${escapeHtml(video.title || "A short video")}</small>`;
         filmLink.onclick = (e) => {
           e.preventDefault();
-          playFilmInline(video.url, video.title || h.label || "Pre-recorded", video.start);
+          playHabitatFilm(h);
           track("film_clicked", { animal_id: h.cardId || h.id, venue_kind: (config && config.kind) || "zoo", tab: currentTab() });
         };
       } else {
@@ -1933,7 +1973,7 @@
     }
     if (filmHint) filmHint.hidden = true;
     const skipFilm = Boolean(opts && opts.skipFilm) || vftChrome() === "intro";
-    if (hasFilm && !skipFilm) playFilmInline(video.url, video.title || h.label || "Pre-recorded", video.start);
+    if (hasFilm && !skipFilm) playHabitatFilm(h);
     if (placeLink) {
       if (h.placeHref) {
         placeLink.hidden = false;
@@ -2118,16 +2158,14 @@
     }
     if (t.id === "vz-film") {
       const h = currentCardId ? habitatById(currentCardId) : null;
-      const video = (h && h.video) || {};
-      if (video.url) playFilmInline(video.url, video.title || (h && h.label) || "Pre-recorded", video.start);
+      if (h) playHabitatFilm(h);
       return;
     }
     if (t.classList.contains("vz-static-film")) {
       const hab = habitatFromFilmControl(t);
       if (hab) {
         openHabitat(hab.id, t, { fromHash: true });
-        const video = hab.video || {};
-        if (video.url) playFilmInline(video.url, video.title || hab.label || "Pre-recorded", video.start);
+        playHabitatFilm(hab);
       }
     }
   });
@@ -2145,8 +2183,7 @@
       const hab = habitatFromFilmControl(t);
       if (hab) {
         openHabitat(hab.id, t, { fromHash: true });
-        const video = hab.video || {};
-        if (video.url) playFilmInline(video.url, video.title || hab.label || "Pre-recorded", video.start);
+        playHabitatFilm(hab);
       }
       track("film_clicked", { animal_id: (hab && (hab.cardId || hab.id)) || "static", venue_kind: (config && config.kind) || "zoo", tab: currentTab() });
       return;
