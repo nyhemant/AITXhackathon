@@ -1,4 +1,4 @@
-"""Cards hub is a find-a-card explorer, twin of the place explorer."""
+"""Cards hub is the cutout-play door, then a find-a-card explorer."""
 
 from pathlib import Path
 import re
@@ -59,9 +59,35 @@ class CardsExplorerTests(unittest.TestCase):
         self.assertEqual(h._code, 200)
         body = h.wfile.getvalue().decode("utf-8")
         self.assertIn("cards-explorer", body)
+        self.assertIn("Print cutouts to play", body)
         self.assertIn("Find a card", body)
         self.assertIn('id="cards-hub-search"', body)
         self.assertIn("Lion, shark, dinosaur", body)
+
+    def test_play_door_is_first_and_teaches_print_cut_hide(self):
+        play = re.search(r'<section class="cards-play"[\s\S]*?</section>', self.html)
+        self.assertIsNotNone(play)
+        door = play.group(0)
+        self.assertLess(self.html.find('id="cards-play"'), self.html.find('id="cards-find"'))
+        self.assertLess(self.html.find('id="cards-play"'), self.html.find('id="try-a-card"'))
+        self.assertIn('id="cards-play-heading"', door)
+        self.assertIn("Print cutouts to play", door)
+        self.assertIn("Hide-and-seek at home", door)
+        self.assertIn('src="/start/home-print-table.jpg"', door)
+        self.assertIn("/start/home-print-table-480.jpg 480w", door)
+        self.assertIn('class="cards-play-steps"', door)
+        self.assertIn(">Print</span>", door)
+        self.assertIn(">Cut</span>", door)
+        self.assertIn(">Hide</span>", door)
+        self.assertIn('href="/field-pack/virtual-zoo/?print=1"', door)
+        self.assertIn("Print the cutouts", door)
+        self.assertIn('href="/field-pack/cards/#try-a-card"', door)
+        self.assertIn("Browse cards on the screen", door)
+        self.assertNotIn("youtube.com", door)
+        title = re.search(r"<title>(.*?)</title>", self.html)
+        self.assertIsNotNone(title)
+        self.assertIn("Print cutouts to play", title.group(1))
+        self.assertIn("landing.css?v=100", self.html)
 
     def test_explorer_is_samples_not_a_58_card_wall(self):
         self.assertIn("landing-hub", self.html)

@@ -26,7 +26,18 @@
     <link rel="stylesheet" href="/shell/shell.css?v=6" />
     <link rel="stylesheet" href="/field-pack/css/styles.css?v=37" />
     <link rel="stylesheet" href="/field-pack/css/landing.css?v=93" />
-    <link rel="stylesheet" href="/field-pack/css/virtual-venue.css?v=52" />
+    <link rel="stylesheet" href="/field-pack/css/virtual-venue.css?v=53" />
+    <script>
+      (function () {
+        try {
+          var q = new URLSearchParams(location.search);
+          var hash = location.hash || "";
+          if (q.get("print") === "1" || hash === "#print") {
+            document.documentElement.setAttribute("data-vft-print", "1");
+          }
+        } catch (e) {}
+      })();
+    </script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -430,9 +441,13 @@
         <!-- VFT:PANELS:END -->
         </details>
 
-        <div class="vz-print-row no-print">
-          <button type="button" class="btn btn-secondary" id="vz-print-watch">Print cards<span class="vz-print-sub">(and maybe hide them for a hunt)</span></button>
-          <p class="vz-print-note">Print two-sided. Cut the photos; answers are on the back.</p>
+        <div class="vz-print-row no-print" id="print">
+          <div class="vz-print-ready-copy">
+            <p class="vz-print-kicker">Hide-and-seek at home</p>
+            <p class="vz-print-steps"><span>Print</span><span>Cut</span><span>Hide</span></p>
+          </div>
+          <button type="button" class="btn btn-primary" id="vz-print-watch">Print the cutouts<span class="vz-print-sub">Two-sided photos + answers</span></button>
+          <p class="vz-print-note">Print two-sided. Cut the photos. Hide them around home. Hunt.</p>
         </div>
       </main>
     </div>
@@ -494,6 +509,6 @@
     <script src="/field-pack/js/fp-analytics.js?v=1"></script>
     <script src="/field-pack/js/catalog.js?v=34"></script>
     <script src="/field-pack/js/print-kit.js?v=30"></script>
-    <script src="/field-pack/js/virtual-venue.js?v=91"></script>
+    <script src="/field-pack/js/virtual-venue.js?v=92"></script>
   </body>
 </html>

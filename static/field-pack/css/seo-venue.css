@@ -1934,6 +1934,14 @@ body.seo-venue-body {
   font-size: 1.05rem;
   min-height: 44px;
 }
+.card-print-note {
+  order: 4;
+  margin: 0.45rem 0 0;
+  color: #5a6a84;
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
 
 @media (max-width: 640px) {
   body.landing-body .oneless-shell,

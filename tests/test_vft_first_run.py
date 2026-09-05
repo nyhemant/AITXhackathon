@@ -8,6 +8,7 @@ vz-first-run panel and no fp-virtual-zoo-firstrun-v1 localStorage gate.
 from __future__ import annotations
 
 import json
+import re
 import unittest
 from pathlib import Path
 
@@ -94,6 +95,9 @@ class VftFirstRunTests(unittest.TestCase):
                 self.assertIn("Flamingo Lagoon", html)
                 chrome = html.split('<main class="vz-page">', 1)[1].split('id="vz-map"', 1)[0]
                 self.assertNotIn("Stop 1", chrome)
+                self.assertIn('q.get("print") === "1"', html)
+                self.assertIn('hash === "#print"', html)
+                self.assertIn('data-vft-print', html)
 
     def test_js_opens_flamingo_on_zoo_tab_without_deep_link(self):
         self.assertIn('const DEFAULT_ZOO_STOP = "caribbean-flamingo"', self.js)
@@ -108,8 +112,12 @@ class VftFirstRunTests(unittest.TestCase):
         self.assertNotIn("function playFirstRunFilm(", self.js)
         self.assertNotIn("tryFlamingoLiveEmbed", self.js)
         self.assertNotIn(FIRST_RUN_KEY, self.js)
+        self.assertIn("function wantsCutoutPrint()", self.js)
+        self.assertIn("function revealPrintReady()", self.js)
+        self.assertIn("printHomeSafari", self.js)
         on_hash = _fn_body(self.js, "onHash")
         self.assertIn("habitatHashId()", on_hash)
+        self.assertIn("wantsCutoutPrint()", on_hash)
         self.assertIn('currentTab() === "zoo"', on_hash)
         self.assertIn("openHabitat(DEFAULT_ZOO_STOP", on_hash)
         self.assertIn("closeDialog()", on_hash)
@@ -132,6 +140,7 @@ class VftFirstRunTests(unittest.TestCase):
         self.assertNotIn('html:not([data-vft-chrome="tour"])', self.css)
         self.assertIn(".vz-venues", self.css)
         self.assertIn(".vz-map-wrap", self.css)
+        self.assertIn('html[data-vft-print="1"] .vz-print-row', self.css)
 
     def test_other_venues_do_not_default_open_a_stop(self):
         on_hash = _fn_body(self.js, "onHash")
@@ -157,9 +166,21 @@ class VftFirstRunTests(unittest.TestCase):
 
     def test_cache_bumps_point_at_new_assets(self):
         for html in self.pages.values():
-            self.assertIn("virtual-venue.css?v=52", html)
-            self.assertIn("virtual-venue.js?v=91", html)
+            self.assertIn("virtual-venue.css?v=53", html)
+            self.assertIn("virtual-venue.js?v=92", html)
         self.assertIn("virtual-zoo.json?v=24", self.js)
+
+    def test_print_row_is_the_cutout_hunt_and_has_print_anchor(self):
+        for path, html in self.pages.items():
+            with self.subTest(page=str(path.relative_to(REPO))):
+                row = re.search(r'<div class="vz-print-row[^"]*" id="print">[\s\S]*?</button>', html)
+                self.assertIsNotNone(row)
+                self.assertIn('id="vz-print-watch"', row.group(0))
+                self.assertIn("Print the cutouts", row.group(0))
+                self.assertIn(">Print</span>", html)
+                self.assertIn(">Cut</span>", html)
+                self.assertIn(">Hide</span>", html)
+                self.assertNotIn("and maybe hide them for a hunt", html)
 
 
 if __name__ == "__main__":
