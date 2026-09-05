@@ -129,6 +129,106 @@ body.start-body {
   object-position: 50% 38%;
 }
 
+/*
+  At-home plate is the original home-print-table.jpg (not a generated still).
+  Crop the kitchen top so the slanted laptop stays a small curiosity teaser.
+  Laptop LCD inner-bezel hotbox on the 1024×1536 still, TL→TR→BR→BL:
+    8.20% 20.57% / 55.76% 17.12% / 60.84% 40.56% / 15.53% 47.33%
+  JS maps those image-space corners through object-fit:cover + this
+  object-position into a matrix3d so the muted clip sits in the real bezel.
+*/
+#start-home .start-chapter-still {
+  object-position: 42% 28%;
+}
+
+.start-home-tease {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.start-home-tease[hidden] {
+  display: none;
+}
+
+#start-home .start-chapter-hit {
+  z-index: 3;
+}
+
+.start-home-screen {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 160px;
+  height: 90px;
+  overflow: hidden;
+  transform-origin: 0 0;
+  background: #111;
+  border-radius: 2px;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.35);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.start-home-screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 14px 3px rgba(0, 0, 0, 0.42);
+}
+
+.start-home-video,
+.start-home-fallback {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 42%;
+}
+
+.start-home-fallback[hidden],
+.start-home-video[hidden] {
+  display: none;
+}
+
+.start-home-continue {
+  position: absolute;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0.4rem 1.05rem;
+  border-radius: 999px;
+  background: rgba(255, 252, 247, 0.94);
+  color: var(--teal);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 650;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  text-decoration: none;
+  box-shadow: 0 6px 22px rgba(12, 10, 8, 0.28);
+  transform: translate(-50%, -50%);
+}
+
+.start-home-continue[hidden] {
+  display: none;
+}
+
+.start-home-continue:hover {
+  background: #fffaf1;
+  color: #083838;
+}
+
+.start-home-continue:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
 .start-chapter-hit,
 .start-going-hit,
 .start-teach-hit {
@@ -631,5 +731,9 @@ body.start-body {
 
   .start-teach-track {
     scroll-behavior: auto;
+  }
+
+  .start-home-video {
+    display: none;
   }
 }

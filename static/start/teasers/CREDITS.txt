@@ -1,0 +1,22 @@
+Short muted /start/ teasers. Sources are Wikimedia Commons; we re-encoded
+silent 7s H.264 clips. Attribution required for CC BY / CC BY-SA works.
+
+flamingo.mp4
+  File:Flamingo at St. Marks National Wildlife Refuge.webm
+  James Leon Young, CC BY-SA 4.0
+  https://commons.wikimedia.org/wiki/File:Flamingo_at_St._Marks_National_Wildlife_Refuge.webm
+
+giraffe.mp4
+  File:Giraffe (Giraffa camelopardalis) male ....webm
+  Charles J. Sharp (sharpphotography.co.uk), CC BY-SA 2.0
+  https://commons.wikimedia.org/wiki/File:Giraffe_(Giraffa_camelopardalis)_male_....webm
+
+lion.mp4
+  File:Lion Cubs Phinda 2011.ogv
+  GalliasM, CC0 1.0
+  https://commons.wikimedia.org/wiki/File:Lion_Cubs_Phinda_2011.ogv
+
+otter.mp4
+  File:Asian small-clawed otter playing with rock.webm
+  Grendelkhan, CC BY-SA 3.0
+  https://commons.wikimedia.org/wiki/File:Asian_small-clawed_otter_playing_with_rock.webm

@@ -978,6 +978,8 @@ def _static_content_type(path: Path) -> str:
         return "application/xml; charset=utf-8"
     if suffix == ".txt":
         return "text/plain; charset=utf-8"
+    if suffix == ".mp4":
+        return "video/mp4"
     return "application/octet-stream"
 
 
