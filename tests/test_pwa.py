@@ -98,7 +98,7 @@ class PwaTests(unittest.TestCase):
         self.assertEqual(served._headers.get("Content-Type"), "application/manifest+json")
         self.assertEqual(served._headers.get("Cache-Control"), "no-cache")
         body = json.loads(served.wfile.getvalue().decode("utf-8"))
-        self.assertEqual(body["id"], "https://1less.app/field-trip-kit")
+        self.assertEqual(body["id"], "/field-trip-kit")
         self.assertEqual(body["name"], "Field Trip Kit")
         self.assertLessEqual(len(body["short_name"]), 12)
         self.assertEqual(body["short_name"], "1less")
