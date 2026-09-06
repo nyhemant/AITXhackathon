@@ -1112,3 +1112,114 @@ body.start-body {
     display: none;
   }
 }
+
+/* Mark-only top + hamburger for repeat visitors */
+.start-top {
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.start-brand span {
+  display: none;
+}
+
+.start-menu-wrap {
+  position: relative;
+  margin-left: auto;
+}
+
+.start-menu-btn {
+  appearance: none;
+  border: 0;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--teal);
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 1px 0 rgba(10, 69, 69, 0.06);
+}
+
+.start-menu-btn:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.start-menu-bars {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 18px;
+}
+
+.start-menu-bars span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  border-radius: 999px;
+  background: currentColor;
+  opacity: 0.92;
+}
+
+.start-menu {
+  position: absolute;
+  top: calc(100% + 0.45rem);
+  right: 0;
+  z-index: 40;
+  min-width: min(18.5rem, calc(100vw - 2rem));
+  padding: 0.45rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.97);
+  border: 1px solid rgba(10, 69, 69, 0.12);
+  box-shadow: 0 14px 40px rgba(10, 69, 69, 0.16);
+}
+
+.start-menu[hidden] {
+  display: none !important;
+}
+
+.start-menu a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.12rem;
+  min-height: 48px;
+  padding: 0.55rem 0.75rem;
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--teal);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  font-size: 1rem;
+  font-weight: 650;
+  line-height: 1.2;
+}
+
+.start-menu a small {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--muted);
+  letter-spacing: 0;
+}
+
+.start-menu a:hover,
+.start-menu a:focus-visible {
+  background: rgba(10, 69, 69, 0.06);
+}
+
+.start-hero .start-menu-btn {
+  background: rgba(255, 255, 255, 0.78);
+}
+
+@media (max-width: 640px) {
+  .start-menu {
+    min-width: min(19rem, calc(100vw - 1.5rem));
+  }
+}

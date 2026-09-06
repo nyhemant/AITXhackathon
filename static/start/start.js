@@ -793,3 +793,38 @@
     return M.map((row) => row[n]);
   }
 })();
+
+(function startMenu() {
+  const btn = document.getElementById("start-menu-btn");
+  const menu = document.getElementById("start-menu");
+  if (!btn || !menu) return;
+
+  function setOpen(open) {
+    menu.hidden = !open;
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+    btn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+  }
+
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    setOpen(menu.hidden);
+  });
+
+  menu.addEventListener("click", (e) => {
+    const a = e.target.closest("a");
+    if (a) setOpen(false);
+  });
+
+  document.addEventListener("click", (e) => {
+    if (menu.hidden) return;
+    if (e.target.closest(".start-menu-wrap")) return;
+    setOpen(false);
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !menu.hidden) {
+      setOpen(false);
+      btn.focus();
+    }
+  });
+})();
