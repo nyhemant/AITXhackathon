@@ -32,7 +32,7 @@ Generous enough for a family session and a ~30-kid classroom on one school NAT. 
 | `other` | 240 | CSS / remaining JS / xml / manifest |
 | `overall` | 800 | Hard cap across buckets |
 
-Exempt (never counted): `/robots.txt`, `/analytics/off`, `/analytics/on`, `/analytics/status`.
+Exempt (never counted): `/robots.txt`, `/analytics/off`, `/analytics/on`, `/analytics/status`. `/llms.txt` is public at the site root (same allowlist as `/robots.txt`); it is not exempt and stays on the family/classroom budget.
 
 When a bucket or `overall` is exceeded the origin returns **429** with **Retry-After** and a short plain-text body. Allowed requests are not logged. 429s increment an in-memory counter and log at most the first hit plus every 50th (`429 ip=… bucket=… retry=… n=…`).
 

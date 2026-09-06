@@ -2,8 +2,11 @@ User-agent: *
 Allow: /
 Allow: /field-pack/
 Allow: /start/
+Allow: /llms.txt
 Disallow: /dinner
 Disallow: /analytics/
 Disallow: /api/
+
+# /llms.txt is public for AI assistants. Do not Disallow GPTBot, Claude, or Perplexity.
 
 Sitemap: https://1less.app/sitemap.xml

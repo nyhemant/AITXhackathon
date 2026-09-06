@@ -68,6 +68,7 @@ Zoos lead the launch; parks are a fast-follow. **Dallas Zoo** is the content qua
 | Landing hero/map JS | `js/landing-hook.js`, `js/landing-map.js` |
 | Item uniqueness lint | `scripts/lint_item_uniqueness.py` → `scripts/data/item-uniqueness-report.md` |
 | Sitemap | `static/field-pack/sitemap.xml` |
+| LLM site map | `static/llms.txt` is public at `/llms.txt` (`web.py`) |
 | Search Console | `static/google*.html` served at `/google*.html` (`web.py`) |
 | Brand / path rules | `AGENTS.md`, `.grok/HANDOFF.md` |
 
