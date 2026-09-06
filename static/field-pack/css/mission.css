@@ -447,22 +447,28 @@ body.mission-drawer-open {
     margin: 0 !important;
     min-height: 0 !important;
     height: auto !important;
-    overflow: hidden !important;
+    overflow: visible !important;
   }
   /* Hide every body sibling (SEO page, hash aliases, empty print sheets). */
   body.printing-mission > *:not(.mission-overlay) {
     display: none !important;
   }
-  body.printing-mission .mission-overlay {
+  body.printing-mission .mission-overlay,
+  body.printing-mission .mission-overlay.no-print {
     display: block !important;
-    position: static !important;
+    /* Unfix: Chrome print drops position:fixed layers (blank page). */
+    position: relative !important;
     inset: auto;
+    width: 100%;
+    height: auto;
     background: none;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
     padding: 0;
     margin: 0;
-    overflow: hidden;
+    overflow: visible;
+    animation: none !important;
+    opacity: 1 !important;
   }
   body.printing-mission .mission-drawer,
   body.printing-mission .mission-drawer-body,
@@ -474,11 +480,12 @@ body.mission-drawer-open {
     max-height: none !important;
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    overflow: visible;
     box-shadow: none;
     background: #fff;
     animation: none;
     border-radius: 0;
+    transform: none !important;
   }
   body.printing-mission .mission-drawer-head,
   body.printing-mission .mission-filters,
@@ -500,13 +507,14 @@ body.mission-drawer-open {
     box-shadow: none;
     padding: 0;
     background: #fff;
+    color: #0a4545;
     display: flex;
     flex-direction: column;
-    contain: layout paint;
-    page-break-after: avoid !important;
-    page-break-inside: avoid !important;
-    break-after: avoid !important;
-    break-inside: avoid !important;
+    transform: none !important;
+    /* Do not break-inside:avoid — a 9.4in avoid-box that is 1px over Chrome’s
+       printable area is skipped (blank page 1) instead of clamping. */
+    page-break-after: avoid;
+    break-after: avoid;
   }
   body.printing-mission .ms-brand {
     font-size: 7.5pt;
@@ -609,7 +617,8 @@ body.mission-drawer-open {
   }
   body.printing-mission .ms-map-print-frame {
     flex: 1 1 auto;
-    min-height: 0;
+    /* Small floor so the map stays visible; 0 collapsed it before images painted */
+    min-height: 1.15in;
     max-height: 2.95in;
     border: 1.25pt solid #1f6b4a;
     border-radius: 4pt;
@@ -639,7 +648,7 @@ body.mission-drawer-open {
   }
   body.printing-mission .ms-map-has-preview .ms-map-thumb-wrap {
     height: auto !important;
-    min-height: 0;
+    min-height: 1.15in;
     max-height: 2.95in;
     flex: 1;
     overflow: hidden;

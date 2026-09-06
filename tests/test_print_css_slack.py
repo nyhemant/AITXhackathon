@@ -77,20 +77,22 @@ class PrintCssSlackTest(unittest.TestCase):
             MISSION_CSS,
             r"body\.printing-mission \.mission-sheet\s*\{[^}]*position:\s*absolute",
         )
-        self.assertIn("contain: layout paint", MISSION_CSS)
+        self.assertIn("body.printing-mission .mission-overlay.no-print", MISSION_CSS)
         self.assertNotIn("body.printing-mission * {\n    visibility: hidden;", MISSION_CSS)
 
     def test_mission_map_can_flex_shrink(self):
         self.assertIn("body.printing-mission .ms-map-print-frame", MISSION_CSS)
         frame = MISSION_CSS.split("body.printing-mission .ms-map-print-frame", 1)[1][:400]
-        self.assertIn("min-height: 0", frame)
+        self.assertIn("min-height: 1.15in", frame)
         self.assertNotIn("min-height: 1.6in", MISSION_CSS)
+        # Floor is small enough that 1.15in + 8.25in of text still fits 9.4in.
 
     def test_treasure_and_qa_hide_non_sheet_chrome(self):
         block = _first_print_block(STYLES_CSS)
         self.assertIn("body.printing-treasure > *:not(#treasure-sheet)", block)
         self.assertIn("body.printing-qa > *:not(#print-sheet)", block)
         self.assertIn("body.printing-safari > *:not(#print-sheet)", block)
+        self.assertIn(".no-print:not(.mission-overlay)", STYLES_CSS)
         self.assertIn("height: 7.3in", STYLES_CSS)
         self.assertNotIn("height: 7.55in", STYLES_CSS)
 
