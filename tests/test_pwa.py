@@ -171,7 +171,7 @@ class PwaTests(unittest.TestCase):
             self.assertIn('name="apple-mobile-web-app-title" content="1less"', html)
             self.assertIn('src="/pwa/register.js?v=1"', html)
             self.assertIn("viewport-fit=cover", html)
-        self.assertIn("start.css?v=26", self.start)
+        self.assertIn("start.css?v=27", self.start)
         self.assertIn(".start-pwa-tip", (REPO / "static" / "start" / "start.css").read_text(encoding="utf-8"))
         for html in self.vft.values():
             self.assertIn('href="/pwa/pwa.css?v=1"', html)

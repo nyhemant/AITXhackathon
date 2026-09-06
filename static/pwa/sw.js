@@ -30,7 +30,7 @@ const PRECACHE = [
   "/pwa/icon-192.png",
   "/pwa/apple-touch-icon.png",
   "/pwa/register.js?v=1",
-  "/start/start.css?v=26",
+  "/start/start.css?v=27",
 ];
 
 function sameOrigin(url) {
