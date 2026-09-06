@@ -25,7 +25,7 @@
   <meta name="twitter:title" content="A ready-to-use field trip for curious kids. · Field Trip Kit · 1Less" />
   <meta name="twitter:description" content="At home or before you go. Pick a place or an animal. Get a short activity with real photos, questions to ask, and an optional mission to print." />
   <meta name="twitter:image" content="https://1less.app/start/hero-giraffe.jpg" />
-  <link rel="stylesheet" href="/start/start.css?v=21" />
+  <link rel="stylesheet" href="/start/start.css?v=22" />
 </head>
 <body class="start-body">
   <section class="start-hero" id="start-hero" aria-labelledby="start-heading">
@@ -108,12 +108,69 @@
           alt="Child holding a Dallas Zoo mission page with reticulated giraffe checked, a giraffe behind the paper"
           decoding="async"
         />
-        <div class="start-chapter-copy">
-          <p class="start-kicker">Going this week</p>
-          <h2 id="start-going-heading" class="start-chapter-line">Same animal. Real place.</h2>
-          <p class="start-chapter-quiet">Hunt page in hand. Giraffe already checked.</p>
-        </div>
       </a>
+      <div class="start-going-carousel" role="region" aria-roledescription="carousel" aria-label="Georgia Aquarium, Dallas Zoo, and San Diego Zoo" hidden>
+        <p class="start-going-cue" aria-hidden="true"><span data-going-cue>2</span>/3</p>
+        <div class="start-going-track" id="start-going-track">
+          <a class="start-going-slide" data-going-place="georgia" href="/field-pack/georgia-aquarium/" aria-label="Georgia Aquarium">
+            <!-- Teaser JPG pending Hemant approval: going-georgia-aquarium.jpg (+480/640) -->
+            <img
+              src="/start/going-georgia-aquarium.jpg"
+              srcset="/start/going-georgia-aquarium-480.jpg 480w, /start/going-georgia-aquarium-640.jpg 640w, /start/going-georgia-aquarium.jpg 1024w"
+              sizes="100vw"
+              width="1024"
+              height="1536"
+              alt="child holding Georgia Aquarium hunt sheet with whale shark / Ocean Voyager behind"
+              decoding="async"
+            />
+            <span class="start-going-slide-fallback" aria-hidden="true">Georgia Aquarium</span>
+          </a>
+          <a class="start-going-slide" data-going-place="dallas" href="/field-pack/dallas-zoo/" aria-label="Dallas Zoo">
+            <img
+              src="/start/going-giraffe.jpg"
+              srcset="/start/going-giraffe-480.jpg 480w, /start/going-giraffe-640.jpg 640w, /start/going-giraffe.jpg 1024w"
+              sizes="100vw"
+              width="1024"
+              height="1536"
+              alt="Child holding a Dallas Zoo mission page with reticulated giraffe checked, a giraffe behind the paper"
+              decoding="async"
+            />
+          </a>
+          <a class="start-going-slide" data-going-place="sandiego" href="/field-pack/san-diego-zoo/" aria-label="San Diego Zoo">
+            <!-- Teaser JPG pending Hemant approval: going-san-diego-zoo.jpg (+480/640) -->
+            <img
+              src="/start/going-san-diego-zoo.jpg"
+              srcset="/start/going-san-diego-zoo-480.jpg 480w, /start/going-san-diego-zoo-640.jpg 640w, /start/going-san-diego-zoo.jpg 1024w"
+              sizes="100vw"
+              width="1024"
+              height="1536"
+              alt="child holding San Diego Zoo hunt sheet with panda/bamboo behind"
+              decoding="async"
+            />
+            <span class="start-going-slide-fallback" aria-hidden="true">San Diego Zoo</span>
+          </a>
+        </div>
+        <button type="button" class="start-going-arrow start-going-prev" data-going-prev aria-controls="start-going-track" aria-label="Previous place">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M14.25 5.75 7.75 12l6.5 6.25" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <button type="button" class="start-going-arrow start-going-next" data-going-next aria-controls="start-going-track" aria-label="Next place">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M9.75 5.75 16.25 12l-6.5 6.25" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <div class="start-going-dots" aria-hidden="true">
+          <span></span>
+          <span class="is-current"></span>
+          <span></span>
+        </div>
+      </div>
+      <div class="start-chapter-copy">
+        <p class="start-kicker">Going this week</p>
+        <h2 id="start-going-heading" class="start-chapter-line">Same animal. Real place.</h2>
+        <p class="start-chapter-quiet">Hunt page in hand.</p>
+      </div>
     </div>
     <nav class="start-chapter-pills" aria-label="Going this week">
       <a class="start-pill" href="/field-pack/dallas-zoo/">Sample visit</a>
@@ -207,6 +264,6 @@
   <script src="/shell/shell.js?v=5"></script>
   <script src="/field-pack/js/fp-analytics.js?v=1"></script>
   <script src="/pwa/register.js?v=1"></script>
-  <script src="/start/start.js?v=11"></script>
+  <script src="/start/start.js?v=12"></script>
 </body>
 </html>
