@@ -426,63 +426,95 @@ body.mission-drawer-open {
 
 /* Print: sheet only — MUST stay one letter page (wide landscape maps used to spill) */
 @media print {
-  /* Match styles.css: leave slack so Chrome 100% preview does not hairline page-2 */
+  /*
+   * Shared letter geometry (keep in sync with styles.css + tests/test_print_css_slack.py):
+   *   Letter = 11in. Chrome 100% preview uses ~0.4in default margins (headers/footers)
+   *   even when @page asks for less, and still rounds up a hairline. Prior 9.7in + 0.35in
+   *   looked like 0.6in of slack on paper but overflowed: (1) visibility:hidden leftovers
+   *   and an absolutely positioned sheet still paginated, (2) map min-height fought flex
+   *   shrink so overflow:hidden clipped paint but Chrome still made page 2.
+   *   Sheet 9.4in + 0.4in margins = 10.2in of 11in (~0.8in visible slack).
+   */
   @page {
     size: letter portrait;
-    margin: 0.35in;
+    margin: 0.4in;
   }
-  body.printing-mission * {
-    visibility: hidden;
+  html.printing-mission,
+  html:has(body.printing-mission),
+  body.printing-mission {
+    background: #fff !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    min-height: 0 !important;
+    height: auto !important;
+    overflow: visible !important;
   }
-  body.printing-mission .mission-sheet,
-  body.printing-mission .mission-sheet * {
-    visibility: visible;
+  /* Hide every body sibling (SEO page, hash aliases, empty print sheets). */
+  body.printing-mission > *:not(.mission-overlay) {
+    display: none !important;
   }
-  body.printing-mission .mission-overlay {
+  body.printing-mission .mission-overlay,
+  body.printing-mission .mission-overlay.no-print {
     display: block !important;
-    position: static;
-    background: none;
-    backdrop-filter: none;
-  }
-  body.printing-mission .mission-drawer {
+    /* Unfix: Chrome print drops position:fixed layers (blank page). */
+    position: relative !important;
+    inset: auto;
     width: 100%;
     height: auto;
-    max-height: none;
+    background: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    animation: none !important;
+    opacity: 1 !important;
+  }
+  body.printing-mission .mission-drawer,
+  body.printing-mission .mission-drawer-body,
+  body.printing-mission .mission-preview {
+    display: block !important;
+    position: static !important;
+    width: 100%;
+    height: auto !important;
+    max-height: none !important;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
     box-shadow: none;
     background: #fff;
     animation: none;
+    border-radius: 0;
+    transform: none !important;
   }
   body.printing-mission .mission-drawer-head,
   body.printing-mission .mission-filters,
   body.printing-mission .mission-drawer-foot {
     display: none !important;
   }
-  body.printing-mission .mission-drawer-body {
-    display: block;
-    overflow: hidden;
-    padding: 0;
-  }
   body.printing-mission .mission-sheet {
-    position: absolute;
-    left: 0;
-    top: 0;
+    position: relative;
+    left: auto;
+    top: auto;
     width: 100%;
     box-sizing: border-box;
-    /* ~9.7in + 0.35in margins leaves slack vs packing to 10in (Chrome page-2 hairline) */
-    height: 9.7in;
-    max-height: 9.7in;
+    /* FP_PRINT_SHEET_HEIGHT — 9.4in leaves slack vs Chrome 100% letter preview */
+    height: 9.4in;
+    max-height: 9.4in;
     overflow: hidden !important;
     border: none;
     border-radius: 0;
     box-shadow: none;
     padding: 0;
     background: #fff;
+    color: #0a4545;
     display: flex;
     flex-direction: column;
-    page-break-after: avoid !important;
-    page-break-inside: avoid !important;
-    break-after: avoid !important;
-    break-inside: avoid !important;
+    transform: none !important;
+    /* Do not break-inside:avoid — a 9.4in avoid-box that is 1px over Chrome’s
+       printable area is skipped (blank page 1) instead of clamping. */
+    page-break-after: avoid;
+    break-after: avoid;
   }
   body.printing-mission .ms-brand {
     font-size: 7.5pt;
@@ -556,13 +588,13 @@ body.mission-drawer-open {
     flex: 0 0 auto;
   }
 
-  /* Map fills leftover space but NEVER more than ~3.4in (wide landscape maps) */
+  /* Map fills leftover space; min-height:0 so it shrinks instead of forcing page 2 */
   body.printing-mission .ms-map-hint {
     margin: 4pt 0 0 !important;
     padding: 0 !important;
     flex: 1 1 auto;
     min-height: 0;
-    max-height: 3.5in;
+    max-height: 3.15in;
     display: flex !important;
     flex-direction: column;
     overflow: hidden;
@@ -585,8 +617,9 @@ body.mission-drawer-open {
   }
   body.printing-mission .ms-map-print-frame {
     flex: 1 1 auto;
-    min-height: 1.6in;
-    max-height: 3.25in;
+    /* Small floor so the map stays visible; 0 collapsed it before images painted */
+    min-height: 1.15in;
+    max-height: 2.95in;
     border: 1.25pt solid #1f6b4a;
     border-radius: 4pt;
     overflow: hidden;
@@ -600,7 +633,7 @@ body.mission-drawer-open {
     width: 100%;
     height: 100%;
     max-width: 100%;
-    max-height: 3.2in;
+    max-height: 2.9in;
     object-fit: contain;
     object-position: center;
   }
@@ -611,18 +644,18 @@ body.mission-drawer-open {
     border: none;
     background: none;
     height: 100%;
-    max-height: 3.5in;
+    max-height: 3.15in;
   }
   body.printing-mission .ms-map-has-preview .ms-map-thumb-wrap {
     height: auto !important;
-    min-height: 1.6in;
-    max-height: 3.25in;
+    min-height: 1.15in;
+    max-height: 2.95in;
     flex: 1;
     overflow: hidden;
   }
   body.printing-mission .ms-map-has-preview .ms-map-thumb {
     height: auto !important;
-    max-height: 3.2in !important;
+    max-height: 2.9in !important;
     width: 100%;
     object-fit: contain;
   }
