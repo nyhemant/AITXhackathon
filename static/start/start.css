@@ -415,18 +415,95 @@ body.start-body {
   display: none;
 }
 
+.start-going-hit {
+  display: none;
+}
+
 #start-going.is-going-carousel .start-going-hit {
   display: none;
   pointer-events: none;
 }
 
-.start-going-carousel {
+.start-going-still {
   position: absolute;
   inset: 0;
   z-index: 1;
+  display: flex;
+  gap: 2px;
+  height: 100%;
+  overflow: hidden;
+  background: #100c09;
 }
 
-.start-going-carousel[hidden] {
+.start-going-still::before,
+.start-going-still::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: min(3.25rem, 8%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.start-going-still::before {
+  left: 0;
+  background: linear-gradient(to right, rgba(12, 10, 8, 0.28), transparent);
+}
+
+.start-going-still::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(12, 10, 8, 0.28), transparent);
+}
+
+.start-going-panel {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 44px;
+  overflow: hidden;
+  color: inherit;
+  text-decoration: none;
+  background: #1c1814;
+}
+
+.start-going-panel[data-going-place="georgia"] {
+  background: #0a2f3a;
+}
+
+.start-going-panel[data-going-place="sandiego"] {
+  background: #24311c;
+}
+
+.start-going-panel:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: -6px;
+  z-index: 3;
+}
+
+.start-going-panel img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.start-going-panel[data-going-place="georgia"] img {
+  object-position: 38% 20%;
+}
+
+.start-going-panel[data-going-place="dallas"] img {
+  object-position: 62% 22%;
+}
+
+.start-going-panel[data-going-place="sandiego"] img {
+  object-position: 16% 28%;
+}
+
+.start-going-carousel,
+.start-going-arrow,
+.start-going-cue,
+.start-going-dots {
   display: none;
 }
 
@@ -511,7 +588,6 @@ body.start-body {
   position: absolute;
   top: 42%;
   z-index: 4;
-  display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 44px;
@@ -583,7 +659,6 @@ body.start-body {
 .start-going-dots {
   top: 2.5rem;
   right: 1rem;
-  display: flex;
   align-items: center;
   justify-content: flex-end;
   gap: 0.4rem;
@@ -880,6 +955,37 @@ body.start-body {
     font-size: 1rem;
   }
 
+  .start-going-still {
+    display: none;
+  }
+
+  .start-going-carousel {
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  .start-going-carousel[hidden] {
+    display: none;
+  }
+
+  #start-going:not(.is-going-carousel) .start-going-hit {
+    display: block;
+  }
+
+  .start-going-arrow {
+    display: inline-flex;
+  }
+
+  .start-going-cue {
+    display: block;
+  }
+
+  .start-going-dots {
+    display: flex;
+  }
+
   #start-teach .start-chapter-box {
     min-height: calc(100svh - 12rem);
     min-height: calc(100vh - 12rem);
@@ -1067,6 +1173,21 @@ body.start-body {
 }
 
 @media (min-width: 641px) {
+  .start-going-carousel,
+  .start-going-arrow,
+  .start-going-cue,
+  .start-going-dots {
+    display: none;
+  }
+
+  .start-going-still {
+    display: flex;
+  }
+
+  .start-going-hit {
+    display: none;
+  }
+
   .start-teach-carousel,
   .start-teach-arrow,
   .start-teach-spill {

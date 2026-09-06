@@ -110,7 +110,7 @@ class HubExplorerTests(unittest.TestCase):
         self.assertIsNotNone(home)
         self.assertNotIn("/field-pack/dallas-zoo/", home.group(0))
         self.assertNotIn("Open Dallas Zoo", self.start)
-        self.assertEqual(self.start.count('href="/field-pack/dallas-zoo/"'), 2)
+        self.assertEqual(self.start.count('href="/field-pack/dallas-zoo/"'), 4)
 
     def test_hub_is_map_first_place_explorer(self):
         self.assertIn("landing-hub", self.html)
