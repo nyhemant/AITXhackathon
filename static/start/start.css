@@ -606,7 +606,8 @@ body.start-body {
 }
 
 .start-teach-carousel,
-.start-teach-arrow {
+.start-teach-arrow,
+.start-teach-spill {
   display: none;
 }
 
@@ -985,6 +986,40 @@ body.start-body {
     pointer-events: none;
   }
 
+  .start-teach-spill {
+    position: absolute;
+    top: 64%;
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    margin: 0;
+    padding: 0.22rem 0.5rem;
+    border-radius: 999px;
+    background: rgba(12, 10, 8, 0.36);
+    color: rgba(255, 252, 247, 0.9);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    font-size: 0.72rem;
+    font-weight: 650;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+
+  .start-teach-spill-prev {
+    left: 2.7rem;
+  }
+
+  .start-teach-spill-next {
+    right: 2.7rem;
+  }
+
+  #start-teach.is-teach-spill-prev .start-teach-spill-prev,
+  #start-teach.is-teach-spill-next .start-teach-spill-next {
+    opacity: 1;
+  }
+
   .start-teach-cue,
   .start-teach-dots {
     position: absolute;
@@ -1028,7 +1063,8 @@ body.start-body {
 
 @media (min-width: 641px) {
   .start-teach-carousel,
-  .start-teach-arrow {
+  .start-teach-arrow,
+  .start-teach-spill {
     display: none;
   }
 
