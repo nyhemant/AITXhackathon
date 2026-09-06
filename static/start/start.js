@@ -193,9 +193,56 @@
       { passive: true }
     );
 
+    const AUTO_MS = 4000;
+    let autoTimer = null;
+    let autoPaused = false;
+
+    function stopAuto() {
+      if (autoTimer) {
+        clearInterval(autoTimer);
+        autoTimer = null;
+      }
+    }
+
+    function tickAuto() {
+      if (autoPaused || document.hidden || reduceMotion) return;
+      if (section && section.getBoundingClientRect().bottom < 80) return;
+      if (section && section.getBoundingClientRect().top > window.innerHeight - 80) return;
+      const idx = currentIndex();
+      goTo(idx >= count - 1 ? 0 : idx + 1);
+    }
+
+    function startAuto() {
+      stopAuto();
+      if (reduceMotion || count < 2) return;
+      autoTimer = setInterval(tickAuto, AUTO_MS);
+    }
+
+    function pauseAuto(ms) {
+      autoPaused = true;
+      stopAuto();
+      if (ms) {
+        window.setTimeout(() => {
+          autoPaused = false;
+          startAuto();
+        }, ms);
+      }
+    }
+
     trackEl.addEventListener("scroll", syncCue, { passive: true });
     window.addEventListener("resize", syncCue);
     syncCue();
+
+    ["pointerdown", "touchstart", "wheel"].forEach((type) => {
+      trackEl.addEventListener(type, () => pauseAuto(8000), { passive: true });
+    });
+    if (prevBtn) prevBtn.addEventListener("click", () => pauseAuto(8000));
+    if (nextBtn) nextBtn.addEventListener("click", () => pauseAuto(8000));
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) stopAuto();
+      else if (!autoPaused) startAuto();
+    });
+    startAuto();
   }
 
   initGoingCarousel();
@@ -395,7 +442,54 @@
       { passive: true }
     );
 
+    const AUTO_MS = 4500;
+    let autoTimer = null;
+    let autoPaused = false;
+
+    function stopAuto() {
+      if (autoTimer) {
+        clearInterval(autoTimer);
+        autoTimer = null;
+      }
+    }
+
+    function tickAuto() {
+      if (autoPaused || document.hidden || reduceMotion || carousel.hidden) return;
+      const rect = section.getBoundingClientRect();
+      if (rect.bottom < 80 || rect.top > window.innerHeight - 80) return;
+      const idx = currentIndex();
+      goTo(idx >= count - 1 ? 0 : idx + 1);
+    }
+
+    function startAuto() {
+      stopAuto();
+      if (reduceMotion || count < 2) return;
+      autoTimer = setInterval(tickAuto, AUTO_MS);
+    }
+
+    function pauseAuto(ms) {
+      autoPaused = true;
+      stopAuto();
+      if (ms) {
+        window.setTimeout(() => {
+          autoPaused = false;
+          startAuto();
+        }, ms);
+      }
+    }
+
+    ["pointerdown", "touchstart", "wheel"].forEach((type) => {
+      trackEl.addEventListener(type, () => pauseAuto(8000), { passive: true });
+    });
+    if (prevBtn) prevBtn.addEventListener("click", () => pauseAuto(8000));
+    if (nextBtn) nextBtn.addEventListener("click", () => pauseAuto(8000));
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) stopAuto();
+      else if (!autoPaused) startAuto();
+    });
+
     reveal();
+    startAuto();
   }
 
   function initHomeTeaser() {

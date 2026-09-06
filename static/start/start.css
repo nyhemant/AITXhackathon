@@ -523,12 +523,12 @@ body.start-body {
 
 .start-going-arrow svg {
   display: block;
-  width: 22px;
-  height: 22px;
-  padding: 3px;
+  width: 24px;
+  height: 24px;
+  padding: 5px;
   border-radius: 999px;
-  background: rgba(12, 10, 8, 0.28);
-  box-shadow: 0 1px 10px rgba(12, 10, 8, 0.18);
+  background: rgba(12, 10, 8, 0.48);
+  box-shadow: 0 0 0 1px rgba(255, 252, 247, 0.35), 0 2px 12px rgba(12, 10, 8, 0.28);
 }
 
 .start-going-prev {
@@ -953,12 +953,12 @@ body.start-body {
 
   .start-teach-arrow svg {
     display: block;
-    width: 28px;
-    height: 28px;
-    padding: 4px;
+    width: 30px;
+    height: 30px;
+    padding: 5px;
     border-radius: 999px;
-    background: rgba(12, 10, 8, 0.42);
-    box-shadow: 0 0 0 1px rgba(255, 252, 247, 0.28), 0 1px 10px rgba(12, 10, 8, 0.22);
+    background: rgba(12, 10, 8, 0.55);
+    box-shadow: 0 0 0 1px rgba(255, 252, 247, 0.4), 0 2px 12px rgba(12, 10, 8, 0.28);
   }
 
   .start-teach-prev {
@@ -1221,5 +1221,13 @@ body.start-body {
 @media (max-width: 640px) {
   .start-menu {
     min-width: min(19rem, calc(100vw - 1.5rem));
+  }
+}
+
+/* Carousel auto-advance: slightly clearer arrows stay; motion does the teaching */
+@media (prefers-reduced-motion: no-preference) {
+  .start-going-dots .is-current,
+  .start-teach-dots .is-current {
+    transform: scale(1.15);
   }
 }
