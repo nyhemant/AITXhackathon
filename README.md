@@ -90,9 +90,20 @@ Then browse to:
 http://127.0.0.1:8001
 ```
 
+Public origin rate limits (no accounts, no email, no CAPTCHA) live in
+`busyparent_agent.rate_limit` and hook `web.py`. Defaults, tune env, disable
+switch, and a burst-test command: `docs/rate-limit.md`. Emergency off:
+
+```bash
+ONELESS_RATE_LIMIT=0 python3 -m busyparent_agent.web --host 127.0.0.1 --port 8000
+# or
+python3 -m busyparent_agent.web --no-rate-limit
+```
+
 ## Documentation
 
 - Current product reference: `docs/product-reference.md`
+- Origin scrape/bot rate limits: `docs/rate-limit.md`
 - Local validation guide: `docs/demo.md`
 - Product research and planning: `docs/product/`
 - Legacy model 1.1 freeze: `docs/legacy/model-1.1.md`
@@ -105,6 +116,7 @@ src/busyparent_agent/
   app.py      legacy CLI entry point
   service.py  channel-neutral service helpers and Chapter 1 dinner MVP session
   web.py      stdlib local web chat adapter
+  rate_limit.py  per-IP scrape/bot limits (429 + Retry-After)
   agent.py    older deterministic dinner internals
   tools.py    older local mocked tools
 tests/        unittest coverage

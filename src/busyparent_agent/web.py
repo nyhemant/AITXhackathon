@@ -9,6 +9,7 @@ from pathlib import Path
 from urllib.parse import unquote, urlsplit
 from uuid import uuid4
 
+from busyparent_agent.rate_limit import evaluate_request, set_limiter, RateLimiter
 from busyparent_agent.service import APP_TITLE, create_dinner_decision_session
 
 
@@ -1126,7 +1127,45 @@ def _sitemap_bytes() -> bytes:
 
 
 class WebHandler(BaseHTTPRequestHandler):
+    def _peer_ip(self) -> str | None:
+        address = getattr(self, "client_address", None)
+        if not address:
+            return None
+        return address[0]
+
+    def _reject_if_rate_limited(self) -> bool:
+        """Return True when this request was answered with 429."""
+        path = urlsplit(self.path).path
+        headers = self.headers
+        decision = evaluate_request(
+            peer=self._peer_ip(),
+            headers=headers,
+            path=path,
+            user_agent=headers.get("User-Agent", "") if headers is not None else "",
+        )
+        if not decision.rejected:
+            return False
+        self._send_too_many(decision.retry_after)
+        return True
+
+    def _send_too_many(self, retry_after: int) -> None:
+        retry = max(1, int(retry_after))
+        body = (
+            f"Too many requests. Try again in {retry} second(s).\n".encode("utf-8")
+        )
+        self.send_response(429)
+        self.send_header("Retry-After", str(retry))
+        self.send_header("Cache-Control", "no-store")
+        self.send_header("Content-Type", "text/plain; charset=utf-8")
+        self.send_header("Content-Length", str(len(body)))
+        self.end_headers()
+        command = getattr(self, "command", "GET")
+        if command != "HEAD":
+            self.wfile.write(body)
+
     def do_GET(self) -> None:
+        if self._reject_if_rate_limited():
+            return
         path = urlsplit(self.path).path
         if path == "/analytics/off":
             self._handle_analytics_toggle(enabled=False)
@@ -1293,6 +1332,8 @@ class WebHandler(BaseHTTPRequestHandler):
         self.send_error(404)
 
     def do_HEAD(self) -> None:
+        if self._reject_if_rate_limited():
+            return
         path = urlsplit(self.path).path
         if path in {"/", "/index.html"}:
             self.send_response(302)
@@ -1388,6 +1429,8 @@ class WebHandler(BaseHTTPRequestHandler):
         self.end_headers()
 
     def do_POST(self) -> None:
+        if self._reject_if_rate_limited():
+            return
         path = urlsplit(self.path).path
         if path == "/api/chat":
             self._handle_chat()
@@ -1580,11 +1623,18 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=f"Run the local web chat for {APP_TITLE}.")
     parser.add_argument("--host", default="127.0.0.1")
     parser.add_argument("--port", type=int, default=8000)
+    parser.add_argument(
+        "--no-rate-limit",
+        action="store_true",
+        help="Disable in-app scrape/bot rate limits (same as ONELESS_RATE_LIMIT=0).",
+    )
     return parser.parse_args()
 
 
 def main() -> None:
     args = parse_args()
+    if args.no_rate_limit:
+        set_limiter(RateLimiter(enabled=False))
     server = ThreadingHTTPServer((args.host, args.port), WebHandler)
     url = f"http://{args.host}:{args.port}"
     print(f"{APP_TITLE}")

@@ -28,6 +28,8 @@ Expected result: `OK`.
 python3 -m busyparent_agent.web --host 0.0.0.0 --port 8000
 ```
 
+Origin scrape/bot limits are on by default (see `docs/rate-limit.md`). A normal family browse will not notice them. To disable locally: `--no-rate-limit` or `ONELESS_RATE_LIMIT=0`.
+
 Browse locally to:
 
 ```text
