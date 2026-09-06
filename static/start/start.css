@@ -174,17 +174,22 @@ body.start-body {
 }
 
 /*
-  At-home plate is the original home-print-table.jpg (not a generated still).
-  Laptop LCD inner-bezel hotbox on the 1024×1536 still, TL→TR→BR→BL:
+  At-home dual plate. JS picks the live still + hotbox via
+  matchMedia('(min-width: 641px)'), then maps through object-fit:cover
+  into a matrix3d so the clip sits in the laptop bezel.
+
+  Mobile ≤640px — original tall home-print-table.jpg (1024×1536).
+  LCD inner-bezel hotbox TL→TR→BR→BL:
     8.20% 20.57% / 55.76% 17.12% / 60.84% 40.56% / 15.53% 47.33%
-  Framing is viewport-specific (one crop cannot serve all shapes):
-    desktop — 36% 24% crops kitchen top for a small-screen tease
-    ~390 portrait — 12% 22% keeps the whole laptop display on-screen
-  JS refines object-position from the live box size, then maps the hotbox
-  through object-fit:cover into a matrix3d so the clip sits in the bezel.
+  object-position 12% 22% keeps the whole laptop display on-screen.
+
+  Desktop ≥641px — Imagine landscape home-print-table-desktop.jpg (1536×1024).
+  LCD inner-bezel hotbox TL→TR→BR→BL:
+    8.33% 20.63% / 43.04% 16.99% / 46.35% 49.15% / 12.16% 58.14%
+  object-position 45% 50% keeps laptop + cards in frame.
 */
 #start-home .start-chapter-still {
-  object-position: 36% 24%;
+  object-position: 45% 50%;
 }
 
 .start-home-tease {
