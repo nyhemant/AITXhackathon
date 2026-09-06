@@ -674,7 +674,9 @@
       if (!el) {
         el = document.createElement("style");
         el.id = "hs-print-page-rule";
-        el.textContent = "@page { size: letter landscape; margin: 0.35in; }";
+        /* Match styles.css / mission.css portrait margin (0.4in). Landscape
+         * printable height is 8.5 − 0.8 = 7.7in; .hs-page is capped at 7.3in. */
+        el.textContent = "@page { size: letter landscape; margin: 0.4in; }";
         document.head.appendChild(el);
       }
     } else if (el) {
@@ -682,14 +684,27 @@
     }
   }
 
-  function runPrint({ treasure, safari }) {
+  function setPrintMode({ treasure, safari }) {
+    const qa = !treasure && !safari;
     document.body.classList.toggle("printing-treasure", Boolean(treasure));
     document.body.classList.toggle("printing-safari", Boolean(safari));
+    document.body.classList.toggle("printing-qa", qa);
+    document.documentElement.classList.toggle("printing-treasure", Boolean(treasure));
+    document.documentElement.classList.toggle("printing-safari", Boolean(safari));
+    document.documentElement.classList.toggle("printing-qa", qa);
     setSafariLandscape(Boolean(safari));
+  }
+
+  function clearPrintMode() {
+    document.body.classList.remove("printing-treasure", "printing-safari", "printing-qa");
+    document.documentElement.classList.remove("printing-treasure", "printing-safari", "printing-qa");
+    setSafariLandscape(false);
+  }
+
+  function runPrint({ treasure, safari }) {
+    setPrintMode({ treasure: Boolean(treasure), safari: Boolean(safari) });
     const cleanup = () => {
-      document.body.classList.remove("printing-treasure");
-      document.body.classList.remove("printing-safari");
-      setSafariLandscape(false);
+      clearPrintMode();
       window.removeEventListener("afterprint", cleanup);
     };
     window.addEventListener("afterprint", cleanup);
@@ -1017,5 +1032,6 @@
     venueIdForItem,
     getVenue,
     getItem,
+    waitForPrintImages,
   };
 })();

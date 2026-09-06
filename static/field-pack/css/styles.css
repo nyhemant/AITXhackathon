@@ -1284,15 +1284,15 @@ a {
 
 @media print {
   /*
-   * One letter page with slack.
-   * Letter = 11in; @page margins leave ~10.3–10.4in. Packing content to a hard 10in
-   * leaves almost no room for Chrome’s print engine rounding — preview often shows a
-   * hairline page-2 until scale is toggled (forces reflow). Target ~9.7in so ~2 lines
-   * of paper margin remain below the sheet at 100% scale.
+   * Shared letter geometry (keep in sync with mission.css + tests/test_print_css_slack.py):
+   *   Letter = 11in. Chrome 100% preview often applies ~0.4in margins (headers/footers)
+   *   and still hairline-rounds a packed 9.7in sheet onto page 2. Absolute sheets +
+   *   visibility:hidden leftovers also paginated. Sheet 9.4in + 0.4in margins = 10.2in
+   *   of 11in (~0.8in visible slack). Landscape cutouts use the matching 7.3in cap.
    */
   @page {
     size: letter portrait;
-    margin: 0.35in;
+    margin: 0.4in;
   }
 
   html,
@@ -1302,6 +1302,26 @@ a {
     margin: 0 !important;
     min-height: 0 !important;
     height: auto !important;
+  }
+
+  html.printing-treasure,
+  html.printing-qa,
+  html:has(body.printing-treasure),
+  html:has(body.printing-qa),
+  body.printing-treasure,
+  body.printing-qa {
+    overflow: hidden !important;
+  }
+
+  /* One-page modes: only the active sheet stays in the print tree. */
+  body.printing-treasure > *:not(#treasure-sheet) {
+    display: none !important;
+  }
+  body.printing-qa > *:not(#print-sheet) {
+    display: none !important;
+  }
+  body.printing-safari > *:not(#print-sheet) {
+    display: none !important;
   }
 
   .app,
@@ -1334,8 +1354,9 @@ a {
 
   /* Wrapper clamp — slightly under one printable page */
   body.printing-treasure #treasure-sheet,
-  body:not(.printing-treasure):not(.printing-safari) #print-sheet:not(:empty) {
-    max-height: 9.85in;
+  body.printing-qa #print-sheet:not(:empty),
+  body:not(.printing-treasure):not(.printing-safari):not(.printing-qa) #print-sheet:not(:empty) {
+    max-height: 9.5in;
     overflow: hidden;
     page-break-after: avoid;
     page-break-inside: avoid;
@@ -1355,9 +1376,9 @@ a {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    /* ~9.7in content; leaves ~1–2 lines of paper margin vs packing to 10in */
-    height: 9.7in;
-    max-height: 9.7in;
+    /* FP_PRINT_SHEET_HEIGHT — 9.4in leaves slack vs Chrome 100% letter preview */
+    height: 9.4in;
+    max-height: 9.4in;
     overflow: hidden !important;
     color: #152238;
     page-break-inside: avoid !important;
@@ -1366,8 +1387,8 @@ a {
     break-after: avoid !important;
   }
   .ps-page-with-photo {
-    height: 9.7in;
-    max-height: 9.7in;
+    height: 9.4in;
+    max-height: 9.4in;
   }
 
   .ps-banner {
@@ -1498,7 +1519,7 @@ a {
   /* Big animal photo fills leftover sheet space (sheet clamp prevents page-2) */
   .ps-photo-fill {
     flex: 1 1 0;
-    min-height: 2.0in;
+    min-height: 0;
     /* no max-height — grow into remaining sheet; overflow:hidden on .ps-page */
     display: flex;
     flex-direction: column;
@@ -1684,9 +1705,17 @@ a {
 
   /* ---- Treasure hunt (one page) ---- */
   .th-page {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    height: 9.4in;
+    max-height: 9.4in;
+    overflow: hidden !important;
     color: #152238;
-    page-break-inside: avoid;
-    break-inside: avoid;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    page-break-after: avoid !important;
+    break-after: avoid !important;
   }
 
   .th-banner {
@@ -1868,8 +1897,8 @@ a {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    height: 9.7in;
-    max-height: 9.7in;
+    height: 9.4in;
+    max-height: 9.4in;
     overflow: hidden !important;
     page-break-inside: avoid !important;
     break-inside: avoid !important;
@@ -1881,9 +1910,9 @@ a {
     overflow: hidden;
     background: #f3faf6;
     flex: 1 1 auto;
-    min-height: 1.8in;
-    /* Cap height so wide landscape maps (Joshua Tree, etc.) cannot force page 2 */
-    max-height: 3.35in;
+    min-height: 0;
+    /* Cap height so wide landscape maps cannot force page 2; 0 min lets flex shrink */
+    max-height: 3.05in;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1892,7 +1921,7 @@ a {
     display: block;
     width: 100%;
     height: 100%;
-    max-height: 3.3in;
+    max-height: 3in;
     object-fit: contain;
     object-position: center;
   }
@@ -1918,9 +1947,9 @@ a {
   /* Home Safari — two landscape pages: hunt cards, then cut-outs */
   .hs-page {
     box-sizing: border-box;
-    width: 10.3in;
-    height: 7.55in;
-    max-height: 7.55in;
+    width: 10.2in;
+    height: 7.3in;
+    max-height: 7.3in;
     overflow: hidden !important;
     display: flex;
     flex-direction: column;

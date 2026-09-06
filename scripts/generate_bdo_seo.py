@@ -273,10 +273,10 @@ CARD_SEO_CSS_VER = "31"
 LANDING_CSS_VER = "99"
 LANDING_MAP_JS_VER = "87"
 LANDING_HOOK_JS_VER = "37"
-STYLES_CSS_VER = "36"
+STYLES_CSS_VER = "39"
 CATALOG_JS_VER = "40"
 VIEWPORT = "width=device-width, initial-scale=1, viewport-fit=cover"
-MISSION_CSS_VER = "19"
+MISSION_CSS_VER = "20"
 
 # Landing catalog seeds (T5) — review in POLISH-TASKS completion notes
 FEATURED_CARD_IDS = (
@@ -2356,9 +2356,9 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <script src="/field-pack/js/fp-analytics.js?v=1"></script>
   <script src="/field-pack/js/catalog.js?v={CATALOG_JS_VER}"></script>
   <script src="/field-pack/js/print-maps.js?v=5"></script>
-  <script src="/field-pack/js/print-kit.js?v=14"></script>
+  <script src="/field-pack/js/print-kit.js?v=15"></script>
   <script src="/field-pack/js/mission/mission-engine.js?v=13"></script>
-  <script src="/field-pack/js/mission/mission-ui.js?v=17"></script>
+  <script src="/field-pack/js/mission/mission-ui.js?v=18"></script>
 </body>
 </html>
 """
@@ -2486,7 +2486,7 @@ def render_venue_page(v: dict) -> str:
   <script src="/field-pack/js/fp-analytics.js?v=1"></script>
   <script src="/field-pack/js/catalog.js?v={CATALOG_JS_VER}"></script>
   <script src="/field-pack/js/print-maps.js?v=5"></script>
-  <script src="/field-pack/js/print-kit.js?v=14"></script>
+  <script src="/field-pack/js/print-kit.js?v=15"></script>
   <script>
     (function () {{
       var btn = document.getElementById("seo-print-hunt");
@@ -4651,7 +4651,7 @@ def write_card_pages(
   <script src="/shell/shell.js?v=5"></script>
   <script src="/field-pack/js/fp-analytics.js?v=1"></script>
   <script src="/field-pack/js/catalog.js?v={CATALOG_JS_VER}"></script>
-  <script src="/field-pack/js/print-kit.js?v=14"></script>
+  <script src="/field-pack/js/print-kit.js?v=15"></script>
   <script>
     (function () {{
       var KIT_SITES = {kit_sites_js};

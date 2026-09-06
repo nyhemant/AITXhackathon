@@ -462,8 +462,10 @@
     const sheet = $("#mission-sheet");
     if (sheet && mapImageSrc()) sheet.classList.add("ms-sheet-has-map");
     document.body.classList.add("printing-mission");
+    document.documentElement.classList.add("printing-mission");
     const done = () => {
       document.body.classList.remove("printing-mission");
+      document.documentElement.classList.remove("printing-mission");
       if (sheet) sheet.classList.remove("ms-sheet-has-map");
       renderMapHint(false);
     };
@@ -472,7 +474,13 @@
     setTimeout(() => {
       if (document.body.classList.contains("printing-mission")) done();
     }, 60000);
-    setTimeout(() => window.print(), 80);
+    const waitImgs =
+      window.FPPrint && typeof window.FPPrint.waitForPrintImages === "function"
+        ? window.FPPrint.waitForPrintImages(sheet)
+        : Promise.resolve();
+    Promise.resolve(waitImgs).then(() => {
+      setTimeout(() => window.print(), 40);
+    });
   }
 
   /** Name / interest only — age & time live in `state` (set by chip clicks). */

@@ -17,6 +17,7 @@ from generate_bdo_seo import (  # noqa: E402
     HOME_SESSION_H2,
     HOME_SESSION_LEAD,
     HUNT_H2,
+    MISSION_CSS_VER,
     MISSION_DRAWER_H2,
     PLACE_VFT_CTA,
     SEO_CSS_VER,
@@ -187,7 +188,7 @@ class PlacePageSparseChromeTests(unittest.TestCase):
             self.assertIn('href="/field-pack/">All places</a>', html)
             self.assertIn('href="/field-pack/virtual-field-trip/', html)
             self.assertIn(f"seo-venue.css?v={SEO_CSS_VER}", html)
-            self.assertIn("mission.css?v=19", html)
+            self.assertIn(f"mission.css?v={MISSION_CSS_VER}", html)
 
     def test_type_hubs_share_the_same_sparse_shell(self):
         self.assertEqual(TYPE_HUB_LEAD, HOME_SESSION_LEAD)
