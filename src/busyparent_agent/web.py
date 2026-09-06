@@ -1090,17 +1090,37 @@ def _send_redirect(handler: "WebHandler", location: str, *, code: int = 301) -> 
     handler.end_headers()
 
 
+def _is_allowed_static_root_name(name: str) -> bool:
+    """Allow robots.txt, sitemap.xml, and Google Search Console google*.html tags."""
+    if not name or "/" in name or "\\" in name or ".." in name:
+        return False
+    if name in {"robots.txt", "sitemap.xml"}:
+        return True
+    return name.startswith("google") and name.endswith(".html")
+
+
 def _safe_static_root_file(url_path: str) -> Path | None:
-    """Serve top-level static files: /robots.txt, /sitemap.xml."""
-    name = url_path.lstrip("/")
-    if name not in {"robots.txt", "sitemap.xml"}:
+    """Serve top-level static files: /robots.txt, /sitemap.xml, /google*.html."""
+    name = unquote(url_path).lstrip("/")
+    if not _is_allowed_static_root_name(name):
         return None
+    root = STATIC_ROOT.resolve()
     candidate = (STATIC_ROOT / name).resolve()
     try:
-        candidate.relative_to(STATIC_ROOT.resolve())
+        candidate.relative_to(root)
     except ValueError:
         return None
+    if candidate.parent != root:
+        return None
     return candidate if candidate.is_file() else None
+
+
+def _root_static_content_type(path: Path) -> str:
+    if path.name.startswith("google") and path.suffix.lower() == ".html":
+        return "text/html; charset=utf-8"
+    if path.name == "robots.txt":
+        return "text/plain; charset=utf-8"
+    return "application/xml; charset=utf-8"
 
 
 _SITEMAP_URLS = ("/sitemap.xml", "/field-pack/sitemap.xml")
@@ -1189,7 +1209,7 @@ class WebHandler(BaseHTTPRequestHandler):
         root_static = _safe_static_root_file(path)
         if root_static is not None:
             body = root_static.read_bytes()
-            ctype = "text/plain; charset=utf-8" if root_static.name == "robots.txt" else "application/xml; charset=utf-8"
+            ctype = _root_static_content_type(root_static)
             self.send_response(200)
             self.send_header("Content-Type", ctype)
             self.send_header("Content-Length", str(len(body)))
@@ -1351,7 +1371,7 @@ class WebHandler(BaseHTTPRequestHandler):
             return
         root_static = _safe_static_root_file(path)
         if root_static is not None:
-            ctype = "text/plain; charset=utf-8" if root_static.name == "robots.txt" else "application/xml; charset=utf-8"
+            ctype = _root_static_content_type(root_static)
             self.send_response(200)
             self.send_header("Content-Type", ctype)
             self.send_header("Content-Length", str(root_static.stat().st_size))

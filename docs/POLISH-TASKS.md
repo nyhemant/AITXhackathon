@@ -94,7 +94,7 @@ Print-first live site flipped to a standalone virtual session. Printable hunts k
 | Homepage | H1/Ready/About/FAQ/nav: at-home first. Ready cards → place pages. VFT subtitle “Explore at home”. Map noscript + failed-fetch fallback. |
 | Place pages | Generator: dual CTA, `#at-home` cards with catalog Q&A + existing VFT cams/films. Title/meta not print-only. Hunt drawer stays. |
 | Card pages | Render catalog DEPTH (photo, talk Q&A from `key` + missions). VFT cam/film when already sourced. Print secondary. |
-| Sitemap | `/sitemap.xml` + `/field-pack/sitemap.xml` serve static XML 200 (`web.py`). |
+| Sitemap | `/sitemap.xml` + `/field-pack/sitemap.xml` serve static XML 200 (`web.py`). `/google*.html` Search Console tags from `static/`. |
 | Dinner | Untouched. |
 
 QA: landing, dallas-zoo, san-diego-zoo, cards/african-lion, virtual-field-trip, sitemap 200, dinner files unchanged.
