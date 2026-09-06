@@ -3212,14 +3212,15 @@ window.FIELD_PACK_VENUES = {
       "sea-turtle"
     ],
     treasureHunt: [
-      { id: "th1", text: "Find the biggest whale shark in Ocean Voyager" },
-      { id: "th2", text: "Watch a manta ray glide through the tunnel" },
-      { id: "th3", text: "Watch an African penguin zoom underwater" },
-      { id: "th4", text: "Watch a southern sea otter float or snack" },
-      { id: "th5", text: "Find Asian small-clawed otters splash" },
-      { id: "th6", text: "Count Ocean Voyager fins" },
-      { id: "th7", text: "Find a puffin with a beak of fish" },
-      { id: "th8", text: "Pick a Georgia Aquarium favorite — draw it later" }
+      { id: "th1", text: "Whale shark — Home of the whale sharks — look for the biggest fish in the tank. · Ocean Voyager" },
+      { id: "th2", text: "Manta ray — Manta rays glide by the tunnel like underwater birds. · Ocean Voyager" },
+      { id: "th3", text: "African penguin — African penguin colony — more than 25 nesting areas. · Cold Water Quest" },
+      { id: "th4", text: "Sea otter — Southern sea otter — deck view plus a sneak-peek window. · Cold Water Quest" },
+      { id: "th5", text: "Asian small-clawed otter — Asian small-clawed otter on the official animal guide. · Animal guide" },
+      { id: "th6", text: "Puffin — Horned and tufted puffin on the official animal guide. · Cold Water Quest" },
+      { id: "th7", text: "Pick your favorite — draw it later" },
+      { id: "th8", text: "Find three different colors on animals or exhibits" },
+      { id: "th9", text: "Find a bench or quiet spot to rest" }
     ],
     updated: "2026-08-23",
   },

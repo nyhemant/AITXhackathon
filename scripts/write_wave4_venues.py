@@ -491,14 +491,15 @@ def main() -> None:
             "sea-turtle": "Ocean Voyager sea turtle",
         },
         treasure=[
-            "Find the biggest whale shark in Ocean Voyager",
-            "Watch a manta ray glide through the tunnel",
-            "Watch an African penguin zoom underwater",
-            "Watch a southern sea otter float or snack",
-            "Find Asian small-clawed otters splash",
-            "Count Ocean Voyager fins",
-            "Find a puffin with a beak of fish",
-            "Pick a Georgia Aquarium favorite — draw it later",
+            "Whale shark — Home of the whale sharks — look for the biggest fish in the tank. · Ocean Voyager",
+            "Manta ray — Manta rays glide by the tunnel like underwater birds. · Ocean Voyager",
+            "African penguin — African penguin colony — more than 25 nesting areas. · Cold Water Quest",
+            "Sea otter — Southern sea otter — deck view plus a sneak-peek window. · Cold Water Quest",
+            "Asian small-clawed otter — Asian small-clawed otter on the official animal guide. · Animal guide",
+            "Puffin — Horned and tufted puffin on the official animal guide. · Cold Water Quest",
+            "Pick your favorite — draw it later",
+            "Find three different colors on animals or exhibits",
+            "Find a bench or quiet spot to rest",
         ],
     )
 

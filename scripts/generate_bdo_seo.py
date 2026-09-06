@@ -78,6 +78,8 @@ PARK_OG_IMAGE = f"{SITE}/field-pack/photos/np-hero-yellowstone.jpg"
 HOME_HREF = "/start/"
 
 # Dual-mode framing — at home stands alone; print is an optional visit companion.
+# Classic sheet: 6 Find these + 3 Bonus (do not truncate the last bonus).
+HUNT_TEASER_MAX = 9
 # Place-page chrome is sparse: images + two short actions. Swap these strings
 # only; templates read the constants. Do not reintroduce tutorial essays.
 NAV_PLACES_SUB = "Map &amp; places"
@@ -1332,7 +1334,7 @@ def unique_body(
 
     hunt_lis = "".join(
         f'<li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>{esc(t)}</span></li>'
-        for t in hunt[:8]
+        for t in hunt[:HUNT_TEASER_MAX]
     ) or '<li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>Find your favorite stop and check it off</span></li>'
     cards_html = (
         f'<div class="seo-animal-grid" role="list">{"".join(cards)}</div>'
@@ -1400,7 +1402,7 @@ def meta_for(v: dict) -> str:
 
 def venue_json_ld(v: dict, url: str) -> str:
     steps = []
-    for i, t in enumerate((v.get("hunt") or [])[:8], 1):
+    for i, t in enumerate((v.get("hunt") or [])[:HUNT_TEASER_MAX], 1):
         steps.append(
             {
                 "@type": "HowToStep",
@@ -1478,6 +1480,31 @@ process.stdout.write(JSON.stringify(mission));
         check=True,
     )
     return json.loads(proc.stdout)
+
+
+def hunt_lines_from_mission(mission: dict) -> list[str]:
+    """Classic Find these + Bonus — same default sheet the print drawer shows."""
+    lines: list[str] = []
+    for it in mission.get("finds") or []:
+        label = (
+            it.get("display_label") or it.get("label") or it.get("name") or ""
+        ).strip()
+        blurb = (it.get("one_liner") or "").strip()
+        zone = (it.get("zone") or "").strip()
+        # Match mission-ui Classic print: always "blurb · zone" (do not skip
+        # when the zone words already appear in the blurb, e.g. "animal guide").
+        small = blurb
+        if zone:
+            small = f"{blurb} · {zone}" if blurb else zone
+        if label and small:
+            lines.append(f"{label} — {small}")
+        elif label or small:
+            lines.append(label or small)
+    for c in mission.get("challenges") or []:
+        text = (c.get("text") if isinstance(c, dict) else str(c or "")).strip()
+        if text:
+            lines.append(text)
+    return lines
 
 
 def content_mode_of(mission_venue: dict, catalog_v: dict | None = None) -> str:
@@ -2125,6 +2152,10 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
     last_v = (v.get("lastVerified") or mission_venue.get("last_verified") or "")[:7]
 
     mission = default_mission_via_node(mission_venue)
+    hunt_from_mission = hunt_lines_from_mission(mission)
+    if hunt_from_mission:
+        v = dict(v)
+        v["hunt"] = hunt_from_mission
     drawer = mission_drawer_html(mission_venue, mission)
     map_card = map_card_html(mission_venue)
     route90 = route_90m_html(mission_venue, mission, catalog_v=v)
@@ -2149,7 +2180,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
         hunt = v.get("hunt") or []
         hunt_lis = "".join(
             f'<li><span class="seo-hunt-box" aria-hidden="true">☐</span><span>{esc(t)}</span></li>'
-            for t in hunt[:8]
+            for t in hunt[:HUNT_TEASER_MAX]
         )
         hunt_sec = hunt_teaser_html(hunt_lis) if hunt_lis else ""
         body = wonder_grid_html(mission) + hunt_sec
