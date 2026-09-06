@@ -410,6 +410,11 @@ body.start-body {
   display: none;
 }
 
+#start-going.is-going-carousel .start-going-hit {
+  display: none;
+  pointer-events: none;
+}
+
 .start-going-carousel {
   position: absolute;
   inset: 0;

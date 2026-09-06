@@ -104,9 +104,14 @@
 
     function goTo(idx, behavior) {
       const next = Math.min(count - 1, Math.max(0, idx));
+      const left = next * slideWidth();
+      if (behavior === "auto" || reduceMotion) {
+        trackEl.scrollLeft = left;
+        return;
+      }
       trackEl.scrollTo({
-        left: next * slideWidth(),
-        behavior: behavior || (reduceMotion ? "auto" : "smooth"),
+        left,
+        behavior: behavior || "smooth",
       });
     }
 
@@ -158,28 +163,40 @@
       }
     });
 
-    function reveal() {
+    function pinStart() {
+      if (slideWidth() < 2) return false;
       goTo(startIndex, "auto");
+      syncCue();
+      return currentIndex() === startIndex;
+    }
+
+    function reveal() {
       carousel.hidden = false;
       if (fallback) {
         fallback.hidden = true;
         fallback.setAttribute("aria-hidden", "true");
       }
       section.classList.add("is-going-carousel");
-      syncCue();
+      if (!pinStart()) {
+        requestAnimationFrame(() => {
+          if (!pinStart()) requestAnimationFrame(pinStart);
+        });
+      }
+    }
+
+    function onArrowClick(event, dir) {
+      event.preventDefault();
+      event.stopPropagation();
+      goTo(currentIndex() + dir);
     }
 
     if (prevBtn) {
-      prevBtn.addEventListener("click", (event) => {
-        event.preventDefault();
-        goTo(currentIndex() - 1);
-      });
+      prevBtn.addEventListener("click", (event) => onArrowClick(event, -1));
+      prevBtn.addEventListener("pointerdown", (event) => event.stopPropagation());
     }
     if (nextBtn) {
-      nextBtn.addEventListener("click", (event) => {
-        event.preventDefault();
-        goTo(currentIndex() + 1);
-      });
+      nextBtn.addEventListener("click", (event) => onArrowClick(event, 1));
+      nextBtn.addEventListener("pointerdown", (event) => event.stopPropagation());
     }
 
     trackEl.addEventListener("scroll", syncCue, { passive: true });
