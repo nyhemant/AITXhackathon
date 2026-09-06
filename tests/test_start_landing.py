@@ -97,7 +97,7 @@ class StartLandingTests(unittest.TestCase):
         start = _get("/start/")
         self.assertEqual(start._code, 200)
         body = start.wfile.getvalue().decode("utf-8")
-        self.assertIn("At home. Going out. Or look it up.", body)
+        self.assertIn("A ready-to-use field trip for curious kids.", body)
         self.assertIn('class="start-brand" href="/start/"', body)
         self.assertIn('aria-label="1less home"', body)
         self.assertIn('id="start-menu-btn"', body)
@@ -159,7 +159,7 @@ class StartLandingTests(unittest.TestCase):
         chapter = hero.group(0)
         self.assertLess(self.html.find('id="start-hero"'), self.html.find('id="start-home"'))
         self.assertIn('id="start-heading"', chapter)
-        self.assertIn("At home. Going out. Or look it up.", chapter)
+        self.assertIn("A ready-to-use field trip for curious kids.", chapter)
         self.assertIn('class="start-routes"', chapter)
         self.assertIn('href="#start-home"', chapter)
         self.assertIn('href="#start-going"', chapter)
@@ -601,7 +601,7 @@ class StartLandingTests(unittest.TestCase):
     def test_locked_headline_and_no_marketing_stats(self):
         self.assertEqual(
             _heading_text(self.html),
-            "At home. Going out. Or look it up.",
+            "A ready-to-use field trip for curious kids.",
         )
         self.assertNotIn("I need an activity for today", self.html)
         self.assertNotIn("We’re visiting somewhere soon", self.html)
@@ -759,7 +759,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn("landing-hub", self.home)
         self.assertIn('id="us-map"', self.home)
         self.assertNotIn('id="door-today"', self.home)
-        self.assertNotIn("At home. Going out. Or look it up.", self.home)
+        self.assertNotIn("A ready-to-use field trip for curious kids.", self.home)
         self.assertIn("Zoo and aquarium first. Museums and parks are here when you want them.", self.html)
         foot = re.search(r'<footer class="start-foot">[\s\S]*?</footer>', self.html)
         self.assertIsNotNone(foot)
@@ -781,8 +781,8 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn("autoplay", self.html)
         self.assertIn('preload="auto"', self.html)
         self.assertNotIn('preload="none"', self.html)
-        self.assertIn('start.js?v=23', self.html)
-        self.assertIn("start.css?v=35", self.html)
+        self.assertIn('start.js?v=24', self.html)
+        self.assertIn("start.css?v=36", self.html)
         self.assertIn(" loop ", self.html)
         self.assertNotIn("youtube.com", self.html)
         self.assertNotIn("youtube-nocookie.com", self.html)
