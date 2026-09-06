@@ -437,6 +437,14 @@
     "manta_ray",
     "african_penguin"
   ],
+  "classic_find_ids": [
+    "whale_shark",
+    "manta_ray",
+    "african_penguin",
+    "sea_otter",
+    "asian_small_clawed_otter",
+    "puffin"
+  ],
   "last_presence_audit": "2026-08-23",
   "presence_sources": [
     "https://www.georgiaaquarium.org/",

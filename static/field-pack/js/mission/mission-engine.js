@@ -478,6 +478,39 @@
     const byId = Object.fromEntries(safeNamed.map((it) => [it.id, it]));
     const routeSet = new Set(venue.route_90m || []);
 
+    function sheetItem(it, extra) {
+      const lab = sheetLabel(it);
+      const line = simplifyOneLiner(it.one_liner, age);
+      const out = Object.assign({}, it);
+      if (lab && lab !== it.label) out.label = lab;
+      if (line) out.one_liner = line;
+      if (extra) Object.assign(out, extra);
+      return out;
+    }
+
+    // Classic default sheet: venue-authored Find these (print card = page Hunt).
+    // Only seed 1 so "Give me different stops" can still reshuffle.
+    const classicIds = venue.classic_find_ids;
+    if (!special && seed === 1 && Array.isArray(classicIds) && classicIds.length) {
+      const preferred = [];
+      const seenC = new Set();
+      for (const rid of classicIds) {
+        const it = byId[rid];
+        if (!it || !itemPresenceOk(it, venue) || !itemFitsAge(it, age)) continue;
+        if (seenC.has(it.id)) continue;
+        preferred.push(it);
+        seenC.add(it.id);
+      }
+      if (preferred.length) {
+        const rest = filterByAge(safeNamed, age)
+          .filter((it) => itemPresenceOk(it, venue) && !seenC.has(it.id))
+          .map((it, idx) => ({ it, idx, score: scoreItem(it, interest, age) + rand() * 0.01 }))
+          .sort((a, b) => b.score - a.score || a.idx - b.idx)
+          .map((x) => x.it);
+        return preferred.concat(rest).slice(0, need).map((it) => sheetItem(it));
+      }
+    }
+
     // Bonus/Alpha: preferred find list from venue research (presence-filtered)
     if (special && pack && Array.isArray(pack.find_ids) && pack.find_ids.length) {
       const preferred = [];
