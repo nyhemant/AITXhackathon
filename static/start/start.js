@@ -253,6 +253,7 @@
     const trackEl = document.getElementById("start-going-track");
     const carousel = section && section.querySelector(".start-going-carousel");
     const fallback = section && section.querySelector(".start-going-hit");
+    const stillEl = section && section.querySelector(".start-going-still");
     if (!section || !trackEl || !carousel) return;
 
     const cue = document.querySelector("[data-going-cue]");
@@ -263,8 +264,13 @@
     const count = slides.length;
     const startIndex = 1;
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const mobileMq = window.matchMedia("(max-width: 640px)");
     const swipePx = 56;
     const wheelPx = 90;
+
+    function isMobileGoing() {
+      return mobileMq.matches;
+    }
 
     let lastIndex = startIndex;
     let startX = 0;
@@ -356,11 +362,28 @@
       return currentIndex() === startIndex;
     }
 
+    function parkDesktop() {
+      carousel.hidden = true;
+      carousel.setAttribute("inert", "");
+      carousel.setAttribute("aria-hidden", "true");
+      if (stillEl) {
+        stillEl.removeAttribute("inert");
+        stillEl.removeAttribute("aria-hidden");
+      }
+      section.classList.remove("is-going-carousel");
+    }
+
     function reveal() {
       carousel.hidden = false;
+      carousel.removeAttribute("inert");
+      carousel.removeAttribute("aria-hidden");
       if (fallback) {
         fallback.hidden = true;
         fallback.setAttribute("aria-hidden", "true");
+      }
+      if (stillEl) {
+        stillEl.setAttribute("inert", "");
+        stillEl.setAttribute("aria-hidden", "true");
       }
       section.classList.add("is-going-carousel");
       if (!pinStart()) {
@@ -368,6 +391,11 @@
           if (!pinStart()) requestAnimationFrame(pinStart);
         });
       }
+    }
+
+    function syncMode() {
+      if (isMobileGoing()) reveal();
+      else parkDesktop();
     }
 
     function onArrowClick(event, dir) {
@@ -387,6 +415,7 @@
 
     trackEl.addEventListener("scroll", syncCue, { passive: true });
     window.addEventListener("resize", () => {
+      if (!isMobileGoing()) return;
       goTo(lastIndex, "auto");
       syncCue();
     });
@@ -442,54 +471,12 @@
       { passive: true }
     );
 
-    const AUTO_MS = 4500;
-    let autoTimer = null;
-    let autoPaused = false;
-
-    function stopAuto() {
-      if (autoTimer) {
-        clearInterval(autoTimer);
-        autoTimer = null;
-      }
+    syncMode();
+    if (typeof mobileMq.addEventListener === "function") {
+      mobileMq.addEventListener("change", syncMode);
+    } else if (typeof mobileMq.addListener === "function") {
+      mobileMq.addListener(syncMode);
     }
-
-    function tickAuto() {
-      if (autoPaused || document.hidden || reduceMotion || carousel.hidden) return;
-      const rect = section.getBoundingClientRect();
-      if (rect.bottom < 80 || rect.top > window.innerHeight - 80) return;
-      const idx = currentIndex();
-      goTo(idx >= count - 1 ? 0 : idx + 1);
-    }
-
-    function startAuto() {
-      stopAuto();
-      if (reduceMotion || count < 2) return;
-      autoTimer = setInterval(tickAuto, AUTO_MS);
-    }
-
-    function pauseAuto(ms) {
-      autoPaused = true;
-      stopAuto();
-      if (ms) {
-        window.setTimeout(() => {
-          autoPaused = false;
-          startAuto();
-        }, ms);
-      }
-    }
-
-    ["pointerdown", "touchstart", "wheel"].forEach((type) => {
-      trackEl.addEventListener(type, () => pauseAuto(8000), { passive: true });
-    });
-    if (prevBtn) prevBtn.addEventListener("click", () => pauseAuto(8000));
-    if (nextBtn) nextBtn.addEventListener("click", () => pauseAuto(8000));
-    document.addEventListener("visibilitychange", () => {
-      if (document.hidden) stopAuto();
-      else if (!autoPaused) startAuto();
-    });
-
-    reveal();
-    startAuto();
   }
 
   function initHomeTeaser() {

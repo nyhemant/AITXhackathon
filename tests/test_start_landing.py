@@ -372,6 +372,25 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn("Sample visit", pills[0])
         self.assertIn('href="/field-pack/"', pills[1])
         self.assertIn("Explore Places Near You", pills[1])
+        still = re.search(r'<div class="start-going-still"[^>]*>([\s\S]*?)</div>', chapter)
+        self.assertIsNotNone(still)
+        self.assertIn('aria-label="Georgia Aquarium, Dallas Zoo, and San Diego Zoo"', still.group(0))
+        panels = re.findall(r'<a class="start-going-panel"[^>]*href="([^"]+)"', chapter)
+        self.assertEqual(
+            panels,
+            [
+                "/field-pack/georgia-aquarium/",
+                "/field-pack/dallas-zoo/",
+                "/field-pack/san-diego-zoo/",
+            ],
+        )
+        self.assertIn('class="start-going-panel"', chapter)
+        self.assertIn('data-going-place="georgia"', still.group(1))
+        self.assertIn('data-going-place="dallas"', still.group(1))
+        self.assertIn('data-going-place="sandiego"', still.group(1))
+        self.assertNotIn("start-going-arrow", still.group(1))
+        self.assertNotIn("data-going-cue", still.group(1))
+        self.assertNotIn("start-going-dots", still.group(1))
         slides = re.findall(r'<a class="start-going-slide"[^>]*href="([^"]+)"', chapter)
         self.assertEqual(
             slides,
@@ -424,6 +443,21 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn("scrollTo", self.js)
         self.assertIn("window.location.href", self.js)
         self.assertIn("slideHref", self.js)
+        self.assertIn('matchMedia("(max-width: 640px)")', self.js)
+        self.assertIn("function parkDesktop()", self.js)
+        self.assertIn("function syncMode()", self.js)
+        self.assertIn("isMobileGoing()", self.js)
+        going_init = re.search(
+            r"function initGoingCarousel\(\) \{([\s\S]*?)\n  function initHomeTeaser",
+            self.js,
+        )
+        self.assertIsNotNone(going_init)
+        self.assertIn("max-width: 640px", going_init.group(1))
+        self.assertIn("parkDesktop()", going_init.group(1))
+        self.assertIn("syncMode()", going_init.group(1))
+        self.assertNotIn("startAuto()", going_init.group(1))
+        self.assertNotIn("AUTO_MS", going_init.group(1))
+        self.assertNotIn("setInterval", going_init.group(1))
         reveal = re.search(r"function reveal\(\) \{([\s\S]*?)\n    \}", self.js)
         self.assertIsNotNone(reveal)
         self.assertLess(reveal.group(1).find("carousel.hidden = false"), reveal.group(1).find("pinStart"))
@@ -453,12 +487,26 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn(".start-chapter", self.css)
         self.assertIn(".start-chapter-quiet", self.css)
         self.assertIn(".start-going-hit", self.css)
+        self.assertIn(".start-going-still", self.css)
+        self.assertIn(".start-going-panel", self.css)
         self.assertIn(".start-going-carousel", self.css)
         self.assertIn(".start-going-slide", self.css)
         self.assertIn(".start-going-arrow", self.css)
         self.assertIn(".start-going-prev", self.css)
         self.assertIn(".start-going-next", self.css)
         self.assertIn(".start-going-slide-fallback", self.css)
+        self.assertIn(".start-going-carousel,\n.start-going-arrow,\n.start-going-cue,\n.start-going-dots {\n  display: none;\n}", self.css)
+        desktop = re.search(r"@media \(min-width: 641px\) \{([\s\S]*?)\n\}", self.css)
+        self.assertIsNotNone(desktop)
+        self.assertIn(".start-going-carousel", desktop.group(1))
+        self.assertIn(".start-going-still", desktop.group(1))
+        self.assertIn("display: none", desktop.group(1))
+        self.assertIn("display: flex", desktop.group(1))
+        mobile = re.search(r"@media \(max-width: 640px\) \{([\s\S]*?)\n\}", self.css)
+        self.assertIsNotNone(mobile)
+        self.assertIn(".start-going-still", mobile.group(1))
+        self.assertIn(".start-going-carousel", mobile.group(1))
+        self.assertNotIn("start-going-slide-name", self.css)
         self.assertIn(".start-chapter-pills", self.css)
         self.assertIn(".start-pill", self.css)
         self.assertNotIn("webgl", self.css.lower())
@@ -647,9 +695,9 @@ class StartLandingTests(unittest.TestCase):
         self.assertNotIn("map-host", self.html)
         self.assertTrue(DALLAS.is_file())
         self.assertIsNotNone(_safe_field_pack_path("/field-pack/dallas-zoo/"))
-        self.assertEqual(self.html.count('href="/field-pack/dallas-zoo/"'), 3)
-        self.assertEqual(self.html.count('href="/field-pack/georgia-aquarium/"'), 1)
-        self.assertEqual(self.html.count('href="/field-pack/san-diego-zoo/"'), 1)
+        self.assertEqual(self.html.count('href="/field-pack/dallas-zoo/"'), 4)
+        self.assertEqual(self.html.count('href="/field-pack/georgia-aquarium/"'), 2)
+        self.assertEqual(self.html.count('href="/field-pack/san-diego-zoo/"'), 2)
 
     def test_chapter_pills_are_locked_and_under_the_box(self):
         chapters = {
@@ -780,8 +828,8 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn("autoplay", self.html)
         self.assertIn('preload="auto"', self.html)
         self.assertNotIn('preload="none"', self.html)
-        self.assertIn('start.js?v=28', self.html)
-        self.assertIn("start.css?v=40", self.html)
+        self.assertIn('start.js?v=29', self.html)
+        self.assertIn("start.css?v=41", self.html)
         self.assertIn(" loop ", self.html)
         self.assertNotIn("youtube.com", self.html)
         self.assertNotIn("youtube-nocookie.com", self.html)
