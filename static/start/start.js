@@ -36,12 +36,25 @@
 
   const trackEl = document.getElementById("start-teach-track");
   if (trackEl) {
+    const section = document.getElementById("start-teach");
     const cue = document.querySelector("[data-teach-cue]");
     const dots = document.querySelectorAll(".start-teach-dots span");
     const prevBtn = document.querySelector("[data-teach-prev]");
     const nextBtn = document.querySelector("[data-teach-next]");
+    const exploreEl = document.querySelector('#start-teach .start-pill[href="/field-pack/cards/"]');
+    const exploreHref = (exploreEl && exploreEl.getAttribute("href")) || "/field-pack/cards/";
     const count = trackEl.querySelectorAll(".start-teach-slide").length;
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const swipePx = 80;
+    const hintPx = 36;
+    const wheelPx = 120;
+
+    let startX = 0;
+    let startY = 0;
+    let startedAt = "";
+    let tracking = false;
+    let wheelAcc = 0;
+    let navigated = false;
 
     function currentIndex() {
       const width = trackEl.clientWidth || 1;
@@ -62,6 +75,28 @@
       if (!btn) return;
       btn.disabled = disabled;
       btn.setAttribute("aria-disabled", disabled ? "true" : "false");
+    }
+
+    function edgeOf(index) {
+      if (index <= 0) return "start";
+      if (index >= count - 1) return "end";
+      return "";
+    }
+
+    function setSpill(side) {
+      if (!section) return;
+      section.classList.toggle("is-teach-spill-prev", side === "start");
+      section.classList.toggle("is-teach-spill-next", side === "end");
+    }
+
+    function clearSpill() {
+      setSpill("");
+    }
+
+    function openExplore() {
+      if (!exploreHref || navigated) return;
+      navigated = true;
+      window.location.href = exploreHref;
     }
 
     function syncCue() {
@@ -86,6 +121,77 @@
         goTo(currentIndex() + 1);
       });
     }
+
+    function onPointerDown(event) {
+      if (event.pointerType === "mouse" && event.button !== 0) return;
+      tracking = true;
+      startX = event.clientX;
+      startY = event.clientY;
+      startedAt = edgeOf(currentIndex());
+    }
+
+    function onPointerMove(event) {
+      if (!tracking) return;
+      const dx = event.clientX - startX;
+      if (startedAt === "start" && dx > hintPx) setSpill("start");
+      else if (startedAt === "end" && dx < -hintPx) setSpill("end");
+      else clearSpill();
+    }
+
+    function onPointerUp(event) {
+      if (!tracking) return;
+      tracking = false;
+      clearSpill();
+      const dx = event.clientX - startX;
+      const dy = event.clientY - startY;
+      if (Math.abs(dx) < swipePx || Math.abs(dx) < Math.abs(dy)) return;
+      const idx = currentIndex();
+      if (startedAt === "start" && idx <= 0 && dx > 0) {
+        openExplore();
+        return;
+      }
+      if (startedAt === "end" && idx >= count - 1 && dx < 0) {
+        openExplore();
+      }
+    }
+
+    trackEl.addEventListener("pointerdown", onPointerDown, { passive: true });
+    trackEl.addEventListener("pointermove", onPointerMove, { passive: true });
+    trackEl.addEventListener("pointerup", onPointerUp);
+    trackEl.addEventListener("pointercancel", () => {
+      tracking = false;
+      clearSpill();
+    });
+    trackEl.addEventListener(
+      "click",
+      (event) => {
+        if (!navigated) return;
+        event.preventDefault();
+        event.stopPropagation();
+      },
+      true
+    );
+
+    trackEl.addEventListener(
+      "wheel",
+      (event) => {
+        if (Math.abs(event.deltaX) < Math.abs(event.deltaY)) {
+          wheelAcc = 0;
+          return;
+        }
+        const idx = currentIndex();
+        if (idx <= 0 && event.deltaX < 0) {
+          wheelAcc += event.deltaX;
+          if (wheelAcc <= -wheelPx) openExplore();
+        } else if (idx >= count - 1 && event.deltaX > 0) {
+          wheelAcc += event.deltaX;
+          if (wheelAcc >= wheelPx) openExplore();
+        } else {
+          wheelAcc = 0;
+        }
+      },
+      { passive: true }
+    );
 
     trackEl.addEventListener("scroll", syncCue, { passive: true });
     window.addEventListener("resize", syncCue);
