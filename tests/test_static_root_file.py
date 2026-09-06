@@ -1,4 +1,4 @@
-"""Root static allowlist: robots, sitemap, and Google Search Console tags."""
+"""Root static allowlist: robots, sitemap, llms.txt, and Google Search Console tags."""
 
 from pathlib import Path
 import unittest
@@ -65,7 +65,7 @@ class StaticRootFileTests(unittest.TestCase):
             "text/html; charset=utf-8",
         )
 
-    def test_allows_robots_and_sitemap(self):
+    def test_allows_robots_sitemap_and_llms(self):
         self.assertEqual(
             _safe_static_root_file("/robots.txt"),
             (STATIC_ROOT / "robots.txt").resolve(),
@@ -74,6 +74,18 @@ class StaticRootFileTests(unittest.TestCase):
             _safe_static_root_file("/sitemap.xml"),
             (STATIC_ROOT / "sitemap.xml").resolve(),
         )
+        self.assertTrue(_is_allowed_static_root_name("llms.txt"))
+        self.assertTrue(_is_allowed_static_root_name("llms-full.txt"))
+        self.assertEqual(
+            _safe_static_root_file("/llms.txt"),
+            (STATIC_ROOT / "llms.txt").resolve(),
+        )
+        self.assertEqual(
+            _root_static_content_type(STATIC_ROOT / "llms.txt"),
+            "text/plain; charset=utf-8",
+        )
+        # Allowlisted for later; file is optional today.
+        self.assertIsNone(_safe_static_root_file("/llms-full.txt"))
 
     def test_rejects_other_html_and_unknown_names(self):
         self.assertFalse(_is_allowed_static_root_name("index.html"))
@@ -125,6 +137,31 @@ class StaticRootFileTests(unittest.TestCase):
         self.assertEqual(
             head_handler._headers.get("Content-Type"),
             "text/html; charset=utf-8",
+        )
+        self.assertEqual(
+            int(head_handler._headers.get("Content-Length")),
+            len(expected),
+        )
+        self.assertEqual(head_handler.wfile.getvalue(), b"")
+
+    def test_get_and_head_serve_llms_txt(self):
+        expected = (REPO / "static" / "llms.txt").read_bytes()
+        get_handler = FakeHandler("/llms.txt")
+        get_handler.do_GET()
+        self.assertEqual(get_handler._code, 200)
+        self.assertEqual(
+            get_handler._headers.get("Content-Type"),
+            "text/plain; charset=utf-8",
+        )
+        self.assertEqual(get_handler.wfile.getvalue(), expected)
+        self.assertIn(b"https://1less.app/field-pack/dallas-zoo/", expected)
+
+        head_handler = FakeHandler("/llms.txt", command="HEAD")
+        head_handler.do_HEAD()
+        self.assertEqual(head_handler._code, 200)
+        self.assertEqual(
+            head_handler._headers.get("Content-Type"),
+            "text/plain; charset=utf-8",
         )
         self.assertEqual(
             int(head_handler._headers.get("Content-Length")),

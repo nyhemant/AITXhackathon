@@ -1090,17 +1090,21 @@ def _send_redirect(handler: "WebHandler", location: str, *, code: int = 301) -> 
     handler.end_headers()
 
 
+_ROOT_PLAINTEXT_NAMES = frozenset({"robots.txt", "llms.txt", "llms-full.txt"})
+_ROOT_XML_NAMES = frozenset({"sitemap.xml"})
+
+
 def _is_allowed_static_root_name(name: str) -> bool:
-    """Allow robots.txt, sitemap.xml, and Google Search Console google*.html tags."""
+    """Allow robots.txt, sitemap.xml, llms.txt, and Google Search Console google*.html tags."""
     if not name or "/" in name or "\\" in name or ".." in name:
         return False
-    if name in {"robots.txt", "sitemap.xml"}:
+    if name in _ROOT_PLAINTEXT_NAMES or name in _ROOT_XML_NAMES:
         return True
     return name.startswith("google") and name.endswith(".html")
 
 
 def _safe_static_root_file(url_path: str) -> Path | None:
-    """Serve top-level static files: /robots.txt, /sitemap.xml, /google*.html."""
+    """Serve top-level static files: /robots.txt, /sitemap.xml, /llms.txt, /google*.html."""
     name = unquote(url_path).lstrip("/")
     if not _is_allowed_static_root_name(name):
         return None
@@ -1118,7 +1122,7 @@ def _safe_static_root_file(url_path: str) -> Path | None:
 def _root_static_content_type(path: Path) -> str:
     if path.name.startswith("google") and path.suffix.lower() == ".html":
         return "text/html; charset=utf-8"
-    if path.name == "robots.txt":
+    if path.name in _ROOT_PLAINTEXT_NAMES or path.suffix.lower() == ".txt":
         return "text/plain; charset=utf-8"
     return "application/xml; charset=utf-8"
 
