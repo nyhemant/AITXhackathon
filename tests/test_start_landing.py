@@ -384,13 +384,17 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn("/start/going-san-diego-zoo-480.jpg 480w", chapter)
         self.assertIn("/start/going-san-diego-zoo-640.jpg 640w", chapter)
         self.assertIn(
-            "child holding Georgia Aquarium hunt sheet with whale shark / Ocean Voyager behind",
+            "child holding Georgia Aquarium hunt sheet with octopus behind",
             chapter,
         )
+        self.assertNotIn("whale shark", chapter.lower())
+        self.assertNotIn("Ocean Voyager", chapter)
         self.assertIn(
             "child holding San Diego Zoo hunt sheet with panda/bamboo behind",
             chapter,
         )
+        self.assertIn("going-georgia-locked-octopus.jpg", chapter)
+        self.assertIn("going-san-diego-locked-v2.jpg", chapter)
         self.assertNotIn("start-going-slide-name", chapter)
         self.assertNotIn('href="/field-pack/zoos/"', chapter)
         self.assertNotIn('href="/field-pack/aquariums/"', chapter)
