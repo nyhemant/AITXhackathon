@@ -519,15 +519,15 @@
       { x: 15.53, y: 47.33 },
     ];
     /*
-      Laptop LCD inner bezel on home-print-table-desktop.jpg (1536×1024).
+      Laptop LCD inner bezel on home-print-table-desktop.jpg (1792×1008).
       Image-space % corners TL → TR → BR → BL. Desktop ≥641px only.
-      Measured on the inner glass (2% inset from the dark LCD blob).
+      Measured on the inner glass (1.8% inset from the dark LCD blob).
     */
     const HOTBOX_DESKTOP = [
-      { x: 8.33, y: 20.63 },
-      { x: 43.04, y: 16.99 },
-      { x: 46.35, y: 49.15 },
-      { x: 12.16, y: 58.14 },
+      { x: 12.33, y: 11.47 },
+      { x: 45.21, y: 8.06 },
+      { x: 48.89, y: 47.13 },
+      { x: 16.33, y: 57.75 },
     ];
 
     function isDesktopPlate() {
