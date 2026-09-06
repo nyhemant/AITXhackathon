@@ -196,7 +196,7 @@ class StartLandingTests(unittest.TestCase):
             [
                 ("#start-home", "At home"),
                 ("#start-going", "Going this week"),
-                ("#start-teach", "Teaching"),
+                ("#start-teach", "Find a card"),
             ],
         )
         self.assertLess(chapter.find("start-heading"), chapter.find("start-routes"))
@@ -302,6 +302,7 @@ class StartLandingTests(unittest.TestCase):
             self.assertNotIn("At home this afternoon", rest)
             self.assertNotIn("Going this week", rest)
             self.assertNotIn("Teaching a group", rest)
+            self.assertNotIn(">Teaching<", rest)
             self.assertNotIn("Open Dallas Zoo", rest)
             self.assertNotIn("start-door", rest)
             self.assertNotIn("<img", rest)
@@ -464,8 +465,8 @@ class StartLandingTests(unittest.TestCase):
         self.assertLess(self.html.find('id="start-going"'), self.html.find('id="start-rest-3"'))
         self.assertLess(self.html.find('id="start-rest-3"'), self.html.find('id="start-teach"'))
         self.assertLess(self.html.find('id="start-teach"'), self.html.find('start-foot'))
-        self.assertIn("Teaching a group", chapter)
-        self.assertIn("Cards already laid out.", chapter)
+        self.assertIn("Find a card", chapter)
+        self.assertIn("Find a Card to Explore", chapter)
         self.assertIn("Printouts, one lesson, no extra setup.", chapter)
         self.assertIn('class="start-chapter-still"', chapter)
         self.assertIn('src="/start/teach-card.jpg"', chapter)
@@ -483,7 +484,7 @@ class StartLandingTests(unittest.TestCase):
         pills = re.findall(r'<a class="start-pill"[^>]*>[\s\S]*?</a>', chapter)
         self.assertEqual(len(pills), 1, pills)
         self.assertIn('href="/field-pack/cards/"', pills[0])
-        self.assertIn("Explore cards", pills[0])
+        self.assertIn("Find a card", pills[0])
         self.assertNotIn("Sample Animal", chapter)
         self.assertNotIn("start-teach-hit", chapter)
         self.assertIn("Open a card:", chapter)
@@ -569,7 +570,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn("data-teach-next", self.js)
         self.assertIn("scrollTo", self.js)
         self.assertIn('href="/field-pack/cards/"', chapter)
-        self.assertIn("Explore cards", chapter)
+        self.assertIn("Find a card", chapter)
         self.assertIn('.start-pill[href="/field-pack/cards/"]', self.js)
         self.assertIn('exploreHref', self.js)
         self.assertIn("function openExplore()", self.js)
@@ -579,7 +580,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn("wheelPx = 120", self.js)
         self.assertIn("class=\"start-teach-spill start-teach-spill-prev\"", chapter)
         self.assertIn("class=\"start-teach-spill start-teach-spill-next\"", chapter)
-        self.assertEqual(chapter.count(">Explore cards<"), 3)
+        self.assertEqual(chapter.count(">Find a card<"), 4)
         self.assertIn(".start-teach-spill", self.css)
         self.assertIn(".is-teach-spill-prev", self.css)
         self.assertIn(".is-teach-spill-next", self.css)
@@ -664,7 +665,7 @@ class StartLandingTests(unittest.TestCase):
                 ("/field-pack/", "Explore Places Near You"),
             ],
             "start-teach": [
-                ("/field-pack/cards/", "Explore cards"),
+                ("/field-pack/cards/", "Find a card"),
             ],
         }
         for chapter_id, match in chapters.items():
@@ -769,8 +770,8 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn("autoplay", self.html)
         self.assertIn('preload="auto"', self.html)
         self.assertNotIn('preload="none"', self.html)
-        self.assertIn('start.js?v=16', self.html)
-        self.assertIn("start.css?v=28", self.html)
+        self.assertIn('start.js?v=17', self.html)
+        self.assertIn("start.css?v=29", self.html)
         self.assertIn(" loop ", self.html)
         self.assertNotIn("youtube.com", self.html)
         self.assertNotIn("youtube-nocookie.com", self.html)
