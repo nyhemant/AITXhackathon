@@ -906,3 +906,39 @@ body.mission-hunt-alpha .mission-drawer-kicker {
     font-size: 14pt; /* slightly tighter when slice label lengthens title */
   }
 }
+
+/* Georgia Aquarium mission sheet overlay */
+.seo-mission-sheet {
+  margin: 1.25rem auto 1.75rem;
+  max-width: 42rem;
+  padding: 0 1rem;
+}
+.seo-mission-sheet-title {
+  font-size: 1.05rem;
+  margin: 0 0 0.75rem;
+  color: #0a4545;
+}
+.seo-mission-sheet-figure {
+  margin: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 28px rgba(10, 69, 69, 0.14);
+  background: #fff;
+  border: 1px solid rgba(10, 69, 69, 0.12);
+}
+.seo-mission-sheet-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.seo-mission-sheet-cap {
+  padding: 0.55rem 0.85rem 0.75rem;
+  font-size: 0.85rem;
+  color: #3d5c5c;
+}
+.seo-hunt-block-secondary {
+  opacity: 0.72;
+}
+.seo-hunt-block-secondary .seo-hunt-list {
+  font-size: 0.92em;
+}
