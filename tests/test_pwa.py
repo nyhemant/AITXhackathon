@@ -171,7 +171,7 @@ class PwaTests(unittest.TestCase):
             self.assertIn('name="apple-mobile-web-app-title" content="1less"', html)
             self.assertIn('src="/pwa/register.js?v=1"', html)
             self.assertIn("viewport-fit=cover", html)
-        self.assertIn("start.css?v=37", self.start)
+        self.assertIn("start.css?v=38", self.start)
         self.assertIn(".start-pwa-tip", (REPO / "static" / "start" / "start.css").read_text(encoding="utf-8"))
         for html in self.vft.values():
             self.assertIn('href="/pwa/pwa.css?v=1"', html)
@@ -195,7 +195,7 @@ class PwaTests(unittest.TestCase):
         start = _get("/start/")
         self.assertEqual(start._code, 200)
         body = start.wfile.getvalue().decode("utf-8")
-        self.assertIn("Wildlife wonder, ready for curious kids.", body)
+        self.assertIn("Zoos, oceans, and science — a field trip for curious kids.", body)
         self.assertIn('rel="manifest"', body)
         self.assertNotIn("beforeinstallprompt", body)
         vft = _get("/field-pack/virtual-field-trip/")
