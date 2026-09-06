@@ -605,7 +605,8 @@ body.start-body {
   z-index: 1;
 }
 
-.start-teach-carousel {
+.start-teach-carousel,
+.start-teach-arrow {
   display: none;
 }
 
@@ -929,20 +930,59 @@ body.start-body {
     object-position: 50% 32%;
   }
 
-  .start-teach-slide-name {
+  .start-teach-arrow {
     position: absolute;
-    top: 0.85rem;
-    left: 1rem;
-    z-index: 2;
-    padding: 0.28rem 0.65rem;
+    top: 64%;
+    z-index: 4;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: #fffcf7;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    transform: translateY(-50%);
+  }
+
+  .start-teach-arrow svg {
+    display: block;
+    width: 28px;
+    height: 28px;
+    padding: 4px;
     border-radius: 999px;
     background: rgba(12, 10, 8, 0.42);
-    color: #fffcf7;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-    font-size: 0.86rem;
-    font-weight: 650;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
+    box-shadow: 0 0 0 1px rgba(255, 252, 247, 0.28), 0 1px 10px rgba(12, 10, 8, 0.22);
+  }
+
+  .start-teach-prev {
+    left: 0.2rem;
+  }
+
+  .start-teach-next {
+    right: 0.2rem;
+  }
+
+  .start-teach-arrow:hover svg,
+  .start-teach-arrow:focus-visible svg {
+    background: rgba(10, 69, 69, 0.55);
+  }
+
+  .start-teach-arrow:focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+  }
+
+  .start-teach-arrow:disabled,
+  .start-teach-arrow[aria-disabled="true"] {
+    opacity: 0.22;
+    cursor: default;
+    pointer-events: none;
   }
 
   .start-teach-cue,
@@ -987,7 +1027,8 @@ body.start-body {
 }
 
 @media (min-width: 641px) {
-  .start-teach-carousel {
+  .start-teach-carousel,
+  .start-teach-arrow {
     display: none;
   }
 
