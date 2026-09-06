@@ -25,7 +25,7 @@
   <meta name="twitter:title" content="A ready-to-use field trip for curious kids. · Field Trip Kit · 1Less" />
   <meta name="twitter:description" content="At home or before you go. Pick a place or an animal. Get a short activity with real photos, questions to ask, and an optional mission to print." />
   <meta name="twitter:image" content="https://1less.app/start/hero-giraffe.jpg" />
-  <link rel="stylesheet" href="/start/start.css?v=21" />
+  <link rel="stylesheet" href="/start/start.css?v=22" />
 </head>
 <body class="start-body">
   <section class="start-hero" id="start-hero" aria-labelledby="start-heading">
@@ -148,7 +148,6 @@
               alt=""
               decoding="async"
             />
-            <span class="start-teach-slide-name">Lion</span>
           </a>
           <a class="start-teach-slide" href="/field-pack/cards/african-elephant/">
             <img
@@ -160,7 +159,6 @@
               alt=""
               decoding="async"
             />
-            <span class="start-teach-slide-name">Elephant</span>
           </a>
           <a class="start-teach-slide" href="/field-pack/cards/reticulated-giraffe/">
             <img
@@ -172,9 +170,18 @@
               alt=""
               decoding="async"
             />
-            <span class="start-teach-slide-name">Giraffe</span>
           </a>
         </div>
+        <button type="button" class="start-teach-arrow start-teach-prev" data-teach-prev aria-controls="start-teach-track" aria-label="Previous card">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M14.25 5.75 7.75 12l6.5 6.25" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <button type="button" class="start-teach-arrow start-teach-next" data-teach-next aria-controls="start-teach-track" aria-label="Next card">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M9.75 5.75 16.25 12l-6.5 6.25" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
         <div class="start-teach-dots" aria-hidden="true">
           <span class="is-current"></span>
           <span></span>
@@ -207,6 +214,6 @@
   <script src="/shell/shell.js?v=5"></script>
   <script src="/field-pack/js/fp-analytics.js?v=1"></script>
   <script src="/pwa/register.js?v=1"></script>
-  <script src="/start/start.js?v=11"></script>
+  <script src="/start/start.js?v=12"></script>
 </body>
 </html>

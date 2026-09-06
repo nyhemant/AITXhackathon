@@ -38,7 +38,10 @@
   if (trackEl) {
     const cue = document.querySelector("[data-teach-cue]");
     const dots = document.querySelectorAll(".start-teach-dots span");
+    const prevBtn = document.querySelector("[data-teach-prev]");
+    const nextBtn = document.querySelector("[data-teach-next]");
     const count = trackEl.querySelectorAll(".start-teach-slide").length;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     function currentIndex() {
       const width = trackEl.clientWidth || 1;
@@ -46,11 +49,41 @@
       return Math.min(count - 1, Math.max(0, raw));
     }
 
+    function goTo(idx) {
+      const next = Math.min(count - 1, Math.max(0, idx));
+      const width = trackEl.clientWidth || 1;
+      trackEl.scrollTo({
+        left: next * width,
+        behavior: reduceMotion ? "auto" : "smooth",
+      });
+    }
+
+    function setArrow(btn, disabled) {
+      if (!btn) return;
+      btn.disabled = disabled;
+      btn.setAttribute("aria-disabled", disabled ? "true" : "false");
+    }
+
     function syncCue() {
       const idx = currentIndex();
       if (cue) cue.textContent = String(idx + 1);
       dots.forEach((dot, i) => {
         dot.classList.toggle("is-current", i === idx);
+      });
+      setArrow(prevBtn, idx <= 0);
+      setArrow(nextBtn, idx >= count - 1);
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener("click", (event) => {
+        event.preventDefault();
+        goTo(currentIndex() - 1);
+      });
+    }
+    if (nextBtn) {
+      nextBtn.addEventListener("click", (event) => {
+        event.preventDefault();
+        goTo(currentIndex() + 1);
       });
     }
 
