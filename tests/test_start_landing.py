@@ -209,7 +209,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertNotIn("start-pill", chapter)
         routes_html = nav.group(0)
         self.assertNotIn("Watch Live", routes_html)
-        self.assertNotIn("Pick Cards To Play", routes_html)
+        self.assertNotIn("Print cutouts to hide", routes_html)
         self.assertIn("Print cutouts to hide", chapter)
         self.assertIn('id="start-menu-btn"', chapter)
         self.assertIn(".start-routes", self.css)
@@ -230,8 +230,8 @@ class StartLandingTests(unittest.TestCase):
         self.assertLess(self.html.find('id="start-rest-3"'), self.html.find('id="start-teach"'))
         self.assertLess(self.html.find('id="start-teach"'), self.html.find('start-foot'))
         self.assertIn("At home this afternoon", chapter)
-        self.assertIn("The cam is on. The cards are already on the table.", chapter)
-        self.assertIn("Print. Cut. Hide. Then hunt.", chapter)
+        self.assertIn("The cam is on. An hour at home.", chapter)
+        self.assertIn("Watch live — or print, cut, hide.", chapter)
         self.assertIn('class="start-chapter-still"', chapter)
         self.assertIn('src="/start/home-print-table.jpg"', chapter)
         self.assertIn("srcset=", chapter)
@@ -263,8 +263,8 @@ class StartLandingTests(unittest.TestCase):
         self.assertEqual(len(pills), 2, pills)
         self.assertIn('href="/field-pack/virtual-field-trip/"', pills[0])
         self.assertIn("Watch Live", pills[0])
-        self.assertIn('href="/field-pack/cards/"', pills[1])
-        self.assertIn("Pick Cards To Play", pills[1])
+        self.assertIn('href="/field-pack/virtual-zoo/?print=1"', pills[1])
+        self.assertIn("Print cutouts to hide", pills[1])
         self.assertNotIn("youtube.com", chapter)
         self.assertNotIn("target=\"_blank\"", chapter)
         self.assertNotIn("#mission", chapter)
@@ -475,7 +475,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertLess(self.html.find('id="start-teach"'), self.html.find('start-foot'))
         self.assertIn("Find a card", chapter)
         self.assertIn("Something surprising to catch.", chapter)
-        self.assertIn("Print, cut, hide — or open on screen.", chapter)
+        self.assertIn("Talk, photos, Q&amp;A — on the screen.", chapter)
         self.assertIn('class="start-chapter-still"', chapter)
         self.assertIn('src="/start/teach-card.jpg"', chapter)
         self.assertIn("srcset=", chapter)
@@ -491,7 +491,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertNotIn("lion portrait", chapter.lower())
         pills = re.findall(r'<a class="start-pill"[^>]*>[\s\S]*?</a>', chapter)
         self.assertEqual(len(pills), 1, pills)
-        self.assertIn('href="/field-pack/cards/"', pills[0])
+        self.assertIn('href="/field-pack/cards/#try-a-card"', pills[0])
         self.assertIn("Find a card", pills[0])
         self.assertNotIn("Sample Animal", chapter)
         self.assertNotIn("start-teach-hit", chapter)
@@ -577,9 +577,9 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn("data-teach-prev", self.js)
         self.assertIn("data-teach-next", self.js)
         self.assertIn("scrollTo", self.js)
-        self.assertIn('href="/field-pack/cards/"', chapter)
+        self.assertIn('href="/field-pack/cards/#try-a-card"', chapter)
         self.assertIn("Find a card", chapter)
-        self.assertIn('.start-pill[href="/field-pack/cards/"]', self.js)
+        self.assertIn('.start-pill[href^="/field-pack/cards/"]', self.js)
         self.assertIn('exploreHref', self.js)
         self.assertIn("function openExplore()", self.js)
         self.assertIn("startedAt === \"start\"", self.js)
@@ -668,14 +668,14 @@ class StartLandingTests(unittest.TestCase):
         expected = {
             "start-home": [
                 ("/field-pack/virtual-field-trip/", "Watch Live"),
-                ("/field-pack/cards/", "Pick Cards To Play"),
+                ("/field-pack/virtual-zoo/?print=1", "Print cutouts to hide"),
             ],
             "start-going": [
                 ("/field-pack/dallas-zoo/", "Sample visit"),
                 ("/field-pack/", "Explore Places Near You"),
             ],
             "start-teach": [
-                ("/field-pack/cards/", "Find a card"),
+                ("/field-pack/cards/#try-a-card", "Find a card"),
             ],
         }
         for chapter_id, match in chapters.items():
@@ -736,7 +736,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn(".start-chapter-pills {\n    flex-direction: column", self.css)
         self.assertIn('href="/start/"', self.html)
         self.assertIn('href="/field-pack/"', self.html)
-        self.assertIn('href="/field-pack/cards/"', self.html)
+        self.assertIn('href="/field-pack/cards/#try-a-card"', self.html)
         self.assertIn('href="/field-pack/virtual-field-trip/"', self.html)
         self.assertNotIn('href="/field-pack/"', self.js)
 
@@ -767,7 +767,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertEqual(len(re.findall(r'class="start-door"', self.html)), 0)
         self.assertNotIn("/field-pack/museums/", self.html)
         self.assertNotIn("/field-pack/national-parks/", self.html)
-        self.assertIn("Print, cut, hide — or open on screen.", self.html)
+        self.assertIn("Talk, photos, Q&amp;A — on the screen.", self.html)
         self.assertNotIn("lesson plan", self.html.lower())
         self.assertNotIn("grade", self.html.lower())
 
@@ -780,8 +780,8 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn("autoplay", self.html)
         self.assertIn('preload="auto"', self.html)
         self.assertNotIn('preload="none"', self.html)
-        self.assertIn('start.js?v=21', self.html)
-        self.assertIn("start.css?v=33", self.html)
+        self.assertIn('start.js?v=22', self.html)
+        self.assertIn("start.css?v=34", self.html)
         self.assertIn(" loop ", self.html)
         self.assertNotIn("youtube.com", self.html)
         self.assertNotIn("youtube-nocookie.com", self.html)

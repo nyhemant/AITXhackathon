@@ -41,8 +41,8 @@
     const dots = document.querySelectorAll(".start-teach-dots span");
     const prevBtn = document.querySelector("[data-teach-prev]");
     const nextBtn = document.querySelector("[data-teach-next]");
-    const exploreEl = document.querySelector('#start-teach .start-pill[href="/field-pack/cards/"]');
-    const exploreHref = (exploreEl && exploreEl.getAttribute("href")) || "/field-pack/cards/";
+    const exploreEl = document.querySelector('#start-teach .start-pill[href^="/field-pack/cards/"]');
+    const exploreHref = (exploreEl && exploreEl.getAttribute("href")) || "/field-pack/cards/#try-a-card";
     const count = trackEl.querySelectorAll(".start-teach-slide").length;
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const swipePx = 80;
