@@ -36,7 +36,7 @@ Exempt (never counted): `/robots.txt`, `/analytics/off`, `/analytics/on`, `/anal
 
 When a bucket or `overall` is exceeded the origin returns **429** with **Retry-After** and a short plain-text body. Allowed requests are not logged. 429s increment an in-memory counter and log at most the first hit plus every 50th (`429 ip=… bucket=… retry=… n=…`).
 
-Optional tighter budget for obvious bulk User-Agents (`wget`, `curl/`, `python-requests`, `scrapy`, empty UA, common AI/SEO crawlers). Official search crawlers (Googlebot, Bingbot, …) stay on the family/classroom budget. This is **not** a first-paint challenge.
+Optional tighter budget for obvious bulk User-Agents (`wget`, `curl/`, `python-requests`, `scrapy`, empty UA, Bytespider, SEO crawlers like Semrush/Ahrefs). Official search and AI fetch crawlers stay on the family/classroom budget: Googlebot, Bingbot, GPTBot, ClaudeBot, Claude-Web, anthropic-ai, PerplexityBot, ChatGPT-User, Google-Extended. This is **not** a first-paint challenge.
 
 ## How to tune
 

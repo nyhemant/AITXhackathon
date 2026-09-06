@@ -10,7 +10,9 @@ import unittest
 from unittest import mock
 
 from busyparent_agent.rate_limit import (
+    BOT_UA_NEEDLES,
     DEFAULT_LIMITS,
+    FRIENDLY_UA_NEEDLES,
     RateLimiter,
     classify_path,
     env_flag,
@@ -80,6 +82,33 @@ class UserAgentTests(unittest.TestCase):
         self.assertTrue(ua_looks_like_bot("python-requests/2.32.0"))
         self.assertTrue(ua_looks_like_bot("curl/8.7.1"))
         self.assertTrue(ua_looks_like_bot("Scrapy/2.11"))
+        self.assertTrue(ua_looks_like_bot("Mozilla/5.0 (compatible; Bytespider; +https://zhanzhang.toutiao.com/)"))
+
+    def test_ai_fetch_crawlers_are_on_family_allowlist(self):
+        for needle in (
+            "gptbot",
+            "claudebot",
+            "claude-web",
+            "anthropic-ai",
+            "perplexitybot",
+            "chatgpt-user",
+            "google-extended",
+        ):
+            self.assertIn(needle, FRIENDLY_UA_NEEDLES)
+            self.assertNotIn(needle, BOT_UA_NEEDLES)
+        self.assertNotIn("anthropic", BOT_UA_NEEDLES)
+        self.assertIn("bytespider", BOT_UA_NEEDLES)
+
+        for ua in (
+            "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; GPTBot/1.2; +https://openai.com/gptbot)",
+            "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; ClaudeBot/1.0; +claudebot@anthropic.com)",
+            "Claude-Web",
+            "anthropic-ai",
+            "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; PerplexityBot/1.0; +https://perplexity.ai/perplexitybot)",
+            "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; ChatGPT-User/1.0; +https://openai.com/bot",
+            "Google-Extended",
+        ):
+            self.assertFalse(ua_looks_like_bot(ua), ua)
 
     def test_browsers_and_googlebot_are_not_tightened(self):
         self.assertFalse(
@@ -230,22 +259,30 @@ class SlidingWindowTests(unittest.TestCase):
                 ).allowed
             )
 
-    def test_googlebot_keeps_family_budget(self):
-        limiter = RateLimiter(
-            enabled=True,
-            limits={**DEFAULT_LIMITS, "pages": 12, "overall": 100},
-            window_seconds=60,
-            bot_ua=True,
-            bot_factor=0.25,
+    def test_googlebot_and_ai_crawlers_keep_family_budget(self):
+        agents = (
+            "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+            "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; GPTBot/1.2; +https://openai.com/gptbot)",
+            "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; ClaudeBot/1.0; +claudebot@anthropic.com)",
+            "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; PerplexityBot/1.0; +https://perplexity.ai/perplexitybot)",
         )
-        for _ in range(12):
-            self.assertTrue(
-                limiter.check(
-                    ip="10.0.0.9",
-                    path="/field-pack/",
-                    user_agent="Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
-                ).allowed
+        for index, ua in enumerate(agents):
+            limiter = RateLimiter(
+                enabled=True,
+                limits={**DEFAULT_LIMITS, "pages": 12, "overall": 100},
+                window_seconds=60,
+                bot_ua=True,
+                bot_factor=0.25,
             )
+            for _ in range(12):
+                self.assertTrue(
+                    limiter.check(
+                        ip=f"10.0.0.{10 + index}",
+                        path="/field-pack/",
+                        user_agent=ua,
+                    ).allowed,
+                    ua,
+                )
 
     def test_classroom_default_pages_budget(self):
         limiter = RateLimiter.from_env()

@@ -63,7 +63,7 @@ Dual-write `catalog.js` + `data/venues/{slug}.json` for **8 packs only** (not al
 - **P2 later:** `np_intl_phase2.json` not started. No new parks this pass
 
 ## Origin rate limits (2026-09-06)
-In-app only — no email, no accounts, no CAPTCHA. `src/busyparent_agent/rate_limit.py` hooks `web.py`. Defaults: 180 HTML / 90 catalog / 480 images / 90 print / 40 API / 800 overall per IP per 60s. Disable: `ONELESS_RATE_LIMIT=0` or `--no-rate-limit`. Docs: `docs/rate-limit.md`. Burst: `./scripts/rate-limit-burst.sh`. 1less.app already has a Cloudflare free/tunnel edge; do not enable Bot Fight Mode.
+In-app only — no email, no accounts, no CAPTCHA. `src/busyparent_agent/rate_limit.py` hooks `web.py`. Defaults: 180 HTML / 90 catalog / 480 images / 90 print / 40 API / 800 overall per IP per 60s. Disable: `ONELESS_RATE_LIMIT=0` or `--no-rate-limit`. Docs: `docs/rate-limit.md`. Burst: `./scripts/rate-limit-burst.sh`. 1less.app already has a Cloudflare free/tunnel edge; do not enable Bot Fight Mode. GPTBot / ClaudeBot / PerplexityBot / ChatGPT-User use the family budget (same as Googlebot); wget/curl/scrapy/Bytespider stay tight.
 
 ## Smoke
 Local: `./scripts/dev-serve.sh` → `http://127.0.0.1:8000/field-pack/`

@@ -80,6 +80,7 @@ CATALOG_NAMES = frozenset(
 )
 
 # Tighter budget only — never a first-paint CAPTCHA, never a hard block list.
+# AI fetch crawlers (GPTBot, ClaudeBot, …) are on the family allowlist below.
 BOT_UA_NEEDLES = (
     "scrapy",
     "wget",
@@ -91,10 +92,7 @@ BOT_UA_NEEDLES = (
     "libwww-perl",
     "curl/",
     "bytespider",
-    "gptbot",
     "ccbot",
-    "claudebot",
-    "anthropic",
     "semrush",
     "ahrefs",
     "dotbot",
@@ -104,7 +102,8 @@ BOT_UA_NEEDLES = (
     "magpie-crawler",
 )
 
-# Official search/social crawlers stay on the family/classroom budget.
+# Official search / social / AI fetch crawlers stay on the family budget.
+# 1Less wants agents to find the kit — do not treat these as scrapers.
 FRIENDLY_UA_NEEDLES = (
     "googlebot",
     "bingbot",
@@ -115,6 +114,13 @@ FRIENDLY_UA_NEEDLES = (
     "facebookexternalhit",
     "twitterbot",
     "linkedinbot",
+    "gptbot",
+    "claudebot",
+    "claude-web",
+    "anthropic-ai",
+    "perplexitybot",
+    "chatgpt-user",
+    "google-extended",
 )
 
 _TRUE = {"1", "true", "yes", "on"}
