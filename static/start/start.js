@@ -494,18 +494,40 @@
     const WATCH = "/field-pack/virtual-field-trip/";
     const SEEN_KEY = "fp-start-teaser-seen-v1";
     const MAX_SEC = 8;
+    const desktopPlateMq = window.matchMedia("(min-width: 641px)");
     /*
       Laptop LCD inner bezel on home-print-table.jpg (1024×1536).
-      Image-space % corners TL → TR → BR → BL. framePlate() sets
-      object-position per viewport (full LCD on ~390 portrait; top
-      tease-crop on desktop), then map through cover into matrix3d.
+      Image-space % corners TL → TR → BR → BL. Mobile ≤640px only.
     */
-    const HOTBOX = [
+    const HOTBOX_MOBILE = [
       { x: 8.2, y: 20.57 },
       { x: 55.76, y: 17.12 },
       { x: 60.84, y: 40.56 },
       { x: 15.53, y: 47.33 },
     ];
+    /*
+      Laptop LCD inner bezel on home-print-table-desktop.jpg (1792×1008).
+      Image-space % corners TL → TR → BR → BL. Desktop ≥641px only.
+      Measured on the inner glass (1.8% inset from the dark LCD blob).
+    */
+    const HOTBOX_DESKTOP = [
+      { x: 12.33, y: 11.47 },
+      { x: 45.21, y: 8.06 },
+      { x: 48.89, y: 47.13 },
+      { x: 16.33, y: 57.75 },
+    ];
+
+    function isDesktopPlate() {
+      if (plate.naturalWidth && plate.naturalHeight) {
+        return plate.naturalWidth > plate.naturalHeight;
+      }
+      return desktopPlateMq.matches;
+    }
+
+    function currentHotbox() {
+      return isDesktopPlate() ? HOTBOX_DESKTOP : HOTBOX_MOBILE;
+    }
+
     const TEASERS = [
       {
         id: "flamingo",
@@ -554,9 +576,10 @@
 
     function align() {
       if (!plate.naturalWidth || !plate.naturalHeight) return;
-      framePlate(plate, box, HOTBOX);
+      const hotbox = currentHotbox();
+      framePlate(plate, box, hotbox);
       const boxRect = box.getBoundingClientRect();
-      const corners = HOTBOX.map((pt) => imagePctToBox(pt, plate, boxRect));
+      const corners = hotbox.map((pt) => imagePctToBox(pt, plate, boxRect));
       applyScreenTransform(screen, corners);
       placeContinue(continueEl, corners);
       aligned = true;
@@ -702,9 +725,21 @@
     }
 
     if (plate.complete && plate.naturalWidth) onReady();
-    else plate.addEventListener("load", onReady, { once: true });
+    plate.addEventListener("load", onReady);
 
-    window.addEventListener("resize", align);
+    function onViewportChange() {
+      window.requestAnimationFrame(() => {
+        if (plate.complete && plate.naturalWidth) onReady();
+        else align();
+      });
+    }
+
+    window.addEventListener("resize", onViewportChange);
+    if (desktopPlateMq.addEventListener) {
+      desktopPlateMq.addEventListener("change", onViewportChange);
+    } else if (desktopPlateMq.addListener) {
+      desktopPlateMq.addListener(onViewportChange);
+    }
   }
 
   function watchHref(base, teaser) {
@@ -763,8 +798,10 @@
       y0: Math.min.apply(null, ys) - padY,
       y1: Math.max.apply(null, ys) + padY,
     };
-    const preferX = mobilePortrait ? 0.22 : 0.4;
-    const preferY = mobilePortrait ? 0.35 : 0;
+    const desktopPlate =
+      !mobilePortrait && window.matchMedia("(min-width: 641px)").matches;
+    const preferX = mobilePortrait ? 0.22 : desktopPlate ? 0.45 : 0.4;
+    const preferY = mobilePortrait ? 0.35 : desktopPlate ? 0.5 : 0;
     return {
       x: axisOrigin(want.x0, want.x1, nw, visW, preferX),
       y: axisOrigin(want.y0, want.y1, nh, visH, preferY),
