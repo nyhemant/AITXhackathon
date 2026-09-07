@@ -215,7 +215,7 @@ OUTING_TALK_ANIMAL = (
 )
 
 # Observation talk packs for cards that are not on a study deck yet.
-# Lion Easy lives in scripts/study_cards.py (10-slot quiz). Do not put it here.
+# Lion Easy (Junior Ranger) lives in scripts/study_cards.py. Do not put it here.
 CARD_TALK_OVERRIDE: dict[str, tuple[dict, ...]] = {}
 
 # Optional More talk on a card. Unused while lion ships the Easy study deck.
@@ -291,10 +291,10 @@ LANDING_MAP_JS_VER = "87"
 LANDING_HOOK_JS_VER = "37"
 STYLES_CSS_VER = "40"
 CATALOG_JS_VER = "40"
-PRINT_KIT_JS_VER = "16"
-STUDY_CARD_JS_VER = "1"
-STUDY_CARD_CSS_VER = "1"
-STUDY_CARDS_DATA_JS_VER = "1"
+PRINT_KIT_JS_VER = "17"
+STUDY_CARD_JS_VER = "2"
+STUDY_CARD_CSS_VER = "2"
+STUDY_CARDS_DATA_JS_VER = "2"
 VIEWPORT = "width=device-width, initial-scale=1, viewport-fit=cover"
 MISSION_CSS_VER = "20"
 
@@ -714,7 +714,7 @@ def real_extra_qa_html(item: dict, *, heading: str = "More talk") -> str:
 
 
 def outing_talk_html(item: dict) -> str:
-    """On-screen outing talk. Study deck (lion Easy) wins over CARD_TALK_OVERRIDE."""
+    """On-screen outing talk. Study deck (lion Junior Ranger) wins over CARD_TALK_OVERRIDE."""
     deck = study_deck_for(str(item.get("id") or "").strip())
     if deck:
         return study_talk_html(deck, heading=CARD_TALK_H2)

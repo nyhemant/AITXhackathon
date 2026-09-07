@@ -6,7 +6,8 @@ Do not invent stats. Soften contested numbers. Roar distance may cite
 “about 8 km / 5 miles (Wikipedia).”
 
 Slot ids stay stable so later levels can plug into the same 10 questions.
-Visible copy must not show age badges or Easy / Hard / Zoologist titles.
+Internal keys stay easy / hard / zoologist. Visible copy uses
+LEVEL_DISPLAY_NAMES only — no age badges, no plain Easy / Hard labels.
 """
 
 from __future__ import annotations
@@ -25,6 +26,13 @@ WIKI_LION = "https://en.wikipedia.org/wiki/Lion"
 LETTERS = ("A", "B", "C")
 STUDY_SLOTS = 10
 DEFAULT_LEVEL = "easy"
+
+# Product display names — one map for screen, print, and later pickers.
+LEVEL_DISPLAY_NAMES = {
+    "easy": "Junior Ranger",
+    "hard": "Park Ranger",
+    "zoologist": "Zoologist",
+}
 
 # Only Easy ships this PR. Hard / Zoologist stay absent.
 STUDY_CARDS: dict[str, dict] = {
@@ -140,6 +148,12 @@ STUDY_CARDS: dict[str, dict] = {
 }
 
 
+def level_display_name(level: str | None = None) -> str:
+    """User-facing name for a study-card level key."""
+    key = str(level or DEFAULT_LEVEL).strip().lower()
+    return LEVEL_DISPLAY_NAMES.get(key) or LEVEL_DISPLAY_NAMES[DEFAULT_LEVEL]
+
+
 def _esc(s: str) -> str:
     return (
         str(s or "")
@@ -168,6 +182,7 @@ def study_deck_for(card_id: str, level: str = DEFAULT_LEVEL) -> dict | None:
     return {
         "id": raw["id"],
         "level": level,
+        "level_label": level_display_name(level),
         "source": raw.get("source") or "",
         "source_note": raw.get("source_note") or "",
         "teach": list(pack.get("teach") or []),
@@ -228,8 +243,17 @@ def write_study_artifacts() -> None:
     STUDY_DATA_JS.parent.mkdir(parents=True, exist_ok=True)
     payload = json.dumps(STUDY_CARDS, indent=2, ensure_ascii=False)
     STUDY_JSON.write_text(payload + "\n", encoding="utf-8")
+    names_js = json.dumps(LEVEL_DISPLAY_NAMES, ensure_ascii=False, separators=(",", ":"))
     STUDY_DATA_JS.write_text(
         "/* Generated from scripts/study_cards.py — edit the Python source. */\n"
+        "window.FP_STUDY_LEVEL_NAMES = "
+        + names_js
+        + ";\n"
+        "window.FPStudyLevelName = function (level) {\n"
+        "  var names = window.FP_STUDY_LEVEL_NAMES || {};\n"
+        "  var key = String(level || \"easy\").toLowerCase();\n"
+        "  return names[key] || names.easy || \"Junior Ranger\";\n"
+        "};\n"
         "window.FP_STUDY_CARDS = "
         + json.dumps(STUDY_CARDS, ensure_ascii=False, separators=(",", ":"))
         + ";\n",
@@ -238,7 +262,9 @@ def write_study_artifacts() -> None:
 
 
 def study_talk_html(deck: dict, *, heading: str = "Talk") -> str:
-    """Screen: teach strip + 10 MCQs + reveal/why. No level title in the UI."""
+    """Screen: teach strip + 10 MCQs + reveal/why. Level badge uses display names."""
+    level = deck.get("level") or DEFAULT_LEVEL
+    level_label = _esc(deck.get("level_label") or level_display_name(level))
     teach_items = "".join(f"<li>{_esc(line)}</li>" for line in deck.get("teach") or [])
     teach = (
         f'<div class="study-teach">'
@@ -275,8 +301,11 @@ def study_talk_html(deck: dict, *, heading: str = "Talk") -> str:
     n = STUDY_SLOTS
     return (
         f'<section class="card-talk-pack card-study-pack" aria-label="{_esc(heading)}" '
-        f'data-study-id="{_esc(deck.get("id") or "")}" data-study-level="{_esc(deck.get("level") or DEFAULT_LEVEL)}">'
+        f'data-study-id="{_esc(deck.get("id") or "")}" data-study-level="{_esc(level)}">'
+        f'<div class="study-head">'
         f'<h2 class="card-talk-h">{_esc(heading)}</h2>'
+        f'<p class="study-level-badge">{level_label}</p>'
+        f"</div>"
         f"{teach}"
         f'<div class="study-toolbar no-print">'
         f'<p class="study-score">Score <span data-study-correct>0</span>/{n}</p>'
@@ -346,10 +375,11 @@ def study_print_html(
         )
     source = _esc(deck.get("source_note") or "Facts from Wikipedia, Lion.")
     banner_name = f"{emoji} {name}".strip()
+    level_label = _esc(deck.get("level_label") or level_display_name(deck.get("level")))
     return (
         f'<div class="ps-study-front ps-page">'
         f'<div class="ps-banner"><h1>FIELD TRIP KIT</h1>'
-        f"<p>{_esc(name)} · Circle one · Flip for answers</p></div>"
+        f"<p>{_esc(name)} · {level_label} · Circle one · Flip for answers</p></div>"
         f'<header class="ps-head"><h2>{_esc(banner_name)}</h2>'
         f'<p class="ps-line"><strong>Explorer:</strong> <span class="write-in-line">________________</span></p>'
         f"</header>"
@@ -361,7 +391,7 @@ def study_print_html(
         f"</div>"
         f'<div class="ps-study-back ps-page">'
         f'<div class="ps-banner"><h1>FIELD TRIP KIT</h1>'
-        f"<p>{_esc(name)} · Answers</p></div>"
+        f"<p>{_esc(name)} · {level_label} · Answers</p></div>"
         f'<ol class="ps-study-answers">{"".join(answers)}</ol>'
         f'<p class="ps-footer">{source} · {_esc(deck.get("source") or WIKI_LION)}</p>'
         f"</div>"

@@ -1,6 +1,6 @@
 /**
- * Easy study-card quiz: tap a choice to lock it, see why, optional score + Show answers.
- * Hard / Zoologist later can reuse the same 10 slots (data-study-level).
+ * Study-card quiz: tap a choice to lock it, see why, optional score + Show answers.
+ * Level keys stay easy / hard / zoologist; visible names come from FPStudyLevelName.
  */
 (() => {
   function pack() {
@@ -95,10 +95,18 @@
     });
   }
 
+  function paintLevel(root) {
+    const badge = root.querySelector(".study-level-badge");
+    if (!badge || typeof window.FPStudyLevelName !== "function") return;
+    const level = root.getAttribute("data-study-level") || "easy";
+    badge.textContent = window.FPStudyLevelName(level);
+  }
+
   function boot() {
     const root = pack();
     if (!root) return;
     bind(root);
+    paintLevel(root);
     paintScore(root);
     const deckEl = document.getElementById("study-card-data");
     if (deckEl && window.FP_STUDY_CARDS) {

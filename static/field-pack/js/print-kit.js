@@ -699,17 +699,37 @@
     }
   }
 
+  function studyLevelName(level) {
+    if (typeof window.FPStudyLevelName === "function") {
+      return window.FPStudyLevelName(level);
+    }
+    const names = window.FP_STUDY_LEVEL_NAMES || {
+      easy: "Junior Ranger",
+      hard: "Park Ranger",
+      zoologist: "Zoologist",
+    };
+    const key = String(level || "easy").toLowerCase();
+    return names[key] || names.easy || "Junior Ranger";
+  }
+
   function flattenStudyDeck(raw, itemId) {
     if (!raw) return null;
     if (Array.isArray(raw.questions)) {
-      return raw;
+      const level = raw.level || "easy";
+      return {
+        ...raw,
+        level,
+        level_label: raw.level_label || studyLevelName(level),
+      };
     }
     const levels = raw.levels || {};
-    const pack = levels.easy || levels[Object.keys(levels)[0]];
+    const levelKey = levels.easy ? "easy" : Object.keys(levels)[0] || "easy";
+    const pack = levels[levelKey];
     if (!pack) return null;
     return {
       id: raw.id || itemId,
-      level: "easy",
+      level: levelKey,
+      level_label: studyLevelName(levelKey),
       source: raw.source || "",
       source_note: raw.source_note || "",
       teach: pack.teach || [],
@@ -776,9 +796,10 @@
     const wiki = (deck && deck.source) || "https://en.wikipedia.org/wiki/Lion";
     const name = (item && item.name) || "";
     const emoji = (item && item.emoji) || "";
+    const levelLabel = (deck && (deck.level_label || studyLevelName(deck.level))) || studyLevelName("easy");
     return `<div class="ps-study-front ps-page">
       <div class="ps-banner"><h1>FIELD TRIP KIT</h1>
-      <p>${escapeHtml(name)} · Circle one · Flip for answers</p></div>
+      <p>${escapeHtml(name)} · ${escapeHtml(levelLabel)} · Circle one · Flip for answers</p></div>
       <header class="ps-head"><h2>${escapeHtml((emoji + " " + name).trim())}</h2>
       <p class="ps-line"><strong>Explorer:</strong> <span class="write-in-line">________________</span></p>
       </header>
@@ -789,7 +810,7 @@
     </div>
     <div class="ps-study-back ps-page">
       <div class="ps-banner"><h1>FIELD TRIP KIT</h1>
-      <p>${escapeHtml(name)} · Answers</p></div>
+      <p>${escapeHtml(name)} · ${escapeHtml(levelLabel)} · Answers</p></div>
       <ol class="ps-study-answers">${answers}</ol>
       <p class="ps-footer">${escapeHtml(source)} · ${escapeHtml(wiki)}</p>
     </div>`;
@@ -1171,6 +1192,7 @@
     buildQaCardHtml,
     buildStudyCardHtml,
     studyDeckFor,
+    studyLevelName,
     itemPhotoSrc,
     wowFactFromItem,
     topPickItemId,
