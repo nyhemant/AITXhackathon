@@ -99,8 +99,8 @@ def _main(html: str) -> str:
 class GiraffeEasyStudyCardTests(unittest.TestCase):
     def test_deck_is_junior_ranger_easy_only(self):
         self.assertIn("reticulated-giraffe", study_card_ids())
-        self.assertEqual(shipped_levels_for("reticulated-giraffe"), ("easy",))
-        self.assertIsNone(study_deck_for("reticulated-giraffe", "hard"))
+        self.assertEqual(shipped_levels_for("reticulated-giraffe"), ("easy", "hard"))
+        self.assertIsNotNone(study_deck_for("reticulated-giraffe", "hard"))
         self.assertIsNone(study_deck_for("reticulated-giraffe", "zoologist"))
         deck = study_deck_for("reticulated-giraffe")
         self.assertIsNotNone(deck)
@@ -162,11 +162,13 @@ class GiraffeEasyStudyCardTests(unittest.TestCase):
             self.assertNotIn(phrase, html)
         visible = _text(html)
         self.assertIn("Junior Ranger", visible)
-        self.assertNotIn("Park Ranger", visible)
+        self.assertIn("Park Ranger", visible)
         self.assertNotIn("Zoologist", visible)
-        self.assertIn('class="study-level-badge"', html)
-        self.assertNotIn('class="study-level-picker"', html)
-        self.assertNotIn("data-study-pick", html)
+        self.assertIn('class="study-level-picker"', html)
+        self.assertIn('data-study-pick="easy"', html)
+        self.assertIn('data-study-pick="hard"', html)
+        self.assertNotIn('data-study-pick="zoologist"', html)
+        self.assertNotIn('class="study-level-badge"', html)
         for badge in PLAIN_LEVEL_LABELS + AGE_BADGES:
             self.assertNotIn(badge, visible)
         self.assertIn("Skin-covered ossicones", html)
@@ -210,11 +212,13 @@ class GiraffeEasyStudyCardTests(unittest.TestCase):
         self.assertRegex(main, r'<aside class="study-deepen"[^>]*\bhidden\b')
         visible = _text(main)
         self.assertIn("Junior Ranger", visible)
-        self.assertNotIn("Park Ranger", visible)
+        self.assertIn("Park Ranger", visible)
         self.assertNotIn("Zoologist", visible)
-        self.assertIn('class="study-level-badge"', main)
-        self.assertNotIn('class="study-level-picker"', main)
-        self.assertNotIn("data-study-pick", main)
+        self.assertIn('class="study-level-picker"', main)
+        self.assertIn('data-study-pick="easy"', main)
+        self.assertIn('data-study-pick="hard"', main)
+        self.assertNotIn('data-study-pick="zoologist"', main)
+        self.assertNotIn('class="study-level-badge"', main)
         self.assertIn("Learn first", main)
         for badge in PLAIN_LEVEL_LABELS + AGE_BADGES:
             self.assertNotIn(badge, visible)
@@ -282,15 +286,17 @@ class GiraffeEasyStudyCardTests(unittest.TestCase):
         self.assertIn("african-lion", payload)
         giraffe = payload["reticulated-giraffe"]
         self.assertEqual(giraffe["id"], "reticulated-giraffe")
-        self.assertEqual(set(giraffe["levels"]), {"easy"})
+        self.assertEqual(set(giraffe["levels"]), {"easy", "hard"})
         easy = giraffe["levels"]["easy"]
         self.assertEqual(len(easy["teach"]), 5)
         self.assertEqual(len(easy["questions"]), STUDY_SLOTS)
         for q in easy["questions"]:
             self.assertEqual(len(q["choices"]), 3)
+        self.assertEqual(giraffe["levels"]["hard"]["teach"], [])
         data_js = STUDY_DATA_JS.read_text(encoding="utf-8")
         self.assertIn("reticulated-giraffe", data_js)
         self.assertIn('"easy":"Junior Ranger"', data_js)
+        self.assertIn('"hard":"Park Ranger"', data_js)
         lion_levels = payload["african-lion"]["levels"]
         self.assertEqual(set(lion_levels), {"easy", "hard", "zoologist"})
 
