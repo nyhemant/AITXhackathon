@@ -1145,6 +1145,141 @@
             "why": "“Afraid of mice” is a cartoon myth. Elephants may startle at sudden movement near their feet, not at mice as a special fear."
           }
         ]
+      },
+      "zoologist": {
+        "teach": [],
+        "questions": [
+          {
+            "slot": 1,
+            "id": "species-split",
+            "title": "Species",
+            "stem": "How do scientists treat living African elephants today?",
+            "choices": [
+              "Always one species forever, with no split",
+              "As two living species: bush/savanna Loxodonta africana and forest L. cyclotis",
+              "Only as extinct mammoths"
+            ],
+            "correct": "B",
+            "why": "Wikipedia treats living African elephants as two species — the bush or savanna elephant Loxodonta africana and the forest elephant L. cyclotis. IUCN assesses them separately. Status labels have shifted, so we do not lock one letter."
+          },
+          {
+            "slot": 2,
+            "id": "trunk-anatomy",
+            "title": "Trunk",
+            "stem": "What is an elephant’s trunk, anatomically?",
+            "choices": [
+              "A hollow bone like a horn",
+              "A fusion of the nose and the upper lip",
+              "Only a stretched nose, with no lip involved"
+            ],
+            "correct": "B",
+            "why": "The trunk, or proboscis, is a prehensile elongation of the nose and upper lip. Those parts fuse in early development — it is not a nose alone."
+          },
+          {
+            "slot": 3,
+            "id": "trunk-tip",
+            "title": "Trunk tip",
+            "stem": "How does an African elephant’s trunk tip differ from an Asian elephant’s?",
+            "choices": [
+              "African elephants have no finger-like tip",
+              "African elephants have two finger-like processes; Asian elephants have one",
+              "Both have exactly five fingers"
+            ],
+            "correct": "B",
+            "why": "African elephants have two finger-like processes at the tip of the trunk. Asian elephants have one and more often wrap the trunk around food."
+          },
+          {
+            "slot": 4,
+            "id": "seismic",
+            "title": "Senses",
+            "stem": "How can elephants pick up distant seismic signals?",
+            "choices": [
+              "Only by watching the sky",
+              "They detect ground-borne vibrations through their feet and trunk",
+              "By tasting the air with their tusks"
+            ],
+            "correct": "B",
+            "why": "Wikipedia notes elephants communicate with seismic vibrations that travel through the ground. They detect those ground-borne waves through the feet and the trunk."
+          },
+          {
+            "slot": 5,
+            "id": "musth",
+            "title": "Musth",
+            "stem": "What happens when an adult bull elephant is in musth?",
+            "choices": [
+              "He sheds his trunk",
+              "Testosterone rises; he becomes more aggressive and sexually active, with temporal-gland signs",
+              "He stops eating plants"
+            ],
+            "correct": "B",
+            "why": "Musth is a state in adult males: elevated testosterone, heightened aggression and sexual activity, plus temporal-gland secretions running down the face."
+          },
+          {
+            "slot": 6,
+            "id": "allomothers",
+            "title": "Family",
+            "stem": "Who besides the mother often helps care for an elephant calf?",
+            "choices": [
+              "Only adult bulls",
+              "Other young females in the family — allomothers",
+              "Passing zebras"
+            ],
+            "correct": "B",
+            "why": "Calves are cared for by their mother and other young females in the group, a pattern called allomothering or alloparenting."
+          },
+          {
+            "slot": 7,
+            "id": "last-molars",
+            "title": "Teeth",
+            "stem": "What can happen after an old elephant’s last molar set wears out?",
+            "choices": [
+              "New tusks become chewing teeth",
+              "The elephant may starve, because it can no longer grind plants well",
+              "It grows a bird-like beak"
+            ],
+            "correct": "B",
+            "why": "After the final molar set wears out, an old elephant may starve — a common late-life cause of death. The last replacement is the last."
+          },
+          {
+            "slot": 8,
+            "id": "hindgut",
+            "title": "Digestion",
+            "stem": "How do African elephants digest tough plants?",
+            "choices": [
+              "With a four-chamber ruminant stomach like a giraffe",
+              "By hindgut fermentation",
+              "By storing food in the tusks"
+            ],
+            "correct": "B",
+            "why": "Fermentation of food takes place in the hindgut. Elephants are hindgut fermenters, not four-chamber ruminants like giraffes."
+          },
+          {
+            "slot": 9,
+            "id": "tp53",
+            "title": "Genes",
+            "stem": "What gene story is linked to elephants’ size and cancer resistance?",
+            "choices": [
+              "They have no tumor-suppressor genes",
+              "They carry many copies of TP53, a gene linked to cancer resistance (Peto’s paradox)",
+              "They rely on extra hearts only"
+            ],
+            "correct": "B",
+            "why": "Elephants carry many copies of the TP53 tumor-suppressor gene, which researchers link to unusually low cancer rates for such large, long-lived animals — Peto’s paradox. Published copy counts vary, so we do not lock one number."
+          },
+          {
+            "slot": 10,
+            "id": "megagardener",
+            "title": "Seeds",
+            "stem": "Why are African elephants sometimes called megagardeners?",
+            "choices": [
+              "They plant seeds with their tusks on purpose",
+              "They are long-distance seed dispersers; dung can carry many plant species",
+              "They only eat meat and never spread seeds"
+            ],
+            "correct": "B",
+            "why": "Elephants are long-distance seed dispersers. Seeds pass through the gut and germinate in dung, which can carry many plant species — a megagardener role in the landscape."
+          }
+        ]
       }
     }
   }
