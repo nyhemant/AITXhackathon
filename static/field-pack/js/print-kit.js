@@ -729,6 +729,12 @@
   function flattenStudyDeck(raw, itemId, level) {
     if (!raw) return null;
     const want = level || selectedStudyLevel() || "easy";
+    function deepenOf(pack) {
+      return {
+        talk_about: (pack && pack.talk_about) || raw.talk_about || [],
+        push_further: (pack && pack.push_further) || raw.push_further || [],
+      };
+    }
     if (raw.levels && raw.levels[want]) {
       const pack = raw.levels[want];
       return {
@@ -738,6 +744,7 @@
         source: raw.source || "",
         source_note: raw.source_note || "",
         teach: pack.teach || [],
+        ...deepenOf(pack),
         questions: pack.questions || [],
       };
     }
@@ -750,6 +757,8 @@
         ...raw,
         level: have,
         level_label: raw.level_label || studyLevelName(have),
+        talk_about: raw.talk_about || [],
+        push_further: raw.push_further || [],
       };
     }
     const levels = raw.levels || {};
@@ -763,6 +772,7 @@
       source: raw.source || "",
       source_note: raw.source_note || "",
       teach: pack.teach || [],
+      ...deepenOf(pack),
       questions: pack.questions || [],
     };
   }
@@ -823,6 +833,18 @@
         return `<li><strong>${escapeHtml(String(q.slot || ""))} ${escapeHtml(q.title || "")} — ${escapeHtml(letter)} ${escapeHtml(label)}.</strong> ${escapeHtml(q.why || "")}</li>`;
       })
       .join("");
+    function deepenCol(title, lines) {
+      if (!lines.length) return "";
+      return `<div class="ps-study-deepen-col"><p class="ps-study-deepen-kicker">${escapeHtml(title)}</p><ol>${lines
+        .map((line) => `<li>${escapeHtml(line)}</li>`)
+        .join("")}</ol></div>`;
+    }
+    const talk = (deck && deck.talk_about) || [];
+    const push = (deck && deck.push_further) || [];
+    const deepenHtml =
+      talk.length || push.length
+        ? `<aside class="ps-study-deepen" aria-label="Go further">${deepenCol("Talk about it", talk)}${deepenCol("Push further", push)}</aside>`
+        : "";
     const source = (deck && deck.source_note) || "Facts from Wikipedia, Lion.";
     const wiki = (deck && deck.source) || "https://en.wikipedia.org/wiki/Lion";
     const name = (item && item.name) || "";
@@ -843,6 +865,7 @@
       <div class="ps-banner"><h1>FIELD TRIP KIT</h1>
       <p>${escapeHtml(name)} · ${escapeHtml(levelLabel)} · Answers</p></div>
       <ol class="ps-study-answers">${answers}</ol>
+      ${deepenHtml}
       <p class="ps-footer">${escapeHtml(source)} · ${escapeHtml(wiki)}</p>
     </div>`;
   }

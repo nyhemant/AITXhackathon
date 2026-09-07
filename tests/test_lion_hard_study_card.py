@@ -13,12 +13,15 @@ sys.path.insert(0, str(REPO / "scripts"))
 
 from generate_bdo_seo import CARD_TALK_H2, outing_talk_html  # noqa: E402
 from study_cards import (  # noqa: E402
+    PUSH_FURTHER_LION,
     STUDY_SLOTS,
+    TALK_ABOUT_LION,
     WIKI_LION,
     level_display_name,
     shipped_levels_for,
     study_deck_for,
     study_print_html,
+    study_talk_html,
     validate_deck,
 )
 
@@ -87,6 +90,8 @@ class LionHardStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["source"], WIKI_LION)
         self.assertEqual(deck["source_note"], "Facts from Wikipedia, Lion.")
         self.assertEqual(deck["teach"], [])
+        self.assertEqual(deck["talk_about"], list(TALK_ABOUT_LION))
+        self.assertEqual(deck["push_further"], list(PUSH_FURTHER_LION))
         self.assertEqual(len(deck["questions"]), STUDY_SLOTS)
         self.assertEqual(validate_deck(deck), [])
         self.assertIsNone(study_deck_for("african-lion", "zoologist"))
@@ -143,6 +148,8 @@ class LionHardStudyCardTests(unittest.TestCase):
         html = outing_talk_html({"id": "african-lion", "packTemplate": "animals"})
         self.assertIn(f">{CARD_TALK_H2}</h2>", html)
         self.assertIn("Learn first", html)
+        self.assertIn("<details class=\"study-teach\">", html)
+        self.assertNotIn("<details class=\"study-teach\" open", html)
         self.assertIn("Junior Ranger", html)
         self.assertIn("Park Ranger", html)
         self.assertIn('data-study-pick="hard"', html)
@@ -171,6 +178,14 @@ class LionHardStudyCardTests(unittest.TestCase):
         self.assertNotIn("ps-study-teach", sheet)
         self.assertIn("ps-study-front", sheet)
         self.assertIn("ps-study-back", sheet)
+        front, _, back = sheet.partition("ps-study-back")
+        self.assertNotIn("Talk about it", front)
+        self.assertNotIn("Push further", front)
+        self.assertIn("Talk about it", back)
+        self.assertIn("Push further", back)
+        self.assertIn("ps-study-deepen", back)
+        for prompt in TALK_ABOUT_LION + PUSH_FURTHER_LION:
+            self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_LION, sheet)
         self.assertIn("Facts from Wikipedia, Lion.", sheet)
@@ -187,6 +202,8 @@ class LionHardStudyCardTests(unittest.TestCase):
         self.assertEqual([q["id"] for q in hard["questions"]], list(HARD_IDS))
         data_js = STUDY_DATA_JS.read_text(encoding="utf-8")
         self.assertIn('"hard":{"teach":[]', data_js)
+        self.assertIn("talk_about", data_js)
+        self.assertIn("push_further", data_js)
         self.assertIn("Panthera leo", data_js)
         self.assertIn("Gir National Park", data_js)
         js = STUDY_JS.read_text(encoding="utf-8")
@@ -206,6 +223,15 @@ class LionHardStudyCardTests(unittest.TestCase):
         self.assertNotIn("Park Ranger", print_tpl)
         for stem in HARD_STEMS:
             self.assertNotIn(stem, print_tpl)
+        front, _, back = print_tpl.partition("ps-study-back")
+        self.assertNotIn("Talk about it", front)
+        self.assertIn("Talk about it", back)
+        self.assertIn("Push further", back)
+        hard_html = study_talk_html(study_deck_for("african-lion", "hard"))
+        self.assertNotIn("study-teach", hard_html)
+        self.assertNotIn("<details", hard_html)
+        self.assertIn("Talk about it", hard_html)
+        self.assertIn("Push further", hard_html)
 
 
 if __name__ == "__main__":
