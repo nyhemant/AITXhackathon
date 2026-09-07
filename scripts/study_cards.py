@@ -59,8 +59,8 @@ lump/split with greater flamingo, the chick’s straight-to-bent bill,
 and a relatively secure status contrast — without locking an IUCN
 letter. Do not redo JR or PR themes.
 
-Facts for galapagos-tortoise Junior Ranger (easy only) are
-Wikipedia-backed:
+Facts for galapagos-tortoise Junior Ranger + Park Ranger
+(easy + hard; no Zoologist yet) are Wikipedia-backed:
 https://en.wikipedia.org/wiki/Gal%C3%A1pagos_tortoise
 Species is the Galápagos tortoise (Chelonoidis niger complex).
 JR stays simple “Galápagos tortoise.” Soften longevity to “over
@@ -70,8 +70,15 @@ Ecuador in the Pacific. They are among the largest tortoises,
 eat plants (grass, leaves, cactus), move slowly, bury eggs in
 the ground, can pull head and legs into the shell, and stretch
 a long neck upward to reach food. Myth: they cannot leave the
-shell — it is part of the skeleton, not a coat. Do not ship
-Park Ranger or Zoologist yet.
+shell — it is part of the skeleton, not a coat. Hard deepens
+shell shapes (domed vs saddleback), the saddleback front notch,
+long fasting (many months / about a year — not ten years),
+water stored in bladder and tissues, Darwin and island
+differences, 1800s sailor hunting, introduced goats/rats/pigs,
+Lonesome George (Pinta, died 2012), captive-breeding success
+(soften exact offspring counts), and tortoise vs sea turtle
+(land; column-like feet). Do not redo JR themes. Do not ship
+Zoologist yet.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
@@ -113,7 +120,7 @@ LEVEL_DISPLAY_NAMES = {
 # Shipped picker order. A card only shows keys it actually defines.
 # Lion, reticulated-giraffe, African elephant, African penguin, and
 # Caribbean flamingo ship Junior Ranger + Park Ranger + Zoologist.
-# Galápagos tortoise ships Junior Ranger only.
+# Galápagos tortoise ships Junior Ranger + Park Ranger.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -2357,6 +2364,144 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "B",
                         "why": "The shell is part of the tortoise’s skeleton, not a coat. It cannot leave its shell.",
+                    },
+                ],
+            },
+            "hard": {
+                # Answer-light: no Learn-first strip. Facts from Wikipedia,
+                # Galápagos tortoise. Soften fasting extremes and exact
+                # captive-breeding offspring counts. Do not redo JR themes.
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "shell-shapes",
+                        "title": "Shell shapes",
+                        "stem": "What are the two main Galápagos tortoise shell shapes?",
+                        "choices": [
+                            "Spiky and flat",
+                            "Domed and saddleback",
+                            "Square and triangular",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia describes two main shell forms: a rounded domed shell and a saddleback shell with a raised front edge.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "saddleback-why",
+                        "title": "Saddleback why",
+                        "stem": "Why does a saddleback Galápagos tortoise have a raised front notch on its shell?",
+                        "choices": [
+                            "It helps the tortoise swim faster",
+                            "The raised front notch helps it stretch up to reach high plants on drier islands",
+                            "It is painted on as a decoration",
+                        ],
+                        "correct": "B",
+                        "why": "Saddleback shells arch upward at the front so the tortoise can lift its neck and browse taller plants on dry islands, where less food grows on the ground.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "fasting",
+                        "title": "Long fasting",
+                        "stem": "How long can a Galápagos tortoise go without food or water?",
+                        "choices": [
+                            "Only a few hours",
+                            "A long time — many months, or about a year",
+                            "It must eat every single day",
+                        ],
+                        "correct": "B",
+                        "why": "They can go many months without drinking, and Wikipedia says they can endure about a year without food and water. We do not lock a longer extreme.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "water-store",
+                        "title": "Water store",
+                        "stem": "Where can a Galápagos tortoise store water?",
+                        "choices": [
+                            "Only in a backpack on the shell",
+                            "In the bladder and other body tissues",
+                            "They never store water at all",
+                        ],
+                        "correct": "B",
+                        "why": "After a big drink they can store water in the bladder and in body tissues. That store helps them through dry spells.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "darwin",
+                        "title": "Darwin",
+                        "stem": "Why are Galápagos tortoises famous in the story of evolution?",
+                        "choices": [
+                            "They taught Darwin how to swim",
+                            "Island-to-island differences helped inspire Darwin’s thinking on evolution",
+                            "Darwin invented the tortoise",
+                        ],
+                        "correct": "B",
+                        "why": "Darwin saw that tortoises looked different from island to island. Those differences helped him think about how living things can change over time.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "sailors",
+                        "title": "Sailor history",
+                        "stem": "Why did Galápagos tortoise numbers crash in the 1800s?",
+                        "choices": [
+                            "A sudden ice age froze the islands",
+                            "Sailors took huge numbers as long-lasting shipboard food",
+                            "The tortoises all flew away",
+                        ],
+                        "correct": "B",
+                        "why": "In the 1800s, whalers and other sailors collected live tortoises because they lasted a long time on board without food or water. That hunting crashed wild numbers.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "pests",
+                        "title": "Introduced pests",
+                        "stem": "How do introduced goats, rats, and pigs harm Galápagos tortoises?",
+                        "choices": [
+                            "They only scare the tortoises with noise",
+                            "Goats eat the plants; rats and pigs destroy eggs and hatchlings",
+                            "They teach the tortoises to fly",
+                        ],
+                        "correct": "B",
+                        "why": "Introduced goats compete for food and strip plants. Rats and pigs eat eggs and young tortoises, so few hatchlings survive.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "lonesome-george",
+                        "title": "Lonesome George",
+                        "stem": "Who was Lonesome George?",
+                        "choices": [
+                            "The first tortoise Darwin rode",
+                            "The last known Pinta Island tortoise; he died in 2012",
+                            "A famous sea turtle from Florida",
+                        ],
+                        "correct": "B",
+                        "why": "Lonesome George was the last known tortoise from Pinta Island. He lived at the breeding centre and died in 2012.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "breeding",
+                        "title": "Breeding success",
+                        "stem": "How has captive breeding helped Galápagos tortoises?",
+                        "choices": [
+                            "Captive breeding has never worked",
+                            "It has helped rebuild some island groups — famous breeding males such as Diego fathered many young",
+                            "Zoos painted extra shells to look like more tortoises",
+                        ],
+                        "correct": "B",
+                        "why": "Breeding centres have raised and released many young. Famous males such as Diego helped a depleted island population recover. We do not lock one exact offspring count.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "tortoise-vs-turtle",
+                        "title": "Tortoise vs turtle",
+                        "stem": "How is a tortoise different from a sea turtle?",
+                        "choices": [
+                            "Tortoises have flippers and live only in the ocean",
+                            "Tortoises live on land and have column-like feet, not flippers like sea turtles",
+                            "Tortoises and sea turtles are the same animal",
+                        ],
+                        "correct": "B",
+                        "why": "A tortoise is a land-living turtle. Galápagos tortoises walk on sturdy, column-like legs. Sea turtles have flippers for swimming.",
                     },
                 ],
             },

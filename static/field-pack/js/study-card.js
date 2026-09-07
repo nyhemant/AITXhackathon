@@ -4,6 +4,7 @@
  * Level keys stay easy / hard / zoologist; visible names come from FPStudyLevelName.
  * Lion, giraffe, African elephant, African penguin, and Caribbean
  * flamingo ship JR + Park Ranger + Zoologist (query ?level= or picker).
+ * Galápagos tortoise ships JR + Park Ranger.
  */
 (() => {
   const LETTERS = ["A", "B", "C"];
