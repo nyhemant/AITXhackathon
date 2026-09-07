@@ -1,4 +1,4 @@
-"""African lion Hard study-card: Park Ranger, no teach, 10 Wikipedia-backed MCQs."""
+"""African lion Zoologist study-card: no teach, 10 Wikipedia-backed MCQs."""
 
 from __future__ import annotations
 
@@ -32,6 +32,32 @@ STUDY_DATA_JS = FP / "js" / "study-cards-data.js"
 STUDY_JS = FP / "js" / "study-card.js"
 PRINT_KIT = FP / "js" / "print-kit.js"
 
+ZOOLOGIST_STEMS = (
+    "What helps a lion roar, unlike a house cat’s continuous purr?",
+    "When a lion curls its lips in a flehmen grimace, where does the scent go?",
+    "What are a lion’s carnassial teeth built to do?",
+    "Which two living lion subspecies do scientists recognize today?",
+    "What can hide inside a lion’s dark tail tuft?",
+    "Why do new males often kill young cubs after taking over a pride?",
+    "How do lions compare with other wild cats?",
+    "What are the greatest causes for concern in the lion’s decline?",
+    "Why do lions hunt with short rushes instead of long chases?",
+    "How do lions and spotted hyenas treat each other’s kills?",
+)
+
+ZOOLOGIST_IDS = (
+    "roar-anatomy",
+    "flehmen",
+    "carnassials",
+    "subspecies",
+    "tail-spur",
+    "takeover-estrus",
+    "most-social",
+    "decline-drivers",
+    "burst-muscle",
+    "hyena-contest",
+)
+
 HARD_STEMS = (
     "What is the lion’s scientific name?",
     "In a typical pride, who forms the stable core?",
@@ -43,19 +69,6 @@ HARD_STEMS = (
     "About how long is a lioness’s pregnancy, and how many cubs are usual?",
     "What often happens to young cubs when new males take over a pride?",
     "What makes a white lion white?",
-)
-
-HARD_IDS = (
-    "name",
-    "pride-core",
-    "prey",
-    "speed",
-    "status",
-    "asia",
-    "cub-senses",
-    "gestation",
-    "takeover",
-    "white-lion",
 )
 
 EASY_STEMS = (
@@ -79,14 +92,14 @@ def _text(html: str) -> str:
     return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", html)).strip()
 
 
-class LionHardStudyCardTests(unittest.TestCase):
-    def test_hard_deck_is_park_ranger_without_teach(self):
+class LionZoologistStudyCardTests(unittest.TestCase):
+    def test_zoologist_deck_is_answer_light(self):
         self.assertEqual(shipped_levels_for("african-lion"), ("easy", "hard", "zoologist"))
-        self.assertEqual(level_display_name("hard"), "Park Ranger")
-        deck = study_deck_for("african-lion", "hard")
+        self.assertEqual(level_display_name("zoologist"), "Zoologist")
+        deck = study_deck_for("african-lion", "zoologist")
         self.assertIsNotNone(deck)
-        self.assertEqual(deck["level"], "hard")
-        self.assertEqual(deck["level_label"], "Park Ranger")
+        self.assertEqual(deck["level"], "zoologist")
+        self.assertEqual(deck["level_label"], "Zoologist")
         self.assertEqual(deck["source"], WIKI_LION)
         self.assertEqual(deck["source_note"], "Facts from Wikipedia, Lion.")
         self.assertEqual(deck["teach"], [])
@@ -95,66 +108,62 @@ class LionHardStudyCardTests(unittest.TestCase):
         self.assertEqual(len(deck["questions"]), STUDY_SLOTS)
         self.assertEqual(validate_deck(deck), [])
 
-    def test_validate_deck_allows_empty_teach_only_for_hard(self):
+    def test_validate_deck_allows_empty_teach_for_zoologist(self):
+        zoo = study_deck_for("african-lion", "zoologist")
         easy = study_deck_for("african-lion", "easy")
         hard = study_deck_for("african-lion", "hard")
         self.assertEqual(validate_deck(easy), [])
         self.assertEqual(validate_deck(hard), [])
-        broken_easy = dict(easy)
-        broken_easy["teach"] = []
-        self.assertIn("teach strip empty", validate_deck(broken_easy))
-        broken_hard = dict(hard)
-        broken_hard["teach"] = ["A leftover teach line."]
-        self.assertIn("hard deck must not include a teach strip", validate_deck(broken_hard))
+        self.assertEqual(validate_deck(zoo), [])
+        broken_zoo = dict(zoo)
+        broken_zoo["teach"] = ["A leftover teach line."]
+        self.assertIn("zoologist deck must not include a teach strip", validate_deck(broken_zoo))
 
-    def test_hard_slots_and_copy_are_locked(self):
-        deck = study_deck_for("african-lion", "hard")
+    def test_zoologist_slots_and_copy_are_locked(self):
+        deck = study_deck_for("african-lion", "zoologist")
         questions = deck["questions"]
         self.assertEqual([q["slot"] for q in questions], list(range(1, 11)))
-        self.assertEqual([q["id"] for q in questions], list(HARD_IDS))
-        self.assertEqual([q["stem"] for q in questions], list(HARD_STEMS))
+        self.assertEqual([q["id"] for q in questions], list(ZOOLOGIST_IDS))
+        self.assertEqual([q["stem"] for q in questions], list(ZOOLOGIST_STEMS))
         for q in questions:
             self.assertEqual(len(q["choices"]), 3)
             self.assertIn(q["correct"], ("A", "B", "C"))
             self.assertTrue(q["why"].strip())
             self.assertTrue(q["title"].strip())
-        self.assertEqual(questions[0]["correct"], "B")
-        self.assertIn("Panthera leo", questions[0]["choices"][1])
-        self.assertIn("Related females", questions[1]["choices"][1])
-        self.assertIn("hooved mammals", questions[2]["choices"][1])
-        self.assertIn("30–37 mph", questions[3]["choices"][1])
-        self.assertEqual(questions[4]["choices"][1], "Vulnerable")
-        self.assertIn("Gir National Park", questions[5]["choices"][1])
-        self.assertIn("around a week", questions[6]["choices"][1])
-        self.assertEqual(questions[7]["correct"], "A")
-        self.assertIn("110 days", questions[7]["choices"][0])
-        self.assertIn("kill existing young cubs", questions[8]["choices"][1])
-        self.assertIn("leucism", questions[9]["choices"][1])
+        self.assertIn("hyoid", questions[0]["choices"][1])
+        self.assertIn("vomeronasal", questions[1]["choices"][1])
+        self.assertIn("P4", questions[2]["choices"][1])
+        self.assertIn("melanochaita", questions[3]["choices"][1])
+        self.assertIn("function is unknown", questions[4]["choices"][1])
+        self.assertEqual(questions[5]["correct"], "A")
+        self.assertIn("estrus", questions[5]["choices"][0])
+        self.assertEqual(questions[6]["correct"], "A")
+        self.assertIn("most social", questions[6]["choices"][0])
+        self.assertIn("Habitat loss", questions[7]["choices"][1])
+        self.assertEqual(questions[8]["correct"], "A")
+        self.assertIn("fast-twitch", questions[8]["choices"][0])
+        self.assertIn("kleptoparasitism", questions[9]["choices"][1])
         blob = " ".join(q["why"] for q in questions)
         self.assertNotIn("43%", blob)
         self.assertNotIn("74.1", blob)
+        self.assertNotIn("58.6", blob)
+        self.assertIn("Wikipedia", deck["source_note"])
 
-    def test_hard_does_not_redo_easy_stems(self):
-        hard = study_deck_for("african-lion", "hard")
-        easy = study_deck_for("african-lion", "easy")
-        hard_stems = [q["stem"] for q in hard["questions"]]
-        easy_stems = [q["stem"] for q in easy["questions"]]
-        self.assertEqual(easy_stems, list(EASY_STEMS))
-        for stem in EASY_STEMS:
-            self.assertNotIn(stem, hard_stems)
+    def test_zoologist_does_not_redo_easy_or_hard_stems(self):
+        zoo = study_deck_for("african-lion", "zoologist")
+        zoo_stems = [q["stem"] for q in zoo["questions"]]
+        for stem in EASY_STEMS + HARD_STEMS:
+            self.assertNotIn(stem, zoo_stems)
 
-    def test_default_screen_html_keeps_easy_and_adds_picker(self):
+    def test_default_screen_html_keeps_easy_and_adds_zoologist_picker(self):
         html = outing_talk_html({"id": "african-lion", "packTemplate": "animals"})
         self.assertIn(f">{CARD_TALK_H2}</h2>", html)
         self.assertIn("Learn first", html)
-        self.assertIn("<details class=\"study-teach\">", html)
-        self.assertNotIn("<details class=\"study-teach\" open", html)
         self.assertIn("Junior Ranger", html)
         self.assertIn("Park Ranger", html)
         self.assertIn("Zoologist", html)
-        self.assertIn('data-study-pick="hard"', html)
         self.assertIn('data-study-pick="zoologist"', html)
-        for stem in HARD_STEMS:
+        for stem in ZOOLOGIST_STEMS:
             self.assertNotIn(stem, html)
         for stem in EASY_STEMS:
             self.assertIn(stem, html)
@@ -162,8 +171,8 @@ class LionHardStudyCardTests(unittest.TestCase):
         for badge in PLAIN_LEVEL_LABELS + AGE_BADGES:
             self.assertNotIn(badge, visible)
 
-    def test_hard_print_is_answer_light_duplex(self):
-        deck = study_deck_for("african-lion", "hard")
+    def test_zoologist_print_is_answer_light_duplex(self):
+        deck = study_deck_for("african-lion", "zoologist")
         sheet = study_print_html(
             deck,
             name="African lion",
@@ -171,8 +180,9 @@ class LionHardStudyCardTests(unittest.TestCase):
             photo="/field-pack/photos/african-lion.jpg?v=img2",
             photo_pos="50% 22%",
         )
-        self.assertIn("Park Ranger", sheet)
+        self.assertIn("Zoologist", sheet)
         self.assertNotIn("Junior Ranger", sheet)
+        self.assertNotIn("Park Ranger", sheet)
         self.assertNotIn("Learn first", sheet)
         self.assertNotIn("ps-study-teach", sheet)
         self.assertIn("ps-study-front", sheet)
@@ -188,50 +198,50 @@ class LionHardStudyCardTests(unittest.TestCase):
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_LION, sheet)
         self.assertIn("Facts from Wikipedia, Lion.", sheet)
-        for stem in HARD_STEMS:
+        for stem in ZOOLOGIST_STEMS:
             self.assertIn(stem, sheet)
-        for stem in EASY_STEMS:
+        for stem in EASY_STEMS + HARD_STEMS:
             self.assertNotIn(stem, sheet)
+
+    def test_zoologist_screen_hides_empty_teach_but_keeps_deepen(self):
+        html = study_talk_html(study_deck_for("african-lion", "zoologist"))
+        self.assertNotIn("study-teach", html)
+        self.assertNotIn("<details", html)
+        self.assertIn("Talk about it", html)
+        self.assertIn("Push further", html)
+        self.assertIn("Zoologist", html)
+        self.assertRegex(html, r'<aside class="study-deepen"[^>]*\bhidden\b')
+        visible = _text(html)
+        for badge in PLAIN_LEVEL_LABELS + AGE_BADGES:
+            self.assertNotIn(badge, visible)
 
     def test_published_artifacts_and_plumbing(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
-        hard = payload["african-lion"]["levels"]["hard"]
-        self.assertEqual(hard["teach"], [])
-        self.assertEqual(len(hard["questions"]), STUDY_SLOTS)
-        self.assertEqual([q["id"] for q in hard["questions"]], list(HARD_IDS))
+        zoo = payload["african-lion"]["levels"]["zoologist"]
+        self.assertEqual(zoo["teach"], [])
+        self.assertEqual(len(zoo["questions"]), STUDY_SLOTS)
+        self.assertEqual([q["id"] for q in zoo["questions"]], list(ZOOLOGIST_IDS))
         data_js = STUDY_DATA_JS.read_text(encoding="utf-8")
-        self.assertIn('"hard":{"teach":[]', data_js)
-        self.assertIn("talk_about", data_js)
-        self.assertIn("push_further", data_js)
-        self.assertIn("Panthera leo", data_js)
-        self.assertIn("Gir National Park", data_js)
+        self.assertIn('"zoologist":{"teach":[]', data_js)
+        self.assertIn("melanochaita", data_js)
+        self.assertIn("vomeronasal", data_js)
+        self.assertIn("kleptoparasitism", data_js)
         js = STUDY_JS.read_text(encoding="utf-8")
+        self.assertIn("zoologist", js)
         self.assertIn("data-study-pick", js)
-        self.assertIn("levelFromQuery", js)
         print_js = PRINT_KIT.read_text(encoding="utf-8")
-        self.assertIn("function selectedStudyLevel", print_js)
+        self.assertIn('fromDom === "zoologist"', print_js)
         html = LION.read_text(encoding="utf-8")
-        self.assertIn("Park Ranger", html)
-        self.assertIn("Junior Ranger", html)
         self.assertIn("Zoologist", html)
-        self.assertIn("Learn first", html)
-        self.assertIn("Watch Live", html)
-        self.assertIn("Zoologist", html.split("<main", 1)[1].split("</main>", 1)[0])
+        self.assertIn('data-study-pick="zoologist"', html)
+        self.assertIn("study-card.js?v=5", html)
+        self.assertIn("study-cards-data.js?v=5", html)
         print_tpl = html.split('id="study-print-template">', 1)[1].split("</template>", 1)[0]
         self.assertIn("Junior Ranger", print_tpl)
         self.assertIn("Learn first", print_tpl)
-        self.assertNotIn("Park Ranger", print_tpl)
-        for stem in HARD_STEMS:
+        self.assertNotIn("Zoologist", print_tpl)
+        for stem in ZOOLOGIST_STEMS:
             self.assertNotIn(stem, print_tpl)
-        front, _, back = print_tpl.partition("ps-study-back")
-        self.assertNotIn("Talk about it", front)
-        self.assertIn("Talk about it", back)
-        self.assertIn("Push further", back)
-        hard_html = study_talk_html(study_deck_for("african-lion", "hard"))
-        self.assertNotIn("study-teach", hard_html)
-        self.assertNotIn("<details", hard_html)
-        self.assertIn("Talk about it", hard_html)
-        self.assertIn("Push further", hard_html)
 
 
 if __name__ == "__main__":
