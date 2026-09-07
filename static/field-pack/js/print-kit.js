@@ -712,14 +712,44 @@
     return names[key] || names.easy || "Junior Ranger";
   }
 
-  function flattenStudyDeck(raw, itemId) {
+  function selectedStudyLevel() {
+    const pack = document.querySelector(".card-study-pack");
+    const fromDom = pack && pack.getAttribute("data-study-level");
+    if (fromDom === "easy" || fromDom === "hard") return fromDom;
+    try {
+      const q = new URLSearchParams(window.location.search).get("level");
+      if (q === "hard" || q === "park-ranger") return "hard";
+      if (q === "easy" || q === "junior-ranger") return "easy";
+    } catch (_) {
+      /* ignore */
+    }
+    return "easy";
+  }
+
+  function flattenStudyDeck(raw, itemId, level) {
     if (!raw) return null;
+    const want = level || selectedStudyLevel() || "easy";
+    if (raw.levels && raw.levels[want]) {
+      const pack = raw.levels[want];
+      return {
+        id: raw.id || itemId,
+        level: want,
+        level_label: studyLevelName(want),
+        source: raw.source || "",
+        source_note: raw.source_note || "",
+        teach: pack.teach || [],
+        questions: pack.questions || [],
+      };
+    }
     if (Array.isArray(raw.questions)) {
-      const level = raw.level || "easy";
+      const have = raw.level || "easy";
+      if (level && have !== level && raw.levels && raw.levels[level]) {
+        return flattenStudyDeck(raw, itemId, level);
+      }
       return {
         ...raw,
-        level,
-        level_label: raw.level_label || studyLevelName(level),
+        level: have,
+        level_label: raw.level_label || studyLevelName(have),
       };
     }
     const levels = raw.levels || {};
@@ -737,15 +767,16 @@
     };
   }
 
-  function studyDeckFor(itemId) {
+  function studyDeckFor(itemId, level) {
+    const want = level || selectedStudyLevel();
     const cards = window.FP_STUDY_CARDS || {};
-    const fromWindow = flattenStudyDeck(cards[itemId], itemId);
+    const fromWindow = flattenStudyDeck(cards[itemId], itemId, want);
     if (fromWindow) return fromWindow;
     const el = document.getElementById("study-card-data");
     if (!el) return null;
     try {
       const d = JSON.parse(el.textContent || "");
-      if (d && (!itemId || d.id === itemId || !d.id)) return flattenStudyDeck(d, itemId) || d;
+      if (d && (!itemId || d.id === itemId || !d.id)) return flattenStudyDeck(d, itemId, want) || d;
     } catch (_) {
       /* ignore */
     }
@@ -1000,6 +1031,19 @@
     if (!printSheet) return false;
     const studyTpl = document.getElementById("study-print-template");
     const deck = studyDeckFor(itemId);
+    if (deck && deck.level && deck.level !== "easy") {
+      printSheet.innerHTML = buildStudyCardHtml(resolved, venue, deck);
+      if (treasureSheet) treasureSheet.innerHTML = "";
+      track("qa_catalog_printed", {
+        item_id: resolved.id || itemId,
+        item_name: resolved.name || "",
+        venue_slug: venue.id || "",
+        product: "field_trip_kit",
+        source: "study_card",
+      });
+      waitForPrintImages(printSheet).then(() => runPrint({ treasure: false, study: true }));
+      return true;
+    }
     if (studyTpl && studyTpl.innerHTML.trim() && deck) {
       printSheet.innerHTML = studyTpl.innerHTML;
       if (treasureSheet) treasureSheet.innerHTML = "";
