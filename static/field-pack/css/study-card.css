@@ -223,3 +223,19 @@
   color: #5a6a84;
   font-size: 0.78rem;
 }
+
+/*
+ * Phone/tablet portrait stay on the 34rem card-page column (seo-venue.css).
+ * Desktop opens the study Q&A to 48rem — wider than 34rem, still short of
+ * unreadably long lines. Photo stays capped so the square hero does not grow
+ * with the quiz. Screen-only so print sheets are unchanged.
+ */
+@media screen and (min-width: 960px) {
+  .card-page {
+    max-width: 48rem;
+  }
+  .card-page img.card-page-photo {
+    max-width: 34rem;
+    align-self: center;
+  }
+}
