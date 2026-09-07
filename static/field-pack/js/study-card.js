@@ -1,5 +1,6 @@
 /**
- * Study-card quiz: tap a choice to lock it, see why, optional score + Show answers.
+ * Study-card quiz: tap a choice. Wrong greys + disables that pick for a second try.
+ * Correct (first or later) shows why and scores. Show answers still reveals the key.
  * Level keys stay easy / hard / zoologist; visible names come from FPStudyLevelName.
  * Lion ships Junior Ranger + Park Ranger + Zoologist on the same card (query ?level= or picker).
  */
@@ -161,24 +162,34 @@
   }
 
   function markChoice(qEl, btn, revealed) {
+    if (!qEl || !btn) return;
+    if (btn.disabled || btn.classList.contains("is-wrong-pick")) return;
+    if (qEl.classList.contains("mission-ok")) return;
+
     const correct = (qEl.getAttribute("data-correct") || "").toUpperCase();
     const letter = (btn.getAttribute("data-letter") || "").toUpperCase();
     const why = qEl.querySelector(".study-why");
-    qEl.querySelectorAll(".study-choice").forEach((b) => {
-      b.setAttribute("aria-pressed", b === btn ? "true" : "false");
-      b.classList.remove("is-correct-pick", "is-wrong-pick", "is-correct-key");
-    });
-    if (letter === correct) {
+    const isRight = letter === correct;
+
+    if (isRight) {
       btn.classList.add("is-correct-pick");
+      btn.setAttribute("aria-pressed", "true");
+      if (why) why.hidden = false;
+      qEl.classList.add("mission-ok");
+      qEl.classList.remove("mission-try");
+      qEl.setAttribute("data-picked", letter);
+      qEl.querySelectorAll(".study-choice").forEach((b) => {
+        if (b !== btn) b.disabled = true;
+      });
     } else {
       btn.classList.add("is-wrong-pick");
-      const right = qEl.querySelector(`.study-choice[data-letter="${correct}"]`);
-      if (right) right.classList.add("is-correct-key");
+      btn.disabled = true;
+      btn.setAttribute("aria-pressed", "false");
+      // Second try: keep prior wrongs; do not mark the key or show why.
+      if (!revealed && why) why.hidden = true;
+      qEl.classList.remove("mission-ok");
+      qEl.setAttribute("data-picked", letter);
     }
-    if (why) why.hidden = false;
-    qEl.classList.toggle("mission-ok", letter === correct);
-    qEl.classList.toggle("mission-try", letter !== correct);
-    qEl.setAttribute("data-picked", letter);
     if (revealed) qEl.setAttribute("data-revealed", "1");
   }
 
@@ -212,6 +223,7 @@
         qEl.querySelectorAll(".study-choice").forEach((b) => {
           b.classList.remove("is-correct-key", "is-correct-pick", "is-wrong-pick");
           b.setAttribute("aria-pressed", "false");
+          b.disabled = false;
         });
         if (why) why.hidden = true;
         qEl.removeAttribute("data-revealed");
@@ -323,7 +335,7 @@
       const choice = ev.target.closest(".study-choice");
       if (choice && root.contains(choice)) {
         const qEl = choice.closest(".study-q");
-        if (!qEl) return;
+        if (!qEl || choice.disabled || choice.classList.contains("is-wrong-pick")) return;
         markChoice(qEl, choice, root.getAttribute("data-revealed") === "1");
         paintScore(root);
         return;

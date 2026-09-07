@@ -189,6 +189,28 @@
   font-weight: 850;
   color: #0f5c5c;
 }
+.card-page .card-study-pack .study-choice.is-wrong-pick,
+.card-page .card-study-pack .study-choice.is-wrong-pick:disabled {
+  background: #d5d8de !important;
+  border-color: #7b828c !important;
+  color: #4a5058 !important;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  opacity: 1;
+}
+.card-page .card-study-pack .study-choice.is-wrong-pick .dot {
+  border-color: #7b828c;
+}
+.card-page .card-study-pack .study-choice.is-wrong-pick .study-letter {
+  color: #4a5058;
+}
+.card-page .card-study-pack .study-choice:disabled {
+  cursor: not-allowed;
+}
+.card-page .card-study-pack .study-choice:disabled:not(.is-wrong-pick):not(.is-correct-pick) {
+  opacity: 0.72;
+}
 .card-page .card-study-pack .study-why {
   margin: 0.45rem 0 0;
   color: #0a4545;
