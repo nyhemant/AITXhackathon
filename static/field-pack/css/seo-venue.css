@@ -1862,6 +1862,10 @@ a.seo-map-card:focus-visible {
   margin-top: 0.5rem;
   min-width: 0;
 }
+/* 3 short chips: Yes | No, then Can’t tell full width so ~390px stays readable */
+.card-page .card-talk-pack .choices[data-count="3"] .choice:last-child {
+  grid-column: 1 / -1;
+}
 .card-talk-note {
   margin: 0.4rem 0 0;
   color: #5a6a84;

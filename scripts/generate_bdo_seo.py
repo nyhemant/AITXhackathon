@@ -143,7 +143,8 @@ PRINT_FALLBACK = ""
 TYPE_HUB_LEAD = HOME_SESSION_LEAD
 
 # Catalog outing template — same wording as FIELD_PACK_MISSIONS_* in catalog.js.
-# Public cards use this 6-question set. Do not invent new Q&A. Do not ship notice-stubs as “full.”
+# Public cards use this 6-question set unless CARD_TALK_OVERRIDE has that card id.
+# Do not invent new Q&A on this shared set. Per-card overrides are allowed.
 OUTING_TALK_ANIMAL = (
     {
         "id": "food",
@@ -206,6 +207,80 @@ OUTING_TALK_ANIMAL = (
         "open_note": "You pick what to teach a grown-up!",
     },
 )
+
+# Per-card talk packs. Lion only for now — other animals stay on OUTING_TALK_ANIMAL.
+# Observation-first; well-known kid-safe facts; no venue-specific or niche stats.
+CARD_TALK_OVERRIDE: dict[str, tuple[dict, ...]] = {
+    "african-lion": (
+        {
+            "id": "mane",
+            "num": "1",
+            "title": "Mane",
+            "question": "Does this lion have a big fluffy mane?",
+            "choices": ["Yes", "No", "Can't tell"],
+            "multi": False,
+            "key_field": "",
+            "open_note": "Grown-up males often have a mane. Females and cubs usually don’t.",
+        },
+        {
+            "id": "look",
+            "num": "2",
+            "title": "Look close",
+            "question": "What do you notice?",
+            "choices": ["Whiskers", "Big paws", "Tuft on the tail", "Spots (a cub)"],
+            "multi": True,
+            "key_field": "",
+            "open_note": "Cubs can still show faint spots. Grown-ups usually don’t.",
+        },
+        {
+            "id": "pride",
+            "num": "3",
+            "title": "Pride",
+            "question": "Lions often live in a group called a pride. How many do you see?",
+            "choices": ["One", "More than one", "Can't tell"],
+            "multi": False,
+            "key_field": "",
+            "open_note": "A pride is a family group. Some days you only see one resting.",
+        },
+        {
+            "id": "food",
+            "num": "4",
+            "title": "Food",
+            "question": "Meat eater or plant eater?",
+            "choices": ["Meat eater", "Plant eater"],
+            "multi": False,
+            "key_field": "food",
+            "key_aliases": {"Meat": "Meat eater"},
+            "open_note": "Lions eat meat. They are hunters, not grazers.",
+        },
+        {
+            "id": "cam",
+            "num": "5",
+            "title": "See & say",
+            "question": "Did we see a lion — and what would you tell a grown-up?",
+            "choices": [
+                "Yes — at the place",
+                "Yes — on Watch Live",
+                "Not today",
+                "The mane",
+                "The pride",
+                "A roar",
+            ],
+            "multi": True,
+            "key_field": "",
+            "open_note": "Look, then say one true thing.",
+        },
+    ),
+}
+
+# Optional More talk on a card. Kid-level, sourced (Nat Geo Kids lion page) — no numbers.
+CARD_TALK_QA_OVERRIDE: dict[str, dict[str, str]] = {
+    "african-lion": {
+        "question": "Why is a lion’s roar so loud?",
+        "answer": "So other lions far away can hear it — to call the pride and warn “this is our place.”",
+    },
+}
+
 OUTING_TALK_EXHIBIT = (
     {
         "id": "try",
@@ -634,6 +709,10 @@ def _key_values(key: dict, field: str) -> set[str]:
 
 
 def outing_missions_for(item: dict) -> tuple[dict, ...]:
+    cid = str(item.get("id") or "").strip()
+    override = CARD_TALK_OVERRIDE.get(cid)
+    if override:
+        return override
     pt = str(item.get("packTemplate") or "")
     key = item.get("key") or {}
     if pt == "exhibits" or any(k in key for k in ("try", "body", "senses")):
@@ -641,14 +720,39 @@ def outing_missions_for(item: dict) -> tuple[dict, ...]:
     return OUTING_TALK_ANIMAL
 
 
-def real_extra_qa_pairs(item: dict) -> list[tuple[str, str]]:
-    """Venue qa_card only when it is not a notice stub. VFT stops own no facts."""
-    pairs: list[tuple[str, str]] = []
+def card_talk_qa_for(item: dict) -> dict[str, str]:
+    """Per-card More talk, then any real qa already on the item."""
+    cid = str(item.get("id") or "").strip()
+    override = CARD_TALK_QA_OVERRIDE.get(cid) or {}
+    q, a = str(override.get("question") or "").strip(), str(override.get("answer") or "").strip()
+    if q and a:
+        return {"question": q, "answer": a}
     qa = item.get("qa_card") or {}
     if not isinstance(qa, dict):
-        return pairs
+        return {}
     q, a = str(qa.get("question") or "").strip(), str(qa.get("answer") or "").strip()
     if q and a and not is_generic_notice_qa(q, a):
+        return {"question": q, "answer": a}
+    return {}
+
+
+def _mission_hints(m: dict, key: dict) -> set[str]:
+    field = m.get("key_field") or ""
+    raw = _key_values(key, field) if field else set()
+    aliases = m.get("key_aliases") or {}
+    out = set(raw)
+    for src, dest in aliases.items():
+        if src in raw and dest:
+            out.add(str(dest))
+    return out
+
+
+def real_extra_qa_pairs(item: dict) -> list[tuple[str, str]]:
+    """Card override or venue qa_card when it is not a notice stub. VFT stops own no facts."""
+    pairs: list[tuple[str, str]] = []
+    qa = card_talk_qa_for(item)
+    q, a = str(qa.get("question") or "").strip(), str(qa.get("answer") or "").strip()
+    if q and a:
         pairs.append((q, a))
     return pairs
 
@@ -666,11 +770,11 @@ def real_extra_qa_html(item: dict, *, heading: str = "More talk") -> str:
 
 
 def outing_talk_html(item: dict) -> str:
-    """On-screen 6-question outing template from catalog.js. No invented Q&A."""
+    """On-screen outing talk. Shared 6-Q unless this card has CARD_TALK_OVERRIDE."""
     key = item.get("key") or {}
     cards: list[str] = []
     for m in outing_missions_for(item):
-        hints = _key_values(key, m["key_field"]) if m.get("key_field") else set()
+        hints = _mission_hints(m, key)
         choices = []
         for label in m["choices"]:
             on = label in hints
@@ -681,12 +785,14 @@ def outing_talk_html(item: dict) -> str:
                 f"<span>{esc(label)}</span></button>"
             )
         note = f'<p class="card-talk-note">{esc(m["open_note"])}</p>' if m.get("open_note") else ""
+        n_choices = len(m["choices"])
         cards.append(
             f'<section class="mission card-talk-q" data-mission="{esc(m["id"])}">'
             f'<div class="mission-head"><span class="badge">{esc(m["num"])}</span>'
             f'<p class="mission-title">{esc(m["title"])}</p></div>'
             f'<h3 class="mission-q">{esc(m["question"])}</h3>'
-            f'<div class="choices" data-multi="{"1" if m.get("multi") else "0"}">'
+            f'<div class="choices" data-multi="{"1" if m.get("multi") else "0"}" '
+            f'data-count="{n_choices}">'
             f"{''.join(choices)}</div>{note}</section>"
         )
     extra = real_extra_qa_html(item)
@@ -4588,7 +4694,7 @@ def write_card_pages(
             continue
         item = enrich_item(c)
         vid = c.get("venue") or ""
-        real_qa = venue_real_qa_for_card(cid, vid)
+        real_qa = card_talk_qa_for(item) or venue_real_qa_for_card(cid, vid)
         if real_qa:
             item["qa_card"] = real_qa
         name = item.get("name") or cid
