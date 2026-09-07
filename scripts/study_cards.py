@@ -27,11 +27,13 @@ bush vs forest / Loxodonta, softens TP53 copy counts, and does not
 lock Endangered vs Critically Endangered letters. Park Ranger
 vs-Asian is ear size / back shape only.
 
-Facts for african-penguin Junior Ranger (easy) are Wikipedia-backed:
+Facts for african-penguin Junior Ranger + Park Ranger (easy + hard)
+are Wikipedia-backed:
 https://en.wikipedia.org/wiki/African_penguin
 Home is southern African coasts, not Antarctica. Soften IUCN
-Critically Endangered / exact status letters for later tiers.
-JR does not lock brittle status letters.
+Critically Endangered / exact status letters and pair counts. JR
+does not lock brittle status letters. Hard prefers threats and
+mechanisms (prey-fish shortage, guano loss) over status letters.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
@@ -70,7 +72,8 @@ LEVEL_DISPLAY_NAMES = {
 
 # Shipped picker order. A card only shows keys it actually defines.
 # Lion, reticulated-giraffe, and African elephant ship Junior Ranger +
-# Park Ranger + Zoologist. African penguin ships Junior Ranger only.
+# Park Ranger + Zoologist. African penguin ships Junior Ranger +
+# Park Ranger.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -1448,6 +1451,143 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "B",
                         "why": "Not every penguin lives somewhere icy. African penguins live on warmer coasts in southern Africa.",
+                    },
+                ],
+            },
+            "hard": {
+                # Answer-light: no Learn-first strip. Facts from Wikipedia,
+                # African penguin. Soften IUCN letters and pair counts.
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "heat-patch",
+                        "title": "Heat patch",
+                        "stem": "What does the bare pink skin above an African penguin’s eye help it do?",
+                        "choices": [
+                            "Hear better underwater",
+                            "Lose heat — the patch flushes pinker when the bird is warmer",
+                            "Store extra fish oil",
+                        ],
+                        "correct": "B",
+                        "why": "Bare pink skin above the eye helps dump heat. More blood flows there when the bird is warmer, so the patch looks pinker.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "chest-spots",
+                        "title": "Chest spots",
+                        "stem": "What is special about an African penguin’s chest spots?",
+                        "choices": [
+                            "Every penguin has the same spots",
+                            "Each bird’s spot pattern is unique, like a fingerprint",
+                            "The spots wash off in salt water",
+                        ],
+                        "correct": "B",
+                        "why": "The black spots on the chest form a pattern unique to each bird, like a human fingerprint. Keepers can use that to tell individuals apart.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "moult",
+                        "title": "Moult",
+                        "stem": "What happens in an African penguin’s catastrophic moult?",
+                        "choices": [
+                            "It sheds a few feathers a day and keeps swimming",
+                            "It sheds all its feathers at once and must stay out of the water for weeks while new ones grow",
+                            "It never replaces its feathers",
+                        ],
+                        "correct": "B",
+                        "why": "Penguins moult all feathers at once. New feathers are not waterproof yet, so the bird stays on land and fasts for weeks while the coat grows back.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "salt-gland",
+                        "title": "Salt gland",
+                        "stem": "How does an African penguin get rid of extra salt from seawater and sea food?",
+                        "choices": [
+                            "It never eats or drinks anything salty",
+                            "A salt gland near the eye helps dump the extra salt",
+                            "It stores salt in its flippers",
+                        ],
+                        "correct": "B",
+                        "why": "A salt gland near the eye lets the penguin get rid of extra salt from seawater and a marine diet, so the body can stay in balance.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "fish-shortage",
+                        "title": "Threats",
+                        "stem": "What is the biggest problem facing wild African penguins today?",
+                        "choices": [
+                            "Too many icebergs",
+                            "Not enough prey fish, after commercial fishing and warming seas",
+                            "Too many trees on the beach",
+                        ],
+                        "correct": "B",
+                        "why": "The biggest squeeze today is not enough prey fish. Commercial fishing and warming seas have made sardines and anchovies harder to find near colonies.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "guano",
+                        "title": "Guano",
+                        "stem": "How did old guano harvesting hurt African penguin nests?",
+                        "choices": [
+                            "It painted the rocks bright white",
+                            "It removed the dung layer they dug nest burrows into",
+                            "It made the fish taste better",
+                        ],
+                        "correct": "B",
+                        "why": "Penguins once dug nest burrows into a thick guano (dung) layer. People harvested that dung for fertilizer, so many colonies lost the layer they nested in.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "pairs",
+                        "title": "Pairs",
+                        "stem": "How do African penguin pairs often behave from year to year?",
+                        "choices": [
+                            "They pick a new partner every week",
+                            "They are often long-term and return to the same nest site",
+                            "They never come back to land",
+                        ],
+                        "correct": "B",
+                        "why": "Pairs are often long-term. They tend to return to the same nest site each breeding season.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "range",
+                        "title": "Range",
+                        "stem": "Where do African penguins breed in the wild?",
+                        "choices": [
+                            "On Arctic ice with polar bears",
+                            "On coasts and islands of southern Africa",
+                            "Only in inland deserts",
+                        ],
+                        "correct": "B",
+                        "why": "They breed on coasts and islands of southern Africa, such as Namibia and South Africa — the only penguin that breeds on the African continent.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "banded",
+                        "title": "Banded look",
+                        "stem": "Why are African penguins called banded penguins?",
+                        "choices": [
+                            "They wear metal ID bands only",
+                            "They belong to the Spheniscus group, with distinctive dark band(s) across the chest",
+                            "They have rainbow stripes on their flippers",
+                        ],
+                        "correct": "B",
+                        "why": "African penguins are banded (Spheniscus) penguins. They have distinctive dark band(s) across the chest — a light family look shared with a few other penguins.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "polar-bear",
+                        "title": "Myth buster",
+                        "stem": "Do wild penguins and polar bears ever meet?",
+                        "choices": [
+                            "Yes — they share the same ice",
+                            "No — they live at opposite ends of the planet",
+                            "Only in winter",
+                        ],
+                        "correct": "B",
+                        "why": "Polar bears live in the Arctic. Wild penguins live in the Southern Hemisphere. They never meet in the wild — opposite ends of the planet.",
                     },
                 ],
             },
