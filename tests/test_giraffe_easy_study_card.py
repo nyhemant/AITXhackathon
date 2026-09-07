@@ -137,7 +137,7 @@ class GiraffeEasyStudyCardTests(unittest.TestCase):
         self.assertIsNotNone(study_deck_for("african-lion", "zoologist"))
         self.assertEqual(study_deck_for("african-elephant")["level"], "easy")
         self.assertIsNotNone(study_deck_for("african-elephant", "hard"))
-        self.assertIsNone(study_deck_for("african-elephant", "zoologist"))
+        self.assertIsNotNone(study_deck_for("african-elephant", "zoologist"))
 
     def test_generator_html_is_study_not_worksheet(self):
         html = outing_talk_html({"id": "reticulated-giraffe", "packTemplate": "animals"})

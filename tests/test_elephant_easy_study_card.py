@@ -115,9 +115,9 @@ class ElephantEasyStudyCardTests(unittest.TestCase):
             study_card_ids(),
             ("african-lion", "reticulated-giraffe", "african-elephant"),
         )
-        self.assertEqual(shipped_levels_for("african-elephant"), ("easy", "hard"))
+        self.assertEqual(shipped_levels_for("african-elephant"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("african-elephant", "hard"))
-        self.assertIsNone(study_deck_for("african-elephant", "zoologist"))
+        self.assertIsNotNone(study_deck_for("african-elephant", "zoologist"))
         deck = study_deck_for("african-elephant")
         self.assertIsNotNone(deck)
         self.assertEqual(deck["id"], "african-elephant")
@@ -186,11 +186,11 @@ class ElephantEasyStudyCardTests(unittest.TestCase):
         visible = _text(html)
         self.assertIn("Junior Ranger", visible)
         self.assertIn("Park Ranger", visible)
-        self.assertNotIn("Zoologist", visible)
+        self.assertIn("Zoologist", visible)
         self.assertIn('class="study-level-picker"', html)
         self.assertIn('data-study-pick="easy"', html)
         self.assertIn('data-study-pick="hard"', html)
-        self.assertNotIn('data-study-pick="zoologist"', html)
+        self.assertIn('data-study-pick="zoologist"', html)
         self.assertNotIn('class="study-level-badge"', html)
         for badge in PLAIN_LEVEL_LABELS + AGE_BADGES:
             self.assertNotIn(badge, visible)
@@ -238,11 +238,11 @@ class ElephantEasyStudyCardTests(unittest.TestCase):
         visible = _text(main)
         self.assertIn("Junior Ranger", visible)
         self.assertIn("Park Ranger", visible)
-        self.assertNotIn("Zoologist", visible)
+        self.assertIn("Zoologist", visible)
         self.assertIn('class="study-level-picker"', main)
         self.assertIn('data-study-pick="easy"', main)
         self.assertIn('data-study-pick="hard"', main)
-        self.assertNotIn('data-study-pick="zoologist"', main)
+        self.assertIn('data-study-pick="zoologist"', main)
         self.assertNotIn('class="study-level-badge"', main)
         self.assertIn("Learn first", main)
         for badge in PLAIN_LEVEL_LABELS + AGE_BADGES:
@@ -312,13 +312,14 @@ class ElephantEasyStudyCardTests(unittest.TestCase):
         self.assertIn("african-lion", payload)
         elephant = payload["african-elephant"]
         self.assertEqual(elephant["id"], "african-elephant")
-        self.assertEqual(set(elephant["levels"]), {"easy", "hard"})
+        self.assertEqual(set(elephant["levels"]), {"easy", "hard", "zoologist"})
         easy = elephant["levels"]["easy"]
         self.assertEqual(len(easy["teach"]), 5)
         self.assertEqual(len(easy["questions"]), STUDY_SLOTS)
         for q in easy["questions"]:
             self.assertEqual(len(q["choices"]), 3)
         self.assertEqual(elephant["levels"]["hard"]["teach"], [])
+        self.assertEqual(elephant["levels"]["zoologist"]["teach"], [])
         data_js = STUDY_DATA_JS.read_text(encoding="utf-8")
         self.assertIn("african-elephant", data_js)
         self.assertIn('"easy":"Junior Ranger"', data_js)
