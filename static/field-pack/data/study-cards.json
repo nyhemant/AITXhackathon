@@ -2138,5 +2138,163 @@
         ]
       }
     }
+  },
+  "galapagos-tortoise": {
+    "id": "galapagos-tortoise",
+    "source": "https://en.wikipedia.org/wiki/Gal%C3%A1pagos_tortoise",
+    "source_note": "Facts from Wikipedia, Galápagos tortoise.",
+    "talk_about": [
+      "Why might a hard shell help a tortoise?",
+      "If you could live over 100 years, what would you want to see at the zoo?",
+      "Which other animal at the zoo has a shell or a hard covering?"
+    ],
+    "push_further": [
+      "A tortoise cannot leave its shell. How is that different from taking off a coat?",
+      "Galápagos tortoises move slowly. What might they notice that a fast animal would miss?",
+      "Find one more animal on your zoo map that eats plants. How does it reach its food?"
+    ],
+    "levels": {
+      "easy": {
+        "teach": [
+          "They live on islands near Ecuador in the Pacific (the Galápagos).",
+          "They are among the largest tortoises in the world.",
+          "They can live over 100 years.",
+          "They eat plants: grass, leaves, and cactus.",
+          "The hard covering on their back is a shell."
+        ],
+        "questions": [
+          {
+            "slot": 1,
+            "id": "home",
+            "title": "Home",
+            "stem": "Where do wild Galápagos tortoises live?",
+            "choices": [
+              "On islands near Ecuador in the Pacific (the Galápagos)",
+              "On the ice in Antarctica",
+              "Only in African deserts"
+            ],
+            "correct": "A",
+            "why": "They live on the Galápagos Islands in the Pacific Ocean, near Ecuador. That island home is why they are called Galápagos tortoises."
+          },
+          {
+            "slot": 2,
+            "id": "size",
+            "title": "Size",
+            "stem": "How big is a Galápagos tortoise?",
+            "choices": [
+              "Among the smallest turtles",
+              "Among the largest tortoises in the world",
+              "About the size of a mouse"
+            ],
+            "correct": "B",
+            "why": "Galápagos tortoises are giant tortoises — among the largest in the world. Wikipedia calls them the largest living tortoise."
+          },
+          {
+            "slot": 3,
+            "id": "age",
+            "title": "Age",
+            "stem": "How long can a Galápagos tortoise live?",
+            "choices": [
+              "Only a few weeks",
+              "Over 100 years",
+              "Just one summer"
+            ],
+            "correct": "B",
+            "why": "Wild Galápagos tortoises can live over 100 years. They are among the longest-lived animals."
+          },
+          {
+            "slot": 4,
+            "id": "food",
+            "title": "Food",
+            "stem": "What do Galápagos tortoises eat?",
+            "choices": [
+              "Mostly meat",
+              "Plants such as grass, leaves, and cactus",
+              "Only fish"
+            ],
+            "correct": "B",
+            "why": "They are plant-eaters. Wikipedia lists grasses, leaves, and cactus among the plants they nibble."
+          },
+          {
+            "slot": 5,
+            "id": "shell",
+            "title": "Shell",
+            "stem": "What is the hard covering on a Galápagos tortoise’s back?",
+            "choices": [
+              "A backpack",
+              "A shell",
+              "A hat"
+            ],
+            "correct": "B",
+            "why": "The hard covering on the back is a shell. It protects the tortoise’s body."
+          },
+          {
+            "slot": 6,
+            "id": "speed",
+            "title": "Speed",
+            "stem": "How does a Galápagos tortoise usually move?",
+            "choices": [
+              "It sprints like a cheetah",
+              "It moves slowly",
+              "It flies"
+            ],
+            "correct": "B",
+            "why": "Galápagos tortoises walk slowly. They are famous for being slow and steady."
+          },
+          {
+            "slot": 7,
+            "id": "eggs",
+            "title": "Eggs",
+            "stem": "How do baby Galápagos tortoises start life?",
+            "choices": [
+              "They hatch from eggs buried in the ground",
+              "They are born in the water like fish",
+              "They grow on trees"
+            ],
+            "correct": "A",
+            "why": "Mothers bury eggs in a nest in the ground. Later, the babies hatch and dig out."
+          },
+          {
+            "slot": 8,
+            "id": "hide",
+            "title": "Hide",
+            "stem": "What can a Galápagos tortoise do when it is frightened?",
+            "choices": [
+              "Pull its head and legs inside its shell",
+              "Climb a tall tree",
+              "Shoot water from its shell"
+            ],
+            "correct": "A",
+            "why": "When frightened, it can pull its head, neck, and legs inside the shell for safety."
+          },
+          {
+            "slot": 9,
+            "id": "neck",
+            "title": "Neck",
+            "stem": "What is special about a Galápagos tortoise’s neck?",
+            "choices": [
+              "It is too short to reach food",
+              "It is long and can stretch upward to reach food",
+              "It is made of metal"
+            ],
+            "correct": "B",
+            "why": "Many Galápagos tortoises have a long neck that can stretch up to reach leaves and cactus."
+          },
+          {
+            "slot": 10,
+            "id": "myth",
+            "title": "Myth buster",
+            "stem": "Can a Galápagos tortoise leave its shell?",
+            "choices": [
+              "Yes — the shell is a coat it takes off",
+              "No — the shell is part of its skeleton",
+              "Only at night"
+            ],
+            "correct": "B",
+            "why": "The shell is part of the tortoise’s skeleton, not a coat. It cannot leave its shell."
+          }
+        ]
+      }
+    }
   }
 }

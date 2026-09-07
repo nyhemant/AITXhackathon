@@ -59,6 +59,20 @@ lump/split with greater flamingo, the chick’s straight-to-bent bill,
 and a relatively secure status contrast — without locking an IUCN
 letter. Do not redo JR or PR themes.
 
+Facts for galapagos-tortoise Junior Ranger (easy only) are
+Wikipedia-backed:
+https://en.wikipedia.org/wiki/Gal%C3%A1pagos_tortoise
+Species is the Galápagos tortoise (Chelonoidis niger complex).
+JR stays simple “Galápagos tortoise.” Soften longevity to “over
+100 years” — no extreme 500-year claims, no Harriet / 177-year
+lock, and no kg weights. Home is the Galápagos Islands near
+Ecuador in the Pacific. They are among the largest tortoises,
+eat plants (grass, leaves, cactus), move slowly, bury eggs in
+the ground, can pull head and legs into the shell, and stretch
+a long neck upward to reach food. Myth: they cannot leave the
+shell — it is part of the skeleton, not a coat. Do not ship
+Park Ranger or Zoologist yet.
+
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
 zoologist. Visible copy uses LEVEL_DISPLAY_NAMES only — no age badges,
@@ -83,6 +97,7 @@ WIKI_AFRICAN_ELEPHANT = "https://en.wikipedia.org/wiki/African_elephant"
 WIKI_ELEPHANT = "https://en.wikipedia.org/wiki/Elephant"
 WIKI_AFRICAN_PENGUIN = "https://en.wikipedia.org/wiki/African_penguin"
 WIKI_AMERICAN_FLAMINGO = "https://en.wikipedia.org/wiki/American_flamingo"
+WIKI_GALAPAGOS_TORTOISE = "https://en.wikipedia.org/wiki/Gal%C3%A1pagos_tortoise"
 
 LETTERS = ("A", "B", "C")
 STUDY_SLOTS = 10
@@ -98,6 +113,7 @@ LEVEL_DISPLAY_NAMES = {
 # Shipped picker order. A card only shows keys it actually defines.
 # Lion, reticulated-giraffe, African elephant, African penguin, and
 # Caribbean flamingo ship Junior Ranger + Park Ranger + Zoologist.
+# Galápagos tortoise ships Junior Ranger only.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -151,6 +167,16 @@ PUSH_FURTHER_FLAMINGO = (
     "A flamingo’s pink colour comes from its food. What would happen if it ate different food?",
     "Flamingos can fly, even though people often see them only wading. Why might people miss that?",
     "Find one more bird on your zoo map that stands in water. How does it use its legs or beak?",
+)
+TALK_ABOUT_TORTOISE = (
+    "Why might a hard shell help a tortoise?",
+    "If you could live over 100 years, what would you want to see at the zoo?",
+    "Which other animal at the zoo has a shell or a hard covering?",
+)
+PUSH_FURTHER_TORTOISE = (
+    "A tortoise cannot leave its shell. How is that different from taking off a coat?",
+    "Galápagos tortoises move slowly. What might they notice that a fast animal would miss?",
+    "Find one more animal on your zoo map that eats plants. How does it reach its food?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -2184,6 +2210,153 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "B",
                         "why": "Wild American / Caribbean flamingos are often treated as relatively secure next to several more threatened zoo-card animals. We do not lock a single status letter.",
+                    },
+                ],
+            },
+        },
+    },
+    "galapagos-tortoise": {
+        "id": "galapagos-tortoise",
+        "source": WIKI_GALAPAGOS_TORTOISE,
+        "source_note": "Facts from Wikipedia, Galápagos tortoise.",
+        "talk_about": list(TALK_ABOUT_TORTOISE),
+        "push_further": list(PUSH_FURTHER_TORTOISE),
+        "levels": {
+            "easy": {
+                # Teaching-first: pride-of-place facts. Do not spoiler every quiz slot.
+                "teach": [
+                    "They live on islands near Ecuador in the Pacific (the Galápagos).",
+                    "They are among the largest tortoises in the world.",
+                    "They can live over 100 years.",
+                    "They eat plants: grass, leaves, and cactus.",
+                    "The hard covering on their back is a shell.",
+                ],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "home",
+                        "title": "Home",
+                        "stem": "Where do wild Galápagos tortoises live?",
+                        "choices": [
+                            "On islands near Ecuador in the Pacific (the Galápagos)",
+                            "On the ice in Antarctica",
+                            "Only in African deserts",
+                        ],
+                        "correct": "A",
+                        "why": "They live on the Galápagos Islands in the Pacific Ocean, near Ecuador. That island home is why they are called Galápagos tortoises.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "size",
+                        "title": "Size",
+                        "stem": "How big is a Galápagos tortoise?",
+                        "choices": [
+                            "Among the smallest turtles",
+                            "Among the largest tortoises in the world",
+                            "About the size of a mouse",
+                        ],
+                        "correct": "B",
+                        "why": "Galápagos tortoises are giant tortoises — among the largest in the world. Wikipedia calls them the largest living tortoise.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "age",
+                        "title": "Age",
+                        "stem": "How long can a Galápagos tortoise live?",
+                        "choices": [
+                            "Only a few weeks",
+                            "Over 100 years",
+                            "Just one summer",
+                        ],
+                        "correct": "B",
+                        "why": "Wild Galápagos tortoises can live over 100 years. They are among the longest-lived animals.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "food",
+                        "title": "Food",
+                        "stem": "What do Galápagos tortoises eat?",
+                        "choices": [
+                            "Mostly meat",
+                            "Plants such as grass, leaves, and cactus",
+                            "Only fish",
+                        ],
+                        "correct": "B",
+                        "why": "They are plant-eaters. Wikipedia lists grasses, leaves, and cactus among the plants they nibble.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "shell",
+                        "title": "Shell",
+                        "stem": "What is the hard covering on a Galápagos tortoise’s back?",
+                        "choices": ["A backpack", "A shell", "A hat"],
+                        "correct": "B",
+                        "why": "The hard covering on the back is a shell. It protects the tortoise’s body.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "speed",
+                        "title": "Speed",
+                        "stem": "How does a Galápagos tortoise usually move?",
+                        "choices": [
+                            "It sprints like a cheetah",
+                            "It moves slowly",
+                            "It flies",
+                        ],
+                        "correct": "B",
+                        "why": "Galápagos tortoises walk slowly. They are famous for being slow and steady.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "eggs",
+                        "title": "Eggs",
+                        "stem": "How do baby Galápagos tortoises start life?",
+                        "choices": [
+                            "They hatch from eggs buried in the ground",
+                            "They are born in the water like fish",
+                            "They grow on trees",
+                        ],
+                        "correct": "A",
+                        "why": "Mothers bury eggs in a nest in the ground. Later, the babies hatch and dig out.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "hide",
+                        "title": "Hide",
+                        "stem": "What can a Galápagos tortoise do when it is frightened?",
+                        "choices": [
+                            "Pull its head and legs inside its shell",
+                            "Climb a tall tree",
+                            "Shoot water from its shell",
+                        ],
+                        "correct": "A",
+                        "why": "When frightened, it can pull its head, neck, and legs inside the shell for safety.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "neck",
+                        "title": "Neck",
+                        "stem": "What is special about a Galápagos tortoise’s neck?",
+                        "choices": [
+                            "It is too short to reach food",
+                            "It is long and can stretch upward to reach food",
+                            "It is made of metal",
+                        ],
+                        "correct": "B",
+                        "why": "Many Galápagos tortoises have a long neck that can stretch up to reach leaves and cactus.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "myth",
+                        "title": "Myth buster",
+                        "stem": "Can a Galápagos tortoise leave its shell?",
+                        "choices": [
+                            "Yes — the shell is a coat it takes off",
+                            "No — the shell is part of its skeleton",
+                            "Only at night",
+                        ],
+                        "correct": "B",
+                        "why": "The shell is part of the tortoise’s skeleton, not a coat. It cannot leave its shell.",
                     },
                 ],
             },
