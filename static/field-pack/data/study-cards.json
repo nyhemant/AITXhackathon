@@ -144,6 +144,141 @@
             "why": "Cartoons show jungle lions, but wild lions mostly live on open grassland."
           }
         ]
+      },
+      "hard": {
+        "teach": [],
+        "questions": [
+          {
+            "slot": 1,
+            "id": "name",
+            "title": "Name",
+            "stem": "What is the lion’s scientific name?",
+            "choices": [
+              "Felis catus",
+              "Panthera leo",
+              "Canis lupus"
+            ],
+            "correct": "B",
+            "why": "The lion is a large cat in the genus Panthera. Its scientific name is Panthera leo."
+          },
+          {
+            "slot": 2,
+            "id": "pride-core",
+            "title": "Pride",
+            "stem": "In a typical pride, who forms the stable core?",
+            "choices": [
+              "A pack of unrelated males",
+              "Related females and their cubs",
+              "Only cubs with no adults"
+            ],
+            "correct": "B",
+            "why": "A pride’s stable core is related females and cubs. Adult males are usually unrelated to those females."
+          },
+          {
+            "slot": 3,
+            "id": "prey",
+            "title": "Prey",
+            "stem": "What do wild lions mostly hunt?",
+            "choices": [
+              "Tiny prey like hares and monkeys",
+              "Medium and large hooved mammals",
+              "Only fish"
+            ],
+            "correct": "B",
+            "why": "Lions mostly hunt medium-sized and large hooved mammals such as zebra, wildebeest, and buffalo — not tiny prey as their main diet."
+          },
+          {
+            "slot": 4,
+            "id": "speed",
+            "title": "Speed",
+            "stem": "How do lions usually chase prey?",
+            "choices": [
+              "Long stamina runs for many miles",
+              "Short fast bursts of about 30–37 mph",
+              "They never run"
+            ],
+            "correct": "B",
+            "why": "Lions have quick burst speed of about 48–59 km/h (30–37 mph) but little stamina, so they do not run long chases."
+          },
+          {
+            "slot": 5,
+            "id": "status",
+            "title": "Status",
+            "stem": "How does the IUCN list wild lions today?",
+            "choices": [
+              "Least Concern",
+              "Vulnerable",
+              "Extinct in the wild"
+            ],
+            "correct": "B",
+            "why": "Lions have been listed as Vulnerable on the IUCN Red List. African populations have declined sharply in recent decades."
+          },
+          {
+            "slot": 6,
+            "id": "asia",
+            "title": "Range",
+            "stem": "Where do wild Asiatic lions live today?",
+            "choices": [
+              "All across Asia",
+              "Mainly Gir National Park in western India",
+              "Only in zoos"
+            ],
+            "correct": "B",
+            "why": "Wild Asiatic lions today survive mainly in and around Gir National Park in Gujarat, western India."
+          },
+          {
+            "slot": 7,
+            "id": "cub-senses",
+            "title": "Cubs",
+            "stem": "When can a newborn lion cub see?",
+            "choices": [
+              "It is born with eyes already open",
+              "Eyes open around a week after birth",
+              "Eyes stay closed for a year"
+            ],
+            "correct": "B",
+            "why": "Lion cubs are born blind. Their eyes open around seven days after birth."
+          },
+          {
+            "slot": 8,
+            "id": "gestation",
+            "title": "Birth",
+            "stem": "About how long is a lioness’s pregnancy, and how many cubs are usual?",
+            "choices": [
+              "About 110 days; often 1–4 cubs",
+              "About 30 days; often 12 cubs",
+              "About two years; one cub only"
+            ],
+            "correct": "A",
+            "why": "Gestation is about 110 days. A litter is often between one and four cubs."
+          },
+          {
+            "slot": 9,
+            "id": "takeover",
+            "title": "Takeover",
+            "stem": "What often happens to young cubs when new males take over a pride?",
+            "choices": [
+              "The new males adopt every cub",
+              "The new males often kill existing young cubs",
+              "Cubs immediately leave to hunt alone"
+            ],
+            "correct": "B",
+            "why": "When new males oust the previous males, they often kill existing young cubs. Females then become ready to mate sooner."
+          },
+          {
+            "slot": 10,
+            "id": "white-lion",
+            "title": "Color",
+            "stem": "What makes a white lion white?",
+            "choices": [
+              "It is a true albino with pink eyes",
+              "A rare pale morph from leucism, with normal eye and skin pigment",
+              "It is painted by keepers"
+            ],
+            "correct": "B",
+            "why": "White lions are a rare pale morph caused by leucism, not true albinism. They still have normal pigmentation in the eyes and skin."
+          }
+        ]
       }
     }
   }

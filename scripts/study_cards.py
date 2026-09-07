@@ -1,11 +1,11 @@
-"""Per-card study decks (Easy now; Hard / Zoologist later).
+"""Per-card study decks (Easy + Hard now; Zoologist later).
 
-Facts for african-lion Easy are Wikipedia-backed:
+Facts for african-lion Easy and Hard are Wikipedia-backed:
 https://en.wikipedia.org/wiki/Lion
 Do not invent stats. Soften contested numbers. Roar distance may cite
 “about 8 km / 5 miles (Wikipedia).”
 
-Slot ids stay stable so later levels can plug into the same 10 questions.
+Slot numbers stay 1–10. Hard deepens different themes (not a redo of Easy).
 Internal keys stay easy / hard / zoologist. Visible copy uses
 LEVEL_DISPLAY_NAMES only — no age badges, no plain Easy / Hard labels.
 """
@@ -34,7 +34,10 @@ LEVEL_DISPLAY_NAMES = {
     "zoologist": "Zoologist",
 }
 
-# Only Easy ships this PR. Hard / Zoologist stay absent.
+# Shipped picker order. Zoologist stays absent until that deck exists.
+SHIPPED_LEVELS = ("easy", "hard")
+
+# Easy + Hard ship. Zoologist stays absent (name reserved only).
 STUDY_CARDS: dict[str, dict] = {
     "african-lion": {
         "id": "african-lion",
@@ -142,7 +145,135 @@ STUDY_CARDS: dict[str, dict] = {
                         "why": "Cartoons show jungle lions, but wild lions mostly live on open grassland.",
                     },
                 ],
-            }
+            },
+            "hard": {
+                # Answer-light: no Learn-first strip. Facts from Wikipedia, Lion.
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "name",
+                        "title": "Name",
+                        "stem": "What is the lion’s scientific name?",
+                        "choices": ["Felis catus", "Panthera leo", "Canis lupus"],
+                        "correct": "B",
+                        "why": "The lion is a large cat in the genus Panthera. Its scientific name is Panthera leo.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "pride-core",
+                        "title": "Pride",
+                        "stem": "In a typical pride, who forms the stable core?",
+                        "choices": [
+                            "A pack of unrelated males",
+                            "Related females and their cubs",
+                            "Only cubs with no adults",
+                        ],
+                        "correct": "B",
+                        "why": "A pride’s stable core is related females and cubs. Adult males are usually unrelated to those females.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "prey",
+                        "title": "Prey",
+                        "stem": "What do wild lions mostly hunt?",
+                        "choices": [
+                            "Tiny prey like hares and monkeys",
+                            "Medium and large hooved mammals",
+                            "Only fish",
+                        ],
+                        "correct": "B",
+                        "why": "Lions mostly hunt medium-sized and large hooved mammals such as zebra, wildebeest, and buffalo — not tiny prey as their main diet.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "speed",
+                        "title": "Speed",
+                        "stem": "How do lions usually chase prey?",
+                        "choices": [
+                            "Long stamina runs for many miles",
+                            "Short fast bursts of about 30–37 mph",
+                            "They never run",
+                        ],
+                        "correct": "B",
+                        "why": "Lions have quick burst speed of about 48–59 km/h (30–37 mph) but little stamina, so they do not run long chases.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "status",
+                        "title": "Status",
+                        "stem": "How does the IUCN list wild lions today?",
+                        "choices": ["Least Concern", "Vulnerable", "Extinct in the wild"],
+                        "correct": "B",
+                        "why": "Lions have been listed as Vulnerable on the IUCN Red List. African populations have declined sharply in recent decades.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "asia",
+                        "title": "Range",
+                        "stem": "Where do wild Asiatic lions live today?",
+                        "choices": [
+                            "All across Asia",
+                            "Mainly Gir National Park in western India",
+                            "Only in zoos",
+                        ],
+                        "correct": "B",
+                        "why": "Wild Asiatic lions today survive mainly in and around Gir National Park in Gujarat, western India.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "cub-senses",
+                        "title": "Cubs",
+                        "stem": "When can a newborn lion cub see?",
+                        "choices": [
+                            "It is born with eyes already open",
+                            "Eyes open around a week after birth",
+                            "Eyes stay closed for a year",
+                        ],
+                        "correct": "B",
+                        "why": "Lion cubs are born blind. Their eyes open around seven days after birth.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "gestation",
+                        "title": "Birth",
+                        "stem": "About how long is a lioness’s pregnancy, and how many cubs are usual?",
+                        "choices": [
+                            "About 110 days; often 1–4 cubs",
+                            "About 30 days; often 12 cubs",
+                            "About two years; one cub only",
+                        ],
+                        "correct": "A",
+                        "why": "Gestation is about 110 days. A litter is often between one and four cubs.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "takeover",
+                        "title": "Takeover",
+                        "stem": "What often happens to young cubs when new males take over a pride?",
+                        "choices": [
+                            "The new males adopt every cub",
+                            "The new males often kill existing young cubs",
+                            "Cubs immediately leave to hunt alone",
+                        ],
+                        "correct": "B",
+                        "why": "When new males oust the previous males, they often kill existing young cubs. Females then become ready to mate sooner.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "white-lion",
+                        "title": "Color",
+                        "stem": "What makes a white lion white?",
+                        "choices": [
+                            "It is a true albino with pink eyes",
+                            "A rare pale morph from leucism, with normal eye and skin pigment",
+                            "It is painted by keepers",
+                        ],
+                        "correct": "B",
+                        "why": "White lions are a rare pale morph caused by leucism, not true albinism. They still have normal pigmentation in the eyes and skin.",
+                    },
+                ],
+            },
         },
     }
 }
@@ -168,6 +299,13 @@ def study_card_ids() -> tuple[str, ...]:
     return tuple(STUDY_CARDS)
 
 
+def shipped_levels_for(card_id: str) -> tuple[str, ...]:
+    """Shipped picker keys for a card — never invent Zoologist."""
+    raw = STUDY_CARDS.get(str(card_id or "").strip()) or {}
+    have = raw.get("levels") or {}
+    return tuple(key for key in SHIPPED_LEVELS if key in have)
+
+
 def study_deck_for(card_id: str, level: str = DEFAULT_LEVEL) -> dict | None:
     """Return a flattened deck for one card + level, or None."""
     raw = STUDY_CARDS.get(str(card_id or "").strip())
@@ -191,13 +329,19 @@ def study_deck_for(card_id: str, level: str = DEFAULT_LEVEL) -> dict | None:
 
 
 def validate_deck(deck: dict) -> list[str]:
-    """Return human-readable problems. Empty means the Easy (or given) deck is locked."""
+    """Return human-readable problems. Empty list means the deck is locked.
+
+    Easy requires a Learn-first teach strip. Hard is answer-light (empty teach).
+    """
     errors: list[str] = []
     if not deck:
         return ["missing deck"]
+    level = str(deck.get("level") or DEFAULT_LEVEL)
     teach = deck.get("teach") or []
-    if not teach:
+    if level != "hard" and not teach:
         errors.append("teach strip empty")
+    if level == "hard" and teach:
+        errors.append("hard deck must not include a teach strip")
     questions = deck.get("questions") or []
     if len(questions) != STUDY_SLOTS:
         errors.append(f"expected {STUDY_SLOTS} questions, got {len(questions)}")
@@ -261,10 +405,33 @@ def write_study_artifacts() -> None:
     )
 
 
+def _level_picker_html(card_id: str, current: str) -> str:
+    """Junior Ranger / Park Ranger segment when more than one level ships."""
+    levels = shipped_levels_for(card_id)
+    if len(levels) < 2:
+        label = _esc(level_display_name(current))
+        return f'<p class="study-level-badge">{label}</p>'
+    buttons: list[str] = []
+    for key in levels:
+        on = key == current
+        pressed = "true" if on else "false"
+        active = " is-active" if on else ""
+        buttons.append(
+            f'<button type="button" class="study-level-btn{active}" '
+            f'data-study-pick="{_esc(key)}" aria-pressed="{pressed}">'
+            f"{_esc(level_display_name(key))}</button>"
+        )
+    return (
+        f'<div class="study-level-picker" role="group" aria-label="Study level">'
+        f"{''.join(buttons)}</div>"
+    )
+
+
 def study_talk_html(deck: dict, *, heading: str = "Talk") -> str:
-    """Screen: teach strip + 10 MCQs + reveal/why. Level badge uses display names."""
+    """Screen: optional teach strip + 10 MCQs + reveal/why. Picker when 2+ levels."""
     level = deck.get("level") or DEFAULT_LEVEL
-    level_label = _esc(deck.get("level_label") or level_display_name(level))
+    card_id = deck.get("id") or ""
+    picker = _level_picker_html(str(card_id), str(level))
     teach_items = "".join(f"<li>{_esc(line)}</li>" for line in deck.get("teach") or [])
     teach = (
         f'<div class="study-teach">'
@@ -304,7 +471,7 @@ def study_talk_html(deck: dict, *, heading: str = "Talk") -> str:
         f'data-study-id="{_esc(deck.get("id") or "")}" data-study-level="{_esc(level)}">'
         f'<div class="study-head">'
         f'<h2 class="card-talk-h">{_esc(heading)}</h2>'
-        f'<p class="study-level-badge">{level_label}</p>'
+        f"{picker}"
         f"</div>"
         f"{teach}"
         f'<div class="study-toolbar no-print">'

@@ -1,4 +1,4 @@
-/* Lion study-card (Hard / Zoologist later). Linked only from study decks. */
+/* Lion study-card (Junior Ranger + Park Ranger). Linked only from study decks. */
 .card-page .card-study-pack .study-head {
   display: flex;
   flex-wrap: wrap;
@@ -19,6 +19,53 @@
   font-size: 0.78rem;
   font-weight: 850;
   letter-spacing: 0.01em;
+}
+.card-page .card-study-pack .study-level-picker {
+  display: inline-flex;
+  max-width: 100%;
+  border-radius: 999px;
+  border: 1.5px solid rgba(15, 92, 92, 0.18);
+  overflow: hidden;
+  background: #fff;
+}
+.card-page .card-study-pack .study-level-btn {
+  appearance: none;
+  margin: 0;
+  border: none;
+  border-right: 1px solid rgba(15, 92, 92, 0.12);
+  background: transparent;
+  color: #3d4f6f;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 850;
+  letter-spacing: 0.01em;
+  padding: 0.32rem 0.7rem;
+  min-height: 36px;
+  cursor: pointer;
+}
+.card-page .card-study-pack .study-level-btn:last-child {
+  border-right: none;
+}
+.card-page .card-study-pack .study-level-btn:hover,
+.card-page .card-study-pack .study-level-btn:focus-visible {
+  background: #f0faf6;
+  color: #0a4545;
+  outline: none;
+}
+.card-page .card-study-pack .study-level-btn.is-active {
+  background: #0f5c5c;
+  color: #fff;
+}
+.card-page .card-study-pack .study-level-btn.is-active:hover,
+.card-page .card-study-pack .study-level-btn.is-active:focus-visible {
+  background: #0a4545;
+  color: #fff;
+}
+@media (max-width: 420px) {
+  .card-page .card-study-pack .study-level-btn {
+    font-size: 0.72rem;
+    padding: 0.32rem 0.55rem;
+  }
 }
 .card-page .card-study-pack .study-teach {
   margin: 0 0 0.85rem;

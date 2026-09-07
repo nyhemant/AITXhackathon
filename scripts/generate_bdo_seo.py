@@ -215,7 +215,7 @@ OUTING_TALK_ANIMAL = (
 )
 
 # Observation talk packs for cards that are not on a study deck yet.
-# Lion Easy (Junior Ranger) lives in scripts/study_cards.py. Do not put it here.
+# Lion Easy / Hard (Junior Ranger / Park Ranger) lives in scripts/study_cards.py.
 CARD_TALK_OVERRIDE: dict[str, tuple[dict, ...]] = {}
 
 # Optional More talk on a card. Unused while lion ships the Easy study deck.
@@ -291,10 +291,10 @@ LANDING_MAP_JS_VER = "87"
 LANDING_HOOK_JS_VER = "37"
 STYLES_CSS_VER = "40"
 CATALOG_JS_VER = "40"
-PRINT_KIT_JS_VER = "17"
-STUDY_CARD_JS_VER = "2"
-STUDY_CARD_CSS_VER = "2"
-STUDY_CARDS_DATA_JS_VER = "2"
+PRINT_KIT_JS_VER = "18"
+STUDY_CARD_JS_VER = "3"
+STUDY_CARD_CSS_VER = "3"
+STUDY_CARDS_DATA_JS_VER = "3"
 VIEWPORT = "width=device-width, initial-scale=1, viewport-fit=cover"
 MISSION_CSS_VER = "20"
 
