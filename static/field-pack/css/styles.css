@@ -1320,6 +1320,9 @@ a {
   body.printing-qa > *:not(#print-sheet) {
     display: none !important;
   }
+  body.printing-study > *:not(#print-sheet) {
+    display: none !important;
+  }
   body.printing-safari > *:not(#print-sheet) {
     display: none !important;
   }
@@ -1355,12 +1358,21 @@ a {
   /* Wrapper clamp — slightly under one printable page */
   body.printing-treasure #treasure-sheet,
   body.printing-qa #print-sheet:not(:empty),
-  body:not(.printing-treasure):not(.printing-safari):not(.printing-qa) #print-sheet:not(:empty) {
+  body:not(.printing-treasure):not(.printing-safari):not(.printing-qa):not(.printing-study) #print-sheet:not(:empty) {
     max-height: 9.5in;
     overflow: hidden;
     page-break-after: avoid;
     page-break-inside: avoid;
     break-inside: avoid;
+  }
+
+  /* Duplex study card: two clamped faces (front + back), not one wrapper page. */
+  body.printing-study #print-sheet:not(:empty) {
+    max-height: none !important;
+    overflow: visible !important;
+    page-break-after: auto;
+    page-break-inside: auto;
+    break-inside: auto;
   }
 
   body.printing-safari #print-sheet:not(:empty) {
@@ -1701,6 +1713,117 @@ a {
     font-size: 9pt;
     font-weight: 800;
     color: #d9652e;
+  }
+
+  /* Study card duplex — each face is one 9.4in sheet (letter slack + A4-ready). */
+  .ps-study-front,
+  .ps-study-back {
+    height: 9.4in;
+    max-height: 9.4in;
+    overflow: hidden !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+  .ps-study-front {
+    page-break-after: always !important;
+    break-after: page !important;
+  }
+  .ps-study-back {
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+  }
+  .ps-study-teach {
+    flex: 0 0 auto;
+    margin: 0 0 4px;
+    padding: 3px 6px 4px;
+    border: 1.5px solid #1f6b4a;
+    border-radius: 7px;
+    background: #fff8e8;
+  }
+  .ps-study-teach ul {
+    margin: 0;
+    padding-left: 1.1em;
+    columns: 2;
+    column-gap: 10px;
+    font-size: 7.5pt;
+    font-weight: 650;
+    line-height: 1.2;
+  }
+  .ps-study-teach li {
+    margin: 0 0 1px;
+    break-inside: avoid;
+  }
+  .ps-study-top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    flex: 0 0 auto;
+    height: 2.55in;
+    max-height: 2.55in;
+    margin-bottom: 4px;
+    min-height: 0;
+  }
+  .ps-study-photo {
+    border: 1.5px solid #1f6b4a;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #eef3f8;
+    min-width: 0;
+    min-height: 0;
+  }
+  .ps-study-photo .ps-photo-big {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: var(--ps-photo-pos, 50% 22%);
+  }
+  .ps-study-top-qs {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+    min-height: 0;
+  }
+  .ps-study-top-qs .ps-card {
+    flex: 1 1 0;
+  }
+  .ps-study-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: hidden;
+  }
+  .ps-study-q {
+    background: #f3faf7;
+  }
+  .ps-study-q .ps-choices,
+  .ps-study-choices {
+    grid-template-columns: 1fr;
+    gap: 1px 4px;
+  }
+  .ps-study-front .ps-q {
+    font-size: 8pt;
+    margin: 0 0 1px;
+  }
+  .ps-study-front .ps-choice {
+    font-size: 7pt;
+  }
+  .ps-study-answers {
+    flex: 1 1 auto;
+    min-height: 0;
+    margin: 0;
+    padding: 0 0 0 1.2em;
+    overflow: hidden;
+    font-size: 8pt;
+    line-height: 1.22;
+  }
+  .ps-study-answers li {
+    margin: 0 0 5px;
+  }
+  .ps-study-answers strong {
+    color: #0a4545;
   }
 
   /* ---- Treasure hunt (one page) ---- */

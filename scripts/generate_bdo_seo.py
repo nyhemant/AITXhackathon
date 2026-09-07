@@ -39,6 +39,12 @@ from field_pack_kit_tier import (  # noqa: E402
     print_status_line,
     status_chip_html,
 )
+from study_cards import (  # noqa: E402
+    study_deck_for,
+    study_print_html,
+    study_talk_html,
+    write_study_artifacts,
+)
 
 FIELD = REPO / "static" / "field-pack"
 VENUE_DATA_DIR = FIELD / "data" / "venues"
@@ -208,78 +214,12 @@ OUTING_TALK_ANIMAL = (
     },
 )
 
-# Per-card talk packs. Lion only for now — other animals stay on OUTING_TALK_ANIMAL.
-# Observation-first; well-known kid-safe facts; no venue-specific or niche stats.
-CARD_TALK_OVERRIDE: dict[str, tuple[dict, ...]] = {
-    "african-lion": (
-        {
-            "id": "mane",
-            "num": "1",
-            "title": "Mane",
-            "question": "Does this lion have a big fluffy mane?",
-            "choices": ["Yes", "No", "Can't tell"],
-            "multi": False,
-            "key_field": "",
-            "open_note": "Grown-up males often have a mane. Females and cubs usually don’t.",
-        },
-        {
-            "id": "look",
-            "num": "2",
-            "title": "Look close",
-            "question": "What do you notice?",
-            "choices": ["Whiskers", "Big paws", "Tuft on the tail", "Spots (a cub)"],
-            "multi": True,
-            "key_field": "",
-            "open_note": "Cubs can still show faint spots. Grown-ups usually don’t.",
-        },
-        {
-            "id": "pride",
-            "num": "3",
-            "title": "Pride",
-            "question": "Lions often live in a group called a pride. How many do you see?",
-            "choices": ["One", "More than one", "Can't tell"],
-            "multi": False,
-            "key_field": "",
-            "open_note": "A pride is a family group. Some days you only see one resting.",
-        },
-        {
-            "id": "food",
-            "num": "4",
-            "title": "Food",
-            "question": "Meat eater or plant eater?",
-            "choices": ["Meat eater", "Plant eater"],
-            "multi": False,
-            "key_field": "food",
-            "key_aliases": {"Meat": "Meat eater"},
-            "open_note": "Lions eat meat. They are hunters, not grazers.",
-        },
-        {
-            "id": "cam",
-            "num": "5",
-            "title": "See & say",
-            "question": "Did we see a lion — and what would you tell a grown-up?",
-            "choices": [
-                "Yes — at the place",
-                "Yes — on Watch Live",
-                "Not today",
-                "The mane",
-                "The pride",
-                "A roar",
-            ],
-            "multi": True,
-            "key_field": "",
-            "open_note": "Look, then say one true thing.",
-        },
-    ),
-}
+# Observation talk packs for cards that are not on a study deck yet.
+# Lion Easy lives in scripts/study_cards.py (10-slot quiz). Do not put it here.
+CARD_TALK_OVERRIDE: dict[str, tuple[dict, ...]] = {}
 
-# Optional More talk on a card. Kid-level, sourced (Nat Geo Kids lion page) — no numbers.
-CARD_TALK_QA_OVERRIDE: dict[str, dict[str, str]] = {
-    "african-lion": {
-        "question": "Why is a lion’s roar so loud?",
-        "answer": "So other lions far away can hear it — to call the pride and warn “this is our place.”",
-    },
-}
+# Optional More talk on a card. Unused while lion ships the Easy study deck.
+CARD_TALK_QA_OVERRIDE: dict[str, dict[str, str]] = {}
 
 OUTING_TALK_EXHIBIT = (
     {
@@ -349,8 +289,12 @@ CARD_SEO_CSS_VER = "32"
 LANDING_CSS_VER = "99"
 LANDING_MAP_JS_VER = "87"
 LANDING_HOOK_JS_VER = "37"
-STYLES_CSS_VER = "39"
+STYLES_CSS_VER = "40"
 CATALOG_JS_VER = "40"
+PRINT_KIT_JS_VER = "16"
+STUDY_CARD_JS_VER = "1"
+STUDY_CARD_CSS_VER = "1"
+STUDY_CARDS_DATA_JS_VER = "1"
 VIEWPORT = "width=device-width, initial-scale=1, viewport-fit=cover"
 MISSION_CSS_VER = "20"
 
@@ -770,7 +714,10 @@ def real_extra_qa_html(item: dict, *, heading: str = "More talk") -> str:
 
 
 def outing_talk_html(item: dict) -> str:
-    """On-screen outing talk. Shared 6-Q unless this card has CARD_TALK_OVERRIDE."""
+    """On-screen outing talk. Study deck (lion Easy) wins over CARD_TALK_OVERRIDE."""
+    deck = study_deck_for(str(item.get("id") or "").strip())
+    if deck:
+        return study_talk_html(deck, heading=CARD_TALK_H2)
     key = item.get("key") or {}
     cards: list[str] = []
     for m in outing_missions_for(item):
@@ -4683,6 +4630,7 @@ def write_card_pages(
     only_ids: set[str] | None = None,
 ) -> list[str]:
     """Static /field-pack/cards/<id>/ pages — catalog 6-Q + real extras + VFT cam/film."""
+    write_study_artifacts()
     urls: list[str] = []
     for c in cards:
         cid = (c.get("id") or "").strip()
@@ -4732,6 +4680,29 @@ def write_card_pages(
             else f'<p class="card-page-emoji" aria-hidden="true">{esc(emoji)}</p>'
         )
         talk_html = outing_talk_html(item)
+        study_deck = study_deck_for(cid)
+        study_scripts = ""
+        study_print_tpl = ""
+        study_json_tag = ""
+        study_css_link = ""
+        if study_deck:
+            study_json_tag = (
+                f'<script type="application/json" id="study-card-data">'
+                f"{json.dumps(study_deck, ensure_ascii=False)}"
+                f"</script>\n"
+            )
+            study_print_tpl = (
+                f'<template id="study-print-template">'
+                f"{study_print_html(study_deck, name=name, emoji=emoji, photo=photo, photo_pos=_photo_position(item, c) or '')}"
+                f"</template>\n"
+            )
+            study_scripts = (
+                f'  <script src="/field-pack/js/study-cards-data.js?v={STUDY_CARDS_DATA_JS_VER}"></script>\n'
+                f'  <script src="/field-pack/js/study-card.js?v={STUDY_CARD_JS_VER}"></script>\n'
+            )
+            study_css_link = (
+                f'\n  <link rel="stylesheet" href="/field-pack/css/study-card.css?v={STUDY_CARD_CSS_VER}" />'
+            )
         more_links = catalog_more_links_html(item, shared=not show_venue_chrome, allow_cam=False)
         kind = card_kind(c)
         watch_live = kind in ("animal", "sea_life")
@@ -4784,7 +4755,7 @@ def write_card_pages(
   <link rel="stylesheet" href="/shell/shell.css?v=6" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v={STYLES_CSS_VER}" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v={LANDING_CSS_VER}" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v={CARD_SEO_CSS_VER}" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v={CARD_SEO_CSS_VER}" />{study_css_link}
 </head>
 <body class="landing-body card-page-body">
   <div class="app">
@@ -4821,11 +4792,11 @@ def write_card_pages(
   </div>
   <div id="print-sheet" class="print-sheet" aria-hidden="true"></div>
   <div id="treasure-sheet" class="print-sheet treasure-sheet" aria-hidden="true"></div>
-  <script src="/shell/shell.js?v=5"></script>
+  {study_print_tpl}{study_json_tag}  <script src="/shell/shell.js?v=5"></script>
   <script src="/field-pack/js/fp-analytics.js?v=1"></script>
   <script src="/field-pack/js/catalog.js?v={CATALOG_JS_VER}"></script>
-  <script src="/field-pack/js/print-kit.js?v=15"></script>
-  <script>
+  <script src="/field-pack/js/print-kit.js?v={PRINT_KIT_JS_VER}"></script>
+{study_scripts}  <script>
     (function () {{
       var KIT_SITES = {kit_sites_js};
       var from = new URLSearchParams(window.location.search).get("from");
@@ -4861,7 +4832,7 @@ def write_card_pages(
         if (typeof FPTrack === "function") FPTrack("card_opened", {{ card_id: id, source: "card_page_print" }});
         if (window.FPPrint && FPPrint.printQaForItem) FPPrint.printQaForItem(id, vid || null);
       }});
-      document.querySelectorAll(".card-talk-pack .choice").forEach(function (choice) {{
+      document.querySelectorAll(".card-talk-pack .choice:not(.study-choice)").forEach(function (choice) {{
         choice.addEventListener("click", function () {{
           var group = choice.parentElement;
           var multi = group && group.getAttribute("data-multi") === "1";

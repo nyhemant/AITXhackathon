@@ -1,0 +1,63 @@
+/* Lion Easy study-card (Hard / Zoologist later). Linked only from study decks. */
+.card-page .card-study-pack .study-teach {
+  margin: 0 0 0.85rem;
+  padding: 0.7rem 0.85rem 0.75rem;
+  border-radius: 12px;
+  background: #fff8e8;
+  border: 1.5px solid rgba(15, 92, 92, 0.18);
+}
+.card-page .card-study-pack .study-teach-kicker {
+  margin: 0 0 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 850;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #0a4545;
+}
+.card-page .card-study-pack .study-teach ul {
+  margin: 0;
+  padding-left: 1.15em;
+}
+.card-page .card-study-pack .study-teach li {
+  margin: 0 0 0.25rem;
+  font-weight: 650;
+}
+.card-page .card-study-pack .study-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem 0.85rem;
+  margin: 0 0 0.75rem;
+}
+.card-page .card-study-pack .study-score {
+  margin: 0;
+  font-weight: 800;
+  color: #0a4545;
+}
+.card-page .card-study-pack .study-toolbar .btn {
+  min-height: 44px;
+}
+.card-page .card-study-pack .choices {
+  grid-template-columns: 1fr;
+}
+.card-page .card-study-pack .choices[data-count="3"] .choice:last-child {
+  grid-column: auto;
+}
+.card-page .card-study-pack .study-letter {
+  display: inline-block;
+  min-width: 1.1em;
+  font-weight: 850;
+  color: #0f5c5c;
+}
+.card-page .card-study-pack .study-why {
+  margin: 0.45rem 0 0;
+  color: #0a4545;
+  font-size: 0.92rem;
+  font-weight: 650;
+  line-height: 1.35;
+}
+.card-page .card-study-pack .study-source {
+  margin: 0.85rem 0 0;
+  color: #5a6a84;
+  font-size: 0.78rem;
+}

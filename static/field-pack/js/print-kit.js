@@ -684,25 +684,140 @@
     }
   }
 
-  function setPrintMode({ treasure, safari }) {
-    const qa = !treasure && !safari;
+  function setStudyPage(on) {
+    let el = document.getElementById("study-print-page-rule");
+    if (on) {
+      if (!el) {
+        el = document.createElement("style");
+        el.id = "study-print-page-rule";
+        /* A4 duplex-ready. Each .ps-study-* face is still 9.4in so letter stays slack-safe. */
+        el.textContent = "@page { size: A4 portrait; margin: 0.4in; }";
+        document.head.appendChild(el);
+      }
+    } else if (el) {
+      el.remove();
+    }
+  }
+
+  function flattenStudyDeck(raw, itemId) {
+    if (!raw) return null;
+    if (Array.isArray(raw.questions)) {
+      return raw;
+    }
+    const levels = raw.levels || {};
+    const pack = levels.easy || levels[Object.keys(levels)[0]];
+    if (!pack) return null;
+    return {
+      id: raw.id || itemId,
+      level: "easy",
+      source: raw.source || "",
+      source_note: raw.source_note || "",
+      teach: pack.teach || [],
+      questions: pack.questions || [],
+    };
+  }
+
+  function studyDeckFor(itemId) {
+    const cards = window.FP_STUDY_CARDS || {};
+    const fromWindow = flattenStudyDeck(cards[itemId], itemId);
+    if (fromWindow) return fromWindow;
+    const el = document.getElementById("study-card-data");
+    if (!el) return null;
+    try {
+      const d = JSON.parse(el.textContent || "");
+      if (d && (!itemId || d.id === itemId || !d.id)) return flattenStudyDeck(d, itemId) || d;
+    } catch (_) {
+      /* ignore */
+    }
+    return null;
+  }
+
+  function buildStudyCardHtml(item, venue, deck) {
+    const letters = ["A", "B", "C"];
+    const qs = (deck && deck.questions) || [];
+    const teach = (deck && deck.teach) || [];
+    const teachHtml = teach.length
+      ? `<div class="ps-study-teach"><p class="ps-talk-label">Learn first</p><ul>${teach
+          .map((t) => `<li>${escapeHtml(t)}</li>`)
+          .join("")}</ul></div>`
+      : "";
+    function qCard(q) {
+      const choices = (q.choices || [])
+        .slice(0, 3)
+        .map((label, i) => {
+          const letter = letters[i] || "";
+          return `<div class="ps-choice"><span class="ps-dot"></span><span>${letter} · ${escapeHtml(label)}</span></div>`;
+        })
+        .join("");
+      return `<section class="ps-card ps-study-q">
+        <div class="ps-card-head"><span class="ps-num">${escapeHtml(String(q.slot || ""))}</span>
+        <p class="ps-title">${escapeHtml(q.title || "")}</p></div>
+        <h3 class="ps-q">${escapeHtml(q.stem || "")}</h3>
+        <div class="ps-choices ps-study-choices">${choices}</div>
+      </section>`;
+    }
+    const photo = itemPhotoSrc(item);
+    const photoPos = (item && (item.photoPosition || item.photoFocus)) || "";
+    const photoPosStyle = photoPos
+      ? ` style="--ps-photo-pos:${escapeAttr(String(photoPos))};object-position:${escapeAttr(String(photoPos))}"`
+      : "";
+    const photoBlock = photo
+      ? `<div class="ps-study-photo"><img class="ps-photo-big" src="${escapeAttr(photo)}" alt="${escapeAttr(item.name || "Animal")}" decoding="async"${photoPosStyle} /></div>`
+      : "";
+    const answers = qs
+      .map((q) => {
+        const letter = String(q.correct || "");
+        const idx = letters.indexOf(letter);
+        const label = idx >= 0 ? (q.choices || [])[idx] || "" : "";
+        return `<li><strong>${escapeHtml(String(q.slot || ""))} ${escapeHtml(q.title || "")} — ${escapeHtml(letter)} ${escapeHtml(label)}.</strong> ${escapeHtml(q.why || "")}</li>`;
+      })
+      .join("");
+    const source = (deck && deck.source_note) || "Facts from Wikipedia, Lion.";
+    const wiki = (deck && deck.source) || "https://en.wikipedia.org/wiki/Lion";
+    const name = (item && item.name) || "";
+    const emoji = (item && item.emoji) || "";
+    return `<div class="ps-study-front ps-page">
+      <div class="ps-banner"><h1>FIELD TRIP KIT</h1>
+      <p>${escapeHtml(name)} · Circle one · Flip for answers</p></div>
+      <header class="ps-head"><h2>${escapeHtml((emoji + " " + name).trim())}</h2>
+      <p class="ps-line"><strong>Explorer:</strong> <span class="write-in-line">________________</span></p>
+      </header>
+      ${teachHtml}
+      <div class="ps-study-top">${photoBlock}<div class="ps-study-top-qs">${qs.slice(0, 2).map(qCard).join("")}</div></div>
+      <div class="ps-study-grid">${qs.slice(2).map(qCard).join("")}</div>
+      <p class="ps-footer">${escapeHtml(source)} · 1less.app · Duplex: this side questions, back answers</p>
+    </div>
+    <div class="ps-study-back ps-page">
+      <div class="ps-banner"><h1>FIELD TRIP KIT</h1>
+      <p>${escapeHtml(name)} · Answers</p></div>
+      <ol class="ps-study-answers">${answers}</ol>
+      <p class="ps-footer">${escapeHtml(source)} · ${escapeHtml(wiki)}</p>
+    </div>`;
+  }
+
+  function setPrintMode({ treasure, safari, study }) {
+    const qa = !treasure && !safari && !study;
     document.body.classList.toggle("printing-treasure", Boolean(treasure));
     document.body.classList.toggle("printing-safari", Boolean(safari));
+    document.body.classList.toggle("printing-study", Boolean(study));
     document.body.classList.toggle("printing-qa", qa);
     document.documentElement.classList.toggle("printing-treasure", Boolean(treasure));
     document.documentElement.classList.toggle("printing-safari", Boolean(safari));
+    document.documentElement.classList.toggle("printing-study", Boolean(study));
     document.documentElement.classList.toggle("printing-qa", qa);
     setSafariLandscape(Boolean(safari));
+    setStudyPage(Boolean(study));
   }
 
   function clearPrintMode() {
-    document.body.classList.remove("printing-treasure", "printing-safari", "printing-qa");
-    document.documentElement.classList.remove("printing-treasure", "printing-safari", "printing-qa");
+    document.body.classList.remove("printing-treasure", "printing-safari", "printing-qa", "printing-study");
+    document.documentElement.classList.remove("printing-treasure", "printing-safari", "printing-qa", "printing-study");
     setSafariLandscape(false);
+    setStudyPage(false);
   }
 
-  function runPrint({ treasure, safari }) {
-    setPrintMode({ treasure: Boolean(treasure), safari: Boolean(safari) });
+  function runPrint({ treasure, safari, study }) {
+    setPrintMode({ treasure: Boolean(treasure), safari: Boolean(safari), study: Boolean(study) });
     const cleanup = () => {
       clearPrintMode();
       window.removeEventListener("afterprint", cleanup);
@@ -862,6 +977,34 @@
     const resolved = getItem(itemId, venue) || item;
     const { printSheet, treasureSheet } = sheets();
     if (!printSheet) return false;
+    const studyTpl = document.getElementById("study-print-template");
+    const deck = studyDeckFor(itemId);
+    if (studyTpl && studyTpl.innerHTML.trim() && deck) {
+      printSheet.innerHTML = studyTpl.innerHTML;
+      if (treasureSheet) treasureSheet.innerHTML = "";
+      track("qa_catalog_printed", {
+        item_id: resolved.id || itemId,
+        item_name: resolved.name || "",
+        venue_slug: venue.id || "",
+        product: "field_trip_kit",
+        source: "study_card",
+      });
+      waitForPrintImages(printSheet).then(() => runPrint({ treasure: false, study: true }));
+      return true;
+    }
+    if (deck) {
+      printSheet.innerHTML = buildStudyCardHtml(resolved, venue, deck);
+      if (treasureSheet) treasureSheet.innerHTML = "";
+      track("qa_catalog_printed", {
+        item_id: resolved.id || itemId,
+        item_name: resolved.name || "",
+        venue_slug: venue.id || "",
+        product: "field_trip_kit",
+        source: "study_card",
+      });
+      waitForPrintImages(printSheet).then(() => runPrint({ treasure: false, study: true }));
+      return true;
+    }
     printSheet.innerHTML = buildQaCardHtml(resolved, venue, {
       bannerNote: `${resolved.name || itemId} · Q&A card · Circle answers · No scores`,
       footer: "Catalog card · Field Trip Kit",
@@ -1026,6 +1169,8 @@
     fillQaPrintSheet,
     printHomeSafari,
     buildQaCardHtml,
+    buildStudyCardHtml,
+    studyDeckFor,
     itemPhotoSrc,
     wowFactFromItem,
     topPickItemId,
