@@ -122,7 +122,7 @@ class CardWatchLiveTests(unittest.TestCase):
             self.assertIn('id="vz-card-nav"', html)
             self.assertIn('id="vz-back-card"', html)
             self.assertIn('id="vz-next-stop"', html)
-            self.assertIn("virtual-venue.js?v=98", html)
+            self.assertIn("virtual-venue.js?v=99", html)
             self.assertIn("virtual-venue.css?v=57", html)
 
     def test_card_watch_hrefs_are_internal(self):
@@ -159,6 +159,7 @@ class CardWatchLiveTests(unittest.TestCase):
         self.assertIn("function cardFocusId(", js)
         self.assertIn("function fullWalkList(", js)
         self.assertIn("function skipTrailVias(", js)
+        self.assertIn("function localStopTrail(", js)
         self.assertIn("function refreshCardFocusMap(", js)
         self.assertIn('q.set("habitat", hid)', js)
         walk = body("walkList")
@@ -170,6 +171,7 @@ class CardWatchLiveTests(unittest.TestCase):
         self.assertNotIn("walkList()", nxt)
         trail = body("zooTrailPoints")
         self.assertIn("skipTrailVias()", trail)
+        self.assertIn("localStopTrail(byId)", trail)
         self.assertIn("if (shortPath) return", trail)
         close = body("closeDialog")
         self.assertIn("fromCard()", close)

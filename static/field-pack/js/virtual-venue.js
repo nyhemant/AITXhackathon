@@ -707,6 +707,47 @@
     return walkList().length <= 2;
   }
 
+  function stopBesidePt(step, c) {
+    const b = (step && step.beside) || [0, 0];
+    return trailPt(c.x + b[0], c.y + b[1]);
+  }
+
+  function localStopTrail(byId) {
+    const ids = Object.keys(byId);
+    if (ids.length !== 1) return null;
+    const stopId = ids[0];
+    const idx = ZOO_TRAIL_WAYPOINTS.findIndex((s) => s.stop === stopId);
+    const c = byId[stopId];
+    if (idx < 0 || !c) return null;
+    const pts = [];
+    for (let i = idx - 1; i >= 0; i--) {
+      const step = ZOO_TRAIL_WAYPOINTS[i];
+      if (step.via) {
+        pts.push(trailPt(step.via[0], step.via[1]));
+        break;
+      }
+      if (step.gate) {
+        const g = gateCenter(step.gate);
+        if (g) pts.push(g);
+        break;
+      }
+    }
+    pts.push(stopBesidePt(ZOO_TRAIL_WAYPOINTS[idx], c));
+    for (let i = idx + 1; i < ZOO_TRAIL_WAYPOINTS.length; i++) {
+      const step = ZOO_TRAIL_WAYPOINTS[i];
+      if (step.via) {
+        pts.push(trailPt(step.via[0], step.via[1]));
+        break;
+      }
+      if (step.gate) {
+        const g = gateCenter(step.gate);
+        if (g) pts.push(g);
+        break;
+      }
+    }
+    return pts.length >= 2 ? pts : null;
+  }
+
   function zooTrailPoints() {
     const byId = {};
     walkList().forEach((h) => {
@@ -715,6 +756,10 @@
       const c = spotCenter(el);
       if (c) byId[h.id] = c;
     });
+    if (skipTrailVias()) {
+      const local = localStopTrail(byId);
+      if (local) return local;
+    }
     const pts = [];
     const shortPath = skipTrailVias();
     ZOO_TRAIL_WAYPOINTS.forEach((step) => {
@@ -731,8 +776,7 @@
       if (!step.stop) return;
       const c = byId[step.stop];
       if (!c) return;
-      const b = step.beside || [0, 0];
-      pts.push(trailPt(c.x + b[0], c.y + b[1]));
+      pts.push(stopBesidePt(step, c));
     });
     return pts;
   }

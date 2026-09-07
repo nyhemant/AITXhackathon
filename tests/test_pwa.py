@@ -176,7 +176,7 @@ class PwaTests(unittest.TestCase):
         for html in self.vft.values():
             self.assertIn('href="/pwa/pwa.css?v=1"', html)
             self.assertIn("virtual-venue.css?v=57", html)
-            self.assertIn("virtual-venue.js?v=98", html)
+            self.assertIn("virtual-venue.js?v=99", html)
 
     def test_register_is_served_and_csp_allows_worker(self):
         js = _get("/pwa/register.js")
