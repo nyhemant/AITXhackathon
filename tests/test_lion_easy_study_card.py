@@ -10,7 +10,7 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO / "scripts"))
 
-from generate_bdo_seo import CARD_TALK_H2, outing_talk_html  # noqa: E402
+from generate_bdo_seo import CARD_TALK_H2, STUDY_CARD_CSS_VER, outing_talk_html  # noqa: E402
 from study_cards import (  # noqa: E402
     LEVEL_DISPLAY_NAMES,
     PUSH_FURTHER_LION,
@@ -155,7 +155,7 @@ class LionEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Look close — mane, whiskers, a tuft on the tail.", html)
         self.assertNotIn("mighty roar", html)
         self.assertIn("study-card.js?v=6", html)
-        self.assertIn("study-card.css?v=6", html)
+        self.assertIn("study-card.css?v=7", html)
         self.assertIn("study-cards-data.js?v=5", html)
         self.assertIn('id="study-card-data"', html)
         self.assertIn('"level_label": "Junior Ranger"', html)
@@ -270,6 +270,18 @@ class LionEasyStudyCardTests(unittest.TestCase):
         self.assertIn('"hard":"Park Ranger"', data_js)
         self.assertIn('"zoologist":"Zoologist"', data_js)
         self.assertIn("window.FPStudyLevelName", data_js)
+
+    def test_desktop_widens_study_card_page_only(self):
+        css = (FP / "css" / "study-card.css").read_text(encoding="utf-8")
+        seo = (FP / "css" / "seo-venue.css").read_text(encoding="utf-8")
+        self.assertEqual(STUDY_CARD_CSS_VER, "7")
+        self.assertIn("max-width: 34rem;", seo)
+        self.assertIn("@media screen and (min-width: 960px)", css)
+        self.assertIn("max-width: 48rem;", css)
+        self.assertIn(".study-choice.is-wrong-pick", css)
+        self.assertNotIn("@media print", css)
+        elephant = ELEPHANT.read_text(encoding="utf-8")
+        self.assertNotIn("study-card.css", elephant)
 
 
 if __name__ == "__main__":
