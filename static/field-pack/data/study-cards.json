@@ -1710,5 +1710,163 @@
         ]
       }
     }
+  },
+  "caribbean-flamingo": {
+    "id": "caribbean-flamingo",
+    "source": "https://en.wikipedia.org/wiki/American_flamingo",
+    "source_note": "Facts from Wikipedia, American flamingo / Caribbean flamingo.",
+    "talk_about": [
+      "Why might standing on one leg help a flamingo?",
+      "If you had a long, bendy neck, what would you look at first at the zoo?",
+      "Which other animal at the zoo lives near the water?"
+    ],
+    "push_further": [
+      "A flamingo’s pink colour comes from its food. What would happen if it ate different food?",
+      "Flamingos can fly, even though people often see them only wading. Why might people miss that?",
+      "Find one more bird on your zoo map that stands in water. How does it use its legs or beak?"
+    ],
+    "levels": {
+      "easy": {
+        "teach": [
+          "Grown-up Caribbean flamingos are bright pink.",
+          "They often stand on one leg.",
+          "They find food in shallow water.",
+          "A group of flamingos is a flock.",
+          "Baby flamingos are grey and fluffy — not bright pink at first."
+        ],
+        "questions": [
+          {
+            "slot": 1,
+            "id": "colour",
+            "title": "Colour",
+            "stem": "What colour are grown-up Caribbean flamingos?",
+            "choices": [
+              "Bright green",
+              "Bright pink / reddish-pink",
+              "All black"
+            ],
+            "correct": "B",
+            "why": "Adult American flamingos — also called Caribbean flamingos — have reddish-pink feathers. Wikipedia also calls them rosy flamingos because of that pink colour."
+          },
+          {
+            "slot": 2,
+            "id": "one-leg",
+            "title": "One leg",
+            "stem": "How do Caribbean flamingos often stand?",
+            "choices": [
+              "On one leg",
+              "On their beaks",
+              "Upside down in trees"
+            ],
+            "correct": "A",
+            "why": "Flamingos often stand on one leg with the other tucked up. Wikipedia says this may help them keep warm or rest with less effort."
+          },
+          {
+            "slot": 3,
+            "id": "food-place",
+            "title": "Food place",
+            "stem": "Where do Caribbean flamingos find their food?",
+            "choices": [
+              "High in rainforest trees",
+              "In shallow water",
+              "Only on dry desert sand"
+            ],
+            "correct": "B",
+            "why": "They wade in shallow water — lagoons, mudflats, and shallow lakes — and stir the bottom to find small food."
+          },
+          {
+            "slot": 4,
+            "id": "flock",
+            "title": "Flock",
+            "stem": "What do you call a group of Caribbean flamingos?",
+            "choices": [
+              "A pride",
+              "A flock",
+              "A school"
+            ],
+            "correct": "B",
+            "why": "Flamingos live and fly together in a flock. Wikipedia often talks about flocks of American flamingos."
+          },
+          {
+            "slot": 5,
+            "id": "chicks",
+            "title": "Chicks",
+            "stem": "What do baby Caribbean flamingos look like at first?",
+            "choices": [
+              "Bright pink like the grown-ups",
+              "Grey and fluffy",
+              "Covered in shiny scales"
+            ],
+            "correct": "B",
+            "why": "Chicks hatch greyish and fluffy. They are not bright pink at first — that colour comes later from their food."
+          },
+          {
+            "slot": 6,
+            "id": "neck",
+            "title": "Neck",
+            "stem": "What is special about a Caribbean flamingo’s neck?",
+            "choices": [
+              "It is short and stiff",
+              "It is long and bendy",
+              "It is made of wood"
+            ],
+            "correct": "B",
+            "why": "Flamingos have a long, bendy neck. It helps them reach down into shallow water to feed."
+          },
+          {
+            "slot": 7,
+            "id": "nest",
+            "title": "Nest",
+            "stem": "What kind of nest does a Caribbean flamingo build?",
+            "choices": [
+              "A high stick nest in a tree",
+              "A little mound of mud",
+              "A hole in Antarctic ice"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says the American flamingo lays its egg on a mud mound. Both parents help with the nest."
+          },
+          {
+            "slot": 8,
+            "id": "beak",
+            "title": "Beak",
+            "stem": "What is a Caribbean flamingo’s beak like?",
+            "choices": [
+              "Straight like a needle",
+              "Bent in the middle (curved / angled)",
+              "Round like a spoon with no bend"
+            ],
+            "correct": "B",
+            "why": "The beak is hooked downward — bent in the middle. That curved shape helps the bird filter food from the water."
+          },
+          {
+            "slot": 9,
+            "id": "pink-food",
+            "title": "Pink from food",
+            "stem": "Why are grown-up Caribbean flamingos pink?",
+            "choices": [
+              "They are painted pink",
+              "The pink colour comes from the food they eat",
+              "They are born that bright pink"
+            ],
+            "correct": "B",
+            "why": "The pink comes from colour in their food, such as tiny shrimp and algae. They are not painted, and chicks are not born that bright pink."
+          },
+          {
+            "slot": 10,
+            "id": "myth",
+            "title": "Myth buster",
+            "stem": "Can Caribbean flamingos fly?",
+            "choices": [
+              "No — they are flightless like ostriches",
+              "Yes — they are strong fliers",
+              "Only if a zoo clips their wings first"
+            ],
+            "correct": "B",
+            "why": "Flamingos are capable flyers. They fly in flocks to find food. They are not flightless."
+          }
+        ]
+      }
+    }
   }
 }

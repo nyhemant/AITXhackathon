@@ -113,7 +113,13 @@ class ElephantEasyStudyCardTests(unittest.TestCase):
         self.assertIn("african-elephant", study_card_ids())
         self.assertEqual(
             study_card_ids(),
-            ("african-lion", "reticulated-giraffe", "african-elephant", "african-penguin"),
+            (
+                "african-lion",
+                "reticulated-giraffe",
+                "african-elephant",
+                "african-penguin",
+                "caribbean-flamingo",
+            ),
         )
         self.assertEqual(shipped_levels_for("african-elephant"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("african-elephant", "hard"))
