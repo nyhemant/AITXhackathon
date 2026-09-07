@@ -1,7 +1,7 @@
 /**
  * Study-card quiz: tap a choice to lock it, see why, optional score + Show answers.
  * Level keys stay easy / hard / zoologist; visible names come from FPStudyLevelName.
- * Lion ships Junior Ranger + Park Ranger on the same card (query ?level= or picker).
+ * Lion ships Junior Ranger + Park Ranger + Zoologist on the same card (query ?level= or picker).
  */
 (() => {
   const LETTERS = ["A", "B", "C"];
@@ -29,6 +29,7 @@
       .replace(/\s+/g, "-");
     if (key === "hard" || key === "park-ranger") return "hard";
     if (key === "easy" || key === "junior-ranger") return "easy";
+    if (key === "zoologist") return "zoologist";
     return "";
   }
 
@@ -48,7 +49,7 @@
   function shippedLevels(id) {
     const raw = rawCard(id);
     const levels = (raw && raw.levels) || {};
-    return ["easy", "hard"].filter((key) => levels[key] && Array.isArray(levels[key].questions));
+    return ["easy", "hard", "zoologist"].filter((key) => levels[key] && Array.isArray(levels[key].questions));
   }
 
   function flattenDeck(id, level) {
@@ -353,7 +354,7 @@
     const available = shippedLevels(id);
     const level = available.includes(wanted) ? wanted : "easy";
     const deck = flattenDeck(id, level);
-    if (deck && (deck.level !== (root.getAttribute("data-study-level") || "easy") || levelFromQuery() === "hard")) {
+    if (deck && (deck.level !== (root.getAttribute("data-study-level") || "easy") || levelFromQuery() === "hard" || levelFromQuery() === "zoologist")) {
       applyDeck(root, deck);
       rememberLevel(deck.level);
     } else {

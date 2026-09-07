@@ -715,11 +715,12 @@
   function selectedStudyLevel() {
     const pack = document.querySelector(".card-study-pack");
     const fromDom = pack && pack.getAttribute("data-study-level");
-    if (fromDom === "easy" || fromDom === "hard") return fromDom;
+    if (fromDom === "easy" || fromDom === "hard" || fromDom === "zoologist") return fromDom;
     try {
       const q = new URLSearchParams(window.location.search).get("level");
       if (q === "hard" || q === "park-ranger") return "hard";
       if (q === "easy" || q === "junior-ranger") return "easy";
+      if (q === "zoologist") return "zoologist";
     } catch (_) {
       /* ignore */
     }
