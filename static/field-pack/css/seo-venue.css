@@ -1934,6 +1934,21 @@ body.seo-venue-body {
   font-size: 1.05rem;
   min-height: 44px;
 }
+.card-page .seo-watch-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
+}
+.card-page .card-watch-live {
+  min-height: 44px;
+}
+.card-page .seo-watch-row .seo-watch-source {
+  display: block;
+  font-size: 0.86rem;
+  font-weight: 650;
+  color: #5a6a84;
+}
 .card-print-note {
   order: 4;
   margin: 0.45rem 0 0;

@@ -955,6 +955,18 @@ html[data-vft-print="1"] .vz-print-row,
   font-size: 0.95rem;
   min-height: 44px;
 }
+.vz-card-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin: 0.75rem 0 0;
+}
+.vz-card-nav[hidden] {
+  display: none;
+}
+.vz-card-nav .btn {
+  min-height: 44px;
+}
 .vz-watch {
   display: flex;
   flex-direction: column;

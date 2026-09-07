@@ -24,7 +24,10 @@ from generate_bdo_seo import (  # noqa: E402
     CTA_PRINT,
     CTA_PRINT_CARD,
     HOME_HREF,
+    CTA_WATCH_LIVE,
     PLACE_VFT_CTA,
+    card_watch_href,
+    vft_has_inpage_media,
     CARD_SEO_CSS_VER,
     is_youtube_url,
     watch_links_html,
@@ -84,6 +87,8 @@ class CardPageSparseChromeTests(unittest.TestCase):
         self.assertEqual(CTA_CARDS_HUB, "Cards")
         self.assertEqual(CTA_CARD_PLACE, "Place")
         self.assertEqual(PLACE_VFT_CTA, "Virtual Field Trip")
+        self.assertEqual(CTA_WATCH_LIVE, "Watch Live")
+        self.assertIn('CTA_WATCH_LIVE = "Watch Live"', self.gen)
         self.assertIn('CARD_TALK_H2 = "Talk"', self.gen)
         self.assertIn('CTA_CARD_PLACE = "Place"', self.gen)
         self.assertIn('CTA_PRINT_CARD = "Print this card"', self.gen)
@@ -122,9 +127,11 @@ class CardPageSparseChromeTests(unittest.TestCase):
             main = _main(html)
             actions = main.split('class="card-page-actions"', 1)[1]
             with self.subTest(card=cid):
-                self.assertIn(f">{PLACE_VFT_CTA}</a>", actions)
+                self.assertIn(f">{CTA_WATCH_LIVE}</a>", actions)
+                self.assertIn("card-watch-live", actions)
                 self.assertIn(f">{CTA_PRINT_CARD}</button>", actions)
                 self.assertNotIn("Explore at home", actions)
+                self.assertNotIn("nationalzoo.si.edu", actions)
                 self.assertLessEqual(actions.count('class="btn '), 3)
 
     def test_pre_recorded_film_uses_vft_not_youtube(self):
@@ -132,12 +139,16 @@ class CardPageSparseChromeTests(unittest.TestCase):
             main = _main(html)
             with self.subTest(card=cid):
                 self.assertNotIn("youtube.com", main.lower())
-                self.assertIn("/field-pack/virtual-field-trip/?tab=", main)
                 self.assertIn("#habitat=", main)
+                self.assertNotIn("nationalzoo.si.edu", main)
+                self.assertNotIn("houstonzoo.org", main)
+                self.assertNotIn('target="_blank"', main.split('class="seo-watch-row"', 1)[1].split("</p>", 1)[0])
 
-    def test_watch_links_helper_routes_youtube_film_to_vft(self):
+    def test_watch_links_helper_routes_card_watch_live_in_page(self):
         item = {
             "vft": {
+                "tab": "zoo",
+                "habitat_id": "african-lion",
                 "cam_url": "https://nationalzoo.si.edu/webcams/lion-cam",
                 "cam_label": "Lion cam at the Smithsonian National Zoo",
                 "film_url": "https://www.youtube.com/watch?v=tlZwYsJpqjo",
@@ -146,14 +157,23 @@ class CardPageSparseChromeTests(unittest.TestCase):
             }
         }
         place = watch_links_html(item)
-        card = watch_links_html(item, film_via_vft=True)
+        card = watch_links_html(item, film_via_vft=True, watch_live=True)
         self.assertIn("youtube.com", place)
+        self.assertIn("nationalzoo.si.edu", place)
         self.assertNotIn("youtube.com", card)
-        self.assertIn("/field-pack/virtual-field-trip/?tab=zoo#habitat=african-lion", card)
-        self.assertIn("Film from Houston Zoo", card)
+        self.assertNotIn("nationalzoo.si.edu", card)
+        self.assertIn("Watch Live", card)
+        self.assertIn("/field-pack/virtual-zoo/?from=card#habitat=african-lion", card)
         self.assertIn("Live from Smithsonian National Zoo", card)
+        self.assertNotIn('target="_blank"', card)
+        self.assertTrue(vft_has_inpage_media(item["vft"]))
+        self.assertEqual(
+            card_watch_href(item["vft"]),
+            "/field-pack/virtual-zoo/?from=card#habitat=african-lion",
+        )
         self.assertTrue(is_youtube_url("https://www.youtube.com/watch?v=tlZwYsJpqjo"))
         self.assertFalse(is_youtube_url("https://nationalzoo.si.edu/webcams/lion-cam"))
+        self.assertFalse(vft_has_inpage_media({"cam_url": "https://nationalzoo.si.edu/webcams/lion-cam"}))
 
     def test_brand_and_explorer_paths_unchanged(self):
         for html in self.pages.values():
