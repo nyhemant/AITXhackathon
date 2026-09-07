@@ -555,8 +555,66 @@ def catalog_depth() -> dict[str, dict]:
     return _CATALOG_DEPTH
 
 
+def habitat_films(entry: dict | None) -> list[dict]:
+    """Same shapes as virtual-venue.js habitatFilms: videos[] first, else singular video."""
+    entry = entry or {}
+    videos = entry.get("videos")
+    if isinstance(videos, list):
+        listed = [v for v in videos if isinstance(v, dict) and str(v.get("url") or "").strip()]
+        if listed:
+            return listed
+    video = entry.get("video")
+    if isinstance(video, dict) and str(video.get("url") or "").strip():
+        return [video]
+    return []
+
+
+def vft_cam_fields(entry: dict | None) -> tuple[str, str, str]:
+    cam = entry.get("cam") if isinstance(entry, dict) else None
+    if not isinstance(cam, dict):
+        cam = {}
+    return (
+        str(cam.get("url") or "").strip(),
+        str(cam.get("embed") or "").strip(),
+        str(cam.get("camLabel") or "").strip(),
+    )
+
+
+def vft_record_from_entry(entry: dict, tab: str, *, library_only: bool = False) -> dict | None:
+    cid = str(entry.get("cardId") or entry.get("id") or "").strip()
+    if not cid:
+        return None
+    films = habitat_films(entry)
+    film = films[0] if films else {}
+    cam_url, cam_embed, cam_label = vft_cam_fields(entry)
+    hid = str(entry.get("id") or cid)
+    return {
+        "tab": tab,
+        "habitat_id": hid,
+        "label": entry.get("label") or "",
+        "cam_url": cam_url,
+        "cam_embed": cam_embed,
+        "cam_label": cam_label,
+        "film_url": str(film.get("url") or "").strip(),
+        "film_title": str(film.get("title") or "").strip(),
+        "vft_href": f"/field-pack/virtual-field-trip/?tab={esc(tab)}#habitat={esc(hid)}",
+        "library_only": library_only,
+    }
+
+
+def _fill_missing_vft_fields(dst: dict, src: dict) -> None:
+    """Copy playable/attribution fields the default habitat left blank. Do not overwrite."""
+    for key in ("film_url", "film_title", "cam_url", "cam_embed", "cam_label"):
+        if not str(dst.get(key) or "").strip() and str(src.get(key) or "").strip():
+            dst[key] = src[key]
+
+
 def load_vft_by_card() -> dict[str, dict]:
-    """Index Virtual Field Trip habitats by catalog cardId. Cams/films only if already sourced."""
+    """Index Virtual Field Trip habitats + zoo/aquarium film libraries by cardId.
+
+    Default venue JSON wins. Film libraries add picker/bench animals (koala, etc.)
+    and fill missing film/cam fields. Cams/films only if already sourced.
+    """
     out: dict[str, dict] = {}
     vdir = FIELD / "data" / "virtual-venues"
     files = (
@@ -576,26 +634,36 @@ def load_vft_by_card() -> dict[str, dict]:
             continue
         tab = str(data.get("tab") or data.get("kind") or "").strip()
         for h in data.get("habitats") or []:
+            rec = vft_record_from_entry(h, tab, library_only=False)
+            if not rec:
+                continue
             cid = str(h.get("cardId") or h.get("id") or "").strip()
             if not cid or cid in out:
                 continue
-            cam = h.get("cam") or {}
-            video = h.get("video") or {}
-            cam_url = str(cam.get("url") or "").strip()
-            cam_embed = str(cam.get("embed") or "").strip()
-            film_url = str(video.get("url") or "").strip()
-            hid = str(h.get("id") or cid)
-            out[cid] = {
-                "tab": tab,
-                "habitat_id": hid,
-                "label": h.get("label") or "",
-                "cam_url": cam_url,
-                "cam_embed": cam_embed,
-                "cam_label": str(cam.get("camLabel") or "").strip(),
-                "film_url": film_url,
-                "film_title": str(video.get("title") or "").strip(),
-                "vft_href": f"/field-pack/virtual-field-trip/?tab={esc(tab)}#habitat={esc(hid)}",
-            }
+            out[cid] = rec
+    lib_files = (
+        ("zoo-film-library.json", "zoo"),
+        ("aquarium-film-library.json", "aquarium"),
+    )
+    for name, tab in lib_files:
+        path = vdir / name
+        if not path.is_file():
+            continue
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            continue
+        for card in data.get("cards") or []:
+            rec = vft_record_from_entry(card, tab, library_only=True)
+            if not rec:
+                continue
+            cid = str(card.get("cardId") or "").strip()
+            if not cid:
+                continue
+            if cid in out:
+                _fill_missing_vft_fields(out[cid], rec)
+            else:
+                out[cid] = rec
     return out
 
 
@@ -911,6 +979,8 @@ def watch_links_html(item: dict, *, film_via_vft: bool = False, watch_live: bool
     an outbound zoo/webcam href.
     """
     vft = item.get("vft") or {}
+    if vft.get("library_only") and not film_via_vft:
+        return ""
     if film_via_vft:
         if watch_live:
             return card_watch_row_html(vft, cta=CTA_WATCH_LIVE)

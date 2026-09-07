@@ -282,7 +282,7 @@
     if (!fromCard()) return all;
     const focus = cardFocusId();
     if (!focus) return all;
-    const one = all.find((h) => h.id === focus);
+    const one = all.find((h) => h.id === focus || h.cardId === focus);
     return one ? [one] : all;
   }
 
@@ -509,6 +509,40 @@
     cfg.sequential = false;
   }
 
+  function overlayLibCard(slot, card) {
+    if (!slot || !card) return null;
+    slot.id = card.cardId;
+    slot.cardId = card.cardId;
+    slot.label = card.label;
+    slot.challenge = card.challenge || slot.challenge;
+    slot.printAnswer = card.printAnswer || slot.printAnswer;
+    slot.video = card.video && card.video.url ? card.video : {};
+    if (Array.isArray(card.videos) && card.videos.length) slot.videos = card.videos;
+    else delete slot.videos;
+    slot.cam = card.cam && (card.cam.url || card.cam.embed) ? card.cam : {};
+    return slot;
+  }
+
+  function ensureDeepLinkHabitat(cfg) {
+    const hid = habitatHashId() || queryHabitat();
+    if (!hid || !cfg) return;
+    if ((cfg.habitats || []).some((h) => h.id === hid || h.cardId === hid)) return;
+    const lib = pickLibrary(cfg.kind);
+    if (!lib) return;
+    const card = pickLibById(lib)[hid];
+    if (!card) return;
+    if (!cardHasFilm(card) && !(card.cam && card.cam.embed)) return;
+    const habs = (cfg.habitats || []).slice();
+    const slot = habs[0]
+      ? JSON.parse(JSON.stringify(habs[0]))
+      : { seq: 1, hotspot: { svgId: "habitat-" + card.cardId } };
+    overlayLibCard(slot, card);
+    slot.seq = 1;
+    if (habs.length) habs[0] = slot;
+    else habs.push(slot);
+    cfg.habitats = habs;
+  }
+
   function applyPicks(cfg) {
     const spec = pickSpec(cfg && cfg.kind);
     const lib = pickLibrary(cfg && cfg.kind);
@@ -532,15 +566,7 @@
       const slot = bases[i];
       const card = cardId && byId[cardId];
       if (!slot || !card) return;
-      slot.id = card.cardId;
-      slot.cardId = card.cardId;
-      slot.label = card.label;
-      slot.challenge = card.challenge || slot.challenge;
-      slot.printAnswer = card.printAnswer || slot.printAnswer;
-      slot.video = card.video && card.video.url ? card.video : {};
-      if (Array.isArray(card.videos) && card.videos.length) slot.videos = card.videos;
-      else delete slot.videos;
-      slot.cam = card.cam && card.cam.url ? card.cam : {};
+      overlayLibCard(slot, card);
       slot.seq = next.length + 1;
       next.push(slot);
     });
@@ -2526,6 +2552,7 @@
           ? ensurePickLibrary(cfg.kind).then(() => {
               pickBaseHabitats = JSON.parse(JSON.stringify(cfg.habitats || []));
               applyPicks(cfg);
+              ensureDeepLinkHabitat(cfg);
             })
           : Promise.resolve();
         return ready.then(() => {

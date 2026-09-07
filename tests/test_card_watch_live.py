@@ -14,6 +14,8 @@ sys.path.insert(0, str(REPO / "scripts"))
 from generate_bdo_seo import (  # noqa: E402
     CTA_WATCH_LIVE,
     card_watch_href,
+    habitat_films,
+    load_vft_by_card,
     vft_has_inpage_media,
     watch_links_html,
 )
@@ -23,7 +25,23 @@ LION = FP / "cards" / "african-lion" / "index.html"
 GIRAFFE = FP / "cards" / "reticulated-giraffe" / "index.html"
 JELLY = FP / "cards" / "jellyfish" / "index.html"
 CHEETAH = FP / "cards" / "cheetah" / "index.html"
+KOALA = FP / "cards" / "koala" / "index.html"
+WARTHOG = FP / "cards" / "warthog" / "index.html"
+OSTRICH = FP / "cards" / "ostrich" / "index.html"
 DINO = FP / "cards" / "sci-dinosaur" / "index.html"
+
+# Existing card pages that play from zoo/aquarium film libraries, not default habitats.
+LIBRARY_ONLY_CARDS = (
+    ("koala", "zoo"),
+    ("chimpanzee", "zoo"),
+    ("orangutan", "zoo"),
+    ("red-panda", "zoo"),
+    ("cheetah", "zoo"),
+    ("sea-otter", "aquarium"),
+    ("manta-ray", "aquarium"),
+    ("whale-shark", "aquarium"),
+    ("kelp-forest", "aquarium"),
+)
 VFT_JS = FP / "js" / "virtual-venue.js"
 VFT_PAGES = (
     FP / "virtual-field-trip" / "index.html",
@@ -75,15 +93,44 @@ class CardWatchLiveTests(unittest.TestCase):
         self.assertIn("Watch Live", jelly)
         self.assertNotIn("montereybayaquarium.org", _main(jelly))
 
-    def test_cheetah_hides_watch_live_and_has_no_outbound_cam(self):
-        html = CHEETAH.read_text(encoding="utf-8")
-        main = _main(html)
-        self.assertNotIn("card-watch-live", main)
-        self.assertNotIn("Watch Live", main)
-        self.assertNotIn('class="seo-watch-row"', main)
-        self.assertNotIn("Live cam", main)
-        self.assertNotIn("sandiegozoo.org", main)
-        self.assertIn("/field-pack/cards/", main.split('class="card-page-actions"', 1)[1])
+    def test_library_only_animals_get_same_origin_watch_live(self):
+        vft = load_vft_by_card()
+        for cid, tab in LIBRARY_ONLY_CARDS:
+            rec = vft[cid]
+            self.assertTrue(vft_has_inpage_media(rec), cid)
+            self.assertTrue(rec.get("library_only"), cid)
+            html = (FP / "cards" / cid / "index.html").read_text(encoding="utf-8")
+            main = _main(html)
+            watch = _watch(html)
+            self.assertIn(CTA_WATCH_LIVE, watch, cid)
+            self.assertIn('class="btn btn-primary card-watch-live"', watch, cid)
+            if tab == "zoo":
+                href = f"/field-pack/virtual-zoo/?from=card#habitat={cid}"
+            else:
+                href = f"/field-pack/virtual-field-trip/?tab=aquarium&from=card#habitat={cid}"
+            self.assertIn(href.replace("&", "&amp;"), watch, cid)
+            self.assertNotIn('target="_blank"', watch, cid)
+            for host in OUTBOUND_CAM:
+                self.assertNotIn(host, main, cid)
+            actions = main.split('class="card-page-actions"', 1)[1]
+            self.assertIn("card-watch-live", actions, cid)
+            self.assertIn(href, actions, cid)
+
+    def test_no_media_animals_stay_buttonless(self):
+        vft = load_vft_by_card()
+        for path in (WARTHOG, OSTRICH):
+            cid = path.parent.name
+            rec = vft.get(cid) or {}
+            self.assertFalse(vft_has_inpage_media(rec), cid)
+            html = path.read_text(encoding="utf-8")
+            main = _main(html)
+            self.assertNotIn("card-watch-live", main, cid)
+            self.assertNotIn("Watch Live", main, cid)
+            self.assertNotIn('class="seo-watch-row"', main, cid)
+            self.assertNotIn("Live cam", main, cid)
+            for host in OUTBOUND_CAM:
+                self.assertNotIn(host, main, cid)
+            self.assertIn("/field-pack/cards/", main.split('class="card-page-actions"', 1)[1])
 
     def test_attraction_card_drops_catalog_live_cam(self):
         html = DINO.read_text(encoding="utf-8")
@@ -106,10 +153,38 @@ class CardWatchLiveTests(unittest.TestCase):
             card_watch_href({"tab": "aquarium", "habitat_id": "jellyfish"}),
             "/field-pack/virtual-field-trip/?tab=aquarium&from=card#habitat=jellyfish",
         )
+        films = habitat_films(
+            {
+                "videos": [{"url": "https://www.youtube.com/watch?v=abc", "title": "A"}],
+                "video": {"url": "https://www.youtube.com/watch?v=zzz", "title": "Z"},
+            }
+        )
+        self.assertEqual(films[0]["url"], "https://www.youtube.com/watch?v=abc")
+        self.assertEqual(habitat_films({"video": {"url": "https://youtu.be/x"}})[0]["url"], "https://youtu.be/x")
+        self.assertEqual(habitat_films({"cam": {"url": "https://example.com/cam"}}), [])
+        koala = load_vft_by_card()["koala"]
+        self.assertTrue(koala["library_only"])
+        self.assertTrue(koala["film_url"])
+        self.assertEqual(koala["tab"], "zoo")
+        self.assertEqual(
+            card_watch_href(koala),
+            "/field-pack/virtual-zoo/?from=card#habitat=koala",
+        )
+        place = watch_links_html({"vft": koala})
+        self.assertEqual(place, "")
+        card = watch_links_html({"vft": koala}, film_via_vft=True, watch_live=True)
+        self.assertIn(CTA_WATCH_LIVE, card)
+        self.assertNotIn("sandiegozoo.org", card)
+        lion = load_vft_by_card()["african-lion"]
+        self.assertFalse(lion.get("library_only"))
+        self.assertTrue(vft_has_inpage_media(lion))
 
     def test_player_keeps_card_session_on_site(self):
         js = VFT_JS.read_text(encoding="utf-8")
         self.assertIn("function fromCard(", js)
+        self.assertIn("function overlayLibCard(", js)
+        self.assertIn("function ensureDeepLinkHabitat(", js)
+        self.assertIn("ensureDeepLinkHabitat(cfg)", js)
         self.assertIn("function syncCardNav(", js)
         self.assertIn("function openCamEmbed(", js)
         self.assertIn('get("from") === "card"', js)
@@ -122,11 +197,11 @@ class CardWatchLiveTests(unittest.TestCase):
             self.assertIn('id="vz-card-nav"', html)
             self.assertIn('id="vz-back-card"', html)
             self.assertIn('id="vz-next-stop"', html)
-            self.assertIn("virtual-venue.js?v=100", html)
+            self.assertIn("virtual-venue.js?v=101", html)
             self.assertIn("virtual-venue.css?v=57", html)
 
     def test_card_watch_hrefs_are_internal(self):
-        for path in (LION, GIRAFFE, JELLY):
+        for path in (LION, GIRAFFE, JELLY, KOALA, CHEETAH):
             html = path.read_text(encoding="utf-8")
             watch = _watch(html)
             hrefs = HREF_RE.findall(watch)
@@ -167,6 +242,7 @@ class CardWatchLiveTests(unittest.TestCase):
         walk = body("walkList")
         self.assertIn("fromCard()", walk)
         self.assertIn("cardFocusId()", walk)
+        self.assertIn("h.id === focus || h.cardId === focus", walk)
         self.assertIn("return one ? [one] : all", walk)
         nxt = body("nextAfter")
         self.assertIn("fullWalkList()", nxt)
