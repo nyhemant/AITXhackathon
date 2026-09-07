@@ -195,7 +195,7 @@ def classify_path(url_path: str) -> str:
     if (
         suffix in {".html", ".htm"}
         or lowered.endswith("/")
-        or lowered in {"/", "/dinner", "/field-pack", "/start", "/about"}
+        or lowered in {"/", "/dinner", "/field-pack", "/start", "/about", "/zoo"}
     ):
         return "pages"
     return "other"

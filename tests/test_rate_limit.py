@@ -36,6 +36,7 @@ class ClassifyPathTests(unittest.TestCase):
             "/field-pack/dallas-zoo/index.html",
             "/start/",
             "/about/",
+            "/zoo",
             "/dinner",
         ):
             self.assertEqual(classify_path(path), "pages", path)

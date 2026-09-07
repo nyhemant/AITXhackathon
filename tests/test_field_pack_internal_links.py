@@ -57,6 +57,7 @@ from busyparent_agent.web import (
     LOGO_ASSETS,
     START_PREFIX,
     WebHandler,
+    ZOO_ALIAS_PATHS,
     _SITEMAP_URLS,
     _safe_about_path,
     _safe_field_pack_path,
@@ -239,6 +240,8 @@ def _served_status(path: str) -> int:
     """Same outcomes as WebHandler.do_GET, without opening a socket."""
     if path in {"/", "/index.html"}:
         return 302
+    if path in ZOO_ALIAS_PATHS:
+        return 301
     if path in _SITEMAP_URLS or _safe_static_root_file(path) is not None:
         return 200
     if _safe_pwa_root_file(path) is not None:
@@ -490,6 +493,8 @@ class FieldPackInternalLinkTests(unittest.TestCase):
             "/start": 301,
             "/about/": 200,
             "/about": 301,
+            "/zoo": 301,
+            "/zoo/": 301,
             "/field-pack": 301,
             "/": 302,
             "/field-pack/cards/acad-cadillac-view/": 404,
