@@ -191,17 +191,19 @@
 }
 .card-page .card-study-pack .study-choice.is-wrong-pick,
 .card-page .card-study-pack .study-choice.is-wrong-pick:disabled {
-  background: #e8eaed !important;
-  border-color: #9aa0a6 !important;
-  color: #5f6368 !important;
+  background: #d5d8de !important;
+  border-color: #7b828c !important;
+  color: #4a5058 !important;
   cursor: not-allowed;
   transform: none;
+  box-shadow: none;
+  opacity: 1;
 }
 .card-page .card-study-pack .study-choice.is-wrong-pick .dot {
-  border-color: #9aa0a6;
+  border-color: #7b828c;
 }
 .card-page .card-study-pack .study-choice.is-wrong-pick .study-letter {
-  color: #5f6368;
+  color: #4a5058;
 }
 .card-page .card-study-pack .study-choice:disabled {
   cursor: not-allowed;

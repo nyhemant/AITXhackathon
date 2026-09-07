@@ -161,9 +161,9 @@ class StudyCardQuizTests(unittest.TestCase):
     def test_study_wrong_css_is_grey_and_scoped(self):
         css = STUDY_CSS.read_text(encoding="utf-8")
         self.assertIn(".card-page .card-study-pack .study-choice.is-wrong-pick", css)
-        self.assertIn("#e8eaed", css)
-        self.assertIn("#9aa0a6", css)
-        self.assertIn("#5f6368", css)
+        self.assertIn("#d5d8de", css)
+        self.assertIn("#7b828c", css)
+        self.assertIn("#4a5058", css)
         self.assertNotIn("#fff1e0", css)
         self.assertNotIn("#d97706", css)
         styles = STYLES.read_text(encoding="utf-8")
