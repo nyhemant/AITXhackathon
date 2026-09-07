@@ -1,4 +1,25 @@
-/* Lion Easy study-card (Hard / Zoologist later). Linked only from study decks. */
+/* Lion study-card (Hard / Zoologist later). Linked only from study decks. */
+.card-page .card-study-pack .study-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.4rem 0.75rem;
+  margin: 1.15rem 0 0.55rem;
+}
+.card-page .card-study-pack .study-head .card-talk-h {
+  margin: 0;
+}
+.card-page .card-study-pack .study-level-badge {
+  margin: 0;
+  padding: 0.28rem 0.72rem;
+  border-radius: 999px;
+  background: #0f5c5c;
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 850;
+  letter-spacing: 0.01em;
+}
 .card-page .card-study-pack .study-teach {
   margin: 0 0 0.85rem;
   padding: 0.7rem 0.85rem 0.75rem;

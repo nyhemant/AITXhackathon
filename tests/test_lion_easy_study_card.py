@@ -1,4 +1,4 @@
-"""African lion Easy study-card: teach + 10 MCQs, no generic worksheet."""
+"""African lion Easy study-card: Junior Ranger labels, teach + 10 MCQs."""
 
 from __future__ import annotations
 
@@ -12,8 +12,10 @@ sys.path.insert(0, str(REPO / "scripts"))
 
 from generate_bdo_seo import CARD_TALK_H2, outing_talk_html  # noqa: E402
 from study_cards import (  # noqa: E402
+    LEVEL_DISPLAY_NAMES,
     STUDY_SLOTS,
     WIKI_LION,
+    level_display_name,
     study_card_ids,
     study_deck_for,
     study_print_html,
@@ -60,7 +62,9 @@ STEMS = (
     "Do lions really live in a jungle like in some cartoons?",
 )
 
-LEVEL_TITLES = ("Easy", "Hard", "Zoologist", "Ages", "Age 4", "age badge")
+PLAIN_LEVEL_LABELS = ("Easy", "Hard")
+AGE_BADGES = ("Ages", "Age 4", "age badge", "ages 4", "4–6", "4-6")
+STUDY_DATA_JS = FP / "js" / "study-cards-data.js"
 
 
 def _text(html: str) -> str:
@@ -77,6 +81,7 @@ class LionEasyStudyCardTests(unittest.TestCase):
         deck = study_deck_for("african-lion")
         self.assertIsNotNone(deck)
         self.assertEqual(deck["level"], "easy")
+        self.assertEqual(deck["level_label"], "Junior Ranger")
         self.assertEqual(deck["source"], WIKI_LION)
         self.assertEqual(validate_deck(deck), [])
         self.assertEqual(len(deck["teach"]), 5)
@@ -98,8 +103,12 @@ class LionEasyStudyCardTests(unittest.TestCase):
         for phrase in GENERIC_WORKSHEET:
             self.assertNotIn(phrase, html)
         visible = _text(html)
-        for badge in LEVEL_TITLES:
+        self.assertIn("Junior Ranger", visible)
+        self.assertIn('class="study-level-badge"', html)
+        for badge in PLAIN_LEVEL_LABELS + AGE_BADGES:
             self.assertNotIn(badge, visible)
+        self.assertNotIn("Park Ranger", visible)
+        self.assertNotIn("Zoologist", visible)
         self.assertIn("A pride", html)
         self.assertIn("The moms (lionesses)", html)
         self.assertIn("about 8 km / 5 miles (Wikipedia)", html)
@@ -128,15 +137,24 @@ class LionEasyStudyCardTests(unittest.TestCase):
         self.assertNotIn("nationalzoo.si.edu/webcams", main)
         self.assertIn("Look close — mane, whiskers, a tuft on the tail.", html)
         self.assertNotIn("mighty roar", html)
-        self.assertIn("study-card.js?v=1", html)
-        self.assertIn("study-card.css?v=1", html)
-        self.assertIn("study-cards-data.js?v=1", html)
+        self.assertIn("study-card.js?v=2", html)
+        self.assertIn("study-card.css?v=2", html)
+        self.assertIn("study-cards-data.js?v=2", html)
         self.assertIn('id="study-card-data"', html)
+        self.assertIn('"level_label": "Junior Ranger"', html)
         self.assertIn('id="study-print-template"', html)
-        self.assertIn("print-kit.js?v=16", html)
+        self.assertIn("print-kit.js?v=17", html)
         visible = _text(main)
-        for badge in LEVEL_TITLES:
+        self.assertIn("Junior Ranger", visible)
+        self.assertIn('class="study-level-badge"', main)
+        for badge in PLAIN_LEVEL_LABELS + AGE_BADGES:
             self.assertNotIn(badge, visible)
+        self.assertNotIn("Park Ranger", visible)
+        self.assertNotIn("Zoologist", visible)
+        print_tpl = html.split('id="study-print-template">', 1)[1].split("</template>", 1)[0]
+        self.assertIn("Junior Ranger", print_tpl)
+        self.assertNotIn(" · Easy ·", print_tpl)
+        self.assertNotIn(" · Hard ·", print_tpl)
 
     def test_print_faces_are_duplex_and_clamped(self):
         deck = study_deck_for("african-lion")
@@ -152,6 +170,8 @@ class LionEasyStudyCardTests(unittest.TestCase):
         self.assertIn("ps-study-photo", sheet)
         self.assertIn("/field-pack/photos/african-lion.jpg", sheet)
         self.assertIn("Flip for answers", sheet)
+        self.assertIn("Junior Ranger", sheet)
+        self.assertNotIn(" · Easy ·", sheet)
         self.assertIn(WIKI_LION, sheet)
         for stem in STEMS:
             self.assertIn(stem, sheet)
@@ -167,8 +187,31 @@ class LionEasyStudyCardTests(unittest.TestCase):
         self.assertIn('classList.toggle("printing-study"', js)
         self.assertIn("size: A4 portrait", js)
         self.assertIn("function studyDeckFor", js)
+        self.assertIn("function studyLevelName", js)
+        self.assertIn("Junior Ranger", js)
         self.assertTrue(STUDY_JS.is_file())
         self.assertIn("Show answers", STUDY_JS.read_text(encoding="utf-8"))
+        self.assertIn("FPStudyLevelName", STUDY_JS.read_text(encoding="utf-8") + STUDY_DATA_JS.read_text(encoding="utf-8"))
+
+    def test_display_name_map_covers_future_tiers(self):
+        self.assertEqual(
+            LEVEL_DISPLAY_NAMES,
+            {
+                "easy": "Junior Ranger",
+                "hard": "Park Ranger",
+                "zoologist": "Zoologist",
+            },
+        )
+        self.assertEqual(level_display_name("easy"), "Junior Ranger")
+        self.assertEqual(level_display_name("hard"), "Park Ranger")
+        self.assertEqual(level_display_name("zoologist"), "Zoologist")
+        self.assertEqual(level_display_name("unknown"), "Junior Ranger")
+        data_js = STUDY_DATA_JS.read_text(encoding="utf-8")
+        self.assertIn("window.FP_STUDY_LEVEL_NAMES", data_js)
+        self.assertIn('"easy":"Junior Ranger"', data_js)
+        self.assertIn('"hard":"Park Ranger"', data_js)
+        self.assertIn('"zoologist":"Zoologist"', data_js)
+        self.assertIn("window.FPStudyLevelName", data_js)
 
 
 if __name__ == "__main__":
