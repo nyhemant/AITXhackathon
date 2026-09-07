@@ -65,6 +65,12 @@ def _get(path: str) -> FakeHandler:
     return h
 
 
+def _head(path: str) -> FakeHandler:
+    h = FakeHandler(path)
+    h.do_HEAD()
+    return h
+
+
 def _heading_text(html: str) -> str:
     h1 = re.search(r"<h1[^>]*id=\"start-heading\"[^>]*>([\s\S]*?)</h1>", html)
     assert h1, "missing #start-heading"
@@ -157,6 +163,25 @@ class StartLandingTests(unittest.TestCase):
             panel_res = _get(f"/start/{panel}")
             self.assertEqual(panel_res._code, 200, panel)
             self.assertTrue(panel_res.wfile.getvalue().startswith(b"\xff\xd8"), panel)
+
+    def test_zoo_alias_redirects_to_start(self):
+        """Memorable /zoo alias is a 301 to /start/, not a page or Virtual Zoo."""
+        for alias in ("/zoo", "/zoo/"):
+            get_alias = _get(alias)
+            self.assertEqual(get_alias._code, 301, alias)
+            self.assertEqual(get_alias._headers.get("Location"), START_PREFIX + "/", alias)
+            self.assertEqual(get_alias.wfile.getvalue(), b"", alias)
+            head_alias = _head(alias)
+            self.assertEqual(head_alias._code, 301, alias)
+            self.assertEqual(head_alias._headers.get("Location"), START_PREFIX + "/", alias)
+            self.assertEqual(head_alias.wfile.getvalue(), b"", alias)
+
+        virtual_zoo = _get("/field-pack/virtual-zoo/")
+        self.assertEqual(virtual_zoo._code, 200)
+        self.assertIsNone(virtual_zoo._headers.get("Location"))
+
+        nested = _get("/zoo/index.html")
+        self.assertEqual(nested._code, 404)
 
     def test_hero_is_local_giraffe_still(self):
         hero = re.search(r'<section class="start-hero"[\s\S]*?</section>', self.html)

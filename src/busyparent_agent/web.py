@@ -35,6 +35,8 @@ FIELD_PACK_PREFIX = "/field-pack"
 # First-time Field Trip Kit landing — does not replace / or /field-pack/
 START_ROOT = REPO_ROOT / "static" / "start"
 START_PREFIX = "/start"
+# Memorable short alias for the first-time landing (not Virtual Zoo)
+ZOO_ALIAS_PATHS = frozenset({"/zoo", "/zoo/"})
 # Educational About / FAQ — seek-out only; not a landing
 ABOUT_ROOT = REPO_ROOT / "static" / "about"
 ABOUT_PREFIX = "/about"
@@ -1241,6 +1243,10 @@ class WebHandler(BaseHTTPRequestHandler):
             self.send_header("Content-Length", "0")
             self.end_headers()
             return
+        # Memorable alias: /zoo → first-time landing (not /field-pack/virtual-zoo/)
+        if path in ZOO_ALIAS_PATHS:
+            _send_redirect(self, START_PREFIX + "/", code=301)
+            return
         # Dinner lives under /dinner (secondary product)
         if path in {DINNER_PATH, DINNER_PATH + "/"}:
             self._send_text(_html_for_request(self.headers.get("Cookie")), "text/html; charset=utf-8")
@@ -1364,6 +1370,9 @@ class WebHandler(BaseHTTPRequestHandler):
             self.send_header("Location", START_PREFIX + "/")
             self.send_header("Content-Length", "0")
             self.end_headers()
+            return
+        if path in ZOO_ALIAS_PATHS:
+            _send_redirect(self, START_PREFIX + "/", code=301)
             return
         if path in _SITEMAP_URLS:
             body = _sitemap_bytes()
