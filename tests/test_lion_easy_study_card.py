@@ -1,0 +1,175 @@
+"""African lion Easy study-card: teach + 10 MCQs, no generic worksheet."""
+
+from __future__ import annotations
+
+import re
+import sys
+import unittest
+from pathlib import Path
+
+REPO = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(REPO / "scripts"))
+
+from generate_bdo_seo import CARD_TALK_H2, outing_talk_html  # noqa: E402
+from study_cards import (  # noqa: E402
+    STUDY_SLOTS,
+    WIKI_LION,
+    study_card_ids,
+    study_deck_for,
+    study_print_html,
+    validate_deck,
+)
+
+FP = REPO / "static" / "field-pack"
+LION = FP / "cards" / "african-lion" / "index.html"
+ELEPHANT = FP / "cards" / "african-elephant" / "index.html"
+PRINT_KIT = FP / "js" / "print-kit.js"
+STUDY_JS = FP / "js" / "study-card.js"
+STYLES = FP / "css" / "styles.css"
+
+GENERIC_WORKSHEET = (
+    "What do they eat?",
+    "Where is home?",
+    "What is their superpower?",
+    "Baby or grown-up?",
+    "I want to teach about…",
+    "Food detective",
+    "Does this lion have a big fluffy mane?",
+    "Meat eater or plant eater?",
+    "What do you notice?",
+)
+
+TEACH = (
+    "A group of lions is a pride.",
+    "A baby is a cub.",
+    "They live on grasslands / savannah, not jungle.",
+    "Their famous sound is a roar.",
+    "Male lions often grow a big mane.",
+)
+
+STEMS = (
+    "What do you call a group of lions?",
+    "What do lions mostly eat?",
+    "What sound is a lion famous for?",
+    "Which lion usually grows a big fluffy mane?",
+    "What is a baby lion called?",
+    "Where do wild lions mostly live?",
+    "How much of the day do lions often spend resting?",
+    "In a pride, who usually does most of the hunting?",
+    "What special tip does a lion’s tail have?",
+    "Do lions really live in a jungle like in some cartoons?",
+)
+
+LEVEL_TITLES = ("Easy", "Hard", "Zoologist", "Ages", "Age 4", "age badge")
+
+
+def _text(html: str) -> str:
+    return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", html)).strip()
+
+
+def _main(html: str) -> str:
+    return html.split('<main class="card-page">', 1)[1].split("</main>", 1)[0]
+
+
+class LionEasyStudyCardTests(unittest.TestCase):
+    def test_deck_is_locked_easy_only(self):
+        self.assertEqual(study_card_ids(), ("african-lion",))
+        deck = study_deck_for("african-lion")
+        self.assertIsNotNone(deck)
+        self.assertEqual(deck["level"], "easy")
+        self.assertEqual(deck["source"], WIKI_LION)
+        self.assertEqual(validate_deck(deck), [])
+        self.assertEqual(len(deck["teach"]), 5)
+        self.assertEqual(len(deck["questions"]), STUDY_SLOTS)
+        self.assertIsNone(study_deck_for("african-lion", "hard"))
+        self.assertIsNone(study_deck_for("african-elephant"))
+
+    def test_generator_html_is_study_not_worksheet(self):
+        html = outing_talk_html({"id": "african-lion", "packTemplate": "animals"})
+        self.assertIn(f">{CARD_TALK_H2}</h2>", html)
+        self.assertIn("card-study-pack", html)
+        self.assertIn("Learn first", html)
+        self.assertIn("Show answers", html)
+        self.assertIn("Score", html)
+        for line in TEACH:
+            self.assertIn(line, html)
+        for stem in STEMS:
+            self.assertIn(stem, html)
+        for phrase in GENERIC_WORKSHEET:
+            self.assertNotIn(phrase, html)
+        visible = _text(html)
+        for badge in LEVEL_TITLES:
+            self.assertNotIn(badge, visible)
+        self.assertIn("A pride", html)
+        self.assertIn("The moms (lionesses)", html)
+        self.assertIn("about 8 km / 5 miles (Wikipedia)", html)
+        self.assertIn("Facts from Wikipedia, Lion.", html)
+
+    def test_other_animal_stays_generic_worksheet(self):
+        html = outing_talk_html({"id": "koala", "packTemplate": "animals"})
+        self.assertIn("What do they eat?", html)
+        self.assertNotIn("card-study-pack", html)
+        self.assertNotIn("What do you call a group of lions?", html)
+        elephant = ELEPHANT.read_text(encoding="utf-8")
+        self.assertIn("What do they eat?", elephant)
+        self.assertNotIn("card-study-pack", elephant)
+
+    def test_published_lion_card_matches_easy_deck(self):
+        html = LION.read_text(encoding="utf-8")
+        main = _main(html)
+        for phrase in GENERIC_WORKSHEET:
+            self.assertNotIn(phrase, main)
+        for stem in STEMS:
+            self.assertIn(stem, main)
+        for line in TEACH:
+            self.assertIn(line, main)
+        self.assertIn("Watch Live", main)
+        self.assertIn("/field-pack/virtual-zoo/?from=card#habitat=african-lion", main)
+        self.assertNotIn("nationalzoo.si.edu/webcams", main)
+        self.assertIn("Look close — mane, whiskers, a tuft on the tail.", html)
+        self.assertNotIn("mighty roar", html)
+        self.assertIn("study-card.js?v=1", html)
+        self.assertIn("study-card.css?v=1", html)
+        self.assertIn("study-cards-data.js?v=1", html)
+        self.assertIn('id="study-card-data"', html)
+        self.assertIn('id="study-print-template"', html)
+        self.assertIn("print-kit.js?v=16", html)
+        visible = _text(main)
+        for badge in LEVEL_TITLES:
+            self.assertNotIn(badge, visible)
+
+    def test_print_faces_are_duplex_and_clamped(self):
+        deck = study_deck_for("african-lion")
+        sheet = study_print_html(
+            deck,
+            name="African lion",
+            emoji="🦁",
+            photo="/field-pack/photos/african-lion.jpg?v=img2",
+            photo_pos="50% 22%",
+        )
+        self.assertIn("ps-study-front", sheet)
+        self.assertIn("ps-study-back", sheet)
+        self.assertIn("ps-study-photo", sheet)
+        self.assertIn("/field-pack/photos/african-lion.jpg", sheet)
+        self.assertIn("Flip for answers", sheet)
+        self.assertIn(WIKI_LION, sheet)
+        for stem in STEMS:
+            self.assertIn(stem, sheet)
+        self.assertIn("A dark hairy tuft", sheet)
+        self.assertIn("The moms (lionesses)", sheet)
+        css = STYLES.read_text(encoding="utf-8")
+        self.assertIn(".ps-study-front", css)
+        self.assertIn("height: 9.4in", css)
+        self.assertIn("body.printing-study > *:not(#print-sheet)", css)
+        self.assertIn(":not(.printing-study)", css)
+        js = PRINT_KIT.read_text(encoding="utf-8")
+        self.assertIn("function buildStudyCardHtml", js)
+        self.assertIn('classList.toggle("printing-study"', js)
+        self.assertIn("size: A4 portrait", js)
+        self.assertIn("function studyDeckFor", js)
+        self.assertTrue(STUDY_JS.is_file())
+        self.assertIn("Show answers", STUDY_JS.read_text(encoding="utf-8"))
+
+
+if __name__ == "__main__":
+    unittest.main()

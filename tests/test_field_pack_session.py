@@ -108,11 +108,10 @@ class FlagshipSessionTests(unittest.TestCase):
     def test_lion_card_has_outing_six_and_cam(self):
         html = (FP / "cards" / "african-lion" / "index.html").read_text(encoding="utf-8")
         for q in (
-            "Does this lion have a big fluffy mane?",
-            "What do you notice?",
-            "Lions often live in a group called a pride. How many do you see?",
-            "Meat eater or plant eater?",
-            "Did we see a lion — and what would you tell a grown-up?",
+            "What do you call a group of lions?",
+            "What do lions mostly eat?",
+            "What sound is a lion famous for?",
+            "What is a baby lion called?",
         ):
             self.assertIn(q, html)
         self.assertNotIn("What do they eat?", html)
@@ -262,9 +261,10 @@ class FlagshipSessionTests(unittest.TestCase):
         self.assertIn("Watch Live", lion_main)
         self.assertNotIn("Virtual Field Trip", lion_main)
         self.assertIn("Print", lion_main)
-        self.assertIn("Meat eater", html)
-        self.assertIn("Can't tell", html)
+        self.assertIn("A pride", html)
+        self.assertIn("A cub", html)
         self.assertNotIn("Run fast", html)
+        self.assertNotIn("Can't tell", html)
         dallas = self._visible((FP / "dallas-zoo" / "index.html").read_text(encoding="utf-8"))
         self.assertIn("At home", dallas)
         self.assertIn("Start here", dallas)

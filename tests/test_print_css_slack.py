@@ -91,6 +91,7 @@ class PrintCssSlackTest(unittest.TestCase):
         block = _first_print_block(STYLES_CSS)
         self.assertIn("body.printing-treasure > *:not(#treasure-sheet)", block)
         self.assertIn("body.printing-qa > *:not(#print-sheet)", block)
+        self.assertIn("body.printing-study > *:not(#print-sheet)", block)
         self.assertIn("body.printing-safari > *:not(#print-sheet)", block)
         self.assertIn(".no-print:not(.mission-overlay)", STYLES_CSS)
         self.assertIn("height: 7.3in", STYLES_CSS)
@@ -98,6 +99,7 @@ class PrintCssSlackTest(unittest.TestCase):
 
     def test_print_js_sets_mode_classes_on_html_and_body(self):
         self.assertIn('classList.toggle("printing-qa"', PRINT_KIT_JS)
+        self.assertIn('classList.toggle("printing-study"', PRINT_KIT_JS)
         self.assertIn("document.documentElement.classList.toggle", PRINT_KIT_JS)
         self.assertIn("document.documentElement.classList.add(\"printing-mission\")", MISSION_UI_JS)
         self.assertIn("waitForPrintImages", MISSION_UI_JS)
