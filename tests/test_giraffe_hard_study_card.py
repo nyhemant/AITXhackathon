@@ -84,8 +84,8 @@ def _text(html: str) -> str:
 
 class GiraffeHardStudyCardTests(unittest.TestCase):
     def test_hard_deck_is_park_ranger_without_teach(self):
-        self.assertEqual(shipped_levels_for("reticulated-giraffe"), ("easy", "hard"))
-        self.assertIsNone(study_deck_for("reticulated-giraffe", "zoologist"))
+        self.assertEqual(shipped_levels_for("reticulated-giraffe"), ("easy", "hard", "zoologist"))
+        self.assertIsNotNone(study_deck_for("reticulated-giraffe", "zoologist"))
         self.assertEqual(level_display_name("hard"), "Park Ranger")
         deck = study_deck_for("reticulated-giraffe", "hard")
         self.assertIsNotNone(deck)
@@ -158,10 +158,10 @@ class GiraffeHardStudyCardTests(unittest.TestCase):
         self.assertNotIn("<details class=\"study-teach\" open", html)
         self.assertIn("Junior Ranger", html)
         self.assertIn("Park Ranger", html)
-        self.assertNotIn("Zoologist", html)
+        self.assertIn("Zoologist", html)
         self.assertIn('data-study-pick="easy"', html)
         self.assertIn('data-study-pick="hard"', html)
-        self.assertNotIn('data-study-pick="zoologist"', html)
+        self.assertIn('data-study-pick="zoologist"', html)
         for stem in HARD_STEMS:
             self.assertNotIn(stem, html)
         for stem in EASY_STEMS:
@@ -217,7 +217,7 @@ class GiraffeHardStudyCardTests(unittest.TestCase):
         self.assertEqual(hard["teach"], [])
         self.assertEqual(len(hard["questions"]), STUDY_SLOTS)
         self.assertEqual([q["id"] for q in hard["questions"]], list(HARD_IDS))
-        self.assertNotIn("zoologist", payload["reticulated-giraffe"]["levels"])
+        self.assertIn("zoologist", payload["reticulated-giraffe"]["levels"])
         data_js = STUDY_DATA_JS.read_text(encoding="utf-8")
         self.assertIn("reticulated-giraffe", data_js)
         self.assertIn("okapi", data_js)
@@ -232,7 +232,7 @@ class GiraffeHardStudyCardTests(unittest.TestCase):
         html = GIRAFFE.read_text(encoding="utf-8")
         self.assertIn("Park Ranger", html)
         self.assertIn("Junior Ranger", html)
-        self.assertNotIn("Zoologist", html)
+        self.assertIn("Zoologist", html)
         self.assertIn("Learn first", html)
         self.assertIn("Watch Live", html)
         print_tpl = html.split('id="study-print-template">', 1)[1].split("</template>", 1)[0]
@@ -252,7 +252,7 @@ class GiraffeHardStudyCardTests(unittest.TestCase):
         self.assertIn("Push further", hard_html)
         self.assertIn("Park Ranger", hard_html)
         self.assertIn("Junior Ranger", hard_html)
-        self.assertNotIn("Zoologist", hard_html)
+        self.assertIn("Zoologist", hard_html)
 
 
 if __name__ == "__main__":

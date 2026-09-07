@@ -717,6 +717,141 @@
             "why": "A giraffe’s tongue is dark — Wikipedia notes it is black, perhaps to protect against sunburn while the animal browses in the sun."
           }
         ]
+      },
+      "zoologist": {
+        "teach": [],
+        "questions": [
+          {
+            "slot": 1,
+            "id": "species-split",
+            "title": "Species",
+            "stem": "How do many scientists treat living giraffes today?",
+            "choices": [
+              "Always one species forever, with no debate",
+              "Often as several species (often four); the reticulated giraffe is Giraffa reticulata",
+              "Only as two extinct fossil species"
+            ],
+            "correct": "B",
+            "why": "Giraffes were long treated as one species. Many researchers now recognize several living species — often four — and the reticulated giraffe as Giraffa reticulata. Wikipedia treats that recognition as ongoing debate, not a forever rule."
+          },
+          {
+            "slot": 2,
+            "id": "blood-pressure",
+            "title": "Heart",
+            "stem": "Why must a giraffe’s heart work so hard to supply the brain?",
+            "choices": [
+              "The heart is tiny and barely beats",
+              "It must generate roughly double typical human blood pressure to push blood up the long neck",
+              "Giraffes have no blood vessels in the neck"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says the giraffe heart must generate about double the blood pressure a human needs to keep blood flowing to the brain. Exact pressure readings vary, so we keep the “roughly double” idea."
+          },
+          {
+            "slot": 3,
+            "id": "rete-mirabile",
+            "title": "Circulation",
+            "stem": "What helps protect a giraffe’s brain when the head drops to drink?",
+            "choices": [
+              "Extra lungs in the ossicones",
+              "A rete mirabile in the neck plus valves in the jugular veins",
+              "The tongue plugs the windpipe"
+            ],
+            "correct": "B",
+            "why": "When the head lowers, a rete mirabile — a net of vessels in the upper neck — plus valves in the jugular veins keep too much blood from flooding the brain."
+          },
+          {
+            "slot": 4,
+            "id": "cervical-length",
+            "title": "Neck bones",
+            "stem": "How is a giraffe’s neck built, compared with most other mammals?",
+            "choices": [
+              "It added many extra cervical vertebrae",
+              "It still has seven cervical vertebrae, each greatly lengthened",
+              "The neck is one solid bone with no joints"
+            ],
+            "correct": "B",
+            "why": "Like most mammals, a giraffe still has seven cervical vertebrae. Each bone is greatly lengthened — the neck did not gain a stack of extra bones."
+          },
+          {
+            "slot": 5,
+            "id": "flehmen",
+            "title": "Scent",
+            "stem": "How do male giraffes check whether a female is ready to mate?",
+            "choices": [
+              "They listen for a roar",
+              "They taste her urine (flehmen), sending cues toward the vomeronasal organ",
+              "They count her spots"
+            ],
+            "correct": "B",
+            "why": "Males use the flehmen response: tasting a female’s urine to detect oestrus. The lip-curl routes chemical cues toward the vomeronasal organ."
+          },
+          {
+            "slot": 6,
+            "id": "gestation",
+            "title": "Gestation",
+            "stem": "About how long is giraffe pregnancy, and how many calves are usual?",
+            "choices": [
+              "Roughly 400–460 days; usually one calf",
+              "About two weeks; often a dozen calves",
+              "About 30 days; twins every time"
+            ],
+            "correct": "A",
+            "why": "Wikipedia gives gestation as about 400–460 days. Usually one calf is born; twins are rare. We keep that range rather than one exact day count."
+          },
+          {
+            "slot": 7,
+            "id": "neck-evolution",
+            "title": "Evolution",
+            "stem": "What two main ideas does Wikipedia discuss for why giraffe necks became so long?",
+            "choices": [
+              "Only swimming, with no other idea",
+              "Competing browsers reaching high food, and sexual selection via necking",
+              "Necks grew so giraffes could hibernate"
+            ],
+            "correct": "B",
+            "why": "Wikipedia discusses both the competing-browsers idea (reaching food others cannot) and sexual selection (long necks helping males in necking contests). Scientists still debate which mattered more."
+          },
+          {
+            "slot": 8,
+            "id": "spot-physiology",
+            "title": "Spots",
+            "stem": "What may the skin under a giraffe’s dark patches do besides camouflage?",
+            "choices": [
+              "Store extra water like a camel hump",
+              "Hold complex blood vessels and large sweat glands that may help cool the body",
+              "Make electricity"
+            ],
+            "correct": "B",
+            "why": "Wikipedia notes the skin under the dark blotches has complex blood-vessel systems and large sweat glands, which may help the giraffe regulate body temperature."
+          },
+          {
+            "slot": 9,
+            "id": "laryngeal-nerve",
+            "title": "Nerves",
+            "stem": "What is striking about a giraffe’s left recurrent laryngeal nerve?",
+            "choices": [
+              "It is the shortest nerve in any mammal",
+              "It takes an extreme detour down the neck and back up, making it extraordinarily long",
+              "It only exists in baby giraffes"
+            ],
+            "correct": "B",
+            "why": "In mammals the left recurrent laryngeal nerve loops around a vessel near the heart, then returns to the larynx. In a giraffe that detour is extraordinarily long — a classic comparative-anatomy example."
+          },
+          {
+            "slot": 10,
+            "id": "fission-fusion",
+            "title": "Society",
+            "stem": "How do giraffe social groups actually work?",
+            "choices": [
+              "Purely random open herds with no lasting ties",
+              "Fission–fusion groups, with lasting female associations and kinship",
+              "Only solitary animals that never meet"
+            ],
+            "correct": "B",
+            "why": "Giraffe groups were once called open and ever-changing. Newer work describes a fission–fusion society: groups split and join, but females often keep lasting associations and kinship ties."
+          }
+        ]
       }
     }
   }
