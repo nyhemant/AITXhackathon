@@ -27,7 +27,6 @@ from study_cards import (  # noqa: E402
 
 FP = REPO / "static" / "field-pack"
 LION = FP / "cards" / "african-lion" / "index.html"
-ELEPHANT = FP / "cards" / "african-elephant" / "index.html"
 PRINT_KIT = FP / "js" / "print-kit.js"
 STUDY_JS = FP / "js" / "study-card.js"
 STYLES = FP / "css" / "styles.css"
@@ -80,7 +79,10 @@ def _main(html: str) -> str:
 
 class LionEasyStudyCardTests(unittest.TestCase):
     def test_deck_is_locked_easy_only(self):
-        self.assertEqual(study_card_ids(), ("african-lion", "reticulated-giraffe"))
+        self.assertEqual(
+            study_card_ids(),
+            ("african-lion", "reticulated-giraffe", "african-elephant"),
+        )
         deck = study_deck_for("african-lion")
         self.assertIsNotNone(deck)
         self.assertEqual(deck["level"], "easy")
@@ -92,7 +94,8 @@ class LionEasyStudyCardTests(unittest.TestCase):
         self.assertEqual([q["stem"] for q in deck["questions"]], list(STEMS))
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_LION))
         self.assertEqual(deck["push_further"], list(PUSH_FURTHER_LION))
-        self.assertIsNone(study_deck_for("african-elephant"))
+        self.assertEqual(study_deck_for("african-elephant")["level"], "easy")
+        self.assertIsNone(study_deck_for("african-elephant", "hard"))
 
     def test_generator_html_is_study_not_worksheet(self):
         html = outing_talk_html({"id": "african-lion", "packTemplate": "animals"})
@@ -136,9 +139,6 @@ class LionEasyStudyCardTests(unittest.TestCase):
         self.assertIn("What do they eat?", html)
         self.assertNotIn("card-study-pack", html)
         self.assertNotIn("What do you call a group of lions?", html)
-        elephant = ELEPHANT.read_text(encoding="utf-8")
-        self.assertIn("What do they eat?", elephant)
-        self.assertNotIn("card-study-pack", elephant)
 
     def test_published_lion_card_matches_easy_deck(self):
         html = LION.read_text(encoding="utf-8")
@@ -280,8 +280,8 @@ class LionEasyStudyCardTests(unittest.TestCase):
         self.assertIn("max-width: 48rem;", css)
         self.assertIn(".study-choice.is-wrong-pick", css)
         self.assertNotIn("@media print", css)
-        elephant = ELEPHANT.read_text(encoding="utf-8")
-        self.assertNotIn("study-card.css", elephant)
+        koala = (FP / "cards" / "koala" / "index.html").read_text(encoding="utf-8")
+        self.assertNotIn("study-card.css", koala)
 
 
 if __name__ == "__main__":

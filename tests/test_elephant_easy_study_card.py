@@ -1,4 +1,4 @@
-"""Reticulated giraffe Easy study-card: Junior Ranger only, teach + 10 MCQs."""
+"""African elephant Easy study-card: Junior Ranger only, teach + 10 MCQs."""
 
 from __future__ import annotations
 
@@ -14,9 +14,14 @@ sys.path.insert(0, str(REPO / "scripts"))
 from generate_bdo_seo import CARD_TALK_H2, outing_talk_html  # noqa: E402
 from study_cards import (  # noqa: E402
     LEVEL_DISPLAY_NAMES,
+    PUSH_FURTHER_ELEPHANT,
     PUSH_FURTHER_GIRAFFE,
+    PUSH_FURTHER_LION,
     STUDY_SLOTS,
+    TALK_ABOUT_ELEPHANT,
     TALK_ABOUT_GIRAFFE,
+    TALK_ABOUT_LION,
+    WIKI_AFRICAN_ELEPHANT,
     WIKI_GIRAFFE,
     WIKI_LION,
     level_display_name,
@@ -24,13 +29,14 @@ from study_cards import (  # noqa: E402
     study_card_ids,
     study_deck_for,
     study_print_html,
-    study_talk_html,
     validate_deck,
 )
 
 FP = REPO / "static" / "field-pack"
+ELEPHANT = FP / "cards" / "african-elephant" / "index.html"
 GIRAFFE = FP / "cards" / "reticulated-giraffe" / "index.html"
 LION = FP / "cards" / "african-lion" / "index.html"
+KOALA = FP / "cards" / "koala" / "index.html"
 PRINT_KIT = FP / "js" / "print-kit.js"
 STUDY_JS = FP / "js" / "study-card.js"
 STYLES = FP / "css" / "styles.css"
@@ -49,42 +55,49 @@ GENERIC_WORKSHEET = (
 )
 
 TEACH = (
-    "The giraffe is the tallest living land animal.",
-    "It eats leaves and shoots from tall trees.",
-    "A very long neck helps it reach high foliage.",
-    "A baby giraffe is a calf.",
-    "Wild giraffes live on African savannah and open woodland.",
+    "The African elephant is the largest living land animal.",
+    "It eats plants — grass, leaves, and bark — not meat.",
+    "Its trunk can grab, drink, spray, and smell.",
+    "A baby elephant is a calf.",
+    "A herd is led by the oldest female.",
 )
 
 STEMS = (
-    "What record does a giraffe hold among living land animals?",
-    "What do giraffes mostly eat?",
-    "Why does a giraffe have such a long neck?",
-    "What is special about a giraffe’s tongue?",
-    "What is a baby giraffe called, and what can it do soon after birth?",
-    "Where do wild giraffes mostly live?",
-    "How does a giraffe drink water?",
-    "What are the horn-like bumps on a giraffe’s head?",
-    "What is special about a giraffe’s coat?",
-    "Does a giraffe have extra neck bones compared with most mammals?",
+    "What record does an African elephant hold among living land animals?",
+    "What do African elephants eat?",
+    "What does an elephant use its trunk for?",
+    "Why does an African elephant have such big ears?",
+    "What is a baby elephant called?",
+    "Who usually leads an elephant herd?",
+    "What are an elephant’s tusks?",
+    "What sound is an elephant famous for?",
+    "How can an African elephant swim?",
+    "Can an elephant jump?",
 )
 
 QIDS = (
-    "tallest",
+    "biggest",
     "food",
-    "neck",
-    "tongue",
+    "trunk",
+    "ears",
     "young",
-    "home",
-    "drink",
-    "ossicones",
-    "coat",
+    "family",
+    "tusks",
+    "voice",
+    "water",
     "myth",
 )
 
 PLAIN_LEVEL_LABELS = ("Easy", "Hard")
 AGE_BADGES = ("Ages", "Age 4", "age badge", "ages 4", "4–6", "4-6")
-INVENTED_TONGUE_CM = ("45 cm", "45cm", "18 in", "18in", "30 cm", "30cm", "12 in", "12in")
+BRITTLE = (
+    "only mammal on Earth",
+    "only mammal",
+    "Loxodonta",
+    "bush elephant",
+    "forest elephant",
+    "Loxodonta africana",
+)
 
 
 def _text(html: str) -> str:
@@ -95,51 +108,61 @@ def _main(html: str) -> str:
     return html.split('<main class="card-page">', 1)[1].split("</main>", 1)[0]
 
 
-class GiraffeEasyStudyCardTests(unittest.TestCase):
+class ElephantEasyStudyCardTests(unittest.TestCase):
     def test_deck_is_junior_ranger_easy_only(self):
-        self.assertIn("reticulated-giraffe", study_card_ids())
-        self.assertEqual(shipped_levels_for("reticulated-giraffe"), ("easy", "hard", "zoologist"))
-        self.assertIsNotNone(study_deck_for("reticulated-giraffe", "hard"))
-        self.assertIsNotNone(study_deck_for("reticulated-giraffe", "zoologist"))
-        deck = study_deck_for("reticulated-giraffe")
+        self.assertIn("african-elephant", study_card_ids())
+        self.assertEqual(
+            study_card_ids(),
+            ("african-lion", "reticulated-giraffe", "african-elephant"),
+        )
+        self.assertEqual(shipped_levels_for("african-elephant"), ("easy",))
+        self.assertIsNone(study_deck_for("african-elephant", "hard"))
+        self.assertIsNone(study_deck_for("african-elephant", "zoologist"))
+        deck = study_deck_for("african-elephant")
         self.assertIsNotNone(deck)
-        self.assertEqual(deck["id"], "reticulated-giraffe")
+        self.assertEqual(deck["id"], "african-elephant")
         self.assertEqual(deck["level"], "easy")
         self.assertEqual(deck["level_label"], "Junior Ranger")
         self.assertEqual(level_display_name("easy"), "Junior Ranger")
-        self.assertEqual(deck["source"], WIKI_GIRAFFE)
-        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Giraffe / Reticulated giraffe.")
+        self.assertEqual(deck["source"], WIKI_AFRICAN_ELEPHANT)
+        self.assertEqual(deck["source_note"], "Facts from Wikipedia, African elephant / Elephant.")
         self.assertEqual(validate_deck(deck), [])
         self.assertEqual(len(deck["teach"]), 5)
         self.assertEqual(deck["teach"], list(TEACH))
         self.assertEqual(len(deck["questions"]), STUDY_SLOTS)
         self.assertEqual([q["stem"] for q in deck["questions"]], list(STEMS))
         self.assertEqual([q["id"] for q in deck["questions"]], list(QIDS))
-        self.assertEqual(deck["talk_about"], list(TALK_ABOUT_GIRAFFE))
-        self.assertEqual(deck["push_further"], list(PUSH_FURTHER_GIRAFFE))
+        self.assertEqual(deck["talk_about"], list(TALK_ABOUT_ELEPHANT))
+        self.assertEqual(deck["push_further"], list(PUSH_FURTHER_ELEPHANT))
         for q in deck["questions"]:
             self.assertEqual(len(q["choices"]), 3)
             self.assertIn(q["correct"], ("A", "B", "C"))
             self.assertTrue(str(q["why"]).strip())
         blob = " ".join(deck["teach"] + [q["stem"] + q["why"] for q in deck["questions"]])
-        for phrase in INVENTED_TONGUE_CM:
+        for phrase in BRITTLE:
             self.assertNotIn(phrase, blob)
-        self.assertNotIn("Kenya only", blob)
-        self.assertNotIn("only in Kenya", blob.lower())
+        self.assertIn("cannot jump", blob.lower())
 
-    def test_lion_decks_untouched(self):
+    def test_lion_and_giraffe_decks_untouched(self):
         lion = study_deck_for("african-lion")
         self.assertEqual(lion["source"], WIKI_LION)
         self.assertEqual(lion["level_label"], "Junior Ranger")
         self.assertEqual(len(lion["questions"]), STUDY_SLOTS)
+        self.assertEqual(lion["talk_about"], list(TALK_ABOUT_LION))
+        self.assertEqual(lion["push_further"], list(PUSH_FURTHER_LION))
         self.assertEqual(shipped_levels_for("african-lion"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("african-lion", "hard"))
         self.assertIsNotNone(study_deck_for("african-lion", "zoologist"))
-        self.assertEqual(study_deck_for("african-elephant")["level"], "easy")
-        self.assertIsNone(study_deck_for("african-elephant", "hard"))
+        giraffe = study_deck_for("reticulated-giraffe")
+        self.assertEqual(giraffe["source"], WIKI_GIRAFFE)
+        self.assertEqual(giraffe["talk_about"], list(TALK_ABOUT_GIRAFFE))
+        self.assertEqual(giraffe["push_further"], list(PUSH_FURTHER_GIRAFFE))
+        self.assertEqual(shipped_levels_for("reticulated-giraffe"), ("easy", "hard", "zoologist"))
+        self.assertIsNotNone(study_deck_for("reticulated-giraffe", "hard"))
+        self.assertIsNotNone(study_deck_for("reticulated-giraffe", "zoologist"))
 
     def test_generator_html_is_study_not_worksheet(self):
-        html = outing_talk_html({"id": "reticulated-giraffe", "packTemplate": "animals"})
+        html = outing_talk_html({"id": "african-elephant", "packTemplate": "animals"})
         self.assertIn(f">{CARD_TALK_H2}</h2>", html)
         self.assertIn("card-study-pack", html)
         self.assertIn("Learn first", html)
@@ -150,7 +173,7 @@ class GiraffeEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Talk about it", html)
         self.assertIn("Push further", html)
         self.assertRegex(html, r'<aside class="study-deepen"[^>]*\bhidden\b')
-        for prompt in TALK_ABOUT_GIRAFFE + PUSH_FURTHER_GIRAFFE:
+        for prompt in TALK_ABOUT_ELEPHANT + PUSH_FURTHER_ELEPHANT:
             self.assertIn(prompt, html)
         self.assertIn("Show answers", html)
         self.assertIn("Score", html)
@@ -162,27 +185,30 @@ class GiraffeEasyStudyCardTests(unittest.TestCase):
             self.assertNotIn(phrase, html)
         visible = _text(html)
         self.assertIn("Junior Ranger", visible)
-        self.assertIn("Park Ranger", visible)
-        self.assertIn("Zoologist", visible)
-        self.assertIn('class="study-level-picker"', html)
-        self.assertIn('data-study-pick="easy"', html)
-        self.assertIn('data-study-pick="hard"', html)
-        self.assertIn('data-study-pick="zoologist"', html)
-        self.assertNotIn('class="study-level-badge"', html)
+        self.assertNotIn("Park Ranger", visible)
+        self.assertNotIn("Zoologist", visible)
+        self.assertIn('class="study-level-badge"', html)
+        self.assertNotIn('class="study-level-picker"', html)
+        self.assertNotIn("data-study-pick", html)
         for badge in PLAIN_LEVEL_LABELS + AGE_BADGES:
             self.assertNotIn(badge, visible)
-        self.assertIn("Skin-covered ossicones", html)
-        self.assertIn("still seven vertebrae, just much longer", html)
-        self.assertIn("Facts from Wikipedia, Giraffe / Reticulated giraffe.", html)
+        for phrase in BRITTLE:
+            self.assertNotIn(phrase, html)
+        self.assertIn("Very long teeth", html)
+        self.assertIn("elephants cannot jump", html)
+        self.assertIn("Facts from Wikipedia, African elephant / Elephant.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
         html = outing_talk_html({"id": "koala", "packTemplate": "animals"})
         self.assertIn("What do they eat?", html)
         self.assertNotIn("card-study-pack", html)
-        self.assertNotIn("What record does a giraffe hold", html)
+        self.assertNotIn("What record does an African elephant hold", html)
+        koala = KOALA.read_text(encoding="utf-8")
+        self.assertIn("What do they eat?", koala)
+        self.assertNotIn("card-study-pack", koala)
 
-    def test_published_giraffe_card_matches_easy_deck(self):
-        html = GIRAFFE.read_text(encoding="utf-8")
+    def test_published_elephant_card_matches_easy_deck(self):
+        html = ELEPHANT.read_text(encoding="utf-8")
         main = _main(html)
         for phrase in GENERIC_WORKSHEET:
             self.assertNotIn(phrase, main)
@@ -191,13 +217,13 @@ class GiraffeEasyStudyCardTests(unittest.TestCase):
         for line in TEACH:
             self.assertIn(line, main)
         self.assertIn("Watch Live", main)
-        self.assertIn("/field-pack/virtual-zoo/?from=card#habitat=reticulated-giraffe", main)
+        self.assertIn("/field-pack/virtual-zoo/?from=card#habitat=african-elephant", main)
         self.assertIn("study-card.js?v=6", html)
         self.assertIn("study-card.css?v=7", html)
         self.assertIn("study-cards-data.js?v=5", html)
         self.assertIn('id="study-card-data"', html)
         self.assertIn('"level_label": "Junior Ranger"', html)
-        self.assertIn('"id": "reticulated-giraffe"', html)
+        self.assertIn('"id": "african-elephant"', html)
         self.assertIn('id="study-print-template"', html)
         self.assertIn("print-kit.js?v=20", html)
         self.assertIn("styles.css?v=41", html)
@@ -209,17 +235,15 @@ class GiraffeEasyStudyCardTests(unittest.TestCase):
         self.assertRegex(main, r'<aside class="study-deepen"[^>]*\bhidden\b')
         visible = _text(main)
         self.assertIn("Junior Ranger", visible)
-        self.assertIn("Park Ranger", visible)
-        self.assertIn("Zoologist", visible)
-        self.assertIn('class="study-level-picker"', main)
-        self.assertIn('data-study-pick="easy"', main)
-        self.assertIn('data-study-pick="hard"', main)
-        self.assertIn('data-study-pick="zoologist"', main)
-        self.assertNotIn('class="study-level-badge"', main)
+        self.assertNotIn("Park Ranger", visible)
+        self.assertNotIn("Zoologist", visible)
+        self.assertIn('class="study-level-badge"', main)
+        self.assertNotIn('class="study-level-picker"', main)
+        self.assertNotIn("data-study-pick", main)
         self.assertIn("Learn first", main)
         for badge in PLAIN_LEVEL_LABELS + AGE_BADGES:
             self.assertNotIn(badge, visible)
-        for phrase in INVENTED_TONGUE_CM:
+        for phrase in BRITTLE:
             self.assertNotIn(phrase, main)
         print_tpl = html.split('id="study-print-template">', 1)[1].split("</template>", 1)[0]
         self.assertIn("Junior Ranger", print_tpl)
@@ -232,36 +256,36 @@ class GiraffeEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Talk about it", back)
         self.assertIn("Push further", back)
         self.assertIn("ps-study-deepen", back)
-        for prompt in TALK_ABOUT_GIRAFFE + PUSH_FURTHER_GIRAFFE:
+        for prompt in TALK_ABOUT_ELEPHANT + PUSH_FURTHER_ELEPHANT:
             self.assertIn(prompt, back)
 
     def test_print_faces_are_duplex_and_clamped(self):
-        deck = study_deck_for("reticulated-giraffe")
+        deck = study_deck_for("african-elephant")
         sheet = study_print_html(
             deck,
-            name="Reticulated giraffe",
-            emoji="🦒",
-            photo="/field-pack/photos/reticulated-giraffe.jpg?v=img2",
-            photo_pos="50% 18%",
+            name="African elephant",
+            emoji="🐘",
+            photo="/field-pack/photos/african-elephant.jpg?v=img2",
+            photo_pos="50% 28%",
         )
         self.assertIn("ps-study-front", sheet)
         self.assertIn("ps-study-back", sheet)
         self.assertIn("ps-study-photo", sheet)
-        self.assertIn("/field-pack/photos/reticulated-giraffe.jpg", sheet)
+        self.assertIn("/field-pack/photos/african-elephant.jpg", sheet)
         self.assertIn("Flip for answers", sheet)
         self.assertIn("Junior Ranger", sheet)
         self.assertNotIn(" · Easy ·", sheet)
-        self.assertIn(WIKI_GIRAFFE, sheet)
+        self.assertIn(WIKI_AFRICAN_ELEPHANT, sheet)
         for stem in STEMS:
             self.assertIn(stem, sheet)
-        self.assertIn("Skin-covered ossicones", sheet)
-        self.assertIn("still seven vertebrae, just much longer", sheet)
+        self.assertIn("Very long teeth", sheet)
+        self.assertIn("elephants cannot jump", sheet)
         front, _, back = sheet.partition("ps-study-back")
         self.assertIn("Learn first", front)
         self.assertNotIn("Talk about it", front)
         self.assertIn("Talk about it", back)
         self.assertIn("Push further", back)
-        for prompt in TALK_ABOUT_GIRAFFE + PUSH_FURTHER_GIRAFFE:
+        for prompt in TALK_ABOUT_ELEPHANT + PUSH_FURTHER_ELEPHANT:
             self.assertIn(prompt, back)
         css = STYLES.read_text(encoding="utf-8")
         self.assertIn(".ps-study-front", css)
@@ -277,25 +301,26 @@ class GiraffeEasyStudyCardTests(unittest.TestCase):
         self.assertIn("is-wrong-pick", study_js)
         self.assertIn("FPStudyLevelName", study_js + STUDY_DATA_JS.read_text(encoding="utf-8"))
 
-    def test_artifacts_include_giraffe_easy_only(self):
+    def test_artifacts_include_elephant_easy_only(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
+        self.assertIn("african-elephant", payload)
         self.assertIn("reticulated-giraffe", payload)
         self.assertIn("african-lion", payload)
-        giraffe = payload["reticulated-giraffe"]
-        self.assertEqual(giraffe["id"], "reticulated-giraffe")
-        self.assertEqual(set(giraffe["levels"]), {"easy", "hard", "zoologist"})
-        easy = giraffe["levels"]["easy"]
+        elephant = payload["african-elephant"]
+        self.assertEqual(elephant["id"], "african-elephant")
+        self.assertEqual(set(elephant["levels"]), {"easy"})
+        easy = elephant["levels"]["easy"]
         self.assertEqual(len(easy["teach"]), 5)
         self.assertEqual(len(easy["questions"]), STUDY_SLOTS)
         for q in easy["questions"]:
             self.assertEqual(len(q["choices"]), 3)
-        self.assertEqual(giraffe["levels"]["hard"]["teach"], [])
         data_js = STUDY_DATA_JS.read_text(encoding="utf-8")
-        self.assertIn("reticulated-giraffe", data_js)
+        self.assertIn("african-elephant", data_js)
         self.assertIn('"easy":"Junior Ranger"', data_js)
-        self.assertIn('"hard":"Park Ranger"', data_js)
         lion_levels = payload["african-lion"]["levels"]
         self.assertEqual(set(lion_levels), {"easy", "hard", "zoologist"})
+        giraffe_levels = payload["reticulated-giraffe"]["levels"]
+        self.assertEqual(set(giraffe_levels), {"easy", "hard", "zoologist"})
 
     def test_display_name_map_still_covers_future_tiers(self):
         self.assertEqual(
@@ -309,6 +334,8 @@ class GiraffeEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(level_display_name("easy"), "Junior Ranger")
         lion_html = LION.read_text(encoding="utf-8")
         self.assertIn("Park Ranger", _text(_main(lion_html)))
+        giraffe_html = GIRAFFE.read_text(encoding="utf-8")
+        self.assertIn("Park Ranger", _text(_main(giraffe_html)))
 
 
 if __name__ == "__main__":

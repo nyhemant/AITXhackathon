@@ -15,6 +15,14 @@ newborn height, and IUCN letters amid the species split. Zoologist
 softens exact mmHg and treats multi-species recognition as debate,
 not a forever rule.
 
+Facts for african-elephant Junior Ranger (easy only) are Wikipedia-backed:
+https://en.wikipedia.org/wiki/African_elephant
+https://en.wikipedia.org/wiki/Elephant
+The largest/heaviest living-land-animal fact may use African elephant
+wording (bush-elephant size). Soften the jump myth: elephants cannot
+jump — do not say “only mammal on Earth.” Reserve bush vs forest /
+Loxodonta for later tiers.
+
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
 zoologist. Visible copy uses LEVEL_DISPLAY_NAMES only — no age badges,
@@ -35,6 +43,8 @@ STUDY_DATA_JS = FIELD / "js" / "study-cards-data.js"
 WIKI_LION = "https://en.wikipedia.org/wiki/Lion"
 WIKI_GIRAFFE = "https://en.wikipedia.org/wiki/Giraffe"
 WIKI_RETICULATED_GIRAFFE = "https://en.wikipedia.org/wiki/Reticulated_giraffe"
+WIKI_AFRICAN_ELEPHANT = "https://en.wikipedia.org/wiki/African_elephant"
+WIKI_ELEPHANT = "https://en.wikipedia.org/wiki/Elephant"
 
 LETTERS = ("A", "B", "C")
 STUDY_SLOTS = 10
@@ -49,6 +59,7 @@ LEVEL_DISPLAY_NAMES = {
 
 # Shipped picker order. A card only shows keys it actually defines.
 # Lion and reticulated-giraffe ship Junior Ranger + Park Ranger + Zoologist.
+# African elephant ships Junior Ranger (easy) only.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -72,6 +83,16 @@ PUSH_FURTHER_GIRAFFE = (
     "A giraffe must spread its front legs to drink. What risk could that pose in the wild?",
     "Each giraffe’s spots are unique. How could that help a keeper tell them apart?",
     "Find one more animal on your zoo map that eats leaves from trees. How does it reach them?",
+)
+TALK_ABOUT_ELEPHANT = (
+    "Why might a trunk be more useful than hands at the zoo?",
+    "If you had ears as big as an elephant’s, how would you stay cool?",
+    "Which other animal at the zoo lives in a family group?",
+)
+PUSH_FURTHER_ELEPHANT = (
+    "An elephant’s trunk can grab, drink, and smell. What job would you give it first?",
+    "A herd follows the oldest female. Why might the oldest be a good leader?",
+    "Find one more big animal on your zoo map. How does it move if it cannot jump?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -857,6 +878,133 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "B",
                         "why": "Giraffe groups were once called open and ever-changing. Newer work describes a fission–fusion society: groups split and join, but females often keep lasting associations and kinship ties.",
+                    },
+                ],
+            },
+        },
+    },
+    "african-elephant": {
+        "id": "african-elephant",
+        "source": WIKI_AFRICAN_ELEPHANT,
+        "source_note": "Facts from Wikipedia, African elephant / Elephant.",
+        "talk_about": list(TALK_ABOUT_ELEPHANT),
+        "push_further": list(PUSH_FURTHER_ELEPHANT),
+        "levels": {
+            "easy": {
+                # Teaching-first: pride-of-place facts. Do not spoiler every quiz slot.
+                "teach": [
+                    "The African elephant is the largest living land animal.",
+                    "It eats plants — grass, leaves, and bark — not meat.",
+                    "Its trunk can grab, drink, spray, and smell.",
+                    "A baby elephant is a calf.",
+                    "A herd is led by the oldest female.",
+                ],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "biggest",
+                        "title": "Biggest",
+                        "stem": "What record does an African elephant hold among living land animals?",
+                        "choices": [
+                            "Tallest living land animal",
+                            "Largest / heaviest living land animal",
+                            "Fastest runner",
+                        ],
+                        "correct": "B",
+                        "why": "The African elephant is the largest and heaviest living land animal.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "food",
+                        "title": "Food",
+                        "stem": "What do African elephants eat?",
+                        "choices": ["Meat", "Plants — grass, leaves, and bark", "Fish"],
+                        "correct": "B",
+                        "why": "African elephants are herbivores. They eat plants such as grass, leaves, and bark — not meat.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "trunk",
+                        "title": "Trunk",
+                        "stem": "What does an elephant use its trunk for?",
+                        "choices": ["Only to hear", "To grab, drink, spray, and smell", "To fly"],
+                        "correct": "B",
+                        "why": "The trunk is a long nose and upper lip. Elephants use it to grab food, drink, spray water, and smell.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "ears",
+                        "title": "Ears",
+                        "stem": "Why does an African elephant have such big ears?",
+                        "choices": ["To stay cool", "To fly", "To store food"],
+                        "correct": "A",
+                        "why": "Big ears help an African elephant shed heat and stay cool.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "young",
+                        "title": "Young",
+                        "stem": "What is a baby elephant called?",
+                        "choices": ["A cub", "A calf", "A chick"],
+                        "correct": "B",
+                        "why": "A baby elephant is a calf.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "family",
+                        "title": "Family",
+                        "stem": "Who usually leads an elephant herd?",
+                        "choices": [
+                            "The oldest female (the matriarch)",
+                            "The youngest calf",
+                            "A lone zebra",
+                        ],
+                        "correct": "A",
+                        "why": "Elephant families live in a herd led by the oldest female, called the matriarch.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "tusks",
+                        "title": "Tusks",
+                        "stem": "What are an elephant’s tusks?",
+                        "choices": ["Horns made of hair", "Very long teeth", "Feathers"],
+                        "correct": "B",
+                        "why": "Tusks are very long teeth — not horns.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "voice",
+                        "title": "Voice",
+                        "stem": "What sound is an elephant famous for?",
+                        "choices": ["A moo", "A trumpet", "A meow"],
+                        "correct": "B",
+                        "why": "An elephant’s famous call is a trumpet — a loud sound made through the trunk.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "water",
+                        "title": "Water",
+                        "stem": "How can an African elephant swim?",
+                        "choices": [
+                            "It cannot swim",
+                            "It can swim, and its trunk can act like a snorkel",
+                            "It uses wings",
+                        ],
+                        "correct": "B",
+                        "why": "Elephants can swim. They sometimes swim underwater and use the trunk like a snorkel.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "myth",
+                        "title": "Myth buster",
+                        "stem": "Can an elephant jump?",
+                        "choices": [
+                            "Yes — they hop like kangaroos",
+                            "No — elephants cannot jump",
+                            "Only over tiny puddles",
+                        ],
+                        "correct": "B",
+                        "why": "Elephants cannot jump. Their heavy bodies stay on the ground.",
                     },
                 ],
             },
