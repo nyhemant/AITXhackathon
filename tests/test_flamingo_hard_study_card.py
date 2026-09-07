@@ -106,8 +106,8 @@ def _text(html: str) -> str:
 
 class FlamingoHardStudyCardTests(unittest.TestCase):
     def test_hard_deck_is_park_ranger_without_teach(self):
-        self.assertEqual(shipped_levels_for("caribbean-flamingo"), ("easy", "hard"))
-        self.assertIsNone(study_deck_for("caribbean-flamingo", "zoologist"))
+        self.assertEqual(shipped_levels_for("caribbean-flamingo"), ("easy", "hard", "zoologist"))
+        self.assertIsNotNone(study_deck_for("caribbean-flamingo", "zoologist"))
         self.assertEqual(level_display_name("hard"), "Park Ranger")
         deck = study_deck_for("caribbean-flamingo", "hard")
         self.assertIsNotNone(deck)
@@ -187,10 +187,10 @@ class FlamingoHardStudyCardTests(unittest.TestCase):
         self.assertNotIn("<details class=\"study-teach\" open", html)
         self.assertIn("Junior Ranger", html)
         self.assertIn("Park Ranger", html)
-        self.assertNotIn("Zoologist", html)
+        self.assertIn("Zoologist", html)
         self.assertIn('data-study-pick="easy"', html)
         self.assertIn('data-study-pick="hard"', html)
-        self.assertNotIn('data-study-pick="zoologist"', html)
+        self.assertIn('data-study-pick="zoologist"', html)
         for stem in HARD_STEMS:
             self.assertNotIn(stem, html)
         for stem in EASY_STEMS:
@@ -278,7 +278,7 @@ class FlamingoHardStudyCardTests(unittest.TestCase):
         self.assertEqual(hard["teach"], [])
         self.assertEqual(len(hard["questions"]), STUDY_SLOTS)
         self.assertEqual([q["id"] for q in hard["questions"]], list(HARD_IDS))
-        self.assertNotIn("zoologist", payload["caribbean-flamingo"]["levels"])
+        self.assertIn("zoologist", payload["caribbean-flamingo"]["levels"])
         data_js = STUDY_DATA_JS.read_text(encoding="utf-8")
         self.assertIn("caribbean-flamingo", data_js)
         self.assertIn("carotenoids", data_js)
@@ -293,7 +293,7 @@ class FlamingoHardStudyCardTests(unittest.TestCase):
         html = FLAMINGO.read_text(encoding="utf-8")
         self.assertIn("Park Ranger", html)
         self.assertIn("Junior Ranger", html)
-        self.assertNotIn("Zoologist", html)
+        self.assertIn("Zoologist", html)
         self.assertIn("Learn first", html)
         self.assertIn("Watch Live", html)
         print_tpl = html.split('id="study-print-template">', 1)[1].split("</template>", 1)[0]
@@ -313,7 +313,7 @@ class FlamingoHardStudyCardTests(unittest.TestCase):
         self.assertIn("Push further", hard_html)
         self.assertIn("Park Ranger", hard_html)
         self.assertIn("Junior Ranger", hard_html)
-        self.assertNotIn("Zoologist", hard_html)
+        self.assertIn("Zoologist", hard_html)
 
 
 if __name__ == "__main__":

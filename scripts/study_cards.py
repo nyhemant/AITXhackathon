@@ -39,8 +39,8 @@ patch blood-flow, decline drivers, fisheries, no-take zones, and
 pursuit diving — without locking IUCN letters, exact % decline,
 or max dive depth/time.
 
-Facts for caribbean-flamingo Junior Ranger + Park Ranger (easy + hard)
-are Wikipedia-backed:
+Facts for caribbean-flamingo Junior Ranger + Park Ranger + Zoologist
+(easy + hard + zoologist) are Wikipedia-backed:
 https://en.wikipedia.org/wiki/American_flamingo
 Also known as the Caribbean flamingo (Phoenicopterus ruber).
 Adults are reddish-pink; chicks start greyish. Pink comes from food
@@ -51,8 +51,13 @@ group name. Soften IUCN letters and exact heights. Hard deepens
 carotenoids, upside-down feeding, lamellae, crop milk, one-egg
 clutch, one-leg joint lock, salty habitat, vivid colour vs other
 species, courtship displays, and the pale-zoo myth. Soften brittle
-pigment chemistry labels (no beta-carotene lock). Do not redo JR
-themes.
+pigment chemistry labels (no beta-carotene lock). Zoologist deepens
+grebe relatives / Mirandornithes, feather carotenoids (soften exact
+pigment names), crop-milk glands, tongue piston, bill mechanics,
+nasal salt glands, gravity-driven one-leg stay, the soft P. ruber
+lump/split with greater flamingo, the chick’s straight-to-bent bill,
+and a relatively secure status contrast — without locking an IUCN
+letter. Do not redo JR or PR themes.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
@@ -91,9 +96,8 @@ LEVEL_DISPLAY_NAMES = {
 }
 
 # Shipped picker order. A card only shows keys it actually defines.
-# Lion, reticulated-giraffe, African elephant, and African penguin
-# ship Junior Ranger + Park Ranger + Zoologist. Caribbean flamingo
-# ships Junior Ranger + Park Ranger.
+# Lion, reticulated-giraffe, African elephant, African penguin, and
+# Caribbean flamingo ship Junior Ranger + Park Ranger + Zoologist.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -2041,6 +2045,145 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "B",
                         "why": "A pale flamingo is not a different species. Captive birds fade if their food does not have enough carotenoids. A parent feeding crop milk can also look paler for a while.",
+                    },
+                ],
+            },
+            "zoologist": {
+                # Answer-light: no Learn-first strip. Facts from Wikipedia,
+                # American flamingo / Caribbean flamingo. Soften exact
+                # pigment chemical names, IUCN letters, and the P. ruber
+                # lump/split with greater flamingo. Do not redo JR/PR.
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "grebes",
+                        "title": "Closest relatives",
+                        "stem": "What do molecular studies place flamingos closest to among living birds?",
+                        "choices": [
+                            "Herons and storks — the classic long-legged waders",
+                            "Grebes — they sit together in the clade Mirandornithes, not with herons or storks",
+                            "Pelicans and other large fish-eaters",
+                        ],
+                        "correct": "B",
+                        "why": "Molecular work groups flamingos with grebes in Mirandornithes. They were long placed with herons and storks, but that older tree does not hold.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "feather-pigment",
+                        "title": "Feather pigment",
+                        "stem": "What kind of pigment gives a Caribbean flamingo’s feathers their main pink colour?",
+                        "choices": [
+                            "Melanin made in the skin, like a tattoo",
+                            "A carotenoid pigment deposited in the feathers — a compound such as canthaxanthin, not a paint",
+                            "Salt crystals that stain the feathers red",
+                        ],
+                        "correct": "B",
+                        "why": "The pink in the feathers is a carotenoid pigment from the diet, processed and laid down in the plumage. A compound such as canthaxanthin is an example — we do not lock one chemical name.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "crop-milk-glands",
+                        "title": "Crop milk",
+                        "stem": "Where does flamingo “crop milk” actually come from, and is it like mammalian milk?",
+                        "choices": [
+                            "Only from the mother’s mammary glands, like cow’s milk",
+                            "A secretion from glands lining the upper digestive tract — both sexes make it; it is not mammalian milk",
+                            "Only from the chick’s own stomach",
+                        ],
+                        "correct": "B",
+                        "why": "Both parents secrete a fat-and-protein fluid from glands lining the upper digestive tract, not just the crop. It is not mammalian milk — no mammary glands, and it is not the same as cow’s milk.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "tongue-piston",
+                        "title": "Tongue piston",
+                        "stem": "How does a Caribbean flamingo’s tongue help it filter-feed?",
+                        "choices": [
+                            "It tastes the water and then the bird swallows everything",
+                            "It acts like a piston, pumping water through the comb-like lamellae",
+                            "It spears fish like a heron’s bill",
+                        ],
+                        "correct": "B",
+                        "why": "The large tongue works as a piston, drawing water in and pushing it out through the lamellae so tiny food stays behind.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "bill-mechanics",
+                        "title": "Bill mechanics",
+                        "stem": "What is unusual about a flamingo’s bill compared with most birds?",
+                        "choices": [
+                            "The two jaws are the same size and never move",
+                            "The lower mandible is the larger one, and the upper mandible can move — unusual among birds",
+                            "Only the tongue moves; both jaws are fused shut",
+                        ],
+                        "correct": "B",
+                        "why": "In most birds the lower jaw is the mobile, smaller one. In flamingos the lower mandible is larger, and they can raise the upper jaw as well as drop the lower.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "salt-glands",
+                        "title": "Salt glands",
+                        "stem": "How do Caribbean flamingos handle the extra salt in hypersaline lakes?",
+                        "choices": [
+                            "They never drink",
+                            "Nasal salt glands help excrete concentrated salt, so extra salt can leave the body",
+                            "They store salt in their feathers until it blows away",
+                        ],
+                        "correct": "B",
+                        "why": "American flamingos have nasal salt glands that work with the kidney. The glands excrete concentrated salt through the nares, which helps them live in very salty water.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "gravity-stay",
+                        "title": "One-leg stay",
+                        "stem": "What biomechanical trick lets a flamingo hold a one-leg pose with almost no muscle work?",
+                        "choices": [
+                            "The tucked foot is glued to the belly",
+                            "Gravity can lock a passive stay at the joint, so the pose holds with little active muscle force",
+                            "A second hidden skeleton props the body up",
+                        ],
+                        "correct": "B",
+                        "why": "Studies show the one-legged pose can be held with little or no muscle activity — a gravity-driven passive stay at the joint. The lock is mostly gravity, not extra muscle work.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "lump-split",
+                        "title": "Taxonomy",
+                        "stem": "How have scientists treated the American / Caribbean flamingo (Phoenicopterus ruber) next to the greater flamingo?",
+                        "choices": [
+                            "They have always been two unrelated bird families",
+                            "P. ruber has sometimes been lumped with, or treated next to, the greater flamingo — a split that is now widely preferred",
+                            "They are the same bird as the Chilean flamingo",
+                        ],
+                        "correct": "B",
+                        "why": "The greater flamingo was once treated as a subspecies of P. ruber, or the two were lumped. Many authorities now keep them as close relatives but separate species. We do not lock one forever name.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "chick-bill",
+                        "title": "Chick bill",
+                        "stem": "How does a Caribbean flamingo chick’s bill change as it grows?",
+                        "choices": [
+                            "It starts fully hooked and then straightens",
+                            "It starts relatively straight and bends as filter-feeding develops",
+                            "Chicks have no bill until they fledge",
+                        ],
+                        "correct": "B",
+                        "why": "Hatchlings begin with a relatively straight bill. The familiar downward bend develops as the young bird grows into filter-feeding.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "status-soft",
+                        "title": "Status",
+                        "stem": "How does the wild status of the American / Caribbean flamingo compare with many other zoo-card animals?",
+                        "choices": [
+                            "It is always the most threatened bird on Earth",
+                            "It is relatively secure compared with many zoo-card species — often treated as a lower-risk listing",
+                            "It went extinct in the 1800s",
+                        ],
+                        "correct": "B",
+                        "why": "Wild American / Caribbean flamingos are often treated as relatively secure next to several more threatened zoo-card animals. We do not lock a single status letter.",
                     },
                 ],
             },
