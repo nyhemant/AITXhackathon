@@ -116,7 +116,9 @@ class FlagshipSessionTests(unittest.TestCase):
             "I want to teach about…",
         ):
             self.assertIn(q, html)
-        self.assertIn("nationalzoo.si.edu/webcams/lion-cam", html)
+        self.assertIn("Watch Live", html)
+        self.assertIn("/field-pack/virtual-zoo/?from=card#habitat=african-lion", html)
+        self.assertNotIn("nationalzoo.si.edu/webcams/lion-cam", html)
         self.assertIn("Print", html)
         self.assertNotIn("Open in outing view", html)
         self.assertNotIn("What did you notice about", html)
@@ -126,15 +128,24 @@ class FlagshipSessionTests(unittest.TestCase):
 
     def test_flagship_cards_reuse_vft_cams_when_present(self):
         expect = {
-            "reticulated-giraffe": "houstonzoo.org/explore/webcams/giraffe-feeding-platform",
-            "african-elephant": "nationalzoo.si.edu/webcams/elephants",
-            "african-lion": "nationalzoo.si.edu/webcams/lion-cam",
-            "giant-panda": "nationalzoo.si.edu/webcams/panda-cam",
-            "african-penguin": "zoo.sandiegozoo.org/cams/penguin-cam",
+            "reticulated-giraffe": "reticulated-giraffe",
+            "african-elephant": "african-elephant",
+            "african-lion": "african-lion",
+            "giant-panda": "giant-panda",
+            "african-penguin": "african-penguin",
         }
-        for cid, needle in expect.items():
+        outbound = (
+            "houstonzoo.org/explore/webcams",
+            "nationalzoo.si.edu/webcams",
+            "zoo.sandiegozoo.org/cams",
+        )
+        for cid, hid in expect.items():
             html = (FP / "cards" / cid / "index.html").read_text(encoding="utf-8")
-            self.assertIn(needle, html, cid)
+            self.assertIn("Watch Live", html, cid)
+            self.assertIn(f"#habitat={hid}", html, cid)
+            self.assertIn("/field-pack/virtual-zoo/?from=card", html, cid)
+            for host in outbound:
+                self.assertNotIn(host, html, cid)
             self.assertIn("What do they eat?", html)
         koala = (FP / "cards" / "koala" / "index.html").read_text(encoding="utf-8")
         self.assertIn("What do they eat?", koala)
@@ -245,7 +256,8 @@ class FlagshipSessionTests(unittest.TestCase):
         self.assertNotIn("This zoo's cards", html)
         lion_main = html.split('<main class="card-page">', 1)[1].split("</main>", 1)[0]
         self.assertNotIn("Explore at home", lion_main)
-        self.assertIn("Virtual Field Trip", lion_main)
+        self.assertIn("Watch Live", lion_main)
+        self.assertNotIn("Virtual Field Trip", lion_main)
         self.assertIn("Print", lion_main)
         self.assertIn("Meat", html)
         self.assertIn("Run fast", html)
@@ -373,11 +385,11 @@ class FlagshipSessionTests(unittest.TestCase):
     def test_cousin_cam_first_visible_line_names_source_zoo(self):
         html = (FP / "cards" / "reticulated-giraffe" / "index.html").read_text(encoding="utf-8")
         watch = html.split('class="seo-watch-row"', 1)[1].split("</p>", 1)[0]
-        first_link = watch.split("<a", 1)[1].split("</a>", 1)[0]
-        source = first_link.split('class="seo-watch-source"', 1)[1].split(">", 1)[1].split("<", 1)[0].strip()
-        self.assertEqual(source, "Live from Houston Zoo")
-        self.assertLess(first_link.find("Live from Houston Zoo"), first_link.find("Giraffe cam at the Houston Zoo"))
-        self.assertNotIn("Dallas", source)
+        self.assertIn("Watch Live", watch)
+        self.assertIn("Live from Houston Zoo", watch)
+        self.assertNotIn("houstonzoo.org", watch)
+        self.assertNotIn('target="_blank"', watch)
+        self.assertNotIn("Dallas", watch)
 
     def test_dallas_does_not_duplicate_more_if_you_have_energy(self):
         visible = self._visible((FP / "dallas-zoo" / "index.html").read_text(encoding="utf-8"))

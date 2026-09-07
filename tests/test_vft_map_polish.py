@@ -122,8 +122,8 @@ class VftMapPolishTests(unittest.TestCase):
         self.assertIn('const DEFAULT_ZOO_STOP = "caribbean-flamingo"', self.js)
         for html in self.pages.values():
             self.assertIn("Print the cutouts", html)
-            self.assertIn("virtual-venue.js?v=96", html)
-            self.assertIn("virtual-venue.css?v=56", html)
+            self.assertIn("virtual-venue.js?v=97", html)
+            self.assertIn("virtual-venue.css?v=57", html)
             self.assertIn('class="btn btn-secondary" id="vz-print-watch"', html)
             self.assertNotIn('class="btn btn-primary" id="vz-print-watch"', html)
 

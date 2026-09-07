@@ -435,7 +435,8 @@ class FieldPackInternalLinkTests(unittest.TestCase):
         habitat_hrefs = [
             h
             for h in self.hrefs
-            if "#habitat=" in h["resolved"] and "virtual-field-trip" in h["resolved"]
+            if "#habitat=" in h["resolved"]
+            and ("virtual-field-trip" in h["resolved"] or "virtual-zoo" in h["resolved"])
         ]
         self.assertGreater(len(habitat_hrefs), 10)
         missing = []
@@ -482,6 +483,7 @@ class FieldPackInternalLinkTests(unittest.TestCase):
             "/field-pack/dallas-zoo/": 200,
             "/field-pack/cards/reticulated-giraffe/": 200,
             "/field-pack/virtual-field-trip/": 200,
+            "/field-pack/virtual-zoo/": 200,
             "/field-pack/app.html": 200,
             "/dinner": 200,
             "/start/": 200,

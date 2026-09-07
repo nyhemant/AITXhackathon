@@ -98,6 +98,7 @@
   let lastFocus = null;
   let openedIds = [];
   let currentCardId = "";
+  let currentHabitatId = "";
   let currentPrint = { type: "qa", id: "" };
   let loadGen = 0;
   const DEFAULT_ZOO_STOP = "caribbean-flamingo";
@@ -148,10 +149,65 @@
     return TAB_CONFIGS[def] ? def : "zoo";
   }
 
+  function fromCard() {
+    try {
+      return new URLSearchParams(location.search).get("from") === "card";
+    } catch (_) {
+      return false;
+    }
+  }
+
+  function cardReturnVenue() {
+    try {
+      return new URLSearchParams(location.search).get("return") || "";
+    } catch (_) {
+      return "";
+    }
+  }
+
   function tabUrl(id, habitat) {
-    const q = "?tab=" + encodeURIComponent(id);
+    const q = new URLSearchParams();
+    q.set("tab", id);
+    if (fromCard()) q.set("from", "card");
+    const ret = cardReturnVenue();
+    if (ret) q.set("return", ret);
     const hash = habitat ? "#habitat=" + encodeURIComponent(habitat) : "#" + id;
-    return location.pathname + q + hash;
+    return location.pathname + "?" + q.toString() + hash;
+  }
+
+  function nextAfter(id) {
+    const list = walkList();
+    const i = list.findIndex((h) => h.id === id);
+    if (i < 0 || list.length < 2) return null;
+    return list[(i + 1) % list.length];
+  }
+
+  function cardHrefFor(h) {
+    const cid = (h && (h.cardId || h.id)) || currentCardId;
+    if (!cid) return "/field-pack/cards/";
+    const ret = cardReturnVenue();
+    return "/field-pack/cards/" + encodeURIComponent(cid) + "/" + (ret ? "?from=" + encodeURIComponent(ret) : "");
+  }
+
+  function syncCardNav(h) {
+    const nav = document.getElementById("vz-card-nav");
+    const back = document.getElementById("vz-back-card");
+    const nextBtn = document.getElementById("vz-next-stop");
+    if (!nav) return;
+    if (!fromCard()) {
+      nav.hidden = true;
+      return;
+    }
+    nav.hidden = false;
+    if (back) {
+      back.href = cardHrefFor(h);
+      back.textContent = "Back to card";
+    }
+    const nxt = h ? nextAfter(h.id) : null;
+    if (nextBtn) {
+      nextBtn.hidden = !nxt;
+      if (nxt) nextBtn.textContent = "Next";
+    }
   }
 
   function isMuseumTab(id) {
@@ -2056,6 +2112,24 @@
     }
   }
 
+  function openCamEmbed(url, label) {
+    if (!url || !camFrame) return false;
+    if (camWin && !camWin.closed) {
+      try {
+        camWin.close();
+      } catch (_) {}
+      camWin = null;
+    }
+    if (camPopTitle) camPopTitle.textContent = label || "Live";
+    if (camPopNote) camPopNote.hidden = true;
+    camFrame.hidden = false;
+    camFrame.title = label || "Live";
+    camFrame.src = url;
+    if (camPop) camPop.hidden = false;
+    camPopBack?.focus();
+    return true;
+  }
+
   function openCamPopup(url, label, mode) {
     if (!url || url === "#") return;
     const local = isLocalUrl(url);
@@ -2076,19 +2150,10 @@
       return;
     }
     if (local && camFrame) {
-      if (camWin && !camWin.closed) {
-        try {
-          camWin.close();
-        } catch (_) {}
-        camWin = null;
-      }
-      if (camPopTitle) camPopTitle.textContent = label || "Park kit";
-      if (camPopNote) camPopNote.hidden = true;
-      camFrame.hidden = false;
-      camFrame.title = label || "Park kit";
-      camFrame.src = url;
-      if (camPop) camPop.hidden = false;
-      camPopBack?.focus();
+      openCamEmbed(url, label || "Park kit");
+      return;
+    }
+    if (fromCard()) {
       return;
     }
     closeCamPopup();
@@ -2151,6 +2216,7 @@
       titleEl.textContent = h.label || (item && item.name) || "Stop";
     }
     currentCardId = (item && item.id) || h.cardId || h.id;
+    currentHabitatId = h.id;
     const isPark = Boolean(h.placeHref) || (config && config.kind === "park");
     currentPrint = isPark ? { type: "hunt", id: h.id } : { type: "qa", id: currentCardId };
     currentPhotoSrc =
@@ -2179,17 +2245,26 @@
         blurbEl.innerHTML = line ? `${escapeHtml(line)}${extra}` : extra;
       }
     }
-    if (watchEl) watchEl.hidden = cinema ? !hasCam : !(hasCam || hasFilm);
+    if (watchEl) {
+      const canWatch = fromCard() ? Boolean(cam.embed) || hasFilm : hasCam || hasFilm;
+      watchEl.hidden = cinema ? !hasCam : !canWatch;
+    }
     if (camLink) {
-      camLink.hidden = !hasCam;
-      if (hasCam) {
-        camLink.href = cam.url;
+      const inPageCam = Boolean(cam.embed);
+      const showCam = fromCard() ? inPageCam : hasCam;
+      camLink.hidden = !showCam;
+      if (showCam) {
+        camLink.href = fromCard() ? "#" : cam.url;
         camLink.innerHTML = `Live<small>${escapeHtml(cam.camLabel || "Live camera")}${
           cam.hours ? " · " + escapeHtml(cam.hours) : ""
         }</small>`;
         camLink.onclick = (e) => {
           e.preventDefault();
-          openCamPopup(cam.url, cam.camLabel || h.label || "Live");
+          if (fromCard() && cam.embed) {
+            openCamEmbed(cam.embed, cam.camLabel || h.label || "Live");
+          } else {
+            openCamPopup(cam.url, cam.camLabel || h.label || "Live");
+          }
           track("cam_clicked", { animal_id: h.cardId || h.id, venue_kind: (config && config.kind) || "zoo", tab: currentTab() });
         };
       } else {
@@ -2253,6 +2328,7 @@
 
     dialog.hidden = false;
     dialog.setAttribute("aria-hidden", "false");
+    syncCardNav(h);
     track("habitat_opened", { animal_id: h.cardId || h.id, venue_kind: (config && config.kind) || "zoo", tab: currentTab() });
     const next = tabUrl(currentTab(), h.id);
     if (location.pathname + location.search + location.hash !== next) history.replaceState(null, "", next);
@@ -2425,6 +2501,13 @@
     if (!t || !t.getAttribute("href")) return;
     if (t.classList.contains("vz-static-cam")) {
       e.preventDefault();
+      if (fromCard()) {
+        const row = t.closest && t.closest("li");
+        const film = row && row.querySelector(".vz-static-film");
+        const hab = habitatFromFilmControl(film || t) || habitatById(t.getAttribute("data-habitat") || "");
+        if (hab) openHabitat(hab.id, t, { fromHash: true });
+        return;
+      }
       openCamPopup(t.getAttribute("href"), t.textContent.replace(/^Live cam — /, "").trim() || "Live cam");
       track("cam_clicked", { animal_id: "static", venue_kind: (config && config.kind) || "zoo", tab: currentTab() });
       return;
@@ -2455,6 +2538,10 @@
     }
   });
   document.getElementById("vz-sound-tip-dismiss")?.addEventListener("click", () => hideSoundTip(true));
+  document.getElementById("vz-next-stop")?.addEventListener("click", () => {
+    const nxt = nextAfter(currentHabitatId || habitatHashId() || currentCardId);
+    if (nxt) openHabitat(nxt.id, null, { fromHash: true });
+  });
   closeBtn?.addEventListener("click", closeDialog);
   backdrop?.addEventListener("click", closeDialog);
   dialog?.addEventListener("keydown", (e) => {

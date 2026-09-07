@@ -113,6 +113,7 @@ HOME_SESSION_H2 = CTA_AT_HOME
 HOME_SESSION_LEAD = "Cards, photos, and a cam when we have one."
 HOME_SESSION_VFT = "Open Virtual Field Trip"
 PLACE_VFT_CTA = "Virtual Field Trip"
+CTA_WATCH_LIVE = "Watch Live"
 # Card-page chrome — short labels. Do not reintroduce tutorial essays.
 CARD_TALK_H2 = "Talk"
 CTA_CARDS_HUB = "Cards"
@@ -269,7 +270,7 @@ OUTING_TALK_EXHIBIT = (
 )
 
 SEO_CSS_VER = "29"
-CARD_SEO_CSS_VER = "31"
+CARD_SEO_CSS_VER = "32"
 LANDING_CSS_VER = "99"
 LANDING_MAP_JS_VER = "87"
 LANDING_HOOK_JS_VER = "37"
@@ -562,6 +563,7 @@ def load_vft_by_card() -> dict[str, dict]:
             cam = h.get("cam") or {}
             video = h.get("video") or {}
             cam_url = str(cam.get("url") or "").strip()
+            cam_embed = str(cam.get("embed") or "").strip()
             film_url = str(video.get("url") or "").strip()
             hid = str(h.get("id") or cid)
             out[cid] = {
@@ -569,6 +571,7 @@ def load_vft_by_card() -> dict[str, dict]:
                 "habitat_id": hid,
                 "label": h.get("label") or "",
                 "cam_url": cam_url,
+                "cam_embed": cam_embed,
                 "cam_label": str(cam.get("camLabel") or "").strip(),
                 "film_url": film_url,
                 "film_title": str(video.get("title") or "").strip(),
@@ -703,16 +706,17 @@ def is_place_site_url(url: str) -> bool:
     return any(tok in host for tok in ("zoo", "aquarium", "museum"))
 
 
-def catalog_more_links_html(item: dict, *, shared: bool = False) -> str:
+def catalog_more_links_html(item: dict, *, shared: bool = False, allow_cam: bool = True) -> str:
     """Photos / learn-more from catalog.links. Prefer VFT cam over catalog cam.
 
     Shared animal / sea-life cards drop a hardcoded home-zoo Learn more.
     Kit-aware Learn more is filled in from ?from= / referrer (see card page JS).
+    Card pages pass allow_cam=False — never fall back to an outbound zoo cam.
     """
     links = item.get("links") or {}
     vft = item.get("vft") or {}
     bits: list[str] = []
-    if not vft.get("cam_url"):
+    if allow_cam and not vft.get("cam_url"):
         cam = str(links.get("cam") or "").strip()
         if cam:
             bits.append(
@@ -783,6 +787,31 @@ def is_youtube_url(url: str) -> bool:
     return host in {"youtube.com", "youtu.be", "m.youtube.com", "youtube-nocookie.com"}
 
 
+def vft_has_inpage_media(vft: dict | None) -> bool:
+    """True when VFT can play a film or an in-page cam embed — not an outbound zoo URL."""
+    vft = vft or {}
+    if str(vft.get("film_url") or "").strip():
+        return True
+    if str(vft.get("cam_embed") or "").strip():
+        return True
+    return False
+
+
+def card_watch_href(vft: dict | None) -> str:
+    """Same-tab Watch Live door with this animal pre-selected. Zoo uses virtual-zoo."""
+    vft = vft or {}
+    hid = str(vft.get("habitat_id") or "").strip()
+    if not hid:
+        return ""
+    tab = str(vft.get("tab") or "").strip()
+    if tab == "zoo":
+        return f"/field-pack/virtual-zoo/?from=card#habitat={esc(hid)}"
+    if tab:
+        return f"/field-pack/virtual-field-trip/?tab={esc(tab)}&from=card#habitat={esc(hid)}"
+    href = str(vft.get("vft_href") or "").strip()
+    return href
+
+
 def watch_link_html(url: str, label: str, *, kind: str) -> str:
     """Cam/film anchor: first visible line names the real zoo when the label has one."""
     src = cousin_source_from_label(label)
@@ -798,30 +827,61 @@ def watch_link_html(url: str, label: str, *, kind: str) -> str:
     return f'<a class="seo-watch-link" href="{esc(url)}"{extra}>{inner}</a>'
 
 
-def watch_links_html(item: dict, *, film_via_vft: bool = False) -> str:
+def card_watch_row_html(vft: dict, *, cta: str) -> str:
+    """Card Watch Live: same-origin player only. Cousin zoo is plain text, not a href."""
+    if not vft_has_inpage_media(vft):
+        return ""
+    href = card_watch_href(vft)
+    if not href:
+        return ""
+    cam_src = cousin_source_from_label(vft.get("cam_label") or "")
+    film_src = cousin_source_from_label(vft.get("film_title") or "")
+    if cam_src:
+        attr = f'<span class="seo-watch-source">Live from {esc(cam_src)}</span>'
+    elif film_src:
+        attr = f'<span class="seo-watch-source">Film from {esc(film_src)}</span>'
+    else:
+        attr = ""
+    return (
+        f'<p class="seo-watch-row">'
+        f'<a class="btn btn-primary card-watch-live" href="{esc(href)}">{esc(cta)}</a>'
+        f"{attr}</p>"
+    )
+
+
+def watch_links_html(item: dict, *, film_via_vft: bool = False, watch_live: bool = False) -> str:
     """Live cam / film only when Virtual Field Trip already has a sourced URL.
 
     Card pages pass film_via_vft=True so Pre-recorded YouTube tabs open the
     in-page VFT habitat instead. Place pages keep the existing film URLs.
+    watch_live=True (animal / sea_life cards) emits Watch Live and never
+    an outbound zoo/webcam href.
     """
     vft = item.get("vft") or {}
+    if film_via_vft:
+        if watch_live:
+            return card_watch_row_html(vft, cta=CTA_WATCH_LIVE)
+        if not vft_has_inpage_media(vft) or not vft.get("vft_href"):
+            return ""
+        label = vft.get("film_title") or PLACE_VFT_CTA
+        film_url = str(vft.get("film_url") or "")
+        if film_url and is_youtube_url(film_url):
+            return f'<p class="seo-watch-row">{watch_link_html(str(vft["vft_href"]), label, kind="vft")}</p>'
+        return (
+            f'<p class="seo-watch-row">'
+            f'{watch_link_html(str(vft["vft_href"]), label or PLACE_VFT_CTA, kind="vft")}'
+            f"</p>"
+        )
     links: list[str] = []
-    film_used_vft = False
     if vft.get("cam_url"):
         label = vft.get("cam_label") or "Watch live cam"
         links.append(watch_link_html(str(vft["cam_url"]), label, kind="cam"))
     if vft.get("film_url"):
         label = vft.get("film_title") or "Watch a short film"
-        film_url = str(vft["film_url"])
-        if film_via_vft and vft.get("vft_href") and is_youtube_url(film_url):
-            links.append(watch_link_html(str(vft["vft_href"]), label, kind="vft"))
-            film_used_vft = True
-        else:
-            links.append(watch_link_html(film_url, label, kind="film"))
-    if vft.get("vft_href") and (vft.get("cam_url") or vft.get("film_url")) and not film_used_vft:
-        cta = PLACE_VFT_CTA if film_via_vft else HOME_SESSION_VFT
+        links.append(watch_link_html(str(vft["film_url"]), label, kind="film"))
+    if vft.get("vft_href") and (vft.get("cam_url") or vft.get("film_url")):
         links.append(
-            f'<a class="seo-watch-link" href="{vft["vft_href"]}">{esc(cta)}</a>'
+            f'<a class="seo-watch-link" href="{vft["vft_href"]}">{esc(HOME_SESSION_VFT)}</a>'
         )
     if not links:
         return ""
@@ -4566,15 +4626,22 @@ def write_card_pages(
             else f'<p class="card-page-emoji" aria-hidden="true">{esc(emoji)}</p>'
         )
         talk_html = outing_talk_html(item)
-        more_links = catalog_more_links_html(item, shared=not show_venue_chrome)
-        watch_html = watch_links_html(item, film_via_vft=True)
+        more_links = catalog_more_links_html(item, shared=not show_venue_chrome, allow_cam=False)
+        kind = card_kind(c)
+        watch_live = kind in ("animal", "sea_life")
+        watch_html = watch_links_html(item, film_via_vft=True, watch_live=watch_live)
         next_html = card_next_html(cid)
         print_venue_attr = f' data-venue="{esc(vid)}"' if show_venue_chrome and vid else ""
         kit_sites_js = json.dumps(start_here_official_urls(), separators=(",", ":"))
         vft = item.get("vft") or {}
         vft_href = vft.get("vft_href") or ""
+        watch_href = card_watch_href(vft) if vft_has_inpage_media(vft) else ""
         action_bits: list[str] = []
-        if vft_href:
+        if watch_live and watch_href:
+            action_bits.append(
+                f'<a class="btn btn-primary card-watch-live" href="{watch_href}">{esc(CTA_WATCH_LIVE)}</a>'
+            )
+        elif vft_href and not watch_live:
             action_bits.append(
                 f'<a class="btn btn-secondary" href="{vft_href}">{esc(PLACE_VFT_CTA)}</a>'
             )
@@ -4671,6 +4738,14 @@ def write_card_pages(
         more.href = KIT_SITES[from];
         more.removeAttribute("hidden");
       }}
+      document.querySelectorAll("a.card-watch-live").forEach(function (a) {{
+        if (!from || !KIT_SITES[from]) return;
+        try {{
+          var u = new URL(a.href, window.location.origin);
+          u.searchParams.set("return", from);
+          a.setAttribute("href", u.pathname + u.search + u.hash);
+        }} catch (e) {{}}
+      }});
       if (typeof FPTrack === "function") FPTrack("card_page_viewed", {{ card_id: "{esc(cid)}" }});
       var btn = document.getElementById("print-this-card");
       if (btn) btn.addEventListener("click", function () {{
