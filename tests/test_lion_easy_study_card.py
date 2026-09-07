@@ -95,7 +95,8 @@ class LionEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_LION))
         self.assertEqual(deck["push_further"], list(PUSH_FURTHER_LION))
         self.assertEqual(study_deck_for("african-elephant")["level"], "easy")
-        self.assertIsNone(study_deck_for("african-elephant", "hard"))
+        self.assertIsNotNone(study_deck_for("african-elephant", "hard"))
+        self.assertIsNone(study_deck_for("african-elephant", "zoologist"))
 
     def test_generator_html_is_study_not_worksheet(self):
         html = outing_talk_html({"id": "african-lion", "packTemplate": "animals"})
