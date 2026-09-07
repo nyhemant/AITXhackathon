@@ -5,6 +5,12 @@ https://en.wikipedia.org/wiki/Lion
 Do not invent stats. Soften contested numbers. Roar distance may cite
 “about 8 km / 5 miles (Wikipedia).”
 
+Facts for reticulated-giraffe Junior Ranger (easy only) are Wikipedia-backed:
+https://en.wikipedia.org/wiki/Giraffe
+https://en.wikipedia.org/wiki/Reticulated_giraffe
+Soften tongue length (no cm) and Kenya-only range. Home is African
+savannah / open woodland.
+
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
 zoologist. Visible copy uses LEVEL_DISPLAY_NAMES only — no age badges,
@@ -23,6 +29,8 @@ STUDY_DATA_JS = FIELD / "js" / "study-cards-data.js"
 
 # https://en.wikipedia.org/wiki/Lion — source for Easy facts (not invented).
 WIKI_LION = "https://en.wikipedia.org/wiki/Lion"
+WIKI_GIRAFFE = "https://en.wikipedia.org/wiki/Giraffe"
+WIKI_RETICULATED_GIRAFFE = "https://en.wikipedia.org/wiki/Reticulated_giraffe"
 
 LETTERS = ("A", "B", "C")
 STUDY_SLOTS = 10
@@ -35,7 +43,8 @@ LEVEL_DISPLAY_NAMES = {
     "zoologist": "Zoologist",
 }
 
-# Shipped picker order. Lion now ships Junior Ranger + Park Ranger + Zoologist.
+# Shipped picker order. A card only shows keys it actually defines.
+# Lion ships all three; reticulated-giraffe ships Junior Ranger (easy) only.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -49,6 +58,16 @@ PUSH_FURTHER_LION = (
     "A mane makes a male slower, hotter and more visible. Why hasn’t evolution removed it?",
     "Lions and cheetahs share the same plains. How do they avoid competing directly?",
     "Find one more animal on your zoo map that lives in a group. What does the group give it?",
+)
+TALK_ABOUT_GIRAFFE = (
+    "Why might a long neck help a giraffe besides reaching high leaves?",
+    "If you stood as tall as a giraffe, what would you notice first at the zoo?",
+    "Which other animal at the zoo has a special tongue or a long neck?",
+)
+PUSH_FURTHER_GIRAFFE = (
+    "A giraffe must spread its front legs to drink. What risk could that pose in the wild?",
+    "Each giraffe’s spots are unique. How could that help a keeper tell them apart?",
+    "Find one more animal on your zoo map that eats leaves from trees. How does it reach them?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -427,7 +446,146 @@ STUDY_CARDS: dict[str, dict] = {
                 ],
             },
         },
-    }
+    },
+    "reticulated-giraffe": {
+        "id": "reticulated-giraffe",
+        "source": WIKI_GIRAFFE,
+        "source_note": "Facts from Wikipedia, Giraffe / Reticulated giraffe.",
+        "talk_about": list(TALK_ABOUT_GIRAFFE),
+        "push_further": list(PUSH_FURTHER_GIRAFFE),
+        "levels": {
+            "easy": {
+                # Teaching-first: pride-of-place facts. Do not spoiler every quiz slot.
+                "teach": [
+                    "The giraffe is the tallest living land animal.",
+                    "It eats leaves and shoots from tall trees.",
+                    "A very long neck helps it reach high foliage.",
+                    "A baby giraffe is a calf.",
+                    "Wild giraffes live on African savannah and open woodland.",
+                ],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "tallest",
+                        "title": "Tallest",
+                        "stem": "What record does a giraffe hold among living land animals?",
+                        "choices": ["Fastest runner", "Tallest living land animal", "Smallest mammal"],
+                        "correct": "B",
+                        "why": "The giraffe is the tallest living land animal — taller than any other animal that lives on land today.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "food",
+                        "title": "Food",
+                        "stem": "What do giraffes mostly eat?",
+                        "choices": ["Meat", "Leaves and shoots from tall trees", "Fish"],
+                        "correct": "B",
+                        "why": "Giraffes eat leaves and shoots from tall trees, especially acacia. They are not meat-eaters.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "neck",
+                        "title": "Neck",
+                        "stem": "Why does a giraffe have such a long neck?",
+                        "choices": ["To store water like a camel", "To reach high leaves", "To fly"],
+                        "correct": "B",
+                        "why": "A giraffe’s extremely long neck helps it reach high foliage that shorter animals cannot.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "tongue",
+                        "title": "Tongue",
+                        "stem": "What is special about a giraffe’s tongue?",
+                        "choices": [
+                            "It is very long and dark, for stripping leaves",
+                            "It is forked like a snake",
+                            "It is short and used only to drink",
+                        ],
+                        "correct": "A",
+                        "why": "A giraffe uses a very long, dark tongue to pull and strip leaves from thorny branches.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "young",
+                        "title": "Young",
+                        "stem": "What is a baby giraffe called, and what can it do soon after birth?",
+                        "choices": [
+                            "A cub — it stays lying down for weeks",
+                            "A calf — it can stand soon after birth",
+                            "A chick — it hatches from an egg",
+                        ],
+                        "correct": "B",
+                        "why": "A baby giraffe is a calf. Newborns can stand soon after they are born.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "home",
+                        "title": "Home",
+                        "stem": "Where do wild giraffes mostly live?",
+                        "choices": [
+                            "African savannah and open woodland",
+                            "Deep ocean",
+                            "Thick polar ice",
+                        ],
+                        "correct": "A",
+                        "why": "Wild giraffes live on African savannah and open woodland — not only one country.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "drink",
+                        "title": "Drink",
+                        "stem": "How does a giraffe drink water?",
+                        "choices": [
+                            "It uses a trunk",
+                            "It spreads its front legs or bends its knees",
+                            "It never drinks water",
+                        ],
+                        "correct": "B",
+                        "why": "A giraffe’s neck and legs are so long that it spreads its front legs or bends its knees to reach the water.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "ossicones",
+                        "title": "Ossicones",
+                        "stem": "What are the horn-like bumps on a giraffe’s head?",
+                        "choices": [
+                            "Antlers that fall off each year",
+                            "Skin-covered ossicones",
+                            "Ears that folded up",
+                        ],
+                        "correct": "B",
+                        "why": "Those bumps are ossicones — skin-covered, horn-like knobs. They are not antlers that shed.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "coat",
+                        "title": "Coat",
+                        "stem": "What is special about a giraffe’s coat?",
+                        "choices": [
+                            "Every giraffe has the same spots",
+                            "Dark patches in a net-like pattern; each giraffe’s spots are unique",
+                            "It is bright blue with stripes",
+                        ],
+                        "correct": "B",
+                        "why": "A reticulated giraffe’s dark patches look like a net. Each giraffe’s spot pattern is unique.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "myth",
+                        "title": "Myth buster",
+                        "stem": "Does a giraffe have extra neck bones compared with most mammals?",
+                        "choices": [
+                            "Yes — dozens of extra bones",
+                            "No — still seven vertebrae, just much longer",
+                            "It has no neck bones",
+                        ],
+                        "correct": "B",
+                        "why": "Like most mammals, a giraffe has seven neck vertebrae. Each bone is just much longer.",
+                    },
+                ],
+            },
+        },
+    },
 }
 
 
