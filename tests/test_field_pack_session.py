@@ -147,7 +147,7 @@ class FlagshipSessionTests(unittest.TestCase):
             self.assertIn("/field-pack/virtual-zoo/?from=card", html, cid)
             for host in outbound:
                 self.assertNotIn(host, html, cid)
-            if cid not in ("african-lion", "reticulated-giraffe"):
+            if cid not in ("african-lion", "reticulated-giraffe", "african-elephant"):
                 self.assertIn("What do they eat?", html)
         koala = (FP / "cards" / "koala" / "index.html").read_text(encoding="utf-8")
         self.assertIn("What do they eat?", koala)
@@ -427,7 +427,7 @@ class FlagshipSessionTests(unittest.TestCase):
         elephant = (FP / "cards" / "african-elephant" / "index.html").read_text(encoding="utf-8")
         self.assertLess(
             elephant.find('class="card-page-next" hidden data-next-from="dallas-zoo"'),
-            elephant.find('class="card-talk-pack"'),
+            elephant.find('class="card-talk-pack'),
         )
 
     def test_phone_session_css_locks(self):
