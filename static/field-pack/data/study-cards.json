@@ -1573,6 +1573,141 @@
             "why": "Polar bears live in the Arctic. Wild penguins live in the Southern Hemisphere. They never meet in the wild — opposite ends of the planet."
           }
         ]
+      },
+      "zoologist": {
+        "teach": [],
+        "questions": [
+          {
+            "slot": 1,
+            "id": "genus",
+            "title": "Genus",
+            "stem": "Which genus do African penguins belong to, and who are their closest banded-penguin relatives?",
+            "choices": [
+              "Aptenodytes, with emperor and king penguins",
+              "Spheniscus, with Humboldt, Magellanic, and Galápagos penguins",
+              "Pygoscelis, with Adélie, chinstrap, and gentoo penguins"
+            ],
+            "correct": "B",
+            "why": "African penguins sit in Spheniscus, the banded penguins. Wikipedia groups them with Humboldt, Magellanic, and Galápagos penguins — similar in shape, colour, and behaviour."
+          },
+          {
+            "slot": 2,
+            "id": "old-world",
+            "title": "Old World",
+            "stem": "What makes the African penguin unique among living penguins?",
+            "choices": [
+              "It is the only penguin that lives in Antarctica",
+              "It is the only penguin species that breeds on the African continent — the only penguin found in the Old World",
+              "It is the only penguin that can fly"
+            ],
+            "correct": "B",
+            "why": "Wikipedia calls it the only penguin species that breeds in Africa, and the only penguin found in the Old World. Other living penguins breed in the New World or farther south."
+          },
+          {
+            "slot": 3,
+            "id": "supraorbital",
+            "title": "Salt gland",
+            "stem": "How does an African penguin’s supraorbital salt gland keep the body in osmotic balance?",
+            "choices": [
+              "It stores seawater in the stomach until the salt evaporates",
+              "It sits above the eyes and excretes concentrated salt, so extra salt from seawater and prey can leave the body",
+              "It turns salt into fresh water inside the lungs"
+            ],
+            "correct": "B",
+            "why": "African penguins have supraorbital salt glands above the eyes. The glands excrete concentrated salt, which helps maintain osmotic balance while the bird forages at sea."
+          },
+          {
+            "slot": 4,
+            "id": "countershading",
+            "title": "Camouflage",
+            "stem": "What named camouflage strategy is an African penguin’s dark back and pale belly?",
+            "choices": [
+              "Disruptive coloration — random blotches that hide the outline",
+              "Classic countershading — a dark dorsal surface and pale ventral surface that hide the bird from above and below",
+              "Aposematism — bright warning colours that scare predators"
+            ],
+            "correct": "B",
+            "why": "Wikipedia names the colouring as countershading, a classic camouflage strategy. The dark back blends with the water from above, and the pale belly is harder to see from below."
+          },
+          {
+            "slot": 5,
+            "id": "vasodilation",
+            "title": "Blood flow",
+            "stem": "What actually makes the pink facial patch above an African penguin’s eye look pinker when the bird is warmer?",
+            "choices": [
+              "Sunburn that permanently dyes the skin",
+              "More blood flowing into the patch (vasodilation); less flow (vasoconstriction) when the bird is cooler",
+              "Extra salt crystals sitting on the feathers"
+            ],
+            "correct": "B",
+            "why": "Blood flow controls the colour. When the bird is warmer, more blood reaches the facial patch (vasodilation), so it looks pinker. Cooler birds send less blood there (vasoconstriction)."
+          },
+          {
+            "slot": 6,
+            "id": "decline-drivers",
+            "title": "Decline",
+            "stem": "What combination of pressures has driven the sharp drop in wild African penguins?",
+            "choices": [
+              "Too many icebergs crowding the beaches",
+              "Prey shortage, habitat loss, and climate / ocean change acting together",
+              "Extra trees shading every nest"
+            ],
+            "correct": "B",
+            "why": "Wikipedia ties the decline to several threats at once — not enough prey, lost nesting habitat, and climate / ocean change. We do not lock a single status letter or an exact percent drop."
+          },
+          {
+            "slot": 7,
+            "id": "fishery",
+            "title": "Fisheries",
+            "stem": "How do commercial fisheries compete with African penguins near colonies?",
+            "choices": [
+              "They harvest ice that penguins need for nests",
+              "Purse-seine and other commercial boats take sardines and anchovies — the same prey the birds hunt",
+              "They collect penguin eggs for fertilizer"
+            ],
+            "correct": "B",
+            "why": "Commercial fishing of sardines and anchovies leaves less prey near colonies, so birds must travel farther or switch to poorer food. Purse-seine and other commercial fleets work the same waters the penguins use."
+          },
+          {
+            "slot": 8,
+            "id": "no-take",
+            "title": "Closures",
+            "stem": "Why can no-take fishing closures around African penguin colonies help breeding birds?",
+            "choices": [
+              "They keep tourists from seeing the penguins",
+              "They keep more sardines and anchovies within the birds’ foraging range while chicks are being raised",
+              "They force penguins to nest on ice instead"
+            ],
+            "correct": "B",
+            "why": "Closures and no-fishing zones around colonies leave more prey within a breeding bird’s reach. Wikipedia notes that restricting fishing near sites such as Robben Island improved breeding success, and later no-fishing zones were set around key breeding areas."
+          },
+          {
+            "slot": 9,
+            "id": "pursuit-dive",
+            "title": "Diving",
+            "stem": "How do African penguins usually catch their prey underwater?",
+            "choices": [
+              "They sit on the surface and wait for fish to jump",
+              "They forage by pursuit diving — chasing prey underwater on relatively shallow, short dives",
+              "They walk along the beach and pick leftover shells"
+            ],
+            "correct": "B",
+            "why": "Wikipedia calls the African penguin a pursuit diver. Typical dives are relatively shallow and short; we do not lock a single max depth or dive time."
+          },
+          {
+            "slot": 10,
+            "id": "tubenoses",
+            "title": "Relatives",
+            "stem": "What are penguins’ closest living relatives as an order?",
+            "choices": [
+              "Ostriches and other flightless land birds",
+              "Tubenoses such as albatrosses and petrels — not ostriches or gulls",
+              "Gulls and other typical coastal seabirds"
+            ],
+            "correct": "B",
+            "why": "Penguins (order Sphenisciformes) sit closest to the tubenoses (albatrosses, petrels, and shearwaters). They are not closest to ostriches, and not closest to gulls."
+          }
+        ]
       }
     }
   }

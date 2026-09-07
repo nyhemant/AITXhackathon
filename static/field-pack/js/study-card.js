@@ -2,8 +2,8 @@
  * Study-card quiz: tap a choice. Wrong greys + disables that pick for a second try.
  * Correct (first or later) shows why and scores. Show answers still reveals the key.
  * Level keys stay easy / hard / zoologist; visible names come from FPStudyLevelName.
- * Lion, giraffe, and African elephant ship JR + Park Ranger + Zoologist.
- * African penguin ships JR + Park Ranger (query ?level= or picker).
+ * Lion, giraffe, African elephant, and African penguin ship JR +
+ * Park Ranger + Zoologist (query ?level= or picker).
  */
 (() => {
   const LETTERS = ["A", "B", "C"];
