@@ -582,6 +582,141 @@
             "why": "Like most mammals, a giraffe has seven neck vertebrae. Each bone is just much longer."
           }
         ]
+      },
+      "hard": {
+        "teach": [],
+        "questions": [
+          {
+            "slot": 1,
+            "id": "relative",
+            "title": "Relatives",
+            "stem": "What is the giraffe’s closest living relative?",
+            "choices": [
+              "The camel",
+              "The okapi (both are Giraffidae)",
+              "The elephant"
+            ],
+            "correct": "B",
+            "why": "Giraffes and the okapi are the only living members of family Giraffidae. The okapi is the giraffe’s closest living relative."
+          },
+          {
+            "slot": 2,
+            "id": "name",
+            "title": "Name",
+            "stem": "What does the old English name “camelopard” mean?",
+            "choices": [
+              "A desert camel only",
+              "Camel-like shape plus leopard-like spots",
+              "A spotted leopard from Asia"
+            ],
+            "correct": "B",
+            "why": "“Camelopard” comes from Greek words for camel and leopard — a camel-like shape with leopard-like colouration."
+          },
+          {
+            "slot": 3,
+            "id": "ossicones-deeper",
+            "title": "Ossicones",
+            "stem": "What are a giraffe’s ossicones made of?",
+            "choices": [
+              "Antlers that shed each year",
+              "Ossified cartilage covered in skin and fused to the skull",
+              "Hollow horns that fall off"
+            ],
+            "correct": "B",
+            "why": "Ossicones form from ossified cartilage, stay covered in skin, and fuse to the skull. They are not antlers that shed."
+          },
+          {
+            "slot": 4,
+            "id": "necking",
+            "title": "Necking",
+            "stem": "How do male giraffes usually fight to establish dominance?",
+            "choices": [
+              "They roar at each other",
+              "They swing their necks and land blows with ossicones",
+              "They lock antlers and push"
+            ],
+            "correct": "B",
+            "why": "Males “neck” — swinging their necks and trying to land blows with their ossicones to decide who is dominant."
+          },
+          {
+            "slot": 5,
+            "id": "speed",
+            "title": "Speed",
+            "stem": "How fast can a giraffe gallop in a short burst?",
+            "choices": [
+              "It cannot run at all",
+              "Roughly 30–37 mph in short bursts",
+              "Faster than a cheetah for hours"
+            ],
+            "correct": "B",
+            "why": "Giraffes can gallop roughly 30–37 mph in short bursts. They are not built for long, all-day chases."
+          },
+          {
+            "slot": 6,
+            "id": "ruminate",
+            "title": "Ruminate",
+            "stem": "How does a giraffe chew its food a second time?",
+            "choices": [
+              "It never chews again after the first swallow",
+              "It has a four-chambered stomach and brings cud back up the long neck",
+              "It stores food in its ossicones"
+            ],
+            "correct": "B",
+            "why": "Giraffes are ruminants with a four-chambered stomach. Strong oesophageal muscles send cud back up the long neck to be chewed again."
+          },
+          {
+            "slot": 7,
+            "id": "sleep",
+            "title": "Sleep",
+            "stem": "How do giraffes usually sleep?",
+            "choices": [
+              "They sleep about 20 hours a day like lions",
+              "In short bouts that add up to only a few hours a day",
+              "They never sleep"
+            ],
+            "correct": "B",
+            "why": "Giraffes sleep in short, interrupted bouts that total only a few hours a day — not one long night of sleep."
+          },
+          {
+            "slot": 8,
+            "id": "calf-size",
+            "title": "Calves",
+            "stem": "How tall is a newborn giraffe, and how soon can it run?",
+            "choices": [
+              "Mouse-sized; it cannot walk for months",
+              "Already about as tall as a person, and it can run within hours",
+              "Taller than an adult giraffe on day one"
+            ],
+            "correct": "B",
+            "why": "A newborn calf is already about as tall as a person. Within a few hours it can run, though it still hides a lot in the first weeks."
+          },
+          {
+            "slot": 9,
+            "id": "threats",
+            "title": "Threats",
+            "stem": "What are the main threats to wild giraffes today?",
+            "choices": [
+              "Too much rain only",
+              "Habitat loss and hunting for bushmeat",
+              "Giraffes moving to the deep ocean"
+            ],
+            "correct": "B",
+            "why": "The biggest concerns are habitat loss and killing for bushmeat. Exact IUCN labels have shifted as giraffe species were split."
+          },
+          {
+            "slot": 10,
+            "id": "tongue-why",
+            "title": "Tongue",
+            "stem": "Why might a giraffe’s tongue be dark?",
+            "choices": [
+              "To taste only meat",
+              "The dark colour may help protect it from sunburn while browsing",
+              "To scare other giraffes"
+            ],
+            "correct": "B",
+            "why": "A giraffe’s tongue is dark — Wikipedia notes it is black, perhaps to protect against sunburn while the animal browses in the sun."
+          }
+        ]
       }
     }
   }
