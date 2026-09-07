@@ -113,6 +113,18 @@
     return m ? decodeURIComponent(m[1]) : "";
   }
 
+  function queryHabitat() {
+    try {
+      return new URLSearchParams(location.search).get("habitat") || "";
+    } catch (_) {
+      return "";
+    }
+  }
+
+  function cardFocusId() {
+    return habitatHashId() || queryHabitat() || currentHabitatId || "";
+  }
+
   function wantsCutoutPrint() {
     try {
       if (new URLSearchParams(location.search).get("print") === "1") return true;
@@ -171,12 +183,14 @@
     if (fromCard()) q.set("from", "card");
     const ret = cardReturnVenue();
     if (ret) q.set("return", ret);
-    const hash = habitat ? "#habitat=" + encodeURIComponent(habitat) : "#" + id;
+    const hid = habitat === "" ? "" : habitat || (fromCard() ? cardFocusId() : "");
+    if (fromCard() && hid) q.set("habitat", hid);
+    const hash = hid ? "#habitat=" + encodeURIComponent(hid) : "#" + id;
     return location.pathname + "?" + q.toString() + hash;
   }
 
   function nextAfter(id) {
-    const list = walkList();
+    const list = fullWalkList();
     const i = list.findIndex((h) => h.id === id);
     if (i < 0 || list.length < 2) return null;
     return list[(i + 1) % list.length];
@@ -259,8 +273,17 @@
     } catch (_) {}
   }
 
-  function walkList() {
+  function fullWalkList() {
     return [...((config && config.habitats) || [])].sort((a, b) => (a.seq || 0) - (b.seq || 0));
+  }
+
+  function walkList() {
+    const all = fullWalkList();
+    if (!fromCard()) return all;
+    const focus = cardFocusId();
+    if (!focus) return all;
+    const one = all.find((h) => h.id === focus);
+    return one ? [one] : all;
   }
 
   function catalogItem(id) {
@@ -680,6 +703,10 @@
     );
   }
 
+  function skipTrailVias() {
+    return walkList().length <= 2;
+  }
+
   function zooTrailPoints() {
     const byId = {};
     walkList().forEach((h) => {
@@ -689,6 +716,7 @@
       if (c) byId[h.id] = c;
     });
     const pts = [];
+    const shortPath = skipTrailVias();
     ZOO_TRAIL_WAYPOINTS.forEach((step) => {
       if (step.gate) {
         const g = gateCenter(step.gate);
@@ -696,6 +724,7 @@
         return;
       }
       if (step.via) {
+        if (shortPath) return;
         pts.push(trailPt(step.via[0], step.via[1]));
         return;
       }
@@ -1680,7 +1709,7 @@
       nav.innerHTML = TAB_ORDER.map((t) => {
         const target = t.id === "museum" ? lastMuseumTab() : t.id;
         const venue = t.id === "museum" ? ' data-venue="museum"' : "";
-        return `<a class="vz-tab" href="${escapeHtml(tabUrl(target))}" data-tab="${escapeHtml(t.id)}"${venue}>${escapeHtml(t.label)}</a>`;
+        return `<a class="vz-tab" href="${escapeHtml(tabUrl(target, ""))}" data-tab="${escapeHtml(t.id)}"${venue}>${escapeHtml(t.label)}</a>`;
       }).join("");
     }
     nav.querySelectorAll("[data-tab]").forEach((a) => {
@@ -1691,7 +1720,7 @@
       if (on) a.setAttribute("aria-current", "page");
       else a.removeAttribute("aria-current");
       const hrefId = venue === "museum" ? lastMuseumTab() : id;
-      a.setAttribute("href", tabUrl(hrefId));
+      a.setAttribute("href", tabUrl(hrefId, ""));
       if (!a.dataset.wired) {
         a.dataset.wired = "1";
         a.addEventListener("click", (e) => {
@@ -2178,8 +2207,11 @@
       titleEl.hidden = true;
       titleEl.textContent = "";
     }
-    if (location.hash && location.hash.indexOf("habitat=") !== -1) {
-      history.replaceState(null, "", tabUrl(currentTab()));
+    if (fromCard()) {
+      const hid = currentHabitatId || habitatHashId() || queryHabitat();
+      history.replaceState(null, "", tabUrl(currentTab(), hid || ""));
+    } else if (location.hash && location.hash.indexOf("habitat=") !== -1) {
+      history.replaceState(null, "", tabUrl(currentTab(), ""));
     }
     if (lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
   }
@@ -2336,7 +2368,8 @@
   }
 
   function onHash() {
-    const hid = habitatHashId();
+    let hid = habitatHashId();
+    if (!hid && fromCard()) hid = queryHabitat();
     if (hid) {
       openHabitat(hid, null, { fromHash: true });
       return;
@@ -2346,6 +2379,10 @@
       return;
     }
     if (currentTab() === "zoo") {
+      if (fromCard()) {
+        closeDialog();
+        return;
+      }
       openHabitat(DEFAULT_ZOO_STOP, null, { fromHash: true });
       return;
     }
@@ -2381,9 +2418,21 @@
     }
   }
 
+  function refreshCardFocusMap() {
+    remapPickPads();
+    applyParkMap();
+    applyMapPhotos();
+    const trail = mapMount && mapMount.querySelector("#vz-trail");
+    if (trail) trail.removeAttribute("data-polished");
+    polishPictorialMap();
+    renderPassport();
+    markMapStamps();
+    wireMap();
+  }
+
   function switchTab(id) {
     if (!TAB_CONFIGS[id] || id === currentTab()) return;
-    history.replaceState(null, "", tabUrl(id));
+    history.replaceState(null, "", tabUrl(id, ""));
     if (dialog && !dialog.hidden) {
       dialog.hidden = true;
       dialog.setAttribute("aria-hidden", "true");
@@ -2539,8 +2588,14 @@
   });
   document.getElementById("vz-sound-tip-dismiss")?.addEventListener("click", () => hideSoundTip(true));
   document.getElementById("vz-next-stop")?.addEventListener("click", () => {
-    const nxt = nextAfter(currentHabitatId || habitatHashId() || currentCardId);
-    if (nxt) openHabitat(nxt.id, null, { fromHash: true });
+    const nxt = nextAfter(currentHabitatId || habitatHashId() || queryHabitat() || currentCardId);
+    if (!nxt) return;
+    if (fromCard()) {
+      currentHabitatId = nxt.id;
+      history.replaceState(null, "", tabUrl(currentTab(), nxt.id));
+      refreshCardFocusMap();
+    }
+    openHabitat(nxt.id, null, { fromHash: true });
   });
   closeBtn?.addEventListener("click", closeDialog);
   backdrop?.addEventListener("click", closeDialog);
@@ -2563,6 +2618,12 @@
   window.addEventListener("hashchange", () => {
     const hash = (location.hash || "").replace(/^#/, "");
     if (hash && TAB_CONFIGS[hash]) {
+      const keep = fromCard() && (queryHabitat() || currentHabitatId);
+      if (keep) {
+        history.replaceState(null, "", tabUrl(hash, queryHabitat() || currentHabitatId));
+        onHash();
+        return;
+      }
       loadVenue();
       return;
     }

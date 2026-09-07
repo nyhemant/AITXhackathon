@@ -167,7 +167,7 @@ class VftFirstRunTests(unittest.TestCase):
     def test_cache_bumps_point_at_new_assets(self):
         for html in self.pages.values():
             self.assertIn("virtual-venue.css?v=57", html)
-            self.assertIn("virtual-venue.js?v=97", html)
+            self.assertIn("virtual-venue.js?v=98", html)
         self.assertIn("virtual-zoo.json?v=26", self.js)
 
     def test_print_row_is_the_cutout_hunt_and_has_print_anchor(self):

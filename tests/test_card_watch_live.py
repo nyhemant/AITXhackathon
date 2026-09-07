@@ -122,7 +122,7 @@ class CardWatchLiveTests(unittest.TestCase):
             self.assertIn('id="vz-card-nav"', html)
             self.assertIn('id="vz-back-card"', html)
             self.assertIn('id="vz-next-stop"', html)
-            self.assertIn("virtual-venue.js?v=97", html)
+            self.assertIn("virtual-venue.js?v=98", html)
             self.assertIn("virtual-venue.css?v=57", html)
 
     def test_card_watch_hrefs_are_internal(self):
@@ -137,6 +137,50 @@ class CardWatchLiveTests(unittest.TestCase):
                 self.assertFalse(host)
                 self.assertIn("from=card", href)
                 self.assertIn("#habitat=", href)
+
+    def test_card_session_keeps_habitat_hash_and_short_trail(self):
+        js = VFT_JS.read_text(encoding="utf-8")
+
+        def body(name: str) -> str:
+            token = f"function {name}("
+            start = js.index(token)
+            depth = 0
+            i = js.index("{", start)
+            for j in range(i, len(js)):
+                if js[j] == "{":
+                    depth += 1
+                elif js[j] == "}":
+                    depth -= 1
+                    if depth == 0:
+                        return js[start : j + 1]
+            raise AssertionError(f"unclosed function {name}")
+
+        self.assertIn("function queryHabitat(", js)
+        self.assertIn("function cardFocusId(", js)
+        self.assertIn("function fullWalkList(", js)
+        self.assertIn("function skipTrailVias(", js)
+        self.assertIn("function refreshCardFocusMap(", js)
+        self.assertIn('q.set("habitat", hid)', js)
+        walk = body("walkList")
+        self.assertIn("fromCard()", walk)
+        self.assertIn("cardFocusId()", walk)
+        self.assertIn("return one ? [one] : all", walk)
+        nxt = body("nextAfter")
+        self.assertIn("fullWalkList()", nxt)
+        self.assertNotIn("walkList()", nxt)
+        trail = body("zooTrailPoints")
+        self.assertIn("skipTrailVias()", trail)
+        self.assertIn("if (shortPath) return", trail)
+        close = body("closeDialog")
+        self.assertIn("fromCard()", close)
+        self.assertIn("tabUrl(currentTab(), hid || \"\")", close)
+        on_hash = body("onHash")
+        self.assertIn("queryHabitat()", on_hash)
+        self.assertIn("openHabitat(DEFAULT_ZOO_STOP", on_hash)
+        self.assertIn("if (fromCard())", on_hash)
+        tab = body("tabUrl")
+        self.assertIn('q.set("habitat", hid)', tab)
+        self.assertIn('hid ? "#habitat=" + encodeURIComponent(hid) : "#" + id', tab)
 
 
 if __name__ == "__main__":
