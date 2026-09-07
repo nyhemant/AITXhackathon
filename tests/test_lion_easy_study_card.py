@@ -81,7 +81,7 @@ class LionEasyStudyCardTests(unittest.TestCase):
     def test_deck_is_locked_easy_only(self):
         self.assertEqual(
             study_card_ids(),
-            ("african-lion", "reticulated-giraffe", "african-elephant"),
+            ("african-lion", "reticulated-giraffe", "african-elephant", "african-penguin"),
         )
         deck = study_deck_for("african-lion")
         self.assertIsNotNone(deck)
