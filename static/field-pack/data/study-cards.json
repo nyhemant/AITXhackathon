@@ -1010,6 +1010,141 @@
             "why": "Elephants cannot jump. Their heavy bodies stay on the ground."
           }
         ]
+      },
+      "hard": {
+        "teach": [],
+        "questions": [
+          {
+            "slot": 1,
+            "id": "trunk-muscle",
+            "title": "Trunk",
+            "stem": "How is an elephant’s trunk built, muscle-wise?",
+            "choices": [
+              "One long bone down the middle",
+              "Tens of thousands of muscles and no bone",
+              "A hollow tube of cartilage only"
+            ],
+            "correct": "B",
+            "why": "The trunk is a muscular hydrostat — tens of thousands of muscles and no bone. Published counts vary, so we do not lock one exact number."
+          },
+          {
+            "slot": 2,
+            "id": "infrasound",
+            "title": "Voice",
+            "stem": "How do elephants often talk across long distances?",
+            "choices": [
+              "Only by slapping their ears",
+              "With low-frequency rumbles, many too low for humans to hear",
+              "By flashing bright colours"
+            ],
+            "correct": "B",
+            "why": "Elephants use infrasonic rumbles. Much of that communication is too low for humans, and it can travel far across the landscape."
+          },
+          {
+            "slot": 3,
+            "id": "gestation",
+            "title": "Gestation",
+            "stem": "About how long is African elephant pregnancy?",
+            "choices": [
+              "About two weeks",
+              "About 22 months — the longest of any land mammal",
+              "About 22 years"
+            ],
+            "correct": "B",
+            "why": "Calves are usually born after about 22 months. That is the longest pregnancy of any land mammal."
+          },
+          {
+            "slot": 4,
+            "id": "matriarch-memory",
+            "title": "Memory",
+            "stem": "Why can an older matriarch be especially important in a drought?",
+            "choices": [
+              "She is the fastest runner",
+              "Her memory of water and food can guide the family",
+              "She stores water in her tusks"
+            ],
+            "correct": "B",
+            "why": "The oldest female leads the herd. Her long memory of where water and food were in hard years can help the family survive drought."
+          },
+          {
+            "slot": 5,
+            "id": "molars",
+            "title": "Teeth",
+            "stem": "How do elephants replace worn chewing teeth?",
+            "choices": [
+              "They never get new teeth",
+              "New molars move forward from the back, like a conveyor, several times in a lifetime",
+              "They grow a new set all at once each year"
+            ],
+            "correct": "B",
+            "why": "Worn front molars drop out as new ones move forward from the back. Elephants replace these chewing teeth several times in a lifetime."
+          },
+          {
+            "slot": 6,
+            "id": "silent-steps",
+            "title": "Feet",
+            "stem": "Why can such a heavy animal walk so quietly?",
+            "choices": [
+              "It has feathers on its feet",
+              "Fatty cushion pads under the feet help nearly silent steps",
+              "It walks only on its toenails"
+            ],
+            "correct": "B",
+            "why": "Soft fatty cushion pads under the feet spread the weight and help an elephant walk with almost no sound."
+          },
+          {
+            "slot": 7,
+            "id": "smell",
+            "title": "Smell",
+            "stem": "How strong is an elephant’s sense of smell?",
+            "choices": [
+              "Elephants cannot smell at all",
+              "Among the best senses of smell of any mammal",
+              "Only as strong as a goldfish"
+            ],
+            "correct": "B",
+            "why": "An elephant’s trunk is a powerful nose. Elephants rank among the mammals with the best sense of smell."
+          },
+          {
+            "slot": 8,
+            "id": "threats",
+            "title": "Threats",
+            "stem": "What are the main threats to wild African elephants today?",
+            "choices": [
+              "Too many leaves",
+              "Ivory poaching and habitat loss",
+              "Elephants moving to the deep ocean"
+            ],
+            "correct": "B",
+            "why": "The biggest threats are poaching for ivory and the loss and breakup of habitat."
+          },
+          {
+            "slot": 9,
+            "id": "vs-asian",
+            "title": "Compare",
+            "stem": "How can you usually tell an African elephant from an Asian elephant?",
+            "choices": [
+              "African elephants have smaller ears and a rounded back",
+              "African elephants have larger ears and a concave (dipped) back",
+              "African elephants have no trunks"
+            ],
+            "correct": "B",
+            "why": "African elephants typically have larger ears and a concave, dipped back. Asian elephants have smaller ears and a convex or level back."
+          },
+          {
+            "slot": 10,
+            "id": "mice-myth",
+            "title": "Myth buster",
+            "stem": "Are elephants really afraid of mice?",
+            "choices": [
+              "Yes — they run from every mouse they see",
+              "No — that is a myth; they react to sudden movement, not mice specifically",
+              "Only pink mice"
+            ],
+            "correct": "B",
+            "why": "“Afraid of mice” is a cartoon myth. Elephants may startle at sudden movement near their feet, not at mice as a special fear."
+          }
+        ]
       }
     }
   }
