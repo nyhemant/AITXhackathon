@@ -108,21 +108,23 @@ class FlagshipSessionTests(unittest.TestCase):
     def test_lion_card_has_outing_six_and_cam(self):
         html = (FP / "cards" / "african-lion" / "index.html").read_text(encoding="utf-8")
         for q in (
-            "What do they eat?",
-            "Where is home?",
-            "What is their superpower?",
-            "Baby or grown-up?",
-            "Did we see one live?",
-            "I want to teach about…",
+            "Does this lion have a big fluffy mane?",
+            "What do you notice?",
+            "Lions often live in a group called a pride. How many do you see?",
+            "Meat eater or plant eater?",
+            "Did we see a lion — and what would you tell a grown-up?",
         ):
             self.assertIn(q, html)
+        self.assertNotIn("What do they eat?", html)
+        self.assertNotIn("Where is home?", html)
+        self.assertNotIn("What is their superpower?", html)
         self.assertIn("Watch Live", html)
         self.assertIn("/field-pack/virtual-zoo/?from=card#habitat=african-lion", html)
         self.assertNotIn("nationalzoo.si.edu/webcams/lion-cam", html)
         self.assertIn("Print", html)
         self.assertNotIn("Open in outing view", html)
         self.assertNotIn("What did you notice about", html)
-        # VFT stop may have a challenge; it does not own card facts.
+        # VFT stop challenge copy is not reused as card talk.
         self.assertNotIn("Why does a lion have a mane?", html)
         self.assertNotIn("A pride is a family that hunts and raises cubs together.", html)
 
@@ -146,7 +148,8 @@ class FlagshipSessionTests(unittest.TestCase):
             self.assertIn("/field-pack/virtual-zoo/?from=card", html, cid)
             for host in outbound:
                 self.assertNotIn(host, html, cid)
-            self.assertIn("What do they eat?", html)
+            if cid != "african-lion":
+                self.assertIn("What do they eat?", html)
         koala = (FP / "cards" / "koala" / "index.html").read_text(encoding="utf-8")
         self.assertIn("What do they eat?", koala)
         self.assertNotIn("What did you notice about the Koala?", koala)
@@ -259,8 +262,9 @@ class FlagshipSessionTests(unittest.TestCase):
         self.assertIn("Watch Live", lion_main)
         self.assertNotIn("Virtual Field Trip", lion_main)
         self.assertIn("Print", lion_main)
-        self.assertIn("Meat", html)
-        self.assertIn("Run fast", html)
+        self.assertIn("Meat eater", html)
+        self.assertIn("Can't tell", html)
+        self.assertNotIn("Run fast", html)
         dallas = self._visible((FP / "dallas-zoo" / "index.html").read_text(encoding="utf-8"))
         self.assertIn("At home", dallas)
         self.assertIn("Start here", dallas)

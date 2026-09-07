@@ -227,7 +227,7 @@ window.FIELD_PACK_CATALOG = {
     photo: "photos/african-lion.jpg?v=img2",
     photoPosition: "50% 22%",
     photoCredit: "Enhanced for print · Field Trip Kit",
-    blurb: "Big cat of the grassland pride — mighty roar!",
+    blurb: "Look close — mane, whiskers, a tuft on the tail. Lions often rest in a pride.",
     links: {
       pictures: "https://kids.nationalgeographic.com/animals/mammals/facts/lion",
       more: "https://www.dallaszoo.com/",
