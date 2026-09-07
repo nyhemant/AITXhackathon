@@ -27,6 +27,12 @@ bush vs forest / Loxodonta, softens TP53 copy counts, and does not
 lock Endangered vs Critically Endangered letters. Park Ranger
 vs-Asian is ear size / back shape only.
 
+Facts for african-penguin Junior Ranger (easy) are Wikipedia-backed:
+https://en.wikipedia.org/wiki/African_penguin
+Home is southern African coasts, not Antarctica. Soften IUCN
+Critically Endangered / exact status letters for later tiers.
+JR does not lock brittle status letters.
+
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
 zoologist. Visible copy uses LEVEL_DISPLAY_NAMES only — no age badges,
@@ -49,6 +55,7 @@ WIKI_GIRAFFE = "https://en.wikipedia.org/wiki/Giraffe"
 WIKI_RETICULATED_GIRAFFE = "https://en.wikipedia.org/wiki/Reticulated_giraffe"
 WIKI_AFRICAN_ELEPHANT = "https://en.wikipedia.org/wiki/African_elephant"
 WIKI_ELEPHANT = "https://en.wikipedia.org/wiki/Elephant"
+WIKI_AFRICAN_PENGUIN = "https://en.wikipedia.org/wiki/African_penguin"
 
 LETTERS = ("A", "B", "C")
 STUDY_SLOTS = 10
@@ -63,7 +70,7 @@ LEVEL_DISPLAY_NAMES = {
 
 # Shipped picker order. A card only shows keys it actually defines.
 # Lion, reticulated-giraffe, and African elephant ship Junior Ranger +
-# Park Ranger + Zoologist.
+# Park Ranger + Zoologist. African penguin ships Junior Ranger only.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -97,6 +104,16 @@ PUSH_FURTHER_ELEPHANT = (
     "An elephant’s trunk can grab, drink, and smell. What job would you give it first?",
     "A herd follows the oldest female. Why might the oldest be a good leader?",
     "Find one more big animal on your zoo map. How does it move if it cannot jump?",
+)
+TALK_ABOUT_PENGUIN = (
+    "Why might living in a colony help a penguin?",
+    "If you could “fly” underwater with flippers, what would you look for?",
+    "Which other animal at the zoo lives near the water?",
+)
+PUSH_FURTHER_PENGUIN = (
+    "A penguin’s coat is dark on top and pale below. How could that hide it from hunters?",
+    "African penguins nest on warm shores, not ice. Why might people think all penguins live somewhere cold?",
+    "Find one more bird on your zoo map that swims. How does it move in the water?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -1284,6 +1301,153 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "B",
                         "why": "Elephants are long-distance seed dispersers. Seeds pass through the gut and germinate in dung, which can carry many plant species — a megagardener role in the landscape.",
+                    },
+                ],
+            },
+        },
+    },
+    "african-penguin": {
+        "id": "african-penguin",
+        "source": WIKI_AFRICAN_PENGUIN,
+        "source_note": "Facts from Wikipedia, African penguin.",
+        "talk_about": list(TALK_ABOUT_PENGUIN),
+        "push_further": list(PUSH_FURTHER_PENGUIN),
+        "levels": {
+            "easy": {
+                # Teaching-first: pride-of-place facts. Do not spoiler every quiz slot.
+                "teach": [
+                    "African penguins live in Africa, not Antarctica.",
+                    "They cannot fly in the air — they swim with flippers.",
+                    "They eat fish and other sea food.",
+                    "They live together in a colony.",
+                    "They lay eggs in burrows or under bushes on the shore.",
+                ],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "home",
+                        "title": "Home",
+                        "stem": "Where do wild African penguins live?",
+                        "choices": [
+                            "Antarctica only",
+                            "Southern African coasts",
+                            "The North Pole",
+                        ],
+                        "correct": "B",
+                        "why": "African penguins live along southern African coasts, such as South Africa and Namibia — not Antarctica.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "flight",
+                        "title": "Flight",
+                        "stem": "Can an African penguin fly in the air?",
+                        "choices": [
+                            "Yes — they fly like eagles",
+                            "No — they are flightless and “fly” underwater with flippers",
+                            "Only at night",
+                        ],
+                        "correct": "B",
+                        "why": "Like all penguins, African penguins cannot fly in the air. Their wings are stiff flippers they use to swim.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "food",
+                        "title": "Food",
+                        "stem": "What do African penguins mostly eat?",
+                        "choices": [
+                            "Grass and leaves",
+                            "Fish and other sea prey, such as squid",
+                            "Bamboo",
+                        ],
+                        "correct": "B",
+                        "why": "They hunt in the sea. Wikipedia says they feed primarily on fish and squid, plus other small sea animals.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "voice",
+                        "title": "Voice",
+                        "stem": "Why is the African penguin sometimes called a “jackass penguin”?",
+                        "choices": [
+                            "It looks like a donkey",
+                            "It makes a loud, donkey-like bray",
+                            "It lives on a farm",
+                        ],
+                        "correct": "B",
+                        "why": "One nickname is “jackass penguin,” from the species’ loud, donkey-like call.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "colony",
+                        "title": "Colony",
+                        "stem": "What do you call a large group of African penguins living together?",
+                        "choices": ["A pride", "A colony", "A herd"],
+                        "correct": "B",
+                        "why": "African penguins live and breed together in a large group called a colony.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "eggs",
+                        "title": "Eggs",
+                        "stem": "How do African penguins have babies?",
+                        "choices": [
+                            "They give birth to live pups",
+                            "They lay eggs",
+                            "They plant seeds",
+                        ],
+                        "correct": "B",
+                        "why": "African penguins lay eggs. They do not give birth to live young.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "coat",
+                        "title": "Coat",
+                        "stem": "How does an African penguin’s black-and-white coat help it hide?",
+                        "choices": [
+                            "It makes the penguin glow in the dark",
+                            "Countershading — a dark back and pale belly hide it from hunters above and below",
+                            "It keeps the penguin dry only",
+                        ],
+                        "correct": "B",
+                        "why": "The dark back blends with the water from above, and the pale belly is harder to see from below. That hiding trick is called countershading.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "flippers",
+                        "title": "Flippers",
+                        "stem": "What are an African penguin’s wings like?",
+                        "choices": [
+                            "Soft wings for flying in the air",
+                            "Stiff, flat flippers for swimming",
+                            "Long arms for climbing trees",
+                        ],
+                        "correct": "B",
+                        "why": "The wings are stiffened and flattened into flippers, made for swimming — not for flying in the air.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "nest",
+                        "title": "Nest",
+                        "stem": "Where do African penguins usually nest?",
+                        "choices": [
+                            "On Antarctic ice",
+                            "In burrows or under bushes on the shore",
+                            "High in rainforest trees",
+                        ],
+                        "correct": "B",
+                        "why": "They nest in burrows or under rocks and bushes on the shore — not on ice.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "myth",
+                        "title": "Myth buster",
+                        "stem": "Do all penguins live on cold ice?",
+                        "choices": [
+                            "Yes — every penguin lives on ice",
+                            "No — African penguins live on warmer African coasts",
+                            "Only in zoos",
+                        ],
+                        "correct": "B",
+                        "why": "Not every penguin lives somewhere icy. African penguins live on warmer coasts in southern Africa.",
                     },
                 ],
             },

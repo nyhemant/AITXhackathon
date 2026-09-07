@@ -215,8 +215,8 @@ OUTING_TALK_ANIMAL = (
 )
 
 # Observation talk packs for cards that are not on a study deck yet.
-# Lion and giraffe (JR / Park Ranger / Zoologist) and elephant
-# (JR / Park Ranger) live in scripts/study_cards.py.
+# Lion, giraffe, and elephant (JR / Park Ranger / Zoologist) and
+# African penguin (JR) live in scripts/study_cards.py.
 CARD_TALK_OVERRIDE: dict[str, tuple[dict, ...]] = {}
 
 # Optional More talk on a card. Unused while lion ships the Easy study deck.
