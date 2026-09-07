@@ -215,7 +215,8 @@ OUTING_TALK_ANIMAL = (
 )
 
 # Observation talk packs for cards that are not on a study deck yet.
-# Lion Easy / Hard (Junior Ranger / Park Ranger) lives in scripts/study_cards.py.
+# Lion (JR / Park Ranger / Zoologist) and giraffe Junior Ranger live in
+# scripts/study_cards.py.
 CARD_TALK_OVERRIDE: dict[str, tuple[dict, ...]] = {}
 
 # Optional More talk on a card. Unused while lion ships the Easy study deck.
@@ -782,7 +783,7 @@ def real_extra_qa_html(item: dict, *, heading: str = "More talk") -> str:
 
 
 def outing_talk_html(item: dict) -> str:
-    """On-screen outing talk. Study deck (lion Junior Ranger) wins over CARD_TALK_OVERRIDE."""
+    """On-screen outing talk. A study deck wins over CARD_TALK_OVERRIDE."""
     deck = study_deck_for(str(item.get("id") or "").strip())
     if deck:
         return study_talk_html(deck, heading=CARD_TALK_H2)
