@@ -1808,12 +1808,27 @@
     if (stampList) stampList.classList.toggle("is-few", walkList().length <= 4);
   }
 
+  function stampedOnWalk() {
+    const ids = new Set(walkList().map((h) => h.id));
+    return stamps.filter((id) => ids.has(id));
+  }
+
+  function syncTourGates() {
+    if (!mapMount) return;
+    const hide = skipTrailVias() && walkList().length === 1;
+    ["vz-entry", "vz-exit", "vz-arrows"].forEach((id) => {
+      const el = mapMount.querySelector("#" + id);
+      if (el) el.style.display = hide ? "none" : "";
+    });
+  }
+
   function renderPassport() {
     if (!config) return;
     const habs = walkList();
     const nxt = nextHabitat();
     const unit = isSequential() ? "stops" : config.kind === "park" ? "parks" : "halls";
-    const count = `${stamps.length} of ${habs.length} ${unit}`;
+    const done = stampedOnWalk().length;
+    const count = `${done} of ${habs.length} ${unit}`;
     const extra = isSequential()
       ? nxt
         ? ` · Next: ${nxt.label}`
@@ -1822,7 +1837,7 @@
           : ""
       : "";
     if (progressEl) progressEl.textContent = count + extra;
-    if (passCount) passCount.textContent = `${stamps.length}/${habs.length}`;
+    if (passCount) passCount.textContent = `${done}/${habs.length}`;
     if (stopsDrawer) {
       const sum = stopsDrawer.querySelector("summary");
       if (sum) {
@@ -1831,7 +1846,7 @@
           config.kind === "park" ? "Park kits and links" : spec ? spec.title : "Stops and cards";
       }
     }
-    if (stamps.length === habs.length && habs.length) {
+    if (done === habs.length && habs.length) {
       if (!root.dataset.passportFired) {
         root.dataset.passportFired = "1";
         track("passport_completed", { venue_kind: config.kind || "zoo", tab: currentTab(), count: stamps.length });
@@ -2469,6 +2484,7 @@
     const trail = mapMount && mapMount.querySelector("#vz-trail");
     if (trail) trail.removeAttribute("data-polished");
     polishPictorialMap();
+    syncTourGates();
     renderPassport();
     markMapStamps();
     wireMap();
@@ -2538,6 +2554,7 @@
         applyParkMap();
         applyMapPhotos();
         polishPictorialMap();
+        syncTourGates();
         renderPathPicker();
         renderPassport();
         markMapStamps();
