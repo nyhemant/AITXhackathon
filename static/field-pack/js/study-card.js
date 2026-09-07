@@ -3,7 +3,8 @@
  * Correct (first or later) shows why and scores. Show answers still reveals the key.
  * Level keys stay easy / hard / zoologist; visible names come from FPStudyLevelName.
  * Lion, giraffe, African elephant, and African penguin ship JR +
- * Park Ranger + Zoologist (query ?level= or picker).
+ * Park Ranger + Zoologist (query ?level= or picker). Caribbean
+ * flamingo ships JR + Park Ranger.
  */
 (() => {
   const LETTERS = ["A", "B", "C"];

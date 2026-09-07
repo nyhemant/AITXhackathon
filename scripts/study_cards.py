@@ -39,14 +39,20 @@ patch blood-flow, decline drivers, fisheries, no-take zones, and
 pursuit diving — without locking IUCN letters, exact % decline,
 or max dive depth/time.
 
-Facts for caribbean-flamingo Junior Ranger (easy) are Wikipedia-backed:
+Facts for caribbean-flamingo Junior Ranger + Park Ranger (easy + hard)
+are Wikipedia-backed:
 https://en.wikipedia.org/wiki/American_flamingo
 Also known as the Caribbean flamingo (Phoenicopterus ruber).
 Adults are reddish-pink; chicks start greyish. Pink comes from food
 (carotenoids), not paint. They stand on one leg, feed in shallow
 water, nest on a mud mound, and are strong fliers. JR uses flock
 (Wikipedia’s common word), not “flamboyance” as the required
-group name. Soften IUCN letters and exact heights.
+group name. Soften IUCN letters and exact heights. Hard deepens
+carotenoids, upside-down feeding, lamellae, crop milk, one-egg
+clutch, one-leg joint lock, salty habitat, vivid colour vs other
+species, courtship displays, and the pale-zoo myth. Soften brittle
+pigment chemistry labels (no beta-carotene lock). Do not redo JR
+themes.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
@@ -87,7 +93,7 @@ LEVEL_DISPLAY_NAMES = {
 # Shipped picker order. A card only shows keys it actually defines.
 # Lion, reticulated-giraffe, African elephant, and African penguin
 # ship Junior Ranger + Park Ranger + Zoologist. Caribbean flamingo
-# ships Junior Ranger only.
+# ships Junior Ranger + Park Ranger.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -1897,6 +1903,144 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "B",
                         "why": "Flamingos are capable flyers. They fly in flocks to find food. They are not flightless.",
+                    },
+                ],
+            },
+            "hard": {
+                # Answer-light: no Learn-first strip. Facts from Wikipedia,
+                # American flamingo / Caribbean flamingo. Soften pigment
+                # chemistry labels and IUCN letters. Do not redo JR themes.
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "carotenoids",
+                        "title": "Carotenoids",
+                        "stem": "What actually makes a Caribbean flamingo’s feathers pink?",
+                        "choices": [
+                            "Pink paint on the feathers",
+                            "Carotenoid pigments in algae, shrimp, and similar food",
+                            "The salt in the water dyes them pink",
+                        ],
+                        "correct": "B",
+                        "why": "The pink comes from carotenoid pigments in the diet — algae, shrimp, and similar food. The body turns those pigments into feather colour. They are not painted.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "upside-down",
+                        "title": "Upside-down feeding",
+                        "stem": "How does a Caribbean flamingo hold its bill when it feeds?",
+                        "choices": [
+                            "Straight down like a heron stabbing fish",
+                            "Upside down — the head is inverted in the water",
+                            "Pointed straight up at the sky",
+                        ],
+                        "correct": "B",
+                        "why": "Flamingos feed with the head upside down and the bill inverted in the water, so the bent beak can filter food.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "lamellae",
+                        "title": "Lamellae",
+                        "stem": "What do the comb-like lamellae in a Caribbean flamingo’s bill do?",
+                        "choices": [
+                            "Sharpen the beak for cracking nuts",
+                            "Strain tiny food from the water",
+                            "Help the bird whistle louder",
+                        ],
+                        "correct": "B",
+                        "why": "Hairy, comb-like lamellae line the bill and strain small food from mud and water.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "crop-milk",
+                        "title": "Crop milk",
+                        "stem": "How do Caribbean flamingo parents feed a newly hatched chick?",
+                        "choices": [
+                            "Only the mother brings whole fish",
+                            "Both parents can feed a nutrient-rich “crop milk” secretion",
+                            "The chick hunts alone from day one",
+                        ],
+                        "correct": "B",
+                        "why": "Both the male and the female can feed the chick a crop-milk secretion from the upper digestive tract. It is rich in fat and protein.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "one-egg",
+                        "title": "One egg",
+                        "stem": "How many eggs does a Caribbean flamingo usually lay in a clutch?",
+                        "choices": [
+                            "A dozen, like a chicken",
+                            "Typically one egg",
+                            "None — they adopt other birds’ eggs",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says the American flamingo typically lays a single chalky-white egg on a mud mound.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "one-leg-why",
+                        "title": "One-leg why",
+                        "stem": "Why can standing on one leg take almost no muscle effort for a flamingo?",
+                        "choices": [
+                            "The tucked leg is glued in place",
+                            "A passive joint lock lets the pose hold with almost no muscle work",
+                            "The bird is always asleep on one foot",
+                        ],
+                        "correct": "B",
+                        "why": "A flamingo’s one-legged pose can be held with almost no muscle activity — a passive joint lock — so standing that way takes little effort.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "salty-home",
+                        "title": "Salty home",
+                        "stem": "Why can Caribbean flamingos thrive in very salty shallow water?",
+                        "choices": [
+                            "They only drink rain from leaves",
+                            "Few other birds compete there, and they can handle salty or alkaline shallows",
+                            "They freeze the salt into ice cubes",
+                        ],
+                        "correct": "B",
+                        "why": "They live in saline lagoons, mudflats, and shallow brackish or alkaline lakes. Few competitors survive in that water, so flamingos have the shallows more to themselves.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "vivid",
+                        "title": "Vivid species",
+                        "stem": "How does a Caribbean / American flamingo’s colour compare with other flamingo species?",
+                        "choices": [
+                            "It is the palest flamingo",
+                            "It is among the most vividly coloured — brighter pink/red than the greater flamingo",
+                            "All flamingo species look identical",
+                        ],
+                        "correct": "B",
+                        "why": "Adult American flamingos are rosy-pink to reddish. Wikipedia notes they look much more vivid than the paler greater flamingo — among the brightest flamingo species.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "courtship",
+                        "title": "Courtship",
+                        "stem": "What do Caribbean flamingo groups often do when they court?",
+                        "choices": [
+                            "Each bird sings a solo from a tree",
+                            "They perform synchronised displays such as head-flagging and wing salutes",
+                            "They wrestle in deep ocean water",
+                        ],
+                        "correct": "B",
+                        "why": "Before nesting, groups perform ritual displays together — stretching necks, head-flagging, and flapping or saluting with the wings. The displays help time nesting and pair birds up.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "pale-myth",
+                        "title": "Pale myth",
+                        "stem": "If a zoo flamingo looks pale, what is the usual reason?",
+                        "choices": [
+                            "It must be a different, white flamingo species",
+                            "It usually needs more carotenoids in its diet — or it may be feeding a chick",
+                            "Pale feathers mean it cannot fly",
+                        ],
+                        "correct": "B",
+                        "why": "A pale flamingo is not a different species. Captive birds fade if their food does not have enough carotenoids. A parent feeding crop milk can also look paler for a while.",
                     },
                 ],
             },
