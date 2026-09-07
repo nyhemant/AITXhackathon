@@ -59,8 +59,8 @@ lump/split with greater flamingo, the chick’s straight-to-bent bill,
 and a relatively secure status contrast — without locking an IUCN
 letter. Do not redo JR or PR themes.
 
-Facts for galapagos-tortoise Junior Ranger + Park Ranger
-(easy + hard; no Zoologist yet) are Wikipedia-backed:
+Facts for galapagos-tortoise Junior Ranger + Park Ranger + Zoologist
+(easy + hard + zoologist) are Wikipedia-backed:
 https://en.wikipedia.org/wiki/Gal%C3%A1pagos_tortoise
 Species is the Galápagos tortoise (Chelonoidis niger complex).
 JR stays simple “Galápagos tortoise.” Soften longevity to “over
@@ -77,8 +77,16 @@ water stored in bladder and tissues, Darwin and island
 differences, 1800s sailor hunting, introduced goats/rats/pigs,
 Lonesome George (Pinta, died 2012), captive-breeding success
 (soften exact offspring counts), and tortoise vs sea turtle
-(land; column-like feet). Do not redo JR themes. Do not ship
-Zoologist yet.
+(land; column-like feet). Zoologist deepens Chelonoidis vs
+Geochelone / Testudo, the debated dozen-plus species complex,
+shell-shape adaptive radiation, ectothermy plus very low
+metabolic rate, carapace from fused ribs and vertebrae with
+keratin scutes, C. abingdonii / Pinta functional extinction,
+the Fernandina rediscovery (soften the exact year), megaherbivore
+ecosystem-engineer role, Lonesome George genome hooks (soften
+gene names), and temperature-dependent hatchling sex. Soften
+IUCN letters and exact taxon counts. Do not redo JR or PR
+themes.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
@@ -118,9 +126,9 @@ LEVEL_DISPLAY_NAMES = {
 }
 
 # Shipped picker order. A card only shows keys it actually defines.
-# Lion, reticulated-giraffe, African elephant, African penguin, and
-# Caribbean flamingo ship Junior Ranger + Park Ranger + Zoologist.
-# Galápagos tortoise ships Junior Ranger + Park Ranger.
+# Lion, reticulated-giraffe, African elephant, African penguin,
+# Caribbean flamingo, and Galápagos tortoise ship Junior Ranger +
+# Park Ranger + Zoologist.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -2502,6 +2510,145 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "B",
                         "why": "A tortoise is a land-living turtle. Galápagos tortoises walk on sturdy, column-like legs. Sea turtles have flippers for swimming.",
+                    },
+                ],
+            },
+            "zoologist": {
+                # Answer-light: no Learn-first strip. Facts from Wikipedia,
+                # Galápagos tortoise. Soften exact taxon counts, IUCN
+                # letters, exact gene names, and a locked rediscovery year.
+                # Do not redo JR/PR themes.
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "genus",
+                        "title": "Genus",
+                        "stem": "Which genus do Galápagos tortoises belong in today?",
+                        "choices": [
+                            "Geochelone — the old catch-all for typical land tortoises",
+                            "Chelonoidis — they sit with the South American clade, not Geochelone or Testudo",
+                            "Testudo — the Mediterranean tortoise genus",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia places Galápagos tortoises in Chelonoidis with other South American tortoises. They were long filed in Geochelone or Testudo; those older genus names do not hold.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "species-complex",
+                        "title": "Species complex",
+                        "stem": "How do scientists treat the named Galápagos tortoise island forms?",
+                        "choices": [
+                            "As one unnamed population with no island differences",
+                            "As a species complex — roughly a dozen-plus named taxa or island forms, and whether they are species or subspecies is still debated",
+                            "As exactly two species that never mix or vary",
+                        ],
+                        "correct": "B",
+                        "why": "Named island forms make a species complex. Counts and ranks shift as studies arrive, so we say roughly a dozen-plus taxa rather than locking one number.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "adaptive-radiation",
+                        "title": "Adaptive radiation",
+                        "stem": "Why are Galápagos tortoise shell differences a textbook evolutionary case?",
+                        "choices": [
+                            "Every island tortoise has the same shell because they never evolve",
+                            "Divergent shell shapes across islands are a textbook adaptive radiation — forms evolved to match different island habitats",
+                            "Shells were painted different colours by tourists",
+                        ],
+                        "correct": "B",
+                        "why": "Island-to-island shell divergence is a classic adaptive radiation: related lineages evolved different forms in different habitats. We do not treat one shape name as the whole story.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "low-metabolism",
+                        "title": "Low metabolism",
+                        "stem": "What physiological traits let a Galápagos tortoise tolerate a long fast?",
+                        "choices": [
+                            "A warm-blooded, high-energy metabolism like a hummingbird",
+                            "Ectothermy plus a very low metabolic rate, so they can last a long time without food",
+                            "They photosynthesize through the shell",
+                        ],
+                        "correct": "B",
+                        "why": "They are ectotherms with a very slow metabolism. That low energy use, not a locked day-count, is why they can go a long time without eating.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "carapace",
+                        "title": "Carapace anatomy",
+                        "stem": "What is a Galápagos tortoise’s carapace largely built from?",
+                        "choices": [
+                            "A hollow plastic box glued onto the back",
+                            "Fused ribs and vertebrae, overlain by keratin scutes",
+                            "Loose scales that fall off each winter",
+                        ],
+                        "correct": "B",
+                        "why": "The bony carapace is largely fused ribs and vertebrae. Keratin scutes overlie that bone. Wikipedia notes the plates are fused with the ribs in a rigid structure integral to the body.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "pinta-extinct",
+                        "title": "Pinta extinction",
+                        "stem": "What is the status of the Pinta Island tortoise, C. abingdonii?",
+                        "choices": [
+                            "It is the most common wild tortoise on every island",
+                            "C. abingdonii is treated as functionally extinct after Lonesome George died in 2012",
+                            "It was never a real island form",
+                        ],
+                        "correct": "B",
+                        "why": "The Pinta form C. abingdonii is treated as functionally extinct. Lonesome George, the last known individual, died in 2012. Hybrids have been discussed, but the pure Pinta lineage is gone.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "fernandina",
+                        "title": "Fernandina rediscovery",
+                        "stem": "What happened to the Fernandina Island tortoise, long presumed extinct?",
+                        "choices": [
+                            "It was proven never to have lived on Fernandina",
+                            "A living female was found in recent years after the form was long presumed extinct",
+                            "It was moved to Antarctica in the 1800s",
+                        ],
+                        "correct": "B",
+                        "why": "The Fernandina tortoise was long presumed extinct after a single old specimen. A living female turned up in recent years (late 2010s) and was taken to a breeding centre. We do not lock one calendar year.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "megaherbivore",
+                        "title": "Megaherbivores",
+                        "stem": "What ecological role do Galápagos tortoises play on their islands?",
+                        "choices": [
+                            "They only sit still and never change the habitat",
+                            "They act as megaherbivores and ecosystem engineers — dispersing seeds and shaping vegetation",
+                            "They only eat fish and leave plants untouched",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia calls them keystone ecosystem engineers. They disperse seeds and trample or thin vegetation, which changes what can grow.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "genome",
+                        "title": "Genome",
+                        "stem": "What did genome studies of Lonesome George highlight?",
+                        "choices": [
+                            "That giant tortoises have no DNA at all",
+                            "Variants linked to DNA-repair, immune, and tumour-suppression pathways — we do not lock exact gene names",
+                            "A single gene that makes the shell detach",
+                        ],
+                        "correct": "B",
+                        "why": "Sequencing Lonesome George highlighted variants tied to DNA repair, immune function, and tumour-suppression pathways. Exact gene names stay unlocked because lists keep shifting.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "tsd",
+                        "title": "Hatchling sex",
+                        "stem": "How is the sex of a Galápagos tortoise hatchling determined?",
+                        "choices": [
+                            "By X and Y sex chromosomes, as in mammals",
+                            "By incubation temperature — temperature-dependent sex determination, not sex chromosomes",
+                            "By the colour of the mother’s shell",
+                        ],
+                        "correct": "B",
+                        "why": "Hatchling sex is temperature-dependent. Cooler nests tend to yield more males and warmer nests more females. It is not an XX/XY chromosome system.",
                     },
                 ],
             },
