@@ -2144,7 +2144,7 @@ STUDY_CARDS: dict[str, dict] = {
                             "A second hidden skeleton props the body up",
                         ],
                         "correct": "B",
-                        "why": "Studies show the one-legged pose can be held with little or no muscle activity — a gravity-driven passive stay at the joint. That deepens the Park Ranger joint-lock idea.",
+                        "why": "Studies show the one-legged pose can be held with little or no muscle activity — a gravity-driven passive stay at the joint. The lock is mostly gravity, not extra muscle work.",
                     },
                     {
                         "slot": 8,
