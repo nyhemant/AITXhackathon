@@ -37,12 +37,26 @@ LEVEL_DISPLAY_NAMES = {
 # Shipped picker order. Zoologist stays absent until that deck exists.
 SHIPPED_LEVELS = ("easy", "hard")
 
+# Shared answers-side deepen (Claude sample). Not scored. Future animals reuse keys.
+TALK_ABOUT_LION = (
+    "Why is it useful for lions to live in a family instead of alone?",
+    "If you could hear something 5 miles away, what would you listen for?",
+    "Which other animal at the zoo lives in a family group?",
+)
+PUSH_FURTHER_LION = (
+    "A mane makes a male slower, hotter and more visible. Why hasn’t evolution removed it?",
+    "Lions and cheetahs share the same plains. How do they avoid competing directly?",
+    "Find one more animal on your zoo map that lives in a group. What does the group give it?",
+)
+
 # Easy + Hard ship. Zoologist stays absent (name reserved only).
 STUDY_CARDS: dict[str, dict] = {
     "african-lion": {
         "id": "african-lion",
         "source": WIKI_LION,
         "source_note": "Facts from Wikipedia, Lion.",
+        "talk_about": list(TALK_ABOUT_LION),
+        "push_further": list(PUSH_FURTHER_LION),
         "levels": {
             "easy": {
                 # Teaching-first: same front as the quiz. Hard later may hide these.
@@ -306,6 +320,15 @@ def shipped_levels_for(card_id: str) -> tuple[str, ...]:
     return tuple(key for key in SHIPPED_LEVELS if key in have)
 
 
+def _prompt_lines(raw: dict, pack: dict, key: str) -> list[str]:
+    """Per-level override when the key is set; otherwise card-level shared prompts."""
+    if key in pack and pack.get(key) is not None:
+        src = pack.get(key) or []
+    else:
+        src = raw.get(key) or []
+    return [str(line).strip() for line in src if str(line).strip()]
+
+
 def study_deck_for(card_id: str, level: str = DEFAULT_LEVEL) -> dict | None:
     """Return a flattened deck for one card + level, or None."""
     raw = STUDY_CARDS.get(str(card_id or "").strip())
@@ -324,6 +347,8 @@ def study_deck_for(card_id: str, level: str = DEFAULT_LEVEL) -> dict | None:
         "source": raw.get("source") or "",
         "source_note": raw.get("source_note") or "",
         "teach": list(pack.get("teach") or []),
+        "talk_about": _prompt_lines(raw, pack, "talk_about"),
+        "push_further": _prompt_lines(raw, pack, "push_further"),
         "questions": questions,
     }
 
@@ -405,6 +430,30 @@ def write_study_artifacts() -> None:
     )
 
 
+def study_deepen_html(deck: dict, *, print_mode: bool = False, hidden: bool = False) -> str:
+    """Talk about it + Push further. Screen answers area or print page 2."""
+    talk = list(deck.get("talk_about") or [])
+    push = list(deck.get("push_further") or [])
+    if not talk and not push:
+        return ""
+    cls = "ps-study-deepen" if print_mode else "study-deepen"
+    kick = "ps-study-deepen-kicker" if print_mode else "study-deepen-kicker"
+    col = "ps-study-deepen-col" if print_mode else "study-deepen-col"
+    parts: list[str] = []
+    for title, lines in (("Talk about it", talk), ("Push further", push)):
+        if not lines:
+            continue
+        items = "".join(f"<li>{_esc(line)}</li>" for line in lines)
+        parts.append(
+            f'<div class="{col}">'
+            f'<p class="{kick}">{title}</p>'
+            f"<ol>{items}</ol>"
+            f"</div>"
+        )
+    hide = " hidden" if hidden and not print_mode else ""
+    return f'<aside class="{cls}"{hide} aria-label="Go further">{"".join(parts)}</aside>'
+
+
 def _level_picker_html(card_id: str, current: str) -> str:
     """Junior Ranger / Park Ranger segment when more than one level ships."""
     levels = shipped_levels_for(card_id)
@@ -434,13 +483,15 @@ def study_talk_html(deck: dict, *, heading: str = "Talk") -> str:
     picker = _level_picker_html(str(card_id), str(level))
     teach_items = "".join(f"<li>{_esc(line)}</li>" for line in deck.get("teach") or [])
     teach = (
-        f'<div class="study-teach">'
-        f'<p class="study-teach-kicker">Learn first</p>'
+        f'<details class="study-teach">'
+        f'<summary class="study-teach-kicker">Learn first '
+        f'<span class="study-teach-hint">— tap to open</span></summary>'
         f"<ul>{teach_items}</ul>"
-        f"</div>"
+        f"</details>"
         if teach_items
         else ""
     )
+    deepen = study_deepen_html(deck, hidden=True)
     cards: list[str] = []
     for q in deck.get("questions") or []:
         choices = []
@@ -479,6 +530,7 @@ def study_talk_html(deck: dict, *, heading: str = "Talk") -> str:
         f'<button type="button" class="btn btn-secondary" data-study-reveal>Show answers</button>'
         f"</div>"
         f'<div class="mission-grid study-grid">{"".join(cards)}</div>'
+        f"{deepen}"
         f"{source_html}"
         f"</section>"
     )
@@ -560,6 +612,7 @@ def study_print_html(
         f'<div class="ps-banner"><h1>FIELD TRIP KIT</h1>'
         f"<p>{_esc(name)} · {level_label} · Answers</p></div>"
         f'<ol class="ps-study-answers">{"".join(answers)}</ol>'
+        f"{study_deepen_html(deck, print_mode=True)}"
         f'<p class="ps-footer">{source} · {_esc(deck.get("source") or WIKI_LION)}</p>'
         f"</div>"
     )

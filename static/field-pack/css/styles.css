@@ -1816,14 +1816,44 @@ a {
     margin: 0;
     padding: 0 0 0 1.2em;
     overflow: hidden;
-    font-size: 8pt;
-    line-height: 1.22;
+    font-size: 7.5pt;
+    line-height: 1.18;
   }
   .ps-study-answers li {
-    margin: 0 0 5px;
+    margin: 0 0 3px;
   }
   .ps-study-answers strong {
     color: #0a4545;
+  }
+  .ps-study-deepen {
+    flex: 0 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px 8px;
+    margin: 3px 0 2px;
+    padding: 3px 6px 4px;
+    border: 1.5px solid #1f6b4a;
+    border-radius: 7px;
+    background: #f3faf7;
+  }
+  .ps-study-deepen-kicker {
+    margin: 0 0 1px;
+    font-size: 7pt;
+    font-weight: 850;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #0a4545;
+  }
+  .ps-study-deepen ol {
+    margin: 0;
+    padding-left: 1.15em;
+    font-size: 7pt;
+    line-height: 1.2;
+    font-weight: 650;
+  }
+  .ps-study-deepen li {
+    margin: 0 0 1px;
+    break-inside: avoid;
   }
 
   /* ---- Treasure hunt (one page) ---- */

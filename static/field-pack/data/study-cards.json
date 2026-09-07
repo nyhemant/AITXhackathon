@@ -3,6 +3,16 @@
     "id": "african-lion",
     "source": "https://en.wikipedia.org/wiki/Lion",
     "source_note": "Facts from Wikipedia, Lion.",
+    "talk_about": [
+      "Why is it useful for lions to live in a family instead of alone?",
+      "If you could hear something 5 miles away, what would you listen for?",
+      "Which other animal at the zoo lives in a family group?"
+    ],
+    "push_further": [
+      "A mane makes a male slower, hotter and more visible. Why hasn’t evolution removed it?",
+      "Lions and cheetahs share the same plains. How do they avoid competing directly?",
+      "Find one more animal on your zoo map that lives in a group. What does the group give it?"
+    ],
     "levels": {
       "easy": {
         "teach": [

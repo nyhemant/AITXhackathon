@@ -80,6 +80,8 @@
       source: raw.source || "",
       source_note: raw.source_note || "",
       teach: pack.teach || [],
+      talk_about: pack.talk_about || raw.talk_about || [],
+      push_further: pack.push_further || raw.push_further || [],
       questions,
     };
   }
@@ -106,12 +108,54 @@
     );
   }
 
-  function teachHtml(teach) {
+  function teachStorageKey(id) {
+    return "fp-study-teach-open:" + String(id || "");
+  }
+
+  function teachWasOpen(id) {
+    try {
+      return sessionStorage.getItem(teachStorageKey(id)) === "1";
+    } catch (_) {
+      return false;
+    }
+  }
+
+  function rememberTeachOpen(id, open) {
+    try {
+      sessionStorage.setItem(teachStorageKey(id), open ? "1" : "0");
+    } catch (_) {
+      /* ignore */
+    }
+  }
+
+  function teachHtml(teach, id) {
     const lines = (teach || []).filter(Boolean);
     if (!lines.length) return "";
+    const openAttr = teachWasOpen(id) ? " open" : "";
     return (
-      `<div class="study-teach"><p class="study-teach-kicker">Learn first</p>` +
-      `<ul>${lines.map((line) => `<li>${esc(line)}</li>`).join("")}</ul></div>`
+      `<details class="study-teach"${openAttr}>` +
+      `<summary class="study-teach-kicker">Learn first ` +
+      `<span class="study-teach-hint">— tap to open</span></summary>` +
+      `<ul>${lines.map((line) => `<li>${esc(line)}</li>`).join("")}</ul></details>`
+    );
+  }
+
+  function deepenHtml(deck) {
+    const talk = (deck && deck.talk_about) || [];
+    const push = (deck && deck.push_further) || [];
+    if (!talk.length && !push.length) return "";
+    function col(title, lines) {
+      if (!lines.length) return "";
+      return (
+        `<div class="study-deepen-col"><p class="study-deepen-kicker">${esc(title)}</p>` +
+        `<ol>${lines.map((line) => `<li>${esc(line)}</li>`).join("")}</ol></div>`
+      );
+    }
+    return (
+      `<aside class="study-deepen" hidden aria-label="Go further">` +
+      col("Talk about it", talk) +
+      col("Push further", push) +
+      `</aside>`
     );
   }
 
@@ -179,6 +223,8 @@
       btn.setAttribute("aria-pressed", on ? "true" : "false");
     }
     root.setAttribute("data-revealed", on ? "1" : "0");
+    const deepen = root.querySelector(".study-deepen");
+    if (deepen) deepen.hidden = !on;
   }
 
   function paintPicker(root, level) {
@@ -220,7 +266,7 @@
     root.setAttribute("data-study-level", deck.level);
     root.setAttribute("data-revealed", "0");
     const teach = root.querySelector(".study-teach");
-    const nextTeach = teachHtml(deck.teach);
+    const nextTeach = teachHtml(deck.teach, deck.id);
     if (teach && nextTeach) {
       teach.outerHTML = nextTeach;
     } else if (teach && !nextTeach) {
@@ -229,6 +275,20 @@
       const toolbar = root.querySelector(".study-toolbar");
       if (toolbar) toolbar.insertAdjacentHTML("beforebegin", nextTeach);
     }
+    const nextDeepen = deepenHtml(deck);
+    const deepen = root.querySelector(".study-deepen");
+    if (deepen && nextDeepen) {
+      deepen.outerHTML = nextDeepen;
+    } else if (deepen && !nextDeepen) {
+      deepen.remove();
+    } else if (!deepen && nextDeepen) {
+      const source = root.querySelector(".study-source");
+      const gridEl = root.querySelector(".study-grid");
+      if (source) source.insertAdjacentHTML("beforebegin", nextDeepen);
+      else if (gridEl) gridEl.insertAdjacentHTML("afterend", nextDeepen);
+    }
+    const freshDeepen = root.querySelector(".study-deepen");
+    if (freshDeepen) freshDeepen.hidden = true;
     const grid = root.querySelector(".study-grid");
     if (grid) grid.innerHTML = (deck.questions || []).map(questionHtml).join("");
     paintPicker(root, deck.level);
@@ -273,6 +333,15 @@
         revealAll(root, on);
       }
     });
+    root.addEventListener(
+      "toggle",
+      (ev) => {
+        const details = ev.target;
+        if (!details || !details.classList || !details.classList.contains("study-teach")) return;
+        rememberTeachOpen(root.getAttribute("data-study-id") || "", details.open);
+      },
+      true
+    );
   }
 
   function boot() {
@@ -290,6 +359,8 @@
     } else {
       paintPicker(root, root.getAttribute("data-study-level") || "easy");
       paintScore(root);
+      const details = root.querySelector("details.study-teach");
+      if (details && teachWasOpen(id)) details.open = true;
     }
     const deckEl = document.getElementById("study-card-data");
     if (deckEl && window.FP_STUDY_CARDS) {
