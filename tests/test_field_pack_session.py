@@ -152,6 +152,11 @@ class FlagshipSessionTests(unittest.TestCase):
         koala = (FP / "cards" / "koala" / "index.html").read_text(encoding="utf-8")
         self.assertIn("What do they eat?", koala)
         self.assertNotIn("What did you notice about the Koala?", koala)
+        self.assertIn("Watch Live", koala)
+        self.assertIn("/field-pack/virtual-zoo/?from=card#habitat=koala", koala)
+        koala_main = koala.split('<main class="card-page">', 1)[1].split("</main>", 1)[0]
+        self.assertNotIn("sandiegozoo.org", koala_main)
+        self.assertNotIn("zoo.sandiegozoo.org/cams", koala)
 
     def _card_chrome(self, html: str) -> str:
         venue = ""
