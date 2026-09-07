@@ -3,6 +3,7 @@
  * Correct (first or later) shows why and scores. Show answers still reveals the key.
  * Level keys stay easy / hard / zoologist; visible names come from FPStudyLevelName.
  * Lion and giraffe ship JR + Park Ranger + Zoologist (query ?level= or picker).
+ * African elephant ships Junior Ranger (easy) only.
  */
 (() => {
   const LETTERS = ["A", "B", "C"];
