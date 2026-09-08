@@ -1,4 +1,4 @@
-"""Caribbean flamingo Easy study-card: Junior Ranger, teach + 10 MCQs."""
+"""Zebra Easy study-card: Junior Ranger only, teach + 10 MCQs."""
 
 from __future__ import annotations
 
@@ -19,17 +19,23 @@ from study_cards import (  # noqa: E402
     PUSH_FURTHER_GIRAFFE,
     PUSH_FURTHER_LION,
     PUSH_FURTHER_PENGUIN,
+    PUSH_FURTHER_TORTOISE,
+    PUSH_FURTHER_ZEBRA,
     STUDY_SLOTS,
     TALK_ABOUT_ELEPHANT,
     TALK_ABOUT_FLAMINGO,
     TALK_ABOUT_GIRAFFE,
     TALK_ABOUT_LION,
     TALK_ABOUT_PENGUIN,
+    TALK_ABOUT_TORTOISE,
+    TALK_ABOUT_ZEBRA,
     WIKI_AFRICAN_ELEPHANT,
     WIKI_AFRICAN_PENGUIN,
     WIKI_AMERICAN_FLAMINGO,
+    WIKI_GALAPAGOS_TORTOISE,
     WIKI_GIRAFFE,
     WIKI_LION,
+    WIKI_PLAINS_ZEBRA,
     level_display_name,
     shipped_levels_for,
     study_card_ids,
@@ -39,6 +45,8 @@ from study_cards import (  # noqa: E402
 )
 
 FP = REPO / "static" / "field-pack"
+ZEBRA = FP / "cards" / "zebra" / "index.html"
+TORTOISE = FP / "cards" / "galapagos-tortoise" / "index.html"
 FLAMINGO = FP / "cards" / "caribbean-flamingo" / "index.html"
 PENGUIN = FP / "cards" / "african-penguin" / "index.html"
 ELEPHANT = FP / "cards" / "african-elephant" / "index.html"
@@ -63,36 +71,36 @@ GENERIC_WORKSHEET = (
 )
 
 TEACH = (
-    "Grown-up Caribbean flamingos are bright pink.",
-    "They often stand on one leg.",
-    "They find food in shallow water.",
-    "A group of flamingos is a flock.",
-    "Baby flamingos are grey and fluffy — not bright pink at first.",
+    "They have bold black-and-white stripes — each zebra’s pattern is unique.",
+    "They mostly eat grass (plants, not meat).",
+    "They live on African grassland / savanna.",
+    "They live in family groups that can join bigger herds.",
+    "A baby zebra is a foal.",
 )
 
 STEMS = (
-    "What colour are grown-up Caribbean flamingos?",
-    "How do Caribbean flamingos often stand?",
-    "Where do Caribbean flamingos find their food?",
-    "What do you call a group of Caribbean flamingos?",
-    "What do baby Caribbean flamingos look like at first?",
-    "What is special about a Caribbean flamingo’s neck?",
-    "What kind of nest does a Caribbean flamingo build?",
-    "What is a Caribbean flamingo’s beak like?",
-    "Why are grown-up Caribbean flamingos pink?",
-    "Can Caribbean flamingos fly?",
+    "What is special about a plains zebra’s coat?",
+    "What do plains zebras mostly eat?",
+    "Where do wild plains zebras live?",
+    "How do plains zebras live together?",
+    "What do you call a baby plains zebra?",
+    "How do plains zebras escape danger?",
+    "What animal is a plains zebra a wild relative of?",
+    "What is a plains zebra’s mane like?",
+    "What contact call is a plains zebra known for?",
+    "Are plains zebras just striped farm horses you can ride?",
 )
 
 QIDS = (
-    "colour",
-    "one-leg",
-    "food-place",
-    "flock",
-    "chicks",
-    "neck",
-    "nest",
-    "beak",
-    "pink-food",
+    "stripes",
+    "food",
+    "home",
+    "family",
+    "foal",
+    "speed",
+    "horse-kin",
+    "mane",
+    "voice",
     "myth",
 )
 
@@ -100,12 +108,21 @@ PLAIN_LEVEL_LABELS = ("Easy", "Hard")
 AGE_BADGES = ("Ages", "Age 4", "age badge", "ages 4", "4–6", "4-6")
 BRITTLE = (
     "IUCN",
-    "Endangered",
-    "Critically Endangered",
-    "Phoenicopterus",
-    "flamboyance",
-    "beta-carotene",
-    "beta carotene",
+    "Near Threatened",
+    "near threatened",
+    "quagga",
+    "Quagga",
+    "subspecies",
+    "biting fly",
+    "biting-fly",
+    "tsetse",
+    "mph",
+    "km/h",
+    "37",
+    "43",
+    "60 km",
+    "70 km",
+    "Equus",
 )
 
 
@@ -117,9 +134,9 @@ def _main(html: str) -> str:
     return html.split('<main class="card-page">', 1)[1].split("</main>", 1)[0]
 
 
-class FlamingoEasyStudyCardTests(unittest.TestCase):
+class ZebraEasyStudyCardTests(unittest.TestCase):
     def test_deck_is_junior_ranger_easy_only(self):
-        self.assertIn("caribbean-flamingo", study_card_ids())
+        self.assertIn("zebra", study_card_ids())
         self.assertEqual(
             study_card_ids(),
             (
@@ -132,28 +149,25 @@ class FlamingoEasyStudyCardTests(unittest.TestCase):
                 "zebra",
             ),
         )
-        self.assertEqual(shipped_levels_for("caribbean-flamingo"), ("easy", "hard", "zoologist"))
-        self.assertIsNotNone(study_deck_for("caribbean-flamingo", "hard"))
-        self.assertIsNotNone(study_deck_for("caribbean-flamingo", "zoologist"))
-        deck = study_deck_for("caribbean-flamingo")
+        self.assertEqual(shipped_levels_for("zebra"), ("easy",))
+        self.assertIsNone(study_deck_for("zebra", "hard"))
+        self.assertIsNone(study_deck_for("zebra", "zoologist"))
+        deck = study_deck_for("zebra")
         self.assertIsNotNone(deck)
-        self.assertEqual(deck["id"], "caribbean-flamingo")
+        self.assertEqual(deck["id"], "zebra")
         self.assertEqual(deck["level"], "easy")
         self.assertEqual(deck["level_label"], "Junior Ranger")
         self.assertEqual(level_display_name("easy"), "Junior Ranger")
-        self.assertEqual(deck["source"], WIKI_AMERICAN_FLAMINGO)
-        self.assertEqual(
-            deck["source_note"],
-            "Facts from Wikipedia, American flamingo / Caribbean flamingo.",
-        )
+        self.assertEqual(deck["source"], WIKI_PLAINS_ZEBRA)
+        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Plains zebra.")
         self.assertEqual(validate_deck(deck), [])
         self.assertEqual(len(deck["teach"]), 5)
         self.assertEqual(deck["teach"], list(TEACH))
         self.assertEqual(len(deck["questions"]), STUDY_SLOTS)
         self.assertEqual([q["stem"] for q in deck["questions"]], list(STEMS))
         self.assertEqual([q["id"] for q in deck["questions"]], list(QIDS))
-        self.assertEqual(deck["talk_about"], list(TALK_ABOUT_FLAMINGO))
-        self.assertEqual(deck["push_further"], list(PUSH_FURTHER_FLAMINGO))
+        self.assertEqual(deck["talk_about"], list(TALK_ABOUT_ZEBRA))
+        self.assertEqual(deck["push_further"], list(PUSH_FURTHER_ZEBRA))
         for q in deck["questions"]:
             self.assertEqual(len(q["choices"]), 3)
             self.assertIn(q["correct"], ("A", "B", "C"))
@@ -161,11 +175,13 @@ class FlamingoEasyStudyCardTests(unittest.TestCase):
         blob = " ".join(deck["teach"] + [q["stem"] + q["why"] for q in deck["questions"]])
         for phrase in BRITTLE:
             self.assertNotIn(phrase, blob)
-        self.assertIn("flock", blob.lower())
-        self.assertIn("mud mound", blob.lower())
-        self.assertIn("capable flyers", blob.lower())
+        self.assertIn("black-and-white", blob.lower())
+        self.assertIn("unique", blob.lower())
+        self.assertIn("foal", blob.lower())
+        self.assertIn("kwaha", blob.lower())
+        self.assertIn("grassland", blob.lower())
 
-    def test_lion_giraffe_elephant_and_penguin_decks_untouched(self):
+    def test_other_study_decks_untouched(self):
         lion = study_deck_for("african-lion")
         self.assertEqual(lion["source"], WIKI_LION)
         self.assertEqual(lion["level_label"], "Junior Ranger")
@@ -196,9 +212,23 @@ class FlamingoEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(shipped_levels_for("african-penguin"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("african-penguin", "hard"))
         self.assertIsNotNone(study_deck_for("african-penguin", "zoologist"))
+        flamingo = study_deck_for("caribbean-flamingo")
+        self.assertEqual(flamingo["source"], WIKI_AMERICAN_FLAMINGO)
+        self.assertEqual(flamingo["talk_about"], list(TALK_ABOUT_FLAMINGO))
+        self.assertEqual(flamingo["push_further"], list(PUSH_FURTHER_FLAMINGO))
+        self.assertEqual(shipped_levels_for("caribbean-flamingo"), ("easy", "hard", "zoologist"))
+        self.assertIsNotNone(study_deck_for("caribbean-flamingo", "hard"))
+        self.assertIsNotNone(study_deck_for("caribbean-flamingo", "zoologist"))
+        tortoise = study_deck_for("galapagos-tortoise")
+        self.assertEqual(tortoise["source"], WIKI_GALAPAGOS_TORTOISE)
+        self.assertEqual(tortoise["talk_about"], list(TALK_ABOUT_TORTOISE))
+        self.assertEqual(tortoise["push_further"], list(PUSH_FURTHER_TORTOISE))
+        self.assertEqual(shipped_levels_for("galapagos-tortoise"), ("easy", "hard", "zoologist"))
+        self.assertIsNotNone(study_deck_for("galapagos-tortoise", "hard"))
+        self.assertIsNotNone(study_deck_for("galapagos-tortoise", "zoologist"))
 
     def test_generator_html_is_study_not_worksheet(self):
-        html = outing_talk_html({"id": "caribbean-flamingo", "packTemplate": "animals"})
+        html = outing_talk_html({"id": "zebra", "packTemplate": "animals"})
         self.assertIn(f">{CARD_TALK_H2}</h2>", html)
         self.assertIn("card-study-pack", html)
         self.assertIn("Learn first", html)
@@ -209,7 +239,7 @@ class FlamingoEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Talk about it", html)
         self.assertIn("Push further", html)
         self.assertRegex(html, r'<aside class="study-deepen"[^>]*\bhidden\b')
-        for prompt in TALK_ABOUT_FLAMINGO + PUSH_FURTHER_FLAMINGO:
+        for prompt in TALK_ABOUT_ZEBRA + PUSH_FURTHER_ZEBRA:
             self.assertIn(prompt, html)
         self.assertIn("Show answers", html)
         self.assertIn("Score", html)
@@ -221,32 +251,31 @@ class FlamingoEasyStudyCardTests(unittest.TestCase):
             self.assertNotIn(phrase, html)
         visible = _text(html)
         self.assertIn("Junior Ranger", visible)
-        self.assertIn("Park Ranger", visible)
-        self.assertIn("Zoologist", visible)
-        self.assertIn('class="study-level-picker"', html)
-        self.assertIn('data-study-pick="easy"', html)
-        self.assertIn('data-study-pick="hard"', html)
-        self.assertIn('data-study-pick="zoologist"', html)
-        self.assertNotIn('class="study-level-badge"', html)
+        self.assertNotIn("Park Ranger", visible)
+        self.assertNotIn("Zoologist", visible)
+        self.assertIn('class="study-level-badge"', html)
+        self.assertNotIn('class="study-level-picker"', html)
+        self.assertNotIn('data-study-pick="hard"', html)
+        self.assertNotIn('data-study-pick="zoologist"', html)
         for badge in PLAIN_LEVEL_LABELS + AGE_BADGES:
             self.assertNotIn(badge, visible)
         for phrase in BRITTLE:
             self.assertNotIn(phrase, html)
-        self.assertIn("Bright pink / reddish-pink", html)
-        self.assertIn("Yes — they are strong fliers", html)
-        self.assertIn("Facts from Wikipedia, American flamingo / Caribbean flamingo.", html)
+        self.assertIn("Bold black-and-white stripes — and each zebra’s pattern is unique", html)
+        self.assertIn("No — they are wild animals, not domesticated like horses", html)
+        self.assertIn("Facts from Wikipedia, Plains zebra.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
         html = outing_talk_html({"id": "koala", "packTemplate": "animals"})
         self.assertIn("What do they eat?", html)
         self.assertNotIn("card-study-pack", html)
-        self.assertNotIn("What colour are grown-up Caribbean flamingos?", html)
+        self.assertNotIn("What is special about a plains zebra’s coat?", html)
         koala = KOALA.read_text(encoding="utf-8")
         self.assertIn("What do they eat?", koala)
         self.assertNotIn("card-study-pack", koala)
 
-    def test_published_flamingo_card_matches_easy_deck(self):
-        html = FLAMINGO.read_text(encoding="utf-8")
+    def test_published_zebra_card_matches_easy_deck(self):
+        html = ZEBRA.read_text(encoding="utf-8")
         main = _main(html)
         for phrase in GENERIC_WORKSHEET:
             self.assertNotIn(phrase, main)
@@ -255,13 +284,13 @@ class FlamingoEasyStudyCardTests(unittest.TestCase):
         for line in TEACH:
             self.assertIn(line, main)
         self.assertIn("Watch Live", main)
-        self.assertIn("/field-pack/virtual-zoo/?from=card#habitat=caribbean-flamingo", main)
+        self.assertIn("/field-pack/virtual-zoo/?from=card#habitat=zebra", main)
         self.assertIn("study-card.js?v=6", html)
         self.assertIn("study-card.css?v=7", html)
         self.assertIn("study-cards-data.js?v=5", html)
         self.assertIn('id="study-card-data"', html)
         self.assertIn('"level_label": "Junior Ranger"', html)
-        self.assertIn('"id": "caribbean-flamingo"', html)
+        self.assertIn('"id": "zebra"', html)
         self.assertIn('id="study-print-template"', html)
         self.assertIn("print-kit.js?v=20", html)
         self.assertIn("styles.css?v=41", html)
@@ -273,13 +302,12 @@ class FlamingoEasyStudyCardTests(unittest.TestCase):
         self.assertRegex(main, r'<aside class="study-deepen"[^>]*\bhidden\b')
         visible = _text(main)
         self.assertIn("Junior Ranger", visible)
-        self.assertIn("Park Ranger", visible)
-        self.assertIn("Zoologist", visible)
-        self.assertIn('class="study-level-picker"', main)
-        self.assertIn('data-study-pick="easy"', main)
-        self.assertIn('data-study-pick="hard"', main)
-        self.assertIn('data-study-pick="zoologist"', main)
-        self.assertNotIn('class="study-level-badge"', main)
+        self.assertNotIn("Park Ranger", visible)
+        self.assertNotIn("Zoologist", visible)
+        self.assertIn('class="study-level-badge"', main)
+        self.assertNotIn('class="study-level-picker"', main)
+        self.assertNotIn('data-study-pick="easy"', main)
+        self.assertNotIn('data-study-pick="hard"', main)
         self.assertIn("Learn first", main)
         for badge in PLAIN_LEVEL_LABELS + AGE_BADGES:
             self.assertNotIn(badge, visible)
@@ -296,36 +324,36 @@ class FlamingoEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Talk about it", back)
         self.assertIn("Push further", back)
         self.assertIn("ps-study-deepen", back)
-        for prompt in TALK_ABOUT_FLAMINGO + PUSH_FURTHER_FLAMINGO:
+        for prompt in TALK_ABOUT_ZEBRA + PUSH_FURTHER_ZEBRA:
             self.assertIn(prompt, back)
 
     def test_print_faces_are_duplex_and_clamped(self):
-        deck = study_deck_for("caribbean-flamingo")
+        deck = study_deck_for("zebra")
         sheet = study_print_html(
             deck,
-            name="Caribbean flamingo",
-            emoji="🦩",
-            photo="/field-pack/photos/caribbean-flamingo.jpg?v=img2",
-            photo_pos="50% 18%",
+            name="Zebra",
+            emoji="🦓",
+            photo="/field-pack/photos/zebra.jpg?v=img2",
+            photo_pos="50% 22%",
         )
         self.assertIn("ps-study-front", sheet)
         self.assertIn("ps-study-back", sheet)
         self.assertIn("ps-study-photo", sheet)
-        self.assertIn("/field-pack/photos/caribbean-flamingo.jpg", sheet)
+        self.assertIn("/field-pack/photos/zebra.jpg", sheet)
         self.assertIn("Flip for answers", sheet)
         self.assertIn("Junior Ranger", sheet)
         self.assertNotIn(" · Easy ·", sheet)
-        self.assertIn(WIKI_AMERICAN_FLAMINGO, sheet)
+        self.assertIn(WIKI_PLAINS_ZEBRA, sheet)
         for stem in STEMS:
             self.assertIn(stem, sheet)
-        self.assertIn("Bright pink / reddish-pink", sheet)
-        self.assertIn("Yes — they are strong fliers", sheet)
+        self.assertIn("Bold black-and-white stripes — and each zebra’s pattern is unique", sheet)
+        self.assertIn("No — they are wild animals, not domesticated like horses", sheet)
         front, _, back = sheet.partition("ps-study-back")
         self.assertIn("Learn first", front)
         self.assertNotIn("Talk about it", front)
         self.assertIn("Talk about it", back)
         self.assertIn("Push further", back)
-        for prompt in TALK_ABOUT_FLAMINGO + PUSH_FURTHER_FLAMINGO:
+        for prompt in TALK_ABOUT_ZEBRA + PUSH_FURTHER_ZEBRA:
             self.assertIn(prompt, back)
         css = STYLES.read_text(encoding="utf-8")
         self.assertIn(".ps-study-front", css)
@@ -341,31 +369,35 @@ class FlamingoEasyStudyCardTests(unittest.TestCase):
         self.assertIn("is-wrong-pick", study_js)
         self.assertIn("FPStudyLevelName", study_js + STUDY_DATA_JS.read_text(encoding="utf-8"))
 
-    def test_artifacts_include_flamingo_easy_only(self):
+    def test_artifacts_include_zebra_easy_only(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
+        self.assertIn("zebra", payload)
+        self.assertIn("galapagos-tortoise", payload)
         self.assertIn("caribbean-flamingo", payload)
         self.assertIn("african-penguin", payload)
         self.assertIn("african-elephant", payload)
         self.assertIn("reticulated-giraffe", payload)
         self.assertIn("african-lion", payload)
-        flamingo = payload["caribbean-flamingo"]
-        self.assertEqual(flamingo["id"], "caribbean-flamingo")
-        self.assertEqual(set(flamingo["levels"]), {"easy", "hard", "zoologist"})
-        easy = flamingo["levels"]["easy"]
+        zebra = payload["zebra"]
+        self.assertEqual(zebra["id"], "zebra")
+        self.assertEqual(set(zebra["levels"]), {"easy"})
+        easy = zebra["levels"]["easy"]
         self.assertEqual(len(easy["teach"]), 5)
         self.assertEqual(len(easy["questions"]), STUDY_SLOTS)
         for q in easy["questions"]:
             self.assertEqual(len(q["choices"]), 3)
-        self.assertEqual(flamingo["levels"]["hard"]["teach"], [])
-        self.assertEqual(flamingo["levels"]["zoologist"]["teach"], [])
+        self.assertNotIn("hard", zebra["levels"])
+        self.assertNotIn("zoologist", zebra["levels"])
         data_js = STUDY_DATA_JS.read_text(encoding="utf-8")
-        self.assertIn("caribbean-flamingo", data_js)
+        self.assertIn("zebra", data_js)
         self.assertIn('"easy":"Junior Ranger"', data_js)
         self.assertIn('"hard":"Park Ranger"', data_js)
         self.assertEqual(set(payload["african-lion"]["levels"]), {"easy", "hard", "zoologist"})
         self.assertEqual(set(payload["reticulated-giraffe"]["levels"]), {"easy", "hard", "zoologist"})
         self.assertEqual(set(payload["african-elephant"]["levels"]), {"easy", "hard", "zoologist"})
         self.assertEqual(set(payload["african-penguin"]["levels"]), {"easy", "hard", "zoologist"})
+        self.assertEqual(set(payload["caribbean-flamingo"]["levels"]), {"easy", "hard", "zoologist"})
+        self.assertEqual(set(payload["galapagos-tortoise"]["levels"]), {"easy", "hard", "zoologist"})
 
     def test_display_name_map_still_covers_future_tiers(self):
         self.assertEqual(
@@ -388,6 +420,12 @@ class FlamingoEasyStudyCardTests(unittest.TestCase):
         flamingo_html = FLAMINGO.read_text(encoding="utf-8")
         self.assertIn("Park Ranger", _text(_main(flamingo_html)))
         self.assertIn("Zoologist", _text(_main(flamingo_html)))
+        tortoise_html = TORTOISE.read_text(encoding="utf-8")
+        self.assertIn("Park Ranger", _text(_main(tortoise_html)))
+        self.assertIn("Zoologist", _text(_main(tortoise_html)))
+        zebra_html = ZEBRA.read_text(encoding="utf-8")
+        self.assertNotIn("Park Ranger", _text(_main(zebra_html)))
+        self.assertNotIn("Zoologist", _text(_main(zebra_html)))
 
 
 if __name__ == "__main__":

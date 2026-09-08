@@ -88,6 +88,14 @@ gene names), and temperature-dependent hatchling sex. Soften
 IUCN letters and exact taxon counts. Do not redo JR or PR
 themes.
 
+Facts for zebra Junior Ranger (easy only) are Wikipedia-backed:
+https://en.wikipedia.org/wiki/Plains_zebra
+Species framing is the plains zebra (Equus quagga). JR stays
+kid-simple “plains zebra.” Soften exact run speed (no mph / km/h
+lock). Reserve for later tiers: the biting-fly stripe hypothesis,
+the quagga, subspecies, and the IUCN Near Threatened letter. Do
+not add Park Ranger or Zoologist yet.
+
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
 zoologist. Visible copy uses LEVEL_DISPLAY_NAMES only — no age badges,
@@ -113,6 +121,7 @@ WIKI_ELEPHANT = "https://en.wikipedia.org/wiki/Elephant"
 WIKI_AFRICAN_PENGUIN = "https://en.wikipedia.org/wiki/African_penguin"
 WIKI_AMERICAN_FLAMINGO = "https://en.wikipedia.org/wiki/American_flamingo"
 WIKI_GALAPAGOS_TORTOISE = "https://en.wikipedia.org/wiki/Gal%C3%A1pagos_tortoise"
+WIKI_PLAINS_ZEBRA = "https://en.wikipedia.org/wiki/Plains_zebra"
 
 LETTERS = ("A", "B", "C")
 STUDY_SLOTS = 10
@@ -128,7 +137,7 @@ LEVEL_DISPLAY_NAMES = {
 # Shipped picker order. A card only shows keys it actually defines.
 # Lion, reticulated-giraffe, African elephant, African penguin,
 # Caribbean flamingo, and Galápagos tortoise ship Junior Ranger +
-# Park Ranger + Zoologist.
+# Park Ranger + Zoologist. Zebra ships Junior Ranger only for now.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -192,6 +201,16 @@ PUSH_FURTHER_TORTOISE = (
     "A tortoise cannot leave its shell. How is that different from taking off a coat?",
     "Galápagos tortoises move slowly. What might they notice that a fast animal would miss?",
     "Find one more animal on your zoo map that eats plants. How does it reach its food?",
+)
+TALK_ABOUT_ZEBRA = (
+    "Why might every zebra’s stripe pattern be different?",
+    "If you lived on a grassland, what would you watch for?",
+    "Which other animal at the zoo lives in a family group?",
+)
+PUSH_FURTHER_ZEBRA = (
+    "Zebras can run fast to escape danger. What else might help them stay safe in a herd?",
+    "A zebra is a wild relative of the horse. How is life different for a wild animal than a farm horse?",
+    "Find one more animal on your zoo map that eats grass. How does it stay safe?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -2649,6 +2668,153 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "B",
                         "why": "Hatchling sex is temperature-dependent. Cooler nests tend to yield more males and warmer nests more females. It is not an XX/XY chromosome system.",
+                    },
+                ],
+            },
+        },
+    },
+    "zebra": {
+        "id": "zebra",
+        "source": WIKI_PLAINS_ZEBRA,
+        "source_note": "Facts from Wikipedia, Plains zebra.",
+        "talk_about": list(TALK_ABOUT_ZEBRA),
+        "push_further": list(PUSH_FURTHER_ZEBRA),
+        "levels": {
+            "easy": {
+                # Teaching-first: pride-of-place facts. Do not spoiler every quiz slot.
+                "teach": [
+                    "They have bold black-and-white stripes — each zebra’s pattern is unique.",
+                    "They mostly eat grass (plants, not meat).",
+                    "They live on African grassland / savanna.",
+                    "They live in family groups that can join bigger herds.",
+                    "A baby zebra is a foal.",
+                ],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "stripes",
+                        "title": "Stripes",
+                        "stem": "What is special about a plains zebra’s coat?",
+                        "choices": [
+                            "Bold black-and-white stripes — and each zebra’s pattern is unique",
+                            "All zebras share one identical stripe pattern",
+                            "They are solid brown with no stripes",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says plains zebras are boldly striped in black and white, and no two individuals look exactly alike.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "food",
+                        "title": "Food",
+                        "stem": "What do plains zebras mostly eat?",
+                        "choices": [
+                            "Meat",
+                            "Grass (plants, not meat)",
+                            "Only fish",
+                        ],
+                        "correct": "B",
+                        "why": "Plains zebras primarily feed on grass. They are plant-eaters, not meat-eaters.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "home",
+                        "title": "Home",
+                        "stem": "Where do wild plains zebras live?",
+                        "choices": [
+                            "African grassland / savanna",
+                            "The ice in Antarctica",
+                            "Only in deep rainforest",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says their habitat is generally treeless grasslands and savanna woodlands in Africa.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "family",
+                        "title": "Family",
+                        "stem": "How do plains zebras live together?",
+                        "choices": [
+                            "Always completely alone",
+                            "In family groups (a stallion with mares and young) that can join bigger herds",
+                            "Only in pairs of two",
+                        ],
+                        "correct": "B",
+                        "why": "They live in family groups — a stallion, several mares, and their young. Those groups can come together to form bigger herds.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "foal",
+                        "title": "Baby",
+                        "stem": "What do you call a baby plains zebra?",
+                        "choices": ["A cub", "A foal", "A chick"],
+                        "correct": "B",
+                        "why": "A baby zebra is a foal — the same word used for a baby horse.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "speed",
+                        "title": "Speed",
+                        "stem": "How do plains zebras escape danger?",
+                        "choices": [
+                            "They fly away",
+                            "They can run fast",
+                            "They hide underground",
+                        ],
+                        "correct": "B",
+                        "why": "An adult zebra can run fast to get away from lions and other hunters. We do not lock one exact speed.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "horse-kin",
+                        "title": "Horse kin",
+                        "stem": "What animal is a plains zebra a wild relative of?",
+                        "choices": [
+                            "The house cat",
+                            "The horse (same horse family)",
+                            "The penguin",
+                        ],
+                        "correct": "B",
+                        "why": "Zebras belong to the horse family. They are wild relatives of the horse, not a farm pet.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "mane",
+                        "title": "Mane",
+                        "stem": "What is a plains zebra’s mane like?",
+                        "choices": [
+                            "Long and floppy like a farm horse’s mane",
+                            "Short and upright along the neck",
+                            "Missing — zebras have no mane",
+                        ],
+                        "correct": "B",
+                        "why": "Like other wild horses, a plains zebra has a short, upright mane along the neck.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "voice",
+                        "title": "Voice",
+                        "stem": "What contact call is a plains zebra known for?",
+                        "choices": [
+                            "A roar like a lion",
+                            "A barking / “kwaha” call",
+                            "A moo like a cow",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia describes a high-pitched contact call, often called barking — heard as “kwaha” or similar.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "myth",
+                        "title": "Myth buster",
+                        "stem": "Are plains zebras just striped farm horses you can ride?",
+                        "choices": [
+                            "Yes — they are tame like farm horses",
+                            "No — they are wild animals, not domesticated like horses",
+                            "Only if you paint extra stripes on",
+                        ],
+                        "correct": "B",
+                        "why": "Zebras are wild, not domesticated like horses. They are horse relatives, but they are not farm horses you can ride the same way.",
                     },
                 ],
             },
