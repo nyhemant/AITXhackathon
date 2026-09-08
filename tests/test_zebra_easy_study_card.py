@@ -150,6 +150,7 @@ class ZebraEasyStudyCardTests(unittest.TestCase):
                 "galapagos-tortoise",
                 "zebra",
                 "nile-hippo",
+                "sumatran-tiger",
             ),
         )
         self.assertEqual(shipped_levels_for("zebra"), ("easy", "hard", "zoologist"))

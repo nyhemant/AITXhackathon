@@ -136,6 +136,24 @@ and bottom-walks, and the two living hippos (H. amphibius +
 pygmy). Soften contested numbers and treat IUCN Vulnerable
 as a snapshot. Do not redo JR or PR themes.
 
+Facts for sumatran-tiger Junior Ranger (easy only) are
+Wikipedia-backed:
+https://en.wikipedia.org/wiki/Sumatran_tiger
+https://en.wikipedia.org/wiki/Tiger
+Species framing is the Sumatran tiger (Panthera tigris
+sumatrae). JR stays kid-simple “Sumatran tiger.” Soften kg
+weights and IUCN letters. Wild home is Sumatra — not all of
+Asia. Among the smallest living tigers. Denser stripes with
+spots between stripes. Forest cover, not open grassland like
+lions. Meat hunter: deer, wild pigs, other forest prey.
+Mostly alone, not pride life like lions. A baby is a cub.
+Males can show a cheek/neck ruff. Last Sunda island tiger
+after Bali and Javan tigers went extinct. Myth: they are
+strong swimmers, not cartoon water-scared cats (Tiger page).
+Reserve for later: sondaica lumping, CR letter, population
+counts, palm oil, and captive genetics. Do not add Park
+Ranger or Zoologist yet.
+
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
 zoologist. Visible copy uses LEVEL_DISPLAY_NAMES only — no age badges,
@@ -163,6 +181,8 @@ WIKI_AMERICAN_FLAMINGO = "https://en.wikipedia.org/wiki/American_flamingo"
 WIKI_GALAPAGOS_TORTOISE = "https://en.wikipedia.org/wiki/Gal%C3%A1pagos_tortoise"
 WIKI_PLAINS_ZEBRA = "https://en.wikipedia.org/wiki/Plains_zebra"
 WIKI_HIPPOPOTAMUS = "https://en.wikipedia.org/wiki/Hippopotamus"
+WIKI_SUMATRAN_TIGER = "https://en.wikipedia.org/wiki/Sumatran_tiger"
+WIKI_TIGER = "https://en.wikipedia.org/wiki/Tiger"
 
 LETTERS = ("A", "B", "C")
 STUDY_SLOTS = 10
@@ -179,7 +199,8 @@ LEVEL_DISPLAY_NAMES = {
 # Shipped picker order. A card only shows keys it actually defines.
 # Lion, reticulated-giraffe, African elephant, African penguin,
 # Caribbean flamingo, Galápagos tortoise, zebra, and Nile hippo
-# ship Junior Ranger + Park Ranger + Zoologist.
+# ship Junior Ranger + Park Ranger + Zoologist. Sumatran tiger
+# ships Junior Ranger only (no Park Ranger or Zoologist yet).
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -204,6 +225,7 @@ STUDY_NEIGHBORS = {
     "galapagos-tortoise": ("african-elephant", "reticulated-giraffe"),
     "zebra": ("african-lion", "reticulated-giraffe", "african-elephant"),
     "nile-hippo": ("african-elephant", "zebra"),
+    "sumatran-tiger": ("african-lion",),
 }
 
 STUDY_CARD_TITLES = {
@@ -215,6 +237,7 @@ STUDY_CARD_TITLES = {
     "galapagos-tortoise": "Galápagos tortoise",
     "zebra": "Zebra",
     "nile-hippo": "Nile hippo",
+    "sumatran-tiger": "Sumatran tiger",
 }
 
 # Shared answers-side deepen (Claude sample). Not scored. Future animals reuse keys.
@@ -297,6 +320,16 @@ PUSH_FURTHER_HIPPO = (
     "The reddish skin goo is sunscreen and can help fight microbes. What other “weird” animal traits might have unexpected jobs?",
     "A hippo’s closest living relatives are whales and dolphins. What still surprises you about that?",
     "Hippos rest in pods in the water, then graze alone on land. Why might bachelor bulls stay near the edge?",
+)
+TALK_ABOUT_TIGER = (
+    "Wild Sumatran tigers live on one island. How is that different from tigers people picture across all of Asia?",
+    "This cat hunts in forest, not open grassland like a lion. What would change if it lived on a savannah?",
+    "Sumatran tigers spend most of their time alone. How is that different from a lion pride?",
+)
+PUSH_FURTHER_TIGER = (
+    "Sumatra is a big island, but it is still an island. How might that shape a tiger’s life?",
+    "Bali and Java lost their wild tigers. What might that mean for the last Sunda island tiger?",
+    "Zoos care for Sumatran tigers. What job could a zoo do without locking one status letter?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -3612,6 +3645,157 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "B",
                         "why": "Wikipedia says the common hippopotamus and the pygmy hippopotamus (Choeropsis liberiensis or Hexaprotodon liberiensis) are the only living members of Hippopotamidae.",
+                    },
+                ],
+            },
+        },
+    },
+    "sumatran-tiger": {
+        "id": "sumatran-tiger",
+        "source": WIKI_SUMATRAN_TIGER,
+        "source_note": "Facts from Wikipedia, Sumatran tiger.",
+        "talk_about": list(TALK_ABOUT_TIGER),
+        "push_further": list(PUSH_FURTHER_TIGER),
+        "levels": {
+            "easy": {
+                # Teaching-first: same front as the quiz. Hard later may hide these.
+                "teach": [
+                    "Wild Sumatran tigers live only on the island of Sumatra.",
+                    "They are among the smallest living tigers.",
+                    "Their stripes are extra busy, with little spots between the stripes.",
+                    "They hunt in forest, not open grassland like lions.",
+                    "They eat meat — deer, wild pigs, and other forest prey.",
+                ],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "sumatra-only",
+                        "title": "Sumatra only",
+                        "stem": "Where do wild Sumatran tigers live?",
+                        "choices": [
+                            "All across Asia",
+                            "Only on the island of Sumatra",
+                            "Only in African forests",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says the Sumatran tiger lives on the Indonesian island of Sumatra — not all of Asia.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "smallest",
+                        "title": "Smallest living tiger",
+                        "stem": "How does a Sumatran tiger’s size compare with other living tigers?",
+                        "choices": [
+                            "It is among the smallest living tigers",
+                            "It is the biggest cat on Earth",
+                            "It is as big as an African elephant",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia calls the Sumatran tiger one of the smallest tigers. We do not lock one weight.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "busy-stripes",
+                        "title": "Busy stripes",
+                        "stem": "What is special about a Sumatran tiger’s stripes?",
+                        "choices": [
+                            "They are fewer than on any other tiger",
+                            "They are denser, with little spots between the stripes",
+                            "They are painted on at the zoo",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says Sumatran tigers have more stripes than other tigers, and lines of small dark spots sit between the regular stripes.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "forest",
+                        "title": "Forest cat",
+                        "stem": "What kind of place do Sumatran tigers prefer?",
+                        "choices": [
+                            "Open grassland like a lion’s savannah",
+                            "Forest with cover, not open grassland",
+                            "Sandy desert with no trees",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says they strongly prefer forest with dense cover. They are not open-grassland cats like lions.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "meat",
+                        "title": "Meat hunter",
+                        "stem": "What do wild Sumatran tigers hunt?",
+                        "choices": [
+                            "Grass and leaves",
+                            "Deer, wild pigs, and other forest prey",
+                            "Only zoo snacks",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia lists forest prey such as sambar deer, muntjac, and wild pigs (banded pigs).",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "alone",
+                        "title": "Mostly alone",
+                        "stem": "How do Sumatran tigers usually live?",
+                        "choices": [
+                            "In a big pride like lions",
+                            "Mostly alone, not in a lion-style pride",
+                            "In huge flocks that never split up",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia’s Tiger page says a tiger lives a mostly solitary life — mostly alone, not pride life like lions.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "cub",
+                        "title": "Cub",
+                        "stem": "What do you call a baby Sumatran tiger?",
+                        "choices": [
+                            "A calf",
+                            "A cub",
+                            "A chick",
+                        ],
+                        "correct": "B",
+                        "why": "A baby tiger is a cub — the same word used for a baby lion.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "ruff",
+                        "title": "Male ruff",
+                        "stem": "What extra fur can a male Sumatran tiger show?",
+                        "choices": [
+                            "A cheek and neck ruff",
+                            "A peacock tail",
+                            "A long horse mane down the back",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says males have a prominent ruff, and it is especially marked in the Sumatran tiger.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "last-sunda",
+                        "title": "Last Sunda tiger",
+                        "stem": "Why is the Sumatran tiger called the last Sunda island tiger?",
+                        "choices": [
+                            "Tigers never lived on any other island",
+                            "Bali and Javan tigers are gone, so Sumatra is the last of those islands",
+                            "Every island in Asia still has wild tigers",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says it is the only surviving tiger population in the Sunda Islands after the Bali and Javan tigers went extinct.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "water-myth",
+                        "title": "Myth buster — water",
+                        "stem": "Are Sumatran tigers scared of water, like a cartoon house cat?",
+                        "choices": [
+                            "Yes — they never get wet",
+                            "No — tigers are strong swimmers",
+                            "They can only walk on frozen ice",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia’s Tiger page says the tiger is a powerful swimmer and readily uses water, especially on hot days — not a water-scared cartoon cat.",
                     },
                 ],
             },
