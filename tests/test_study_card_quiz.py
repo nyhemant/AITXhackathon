@@ -175,10 +175,10 @@ class StudyCardQuizTests(unittest.TestCase):
 
     def test_cache_versions_bumped_for_quiz_ux(self):
         seo = SEO.read_text(encoding="utf-8")
-        self.assertIn('STUDY_CARD_JS_VER = "8"', seo)
+        self.assertIn('STUDY_CARD_JS_VER = "9"', seo)
         self.assertIn('STUDY_CARD_CSS_VER = "9"', seo)
         html = LION.read_text(encoding="utf-8")
-        self.assertIn("study-card.js?v=8", html)
+        self.assertIn("study-card.js?v=9", html)
         self.assertIn("study-card.css?v=9", html)
 
     def test_runtime_wrong_then_correct_scores(self):

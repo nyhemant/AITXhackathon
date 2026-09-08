@@ -195,7 +195,7 @@ class GiraffeEasyStudyCardTests(unittest.TestCase):
             self.assertIn(line, main)
         self.assertIn("Watch Live", main)
         self.assertIn("/field-pack/virtual-zoo/?from=card#habitat=reticulated-giraffe", main)
-        self.assertIn("study-card.js?v=8", html)
+        self.assertIn("study-card.js?v=9", html)
         self.assertIn("study-card.css?v=9", html)
         self.assertIn("study-cards-data.js?v=5", html)
         self.assertIn('id="study-card-data"', html)

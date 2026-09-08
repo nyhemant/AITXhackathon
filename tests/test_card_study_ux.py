@@ -64,7 +64,7 @@ class CardStudyUxTests(unittest.TestCase):
         self.assertIn('aria-label="Study level"', html)
         self.assertIn('aria-label="Study level at the end"', html)
         self.assertLess(html.find("study-level-picker"), html.find("study-explore"))
-        self.assertGreater(html.find("study-level-picker-bottom"), html.find("Push further"))
+        self.assertLess(html.find("study-level-picker-bottom"), html.find("Push further"))
         self.assertIn('class="study-foot no-print"', html)
         self.assertEqual(html.count('data-study-correct'), 2)
         self.assertIn(f">{STUDY_QUIZ_H2}</h2>", html)
@@ -104,13 +104,14 @@ class CardStudyUxTests(unittest.TestCase):
         self.assertNotIn('<details class="study-explore no-print" open', html)
         self.assertEqual(html.count("data-study-correct"), 2)
         self.assertLess(html.find("study-toolbar"), html.find("study-grid"))
-        self.assertLess(html.find("study-grid"), html.find("study-explore"))
-        self.assertLess(html.find("study-explore"), html.find("study-foot"))
+        self.assertLess(html.find("study-grid"), html.find("study-foot"))
+        self.assertLess(html.find("study-foot"), html.find("study-explore"))
         self.assertGreater(html.find("study-foot"), html.find('data-study-correct'))
 
         js = STUDY_JS.read_text(encoding="utf-8")
         self.assertIn("querySelectorAll(\"[data-study-correct]\")", js)
         self.assertIn("function exploreHtml(", js)
+        self.assertIn('insertAdjacentHTML("afterend", nextExplore)', js)
         self.assertNotIn("function deepenHtml(", js)
         css = STUDY_CSS.read_text(encoding="utf-8")
         self.assertIn(".card-page .card-study-pack .study-explore", css)
@@ -136,6 +137,28 @@ class CardStudyUxTests(unittest.TestCase):
         self.assertIn(">Talk</h2>", warthog)
         self.assertNotIn(">Quiz</h2>", warthog)
         self.assertNotIn("study-explore", warthog)
+
+    def test_explore_more_sits_between_bottom_foot_and_try_next(self):
+        deck = study_deck_for("galapagos-tortoise")
+        html = study_talk_html(deck)
+        self.assertLess(html.find("study-foot"), html.find("study-explore"))
+        self.assertLess(html.find("study-level-picker-bottom"), html.find("study-explore"))
+
+        js = STUDY_JS.read_text(encoding="utf-8")
+        self.assertIn('if (foot) foot.insertAdjacentHTML("afterend", nextExplore)', js)
+
+        for cid in ("galapagos-tortoise", "zebra", "nile-hippo"):
+            page = (FP / "cards" / cid / "index.html").read_text(encoding="utf-8")
+            main = _main(page)
+            with self.subTest(card=cid):
+                foot_at = main.find("study-foot")
+                explore_at = main.find("study-explore")
+                try_at = main.find("card-try-next")
+                self.assertGreater(foot_at, -1)
+                self.assertGreater(explore_at, -1)
+                self.assertGreater(try_at, -1)
+                self.assertLess(foot_at, explore_at)
+                self.assertLess(explore_at, try_at)
 
     def test_level_switch_resets_and_scrolls(self):
         js = STUDY_JS.read_text(encoding="utf-8")
@@ -206,7 +229,7 @@ class CardStudyUxTests(unittest.TestCase):
 
     def test_photos_and_watch_live_share_hero_row(self):
         self.assertEqual(CARD_SEO_CSS_VER, "35")
-        self.assertEqual(STUDY_CARD_JS_VER, "8")
+        self.assertEqual(STUDY_CARD_JS_VER, "9")
         self.assertEqual(STUDY_CARD_CSS_VER, "9")
         css = SEO_CSS.read_text(encoding="utf-8")
         self.assertIn(".card-page .card-hero-links", css)
@@ -245,7 +268,7 @@ class CardStudyUxTests(unittest.TestCase):
                 self.assertGreater(photos_at, hero_at)
                 self.assertGreater(watch_at, photos_at)
                 self.assertLess(watch_at, talk_at)
-                self.assertIn("study-card.js?v=8", html)
+                self.assertIn("study-card.js?v=9", html)
                 self.assertIn("study-card.css?v=9", html)
                 self.assertIn(f"seo-venue.css?v={CARD_SEO_CSS_VER}", html)
 
