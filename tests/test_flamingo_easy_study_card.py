@@ -136,6 +136,7 @@ class FlamingoEasyStudyCardTests(unittest.TestCase):
                 "cheetah",
                 "red-panda",
                 "koala",
+                "chimpanzee",
             ),
         )
         self.assertEqual(shipped_levels_for("caribbean-flamingo"), ("easy", "hard", "zoologist"))

@@ -1,4 +1,4 @@
-"""Cheetah Easy study-card: Junior Ranger teach + 10 MCQs (Park Ranger is a sibling level)."""
+"""Chimpanzee Easy study-card: Junior Ranger teach + 10 MCQs (first deck)."""
 
 from __future__ import annotations
 
@@ -15,25 +15,31 @@ from generate_bdo_seo import outing_talk_html  # noqa: E402
 from study_cards import (  # noqa: E402
     LEVEL_DISPLAY_NAMES,
     PUSH_FURTHER_CHEETAH,
+    PUSH_FURTHER_CHIMPANZEE,
     PUSH_FURTHER_ELEPHANT,
     PUSH_FURTHER_FLAMINGO,
     PUSH_FURTHER_GIRAFFE,
     PUSH_FURTHER_GORILLA,
     PUSH_FURTHER_HIPPO,
+    PUSH_FURTHER_KOALA,
     PUSH_FURTHER_LION,
     PUSH_FURTHER_PENGUIN,
+    PUSH_FURTHER_RED_PANDA,
     PUSH_FURTHER_TIGER,
     PUSH_FURTHER_TORTOISE,
     PUSH_FURTHER_ZEBRA,
     STUDY_SLOTS,
     TALK_ABOUT_CHEETAH,
+    TALK_ABOUT_CHIMPANZEE,
     TALK_ABOUT_ELEPHANT,
     TALK_ABOUT_FLAMINGO,
     TALK_ABOUT_GIRAFFE,
     TALK_ABOUT_GORILLA,
     TALK_ABOUT_HIPPO,
+    TALK_ABOUT_KOALA,
     TALK_ABOUT_LION,
     TALK_ABOUT_PENGUIN,
+    TALK_ABOUT_RED_PANDA,
     TALK_ABOUT_TIGER,
     TALK_ABOUT_TORTOISE,
     TALK_ABOUT_ZEBRA,
@@ -41,11 +47,14 @@ from study_cards import (  # noqa: E402
     WIKI_AFRICAN_PENGUIN,
     WIKI_AMERICAN_FLAMINGO,
     WIKI_CHEETAH,
+    WIKI_CHIMPANZEE,
     WIKI_GALAPAGOS_TORTOISE,
     WIKI_GIRAFFE,
     WIKI_HIPPOPOTAMUS,
+    WIKI_KOALA,
     WIKI_LION,
     WIKI_PLAINS_ZEBRA,
+    WIKI_RED_PANDA,
     WIKI_SUMATRAN_TIGER,
     WIKI_WESTERN_LOWLAND_GORILLA,
     level_display_name,
@@ -59,6 +68,9 @@ from study_cards import (  # noqa: E402
 )
 
 FP = REPO / "static" / "field-pack"
+CHIMPANZEE = FP / "cards" / "chimpanzee" / "index.html"
+KOALA = FP / "cards" / "koala" / "index.html"
+RED_PANDA = FP / "cards" / "red-panda" / "index.html"
 CHEETAH = FP / "cards" / "cheetah" / "index.html"
 GORILLA = FP / "cards" / "western-lowland-gorilla" / "index.html"
 TIGER = FP / "cards" / "sumatran-tiger" / "index.html"
@@ -89,37 +101,37 @@ GENERIC_WORKSHEET = (
 )
 
 TEACH = (
-    "They are the fastest animal on land — built for short sprints.",
-    "They have solid black spots, not the rosettes a leopard has.",
-    "Black tear marks run from each eye toward the nose.",
-    "They chirp and purr — they do not roar like a lion.",
-    "They live mostly on African grassland / savannah.",
+    "Wild home is equatorial Africa (forests and woodlands).",
+    "A great ape — no tail (not a monkey).",
+    "Mainly eats fruit, plus leaves and some insects / meat.",
+    "Famous for using sticks and stones as tools.",
+    "Builds a fresh nest in a tree to sleep at night.",
 )
 
 STEMS = (
-    "What is a cheetah famous for?",
-    "What kind of marks does a cheetah’s coat have?",
-    "What are the black lines on a cheetah’s face?",
-    "What sounds is a cheetah known for?",
-    "Where do most wild cheetahs live?",
-    "How is a cheetah’s body built for a chase?",
-    "How does a cheetah’s long tail help in a chase?",
-    "What do wild cheetahs mostly hunt?",
-    "What special fur do cheetah cubs have on their backs?",
-    "Do cheetahs run fast for a long time, like a marathon?",
+    "Where do wild chimpanzees live?",
+    "What is a quick clue that a chimpanzee is a great ape, not a monkey?",
+    "What do wild chimpanzees mainly eat?",
+    "What are chimpanzees famous for using in the forest?",
+    "How do wild chimpanzees usually live?",
+    "Where does a chimpanzee usually sleep at night?",
+    "How do chimpanzees communicate?",
+    "How do chimpanzees usually walk on the ground?",
+    "Who are among humans’ closest living relatives?",
+    "Are chimpanzees monkeys?",
 )
 
 QIDS = (
-    "fastest",
-    "spots",
-    "tear-marks",
-    "no-roar",
-    "savannah",
-    "sprint-body",
-    "steering-tail",
-    "meat-hunter",
-    "cub-cape",
-    "marathon-myth",
+    "africa-home",
+    "no-tail",
+    "fruit-first",
+    "tool-makers",
+    "group-life",
+    "tree-nest",
+    "hoots-gestures",
+    "knuckle-walk",
+    "closest-kin",
+    "monkey-myth",
 )
 
 PLAIN_LEVEL_LABELS = ("Easy", "Hard")
@@ -127,26 +139,26 @@ AGE_BADGES = ("Ages", "Age 4", "age badge", "ages 4", "4–6", "4-6")
 BRITTLE = (
     "IUCN",
     "Vulnerable",
-    "mph",
-    "km/h",
-    "58",
-    "65",
-    "71",
-    "93",
-    "104",
-    "114",
-    "Acinonyx",
-    "king cheetah",
-    "King cheetah",
-    "Asiatic",
-    "bottleneck",
-    "coalition",
-    "retract",
+    "Endangered",
+    "Pan troglodytes",
+    "fission",
+    "fusion",
+    "SIVcpz",
+    "SIV",
+    "HIV",
+    "chromosome",
+    "98%",
+    "99%",
+    "kg",
+    "cm",
 )
 RESERVED = (
-    "genetic",
-    "taxonomy",
-    "Iran",
+    "DNA",
+    "subspecies",
+    "fission-fusion",
+    "SIVcpz",
+    "chromosome fusion",
+    "Endangered",
 )
 
 
@@ -158,9 +170,9 @@ def _main(html: str) -> str:
     return html.split('<main class="card-page">', 1)[1].split("</main>", 1)[0]
 
 
-class CheetahEasyStudyCardTests(unittest.TestCase):
-    def test_deck_is_junior_ranger_with_park_ranger_and_zoologist(self):
-        self.assertIn("cheetah", study_card_ids())
+class ChimpanzeeEasyStudyCardTests(unittest.TestCase):
+    def test_deck_is_junior_ranger_easy_only(self):
+        self.assertIn("chimpanzee", study_card_ids())
         self.assertEqual(
             study_card_ids(),
             (
@@ -180,25 +192,25 @@ class CheetahEasyStudyCardTests(unittest.TestCase):
                 "chimpanzee",
             ),
         )
-        self.assertEqual(shipped_levels_for("cheetah"), ("easy", "hard", "zoologist"))
-        self.assertIsNotNone(study_deck_for("cheetah", "hard"))
-        self.assertIsNotNone(study_deck_for("cheetah", "zoologist"))
-        deck = study_deck_for("cheetah")
+        self.assertEqual(shipped_levels_for("chimpanzee"), ("easy",))
+        self.assertIsNone(study_deck_for("chimpanzee", "hard"))
+        self.assertIsNone(study_deck_for("chimpanzee", "zoologist"))
+        deck = study_deck_for("chimpanzee")
         self.assertIsNotNone(deck)
-        self.assertEqual(deck["id"], "cheetah")
+        self.assertEqual(deck["id"], "chimpanzee")
         self.assertEqual(deck["level"], "easy")
         self.assertEqual(deck["level_label"], "Junior Ranger")
         self.assertEqual(level_display_name("easy"), "Junior Ranger")
-        self.assertEqual(deck["source"], WIKI_CHEETAH)
-        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Cheetah.")
+        self.assertEqual(deck["source"], WIKI_CHIMPANZEE)
+        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Chimpanzee.")
         self.assertEqual(validate_deck(deck), [])
         self.assertEqual(len(deck["teach"]), 5)
         self.assertEqual(deck["teach"], list(TEACH))
         self.assertEqual(len(deck["questions"]), STUDY_SLOTS)
         self.assertEqual([q["stem"] for q in deck["questions"]], list(STEMS))
         self.assertEqual([q["id"] for q in deck["questions"]], list(QIDS))
-        self.assertEqual(deck["talk_about"], list(TALK_ABOUT_CHEETAH))
-        self.assertEqual(deck["push_further"], list(PUSH_FURTHER_CHEETAH))
+        self.assertEqual(deck["talk_about"], list(TALK_ABOUT_CHIMPANZEE))
+        self.assertEqual(deck["push_further"], list(PUSH_FURTHER_CHIMPANZEE))
         letters = [q["correct"] for q in deck["questions"]]
         self.assertEqual(letters, [target_letter_for_slot(i) for i in range(1, 11)])
         self.assertEqual(letters.count("A"), 4)
@@ -212,19 +224,18 @@ class CheetahEasyStudyCardTests(unittest.TestCase):
         blob = " ".join(deck["teach"] + [q["stem"] + q["why"] for q in deck["questions"]])
         for phrase in BRITTLE + RESERVED:
             self.assertNotIn(phrase, blob)
-        self.assertIn("fastest", blob.lower())
-        self.assertIn("solid black spots", blob.lower())
-        self.assertIn("rosette", blob.lower())
-        self.assertIn("tear", blob.lower())
-        self.assertIn("chirp", blob.lower())
-        self.assertIn("purr", blob.lower())
-        self.assertIn("savannah", blob.lower())
-        self.assertIn("flexible spine", blob.lower())
-        self.assertIn("rudder", blob.lower())
-        self.assertIn("gazelle", blob.lower())
-        self.assertIn("cape", blob.lower())
-        self.assertIn("short", blob.lower())
-        self.assertEqual(WIKI_CHEETAH, "https://en.wikipedia.org/wiki/Cheetah")
+        self.assertIn("equatorial africa", blob.lower())
+        self.assertIn("no tail", blob.lower())
+        self.assertIn("great ape", blob.lower())
+        self.assertIn("fruit", blob.lower())
+        self.assertIn("tool", blob.lower())
+        self.assertIn("nest", blob.lower())
+        self.assertIn("communit", blob.lower())
+        self.assertIn("pant-hoot", blob.lower())
+        self.assertIn("knuckle", blob.lower())
+        self.assertIn("bonobo", blob.lower())
+        self.assertIn("not monkeys", blob.lower())
+        self.assertEqual(WIKI_CHIMPANZEE, "https://en.wikipedia.org/wiki/Chimpanzee")
 
     def test_other_study_decks_untouched(self):
         lion = study_deck_for("african-lion")
@@ -277,9 +288,30 @@ class CheetahEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(gorilla["talk_about"], list(TALK_ABOUT_GORILLA))
         self.assertEqual(gorilla["push_further"], list(PUSH_FURTHER_GORILLA))
         self.assertEqual(shipped_levels_for("western-lowland-gorilla"), ("easy", "hard", "zoologist"))
+        cheetah = study_deck_for("cheetah")
+        self.assertEqual(cheetah["source"], WIKI_CHEETAH)
+        self.assertEqual(cheetah["talk_about"], list(TALK_ABOUT_CHEETAH))
+        self.assertEqual(cheetah["push_further"], list(PUSH_FURTHER_CHEETAH))
+        self.assertEqual(shipped_levels_for("cheetah"), ("easy", "hard", "zoologist"))
+        self.assertIsNotNone(study_deck_for("cheetah", "hard"))
+        self.assertIsNotNone(study_deck_for("cheetah", "zoologist"))
+        panda = study_deck_for("red-panda")
+        self.assertEqual(panda["source"], WIKI_RED_PANDA)
+        self.assertEqual(panda["talk_about"], list(TALK_ABOUT_RED_PANDA))
+        self.assertEqual(panda["push_further"], list(PUSH_FURTHER_RED_PANDA))
+        self.assertEqual(shipped_levels_for("red-panda"), ("easy", "hard", "zoologist"))
+        self.assertIsNotNone(study_deck_for("red-panda", "hard"))
+        self.assertIsNotNone(study_deck_for("red-panda", "zoologist"))
+        koala = study_deck_for("koala")
+        self.assertEqual(koala["source"], WIKI_KOALA)
+        self.assertEqual(koala["talk_about"], list(TALK_ABOUT_KOALA))
+        self.assertEqual(koala["push_further"], list(PUSH_FURTHER_KOALA))
+        self.assertEqual(shipped_levels_for("koala"), ("easy", "hard", "zoologist"))
+        self.assertIsNotNone(study_deck_for("koala", "hard"))
+        self.assertIsNotNone(study_deck_for("koala", "zoologist"))
 
     def test_generator_html_is_study_not_worksheet(self):
-        html = outing_talk_html({"id": "cheetah", "packTemplate": "animals"})
+        html = outing_talk_html({"id": "chimpanzee", "packTemplate": "animals"})
         self.assertIn(">Quiz</h2>", html)
         self.assertIn("card-study-pack", html)
         self.assertIn("Learn first", html)
@@ -292,7 +324,7 @@ class CheetahEasyStudyCardTests(unittest.TestCase):
         self.assertIn('<details class="study-explore', html)
         self.assertIn("Explore more", html)
         self.assertNotIn('<aside class="study-deepen"', html)
-        for prompt in TALK_ABOUT_CHEETAH + PUSH_FURTHER_CHEETAH:
+        for prompt in TALK_ABOUT_CHIMPANZEE + PUSH_FURTHER_CHIMPANZEE:
             self.assertIn(prompt, html)
         self.assertIn("Show answers", html)
         self.assertIn("Score", html)
@@ -304,34 +336,32 @@ class CheetahEasyStudyCardTests(unittest.TestCase):
             self.assertNotIn(phrase, html)
         visible = _text(html)
         self.assertIn("Junior Ranger", visible)
-        self.assertIn("Park Ranger", visible)
-        self.assertIn("Zoologist", visible)
-        self.assertIn('class="study-level-picker"', html)
-        self.assertIn('data-study-pick="easy"', html)
-        self.assertIn('data-study-pick="hard"', html)
-        self.assertIn('data-study-pick="zoologist"', html)
-        self.assertNotIn('class="study-level-badge"', html)
-        self.assertEqual(html.count('role="group"'), 2)
-        self.assertIn("study-level-picker-bottom", html)
+        self.assertNotIn("Park Ranger", visible)
+        self.assertNotIn("Zoologist", visible)
+        self.assertIn('class="study-level-badge"', html)
+        self.assertNotIn('class="study-level-picker"', html)
+        self.assertNotIn('data-study-pick="easy"', html)
+        self.assertNotIn('data-study-pick="hard"', html)
+        self.assertNotIn("study-level-picker-bottom", html)
         for badge in PLAIN_LEVEL_LABELS + AGE_BADGES:
             self.assertNotIn(badge, visible)
         for phrase in BRITTLE:
             self.assertNotIn(phrase, html)
-        self.assertIn("Being the fastest animal on land", html)
-        self.assertIn("No — they sprint in short bursts, not long runs", html)
-        self.assertIn("Facts from Wikipedia, Cheetah.", html)
+        self.assertIn("Forests and woodlands of equatorial Africa", html)
+        self.assertIn("No — chimpanzees are great apes, not monkeys", html)
+        self.assertIn("Facts from Wikipedia, Chimpanzee.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
         html = outing_talk_html({"id": "giant-panda", "packTemplate": "animals"})
         self.assertIn("What do they eat?", html)
         self.assertNotIn("card-study-pack", html)
-        self.assertNotIn("What is a cheetah famous for?", html)
+        self.assertNotIn("Where do wild chimpanzees live?", html)
         panda = GIANT_PANDA.read_text(encoding="utf-8")
         self.assertIn("What do they eat?", panda)
         self.assertNotIn("card-study-pack", panda)
 
-    def test_published_cheetah_card_matches_easy_deck(self):
-        html = CHEETAH.read_text(encoding="utf-8")
+    def test_published_chimpanzee_card_matches_easy_deck(self):
+        html = CHIMPANZEE.read_text(encoding="utf-8")
         main = _main(html)
         for phrase in GENERIC_WORKSHEET:
             self.assertNotIn(phrase, main)
@@ -340,19 +370,19 @@ class CheetahEasyStudyCardTests(unittest.TestCase):
         for line in TEACH:
             self.assertIn(line, main)
         self.assertIn("Watch Live", main)
-        self.assertIn("/field-pack/virtual-zoo/?from=card#habitat=cheetah", main)
+        self.assertIn("/field-pack/virtual-zoo/?from=card#habitat=chimpanzee", main)
         self.assertIn('class="card-hero-links no-print"', main)
         self.assertIn('class="card-try-next no-print"', main)
         self.assertIn('class="card-page-photo-link"', main)
-        self.assertIn('aria-label="Watch Live: Cheetah"', main)
-        self.assertIn("study-level-picker-bottom", main)
+        self.assertIn('aria-label="Watch Live: Chimpanzee"', main)
+        self.assertNotIn("study-level-picker-bottom", main)
         self.assertNotIn("card-print-note", main)
         self.assertIn("study-card.js?v=9", html)
         self.assertIn("study-card.css?v=9", html)
         self.assertIn("study-cards-data.js?v=5", html)
         self.assertIn('id="study-card-data"', html)
         self.assertIn('"level_label": "Junior Ranger"', html)
-        self.assertIn('"id": "cheetah"', html)
+        self.assertIn('"id": "chimpanzee"', html)
         self.assertIn('id="study-print-template"', html)
         self.assertIn("print-kit.js?v=20", html)
         self.assertIn("styles.css?v=41", html)
@@ -368,13 +398,12 @@ class CheetahEasyStudyCardTests(unittest.TestCase):
         self.assertLess(main.find("study-explore"), main.find("card-try-next"))
         visible = _text(main)
         self.assertIn("Junior Ranger", visible)
-        self.assertIn("Park Ranger", visible)
-        self.assertIn("Zoologist", visible)
-        self.assertIn('class="study-level-picker"', main)
-        self.assertIn('data-study-pick="easy"', main)
-        self.assertIn('data-study-pick="hard"', main)
-        self.assertIn('data-study-pick="zoologist"', main)
-        self.assertNotIn('class="study-level-badge"', main)
+        self.assertNotIn("Park Ranger", visible)
+        self.assertNotIn("Zoologist", visible)
+        self.assertIn('class="study-level-badge"', main)
+        self.assertNotIn('class="study-level-picker"', main)
+        self.assertNotIn('data-study-pick="easy"', main)
+        self.assertNotIn('data-study-pick="hard"', main)
         self.assertIn("Learn first", main)
         self.assertIn(">Quiz</h2>", main)
         self.assertEqual(main.count("data-study-correct"), 2)
@@ -394,40 +423,40 @@ class CheetahEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Talk about it", back)
         self.assertIn("Push further", back)
         self.assertIn("ps-study-deepen", back)
-        for prompt in TALK_ABOUT_CHEETAH + PUSH_FURTHER_CHEETAH:
+        for prompt in TALK_ABOUT_CHIMPANZEE + PUSH_FURTHER_CHIMPANZEE:
             self.assertIn(prompt, back)
         self.assertEqual(
-            study_try_next_ids("cheetah"),
-            ["african-lion", "zebra", "reticulated-giraffe"],
+            study_try_next_ids("chimpanzee"),
+            ["western-lowland-gorilla", "african-elephant", "african-lion"],
         )
 
     def test_print_faces_are_duplex_and_clamped(self):
-        deck = study_deck_for("cheetah")
+        deck = study_deck_for("chimpanzee")
         sheet = study_print_html(
             deck,
-            name="Cheetah",
-            emoji="🐆",
-            photo="/field-pack/photos/cheetah.jpg?v=img2",
+            name="Chimpanzee",
+            emoji="🐵",
+            photo="/field-pack/photos/chimpanzee.jpg?v=img2",
             photo_pos="50% 22%",
         )
         self.assertIn("ps-study-front", sheet)
         self.assertIn("ps-study-back", sheet)
         self.assertIn("ps-study-photo", sheet)
-        self.assertIn("/field-pack/photos/cheetah.jpg", sheet)
+        self.assertIn("/field-pack/photos/chimpanzee.jpg", sheet)
         self.assertIn("Flip for answers", sheet)
         self.assertIn("Junior Ranger", sheet)
         self.assertNotIn(" · Easy ·", sheet)
-        self.assertIn(WIKI_CHEETAH, sheet)
+        self.assertIn(WIKI_CHIMPANZEE, sheet)
         for stem in STEMS:
             self.assertIn(stem, sheet)
-        self.assertIn("Being the fastest animal on land", sheet)
-        self.assertIn("No — they sprint in short bursts, not long runs", sheet)
+        self.assertIn("Forests and woodlands of equatorial Africa", sheet)
+        self.assertIn("No — chimpanzees are great apes, not monkeys", sheet)
         front, _, back = sheet.partition("ps-study-back")
         self.assertIn("Learn first", front)
         self.assertNotIn("Talk about it", front)
         self.assertIn("Talk about it", back)
         self.assertIn("Push further", back)
-        for prompt in TALK_ABOUT_CHEETAH + PUSH_FURTHER_CHEETAH:
+        for prompt in TALK_ABOUT_CHIMPANZEE + PUSH_FURTHER_CHIMPANZEE:
             self.assertIn(prompt, back)
         css = STYLES.read_text(encoding="utf-8")
         self.assertIn(".ps-study-front", css)
@@ -443,8 +472,11 @@ class CheetahEasyStudyCardTests(unittest.TestCase):
         self.assertIn("is-wrong-pick", study_js)
         self.assertIn("FPStudyLevelName", study_js + STUDY_DATA_JS.read_text(encoding="utf-8"))
 
-    def test_artifacts_include_cheetah_easy_hard_and_zoologist(self):
+    def test_artifacts_include_chimpanzee_easy_only(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
+        self.assertIn("chimpanzee", payload)
+        self.assertIn("koala", payload)
+        self.assertIn("red-panda", payload)
         self.assertIn("cheetah", payload)
         self.assertIn("western-lowland-gorilla", payload)
         self.assertIn("sumatran-tiger", payload)
@@ -456,10 +488,10 @@ class CheetahEasyStudyCardTests(unittest.TestCase):
         self.assertIn("african-elephant", payload)
         self.assertIn("reticulated-giraffe", payload)
         self.assertIn("african-lion", payload)
-        cheetah = payload["cheetah"]
-        self.assertEqual(cheetah["id"], "cheetah")
-        self.assertEqual(set(cheetah["levels"]), {"easy", "hard", "zoologist"})
-        easy = cheetah["levels"]["easy"]
+        chimp = payload["chimpanzee"]
+        self.assertEqual(chimp["id"], "chimpanzee")
+        self.assertEqual(set(chimp["levels"]), {"easy"})
+        easy = chimp["levels"]["easy"]
         self.assertEqual(len(easy["teach"]), 5)
         self.assertEqual(len(easy["questions"]), STUDY_SLOTS)
         self.assertEqual(
@@ -468,14 +500,10 @@ class CheetahEasyStudyCardTests(unittest.TestCase):
         )
         for q in easy["questions"]:
             self.assertEqual(len(q["choices"]), 3)
-        hard = cheetah["levels"]["hard"]
-        self.assertEqual(hard["teach"], [])
-        self.assertEqual(len(hard["questions"]), STUDY_SLOTS)
-        zoo = cheetah["levels"]["zoologist"]
-        self.assertEqual(zoo["teach"], [])
-        self.assertEqual(len(zoo["questions"]), STUDY_SLOTS)
+        self.assertNotIn("hard", chimp["levels"])
+        self.assertNotIn("zoologist", chimp["levels"])
         data_js = STUDY_DATA_JS.read_text(encoding="utf-8")
-        self.assertIn("cheetah", data_js)
+        self.assertIn("chimpanzee", data_js)
         self.assertIn('"easy":"Junior Ranger"', data_js)
         self.assertIn('"hard":"Park Ranger"', data_js)
         self.assertEqual(set(payload["african-lion"]["levels"]), {"easy", "hard", "zoologist"})
@@ -488,6 +516,9 @@ class CheetahEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(set(payload["nile-hippo"]["levels"]), {"easy", "hard", "zoologist"})
         self.assertEqual(set(payload["sumatran-tiger"]["levels"]), {"easy", "hard", "zoologist"})
         self.assertEqual(set(payload["western-lowland-gorilla"]["levels"]), {"easy", "hard", "zoologist"})
+        self.assertEqual(set(payload["cheetah"]["levels"]), {"easy", "hard", "zoologist"})
+        self.assertEqual(set(payload["red-panda"]["levels"]), {"easy", "hard", "zoologist"})
+        self.assertEqual(set(payload["koala"]["levels"]), {"easy", "hard", "zoologist"})
 
     def test_display_name_map_still_covers_future_tiers(self):
         self.assertEqual(
@@ -531,6 +562,18 @@ class CheetahEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Junior Ranger", _text(_main(cheetah_html)))
         self.assertIn("Park Ranger", _text(_main(cheetah_html)))
         self.assertIn("Zoologist", _text(_main(cheetah_html)))
+        panda_html = RED_PANDA.read_text(encoding="utf-8")
+        self.assertIn("Junior Ranger", _text(_main(panda_html)))
+        self.assertIn("Park Ranger", _text(_main(panda_html)))
+        self.assertIn("Zoologist", _text(_main(panda_html)))
+        koala_html = KOALA.read_text(encoding="utf-8")
+        self.assertIn("Junior Ranger", _text(_main(koala_html)))
+        self.assertIn("Park Ranger", _text(_main(koala_html)))
+        self.assertIn("Zoologist", _text(_main(koala_html)))
+        chimp_html = CHIMPANZEE.read_text(encoding="utf-8")
+        self.assertIn("Junior Ranger", _text(_main(chimp_html)))
+        self.assertNotIn("Park Ranger", _text(_main(chimp_html)))
+        self.assertNotIn("Zoologist", _text(_main(chimp_html)))
 
 
 if __name__ == "__main__":

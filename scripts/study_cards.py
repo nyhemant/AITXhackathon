@@ -320,6 +320,26 @@ Chlamydia and koala retrovirus as health threats
 sphincter hold. Soften contested numbers. Do not redo
 JR or PR themes.
 
+Facts for chimpanzee Junior Ranger (easy only) are
+Wikipedia-backed:
+https://en.wikipedia.org/wiki/Chimpanzee
+Species framing is the chimpanzee (Pan troglodytes).
+JR stays kid-simple “chimpanzee.” Soften contested
+numbers and IUCN letters (snapshots only). Wild home
+is equatorial Africa — forests and woodlands. A great
+ape with no tail (not a monkey). Mainly fruit, plus
+leaves and some insects / meat. Famous for using
+sticks and stones as tools. Builds a fresh nest in a
+tree to sleep at night. Lives in communities / groups.
+Communicates with pant-hoots, screams, and body
+gestures. Knuckle-walks on the ground. Among humans’
+closest living relatives (with the bonobo — soft).
+Myth: not monkeys — chimpanzees are great apes.
+Reserve for later: DNA %, Endangered letter,
+subspecies, fission-fusion, bonobo split,
+hunting-role detail, SIVcpz, and chromosome fusion.
+Do not add Park Ranger or Zoologist yet.
+
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
 zoologist. Visible copy uses LEVEL_DISPLAY_NAMES only — no age badges,
@@ -355,6 +375,7 @@ WIKI_WESTERN_LOWLAND_GORILLA = (
 WIKI_CHEETAH = "https://en.wikipedia.org/wiki/Cheetah"
 WIKI_RED_PANDA = "https://en.wikipedia.org/wiki/Red_panda"
 WIKI_KOALA = "https://en.wikipedia.org/wiki/Koala"
+WIKI_CHIMPANZEE = "https://en.wikipedia.org/wiki/Chimpanzee"
 
 LETTERS = ("A", "B", "C")
 STUDY_SLOTS = 10
@@ -428,6 +449,8 @@ LEVEL_DISPLAY_NAMES = {
 # Caribbean flamingo, Galápagos tortoise, zebra, Nile hippo,
 # Sumatran tiger, western lowland gorilla, cheetah, red panda,
 # and koala ship Junior Ranger + Park Ranger + Zoologist.
+# Chimpanzee ships Junior Ranger only (no Park Ranger or
+# Zoologist yet).
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -457,6 +480,7 @@ STUDY_NEIGHBORS = {
     "cheetah": ("african-lion", "zebra"),
     "red-panda": ("sumatran-tiger", "zebra"),
     "koala": ("red-panda", "sumatran-tiger"),
+    "chimpanzee": ("western-lowland-gorilla", "african-elephant"),
 }
 
 STUDY_CARD_TITLES = {
@@ -473,6 +497,7 @@ STUDY_CARD_TITLES = {
     "cheetah": "Cheetah",
     "red-panda": "Red panda",
     "koala": "Koala",
+    "chimpanzee": "Chimpanzee",
 }
 
 # Shared answers-side deepen (Claude sample). Not scored. Future animals reuse keys.
@@ -605,6 +630,16 @@ PUSH_FURTHER_KOALA = (
     "Scientists use words like Vulnerable and Endangered. How do they pick the letter?",
     "A koala has a huge hindgut caecum for fermenting leaves. Why would a leaf-eater need that?",
     "Scientists sequenced the koala genome. How could that help animal hospitals?",
+)
+TALK_ABOUT_CHIMPANZEE = (
+    "A chimpanzee is a great ape, not a monkey. What clue would you look for at the zoo?",
+    "Chimpanzees use sticks and stones as tools. What job would you watch them do?",
+    "Chimps sleep in a fresh tree nest. How is that different from sleeping on the ground?",
+)
+PUSH_FURTHER_CHIMPANZEE = (
+    "A stick can become a termite tool. How do you think a chimp shapes it?",
+    "Chimpanzees live in groups, not alone. Why might a group help?",
+    "Jane Goodall watched chimps in the forest. What would you ask her?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -6055,6 +6090,157 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia says the female’s pouch opening is secured by a sphincter that holds the young. The pouch opens toward the rear, like a wombat’s, which helps keep the joey from falling while mom climbs.",
+                    },
+                ],
+            },
+        },
+    },
+    "chimpanzee": {
+        "id": "chimpanzee",
+        "source": WIKI_CHIMPANZEE,
+        "source_note": "Facts from Wikipedia, Chimpanzee.",
+        "talk_about": list(TALK_ABOUT_CHIMPANZEE),
+        "push_further": list(PUSH_FURTHER_CHIMPANZEE),
+        "levels": {
+            "easy": {
+                # Teaching-first: same front as the quiz. Hard later may hide these.
+                "teach": [
+                    "Wild home is equatorial Africa (forests and woodlands).",
+                    "A great ape — no tail (not a monkey).",
+                    "Mainly eats fruit, plus leaves and some insects / meat.",
+                    "Famous for using sticks and stones as tools.",
+                    "Builds a fresh nest in a tree to sleep at night.",
+                ],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "africa-home",
+                        "title": "Africa home",
+                        "stem": "Where do wild chimpanzees live?",
+                        "choices": [
+                            "Forests and woodlands of equatorial Africa",
+                            "Only on icy Antarctic ice",
+                            "Only in Australian eucalyptus trees",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says the chimpanzee lives in the forests and savannas of equatorial Africa, including woodlands. It is not an Antarctic or Australian animal.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "no-tail",
+                        "title": "No tail",
+                        "stem": "What is a quick clue that a chimpanzee is a great ape, not a monkey?",
+                        "choices": [
+                            "It has a long curling tail like many monkeys",
+                            "It has no tail — great apes do not have tails",
+                            "It has feathers instead of hair",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia places the chimpanzee among the great apes. Great apes have no tail — a quick clue they are not monkeys.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "fruit-first",
+                        "title": "Fruit first",
+                        "stem": "What do wild chimpanzees mainly eat?",
+                        "choices": [
+                            "Only meat — never plants",
+                            "Only grass, like a cow",
+                            "Mainly fruit, plus leaves and some insects or meat",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says the chimpanzee primarily eats fruit, and also eats leaves and other plant parts. It may also eat insects and sometimes meat. It is not only a meat-eater or only a plant-eater.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "tool-makers",
+                        "title": "Tool makers",
+                        "stem": "What are chimpanzees famous for using in the forest?",
+                        "choices": [
+                            "Sticks and stones as tools — such as termite fishing and nut cracking",
+                            "Metal hammers they buy at a store",
+                            "Only their voices — they never use objects",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says nearly all chimpanzee groups have been seen using tools. They modify sticks, rocks, grass, and leaves — including fishing for termites and cracking nuts.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "group-life",
+                        "title": "Group life",
+                        "stem": "How do wild chimpanzees usually live?",
+                        "choices": [
+                            "Always completely alone, like a lone shark",
+                            "In communities / groups, not alone",
+                            "Only in pairs of two forever",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says chimpanzees live in communities. They spend time with others in their group, not as lifelong loners.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "tree-nest",
+                        "title": "Tree nest night",
+                        "stem": "Where does a chimpanzee usually sleep at night?",
+                        "choices": [
+                            "In a hole it digs in the ground",
+                            "On the open savannah with no nest",
+                            "In a fresh nest of branches and leaves in a tree",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says chimpanzees build nests in the trees to sleep at night. A sleeping nest is usually used for one night.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "hoots-gestures",
+                        "title": "Hoots and gestures",
+                        "stem": "How do chimpanzees communicate?",
+                        "choices": [
+                            "With pant-hoots, screams, and body gestures",
+                            "Only by writing letters",
+                            "They never make any sound",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says chimpanzees communicate with sound, visual displays, and touch. A common call is the pant-hoot, and they also scream and use faces and body gestures.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "knuckle-walk",
+                        "title": "Knuckle walk",
+                        "stem": "How do chimpanzees usually walk on the ground?",
+                        "choices": [
+                            "Only on two legs, all day, like a person",
+                            "On all fours, resting their weight on their knuckles",
+                            "By sliding on their bellies like a snake",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says that on the ground, chimpanzees often move on all fours by knuckle-walking — they rest their weight on their knuckles.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "closest-kin",
+                        "title": "Closest kin",
+                        "stem": "Who are among humans’ closest living relatives?",
+                        "choices": [
+                            "Only house cats",
+                            "Only goldfish",
+                            "Chimpanzees — and also the bonobo",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says chimpanzees and bonobos are humans’ closest living relatives. We do not lock one shared-gene number. Details of that family split come later.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "monkey-myth",
+                        "title": "Myth buster — monkey?",
+                        "stem": "Are chimpanzees monkeys?",
+                        "choices": [
+                            "No — chimpanzees are great apes, not monkeys",
+                            "Yes — every ape is a kind of monkey with a long tail",
+                            "Yes — chimpanzees are tiny South American monkeys",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia places the chimpanzee among the great apes. People sometimes call them monkeys, but chimpanzees are apes — they have no tail.",
                     },
                 ],
             },
