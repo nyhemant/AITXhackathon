@@ -3850,5 +3850,163 @@
         ]
       }
     }
+  },
+  "western-lowland-gorilla": {
+    "id": "western-lowland-gorilla",
+    "source": "https://en.wikipedia.org/wiki/Western_lowland_gorilla",
+    "source_note": "Facts from Wikipedia, Western lowland gorilla.",
+    "talk_about": [
+      "A silverback leads and protects the family. Why might one strong adult be a good protector?",
+      "People sometimes think gorillas eat meat like movie monsters. What do they really eat?",
+      "Gorillas walk on their knuckles. What might that let them do with their hands?"
+    ],
+    "push_further": [
+      "Most zoo gorillas are this kind — western lowland. What could you ask a keeper about which gorilla lives here?",
+      "Swamp forest is an important home, not only dry rainforest. Why might wet forest help a gorilla?",
+      "A threat letter on a list can change later. Why wait before treating one letter as a forever grade?"
+    ],
+    "levels": {
+      "easy": {
+        "teach": [
+          "Wild western lowland gorillas live in Central African forests — rainforest and swamp forest.",
+          "They eat mostly plants — fruit, leaves, stems, and bark — and sometimes insects.",
+          "A silverback is an adult male with a silver-grey back who leads the family.",
+          "A family troop is females and young living with the silverback.",
+          "They are the smallest kind of gorilla — and still huge."
+        ],
+        "questions": [
+          {
+            "slot": 1,
+            "id": "central-africa",
+            "title": "Central Africa forests",
+            "stem": "Where do wild western lowland gorillas live?",
+            "choices": [
+              "Only on frozen ice",
+              "Central African forests — rainforest and swamp forest",
+              "Only in open desert"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says they live in forest and lowland swampland in central Africa — rainforest and swamp forest, not ice or desert."
+          },
+          {
+            "slot": 2,
+            "id": "plants",
+            "title": "Mostly plants",
+            "stem": "What do western lowland gorillas mostly eat?",
+            "choices": [
+              "Mostly meat like a lion",
+              "Mostly plants — fruit, leaves, stems, and bark",
+              "Only fish"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says they are primarily herbivorous — fruit, leaves, stems, and bark — and may eat insects from time to time."
+          },
+          {
+            "slot": 3,
+            "id": "silverback",
+            "title": "Silverback",
+            "stem": "What is a silverback?",
+            "choices": [
+              "A baby gorilla with white socks",
+              "An adult male with a silver-grey back who leads",
+              "A gorilla painted silver at the zoo"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says older males get grey hair on the back and rump — that is why they are called silverbacks — and the silverback leads the group."
+          },
+          {
+            "slot": 4,
+            "id": "troop",
+            "title": "Family troop",
+            "stem": "Who usually lives with a silverback?",
+            "choices": [
+              "Only other silverbacks and no young",
+              "Females and their young",
+              "A huge pride of lions"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says breeding groups are one silverback, adult females, and their offspring. The male’s role is protector."
+          },
+          {
+            "slot": 5,
+            "id": "smallest",
+            "title": "Smallest gorilla",
+            "stem": "How does a western lowland gorilla’s size compare with other gorillas?",
+            "choices": [
+              "It is the smallest kind of gorilla — and still huge",
+              "It is as small as a house cat",
+              "It is the only gorilla that can fly"
+            ],
+            "correct": "A",
+            "why": "Wikipedia calls it the smallest of the four gorilla subspecies. We do not lock one weight."
+          },
+          {
+            "slot": 6,
+            "id": "knuckle-walk",
+            "title": "Knuckle-walk",
+            "stem": "How do western lowland gorillas usually walk on the ground?",
+            "choices": [
+              "On two feet all day like people",
+              "On their knuckles, with hands curled on the ground",
+              "Only by swinging and never touching the ground"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says they walk in a hunched, four-legged way with hands curled and knuckles touching the ground."
+          },
+          {
+            "slot": 7,
+            "id": "display",
+            "title": "Display, not mean",
+            "stem": "What does a chest-beat or charge usually mean?",
+            "choices": [
+              "They are always hunting people",
+              "It is a display of power — they are usually calm unless disturbed",
+              "They are trying to fly"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says a silverback may stand up, charge, and pound his chest, but gorillas are generally calm and nonaggressive unless they are disturbed."
+          },
+          {
+            "slot": 8,
+            "id": "baby-rides",
+            "title": "Baby rides",
+            "stem": "How do baby western lowland gorillas travel with mom?",
+            "choices": [
+              "They fly on their own",
+              "They cling and ride on mom for years",
+              "They ride on elephants"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says infants cling to mom’s fur and ride on her back for years — not just a day."
+          },
+          {
+            "slot": 9,
+            "id": "night-nests",
+            "title": "Night nests",
+            "stem": "Where do western lowland gorillas sleep at night?",
+            "choices": [
+              "In the same permanent cave every year",
+              "In leafy nests they make each night",
+              "Underwater like hippos"
+            ],
+            "correct": "B",
+            "why": "Wikipedia notes night nests — some in trees, many on the ground. They build leafy nests for the night."
+          },
+          {
+            "slot": 10,
+            "id": "king-kong-myth",
+            "title": "Myth buster — King Kong",
+            "stem": "Are western lowland gorillas movie monsters like King Kong?",
+            "choices": [
+              "Yes — they hunt cities for meat",
+              "No — they are plant-eating family apes",
+              "They are robots"
+            ],
+            "correct": "B",
+            "why": "Wikipedia describes plant-eating family groups led by a silverback — not movie monsters."
+          }
+        ]
+      }
+    }
   }
 }
