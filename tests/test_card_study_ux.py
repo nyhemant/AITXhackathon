@@ -265,7 +265,7 @@ class CardStudyUxTests(unittest.TestCase):
 
     def test_photos_and_watch_live_share_hero_row(self):
         self.assertEqual(CARD_SEO_CSS_VER, "35")
-        self.assertEqual(STUDY_CARD_JS_VER, "9")
+        self.assertEqual(STUDY_CARD_JS_VER, "10")
         self.assertEqual(STUDY_CARD_CSS_VER, "9")
         css = SEO_CSS.read_text(encoding="utf-8")
         self.assertIn(".card-page .card-hero-links", css)
@@ -304,7 +304,7 @@ class CardStudyUxTests(unittest.TestCase):
                 self.assertGreater(photos_at, hero_at)
                 self.assertGreater(watch_at, photos_at)
                 self.assertLess(watch_at, talk_at)
-                self.assertIn("study-card.js?v=9", html)
+                self.assertIn("study-card.js?v=10", html)
                 self.assertIn("study-card.css?v=9", html)
                 self.assertIn(f"seo-venue.css?v={CARD_SEO_CSS_VER}", html)
 

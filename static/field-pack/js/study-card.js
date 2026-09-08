@@ -5,7 +5,72 @@
  * Lion, giraffe, African elephant, African penguin, Caribbean flamingo,
  * and Galápagos tortoise ship JR + Park Ranger + Zoologist
  * (query ?level= or picker). Top and bottom pickers stay in sync.
+ * Try next thumbs skip the session recent path (fp-study-recent, last ~8).
  */
+const FP_STUDY_RECENT_KEY = "fp-study-recent";
+const FP_STUDY_RECENT_MAX = 8;
+
+function FPStudyPickTryNextIds(current, recent, catalog, n) {
+  const want = n == null ? 3 : Number(n) || 3;
+  const cur = String(current || "").trim();
+  const titles = (catalog && catalog.titles) || {};
+  const neighbors = (catalog && catalog.neighbors) || {};
+  const traffic = Array.isArray(catalog && catalog.traffic) ? catalog.traffic : [];
+  const allIds = Object.keys(titles).length
+    ? Object.keys(titles)
+    : Object.keys((typeof window !== "undefined" && window.FP_STUDY_CARDS) || {});
+  const haveAll = allIds.filter((cid) => cid && cid !== cur);
+  if (!haveAll.length || want < 1) return [];
+  const blocked = new Set(
+    (Array.isArray(recent) ? recent : []).map((x) => String(x || "").trim()).filter(Boolean)
+  );
+  if (cur) blocked.add(cur);
+  const haveFresh = haveAll.filter((cid) => !blocked.has(cid));
+  const extra = (pool) =>
+    pool.filter((cid) => traffic.indexOf(cid) < 0).slice().sort();
+  const out = [];
+  const seen = new Set();
+  const take = (cids, poolSet) => {
+    for (let i = 0; i < cids.length; i += 1) {
+      const cid = cids[i];
+      if (!poolSet.has(cid) || seen.has(cid)) continue;
+      seen.add(cid);
+      out.push(cid);
+      if (out.length >= want) return true;
+    }
+    return false;
+  };
+  const neigh = neighbors[cur] || [];
+  const freshSet = new Set(haveFresh);
+  const allSet = new Set(haveAll);
+  if (take([].concat(neigh, traffic, extra(haveFresh)), freshSet)) return out;
+  take([].concat(neigh, traffic, extra(haveAll)), allSet);
+  return out;
+}
+
+function FPStudyRememberRecent(id, recent, hint, max) {
+  const cur = String(id || "").trim();
+  const cap = max == null ? FP_STUDY_RECENT_MAX : Number(max) || FP_STUDY_RECENT_MAX;
+  let out = (Array.isArray(recent) ? recent : [])
+    .map((x) => String(x || "").trim())
+    .filter(Boolean);
+  if (!out.length) {
+    const soft = String(hint || "").trim();
+    if (soft && soft !== cur) out.push(soft);
+  }
+  if (cur) {
+    out = out.filter((x) => x !== cur);
+    out.push(cur);
+  }
+  if (out.length > cap) out = out.slice(-cap);
+  return out;
+}
+
+if (typeof window !== "undefined") {
+  window.FPStudyPickTryNextIds = FPStudyPickTryNextIds;
+  window.FPStudyRememberRecent = FPStudyRememberRecent;
+}
+
 (() => {
   const LETTERS = ["A", "B", "C"];
 
@@ -338,6 +403,63 @@
     scrollStudyIntoView(root);
   }
 
+  function studyIdFromReferrer(ref) {
+    try {
+      const path = new URL(String(ref || ""), window.location.href).pathname || "";
+      const m = path.match(/\/field-pack\/cards\/([a-z0-9-]+)\/?/);
+      return m ? m[1] : "";
+    } catch (_) {
+      return "";
+    }
+  }
+
+  function readStudyRecent() {
+    try {
+      const raw = sessionStorage.getItem(FP_STUDY_RECENT_KEY);
+      const parsed = JSON.parse(raw || "[]");
+      if (!Array.isArray(parsed)) return [];
+      return parsed.map((x) => String(x || "").trim()).filter(Boolean);
+    } catch (_) {
+      return [];
+    }
+  }
+
+  function writeStudyRecent(list) {
+    try {
+      sessionStorage.setItem(FP_STUDY_RECENT_KEY, JSON.stringify(list));
+    } catch (_) {
+      /* ignore */
+    }
+  }
+
+  function tryNextLinkHtml(cid, name) {
+    const title = name || String(cid || "").replace(/-/g, " ");
+    const href = "/field-pack/cards/" + esc(cid) + "/";
+    const photo = "/field-pack/photos/" + esc(cid) + ".jpg?v=img2";
+    return (
+      `<a class="card-try-next-link" href="${href}" aria-label="Try next: ${esc(title)}">` +
+      `<img class="card-try-next-thumb" src="${photo}" alt="" ` +
+      `width="160" height="120" loading="lazy" decoding="async" />` +
+      `<span class="card-try-next-name">${esc(title)}</span>` +
+      `</a>`
+    );
+  }
+
+  function paintTryNext(current) {
+    const stored = readStudyRecent();
+    const hint = stored.length ? "" : studyIdFromReferrer(document.referrer);
+    const recent = FPStudyRememberRecent(current, stored, hint, FP_STUDY_RECENT_MAX);
+    writeStudyRecent(recent);
+    const grid = document.querySelector(".card-try-next-grid");
+    if (!grid) return;
+    const catalog = window.FP_STUDY_TRY_NEXT;
+    if (!catalog || !catalog.titles) return;
+    const ids = FPStudyPickTryNextIds(current, recent, catalog, 3);
+    if (!ids.length) return;
+    const titles = catalog.titles || {};
+    grid.innerHTML = ids.map((cid) => tryNextLinkHtml(cid, titles[cid] || "")).join("");
+  }
+
   function bind(root) {
     root.addEventListener("click", (ev) => {
       const pick = ev.target.closest("[data-study-pick]");
@@ -404,6 +526,7 @@
         /* ignore */
       }
     }
+    paintTryNext(id);
   }
 
   if (document.readyState === "loading") {
