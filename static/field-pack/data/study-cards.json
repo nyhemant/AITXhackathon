@@ -7280,14 +7280,14 @@
     "source": "https://en.wikipedia.org/wiki/Ostrich",
     "source_note": "Facts from Wikipedia, Ostrich.",
     "talk_about": [
-      "An ostrich has two toes on each foot; most birds have four. Why might two toes help a runner?",
-      "Females often sit on the nest by day and males sit by night. How could those colors hide the eggs?",
-      "A territorial male can inflate his neck to boom and flap his wings. What might that show mean?"
+      "Scientists talk about two living ostrich species. What would you look for to tell them apart?",
+      "A “low-risk” letter can still mean a bird needs care. Why might a huge range hide real trouble?",
+      "Flying birds have a keel on the breastbone. Why might an ostrich have no keel?"
     ],
     "push_further": [
-      "Ostriches swallow pebbles that help grind food. How could stones help digest plants?",
-      "Soft ostrich feathers lack the tiny hooks flying birds use. Why would that make flying hard?",
-      "Eggs go in a shallow ground pit, and more than one hen may add eggs. How does a shared nest work?"
+      "An extinct subspecies is a local kind that is gone. What does that mean for the bigger species?",
+      "An ostrich egg is huge, yet small next to the adult. Why does that relative size matter?",
+      "CITES letters say how tightly trade is limited. How would you explain that in plain words?"
     ],
     "levels": {
       "easy": {
@@ -7563,6 +7563,141 @@
             ],
             "correct": "A",
             "why": "Wikipedia says ostriches sometimes travel with other grazing animals such as zebras or antelopes. We keep exact group sizes soft."
+          }
+        ]
+      },
+      "zoologist": {
+        "teach": [],
+        "questions": [
+          {
+            "slot": 1,
+            "id": "struthio-camelus",
+            "title": "Struthio camelus",
+            "stem": "What scientific name do scientists use for the common ostrich, and how many living species sit in its genus?",
+            "choices": [
+              "Struthio camelus — the common ostrich — in genus Struthio with one other living species",
+              "It has no scientific name at all",
+              "It is the only bird in a genus of one hundred living species"
+            ],
+            "correct": "A",
+            "why": "Wikipedia names the common ostrich Struthio camelus. Genus Struthio has two living species. Extra split details come next."
+          },
+          {
+            "slot": 2,
+            "id": "somali-sister",
+            "title": "Somali sister",
+            "stem": "How do many bird authorities treat the Somali ostrich (Struthio molybdophanes)?",
+            "choices": [
+              "It is only a cartoon character",
+              "Many treat the Somali ostrich as a separate living species — though some lists still keep the split under review",
+              "It is a penguin that lives on ice"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says many authorities treat the Somali ostrich as its own species (S. molybdophanes). A few lists still review the split, so we do not lock one forever rule."
+          },
+          {
+            "slot": 3,
+            "id": "arabian-gone",
+            "title": "Arabian gone",
+            "stem": "What happened to the Arabian ostrich, a subspecies of the common ostrich?",
+            "choices": [
+              "It still fills every city street",
+              "It moved to the moon",
+              "It was hunted to extinction around the mid-1900s"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says the Arabian subspecies (S. c. syriacus) was hunted to extinction around the mid-20th century. Exact years stay soft."
+          },
+          {
+            "slot": 4,
+            "id": "no-flying-keel",
+            "title": "No flying keel",
+            "stem": "How is an ostrich’s breastbone built, compared with a flying bird?",
+            "choices": [
+              "The sternum is flat, with no keel where big flight muscles would attach",
+              "It has a huge keel so it can soar",
+              "It has no bones at all"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says the ostrich sternum is flat and lacks the keel that flying birds use to attach large flight muscles."
+          },
+          {
+            "slot": 5,
+            "id": "palaeognath-ratite",
+            "title": "Palaeognath / ratite",
+            "stem": "Which bird group does the ostrich sit in with other mostly flightless cousins?",
+            "choices": [
+              "Only with penguins on Antarctic ice",
+              "Palaeognathae — the mostly flightless “ratite” birds, with cousins such as the emu and kiwi",
+              "Only with hummingbirds"
+            ],
+            "correct": "B",
+            "why": "Wikipedia places ostriches in Palaeognathae, the ratite group that also includes birds such as emus and kiwis. Extra cousin lists stay soft."
+          },
+          {
+            "slot": 6,
+            "id": "giant-eyes-soft",
+            "title": "Giant eyes",
+            "stem": "How do ostrich eyes compare with those of other land animals?",
+            "choices": [
+              "They are the smallest eyes of any animal",
+              "Ostriches have no eyes",
+              "They are among the largest of any land vertebrate"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says ostrich eyes are among the largest of any land vertebrate — often given as about the width of a large coin. Exact millimetres stay soft."
+          },
+          {
+            "slot": 7,
+            "id": "egg-paradox",
+            "title": "Egg paradox",
+            "stem": "How does an ostrich egg compare with other living bird eggs — and with the adult bird?",
+            "choices": [
+              "It is the largest living bird egg, but it is still tiny next to the adult’s body",
+              "It is the smallest egg of any living bird",
+              "Ostriches do not lay eggs"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says ostrich eggs are the largest of any living bird, yet among the smallest relative to adult body size. Exact percents stay soft."
+          },
+          {
+            "slot": 8,
+            "id": "least-concern-snapshot",
+            "title": "Least Concern snapshot",
+            "stem": "How should we read the usual IUCN letter for the common ostrich?",
+            "choices": [
+              "The letter is carved in stone and can never change",
+              "Least Concern, because the range is still huge — a snapshot letter, even though wild numbers dropped a lot",
+              "Extinct everywhere, with no living birds left"
+            ],
+            "correct": "B",
+            "why": "Wikipedia reports IUCN Least Concern because the range is still very large. That letter is a snapshot. Wild numbers have still fallen a lot."
+          },
+          {
+            "slot": 9,
+            "id": "cites-north-africa",
+            "title": "CITES North Africa",
+            "stem": "How are some North African ostrich populations listed for trade?",
+            "choices": [
+              "They can be sold freely in any shop",
+              "CITES lists them as house pets only",
+              "Some sit on CITES Appendix I, so international trade is tightly limited"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says some North African populations are on CITES Appendix I, so commercial international trade is tightly limited. That listing is a snapshot and can change."
+          },
+          {
+            "slot": 10,
+            "id": "separate-urine",
+            "title": "Separate urine",
+            "stem": "What is unusual about how an ostrich handles urine, compared with other living birds?",
+            "choices": [
+              "It can store urine separately from feces — unlike other living birds",
+              "It never drinks or pees at all",
+              "It stores urine only in its feathers"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says the ostrich, unlike other living birds, stores urine separately from feces. Extra organ names stay soft."
           }
         ]
       }
