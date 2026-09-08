@@ -1,4 +1,4 @@
-"""Koala Easy study-card: Junior Ranger teach + 10 MCQs (Park Ranger is a sibling level)."""
+"""Koala Easy study-card: Junior Ranger teach + 10 MCQs (Park Ranger + Zoologist sibling levels)."""
 
 from __future__ import annotations
 
@@ -149,6 +149,18 @@ BRITTLE = (
     "kg",
     "cm",
 )
+# Explore more may name pap, fingerprints, status letters, and caecum.
+PAGE_BRITTLE = (
+    "IUCN",
+    "Phascolarctos",
+    "cinereus",
+    "20 hours",
+    "twenty hours",
+    "400 gram",
+    "400 g",
+    "kg",
+    "cm",
+)
 RESERVED = (
     "Phascolarctos",
     "caecum",
@@ -168,7 +180,7 @@ def _main(html: str) -> str:
 
 
 class KoalaEasyStudyCardTests(unittest.TestCase):
-    def test_deck_is_junior_ranger_with_park_ranger_sibling(self):
+    def test_deck_is_junior_ranger_with_park_ranger_and_zoologist(self):
         self.assertIn("koala", study_card_ids())
         self.assertEqual(
             study_card_ids(),
@@ -188,9 +200,9 @@ class KoalaEasyStudyCardTests(unittest.TestCase):
                 "koala",
             ),
         )
-        self.assertEqual(shipped_levels_for("koala"), ("easy", "hard"))
+        self.assertEqual(shipped_levels_for("koala"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("koala", "hard"))
-        self.assertIsNone(study_deck_for("koala", "zoologist"))
+        self.assertIsNotNone(study_deck_for("koala", "zoologist"))
         deck = study_deck_for("koala")
         self.assertIsNotNone(deck)
         self.assertEqual(deck["id"], "koala")
@@ -325,17 +337,17 @@ class KoalaEasyStudyCardTests(unittest.TestCase):
         visible = _text(html)
         self.assertIn("Junior Ranger", visible)
         self.assertIn("Park Ranger", visible)
-        self.assertNotIn("Zoologist", visible)
+        self.assertIn("Zoologist", visible)
         self.assertIn('class="study-level-picker"', html)
         self.assertIn('data-study-pick="easy"', html)
         self.assertIn('data-study-pick="hard"', html)
-        self.assertNotIn('data-study-pick="zoologist"', html)
+        self.assertIn('data-study-pick="zoologist"', html)
         self.assertNotIn('class="study-level-badge"', html)
         self.assertEqual(html.count('role="group"'), 2)
         self.assertIn("study-level-picker-bottom", html)
         for badge in PLAIN_LEVEL_LABELS + AGE_BADGES:
             self.assertNotIn(badge, visible)
-        for phrase in BRITTLE:
+        for phrase in PAGE_BRITTLE:
             self.assertNotIn(phrase, html)
         self.assertIn("Eucalyptus forests of eastern and southeastern Australia", html)
         self.assertIn("No — it is a marsupial (a pouch mammal), not a bear", html)
@@ -389,18 +401,18 @@ class KoalaEasyStudyCardTests(unittest.TestCase):
         visible = _text(main)
         self.assertIn("Junior Ranger", visible)
         self.assertIn("Park Ranger", visible)
-        self.assertNotIn("Zoologist", visible)
+        self.assertIn("Zoologist", visible)
         self.assertIn('class="study-level-picker"', main)
         self.assertIn('data-study-pick="easy"', main)
         self.assertIn('data-study-pick="hard"', main)
-        self.assertNotIn('data-study-pick="zoologist"', main)
+        self.assertIn('data-study-pick="zoologist"', main)
         self.assertNotIn('class="study-level-badge"', main)
         self.assertIn("Learn first", main)
         self.assertIn(">Quiz</h2>", main)
         self.assertEqual(main.count("data-study-correct"), 2)
         for badge in PLAIN_LEVEL_LABELS + AGE_BADGES:
             self.assertNotIn(badge, visible)
-        for phrase in BRITTLE:
+        for phrase in PAGE_BRITTLE:
             self.assertNotIn(phrase, main)
         print_tpl = html.split('id="study-print-template">', 1)[1].split("</template>", 1)[0]
         self.assertIn("Junior Ranger", print_tpl)
@@ -463,7 +475,7 @@ class KoalaEasyStudyCardTests(unittest.TestCase):
         self.assertIn("is-wrong-pick", study_js)
         self.assertIn("FPStudyLevelName", study_js + STUDY_DATA_JS.read_text(encoding="utf-8"))
 
-    def test_artifacts_include_koala_easy_and_hard(self):
+    def test_artifacts_include_koala_easy_hard_and_zoologist(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
         self.assertIn("koala", payload)
         self.assertIn("red-panda", payload)
@@ -480,7 +492,7 @@ class KoalaEasyStudyCardTests(unittest.TestCase):
         self.assertIn("african-lion", payload)
         koala = payload["koala"]
         self.assertEqual(koala["id"], "koala")
-        self.assertEqual(set(koala["levels"]), {"easy", "hard"})
+        self.assertEqual(set(koala["levels"]), {"easy", "hard", "zoologist"})
         easy = koala["levels"]["easy"]
         self.assertEqual(len(easy["teach"]), 5)
         self.assertEqual(len(easy["questions"]), STUDY_SLOTS)
@@ -493,11 +505,14 @@ class KoalaEasyStudyCardTests(unittest.TestCase):
         hard = koala["levels"]["hard"]
         self.assertEqual(hard["teach"], [])
         self.assertEqual(len(hard["questions"]), STUDY_SLOTS)
-        self.assertNotIn("zoologist", koala["levels"])
+        zoo = koala["levels"]["zoologist"]
+        self.assertEqual(zoo["teach"], [])
+        self.assertEqual(len(zoo["questions"]), STUDY_SLOTS)
         data_js = STUDY_DATA_JS.read_text(encoding="utf-8")
         self.assertIn("koala", data_js)
         self.assertIn('"easy":"Junior Ranger"', data_js)
         self.assertIn('"hard":"Park Ranger"', data_js)
+        self.assertIn('"zoologist":"Zoologist"', data_js)
         self.assertEqual(set(payload["african-lion"]["levels"]), {"easy", "hard", "zoologist"})
         self.assertEqual(set(payload["reticulated-giraffe"]["levels"]), {"easy", "hard", "zoologist"})
         self.assertEqual(set(payload["african-elephant"]["levels"]), {"easy", "hard", "zoologist"})
@@ -560,7 +575,7 @@ class KoalaEasyStudyCardTests(unittest.TestCase):
         koala_html = KOALA.read_text(encoding="utf-8")
         self.assertIn("Junior Ranger", _text(_main(koala_html)))
         self.assertIn("Park Ranger", _text(_main(koala_html)))
-        self.assertNotIn("Zoologist", _text(_main(koala_html)))
+        self.assertIn("Zoologist", _text(_main(koala_html)))
 
 
 if __name__ == "__main__":
