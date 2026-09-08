@@ -305,7 +305,7 @@ class HippoEasyStudyCardTests(unittest.TestCase):
         self.assertIn('class="card-page-photo-link"', main)
         self.assertIn('aria-label="Watch Live: Nile hippo"', main)
         self.assertNotIn("card-print-note", main)
-        self.assertIn("study-card.js?v=8", html)
+        self.assertIn("study-card.js?v=9", html)
         self.assertIn("study-card.css?v=9", html)
         self.assertIn("study-cards-data.js?v=5", html)
         self.assertIn('id="study-card-data"', html)

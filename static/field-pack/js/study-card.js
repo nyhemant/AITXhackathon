@@ -306,14 +306,11 @@
     }
     const nextExplore = exploreHtml(deck);
     const explore = root.querySelector(".study-explore");
-    if (explore && nextExplore) {
-      explore.outerHTML = nextExplore;
-    } else if (explore && !nextExplore) {
-      explore.remove();
-    } else if (!explore && nextExplore) {
+    if (explore) explore.remove();
+    if (nextExplore) {
       const foot = root.querySelector(".study-foot");
       const source = root.querySelector(".study-source");
-      if (foot) foot.insertAdjacentHTML("beforebegin", nextExplore);
+      if (foot) foot.insertAdjacentHTML("afterend", nextExplore);
       else if (source) source.insertAdjacentHTML("afterend", nextExplore);
       else {
         const gridEl = root.querySelector(".study-grid");

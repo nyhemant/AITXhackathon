@@ -3654,8 +3654,8 @@ def study_talk_html(deck: dict, *, heading: str = STUDY_QUIZ_H2) -> str:
         f"</div>"
         f'<div class="mission-grid study-grid">{"".join(cards)}</div>'
         f"{source_html}"
-        f"{explore}"
         f"{foot}"
+        f"{explore}"
         f"</section>"
     )
 
