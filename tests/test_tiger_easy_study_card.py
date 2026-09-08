@@ -164,9 +164,9 @@ class TigerEasyStudyCardTests(unittest.TestCase):
                 "sumatran-tiger",
             ),
         )
-        self.assertEqual(shipped_levels_for("sumatran-tiger"), ("easy", "hard"))
+        self.assertEqual(shipped_levels_for("sumatran-tiger"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("sumatran-tiger", "hard"))
-        self.assertIsNone(study_deck_for("sumatran-tiger", "zoologist"))
+        self.assertIsNotNone(study_deck_for("sumatran-tiger", "zoologist"))
         deck = study_deck_for("sumatran-tiger")
         self.assertIsNotNone(deck)
         self.assertEqual(deck["id"], "sumatran-tiger")
@@ -271,11 +271,11 @@ class TigerEasyStudyCardTests(unittest.TestCase):
         visible = _text(html)
         self.assertIn("Junior Ranger", visible)
         self.assertIn("Park Ranger", visible)
-        self.assertNotIn("Zoologist", visible)
+        self.assertIn("Zoologist", visible)
         self.assertIn('class="study-level-picker"', html)
         self.assertIn('data-study-pick="easy"', html)
         self.assertIn('data-study-pick="hard"', html)
-        self.assertNotIn('data-study-pick="zoologist"', html)
+        self.assertIn('data-study-pick="zoologist"', html)
         self.assertNotIn('class="study-level-badge"', html)
         self.assertEqual(html.count('role="group"'), 2)
         self.assertIn("study-level-picker-bottom", html)
@@ -335,11 +335,11 @@ class TigerEasyStudyCardTests(unittest.TestCase):
         visible = _text(main)
         self.assertIn("Junior Ranger", visible)
         self.assertIn("Park Ranger", visible)
-        self.assertNotIn("Zoologist", visible)
+        self.assertIn("Zoologist", visible)
         self.assertIn('class="study-level-picker"', main)
         self.assertIn('data-study-pick="easy"', main)
         self.assertIn('data-study-pick="hard"', main)
-        self.assertNotIn('data-study-pick="zoologist"', main)
+        self.assertIn('data-study-pick="zoologist"', main)
         self.assertNotIn('class="study-level-badge"', main)
         self.assertIn("Learn first", main)
         self.assertIn(">Quiz</h2>", main)
@@ -422,14 +422,14 @@ class TigerEasyStudyCardTests(unittest.TestCase):
         self.assertIn("african-lion", payload)
         tiger = payload["sumatran-tiger"]
         self.assertEqual(tiger["id"], "sumatran-tiger")
-        self.assertEqual(set(tiger["levels"]), {"easy", "hard"})
+        self.assertEqual(set(tiger["levels"]), {"easy", "hard", "zoologist"})
         easy = tiger["levels"]["easy"]
         self.assertEqual(len(easy["teach"]), 5)
         self.assertEqual(len(easy["questions"]), STUDY_SLOTS)
         for q in easy["questions"]:
             self.assertEqual(len(q["choices"]), 3)
         self.assertEqual(tiger["levels"]["hard"]["teach"], [])
-        self.assertNotIn("zoologist", tiger["levels"])
+        self.assertEqual(tiger["levels"]["zoologist"]["teach"], [])
         data_js = STUDY_DATA_JS.read_text(encoding="utf-8")
         self.assertIn("sumatran-tiger", data_js)
         self.assertIn('"easy":"Junior Ranger"', data_js)
@@ -476,7 +476,7 @@ class TigerEasyStudyCardTests(unittest.TestCase):
         tiger_html = TIGER.read_text(encoding="utf-8")
         self.assertIn("Junior Ranger", _text(_main(tiger_html)))
         self.assertIn("Park Ranger", _text(_main(tiger_html)))
-        self.assertNotIn("Zoologist", _text(_main(tiger_html)))
+        self.assertIn("Zoologist", _text(_main(tiger_html)))
 
 
 if __name__ == "__main__":

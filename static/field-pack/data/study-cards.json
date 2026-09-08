@@ -3428,14 +3428,14 @@
     "source": "https://en.wikipedia.org/wiki/Sumatran_tiger",
     "source_note": "Facts from Wikipedia, Sumatran tiger.",
     "talk_about": [
-      "Sumatran tigers need thick ground cover. What changes if the forest floor is cleared?",
-      "They prefer natural forest and make little use of plantations. Why might a plantation feel different from a forest?",
-      "This cat is an ambush hunter. How is that different from a lion chasing across open grassland?"
+      "Older books use one scientific name for the Sumatra cat; a 2017 review lumps it with the extinct Bali and Java island tigers. Why might both names still show up?",
+      "A threat letter on a list can change when new counts arrive. Why treat that letter as a snapshot, not a forever grade?",
+      "Tree-crop plantations replace a lot of forest. Why is “hunting only” too simple a story?"
     ],
     "push_further": [
-      "The largest groups live in major national parks. How can a park act like a habitat island?",
-      "Sumatra is a big island, but it is still an island. How might that isolation shape a tiger’s life?",
-      "A later card can unpack what a status letter means — and how zoos handle genetics. What would you want to know first?"
+      "After Ice Age seas rose, a land bridge to the mainland vanished. How could that isolation shape a tiger’s genes?",
+      "Some parks hold more tigers than the land around them. Why might density inside a park not tell the whole island story?",
+      "Zoo family trees rest on few founders, and some cubs have shown inner-ear trouble. What would you ask a keeper about that bottleneck?"
     ],
     "levels": {
       "easy": {
@@ -3711,6 +3711,141 @@
             ],
             "correct": "B",
             "why": "Wikipedia says the largest remaining groups live in major national parks such as Kerinci Seblat and Gunung Leuser. We do not lock one head-count."
+          }
+        ]
+      },
+      "zoologist": {
+        "teach": [],
+        "questions": [
+          {
+            "slot": 1,
+            "id": "sondaica",
+            "title": "Sondaica lumping",
+            "stem": "What did the 2017 Cat Specialist Group review do with living Sumatran tigers and the extinct Bali and Java tigers?",
+            "choices": [
+              "It proved they were three forever-separate species with no shared name",
+              "It treats living Sumatran plus extinct Bali and Java tigers as Panthera tigris sondaica — though older sumatrae still appears",
+              "It renamed every tiger on Earth after a zoo nickname"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says the 2017 Cat Classification Task Force recognises living and extinct Indonesian tiger populations as P. t. sondaica. Pocock’s older name P. t. sumatrae still turns up in books and records. The lump is a taxonomic revision, not a claim that the island forms were identical in every trait."
+          },
+          {
+            "slot": 2,
+            "id": "cr-snapshot",
+            "title": "Status snapshot",
+            "stem": "How should we read a Critically Endangered letter for the Sumatran tiger?",
+            "choices": [
+              "The letter is a forever grade that can never change",
+              "It is often listed Critically Endangered — a snapshot, not a forever letter",
+              "Scientists have declared it extinct in the wild"
+            ],
+            "correct": "B",
+            "why": "Listings have often treated the Sumatran tiger as Critically Endangered. Status letters can be revised when new counts or methods arrive, so we treat CR as a snapshot, not a locked forever grade."
+          },
+          {
+            "slot": 3,
+            "id": "population-soft",
+            "title": "Hundreds, not a census",
+            "stem": "About how many Sumatran tigers are thought to remain in the wild?",
+            "choices": [
+              "Tens of millions, spread evenly across Asia",
+              "On the order of hundreds, living in fragmented pockets — counts are estimates, not a locked census",
+              "Exactly one pair left in a single zoo"
+            ],
+            "correct": "B",
+            "why": "Wikipedia cites island-wide estimates in the hundreds and notes they persist in small, fragmented populations. Survey methods and years differ, so we do not lock one head-count."
+          },
+          {
+            "slot": 4,
+            "id": "palm-acacia",
+            "title": "Plantation expansion",
+            "stem": "What is a major driver of Sumatran tiger forest loss?",
+            "choices": [
+              "Too many birthday cakes in national parks",
+              "Expansion of oil palm and acacia plantations that replace forest",
+              "Tigers choosing to live only in cities"
+            ],
+            "correct": "B",
+            "why": "Wikipedia names habitat loss from expanding palm-oil (oil palm) and acacia plantations as a major threat, along with prey decline and illegal trade. Hunting is real, but plantation expansion is a key forest-loss driver."
+          },
+          {
+            "slot": 5,
+            "id": "island-isolation",
+            "title": "Island isolation",
+            "stem": "How did Sumatran tigers become cut off from mainland tigers?",
+            "choices": [
+              "A zoo boat moved them last year",
+              "After Ice Age seas rose, Sumatra was isolated from the mainland — dating of that rise is approximate",
+              "They always lived only on icebergs"
+            ],
+            "correct": "B",
+            "why": "Wikipedia links isolation to a sea-level rise at the Pleistocene-to-Holocene transition after the last Ice Age. Exact thousand-year dates are debated, so we keep the timing soft. A vanished land bridge once connected island and mainland populations."
+          },
+          {
+            "slot": 6,
+            "id": "mtdna-isolation",
+            "title": "Genetic isolation",
+            "stem": "What do mitochondrial DNA and microsatellite studies say about Sumatran tigers versus mainland tigers?",
+            "choices": [
+              "They are genetically identical to every mainland tiger",
+              "They are genetically isolated from living mainland tigers, with distinctive mtDNA and microsatellite markers",
+              "They have no DNA at all"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says complete mitochondrial genes support a diagnostically distinct Sumatran form. Isolation from mainland tigers is backed by unique mitochondrial DNA sites and haplotypes plus unique microsatellite alleles. Mainland tigers form a closely related group of their own. We do not lock one marker count."
+          },
+          {
+            "slot": 7,
+            "id": "studbook",
+            "title": "Studbook bottleneck",
+            "stem": "What is a genetics worry in captive Sumatran tigers?",
+            "choices": [
+              "They have thousands of unrelated wild founders and no inbreeding risk",
+              "The global studbook rests on few founders, and some cubs have shown inbreeding-linked vestibular (inner-ear) problems",
+              "Captive tigers never have medical records"
+            ],
+            "correct": "B",
+            "why": "Wikipedia notes the global studbook traces captive Sumatran tigers to a small founder group. Some cubs have shown congenital vestibular trouble — ataxia, head tilt, and related signs — most likely linked to close relatedness and inbreeding. We do not lock one founder count."
+          },
+          {
+            "slot": 8,
+            "id": "cites",
+            "title": "CITES Appendix I",
+            "stem": "How does international law treat trade in tigers, including the Sumatran tiger?",
+            "choices": [
+              "Tiger parts can be sold freely in any shop",
+              "Panthera tigris is on CITES Appendix I, so international trade is tightly controlled",
+              "CITES only covers house cats"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says Panthera tigris is listed on CITES Appendix I. That listing tightly controls international commercial trade. Hunting is also prohibited in Indonesia. Appendix I is a trade rule, not the same thing as an IUCN status letter."
+          },
+          {
+            "slot": 9,
+            "id": "snares",
+            "title": "Snares and bycatch",
+            "stem": "How do wire snares harm Sumatran tigers even when a hunter is not targeting a tiger?",
+            "choices": [
+              "Snares only catch butterflies",
+              "Poachers set wire snares for tigers, and tigers are also caught by accident in traps meant for deer or wild pigs",
+              "Snares help tigers hunt more safely"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says poachers target tigers with wire snares, and tigers are also inadvertently caught in traps set by deer hunters and by farmers trying to stop wild-boar crop raids. Snares are a major mortality source — targeted and bycatch."
+          },
+          {
+            "slot": 10,
+            "id": "conflict-edges",
+            "title": "Conflict edges",
+            "stem": "Where do people and Sumatran tigers most often come into conflict?",
+            "choices": [
+              "Only in the middle of the deepest untouched forest",
+              "Where forest meets farms and settlements — the busy edges",
+              "Only on the open ocean"
+            ],
+            "correct": "B",
+            "why": "Wikipedia names conflict with people as a major threat. Tigers use human-dominated landscapes at the fringes of protected areas less than core forest, but those edges — farms, settlements, and encroachment — are where encounters and retaliation killings cluster."
           }
         ]
       }
