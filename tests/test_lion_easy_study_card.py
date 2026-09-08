@@ -95,6 +95,7 @@ class LionEasyStudyCardTests(unittest.TestCase):
                 "cheetah",
                 "red-panda",
                 "koala",
+                "chimpanzee",
             ),
         )
         deck = study_deck_for("african-lion")
