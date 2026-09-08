@@ -147,7 +147,7 @@ class CardStudyUxTests(unittest.TestCase):
         js = STUDY_JS.read_text(encoding="utf-8")
         self.assertIn('if (foot) foot.insertAdjacentHTML("afterend", nextExplore)', js)
 
-        for cid in ("galapagos-tortoise", "zebra", "nile-hippo", "western-lowland-gorilla", "cheetah", "red-panda"):
+        for cid in ("galapagos-tortoise", "zebra", "nile-hippo", "western-lowland-gorilla", "cheetah", "red-panda", "koala"):
             page = (FP / "cards" / cid / "index.html").read_text(encoding="utf-8")
             main = _main(page)
             with self.subTest(card=cid):
@@ -215,6 +215,10 @@ class CardStudyUxTests(unittest.TestCase):
             study_try_next_ids("red-panda"),
             ["sumatran-tiger", "zebra", "african-lion"],
         )
+        self.assertEqual(
+            study_try_next_ids("koala"),
+            ["red-panda", "sumatran-tiger", "african-lion"],
+        )
         for cid in study_card_ids():
             nxt = study_try_next_ids(cid)
             with self.subTest(card=cid):
@@ -240,8 +244,8 @@ class CardStudyUxTests(unittest.TestCase):
         self.assertLess(try_at, actions_at)
         print_tpl = page.split('id="study-print-template">', 1)[1].split("</template>", 1)[0]
         self.assertNotIn("card-try-next", print_tpl)
-        koala = (FP / "cards" / "koala" / "index.html").read_text(encoding="utf-8")
-        self.assertNotIn("card-try-next", koala)
+        panda = (FP / "cards" / "giant-panda" / "index.html").read_text(encoding="utf-8")
+        self.assertNotIn("card-try-next", panda)
 
     def test_photos_and_watch_live_share_hero_row(self):
         self.assertEqual(CARD_SEO_CSS_VER, "35")

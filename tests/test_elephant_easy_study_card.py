@@ -36,7 +36,7 @@ FP = REPO / "static" / "field-pack"
 ELEPHANT = FP / "cards" / "african-elephant" / "index.html"
 GIRAFFE = FP / "cards" / "reticulated-giraffe" / "index.html"
 LION = FP / "cards" / "african-lion" / "index.html"
-KOALA = FP / "cards" / "koala" / "index.html"
+GIANT_PANDA = FP / "cards" / "giant-panda" / "index.html"
 PRINT_KIT = FP / "js" / "print-kit.js"
 STUDY_JS = FP / "js" / "study-card.js"
 STYLES = FP / "css" / "styles.css"
@@ -126,6 +126,7 @@ class ElephantEasyStudyCardTests(unittest.TestCase):
                 "western-lowland-gorilla",
                 "cheetah",
                 "red-panda",
+                "koala",
             ),
         )
         self.assertEqual(shipped_levels_for("african-elephant"), ("easy", "hard", "zoologist"))
@@ -222,13 +223,13 @@ class ElephantEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Facts from Wikipedia, African elephant / Elephant.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
-        html = outing_talk_html({"id": "koala", "packTemplate": "animals"})
+        html = outing_talk_html({"id": "giant-panda", "packTemplate": "animals"})
         self.assertIn("What do they eat?", html)
         self.assertNotIn("card-study-pack", html)
         self.assertNotIn("What record does an African elephant hold", html)
-        koala = KOALA.read_text(encoding="utf-8")
-        self.assertIn("What do they eat?", koala)
-        self.assertNotIn("card-study-pack", koala)
+        panda = GIANT_PANDA.read_text(encoding="utf-8")
+        self.assertIn("What do they eat?", panda)
+        self.assertNotIn("card-study-pack", panda)
 
     def test_published_elephant_card_matches_easy_deck(self):
         html = ELEPHANT.read_text(encoding="utf-8")

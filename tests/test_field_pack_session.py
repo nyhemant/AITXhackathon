@@ -155,7 +155,8 @@ class FlagshipSessionTests(unittest.TestCase):
             ):
                 self.assertIn("What do they eat?", html)
         koala = (FP / "cards" / "koala" / "index.html").read_text(encoding="utf-8")
-        self.assertIn("What do they eat?", koala)
+        self.assertIn("Where do wild koalas live?", koala)
+        self.assertNotIn("What do they eat?", koala)
         self.assertNotIn("What did you notice about the Koala?", koala)
         self.assertIn("Watch Live", koala)
         self.assertIn("/field-pack/virtual-zoo/?from=card#habitat=koala", koala)
