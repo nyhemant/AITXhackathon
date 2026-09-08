@@ -523,6 +523,31 @@ separate from feces unlike other living birds.
 Soften contested numbers and treat IUCN / CITES
 letters as snapshots. Do not redo JR or PR themes.
 
+Facts for warthog Junior Ranger (easy) are Wikipedia-backed:
+https://en.wikipedia.org/wiki/Common_warthog
+Species framing is the common warthog (Phacochoerus
+africanus). JR stays kid-simple “warthog.”
+A group is a sounder — moms and kids together;
+grown males often roam alone. Wild African
+savanna pigs (pig family / Suidae), not farm
+pigs. Grassland, savanna, and woodland in
+sub-Saharan Africa. Face “warts” are tough
+protective pads, not disease sores. Two pairs
+of tusks curve up — fighting and defense, not
+digging. They kneel on padded wrists and dig
+or root with the snout and feet. Often sleep
+in empty aardvark burrows more than digging
+every den; usually reverse in so the head and
+tusks face out. Soft care: still live across
+many African grasslands and parks; local
+trouble can come from drought and hunting
+(no status letter). Myth: they do not dig
+holes with their tusks.
+Reserve for Park Ranger / Zoologist: sprint
+mph, desert vs common split, status letters,
+glands, and litter counts.
+Do not add Park Ranger or Zoologist yet.
+
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
 zoologist. Visible copy uses LEVEL_DISPLAY_NAMES only — no age badges,
@@ -563,6 +588,7 @@ WIKI_ORANGUTAN = "https://en.wikipedia.org/wiki/Orangutan"
 WIKI_GIANT_PANDA = "https://en.wikipedia.org/wiki/Giant_panda"
 WIKI_RING_TAILED_LEMUR = "https://en.wikipedia.org/wiki/Ring-tailed_lemur"
 WIKI_OSTRICH = "https://en.wikipedia.org/wiki/Ostrich"
+WIKI_WARTHOG = "https://en.wikipedia.org/wiki/Common_warthog"
 
 LETTERS = ("A", "B", "C")
 STUDY_SLOTS = 10
@@ -637,7 +663,9 @@ LEVEL_DISPLAY_NAMES = {
 # Sumatran tiger, western lowland gorilla, cheetah, red panda,
 # koala, chimpanzee, orangutan, giant panda, and
 # ring-tailed lemur, and ostrich ship Junior
-# Ranger + Park Ranger + Zoologist.
+# Ranger + Park Ranger + Zoologist. Warthog
+# ships Junior Ranger only (no Park Ranger
+# or Zoologist yet).
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -672,6 +700,7 @@ STUDY_NEIGHBORS = {
     "giant-panda": ("red-panda", "koala"),
     "ring-tailed-lemur": ("orangutan", "chimpanzee"),
     "ostrich": ("caribbean-flamingo", "african-penguin"),
+    "warthog": ("zebra", "ostrich"),
 }
 
 STUDY_CARD_TITLES = {
@@ -693,6 +722,7 @@ STUDY_CARD_TITLES = {
     "giant-panda": "Giant panda",
     "ring-tailed-lemur": "Ring-tailed lemur",
     "ostrich": "Ostrich",
+    "warthog": "Warthog",
 }
 
 # Shared answers-side deepen (Claude sample). Not scored. Future animals reuse keys.
@@ -875,6 +905,16 @@ PUSH_FURTHER_OSTRICH = (
     "An extinct subspecies is a local kind that is gone. What does that mean for the bigger species?",
     "An ostrich egg is huge, yet small next to the adult. Why does that relative size matter?",
     "CITES letters say how tightly trade is limited. How would you explain that in plain words?",
+)
+TALK_ABOUT_WARTHOG = (
+    "A group of warthogs is a sounder. Who lives in one at the zoo?",
+    "Why might a warthog back into its den instead of walking in head-first?",
+    "Face “warts” are tough pads, not sores. What job could those pads do?",
+)
+PUSH_FURTHER_WARTHOG = (
+    "Warthogs kneel on padded wrists to graze. How could that help them eat short grass?",
+    "They often sleep in old aardvark burrows. Why might a borrowed den be smart?",
+    "Warthogs are wild African pigs, not farm pigs. What looks different at the zoo?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -8482,6 +8522,157 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia says the ostrich, unlike other living birds, stores urine separately from feces. Extra organ names stay soft.",
+                    },
+                ],
+            },
+        },
+    },
+    "warthog": {
+        "id": "warthog",
+        "source": WIKI_WARTHOG,
+        "source_note": "Facts from Wikipedia, Common warthog.",
+        "talk_about": list(TALK_ABOUT_WARTHOG),
+        "push_further": list(PUSH_FURTHER_WARTHOG),
+        "levels": {
+            "easy": {
+                # Teaching-first: same front as the quiz. Hard later may hide these.
+                "teach": [
+                    "A group of warthogs is a sounder.",
+                    "They are wild African savanna pigs, not farm pigs.",
+                    "They kneel on padded wrists and dig with a strong snout — not with tusks.",
+                    "They often sleep in old aardvark burrows, backing in with tusks ready.",
+                    "Face “warts” are tough pads, not disease sores.",
+                ],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "sounder",
+                        "title": "Sounder",
+                        "stem": "What do you call a group of warthogs, and who usually lives in one?",
+                        "choices": [
+                            "A sounder — moms and kids live together; grown males often roam alone",
+                            "A pride — like lions, with one king in charge",
+                            "A flock — they only fly together",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says warthogs live in groups called sounders. Females live in sounders with their young; adult males often live alone.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "africa-grassland",
+                        "title": "Africa grassland",
+                        "stem": "Where do wild warthogs live?",
+                        "choices": [
+                            "Only on Antarctic ice",
+                            "Grassland, savanna, and woodland in sub-Saharan Africa",
+                            "Only in North American forests",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia places the common warthog in grassland, savanna, and woodland in sub-Saharan Africa.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "wild-pig-kin",
+                        "title": "Wild pig kin",
+                        "stem": "What kind of animal is a warthog?",
+                        "choices": [
+                            "A farm pig that escaped last week",
+                            "A kind of antelope",
+                            "A wild African member of the pig family — not a farm pig",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says the common warthog is a wild member of the pig family (Suidae), not a farm pig.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "wart-pads",
+                        "title": "Tough “warts”",
+                        "stem": "What are the bumps on a warthog’s face?",
+                        "choices": [
+                            "Tough protective pads — not oozing disease sores",
+                            "Soft balloons filled with water",
+                            "Extra eyes that help them see behind",
+                        ],
+                        "correct": "A",
+                        "why": "The face “warts” are tough pads that protect the face. They are not disease sores.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "curved-tusks",
+                        "title": "Curved tusks",
+                        "stem": "How many pairs of tusks does a warthog have, and what are they for?",
+                        "choices": [
+                            "One tiny pair used only for brushing teeth",
+                            "Two pairs that curve up — used for fighting and defense",
+                            "No tusks at all — only a soft snout",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says a warthog has two pairs of tusks that curve upwards. They are used for fighting and defense, not for digging.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "kneel-to-graze",
+                        "title": "Kneel to graze",
+                        "stem": "How do warthogs often graze, and how do they dig?",
+                        "choices": [
+                            "They hop on their tails and dig with their tusks",
+                            "They only eat while flying",
+                            "They kneel on padded wrists; they dig and root with the snout and feet",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says warthogs often bend the front feet back and move on the wrists, which have calloused pads. They dig with the snout and feet.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "borrowed-dens",
+                        "title": "Borrowed dens",
+                        "stem": "Where do warthogs often sleep?",
+                        "choices": [
+                            "In empty aardvark burrows more often than digging every den themselves",
+                            "In high tree nests they build each night",
+                            "Only in ice caves",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says warthogs can dig their own burrows, but they often occupy abandoned aardvark burrows and other empty dens.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "back-in-first",
+                        "title": "Back in first",
+                        "stem": "How does a warthog usually enter its den?",
+                        "choices": [
+                            "It dives in head-first and leaves its tail outside",
+                            "It usually backs in so the head and tusks face out",
+                            "It never goes in a den",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says warthogs commonly reverse into burrows so the head faces the opening, ready to burst out, with tusks facing out.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "soft-care",
+                        "title": "Soft care",
+                        "stem": "How are wild warthogs doing today?",
+                        "choices": [
+                            "They only live on the moon",
+                            "They have vanished from every grassland",
+                            "They still live across many African grasslands and parks; local trouble can come from drought and hunting",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says common warthogs still live across a wide African range and in many parks. Drought and hunting can cause local trouble. We do not lock a status letter — that grade is a snapshot and can change.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "tusk-dig-myth",
+                        "title": "Myth buster — tusks?",
+                        "stem": "Do warthogs dig holes with their tusks?",
+                        "choices": [
+                            "No — they dig with the snout and feet; tusks are for fighting and defense",
+                            "Yes — they scoop dirt only with their tusks",
+                            "Yes — they never use the snout to dig",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says the tusks are not used for digging. Warthogs are powerful diggers with the snout and feet. Tusks are for combat and defense.",
                     },
                 ],
             },

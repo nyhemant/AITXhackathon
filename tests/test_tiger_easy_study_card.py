@@ -171,6 +171,7 @@ class TigerEasyStudyCardTests(unittest.TestCase):
                 "giant-panda",
                 "ring-tailed-lemur",
                 "ostrich",
+                "warthog",
             ),
         )
         self.assertEqual(shipped_levels_for("sumatran-tiger"), ("easy", "hard", "zoologist"))
