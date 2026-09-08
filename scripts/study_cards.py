@@ -239,8 +239,8 @@ hooks or trips prey. Soften contested numbers.
 Keep MHC / Miracinonyx out of default Explore more.
 Do not redo JR or PR themes.
 
-Facts for red-panda Junior Ranger (easy only) are
-Wikipedia-backed:
+Facts for red-panda Junior Ranger (easy) and Park Ranger
+(hard) are Wikipedia-backed:
 https://en.wikipedia.org/wiki/Red_panda
 Species framing is the red panda (Ailurus fulgens).
 JR stays kid-simple “red panda.” Soften contested
@@ -253,10 +253,17 @@ A wrist “false thumb” helps grip bamboo. Reddish-brown
 coat, black belly, white face markings. Adults are
 generally solitary. Cubs are born in a tree hollow
 or den nest. Myth: a fox-like look does not make it
-a fox. Reserve for later: Ailuridae / musteloid
-phylogeny, the Endangered letter, subspecies-as-species,
-genome genes, and deep thumb anatomy. Do not add
-Park Ranger or Zoologist yet.
+a fox. Park Ranger is answer-light (empty teach) and
+deepens lots of bamboo (poor digestion → large amounts),
+microhabitats near water, steep dense bamboo slopes,
+scent marks (urine, droppings, gland scent), seasonal
+fruits/blossoms/berries, habitat loss + hunting (no
+status letter), moss/lichen camouflage, nocturnal and
+crepuscular rest in trees, head-first descent, and
+niche separation from giant pandas. Reserve for
+Zoologist: Ailuridae / musteloid phylogeny, the
+Endangered letter, subspecies-as-species, genome genes,
+and deep thumb anatomy. Do not add Zoologist yet.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
@@ -365,7 +372,7 @@ LEVEL_DISPLAY_NAMES = {
 # Caribbean flamingo, Galápagos tortoise, zebra, Nile hippo,
 # Sumatran tiger, western lowland gorilla, and cheetah ship
 # Junior Ranger + Park Ranger + Zoologist. Red panda ships
-# Junior Ranger only (no Park Ranger or Zoologist yet).
+# Junior Ranger + Park Ranger (no Zoologist yet).
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -523,14 +530,14 @@ PUSH_FURTHER_CHEETAH = (
     "Cheetahs have unusually similar genes after ancient crashes. How is that different from just being rare?",
 )
 TALK_ABOUT_RED_PANDA = (
-    "People also call a giant panda a “panda.” How is a red panda different at the zoo?",
-    "Red pandas mostly eat bamboo. What would you look for in their yard?",
-    "A red panda’s tail has red and buff rings. How might that bushy tail help in a tree?",
+    "Red pandas eat lots of bamboo because they digest it poorly. What would you look for in their yard?",
+    "A red panda often climbs down a tree head-first. Why might that help in the forest?",
+    "In some parks, red pandas share bamboo with giant pandas. How might they stay out of each other’s way?",
 )
 PUSH_FURTHER_RED_PANDA = (
     "Scientists say red pandas are closer to raccoons than to bears. What would you ask a keeper?",
-    "A red panda’s “thumb” is a wrist bone. Why might a giant panda have a similar trick?",
-    "Red pandas live in mountain bamboo forests. What would you notice first if you visited one?",
+    "A threat letter on a list can change. Why treat it as a snapshot, not a forever grade?",
+    "Some people talk about Himalayan and Chinese red pandas. What difference would you look for at the zoo?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -5286,6 +5293,142 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia treats the red panda as its own animal — not a bear and not closely related to the giant panda. A fox-like face does not make it a fox.",
+                    },
+                ],
+            },
+            "hard": {
+                # Answer-light: no Learn-first strip. Facts from Wikipedia, Red panda.
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "lots-of-bamboo",
+                        "title": "Lots of bamboo",
+                        "stem": "Why do red pandas need to eat a lot of bamboo?",
+                        "choices": [
+                            "They digest bamboo poorly, so they must eat large amounts",
+                            "They store bamboo in their cheeks for winter",
+                            "They only nibble one leaf a week",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says the red panda has a carnivore-style gut and cannot digest bamboo well — it passes through in hours. So it must eat large amounts of the most nutritious plant parts. We do not lock one daily weight.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "near-water",
+                        "title": "Near water",
+                        "stem": "Where do wild red pandas like their home spots to be?",
+                        "choices": [
+                            "Only on dry desert dunes far from any stream",
+                            "In microhabitats close to streams and other water",
+                            "Only on open ocean ice",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says red pandas prefer microhabitats close to water sources. Fallen logs and stumps help them reach bamboo leaves.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "steep-slopes",
+                        "title": "Steep bamboo slopes",
+                        "stem": "What kind of ground do red pandas often choose?",
+                        "choices": [
+                            "Flat beach sand with no plants",
+                            "Only city sidewalks",
+                            "Steep slopes with dense bamboo",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says red pandas favour steep slopes with dense bamboo cover, often near water. They have been recorded on steep slopes with lots of bamboo stems.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "scent-marks",
+                        "title": "Scent marks",
+                        "stem": "How do red pandas mark their space?",
+                        "choices": [
+                            "With urine, droppings, and gland scent",
+                            "By painting trees with leftover bamboo",
+                            "They never leave any marks",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says adults mark home-range or territorial edges with urine, faeces, and secretions from glands near the tail. Scent-marking is usually done on the ground.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "seasonal-extras",
+                        "title": "Seasonal extras",
+                        "stem": "Besides bamboo, what extras do red pandas eat when they can?",
+                        "choices": [
+                            "Only metal from zoo fences",
+                            "Fruits, blossoms, and berries when those foods are around",
+                            "Only seawater",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says red pandas feed mainly on bamboo but also eat fruits and blossoms, and droppings show seasonal berries and other plants when those foods are available.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "threats",
+                        "title": "Threats",
+                        "stem": "What puts wild red pandas under pressure today?",
+                        "choices": [
+                            "Too much snow on the moon",
+                            "An extra-long weekend every year",
+                            "Habitat loss and hunting",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia lists habitat destruction and fragmentation, plus poaching, as main threats. We do not lock a status letter — that grade is a snapshot and can change.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "moss-camouflage",
+                        "title": "Moss camouflage",
+                        "stem": "How can a red panda’s rusty coat help in the forest?",
+                        "choices": [
+                            "It blends with red moss and pale lichen on trees",
+                            "It glows in the dark like a lamp",
+                            "It is painted on at the zoo each morning",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says the reddish coat appears to serve as camouflage among trees covered with red moss and white lichen.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "night-dusk",
+                        "title": "Night and dusk",
+                        "stem": "When are red pandas usually active, and where do they rest?",
+                        "choices": [
+                            "Only at high noon, standing in open fields",
+                            "At night and around dusk; they rest in trees",
+                            "Only underwater, never in trees",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says the red panda appears both nocturnal and crepuscular. It typically rests or sleeps in trees or other high places.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "head-first",
+                        "title": "Head-first down",
+                        "stem": "How does a red panda usually come down a tree?",
+                        "choices": [
+                            "It flies down like a bird",
+                            "It always jumps backward with its eyes closed",
+                            "It descends the trunk head-first",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says a red panda is adapted for climbing and comes down head-first, with the hind feet holding the middle of the trunk.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "quiet-neighbours",
+                        "title": "Quiet neighbours",
+                        "stem": "In places where red pandas and giant pandas both eat bamboo, how do they share the forest?",
+                        "choices": [
+                            "They use different slopes and bamboo patches, so they compete less",
+                            "They always share the exact same feeding spot",
+                            "Giant pandas chase red pandas out of every forest",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says that where the two species overlap, red pandas use steeper slopes with denser bamboo, while giant pandas prefer gentler slopes with taller but sparser bamboo. That niche split lessens competition.",
                     },
                 ],
             },
