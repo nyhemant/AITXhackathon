@@ -112,6 +112,17 @@ foraging places, and a threats-first status snapshot. Soften
 contested numbers and the IUCN letter. Do not redo JR or PR
 themes.
 
+Facts for nile-hippo Junior Ranger (easy only) are Wikipedia-backed:
+https://en.wikipedia.org/wiki/Hippopotamus
+Species framing is the common hippopotamus / Nile hippo
+(Hippopotamus amphibius). JR stays kid-simple “Nile hippo.”
+Soften contested numbers and IUCN letters. Soften “closest
+living relatives are whales and dolphins” as a surprise fact
+— no deep clade chemistry. Reserve for later tiers: skin-goo
+chemistry, whale-clade detail, subspecies, Colombia
+introductions, and status letters. Do not add Park Ranger or
+Zoologist yet.
+
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
 zoologist. Visible copy uses LEVEL_DISPLAY_NAMES only — no age badges,
@@ -138,6 +149,7 @@ WIKI_AFRICAN_PENGUIN = "https://en.wikipedia.org/wiki/African_penguin"
 WIKI_AMERICAN_FLAMINGO = "https://en.wikipedia.org/wiki/American_flamingo"
 WIKI_GALAPAGOS_TORTOISE = "https://en.wikipedia.org/wiki/Gal%C3%A1pagos_tortoise"
 WIKI_PLAINS_ZEBRA = "https://en.wikipedia.org/wiki/Plains_zebra"
+WIKI_HIPPOPOTAMUS = "https://en.wikipedia.org/wiki/Hippopotamus"
 
 LETTERS = ("A", "B", "C")
 STUDY_SLOTS = 10
@@ -154,7 +166,8 @@ LEVEL_DISPLAY_NAMES = {
 # Shipped picker order. A card only shows keys it actually defines.
 # Lion, reticulated-giraffe, African elephant, African penguin,
 # Caribbean flamingo, Galápagos tortoise, and zebra ship Junior
-# Ranger + Park Ranger + Zoologist.
+# Ranger + Park Ranger + Zoologist. Nile hippo ships Junior
+# Ranger only.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -178,6 +191,7 @@ STUDY_NEIGHBORS = {
     "caribbean-flamingo": ("african-penguin",),
     "galapagos-tortoise": ("african-elephant", "reticulated-giraffe"),
     "zebra": ("african-lion", "reticulated-giraffe", "african-elephant"),
+    "nile-hippo": ("african-elephant", "zebra"),
 }
 
 STUDY_CARD_TITLES = {
@@ -188,6 +202,7 @@ STUDY_CARD_TITLES = {
     "caribbean-flamingo": "Caribbean flamingo",
     "galapagos-tortoise": "Galápagos tortoise",
     "zebra": "Zebra",
+    "nile-hippo": "Nile hippo",
 }
 
 # Shared answers-side deepen (Claude sample). Not scored. Future animals reuse keys.
@@ -260,6 +275,17 @@ PUSH_FURTHER_ZEBRA = (
     "Compare zebra digestion (hindgut) with a giraffe or cow (ruminant) at the zoo.",
     "Find another striped animal on your map — same reason for stripes, or different?",
     "Quagga Project tries to breed back a quagga-like look — what does “extinct” mean if genes live on in relatives?",
+)
+TALK_ABOUT_HIPPO = (
+    "Why might people have called this animal a “river horse”?",
+    "Why stay cool in water by day and eat grass at night?",
+    "What job could that reddish sunscreen goo do on a hippo’s skin?",
+    "Why sit your eyes, ears, and nose on top of your head if you live in a river?",
+)
+PUSH_FURTHER_HIPPO = (
+    "Hippos often walk on the river bottom. How is that different from a fish that swims?",
+    "A hippo’s closest living relatives are whales and dolphins. What still surprises you about that?",
+    "Hippos rest close together in the water, then graze alone on land. Why might that be safer?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -3144,6 +3170,157 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "B",
                         "why": "Wikipedia emphasizes hunting for meat and hide, plus farming and livestock competition. IUCN has listed the plains zebra Near Threatened — we treat that letter as a snapshot, not a forever grade.",
+                    },
+                ],
+            },
+        },
+    },
+    "nile-hippo": {
+        "id": "nile-hippo",
+        "source": WIKI_HIPPOPOTAMUS,
+        "source_note": "Facts from Wikipedia, Hippopotamus.",
+        "talk_about": list(TALK_ABOUT_HIPPO),
+        "push_further": list(PUSH_FURTHER_HIPPO),
+        "levels": {
+            "easy": {
+                # Teaching-first: same front as the quiz. Hard later may hide these.
+                "teach": [
+                    "Their name comes from Greek for “horse of the river.”",
+                    "They stay cool in water or mud by day, then graze on land at dusk.",
+                    "In the wild they eat almost all grass — not fish.",
+                    "Eyes, ears, and nostrils sit high so they can rest with most of the body under water.",
+                    "The reddish “blood sweat” is a sunscreen goo — not blood and not sweat.",
+                ],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "river-horse",
+                        "title": "River horse",
+                        "stem": "What does the name hippopotamus mean?",
+                        "choices": [
+                            "Desert camel",
+                            "Horse of the river",
+                            "Flying fish",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says the name comes from Ancient Greek for “horse of the river.”",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "day-night",
+                        "title": "Day and night",
+                        "stem": "What do Nile hippos usually do by day and at dusk?",
+                        "choices": [
+                            "Hunt fish all day and sleep on rocks at night",
+                            "Stay cool in water or mud by day, then graze on land at dusk",
+                            "Fly south when the sun is out",
+                        ],
+                        "correct": "B",
+                        "why": "Hippos remain cool by staying in water or mud during the day, then come out at dusk to graze.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "grass",
+                        "title": "Grass, not fish",
+                        "stem": "What do wild Nile hippos mostly eat?",
+                        "choices": [
+                            "Fish they catch with their tusks",
+                            "Almost all grass",
+                            "Only zoo popcorn",
+                        ],
+                        "correct": "B",
+                        "why": "A wild hippo’s diet is almost entirely grass, with only a little aquatic plant matter — not fish.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "periscope",
+                        "title": "Periscope face",
+                        "stem": "Why are a Nile hippo’s eyes, ears, and nostrils high on its head?",
+                        "choices": [
+                            "So it can rest in water with most of its body hidden",
+                            "So it can hang from trees",
+                            "So it can smell clouds",
+                        ],
+                        "correct": "A",
+                        "why": "Those parts sit high on the skull so they can stay above the water while the rest of the body is submerged.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "blood-sweat",
+                        "title": "“Blood sweat”",
+                        "stem": "What is the reddish liquid people call a hippo’s “blood sweat”?",
+                        "choices": [
+                            "Blood the hippo sweats when it is hot",
+                            "A sunscreen goo — not blood and not sweat",
+                            "River mud that never washes off",
+                        ],
+                        "correct": "B",
+                        "why": "People nickname it “blood sweat,” but it is neither blood nor sweat. It is a red-colored sunscreen secretion.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "cousins",
+                        "title": "Surprise cousins",
+                        "stem": "Who are a hippo’s closest living relatives?",
+                        "choices": [
+                            "Farm pigs, because they look alike",
+                            "Whales and dolphins — a surprise for many people",
+                            "Crocodiles that share the same river",
+                        ],
+                        "correct": "B",
+                        "why": "Hippos can look a bit like pigs, but their closest living relatives are whales and dolphins.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "yawn",
+                        "title": "Huge yawn",
+                        "stem": "What does a hippo’s huge “yawn” usually mean?",
+                        "choices": [
+                            "It is chewing grass with its long tusks",
+                            "The wide-open mouth is a threat — the tusks are for fighting, not chewing grass",
+                            "It is catching flying birds",
+                        ],
+                        "correct": "B",
+                        "why": "The big “yawn” is a threat display. Tusks are mainly for fighting. Hippos pull grass with their lips, not those long teeth.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "protective",
+                        "title": "Stay back",
+                        "stem": "Why do people treat wild hippos with extra care?",
+                        "choices": [
+                            "They are tiny and easy to pick up",
+                            "They can be dangerous when surprised or when a mother is guarding a calf",
+                            "They only live in picture books",
+                        ],
+                        "correct": "B",
+                        "why": "Hippos are strong and can be aggressive if they are surprised or protecting young. Give them space.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "water-babies",
+                        "title": "Water babies",
+                        "stem": "Where do Nile hippos often have babies, and how can calves drink milk?",
+                        "choices": [
+                            "Only in desert dunes; calves never drink",
+                            "Mating and birth often happen in water; calves can nurse underwater, and moms are protective",
+                            "In nests at the tops of trees",
+                        ],
+                        "correct": "B",
+                        "why": "Mating and birth often occur in water. Calves can nurse underwater. Mothers stay very protective of their young.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "thick-skin",
+                        "title": "Wet skin",
+                        "stem": "Why does a Nile hippo need water or mud on its skin?",
+                        "choices": [
+                            "Its mostly hairless thick skin can crack if it stays dry too long",
+                            "It has a heavy fur coat that must stay soaked",
+                            "It cannot stand on land at all",
+                        ],
+                        "correct": "A",
+                        "why": "Hippos have little hair. Their thick skin still needs water or mud, or it can crack even with the sunscreen goo.",
                     },
                 ],
             },

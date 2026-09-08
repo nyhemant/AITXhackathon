@@ -136,6 +136,7 @@ class TortoiseEasyStudyCardTests(unittest.TestCase):
                 "caribbean-flamingo",
                 "galapagos-tortoise",
                 "zebra",
+                "nile-hippo",
             ),
         )
         self.assertEqual(shipped_levels_for("galapagos-tortoise"), ("easy", "hard", "zoologist"))
