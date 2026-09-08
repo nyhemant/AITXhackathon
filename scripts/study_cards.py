@@ -543,10 +543,20 @@ many African grasslands and parks; local
 trouble can come from drought and hunting
 (no status letter). Myth: they do not dig
 holes with their tusks.
-Reserve for Park Ranger / Zoologist: sprint
-mph, desert vs common split, status letters,
-glands, and litter counts.
-Do not add Park Ranger or Zoologist yet.
+Park Ranger (hard) deepens: sprint about as
+fast as a slow car (speed numbers stay soft),
+tail held straight up when running, mud wallow
+vs huddle, a separate desert warthog in drier
+East Africa (split details stay soft), facial
+scent marks at sleep / feed / water spots
+(no gland chemistry), litters often a few
+piglets (exact range stays soft), moms defend
+piglets from big hunters, more grass when wet
+and more roots and bulbs when dry, drought and
+hunting can hurt local groups (no status
+letter), and sometimes mongooses or monkeys
+pick off ticks.
+Do not redo JR themes. Do not add Zoologist yet.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
@@ -664,8 +674,8 @@ LEVEL_DISPLAY_NAMES = {
 # koala, chimpanzee, orangutan, giant panda, and
 # ring-tailed lemur, and ostrich ship Junior
 # Ranger + Park Ranger + Zoologist. Warthog
-# ships Junior Ranger only (no Park Ranger
-# or Zoologist yet).
+# ships Junior Ranger + Park Ranger
+# (no Zoologist yet).
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -907,14 +917,14 @@ PUSH_FURTHER_OSTRICH = (
     "CITES letters say how tightly trade is limited. How would you explain that in plain words?",
 )
 TALK_ABOUT_WARTHOG = (
-    "A group of warthogs is a sounder. Who lives in one at the zoo?",
-    "Why might a warthog back into its den instead of walking in head-first?",
-    "Face “warts” are tough pads, not sores. What job could those pads do?",
+    "When a warthog runs, the thin tail often goes straight up. Why might that flag help?",
+    "Warthogs wallow in mud when it is hot and huddle together when it is cold. How do those two tricks help?",
+    "A separate desert warthog lives in drier East Africa. How is that different from the common one?",
 )
 PUSH_FURTHER_WARTHOG = (
-    "Warthogs kneel on padded wrists to graze. How could that help them eat short grass?",
-    "They often sleep in old aardvark burrows. Why might a borrowed den be smart?",
-    "Warthogs are wild African pigs, not farm pigs. What looks different at the zoo?",
+    "Warthogs scent-mark sleeping spots, feeding areas, and waterholes. What could those marks tell others?",
+    "They eat more grass when it is wet and more roots and bulbs when it is dry. Why might the menu change?",
+    "Moms defend piglets from big hunters. How could a mom keep her babies safer?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -8673,6 +8683,146 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia says the tusks are not used for digging. Warthogs are powerful diggers with the snout and feet. Tusks are for combat and defense.",
+                    },
+                ],
+            },
+            "hard": {
+                # Answer-light: Park Ranger has no Learn-first strip.
+                # Facts from Wikipedia, Common warthog. Soften
+                # contested mph / litter / desert-split details.
+                # No IUCN letter — that grade is reserved for
+                # Zoologist. Do not redo JR themes.
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "sprint-soft",
+                        "title": "Sprint soft",
+                        "stem": "When a warthog is scared, how fast can it sprint?",
+                        "choices": [
+                            "About as fast as a slow car — a quick burst to get away",
+                            "Only as slow as a turtle on ice",
+                            "As fast as a jet plane",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says a scared warthog flees with a fast sprint — about as quick as a slow car. Exact speed numbers stay soft.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "tail-flag",
+                        "title": "Tail flag",
+                        "stem": "How do warthogs often hold the tail when they run?",
+                        "choices": [
+                            "They tuck the tail under and never lift it",
+                            "They often run with the thin tail held straight up",
+                            "They wrap the tail around a tree to swing",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says warthogs often run with the tail sticking straight up — a thin tail flag.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "mud-huddle",
+                        "title": "Mud + huddle",
+                        "stem": "How do warthogs stay comfortable when it is very hot or very cold?",
+                        "choices": [
+                            "They grow extra winter coats of wool",
+                            "They only sit in snow to cool down",
+                            "They wallow in mud to cool down, and huddle together when it is cold",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says warthogs wallow in mud to cope with heat and huddle together to cope with cold.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "desert-cousin-soft",
+                        "title": "Desert cousin",
+                        "stem": "Is there more than one kind of warthog in Africa?",
+                        "choices": [
+                            "Yes — a separate desert warthog lives in drier parts of East Africa",
+                            "No — every warthog on Earth is the same farm pig",
+                            "Yes — but the other kind lives only on Antarctic ice",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says a separate desert warthog lives in drier parts of East Africa. Extra split details stay soft.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "scent-marks-soft",
+                        "title": "Scent marks",
+                        "stem": "What do facial scent marks help a warthog remember?",
+                        "choices": [
+                            "Only the names of zoo keepers",
+                            "Sleeping spots, feeding areas, and waterholes",
+                            "How to fly to the moon",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says facial glands help mark sleeping spots, feeding areas, and waterholes. Extra gland chemistry stays soft.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "piglet-count-soft",
+                        "title": "Piglet count",
+                        "stem": "How many piglets does a warthog mom often have at once?",
+                        "choices": [
+                            "Always exactly one hundred piglets",
+                            "Never any piglets at all",
+                            "Often a few piglets — sometimes more",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says litters are often a few piglets, and sometimes more. Exact counts stay soft.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "mom-defense",
+                        "title": "Mom defense",
+                        "stem": "Who may hunt warthogs, and how do moms protect piglets?",
+                        "choices": [
+                            "Big hunters such as lions, leopards, and hyenas may hunt them; moms defend piglets hard",
+                            "Only house cats hunt them, and moms never help",
+                            "No hunter ever bothers a warthog",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia lists big hunters such as lions, leopards, and hyenas. A mother will defend her piglets hard.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "season-switch-soft",
+                        "title": "Season switch",
+                        "stem": "How does a warthog’s food change with the seasons?",
+                        "choices": [
+                            "They eat only ice cream in every season",
+                            "More grass in wet times; more roots and bulbs when it is dry",
+                            "They stop eating whenever the wind blows",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says they graze more grass in wet times and eat more roots and bulbs when it is dry.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "need-our-help-soft",
+                        "title": "Need our help",
+                        "stem": "What can hurt local warthog groups today?",
+                        "choices": [
+                            "Too many birthday balloons in space",
+                            "They have vanished from every park",
+                            "Drought and hunting can hurt local groups",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says drought and hunting can cause local trouble. We do not lock a status letter — that grade is a snapshot and can change.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "friendly-helpers-soft",
+                        "title": "Friendly helpers",
+                        "stem": "Who sometimes helps a warthog by picking off ticks?",
+                        "choices": [
+                            "Sometimes mongooses or monkeys pick off ticks",
+                            "Only robots with vacuum hoses",
+                            "Nobody ever grooms a warthog",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says warthogs sometimes let mongooses or monkeys groom them to pick off ticks.",
                     },
                 ],
             },

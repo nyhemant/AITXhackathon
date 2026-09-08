@@ -83,7 +83,7 @@ def _decks():
 
 
 class StudyCardAnswerKeyTests(unittest.TestCase):
-    def test_traffic_set_is_eighteen_three_level_animals_plus_warthog_jr(self):
+    def test_traffic_set_is_eighteen_three_level_animals_plus_warthog_jr_and_pr(self):
         self.assertEqual(tuple(study_card_ids()), TRAFFIC_IDS)
         self.assertEqual(shipped_levels_for("cheetah"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("cheetah", "zoologist"))
@@ -108,11 +108,11 @@ class StudyCardAnswerKeyTests(unittest.TestCase):
         self.assertEqual(shipped_levels_for("ostrich"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("ostrich", "hard"))
         self.assertIsNotNone(study_deck_for("ostrich", "zoologist"))
-        self.assertEqual(shipped_levels_for("warthog"), ("easy",))
-        self.assertIsNone(study_deck_for("warthog", "hard"))
+        self.assertEqual(shipped_levels_for("warthog"), ("easy", "hard"))
+        self.assertIsNotNone(study_deck_for("warthog", "hard"))
         self.assertIsNone(study_deck_for("warthog", "zoologist"))
         decks = list(_decks())
-        self.assertEqual(len(decks), 55)
+        self.assertEqual(len(decks), 56)
         for card_id, level, deck in decks:
             self.assertIsNotNone(deck, f"{card_id}/{level}")
             self.assertEqual(validate_deck(deck), [])
@@ -143,12 +143,12 @@ class StudyCardAnswerKeyTests(unittest.TestCase):
 
     def test_overall_correct_b_is_not_a_majority(self):
         letters = [q["correct"] for _, _, deck in _decks() for q in deck["questions"]]
-        self.assertEqual(len(letters), 550)
+        self.assertEqual(len(letters), 560)
         share_b = letters.count("B") / len(letters)
         self.assertLessEqual(
             share_b,
             MAX_OVERALL_B_SHARE,
-            f"correct==B is {share_b:.1%} ({letters.count('B')}/550)",
+            f"correct==B is {share_b:.1%} ({letters.count('B')}/560)",
         )
         for letter in LETTERS:
             share = letters.count(letter) / len(letters)
