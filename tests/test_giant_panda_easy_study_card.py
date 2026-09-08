@@ -1,4 +1,4 @@
-"""Giant panda Easy study-card: Junior Ranger teach + 10 MCQs (first deck)."""
+"""Giant panda Easy study-card: Junior Ranger teach + 10 MCQs (Park Ranger sibling)."""
 
 from __future__ import annotations
 
@@ -157,6 +157,20 @@ BRITTLE = (
     "kg",
     "cm",
 )
+# Explore more may name a later wrist-bone or status-letter prompt.
+PAGE_BRITTLE = (
+    "IUCN",
+    "Vulnerable",
+    "Endangered",
+    "Critically",
+    "Ailuropoda",
+    "melanoleuca",
+    "Qinling",
+    "sesamoid",
+    "umami",
+    "kg",
+    "cm",
+)
 RESERVED = (
     "Ailuropoda",
     "Qinling",
@@ -179,7 +193,7 @@ def _main(html: str) -> str:
 
 
 class GiantPandaEasyStudyCardTests(unittest.TestCase):
-    def test_deck_is_junior_ranger_easy_only(self):
+    def test_deck_is_junior_ranger_with_park_ranger(self):
         self.assertIn("giant-panda", study_card_ids())
         self.assertEqual(
             study_card_ids(),
@@ -202,8 +216,8 @@ class GiantPandaEasyStudyCardTests(unittest.TestCase):
                 "giant-panda",
             ),
         )
-        self.assertEqual(shipped_levels_for("giant-panda"), ("easy",))
-        self.assertIsNone(study_deck_for("giant-panda", "hard"))
+        self.assertEqual(shipped_levels_for("giant-panda"), ("easy", "hard"))
+        self.assertIsNotNone(study_deck_for("giant-panda", "hard"))
         self.assertIsNone(study_deck_for("giant-panda", "zoologist"))
         deck = study_deck_for("giant-panda")
         self.assertIsNotNone(deck)
@@ -361,16 +375,18 @@ class GiantPandaEasyStudyCardTests(unittest.TestCase):
             self.assertNotIn(phrase, html)
         visible = _text(html)
         self.assertIn("Junior Ranger", visible)
-        self.assertNotIn("Park Ranger", visible)
+        self.assertIn("Park Ranger", visible)
         self.assertNotIn("Zoologist", visible)
-        self.assertIn('class="study-level-badge"', html)
-        self.assertNotIn('class="study-level-picker"', html)
-        self.assertNotIn('data-study-pick="easy"', html)
-        self.assertNotIn('data-study-pick="hard"', html)
-        self.assertNotIn("study-level-picker-bottom", html)
+        self.assertIn('class="study-level-picker"', html)
+        self.assertIn('data-study-pick="easy"', html)
+        self.assertIn('data-study-pick="hard"', html)
+        self.assertNotIn('data-study-pick="zoologist"', html)
+        self.assertNotIn('class="study-level-badge"', html)
+        self.assertEqual(html.count('role="group"'), 2)
+        self.assertIn("study-level-picker-bottom", html)
         for badge in PLAIN_LEVEL_LABELS + AGE_BADGES:
             self.assertNotIn(badge, visible)
-        for phrase in BRITTLE:
+        for phrase in PAGE_BRITTLE:
             self.assertNotIn(phrase, html)
         self.assertIn("Bamboo — almost all of their food", html)
         self.assertIn("No — giant pandas are bears, not raccoons", html)
@@ -400,7 +416,7 @@ class GiantPandaEasyStudyCardTests(unittest.TestCase):
         self.assertIn('class="card-try-next no-print"', main)
         self.assertIn('class="card-page-photo-link"', main)
         self.assertIn('aria-label="Watch Live: Giant panda"', main)
-        self.assertNotIn("study-level-picker-bottom", main)
+        self.assertIn("study-level-picker-bottom", main)
         self.assertNotIn("card-print-note", main)
         self.assertIn("study-card.js?v=9", html)
         self.assertIn("study-card.css?v=9", html)
@@ -423,18 +439,19 @@ class GiantPandaEasyStudyCardTests(unittest.TestCase):
         self.assertLess(main.find("study-explore"), main.find("card-try-next"))
         visible = _text(main)
         self.assertIn("Junior Ranger", visible)
-        self.assertNotIn("Park Ranger", visible)
+        self.assertIn("Park Ranger", visible)
         self.assertNotIn("Zoologist", visible)
-        self.assertIn('class="study-level-badge"', main)
-        self.assertNotIn('class="study-level-picker"', main)
-        self.assertNotIn('data-study-pick="easy"', main)
-        self.assertNotIn('data-study-pick="hard"', main)
+        self.assertIn('class="study-level-picker"', main)
+        self.assertIn('data-study-pick="easy"', main)
+        self.assertIn('data-study-pick="hard"', main)
+        self.assertNotIn('data-study-pick="zoologist"', main)
+        self.assertNotIn('class="study-level-badge"', main)
         self.assertIn("Learn first", main)
         self.assertIn(">Quiz</h2>", main)
         self.assertEqual(main.count("data-study-correct"), 2)
         for badge in PLAIN_LEVEL_LABELS + AGE_BADGES:
             self.assertNotIn(badge, visible)
-        for phrase in BRITTLE:
+        for phrase in PAGE_BRITTLE:
             self.assertNotIn(phrase, main)
         print_tpl = html.split('id="study-print-template">', 1)[1].split("</template>", 1)[0]
         self.assertIn("Junior Ranger", print_tpl)
@@ -497,7 +514,7 @@ class GiantPandaEasyStudyCardTests(unittest.TestCase):
         self.assertIn("is-wrong-pick", study_js)
         self.assertIn("FPStudyLevelName", study_js + STUDY_DATA_JS.read_text(encoding="utf-8"))
 
-    def test_artifacts_include_giant_panda_easy_only(self):
+    def test_artifacts_include_giant_panda_easy_and_hard(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
         self.assertIn("giant-panda", payload)
         self.assertIn("orangutan", payload)
@@ -517,7 +534,7 @@ class GiantPandaEasyStudyCardTests(unittest.TestCase):
         self.assertIn("african-lion", payload)
         panda = payload["giant-panda"]
         self.assertEqual(panda["id"], "giant-panda")
-        self.assertEqual(set(panda["levels"]), {"easy"})
+        self.assertEqual(set(panda["levels"]), {"easy", "hard"})
         easy = panda["levels"]["easy"]
         self.assertEqual(len(easy["teach"]), 5)
         self.assertEqual(len(easy["questions"]), STUDY_SLOTS)
@@ -527,7 +544,9 @@ class GiantPandaEasyStudyCardTests(unittest.TestCase):
         )
         for q in easy["questions"]:
             self.assertEqual(len(q["choices"]), 3)
-        self.assertNotIn("hard", panda["levels"])
+        hard = panda["levels"]["hard"]
+        self.assertEqual(hard["teach"], [])
+        self.assertEqual(len(hard["questions"]), STUDY_SLOTS)
         self.assertNotIn("zoologist", panda["levels"])
         data_js = STUDY_DATA_JS.read_text(encoding="utf-8")
         self.assertIn("giant-panda", data_js)
@@ -609,7 +628,7 @@ class GiantPandaEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Zoologist", _text(_main(orang_html)))
         panda_html = GIANT_PANDA.read_text(encoding="utf-8")
         self.assertIn("Junior Ranger", _text(_main(panda_html)))
-        self.assertNotIn("Park Ranger", _text(_main(panda_html)))
+        self.assertIn("Park Ranger", _text(_main(panda_html)))
         self.assertNotIn("Zoologist", _text(_main(panda_html)))
 
 
