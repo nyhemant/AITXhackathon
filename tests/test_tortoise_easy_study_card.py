@@ -48,7 +48,7 @@ PENGUIN = FP / "cards" / "african-penguin" / "index.html"
 ELEPHANT = FP / "cards" / "african-elephant" / "index.html"
 GIRAFFE = FP / "cards" / "reticulated-giraffe" / "index.html"
 LION = FP / "cards" / "african-lion" / "index.html"
-GIANT_PANDA = FP / "cards" / "giant-panda" / "index.html"
+OTTER = FP / "cards" / "asian-small-clawed-otter" / "index.html"
 PRINT_KIT = FP / "js" / "print-kit.js"
 STUDY_JS = FP / "js" / "study-card.js"
 STYLES = FP / "css" / "styles.css"
@@ -144,6 +144,7 @@ class TortoiseEasyStudyCardTests(unittest.TestCase):
                 "koala",
                 "chimpanzee",
                 "orangutan",
+                "giant-panda",
             ),
         )
         self.assertEqual(shipped_levels_for("galapagos-tortoise"), ("easy", "hard", "zoologist"))
@@ -258,13 +259,13 @@ class TortoiseEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Facts from Wikipedia, Galápagos tortoise.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
-        html = outing_talk_html({"id": "giant-panda", "packTemplate": "animals"})
+        html = outing_talk_html({"id": "asian-small-clawed-otter", "packTemplate": "animals"})
         self.assertIn("What do they eat?", html)
         self.assertNotIn("card-study-pack", html)
         self.assertNotIn("Where do wild Galápagos tortoises live?", html)
-        panda = GIANT_PANDA.read_text(encoding="utf-8")
-        self.assertIn("What do they eat?", panda)
-        self.assertNotIn("card-study-pack", panda)
+        otter = OTTER.read_text(encoding="utf-8")
+        self.assertIn("What do they eat?", otter)
+        self.assertNotIn("card-study-pack", otter)
 
     def test_published_tortoise_card_matches_easy_deck(self):
         html = TORTOISE.read_text(encoding="utf-8")

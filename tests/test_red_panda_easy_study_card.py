@@ -74,7 +74,7 @@ PENGUIN = FP / "cards" / "african-penguin" / "index.html"
 ELEPHANT = FP / "cards" / "african-elephant" / "index.html"
 GIRAFFE = FP / "cards" / "reticulated-giraffe" / "index.html"
 LION = FP / "cards" / "african-lion" / "index.html"
-GIANT_PANDA = FP / "cards" / "giant-panda" / "index.html"
+OTTER = FP / "cards" / "asian-small-clawed-otter" / "index.html"
 PRINT_KIT = FP / "js" / "print-kit.js"
 STUDY_JS = FP / "js" / "study-card.js"
 STYLES = FP / "css" / "styles.css"
@@ -183,6 +183,7 @@ class RedPandaEasyStudyCardTests(unittest.TestCase):
                 "koala",
                 "chimpanzee",
                 "orangutan",
+                "giant-panda",
             ),
         )
         self.assertEqual(shipped_levels_for("red-panda"), ("easy", "hard", "zoologist"))
@@ -335,13 +336,13 @@ class RedPandaEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Facts from Wikipedia, Red panda.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
-        html = outing_talk_html({"id": "giant-panda", "packTemplate": "animals"})
+        html = outing_talk_html({"id": "asian-small-clawed-otter", "packTemplate": "animals"})
         self.assertIn("What do they eat?", html)
         self.assertNotIn("card-study-pack", html)
         self.assertNotIn("Is a red panda a kind of bear, like a giant panda?", html)
-        panda = GIANT_PANDA.read_text(encoding="utf-8")
-        self.assertIn("What do they eat?", panda)
-        self.assertNotIn("card-study-pack", panda)
+        otter = OTTER.read_text(encoding="utf-8")
+        self.assertIn("What do they eat?", otter)
+        self.assertNotIn("card-study-pack", otter)
 
     def test_published_red_panda_card_matches_easy_deck(self):
         html = RED_PANDA.read_text(encoding="utf-8")

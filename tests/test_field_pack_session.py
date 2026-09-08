@@ -152,6 +152,7 @@ class FlagshipSessionTests(unittest.TestCase):
                 "reticulated-giraffe",
                 "african-elephant",
                 "african-penguin",
+                "giant-panda",
             ):
                 self.assertIn("What do they eat?", html)
         koala = (FP / "cards" / "koala" / "index.html").read_text(encoding="utf-8")
