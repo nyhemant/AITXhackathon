@@ -236,6 +236,17 @@
   font-weight: 850;
   color: #0f5c5c;
 }
+/* Study pack only: answer text is regular until a correct pick (or reveal). */
+.card-page .card-study-pack .study-choice,
+.card-page .card-study-pack .study-choice > span:not(.dot) {
+  font-weight: 500;
+}
+.card-page .card-study-pack .study-choice.is-correct-pick,
+.card-page .card-study-pack .study-choice.is-correct-pick > span:not(.dot),
+.card-page .card-study-pack .study-choice.is-correct-key,
+.card-page .card-study-pack .study-choice.is-correct-key > span:not(.dot) {
+  font-weight: 800;
+}
 .card-page .card-study-pack .study-choice.is-wrong-pick,
 .card-page .card-study-pack .study-choice.is-wrong-pick:disabled {
   background: #d5d8de !important;
@@ -245,6 +256,10 @@
   transform: none;
   box-shadow: none;
   opacity: 1;
+  font-weight: 500;
+}
+.card-page .card-study-pack .study-choice.is-wrong-pick > span:not(.dot) {
+  font-weight: 500;
 }
 .card-page .card-study-pack .study-choice.is-wrong-pick .dot {
   border-color: #7b828c;
@@ -334,6 +349,29 @@
   .card-page .card-try-next-name {
     font-size: 0.7rem;
     padding: 0.32rem 0.35rem 0.4rem;
+  }
+}
+
+/*
+ * Difficulty washes tint the question box (.study-q), not the chips.
+ * Screen-only so print stays the current mint/neutral sheet.
+ * Park Ranger uses #fff6ee — not the outing wrong-pick orange #fff1e0.
+ */
+@media screen {
+  .card-page .card-study-pack .study-q,
+  .card-page .card-study-pack[data-study-level="easy"] .study-q {
+    background: #f3faf7;
+  }
+  .card-page .card-study-pack[data-study-level="hard"] .study-q {
+    background: #fff6ee;
+    border-color: rgba(196, 120, 64, 0.18);
+  }
+  .card-page .card-study-pack[data-study-level="zoologist"] .study-q {
+    background: #fbf2f5;
+    border-color: rgba(160, 80, 110, 0.16);
+  }
+  .card-page .card-study-pack .study-q .study-choice:not(.is-correct-pick):not(.is-wrong-pick) {
+    background: #fff;
   }
 }
 
