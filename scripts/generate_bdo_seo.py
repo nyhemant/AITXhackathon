@@ -218,7 +218,8 @@ OUTING_TALK_ANIMAL = (
 # Observation talk packs for cards that are not on a study deck yet.
 # Lion, giraffe, elephant, penguin, Caribbean flamingo, Galápagos
 # tortoise, and zebra (JR / Park Ranger / Zoologist) live in
-# scripts/study_cards.py. Nile hippo ships Junior Ranger only.
+# scripts/study_cards.py. Nile hippo ships Junior Ranger +
+# Park Ranger (no Zoologist yet).
 CARD_TALK_OVERRIDE: dict[str, tuple[dict, ...]] = {}
 
 # Optional More talk on a card. Unused while lion ships the Easy study deck.

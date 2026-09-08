@@ -112,16 +112,21 @@ foraging places, and a threats-first status snapshot. Soften
 contested numbers and the IUCN letter. Do not redo JR or PR
 themes.
 
-Facts for nile-hippo Junior Ranger (easy only) are Wikipedia-backed:
+Facts for nile-hippo Junior Ranger + Park Ranger (easy + hard)
+are Wikipedia-backed:
 https://en.wikipedia.org/wiki/Hippopotamus
 Species framing is the common hippopotamus / Nile hippo
 (Hippopotamus amphibius). JR stays kid-simple “Nile hippo.”
-Soften contested numbers and IUCN letters. Soften “closest
-living relatives are whales and dolphins” as a surprise fact
-— no deep clade chemistry. Reserve for later tiers: skin-goo
-chemistry, whale-clade detail, subspecies, Colombia
-introductions, and status letters. Do not add Park Ranger or
-Zoologist yet.
+Soften contested numbers and IUCN letters. Soften weight
+ranking vs elephants/rhinos. Hard deepens bottom-walking
+(true swimming debated), water territory, pods in water vs
+solitary night grazing, the wheeze-honk, among-the-giants
+size, skin-goo sunscreen plus antimicrobial jobs, must-breathe
+surfacing, home waters, habitat-loss and hunting threats, and
+calves riding on mom’s back in deep water. Reserve for
+Zoologist: skin-goo chemistry detail, whale-clade detail,
+subspecies, Colombia introductions, gut anatomy, and status
+letters. Do not add Zoologist yet. Do not redo JR themes.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
@@ -167,7 +172,7 @@ LEVEL_DISPLAY_NAMES = {
 # Lion, reticulated-giraffe, African elephant, African penguin,
 # Caribbean flamingo, Galápagos tortoise, and zebra ship Junior
 # Ranger + Park Ranger + Zoologist. Nile hippo ships Junior
-# Ranger only.
+# Ranger + Park Ranger (no Zoologist yet).
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -277,15 +282,14 @@ PUSH_FURTHER_ZEBRA = (
     "Quagga Project tries to breed back a quagga-like look — what does “extinct” mean if genes live on in relatives?",
 )
 TALK_ABOUT_HIPPO = (
-    "Why might people have called this animal a “river horse”?",
-    "Why stay cool in water by day and eat grass at night?",
-    "What job could that reddish sunscreen goo do on a hippo’s skin?",
-    "Why sit your eyes, ears, and nose on top of your head if you live in a river?",
+    "Hippos often walk or bounce on the river bottom. How is that different from a fish that swims?",
+    "Why might a bull hippo hold a stretch of water, but show little territoriality on land?",
+    "A wheeze-honk can travel a long way. What might a hippo be saying to the rest of the pod?",
 )
 PUSH_FURTHER_HIPPO = (
-    "Hippos often walk on the river bottom. How is that different from a fish that swims?",
+    "The reddish skin goo is sunscreen and can help fight microbes. What other “weird” animal traits might have unexpected jobs?",
     "A hippo’s closest living relatives are whales and dolphins. What still surprises you about that?",
-    "Hippos rest close together in the water, then graze alone on land. Why might that be safer?",
+    "Hippos rest in pods in the water, then graze alone on land. Why might bachelor bulls stay near the edge?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -3321,6 +3325,147 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Hippos have little hair. Their thick skin still needs water or mud, or it can crack even with the sunscreen goo.",
+                    },
+                ],
+            },
+            "hard": {
+                # Answer-light: no Learn-first strip. Facts from Wikipedia,
+                # Hippopotamus. Soften contested numbers, IUCN letters, and
+                # the exact weight rank vs elephants/rhinos. Skin-goo
+                # chemistry names, whale-clade detail, subspecies,
+                # Colombia introductions, and gut anatomy live on
+                # Zoologist. Do not redo JR themes.
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "bottom-walk",
+                        "title": "Walk the bottom",
+                        "stem": "How do Nile hippos usually move when they are underwater?",
+                        "choices": [
+                            "They swim like fish with a long tail",
+                            "They walk or bounce along the bottom — true swimming is debated",
+                            "They fly just under the surface",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says they move in the water by walking or bouncing off the bottom. Whether they truly swim is still debated.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "water-territory",
+                        "title": "Water territory",
+                        "stem": "Where does a bull Nile hippo usually hold territory?",
+                        "choices": [
+                            "A big patch of grassland he patrols all night",
+                            "A stretch of water — they show little territoriality on land while grazing",
+                            "Only a nest in a tree",
+                        ],
+                        "correct": "B",
+                        "why": "Territorial bulls preside over a stretch of water. Hippos typically do not display territorial behaviour on land while they graze.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "pods",
+                        "title": "Pods",
+                        "stem": "How do Nile hippos usually group up in water versus on land?",
+                        "choices": [
+                            "They live alone in the water and graze in huge herds at night",
+                            "They rest in pods in the water, then typically graze alone at night",
+                            "They always stay in one tight family on land and in water",
+                        ],
+                        "correct": "B",
+                        "why": "Hippos rest near each other in the water, but grazing is a solitary activity and they typically come out at night to eat.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "wheeze-honk",
+                        "title": "Wheeze-honk",
+                        "stem": "What is a Nile hippo’s best-known long-carrying contact call?",
+                        "choices": [
+                            "A lion-like roar that only works underwater",
+                            "A wheeze-honk that can travel a long way through the air",
+                            "A silent blink that only calves can see",
+                        ],
+                        "correct": "B",
+                        "why": "The most common hippo vocalisation is the wheeze-honk, which can travel over long distances in air.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "giants",
+                        "title": "Among the giants",
+                        "stem": "Where does a Nile hippo sit among the largest land mammals?",
+                        "choices": [
+                            "It is smaller than a house cat",
+                            "After elephants and rhinos, it is among the next-largest land mammals",
+                            "It is the only giant mammal that ever lived",
+                        ],
+                        "correct": "B",
+                        "why": "After elephants and rhinoceroses, the hippopotamus is among the next-largest land mammals. Weights vary, so we keep the ranking soft.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "skin-goo",
+                        "title": "Skin goo jobs",
+                        "stem": "Besides showing it is not blood, what jobs can a hippo’s reddish skin goo do?",
+                        "choices": [
+                            "It is only for painting zoo walls",
+                            "It works as a sunscreen and can help fight microbes",
+                            "It turns the hippo into a fish",
+                        ],
+                        "correct": "B",
+                        "why": "The red secretion is a natural sunscreen and can inhibit disease-causing bacteria. We skip the chemical names.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "must-breathe",
+                        "title": "Must breathe",
+                        "stem": "What must a Nile hippo still do even when it rests under water?",
+                        "choices": [
+                            "Hold its breath for days like a whale",
+                            "Come up to breathe regularly — even during submerged rest",
+                            "Grow gills after sunset",
+                        ],
+                        "correct": "B",
+                        "why": "Hippos must surface regularly to breathe. They can rest while submerged and still come up for air, seemingly without waking.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "home-waters",
+                        "title": "Home waters",
+                        "stem": "Where do wild Nile hippos live?",
+                        "choices": [
+                            "Only on Arctic ice",
+                            "Rivers, lakes, and mangrove swamps in sub-Saharan Africa",
+                            "Only in city fountains",
+                        ],
+                        "correct": "B",
+                        "why": "Hippos inhabit rivers, lakes, and mangrove swamps. They are native to sub-Saharan Africa.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "threats",
+                        "title": "Threats",
+                        "stem": "What puts wild Nile hippos under pressure today?",
+                        "choices": [
+                            "Too many birthday cakes",
+                            "Habitat loss, plus hunting for meat and teeth",
+                            "They have no wild threats",
+                        ],
+                        "correct": "B",
+                        "why": "They are threatened by habitat loss and hunting for meat and teeth. We do not lock a status letter.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "calf-ride",
+                        "title": "Calf ride",
+                        "stem": "How can a Nile hippo calf travel with its mother in deep water?",
+                        "choices": [
+                            "It flies above her",
+                            "It rides on her back",
+                            "It hitches a ride on a crocodile",
+                        ],
+                        "correct": "B",
+                        "why": "Young are carried on their mothers’ backs in deep water.",
                     },
                 ],
             },
