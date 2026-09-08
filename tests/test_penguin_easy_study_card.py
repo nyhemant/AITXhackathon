@@ -132,6 +132,7 @@ class PenguinEasyStudyCardTests(unittest.TestCase):
                 "red-panda",
                 "koala",
                 "chimpanzee",
+                "orangutan",
             ),
         )
         self.assertEqual(shipped_levels_for("african-penguin"), ("easy", "hard", "zoologist"))
