@@ -379,6 +379,7 @@ class SharkEasyStudyCardTests(unittest.TestCase):
         for phrase in PAGE_BRITTLE:
             self.assertNotIn(phrase, html)
         self.assertIn("Soft cartilage, not hard bone", html)
+        self.assertIn("Solid bone like a dog’s skeleton", html)
         self.assertIn(
             "No — of hundreds of kinds, most are not dangerous to people",
             html,

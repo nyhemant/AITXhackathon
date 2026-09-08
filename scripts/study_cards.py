@@ -9037,7 +9037,7 @@ STUDY_CARDS: dict[str, dict] = {
                         "stem": "What are a shark’s “bones” made of?",
                         "choices": [
                             "Soft cartilage, not hard bone",
-                            "Hard bone like a dog’s skeleton",
+                            "Solid bone like a dog’s skeleton",
                             "Only seashell",
                         ],
                         "correct": "A",
@@ -9145,7 +9145,7 @@ STUDY_CARDS: dict[str, dict] = {
                             "Fishing and finning can hurt many kinds; how they are doing differs by kind",
                         ],
                         "correct": "C",
-                        "why": "Wikipedia says fishing and the taking of fins can hurt many kinds of sharks. How each kind is doing is different — we do not lock one status letter.",
+                        "why": "Wikipedia says fishing and finning can hurt many kinds of sharks. How each kind is doing is different — we do not lock one status letter.",
                     },
                     {
                         "slot": 10,
