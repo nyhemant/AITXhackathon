@@ -219,7 +219,7 @@ OUTING_TALK_ANIMAL = (
 # Lion, giraffe, elephant, penguin, Caribbean flamingo, Galápagos
 # tortoise, zebra, Nile hippo, and Sumatran tiger (JR / Park Ranger /
 # Zoologist) live in scripts/study_cards.py. Western lowland gorilla
-# ships Junior Ranger only (no Park Ranger or Zoologist yet).
+# ships Junior Ranger + Park Ranger (no Zoologist yet).
 CARD_TALK_OVERRIDE: dict[str, tuple[dict, ...]] = {}
 
 # Optional More talk on a card. Unused while lion ships the Easy study deck.

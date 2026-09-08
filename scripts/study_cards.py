@@ -168,8 +168,8 @@ bycatch, and conflict on forest–farm edges. Soften contested
 numbers and treat CR as a snapshot. Do not redo JR or PR
 themes.
 
-Facts for western-lowland-gorilla Junior Ranger (easy only) are
-Wikipedia-backed:
+Facts for western-lowland-gorilla Junior Ranger + Park Ranger
+(easy + hard) are Wikipedia-backed:
 https://en.wikipedia.org/wiki/Western_lowland_gorilla
 Species framing is the western lowland gorilla (Gorilla
 gorilla gorilla). JR stays kid-simple “western lowland
@@ -182,9 +182,17 @@ still huge. Knuckle-walk on the ground. Chest-beat and charge
 are displays; usually calm unless disturbed. Babies cling and
 ride on mom for years. Leafy night nests each night. Myth:
 they are plant-eating family apes, not King Kong movie
-monsters. Reserve for later: CR letter, Ebola, SIV/HIV,
-genome, Cross River, Snowflake genetics, and deep tool-use.
-Do not add Park Ranger or Zoologist yet.
+monsters. Hard deepens fruit when ripe versus leaves/stems/bark
+when scarce, swamp forest and bais as feeding places,
+overlapping (not strongly territorial) ranges, bachelor years
+before a male leads, the male–female size gap (soften kg),
+seed-spreading in dung, bushmeat plus forest-loss threats
+(no status letter), nearly all zoo gorillas as this subspecies,
+avoiding villages/roads/farms, and a slow family (few young;
+long infant dependence — soften ages). Reserve for Zoologist:
+CR letter, Ebola, SIV/HIV, genome, Cross River, Snowflake
+genetics, and deep tool-use. Do not add Zoologist yet. Do
+not redo JR themes.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
@@ -235,8 +243,8 @@ LEVEL_DISPLAY_NAMES = {
 # Lion, reticulated-giraffe, African elephant, African penguin,
 # Caribbean flamingo, Galápagos tortoise, zebra, Nile hippo,
 # and Sumatran tiger ship Junior Ranger + Park Ranger + Zoologist.
-# Western lowland gorilla ships Junior Ranger only (no Park Ranger
-# or Zoologist yet).
+# Western lowland gorilla ships Junior Ranger + Park Ranger
+# (no Zoologist yet).
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -370,14 +378,14 @@ PUSH_FURTHER_TIGER = (
     "Zoo family trees rest on few founders, and some cubs have shown inner-ear trouble. What would you ask a keeper about that bottleneck?",
 )
 TALK_ABOUT_GORILLA = (
-    "A silverback leads and protects the family. Why might one strong adult be a good protector?",
-    "People sometimes think gorillas eat meat like movie monsters. What do they really eat?",
-    "Gorillas walk on their knuckles. What might that let them do with their hands?",
+    "Fruit is a favorite when it is ripe, but leaves, stems, and bark fill in when fruit is scarce. Why might a seasonal diet help a gorilla?",
+    "A young male may spend years alone or with other males before he leads. How is that bachelor time different from being a silverback?",
+    "Nearly all zoo gorillas are this subspecies — western lowland. What could you ask a keeper about which gorilla lives here?",
 )
 PUSH_FURTHER_GORILLA = (
-    "Most zoo gorillas are this kind — western lowland. What could you ask a keeper about which gorilla lives here?",
-    "Swamp forest is an important home, not only dry rainforest. Why might wet forest help a gorilla?",
     "A threat letter on a list can change later. Why wait before treating one letter as a forever grade?",
+    "Wild gorillas have been seen using sticks as tools. What would you still want to know before calling that everyday behavior?",
+    "Disease outbreaks can hit gorilla groups hard. Why might an outbreak change a family faster than hunting alone?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -4274,6 +4282,146 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "B",
                         "why": "Wikipedia describes plant-eating family groups led by a silverback — not movie monsters.",
+                    },
+                ],
+            },
+            "hard": {
+                # Answer-light: no Learn-first strip. Facts from Wikipedia,
+                # Western lowland gorilla. Soften contested numbers and IUCN
+                # letters. CR letter, Ebola, SIV/HIV, genome, Cross River,
+                # Snowflake genetics, and deep tool-use live on Zoologist.
+                # Do not redo JR themes.
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "ripe-fruit",
+                        "title": "Fruit when ripe",
+                        "stem": "When do western lowland gorillas eat the most fruit?",
+                        "choices": [
+                            "They eat only meat all year",
+                            "They eat more fruit when ripe fruit is available, and more leaves, stems, and bark when fruit is scarce",
+                            "They never eat plants",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says when ripe fruit is available they eat more fruit; when it is scarce they eat leaves, herbs, and bark.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "swamp-bais",
+                        "title": "Swamp and clearings",
+                        "stem": "Besides rainforest, which feeding places matter a lot for western lowland gorillas?",
+                        "choices": [
+                            "Only city parks",
+                            "Swamp forest and open forest clearings called bais",
+                            "Only icy mountaintops",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says swamp forest is an important food source and habitat, and groups use large open clearings — swamps and bais — as they follow ripening fruit.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "overlap-ranges",
+                        "title": "Overlapping ranges",
+                        "stem": "How do western lowland gorilla groups treat their home ranges?",
+                        "choices": [
+                            "Each group owns a locked territory that no neighbor may enter",
+                            "They are not strongly territorial — neighboring groups’ ranges often overlap",
+                            "They migrate across the whole ocean",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says gorillas do not display territorial behavior, and neighboring groups often overlap ranges.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "bachelor-years",
+                        "title": "Bachelor years",
+                        "stem": "What happens after a young male leaves his birth group?",
+                        "choices": [
+                            "He instantly becomes the silverback of that same family",
+                            "He may spend years alone or with other males before leading a family",
+                            "He turns into a chimpanzee",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says males leave their natal group before maturity and go through a bachelor stage that can last several years, alone or in a nonbreeding group.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "size-gap",
+                        "title": "Size gap",
+                        "stem": "How do male and female western lowland gorillas compare in size?",
+                        "choices": [
+                            "Females are always much larger than males",
+                            "Males are much larger than females — a big size gap",
+                            "They are the same size as house cats",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says this subspecies shows pronounced sexual dimorphism — males are much larger than females. We do not lock one weight.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "seed-movers",
+                        "title": "Seed movers",
+                        "stem": "How do western lowland gorillas help the forest grow new plants?",
+                        "choices": [
+                            "They plant seeds with shovels",
+                            "They spread seeds in their dung as they travel",
+                            "They burn the forest every night",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says they are seed dispersers. Seeds pass through the gut and land in dung, which helps many forest plants.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "threats",
+                        "title": "Threats",
+                        "stem": "What puts wild western lowland gorillas under pressure today?",
+                        "choices": [
+                            "Too many birthday parties",
+                            "Bushmeat hunting and forest loss",
+                            "They have no wild threats",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia names hunting for bushmeat and habitat destruction from logging and expanding settlements. We do not lock a status letter.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "zoo-gorilla",
+                        "title": "Zoo gorilla",
+                        "stem": "Which gorilla do you almost always meet in a zoo?",
+                        "choices": [
+                            "Almost every zoo gorilla is a mountain gorilla from the highlands",
+                            "Nearly all zoo gorillas are western lowland gorillas",
+                            "Zoos keep only movie-monster costumes",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says the western lowland gorilla is the subspecies almost always kept in zoos — nearly all zoo gorillas are this kind.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "avoid-people",
+                        "title": "Avoid people",
+                        "stem": "How do wild western lowland gorillas usually treat villages, roads, and farms?",
+                        "choices": [
+                            "They prefer to live in town centers",
+                            "They stay away from villages, roads, and farms that show people nearby",
+                            "They build houses next to highways",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says they are not typically seen near human settlements and villages, and they avoid roads and farms that show signs of human activity.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "slow-family",
+                        "title": "Slow family",
+                        "stem": "How fast do western lowland gorilla families grow?",
+                        "choices": [
+                            "Females have huge litters every month",
+                            "Families grow slowly — few young, and infants stay dependent for a long time",
+                            "Babies live on their own from day one",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says females do not produce many offspring, and infants can stay dependent on mom for years. We keep the ages soft.",
                     },
                 ],
             },
