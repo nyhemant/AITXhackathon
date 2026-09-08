@@ -113,8 +113,7 @@ AGE_BADGES = ("Ages", "Age 4", "age badge", "ages 4", "4–6", "4-6")
 BRITTLE = (
     "500,000",
     "500 000",
-    "mph",
-    "km/h",
+    " km/h",
     "60 km",
     "70 km",
     "120,000",
