@@ -168,9 +168,9 @@ class GorillaEasyStudyCardTests(unittest.TestCase):
                 "western-lowland-gorilla",
             ),
         )
-        self.assertEqual(shipped_levels_for("western-lowland-gorilla"), ("easy", "hard"))
+        self.assertEqual(shipped_levels_for("western-lowland-gorilla"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("western-lowland-gorilla", "hard"))
-        self.assertIsNone(study_deck_for("western-lowland-gorilla", "zoologist"))
+        self.assertIsNotNone(study_deck_for("western-lowland-gorilla", "zoologist"))
         deck = study_deck_for("western-lowland-gorilla")
         self.assertIsNotNone(deck)
         self.assertEqual(deck["id"], "western-lowland-gorilla")
@@ -284,11 +284,11 @@ class GorillaEasyStudyCardTests(unittest.TestCase):
         visible = _text(html)
         self.assertIn("Junior Ranger", visible)
         self.assertIn("Park Ranger", visible)
-        self.assertNotIn("Zoologist", visible)
+        self.assertIn("Zoologist", visible)
         self.assertIn('class="study-level-picker"', html)
         self.assertIn('data-study-pick="easy"', html)
         self.assertIn('data-study-pick="hard"', html)
-        self.assertNotIn('data-study-pick="zoologist"', html)
+        self.assertIn('data-study-pick="zoologist"', html)
         self.assertNotIn('class="study-level-badge"', html)
         self.assertEqual(html.count('role="group"'), 2)
         self.assertIn("study-level-picker-bottom", html)
@@ -348,11 +348,11 @@ class GorillaEasyStudyCardTests(unittest.TestCase):
         visible = _text(main)
         self.assertIn("Junior Ranger", visible)
         self.assertIn("Park Ranger", visible)
-        self.assertNotIn("Zoologist", visible)
+        self.assertIn("Zoologist", visible)
         self.assertIn('class="study-level-picker"', main)
         self.assertIn('data-study-pick="easy"', main)
         self.assertIn('data-study-pick="hard"', main)
-        self.assertNotIn('data-study-pick="zoologist"', main)
+        self.assertIn('data-study-pick="zoologist"', main)
         self.assertNotIn('class="study-level-badge"', main)
         self.assertIn("Learn first", main)
         self.assertIn(">Quiz</h2>", main)
@@ -436,14 +436,14 @@ class GorillaEasyStudyCardTests(unittest.TestCase):
         self.assertIn("african-lion", payload)
         gorilla = payload["western-lowland-gorilla"]
         self.assertEqual(gorilla["id"], "western-lowland-gorilla")
-        self.assertEqual(set(gorilla["levels"]), {"easy", "hard"})
+        self.assertEqual(set(gorilla["levels"]), {"easy", "hard", "zoologist"})
         easy = gorilla["levels"]["easy"]
         self.assertEqual(len(easy["teach"]), 5)
         self.assertEqual(len(easy["questions"]), STUDY_SLOTS)
         for q in easy["questions"]:
             self.assertEqual(len(q["choices"]), 3)
         self.assertEqual(gorilla["levels"]["hard"]["teach"], [])
-        self.assertNotIn("zoologist", gorilla["levels"])
+        self.assertEqual(gorilla["levels"]["zoologist"]["teach"], [])
         data_js = STUDY_DATA_JS.read_text(encoding="utf-8")
         self.assertIn("western-lowland-gorilla", data_js)
         self.assertIn('"easy":"Junior Ranger"', data_js)
@@ -495,7 +495,7 @@ class GorillaEasyStudyCardTests(unittest.TestCase):
         gorilla_html = GORILLA.read_text(encoding="utf-8")
         self.assertIn("Junior Ranger", _text(_main(gorilla_html)))
         self.assertIn("Park Ranger", _text(_main(gorilla_html)))
-        self.assertNotIn("Zoologist", _text(_main(gorilla_html)))
+        self.assertIn("Zoologist", _text(_main(gorilla_html)))
 
 
 if __name__ == "__main__":
