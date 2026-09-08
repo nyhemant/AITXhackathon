@@ -168,8 +168,8 @@ bycatch, and conflict on forest–farm edges. Soften contested
 numbers and treat CR as a snapshot. Do not redo JR or PR
 themes.
 
-Facts for western-lowland-gorilla Junior Ranger + Park Ranger
-(easy + hard) are Wikipedia-backed:
+Facts for western-lowland-gorilla Junior Ranger + Park Ranger +
+Zoologist (easy + hard + zoologist) are Wikipedia-backed:
 https://en.wikipedia.org/wiki/Western_lowland_gorilla
 Species framing is the western lowland gorilla (Gorilla
 gorilla gorilla). JR stays kid-simple “western lowland
@@ -189,10 +189,18 @@ before a male leads, the male–female size gap (soften kg),
 seed-spreading in dung, bushmeat plus forest-loss threats
 (no status letter), nearly all zoo gorillas as this subspecies,
 avoiding villages/roads/farms, and a slow family (few young;
-long infant dependence — soften ages). Reserve for Zoologist:
-CR letter, Ebola, SIV/HIV, genome, Cross River, Snowflake
-genetics, and deep tool-use. Do not add Zoologist yet. Do
-not redo JR themes.
+long infant dependence — soften ages). Zoologist is
+answer-light (empty teach) and holds a CR snapshot (hunting +
+disease; letter not forever), Ebola drops in some wild groups
+(soften %/counts), gorilla SIV related to some HIV-1 lineages
+(light clinical detail), the 2012 genome (soften %; some
+regions closer to human than chimp), Cross River cousin
+(G. g. gorilla + G. g. diehli), Snowflake SLC45A2 genetics
+(related carrier parents; inbreeding evidence), deep tool use
+(modify sticks for holes; gauge water depth), the nominate
+name Gorilla gorilla gorilla, logging roads that enable
+deeper bushmeat hunting, and Congo swamp-forest strongholds.
+Soften contested numbers. Do not redo JR or PR themes.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
@@ -242,9 +250,8 @@ LEVEL_DISPLAY_NAMES = {
 # Shipped picker order. A card only shows keys it actually defines.
 # Lion, reticulated-giraffe, African elephant, African penguin,
 # Caribbean flamingo, Galápagos tortoise, zebra, Nile hippo,
-# and Sumatran tiger ship Junior Ranger + Park Ranger + Zoologist.
-# Western lowland gorilla ships Junior Ranger + Park Ranger
-# (no Zoologist yet).
+# Sumatran tiger, and western lowland gorilla ship Junior Ranger
+# + Park Ranger + Zoologist.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -378,14 +385,14 @@ PUSH_FURTHER_TIGER = (
     "Zoo family trees rest on few founders, and some cubs have shown inner-ear trouble. What would you ask a keeper about that bottleneck?",
 )
 TALK_ABOUT_GORILLA = (
-    "Fruit is a favorite when it is ripe, but leaves, stems, and bark fill in when fruit is scarce. Why might a seasonal diet help a gorilla?",
-    "A young male may spend years alone or with other males before he leads. How is that bachelor time different from being a silverback?",
-    "Nearly all zoo gorillas are this subspecies — western lowland. What could you ask a keeper about which gorilla lives here?",
+    "A threat letter on a list can change when new counts arrive. Why treat that letter as a snapshot, not a forever grade?",
+    "A virus outbreak can crash a wild group faster than hunting alone. Why might those two threats need different stories?",
+    "Western gorillas include this lowland form and a rarer cousin along one river border. Why keep those cousins on separate lists?",
 )
 PUSH_FURTHER_GORILLA = (
-    "A threat letter on a list can change later. Why wait before treating one letter as a forever grade?",
-    "Wild gorillas have been seen using sticks as tools. What would you still want to know before calling that everyday behavior?",
-    "Disease outbreaks can hit gorilla groups hard. Why might an outbreak change a family faster than hunting alone?",
+    "Some DNA stretches look more like people than like chimps — incomplete lineage sorting. Why is a simple three-way family tree not the whole story?",
+    "Laverania malaria parasites show up in some gorilla dung studies. What would you still want to know before calling that everyday infection?",
+    "Some zoo gorillas show stereotypic habits such as pacing or hair-plucking. Why might those show up more in captivity than in the forest?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -4289,7 +4296,8 @@ STUDY_CARDS: dict[str, dict] = {
                 # Answer-light: no Learn-first strip. Facts from Wikipedia,
                 # Western lowland gorilla. Soften contested numbers and IUCN
                 # letters. CR letter, Ebola, SIV/HIV, genome, Cross River,
-                # Snowflake genetics, and deep tool-use live on Zoologist.
+                # Snowflake genetics, deep tool-use, nominate name, logging
+                # roads, and swamp strongholds live on Zoologist.
                 # Do not redo JR themes.
                 "teach": [],
                 "questions": [
@@ -4422,6 +4430,146 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "B",
                         "why": "Wikipedia says females do not produce many offspring, and infants can stay dependent on mom for years. We keep the ages soft.",
+                    },
+                ],
+            },
+            "zoologist": {
+                # Answer-light: no Learn-first strip. Facts from Wikipedia,
+                # Western lowland gorilla. Soften contested Ebola percents
+                # and counts, genome percent shares, and treat Critically
+                # Endangered as a snapshot. Light clinical detail on the
+                # SIV/HIV-1 link. Do not redo JR/PR.
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "cr-snapshot",
+                        "title": "Status snapshot",
+                        "stem": "How should we read a Critically Endangered letter for the western lowland gorilla?",
+                        "choices": [
+                            "The letter is a forever grade that can never change",
+                            "It is often listed Critically Endangered after hunting and disease — a snapshot, not a forever letter",
+                            "Scientists have declared it extinct in the wild",
+                        ],
+                        "correct": "B",
+                        "why": "Listings have often treated the western lowland gorilla as Critically Endangered, citing hunting and disease. Status letters can be revised when new counts or methods arrive, so we treat CR as a snapshot, not a locked forever grade.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "ebola",
+                        "title": "Ebola outbreaks",
+                        "stem": "What has Ebola done to some wild western lowland gorilla groups?",
+                        "choices": [
+                            "It only gives them a mild cold and never changes group size",
+                            "It has caused catastrophic drops in some wild groups — exact percents and head-counts are contested",
+                            "It made every gorilla on Earth extinct",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia describes Ebola outbreaks emptying some Congo forest groups. Some write-ups cite very high mortality, but percents and head-counts differ by site and year, so we keep those numbers soft.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "siv-hiv",
+                        "title": "SIV and HIV-1",
+                        "stem": "How are western lowland gorilla SIVs linked to some HIV-1 lineages?",
+                        "choices": [
+                            "Gorillas invented HIV in a lab last year",
+                            "Gorilla SIVs — simian immunodeficiency viruses — are related to some HIV-1 lineages that later infected people",
+                            "Gorillas have no viruses at all",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says western lowland gorillas are one likely zoonotic source of some HIV-1 lineages. The simian virus (SIV) in gorillas sits near certain HIV-1 groups on the family tree. That is a virus-history link — it does not mean a zoo gorilla has HIV or AIDS.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "genome",
+                        "title": "Gorilla genome",
+                        "stem": "What did sequencing the gorilla genome in 2012 show about humans and chimps?",
+                        "choices": [
+                            "Gorillas have no DNA and cannot be compared with people",
+                            "It was sequenced in 2012; some regions look closer to human than chimpanzee — exact percents are contested",
+                            "It proved gorillas are more closely related to plants than to apes",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says the gorilla genome was sequenced in 2012. Some stretches look more like human than chimpanzee, a pattern called incomplete lineage sorting. Published percent shares differ by region and method, so we do not lock one number.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "cross-river",
+                        "title": "Cross River cousin",
+                        "stem": "How does the western lowland gorilla sit next to the Cross River gorilla?",
+                        "choices": [
+                            "They are the same as mountain gorillas and have no cousins",
+                            "Western gorillas include G. g. gorilla (western lowland) and G. g. diehli (Cross River)",
+                            "Cross River gorillas live only in Antarctica",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia treats the western lowland gorilla as Gorilla gorilla gorilla and names the Cross River gorilla, Gorilla gorilla diehli, as the other western gorilla subspecies.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "snowflake",
+                        "title": "Snowflake genetics",
+                        "stem": "What did genetics show about Snowflake, the albino western lowland gorilla?",
+                        "choices": [
+                            "He was painted white at the zoo",
+                            "A change in SLC45A2 caused his albinism; related carrier parents gave evidence of inbreeding",
+                            "All gorillas are albino",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says Snowflake’s albinism came from a recessive change in SLC45A2. His parents were related carriers (an uncle and niece), which gave the first evidence of inbreeding in western lowland gorillas.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "deep-tool-use",
+                        "title": "Deep tool use",
+                        "stem": "How have wild western lowland gorillas been seen using sticks as tools?",
+                        "choices": [
+                            "They only use metal hammers from hardware stores",
+                            "They modify sticks to fit holes for food, and one was seen using a stick to gauge water depth",
+                            "They never touch sticks",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says they select branches, strip leaves or bark, and shorten sticks to fit food holes — starting with a bigger stick and shaping it. A gorilla has also been seen using a stick to measure water depth.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "nominate",
+                        "title": "Nominate subspecies",
+                        "stem": "What does the scientific name Gorilla gorilla gorilla mean?",
+                        "choices": [
+                            "It is a zoo nickname with no science meaning",
+                            "It marks the nominate subspecies of the western gorilla",
+                            "It means they are three different species living in the ocean",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia calls the western lowland gorilla the nominate subspecies of the western gorilla — the form that carries the same name three times: Gorilla gorilla gorilla.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "logging-roads",
+                        "title": "Logging roads",
+                        "stem": "How do logging roads put western lowland gorillas at extra risk?",
+                        "choices": [
+                            "Roads plant extra fruit trees for gorillas",
+                            "They let hunters travel deeper into the forest, enabling more bushmeat hunting",
+                            "Roads scare all insects away and nothing else changes",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia links commercial logging to new roads that let hunters go farther into the forest. Those roads raise poaching and the bushmeat trade, beyond the trees cut down.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "swamp-strongholds",
+                        "title": "Swamp strongholds",
+                        "stem": "Where do large remaining wild western lowland gorilla populations find shelter?",
+                        "choices": [
+                            "Only on icebergs",
+                            "Large Congo swamp forests shelter major populations",
+                            "Only in city parks",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says isolated swampy forests in the Republic of the Congo hold a large share of the remaining wild animals. Later surveys found many more in those swamps. We do not lock one head-count.",
                     },
                 ],
             },
