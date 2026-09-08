@@ -153,6 +153,12 @@ class ElephantEasyStudyCardTests(unittest.TestCase):
         for phrase in BRITTLE:
             self.assertNotIn(phrase, blob)
         self.assertIn("cannot jump", blob.lower())
+        young = next(q for q in deck["questions"] if q["id"] == "young")
+        tusks = next(q for q in deck["questions"] if q["id"] == "tusks")
+        self.assertIn("calf", young["why"].lower())
+        self.assertGreaterEqual(len(young["why"].split()), 12)
+        self.assertIn("teeth", tusks["why"].lower())
+        self.assertGreaterEqual(len(tusks["why"].split()), 12)
 
     def test_lion_and_giraffe_decks_untouched(self):
         lion = study_deck_for("african-lion")

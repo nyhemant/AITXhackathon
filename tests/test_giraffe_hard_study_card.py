@@ -13,6 +13,7 @@ sys.path.insert(0, str(REPO / "scripts"))
 
 from generate_bdo_seo import CARD_TALK_H2, outing_talk_html  # noqa: E402
 from study_cards import (  # noqa: E402
+    correct_choice_text,
     PUSH_FURTHER_GIRAFFE,
     STUDY_SLOTS,
     TALK_ABOUT_GIRAFFE,
@@ -122,21 +123,20 @@ class GiraffeHardStudyCardTests(unittest.TestCase):
             self.assertIn(q["correct"], ("A", "B", "C"))
             self.assertTrue(q["why"].strip())
             self.assertTrue(q["title"].strip())
-        self.assertEqual(questions[0]["correct"], "B")
-        self.assertIn("okapi", questions[0]["choices"][1])
-        self.assertIn("Giraffidae", questions[0]["choices"][1])
-        self.assertIn("leopard-like spots", questions[1]["choices"][1])
-        self.assertIn("Ossified cartilage", questions[2]["choices"][1])
-        self.assertIn("fused to the skull", questions[2]["choices"][1])
-        self.assertIn("swing their necks", questions[3]["choices"][1])
-        self.assertIn("30–37 mph", questions[4]["choices"][1])
-        self.assertIn("four-chambered stomach", questions[5]["choices"][1])
-        self.assertIn("few hours a day", questions[6]["choices"][1])
-        self.assertIn("as tall as a person", questions[7]["choices"][1])
-        self.assertIn("run within hours", questions[7]["choices"][1])
-        self.assertIn("Habitat loss", questions[8]["choices"][1])
-        self.assertIn("bushmeat", questions[8]["choices"][1])
-        self.assertIn("sunburn", questions[9]["choices"][1])
+        self.assertIn("okapi", correct_choice_text(questions[0]))
+        self.assertIn("Giraffidae", correct_choice_text(questions[0]))
+        self.assertIn("leopard-like spots", correct_choice_text(questions[1]))
+        self.assertIn("Ossified cartilage", correct_choice_text(questions[2]))
+        self.assertIn("fused to the skull", correct_choice_text(questions[2]))
+        self.assertIn("swing their necks", correct_choice_text(questions[3]))
+        self.assertIn("30–37 mph", correct_choice_text(questions[4]))
+        self.assertIn("four-chambered stomach", correct_choice_text(questions[5]))
+        self.assertIn("few hours a day", correct_choice_text(questions[6]))
+        self.assertIn("as tall as a person", correct_choice_text(questions[7]))
+        self.assertIn("run within hours", correct_choice_text(questions[7]))
+        self.assertIn("Habitat loss", correct_choice_text(questions[8]))
+        self.assertIn("bushmeat", correct_choice_text(questions[8]))
+        self.assertIn("sunburn", correct_choice_text(questions[9]))
         blob = " ".join(q["why"] for q in questions)
         for phrase in BRITTLE:
             self.assertNotIn(phrase, blob)
@@ -205,7 +205,7 @@ class GiraffeHardStudyCardTests(unittest.TestCase):
         self.assertEqual(shipped_levels_for("african-lion"), ("easy", "hard", "zoologist"))
         lion_hard = study_deck_for("african-lion", "hard")
         self.assertEqual(lion_hard["source"], WIKI_LION)
-        self.assertIn("Panthera leo", lion_hard["questions"][0]["choices"][1])
+        self.assertIn("Panthera leo", correct_choice_text(lion_hard["questions"][0]))
         lion_html = LION.read_text(encoding="utf-8")
         self.assertIn("Zoologist", lion_html)
         self.assertIn("Junior Ranger", lion_html)

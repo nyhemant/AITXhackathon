@@ -239,6 +239,61 @@ LETTERS = ("A", "B", "C")
 STUDY_SLOTS = 10
 DEFAULT_LEVEL = "easy"
 STUDY_QUIZ_H2 = "Quiz"
+# Fail a 10-question deck if one letter is used more than this many times.
+MAX_SAME_LETTER_PER_DECK = 6
+# Fail the traffic study set if overall correct==B exceeds this share.
+MAX_OVERALL_B_SHARE = 0.50
+
+
+def target_letter_for_slot(slot: int) -> str:
+    """Cycle A → B → C by slot so a 10-question deck is 4A / 3B / 3C."""
+    return LETTERS[(int(slot) - 1) % 3]
+
+
+def rotate_choices_to_letter(
+    choices: list[str], correct: str, target: str
+) -> list[str]:
+    """Keep the three texts; move the correct text onto ``target``."""
+    out = list(choices)
+    if correct not in LETTERS or target not in LETTERS or len(out) != 3:
+        return out
+    if correct == target:
+        return out
+    text = out.pop(LETTERS.index(correct))
+    out.insert(LETTERS.index(target), text)
+    return out
+
+
+def correct_choice_text(q: dict) -> str:
+    """Return the choice text marked correct."""
+    choices = list(q.get("choices") or [])
+    letter = str(q.get("correct") or "")
+    if letter not in LETTERS or not choices:
+        return ""
+    idx = LETTERS.index(letter)
+    if idx >= len(choices):
+        return ""
+    return str(choices[idx])
+
+
+def apply_slot_letter_rotation(cards: dict | None = None) -> None:
+    """Rotate each question so ``correct`` lands on the slot's target letter.
+
+    Stems, titles, why, and the three choice texts stay the same. Only the
+    A/B/C mapping changes. Slot 1/4/7/10 → A, 2/5/8 → B, 3/6/9 → C.
+    """
+    src = STUDY_CARDS if cards is None else cards
+    for card in src.values():
+        for pack in (card.get("levels") or {}).values():
+            for q in pack.get("questions") or []:
+                choices = list(q.get("choices") or [])
+                correct = str(q.get("correct") or "")
+                slot = int(q.get("slot") or 0)
+                if len(choices) != 3 or correct not in LETTERS or slot < 1:
+                    continue
+                target = target_letter_for_slot(slot)
+                q["choices"] = rotate_choices_to_letter(choices, correct, target)
+                q["correct"] = target
 
 # Product display names — one map for screen, print, and later pickers.
 LEVEL_DISPLAY_NAMES = {
@@ -375,24 +430,24 @@ PUSH_FURTHER_HIPPO = (
     "Hippos rest in pods in the water, then graze alone on land. Why might bachelor bulls stay near the edge?",
 )
 TALK_ABOUT_TIGER = (
-    "Older books use one scientific name for the Sumatra cat; a 2017 review lumps it with the extinct Bali and Java island tigers. Why might both names still show up?",
-    "A threat letter on a list can change when new counts arrive. Why treat that letter as a snapshot, not a forever grade?",
-    "Tree-crop plantations replace a lot of forest. Why is “hunting only” too simple a story?",
+    "Why might hiding in forest cover help a tiger more than living on open grassland?",
+    "If you saw a tiger swim, what would that tell you about the “afraid of water” story?",
+    "Which other animal at the zoo has stripes — same job, or different?",
 )
 PUSH_FURTHER_TIGER = (
-    "After Ice Age seas rose, a land bridge to the mainland vanished. How could that isolation shape a tiger’s genes?",
-    "Some parks hold more tigers than the land around them. Why might density inside a park not tell the whole island story?",
-    "Zoo family trees rest on few founders, and some cubs have shown inner-ear trouble. What would you ask a keeper about that bottleneck?",
+    "A threat letter on a list can change. Why treat it as a snapshot, not a forever grade?",
+    "A Sumatran tiger is smaller than many mainland tigers. What else looks different at the zoo?",
+    "Find one more cat on your zoo map. Does it live alone or in a group?",
 )
 TALK_ABOUT_GORILLA = (
-    "A threat letter on a list can change when new counts arrive. Why treat that letter as a snapshot, not a forever grade?",
-    "A virus outbreak can crash a wild group faster than hunting alone. Why might those two threats need different stories?",
-    "Western gorillas include this lowland form and a rarer cousin along one river border. Why keep those cousins on separate lists?",
+    "Why might a silverback lead a family instead of living alone?",
+    "If you could knuckle-walk, what would you notice first at the zoo?",
+    "Which other animal at the zoo lives in a family group?",
 )
 PUSH_FURTHER_GORILLA = (
-    "Some DNA stretches look more like people than like chimps — incomplete lineage sorting. Why is a simple three-way family tree not the whole story?",
-    "Laverania malaria parasites show up in some gorilla dung studies. What would you still want to know before calling that everyday infection?",
-    "Some zoo gorillas show stereotypic habits such as pacing or hair-plucking. Why might those show up more in captivity than in the forest?",
+    "A threat letter on a list can change. Why treat it as a snapshot, not a forever grade?",
+    "Gorillas eat plants and build a new nest each night. How is that different from a King Kong movie?",
+    "Find one more ape on your zoo map. How does it use its hands?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -444,7 +499,7 @@ STUDY_CARDS: dict[str, dict] = {
                     {
                         "slot": 4,
                         "id": "mane",
-                        "title": "Body",
+                        "title": "Mane",
                         "stem": "Which lion usually grows a big fluffy mane?",
                         "choices": ["The male", "The female", "Both"],
                         "correct": "A",
@@ -489,7 +544,7 @@ STUDY_CARDS: dict[str, dict] = {
                     {
                         "slot": 9,
                         "id": "tail",
-                        "title": "Body",
+                        "title": "Tail",
                         "stem": "What special tip does a lion’s tail have?",
                         "choices": ["Feathers", "A dark hairy tuft", "A shell"],
                         "correct": "B",
@@ -561,11 +616,15 @@ STUDY_CARDS: dict[str, dict] = {
                     {
                         "slot": 5,
                         "id": "status",
-                        "title": "Status",
+                        "title": "Status snapshot",
                         "stem": "How does the IUCN list wild lions today?",
-                        "choices": ["Least Concern", "Vulnerable", "Extinct in the wild"],
+                        "choices": [
+                            "Least Concern — a forever safe grade",
+                            "Often listed Vulnerable — a snapshot that can be revised",
+                            "Extinct in the wild",
+                        ],
                         "correct": "B",
-                        "why": "Lions have been listed as Vulnerable on the IUCN Red List. African populations have declined sharply in recent decades.",
+                        "why": "Lions have often been listed as Vulnerable, and African populations have declined sharply. Habitat loss and conflict with people are key worries. Status letters can change when new counts arrive, so we treat Vulnerable as a snapshot, not a forever grade.",
                     },
                     {
                         "slot": 6,
@@ -740,7 +799,7 @@ STUDY_CARDS: dict[str, dict] = {
                             "Lions moving to the deep ocean",
                         ],
                         "correct": "B",
-                        "why": "The exact drop is not fully understood, but habitat loss and conflicts with people are the greatest concerns. Lions are still listed as Vulnerable.",
+                        "why": "The exact drop is not fully understood, but habitat loss and conflicts with people are the greatest concerns. IUCN has listed lions Vulnerable — we treat that letter as a snapshot, not a forever grade.",
                     },
                     {
                         "slot": 9,
@@ -1247,7 +1306,7 @@ STUDY_CARDS: dict[str, dict] = {
                         "stem": "What is a baby elephant called?",
                         "choices": ["A cub", "A calf", "A chick"],
                         "correct": "B",
-                        "why": "A baby elephant is a calf.",
+                        "why": "A baby elephant is a calf. Calves stay close to mom and the rest of the family herd as they grow.",
                     },
                     {
                         "slot": 6,
@@ -1269,7 +1328,7 @@ STUDY_CARDS: dict[str, dict] = {
                         "stem": "What are an elephant’s tusks?",
                         "choices": ["Horns made of hair", "Very long teeth", "Feathers"],
                         "correct": "B",
-                        "why": "Tusks are very long teeth — not horns.",
+                        "why": "Tusks are very long teeth — not horns. Elephants use them to dig, lift, and strip bark.",
                     },
                     {
                         "slot": 8,
@@ -3418,16 +3477,16 @@ STUDY_CARDS: dict[str, dict] = {
                     },
                     {
                         "slot": 10,
-                        "id": "thick-skin",
-                        "title": "Wet skin",
-                        "stem": "Why does a Nile hippo need water or mud on its skin?",
+                        "id": "myth",
+                        "title": "Myth buster",
+                        "stem": "Can a Nile hippo stay dry on land all day like a horse?",
                         "choices": [
-                            "Its mostly hairless thick skin can crack if it stays dry too long",
-                            "It has a heavy fur coat that must stay soaked",
-                            "It cannot stand on land at all",
+                            "Yes — its skin never needs water",
+                            "No — its mostly hairless thick skin can crack if it stays dry too long",
+                            "Yes — it has a heavy fur coat that holds water",
                         ],
-                        "correct": "A",
-                        "why": "Hippos have little hair. Their thick skin still needs water or mud, or it can crack even with the sunscreen goo.",
+                        "correct": "B",
+                        "why": "The name means “horse of the river,” but a hippo is not a horse that can stay dry all day. Hippos have little hair. Their thick skin still needs water or mud, or it can crack even with the sunscreen goo.",
                     },
                 ],
             },
@@ -4576,6 +4635,8 @@ STUDY_CARDS: dict[str, dict] = {
         },
     },
 }
+
+apply_slot_letter_rotation()
 
 
 def level_display_name(level: str | None = None) -> str:

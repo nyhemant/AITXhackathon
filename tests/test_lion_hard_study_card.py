@@ -13,6 +13,7 @@ sys.path.insert(0, str(REPO / "scripts"))
 
 from generate_bdo_seo import CARD_TALK_H2, outing_talk_html  # noqa: E402
 from study_cards import (  # noqa: E402
+    correct_choice_text,
     PUSH_FURTHER_LION,
     STUDY_SLOTS,
     TALK_ABOUT_LION,
@@ -118,18 +119,19 @@ class LionHardStudyCardTests(unittest.TestCase):
             self.assertIn(q["correct"], ("A", "B", "C"))
             self.assertTrue(q["why"].strip())
             self.assertTrue(q["title"].strip())
-        self.assertEqual(questions[0]["correct"], "B")
-        self.assertIn("Panthera leo", questions[0]["choices"][1])
-        self.assertIn("Related females", questions[1]["choices"][1])
-        self.assertIn("hooved mammals", questions[2]["choices"][1])
-        self.assertIn("30–37 mph", questions[3]["choices"][1])
-        self.assertEqual(questions[4]["choices"][1], "Vulnerable")
-        self.assertIn("Gir National Park", questions[5]["choices"][1])
-        self.assertIn("around a week", questions[6]["choices"][1])
-        self.assertEqual(questions[7]["correct"], "A")
-        self.assertIn("110 days", questions[7]["choices"][0])
-        self.assertIn("kill existing young cubs", questions[8]["choices"][1])
-        self.assertIn("leucism", questions[9]["choices"][1])
+        self.assertIn("Panthera leo", correct_choice_text(questions[0]))
+        self.assertIn("Related females", correct_choice_text(questions[1]))
+        self.assertIn("hooved mammals", correct_choice_text(questions[2]))
+        self.assertIn("30–37 mph", correct_choice_text(questions[3]))
+        self.assertIn("Vulnerable", correct_choice_text(questions[4]))
+        self.assertIn("snapshot", correct_choice_text(questions[4]).lower())
+        self.assertIn("snapshot", questions[4]["why"].lower())
+        self.assertNotIn("still listed as Vulnerable", questions[4]["why"])
+        self.assertIn("Gir National Park", correct_choice_text(questions[5]))
+        self.assertIn("around a week", correct_choice_text(questions[6]))
+        self.assertIn("110 days", correct_choice_text(questions[7]))
+        self.assertIn("kill existing young cubs", correct_choice_text(questions[8]))
+        self.assertIn("leucism", correct_choice_text(questions[9]))
         blob = " ".join(q["why"] for q in questions)
         self.assertNotIn("43%", blob)
         self.assertNotIn("74.1", blob)
