@@ -394,6 +394,27 @@ gaps (soften years), and CITES Appendix I.
 Soften contested numbers. Do not redo JR or PR
 themes.
 
+Facts for giant-panda Junior Ranger (easy only) are
+Wikipedia-backed:
+https://en.wikipedia.org/wiki/Giant_panda
+Species framing is the giant panda (Ailuropoda
+melanoleuca). JR stays kid-simple “giant panda.”
+Soften contested numbers and IUCN letters
+(snapshots only). Almost all food is bamboo. Wild
+home is mountain forests in China. A true bear
+with a black-and-white coat. Spends much of the
+day eating (bamboo is low-energy). Newborn cub is
+tiny, pink, and blind. Good tree climber,
+especially when young. Bamboo is a giant grass,
+not a tree. Front paw has an extra “thumb” bump
+for gripping bamboo. Myth: not a raccoon — giant
+pandas are bears.
+Reserve for later: carnivore-gut detail, bamboo kg
+amounts, radial-sesamoid anatomy, cub weight
+fraction, umami taste loss, Vulnerable downlist
+letter, Ailuropoda taxonomy, and the Qinling form.
+Do not add Park Ranger or Zoologist yet.
+
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
 zoologist. Visible copy uses LEVEL_DISPLAY_NAMES only — no age badges,
@@ -431,6 +452,7 @@ WIKI_RED_PANDA = "https://en.wikipedia.org/wiki/Red_panda"
 WIKI_KOALA = "https://en.wikipedia.org/wiki/Koala"
 WIKI_CHIMPANZEE = "https://en.wikipedia.org/wiki/Chimpanzee"
 WIKI_ORANGUTAN = "https://en.wikipedia.org/wiki/Orangutan"
+WIKI_GIANT_PANDA = "https://en.wikipedia.org/wiki/Giant_panda"
 
 LETTERS = ("A", "B", "C")
 STUDY_SLOTS = 10
@@ -504,7 +526,8 @@ LEVEL_DISPLAY_NAMES = {
 # Caribbean flamingo, Galápagos tortoise, zebra, Nile hippo,
 # Sumatran tiger, western lowland gorilla, cheetah, red panda,
 # koala, chimpanzee, and orangutan ship Junior Ranger +
-# Park Ranger + Zoologist.
+# Park Ranger + Zoologist. Giant panda ships Junior
+# Ranger only (no Park Ranger or Zoologist yet).
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -536,6 +559,7 @@ STUDY_NEIGHBORS = {
     "koala": ("red-panda", "sumatran-tiger"),
     "chimpanzee": ("western-lowland-gorilla", "african-elephant"),
     "orangutan": ("chimpanzee", "western-lowland-gorilla"),
+    "giant-panda": ("red-panda", "koala"),
 }
 
 STUDY_CARD_TITLES = {
@@ -554,6 +578,7 @@ STUDY_CARD_TITLES = {
     "koala": "Koala",
     "chimpanzee": "Chimpanzee",
     "orangutan": "Orangutan",
+    "giant-panda": "Giant panda",
 }
 
 # Shared answers-side deepen (Claude sample). Not scored. Future animals reuse keys.
@@ -706,6 +731,16 @@ PUSH_FURTHER_ORANGUTAN = (
     "Scientists spotted a third kind called Tapanuli. How do you think they knew it was new?",
     "Some orangutans make a stick “toolkit.” What would one of those sticks look like?",
     "A throat sac can make a call louder. Why would a pouch help sound travel?",
+)
+TALK_ABOUT_GIANT_PANDA = (
+    "Almost all of a giant panda’s food is bamboo. What would you watch it do at the zoo?",
+    "A giant panda is a bear, not a raccoon. What would you tell a friend who mixed them up?",
+    "An extra bump on the front paw helps hold bamboo. Why might that “thumb” help?",
+)
+PUSH_FURTHER_GIANT_PANDA = (
+    "How much bamboo does a giant panda eat in a day? What would you ask a keeper later?",
+    "Newborn cubs start tiny, pink, and blind. Why might they begin so small?",
+    "Is the red panda a close cousin? What would you ask a keeper later?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -7018,6 +7053,157 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia lists orangutans on CITES Appendix I. That listing tightly controls international trade in the animals and their parts. Appendix I is a trade rule, not the same thing as an IUCN status letter.",
+                    },
+                ],
+            },
+        },
+    },
+    "giant-panda": {
+        "id": "giant-panda",
+        "source": WIKI_GIANT_PANDA,
+        "source_note": "Facts from Wikipedia, Giant panda.",
+        "talk_about": list(TALK_ABOUT_GIANT_PANDA),
+        "push_further": list(PUSH_FURTHER_GIANT_PANDA),
+        "levels": {
+            "easy": {
+                # Teaching-first: same front as the quiz. Hard later may hide these.
+                "teach": [
+                    "Almost all food is bamboo",
+                    "Wild home is mountain forests in China",
+                    "A bear with a black-and-white coat",
+                    "Spends much of the day eating",
+                    "Front paw has an extra “thumb” bump for gripping bamboo",
+                ],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "bamboo-almost-always",
+                        "title": "Bamboo almost always",
+                        "stem": "What do giant pandas eat almost all the time?",
+                        "choices": [
+                            "Bamboo — almost all of their food",
+                            "Only fish from the ocean",
+                            "Only ice cream",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says a giant panda’s diet is almost entirely bamboo and bamboo shoots. We do not lock an exact percent.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "china-home",
+                        "title": "China home",
+                        "stem": "Where do wild giant pandas live?",
+                        "choices": [
+                            "Only in African savannas",
+                            "Mountain forests in China",
+                            "Only on Antarctic ice",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says the giant panda lives in mountain forests in China. It is not an African or Antarctic animal.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "a-kind-of-bear",
+                        "title": "A kind of bear",
+                        "stem": "What kind of animal is a giant panda?",
+                        "choices": [
+                            "A kind of raccoon",
+                            "A kind of bird",
+                            "A true bear — not a raccoon",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says the giant panda is a bear. People once mixed it up with raccoons, but it is a true bear.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "black-and-white",
+                        "title": "Black and white",
+                        "stem": "What does a giant panda’s coat look like?",
+                        "choices": [
+                            "White fur with famous black patches on the eyes, ears, legs, and shoulders",
+                            "Bright green spots all over",
+                            "Rainbow stripes",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says the giant panda has a white coat with black patches around the eyes, ears, legs, and shoulders.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "eating-day",
+                        "title": "Eating day",
+                        "stem": "How do giant pandas spend much of the day?",
+                        "choices": [
+                            "Flying from tree to tree",
+                            "Eating — bamboo gives little energy, so they spend much of the day feeding",
+                            "Hunting in the deep ocean",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says bamboo is low in nutrition, so giant pandas need to eat often. They spend much of the day feeding. We do not lock exact hours.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "tiny-cub",
+                        "title": "Tiny cub",
+                        "stem": "What is a newborn giant panda cub like?",
+                        "choices": [
+                            "Already as big as a grown-up, with a full black-and-white coat",
+                            "Born with wings and feathers",
+                            "Tiny, pink, and blind — not already big and black-and-white",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says a newborn cub is pink, blind, and toothless. It is tiny at birth. The famous black-and-white look comes later. We do not lock exact weights.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "tree-climber",
+                        "title": "Tree climber",
+                        "stem": "How good are giant pandas at climbing trees?",
+                        "choices": [
+                            "They are good climbers, especially when they are young",
+                            "They never leave the ocean",
+                            "They can only hop like kangaroos",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says giant pandas can climb and take shelter in trees. Young pandas are often especially good climbers.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "giant-grass",
+                        "title": "Giant grass",
+                        "stem": "What kind of plant is bamboo?",
+                        "choices": [
+                            "A kind of ocean seaweed",
+                            "A kind of giant grass — not a tree",
+                            "A kind of metal",
+                        ],
+                        "correct": "B",
+                        "why": "Bamboo is a kind of giant grass, not a tree. Giant pandas eat this grass almost all the time.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "bamboo-thumb",
+                        "title": "Bamboo thumb",
+                        "stem": "How does an extra bump on a giant panda’s front paw help?",
+                        "choices": [
+                            "It is only for ringing a doorbell",
+                            "It is a spare ear",
+                            "It works like a thumb to hold bamboo",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says a thumb-like bump on the front paw helps hold bamboo in place for eating. How that bone is built in more detail comes later.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "raccoon-myth",
+                        "title": "Myth buster — raccoon?",
+                        "stem": "Is a giant panda a raccoon?",
+                        "choices": [
+                            "No — giant pandas are bears, not raccoons",
+                            "Yes — it is a raccoon that grew extra large",
+                            "Yes — it is a kind of striped skunk",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says the giant panda is a bear. People once wondered if it was more like a raccoon, but it is a true bear.",
                     },
                 ],
             },

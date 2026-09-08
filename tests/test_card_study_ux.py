@@ -248,8 +248,8 @@ class CardStudyUxTests(unittest.TestCase):
         self.assertLess(try_at, actions_at)
         print_tpl = page.split('id="study-print-template">', 1)[1].split("</template>", 1)[0]
         self.assertNotIn("card-try-next", print_tpl)
-        panda = (FP / "cards" / "giant-panda" / "index.html").read_text(encoding="utf-8")
-        self.assertNotIn("card-try-next", panda)
+        otter = (FP / "cards" / "asian-small-clawed-otter" / "index.html").read_text(encoding="utf-8")
+        self.assertNotIn("card-try-next", otter)
 
     def test_photos_and_watch_live_share_hero_row(self):
         self.assertEqual(CARD_SEO_CSS_VER, "35")

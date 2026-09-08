@@ -6418,5 +6418,163 @@
         ]
       }
     }
+  },
+  "giant-panda": {
+    "id": "giant-panda",
+    "source": "https://en.wikipedia.org/wiki/Giant_panda",
+    "source_note": "Facts from Wikipedia, Giant panda.",
+    "talk_about": [
+      "Almost all of a giant panda’s food is bamboo. What would you watch it do at the zoo?",
+      "A giant panda is a bear, not a raccoon. What would you tell a friend who mixed them up?",
+      "An extra bump on the front paw helps hold bamboo. Why might that “thumb” help?"
+    ],
+    "push_further": [
+      "How much bamboo does a giant panda eat in a day? What would you ask a keeper later?",
+      "Newborn cubs start tiny, pink, and blind. Why might they begin so small?",
+      "Is the red panda a close cousin? What would you ask a keeper later?"
+    ],
+    "levels": {
+      "easy": {
+        "teach": [
+          "Almost all food is bamboo",
+          "Wild home is mountain forests in China",
+          "A bear with a black-and-white coat",
+          "Spends much of the day eating",
+          "Front paw has an extra “thumb” bump for gripping bamboo"
+        ],
+        "questions": [
+          {
+            "slot": 1,
+            "id": "bamboo-almost-always",
+            "title": "Bamboo almost always",
+            "stem": "What do giant pandas eat almost all the time?",
+            "choices": [
+              "Bamboo — almost all of their food",
+              "Only fish from the ocean",
+              "Only ice cream"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says a giant panda’s diet is almost entirely bamboo and bamboo shoots. We do not lock an exact percent."
+          },
+          {
+            "slot": 2,
+            "id": "china-home",
+            "title": "China home",
+            "stem": "Where do wild giant pandas live?",
+            "choices": [
+              "Only in African savannas",
+              "Mountain forests in China",
+              "Only on Antarctic ice"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says the giant panda lives in mountain forests in China. It is not an African or Antarctic animal."
+          },
+          {
+            "slot": 3,
+            "id": "a-kind-of-bear",
+            "title": "A kind of bear",
+            "stem": "What kind of animal is a giant panda?",
+            "choices": [
+              "A kind of raccoon",
+              "A kind of bird",
+              "A true bear — not a raccoon"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says the giant panda is a bear. People once mixed it up with raccoons, but it is a true bear."
+          },
+          {
+            "slot": 4,
+            "id": "black-and-white",
+            "title": "Black and white",
+            "stem": "What does a giant panda’s coat look like?",
+            "choices": [
+              "White fur with famous black patches on the eyes, ears, legs, and shoulders",
+              "Bright green spots all over",
+              "Rainbow stripes"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says the giant panda has a white coat with black patches around the eyes, ears, legs, and shoulders."
+          },
+          {
+            "slot": 5,
+            "id": "eating-day",
+            "title": "Eating day",
+            "stem": "How do giant pandas spend much of the day?",
+            "choices": [
+              "Flying from tree to tree",
+              "Eating — bamboo gives little energy, so they spend much of the day feeding",
+              "Hunting in the deep ocean"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says bamboo is low in nutrition, so giant pandas need to eat often. They spend much of the day feeding. We do not lock exact hours."
+          },
+          {
+            "slot": 6,
+            "id": "tiny-cub",
+            "title": "Tiny cub",
+            "stem": "What is a newborn giant panda cub like?",
+            "choices": [
+              "Already as big as a grown-up, with a full black-and-white coat",
+              "Born with wings and feathers",
+              "Tiny, pink, and blind — not already big and black-and-white"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says a newborn cub is pink, blind, and toothless. It is tiny at birth. The famous black-and-white look comes later. We do not lock exact weights."
+          },
+          {
+            "slot": 7,
+            "id": "tree-climber",
+            "title": "Tree climber",
+            "stem": "How good are giant pandas at climbing trees?",
+            "choices": [
+              "They are good climbers, especially when they are young",
+              "They never leave the ocean",
+              "They can only hop like kangaroos"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says giant pandas can climb and take shelter in trees. Young pandas are often especially good climbers."
+          },
+          {
+            "slot": 8,
+            "id": "giant-grass",
+            "title": "Giant grass",
+            "stem": "What kind of plant is bamboo?",
+            "choices": [
+              "A kind of ocean seaweed",
+              "A kind of giant grass — not a tree",
+              "A kind of metal"
+            ],
+            "correct": "B",
+            "why": "Bamboo is a kind of giant grass, not a tree. Giant pandas eat this grass almost all the time."
+          },
+          {
+            "slot": 9,
+            "id": "bamboo-thumb",
+            "title": "Bamboo thumb",
+            "stem": "How does an extra bump on a giant panda’s front paw help?",
+            "choices": [
+              "It is only for ringing a doorbell",
+              "It is a spare ear",
+              "It works like a thumb to hold bamboo"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says a thumb-like bump on the front paw helps hold bamboo in place for eating. How that bone is built in more detail comes later."
+          },
+          {
+            "slot": 10,
+            "id": "raccoon-myth",
+            "title": "Myth buster — raccoon?",
+            "stem": "Is a giant panda a raccoon?",
+            "choices": [
+              "No — giant pandas are bears, not raccoons",
+              "Yes — it is a raccoon that grew extra large",
+              "Yes — it is a kind of striped skunk"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says the giant panda is a bear. People once wondered if it was more like a raccoon, but it is a true bear."
+          }
+        ]
+      }
+    }
   }
 }
