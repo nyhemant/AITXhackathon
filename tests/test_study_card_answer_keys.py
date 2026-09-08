@@ -60,19 +60,19 @@ TRAFFIC_IDS = (
     "koala",
     "chimpanzee",
 )
-JR_ONLY_IDS = ("orangutan",)
+JR_PR_IDS = ("orangutan",)
 
 
 def _decks():
-    for card_id in TRAFFIC_IDS + JR_ONLY_IDS:
+    for card_id in TRAFFIC_IDS + JR_PR_IDS:
         for level in shipped_levels_for(card_id):
             deck = study_deck_for(card_id, level)
             yield card_id, level, deck
 
 
 class StudyCardAnswerKeyTests(unittest.TestCase):
-    def test_traffic_set_is_fourteen_three_level_animals_plus_orangutan_jr(self):
-        self.assertEqual(tuple(study_card_ids()), TRAFFIC_IDS + JR_ONLY_IDS)
+    def test_traffic_set_is_fourteen_three_level_animals_plus_orangutan_jr_pr(self):
+        self.assertEqual(tuple(study_card_ids()), TRAFFIC_IDS + JR_PR_IDS)
         self.assertEqual(shipped_levels_for("cheetah"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("cheetah", "zoologist"))
         self.assertEqual(shipped_levels_for("red-panda"), ("easy", "hard", "zoologist"))
@@ -84,11 +84,11 @@ class StudyCardAnswerKeyTests(unittest.TestCase):
         self.assertEqual(shipped_levels_for("chimpanzee"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("chimpanzee", "hard"))
         self.assertIsNotNone(study_deck_for("chimpanzee", "zoologist"))
-        self.assertEqual(shipped_levels_for("orangutan"), ("easy",))
-        self.assertIsNone(study_deck_for("orangutan", "hard"))
+        self.assertEqual(shipped_levels_for("orangutan"), ("easy", "hard"))
+        self.assertIsNotNone(study_deck_for("orangutan", "hard"))
         self.assertIsNone(study_deck_for("orangutan", "zoologist"))
         decks = list(_decks())
-        self.assertEqual(len(decks), 43)
+        self.assertEqual(len(decks), 44)
         for card_id, level, deck in decks:
             self.assertIsNotNone(deck, f"{card_id}/{level}")
             self.assertEqual(validate_deck(deck), [])
@@ -119,12 +119,12 @@ class StudyCardAnswerKeyTests(unittest.TestCase):
 
     def test_overall_correct_b_is_not_a_majority(self):
         letters = [q["correct"] for _, _, deck in _decks() for q in deck["questions"]]
-        self.assertEqual(len(letters), 430)
+        self.assertEqual(len(letters), 440)
         share_b = letters.count("B") / len(letters)
         self.assertLessEqual(
             share_b,
             MAX_OVERALL_B_SHARE,
-            f"correct==B is {share_b:.1%} ({letters.count('B')}/430)",
+            f"correct==B is {share_b:.1%} ({letters.count('B')}/440)",
         )
         for letter in LETTERS:
             share = letters.count(letter) / len(letters)

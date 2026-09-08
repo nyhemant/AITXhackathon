@@ -358,8 +358,8 @@ exact Ma), and red colobus as common monkey prey.
 Soften contested numbers. Do not redo JR or PR
 themes.
 
-Facts for orangutan Junior Ranger (easy only) are
-Wikipedia-backed:
+Facts for orangutan Junior Ranger + Park Ranger
+(easy + hard) are Wikipedia-backed:
 https://en.wikipedia.org/wiki/Orangutan
 Species framing is the orangutan (Pongo).
 JR stays kid-simple “orangutan.” Soften contested
@@ -373,11 +373,18 @@ bond is mom and baby. A great ape with no tail
 (not a monkey). Big adult males often grow wide
 cheek pads (flanges) — soft. Myth: not an African
 ape — orangutans are Asia’s great apes.
-Reserve for later: three-species split (incl.
+Park Ranger is answer-light (empty teach) and deepens
+different themes: long-call boom (no throat-sac
+mechanics), nest craft, long childhood (soften years),
+canopy specialist (soften %), threats soft (no
+status letter), rain leaf cover (soft tool use),
+hook grip, overlapping homes, day rest nest, and
+bigger males (soften kg).
+Reserve for Zoologist: three-species split (incl.
 Tapanuli), Critically Endangered letters, flange
 bimaturism detail, long-call throat-sac mechanics,
 palm-oil drivers, and tool-culture depth.
-Do not add Park Ranger or Zoologist yet.
+Do not add Zoologist yet.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
@@ -489,8 +496,8 @@ LEVEL_DISPLAY_NAMES = {
 # Caribbean flamingo, Galápagos tortoise, zebra, Nile hippo,
 # Sumatran tiger, western lowland gorilla, cheetah, red panda,
 # koala, and chimpanzee ship Junior Ranger + Park Ranger
-# + Zoologist. Orangutan ships Junior Ranger only (no
-# Park Ranger or Zoologist yet).
+# + Zoologist. Orangutan ships Junior Ranger + Park Ranger
+# (no Zoologist yet).
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -684,14 +691,14 @@ PUSH_FURTHER_CHIMPANZEE = (
     "Jane Goodall watched chimps for years. How did that long study change how we see apes?",
 )
 TALK_ABOUT_ORANGUTAN = (
-    "The name means “person of the forest.” What would you notice first at the zoo?",
-    "Wild orangutans live on Borneo and Sumatra, not Africa. How is that different from a chimpanzee?",
-    "Long arms help an orangutan swing and hang. Why might that help in tall trees?",
+    "Big males boom a long call. Most days are quieter and more alone. What would you listen for at the zoo?",
+    "Kids learn nest-building by watching mom. What would you try to copy first?",
+    "Hook-shaped fingers and feet help hang in the canopy. Why might that matter up high?",
 )
 PUSH_FURTHER_ORANGUTAN = (
-    "An orangutan builds a nest of branches and leaves. How do you think it starts?",
-    "Mom and baby stay together a long time. Why might a baby need that?",
-    "Are there more than one kind of orangutan? What would you ask a keeper later?",
+    "How many kinds of orangutan are there? What would you ask a keeper later?",
+    "What does “Critically Endangered” mean? Ask a keeper later.",
+    "Forest loss is a hard problem. What would you want to know first?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -6723,6 +6730,148 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia says orangutans are native to rainforests in Indonesia and Malaysia — Asia, not Africa. People sometimes mix them up with African apes.",
+                    },
+                ],
+            },
+            "hard": {
+                # Answer-light: Park Ranger has no Learn-first strip.
+                # Facts from Wikipedia, Orangutan. Soften contested
+                # numbers and IUCN letters. Three-species split
+                # (incl. Tapanuli), Critically Endangered letters,
+                # flange bimaturism, long-call throat-sac mechanics,
+                # palm-oil drivers, and tool-culture depth live on
+                # Zoologist. Do not redo JR themes.
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "long-call-boom",
+                        "title": "Long call boom",
+                        "stem": "What do big adult males use booming long calls for?",
+                        "choices": [
+                            "To attract females and warn rival males — the sound can travel far through the forest",
+                            "To call fish up from a river",
+                            "To tell the rain when to stop",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says dominant adult males make long calls that attract females and intimidate rivals. The boom can travel far through the forest. How the throat works in more detail comes later.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "nest-craft",
+                        "title": "Nest craft",
+                        "stem": "How do orangutans make their nests, and how do young ones learn?",
+                        "choices": [
+                            "They buy ready-made hammocks from a shop",
+                            "They carefully weave branches and leaves; young ones learn by watching mom",
+                            "They sleep only in caves they dig",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says orangutans carefully build nests from branches and leaves for day and night use. Young orangutans learn nest-building by watching their mothers.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "long-childhood",
+                        "title": "Long childhood",
+                        "stem": "How long do orangutan moms and babies stay close?",
+                        "choices": [
+                            "They split up on the baby’s first morning",
+                            "They only meet once a year at a picnic",
+                            "Among the longest mother–baby bonds of any great ape — years of carrying, sharing nests, and learning",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says the closest orangutan bond is mother and young. They stay together for years — carrying, sharing nests, and learning. We keep the exact ages soft.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "canopy-specialist",
+                        "title": "Canopy specialist",
+                        "stem": "How much of the day do orangutans spend in the trees?",
+                        "choices": [
+                            "Almost all their waking time — they are the most tree-living (arboreal) great ape",
+                            "They never climb and live only on beaches",
+                            "They sleep in the sky and walk on clouds",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia calls orangutans the most arboreal of the great apes. They spend almost all their waking time in the trees. We do not lock an exact percent.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "threats-soft",
+                        "title": "Threats",
+                        "stem": "What puts wild orangutans under pressure today?",
+                        "choices": [
+                            "Too many extra birthdays on the calendar",
+                            "Habitat loss, logging, hunting, and the illegal pet trade",
+                            "A shortage of snow in Antarctica",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia lists habitat loss, logging, hunting, and the illegal pet trade among the pressures on wild orangutans. We do not lock a status letter — that grade is a snapshot and can change.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "rain-leaf-cover",
+                        "title": "Rain leaf cover",
+                        "stem": "What may orangutans do with leafy branches in the rain?",
+                        "choices": [
+                            "They only use them to write letters",
+                            "They throw them away and never hold them",
+                            "They may hold leafy branches like an umbrella to stay drier",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia notes orangutans may hold a bunch of leafy branches together like an umbrella while traveling in the rain. How local groups share extra tricks comes later.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "hook-grip",
+                        "title": "Hook grip",
+                        "stem": "How do an orangutan’s fingers and feet help it hang in the trees?",
+                        "choices": [
+                            "Long curved fingers and grasping feet act like hooks for hanging and climbing",
+                            "Their fingers are fused into flippers",
+                            "They have no fingers at all",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says orangutan fingers rest in a curved hook grip, and their feet have an opposable big toe so they can grasp branches too.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "overlapping-homes",
+                        "title": "Overlapping homes",
+                        "stem": "How do orangutan home ranges work, even though they live mostly alone?",
+                        "choices": [
+                            "Each ape owns one tree and never shares the forest",
+                            "Home ranges often overlap; moms with babies meet others more often",
+                            "They all live in one giant cave",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says orangutans are mostly solitary, but resident females live in overlapping home ranges. Mothers with young meet others more often than a typical day alone.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "day-rest-nest",
+                        "title": "Day rest nest",
+                        "stem": "What extra nest do orangutans often build besides the night nest?",
+                        "choices": [
+                            "A snow igloo on the ground",
+                            "A nest made only of metal",
+                            "A simpler day nest for midday rests",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says orangutans build nests specialised for day or night use. The day nest for a midday rest is often simpler than the night nest.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "bigger-males",
+                        "title": "Bigger males",
+                        "stem": "How do adult males compare in size with adult females?",
+                        "choices": [
+                            "Adult males are much larger and heavier than adult females",
+                            "Adult males are always smaller than a mouse",
+                            "Males and females are exactly the same size, always",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says orangutans show clear size differences between the sexes. Adult males are much larger and heavier than adult females. We do not lock exact weights.",
                     },
                 ],
             },
