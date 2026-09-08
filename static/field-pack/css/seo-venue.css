@@ -1948,22 +1948,9 @@ body.seo-venue-body {
   gap: 0.45rem 0.7rem;
   margin-top: 0.55rem;
 }
-.card-page .card-hero-links .detail-links {
-  display: inline-flex;
-  flex-wrap: wrap;
-  align-items: center;
-  width: auto;
-  margin: 0;
-  gap: 0.45rem;
-}
+.card-page .card-hero-links .detail-links,
 .card-page .card-hero-links .seo-watch-row {
-  display: inline-flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  width: auto;
-  margin: 0;
-  gap: 0.35rem 0.55rem;
+  display: contents;
 }
 .card-page .seo-watch-row {
   display: flex;

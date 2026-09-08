@@ -137,11 +137,12 @@ class CardStudyUxTests(unittest.TestCase):
         self.assertNotIn("card-try-next", koala)
 
     def test_photos_and_watch_live_share_hero_row(self):
-        self.assertEqual(CARD_SEO_CSS_VER, "33")
+        self.assertEqual(CARD_SEO_CSS_VER, "34")
         self.assertEqual(STUDY_CARD_JS_VER, "7")
         self.assertEqual(STUDY_CARD_CSS_VER, "8")
         css = SEO_CSS.read_text(encoding="utf-8")
         self.assertIn(".card-page .card-hero-links", css)
+        self.assertIn("display: contents", css)
         self.assertIn("flex-wrap: wrap", css)
 
         more = '<div class="action-row detail-links">Photos</div>'
