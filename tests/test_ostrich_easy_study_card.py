@@ -451,7 +451,7 @@ class OstrichEasyStudyCardTests(unittest.TestCase):
         self.assertIn('"id": "ostrich"', html)
         self.assertIn('id="study-print-template"', html)
         self.assertIn("print-kit.js?v=20", html)
-        self.assertIn("styles.css?v=41", html)
+        self.assertIn("styles.css?v=42", html)
         self.assertIn('<details class="study-teach">', main)
         self.assertNotIn('<details class="study-teach" open', main)
         self.assertNotIn('<div class="study-teach">', main)
