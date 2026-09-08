@@ -275,8 +275,8 @@ Eurasia and North America (soften Ma), rivers as a
 genetic boundary between forms, and CITES Appendix I.
 Soften contested numbers. Do not redo JR or PR themes.
 
-Facts for koala Junior Ranger (easy only) are
-Wikipedia-backed:
+Facts for koala Junior Ranger + Park Ranger (easy +
+hard) are Wikipedia-backed:
 https://en.wikipedia.org/wiki/Koala
 Species framing is the koala (Phascolarctos cinereus).
 JR stays kid-simple “koala.” Soften sleep hours, leaf
@@ -293,10 +293,19 @@ Round head, big furry ears, and a black nose. Adults
 are mostly solitary; the main bond is mom and joey.
 Gets most moisture from leaves, so it rarely needs to
 drink. Myth: often called a “koala bear,” but it is a
-marsupial, not a bear. Reserve for later: pap,
-fingerprints, caecum detail, status letter, and
-Phascolarctos taxonomy. Do not add Park Ranger or
-Zoologist yet.
+marsupial, not a bear. Park Ranger is answer-light
+(empty teach) and deepens wombat cousins (both pouch
+marsupials; full family name later), male bellows,
+chest scent marks, picky favourites among many
+eucalyptus kinds (soften exact counts), night
+foraging vs daytime rest, a joey’s back ride after
+the pouch, fused hind-toe combs, habitat / cars /
+dogs / bushfire / disease pressure (no status
+letter), larger southern animals (soften kg), and
+hot-day rest on a cooler trunk. Reserve for
+Zoologist: pap, fingerprints, caecum detail, status
+letter, and Phascolarctos taxonomy. Do not add
+Zoologist yet. Do not redo JR themes.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
@@ -406,7 +415,7 @@ LEVEL_DISPLAY_NAMES = {
 # Caribbean flamingo, Galápagos tortoise, zebra, Nile hippo,
 # Sumatran tiger, western lowland gorilla, cheetah, and red
 # panda ship Junior Ranger + Park Ranger + Zoologist. Koala
-# ships Junior Ranger only (no Park Ranger or Zoologist yet).
+# ships Junior Ranger + Park Ranger (no Zoologist yet).
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -576,14 +585,14 @@ PUSH_FURTHER_RED_PANDA = (
     "Red pandas once had extinct cousins in Eurasia and North America. What would you ask a keeper?",
 )
 TALK_ABOUT_KOALA = (
-    "Koalas eat almost only eucalyptus leaves. What would you look for in their yard?",
-    "Koalas sleep most of the day. Why might a leafy diet make them so sleepy?",
-    "A baby koala is a joey in a pouch. How is that different from a bear cub?",
+    "Koalas and wombats are pouch cousins. What would you look for that they share?",
+    "Males bellow at night; days are mostly quiet rest. Why might that be?",
+    "Males rub a chest scent on trees. Why mark a tree that way?",
 )
 PUSH_FURTHER_KOALA = (
-    "A tiny joey crawls into mom’s pouch to keep growing. How do you think it finds the way?",
-    "People say “koala bear,” but a koala is a marsupial. Why aren’t koalas bears?",
-    "Koalas get most of their water from leaves. Do they ever drink water?",
+    "A joey learns which leaves are safe. How do you think it figures that out?",
+    "Cars and dogs are a problem when a koala walks on the ground. Why?",
+    "Some states list koalas as endangered. What might that mean later?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -5762,6 +5771,142 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia says the koala is sometimes inaccurately called a koala bear. It is a marsupial with a pouch, not a bear.",
+                    },
+                ],
+            },
+            "hard": {
+                # Answer-light: Park Ranger has no Learn-first strip.
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "wombat-cousins",
+                        "title": "Wombat cousins",
+                        "stem": "Who are a koala’s closest living relatives?",
+                        "choices": [
+                            "Wombats — both are pouch marsupials",
+                            "Brown bears from the forest",
+                            "African lions on the savannah",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says a koala’s closest living relatives are wombats. Both are pouch marsupials. We save the full family name for later.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "male-bellow",
+                        "title": "Male bellow",
+                        "stem": "What sound do adult male koalas make to attract mates and warn rivals?",
+                        "choices": [
+                            "A tiny mouse squeak that only travels a few steps",
+                            "A deep snoring or belching bellow that can carry through the forest",
+                            "A bird song they copy from parrots",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says adult males communicate with loud bellows — a long series of deep, snoring inhalations and belching exhalations. Those low sounds can travel far through the forest to attract mates and warn rivals.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "chest-scent",
+                        "title": "Chest scent mark",
+                        "stem": "How do male koalas mark their presence on trees?",
+                        "choices": [
+                            "They paint the bark with leftover zoo food",
+                            "They stack rocks at the base of every tree",
+                            "They rub a chest scent gland on the trunk",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says adult males mark their presence with secretions from scent glands on their chests. A male may rub his chest on a tree as he climbs.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "picky-leaves",
+                        "title": "Picky among many",
+                        "stem": "How picky are koalas about eucalyptus leaves?",
+                        "choices": [
+                            "Hundreds of eucalyptus kinds exist, but they strongly prefer a much smaller set of favourites",
+                            "They eat every plant on Earth equally",
+                            "They only eat ocean seaweed",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says hundreds of eucalyptus species are available, but koalas strongly prefer a much smaller set of favourites. We do not lock one exact count.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "night-forager",
+                        "title": "Night forager",
+                        "stem": "When are koalas mostly active, and what do they do in the day?",
+                        "choices": [
+                            "They sprint all day on open grassland and never rest",
+                            "They are mostly active at night; daytime is mostly rest and digesting",
+                            "They hunt fish in rivers from dawn to noon",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says koalas are predominantly active at night and spend most of their waking hours foraging. Daytime is mostly rest while they digest their leafy food.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "back-ride",
+                        "title": "Back ride",
+                        "stem": "What does a joey do after it leaves the pouch?",
+                        "choices": [
+                            "It immediately lives alone in the ocean",
+                            "It flies south for the winter",
+                            "It rides on mom’s back while it learns to climb and nibble leaves",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says that after a joey leaves the pouch, it rides on its mother’s back. There it learns to climb by grasping branches and starts to nibble leaves.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "comb-toes",
+                        "title": "Comb toes",
+                        "stem": "How do a koala’s hind feet help it groom?",
+                        "choices": [
+                            "Two toes are fused and work like a comb for grooming fur",
+                            "The hind feet have no toes at all",
+                            "They spray water like a garden hose",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says that on the hind paws, two toes are fused. The attached claws still sit apart and work like a comb for grooming fur.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "threats-soft",
+                        "title": "Threats",
+                        "stem": "What puts wild koalas under pressure today?",
+                        "choices": [
+                            "Too many extra weekends on the calendar",
+                            "Habitat loss, cars, dogs, bushfire, and disease",
+                            "A shortage of snow in Antarctica",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia lists habitat destruction, cars, dogs, bushfires, and disease as pressures on wild koalas. We do not lock a status letter — that grade is a snapshot and can change.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "bigger-south",
+                        "title": "Bigger down south",
+                        "stem": "How do southern koalas often compare with northern ones?",
+                        "choices": [
+                            "They are always the same size everywhere",
+                            "Northern koalas are always twice as tall as trees",
+                            "Southern koalas tend to be larger and heavier than northern ones",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says koalas from northern populations are typically smaller and lighter in colour than those further south. Southern animals tend to be larger and heavier. We do not lock exact weights.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "heat-hug",
+                        "title": "Heat hug",
+                        "stem": "What do koalas often do on hot days to stay cool?",
+                        "choices": [
+                            "They rest lower on the cooler trunk or thicker branches",
+                            "They fly to Antarctica for ice",
+                            "They burrow under the sand like a desert lizard",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says that when it gets hot, a koala rests lower in the canopy and near the trunk, where the surface is cooler than the surrounding air.",
                     },
                 ],
             },

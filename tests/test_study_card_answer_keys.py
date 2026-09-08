@@ -54,11 +54,11 @@ TRAFFIC_IDS = (
     "cheetah",
     "red-panda",
 )
-JR_ONLY_IDS = ("koala",)
+TWO_LEVEL_IDS = ("koala",)
 
 
 def _decks():
-    for card_id in TRAFFIC_IDS:
+    for card_id in TRAFFIC_IDS + TWO_LEVEL_IDS:
         for level in shipped_levels_for(card_id):
             deck = study_deck_for(card_id, level)
             yield card_id, level, deck
@@ -66,17 +66,17 @@ def _decks():
 
 class StudyCardAnswerKeyTests(unittest.TestCase):
     def test_traffic_set_is_twelve_animals_with_three_levels(self):
-        self.assertEqual(tuple(study_card_ids()), TRAFFIC_IDS + JR_ONLY_IDS)
+        self.assertEqual(tuple(study_card_ids()), TRAFFIC_IDS + TWO_LEVEL_IDS)
         self.assertEqual(shipped_levels_for("cheetah"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("cheetah", "zoologist"))
         self.assertEqual(shipped_levels_for("red-panda"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("red-panda", "hard"))
         self.assertIsNotNone(study_deck_for("red-panda", "zoologist"))
-        self.assertEqual(shipped_levels_for("koala"), ("easy",))
-        self.assertIsNone(study_deck_for("koala", "hard"))
+        self.assertEqual(shipped_levels_for("koala"), ("easy", "hard"))
+        self.assertIsNotNone(study_deck_for("koala", "hard"))
         self.assertIsNone(study_deck_for("koala", "zoologist"))
         decks = list(_decks())
-        self.assertEqual(len(decks), 36)
+        self.assertEqual(len(decks), 38)
         for card_id, level, deck in decks:
             self.assertIsNotNone(deck, f"{card_id}/{level}")
             self.assertEqual(validate_deck(deck), [])
@@ -107,12 +107,12 @@ class StudyCardAnswerKeyTests(unittest.TestCase):
 
     def test_overall_correct_b_is_not_a_majority(self):
         letters = [q["correct"] for _, _, deck in _decks() for q in deck["questions"]]
-        self.assertEqual(len(letters), 360)
+        self.assertEqual(len(letters), 380)
         share_b = letters.count("B") / len(letters)
         self.assertLessEqual(
             share_b,
             MAX_OVERALL_B_SHARE,
-            f"correct==B is {share_b:.1%} ({letters.count('B')}/360)",
+            f"correct==B is {share_b:.1%} ({letters.count('B')}/380)",
         )
         for letter in LETTERS:
             share = letters.count(letter) / len(letters)
