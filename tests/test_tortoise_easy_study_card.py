@@ -137,9 +137,9 @@ class TortoiseEasyStudyCardTests(unittest.TestCase):
                 "galapagos-tortoise",
             ),
         )
-        self.assertEqual(shipped_levels_for("galapagos-tortoise"), ("easy", "hard"))
+        self.assertEqual(shipped_levels_for("galapagos-tortoise"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("galapagos-tortoise", "hard"))
-        self.assertIsNone(study_deck_for("galapagos-tortoise", "zoologist"))
+        self.assertIsNotNone(study_deck_for("galapagos-tortoise", "zoologist"))
         deck = study_deck_for("galapagos-tortoise")
         self.assertIsNotNone(deck)
         self.assertEqual(deck["id"], "galapagos-tortoise")
@@ -232,11 +232,11 @@ class TortoiseEasyStudyCardTests(unittest.TestCase):
         visible = _text(html)
         self.assertIn("Junior Ranger", visible)
         self.assertIn("Park Ranger", visible)
-        self.assertNotIn("Zoologist", visible)
+        self.assertIn("Zoologist", visible)
         self.assertIn('class="study-level-picker"', html)
         self.assertIn('data-study-pick="easy"', html)
         self.assertIn('data-study-pick="hard"', html)
-        self.assertNotIn('data-study-pick="zoologist"', html)
+        self.assertIn('data-study-pick="zoologist"', html)
         self.assertNotIn('class="study-level-badge"', html)
         for badge in PLAIN_LEVEL_LABELS + AGE_BADGES:
             self.assertNotIn(badge, visible)
@@ -284,11 +284,11 @@ class TortoiseEasyStudyCardTests(unittest.TestCase):
         visible = _text(main)
         self.assertIn("Junior Ranger", visible)
         self.assertIn("Park Ranger", visible)
-        self.assertNotIn("Zoologist", visible)
+        self.assertIn("Zoologist", visible)
         self.assertIn('class="study-level-picker"', main)
         self.assertIn('data-study-pick="easy"', main)
         self.assertIn('data-study-pick="hard"', main)
-        self.assertNotIn('data-study-pick="zoologist"', main)
+        self.assertIn('data-study-pick="zoologist"', main)
         self.assertNotIn('class="study-level-badge"', main)
         self.assertIn("Learn first", main)
         for badge in PLAIN_LEVEL_LABELS + AGE_BADGES:
@@ -361,14 +361,14 @@ class TortoiseEasyStudyCardTests(unittest.TestCase):
         self.assertIn("african-lion", payload)
         tortoise = payload["galapagos-tortoise"]
         self.assertEqual(tortoise["id"], "galapagos-tortoise")
-        self.assertEqual(set(tortoise["levels"]), {"easy", "hard"})
+        self.assertEqual(set(tortoise["levels"]), {"easy", "hard", "zoologist"})
         easy = tortoise["levels"]["easy"]
         self.assertEqual(len(easy["teach"]), 5)
         self.assertEqual(len(easy["questions"]), STUDY_SLOTS)
         for q in easy["questions"]:
             self.assertEqual(len(q["choices"]), 3)
         self.assertEqual(tortoise["levels"]["hard"]["teach"], [])
-        self.assertNotIn("zoologist", tortoise["levels"])
+        self.assertEqual(tortoise["levels"]["zoologist"]["teach"], [])
         data_js = STUDY_DATA_JS.read_text(encoding="utf-8")
         self.assertIn("galapagos-tortoise", data_js)
         self.assertIn('"easy":"Junior Ranger"', data_js)
@@ -402,7 +402,7 @@ class TortoiseEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Zoologist", _text(_main(flamingo_html)))
         tortoise_html = TORTOISE.read_text(encoding="utf-8")
         self.assertIn("Park Ranger", _text(_main(tortoise_html)))
-        self.assertNotIn("Zoologist", _text(_main(tortoise_html)))
+        self.assertIn("Zoologist", _text(_main(tortoise_html)))
 
 
 if __name__ == "__main__":
