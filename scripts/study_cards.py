@@ -239,6 +239,25 @@ hooks or trips prey. Soften contested numbers.
 Keep MHC / Miracinonyx out of default Explore more.
 Do not redo JR or PR themes.
 
+Facts for red-panda Junior Ranger (easy only) are
+Wikipedia-backed:
+https://en.wikipedia.org/wiki/Red_panda
+Species framing is the red panda (Ailurus fulgens).
+JR stays kid-simple “red panda.” Soften contested
+numbers and IUCN letters. Not a bear and not closely
+related to the giant panda. Home is mountain forests
+of the eastern Himalayas and southwestern China.
+Mainly bamboo leaves and shoots. Bushy tail with red
+and buff rings. Largely arboreal — a tree climber.
+A wrist “false thumb” helps grip bamboo. Reddish-brown
+coat, black belly, white face markings. Adults are
+generally solitary. Cubs are born in a tree hollow
+or den nest. Myth: a fox-like look does not make it
+a fox. Reserve for later: Ailuridae / musteloid
+phylogeny, the Endangered letter, subspecies-as-species,
+genome genes, and deep thumb anatomy. Do not add
+Park Ranger or Zoologist yet.
+
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
 zoologist. Visible copy uses LEVEL_DISPLAY_NAMES only — no age badges,
@@ -272,6 +291,7 @@ WIKI_WESTERN_LOWLAND_GORILLA = (
     "https://en.wikipedia.org/wiki/Western_lowland_gorilla"
 )
 WIKI_CHEETAH = "https://en.wikipedia.org/wiki/Cheetah"
+WIKI_RED_PANDA = "https://en.wikipedia.org/wiki/Red_panda"
 
 LETTERS = ("A", "B", "C")
 STUDY_SLOTS = 10
@@ -344,7 +364,8 @@ LEVEL_DISPLAY_NAMES = {
 # Lion, reticulated-giraffe, African elephant, African penguin,
 # Caribbean flamingo, Galápagos tortoise, zebra, Nile hippo,
 # Sumatran tiger, western lowland gorilla, and cheetah ship
-# Junior Ranger + Park Ranger + Zoologist.
+# Junior Ranger + Park Ranger + Zoologist. Red panda ships
+# Junior Ranger only (no Park Ranger or Zoologist yet).
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -372,6 +393,7 @@ STUDY_NEIGHBORS = {
     "sumatran-tiger": ("african-lion",),
     "western-lowland-gorilla": ("african-elephant",),
     "cheetah": ("african-lion", "zebra"),
+    "red-panda": ("sumatran-tiger", "zebra"),
 }
 
 STUDY_CARD_TITLES = {
@@ -386,6 +408,7 @@ STUDY_CARD_TITLES = {
     "sumatran-tiger": "Sumatran tiger",
     "western-lowland-gorilla": "Western lowland gorilla",
     "cheetah": "Cheetah",
+    "red-panda": "Red panda",
 }
 
 # Shared answers-side deepen (Claude sample). Not scored. Future animals reuse keys.
@@ -498,6 +521,16 @@ PUSH_FURTHER_CHEETAH = (
     "Cheetah claws stay out more than a house cat’s. What would you ask a keeper about that?",
     "Some brother cheetahs hunt together. Why might a team help on the plains?",
     "Cheetahs have unusually similar genes after ancient crashes. How is that different from just being rare?",
+)
+TALK_ABOUT_RED_PANDA = (
+    "People also call a giant panda a “panda.” How is a red panda different at the zoo?",
+    "Red pandas mostly eat bamboo. What would you look for in their yard?",
+    "A red panda’s tail has red and buff rings. How might that bushy tail help in a tree?",
+)
+PUSH_FURTHER_RED_PANDA = (
+    "Scientists say red pandas are closer to raccoons than to bears. What would you ask a keeper?",
+    "A red panda’s “thumb” is a wrist bone. Why might a giant panda have a similar trick?",
+    "Red pandas live in mountain bamboo forests. What would you notice first if you visited one?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -5102,6 +5135,157 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia says a cheetah strikes down prey with its dewclaw in full pursuit. The large, strongly curved dewclaw stays sharp and can hook or trip the animal.",
+                    },
+                ],
+            },
+        },
+    },
+    "red-panda": {
+        "id": "red-panda",
+        "source": WIKI_RED_PANDA,
+        "source_note": "Facts from Wikipedia, Red panda.",
+        "talk_about": list(TALK_ABOUT_RED_PANDA),
+        "push_further": list(PUSH_FURTHER_RED_PANDA),
+        "levels": {
+            "easy": {
+                # Teaching-first: same front as the quiz. Hard later may hide these.
+                "teach": [
+                    "They are not a bear — and they are not closely related to the giant panda.",
+                    "They live in mountain forests of the eastern Himalayas and southwestern China.",
+                    "They mainly eat bamboo leaves and shoots.",
+                    "They have a bushy tail with red and buff rings.",
+                    "They spend a lot of time in trees.",
+                ],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "not-a-bear",
+                        "title": "Not a giant panda",
+                        "stem": "Is a red panda a kind of bear, like a giant panda?",
+                        "choices": [
+                            "No — it is not a bear, and it is not closely related to the giant panda",
+                            "Yes — it is a tiny bear in the same family as the giant panda",
+                            "Yes — it is a baby giant panda that never grows up",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says the red panda is not closely related to the giant panda, which is a bear. Sharing the name “panda” does not make them close cousins.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "mountain-forests",
+                        "title": "Mountain forests",
+                        "stem": "Where do wild red pandas live?",
+                        "choices": [
+                            "Only on African grassland",
+                            "Mountain forests of the eastern Himalayas and southwestern China",
+                            "Only under the ocean",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says the red panda is native to the eastern Himalayas and southwestern China. It lives in mountain forests with lots of bamboo.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "bamboo",
+                        "title": "Bamboo eater",
+                        "stem": "What do red pandas mainly eat?",
+                        "choices": [
+                            "Only meat from big animals",
+                            "Only fish from deep rivers",
+                            "Mainly bamboo leaves and shoots",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says the red panda feeds mainly on bamboo shoots and leaves. It may also eat fruits and blossoms.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "ringed-tail",
+                        "title": "Ringed tail",
+                        "stem": "What is a red panda’s tail like?",
+                        "choices": [
+                            "A bushy tail with red and buff rings",
+                            "A bald tail with no fur",
+                            "A tail that is a fish fin",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia describes a ringed tail. The bushy tail has red and buff ring patterns.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "tree-climber",
+                        "title": "Tree climber",
+                        "stem": "How do red pandas spend much of their time?",
+                        "choices": [
+                            "Swimming in the open ocean",
+                            "Mostly in the trees — they are great climbers",
+                            "Flying from cloud to cloud",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says the red panda is largely arboreal. It is well adapted to climbing and spends much of its time in trees.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "false-thumb",
+                        "title": "False thumb",
+                        "stem": "What special “thumb” helps a red panda hold bamboo?",
+                        "choices": [
+                            "A metal hook glued on at the zoo",
+                            "Extra fingers that grow from its ears",
+                            "A wrist bone that works like a thumb and helps it grip bamboo",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says the forepaws have a “false thumb” — a wrist bone that helps the animal grip bamboo stalks.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "rusty-coat",
+                        "title": "Rusty red coat",
+                        "stem": "What does a red panda’s coat look like?",
+                        "choices": [
+                            "Reddish-brown, with a black belly and white face markings",
+                            "Bright blue all over, like a bird",
+                            "Plain grey with no markings",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia describes dense reddish-brown fur, a black belly and legs, and white face markings.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "solitary",
+                        "title": "Mostly alone",
+                        "stem": "How do adult red pandas usually live?",
+                        "choices": [
+                            "In huge ocean schools",
+                            "Generally on their own, not in a big group",
+                            "Only in lion-style prides",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says adult red pandas are generally solitary. They are not pride animals like lions.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "cub-nest",
+                        "title": "Cub nest",
+                        "stem": "Where are red panda cubs usually born?",
+                        "choices": [
+                            "On open ice with no nest",
+                            "In a nest under the ocean",
+                            "In a nest in a tree hollow or den",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says the mother picks a denning site such as a tree hollow, log hollow, or rock crevice, and builds a nest.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "fox-myth",
+                        "title": "Myth buster — fox look",
+                        "stem": "A red panda can look a bit like a fox. Does that make it a fox?",
+                        "choices": [
+                            "No — it is its own animal, not a fox and not a bear",
+                            "Yes — it is a red fox that learned to climb",
+                            "Yes — every fox is secretly a red panda",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia treats the red panda as its own animal — not a bear and not closely related to the giant panda. A fox-like face does not make it a fox.",
                     },
                 ],
             },
