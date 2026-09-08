@@ -18,12 +18,14 @@ from study_cards import (  # noqa: E402
     PUSH_FURTHER_CHEETAH,
     PUSH_FURTHER_GORILLA,
     PUSH_FURTHER_LION,
+    PUSH_FURTHER_KOALA,
     PUSH_FURTHER_RED_PANDA,
     PUSH_FURTHER_TIGER,
     PUSH_FURTHER_TORTOISE,
     STUDY_SLOTS,
     TALK_ABOUT_CHEETAH,
     TALK_ABOUT_GORILLA,
+    TALK_ABOUT_KOALA,
     TALK_ABOUT_LION,
     TALK_ABOUT_RED_PANDA,
     TALK_ABOUT_TIGER,
@@ -52,6 +54,7 @@ TRAFFIC_IDS = (
     "cheetah",
     "red-panda",
 )
+JR_ONLY_IDS = ("koala",)
 
 
 def _decks():
@@ -63,12 +66,15 @@ def _decks():
 
 class StudyCardAnswerKeyTests(unittest.TestCase):
     def test_traffic_set_is_twelve_animals_with_three_levels(self):
-        self.assertEqual(tuple(study_card_ids()), TRAFFIC_IDS)
+        self.assertEqual(tuple(study_card_ids()), TRAFFIC_IDS + JR_ONLY_IDS)
         self.assertEqual(shipped_levels_for("cheetah"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("cheetah", "zoologist"))
         self.assertEqual(shipped_levels_for("red-panda"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("red-panda", "hard"))
         self.assertIsNotNone(study_deck_for("red-panda", "zoologist"))
+        self.assertEqual(shipped_levels_for("koala"), ("easy",))
+        self.assertIsNone(study_deck_for("koala", "hard"))
+        self.assertIsNone(study_deck_for("koala", "zoologist"))
         decks = list(_decks())
         self.assertEqual(len(decks), 36)
         for card_id, level, deck in decks:
@@ -112,7 +118,7 @@ class StudyCardAnswerKeyTests(unittest.TestCase):
             share = letters.count(letter) / len(letters)
             self.assertGreaterEqual(share, 0.25, f"{letter} is only {share:.1%}")
 
-    def test_tiger_gorilla_cheetah_and_red_panda_explore_more_stay_kid_short(self):
+    def test_tiger_gorilla_cheetah_red_panda_and_koala_explore_more_stay_kid_short(self):
         dense = (
             "Laverania",
             "incomplete lineage sorting",
@@ -135,6 +141,8 @@ class StudyCardAnswerKeyTests(unittest.TestCase):
             + PUSH_FURTHER_CHEETAH
             + TALK_ABOUT_RED_PANDA
             + PUSH_FURTHER_RED_PANDA
+            + TALK_ABOUT_KOALA
+            + PUSH_FURTHER_KOALA
         )
         for line in lines:
             for phrase in dense:

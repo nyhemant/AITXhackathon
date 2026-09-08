@@ -275,6 +275,29 @@ Eurasia and North America (soften Ma), rivers as a
 genetic boundary between forms, and CITES Appendix I.
 Soften contested numbers. Do not redo JR or PR themes.
 
+Facts for koala Junior Ranger (easy only) are
+Wikipedia-backed:
+https://en.wikipedia.org/wiki/Koala
+Species framing is the koala (Phascolarctos cinereus).
+JR stays kid-simple “koala.” Soften sleep hours, leaf
+amounts, and IUCN letters (snapshots only). Not a bear
+— a marsupial with a pouch. Home is eucalyptus forests
+in eastern / southeastern Australia. Almost all food
+is eucalyptus leaves (tough, low-energy, toxic to many
+animals). Spends almost all its time in trees and
+comes down mainly to switch trees. Sleeps most of the
+day because leaves give little energy. A baby is a
+joey and crawls into mom’s pouch to keep growing.
+Front paws have two “thumbs” opposite three fingers.
+Round head, big furry ears, and a black nose. Adults
+are mostly solitary; the main bond is mom and joey.
+Gets most moisture from leaves, so it rarely needs to
+drink. Myth: often called a “koala bear,” but it is a
+marsupial, not a bear. Reserve for later: pap,
+fingerprints, caecum detail, status letter, and
+Phascolarctos taxonomy. Do not add Park Ranger or
+Zoologist yet.
+
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
 zoologist. Visible copy uses LEVEL_DISPLAY_NAMES only — no age badges,
@@ -309,6 +332,7 @@ WIKI_WESTERN_LOWLAND_GORILLA = (
 )
 WIKI_CHEETAH = "https://en.wikipedia.org/wiki/Cheetah"
 WIKI_RED_PANDA = "https://en.wikipedia.org/wiki/Red_panda"
+WIKI_KOALA = "https://en.wikipedia.org/wiki/Koala"
 
 LETTERS = ("A", "B", "C")
 STUDY_SLOTS = 10
@@ -381,7 +405,8 @@ LEVEL_DISPLAY_NAMES = {
 # Lion, reticulated-giraffe, African elephant, African penguin,
 # Caribbean flamingo, Galápagos tortoise, zebra, Nile hippo,
 # Sumatran tiger, western lowland gorilla, cheetah, and red
-# panda ship Junior Ranger + Park Ranger + Zoologist.
+# panda ship Junior Ranger + Park Ranger + Zoologist. Koala
+# ships Junior Ranger only (no Park Ranger or Zoologist yet).
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -410,6 +435,7 @@ STUDY_NEIGHBORS = {
     "western-lowland-gorilla": ("african-elephant",),
     "cheetah": ("african-lion", "zebra"),
     "red-panda": ("sumatran-tiger", "zebra"),
+    "koala": ("red-panda", "sumatran-tiger"),
 }
 
 STUDY_CARD_TITLES = {
@@ -425,6 +451,7 @@ STUDY_CARD_TITLES = {
     "western-lowland-gorilla": "Western lowland gorilla",
     "cheetah": "Cheetah",
     "red-panda": "Red panda",
+    "koala": "Koala",
 }
 
 # Shared answers-side deepen (Claude sample). Not scored. Future animals reuse keys.
@@ -547,6 +574,16 @@ PUSH_FURTHER_RED_PANDA = (
     "Some people treat those two mountain forms as two species. Why might scientists still disagree?",
     "A red panda has a meat-eater gut but lives on bamboo. Why might it need to eat so much?",
     "Red pandas once had extinct cousins in Eurasia and North America. What would you ask a keeper?",
+)
+TALK_ABOUT_KOALA = (
+    "Koalas eat almost only eucalyptus leaves. What would you look for in their yard?",
+    "Koalas sleep most of the day. Why might a leafy diet make them so sleepy?",
+    "A baby koala is a joey in a pouch. How is that different from a bear cub?",
+)
+PUSH_FURTHER_KOALA = (
+    "A tiny joey crawls into mom’s pouch to keep growing. How do you think it finds the way?",
+    "People say “koala bear,” but a koala is a marsupial. Why aren’t koalas bears?",
+    "Koalas get most of their water from leaves. Do they ever drink water?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -5574,6 +5611,157 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia says the red panda is listed in CITES Appendix I and is protected in all range countries. Hunting is illegal. Appendix I is the tightest trade control.",
+                    },
+                ],
+            },
+        },
+    },
+    "koala": {
+        "id": "koala",
+        "source": WIKI_KOALA,
+        "source_note": "Facts from Wikipedia, Koala.",
+        "talk_about": list(TALK_ABOUT_KOALA),
+        "push_further": list(PUSH_FURTHER_KOALA),
+        "levels": {
+            "easy": {
+                # Teaching-first: same front as the quiz. Hard later may hide these.
+                "teach": [
+                    "Not a bear — a marsupial with a pouch.",
+                    "Lives in eucalyptus forests in Australia.",
+                    "Eats eucalyptus leaves.",
+                    "A baby is a joey (grows in mom’s pouch).",
+                    "Sleeps most of the day to save energy.",
+                ],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "australia-home",
+                        "title": "Australia home",
+                        "stem": "Where do wild koalas live?",
+                        "choices": [
+                            "Eucalyptus forests of eastern and southeastern Australia",
+                            "Only on icy Antarctic ice",
+                            "Only on African grassland",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says wild koalas live in eucalyptus forests of eastern and southeastern Australia. They are not Antarctic or African animals.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "eucalyptus-leaves",
+                        "title": "Leaf specialist",
+                        "stem": "What do koalas almost always eat?",
+                        "choices": [
+                            "Only meat from other animals",
+                            "Almost all eucalyptus leaves",
+                            "Only fish from the ocean",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says eucalyptus leaves make up most of a koala’s diet. Those leaves are tough, low-energy, and toxic to many other animals.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "tree-life",
+                        "title": "Tree life",
+                        "stem": "Where does a koala spend almost all of its time?",
+                        "choices": [
+                            "Swimming in the open ocean",
+                            "Running on open desert sand",
+                            "Up in the trees — it comes down mainly to switch trees",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says the koala is a tree animal. It spends almost all its time up in trees and usually comes down only to move to another tree.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "sleepy-saver",
+                        "title": "Sleepy saver",
+                        "stem": "Why do koalas sleep most of the day?",
+                        "choices": [
+                            "Their leafy food gives little energy, so they rest a lot",
+                            "They are practicing for a night job at the zoo",
+                            "They never feel sleepy at all",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says eucalyptus leaves give little energy. Koalas rest most of the day to save that energy. We do not lock one exact sleep number.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "joey",
+                        "title": "Joey",
+                        "stem": "What is a baby koala called, and where does it keep growing?",
+                        "choices": [
+                            "A cub that grows in a bird nest",
+                            "A joey that crawls into mom’s pouch to keep growing",
+                            "A calf that lives only in the ocean",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says a baby koala is a joey. Like other marsupials, it crawls into mom’s pouch and keeps growing there.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "climb-grip",
+                        "title": "Climb grip",
+                        "stem": "How do a koala’s front paws help it climb?",
+                        "choices": [
+                            "They have flippers instead of fingers",
+                            "They have no toes at all",
+                            "Two “thumbs” sit opposite three fingers for a strong tree grip",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says the front paws have two opposable digits — like two thumbs — opposite three fingers. That grip helps a koala hold branches.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "fluffy-look",
+                        "title": "Fluffy look",
+                        "stem": "What makes the classic koala face?",
+                        "choices": [
+                            "A round head, big furry ears, and a black nose",
+                            "A long trunk and huge tusks",
+                            "Bright blue feathers",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says a koala is easy to know by its large head, round fluffy ears, and big dark nose.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "mostly-alone",
+                        "title": "Mostly alone",
+                        "stem": "How do adult koalas usually live?",
+                        "choices": [
+                            "In huge ocean schools",
+                            "Mostly on their own — the main bond is mom and joey",
+                            "Only in lion-style prides",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says adult koalas are mostly solitary. The main family bond is a mother and her joey.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "leaf-water",
+                        "title": "Leaf water",
+                        "stem": "How do koalas usually get the water they need?",
+                        "choices": [
+                            "They only drink from the ocean",
+                            "They never need any moisture at all",
+                            "They get most moisture from leaves, so they rarely need to drink",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says a koala can get enough water from its leaves, so it does not need to drink often.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "koala-bear-myth",
+                        "title": "Myth buster — koala bear",
+                        "stem": "People sometimes say “koala bear.” Is a koala a bear?",
+                        "choices": [
+                            "No — it is a marsupial (a pouch mammal), not a bear",
+                            "Yes — it is a tiny brown bear",
+                            "Yes — every bear is secretly a koala",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says the koala is sometimes inaccurately called a koala bear. It is a marsupial with a pouch, not a bear.",
                     },
                 ],
             },
