@@ -1,4 +1,4 @@
-"""Zebra Easy study-card: Junior Ranger only, teach + 10 MCQs."""
+"""Zebra Easy study-card: Junior Ranger teach + 10 MCQs (Park Ranger is a sibling level)."""
 
 from __future__ import annotations
 
@@ -149,8 +149,8 @@ class ZebraEasyStudyCardTests(unittest.TestCase):
                 "zebra",
             ),
         )
-        self.assertEqual(shipped_levels_for("zebra"), ("easy",))
-        self.assertIsNone(study_deck_for("zebra", "hard"))
+        self.assertEqual(shipped_levels_for("zebra"), ("easy", "hard"))
+        self.assertIsNotNone(study_deck_for("zebra", "hard"))
         self.assertIsNone(study_deck_for("zebra", "zoologist"))
         deck = study_deck_for("zebra")
         self.assertIsNotNone(deck)
@@ -251,12 +251,15 @@ class ZebraEasyStudyCardTests(unittest.TestCase):
             self.assertNotIn(phrase, html)
         visible = _text(html)
         self.assertIn("Junior Ranger", visible)
-        self.assertNotIn("Park Ranger", visible)
+        self.assertIn("Park Ranger", visible)
         self.assertNotIn("Zoologist", visible)
-        self.assertIn('class="study-level-badge"', html)
-        self.assertNotIn('class="study-level-picker"', html)
-        self.assertNotIn('data-study-pick="hard"', html)
+        self.assertIn('class="study-level-picker"', html)
+        self.assertIn('data-study-pick="easy"', html)
+        self.assertIn('data-study-pick="hard"', html)
         self.assertNotIn('data-study-pick="zoologist"', html)
+        self.assertNotIn('class="study-level-badge"', html)
+        self.assertEqual(html.count('role="group"'), 2)
+        self.assertIn("study-level-picker-bottom", html)
         for badge in PLAIN_LEVEL_LABELS + AGE_BADGES:
             self.assertNotIn(badge, visible)
         for phrase in BRITTLE:
@@ -285,6 +288,10 @@ class ZebraEasyStudyCardTests(unittest.TestCase):
             self.assertIn(line, main)
         self.assertIn("Watch Live", main)
         self.assertIn("/field-pack/virtual-zoo/?from=card#habitat=zebra", main)
+        self.assertIn('class="card-hero-links no-print"', main)
+        self.assertIn('class="card-try-next no-print"', main)
+        self.assertIn("study-level-picker-bottom", main)
+        self.assertNotIn("card-print-note", main)
         self.assertIn("study-card.js?v=7", html)
         self.assertIn("study-card.css?v=8", html)
         self.assertIn("study-cards-data.js?v=5", html)
@@ -302,12 +309,13 @@ class ZebraEasyStudyCardTests(unittest.TestCase):
         self.assertRegex(main, r'<aside class="study-deepen"[^>]*\bhidden\b')
         visible = _text(main)
         self.assertIn("Junior Ranger", visible)
-        self.assertNotIn("Park Ranger", visible)
+        self.assertIn("Park Ranger", visible)
         self.assertNotIn("Zoologist", visible)
-        self.assertIn('class="study-level-badge"', main)
-        self.assertNotIn('class="study-level-picker"', main)
-        self.assertNotIn('data-study-pick="easy"', main)
-        self.assertNotIn('data-study-pick="hard"', main)
+        self.assertIn('class="study-level-picker"', main)
+        self.assertIn('data-study-pick="easy"', main)
+        self.assertIn('data-study-pick="hard"', main)
+        self.assertNotIn('data-study-pick="zoologist"', main)
+        self.assertNotIn('class="study-level-badge"', main)
         self.assertIn("Learn first", main)
         for badge in PLAIN_LEVEL_LABELS + AGE_BADGES:
             self.assertNotIn(badge, visible)
@@ -380,13 +388,13 @@ class ZebraEasyStudyCardTests(unittest.TestCase):
         self.assertIn("african-lion", payload)
         zebra = payload["zebra"]
         self.assertEqual(zebra["id"], "zebra")
-        self.assertEqual(set(zebra["levels"]), {"easy"})
+        self.assertEqual(set(zebra["levels"]), {"easy", "hard"})
         easy = zebra["levels"]["easy"]
         self.assertEqual(len(easy["teach"]), 5)
         self.assertEqual(len(easy["questions"]), STUDY_SLOTS)
         for q in easy["questions"]:
             self.assertEqual(len(q["choices"]), 3)
-        self.assertNotIn("hard", zebra["levels"])
+        self.assertEqual(zebra["levels"]["hard"]["teach"], [])
         self.assertNotIn("zoologist", zebra["levels"])
         data_js = STUDY_DATA_JS.read_text(encoding="utf-8")
         self.assertIn("zebra", data_js)
@@ -424,7 +432,7 @@ class ZebraEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Park Ranger", _text(_main(tortoise_html)))
         self.assertIn("Zoologist", _text(_main(tortoise_html)))
         zebra_html = ZEBRA.read_text(encoding="utf-8")
-        self.assertNotIn("Park Ranger", _text(_main(zebra_html)))
+        self.assertIn("Park Ranger", _text(_main(zebra_html)))
         self.assertNotIn("Zoologist", _text(_main(zebra_html)))
 
 

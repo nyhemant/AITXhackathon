@@ -88,13 +88,20 @@ gene names), and temperature-dependent hatchling sex. Soften
 IUCN letters and exact taxon counts. Do not redo JR or PR
 themes.
 
-Facts for zebra Junior Ranger (easy only) are Wikipedia-backed:
+Facts for zebra Junior Ranger + Park Ranger (easy + hard) are
+Wikipedia-backed:
 https://en.wikipedia.org/wiki/Plains_zebra
 Species framing is the plains zebra (Equus quagga). JR stays
 kid-simple “plains zebra.” Soften exact run speed (no mph / km/h
-lock). Reserve for later tiers: the biting-fly stripe hypothesis,
-the quagga, subspecies, and the IUCN Near Threatened letter. Do
-not add Park Ranger or Zoologist yet.
+lock). Hard deepens the fly-stripe hypothesis (leading idea:
+stripes help deter biting flies — not a settled fact vs
+camouflage or heat-only), harems, bachelor groups, pioneer
+grazing, hindgut fermentation, water dependence, alarm
+barks/snorts, brownish foal stripes that darken, southern
+shadow stripes, and hunting / habitat-loss threats. Soften
+mph and the IUCN Near Threatened letter. Reserve for
+Zoologist: the quagga, subspecies/clines, flehmen, and exact
+taxonomy. Do not add Zoologist yet. Do not redo JR themes.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
@@ -137,7 +144,8 @@ LEVEL_DISPLAY_NAMES = {
 # Shipped picker order. A card only shows keys it actually defines.
 # Lion, reticulated-giraffe, African elephant, African penguin,
 # Caribbean flamingo, and Galápagos tortoise ship Junior Ranger +
-# Park Ranger + Zoologist. Zebra ships Junior Ranger only for now.
+# Park Ranger + Zoologist. Zebra ships Junior Ranger + Park Ranger
+# (no Zoologist yet).
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -2847,6 +2855,146 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "B",
                         "why": "Zebras are wild, not domesticated like horses. They are horse relatives, but they are not farm horses you can ride the same way.",
+                    },
+                ],
+            },
+            "hard": {
+                # Answer-light: no Learn-first strip. Facts from Wikipedia,
+                # Plains zebra. Soften mph and the IUCN Near Threatened
+                # letter. Fly-stripe is a leading hypothesis, not a settled
+                # fact. Reserve quagga, subspecies/clines, flehmen, and
+                # exact taxonomy for Zoologist. Do not redo JR themes.
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "fly-stripe",
+                        "title": "Fly-stripe idea",
+                        "stem": "What is a leading idea today for why plains zebras have stripes?",
+                        "choices": [
+                            "The stripes are only for looking pretty to people",
+                            "Stripes help deter biting flies",
+                            "Scientists have proved stripes are only for hiding in tall grass",
+                        ],
+                        "correct": "B",
+                        "why": "A leading idea today is that the stripe pattern helps deter biting flies. Camouflage and heat-only explanations are still discussed, so this is a hypothesis — not a finished proof.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "harem",
+                        "title": "Harem",
+                        "stem": "What is a plains zebra harem?",
+                        "choices": [
+                            "A pair of two zebras that never meet others",
+                            "One stallion, several mares, and their young",
+                            "Only bachelor males living together",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says plains zebras form harems with a single stallion, several mares, and their recent offspring.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "bachelors",
+                        "title": "Bachelor groups",
+                        "stem": "What do young male plains zebras often do before starting a harem?",
+                        "choices": [
+                            "They live completely alone from birth",
+                            "They often form bachelor groups of other young males",
+                            "They immediately take over the family they were born into",
+                        ],
+                        "correct": "B",
+                        "why": "Young males often join bachelor groups until they are ready to start a harem of their own.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "pioneer",
+                        "title": "Pioneer grazer",
+                        "stem": "Why are plains zebras often called pioneer grazers?",
+                        "choices": [
+                            "They wait until other animals eat first",
+                            "They are often first to graze tall, tough grass, and other grazers follow the shorter growth",
+                            "They only eat fruit from trees",
+                        ],
+                        "correct": "B",
+                        "why": "Zebras are pioneer grazers — often first into tall, tough grass. More specialised grazers such as wildebeest and gazelles follow the shorter growth.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "hindgut",
+                        "title": "Hindgut",
+                        "stem": "How does a plains zebra digest grass compared with a cow-like ruminant?",
+                        "choices": [
+                            "It chews a cud like a cow",
+                            "It is a hindgut fermenter — food moves through faster, so it is less picky",
+                            "It does not digest plants at all",
+                        ],
+                        "correct": "B",
+                        "why": "Zebras are hindgut fermenters. Food passes through faster than in ruminants, so they are less selective and spend a lot of time eating.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "water",
+                        "title": "Water need",
+                        "stem": "How tied are plains zebras to drinking water?",
+                        "choices": [
+                            "They can go months without a drink",
+                            "They are water-dependent and seldom wander far from drinking water",
+                            "They only drink seawater",
+                        ],
+                        "correct": "B",
+                        "why": "Plains zebras are water-dependent. They seldom wander far from a drinking source.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "alarm",
+                        "title": "Alarm",
+                        "stem": "What do plains zebras often do when they spot a predator?",
+                        "choices": [
+                            "They stay silent and freeze for hours",
+                            "They bark or snort, and the group stays alert",
+                            "They roar like lions",
+                        ],
+                        "correct": "B",
+                        "why": "They keep watch for predators. They bark or snort when they see one, and the group stays alert.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "foal-coat",
+                        "title": "Foal coat",
+                        "stem": "What colour are a newborn plains zebra’s stripes at first?",
+                        "choices": [
+                            "Bright neon green",
+                            "Brownish — they darken with age",
+                            "Already jet-black on day one, never changing",
+                        ],
+                        "correct": "B",
+                        "why": "A foal’s natal coat is brown and white. The brown darkens with age.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "shadow-stripes",
+                        "title": "Shadow stripes",
+                        "stem": "What extra marking do some southern plains zebras show between the black and white?",
+                        "choices": [
+                            "Gold spots like a giraffe",
+                            "Brown “shadow” stripes — commoner in some southern populations",
+                            "Blue rings on every hoof",
+                        ],
+                        "correct": "B",
+                        "why": "Some southern plains zebras show brown “shadow” stripes between the black and white. They are absent or faint in many northern zebras, so this is “some populations,” not every zebra.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "threats",
+                        "title": "Threats",
+                        "stem": "What puts wild plains zebras under pressure today?",
+                        "choices": [
+                            "Too many zoos",
+                            "Hunting and habitat loss / farming encroachment",
+                            "They have no wild threats",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says they are threatened by hunting for meat and hide, plus livestock competition and farming that takes over grassland. We do not lock a status letter.",
                     },
                 ],
             },
