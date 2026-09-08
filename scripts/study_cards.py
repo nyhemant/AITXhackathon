@@ -136,8 +136,8 @@ and bottom-walks, and the two living hippos (H. amphibius +
 pygmy). Soften contested numbers and treat IUCN Vulnerable
 as a snapshot. Do not redo JR or PR themes.
 
-Facts for sumatran-tiger Junior Ranger (easy only) are
-Wikipedia-backed:
+Facts for sumatran-tiger Junior Ranger + Park Ranger (easy + hard)
+are Wikipedia-backed:
 https://en.wikipedia.org/wiki/Sumatran_tiger
 https://en.wikipedia.org/wiki/Tiger
 Species framing is the Sumatran tiger (Panthera tigris
@@ -150,9 +150,15 @@ Mostly alone, not pride life like lions. A baby is a cub.
 Males can show a cheek/neck ruff. Last Sunda island tiger
 after Bali and Javan tigers went extinct. Myth: they are
 strong swimmers, not cartoon water-scared cats (Tiger page).
-Reserve for later: sondaica lumping, CR letter, population
-counts, palm oil, and captive genetics. Do not add Park
-Ranger or Zoologist yet.
+Hard deepens understory cover, natural forest over plantations,
+a soft forest-prey list, fragmented habitat pockets, threats
+(habitat loss, prey decline, hunting/snares — no status letter),
+coastal lowland to high mountain forest, ambush hunting (not
+long open chases), large connected forest blocks, stripe-to-spot
+tips, and park strongholds. Soften contested numbers and IUCN
+letters. Reserve for Zoologist: sondaica lumping, CR letter,
+population counts, palm oil naming, and captive genetics. Do
+not add Zoologist yet. Do not redo JR themes.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
@@ -200,7 +206,7 @@ LEVEL_DISPLAY_NAMES = {
 # Lion, reticulated-giraffe, African elephant, African penguin,
 # Caribbean flamingo, Galápagos tortoise, zebra, and Nile hippo
 # ship Junior Ranger + Park Ranger + Zoologist. Sumatran tiger
-# ships Junior Ranger only (no Park Ranger or Zoologist yet).
+# ships Junior Ranger + Park Ranger (no Zoologist yet).
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -322,14 +328,14 @@ PUSH_FURTHER_HIPPO = (
     "Hippos rest in pods in the water, then graze alone on land. Why might bachelor bulls stay near the edge?",
 )
 TALK_ABOUT_TIGER = (
-    "Wild Sumatran tigers live on one island. How is that different from tigers people picture across all of Asia?",
-    "This cat hunts in forest, not open grassland like a lion. What would change if it lived on a savannah?",
-    "Sumatran tigers spend most of their time alone. How is that different from a lion pride?",
+    "Sumatran tigers need thick ground cover. What changes if the forest floor is cleared?",
+    "They prefer natural forest and make little use of plantations. Why might a plantation feel different from a forest?",
+    "This cat is an ambush hunter. How is that different from a lion chasing across open grassland?",
 )
 PUSH_FURTHER_TIGER = (
-    "Sumatra is a big island, but it is still an island. How might that shape a tiger’s life?",
-    "Bali and Java lost their wild tigers. What might that mean for the last Sunda island tiger?",
-    "Zoos care for Sumatran tigers. What job could a zoo do without locking one status letter?",
+    "The largest groups live in major national parks. How can a park act like a habitat island?",
+    "Sumatra is a big island, but it is still an island. How might that isolation shape a tiger’s life?",
+    "A later card can unpack what a status letter means — and how zoos handle genetics. What would you want to know first?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -3796,6 +3802,146 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "B",
                         "why": "Wikipedia’s Tiger page says the tiger is a powerful swimmer and readily uses water, especially on hot days — not a water-scared cartoon cat.",
+                    },
+                ],
+            },
+            "hard": {
+                # Answer-light: no Learn-first strip. Facts from Wikipedia,
+                # Sumatran tiger + Tiger. Soften contested numbers and IUCN
+                # letters. Sondaica lumping, CR letter, population counts,
+                # palm oil naming, and captive genetics live on Zoologist.
+                # Do not redo JR themes.
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "understory",
+                        "title": "Understory cover",
+                        "stem": "Why do Sumatran tigers need thick cover on the forest floor?",
+                        "choices": [
+                            "They only hunt in wide-open fields",
+                            "Thick understory cover hides them; without it they are more exposed",
+                            "They nest in the tops of the tallest trees",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says they prefer forest with dense understory cover. Ground-level vegetation is a basic need; without it they are even more exposed to people.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "natural-forest",
+                        "title": "Natural forest first",
+                        "stem": "Which kind of land do Sumatran tigers use most?",
+                        "choices": [
+                            "They prefer busy city parks",
+                            "They strongly prefer uncultivated forest and make little use of plantations",
+                            "They live mainly in open grassland",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says Sumatran tigers strongly prefer uncultivated forests and make little use of plantations even when those plantings are nearby.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "forest-prey",
+                        "title": "Forest prey",
+                        "stem": "What kinds of animals do Sumatran tigers usually hunt in the forest?",
+                        "choices": [
+                            "Only insects and nectar",
+                            "Deer, wild pigs, and other mid-sized forest mammals",
+                            "Seaweed and coral",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia lists forest prey such as sambar deer, muntjac, mouse-deer, and wild pigs, plus other mid-sized mammals. We keep the list soft.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "fragments",
+                        "title": "Fragmented pockets",
+                        "stem": "How is Sumatran tiger habitat spread across the island?",
+                        "choices": [
+                            "One unbroken forest covering every island in Asia",
+                            "In small, scattered habitat patches across Sumatra",
+                            "Only on a single city block",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says they persist in small, fragmented populations across Sumatra, in habitat patches spread around the island.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "threats",
+                        "title": "Threats",
+                        "stem": "What puts wild Sumatran tigers under pressure today?",
+                        "choices": [
+                            "Too many birthday cakes",
+                            "Habitat loss, fewer prey animals, and hunting or snares",
+                            "They have no wild threats",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia names habitat loss, prey-base depletion, and hunting — including wire snares — as major threats. We do not lock a status letter.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "sea-to-mountains",
+                        "title": "Sea to mountains",
+                        "stem": "Across what kinds of forest can wild Sumatran tigers live?",
+                        "choices": [
+                            "Only frozen ice fields",
+                            "From coastal lowland forest up into high mountain forest",
+                            "Only desert dunes",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says they range from sea-level coastal lowland forest to high mountain forest on Sumatra.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "ambush",
+                        "title": "Ambush hunter",
+                        "stem": "How does a tiger usually catch its prey?",
+                        "choices": [
+                            "It runs prey down over many miles like a long-distance racer",
+                            "It stalks and surprises them — an ambush, not a long open chase",
+                            "It waits for prey to climb into its mouth",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia’s Tiger page says a tiger takes prey by ambush. It is not a long-distance runner and gives up if a chase goes too far.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "forest-blocks",
+                        "title": "Big forest blocks",
+                        "stem": "What kind of forest do Sumatran tigers need to thrive?",
+                        "choices": [
+                            "Tiny backyard gardens",
+                            "Large connected forest blocks — edges and broken scraps make life harder",
+                            "Only one tree in the middle of a town",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says tigers need large contiguous forest blocks. Camera-trap work also shows they tend to avoid forest edges.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "stripe-tips",
+                        "title": "Stripe-to-spot tips",
+                        "stem": "What happens near the ends of a Sumatran tiger’s stripes?",
+                        "choices": [
+                            "Each stripe turns into a rainbow",
+                            "Stripes often dissolve into spots, and small dark spots sit between the stripes",
+                            "The stripes are painted on with a brush",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says stripes tend to dissolve into spots near their ends, and lines of small dark spots sit between the regular stripes.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "park-strongholds",
+                        "title": "Park strongholds",
+                        "stem": "Where do the largest groups of wild Sumatran tigers live?",
+                        "choices": [
+                            "Only in backyard gardens",
+                            "In major national parks, which hold the biggest remaining groups",
+                            "Scattered evenly on every city street",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says the largest remaining groups live in major national parks such as Kerinci Seblat and Gunung Leuser. We do not lock one head-count.",
                     },
                 ],
             },
