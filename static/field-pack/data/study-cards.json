@@ -4284,14 +4284,14 @@
     "source": "https://en.wikipedia.org/wiki/Cheetah",
     "source_note": "Facts from Wikipedia, Cheetah.",
     "talk_about": [
-      "A cheetah has solid black spots. A leopard has rosettes. What difference do you notice?",
-      "Black lines run from a cheetah’s eyes toward its nose. What might those tear marks help with?",
-      "Cheetahs chirp and purr instead of roaring. What other zoo cat has a famous roar?"
+      "Cheetahs hunt in the day, while lions often hunt at night. How could that help them share the plains?",
+      "Lions and hyenas often steal a cheetah’s meal. How could a cheetah still get enough to eat?",
+      "A cheetah sneaks close before it sprints. Why not start the chase from far away?"
     ],
     "push_further": [
       "Cheetah claws stay out more than a house cat’s. What would you ask a keeper about that?",
       "Some brother cheetahs hunt together. Why might a team help on the plains?",
-      "Lions and hyenas often steal a cheetah’s meal. How could a cheetah still get enough to eat?"
+      "Wild cheetahs can look very alike. What would you ask a keeper about telling them apart?"
     ],
     "levels": {
       "easy": {
@@ -4432,6 +4432,141 @@
             ],
             "correct": "A",
             "why": "Wikipedia describes short, high-speed chases — often under a minute — not long marathon runs. After a hunt, a cheetah needs to rest."
+          }
+        ]
+      },
+      "hard": {
+        "teach": [],
+        "questions": [
+          {
+            "slot": 1,
+            "id": "soft-speed",
+            "title": "Soft top speed",
+            "stem": "About how fast can a cheetah run in a short burst?",
+            "choices": [
+              "Around 50–65 miles an hour — we do not lock one exact record",
+              "About as slow as a tortoise on land",
+              "Faster than a jet plane"
+            ],
+            "correct": "A",
+            "why": "Wikipedia places a cheetah’s top speed in a band around 50–65 miles an hour. Famous one-number records have been questioned, so we do not lock an exact figure."
+          },
+          {
+            "slot": 2,
+            "id": "day-hunter",
+            "title": "Day hunter",
+            "stem": "When do wild cheetahs usually hunt?",
+            "choices": [
+              "Only in the middle of the night, like many lions",
+              "Mostly in the day — that helps them avoid lions and hyenas",
+              "Only underwater"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says the cheetah is mainly active in the day, with peaks around dawn and dusk. Hunting by day helps it avoid larger, often night-active hunters like lions."
+          },
+          {
+            "slot": 3,
+            "id": "spine-spring",
+            "title": "Spine spring",
+            "stem": "How does a cheetah’s flexible spine help it run?",
+            "choices": [
+              "It stores water like a camel",
+              "It keeps the cheetah from ever bending",
+              "It works like a spring and lengthens each stride"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says a flexible spine lets the body stretch and fold. That extra bend lengthens the stride so the cheetah covers more ground with each bound."
+          },
+          {
+            "slot": 4,
+            "id": "kill-thieves",
+            "title": "Kill thieves",
+            "stem": "What often happens after a cheetah makes a kill?",
+            "choices": [
+              "Larger hunters like lions or hyenas may steal the meal, so it eats fast",
+              "The cheetah always stores the meat in a tree for a week",
+              "Nothing — no other animal ever comes near"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says larger, stronger carnivores steal cheetah kills. Cheetahs often eat quickly and may drag the meal toward cover."
+          },
+          {
+            "slot": 5,
+            "id": "medium-prey",
+            "title": "Medium prey",
+            "stem": "What size of prey do wild cheetahs usually hunt?",
+            "choices": [
+              "The biggest animals on the plains, like adult elephants",
+              "Medium gazelles and antelopes — not the biggest game",
+              "Only tiny insects"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says cheetahs prefer medium-sized hooved animals such as gazelles, impala, and springbok. They usually avoid the very largest game."
+          },
+          {
+            "slot": 6,
+            "id": "stalk-sprint",
+            "title": "Stalk then sprint",
+            "stem": "How does a cheetah usually start a hunt?",
+            "choices": [
+              "It roars from far away to scare the herd",
+              "It waits in a river until prey swims by",
+              "It stalks close first, then sprints"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says a cheetah typically stalks and closes in — often to a few dozen or a couple of hundred metres — before the high-speed charge."
+          },
+          {
+            "slot": 7,
+            "id": "cub-danger",
+            "title": "Cub danger",
+            "stem": "What is a big danger for wild cheetah cubs?",
+            "choices": [
+              "Lions and hyenas — cubs are highly vulnerable to those hunters",
+              "They are never in danger from other animals",
+              "They only have to worry about falling from trees"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says cheetah cubs are highly vulnerable to predators. Lions and hyenas are a main reason many cubs do not survive."
+          },
+          {
+            "slot": 8,
+            "id": "threats",
+            "title": "Threats",
+            "stem": "What puts wild cheetahs under pressure today?",
+            "choices": [
+              "Too many trees on the moon",
+              "Habitat loss and conflict with people",
+              "An extra-long winter every year"
+            ],
+            "correct": "B",
+            "why": "Wikipedia lists habitat loss and conflict with people among the main threats. We do not lock a status letter — that grade is a snapshot and can change."
+          },
+          {
+            "slot": 9,
+            "id": "spot-fingerprint",
+            "title": "Spot fingerprint",
+            "stem": "What is special about a cheetah’s spot pattern?",
+            "choices": [
+              "Every cheetah has the exact same spots",
+              "The spots are painted on at the zoo",
+              "Each cheetah’s spots are unique, like a fingerprint"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says each cheetah has a distinct spot pattern that can be used to tell individuals apart."
+          },
+          {
+            "slot": 10,
+            "id": "short-chase",
+            "title": "Short chase",
+            "stem": "How long is a typical cheetah chase?",
+            "choices": [
+              "A brief burst over a few hundred metres — not a long run",
+              "Many miles, like a marathon",
+              "It never runs at all"
+            ],
+            "correct": "A",
+            "why": "Wikipedia describes short, high-speed chases. Studies find an average chase of a few hundred metres — often under a minute — not a long run."
           }
         ]
       }
