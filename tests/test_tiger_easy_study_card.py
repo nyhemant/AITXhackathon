@@ -1,4 +1,4 @@
-"""Sumatran tiger Easy study-card: Junior Ranger teach + 10 MCQs (first deck)."""
+"""Sumatran tiger Easy study-card: Junior Ranger teach + 10 MCQs (Park Ranger is a sibling level)."""
 
 from __future__ import annotations
 
@@ -148,7 +148,7 @@ def _main(html: str) -> str:
 
 
 class TigerEasyStudyCardTests(unittest.TestCase):
-    def test_deck_is_junior_ranger_easy_only(self):
+    def test_deck_is_junior_ranger_with_park_ranger_sibling(self):
         self.assertIn("sumatran-tiger", study_card_ids())
         self.assertEqual(
             study_card_ids(),
@@ -164,8 +164,8 @@ class TigerEasyStudyCardTests(unittest.TestCase):
                 "sumatran-tiger",
             ),
         )
-        self.assertEqual(shipped_levels_for("sumatran-tiger"), ("easy",))
-        self.assertIsNone(study_deck_for("sumatran-tiger", "hard"))
+        self.assertEqual(shipped_levels_for("sumatran-tiger"), ("easy", "hard"))
+        self.assertIsNotNone(study_deck_for("sumatran-tiger", "hard"))
         self.assertIsNone(study_deck_for("sumatran-tiger", "zoologist"))
         deck = study_deck_for("sumatran-tiger")
         self.assertIsNotNone(deck)
@@ -270,14 +270,15 @@ class TigerEasyStudyCardTests(unittest.TestCase):
             self.assertNotIn(phrase, html)
         visible = _text(html)
         self.assertIn("Junior Ranger", visible)
-        self.assertNotIn("Park Ranger", visible)
+        self.assertIn("Park Ranger", visible)
         self.assertNotIn("Zoologist", visible)
-        self.assertIn('class="study-level-badge"', html)
-        self.assertNotIn('class="study-level-picker"', html)
-        self.assertNotIn("study-level-picker-bottom", html)
-        self.assertNotIn('data-study-pick="hard"', html)
+        self.assertIn('class="study-level-picker"', html)
+        self.assertIn('data-study-pick="easy"', html)
+        self.assertIn('data-study-pick="hard"', html)
         self.assertNotIn('data-study-pick="zoologist"', html)
-        self.assertEqual(html.count('role="group"'), 0)
+        self.assertNotIn('class="study-level-badge"', html)
+        self.assertEqual(html.count('role="group"'), 2)
+        self.assertIn("study-level-picker-bottom", html)
         for badge in PLAIN_LEVEL_LABELS + AGE_BADGES:
             self.assertNotIn(badge, visible)
         for phrase in BRITTLE:
@@ -310,7 +311,7 @@ class TigerEasyStudyCardTests(unittest.TestCase):
         self.assertIn('class="card-try-next no-print"', main)
         self.assertIn('class="card-page-photo-link"', main)
         self.assertIn('aria-label="Watch Live: Sumatran tiger"', main)
-        self.assertNotIn("study-level-picker-bottom", main)
+        self.assertIn("study-level-picker-bottom", main)
         self.assertNotIn("card-print-note", main)
         self.assertIn("study-card.js?v=9", html)
         self.assertIn("study-card.css?v=9", html)
@@ -333,12 +334,13 @@ class TigerEasyStudyCardTests(unittest.TestCase):
         self.assertLess(main.find("study-explore"), main.find("card-try-next"))
         visible = _text(main)
         self.assertIn("Junior Ranger", visible)
-        self.assertNotIn("Park Ranger", visible)
+        self.assertIn("Park Ranger", visible)
         self.assertNotIn("Zoologist", visible)
-        self.assertIn('class="study-level-badge"', main)
-        self.assertNotIn('class="study-level-picker"', main)
-        self.assertNotIn('data-study-pick="easy"', main)
-        self.assertNotIn('data-study-pick="hard"', main)
+        self.assertIn('class="study-level-picker"', main)
+        self.assertIn('data-study-pick="easy"', main)
+        self.assertIn('data-study-pick="hard"', main)
+        self.assertNotIn('data-study-pick="zoologist"', main)
+        self.assertNotIn('class="study-level-badge"', main)
         self.assertIn("Learn first", main)
         self.assertIn(">Quiz</h2>", main)
         self.assertEqual(main.count("data-study-correct"), 2)
@@ -407,7 +409,7 @@ class TigerEasyStudyCardTests(unittest.TestCase):
         self.assertIn("is-wrong-pick", study_js)
         self.assertIn("FPStudyLevelName", study_js + STUDY_DATA_JS.read_text(encoding="utf-8"))
 
-    def test_artifacts_include_tiger_easy_only(self):
+    def test_artifacts_include_tiger_easy_and_hard(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
         self.assertIn("sumatran-tiger", payload)
         self.assertIn("nile-hippo", payload)
@@ -420,13 +422,13 @@ class TigerEasyStudyCardTests(unittest.TestCase):
         self.assertIn("african-lion", payload)
         tiger = payload["sumatran-tiger"]
         self.assertEqual(tiger["id"], "sumatran-tiger")
-        self.assertEqual(set(tiger["levels"]), {"easy"})
+        self.assertEqual(set(tiger["levels"]), {"easy", "hard"})
         easy = tiger["levels"]["easy"]
         self.assertEqual(len(easy["teach"]), 5)
         self.assertEqual(len(easy["questions"]), STUDY_SLOTS)
         for q in easy["questions"]:
             self.assertEqual(len(q["choices"]), 3)
-        self.assertNotIn("hard", tiger["levels"])
+        self.assertEqual(tiger["levels"]["hard"]["teach"], [])
         self.assertNotIn("zoologist", tiger["levels"])
         data_js = STUDY_DATA_JS.read_text(encoding="utf-8")
         self.assertIn("sumatran-tiger", data_js)
@@ -473,7 +475,7 @@ class TigerEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Zoologist", _text(_main(hippo_html)))
         tiger_html = TIGER.read_text(encoding="utf-8")
         self.assertIn("Junior Ranger", _text(_main(tiger_html)))
-        self.assertNotIn("Park Ranger", _text(_main(tiger_html)))
+        self.assertIn("Park Ranger", _text(_main(tiger_html)))
         self.assertNotIn("Zoologist", _text(_main(tiger_html)))
 
 
