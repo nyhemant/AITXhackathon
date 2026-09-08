@@ -4712,14 +4712,14 @@
     "source": "https://en.wikipedia.org/wiki/Red_panda",
     "source_note": "Facts from Wikipedia, Red panda.",
     "talk_about": [
-      "Red pandas eat lots of bamboo because they digest it poorly. What would you look for in their yard?",
-      "A red panda often climbs down a tree head-first. Why might that help in the forest?",
-      "In some parks, red pandas share bamboo with giant pandas. How might they stay out of each other’s way?"
+      "A red panda is not a bear, even though it shares the name “panda.” What would you tell a friend?",
+      "Scientists talk about Himalayan and Chinese red pandas. What difference would you look for?",
+      "A red panda’s fake thumb helps it climb and hold bamboo. Which job would you watch first?"
     ],
     "push_further": [
-      "Scientists say red pandas are closer to raccoons than to bears. What would you ask a keeper?",
-      "A threat letter on a list can change. Why treat it as a snapshot, not a forever grade?",
-      "Some people talk about Himalayan and Chinese red pandas. What difference would you look for at the zoo?"
+      "Some people treat those two mountain forms as two species. Why might scientists still disagree?",
+      "A red panda has a meat-eater gut but lives on bamboo. Why might it need to eat so much?",
+      "Red pandas once had extinct cousins in Eurasia and North America. What would you ask a keeper?"
     ],
     "levels": {
       "easy": {
@@ -4995,6 +4995,141 @@
             ],
             "correct": "A",
             "why": "Wikipedia says that where the two species overlap, red pandas use steeper slopes with denser bamboo, while giant pandas prefer gentler slopes with taller but sparser bamboo. That niche split lessens competition."
+          }
+        ]
+      },
+      "zoologist": {
+        "teach": [],
+        "questions": [
+          {
+            "slot": 1,
+            "id": "ailuridae",
+            "title": "Own family",
+            "stem": "Which living family does the red panda belong to, and who are its closer cousins?",
+            "choices": [
+              "Ailuridae — closer to the raccoon, weasel, and skunk group than to bears",
+              "The bear family, with giant pandas as its closest cousins",
+              "The fox family, because of its face"
+            ],
+            "correct": "A",
+            "why": "Wikipedia places the red panda in its own family, Ailuridae. Genetic studies put it with musteloids — raccoons, weasels, and skunks. It is not a bear."
+          },
+          {
+            "slot": 2,
+            "id": "endangered-snapshot",
+            "title": "Endangered snapshot",
+            "stem": "How should we read the red panda’s usual threat listing?",
+            "choices": [
+              "It is Extinct in the Wild on every list, forever",
+              "Often listed Endangered, mainly from habitat loss and hunting — the letter is a snapshot",
+              "It is the most common mountain animal on Earth"
+            ],
+            "correct": "B",
+            "why": "Wikipedia lists the red panda as Endangered, with habitat loss and hunting as main threats. A status letter is a snapshot and can change. We do not lock a global count."
+          },
+          {
+            "slot": 3,
+            "id": "two-forms",
+            "title": "Two mountain forms",
+            "stem": "What two mountain forms of red panda do scientists often name?",
+            "choices": [
+              "Only a desert form and a beach form",
+              "Only a zoo form and a cartoon form",
+              "A Himalayan form and a Chinese form — some treat them as two species"
+            ],
+            "correct": "C",
+            "why": "Wikipedia traditionally names two subspecies: the Himalayan red panda and the Chinese red panda. Some genetic work suggests treating them as two species. We do not lock a split date."
+          },
+          {
+            "slot": 4,
+            "id": "genome-thumbs",
+            "title": "Same trick, different path",
+            "stem": "How did red pandas and giant pandas both end up with false thumbs?",
+            "choices": [
+              "Both tweaked limb-development genes — similar tools, different evolutionary paths",
+              "They copied the same zoo training program",
+              "Only red pandas have a genome; giant pandas do not"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says both genomes show changes in limb-development genes that may help build the false thumb. The two pandas are not close relatives, so the similar tool arose on different paths. We do not lock gene names."
+          },
+          {
+            "slot": 5,
+            "id": "radial-sesamoid",
+            "title": "Deep false thumb",
+            "stem": "What bone makes the red panda’s false thumb, and what job came first?",
+            "choices": [
+              "An extra toe that grew from the ear",
+              "An extra wrist bone called a radial sesamoid — used for climbing first, then for gripping bamboo",
+              "A metal hook glued on at the zoo"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says the false thumb is an extended radial sesamoid, a wrist bone. Fossil cousins already had it for climbing. The bamboo-grip job came later."
+          },
+          {
+            "slot": 6,
+            "id": "carnivore-gut",
+            "title": "Meat-eater gut",
+            "stem": "How is a red panda’s gut built, even though it lives on plants?",
+            "choices": [
+              "It has a long cow-style extra stomach for grass",
+              "It has no stomach at all",
+              "It has a simple meat-eater gut; bamboo passes through quickly, so it must eat a lot"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says the red panda has a carnivore-style gut — a simple stomach and no caecum. Bamboo passes through in a few hours, so the animal must eat large amounts. We do not lock one daily weight."
+          },
+          {
+            "slot": 7,
+            "id": "ailurus-fulgens",
+            "title": "Ailurus fulgens",
+            "stem": "How does the living red panda sit in the genus Ailurus?",
+            "choices": [
+              "Ailurus fulgens is the only living species in the genus Ailurus",
+              "There are twenty living Ailurus species in every ocean",
+              "Ailurus is an empty name with no living animals"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says the modern red panda is the only recognised living species in the genus Ailurus. Its scientific name is Ailurus fulgens."
+          },
+          {
+            "slot": 8,
+            "id": "fossil-cousins",
+            "title": "Fossil cousins",
+            "stem": "Where have extinct relatives of the red panda been found?",
+            "choices": [
+              "Only on Antarctica’s ice",
+              "In Eurasia and North America — those fossil cousins are gone now",
+              "Only inside living giant pandas"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says extinct ailurid relatives are known from Eurasia and North America. We do not lock one fossil age."
+          },
+          {
+            "slot": 9,
+            "id": "river-split",
+            "title": "River split",
+            "stem": "What helps mark the genetic boundary between the two mountain forms?",
+            "choices": [
+              "A painted zoo fence",
+              "The equator, and nothing else",
+              "Big rivers — they help keep the two forms apart"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says a major river (the Siang / Brahmaputra) marks the boundary between Himalayan and Chinese red pandas in genetic studies. We treat that split as a helpful map, not a forever rule."
+          },
+          {
+            "slot": 10,
+            "id": "cites-appendix-i",
+            "title": "CITES Appendix I",
+            "stem": "How tightly is international trade in red pandas controlled?",
+            "choices": [
+              "CITES Appendix I — international trade is tightly controlled",
+              "Anyone may ship red pandas with no rules",
+              "They are only listed as garden plants"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says the red panda is listed in CITES Appendix I and is protected in all range countries. Hunting is illegal. Appendix I is the tightest trade control."
           }
         ]
       }
