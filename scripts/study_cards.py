@@ -202,8 +202,8 @@ name Gorilla gorilla gorilla, logging roads that enable
 deeper bushmeat hunting, and Congo swamp-forest strongholds.
 Soften contested numbers. Do not redo JR or PR themes.
 
-Facts for cheetah Junior Ranger + Park Ranger
-(easy + hard; no Zoologist yet) are Wikipedia-backed:
+Facts for cheetah Junior Ranger + Park Ranger +
+Zoologist (easy + hard + zoologist) are Wikipedia-backed:
 https://en.wikipedia.org/wiki/Cheetah
 Species framing is the cheetah (Acinonyx jubatus).
 JR stays kid-simple “cheetah.” Soften exact mph and
@@ -224,10 +224,20 @@ medium gazelle/antelope prey (not the biggest game),
 stalk-then-sprint, cub danger from lions/hyenas,
 habitat loss + human conflict (no status letter),
 unique spot patterns, and short chases of a few
-hundred metres. Reserve for Zoologist: claws detail,
-coalitions, genetic bottleneck, king cheetah,
-Asiatic status, and Acinonyx taxonomy. Do not redo
-JR themes. Do not add Zoologist yet.
+hundred metres. Zoologist is answer-light (empty
+teach) and deepens the only living Acinonyx
+(A. jubatus), semi-retractable claws without full
+sheaths, male coalitions (brothers + sometimes
+unrelated), an ancient genetic-bottleneck snapshot
+(soften kyr/%), the king-cheetah Taqpep recessive
+coat, the Asiatic remnant in Iran (CR as a snapshot),
+cougar + jaguarundi Puma-lineage cousins, a soft
+Vulnerable global listing in fragmented groups,
+four Cat Specialist Group subspecies (soften
+contested splits), and a large curved dewclaw that
+hooks or trips prey. Soften contested numbers.
+Keep MHC / Miracinonyx out of default Explore more.
+Do not redo JR or PR themes.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
@@ -333,9 +343,8 @@ LEVEL_DISPLAY_NAMES = {
 # Shipped picker order. A card only shows keys it actually defines.
 # Lion, reticulated-giraffe, African elephant, African penguin,
 # Caribbean flamingo, Galápagos tortoise, zebra, Nile hippo,
-# Sumatran tiger, and western lowland gorilla ship Junior Ranger
-# + Park Ranger + Zoologist. Cheetah ships Junior Ranger
-# + Park Ranger (no Zoologist yet).
+# Sumatran tiger, western lowland gorilla, and cheetah ship
+# Junior Ranger + Park Ranger + Zoologist.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -488,7 +497,7 @@ TALK_ABOUT_CHEETAH = (
 PUSH_FURTHER_CHEETAH = (
     "Cheetah claws stay out more than a house cat’s. What would you ask a keeper about that?",
     "Some brother cheetahs hunt together. Why might a team help on the plains?",
-    "Wild cheetahs can look very alike. What would you ask a keeper about telling them apart?",
+    "Cheetahs have unusually similar genes after ancient crashes. How is that different from just being rare?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -4957,6 +4966,142 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia describes short, high-speed chases. Studies find an average chase of a few hundred metres — often under a minute — not a long run.",
+                    },
+                ],
+            },
+            "zoologist": {
+                # Answer-light: Zoologist has no Learn-first strip.
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "acinonyx",
+                        "title": "Only living Acinonyx",
+                        "stem": "How does the living cheetah sit in the genus Acinonyx?",
+                        "choices": [
+                            "It is the only living member of the genus Acinonyx (A. jubatus)",
+                            "It is one of many living Acinonyx species, like house cats",
+                            "It is not a cat at all — it is a small dog",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says the cheetah (Acinonyx jubatus) is the only living member of the genus Acinonyx.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "semi-retractable",
+                        "title": "Semi-retractable claws",
+                        "stem": "How do a cheetah’s claws differ from those of a typical house cat?",
+                        "choices": [
+                            "They pull all the way into full protective sheaths, like a house cat",
+                            "They lack full sheaths and stay partly out, like running spikes",
+                            "They are made of feathers and never touch the ground",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says the claws lack a protective sheath and are only partly retractile. They stay somewhat out and help grip the ground in a sprint.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "coalitions",
+                        "title": "Male coalitions",
+                        "stem": "How do many male cheetahs share space on the plains?",
+                        "choices": [
+                            "Every male lives only with a lion pride",
+                            "Males never meet and never share a territory",
+                            "Brothers — and sometimes unrelated males — form coalitions that share territories",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says male cheetahs often live in coalitions, usually brothers from the same litter, though unrelated males may join. They share territories.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "bottleneck",
+                        "title": "Genetic bottleneck",
+                        "stem": "Why do living cheetahs have unusually low genetic diversity?",
+                        "choices": [
+                            "Ancient population crashes left them with extremely similar genes — we do not lock exact dates or percents",
+                            "They have more genetic variety than almost any other mammal",
+                            "Zoo keepers paint their spots to make them look alike",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia describes two ancient population bottlenecks that greatly reduced genetic variation. We treat the timing and percents as snapshots, not locked figures.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "king-cheetah",
+                        "title": "King cheetah",
+                        "stem": "What is a king cheetah?",
+                        "choices": [
+                            "A separate living species that is not a cheetah",
+                            "A rare coat from a recessive Taqpep mutation, with blotches and stripes",
+                            "A cheetah that wears a gold crown at the zoo",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says the king cheetah’s blotchy, striped coat comes from a recessive Taqpep mutation — the same gene that shapes tabby patterns in house cats. It is a variety of cheetah, not a separate species.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "asiatic-remnant",
+                        "title": "Asiatic remnant",
+                        "stem": "Where do wild Asiatic cheetahs still live, and how is their status often listed?",
+                        "choices": [
+                            "Only in Antarctica, listed as Least Concern forever",
+                            "Across all of Asia in huge numbers",
+                            "Only in Iran — often listed Critically Endangered, as a snapshot letter",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says the Asiatic cheetah is confined to central Iran, the only surviving Asian population. Lists often show Critically Endangered; that letter is a snapshot and can change. We do not lock a head-count.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "puma-cousins",
+                        "title": "Puma cousins",
+                        "stem": "Which living cats are the cheetah’s closest relatives?",
+                        "choices": [
+                            "The cougar and the jaguarundi, in the Puma lineage",
+                            "Only lions and tigers in Panthera",
+                            "Only house cats and lynxes",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says the cheetah’s closest living relatives are the cougar (Puma concolor) and the jaguarundi (Herpailurus yagouaroundi). Together they form the Puma lineage.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "global-status",
+                        "title": "Global status",
+                        "stem": "How should we read the cheetah’s usual global threat listing?",
+                        "choices": [
+                            "It is Extinct in the Wild on every list, forever",
+                            "Often listed Vulnerable, in fragmented groups — the letter is a snapshot",
+                            "It is the most common cat on Earth",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia lists the cheetah as Vulnerable, living mainly in small, fragmented populations. We do not lock a global count. A status letter is a snapshot and can change.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "four-subspecies",
+                        "title": "Four subspecies",
+                        "stem": "How many living cheetah subspecies does the Cat Specialist Group usually recognise?",
+                        "choices": [
+                            "Only one subspecies, with no regional names",
+                            "Twenty-two subspecies that never get debated",
+                            "Four living subspecies — older splits are contested",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says the 2017 Cat Specialist Group review recognised four subspecies (southeast African, northeast African, northwest African, and Asiatic). Older lists named five; we treat splits as debated, not a forever rule.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "dewclaw-trip",
+                        "title": "Dewclaw trip",
+                        "stem": "How does a cheetah’s large dewclaw help in a chase?",
+                        "choices": [
+                            "The large, curved dewclaw can hook and trip prey",
+                            "It is used only to open zoo doors",
+                            "Cheetahs have no dewclaw at all",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says a cheetah strikes down prey with its dewclaw in full pursuit. The large, strongly curved dewclaw stays sharp and can hook or trip the animal.",
                     },
                 ],
             },

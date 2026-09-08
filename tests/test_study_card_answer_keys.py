@@ -15,11 +15,13 @@ from study_cards import (  # noqa: E402
     LETTERS,
     MAX_OVERALL_B_SHARE,
     MAX_SAME_LETTER_PER_DECK,
+    PUSH_FURTHER_CHEETAH,
     PUSH_FURTHER_GORILLA,
     PUSH_FURTHER_LION,
     PUSH_FURTHER_TIGER,
     PUSH_FURTHER_TORTOISE,
     STUDY_SLOTS,
+    TALK_ABOUT_CHEETAH,
     TALK_ABOUT_GORILLA,
     TALK_ABOUT_LION,
     TALK_ABOUT_TIGER,
@@ -45,24 +47,24 @@ TRAFFIC_IDS = (
     "nile-hippo",
     "sumatran-tiger",
     "western-lowland-gorilla",
+    "cheetah",
 )
-JR_PR_IDS = ("cheetah",)
 
 
 def _decks():
-    for card_id in TRAFFIC_IDS + JR_PR_IDS:
+    for card_id in TRAFFIC_IDS:
         for level in shipped_levels_for(card_id):
             deck = study_deck_for(card_id, level)
             yield card_id, level, deck
 
 
 class StudyCardAnswerKeyTests(unittest.TestCase):
-    def test_traffic_set_is_ten_animals_times_three_levels(self):
-        self.assertEqual(tuple(study_card_ids()), TRAFFIC_IDS + JR_PR_IDS)
-        self.assertEqual(shipped_levels_for("cheetah"), ("easy", "hard"))
-        self.assertIsNone(study_deck_for("cheetah", "zoologist"))
+    def test_traffic_set_is_eleven_animals_times_three_levels(self):
+        self.assertEqual(tuple(study_card_ids()), TRAFFIC_IDS)
+        self.assertEqual(shipped_levels_for("cheetah"), ("easy", "hard", "zoologist"))
+        self.assertIsNotNone(study_deck_for("cheetah", "zoologist"))
         decks = list(_decks())
-        self.assertEqual(len(decks), 32)
+        self.assertEqual(len(decks), 33)
         for card_id, level, deck in decks:
             self.assertIsNotNone(deck, f"{card_id}/{level}")
             self.assertEqual(validate_deck(deck), [])
@@ -93,18 +95,18 @@ class StudyCardAnswerKeyTests(unittest.TestCase):
 
     def test_overall_correct_b_is_not_a_majority(self):
         letters = [q["correct"] for _, _, deck in _decks() for q in deck["questions"]]
-        self.assertEqual(len(letters), 320)
+        self.assertEqual(len(letters), 330)
         share_b = letters.count("B") / len(letters)
         self.assertLessEqual(
             share_b,
             MAX_OVERALL_B_SHARE,
-            f"correct==B is {share_b:.1%} ({letters.count('B')}/320)",
+            f"correct==B is {share_b:.1%} ({letters.count('B')}/330)",
         )
         for letter in LETTERS:
             share = letters.count(letter) / len(letters)
             self.assertGreaterEqual(share, 0.25, f"{letter} is only {share:.1%}")
 
-    def test_tiger_and_gorilla_explore_more_stay_kid_short(self):
+    def test_tiger_gorilla_and_cheetah_explore_more_stay_kid_short(self):
         dense = (
             "Laverania",
             "incomplete lineage sorting",
@@ -113,10 +115,20 @@ class StudyCardAnswerKeyTests(unittest.TestCase):
             "vestibular",
             "Ice Age",
             "microsatellite",
+            "MHC",
+            "Miracinonyx",
         )
         peer = TALK_ABOUT_LION + PUSH_FURTHER_LION + TALK_ABOUT_TORTOISE + PUSH_FURTHER_TORTOISE
         peer_max = max(len(line) for line in peer)
-        for line in TALK_ABOUT_TIGER + PUSH_FURTHER_TIGER + TALK_ABOUT_GORILLA + PUSH_FURTHER_GORILLA:
+        lines = (
+            TALK_ABOUT_TIGER
+            + PUSH_FURTHER_TIGER
+            + TALK_ABOUT_GORILLA
+            + PUSH_FURTHER_GORILLA
+            + TALK_ABOUT_CHEETAH
+            + PUSH_FURTHER_CHEETAH
+        )
+        for line in lines:
             for phrase in dense:
                 self.assertNotIn(phrase, line)
             self.assertLessEqual(len(line), peer_max + 20, line)
