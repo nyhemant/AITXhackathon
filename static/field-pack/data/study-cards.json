@@ -5990,5 +5990,163 @@
         ]
       }
     }
+  },
+  "orangutan": {
+    "id": "orangutan",
+    "source": "https://en.wikipedia.org/wiki/Orangutan",
+    "source_note": "Facts from Wikipedia, Orangutan.",
+    "talk_about": [
+      "The name means “person of the forest.” What would you notice first at the zoo?",
+      "Wild orangutans live on Borneo and Sumatra, not Africa. How is that different from a chimpanzee?",
+      "Long arms help an orangutan swing and hang. Why might that help in tall trees?"
+    ],
+    "push_further": [
+      "An orangutan builds a nest of branches and leaves. How do you think it starts?",
+      "Mom and baby stay together a long time. Why might a baby need that?",
+      "Are there more than one kind of orangutan? What would you ask a keeper later?"
+    ],
+    "levels": {
+      "easy": {
+        "teach": [
+          "Name means “person of the forest” (Malay)",
+          "Wild home is rainforests on Borneo and Sumatra",
+          "Reddish-brown coat and very long arms",
+          "Mostly fruit; spends most of its life in trees",
+          "Builds a nest in a tree to sleep"
+        ],
+        "questions": [
+          {
+            "slot": 1,
+            "id": "forest-person",
+            "title": "Forest person",
+            "stem": "What does the name “orangutan” mean?",
+            "choices": [
+              "“Person of the forest” — from Malay",
+              "“King of the jungle”",
+              "“River swimmer”"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says orangutan comes from Malay words meaning “person of the forest.”"
+          },
+          {
+            "slot": 2,
+            "id": "island-asia",
+            "title": "Island Asia",
+            "stem": "Where do wild orangutans live?",
+            "choices": [
+              "Only in African rainforests",
+              "Rainforests on the Southeast Asian islands of Borneo and Sumatra",
+              "Only on icy Antarctic ice"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says wild orangutans live on the Southeast Asian islands of Borneo and Sumatra. They are not African apes."
+          },
+          {
+            "slot": 3,
+            "id": "rusty-coat",
+            "title": "Rusty coat",
+            "stem": "What does an orangutan’s coat look like?",
+            "choices": [
+              "Smooth green scales",
+              "Black-and-white stripes",
+              "Coarse reddish-brown hair"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says orangutans have coarse, reddish-brown hair covering the body."
+          },
+          {
+            "slot": 4,
+            "id": "long-arm-climber",
+            "title": "Long-arm climber",
+            "stem": "How are an orangutan’s arms built for tree life?",
+            "choices": [
+              "Arms much longer than the legs — built for swinging and hanging in the canopy",
+              "Arms shorter than a house cat’s",
+              "No arms at all — only wings"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says orangutans have arms much longer than their legs. That long reach helps them swing and hang in the canopy."
+          },
+          {
+            "slot": 5,
+            "id": "fruit-first",
+            "title": "Fruit first",
+            "stem": "What is the most important food for wild orangutans?",
+            "choices": [
+              "Only meat — never plants",
+              "Fruit — plus leaves, bark, insects, and more",
+              "Only ice cream"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says fruit is the most important food. Orangutans also eat leaves, bark, insects, and other foods. They are not only meat-eaters."
+          },
+          {
+            "slot": 6,
+            "id": "mostly-alone",
+            "title": "Mostly alone",
+            "stem": "How do orangutans usually live, compared with other great apes?",
+            "choices": [
+              "In huge herds of hundreds",
+              "In packs that hunt on the ground all day",
+              "Mostly alone — the main bond is mom and baby"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says orangutans are the most solitary of the great apes. The closest bond is between a mother and her young."
+          },
+          {
+            "slot": 7,
+            "id": "tree-nest",
+            "title": "Tree nest night",
+            "stem": "Where does an orangutan usually sleep at night?",
+            "choices": [
+              "In a fresh nest of branches and leaves in a tree",
+              "In a hole it digs in the desert",
+              "On the open ocean"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says orangutans build a nest of branches and leaves in a tree to sleep. They often make a new nest for the night."
+          },
+          {
+            "slot": 8,
+            "id": "great-ape",
+            "title": "Great ape",
+            "stem": "What is a quick clue that an orangutan is a great ape, not a monkey?",
+            "choices": [
+              "It has a long curling tail like many monkeys",
+              "It has no tail — great apes do not have tails",
+              "It has feathers instead of hair"
+            ],
+            "correct": "B",
+            "why": "Wikipedia places the orangutan among the great apes. Great apes have no tail — a quick clue they are not monkeys."
+          },
+          {
+            "slot": 9,
+            "id": "cheeky-males",
+            "title": "Cheeky males",
+            "stem": "What extra face feature do many big adult males grow?",
+            "choices": [
+              "A rainbow horn",
+              "Feathered ears",
+              "Wide cheek pads (sometimes called flanges)"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says large adult males often grow wide cheek pads, also called flanges. How those pads work in more detail comes later."
+          },
+          {
+            "slot": 10,
+            "id": "africa-myth",
+            "title": "Myth buster — African ape?",
+            "stem": "Are orangutans African apes?",
+            "choices": [
+              "No — orangutans are Asia’s great apes",
+              "Yes — they live only in African savannas",
+              "Yes — they are a kind of African monkey"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says orangutans are native to rainforests in Indonesia and Malaysia — Asia, not Africa. People sometimes mix them up with African apes."
+          }
+        ]
+      }
+    }
   }
 }

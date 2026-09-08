@@ -358,6 +358,27 @@ exact Ma), and red colobus as common monkey prey.
 Soften contested numbers. Do not redo JR or PR
 themes.
 
+Facts for orangutan Junior Ranger (easy only) are
+Wikipedia-backed:
+https://en.wikipedia.org/wiki/Orangutan
+Species framing is the orangutan (Pongo).
+JR stays kid-simple “orangutan.” Soften contested
+numbers and IUCN letters (snapshots only). Name
+means “person of the forest” (Malay). Wild home is
+rainforests on Borneo and Sumatra. Reddish-brown
+coat and very long arms. Mostly fruit; spends most
+of its life in trees. Builds a nest in a tree to
+sleep. Most solitary of the great apes; the main
+bond is mom and baby. A great ape with no tail
+(not a monkey). Big adult males often grow wide
+cheek pads (flanges) — soft. Myth: not an African
+ape — orangutans are Asia’s great apes.
+Reserve for later: three-species split (incl.
+Tapanuli), Critically Endangered letters, flange
+bimaturism detail, long-call throat-sac mechanics,
+palm-oil drivers, and tool-culture depth.
+Do not add Park Ranger or Zoologist yet.
+
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
 zoologist. Visible copy uses LEVEL_DISPLAY_NAMES only — no age badges,
@@ -394,6 +415,7 @@ WIKI_CHEETAH = "https://en.wikipedia.org/wiki/Cheetah"
 WIKI_RED_PANDA = "https://en.wikipedia.org/wiki/Red_panda"
 WIKI_KOALA = "https://en.wikipedia.org/wiki/Koala"
 WIKI_CHIMPANZEE = "https://en.wikipedia.org/wiki/Chimpanzee"
+WIKI_ORANGUTAN = "https://en.wikipedia.org/wiki/Orangutan"
 
 LETTERS = ("A", "B", "C")
 STUDY_SLOTS = 10
@@ -467,7 +489,8 @@ LEVEL_DISPLAY_NAMES = {
 # Caribbean flamingo, Galápagos tortoise, zebra, Nile hippo,
 # Sumatran tiger, western lowland gorilla, cheetah, red panda,
 # koala, and chimpanzee ship Junior Ranger + Park Ranger
-# + Zoologist.
+# + Zoologist. Orangutan ships Junior Ranger only (no
+# Park Ranger or Zoologist yet).
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -498,6 +521,7 @@ STUDY_NEIGHBORS = {
     "red-panda": ("sumatran-tiger", "zebra"),
     "koala": ("red-panda", "sumatran-tiger"),
     "chimpanzee": ("western-lowland-gorilla", "african-elephant"),
+    "orangutan": ("chimpanzee", "western-lowland-gorilla"),
 }
 
 STUDY_CARD_TITLES = {
@@ -515,6 +539,7 @@ STUDY_CARD_TITLES = {
     "red-panda": "Red panda",
     "koala": "Koala",
     "chimpanzee": "Chimpanzee",
+    "orangutan": "Orangutan",
 }
 
 # Shared answers-side deepen (Claude sample). Not scored. Future animals reuse keys.
@@ -657,6 +682,16 @@ PUSH_FURTHER_CHIMPANZEE = (
     "Two old chromosomes stuck together in people. What would a simple picture of that fusion show?",
     "Scientists linked a chimp virus called SIVcpz to HIV. How do you think they first connected those clues?",
     "Jane Goodall watched chimps for years. How did that long study change how we see apes?",
+)
+TALK_ABOUT_ORANGUTAN = (
+    "The name means “person of the forest.” What would you notice first at the zoo?",
+    "Wild orangutans live on Borneo and Sumatra, not Africa. How is that different from a chimpanzee?",
+    "Long arms help an orangutan swing and hang. Why might that help in tall trees?",
+)
+PUSH_FURTHER_ORANGUTAN = (
+    "An orangutan builds a nest of branches and leaves. How do you think it starts?",
+    "Mom and baby stay together a long time. Why might a baby need that?",
+    "Are there more than one kind of orangutan? What would you ask a keeper later?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -6537,6 +6572,157 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia says that when chimpanzees hunt monkeys, red colobus is often the most common prey. Other monkeys may be taken too.",
+                    },
+                ],
+            },
+        },
+    },
+    "orangutan": {
+        "id": "orangutan",
+        "source": WIKI_ORANGUTAN,
+        "source_note": "Facts from Wikipedia, Orangutan.",
+        "talk_about": list(TALK_ABOUT_ORANGUTAN),
+        "push_further": list(PUSH_FURTHER_ORANGUTAN),
+        "levels": {
+            "easy": {
+                # Teaching-first: same front as the quiz. Hard later may hide these.
+                "teach": [
+                    "Name means “person of the forest” (Malay)",
+                    "Wild home is rainforests on Borneo and Sumatra",
+                    "Reddish-brown coat and very long arms",
+                    "Mostly fruit; spends most of its life in trees",
+                    "Builds a nest in a tree to sleep",
+                ],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "forest-person",
+                        "title": "Forest person",
+                        "stem": "What does the name “orangutan” mean?",
+                        "choices": [
+                            "“Person of the forest” — from Malay",
+                            "“King of the jungle”",
+                            "“River swimmer”",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says orangutan comes from Malay words meaning “person of the forest.”",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "island-asia",
+                        "title": "Island Asia",
+                        "stem": "Where do wild orangutans live?",
+                        "choices": [
+                            "Only in African rainforests",
+                            "Rainforests on the Southeast Asian islands of Borneo and Sumatra",
+                            "Only on icy Antarctic ice",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says wild orangutans live on the Southeast Asian islands of Borneo and Sumatra. They are not African apes.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "rusty-coat",
+                        "title": "Rusty coat",
+                        "stem": "What does an orangutan’s coat look like?",
+                        "choices": [
+                            "Smooth green scales",
+                            "Black-and-white stripes",
+                            "Coarse reddish-brown hair",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says orangutans have coarse, reddish-brown hair covering the body.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "long-arm-climber",
+                        "title": "Long-arm climber",
+                        "stem": "How are an orangutan’s arms built for tree life?",
+                        "choices": [
+                            "Arms much longer than the legs — built for swinging and hanging in the canopy",
+                            "Arms shorter than a house cat’s",
+                            "No arms at all — only wings",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says orangutans have arms much longer than their legs. That long reach helps them swing and hang in the canopy.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "fruit-first",
+                        "title": "Fruit first",
+                        "stem": "What is the most important food for wild orangutans?",
+                        "choices": [
+                            "Only meat — never plants",
+                            "Fruit — plus leaves, bark, insects, and more",
+                            "Only ice cream",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says fruit is the most important food. Orangutans also eat leaves, bark, insects, and other foods. They are not only meat-eaters.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "mostly-alone",
+                        "title": "Mostly alone",
+                        "stem": "How do orangutans usually live, compared with other great apes?",
+                        "choices": [
+                            "In huge herds of hundreds",
+                            "In packs that hunt on the ground all day",
+                            "Mostly alone — the main bond is mom and baby",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says orangutans are the most solitary of the great apes. The closest bond is between a mother and her young.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "tree-nest",
+                        "title": "Tree nest night",
+                        "stem": "Where does an orangutan usually sleep at night?",
+                        "choices": [
+                            "In a fresh nest of branches and leaves in a tree",
+                            "In a hole it digs in the desert",
+                            "On the open ocean",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says orangutans build a nest of branches and leaves in a tree to sleep. They often make a new nest for the night.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "great-ape",
+                        "title": "Great ape",
+                        "stem": "What is a quick clue that an orangutan is a great ape, not a monkey?",
+                        "choices": [
+                            "It has a long curling tail like many monkeys",
+                            "It has no tail — great apes do not have tails",
+                            "It has feathers instead of hair",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia places the orangutan among the great apes. Great apes have no tail — a quick clue they are not monkeys.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "cheeky-males",
+                        "title": "Cheeky males",
+                        "stem": "What extra face feature do many big adult males grow?",
+                        "choices": [
+                            "A rainbow horn",
+                            "Feathered ears",
+                            "Wide cheek pads (sometimes called flanges)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says large adult males often grow wide cheek pads, also called flanges. How those pads work in more detail comes later.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "africa-myth",
+                        "title": "Myth buster — African ape?",
+                        "stem": "Are orangutans African apes?",
+                        "choices": [
+                            "No — orangutans are Asia’s great apes",
+                            "Yes — they live only in African savannas",
+                            "Yes — they are a kind of African monkey",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says orangutans are native to rainforests in Indonesia and Malaysia — Asia, not Africa. People sometimes mix them up with African apes.",
                     },
                 ],
             },
