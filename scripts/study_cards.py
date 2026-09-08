@@ -88,8 +88,8 @@ gene names), and temperature-dependent hatchling sex. Soften
 IUCN letters and exact taxon counts. Do not redo JR or PR
 themes.
 
-Facts for zebra Junior Ranger + Park Ranger (easy + hard) are
-Wikipedia-backed:
+Facts for zebra Junior Ranger + Park Ranger + Zoologist
+(easy + hard + zoologist) are Wikipedia-backed:
 https://en.wikipedia.org/wiki/Plains_zebra
 Species framing is the plains zebra (Equus quagga). JR stays
 kid-simple “plains zebra.” Soften exact run speed (no mph / km/h
@@ -99,9 +99,18 @@ camouflage or heat-only), harems, bachelor groups, pioneer
 grazing, hindgut fermentation, water dependence, alarm
 barks/snorts, brownish foal stripes that darken, southern
 shadow stripes, and hunting / habitat-loss threats. Soften
-mph and the IUCN Near Threatened letter. Reserve for
-Zoologist: the quagga, subspecies/clines, flehmen, and exact
-taxonomy. Do not add Zoologist yet. Do not redo JR themes.
+mph and the IUCN Near Threatened letter. Zoologist deepens
+Equus quagga vs older E. burchellii, the three living zebra
+species, the extinct quagga as a southern plains-zebra form
+in the same species complex (DNA supports a close relationship
+— do not lock “subspecies forever”), the north–south stripe
+cline, fly deterrence as a leading experimental/comparative
+hypothesis still debated vs camouflage/heat, flehmen via the
+vomeronasal organ, gradual harem takeover with mare membership
+often intact, early foal protection, migratory memory of good
+foraging places, and a threats-first status snapshot. Soften
+contested numbers and the IUCN letter. Do not redo JR or PR
+themes.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
@@ -144,9 +153,8 @@ LEVEL_DISPLAY_NAMES = {
 
 # Shipped picker order. A card only shows keys it actually defines.
 # Lion, reticulated-giraffe, African elephant, African penguin,
-# Caribbean flamingo, and Galápagos tortoise ship Junior Ranger +
-# Park Ranger + Zoologist. Zebra ships Junior Ranger + Park Ranger
-# (no Zoologist yet).
+# Caribbean flamingo, Galápagos tortoise, and zebra ship Junior
+# Ranger + Park Ranger + Zoologist.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -244,14 +252,14 @@ PUSH_FURTHER_TORTOISE = (
     "Find one more animal on your zoo map that eats plants. How does it reach its food?",
 )
 TALK_ABOUT_ZEBRA = (
-    "Why might every zebra’s stripe pattern be different?",
-    "If you lived on a grassland, what would you watch for?",
-    "Which other animal at the zoo lives in a family group?",
+    "Why might unique stripes help a keeper or a scientist tell zebras apart?",
+    "If stripes deter flies, what other “weird” animal traits might have unexpected jobs?",
+    "How is a zebra family like a lion pride — and how is it different?",
 )
 PUSH_FURTHER_ZEBRA = (
-    "Zebras can run fast to escape danger. What else might help them stay safe in a herd?",
-    "A zebra is a wild relative of the horse. How is life different for a wild animal than a farm horse?",
-    "Find one more animal on your zoo map that eats grass. How does it stay safe?",
+    "Compare zebra digestion (hindgut) with a giraffe or cow (ruminant) at the zoo.",
+    "Find another striped animal on your map — same reason for stripes, or different?",
+    "Quagga Project tries to breed back a quagga-like look — what does “extinct” mean if genes live on in relatives?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -2863,8 +2871,8 @@ STUDY_CARDS: dict[str, dict] = {
                 # Answer-light: no Learn-first strip. Facts from Wikipedia,
                 # Plains zebra. Soften mph and the IUCN Near Threatened
                 # letter. Fly-stripe is a leading hypothesis, not a settled
-                # fact. Reserve quagga, subspecies/clines, flehmen, and
-                # exact taxonomy for Zoologist. Do not redo JR themes.
+                # fact. Quagga, clines, flehmen, and exact taxonomy live
+                # on Zoologist. Do not redo JR themes.
                 "teach": [],
                 "questions": [
                     {
@@ -2996,6 +3004,146 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "B",
                         "why": "Wikipedia says they are threatened by hunting for meat and hide, plus livestock competition and farming that takes over grassland. We do not lock a status letter.",
+                    },
+                ],
+            },
+            "zoologist": {
+                # Answer-light: no Learn-first strip. Facts from Wikipedia,
+                # Plains zebra. Soften contested numbers, “subspecies
+                # forever” on the quagga, and the IUCN Near Threatened
+                # letter. Fly deterrence deepens the PR hypothesis —
+                # still debated vs camouflage/heat. Do not redo JR/PR.
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "species-name",
+                        "title": "Species name",
+                        "stem": "What scientific name do scientists use for the plains zebra today?",
+                        "choices": [
+                            "Equus caballus — the same name as the farm horse",
+                            "Equus quagga — older books often used Equus burchellii",
+                            "Panthera leo",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia lists the plains zebra as Equus quagga. It was once classified as Equus burchellii; after the quagga was shown to belong with this species, the older name quagga took priority.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "three-species",
+                        "title": "Three living zebras",
+                        "stem": "The plains zebra is one of how many living zebra species?",
+                        "choices": [
+                            "The only zebra species on Earth",
+                            "One of three living species — with Grévy’s zebra and the mountain zebra",
+                            "One of twenty living horse species, all called zebras",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia treats three living zebra species: plains, Grévy’s, and mountain. The plains zebra is the most common and widespread of the three.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "quagga",
+                        "title": "Quagga",
+                        "stem": "What do DNA studies say about the extinct quagga and today’s plains zebra?",
+                        "choices": [
+                            "The quagga was an unrelated striped cow",
+                            "DNA supports a close relationship — a southern plains-zebra form in the same species complex",
+                            "Scientists proved the quagga was a forever-separate species with no living relatives",
+                        ],
+                        "correct": "B",
+                        "why": "Genetic work found the quagga belongs with plains zebras, not a distant species. Wikipedia notes DNA supports that close relationship. Later work also talks about a north–south continuum, so we do not lock “subspecies forever.”",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "stripe-cline",
+                        "title": "Stripe cline",
+                        "stem": "How does plains-zebra striping tend to change from north to south?",
+                        "choices": [
+                            "Every plains zebra has the same complete stripe set",
+                            "Striping tends to lessen toward the south, and brown “shadow” stripes are more common in southern populations",
+                            "Southern zebras lose all stripes and turn solid white",
+                        ],
+                        "correct": "B",
+                        "why": "Northern plains zebras tend to have narrower, more complete stripes. Toward the south, striping often thins on the belly, legs, and hindquarters, and brown “shadow” stripes show up more often. Researchers also describe this as a cline more than a forever subspecies list.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "fly-deeper",
+                        "title": "Fly deterrence",
+                        "stem": "What does experimental and comparative research currently favor as a leading job of zebra stripes?",
+                        "choices": [
+                            "Scientists have proved stripes exist only to hide from lions",
+                            "Work on biting flies favors fly deterrence as a leading idea — still debated against camouflage and heat",
+                            "Stripes have no possible function at all",
+                        ],
+                        "correct": "B",
+                        "why": "Experimental and comparative studies cited on Wikipedia point to biting-fly deterrence as a leading explanation. Camouflage and heat-control ideas are still discussed, so the question is not closed.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "flehmen",
+                        "title": "Flehmen",
+                        "stem": "How does a stallion check whether a mare is ready to mate?",
+                        "choices": [
+                            "He counts her stripes",
+                            "He uses flehmen — curling the upper lip to smell urine via the vomeronasal organ",
+                            "He waits for her to roar",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says males show the flehmen response: the upper lip curls back so they can test urine with the vomeronasal organ and check if a mare is receptive.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "harem-takeover",
+                        "title": "Harem takeover",
+                        "stem": "What often happens to a plains zebra harem when a new stallion takes over?",
+                        "choices": [
+                            "All the mares immediately leave and live alone",
+                            "The new stallion may take over gradually, and adult mare membership often stays intact",
+                            "The whole family always splits into single animals",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says a new stallion may push an unhealthy rival out gradually, without a big fight. The adult mares of a harem usually stay together even when the stallion changes.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "foal-guard",
+                        "title": "Foal protection",
+                        "stem": "What does a mother plains zebra do with her newborn at first?",
+                        "choices": [
+                            "She hands the foal to the stallion on day one",
+                            "She keeps other zebras — even the stallion — away until the foal and group can bond",
+                            "She hides the foal underground for a month",
+                        ],
+                        "correct": "B",
+                        "why": "Early on, a mother keeps any other zebra away from her foal, including the stallion, other mares, and even her previous young. Later they all bond.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "migration-memory",
+                        "title": "Migration memory",
+                        "stem": "What do studies suggest migratory plains-zebra herds use to find good grazing?",
+                        "choices": [
+                            "Only what they can see that same morning",
+                            "Memory of places where foraging was good — not only day-to-day perception",
+                            "A written map they pass from parent to foal",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia cites research that migrating zebras appear to rely on some memory of where foraging was best, and may even anticipate conditions later on. That is a research finding, not a claim that they never look around.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "status-soft",
+                        "title": "Status snapshot",
+                        "stem": "What do scientists emphasize about wild plains-zebra numbers today?",
+                        "choices": [
+                            "They have no human-made pressures at all",
+                            "Hunting and habitat change put many populations under pressure — a snapshot listing has been Near Threatened",
+                            "They were declared extinct worldwide",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia emphasizes hunting for meat and hide, plus farming and livestock competition. IUCN has listed the plains zebra Near Threatened — we treat that letter as a snapshot, not a forever grade.",
                     },
                 ],
             },

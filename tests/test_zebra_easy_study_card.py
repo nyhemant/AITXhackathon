@@ -110,8 +110,6 @@ BRITTLE = (
     "IUCN",
     "Near Threatened",
     "near threatened",
-    "quagga",
-    "Quagga",
     "subspecies",
     "biting fly",
     "biting-fly",
@@ -123,6 +121,10 @@ BRITTLE = (
     "60 km",
     "70 km",
     "Equus",
+)
+QUIZ_ONLY_BRITTLE = (
+    "quagga",
+    "Quagga",
 )
 
 
@@ -149,9 +151,9 @@ class ZebraEasyStudyCardTests(unittest.TestCase):
                 "zebra",
             ),
         )
-        self.assertEqual(shipped_levels_for("zebra"), ("easy", "hard"))
+        self.assertEqual(shipped_levels_for("zebra"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("zebra", "hard"))
-        self.assertIsNone(study_deck_for("zebra", "zoologist"))
+        self.assertIsNotNone(study_deck_for("zebra", "zoologist"))
         deck = study_deck_for("zebra")
         self.assertIsNotNone(deck)
         self.assertEqual(deck["id"], "zebra")
@@ -173,7 +175,7 @@ class ZebraEasyStudyCardTests(unittest.TestCase):
             self.assertIn(q["correct"], ("A", "B", "C"))
             self.assertTrue(str(q["why"]).strip())
         blob = " ".join(deck["teach"] + [q["stem"] + q["why"] for q in deck["questions"]])
-        for phrase in BRITTLE:
+        for phrase in BRITTLE + QUIZ_ONLY_BRITTLE:
             self.assertNotIn(phrase, blob)
         self.assertIn("black-and-white", blob.lower())
         self.assertIn("unique", blob.lower())
@@ -254,11 +256,11 @@ class ZebraEasyStudyCardTests(unittest.TestCase):
         visible = _text(html)
         self.assertIn("Junior Ranger", visible)
         self.assertIn("Park Ranger", visible)
-        self.assertNotIn("Zoologist", visible)
+        self.assertIn("Zoologist", visible)
         self.assertIn('class="study-level-picker"', html)
         self.assertIn('data-study-pick="easy"', html)
         self.assertIn('data-study-pick="hard"', html)
-        self.assertNotIn('data-study-pick="zoologist"', html)
+        self.assertIn('data-study-pick="zoologist"', html)
         self.assertNotIn('class="study-level-badge"', html)
         self.assertEqual(html.count('role="group"'), 2)
         self.assertIn("study-level-picker-bottom", html)
@@ -314,11 +316,11 @@ class ZebraEasyStudyCardTests(unittest.TestCase):
         visible = _text(main)
         self.assertIn("Junior Ranger", visible)
         self.assertIn("Park Ranger", visible)
-        self.assertNotIn("Zoologist", visible)
+        self.assertIn("Zoologist", visible)
         self.assertIn('class="study-level-picker"', main)
         self.assertIn('data-study-pick="easy"', main)
         self.assertIn('data-study-pick="hard"', main)
-        self.assertNotIn('data-study-pick="zoologist"', main)
+        self.assertIn('data-study-pick="zoologist"', main)
         self.assertNotIn('class="study-level-badge"', main)
         self.assertIn("Learn first", main)
         for badge in PLAIN_LEVEL_LABELS + AGE_BADGES:
@@ -392,14 +394,14 @@ class ZebraEasyStudyCardTests(unittest.TestCase):
         self.assertIn("african-lion", payload)
         zebra = payload["zebra"]
         self.assertEqual(zebra["id"], "zebra")
-        self.assertEqual(set(zebra["levels"]), {"easy", "hard"})
+        self.assertEqual(set(zebra["levels"]), {"easy", "hard", "zoologist"})
         easy = zebra["levels"]["easy"]
         self.assertEqual(len(easy["teach"]), 5)
         self.assertEqual(len(easy["questions"]), STUDY_SLOTS)
         for q in easy["questions"]:
             self.assertEqual(len(q["choices"]), 3)
         self.assertEqual(zebra["levels"]["hard"]["teach"], [])
-        self.assertNotIn("zoologist", zebra["levels"])
+        self.assertEqual(zebra["levels"]["zoologist"]["teach"], [])
         data_js = STUDY_DATA_JS.read_text(encoding="utf-8")
         self.assertIn("zebra", data_js)
         self.assertIn('"easy":"Junior Ranger"', data_js)
@@ -437,7 +439,7 @@ class ZebraEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Zoologist", _text(_main(tortoise_html)))
         zebra_html = ZEBRA.read_text(encoding="utf-8")
         self.assertIn("Park Ranger", _text(_main(zebra_html)))
-        self.assertNotIn("Zoologist", _text(_main(zebra_html)))
+        self.assertIn("Zoologist", _text(_main(zebra_html)))
 
 
 if __name__ == "__main__":
