@@ -132,11 +132,11 @@ class CardStudyUxTests(unittest.TestCase):
                 self.assertNotIn("Explore more", print_tpl)
                 self.assertNotIn("study-explore", print_tpl)
 
-        warthog = _main((FP / "cards" / "warthog" / "index.html").read_text(encoding="utf-8"))
-        self.assertIn('aria-label="Talk"', warthog)
-        self.assertIn(">Talk</h2>", warthog)
-        self.assertNotIn(">Quiz</h2>", warthog)
-        self.assertNotIn("study-explore", warthog)
+        otter = _main((FP / "cards" / "asian-small-clawed-otter" / "index.html").read_text(encoding="utf-8"))
+        self.assertIn('aria-label="Talk"', otter)
+        self.assertIn(">Talk</h2>", otter)
+        self.assertNotIn(">Quiz</h2>", otter)
+        self.assertNotIn("study-explore", otter)
 
     def test_explore_more_sits_between_bottom_foot_and_try_next(self):
         deck = study_deck_for("galapagos-tortoise")
@@ -226,6 +226,10 @@ class CardStudyUxTests(unittest.TestCase):
         self.assertEqual(
             study_try_next_ids("ostrich"),
             ["caribbean-flamingo", "african-penguin", "african-lion"],
+        )
+        self.assertEqual(
+            study_try_next_ids("warthog"),
+            ["zebra", "ostrich", "african-lion"],
         )
         for cid in study_card_ids():
             nxt = study_try_next_ids(cid)
