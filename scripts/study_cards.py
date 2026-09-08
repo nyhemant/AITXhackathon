@@ -470,6 +470,34 @@ radiation (Ma soft).
 Soften contested hours / Ma / headcounts. Do not
 redo JR or PR themes.
 
+Facts for ostrich Junior Ranger (easy only)
+are Wikipedia-backed:
+https://en.wikipedia.org/wiki/Ostrich
+Species framing is the common ostrich (Struthio
+camelus). JR stays kid-simple “ostrich.”
+Soften contested height, kg, and egg size. No
+IUCN letter on Junior Ranger. The ostrich is the
+world’s largest living bird — tallest and
+heaviest (no exact height or kg). Flightless;
+built for running on strong legs (no speeds).
+Wild home is Africa on open grassland / savanna.
+A long neck and long legs help spot danger.
+Males are mostly black with white wing and tail
+feathers; females are greyish-brown / brownish-grey.
+Plant-first snacks: seeds, grass, shrubs, and
+fruit (sometimes small critters — soft). Biggest
+eggs of any living bird (soften size). A baby is
+a chick — fawn with dark spots. Wild ostriches
+are rarer than they used to be; many live on
+farms and in protected places (no status letter).
+Myth: they do not bury their heads in the sand —
+when hiding they may press head and neck flat so
+they look like a mound.
+Reserve for later (Park Ranger / Zoologist):
+speeds, toes, egg kg, boom mechanics, and
+status letters.
+Do not add Park Ranger or Zoologist yet.
+
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
 zoologist. Visible copy uses LEVEL_DISPLAY_NAMES only — no age badges,
@@ -509,6 +537,7 @@ WIKI_CHIMPANZEE = "https://en.wikipedia.org/wiki/Chimpanzee"
 WIKI_ORANGUTAN = "https://en.wikipedia.org/wiki/Orangutan"
 WIKI_GIANT_PANDA = "https://en.wikipedia.org/wiki/Giant_panda"
 WIKI_RING_TAILED_LEMUR = "https://en.wikipedia.org/wiki/Ring-tailed_lemur"
+WIKI_OSTRICH = "https://en.wikipedia.org/wiki/Ostrich"
 
 LETTERS = ("A", "B", "C")
 STUDY_SLOTS = 10
@@ -583,7 +612,8 @@ LEVEL_DISPLAY_NAMES = {
 # Sumatran tiger, western lowland gorilla, cheetah, red panda,
 # koala, chimpanzee, orangutan, giant panda, and
 # ring-tailed lemur ship Junior Ranger + Park
-# Ranger + Zoologist.
+# Ranger + Zoologist. Ostrich ships Junior
+# Ranger only (no Park Ranger or Zoologist yet).
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -617,6 +647,7 @@ STUDY_NEIGHBORS = {
     "orangutan": ("chimpanzee", "western-lowland-gorilla"),
     "giant-panda": ("red-panda", "koala"),
     "ring-tailed-lemur": ("orangutan", "chimpanzee"),
+    "ostrich": ("caribbean-flamingo", "african-penguin"),
 }
 
 STUDY_CARD_TITLES = {
@@ -637,6 +668,7 @@ STUDY_CARD_TITLES = {
     "orangutan": "Orangutan",
     "giant-panda": "Giant panda",
     "ring-tailed-lemur": "Ring-tailed lemur",
+    "ostrich": "Ostrich",
 }
 
 # Shared answers-side deepen (Claude sample). Not scored. Future animals reuse keys.
@@ -809,6 +841,16 @@ PUSH_FURTHER_RING_TAILED_LEMUR = (
     "A toilet claw is a special grooming claw on one toe. What job would you watch it do?",
     "These lemurs are mostly out in the day, yet their eyes can still shine. Why keep that leftover trick?",
     "Lemurs may have floated to Madagascar on plants long ago. How could a raft of trees start a whole family?",
+)
+TALK_ABOUT_OSTRICH = (
+    "The ostrich is the world’s largest living bird. What would you notice first at the zoo?",
+    "Ostriches cannot fly — they run on strong legs. Why might running be a better plan?",
+    "People say ostriches bury their heads in the sand. What would you tell a friend?",
+)
+PUSH_FURTHER_OSTRICH = (
+    "A long neck and long legs help an ostrich look out. What danger might it spot first?",
+    "Males are mostly black-and-white; females are brownish-grey. Why might the two looks help?",
+    "An ostrich egg is the biggest of any living bird. What would you ask a keeper about it?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -7984,6 +8026,157 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia’s usual story is that ancestral lemurs reached Madagascar by rafting, then radiated into many living kinds. Exact millions-of-years dates stay soft.",
+                    },
+                ],
+            },
+        },
+    },
+    "ostrich": {
+        "id": "ostrich",
+        "source": WIKI_OSTRICH,
+        "source_note": "Facts from Wikipedia, Ostrich.",
+        "talk_about": list(TALK_ABOUT_OSTRICH),
+        "push_further": list(PUSH_FURTHER_OSTRICH),
+        "levels": {
+            "easy": {
+                # Teaching-first: same front as the quiz. Hard later may hide these.
+                "teach": [
+                    "The ostrich is the world’s largest living bird.",
+                    "Ostriches cannot fly — they run on strong legs.",
+                    "Wild ostriches live in Africa on open grassland / savanna.",
+                    "A baby ostrich is a chick.",
+                    "Males are mostly black-and-white; females are brownish-grey.",
+                ],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "biggest-bird",
+                        "title": "Biggest bird",
+                        "stem": "What kind of living bird is the ostrich?",
+                        "choices": [
+                            "The tallest and heaviest living bird",
+                            "The smallest living bird",
+                            "A bird that only lives in the ocean",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says the ostrich is the world’s largest living bird — tallest and heaviest. We do not lock exact height or weight.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "run-dont-fly",
+                        "title": "Run, don’t fly",
+                        "stem": "Can ostriches fly?",
+                        "choices": [
+                            "Yes — they soar like eagles",
+                            "No — they cannot fly; they run on strong legs",
+                            "Yes — they only fly at night",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says ostriches are flightless. Their strong legs are built for running, not flying.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "africa-home",
+                        "title": "Africa home",
+                        "stem": "Where do wild ostriches live?",
+                        "choices": [
+                            "Only on Antarctic ice",
+                            "Only in North American forests",
+                            "Africa — open grassland and savanna",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia places wild ostriches in Africa on open grassland and savanna. They are not Antarctic or North American forest birds.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "long-lookout",
+                        "title": "Long lookout",
+                        "stem": "How do a long neck and long legs help an ostrich?",
+                        "choices": [
+                            "They help it spot danger from far away",
+                            "They help it hide under the ice",
+                            "They help it fly over the ocean",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia notes the ostrich’s long neck and long legs. Standing tall helps it look out and spot danger.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "boy-girl-look",
+                        "title": "Boy / girl look",
+                        "stem": "How can you often tell a male ostrich from a female?",
+                        "choices": [
+                            "Males are bright blue all over; females are pink",
+                            "Males are mostly black with white wings and tail; females are greyish-brown",
+                            "They look exactly the same, always",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says adult males are mostly black with white wing and tail feathers; females are greyish-brown.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "plant-first-snacks",
+                        "title": "Plant-first snacks",
+                        "stem": "What do ostriches eat first?",
+                        "choices": [
+                            "Only ice cream",
+                            "Only fish from the ocean",
+                            "Plants first — seeds, grass, shrubs, and fruit (sometimes a small critter)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says ostriches mostly eat plants such as seeds, grass, shrubs, and fruit. They may take small animals sometimes. Plants come first.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "giant-eggs-soft",
+                        "title": "Giant eggs",
+                        "stem": "What is special about an ostrich egg?",
+                        "choices": [
+                            "It is the biggest egg of any living bird",
+                            "Ostriches do not lay eggs",
+                            "The eggs are smaller than a pea",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says ostriches lay the largest eggs of any living bird. We keep exact size and weight soft.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "chick",
+                        "title": "Chick",
+                        "stem": "What is a baby ostrich called, and what does it look like?",
+                        "choices": [
+                            "A pup — all white with no spots",
+                            "A chick — fawn with dark spots",
+                            "A cub — like a lion baby",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia calls a baby ostrich a chick. Chicks are fawn-colored with dark spots.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "soft-care",
+                        "title": "Soft care",
+                        "stem": "How are wild ostriches doing today?",
+                        "choices": [
+                            "They fill every city street",
+                            "They only live on the moon",
+                            "Wild ostriches are rarer than they used to be; many live on farms and in protected places",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says wild ostriches are less widespread than they once were. Many now live on farms and in protected places. We do not lock a status letter — that grade is a snapshot and can change.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "head-in-sand-myth",
+                        "title": "Myth buster — sand?",
+                        "stem": "Do ostriches bury their heads in the sand?",
+                        "choices": [
+                            "No — they do not bury their heads; when hiding they may press head and neck flat so they look like a mound",
+                            "Yes — they hide their whole head under the sand to sleep",
+                            "Yes — they dig tunnels with their beaks",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says ostriches do not bury their heads in the sand. When they hide, they may press the head and neck flat to the ground so they look like a mound.",
                     },
                 ],
             },
