@@ -168,6 +168,24 @@ bycatch, and conflict on forest–farm edges. Soften contested
 numbers and treat CR as a snapshot. Do not redo JR or PR
 themes.
 
+Facts for western-lowland-gorilla Junior Ranger (easy only) are
+Wikipedia-backed:
+https://en.wikipedia.org/wiki/Western_lowland_gorilla
+Species framing is the western lowland gorilla (Gorilla
+gorilla gorilla). JR stays kid-simple “western lowland
+gorilla.” Soften kg weights and IUCN letters. Home is Central
+African rainforest and swamp forest. Mostly plants: fruit,
+leaves, stems, bark; occasional insects. A silverback (adult
+male with a silver-grey back) leads. Family troop: females
+and young with the silverback. Smallest gorilla subspecies —
+still huge. Knuckle-walk on the ground. Chest-beat and charge
+are displays; usually calm unless disturbed. Babies cling and
+ride on mom for years. Leafy night nests each night. Myth:
+they are plant-eating family apes, not King Kong movie
+monsters. Reserve for later: CR letter, Ebola, SIV/HIV,
+genome, Cross River, Snowflake genetics, and deep tool-use.
+Do not add Park Ranger or Zoologist yet.
+
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
 zoologist. Visible copy uses LEVEL_DISPLAY_NAMES only — no age badges,
@@ -197,6 +215,9 @@ WIKI_PLAINS_ZEBRA = "https://en.wikipedia.org/wiki/Plains_zebra"
 WIKI_HIPPOPOTAMUS = "https://en.wikipedia.org/wiki/Hippopotamus"
 WIKI_SUMATRAN_TIGER = "https://en.wikipedia.org/wiki/Sumatran_tiger"
 WIKI_TIGER = "https://en.wikipedia.org/wiki/Tiger"
+WIKI_WESTERN_LOWLAND_GORILLA = (
+    "https://en.wikipedia.org/wiki/Western_lowland_gorilla"
+)
 
 LETTERS = ("A", "B", "C")
 STUDY_SLOTS = 10
@@ -214,6 +235,8 @@ LEVEL_DISPLAY_NAMES = {
 # Lion, reticulated-giraffe, African elephant, African penguin,
 # Caribbean flamingo, Galápagos tortoise, zebra, Nile hippo,
 # and Sumatran tiger ship Junior Ranger + Park Ranger + Zoologist.
+# Western lowland gorilla ships Junior Ranger only (no Park Ranger
+# or Zoologist yet).
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -239,6 +262,7 @@ STUDY_NEIGHBORS = {
     "zebra": ("african-lion", "reticulated-giraffe", "african-elephant"),
     "nile-hippo": ("african-elephant", "zebra"),
     "sumatran-tiger": ("african-lion",),
+    "western-lowland-gorilla": ("african-elephant",),
 }
 
 STUDY_CARD_TITLES = {
@@ -251,6 +275,7 @@ STUDY_CARD_TITLES = {
     "zebra": "Zebra",
     "nile-hippo": "Nile hippo",
     "sumatran-tiger": "Sumatran tiger",
+    "western-lowland-gorilla": "Western lowland gorilla",
 }
 
 # Shared answers-side deepen (Claude sample). Not scored. Future animals reuse keys.
@@ -343,6 +368,16 @@ PUSH_FURTHER_TIGER = (
     "After Ice Age seas rose, a land bridge to the mainland vanished. How could that isolation shape a tiger’s genes?",
     "Some parks hold more tigers than the land around them. Why might density inside a park not tell the whole island story?",
     "Zoo family trees rest on few founders, and some cubs have shown inner-ear trouble. What would you ask a keeper about that bottleneck?",
+)
+TALK_ABOUT_GORILLA = (
+    "A silverback leads and protects the family. Why might one strong adult be a good protector?",
+    "People sometimes think gorillas eat meat like movie monsters. What do they really eat?",
+    "Gorillas walk on their knuckles. What might that let them do with their hands?",
+)
+PUSH_FURTHER_GORILLA = (
+    "Most zoo gorillas are this kind — western lowland. What could you ask a keeper about which gorilla lives here?",
+    "Swamp forest is an important home, not only dry rainforest. Why might wet forest help a gorilla?",
+    "A threat letter on a list can change later. Why wait before treating one letter as a forever grade?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -4088,6 +4123,157 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "B",
                         "why": "Wikipedia names conflict with people as a major threat. Tigers use human-dominated landscapes at the fringes of protected areas less than core forest, but those edges — farms, settlements, and encroachment — are where encounters and retaliation killings cluster.",
+                    },
+                ],
+            },
+        },
+    },
+    "western-lowland-gorilla": {
+        "id": "western-lowland-gorilla",
+        "source": WIKI_WESTERN_LOWLAND_GORILLA,
+        "source_note": "Facts from Wikipedia, Western lowland gorilla.",
+        "talk_about": list(TALK_ABOUT_GORILLA),
+        "push_further": list(PUSH_FURTHER_GORILLA),
+        "levels": {
+            "easy": {
+                # Teaching-first: same front as the quiz. Hard later may hide these.
+                "teach": [
+                    "Wild western lowland gorillas live in Central African forests — rainforest and swamp forest.",
+                    "They eat mostly plants — fruit, leaves, stems, and bark — and sometimes insects.",
+                    "A silverback is an adult male with a silver-grey back who leads the family.",
+                    "A family troop is females and young living with the silverback.",
+                    "They are the smallest kind of gorilla — and still huge.",
+                ],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "central-africa",
+                        "title": "Central Africa forests",
+                        "stem": "Where do wild western lowland gorillas live?",
+                        "choices": [
+                            "Only on frozen ice",
+                            "Central African forests — rainforest and swamp forest",
+                            "Only in open desert",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says they live in forest and lowland swampland in central Africa — rainforest and swamp forest, not ice or desert.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "plants",
+                        "title": "Mostly plants",
+                        "stem": "What do western lowland gorillas mostly eat?",
+                        "choices": [
+                            "Mostly meat like a lion",
+                            "Mostly plants — fruit, leaves, stems, and bark",
+                            "Only fish",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says they are primarily herbivorous — fruit, leaves, stems, and bark — and may eat insects from time to time.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "silverback",
+                        "title": "Silverback",
+                        "stem": "What is a silverback?",
+                        "choices": [
+                            "A baby gorilla with white socks",
+                            "An adult male with a silver-grey back who leads",
+                            "A gorilla painted silver at the zoo",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says older males get grey hair on the back and rump — that is why they are called silverbacks — and the silverback leads the group.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "troop",
+                        "title": "Family troop",
+                        "stem": "Who usually lives with a silverback?",
+                        "choices": [
+                            "Only other silverbacks and no young",
+                            "Females and their young",
+                            "A huge pride of lions",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says breeding groups are one silverback, adult females, and their offspring. The male’s role is protector.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "smallest",
+                        "title": "Smallest gorilla",
+                        "stem": "How does a western lowland gorilla’s size compare with other gorillas?",
+                        "choices": [
+                            "It is the smallest kind of gorilla — and still huge",
+                            "It is as small as a house cat",
+                            "It is the only gorilla that can fly",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia calls it the smallest of the four gorilla subspecies. We do not lock one weight.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "knuckle-walk",
+                        "title": "Knuckle-walk",
+                        "stem": "How do western lowland gorillas usually walk on the ground?",
+                        "choices": [
+                            "On two feet all day like people",
+                            "On their knuckles, with hands curled on the ground",
+                            "Only by swinging and never touching the ground",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says they walk in a hunched, four-legged way with hands curled and knuckles touching the ground.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "display",
+                        "title": "Display, not mean",
+                        "stem": "What does a chest-beat or charge usually mean?",
+                        "choices": [
+                            "They are always hunting people",
+                            "It is a display of power — they are usually calm unless disturbed",
+                            "They are trying to fly",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says a silverback may stand up, charge, and pound his chest, but gorillas are generally calm and nonaggressive unless they are disturbed.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "baby-rides",
+                        "title": "Baby rides",
+                        "stem": "How do baby western lowland gorillas travel with mom?",
+                        "choices": [
+                            "They fly on their own",
+                            "They cling and ride on mom for years",
+                            "They ride on elephants",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says infants cling to mom’s fur and ride on her back for years — not just a day.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "night-nests",
+                        "title": "Night nests",
+                        "stem": "Where do western lowland gorillas sleep at night?",
+                        "choices": [
+                            "In the same permanent cave every year",
+                            "In leafy nests they make each night",
+                            "Underwater like hippos",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia notes night nests — some in trees, many on the ground. They build leafy nests for the night.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "king-kong-myth",
+                        "title": "Myth buster — King Kong",
+                        "stem": "Are western lowland gorillas movie monsters like King Kong?",
+                        "choices": [
+                            "Yes — they hunt cities for meat",
+                            "No — they are plant-eating family apes",
+                            "They are robots",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia describes plant-eating family groups led by a silverback — not movie monsters.",
                     },
                 ],
             },
