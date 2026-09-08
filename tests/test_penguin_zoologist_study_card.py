@@ -330,7 +330,7 @@ class PenguinZoologistStudyCardTests(unittest.TestCase):
         html = PENGUIN.read_text(encoding="utf-8")
         self.assertIn("Zoologist", html)
         self.assertIn('data-study-pick="zoologist"', html)
-        self.assertIn("study-card.js?v=6", html)
+        self.assertIn("study-card.js?v=7", html)
         self.assertIn("study-cards-data.js?v=5", html)
         print_tpl = html.split('id="study-print-template">', 1)[1].split("</template>", 1)[0]
         self.assertIn("Junior Ranger", print_tpl)

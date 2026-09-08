@@ -1927,8 +1927,11 @@ body.seo-venue-body {
 .card-page .card-talk-pack {
   order: 2;
 }
-.card-page-actions {
+.card-page .card-try-next {
   order: 3;
+}
+.card-page-actions {
+  order: 4;
   display: flex;
   flex-wrap: wrap;
   gap: 0.65rem;
@@ -1937,6 +1940,30 @@ body.seo-venue-body {
 .card-page-actions .btn {
   font-size: 1.05rem;
   min-height: 44px;
+}
+.card-page .card-hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 0.7rem;
+  margin-top: 0.55rem;
+}
+.card-page .card-hero-links .detail-links {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: auto;
+  margin: 0;
+  gap: 0.45rem;
+}
+.card-page .card-hero-links .seo-watch-row {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  width: auto;
+  margin: 0;
+  gap: 0.35rem 0.55rem;
 }
 .card-page .seo-watch-row {
   display: flex;
@@ -1953,13 +1980,12 @@ body.seo-venue-body {
   font-weight: 650;
   color: #5a6a84;
 }
+.card-page .card-hero-links .seo-watch-source {
+  display: inline;
+  font-size: 0.82rem;
+}
 .card-print-note {
-  order: 4;
-  margin: 0.45rem 0 0;
-  color: #5a6a84;
-  font-size: 0.92rem;
-  font-weight: 600;
-  line-height: 1.35;
+  display: none;
 }
 
 @media (max-width: 640px) {

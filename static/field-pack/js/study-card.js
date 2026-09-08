@@ -2,9 +2,9 @@
  * Study-card quiz: tap a choice. Wrong greys + disables that pick for a second try.
  * Correct (first or later) shows why and scores. Show answers still reveals the key.
  * Level keys stay easy / hard / zoologist; visible names come from FPStudyLevelName.
- * Lion, giraffe, African elephant, African penguin, and Caribbean
- * flamingo ship JR + Park Ranger + Zoologist (query ?level= or picker).
- * Galápagos tortoise ships JR + Park Ranger.
+ * Lion, giraffe, African elephant, African penguin, Caribbean flamingo,
+ * and Galápagos tortoise ship JR + Park Ranger + Zoologist
+ * (query ?level= or picker). Top and bottom pickers stay in sync.
  */
 (() => {
   const LETTERS = ["A", "B", "C"];
@@ -254,6 +254,19 @@
     }
   }
 
+  function scrollStudyIntoView(root) {
+    if (!root || typeof root.scrollIntoView !== "function") return;
+    try {
+      root.scrollIntoView({ behavior: "smooth", block: "start" });
+    } catch (_) {
+      try {
+        root.scrollIntoView(true);
+      } catch (__) {
+        /* ignore */
+      }
+    }
+  }
+
   function rememberLevel(level) {
     try {
       const url = new URL(window.location.href);
@@ -322,6 +335,7 @@
     if (!deck) return;
     applyDeck(root, deck);
     rememberLevel(deck.level);
+    scrollStudyIntoView(root);
   }
 
   function bind(root) {
@@ -331,6 +345,8 @@
         const next = normalizeLevel(pick.getAttribute("data-study-pick")) || "easy";
         if (next !== (root.getAttribute("data-study-level") || "easy")) {
           selectLevel(root, next);
+        } else {
+          scrollStudyIntoView(root);
         }
         return;
       }

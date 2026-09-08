@@ -141,6 +141,36 @@ LEVEL_DISPLAY_NAMES = {
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
+# Deepen / traffic fill for “try next” thumbs. Neighbors first, then this
+# list, then any other study-deck id. Only IDs present in STUDY_CARDS ship.
+STUDY_TRAFFIC_ORDER = (
+    "african-lion",
+    "reticulated-giraffe",
+    "african-elephant",
+    "african-penguin",
+    "caribbean-flamingo",
+    "galapagos-tortoise",
+)
+
+# Same kind / habitat neighbors among study-deck animals.
+STUDY_NEIGHBORS = {
+    "african-lion": ("reticulated-giraffe", "african-elephant"),
+    "reticulated-giraffe": ("african-elephant", "african-lion"),
+    "african-elephant": ("reticulated-giraffe", "african-lion"),
+    "african-penguin": ("caribbean-flamingo",),
+    "caribbean-flamingo": ("african-penguin",),
+    "galapagos-tortoise": ("african-elephant", "reticulated-giraffe"),
+}
+
+STUDY_CARD_TITLES = {
+    "african-lion": "African lion",
+    "reticulated-giraffe": "Reticulated giraffe",
+    "african-elephant": "African elephant",
+    "african-penguin": "African penguin",
+    "caribbean-flamingo": "Caribbean flamingo",
+    "galapagos-tortoise": "Galápagos tortoise",
+}
+
 # Shared answers-side deepen (Claude sample). Not scored. Future animals reuse keys.
 TALK_ABOUT_LION = (
     "Why is it useful for lions to live in a family instead of alone?",
@@ -2985,7 +3015,57 @@ def study_deepen_html(deck: dict, *, print_mode: bool = False, hidden: bool = Fa
     return f'<aside class="{cls}"{hide} aria-label="Go further">{"".join(parts)}</aside>'
 
 
-def _level_picker_html(card_id: str, current: str) -> str:
+def study_try_next_ids(card_id: str, n: int = 3) -> list[str]:
+    """Three other study-deck animals: neighbors first, then traffic order."""
+    current = str(card_id or "").strip()
+    have = {cid for cid in STUDY_CARDS if cid and cid != current}
+    if not have:
+        return []
+    extra = tuple(sorted(cid for cid in have if cid not in STUDY_TRAFFIC_ORDER))
+    out: list[str] = []
+    seen: set[str] = set()
+    for cid in (*STUDY_NEIGHBORS.get(current, ()), *STUDY_TRAFFIC_ORDER, *extra):
+        if cid not in have or cid in seen:
+            continue
+        seen.add(cid)
+        out.append(cid)
+        if len(out) >= n:
+            break
+    return out
+
+
+def study_card_title(card_id: str) -> str:
+    cid = str(card_id or "").strip()
+    return STUDY_CARD_TITLES.get(cid) or cid.replace("-", " ")
+
+
+def study_try_next_html(card_id: str, *, n: int = 3) -> str:
+    """Screen-only thumbnail row linking to other study cards."""
+    ids = study_try_next_ids(card_id, n=n)
+    if not ids:
+        return ""
+    thumbs: list[str] = []
+    for cid in ids:
+        name = study_card_title(cid)
+        href = f"/field-pack/cards/{_esc(cid)}/"
+        photo = f"/field-pack/photos/{_esc(cid)}.jpg?v=img2"
+        thumbs.append(
+            f'<a class="card-try-next-link" href="{href}" '
+            f'aria-label="Try next: {_esc(name)}">'
+            f'<img class="card-try-next-thumb" src="{photo}" alt="" '
+            f'width="160" height="120" loading="lazy" decoding="async" />'
+            f'<span class="card-try-next-name">{_esc(name)}</span>'
+            f"</a>"
+        )
+    return (
+        f'<nav class="card-try-next no-print" aria-label="Try next">'
+        f'<p class="card-try-next-kicker">Try next</p>'
+        f'<div class="card-try-next-grid">{"".join(thumbs)}</div>'
+        f"</nav>"
+    )
+
+
+def _level_picker_html(card_id: str, current: str, *, placement: str = "top") -> str:
     """Junior Ranger / Park Ranger / Zoologist segment when 2+ levels ship."""
     levels = shipped_levels_for(card_id)
     if len(levels) < 2:
@@ -3001,8 +3081,10 @@ def _level_picker_html(card_id: str, current: str) -> str:
             f'data-study-pick="{_esc(key)}" aria-pressed="{pressed}">'
             f"{_esc(level_display_name(key))}</button>"
         )
+    extra = " study-level-picker-bottom" if placement == "bottom" else ""
+    label = "Study level at the end" if placement == "bottom" else "Study level"
     return (
-        f'<div class="study-level-picker" role="group" aria-label="Study level">'
+        f'<div class="study-level-picker{extra}" role="group" aria-label="{label}">'
         f"{''.join(buttons)}</div>"
     )
 
@@ -3012,6 +3094,13 @@ def study_talk_html(deck: dict, *, heading: str = "Talk") -> str:
     level = deck.get("level") or DEFAULT_LEVEL
     card_id = deck.get("id") or ""
     picker = _level_picker_html(str(card_id), str(level))
+    foot = ""
+    if "study-level-picker" in picker:
+        foot = (
+            f'<div class="study-foot no-print">'
+            f"{_level_picker_html(str(card_id), str(level), placement='bottom')}"
+            f"</div>"
+        )
     teach_items = "".join(f"<li>{_esc(line)}</li>" for line in deck.get("teach") or [])
     teach = (
         f'<details class="study-teach">'
@@ -3063,6 +3152,7 @@ def study_talk_html(deck: dict, *, heading: str = "Talk") -> str:
         f'<div class="mission-grid study-grid">{"".join(cards)}</div>'
         f"{deepen}"
         f"{source_html}"
+        f"{foot}"
         f"</section>"
     )
 
