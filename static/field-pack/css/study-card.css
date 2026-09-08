@@ -355,7 +355,7 @@
 /*
  * Difficulty washes tint the question box (.study-q), not the chips.
  * Screen-only so print stays the current mint/neutral sheet.
- * Park Ranger uses #fff6ee — not the outing wrong-pick orange #fff1e0.
+ * Park Ranger uses #fff6ee — not the outing wrong-pick orange.
  */
 @media screen {
   .card-page .card-study-pack .study-q,
