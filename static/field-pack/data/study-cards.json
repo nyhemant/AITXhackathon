@@ -5568,14 +5568,14 @@
     "source": "https://en.wikipedia.org/wiki/Chimpanzee",
     "source_note": "Facts from Wikipedia, Chimpanzee.",
     "talk_about": [
-      "Some chimps fish for termites; others crack nuts. What’s different about those tools?",
-      "Why might chimps in one forest use different tool tricks than chimps somewhere else?",
-      "Chimps groom each other’s fur. How could that help a friendship?"
+      "Chimps and people share almost the same DNA. Why can we still look so different?",
+      "Chimp groups can split into small day parties and rejoin. How is that different from one big troop?",
+      "Chimps and bonobos are sister species. What would you look for to tell them apart?"
     ],
     "push_further": [
-      "Jane Goodall first saw chimps use tools. What do you think she noticed?",
-      "People and chimps can share some of the same germs. Why might that happen?",
-      "Scientists later use a word like Endangered. What do you think that grade means?"
+      "Two old chromosomes stuck together in people. What would a simple picture of that fusion show?",
+      "Scientists linked a chimp virus called SIVcpz to HIV. How do you think they first connected those clues?",
+      "Jane Goodall watched chimps for years. How did that long study change how we see apes?"
     ],
     "levels": {
       "easy": {
@@ -5851,6 +5851,141 @@
             ],
             "correct": "A",
             "why": "Wikipedia says chimpanzees are much stronger, pound-for-pound, than humans of a similar size — especially for climbing and swinging. Exact fibre counts and strength multiples are contested, so we keep that science soft."
+          }
+        ]
+      },
+      "zoologist": {
+        "teach": [],
+        "questions": [
+          {
+            "slot": 1,
+            "id": "dna-close-up",
+            "title": "DNA close-up",
+            "stem": "How similar is chimpanzee DNA to ours in one-to-one sequence comparisons?",
+            "choices": [
+              "Autosomal DNA looks extremely similar — often cited as only about one or two percent different; the gap looks bigger when counting insertions and deletions",
+              "Their DNA is completely different from ours",
+              "They have no DNA at all"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says chimpanzee autosomal DNA is extremely similar to ours in one-to-one sequence comparisons, often cited near a one-to-two-percent difference. When insertions and deletions are counted, the gap looks larger. We do not lock one exact percent."
+          },
+          {
+            "slot": 2,
+            "id": "endangered-snapshot",
+            "title": "Endangered snapshot",
+            "stem": "How should we read the chimpanzee’s usual threat listing?",
+            "choices": [
+              "Extinct worldwide, with no living animals",
+              "IUCN lists the species Endangered — a snapshot driven by habitat loss, bushmeat hunting, and disease, not a forever grade",
+              "The most common animal on every continent"
+            ],
+            "correct": "B",
+            "why": "Wikipedia lists the chimpanzee as Endangered on the IUCN Red List. That letter is a snapshot driven by habitat loss, bushmeat hunting, and disease, and it can change."
+          },
+          {
+            "slot": 3,
+            "id": "four-subspecies",
+            "title": "Four subspecies",
+            "stem": "How many chimpanzee subspecies are generally recognised?",
+            "choices": [
+              "Only one subspecies lives on every continent",
+              "Scientists refuse to name any subspecies",
+              "Generally four: central, western, Nigeria–Cameroon, and eastern — a possible fifth is still debated"
+            ],
+            "correct": "C",
+            "why": "Wikipedia generally recognises four chimpanzee subspecies: central, western, Nigeria–Cameroon, and eastern. A possible fifth form is still debated, so we do not lock that extra split."
+          },
+          {
+            "slot": 4,
+            "id": "fission-fusion",
+            "title": "Fission–fusion",
+            "stem": "How does a chimpanzee community spend a typical day?",
+            "choices": [
+              "Communities of many dozens can split into small day parties and rejoin — fluid subgroups, not one fixed flock",
+              "They stay in one locked line from dawn to dark",
+              "Each chimpanzee lives in a separate country"
+            ],
+            "correct": "A",
+            "why": "Wikipedia describes chimpanzee society as fission–fusion. A community of many dozens can split into small parties during the day and come back together. The subgroups are fluid, not one fixed flock."
+          },
+          {
+            "slot": 5,
+            "id": "bonobo-split",
+            "title": "Bonobo split",
+            "stem": "How do chimpanzees and bonobos sit in the living genus Pan?",
+            "choices": [
+              "Bonobos are just baby chimpanzees",
+              "Genus Pan holds two living species — chimpanzee (P. troglodytes) and bonobo (P. paniscus) — that split a couple of million years ago",
+              "They are the same species as house cats"
+            ],
+            "correct": "B",
+            "why": "Wikipedia places the chimpanzee (Pan troglodytes) and the bonobo (Pan paniscus) as the two living species of genus Pan. They split on the order of a couple of million years ago. Exact dates are contested, so we keep the clock soft."
+          },
+          {
+            "slot": 6,
+            "id": "hunt-roles",
+            "title": "Hunt roles",
+            "stem": "At some forest sites, how do chimpanzees share jobs when they hunt monkeys?",
+            "choices": [
+              "Every hunter does the exact same job",
+              "They only hunt by sending a written plan",
+              "At sites such as Taï, hunters may act as drivers, blockers, chasers, and ambushers"
+            ],
+            "correct": "C",
+            "why": "Wikipedia notes that at some sites, including Taï, chimpanzee hunters take different roles — drivers, blockers, chasers, and ambushers — when they catch monkeys. Not every community hunts this way."
+          },
+          {
+            "slot": 7,
+            "id": "sivcpz",
+            "title": "SIVcpz",
+            "stem": "What is SIVcpz, and why do scientists mention it with HIV-1?",
+            "choices": [
+              "A chimpanzee simian immunodeficiency virus (SIVcpz) is the source of pandemic HIV-1 in humans",
+              "It is a plant vitamin chimps invented",
+              "It is a brand of zoo snack"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says a chimpanzee simian immunodeficiency virus (SIVcpz) is the source of pandemic HIV-1 in humans. We keep the medical detail soft and do not lock one date or pathway story."
+          },
+          {
+            "slot": 8,
+            "id": "chromosome-2-fusion",
+            "title": "Chromosome 2 fusion",
+            "stem": "Why do chimpanzees have one more chromosome pair than humans?",
+            "choices": [
+              "Chimps borrowed extra chromosomes from birds",
+              "Chimps have 24 chromosome pairs; humans have 23 because two ancestral chromosomes fused into human chromosome 2",
+              "Humans have no chromosomes at all"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says chimpanzees have 48 chromosomes (24 pairs) while humans have 46 (23 pairs). Two ancestral chromosomes fused to form human chromosome 2."
+          },
+          {
+            "slot": 9,
+            "id": "shared-ancestor-clock",
+            "title": "Shared ancestor clock",
+            "stem": "About how long ago did humans and chimpanzees last share an ancestor?",
+            "choices": [
+              "Last Tuesday at lunch",
+              "About a hundred years ago",
+              "On the order of about seven to ten million years ago — exact dates are contested"
+            ],
+            "correct": "C",
+            "why": "Wikipedia places the last common ancestor of humans and chimpanzees on the order of several million years ago, often around seven to ten million years. We do not lock one exact date."
+          },
+          {
+            "slot": 10,
+            "id": "red-colobus-prey",
+            "title": "Red colobus prey",
+            "stem": "When chimpanzees hunt monkeys, which prey shows up most often?",
+            "choices": [
+              "Red colobus is often the most common monkey prey",
+              "Only goldfish",
+              "Only house cats"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says that when chimpanzees hunt monkeys, red colobus is often the most common prey. Other monkeys may be taken too."
           }
         ]
       }
