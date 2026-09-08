@@ -9579,6 +9579,20 @@ def decks_as_jsonable() -> dict:
     return STUDY_CARDS
 
 
+def study_try_next_catalog() -> dict:
+    """Neighbors + traffic + titles for client-side Try next (session recent skip)."""
+    titles = {
+        cid: STUDY_CARD_TITLES.get(cid) or str(cid).replace("-", " ")
+        for cid in STUDY_CARDS
+        if cid
+    }
+    return {
+        "neighbors": {k: list(v) for k, v in STUDY_NEIGHBORS.items()},
+        "traffic": list(STUDY_TRAFFIC_ORDER),
+        "titles": titles,
+    }
+
+
 def write_study_artifacts() -> None:
     """JSON + window.FP_STUDY_CARDS for print-kit / study-card.js."""
     STUDY_JSON.parent.mkdir(parents=True, exist_ok=True)
@@ -9586,6 +9600,9 @@ def write_study_artifacts() -> None:
     payload = json.dumps(STUDY_CARDS, indent=2, ensure_ascii=False)
     STUDY_JSON.write_text(payload + "\n", encoding="utf-8")
     names_js = json.dumps(LEVEL_DISPLAY_NAMES, ensure_ascii=False, separators=(",", ":"))
+    catalog_js = json.dumps(
+        study_try_next_catalog(), ensure_ascii=False, separators=(",", ":")
+    )
     STUDY_DATA_JS.write_text(
         "/* Generated from scripts/study_cards.py — edit the Python source. */\n"
         "window.FP_STUDY_LEVEL_NAMES = "
@@ -9598,6 +9615,9 @@ def write_study_artifacts() -> None:
         "};\n"
         "window.FP_STUDY_CARDS = "
         + json.dumps(STUDY_CARDS, ensure_ascii=False, separators=(",", ":"))
+        + ";\n"
+        "window.FP_STUDY_TRY_NEXT = "
+        + catalog_js
         + ";\n",
         encoding="utf-8",
     )
@@ -9657,22 +9677,51 @@ def _score_html(n: int) -> str:
     return f'<p class="study-score">Score <span data-study-correct>0</span>/{n}</p>'
 
 
-def study_try_next_ids(card_id: str, n: int = 3) -> list[str]:
-    """Three other study-deck animals: neighbors first, then traffic order."""
+def study_try_next_ids(
+    card_id: str,
+    n: int = 3,
+    exclude: list[str] | tuple[str, ...] | None = None,
+) -> list[str]:
+    """Three other study-deck animals: neighbors first, then traffic order.
+
+    ``exclude`` is a recent-path skip (session history). Fresh ids are preferred;
+    if fewer than ``n`` remain, fill from remaining decks (never the current card).
+    """
     current = str(card_id or "").strip()
-    have = {cid for cid in STUDY_CARDS if cid and cid != current}
-    if not have:
+    have_all = {cid for cid in STUDY_CARDS if cid and cid != current}
+    if not have_all:
         return []
-    extra = tuple(sorted(cid for cid in have if cid not in STUDY_TRAFFIC_ORDER))
+    blocked = {str(x).strip() for x in (exclude or ()) if str(x or "").strip()}
+    blocked.add(current)
+    have_fresh = {cid for cid in have_all if cid not in blocked}
+
+    def extra(pool: set[str]) -> tuple[str, ...]:
+        return tuple(sorted(cid for cid in pool if cid not in STUDY_TRAFFIC_ORDER))
+
     out: list[str] = []
     seen: set[str] = set()
-    for cid in (*STUDY_NEIGHBORS.get(current, ()), *STUDY_TRAFFIC_ORDER, *extra):
-        if cid not in have or cid in seen:
-            continue
-        seen.add(cid)
-        out.append(cid)
-        if len(out) >= n:
-            break
+
+    def take(cids: tuple[str, ...], pool: set[str]) -> bool:
+        for cid in cids:
+            if cid not in pool or cid in seen:
+                continue
+            seen.add(cid)
+            out.append(cid)
+            if len(out) >= n:
+                return True
+        return False
+
+    fresh_order = (
+        *STUDY_NEIGHBORS.get(current, ()),
+        *STUDY_TRAFFIC_ORDER,
+        *extra(have_fresh),
+    )
+    if take(fresh_order, have_fresh):
+        return out
+    take(
+        (*STUDY_NEIGHBORS.get(current, ()), *STUDY_TRAFFIC_ORDER, *extra(have_all)),
+        have_all,
+    )
     return out
 
 
