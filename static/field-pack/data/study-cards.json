@@ -3422,5 +3422,163 @@
         ]
       }
     }
+  },
+  "sumatran-tiger": {
+    "id": "sumatran-tiger",
+    "source": "https://en.wikipedia.org/wiki/Sumatran_tiger",
+    "source_note": "Facts from Wikipedia, Sumatran tiger.",
+    "talk_about": [
+      "Wild Sumatran tigers live on one island. How is that different from tigers people picture across all of Asia?",
+      "This cat hunts in forest, not open grassland like a lion. What would change if it lived on a savannah?",
+      "Sumatran tigers spend most of their time alone. How is that different from a lion pride?"
+    ],
+    "push_further": [
+      "Sumatra is a big island, but it is still an island. How might that shape a tiger’s life?",
+      "Bali and Java lost their wild tigers. What might that mean for the last Sunda island tiger?",
+      "Zoos care for Sumatran tigers. What job could a zoo do without locking one status letter?"
+    ],
+    "levels": {
+      "easy": {
+        "teach": [
+          "Wild Sumatran tigers live only on the island of Sumatra.",
+          "They are among the smallest living tigers.",
+          "Their stripes are extra busy, with little spots between the stripes.",
+          "They hunt in forest, not open grassland like lions.",
+          "They eat meat — deer, wild pigs, and other forest prey."
+        ],
+        "questions": [
+          {
+            "slot": 1,
+            "id": "sumatra-only",
+            "title": "Sumatra only",
+            "stem": "Where do wild Sumatran tigers live?",
+            "choices": [
+              "All across Asia",
+              "Only on the island of Sumatra",
+              "Only in African forests"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says the Sumatran tiger lives on the Indonesian island of Sumatra — not all of Asia."
+          },
+          {
+            "slot": 2,
+            "id": "smallest",
+            "title": "Smallest living tiger",
+            "stem": "How does a Sumatran tiger’s size compare with other living tigers?",
+            "choices": [
+              "It is among the smallest living tigers",
+              "It is the biggest cat on Earth",
+              "It is as big as an African elephant"
+            ],
+            "correct": "A",
+            "why": "Wikipedia calls the Sumatran tiger one of the smallest tigers. We do not lock one weight."
+          },
+          {
+            "slot": 3,
+            "id": "busy-stripes",
+            "title": "Busy stripes",
+            "stem": "What is special about a Sumatran tiger’s stripes?",
+            "choices": [
+              "They are fewer than on any other tiger",
+              "They are denser, with little spots between the stripes",
+              "They are painted on at the zoo"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says Sumatran tigers have more stripes than other tigers, and lines of small dark spots sit between the regular stripes."
+          },
+          {
+            "slot": 4,
+            "id": "forest",
+            "title": "Forest cat",
+            "stem": "What kind of place do Sumatran tigers prefer?",
+            "choices": [
+              "Open grassland like a lion’s savannah",
+              "Forest with cover, not open grassland",
+              "Sandy desert with no trees"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says they strongly prefer forest with dense cover. They are not open-grassland cats like lions."
+          },
+          {
+            "slot": 5,
+            "id": "meat",
+            "title": "Meat hunter",
+            "stem": "What do wild Sumatran tigers hunt?",
+            "choices": [
+              "Grass and leaves",
+              "Deer, wild pigs, and other forest prey",
+              "Only zoo snacks"
+            ],
+            "correct": "B",
+            "why": "Wikipedia lists forest prey such as sambar deer, muntjac, and wild pigs (banded pigs)."
+          },
+          {
+            "slot": 6,
+            "id": "alone",
+            "title": "Mostly alone",
+            "stem": "How do Sumatran tigers usually live?",
+            "choices": [
+              "In a big pride like lions",
+              "Mostly alone, not in a lion-style pride",
+              "In huge flocks that never split up"
+            ],
+            "correct": "B",
+            "why": "Wikipedia’s Tiger page says a tiger lives a mostly solitary life — mostly alone, not pride life like lions."
+          },
+          {
+            "slot": 7,
+            "id": "cub",
+            "title": "Cub",
+            "stem": "What do you call a baby Sumatran tiger?",
+            "choices": [
+              "A calf",
+              "A cub",
+              "A chick"
+            ],
+            "correct": "B",
+            "why": "A baby tiger is a cub — the same word used for a baby lion."
+          },
+          {
+            "slot": 8,
+            "id": "ruff",
+            "title": "Male ruff",
+            "stem": "What extra fur can a male Sumatran tiger show?",
+            "choices": [
+              "A cheek and neck ruff",
+              "A peacock tail",
+              "A long horse mane down the back"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says males have a prominent ruff, and it is especially marked in the Sumatran tiger."
+          },
+          {
+            "slot": 9,
+            "id": "last-sunda",
+            "title": "Last Sunda tiger",
+            "stem": "Why is the Sumatran tiger called the last Sunda island tiger?",
+            "choices": [
+              "Tigers never lived on any other island",
+              "Bali and Javan tigers are gone, so Sumatra is the last of those islands",
+              "Every island in Asia still has wild tigers"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says it is the only surviving tiger population in the Sunda Islands after the Bali and Javan tigers went extinct."
+          },
+          {
+            "slot": 10,
+            "id": "water-myth",
+            "title": "Myth buster — water",
+            "stem": "Are Sumatran tigers scared of water, like a cartoon house cat?",
+            "choices": [
+              "Yes — they never get wet",
+              "No — tigers are strong swimmers",
+              "They can only walk on frozen ice"
+            ],
+            "correct": "B",
+            "why": "Wikipedia’s Tiger page says the tiger is a powerful swimmer and readily uses water, especially on hot days — not a water-scared cartoon cat."
+          }
+        ]
+      }
+    }
   }
 }
