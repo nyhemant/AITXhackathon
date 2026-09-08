@@ -183,6 +183,7 @@ class CheetahEasyStudyCardTests(unittest.TestCase):
                 "ring-tailed-lemur",
                 "ostrich",
                 "warthog",
+                "shark",
             ),
         )
         self.assertEqual(shipped_levels_for("cheetah"), ("easy", "hard", "zoologist"))

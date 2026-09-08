@@ -572,6 +572,26 @@ often fewer years in the wild than in care.
 Soften contested numbers and treat IUCN letters as
 snapshots. Do not redo JR or PR themes.
 
+Facts for shark Junior Ranger (easy) are Wikipedia-backed:
+https://en.wikipedia.org/wiki/Shark
+This is the group shark card, not whale-shark. Claims must
+hold for most sharks. Skeleton is cartilage, not bone.
+Skin has tiny tooth-like scales (dermal denticles) and can
+feel rough. Most live in the ocean — found in all seas;
+most kinds do not live in fresh water. Most eat meat or
+fish (diets differ by kind). They breathe with a row of
+gill slits on each side of the head (about five to seven;
+soften the exact count). Strong swishy body and fins for
+swimming. Teeth grow in the gums and get replaced again
+and again. They can detect weak electric fields from other
+animals (kid wording — ampullae mechanism later). Soft
+care: fishing and finning can hurt many kinds; status
+differs by kind (no IUCN letter). Myth: movies make sharks
+look like man-eaters — of hundreds of kinds, most are not
+dangerous to people. Reserve for Park Ranger / Zoologist:
+ampullae mechanism, oil liver, ram ventilation,
+reproduction modes, and species-level status.
+
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
 zoologist. Visible copy uses LEVEL_DISPLAY_NAMES only — no age badges,
@@ -613,6 +633,7 @@ WIKI_GIANT_PANDA = "https://en.wikipedia.org/wiki/Giant_panda"
 WIKI_RING_TAILED_LEMUR = "https://en.wikipedia.org/wiki/Ring-tailed_lemur"
 WIKI_OSTRICH = "https://en.wikipedia.org/wiki/Ostrich"
 WIKI_WARTHOG = "https://en.wikipedia.org/wiki/Common_warthog"
+WIKI_SHARK = "https://en.wikipedia.org/wiki/Shark"
 
 LETTERS = ("A", "B", "C")
 STUDY_SLOTS = 10
@@ -687,7 +708,8 @@ LEVEL_DISPLAY_NAMES = {
 # Sumatran tiger, western lowland gorilla, cheetah, red panda,
 # koala, chimpanzee, orangutan, giant panda, and
 # ring-tailed lemur, ostrich, and warthog ship Junior
-# Ranger + Park Ranger + Zoologist.
+# Ranger + Park Ranger + Zoologist. Shark ships Junior
+# Ranger only.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -723,6 +745,7 @@ STUDY_NEIGHBORS = {
     "ring-tailed-lemur": ("orangutan", "chimpanzee"),
     "ostrich": ("caribbean-flamingo", "african-penguin"),
     "warthog": ("zebra", "ostrich"),
+    "shark": ("african-penguin", "caribbean-flamingo"),
 }
 
 STUDY_CARD_TITLES = {
@@ -745,6 +768,7 @@ STUDY_CARD_TITLES = {
     "ring-tailed-lemur": "Ring-tailed lemur",
     "ostrich": "Ostrich",
     "warthog": "Warthog",
+    "shark": "Shark",
 }
 
 # Shared answers-side deepen (Claude sample). Not scored. Future animals reuse keys.
@@ -937,6 +961,16 @@ PUSH_FURTHER_WARTHOG = (
     "A subspecies is a local kind within a species. What does that mean for warthogs across Africa?",
     "Allosucking is when a sow nurses a foster piglet. How could that help a sounder?",
     "Warthogs use overlapping home ranges, not strict territories. What’s the difference?",
+)
+TALK_ABOUT_SHARK = (
+    "A shark’s “bones” are cartilage, not hard bone. What would that feel like compared with yours?",
+    "Movies make sharks look like monsters. Why might most kinds leave people alone?",
+    "Find the gill slits on the side of the head. How do they help a shark breathe?",
+)
+PUSH_FURTHER_SHARK = (
+    "Tiny tooth-like scales cover the skin. How might those scales help a shark slip through water?",
+    "Sharks grow new teeth again and again. Why might a hunter need a fresh set?",
+    "Curious about the gentle giant? Open the separate whale-shark card and see how that kind is different.",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -8974,6 +9008,157 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia says wild warthogs often live fewer years than animals in care. Exact ages stay soft.",
+                    },
+                ],
+            },
+        },
+    },
+    "shark": {
+        "id": "shark",
+        "source": WIKI_SHARK,
+        "source_note": "Facts from Wikipedia, Shark.",
+        "talk_about": list(TALK_ABOUT_SHARK),
+        "push_further": list(PUSH_FURTHER_SHARK),
+        "levels": {
+            "easy": {
+                # Teaching-first: same front as the quiz. Hard later may hide these.
+                "teach": [
+                    "Sharks have a skeleton made of cartilage, not bone.",
+                    "Skin has tiny tooth-like scales (dermal denticles) and can feel rough.",
+                    "Most sharks live in the ocean and eat meat or fish.",
+                    "They breathe with a row of gill slits on each side of the head.",
+                    "Most kinds of sharks are not dangerous to people.",
+                ],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "cartilage-skeleton",
+                        "title": "Cartilage skeleton",
+                        "stem": "What are a shark’s “bones” made of?",
+                        "choices": [
+                            "Soft cartilage, not hard bone",
+                            "Solid bone like a dog’s skeleton",
+                            "Only seashell",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says sharks have a skeleton made of cartilage, not bone. Cartilage is strong but bendy — not the hard bone in a dog or a person.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "sandpaper-skin",
+                        "title": "Sandpaper skin",
+                        "stem": "Why can shark skin feel rough, like sandpaper?",
+                        "choices": [
+                            "Because it is covered in dry fur",
+                            "Tiny tooth-like scales, called dermal denticles, cover the skin",
+                            "Because sharks wear a coat of sand",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says shark skin is covered in tiny tooth-like scales called dermal denticles. They can make the skin feel rough.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "ocean-home",
+                        "title": "Ocean home",
+                        "stem": "Where do most sharks live?",
+                        "choices": [
+                            "Only in rivers and lakes",
+                            "Only in desert puddles",
+                            "In the ocean — they are found in all seas; most kinds do not live in fresh water",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says sharks live in all the world’s seas. A few kinds can enter rivers, but most do not live in fresh water.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "meat-or-fish",
+                        "title": "Meat or fish",
+                        "stem": "What do most sharks eat?",
+                        "choices": [
+                            "Meat or fish — though diets differ by kind",
+                            "Only seaweed",
+                            "Only fruit that falls in the water",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says most sharks eat meat or fish. A few kinds filter tiny food from the water, so diets differ by kind.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "gill-slits",
+                        "title": "Gill slits",
+                        "stem": "How do sharks breathe?",
+                        "choices": [
+                            "Through lungs like a dog",
+                            "With a row of gill slits on each side of the head — often about five to seven",
+                            "By holding their breath all day",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says sharks breathe with gills. They have a row of gill slits on each side of the head — often about five to seven.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "swishy-swimmers",
+                        "title": "Swishy swimmers",
+                        "stem": "How is a shark’s body built for moving?",
+                        "choices": [
+                            "Long legs for running on land",
+                            "Wings for flying over the waves",
+                            "A strong swishy body and fins for swimming",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia describes sharks as strong swimmers with a powerful body and fins. The Field Trip Kit card calls that a strong swishy body.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "new-teeth",
+                        "title": "New teeth",
+                        "stem": "What happens to a shark’s teeth over time?",
+                        "choices": [
+                            "New teeth grow in the gums and get replaced again and again",
+                            "A shark gets one set of teeth and never grows more",
+                            "Teeth fall out and never come back",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says sharks grow teeth in the gums and replace them again and again throughout life.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "electric-sense",
+                        "title": "Electric sense",
+                        "stem": "What extra sense can sharks use to find other animals?",
+                        "choices": [
+                            "They can read books underwater",
+                            "They can detect weak electric fields from other animals",
+                            "They can smell only dry land",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says sharks can sense the weak electric fields made by other animals. How those tiny sensors work comes later.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "soft-care",
+                        "title": "Soft care",
+                        "stem": "How are sharks doing in the wild today?",
+                        "choices": [
+                            "Every kind of shark is completely safe forever",
+                            "Sharks are only in trouble in one tiny pond",
+                            "Fishing and finning can hurt many kinds; how they are doing differs by kind",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says fishing and finning can hurt many kinds of sharks. How each kind is doing is different — we do not lock one status letter.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "movie-myth",
+                        "title": "Myth buster",
+                        "stem": "Are most sharks the movie “man-eaters” people imagine?",
+                        "choices": [
+                            "No — of hundreds of kinds, most are not dangerous to people",
+                            "Yes — every shark hunts people on purpose",
+                            "Sharks are not real; they exist only in movies",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says movies make sharks look like man-eaters, but of hundreds of kinds, most are not dangerous to people.",
                     },
                 ],
             },
