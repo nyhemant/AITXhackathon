@@ -5568,14 +5568,14 @@
     "source": "https://en.wikipedia.org/wiki/Chimpanzee",
     "source_note": "Facts from Wikipedia, Chimpanzee.",
     "talk_about": [
-      "A chimpanzee is a great ape, not a monkey. What clue would you look for at the zoo?",
-      "Chimpanzees use sticks and stones as tools. What job would you watch them do?",
-      "Chimps sleep in a fresh tree nest. How is that different from sleeping on the ground?"
+      "Some chimps fish for termites; others crack nuts. What’s different about those tools?",
+      "Why might chimps in one forest use different tool tricks than chimps somewhere else?",
+      "Chimps groom each other’s fur. How could that help a friendship?"
     ],
     "push_further": [
-      "A stick can become a termite tool. How do you think a chimp shapes it?",
-      "Chimpanzees live in groups, not alone. Why might a group help?",
-      "Jane Goodall watched chimps in the forest. What would you ask her?"
+      "Jane Goodall first saw chimps use tools. What do you think she noticed?",
+      "People and chimps can share some of the same germs. Why might that happen?",
+      "Scientists later use a word like Endangered. What do you think that grade means?"
     ],
     "levels": {
       "easy": {
@@ -5716,6 +5716,141 @@
             ],
             "correct": "A",
             "why": "Wikipedia places the chimpanzee among the great apes. People sometimes call them monkeys, but chimpanzees are apes — they have no tail."
+          }
+        ]
+      },
+      "hard": {
+        "teach": [],
+        "questions": [
+          {
+            "slot": 1,
+            "id": "termite-fishing",
+            "title": "Termite fishing",
+            "stem": "How do chimpanzees “fish” for termites?",
+            "choices": [
+              "They strip a stick and poke it into a mound so termites cling on for a snack",
+              "They wait for termites to jump into their mouths",
+              "They buy termites at a grocery store"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says chimpanzees modify sticks and poke them into termite mounds. Termites cling to the tool, and the chimpanzee eats them."
+          },
+          {
+            "slot": 2,
+            "id": "stone-nutcrack",
+            "title": "Stone nutcrack",
+            "stem": "How do some chimpanzees crack hard nuts?",
+            "choices": [
+              "They freeze the nuts in a snowbank",
+              "In some regions they use a stone hammer on a root or rock “anvil”",
+              "They only use metal hammers from a hardware store"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says some chimpanzee communities crack hard nuts with a stone hammer on a root or rock used as an anvil. Not every group does this."
+          },
+          {
+            "slot": 3,
+            "id": "local-tool-culture",
+            "title": "Local tool culture",
+            "stem": "Why might chimps in one place use different tool tricks than chimps somewhere else?",
+            "choices": [
+              "Every chimp on Earth is born knowing the exact same toolkit",
+              "A zoo keeper programs one tool into every chimp",
+              "Different communities use different tool tricks — skills kids learn from others"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says chimpanzee groups differ in how they use tools. Youngsters pick up local tricks by watching others — a soft kind of “culture.” We do not lock one list of every tradition."
+          },
+          {
+            "slot": 4,
+            "id": "boundary-patrols",
+            "title": "Boundary patrols",
+            "stem": "What do adult males often do at the edges of their home range?",
+            "choices": [
+              "They walk the edges and can clash hard with neighbouring groups",
+              "They build a fence with bricks",
+              "They leave forever and never come back"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says chimpanzee communities are territorial. Adult males often walk the edges of the home range and may clash with neighbours. We keep the clash soft here."
+          },
+          {
+            "slot": 5,
+            "id": "threats-soft",
+            "title": "Threats",
+            "stem": "What puts wild chimpanzees under pressure today?",
+            "choices": [
+              "Too many extra weekends on the calendar",
+              "Habitat loss, hunting for bushmeat, and disease",
+              "A shortage of snow in Antarctica"
+            ],
+            "correct": "B",
+            "why": "Wikipedia lists habitat loss, hunting for bushmeat, and disease among the pressures on wild chimpanzees. We do not lock a status letter — that grade is a snapshot and can change."
+          },
+          {
+            "slot": 6,
+            "id": "long-childhood",
+            "title": "Long childhood",
+            "stem": "How do young chimpanzees grow up with mom?",
+            "choices": [
+              "They live alone from the first day",
+              "They fly south for the winter",
+              "Infants stay close for years — they often ride on her back and keep a bond long after they stop nursing"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says infants stay close to their mothers for years. They cling and later ride on her back, and the bond can last long after weaning. We keep the exact ages soft."
+          },
+          {
+            "slot": 7,
+            "id": "grooming-friends",
+            "title": "Grooming friends",
+            "stem": "Why do chimpanzees groom each other?",
+            "choices": [
+              "Mutual grooming helps build and keep friendships and alliances",
+              "They are required to cut each other’s hair for a contest",
+              "They never touch other chimps"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says social grooming is an important part of chimpanzee life. Partners pick through fur, and that care helps build and keep friendships and alliances."
+          },
+          {
+            "slot": 8,
+            "id": "foot-grasp",
+            "title": "Foot grasp",
+            "stem": "How does a chimpanzee’s big toe help it in the trees?",
+            "choices": [
+              "The big toe is fused into a hoof like a horse",
+              "The big toe is opposable, so they can grip branches with their feet too",
+              "Chimps have no toes at all"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says a chimpanzee’s big toe is opposable, like a thumb. That lets them grasp branches with their feet as well as their hands."
+          },
+          {
+            "slot": 9,
+            "id": "meat-share",
+            "title": "Meat share",
+            "stem": "What do chimpanzees sometimes do after they catch a small mammal?",
+            "choices": [
+              "They always bury the meat and never eat it",
+              "They only feed meat to fish",
+              "They sometimes share the meat with others in the group"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says chimpanzees sometimes hunt small mammals and share meat with others in the group. Who does which hunting job is a later story."
+          },
+          {
+            "slot": 10,
+            "id": "power-muscles",
+            "title": "Power muscles",
+            "stem": "How do chimpanzee climbing muscles compare with a same-size person?",
+            "choices": [
+              "Pound-for-pound they are very strong climbers and swingers compared with a same-size human",
+              "They are always weaker than a house cat",
+              "They have no arm muscles at all"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says chimpanzees are much stronger, pound-for-pound, than humans of a similar size — especially for climbing and swinging. Exact fibre counts and strength multiples are contested, so we keep that science soft."
           }
         ]
       }
