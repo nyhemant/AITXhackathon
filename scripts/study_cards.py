@@ -202,6 +202,25 @@ name Gorilla gorilla gorilla, logging roads that enable
 deeper bushmeat hunting, and Congo swamp-forest strongholds.
 Soften contested numbers. Do not redo JR or PR themes.
 
+Facts for cheetah Junior Ranger (easy only) are
+Wikipedia-backed:
+https://en.wikipedia.org/wiki/Cheetah
+Species framing is the cheetah (Acinonyx jubatus).
+JR stays kid-simple “cheetah.” Soften exact mph and
+IUCN letters. Fastest land animal — built for short
+sprints. Solid black spots, not leopard rosettes.
+Black tear marks run from each eye toward the nose.
+Chirps and purrs — no lion-like roar. Home is mostly
+African grassland / savannah. Slim body, long legs,
+and a flexible spine. The long tail helps steer and
+balance in a chase. Meat hunter: medium antelopes
+and gazelles. Cubs wear a fluffy grey back cape that
+helps them hide. Myth: they are sprinters, not
+marathon runners. Reserve for later: claws detail,
+coalitions, genetic bottleneck, king cheetah,
+Asiatic status, and Acinonyx taxonomy. Do not add
+Park Ranger or Zoologist yet.
+
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
 zoologist. Visible copy uses LEVEL_DISPLAY_NAMES only — no age badges,
@@ -234,6 +253,7 @@ WIKI_TIGER = "https://en.wikipedia.org/wiki/Tiger"
 WIKI_WESTERN_LOWLAND_GORILLA = (
     "https://en.wikipedia.org/wiki/Western_lowland_gorilla"
 )
+WIKI_CHEETAH = "https://en.wikipedia.org/wiki/Cheetah"
 
 LETTERS = ("A", "B", "C")
 STUDY_SLOTS = 10
@@ -306,7 +326,8 @@ LEVEL_DISPLAY_NAMES = {
 # Lion, reticulated-giraffe, African elephant, African penguin,
 # Caribbean flamingo, Galápagos tortoise, zebra, Nile hippo,
 # Sumatran tiger, and western lowland gorilla ship Junior Ranger
-# + Park Ranger + Zoologist.
+# + Park Ranger + Zoologist. Cheetah ships Junior Ranger only
+# (no Park Ranger or Zoologist yet).
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -333,6 +354,7 @@ STUDY_NEIGHBORS = {
     "nile-hippo": ("african-elephant", "zebra"),
     "sumatran-tiger": ("african-lion",),
     "western-lowland-gorilla": ("african-elephant",),
+    "cheetah": ("african-lion", "zebra"),
 }
 
 STUDY_CARD_TITLES = {
@@ -346,6 +368,7 @@ STUDY_CARD_TITLES = {
     "nile-hippo": "Nile hippo",
     "sumatran-tiger": "Sumatran tiger",
     "western-lowland-gorilla": "Western lowland gorilla",
+    "cheetah": "Cheetah",
 }
 
 # Shared answers-side deepen (Claude sample). Not scored. Future animals reuse keys.
@@ -448,6 +471,16 @@ PUSH_FURTHER_GORILLA = (
     "A threat letter on a list can change. Why treat it as a snapshot, not a forever grade?",
     "Gorillas eat plants and build a new nest each night. How is that different from a King Kong movie?",
     "Find one more ape on your zoo map. How does it use its hands?",
+)
+TALK_ABOUT_CHEETAH = (
+    "A cheetah has solid black spots. A leopard has rosettes. What difference do you notice?",
+    "Black lines run from a cheetah’s eyes toward its nose. What might those tear marks help with?",
+    "Cheetahs chirp and purr instead of roaring. What other zoo cat has a famous roar?",
+)
+PUSH_FURTHER_CHEETAH = (
+    "Cheetah claws stay out more than a house cat’s. What would you ask a keeper about that?",
+    "Some brother cheetahs hunt together. Why might a team help on the plains?",
+    "Lions and hyenas often steal a cheetah’s meal. How could a cheetah still get enough to eat?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -4629,6 +4662,157 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "B",
                         "why": "Wikipedia says isolated swampy forests in the Republic of the Congo hold a large share of the remaining wild animals. Later surveys found many more in those swamps. We do not lock one head-count.",
+                    },
+                ],
+            },
+        },
+    },
+    "cheetah": {
+        "id": "cheetah",
+        "source": WIKI_CHEETAH,
+        "source_note": "Facts from Wikipedia, Cheetah.",
+        "talk_about": list(TALK_ABOUT_CHEETAH),
+        "push_further": list(PUSH_FURTHER_CHEETAH),
+        "levels": {
+            "easy": {
+                # Teaching-first: same front as the quiz. Hard later may hide these.
+                "teach": [
+                    "They are the fastest animal on land — built for short sprints.",
+                    "They have solid black spots, not the rosettes a leopard has.",
+                    "Black tear marks run from each eye toward the nose.",
+                    "They chirp and purr — they do not roar like a lion.",
+                    "They live mostly on African grassland / savannah.",
+                ],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "fastest",
+                        "title": "Fastest on land",
+                        "stem": "What is a cheetah famous for?",
+                        "choices": [
+                            "Being the fastest animal on land",
+                            "Being the slowest animal on land",
+                            "Being the only animal that can fly",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia calls the cheetah the fastest land animal. We do not lock one exact speed.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "spots",
+                        "title": "Solid spots",
+                        "stem": "What kind of marks does a cheetah’s coat have?",
+                        "choices": [
+                            "Leopard-style rosettes with rings",
+                            "Solid black spots — not leopard rosettes",
+                            "No marks at all — a plain gold coat",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says a cheetah’s fur is marked with evenly spaced, solid black spots. A leopard has rosettes instead.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "tear-marks",
+                        "title": "Tear marks",
+                        "stem": "What are the black lines on a cheetah’s face?",
+                        "choices": [
+                            "Paint added at the zoo",
+                            "Stripes that cover the whole body",
+                            "Tear marks — black lines from each eye toward the nose",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia describes black tear-like facial streaks from the corners of the eyes down the side of the nose.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "no-roar",
+                        "title": "No roar",
+                        "stem": "What sounds is a cheetah known for?",
+                        "choices": [
+                            "Chirps and purrs — not a lion-like roar",
+                            "A deep roar that shakes the whole savannah",
+                            "A moo like a cow",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia lists bird-like chirps and a loud purr. Cheetahs are not known for a lion-like roar.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "savannah",
+                        "title": "Savannah home",
+                        "stem": "Where do most wild cheetahs live?",
+                        "choices": [
+                            "Only on frozen ice",
+                            "Mostly African grassland / savannah",
+                            "Only deep under the ocean",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says cheetahs in eastern and southern Africa occur mostly in savannas. They seldom live in tropical forests.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "sprint-body",
+                        "title": "Sprint body",
+                        "stem": "How is a cheetah’s body built for a chase?",
+                        "choices": [
+                            "Short legs, a stiff back, and a heavy lion-like body",
+                            "Wings and fins instead of legs",
+                            "A slim body, long legs, and a flexible spine",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says the cheetah evolved for speed, with powerful hindlimb muscles, long limbs, and a flexible spine. Its slim form is built for running.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "steering-tail",
+                        "title": "Steering tail",
+                        "stem": "How does a cheetah’s long tail help in a chase?",
+                        "choices": [
+                            "It helps the cheetah balance and steer",
+                            "It stores water like a camel hump",
+                            "It is used to fly over the grass",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says the long tail works like a rudder. It helps the cheetah turn and stay balanced while chasing prey.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "meat-hunter",
+                        "title": "Meat hunter",
+                        "stem": "What do wild cheetahs mostly hunt?",
+                        "choices": [
+                            "Only leaves and grass",
+                            "Medium antelopes and gazelles",
+                            "Only fish in deep rivers",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says cheetahs prefer medium-sized hooved animals such as impala, springbok, and Thomson’s gazelles.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "cub-cape",
+                        "title": "Cub cape",
+                        "stem": "What special fur do cheetah cubs have on their backs?",
+                        "choices": [
+                            "A hard shell like a tortoise",
+                            "Bright blue feathers",
+                            "A fluffy grey cape that helps them hide",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says a cub’s nape, shoulders, and back are thickly covered with long bluish-grey hair called a mantle. That fluffy cape can help the cub stay hidden.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "marathon-myth",
+                        "title": "Myth buster — marathon",
+                        "stem": "Do cheetahs run fast for a long time, like a marathon?",
+                        "choices": [
+                            "No — they sprint in short bursts, not long runs",
+                            "Yes — they jog for hours without stopping",
+                            "They only hop slowly and never sprint",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia describes short, high-speed chases — often under a minute — not long marathon runs. After a hunt, a cheetah needs to rest.",
                     },
                 ],
             },

@@ -46,6 +46,7 @@ TRAFFIC_IDS = (
     "sumatran-tiger",
     "western-lowland-gorilla",
 )
+JR_ONLY_IDS = ("cheetah",)
 
 
 def _decks():
@@ -57,7 +58,8 @@ def _decks():
 
 class StudyCardAnswerKeyTests(unittest.TestCase):
     def test_traffic_set_is_ten_animals_times_three_levels(self):
-        self.assertEqual(tuple(study_card_ids()), TRAFFIC_IDS)
+        self.assertEqual(tuple(study_card_ids()), TRAFFIC_IDS + JR_ONLY_IDS)
+        self.assertEqual(shipped_levels_for("cheetah"), ("easy",))
         decks = list(_decks())
         self.assertEqual(len(decks), 30)
         for card_id, level, deck in decks:
