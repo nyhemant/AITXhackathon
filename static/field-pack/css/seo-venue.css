@@ -1786,6 +1786,25 @@ a.seo-map-card:focus-visible {
   border-radius: 16px;
   border: 1.5px solid rgba(15, 92, 92, 0.14);
 }
+.card-page a.card-page-photo-link {
+  display: block;
+  line-height: 0;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+.card-page a.card-page-photo-link:focus-visible {
+  outline: 2px solid #0f5c5c;
+  outline-offset: 3px;
+  border-radius: 16px;
+}
+@media screen and (min-width: 960px) {
+  .card-page a.card-page-photo-link {
+    max-width: 34rem;
+    width: 100%;
+    align-self: center;
+  }
+}
 .card-page-emoji {
   font-size: 3.5rem;
   margin: 0.4rem 0;

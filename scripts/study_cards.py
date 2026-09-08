@@ -133,6 +133,7 @@ WIKI_PLAINS_ZEBRA = "https://en.wikipedia.org/wiki/Plains_zebra"
 LETTERS = ("A", "B", "C")
 STUDY_SLOTS = 10
 DEFAULT_LEVEL = "easy"
+STUDY_QUIZ_H2 = "Quiz"
 
 # Product display names — one map for screen, print, and later pickers.
 LEVEL_DISPLAY_NAMES = {
@@ -3142,7 +3143,7 @@ def write_study_artifacts() -> None:
 
 
 def study_deepen_html(deck: dict, *, print_mode: bool = False, hidden: bool = False) -> str:
-    """Talk about it + Push further. Screen answers area or print page 2."""
+    """Talk about it + Push further. Print page 2 (or legacy hidden screen block)."""
     talk = list(deck.get("talk_about") or [])
     push = list(deck.get("push_further") or [])
     if not talk and not push:
@@ -3163,6 +3164,36 @@ def study_deepen_html(deck: dict, *, print_mode: bool = False, hidden: bool = Fa
         )
     hide = " hidden" if hidden and not print_mode else ""
     return f'<aside class="{cls}"{hide} aria-label="Go further">{"".join(parts)}</aside>'
+
+
+def study_explore_html(deck: dict) -> str:
+    """Always-available collapsed Explore more: Talk about it + Push further."""
+    talk = list(deck.get("talk_about") or [])
+    push = list(deck.get("push_further") or [])
+    if not talk and not push:
+        return ""
+    parts: list[str] = []
+    for title, lines in (("Talk about it", talk), ("Push further", push)):
+        if not lines:
+            continue
+        items = "".join(f"<li>{_esc(line)}</li>" for line in lines)
+        parts.append(
+            f'<div class="study-deepen-col">'
+            f'<p class="study-deepen-kicker">{title}</p>'
+            f"<ol>{items}</ol>"
+            f"</div>"
+        )
+    return (
+        f'<details class="study-explore no-print">'
+        f'<summary class="study-explore-kicker">Explore more '
+        f'<span class="study-explore-hint">— tap to open</span></summary>'
+        f'<div class="study-explore-body">{"".join(parts)}</div>'
+        f"</details>"
+    )
+
+
+def _score_html(n: int) -> str:
+    return f'<p class="study-score">Score <span data-study-correct>0</span>/{n}</p>'
 
 
 def study_try_next_ids(card_id: str, n: int = 3) -> list[str]:
@@ -3239,18 +3270,16 @@ def _level_picker_html(card_id: str, current: str, *, placement: str = "top") ->
     )
 
 
-def study_talk_html(deck: dict, *, heading: str = "Talk") -> str:
+def study_talk_html(deck: dict, *, heading: str = STUDY_QUIZ_H2) -> str:
     """Screen: optional teach strip + 10 MCQs + reveal/why. Picker when 2+ levels."""
     level = deck.get("level") or DEFAULT_LEVEL
     card_id = deck.get("id") or ""
     picker = _level_picker_html(str(card_id), str(level))
-    foot = ""
+    n = STUDY_SLOTS
+    foot_bits = [_score_html(n)]
     if "study-level-picker" in picker:
-        foot = (
-            f'<div class="study-foot no-print">'
-            f"{_level_picker_html(str(card_id), str(level), placement='bottom')}"
-            f"</div>"
-        )
+        foot_bits.append(_level_picker_html(str(card_id), str(level), placement="bottom"))
+    foot = f'<div class="study-foot no-print">{"".join(foot_bits)}</div>'
     teach_items = "".join(f"<li>{_esc(line)}</li>" for line in deck.get("teach") or [])
     teach = (
         f'<details class="study-teach">'
@@ -3261,7 +3290,7 @@ def study_talk_html(deck: dict, *, heading: str = "Talk") -> str:
         if teach_items
         else ""
     )
-    deepen = study_deepen_html(deck, hidden=True)
+    explore = study_explore_html(deck)
     cards: list[str] = []
     for q in deck.get("questions") or []:
         choices = []
@@ -3286,7 +3315,6 @@ def study_talk_html(deck: dict, *, heading: str = "Talk") -> str:
         )
     source = _esc(deck.get("source_note") or "")
     source_html = f'<p class="study-source">{source}</p>' if source else ""
-    n = STUDY_SLOTS
     return (
         f'<section class="card-talk-pack card-study-pack" aria-label="{_esc(heading)}" '
         f'data-study-id="{_esc(deck.get("id") or "")}" data-study-level="{_esc(level)}">'
@@ -3296,12 +3324,12 @@ def study_talk_html(deck: dict, *, heading: str = "Talk") -> str:
         f"</div>"
         f"{teach}"
         f'<div class="study-toolbar no-print">'
-        f'<p class="study-score">Score <span data-study-correct>0</span>/{n}</p>'
+        f"{_score_html(n)}"
         f'<button type="button" class="btn btn-secondary" data-study-reveal>Show answers</button>'
         f"</div>"
         f'<div class="mission-grid study-grid">{"".join(cards)}</div>'
-        f"{deepen}"
         f"{source_html}"
+        f"{explore}"
         f"{foot}"
         f"</section>"
     )

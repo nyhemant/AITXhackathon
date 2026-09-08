@@ -14,10 +14,12 @@ from generate_bdo_seo import (  # noqa: E402
     STUDY_CARD_CSS_VER,
     STUDY_CARD_JS_VER,
     card_hero_links_html,
+    card_hero_photo_html,
     watch_links_html,
 )
 from study_cards import (  # noqa: E402
     STUDY_CARDS,
+    STUDY_QUIZ_H2,
     study_card_ids,
     study_talk_html,
     study_try_next_html,
@@ -61,9 +63,14 @@ class CardStudyUxTests(unittest.TestCase):
         self.assertEqual(html.count("study-level-picker-bottom"), 1)
         self.assertIn('aria-label="Study level"', html)
         self.assertIn('aria-label="Study level at the end"', html)
-        self.assertLess(html.find("study-level-picker"), html.find("study-deepen"))
+        self.assertLess(html.find("study-level-picker"), html.find("study-explore"))
         self.assertGreater(html.find("study-level-picker-bottom"), html.find("Push further"))
         self.assertIn('class="study-foot no-print"', html)
+        self.assertEqual(html.count('data-study-correct'), 2)
+        self.assertIn(f">{STUDY_QUIZ_H2}</h2>", html)
+        self.assertIn('aria-label="Quiz"', html)
+        self.assertIn("Explore more", html)
+        self.assertNotIn('<aside class="study-deepen"', html)
 
         page = (FP / "cards" / "galapagos-tortoise" / "index.html").read_text(encoding="utf-8")
         main = _main(page)
@@ -84,6 +91,51 @@ class CardStudyUxTests(unittest.TestCase):
         print_tpl = page.split('id="study-print-template">', 1)[1].split("</template>", 1)[0]
         self.assertNotIn("study-level-picker", print_tpl)
         self.assertNotIn("study-foot", print_tpl)
+        self.assertNotIn("study-explore", print_tpl)
+
+    def test_study_heading_is_quiz_with_bottom_score_and_explore_more(self):
+        deck = study_deck_for("galapagos-tortoise")
+        html = study_talk_html(deck)
+        self.assertEqual(STUDY_QUIZ_H2, "Quiz")
+        self.assertIn('aria-label="Quiz"', html)
+        self.assertIn(">Quiz</h2>", html)
+        self.assertIn("Talk about it", html)
+        self.assertIn('<details class="study-explore no-print">', html)
+        self.assertNotIn('<details class="study-explore no-print" open', html)
+        self.assertEqual(html.count("data-study-correct"), 2)
+        self.assertLess(html.find("study-toolbar"), html.find("study-grid"))
+        self.assertLess(html.find("study-grid"), html.find("study-explore"))
+        self.assertLess(html.find("study-explore"), html.find("study-foot"))
+        self.assertGreater(html.find("study-foot"), html.find('data-study-correct'))
+
+        js = STUDY_JS.read_text(encoding="utf-8")
+        self.assertIn("querySelectorAll(\"[data-study-correct]\")", js)
+        self.assertIn("function exploreHtml(", js)
+        self.assertNotIn("function deepenHtml(", js)
+        css = STUDY_CSS.read_text(encoding="utf-8")
+        self.assertIn(".card-page .card-study-pack .study-explore", css)
+        self.assertIn(".card-page .card-study-pack .study-foot", css)
+
+        for cid in ("galapagos-tortoise", "zebra", "african-lion"):
+            page = (FP / "cards" / cid / "index.html").read_text(encoding="utf-8")
+            main = _main(page)
+            with self.subTest(card=cid):
+                self.assertIn('aria-label="Quiz"', main)
+                self.assertIn(">Quiz</h2>", main)
+                self.assertEqual(main.count("data-study-correct"), 2)
+                self.assertIn("Explore more", main)
+                self.assertIn("Talk about it", main)
+                self.assertNotIn('<aside class="study-deepen"', main)
+                print_tpl = page.split('id="study-print-template">', 1)[1].split("</template>", 1)[0]
+                self.assertIn("Talk about it", print_tpl)
+                self.assertNotIn("Explore more", print_tpl)
+                self.assertNotIn("study-explore", print_tpl)
+
+        warthog = _main((FP / "cards" / "warthog" / "index.html").read_text(encoding="utf-8"))
+        self.assertIn('aria-label="Talk"', warthog)
+        self.assertIn(">Talk</h2>", warthog)
+        self.assertNotIn(">Quiz</h2>", warthog)
+        self.assertNotIn("study-explore", warthog)
 
     def test_level_switch_resets_and_scrolls(self):
         js = STUDY_JS.read_text(encoding="utf-8")
@@ -153,9 +205,9 @@ class CardStudyUxTests(unittest.TestCase):
         self.assertNotIn("card-try-next", koala)
 
     def test_photos_and_watch_live_share_hero_row(self):
-        self.assertEqual(CARD_SEO_CSS_VER, "34")
-        self.assertEqual(STUDY_CARD_JS_VER, "7")
-        self.assertEqual(STUDY_CARD_CSS_VER, "8")
+        self.assertEqual(CARD_SEO_CSS_VER, "35")
+        self.assertEqual(STUDY_CARD_JS_VER, "8")
+        self.assertEqual(STUDY_CARD_CSS_VER, "9")
         css = SEO_CSS.read_text(encoding="utf-8")
         self.assertIn(".card-page .card-hero-links", css)
         self.assertIn("display: contents", css)
@@ -193,8 +245,8 @@ class CardStudyUxTests(unittest.TestCase):
                 self.assertGreater(photos_at, hero_at)
                 self.assertGreater(watch_at, photos_at)
                 self.assertLess(watch_at, talk_at)
-                self.assertIn("study-card.js?v=7", html)
-                self.assertIn("study-card.css?v=8", html)
+                self.assertIn("study-card.js?v=8", html)
+                self.assertIn("study-card.css?v=9", html)
                 self.assertIn(f"seo-venue.css?v={CARD_SEO_CSS_VER}", html)
 
         warthog = _main((FP / "cards" / "warthog" / "index.html").read_text(encoding="utf-8"))
@@ -202,6 +254,66 @@ class CardStudyUxTests(unittest.TestCase):
         self.assertIn(">Photos</a>", warthog)
         self.assertNotIn("Watch Live", warthog)
         self.assertNotIn('class="seo-watch-row"', warthog)
+
+    def test_hero_photo_matches_watch_live_href(self):
+        href = "/field-pack/virtual-zoo/?from=card#habitat=zebra"
+        linked = card_hero_photo_html(
+            photo="/field-pack/photos/zebra.jpg?v=img2",
+            name="Zebra",
+            emoji="🦓",
+            pos_attr="",
+            watch_href=href,
+        )
+        self.assertIn('class="card-page-photo-link"', linked)
+        self.assertIn('aria-label="Watch Live: Zebra"', linked)
+        self.assertIn(f'href="{href}"', linked)
+        self.assertRegex(linked, r'<a class="card-page-photo-link"[^>]*>\s*<img class="card-page-photo"')
+
+        bare = card_hero_photo_html(
+            photo="/field-pack/photos/warthog.jpg?v=img2",
+            name="Warthog",
+            emoji="🐗",
+            pos_attr="",
+            watch_href="",
+        )
+        self.assertNotIn("<a ", bare)
+        self.assertNotIn("card-page-photo-link", bare)
+        self.assertIn('class="card-page-photo"', bare)
+        self.assertIn(
+            'aria-hidden="true"',
+            card_hero_photo_html(photo="", name="Zebra", emoji="🦓", watch_href=href),
+        )
+
+        css = SEO_CSS.read_text(encoding="utf-8")
+        self.assertIn(".card-page a.card-page-photo-link", css)
+        self.assertIn("cursor: pointer", css)
+        gen = SEO.read_text(encoding="utf-8")
+        self.assertIn("a.card-watch-live, a.card-page-photo-link", gen)
+
+        for cid in ("galapagos-tortoise", "zebra", "african-lion"):
+            html = (FP / "cards" / cid / "index.html").read_text(encoding="utf-8")
+            main = _main(html)
+            with self.subTest(card=cid):
+                self.assertIn('class="card-page-photo-link"', main)
+                photo_block = main.split('class="card-page-photo-link"', 1)[1].split("<h1>", 1)[0]
+                watch_block = main.split('class="seo-watch-row"', 1)[1].split("</p>", 1)[0]
+                photo_href = photo_block.split('href="', 1)[1].split('"', 1)[0]
+                watch_href = watch_block.split('href="', 1)[1].split('"', 1)[0]
+                self.assertEqual(photo_href, watch_href)
+                self.assertIn("from=card", photo_href)
+                self.assertIn("#habitat=", photo_href)
+                self.assertIn(f'aria-label="Watch Live:', main)
+                print_tpl = html.split('id="study-print-template">', 1)[1].split("</template>", 1)[0]
+                self.assertNotIn("card-page-photo-link", print_tpl)
+
+        warthog = _main((FP / "cards" / "warthog" / "index.html").read_text(encoding="utf-8"))
+        self.assertNotIn("card-page-photo-link", warthog)
+        self.assertIn('class="card-page-photo"', warthog)
+        self.assertLess(warthog.find("card-page-photo"), warthog.find("<h1>"))
+
+        dino = _main((FP / "cards" / "sci-dinosaur" / "index.html").read_text(encoding="utf-8"))
+        self.assertNotIn("card-page-photo-link", dino)
+        self.assertNotIn("Watch Live", dino)
 
 
 if __name__ == "__main__":
