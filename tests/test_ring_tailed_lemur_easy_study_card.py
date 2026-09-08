@@ -1,4 +1,4 @@
-"""Ring-tailed lemur Easy study-card: Junior Ranger teach + 10 MCQs (Park Ranger is a sibling level)."""
+"""Ring-tailed lemur Easy study-card: Junior Ranger teach + 10 MCQs (Park Ranger + Zoologist siblings)."""
 
 from __future__ import annotations
 
@@ -195,7 +195,7 @@ def _main(html: str) -> str:
 
 
 class RingTailedLemurEasyStudyCardTests(unittest.TestCase):
-    def test_deck_is_junior_ranger_with_park_ranger(self):
+    def test_deck_is_junior_ranger_with_park_ranger_and_zoologist(self):
         self.assertIn("ring-tailed-lemur", study_card_ids())
         self.assertEqual(
             study_card_ids(),
@@ -219,9 +219,9 @@ class RingTailedLemurEasyStudyCardTests(unittest.TestCase):
                 "ring-tailed-lemur",
             ),
         )
-        self.assertEqual(shipped_levels_for("ring-tailed-lemur"), ("easy", "hard"))
+        self.assertEqual(shipped_levels_for("ring-tailed-lemur"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("ring-tailed-lemur", "hard"))
-        self.assertIsNone(study_deck_for("ring-tailed-lemur", "zoologist"))
+        self.assertIsNotNone(study_deck_for("ring-tailed-lemur", "zoologist"))
         deck = study_deck_for("ring-tailed-lemur")
         self.assertIsNotNone(deck)
         self.assertEqual(deck["id"], "ring-tailed-lemur")
@@ -389,11 +389,11 @@ class RingTailedLemurEasyStudyCardTests(unittest.TestCase):
         visible = _text(html)
         self.assertIn("Junior Ranger", visible)
         self.assertIn("Park Ranger", visible)
-        self.assertNotIn("Zoologist", visible)
+        self.assertIn("Zoologist", visible)
         self.assertIn('class="study-level-picker"', html)
         self.assertIn('data-study-pick="easy"', html)
         self.assertIn('data-study-pick="hard"', html)
-        self.assertNotIn('data-study-pick="zoologist"', html)
+        self.assertIn('data-study-pick="zoologist"', html)
         self.assertNotIn('class="study-level-badge"', html)
         self.assertEqual(html.count('role="group"'), 2)
         self.assertIn("study-level-picker-bottom", html)
@@ -453,11 +453,11 @@ class RingTailedLemurEasyStudyCardTests(unittest.TestCase):
         visible = _text(main)
         self.assertIn("Junior Ranger", visible)
         self.assertIn("Park Ranger", visible)
-        self.assertNotIn("Zoologist", visible)
+        self.assertIn("Zoologist", visible)
         self.assertIn('class="study-level-picker"', main)
         self.assertIn('data-study-pick="easy"', main)
         self.assertIn('data-study-pick="hard"', main)
-        self.assertNotIn('data-study-pick="zoologist"', main)
+        self.assertIn('data-study-pick="zoologist"', main)
         self.assertNotIn('class="study-level-badge"', main)
         self.assertIn("Learn first", main)
         self.assertIn(">Quiz</h2>", main)
@@ -527,7 +527,7 @@ class RingTailedLemurEasyStudyCardTests(unittest.TestCase):
         self.assertIn("is-wrong-pick", study_js)
         self.assertIn("FPStudyLevelName", study_js + STUDY_DATA_JS.read_text(encoding="utf-8"))
 
-    def test_artifacts_include_ring_tailed_lemur_easy_and_hard(self):
+    def test_artifacts_include_ring_tailed_lemur_easy_hard_and_zoologist(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
         self.assertIn("ring-tailed-lemur", payload)
         self.assertIn("giant-panda", payload)
@@ -548,7 +548,7 @@ class RingTailedLemurEasyStudyCardTests(unittest.TestCase):
         self.assertIn("african-lion", payload)
         lemur = payload["ring-tailed-lemur"]
         self.assertEqual(lemur["id"], "ring-tailed-lemur")
-        self.assertEqual(set(lemur["levels"]), {"easy", "hard"})
+        self.assertEqual(set(lemur["levels"]), {"easy", "hard", "zoologist"})
         easy = lemur["levels"]["easy"]
         self.assertEqual(len(easy["teach"]), 5)
         self.assertEqual(len(easy["questions"]), STUDY_SLOTS)
@@ -561,7 +561,9 @@ class RingTailedLemurEasyStudyCardTests(unittest.TestCase):
         hard = lemur["levels"]["hard"]
         self.assertEqual(hard["teach"], [])
         self.assertEqual(len(hard["questions"]), STUDY_SLOTS)
-        self.assertNotIn("zoologist", lemur["levels"])
+        zoo = lemur["levels"]["zoologist"]
+        self.assertEqual(zoo["teach"], [])
+        self.assertEqual(len(zoo["questions"]), STUDY_SLOTS)
         data_js = STUDY_DATA_JS.read_text(encoding="utf-8")
         self.assertIn("ring-tailed-lemur", data_js)
         self.assertIn('"easy":"Junior Ranger"', data_js)
@@ -648,7 +650,7 @@ class RingTailedLemurEasyStudyCardTests(unittest.TestCase):
         lemur_html = LEMUR.read_text(encoding="utf-8")
         self.assertIn("Junior Ranger", _text(_main(lemur_html)))
         self.assertIn("Park Ranger", _text(_main(lemur_html)))
-        self.assertNotIn("Zoologist", _text(_main(lemur_html)))
+        self.assertIn("Zoologist", _text(_main(lemur_html)))
 
 
 if __name__ == "__main__":

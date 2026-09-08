@@ -431,7 +431,8 @@ Soften contested kg / ratios / Ma. Do not redo
 JR or PR themes.
 
 Facts for ring-tailed-lemur Junior Ranger + Park
-Ranger (easy + hard) are Wikipedia-backed:
+Ranger + Zoologist (easy + hard + zoologist) are
+Wikipedia-backed:
 https://en.wikipedia.org/wiki/Ring-tailed_lemur
 Species framing is the ring-tailed lemur (Lemur
 catta). JR stays kid-simple “ring-tailed lemur.”
@@ -455,9 +456,19 @@ label), tamarind favorites, dry south / gallery /
 rocky homes, young males leaving, habitat + hunt
 + pet pressure without a status letter, and
 leaping through trees and rocky ground.
-Reserve for Zoologist: stink-fight gland anatomy,
-strepsirrhine traits, and status letters.
-Do not add Zoologist yet.
+Zoologist is answer-light (empty teach) and deepens
+Lemur catta as the only living species in genus
+Lemur (Lemuridae; closer kin among bamboo lemurs
+stay soft), wet-nosed strepsirrhine / rhinarium,
+stink-fight antebrachial + brachial mix, wrist
+spur-marking, toilet claw on the second toe,
+tapetum lucidum eye shine on a day-active animal,
+an Endangered IUCN snapshot (no headcounts), a
+short receptive window (hours soft), fossa plus
+soft bird/snake watch, and island rafting then
+radiation (Ma soft).
+Soften contested hours / Ma / headcounts. Do not
+redo JR or PR themes.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
@@ -570,10 +581,9 @@ LEVEL_DISPLAY_NAMES = {
 # Lion, reticulated-giraffe, African elephant, African penguin,
 # Caribbean flamingo, Galápagos tortoise, zebra, Nile hippo,
 # Sumatran tiger, western lowland gorilla, cheetah, red panda,
-# koala, chimpanzee, orangutan, and giant panda ship
-# Junior Ranger + Park Ranger + Zoologist. Ring-tailed
-# lemur ships Junior Ranger + Park Ranger (no
-# Zoologist yet).
+# koala, chimpanzee, orangutan, giant panda, and
+# ring-tailed lemur ship Junior Ranger + Park
+# Ranger + Zoologist.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -791,14 +801,14 @@ PUSH_FURTHER_GIANT_PANDA = (
     "A cub can wait to start growing after mating. What would a simple timeline of that pause look like?",
 )
 TALK_ABOUT_RING_TAILED_LEMUR = (
-    "Males wave smelly tails at rivals instead of punching. How is a stink fight different from a fist fight?",
-    "Lower front teeth work like a comb. Why would a lemur use its teeth to groom fur?",
-    "Young males usually leave their birth group. Why might joining a new troop help?",
+    "A lemur has a wet nose, not a dry monkey nose. What would you look for at the zoo?",
+    "Males mix scent from two glands onto the tail. How could two smells make a stink fight?",
+    "A status letter on a list can change. Why treat the grade as a snapshot, not forever?",
 )
 PUSH_FURTHER_RING_TAILED_LEMUR = (
-    "A lemur rubs scent on a tree. How could a smell say “this is our place” without words?",
-    "Southern Madagascar has dry forests and rocky spots. What would make those forests a good lemur home?",
-    "A troop uses many different calls. How might a stay-together call sound different from a danger call?",
+    "A toilet claw is a special grooming claw on one toe. What job would you watch it do?",
+    "These lemurs are mostly out in the day, yet their eyes can still shine. Why keep that leftover trick?",
+    "Lemurs may have floated to Madagascar on plants long ago. How could a raft of trees start a whole family?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -7835,6 +7845,145 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia says ring-tailed lemurs still climb and travel in the trees as well as on the ground. They can leap through trees and across rocky or dry ground. We do not lock leap distances.",
+                    },
+                ],
+            },
+            "zoologist": {
+                # Answer-light: no Learn-first strip. Facts from Wikipedia,
+                # Ring-tailed lemur. Soften contested hours / Ma /
+                # headcounts. Endangered is a snapshot, not forever.
+                # Do not redo JR or PR themes.
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "lemur-catta",
+                        "title": "Lemur catta",
+                        "stem": "How does the ring-tailed lemur sit in its genus and family?",
+                        "choices": [
+                            "Only living species in genus Lemur (Lemur catta); family Lemuridae, with closer kin often named among bamboo lemurs",
+                            "The only living monkey in family Cercopithecidae",
+                            "The same genus as chimpanzees",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia treats Lemur catta as the only living species in genus Lemur, in family Lemuridae. Bamboo lemurs are often named as closer kin. Exact family-tree splits stay soft.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "strepsirrhine",
+                        "title": "Strepsirrhine",
+                        "stem": "What kind of primate is a ring-tailed lemur, by its nose?",
+                        "choices": [
+                            "A haplorhine dry-nosed ape like a gibbon",
+                            "A strepsirrhine — a wet-nosed primate with a rhinarium, not a dry-nosed monkey or ape",
+                            "Not a primate at all — a kind of cat",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia places lemurs with strepsirrhines: wet-nosed primates that keep a rhinarium. Monkeys and apes are dry-nosed haplorhines.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "stink-fight-glands",
+                        "title": "Stink-fight glands",
+                        "stem": "How do male ring-tailed lemurs mix the scent used in a stink fight?",
+                        "choices": [
+                            "They only use spit from the mouth",
+                            "They spray ink from a hidden sac",
+                            "They mix scent from a forearm (antebrachial) gland and a shoulder (brachial) gland onto the tail",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says males have antebrachial (forearm) and brachial (shoulder) scent glands and mix those scents onto the tail for stink fights.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "wrist-spur",
+                        "title": "Wrist spur",
+                        "stem": "What is the horny spur over a male’s forearm gland used for?",
+                        "choices": [
+                            "It scrapes bark in spur-marking over the forearm gland",
+                            "It is a leftover wing bone used for flight",
+                            "It is only a decoration and never touches a tree",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia describes a horny spur that overlays the antebrachial gland. Males scrape it on bark in spur-marking.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "toilet-claw",
+                        "title": "Toilet claw",
+                        "stem": "What special grooming claw do ring-tailed lemurs have?",
+                        "choices": [
+                            "A claw on every finger used only for fishing",
+                            "A toilet claw — a grooming claw on the second toe, a strepsirrhine trait",
+                            "They have no claws at all",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says strepsirrhines, including ring-tailed lemurs, keep a grooming (toilet) claw on the second toe of the hindfoot.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "eye-shine",
+                        "title": "Eye shine",
+                        "stem": "Why can a ring-tailed lemur’s eyes shine even though it is mostly day-active?",
+                        "choices": [
+                            "They paint their eyes with glow-in-the-dark ink",
+                            "Day-active animals never have eye shine, so they do not",
+                            "They still have a tapetum lucidum — a reflective layer that can make the eyes shine",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia notes a tapetum lucidum that can make the eyes shine, even though ring-tailed lemurs are mostly diurnal.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "endangered-snapshot",
+                        "title": "Endangered snapshot",
+                        "stem": "How should we read the usual threat listing for ring-tailed lemurs?",
+                        "choices": [
+                            "IUCN often lists them Endangered — a snapshot, not a forever letter",
+                            "They are extinct in the wild, with none left anywhere",
+                            "They are the most common animal on every continent",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia reports an IUCN Endangered listing. That letter is a snapshot and can change. We do not lock exact headcounts.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "short-window",
+                        "title": "Short window",
+                        "stem": "How long are female ring-tailed lemurs receptive during the breeding season?",
+                        "choices": [
+                            "Every day of the year, all day long",
+                            "Only a few hours in a short breeding season",
+                            "Only once every twenty years",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says females are receptive for only a short window — often described as a few hours — in a brief breeding season. Exact hour counts stay soft.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "fossa-watch",
+                        "title": "Fossa watch",
+                        "stem": "Which native predators do wild ring-tailed lemurs have to watch for?",
+                        "choices": [
+                            "Only polar bears on sea ice",
+                            "They have no wild predators at all",
+                            "The fossa, plus some birds of prey and snakes",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia names the fossa as a main native predator, with some birds of prey and snakes also a risk. Exact predator lists stay soft.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "island-radiation",
+                        "title": "Island radiation",
+                        "stem": "How did lemurs likely reach Madagascar and then become so many kinds?",
+                        "choices": [
+                            "They likely rafted to Madagascar long ago, then branched into many kinds",
+                            "They flew across the ocean on purpose",
+                            "They were always the only mammal on every continent",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia’s usual story is that ancestral lemurs reached Madagascar by rafting, then radiated into many living kinds. Exact millions-of-years dates stay soft.",
                     },
                 ],
             },
