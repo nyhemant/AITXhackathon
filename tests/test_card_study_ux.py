@@ -147,7 +147,7 @@ class CardStudyUxTests(unittest.TestCase):
         js = STUDY_JS.read_text(encoding="utf-8")
         self.assertIn('if (foot) foot.insertAdjacentHTML("afterend", nextExplore)', js)
 
-        for cid in ("galapagos-tortoise", "zebra", "nile-hippo", "western-lowland-gorilla"):
+        for cid in ("galapagos-tortoise", "zebra", "nile-hippo", "western-lowland-gorilla", "cheetah"):
             page = (FP / "cards" / cid / "index.html").read_text(encoding="utf-8")
             main = _main(page)
             with self.subTest(card=cid):
@@ -206,6 +206,10 @@ class CardStudyUxTests(unittest.TestCase):
         self.assertEqual(
             study_try_next_ids("western-lowland-gorilla"),
             ["african-elephant", "african-lion", "reticulated-giraffe"],
+        )
+        self.assertEqual(
+            study_try_next_ids("cheetah"),
+            ["african-lion", "zebra", "reticulated-giraffe"],
         )
         for cid in study_card_ids():
             nxt = study_try_next_ids(cid)

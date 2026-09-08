@@ -139,6 +139,7 @@ class TortoiseEasyStudyCardTests(unittest.TestCase):
                 "nile-hippo",
                 "sumatran-tiger",
                 "western-lowland-gorilla",
+                "cheetah",
             ),
         )
         self.assertEqual(shipped_levels_for("galapagos-tortoise"), ("easy", "hard", "zoologist"))
