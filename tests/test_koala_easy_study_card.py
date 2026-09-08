@@ -229,7 +229,7 @@ class KoalaEasyStudyCardTests(unittest.TestCase):
         self.assertIn("sleep", blob.lower())
         self.assertIn("thumb", blob.lower())
         self.assertIn("solitary", blob.lower())
-        self.assertIn("moisture", blob.lower())
+        self.assertIn("drink", blob.lower())
         self.assertEqual(WIKI_KOALA, "https://en.wikipedia.org/wiki/Koala")
 
     def test_other_study_decks_untouched(self):
