@@ -8136,14 +8136,14 @@
     "source": "https://en.wikipedia.org/wiki/Shark",
     "source_note": "Facts from Wikipedia, Shark.",
     "talk_about": [
-      "A shark’s “bones” are cartilage, not hard bone. What would that feel like compared with yours?",
-      "Movies make sharks look like monsters. Why might most kinds leave people alone?",
-      "Find the gill slits on the side of the head. How do they help a shark breathe?"
+      "Jelly-filled pores on a shark’s snout sense tiny electric fields. How might that help it find a hidden fish?",
+      "Many bony fish use a gas swim bladder. Sharks use a big oily liver instead. Why might oil help them float?",
+      "Some sharks lay leathery egg cases; others have live pups. Why might both ways work?"
     ],
     "push_further": [
-      "Tiny tooth-like scales cover the skin. How might those scales help a shark slip through water?",
-      "Sharks grow new teeth again and again. Why might a hunter need a fresh set?",
-      "Curious about the gentle giant? Open the separate whale-shark card and see how that kind is different."
+      "Only a few kinds of shark must keep swimming to breathe. Why isn’t that true for most?",
+      "Tooth shape often matches food — cutters, grippers, crushers. What would you look for on a shell-crusher?",
+      "This group card covers many kinds of shark. Why can’t we lock one status letter for all of them?"
     ],
     "levels": {
       "easy": {
@@ -8284,6 +8284,141 @@
             ],
             "correct": "A",
             "why": "Wikipedia says movies make sharks look like man-eaters, but of hundreds of kinds, most are not dangerous to people."
+          }
+        ]
+      },
+      "hard": {
+        "teach": [],
+        "questions": [
+          {
+            "slot": 1,
+            "id": "ampullae-soft",
+            "title": "Electric pores",
+            "stem": "How do jelly-filled pores on a shark’s snout help it find other animals?",
+            "choices": [
+              "They detect weak electric fields from other animals (ampullae of Lorenzini)",
+              "They shoot lightning to cook dinner",
+              "They only listen for music from boats"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says sharks use jelly-filled pores called ampullae of Lorenzini to sense the weak electric fields living animals make — even prey hidden in sand."
+          },
+          {
+            "slot": 2,
+            "id": "oil-liver-soft",
+            "title": "Oily liver",
+            "stem": "Sharks have no gas swim bladder like many bony fish. What helps them with buoyancy?",
+            "choices": [
+              "A backpack full of balloons",
+              "A big oily liver helps them stay buoyant",
+              "They swallow rocks to float higher"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says sharks do not have a gas-filled swim bladder. A large oil-filled liver helps with buoyancy. Exact liver-size percents stay soft."
+          },
+          {
+            "slot": 3,
+            "id": "ram-vs-pump-soft",
+            "title": "Ram vs pump",
+            "stem": "How do many sharks get water over their gills?",
+            "choices": [
+              "They only breathe air like a dog",
+              "They hold one gulp of water forever",
+              "Many pump water over the gills at rest; swimming can also force water through (ram ventilation)"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says most sharks can pump water over the gills while resting. When they swim, water can also be forced through the mouth and gills — ram ventilation."
+          },
+          {
+            "slot": 4,
+            "id": "must-swim-few-soft",
+            "title": "Must-swim few",
+            "stem": "Do most kinds of shark have to keep swimming, or they cannot breathe?",
+            "choices": [
+              "No — only a small number of kinds must keep swimming; most can pump water at rest",
+              "Yes — every shark dies the moment it stops",
+              "Sharks never need water over their gills"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says a small number of kinds cannot pump water and must keep swimming to breathe. That is not true for most sharks."
+          },
+          {
+            "slot": 5,
+            "id": "egg-or-live-soft",
+            "title": "Egg or live",
+            "stem": "How do sharks have their young?",
+            "choices": [
+              "Every shark plants seeds on the beach",
+              "Some lay egg cases; others give live birth — both happen in sharks",
+              "Sharks buy their pups from a store"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says some sharks lay leathery egg cases, and others give birth to live pups. Both ways happen in the shark group."
+          },
+          {
+            "slot": 6,
+            "id": "tooth-shapes-soft",
+            "title": "Tooth shapes",
+            "stem": "Why do shark teeth come in different shapes?",
+            "choices": [
+              "Every shark tooth is a tiny square tile",
+              "Teeth are only for decoration",
+              "Tooth shape often matches the diet — cutters, grippers, or crushers"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says tooth shape depends on diet: dense crushers for shells, needle-like grippers for fish, and cutting teeth for bigger prey. Exact names stay soft."
+          },
+          {
+            "slot": 7,
+            "id": "spiracle-soft",
+            "title": "Spiracle",
+            "stem": "What is the small opening some sharks have just behind the eye?",
+            "choices": [
+              "A spiracle that helps take in water, especially in bottom-dwelling kinds",
+              "A second mouth used only for singing",
+              "A window that lets sunlight charge the fins"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says a modified slit called a spiracle sits just behind the eye. It helps take in water, and it matters most for bottom-dwelling sharks."
+          },
+          {
+            "slot": 8,
+            "id": "sister-to-rays-soft",
+            "title": "Sister to rays",
+            "stem": "Which animals are sharks most closely related to?",
+            "choices": [
+              "Songbirds and house cats",
+              "Rays and skates — they are cartilage fishes together",
+              "Only insects that live in trees"
+            ],
+            "correct": "B",
+            "why": "Wikipedia places sharks as the sister group to rays and skates. Together they are cartilage fishes — not bony fish."
+          },
+          {
+            "slot": 9,
+            "id": "need-our-help-soft",
+            "title": "Need our help",
+            "stem": "Why do many kinds of shark need our help today?",
+            "choices": [
+              "They are bored of the ocean and want to move to the moon",
+              "They only need help choosing a favorite color",
+              "Overfishing and finning put many kinds at risk; how they are doing differs by kind"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says overfishing and finning have put many shark kinds at risk. How each kind is doing is different, so a group card cannot lock one status letter."
+          },
+          {
+            "slot": 10,
+            "id": "gentle-giants-elsewhere",
+            "title": "Gentle giants",
+            "stem": "Where should you learn about huge filter-feeders like the whale shark?",
+            "choices": [
+              "On the separate whale-shark card — that gentle giant is not this group card",
+              "Only in stories about space whales",
+              "This group card already covers every whale shark fact"
+            ],
+            "correct": "A",
+            "why": "Wikipedia names the whale shark as a huge filter-feeder — the largest fish. That kind has its own Field Trip Kit card, so this group card does not stand in for it."
           }
         ]
       }
