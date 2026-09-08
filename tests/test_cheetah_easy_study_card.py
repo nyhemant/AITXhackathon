@@ -159,7 +159,7 @@ def _main(html: str) -> str:
 
 
 class CheetahEasyStudyCardTests(unittest.TestCase):
-    def test_deck_is_junior_ranger_easy_only(self):
+    def test_deck_is_junior_ranger_with_park_ranger_and_zoologist(self):
         self.assertIn("cheetah", study_card_ids())
         self.assertEqual(
             study_card_ids(),
@@ -177,9 +177,9 @@ class CheetahEasyStudyCardTests(unittest.TestCase):
                 "cheetah",
             ),
         )
-        self.assertEqual(shipped_levels_for("cheetah"), ("easy", "hard"))
+        self.assertEqual(shipped_levels_for("cheetah"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("cheetah", "hard"))
-        self.assertIsNone(study_deck_for("cheetah", "zoologist"))
+        self.assertIsNotNone(study_deck_for("cheetah", "zoologist"))
         deck = study_deck_for("cheetah")
         self.assertIsNotNone(deck)
         self.assertEqual(deck["id"], "cheetah")
@@ -302,11 +302,11 @@ class CheetahEasyStudyCardTests(unittest.TestCase):
         visible = _text(html)
         self.assertIn("Junior Ranger", visible)
         self.assertIn("Park Ranger", visible)
-        self.assertNotIn("Zoologist", visible)
+        self.assertIn("Zoologist", visible)
         self.assertIn('class="study-level-picker"', html)
         self.assertIn('data-study-pick="easy"', html)
         self.assertIn('data-study-pick="hard"', html)
-        self.assertNotIn('data-study-pick="zoologist"', html)
+        self.assertIn('data-study-pick="zoologist"', html)
         self.assertNotIn('class="study-level-badge"', html)
         self.assertEqual(html.count('role="group"'), 2)
         self.assertIn("study-level-picker-bottom", html)
@@ -366,11 +366,11 @@ class CheetahEasyStudyCardTests(unittest.TestCase):
         visible = _text(main)
         self.assertIn("Junior Ranger", visible)
         self.assertIn("Park Ranger", visible)
-        self.assertNotIn("Zoologist", visible)
+        self.assertIn("Zoologist", visible)
         self.assertIn('class="study-level-picker"', main)
         self.assertIn('data-study-pick="easy"', main)
         self.assertIn('data-study-pick="hard"', main)
-        self.assertNotIn('data-study-pick="zoologist"', main)
+        self.assertIn('data-study-pick="zoologist"', main)
         self.assertNotIn('class="study-level-badge"', main)
         self.assertIn("Learn first", main)
         self.assertIn(">Quiz</h2>", main)
@@ -440,7 +440,7 @@ class CheetahEasyStudyCardTests(unittest.TestCase):
         self.assertIn("is-wrong-pick", study_js)
         self.assertIn("FPStudyLevelName", study_js + STUDY_DATA_JS.read_text(encoding="utf-8"))
 
-    def test_artifacts_include_cheetah_easy_and_hard(self):
+    def test_artifacts_include_cheetah_easy_hard_and_zoologist(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
         self.assertIn("cheetah", payload)
         self.assertIn("western-lowland-gorilla", payload)
@@ -455,7 +455,7 @@ class CheetahEasyStudyCardTests(unittest.TestCase):
         self.assertIn("african-lion", payload)
         cheetah = payload["cheetah"]
         self.assertEqual(cheetah["id"], "cheetah")
-        self.assertEqual(set(cheetah["levels"]), {"easy", "hard"})
+        self.assertEqual(set(cheetah["levels"]), {"easy", "hard", "zoologist"})
         easy = cheetah["levels"]["easy"]
         self.assertEqual(len(easy["teach"]), 5)
         self.assertEqual(len(easy["questions"]), STUDY_SLOTS)
@@ -468,7 +468,9 @@ class CheetahEasyStudyCardTests(unittest.TestCase):
         hard = cheetah["levels"]["hard"]
         self.assertEqual(hard["teach"], [])
         self.assertEqual(len(hard["questions"]), STUDY_SLOTS)
-        self.assertNotIn("zoologist", cheetah["levels"])
+        zoo = cheetah["levels"]["zoologist"]
+        self.assertEqual(zoo["teach"], [])
+        self.assertEqual(len(zoo["questions"]), STUDY_SLOTS)
         data_js = STUDY_DATA_JS.read_text(encoding="utf-8")
         self.assertIn("cheetah", data_js)
         self.assertIn('"easy":"Junior Ranger"', data_js)
@@ -525,7 +527,7 @@ class CheetahEasyStudyCardTests(unittest.TestCase):
         cheetah_html = CHEETAH.read_text(encoding="utf-8")
         self.assertIn("Junior Ranger", _text(_main(cheetah_html)))
         self.assertIn("Park Ranger", _text(_main(cheetah_html)))
-        self.assertNotIn("Zoologist", _text(_main(cheetah_html)))
+        self.assertIn("Zoologist", _text(_main(cheetah_html)))
 
 
 if __name__ == "__main__":
