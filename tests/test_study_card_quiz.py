@@ -173,13 +173,41 @@ class StudyCardQuizTests(unittest.TestCase):
         )
         self.assertIn("border-color: #d97706 !important;", styles)
 
+    def test_study_level_washes_and_choice_weight(self):
+        css = STUDY_CSS.read_text(encoding="utf-8")
+        self.assertIn('[data-study-level="easy"] .study-q', css)
+        self.assertIn('[data-study-level="hard"] .study-q', css)
+        self.assertIn('[data-study-level="zoologist"] .study-q', css)
+        self.assertIn("background: #f3faf7;", css)
+        self.assertIn("background: #fff6ee;", css)
+        self.assertIn("background: #fbf2f5;", css)
+        self.assertIn("rgba(196, 120, 64, 0.18)", css)
+        self.assertIn("rgba(160, 80, 110, 0.16)", css)
+        self.assertNotIn("#fff1e0", css)
+        self.assertIn("@media screen", css)
+        self.assertNotIn("@media print", css)
+        self.assertIn(
+            ".card-page .card-study-pack .study-q .study-choice:not(.is-correct-pick):not(.is-wrong-pick)",
+            css,
+        )
+        self.assertIn("font-weight: 500;", css)
+        self.assertIn(".card-page .card-study-pack .study-choice.is-correct-pick", css)
+        self.assertIn(".card-page .card-study-pack .study-choice.is-correct-key", css)
+        self.assertIn("font-weight: 800;", css)
+        html = LION.read_text(encoding="utf-8")
+        self.assertIn('class="card-talk-pack card-study-pack"', html)
+        self.assertIn('data-study-level="easy"', html)
+        self.assertIn('class="mission card-talk-q study-q"', html)
+        js = STUDY_JS.read_text(encoding="utf-8")
+        self.assertIn('root.setAttribute("data-study-level", deck.level)', js)
+
     def test_cache_versions_bumped_for_quiz_ux(self):
         seo = SEO.read_text(encoding="utf-8")
         self.assertIn('STUDY_CARD_JS_VER = "10"', seo)
-        self.assertIn('STUDY_CARD_CSS_VER = "9"', seo)
+        self.assertIn('STUDY_CARD_CSS_VER = "10"', seo)
         html = LION.read_text(encoding="utf-8")
         self.assertIn("study-card.js?v=10", html)
-        self.assertIn("study-card.css?v=9", html)
+        self.assertIn("study-card.css?v=10", html)
 
     def test_runtime_wrong_then_correct_scores(self):
         node = shutil.which("node")

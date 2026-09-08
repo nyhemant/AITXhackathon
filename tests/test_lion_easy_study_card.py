@@ -181,7 +181,7 @@ class LionEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Look close — mane, whiskers, a tuft on the tail.", html)
         self.assertNotIn("mighty roar", html)
         self.assertIn("study-card.js?v=10", html)
-        self.assertIn("study-card.css?v=9", html)
+        self.assertIn("study-card.css?v=10", html)
         self.assertIn("study-cards-data.js?v=6", html)
         self.assertIn('id="study-card-data"', html)
         self.assertIn('"level_label": "Junior Ranger"', html)
@@ -303,7 +303,7 @@ class LionEasyStudyCardTests(unittest.TestCase):
     def test_desktop_widens_study_card_page_only(self):
         css = (FP / "css" / "study-card.css").read_text(encoding="utf-8")
         seo = (FP / "css" / "seo-venue.css").read_text(encoding="utf-8")
-        self.assertEqual(STUDY_CARD_CSS_VER, "9")
+        self.assertEqual(STUDY_CARD_CSS_VER, "10")
         self.assertIn("max-width: 34rem;", seo)
         self.assertIn("@media screen and (min-width: 960px)", css)
         self.assertIn("max-width: 48rem;", css)
