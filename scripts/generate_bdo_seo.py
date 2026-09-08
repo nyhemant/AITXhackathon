@@ -43,6 +43,7 @@ from study_cards import (  # noqa: E402
     study_deck_for,
     study_print_html,
     study_talk_html,
+    study_try_next_html,
     write_study_artifacts,
 )
 
@@ -100,7 +101,6 @@ CTA_EXPLORE_HOME = "Explore at home"
 CTA_PRINT_VISIT = CTA_PRINT
 CTA_PRINT_VISIT_SHORT = CTA_PRINT
 CTA_PRINT_CARD = "Print this card"
-CARD_PRINT_NOTE = "One animal sheet — not the hide-and-seek cutouts"
 CARDS_PLAY_H1 = "Print cutouts to play"
 CARDS_PLAY_CTA = "Print the cutouts"
 CARDS_PLAY_BROWSE = "Browse cards on the screen"
@@ -287,15 +287,15 @@ OUTING_TALK_EXHIBIT = (
 )
 
 SEO_CSS_VER = "29"
-CARD_SEO_CSS_VER = "32"
+CARD_SEO_CSS_VER = "34"
 LANDING_CSS_VER = "99"
 LANDING_MAP_JS_VER = "87"
 LANDING_HOOK_JS_VER = "37"
 STYLES_CSS_VER = "41"
 CATALOG_JS_VER = "40"
 PRINT_KIT_JS_VER = "20"
-STUDY_CARD_JS_VER = "6"
-STUDY_CARD_CSS_VER = "7"
+STUDY_CARD_JS_VER = "7"
+STUDY_CARD_CSS_VER = "8"
 STUDY_CARDS_DATA_JS_VER = "5"
 VIEWPORT = "width=device-width, initial-scale=1, viewport-fit=cover"
 MISSION_CSS_VER = "20"
@@ -970,6 +970,15 @@ def card_watch_row_html(vft: dict, *, cta: str) -> str:
         f'<a class="btn btn-primary card-watch-live" href="{esc(href)}">{esc(cta)}</a>'
         f"{attr}</p>"
     )
+
+
+def card_hero_links_html(more_html: str, watch_html: str) -> str:
+    """Photos + Watch Live on one wrap row under the hero. Empty bits stay off."""
+    more = (more_html or "").strip()
+    watch = (watch_html or "").strip()
+    if not more and not watch:
+        return ""
+    return f'<div class="card-hero-links no-print">{more}{watch}</div>'
 
 
 def watch_links_html(item: dict, *, film_via_vft: bool = False, watch_live: bool = False) -> str:
@@ -4779,7 +4788,9 @@ def write_card_pages(
         kind = card_kind(c)
         watch_live = kind in ("animal", "sea_life")
         watch_html = watch_links_html(item, film_via_vft=True, watch_live=watch_live)
+        hero_links = card_hero_links_html(more_links, watch_html)
         next_html = card_next_html(cid)
+        try_next_html = study_try_next_html(cid) if study_deck else ""
         print_venue_attr = f' data-venue="{esc(vid)}"' if show_venue_chrome and vid else ""
         kit_sites_js = json.dumps(start_here_official_urls(), separators=(",", ":"))
         vft = item.get("vft") or {}
@@ -4852,14 +4863,13 @@ def write_card_pages(
       <h1>{esc(emoji)} {esc(name)}</h1>
       {venue_chrome}
       {blurb_html}
-      {more_links}
-      {watch_html}
+      {hero_links}
       {next_html}
       {talk_html}
+      {try_next_html}
       <p class="card-page-actions">
         {actions_html}
       </p>
-      <p class="card-print-note">{esc(CARD_PRINT_NOTE)}</p>
     </main>
   </div>
   <div id="print-sheet" class="print-sheet" aria-hidden="true"></div>

@@ -12,7 +12,6 @@ REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO / "scripts"))
 
 from generate_bdo_seo import (  # noqa: E402
-    CARD_PRINT_NOTE,
     CARD_TALK_H2,
     CARDS_PLAY_BROWSE,
     CARDS_PLAY_CTA,
@@ -78,7 +77,8 @@ class CardPageSparseChromeTests(unittest.TestCase):
         self.assertEqual(CTA_AT_HOME, "At home")
         self.assertEqual(CTA_PRINT, "Print")
         self.assertEqual(CTA_PRINT_CARD, "Print this card")
-        self.assertEqual(CARD_PRINT_NOTE, "One animal sheet — not the hide-and-seek cutouts")
+        self.assertNotIn("CARD_PRINT_NOTE", self.gen)
+        self.assertNotIn("One animal sheet — not the hide-and-seek cutouts", self.gen)
         self.assertEqual(CARDS_PLAY_H1, "Print cutouts to play")
         self.assertEqual(CARDS_PLAY_CTA, "Print the cutouts")
         self.assertEqual(CARDS_PLAY_BROWSE, "Browse cards on the screen")
@@ -106,7 +106,8 @@ class CardPageSparseChromeTests(unittest.TestCase):
                 self.assertNotIn("step-chip", main)
                 self.assertIn(f">{CARD_TALK_H2}</h2>", main)
                 self.assertIn(f">{CTA_PRINT_CARD}</button>", main)
-                self.assertIn(CARD_PRINT_NOTE, main)
+                self.assertNotIn("One animal sheet — not the hide-and-seek cutouts", main)
+                self.assertNotIn("card-print-note", main)
 
     def test_photo_is_first_and_dominant(self):
         for cid, html in self.pages.items():
