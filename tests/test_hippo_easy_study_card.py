@@ -155,6 +155,7 @@ class HippoEasyStudyCardTests(unittest.TestCase):
                 "sumatran-tiger",
                 "western-lowland-gorilla",
                 "cheetah",
+                "red-panda",
             ),
         )
         self.assertEqual(shipped_levels_for("nile-hippo"), ("easy", "hard", "zoologist"))
