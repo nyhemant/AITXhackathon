@@ -92,7 +92,7 @@ STEMS = (
     "What does a hippo’s huge “yawn” usually mean?",
     "Why do people treat wild hippos with extra care?",
     "Where do Nile hippos often have babies, and how can calves drink milk?",
-    "Why does a Nile hippo need water or mud on its skin?",
+    "Can a Nile hippo stay dry on land all day like a horse?",
 )
 
 QIDS = (
@@ -105,7 +105,7 @@ QIDS = (
     "yawn",
     "protective",
     "water-babies",
-    "thick-skin",
+    "myth",
 )
 
 PLAIN_LEVEL_LABELS = ("Easy", "Hard")
@@ -173,6 +173,7 @@ class HippoEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(len(deck["questions"]), STUDY_SLOTS)
         self.assertEqual([q["stem"] for q in deck["questions"]], list(STEMS))
         self.assertEqual([q["id"] for q in deck["questions"]], list(QIDS))
+        self.assertEqual(deck["questions"][-1]["title"], "Myth buster")
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_HIPPO))
         self.assertEqual(deck["push_further"], list(PUSH_FURTHER_HIPPO))
         for q in deck["questions"]:

@@ -13,6 +13,7 @@ sys.path.insert(0, str(REPO / "scripts"))
 
 from generate_bdo_seo import CARD_TALK_H2, outing_talk_html  # noqa: E402
 from study_cards import (  # noqa: E402
+    correct_choice_text,
     PUSH_FURTHER_LION,
     STUDY_SLOTS,
     TALK_ABOUT_LION,
@@ -130,19 +131,16 @@ class LionZoologistStudyCardTests(unittest.TestCase):
             self.assertIn(q["correct"], ("A", "B", "C"))
             self.assertTrue(q["why"].strip())
             self.assertTrue(q["title"].strip())
-        self.assertIn("hyoid", questions[0]["choices"][1])
-        self.assertIn("vomeronasal", questions[1]["choices"][1])
-        self.assertIn("P4", questions[2]["choices"][1])
-        self.assertIn("melanochaita", questions[3]["choices"][1])
-        self.assertIn("function is unknown", questions[4]["choices"][1])
-        self.assertEqual(questions[5]["correct"], "A")
-        self.assertIn("estrus", questions[5]["choices"][0])
-        self.assertEqual(questions[6]["correct"], "A")
-        self.assertIn("most social", questions[6]["choices"][0])
-        self.assertIn("Habitat loss", questions[7]["choices"][1])
-        self.assertEqual(questions[8]["correct"], "A")
-        self.assertIn("fast-twitch", questions[8]["choices"][0])
-        self.assertIn("kleptoparasitism", questions[9]["choices"][1])
+        self.assertIn("hyoid", correct_choice_text(questions[0]))
+        self.assertIn("vomeronasal", correct_choice_text(questions[1]))
+        self.assertIn("P4", correct_choice_text(questions[2]))
+        self.assertIn("melanochaita", correct_choice_text(questions[3]))
+        self.assertIn("function is unknown", correct_choice_text(questions[4]))
+        self.assertIn("estrus", correct_choice_text(questions[5]))
+        self.assertIn("most social", correct_choice_text(questions[6]))
+        self.assertIn("Habitat loss", correct_choice_text(questions[7]))
+        self.assertIn("fast-twitch", correct_choice_text(questions[8]))
+        self.assertIn("kleptoparasitism", correct_choice_text(questions[9]))
         blob = " ".join(q["why"] for q in questions)
         self.assertNotIn("43%", blob)
         self.assertNotIn("74.1", blob)

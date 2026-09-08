@@ -103,6 +103,8 @@ class LionEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(len(deck["teach"]), 5)
         self.assertEqual(len(deck["questions"]), STUDY_SLOTS)
         self.assertEqual([q["stem"] for q in deck["questions"]], list(STEMS))
+        self.assertEqual(deck["questions"][3]["title"], "Mane")
+        self.assertEqual(deck["questions"][8]["title"], "Tail")
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_LION))
         self.assertEqual(deck["push_further"], list(PUSH_FURTHER_LION))
         self.assertEqual(study_deck_for("african-elephant")["level"], "easy")

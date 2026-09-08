@@ -1,0 +1,136 @@
+"""Study-card answer keys must not monopolize one letter."""
+
+from __future__ import annotations
+
+import json
+import sys
+import unittest
+from collections import Counter
+from pathlib import Path
+
+REPO = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(REPO / "scripts"))
+
+from study_cards import (  # noqa: E402
+    LETTERS,
+    MAX_OVERALL_B_SHARE,
+    MAX_SAME_LETTER_PER_DECK,
+    PUSH_FURTHER_GORILLA,
+    PUSH_FURTHER_LION,
+    PUSH_FURTHER_TIGER,
+    PUSH_FURTHER_TORTOISE,
+    STUDY_SLOTS,
+    TALK_ABOUT_GORILLA,
+    TALK_ABOUT_LION,
+    TALK_ABOUT_TIGER,
+    TALK_ABOUT_TORTOISE,
+    correct_choice_text,
+    shipped_levels_for,
+    study_card_ids,
+    study_deck_for,
+    target_letter_for_slot,
+    validate_deck,
+)
+
+FP = REPO / "static" / "field-pack"
+STUDY_JSON = FP / "data" / "study-cards.json"
+TRAFFIC_IDS = (
+    "african-lion",
+    "reticulated-giraffe",
+    "african-elephant",
+    "african-penguin",
+    "caribbean-flamingo",
+    "galapagos-tortoise",
+    "zebra",
+    "nile-hippo",
+    "sumatran-tiger",
+    "western-lowland-gorilla",
+)
+
+
+def _decks():
+    for card_id in TRAFFIC_IDS:
+        for level in shipped_levels_for(card_id):
+            deck = study_deck_for(card_id, level)
+            yield card_id, level, deck
+
+
+class StudyCardAnswerKeyTests(unittest.TestCase):
+    def test_traffic_set_is_ten_animals_times_three_levels(self):
+        self.assertEqual(tuple(study_card_ids()), TRAFFIC_IDS)
+        decks = list(_decks())
+        self.assertEqual(len(decks), 30)
+        for card_id, level, deck in decks:
+            self.assertIsNotNone(deck, f"{card_id}/{level}")
+            self.assertEqual(validate_deck(deck), [])
+            self.assertEqual(len(deck["questions"]), STUDY_SLOTS)
+
+    def test_slot_rotation_maps_correct_letter_without_dropping_texts(self):
+        for card_id, level, deck in _decks():
+            for q in deck["questions"]:
+                self.assertEqual(
+                    q["correct"],
+                    target_letter_for_slot(q["slot"]),
+                    f"{card_id}/{level} slot {q['slot']}",
+                )
+                self.assertEqual(len(q["choices"]), 3)
+                self.assertEqual(len(set(q["choices"])), 3)
+                self.assertTrue(correct_choice_text(q).strip())
+
+    def test_no_deck_has_more_than_six_of_the_same_letter(self):
+        for card_id, level, deck in _decks():
+            counts = Counter(q["correct"] for q in deck["questions"])
+            for letter in LETTERS:
+                self.assertLessEqual(
+                    counts[letter],
+                    MAX_SAME_LETTER_PER_DECK,
+                    f"{card_id}/{level} has {counts[letter]} {letter}s: {counts}",
+                )
+            self.assertTrue(all(counts[letter] >= 3 for letter in LETTERS), counts)
+
+    def test_overall_correct_b_is_not_a_majority(self):
+        letters = [q["correct"] for _, _, deck in _decks() for q in deck["questions"]]
+        self.assertEqual(len(letters), 300)
+        share_b = letters.count("B") / len(letters)
+        self.assertLessEqual(
+            share_b,
+            MAX_OVERALL_B_SHARE,
+            f"correct==B is {share_b:.1%} ({letters.count('B')}/300)",
+        )
+        for letter in LETTERS:
+            share = letters.count(letter) / len(letters)
+            self.assertGreaterEqual(share, 0.25, f"{letter} is only {share:.1%}")
+
+    def test_tiger_and_gorilla_explore_more_stay_kid_short(self):
+        dense = (
+            "Laverania",
+            "incomplete lineage sorting",
+            "sondaica",
+            "studbook",
+            "vestibular",
+            "Ice Age",
+            "microsatellite",
+        )
+        peer = TALK_ABOUT_LION + PUSH_FURTHER_LION + TALK_ABOUT_TORTOISE + PUSH_FURTHER_TORTOISE
+        peer_max = max(len(line) for line in peer)
+        for line in TALK_ABOUT_TIGER + PUSH_FURTHER_TIGER + TALK_ABOUT_GORILLA + PUSH_FURTHER_GORILLA:
+            for phrase in dense:
+                self.assertNotIn(phrase, line)
+            self.assertLessEqual(len(line), peer_max + 20, line)
+
+    def test_published_json_matches_rotated_decks(self):
+        payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
+        for card_id, level, deck in _decks():
+            published = payload[card_id]["levels"][level]["questions"]
+            self.assertEqual(
+                [q["correct"] for q in published],
+                [q["correct"] for q in deck["questions"]],
+            )
+            self.assertEqual(
+                [q["choices"] for q in published],
+                [q["choices"] for q in deck["questions"]],
+            )
+
+
+if __name__ == "__main__":
+    unittest.main()
