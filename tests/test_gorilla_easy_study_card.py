@@ -172,6 +172,7 @@ class GorillaEasyStudyCardTests(unittest.TestCase):
                 "chimpanzee",
                 "orangutan",
                 "giant-panda",
+                "ring-tailed-lemur",
             ),
         )
         self.assertEqual(shipped_levels_for("western-lowland-gorilla"), ("easy", "hard", "zoologist"))

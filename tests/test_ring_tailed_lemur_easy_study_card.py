@@ -1,4 +1,4 @@
-"""Giant panda Easy study-card: Junior Ranger teach + 10 MCQs (Park Ranger + Zoologist siblings)."""
+"""Ring-tailed lemur Easy study-card: Junior Ranger teach + 10 MCQs (first deck)."""
 
 from __future__ import annotations
 
@@ -27,6 +27,7 @@ from study_cards import (  # noqa: E402
     PUSH_FURTHER_ORANGUTAN,
     PUSH_FURTHER_PENGUIN,
     PUSH_FURTHER_RED_PANDA,
+    PUSH_FURTHER_RING_TAILED_LEMUR,
     PUSH_FURTHER_TIGER,
     PUSH_FURTHER_TORTOISE,
     PUSH_FURTHER_ZEBRA,
@@ -44,6 +45,7 @@ from study_cards import (  # noqa: E402
     TALK_ABOUT_ORANGUTAN,
     TALK_ABOUT_PENGUIN,
     TALK_ABOUT_RED_PANDA,
+    TALK_ABOUT_RING_TAILED_LEMUR,
     TALK_ABOUT_TIGER,
     TALK_ABOUT_TORTOISE,
     TALK_ABOUT_ZEBRA,
@@ -61,6 +63,7 @@ from study_cards import (  # noqa: E402
     WIKI_ORANGUTAN,
     WIKI_PLAINS_ZEBRA,
     WIKI_RED_PANDA,
+    WIKI_RING_TAILED_LEMUR,
     WIKI_SUMATRAN_TIGER,
     WIKI_WESTERN_LOWLAND_GORILLA,
     level_display_name,
@@ -74,6 +77,7 @@ from study_cards import (  # noqa: E402
 )
 
 FP = REPO / "static" / "field-pack"
+LEMUR = FP / "cards" / "ring-tailed-lemur" / "index.html"
 GIANT_PANDA = FP / "cards" / "giant-panda" / "index.html"
 ORANGUTAN = FP / "cards" / "orangutan" / "index.html"
 CHIMPANZEE = FP / "cards" / "chimpanzee" / "index.html"
@@ -109,37 +113,37 @@ GENERIC_WORKSHEET = (
 )
 
 TEACH = (
-    "Almost all food is bamboo",
-    "Wild home is mountain forests in China",
-    "A bear with a black-and-white coat",
-    "Spends much of the day eating",
-    "Front paw has an extra “thumb” bump for gripping bamboo",
+    "Wild ring-tailed lemurs live only on Madagascar.",
+    "They are named for a long black-and-white striped tail.",
+    "They live in a troop led by females.",
+    "They sunbathe with their bellies toward the sun to warm up.",
+    "They mostly eat plants — fruit, leaves, and flowers.",
 )
 
 STEMS = (
-    "What do giant pandas eat almost all the time?",
-    "Where do wild giant pandas live?",
-    "What kind of animal is a giant panda?",
-    "What does a giant panda’s coat look like?",
-    "How do giant pandas spend much of the day?",
-    "What is a newborn giant panda cub like?",
-    "How good are giant pandas at climbing trees?",
-    "What kind of plant is bamboo?",
-    "How does an extra bump on a giant panda’s front paw help?",
-    "Is a giant panda a raccoon?",
+    "Where do wild ring-tailed lemurs live?",
+    "Why are they called ring-tailed lemurs?",
+    "Who leads a ring-tailed lemur troop?",
+    "How do ring-tailed lemurs warm up in the morning?",
+    "What do ring-tailed lemurs mostly eat?",
+    "Why do ring-tailed lemurs hold their tails high?",
+    "How do ring-tailed lemurs spend a lot of their day, unlike many other lemurs?",
+    "How do ring-tailed lemurs share “our place” with the troop?",
+    "What do wild ring-tailed lemur forests need?",
+    "Is a ring-tailed lemur a monkey?",
 )
 
 QIDS = (
-    "bamboo-almost-always",
-    "china-home",
-    "a-kind-of-bear",
-    "black-and-white",
-    "eating-day",
-    "tiny-cub",
-    "tree-climber",
-    "giant-grass",
-    "bamboo-thumb",
-    "raccoon-myth",
+    "madagascar-only",
+    "stripy-tail",
+    "girls-first",
+    "sun-pose",
+    "plant-snacks",
+    "tail-flags",
+    "ground-time",
+    "smell-marks",
+    "soft-care",
+    "not-a-monkey",
 )
 
 PLAIN_LEVEL_LABELS = ("Easy", "Hard")
@@ -149,38 +153,23 @@ BRITTLE = (
     "Vulnerable",
     "Endangered",
     "Critically",
-    "Ailuropoda",
-    "melanoleuca",
-    "Qinling",
-    "sesamoid",
-    "umami",
-    "kg",
-    "cm",
-)
-# Explore more may name a later wrist-bone or status-letter prompt.
-PAGE_BRITTLE = (
-    "IUCN",
-    "Vulnerable",
-    "Endangered",
-    "Critically",
-    "Ailuropoda",
-    "melanoleuca",
-    "Qinling",
-    "sesamoid",
-    "umami",
+    "strepsirrhine",
+    "stink fight",
+    "stink-fight",
+    "Lemur catta",
+    "Lemuridae",
+    "prehensile",
     "kg",
     "cm",
 )
 RESERVED = (
-    "Ailuropoda",
-    "Qinling",
-    "radial sesamoid",
-    "sesamoid",
-    "umami",
-    "Vulnerable",
+    "stink-fight",
+    "stink fight",
+    "strepsirrhine",
+    "wet-nosed",
     "Endangered",
-    "carnivore gut",
-    "digestive system of a carnivore",
+    "IUCN",
+    "spur-marking",
 )
 
 
@@ -192,9 +181,9 @@ def _main(html: str) -> str:
     return html.split('<main class="card-page">', 1)[1].split("</main>", 1)[0]
 
 
-class GiantPandaEasyStudyCardTests(unittest.TestCase):
-    def test_deck_is_junior_ranger_with_park_ranger_and_zoologist(self):
-        self.assertIn("giant-panda", study_card_ids())
+class RingTailedLemurEasyStudyCardTests(unittest.TestCase):
+    def test_deck_is_junior_ranger_easy_only(self):
+        self.assertIn("ring-tailed-lemur", study_card_ids())
         self.assertEqual(
             study_card_ids(),
             (
@@ -217,25 +206,25 @@ class GiantPandaEasyStudyCardTests(unittest.TestCase):
                 "ring-tailed-lemur",
             ),
         )
-        self.assertEqual(shipped_levels_for("giant-panda"), ("easy", "hard", "zoologist"))
-        self.assertIsNotNone(study_deck_for("giant-panda", "hard"))
-        self.assertIsNotNone(study_deck_for("giant-panda", "zoologist"))
-        deck = study_deck_for("giant-panda")
+        self.assertEqual(shipped_levels_for("ring-tailed-lemur"), ("easy",))
+        self.assertIsNone(study_deck_for("ring-tailed-lemur", "hard"))
+        self.assertIsNone(study_deck_for("ring-tailed-lemur", "zoologist"))
+        deck = study_deck_for("ring-tailed-lemur")
         self.assertIsNotNone(deck)
-        self.assertEqual(deck["id"], "giant-panda")
+        self.assertEqual(deck["id"], "ring-tailed-lemur")
         self.assertEqual(deck["level"], "easy")
         self.assertEqual(deck["level_label"], "Junior Ranger")
         self.assertEqual(level_display_name("easy"), "Junior Ranger")
-        self.assertEqual(deck["source"], WIKI_GIANT_PANDA)
-        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Giant panda.")
+        self.assertEqual(deck["source"], WIKI_RING_TAILED_LEMUR)
+        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Ring-tailed lemur.")
         self.assertEqual(validate_deck(deck), [])
         self.assertEqual(len(deck["teach"]), 5)
         self.assertEqual(deck["teach"], list(TEACH))
         self.assertEqual(len(deck["questions"]), STUDY_SLOTS)
         self.assertEqual([q["stem"] for q in deck["questions"]], list(STEMS))
         self.assertEqual([q["id"] for q in deck["questions"]], list(QIDS))
-        self.assertEqual(deck["talk_about"], list(TALK_ABOUT_GIANT_PANDA))
-        self.assertEqual(deck["push_further"], list(PUSH_FURTHER_GIANT_PANDA))
+        self.assertEqual(deck["talk_about"], list(TALK_ABOUT_RING_TAILED_LEMUR))
+        self.assertEqual(deck["push_further"], list(PUSH_FURTHER_RING_TAILED_LEMUR))
         letters = [q["correct"] for q in deck["questions"]]
         self.assertEqual(letters, [target_letter_for_slot(i) for i in range(1, 11)])
         self.assertEqual(letters.count("A"), 4)
@@ -249,19 +238,22 @@ class GiantPandaEasyStudyCardTests(unittest.TestCase):
         blob = " ".join(deck["teach"] + [q["stem"] + q["why"] for q in deck["questions"]])
         for phrase in BRITTLE + RESERVED:
             self.assertNotIn(phrase, blob)
-        self.assertIn("bamboo", blob.lower())
-        self.assertIn("china", blob.lower())
-        self.assertIn("bear", blob.lower())
-        self.assertIn("black", blob.lower())
-        self.assertIn("white", blob.lower())
-        self.assertIn("eating", blob.lower())
-        self.assertIn("pink", blob.lower())
-        self.assertIn("blind", blob.lower())
-        self.assertIn("climb", blob.lower())
-        self.assertIn("grass", blob.lower())
-        self.assertIn("thumb", blob.lower())
-        self.assertIn("raccoon", blob.lower())
-        self.assertEqual(WIKI_GIANT_PANDA, "https://en.wikipedia.org/wiki/Giant_panda")
+        self.assertIn("madagascar", blob.lower())
+        self.assertIn("black-and-white", blob.lower())
+        self.assertIn("troop", blob.lower())
+        self.assertIn("female", blob.lower())
+        self.assertIn("sun", blob.lower())
+        self.assertIn("fruit", blob.lower())
+        self.assertIn("leaves", blob.lower())
+        self.assertIn("flowers", blob.lower())
+        self.assertIn("tail", blob.lower())
+        self.assertIn("ground", blob.lower())
+        self.assertIn("scent", blob.lower())
+        self.assertIn("monkey", blob.lower())
+        self.assertEqual(
+            WIKI_RING_TAILED_LEMUR,
+            "https://en.wikipedia.org/wiki/Ring-tailed_lemur",
+        )
 
     def test_other_study_decks_untouched(self):
         lion = study_deck_for("african-lion")
@@ -349,9 +341,16 @@ class GiantPandaEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(shipped_levels_for("orangutan"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("orangutan", "hard"))
         self.assertIsNotNone(study_deck_for("orangutan", "zoologist"))
+        giant = study_deck_for("giant-panda")
+        self.assertEqual(giant["source"], WIKI_GIANT_PANDA)
+        self.assertEqual(giant["talk_about"], list(TALK_ABOUT_GIANT_PANDA))
+        self.assertEqual(giant["push_further"], list(PUSH_FURTHER_GIANT_PANDA))
+        self.assertEqual(shipped_levels_for("giant-panda"), ("easy", "hard", "zoologist"))
+        self.assertIsNotNone(study_deck_for("giant-panda", "hard"))
+        self.assertIsNotNone(study_deck_for("giant-panda", "zoologist"))
 
     def test_generator_html_is_study_not_worksheet(self):
-        html = outing_talk_html({"id": "giant-panda", "packTemplate": "animals"})
+        html = outing_talk_html({"id": "ring-tailed-lemur", "packTemplate": "animals"})
         self.assertIn(">Quiz</h2>", html)
         self.assertIn("card-study-pack", html)
         self.assertIn("Learn first", html)
@@ -364,7 +363,7 @@ class GiantPandaEasyStudyCardTests(unittest.TestCase):
         self.assertIn('<details class="study-explore', html)
         self.assertIn("Explore more", html)
         self.assertNotIn('<aside class="study-deepen"', html)
-        for prompt in TALK_ABOUT_GIANT_PANDA + PUSH_FURTHER_GIANT_PANDA:
+        for prompt in TALK_ABOUT_RING_TAILED_LEMUR + PUSH_FURTHER_RING_TAILED_LEMUR:
             self.assertIn(prompt, html)
         self.assertIn("Show answers", html)
         self.assertIn("Score", html)
@@ -376,34 +375,32 @@ class GiantPandaEasyStudyCardTests(unittest.TestCase):
             self.assertNotIn(phrase, html)
         visible = _text(html)
         self.assertIn("Junior Ranger", visible)
-        self.assertIn("Park Ranger", visible)
-        self.assertIn("Zoologist", visible)
-        self.assertIn('class="study-level-picker"', html)
-        self.assertIn('data-study-pick="easy"', html)
-        self.assertIn('data-study-pick="hard"', html)
-        self.assertIn('data-study-pick="zoologist"', html)
-        self.assertNotIn('class="study-level-badge"', html)
-        self.assertEqual(html.count('role="group"'), 2)
-        self.assertIn("study-level-picker-bottom", html)
+        self.assertNotIn("Park Ranger", visible)
+        self.assertNotIn("Zoologist", visible)
+        self.assertIn('class="study-level-badge"', html)
+        self.assertNotIn('class="study-level-picker"', html)
+        self.assertNotIn('data-study-pick="easy"', html)
+        self.assertNotIn('data-study-pick="hard"', html)
+        self.assertNotIn("study-level-picker-bottom", html)
         for badge in PLAIN_LEVEL_LABELS + AGE_BADGES:
             self.assertNotIn(badge, visible)
-        for phrase in PAGE_BRITTLE:
+        for phrase in BRITTLE:
             self.assertNotIn(phrase, html)
-        self.assertIn("Bamboo — almost all of their food", html)
-        self.assertIn("No — giant pandas are bears, not raccoons", html)
-        self.assertIn("Facts from Wikipedia, Giant panda.", html)
+        self.assertIn("Only on the island of Madagascar", html)
+        self.assertIn("No — it is a lemur, a different Madagascar primate", html)
+        self.assertIn("Facts from Wikipedia, Ring-tailed lemur.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
         html = outing_talk_html({"id": "asian-small-clawed-otter", "packTemplate": "animals"})
         self.assertIn("What do they eat?", html)
         self.assertNotIn("card-study-pack", html)
-        self.assertNotIn("What do giant pandas eat almost all the time?", html)
+        self.assertNotIn("Where do wild ring-tailed lemurs live?", html)
         otter = OTTER.read_text(encoding="utf-8")
         self.assertIn("What do they eat?", otter)
         self.assertNotIn("card-study-pack", otter)
 
-    def test_published_giant_panda_card_matches_easy_deck(self):
-        html = GIANT_PANDA.read_text(encoding="utf-8")
+    def test_published_ring_tailed_lemur_card_matches_easy_deck(self):
+        html = LEMUR.read_text(encoding="utf-8")
         main = _main(html)
         for phrase in GENERIC_WORKSHEET:
             self.assertNotIn(phrase, main)
@@ -412,19 +409,19 @@ class GiantPandaEasyStudyCardTests(unittest.TestCase):
         for line in TEACH:
             self.assertIn(line, main)
         self.assertIn("Watch Live", main)
-        self.assertIn("/field-pack/virtual-zoo/?from=card#habitat=giant-panda", main)
+        self.assertIn("/field-pack/virtual-zoo/?from=card#habitat=ring-tailed-lemur", main)
         self.assertIn('class="card-hero-links no-print"', main)
         self.assertIn('class="card-try-next no-print"', main)
         self.assertIn('class="card-page-photo-link"', main)
-        self.assertIn('aria-label="Watch Live: Giant panda"', main)
-        self.assertIn("study-level-picker-bottom", main)
+        self.assertIn('aria-label="Watch Live: Ring-tailed lemur"', main)
+        self.assertNotIn("study-level-picker-bottom", main)
         self.assertNotIn("card-print-note", main)
         self.assertIn("study-card.js?v=9", html)
         self.assertIn("study-card.css?v=9", html)
         self.assertIn("study-cards-data.js?v=5", html)
         self.assertIn('id="study-card-data"', html)
         self.assertIn('"level_label": "Junior Ranger"', html)
-        self.assertIn('"id": "giant-panda"', html)
+        self.assertIn('"id": "ring-tailed-lemur"', html)
         self.assertIn('id="study-print-template"', html)
         self.assertIn("print-kit.js?v=20", html)
         self.assertIn("styles.css?v=41", html)
@@ -440,19 +437,18 @@ class GiantPandaEasyStudyCardTests(unittest.TestCase):
         self.assertLess(main.find("study-explore"), main.find("card-try-next"))
         visible = _text(main)
         self.assertIn("Junior Ranger", visible)
-        self.assertIn("Park Ranger", visible)
-        self.assertIn("Zoologist", visible)
-        self.assertIn('class="study-level-picker"', main)
-        self.assertIn('data-study-pick="easy"', main)
-        self.assertIn('data-study-pick="hard"', main)
-        self.assertIn('data-study-pick="zoologist"', main)
-        self.assertNotIn('class="study-level-badge"', main)
+        self.assertNotIn("Park Ranger", visible)
+        self.assertNotIn("Zoologist", visible)
+        self.assertIn('class="study-level-badge"', main)
+        self.assertNotIn('class="study-level-picker"', main)
+        self.assertNotIn('data-study-pick="easy"', main)
+        self.assertNotIn('data-study-pick="hard"', main)
         self.assertIn("Learn first", main)
         self.assertIn(">Quiz</h2>", main)
         self.assertEqual(main.count("data-study-correct"), 2)
         for badge in PLAIN_LEVEL_LABELS + AGE_BADGES:
             self.assertNotIn(badge, visible)
-        for phrase in PAGE_BRITTLE:
+        for phrase in BRITTLE:
             self.assertNotIn(phrase, main)
         print_tpl = html.split('id="study-print-template">', 1)[1].split("</template>", 1)[0]
         self.assertIn("Junior Ranger", print_tpl)
@@ -466,40 +462,40 @@ class GiantPandaEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Talk about it", back)
         self.assertIn("Push further", back)
         self.assertIn("ps-study-deepen", back)
-        for prompt in TALK_ABOUT_GIANT_PANDA + PUSH_FURTHER_GIANT_PANDA:
+        for prompt in TALK_ABOUT_RING_TAILED_LEMUR + PUSH_FURTHER_RING_TAILED_LEMUR:
             self.assertIn(prompt, back)
         self.assertEqual(
-            study_try_next_ids("giant-panda"),
-            ["red-panda", "koala", "african-lion"],
+            study_try_next_ids("ring-tailed-lemur"),
+            ["orangutan", "chimpanzee", "african-lion"],
         )
 
     def test_print_faces_are_duplex_and_clamped(self):
-        deck = study_deck_for("giant-panda")
+        deck = study_deck_for("ring-tailed-lemur")
         sheet = study_print_html(
             deck,
-            name="Giant panda",
-            emoji="🐼",
-            photo="/field-pack/photos/giant-panda.jpg?v=img2",
-            photo_pos="50% 25%",
+            name="Ring-tailed lemur",
+            emoji="🐒",
+            photo="/field-pack/photos/ring-tailed-lemur.jpg?v=img2",
+            photo_pos="50% 22%",
         )
         self.assertIn("ps-study-front", sheet)
         self.assertIn("ps-study-back", sheet)
         self.assertIn("ps-study-photo", sheet)
-        self.assertIn("/field-pack/photos/giant-panda.jpg", sheet)
+        self.assertIn("/field-pack/photos/ring-tailed-lemur.jpg", sheet)
         self.assertIn("Flip for answers", sheet)
         self.assertIn("Junior Ranger", sheet)
         self.assertNotIn(" · Easy ·", sheet)
-        self.assertIn(WIKI_GIANT_PANDA, sheet)
+        self.assertIn(WIKI_RING_TAILED_LEMUR, sheet)
         for stem in STEMS:
             self.assertIn(stem, sheet)
-        self.assertIn("Bamboo — almost all of their food", sheet)
-        self.assertIn("No — giant pandas are bears, not raccoons", sheet)
+        self.assertIn("Only on the island of Madagascar", sheet)
+        self.assertIn("No — it is a lemur, a different Madagascar primate", sheet)
         front, _, back = sheet.partition("ps-study-back")
         self.assertIn("Learn first", front)
         self.assertNotIn("Talk about it", front)
         self.assertIn("Talk about it", back)
         self.assertIn("Push further", back)
-        for prompt in TALK_ABOUT_GIANT_PANDA + PUSH_FURTHER_GIANT_PANDA:
+        for prompt in TALK_ABOUT_RING_TAILED_LEMUR + PUSH_FURTHER_RING_TAILED_LEMUR:
             self.assertIn(prompt, back)
         css = STYLES.read_text(encoding="utf-8")
         self.assertIn(".ps-study-front", css)
@@ -515,8 +511,9 @@ class GiantPandaEasyStudyCardTests(unittest.TestCase):
         self.assertIn("is-wrong-pick", study_js)
         self.assertIn("FPStudyLevelName", study_js + STUDY_DATA_JS.read_text(encoding="utf-8"))
 
-    def test_artifacts_include_giant_panda_easy_hard_and_zoologist(self):
+    def test_artifacts_include_ring_tailed_lemur_easy_only(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
+        self.assertIn("ring-tailed-lemur", payload)
         self.assertIn("giant-panda", payload)
         self.assertIn("orangutan", payload)
         self.assertIn("chimpanzee", payload)
@@ -533,10 +530,10 @@ class GiantPandaEasyStudyCardTests(unittest.TestCase):
         self.assertIn("african-elephant", payload)
         self.assertIn("reticulated-giraffe", payload)
         self.assertIn("african-lion", payload)
-        panda = payload["giant-panda"]
-        self.assertEqual(panda["id"], "giant-panda")
-        self.assertEqual(set(panda["levels"]), {"easy", "hard", "zoologist"})
-        easy = panda["levels"]["easy"]
+        lemur = payload["ring-tailed-lemur"]
+        self.assertEqual(lemur["id"], "ring-tailed-lemur")
+        self.assertEqual(set(lemur["levels"]), {"easy"})
+        easy = lemur["levels"]["easy"]
         self.assertEqual(len(easy["teach"]), 5)
         self.assertEqual(len(easy["questions"]), STUDY_SLOTS)
         self.assertEqual(
@@ -545,14 +542,10 @@ class GiantPandaEasyStudyCardTests(unittest.TestCase):
         )
         for q in easy["questions"]:
             self.assertEqual(len(q["choices"]), 3)
-        hard = panda["levels"]["hard"]
-        self.assertEqual(hard["teach"], [])
-        self.assertEqual(len(hard["questions"]), STUDY_SLOTS)
-        zoo = panda["levels"]["zoologist"]
-        self.assertEqual(zoo["teach"], [])
-        self.assertEqual(len(zoo["questions"]), STUDY_SLOTS)
+        self.assertNotIn("hard", lemur["levels"])
+        self.assertNotIn("zoologist", lemur["levels"])
         data_js = STUDY_DATA_JS.read_text(encoding="utf-8")
-        self.assertIn("giant-panda", data_js)
+        self.assertIn("ring-tailed-lemur", data_js)
         self.assertIn('"easy":"Junior Ranger"', data_js)
         self.assertIn('"hard":"Park Ranger"', data_js)
         self.assertEqual(set(payload["african-lion"]["levels"]), {"easy", "hard", "zoologist"})
@@ -570,6 +563,7 @@ class GiantPandaEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(set(payload["koala"]["levels"]), {"easy", "hard", "zoologist"})
         self.assertEqual(set(payload["chimpanzee"]["levels"]), {"easy", "hard", "zoologist"})
         self.assertEqual(set(payload["orangutan"]["levels"]), {"easy", "hard", "zoologist"})
+        self.assertEqual(set(payload["giant-panda"]["levels"]), {"easy", "hard", "zoologist"})
 
     def test_display_name_map_still_covers_future_tiers(self):
         self.assertEqual(
@@ -633,6 +627,10 @@ class GiantPandaEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Junior Ranger", _text(_main(panda_html)))
         self.assertIn("Park Ranger", _text(_main(panda_html)))
         self.assertIn("Zoologist", _text(_main(panda_html)))
+        lemur_html = LEMUR.read_text(encoding="utf-8")
+        self.assertIn("Junior Ranger", _text(_main(lemur_html)))
+        self.assertNotIn("Park Ranger", _text(_main(lemur_html)))
+        self.assertNotIn("Zoologist", _text(_main(lemur_html)))
 
 
 if __name__ == "__main__":
