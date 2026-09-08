@@ -358,8 +358,9 @@ exact Ma), and red colobus as common monkey prey.
 Soften contested numbers. Do not redo JR or PR
 themes.
 
-Facts for orangutan Junior Ranger + Park Ranger
-(easy + hard) are Wikipedia-backed:
+Facts for orangutan Junior Ranger + Park Ranger +
+Zoologist (easy + hard + zoologist) are
+Wikipedia-backed:
 https://en.wikipedia.org/wiki/Orangutan
 Species framing is the orangutan (Pongo).
 JR stays kid-simple “orangutan.” Soften contested
@@ -380,11 +381,18 @@ canopy specialist (soften %), threats soft (no
 status letter), rain leaf cover (soft tool use),
 hook grip, overlapping homes, day rest nest, and
 bigger males (soften kg).
-Reserve for Zoologist: three-species split (incl.
-Tapanuli), Critically Endangered letters, flange
-bimaturism detail, long-call throat-sac mechanics,
-palm-oil drivers, and tool-culture depth.
-Do not add Zoologist yet.
+Zoologist is answer-light (empty teach) and deepens
+three living Pongo species (Bornean, Sumatran,
+Tapanuli — described 2017), a Critically Endangered
+snapshot (Tapanuli among the rarest great apes;
+soften headcounts), flange bimaturism (both male
+forms can breed), throat-sac resonance for the long
+call, palm-oil plantation pressure, Suaq-style stick
+toolkits, a soft Tapanuli–Bornean genetic twist,
+living Ponginae, among-the-longest mammal interbirth
+gaps (soften years), and CITES Appendix I.
+Soften contested numbers. Do not redo JR or PR
+themes.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
@@ -495,9 +503,8 @@ LEVEL_DISPLAY_NAMES = {
 # Lion, reticulated-giraffe, African elephant, African penguin,
 # Caribbean flamingo, Galápagos tortoise, zebra, Nile hippo,
 # Sumatran tiger, western lowland gorilla, cheetah, red panda,
-# koala, and chimpanzee ship Junior Ranger + Park Ranger
-# + Zoologist. Orangutan ships Junior Ranger + Park Ranger
-# (no Zoologist yet).
+# koala, chimpanzee, and orangutan ship Junior Ranger +
+# Park Ranger + Zoologist.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -691,14 +698,14 @@ PUSH_FURTHER_CHIMPANZEE = (
     "Jane Goodall watched chimps for years. How did that long study change how we see apes?",
 )
 TALK_ABOUT_ORANGUTAN = (
-    "Big males boom a long call. Most days are quieter and more alone. What would you listen for at the zoo?",
-    "Kids learn nest-building by watching mom. What would you try to copy first?",
-    "Hook-shaped fingers and feet help hang in the canopy. Why might that matter up high?",
+    "There are three living kinds of orangutan, not just one. How would you tell them apart?",
+    "Some adult males grow wide cheek pads and some do not. What might that change at the zoo?",
+    "Palm oil shows up in conservation stories. Why would a cooking oil matter to a forest ape?",
 )
 PUSH_FURTHER_ORANGUTAN = (
-    "How many kinds of orangutan are there? What would you ask a keeper later?",
-    "What does “Critically Endangered” mean? Ask a keeper later.",
-    "Forest loss is a hard problem. What would you want to know first?",
+    "Scientists spotted a third kind called Tapanuli. How do you think they knew it was new?",
+    "Some orangutans make a stick “toolkit.” What would one of those sticks look like?",
+    "A throat sac can make a call louder. Why would a pouch help sound travel?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -6872,6 +6879,145 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia says orangutans show clear size differences between the sexes. Adult males are much larger and heavier than adult females. We do not lock exact weights.",
+                    },
+                ],
+            },
+            "zoologist": {
+                # Answer-light: no Learn-first strip. Facts from Wikipedia,
+                # Orangutan. Soften contested headcounts / years /
+                # phylogeny. Critically Endangered is a snapshot, not
+                # forever. Do not redo JR or PR themes.
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "three-species",
+                        "title": "Three living species",
+                        "stem": "How many living orangutan species do scientists recognise today?",
+                        "choices": [
+                            "Three in genus Pongo — Bornean (P. pygmaeus), Sumatran (P. abelii), and Tapanuli (P. tapanuliensis, described 2017)",
+                            "Only one species living on every continent",
+                            "They are the same species as African chimpanzees",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia places living orangutans in genus Pongo as three species: the Bornean orangutan (P. pygmaeus), the Sumatran orangutan (P. abelii), and the Tapanuli orangutan (P. tapanuliensis), described in 2017.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "cr-snapshot",
+                        "title": "CR snapshot",
+                        "stem": "How should we read the usual threat listing for living orangutans?",
+                        "choices": [
+                            "Extinct worldwide, with no living animals",
+                            "All three are often listed Critically Endangered — a snapshot, not a forever letter — and Tapanuli is among the rarest great apes",
+                            "The most common animal on every continent",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia often lists all three living orangutan species as Critically Endangered. That letter is a snapshot and can change. Tapanuli is among the rarest great apes. We do not lock exact headcounts.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "flange-bimaturism",
+                        "title": "Flange bimaturism",
+                        "stem": "How do adult male orangutans come in two forms?",
+                        "choices": [
+                            "Every adult male must grow flanges on his first birthday",
+                            "Males never change after they leave mom",
+                            "Adult males come in flanged and unflanged forms; both can breed, and unflanged males look more female-like and may later grow flanges",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia describes male bimaturism: adult males may be flanged (with cheek pads) or unflanged. Both forms can breed. Unflanged males look more like females and may grow flanges later.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "throat-sac-boom",
+                        "title": "Throat-sac boom",
+                        "stem": "How does a male orangutan’s throat pouch help a long call travel?",
+                        "choices": [
+                            "A throat pouch acts as a resonance chamber that amplifies the long call through dense forest",
+                            "The pouch stores fruit for later snacks",
+                            "The pouch is only a raincoat and makes no sound",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says a throat sac acts as a resonating chamber. It helps amplify the male long call so the boom can travel through dense forest.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "palm-oil-pressure",
+                        "title": "Palm-oil pressure",
+                        "stem": "Why does palm oil show up in orangutan conservation stories?",
+                        "choices": [
+                            "Palm oil is an orangutan’s favourite fruit juice",
+                            "Clearing forest for oil palm and other plantations is a major driver of habitat loss",
+                            "Palm trees only grow in Antarctica",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia lists conversion of forest to oil-palm and other plantations as a major driver of habitat loss for orangutans.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "tool-culture",
+                        "title": "Tool culture",
+                        "stem": "What extra stick “toolkit” have some orangutan communities built?",
+                        "choices": [
+                            "They only use sticks to write letters",
+                            "Every orangutan on Earth uses the same factory toolkit",
+                            "Some populations, such as Suaq Balimbing, make stick tools for insects, honey, and hard-husked seeds — and techniques differ by community",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia notes that some populations, including Suaq Balimbing in Sumatra, use stick tools to reach insects, honey, and seeds in hard husks. Different communities use different techniques.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "tapanuli-twist",
+                        "title": "Tapanuli twist",
+                        "stem": "How does the Tapanuli orangutan sit genetically beside the other two living species?",
+                        "choices": [
+                            "Genetically, Tapanuli is closer to Bornean orangutans than to nearby Sumatran ones — exact family-tree details stay soft",
+                            "Tapanuli DNA is identical to house-cat DNA",
+                            "Tapanuli is more closely related to African gorillas than to any Asian ape",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia reports that Tapanuli orangutans are genetically closer to Bornean orangutans than to the Sumatran orangutans that live nearer by. Exact phylogeny is still discussed, so we keep the family-tree details soft.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "living-ponginae",
+                        "title": "Only living Ponginae",
+                        "stem": "How do living orangutans sit among the great-ape family tree?",
+                        "choices": [
+                            "They are the only living monkeys in Africa",
+                            "They are the sole surviving members of the Asian great-ape subfamily Ponginae among living hominids",
+                            "They sit outside the ape family entirely",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia places living orangutans as the only surviving members of subfamily Ponginae — the Asian great-ape branch — among living hominids. African apes and humans sit on a different living branch.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "longest-baby-gap",
+                        "title": "Longest baby gap",
+                        "stem": "How long do orangutan mothers usually wait before having the next baby?",
+                        "choices": [
+                            "They have a new baby every weekend",
+                            "They never have more than one baby in a lifetime",
+                            "Among the longest interbirth intervals of any mammal — moms invest years in one offspring before the next",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says orangutans have among the longest interbirth intervals of any mammal. A mother invests years in one offspring before the next. We do not lock an exact number of years.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "cites-appendix-i",
+                        "title": "CITES Appendix I",
+                        "stem": "How does international trade treat orangutans and their parts?",
+                        "choices": [
+                            "CITES Appendix I tightly controls international trade in orangutans and their parts",
+                            "Anyone may ship orangutans as ordinary cargo",
+                            "CITES only covers house plants",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia lists orangutans on CITES Appendix I. That listing tightly controls international trade in the animals and their parts. Appendix I is a trade rule, not the same thing as an IUCN status letter.",
                     },
                 ],
             },
