@@ -221,7 +221,7 @@ OUTING_TALK_ANIMAL = (
 # gorilla, cheetah, red panda, koala, chimpanzee, and
 # orangutan (JR / Park Ranger / Zoologist) live in
 # scripts/study_cards.py. Giant panda ships Junior
-# Ranger only (no Park Ranger or Zoologist yet).
+# Ranger + Park Ranger (no Zoologist yet).
 CARD_TALK_OVERRIDE: dict[str, tuple[dict, ...]] = {}
 
 # Optional More talk on a card. Unused while lion ships the Easy study deck.

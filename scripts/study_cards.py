@@ -394,8 +394,8 @@ gaps (soften years), and CITES Appendix I.
 Soften contested numbers. Do not redo JR or PR
 themes.
 
-Facts for giant-panda Junior Ranger (easy only) are
-Wikipedia-backed:
+Facts for giant-panda Junior Ranger + Park Ranger
+(easy + hard) are Wikipedia-backed:
 https://en.wikipedia.org/wiki/Giant_panda
 Species framing is the giant panda (Ailuropoda
 melanoleuca). JR stays kid-simple “giant panda.”
@@ -409,11 +409,18 @@ especially when young. Bamboo is a giant grass,
 not a tree. Front paw has an extra “thumb” bump
 for gripping bamboo. Myth: not a raccoon — giant
 pandas are bears.
-Reserve for later: carnivore-gut detail, bamboo kg
-amounts, radial-sesamoid anatomy, cub weight
+Park Ranger is answer-light (empty teach) and deepens
+different themes: low-pay bamboo (soften %; gut
+details later), no hibernate, threats soft (no
+status letter), not-only-bamboo extras, crush jaws,
+mostly alone, misty mountains (soften elevation),
+sit to snack, mom school (soften years), and scent
+news.
+Reserve for Zoologist: carnivore-gut detail, bamboo
+kg amounts, radial-sesamoid anatomy, cub weight
 fraction, umami taste loss, Vulnerable downlist
 letter, Ailuropoda taxonomy, and the Qinling form.
-Do not add Park Ranger or Zoologist yet.
+Do not add Zoologist yet.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
@@ -527,7 +534,7 @@ LEVEL_DISPLAY_NAMES = {
 # Sumatran tiger, western lowland gorilla, cheetah, red panda,
 # koala, chimpanzee, and orangutan ship Junior Ranger +
 # Park Ranger + Zoologist. Giant panda ships Junior
-# Ranger only (no Park Ranger or Zoologist yet).
+# Ranger + Park Ranger (no Zoologist yet).
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -733,14 +740,14 @@ PUSH_FURTHER_ORANGUTAN = (
     "A throat sac can make a call louder. Why would a pouch help sound travel?",
 )
 TALK_ABOUT_GIANT_PANDA = (
-    "Almost all of a giant panda’s food is bamboo. What would you watch it do at the zoo?",
-    "A giant panda is a bear, not a raccoon. What would you tell a friend who mixed them up?",
-    "An extra bump on the front paw helps hold bamboo. Why might that “thumb” help?",
+    "Bamboo gives only a little energy, so pandas eat for hours. What would you watch at the zoo?",
+    "Giant pandas skip a long winter sleep. Why might bamboo not build the fat other bears need?",
+    "Almost all food is bamboo, but they sometimes take eggs or leftovers. What would surprise a friend?",
 )
 PUSH_FURTHER_GIANT_PANDA = (
-    "How much bamboo does a giant panda eat in a day? What would you ask a keeper later?",
-    "Newborn cubs start tiny, pink, and blind. Why might they begin so small?",
-    "Is the red panda a close cousin? What would you ask a keeper later?",
+    "The “thumb” is a special wrist bone. What would you ask a keeper later?",
+    "A threat letter on a list can change. Why treat it as a snapshot, not a forever grade?",
+    "Zoos help pandas have cubs. What would you want to know first?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -7204,6 +7211,149 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia says the giant panda is a bear. People once wondered if it was more like a raccoon, but it is a true bear.",
+                    },
+                ],
+            },
+            "hard": {
+                # Answer-light: Park Ranger has no Learn-first strip.
+                # Facts from Wikipedia, Giant panda. Soften contested
+                # numbers and IUCN letters. Carnivore-gut detail,
+                # bamboo kg amounts, radial-sesamoid anatomy, cub
+                # weight fraction, umami taste loss, Vulnerable
+                # downlist letter, Ailuropoda taxonomy, and the
+                # Qinling form live on Zoologist. Do not redo JR
+                # themes.
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "low-pay-bamboo",
+                        "title": "Low-pay bamboo",
+                        "stem": "Why do giant pandas spend so many hours eating?",
+                        "choices": [
+                            "They get only a small share of bamboo’s energy, so they must spend hours feeding",
+                            "They eat only once a year on a holiday",
+                            "They swallow stones instead of food",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says bamboo is low in nutrition, so giant pandas need to eat often and spend much of the day feeding. They get only a small share of bamboo’s energy. We do not lock an exact percent. How the gut is built in more detail comes later.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "no-hibernate",
+                        "title": "No hibernate",
+                        "stem": "Do giant pandas hibernate like many other bears?",
+                        "choices": [
+                            "They sleep underground for the whole winter like a cartoon bear",
+                            "No — they do not hibernate; bamboo does not build the fat reserves many bears need",
+                            "They fly south every winter",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says giant pandas do not hibernate. They stay active in cool mountain forests and may move to warmer slopes instead. Bamboo does not build the fat reserves many other bears use for a long winter sleep.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "threats-soft",
+                        "title": "Threats",
+                        "stem": "What puts wild giant pandas under pressure today?",
+                        "choices": [
+                            "Too many extra birthdays on the calendar",
+                            "A shortage of ice in the Arctic",
+                            "Habitat loss and broken-up bamboo forests",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says farming, deforestation, and broken-up habitat have pushed giant pandas out of many lowland forests. Loss and fragmentation of bamboo forest still put wild pandas under pressure. We do not lock a status letter — that grade is a snapshot and can change.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "not-only-bamboo",
+                        "title": "Not only bamboo",
+                        "stem": "Is a giant panda’s diet only bamboo, with no extras at all?",
+                        "choices": [
+                            "Almost all food is bamboo, but they occasionally take eggs, carrion, or small animals",
+                            "They eat only ice cream",
+                            "They never swallow anything except water",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says the diet is almost entirely bamboo, but giant pandas still have bear-like teeth and will eat meat, fish, and eggs when available. The extras are rare — bamboo is still almost all of the food.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "crush-jaws",
+                        "title": "Crush jaws",
+                        "stem": "How do a giant panda’s jaws and teeth handle tough bamboo?",
+                        "choices": [
+                            "They sip bamboo through a straw",
+                            "Strong jaws and big molars crush tough bamboo stems and shoots",
+                            "They have no teeth at all",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says giant pandas have large molars and powerful jaw muscles that crush and grind fibrous bamboo. The round face comes from those strong chewing muscles.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "mostly-alone",
+                        "title": "Mostly alone",
+                        "stem": "How do adult giant pandas usually live?",
+                        "choices": [
+                            "They always live in huge herds like wildebeest",
+                            "They never meet another panda, even to mate",
+                            "Adults are mostly solitary, except at mating time and when a mother raises a cub",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says the giant panda is solitary and gathers mainly in the breeding season. After mating, the male leaves; the mother raises the cub. Adults spend most of the year alone.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "misty-mountains",
+                        "title": "Misty mountains",
+                        "stem": "What kind of wild home do giant pandas use?",
+                        "choices": [
+                            "Cool, damp mountain forests with a dense bamboo understory",
+                            "Only hot desert dunes",
+                            "Only open ocean",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says giant pandas live in mountain forests in China with plenty of bamboo. The woods are cool and damp, with bamboo growing thick underneath. We do not lock an exact elevation.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "sit-to-snack",
+                        "title": "Sit to snack",
+                        "stem": "How do giant pandas often sit when they eat bamboo?",
+                        "choices": [
+                            "They hang upside down like sloths at every meal",
+                            "They often sit upright so both front paws can hold the bamboo",
+                            "They eat only while flying",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia describes a thumb-like bump on the front paw that helps hold bamboo for feeding. Sitting upright frees both front paws so they can grip stems while they chew.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "mom-school",
+                        "title": "Mom school",
+                        "stem": "How long does a cub stay with its mother, and what does it learn?",
+                        "choices": [
+                            "The cub leaves on the first morning and never comes back",
+                            "The cub is raised only by the father",
+                            "A cub stays with mom for a long time, learning what to eat and where bamboo grows",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says mothers rear cubs for many months — about a year or two — and the father does not help raise them. The cub stays close while it learns what to eat and where bamboo grows. We keep the exact years soft.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "scent-news",
+                        "title": "Scent news",
+                        "stem": "How do giant pandas share a lot of news with each other?",
+                        "choices": [
+                            "They leave scent marks on rocks and trees — more than they use loud calls",
+                            "They send text messages",
+                            "They only honk like cars on a highway",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says giant pandas rely heavily on smell. They leave scent marks on landmarks such as rocks and trees to share news about who they are and whether they are ready to mate. They can make sounds too, but scent does much of the talking.",
                     },
                 ],
             },
