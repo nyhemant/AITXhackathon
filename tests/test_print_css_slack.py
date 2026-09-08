@@ -97,6 +97,14 @@ class PrintCssSlackTest(unittest.TestCase):
         self.assertIn("height: 7.3in", STYLES_CSS)
         self.assertNotIn("height: 7.55in", STYLES_CSS)
 
+    def test_study_print_answers_are_italic_dark_grey(self):
+        block = STYLES_CSS.split(".ps-study-answers {", 1)[1]
+        answers = block.split(".ps-study-deepen {", 1)[0]
+        self.assertIn("font-style: italic", answers)
+        self.assertIn("color: #3a3f48", answers)
+        self.assertIn("color: #2a2e36", answers)
+        self.assertNotIn("color: #0a4545", answers)
+
     def test_print_js_sets_mode_classes_on_html_and_body(self):
         self.assertIn('classList.toggle("printing-qa"', PRINT_KIT_JS)
         self.assertIn('classList.toggle("printing-study"', PRINT_KIT_JS)
