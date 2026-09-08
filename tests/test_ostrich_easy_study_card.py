@@ -223,6 +223,7 @@ class OstrichEasyStudyCardTests(unittest.TestCase):
                 "ring-tailed-lemur",
                 "ostrich",
                 "warthog",
+                "shark",
             ),
         )
         self.assertEqual(shipped_levels_for("ostrich"), ("easy", "hard", "zoologist"))

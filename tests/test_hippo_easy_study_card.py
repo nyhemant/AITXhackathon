@@ -163,6 +163,7 @@ class HippoEasyStudyCardTests(unittest.TestCase):
                 "ring-tailed-lemur",
                 "ostrich",
                 "warthog",
+                "shark",
             ),
         )
         self.assertEqual(shipped_levels_for("nile-hippo"), ("easy", "hard", "zoologist"))
