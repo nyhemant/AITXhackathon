@@ -573,7 +573,7 @@ Soften contested numbers and treat IUCN letters as
 snapshots. Do not redo JR or PR themes.
 
 Facts for shark Junior Ranger (easy) + Park Ranger (hard)
-are Wikipedia-backed:
++ Zoologist are Wikipedia-backed:
 https://en.wikipedia.org/wiki/Shark
 This is the group shark card, not whale-shark. Claims must
 hold for most sharks. Skeleton is cartilage, not bone.
@@ -596,9 +596,16 @@ that must keep swimming, egg cases vs live pups, tooth
 shape matching diet, spiracles (especially bottom kinds),
 sister group to rays and skates, overfishing / finning
 with no group status letter, and the whale-shark card for
-huge filter-feeders. Do not redo JR themes. Reserve
-Zoologist for species-level status letters and denser
-taxonomy.
+huge filter-feeders. Do not redo JR themes. Zoologist
+deepens Selachii within Chondrichthyes, sister to batoids
+(Batomorphi), deep-time fossils (Devonian soft), hundreds
+of living kinds, status-by-kind (never one Red List letter
+for all sharks), ocean declines since ~1970 (soften %),
+finning + CITES as a snapshot, oophagy in some live-bearing
+kinds, urea salt balance, and dynamic lift (oil liver
+helps, but many still need forward motion and fin lift).
+Do not redo JR or PR themes. Soften contested numbers.
+Treat status letters as snapshots.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
@@ -715,9 +722,8 @@ LEVEL_DISPLAY_NAMES = {
 # Caribbean flamingo, Galápagos tortoise, zebra, Nile hippo,
 # Sumatran tiger, western lowland gorilla, cheetah, red panda,
 # koala, chimpanzee, orangutan, giant panda, and
-# ring-tailed lemur, ostrich, and warthog ship Junior
-# Ranger + Park Ranger + Zoologist. Shark ships Junior
-# Ranger + Park Ranger (no Zoologist yet).
+# ring-tailed lemur, ostrich, warthog, and shark ship
+# Junior Ranger + Park Ranger + Zoologist.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -971,14 +977,14 @@ PUSH_FURTHER_WARTHOG = (
     "Warthogs use overlapping home ranges, not strict territories. What’s the difference?",
 )
 TALK_ABOUT_SHARK = (
-    "Jelly-filled pores on a shark’s snout sense tiny electric fields. How might that help it find a hidden fish?",
-    "Many bony fish use a gas swim bladder. Sharks use a big oily liver instead. Why might oil help them float?",
-    "Some sharks lay leathery egg cases; others have live pups. Why might both ways work?",
+    "This group card covers many kinds. Why can’t they share one Red List letter?",
+    "Modern sharks sit in Selachii. How is that different from rays and skates?",
+    "Shark-like fishes go far back in fossils. What does deep time mean here?",
 )
 PUSH_FURTHER_SHARK = (
-    "Only a few kinds of shark must keep swimming to breathe. Why isn’t that true for most?",
-    "Tooth shape often matches food — cutters, grippers, crushers. What would you look for on a shell-crusher?",
-    "This group card covers many kinds of shark. Why can’t we lock one status letter for all of them?",
+    "CITES is a trade-rules pact. In plain words, what does it try to do?",
+    "Some sharks have live pups. How do those live-bearing modes differ?",
+    "“Threatened sharks” is not one story. Why might each kind need its own tale?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -9307,6 +9313,148 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia names the whale shark as a huge filter-feeder — the largest fish. That kind has its own Field Trip Kit card, so this group card does not stand in for it.",
+                    },
+                ],
+            },
+            "zoologist": {
+                # Answer-light: Zoologist has no Learn-first strip.
+                # Facts from Wikipedia, Shark (group page). Claims
+                # must hold for most sharks, not one species. Soften
+                # Ma, species counts, decline %, and liver size.
+                # No single IUCN / Red List letter for all sharks —
+                # status differs by kind; treat letters as snapshots.
+                # Do not redo JR or PR themes. Not whale-shark.
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "selachii-soft",
+                        "title": "Selachii",
+                        "stem": "Where do modern sharks sit among cartilaginous fishes?",
+                        "choices": [
+                            "In the division Selachii, inside the cartilaginous fishes (Chondrichthyes)",
+                            "In the bird class, next to penguins",
+                            "They are not fishes at all",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia places modern sharks in the division Selachii within Chondrichthyes — the cartilaginous fishes. That is a group name, not one species.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "sister-to-batoids",
+                        "title": "Sister to batoids",
+                        "stem": "What living group is the sister group to modern sharks?",
+                        "choices": [
+                            "Only house cats and songbirds",
+                            "Rays and skates (Batomorphi) — sister to Selachii, not the same division",
+                            "Only insects that live in trees",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says modern sharks (Selachii) are the sister group to rays and skates (Batomorphi). They are close cousins inside the cartilaginous fishes — not the same division.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "deep-time-soft",
+                        "title": "Deep time",
+                        "stem": "How far back do shark-like fishes go in the fossil record?",
+                        "choices": [
+                            "They first appeared last Tuesday",
+                            "Only after people invented boats",
+                            "Shark-like fishes go far back — into a time scientists call the Devonian",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says shark-like fishes show up far back in the fossil record, including the Devonian. Exact million-year counts stay soft.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "hundreds-of-kinds-soft",
+                        "title": "Hundreds of kinds",
+                        "stem": "About how many living kinds of shark are there?",
+                        "choices": [
+                            "Hundreds of living species, spread across many families",
+                            "Exactly two sharks on the whole planet",
+                            "Only one kind, and it lives in a bathtub",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia describes hundreds of living shark species across many families. Exact counts change as scientists split or lump kinds, so we keep the number soft.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "status-by-kind",
+                        "title": "Status by kind",
+                        "stem": "Can we give every shark the same Red List letter?",
+                        "choices": [
+                            "Yes — one letter covers every shark forever",
+                            "No — each kind gets its own letter; a group card cannot lock one grade",
+                            "Sharks are not listed at all, so letters do not exist",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia treats how sharks are doing as different by kind. Many ocean-going kinds can be threatened, but a group card cannot share one Red List letter. Letters are snapshots.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "ocean-declines-soft",
+                        "title": "Ocean declines",
+                        "stem": "What have studies reported about some oceanic sharks and rays since about 1970?",
+                        "choices": [
+                            "Every shark population grew huge",
+                            "They all moved to the moon",
+                            "Studies report big drops in some oceanic shark and ray numbers",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia cites studies that report big drops in some oceanic shark and ray numbers since about 1970. Exact percents stay soft, and not every kind dropped the same way.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "finning-cites-soft",
+                        "title": "Finning and CITES",
+                        "stem": "How do finning and trade rules like CITES affect sharks?",
+                        "choices": [
+                            "Finning and trade rules affect many kinds, but the rules are not the same for every shark",
+                            "CITES means every shark is now a house pet",
+                            "Finning is a dance contest with no rules",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says finning and trade rules, including CITES listings, affect many kinds of shark. CITES is a pact that limits buying and selling some wildlife across countries. Which kinds are covered is a snapshot and can change.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "oophagy-soft",
+                        "title": "Oophagy",
+                        "stem": "In some live-bearing sharks, what may pups do inside the mother?",
+                        "choices": [
+                            "They wait in a nest of dry leaves",
+                            "They may eat leftover eggs — and sometimes siblings — before they are born",
+                            "They order pizza from the ocean floor",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says some live-bearing kinds practice oophagy: early pups may eat remaining eggs inside the mother. A few kinds go further and eat siblings. This is not true of every shark.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "urea-salt-soft",
+                        "title": "Urea salt balance",
+                        "stem": "How do many sharks keep their body fluids in balance with salty seawater?",
+                        "choices": [
+                            "They drink only fresh rain from clouds",
+                            "They turn into salt crystals",
+                            "Their body fluids hold a lot of urea, so they match salty seawater",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says sharks keep high urea in the blood and other tissues so they stay in balance with salty seawater. Exact percents stay soft. A few kinds can handle fresher water by changing how the kidneys work.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "dynamic-lift-soft",
+                        "title": "Dynamic lift",
+                        "stem": "An oily liver helps sharks with buoyancy. Why do many still need to keep moving?",
+                        "choices": [
+                            "The oily liver helps, but many still need forward motion and fin lift to stay up",
+                            "The liver turns into a helium balloon and they float forever",
+                            "They never need fins or motion once the liver is oily",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says the oily liver helps with buoyancy, but it is limited. Many sharks also use dynamic lift — forward swimming and fins — to stay up. Exact liver-size percents stay soft.",
                     },
                 ],
             },
