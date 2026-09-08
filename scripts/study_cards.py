@@ -275,8 +275,9 @@ Eurasia and North America (soften Ma), rivers as a
 genetic boundary between forms, and CITES Appendix I.
 Soften contested numbers. Do not redo JR or PR themes.
 
-Facts for koala Junior Ranger + Park Ranger (easy +
-hard) are Wikipedia-backed:
+Facts for koala Junior Ranger + Park Ranger +
+Zoologist (easy + hard + zoologist) are
+Wikipedia-backed:
 https://en.wikipedia.org/wiki/Koala
 Species framing is the koala (Phascolarctos cinereus).
 JR stays kid-simple “koala.” Soften sleep hours, leaf
@@ -302,10 +303,22 @@ foraging vs daytime rest, a joey’s back ride after
 the pouch, fused hind-toe combs, habitat / cars /
 dogs / bushfire / disease pressure (no status
 letter), larger southern animals (soften kg), and
-hot-day rest on a cooler trunk. Reserve for
-Zoologist: pap, fingerprints, caecum detail, status
-letter, and Phascolarctos taxonomy. Do not add
-Zoologist yet. Do not redo JR themes.
+hot-day rest on a cooler trunk. Zoologist is
+answer-light (empty teach) and deepens Phascolarctos
+cinereus / Phascolarctidae (only living member; name
+means roughly “ash-coloured pouched bear,” still not
+a bear), pap as a weaning gut starter kit, human-like
+fingerprints via convergent evolution (not shared
+with wombats), a giant hindgut caecum (soften exact
+length), a Vulnerable snapshot that can also read
+Endangered in some states and overabundant in parts
+of others, liver cytochrome P450 detox (soften gene
+counts), a slow metabolic rate (soften exact %),
+soft-palate velar vocal folds for deeper bellows,
+Chlamydia and koala retrovirus as health threats
+(soft medical detail), and a rear-opening pouch with
+sphincter hold. Soften contested numbers. Do not redo
+JR or PR themes.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
@@ -413,9 +426,8 @@ LEVEL_DISPLAY_NAMES = {
 # Shipped picker order. A card only shows keys it actually defines.
 # Lion, reticulated-giraffe, African elephant, African penguin,
 # Caribbean flamingo, Galápagos tortoise, zebra, Nile hippo,
-# Sumatran tiger, western lowland gorilla, cheetah, and red
-# panda ship Junior Ranger + Park Ranger + Zoologist. Koala
-# ships Junior Ranger + Park Ranger (no Zoologist yet).
+# Sumatran tiger, western lowland gorilla, cheetah, red panda,
+# and koala ship Junior Ranger + Park Ranger + Zoologist.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -585,14 +597,14 @@ PUSH_FURTHER_RED_PANDA = (
     "Red pandas once had extinct cousins in Eurasia and North America. What would you ask a keeper?",
 )
 TALK_ABOUT_KOALA = (
-    "Koalas and wombats are pouch cousins. What would you look for that they share?",
-    "Males bellow at night; days are mostly quiet rest. Why might that be?",
-    "Males rub a chest scent on trees. Why mark a tree that way?",
+    "A joey eats special poop called pap from mom. How is that a gut starter kit?",
+    "Koala fingerprints look a lot like ours. Why might that not mean we are cousins?",
+    "Some states list koalas as more at risk than others. Why might the grade differ?",
 )
 PUSH_FURTHER_KOALA = (
-    "A joey learns which leaves are safe. How do you think it figures that out?",
-    "Cars and dogs are a problem when a koala walks on the ground. Why?",
-    "Some states list koalas as endangered. What might that mean later?",
+    "Scientists use words like Vulnerable and Endangered. How do they pick the letter?",
+    "A koala has a huge hindgut caecum for fermenting leaves. Why would a leaf-eater need that?",
+    "Scientists sequenced the koala genome. How could that help animal hospitals?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -5907,6 +5919,142 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia says that when it gets hot, a koala rests lower in the canopy and near the trunk, where the surface is cooler than the surrounding air.",
+                    },
+                ],
+            },
+            "zoologist": {
+                # Answer-light: no Learn-first strip. Facts from Wikipedia, Koala.
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "phascolarctos",
+                        "title": "Phascolarctos cinereus",
+                        "stem": "How does the living koala sit among its relatives?",
+                        "choices": [
+                            "Phascolarctos cinereus — the only living member of family Phascolarctidae",
+                            "One of twenty living bear species",
+                            "A kind of small kangaroo with no scientific name",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says the koala (Phascolarctos cinereus) is the only living member of family Phascolarctidae. The name means roughly “ash-coloured pouched bear,” but it is still not a bear.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "pap",
+                        "title": "Pap starter kit",
+                        "stem": "Around weaning, what special food helps a joey digest eucalyptus?",
+                        "choices": [
+                            "Adult leaves that need no extra help",
+                            "Soft faeces called pap from mom — a gut “starter kit” of microbes",
+                            "Only ocean fish oil",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says that around the time a joey leaves the pouch, mom produces a faecal pap the joey eats. That pap is packed with microbes that help seed the gut for a eucalyptus diet.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "fingerprints",
+                        "title": "Human-like fingerprints",
+                        "stem": "Why do koala fingerprints look a lot like ours?",
+                        "choices": [
+                            "They inherited them from wombats",
+                            "Zoo keepers stamp them on at birth",
+                            "Likely convergent evolution for gripping branches and picking leaves — not a shared ancestor with us",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia notes that koala fingerprints can look strikingly like human ones. Scientists treat this as convergent evolution for climbing and picking leaves. Wombats, their closest living cousins, do not share this trait.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "giant-caecum",
+                        "title": "Giant caecum",
+                        "stem": "How does a koala’s hindgut help it live on tough, toxic leaves?",
+                        "choices": [
+                            "An extremely long caecum ferments the leaves — one of the largest for its size",
+                            "It has no hindgut at all",
+                            "It stores leaves in its ears",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says koalas are hindgut fermenters with a very long caecum — among the largest for an animal of this size. We do not lock an exact length.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "vulnerable-snapshot",
+                        "title": "Vulnerable snapshot",
+                        "stem": "How should we read the koala’s usual threat listing?",
+                        "choices": [
+                            "Extinct worldwide, with no living animals",
+                            "Often listed Vulnerable by IUCN, and Endangered in some Australian states, while overabundant in parts of others — a snapshot, not forever",
+                            "The most common animal on every continent",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia lists the koala as Vulnerable on the IUCN Red List. Some Australian states list it Endangered, while parts of others have too many. A status letter is a snapshot and can change.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "liver-detox",
+                        "title": "Liver detox",
+                        "stem": "How does a koala’s liver help it eat eucalyptus?",
+                        "choices": [
+                            "The liver stores only sugar from candy",
+                            "Koalas never meet any plant toxins",
+                            "Cytochrome P450 enzymes help neutralize eucalyptus toxins",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says cytochrome P450 enzymes in the liver help neutralize toxic compounds in eucalyptus leaves. We do not lock an exact gene count.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "slow-metabolism",
+                        "title": "Slow metabolism",
+                        "stem": "How does a koala’s energy use match its leafy diet?",
+                        "choices": [
+                            "Its metabolic rate sits well below a typical mammal’s, matching a low-energy leaf diet",
+                            "It burns energy faster than a hummingbird",
+                            "It never uses any energy at all",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says a koala’s metabolic rate is well below that of a typical mammal, which matches a low-energy leaf diet. We do not lock an exact percent.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "extra-voice-folds",
+                        "title": "Extra voice folds",
+                        "stem": "How can a koala make a deeper bellow than its body size suggests?",
+                        "choices": [
+                            "By borrowing a lion’s larynx",
+                            "Soft-palate (velar) vocal folds help produce a deeper bellow",
+                            "By inflating its ears like balloons",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says koalas have extra vocal folds in the soft palate (velum), as well as the usual larynx folds. Those velar folds help them produce deeper bellows than body size alone would suggest.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "disease-pressure",
+                        "title": "Disease pressure",
+                        "stem": "Which illnesses put many wild koala populations under extra pressure?",
+                        "choices": [
+                            "Only the common cold, and nothing else",
+                            "A shortage of birthday cake",
+                            "Chlamydia and koala retrovirus are major health threats in many wild populations",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia lists Chlamydia and koala retrovirus as major health threats in many wild populations. We keep the medical detail soft and do not lock one infection rate.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "rear-pouch",
+                        "title": "Rear pouch hold",
+                        "stem": "How is a koala’s pouch built so the joey stays put while mom climbs?",
+                        "choices": [
+                            "It opens toward the rear, and sphincter muscles help hold the joey in",
+                            "It opens only at the top of the head",
+                            "Koalas have no pouch at all",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says the female’s pouch opening is secured by a sphincter that holds the young. The pouch opens toward the rear, like a wombat’s, which helps keep the joey from falling while mom climbs.",
                     },
                 ],
             },
