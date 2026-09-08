@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="/shell/shell.css?v=6" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=41" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=99" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=34" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=35" />
   <link rel="stylesheet" href="/field-pack/css/study-card.css?v=8" />
 </head>
 <body class="landing-body card-page-body">
@@ -37,7 +37,7 @@
     </header>
     <main class="card-page">
       <p class="card-page-crumbs"><a href="/start/">Field Trip Kit</a> · <a href="/field-pack/cards/">Cards</a></p>
-      <img class="card-page-photo" src="/field-pack/photos/galapagos-tortoise.jpg?v=img2" alt="Galápagos tortoise" width="640" height="640" decoding="async" style="object-position: 50% 35%" />
+      <a class="card-page-photo-link" href="/field-pack/virtual-zoo/?from=card#habitat=galapagos-tortoise" aria-label="Watch Live: Galápagos tortoise"><img class="card-page-photo" src="/field-pack/photos/galapagos-tortoise.jpg?v=img2" alt="Galápagos tortoise" width="640" height="640" decoding="async" style="object-position: 50% 35%" /></a>
       <h1>🐢 Galápagos tortoise</h1>
       
       <p class="card-page-blurb">Giant tortoise — slow and steady.</p>
@@ -80,7 +80,7 @@
         more.href = KIT_SITES[from];
         more.removeAttribute("hidden");
       }
-      document.querySelectorAll("a.card-watch-live").forEach(function (a) {
+      document.querySelectorAll("a.card-watch-live, a.card-page-photo-link").forEach(function (a) {
         if (!from || !KIT_SITES[from]) return;
         try {
           var u = new URL(a.href, window.location.origin);

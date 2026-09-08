@@ -287,7 +287,7 @@ OUTING_TALK_EXHIBIT = (
 )
 
 SEO_CSS_VER = "29"
-CARD_SEO_CSS_VER = "34"
+CARD_SEO_CSS_VER = "35"
 LANDING_CSS_VER = "99"
 LANDING_MAP_JS_VER = "87"
 LANDING_HOOK_JS_VER = "37"
@@ -979,6 +979,30 @@ def card_hero_links_html(more_html: str, watch_html: str) -> str:
     if not more and not watch:
         return ""
     return f'<div class="card-hero-links no-print">{more}{watch}</div>'
+
+
+def card_hero_photo_html(
+    *,
+    photo: str,
+    name: str,
+    emoji: str,
+    pos_attr: str = "",
+    watch_href: str = "",
+) -> str:
+    """Hero photo. Same Watch Live door when that control exists; otherwise unlinked."""
+    if not photo:
+        return f'<p class="card-page-emoji" aria-hidden="true">{esc(emoji)}</p>'
+    img = (
+        f'<img class="card-page-photo" src="{esc(photo)}" alt="{esc(name)}" '
+        f'width="640" height="640" decoding="async"{pos_attr} />'
+    )
+    href = (watch_href or "").strip()
+    if not href:
+        return img
+    return (
+        f'<a class="card-page-photo-link" href="{esc(href)}" '
+        f'aria-label="{esc(CTA_WATCH_LIVE)}: {esc(name)}">{img}</a>'
+    )
 
 
 def watch_links_html(item: dict, *, film_via_vft: bool = False, watch_live: bool = False) -> str:
@@ -4755,10 +4779,18 @@ def write_card_pages(
         elif (item.get("photo") or "").startswith("photos/"):
             photo = "/field-pack/" + str(item["photo"]).split("?")[0]
         pos_attr = _photo_position_attr(_photo_position(item, c))
-        img_html = (
-            f'<img class="card-page-photo" src="{esc(photo)}" alt="{esc(name)}" width="640" height="640" decoding="async"{pos_attr} />'
-            if photo
-            else f'<p class="card-page-emoji" aria-hidden="true">{esc(emoji)}</p>'
+        kind = card_kind(c)
+        watch_live = kind in ("animal", "sea_life")
+        vft = item.get("vft") or {}
+        vft_href = vft.get("vft_href") or ""
+        watch_href = card_watch_href(vft) if vft_has_inpage_media(vft) else ""
+        photo_watch_href = watch_href if (watch_live and watch_href) else ""
+        img_html = card_hero_photo_html(
+            photo=photo,
+            name=name,
+            emoji=emoji,
+            pos_attr=pos_attr,
+            watch_href=photo_watch_href,
         )
         talk_html = outing_talk_html(item)
         study_deck = study_deck_for(cid)
@@ -4785,17 +4817,12 @@ def write_card_pages(
                 f'\n  <link rel="stylesheet" href="/field-pack/css/study-card.css?v={STUDY_CARD_CSS_VER}" />'
             )
         more_links = catalog_more_links_html(item, shared=not show_venue_chrome, allow_cam=False)
-        kind = card_kind(c)
-        watch_live = kind in ("animal", "sea_life")
         watch_html = watch_links_html(item, film_via_vft=True, watch_live=watch_live)
         hero_links = card_hero_links_html(more_links, watch_html)
         next_html = card_next_html(cid)
         try_next_html = study_try_next_html(cid) if study_deck else ""
         print_venue_attr = f' data-venue="{esc(vid)}"' if show_venue_chrome and vid else ""
         kit_sites_js = json.dumps(start_here_official_urls(), separators=(",", ":"))
-        vft = item.get("vft") or {}
-        vft_href = vft.get("vft_href") or ""
-        watch_href = card_watch_href(vft) if vft_has_inpage_media(vft) else ""
         action_bits: list[str] = []
         if watch_live and watch_href:
             action_bits.append(
@@ -4897,7 +4924,7 @@ def write_card_pages(
         more.href = KIT_SITES[from];
         more.removeAttribute("hidden");
       }}
-      document.querySelectorAll("a.card-watch-live").forEach(function (a) {{
+      document.querySelectorAll("a.card-watch-live, a.card-page-photo-link").forEach(function (a) {{
         if (!from || !KIT_SITES[from]) return;
         try {{
           var u = new URL(a.href, window.location.origin);

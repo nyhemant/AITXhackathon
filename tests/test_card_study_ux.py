@@ -14,6 +14,7 @@ from generate_bdo_seo import (  # noqa: E402
     STUDY_CARD_CSS_VER,
     STUDY_CARD_JS_VER,
     card_hero_links_html,
+    card_hero_photo_html,
     watch_links_html,
 )
 from study_cards import (  # noqa: E402
@@ -153,7 +154,7 @@ class CardStudyUxTests(unittest.TestCase):
         self.assertNotIn("card-try-next", koala)
 
     def test_photos_and_watch_live_share_hero_row(self):
-        self.assertEqual(CARD_SEO_CSS_VER, "34")
+        self.assertEqual(CARD_SEO_CSS_VER, "35")
         self.assertEqual(STUDY_CARD_JS_VER, "7")
         self.assertEqual(STUDY_CARD_CSS_VER, "8")
         css = SEO_CSS.read_text(encoding="utf-8")
@@ -202,6 +203,66 @@ class CardStudyUxTests(unittest.TestCase):
         self.assertIn(">Photos</a>", warthog)
         self.assertNotIn("Watch Live", warthog)
         self.assertNotIn('class="seo-watch-row"', warthog)
+
+    def test_hero_photo_matches_watch_live_href(self):
+        href = "/field-pack/virtual-zoo/?from=card#habitat=zebra"
+        linked = card_hero_photo_html(
+            photo="/field-pack/photos/zebra.jpg?v=img2",
+            name="Zebra",
+            emoji="🦓",
+            pos_attr="",
+            watch_href=href,
+        )
+        self.assertIn('class="card-page-photo-link"', linked)
+        self.assertIn('aria-label="Watch Live: Zebra"', linked)
+        self.assertIn(f'href="{href}"', linked)
+        self.assertRegex(linked, r'<a class="card-page-photo-link"[^>]*>\s*<img class="card-page-photo"')
+
+        bare = card_hero_photo_html(
+            photo="/field-pack/photos/warthog.jpg?v=img2",
+            name="Warthog",
+            emoji="🐗",
+            pos_attr="",
+            watch_href="",
+        )
+        self.assertNotIn("<a ", bare)
+        self.assertNotIn("card-page-photo-link", bare)
+        self.assertIn('class="card-page-photo"', bare)
+        self.assertIn(
+            'aria-hidden="true"',
+            card_hero_photo_html(photo="", name="Zebra", emoji="🦓", watch_href=href),
+        )
+
+        css = SEO_CSS.read_text(encoding="utf-8")
+        self.assertIn(".card-page a.card-page-photo-link", css)
+        self.assertIn("cursor: pointer", css)
+        gen = SEO.read_text(encoding="utf-8")
+        self.assertIn("a.card-watch-live, a.card-page-photo-link", gen)
+
+        for cid in ("galapagos-tortoise", "zebra", "african-lion"):
+            html = (FP / "cards" / cid / "index.html").read_text(encoding="utf-8")
+            main = _main(html)
+            with self.subTest(card=cid):
+                self.assertIn('class="card-page-photo-link"', main)
+                photo_block = main.split('class="card-page-photo-link"', 1)[1].split("<h1>", 1)[0]
+                watch_block = main.split('class="seo-watch-row"', 1)[1].split("</p>", 1)[0]
+                photo_href = photo_block.split('href="', 1)[1].split('"', 1)[0]
+                watch_href = watch_block.split('href="', 1)[1].split('"', 1)[0]
+                self.assertEqual(photo_href, watch_href)
+                self.assertIn("from=card", photo_href)
+                self.assertIn("#habitat=", photo_href)
+                self.assertIn(f'aria-label="Watch Live:', main)
+                print_tpl = html.split('id="study-print-template">', 1)[1].split("</template>", 1)[0]
+                self.assertNotIn("card-page-photo-link", print_tpl)
+
+        warthog = _main((FP / "cards" / "warthog" / "index.html").read_text(encoding="utf-8"))
+        self.assertNotIn("card-page-photo-link", warthog)
+        self.assertIn('class="card-page-photo"', warthog)
+        self.assertLess(warthog.find("card-page-photo"), warthog.find("<h1>"))
+
+        dino = _main((FP / "cards" / "sci-dinosaur" / "index.html").read_text(encoding="utf-8"))
+        self.assertNotIn("card-page-photo-link", dino)
+        self.assertNotIn("Watch Live", dino)
 
 
 if __name__ == "__main__":
