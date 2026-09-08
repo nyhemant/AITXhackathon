@@ -130,8 +130,8 @@ def _text(html: str) -> str:
 
 class HippoHardStudyCardTests(unittest.TestCase):
     def test_hard_deck_is_park_ranger_without_teach(self):
-        self.assertEqual(shipped_levels_for("nile-hippo"), ("easy", "hard"))
-        self.assertIsNone(study_deck_for("nile-hippo", "zoologist"))
+        self.assertEqual(shipped_levels_for("nile-hippo"), ("easy", "hard", "zoologist"))
+        self.assertIsNotNone(study_deck_for("nile-hippo", "zoologist"))
         self.assertEqual(level_display_name("hard"), "Park Ranger")
         deck = study_deck_for("nile-hippo", "hard")
         self.assertIsNotNone(deck)
@@ -211,10 +211,10 @@ class HippoHardStudyCardTests(unittest.TestCase):
         self.assertNotIn("<details class=\"study-teach\" open", html)
         self.assertIn("Junior Ranger", html)
         self.assertIn("Park Ranger", html)
-        self.assertNotIn("Zoologist", html)
+        self.assertIn("Zoologist", html)
         self.assertIn('data-study-pick="easy"', html)
         self.assertIn('data-study-pick="hard"', html)
-        self.assertNotIn('data-study-pick="zoologist"', html)
+        self.assertIn('data-study-pick="zoologist"', html)
         self.assertEqual(html.count('role="group"'), 2)
         self.assertIn("study-level-picker-bottom", html)
         self.assertIn('aria-label="Study level at the end"', html)
@@ -335,7 +335,8 @@ class HippoHardStudyCardTests(unittest.TestCase):
         self.assertEqual(hard["teach"], [])
         self.assertEqual(len(hard["questions"]), STUDY_SLOTS)
         self.assertEqual([q["id"] for q in hard["questions"]], list(HARD_IDS))
-        self.assertNotIn("zoologist", payload["nile-hippo"]["levels"])
+        self.assertIn("zoologist", payload["nile-hippo"]["levels"])
+        self.assertEqual(payload["nile-hippo"]["levels"]["zoologist"]["teach"], [])
         data_js = STUDY_DATA_JS.read_text(encoding="utf-8")
         self.assertIn("nile-hippo", data_js)
         self.assertIn("bottom-walk", data_js)
@@ -350,7 +351,7 @@ class HippoHardStudyCardTests(unittest.TestCase):
         html = HIPPO.read_text(encoding="utf-8")
         self.assertIn("Park Ranger", html)
         self.assertIn("Junior Ranger", html)
-        self.assertNotIn("Zoologist", html)
+        self.assertIn("Zoologist", html)
         self.assertIn("Learn first", html)
         self.assertIn("Watch Live", html)
         self.assertIn('class="card-hero-links no-print"', html)
@@ -377,7 +378,7 @@ class HippoHardStudyCardTests(unittest.TestCase):
         self.assertIn("Push further", hard_html)
         self.assertIn("Park Ranger", hard_html)
         self.assertIn("Junior Ranger", hard_html)
-        self.assertNotIn("Zoologist", hard_html)
+        self.assertIn("Zoologist", hard_html)
 
 
 if __name__ == "__main__":
