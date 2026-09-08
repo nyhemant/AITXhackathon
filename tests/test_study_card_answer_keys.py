@@ -57,7 +57,7 @@ TRAFFIC_IDS = (
     "red-panda",
     "koala",
 )
-JR_ONLY_IDS = ("chimpanzee",)
+JR_PR_IDS = ("chimpanzee",)
 
 
 def _decks():
@@ -69,7 +69,7 @@ def _decks():
 
 class StudyCardAnswerKeyTests(unittest.TestCase):
     def test_traffic_set_is_thirteen_animals_with_three_levels(self):
-        self.assertEqual(tuple(study_card_ids()), TRAFFIC_IDS + JR_ONLY_IDS)
+        self.assertEqual(tuple(study_card_ids()), TRAFFIC_IDS + JR_PR_IDS)
         self.assertEqual(shipped_levels_for("cheetah"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("cheetah", "zoologist"))
         self.assertEqual(shipped_levels_for("red-panda"), ("easy", "hard", "zoologist"))
@@ -78,8 +78,8 @@ class StudyCardAnswerKeyTests(unittest.TestCase):
         self.assertEqual(shipped_levels_for("koala"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("koala", "hard"))
         self.assertIsNotNone(study_deck_for("koala", "zoologist"))
-        self.assertEqual(shipped_levels_for("chimpanzee"), ("easy",))
-        self.assertIsNone(study_deck_for("chimpanzee", "hard"))
+        self.assertEqual(shipped_levels_for("chimpanzee"), ("easy", "hard"))
+        self.assertIsNotNone(study_deck_for("chimpanzee", "hard"))
         self.assertIsNone(study_deck_for("chimpanzee", "zoologist"))
         decks = list(_decks())
         self.assertEqual(len(decks), 39)
