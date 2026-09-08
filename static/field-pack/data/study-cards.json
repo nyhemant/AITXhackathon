@@ -7708,14 +7708,14 @@
     "source": "https://en.wikipedia.org/wiki/Common_warthog",
     "source_note": "Facts from Wikipedia, Common warthog.",
     "talk_about": [
-      "When a warthog runs, the thin tail often goes straight up. Why might that flag help?",
-      "Warthogs wallow in mud when it is hot and huddle together when it is cold. How do those two tricks help?",
-      "A separate desert warthog lives in drier East Africa. How is that different from the common one?"
+      "Scientists talk about two living warthog species. What would you look for to tell them apart?",
+      "A “low-risk” letter can still mean a hog needs care. Why might a huge range hide real trouble?",
+      "Wrist pads start forming before birth. Why might kneeling to graze be built in?"
     ],
     "push_further": [
-      "Warthogs scent-mark sleeping spots, feeding areas, and waterholes. What could those marks tell others?",
-      "They eat more grass when it is wet and more roots and bulbs when it is dry. Why might the menu change?",
-      "Moms defend piglets from big hunters. How could a mom keep her babies safer?"
+      "A subspecies is a local kind within a species. What does that mean for warthogs across Africa?",
+      "Allosucking is when a sow nurses a foster piglet. How could that help a sounder?",
+      "Warthogs use overlapping home ranges, not strict territories. What’s the difference?"
     ],
     "levels": {
       "easy": {
@@ -7991,6 +7991,141 @@
             ],
             "correct": "A",
             "why": "Wikipedia says warthogs sometimes let mongooses or monkeys groom them to pick off ticks."
+          }
+        ]
+      },
+      "zoologist": {
+        "teach": [],
+        "questions": [
+          {
+            "slot": 1,
+            "id": "phacochoerus-africanus",
+            "title": "Phacochoerus africanus",
+            "stem": "What scientific name do scientists use for the common warthog, and which family and genus does it sit in?",
+            "choices": [
+              "Phacochoerus africanus — the common warthog — in the pig family Suidae, in a genus shared with the desert warthog",
+              "It has no scientific name at all",
+              "It is the only hog in a family of one hundred living species"
+            ],
+            "correct": "A",
+            "why": "Wikipedia names the common warthog Phacochoerus africanus. It sits in the pig family Suidae. Genus Phacochoerus is shared with the desert warthog."
+          },
+          {
+            "slot": 2,
+            "id": "name-history-soft",
+            "title": "Name history",
+            "stem": "How did scientists once treat the common warthog’s name, and what does Phacochoerus aethiopicus mean now?",
+            "choices": [
+              "The two names have always been locked and never changed",
+              "The common warthog was once lumped with the desert warthog; P. aethiopicus now means the desert warthog only",
+              "P. aethiopicus now means every farm pig on Earth"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says the common warthog was once treated as a subspecies of P. aethiopicus. Today that name is reserved for the desert warthog. Extra split maps stay soft."
+          },
+          {
+            "slot": 3,
+            "id": "four-subspecies-soft",
+            "title": "Four subspecies",
+            "stem": "How do many lists split living common warthogs across Africa?",
+            "choices": [
+              "They are never split at all — one forever name only",
+              "They are split into one hundred city-only subspecies",
+              "Often into about four living subspecies across Africa — maps of who lives where stay under review"
+            ],
+            "correct": "C",
+            "why": "Wikipedia often lists about four living subspecies. Exact country maps stay contested, so we do not lock one forever map."
+          },
+          {
+            "slot": 4,
+            "id": "least-concern-snapshot",
+            "title": "Least Concern snapshot",
+            "stem": "How should we read the usual IUCN letter for the common warthog?",
+            "choices": [
+              "Least Concern, because the range is still huge — a snapshot letter, even though local wipeouts still happen",
+              "The letter is carved in stone and can never change",
+              "Extinct everywhere, with no living hogs left"
+            ],
+            "correct": "A",
+            "why": "Wikipedia reports IUCN Least Concern because the range is still very large. That letter is a snapshot. Local wipeouts can still happen."
+          },
+          {
+            "slot": 5,
+            "id": "wrist-callosities",
+            "title": "Wrist pads",
+            "stem": "When do a warthog’s padded wrists start to form, and why does that matter?",
+            "choices": [
+              "The pads grow only after a hog learns to fly",
+              "Padded wrists start forming before birth, so kneeling to graze is built in",
+              "Warthogs never have pads on the wrists"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says the calloused wrist pads form early in the fetus. Kneeling to graze is built in, not a later trick."
+          },
+          {
+            "slot": 6,
+            "id": "long-gestation-soft",
+            "title": "Long pregnancy",
+            "stem": "How long is a warthog pregnancy compared with many other pigs?",
+            "choices": [
+              "Only a few days — shorter than any other mammal",
+              "Warthogs do not have pregnancies at all",
+              "About five to six months — long for a pig"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says gestation is typically five to six months. Exact day counts stay soft. That is long for a pig."
+          },
+          {
+            "slot": 7,
+            "id": "allosucking-soft",
+            "title": "Allosucking",
+            "stem": "What may a warthog sow do if she loses her own litter?",
+            "choices": [
+              "She may nurse foster piglets — a cooperative-breeding habit called allosucking",
+              "She never feeds any piglet again",
+              "She only feeds fish in a pond"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says sows have been seen nursing foster piglets if they lose their own litter. That allosucking looks like cooperative breeding, not a mix-up. Extra counts stay soft."
+          },
+          {
+            "slot": 8,
+            "id": "two-facial-glands",
+            "title": "Two facial glands",
+            "stem": "Which two named facial glands do warthogs use for marking and social signals?",
+            "choices": [
+              "Only a hidden tail gland used for flying",
+              "The tusk gland and the sebaceous gland — used in marking and social signals",
+              "No named glands at all — they never mark"
+            ],
+            "correct": "B",
+            "why": "Wikipedia names two facial glands: the tusk gland and the sebaceous gland. Both sexes mark; the glands help with courtship, status, and other social signals. Extra chemistry stays soft."
+          },
+          {
+            "slot": 9,
+            "id": "home-range-not-territory",
+            "title": "Home range",
+            "stem": "Do common warthogs keep strict territories?",
+            "choices": [
+              "Yes — each hog owns a fenced yard no other hog may enter",
+              "They have no home at all and wander the whole planet",
+              "No — they occupy overlapping home ranges rather than strict territories"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says common warthogs are not territorial. They occupy a home range that can overlap with others."
+          },
+          {
+            "slot": 10,
+            "id": "lifespan-soft",
+            "title": "Lifespan",
+            "stem": "How does a warthog’s life in the wild often compare with life in care?",
+            "choices": [
+              "They often live fewer years in the wild than in care",
+              "They live forever in the wild and never in care",
+              "Wild and care lives are locked at the same exact age"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says wild warthogs often live fewer years than animals in care. Exact ages stay soft."
           }
         ]
       }
