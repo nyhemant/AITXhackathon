@@ -470,33 +470,47 @@ radiation (Ma soft).
 Soften contested hours / Ma / headcounts. Do not
 redo JR or PR themes.
 
-Facts for ostrich Junior Ranger (easy only)
-are Wikipedia-backed:
+Facts for ostrich Junior Ranger + Park Ranger
+(easy + hard) are Wikipedia-backed:
 https://en.wikipedia.org/wiki/Ostrich
+https://en.wikipedia.org/wiki/Common_ostrich
 Species framing is the common ostrich (Struthio
 camelus). JR stays kid-simple “ostrich.”
 Soften contested height, kg, and egg size. No
-IUCN letter on Junior Ranger. The ostrich is the
-world’s largest living bird — tallest and
-heaviest (no exact height or kg). Flightless;
-built for running on strong legs (no speeds).
-Wild home is Africa on open grassland / savanna.
-A long neck and long legs help spot danger.
-Males are mostly black with white wing and tail
-feathers; females are greyish-brown / brownish-grey.
-Plant-first snacks: seeds, grass, shrubs, and
-fruit (sometimes small critters — soft). Biggest
-eggs of any living bird (soften size). A baby is
-a chick — fawn with dark spots. Wild ostriches
-are rarer than they used to be; many live on
-farms and in protected places (no status letter).
-Myth: they do not bury their heads in the sand —
-when hiding they may press head and neck flat so
-they look like a mound.
-Reserve for later (Park Ranger / Zoologist):
-speeds, toes, egg kg, boom mechanics, and
-status letters.
-Do not add Park Ranger or Zoologist yet.
+IUCN letter on Junior Ranger or Park Ranger.
+The ostrich is the world’s largest living bird —
+tallest and heaviest (no exact height or kg).
+Flightless; built for running on strong legs
+(no speeds on JR). Wild home is Africa on open
+grassland / savanna. A long neck and long legs
+help spot danger. Males are mostly black with
+white wing and tail feathers; females are
+greyish-brown / brownish-grey. Plant-first
+snacks: seeds, grass, shrubs, and fruit
+(sometimes small critters — soft). Biggest
+eggs of any living bird (soften size). A baby
+is a chick — fawn with dark spots. Wild
+ostriches are rarer than they used to be; many
+live on farms and in protected places (no
+status letter). Myth: they do not bury their
+heads in the sand — when hiding they may press
+head and neck flat so they look like a mound.
+Hard is answer-light (empty teach) and deepens
+two-toe running feet, a soft burst-plus-steady
+pace (no mph), a forward defensive kick, male
+boom-and-wing courtship, a shared ground-pit
+nest, day-hen / night-cock sits, fluffy feathers
+that lack flying hooks (wings for balance and
+turns), pebble grinders in the gizzard, a
+~200-year wild-number drop with farms and
+reserves (no status letter), and travel with
+other grazers such as zebras or antelope.
+Reserve for Zoologist: Somali as a separate
+species, Arabian extinct, ratite/keel anatomy,
+an LC snapshot, CITES North African, eye mm,
+and relative egg size.
+Soften contested mph / population numbers.
+Do not redo JR themes. Do not add Zoologist yet.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
@@ -613,7 +627,7 @@ LEVEL_DISPLAY_NAMES = {
 # koala, chimpanzee, orangutan, giant panda, and
 # ring-tailed lemur ship Junior Ranger + Park
 # Ranger + Zoologist. Ostrich ships Junior
-# Ranger only (no Park Ranger or Zoologist yet).
+# Ranger + Park Ranger (no Zoologist yet).
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -843,14 +857,14 @@ PUSH_FURTHER_RING_TAILED_LEMUR = (
     "Lemurs may have floated to Madagascar on plants long ago. How could a raft of trees start a whole family?",
 )
 TALK_ABOUT_OSTRICH = (
-    "The ostrich is the world’s largest living bird. What would you notice first at the zoo?",
-    "Ostriches cannot fly — they run on strong legs. Why might running be a better plan?",
-    "People say ostriches bury their heads in the sand. What would you tell a friend?",
+    "An ostrich has two toes on each foot; most birds have four. Why might two toes help a runner?",
+    "Females often sit on the nest by day and males sit by night. How could those colors hide the eggs?",
+    "A territorial male can inflate his neck to boom and flap his wings. What might that show mean?",
 )
 PUSH_FURTHER_OSTRICH = (
-    "A long neck and long legs help an ostrich look out. What danger might it spot first?",
-    "Males are mostly black-and-white; females are brownish-grey. Why might the two looks help?",
-    "An ostrich egg is the biggest of any living bird. What would you ask a keeper about it?",
+    "Ostriches swallow pebbles that help grind food. How could stones help digest plants?",
+    "Soft ostrich feathers lack the tiny hooks flying birds use. Why would that make flying hard?",
+    "Eggs go in a shallow ground pit, and more than one hen may add eggs. How does a shared nest work?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -8177,6 +8191,148 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia says ostriches do not bury their heads in the sand. When they hide, they may press the head and neck flat to the ground so they look like a mound.",
+                    },
+                ],
+            },
+            "hard": {
+                # Answer-light: Park Ranger has no Learn-first strip.
+                # Facts from Wikipedia, Common ostrich. Soften
+                # contested mph / population numbers. No IUCN
+                # letter. Somali split, Arabian extinct,
+                # ratite/keel anatomy, LC snapshot, CITES North
+                # African, eye mm, and relative egg size live on
+                # Zoologist. Do not redo JR themes.
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "two-toe-runners",
+                        "title": "Two-toe runners",
+                        "stem": "How many toes does an ostrich have on each foot, and why does that help?",
+                        "choices": [
+                            "Only two toes on each foot — most birds have more — built for running",
+                            "Four toes on each foot, like most songbirds",
+                            "No toes at all — they slide on ice",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says an ostrich has just two toes on each foot; most birds have four. Fewer toes is a running build. Extra foot-bone names come later.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "burst-speed-soft",
+                        "title": "Burst speed",
+                        "stem": "How fast can an ostrich sprint, and can it keep a strong pace?",
+                        "choices": [
+                            "They can only hop as slow as a turtle",
+                            "They can sprint about as fast as a car in town, then hold a strong steady pace",
+                            "They only fly at airplane speed",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says ostriches can sprint very fast and also keep a strong steady pace — among the fastest two-legged runners. Exact speed numbers stay soft.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "forward-kick",
+                        "title": "Forward kick",
+                        "stem": "If an ostrich is cornered, how can its strong legs help it defend itself?",
+                        "choices": [
+                            "It kicks backward like a horse and never uses its legs",
+                            "It only hides under a blanket",
+                            "If cornered, its powerful legs can kick forward in defense",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says ostriches can kick hard with those powerful legs, and the kick goes forward. It is a last-resort defense when they cannot run away.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "boom-show",
+                        "title": "Boom show",
+                        "stem": "How does a territorial male ostrich show off to attract mates?",
+                        "choices": [
+                            "He inflates his neck to boom and flaps his wings",
+                            "He sings underwater like a whale",
+                            "He stays silent and never uses his wings",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says territorial males inflate the neck to boom and flap their wings as a courtship show. Extra neck-bone names come later.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "shared-pit-nest",
+                        "title": "Shared pit nest",
+                        "stem": "Where do ostrich eggs go, and who may add eggs to the nest?",
+                        "choices": [
+                            "Each hen builds a high tree nest of her own",
+                            "Eggs go in a shallow ground pit, and more than one hen may add eggs",
+                            "Eggs are left on a river rock and never guarded",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says eggs go in a simple communal pit scraped in the ground. More than one hen may add eggs to that shared nest.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "day-night-sit",
+                        "title": "Day / night sit",
+                        "stem": "Who usually sits on the nest by day and by night, and why do those colors help?",
+                        "choices": [
+                            "Only chicks sit on the nest all day",
+                            "Males sit only in the snow, never at night",
+                            "Females often sit by day and males by night — their colors help hide the nest",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says females often incubate by day and males by night. The drab female blends with sand in daylight; the darker male is harder to spot at night.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "fluffy-not-flight",
+                        "title": "Fluffy, not flight",
+                        "stem": "Why are ostrich feathers soft, and what do the wings help with?",
+                        "choices": [
+                            "Soft feathers lack the tiny hooks flying birds use; wings help balance and turn",
+                            "The feathers zip tight so ostriches can soar",
+                            "Wings are only for swimming underwater",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says ostrich feathers lack the tiny hooks that lock flying-bird feathers, so they stay soft and fluffy. The wings still help with balance, braking, and turning. How the chest bone is built comes later.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "pebble-grinders",
+                        "title": "Pebble grinders",
+                        "stem": "Why do ostriches swallow pebbles?",
+                        "choices": [
+                            "They collect pebbles to build brick houses",
+                            "They swallow pebbles that help grind food in the gizzard",
+                            "They never swallow anything but air",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says ostriches swallow pebbles that help grind food in the gizzard — a helper when they eat tough plants. Exact pebble weights stay soft.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "need-our-help-soft",
+                        "title": "Need our help",
+                        "stem": "How have wild ostrich numbers changed, and where do many ostriches live now?",
+                        "choices": [
+                            "They now live only on the moon",
+                            "Wild numbers have never changed at all",
+                            "Wild numbers fell a lot over about 200 years; many live on farms and in reserves",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says wild ostrich numbers dropped a lot over about the last 200 years, and many birds now live on farms and in reserves. We do not lock a status letter — that grade is a snapshot and can change.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "travel-buddies-soft",
+                        "title": "Travel buddies",
+                        "stem": "Who might ostriches travel with on the grassland?",
+                        "choices": [
+                            "They sometimes move with other grazers such as zebras or antelope",
+                            "They only travel with penguins on ice",
+                            "They never walk near any other animal",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says ostriches sometimes travel with other grazing animals such as zebras or antelopes. We keep exact group sizes soft.",
                     },
                 ],
             },
