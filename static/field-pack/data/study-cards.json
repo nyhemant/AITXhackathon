@@ -6852,14 +6852,14 @@
     "source": "https://en.wikipedia.org/wiki/Ring-tailed_lemur",
     "source_note": "Facts from Wikipedia, Ring-tailed lemur.",
     "talk_about": [
-      "Ring-tailed lemurs sunbathe with their bellies toward the sun. What would that pose look like at the zoo?",
-      "Females lead the troop and eat first. Why might that help the group?",
-      "They are named for a long black-and-white striped tail. How would you tell a friend that story?"
+      "Males wave smelly tails at rivals instead of punching. How is a stink fight different from a fist fight?",
+      "Lower front teeth work like a comb. Why would a lemur use its teeth to groom fur?",
+      "Young males usually leave their birth group. Why might joining a new troop help?"
     ],
     "push_further": [
-      "Madagascar has many animals found nowhere else. Why might an island grow so many unique animals?",
-      "A troop holds tails high so everyone can stay together. How else could a group keep from getting lost?",
-      "A ring-tailed lemur is not a monkey. What would you look for to tell a lemur from a monkey?"
+      "A lemur rubs scent on a tree. How could a smell say “this is our place” without words?",
+      "Southern Madagascar has dry forests and rocky spots. What would make those forests a good lemur home?",
+      "A troop uses many different calls. How might a stay-together call sound different from a danger call?"
     ],
     "levels": {
       "easy": {
@@ -7000,6 +7000,141 @@
             ],
             "correct": "A",
             "why": "Wikipedia places the ring-tailed lemur with Madagascar’s lemurs, not with monkeys. Sharing a long tail does not make it a monkey."
+          }
+        ]
+      },
+      "hard": {
+        "teach": [],
+        "questions": [
+          {
+            "slot": 1,
+            "id": "stink-fights",
+            "title": "Stink fights",
+            "stem": "How do male ring-tailed lemurs settle many fights without punching?",
+            "choices": [
+              "Males rub scent on their tails and wave them at rivals",
+              "They put on boxing gloves and punch",
+              "They throw coconuts from the clouds"
+            ],
+            "correct": "A",
+            "why": "Wikipedia describes stink fights: males rub scent on their tails and wave them at other males. It is a smelly contest, not a punch-up. How those scent glands are built comes later."
+          },
+          {
+            "slot": 2,
+            "id": "baby-piggyback",
+            "title": "Baby piggyback",
+            "stem": "How does a baby ring-tailed lemur ride with its mother as it grows?",
+            "choices": [
+              "It hatches from an egg and never rides",
+              "Infants cling to mom’s belly first, then ride on her back",
+              "It stays in a bird nest until it can fly"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says a newborn first clings to its mother’s belly, then rides on her back. We keep the exact switch timing soft."
+          },
+          {
+            "slot": 3,
+            "id": "day-explorers",
+            "title": "Day explorers",
+            "stem": "When are ring-tailed lemurs mostly active?",
+            "choices": [
+              "Only at midnight, never in daylight",
+              "Only underwater at night",
+              "Mostly in the daytime"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says ring-tailed lemurs are diurnal — active in daylight. They are day explorers, not midnight-only animals."
+          },
+          {
+            "slot": 4,
+            "id": "chatty-troop",
+            "title": "Chatty troop",
+            "stem": "Why does a ring-tailed lemur troop use so many different calls?",
+            "choices": [
+              "Many different calls help the troop stay together and warn of danger",
+              "They only whistle one song, ever",
+              "They never make a sound"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says ring-tailed lemurs are chatty primates with many calls. Some keep the troop together; others warn of danger. We do not lock an exact call count."
+          },
+          {
+            "slot": 5,
+            "id": "toothcomb",
+            "title": "Toothcomb",
+            "stem": "What special job do a ring-tailed lemur’s lower front teeth do?",
+            "choices": [
+              "They are only for cracking ice",
+              "They work like a comb for grooming fur",
+              "They are just for show and never used"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says the lower front teeth form a toothcomb used to groom fur. Extra names for that tooth group come later."
+          },
+          {
+            "slot": 6,
+            "id": "tamarind-treat",
+            "title": "Tamarind treat",
+            "stem": "Which plant treat do ring-tailed lemurs especially like?",
+            "choices": [
+              "Only metal cans",
+              "Only snow cones",
+              "Tamarind fruit and leaves"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says tamarind fruit and leaves are a favorite food when they are available. We do not lock an exact share of the diet."
+          },
+          {
+            "slot": 7,
+            "id": "dry-south-home",
+            "title": "Dry south home",
+            "stem": "What kind of wild home do ring-tailed lemurs use in southern Madagascar?",
+            "choices": [
+              "Dry forests, riverside gallery forests, and rocky areas",
+              "Only Arctic ice",
+              "Only deep ocean trenches"
+            ],
+            "correct": "A",
+            "why": "Wikipedia places wild ring-tailed lemurs in southern Madagascar’s dry forests, riverside gallery forests, and rocky or scrub country. Exact park lists stay soft."
+          },
+          {
+            "slot": 8,
+            "id": "leaving-home",
+            "title": "Leaving home",
+            "stem": "What do young male ring-tailed lemurs usually do when they grow up?",
+            "choices": [
+              "They never leave their birth group",
+              "Young males usually leave their birth group and join another",
+              "They fly to another planet"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says young males usually leave the troop they were born in and later join another. We keep exact ages soft."
+          },
+          {
+            "slot": 9,
+            "id": "need-our-help",
+            "title": "Need our help",
+            "stem": "What puts wild ring-tailed lemurs under pressure today?",
+            "choices": [
+              "Too many birthday cakes on the calendar",
+              "A shortage of ice rinks",
+              "Forests are shrinking, and some lemurs are hunted or kept as pets"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says wild forests are shrinking and some ring-tailed lemurs are hunted or kept as pets. We do not lock a status letter — that grade is a snapshot and can change."
+          },
+          {
+            "slot": 10,
+            "id": "super-jumpers",
+            "title": "Super jumpers",
+            "stem": "How do ring-tailed lemurs get around in trees and on rocky ground?",
+            "choices": [
+              "They leap well through trees and across rocky ground",
+              "They only swim across the ocean",
+              "They never leave a hole in the ground"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says ring-tailed lemurs still climb and travel in the trees as well as on the ground. They can leap through trees and across rocky or dry ground. We do not lock leap distances."
           }
         ]
       }
