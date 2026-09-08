@@ -199,7 +199,7 @@ def _main(html: str) -> str:
 
 
 class OstrichEasyStudyCardTests(unittest.TestCase):
-    def test_deck_is_junior_ranger_with_park_ranger(self):
+    def test_deck_is_junior_ranger_with_park_ranger_and_zoologist(self):
         self.assertIn("ostrich", study_card_ids())
         self.assertEqual(
             study_card_ids(),
@@ -224,9 +224,9 @@ class OstrichEasyStudyCardTests(unittest.TestCase):
                 "ostrich",
             ),
         )
-        self.assertEqual(shipped_levels_for("ostrich"), ("easy", "hard"))
+        self.assertEqual(shipped_levels_for("ostrich"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("ostrich", "hard"))
-        self.assertIsNone(study_deck_for("ostrich", "zoologist"))
+        self.assertIsNotNone(study_deck_for("ostrich", "zoologist"))
         deck = study_deck_for("ostrich")
         self.assertIsNotNone(deck)
         self.assertEqual(deck["id"], "ostrich")
@@ -397,11 +397,11 @@ class OstrichEasyStudyCardTests(unittest.TestCase):
         visible = _text(html)
         self.assertIn("Junior Ranger", visible)
         self.assertIn("Park Ranger", visible)
-        self.assertNotIn("Zoologist", visible)
+        self.assertIn("Zoologist", visible)
         self.assertIn('class="study-level-picker"', html)
         self.assertIn('data-study-pick="easy"', html)
         self.assertIn('data-study-pick="hard"', html)
-        self.assertNotIn('data-study-pick="zoologist"', html)
+        self.assertIn('data-study-pick="zoologist"', html)
         self.assertNotIn('class="study-level-badge"', html)
         self.assertEqual(html.count('role="group"'), 2)
         self.assertIn("study-level-picker-bottom", html)
@@ -463,11 +463,11 @@ class OstrichEasyStudyCardTests(unittest.TestCase):
         visible = _text(main)
         self.assertIn("Junior Ranger", visible)
         self.assertIn("Park Ranger", visible)
-        self.assertNotIn("Zoologist", visible)
+        self.assertIn("Zoologist", visible)
         self.assertIn('class="study-level-picker"', main)
         self.assertIn('data-study-pick="easy"', main)
         self.assertIn('data-study-pick="hard"', main)
-        self.assertNotIn('data-study-pick="zoologist"', main)
+        self.assertIn('data-study-pick="zoologist"', main)
         self.assertNotIn('class="study-level-badge"', main)
         self.assertIn("Learn first", main)
         self.assertIn(">Quiz</h2>", main)
@@ -540,7 +540,7 @@ class OstrichEasyStudyCardTests(unittest.TestCase):
         self.assertIn("is-wrong-pick", study_js)
         self.assertIn("FPStudyLevelName", study_js + STUDY_DATA_JS.read_text(encoding="utf-8"))
 
-    def test_artifacts_include_ostrich_easy_and_hard(self):
+    def test_artifacts_include_ostrich_easy_hard_and_zoologist(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
         self.assertIn("ostrich", payload)
         self.assertIn("ring-tailed-lemur", payload)
@@ -562,7 +562,7 @@ class OstrichEasyStudyCardTests(unittest.TestCase):
         self.assertIn("african-lion", payload)
         bird = payload["ostrich"]
         self.assertEqual(bird["id"], "ostrich")
-        self.assertEqual(set(bird["levels"]), {"easy", "hard"})
+        self.assertEqual(set(bird["levels"]), {"easy", "hard", "zoologist"})
         easy = bird["levels"]["easy"]
         self.assertEqual(len(easy["teach"]), 5)
         self.assertEqual(len(easy["questions"]), STUDY_SLOTS)
@@ -575,7 +575,9 @@ class OstrichEasyStudyCardTests(unittest.TestCase):
         hard = bird["levels"]["hard"]
         self.assertEqual(hard["teach"], [])
         self.assertEqual(len(hard["questions"]), STUDY_SLOTS)
-        self.assertNotIn("zoologist", bird["levels"])
+        zoo = bird["levels"]["zoologist"]
+        self.assertEqual(zoo["teach"], [])
+        self.assertEqual(len(zoo["questions"]), STUDY_SLOTS)
         data_js = STUDY_DATA_JS.read_text(encoding="utf-8")
         self.assertIn("ostrich", data_js)
         self.assertIn('"easy":"Junior Ranger"', data_js)
@@ -667,7 +669,7 @@ class OstrichEasyStudyCardTests(unittest.TestCase):
         ostrich_html = OSTRICH.read_text(encoding="utf-8")
         self.assertIn("Junior Ranger", _text(_main(ostrich_html)))
         self.assertIn("Park Ranger", _text(_main(ostrich_html)))
-        self.assertNotIn("Zoologist", _text(_main(ostrich_html)))
+        self.assertIn("Zoologist", _text(_main(ostrich_html)))
 
 
 if __name__ == "__main__":

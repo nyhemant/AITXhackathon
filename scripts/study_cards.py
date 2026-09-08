@@ -470,8 +470,8 @@ radiation (Ma soft).
 Soften contested hours / Ma / headcounts. Do not
 redo JR or PR themes.
 
-Facts for ostrich Junior Ranger + Park Ranger
-(easy + hard) are Wikipedia-backed:
+Facts for ostrich Junior Ranger + Park Ranger +
+Zoologist (easy + hard + zoologist) are Wikipedia-backed:
 https://en.wikipedia.org/wiki/Ostrich
 https://en.wikipedia.org/wiki/Common_ostrich
 Species framing is the common ostrich (Struthio
@@ -505,12 +505,23 @@ turns), pebble grinders in the gizzard, a
 ~200-year wild-number drop with farms and
 reserves (no status letter), and travel with
 other grazers such as zebras or antelope.
-Reserve for Zoologist: Somali as a separate
-species, Arabian extinct, ratite/keel anatomy,
-an LC snapshot, CITES North African, eye mm,
-and relative egg size.
-Soften contested mph / population numbers.
-Do not redo JR themes. Do not add Zoologist yet.
+Zoologist is answer-light (empty teach) and deepens
+Struthio camelus in genus Struthio with one other
+living species, the Somali ostrich (S. molybdophanes)
+as a separate species on many lists (split stays
+soft), the Arabian subspecies hunted to extinction
+around the mid-1900s (~1966 soft), a flat sternum
+with no flying keel, Palaeognathae / ratite cousins
+(emu, kiwi — lists soft), giant eyes among land
+vertebrates (~50 mm soft), the egg paradox (largest
+living bird egg, tiny relative to the adult —
+soften %), an IUCN Least Concern snapshot because
+the range is still huge despite big declines, some
+North African populations on CITES Appendix I
+(trade tightly limited — snapshot), and urine stored
+separate from feces unlike other living birds.
+Soften contested numbers and treat IUCN / CITES
+letters as snapshots. Do not redo JR or PR themes.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
@@ -625,9 +636,8 @@ LEVEL_DISPLAY_NAMES = {
 # Caribbean flamingo, Galápagos tortoise, zebra, Nile hippo,
 # Sumatran tiger, western lowland gorilla, cheetah, red panda,
 # koala, chimpanzee, orangutan, giant panda, and
-# ring-tailed lemur ship Junior Ranger + Park
-# Ranger + Zoologist. Ostrich ships Junior
-# Ranger + Park Ranger (no Zoologist yet).
+# ring-tailed lemur, and ostrich ship Junior
+# Ranger + Park Ranger + Zoologist.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -857,14 +867,14 @@ PUSH_FURTHER_RING_TAILED_LEMUR = (
     "Lemurs may have floated to Madagascar on plants long ago. How could a raft of trees start a whole family?",
 )
 TALK_ABOUT_OSTRICH = (
-    "An ostrich has two toes on each foot; most birds have four. Why might two toes help a runner?",
-    "Females often sit on the nest by day and males sit by night. How could those colors hide the eggs?",
-    "A territorial male can inflate his neck to boom and flap his wings. What might that show mean?",
+    "Scientists talk about two living ostrich species. What would you look for to tell them apart?",
+    "A “low-risk” letter can still mean a bird needs care. Why might a huge range hide real trouble?",
+    "Flying birds have a keel on the breastbone. Why might an ostrich have no keel?",
 )
 PUSH_FURTHER_OSTRICH = (
-    "Ostriches swallow pebbles that help grind food. How could stones help digest plants?",
-    "Soft ostrich feathers lack the tiny hooks flying birds use. Why would that make flying hard?",
-    "Eggs go in a shallow ground pit, and more than one hen may add eggs. How does a shared nest work?",
+    "An extinct subspecies is a local kind that is gone. What does that mean for the bigger species?",
+    "An ostrich egg is huge, yet small next to the adult. Why does that relative size matter?",
+    "CITES letters say how tightly trade is limited. How would you explain that in plain words?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -8333,6 +8343,145 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia says ostriches sometimes travel with other grazing animals such as zebras or antelopes. We keep exact group sizes soft.",
+                    },
+                ],
+            },
+            "zoologist": {
+                # Answer-light: no Learn-first strip. Facts from Wikipedia,
+                # Common ostrich / Ostrich. Soften contested mm / years /
+                # percents. Treat IUCN Least Concern and CITES Appendix I
+                # as snapshots. Do not redo JR or PR themes.
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "struthio-camelus",
+                        "title": "Struthio camelus",
+                        "stem": "What scientific name do scientists use for the common ostrich, and how many living species sit in its genus?",
+                        "choices": [
+                            "Struthio camelus — the common ostrich — in genus Struthio with one other living species",
+                            "It has no scientific name at all",
+                            "It is the only bird in a genus of one hundred living species",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia names the common ostrich Struthio camelus. Genus Struthio has two living species. Extra split details come next.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "somali-sister",
+                        "title": "Somali sister",
+                        "stem": "How do many bird authorities treat the Somali ostrich (Struthio molybdophanes)?",
+                        "choices": [
+                            "It is only a cartoon character",
+                            "Many treat the Somali ostrich as a separate living species — though some lists still keep the split under review",
+                            "It is a penguin that lives on ice",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says many authorities treat the Somali ostrich as its own species (S. molybdophanes). A few lists still review the split, so we do not lock one forever rule.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "arabian-gone",
+                        "title": "Arabian gone",
+                        "stem": "What happened to the Arabian ostrich, a subspecies of the common ostrich?",
+                        "choices": [
+                            "It still fills every city street",
+                            "It moved to the moon",
+                            "It was hunted to extinction around the mid-1900s",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says the Arabian subspecies (S. c. syriacus) was hunted to extinction around the mid-20th century. Exact years stay soft.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "no-flying-keel",
+                        "title": "No flying keel",
+                        "stem": "How is an ostrich’s breastbone built, compared with a flying bird?",
+                        "choices": [
+                            "The sternum is flat, with no keel where big flight muscles would attach",
+                            "It has a huge keel so it can soar",
+                            "It has no bones at all",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says the ostrich sternum is flat and lacks the keel that flying birds use to attach large flight muscles.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "palaeognath-ratite",
+                        "title": "Palaeognath / ratite",
+                        "stem": "Which bird group does the ostrich sit in with other mostly flightless cousins?",
+                        "choices": [
+                            "Only with penguins on Antarctic ice",
+                            "Palaeognathae — the mostly flightless “ratite” birds, with cousins such as the emu and kiwi",
+                            "Only with hummingbirds",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia places ostriches in Palaeognathae, the ratite group that also includes birds such as emus and kiwis. Extra cousin lists stay soft.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "giant-eyes-soft",
+                        "title": "Giant eyes",
+                        "stem": "How do ostrich eyes compare with those of other land animals?",
+                        "choices": [
+                            "They are the smallest eyes of any animal",
+                            "Ostriches have no eyes",
+                            "They are among the largest of any land vertebrate",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says ostrich eyes are among the largest of any land vertebrate — often given as about the width of a large coin. Exact millimetres stay soft.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "egg-paradox",
+                        "title": "Egg paradox",
+                        "stem": "How does an ostrich egg compare with other living bird eggs — and with the adult bird?",
+                        "choices": [
+                            "It is the largest living bird egg, but it is still tiny next to the adult’s body",
+                            "It is the smallest egg of any living bird",
+                            "Ostriches do not lay eggs",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says ostrich eggs are the largest of any living bird, yet among the smallest relative to adult body size. Exact percents stay soft.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "least-concern-snapshot",
+                        "title": "Least Concern snapshot",
+                        "stem": "How should we read the usual IUCN letter for the common ostrich?",
+                        "choices": [
+                            "The letter is carved in stone and can never change",
+                            "Least Concern, because the range is still huge — a snapshot letter, even though wild numbers dropped a lot",
+                            "Extinct everywhere, with no living birds left",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia reports IUCN Least Concern because the range is still very large. That letter is a snapshot. Wild numbers have still fallen a lot.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "cites-north-africa",
+                        "title": "CITES North Africa",
+                        "stem": "How are some North African ostrich populations listed for trade?",
+                        "choices": [
+                            "They can be sold freely in any shop",
+                            "CITES lists them as house pets only",
+                            "Some sit on CITES Appendix I, so international trade is tightly limited",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says some North African populations are on CITES Appendix I, so commercial international trade is tightly limited. That listing is a snapshot and can change.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "separate-urine",
+                        "title": "Separate urine",
+                        "stem": "What is unusual about how an ostrich handles urine, compared with other living birds?",
+                        "choices": [
+                            "It can store urine separately from feces — unlike other living birds",
+                            "It never drinks or pees at all",
+                            "It stores urine only in its feathers",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says the ostrich, unlike other living birds, stores urine separately from feces. Extra organ names stay soft.",
                     },
                 ],
             },
