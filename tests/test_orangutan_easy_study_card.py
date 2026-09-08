@@ -158,18 +158,15 @@ BRITTLE = (
     "kg",
     "cm",
 )
-# Explore more may name a later status letter or long-call prompt.
+# Explore more may name three species, Tapanuli, palm oil, and a throat sac.
 PAGE_BRITTLE = (
     "IUCN",
     "Vulnerable",
-    "Tapanuli",
     "Pongo",
     "pygmaeus",
     "abelii",
     "bimaturism",
     "throat-sac",
-    "palm oil",
-    "palm-oil",
     "kg",
     "cm",
 )
@@ -197,7 +194,7 @@ def _main(html: str) -> str:
 
 
 class OrangutanEasyStudyCardTests(unittest.TestCase):
-    def test_deck_is_junior_ranger_with_park_ranger(self):
+    def test_deck_is_junior_ranger_with_park_ranger_and_zoologist(self):
         self.assertIn("orangutan", study_card_ids())
         self.assertEqual(
             study_card_ids(),
@@ -219,9 +216,9 @@ class OrangutanEasyStudyCardTests(unittest.TestCase):
                 "orangutan",
             ),
         )
-        self.assertEqual(shipped_levels_for("orangutan"), ("easy", "hard"))
+        self.assertEqual(shipped_levels_for("orangutan"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("orangutan", "hard"))
-        self.assertIsNone(study_deck_for("orangutan", "zoologist"))
+        self.assertIsNotNone(study_deck_for("orangutan", "zoologist"))
         deck = study_deck_for("orangutan")
         self.assertIsNotNone(deck)
         self.assertEqual(deck["id"], "orangutan")
@@ -373,11 +370,11 @@ class OrangutanEasyStudyCardTests(unittest.TestCase):
         visible = _text(html)
         self.assertIn("Junior Ranger", visible)
         self.assertIn("Park Ranger", visible)
-        self.assertNotIn("Zoologist", visible)
+        self.assertIn("Zoologist", visible)
         self.assertIn('class="study-level-picker"', html)
         self.assertIn('data-study-pick="easy"', html)
         self.assertIn('data-study-pick="hard"', html)
-        self.assertNotIn('data-study-pick="zoologist"', html)
+        self.assertIn('data-study-pick="zoologist"', html)
         self.assertNotIn('class="study-level-badge"', html)
         self.assertEqual(html.count('role="group"'), 2)
         self.assertIn("study-level-picker-bottom", html)
@@ -437,11 +434,11 @@ class OrangutanEasyStudyCardTests(unittest.TestCase):
         visible = _text(main)
         self.assertIn("Junior Ranger", visible)
         self.assertIn("Park Ranger", visible)
-        self.assertNotIn("Zoologist", visible)
+        self.assertIn("Zoologist", visible)
         self.assertIn('class="study-level-picker"', main)
         self.assertIn('data-study-pick="easy"', main)
         self.assertIn('data-study-pick="hard"', main)
-        self.assertNotIn('data-study-pick="zoologist"', main)
+        self.assertIn('data-study-pick="zoologist"', main)
         self.assertNotIn('class="study-level-badge"', main)
         self.assertIn("Learn first", main)
         self.assertIn(">Quiz</h2>", main)
@@ -511,7 +508,7 @@ class OrangutanEasyStudyCardTests(unittest.TestCase):
         self.assertIn("is-wrong-pick", study_js)
         self.assertIn("FPStudyLevelName", study_js + STUDY_DATA_JS.read_text(encoding="utf-8"))
 
-    def test_artifacts_include_orangutan_easy_and_hard(self):
+    def test_artifacts_include_orangutan_easy_hard_and_zoologist(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
         self.assertIn("orangutan", payload)
         self.assertIn("chimpanzee", payload)
@@ -530,7 +527,7 @@ class OrangutanEasyStudyCardTests(unittest.TestCase):
         self.assertIn("african-lion", payload)
         orang = payload["orangutan"]
         self.assertEqual(orang["id"], "orangutan")
-        self.assertEqual(set(orang["levels"]), {"easy", "hard"})
+        self.assertEqual(set(orang["levels"]), {"easy", "hard", "zoologist"})
         easy = orang["levels"]["easy"]
         self.assertEqual(len(easy["teach"]), 5)
         self.assertEqual(len(easy["questions"]), STUDY_SLOTS)
@@ -543,7 +540,9 @@ class OrangutanEasyStudyCardTests(unittest.TestCase):
         hard = orang["levels"]["hard"]
         self.assertEqual(hard["teach"], [])
         self.assertEqual(len(hard["questions"]), STUDY_SLOTS)
-        self.assertNotIn("zoologist", orang["levels"])
+        zoo = orang["levels"]["zoologist"]
+        self.assertEqual(zoo["teach"], [])
+        self.assertEqual(len(zoo["questions"]), STUDY_SLOTS)
         data_js = STUDY_DATA_JS.read_text(encoding="utf-8")
         self.assertIn("orangutan", data_js)
         self.assertIn('"easy":"Junior Ranger"', data_js)
@@ -620,7 +619,7 @@ class OrangutanEasyStudyCardTests(unittest.TestCase):
         orang_html = ORANGUTAN.read_text(encoding="utf-8")
         self.assertIn("Junior Ranger", _text(_main(orang_html)))
         self.assertIn("Park Ranger", _text(_main(orang_html)))
-        self.assertNotIn("Zoologist", _text(_main(orang_html)))
+        self.assertIn("Zoologist", _text(_main(orang_html)))
 
 
 if __name__ == "__main__":
