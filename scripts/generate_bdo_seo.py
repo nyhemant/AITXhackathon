@@ -220,7 +220,7 @@ OUTING_TALK_ANIMAL = (
 # tortoise, zebra, Nile hippo, Sumatran tiger, western lowland
 # gorilla, cheetah, red panda, koala, and chimpanzee
 # (JR / Park Ranger / Zoologist) live in scripts/study_cards.py.
-# Orangutan ships Junior Ranger only (no Park Ranger or
+# Orangutan ships Junior Ranger + Park Ranger (no
 # Zoologist yet).
 CARD_TALK_OVERRIDE: dict[str, tuple[dict, ...]] = {}
 
