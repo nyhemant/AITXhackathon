@@ -144,7 +144,7 @@
     );
   }
 
-  function deepenHtml(deck) {
+  function exploreHtml(deck) {
     const talk = (deck && deck.talk_about) || [];
     const push = (deck && deck.push_further) || [];
     if (!talk.length && !push.length) return "";
@@ -156,10 +156,11 @@
       );
     }
     return (
-      `<aside class="study-deepen" hidden aria-label="Go further">` +
-      col("Talk about it", talk) +
-      col("Push further", push) +
-      `</aside>`
+      `<details class="study-explore no-print">` +
+      `<summary class="study-explore-kicker">Explore more ` +
+      `<span class="study-explore-hint">— tap to open</span></summary>` +
+      `<div class="study-explore-body">${col("Talk about it", talk)}${col("Push further", push)}</div>` +
+      `</details>`
     );
   }
 
@@ -206,8 +207,10 @@
   }
 
   function paintScore(root) {
-    const el = root.querySelector("[data-study-correct]");
-    if (el) el.textContent = String(scoreOf(root));
+    const n = String(scoreOf(root));
+    root.querySelectorAll("[data-study-correct]").forEach((el) => {
+      el.textContent = n;
+    });
   }
 
   function revealAll(root, on) {
@@ -238,8 +241,6 @@
       btn.setAttribute("aria-pressed", on ? "true" : "false");
     }
     root.setAttribute("data-revealed", on ? "1" : "0");
-    const deepen = root.querySelector(".study-deepen");
-    if (deepen) deepen.hidden = !on;
   }
 
   function paintPicker(root, level) {
@@ -303,20 +304,22 @@
       const toolbar = root.querySelector(".study-toolbar");
       if (toolbar) toolbar.insertAdjacentHTML("beforebegin", nextTeach);
     }
-    const nextDeepen = deepenHtml(deck);
-    const deepen = root.querySelector(".study-deepen");
-    if (deepen && nextDeepen) {
-      deepen.outerHTML = nextDeepen;
-    } else if (deepen && !nextDeepen) {
-      deepen.remove();
-    } else if (!deepen && nextDeepen) {
+    const nextExplore = exploreHtml(deck);
+    const explore = root.querySelector(".study-explore");
+    if (explore && nextExplore) {
+      explore.outerHTML = nextExplore;
+    } else if (explore && !nextExplore) {
+      explore.remove();
+    } else if (!explore && nextExplore) {
+      const foot = root.querySelector(".study-foot");
       const source = root.querySelector(".study-source");
-      const gridEl = root.querySelector(".study-grid");
-      if (source) source.insertAdjacentHTML("beforebegin", nextDeepen);
-      else if (gridEl) gridEl.insertAdjacentHTML("afterend", nextDeepen);
+      if (foot) foot.insertAdjacentHTML("beforebegin", nextExplore);
+      else if (source) source.insertAdjacentHTML("afterend", nextExplore);
+      else {
+        const gridEl = root.querySelector(".study-grid");
+        if (gridEl) gridEl.insertAdjacentHTML("afterend", nextExplore);
+      }
     }
-    const freshDeepen = root.querySelector(".study-deepen");
-    if (freshDeepen) freshDeepen.hidden = true;
     const grid = root.querySelector(".study-grid");
     if (grid) grid.innerHTML = (deck.questions || []).map(questionHtml).join("");
     paintPicker(root, deck.level);

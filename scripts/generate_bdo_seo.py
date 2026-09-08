@@ -40,6 +40,7 @@ from field_pack_kit_tier import (  # noqa: E402
     status_chip_html,
 )
 from study_cards import (  # noqa: E402
+    STUDY_QUIZ_H2,
     study_deck_for,
     study_print_html,
     study_talk_html,
@@ -294,8 +295,8 @@ LANDING_HOOK_JS_VER = "37"
 STYLES_CSS_VER = "41"
 CATALOG_JS_VER = "40"
 PRINT_KIT_JS_VER = "20"
-STUDY_CARD_JS_VER = "7"
-STUDY_CARD_CSS_VER = "8"
+STUDY_CARD_JS_VER = "8"
+STUDY_CARD_CSS_VER = "9"
 STUDY_CARDS_DATA_JS_VER = "5"
 VIEWPORT = "width=device-width, initial-scale=1, viewport-fit=cover"
 MISSION_CSS_VER = "20"
@@ -787,7 +788,7 @@ def outing_talk_html(item: dict) -> str:
     """On-screen outing talk. A study deck wins over CARD_TALK_OVERRIDE."""
     deck = study_deck_for(str(item.get("id") or "").strip())
     if deck:
-        return study_talk_html(deck, heading=CARD_TALK_H2)
+        return study_talk_html(deck, heading=STUDY_QUIZ_H2)
     key = item.get("key") or {}
     cards: list[str] = []
     for m in outing_missions_for(item):

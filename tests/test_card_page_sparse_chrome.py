@@ -104,7 +104,7 @@ class CardPageSparseChromeTests(unittest.TestCase):
                 for phrase in WORDY:
                     self.assertNotIn(phrase, main, phrase)
                 self.assertNotIn("step-chip", main)
-                self.assertIn(f">{CARD_TALK_H2}</h2>", main)
+                self.assertIn(">Quiz</h2>", main)
                 self.assertIn(f">{CTA_PRINT_CARD}</button>", main)
                 self.assertNotIn("One animal sheet — not the hide-and-seek cutouts", main)
                 self.assertNotIn("card-print-note", main)

@@ -193,7 +193,7 @@ class ZebraHardStudyCardTests(unittest.TestCase):
 
     def test_default_screen_html_keeps_easy_and_adds_picker(self):
         html = outing_talk_html({"id": "zebra", "packTemplate": "animals"})
-        self.assertIn(f">{CARD_TALK_H2}</h2>", html)
+        self.assertIn(">Quiz</h2>", html)
         self.assertIn("Learn first", html)
         self.assertIn("<details class=\"study-teach\">", html)
         self.assertNotIn("<details class=\"study-teach\" open", html)

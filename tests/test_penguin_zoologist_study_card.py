@@ -220,7 +220,7 @@ class PenguinZoologistStudyCardTests(unittest.TestCase):
 
     def test_default_screen_html_keeps_easy_and_adds_zoologist_picker(self):
         html = outing_talk_html({"id": "african-penguin", "packTemplate": "animals"})
-        self.assertIn(f">{CARD_TALK_H2}</h2>", html)
+        self.assertIn(">Quiz</h2>", html)
         self.assertIn("Learn first", html)
         self.assertIn("Junior Ranger", html)
         self.assertIn("Park Ranger", html)
@@ -269,11 +269,12 @@ class PenguinZoologistStudyCardTests(unittest.TestCase):
     def test_zoologist_screen_hides_empty_teach_but_keeps_deepen(self):
         html = study_talk_html(study_deck_for("african-penguin", "zoologist"))
         self.assertNotIn("study-teach", html)
-        self.assertNotIn("<details", html)
         self.assertIn("Talk about it", html)
         self.assertIn("Push further", html)
         self.assertIn("Zoologist", html)
-        self.assertRegex(html, r'<aside class="study-deepen"[^>]*\bhidden\b')
+        self.assertIn('<details class="study-explore', html)
+        self.assertIn("Explore more", html)
+        self.assertNotIn('<aside class="study-deepen"', html)
         visible = _text(html)
         for badge in PLAIN_LEVEL_LABELS + AGE_BADGES:
             self.assertNotIn(badge, visible)
@@ -330,7 +331,7 @@ class PenguinZoologistStudyCardTests(unittest.TestCase):
         html = PENGUIN.read_text(encoding="utf-8")
         self.assertIn("Zoologist", html)
         self.assertIn('data-study-pick="zoologist"', html)
-        self.assertIn("study-card.js?v=7", html)
+        self.assertIn("study-card.js?v=8", html)
         self.assertIn("study-cards-data.js?v=5", html)
         print_tpl = html.split('id="study-print-template">', 1)[1].split("</template>", 1)[0]
         self.assertIn("Junior Ranger", print_tpl)

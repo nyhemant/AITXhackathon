@@ -130,18 +130,62 @@
   margin: 0 0 0.25rem;
   font-weight: 650;
 }
-.card-page .card-study-pack .study-deepen {
+.card-page .card-study-pack .study-explore {
   margin: 1rem 0 0;
-  padding: 0.75rem 0.85rem 0.8rem;
+  padding: 0.55rem 0.85rem 0.6rem;
   border-radius: 12px;
   background: #f3faf7;
   border: 1.5px solid rgba(15, 92, 92, 0.18);
+}
+.card-page .card-study-pack .study-explore[open] {
+  padding-bottom: 0.75rem;
+}
+.card-page .card-study-pack .study-explore-kicker {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 850;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #0a4545;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  min-height: 32px;
+}
+.card-page .card-study-pack .study-explore-kicker::-webkit-details-marker {
+  display: none;
+}
+.card-page .card-study-pack .study-explore-kicker::after {
+  content: "+";
+  flex: 0 0 auto;
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #0f5c5c;
+}
+.card-page .card-study-pack .study-explore[open] > .study-explore-kicker::after {
+  content: "–";
+}
+.card-page .card-study-pack .study-explore[open] > .study-explore-kicker {
+  margin-bottom: 0.35rem;
+}
+.card-page .card-study-pack .study-explore[open] .study-explore-hint {
+  display: none;
+}
+.card-page .card-study-pack .study-explore-hint {
+  font-weight: 650;
+  letter-spacing: 0;
+  text-transform: none;
+  color: #3d4f6f;
+}
+.card-page .card-study-pack .study-explore-body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.75rem 1.25rem;
-}
-.card-page .card-study-pack .study-deepen[hidden] {
-  display: none;
+  margin-top: 0.45rem;
 }
 .card-page .card-study-pack .study-deepen-kicker {
   margin: 0 0 0.35rem;
@@ -151,17 +195,17 @@
   text-transform: uppercase;
   color: #0a4545;
 }
-.card-page .card-study-pack .study-deepen ol {
+.card-page .card-study-pack .study-explore-body ol {
   margin: 0;
   padding-left: 1.15em;
 }
-.card-page .card-study-pack .study-deepen li {
+.card-page .card-study-pack .study-explore-body li {
   margin: 0 0 0.4rem;
   font-weight: 650;
   line-height: 1.35;
 }
 @media (max-width: 640px) {
-  .card-page .card-study-pack .study-deepen {
+  .card-page .card-study-pack .study-explore-body {
     grid-template-columns: 1fr;
   }
 }
@@ -228,7 +272,10 @@
 }
 .card-page .card-study-pack .study-foot {
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
+  gap: 0.65rem 0.85rem;
   margin: 1rem 0 0.15rem;
 }
 .card-page .card-try-next {

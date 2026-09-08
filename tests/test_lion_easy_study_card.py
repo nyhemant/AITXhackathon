@@ -108,7 +108,7 @@ class LionEasyStudyCardTests(unittest.TestCase):
 
     def test_generator_html_is_study_not_worksheet(self):
         html = outing_talk_html({"id": "african-lion", "packTemplate": "animals"})
-        self.assertIn(f">{CARD_TALK_H2}</h2>", html)
+        self.assertIn(">Quiz</h2>", html)
         self.assertIn("card-study-pack", html)
         self.assertIn("Learn first", html)
         self.assertIn("<details class=\"study-teach\">", html)
@@ -117,7 +117,9 @@ class LionEasyStudyCardTests(unittest.TestCase):
         self.assertIn("tap to open", html)
         self.assertIn("Talk about it", html)
         self.assertIn("Push further", html)
-        self.assertRegex(html, r'<aside class="study-deepen"[^>]*\bhidden\b')
+        self.assertIn('<details class="study-explore', html)
+        self.assertIn("Explore more", html)
+        self.assertNotIn('<aside class="study-deepen"', html)
         for prompt in TALK_ABOUT_LION + PUSH_FURTHER_LION:
             self.assertIn(prompt, html)
         self.assertIn("Show answers", html)
@@ -163,8 +165,8 @@ class LionEasyStudyCardTests(unittest.TestCase):
         self.assertNotIn("nationalzoo.si.edu/webcams", main)
         self.assertIn("Look close — mane, whiskers, a tuft on the tail.", html)
         self.assertNotIn("mighty roar", html)
-        self.assertIn("study-card.js?v=7", html)
-        self.assertIn("study-card.css?v=8", html)
+        self.assertIn("study-card.js?v=8", html)
+        self.assertIn("study-card.css?v=9", html)
         self.assertIn("study-cards-data.js?v=5", html)
         self.assertIn('id="study-card-data"', html)
         self.assertIn('"level_label": "Junior Ranger"', html)
@@ -176,7 +178,9 @@ class LionEasyStudyCardTests(unittest.TestCase):
         self.assertNotIn("<div class=\"study-teach\">", main)
         self.assertIn("Talk about it", main)
         self.assertIn("Push further", main)
-        self.assertRegex(main, r'<aside class="study-deepen"[^>]*\bhidden\b')
+        self.assertIn('<details class="study-explore', main)
+        self.assertIn("Explore more", main)
+        self.assertNotIn('<aside class="study-deepen"', main)
         visible = _text(main)
         self.assertIn("Junior Ranger", visible)
         self.assertIn("Park Ranger", visible)
@@ -255,10 +259,11 @@ class LionEasyStudyCardTests(unittest.TestCase):
         hard = study_deck_for("african-lion", "hard")
         html = study_talk_html(hard)
         self.assertNotIn("study-teach", html)
-        self.assertNotIn("<details", html)
         self.assertIn("Talk about it", html)
         self.assertIn("Push further", html)
-        self.assertRegex(html, r'<aside class="study-deepen"[^>]*\bhidden\b')
+        self.assertIn('<details class="study-explore', html)
+        self.assertIn("Explore more", html)
+        self.assertNotIn('<aside class="study-deepen"', html)
 
     def test_display_name_map_covers_future_tiers(self):
         self.assertEqual(
@@ -283,7 +288,7 @@ class LionEasyStudyCardTests(unittest.TestCase):
     def test_desktop_widens_study_card_page_only(self):
         css = (FP / "css" / "study-card.css").read_text(encoding="utf-8")
         seo = (FP / "css" / "seo-venue.css").read_text(encoding="utf-8")
-        self.assertEqual(STUDY_CARD_CSS_VER, "8")
+        self.assertEqual(STUDY_CARD_CSS_VER, "9")
         self.assertIn("max-width: 34rem;", seo)
         self.assertIn("@media screen and (min-width: 960px)", css)
         self.assertIn("max-width: 48rem;", css)
