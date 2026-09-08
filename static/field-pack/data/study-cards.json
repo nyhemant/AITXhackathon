@@ -3285,6 +3285,141 @@
             "why": "Young are carried on their mothers’ backs in deep water."
           }
         ]
+      },
+      "zoologist": {
+        "teach": [],
+        "questions": [
+          {
+            "slot": 1,
+            "id": "hipposudoric",
+            "title": "Skin pigments",
+            "stem": "What are the red and orange chemicals in a hippo’s skin goo?",
+            "choices": [
+              "Blood cells that leak when the hippo is hot",
+              "Hipposudoric acids — red and orange pigments that can block UV and fight microbes",
+              "River dye the hippo drinks for colour"
+            ],
+            "correct": "B",
+            "why": "Wikipedia names two highly acidic pigments: red hipposudoric acid and orange norhipposudoric acid. They absorb ultraviolet light and can inhibit disease-causing bacteria. Food does not appear to be their source."
+          },
+          {
+            "slot": 2,
+            "id": "whale-clade",
+            "title": "Whale clade",
+            "stem": "What do scientists say hippos share with living whales and dolphins?",
+            "choices": [
+              "Nothing — hippos are just river pigs with no whale relatives",
+              "A clade: their closest living relatives are cetaceans, from a shared ancestor long ago",
+              "Hippos evolved from modern killer whales last century"
+            ],
+            "correct": "B",
+            "why": "Blood proteins, DNA, and the fossil record point to cetaceans — whales, dolphins, and porpoises — as the closest living relatives. Wikipedia cites a split tens of millions of years ago; we keep that dating soft because the exact million-year figures are debated. Extinct anthracotheres sit on the hippo side of that split."
+          },
+          {
+            "slot": 3,
+            "id": "subspecies",
+            "title": "Named subspecies",
+            "stem": "How useful are the named Nile hippo subspecies to people who study them in the field?",
+            "choices": [
+              "Every field guide locks five subspecies and uses them every day",
+              "Several subspecies have been described, but they are rarely used in the field — some mitochondrial DNA shows modest support",
+              "Scientists proved there is only one hippo on Earth and no local forms"
+            ],
+            "correct": "B",
+            "why": "Wikipedia lists several described subspecies based on skulls and range. Field biologists rarely used or validated them. A mitochondrial DNA study found low but significant differences among some named forms. That is support, not a forever subspecies list — some names were never tested."
+          },
+          {
+            "slot": 4,
+            "id": "colombia",
+            "title": "Colombia herd",
+            "stem": "Where did a wild hippo population start from animals that escaped a private collection?",
+            "choices": [
+              "Only on Antarctic ice",
+              "In Colombia — a feral herd descended from hippos kept on Pablo Escobar’s estate",
+              "In every city fountain worldwide"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says a population in Colombia descended from captives that escaped after Escobar’s death. The herd grew and is treated as an invasive problem far from African home waters."
+          },
+          {
+            "slot": 5,
+            "id": "gut",
+            "title": "Pseudoruminant gut",
+            "stem": "How does a Nile hippo’s stomach compare with a cow that chews cud?",
+            "choices": [
+              "It has no stomach at all",
+              "It is a pseudoruminant: a three-chambered stomach, but it does not chew cud",
+              "It chews cud like a cow and has four full stomach rooms"
+            ],
+            "correct": "B",
+            "why": "Wikipedia calls the hippo a pseudoruminant. It has a complex three-chambered stomach but does not “chew cud.” Grass is pulled with the lips and ground on the molars."
+          },
+          {
+            "slot": 6,
+            "id": "status-soft",
+            "title": "Status snapshot",
+            "stem": "How do scientists usually describe the wild status of the common / Nile hippo today?",
+            "choices": [
+              "They have no human-made pressures at all",
+              "Habitat loss and poaching put them under pressure — a snapshot listing has been Vulnerable",
+              "They were declared extinct worldwide"
+            ],
+            "correct": "B",
+            "why": "Wikipedia emphasizes habitat loss and poaching for meat and ivory-like canine teeth. IUCN has listed the species Vulnerable — we treat that letter as a snapshot, not a forever grade."
+          },
+          {
+            "slot": 7,
+            "id": "amphibious-call",
+            "title": "Air and water cry",
+            "stem": "What is unusual about how a Nile hippo can send a call?",
+            "choices": [
+              "They can only tap Morse code on rocks",
+              "They can send a cry through air and water at once, and underwater clicks have been reported",
+              "They have no voices at all"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says a hippo can hold its head partly above water and send a cry that travels through both water and air. Listeners answer above and below. Clicks underwater have been recorded and may have echolocative properties."
+          },
+          {
+            "slot": 8,
+            "id": "combat-teeth",
+            "title": "Fighting teeth",
+            "stem": "What is special about a Nile hippo’s big canines and incisors?",
+            "choices": [
+              "They are baby teeth that fall out in a week",
+              "They keep growing and are used mainly for fighting, not for chewing grass",
+              "They are hollow straws for drinking only"
+            ],
+            "correct": "B",
+            "why": "On the lower jaw, incisors and canines grow continuously. They are used mainly for combat, not feeding. Hippos pull grass with flattened lips, then grind it on the molars."
+          },
+          {
+            "slot": 9,
+            "id": "dense-bones",
+            "title": "Heavy bones",
+            "stem": "How does a Nile hippo’s skeleton help it move in water?",
+            "choices": [
+              "Hollow bird bones make it float like a duck",
+              "Dense, graviportal bones help it sink and walk the bottom",
+              "A springy tail propels it like a shark"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says the skeleton is graviportal — built to carry huge weight — and dense bones plus a low centre of gravity let hippos sink and move along the bottom."
+          },
+          {
+            "slot": 10,
+            "id": "two-living",
+            "title": "Two living hippos",
+            "stem": "How many living hippo species do scientists recognise today?",
+            "choices": [
+              "Dozens of living hippo species on every continent",
+              "Two: the common / Nile hippo (Hippopotamus amphibius) and the pygmy hippo",
+              "Only fossil hippos — none are alive"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says the common hippopotamus and the pygmy hippopotamus (Choeropsis liberiensis or Hexaprotodon liberiensis) are the only living members of Hippopotamidae."
+          }
+        ]
       }
     }
   }
