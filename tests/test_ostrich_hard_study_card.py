@@ -134,7 +134,6 @@ BRITTLE = (
     "keel",
     "kg",
     "cm",
-    "mm",
     "mph",
     "km/h",
 )
