@@ -430,6 +430,28 @@ stand die-off in fragmented habitat.
 Soften contested kg / ratios / Ma. Do not redo
 JR or PR themes.
 
+Facts for ring-tailed-lemur Junior Ranger (easy only)
+are Wikipedia-backed:
+https://en.wikipedia.org/wiki/Ring-tailed_lemur
+Species framing is the ring-tailed lemur (Lemur
+catta). JR stays kid-simple “ring-tailed lemur.”
+Soften contested numbers and IUCN letters
+(snapshots only). Wild home is Madagascar only.
+Named for a long black-and-white ringed tail.
+Lives in a troop led by females (feeding priority).
+Sunbathes with the belly toward the sun to warm up.
+Mostly eats plants — fruit, leaves, and flowers.
+Holds the tail high so the troop stays together
+(not for grabbing). Spends a lot of time on the
+ground (unusual for many lemurs). Leaves scent on
+trees and rocks. Wild forests in Madagascar need
+care — no status letter. Myth: not a monkey — a
+lemur, a different Madagascar primate.
+Reserve for later (Park Ranger / Zoologist):
+stink-fight anatomy, strepsirrhine traits, and
+status letters.
+Do not add Park Ranger or Zoologist yet.
+
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
 zoologist. Visible copy uses LEVEL_DISPLAY_NAMES only — no age badges,
@@ -468,6 +490,7 @@ WIKI_KOALA = "https://en.wikipedia.org/wiki/Koala"
 WIKI_CHIMPANZEE = "https://en.wikipedia.org/wiki/Chimpanzee"
 WIKI_ORANGUTAN = "https://en.wikipedia.org/wiki/Orangutan"
 WIKI_GIANT_PANDA = "https://en.wikipedia.org/wiki/Giant_panda"
+WIKI_RING_TAILED_LEMUR = "https://en.wikipedia.org/wiki/Ring-tailed_lemur"
 
 LETTERS = ("A", "B", "C")
 STUDY_SLOTS = 10
@@ -541,7 +564,9 @@ LEVEL_DISPLAY_NAMES = {
 # Caribbean flamingo, Galápagos tortoise, zebra, Nile hippo,
 # Sumatran tiger, western lowland gorilla, cheetah, red panda,
 # koala, chimpanzee, orangutan, and giant panda ship
-# Junior Ranger + Park Ranger + Zoologist.
+# Junior Ranger + Park Ranger + Zoologist. Ring-tailed
+# lemur ships Junior Ranger only (no Park Ranger or
+# Zoologist yet).
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -574,6 +599,7 @@ STUDY_NEIGHBORS = {
     "chimpanzee": ("western-lowland-gorilla", "african-elephant"),
     "orangutan": ("chimpanzee", "western-lowland-gorilla"),
     "giant-panda": ("red-panda", "koala"),
+    "ring-tailed-lemur": ("orangutan", "chimpanzee"),
 }
 
 STUDY_CARD_TITLES = {
@@ -593,6 +619,7 @@ STUDY_CARD_TITLES = {
     "chimpanzee": "Chimpanzee",
     "orangutan": "Orangutan",
     "giant-panda": "Giant panda",
+    "ring-tailed-lemur": "Ring-tailed lemur",
 }
 
 # Shared answers-side deepen (Claude sample). Not scored. Future animals reuse keys.
@@ -755,6 +782,16 @@ PUSH_FURTHER_GIANT_PANDA = (
     "Red pandas have a “thumb” too. Why might that be a copycat trick, not a shared family trait?",
     "A whole bamboo stand can flower and die together. How could that leave a panda hungry?",
     "A cub can wait to start growing after mating. What would a simple timeline of that pause look like?",
+)
+TALK_ABOUT_RING_TAILED_LEMUR = (
+    "Ring-tailed lemurs sunbathe with their bellies toward the sun. What would that pose look like at the zoo?",
+    "Females lead the troop and eat first. Why might that help the group?",
+    "They are named for a long black-and-white striped tail. How would you tell a friend that story?",
+)
+PUSH_FURTHER_RING_TAILED_LEMUR = (
+    "Madagascar has many animals found nowhere else. Why might an island grow so many unique animals?",
+    "A troop holds tails high so everyone can stay together. How else could a group keep from getting lost?",
+    "A ring-tailed lemur is not a monkey. What would you look for to tell a lemur from a monkey?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -7500,6 +7537,157 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia describes gregarious bamboo flowering: a whole stand can bloom and then die together. In fragmented habitat, pandas may not be able to walk to a still-living stand, so a die-off can leave them without food.",
+                    },
+                ],
+            },
+        },
+    },
+    "ring-tailed-lemur": {
+        "id": "ring-tailed-lemur",
+        "source": WIKI_RING_TAILED_LEMUR,
+        "source_note": "Facts from Wikipedia, Ring-tailed lemur.",
+        "talk_about": list(TALK_ABOUT_RING_TAILED_LEMUR),
+        "push_further": list(PUSH_FURTHER_RING_TAILED_LEMUR),
+        "levels": {
+            "easy": {
+                # Teaching-first: same front as the quiz. Hard later may hide these.
+                "teach": [
+                    "Wild ring-tailed lemurs live only on Madagascar.",
+                    "They are named for a long black-and-white striped tail.",
+                    "They live in a troop led by females.",
+                    "They sunbathe with their bellies toward the sun to warm up.",
+                    "They mostly eat plants — fruit, leaves, and flowers.",
+                ],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "madagascar-only",
+                        "title": "Madagascar only",
+                        "stem": "Where do wild ring-tailed lemurs live?",
+                        "choices": [
+                            "Only on the island of Madagascar",
+                            "Only in African rainforests on the mainland",
+                            "Only on Antarctic ice",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says wild ring-tailed lemurs live only on Madagascar. They are not mainland African or Antarctic animals.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "stripy-tail",
+                        "title": "Stripy tail",
+                        "stem": "Why are they called ring-tailed lemurs?",
+                        "choices": [
+                            "They wear metal rings on their ears",
+                            "They have a long black-and-white ringed tail",
+                            "They have no tail at all",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says the ring-tailed lemur is named for its long black-and-white ringed tail. That stripy tail is the name hook.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "girls-first",
+                        "title": "Girls first",
+                        "stem": "Who leads a ring-tailed lemur troop?",
+                        "choices": [
+                            "Only the biggest male",
+                            "A bird that lives nearby",
+                            "Females lead the troop and eat first",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says ring-tailed lemurs live in a troop and females are in charge, including first pick of food. We keep exact troop counts soft.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "sun-pose",
+                        "title": "Sun pose",
+                        "stem": "How do ring-tailed lemurs warm up in the morning?",
+                        "choices": [
+                            "They sunbathe with their bellies toward the sun",
+                            "They fly to a warmer country",
+                            "They dive into icy water",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says ring-tailed lemurs sit upright and turn their soft white bellies toward the sun to warm up. That morning sun pose is a group warm-up.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "plant-snacks",
+                        "title": "Plant snacks",
+                        "stem": "What do ring-tailed lemurs mostly eat?",
+                        "choices": [
+                            "Only meat — never plants",
+                            "Plants — fruit, leaves, and flowers",
+                            "Only ice cream",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says the diet is mostly plants such as fruit, leaves, and flowers. Extra snacks can show up, but plants come first. We do not lock exact shares.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "tail-flags",
+                        "title": "Tail flags",
+                        "stem": "Why do ring-tailed lemurs hold their tails high?",
+                        "choices": [
+                            "To hang from branches like a monkey",
+                            "To fly over the forest",
+                            "So the troop can stay together — the tail is not for grabbing",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says the long tail is not for grabbing branches. Troops hold tails high like flags so everyone can stay together.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "ground-time",
+                        "title": "Ground time",
+                        "stem": "How do ring-tailed lemurs spend a lot of their day, unlike many other lemurs?",
+                        "choices": [
+                            "They spend a lot of time on the ground",
+                            "They never leave the ocean",
+                            "They only fly from cloud to cloud",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says ring-tailed lemurs spend a lot of time on the ground. That is unusual for many other lemurs, which stay in the trees more.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "smell-marks",
+                        "title": "Smell marks",
+                        "stem": "How do ring-tailed lemurs share “our place” with the troop?",
+                        "choices": [
+                            "They paint arrows on the path",
+                            "They leave scent on trees and rocks",
+                            "They send paper letters",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says ring-tailed lemurs leave scent on trees, rocks, and other objects to mark their place. Smell is a big way the troop shares news.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "soft-care",
+                        "title": "Soft care",
+                        "stem": "What do wild ring-tailed lemur forests need?",
+                        "choices": [
+                            "Nothing — forests never change",
+                            "To be turned into ice rinks",
+                            "Care — wild forests in Madagascar need looking after",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says wild forests in Madagascar are under pressure from habitat loss. Those forests need care. We do not lock a status letter — that grade is a snapshot and can change.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "not-a-monkey",
+                        "title": "Myth buster — monkey?",
+                        "stem": "Is a ring-tailed lemur a monkey?",
+                        "choices": [
+                            "No — it is a lemur, a different Madagascar primate",
+                            "Yes — it is a kind of monkey",
+                            "Yes — it is a tiny ape from Africa",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia places the ring-tailed lemur with Madagascar’s lemurs, not with monkeys. Sharing a long tail does not make it a monkey.",
                     },
                 ],
             },
