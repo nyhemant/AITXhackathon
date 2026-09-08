@@ -394,8 +394,9 @@ gaps (soften years), and CITES Appendix I.
 Soften contested numbers. Do not redo JR or PR
 themes.
 
-Facts for giant-panda Junior Ranger + Park Ranger
-(easy + hard) are Wikipedia-backed:
+Facts for giant-panda Junior Ranger + Park Ranger +
+Zoologist (easy + hard + zoologist) are
+Wikipedia-backed:
 https://en.wikipedia.org/wiki/Giant_panda
 Species framing is the giant panda (Ailuropoda
 melanoleuca). JR stays kid-simple “giant panda.”
@@ -416,11 +417,18 @@ status letter), not-only-bamboo extras, crush jaws,
 mostly alone, misty mountains (soften elevation),
 sit to snack, mom school (soften years), and scent
 news.
-Reserve for Zoologist: carnivore-gut detail, bamboo
-kg amounts, radial-sesamoid anatomy, cub weight
-fraction, umami taste loss, Vulnerable downlist
-letter, Ailuropoda taxonomy, and the Qinling form.
-Do not add Zoologist yet.
+Zoologist is answer-light (empty teach) and deepens
+Ailuropoda melanoleuca as the only living species
+in its genus (Ursidae, not Ailuridae), the radial
+sesamoid “thumb,” a short carnivore-style gut on a
+plant diet, soft daily bamboo bulk, a tiny
+newborn-weight fraction, umami / T1R1 switch-off
+(soften Ma), a 2016 Vulnerable snapshot (letter
+not forever), the Qinling form (soften contested
+splits), delayed implantation, and bamboo
+stand die-off in fragmented habitat.
+Soften contested kg / ratios / Ma. Do not redo
+JR or PR themes.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
@@ -532,9 +540,8 @@ LEVEL_DISPLAY_NAMES = {
 # Lion, reticulated-giraffe, African elephant, African penguin,
 # Caribbean flamingo, Galápagos tortoise, zebra, Nile hippo,
 # Sumatran tiger, western lowland gorilla, cheetah, red panda,
-# koala, chimpanzee, and orangutan ship Junior Ranger +
-# Park Ranger + Zoologist. Giant panda ships Junior
-# Ranger + Park Ranger (no Zoologist yet).
+# koala, chimpanzee, orangutan, and giant panda ship
+# Junior Ranger + Park Ranger + Zoologist.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -740,14 +747,14 @@ PUSH_FURTHER_ORANGUTAN = (
     "A throat sac can make a call louder. Why would a pouch help sound travel?",
 )
 TALK_ABOUT_GIANT_PANDA = (
-    "Bamboo gives only a little energy, so pandas eat for hours. What would you watch at the zoo?",
-    "Giant pandas skip a long winter sleep. Why might bamboo not build the fat other bears need?",
-    "Almost all food is bamboo, but they sometimes take eggs or leftovers. What would surprise a friend?",
+    "The “thumb” is a wrist bone, not a real extra finger. How would you explain that at the zoo?",
+    "A panda has a meat-eater gut but eats grass. Why might that make meals last so long?",
+    "A threat letter on a list can get better. Why treat the grade as a snapshot, not forever?",
 )
 PUSH_FURTHER_GIANT_PANDA = (
-    "The “thumb” is a special wrist bone. What would you ask a keeper later?",
-    "A threat letter on a list can change. Why treat it as a snapshot, not a forever grade?",
-    "Zoos help pandas have cubs. What would you want to know first?",
+    "Red pandas have a “thumb” too. Why might that be a copycat trick, not a shared family trait?",
+    "A whole bamboo stand can flower and die together. How could that leave a panda hungry?",
+    "A cub can wait to start growing after mating. What would a simple timeline of that pause look like?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -7354,6 +7361,145 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia says giant pandas rely heavily on smell. They leave scent marks on landmarks such as rocks and trees to share news about who they are and whether they are ready to mate. They can make sounds too, but scent does much of the talking.",
+                    },
+                ],
+            },
+            "zoologist": {
+                # Answer-light: no Learn-first strip. Facts from Wikipedia,
+                # Giant panda. Soften contested kg / ratios / Ma.
+                # Vulnerable is a snapshot, not forever. Do not redo
+                # JR or PR themes.
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "living-ailuropoda",
+                        "title": "Living Ailuropoda",
+                        "stem": "How does the giant panda sit in its genus and family?",
+                        "choices": [
+                            "It is the only living species in genus Ailuropoda, in the true-bear family Ursidae — not Ailuridae like the red panda",
+                            "It is a kind of raccoon in the same family as the red panda",
+                            "It is the same living species as the red panda",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia places the giant panda (Ailuropoda melanoleuca) as the only living species in genus Ailuropoda, in the bear family Ursidae. The red panda sits in a different family, Ailuridae.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "radial-sesamoid",
+                        "title": "Radial sesamoid",
+                        "stem": "What is the giant panda’s famous “thumb,” really?",
+                        "choices": [
+                            "A true sixth finger with its own joints, like a human thumb",
+                            "An enlarged wrist bone (the radial sesamoid) that works like a thumb, not a true extra finger",
+                            "A spare ear that folded onto the paw",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says the panda’s “thumb” is an enlarged radial sesamoid — a wrist bone — not a true sixth finger. It helps grip bamboo.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "carnivore-gut",
+                        "title": "Carnivore gut",
+                        "stem": "How is a giant panda’s gut built, even though it eats plants?",
+                        "choices": [
+                            "It has a cow-style rumen that ferments grass for days",
+                            "It has a huge fermenting caecum like a koala",
+                            "A short carnivore-style gut with no rumen or big fermenting caecum; its gut microbes look more carnivore-like than ruminant",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says the giant panda keeps a short carnivore-style gut — no rumen and no large fermenting caecum. Studies of its gut microbes look more like those of other carnivores than of ruminants.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "bamboo-bulk",
+                        "title": "Bamboo bulk",
+                        "stem": "About how much bamboo may an adult giant panda eat in a day?",
+                        "choices": [
+                            "Roughly a dozen to a few dozen kilograms — a big daily pile, without locking one exact range",
+                            "Only a single leaf",
+                            "Exactly one gram, measured every morning",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia reports that adults may eat a large daily pile of bamboo — on the order of a dozen to a few dozen kilograms. Exact kilogram bands vary, so we keep the range soft.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "tiny-start",
+                        "title": "Tiny start",
+                        "stem": "How big is a newborn giant panda cub compared with its mother?",
+                        "choices": [
+                            "Already the same weight as mom",
+                            "Only a tiny fraction of mom’s weight — one of the smallest mammal newborns relative to the mother",
+                            "Bigger than an adult elephant",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says a newborn cub is tiny compared with its mother — only a tiny fraction of her weight. Exact ratios are contested, so we do not lock one number.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "umami-switch-off",
+                        "title": "Umami switch-off",
+                        "stem": "What happened to the giant panda’s savoury (umami) taste?",
+                        "choices": [
+                            "Pandas taste every flavour more strongly than any other mammal",
+                            "They invented a new taste just for ice cream",
+                            "They lost functional umami taste through a broken T1R1 receptor gene — a shift that fits eating less meat",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia reports that giant pandas lost a working umami (savoury) taste receptor (T1R1). That broken gene fits a long shift away from meat. We do not lock an exact date in millions of years.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "vulnerable-snapshot",
+                        "title": "Vulnerable snapshot",
+                        "stem": "How should we read the giant panda’s usual threat listing after 2016?",
+                        "choices": [
+                            "IUCN moved the species from Endangered to Vulnerable in 2016 — a snapshot letter, not a forever grade",
+                            "The species was declared extinct worldwide in 2016",
+                            "The letter is carved in stone and can never change",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says the IUCN Red List moved the giant panda from Endangered to Vulnerable in 2016. That letter is a snapshot of how the species was graded then, not a forever rule.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "qinling-form",
+                        "title": "Qinling form",
+                        "stem": "How do scientists often treat giant pandas of the Qinling Mountains?",
+                        "choices": [
+                            "They are a completely different kind of animal, like a bird",
+                            "They are often treated as a distinct subspecies — though some splits stay debated",
+                            "Qinling pandas are the only pandas, and all others are stuffed toys",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia often treats Qinling Mountain pandas as a distinct subspecies. Some taxonomic splits stay debated, so we do not lock one forever split.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "delayed-implant",
+                        "title": "Delayed implant",
+                        "stem": "What bear-family reproductive trick can giant pandas use after mating?",
+                        "choices": [
+                            "The cub is born the same afternoon as mating",
+                            "Pandas lay eggs like birds",
+                            "The embryo can delay implanting in the uterus — a pause before pregnancy really starts",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says giant pandas, like other bears, can use delayed implantation: the early embryo may wait before attaching in the uterus. We keep the exact pause timing soft.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "bamboo-die-off",
+                        "title": "Bamboo die-off",
+                        "stem": "What happens when a whole bamboo stand flowers at once?",
+                        "choices": [
+                            "Whole stands can flower and die together; in broken-up habitat that can leave pandas without nearby food",
+                            "Flowering bamboo turns into candy that pandas prefer",
+                            "Flowering makes bamboo last forever",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia describes gregarious bamboo flowering: a whole stand can bloom and then die together. In fragmented habitat, pandas may not be able to walk to a still-living stand, so a die-off can leave them without food.",
                     },
                 ],
             },
