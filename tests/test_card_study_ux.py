@@ -108,6 +108,10 @@ class CardStudyUxTests(unittest.TestCase):
             study_try_next_ids("galapagos-tortoise"),
             ["african-elephant", "reticulated-giraffe", "african-lion"],
         )
+        self.assertEqual(
+            study_try_next_ids("zebra"),
+            ["african-lion", "reticulated-giraffe", "african-elephant"],
+        )
         for cid in study_card_ids():
             nxt = study_try_next_ids(cid)
             with self.subTest(card=cid):

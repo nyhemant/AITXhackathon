@@ -160,6 +160,7 @@ STUDY_NEIGHBORS = {
     "african-penguin": ("caribbean-flamingo",),
     "caribbean-flamingo": ("african-penguin",),
     "galapagos-tortoise": ("african-elephant", "reticulated-giraffe"),
+    "zebra": ("african-lion", "reticulated-giraffe", "african-elephant"),
 }
 
 STUDY_CARD_TITLES = {
@@ -169,6 +170,7 @@ STUDY_CARD_TITLES = {
     "african-penguin": "African penguin",
     "caribbean-flamingo": "Caribbean flamingo",
     "galapagos-tortoise": "Galápagos tortoise",
+    "zebra": "Zebra",
 }
 
 # Shared answers-side deepen (Claude sample). Not scored. Future animals reuse keys.
