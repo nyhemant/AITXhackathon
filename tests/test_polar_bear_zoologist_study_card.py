@@ -36,7 +36,7 @@ from study_cards import (  # noqa: E402
 
 FP = REPO / "static" / "field-pack"
 BEAR = FP / "cards" / "polar-bear" / "index.html"
-SEA_OTTER = FP / "cards" / "sea-otter" / "index.html"
+JELLYFISH = FP / "cards" / "jellyfish" / "index.html"
 FISH = FP / "cards" / "freshwater-fish" / "index.html"
 LION = FP / "cards" / "african-lion" / "index.html"
 STUDY_JSON = FP / "data" / "study-cards.json"
@@ -144,8 +144,6 @@ class PolarBearZoologistStudyCardTests(unittest.TestCase):
             ("easy", "hard", "zoologist"),
         )
         self.assertEqual(level_display_name("zoologist"), "Zoologist")
-        self.assertNotIn("sea-otter", study_card_ids())
-        self.assertIsNone(study_deck_for("sea-otter"))
         deck = study_deck_for("polar-bear", "zoologist")
         self.assertIsNotNone(deck)
         self.assertEqual(deck["level"], "zoologist")
@@ -343,11 +341,10 @@ class PolarBearZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("Zoologist", fish_html)
         self.assertEqual(fish_zoo["talk_about"], list(TALK_ABOUT_FRESHWATER_FISH))
         self.assertEqual(fish_zoo["push_further"], list(PUSH_FURTHER_FRESHWATER_FISH))
-        sea = SEA_OTTER.read_text(encoding="utf-8")
+        sea = JELLYFISH.read_text(encoding="utf-8")
         self.assertIn("What do they eat?", sea)
         self.assertNotIn("card-study-pack", sea)
         self.assertNotIn("ursidae-soft", sea)
-        self.assertIsNone(study_deck_for("sea-otter"))
 
     def test_published_artifacts_and_plumbing(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))

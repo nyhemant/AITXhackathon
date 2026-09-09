@@ -36,7 +36,7 @@ FP = REPO / "static" / "field-pack"
 ELEPHANT = FP / "cards" / "african-elephant" / "index.html"
 GIRAFFE = FP / "cards" / "reticulated-giraffe" / "index.html"
 LION = FP / "cards" / "african-lion" / "index.html"
-SEA_OTTER = FP / "cards" / "sea-otter" / "index.html"
+JELLYFISH = FP / "cards" / "jellyfish" / "index.html"
 PRINT_KIT = FP / "js" / "print-kit.js"
 STUDY_JS = FP / "js" / "study-card.js"
 STYLES = FP / "css" / "styles.css"
@@ -138,6 +138,7 @@ class ElephantEasyStudyCardTests(unittest.TestCase):
                 "two-toed-sloth",
                 "freshwater-fish",
                 "polar-bear",
+                "sea-otter",
             ),
         )
         self.assertEqual(shipped_levels_for("african-elephant"), ("easy", "hard", "zoologist"))
@@ -234,11 +235,11 @@ class ElephantEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Facts from Wikipedia, African elephant / Elephant.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
-        html = outing_talk_html({"id": "sea-otter", "packTemplate": "animals"})
+        html = outing_talk_html({"id": "jellyfish", "packTemplate": "animals"})
         self.assertIn("What do they eat?", html)
         self.assertNotIn("card-study-pack", html)
         self.assertNotIn("What record does an African elephant hold", html)
-        sea = SEA_OTTER.read_text(encoding="utf-8")
+        sea = JELLYFISH.read_text(encoding="utf-8")
         self.assertIn("What do they eat?", sea)
         self.assertNotIn("card-study-pack", sea)
 

@@ -38,7 +38,7 @@ from study_cards import (  # noqa: E402
 
 FP = REPO / "static" / "field-pack"
 OTTER = FP / "cards" / "asian-small-clawed-otter" / "index.html"
-SEA_OTTER = FP / "cards" / "sea-otter" / "index.html"
+JELLYFISH = FP / "cards" / "jellyfish" / "index.html"
 SHARK = FP / "cards" / "shark" / "index.html"
 LION = FP / "cards" / "african-lion" / "index.html"
 STUDY_JSON = FP / "data" / "study-cards.json"
@@ -149,8 +149,6 @@ class AsianSmallClawedOtterZoologistStudyCardTests(unittest.TestCase):
             ("easy", "hard", "zoologist"),
         )
         self.assertEqual(level_display_name("zoologist"), "Zoologist")
-        self.assertNotIn("sea-otter", study_card_ids())
-        self.assertIsNone(study_deck_for("sea-otter"))
         deck = study_deck_for("asian-small-clawed-otter", "zoologist")
         self.assertIsNotNone(deck)
         self.assertEqual(deck["level"], "zoologist")
@@ -352,11 +350,10 @@ class AsianSmallClawedOtterZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("Zoologist", shark_html)
         self.assertEqual(shark_zoo["talk_about"], list(TALK_ABOUT_SHARK))
         self.assertEqual(shark_zoo["push_further"], list(PUSH_FURTHER_SHARK))
-        sea = SEA_OTTER.read_text(encoding="utf-8")
+        sea = JELLYFISH.read_text(encoding="utf-8")
         self.assertIn("What do they eat?", sea)
         self.assertNotIn("card-study-pack", sea)
         self.assertNotIn("naming-flux-soft", sea)
-        self.assertIsNone(study_deck_for("sea-otter"))
 
     def test_published_artifacts_and_plumbing(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))

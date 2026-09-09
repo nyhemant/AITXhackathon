@@ -750,6 +750,29 @@ hunters. Do not redo JR or PR themes. Soften contested
 numbers. Treat IUCN letters as snapshots. Do not invent
 photos.
 
+Facts for sea-otter Junior Ranger (easy) are Wikipedia-backed:
+https://en.wikipedia.org/wiki/Sea_otter
+This is the first study deck for this animal. Distinct from
+the asian-small-clawed-otter card. JR stays kid-simple
+“sea otter.” Live in coastal North Pacific ocean waters —
+not rivers or Asian wetlands. Can live almost entirely in
+the sea. Warmth comes from super-thick fur (densest of any
+animal); the coat traps air and keeps them warm. Often
+float on their backs to rest and eat, using the belly like
+a picnic table. Crack hard shells with rocks — tool users.
+Love sea urchins, clams, crabs, and other ocean
+invertebrates. Wrap in kelp so they do not drift while
+resting. Rest in floating groups called rafts; may hold
+paws so they stay together. Moms carry pups on their chests
+while floating. Soft care: healthy kelp forests and clean
+coasts help sea otters and their food (no EN / CITES /
+fur-trade dump on JR). Myth: sea otters are ocean
+specialists — different from river otters and Asian
+small-clawed otters. Reserve for later (Park Ranger /
+Zoologist): denser physiology (no blubber details),
+EN/CITES, Enhydra, keystone numbers, and fur-trade history.
+Do not invent photos.
+
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
 zoologist. Visible copy uses LEVEL_DISPLAY_NAMES only — no age badges,
@@ -798,6 +821,7 @@ WIKI_ASIAN_SMALL_CLAWED_OTTER = (
 WIKI_TWO_TOED_SLOTH = "https://en.wikipedia.org/wiki/Two-toed_sloth"
 WIKI_FRESHWATER_FISH = "https://en.wikipedia.org/wiki/Freshwater_fish"
 WIKI_POLAR_BEAR = "https://en.wikipedia.org/wiki/Polar_bear"
+WIKI_SEA_OTTER = "https://en.wikipedia.org/wiki/Sea_otter"
 
 LETTERS = ("A", "B", "C")
 STUDY_SLOTS = 10
@@ -874,7 +898,8 @@ LEVEL_DISPLAY_NAMES = {
 # ring-tailed lemur, ostrich, warthog, shark, and
 # Asian small-clawed otter, two-toed sloth, freshwater
 # fish, and polar bear ship Junior Ranger + Park Ranger +
-# Zoologist.
+# Zoologist. Sea otter ships Junior Ranger only (no Park
+# Ranger or Zoologist yet).
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -915,6 +940,7 @@ STUDY_NEIGHBORS = {
     "two-toed-sloth": ("orangutan", "koala"),
     "freshwater-fish": ("shark", "asian-small-clawed-otter"),
     "polar-bear": ("african-penguin", "asian-small-clawed-otter"),
+    "sea-otter": ("asian-small-clawed-otter", "shark"),
 }
 
 STUDY_CARD_TITLES = {
@@ -942,6 +968,7 @@ STUDY_CARD_TITLES = {
     "two-toed-sloth": "Two-toed sloth",
     "freshwater-fish": "Freshwater fish",
     "polar-bear": "Polar bear",
+    "sea-otter": "Sea otter",
 }
 
 # Shared answers-side deepen (Claude sample). Not scored. Future animals reuse keys.
@@ -1184,6 +1211,16 @@ PUSH_FURTHER_POLAR_BEAR = (
     "A denning mom lives on saved fat. How is that different from hunting every day?",
     "Some polar bear groups look okay; others do not. Why might regions differ?",
     "A polar bear skull is built more for cutting meat. What clues would you look for?",
+)
+TALK_ABOUT_SEA_OTTER = (
+    "Sea otters live in the ocean. How is that different from a wetland otter?",
+    "They float on their backs to rest and eat. What would you put on that belly table?",
+    "They crack hard shells with rocks. Which tool would you watch at the zoo?",
+)
+PUSH_FURTHER_SEA_OTTER = (
+    "Their fur is the densest of any animal. Why might that fur matter so much?",
+    "They wrap in kelp so they don’t drift. How is kelp like a seatbelt?",
+    "Raft pals may hold paws so they stay together. Why might that help?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -11377,6 +11414,157 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia says the polar bear’s smell system is large and built for finding prey over long distances. That helps locate seals and breathing holes. Distances stay soft.",
+                    },
+                ],
+            },
+        },
+    },
+    "sea-otter": {
+        "id": "sea-otter",
+        "source": WIKI_SEA_OTTER,
+        "source_note": "Facts from Wikipedia, Sea otter.",
+        "talk_about": list(TALK_ABOUT_SEA_OTTER),
+        "push_further": list(PUSH_FURTHER_SEA_OTTER),
+        "levels": {
+            "easy": {
+                # Teaching-first: same front as the quiz. Hard later may hide these.
+                "teach": [
+                    "Live in coastal North Pacific ocean waters — not rivers or Asian wetlands",
+                    "Warmth comes from super-thick fur (densest of any animal)",
+                    "Often float on their backs to rest and eat",
+                    "Crack hard shells with rocks — tool users",
+                    "Healthy kelp forests and clean coasts help them thrive",
+                ],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "ocean-home",
+                        "title": "Ocean home",
+                        "stem": "Where do sea otters live in the wild?",
+                        "choices": [
+                            "Nearshore North Pacific coasts — they can live almost entirely in the sea",
+                            "Only in Asian rivers and rice fields",
+                            "Only in freshwater lakes far from the ocean",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says sea otters are marine mammals of North Pacific coasts. They can live almost entirely in the sea — not in rivers or Asian wetlands.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "densest-fur-soft",
+                        "title": "Densest fur",
+                        "stem": "How do sea otters stay warm in cold ocean water?",
+                        "choices": [
+                            "They wear a zoo sweater",
+                            "Super-thick fur — the densest of any animal — traps air and keeps them warm",
+                            "They have scales like a fish",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says sea otter fur is the densest of any animal. That thick coat traps air and keeps them warm.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "belly-table-soft",
+                        "title": "Belly table",
+                        "stem": "How do sea otters often rest and eat?",
+                        "choices": [
+                            "They sit at a picnic table on the beach",
+                            "They only eat while hanging from trees",
+                            "They float on their backs and use their belly like a picnic table",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says sea otters usually float on their backs at the surface and eat from their chests — like a belly picnic table.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "rock-tools-soft",
+                        "title": "Rock tools",
+                        "stem": "How do sea otters open hard shells?",
+                        "choices": [
+                            "They use rocks to bash open shells and hard prey",
+                            "They wait for a waiter to open the shells",
+                            "They never eat anything with a shell",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says they use rocks to open shells, making them one of the few mammals that use tools.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "urchin-snacks-soft",
+                        "title": "Urchin snacks",
+                        "stem": "What do sea otters love to eat?",
+                        "choices": [
+                            "Only bamboo and leaves",
+                            "Sea urchins, clams, crabs, and other ocean invertebrates",
+                            "Only grass on land",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says they prey mostly on marine invertebrates such as sea urchins, clams, crabs, and other ocean shellfish.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "kelp-anchors-soft",
+                        "title": "Kelp anchors",
+                        "stem": "Why do sea otters wrap themselves in kelp?",
+                        "choices": [
+                            "They are decorating a party",
+                            "They use kelp as a parachute in the sky",
+                            "So they don’t drift while they rest",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says they wrap in kelp when resting and eating so they do not drift out to sea.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "raft-pals-soft",
+                        "title": "Raft pals",
+                        "stem": "What is a group of resting sea otters called?",
+                        "choices": [
+                            "A raft — they may hold paws so they stay together",
+                            "A herd of cows",
+                            "A flock of birds",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says resting groups are called rafts. Sea otters may hold paws so they do not drift apart.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "pup-on-tummy-soft",
+                        "title": "Pup on tummy",
+                        "stem": "How do sea otter moms carry their pups?",
+                        "choices": [
+                            "In a nest high in a rainforest tree",
+                            "On their chests while floating",
+                            "In a backpack on land",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says a mother floats with her pup on her chest.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "soft-kelp-care",
+                        "title": "Soft kelp care",
+                        "stem": "Why do healthy kelp forests and clean coasts matter?",
+                        "choices": [
+                            "Sea otters use kelp as dessert only",
+                            "They never go near the coast",
+                            "Healthy kelp forests and clean coasts help sea otters and their food",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia ties sea otters to nearshore kelp forests and the prey that lives there. We stay with that soft care — no status letter.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "not-a-river-otter-myth",
+                        "title": "Myth buster",
+                        "stem": "Is a sea otter the same animal as a river otter or an Asian small-clawed otter?",
+                        "choices": [
+                            "No — sea otters are ocean specialists, different from river otters and Asian small-clawed otters",
+                            "Yes — all otters are the same ocean animal",
+                            "Yes — sea otters live only in Asian wetlands",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia treats the sea otter as a marine specialist of the North Pacific. River otters and Asian small-clawed otters are different wetland or river otters.",
                     },
                 ],
             },

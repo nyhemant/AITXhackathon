@@ -179,6 +179,7 @@ class FreshwaterFishEasyStudyCardTests(unittest.TestCase):
                 "two-toed-sloth",
                 "freshwater-fish",
                 "polar-bear",
+                "sea-otter",
             ),
         )
         self.assertEqual(shipped_levels_for("freshwater-fish"), ("easy", "hard", "zoologist"))

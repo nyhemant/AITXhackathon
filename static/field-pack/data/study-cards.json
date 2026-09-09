@@ -10270,5 +10270,163 @@
         ]
       }
     }
+  },
+  "sea-otter": {
+    "id": "sea-otter",
+    "source": "https://en.wikipedia.org/wiki/Sea_otter",
+    "source_note": "Facts from Wikipedia, Sea otter.",
+    "talk_about": [
+      "Sea otters live in the ocean. How is that different from a wetland otter?",
+      "They float on their backs to rest and eat. What would you put on that belly table?",
+      "They crack hard shells with rocks. Which tool would you watch at the zoo?"
+    ],
+    "push_further": [
+      "Their fur is the densest of any animal. Why might that fur matter so much?",
+      "They wrap in kelp so they don’t drift. How is kelp like a seatbelt?",
+      "Raft pals may hold paws so they stay together. Why might that help?"
+    ],
+    "levels": {
+      "easy": {
+        "teach": [
+          "Live in coastal North Pacific ocean waters — not rivers or Asian wetlands",
+          "Warmth comes from super-thick fur (densest of any animal)",
+          "Often float on their backs to rest and eat",
+          "Crack hard shells with rocks — tool users",
+          "Healthy kelp forests and clean coasts help them thrive"
+        ],
+        "questions": [
+          {
+            "slot": 1,
+            "id": "ocean-home",
+            "title": "Ocean home",
+            "stem": "Where do sea otters live in the wild?",
+            "choices": [
+              "Nearshore North Pacific coasts — they can live almost entirely in the sea",
+              "Only in Asian rivers and rice fields",
+              "Only in freshwater lakes far from the ocean"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says sea otters are marine mammals of North Pacific coasts. They can live almost entirely in the sea — not in rivers or Asian wetlands."
+          },
+          {
+            "slot": 2,
+            "id": "densest-fur-soft",
+            "title": "Densest fur",
+            "stem": "How do sea otters stay warm in cold ocean water?",
+            "choices": [
+              "They wear a zoo sweater",
+              "Super-thick fur — the densest of any animal — traps air and keeps them warm",
+              "They have scales like a fish"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says sea otter fur is the densest of any animal. That thick coat traps air and keeps them warm."
+          },
+          {
+            "slot": 3,
+            "id": "belly-table-soft",
+            "title": "Belly table",
+            "stem": "How do sea otters often rest and eat?",
+            "choices": [
+              "They sit at a picnic table on the beach",
+              "They only eat while hanging from trees",
+              "They float on their backs and use their belly like a picnic table"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says sea otters usually float on their backs at the surface and eat from their chests — like a belly picnic table."
+          },
+          {
+            "slot": 4,
+            "id": "rock-tools-soft",
+            "title": "Rock tools",
+            "stem": "How do sea otters open hard shells?",
+            "choices": [
+              "They use rocks to bash open shells and hard prey",
+              "They wait for a waiter to open the shells",
+              "They never eat anything with a shell"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says they use rocks to open shells, making them one of the few mammals that use tools."
+          },
+          {
+            "slot": 5,
+            "id": "urchin-snacks-soft",
+            "title": "Urchin snacks",
+            "stem": "What do sea otters love to eat?",
+            "choices": [
+              "Only bamboo and leaves",
+              "Sea urchins, clams, crabs, and other ocean invertebrates",
+              "Only grass on land"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says they prey mostly on marine invertebrates such as sea urchins, clams, crabs, and other ocean shellfish."
+          },
+          {
+            "slot": 6,
+            "id": "kelp-anchors-soft",
+            "title": "Kelp anchors",
+            "stem": "Why do sea otters wrap themselves in kelp?",
+            "choices": [
+              "They are decorating a party",
+              "They use kelp as a parachute in the sky",
+              "So they don’t drift while they rest"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says they wrap in kelp when resting and eating so they do not drift out to sea."
+          },
+          {
+            "slot": 7,
+            "id": "raft-pals-soft",
+            "title": "Raft pals",
+            "stem": "What is a group of resting sea otters called?",
+            "choices": [
+              "A raft — they may hold paws so they stay together",
+              "A herd of cows",
+              "A flock of birds"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says resting groups are called rafts. Sea otters may hold paws so they do not drift apart."
+          },
+          {
+            "slot": 8,
+            "id": "pup-on-tummy-soft",
+            "title": "Pup on tummy",
+            "stem": "How do sea otter moms carry their pups?",
+            "choices": [
+              "In a nest high in a rainforest tree",
+              "On their chests while floating",
+              "In a backpack on land"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says a mother floats with her pup on her chest."
+          },
+          {
+            "slot": 9,
+            "id": "soft-kelp-care",
+            "title": "Soft kelp care",
+            "stem": "Why do healthy kelp forests and clean coasts matter?",
+            "choices": [
+              "Sea otters use kelp as dessert only",
+              "They never go near the coast",
+              "Healthy kelp forests and clean coasts help sea otters and their food"
+            ],
+            "correct": "C",
+            "why": "Wikipedia ties sea otters to nearshore kelp forests and the prey that lives there. We stay with that soft care — no status letter."
+          },
+          {
+            "slot": 10,
+            "id": "not-a-river-otter-myth",
+            "title": "Myth buster",
+            "stem": "Is a sea otter the same animal as a river otter or an Asian small-clawed otter?",
+            "choices": [
+              "No — sea otters are ocean specialists, different from river otters and Asian small-clawed otters",
+              "Yes — all otters are the same ocean animal",
+              "Yes — sea otters live only in Asian wetlands"
+            ],
+            "correct": "A",
+            "why": "Wikipedia treats the sea otter as a marine specialist of the North Pacific. River otters and Asian small-clawed otters are different wetland or river otters."
+          }
+        ]
+      }
+    }
   }
 }
