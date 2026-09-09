@@ -680,6 +680,28 @@ three-toed leaf-browsers. Do not redo JR or PR themes.
 Soften contested numbers. Treat IUCN letters as snapshots.
 Do not invent photos.
 
+Facts for freshwater-fish Junior Ranger (easy) are Wikipedia-backed:
+https://en.wikipedia.org/wiki/Freshwater_fish
+Also the Fish page as needed. This is the group freshwater-fish
+card (river / lake / pond / wetland fishes), not one species.
+Claims must hold for most freshwater fish as a group. JR stays
+kid-simple “freshwater fish.” Live in rivers, lakes, ponds, and
+inland wetlands — not salty ocean water. Fresh water has much
+less salt than the ocean. Breathe underwater with gills that
+pull oxygen from the water. Fins help push, steer, balance, and
+brake. Come in many shapes and sizes (catfish, trout, perch,
+and more). A huge share of all fish kinds live in fresh water
+(soften the exact percent). Many wear protective scales — not
+every kind. Most follow the water’s temperature (cold-blooded;
+a few kinds stay warmer). Many begin as eggs laid in the water
+(some kinds differ — soft). Soft care: clean rivers and healthy
+wetlands help them thrive (no IUCN letter on JR). Myth: plenty
+of fish spend their whole lives in fresh water — no ocean
+required. Reserve for Park Ranger / Zoologist: denser taxonomy
+(ray-finned / teleost), osmoregulation, lateral line, swim
+bladder, diadromy, status-by-kind. Soften contested numbers.
+Do not invent photos.
+
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
 zoologist. Visible copy uses LEVEL_DISPLAY_NAMES only — no age badges,
@@ -726,6 +748,7 @@ WIKI_ASIAN_SMALL_CLAWED_OTTER = (
     "https://en.wikipedia.org/wiki/Asian_small-clawed_otter"
 )
 WIKI_TWO_TOED_SLOTH = "https://en.wikipedia.org/wiki/Two-toed_sloth"
+WIKI_FRESHWATER_FISH = "https://en.wikipedia.org/wiki/Freshwater_fish"
 
 LETTERS = ("A", "B", "C")
 STUDY_SLOTS = 10
@@ -801,7 +824,8 @@ LEVEL_DISPLAY_NAMES = {
 # koala, chimpanzee, orangutan, giant panda, and
 # ring-tailed lemur, ostrich, warthog, shark, and
 # Asian small-clawed otter and two-toed sloth ship
-# Junior Ranger + Park Ranger + Zoologist.
+# Junior Ranger + Park Ranger + Zoologist. Freshwater fish
+# ships Junior Ranger only (no Park Ranger or Zoologist yet).
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -840,6 +864,7 @@ STUDY_NEIGHBORS = {
     "shark": ("african-penguin", "caribbean-flamingo"),
     "asian-small-clawed-otter": ("shark", "red-panda"),
     "two-toed-sloth": ("orangutan", "koala"),
+    "freshwater-fish": ("shark", "asian-small-clawed-otter"),
 }
 
 STUDY_CARD_TITLES = {
@@ -865,6 +890,7 @@ STUDY_CARD_TITLES = {
     "shark": "Shark",
     "asian-small-clawed-otter": "Asian small-clawed otter",
     "two-toed-sloth": "Two-toed sloth",
+    "freshwater-fish": "Freshwater fish",
 }
 
 # Shared answers-side deepen (Claude sample). Not scored. Future animals reuse keys.
@@ -1087,6 +1113,16 @@ PUSH_FURTHER_TWO_TOED_SLOTH = (
     "Living tree sloths are leftovers of huge ground sloths. How are the two different?",
     "Hoffmann’s two-toed sloths are split by the Andes. How could mountains split a range?",
     "“Two-toed” counts the front claws. How is that different from three-toed naming?",
+)
+TALK_ABOUT_FRESHWATER_FISH = (
+    "A river tank is not the ocean. What would you look for that says “fresh water”?",
+    "Gills pull oxygen from the water, like a tiny underwater breath. How would you explain that?",
+    "Clean rivers and wetlands help these fish stay healthy. Why might dirty water be hard on them?",
+)
+PUSH_FURTHER_FRESHWATER_FISH = (
+    "Name a fish from a pond or river near you. What makes it a freshwater fish?",
+    "Fins are a toolkit — push, steer, balance, and brake. Which fin job would you watch?",
+    "A goldfish lives in fresh water, but it is not the only kind. What other freshwater fish can you name?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -10415,6 +10451,157 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia says two-toed sloths eat leaves plus other plant parts such as shoots and fruit, and sometimes extras. Three-toed sloths are more specialist leaf-eaters. Exact snack lists stay a little soft.",
+                    },
+                ],
+            },
+        },
+    },
+    "freshwater-fish": {
+        "id": "freshwater-fish",
+        "source": WIKI_FRESHWATER_FISH,
+        "source_note": "Facts from Wikipedia, Freshwater fish.",
+        "talk_about": list(TALK_ABOUT_FRESHWATER_FISH),
+        "push_further": list(PUSH_FURTHER_FRESHWATER_FISH),
+        "levels": {
+            "easy": {
+                # Teaching-first: same front as the quiz. Hard later may hide these.
+                "teach": [
+                    "Live in rivers, lakes, ponds, and wetlands — not salty ocean water",
+                    "Breathe underwater with gills",
+                    "Use fins to swim, steer, and stop",
+                    "Come in many shapes and sizes (catfish, trout, perch, and more)",
+                    "Need clean fresh water to stay healthy",
+                ],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "fresh-homes",
+                        "title": "Fresh homes",
+                        "stem": "Where do freshwater fish live?",
+                        "choices": [
+                            "Rivers, lakes, ponds, and inland wetlands",
+                            "Only in the salty ocean",
+                            "Only in the sky",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says freshwater fish spend some or all of their lives in rivers, lakes, ponds, and inland wetlands — not salty ocean water.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "low-salt-water-soft",
+                        "title": "Low-salt water",
+                        "stem": "How is fresh water different from ocean water?",
+                        "choices": [
+                            "Fresh water is saltier than the ocean",
+                            "Fresh water has much less salt than the ocean",
+                            "Fresh water and ocean water have the same salt",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says freshwater homes have very low salt compared with the ocean. That low-salt water is what “fresh” means here.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "gill-breathers",
+                        "title": "Gill breathers",
+                        "stem": "How do freshwater fish get oxygen underwater?",
+                        "choices": [
+                            "They breathe air with lungs like a dog",
+                            "They drink the water to get air",
+                            "Gills pull oxygen from the water",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says fish extract oxygen from water using gills. Freshwater fish breathe underwater this way.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "fin-toolkit",
+                        "title": "Fin toolkit",
+                        "stem": "How do fins help freshwater fish move?",
+                        "choices": [
+                            "Fins help push, steer, balance, and brake",
+                            "Fins are only for flying in the sky",
+                            "Fins do no work at all",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia describes a typical fish with paired fins plus dorsal, anal, and tail fins. Those fins help push, steer, balance, and stop.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "many-kinds-soft",
+                        "title": "Many kinds",
+                        "stem": "How many kinds of fish live in fresh water?",
+                        "choices": [
+                            "Almost no fish live in fresh water",
+                            "A huge share of all fish kinds live in fresh water",
+                            "Every fish on Earth lives only in the ocean",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says a huge share of all known fish kinds are found in fresh water. The exact percent can shift, so we keep the number soft.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "scaly-coats-soft",
+                        "title": "Scaly coats",
+                        "stem": "Do freshwater fish wear scales?",
+                        "choices": [
+                            "No fish ever has scales",
+                            "Every single kind is covered in thick fur",
+                            "Many wear protective scales, but not every kind",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says a typical fish has skin covered with scales that help protect it. Some kinds have fewer scales or none, so this is not true of every freshwater fish.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "water-temp-soft",
+                        "title": "Water temperature",
+                        "stem": "How do most freshwater fish handle temperature?",
+                        "choices": [
+                            "Most follow the water’s temperature (they are cold-blooded)",
+                            "Every kind keeps a hot body like a mammal",
+                            "They freeze solid in every pond",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says most fish are cold-blooded — their body temperature varies with the surrounding water. A few kinds can stay warmer, so we say most.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "egg-starts-soft",
+                        "title": "Egg starts",
+                        "stem": "How do many freshwater fish begin life?",
+                        "choices": [
+                            "Every kind is born as a tiny mammal",
+                            "Many begin as eggs laid in the water (some kinds differ)",
+                            "They sprout from tree seeds",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says many fish begin as eggs laid in the water. Some kinds give live young, so we stay soft.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "soft-water-care",
+                        "title": "Soft water care",
+                        "stem": "What helps freshwater fish stay healthy in the wild?",
+                        "choices": [
+                            "Dirty water and dry empty ponds",
+                            "Only salty ocean waves",
+                            "Clean rivers and healthy wetlands",
+                        ],
+                        "correct": "C",
+                        "why": "Freshwater fish need clean fresh water. Wikipedia notes that habitat loss and pollution can hurt them. Clean rivers and healthy wetlands help them thrive. We do not lock a status letter — that grade is a snapshot and can change.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "not-only-ocean-myth",
+                        "title": "Myth buster",
+                        "stem": "Do all fish need the ocean to live?",
+                        "choices": [
+                            "No — plenty of fish spend their whole lives in fresh water, with no ocean required",
+                            "Yes — every fish must live in the ocean",
+                            "Fish can only live in the desert",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says freshwater fish spend some or all of their lives in rivers, lakes, ponds, and inland wetlands. Plenty of kinds never need the ocean.",
                     },
                 ],
             },

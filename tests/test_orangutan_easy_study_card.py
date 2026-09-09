@@ -221,6 +221,7 @@ class OrangutanEasyStudyCardTests(unittest.TestCase):
                 "shark",
                 "asian-small-clawed-otter",
                 "two-toed-sloth",
+                "freshwater-fish",
             ),
         )
         self.assertEqual(shipped_levels_for("orangutan"), ("easy", "hard", "zoologist"))

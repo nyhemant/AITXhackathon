@@ -1,4 +1,4 @@
-"""Asian small-clawed otter Easy study-card: Junior Ranger teach + 10 MCQs (Park Ranger + Zoologist siblings)."""
+"""Freshwater fish Easy study-card: Junior Ranger teach + 10 MCQs (first deck)."""
 
 from __future__ import annotations
 
@@ -14,19 +14,16 @@ sys.path.insert(0, str(REPO / "scripts"))
 from generate_bdo_seo import outing_talk_html  # noqa: E402
 from study_cards import (  # noqa: E402
     LEVEL_DISPLAY_NAMES,
-    PUSH_FURTHER_ASIAN_SMALL_CLAWED_OTTER,
+    PUSH_FURTHER_FRESHWATER_FISH,
     PUSH_FURTHER_LION,
-    PUSH_FURTHER_SHARK,
-    PUSH_FURTHER_WARTHOG,
+    PUSH_FURTHER_TWO_TOED_SLOTH,
     STUDY_SLOTS,
-    TALK_ABOUT_ASIAN_SMALL_CLAWED_OTTER,
+    TALK_ABOUT_FRESHWATER_FISH,
     TALK_ABOUT_LION,
-    TALK_ABOUT_SHARK,
-    TALK_ABOUT_WARTHOG,
-    WIKI_ASIAN_SMALL_CLAWED_OTTER,
+    TALK_ABOUT_TWO_TOED_SLOTH,
+    WIKI_FRESHWATER_FISH,
     WIKI_LION,
-    WIKI_SHARK,
-    WIKI_WARTHOG,
+    WIKI_TWO_TOED_SLOTH,
     level_display_name,
     shipped_levels_for,
     study_card_ids,
@@ -38,11 +35,9 @@ from study_cards import (  # noqa: E402
 )
 
 FP = REPO / "static" / "field-pack"
-OTTER = FP / "cards" / "asian-small-clawed-otter" / "index.html"
-SEA_OTTER = FP / "cards" / "sea-otter" / "index.html"
-WHALE_SHARK = FP / "cards" / "whale-shark" / "index.html"
-SHARK = FP / "cards" / "shark" / "index.html"
-WARTHOG = FP / "cards" / "warthog" / "index.html"
+FISH = FP / "cards" / "freshwater-fish" / "index.html"
+CLOWNFISH = FP / "cards" / "clownfish" / "index.html"
+SLOTH = FP / "cards" / "two-toed-sloth" / "index.html"
 PRINT_KIT = FP / "js" / "print-kit.js"
 STUDY_JS = FP / "js" / "study-card.js"
 STYLES = FP / "css" / "styles.css"
@@ -61,37 +56,37 @@ GENERIC_WORKSHEET = (
 )
 
 TEACH = (
-    "They eat crabs, shellfish, and little fish — often felt with their paws.",
-    "Tiny claws and clever hands help them hunt in mud.",
-    "They live in Asian wetlands, mangroves, rivers, and rice paddies.",
-    "They live in family groups; babies are pups.",
-    "They are the world’s smallest otter and make lots of squeaky calls.",
+    "Live in rivers, lakes, ponds, and wetlands — not salty ocean water",
+    "Breathe underwater with gills",
+    "Use fins to swim, steer, and stop",
+    "Come in many shapes and sizes (catfish, trout, perch, and more)",
+    "Need clean fresh water to stay healthy",
 )
 
 STEMS = (
-    "What kind of otter is the Asian small-clawed otter?",
-    "Where do Asian small-clawed otters live in the wild?",
-    "What do Asian small-clawed otters often eat?",
-    "What is special about their claws?",
-    "How do Asian small-clawed otters usually live?",
-    "What sounds do they make?",
-    "What is a baby otter called?",
-    "How do they stay warm in the water?",
-    "How do their feet help them move?",
-    "Is an otter the same animal as a beaver?",
+    "Where do freshwater fish live?",
+    "How is fresh water different from ocean water?",
+    "How do freshwater fish get oxygen underwater?",
+    "How do fins help freshwater fish move?",
+    "How many kinds of fish live in fresh water?",
+    "Do freshwater fish wear scales?",
+    "How do most freshwater fish handle temperature?",
+    "How do many freshwater fish begin life?",
+    "What helps freshwater fish stay healthy in the wild?",
+    "Do all fish need the ocean to live?",
 )
 
 QIDS = (
-    "smallest-otter",
-    "wet-asia-home",
-    "crab-snacks",
-    "short-claws",
-    "family-groups",
-    "chatty-squeaks",
-    "pup",
-    "thick-fur",
-    "webbed-swimmers",
-    "otter-not-beaver",
+    "fresh-homes",
+    "low-salt-water-soft",
+    "gill-breathers",
+    "fin-toolkit",
+    "many-kinds-soft",
+    "scaly-coats-soft",
+    "water-temp-soft",
+    "egg-starts-soft",
+    "soft-water-care",
+    "not-only-ocean-myth",
 )
 
 PLAIN_LEVEL_LABELS = ("Easy", "Hard")
@@ -102,24 +97,29 @@ BRITTLE = (
     "Endangered",
     "Critically",
     "Least Concern",
-    "CITES",
-    "Aonyx",
-    "Amblonyx",
-    "Lutra",
+    "teleost",
+    "Actinopterygii",
+    "osmoregulation",
+    "diadrom",
+    "anadrom",
+    "catadrom",
+    "lateral line",
+    "swim bladder",
+    "41.24",
     "kg",
     "cm",
     "mph",
     "km/h",
 )
-# Talk / push are Zoologist prompts (name flux, crushing teeth, holts).
 PAGE_BRITTLE = BRITTLE
 RESERVED = (
     "IUCN",
-    "Vulnerable",
-    "CITES",
-    "pet trade",
-    "Aonyx",
-    "Amblonyx",
+    "teleost",
+    "ray-finned",
+    "osmoregulation",
+    "lateral line",
+    "swim bladder",
+    "diadromy",
 )
 
 
@@ -131,10 +131,10 @@ def _main(html: str) -> str:
     return html.split('<main class="card-page">', 1)[1].split("</main>", 1)[0]
 
 
-class AsianSmallClawedOtterEasyStudyCardTests(unittest.TestCase):
-    def test_deck_is_junior_ranger(self):
-        self.assertIn("asian-small-clawed-otter", study_card_ids())
-        self.assertNotIn("sea-otter", study_card_ids())
+class FreshwaterFishEasyStudyCardTests(unittest.TestCase):
+    def test_deck_is_junior_ranger_only(self):
+        self.assertIn("freshwater-fish", study_card_ids())
+        self.assertNotIn("clownfish", study_card_ids())
         self.assertEqual(
             study_card_ids(),
             (
@@ -163,23 +163,20 @@ class AsianSmallClawedOtterEasyStudyCardTests(unittest.TestCase):
                 "freshwater-fish",
             ),
         )
-        self.assertEqual(
-            shipped_levels_for("asian-small-clawed-otter"),
-            ("easy", "hard", "zoologist"),
-        )
-        self.assertIsNotNone(study_deck_for("asian-small-clawed-otter", "hard"))
-        self.assertIsNotNone(study_deck_for("asian-small-clawed-otter", "zoologist"))
-        self.assertIsNone(study_deck_for("sea-otter"))
-        deck = study_deck_for("asian-small-clawed-otter")
+        self.assertEqual(shipped_levels_for("freshwater-fish"), ("easy",))
+        self.assertIsNone(study_deck_for("freshwater-fish", "hard"))
+        self.assertIsNone(study_deck_for("freshwater-fish", "zoologist"))
+        self.assertIsNone(study_deck_for("clownfish"))
+        deck = study_deck_for("freshwater-fish")
         self.assertIsNotNone(deck)
-        self.assertEqual(deck["id"], "asian-small-clawed-otter")
+        self.assertEqual(deck["id"], "freshwater-fish")
         self.assertEqual(deck["level"], "easy")
         self.assertEqual(deck["level_label"], "Junior Ranger")
         self.assertEqual(level_display_name("easy"), "Junior Ranger")
-        self.assertEqual(deck["source"], WIKI_ASIAN_SMALL_CLAWED_OTTER)
+        self.assertEqual(deck["source"], WIKI_FRESHWATER_FISH)
         self.assertEqual(
             deck["source_note"],
-            "Facts from Wikipedia, Asian small-clawed otter.",
+            "Facts from Wikipedia, Freshwater fish.",
         )
         self.assertEqual(validate_deck(deck), [])
         self.assertEqual(len(deck["teach"]), 5)
@@ -187,14 +184,8 @@ class AsianSmallClawedOtterEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(len(deck["questions"]), STUDY_SLOTS)
         self.assertEqual([q["stem"] for q in deck["questions"]], list(STEMS))
         self.assertEqual([q["id"] for q in deck["questions"]], list(QIDS))
-        self.assertEqual(
-            deck["talk_about"],
-            list(TALK_ABOUT_ASIAN_SMALL_CLAWED_OTTER),
-        )
-        self.assertEqual(
-            deck["push_further"],
-            list(PUSH_FURTHER_ASIAN_SMALL_CLAWED_OTTER),
-        )
+        self.assertEqual(deck["talk_about"], list(TALK_ABOUT_FRESHWATER_FISH))
+        self.assertEqual(deck["push_further"], list(PUSH_FURTHER_FRESHWATER_FISH))
         letters = [q["correct"] for q in deck["questions"]]
         self.assertEqual(letters, [target_letter_for_slot(i) for i in range(1, 11)])
         self.assertEqual(letters.count("A"), 4)
@@ -208,19 +199,20 @@ class AsianSmallClawedOtterEasyStudyCardTests(unittest.TestCase):
         blob = " ".join(deck["teach"] + [q["stem"] + q["why"] for q in deck["questions"]])
         for phrase in BRITTLE + RESERVED:
             self.assertNotIn(phrase, blob)
-        self.assertIn("smallest otter", blob.lower())
-        self.assertIn("south", blob.lower())
-        self.assertIn("crab", blob.lower())
-        self.assertIn("claw", blob.lower())
-        self.assertIn("family", blob.lower())
-        self.assertIn("yelp", blob.lower())
-        self.assertIn("pup", blob.lower())
-        self.assertIn("fur", blob.lower())
-        self.assertIn("webbed", blob.lower())
-        self.assertIn("beaver", blob.lower())
+        self.assertIn("rivers", blob.lower())
+        self.assertIn("lakes", blob.lower())
+        self.assertIn("salt", blob.lower())
+        self.assertIn("gill", blob.lower())
+        self.assertIn("fin", blob.lower())
+        self.assertIn("huge share", blob.lower())
+        self.assertIn("scale", blob.lower())
+        self.assertIn("cold-blooded", blob.lower())
+        self.assertIn("egg", blob.lower())
+        self.assertIn("clean", blob.lower())
+        self.assertIn("ocean", blob.lower())
         self.assertEqual(
-            WIKI_ASIAN_SMALL_CLAWED_OTTER,
-            "https://en.wikipedia.org/wiki/Asian_small-clawed_otter",
+            WIKI_FRESHWATER_FISH,
+            "https://en.wikipedia.org/wiki/Freshwater_fish",
         )
 
     def test_other_study_decks_untouched(self):
@@ -231,23 +223,16 @@ class AsianSmallClawedOtterEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(lion["talk_about"], list(TALK_ABOUT_LION))
         self.assertEqual(lion["push_further"], list(PUSH_FURTHER_LION))
         self.assertEqual(shipped_levels_for("african-lion"), ("easy", "hard", "zoologist"))
-        hog = study_deck_for("warthog")
-        self.assertEqual(hog["source"], WIKI_WARTHOG)
-        self.assertEqual(hog["talk_about"], list(TALK_ABOUT_WARTHOG))
-        self.assertEqual(hog["push_further"], list(PUSH_FURTHER_WARTHOG))
-        self.assertEqual(shipped_levels_for("warthog"), ("easy", "hard", "zoologist"))
-        fish = study_deck_for("shark")
-        self.assertEqual(fish["source"], WIKI_SHARK)
-        self.assertEqual(fish["talk_about"], list(TALK_ABOUT_SHARK))
-        self.assertEqual(fish["push_further"], list(PUSH_FURTHER_SHARK))
-        self.assertEqual(shipped_levels_for("shark"), ("easy", "hard", "zoologist"))
-        self.assertIsNotNone(study_deck_for("shark", "hard"))
-        self.assertIsNotNone(study_deck_for("shark", "zoologist"))
+        sloth = study_deck_for("two-toed-sloth")
+        self.assertEqual(sloth["source"], WIKI_TWO_TOED_SLOTH)
+        self.assertEqual(sloth["talk_about"], list(TALK_ABOUT_TWO_TOED_SLOTH))
+        self.assertEqual(sloth["push_further"], list(PUSH_FURTHER_TWO_TOED_SLOTH))
+        self.assertEqual(shipped_levels_for("two-toed-sloth"), ("easy", "hard", "zoologist"))
+        self.assertIsNotNone(study_deck_for("two-toed-sloth", "hard"))
+        self.assertIsNotNone(study_deck_for("two-toed-sloth", "zoologist"))
 
     def test_generator_html_is_study_not_worksheet(self):
-        html = outing_talk_html(
-            {"id": "asian-small-clawed-otter", "packTemplate": "animals"}
-        )
+        html = outing_talk_html({"id": "freshwater-fish", "packTemplate": "animals"})
         self.assertIn(">Quiz</h2>", html)
         self.assertIn("card-study-pack", html)
         self.assertIn("Learn first", html)
@@ -260,7 +245,7 @@ class AsianSmallClawedOtterEasyStudyCardTests(unittest.TestCase):
         self.assertIn('<details class="study-explore', html)
         self.assertIn("Explore more", html)
         self.assertNotIn('<aside class="study-deepen"', html)
-        for prompt in TALK_ABOUT_ASIAN_SMALL_CLAWED_OTTER + PUSH_FURTHER_ASIAN_SMALL_CLAWED_OTTER:
+        for prompt in TALK_ABOUT_FRESHWATER_FISH + PUSH_FURTHER_FRESHWATER_FISH:
             self.assertIn(prompt, html)
         self.assertIn("Show answers", html)
         self.assertIn("Score", html)
@@ -272,40 +257,36 @@ class AsianSmallClawedOtterEasyStudyCardTests(unittest.TestCase):
             self.assertNotIn(phrase, html)
         visible = _text(html)
         self.assertIn("Junior Ranger", visible)
-        self.assertIn("Park Ranger", visible)
-        self.assertIn("Zoologist", visible)
-        self.assertIn('class="study-level-picker"', html)
-        self.assertIn('data-study-pick="easy"', html)
-        self.assertIn('data-study-pick="hard"', html)
-        self.assertIn('data-study-pick="zoologist"', html)
-        self.assertNotIn('class="study-level-badge"', html)
-        self.assertEqual(html.count('role="group"'), 2)
-        self.assertIn("study-level-picker-bottom", html)
+        self.assertNotIn("Park Ranger", visible)
+        self.assertNotIn("Zoologist", visible)
+        self.assertIn('class="study-level-badge"', html)
+        self.assertNotIn('class="study-level-picker"', html)
+        self.assertNotIn('data-study-pick="hard"', html)
+        self.assertNotIn('data-study-pick="zoologist"', html)
+        self.assertNotIn("study-level-picker-bottom", html)
         for badge in PLAIN_LEVEL_LABELS + AGE_BADGES:
             self.assertNotIn(badge, visible)
         for phrase in PAGE_BRITTLE:
             self.assertNotIn(phrase, html)
-        self.assertIn("The world’s smallest otter", html)
+        self.assertIn("Rivers, lakes, ponds, and inland wetlands", html)
         self.assertIn(
-            "No — otters eat meaty snacks; beavers eat plants and chew wood",
+            "No — plenty of fish spend their whole lives in fresh water, with no ocean required",
             html,
         )
-        self.assertIn("Facts from Wikipedia, Asian small-clawed otter.", html)
+        self.assertIn("Facts from Wikipedia, Freshwater fish.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
-        html = outing_talk_html({"id": "sea-otter", "packTemplate": "animals"})
+        html = outing_talk_html({"id": "clownfish", "packTemplate": "animals"})
         self.assertIn("What do they eat?", html)
         self.assertNotIn("card-study-pack", html)
-        self.assertNotIn("What kind of otter is the Asian small-clawed otter?", html)
-        sea = SEA_OTTER.read_text(encoding="utf-8")
-        self.assertIn("What do they eat?", sea)
-        self.assertNotIn("card-study-pack", sea)
-        whale = WHALE_SHARK.read_text(encoding="utf-8")
-        self.assertIn("What do they eat?", whale)
-        self.assertNotIn("card-study-pack", whale)
+        self.assertNotIn("Where do freshwater fish live?", html)
+        clown = CLOWNFISH.read_text(encoding="utf-8")
+        self.assertIn("What do they eat?", clown)
+        self.assertNotIn("card-study-pack", clown)
+        self.assertNotIn("Where do freshwater fish live?", clown)
 
-    def test_published_otter_card_matches_easy_deck(self):
-        html = OTTER.read_text(encoding="utf-8")
+    def test_published_fish_card_matches_easy_deck(self):
+        html = FISH.read_text(encoding="utf-8")
         main = _main(html)
         for phrase in GENERIC_WORKSHEET:
             self.assertNotIn(phrase, main)
@@ -313,24 +294,17 @@ class AsianSmallClawedOtterEasyStudyCardTests(unittest.TestCase):
             self.assertIn(stem, main)
         for line in TEACH:
             self.assertIn(line, main)
-        self.assertIn("Watch Live", main)
-        self.assertIn("card-watch-live", main)
-        self.assertIn("card-page-photo-link", main)
-        self.assertIn(
-            "/field-pack/virtual-zoo/?from=card#habitat=asian-small-clawed-otter",
-            main,
-        )
-        self.assertIn('class="card-hero-links no-print"', main)
+        self.assertIn("card-page-photo", main)
+        self.assertIn("/field-pack/photos/freshwater-fish.jpg", main)
         self.assertIn('class="card-try-next no-print"', main)
-        self.assertIn("study-level-picker-bottom", main)
+        self.assertNotIn("study-level-picker-bottom", main)
         self.assertNotIn("card-print-note", main)
         self.assertIn("study-card.js?v=10", html)
         self.assertIn("study-card.css?v=10", html)
         self.assertIn("study-cards-data.js?v=6", html)
         self.assertIn('id="study-card-data"', html)
         self.assertIn('"level_label": "Junior Ranger"', html)
-        self.assertIn('"id": "asian-small-clawed-otter"', html)
-        self.assertNotIn('"id": "sea-otter"', html)
+        self.assertIn('"id": "freshwater-fish"', html)
         self.assertIn('id="study-print-template"', html)
         self.assertIn("print-kit.js?v=20", html)
         self.assertIn("styles.css?v=42", html)
@@ -346,13 +320,12 @@ class AsianSmallClawedOtterEasyStudyCardTests(unittest.TestCase):
         self.assertLess(main.find("study-explore"), main.find("card-try-next"))
         visible = _text(main)
         self.assertIn("Junior Ranger", visible)
-        self.assertIn("Park Ranger", visible)
-        self.assertIn("Zoologist", visible)
-        self.assertIn('class="study-level-picker"', main)
-        self.assertIn('data-study-pick="easy"', main)
-        self.assertIn('data-study-pick="hard"', main)
-        self.assertIn('data-study-pick="zoologist"', main)
-        self.assertNotIn('class="study-level-badge"', main)
+        self.assertNotIn("Park Ranger", visible)
+        self.assertNotIn("Zoologist", visible)
+        self.assertIn('class="study-level-badge"', main)
+        self.assertNotIn('class="study-level-picker"', main)
+        self.assertNotIn('data-study-pick="hard"', main)
+        self.assertNotIn('data-study-pick="zoologist"', main)
         self.assertIn("Learn first", main)
         self.assertIn(">Quiz</h2>", main)
         self.assertEqual(main.count("data-study-correct"), 2)
@@ -372,35 +345,35 @@ class AsianSmallClawedOtterEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Talk about it", back)
         self.assertIn("Push further", back)
         self.assertIn("ps-study-deepen", back)
-        for prompt in TALK_ABOUT_ASIAN_SMALL_CLAWED_OTTER + PUSH_FURTHER_ASIAN_SMALL_CLAWED_OTTER:
+        for prompt in TALK_ABOUT_FRESHWATER_FISH + PUSH_FURTHER_FRESHWATER_FISH:
             self.assertIn(prompt, back)
         self.assertEqual(
-            study_try_next_ids("asian-small-clawed-otter"),
-            ["shark", "red-panda", "african-lion"],
+            study_try_next_ids("freshwater-fish"),
+            ["shark", "asian-small-clawed-otter", "african-lion"],
         )
 
     def test_print_faces_are_duplex_and_clamped(self):
-        deck = study_deck_for("asian-small-clawed-otter")
+        deck = study_deck_for("freshwater-fish")
         sheet = study_print_html(
             deck,
-            name="Asian small-clawed otter",
-            emoji="🦦",
-            photo="/field-pack/photos/asian-small-clawed-otter.jpg?v=img2",
-            photo_pos="50% 28%",
+            name="River / lake fish",
+            emoji="🐟",
+            photo="/field-pack/photos/freshwater-fish.jpg?v=img2",
+            photo_pos="50% 35%",
         )
         self.assertIn("ps-study-front", sheet)
         self.assertIn("ps-study-back", sheet)
         self.assertIn("ps-study-photo", sheet)
-        self.assertIn("/field-pack/photos/asian-small-clawed-otter.jpg", sheet)
+        self.assertIn("/field-pack/photos/freshwater-fish.jpg", sheet)
         self.assertIn("Flip for answers", sheet)
         self.assertIn("Junior Ranger", sheet)
         self.assertNotIn(" · Easy ·", sheet)
-        self.assertIn(WIKI_ASIAN_SMALL_CLAWED_OTTER, sheet)
+        self.assertIn(WIKI_FRESHWATER_FISH, sheet)
         for stem in STEMS:
             self.assertIn(stem, sheet)
-        self.assertIn("The world’s smallest otter", sheet)
+        self.assertIn("Rivers, lakes, ponds, and inland wetlands", sheet)
         self.assertIn(
-            "No — otters eat meaty snacks; beavers eat plants and chew wood",
+            "No — plenty of fish spend their whole lives in fresh water, with no ocean required",
             sheet,
         )
         front, _, back = sheet.partition("ps-study-back")
@@ -408,7 +381,7 @@ class AsianSmallClawedOtterEasyStudyCardTests(unittest.TestCase):
         self.assertNotIn("Talk about it", front)
         self.assertIn("Talk about it", back)
         self.assertIn("Push further", back)
-        for prompt in TALK_ABOUT_ASIAN_SMALL_CLAWED_OTTER + PUSH_FURTHER_ASIAN_SMALL_CLAWED_OTTER:
+        for prompt in TALK_ABOUT_FRESHWATER_FISH + PUSH_FURTHER_FRESHWATER_FISH:
             self.assertIn(prompt, back)
         css = STYLES.read_text(encoding="utf-8")
         self.assertIn(".ps-study-front", css)
@@ -424,19 +397,15 @@ class AsianSmallClawedOtterEasyStudyCardTests(unittest.TestCase):
         self.assertIn("is-wrong-pick", study_js)
         self.assertIn("FPStudyLevelName", study_js + STUDY_DATA_JS.read_text(encoding="utf-8"))
 
-    def test_artifacts_include_otter_easy_and_hard(self):
+    def test_artifacts_include_fish_easy_only(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
-        self.assertIn("asian-small-clawed-otter", payload)
-        self.assertNotIn("sea-otter", payload)
-        self.assertIn("shark", payload)
-        self.assertIn("warthog", payload)
-        otter = payload["asian-small-clawed-otter"]
-        self.assertEqual(otter["id"], "asian-small-clawed-otter")
-        self.assertEqual(set(otter["levels"]), {"easy", "hard", "zoologist"})
-        self.assertEqual(otter["levels"]["hard"]["teach"], [])
-        self.assertEqual(otter["levels"]["zoologist"]["teach"], [])
-        self.assertIn("zoologist", otter["levels"])
-        easy = otter["levels"]["easy"]
+        self.assertIn("freshwater-fish", payload)
+        self.assertNotIn("clownfish", payload)
+        self.assertIn("two-toed-sloth", payload)
+        fish = payload["freshwater-fish"]
+        self.assertEqual(fish["id"], "freshwater-fish")
+        self.assertEqual(set(fish["levels"]), {"easy"})
+        easy = fish["levels"]["easy"]
         self.assertEqual(len(easy["teach"]), 5)
         self.assertEqual(len(easy["questions"]), STUDY_SLOTS)
         self.assertEqual(
@@ -446,10 +415,12 @@ class AsianSmallClawedOtterEasyStudyCardTests(unittest.TestCase):
         for q in easy["questions"]:
             self.assertEqual(len(q["choices"]), 3)
         data_js = STUDY_DATA_JS.read_text(encoding="utf-8")
-        self.assertIn('"asian-small-clawed-otter"', data_js)
+        self.assertIn('"freshwater-fish"', data_js)
         self.assertIn('"easy":"Junior Ranger"', data_js)
-        self.assertEqual(set(payload["shark"]["levels"]), {"easy", "hard", "zoologist"})
-        self.assertEqual(set(payload["warthog"]["levels"]), {"easy", "hard", "zoologist"})
+        self.assertEqual(
+            set(payload["two-toed-sloth"]["levels"]),
+            {"easy", "hard", "zoologist"},
+        )
         self.assertEqual(set(payload["african-lion"]["levels"]), {"easy", "hard", "zoologist"})
 
     def test_display_name_map_still_covers_future_tiers(self):
@@ -462,19 +433,15 @@ class AsianSmallClawedOtterEasyStudyCardTests(unittest.TestCase):
             },
         )
         self.assertEqual(level_display_name("easy"), "Junior Ranger")
-        otter_html = OTTER.read_text(encoding="utf-8")
-        visible = _text(_main(otter_html))
+        fish_html = FISH.read_text(encoding="utf-8")
+        visible = _text(_main(fish_html))
         self.assertIn("Junior Ranger", visible)
-        self.assertIn("Park Ranger", visible)
-        self.assertIn("Zoologist", visible)
-        shark_html = SHARK.read_text(encoding="utf-8")
-        self.assertIn("Junior Ranger", _text(_main(shark_html)))
-        self.assertIn("Park Ranger", _text(_main(shark_html)))
-        self.assertIn("Zoologist", _text(_main(shark_html)))
-        hog_html = WARTHOG.read_text(encoding="utf-8")
-        self.assertIn("Junior Ranger", _text(_main(hog_html)))
-        self.assertIn("Park Ranger", _text(_main(hog_html)))
-        self.assertIn("Zoologist", _text(_main(hog_html)))
+        self.assertNotIn("Park Ranger", visible)
+        self.assertNotIn("Zoologist", visible)
+        sloth_html = SLOTH.read_text(encoding="utf-8")
+        self.assertIn("Junior Ranger", _text(_main(sloth_html)))
+        self.assertIn("Park Ranger", _text(_main(sloth_html)))
+        self.assertIn("Zoologist", _text(_main(sloth_html)))
 
 
 if __name__ == "__main__":

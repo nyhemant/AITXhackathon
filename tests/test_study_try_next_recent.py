@@ -220,6 +220,7 @@ class StudyTryNextRecentTests(unittest.TestCase):
         self.assertIn("ostrich", catalog["neighbors"])
         self.assertIn("asian-small-clawed-otter", catalog["neighbors"])
         self.assertIn("two-toed-sloth", catalog["neighbors"])
+        self.assertIn("freshwater-fish", catalog["neighbors"])
         self.assertEqual(len(STUDY_NEIGHBORS["warthog"]), 2)
         self.assertEqual(
             list(STUDY_NEIGHBORS["asian-small-clawed-otter"]),
@@ -228,6 +229,10 @@ class StudyTryNextRecentTests(unittest.TestCase):
         self.assertEqual(
             list(STUDY_NEIGHBORS["two-toed-sloth"]),
             ["orangutan", "koala"],
+        )
+        self.assertEqual(
+            list(STUDY_NEIGHBORS["freshwater-fish"]),
+            ["shark", "asian-small-clawed-otter"],
         )
 
 

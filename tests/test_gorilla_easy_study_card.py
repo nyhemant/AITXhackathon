@@ -178,6 +178,7 @@ class GorillaEasyStudyCardTests(unittest.TestCase):
                 "shark",
                 "asian-small-clawed-otter",
                 "two-toed-sloth",
+                "freshwater-fish",
             ),
         )
         self.assertEqual(shipped_levels_for("western-lowland-gorilla"), ("easy", "hard", "zoologist"))
