@@ -111,8 +111,8 @@ def _text(html: str) -> str:
 
 class SeaOtterHardStudyCardTests(unittest.TestCase):
     def test_hard_deck_is_park_ranger_without_teach(self):
-        self.assertEqual(shipped_levels_for("sea-otter"), ("easy", "hard"))
-        self.assertIsNone(study_deck_for("sea-otter", "zoologist"))
+        self.assertEqual(shipped_levels_for("sea-otter"), ("easy", "hard", "zoologist"))
+        self.assertIsNotNone(study_deck_for("sea-otter", "zoologist"))
         self.assertEqual(level_display_name("hard"), "Park Ranger")
         deck = study_deck_for("sea-otter", "hard")
         self.assertIsNotNone(deck)
@@ -201,10 +201,10 @@ class SeaOtterHardStudyCardTests(unittest.TestCase):
         self.assertNotIn('<details class="study-teach" open', html)
         self.assertIn("Junior Ranger", html)
         self.assertIn("Park Ranger", html)
-        self.assertNotIn("Zoologist", html)
+        self.assertIn("Zoologist", html)
         self.assertIn('data-study-pick="easy"', html)
         self.assertIn('data-study-pick="hard"', html)
-        self.assertNotIn('data-study-pick="zoologist"', html)
+        self.assertIn('data-study-pick="zoologist"', html)
         self.assertEqual(html.count('role="group"'), 2)
         self.assertIn("study-level-picker-bottom", html)
         self.assertIn('aria-label="Study level at the end"', html)
@@ -285,7 +285,7 @@ class SeaOtterHardStudyCardTests(unittest.TestCase):
         self.assertEqual(hard["teach"], [])
         self.assertEqual(len(hard["questions"]), STUDY_SLOTS)
         self.assertEqual([q["id"] for q in hard["questions"]], list(HARD_IDS))
-        self.assertNotIn("zoologist", payload["sea-otter"]["levels"])
+        self.assertIn("zoologist", payload["sea-otter"]["levels"])
         data_js = STUDY_DATA_JS.read_text(encoding="utf-8")
         self.assertIn("sea-otter", data_js)
         self.assertIn("fur-not-blubber-soft", data_js)
@@ -300,9 +300,9 @@ class SeaOtterHardStudyCardTests(unittest.TestCase):
         html = OTTER.read_text(encoding="utf-8")
         self.assertIn("Park Ranger", html)
         self.assertIn("Junior Ranger", html)
-        self.assertNotIn("Zoologist", html)
+        self.assertIn("Zoologist", html)
         self.assertIn('data-study-pick="hard"', html)
-        self.assertNotIn('data-study-pick="zoologist"', html)
+        self.assertIn('data-study-pick="zoologist"', html)
         self.assertIn("Learn first", html)
         self.assertIn('class="card-hero-links no-print"', html)
         self.assertIn('class="card-try-next no-print"', html)
@@ -328,7 +328,7 @@ class SeaOtterHardStudyCardTests(unittest.TestCase):
         self.assertIn("Push further", hard_html)
         self.assertIn("Park Ranger", hard_html)
         self.assertIn("Junior Ranger", hard_html)
-        self.assertNotIn("Zoologist", hard_html)
+        self.assertIn("Zoologist", hard_html)
 
 
 if __name__ == "__main__":

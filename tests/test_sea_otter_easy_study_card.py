@@ -107,14 +107,14 @@ BRITTLE = (
     "mph",
     "km/h",
 )
-# Talk / push are Park Ranger prompts (no blubber, keystone/kelp,
-# fur-trade near-miss, urchin barrens, oil, Endangered snapshot).
+# Talk / push are Zoologist prompts (Enhydra vs Aonyx, three
+# subspecies, kelp cascade, bunodont crushers, newcomer to the
+# sea, regional status under one snapshot letter).
 PAGE_BRITTLE = (
     "Vulnerable",
     "Critically",
     "Least Concern",
     "CITES",
-    "Enhydra",
     "kg",
     "cm",
     "mph",
@@ -172,9 +172,9 @@ class SeaOtterEasyStudyCardTests(unittest.TestCase):
                 "sea-otter",
             ),
         )
-        self.assertEqual(shipped_levels_for("sea-otter"), ("easy", "hard"))
+        self.assertEqual(shipped_levels_for("sea-otter"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("sea-otter", "hard"))
-        self.assertIsNone(study_deck_for("sea-otter", "zoologist"))
+        self.assertIsNotNone(study_deck_for("sea-otter", "zoologist"))
         self.assertIsNone(study_deck_for("jellyfish"))
         deck = study_deck_for("sea-otter")
         self.assertIsNotNone(deck)
@@ -271,11 +271,11 @@ class SeaOtterEasyStudyCardTests(unittest.TestCase):
         visible = _text(html)
         self.assertIn("Junior Ranger", visible)
         self.assertIn("Park Ranger", visible)
-        self.assertNotIn("Zoologist", visible)
+        self.assertIn("Zoologist", visible)
         self.assertIn('class="study-level-picker"', html)
         self.assertIn('data-study-pick="easy"', html)
         self.assertIn('data-study-pick="hard"', html)
-        self.assertNotIn('data-study-pick="zoologist"', html)
+        self.assertIn('data-study-pick="zoologist"', html)
         self.assertNotIn('class="study-level-badge"', html)
         self.assertEqual(html.count('role="group"'), 2)
         self.assertIn("study-level-picker-bottom", html)
@@ -340,11 +340,11 @@ class SeaOtterEasyStudyCardTests(unittest.TestCase):
         visible = _text(main)
         self.assertIn("Junior Ranger", visible)
         self.assertIn("Park Ranger", visible)
-        self.assertNotIn("Zoologist", visible)
+        self.assertIn("Zoologist", visible)
         self.assertIn('class="study-level-picker"', main)
         self.assertIn('data-study-pick="easy"', main)
         self.assertIn('data-study-pick="hard"', main)
-        self.assertNotIn('data-study-pick="zoologist"', main)
+        self.assertIn('data-study-pick="zoologist"', main)
         self.assertNotIn('class="study-level-badge"', main)
         self.assertIn("Learn first", main)
         self.assertIn(">Quiz</h2>", main)
@@ -420,16 +420,16 @@ class SeaOtterEasyStudyCardTests(unittest.TestCase):
         self.assertIn("is-wrong-pick", study_js)
         self.assertIn("FPStudyLevelName", study_js + STUDY_DATA_JS.read_text(encoding="utf-8"))
 
-    def test_artifacts_include_sea_otter_easy_and_hard(self):
+    def test_artifacts_include_sea_otter_easy_hard_and_zoologist(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
         self.assertIn("sea-otter", payload)
         self.assertNotIn("jellyfish", payload)
         self.assertIn("asian-small-clawed-otter", payload)
         otter = payload["sea-otter"]
         self.assertEqual(otter["id"], "sea-otter")
-        self.assertEqual(set(otter["levels"]), {"easy", "hard"})
+        self.assertEqual(set(otter["levels"]), {"easy", "hard", "zoologist"})
         self.assertEqual(otter["levels"]["hard"]["teach"], [])
-        self.assertNotIn("zoologist", otter["levels"])
+        self.assertEqual(otter["levels"]["zoologist"]["teach"], [])
         easy = otter["levels"]["easy"]
         self.assertEqual(len(easy["teach"]), 5)
         self.assertEqual(len(easy["questions"]), STUDY_SLOTS)
@@ -462,7 +462,7 @@ class SeaOtterEasyStudyCardTests(unittest.TestCase):
         visible = _text(_main(otter_html))
         self.assertIn("Junior Ranger", visible)
         self.assertIn("Park Ranger", visible)
-        self.assertNotIn("Zoologist", visible)
+        self.assertIn("Zoologist", visible)
         asian_html = ASIAN.read_text(encoding="utf-8")
         self.assertIn("Junior Ranger", _text(_main(asian_html)))
         self.assertIn("Park Ranger", _text(_main(asian_html)))
