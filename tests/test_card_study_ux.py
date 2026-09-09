@@ -132,11 +132,16 @@ class CardStudyUxTests(unittest.TestCase):
                 self.assertNotIn("Explore more", print_tpl)
                 self.assertNotIn("study-explore", print_tpl)
 
+        jelly = _main((FP / "cards" / "jellyfish" / "index.html").read_text(encoding="utf-8"))
+        self.assertIn('aria-label="Talk"', jelly)
+        self.assertIn(">Talk</h2>", jelly)
+        self.assertNotIn(">Quiz</h2>", jelly)
+        self.assertNotIn("study-explore", jelly)
         sea = _main((FP / "cards" / "sea-otter" / "index.html").read_text(encoding="utf-8"))
-        self.assertIn('aria-label="Talk"', sea)
-        self.assertIn(">Talk</h2>", sea)
-        self.assertNotIn(">Quiz</h2>", sea)
-        self.assertNotIn("study-explore", sea)
+        self.assertIn('aria-label="Quiz"', sea)
+        self.assertIn(">Quiz</h2>", sea)
+        self.assertIn("study-explore", sea)
+        self.assertNotIn(">Talk</h2>", sea)
         otter = _main((FP / "cards" / "asian-small-clawed-otter" / "index.html").read_text(encoding="utf-8"))
         self.assertIn('aria-label="Quiz"', otter)
         self.assertIn(">Quiz</h2>", otter)
@@ -152,7 +157,7 @@ class CardStudyUxTests(unittest.TestCase):
         js = STUDY_JS.read_text(encoding="utf-8")
         self.assertIn('if (foot) foot.insertAdjacentHTML("afterend", nextExplore)', js)
 
-        for cid in ("galapagos-tortoise", "zebra", "nile-hippo", "western-lowland-gorilla", "cheetah", "red-panda", "koala", "chimpanzee", "asian-small-clawed-otter", "two-toed-sloth", "freshwater-fish", "polar-bear"):
+        for cid in ("galapagos-tortoise", "zebra", "nile-hippo", "western-lowland-gorilla", "cheetah", "red-panda", "koala", "chimpanzee", "asian-small-clawed-otter", "two-toed-sloth", "freshwater-fish", "polar-bear", "sea-otter"):
             page = (FP / "cards" / cid / "index.html").read_text(encoding="utf-8")
             main = _main(page)
             with self.subTest(card=cid):
@@ -256,6 +261,10 @@ class CardStudyUxTests(unittest.TestCase):
             study_try_next_ids("polar-bear"),
             ["african-penguin", "asian-small-clawed-otter", "african-lion"],
         )
+        self.assertEqual(
+            study_try_next_ids("sea-otter"),
+            ["asian-small-clawed-otter", "shark", "african-lion"],
+        )
         for cid in study_card_ids():
             nxt = study_try_next_ids(cid)
             with self.subTest(card=cid):
@@ -281,8 +290,8 @@ class CardStudyUxTests(unittest.TestCase):
         self.assertLess(try_at, actions_at)
         print_tpl = page.split('id="study-print-template">', 1)[1].split("</template>", 1)[0]
         self.assertNotIn("card-try-next", print_tpl)
-        sea = (FP / "cards" / "sea-otter" / "index.html").read_text(encoding="utf-8")
-        self.assertNotIn("card-try-next", sea)
+        jelly = (FP / "cards" / "jellyfish" / "index.html").read_text(encoding="utf-8")
+        self.assertNotIn("card-try-next", jelly)
 
     def test_photos_and_watch_live_share_hero_row(self):
         self.assertEqual(CARD_SEO_CSS_VER, "35")

@@ -36,7 +36,7 @@ from study_cards import (  # noqa: E402
 
 FP = REPO / "static" / "field-pack"
 BEAR = FP / "cards" / "polar-bear" / "index.html"
-SEA_OTTER = FP / "cards" / "sea-otter" / "index.html"
+JELLYFISH = FP / "cards" / "jellyfish" / "index.html"
 FISH = FP / "cards" / "freshwater-fish" / "index.html"
 PRINT_KIT = FP / "js" / "print-kit.js"
 STUDY_JS = FP / "js" / "study-card.js"
@@ -143,7 +143,6 @@ def _main(html: str) -> str:
 class PolarBearEasyStudyCardTests(unittest.TestCase):
     def test_deck_is_junior_ranger(self):
         self.assertIn("polar-bear", study_card_ids())
-        self.assertNotIn("sea-otter", study_card_ids())
         self.assertEqual(
             study_card_ids(),
             (
@@ -171,12 +170,12 @@ class PolarBearEasyStudyCardTests(unittest.TestCase):
                 "two-toed-sloth",
                 "freshwater-fish",
                 "polar-bear",
+                "sea-otter",
             ),
         )
         self.assertEqual(shipped_levels_for("polar-bear"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("polar-bear", "hard"))
         self.assertIsNotNone(study_deck_for("polar-bear", "zoologist"))
-        self.assertIsNone(study_deck_for("sea-otter"))
         deck = study_deck_for("polar-bear")
         self.assertIsNotNone(deck)
         self.assertEqual(deck["id"], "polar-bear")
@@ -290,11 +289,11 @@ class PolarBearEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Facts from Wikipedia, Polar bear.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
-        html = outing_talk_html({"id": "sea-otter", "packTemplate": "animals"})
+        html = outing_talk_html({"id": "jellyfish", "packTemplate": "animals"})
         self.assertIn("What do they eat?", html)
         self.assertNotIn("card-study-pack", html)
         self.assertNotIn("Where do polar bears live in the wild?", html)
-        otter = SEA_OTTER.read_text(encoding="utf-8")
+        otter = JELLYFISH.read_text(encoding="utf-8")
         self.assertIn("What do they eat?", otter)
         self.assertNotIn("card-study-pack", otter)
         self.assertNotIn("Where do polar bears live in the wild?", otter)
@@ -415,7 +414,7 @@ class PolarBearEasyStudyCardTests(unittest.TestCase):
     def test_artifacts_include_polar_bear_easy_hard_and_zoologist(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
         self.assertIn("polar-bear", payload)
-        self.assertNotIn("sea-otter", payload)
+        self.assertNotIn("jellyfish", payload)
         self.assertIn("freshwater-fish", payload)
         bear = payload["polar-bear"]
         self.assertEqual(bear["id"], "polar-bear")
