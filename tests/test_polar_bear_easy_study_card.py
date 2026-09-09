@@ -1,4 +1,4 @@
-"""Polar bear Easy study-card: Junior Ranger teach + 10 MCQs (Park Ranger is a sibling level)."""
+"""Polar bear Easy study-card: Junior Ranger teach + 10 MCQs (Park Ranger and Zoologist are sibling levels)."""
 
 from __future__ import annotations
 
@@ -108,15 +108,14 @@ BRITTLE = (
     "mph",
     "km/h",
 )
-# Talk / push are Park Ranger prompts (marine mammals, breathing holes,
-# Vulnerable snapshot, brown-bear cousins, ice hunting, CITES).
+# Talk / push are Zoologist prompts (delayed implantation, Ursus vs
+# Thalarctos, subpopulations, stored-fat den, regional status, skull).
 PAGE_BRITTLE = (
     "Endangered",
     "Critically",
     "Least Concern",
     "climate change",
     "global warming",
-    "Ursus",
     "blubber",
     "kg",
     "cm",
@@ -174,9 +173,9 @@ class PolarBearEasyStudyCardTests(unittest.TestCase):
                 "polar-bear",
             ),
         )
-        self.assertEqual(shipped_levels_for("polar-bear"), ("easy", "hard"))
+        self.assertEqual(shipped_levels_for("polar-bear"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("polar-bear", "hard"))
-        self.assertIsNone(study_deck_for("polar-bear", "zoologist"))
+        self.assertIsNotNone(study_deck_for("polar-bear", "zoologist"))
         self.assertIsNone(study_deck_for("sea-otter"))
         deck = study_deck_for("polar-bear")
         self.assertIsNotNone(deck)
@@ -271,11 +270,11 @@ class PolarBearEasyStudyCardTests(unittest.TestCase):
         visible = _text(html)
         self.assertIn("Junior Ranger", visible)
         self.assertIn("Park Ranger", visible)
-        self.assertNotIn("Zoologist", visible)
+        self.assertIn("Zoologist", visible)
         self.assertIn('class="study-level-picker"', html)
         self.assertIn('data-study-pick="easy"', html)
         self.assertIn('data-study-pick="hard"', html)
-        self.assertNotIn('data-study-pick="zoologist"', html)
+        self.assertIn('data-study-pick="zoologist"', html)
         self.assertNotIn('class="study-level-badge"', html)
         self.assertEqual(html.count('role="group"'), 2)
         self.assertIn("study-level-picker-bottom", html)
@@ -336,11 +335,11 @@ class PolarBearEasyStudyCardTests(unittest.TestCase):
         visible = _text(main)
         self.assertIn("Junior Ranger", visible)
         self.assertIn("Park Ranger", visible)
-        self.assertNotIn("Zoologist", visible)
+        self.assertIn("Zoologist", visible)
         self.assertIn('class="study-level-picker"', main)
         self.assertIn('data-study-pick="easy"', main)
         self.assertIn('data-study-pick="hard"', main)
-        self.assertNotIn('data-study-pick="zoologist"', main)
+        self.assertIn('data-study-pick="zoologist"', main)
         self.assertNotIn('class="study-level-badge"', main)
         self.assertIn("Learn first", main)
         self.assertIn(">Quiz</h2>", main)
@@ -413,16 +412,16 @@ class PolarBearEasyStudyCardTests(unittest.TestCase):
         self.assertIn("is-wrong-pick", study_js)
         self.assertIn("FPStudyLevelName", study_js + STUDY_DATA_JS.read_text(encoding="utf-8"))
 
-    def test_artifacts_include_polar_bear_easy_and_hard(self):
+    def test_artifacts_include_polar_bear_easy_hard_and_zoologist(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
         self.assertIn("polar-bear", payload)
         self.assertNotIn("sea-otter", payload)
         self.assertIn("freshwater-fish", payload)
         bear = payload["polar-bear"]
         self.assertEqual(bear["id"], "polar-bear")
-        self.assertEqual(set(bear["levels"]), {"easy", "hard"})
+        self.assertEqual(set(bear["levels"]), {"easy", "hard", "zoologist"})
         self.assertEqual(bear["levels"]["hard"]["teach"], [])
-        self.assertNotIn("zoologist", bear["levels"])
+        self.assertEqual(bear["levels"]["zoologist"]["teach"], [])
         easy = bear["levels"]["easy"]
         self.assertEqual(len(easy["teach"]), 5)
         self.assertEqual(len(easy["questions"]), STUDY_SLOTS)
@@ -455,7 +454,7 @@ class PolarBearEasyStudyCardTests(unittest.TestCase):
         visible = _text(_main(bear_html))
         self.assertIn("Junior Ranger", visible)
         self.assertIn("Park Ranger", visible)
-        self.assertNotIn("Zoologist", visible)
+        self.assertIn("Zoologist", visible)
         fish_html = FISH.read_text(encoding="utf-8")
         self.assertIn("Junior Ranger", _text(_main(fish_html)))
         self.assertIn("Park Ranger", _text(_main(fish_html)))
