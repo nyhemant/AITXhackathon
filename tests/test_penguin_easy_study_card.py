@@ -141,6 +141,7 @@ class PenguinEasyStudyCardTests(unittest.TestCase):
                 "asian-small-clawed-otter",
                 "two-toed-sloth",
                 "freshwater-fish",
+                "polar-bear",
             ),
         )
         self.assertEqual(shipped_levels_for("african-penguin"), ("easy", "hard", "zoologist"))
