@@ -680,9 +680,11 @@ three-toed leaf-browsers. Do not redo JR or PR themes.
 Soften contested numbers. Treat IUCN letters as snapshots.
 Do not invent photos.
 
-Facts for freshwater-fish Junior Ranger (easy) are Wikipedia-backed:
+Facts for freshwater-fish Junior Ranger + Park Ranger
+(easy + hard) are Wikipedia-backed:
 https://en.wikipedia.org/wiki/Freshwater_fish
-Also the Fish page as needed. This is the group freshwater-fish
+Also Fish, Lateral line, Swim bladder, Operculum (fish),
+and related pages as needed. This is the group freshwater-fish
 card (river / lake / pond / wetland fishes), not one species.
 Claims must hold for most freshwater fish as a group. JR stays
 kid-simple “freshwater fish.” Live in rivers, lakes, ponds, and
@@ -697,10 +699,15 @@ a few kinds stay warmer). Many begin as eggs laid in the water
 (some kinds differ — soft). Soft care: clean rivers and healthy
 wetlands help them thrive (no IUCN letter on JR). Myth: plenty
 of fish spend their whole lives in fresh water — no ocean
-required. Reserve for Park Ranger / Zoologist: denser taxonomy
-(ray-finned / teleost), osmoregulation, lateral line, swim
-bladder, diadromy, status-by-kind. Soften contested numbers.
-Do not invent photos.
+required. Park Ranger (hard) is answer-light (empty teach) and
+deepens: salt-and-water balance (do not swell up), lateral line,
+swim bladder, bony gill cover (operculum), soft diadromy
+(salmon / eels), stenohaline “one salinity,” scattered homes,
+status-by-kind, dams and pollution, and invaders. Soft
+osmoregulation / lateral line / swim bladder / diadromy /
+status-by-kind OK. Do not redo JR themes. Soften contested
+numbers. Reserve denser taxonomy (ray-finned / teleost) for
+Zoologist. Do not invent photos.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
@@ -825,7 +832,7 @@ LEVEL_DISPLAY_NAMES = {
 # ring-tailed lemur, ostrich, warthog, shark, and
 # Asian small-clawed otter and two-toed sloth ship
 # Junior Ranger + Park Ranger + Zoologist. Freshwater fish
-# ships Junior Ranger only (no Park Ranger or Zoologist yet).
+# ships Junior Ranger + Park Ranger (no Zoologist yet).
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -1115,14 +1122,14 @@ PUSH_FURTHER_TWO_TOED_SLOTH = (
     "“Two-toed” counts the front claws. How is that different from three-toed naming?",
 )
 TALK_ABOUT_FRESHWATER_FISH = (
-    "A river tank is not the ocean. What would you look for that says “fresh water”?",
-    "Gills pull oxygen from the water, like a tiny underwater breath. How would you explain that?",
-    "Clean rivers and wetlands help these fish stay healthy. Why might dirty water be hard on them?",
+    "Freshwater fish don’t swell up in a pond. How do they keep extra water from staying inside?",
+    "A lateral line along the side feels nearby motion. How is that like a sixth sense?",
+    "Some salmon and eels travel between rivers and the sea. What might they be looking for?",
 )
 PUSH_FURTHER_FRESHWATER_FISH = (
-    "Name a fish from a pond or river near you. What makes it a freshwater fish?",
-    "Fins are a toolkit — push, steer, balance, and brake. Which fin job would you watch?",
-    "A goldfish lives in fresh water, but it is not the only kind. What other freshwater fish can you name?",
+    "A swim bladder is like a balloon of gas. How could that help a fish float at the right depth?",
+    "Dams can block a river path. Why is that hard for a traveler fish like a salmon?",
+    "This group has no single status letter. Why grade each kind, not the whole group?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -10602,6 +10609,147 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia says freshwater fish spend some or all of their lives in rivers, lakes, ponds, and inland wetlands. Plenty of kinds never need the ocean.",
+                    },
+                ],
+            },
+            "hard": {
+                # Answer-light: Park Ranger has no Learn-first strip.
+                # Facts from Wikipedia, Freshwater fish (and Fish /
+                # Lateral line / Swim bladder / Operculum as needed).
+                # Soften contested percents and IUCN letters. Denser
+                # taxonomy (ray-finned / teleost) lives on Zoologist.
+                # Do not redo JR themes.
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "salt-water-balance-soft",
+                        "title": "Salt & water",
+                        "stem": "How do most freshwater fish keep from swelling up in a pond?",
+                        "choices": [
+                            "Body salts stay higher than the water; gills take up salts; kidneys make lots of dilute pee; they drink little",
+                            "They gulp ocean water all day so they never pee",
+                            "They turn into balloons and pop",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says a freshwater fish’s body stays saltier than the pond. Gills take up salts, well-developed kidneys make lots of dilute pee, and they drink little — so they do not swell up.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "lateral-line-soft",
+                        "title": "Lateral line",
+                        "stem": "What does the lateral line along a freshwater fish’s side do?",
+                        "choices": [
+                            "It is only a painted stripe with no job",
+                            "It feels water movement and nearby motion — a side-of-body sense line",
+                            "It is a zipper that opens the fish",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia describes a lateral line along a fish’s side. That sense line feels water movement and nearby motion — a kind of sixth sense in the water.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "swim-bladder-soft",
+                        "title": "Swim bladder",
+                        "stem": "How do many bony freshwater fish stay at the right depth?",
+                        "choices": [
+                            "They fill their stomachs with rocks and never float",
+                            "They hold their breath like a balloon animal on land",
+                            "Many use a gas-filled swim bladder like a balloon to float at the right depth",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says many bony fish have a gas-filled swim bladder that helps them float at the right depth. Not every kind has one, so we say many.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "gill-cover-soft",
+                        "title": "Gill cover",
+                        "stem": "What bony cover protects the gills of most bony freshwater fish?",
+                        "choices": [
+                            "A bony operculum — a gill cover that protects the gills",
+                            "A metal helmet they buy at a shop",
+                            "Nothing — gills are always wide open to the air",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says most bony fish have a bony operculum that covers and protects the gills. Most freshwater fish are bony fish, so we stay with “most.”",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "diadromy-soft",
+                        "title": "River–sea travelers",
+                        "stem": "Do some kinds of freshwater fish travel between rivers and the sea?",
+                        "choices": [
+                            "No fish ever leaves the pond it hatched in",
+                            "Some kinds, such as salmon and eels, migrate between fresh and salt water at certain life stages",
+                            "Every freshwater fish must live in the ocean every winter",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says some kinds migrate between fresh and salt water at different life stages. Salmon are often born in rivers and later go to sea; eels are often born at sea and later live in fresh water. This is not true of most kinds, so we stay soft.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "stenohaline-soft",
+                        "title": "One salinity",
+                        "stem": "Can most kinds of freshwater fish live in both a pond and the ocean?",
+                        "choices": [
+                            "Yes — every kind can live in any salt level",
+                            "Yes — they all prefer the saltiest water they can find",
+                            "No — most kinds are stenohaline: built for fresh or salt, not both",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia’s salt-tolerance notes say many freshwater fish are strictly limited to fresh water and cannot last long in salt water. Most kinds are stenohaline — built for one salinity, not both.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "scattered-homes-soft",
+                        "title": "Scattered homes",
+                        "stem": "Why do so many different kinds of fish live in fresh water?",
+                        "choices": [
+                            "Separate lakes and river systems help many different kinds evolve (the exact share can shift)",
+                            "Fresh water covers almost the whole Earth, so every fish lives there",
+                            "Fish kinds never split, so there is only one freshwater fish",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says a huge share of all known fish kinds live in fresh water, mainly because scattered lakes and rivers let many kinds evolve apart. We do not lock the exact percent.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "status-by-kind-soft",
+                        "title": "Status by kind",
+                        "stem": "Is there one status letter for all freshwater fish?",
+                        "choices": [
+                            "Yes — every freshwater fish shares one forever letter",
+                            "No — there is no single letter for the whole group; some thrive, and many kinds are at risk (a snapshot)",
+                            "Yes — they are all extinct worldwide",
+                        ],
+                        "correct": "B",
+                        "why": "This is a group card. Wikipedia notes that some freshwater fishes thrive while many kinds are at risk. There is no single status letter for the whole group. Any grade is a snapshot and can change.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "dams-pollution-soft",
+                        "title": "Dams & dirty water",
+                        "stem": "How can dams, dirty water, and water takeouts hurt freshwater fish?",
+                        "choices": [
+                            "They make every pond saltier than the ocean",
+                            "They give fish extra hiding spots and more food",
+                            "Barriers, dirty water, and water takeouts squeeze many kinds",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says dams can block travel, change flow, and cut fish off from feeding or spawning grounds. Pollution and water takeouts also squeeze many kinds.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "invasives-soft",
+                        "title": "Invaders",
+                        "stem": "How can introduced fish and other invaders affect native freshwater fish?",
+                        "choices": [
+                            "Introduced fish and other invaders can push native freshwater fish around",
+                            "Invaders always help native fish find more food",
+                            "Native fish never meet a new kind",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says exotic or invasive species can outcompete or eat native freshwater fish. Introduced fish and other invaders can push native kinds around.",
                     },
                 ],
             },
