@@ -607,6 +607,24 @@ helps, but many still need forward motion and fin lift).
 Do not redo JR or PR themes. Soften contested numbers.
 Treat status letters as snapshots.
 
+Facts for asian-small-clawed-otter Junior Ranger (easy) are
+Wikipedia-backed:
+https://en.wikipedia.org/wiki/Asian_small-clawed_otter
+Also the Otter page as needed. JR stays kid-simple “Asian
+small-clawed otter.” Smallest living otter. Short claws that
+often do not stick past the toe pads — handy feelers for mud.
+Home is rivers, wetlands, mangroves, and rice fields in South
+and Southeast Asia — not only open ocean, not Antarctica.
+They eat crabs, shellfish, and small fish, often felt with
+their paws. They live in pairs and family groups; a baby is
+a pup. Chatty: squeaks, chirps, and yelps. Dense fur helps
+them stay warm in water. Webbed feet help them swim. Myth:
+an otter is not a beaver (meat-eater vs plants/wood). Soft
+care only — no IUCN Vulnerable letter on JR. Reserve for
+Park Ranger / Zoologist: VU status, CITES I, pet trade, and
+taxonomy flux (Aonyx / Amblonyx / Lutra). Soften contested
+numbers and exact call counts. Do not invent photos.
+
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
 zoologist. Visible copy uses LEVEL_DISPLAY_NAMES only — no age badges,
@@ -649,6 +667,9 @@ WIKI_RING_TAILED_LEMUR = "https://en.wikipedia.org/wiki/Ring-tailed_lemur"
 WIKI_OSTRICH = "https://en.wikipedia.org/wiki/Ostrich"
 WIKI_WARTHOG = "https://en.wikipedia.org/wiki/Common_warthog"
 WIKI_SHARK = "https://en.wikipedia.org/wiki/Shark"
+WIKI_ASIAN_SMALL_CLAWED_OTTER = (
+    "https://en.wikipedia.org/wiki/Asian_small-clawed_otter"
+)
 
 LETTERS = ("A", "B", "C")
 STUDY_SLOTS = 10
@@ -723,7 +744,8 @@ LEVEL_DISPLAY_NAMES = {
 # Sumatran tiger, western lowland gorilla, cheetah, red panda,
 # koala, chimpanzee, orangutan, giant panda, and
 # ring-tailed lemur, ostrich, warthog, and shark ship
-# Junior Ranger + Park Ranger + Zoologist.
+# Junior Ranger + Park Ranger + Zoologist. Asian
+# small-clawed otter ships Junior Ranger only.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -760,6 +782,7 @@ STUDY_NEIGHBORS = {
     "ostrich": ("caribbean-flamingo", "african-penguin"),
     "warthog": ("zebra", "ostrich"),
     "shark": ("african-penguin", "caribbean-flamingo"),
+    "asian-small-clawed-otter": ("shark", "red-panda"),
 }
 
 STUDY_CARD_TITLES = {
@@ -783,6 +806,7 @@ STUDY_CARD_TITLES = {
     "ostrich": "Ostrich",
     "warthog": "Warthog",
     "shark": "Shark",
+    "asian-small-clawed-otter": "Asian small-clawed otter",
 }
 
 # Shared answers-side deepen (Claude sample). Not scored. Future animals reuse keys.
@@ -985,6 +1009,16 @@ PUSH_FURTHER_SHARK = (
     "CITES is a trade-rules pact. In plain words, what does it try to do?",
     "Some sharks have live pups. How do those live-bearing modes differ?",
     "“Threatened sharks” is not one story. Why might each kind need its own tale?",
+)
+TALK_ABOUT_ASIAN_SMALL_CLAWED_OTTER = (
+    "This is the world’s smallest otter. What else looks tiny-but-busy at the zoo?",
+    "Short claws help them hunt in mud. What would you watch their paws do?",
+    "An otter is not a beaver. What would you tell a friend is different?",
+)
+PUSH_FURTHER_ASIAN_SMALL_CLAWED_OTTER = (
+    "Rice paddies can be otter homes. Why might a wet farm field work?",
+    "Whiskers help in murky water. How could they find a crab they cannot see?",
+    "What’s different about sea otters from these small-clawed otters?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -9455,6 +9489,157 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia says the oily liver helps with buoyancy, but it is limited. Many sharks also use dynamic lift — forward swimming and fins — to stay up. Exact liver-size percents stay soft.",
+                    },
+                ],
+            },
+        },
+    },
+    "asian-small-clawed-otter": {
+        "id": "asian-small-clawed-otter",
+        "source": WIKI_ASIAN_SMALL_CLAWED_OTTER,
+        "source_note": "Facts from Wikipedia, Asian small-clawed otter.",
+        "talk_about": list(TALK_ABOUT_ASIAN_SMALL_CLAWED_OTTER),
+        "push_further": list(PUSH_FURTHER_ASIAN_SMALL_CLAWED_OTTER),
+        "levels": {
+            "easy": {
+                # Teaching-first: same front as the quiz. Hard later may hide these.
+                "teach": [
+                    "They eat crabs, shellfish, and little fish — often felt with their paws.",
+                    "Tiny claws and clever hands help them hunt in mud.",
+                    "They live in Asian wetlands, mangroves, rivers, and rice paddies.",
+                    "They live in family groups; babies are pups.",
+                    "They are the world’s smallest otter and make lots of squeaky calls.",
+                ],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "smallest-otter",
+                        "title": "Smallest otter",
+                        "stem": "What kind of otter is the Asian small-clawed otter?",
+                        "choices": [
+                            "The world’s smallest otter",
+                            "The world’s biggest otter",
+                            "The heaviest otter, like a sea otter",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says the Asian small-clawed otter is the smallest otter species — not the biggest, and not a heavy sea otter.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "wet-asia-home",
+                        "title": "Wet Asia home",
+                        "stem": "Where do Asian small-clawed otters live in the wild?",
+                        "choices": [
+                            "Only in the open ocean",
+                            "Rivers, wetlands, mangroves, and rice fields in South and Southeast Asia",
+                            "Only on ice in Antarctica",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia places them in riverine habitats, freshwater wetlands, and mangrove swamps in South and Southeast Asia. They also use rice paddies. They are not ice or open-ocean-only animals.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "crab-snacks",
+                        "title": "Crab snacks",
+                        "stem": "What do Asian small-clawed otters often eat?",
+                        "choices": [
+                            "Mostly bamboo and leaves",
+                            "Only grass",
+                            "Crabs, shellfish, and small fish",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says they feed on crabs, molluscs, and other small aquatic animals. They often feel for those snacks with their paws.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "short-claws",
+                        "title": "Short claws",
+                        "stem": "What is special about their claws?",
+                        "choices": [
+                            "Short claws that often don’t stick past the toe pads — handy feelers for mud",
+                            "Long eagle claws",
+                            "Solid hooves like a horse",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says they have short claws that do not extend beyond the pads of their webbed digits. Those handy paws help them hunt in mud.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "family-groups",
+                        "title": "Family groups",
+                        "stem": "How do Asian small-clawed otters usually live?",
+                        "choices": [
+                            "Always completely alone",
+                            "In pairs and family groups",
+                            "In flocks of hundreds",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says they live in pairs and also in family groups. They are not always alone, and they are not huge flocks.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "chatty-squeaks",
+                        "title": "Chatty squeaks",
+                        "stem": "What sounds do they make?",
+                        "choices": [
+                            "They roar like a lion",
+                            "They are always silent",
+                            "Lots of squeaks, chirps, and yelps",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says group members communicate with many distinct calls and utter a variety of yelps and other chatty sounds. Exact call counts stay soft.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "pup",
+                        "title": "Pup",
+                        "stem": "What is a baby otter called?",
+                        "choices": [
+                            "A pup",
+                            "A joey",
+                            "A calf",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia calls a baby otter a pup. A joey is a baby kangaroo, and a calf is a baby cow or whale.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "thick-fur",
+                        "title": "Thick fur",
+                        "stem": "How do they stay warm in the water?",
+                        "choices": [
+                            "They have scales like a fish",
+                            "Dense fur helps them stay warm in water",
+                            "Thin dry fur only, like a desert animal",
+                        ],
+                        "correct": "B",
+                        "why": "Otters have thick, waterproof fur. That dense coat helps them stay warm in water — they are not scaly fish.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "webbed-swimmers",
+                        "title": "Webbed swimmers",
+                        "stem": "How do their feet help them move?",
+                        "choices": [
+                            "They have wings for flying",
+                            "They never swim",
+                            "Webbed feet help them swim",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia notes their webbed digits. Webbed feet help them swim. They do not have wings, and they do swim.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "otter-not-beaver",
+                        "title": "Myth buster",
+                        "stem": "Is an otter the same animal as a beaver?",
+                        "choices": [
+                            "No — otters eat meaty snacks; beavers eat plants and chew wood",
+                            "Yes — otter and beaver are two names for the same animal",
+                            "Both are fish",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia treats otters as meat-eating weasel-family animals. Beavers are rodents that eat plants and chew wood. They are not the same animal, and neither is a fish.",
                     },
                 ],
             },
