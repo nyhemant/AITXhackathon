@@ -792,6 +792,28 @@ numbers. Treat IUCN letters as snapshots. Keep distinct
 from asian-small-clawed-otter (Aonyx). Do not redo JR
 or PR themes. Do not invent photos.
 
+Facts for american-alligator Junior Ranger (easy) are
+Wikipedia-backed:
+https://en.wikipedia.org/wiki/American_alligator
+Also Crocodilian armor / Scute as needed. This is the first
+study deck for this animal. JR stays kid-simple “American
+alligator.” Live in freshwater wetlands of the Southeastern
+United States — marshes, swamps, lakes, and slow rivers.
+Powerful tails power swimming. Bony armor plates (scutes)
+along the back. Strong jaws for catching fish, turtles,
+birds, and more (soften size claims). Loud bellows help
+claim space and find mates. Females pile vegetation, sticks,
+and mud into nest mounds. Hatchlings often have yellow
+bands; moms help them to water. Digging gator holes can
+hold water in dry times for other wildlife too. Soft care:
+healthy freshwater wetlands give food, nest sites, and
+shelter (no LC / ESA recovery dump on JR). Myth: unlike
+many reptiles’ “leave the eggs” story, alligator moms
+guard nests and carry hatchlings. Park Ranger and
+Zoologist are reserved for later: denser crocodylian
+distinctions (vs crocodile), physiology (TSD/infrasound),
+LC recovery / ESA history. Do not invent photos.
+
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
 zoologist. Visible copy uses LEVEL_DISPLAY_NAMES only — no age badges,
@@ -841,6 +863,7 @@ WIKI_TWO_TOED_SLOTH = "https://en.wikipedia.org/wiki/Two-toed_sloth"
 WIKI_FRESHWATER_FISH = "https://en.wikipedia.org/wiki/Freshwater_fish"
 WIKI_POLAR_BEAR = "https://en.wikipedia.org/wiki/Polar_bear"
 WIKI_SEA_OTTER = "https://en.wikipedia.org/wiki/Sea_otter"
+WIKI_AMERICAN_ALLIGATOR = "https://en.wikipedia.org/wiki/American_alligator"
 
 LETTERS = ("A", "B", "C")
 STUDY_SLOTS = 10
@@ -917,7 +940,8 @@ LEVEL_DISPLAY_NAMES = {
 # ring-tailed lemur, ostrich, warthog, shark, and
 # Asian small-clawed otter, two-toed sloth, freshwater
 # fish, polar bear, and sea otter ship Junior Ranger +
-# Park Ranger + Zoologist.
+# Park Ranger + Zoologist. American alligator ships
+# Junior Ranger only (no Park Ranger or Zoologist yet).
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -959,6 +983,7 @@ STUDY_NEIGHBORS = {
     "freshwater-fish": ("shark", "asian-small-clawed-otter"),
     "polar-bear": ("african-penguin", "asian-small-clawed-otter"),
     "sea-otter": ("asian-small-clawed-otter", "shark"),
+    "american-alligator": ("freshwater-fish", "galapagos-tortoise"),
 }
 
 STUDY_CARD_TITLES = {
@@ -987,6 +1012,7 @@ STUDY_CARD_TITLES = {
     "freshwater-fish": "Freshwater fish",
     "polar-bear": "Polar bear",
     "sea-otter": "Sea otter",
+    "american-alligator": "American alligator",
 }
 
 # Shared answers-side deepen (Claude sample). Not scored. Future animals reuse keys.
@@ -1239,6 +1265,16 @@ PUSH_FURTHER_SEA_OTTER = (
     "Rounded crushing teeth are called bunodont. What food would those help?",
     "Sea otters are newcomers to the sea. Why compare them with whales and seals?",
     "One snapshot letter covers many coasts. Why might some regions still struggle?",
+)
+TALK_ABOUT_AMERICAN_ALLIGATOR = (
+    "Southeastern wetlands are home. What would you notice in a marsh or swamp?",
+    "Alligators bellow. What do you think that loud call is for?",
+    "Mom builds a nest mound. How does she help her eggs and babies?",
+)
+PUSH_FURTHER_AMERICAN_ALLIGATOR = (
+    "A strong tail powers swimming. Why might that matter in a swamp?",
+    "A gator hole can hold water in dry times. How could that help neighbors?",
+    "Alligator vs crocodile is saved for later tiers. What one difference would you wait to learn?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -11864,6 +11900,157 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia says birth usually takes place in the water. Seals and sea lions (pinnipeds) must haul out on land or ice to give birth. In that way, sea otters are more fully aquatic.",
+                    },
+                ],
+            },
+        },
+    },
+    "american-alligator": {
+        "id": "american-alligator",
+        "source": WIKI_AMERICAN_ALLIGATOR,
+        "source_note": "Facts from Wikipedia, American alligator.",
+        "talk_about": list(TALK_ABOUT_AMERICAN_ALLIGATOR),
+        "push_further": list(PUSH_FURTHER_AMERICAN_ALLIGATOR),
+        "levels": {
+            "easy": {
+                # Teaching-first: same front as the quiz. Hard later may hide these.
+                "teach": [
+                    "Live in freshwater wetlands of the Southeastern United States",
+                    "Powerful tails for swimming",
+                    "Bony armor plates (scutes) along the back",
+                    "Moms build nest mounds and watch over eggs and babies",
+                    "Healthy marshes and swamps help them thrive",
+                ],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "se-wetland-home",
+                        "title": "Wetland home",
+                        "stem": "Where do American alligators live in the wild?",
+                        "choices": [
+                            "Freshwater wetlands of the Southeastern United States — marshes, swamps, lakes, and slow rivers",
+                            "Only on Arctic sea ice",
+                            "Only in the open Pacific Ocean",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says American alligators are native to the Southeastern United States. They live in freshwater wetlands such as marshes, swamps, lakes, and slow rivers.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "tail-motor-soft",
+                        "title": "Tail motor",
+                        "stem": "How do American alligators power their swimming?",
+                        "choices": [
+                            "They flap feathered wings",
+                            "A strong muscular tail moves side to side and powers swimming",
+                            "They hop on one foot like a kangaroo",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says they swim like fish, moving their pelvic regions and tails from side to side. That strong tail is the motor.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "armor-plates-soft",
+                        "title": "Armor plates",
+                        "stem": "What covers an American alligator’s back?",
+                        "choices": [
+                            "Soft fur like a polar bear",
+                            "Feathers like a bird",
+                            "Bony armor plates called scutes that help protect the back",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia’s crocodilian-armor and scute pages describe bony plates (scutes) along the back. Those plates help protect the alligator.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "big-bites-soft",
+                        "title": "Big bites",
+                        "stem": "What do American alligators use their strong jaws for?",
+                        "choices": [
+                            "Catching fish, turtles, birds, and other wetland prey",
+                            "Chewing only leaves from tall trees",
+                            "Playing the piano at the zoo",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says they eat fish, reptiles, birds, and more. Strong jaws help them catch that wetland prey. We keep size claims soft.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "bellow-talk-soft",
+                        "title": "Bellow talk",
+                        "stem": "Why do American alligators bellow?",
+                        "choices": [
+                            "They are practicing opera for a concert",
+                            "Loud bellows help claim space and find mates",
+                            "They only whisper and never make a sound",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says they bellow to declare territory and locate mates. A loud bellow helps claim space and find a partner.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "nest-mounds-soft",
+                        "title": "Nest mounds",
+                        "stem": "How do alligator moms make a nest?",
+                        "choices": [
+                            "They dig a deep hole in Arctic ice",
+                            "They weave a nest high in a rainforest tree",
+                            "Females pile vegetation, sticks, and mud into a nest mound for the eggs",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says the female builds a nest of vegetation, sticks, leaves, and mud in a sheltered spot near water.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "baby-bands-soft",
+                        "title": "Baby bands",
+                        "stem": "What do baby alligators often look like when they hatch?",
+                        "choices": [
+                            "They often have yellow bands, and moms help them to the water",
+                            "They hatch with long manes like lions",
+                            "They are born with white polar-bear fur",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says young are born with yellow bands around their bodies. Moms help move hatchlings to the water.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "gator-holes-soft",
+                        "title": "Gator holes",
+                        "stem": "What can a gator hole do in dry times?",
+                        "choices": [
+                            "It is only a parking space for boats",
+                            "Digging holes can hold water in dry times for other wildlife too",
+                            "It makes the swamp disappear forever",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says alligator holes can hold water in the dry season and give other animals a wet place to wait.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "soft-wetland-care",
+                        "title": "Soft wetland care",
+                        "stem": "Why do healthy freshwater wetlands matter?",
+                        "choices": [
+                            "Alligators only live in deserts",
+                            "They never need water",
+                            "Healthy freshwater wetlands give food, nest sites, and shelter",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia ties alligators to freshwater wetlands for living, nesting, and food. We stay with that soft care — no status letter.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "mom-does-care-myth",
+                        "title": "Myth buster",
+                        "stem": "Do alligator moms leave their eggs like many reptiles?",
+                        "choices": [
+                            "No — alligator moms guard the nest and carry hatchlings to the water",
+                            "Yes — they always leave and never come back",
+                            "Alligators do not lay eggs at all",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says parental care is unusual among most reptiles. Alligator moms guard nests and carry hatchlings to the water.",
                     },
                 ],
             },
