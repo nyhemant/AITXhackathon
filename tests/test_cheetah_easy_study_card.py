@@ -70,7 +70,7 @@ PENGUIN = FP / "cards" / "african-penguin" / "index.html"
 ELEPHANT = FP / "cards" / "african-elephant" / "index.html"
 GIRAFFE = FP / "cards" / "reticulated-giraffe" / "index.html"
 LION = FP / "cards" / "african-lion" / "index.html"
-OTTER = FP / "cards" / "asian-small-clawed-otter" / "index.html"
+SEA_OTTER = FP / "cards" / "sea-otter" / "index.html"
 PRINT_KIT = FP / "js" / "print-kit.js"
 STUDY_JS = FP / "js" / "study-card.js"
 STYLES = FP / "css" / "styles.css"
@@ -184,6 +184,7 @@ class CheetahEasyStudyCardTests(unittest.TestCase):
                 "ostrich",
                 "warthog",
                 "shark",
+                "asian-small-clawed-otter",
             ),
         )
         self.assertEqual(shipped_levels_for("cheetah"), ("easy", "hard", "zoologist"))
@@ -328,13 +329,13 @@ class CheetahEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Facts from Wikipedia, Cheetah.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
-        html = outing_talk_html({"id": "asian-small-clawed-otter", "packTemplate": "animals"})
+        html = outing_talk_html({"id": "sea-otter", "packTemplate": "animals"})
         self.assertIn("What do they eat?", html)
         self.assertNotIn("card-study-pack", html)
         self.assertNotIn("What is a cheetah famous for?", html)
-        otter = OTTER.read_text(encoding="utf-8")
-        self.assertIn("What do they eat?", otter)
-        self.assertNotIn("card-study-pack", otter)
+        sea = SEA_OTTER.read_text(encoding="utf-8")
+        self.assertIn("What do they eat?", sea)
+        self.assertNotIn("card-study-pack", sea)
 
     def test_published_cheetah_card_matches_easy_deck(self):
         html = CHEETAH.read_text(encoding="utf-8")

@@ -86,7 +86,7 @@ FP = REPO / "static" / "field-pack"
 WARTHOG = FP / "cards" / "warthog" / "index.html"
 OSTRICH = FP / "cards" / "ostrich" / "index.html"
 LEMUR = FP / "cards" / "ring-tailed-lemur" / "index.html"
-OTTER = FP / "cards" / "asian-small-clawed-otter" / "index.html"
+SEA_OTTER = FP / "cards" / "sea-otter" / "index.html"
 PRINT_KIT = FP / "js" / "print-kit.js"
 STUDY_JS = FP / "js" / "study-card.js"
 STYLES = FP / "css" / "styles.css"
@@ -200,6 +200,7 @@ class WarthogEasyStudyCardTests(unittest.TestCase):
                 "ostrich",
                 "warthog",
                 "shark",
+                "asian-small-clawed-otter",
             ),
         )
         self.assertEqual(shipped_levels_for("warthog"), ("easy", "hard", "zoologist"))
@@ -377,13 +378,13 @@ class WarthogEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Facts from Wikipedia, Common warthog.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
-        html = outing_talk_html({"id": "asian-small-clawed-otter", "packTemplate": "animals"})
+        html = outing_talk_html({"id": "sea-otter", "packTemplate": "animals"})
         self.assertIn("What do they eat?", html)
         self.assertNotIn("card-study-pack", html)
         self.assertNotIn("What do you call a group of warthogs", html)
-        otter = OTTER.read_text(encoding="utf-8")
-        self.assertIn("What do they eat?", otter)
-        self.assertNotIn("card-study-pack", otter)
+        sea = SEA_OTTER.read_text(encoding="utf-8")
+        self.assertIn("What do they eat?", sea)
+        self.assertNotIn("card-study-pack", sea)
 
     def test_published_warthog_card_matches_easy_deck(self):
         html = WARTHOG.read_text(encoding="utf-8")
