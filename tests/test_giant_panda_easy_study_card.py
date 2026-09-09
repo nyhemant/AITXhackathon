@@ -219,6 +219,7 @@ class GiantPandaEasyStudyCardTests(unittest.TestCase):
                 "warthog",
                 "shark",
                 "asian-small-clawed-otter",
+                "two-toed-sloth",
             ),
         )
         self.assertEqual(shipped_levels_for("giant-panda"), ("easy", "hard", "zoologist"))

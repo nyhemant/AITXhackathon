@@ -27,6 +27,7 @@ from study_cards import (  # noqa: E402
     PUSH_FURTHER_RING_TAILED_LEMUR,
     PUSH_FURTHER_ASIAN_SMALL_CLAWED_OTTER,
     PUSH_FURTHER_SHARK,
+    PUSH_FURTHER_TWO_TOED_SLOTH,
     PUSH_FURTHER_WARTHOG,
     PUSH_FURTHER_TIGER,
     PUSH_FURTHER_TORTOISE,
@@ -43,6 +44,7 @@ from study_cards import (  # noqa: E402
     TALK_ABOUT_RING_TAILED_LEMUR,
     TALK_ABOUT_ASIAN_SMALL_CLAWED_OTTER,
     TALK_ABOUT_SHARK,
+    TALK_ABOUT_TWO_TOED_SLOTH,
     TALK_ABOUT_WARTHOG,
     TALK_ABOUT_TIGER,
     TALK_ABOUT_TORTOISE,
@@ -78,6 +80,7 @@ TRAFFIC_IDS = (
     "warthog",
     "shark",
     "asian-small-clawed-otter",
+    "two-toed-sloth",
 )
 
 
@@ -123,8 +126,11 @@ class StudyCardAnswerKeyTests(unittest.TestCase):
         self.assertEqual(shipped_levels_for("asian-small-clawed-otter"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("asian-small-clawed-otter", "hard"))
         self.assertIsNotNone(study_deck_for("asian-small-clawed-otter", "zoologist"))
+        self.assertEqual(shipped_levels_for("two-toed-sloth"), ("easy",))
+        self.assertIsNone(study_deck_for("two-toed-sloth", "hard"))
+        self.assertIsNone(study_deck_for("two-toed-sloth", "zoologist"))
         decks = list(_decks())
-        self.assertEqual(len(decks), 63)
+        self.assertEqual(len(decks), 64)
         for card_id, level, deck in decks:
             self.assertIsNotNone(deck, f"{card_id}/{level}")
             self.assertEqual(validate_deck(deck), [])
@@ -155,12 +161,12 @@ class StudyCardAnswerKeyTests(unittest.TestCase):
 
     def test_overall_correct_b_is_not_a_majority(self):
         letters = [q["correct"] for _, _, deck in _decks() for q in deck["questions"]]
-        self.assertEqual(len(letters), 630)
+        self.assertEqual(len(letters), 640)
         share_b = letters.count("B") / len(letters)
         self.assertLessEqual(
             share_b,
             MAX_OVERALL_B_SHARE,
-            f"correct==B is {share_b:.1%} ({letters.count('B')}/630)",
+            f"correct==B is {share_b:.1%} ({letters.count('B')}/640)",
         )
         for letter in LETTERS:
             share = letters.count(letter) / len(letters)
@@ -207,6 +213,8 @@ class StudyCardAnswerKeyTests(unittest.TestCase):
             + PUSH_FURTHER_SHARK
             + TALK_ABOUT_ASIAN_SMALL_CLAWED_OTTER
             + PUSH_FURTHER_ASIAN_SMALL_CLAWED_OTTER
+            + TALK_ABOUT_TWO_TOED_SLOTH
+            + PUSH_FURTHER_TWO_TOED_SLOTH
         )
         for line in lines:
             for phrase in dense:
