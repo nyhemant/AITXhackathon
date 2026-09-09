@@ -9420,14 +9420,14 @@
     "source": "https://en.wikipedia.org/wiki/Freshwater_fish",
     "source_note": "Facts from Wikipedia, Freshwater fish.",
     "talk_about": [
-      "Freshwater fish don’t swell up in a pond. How do they keep extra water from staying inside?",
-      "A lateral line along the side feels nearby motion. How is that like a sixth sense?",
-      "Some salmon and eels travel between rivers and the sea. What might they be looking for?"
+      "Most familiar freshwater fish are ray-finned. How is that different from everyday “fish”?",
+      "Special gill cells called ionocytes pump salts in. Why would a pond fish need that?",
+      "Many salmon swim up to fresh water to breed; many eels swim down to the sea. What’s the difference?"
     ],
     "push_further": [
-      "A swim bladder is like a balloon of gas. How could that help a fish float at the right depth?",
-      "Dams can block a river path. Why is that hard for a traveler fish like a salmon?",
-      "This group has no single status letter. Why grade each kind, not the whole group?"
+      "Some swim bladders open to the gut; others are closed. How might a fish add or lose air?",
+      "Isolated lakes can act like islands. Why might that make more kinds of fish?",
+      "An IUCN snapshot grades kinds one by one. Why not give the whole group one letter?"
     ],
     "levels": {
       "easy": {
@@ -9703,6 +9703,141 @@
             ],
             "correct": "A",
             "why": "Wikipedia says exotic or invasive species can outcompete or eat native freshwater fish. Introduced fish and other invaders can push native kinds around."
+          }
+        ]
+      },
+      "zoologist": {
+        "teach": [],
+        "questions": [
+          {
+            "slot": 1,
+            "id": "ray-finned-majority-soft",
+            "title": "Ray-finned",
+            "stem": "What group do most familiar freshwater fish belong to?",
+            "choices": [
+              "Most familiar freshwater fish are Actinopterygii (ray-finned) — their fins are supported by bony rays",
+              "Most are land mammals with paws instead of fins",
+              "Most are only sharks with no bony rays"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says ray-finned fishes (Actinopterygii) make up nearly all living fish kinds, and they live in fresh water as well as the sea. Familiar river and lake fish have fins supported by bony rays. We stay with “most familiar,” not a locked percent."
+          },
+          {
+            "slot": 2,
+            "id": "teleost-soft",
+            "title": "Teleosts",
+            "stem": "Within ray-finned fish, what are most living kinds?",
+            "choices": [
+              "Only a handful of lobe-finned fish with fleshy limb-like fins",
+              "Teleosts — the advanced bony fish that make up most living kinds (soft)",
+              "Only jawless fish with no jaws at all"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says the vast majority of living ray-finned fishes are teleosts — advanced bony fish. That is true in fresh water too. The exact share can shift, so we stay soft."
+          },
+          {
+            "slot": 3,
+            "id": "fish-grade-soft",
+            "title": "Not one tree",
+            "stem": "Is everyday “fish” one exclusive family tree?",
+            "choices": [
+              "Yes — “fish” is one locked species with no cousins",
+              "Yes — all fish plus every insect sit in one tiny family",
+              "No — everyday “fish” is a grade (a look-alike group), not one exclusive family tree (soft)"
+            ],
+            "correct": "C",
+            "why": "Wikipedia notes that everyday “fish” is not one exclusive family tree. Any tree that includes all fish also includes land vertebrates, which we do not usually call fish. So “fish” is a grade — a look-alike group — not one locked clade. We keep that soft."
+          },
+          {
+            "slot": 4,
+            "id": "ionocytes-soft",
+            "title": "Salt pumps",
+            "stem": "How do many freshwater fish take up salts from dilute pond water?",
+            "choices": [
+              "Special mitochondrion-rich gill cells (once called chloride cells, now ionocytes) pump salts in from dilute water",
+              "They never need salts in fresh water",
+              "They only lick salt from dry rocks on land"
+            ],
+            "correct": "A",
+            "why": "Wikipedia’s ionocyte page (once “chloride cell”) says freshwater teleost ionocytes are mitochondrion-rich gill cells that take in sodium and chloride from dilute water. We stay with “many,” not every kind."
+          },
+          {
+            "slot": 5,
+            "id": "physostomous-physoclist-soft",
+            "title": "Open or closed",
+            "stem": "How can a freshwater fish’s swim bladder be open or closed?",
+            "choices": [
+              "Every swim bladder is a rock that never holds gas",
+              "Some connect to the gut so the fish can gulp or release air; others are closed and use a gas gland (soft)",
+              "Swim bladders only work in dry air, never in water"
+            ],
+            "correct": "B",
+            "why": "Wikipedia’s swim bladder page says physostomous bladders keep a tube to the gut, so a fish can gulp or release air. Physoclist bladders lose that tube and use a gas gland instead. Not every kind has a bladder, so we stay soft."
+          },
+          {
+            "slot": 6,
+            "id": "anadromy-catadromy-soft",
+            "title": "Up or down",
+            "stem": "How do anadromous and catadromous travelers differ when they breed?",
+            "choices": [
+              "Both words mean the fish never leaves one puddle",
+              "Both words mean the fish only lives in the desert",
+              "Anadromous fish (many salmon) go from salt water to fresh water to breed; catadromous fish (many eels) go from fresh water to salt water to breed"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says anadromous fish such as many salmon reproduce in fresh water after life at sea. Catadromous fish such as many eels are born in salt water and later live in fresh water. Direction of the breeding trip is the difference. Not most kinds do this, so we stay soft."
+          },
+          {
+            "slot": 7,
+            "id": "euryhaline-soft",
+            "title": "Wide salt",
+            "stem": "Can some freshwater fish handle a wide range of salt?",
+            "choices": [
+              "A minority are euryhaline — they can remodel gills and kidneys across wide salinities (often estuary specialists — soft)",
+              "Every freshwater fish can live in any salt level forever",
+              "No fish can ever change how its gills handle salt"
+            ],
+            "correct": "A",
+            "why": "Wikipedia’s salt-tolerance notes split strictly freshwater kinds from kinds that can last in brackish or salt water. A minority are euryhaline and can remodel gills and kidneys across a wide salt range — often estuary specialists. We stay soft."
+          },
+          {
+            "slot": 8,
+            "id": "lake-islands-soft",
+            "title": "Lake islands",
+            "stem": "Why can isolated lakes and river basins hold so many different fish kinds?",
+            "choices": [
+              "Isolated water never lets new kinds form",
+              "Isolated lakes and river basins can act like “islands,” speeding speciation (soft biogeography)",
+              "Every lake shares one worldwide fish kind"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says scattered freshwater habitats make rapid speciation possible. Ponds and lakes can be studied with the same island-biogeography idea. Isolated basins act like islands — the exact count stays soft."
+          },
+          {
+            "slot": 9,
+            "id": "iucn-quarter-snapshot-soft",
+            "title": "Risk snapshot",
+            "stem": "What does comprehensive IUCN work find for assessed freshwater fish kinds (as a snapshot)?",
+            "choices": [
+              "Every freshwater fish shares one forever letter",
+              "No freshwater fish has ever been assessed",
+              "Roughly about a quarter of assessed freshwater fish kinds are at risk — a snapshot, not one letter for the whole group"
+            ],
+            "correct": "C",
+            "why": "Comprehensive IUCN work finds roughly a quarter of assessed freshwater fish kinds at risk. Wikipedia also notes other snapshots that can differ. Any number is a snapshot and can change. There is no one letter for the whole group — grade each kind."
+          },
+          {
+            "slot": 10,
+            "id": "countercurrent-gills-soft",
+            "title": "Opposite flow",
+            "stem": "How do many freshwater fish pick up oxygen so well at the gills?",
+            "choices": [
+              "Water and blood flow opposite ways across gill surfaces (countercurrent), so oxygen pickup stays efficient (soft)",
+              "Water and blood always flow the same way and then stop",
+              "Gills only work in dry air, never in water"
+            ],
+            "correct": "A",
+            "why": "Wikipedia’s fish gill page says blood in the gill capillaries flows opposite the water — countercurrent exchange. That keeps a useful oxygen gap along the gill surface. We stay with “many,” not a locked percent."
           }
         ]
       }
