@@ -9848,14 +9848,14 @@
     "source": "https://en.wikipedia.org/wiki/Polar_bear",
     "source_note": "Facts from Wikipedia, Polar bear.",
     "talk_about": [
-      "Polar bears are counted as marine mammals. Why, if they walk on ice?",
-      "They often wait at seal breathing holes. What would you watch for?",
-      "Vulnerable is a snapshot letter. What does that letter mean today?"
+      "Polar bears use delayed implantation. Why might an embryo pause from spring until fall?",
+      "Some scientists parked polar bears in Thalarctos. Why keep them in Ursus instead?",
+      "Polar bears live in many subpopulations. Why is one worldwide number not enough?"
     ],
     "push_further": [
-      "Their closest living relatives are brown bears. How would you tell the cousins apart?",
-      "Less summer sea ice can change hunting. How might dinner get harder?",
-      "CITES letters say how tightly trade is limited. How would you explain that in plain words?"
+      "A denning mom lives on saved fat. How is that different from hunting every day?",
+      "Some polar bear groups look okay; others do not. Why might regions differ?",
+      "A polar bear skull is built more for cutting meat. What clues would you look for?"
     ],
     "levels": {
       "easy": {
@@ -10131,6 +10131,141 @@
             ],
             "correct": "A",
             "why": "Wikipedia says polar bears and brown bears can interbreed. Wild hybrids are rare. The two are still distinct species."
+          }
+        ]
+      },
+      "zoologist": {
+        "teach": [],
+        "questions": [
+          {
+            "slot": 1,
+            "id": "ursidae-soft",
+            "title": "Family Ursidae",
+            "stem": "Which mammal family and order do polar bears belong to?",
+            "choices": [
+              "Family Ursidae (bears) in order Carnivora; genus Ursus",
+              "Family Felidae (cats) in order Rodentia",
+              "They are not mammals at all"
+            ],
+            "correct": "A",
+            "why": "Wikipedia places the polar bear in the bear family Ursidae, in the order Carnivora. Living polar bears sit in the genus Ursus."
+          },
+          {
+            "slot": 2,
+            "id": "thalarctos-flux-soft",
+            "title": "Ursus, not Thalarctos",
+            "stem": "Why did scientists keep polar bears in Ursus instead of Thalarctos?",
+            "choices": [
+              "They never had any other genus name",
+              "Ursus is kept because fossils plus fertile hybrids with brown bears support it (soft)",
+              "Polar bears are now parked with penguins"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says some taxonomists parked polar bears in Thalarctos for their marine traits. Ursus is the valid genus because of the fossil record and because they can breed with brown bears."
+          },
+          {
+            "slot": 3,
+            "id": "hypercarnivore-soft",
+            "title": "Meat-cutting skull",
+            "stem": "How do a polar bear’s skull and teeth compare with a typical brown bear’s?",
+            "choices": [
+              "They have no teeth at all",
+              "They chew only bamboo like a giant panda",
+              "The skull and teeth lean more toward cutting meat — a specialized seal predator (soft)"
+            ],
+            "correct": "C",
+            "why": "Wikipedia calls the polar bear a hypercarnivore and the most carnivorous bear. It has a narrower skull and sharper teeth more adapted to cutting meat than a typical brown bear."
+          },
+          {
+            "slot": 4,
+            "id": "delayed-implantation-soft",
+            "title": "Pause, then grow",
+            "stem": "What happens after polar bears mate in spring?",
+            "choices": [
+              "The embryo can pause until fall before true pregnancy starts (soft timing)",
+              "Cubs are born the same afternoon as mating",
+              "There is never an embryo at all"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says mating is in spring. Polar bears have delayed implantation — the fertilized embryo does not start true development until fall. We keep the months soft."
+          },
+          {
+            "slot": 5,
+            "id": "capital-denning-soft",
+            "title": "Stored-fat den",
+            "stem": "How does a pregnant polar bear fuel the maternity-den months?",
+            "choices": [
+              "She hunts seals inside the den every hour",
+              "She fasts in the maternity den on stored fat — a capital-breeding style (soft)",
+              "She only drinks ocean water and never uses fat"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says the female builds fat reserves, then hibernates and fasts in the maternity den. That stored-fat plan is capital breeding in kid words. We stay soft."
+          },
+          {
+            "slot": 6,
+            "id": "sexual-dimorphism-soft",
+            "title": "Size gap",
+            "stem": "How do adult male and female polar bears compare in size?",
+            "choices": [
+              "Adults are always exactly the same size",
+              "Adult females are always much larger than males",
+              "Adult males are much larger than females (exact weights stay soft)"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says the species is sexually dimorphic — adult females are much smaller than adult males. We do not lock kilograms."
+          },
+          {
+            "slot": 7,
+            "id": "subpopulations-soft",
+            "title": "Many groups",
+            "stem": "How are wild polar bears grouped for study and care?",
+            "choices": [
+              "As about 19 circumpolar subpopulations — trends differ by region (soft)",
+              "As one unchanging herd that never splits",
+              "Only as zoo animals with no wild groups"
+            ],
+            "correct": "A",
+            "why": "Wikipedia maps about 19 circumpolar subpopulations (counts can shift a little). Trends are not the same in every region, so we stay soft."
+          },
+          {
+            "slot": 8,
+            "id": "pagophily-soft",
+            "title": "Ice-loving",
+            "stem": "What kind of ice do polar bears prefer to live on?",
+            "choices": [
+              "They prefer open ocean with no ice at all",
+              "They are strongly ice-loving (pagophilic) and prefer productive annual sea ice over open water or land (soft)",
+              "They only live on dry desert sand"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says polar bears are pagophilic (ice-living) and prefer annual sea ice over productive waters. Open water and land are less preferred homes."
+          },
+          {
+            "slot": 9,
+            "id": "status-nuance-soft",
+            "title": "Status nuance",
+            "stem": "Does the global Vulnerable letter tell the same story for every polar bear group?",
+            "choices": [
+              "Yes — every group has the exact same forever letter",
+              "No group has ever been graded",
+              "Global VU is a snapshot; some subpopulations are declining, some stable or unknown — ice outlook drives concern (soft)"
+            ],
+            "correct": "C",
+            "why": "Wikipedia lists the species Vulnerable as a snapshot. Specialist-group notes differ by subpopulation — some likely down, some stable, some unknown. Concern is tied to the ice outlook, not a scary date."
+          },
+          {
+            "slot": 10,
+            "id": "smell-hunters-soft",
+            "title": "Ice-nose",
+            "stem": "How do polar bears often find seals across the ice?",
+            "choices": [
+              "A keen sense of smell helps locate seals and breathing holes across the ice (soft)",
+              "They only use email to ask seals where they are",
+              "They have no sense of smell at all"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says the polar bear’s smell system is large and built for finding prey over long distances. That helps locate seals and breathing holes. Distances stay soft."
           }
         ]
       }
