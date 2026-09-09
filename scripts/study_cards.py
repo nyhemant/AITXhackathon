@@ -717,24 +717,32 @@ gills. Do not redo JR or PR themes. Soften contested numbers.
 Treat IUCN letters as snapshots — never one letter for the
 whole group. Do not invent photos.
 
-Facts for polar-bear Junior Ranger (easy) are Wikipedia-backed:
+Facts for polar-bear Junior Ranger (easy) + Park Ranger (hard)
+are Wikipedia-backed:
 https://en.wikipedia.org/wiki/Polar_bear
-This is the first study deck for this animal. JR stays
-kid-simple “polar bear.” Live in the circumpolar Arctic on
-sea ice and nearby coasts — not the Antarctic. Fur looks
-white or yellowish; guard hairs are translucent and scatter
-light. Skin under the fur is black (nose and foot pads show
-it). Huge paws spread weight on ice and paddle when swimming.
-Specialize on seals (especially ringed seals) hunted from
-ice. Strong swimmers that paddle with front paws. Thick fat
-under the skin helps keep them warm. Moms birth cubs in
-winter dens; cubs stay with mom a long time (soften years).
-Soft care: healthy sea ice helps them reach seal hunting
-spots (no VU / CITES / climate dump on JR). Myth: polar
-bears are Arctic animals — penguins, not polar bears, live
-in Antarctica. Reserve for later (Park Ranger / Zoologist):
-denser physiology, sea-ice climate status, VU/CITES, and
-brown-bear kinship. Do not invent photos.
+JR stays kid-simple “polar bear.” Live in the circumpolar
+Arctic on sea ice and nearby coasts — not the Antarctic. Fur
+looks white or yellowish; guard hairs are translucent and
+scatter light. Skin under the fur is black (nose and foot
+pads show it). Huge paws spread weight on ice and paddle when
+swimming. Specialize on seals (especially ringed seals)
+hunted from ice. Strong swimmers that paddle with front paws.
+Thick fat under the skin helps keep them warm. Moms birth
+cubs in winter dens; cubs stay with mom a long time (soften
+years). Soft care: healthy sea ice helps them reach seal
+hunting spots (no VU / CITES / climate dump on JR). Myth:
+polar bears are Arctic animals — penguins, not polar bears,
+live in Antarctica. Park Ranger (hard) is answer-light
+(empty teach) and deepens: brown-bear kinship, marine-mammal
+status, still-hunting at breathing holes, blubber-first
+meals, hollow guard hairs + oil, overheating if they run
+hard, a Vulnerable snapshot, CITES Appendix II, less summer
+sea ice making hunts harder, and rare pizzly/grolar hybrids.
+Soft physiology / sea-ice climate / VU/CITES / brown-bear
+kinship OK. Soften contested numbers. Keep kid-friendly —
+no scary climate dump. Do not redo JR themes. Reserve for
+later (Zoologist): denser physiology and naming flux. Do not
+invent photos.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
@@ -860,8 +868,7 @@ LEVEL_DISPLAY_NAMES = {
 # ring-tailed lemur, ostrich, warthog, shark, and
 # Asian small-clawed otter, two-toed sloth, and freshwater
 # fish ship Junior Ranger + Park Ranger + Zoologist. Polar
-# bear ships Junior Ranger only (no Park Ranger or Zoologist
-# yet).
+# bear ships Junior Ranger + Park Ranger (no Zoologist yet).
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -1163,14 +1170,14 @@ PUSH_FURTHER_FRESHWATER_FISH = (
     "An IUCN snapshot grades kinds one by one. Why not give the whole group one letter?",
 )
 TALK_ABOUT_POLAR_BEAR = (
-    "The skin under that white-looking fur is black. What would you look for at the zoo?",
-    "They hunt seals from the ice. How would you explain that hunt?",
-    "Polar bears are Arctic animals. Who lives at the other pole?",
+    "Polar bears are counted as marine mammals. Why, if they walk on ice?",
+    "They often wait at seal breathing holes. What would you watch for?",
+    "Vulnerable is a snapshot letter. What does that letter mean today?",
 )
 PUSH_FURTHER_POLAR_BEAR = (
-    "Fur looks white, but the hairs are see-through. Why might that look white?",
-    "Huge paws spread weight on ice and paddle. Which job would you watch?",
-    "Healthy sea ice helps them reach seal hunts. Why might ice matter for dinner?",
+    "Their closest living relatives are brown bears. How would you tell the cousins apart?",
+    "Less summer sea ice can change hunting. How might dinner get harder?",
+    "CITES letters say how tightly trade is limited. How would you explain that in plain words?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -11083,6 +11090,146 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia says polar bears live in the Arctic. Penguins live in Antarctica. Wild polar bears and penguins do not meet.",
+                    },
+                ],
+            },
+            "hard": {
+                # Answer-light: Park Ranger has no Learn-first strip.
+                # Facts from Wikipedia, Polar bear. Soft physiology /
+                # sea-ice climate / VU / CITES / brown-bear kinship
+                # OK. Soften contested numbers. Kid-friendly — no
+                # scary climate dump. Do not redo JR themes.
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "brown-bear-kin-soft",
+                        "title": "Brown-bear kin",
+                        "stem": "Who are polar bears’ closest living relatives?",
+                        "choices": [
+                            "Brown bears (Ursus arctos) — same genus Ursus (U. maritimus)",
+                            "Only penguins that live on ice",
+                            "Only house cats with no wild cousins",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says polar bears are closely related to brown bears. Both sit in the genus Ursus. The polar bear’s scientific name is Ursus maritimus.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "marine-mammal-soft",
+                        "title": "Marine mammal",
+                        "stem": "Why are polar bears counted as marine mammals?",
+                        "choices": [
+                            "They never leave the deep ocean",
+                            "They depend on sea-ice marine food webs, even though they also walk on ice and land",
+                            "They have gills like a fish",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says they are considered marine mammals because they depend on marine ecosystems. They hunt seals from sea ice. They also walk on ice and land.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "still-hunt-soft",
+                        "title": "Still hunt",
+                        "stem": "How do polar bears often hunt seals at the ice?",
+                        "choices": [
+                            "They only order seals from a restaurant",
+                            "They never wait and only chase seals on dry sand",
+                            "They often wait at a seal breathing hole or ice edge for prey to surface",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says a bear may wait at a breathing hole or ice edge for a seal to come up. Still-waiting is a main hunt from winter to early spring.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "blubber-first-soft",
+                        "title": "Blubber first",
+                        "stem": "Which part of a seal do polar bears prefer to eat first?",
+                        "choices": [
+                            "The energy-rich blubber, more than the lean meat",
+                            "Only the bones and nothing else",
+                            "Only the whiskers",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says the bear primarily feeds on the seal’s energy-rich blubber. The fat-rich layer is the preferred first snack.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "hollow-hairs-deepen-soft",
+                        "title": "Hollow hairs",
+                        "stem": "How do polar bear guard hairs help besides looking pale?",
+                        "choices": [
+                            "They are solid metal wires that never bend",
+                            "Translucent hollow guard hairs scatter light, and oil helps the coat shed ice (soft)",
+                            "They are only painted on for photos",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says the guard hairs are hollow and see-through, and they scatter light. Oil secretions help keep the coat from freezing. We stay soft on extra physics.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "warm-too-well-soft",
+                        "title": "Warm too well",
+                        "stem": "Can a polar bear’s fur and fat keep it too warm?",
+                        "choices": [
+                            "No — they are always too cold to move",
+                            "They have no fur or fat at all",
+                            "Yes — the coat and fat hold heat so well they can overheat if they run hard",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says fur and a thick fat layer keep them warm, and overheating is something the body has to handle. They may cool off in water. Running hard can make them too hot.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "vu-snapshot-soft",
+                        "title": "Vulnerable snapshot",
+                        "stem": "How should we read the IUCN letter for polar bears?",
+                        "choices": [
+                            "IUCN lists them Vulnerable — the letter is a snapshot, driven mainly by a sea-ice loss outlook",
+                            "Extinct worldwide, with no living animals",
+                            "The most common animal on every continent",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says IUCN lists the polar bear as Vulnerable. The letter is a snapshot and can change. The main worry is less sea ice ahead — we do not lock counts or scary dates.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "cites-ii-soft",
+                        "title": "CITES II",
+                        "stem": "What do international CITES trade rules say for polar bears?",
+                        "choices": [
+                            "CITES only covers house plants",
+                            "They are on Appendix II, so international trade is allowed but regulated (soft)",
+                            "Anyone may ship them with no rules at all",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says CITES lists the polar bear on Appendix II, which allows regulated international trade. Appendix II is a trade rule, not the same thing as an IUCN status letter.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "ice-platform-squeeze-soft",
+                        "title": "Ice-platform squeeze",
+                        "stem": "How can less summer sea ice change polar bear hunting?",
+                        "choices": [
+                            "Less ice makes seals easier to catch every day",
+                            "Polar bears hunt only in rainforests when ice melts",
+                            "Less summer sea ice makes seal hunting harder and means more time on land",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says less sea ice gives them less access to seals and means more time on land. We stay with that soft squeeze — no scary climate dump.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "hybrid-rare-soft",
+                        "title": "Hybrid rare",
+                        "stem": "Can polar bears and brown bears have cubs together?",
+                        "choices": [
+                            "Rarely yes — “pizzly” or “grolar” hybrids can happen, but they are still distinct species",
+                            "They turn into penguins when they meet",
+                            "No mammal can ever have mixed-parent cubs",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says polar bears and brown bears can interbreed. Wild hybrids are rare. The two are still distinct species.",
                     },
                 ],
             },
