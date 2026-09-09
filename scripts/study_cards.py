@@ -643,6 +643,27 @@ sun-open-shell observations. Do not redo JR or PR themes.
 Soften contested numbers. Treat IUCN / CITES letters as
 snapshots. Soften exact call counts. Do not invent photos.
 
+Facts for two-toed-sloth Junior Ranger (easy) are Wikipedia-backed:
+https://en.wikipedia.org/wiki/Two-toed_sloth
+This is the group / genus Choloepus card (two-toed /
+two-fingered sloths), not a single species-only deck.
+Claims must hold for two-toed sloths as a group. JR stays
+kid-simple “two-toed sloth.” Two big curved claws on each
+front foot (sometimes called two-fingered). Live in
+rainforest trees of Central and South America. Spend most
+of life hanging upside down. Move very slowly to save
+energy. Greenish fur from algae helps them hide. Mostly
+leaves, plus shoots, fruit, and other plant bits. Mostly
+active at night; quiet daytime rest. Long curved claws
+lock onto branches like hooks. Soft care: healthy
+rainforest trees give them food and hiding spots (no
+IUCN-by-species letter on JR). Myth: slow is not “lazy”
+— it is an energy plan and a way to stay hard to spot.
+Reserve for Park Ranger / Zoologist: denser taxonomy
+(Xenarthra / two species / convergence), digestion,
+moth–algae mutualism, IUCN-by-species. Soften contested
+numbers. Do not invent photos.
+
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
 zoologist. Visible copy uses LEVEL_DISPLAY_NAMES only — no age badges,
@@ -688,6 +709,7 @@ WIKI_SHARK = "https://en.wikipedia.org/wiki/Shark"
 WIKI_ASIAN_SMALL_CLAWED_OTTER = (
     "https://en.wikipedia.org/wiki/Asian_small-clawed_otter"
 )
+WIKI_TWO_TOED_SLOTH = "https://en.wikipedia.org/wiki/Two-toed_sloth"
 
 LETTERS = ("A", "B", "C")
 STUDY_SLOTS = 10
@@ -763,7 +785,8 @@ LEVEL_DISPLAY_NAMES = {
 # koala, chimpanzee, orangutan, giant panda, and
 # ring-tailed lemur, ostrich, warthog, shark, and
 # Asian small-clawed otter ship Junior Ranger +
-# Park Ranger + Zoologist.
+# Park Ranger + Zoologist. Two-toed sloth ships
+# Junior Ranger only (no Park Ranger or Zoologist yet).
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -801,6 +824,7 @@ STUDY_NEIGHBORS = {
     "warthog": ("zebra", "ostrich"),
     "shark": ("african-penguin", "caribbean-flamingo"),
     "asian-small-clawed-otter": ("shark", "red-panda"),
+    "two-toed-sloth": ("orangutan", "koala"),
 }
 
 STUDY_CARD_TITLES = {
@@ -825,6 +849,7 @@ STUDY_CARD_TITLES = {
     "warthog": "Warthog",
     "shark": "Shark",
     "asian-small-clawed-otter": "Asian small-clawed otter",
+    "two-toed-sloth": "Two-toed sloth",
 }
 
 # Shared answers-side deepen (Claude sample). Not scored. Future animals reuse keys.
@@ -1037,6 +1062,16 @@ PUSH_FURTHER_ASIAN_SMALL_CLAWED_OTTER = (
     "Sister species sit next door on a family tree. How would you draw this otter and a smooth-coated otter?",
     "Rare mixed otter families showed up in Singapore. What would you ask a keeper about that soft story?",
     "Otters sit in the weasel family, Mustelidae. Which other zoo animal might share that bigger tree?",
+)
+TALK_ABOUT_TWO_TOED_SLOTH = (
+    "They hang upside down to sleep, eat, and rest. What would you notice first at the zoo?",
+    "Greenish algae in the fur helps them hide. What else at the zoo uses camouflage?",
+    "Moving slowly saves energy. Why might slow help a sloth stay safe?",
+)
+PUSH_FURTHER_TWO_TOED_SLOTH = (
+    "Two-toed sloths have two big front claws; three-toed sloths have three. What would you count first?",
+    "Can they swim? What would you ask a keeper?",
+    "People call sloths lazy. Why is slow an energy plan, not laziness?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -9937,6 +9972,157 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia records captive observations: otters left shellfish in the sun so heat helped the shells open. That is a keeper-seen trick, not a claim about every wild meal.",
+                    },
+                ],
+            },
+        },
+    },
+    "two-toed-sloth": {
+        "id": "two-toed-sloth",
+        "source": WIKI_TWO_TOED_SLOTH,
+        "source_note": "Facts from Wikipedia, Two-toed sloth.",
+        "talk_about": list(TALK_ABOUT_TWO_TOED_SLOTH),
+        "push_further": list(PUSH_FURTHER_TWO_TOED_SLOTH),
+        "levels": {
+            "easy": {
+                # Teaching-first: same front as the quiz. Hard later may hide these.
+                "teach": [
+                    "Two big curved claws on each front foot (sometimes called two-fingered)",
+                    "Live in rainforest trees of Central and South America",
+                    "Spend most of life hanging upside down",
+                    "Move very slowly to save energy",
+                    "Greenish fur from algae helps them hide",
+                ],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "two-front-claws",
+                        "title": "Two front claws",
+                        "stem": "How many big curved claws does a two-toed sloth have on each front foot?",
+                        "choices": [
+                            "Two big curved claws (sometimes called two-fingered)",
+                            "Five hooves like a horse",
+                            "No claws at all",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says two-toed sloths have two claws on each front foot. People sometimes call them two-fingered sloths. Those claws help them hang.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "rainforest-home",
+                        "title": "Rainforest home",
+                        "stem": "Where do two-toed sloths live in the wild?",
+                        "choices": [
+                            "Only in icy Antarctica",
+                            "Tropical rainforest trees of Central and South America",
+                            "Only on African grassland",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia places two-toed sloths in tropical forests of Central and South America. They live in the trees, not on ice or African grassland.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "upside-down-life",
+                        "title": "Upside-down life",
+                        "stem": "How do two-toed sloths spend most of their lives?",
+                        "choices": [
+                            "Running on open plains",
+                            "Swimming across the ocean",
+                            "Hanging upside down from tree branches",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says two-toed sloths spend most of their lives hanging upside down. They sleep, eat, and rest that way.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "slow-savers",
+                        "title": "Slow savers",
+                        "stem": "Why do two-toed sloths move so slowly?",
+                        "choices": [
+                            "Moving slowly helps them save energy",
+                            "They are trying to win a race",
+                            "They have no legs",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says they move at an extremely slow rate. A low-energy lifestyle helps them save energy. They do have legs — they hang and pull along.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "algae-camouflage-soft",
+                        "title": "Algae camouflage",
+                        "stem": "Why can a two-toed sloth’s fur look a little green?",
+                        "choices": [
+                            "They paint themselves for a parade",
+                            "Greenish algae in the fur help them blend into the trees",
+                            "They are made of leaves",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says greenish algae can grow in the fur and help them blend in. That camouflage helps them hide in the canopy.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "leaf-snacks-soft",
+                        "title": "Leaf snacks",
+                        "stem": "What do two-toed sloths mostly eat?",
+                        "choices": [
+                            "Only pizza",
+                            "Only fish",
+                            "Mostly leaves, plus shoots, fruit, and other plant bits",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says they eat leaves and other plant parts such as shoots and fruit. They are not pizza-eaters or fish-only hunters.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "night-roamers-soft",
+                        "title": "Night roamers",
+                        "stem": "When are two-toed sloths mostly active?",
+                        "choices": [
+                            "Mostly at night, with quiet rest in the day",
+                            "Only at high noon on the ground",
+                            "Never — they never wake up",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says two-toed sloths are predominantly nocturnal. They rest quietly by day and move more at night.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "hook-hangers",
+                        "title": "Hook hangers",
+                        "stem": "How do their long curved claws help them?",
+                        "choices": [
+                            "They are only for stirring soup",
+                            "The claws lock onto branches like hooks so they can hang",
+                            "They work like wings for flying",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says they hang using long, curved claws. Those hooks lock onto branches. They do not fly.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "soft-forest-care",
+                        "title": "Soft forest care",
+                        "stem": "Why do two-toed sloths need healthy rainforest trees?",
+                        "choices": [
+                            "They only need a desert cactus",
+                            "They live in the ocean",
+                            "Healthy rainforest trees give them food and hiding spots",
+                        ],
+                        "correct": "C",
+                        "why": "Two-toed sloths live in rainforest trees. Healthy trees give them leaves to eat and places to hide. We do not lock a status letter — that grade is a snapshot and can change.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "not-lazy-myth",
+                        "title": "Myth buster",
+                        "stem": "Are two-toed sloths just lazy?",
+                        "choices": [
+                            "No — slow is an energy plan and a way to stay hard to spot",
+                            "Yes — they are lazy on purpose",
+                            "They are the fastest animals on Earth",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia describes their slow, low-energy lifestyle. Slow is not “lazy” — it saves energy and helps them stay hard to spot.",
                     },
                 ],
             },
