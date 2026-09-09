@@ -167,6 +167,7 @@ class HippoEasyStudyCardTests(unittest.TestCase):
                 "asian-small-clawed-otter",
                 "two-toed-sloth",
                 "freshwater-fish",
+                "polar-bear",
             ),
         )
         self.assertEqual(shipped_levels_for("nile-hippo"), ("easy", "hard", "zoologist"))

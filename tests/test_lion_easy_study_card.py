@@ -105,6 +105,7 @@ class LionEasyStudyCardTests(unittest.TestCase):
                 "asian-small-clawed-otter",
                 "two-toed-sloth",
                 "freshwater-fish",
+                "polar-bear",
             ),
         )
         deck = study_deck_for("african-lion")

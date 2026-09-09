@@ -717,6 +717,25 @@ gills. Do not redo JR or PR themes. Soften contested numbers.
 Treat IUCN letters as snapshots — never one letter for the
 whole group. Do not invent photos.
 
+Facts for polar-bear Junior Ranger (easy) are Wikipedia-backed:
+https://en.wikipedia.org/wiki/Polar_bear
+This is the first study deck for this animal. JR stays
+kid-simple “polar bear.” Live in the circumpolar Arctic on
+sea ice and nearby coasts — not the Antarctic. Fur looks
+white or yellowish; guard hairs are translucent and scatter
+light. Skin under the fur is black (nose and foot pads show
+it). Huge paws spread weight on ice and paddle when swimming.
+Specialize on seals (especially ringed seals) hunted from
+ice. Strong swimmers that paddle with front paws. Thick fat
+under the skin helps keep them warm. Moms birth cubs in
+winter dens; cubs stay with mom a long time (soften years).
+Soft care: healthy sea ice helps them reach seal hunting
+spots (no VU / CITES / climate dump on JR). Myth: polar
+bears are Arctic animals — penguins, not polar bears, live
+in Antarctica. Reserve for later (Park Ranger / Zoologist):
+denser physiology, sea-ice climate status, VU/CITES, and
+brown-bear kinship. Do not invent photos.
+
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
 zoologist. Visible copy uses LEVEL_DISPLAY_NAMES only — no age badges,
@@ -764,6 +783,7 @@ WIKI_ASIAN_SMALL_CLAWED_OTTER = (
 )
 WIKI_TWO_TOED_SLOTH = "https://en.wikipedia.org/wiki/Two-toed_sloth"
 WIKI_FRESHWATER_FISH = "https://en.wikipedia.org/wiki/Freshwater_fish"
+WIKI_POLAR_BEAR = "https://en.wikipedia.org/wiki/Polar_bear"
 
 LETTERS = ("A", "B", "C")
 STUDY_SLOTS = 10
@@ -839,7 +859,9 @@ LEVEL_DISPLAY_NAMES = {
 # koala, chimpanzee, orangutan, giant panda, and
 # ring-tailed lemur, ostrich, warthog, shark, and
 # Asian small-clawed otter, two-toed sloth, and freshwater
-# fish ship Junior Ranger + Park Ranger + Zoologist.
+# fish ship Junior Ranger + Park Ranger + Zoologist. Polar
+# bear ships Junior Ranger only (no Park Ranger or Zoologist
+# yet).
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -879,6 +901,7 @@ STUDY_NEIGHBORS = {
     "asian-small-clawed-otter": ("shark", "red-panda"),
     "two-toed-sloth": ("orangutan", "koala"),
     "freshwater-fish": ("shark", "asian-small-clawed-otter"),
+    "polar-bear": ("african-penguin", "asian-small-clawed-otter"),
 }
 
 STUDY_CARD_TITLES = {
@@ -905,6 +928,7 @@ STUDY_CARD_TITLES = {
     "asian-small-clawed-otter": "Asian small-clawed otter",
     "two-toed-sloth": "Two-toed sloth",
     "freshwater-fish": "Freshwater fish",
+    "polar-bear": "Polar bear",
 }
 
 # Shared answers-side deepen (Claude sample). Not scored. Future animals reuse keys.
@@ -1137,6 +1161,16 @@ PUSH_FURTHER_FRESHWATER_FISH = (
     "Some swim bladders open to the gut; others are closed. How might a fish add or lose air?",
     "Isolated lakes can act like islands. Why might that make more kinds of fish?",
     "An IUCN snapshot grades kinds one by one. Why not give the whole group one letter?",
+)
+TALK_ABOUT_POLAR_BEAR = (
+    "The skin under that white-looking fur is black. What would you look for at the zoo?",
+    "They hunt seals from the ice. How would you explain that hunt?",
+    "Polar bears are Arctic animals. Who lives at the other pole?",
+)
+PUSH_FURTHER_POLAR_BEAR = (
+    "Fur looks white, but the hairs are see-through. Why might that look white?",
+    "Huge paws spread weight on ice and paddle. Which job would you watch?",
+    "Healthy sea ice helps them reach seal hunts. Why might ice matter for dinner?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -10898,6 +10932,157 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia’s fish gill page says blood in the gill capillaries flows opposite the water — countercurrent exchange. That keeps a useful oxygen gap along the gill surface. We stay with “many,” not a locked percent.",
+                    },
+                ],
+            },
+        },
+    },
+    "polar-bear": {
+        "id": "polar-bear",
+        "source": WIKI_POLAR_BEAR,
+        "source_note": "Facts from Wikipedia, Polar bear.",
+        "talk_about": list(TALK_ABOUT_POLAR_BEAR),
+        "push_further": list(PUSH_FURTHER_POLAR_BEAR),
+        "levels": {
+            "easy": {
+                # Teaching-first: same front as the quiz. Hard later may hide these.
+                "teach": [
+                    "Live in the Arctic on sea ice and nearby coasts",
+                    "Fur looks white; skin underneath is black",
+                    "Huge paws for walking on ice and paddling",
+                    "Hunt seals from the ice",
+                    "Need healthy sea ice to find food",
+                ],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "arctic-home",
+                        "title": "Arctic home",
+                        "stem": "Where do polar bears live in the wild?",
+                        "choices": [
+                            "On Arctic sea ice and nearby coasts — not the Antarctic",
+                            "Only at the South Pole with penguins",
+                            "Only in warm rainforests",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says polar bears are native to the Arctic and nearby areas. They live on sea ice and nearby land. They are not Antarctic animals.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "looks-white-fur-soft",
+                        "title": "White-looking fur",
+                        "stem": "Why does polar bear fur look white?",
+                        "choices": [
+                            "The hairs are painted white like a costume",
+                            "Guard hairs are see-through and scatter light, so the coat looks white or yellowish",
+                            "Their skin is white and shows through the fur",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says the fur looks white or yellowish. The long guard hairs are see-through and scatter light, so the coat looks white.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "black-skin-soft",
+                        "title": "Black skin",
+                        "stem": "What color is the skin under a polar bear’s fur?",
+                        "choices": [
+                            "Bright pink like a flamingo",
+                            "Snow-white like the coat",
+                            "Black — you can see it on the nose and foot pads",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says polar bear skin is black. The nose and foot pads show that dark skin under the white-looking fur.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "ice-and-paddle-paws",
+                        "title": "Ice-and-paddle paws",
+                        "stem": "How do a polar bear’s huge paws help?",
+                        "choices": [
+                            "They spread weight on ice and paddle when the bear swims",
+                            "They are only for climbing tall jungle trees",
+                            "They do no work at all",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says the large paws let the bear walk on ice and paddle in the water. Big paws spread weight on ice.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "seal-snacks-soft",
+                        "title": "Seal snacks",
+                        "stem": "What do polar bears specialize in hunting?",
+                        "choices": [
+                            "Only bamboo like a giant panda",
+                            "Seals (especially ringed seals) hunted from the ice",
+                            "Only grass on the African savannah",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says polar bears specialize on seals, especially ringed seals, and hunt them from the sea ice.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "strong-swimmers-soft",
+                        "title": "Strong swimmers",
+                        "stem": "How do polar bears swim?",
+                        "choices": [
+                            "They cannot swim at all",
+                            "They fly over the water with wings",
+                            "They are strong swimmers that paddle with their front paws",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says polar bears paddle in the water with their large paws. They are strong swimmers.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "fat-jacket-soft",
+                        "title": "Fat jacket",
+                        "stem": "How does a polar bear stay warm in the cold?",
+                        "choices": [
+                            "A thick layer of fat under the skin helps keep them warm",
+                            "They wear a zoo jacket",
+                            "They have no fat at all",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says polar bears have a thick layer of fat under the skin that helps keep them warm.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "cub-dens-soft",
+                        "title": "Cub dens",
+                        "stem": "Where do polar bear moms have their cubs?",
+                        "choices": [
+                            "In a nest high in a rainforest tree",
+                            "In a winter den; cubs stay with mom a long time",
+                            "In the open desert with no den",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says mothers give birth to cubs in winter dens. Cubs stay with their mother a long time. We do not lock the exact years.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "soft-ice-care",
+                        "title": "Soft ice care",
+                        "stem": "Why does healthy sea ice matter for polar bears?",
+                        "choices": [
+                            "They use ice only as a dessert",
+                            "They never go near ice",
+                            "Healthy sea ice helps them reach seal hunting spots",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says polar bears hunt seals from the sea ice. Healthy ice helps them get to those hunting spots. We stay with that soft care — no status letter.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "not-south-pole-myth",
+                        "title": "Myth buster",
+                        "stem": "Do polar bears live at the South Pole?",
+                        "choices": [
+                            "No — polar bears are Arctic animals; penguins, not polar bears, live in Antarctica",
+                            "Yes — they share the ice with penguins",
+                            "Yes — they only live in Antarctica",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says polar bears live in the Arctic. Penguins live in Antarctica. Wild polar bears and penguins do not meet.",
                     },
                 ],
             },
