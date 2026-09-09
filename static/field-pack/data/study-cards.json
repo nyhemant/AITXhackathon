@@ -8992,14 +8992,14 @@
     "source": "https://en.wikipedia.org/wiki/Two-toed_sloth",
     "source_note": "Facts from Wikipedia, Two-toed sloth.",
     "talk_about": [
-      "They hang upside down to sleep, eat, and rest. What would you notice first at the zoo?",
-      "Greenish algae in the fur helps them hide. What else at the zoo uses camouflage?",
-      "Moving slowly saves energy. Why might slow help a sloth stay safe?"
+      "Two-toed sloths are two living kinds, not one. What would you compare at the zoo?",
+      "A leafy meal can take about a month to finish. Why might digestion move so slowly?",
+      "Grooved fur can host algae, moths, and beetles. What would a living coat be like?"
     ],
     "push_further": [
-      "Two-toed sloths have two big front claws; three-toed sloths have three. What would you count first?",
-      "Can they swim? What would you ask a keeper?",
-      "People call sloths lazy. Why is slow an energy plan, not laziness?"
+      "The moth–algae story is better studied in three-toed sloths. Why is it softer here?",
+      "Least Concern is a snapshot, not “no worries.” Why do healthy forests still matter?",
+      "Two-toed and three-toed sloths look alike. What would you compare more carefully?"
     ],
     "levels": {
       "easy": {
@@ -9140,6 +9140,141 @@
             ],
             "correct": "A",
             "why": "Wikipedia describes their slow, low-energy lifestyle. Slow is not “lazy” — it saves energy and helps them stay hard to spot."
+          }
+        ]
+      },
+      "hard": {
+        "teach": [],
+        "questions": [
+          {
+            "slot": 1,
+            "id": "two-living-kinds-soft",
+            "title": "Two living kinds",
+            "stem": "How many living kinds of two-toed sloth are there?",
+            "choices": [
+              "Two living kinds — Linnaeus’s and Hoffmann’s (genus Choloepus)",
+              "Only one kind on the whole planet",
+              "Twenty kinds, like dog breeds"
+            ],
+            "correct": "A",
+            "why": "Wikipedia places two-toed sloths in the genus Choloepus. The two living kinds are Linnaeus’s (C. didactylus) and Hoffmann’s (C. hoffmanni). Soft species notes are OK — they are still one group."
+          },
+          {
+            "slot": 2,
+            "id": "ferment-tummy-soft",
+            "title": "Ferment tummy",
+            "stem": "How does a two-toed sloth’s big stomach help with tough leaves?",
+            "choices": [
+              "It turns leaves into ice cream",
+              "A large multi-chambered stomach helps ferment the tough leaves",
+              "It has no stomach at all"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says they have large, multi-chambered stomachs that help ferment the plant matter they eat. Exact chamber counts stay soft."
+          },
+          {
+            "slot": 3,
+            "id": "slow-digest-soft",
+            "title": "Slow digest",
+            "stem": "About how long can food take to finish digesting?",
+            "choices": [
+              "About five minutes, like a snack",
+              "Exactly 12 minutes every time",
+              "About a month — the exact days stay soft"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says food can take up to a month to digest because of their slow metabolism. Treat that as “about a month,” not a locked timer."
+          },
+          {
+            "slot": 4,
+            "id": "living-fur-soft",
+            "title": "Living fur",
+            "stem": "What can live in a two-toed sloth’s grooved fur?",
+            "choices": [
+              "Algae plus tiny moths and beetles — a mini ecosystem",
+              "Only goldfish",
+              "Nothing at all — the fur is empty"
+            ],
+            "correct": "A",
+            "why": "Wikipedia and sloth pages say grooved fur can host algae and a community of tiny moths and beetles. That living coat is a mini ecosystem."
+          },
+          {
+            "slot": 5,
+            "id": "moth-algae-note-soft",
+            "title": "Moth–algae note",
+            "stem": "Is the famous “moth fertilizes algae” story equally proven for two-toed sloths?",
+            "choices": [
+              "Yes — it is proven the same for every sloth forever",
+              "It is better studied in three-toed sloths and still debated for two-toed",
+              "Moths never visit sloth fur"
+            ],
+            "correct": "B",
+            "why": "The three-way moth–algae story is better studied in three-toed sloths. For two-toed sloths it is still debated, so we keep the claim soft."
+          },
+          {
+            "slot": 6,
+            "id": "no-shiver-soft",
+            "title": "No shiver",
+            "stem": "Why can’t two-toed sloths warm up by shivering like many mammals?",
+            "choices": [
+              "They shiver louder than a lion",
+              "They are always too hot from running",
+              "Unusually low metabolism — they cannot shiver to keep warm"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says they cannot shiver to keep warm as other mammals do, because of unusually low metabolic rates and reduced musculature."
+          },
+          {
+            "slot": 7,
+            "id": "upside-down-fur-soft",
+            "title": "Upside-down fur",
+            "stem": "How does the outer hair grow for a hanging life?",
+            "choices": [
+              "It grows the “wrong” way — away from the extremities",
+              "It only grows toward the toes, like most mammals",
+              "They have no hair at all"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says sloth outer hair grows away from the extremities — the opposite of most mammals — so it sheds rain while they hang upside down."
+          },
+          {
+            "slot": 8,
+            "id": "rare-ground-trips-soft",
+            "title": "Rare ground trips",
+            "stem": "Why do two-toed sloths come down to the ground so rarely?",
+            "choices": [
+              "They jog on the ground every morning",
+              "Walking is almost helpless; they come down to change trees or potty",
+              "They live only in the ocean"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says they cannot walk well and are almost helpless on the ground. They come down rarely — to change trees or potty — then climb back up."
+          },
+          {
+            "slot": 9,
+            "id": "swim-surprise-soft",
+            "title": "Swim surprise",
+            "stem": "If two-toed sloths are poor on the ground, can they swim?",
+            "choices": [
+              "No — they sink at once",
+              "They only fly over rivers",
+              "Yes — they are good enough swimmers to cross water"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says sloths are almost helpless on the ground but able to swim. Two-toed sloths can be good enough swimmers to cross water."
+          },
+          {
+            "slot": 10,
+            "id": "lc-snapshot-soft",
+            "title": "Least Concern snapshot",
+            "stem": "How should we read Least Concern for both living kinds?",
+            "choices": [
+              "Both species are currently Least Concern — a snapshot; healthy forests still matter",
+              "Least Concern means forests never need care",
+              "Both species are already gone forever"
+            ],
+            "correct": "A",
+            "why": "Both Linnaeus’s and Hoffmann’s two-toed sloths are currently listed Least Concern. That letter is a snapshot and can change. Healthy forests still matter."
           }
         ]
       }
