@@ -9414,5 +9414,163 @@
         ]
       }
     }
+  },
+  "freshwater-fish": {
+    "id": "freshwater-fish",
+    "source": "https://en.wikipedia.org/wiki/Freshwater_fish",
+    "source_note": "Facts from Wikipedia, Freshwater fish.",
+    "talk_about": [
+      "A river tank is not the ocean. What would you look for that says “fresh water”?",
+      "Gills pull oxygen from the water, like a tiny underwater breath. How would you explain that?",
+      "Clean rivers and wetlands help these fish stay healthy. Why might dirty water be hard on them?"
+    ],
+    "push_further": [
+      "Name a fish from a pond or river near you. What makes it a freshwater fish?",
+      "Fins are a toolkit — push, steer, balance, and brake. Which fin job would you watch?",
+      "A goldfish lives in fresh water, but it is not the only kind. What other freshwater fish can you name?"
+    ],
+    "levels": {
+      "easy": {
+        "teach": [
+          "Live in rivers, lakes, ponds, and wetlands — not salty ocean water",
+          "Breathe underwater with gills",
+          "Use fins to swim, steer, and stop",
+          "Come in many shapes and sizes (catfish, trout, perch, and more)",
+          "Need clean fresh water to stay healthy"
+        ],
+        "questions": [
+          {
+            "slot": 1,
+            "id": "fresh-homes",
+            "title": "Fresh homes",
+            "stem": "Where do freshwater fish live?",
+            "choices": [
+              "Rivers, lakes, ponds, and inland wetlands",
+              "Only in the salty ocean",
+              "Only in the sky"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says freshwater fish spend some or all of their lives in rivers, lakes, ponds, and inland wetlands — not salty ocean water."
+          },
+          {
+            "slot": 2,
+            "id": "low-salt-water-soft",
+            "title": "Low-salt water",
+            "stem": "How is fresh water different from ocean water?",
+            "choices": [
+              "Fresh water is saltier than the ocean",
+              "Fresh water has much less salt than the ocean",
+              "Fresh water and ocean water have the same salt"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says freshwater homes have very low salt compared with the ocean. That low-salt water is what “fresh” means here."
+          },
+          {
+            "slot": 3,
+            "id": "gill-breathers",
+            "title": "Gill breathers",
+            "stem": "How do freshwater fish get oxygen underwater?",
+            "choices": [
+              "They breathe air with lungs like a dog",
+              "They drink the water to get air",
+              "Gills pull oxygen from the water"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says fish extract oxygen from water using gills. Freshwater fish breathe underwater this way."
+          },
+          {
+            "slot": 4,
+            "id": "fin-toolkit",
+            "title": "Fin toolkit",
+            "stem": "How do fins help freshwater fish move?",
+            "choices": [
+              "Fins help push, steer, balance, and brake",
+              "Fins are only for flying in the sky",
+              "Fins do no work at all"
+            ],
+            "correct": "A",
+            "why": "Wikipedia describes a typical fish with paired fins plus dorsal, anal, and tail fins. Those fins help push, steer, balance, and stop."
+          },
+          {
+            "slot": 5,
+            "id": "many-kinds-soft",
+            "title": "Many kinds",
+            "stem": "How many kinds of fish live in fresh water?",
+            "choices": [
+              "Almost no fish live in fresh water",
+              "A huge share of all fish kinds live in fresh water",
+              "Every fish on Earth lives only in the ocean"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says a huge share of all known fish kinds are found in fresh water. The exact percent can shift, so we keep the number soft."
+          },
+          {
+            "slot": 6,
+            "id": "scaly-coats-soft",
+            "title": "Scaly coats",
+            "stem": "Do freshwater fish wear scales?",
+            "choices": [
+              "No fish ever has scales",
+              "Every single kind is covered in thick fur",
+              "Many wear protective scales, but not every kind"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says a typical fish has skin covered with scales that help protect it. Some kinds have fewer scales or none, so this is not true of every freshwater fish."
+          },
+          {
+            "slot": 7,
+            "id": "water-temp-soft",
+            "title": "Water temperature",
+            "stem": "How do most freshwater fish handle temperature?",
+            "choices": [
+              "Most follow the water’s temperature (they are cold-blooded)",
+              "Every kind keeps a hot body like a mammal",
+              "They freeze solid in every pond"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says most fish are cold-blooded — their body temperature varies with the surrounding water. A few kinds can stay warmer, so we say most."
+          },
+          {
+            "slot": 8,
+            "id": "egg-starts-soft",
+            "title": "Egg starts",
+            "stem": "How do many freshwater fish begin life?",
+            "choices": [
+              "Every kind is born as a tiny mammal",
+              "Many begin as eggs laid in the water (some kinds differ)",
+              "They sprout from tree seeds"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says many fish begin as eggs laid in the water. Some kinds give live young, so we stay soft."
+          },
+          {
+            "slot": 9,
+            "id": "soft-water-care",
+            "title": "Soft water care",
+            "stem": "What helps freshwater fish stay healthy in the wild?",
+            "choices": [
+              "Dirty water and dry empty ponds",
+              "Only salty ocean waves",
+              "Clean rivers and healthy wetlands"
+            ],
+            "correct": "C",
+            "why": "Freshwater fish need clean fresh water. Wikipedia notes that habitat loss and pollution can hurt them. Clean rivers and healthy wetlands help them thrive. We do not lock a status letter — that grade is a snapshot and can change."
+          },
+          {
+            "slot": 10,
+            "id": "not-only-ocean-myth",
+            "title": "Myth buster",
+            "stem": "Do all fish need the ocean to live?",
+            "choices": [
+              "No — plenty of fish spend their whole lives in fresh water, with no ocean required",
+              "Yes — every fish must live in the ocean",
+              "Fish can only live in the desert"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says freshwater fish spend some or all of their lives in rivers, lakes, ponds, and inland wetlands. Plenty of kinds never need the ocean."
+          }
+        ]
+      }
+    }
   }
 }

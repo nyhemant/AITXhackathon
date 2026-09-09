@@ -186,6 +186,7 @@ class CheetahEasyStudyCardTests(unittest.TestCase):
                 "shark",
                 "asian-small-clawed-otter",
                 "two-toed-sloth",
+                "freshwater-fish",
             ),
         )
         self.assertEqual(shipped_levels_for("cheetah"), ("easy", "hard", "zoologist"))
