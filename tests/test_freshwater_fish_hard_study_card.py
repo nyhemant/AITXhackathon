@@ -108,8 +108,8 @@ def _text(html: str) -> str:
 
 class FreshwaterFishHardStudyCardTests(unittest.TestCase):
     def test_hard_deck_is_park_ranger_without_teach(self):
-        self.assertEqual(shipped_levels_for("freshwater-fish"), ("easy", "hard"))
-        self.assertIsNone(study_deck_for("freshwater-fish", "zoologist"))
+        self.assertEqual(shipped_levels_for("freshwater-fish"), ("easy", "hard", "zoologist"))
+        self.assertIsNotNone(study_deck_for("freshwater-fish", "zoologist"))
         self.assertNotIn("clownfish", study_card_ids())
         self.assertIsNone(study_deck_for("clownfish"))
         self.assertEqual(level_display_name("hard"), "Park Ranger")
@@ -201,10 +201,10 @@ class FreshwaterFishHardStudyCardTests(unittest.TestCase):
         self.assertNotIn('<details class="study-teach" open', html)
         self.assertIn("Junior Ranger", html)
         self.assertIn("Park Ranger", html)
-        self.assertNotIn("Zoologist", html)
+        self.assertIn("Zoologist", html)
         self.assertIn('data-study-pick="easy"', html)
         self.assertIn('data-study-pick="hard"', html)
-        self.assertNotIn('data-study-pick="zoologist"', html)
+        self.assertIn('data-study-pick="zoologist"', html)
         self.assertEqual(html.count('role="group"'), 2)
         self.assertIn("study-level-picker-bottom", html)
         self.assertIn('aria-label="Study level at the end"', html)
@@ -277,7 +277,7 @@ class FreshwaterFishHardStudyCardTests(unittest.TestCase):
         self.assertEqual(hard["teach"], [])
         self.assertEqual(len(hard["questions"]), STUDY_SLOTS)
         self.assertEqual([q["id"] for q in hard["questions"]], list(HARD_IDS))
-        self.assertNotIn("zoologist", payload["freshwater-fish"]["levels"])
+        self.assertIn("zoologist", payload["freshwater-fish"]["levels"])
         data_js = STUDY_DATA_JS.read_text(encoding="utf-8")
         self.assertIn("freshwater-fish", data_js)
         self.assertIn("salt-water-balance-soft", data_js)
@@ -292,9 +292,9 @@ class FreshwaterFishHardStudyCardTests(unittest.TestCase):
         html = FISH.read_text(encoding="utf-8")
         self.assertIn("Park Ranger", html)
         self.assertIn("Junior Ranger", html)
-        self.assertNotIn("Zoologist", html)
+        self.assertIn("Zoologist", html)
         self.assertIn('data-study-pick="hard"', html)
-        self.assertNotIn('data-study-pick="zoologist"', html)
+        self.assertIn('data-study-pick="zoologist"', html)
         self.assertIn("Learn first", html)
         self.assertIn('class="card-hero-links no-print"', html)
         self.assertIn('class="card-try-next no-print"', html)
@@ -320,7 +320,7 @@ class FreshwaterFishHardStudyCardTests(unittest.TestCase):
         self.assertIn("Push further", hard_html)
         self.assertIn("Park Ranger", hard_html)
         self.assertIn("Junior Ranger", hard_html)
-        self.assertNotIn("Zoologist", hard_html)
+        self.assertIn("Zoologist", hard_html)
 
 
 if __name__ == "__main__":
