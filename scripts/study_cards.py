@@ -643,8 +643,8 @@ sun-open-shell observations. Do not redo JR or PR themes.
 Soften contested numbers. Treat IUCN / CITES letters as
 snapshots. Soften exact call counts. Do not invent photos.
 
-Facts for two-toed-sloth Junior Ranger + Park Ranger
-(easy + hard) are Wikipedia-backed:
+Facts for two-toed-sloth Junior Ranger + Park Ranger +
+Zoologist (easy + hard + zoologist) are Wikipedia-backed:
 https://en.wikipedia.org/wiki/Two-toed_sloth
 This is the group / genus Choloepus card (two-toed /
 two-fingered sloths), not a single species-only deck.
@@ -668,8 +668,17 @@ no shiver, upside-down hair growth, rare ground trips,
 swim surprise, and Least Concern as a snapshot. Soft
 taxonomy / digestion / fur ecosystem / IUCN-by-species
 OK. Do not redo JR themes. Soften contested numbers.
-Reserve Xenarthra / convergence for Zoologist. Do not
-invent photos.
+Zoologist (zoologist) is answer-light (empty teach) and
+deepens: Xenarthra with anteaters and armadillos, Pilosa /
+Folivora, Choloepus–Bradypus convergence, Choloepodidae
+family flux vs old Megalonychidae, leftover ground-sloth
+radiation, ~6–7 mya species split plus Andes split in
+Hoffmann’s (soft), neck-count exception to the mammal
+“rule of seven,” two-fingered naming vs three hind toes,
+head-first descent, and a broader menu than specialist
+three-toed leaf-browsers. Do not redo JR or PR themes.
+Soften contested numbers. Treat IUCN letters as snapshots.
+Do not invent photos.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
@@ -791,9 +800,8 @@ LEVEL_DISPLAY_NAMES = {
 # Sumatran tiger, western lowland gorilla, cheetah, red panda,
 # koala, chimpanzee, orangutan, giant panda, and
 # ring-tailed lemur, ostrich, warthog, shark, and
-# Asian small-clawed otter ship Junior Ranger +
-# Park Ranger + Zoologist. Two-toed sloth ships
-# Junior Ranger + Park Ranger (no Zoologist yet).
+# Asian small-clawed otter and two-toed sloth ship
+# Junior Ranger + Park Ranger + Zoologist.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -1071,14 +1079,14 @@ PUSH_FURTHER_ASIAN_SMALL_CLAWED_OTTER = (
     "Otters sit in the weasel family, Mustelidae. Which other zoo animal might share that bigger tree?",
 )
 TALK_ABOUT_TWO_TOED_SLOTH = (
-    "Two-toed sloths are two living kinds, not one. What would you compare at the zoo?",
-    "A leafy meal can take about a month to finish. Why might digestion move so slowly?",
-    "Grooved fur can host algae, moths, and beetles. What would a living coat be like?",
+    "Xenarthra is a family reunion with anteaters and armadillos. Who would you invite?",
+    "Two-toed and three-toed sloths look alike. Why did that look-alike trick fool us?",
+    "Most mammals have seven neck bones. Why might two-toed sloths break that “rule of seven”?",
 )
 PUSH_FURTHER_TWO_TOED_SLOTH = (
-    "The moth–algae story is better studied in three-toed sloths. Why is it softer here?",
-    "Least Concern is a snapshot, not “no worries.” Why do healthy forests still matter?",
-    "Two-toed and three-toed sloths look alike. What would you compare more carefully?",
+    "Living tree sloths are leftovers of huge ground sloths. How are the two different?",
+    "Hoffmann’s two-toed sloths are split by the Andes. How could mountains split a range?",
+    "“Two-toed” counts the front claws. How is that different from three-toed naming?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -10271,6 +10279,142 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Both Linnaeus’s and Hoffmann’s two-toed sloths are currently listed Least Concern. That letter is a snapshot and can change. Healthy forests still matter.",
+                    },
+                ],
+            },
+            "zoologist": {
+                # Answer-light: no Learn-first strip. Teach stays empty.
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "xenarthra-soft",
+                        "title": "Xenarthra family",
+                        "stem": "Which bigger mammal group do two-toed sloths belong with?",
+                        "choices": [
+                            "Xenarthra (“strange joints”) — with anteaters and armadillos",
+                            "They are cats, not mammals with extra back joints",
+                            "They are birds that only look furry",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia places two-toed sloths among xenarthran mammals. That bigger group also includes anteaters and armadillos. The name Xenarthra means “strange joints.”",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "pilosa-folivora-soft",
+                        "title": "Pilosa and Folivora",
+                        "stem": "How do scientists place two-toed sloths next to anteaters?",
+                        "choices": [
+                            "They sit with whales in the ocean order",
+                            "Order Pilosa (with anteaters); suborder Folivora (“leaf eaters”)",
+                            "They are insects that only look like mammals",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia puts two-toed sloths in order Pilosa with anteaters, and in the sloth suborder Folivora. Folivora is a name that means “leaf eaters.”",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "convergence-star-soft",
+                        "title": "Convergence star",
+                        "stem": "Two-toed (Choloepus) and three-toed (Bradypus) sloths look alike. Are they close cousins?",
+                        "choices": [
+                            "Yes — they are sister species from last year",
+                            "They are the same animal with two names",
+                            "No — they look alike but aren’t close cousins; a classic mammal case of convergent evolution",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia calls living tree sloths one of the most striking examples of convergent evolution among mammals. Two-toed (Choloepus) and three-toed (Bradypus) look alike but come from different sloth lines.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "family-flux-soft",
+                        "title": "Family flux",
+                        "stem": "Which sloth family do two-toed sloths sit in now?",
+                        "choices": [
+                            "Family Choloepodidae — molecular work ties them nearer extinct mylodontid ground sloths than the old Megalonychidae placement",
+                            "They sit in the cat family, Felidae",
+                            "Family names never change once a book is printed",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia now places two-toed sloths in family Choloepodidae. Older books put them in Megalonychidae. Newer molecular work ties them nearer extinct mylodontid ground sloths. Family names can move as evidence grows.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "ground-sloth-cousins-soft",
+                        "title": "Ground-sloth cousins",
+                        "stem": "What bigger sloth story are living tree sloths leftover from?",
+                        "choices": [
+                            "Only from living house cats",
+                            "A once-huge radiation of ground sloths (soft — most of those cousins are gone)",
+                            "Only from living songbirds",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says many ground sloths once lived across the Americas. Living tree sloths are leftover tree-living members of that bigger sloth story. Exact family trees stay a little soft.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "species-split-soft",
+                        "title": "Species split",
+                        "stem": "About how long ago did Linnaeus’s and Hoffmann’s two-toed sloths split?",
+                        "choices": [
+                            "They never split — they are one animal",
+                            "Last week at the zoo",
+                            "Roughly about 6–7 million years ago (soft); Hoffmann’s ranges are also split by the Andes",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia cites molecular work that the two living kinds split about 6 to 7 million years ago — that date stays soft. Hoffmann’s two-toed sloths also have ranges split by the Andes.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "neck-count-exception-soft",
+                        "title": "Neck-count exception",
+                        "stem": "How do two-toed sloth necks break the mammal “rule of seven”?",
+                        "choices": [
+                            "Choloepus often has fewer than seven neck vertebrae (the count can vary); three-toed sloths often go the other way",
+                            "They have no neck bones at all",
+                            "Every mammal must have the same neck count, with no exceptions",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says two-toed sloths can have as few as five neck vertebrae, unlike the usual mammal seven. Counts vary. Three-toed sloths often have more than seven. Manatees are another rare exception.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "two-fingered-naming-soft",
+                        "title": "Two-fingered naming",
+                        "stem": "What does the name “two-toed sloth” actually count?",
+                        "choices": [
+                            "Toes on the tail only",
+                            "Two big front claws; the hind feet still have three",
+                            "They have no feet at all",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia notes they are sometimes called two-fingered sloths. “Two-toed” means two digits on each front foot. The hind feet still have three toes, like other sloths.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "head-first-down-soft",
+                        "title": "Head-first down",
+                        "stem": "How do two-toed sloths often come down a tree compared with three-toed sloths?",
+                        "choices": [
+                            "They only fly down",
+                            "They never leave a branch",
+                            "They prefer to descend head-first more than three-toed sloths",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says two-toed sloths differ from three-toed sloths in climbing behavior, preferring to descend head first.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "broader-menu-soft",
+                        "title": "Broader menu",
+                        "stem": "How does a two-toed sloth’s menu compare with a specialist three-toed leaf-browser?",
+                        "choices": [
+                            "More varied — fruit, shoots, and occasional extras as well as leaves (soft)",
+                            "Only pizza from the gift shop",
+                            "Only ice cream",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says two-toed sloths eat leaves plus other plant parts such as shoots and fruit, and sometimes extras. Three-toed sloths are more specialist leaf-eaters. Exact snack lists stay a little soft.",
                     },
                 ],
             },

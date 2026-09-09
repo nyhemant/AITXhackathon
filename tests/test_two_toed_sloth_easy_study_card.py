@@ -106,13 +106,12 @@ BRITTLE = (
     "mph",
     "km/h",
 )
-# Talk / push are Park Ranger prompts (two kinds, digestion, living fur).
+# Talk / push are Zoologist prompts (Xenarthra reunion, convergence, neck rule).
 PAGE_BRITTLE = (
     "IUCN",
     "Vulnerable",
     "Endangered",
     "Critically",
-    "Xenarthra",
     "Choloepus",
     "didactylus",
     "hoffmanni",
@@ -170,9 +169,9 @@ class TwoToedSlothEasyStudyCardTests(unittest.TestCase):
                 "two-toed-sloth",
             ),
         )
-        self.assertEqual(shipped_levels_for("two-toed-sloth"), ("easy", "hard"))
+        self.assertEqual(shipped_levels_for("two-toed-sloth"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("two-toed-sloth", "hard"))
-        self.assertIsNone(study_deck_for("two-toed-sloth", "zoologist"))
+        self.assertIsNotNone(study_deck_for("two-toed-sloth", "zoologist"))
         self.assertIsNone(study_deck_for("sea-otter"))
         deck = study_deck_for("two-toed-sloth")
         self.assertIsNotNone(deck)
@@ -272,11 +271,11 @@ class TwoToedSlothEasyStudyCardTests(unittest.TestCase):
         visible = _text(html)
         self.assertIn("Junior Ranger", visible)
         self.assertIn("Park Ranger", visible)
-        self.assertNotIn("Zoologist", visible)
+        self.assertIn("Zoologist", visible)
         self.assertIn('class="study-level-picker"', html)
         self.assertIn('data-study-pick="easy"', html)
         self.assertIn('data-study-pick="hard"', html)
-        self.assertNotIn('data-study-pick="zoologist"', html)
+        self.assertIn('data-study-pick="zoologist"', html)
         self.assertNotIn('class="study-level-badge"', html)
         self.assertEqual(html.count('role="group"'), 2)
         self.assertIn("study-level-picker-bottom", html)
@@ -342,11 +341,11 @@ class TwoToedSlothEasyStudyCardTests(unittest.TestCase):
         visible = _text(main)
         self.assertIn("Junior Ranger", visible)
         self.assertIn("Park Ranger", visible)
-        self.assertNotIn("Zoologist", visible)
+        self.assertIn("Zoologist", visible)
         self.assertIn('class="study-level-picker"', main)
         self.assertIn('data-study-pick="easy"', main)
         self.assertIn('data-study-pick="hard"', main)
-        self.assertNotIn('data-study-pick="zoologist"', main)
+        self.assertIn('data-study-pick="zoologist"', main)
         self.assertNotIn('class="study-level-badge"', main)
         self.assertIn("Learn first", main)
         self.assertIn(">Quiz</h2>", main)
@@ -426,9 +425,10 @@ class TwoToedSlothEasyStudyCardTests(unittest.TestCase):
         self.assertIn("asian-small-clawed-otter", payload)
         sloth = payload["two-toed-sloth"]
         self.assertEqual(sloth["id"], "two-toed-sloth")
-        self.assertEqual(set(sloth["levels"]), {"easy", "hard"})
+        self.assertEqual(set(sloth["levels"]), {"easy", "hard", "zoologist"})
         self.assertEqual(sloth["levels"]["hard"]["teach"], [])
-        self.assertNotIn("zoologist", sloth["levels"])
+        self.assertEqual(sloth["levels"]["zoologist"]["teach"], [])
+        self.assertIn("zoologist", sloth["levels"])
         easy = sloth["levels"]["easy"]
         self.assertEqual(len(easy["teach"]), 5)
         self.assertEqual(len(easy["questions"]), STUDY_SLOTS)
@@ -461,7 +461,7 @@ class TwoToedSlothEasyStudyCardTests(unittest.TestCase):
         visible = _text(_main(sloth_html))
         self.assertIn("Junior Ranger", visible)
         self.assertIn("Park Ranger", visible)
-        self.assertNotIn("Zoologist", visible)
+        self.assertIn("Zoologist", visible)
         otter_html = OTTER.read_text(encoding="utf-8")
         self.assertIn("Junior Ranger", _text(_main(otter_html)))
         self.assertIn("Park Ranger", _text(_main(otter_html)))
