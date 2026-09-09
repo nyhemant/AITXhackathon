@@ -10276,14 +10276,14 @@
     "source": "https://en.wikipedia.org/wiki/Sea_otter",
     "source_note": "Facts from Wikipedia, Sea otter.",
     "talk_about": [
-      "Sea otters have little blubber. Why does that change how they stay warm?",
-      "Eating sea urchins can protect kelp. Why might that make otters a keystone helper?",
-      "The fur trade almost wiped them out. What helped this near-miss rebound?"
+      "Sea otters sit in Enhydra, not Aonyx. Why does that genus split matter?",
+      "Sea otters have three subspecies. Why might ranges and traits differ?",
+      "Otters cut urchins, then kelp grows. Why is that called a cascade?"
     ],
     "push_further": [
-      "An urchin barren is a rocky floor with almost no kelp. How could that happen?",
-      "Oiled fur cannot hold the warm air layer. Why is oil especially bad?",
-      "Endangered is a snapshot letter. Why can recovery still look uneven?"
+      "Rounded crushing teeth are called bunodont. What food would those help?",
+      "Sea otters are newcomers to the sea. Why compare them with whales and seals?",
+      "One snapshot letter covers many coasts. Why might some regions still struggle?"
     ],
     "levels": {
       "easy": {
@@ -10559,6 +10559,141 @@
             ],
             "correct": "A",
             "why": "Wikipedia says they can walk on land with a clumsy, rolling gait. Flipper-like hind feet make them awkward ashore. The ocean is still home."
+          }
+        ]
+      },
+      "zoologist": {
+        "teach": [],
+        "questions": [
+          {
+            "slot": 1,
+            "id": "enhydra-only-soft",
+            "title": "Enhydra only",
+            "stem": "Which living otter is the only species in the genus Enhydra?",
+            "choices": [
+              "The sea otter (Enhydra lutris) — the only living Enhydra, not Aonyx or Lutra",
+              "Every otter worldwide shares the genus Aonyx",
+              "Sea otters and river otters are the same Lutra species"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says the sea otter is the only living member of the genus Enhydra (E. lutris). Asian small-clawed otters sit in Aonyx, and Eurasian river otters sit in Lutra. Different genera."
+          },
+          {
+            "slot": 2,
+            "id": "lutrinae-marine-soft",
+            "title": "Marine otter",
+            "stem": "How does a sea otter fit among living otters (Lutrinae) in the weasel family?",
+            "choices": [
+              "It is a fish, not a mammal, so it is not an otter",
+              "It is still a Lutrinae otter in Mustelidae — the most fully marine-adapted living otter (soft)",
+              "It left the otter group and became a whale"
+            ],
+            "correct": "B",
+            "why": "Wikipedia places sea otters in Mustelidae with the other otter species (Lutrinae). They can live their whole lives in the sea — the most fully marine-adapted living otter. We stay with “most fully,” not a locked score."
+          },
+          {
+            "slot": 3,
+            "id": "three-subspecies-soft",
+            "title": "Three subspecies",
+            "stem": "How many living sea otter subspecies do scientists usually name?",
+            "choices": [
+              "Only one worldwide kind with no range differences",
+              "Twenty subspecies that all live in the same pond",
+              "Three — Asian (lutris), northern (kenyoni), and southern (nereis); ranges and traits differ (soft)"
+            ],
+            "correct": "C",
+            "why": "Wikipedia names three subspecies: Asian E. l. lutris, northern E. l. kenyoni, and southern E. l. nereis. Their ranges and some traits differ. Counts and range edges can shift, so we stay soft."
+          },
+          {
+            "slot": 4,
+            "id": "bunodont-teeth-soft",
+            "title": "Crushing teeth",
+            "stem": "How are adult sea otter cheek teeth built?",
+            "choices": [
+              "Flattened, rounded (bunodont) crushing cusps for hard-shelled prey — a bunodont otter lineage (soft)",
+              "Super-sharp slicing blades only for cutting grass",
+              "No teeth at all — they swallow shells whole forever"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says adult molars are flattened and rounded for crushing, not cutting. That bunodont shape helps smash hard-shelled prey. We keep the lineage note soft."
+          },
+          {
+            "slot": 5,
+            "id": "newcomer-to-sea-soft",
+            "title": "Newcomer to sea",
+            "stem": "How “old” is the sea otter’s marine life compared with whales and seals?",
+            "choices": [
+              "Sea otters entered the ocean long before any whale",
+              "Their marine lifestyle is relatively recent next to whales and seals (soft deep-time contrast)",
+              "Sea otters have always been desert lizards"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says whales, manatees, and seals entered the water tens of millions of years ago. The sea otter is a relative newcomer to a marine life. Exact ages stay soft."
+          },
+          {
+            "slot": 6,
+            "id": "delayed-implantation-soft",
+            "title": "Pause first",
+            "stem": "What can happen after sea otters mate, before the pup starts growing?",
+            "choices": [
+              "The pup is born the same afternoon every time",
+              "The embryo never pauses and the total span never changes",
+              "The embryo can pause (delayed implantation); the total gestation span varies (soft)"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says sea otters can use delayed implantation. The embryo can pause, so the whole gestation span varies. We do not lock the months."
+          },
+          {
+            "slot": 7,
+            "id": "usually-one-pup-soft",
+            "title": "Usually one",
+            "stem": "How many pups does a sea otter mom usually raise at once?",
+            "choices": [
+              "Typically a single pup; twins are rare and hard to raise",
+              "A dozen pups every week",
+              "Twins are the usual litter, and both always thrive"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says birth typically produces a single pup. Twins are rare, and usually only one survives. Raising two at sea is hard."
+          },
+          {
+            "slot": 8,
+            "id": "trophic-cascade-soft",
+            "title": "Kelp cascade",
+            "stem": "What classic cascade can sea otters start in a nearshore community?",
+            "choices": [
+              "Otters plant kelp seeds on the moon, so space gardens grow",
+              "Otter → fewer urchins → more kelp → a richer nearshore community (classic cascade)",
+              "Otters eat all the kelp first, so nothing else can live there"
+            ],
+            "correct": "B",
+            "why": "Wikipedia treats this as a classic trophic cascade. Otters eat urchins, kelp can grow, and the nearshore community gets richer. That is more than “otters help kelp” — the whole chain."
+          },
+          {
+            "slot": 9,
+            "id": "status-nuance-soft",
+            "title": "Status nuance",
+            "stem": "Does the global Endangered letter tell the same story on every sea otter coast?",
+            "choices": [
+              "Yes — every coast is fully recovered forever",
+              "Yes — the letter means they are extinct worldwide",
+              "Global EN is a snapshot; rebound is real, but some regions (parts of the Aleutians and California) still struggle"
+            ],
+            "correct": "C",
+            "why": "Wikipedia lists the species Endangered as a snapshot. Rebound is real in many places, but some regions — including parts of the Aleutians and California — still struggle. One letter does not tell every coast’s story."
+          },
+          {
+            "slot": 10,
+            "id": "birth-in-water-soft",
+            "title": "Born at sea",
+            "stem": "Where can sea otters give birth, compared with seals and sea lions?",
+            "choices": [
+              "They can give birth in the water — more fully aquatic than pinnipeds that must haul out to birth",
+              "They must climb onto ice like every seal to have a pup",
+              "They only give birth in desert caves far from the sea"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says birth usually takes place in the water. Seals and sea lions (pinnipeds) must haul out on land or ice to give birth. In that way, sea otters are more fully aquatic."
           }
         ]
       }
