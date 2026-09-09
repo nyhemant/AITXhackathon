@@ -1,4 +1,4 @@
-"""Sea otter Easy study-card: Junior Ranger teach + 10 MCQs (first deck)."""
+"""Sea otter Easy study-card: Junior Ranger teach + 10 MCQs (Park Ranger is a sibling level)."""
 
 from __future__ import annotations
 
@@ -107,7 +107,19 @@ BRITTLE = (
     "mph",
     "km/h",
 )
-PAGE_BRITTLE = BRITTLE
+# Talk / push are Park Ranger prompts (no blubber, keystone/kelp,
+# fur-trade near-miss, urchin barrens, oil, Endangered snapshot).
+PAGE_BRITTLE = (
+    "Vulnerable",
+    "Critically",
+    "Least Concern",
+    "CITES",
+    "Enhydra",
+    "kg",
+    "cm",
+    "mph",
+    "km/h",
+)
 RESERVED = (
     "IUCN",
     "Endangered",
@@ -127,7 +139,7 @@ def _main(html: str) -> str:
 
 
 class SeaOtterEasyStudyCardTests(unittest.TestCase):
-    def test_deck_is_junior_ranger_only(self):
+    def test_deck_is_junior_ranger(self):
         self.assertIn("sea-otter", study_card_ids())
         self.assertNotIn("jellyfish", study_card_ids())
         self.assertEqual(
@@ -160,8 +172,8 @@ class SeaOtterEasyStudyCardTests(unittest.TestCase):
                 "sea-otter",
             ),
         )
-        self.assertEqual(shipped_levels_for("sea-otter"), ("easy",))
-        self.assertIsNone(study_deck_for("sea-otter", "hard"))
+        self.assertEqual(shipped_levels_for("sea-otter"), ("easy", "hard"))
+        self.assertIsNotNone(study_deck_for("sea-otter", "hard"))
         self.assertIsNone(study_deck_for("sea-otter", "zoologist"))
         self.assertIsNone(study_deck_for("jellyfish"))
         deck = study_deck_for("sea-otter")
@@ -258,13 +270,15 @@ class SeaOtterEasyStudyCardTests(unittest.TestCase):
             self.assertNotIn(phrase, html)
         visible = _text(html)
         self.assertIn("Junior Ranger", visible)
-        self.assertNotIn("Park Ranger", visible)
+        self.assertIn("Park Ranger", visible)
         self.assertNotIn("Zoologist", visible)
-        self.assertIn('class="study-level-badge"', html)
-        self.assertNotIn('class="study-level-picker"', html)
-        self.assertNotIn('data-study-pick="hard"', html)
+        self.assertIn('class="study-level-picker"', html)
+        self.assertIn('data-study-pick="easy"', html)
+        self.assertIn('data-study-pick="hard"', html)
         self.assertNotIn('data-study-pick="zoologist"', html)
-        self.assertNotIn("study-level-picker-bottom", html)
+        self.assertNotIn('class="study-level-badge"', html)
+        self.assertEqual(html.count('role="group"'), 2)
+        self.assertIn("study-level-picker-bottom", html)
         for badge in PLAIN_LEVEL_LABELS + AGE_BADGES:
             self.assertNotIn(badge, visible)
         for phrase in PAGE_BRITTLE:
@@ -301,7 +315,7 @@ class SeaOtterEasyStudyCardTests(unittest.TestCase):
         self.assertIn("card-page-photo", main)
         self.assertIn("/field-pack/photos/sea-otter.jpg", main)
         self.assertIn('class="card-try-next no-print"', main)
-        self.assertNotIn("study-level-picker-bottom", main)
+        self.assertIn("study-level-picker-bottom", main)
         self.assertNotIn("card-print-note", main)
         self.assertIn("study-card.js?v=10", html)
         self.assertIn("study-card.css?v=10", html)
@@ -325,12 +339,13 @@ class SeaOtterEasyStudyCardTests(unittest.TestCase):
         self.assertLess(main.find("study-explore"), main.find("card-try-next"))
         visible = _text(main)
         self.assertIn("Junior Ranger", visible)
-        self.assertNotIn("Park Ranger", visible)
+        self.assertIn("Park Ranger", visible)
         self.assertNotIn("Zoologist", visible)
-        self.assertIn('class="study-level-badge"', main)
-        self.assertNotIn('class="study-level-picker"', main)
-        self.assertNotIn('data-study-pick="hard"', main)
+        self.assertIn('class="study-level-picker"', main)
+        self.assertIn('data-study-pick="easy"', main)
+        self.assertIn('data-study-pick="hard"', main)
         self.assertNotIn('data-study-pick="zoologist"', main)
+        self.assertNotIn('class="study-level-badge"', main)
         self.assertIn("Learn first", main)
         self.assertIn(">Quiz</h2>", main)
         self.assertEqual(main.count("data-study-correct"), 2)
@@ -405,14 +420,16 @@ class SeaOtterEasyStudyCardTests(unittest.TestCase):
         self.assertIn("is-wrong-pick", study_js)
         self.assertIn("FPStudyLevelName", study_js + STUDY_DATA_JS.read_text(encoding="utf-8"))
 
-    def test_artifacts_include_sea_otter_easy_only(self):
+    def test_artifacts_include_sea_otter_easy_and_hard(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
         self.assertIn("sea-otter", payload)
         self.assertNotIn("jellyfish", payload)
         self.assertIn("asian-small-clawed-otter", payload)
         otter = payload["sea-otter"]
         self.assertEqual(otter["id"], "sea-otter")
-        self.assertEqual(set(otter["levels"]), {"easy"})
+        self.assertEqual(set(otter["levels"]), {"easy", "hard"})
+        self.assertEqual(otter["levels"]["hard"]["teach"], [])
+        self.assertNotIn("zoologist", otter["levels"])
         easy = otter["levels"]["easy"]
         self.assertEqual(len(easy["teach"]), 5)
         self.assertEqual(len(easy["questions"]), STUDY_SLOTS)
@@ -444,7 +461,7 @@ class SeaOtterEasyStudyCardTests(unittest.TestCase):
         otter_html = OTTER.read_text(encoding="utf-8")
         visible = _text(_main(otter_html))
         self.assertIn("Junior Ranger", visible)
-        self.assertNotIn("Park Ranger", visible)
+        self.assertIn("Park Ranger", visible)
         self.assertNotIn("Zoologist", visible)
         asian_html = ASIAN.read_text(encoding="utf-8")
         self.assertIn("Junior Ranger", _text(_main(asian_html)))

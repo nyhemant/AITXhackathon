@@ -768,10 +768,19 @@ while floating. Soft care: healthy kelp forests and clean
 coasts help sea otters and their food (no EN / CITES /
 fur-trade dump on JR). Myth: sea otters are ocean
 specialists — different from river otters and Asian
-small-clawed otters. Reserve for later (Park Ranger /
-Zoologist): denser physiology (no blubber details),
-EN/CITES, Enhydra, keystone numbers, and fur-trade history.
-Do not invent photos.
+small-clawed otters. Park Ranger (hard) is answer-light
+(empty teach) and deepens: little blubber / dense fur plus
+trapped air, grooming and oiled-fur risk, keystone urchin
+→ kelp (urchin barrens), forearm skin-fold pockets, high
+metabolism / big daily appetite (soften %), heaviest living
+mustelid still a smaller marine mammal, fur-trade crash and
+later rebound, IUCN Endangered as a snapshot, CITES
+(species mostly Appendix II; southern subspecies Appendix
+I), and clumsy land gait / ocean home. Soft no-blubber
+physiology / EN/CITES / keystone / fur-trade OK. Soften
+contested numbers. Keep kid-friendly. Do not redo JR
+themes. Reserve for later (Zoologist): Enhydra taxonomy
+and denser counts. Do not invent photos.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
@@ -898,8 +907,8 @@ LEVEL_DISPLAY_NAMES = {
 # ring-tailed lemur, ostrich, warthog, shark, and
 # Asian small-clawed otter, two-toed sloth, freshwater
 # fish, and polar bear ship Junior Ranger + Park Ranger +
-# Zoologist. Sea otter ships Junior Ranger only (no Park
-# Ranger or Zoologist yet).
+# Zoologist. Sea otter ships Junior Ranger + Park Ranger
+# (no Zoologist yet).
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -1213,14 +1222,14 @@ PUSH_FURTHER_POLAR_BEAR = (
     "A polar bear skull is built more for cutting meat. What clues would you look for?",
 )
 TALK_ABOUT_SEA_OTTER = (
-    "Sea otters live in the ocean. How is that different from a wetland otter?",
-    "They float on their backs to rest and eat. What would you put on that belly table?",
-    "They crack hard shells with rocks. Which tool would you watch at the zoo?",
+    "Sea otters have little blubber. Why does that change how they stay warm?",
+    "Eating sea urchins can protect kelp. Why might that make otters a keystone helper?",
+    "The fur trade almost wiped them out. What helped this near-miss rebound?",
 )
 PUSH_FURTHER_SEA_OTTER = (
-    "Their fur is the densest of any animal. Why might that fur matter so much?",
-    "They wrap in kelp so they don’t drift. How is kelp like a seatbelt?",
-    "Raft pals may hold paws so they stay together. Why might that help?",
+    "An urchin barren is a rocky floor with almost no kelp. How could that happen?",
+    "Oiled fur cannot hold the warm air layer. Why is oil especially bad?",
+    "Endangered is a snapshot letter. Why can recovery still look uneven?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -11565,6 +11574,146 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia treats the sea otter as a marine specialist of the North Pacific. River otters and Asian small-clawed otters are different wetland or river otters.",
+                    },
+                ],
+            },
+            "hard": {
+                # Answer-light: Park Ranger has no Learn-first strip.
+                # Facts from Wikipedia, Sea otter. Soft no-blubber
+                # physiology / EN / CITES / keystone / fur-trade OK.
+                # Soften contested numbers. Kid-friendly. Do not redo
+                # JR themes.
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "fur-not-blubber-soft",
+                        "title": "Fur not blubber",
+                        "stem": "Unlike most marine mammals, how do sea otters stay warm?",
+                        "choices": [
+                            "They have little blubber — dense fur plus trapped air does the insulating",
+                            "They wear a thick blubber coat like most whales",
+                            "They stay warm only by sitting next to a campfire",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says sea otters have little or no blubber. Dense fur plus a trapped air layer keeps them warm. That is different from most marine mammals.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "groom-or-chill-soft",
+                        "title": "Groom or chill",
+                        "stem": "Why does grooming matter so much for a sea otter?",
+                        "choices": [
+                            "They groom only to look fancy for photos",
+                            "Dirty or oiled fur loses its warm air layer — grooming (and oil spills) matter a lot",
+                            "They never need clean fur because they have thick blubber",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says the warm air layer works only if the fur stays clean. Dirty or oiled fur can let the cold in. Grooming — and staying away from oil — matter a lot.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "keystone-soft",
+                        "title": "Keystone",
+                        "stem": "How can sea otters help protect kelp forests?",
+                        "choices": [
+                            "They plant kelp seeds on the beach every morning",
+                            "They scare kelp away so urchins can take over",
+                            "By eating sea urchins they help protect kelp forests from “urchin barrens”",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia calls them a keystone helper in much of their range. Eating sea urchins helps keep kelp from being chewed down into bare “urchin barrens.”",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "armpit-pockets-soft",
+                        "title": "Armpit pockets",
+                        "stem": "What do loose skin folds under a sea otter’s forearms do?",
+                        "choices": [
+                            "They stash rocks and prey while the otter dives",
+                            "They are backpacks for carrying zoo maps",
+                            "They are wings for flying over the waves",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says each foreleg has a loose skin pouch. Otters tuck rocks and food there while they dive, then bring the stash to the surface.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "big-appetite-soft",
+                        "title": "Big appetite",
+                        "stem": "Why do sea otters eat so much each day?",
+                        "choices": [
+                            "They eat only once a year and then sleep",
+                            "A high metabolism means they eat a large share of their body weight each day",
+                            "They never get hungry because they have thick blubber",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says their metabolism runs high to stay warm in cold water. They eat a large share of their body weight each day. We keep the exact percent soft.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "marine-weasel-soft",
+                        "title": "Marine weasel",
+                        "stem": "How does a sea otter fit in the weasel family?",
+                        "choices": [
+                            "They are the tiniest insect, not a mammal",
+                            "They are the largest whale that ever lived",
+                            "Heaviest living mustelid (weasel family) — still among the smaller marine mammals",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says they are the heaviest living member of the weasel family (mustelids). Even so, they are still among the smaller marine mammals.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "fur-trade-crash-soft",
+                        "title": "Fur-trade crash",
+                        "stem": "What happened to sea otters during the historic fur trade?",
+                        "choices": [
+                            "Hunting nearly wiped them out; later bans and reintroductions helped a rebound",
+                            "The fur trade made them the most common animal on Earth",
+                            "They were never hunted and always filled every coast",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says historic fur hunting nearly wiped them out. Later hunting bans, care, and reintroductions helped numbers rebound — though not evenly everywhere.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "en-snapshot-soft",
+                        "title": "EN snapshot",
+                        "stem": "How should we read the IUCN letter for sea otters?",
+                        "choices": [
+                            "Extinct worldwide, with no living animals",
+                            "IUCN lists them Endangered — the letter is a snapshot; recovery is real but uneven",
+                            "The most common animal in every ocean",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says IUCN lists the sea otter Endangered. That letter is a snapshot and can change. Recovery is real in some places and still uneven in others.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "cites-soft",
+                        "title": "CITES",
+                        "stem": "What do international CITES trade rules say for sea otters?",
+                        "choices": [
+                            "CITES only covers house plants",
+                            "Anyone may ship them with no rules at all",
+                            "Species mostly Appendix II; the southern subspecies is Appendix I (soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says most sea otters sit on CITES Appendix II. The southern subspecies is Appendix I — a tighter trade rule. We keep the split soft.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "land-clumsy-soft",
+                        "title": "Land clumsy",
+                        "stem": "How do sea otters move when they come onto land?",
+                        "choices": [
+                            "They can walk, but flipper-like hind feet make them awkward ashore — the ocean is home",
+                            "They sprint faster on land than a cheetah",
+                            "They cannot leave the water even for a second",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says they can walk on land with a clumsy, rolling gait. Flipper-like hind feet make them awkward ashore. The ocean is still home.",
                     },
                 ],
             },
