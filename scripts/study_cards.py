@@ -607,8 +607,8 @@ helps, but many still need forward motion and fin lift).
 Do not redo JR or PR themes. Soften contested numbers.
 Treat status letters as snapshots.
 
-Facts for asian-small-clawed-otter Junior Ranger (easy) are
-Wikipedia-backed:
+Facts for asian-small-clawed-otter Junior Ranger (easy) +
+Park Ranger (hard) are Wikipedia-backed:
 https://en.wikipedia.org/wiki/Asian_small-clawed_otter
 Also the Otter page as needed. JR stays kid-simple “Asian
 small-clawed otter.” Smallest living otter. Short claws that
@@ -620,10 +620,16 @@ their paws. They live in pairs and family groups; a baby is
 a pup. Chatty: squeaks, chirps, and yelps. Dense fur helps
 them stay warm in water. Webbed feet help them swim. Myth:
 an otter is not a beaver (meat-eater vs plants/wood). Soft
-care only — no IUCN Vulnerable letter on JR. Reserve for
-Park Ranger / Zoologist: VU status, CITES I, pet trade, and
-taxonomy flux (Aonyx / Amblonyx / Lutra). Soften contested
-numbers and exact call counts. Do not invent photos.
+care only — no IUCN Vulnerable letter on JR. Park Ranger is
+answer-light (empty teach) and deepens: whisker tools in
+murky water, feeling under stones, dusk and night near people,
+spraint posts, sibling helpers, Vulnerable snapshot, CITES
+Appendix I since 2019 (soft), not pets / illegal pet trade,
+sea-otter hand-hold myth, and wetland / mangrove / clean-water
+pressure. Do not redo JR themes. Soften contested numbers.
+Treat IUCN / CITES letters as snapshots. Densest taxonomy flux
+(Aonyx / Amblonyx / Lutra) is reserved for Zoologist. Soften
+exact call counts. Do not invent photos.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
@@ -745,7 +751,7 @@ LEVEL_DISPLAY_NAMES = {
 # koala, chimpanzee, orangutan, giant panda, and
 # ring-tailed lemur, ostrich, warthog, and shark ship
 # Junior Ranger + Park Ranger + Zoologist. Asian
-# small-clawed otter ships Junior Ranger only.
+# small-clawed otter ships Junior Ranger + Park Ranger.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -1011,14 +1017,14 @@ PUSH_FURTHER_SHARK = (
     "“Threatened sharks” is not one story. Why might each kind need its own tale?",
 )
 TALK_ABOUT_ASIAN_SMALL_CLAWED_OTTER = (
-    "This is the world’s smallest otter. What else looks tiny-but-busy at the zoo?",
-    "Short claws help them hunt in mud. What would you watch their paws do?",
-    "An otter is not a beaver. What would you tell a friend is different?",
+    "Long whiskers help in murky water. What else could they feel that their eyes cannot see?",
+    "Wild otters are not pets. Why might a house tank be the wrong home?",
+    "Vulnerable is a snapshot letter, not forever. What could help these otters keep their wet homes?",
 )
 PUSH_FURTHER_ASIAN_SMALL_CLAWED_OTTER = (
-    "Rice paddies can be otter homes. Why might a wet farm field work?",
-    "Whiskers help in murky water. How could they find a crab they cannot see?",
+    "Spraint posts can work like a family bulletin board. What message might a family leave?",
     "What’s different about sea otters from these small-clawed otters?",
+    "CITES letters say how tightly trade is limited. How would you explain that in plain words?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -9640,6 +9646,146 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia treats otters as meat-eating weasel-family animals. Beavers are rodents that eat plants and chew wood. They are not the same animal, and neither is a fish.",
+                    },
+                ],
+            },
+            "hard": {
+                # Answer-light: Park Ranger has no Learn-first strip.
+                # Facts from Wikipedia, Asian small-clawed otter.
+                # Soft VU / CITES / pet-trade OK. Soften contested
+                # numbers. Densest taxonomy flux stays Zoologist.
+                # Do not redo JR themes.
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "whisker-tools-soft",
+                        "title": "Whisker tools",
+                        "stem": "How do long whiskers help Asian small-clawed otters hunt?",
+                        "choices": [
+                            "They help sense prey and objects in murky water",
+                            "They are only for looking fancy in photos",
+                            "They work like extra legs for walking on land",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia and otter pages say stiff whiskers (vibrissae) help detect prey and objects underwater. Long whiskers are feelers for murky water — not decoration.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "feel-under-stones",
+                        "title": "Feel under stones",
+                        "stem": "How do their paws help them find food?",
+                        "choices": [
+                            "They only clap to call waiters",
+                            "Dexterous paws feel for crabs and shellfish under mud and stones",
+                            "They never use their paws for hunting",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia and field notes say they use sensitive, clever paws to feel for crabs and other snacks under mud and stones. Those handy paws are hunting tools.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "dusk-night-soft",
+                        "title": "Dusk and night",
+                        "stem": "When are they often more active if they live near people?",
+                        "choices": [
+                            "Only at high noon in the town square",
+                            "Never after the sun goes down",
+                            "Often more around dusk and night when living near people",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia-backed reviews say they are often more active around dusk and night where they live near people. Daytime timing can differ in quieter places.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "spraint-posts-soft",
+                        "title": "Spraint posts",
+                        "stem": "Why do family groups smear droppings at special spots?",
+                        "choices": [
+                            "Spraint posts share messages with the family, like a bulletin board",
+                            "They are hiding snacks for later",
+                            "They are trying to grow a garden",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says they smear spraint at latrine sites. That scent-sharing helps family members stay in touch and mark place — like a family bulletin board. Extra chemistry stays soft.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "sibling-helpers-soft",
+                        "title": "Sibling helpers",
+                        "stem": "Who may help raise younger otter pups?",
+                        "choices": [
+                            "Only zoo visitors",
+                            "Older siblings may help the parents raise younger pups",
+                            "Nobody ever helps a pup",
+                        ],
+                        "correct": "B",
+                        "why": "Family groups often include older brothers and sisters. Those older siblings may help the parents raise younger pups. Exact helper counts stay soft.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "vulnerable-snapshot",
+                        "title": "Vulnerable snapshot",
+                        "stem": "How should we read the IUCN letter for this otter?",
+                        "choices": [
+                            "Extinct worldwide, with no living animals",
+                            "The most common animal on every continent",
+                            "IUCN lists them Vulnerable — the letter is a snapshot, not forever",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia lists the Asian small-clawed otter as Vulnerable on the IUCN Red List. A status letter is a snapshot and can change when new counts arrive.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "cites-i-soft",
+                        "title": "CITES I",
+                        "stem": "How did international trade rules change for this otter in 2019?",
+                        "choices": [
+                            "Stronger international trade rules since 2019 (Appendix I)",
+                            "Trade rules vanished and anyone can ship them",
+                            "CITES only covers house plants",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says they moved to CITES Appendix I in 2019, which tightens international trade rules. Appendix I is a trade rule, not the same thing as an IUCN status letter.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "not-pets-soft",
+                        "title": "Not pets",
+                        "stem": "Why is keeping these otters as pets a problem?",
+                        "choices": [
+                            "Pets make wild wetlands healthier",
+                            "Illegal pet trade puts pressure on wild otters; they belong in wild homes and proper zoos",
+                            "Every home must keep one otter",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia and trade reports say illegal pet trade puts pressure on wild otters. They belong in wild homes and proper zoos — not as household pets.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "hand-hold-myth-soft",
+                        "title": "Hand-hold myth",
+                        "stem": "Do Asian small-clawed otters sleep by holding hands in the water like sea otters?",
+                        "choices": [
+                            "Yes — every otter species holds hands all night",
+                            "Yes — they cannot sleep any other way",
+                            "No — sleeping “hand-holding” is mainly a sea-otter rafting habit, not this wetland otter",
+                        ],
+                        "correct": "C",
+                        "why": "Sea otters may hold paws while rafting so they do not drift apart. Asian small-clawed otters are wetland family otters. The viral hand-hold picture is mainly a sea-otter habit.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "wetland-pressure-soft",
+                        "title": "Wetland pressure",
+                        "stem": "What is shrinking or getting polluted for these otters?",
+                        "choices": [
+                            "Wetlands, mangroves, and clean water",
+                            "Only desert sand dunes",
+                            "Only the open ocean",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says they are threatened by habitat loss and pollution. Wetlands, mangroves, and clean water are shrinking or getting dirty — the homes they need.",
                     },
                 ],
             },
