@@ -607,8 +607,9 @@ helps, but many still need forward motion and fin lift).
 Do not redo JR or PR themes. Soften contested numbers.
 Treat status letters as snapshots.
 
-Facts for asian-small-clawed-otter Junior Ranger (easy) +
-Park Ranger (hard) are Wikipedia-backed:
+Facts for asian-small-clawed-otter Junior Ranger + Park
+Ranger + Zoologist (easy + hard + zoologist) are
+Wikipedia-backed:
 https://en.wikipedia.org/wiki/Asian_small-clawed_otter
 Also the Otter page as needed. JR stays kid-simple “Asian
 small-clawed otter.” Smallest living otter. Short claws that
@@ -626,10 +627,21 @@ murky water, feeling under stones, dusk and night near people,
 spraint posts, sibling helpers, Vulnerable snapshot, CITES
 Appendix I since 2019 (soft), not pets / illegal pet trade,
 sea-otter hand-hold myth, and wetland / mangrove / clean-water
-pressure. Do not redo JR themes. Soften contested numbers.
-Treat IUCN / CITES letters as snapshots. Densest taxonomy flux
-(Aonyx / Amblonyx / Lutra) is reserved for Zoologist. Soften
-exact call counts. Do not invent photos.
+pressure. Zoologist is answer-light (empty teach) and
+deepens naming flux (often Aonyx cinereus; also Amblonyx
+cinereus / Lutra cinerea — names still move), a soft sister
+split with smooth-coated otters (Lutrogale; ~1.5 mya), a
+clawless-cousin clade with African clawless (Aonyx) and
+smooth-coated otters next to Lutra, crushing cheek teeth
+(missing upper premolars; four above), incomplete webbing
+to the last joint, a rare Singapore hybrid with
+smooth-coated otters (soft), Mustelidae / Lutrinae,
+bank holts with both parents gathering nest material,
+altricial pups (eyes closed; open around week five;
+paddle around three months — exact days vary), and captive
+sun-open-shell observations. Do not redo JR or PR themes.
+Soften contested numbers. Treat IUCN / CITES letters as
+snapshots. Soften exact call counts. Do not invent photos.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
@@ -749,9 +761,9 @@ LEVEL_DISPLAY_NAMES = {
 # Caribbean flamingo, Galápagos tortoise, zebra, Nile hippo,
 # Sumatran tiger, western lowland gorilla, cheetah, red panda,
 # koala, chimpanzee, orangutan, giant panda, and
-# ring-tailed lemur, ostrich, warthog, and shark ship
-# Junior Ranger + Park Ranger + Zoologist. Asian
-# small-clawed otter ships Junior Ranger + Park Ranger.
+# ring-tailed lemur, ostrich, warthog, shark, and
+# Asian small-clawed otter ship Junior Ranger +
+# Park Ranger + Zoologist.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -1017,14 +1029,14 @@ PUSH_FURTHER_SHARK = (
     "“Threatened sharks” is not one story. Why might each kind need its own tale?",
 )
 TALK_ABOUT_ASIAN_SMALL_CLAWED_OTTER = (
-    "Long whiskers help in murky water. What else could they feel that their eyes cannot see?",
-    "Wild otters are not pets. Why might a house tank be the wrong home?",
-    "Vulnerable is a snapshot letter, not forever. What could help these otters keep their wet homes?",
+    "This otter’s scientific name still moves. Why might scientists keep shifting it?",
+    "Crushing teeth crack shells. How is that different from a fish-grabbing otter?",
+    "A holt is a den in the bank. Why might both parents gather nest stuff first?",
 )
 PUSH_FURTHER_ASIAN_SMALL_CLAWED_OTTER = (
-    "Spraint posts can work like a family bulletin board. What message might a family leave?",
-    "What’s different about sea otters from these small-clawed otters?",
-    "CITES letters say how tightly trade is limited. How would you explain that in plain words?",
+    "Sister species sit next door on a family tree. How would you draw this otter and a smooth-coated otter?",
+    "Rare mixed otter families showed up in Singapore. What would you ask a keeper about that soft story?",
+    "Otters sit in the weasel family, Mustelidae. Which other zoo animal might share that bigger tree?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -9786,6 +9798,145 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia says they are threatened by habitat loss and pollution. Wetlands, mangroves, and clean water are shrinking or getting dirty — the homes they need.",
+                    },
+                ],
+            },
+            "zoologist": {
+                # Answer-light: Zoologist has no Learn-first strip.
+                # Facts from Wikipedia, Asian small-clawed otter.
+                # Soften contested dates, hybrid counts, and pup days.
+                # Do not redo JR or PR themes.
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "naming-flux-soft",
+                        "title": "Naming flux",
+                        "stem": "What scientific name do scientists often use for the Asian small-clawed otter?",
+                        "choices": [
+                            "Often Aonyx cinereus — older or other lists may say Amblonyx cinereus or Lutra cinerea, and names still move",
+                            "Only one locked name forever: Lutra lutra",
+                            "They have no scientific name at all",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia often uses Aonyx cinereus, and also lists Amblonyx cinereus and Lutra cinerea in older or other schemes. The name still moves — it is not a forever lock.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "sister-lutrogale-soft",
+                        "title": "Sister Lutrogale",
+                        "stem": "Which living otter sits closest on the family tree, according to molecular work?",
+                        "choices": [
+                            "Only house cats, with no otter cousins",
+                            "The smooth-coated otter (Lutrogale) — they split roughly about 1.5 million years ago (the date stays soft)",
+                            "Only penguins that live on ice",
+                        ],
+                        "correct": "B",
+                        "why": "Molecular work places this otter as a close sister to smooth-coated otters (Lutrogale). Wikipedia notes a split around 1.5 million years ago — that date stays soft, not a forever clock.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "clawless-cousins-soft",
+                        "title": "Clawless cousins",
+                        "stem": "Which other otters group with this species in a clade next to Lutra?",
+                        "choices": [
+                            "Only beavers that chew wood",
+                            "Only sea stars on a reef",
+                            "African clawless otters (Aonyx) and smooth-coated otters, in a clade next to Lutra",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia groups Asian small-clawed otters with African clawless otters (Aonyx) and smooth-coated otters. That cluster sits next to the Lutra river-otter group. Extra tree labels stay soft.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "crushing-teeth-soft",
+                        "title": "Crushing teeth",
+                        "stem": "How are this otter’s upper cheek teeth built?",
+                        "choices": [
+                            "Missing some upper premolars — only four cheek teeth above, built for crushing shells",
+                            "Extra-long fangs made only for grabbing live fish",
+                            "No teeth at all — they swallow rocks instead",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says they lack some upper premolars, so only four cheek teeth sit above. Those broad teeth are built for crushing shells — not a long fish-grabbing set.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "incomplete-webbing-soft",
+                        "title": "Incomplete webbing",
+                        "stem": "How far does the webbing go on their digits?",
+                        "choices": [
+                            "Solid flippers with no separate fingers",
+                            "Only to the last joint — more finger freedom for hand-foraging",
+                            "No webbing at all, so they never swim",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia and field notes say the digits are webbed only to the last joint. That incomplete webbing leaves more finger freedom for feeling and grabbing snacks by hand.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "hybrid-singapore-soft",
+                        "title": "Singapore hybrid",
+                        "stem": "What rare mixing has been documented in Singapore?",
+                        "choices": [
+                            "They turn into sea otters every winter",
+                            "They never meet any other otter kind",
+                            "Rare hybridization with smooth-coated otters (the story and counts stay soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia notes rare hybridization with smooth-coated otters in Singapore. It is an uncommon documented story — exact counts and later mixing stay soft.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "mustelidae-lutrinae",
+                        "title": "Mustelidae",
+                        "stem": "Where do otters sit in the mammal family tree?",
+                        "choices": [
+                            "Otters are Lutrinae — the otter group — inside Mustelidae, the weasel family",
+                            "They are rodents like beavers",
+                            "They are fish that grew fur",
+                        ],
+                        "correct": "A",
+                        "why": "Otters are the Lutrinae group inside Mustelidae — the weasel family and kin. They are not rodents, and they are not fish.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "holt-nest-soft",
+                        "title": "Holt nest",
+                        "stem": "What is a holt, and who gathers nest material?",
+                        "choices": [
+                            "A floating sea raft that never touches land",
+                            "A bank den; both parents gather nest material before pups arrive",
+                            "A bird nest high in a tall tree",
+                        ],
+                        "correct": "B",
+                        "why": "These otters use bank dens called holts. Wikipedia notes both parents gather nest material before pups arrive. Exact timing stays soft.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "altricial-pups-soft",
+                        "title": "Altricial pups",
+                        "stem": "How do newborn pups start life?",
+                        "choices": [
+                            "They run and hunt crabs the day they are born",
+                            "They hatch from eggs on the beach",
+                            "Born with eyes closed; eyes open around week five; they paddle with mom around three months (exact days vary)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says pups are born with closed eyes that open in the fifth week. They paddle in shallow water with mom around three months. Exact days vary.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "sun-open-shells-soft",
+                        "title": "Sun-open shells",
+                        "stem": "What have keepers seen captive otters do with shellfish?",
+                        "choices": [
+                            "Leave shellfish in the sun so heat helps open them",
+                            "Paint the shells for art class",
+                            "Plant them like seeds in a garden",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia records captive observations: otters left shellfish in the sun so heat helped the shells open. That is a keeper-seen trick, not a claim about every wild meal.",
                     },
                 ],
             },
