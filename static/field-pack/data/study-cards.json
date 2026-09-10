@@ -12416,14 +12416,14 @@
     "source": "https://en.wikipedia.org/wiki/Clownfish",
     "source_note": "Facts from Wikipedia, Clownfish.",
     "talk_about": [
-      "Clownfish live among sea-anemone tentacles. Why might that partnership help both?",
-      "Many clownfish have bright orange bodies with white stripes. What might those stripes help you notice?",
-      "Clownfish stay close to a reef anemone “home.” What would you look for first at the aquarium?"
+      "Clownfish are born male; the biggest can become female if she is gone. Why might that ladder matter?",
+      "False percula and true orange clownfish can look alike. What might you notice in the black outline?",
+      "Special mucus plus careful touching of tentacles helps them settle. Why isn’t protection instant?"
     ],
     "push_further": [
-      "Special skin mucus helps a clownfish not get stung. Why might that coating matter?",
-      "A small group shares one anemone. How might they share that home?",
-      "Healthy reefs and anemones keep clownfish homes safe. What could people do to help?"
+      "The biggest fish is the breeding female; smaller fish wait in line. Why might that size order matter?",
+      "The fish gets shelter; the anemone may get cleaning or defense help. How might both sides gain?",
+      "Captive-bred clownfish are popular pets. Why might that take pressure off wild reefs?"
     ],
     "levels": {
       "easy": {
@@ -12564,6 +12564,141 @@
             ],
             "correct": "A",
             "why": "Wikipedia lists many kinds of clownfish, also called anemonefish. The familiar movie fish is just one face, not the only kind."
+          }
+        ]
+      },
+      "hard": {
+        "teach": [],
+        "questions": [
+          {
+            "slot": 1,
+            "id": "amphiprion-soft",
+            "title": "Amphiprion",
+            "stem": "Clownfish are also called anemonefish. Which genus and family do they sit in?",
+            "choices": [
+              "Genus Amphiprion, in the damselfish family Pomacentridae",
+              "They sit only with goldfish, far from damselfishes",
+              "They are a kind of shark, not a bony reef fish"
+            ],
+            "correct": "A",
+            "why": "Wikipedia calls clownfish anemonefishes in genus Amphiprion. They are damselfishes in family Pomacentridae."
+          },
+          {
+            "slot": 2,
+            "id": "two-dozen-species-soft",
+            "title": "Two dozen",
+            "stem": "About how many living anemonefish species do scientists often name?",
+            "choices": [
+              "Exactly two fish in the whole ocean, and the count never changes",
+              "Roughly two dozen living anemonefish species — the exact count stays soft",
+              "Thousands of kinds, more than all other ocean fish combined"
+            ],
+            "correct": "B",
+            "why": "Wikipedia has listed around two dozen living clownfish species, and new names can still appear. We keep the exact count soft."
+          },
+          {
+            "slot": 3,
+            "id": "ocellaris-vs-percula-soft",
+            "title": "Nemo pair",
+            "stem": "How can the common “Nemo-like” pair of clownfish look different?",
+            "choices": [
+              "They are the same fish with two movie names and no outline difference",
+              "One is a penguin and the other is a goldfish",
+              "A. ocellaris (false percula) vs A. percula (true orange clownfish) — black outline thickness often differs (soft)"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says the ocellaris clownfish is also called the false percula, and it is often confused with the orange clownfish (A. percula). A common soft clue is thicker black outlines on the true orange clownfish."
+          },
+          {
+            "slot": 4,
+            "id": "protandry-soft",
+            "title": "Sex change",
+            "stem": "How can a clownfish’s sex change if the breeding female is gone?",
+            "choices": [
+              "They are born male; the largest fish can become female if the breeding female is gone",
+              "Every clownfish is born female and can never change",
+              "Sex is fixed at birth and never follows size"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says clownfish start as males. If the breeding female disappears, the breeding male can change sex and take her place. Soft protandry — a size-based sex-change ladder."
+          },
+          {
+            "slot": 5,
+            "id": "size-hierarchy-soft",
+            "title": "Size ladder",
+            "stem": "How does size rank the fish that share one anemone?",
+            "choices": [
+              "The smallest fish is always the only breeder",
+              "Biggest = breeding female; next = breeding male; smaller fish wait in line",
+              "Size does not matter — every fish breeds at once"
+            ],
+            "correct": "B",
+            "why": "Wikipedia describes a size-based dominance hierarchy. The largest fish is the breeding female, the next is the breeding male, and smaller fish wait their turn."
+          },
+          {
+            "slot": 6,
+            "id": "mucus-acclimation-soft",
+            "title": "Acclimation",
+            "stem": "How does a clownfish settle into an anemone’s stinging tentacles?",
+            "choices": [
+              "Protection is instant magic the moment they hatch, with no practice",
+              "They spray the anemone with vinegar until it stops stinging",
+              "Special mucus plus careful touching of tentacles helps them settle — protection is not instant"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says clownfish acclimate by touching, nipping, and fanning tentacles over minutes to days. A mucus coating helps them avoid stings. Protection is not instant magic."
+          },
+          {
+            "slot": 7,
+            "id": "mutual-soft",
+            "title": "Mutual help",
+            "stem": "What do clownfish and sea anemones often give each other?",
+            "choices": [
+              "The fish get shelter; the anemone may get cleaning and defense help (soft mutualism)",
+              "The anemone always dies if a clownfish is nearby",
+              "Neither animal ever helps the other in any way"
+            ],
+            "correct": "A",
+            "why": "Wikipedia calls the relationship mutualistic. Clownfish gain shelter from stinging tentacles. Anemones may get cleaning, extra water flow, and help chasing anemone-eating fish. We keep that trade soft."
+          },
+          {
+            "slot": 8,
+            "id": "host-specialists-soft",
+            "title": "Host choice",
+            "stem": "Do all clownfish use the same kind of anemone host?",
+            "choices": [
+              "Every clownfish uses every anemone in the ocean",
+              "Different clownfish prefer different anemone hosts — about ten host anemone kinds (soft)",
+              "Clownfish never live with anemones at all"
+            ],
+            "correct": "B",
+            "why": "Wikipedia names about ten sea anemone species used as hosts. Some clownfish specialize on one kind; others can use many. The exact host list stays soft."
+          },
+          {
+            "slot": 9,
+            "id": "aquarium-trade-soft",
+            "title": "Pet trade",
+            "stem": "Why does captive breeding matter for popular pet clownfish?",
+            "choices": [
+              "Wild reefs never feel any pressure from the pet trade",
+              "Captive breeding makes wild reefs less healthy",
+              "Clownfish are very popular pets; captive breeding can help take pressure off wild reefs (soft)"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says clownfish are sought after in the aquarium trade, and many were taken from the wild. They are also bred in aquaculture. Captive-bred fish can ease pressure on reefs — we keep that status angle soft."
+          },
+          {
+            "slot": 10,
+            "id": "reef-tied-soft",
+            "title": "Reef tied",
+            "stem": "How tightly are wild clownfish tied to reefs and anemones?",
+            "choices": [
+              "They completely depend on anemones and reefs — habitat health is clownfish health",
+              "They thrive in any desert puddle far from the sea",
+              "Reef health never affects clownfish at all"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says clownfish rely on sea anemones for shelter and are limited by those host homes on reefs. Habitat health and clownfish health travel together."
           }
         ]
       }
