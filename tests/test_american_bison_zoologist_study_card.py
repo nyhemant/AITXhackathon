@@ -36,7 +36,7 @@ from study_cards import (  # noqa: E402
 
 FP = REPO / "static" / "field-pack"
 BISON = FP / "cards" / "american-bison" / "index.html"
-JELLYFISH = FP / "cards" / "jellyfish" / "index.html"
+OCTOPUS = FP / "cards" / "octopus" / "index.html"
 GATOR = FP / "cards" / "american-alligator" / "index.html"
 LION = FP / "cards" / "african-lion" / "index.html"
 STUDY_JSON = FP / "data" / "study-cards.json"
@@ -347,7 +347,7 @@ class AmericanBisonZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("Zoologist", gator_html)
         self.assertEqual(gator_zoo["talk_about"], list(TALK_ABOUT_AMERICAN_ALLIGATOR))
         self.assertEqual(gator_zoo["push_further"], list(PUSH_FURTHER_AMERICAN_ALLIGATOR))
-        jelly = JELLYFISH.read_text(encoding="utf-8")
+        jelly = OCTOPUS.read_text(encoding="utf-8")
         self.assertIn("What do they eat?", jelly)
         self.assertNotIn("card-study-pack", jelly)
         self.assertNotIn("bison-bison-taxonomy-soft", jelly)
