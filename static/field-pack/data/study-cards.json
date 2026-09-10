@@ -15861,14 +15861,14 @@
     "source": "https://en.wikipedia.org/wiki/Sea_turtle",
     "source_note": "Facts from Wikipedia, Sea turtle.",
     "talk_about": [
-      "Sea turtles have paddle flippers, not land-turtle feet. Why might that help them swim?",
-      "Baby turtles race toward the brightest horizon. Why is that usually the sea?",
-      "Unlike many pet turtles, they can’t hide in the shell. Why is the body built that way?"
+      "Hard-shell sea turtles and leatherbacks look different. Why might that split matter?",
+      "Warm nest sand can mean more girl hatchlings. Why might that matter as beaches warm?",
+      "How could a magnetic “map” help a turtle stay on a long ocean trip?"
     ],
     "push_further": [
-      "Scientists put sea turtles in a bigger family tree. Why might those denser names wait?",
-      "Nest warmth can help decide if a baby is a boy or a girl. Why keep that story soft?",
-      "A beach-finding compass, salty tears, and status-by-kind still wait. Why save those?"
+      "Status can differ by kind. Why not one letter for every sea turtle?",
+      "TEDs help turtles slip out of nets. Why save that gear story for later?",
+      "Plastic can look like jellyfish. Why save warm-giant leatherbacks and fossil giants?"
     ],
     "levels": {
       "easy": {
@@ -16009,6 +16009,141 @@
             ],
             "correct": "A",
             "why": "Wikipedia says the streamlined body means sea turtles cannot retract their head and limbs into the shell, unlike many other turtles and tortoises. The shape is built for swimming, not hiding inside."
+          }
+        ]
+      },
+      "hard": {
+        "teach": [],
+        "questions": [
+          {
+            "slot": 1,
+            "id": "chelonioidea-soft",
+            "title": "Chelonioidea",
+            "stem": "Where do true sea turtles sit in the family tree, if we keep that map soft?",
+            "choices": [
+              "Superfamily Chelonioidea — most kinds in hard-shelled Cheloniidae; the leatherback sits alone in Dermochelyidae with a leathery shell (soft)",
+              "They are a kind of bony fish in the tuna family",
+              "They are insects that only live in one garden"
+            ],
+            "correct": "A",
+            "why": "Wikipedia places true sea turtles in superfamily Chelonioidea. Six living kinds are hard-shelled cheloniids (family Cheloniidae). The leatherback is the only living dermochelyid, with a leathery shell instead of hard scutes. We keep that map soft."
+          },
+          {
+            "slot": 2,
+            "id": "tsd-soft",
+            "title": "Nest warmth",
+            "stem": "How can nest sand temperature steer hatchling sex, if we keep those thresholds soft?",
+            "choices": [
+              "The first hatchling to leave picks the sex for the whole nest",
+              "Warmer nests tend to make more females; cooler nests tend to make more males (exact degrees stay soft)",
+              "Sex is painted on the shell after they hatch"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says sea turtles have temperature-dependent sex determination. Warmer nest sand produces more female hatchlings; cooler sand produces more males. Exact degree thresholds shift, so we keep those numbers soft."
+          },
+          {
+            "slot": 3,
+            "id": "natal-beach-soft",
+            "title": "Natal beach",
+            "stem": "Where do many female sea turtles return to nest, if we keep that homing story soft?",
+            "choices": [
+              "They only nest on the nearest iceberg",
+              "They never leave the first rock they see",
+              "Many return to nest near the beach where they hatched (philopatry); how tightly they match that beach varies by kind (soft)"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says different sea turtle kinds show various levels of philopatry. In the strong case, females return to nest on the same beach where they hatched. How tightly they match that natal beach varies, so we keep the homing story soft."
+          },
+          {
+            "slot": 4,
+            "id": "magnetic-sense-soft",
+            "title": "Magnetic sense",
+            "stem": "How can hatchlings and adults stay on long ocean routes, if we keep that sense soft?",
+            "choices": [
+              "They use Earth’s magnetic field like a map plus a compass so they can hold a heading and know roughly where they are (soft)",
+              "They follow painted arrows on the seafloor",
+              "They ask passing boats for street directions"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says migrating sea turtles have both a magnetic map and a magnetic compass sense. Hatchlings and adults can use Earth’s field to stay on long ocean routes. We keep the sense story soft."
+          },
+          {
+            "slot": 5,
+            "id": "salt-tears-soft",
+            "title": "Salt tears",
+            "stem": "How do sea turtles dump extra salt, if we keep those glands soft?",
+            "choices": [
+              "They never take in any salt, so they need no extra dump",
+              "Special glands near the eyes make salty tears — reptile kidneys cannot make urine saltier than seawater (soft)",
+              "They store all the salt in their flippers forever"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says reptile kidneys cannot produce urine saltier than seawater. Sea turtles use a specialized gland near each eye to dump extra salt in tears. We keep the gland names soft."
+          },
+          {
+            "slot": 6,
+            "id": "leatherback-soft",
+            "title": "Leatherback",
+            "stem": "What makes a leatherback different from hard-shell sea turtles, if we keep that size soft?",
+            "choices": [
+              "It is the smallest sea turtle and lives only in one puddle",
+              "It grows a hard scute shell and eats only coconuts",
+              "It is the largest living sea turtle, with a soft leathery shell (no hard scutes), and it mainly eats jellyfish (soft)"
+            ],
+            "correct": "C",
+            "why": "Wikipedia calls the leatherback the largest living sea turtle. It is the only living dermochelyid: a leathery shell without the hard scutes of cheloniids. Its main prey is jellyfish. Exact lengths and weights stay soft."
+          },
+          {
+            "slot": 7,
+            "id": "diet-split-soft",
+            "title": "Diet split",
+            "stem": "How do adult diets split among sea turtle kinds, if we keep those menus soft?",
+            "choices": [
+              "Green turtles shift toward seagrass and algae as adults; hawksbills lean on sponges; loggerheads and ridleys stay more mixed hunters (soft)",
+              "Every sea turtle eats only the same brand of crackers",
+              "Adults never eat; they live on air alone"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says green turtles move toward a plant diet (seagrass and algae) as they grow. Hawksbills principally eat sponges. Loggerheads and both ridleys stay more mixed, hunting animals and plants. We keep those menus soft."
+          },
+          {
+            "slot": 8,
+            "id": "arribada-soft",
+            "title": "Arribada",
+            "stem": "How do some ridleys nest differently from most other sea turtles?",
+            "choices": [
+              "Every sea turtle nests only in a tree, one egg at a time",
+              "Some ridleys nest in huge synchronized beach arrivals (arribadas); most other kinds nest more alone (soft)",
+              "Ridleys never come onto land at all"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says most sea turtle kinds nest individually, but ridley sea turtles can come ashore en masse — an arribada (“arrival”). We keep counts and dates soft."
+          },
+          {
+            "slot": 9,
+            "id": "lost-years-soft",
+            "title": "Lost years",
+            "stem": "Where do many young sea turtles spend their early years, if we keep that time soft?",
+            "choices": [
+              "They live only in a backyard sandbox until they are grown",
+              "They stay on the nest beach and never enter the ocean",
+              "They spend early years offshore — often in floating seaweed mats — then move closer to shore as they grow (soft)"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says young sea turtles spend their first years in the open ocean, often floating in seaweed mats, before moving closer to shore as they grow. Those early years are sometimes called the “lost years.” Exact year counts stay soft."
+          },
+          {
+            "slot": 10,
+            "id": "threats-soft",
+            "title": "Threats",
+            "stem": "What human pressures can send hatchlings the wrong way or put wild turtles at risk, if we keep that care story soft?",
+            "choices": [
+              "Beach lights can send hatchlings the wrong way; fishing nets and trash also put pressure on wild turtles (soft)",
+              "The only risk is too many birthday balloons in space",
+              "Wild turtles face no pressure from people at all"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says beach lights can pull hatchlings toward streets instead of the sea. Fishing nets can trap turtles so they cannot surface to breathe, and floating trash — including plastic that can look like jellyfish — also puts pressure on wild turtles. We do not lock status letters here."
           }
         ]
       }
