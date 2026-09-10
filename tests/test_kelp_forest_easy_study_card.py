@@ -1,4 +1,4 @@
-"""Cuttlefish Easy study-card: Junior Ranger teach + 10 MCQs (Park Ranger is a sibling level)."""
+"""Kelp-forest Easy study-card: Junior Ranger teach + 10 MCQs (later tiers reserved)."""
 
 from __future__ import annotations
 
@@ -14,22 +14,22 @@ sys.path.insert(0, str(REPO / "scripts"))
 from generate_bdo_seo import outing_talk_html  # noqa: E402
 from study_cards import (  # noqa: E402
     LEVEL_DISPLAY_NAMES,
-    PUSH_FURTHER_CLOWNFISH,
-    PUSH_FURTHER_CRAB,
     PUSH_FURTHER_CUTTLEFISH,
+    PUSH_FURTHER_EEL,
+    PUSH_FURTHER_JELLYFISH,
+    PUSH_FURTHER_KELP_FOREST,
     PUSH_FURTHER_LION,
-    PUSH_FURTHER_SHARK,
     STUDY_SLOTS,
-    TALK_ABOUT_CLOWNFISH,
-    TALK_ABOUT_CRAB,
     TALK_ABOUT_CUTTLEFISH,
+    TALK_ABOUT_EEL,
+    TALK_ABOUT_JELLYFISH,
+    TALK_ABOUT_KELP_FOREST,
     TALK_ABOUT_LION,
-    TALK_ABOUT_SHARK,
-    WIKI_CLOWNFISH,
-    WIKI_CRAB,
     WIKI_CUTTLEFISH,
+    WIKI_EEL,
+    WIKI_JELLYFISH,
+    WIKI_KELP_FOREST,
     WIKI_LION,
-    WIKI_SHARK,
     level_display_name,
     shipped_levels_for,
     study_card_ids,
@@ -41,11 +41,11 @@ from study_cards import (  # noqa: E402
 )
 
 FP = REPO / "static" / "field-pack"
-CUTTLEFISH = FP / "cards" / "cuttlefish" / "index.html"
+KELP = FP / "cards" / "kelp-forest" / "index.html"
 OCTOPUS = FP / "cards" / "octopus" / "index.html"
-CRAB = FP / "cards" / "crab" / "index.html"
-CLOWNFISH = FP / "cards" / "clownfish" / "index.html"
-SHARK = FP / "cards" / "shark" / "index.html"
+JELLYFISH = FP / "cards" / "jellyfish" / "index.html"
+EEL = FP / "cards" / "eel" / "index.html"
+CUTTLEFISH = FP / "cards" / "cuttlefish" / "index.html"
 PRINT_KIT = FP / "js" / "print-kit.js"
 STUDY_JS = FP / "js" / "study-card.js"
 STYLES = FP / "css" / "styles.css"
@@ -64,37 +64,37 @@ GENERIC_WORKSHEET = (
 )
 
 TEACH = (
-    "Marine molluscs related to squid and octopus",
-    "Unique internal shell (cuttlebone) for buoyancy",
-    "Eight arms plus two longer hunting tentacles",
-    "Change skin color and pattern very fast",
-    "Squirt ink to hide or confuse predators",
+    "Underwater “forests” made of giant seaweeds called kelp",
+    "Kelp is brown algae — not land trees or plants",
+    "Holdfasts grip rocks on the seafloor",
+    "Home and food for fish, otters, urchins, snails, and birds",
+    "Thrive in cool, nutrient-rich coastal water",
 )
 
 STEMS = (
-    "What kind of animal is a cuttlefish?",
-    "What does the cuttlebone help a cuttlefish do?",
-    "How many arms and tentacles does a cuttlefish have?",
-    "Why are cuttlefish nicknamed “chameleons of the sea”?",
-    "How can a cuttlefish use ink when a predator comes?",
-    "What do cuttlefish eyes look like in bright light?",
-    "What do cuttlefish eat?",
-    "About how long do cuttlefish usually live?",
-    "How can people help cuttlefish?",
-    "Are cuttlefish a kind of fish?",
+    "What is a kelp forest made of?",
+    "Is kelp a land tree or plant?",
+    "What does a kelp holdfast do?",
+    "What are the stalk and leaf-like parts of kelp?",
+    "How do many kinds of kelp lift their blades toward the sun?",
+    "Where do kelp forests usually thrive?",
+    "Who uses a kelp forest for food or shelter?",
+    "How can sea otters help a kelp forest stay lush?",
+    "How can people help kelp forests?",
+    "Is a kelp forest a forest of trees?",
 )
 
 QIDS = (
-    "cephalopod-soft",
-    "cuttlebone-soft",
-    "arms-tentacles-soft",
-    "camouflage-soft",
-    "ink-soft",
-    "w-eyes-soft",
-    "hunt-soft",
-    "short-life-soft",
-    "soft-coastal-care",
-    "not-a-fish-myth",
+    "forest-soft",
+    "not-trees-soft",
+    "holdfast-soft",
+    "stipe-blades-soft",
+    "floats-soft",
+    "cool-coasts-soft",
+    "wildlife-soft",
+    "otter-urchin-soft",
+    "soft-coast-urchin-care",
+    "not-tree-forest-myth",
 )
 
 PLAIN_LEVEL_LABELS = ("Easy", "Hard")
@@ -107,29 +107,24 @@ BRITTLE = (
     "Near Threatened",
     "Least Concern",
     "CITES",
-    "Sepiidae",
-    "Sepiida",
-    "chromatophore",
-    "iridophore",
-    "leucophore",
-    "hemocyanin",
-    "polarization",
-    "Americas",
-    "2023",
+    "Laminariales",
+    "Macrocystis",
+    "Nereocystis",
+    "Phaeophyceae",
+    "pneumatocyst",
     "kg",
     "cm",
     "mph",
     "km/h",
 )
-# Explore more now uses Zoologist talk/push, so 2023 and hemocyanin
-# may appear on the Junior Ranger page without leaking into JR questions.
-PAGE_BRITTLE = tuple(p for p in BRITTLE if p not in ("2023", "hemocyanin"))
+PAGE_BRITTLE = BRITTLE
 RESERVED = (
     "IUCN",
-    "Sepiidae",
-    "chromatophore",
-    "hemocyanin",
-    "polarization",
+    "Laminariales",
+    "Macrocystis",
+    "Nereocystis",
+    "Phaeophyceae",
+    "pneumatocyst",
 )
 
 
@@ -141,9 +136,9 @@ def _main(html: str) -> str:
     return html.split('<main class="card-page">', 1)[1].split("</main>", 1)[0]
 
 
-class CuttlefishEasyStudyCardTests(unittest.TestCase):
+class KelpForestEasyStudyCardTests(unittest.TestCase):
     def test_deck_is_junior_ranger_only(self):
-        self.assertIn("cuttlefish", study_card_ids())
+        self.assertIn("kelp-forest", study_card_ids())
         self.assertNotIn("octopus", study_card_ids())
         self.assertEqual(
             study_card_ids(),
@@ -185,20 +180,20 @@ class CuttlefishEasyStudyCardTests(unittest.TestCase):
                 "kelp-forest",
             ),
         )
-        self.assertEqual(shipped_levels_for("cuttlefish"), ("easy", "hard", "zoologist"))
-        self.assertIsNotNone(study_deck_for("cuttlefish", "hard"))
-        self.assertIsNotNone(study_deck_for("cuttlefish", "zoologist"))
+        self.assertEqual(shipped_levels_for("kelp-forest"), ("easy",))
+        self.assertIsNone(study_deck_for("kelp-forest", "hard"))
+        self.assertIsNone(study_deck_for("kelp-forest", "zoologist"))
         self.assertIsNone(study_deck_for("octopus"))
-        deck = study_deck_for("cuttlefish")
+        deck = study_deck_for("kelp-forest")
         self.assertIsNotNone(deck)
-        self.assertEqual(deck["id"], "cuttlefish")
+        self.assertEqual(deck["id"], "kelp-forest")
         self.assertEqual(deck["level"], "easy")
         self.assertEqual(deck["level_label"], "Junior Ranger")
         self.assertEqual(level_display_name("easy"), "Junior Ranger")
-        self.assertEqual(deck["source"], WIKI_CUTTLEFISH)
+        self.assertEqual(deck["source"], WIKI_KELP_FOREST)
         self.assertEqual(
             deck["source_note"],
-            "Facts from Wikipedia, Cuttlefish.",
+            "Facts from Wikipedia, Kelp forest.",
         )
         self.assertEqual(validate_deck(deck), [])
         self.assertEqual(len(deck["teach"]), 5)
@@ -206,8 +201,8 @@ class CuttlefishEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(len(deck["questions"]), STUDY_SLOTS)
         self.assertEqual([q["stem"] for q in deck["questions"]], list(STEMS))
         self.assertEqual([q["id"] for q in deck["questions"]], list(QIDS))
-        self.assertEqual(deck["talk_about"], list(TALK_ABOUT_CUTTLEFISH))
-        self.assertEqual(deck["push_further"], list(PUSH_FURTHER_CUTTLEFISH))
+        self.assertEqual(deck["talk_about"], list(TALK_ABOUT_KELP_FOREST))
+        self.assertEqual(deck["push_further"], list(PUSH_FURTHER_KELP_FOREST))
         letters = [q["correct"] for q in deck["questions"]]
         self.assertEqual(letters, [target_letter_for_slot(i) for i in range(1, 11)])
         self.assertEqual(letters.count("A"), 4)
@@ -227,17 +222,20 @@ class CuttlefishEasyStudyCardTests(unittest.TestCase):
         )
         for phrase in BRITTLE + RESERVED:
             self.assertNotIn(phrase, blob)
-        self.assertIn("cephalopod", blob.lower())
-        self.assertIn("cuttlebone", blob.lower())
-        self.assertIn("tentacle", blob.lower())
-        self.assertIn("chameleon", blob.lower())
-        self.assertIn("ink", blob.lower())
-        self.assertIn("w-shaped", blob.lower())
-        self.assertIn("crab", blob.lower())
-        self.assertIn("1–2", blob)
-        self.assertIn("coastal", blob.lower())
-        self.assertIn("mollusc", blob.lower())
-        self.assertEqual(WIKI_CUTTLEFISH, "https://en.wikipedia.org/wiki/Cuttlefish")
+        self.assertIn("kelp", blob.lower())
+        self.assertIn("seaweed", blob.lower())
+        self.assertIn("algae", blob.lower())
+        self.assertIn("holdfast", blob.lower())
+        self.assertIn("stipe", blob.lower())
+        self.assertIn("blade", blob.lower())
+        self.assertIn("bladder", blob.lower())
+        self.assertIn("canopy", blob.lower())
+        self.assertIn("cool", blob.lower())
+        self.assertIn("otter", blob.lower())
+        self.assertIn("urchin", blob.lower())
+        self.assertIn("rockfish", blob.lower())
+        self.assertIn("tree-tall", blob.lower())
+        self.assertEqual(WIKI_KELP_FOREST, "https://en.wikipedia.org/wiki/Kelp_forest")
 
     def test_other_study_decks_untouched(self):
         lion = study_deck_for("african-lion")
@@ -247,30 +245,30 @@ class CuttlefishEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(lion["talk_about"], list(TALK_ABOUT_LION))
         self.assertEqual(lion["push_further"], list(PUSH_FURTHER_LION))
         self.assertEqual(shipped_levels_for("african-lion"), ("easy", "hard", "zoologist"))
-        shark = study_deck_for("shark")
-        self.assertEqual(shark["source"], WIKI_SHARK)
-        self.assertEqual(shark["talk_about"], list(TALK_ABOUT_SHARK))
-        self.assertEqual(shark["push_further"], list(PUSH_FURTHER_SHARK))
-        self.assertEqual(shipped_levels_for("shark"), ("easy", "hard", "zoologist"))
-        self.assertIsNotNone(study_deck_for("shark", "hard"))
-        self.assertIsNotNone(study_deck_for("shark", "zoologist"))
-        crab = study_deck_for("crab")
-        self.assertEqual(crab["source"], WIKI_CRAB)
-        self.assertEqual(crab["talk_about"], list(TALK_ABOUT_CRAB))
-        self.assertEqual(crab["push_further"], list(PUSH_FURTHER_CRAB))
-        self.assertEqual(shipped_levels_for("crab"), ("easy", "hard", "zoologist"))
-        self.assertIsNotNone(study_deck_for("crab", "hard"))
-        self.assertIsNotNone(study_deck_for("crab", "zoologist"))
-        clown = study_deck_for("clownfish")
-        self.assertEqual(clown["source"], WIKI_CLOWNFISH)
-        self.assertEqual(clown["talk_about"], list(TALK_ABOUT_CLOWNFISH))
-        self.assertEqual(clown["push_further"], list(PUSH_FURTHER_CLOWNFISH))
-        self.assertEqual(shipped_levels_for("clownfish"), ("easy", "hard", "zoologist"))
-        self.assertIsNotNone(study_deck_for("clownfish", "hard"))
-        self.assertIsNotNone(study_deck_for("clownfish", "zoologist"))
+        jelly = study_deck_for("jellyfish")
+        self.assertEqual(jelly["source"], WIKI_JELLYFISH)
+        self.assertEqual(jelly["talk_about"], list(TALK_ABOUT_JELLYFISH))
+        self.assertEqual(jelly["push_further"], list(PUSH_FURTHER_JELLYFISH))
+        self.assertEqual(shipped_levels_for("jellyfish"), ("easy", "hard", "zoologist"))
+        self.assertIsNotNone(study_deck_for("jellyfish", "hard"))
+        self.assertIsNotNone(study_deck_for("jellyfish", "zoologist"))
+        eel = study_deck_for("eel")
+        self.assertEqual(eel["source"], WIKI_EEL)
+        self.assertEqual(eel["talk_about"], list(TALK_ABOUT_EEL))
+        self.assertEqual(eel["push_further"], list(PUSH_FURTHER_EEL))
+        self.assertEqual(shipped_levels_for("eel"), ("easy", "hard", "zoologist"))
+        self.assertIsNotNone(study_deck_for("eel", "hard"))
+        self.assertIsNotNone(study_deck_for("eel", "zoologist"))
+        cuttle = study_deck_for("cuttlefish")
+        self.assertEqual(cuttle["source"], WIKI_CUTTLEFISH)
+        self.assertEqual(cuttle["talk_about"], list(TALK_ABOUT_CUTTLEFISH))
+        self.assertEqual(cuttle["push_further"], list(PUSH_FURTHER_CUTTLEFISH))
+        self.assertEqual(shipped_levels_for("cuttlefish"), ("easy", "hard", "zoologist"))
+        self.assertIsNotNone(study_deck_for("cuttlefish", "hard"))
+        self.assertIsNotNone(study_deck_for("cuttlefish", "zoologist"))
 
     def test_generator_html_is_study_not_worksheet(self):
-        html = outing_talk_html({"id": "cuttlefish", "packTemplate": "animals"})
+        html = outing_talk_html({"id": "kelp-forest", "packTemplate": "animals"})
         self.assertIn(">Quiz</h2>", html)
         self.assertIn("card-study-pack", html)
         self.assertIn("Learn first", html)
@@ -283,7 +281,7 @@ class CuttlefishEasyStudyCardTests(unittest.TestCase):
         self.assertIn('<details class="study-explore', html)
         self.assertIn("Explore more", html)
         self.assertNotIn('<aside class="study-deepen"', html)
-        for prompt in TALK_ABOUT_CUTTLEFISH + PUSH_FURTHER_CUTTLEFISH:
+        for prompt in TALK_ABOUT_KELP_FOREST + PUSH_FURTHER_KELP_FOREST:
             self.assertIn(prompt, html)
         self.assertIn("Show answers", html)
         self.assertIn("Score", html)
@@ -295,15 +293,15 @@ class CuttlefishEasyStudyCardTests(unittest.TestCase):
             self.assertNotIn(phrase, html)
         visible = _text(html)
         self.assertIn("Junior Ranger", visible)
-        self.assertIn("Park Ranger", visible)
-        self.assertIn("Zoologist", visible)
-        self.assertIn('class="study-level-picker"', html)
-        self.assertIn('data-study-pick="easy"', html)
-        self.assertIn('data-study-pick="hard"', html)
-        self.assertIn('data-study-pick="zoologist"', html)
-        self.assertNotIn('class="study-level-badge"', html)
-        self.assertEqual(html.count('role="group"'), 2)
-        self.assertIn("study-level-picker-bottom", html)
+        self.assertNotIn("Park Ranger", visible)
+        self.assertNotIn("Zoologist", visible)
+        self.assertIn('class="study-level-badge"', html)
+        self.assertNotIn('class="study-level-picker"', html)
+        self.assertNotIn("study-level-picker-bottom", html)
+        self.assertNotIn('data-study-pick="easy"', html)
+        self.assertNotIn('data-study-pick="hard"', html)
+        self.assertNotIn('data-study-pick="zoologist"', html)
+        self.assertEqual(html.count('role="group"'), 0)
         for badge in PLAIN_LEVEL_LABELS + AGE_BADGES:
             self.assertNotIn(badge, visible)
         self.assertNotIn(" · Easy ·", html)
@@ -311,27 +309,27 @@ class CuttlefishEasyStudyCardTests(unittest.TestCase):
         for phrase in PAGE_BRITTLE:
             self.assertNotIn(phrase, html)
         self.assertIn(
-            "A cephalopod — the same big group as squid, octopus, and nautilus",
+            "Dense stands of tall kelp form layered homes from a sunny surface canopy to a shaded seafloor",
             html,
         )
         self.assertIn(
-            "No — they’re molluscs (soft bodies + a shell inside), closer to octopus than to tuna",
+            "No — it’s a forest of seaweed, even when giant kelp looks tree-tall",
             html,
         )
-        self.assertIn("Facts from Wikipedia, Cuttlefish.", html)
+        self.assertIn("Facts from Wikipedia, Kelp forest.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
         html = outing_talk_html({"id": "octopus", "packTemplate": "animals"})
         self.assertIn("What do they eat?", html)
         self.assertNotIn("card-study-pack", html)
-        self.assertNotIn("What kind of animal is a cuttlefish", html)
-        jelly = OCTOPUS.read_text(encoding="utf-8")
-        self.assertIn("What do they eat?", jelly)
-        self.assertNotIn("card-study-pack", jelly)
-        self.assertNotIn("What kind of animal is a cuttlefish", jelly)
+        self.assertNotIn("What is a kelp forest made of", html)
+        octo = OCTOPUS.read_text(encoding="utf-8")
+        self.assertIn("What do they eat?", octo)
+        self.assertNotIn("card-study-pack", octo)
+        self.assertNotIn("What is a kelp forest made of", octo)
 
-    def test_published_cuttlefish_card_matches_easy_deck(self):
-        html = CUTTLEFISH.read_text(encoding="utf-8")
+    def test_published_kelp_forest_card_matches_easy_deck(self):
+        html = KELP.read_text(encoding="utf-8")
         main = _main(html)
         for phrase in GENERIC_WORKSHEET:
             self.assertNotIn(phrase, main)
@@ -342,21 +340,21 @@ class CuttlefishEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Watch Live", main)
         self.assertIn("card-watch-live", main)
         self.assertIn("card-page-photo", main)
-        self.assertIn("/field-pack/photos/cuttlefish.jpg", main)
+        self.assertIn("/field-pack/photos/kelp-forest.jpg", main)
         self.assertIn(
-            "/field-pack/virtual-field-trip/?tab=aquarium&amp;from=card#habitat=cuttlefish",
+            "/field-pack/virtual-field-trip/?tab=aquarium&amp;from=card#habitat=kelp-forest",
             main,
         )
         self.assertIn('class="card-try-next no-print"', main)
-        self.assertIn("study-level-picker-bottom", main)
+        self.assertNotIn("study-level-picker-bottom", main)
         self.assertNotIn("card-print-note", main)
         self.assertIn("study-card.js?v=10", html)
         self.assertIn("study-card.css?v=10", html)
         self.assertIn("study-cards-data.js?v=6", html)
         self.assertIn('id="study-card-data"', html)
         self.assertIn('"level_label": "Junior Ranger"', html)
-        self.assertIn('"id": "cuttlefish"', html)
-        self.assertNotIn('"id": "crab"', html)
+        self.assertIn('"id": "kelp-forest"', html)
+        self.assertNotIn('"id": "jellyfish"', html)
         self.assertIn('id="study-print-template"', html)
         self.assertIn("print-kit.js?v=20", html)
         self.assertIn("styles.css?v=42", html)
@@ -372,13 +370,13 @@ class CuttlefishEasyStudyCardTests(unittest.TestCase):
         self.assertLess(main.find("study-explore"), main.find("card-try-next"))
         visible = _text(main)
         self.assertIn("Junior Ranger", visible)
-        self.assertIn("Park Ranger", visible)
-        self.assertIn("Zoologist", visible)
-        self.assertIn('class="study-level-picker"', main)
-        self.assertIn('data-study-pick="easy"', main)
-        self.assertIn('data-study-pick="hard"', main)
-        self.assertIn('data-study-pick="zoologist"', main)
-        self.assertNotIn('class="study-level-badge"', main)
+        self.assertNotIn("Park Ranger", visible)
+        self.assertNotIn("Zoologist", visible)
+        self.assertIn('class="study-level-badge"', main)
+        self.assertNotIn('class="study-level-picker"', main)
+        self.assertNotIn('data-study-pick="easy"', main)
+        self.assertNotIn('data-study-pick="hard"', main)
+        self.assertNotIn('data-study-pick="zoologist"', main)
         self.assertIn("Learn first", main)
         self.assertIn(">Quiz</h2>", main)
         self.assertEqual(main.count("data-study-correct"), 2)
@@ -400,38 +398,38 @@ class CuttlefishEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Talk about it", back)
         self.assertIn("Push further", back)
         self.assertIn("ps-study-deepen", back)
-        for prompt in TALK_ABOUT_CUTTLEFISH + PUSH_FURTHER_CUTTLEFISH:
+        for prompt in TALK_ABOUT_KELP_FOREST + PUSH_FURTHER_KELP_FOREST:
             self.assertIn(prompt, back)
         self.assertEqual(
-            study_try_next_ids("cuttlefish"),
-            ["crab", "clownfish", "african-lion"],
+            study_try_next_ids("kelp-forest"),
+            ["jellyfish", "sea-otter", "african-lion"],
         )
 
     def test_print_faces_are_duplex_and_clamped(self):
-        deck = study_deck_for("cuttlefish")
+        deck = study_deck_for("kelp-forest")
         sheet = study_print_html(
             deck,
-            name="Cuttlefish",
-            emoji="🦑",
-            photo="/field-pack/photos/cuttlefish.jpg?v=img2",
-            photo_pos="50% 28%",
+            name="Kelp forest",
+            emoji="🌿",
+            photo="/field-pack/photos/kelp-forest.jpg?v=img2",
+            photo_pos="50% 40%",
         )
         self.assertIn("ps-study-front", sheet)
         self.assertIn("ps-study-back", sheet)
         self.assertIn("ps-study-photo", sheet)
-        self.assertIn("/field-pack/photos/cuttlefish.jpg", sheet)
+        self.assertIn("/field-pack/photos/kelp-forest.jpg", sheet)
         self.assertIn("Flip for answers", sheet)
         self.assertIn("Junior Ranger", sheet)
         self.assertNotIn(" · Easy ·", sheet)
-        self.assertIn(WIKI_CUTTLEFISH, sheet)
+        self.assertIn(WIKI_KELP_FOREST, sheet)
         for stem in STEMS:
             self.assertIn(stem, sheet)
         self.assertIn(
-            "A cephalopod — the same big group as squid, octopus, and nautilus",
+            "Dense stands of tall kelp form layered homes from a sunny surface canopy to a shaded seafloor",
             sheet,
         )
         self.assertIn(
-            "No — they’re molluscs (soft bodies + a shell inside), closer to octopus than to tuna",
+            "No — it’s a forest of seaweed, even when giant kelp looks tree-tall",
             sheet,
         )
         front, _, back = sheet.partition("ps-study-back")
@@ -439,7 +437,7 @@ class CuttlefishEasyStudyCardTests(unittest.TestCase):
         self.assertNotIn("Talk about it", front)
         self.assertIn("Talk about it", back)
         self.assertIn("Push further", back)
-        for prompt in TALK_ABOUT_CUTTLEFISH + PUSH_FURTHER_CUTTLEFISH:
+        for prompt in TALK_ABOUT_KELP_FOREST + PUSH_FURTHER_KELP_FOREST:
             self.assertIn(prompt, back)
         css = STYLES.read_text(encoding="utf-8")
         self.assertIn(".ps-study-front", css)
@@ -455,19 +453,19 @@ class CuttlefishEasyStudyCardTests(unittest.TestCase):
         self.assertIn("is-wrong-pick", study_js)
         self.assertIn("FPStudyLevelName", study_js + STUDY_DATA_JS.read_text(encoding="utf-8"))
 
-    def test_artifacts_include_cuttlefish_easy_and_hard(self):
+    def test_artifacts_include_kelp_forest_easy_only(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
-        self.assertIn("cuttlefish", payload)
+        self.assertIn("kelp-forest", payload)
         self.assertNotIn("octopus", payload)
-        self.assertIn("crab", payload)
-        self.assertIn("clownfish", payload)
-        self.assertIn("shark", payload)
-        fish = payload["cuttlefish"]
-        self.assertEqual(fish["id"], "cuttlefish")
-        self.assertEqual(set(fish["levels"]), {"easy", "hard", "zoologist"})
-        self.assertEqual(fish["levels"]["hard"]["teach"], [])
-        self.assertEqual(fish["levels"]["zoologist"]["teach"], [])
-        easy = fish["levels"]["easy"]
+        self.assertIn("jellyfish", payload)
+        self.assertIn("eel", payload)
+        self.assertIn("cuttlefish", payload)
+        forest = payload["kelp-forest"]
+        self.assertEqual(forest["id"], "kelp-forest")
+        self.assertEqual(set(forest["levels"]), {"easy"})
+        self.assertNotIn("hard", forest["levels"])
+        self.assertNotIn("zoologist", forest["levels"])
+        easy = forest["levels"]["easy"]
         self.assertEqual(len(easy["teach"]), 5)
         self.assertEqual(len(easy["questions"]), STUDY_SLOTS)
         self.assertEqual(
@@ -477,11 +475,11 @@ class CuttlefishEasyStudyCardTests(unittest.TestCase):
         for q in easy["questions"]:
             self.assertEqual(len(q["choices"]), 3)
         data_js = STUDY_DATA_JS.read_text(encoding="utf-8")
-        self.assertIn('"cuttlefish"', data_js)
+        self.assertIn('"kelp-forest"', data_js)
         self.assertIn('"easy":"Junior Ranger"', data_js)
-        self.assertEqual(set(payload["crab"]["levels"]), {"easy", "hard", "zoologist"})
-        self.assertEqual(set(payload["clownfish"]["levels"]), {"easy", "hard", "zoologist"})
-        self.assertEqual(set(payload["shark"]["levels"]), {"easy", "hard", "zoologist"})
+        self.assertEqual(set(payload["jellyfish"]["levels"]), {"easy", "hard", "zoologist"})
+        self.assertEqual(set(payload["eel"]["levels"]), {"easy", "hard", "zoologist"})
+        self.assertEqual(set(payload["cuttlefish"]["levels"]), {"easy", "hard", "zoologist"})
         self.assertEqual(set(payload["african-lion"]["levels"]), {"easy", "hard", "zoologist"})
 
     def test_display_name_map_still_covers_future_tiers(self):
@@ -494,23 +492,23 @@ class CuttlefishEasyStudyCardTests(unittest.TestCase):
             },
         )
         self.assertEqual(level_display_name("easy"), "Junior Ranger")
-        cuttle_html = CUTTLEFISH.read_text(encoding="utf-8")
-        visible = _text(_main(cuttle_html))
+        kelp_html = KELP.read_text(encoding="utf-8")
+        visible = _text(_main(kelp_html))
         self.assertIn("Junior Ranger", visible)
-        self.assertIn("Park Ranger", visible)
-        self.assertIn("Zoologist", visible)
-        crab_html = CRAB.read_text(encoding="utf-8")
-        self.assertIn("Junior Ranger", _text(_main(crab_html)))
-        self.assertIn("Park Ranger", _text(_main(crab_html)))
-        self.assertIn("Zoologist", _text(_main(crab_html)))
-        clown_html = CLOWNFISH.read_text(encoding="utf-8")
-        self.assertIn("Junior Ranger", _text(_main(clown_html)))
-        self.assertIn("Park Ranger", _text(_main(clown_html)))
-        self.assertIn("Zoologist", _text(_main(clown_html)))
-        shark_html = SHARK.read_text(encoding="utf-8")
-        self.assertIn("Junior Ranger", _text(_main(shark_html)))
-        self.assertIn("Park Ranger", _text(_main(shark_html)))
-        self.assertIn("Zoologist", _text(_main(shark_html)))
+        self.assertNotIn("Park Ranger", visible)
+        self.assertNotIn("Zoologist", visible)
+        jelly_html = JELLYFISH.read_text(encoding="utf-8")
+        self.assertIn("Junior Ranger", _text(_main(jelly_html)))
+        self.assertIn("Park Ranger", _text(_main(jelly_html)))
+        self.assertIn("Zoologist", _text(_main(jelly_html)))
+        eel_html = EEL.read_text(encoding="utf-8")
+        self.assertIn("Junior Ranger", _text(_main(eel_html)))
+        self.assertIn("Park Ranger", _text(_main(eel_html)))
+        self.assertIn("Zoologist", _text(_main(eel_html)))
+        cuttle_html = CUTTLEFISH.read_text(encoding="utf-8")
+        self.assertIn("Junior Ranger", _text(_main(cuttle_html)))
+        self.assertIn("Park Ranger", _text(_main(cuttle_html)))
+        self.assertIn("Zoologist", _text(_main(cuttle_html)))
 
 
 if __name__ == "__main__":
