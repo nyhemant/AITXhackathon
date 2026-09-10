@@ -13517,7 +13517,7 @@ STUDY_CARDS: dict[str, dict] = {
                             "They never stand up on land",
                         ],
                         "correct": "A",
-                        "why": "Wikipedia notes the puffin’s waddling gait on land. Short legs set far back give that upright, side-to-side walk.",
+                        "why": "Wikipedia notes the puffin’s waddle on land. Short legs set far back give that upright, side-to-side walk.",
                     },
                     {
                         "slot": 8,
