@@ -1246,8 +1246,45 @@ can be local while the range is wide (soft).
 Acidifying seas are cited as a possible future
 stress on shells/eggs — still under study (soft).
 Soften contested numbers. Keep kid-friendly. Do
-not redo JR. Zoologist is reserved. Do not invent
-photos.
+not redo JR. Zoologist ships on this card. Do not
+invent photos.
+
+Facts for cuttlefish Zoologist (zoologist) are
+Wikipedia-backed from the same Cuttlefish page.
+Answer-light (teach: []). Lupše et al. 2023 split
+classic Sepia into revived genera (Acanthosepion,
+Ascarosepion, Rhombosepion…); Metasepia nested and
+became a junior synonym of Ascarosepion (taxonomy
+flux soft). Cuttlebone is a chambered aragonite
+phragmocone; gas/liquid moves via a ventral
+siphuncle — rare among living coleoids, shared
+with Spirula (soft). Two retinal hotspots (foveae)
+look forward and rearward; stereopsis helps depth
+when striking prey (soft). The W-pupil may even
+shallow-water glare; one hypothesis is that
+chromatic aberration lets color-blind eyes still
+glean wavelength cues (debated — soft). Each
+chromatophore sac sits under direct neural muscle
+control and can expand its area by about 500%
+(soft); iridophores and leucophores add structural
+shine beneath. Small males can look female (mottle
+plus an egg-holding posture) to sneak past guard
+males; some flash courtship on one side and
+female-like on the other (soft). Unlike most
+molluscs, cephalopods have a closed blood system
+— needed because hemocyanin carries less oxygen
+than hemoglobin (soft). Flamboyant cuttlefish
+muscle can hold tetrodotoxin — poisonous if eaten,
+not injected venom (soft; status still
+species-by-species). Family likely evolved in the
+Old World; the North Atlantic may have been too
+cold or deep to cross — a soft reason the Americas
+are empty. Common cuttlefish (Sepia officinalis)
+is an IUCN LC snapshot; local overfishing and
+acidification are watch items, not one letter for
+the whole group (soft). Soften contested numbers.
+Treat IUCN letters as snapshots. Keep kid-friendly.
+Do not redo JR or PR themes. Do not invent photos.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
@@ -1781,14 +1818,14 @@ PUSH_FURTHER_CRAB = (
     "Horseshoe crabs can carry VU or EN snapshots. Why is true-crab fishing still species-by-species?",
 )
 TALK_ABOUT_CUTTLEFISH = (
-    "A cuttlebone is a chambered shell. A squid keeps a thin gladius instead. What would you check?",
-    "Color change uses a sandwich of skin cells — pigment, shine, then white. Why stack them?",
-    "Cuttlefish are mostly color-blind, yet they match the scene. How might they still see contrast?",
+    "A 2023 study split classic Sepia into revived genera. Why might that family tree still be moving?",
+    "Small males can sneak by looking female. Why might that trick help them mate?",
+    "Cuttlefish have a closed blood system and hemocyanin. Why might that combo matter?",
 )
 PUSH_FURTHER_CUTTLEFISH = (
-    "Cuttlefish have three hearts. Why might two of them push blood only to the gills?",
-    "They skip American waters. Why might that Old World map stay a soft story?",
-    "A common kind can look okay on a snapshot, while local fishing still matters. Why both?",
+    "Metasepia was folded into another genus. Why might a name vanish like that?",
+    "Some males flash courtship on one side and look female on the other. Why both faces?",
+    "Flamboyant cuttlefish can hold a poison in muscle. Why is that different from injected venom?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -15298,6 +15335,149 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia notes ocean acidification as a possible future stress on cuttlebone shells and eggs. The evidence is still under study, so we keep it soft.",
+                    },
+                ],
+            },
+            "zoologist": {
+                # Answer-light: Zoologist has no Learn-first strip.
+                # Facts from Wikipedia, Cuttlefish. Soft 2023
+                # genera, phragmocone, dual foveae, W + chromatic
+                # hypothesis, neural chromatophores, sneak-male
+                # mimicry, closed circulation, flamboyant TTX,
+                # Americas cold-gate, officinalis LC snapshot.
+                # Soften contested numbers. Kid-friendly.
+                # Do not redo JR or PR themes.
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "2023-genera-soft",
+                        "title": "2023 genera",
+                        "stem": "What did Lupše and colleagues do to classic Sepia in 2023, if we keep the tree soft?",
+                        "choices": [
+                            "They split classic Sepia into revived genera such as Acanthosepion, Ascarosepion, and Rhombosepion; Metasepia nested and became a junior synonym of Ascarosepion (soft)",
+                            "They proved every cuttlefish belongs in the tuna family, with no genus debate",
+                            "They deleted the whole family and said cuttlefish were never real",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia cites Lupše et al. 2023. They recovered several monophyletic groups inside classic Sepia and revived genera including Acanthosepion, Ascarosepion, and Rhombosepion. Metasepia nested inside Ascarosepion, so that older name became a junior synonym. The tree can still shift, so we keep it soft.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "phragmocone-soft",
+                        "title": "Phragmocone",
+                        "stem": "What kind of shell is a cuttlebone, and how does gas move through it?",
+                        "choices": [
+                            "It is a solid iron bar with no chambers and no gas at all",
+                            "A chambered aragonite phragmocone; gas and liquid move via a ventral siphuncle — rare among living coleoids, shared with Spirula (soft)",
+                            "It is an outer crab shell they molt on the beach each week",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia calls the cuttlebone a chambered phragmocone of aragonite. Gas and liquid move through a ventral siphuncle. Among living coleoids, that chambered plan is rare and shared with Spirula. We keep that comparison soft.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "dual-foveae-soft",
+                        "title": "Dual foveae",
+                        "stem": "How can cuttlefish eyes judge depth when they strike prey?",
+                        "choices": [
+                            "They have no retinas, so striking prey is always luck",
+                            "They use only one rear-facing eye and never look forward",
+                            "Two retinal hotspots (foveae) — one forward, one rearward — plus stereopsis for depth (soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia describes two concentrated sensor spots on each retina — foveae that look more forward and more rearward. Cuttlefish can also use stereopsis, so the brain compares both eyes for depth when they strike. We keep that depth story soft.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "w-chromatic-soft",
+                        "title": "W chromatic",
+                        "stem": "Besides evening shallow-water glare, what debated idea links the W-shaped pupil to color-blind eyes?",
+                        "choices": [
+                            "One hypothesis: chromatic aberration lets color-blind eyes still glean wavelength cues (debated — soft)",
+                            "The W-pupil is only a painted sticker and never changes how light hits the eye",
+                            "Cuttlefish see every human rainbow color with no debate at all",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia notes a wide W-shaped pupil and a hypothesis that chromatic aberration could let color-blind eyes still pick up wavelength cues. That idea is debated, and evening shallow-water glare is another soft reading. We keep both stories soft.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "neural-chromatophores-soft",
+                        "title": "Neural sacs",
+                        "stem": "How does each chromatophore sac change size so quickly?",
+                        "choices": [
+                            "The sacs swell only when the animal is asleep and never by muscle",
+                            "Each sac sits under direct neural muscle control and can expand its area by about 500%; iridophores and leucophores add structural shine beneath (soft)",
+                            "Color change uses only a coat of paint with no living cells",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says each chromatophore is a pigment sac ringed by muscles under direct neural control. Opening the sac can expand its area by about 500%. Deeper iridophores and leucophores add structural shine. Exact expansion figures stay soft.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "sexual-mimicry-soft",
+                        "title": "Sneak males",
+                        "stem": "How can a small male sneak past a guarding male to mate?",
+                        "choices": [
+                            "It always fights the largest male in open water and never hides",
+                            "It turns into a fish and leaves the sea until mating season ends",
+                            "It can look female — mottle plus an egg-holding posture — and some flash courtship on one side while looking female on the other (soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia describes small males that hide a male arm, take a female mottle, and even mimic an egg-holding posture to sneak past a guard. Some can show courtship on one side and a female-like display on the other. We keep that dual-sided trick soft.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "closed-circulation-soft",
+                        "title": "Closed blood",
+                        "stem": "Why do cephalopods need a closed blood system, unlike most molluscs?",
+                        "choices": [
+                            "Hemocyanin carries less oxygen than hemoglobin, so a closed system helps move blood fast enough (soft)",
+                            "They have no blood at all, so circulation cannot matter",
+                            "Most molluscs already have closed blood, so cuttlefish are no different",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says cephalopods, unlike most molluscs, have a closed circulatory system. Hemocyanin carries substantially less oxygen than hemoglobin, so the blood must move faster. We keep that oxygen-math soft.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "flamboyant-ttx-soft",
+                        "title": "Flamboyant TTX",
+                        "stem": "How should we read tetrodotoxin in flamboyant cuttlefish muscle?",
+                        "choices": [
+                            "Every cuttlefish injects the same venom through fangs, with one locked status letter",
+                            "Muscle can hold tetrodotoxin — poisonous if eaten, not an injected venom — and that status is still species-by-species (soft)",
+                            "The toxin is only a food dye and is never a poison or a venom",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says flamboyant cuttlefish muscle can hold tetrodotoxin. That makes the flesh poisonous if eaten; it is not injected as venom. Which kinds carry it is still species-by-species, so we keep that status soft.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "americas-cold-gate-soft",
+                        "title": "Cold gate",
+                        "stem": "Why might the family have never reached the Americas, if we keep that map soft?",
+                        "choices": [
+                            "They evolved in the Americas first and later left for the Old World",
+                            "They cross the Atlantic every year on floating ice and always live in both oceans",
+                            "The family likely evolved in the Old World; the North Atlantic may have been too cold or deep to cross (soft biogeography)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia’s soft biogeography story is that Sepiidae likely evolved in the Old World. By then the North Atlantic may have been too cold and deep for these warm-water animals to cross — a possible reason they are missing from the Americas.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "officinalis-lc-soft",
+                        "title": "LC snapshot",
+                        "stem": "How should we read the common cuttlefish IUCN letter next to local fishing and acid seas?",
+                        "choices": [
+                            "Sepia officinalis is an LC snapshot; local overfishing and acidification are watch items — not one letter for the whole group (soft)",
+                            "One locked letter covers every cuttlefish on Earth and never changes",
+                            "The common cuttlefish has no snapshot letter, and fishing never matters",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia’s IUCN snapshot for Sepia officinalis is Least Concern (LC). Local overfishing and ocean acidification are flagged as watch items. That is not one group letter for all cuttlefish, and letters can change.",
                     },
                 ],
             },
