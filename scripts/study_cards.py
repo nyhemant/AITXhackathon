@@ -984,9 +984,33 @@ waddle. Soft care: protect nesting islands and keep
 oceans healthy for fish (no VU / status dump on JR).
 Nest close together in busy cliff-top colonies. Myth:
 not a penguin — puffins can fly in the air; penguins
-are different birds that don’t. Park Ranger and
-Zoologist are reserved for later: denser Fratercula
-taxonomy, physiology, status. Do not invent photos.
+are different birds that don’t.
+
+Facts for puffin Park Ranger (hard) are Wikipedia-backed:
+https://en.wikipedia.org/wiki/Atlantic_puffin
+Also Fratercula / Alcidae pages as needed. Soft
+Fratercula, physiology, status OK. Atlantic puffin is
+Fratercula arctica — a soft “little brother of the
+north” name story. Belongs to Alcidae (auks) with
+murres, auklets, and razorbills — not penguins. Only
+Atlantic species in the Atlantic; horned and tufted
+puffins live in the North Pacific. Colorful outer bill
+plates and face ornaments grow for breeding, then shed;
+winter bill looks duller and smaller. Spines on tongue
+and roof of mouth help hold a row of fish while catching
+more. Dive using wings for thrust; usually feed in
+shallower water near colonies (soften depth numbers).
+Often return to the same burrow and mate year after
+year. IUCN Vulnerable — letter is a snapshot; some
+colonies still struggle with food and climate shifts.
+Prefer predator-free islands; gulls and skuas still
+threaten chicks from the air. Official bird of
+Newfoundland and Labrador (Canada). Soften contested
+numbers. Keep kid-friendly. Do not redo JR themes
+(North Atlantic home, colorful bill, burrow nest, one
+egg, fish crossbill, underwater wings, land waddle,
+soft care, colony life, not a penguin myth). Zoologist
+is reserved for later. Do not invent photos.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
@@ -1118,7 +1142,8 @@ LEVEL_DISPLAY_NAMES = {
 # Asian small-clawed otter, two-toed sloth, freshwater
 # fish, polar bear, sea otter, American alligator, and
 # American bison and elk ship Junior Ranger + Park
-# Ranger + Zoologist. Puffin ships Junior Ranger only.
+# Ranger + Zoologist. Puffin ships Junior Ranger +
+# Park Ranger.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -1480,14 +1505,14 @@ PUSH_FURTHER_ELK = (
     "Elk and red deer can have fertile hybrids. Why might mixed zones need extra care?",
 )
 TALK_ABOUT_PUFFIN = (
-    "A puffin’s bill turns bright orange, yellow, and red in breeding season. Why might that color show?",
-    "Puffins nest in burrows on rocky islands and cliffs. What might a burrow keep safe?",
-    "A puffin can hold several small fish side-by-side in one bill. How could that help a chick?",
+    "Atlantic puffins sit with auks, not penguins. Why might that family split matter?",
+    "Colorful bill plates grow for breeding, then shed. Why might the winter bill look smaller?",
+    "Vulnerable is one snapshot for Atlantic puffins. What else might still be changing?",
 )
 PUSH_FURTHER_PUFFIN = (
-    "On land puffins walk with a funny side-to-side waddle. Why might that happen?",
-    "Most of the year puffins live far out at sea. What would winter on the ocean be like?",
-    "Nesting islands often have no land predators. Why might that help puffin families?",
+    "Horned and tufted puffins live in the North Pacific. How might those cousins differ?",
+    "Why might colorful outer bill plates shed after the breeding season?",
+    "Some colonies still struggle with food and climate shifts. What might help them recover?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -13557,6 +13582,146 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia says Atlantic puffins fly in the air over the sea. Penguins are different birds that do not fly in the air.",
+                    },
+                ],
+            },
+            "hard": {
+                # Answer-light: Park Ranger has no Learn-first strip.
+                # Facts from Wikipedia, Atlantic puffin (and related
+                # Fratercula / Alcidae pages). Soft Fratercula,
+                # physiology, status OK. Soften contested numbers.
+                # Kid-friendly. Do not redo JR themes.
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "fratercula-arctica-soft",
+                        "title": "Little brother",
+                        "stem": "What is the Atlantic puffin’s scientific name, and what soft name story can Fratercula hold?",
+                        "choices": [
+                            "Fratercula arctica — a soft “little brother of the north” name story",
+                            "Only Panthera leo — Fratercula means “desert lion”",
+                            "Only a fish name — Fratercula means “ocean wave”",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia names the Atlantic puffin Fratercula arctica. Fratercula can be told as a soft “little brother of the north” name story. We keep that name story soft.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "auk-family-soft",
+                        "title": "Auk family",
+                        "stem": "Which bird family does the Atlantic puffin belong to?",
+                        "choices": [
+                            "It sits with penguins, not flying seabirds",
+                            "The auk family, Alcidae — with murres, auklets, and razorbills, not penguins",
+                            "It is a kind of flamingo, not an auk",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia places the Atlantic puffin in the auk family, Alcidae. That family includes murres, auklets, and razorbills. Penguins are different birds.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "three-puffins-soft",
+                        "title": "Three puffins",
+                        "stem": "How many puffin species live in the Atlantic Ocean?",
+                        "choices": [
+                            "All three living puffins nest only in the Atlantic",
+                            "No puffins live in any ocean",
+                            "Only the Atlantic puffin; horned and tufted puffins live in the North Pacific",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says the Atlantic puffin is the only puffin native to the Atlantic Ocean. Two related species, the horned puffin and the tufted puffin, live in the North Pacific.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "bill-plates-soft",
+                        "title": "Bill plates",
+                        "stem": "What happens to an Atlantic puffin’s colorful outer bill after breeding season?",
+                        "choices": [
+                            "The colorful outer plates and face ornaments grow for breeding, then shed — the winter bill looks duller and smaller",
+                            "The bill turns into metal and never changes",
+                            "The bill stays the same bright size all year, with no plates to shed",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says bright orange bill plates and other facial ornaments develop in spring. After breeding they are shed in a partial moult, so the winter bill looks less broad and less bright.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "spiny-tongue-soft",
+                        "title": "Spiny tongue",
+                        "stem": "How can an Atlantic puffin hold a row of fish while catching more?",
+                        "choices": [
+                            "It ties each fish on with string",
+                            "Spines on the tongue and the roof of the mouth help pin fish in a row",
+                            "It balances fish on its back and never uses its mouth",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia describes a muscular, grooved tongue and inward-facing serrations that hold fish while the puffin catches more. Soft physiology: spines on the tongue and roof of the mouth help keep that row in place.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "wing-propelled-dive-soft",
+                        "title": "Wing dive",
+                        "stem": "How does an Atlantic puffin dive for food, and where does it often hunt?",
+                        "choices": [
+                            "It walks on the seafloor on stilts, far from any colony",
+                            "It uses only its tail as a propeller in the deepest trench",
+                            "It dives using its wings for thrust, and it usually feeds in shallower water near colonies (exact depths stay soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says puffins swim underwater using their wings for propulsion. Exact dive depths stay soft. They often hunt nearer the colony, especially when they are feeding a chick.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "site-fidelity-soft",
+                        "title": "Same burrow",
+                        "stem": "Do Atlantic puffins often keep the same home and partner?",
+                        "choices": [
+                            "They often return to the same burrow and mate year after year",
+                            "They pick a brand-new island and a new mate every morning",
+                            "They never go back to a burrow once they leave",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says puffins often return to the same burrows year after year. They are usually monogamous, helped by that fidelity to the nest site.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "vu-snapshot-soft",
+                        "title": "Status snapshot",
+                        "stem": "How should we read the IUCN letter for Atlantic puffins?",
+                        "choices": [
+                            "The letter means every puffin is gone",
+                            "Vulnerable is a snapshot — some colonies still struggle with food and climate shifts",
+                            "The letter means no colony ever needed extra help",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia lists the Atlantic puffin as Vulnerable. Treat that letter as a snapshot, not a forever score. Some colonies still struggle with food and climate shifts.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "predator-islands-soft",
+                        "title": "Predator islands",
+                        "stem": "Why do Atlantic puffins prefer islands, and what still threatens chicks?",
+                        "choices": [
+                            "They nest only in city parks, far from any bird",
+                            "Land foxes are the only risk, and nothing comes from the air",
+                            "They prefer predator-free islands; gulls and skuas still threaten chicks from the air",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says colonies are mostly on islands with no land predators. Adult birds and chicks are still at risk from the air, especially from gulls and skuas.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "provincial-bird-soft",
+                        "title": "Provincial bird",
+                        "stem": "Which Canadian province chose the Atlantic puffin as its official bird?",
+                        "choices": [
+                            "Newfoundland and Labrador",
+                            "Only a desert state far from the sea",
+                            "No place ever chose a puffin as a symbol",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says the Atlantic puffin is the official bird of the Canadian province of Newfoundland and Labrador.",
                     },
                 ],
             },
