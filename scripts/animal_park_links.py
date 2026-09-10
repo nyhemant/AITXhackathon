@@ -1,5 +1,6 @@
-"""Sourced animal ↔ national-park suggestion rails (Yellowstone + Everglades PoC).
+"""Sourced animal ↔ national-park suggestion rails.
 
+Yellowstone, Everglades, and Wave A marine/coastal parks.
 Strong links only. Keep try-next (same-kind animals) separate.
 Park `animals` lists must name every animal that already points at that park.
 Do not invent weak edges or park study tiers.

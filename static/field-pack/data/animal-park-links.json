@@ -1,7 +1,7 @@
 {
   "version": 1,
   "kind": "strong",
-  "note": "PoC animal↔park suggestion graph. Strong, sourced edges only. Do not add weak links (no clownfish→Yellowstone). Sightings are never promised.",
+  "note": "PoC animal↔park suggestion graph. Strong, sourced edges only. Do not add weak links (no clownfish→inland parks; no sea-otter→Channel Islands current sightings; no puffin→Acadia in-park claim). Sightings are never promised.",
   "animals": {
     "american-bison": {
       "name": "American bison",
@@ -61,6 +61,191 @@
           "note": "Sometimes along boardwalks and sloughs — stay on the path and far from the water edge."
         }
       ]
+    },
+    "sea-turtle": {
+      "name": "Sea turtle",
+      "emoji": "🐢",
+      "photo": "/field-pack/photos/sea-turtle.jpg?v=img2",
+      "parks": [
+        {
+          "id": "dry-tortugas",
+          "primary": true,
+          "source": "https://www.nps.gov/drto/learn/nature/sea-turtles.htm",
+          "note": "The keys were named for turtles — if you see one, keep a long, quiet distance."
+        },
+        {
+          "id": "biscayne",
+          "source": "https://www.nps.gov/bisc/learn/nature/reptiles.htm",
+          "note": "Sometimes in the bay or on the reef — usually from a boat. Never promised."
+        },
+        {
+          "id": "everglades",
+          "source": "https://www.nps.gov/ever/learn/nature/seaturtles.htm",
+          "note": "Far coast and Cape Sable beaches — not the Anhinga boardwalk. Never promised."
+        }
+      ]
+    },
+    "shark": {
+      "name": "Shark",
+      "emoji": "🦈",
+      "photo": "/field-pack/photos/shark.jpg?v=img2",
+      "parks": [
+        {
+          "id": "dry-tortugas",
+          "primary": true,
+          "source": "https://www.nps.gov/drto/learn/nature/nursesharks.htm",
+          "note": "Nurse sharks sometimes rest in the shallows — watch from a boat or snorkel and give lots of space."
+        },
+        {
+          "id": "biscayne",
+          "source": "https://www.nps.gov/bisc/learn/nature/animals.htm",
+          "note": "Coastal and reef waters — usually from a boat. Sightings aren’t promised."
+        }
+      ]
+    },
+    "crab": {
+      "name": "Crab",
+      "emoji": "🦀",
+      "photo": "/field-pack/photos/crab.jpg?v=img2",
+      "parks": [
+        {
+          "id": "olympic",
+          "primary": true,
+          "source": "https://www.nps.gov/olym/learn/nature/tidal-life.htm",
+          "note": "Tidepools on the Pacific coast — look, don’t touch, and never promised."
+        },
+        {
+          "id": "biscayne",
+          "source": "https://www.nps.gov/bisc/learn/nature/crustaceans.htm",
+          "note": "Shore, mangroves, and shallows — look, don’t chase."
+        },
+        {
+          "id": "channel-islands",
+          "source": "https://www.nps.gov/chis/learn/nature/kelp-forests.htm",
+          "note": "Tidepools and kelp — if you land or get on the water. Look, don’t touch."
+        }
+      ]
+    },
+    "starfish": {
+      "name": "Sea star",
+      "emoji": "⭐",
+      "photo": "/field-pack/photos/starfish.jpg?v=img2",
+      "parks": [
+        {
+          "id": "olympic",
+          "primary": true,
+          "source": "https://www.nps.gov/olym/learn/nature/tidal-life.htm",
+          "note": "Ochre stars in coast tidepools — look, don’t touch, and never promised."
+        },
+        {
+          "id": "channel-islands",
+          "source": "https://www.nps.gov/chis/learn/nature/sunflower-star.htm",
+          "note": "Tidepools and kelp — if you land. Look, don’t touch."
+        },
+        {
+          "id": "biscayne",
+          "source": "https://www.nps.gov/bisc/learn/nature/threatened-and-endangered-animals.htm",
+          "note": "Reef sea stars — usually from a boat. Look, don’t touch."
+        }
+      ]
+    },
+    "seahorse": {
+      "name": "Seahorse",
+      "emoji": "🌊",
+      "photo": "/field-pack/photos/seahorse.jpg?v=img2",
+      "parks": [
+        {
+          "id": "biscayne",
+          "primary": true,
+          "source": "https://www.nps.gov/bisc/learn/nature/fish.htm",
+          "note": "Tiny seahorses live in seagrass and shallows — hard to spot and never promised."
+        }
+      ]
+    },
+    "octopus": {
+      "name": "Octopus",
+      "emoji": "🐙",
+      "photo": "/field-pack/photos/octopus.jpg?v=img2",
+      "parks": [
+        {
+          "id": "biscayne",
+          "primary": true,
+          "source": "https://www.nps.gov/bisc/learn/nature/mollusks.htm",
+          "note": "Caribbean reef octopus hide on the reef — usually from a boat. Never promised."
+        },
+        {
+          "id": "olympic",
+          "source": "https://www.nps.gov/olym/learn/nature/invertebrates.htm",
+          "note": "Sometimes in deeper water or a rare tidepool — look, don’t touch."
+        }
+      ]
+    },
+    "stingray": {
+      "name": "Stingray",
+      "emoji": "🐟",
+      "photo": "/field-pack/photos/stingray.jpg?v=img2",
+      "parks": [
+        {
+          "id": "biscayne",
+          "primary": true,
+          "source": "https://www.nps.gov/bisc/learn/nature/fish.htm",
+          "note": "Shallow sand and seagrass — shuffle, give space, and never promised."
+        }
+      ]
+    },
+    "kelp-forest": {
+      "name": "Kelp forest",
+      "emoji": "🌿",
+      "photo": "/field-pack/photos/kelp-forest.jpg?v=aq1",
+      "parks": [
+        {
+          "id": "channel-islands",
+          "primary": true,
+          "source": "https://www.nps.gov/chis/learn/nature/kelp-forests.htm",
+          "note": "Giant kelp around the islands — usually from a boat or snorkel. Never promised."
+        },
+        {
+          "id": "olympic",
+          "source": "https://www.nps.gov/olym/learn/nature/sea-otter.htm",
+          "note": "Coast kelp beds — not the Hoh rainforest. Watch from shore and stay far back."
+        }
+      ]
+    },
+    "sea-otter": {
+      "name": "Sea otter",
+      "emoji": "🦦",
+      "photo": "/field-pack/photos/sea-otter.jpg?v=aq1",
+      "parks": [
+        {
+          "id": "kenai-fjords",
+          "primary": true,
+          "source": "https://www.nps.gov/kefj/learn/nature/sea-otter.htm",
+          "note": "Sometimes in the fjords from a boat — not at Exit Glacier. Keep a long, quiet distance."
+        },
+        {
+          "id": "olympic",
+          "source": "https://www.nps.gov/olym/learn/nature/sea-otter.htm",
+          "note": "Sometimes offshore in coast kelp — watch from land and stay far back."
+        }
+      ]
+    },
+    "puffin": {
+      "name": "Puffin",
+      "emoji": "🐦",
+      "photo": "/field-pack/photos/puffin.jpg?v=aq1",
+      "parks": [
+        {
+          "id": "kenai-fjords",
+          "primary": true,
+          "source": "https://www.nps.gov/kefj/learn/nature/puffins.htm",
+          "note": "Horned and tufted puffins on rookery cliffs — usually from a boat. Never promised."
+        },
+        {
+          "id": "glacier-bay",
+          "source": "https://www.nps.gov/glba/learn/nature/birds.htm",
+          "note": "Sometimes on cliffs and islands from a boat — keep a long, quiet distance."
+        }
+      ]
     }
   },
   "parks": {
@@ -100,9 +285,57 @@
       "name": "Everglades",
       "full_name": "Everglades National Park",
       "photo": "/field-pack/photos/np-hero-everglades.jpg?v=q2",
-      "animals": ["american-alligator"],
+      "animals": ["american-alligator", "sea-turtle"],
       "source": "https://www.nps.gov/ever/learn/nature/alligator.htm",
-      "lead": "Along the boardwalks and sloughs — stay on the path. Sightings aren’t promised. Give wildlife lots of space — stay far from the water edge."
+      "lead": "Along the boardwalks and sloughs — and sometimes the far coast. Stay on the path. Sightings aren’t promised. Give wildlife lots of space — stay far from the water edge."
+    },
+    "biscayne": {
+      "name": "Biscayne",
+      "full_name": "Biscayne National Park",
+      "photo": "/field-pack/photos/np-hero-biscayne.jpg?v=q2",
+      "animals": ["sea-turtle", "shark", "stingray", "octopus", "seahorse", "crab", "starfish"],
+      "source": "https://www.nps.gov/bisc/learn/nature/animals.htm",
+      "lead": "Mostly from a boat or the jetty — not a promise. Give wildlife lots of space — look, don’t touch, and stay far back."
+    },
+    "dry-tortugas": {
+      "name": "Dry Tortugas",
+      "full_name": "Dry Tortugas National Park",
+      "photo": "/field-pack/photos/np-hero-dry-tortugas.jpg?v=q2",
+      "animals": ["sea-turtle", "shark"],
+      "source": "https://www.nps.gov/drto/planyourvisit/wildlife-viewing.htm",
+      "lead": "In the water around the keys. Sightings aren’t promised. Give wildlife lots of space — keep a long, quiet distance."
+    },
+    "channel-islands": {
+      "name": "Channel Islands",
+      "full_name": "Channel Islands National Park",
+      "photo": "/field-pack/photos/np-hero-channel-islands.jpg?v=q2",
+      "animals": ["kelp-forest", "starfish", "crab"],
+      "source": "https://www.nps.gov/chis/learn/nature/kelp-forests.htm",
+      "lead": "In the kelp and tidepools — if you get on the water or an island landing. Sightings aren’t promised. Look, don’t touch, and stay far from wildlife."
+    },
+    "olympic": {
+      "name": "Olympic",
+      "full_name": "Olympic National Park",
+      "photo": "/field-pack/photos/np-hero-olympic.jpg?v=q2",
+      "animals": ["sea-otter", "kelp-forest", "starfish", "crab", "octopus"],
+      "source": "https://www.nps.gov/olym/learn/nature/coast.htm",
+      "lead": "On the Pacific coast — not the Hoh rainforest. Sightings aren’t promised. Give wildlife lots of space — look, don’t touch, and stay far back."
+    },
+    "kenai-fjords": {
+      "name": "Kenai Fjords",
+      "full_name": "Kenai Fjords National Park",
+      "photo": "/field-pack/photos/np-hero-kenai-fjords.jpg?v=q2",
+      "animals": ["sea-otter", "puffin"],
+      "source": "https://www.nps.gov/kefj/learn/nature/animals.htm",
+      "lead": "From a boat in the fjords — not at Exit Glacier. Sightings aren’t promised. Give wildlife lots of space — keep a long, quiet distance."
+    },
+    "glacier-bay": {
+      "name": "Glacier Bay",
+      "full_name": "Glacier Bay National Park",
+      "photo": "/field-pack/photos/np-hero-glacier-bay.jpg?v=q2",
+      "animals": ["puffin"],
+      "source": "https://www.nps.gov/glba/learn/nature/birds.htm",
+      "lead": "From a boat in the bay. Sightings aren’t promised. Give wildlife lots of space — keep a long, quiet distance."
     }
   }
 }

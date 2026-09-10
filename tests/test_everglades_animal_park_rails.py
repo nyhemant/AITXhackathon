@@ -63,7 +63,10 @@ class EvergladesAnimalParkRailsTests(unittest.TestCase):
         self.assertEqual([p["id"] for p in gator_parks], ["everglades"])
         self.assertTrue(gator_parks[0]["primary"])
         self.assertEqual(gator_parks[0]["source"], "https://www.nps.gov/ever/learn/nature/alligator.htm")
-        self.assertEqual([a["id"] for a in animals_for_park("everglades")], ["american-alligator"])
+        self.assertEqual(
+            [a["id"] for a in animals_for_park("everglades")],
+            ["american-alligator", "sea-turtle"],
+        )
         self.assertEqual(parks_for_animal("clownfish"), [])
         self.assertEqual(animal_park_rail_html("clownfish"), "")
         raw = LINKS.read_text(encoding="utf-8")
