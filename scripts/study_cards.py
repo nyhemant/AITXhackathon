@@ -1128,11 +1128,44 @@ Soft care: keep shores and reefs healthy so crabs
 have places to hide and grow (no status letter).
 Myth: horseshoe “crabs” aren’t crabs — they’re a
 different kind of animal, closer to spiders than to
-true crabs. Reserve denser Brachyura / Anomura
-taxonomy, carcinisation, and status-by-kind for
-later. Soften contested numbers. Keep kid-friendly.
-Park Ranger and Zoologist are reserved. Do not
-invent photos.
+true crabs. Park Ranger (hard) ships on this card.
+Zoologist is reserved. Soften contested numbers.
+Keep kid-friendly. Do not invent photos.
+
+Facts for crab Park Ranger (hard) are
+Wikipedia-backed: https://en.wikipedia.org/wiki/Crab
+(Brachyura / Anomura / carcinisation / horseshoe crab
+pages as needed). Soft taxonomy, look-alikes, niches,
+size, and status-by-kind OK. True crabs = infraorder
+Brachyura (about 7,000 species — soft count); thick
+armored carapace, tail tucked under. Hermit crabs,
+king crabs, porcelain crabs, and mole crabs sit in
+sister group Anomura — look crabby but aren’t
+Brachyura. Carcinisation: crab-like body (flat shell,
+tucked abdomen, sideways scuttle) evolved more than
+once — nature keeps inventing “crabs.” King crabs
+look like true crabs but evidence says they evolved
+from hermit-crab ancestors (asymmetrical abdomen
+clue — soft). Porcelain crabs are small, flattened
+Anomura (near squat lobsters); often drop a limb to
+escape (soft). Hermit crabs keep a soft rear and
+borrow empty snail shells; not the same body plan as
+true crabs. Horseshoe “crabs” aren’t decapods at all
+— Chelicerata (with spiders/scorpions); different
+mouthparts and body layout. Omnivores, herbivores,
+carnivores, filter-feeders, even some parasites;
+about 1,300 freshwater crab species (soft). Pea crabs
+only millimeters across; Japanese spider crab leg
+spans can reach several meters (soften exacts). No
+single IUCN letter for “crabs” as a group — some
+common/fished kinds do fine; others (and horseshoe
+crabs as separate animals) face habitat/harvest
+pressure (soft snapshot). Soften contested numbers.
+Keep kid-friendly. Do not redo JR themes (hard
+shell, claws, sideways walk, hide, molt, many kinds
+without measures, ocean-to-land, simple omnivore,
+soft shore/reef care, horseshoe-not-crab myth).
+Zoologist is reserved. Do not invent photos.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
@@ -1267,7 +1300,7 @@ LEVEL_DISPLAY_NAMES = {
 # fish, polar bear, sea otter, American alligator, and
 # American bison, elk, puffin, and clownfish ship
 # Junior Ranger + Park Ranger + Zoologist. Crab ships
-# Junior Ranger only.
+# Junior Ranger + Park Ranger.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -1653,14 +1686,14 @@ PUSH_FURTHER_CLOWNFISH = (
     "Babies drift as ocean larvae, then must find an anemone. Why is that settlement a puzzle?",
 )
 TALK_ABOUT_CRAB = (
-    "Crabs have a hard shell and claws. Why might those help at the shore?",
-    "Many crabs walk sideways. Why might that be handy among rocks?",
-    "A crab must shed its shell to grow. What would you watch for after a molt?",
+    "True crabs tuck a tail under. Hermit and king crabs can look crabby. What would you check?",
+    "Nature keeps inventing crab shapes. Why might a flat shell and tucked tail keep showing up?",
+    "Horseshoe “crabs” sit with spiders, not decapods. What else might look different besides the name?",
 )
 PUSH_FURTHER_CRAB = (
-    "After a molt the new shell is soft. Why might a crab hide until it hardens?",
-    "Hermit crabs borrow empty shells. Why might a used shell still be useful?",
-    "Shores and reefs give crabs cracks to hide in. Why do those homes matter?",
+    "Crab-like bodies evolved more than once. Why might evolution keep making that shape?",
+    "King crabs may come from hermit-crab ancestors. What clue might an uneven abdomen give?",
+    "There is no single status letter for “crabs.” Why can’t a group card share one letter?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -14594,6 +14627,147 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia says horseshoe crabs are not true crabs. They belong with a different group of animals, closer to spiders than to true crabs.",
+                    },
+                ],
+            },
+            "hard": {
+                # Answer-light: Park Ranger has no Learn-first strip.
+                # Facts from Wikipedia, Crab (and related Brachyura /
+                # Anomura / carcinisation / horseshoe crab pages).
+                # Soft taxonomy, look-alikes, niches, size,
+                # status-by-kind OK. Soften contested numbers.
+                # Kid-friendly. Do not redo JR.
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "brachyura-soft",
+                        "title": "True crabs",
+                        "stem": "What are “true crabs,” and what body plan do they share?",
+                        "choices": [
+                            "Infraorder Brachyura — about 7,000 species (soft) — thick armored carapace, tail tucked under",
+                            "They are a kind of fish with no shell at all",
+                            "They are the same group as insects and spiders",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia places true crabs in infraorder Brachyura. Counts are often near 7,000 species, but we keep the exact number soft. They share a thick armored carapace and a short tail tucked under the body.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "anomura-soft",
+                        "title": "Look-alikes",
+                        "stem": "Which look-alike crabs sit in sister group Anomura, not Brachyura?",
+                        "choices": [
+                            "Only true crabs in Brachyura, and nothing else looks crabby",
+                            "Hermit crabs, king crabs, porcelain crabs, and mole crabs sit in Anomura — they look crabby but aren’t Brachyura",
+                            "Only whales and dolphins, which have no shells",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia places hermit crabs, king crabs, porcelain crabs, and mole crabs in Anomura, a sister group to true crabs. They can look crabby without being Brachyura.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "carcinisation-soft",
+                        "title": "Crab shape",
+                        "stem": "What does carcinisation say about crab-like bodies?",
+                        "choices": [
+                            "Crabs were invented only once, and the shape never appeared again",
+                            "Only people invent crab shapes; nature never does",
+                            "A crab-like body — flat shell, tucked abdomen, sideways scuttle — evolved more than once",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia describes carcinisation as evolving a crab-like body more than once. A flat shell, tucked abdomen, and sideways walk keep showing up. Nature keeps inventing “crabs.”",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "king-from-hermit-soft",
+                        "title": "King crabs",
+                        "stem": "Why might king crabs look like true crabs but not be Brachyura?",
+                        "choices": [
+                            "Evidence says they evolved from hermit-crab ancestors — an uneven abdomen is a soft clue",
+                            "They are true Brachyura crabs with a perfectly even tail",
+                            "They are fish that borrowed a crab costume",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia notes evidence that king crabs evolved from hermit-crab ancestors. An asymmetrical abdomen is a soft clue. They look like true crabs but sit with Anomura.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "porcelain-soft",
+                        "title": "Porcelain",
+                        "stem": "What are porcelain crabs, and how can they escape?",
+                        "choices": [
+                            "They are giant true crabs that never drop a limb",
+                            "Small, flattened Anomura near squat lobsters; they often drop a limb to escape (soft)",
+                            "They are made of kitchen plates, not living animals",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia places porcelain crabs in Anomura, near squat lobsters. They are small and flattened. Many can drop a limb to escape — we keep that trick soft.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "hermit-shell-soft",
+                        "title": "Hermit shell",
+                        "stem": "How is a hermit crab’s rear different from a true crab’s?",
+                        "choices": [
+                            "Hermit crabs have the same tucked-tail armor as every true crab",
+                            "Hermit crabs grow a hard rear shell and never need help",
+                            "Hermit crabs keep a soft rear and borrow empty snail shells — not the same body plan as true crabs",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says hermit crabs have a soft, often coiled abdomen and occupy empty gastropod shells. That is not the tucked-tail armored plan of true crabs.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "chelicerata-deepen-soft",
+                        "title": "Horseshoe deepen",
+                        "stem": "Why aren’t horseshoe “crabs” decapod crabs at all?",
+                        "choices": [
+                            "They sit in Chelicerata with spiders and scorpions — different mouthparts and body layout",
+                            "They are Brachyura true crabs with the same claws and tail tuck",
+                            "They are a kind of fish that lives only in rivers",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia places horseshoe crabs in Chelicerata, with spiders and scorpions — not with decapod crabs. Their mouthparts and body layout are different.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "niche-spread-soft",
+                        "title": "Niches",
+                        "stem": "How wide can crab diets and freshwater homes spread?",
+                        "choices": [
+                            "Every crab eats only the same ocean snack and never lives in fresh water",
+                            "Omnivores, herbivores, carnivores, filter-feeders, even some parasites; about 1,300 freshwater kinds (soft)",
+                            "Crabs eat only metal and live only in the sky",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says crabs include many feeding styles — omnivores, plant-eaters, hunters, filter-feeders, and even some parasites. About 1,300 kinds live in fresh water. We keep that count soft.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "size-extremes-soft",
+                        "title": "Size range",
+                        "stem": "How far can crab sizes stretch if we keep exact records soft?",
+                        "choices": [
+                            "Every crab is the size of a dinner plate, with no tiny or giant kinds",
+                            "All crabs are exactly one meter across",
+                            "Pea crabs may be only millimeters across; Japanese spider crab leg spans can reach several meters (soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia ranges from tiny pea crabs to the Japanese spider crab. Pea crabs can be only millimeters across. Spider-crab leg spans can reach several meters. Exact records stay soft.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "status-by-kind-soft",
+                        "title": "Status by kind",
+                        "stem": "Is there one IUCN letter for “crabs” as a group?",
+                        "choices": [
+                            "No — some common or fished kinds do fine; others (and horseshoe crabs as separate animals) face habitat or harvest pressure (soft snapshot)",
+                            "Yes — every crab on Earth shares one locked letter forever",
+                            "Yes — crabs are all extinct, so the letter never changes",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia does not give one Red List letter for crabs as a group. Some common or fished kinds do well. Others, and horseshoe crabs as separate animals, can face habitat or harvest pressure. That is a soft snapshot.",
                     },
                 ],
             },
