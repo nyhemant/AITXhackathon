@@ -12416,14 +12416,14 @@
     "source": "https://en.wikipedia.org/wiki/Clownfish",
     "source_note": "Facts from Wikipedia, Clownfish.",
     "talk_about": [
-      "Clownfish are born male; the biggest can become female if she is gone. Why might that ladder matter?",
-      "False percula and true orange clownfish can look alike. What might you notice in the black outline?",
-      "Special mucus plus careful touching of tentacles helps them settle. Why isn’t protection instant?"
+      "The maroon clownfish is sometimes kept in genus Premnas. Why might scientists still debate that nest?",
+      "Smaller fish keep their growth in check. Why might that help them stay in the group?",
+      "Mucus chemistry may help avoid stings. Why do scientists still treat that as a soft story?"
     ],
     "push_further": [
-      "The biggest fish is the breeding female; smaller fish wait in line. Why might that size order matter?",
-      "The fish gets shelter; the anemone may get cleaning or defense help. How might both sides gain?",
-      "Captive-bred clownfish are popular pets. Why might that take pressure off wild reefs?"
+      "Some clownfish use many host anemones; others stick to one. Why might specialist vs generalist matter?",
+      "Clicks, pops, and chirps can help keep rank. How might sound work during a chase?",
+      "Babies drift as ocean larvae, then must find an anemone. Why is that settlement a puzzle?"
     ],
     "levels": {
       "easy": {
@@ -12699,6 +12699,141 @@
             ],
             "correct": "A",
             "why": "Wikipedia says clownfish rely on sea anemones for shelter and are limited by those host homes on reefs. Habitat health and clownfish health travel together."
+          }
+        ]
+      },
+      "zoologist": {
+        "teach": [],
+        "questions": [
+          {
+            "slot": 1,
+            "id": "amphiprioninae-soft",
+            "title": "Amphiprioninae",
+            "stem": "Where have anemonefish traditionally sat inside the damselfish family?",
+            "choices": [
+              "They have traditionally been placed in subfamily Amphiprioninae within Pomacentridae — that nest can still shift (soft)",
+              "They sit only with goldfish, far from any damselfish family",
+              "They sit only with sharks, not bony reef fish"
+            ],
+            "correct": "A",
+            "why": "Wikipedia traditionally places anemonefish in subfamily Amphiprioninae, inside the damselfish family Pomacentridae. Later trees can move those names. We keep that family map soft."
+          },
+          {
+            "slot": 2,
+            "id": "premnas-flux-soft",
+            "title": "Premnas nest",
+            "stem": "How do scientists treat the maroon clownfish (Premnas biaculeatus)?",
+            "choices": [
+              "It is a penguin that never lives with anemones",
+              "It is sometimes kept in its own genus Premnas, and sometimes nested inside Amphiprion — the debate stays soft",
+              "Every scientist agrees it is a goldfish, with no genus debate"
+            ],
+            "correct": "B",
+            "why": "Wikipedia still often lists the maroon clownfish as Premnas biaculeatus. Some studies nest it inside Amphiprion. We keep that genus debate soft."
+          },
+          {
+            "slot": 3,
+            "id": "species-complexes-soft",
+            "title": "Species groups",
+            "stem": "Which classic species complexes do scientists often name for anemonefish?",
+            "choices": [
+              "Only one unnamed group that never splits",
+              "Only desert-lizard complexes far from the reef",
+              "Classic complexes include percula, clarkii, ephippium, akallopisos, and polymnus (soft)"
+            ],
+            "correct": "C",
+            "why": "Wikipedia groups many anemonefish into species complexes. Classic names include the percula, clarkii, ephippium, akallopisos, and polymnus groups. Exact membership can shift, so we keep that map soft."
+          },
+          {
+            "slot": 4,
+            "id": "clarkii-generalist-soft",
+            "title": "Clarkii hosts",
+            "stem": "How does Amphiprion clarkii compare with many other clownfish as a host user?",
+            "choices": [
+              "A. clarkii can use many host anemones; many other clownfish are narrower specialists (soft)",
+              "A. clarkii never uses any anemone, and every other clownfish uses every host",
+              "Every clownfish uses exactly one host, and clarkii is no different"
+            ],
+            "correct": "A",
+            "why": "Wikipedia describes Amphiprion clarkii as a host generalist that can live with many anemone kinds. Other clownfish often specialize on one or a few hosts. We keep that specialist–generalist split soft."
+          },
+          {
+            "slot": 5,
+            "id": "growth-suppression-soft",
+            "title": "Growth check",
+            "stem": "How do smaller clownfish keep from being evicted by the fish above them?",
+            "choices": [
+              "They leave the reef the moment they hatch and never share a home",
+              "Subordinates keep their growth in check so size gaps stay clear and they are less likely to be chased out (soft)",
+              "They grow as fast as they can so they can evict the breeding female that day"
+            ],
+            "correct": "B",
+            "why": "Wikipedia describes a size-based queue. Smaller fish can suppress their own growth so they stay clearly smaller than the fish above them. That gap can help them avoid eviction. Exact gap sizes stay soft."
+          },
+          {
+            "slot": 6,
+            "id": "sound-hierarchy-soft",
+            "title": "Sound rank",
+            "stem": "How can sound help a clownfish group keep its rank?",
+            "choices": [
+              "They never make any sound, so rank is silent forever",
+              "They sing only whale songs that have nothing to do with rank",
+              "Clicks, pops, and chirps can help enforce rank during chases and displays (soft)"
+            ],
+            "correct": "C",
+            "why": "Wikipedia notes that anemonefish make sounds — clicks, pops, and chirps — during chases and displays. Those sounds can help keep the size-and-rank order. We keep that sound story soft."
+          },
+          {
+            "slot": 7,
+            "id": "mucus-chemistry-soft",
+            "title": "Mucus sugars",
+            "stem": "What mucus chemistry idea may help clownfish avoid triggering anemone stings?",
+            "choices": [
+              "Low sialic-acid / Neu5Ac-type sugars in the mucus may help avoid triggering stings — the mechanism is still debated (soft)",
+              "They wear a plastic raincoat that blocks every sting forever",
+              "Anemones never sting any animal, so mucus chemistry cannot matter"
+            ],
+            "correct": "A",
+            "why": "Wikipedia discusses a mucus coat that may carry fewer sialic-acid (Neu5Ac-type) sugars than other fish. That chemistry might help the fish avoid triggering nematocyst stings. The exact mechanism is still debated, so we keep it soft."
+          },
+          {
+            "slot": 8,
+            "id": "acclimation-innate-soft",
+            "title": "Innate mix",
+            "stem": "Is sting protection only learned, or is some of it already there?",
+            "choices": [
+              "Protection is only a magic hat they put on after they grow old",
+              "Some protection looks innate; some builds during careful tentacle contact — species can differ (soft)",
+              "No clownfish ever has any protection, learned or innate"
+            ],
+            "correct": "B",
+            "why": "Wikipedia describes both an innate mucus difference and a careful acclimation period of touching tentacles. How much is built-in versus learned can differ by species. We keep that mix soft."
+          },
+          {
+            "slot": 9,
+            "id": "larval-ocean-soft",
+            "title": "Ocean larvae",
+            "stem": "What happens after clownfish eggs hatch, before a young fish can live in an anemone?",
+            "choices": [
+              "Babies walk onto land and never return to the sea",
+              "They hatch already glued to one anemone and never leave",
+              "Hatchlings become planktonic larvae in open water; juveniles must later find an anemone to settle (soft)"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says eggs hatch into planktonic larvae that drift in open water. Later, juveniles must find a suitable anemone to settle. That search is a soft settlement puzzle."
+          },
+          {
+            "slot": 10,
+            "id": "mutualism-deepen-soft",
+            "title": "Deeper mutual",
+            "stem": "Beyond a simple hideout, how might the fish–anemone partnership go both ways?",
+            "choices": [
+              "Fish may fan, clean, or defend; some evidence suggests anemones grow better with resident fish (soft)",
+              "The anemone always dies if a clownfish stays nearby",
+              "Neither animal ever helps the other in any extra way"
+            ],
+            "correct": "A",
+            "why": "Wikipedia describes more than shelter. Clownfish may fan, clean, and chase attackers. Some studies suggest host anemones grow better when resident fish stay. That extra benefit stays soft evidence."
           }
         ]
       }
