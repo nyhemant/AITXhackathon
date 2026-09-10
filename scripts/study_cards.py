@@ -15941,7 +15941,7 @@ STUDY_CARDS: dict[str, dict] = {
                         "title": "Schmidt",
                         "stem": "What did Johannes Schmidt show about eel spawning, if we keep that history soft?",
                         "choices": [
-                            "He traced ever-smaller leptocephali to the Sargasso Sea in the early 1900s — without seeing adults spawn (soft history)",
+                            "Johannes Schmidt traced ever-smaller leptocephali to the Sargasso Sea in the early 1900s — without seeing adults spawn (soft history)",
                             "He watched adult eels spawn on a beach every summer and filmed every nest",
                             "He proved eels never leave rivers and never have larvae",
                         ],
@@ -15994,7 +15994,7 @@ STUDY_CARDS: dict[str, dict] = {
                         "stem": "Where does the electric eel (Electrophorus) sit, if we keep that tree soft?",
                         "choices": [
                             "It is a true moray that sits inside Anguilliformes with congers",
-                            "It is a South American knifefish (Gymnotiformes), closer to the catfish/carp line than to Anguilliformes (soft)",
+                            "Electrophorus is a South American knifefish (Gymnotiformes), closer to the catfish/carp line than to Anguilliformes (soft)",
                             "It is a shark that lives only in the open Pacific",
                         ],
                         "correct": "B",
