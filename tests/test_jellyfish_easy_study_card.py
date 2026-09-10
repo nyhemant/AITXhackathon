@@ -1,4 +1,4 @@
-"""Jellyfish Easy study-card: Junior Ranger teach + 10 MCQs (later tiers reserved)."""
+"""Jellyfish Easy study-card: Junior Ranger teach + 10 MCQs (Park Ranger is a sibling level)."""
 
 from __future__ import annotations
 
@@ -122,7 +122,12 @@ BRITTLE = (
     "mph",
     "km/h",
 )
-PAGE_BRITTLE = BRITTLE
+# Explore more now uses Park Ranger talk/push, so class names and
+# strobilation may appear on the Junior Ranger page without leaking
+# into JR questions.
+PAGE_BRITTLE = tuple(
+    p for p in BRITTLE if p not in ("Scyphozoa", "Cubozoa", "Hydrozoa", "strobilation")
+)
 RESERVED = (
     "IUCN",
     "Scyphozoa",
@@ -185,8 +190,8 @@ class JellyfishEasyStudyCardTests(unittest.TestCase):
                 "jellyfish",
             ),
         )
-        self.assertEqual(shipped_levels_for("jellyfish"), ("easy",))
-        self.assertIsNone(study_deck_for("jellyfish", "hard"))
+        self.assertEqual(shipped_levels_for("jellyfish"), ("easy", "hard"))
+        self.assertIsNotNone(study_deck_for("jellyfish", "hard"))
         self.assertIsNone(study_deck_for("jellyfish", "zoologist"))
         self.assertIsNone(study_deck_for("octopus"))
         deck = study_deck_for("jellyfish")
@@ -310,15 +315,15 @@ class JellyfishEasyStudyCardTests(unittest.TestCase):
             self.assertNotIn(phrase, html)
         visible = _text(html)
         self.assertIn("Junior Ranger", visible)
-        self.assertNotIn("Park Ranger", visible)
+        self.assertIn("Park Ranger", visible)
         self.assertNotIn("Zoologist", visible)
-        self.assertIn('class="study-level-badge"', html)
-        self.assertNotIn('class="study-level-picker"', html)
-        self.assertNotIn('data-study-pick="easy"', html)
-        self.assertNotIn('data-study-pick="hard"', html)
+        self.assertIn('class="study-level-picker"', html)
+        self.assertIn('data-study-pick="easy"', html)
+        self.assertIn('data-study-pick="hard"', html)
         self.assertNotIn('data-study-pick="zoologist"', html)
-        self.assertNotIn("study-level-picker-bottom", html)
-        self.assertEqual(html.count('role="group"'), 0)
+        self.assertNotIn('class="study-level-badge"', html)
+        self.assertEqual(html.count('role="group"'), 2)
+        self.assertIn("study-level-picker-bottom", html)
         for badge in PLAIN_LEVEL_LABELS + AGE_BADGES:
             self.assertNotIn(badge, visible)
         self.assertNotIn(" · Easy ·", html)
@@ -363,7 +368,7 @@ class JellyfishEasyStudyCardTests(unittest.TestCase):
             main,
         )
         self.assertIn('class="card-try-next no-print"', main)
-        self.assertNotIn("study-level-picker-bottom", main)
+        self.assertIn("study-level-picker-bottom", main)
         self.assertNotIn("card-print-note", main)
         self.assertIn("study-card.js?v=10", html)
         self.assertIn("study-card.css?v=10", html)
@@ -387,13 +392,13 @@ class JellyfishEasyStudyCardTests(unittest.TestCase):
         self.assertLess(main.find("study-explore"), main.find("card-try-next"))
         visible = _text(main)
         self.assertIn("Junior Ranger", visible)
-        self.assertNotIn("Park Ranger", visible)
+        self.assertIn("Park Ranger", visible)
         self.assertNotIn("Zoologist", visible)
-        self.assertIn('class="study-level-badge"', main)
-        self.assertNotIn('class="study-level-picker"', main)
-        self.assertNotIn('data-study-pick="easy"', main)
-        self.assertNotIn('data-study-pick="hard"', main)
+        self.assertIn('class="study-level-picker"', main)
+        self.assertIn('data-study-pick="easy"', main)
+        self.assertIn('data-study-pick="hard"', main)
         self.assertNotIn('data-study-pick="zoologist"', main)
+        self.assertNotIn('class="study-level-badge"', main)
         self.assertIn("Learn first", main)
         self.assertIn(">Quiz</h2>", main)
         self.assertEqual(main.count("data-study-correct"), 2)
@@ -470,7 +475,7 @@ class JellyfishEasyStudyCardTests(unittest.TestCase):
         self.assertIn("is-wrong-pick", study_js)
         self.assertIn("FPStudyLevelName", study_js + STUDY_DATA_JS.read_text(encoding="utf-8"))
 
-    def test_artifacts_include_jellyfish_easy_only(self):
+    def test_artifacts_include_jellyfish_easy_and_hard(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
         self.assertIn("jellyfish", payload)
         self.assertNotIn("octopus", payload)
@@ -480,8 +485,8 @@ class JellyfishEasyStudyCardTests(unittest.TestCase):
         self.assertIn("clownfish", payload)
         fish = payload["jellyfish"]
         self.assertEqual(fish["id"], "jellyfish")
-        self.assertEqual(set(fish["levels"]), {"easy"})
-        self.assertNotIn("hard", fish["levels"])
+        self.assertEqual(set(fish["levels"]), {"easy", "hard"})
+        self.assertEqual(fish["levels"]["hard"]["teach"], [])
         self.assertNotIn("zoologist", fish["levels"])
         easy = fish["levels"]["easy"]
         self.assertEqual(len(easy["teach"]), 5)
@@ -514,7 +519,7 @@ class JellyfishEasyStudyCardTests(unittest.TestCase):
         jelly_html = JELLYFISH.read_text(encoding="utf-8")
         visible = _text(_main(jelly_html))
         self.assertIn("Junior Ranger", visible)
-        self.assertNotIn("Park Ranger", visible)
+        self.assertIn("Park Ranger", visible)
         self.assertNotIn("Zoologist", visible)
         eel_html = EEL.read_text(encoding="utf-8")
         self.assertIn("Junior Ranger", _text(_main(eel_html)))
