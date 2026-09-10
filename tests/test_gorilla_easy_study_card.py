@@ -185,6 +185,7 @@ class GorillaEasyStudyCardTests(unittest.TestCase):
                 "american-bison",
                 "elk",
                 "puffin",
+                "clownfish",
             ),
         )
         self.assertEqual(shipped_levels_for("western-lowland-gorilla"), ("easy", "hard", "zoologist"))

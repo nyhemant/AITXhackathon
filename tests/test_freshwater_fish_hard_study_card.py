@@ -36,7 +36,7 @@ from study_cards import (  # noqa: E402
 
 FP = REPO / "static" / "field-pack"
 FISH = FP / "cards" / "freshwater-fish" / "index.html"
-CLOWNFISH = FP / "cards" / "clownfish" / "index.html"
+JELLYFISH = FP / "cards" / "jellyfish" / "index.html"
 SLOTH = FP / "cards" / "two-toed-sloth" / "index.html"
 LION = FP / "cards" / "african-lion" / "index.html"
 STUDY_JSON = FP / "data" / "study-cards.json"
@@ -110,8 +110,8 @@ class FreshwaterFishHardStudyCardTests(unittest.TestCase):
     def test_hard_deck_is_park_ranger_without_teach(self):
         self.assertEqual(shipped_levels_for("freshwater-fish"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("freshwater-fish", "zoologist"))
-        self.assertNotIn("clownfish", study_card_ids())
-        self.assertIsNone(study_deck_for("clownfish"))
+        self.assertNotIn("jellyfish", study_card_ids())
+        self.assertIsNone(study_deck_for("jellyfish"))
         self.assertEqual(level_display_name("hard"), "Park Ranger")
         deck = study_deck_for("freshwater-fish", "hard")
         self.assertIsNotNone(deck)
@@ -265,11 +265,11 @@ class FreshwaterFishHardStudyCardTests(unittest.TestCase):
         self.assertIn("Zoologist", sloth_html)
         self.assertEqual(sloth_hard["talk_about"], list(TALK_ABOUT_TWO_TOED_SLOTH))
         self.assertEqual(sloth_hard["push_further"], list(PUSH_FURTHER_TWO_TOED_SLOTH))
-        clown = CLOWNFISH.read_text(encoding="utf-8")
-        self.assertIn("What do they eat?", clown)
-        self.assertNotIn("card-study-pack", clown)
-        self.assertNotIn("salt-water-balance-soft", clown)
-        self.assertIsNone(study_deck_for("clownfish"))
+        jelly = JELLYFISH.read_text(encoding="utf-8")
+        self.assertIn("What do they eat?", jelly)
+        self.assertNotIn("card-study-pack", jelly)
+        self.assertNotIn("salt-water-balance-soft", jelly)
+        self.assertIsNone(study_deck_for("jellyfish"))
 
     def test_published_artifacts_and_plumbing(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))

@@ -1034,6 +1034,28 @@ Soften contested numbers. Treat IUCN letters as
 snapshots. Keep kid-friendly. Do not redo JR or PR
 themes. Do not invent photos.
 
+Facts for clownfish Junior Ranger (easy) are
+Wikipedia-backed: https://en.wikipedia.org/wiki/Clownfish
+(Amphiprion / anemonefish group page). JR stays
+kid-simple “clownfish.” Bright orange reef fish with
+white stripes. Also called anemonefish. Live with sea
+anemones on coral reefs. Stay close to their anemone
+“home.” Small fish of warm Indo-Pacific reefs. Shallow
+coral reefs and nearby calm lagoons. Orange to reddish
+body with white bands (some kinds look darker). Live
+among sea-anemone tentacles for shelter. Special skin
+mucus helps them not get stung (no dense chemistry).
+Duck into the anemone when danger comes. Live in small
+groups around one anemone. Lay eggs near the anemone;
+parents help guard them. Found in warm Indian Ocean and
+western Pacific waters. Soft care: healthy reefs and
+anemones keep clownfish homes safe (no status letter).
+Myth: not just one “Nemo” fish — many kinds of
+anemonefish share the clownfish nickname. Reserve
+denser Amphiprion taxonomy, protandry, mucus chemistry,
+and status for later tiers. Soften contested numbers.
+Keep kid-friendly. Do not invent photos.
+
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
 zoologist. Visible copy uses LEVEL_DISPLAY_NAMES only — no age badges,
@@ -1087,6 +1109,7 @@ WIKI_AMERICAN_ALLIGATOR = "https://en.wikipedia.org/wiki/American_alligator"
 WIKI_AMERICAN_BISON = "https://en.wikipedia.org/wiki/American_bison"
 WIKI_ELK = "https://en.wikipedia.org/wiki/Elk"
 WIKI_ATLANTIC_PUFFIN = "https://en.wikipedia.org/wiki/Atlantic_puffin"
+WIKI_CLOWNFISH = "https://en.wikipedia.org/wiki/Clownfish"
 
 LETTERS = ("A", "B", "C")
 STUDY_SLOTS = 10
@@ -1164,7 +1187,8 @@ LEVEL_DISPLAY_NAMES = {
 # Asian small-clawed otter, two-toed sloth, freshwater
 # fish, polar bear, sea otter, American alligator, and
 # American bison, elk, and puffin ship Junior Ranger +
-# Park Ranger + Zoologist.
+# Park Ranger + Zoologist. Clownfish ships Junior
+# Ranger only.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -1210,6 +1234,7 @@ STUDY_NEIGHBORS = {
     "american-bison": ("zebra", "warthog"),
     "elk": ("american-bison", "zebra"),
     "puffin": ("african-penguin", "polar-bear"),
+    "clownfish": ("shark", "freshwater-fish"),
 }
 
 STUDY_CARD_TITLES = {
@@ -1242,6 +1267,7 @@ STUDY_CARD_TITLES = {
     "american-bison": "American bison",
     "elk": "Elk",
     "puffin": "Puffin",
+    "clownfish": "Clownfish",
 }
 
 # Shared answers-side deepen (Claude sample). Not scored. Future animals reuse keys.
@@ -1534,6 +1560,16 @@ PUSH_FURTHER_PUFFIN = (
     "Atlantic puffins are often split into a few named kinds. Why might size and range still stay soft?",
     "The rhinoceros auklet is a sister in that puffin tribe. What else might that Pacific family share?",
     "Vulnerable is one snapshot. Why might East Atlantic declines look stronger than some West Atlantic colonies?",
+)
+TALK_ABOUT_CLOWNFISH = (
+    "Clownfish live among sea-anemone tentacles. Why might that partnership help both?",
+    "Many clownfish have bright orange bodies with white stripes. What might those stripes help you notice?",
+    "Clownfish stay close to a reef anemone “home.” What would you look for first at the aquarium?",
+)
+PUSH_FURTHER_CLOWNFISH = (
+    "Special skin mucus helps a clownfish not get stung. Why might that coating matter?",
+    "A small group shares one anemone. How might they share that home?",
+    "Healthy reefs and anemones keep clownfish homes safe. What could people do to help?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -13884,6 +13920,157 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia’s auk family tree includes the extinct great auk, a flightless alcid cousin. Puffins still fly. That contrast shows how auk lineages can take very different paths. Soft history — not a scare story.",
+                    },
+                ],
+            },
+        },
+    },
+    "clownfish": {
+        "id": "clownfish",
+        "source": WIKI_CLOWNFISH,
+        "source_note": "Facts from Wikipedia, Clownfish.",
+        "talk_about": list(TALK_ABOUT_CLOWNFISH),
+        "push_further": list(PUSH_FURTHER_CLOWNFISH),
+        "levels": {
+            "easy": {
+                # Teaching-first: same front as the quiz. Hard later may hide these.
+                "teach": [
+                    "Bright orange reef fish with white stripes",
+                    "Also called anemonefish",
+                    "Live with sea anemones on coral reefs",
+                    "Stay close to their anemone “home”",
+                    "Small fish of warm Indo-Pacific reefs",
+                ],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "reef-home-soft",
+                        "title": "Reef home",
+                        "stem": "Where do clownfish usually live?",
+                        "choices": [
+                            "On shallow coral reefs and in nearby calm lagoons",
+                            "Only in frozen Arctic ice caves",
+                            "Only in desert sand dunes",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says clownfish live on coral reefs in warm Indo-Pacific waters. Their homes are shallow reefs and nearby lagoon water.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "orange-stripes-soft",
+                        "title": "Orange stripes",
+                        "stem": "What do many clownfish look like?",
+                        "choices": [
+                            "A plain gray fish with no marks",
+                            "An orange to reddish body with white bands — some kinds look darker",
+                            "A tall bird with a long pink beak",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says clownfish often have white bars on a red, orange, yellow, brown, or black body. Many look bright orange with white bands; some kinds look darker.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "anemone-partner-soft",
+                        "title": "Anemone partner",
+                        "stem": "Where do clownfish find shelter?",
+                        "choices": [
+                            "In a treetop nest far from water",
+                            "Inside a desert cactus",
+                            "Among sea-anemone tentacles on the reef",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says clownfish live with sea anemones. They use the anemone’s tentacles for shelter and protection from predators.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "safe-mucus-soft",
+                        "title": "Safe mucus",
+                        "stem": "Why can a clownfish sit in stinging tentacles?",
+                        "choices": [
+                            "Special skin mucus helps them not get stung",
+                            "They wear a plastic raincoat",
+                            "Anemones never sting any animal",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says a mucus coating on the skin helps clownfish avoid being stung. How that mucus is made stays a later story.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "tentacle-hideout-soft",
+                        "title": "Tentacle hideout",
+                        "stem": "What does a clownfish do when danger comes?",
+                        "choices": [
+                            "It flies away over the waves",
+                            "It ducks into the anemone tentacles",
+                            "It hides in a snow cave",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says a clownfish that wanders out hurries back to the tentacles when it senses a threat. The anemone is its safe hideout.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "family-group-soft",
+                        "title": "Family group",
+                        "stem": "How do clownfish usually live around an anemone?",
+                        "choices": [
+                            "Each fish lives alone on a different continent",
+                            "They travel in giant whale pods across the open ocean",
+                            "They live in a small group around one anemone",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says clownfish live in a small group with a breeding pair and some younger fish. They share one anemone home.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "egg-care-soft",
+                        "title": "Egg care",
+                        "stem": "Where do clownfish put their eggs, and who helps?",
+                        "choices": [
+                            "They lay eggs near the anemone, and parents help guard them",
+                            "They hide eggs in a treetop bird nest",
+                            "They never have eggs — babies fall from the sky",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says the female lays eggs on a rock near the anemone. A parent helps clean, fan, and guard them.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "indo-pacific-soft",
+                        "title": "Indo-Pacific home",
+                        "stem": "Where in the world do wild clownfish live?",
+                        "choices": [
+                            "Only in the icy Arctic Ocean",
+                            "Warm waters of the Indian Ocean and the western Pacific",
+                            "Only in freshwater lakes far from the sea",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says clownfish live in warm tropical waters of the Indian Ocean and the western Pacific.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "soft-reef-anemone-care",
+                        "title": "Soft care",
+                        "stem": "How can people help wild clownfish?",
+                        "choices": [
+                            "Take every anemone home from the reef",
+                            "Pour trash on coral so fish can hide",
+                            "Keep reefs and anemones healthy so clownfish still have homes",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia ties clownfish to healthy reef anemones. Soft care is protecting reefs and anemone homes — we do not lock one status letter.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "not-just-nemo-myth",
+                        "title": "Many kinds",
+                        "stem": "Is there only one “Nemo” kind of clownfish?",
+                        "choices": [
+                            "No — many kinds of anemonefish share the clownfish nickname",
+                            "Yes — only one fish in the whole ocean is a clownfish",
+                            "Yes — clownfish and goldfish are the same fish",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia lists many kinds of clownfish, also called anemonefish. The familiar movie fish is just one face, not the only kind.",
                     },
                 ],
             },
