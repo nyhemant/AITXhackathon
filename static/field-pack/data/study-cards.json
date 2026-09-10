@@ -14984,14 +14984,14 @@
     "source": "https://en.wikipedia.org/wiki/Manta_ray",
     "source_note": "Facts from Wikipedia, Manta ray.",
     "talk_about": [
-      "A manta flaps wide fins like underwater wings. How is that different from kicking a tail?",
-      "Horn-shaped fins sit beside a wide forward mouth. How might those horns help scoop plankton?",
-      "People once called mantas “devilfish” because of the horns. Why might that nickname be unfair?"
+      "Mantas now sit in genus Mobula with devil rays. Why keep that rename soft?",
+      "Reef, giant oceanic, and Atlantic mantas live different lives. How do those homes differ?",
+      "Reef mantas look VU and giant oceanics look EN. Why might slow breeding make those snapshots matter?"
     ],
     "push_further": [
-      "Reef mantas hug coasts; oceanic mantas roam farther out. Why might those two lives need different homes?",
-      "Cleaning stations let little fish pick off parasites. Why might that underwater stop matter?",
-      "Mantas have few pups and grow slowly. Why might nets and gill-plate demand put extra pressure on them?"
+      "Spiracles are tiny leftovers. Why can’t a manta just stop and breathe like some rays?",
+      "Dried gill rakers are sold in some traditional markets. How can that trade become a problem?",
+      "Watching a live manta can be worth more than catching one. Why keep that tourism-vs-fishing story soft?"
     ],
     "levels": {
       "easy": {
@@ -15132,6 +15132,141 @@
             ],
             "correct": "A",
             "why": "Wikipedia says people once feared mantas as “devilfish,” but divers found them placid and safe. The horn fins help funnel plankton. Mantas are gentle filter-feeders, not man-eaters."
+          }
+        ]
+      },
+      "hard": {
+        "teach": [],
+        "questions": [
+          {
+            "slot": 1,
+            "id": "mobula-soft",
+            "title": "Mobula",
+            "stem": "Where do mantas sit in the genus tree now, if we keep that rename soft?",
+            "choices": [
+              "They now sit in genus Mobula with devil rays — the old genus Manta is treated as a junior synonym (soft)",
+              "They sit only with birds in a brand-new land genus",
+              "They never changed names and sit far from every ray"
+            ],
+            "correct": "A",
+            "why": "Wikipedia’s DNA-and-shape work found Mobula was mixed with respect to mantas, so researchers treat the old genus Manta as a junior synonym of Mobula. Name lists can still shift, so we keep that update soft."
+          },
+          {
+            "slot": 2,
+            "id": "three-kinds-soft",
+            "title": "Three kinds",
+            "stem": "What three kinds of manta do people name now, if we keep sizes and lives soft?",
+            "choices": [
+              "Only one kind that lives in a single bathtub",
+              "Reef (M. alfredi), giant oceanic (M. birostris), and Atlantic (M. yarae, newly named) — sizes and lifestyles differ (soft)",
+              "Three kinds of tree squirrel with the same sea name"
+            ],
+            "correct": "B",
+            "why": "Wikipedia now names three mantas: the more coastal reef manta (Mobula alfredi), the farther-roaming giant oceanic manta (M. birostris), and the newly named Atlantic manta (M. yarae). Widths and maps can shift, so we keep those sizes and lives soft."
+          },
+          {
+            "slot": 3,
+            "id": "eagle-ray-family-soft",
+            "title": "Eagle-ray family",
+            "stem": "What family do mantas share with other eagle and devil rays, if we keep that map soft?",
+            "choices": [
+              "They sit only with cats and dogs on land",
+              "They sit only with songbirds, far from every ray",
+              "They sit in Myliobatidae / Mobulinae with other eagle and devil rays (soft)"
+            ],
+            "correct": "C",
+            "why": "Wikipedia places mantas in the eagle-ray family Myliobatidae and groups them in subfamily Mobulinae with smaller devil rays. Family names can still be discussed, so we keep that map soft."
+          },
+          {
+            "slot": 4,
+            "id": "gill-rakers-soft",
+            "title": "Gill rakers",
+            "stem": "How do spongy gill-raker plates help a manta eat?",
+            "choices": [
+              "Spongy gill-raker plates strain plankton from water as it exits the gill slots",
+              "They are extra wings used only for flying",
+              "They store air so the ray can live on a mountain"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says the gill arches have pinkish-brown gill rakers made of spongy tissue. Those plates collect food particles as water leaves through the gill slits."
+          },
+          {
+            "slot": 5,
+            "id": "filter-deepen-soft",
+            "title": "Filter deepen",
+            "stem": "How do cephalic fins and filter tissue work together, if we keep that feeding path soft?",
+            "choices": [
+              "The fins zip shut and the ray stops to chew rocks",
+              "Cephalic fins unfurl as funnels; particles bounce or collect on filter tissue so the ray can keep swimming and feeding (soft)",
+              "The fins turn into hands that pick apples from trees"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says foraging mantas flatten the horn-shaped cephalic fins to channel food into the mouth, and small particles collect on the tissue between the gill arches. That path lets them keep swimming while they feed. Exact bounce stories stay soft."
+          },
+          {
+            "slot": 6,
+            "id": "must-keep-swimming-soft",
+            "title": "Keep swimming",
+            "stem": "Why must mantas keep swimming to breathe, if we keep those spiracles soft?",
+            "choices": [
+              "They breathe only through a straw stuck in the sand",
+              "They hold their breath on the beach until it rains",
+              "Spiracles are tiny or vestigial, so they need forward motion to push oxygenated water over the gills (soft)"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says the spiracles typical of rays are vestigial and concealed. Mantas must keep swimming with their mouths open so oxygenated water keeps passing over their gills."
+          },
+          {
+            "slot": 7,
+            "id": "slow-breeders-soft",
+            "title": "Slow breeders",
+            "stem": "Why do manta populations recover slowly, if we keep that breeding story soft?",
+            "choices": [
+              "Pregnancy lasts over a year; usually one pup; years can pass between births — populations recover slowly (soft)",
+              "They lay thousands of eggs every week like a goldfish",
+              "They never have pups, so numbers never change"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says gestation lasts over a year and brood size is usually one pup. Births may be years apart. That slow pace makes it hard for a population to bounce back. Exact months stay soft."
+          },
+          {
+            "slot": 8,
+            "id": "vu-en-soft",
+            "title": "VU / EN",
+            "stem": "How should we read IUCN letters for reef and giant oceanic mantas, if we keep those snapshots soft?",
+            "choices": [
+              "One locked letter covers every manta on Earth and never changes",
+              "Reef manta: Vulnerable snapshot; giant oceanic: Endangered snapshot — letters can change; Atlantic status is still settling (soft)",
+              "Mantas have no snapshot letters at all, so status never matters"
+            ],
+            "correct": "B",
+            "why": "Wikipedia’s IUCN snapshot lists the reef manta as Vulnerable and the giant oceanic manta as Endangered. Those letters can change. The newly named Atlantic manta’s status is still settling, so we keep the letters as snapshots."
+          },
+          {
+            "slot": 9,
+            "id": "gill-plate-trade-soft",
+            "title": "Gill-plate trade",
+            "stem": "Why can demand for dried gill rakers threaten mantas, if we keep that trade story kid-safe and soft?",
+            "choices": [
+              "People only want the gill plates as stickers for lunchboxes",
+              "Gill plates are never taken, so fishing never matters",
+              "Demand for dried gill rakers in some traditional markets drives targeted fishing — a top human threat (soft)"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says a leading human threat is demand for dried gill rakers used in some traditional markets. That demand can drive targeted fishing. We keep the trade story kid-safe and soft."
+          },
+          {
+            "slot": 10,
+            "id": "cms-care-soft",
+            "title": "CMS care",
+            "stem": "How do international agreements protect mantas — and what still matters near shore?",
+            "choices": [
+              "Migratory-route agreements (CMS) protect them in international waters, but nearshore nets and bycatch still matter (soft)",
+              "A single beach sign protects every manta in every ocean",
+              "No agreement exists, so nets never matter near shore"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says mantas are protected in international waters by the Convention on Migratory Species (CMS), but they are more vulnerable closer to shore, where nets and bycatch still matter."
           }
         ]
       }
