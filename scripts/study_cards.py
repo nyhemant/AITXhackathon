@@ -2447,7 +2447,7 @@ PUSH_FURTHER_OCTOPUS_ZOOLOGIST = (
     "Labs build bendy robot arms after octopus limbs. Why keep that biomimicry story soft?",
 )
 TALK_ABOUT_SEA_TURTLE = (
-    "Hard-shell sea turtles and leatherbacks look different. Why might that split matter?",
+    "Leatherbacks and bony-shell sea turtles look different. Why might that split matter?",
     "Warm nest sand can mean more girl hatchlings. Why might that matter as beaches warm?",
     "How could a magnetic “map” help a turtle stay on a long ocean trip?",
 )
