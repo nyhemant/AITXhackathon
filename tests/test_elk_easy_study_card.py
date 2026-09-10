@@ -253,7 +253,7 @@ class ElkEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Show answers", html)
         self.assertIn("Score", html)
         for line in TEACH:
-            self.assertIn(line, html)
+            self.assertIn(line.replace("&", "&amp;"), html)
         for stem in STEMS:
             self.assertIn(stem, html)
         for phrase in GENERIC_WORKSHEET:
@@ -299,7 +299,7 @@ class ElkEasyStudyCardTests(unittest.TestCase):
         for stem in STEMS:
             self.assertIn(stem, main)
         for line in TEACH:
-            self.assertIn(line, main)
+            self.assertIn(line.replace("&", "&amp;"), main)
         self.assertIn("card-page-photo", main)
         self.assertIn("/field-pack/photos/elk.jpg", main)
         self.assertIn('class="card-try-next no-print"', main)
