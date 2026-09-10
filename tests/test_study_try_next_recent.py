@@ -249,6 +249,11 @@ class StudyTryNextRecentTests(unittest.TestCase):
             list(STUDY_NEIGHBORS["american-alligator"]),
             ["freshwater-fish", "galapagos-tortoise"],
         )
+        self.assertIn("american-bison", catalog["neighbors"])
+        self.assertEqual(
+            list(STUDY_NEIGHBORS["american-bison"]),
+            ["zebra", "warthog"],
+        )
 
 
 if __name__ == "__main__":

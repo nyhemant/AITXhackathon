@@ -194,6 +194,7 @@ class RedPandaEasyStudyCardTests(unittest.TestCase):
                 "polar-bear",
                 "sea-otter",
                 "american-alligator",
+                "american-bison",
             ),
         )
         self.assertEqual(shipped_levels_for("red-panda"), ("easy", "hard", "zoologist"))
