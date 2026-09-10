@@ -36,7 +36,7 @@ from study_cards import (  # noqa: E402
 
 FP = REPO / "static" / "field-pack"
 FISH = FP / "cards" / "freshwater-fish" / "index.html"
-CLOWNFISH = FP / "cards" / "clownfish" / "index.html"
+JELLYFISH = FP / "cards" / "jellyfish" / "index.html"
 SLOTH = FP / "cards" / "two-toed-sloth" / "index.html"
 LION = FP / "cards" / "african-lion" / "index.html"
 STUDY_JSON = FP / "data" / "study-cards.json"
@@ -353,11 +353,11 @@ class FreshwaterFishZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("Zoologist", sloth_html)
         self.assertEqual(sloth_zoo["talk_about"], list(TALK_ABOUT_TWO_TOED_SLOTH))
         self.assertEqual(sloth_zoo["push_further"], list(PUSH_FURTHER_TWO_TOED_SLOTH))
-        clown = CLOWNFISH.read_text(encoding="utf-8")
-        self.assertIn("What do they eat?", clown)
-        self.assertNotIn("card-study-pack", clown)
-        self.assertNotIn("ray-finned-majority-soft", clown)
-        self.assertIsNone(study_deck_for("clownfish"))
+        jelly = JELLYFISH.read_text(encoding="utf-8")
+        self.assertIn("What do they eat?", jelly)
+        self.assertNotIn("card-study-pack", jelly)
+        self.assertNotIn("ray-finned-majority-soft", jelly)
+        self.assertIsNone(study_deck_for("jellyfish"))
 
     def test_published_artifacts_and_plumbing(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
