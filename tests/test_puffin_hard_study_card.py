@@ -111,8 +111,8 @@ def _text(html: str) -> str:
 class PuffinHardStudyCardTests(unittest.TestCase):
     def test_hard_deck_is_park_ranger_without_teach(self):
         self.assertIn("puffin", study_card_ids())
-        self.assertEqual(shipped_levels_for("puffin"), ("easy", "hard"))
-        self.assertIsNone(study_deck_for("puffin", "zoologist"))
+        self.assertEqual(shipped_levels_for("puffin"), ("easy", "hard", "zoologist"))
+        self.assertIsNotNone(study_deck_for("puffin", "zoologist"))
         self.assertEqual(level_display_name("hard"), "Park Ranger")
         deck = study_deck_for("puffin", "hard")
         self.assertIsNotNone(deck)
@@ -203,10 +203,10 @@ class PuffinHardStudyCardTests(unittest.TestCase):
         self.assertNotIn('<details class="study-teach" open', html)
         self.assertIn("Junior Ranger", html)
         self.assertIn("Park Ranger", html)
-        self.assertNotIn("Zoologist", html)
+        self.assertIn("Zoologist", html)
         self.assertIn('data-study-pick="easy"', html)
         self.assertIn('data-study-pick="hard"', html)
-        self.assertNotIn('data-study-pick="zoologist"', html)
+        self.assertIn('data-study-pick="zoologist"', html)
         self.assertEqual(html.count('role="group"'), 2)
         self.assertIn("study-level-picker-bottom", html)
         self.assertIn('aria-label="Study level at the end"', html)
@@ -278,7 +278,7 @@ class PuffinHardStudyCardTests(unittest.TestCase):
         self.assertEqual(hard["teach"], [])
         self.assertEqual(len(hard["questions"]), STUDY_SLOTS)
         self.assertEqual([q["id"] for q in hard["questions"]], list(HARD_IDS))
-        self.assertNotIn("zoologist", payload["puffin"]["levels"])
+        self.assertIn("zoologist", payload["puffin"]["levels"])
         data_js = STUDY_DATA_JS.read_text(encoding="utf-8")
         self.assertIn("puffin", data_js)
         self.assertIn("fratercula-arctica-soft", data_js)
@@ -293,8 +293,8 @@ class PuffinHardStudyCardTests(unittest.TestCase):
         html = PUFFIN.read_text(encoding="utf-8")
         self.assertIn("Park Ranger", html)
         self.assertIn("Junior Ranger", html)
-        self.assertNotIn("Zoologist", html)
-        self.assertNotIn('data-study-pick="zoologist"', html)
+        self.assertIn("Zoologist", html)
+        self.assertIn('data-study-pick="zoologist"', html)
         self.assertIn('data-study-pick="hard"', html)
         self.assertIn("Learn first", html)
         self.assertIn('class="card-hero-links no-print"', html)
@@ -321,7 +321,7 @@ class PuffinHardStudyCardTests(unittest.TestCase):
         self.assertIn("Push further", hard_html)
         self.assertIn("Park Ranger", hard_html)
         self.assertIn("Junior Ranger", hard_html)
-        self.assertNotIn("Zoologist", hard_html)
+        self.assertIn("Zoologist", hard_html)
 
 
 if __name__ == "__main__":
