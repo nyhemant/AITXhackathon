@@ -156,11 +156,11 @@ class StudyCardAnswerKeyTests(unittest.TestCase):
         self.assertEqual(shipped_levels_for("american-alligator"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("american-alligator", "hard"))
         self.assertIsNotNone(study_deck_for("american-alligator", "zoologist"))
-        self.assertEqual(shipped_levels_for("american-bison"), ("easy", "hard"))
+        self.assertEqual(shipped_levels_for("american-bison"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("american-bison", "hard"))
-        self.assertIsNone(study_deck_for("american-bison", "zoologist"))
+        self.assertIsNotNone(study_deck_for("american-bison", "zoologist"))
         decks = list(_decks())
-        self.assertEqual(len(decks), 80)
+        self.assertEqual(len(decks), 81)
         for card_id, level, deck in decks:
             self.assertIsNotNone(deck, f"{card_id}/{level}")
             self.assertEqual(validate_deck(deck), [])
@@ -191,12 +191,12 @@ class StudyCardAnswerKeyTests(unittest.TestCase):
 
     def test_overall_correct_b_is_not_a_majority(self):
         letters = [q["correct"] for _, _, deck in _decks() for q in deck["questions"]]
-        self.assertEqual(len(letters), 800)
+        self.assertEqual(len(letters), 810)
         share_b = letters.count("B") / len(letters)
         self.assertLessEqual(
             share_b,
             MAX_OVERALL_B_SHARE,
-            f"correct==B is {share_b:.1%} ({letters.count('B')}/800)",
+            f"correct==B is {share_b:.1%} ({letters.count('B')}/810)",
         )
         for letter in LETTERS:
             share = letters.count(letter) / len(letters)
