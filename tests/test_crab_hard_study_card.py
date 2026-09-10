@@ -110,8 +110,8 @@ def _text(html: str) -> str:
 class CrabHardStudyCardTests(unittest.TestCase):
     def test_hard_deck_is_park_ranger_without_teach(self):
         self.assertIn("crab", study_card_ids())
-        self.assertEqual(shipped_levels_for("crab"), ("easy", "hard"))
-        self.assertIsNone(study_deck_for("crab", "zoologist"))
+        self.assertEqual(shipped_levels_for("crab"), ("easy", "hard", "zoologist"))
+        self.assertIsNotNone(study_deck_for("crab", "zoologist"))
         self.assertEqual(level_display_name("hard"), "Park Ranger")
         deck = study_deck_for("crab", "hard")
         self.assertIsNotNone(deck)
@@ -202,10 +202,10 @@ class CrabHardStudyCardTests(unittest.TestCase):
         self.assertNotIn('<details class="study-teach" open', html)
         self.assertIn("Junior Ranger", html)
         self.assertIn("Park Ranger", html)
-        self.assertNotIn("Zoologist", html)
+        self.assertIn("Zoologist", html)
         self.assertIn('data-study-pick="easy"', html)
         self.assertIn('data-study-pick="hard"', html)
-        self.assertNotIn('data-study-pick="zoologist"', html)
+        self.assertIn('data-study-pick="zoologist"', html)
         self.assertEqual(html.count('role="group"'), 2)
         self.assertIn("study-level-picker-bottom", html)
         self.assertIn('aria-label="Study level at the end"', html)
@@ -277,7 +277,7 @@ class CrabHardStudyCardTests(unittest.TestCase):
         self.assertEqual(hard["teach"], [])
         self.assertEqual(len(hard["questions"]), STUDY_SLOTS)
         self.assertEqual([q["id"] for q in hard["questions"]], list(HARD_IDS))
-        self.assertNotIn("zoologist", payload["crab"]["levels"])
+        self.assertIn("zoologist", payload["crab"]["levels"])
         data_js = STUDY_DATA_JS.read_text(encoding="utf-8")
         self.assertIn("crab", data_js)
         self.assertIn("brachyura-soft", data_js)
@@ -292,8 +292,8 @@ class CrabHardStudyCardTests(unittest.TestCase):
         html = CRAB.read_text(encoding="utf-8")
         self.assertIn("Park Ranger", html)
         self.assertIn("Junior Ranger", html)
-        self.assertNotIn("Zoologist", html)
-        self.assertNotIn('data-study-pick="zoologist"', html)
+        self.assertIn("Zoologist", html)
+        self.assertIn('data-study-pick="zoologist"', html)
         self.assertIn('data-study-pick="hard"', html)
         self.assertIn("Learn first", html)
         self.assertIn('class="card-hero-links no-print"', html)
@@ -320,7 +320,7 @@ class CrabHardStudyCardTests(unittest.TestCase):
         self.assertIn("Push further", hard_html)
         self.assertIn("Park Ranger", hard_html)
         self.assertIn("Junior Ranger", hard_html)
-        self.assertNotIn("Zoologist", hard_html)
+        self.assertIn("Zoologist", hard_html)
 
 
 if __name__ == "__main__":

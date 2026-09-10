@@ -1129,7 +1129,7 @@ have places to hide and grow (no status letter).
 Myth: horseshoe “crabs” aren’t crabs — they’re a
 different kind of animal, closer to spiders than to
 true crabs. Park Ranger (hard) ships on this card.
-Zoologist is reserved. Soften contested numbers.
+Zoologist ships on this card. Soften contested numbers.
 Keep kid-friendly. Do not invent photos.
 
 Facts for crab Park Ranger (hard) are
@@ -1165,7 +1165,38 @@ Keep kid-friendly. Do not redo JR themes (hard
 shell, claws, sideways walk, hide, molt, many kinds
 without measures, ocean-to-land, simple omnivore,
 soft shore/reef care, horseshoe-not-crab myth).
-Zoologist is reserved. Do not invent photos.
+Zoologist (zoologist) is answer-light (empty teach)
+and deepens: Anomura + Brachyura are sister taxa
+(clade Meiura within Decapoda — soft); everyday
+“crab” is polyphyletic — a crab-like form evolved
+independently more than once (soft); Keiler’s
+carcinised plan is a flatter-than-broad carapace
+with lateral margins, a fused sternal plastron, and
+a pleon bent under so mid-abdomen tergites hide
+(soft); carcinisation hit at least five living
+decapod lines — Brachyura plus Anomura king crabs,
+porcelain crabs, the hairy stone crab, and hermit
+lineages such as the coconut crab / Patagurus
+(soft list); king crabs (Lithodidae) nest inside
+hermit-crab Paguridae on molecular trees, with an
+asymmetrical abdomen as a leftover hermit clue
+(soft); galatheoid squat lobsters sit
+morphologically midway (“half-carcinized”), and
+porcelain crabs (Porcellanidae) are their fully
+crab-shaped relatives (soft); some lineages reverse
+the crab shape — frog crabs / raninids and odd
+fossils like Callichimaera (soft decarcinisation);
+horseshoe crabs are Xiphosura (Chelicerata), not
+decapods — American Limulus is a VU snapshot and
+tri-spine Tachypleus tridentatus is an EN snapshot
+(soft); crabs are about 20% of marine crustaceans
+caught or farmed, about 1.5 million tonnes a year
+(soft), and status is still species-by-species; the
+coconut crab (Birgus latro) is the largest land
+arthropod — a hermit lineage that carcinised for
+life on land (soft). Soften contested numbers.
+Treat IUCN letters as snapshots. Keep kid-friendly.
+Do not redo JR or PR themes. Do not invent photos.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
@@ -1298,9 +1329,8 @@ LEVEL_DISPLAY_NAMES = {
 # ring-tailed lemur, ostrich, warthog, shark, and
 # Asian small-clawed otter, two-toed sloth, freshwater
 # fish, polar bear, sea otter, American alligator, and
-# American bison, elk, puffin, and clownfish ship
-# Junior Ranger + Park Ranger + Zoologist. Crab ships
-# Junior Ranger + Park Ranger.
+# American bison, elk, puffin, clownfish, and crab
+# ship Junior Ranger + Park Ranger + Zoologist.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -1686,14 +1716,14 @@ PUSH_FURTHER_CLOWNFISH = (
     "Babies drift as ocean larvae, then must find an anemone. Why is that settlement a puzzle?",
 )
 TALK_ABOUT_CRAB = (
-    "True crabs tuck a tail under. Hermit and king crabs can look crabby. What would you check?",
-    "Nature keeps inventing crab shapes. Why might a flat shell and tucked tail keep showing up?",
-    "Horseshoe “crabs” sit with spiders, not decapods. What else might look different besides the name?",
+    "True crabs and look-alikes sit together as Meiura. Why might “crab” still be a mixed family word?",
+    "A crab shape can mean a wide shell, a fused belly plate, and a hidden tail. Why might those traits keep showing up?",
+    "King crabs nest inside hermit-crab families on some trees. What leftover abdomen clue might that leave?",
 )
 PUSH_FURTHER_CRAB = (
-    "Crab-like bodies evolved more than once. Why might evolution keep making that shape?",
-    "King crabs may come from hermit-crab ancestors. What clue might an uneven abdomen give?",
-    "There is no single status letter for “crabs.” Why can’t a group card share one letter?",
+    "Squat lobsters sit halfway to a crab shape. Why might porcelain crabs look like the finished version?",
+    "Some lineages lose the crab shape again. Why might a reverse path matter?",
+    "Horseshoe crabs can carry VU or EN snapshots. Why is true-crab fishing still species-by-species?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -14768,6 +14798,148 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia does not give one Red List letter for crabs as a group. Some common or fished kinds do well. Others, and horseshoe crabs as separate animals, can face habitat or harvest pressure. That is a soft snapshot.",
+                    },
+                ],
+            },
+            "zoologist": {
+                # Answer-light: Zoologist has no Learn-first strip.
+                # Facts from Wikipedia, Crab (and related
+                # carcinisation / Meiura / horseshoe crab /
+                # coconut crab pages). Soft taxonomy, body
+                # plan, origins, status snapshots. Soften
+                # contested numbers. Kid-friendly. Do not
+                # redo JR or PR themes.
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "meiura-soft",
+                        "title": "Meiura",
+                        "stem": "Which clade groups Anomura and Brachyura as sister taxa inside Decapoda?",
+                        "choices": [
+                            "Meiura — Anomura and Brachyura are sister taxa inside Decapoda (soft)",
+                            "They sit only with insects, far from any decapod family tree",
+                            "They sit only with fish, not with other crustaceans",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia treats Anomura and Brachyura as sister groups among decapods. Many trees unite them as clade Meiura. We keep that nest soft.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "polyphyletic-soft",
+                        "title": "Polyphyly",
+                        "stem": "What does calling everyday “crab” a polyphyletic word mean?",
+                        "choices": [
+                            "Every animal called a crab shares one locked ancestor and never changed shape",
+                            "The everyday word “crab” is polyphyletic — a crab-like form evolved independently multiple times (soft)",
+                            "“Crab” names only one fish, so the word cannot be mixed",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says crabs do not form one natural clade. The everyday word is polyphyletic: a crab-like form evolved independently multiple times. We keep that family-word story soft.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "keiler-body-plan-soft",
+                        "title": "Keiler plan",
+                        "stem": "What traits did Keiler and colleagues use for a carcinised crab body plan?",
+                        "choices": [
+                            "A tall, narrow shell with no side edges and a long tail held straight out",
+                            "A coat of feathers and a bill, with no shell at all",
+                            "A flatter-than-broad carapace with lateral margins; a fused sternal plastron; a pleon bent under so mid-abdomen tergites hide (Keiler et al. — soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia cites Keiler and colleagues for a carcinised plan: a carapace flatter than it is broad with lateral margins, sternites fused into a sternal plastron, and a pleon bent under so mid-abdomen tergites hide. We keep that trait list soft.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "five-origins-soft",
+                        "title": "Five origins",
+                        "stem": "About how many living decapod lines has carcinisation hit, if we keep the list soft?",
+                        "choices": [
+                            "At least five living lines: true crabs plus king crabs, porcelain crabs, the hairy stone crab, and hermit lineages such as the coconut crab or Patagurus (soft)",
+                            "Exactly one line, and the crab shape never appeared again",
+                            "Every animal on land became a crab at the same time",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia’s carcinisation notes list at least five living decapod lines: Brachyura plus Anomura king crabs, porcelain crabs, the hairy stone crab, and hermit lineages such as the coconut crab and Patagurus. Exact membership can shift, so the list stays soft.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "lithodidae-nest-soft",
+                        "title": "King nest",
+                        "stem": "Where do king crabs (Lithodidae) sit on molecular trees of hermit crabs?",
+                        "choices": [
+                            "They sit only with insects, far from any hermit-crab family",
+                            "Lithodidae nest inside hermit-crab Paguridae; an asymmetrical abdomen is a leftover hermit clue (soft)",
+                            "They sit only with true Brachyura and have a perfectly even abdomen",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia places king crabs (Lithodidae) with hermit crabs, and molecular trees often nest them inside Paguridae. An asymmetrical abdomen is a leftover hermit clue. We keep that nest soft.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "half-carcinized-soft",
+                        "title": "Halfway",
+                        "stem": "How do galatheoid squat lobsters sit next to porcelain crabs?",
+                        "choices": [
+                            "Squat lobsters are fully crab-shaped, and porcelain crabs are halfway back to a lobster",
+                            "Neither animal is related, and neither has a crab-like shape",
+                            "Galatheoid squat lobsters sit morphologically midway (“half-carcinized”); porcelain crabs (Porcellanidae) are their fully crab-shaped relatives (soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia describes galatheoid squat lobsters as morphologically midway — “half-carcinized.” Porcelain crabs (Porcellanidae) are their fully crab-shaped relatives. We keep that halfway story soft.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "decarcinisation-soft",
+                        "title": "Reverse path",
+                        "stem": "What does decarcinisation mean for some crab lineages?",
+                        "choices": [
+                            "Some lineages reverse the crab shape — frog crabs / raninids and odd fossils like Callichimaera (soft)",
+                            "Every crab becomes more crab-shaped each year and can never reverse",
+                            "Decarcinisation means crabs turn into birds overnight",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia describes decarcinisation as losing the crab-like form. Examples include frog crabs (raninids) and odd fossils such as Callichimaera. We keep that reverse-path list soft.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "xiphosura-snapshot-soft",
+                        "title": "Xiphosura",
+                        "stem": "Where do horseshoe crabs sit, and how should we read their IUCN letters?",
+                        "choices": [
+                            "They are true decapod crabs with one locked letter for every species",
+                            "They are Xiphosura in Chelicerata, not decapods; American Limulus is a VU snapshot, and tri-spine Tachypleus tridentatus is an EN snapshot (soft)",
+                            "They are a kind of fish, so IUCN letters never apply",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia places horseshoe crabs in Xiphosura, inside Chelicerata — not with decapod crabs. Treat IUCN letters as snapshots: American Limulus is often listed Vulnerable, and the tri-spine horseshoe crab Tachypleus tridentatus Endangered. Those letters can change.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "fisheries-soft",
+                        "title": "Fisheries",
+                        "stem": "About how much of the marine crustacean catch do crabs make up?",
+                        "choices": [
+                            "Crabs are never caught or farmed, so the share is always zero",
+                            "Crabs are the only marine animal ever caught, so the share is 100%",
+                            "Crabs are about 20% of marine crustaceans caught or farmed — about 1.5 million tonnes a year (soft); status is still species-by-species",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says crabs make up about 20% of marine crustaceans caught or farmed, amounting to about 1.5 million tonnes a year. Those figures stay soft. How each kind is doing is still species-by-species.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "birgus-terrestrial-soft",
+                        "title": "Coconut crab",
+                        "stem": "What makes the coconut crab (Birgus latro) unusual among hermit lineages?",
+                        "choices": [
+                            "It is the largest land arthropod — a hermit lineage that carcinised for life on land (soft)",
+                            "It is the smallest ocean shrimp and never leaves the deep sea",
+                            "It is a bird that only visits beaches to nest",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia calls the coconut crab (Birgus latro) the largest land arthropod. It is a hermit-crab lineage that took on a crab-like body for life on land. Exact record sizes stay soft.",
                     },
                 ],
             },
