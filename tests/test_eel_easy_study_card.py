@@ -42,7 +42,7 @@ from study_cards import (  # noqa: E402
 
 FP = REPO / "static" / "field-pack"
 EEL = FP / "cards" / "eel" / "index.html"
-OCTOPUS = FP / "cards" / "octopus" / "index.html"
+OCTOPUS = FP / "cards" / "seahorse" / "index.html"
 CUTTLEFISH = FP / "cards" / "cuttlefish" / "index.html"
 CRAB = FP / "cards" / "crab" / "index.html"
 CLOWNFISH = FP / "cards" / "clownfish" / "index.html"
@@ -139,7 +139,7 @@ def _main(html: str) -> str:
 class EelEasyStudyCardTests(unittest.TestCase):
     def test_deck_is_junior_ranger_only(self):
         self.assertIn("eel", study_card_ids())
-        self.assertNotIn("octopus", study_card_ids())
+        self.assertNotIn("seahorse", study_card_ids())
         self.assertEqual(
             study_card_ids(),
             (
@@ -179,12 +179,13 @@ class EelEasyStudyCardTests(unittest.TestCase):
                 "jellyfish",
                 "kelp-forest",
                 "manta-ray",
+                "octopus",
             ),
         )
         self.assertEqual(shipped_levels_for("eel"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("eel", "hard"))
         self.assertIsNotNone(study_deck_for("eel", "zoologist"))
-        self.assertIsNone(study_deck_for("octopus"))
+        self.assertIsNone(study_deck_for("seahorse"))
         deck = study_deck_for("eel")
         self.assertIsNotNone(deck)
         self.assertEqual(deck["id"], "eel")
@@ -320,7 +321,7 @@ class EelEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Facts from Wikipedia, Eel.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
-        html = outing_talk_html({"id": "octopus", "packTemplate": "animals"})
+        html = outing_talk_html({"id": "seahorse", "packTemplate": "animals"})
         self.assertIn("What do they eat?", html)
         self.assertNotIn("card-study-pack", html)
         self.assertNotIn("What is special about an eel", html)
@@ -457,7 +458,7 @@ class EelEasyStudyCardTests(unittest.TestCase):
     def test_artifacts_include_eel_easy_and_hard(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
         self.assertIn("eel", payload)
-        self.assertNotIn("octopus", payload)
+        self.assertNotIn("seahorse", payload)
         self.assertIn("cuttlefish", payload)
         self.assertIn("crab", payload)
         self.assertIn("clownfish", payload)

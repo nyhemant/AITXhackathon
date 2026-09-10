@@ -90,7 +90,7 @@ SHARK = FP / "cards" / "shark" / "index.html"
 WHALE_SHARK = FP / "cards" / "whale-shark" / "index.html"
 WARTHOG = FP / "cards" / "warthog" / "index.html"
 OSTRICH = FP / "cards" / "ostrich" / "index.html"
-OCTOPUS = FP / "cards" / "octopus" / "index.html"
+OCTOPUS = FP / "cards" / "seahorse" / "index.html"
 PRINT_KIT = FP / "js" / "print-kit.js"
 STUDY_JS = FP / "js" / "study-card.js"
 STYLES = FP / "css" / "styles.css"
@@ -222,6 +222,7 @@ class SharkEasyStudyCardTests(unittest.TestCase):
                 "jellyfish",
                 "kelp-forest",
                 "manta-ray",
+                "octopus",
             ),
         )
         self.assertEqual(shipped_levels_for("shark"), ("easy", "hard", "zoologist"))
@@ -411,7 +412,7 @@ class SharkEasyStudyCardTests(unittest.TestCase):
         self.assertIn("What do they eat?", whale)
         self.assertNotIn("card-study-pack", whale)
         self.assertNotIn("What are a shark’s", whale)
-        sea_html = outing_talk_html({"id": "octopus", "packTemplate": "animals"})
+        sea_html = outing_talk_html({"id": "seahorse", "packTemplate": "animals"})
         self.assertIn("What do they eat?", sea_html)
         self.assertNotIn("card-study-pack", sea_html)
         sea = OCTOPUS.read_text(encoding="utf-8")

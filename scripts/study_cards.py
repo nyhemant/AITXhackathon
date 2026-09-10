@@ -1644,6 +1644,45 @@ letters as snapshots. Keep the mirror test
 debated. Keep kid-friendly. Do not redo
 JR or PR themes. Do not invent photos.
 
+Facts for octopus Junior Ranger (easy) are
+Wikipedia-backed: https://en.wikipedia.org/wiki/Octopus
+(Octopus group page — order Octopoda, some
+300 species). JR stays kid-simple “octopus.”
+Soft-bodied sea animals with eight arms
+(molluscs, not fish). Arms have suckers that
+grip and help feel/taste what they touch.
+They can change colour (and skin texture) to
+hide. When scared, many squirt dark ink and
+jet away. Almost no hard parts — they squeeze
+through tiny gaps (the beak is the hard bit).
+Eight sucker-lined arms, not the long clubbed
+tentacles of squid or cuttlefish. Soft body
+lets them pass through openings only a little
+bigger than the beak. Tiny colour cells (and
+friends) shift colour and pattern to hide or
+signal. An ink sac can shoot a dark cloud
+that confuses predators while they flee.
+Sharp beak at the centre of the arms; hunt
+crabs, clams, snails, and fish. Hide in rock
+crevices, shells, and dens; leftovers often
+sit outside as a midden. Copper-based blue
+blood; three hearts (two for the gills, one
+for the body) — keep kid-simple. Live in seas
+worldwide — reefs, seafloor, tide pools, even
+deep water (no freshwater). About 300 known
+species; sizes from tiny kinds to the giant
+Pacific octopus (soften exact records). Myth:
+people say “tentacles,” but octopuses have
+arms with suckers all along. Squid and
+cuttlefish add two longer tentacles. Reserve
+denser Octopoda taxonomy (Cirrina/Incirrina),
+chromatophore cell names, RNA editing,
+blue-ring TTX detail, intelligence-experiment
+depth, tool-use depth, and status-by-kind for
+later tiers. Soften contested size/counts.
+Keep kid-friendly. Do not invent photos.
+Park Ranger and Zoologist are reserved.
+
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
 zoologist. Visible copy uses LEVEL_DISPLAY_NAMES only — no age badges,
@@ -1704,6 +1743,7 @@ WIKI_EEL = "https://en.wikipedia.org/wiki/Eel"
 WIKI_JELLYFISH = "https://en.wikipedia.org/wiki/Jellyfish"
 WIKI_KELP_FOREST = "https://en.wikipedia.org/wiki/Kelp_forest"
 WIKI_MANTA_RAY = "https://en.wikipedia.org/wiki/Manta_ray"
+WIKI_OCTOPUS = "https://en.wikipedia.org/wiki/Octopus"
 
 LETTERS = ("A", "B", "C")
 STUDY_SLOTS = 10
@@ -1783,7 +1823,8 @@ LEVEL_DISPLAY_NAMES = {
 # American bison, elk, puffin, clownfish, crab,
 # cuttlefish, eel, jellyfish, and kelp forest
 # ship Junior Ranger + Park Ranger + Zoologist.
-# Manta ray ships Junior Ranger + Park Ranger.
+# Manta ray ships Junior Ranger + Park Ranger + Zoologist.
+# Octopus ships Junior Ranger only.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -1836,6 +1877,7 @@ STUDY_NEIGHBORS = {
     "jellyfish": ("eel", "cuttlefish"),
     "kelp-forest": ("jellyfish", "sea-otter"),
     "manta-ray": ("jellyfish", "kelp-forest"),
+    "octopus": ("cuttlefish", "jellyfish"),
 }
 
 STUDY_CARD_TITLES = {
@@ -1875,6 +1917,7 @@ STUDY_CARD_TITLES = {
     "jellyfish": "Jellyfish",
     "kelp-forest": "Kelp forest",
     "manta-ray": "Manta ray",
+    "octopus": "Octopus",
 }
 
 # Shared answers-side deepen (Claude sample). Not scored. Future animals reuse keys.
@@ -2247,6 +2290,16 @@ PUSH_FURTHER_MANTA_RAY_ZOOLOGIST = (
     "Isotopes hint some giant-manta food comes from deeper water. Why keep that diet soft?",
     "Captive giant mantas have checked mirrors. Why treat that awareness hint as debated?",
     "Dried gill plates sell once; live manta tourism can pay for years. Why keep that trade-off soft?",
+)
+TALK_ABOUT_OCTOPUS = (
+    "People say “tentacles,” but octopuses have arms. What’s the difference?",
+    "When scared, many octopuses squirt dark ink. Why might that help them get away?",
+    "A soft body can squeeze through tiny gaps. How might that help an octopus hide?",
+)
+PUSH_FURTHER_OCTOPUS = (
+    "Scientists sort octopuses into bigger family groups. Why might those names wait for a later card?",
+    "Colour-change skin has tiny colour cells working together. Why might the cell names wait?",
+    "Some small octopuses have a strong bite, and some use tools. Why might those stories wait for later?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -17639,6 +17692,157 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia contrasts dried gill-plate markets with live manta tourism. A dead manta can bring short-term cash; a living animal can be worth far more over a lifetime of visits. Exact dollar amounts shift, so we keep that economics story soft.",
+                    },
+                ],
+            },
+        },
+    },
+    "octopus": {
+        "id": "octopus",
+        "source": WIKI_OCTOPUS,
+        "source_note": "Facts from Wikipedia, Octopus.",
+        "talk_about": list(TALK_ABOUT_OCTOPUS),
+        "push_further": list(PUSH_FURTHER_OCTOPUS),
+        "levels": {
+            "easy": {
+                # Teaching-first: same front as the quiz. Later tiers reserved.
+                "teach": [
+                    "Soft-bodied sea animals with eight arms (molluscs, not fish)",
+                    "Arms have suckers that grip and help feel/taste what they touch",
+                    "They can change colour (and skin texture) to hide",
+                    "When scared, many squirt dark ink and jet away",
+                    "Almost no hard parts — they squeeze through tiny gaps (the beak is the hard bit)",
+                ],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "eight-arms-soft",
+                        "title": "Eight arms",
+                        "stem": "How many arms does an octopus have?",
+                        "choices": [
+                            "Eight sucker-lined arms — not the long clubbed tentacles of squid or cuttlefish",
+                            "Two wings and a tail like a fish",
+                            "Twelve tentacles with no suckers",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says an octopus is a soft-bodied, eight-limbed mollusc. Those limbs are arms with suckers along them, not the longer clubbed tentacles squid and cuttlefish add.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "soft-squeeze-soft",
+                        "title": "Soft squeeze",
+                        "stem": "Why can an octopus squeeze through a tiny gap?",
+                        "choices": [
+                            "Because it grows wheels and rolls through",
+                            "Its soft body can pass through an opening only a little bigger than its hard beak",
+                            "Because it turns into smoke",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says an octopus can radically change shape and squeeze through small gaps. Most of the body is soft; the hard beak is the part that sets how small a gap it can use.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "colour-change-soft",
+                        "title": "Colour change",
+                        "stem": "How can an octopus hide in plain sight?",
+                        "choices": [
+                            "It paints itself with a brush from a shop",
+                            "It grows a wooden shell and sits still forever",
+                            "Tiny colour cells (and friends) shift colour and pattern to match the scene",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says octopuses use specialised skin cells to change colour for camouflage and signals. They can also change skin texture. We keep the cell names soft for later.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "ink-escape-soft",
+                        "title": "Ink escape",
+                        "stem": "What can many octopuses do when a predator comes?",
+                        "choices": [
+                            "Squirt a dark ink cloud and jet away",
+                            "Ring a doorbell and ask for help",
+                            "Freeze into a statue of ice",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says octopuses can expel ink as a smoke-screen or decoy, then jet away. The ink sac sits near the funnel so they can shoot a dark cloud and flee.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "beak-hunt-soft",
+                        "title": "Beak and hunt",
+                        "stem": "What does an octopus use to eat, and what does it hunt?",
+                        "choices": [
+                            "A long straw to sip only soup",
+                            "A sharp beak at the centre of the arms; they hunt crabs, clams, snails, and fish",
+                            "A wooden spoon to stir sand",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says the mouth has a sharp beak at the centre of the eight arms. Octopuses are predators that hunt crustaceans, bivalves, gastropods, and fish.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "den-home-soft",
+                        "title": "Den home",
+                        "stem": "Where do many octopuses hide, and what clue might sit outside?",
+                        "choices": [
+                            "In bird nests at the tops of trees",
+                            "In backpacks on a school bus",
+                            "In rock crevices, shells, and dens — leftovers often pile up outside as a midden",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says octopuses hide in dens, often rock crevices or leftover shells. They bring prey home, and dens are often surrounded by a midden of leftover shells and food scraps.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "blue-blood-hearts-soft",
+                        "title": "Blue blood",
+                        "stem": "What is special about octopus blood and hearts, if we keep it kid-simple?",
+                        "choices": [
+                            "Copper-based blue blood, and three hearts — two for the gills and one for the body",
+                            "Red blood and one heart like a person, always",
+                            "No blood at all, only air",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says octopus blood uses a copper-rich protein, which makes it look bluish. They have three hearts: two pump blood through the gills and one serves the rest of the body. We keep the chemistry names soft.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "ocean-homes-soft",
+                        "title": "Ocean homes",
+                        "stem": "Where do octopuses live?",
+                        "choices": [
+                            "Only in freshwater lakes and rivers",
+                            "In seas worldwide — reefs, seafloor, tide pools, and even deep water (not freshwater)",
+                            "Only in one bathtub",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says octopuses inhabit every ocean, from coral reefs and tide pools to the seabed and deep water. No species are known to live in fresh water.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "many-kinds-soft",
+                        "title": "Many kinds",
+                        "stem": "How many kinds of octopus are there, if we keep the count soft?",
+                        "choices": [
+                            "Exactly two, and they never change",
+                            "Only one kind in the whole world",
+                            "About 300 known species, from tiny kinds to the giant Pacific octopus (soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says the octopus group has some 300 known species. Sizes run from tiny kinds to the giant Pacific octopus, often cited as the largest. Exact records shift, so we keep counts and sizes soft.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "arms-not-tentacles-myth",
+                        "title": "Myth buster",
+                        "stem": "Do octopuses have tentacles?",
+                        "choices": [
+                            "No — people say “tentacles,” but octopuses have arms with suckers all along. Squid and cuttlefish add two longer tentacles",
+                            "Yes — eight long tentacles and no arms",
+                            "Yes — they borrowed tentacles from jellyfish",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia calls the eight limbs arms. Squid and cuttlefish add two longer tentacles with suckers mainly at the club ends. Saying “tentacles” for an octopus mixes them up.",
                     },
                 ],
             },

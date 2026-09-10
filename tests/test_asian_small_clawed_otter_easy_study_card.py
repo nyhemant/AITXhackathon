@@ -39,7 +39,7 @@ from study_cards import (  # noqa: E402
 
 FP = REPO / "static" / "field-pack"
 OTTER = FP / "cards" / "asian-small-clawed-otter" / "index.html"
-OCTOPUS = FP / "cards" / "octopus" / "index.html"
+OCTOPUS = FP / "cards" / "seahorse" / "index.html"
 WHALE_SHARK = FP / "cards" / "whale-shark" / "index.html"
 SHARK = FP / "cards" / "shark" / "index.html"
 WARTHOG = FP / "cards" / "warthog" / "index.html"
@@ -173,6 +173,7 @@ class AsianSmallClawedOtterEasyStudyCardTests(unittest.TestCase):
                 "jellyfish",
                 "kelp-forest",
                 "manta-ray",
+                "octopus",
             ),
         )
         self.assertEqual(
@@ -304,7 +305,7 @@ class AsianSmallClawedOtterEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Facts from Wikipedia, Asian small-clawed otter.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
-        html = outing_talk_html({"id": "octopus", "packTemplate": "animals"})
+        html = outing_talk_html({"id": "seahorse", "packTemplate": "animals"})
         self.assertIn("What do they eat?", html)
         self.assertNotIn("card-study-pack", html)
         self.assertNotIn("What kind of otter is the Asian small-clawed otter?", html)
@@ -438,7 +439,7 @@ class AsianSmallClawedOtterEasyStudyCardTests(unittest.TestCase):
     def test_artifacts_include_otter_easy_and_hard(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
         self.assertIn("asian-small-clawed-otter", payload)
-        self.assertNotIn("octopus", payload)
+        self.assertNotIn("seahorse", payload)
         self.assertIn("shark", payload)
         self.assertIn("warthog", payload)
         otter = payload["asian-small-clawed-otter"]

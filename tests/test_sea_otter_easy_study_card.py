@@ -36,7 +36,7 @@ from study_cards import (  # noqa: E402
 
 FP = REPO / "static" / "field-pack"
 OTTER = FP / "cards" / "sea-otter" / "index.html"
-OCTOPUS = FP / "cards" / "octopus" / "index.html"
+OCTOPUS = FP / "cards" / "seahorse" / "index.html"
 ASIAN = FP / "cards" / "asian-small-clawed-otter" / "index.html"
 PRINT_KIT = FP / "js" / "print-kit.js"
 STUDY_JS = FP / "js" / "study-card.js"
@@ -141,7 +141,7 @@ def _main(html: str) -> str:
 class SeaOtterEasyStudyCardTests(unittest.TestCase):
     def test_deck_is_junior_ranger(self):
         self.assertIn("sea-otter", study_card_ids())
-        self.assertNotIn("octopus", study_card_ids())
+        self.assertNotIn("seahorse", study_card_ids())
         self.assertEqual(
             study_card_ids(),
             (
@@ -181,12 +181,13 @@ class SeaOtterEasyStudyCardTests(unittest.TestCase):
                 "jellyfish",
                 "kelp-forest",
                 "manta-ray",
+                "octopus",
             ),
         )
         self.assertEqual(shipped_levels_for("sea-otter"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("sea-otter", "hard"))
         self.assertIsNotNone(study_deck_for("sea-otter", "zoologist"))
-        self.assertIsNone(study_deck_for("octopus"))
+        self.assertIsNone(study_deck_for("seahorse"))
         deck = study_deck_for("sea-otter")
         self.assertIsNotNone(deck)
         self.assertEqual(deck["id"], "sea-otter")
@@ -305,7 +306,7 @@ class SeaOtterEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Facts from Wikipedia, Sea otter.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
-        html = outing_talk_html({"id": "octopus", "packTemplate": "animals"})
+        html = outing_talk_html({"id": "seahorse", "packTemplate": "animals"})
         self.assertIn("What do they eat?", html)
         self.assertNotIn("card-study-pack", html)
         self.assertNotIn("Where do sea otters live in the wild?", html)
@@ -434,7 +435,7 @@ class SeaOtterEasyStudyCardTests(unittest.TestCase):
     def test_artifacts_include_sea_otter_easy_hard_and_zoologist(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
         self.assertIn("sea-otter", payload)
-        self.assertNotIn("octopus", payload)
+        self.assertNotIn("seahorse", payload)
         self.assertIn("asian-small-clawed-otter", payload)
         otter = payload["sea-otter"]
         self.assertEqual(otter["id"], "sea-otter")

@@ -70,7 +70,7 @@ PARK_ANIMALS = {
     "everglades": ["american-alligator", "sea-turtle"],
 }
 
-STUDY_DECK_ANIMALS = ("shark", "crab", "sea-otter", "puffin")
+STUDY_DECK_ANIMALS = ("shark", "crab", "sea-otter", "puffin", "octopus")
 
 
 def _main(html: str) -> str:
@@ -207,6 +207,10 @@ class MarineAnimalParkRailsTests(unittest.TestCase):
         self.assertEqual(
             study_try_next_ids("puffin"),
             ["african-penguin", "polar-bear", "african-lion"],
+        )
+        self.assertEqual(
+            study_try_next_ids("octopus"),
+            ["cuttlefish", "jellyfish", "african-lion"],
         )
 
     def test_published_marine_cards_add_park_rails(self):
