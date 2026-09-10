@@ -96,7 +96,7 @@ EASY_STEMS = (
     "Are horseshoe crabs true crabs?",
 )
 
-PLAIN_LEVEL_LABELS = ("Easy", "Hard")
+PLAIN_LEVEL_LABELS = ("Easy",)
 AGE_BADGES = ("Ages", "Age 4", "age badge", "ages 4", "4–6", "4-6")
 BRITTLE = (
     "6,793",
