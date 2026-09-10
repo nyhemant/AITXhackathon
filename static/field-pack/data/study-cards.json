@@ -14978,5 +14978,163 @@
         ]
       }
     }
+  },
+  "manta-ray": {
+    "id": "manta-ray",
+    "source": "https://en.wikipedia.org/wiki/Manta_ray",
+    "source_note": "Facts from Wikipedia, Manta ray.",
+    "talk_about": [
+      "A manta flaps wide fins like underwater wings. How is that different from kicking a tail?",
+      "Horn-shaped fins sit beside a wide forward mouth. How might those horns help scoop plankton?",
+      "People once called mantas “devilfish” because of the horns. Why might that nickname be unfair?"
+    ],
+    "push_further": [
+      "Reef mantas hug coasts; oceanic mantas roam farther out. Why might those two lives need different homes?",
+      "Cleaning stations let little fish pick off parasites. Why might that underwater stop matter?",
+      "Mantas have few pups and grow slowly. Why might nets and gill-plate demand put extra pressure on them?"
+    ],
+    "levels": {
+      "easy": {
+        "teach": [
+          "Huge flat rays with wing-like fins",
+          "Horn-shaped fins beside a wide forward mouth",
+          "Filter-feed on tiny drifting animals (plankton)",
+          "Swim by flapping their “wings”",
+          "Live in warm tropical and subtropical seas"
+        ],
+        "questions": [
+          {
+            "slot": 1,
+            "id": "wings-soft",
+            "title": "Wings",
+            "stem": "What do a manta’s broad fins work like?",
+            "choices": [
+              "Broad triangular pectoral fins work like underwater wings",
+              "Tiny insect wings for flying over the beach",
+              "Bicycle wheels that roll on the sand"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says mantas move through the water by the wing-like movements of their pectoral fins. Those broad triangular fins work like underwater wings."
+          },
+          {
+            "slot": 2,
+            "id": "horns-soft",
+            "title": "Horns",
+            "stem": "What sit beside a manta’s wide forward mouth?",
+            "choices": [
+              "Real ram horns they use to charge boats",
+              "Cephalic fins by the mouth look like horns — an old “devilfish” nickname",
+              "Two extra tails stuck on the head"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says mantas have horn-shaped cephalic fins beside the mouth. People once called them “devilfish” because those horns looked “evil.” The fins are feeding tools, not weapons."
+          },
+          {
+            "slot": 3,
+            "id": "filter-soft",
+            "title": "Filter",
+            "stem": "How do mantas gather their food?",
+            "choices": [
+              "They chew giant whales for dinner",
+              "They plant apples on the seafloor",
+              "They swim with mouths open; horn fins funnel plankton toward the gills"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says mantas are filter feeders. They flatten the horn-shaped cephalic fins to channel zooplankton into the open mouth as they swim."
+          },
+          {
+            "slot": 4,
+            "id": "big-soft",
+            "title": "Big",
+            "stem": "How big can a manta get, if we keep the size soft?",
+            "choices": [
+              "Among the largest rays — disc width can reach several meters (soft)",
+              "No bigger than a postage stamp",
+              "Exactly the size of one goldfish, always"
+            ],
+            "correct": "A",
+            "why": "Wikipedia lists mantas among the largest rays. Disc width can reach several meters. Exact records shift, so we keep that size soft."
+          },
+          {
+            "slot": 5,
+            "id": "reef-ocean-soft",
+            "title": "Reef and ocean",
+            "stem": "How do reef mantas and giant oceanic mantas use the sea?",
+            "choices": [
+              "Both kinds live only in one bathtub",
+              "Reef mantas stay nearer coasts; giant oceanic mantas roam farther offshore (soft)",
+              "Both kinds never leave a single puddle"
+            ],
+            "correct": "B",
+            "why": "Wikipedia’s soft split: reef mantas tend to stay nearer coasts, while giant oceanic mantas roam farther offshore. Maps and names can shift, so we keep that lifestyle story soft."
+          },
+          {
+            "slot": 6,
+            "id": "live-pups-soft",
+            "title": "Live pups",
+            "stem": "How are baby mantas born?",
+            "choices": [
+              "They lay hundreds of hard chicken eggs on the beach",
+              "They buy pups from a shop",
+              "Mothers carry pups inside and give birth to live young after a long pregnancy (soft)"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says gestation lasts over a year and mantas give birth to live pups. Pregnancy length can vary, so we keep that story soft."
+          },
+          {
+            "slot": 7,
+            "id": "cleaning-soft",
+            "title": "Cleaning",
+            "stem": "Why do mantas visit coral cleaning stations?",
+            "choices": [
+              "So little fish can pick off parasites",
+              "To wash cars in a parking lot",
+              "To hide from every drop of water"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says mantas visit cleaning stations on coral reefs so cleaner fish can pick off external parasites."
+          },
+          {
+            "slot": 8,
+            "id": "breach-soft",
+            "title": "Breach",
+            "stem": "What do mantas sometimes do at the surface — and do we know why?",
+            "choices": [
+              "They grow jet engines and fly to the moon",
+              "They sometimes leap clear of the water — the reasons are still debated (soft)",
+              "They never move at all"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says mantas may breach or leap out of the water. Possible ideas include a signal or shaking off hitchhikers, but the reason is not known — we keep that story soft."
+          },
+          {
+            "slot": 9,
+            "id": "soft-net-gill-care",
+            "title": "Soft care",
+            "stem": "How can people help mantas?",
+            "choices": [
+              "Catch every manta and keep them in jars",
+              "Dump trash in every warm sea",
+              "Keep warm seas healthy; fishing nets and demand for gill plates put pressure on slow-breeding mantas (soft)"
+            ],
+            "correct": "C",
+            "why": "Wikipedia ties pressure on mantas to entanglement in fishing nets and demand for their gill plates. Slow breeding makes that pressure harder to bounce back from. Soft care is keeping warm seas healthy — we do not lock one status letter."
+          },
+          {
+            "slot": 10,
+            "id": "horns-not-danger-myth",
+            "title": "Myth buster",
+            "stem": "Do a manta’s horns mean it is dangerous?",
+            "choices": [
+              "No — horns don’t mean danger. Mantas are gentle plankton-eaters, not man-eaters",
+              "Yes — they hunt people on purpose",
+              "Yes — they pull ships under with the horns"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says people once feared mantas as “devilfish,” but divers found them placid and safe. The horn fins help funnel plankton. Mantas are gentle filter-feeders, not man-eaters."
+          }
+        ]
+      }
+    }
   }
 }

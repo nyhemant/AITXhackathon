@@ -174,6 +174,7 @@ class PuffinEasyStudyCardTests(unittest.TestCase):
                 "eel",
                 "jellyfish",
                 "kelp-forest",
+                "manta-ray",
             ),
         )
         self.assertEqual(shipped_levels_for("puffin"), ("easy", "hard", "zoologist"))

@@ -164,6 +164,7 @@ class TortoiseEasyStudyCardTests(unittest.TestCase):
                 "eel",
                 "jellyfish",
                 "kelp-forest",
+                "manta-ray",
             ),
         )
         self.assertEqual(shipped_levels_for("galapagos-tortoise"), ("easy", "hard", "zoologist"))

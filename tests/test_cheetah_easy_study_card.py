@@ -199,6 +199,7 @@ class CheetahEasyStudyCardTests(unittest.TestCase):
                 "eel",
                 "jellyfish",
                 "kelp-forest",
+                "manta-ray",
             ),
         )
         self.assertEqual(shipped_levels_for("cheetah"), ("easy", "hard", "zoologist"))

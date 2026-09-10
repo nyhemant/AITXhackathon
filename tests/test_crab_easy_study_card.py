@@ -179,6 +179,7 @@ class CrabEasyStudyCardTests(unittest.TestCase):
                 "eel",
                 "jellyfish",
                 "kelp-forest",
+                "manta-ray",
             ),
         )
         self.assertEqual(shipped_levels_for("crab"), ("easy", "hard", "zoologist"))
