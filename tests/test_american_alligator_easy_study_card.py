@@ -168,6 +168,7 @@ class AmericanAlligatorEasyStudyCardTests(unittest.TestCase):
                 "clownfish",
                 "crab",
                 "cuttlefish",
+                "eel",
             ),
         )
         self.assertEqual(shipped_levels_for("american-alligator"), ("easy", "hard", "zoologist"))
