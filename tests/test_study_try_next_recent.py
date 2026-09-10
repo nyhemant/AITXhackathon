@@ -299,6 +299,11 @@ class StudyTryNextRecentTests(unittest.TestCase):
             list(STUDY_NEIGHBORS["manta-ray"]),
             ["jellyfish", "kelp-forest"],
         )
+        self.assertIn("octopus", catalog["neighbors"])
+        self.assertEqual(
+            list(STUDY_NEIGHBORS["octopus"]),
+            ["cuttlefish", "jellyfish"],
+        )
 
 
 if __name__ == "__main__":

@@ -48,7 +48,7 @@ PENGUIN = FP / "cards" / "african-penguin" / "index.html"
 ELEPHANT = FP / "cards" / "african-elephant" / "index.html"
 GIRAFFE = FP / "cards" / "reticulated-giraffe" / "index.html"
 LION = FP / "cards" / "african-lion" / "index.html"
-OCTOPUS = FP / "cards" / "octopus" / "index.html"
+OCTOPUS = FP / "cards" / "seahorse" / "index.html"
 PRINT_KIT = FP / "js" / "print-kit.js"
 STUDY_JS = FP / "js" / "study-card.js"
 STYLES = FP / "css" / "styles.css"
@@ -165,6 +165,7 @@ class TortoiseEasyStudyCardTests(unittest.TestCase):
                 "jellyfish",
                 "kelp-forest",
                 "manta-ray",
+                "octopus",
             ),
         )
         self.assertEqual(shipped_levels_for("galapagos-tortoise"), ("easy", "hard", "zoologist"))
@@ -279,7 +280,7 @@ class TortoiseEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Facts from Wikipedia, Galápagos tortoise.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
-        html = outing_talk_html({"id": "octopus", "packTemplate": "animals"})
+        html = outing_talk_html({"id": "seahorse", "packTemplate": "animals"})
         self.assertIn("What do they eat?", html)
         self.assertNotIn("card-study-pack", html)
         self.assertNotIn("Where do wild Galápagos tortoises live?", html)

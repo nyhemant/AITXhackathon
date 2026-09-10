@@ -39,7 +39,7 @@ from study_cards import (  # noqa: E402
 
 FP = REPO / "static" / "field-pack"
 EEL = FP / "cards" / "eel" / "index.html"
-OCTOPUS = FP / "cards" / "octopus" / "index.html"
+OCTOPUS = FP / "cards" / "seahorse" / "index.html"
 CUTTLEFISH = FP / "cards" / "cuttlefish" / "index.html"
 CRAB = FP / "cards" / "crab" / "index.html"
 LION = FP / "cards" / "african-lion" / "index.html"
