@@ -97,8 +97,8 @@ BRITTLE = (
     "35 million",
     "10.5",
     "kg",
-    "cm",
-    "mph",
+    " cm",
+    " mph",
     "km/h",
 )
 RESERVED = (
