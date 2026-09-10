@@ -12838,5 +12838,163 @@
         ]
       }
     }
+  },
+  "crab": {
+    "id": "crab",
+    "source": "https://en.wikipedia.org/wiki/Crab",
+    "source_note": "Facts from Wikipedia, Crab.",
+    "talk_about": [
+      "Crabs have a hard shell and claws. Why might those help at the shore?",
+      "Many crabs walk sideways. Why might that be handy among rocks?",
+      "A crab must shed its shell to grow. What would you watch for after a molt?"
+    ],
+    "push_further": [
+      "After a molt the new shell is soft. Why might a crab hide until it hardens?",
+      "Hermit crabs borrow empty shells. Why might a used shell still be useful?",
+      "Shores and reefs give crabs cracks to hide in. Why do those homes matter?"
+    ],
+    "levels": {
+      "easy": {
+        "teach": [
+          "Hard-shelled animals with claws",
+          "Ten-legged crustaceans (decapods)",
+          "Many walk sideways (“crabwise”)",
+          "Live in oceans, shores — some in fresh water or on land",
+          "Must shed their shell to grow"
+        ],
+        "questions": [
+          {
+            "slot": 1,
+            "id": "hard-shell-soft",
+            "title": "Hard shell",
+            "stem": "What covers a crab’s body?",
+            "choices": [
+              "A thick armored shell (exoskeleton) that protects the body",
+              "A coat of feathers like a bird",
+              "Only a thin layer of fur"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says crabs have a heavily armoured shell — a thick exoskeleton that covers and protects the body."
+          },
+          {
+            "slot": 2,
+            "id": "claws-soft",
+            "title": "Claws",
+            "stem": "What do a crab’s front legs often end in?",
+            "choices": [
+              "Soft flower petals",
+              "Pincers (claws) they use for eating and defense",
+              "Wings for flying"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says true crabs often have claws. The front legs often end in pincers used for eating and defense."
+          },
+          {
+            "slot": 3,
+            "id": "sideways-soft",
+            "title": "Sideways",
+            "stem": "How do many crabs move?",
+            "choices": [
+              "They only hop like kangaroos",
+              "They only fly over the waves",
+              "Many scuttle sideways into rock crevices"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says many crabs can run swiftly sideways (“crabwise”), and they often hide in rocky crevices. Some walk forward, so we say many."
+          },
+          {
+            "slot": 4,
+            "id": "hide-soft",
+            "title": "Hide",
+            "stem": "Where do many crabs like to hide?",
+            "choices": [
+              "Rocky cracks, sand, and tide pools",
+              "Only in treetops far from water",
+              "Only in desert sand dunes"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says crabs have a habit of hiding in rocky crevices. Many also use sand and shore tide pools as hideouts."
+          },
+          {
+            "slot": 5,
+            "id": "molt-soft",
+            "title": "Molt",
+            "stem": "How does a crab grow bigger?",
+            "choices": [
+              "They inflate like balloons and never change their shell",
+              "They shed the old shell so a bigger soft one can harden",
+              "They grow a second shell on top and keep both forever"
+            ],
+            "correct": "B",
+            "why": "Wikipedia’s moulting notes say crustaceans shed the old exoskeleton so they can grow. The new shell starts soft and then hardens."
+          },
+          {
+            "slot": 6,
+            "id": "many-kinds-soft",
+            "title": "Many kinds",
+            "stem": "Do all crabs look the same size and shape?",
+            "choices": [
+              "Every crab is exactly the same size",
+              "There are only two crabs in the whole ocean",
+              "From tiny pea crabs to giant spider crabs — lots of shapes and sizes"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says crabs vary from tiny pea crabs to giant spider crabs, with many shapes and sizes. Exact record sizes stay soft."
+          },
+          {
+            "slot": 7,
+            "id": "ocean-to-land-soft",
+            "title": "Ocean to land",
+            "stem": "Where can crabs live?",
+            "choices": [
+              "Most live in the ocean; some live in rivers or even on land",
+              "They only live in the icy sky",
+              "They never leave a single aquarium tank"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says many crabs are marine, and a substantial number live in fresh water or other non-marine homes. Some even live on land."
+          },
+          {
+            "slot": 8,
+            "id": "eat-mix-soft",
+            "title": "Eat mix",
+            "stem": "What do many crabs eat?",
+            "choices": [
+              "Only clouds and rain",
+              "Many are omnivores — algae, scraps, and small animals",
+              "Only metal and rocks"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says many crabs are free-living marine omnivores, eating a mix of algae, scraps, and small animals. Some kinds specialize, so we say many."
+          },
+          {
+            "slot": 9,
+            "id": "soft-shore-reef-care",
+            "title": "Soft care",
+            "stem": "How can people help crabs?",
+            "choices": [
+              "Take every rock and reef home",
+              "Pour trash on the shore so crabs can hide",
+              "Keep shores and reefs healthy so crabs have places to hide and grow"
+            ],
+            "correct": "C",
+            "why": "Wikipedia ties crabs to rocky crevices, shores, and reefs. Soft care is keeping those hide-and-grow homes healthy — we do not lock one status letter."
+          },
+          {
+            "slot": 10,
+            "id": "horseshoe-not-crab-myth",
+            "title": "Myth buster",
+            "stem": "Are horseshoe crabs true crabs?",
+            "choices": [
+              "No — horseshoe “crabs” are a different kind of animal, closer to spiders than to true crabs",
+              "Yes — horseshoe crabs are the same as true crabs",
+              "Yes — horseshoe crabs are a kind of fish"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says horseshoe crabs are not true crabs. They belong with a different group of animals, closer to spiders than to true crabs."
+          }
+        ]
+      }
+    }
   }
 }

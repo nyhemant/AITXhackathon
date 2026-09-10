@@ -174,6 +174,7 @@ class HippoEasyStudyCardTests(unittest.TestCase):
                 "elk",
                 "puffin",
                 "clownfish",
+                "crab",
             ),
         )
         self.assertEqual(shipped_levels_for("nile-hippo"), ("easy", "hard", "zoologist"))

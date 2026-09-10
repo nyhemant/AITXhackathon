@@ -175,6 +175,7 @@ class SeaOtterEasyStudyCardTests(unittest.TestCase):
                 "elk",
                 "puffin",
                 "clownfish",
+                "crab",
             ),
         )
         self.assertEqual(shipped_levels_for("sea-otter"), ("easy", "hard", "zoologist"))

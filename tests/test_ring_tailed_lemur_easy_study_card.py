@@ -230,6 +230,7 @@ class RingTailedLemurEasyStudyCardTests(unittest.TestCase):
                 "elk",
                 "puffin",
                 "clownfish",
+                "crab",
             ),
         )
         self.assertEqual(shipped_levels_for("ring-tailed-lemur"), ("easy", "hard", "zoologist"))

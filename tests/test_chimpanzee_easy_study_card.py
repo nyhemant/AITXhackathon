@@ -216,6 +216,7 @@ class ChimpanzeeEasyStudyCardTests(unittest.TestCase):
                 "elk",
                 "puffin",
                 "clownfish",
+                "crab",
             ),
         )
         self.assertEqual(shipped_levels_for("chimpanzee"), ("easy", "hard", "zoologist"))
