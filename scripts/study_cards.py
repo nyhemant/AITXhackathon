@@ -1700,7 +1700,53 @@ letter dumps. Reserve RNA editing, TTX chemistry,
 genome, cirrate phylogeny, and status-by-kind
 for Zoologist. Do not redo JR themes. Keep
 kid-friendly. Do not invent photos.
-Zoologist is reserved.
+
+Facts for octopus Zoologist (zoologist) are
+Wikipedia-backed from the same Octopus
+page. Answer-light (teach: []). Coleoid
+octopuses edit RNA (especially in the
+nervous system) more than almost any other
+animals, using ADAR enzymes — more flexible
+transcripts traded for slower DNA change
+(soft). Blue-ringed (Hapalochlaena) venom
+includes tetrodotoxin; it can stop
+breathing, and no known antidote exists —
+support breathing until it clears (soften
+clinical detail). California two-spot
+genome shows big expansions of
+protocadherins (neuron wiring) and C2H2
+zinc-finger transcription factors, plus
+many novel skin, sucker, and nerve genes
+(soft). Modern octopod chromosomes show
+fusions and rearrangements versus the
+vampire squid’s more basal, squid-like
+karyotype (soft). Traditional Cirrina
+(Cirromorphida) and Argonautoidea look
+paraphyletic in molecular trees; cirrates
+sit basal — names are soft, not forever
+boxes. Octopods arise from Muensterelloidea
+in the Jurassic within Vampyropoda (soften
+exact Ma). Optic glands drive maturation
+then a post-breeding fade; removing them
+after spawning can extend life in
+experiments (soft). No single IUCN letter
+for “octopus”; some stocks are heavily
+fished; commercial farming plans are
+debated (welfare/ecology) — treat as
+snapshots by kind and fishery. Closed
+circulation is rare among invertebrates:
+vessels lined with a cellular endothelium;
+high pressure is needed for viscous
+haemocyanin blood (soft). The common
+octopus was long the only UK-protected
+invertebrate in lab law; rules later
+widened to all cephalopods (EU/UK) —
+intelligence drives those welfare rules
+(soft). Soften contested numbers and
+clinical TTX detail. Do not invent a
+single IUCN letter for “octopus.” Do not
+redo JR or PR themes. Keep kid-friendly.
+Do not invent photos.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
@@ -1842,8 +1888,7 @@ LEVEL_DISPLAY_NAMES = {
 # American bison, elk, puffin, clownfish, crab,
 # cuttlefish, eel, jellyfish, and kelp forest
 # ship Junior Ranger + Park Ranger + Zoologist.
-# Manta ray ships Junior Ranger + Park Ranger + Zoologist.
-# Octopus ships Junior Ranger + Park Ranger.
+# Manta ray and octopus ship Junior Ranger + Park Ranger + Zoologist.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -2319,6 +2364,17 @@ PUSH_FURTHER_OCTOPUS = (
     "Some octopus gene copies get edited after they’re written. Why might that rewriting story wait?",
     "Blue-ring venom has a famous toxin nickname. Why keep the chemistry for a later card?",
     "Finned deep-sea cousins, the full genome story, and status-by-kind still wait. Why not one letter for every octopus?",
+)
+TALK_ABOUT_OCTOPUS_ZOOLOGIST = (
+    "Coleoid octopuses rewrite RNA more than almost any animal. Why might that trade slower DNA change?",
+    "Blue-rings are the people-danger outlier. Why isn’t every octopus bite the same story?",
+    "The old “Cirrina” box looks mixed in DNA trees. Why keep that name soft?",
+)
+PUSH_FURTHER_OCTOPUS_ZOOLOGIST = (
+    "Editing enzymes need paired RNA shapes. Why keep that structure story soft?",
+    "A dumbo octopus was filmed in the deepest trench zone. Why keep that depth record soft?",
+    "World catch peaked, then slipped, and farming plans are debated. Why treat those as snapshots?",
+    "Labs build bendy robot arms after octopus limbs. Why keep that biomimicry story soft?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -17997,6 +18053,144 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia says the mimic octopus can look like more dangerous animals such as lionfish, sea snakes, and eels. Blue-ringed octopuses hide their rings, then flash the iridescent warning when threatened. We keep those displays soft.",
+                    },
+                ],
+            },
+            "zoologist": {
+                # Answer-light: Zoologist has no Learn-first strip.
+                "teach": [],
+                "talk_about": list(TALK_ABOUT_OCTOPUS_ZOOLOGIST),
+                "push_further": list(PUSH_FURTHER_OCTOPUS_ZOOLOGIST),
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "rna-edit-soft",
+                        "title": "RNA edit",
+                        "stem": "How do coleoid octopuses rewrite gene copies after they are written, if we keep that editing story soft?",
+                        "choices": [
+                            "Coleoid octopuses edit RNA (especially in the nervous system) more than almost any other animals; ADAR enzymes make more flexible transcripts, traded for slower DNA change (soft)",
+                            "They never change a gene copy after it is written",
+                            "They reprint DNA every hour like a shop printer",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says octopuses and other coleoid cephalopods edit RNA more than almost any other animals, especially in the nervous system, using ADAR enzymes. That extra transcript flexibility is traded for slower DNA change. We keep the trade-off soft.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "ttx-blue-ring-soft",
+                        "title": "TTX / blue-ring",
+                        "stem": "What makes blue-ringed octopuses (Hapalochlaena) the human danger outlier, if we keep that clinical story soft?",
+                        "choices": [
+                            "They have no venom and are safer than a goldfish",
+                            "Blue-ringed (Hapalochlaena) venom includes tetrodotoxin; it can stop breathing, and no known antidote exists — support breathing until it clears (soft)",
+                            "Every octopus bite is always deadly, so blue-rings are not special",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says all octopuses are venomous, but only blue-ringed kinds (Hapalochlaena) are known to be deadly to people. Their venom includes tetrodotoxin, which can stop breathing, and no antidote is known — the care story is supporting breathing until it clears. We keep that clinical detail soft.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "genome-soft",
+                        "title": "Genome",
+                        "stem": "What did the California two-spot octopus genome show, if we keep those gene families soft?",
+                        "choices": [
+                            "It showed only plant genes and no nerve genes at all",
+                            "It showed a tiny genome with no extra wiring genes",
+                            "Big expansions of protocadherins (neuron wiring) and C2H2 zinc-finger transcription factors, plus many novel skin, sucker, and nerve genes (soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia’s California two-spot genome story highlights large expansions of protocadherins, which help wire neurons, and C2H2 zinc-finger transcription factors. Many novel genes show up in skin, suckers, and nerves. Exact gene counts stay soft.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "karyotype-soft",
+                        "title": "Karyotype",
+                        "stem": "How do modern octopod chromosomes compare with the vampire squid’s, if we keep that karyotype story soft?",
+                        "choices": [
+                            "Modern octopod chromosomes show fusions and rearrangements; the vampire squid’s karyotype looks more basal and squid-like (soft)",
+                            "Octopods and vampire squid share one locked chromosome map that never changed",
+                            "Octopods have plant chromosomes and the vampire squid has none",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says modern octopod genomes went through chromosomal fusions and rearrangements. The vampire squid’s chromosomal structure looks more basal and squid-like. We keep that karyotype comparison soft.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "cirrate-phylogeny-soft",
+                        "title": "Cirrate phylogeny",
+                        "stem": "How should we read the old Cirrina (Cirromorphida) and Argonautoidea boxes, if we keep those names soft?",
+                        "choices": [
+                            "Those names are forever boxes that DNA can never move",
+                            "Molecular trees make traditional Cirrina (Cirromorphida) and Argonautoidea look paraphyletic; cirrates sit basal — the names are soft, not forever boxes",
+                            "Cirrina is a plant family, so the names were never used for octopuses",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia’s molecular trees split traditional Cirrina (Cirromorphida) and Argonautoidea, so those groups look paraphyletic. Cirrate kinds sit toward the base. The old names are still useful labels, but they are not forever boxes — we keep them soft.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "jurassic-stem-soft",
+                        "title": "Jurassic stem",
+                        "stem": "Where do octopods arise in the fossil tree, if we keep that Jurassic timing soft?",
+                        "choices": [
+                            "They appear only in last week’s tide pool and have no fossil stem",
+                            "They arise from land dinosaurs in the Ice Age",
+                            "Octopods arise from Muensterelloidea in the Jurassic within Vampyropoda (exact millions of years stay soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia places octopods as arising from Muensterelloidea in the Jurassic, inside Vampyropoda. Exact millions-of-years dates shift with new fossils, so we keep that timing soft.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "optic-gland-soft",
+                        "title": "Optic-gland fade",
+                        "stem": "What do the optic glands do after breeding, if we keep that fade story soft?",
+                        "choices": [
+                            "Optic glands drive maturation, then a post-breeding fade; removing them after spawning can extend life in experiments (soft)",
+                            "Optic glands only help them read books and never change after breeding",
+                            "Optic glands turn into extra arms after every meal",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says optic glands make hormones that mature the animal and then trigger the post-breeding fade. In experiments, removing those glands after spawning can extend life and activity. We keep that lab story soft.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "status-by-kind-soft",
+                        "title": "Status by kind",
+                        "stem": "How should we read status for “octopus,” if we keep those snapshots by kind and fishery?",
+                        "choices": [
+                            "One locked IUCN letter covers every octopus on Earth and never changes",
+                            "There is no single IUCN letter for “octopus”; some stocks are heavily fished, and commercial farming plans are debated for welfare and ecology — treat those as snapshots (soft)",
+                            "Every octopus stock is unfished, so status never matters",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia does not give one IUCN letter for the whole octopus group. Some fisheries take many animals, world catch has risen and fallen, and commercial farming plans are debated for welfare and ecology. Those are snapshots by kind and fishery, not one forever score.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "closed-circulation-soft",
+                        "title": "Closed circulation",
+                        "stem": "What is unusual about octopus blood vessels, if we keep that circulation story soft?",
+                        "choices": [
+                            "They have no vessels at all, only puddles of air",
+                            "Their vessels are open pipes with no lining, like most insects",
+                            "Rare among invertebrates: vessels are lined with a cellular endothelium, and high pressure is needed to push viscous haemocyanin blood (soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says octopuses have a closed circulatory system whose vessels are lined with a cellular endothelium, unlike most other invertebrates. Haemocyanin blood is viscous, so it takes high pressure to push it around. Exact pressure numbers stay soft.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "research-care-soft",
+                        "title": "Research care",
+                        "stem": "How did lab-welfare rules treat the common octopus, if we keep that legal story soft?",
+                        "choices": [
+                            "The common octopus was long the only UK-protected invertebrate in lab law; rules later widened to all cephalopods (EU/UK) — intelligence drives those welfare rules (soft)",
+                            "No lab rule ever mentioned an octopus or any other invertebrate",
+                            "Only insects were protected, and octopuses were left out on purpose",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says that from 1993 the common octopus was the only invertebrate protected under UK lab law, and in 2012 the rules widened to all cephalopods to match an EU directive. Intelligence is a big reason those welfare rules exist. We keep the legal timeline soft.",
                     },
                 ],
             },
