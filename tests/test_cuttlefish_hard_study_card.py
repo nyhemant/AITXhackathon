@@ -172,7 +172,7 @@ class CuttlefishHardStudyCardTests(unittest.TestCase):
         self.assertIn("iridophore", correct_choice_text(questions[2]).lower())
         self.assertIn("leucophore", correct_choice_text(questions[2]).lower())
         self.assertIn("polarized", correct_choice_text(questions[3]).lower())
-        self.assertIn("color-blind", correct_choice_text(questions[3]).lower())
+        self.assertIn("color-blind", questions[3]["stem"].lower())
         self.assertIn("branchial", correct_choice_text(questions[4]).lower())
         self.assertIn("systemic", correct_choice_text(questions[4]).lower())
         self.assertIn("hemocyanin", correct_choice_text(questions[5]).lower())
