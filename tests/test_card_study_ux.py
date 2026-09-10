@@ -345,7 +345,8 @@ class CardStudyUxTests(unittest.TestCase):
         print_tpl = page.split('id="study-print-template">', 1)[1].split("</template>", 1)[0]
         self.assertNotIn("card-try-next", print_tpl)
         jelly = (FP / "cards" / "octopus" / "index.html").read_text(encoding="utf-8")
-        self.assertNotIn("card-try-next", jelly)
+        self.assertNotIn('aria-label="Try next"', jelly)
+        self.assertNotIn("card-study-pack", jelly)
 
     def test_photos_and_watch_live_share_hero_row(self):
         self.assertEqual(CARD_SEO_CSS_VER, "35")
