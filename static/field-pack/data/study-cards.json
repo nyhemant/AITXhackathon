@@ -15269,6 +15269,151 @@
             "why": "Wikipedia says mantas are protected in international waters by the Convention on Migratory Species (CMS), but they are more vulnerable closer to shore, where nets and bycatch still matter."
           }
         ]
+      },
+      "zoologist": {
+        "teach": [],
+        "talk_about": [
+          "DNA put old Manta inside Mobula. Why did keeping two genera make the tree messy?",
+          "Gill-raker lobes bounce tiny prey toward the throat. Why might that ricochet help?",
+          "Reef mantas can read VU; giant oceanic mantas EN. Why are those letters snapshots?"
+        ],
+        "push_further": [
+          "Isotopes hint some giant-manta food comes from deeper water. Why keep that diet soft?",
+          "Captive giant mantas have checked mirrors. Why treat that awareness hint as debated?",
+          "Dried gill plates sell once; live manta tourism can pay for years. Why keep that trade-off soft?"
+        ],
+        "questions": [
+          {
+            "slot": 1,
+            "id": "paraphyly-soft",
+            "title": "Paraphyly",
+            "stem": "Why did researchers sink the old genus Manta into Mobula, if we keep that 2017–18 tree soft?",
+            "choices": [
+              "DNA showed old Manta nested inside Mobula — keeping two genera made Mobula paraphyletic, so they sunk Manta into Mobula (2017–18 soft)",
+              "They wanted a shorter name for gift-shop stickers and never used DNA",
+              "Manta was a plant genus, so it had to move into the kelp family"
+            ],
+            "correct": "A",
+            "why": "Wikipedia’s 2017–18 DNA-and-shape story found old Manta nested inside Mobula. Keeping two genera made Mobula paraphyletic, so researchers sunk Manta into Mobula. Trees can still be discussed, so we keep that merge soft."
+          },
+          {
+            "slot": 2,
+            "id": "yarae-soft",
+            "title": "Yarae",
+            "stem": "What third living manta was formally named in 2025, if we keep that discovery soft?",
+            "choices": [
+              "A flying desert manta that lives only in sand dunes",
+              "The Atlantic manta (Mobula yarae) — a third living manta after the reef manta and the giant oceanic manta (soft)",
+              "A fourth ice-only manta that replaced both reef and oceanic kinds"
+            ],
+            "correct": "B",
+            "why": "Wikipedia’s 2025 naming story adds the Atlantic manta (Mobula yarae) as a third living manta after the reef manta and the giant oceanic manta. Names and maps can still shift, so we keep that discovery soft."
+          },
+          {
+            "slot": 3,
+            "id": "ricochet-filter-soft",
+            "title": "Ricochet filter",
+            "stem": "How can gill-raker lobes catch food without clogging, if we keep that “ricochet” story soft?",
+            "choices": [
+              "They glue every speck to the gills with chewing gum",
+              "They only swallow whole whales and never use a filter",
+              "Gill-raker lobes bounce tiny prey toward the throat (“ricochet separation”) so pores don’t clog and even smaller-than-pore particles can be caught (soft)"
+            ],
+            "correct": "C",
+            "why": "Wikipedia’s filter notes sit with a ricochet-separation story: gill-raker lobes bounce tiny prey toward the throat. That can keep pores from clogging and can catch particles smaller than a pore. We keep the mechanism soft."
+          },
+          {
+            "slot": 4,
+            "id": "mesopelagic-diet-soft",
+            "title": "Mesopelagic diet",
+            "stem": "Where might much of a giant manta’s food come from, if we keep that isotope story soft?",
+            "choices": [
+              "Stable isotopes suggest much of giant-manta food comes from deeper midwater (mesopelagic) layers, not only surface plankton (soft)",
+              "Only picnic crumbs dropped from cruise ships",
+              "Only desert beetles that never enter the sea"
+            ],
+            "correct": "A",
+            "why": "Wikipedia cites stable-isotope work suggesting much of a giant manta’s food can come from deeper midwater (mesopelagic) layers, not only surface plankton. Shares can still be debated, so we keep that diet story soft."
+          },
+          {
+            "slot": 5,
+            "id": "brain-retia-soft",
+            "title": "Brain and retia",
+            "stem": "What is special about a manta’s brain, if we keep those warm-blood hints soft?",
+            "choices": [
+              "Mantas have no brains at all and never sense the water",
+              "Among the highest brain-to-body ratios in fishes; retia mirabilia may help keep the brain warm (soft)",
+              "The brain is a dry sponge that works only on land"
+            ],
+            "correct": "B",
+            "why": "Wikipedia places mantas among fishes with the highest brain-to-body ratios. Retia mirabilia — special blood-vessel nets — may help keep the brain warm. Exact ranks and heat jobs can still be discussed, so we keep those hints soft."
+          },
+          {
+            "slot": 6,
+            "id": "mirror-check-soft",
+            "title": "Mirror check",
+            "stem": "What have captive giant mantas done at mirrors, if we keep that awareness hint debated?",
+            "choices": [
+              "They used mirrors to cut hair and never looked again",
+              "They smashed every mirror on the first try and never checked",
+              "They show contingency-checking and self-directed moves at mirrors — a hint of advanced awareness that is still debated (soft)"
+            ],
+            "correct": "C",
+            "why": "Wikipedia notes captive giant mantas showing contingency-checking and unusual self-directed moves at mirrors. That is a hint of advanced awareness, not a settled “pass the mirror test” rule, so we keep the claim debated and soft."
+          },
+          {
+            "slot": 7,
+            "id": "histotroph-soft",
+            "title": "Histotroph",
+            "stem": "How do manta embryos get food inside the mother, if we keep that “milk” story soft?",
+            "choices": [
+              "They hatch from egg cases inside the mother, then drink uterine “milk” (histotroph) — no placenta or umbilical cord (soft)",
+              "They plug into a placenta and umbilical cord like a mammal pup",
+              "They crawl ashore and buy milk at a store"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says fertilized eggs start in an egg case inside the mother. After hatching there, pups drink milky histotroph. There is no placenta or umbilical cord. Details can vary, so we keep that “milk” story soft."
+          },
+          {
+            "slot": 8,
+            "id": "fragmented-stocks-soft",
+            "title": "Fragmented stocks",
+            "stem": "Why doesn’t overfishing one manta site refill quickly from elsewhere, if we keep that mix soft?",
+            "choices": [
+              "Every manta on Earth shares one giant school that refills overnight",
+              "Local aggregations rarely mix, so overfishing one site isn’t quickly refilled from elsewhere (soft)",
+              "Mantas teleport between oceans whenever a net appears"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says manta distributions are fragmented, with little evidence that subpopulations mingle. Overfishing one aggregation is not quickly refilled from elsewhere. Mixing can still be studied, so we keep that stock story soft."
+          },
+          {
+            "slot": 9,
+            "id": "status-snapshots-soft",
+            "title": "Status snapshots",
+            "stem": "How should we read IUCN letters for living mantas, if we keep those snapshots soft?",
+            "choices": [
+              "One locked letter covers every ray on Earth and never changes",
+              "M. yarae already has a forever letter that covers alfredi and birostris too",
+              "M. alfredi VU (2019); M. birostris EN (2020); M. yarae assessment still catching up — letters are snapshots, not forever (soft)"
+            ],
+            "correct": "C",
+            "why": "Wikipedia’s snapshots treat reef manta (M. alfredi) as VU (2019) and giant oceanic manta (M. birostris) as EN (2020). The Atlantic manta (M. yarae) is newly named, so its assessment is still catching up. Letters can change — they are not one forever score."
+          },
+          {
+            "slot": 10,
+            "id": "trade-tourism-soft",
+            "title": "Trade vs tourism",
+            "stem": "Why might live manta tourism out-earn a dead manta’s gill plates, if we keep that trade-off soft?",
+            "choices": [
+              "Dried gill plates fetch short-term cash; live manta tourism can be worth far more per animal over a lifetime (soft)",
+              "A dead manta always earns more than any live dive trip",
+              "Tourism never pays, and gill plates grow back overnight"
+            ],
+            "correct": "A",
+            "why": "Wikipedia contrasts dried gill-plate markets with live manta tourism. A dead manta can bring short-term cash; a living animal can be worth far more over a lifetime of visits. Exact dollar amounts shift, so we keep that economics story soft."
+          }
+        ]
       }
     }
   }
