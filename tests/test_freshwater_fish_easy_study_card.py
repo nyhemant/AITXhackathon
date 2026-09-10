@@ -151,7 +151,7 @@ def _main(html: str) -> str:
 class FreshwaterFishEasyStudyCardTests(unittest.TestCase):
     def test_deck_is_junior_ranger(self):
         self.assertIn("freshwater-fish", study_card_ids())
-        self.assertNotIn("clownfish", study_card_ids())
+        self.assertNotIn("jellyfish", study_card_ids())
         self.assertEqual(
             study_card_ids(),
             (
@@ -184,6 +184,7 @@ class FreshwaterFishEasyStudyCardTests(unittest.TestCase):
                 "american-bison",
                 "elk",
                 "puffin",
+                "clownfish",
             ),
         )
         self.assertEqual(shipped_levels_for("freshwater-fish"), ("easy", "hard", "zoologist"))
@@ -426,7 +427,7 @@ class FreshwaterFishEasyStudyCardTests(unittest.TestCase):
     def test_artifacts_include_fish_easy_and_hard(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
         self.assertIn("freshwater-fish", payload)
-        self.assertNotIn("clownfish", payload)
+        self.assertNotIn("jellyfish", payload)
         self.assertIn("two-toed-sloth", payload)
         fish = payload["freshwater-fish"]
         self.assertEqual(fish["id"], "freshwater-fish")

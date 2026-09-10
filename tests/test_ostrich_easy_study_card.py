@@ -233,6 +233,7 @@ class OstrichEasyStudyCardTests(unittest.TestCase):
                 "american-bison",
                 "elk",
                 "puffin",
+                "clownfish",
             ),
         )
         self.assertEqual(shipped_levels_for("ostrich"), ("easy", "hard", "zoologist"))

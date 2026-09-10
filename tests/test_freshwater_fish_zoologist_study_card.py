@@ -152,8 +152,8 @@ class FreshwaterFishZoologistStudyCardTests(unittest.TestCase):
             ("easy", "hard", "zoologist"),
         )
         self.assertEqual(level_display_name("zoologist"), "Zoologist")
-        self.assertNotIn("clownfish", study_card_ids())
-        self.assertIsNone(study_deck_for("clownfish"))
+        self.assertNotIn("jellyfish", study_card_ids())
+        self.assertIsNone(study_deck_for("jellyfish"))
         deck = study_deck_for("freshwater-fish", "zoologist")
         self.assertIsNotNone(deck)
         self.assertEqual(deck["level"], "zoologist")

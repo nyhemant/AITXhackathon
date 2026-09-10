@@ -110,8 +110,8 @@ class FreshwaterFishHardStudyCardTests(unittest.TestCase):
     def test_hard_deck_is_park_ranger_without_teach(self):
         self.assertEqual(shipped_levels_for("freshwater-fish"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("freshwater-fish", "zoologist"))
-        self.assertNotIn("clownfish", study_card_ids())
-        self.assertIsNone(study_deck_for("clownfish"))
+        self.assertNotIn("jellyfish", study_card_ids())
+        self.assertIsNone(study_deck_for("jellyfish"))
         self.assertEqual(level_display_name("hard"), "Park Ranger")
         deck = study_deck_for("freshwater-fish", "hard")
         self.assertIsNotNone(deck)

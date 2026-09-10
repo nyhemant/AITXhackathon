@@ -219,6 +219,7 @@ OUTING_TALK_ANIMAL = (
 # Study decks live in scripts/study_cards.py. Freshwater fish,
 # polar bear, sea otter, American alligator, American bison,
 # and elk ship Junior Ranger + Park Ranger + Zoologist. Puffin
+# ships Junior Ranger + Park Ranger + Zoologist. Clownfish
 # ships Junior Ranger only (no Park Ranger or Zoologist yet).
 CARD_TALK_OVERRIDE: dict[str, tuple[dict, ...]] = {}
 
