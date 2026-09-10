@@ -1,4 +1,4 @@
-"""Manta-ray Easy study-card: Junior Ranger teach + 10 MCQs (later tiers reserved)."""
+"""Manta-ray Easy study-card: Junior Ranger teach + 10 MCQs (Park Ranger is a sibling level)."""
 
 from __future__ import annotations
 
@@ -118,7 +118,26 @@ BRITTLE = (
     "mph",
     "km/h",
 )
-PAGE_BRITTLE = BRITTLE
+# Explore more now uses Park Ranger talk/push, so Mobula / VU-EN
+# wording may appear on the Junior Ranger page without leaking
+# into JR questions.
+PAGE_BRITTLE = tuple(
+    p
+    for p in BRITTLE
+    if p
+    not in (
+        "IUCN",
+        "Endangered",
+        "Vulnerable",
+        "Mobula",
+        "alfredi",
+        "birostris",
+        "yarae",
+        "Myliobatidae",
+        "gill-raker",
+        "gill raker",
+    )
+)
 RESERVED = (
     "IUCN",
     "Mobula",
@@ -184,8 +203,8 @@ class MantaRayEasyStudyCardTests(unittest.TestCase):
                 "manta-ray",
             ),
         )
-        self.assertEqual(shipped_levels_for("manta-ray"), ("easy",))
-        self.assertIsNone(study_deck_for("manta-ray", "hard"))
+        self.assertEqual(shipped_levels_for("manta-ray"), ("easy", "hard"))
+        self.assertIsNotNone(study_deck_for("manta-ray", "hard"))
         self.assertIsNone(study_deck_for("manta-ray", "zoologist"))
         self.assertIsNone(study_deck_for("octopus"))
         deck = study_deck_for("manta-ray")
@@ -289,15 +308,15 @@ class MantaRayEasyStudyCardTests(unittest.TestCase):
             self.assertNotIn(phrase, html)
         visible = _text(html)
         self.assertIn("Junior Ranger", visible)
-        self.assertNotIn("Park Ranger", visible)
+        self.assertIn("Park Ranger", visible)
         self.assertNotIn("Zoologist", visible)
-        self.assertIn('class="study-level-badge"', html)
-        self.assertNotIn('class="study-level-picker"', html)
-        self.assertNotIn("study-level-picker-bottom", html)
-        self.assertNotIn('data-study-pick="easy"', html)
-        self.assertNotIn('data-study-pick="hard"', html)
+        self.assertIn('class="study-level-picker"', html)
+        self.assertIn('data-study-pick="easy"', html)
+        self.assertIn('data-study-pick="hard"', html)
         self.assertNotIn('data-study-pick="zoologist"', html)
-        self.assertEqual(html.count('role="group"'), 0)
+        self.assertNotIn('class="study-level-badge"', html)
+        self.assertEqual(html.count('role="group"'), 2)
+        self.assertIn("study-level-picker-bottom", html)
         for badge in PLAIN_LEVEL_LABELS + AGE_BADGES:
             self.assertNotIn(badge, visible)
         self.assertNotIn(" · Easy ·", html)
@@ -342,7 +361,7 @@ class MantaRayEasyStudyCardTests(unittest.TestCase):
             main,
         )
         self.assertIn('class="card-try-next no-print"', main)
-        self.assertNotIn("study-level-picker-bottom", main)
+        self.assertIn("study-level-picker-bottom", main)
         self.assertNotIn("card-print-note", main)
         self.assertIn("study-card.js?v=10", html)
         self.assertIn("study-card.css?v=10", html)
@@ -366,13 +385,13 @@ class MantaRayEasyStudyCardTests(unittest.TestCase):
         self.assertLess(main.find("study-explore"), main.find("card-try-next"))
         visible = _text(main)
         self.assertIn("Junior Ranger", visible)
-        self.assertNotIn("Park Ranger", visible)
+        self.assertIn("Park Ranger", visible)
         self.assertNotIn("Zoologist", visible)
-        self.assertIn('class="study-level-badge"', main)
-        self.assertNotIn('class="study-level-picker"', main)
-        self.assertNotIn('data-study-pick="easy"', main)
-        self.assertNotIn('data-study-pick="hard"', main)
+        self.assertIn('class="study-level-picker"', main)
+        self.assertIn('data-study-pick="easy"', main)
+        self.assertIn('data-study-pick="hard"', main)
         self.assertNotIn('data-study-pick="zoologist"', main)
+        self.assertNotIn('class="study-level-badge"', main)
         self.assertIn("Learn first", main)
         self.assertIn(">Quiz</h2>", main)
         self.assertEqual(main.count("data-study-correct"), 2)
@@ -449,7 +468,7 @@ class MantaRayEasyStudyCardTests(unittest.TestCase):
         self.assertIn("is-wrong-pick", study_js)
         self.assertIn("FPStudyLevelName", study_js + STUDY_DATA_JS.read_text(encoding="utf-8"))
 
-    def test_artifacts_include_manta_ray_easy_only(self):
+    def test_artifacts_include_manta_ray_easy_and_hard(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
         self.assertIn("manta-ray", payload)
         self.assertNotIn("octopus", payload)
@@ -457,8 +476,8 @@ class MantaRayEasyStudyCardTests(unittest.TestCase):
         self.assertIn("jellyfish", payload)
         manta = payload["manta-ray"]
         self.assertEqual(manta["id"], "manta-ray")
-        self.assertEqual(set(manta["levels"]), {"easy"})
-        self.assertNotIn("hard", manta["levels"])
+        self.assertEqual(set(manta["levels"]), {"easy", "hard"})
+        self.assertEqual(manta["levels"]["hard"]["teach"], [])
         self.assertNotIn("zoologist", manta["levels"])
         easy = manta["levels"]["easy"]
         self.assertEqual(len(easy["teach"]), 5)
@@ -489,7 +508,7 @@ class MantaRayEasyStudyCardTests(unittest.TestCase):
         manta_html = MANTA.read_text(encoding="utf-8")
         visible = _text(_main(manta_html))
         self.assertIn("Junior Ranger", visible)
-        self.assertNotIn("Park Ranger", visible)
+        self.assertIn("Park Ranger", visible)
         self.assertNotIn("Zoologist", visible)
         kelp_html = KELP.read_text(encoding="utf-8")
         self.assertIn("Junior Ranger", _text(_main(kelp_html)))
