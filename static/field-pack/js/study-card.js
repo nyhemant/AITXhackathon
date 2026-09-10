@@ -450,7 +450,9 @@ if (typeof window !== "undefined") {
     const hint = stored.length ? "" : studyIdFromReferrer(document.referrer);
     const recent = FPStudyRememberRecent(current, stored, hint, FP_STUDY_RECENT_MAX);
     writeStudyRecent(recent);
-    const grid = document.querySelector(".card-try-next-grid");
+    const grid =
+      document.querySelector(".card-try-next:not(.card-park-rail) .card-try-next-grid") ||
+      document.querySelector(".card-try-next-grid");
     if (!grid) return;
     const catalog = window.FP_STUDY_TRY_NEXT;
     if (!catalog || !catalog.titles) return;

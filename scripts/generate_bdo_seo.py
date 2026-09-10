@@ -39,6 +39,10 @@ from field_pack_kit_tier import (  # noqa: E402
     print_status_line,
     status_chip_html,
 )
+from animal_park_links import (  # noqa: E402
+    animal_park_rail_html,
+    park_animals_html,
+)
 from study_cards import (  # noqa: E402
     STUDY_QUIZ_H2,
     study_deck_for,
@@ -2538,6 +2542,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
 
       {route90}
       {home_sec}
+      {park_animals_html(vid)}
       {map_card}
       <div id="seo-play-target" class="seo-play-anchor" tabindex="-1"></div>
       {body}
@@ -4824,6 +4829,7 @@ def write_card_pages(
         hero_links = card_hero_links_html(more_links, watch_html)
         next_html = card_next_html(cid)
         try_next_html = study_try_next_html(cid) if study_deck else ""
+        park_rail_html = animal_park_rail_html(cid)
         print_venue_attr = f' data-venue="{esc(vid)}"' if show_venue_chrome and vid else ""
         kit_sites_js = json.dumps(start_here_official_urls(), separators=(",", ":"))
         action_bits: list[str] = []
@@ -4897,6 +4903,7 @@ def write_card_pages(
       {next_html}
       {talk_html}
       {try_next_html}
+      {park_rail_html}
       <p class="card-page-actions">
         {actions_html}
       </p>
