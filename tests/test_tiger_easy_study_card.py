@@ -184,6 +184,7 @@ class TigerEasyStudyCardTests(unittest.TestCase):
                 "puffin",
                 "clownfish",
                 "crab",
+                "cuttlefish",
             ),
         )
         self.assertEqual(shipped_levels_for("sumatran-tiger"), ("easy", "hard", "zoologist"))

@@ -168,6 +168,7 @@ class AsianSmallClawedOtterEasyStudyCardTests(unittest.TestCase):
                 "puffin",
                 "clownfish",
                 "crab",
+                "cuttlefish",
             ),
         )
         self.assertEqual(

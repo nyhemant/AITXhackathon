@@ -1198,6 +1198,35 @@ life on land (soft). Soften contested numbers.
 Treat IUCN letters as snapshots. Keep kid-friendly.
 Do not redo JR or PR themes. Do not invent photos.
 
+Facts for cuttlefish Junior Ranger (easy) are
+Wikipedia-backed: https://en.wikipedia.org/wiki/Cuttlefish
+(Cuttlefish group page). JR stays kid-simple “cuttlefish.”
+Marine molluscs related to squid and octopus. Unique
+internal shell (cuttlebone) for buoyancy. Eight arms
+plus two longer hunting tentacles. Change skin color
+and pattern very fast. Squirt ink to hide or confuse
+predators. Cephalopods — same big group as squid,
+octopus, and nautilus. Porous internal “bone”
+(cuttlebone) lets them float up or sink by adjusting
+gas and liquid. Eight arms plus two longer tentacles
+with suckers to grab prey. Nicknamed “chameleons of
+the sea” — can shift color and pattern in about a
+second. Dark ink cloud or a look-alike decoy helps
+them escape. Big eyes with a W-shaped pupil in bright
+light. Eat crabs, shrimp, fish, and sometimes other
+cuttlefish. Typical lifespan about 1–2 years (soften
+exacts). Soft care: keep shallow coastal waters
+healthy so cuttlefish have places to hunt and lay
+eggs (no status letter). Myth: not a fish — they’re
+molluscs (soft bodies + shell inside), closer to
+octopus than to tuna. Reserve denser Sepiidae
+taxonomy (2023 genera), chromatophore layers,
+polarization/color-blind paradox, hemocyanin/3
+hearts, status, and Americas-absence for later
+tiers. Park Ranger and Zoologist are reserved.
+Soften contested numbers. Keep kid-friendly. Do not
+invent photos.
+
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
 zoologist. Visible copy uses LEVEL_DISPLAY_NAMES only — no age badges,
@@ -1253,6 +1282,7 @@ WIKI_ELK = "https://en.wikipedia.org/wiki/Elk"
 WIKI_ATLANTIC_PUFFIN = "https://en.wikipedia.org/wiki/Atlantic_puffin"
 WIKI_CLOWNFISH = "https://en.wikipedia.org/wiki/Clownfish"
 WIKI_CRAB = "https://en.wikipedia.org/wiki/Crab"
+WIKI_CUTTLEFISH = "https://en.wikipedia.org/wiki/Cuttlefish"
 
 LETTERS = ("A", "B", "C")
 STUDY_SLOTS = 10
@@ -1331,6 +1361,7 @@ LEVEL_DISPLAY_NAMES = {
 # fish, polar bear, sea otter, American alligator, and
 # American bison, elk, puffin, clownfish, and crab
 # ship Junior Ranger + Park Ranger + Zoologist.
+# Cuttlefish ships Junior Ranger only.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -1378,6 +1409,7 @@ STUDY_NEIGHBORS = {
     "puffin": ("african-penguin", "polar-bear"),
     "clownfish": ("shark", "freshwater-fish"),
     "crab": ("shark", "clownfish"),
+    "cuttlefish": ("crab", "clownfish"),
 }
 
 STUDY_CARD_TITLES = {
@@ -1412,6 +1444,7 @@ STUDY_CARD_TITLES = {
     "puffin": "Puffin",
     "clownfish": "Clownfish",
     "crab": "Crab",
+    "cuttlefish": "Cuttlefish",
 }
 
 # Shared answers-side deepen (Claude sample). Not scored. Future animals reuse keys.
@@ -1724,6 +1757,16 @@ PUSH_FURTHER_CRAB = (
     "Squat lobsters sit halfway to a crab shape. Why might porcelain crabs look like the finished version?",
     "Some lineages lose the crab shape again. Why might a reverse path matter?",
     "Horseshoe crabs can carry VU or EN snapshots. Why is true-crab fishing still species-by-species?",
+)
+TALK_ABOUT_CUTTLEFISH = (
+    "A cuttlebone is a porous internal “bone.” How might gas and liquid help them float or sink?",
+    "Cuttlefish can shift color and pattern in about a second. When would that help?",
+    "Ink can make a dark cloud or a look-alike decoy. How might that help them escape?",
+)
+PUSH_FURTHER_CUTTLEFISH = (
+    "Cuttlefish are molluscs, not fish. What would you check besides the name?",
+    "The cuttlebone lets them adjust gas and liquid. Why might that float stay a soft story?",
+    "Skin can change color very fast. Why might that happen so quickly (soft)?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -14940,6 +14983,157 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia calls the coconut crab (Birgus latro) the largest land arthropod. It is a hermit-crab lineage that took on a crab-like body for life on land. Exact record sizes stay soft.",
+                    },
+                ],
+            },
+        },
+    },
+    "cuttlefish": {
+        "id": "cuttlefish",
+        "source": WIKI_CUTTLEFISH,
+        "source_note": "Facts from Wikipedia, Cuttlefish.",
+        "talk_about": list(TALK_ABOUT_CUTTLEFISH),
+        "push_further": list(PUSH_FURTHER_CUTTLEFISH),
+        "levels": {
+            "easy": {
+                # Teaching-first: same front as the quiz. Later tiers reserved.
+                "teach": [
+                    "Marine molluscs related to squid and octopus",
+                    "Unique internal shell (cuttlebone) for buoyancy",
+                    "Eight arms plus two longer hunting tentacles",
+                    "Change skin color and pattern very fast",
+                    "Squirt ink to hide or confuse predators",
+                ],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "cephalopod-soft",
+                        "title": "Cephalopod",
+                        "stem": "What kind of animal is a cuttlefish?",
+                        "choices": [
+                            "A cephalopod — the same big group as squid, octopus, and nautilus",
+                            "A kind of fish like tuna",
+                            "A kind of crab with a hard outer shell",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says cuttlefish are marine molluscs in the same big group as squid, octopuses, and nautiluses — cephalopods.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "cuttlebone-soft",
+                        "title": "Cuttlebone",
+                        "stem": "What does the cuttlebone help a cuttlefish do?",
+                        "choices": [
+                            "It is only a hat they wear on land",
+                            "A porous internal “bone” lets them float up or sink by adjusting gas and liquid",
+                            "It is a pair of wings for flying",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says the cuttlebone is a unique porous internal shell. Cuttlefish change the gas-to-liquid mix inside it to float up or sink.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "arms-tentacles-soft",
+                        "title": "Arms and tentacles",
+                        "stem": "How many arms and tentacles does a cuttlefish have?",
+                        "choices": [
+                            "Two legs and no arms",
+                            "One hundred tiny fins and no suckers",
+                            "Eight arms plus two longer tentacles with suckers to grab prey",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says cuttlefish have eight arms and two longer tentacles with suckers, which they use to grab prey.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "camouflage-soft",
+                        "title": "Camouflage",
+                        "stem": "Why are cuttlefish nicknamed “chameleons of the sea”?",
+                        "choices": [
+                            "They can shift color and pattern in about a second",
+                            "They only turn green once a year",
+                            "They cannot change color at all",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says cuttlefish are sometimes called “chameleons of the sea” because they can change skin color and pattern in less than a second.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "ink-soft",
+                        "title": "Ink",
+                        "stem": "How can a cuttlefish use ink when a predator comes?",
+                        "choices": [
+                            "They spray glitter to decorate the reef",
+                            "A dark ink cloud or a look-alike decoy helps them escape",
+                            "They use ink only to write their name",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says cuttlefish can squirt dark ink as a smoke-screen cloud, or release a look-alike decoy, then swim away.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "w-eyes-soft",
+                        "title": "W eyes",
+                        "stem": "What do cuttlefish eyes look like in bright light?",
+                        "choices": [
+                            "Tiny dots with no pupils",
+                            "Square pupils like a goat and no other shape",
+                            "Big eyes with a W-shaped pupil",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says cuttlefish have large, W-shaped pupils. The W shows clearly in bright light.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "hunt-soft",
+                        "title": "Hunt",
+                        "stem": "What do cuttlefish eat?",
+                        "choices": [
+                            "Crabs, shrimp, fish, and sometimes other cuttlefish",
+                            "Only seaweed and sand",
+                            "Only clouds and rain",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says cuttlefish eat crabs, shrimp, fish, and sometimes other cuttlefish. Small molluscs can be snacks too.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "short-life-soft",
+                        "title": "Short life",
+                        "stem": "About how long do cuttlefish usually live?",
+                        "choices": [
+                            "A hundred years like some trees",
+                            "Typical lifespan about 1–2 years",
+                            "Only one day",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says a typical cuttlefish life is about one to two years. Exact ages can differ by kind, so we keep that soft.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "soft-coastal-care",
+                        "title": "Soft care",
+                        "stem": "How can people help cuttlefish?",
+                        "choices": [
+                            "Drain every shallow bay so they have no water",
+                            "Take every egg home from the shore",
+                            "Keep shallow coastal waters healthy so they have places to hunt and lay eggs",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia ties cuttlefish to mostly shallow coastal waters where they hunt and lay eggs. Soft care is keeping those waters healthy — we do not lock one status letter.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "not-a-fish-myth",
+                        "title": "Myth buster",
+                        "stem": "Are cuttlefish a kind of fish?",
+                        "choices": [
+                            "No — they’re molluscs (soft bodies + a shell inside), closer to octopus than to tuna",
+                            "Yes — they are the same as tuna",
+                            "Yes — they are a kind of shark",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says cuttlefish are marine molluscs, not fish. They have soft bodies and an internal shell, and they sit with squid and octopus, not with tuna.",
                     },
                 ],
             },
