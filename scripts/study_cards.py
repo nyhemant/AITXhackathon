@@ -1681,7 +1681,26 @@ blue-ring TTX detail, intelligence-experiment
 depth, tool-use depth, and status-by-kind for
 later tiers. Soften contested size/counts.
 Keep kid-friendly. Do not invent photos.
-Park Ranger and Zoologist are reserved.
+
+Park Ranger is answer-light (empty teach) and
+deepens Octopoda’s traditional finned deep-sea
+vs typical split (keep Cirrina/Incirrina light),
+the chromatophore–iridophore–leucophore stack
+plus texture muscles, gill hearts vs a systemic
+heart that pauses in hard jetting, haemocyanin
+in plasma (blue blood; cold/low-oxygen), arm
+neurons (roughly two-thirds; some independence),
+maze/memory plus veined-octopus coconut-shell
+tool use, venom with only blue-rings known
+deadly to people (no TTX chemistry), egg-guard
+then fade / male senescence, shell-drill plus
+toxic saliva (soften timing), and mimic/warning
+displays. Soften contested size/counts. No IUCN
+letter dumps. Reserve RNA editing, TTX chemistry,
+genome, cirrate phylogeny, and status-by-kind
+for Zoologist. Do not redo JR themes. Keep
+kid-friendly. Do not invent photos.
+Zoologist is reserved.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
@@ -1824,7 +1843,7 @@ LEVEL_DISPLAY_NAMES = {
 # cuttlefish, eel, jellyfish, and kelp forest
 # ship Junior Ranger + Park Ranger + Zoologist.
 # Manta ray ships Junior Ranger + Park Ranger + Zoologist.
-# Octopus ships Junior Ranger only.
+# Octopus ships Junior Ranger + Park Ranger.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -2292,14 +2311,14 @@ PUSH_FURTHER_MANTA_RAY_ZOOLOGIST = (
     "Dried gill plates sell once; live manta tourism can pay for years. Why keep that trade-off soft?",
 )
 TALK_ABOUT_OCTOPUS = (
-    "People say “tentacles,” but octopuses have arms. What’s the difference?",
-    "When scared, many octopuses squirt dark ink. Why might that help them get away?",
-    "A soft body can squeeze through tiny gaps. How might that help an octopus hide?",
+    "A strong jet swim can pause the main heart. Why might that tire an octopus so fast?",
+    "Most nerve cells sit in the arms, not just the head. Is an octopus really “one brain”?",
+    "A veined octopus stacks coconut shells, and blue-rings flash a warning. How are those stories different from most octopuses?",
 )
 PUSH_FURTHER_OCTOPUS = (
-    "Scientists sort octopuses into bigger family groups. Why might those names wait for a later card?",
-    "Colour-change skin has tiny colour cells working together. Why might the cell names wait?",
-    "Some small octopuses have a strong bite, and some use tools. Why might those stories wait for later?",
+    "Some octopus gene copies get edited after they’re written. Why might that rewriting story wait?",
+    "Blue-ring venom has a famous toxin nickname. Why keep the chemistry for a later card?",
+    "Finned deep-sea cousins, the full genome story, and status-by-kind still wait. Why not one letter for every octopus?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -17705,7 +17724,7 @@ STUDY_CARDS: dict[str, dict] = {
         "push_further": list(PUSH_FURTHER_OCTOPUS),
         "levels": {
             "easy": {
-                # Teaching-first: same front as the quiz. Later tiers reserved.
+                # Teaching-first: same front as the quiz. Hard later may hide these.
                 "teach": [
                     "Soft-bodied sea animals with eight arms (molluscs, not fish)",
                     "Arms have suckers that grip and help feel/taste what they touch",
@@ -17843,6 +17862,141 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia calls the eight limbs arms. Squid and cuttlefish add two longer tentacles with suckers mainly at the club ends. Saying “tentacles” for an octopus mixes them up.",
+                    },
+                ],
+            },
+            "hard": {
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "octopoda-soft",
+                        "title": "Octopoda",
+                        "stem": "What order do octopuses sit in, if we keep that group map soft?",
+                        "choices": [
+                            "Order Octopoda — about 300 species; a traditional split is finned deep-sea Cirrina (cirri + fins) and typical Incirrina (most aquarium kinds) (soft)",
+                            "They are a kind of bony fish in the tuna family",
+                            "They are insects that only live in one garden",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia places octopuses in order Octopoda, with some 300 species. A traditional split names finned deep-sea Cirrina (cirri plus fins) and typical Incirrina — the kinds most aquariums show. Newer trees still discuss that split, so we keep the map soft.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "chromatophore-stack-soft",
+                        "title": "Chromatophore stack",
+                        "stem": "How is octopus skin stacked for colour and shine, if we keep those cell names soft?",
+                        "choices": [
+                            "The skin is only painted once and never changes",
+                            "Colour cells (chromatophores) sit with reflective iridophores and white leucophores; skin muscles can also change texture (soft)",
+                            "Octopuses wear a knitted sweater from a shop",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia lists chromatophores with yellow, orange, red, brown, or black pigments, plus reflective iridophores and white leucophores. Skin muscles can also change texture. Exact cell counts stay soft.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "gill-hearts-soft",
+                        "title": "Gill hearts",
+                        "stem": "What happens to an octopus’s hearts during a hard jet swim?",
+                        "choices": [
+                            "All three hearts beat faster forever and never rest",
+                            "The hearts turn into wheels and roll away",
+                            "Two gill hearts keep pushing blood through the gills, but the main (systemic) heart pauses — so long jet swims tire them fast",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says two branchial (gill) hearts pump blood through the gills, and the systemic heart circulates the rest. During strong jetting the main heart becomes inactive, so the animal loses energy quickly and mostly crawls.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "haemocyanin-soft",
+                        "title": "Haemocyanin",
+                        "stem": "Why can octopus blood look blue, if we keep the chemistry soft?",
+                        "choices": [
+                            "A copper-based oxygen carrier (haemocyanin) is dissolved in the plasma — it works well in cold, low-oxygen water (soft)",
+                            "The blood is dyed with blueberry juice",
+                            "Octopuses have no blood, only air",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says haemocyanin, a copper-rich protein dissolved in the plasma (not packed in blood cells), carries oxygen and makes the blood bluish. It can work well in cold, low-oxygen water. We keep the chemistry names soft.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "arm-brains-soft",
+                        "title": "Arm brains",
+                        "stem": "Where do most octopus nerve cells sit, if we keep that count soft?",
+                        "choices": [
+                            "Every nerve cell sits only in the tip of the beak",
+                            "Roughly two-thirds of the neurons sit in the arms, so an arm can act with some independence from the central brain (soft)",
+                            "Octopuses have no nerve cells at all",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says two-thirds of octopus neurons sit in the arm nerve cords. Arms can perform actions with a degree of independence from the brain in the head. Exact neuron counts stay soft.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "intelligence-soft",
+                        "title": "Intelligence",
+                        "stem": "What clues show octopus intelligence, if we keep those stories soft?",
+                        "choices": [
+                            "They never remember anything and cannot open a jar",
+                            "They only copy birds and never solve a maze",
+                            "Maze and problem-solving tests show short- and long-term memory; the veined octopus uses coconut shells as portable shelters (tool use) (soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia cites maze and problem-solving experiments with short- and long-term memory. The veined octopus collects discarded coconut shells and uses them as a shelter — an example of tool use. We keep those stories soft.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "blue-ring-soft",
+                        "title": "Blue-ring",
+                        "stem": "Are octopuses venomous — and which kinds are known to be deadly to people?",
+                        "choices": [
+                            "All octopuses are venomous; only blue-ringed kinds are known to be deadly to humans if bitten (soft)",
+                            "No octopus has any venom at all",
+                            "Every octopus bite is always deadly to people",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says all octopuses are venomous, but only the blue-ringed octopuses are known to be deadly to humans. We do not lock toxin chemistry here.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "egg-guard-fade-soft",
+                        "title": "Egg guard",
+                        "stem": "What happens after an octopus lays eggs, if we keep that life story soft?",
+                        "choices": [
+                            "Parents leave the eggs and live for many decades",
+                            "The female guards the eggs in a den until they hatch, then typically stops eating and dies; males often fade after mating (soft)",
+                            "Eggs are mailed to a post office and nobody watches them",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says the female deposits eggs in a den and cares for them until they hatch, after which she dies. Males often become senescent after mating. Lifespans are short. Exact egg counts and months stay soft.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "shell-drill-soft",
+                        "title": "Shell drill",
+                        "stem": "How can an octopus open a crab or clam, if we keep the timing soft?",
+                        "choices": [
+                            "It asks the crab to unzip itself",
+                            "It only eats soup that is already open",
+                            "It can drill a shell and use toxic saliva to open crabs or clams (exact timing stays soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says octopuses may drill into crustacean, bivalve, and snail shells and use toxic saliva so the prey dies quickly. How long drilling takes can vary, so we keep that timing soft.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "mimic-warning-soft",
+                        "title": "Mimic and warning",
+                        "stem": "How can some octopuses warn or fool a threat, if we keep those displays soft?",
+                        "choices": [
+                            "Some mimic dangerous animals such as lionfish or sea snakes; blue-rings flash warning colours when threatened (soft)",
+                            "They ring a school bell and sit still forever",
+                            "They never change colour or shape when scared",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says the mimic octopus can look like more dangerous animals such as lionfish, sea snakes, and eels. Blue-ringed octopuses hide their rings, then flash the iridescent warning when threatened. We keep those displays soft.",
                     },
                 ],
             },

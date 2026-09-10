@@ -1,4 +1,4 @@
-"""Octopus Easy study-card: Junior Ranger teach + 10 MCQs (later tiers reserved)."""
+"""Octopus Easy study-card: Junior Ranger teach + 10 MCQs (Park Ranger is a sibling level)."""
 
 from __future__ import annotations
 
@@ -188,8 +188,8 @@ class OctopusEasyStudyCardTests(unittest.TestCase):
                 "octopus",
             ),
         )
-        self.assertEqual(shipped_levels_for("octopus"), ("easy",))
-        self.assertIsNone(study_deck_for("octopus", "hard"))
+        self.assertEqual(shipped_levels_for("octopus"), ("easy", "hard"))
+        self.assertIsNotNone(study_deck_for("octopus", "hard"))
         self.assertIsNone(study_deck_for("octopus", "zoologist"))
         self.assertIsNone(study_deck_for("seahorse"))
         deck = study_deck_for("octopus")
@@ -300,15 +300,15 @@ class OctopusEasyStudyCardTests(unittest.TestCase):
             self.assertNotIn(phrase, html)
         visible = _text(html)
         self.assertIn("Junior Ranger", visible)
-        self.assertNotIn("Park Ranger", visible)
+        self.assertIn("Park Ranger", visible)
         self.assertNotIn("Zoologist", visible)
-        self.assertIn('class="study-level-badge"', html)
-        self.assertNotIn('class="study-level-picker"', html)
-        self.assertNotIn("study-level-picker-bottom", html)
-        self.assertNotIn('data-study-pick="easy"', html)
-        self.assertNotIn('data-study-pick="hard"', html)
+        self.assertIn('class="study-level-picker"', html)
+        self.assertIn('data-study-pick="easy"', html)
+        self.assertIn('data-study-pick="hard"', html)
         self.assertNotIn('data-study-pick="zoologist"', html)
-        self.assertEqual(html.count('role="group"'), 0)
+        self.assertNotIn('class="study-level-badge"', html)
+        self.assertEqual(html.count('role="group"'), 2)
+        self.assertIn("study-level-picker-bottom", html)
         for badge in PLAIN_LEVEL_LABELS + AGE_BADGES:
             self.assertNotIn(badge, visible)
         self.assertNotIn(" · Easy ·", html)
@@ -353,7 +353,7 @@ class OctopusEasyStudyCardTests(unittest.TestCase):
             main,
         )
         self.assertIn('class="card-try-next no-print"', main)
-        self.assertNotIn("study-level-picker-bottom", main)
+        self.assertIn("study-level-picker-bottom", main)
         self.assertNotIn("card-print-note", main)
         self.assertIn("study-card.js?v=10", html)
         self.assertIn("study-card.css?v=10", html)
@@ -377,13 +377,13 @@ class OctopusEasyStudyCardTests(unittest.TestCase):
         self.assertLess(main.find("study-explore"), main.find("card-try-next"))
         visible = _text(main)
         self.assertIn("Junior Ranger", visible)
-        self.assertNotIn("Park Ranger", visible)
+        self.assertIn("Park Ranger", visible)
         self.assertNotIn("Zoologist", visible)
-        self.assertIn('class="study-level-badge"', main)
-        self.assertNotIn('class="study-level-picker"', main)
-        self.assertNotIn('data-study-pick="easy"', main)
-        self.assertNotIn('data-study-pick="hard"', main)
+        self.assertIn('class="study-level-picker"', main)
+        self.assertIn('data-study-pick="easy"', main)
+        self.assertIn('data-study-pick="hard"', main)
         self.assertNotIn('data-study-pick="zoologist"', main)
+        self.assertNotIn('class="study-level-badge"', main)
         self.assertIn("Learn first", main)
         self.assertIn(">Quiz</h2>", main)
         self.assertEqual(main.count("data-study-correct"), 2)
@@ -460,7 +460,7 @@ class OctopusEasyStudyCardTests(unittest.TestCase):
         self.assertIn("is-wrong-pick", study_js)
         self.assertIn("FPStudyLevelName", study_js + STUDY_DATA_JS.read_text(encoding="utf-8"))
 
-    def test_artifacts_include_octopus_easy_only(self):
+    def test_artifacts_include_octopus_easy_and_hard(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
         self.assertIn("octopus", payload)
         self.assertNotIn("seahorse", payload)
@@ -469,8 +469,7 @@ class OctopusEasyStudyCardTests(unittest.TestCase):
         self.assertIn("jellyfish", payload)
         octo = payload["octopus"]
         self.assertEqual(octo["id"], "octopus")
-        self.assertEqual(set(octo["levels"]), {"easy"})
-        self.assertNotIn("hard", octo["levels"])
+        self.assertEqual(set(octo["levels"]), {"easy", "hard"})
         self.assertNotIn("zoologist", octo["levels"])
         easy = octo["levels"]["easy"]
         self.assertEqual(len(easy["teach"]), 5)
@@ -502,7 +501,7 @@ class OctopusEasyStudyCardTests(unittest.TestCase):
         octo_html = OCTOPUS.read_text(encoding="utf-8")
         visible = _text(_main(octo_html))
         self.assertIn("Junior Ranger", visible)
-        self.assertNotIn("Park Ranger", visible)
+        self.assertIn("Park Ranger", visible)
         self.assertNotIn("Zoologist", visible)
         manta_html = MANTA.read_text(encoding="utf-8")
         self.assertIn("Junior Ranger", _text(_main(manta_html)))
