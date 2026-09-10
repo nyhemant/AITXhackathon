@@ -1383,6 +1383,40 @@ Treat IUCN letters as snapshots. Keep
 kid-friendly. Do not redo JR or PR themes.
 Do not invent photos.
 
+Facts for jellyfish Junior Ranger (easy) are
+Wikipedia-backed: https://en.wikipedia.org/wiki/Jellyfish
+(Jellyfish group page — JR stays kid-simple
+“jelly” as a group). Soft, jelly-bodied sea
+animals — not fish. Umbrella-shaped bell plus
+trailing tentacles. Tentacles carry stinging
+cells. Swim by pulsing the bell. Body is
+mostly water. No backbone — they’re cnidarians,
+the same big group as corals and anemones.
+Soft umbrella-shaped body (the bell) made of
+jelly-like mesoglea. Trailing tentacles hang
+below to catch food and sense the water. Tiny
+stinging cells help grab plankton, small fish,
+or other jellies (many stings feel mild to
+people — soften). Bell squeezes and opens to
+push water and move. Jelly tissue is about
+95% water or more (soften exact). Many start
+as a tiny polyp on the seafloor, then become
+a swimming medusa (the jelly we see). Found
+worldwide from shallow coasts to the deep
+sea; a few tiny kinds live in fresh water.
+Soft care: clean coasts and balanced seas
+help; big bloom swarms can bother beaches
+and fishing (soft — no status letter). Myth:
+a Portuguese man o’ war isn’t a true
+jellyfish — it’s a floating colony of many
+tiny animals working as one. Reserve denser
+Medusozoa taxonomy (Scyphozoa / Cubozoa /
+Hydrozoa), nematocyst mechanism, strobilation,
+box-jelly vision, and blooms/status for later
+tiers. Soften contested numbers. Keep
+kid-friendly. Do not invent photos.
+Park Ranger and Zoologist are reserved.
+
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
 zoologist. Visible copy uses LEVEL_DISPLAY_NAMES only — no age badges,
@@ -1440,6 +1474,7 @@ WIKI_CLOWNFISH = "https://en.wikipedia.org/wiki/Clownfish"
 WIKI_CRAB = "https://en.wikipedia.org/wiki/Crab"
 WIKI_CUTTLEFISH = "https://en.wikipedia.org/wiki/Cuttlefish"
 WIKI_EEL = "https://en.wikipedia.org/wiki/Eel"
+WIKI_JELLYFISH = "https://en.wikipedia.org/wiki/Jellyfish"
 
 LETTERS = ("A", "B", "C")
 STUDY_SLOTS = 10
@@ -1516,9 +1551,10 @@ LEVEL_DISPLAY_NAMES = {
 # ring-tailed lemur, ostrich, warthog, shark, and
 # Asian small-clawed otter, two-toed sloth, freshwater
 # fish, polar bear, sea otter, American alligator, and
-# American bison, elk, puffin, clownfish, crab, and
-# cuttlefish ship Junior Ranger + Park Ranger + Zoologist.
-# Eel ships Junior Ranger only.
+# American bison, elk, puffin, clownfish, crab,
+# cuttlefish, and eel ship Junior Ranger + Park
+# Ranger + Zoologist. Jellyfish ships Junior
+# Ranger only.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -1568,6 +1604,7 @@ STUDY_NEIGHBORS = {
     "crab": ("shark", "clownfish"),
     "cuttlefish": ("crab", "clownfish"),
     "eel": ("cuttlefish", "crab"),
+    "jellyfish": ("eel", "cuttlefish"),
 }
 
 STUDY_CARD_TITLES = {
@@ -1604,6 +1641,7 @@ STUDY_CARD_TITLES = {
     "crab": "Crab",
     "cuttlefish": "Cuttlefish",
     "eel": "Eel",
+    "jellyfish": "Jellyfish",
 }
 
 # Shared answers-side deepen (Claude sample). Not scored. Future animals reuse keys.
@@ -1936,6 +1974,16 @@ PUSH_FURTHER_EEL = (
     "Freshwater eels may come from deep-ocean ancestors. Why keep that origin story soft?",
     "Silver eels spawn once, then die. Why might one-shot reproduction be costly?",
     "Electric “eels” sit in Gymnotiformes, not Anguilliformes. Why might that look-alike tree matter?",
+)
+TALK_ABOUT_JELLYFISH = (
+    "A jelly has a soft bell and trailing tentacles. What job could each part do?",
+    "Jellyfish are not fish. What would you tell a friend who thinks they are?",
+    "A Portuguese man o’ war isn’t a true jellyfish. What mix-up would you explain?",
+)
+PUSH_FURTHER_JELLYFISH = (
+    "A jelly swims by pulsing its bell. How could squeezing and opening push it through the water?",
+    "Many jellies start as a tiny polyp, then swim as a medusa. What’s different about those two stages?",
+    "Aquariums often say “sea jellies.” Why might they skip the word “fish”?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -16025,6 +16073,157 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia ties young anguillid eels to dams and weirs that can block upstream climbs. Glass-eel fisheries and farm demand add more pressure on threatened Anguilla. We keep that stacked-pressure story soft, and we do not lock one group letter.",
+                    },
+                ],
+            },
+        },
+    },
+    "jellyfish": {
+        "id": "jellyfish",
+        "source": WIKI_JELLYFISH,
+        "source_note": "Facts from Wikipedia, Jellyfish.",
+        "talk_about": list(TALK_ABOUT_JELLYFISH),
+        "push_further": list(PUSH_FURTHER_JELLYFISH),
+        "levels": {
+            "easy": {
+                # Teaching-first: same front as the quiz. Later tiers reserved.
+                "teach": [
+                    "Soft, jelly-bodied sea animals — not fish",
+                    "Umbrella-shaped bell plus trailing tentacles",
+                    "Tentacles carry stinging cells",
+                    "Swim by pulsing the bell",
+                    "Body is mostly water",
+                ],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "not-fish-soft",
+                        "title": "Not fish",
+                        "stem": "Are jellyfish a kind of fish?",
+                        "choices": [
+                            "No backbone — they’re cnidarians, the same big group as corals and anemones",
+                            "Yes — they are bony fish with scales and a spine",
+                            "Yes — they are a kind of shark",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia places jellyfish in phylum Cnidaria with corals and anemones. They have no backbone, so they are not fish.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "bell-soft",
+                        "title": "Bell",
+                        "stem": "What is the soft umbrella-shaped part of a jelly?",
+                        "choices": [
+                            "A hard turtle shell they carry on their back",
+                            "A soft umbrella-shaped body (the bell) made of jelly-like mesoglea",
+                            "A pair of feathered wings",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says a jellyfish has an umbrella-shaped main body made of mesoglea, known as the bell.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "tentacles-soft",
+                        "title": "Tentacles",
+                        "stem": "What hang below a jelly’s bell?",
+                        "choices": [
+                            "A pair of walking legs like a crab",
+                            "Only a coat of fur",
+                            "Trailing tentacles hang below to catch food and sense the water",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says trailing tentacles hang on the underside of the bell. They help catch food and sense the water.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "sting-soft",
+                        "title": "Sting",
+                        "stem": "What do a jelly’s tentacles use to grab food?",
+                        "choices": [
+                            "Tiny stinging cells help grab plankton, small fish, or other jellies (many stings feel mild to people — soft)",
+                            "They only use magnets to pull in rocks",
+                            "They grow hands and pick snacks off trees",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says the tentacles are armed with stinging cells used to capture prey. Many everyday stings feel mild to people, though some can hurt — we stay soft.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "pulse-swim-soft",
+                        "title": "Pulse swim",
+                        "stem": "How does a jellyfish usually swim?",
+                        "choices": [
+                            "It hops on the seafloor like a kangaroo",
+                            "The bell squeezes and opens to push water and move",
+                            "It only flies above the waves",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says pulsating contractions of the bell push the animal through open water.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "mostly-water-soft",
+                        "title": "Mostly water",
+                        "stem": "How much of a jelly’s body is water, if we keep the share soft?",
+                        "choices": [
+                            "It is made of solid rock with no water at all",
+                            "It is only dry sand packed into a ball",
+                            "Jelly tissue is about 95% water or more (exact share stays soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says the jelly-like mesoglea is about 95% water or more. Exact shares can shift, so we keep that number soft.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "two-stages-soft",
+                        "title": "Two stages",
+                        "stem": "What two stages do many jellies pass through?",
+                        "choices": [
+                            "Many start as a tiny polyp on the seafloor, then become a swimming medusa — the jelly we see",
+                            "They hatch as furry cubs that climb trees",
+                            "They stay as hard-shelled eggs and never change",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia describes a two-stage path: a tiny polyp can live on the seafloor, then a swimming medusa — the jelly we usually see.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "everywhere-soft",
+                        "title": "Everywhere",
+                        "stem": "Where do jellyfish live?",
+                        "choices": [
+                            "Only in desert sand dunes far from any sea",
+                            "Worldwide from shallow coasts to the deep sea; a few tiny kinds live in fresh water",
+                            "Only in one aquarium tank, and nowhere else",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says jellyfish are found all over the world, from surface waters to the deep sea. A few tiny kinds live in fresh water.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "soft-coast-bloom-care",
+                        "title": "Soft care",
+                        "stem": "How can people help jellies and the shores they visit?",
+                        "choices": [
+                            "Pour trash on every beach so jellies can hide",
+                            "Catch every jelly and keep them in jars",
+                            "Keep coasts clean and seas balanced; big bloom swarms can bother beaches and fishing (soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia ties jellies to coasts and open water, and notes that big bloom swarms can bother beaches and fishing. Soft care is clean coasts and balanced seas — we do not lock one status letter.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "man-o-war-not-jelly-myth",
+                        "title": "Myth buster",
+                        "stem": "Is a Portuguese man o’ war a true jellyfish?",
+                        "choices": [
+                            "No — it’s a floating colony of many tiny animals working as one, not a true jellyfish",
+                            "Yes — it is the same animal as a moon jelly",
+                            "Yes — it is a kind of fish with a backbone",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia treats the Portuguese man o’ war as a floating colony of many tiny animals working as one — not a single true jellyfish.",
                     },
                 ],
             },

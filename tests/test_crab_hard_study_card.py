@@ -36,7 +36,7 @@ from study_cards import (  # noqa: E402
 
 FP = REPO / "static" / "field-pack"
 CRAB = FP / "cards" / "crab" / "index.html"
-JELLYFISH = FP / "cards" / "jellyfish" / "index.html"
+OCTOPUS = FP / "cards" / "octopus" / "index.html"
 CLOWNFISH = FP / "cards" / "clownfish" / "index.html"
 LION = FP / "cards" / "african-lion" / "index.html"
 STUDY_JSON = FP / "data" / "study-cards.json"
@@ -266,7 +266,7 @@ class CrabHardStudyCardTests(unittest.TestCase):
         self.assertIn("Zoologist", clown_html)
         self.assertEqual(clown_hard["talk_about"], list(TALK_ABOUT_CLOWNFISH))
         self.assertEqual(clown_hard["push_further"], list(PUSH_FURTHER_CLOWNFISH))
-        jelly = JELLYFISH.read_text(encoding="utf-8")
+        jelly = OCTOPUS.read_text(encoding="utf-8")
         self.assertIn("What do they eat?", jelly)
         self.assertNotIn("card-study-pack", jelly)
         self.assertNotIn("brachyura-soft", jelly)

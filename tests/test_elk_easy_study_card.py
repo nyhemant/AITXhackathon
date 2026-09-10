@@ -39,7 +39,7 @@ from study_cards import (  # noqa: E402
 
 FP = REPO / "static" / "field-pack"
 ELK = FP / "cards" / "elk" / "index.html"
-JELLYFISH = FP / "cards" / "jellyfish" / "index.html"
+OCTOPUS = FP / "cards" / "octopus" / "index.html"
 GATOR = FP / "cards" / "american-alligator" / "index.html"
 BISON = FP / "cards" / "american-bison" / "index.html"
 PRINT_KIT = FP / "js" / "print-kit.js"
@@ -131,7 +131,7 @@ def _main(html: str) -> str:
 class ElkEasyStudyCardTests(unittest.TestCase):
     def test_deck_is_junior_ranger_with_hard_sibling(self):
         self.assertIn("elk", study_card_ids())
-        self.assertNotIn("jellyfish", study_card_ids())
+        self.assertNotIn("octopus", study_card_ids())
         self.assertEqual(
             study_card_ids(),
             (
@@ -168,12 +168,13 @@ class ElkEasyStudyCardTests(unittest.TestCase):
                 "crab",
                 "cuttlefish",
                 "eel",
+                "jellyfish",
             ),
         )
         self.assertEqual(shipped_levels_for("elk"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("elk", "hard"))
         self.assertIsNotNone(study_deck_for("elk", "zoologist"))
-        self.assertIsNone(study_deck_for("jellyfish"))
+        self.assertIsNone(study_deck_for("octopus"))
         deck = study_deck_for("elk")
         self.assertIsNotNone(deck)
         self.assertEqual(deck["id"], "elk")
@@ -289,11 +290,11 @@ class ElkEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Facts from Wikipedia, Elk.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
-        html = outing_talk_html({"id": "jellyfish", "packTemplate": "animals"})
+        html = outing_talk_html({"id": "octopus", "packTemplate": "animals"})
         self.assertIn("What do they eat?", html)
         self.assertNotIn("card-study-pack", html)
         self.assertNotIn("Where do elk like to live in the wild?", html)
-        jelly = JELLYFISH.read_text(encoding="utf-8")
+        jelly = OCTOPUS.read_text(encoding="utf-8")
         self.assertIn("What do they eat?", jelly)
         self.assertNotIn("card-study-pack", jelly)
         self.assertNotIn("Where do elk like to live in the wild?", jelly)
@@ -418,7 +419,7 @@ class ElkEasyStudyCardTests(unittest.TestCase):
     def test_artifacts_include_elk_easy_and_hard(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
         self.assertIn("elk", payload)
-        self.assertNotIn("jellyfish", payload)
+        self.assertNotIn("octopus", payload)
         self.assertIn("american-bison", payload)
         elk = payload["elk"]
         self.assertEqual(elk["id"], "elk")

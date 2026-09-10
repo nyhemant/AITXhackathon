@@ -36,7 +36,7 @@ from study_cards import (  # noqa: E402
 
 FP = REPO / "static" / "field-pack"
 SLOTH = FP / "cards" / "two-toed-sloth" / "index.html"
-JELLYFISH = FP / "cards" / "jellyfish" / "index.html"
+OCTOPUS = FP / "cards" / "octopus" / "index.html"
 OTTER = FP / "cards" / "asian-small-clawed-otter" / "index.html"
 PRINT_KIT = FP / "js" / "print-kit.js"
 STUDY_JS = FP / "js" / "study-card.js"
@@ -177,6 +177,7 @@ class TwoToedSlothEasyStudyCardTests(unittest.TestCase):
                 "crab",
                 "cuttlefish",
                 "eel",
+                "jellyfish",
             ),
         )
         self.assertEqual(shipped_levels_for("two-toed-sloth"), ("easy", "hard", "zoologist"))
@@ -300,11 +301,11 @@ class TwoToedSlothEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Facts from Wikipedia, Two-toed sloth.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
-        html = outing_talk_html({"id": "jellyfish", "packTemplate": "animals"})
+        html = outing_talk_html({"id": "octopus", "packTemplate": "animals"})
         self.assertIn("What do they eat?", html)
         self.assertNotIn("card-study-pack", html)
         self.assertNotIn("How many big curved claws does a two-toed sloth", html)
-        sea = JELLYFISH.read_text(encoding="utf-8")
+        sea = OCTOPUS.read_text(encoding="utf-8")
         self.assertIn("What do they eat?", sea)
         self.assertNotIn("card-study-pack", sea)
 
@@ -430,7 +431,7 @@ class TwoToedSlothEasyStudyCardTests(unittest.TestCase):
     def test_artifacts_include_sloth_easy_and_hard(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
         self.assertIn("two-toed-sloth", payload)
-        self.assertNotIn("jellyfish", payload)
+        self.assertNotIn("octopus", payload)
         self.assertIn("asian-small-clawed-otter", payload)
         sloth = payload["two-toed-sloth"]
         self.assertEqual(sloth["id"], "two-toed-sloth")
