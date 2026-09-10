@@ -1,6 +1,7 @@
-"""Sourced animal ↔ national-park suggestion rails (Yellowstone PoC).
+"""Sourced animal ↔ national-park suggestion rails (Yellowstone + Everglades PoC).
 
 Strong links only. Keep try-next (same-kind animals) separate.
+Park `animals` lists must name every animal that already points at that park.
 Do not invent weak edges or park study tiers.
 """
 
@@ -90,6 +91,19 @@ def animals_for_park(park_id: str) -> list[dict]:
                 "note": note,
             }
         )
+    return out
+
+
+def animals_pointing_to_park(park_id: str) -> list[str]:
+    """Animal ids that already list this park (forward edges to complete)."""
+    pid = str(park_id or "").strip()
+    data = load_animal_park_links()
+    out: list[str] = []
+    for cid, meta in (data.get("animals") or {}).items():
+        for edge in meta.get("parks") or []:
+            if str(edge.get("id") or "") == pid:
+                out.append(str(cid))
+                break
     return out
 
 
