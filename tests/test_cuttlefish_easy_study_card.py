@@ -213,7 +213,13 @@ class CuttlefishEasyStudyCardTests(unittest.TestCase):
             self.assertEqual(len(set(q["choices"])), 3)
             self.assertIn(q["correct"], ("A", "B", "C"))
             self.assertTrue(str(q["why"]).strip())
-        blob = " ".join(deck["teach"] + [q["stem"] + q["why"] for q in deck["questions"]])
+        blob = " ".join(
+            deck["teach"]
+            + [
+                q["stem"] + q["why"] + " ".join(q["choices"])
+                for q in deck["questions"]
+            ]
+        )
         for phrase in BRITTLE + RESERVED:
             self.assertNotIn(phrase, blob)
         self.assertIn("cephalopod", blob.lower())
