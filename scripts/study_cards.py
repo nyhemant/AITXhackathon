@@ -1311,7 +1311,7 @@ places (no status letter). Myth: electric “eels”
 aren’t true eels — they’re South American knifefish,
 not Anguilliformes. Soften contested numbers.
 Keep kid-friendly. Do not invent photos. Park
-Ranger ships on this card. Zoologist is reserved.
+Ranger + Zoologist ship on this card.
 
 Facts for eel Park Ranger (hard) are
 Wikipedia-backed from the same Eel page
@@ -1344,8 +1344,44 @@ myth). Vast majority of true eels stay
 ocean-only; Anguilla is the famous freshwater
 exception. Soften contested numbers. Treat IUCN
 letters as snapshots. Keep kid-friendly. Do not
-redo JR. Zoologist is reserved. Do not invent
-photos.
+redo JR. Zoologist ships on this card. Do not
+invent photos.
+
+Facts for eel Zoologist (zoologist) are
+Wikipedia-backed from the same Eel page
+(Elopomorpha / freshwater-eel notes).
+Answer-light (teach: []). True eels sit in
+superorder Elopomorpha with tarpon and bonefish
+— all share the flat leptocephalus larva (soft).
+Living Anguilliformes span major clades (e.g.
+Anguilloidei, Congroidei, Muraenoidei,
+Saccopharyngoidei / gulpers — soft names).
+Genomic work (Inoue et al.) suggests freshwater
+Anguilla evolved from deep-ocean eel ancestors
+(soft). Johannes Schmidt traced ever-smaller
+leptocephali to the Sargasso Sea (early 1900s)
+without seeing adults spawn (soft history).
+European and American eels each behave as huge
+mixed breeding pools (panmixia) spawning in
+overlapping Sargasso waters (soft). Silver eels
+migrate oceanward once to spawn then die —
+one-shot reproduction / semelparity (soft).
+Deep-sea spiny eels (Notacanthiformes) are the
+sister clade to true eels; swamp and electric
+“eels” are unrelated look-alikes. Electric eel
+(Electrophorus) = South American knifefish
+(Gymnotiformes), closer to the catfish/carp
+line than to Anguilliformes (soft). Status
+snapshots: A. anguilla CR; A. rostrata and
+A. japonica EN; A. australis NT — marine
+families mostly unlisted or different (group
+has no single letter). Dams/weirs block elver
+climbs; glass-eel fisheries and aquaculture
+demand concentrate pressure on threatened
+Anguilla (soft). Soften contested numbers.
+Treat IUCN letters as snapshots. Keep
+kid-friendly. Do not redo JR or PR themes.
+Do not invent photos.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
@@ -1892,14 +1928,14 @@ PUSH_FURTHER_CUTTLEFISH = (
     "Flamboyant cuttlefish can hold a poison in muscle. Why is that different from injected venom?",
 )
 TALK_ABOUT_EEL = (
-    "Freshwater eels grow in rivers, then swim to the sea to spawn. How is that trip unlike a salmon’s?",
-    "European and American freshwater eels may spawn in the Sargasso Sea. Why keep that map soft?",
-    "Some freshwater eels look CR or EN, while many marine kinds do not. Why might status differ?",
+    "True eels sit in Elopomorpha with tarpon and bonefish. Why might a shared leptocephalus larva matter?",
+    "European and American eels may mix in overlapping Sargasso waters. Why keep that panmixia soft?",
+    "Some Anguilla look CR or EN. Why might those snapshots still not cover marine families?",
 )
 PUSH_FURTHER_EEL = (
-    "Elvers may climb weirs, dams, and waterfalls. Why might a dam still block a young eel?",
-    "Catadromy is grow in fresh water, spawn at sea. Anadromy is the other way. Why both trips?",
-    "European eels can look CR while a short-finned cousin looks NT. Why no one letter for all eels?",
+    "Freshwater eels may come from deep-ocean ancestors. Why keep that origin story soft?",
+    "Silver eels spawn once, then die. Why might one-shot reproduction be costly?",
+    "Electric “eels” sit in Gymnotiformes, not Anguilliformes. Why might that look-alike tree matter?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -15845,6 +15881,150 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia says most true eels are marine. The famous freshwater exception is genus Anguilla, which spends years in rivers and later returns to the sea. A few other exceptions exist, so we keep that list soft.",
+                    },
+                ],
+            },
+            "zoologist": {
+                # Answer-light: Zoologist has no Learn-first strip.
+                # Facts from Wikipedia, Eel (Elopomorpha /
+                # freshwater-eel notes). Soft Elopomorpha,
+                # suborder tree, deep-sea origin, Schmidt
+                # Sargasso history, panmixia, semelparity,
+                # Notacanth sister, Gymnotiformes, status
+                # snapshots, barriers + trade. Soften
+                # contested numbers. Kid-friendly.
+                # Do not redo JR or PR themes.
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "elopomorpha-soft",
+                        "title": "Elopomorpha",
+                        "stem": "Where do true eels sit among bony fishes, if we keep the superorder soft?",
+                        "choices": [
+                            "Superorder Elopomorpha with tarpon and bonefish — all share the flat leptocephalus larva (soft)",
+                            "They sit only with sharks and rays, and they never have a larval stage",
+                            "They sit only with birds, far from any bony fish",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia places true eels in superorder Elopomorpha with tarpon and bonefish. The shared trait is a flat leptocephalus larva. That grouping can still be discussed, so we keep the superorder soft.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "suborder-tree-soft",
+                        "title": "Suborder tree",
+                        "stem": "Which major living clades sit inside Anguilliformes, if we keep the names soft?",
+                        "choices": [
+                            "Only tuna, goldfish, and frogs — no long-bodied fish at all",
+                            "Anguilloidei, Congroidei, Muraenoidei, and Saccopharyngoidei (gulpers) — soft clade names",
+                            "Only insects and spiders, which have no fins",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia’s living Anguilliformes tree spans major clades such as Anguilloidei, Congroidei, Muraenoidei, and Saccopharyngoidei (gulpers). Names and splits can move, so we keep that tree soft.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "deep-sea-origin-soft",
+                        "title": "Deep-sea origin",
+                        "stem": "Where might freshwater Anguilla have come from, if we keep that origin soft?",
+                        "choices": [
+                            "They evolved first as desert lizards and later learned to swim",
+                            "They have always lived only in garden ponds, with no ocean past",
+                            "Genomic work (Inoue et al.) suggests they evolved from deep-ocean eel ancestors (soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia cites genomic work, including Inoue and colleagues, that freshwater Anguilla may have evolved from deep-ocean eel ancestors. That origin story can still shift, so we keep it soft.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "schmidt-sargasso-soft",
+                        "title": "Schmidt",
+                        "stem": "What did Johannes Schmidt show about eel spawning, if we keep that history soft?",
+                        "choices": [
+                            "He traced ever-smaller leptocephali to the Sargasso Sea in the early 1900s — without seeing adults spawn (soft history)",
+                            "He watched adult eels spawn on a beach every summer and filmed every nest",
+                            "He proved eels never leave rivers and never have larvae",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia’s eel-history notes say Johannes Schmidt followed ever-smaller leptocephali to the Sargasso Sea in the early 1900s. He did not see adults spawn. Later work can still refine that map, so we keep the history soft.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "panmixia-soft",
+                        "title": "Panmixia",
+                        "stem": "How do European and American eels behave as breeding pools, if we keep that mix soft?",
+                        "choices": [
+                            "Each river keeps its own locked family that never mixes at sea",
+                            "Each acts as a huge mixed breeding pool (panmixia), spawning in overlapping Sargasso waters (soft)",
+                            "They only breed in desert oases and never share a sea",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia and freshwater-eel notes treat European and American eels as huge mixed breeding pools — a soft panmixia story — spawning in overlapping Sargasso waters. Exact mixing can still be debated, so we keep it soft.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "semelparity-soft",
+                        "title": "Semelparity",
+                        "stem": "How often do silver eels spawn, if we keep that life-history soft?",
+                        "choices": [
+                            "They spawn every week in the same pond and never leave",
+                            "They spawn for many years on land, then return to the river as babies",
+                            "They migrate oceanward once to spawn, then die — one-shot reproduction (semelparity, soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia’s silver-eel story is a one-shot ocean trip: they migrate seaward to spawn, then die. That one-shot plan is semelparity. Details can differ by kind, so we keep the life-history soft.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "sister-notacanth-soft",
+                        "title": "Sister clade",
+                        "stem": "Which group is the sister clade to true eels, and which “eels” are only look-alikes?",
+                        "choices": [
+                            "Deep-sea spiny eels (Notacanthiformes) are the sister clade; swamp and electric “eels” are unrelated look-alikes (soft)",
+                            "Swamp eels and electric eels are the closest true-eel sisters, and spiny eels sit with birds",
+                            "True eels have no relatives at all, and every long fish is the same animal",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia names deep-sea spiny eels (order Notacanthiformes) as the sister clade to true eels. Swamp eels and electric eels evolved long bodies on their own — they are unrelated look-alikes, not that sister group.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "gymnotiformes-soft",
+                        "title": "Gymnotiformes",
+                        "stem": "Where does the electric eel (Electrophorus) sit, if we keep that tree soft?",
+                        "choices": [
+                            "It is a true moray that sits inside Anguilliformes with congers",
+                            "It is a South American knifefish (Gymnotiformes), closer to the catfish/carp line than to Anguilliformes (soft)",
+                            "It is a shark that lives only in the open Pacific",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says the electric eel (Electrophorus) is a South American knifefish in Gymnotiformes. That line sits closer to catfish and carp than to true eels in Anguilliformes. We keep that look-alike tree soft.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "status-snapshots-soft",
+                        "title": "Status snapshots",
+                        "stem": "How should we read Anguilla IUCN letters next to marine eel families?",
+                        "choices": [
+                            "One locked letter covers every eel on Earth and never changes",
+                            "Marine families all share the same CR letter as A. anguilla, so the group has one status",
+                            "A. anguilla CR; A. rostrata and A. japonica EN; A. australis NT — marine families mostly unlisted or different; no one group letter (soft snapshots)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia’s snapshots treat letters as species-specific: A. anguilla is often CR, A. rostrata and A. japonica EN, and A. australis NT. Many marine eel families are unlisted or carry different letters. That is not one group status, and letters can change.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "barriers-trade-soft",
+                        "title": "Barriers + trade",
+                        "stem": "How do barriers and trade stack pressure on threatened Anguilla, if we keep that story soft?",
+                        "choices": [
+                            "Dams and weirs can block elver climbs; glass-eel fisheries and aquaculture demand concentrate pressure on threatened Anguilla (soft)",
+                            "Dams help every elver, and no one ever fishes or farms glass eels",
+                            "Trade never touches Anguilla, and rivers have no barriers at all",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia ties young anguillid eels to dams and weirs that can block upstream climbs. Glass-eel fisheries and farm demand add more pressure on threatened Anguilla. We keep that stacked-pressure story soft, and we do not lock one group letter.",
                     },
                 ],
             },
