@@ -880,8 +880,33 @@ and the same broad cattle family (can hybridize, which
 matters for “pure” conservation herds — soft). Soft
 plains/wood, physiology, status/recovery OK. Soften
 contested numbers. Keep kid-friendly. Do not redo JR
-themes. Zoologist is reserved for later. Do not invent
-photos.
+themes. Zoologist (zoologist) is answer-light (empty
+teach) and deepens: species Bison bison with subspecies
+B. b. bison (plains) and B. b. athabascae (wood) — some
+debate subspecies vs ecotype (soft); nuclear DNA nests
+bison inside Bos, and yaks are among the closest living
+relatives (taxonomy flux soft); even-toed ungulates in
+tribe Bovini with cattle, yak, and buffalo relatives;
+descended from Asian steppe bison (Bison priscus) that
+crossed into North America in the Pleistocene (soften
+exact dates); late-1800s crash left a tiny founding
+pool, and modern herds still show that genetic squeeze
+(soften exact survivor counts); many herds carry small
+amounts of domestic cattle DNA from historic
+crossbreeding, and “pure” conservation herds are rare
+and carefully managed; European bison nuclear DNA
+matches American bison as a sister species, but its
+mitochondrial DNA looks closer to cattle/aurochs
+(incomplete lineage sorting or ancient introgression —
+soft); grazing plus wallows reshape prairie structure,
+plant mix, and insect habitat beyond simple “eat
+grass”; Near Threatened as a snapshot, and wild
+free-ranging herds are far fewer than commercial/ranch
+herds (soften totals); modern recovery moves animals
+between DOI/park herds to keep genetic diversity from
+shrinking again (soft). Soften contested numbers. Treat
+IUCN letters as snapshots. Keep kid-friendly. Do not
+redo JR or PR themes. Do not invent photos.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
@@ -1009,10 +1034,9 @@ LEVEL_DISPLAY_NAMES = {
 # koala, chimpanzee, orangutan, giant panda, and
 # ring-tailed lemur, ostrich, warthog, shark, and
 # Asian small-clawed otter, two-toed sloth, freshwater
-# fish, polar bear, sea otter, and American alligator
-# ship Junior Ranger + Park Ranger + Zoologist.
-# American bison ships Junior Ranger + Park Ranger
-# (no Zoologist yet).
+# fish, polar bear, sea otter, American alligator, and
+# American bison ship Junior Ranger + Park Ranger +
+# Zoologist.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -1350,14 +1374,14 @@ PUSH_FURTHER_AMERICAN_ALLIGATOR = (
     "Some alligators balance sticks on their heads. Why do scientists still debate if that is a lure?",
 )
 TALK_ABOUT_AMERICAN_BISON = (
-    "There are two main kinds of American bison. How might their size and hump look different?",
-    "Bison were nearly wiped out, then slowly came back. Who helped that story?",
-    "Wallows do more than stop bugs. How might they help prairie plants and bugs?",
+    "Nuclear DNA nests bison inside Bos, the cattle genus. Why might that surprise people?",
+    "A late-1800s crash left a tiny founding pool. What leftover might herds still show?",
+    "Wild free-ranging herds are far fewer than ranch herds. Why does that split matter?",
 )
 PUSH_FURTHER_AMERICAN_BISON = (
-    "American bison have a European cousin. What one difference would you look for?",
-    "Recovery is still careful. Why might some herds need extra protection?",
-    "The United States named the bison a national mammal. Why might that story matter?",
+    "Wood and plains kinds are often called subspecies. Why do some scientists still debate that?",
+    "Many herds carry small amounts of cattle DNA. Why might “pure” herds be rare?",
+    "European bison mtDNA looks closer to cattle than to American bison. Why is that a puzzle?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -12705,6 +12729,146 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia places bison in the same broad cattle family as domestic cattle. They can hybridize. That mix matters when people try to keep some conservation herds more purely bison. We keep the genetics soft.",
+                    },
+                ],
+            },
+            "zoologist": {
+                # Answer-light: Zoologist has no Learn-first strip.
+                # Facts from Wikipedia, American bison (and Bison / Bovini).
+                # Soft taxonomy, genetics, ecology, status nuance.
+                # Soften contested numbers. Kid-friendly. Do not redo
+                # JR or PR themes.
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "bison-bison-taxonomy-soft",
+                        "title": "Species name",
+                        "stem": "What is the scientific species name for the American bison, and how are the two main kinds often labeled?",
+                        "choices": [
+                            "Species Bison bison; plains bison are often B. b. bison and wood bison B. b. athabascae — some scientists debate subspecies vs ecotype (soft)",
+                            "They have no scientific name at all",
+                            "They are labeled only as Bos taurus, the same as dairy cows",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia names the species Bison bison. The two main kinds are often labeled subspecies: plains bison (B. b. bison) and wood bison (B. b. athabascae). Some scientists treat them as ecotypes instead. We keep that debate soft.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "nested-in-bos-soft",
+                        "title": "Nested in Bos",
+                        "stem": "What does nuclear DNA say about where bison sit next to cattle and yaks?",
+                        "choices": [
+                            "Bison DNA is closer to penguins than to cattle",
+                            "Nuclear DNA nests bison inside Bos; yaks are among the closest living relatives (taxonomy still in flux — soft)",
+                            "Bison sit in a bird family far from cattle",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says nuclear DNA nests bison inside the genus Bos. Yaks are among the closest living relatives. Leaving bison out of Bos would make that cattle genus incomplete. Taxonomy is still in flux, so we keep it soft.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "bovini-tribe-soft",
+                        "title": "Bovini tribe",
+                        "stem": "Where do American bison sit among even-toed ungulates?",
+                        "choices": [
+                            "They are whales, not hoofed mammals",
+                            "They sit with kangaroos, not cattle",
+                            "They are even-toed ungulates in tribe Bovini, with cattle, yak, and buffalo relatives",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia places bison in the tribe Bovini. That group includes cattle, yaks, and buffalo relatives. They are even-toed ungulates — hoofed mammals with an even number of toes.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "beringia-ancestry-soft",
+                        "title": "Beringia ancestry",
+                        "stem": "Where did American bison ancestors come from?",
+                        "choices": [
+                            "They descended from Asian steppe bison (Bison priscus) that crossed into North America in the Pleistocene (dates stay soft)",
+                            "They evolved only in Antarctica last week",
+                            "They were invented in a factory",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says American bison descended from Asian steppe bison (Bison priscus) that crossed into North America through Beringia during the Pleistocene. Exact years stay soft.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "bottleneck-genetics-soft",
+                        "title": "Bottleneck leftover",
+                        "stem": "What leftover do modern bison herds still show from the late-1800s crash?",
+                        "choices": [
+                            "Every modern bison grew extra chromosomes from that year",
+                            "A tiny founding pool left a genetic squeeze that modern herds still show (exact survivor counts stay soft)",
+                            "The crash added brand-new species overnight",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says the late-1800s crash left a tiny founding pool. Modern herds still show that genetic squeeze — less variety than the huge older herds. Exact survivor counts stay soft.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "cattle-dna-soft",
+                        "title": "Cattle DNA",
+                        "stem": "Why do many bison herds carry small amounts of domestic cattle DNA?",
+                        "choices": [
+                            "Cattle DNA falls from the sky each spring",
+                            "Pure bison never lived near cattle",
+                            "Historic crossbreeding left small amounts of cattle DNA in many herds; “pure” conservation herds are rare and carefully managed",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says ranchers and accidents mixed bison with cattle during the crash years. Many herds still carry small amounts of cattle DNA. Herds with little or no cattle DNA are rare and carefully managed. We keep amounts soft.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "european-mtdna-soft",
+                        "title": "European mtDNA puzzle",
+                        "stem": "How can European bison DNA tell two different family stories?",
+                        "choices": [
+                            "Nuclear DNA matches American bison as a sister species, but mitochondrial DNA looks closer to cattle or aurochs — leftover mixing or an old sorting puzzle (soft)",
+                            "European bison DNA is identical to penguin DNA",
+                            "European bison have no DNA at all",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says nuclear DNA treats American and European bison as sister species. European bison mitochondrial DNA looks closer to cattle or aurochs. Ideas include leftover ancient mixing or an old family-tree sorting puzzle. We keep that soft.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "keystone-ecology-soft",
+                        "title": "Prairie shapers",
+                        "stem": "Beyond simply eating grass, how can bison reshape a prairie?",
+                        "choices": [
+                            "They pave the prairie into a parking lot",
+                            "Grazing plus wallows can change prairie structure, the plant mix, and insect habitat (soft)",
+                            "They only nibble one blade and leave everything else the same",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia ties bison grazing and wallows to ecosystem engineering. Together they can change prairie structure, which plants grow, and homes for insects — more than a simple “eat grass” story. We keep that helper idea soft.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "nt-wild-vs-ranch-soft",
+                        "title": "Wild vs ranch",
+                        "stem": "Near Threatened is one snapshot. What extra split should we remember about bison numbers?",
+                        "choices": [
+                            "Every bison in the world lives only on a city sidewalk",
+                            "Ranch and wild herds are the exact same count",
+                            "Wild free-ranging herds are far fewer than commercial or ranch herds (totals stay soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia lists American bison as Near Threatened — treat that letter as a snapshot. Most bison today live in commercial or ranch herds. Wild free-ranging herds are far fewer. Totals stay soft.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "metapopulation-soft",
+                        "title": "Moving herds",
+                        "stem": "How do modern recovery programs try to keep bison genetic diversity from shrinking again?",
+                        "choices": [
+                            "They move animals between Department of the Interior and park herds so the bigger connected set of herds stays mixed (soft)",
+                            "They never move any bison anywhere",
+                            "They mix bison only with zoo penguins",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia describes a recovery plan that moves bison among Department of the Interior and park herds. The aim is to keep genetic diversity from shrinking again across that bigger connected set of herds (a metapopulation). Counts and years stay soft.",
                     },
                 ],
             },
