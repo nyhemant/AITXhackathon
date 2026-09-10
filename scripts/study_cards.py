@@ -1452,8 +1452,9 @@ Treat IUCN / status as snapshots. Keep
 kid-friendly. Do not invent photos.
 Do not redo JR or PR themes.
 
-Facts for kelp-forest Junior Ranger (easy) are
-Wikipedia-backed: https://en.wikipedia.org/wiki/Kelp_forest
+Facts for kelp-forest Junior Ranger + Park Ranger
+(easy + hard) are Wikipedia-backed:
+https://en.wikipedia.org/wiki/Kelp_forest
 (Kelp forest habitat page — JR stays kid-simple
 “underwater forest”). Underwater “forests”
 made of giant seaweeds called kelp. Kelp is
@@ -1485,14 +1486,25 @@ the animals that stop urchins from mowing
 the kelp down (no status letter). Myth: a
 kelp forest isn’t a forest of trees — it’s
 a forest of seaweed, even when giant kelp
-looks tree-tall. Reserve denser Laminariales
-taxonomy (Macrocystis / Nereocystis),
-pneumatocyst jargon, urchin-barren phase
-shifts, growth-rate or height stats, carbon
-numbers, and status letters for later tiers.
-Soften contested numbers. Keep kid-friendly.
-Do not invent photos.
-Park Ranger and Zoologist are reserved.
+looks tree-tall. Hard deepens Laminariales
+(large brown algae; genera like Macrocystis,
+Nereocystis, Laminaria, Ecklonia — soft
+list), thallus parts (holdfast + stipe +
+fronds; nutrients across blades, not roots),
+canopy / understory / prostrate “stories,”
+giant-kelp growth of tens of centimeters a
+day in ideal cool, nutrient-rich water
+(soften exacts), upwelling, the otter–
+urchin–kelp trophic cascade (Alaska
+example, soft), urchin barrens as an
+alternate state, keystone otters vs
+lobsters / large fishes elsewhere (soft
+regional difference), warm-water / El Niño
+/ storm stress, and MPA / careful-fishing
+care (status is place-by-place, not one
+letter). Soften contested numbers. Keep
+kid-friendly. Do not redo JR themes.
+Zoologist is reserved. Do not invent photos.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
@@ -1632,7 +1644,7 @@ LEVEL_DISPLAY_NAMES = {
 # American bison, elk, puffin, clownfish, crab,
 # cuttlefish, eel, and jellyfish ship Junior
 # Ranger + Park Ranger + Zoologist. Kelp forest
-# ships Junior Ranger only.
+# ships Junior Ranger + Park Ranger.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -2066,14 +2078,14 @@ PUSH_FURTHER_JELLYFISH = (
     "When fish crash, jellies can sit near the top of the food web. Why keep that “top predator” story soft?",
 )
 TALK_ABOUT_KELP_FOREST = (
-    "A holdfast grips rock like a hand, not a drinking root. How is that different from a tree?",
-    "A kelp forest has a sunny canopy and a shady floor. What might live in each layer?",
-    "Sea otters eat urchins that chew kelp. What happens when those helpers stay nearby?",
+    "Kelp sits in Laminariales — Macrocystis, Nereocystis, and kin. Why keep that list soft?",
+    "Otters eat urchins, then kelp can recover. Why is that chain called a cascade?",
+    "A lush forest can flip into rocky barrens. What might that alternate state look like?",
 )
 PUSH_FURTHER_KELP_FOREST = (
-    "Kelp likes cool, nutrient-rich water. Why might a warm, still bay be a harder home?",
-    "If too many urchins chew the kelp, what could the underwater forest look like?",
-    "Aquariums love tall kelp exhibits. Why might a living forest tank help people care?",
+    "Cool upwelling lifts nutrients from the deep. Why might a warm, still surface be harder?",
+    "Otters are a keystone in some Pacific forests. Why isn’t one predator enough everywhere?",
+    "Marine protected areas can protect the food web. Why keep that care place-by-place?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -16750,6 +16762,148 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia treats kelp as marine brown algae, not land trees. Even giant kelp that looks tree-tall is still seaweed.",
+                    },
+                ],
+            },
+            "hard": {
+                # Answer-light: Park Ranger has no Learn-first strip.
+                # Facts from Wikipedia, Kelp forest. Soft Laminariales
+                # genera, thallus parts, canopy layers, giant growth,
+                # upwelling, trophic cascade, urchin barrens, keystone
+                # regional difference, warm-water stress, MPA care.
+                # Soften contested numbers (no locked cm/day). 
+                # Kid-friendly. Do not redo JR themes. Zoologist reserved.
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "laminariales-soft",
+                        "title": "Laminariales",
+                        "stem": "What are “kelps,” if we keep the group soft?",
+                        "choices": [
+                            "Large brown algae in order Laminariales — genera like Macrocystis, Nereocystis, Laminaria, and Ecklonia (soft list)",
+                            "A kind of oak tree that grows acorns on the beach",
+                            "A single genus of red algae that never forms forests",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia uses kelp for marine algae in order Laminariales. Familiar genera include Macrocystis, Nereocystis, Laminaria, and Ecklonia. Exact lists can shift, so we keep that group map soft.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "thallus-parts-soft",
+                        "title": "Thallus parts",
+                        "stem": "What is a kelp’s body called, and how does it take up nutrients?",
+                        "choices": [
+                            "The body is a wooden trunk with true roots that drink like a tree",
+                            "The body is a thallus — holdfast + stipe + fronds — and nutrients are taken across the blades, not through roots",
+                            "The body is only a gas balloon with no holdfast or blades",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia calls a kelp body a thallus with a holdfast, stipe, and fronds. The holdfast anchors; it does not deliver nutrients. Uptake and photosynthesis happen on the blades.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "canopy-layers-soft",
+                        "title": "Canopy layers",
+                        "stem": "How can a kelp forest make “stories” like a land forest, if we keep those layers soft?",
+                        "choices": [
+                            "Every kelp sits in one flat layer with no shade at all",
+                            "Kelp forests only grow as a single floating mat on the moon",
+                            "Surface canopy, mid understory, and seafloor prostrate kelps create sunny-to-shaded stories (soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia describes canopy kelps at the surface, an understory a few meters up, and prostrate kelps along the seafloor. Together they make sunny-to-shaded stories like a land forest. We keep those layer names soft.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "giant-growth-soft",
+                        "title": "Giant growth",
+                        "stem": "How fast can giant kelp (Macrocystis) lengthen in ideal water, if we keep the rate soft?",
+                        "choices": [
+                            "In cool, nutrient-rich water it can lengthen tens of centimeters a day (exact rate stays soft)",
+                            "It never grows more than a grain of sand a year",
+                            "It only grows on dry land after a rainstorm",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says giant kelp (Macrocystis) can lengthen tens of centimeters vertically in a day in ideal cool, nutrient-rich water. Exact daily amounts vary, so we keep that growth rate soft.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "upwelling-soft",
+                        "title": "Upwelling",
+                        "stem": "Where do especially productive kelp forests often sit, if we keep that ocean story soft?",
+                        "choices": [
+                            "Only in hot, nutrient-poor tropical lagoons with no rising water",
+                            "Where deep, cool, nutrient-rich water rises to the surface (upwelling) (soft)",
+                            "Only in desert dunes far from any sea",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia ties especially productive forests to oceanographic upwelling — cool, nutrient-rich water rising from depth to the mixed surface layer. Maps and exceptions stay soft.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "trophic-cascade-soft",
+                        "title": "Trophic cascade",
+                        "stem": "How can predators shape a kelp forest in a trophic cascade, if we keep that chain soft?",
+                        "choices": [
+                            "Predators plant kelp seeds on the moon so forests never change",
+                            "Urchins always protect kelp, so predators never matter",
+                            "Predators (for example sea otters in Alaska) eat urchins → fewer urchins → kelp can recover; remove predators and urchins can boom (soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia’s classic Alaska story: sea otters eat herbivorous urchins. When otters are removed, urchins can boom and chew kelp down. That predator → herbivore → kelp chain is a trophic cascade. We keep the example soft.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "urchin-barrens-soft",
+                        "title": "Urchin barrens",
+                        "stem": "What can overgrazing do to a lush kelp forest, if we keep that flip soft?",
+                        "choices": [
+                            "It can flip the forest into rocky “urchin barrens” with little kelp — an alternate ecosystem state (soft)",
+                            "It always turns the forest into a coral reef overnight",
+                            "Overgrazing never changes a kelp forest at all",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia treats lush kelp and urchin-dominated “barrens” as alternative stable states. Overgrazing can flip a forest to a rocky landscape with little kelp. Recovery is not automatic, so we keep that flip soft.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "keystone-regional-soft",
+                        "title": "Keystone",
+                        "stem": "Who helps control urchins, if we keep the regional difference soft?",
+                        "choices": [
+                            "Only one predator on Earth can ever touch an urchin",
+                            "In some Pacific forests otters act as a keystone; elsewhere lobsters or large fishes help control urchins instead (soft)",
+                            "Otters, lobsters, and fishes never eat urchins anywhere",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia names sea otters as the keystone in some Alaskan forests. In Southern California, lobsters and large fishes such as sheephead can control urchins instead. One predator is not enough everywhere, so we keep that regional difference soft.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "warm-water-stress-soft",
+                        "title": "Warm-water stress",
+                        "stem": "How can warm spells and storms stress a kelp canopy, if we keep those threats soft?",
+                        "choices": [
+                            "Warm water always makes kelp grow faster and never hurts a forest",
+                            "Storms only help kelp by planting new forests on land",
+                            "Heat waves, El Niño-type warm spells, and storms can weaken canopies and tip systems toward barrens (soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia lists El Niño-type warm, low-nutrient spells and storms among disturbances that can strip canopies and raise grazing risk — sometimes tipping a system toward urchin-dominated landscapes. We keep that stress story soft.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "mpa-care-soft",
+                        "title": "MPA care",
+                        "stem": "How can people help keep predator–urchin–kelp balance, if we keep that care soft?",
+                        "choices": [
+                            "Marine protected areas and careful fishing can help; forest status is place-by-place, not one letter (soft)",
+                            "One locked letter covers every kelp forest on Earth and never changes",
+                            "Closing every sea forever is the only care, and fishing never matters",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia treats marine protected areas and careful fishing as tools that can protect predators and the interactions around them. Kelp-forest status is local — not one letter for the whole habitat.",
                     },
                 ],
             },
