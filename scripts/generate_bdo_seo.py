@@ -225,7 +225,8 @@ OUTING_TALK_ANIMAL = (
 # elk, puffin, clownfish, crab, cuttlefish, and eel
 # ship Junior Ranger + Park Ranger + Zoologist.
 # Jellyfish ships Junior Ranger + Park Ranger + Zoologist.
-# Kelp forest ships Junior Ranger + Park Ranger.
+# Kelp forest ships Junior Ranger + Park Ranger + Zoologist.
+# Manta ray ships Junior Ranger only.
 CARD_TALK_OVERRIDE: dict[str, tuple[dict, ...]] = {}
 
 # Optional More talk on a card. Unused while lion ships the Easy study deck.
