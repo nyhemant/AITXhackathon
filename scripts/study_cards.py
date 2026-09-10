@@ -1533,7 +1533,7 @@ TALK_ABOUT_PUFFIN = (
 PUSH_FURTHER_PUFFIN = (
     "Atlantic puffins are often split into a few named kinds. Why might size and range still stay soft?",
     "The rhinoceros auklet is a sister in that puffin tribe. What else might that Pacific family share?",
-    "Vulnerable is one snapshot — East Atlantic declines look stronger than some West Atlantic colonies. Why might coasts differ?",
+    "Vulnerable is one snapshot. Why might East Atlantic declines look stronger than some West Atlantic colonies?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
