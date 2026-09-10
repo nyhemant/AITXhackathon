@@ -1383,8 +1383,9 @@ Treat IUCN letters as snapshots. Keep
 kid-friendly. Do not redo JR or PR themes.
 Do not invent photos.
 
-Facts for jellyfish Junior Ranger (easy) are
-Wikipedia-backed: https://en.wikipedia.org/wiki/Jellyfish
+Facts for jellyfish Junior Ranger + Park Ranger
+(easy + hard) are Wikipedia-backed:
+https://en.wikipedia.org/wiki/Jellyfish
 (Jellyfish group page — JR stays kid-simple
 “jelly” as a group). Soft, jelly-bodied sea
 animals — not fish. Umbrella-shaped bell plus
@@ -1409,13 +1410,22 @@ help; big bloom swarms can bother beaches
 and fishing (soft — no status letter). Myth:
 a Portuguese man o’ war isn’t a true
 jellyfish — it’s a floating colony of many
-tiny animals working as one. Reserve denser
-Medusozoa taxonomy (Scyphozoa / Cubozoa /
-Hydrozoa), nematocyst mechanism, strobilation,
-box-jelly vision, and blooms/status for later
-tiers. Soften contested numbers. Keep
+tiny animals working as one. Hard deepens
+Medusozoa (swimming “jellies” = medusa stage
+of that subphylum in Cnidaria — not one clade
+of every gelatinous blob), the four classes
+(Scyphozoa / Cubozoa / Hydrozoa / Staurozoa),
+nematocyst mechanism (soft), strobilation
+and ephyrae, planula → polyp → medusa,
+box-jelly vision on rhopalia (soften “24
+eyes”), man o’ war as a colonial hydrozoan
+siphonophore, comb jellies as Ctenophora
+(no nematocyst sting), blooms (currents,
+food, warm or nutrient-rich water; clog nets
+and intakes), and status-by-kind (no single
+IUCN letter). Soften contested numbers. Keep
 kid-friendly. Do not invent photos.
-Park Ranger and Zoologist are reserved.
+Do not redo JR themes. Zoologist is reserved.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
@@ -1554,7 +1564,7 @@ LEVEL_DISPLAY_NAMES = {
 # American bison, elk, puffin, clownfish, crab,
 # cuttlefish, and eel ship Junior Ranger + Park
 # Ranger + Zoologist. Jellyfish ships Junior
-# Ranger only.
+# Ranger + Park Ranger.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -1976,14 +1986,14 @@ PUSH_FURTHER_EEL = (
     "Electric “eels” sit in Gymnotiformes, not Anguilliformes. Why might that look-alike tree matter?",
 )
 TALK_ABOUT_JELLYFISH = (
-    "A jelly has a soft bell and trailing tentacles. What job could each part do?",
-    "Jellyfish are not fish. What would you tell a friend who thinks they are?",
-    "A Portuguese man o’ war isn’t a true jellyfish. What mix-up would you explain?",
+    "Scyphozoa vs box vs hydro jellies: how would you tell those groups apart?",
+    "A scyphozoan polyp can stack and pinch off baby medusae. Why might that process be called strobilation?",
+    "A man o’ war is a hydrozoan colony, and a comb jelly is a different phylum. What mix-up would you explain?",
 )
 PUSH_FURTHER_JELLYFISH = (
-    "A jelly swims by pulsing its bell. How could squeezing and opening push it through the water?",
-    "Many jellies start as a tiny polyp, then swim as a medusa. What’s different about those two stages?",
-    "Aquariums often say “sea jellies.” Why might they skip the word “fish”?",
+    "One polyp can pinch off many ephyrae. How could that turn into a swarm of jellies?",
+    "Box jellies have many eyes on rhopalia. Why might they see space better than most other jellies?",
+    "Some kinds bloom while habitats shift. Why isn’t there one “endangered” letter for all jellyfish?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -16224,6 +16234,148 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia treats the Portuguese man o’ war as a floating colony of many tiny animals working as one — not a single true jellyfish.",
+                    },
+                ],
+            },
+            "hard": {
+                # Answer-light: Park Ranger has no Learn-first strip.
+                # Facts from Wikipedia, Jellyfish. Soft Medusozoa,
+                # four classes, nematocyst, strobilation, planula
+                # → polyp, box vision, siphonophore, ctenophore,
+                # blooms, status-by-kind. Soften contested numbers
+                # (no “24 eyes” lock). Kid-friendly. Do not redo
+                # JR themes. Zoologist reserved.
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "medusozoa-soft",
+                        "title": "Medusozoa",
+                        "stem": "What are swimming “jellies,” if we keep the group soft?",
+                        "choices": [
+                            "The medusa stage of subphylum Medusozoa in phylum Cnidaria — not one clade of every gelatinous blob (soft)",
+                            "A single clade that includes every gelatinous blob in the sea",
+                            "A kind of bony fish with scales and a spine",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia maps swimming “jellies” to the medusa stage of certain gelatinous members of subphylum Medusozoa in phylum Cnidaria. That is not one clade of every gelatinous blob — comb jellies and some other blobs sit elsewhere. We keep that group map soft.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "four-classes-soft",
+                        "title": "Four classes",
+                        "stem": "What main groups sit inside medusozoan jellies?",
+                        "choices": [
+                            "Only sharks, rays, and bony fish",
+                            "Scyphozoa (“true” jellies), Cubozoa (box jellies), Hydrozoa (many small jellies), and Staurozoa (stalked jellies)",
+                            "Only mammals that live in trees",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia’s four major medusozoan classes are Scyphozoa (“true” jellyfish), Cubozoa (box jellyfish), Hydrozoa (many small jellies), and Staurozoa (stalked jellyfish). Exact species counts stay soft.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "nematocyst-soft",
+                        "title": "Nematocyst",
+                        "stem": "How do stinging cells (nematocysts) grab prey, if we keep the mechanism soft?",
+                        "choices": [
+                            "They only use magnets to pull in rocks",
+                            "They grow hands and pick snacks off trees",
+                            "They fire tiny barbed threads that inject venom into prey (soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says nematocysts are specialized stinging cells. They can fire a tiny barbed thread that pierces and injects venom into prey. Exact firing counts stay soft.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "strobilation-soft",
+                        "title": "Strobilation",
+                        "stem": "How do scyphozoan polyps make baby medusae?",
+                        "choices": [
+                            "They stack and pinch off baby medusae (ephyrae) in a process called strobilation",
+                            "They hatch as furry cubs that climb trees",
+                            "They stay as hard-shelled eggs and never change",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia describes strobilation in Scyphozoa: the polyp narrows into stacked segments, then pinches off free-swimming ephyrae — baby medusae that grow into the jellies we see.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "planula-polyp-soft",
+                        "title": "Planula to polyp",
+                        "stem": "What happens after a jelly egg is fertilized, before a swimming medusa appears?",
+                        "choices": [
+                            "The egg becomes a bird that flies away from the sea",
+                            "Fertilized eggs become ciliated planula larvae that settle and grow into polyps before making medusae",
+                            "The egg stays a dry seed on a desert dune",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia’s basic cycle is egg, ciliated planula larva, polyp, then medusa. The planula settles on a firm surface and grows into a polyp before later making swimming medusae.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "box-vision-soft",
+                        "title": "Box vision",
+                        "stem": "Why can box jellyfish see space better than most other jellies?",
+                        "choices": [
+                            "They have no eyes at all, so seeing is always luck",
+                            "They use only one rear-facing camera glued to the bell",
+                            "They have many eyes on sensory clubs (rhopalia) — better spatial vision than most other jellies (soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says box jellyfish have more advanced vision than the other groups. Many eyes sit on sensory clubs called rhopalia and support better spatial vision than most other jellies. Exact eye counts stay soft.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "siphonophore-deepen-soft",
+                        "title": "Siphonophore",
+                        "stem": "Why isn’t a Portuguese man o’ war a solitary true jelly?",
+                        "choices": [
+                            "It is a colonial hydrozoan (a siphonophore), not a solitary medusa — that deepens the JR myth buster (soft)",
+                            "It is the same animal as a moon jelly, just with a new nickname",
+                            "It is a kind of fish with a backbone",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia places the Portuguese man o’ war with siphonophores in Hydrozoa — a floating colony of many tiny animals working as one, not a solitary medusa. That deepens the JR myth buster.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "ctenophore-soft",
+                        "title": "Ctenophore",
+                        "stem": "Why aren’t comb jellies the same as cnidarian jellies?",
+                        "choices": [
+                            "They are the same phylum as moon jellies, just with extra combs",
+                            "Comb jellies look jelly-like but sit in a different phylum (Ctenophora) and have no nematocyst sting like cnidarians",
+                            "They are bony fish that only pretend to be soft",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia treats comb jellies as phylum Ctenophora, a different group from cnidarian jellies. They can look jelly-like, but they do not fire nematocyst stings the way Medusozoa do.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "blooms-soft",
+                        "title": "Blooms",
+                        "stem": "When can huge jelly swarms form, if we keep the causes soft?",
+                        "choices": [
+                            "Swarms only form on the moon, never in the sea",
+                            "Swarms form only when every jelly is kept in a jar",
+                            "Huge swarms can form when currents, food, and warm or nutrient-rich water align; they can clog nets and intakes (soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says blooms form when currents, nutrients, temperature, food, and other conditions line up. Huge swarms can clog fishing nets and the cooling intakes of plants that draw seawater. We keep that cause-and-effect story soft.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "status-by-kind-soft",
+                        "title": "Status by kind",
+                        "stem": "Is there one IUCN letter for “jellyfish”?",
+                        "choices": [
+                            "No — some invasive or bloom-forming kinds surge while habitats shift; watch species and places, not one group score (soft)",
+                            "Yes — every jelly on Earth shares one locked letter that never changes",
+                            "Jellies have no snapshot letters at all, so status never matters",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia does not give one IUCN letter for “jellyfish” as a group. Some invasive or bloom-forming kinds surge in new places, while habitats and other kinds shift. Watch species and places — not one group score.",
                     },
                 ],
             },
