@@ -262,9 +262,9 @@ class ClownfishEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(puffin["source"], WIKI_ATLANTIC_PUFFIN)
         self.assertEqual(puffin["talk_about"], list(TALK_ABOUT_PUFFIN))
         self.assertEqual(puffin["push_further"], list(PUSH_FURTHER_PUFFIN))
-        self.assertEqual(shipped_levels_for("puffin"), ("easy", "hard"))
+        self.assertEqual(shipped_levels_for("puffin"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("puffin", "hard"))
-        self.assertIsNone(study_deck_for("puffin", "zoologist"))
+        self.assertIsNotNone(study_deck_for("puffin", "zoologist"))
         self.assertEqual(shipped_levels_for("sea-otter"), ("easy", "hard", "zoologist"))
 
     def test_generator_html_is_study_not_worksheet(self):
@@ -465,7 +465,7 @@ class ClownfishEasyStudyCardTests(unittest.TestCase):
         data_js = STUDY_DATA_JS.read_text(encoding="utf-8")
         self.assertIn('"clownfish"', data_js)
         self.assertIn('"easy":"Junior Ranger"', data_js)
-        self.assertEqual(set(payload["puffin"]["levels"]), {"easy", "hard"})
+        self.assertEqual(set(payload["puffin"]["levels"]), {"easy", "hard", "zoologist"})
         self.assertEqual(
             set(payload["elk"]["levels"]),
             {"easy", "hard", "zoologist"},
@@ -490,7 +490,7 @@ class ClownfishEasyStudyCardTests(unittest.TestCase):
         puffin_html = PUFFIN.read_text(encoding="utf-8")
         self.assertIn("Junior Ranger", _text(_main(puffin_html)))
         self.assertIn("Park Ranger", _text(_main(puffin_html)))
-        self.assertNotIn("Zoologist", _text(_main(puffin_html)))
+        self.assertIn("Zoologist", _text(_main(puffin_html)))
         gator_html = GATOR.read_text(encoding="utf-8")
         self.assertIn("Junior Ranger", _text(_main(gator_html)))
         self.assertIn("Park Ranger", _text(_main(gator_html)))
