@@ -12321,7 +12321,7 @@ STUDY_CARDS: dict[str, dict] = {
                             "Nest warmth only changes the color of the eggshell",
                         ],
                         "correct": "A",
-                        "why": "Wikipedia’s nest-temperature pattern for this species is mid-range warmth tending male, and cooler or hotter nests tending female. Park Ranger already said temperature can steer sex; this slot names the pattern. We keep exact degree bands soft.",
+                        "why": "Wikipedia’s nest-temperature pattern for this species is mid-range warmth tending male, and cooler or hotter nests tending female. This slot names that pattern. We keep exact degree bands soft.",
                     },
                     {
                         "slot": 8,
@@ -12330,7 +12330,7 @@ STUDY_CARDS: dict[str, dict] = {
                         "stem": "When an American alligator shuts its jaws, where does the large lower fourth tooth go?",
                         "choices": [
                             "It sticks out beside the snout like a crocodile’s fourth tooth",
-                            "It sits in a pocket in the upper jaw — a classic gator-versus-croc field tip",
+                            "The large lower fourth tooth sits in a pocket in the upper jaw — a classic gator-versus-croc field tip",
                             "It falls out every time the mouth closes",
                         ],
                         "correct": "B",
