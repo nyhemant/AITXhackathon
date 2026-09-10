@@ -10704,14 +10704,14 @@
     "source": "https://en.wikipedia.org/wiki/American_alligator",
     "source_note": "Facts from Wikipedia, American alligator.",
     "talk_about": [
-      "Gators and crocs can look alike. What snout shape might help you tell them apart?",
-      "Nest temperature can steer hatchling sex. Why might a warmer or cooler nest matter?",
-      "Alligators made a conservation comeback. What helped them bounce back?"
+      "Alligatorids sit with alligators and caimans, not true crocs. Why does that family split matter?",
+      "Alligator lungs loop air one way, a bit like birds. Why might that surprise people?",
+      "Alligators do not keep growing forever. What happens to growth as they get older?"
     ],
     "push_further": [
-      "Some bellows are so low you feel them. Why might the water ripple during courtship?",
-      "Alligators prefer fresher water than American crocodiles. Why might salt matter?",
-      "They were once in serious trouble from overhunting and later recovered. What does that story teach?"
+      "The Chinese alligator is a smaller sister species. How else do the two living alligators differ?",
+      "Mid-range nest warmth tends to make males. Why might cooler or hotter nests make females?",
+      "Some alligators balance sticks on their heads. Why do scientists still debate if that is a lure?"
     ],
     "levels": {
       "easy": {
@@ -10987,6 +10987,141 @@
             ],
             "correct": "A",
             "why": "Wikipedia says American alligators are listed on CITES Appendix II. That means international trade in the animals and their products is regulated — rules, not a total ban."
+          }
+        ]
+      },
+      "zoologist": {
+        "teach": [],
+        "questions": [
+          {
+            "slot": 1,
+            "id": "alligatoridae-family-soft",
+            "title": "Alligator family",
+            "stem": "What living groups sit inside the family Alligatoridae?",
+            "choices": [
+              "True alligators (Alligatorinae) plus caimans (Caimaninae) — about eight living species in the family",
+              "Only true crocodiles and no caimans",
+              "Only birds and turtles"
+            ],
+            "correct": "A",
+            "why": "Wikipedia’s Alligatoridae page says the family includes alligators and caimans. Living members are true alligators (Alligatorinae) plus caimans (Caimaninae) — about eight species. That family is a different branch from true crocodiles."
+          },
+          {
+            "slot": 2,
+            "id": "mississippiensis-name-soft",
+            "title": "A lizard name",
+            "stem": "Where does the scientific name Alligator mississippiensis come from?",
+            "choices": [
+              "It is a made-up zoo nickname with no Spanish root",
+              "Named Alligator mississippiensis; the genus Alligator (Cuvier) comes from Spanish el lagarto, “the lizard”",
+              "It means “Arctic ice walker” in Latin"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says the species is named Alligator mississippiensis. Georges Cuvier created the genus Alligator from the English word alligator, which comes from Spanish el lagarto — “the lizard.”"
+          },
+          {
+            "slot": 3,
+            "id": "chinese-sister-split-soft",
+            "title": "Chinese sister",
+            "stem": "Who is the American alligator’s closest living relative, and how long ago did the lineages split?",
+            "choices": [
+              "Its closest relative is the Nile crocodile, which split last year",
+              "Its closest relative is a polar bear from the last ice age",
+              "Its closest living relative is the smaller Chinese alligator; the lineages split long ago — tens of millions of years (soft)"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says the Chinese alligator is the closest living relative. The Alligatoridae page notes the lineages split long ago — on the order of tens of millions of years. We keep the exact year soft."
+          },
+          {
+            "slot": 4,
+            "id": "caiman-cousins-soft",
+            "title": "Caiman cousins",
+            "stem": "How do caimans fit with American alligators?",
+            "choices": [
+              "Caimans are the Neotropical alligatorid branch — cousins in the same family, not true Alligator",
+              "Caimans are true Alligator species that live in the Arctic",
+              "Caimans are fish with no link to alligators"
+            ],
+            "correct": "A",
+            "why": "Wikipedia places caimans in Caimaninae, the Neotropical branch of Alligatoridae. They are alligatorid cousins, not members of the genus Alligator."
+          },
+          {
+            "slot": 5,
+            "id": "one-way-lungs-soft",
+            "title": "One-way lungs",
+            "stem": "How does air move through an American alligator’s lungs?",
+            "choices": [
+              "Air only goes in and out the same dead-end bags, with no loop",
+              "Airflow loops one way through the lungs — a bird-like, archosaur pattern (soft)",
+              "They have no lungs and breathe only through their tails"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says airflow is unidirectional, looping through the lungs on the way in and out. That one-way pattern is more like birds (fellow archosaurs) than a simple in-and-out mammal lung. We keep the comparison soft."
+          },
+          {
+            "slot": 6,
+            "id": "growth-slows-soft",
+            "title": "Growth slows",
+            "stem": "Do American alligators keep growing for their whole lives?",
+            "choices": [
+              "Yes — they grow faster every year with no pause",
+              "They shrink after their first birthday",
+              "Long-term studies suggest growth eventually slows or stops with age — not forever growing (soft)"
+            ],
+            "correct": "C",
+            "why": "Wikipedia notes a common idea that crocodilians never stop growing. A long-term mark-and-recapture study found growth can slow and then stop as animals age. We keep exact ages soft."
+          },
+          {
+            "slot": 7,
+            "id": "tsd-pattern-soft",
+            "title": "Nest-temp pattern",
+            "stem": "How does nest temperature tend to steer hatchling sex?",
+            "choices": [
+              "Mid-range nest warmth tends to make males; cooler or hotter nests tend to make females (exact degrees stay soft)",
+              "Every nest always makes only males, no matter the warmth",
+              "Nest warmth only changes the color of the eggshell"
+            ],
+            "correct": "A",
+            "why": "Wikipedia’s nest-temperature pattern for this species is mid-range warmth tending male, and cooler or hotter nests tending female. Park Ranger already said temperature can steer sex; this slot names the pattern. We keep exact degree bands soft."
+          },
+          {
+            "slot": 8,
+            "id": "fourth-tooth-pocket-soft",
+            "title": "Hidden fourth tooth",
+            "stem": "When an American alligator shuts its jaws, where does the large lower fourth tooth go?",
+            "choices": [
+              "It sticks out beside the snout like a crocodile’s fourth tooth",
+              "It sits in a pocket in the upper jaw — a classic gator-versus-croc field tip",
+              "It falls out every time the mouth closes"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says that when the mouth is closed, the fourth lower tooth is no longer visible. It sits in a pocket in the upper jaw. That hidden tooth is a classic field tip for telling a gator from a crocodile."
+          },
+          {
+            "slot": 9,
+            "id": "stick-lure-debate-soft",
+            "title": "Stick balancing",
+            "stem": "Why might an American alligator balance sticks on its head?",
+            "choices": [
+              "The sticks are always a radio antenna for calling boats",
+              "They only do it to decorate a birthday cake",
+              "Documented stick-balancing may lure nesting birds looking for nest material — but the purpose is still debated (soft)"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says alligators have been seen balancing sticks and branches on their heads, which may lure birds gathering nest material. A later try to repeat the lure pattern did not clearly show it, so scientists still debate the purpose."
+          },
+          {
+            "slot": 10,
+            "id": "fruit-seed-soft",
+            "title": "Fruit and seeds",
+            "stem": "Besides hunting animals, what unexpected food can American alligators take?",
+            "choices": [
+              "They sometimes eat fruit and may move seeds — surprising for an apex predator (soft)",
+              "They eat only ice cream from the zoo shop",
+              "They never swallow anything but rocks"
+            ],
+            "correct": "A",
+            "why": "Wikipedia reports fruit in alligator diets — grapes, elderberries, citrus, and more — from watching and from stomach contents. They may spread seeds as they move. That plant snack is unexpected for an apex predator. We keep amounts soft."
           }
         ]
       }
