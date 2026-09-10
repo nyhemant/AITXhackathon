@@ -1309,11 +1309,43 @@ mud, or rock holes. Soft care: healthy coasts and
 open river paths help young eels reach growing
 places (no status letter). Myth: electric “eels”
 aren’t true eels — they’re South American knifefish,
-not Anguilliformes. Reserve denser Anguilliformes
-taxonomy, Sargasso/catadromy, and status-by-kind
-(CR/EN Anguilla) for later tiers. Soften contested
-numbers. Keep kid-friendly. Do not invent photos.
-Park Ranger and Zoologist are reserved.
+not Anguilliformes. Soften contested numbers.
+Keep kid-friendly. Do not invent photos. Park
+Ranger ships on this card. Zoologist is reserved.
+
+Facts for eel Park Ranger (hard) are
+Wikipedia-backed from the same Eel page
+(Anguilliformes / freshwater-eel notes).
+Answer-light (teach: []). True eels = order
+Anguilliformes — about eight suborders, about
+twenty families, and about a thousand species
+(soften counts). Familiar families include
+Muraenidae (morays), Congridae (congers /
+garden eels), Ophichthidae (snake eels), and
+Anguillidae (freshwater eels). Freshwater eels
+(Anguilla) are catadromous: they grow in rivers
+and lakes, then migrate to the ocean to spawn
+(opposite of salmon). European and American
+freshwater eels spawn in the Sargasso Sea;
+larvae drift on currents toward continents
+(soft). Life-stage names: leptocephalus →
+glass eel → elver → yellow eel → silver eel
+before the ocean return (soft names). Elvers
+may climb weirs, dams, and waterfalls to reach
+upstream habitat. No single IUCN letter for all
+eels; European eel is a CR snapshot, American
+and Japanese EN, short-finned NT (species-
+specific — soften). Freshwater eels are heavily
+fished and farmed in Asia and Europe; barriers
+and habitat loss add stress (soft). Swamp eels
+and electric eels evolved long bodies separately
+— not Anguilliformes (deepen the look-alike
+myth). Vast majority of true eels stay
+ocean-only; Anguilla is the famous freshwater
+exception. Soften contested numbers. Treat IUCN
+letters as snapshots. Keep kid-friendly. Do not
+redo JR. Zoologist is reserved. Do not invent
+photos.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
@@ -1860,14 +1892,14 @@ PUSH_FURTHER_CUTTLEFISH = (
     "Flamboyant cuttlefish can hold a poison in muscle. Why is that different from injected venom?",
 )
 TALK_ABOUT_EEL = (
-    "An eel’s body is long and ribbon-like. How could that shape help it wave through water?",
-    "Baby eels start as flat, see-through “leaf” larvae. Why might a leaf shape help them drift?",
-    "Electric “eels” aren’t true eels. What would you tell a friend about that mix-up?",
+    "Freshwater eels grow in rivers, then swim to the sea to spawn. How is that river-to-sea trip different from a salmon’s?",
+    "European and American freshwater eels are said to spawn in the Sargasso Sea. Why might that spawning map stay soft?",
+    "Some freshwater eels carry CR or EN snapshots, while many marine kinds do not. Why might status differ by kind?",
 )
 PUSH_FURTHER_EEL = (
-    "Eels can reverse the wave along their body. Why might swimming backward help?",
-    "Most eels live in the ocean; a few spend years in rivers. What’s different about those two homes?",
-    "Young eels need open river paths to reach growing places. Why might connecting rivers matter?",
+    "Elvers may climb weirs, dams, and waterfalls. Why might a dam still block a young eel from going upstream?",
+    "Catadromy means grow in fresh water, spawn in the sea. Anadromy is the other way. Why might both trips matter?",
+    "European eels can look CR while a short-finned cousin looks NT. Why isn’t there one letter for all eels?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -15533,7 +15565,7 @@ STUDY_CARDS: dict[str, dict] = {
         "push_further": list(PUSH_FURTHER_EEL),
         "levels": {
             "easy": {
-                # Teaching-first: same front as the quiz. Later tiers reserved.
+                # Teaching-first: same front as the quiz. Hard later may hide these.
                 "teach": [
                     "Long, snake-shaped ray-finned fish",
                     "True eels belong to order Anguilliformes",
@@ -15671,6 +15703,148 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia says electric eels are not true eels. They are South American knifefish, not members of order Anguilliformes.",
+                    },
+                ],
+            },
+            "hard": {
+                # Answer-light: Park Ranger has no Learn-first strip.
+                # Facts from Wikipedia, Eel (Anguilliformes /
+                # freshwater-eel notes). Soft taxonomy, families,
+                # catadromy, Sargasso, life stages, climbing,
+                # status-by-kind, fisheries, look-alikes,
+                # mostly-marine. Soften contested numbers.
+                # Kid-friendly. Do not redo JR.
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "anguilliformes-soft",
+                        "title": "Anguilliformes",
+                        "stem": "What order do true eels belong to, if we keep the counts soft?",
+                        "choices": [
+                            "Order Anguilliformes — about eight suborders, about twenty families, and about a thousand species (soft)",
+                            "They are a kind of shark in the open ocean only",
+                            "They sit only with insects, far from any fish",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia places true eels in order Anguilliformes. Counts are often near eight suborders, twenty families, and a thousand species, but those numbers shift, so we keep them soft.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "big-families-soft",
+                        "title": "Big families",
+                        "stem": "Which familiar families sit inside true eels?",
+                        "choices": [
+                            "Only tuna and goldfish, which have no long bodies",
+                            "Muraenidae (morays), Congridae (congers and garden eels), Ophichthidae (snake eels), and Anguillidae (freshwater eels)",
+                            "Only birds and bats, which have no fins",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia’s familiar true-eel faces include morays (Muraenidae), congers and garden eels (Congridae), snake eels (Ophichthidae), and freshwater eels (Anguillidae).",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "catadromy-soft",
+                        "title": "Catadromy",
+                        "stem": "How do freshwater eels (Anguilla) use rivers and the ocean to spawn?",
+                        "choices": [
+                            "They never leave one pond, and they never spawn",
+                            "They grow in the ocean, then swim up rivers to spawn, just like salmon",
+                            "They grow in rivers and lakes, then migrate to the ocean to spawn — the opposite of salmon (catadromy, soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says freshwater eels in genus Anguilla grow in rivers and lakes, then return to the sea to breed. That river-to-sea spawning trip is catadromy — the opposite direction from many salmon. We keep the word soft.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "sargasso-soft",
+                        "title": "Sargasso",
+                        "stem": "Where do European and American freshwater eels spawn, if we keep that map soft?",
+                        "choices": [
+                            "They spawn in the Sargasso Sea; larvae then drift on currents toward the continents (soft)",
+                            "They spawn only on mountain tops far from any sea",
+                            "They spawn only in desert oases and never use currents",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia ties European and American freshwater eels to a Sargasso Sea spawning story. Leaf larvae then drift on currents toward the continents. Exact pins on that map stay soft.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "life-stages-soft",
+                        "title": "Life stages",
+                        "stem": "What life-stage names can a freshwater eel pass through before the ocean return?",
+                        "choices": [
+                            "Only a furry cub, then a flying adult",
+                            "Leptocephalus → glass eel → elver → yellow eel → silver eel, then the ocean return (soft names)",
+                            "Only an egg that never changes shape",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia’s freshwater-eel path uses soft stage names: a leaf larva (leptocephalus), then a glass eel, an elver, a yellow growth stage, and a silver stage that heads back to the sea.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "climb-soft",
+                        "title": "Climb",
+                        "stem": "How can elvers reach habitat upstream of weirs and dams?",
+                        "choices": [
+                            "They fly over every dam on feathered wings",
+                            "They wait in the ocean forever and never go upstream",
+                            "They may climb weirs, dam walls, and waterfalls to reach upstream habitat (soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says many anguillid elvers travel upstream and can be forced to climb obstructions such as weirs, dam walls, and natural waterfalls.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "status-by-kind-soft",
+                        "title": "Status by kind",
+                        "stem": "Is there one IUCN letter for all eels?",
+                        "choices": [
+                            "No — letters are species-specific: European eel is a CR snapshot, American and Japanese EN, short-finned NT (soft)",
+                            "Yes — every eel on Earth shares one locked letter that never changes",
+                            "Eels have no snapshot letters at all, so status never matters",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia does not give one IUCN letter for “eels” as a group. Treat letters as snapshots: European eel is often CR, American and Japanese freshwater eels EN, and the short-finned eel NT. Those letters can change.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "fisheries-pressure-soft",
+                        "title": "Fisheries",
+                        "stem": "What extra stress sits on freshwater eels besides fishing and farms?",
+                        "choices": [
+                            "They are never caught or farmed, so nothing stresses them",
+                            "They are heavily fished and farmed in Asia and Europe; barriers and habitat loss add stress (soft)",
+                            "They only live in space, so rivers never matter",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia ties freshwater eels to heavy fishing and farming in Asia and Europe. Dams, weirs, and lost habitat add more stress. We keep that pressure story soft, and we do not lock one group letter.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "look-alikes-soft",
+                        "title": "Look-alikes",
+                        "stem": "Why aren’t swamp eels and electric eels true eels?",
+                        "choices": [
+                            "They are both Anguilliformes, just with extra nicknames",
+                            "They are the same as morays, congers, and freshwater eels",
+                            "They evolved long bodies separately — swamp eels and electric eels are not Anguilliformes (soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says the word “eel” is also used for look-alikes. Swamp eels and electric eels evolved long bodies on their own — they are not true eels in Anguilliformes. Electric eels are South American knifefish.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "mostly-marine-soft",
+                        "title": "Mostly marine",
+                        "stem": "How marine are true eels, if we keep the freshwater exception soft?",
+                        "choices": [
+                            "The vast majority stay ocean-only; genus Anguilla is the famous freshwater exception (soft)",
+                            "Every true eel lives only in desert dunes",
+                            "No true eel ever lives in the ocean",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says most true eels are marine. The famous freshwater exception is genus Anguilla, which spends years in rivers and later returns to the sea. A few other exceptions exist, so we keep that list soft.",
                     },
                 ],
             },
