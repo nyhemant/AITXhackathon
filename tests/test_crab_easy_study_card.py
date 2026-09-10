@@ -126,7 +126,6 @@ RESERVED = (
     "Anomura",
     "carcinisation",
     "Chelicerata",
-    "status letter",
 )
 
 
