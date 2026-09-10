@@ -844,10 +844,10 @@ contested numbers. Treat IUCN letters as snapshots. Keep
 kid-friendly. Do not redo JR or PR themes. Do not invent
 photos.
 
-Facts for american-bison Junior Ranger (easy) are
-Wikipedia-backed:
+Facts for american-bison Junior Ranger + Park Ranger
+(easy + hard) are Wikipedia-backed:
 https://en.wikipedia.org/wiki/American_bison
-This is the first study deck for this animal. JR stays
+Also European bison / wisent as needed. JR stays
 kid-simple “American bison.” Big grassland grazers of
 North America — open grasslands, plains, and river
 valleys. Tall shoulder hump plus a shaggy coat. Thick
@@ -861,9 +861,26 @@ Roll in dust or mud wallows (bug relief + play soft).
 Soft care: give wild bison space; keep prairie habitat
 healthy (no NT / recovery / slaughter dump on JR). Myth:
 often nicknamed “buffalo,” but they are bison — true
-buffalo live in Africa and Asia. Park Ranger and
-Zoologist are reserved for later: plains vs wood bison
-split, denser physiology, status/recovery. Do not invent
+buffalo live in Africa and Asia. Park Ranger (hard) is
+answer-light (empty teach) and deepens: plains vs wood
+bison (plains often smaller / more rounded hump; wood
+usually larger / taller square hump), only two living
+bison species worldwide — American and European
+(wisent), snow-plow head that sweeps winter snow to
+reach grass, surprisingly fast sprint and high-fence
+jump (soften exact numbers), wallows that boost prairie
+plant and bug diversity (keystone soft), late-summer
+rut when bulls bellow and tend cows, IUCN Near
+Threatened snapshot after a near wipeout in the late
+1800s then a slow comeback by parks, tribes, and
+ranchers (soften herd counts), official U.S. national
+mammal (2016), deep cultural and spiritual importance
+for many Plains Indigenous peoples (respectful, soft),
+and the same broad cattle family (can hybridize, which
+matters for “pure” conservation herds — soft). Soft
+plains/wood, physiology, status/recovery OK. Soften
+contested numbers. Keep kid-friendly. Do not redo JR
+themes. Zoologist is reserved for later. Do not invent
 photos.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
@@ -994,8 +1011,8 @@ LEVEL_DISPLAY_NAMES = {
 # Asian small-clawed otter, two-toed sloth, freshwater
 # fish, polar bear, sea otter, and American alligator
 # ship Junior Ranger + Park Ranger + Zoologist.
-# American bison ships Junior Ranger only (no Park
-# Ranger or Zoologist yet).
+# American bison ships Junior Ranger + Park Ranger
+# (no Zoologist yet).
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -1333,14 +1350,14 @@ PUSH_FURTHER_AMERICAN_ALLIGATOR = (
     "Some alligators balance sticks on their heads. Why do scientists still debate if that is a lure?",
 )
 TALK_ABOUT_AMERICAN_BISON = (
-    "Bison have a tall shoulder hump and a shaggy coat. What job might those do?",
-    "Bison live in herds on the prairie. Why might staying together help?",
-    "People often say “buffalo.” Why is bison the real name?",
+    "There are two main kinds of American bison. How might their size and hump look different?",
+    "Bison were nearly wiped out, then slowly came back. Who helped that story?",
+    "Wallows do more than stop bugs. How might they help prairie plants and bugs?",
 )
 PUSH_FURTHER_AMERICAN_BISON = (
-    "Bison roll in dust or mud wallows. Why might that help with bugs?",
-    "Bison can look slow, then run fast. What would surprise you?",
-    "Wild bison need space. How can you watch a herd without getting close?",
+    "American bison have a European cousin. What one difference would you look for?",
+    "Recovery is still careful. Why might some herds need extra protection?",
+    "The United States named the bison a national mammal. Why might that story matter?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -12548,6 +12565,146 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia says they are commonly called American buffalo, but that should not be confused with true buffalo. True buffalo live in Africa and Asia.",
+                    },
+                ],
+            },
+            "hard": {
+                # Answer-light: Park Ranger has no Learn-first strip.
+                # Facts from Wikipedia, American bison (and European bison).
+                # Soft plains/wood, physiology, status/recovery OK.
+                # Soften contested numbers. Kid-friendly. Do not redo
+                # JR themes.
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "plains-vs-wood-soft",
+                        "title": "Two kinds",
+                        "stem": "What are the two main kinds of American bison, and how do they often look different?",
+                        "choices": [
+                            "Plains bison are often smaller with a more rounded hump; wood bison are usually larger with a taller, squarer hump",
+                            "There is only one kind, and every bison looks exactly the same",
+                            "The two kinds are river bison and mountain penguins",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia describes two main kinds: plains bison and wood bison. Plains bison tend to be smaller with a more rounded hump. Wood bison are usually larger, with a taller, squarer hump. We keep size details soft.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "european-cousin-soft",
+                        "title": "European cousin",
+                        "stem": "How many living bison species are there in the world?",
+                        "choices": [
+                            "Dozens of bison species live on every continent",
+                            "Only two living bison species — the American bison and the European bison, also called the wisent",
+                            "There is only the American bison and no cousins anywhere",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says the only living bison species are the American bison and the European bison (wisent). They are cousins, not the same animal.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "snow-plow-head-soft",
+                        "title": "Snow-plow head",
+                        "stem": "How can a bison reach grass under winter snow?",
+                        "choices": [
+                            "They wait for a snowblower truck",
+                            "They melt the snow with a flame from the nose",
+                            "They sweep snow aside with the head, like a snow plow, to reach winter grass",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says bison swing that heavy head to clear snow and reach grass in winter. The head works a bit like a snow plow. We keep the exact method soft.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "surprisingly-fast-soft",
+                        "title": "Surprisingly fast",
+                        "stem": "Bison can look slow. What can they really do?",
+                        "choices": [
+                            "They can sprint about as fast as a slow highway car and jump surprisingly high fences",
+                            "They can only shuffle a few steps a day",
+                            "They fly south every winter",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says bison can look slow, then sprint very fast and jump high fences. Speed and jump numbers stay soft.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "wallow-engineer-soft",
+                        "title": "Wallow engineer",
+                        "stem": "Besides cooling off and shaking bugs, what can a bison wallow do for the prairie?",
+                        "choices": [
+                            "It erases the prairie so nothing can grow",
+                            "Dust and mud wallows can help more prairie plants and bugs find a home",
+                            "It is only a parking spot for cars",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia ties wallows to more than a dust bath. The hollows can hold water and give extra homes for prairie plants and bugs. We keep that helper idea soft.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "rut-season-soft",
+                        "title": "Rut season",
+                        "stem": "What happens in late summer during the bison rut?",
+                        "choices": [
+                            "Calves take a school trip to the city",
+                            "Every bison hibernates under the snow",
+                            "Bulls bellow and tend cows during the late-summer breeding season",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says the rut is the late-summer breeding season. Bulls bellow and stay close to cows they are tending. We keep dates and counts soft.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "nt-recovery-soft",
+                        "title": "Comeback snapshot",
+                        "stem": "How should we read the IUCN letter for American bison?",
+                        "choices": [
+                            "Near Threatened is a snapshot — they were nearly wiped out in the late 1800s, then parks, tribes, and ranchers slowly helped them come back",
+                            "The letter means bison were never in any trouble",
+                            "The letter means bison are extinct everywhere",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia lists American bison as Near Threatened. Huge wild herds were nearly wiped out in the late 1800s. Parks, tribes, and ranchers helped a slow comeback. Treat the letter as a snapshot, and keep herd counts soft.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "national-mammal-soft",
+                        "title": "National mammal",
+                        "stem": "What official U.S. honor do American bison hold?",
+                        "choices": [
+                            "They are the official state bird of every state",
+                            "They are the official national mammal of the United States (named in 2016)",
+                            "They are banned from every national park",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says the United States named the American bison its official national mammal in 2016. That honor tells a recovery and culture story, not a zoo score.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "indigenous-connection-soft",
+                        "title": "Indigenous connection",
+                        "stem": "Why do American bison matter to many Plains Indigenous peoples?",
+                        "choices": [
+                            "They are only a cartoon character with no real story",
+                            "They matter only as a zoo souvenir",
+                            "They have deep cultural and spiritual importance for many Plains Indigenous peoples",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia notes a long, living connection. For many Plains Indigenous peoples, bison hold deep cultural and spiritual importance. We keep that story respectful and soft.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "cattle-cousin-soft",
+                        "title": "Cattle cousins",
+                        "stem": "Why does it matter that bison and cattle can have calves together?",
+                        "choices": [
+                            "They belong to the same broad cattle family, and mixing can matter for keeping some conservation herds more purely bison",
+                            "They cannot ever have calves together",
+                            "They are closer to penguins than to cattle",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia places bison in the same broad cattle family as domestic cattle. They can hybridize. That mix matters when people try to keep some conservation herds more purely bison. We keep the genetics soft.",
                     },
                 ],
             },
