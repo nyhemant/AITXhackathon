@@ -909,7 +909,7 @@ IUCN letters as snapshots. Keep kid-friendly. Do not
 redo JR or PR themes. Do not invent photos.
 
 Facts for elk Junior Ranger (easy) + Park Ranger (hard)
-are Wikipedia-backed:
++ Zoologist (zoologist) are Wikipedia-backed:
 https://en.wikipedia.org/wiki/Elk
 Also wapiti / Cervus pages as needed. JR stays kid-simple
 “elk.” Big deer of forests, meadows, and mountain edges —
@@ -942,10 +942,29 @@ bulls often stay in separate groups; IUCN Least Concern
 overall — letter is a snapshot; some local kinds (like
 tule) had tighter recoveries; Eastern and Merriam’s elk
 subspecies are gone from the wild (soft history); largest
-deer after moose in the Cervidae family (soft). Soften
-contested numbers. Soft Cervus/wapiti, physiology, status
-OK. Keep kid-friendly. Do not redo JR themes. Zoologist
-is reserved for later. Do not invent photos.
+deer after moose in the Cervidae family (soft). Zoologist
+(zoologist) is answer-light (empty teach) and deepens:
+C. canadensis sits in an eastern Cervus mtDNA group with
+sika (C. nippon) and Thorold’s deer (C. albirostris),
+not with western red deer; Cervus radiation centered in
+Asia, wapiti ancestors crossed into North America via
+Beringia (soften dates); living Asian forms include
+Altai, Tianshan, Manchurian, Alashan (and related);
+how many true subspecies vs ecotypes is still debated
+(Geist lumpers vs traditional splits — soft); bugles can
+hit very high frequencies for such a large animal (nasal
+pathway soft; soften Hz); red deer roar low while the
+elk/sika clade favors high-pitched calls (anatomy vs
+pitch puzzle soft); fertile hybrids with red deer
+possible in captivity/introductions (New Zealand history
+soft); four-chambered stomach / cud chewing lets them
+switch graze↔browse by season; Least Concern overall —
+letter is a snapshot — tule and some Asian populations
+need tighter local care; historic reintroductions mixed
+subspecies genetics in some herds (conservation genetics
+soft). Soften contested numbers. Treat IUCN letters as
+snapshots. Keep kid-friendly. Do not redo JR or PR
+themes. Do not invent photos.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
@@ -1075,10 +1094,8 @@ LEVEL_DISPLAY_NAMES = {
 # ring-tailed lemur, ostrich, warthog, shark, and
 # Asian small-clawed otter, two-toed sloth, freshwater
 # fish, polar bear, sea otter, American alligator, and
-# American bison ship Junior Ranger + Park Ranger +
-# Zoologist.
-# Elk ships Junior Ranger + Park Ranger (no Zoologist
-# yet).
+# American bison and elk ship Junior Ranger + Park
+# Ranger + Zoologist.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -1428,14 +1445,14 @@ PUSH_FURTHER_AMERICAN_BISON = (
     "European bison mtDNA looks closer to cattle than to American bison. Why is that a puzzle?",
 )
 TALK_ABOUT_ELK = (
-    "Elk are also called wapiti. What might that Shawnee and Cree-related name describe?",
-    "Elk were once lumped with European red deer. Why treat them as their own species now?",
-    "Growing antlers wear a soft velvet cover. Why might that living skin be there?",
+    "Elk sit with eastern Cervus cousins, not western red deer. Why might that split matter?",
+    "Wapiti ancestors crossed into North America through Beringia. What story might that land bridge hold?",
+    "Elk bugles can hit very high notes for such a large animal. How might that sound be made?",
 )
 PUSH_FURTHER_ELK = (
-    "North America still has a few living elk kinds. How might a soft map of them look?",
-    "Velvet is living skin over growing bone. Why might that cover matter as antlers grow?",
-    "Some local elk kinds needed extra help to come back. What might that story include?",
+    "Sika deer and Thorold’s deer are close cousins. What else might that eastern family share?",
+    "How many true elk subspecies exist is still debated. Why might lumpers and splitters disagree?",
+    "Elk and red deer can have fertile hybrids. Why might mixed zones need extra care?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -13214,6 +13231,146 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia says the elk is the second-largest living species in the deer family, Cervidae, after the moose. We keep that size rank soft.",
+                    },
+                ],
+            },
+            "zoologist": {
+                # Answer-light: Zoologist has no Learn-first strip.
+                # Facts from Wikipedia, Elk (and related Cervus / wapiti pages).
+                # Soft taxonomy, vocal anatomy, hybrids, ruminant, status.
+                # Soften contested numbers. Kid-friendly. Do not redo
+                # JR or PR themes.
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "eastern-cervus-clade-soft",
+                        "title": "Eastern Cervus",
+                        "stem": "Which Cervus group does the elk sit with in mitochondrial DNA studies?",
+                        "choices": [
+                            "An eastern Cervus mtDNA group with sika (C. nippon) and Thorold’s deer (C. albirostris), not with western red deer (soft)",
+                            "Only a western red-deer group, with no eastern cousins",
+                            "A whale group far from any deer",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says DNA places elk closer to sika deer (Cervus nippon) and Thorold’s deer (Cervus albirostris) than to western red deer. That is an eastern Cervus mitochondrial group. We keep that family map soft.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "asian-origin-beringia-soft",
+                        "title": "Asian origin",
+                        "stem": "Where did the Cervus family radiate, and how did wapiti ancestors reach North America?",
+                        "choices": [
+                            "They evolved only in Antarctica last week",
+                            "The Cervus radiation is centered in Asia; wapiti ancestors crossed into North America through Beringia (dates stay soft)",
+                            "They were built in a factory and shipped by boat",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia traces Cervus first to Eurasia. Wapiti ancestors later reached North America across the Beringia land connection. Exact years stay soft.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "asian-wapiti-soft",
+                        "title": "Asian wapiti",
+                        "stem": "Is the elk a North-America-only species?",
+                        "choices": [
+                            "Yes — elk live only on Arctic sea ice",
+                            "Yes — no wapiti live anywhere in Asia",
+                            "No — living Asian forms include Altai, Tianshan, Manchurian, and Alashan wapiti (and related kinds)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia names living Asian wapiti, including Altai, Tianshan, Manchurian, and Alashan kinds (and related forms). The species is not “North America only.”",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "subspecies-flux-soft",
+                        "title": "Subspecies debate",
+                        "stem": "How settled is the count of true elk subspecies?",
+                        "choices": [
+                            "It is still debated — some scientists lump kinds as ecotypes (Geist-style), while others keep traditional splits (soft)",
+                            "Everyone agrees there is exactly one forever number",
+                            "Subspecies counts are voted on by zoo penguins",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says some taxonomists treat described kinds as ecotypes or races, not all as true subspecies. Others keep older splits. How many true subspecies exist is still debated. We keep that soft.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "high-frequency-bugle-soft",
+                        "title": "High bugle",
+                        "stem": "What is surprising about how high an elk bugle can sound?",
+                        "choices": [
+                            "Bugles are only ultrasonic bat clicks",
+                            "Bugles can hit very high frequencies for such a large animal, helped by a nasal pathway (exact Hz stay soft)",
+                            "Bugles are only deep whale songs, never high",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says an elk bugle can reach a very high pitch for such a large animal. Air can travel from the voice box through the nasal path to help make that sound. Exact frequencies stay soft.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "vocal-divergence-soft",
+                        "title": "Vocal split",
+                        "stem": "How do elk calls differ from a European red deer’s roar?",
+                        "choices": [
+                            "Both species only whisper like mice",
+                            "Red deer and elk make the exact same low roar, with no pitch difference",
+                            "Red deer roar low; the elk/sika clade favors high-pitched calls — anatomy vs pitch is still a soft puzzle",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia notes the elk’s high whistle is unusual for a large deer. Red deer roar lower. Elk sit nearer the sika group, which also uses higher calls. Why anatomy and pitch split that way is still a soft puzzle.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "hybrid-caution-soft",
+                        "title": "Hybrid caution",
+                        "stem": "What should we remember if elk and red deer meet in captivity or introductions?",
+                        "choices": [
+                            "They can have fertile hybrids, as in some New Zealand introduction history (soft)",
+                            "They can never have calves together",
+                            "They only mix with zoo penguins",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says elk and red deer can produce fertile offspring in captivity. In places such as New Zealand’s Fiordland, introductions let the two mix. We keep that history soft.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "ruminant-deepen-soft",
+                        "title": "Cud switch",
+                        "stem": "How does an elk’s four-chambered stomach help it eat through the year?",
+                        "choices": [
+                            "It turns food into metal",
+                            "Cud chewing lets them switch between graze and browse by season (soft)",
+                            "It stores only ice cream for winter",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says elk are ruminants with four-chambered stomachs. They chew cud, then can switch toward grass or toward browse as the seasons change.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "lc-snapshot-nuance-soft",
+                        "title": "Local care",
+                        "stem": "Least Concern is one snapshot. What extra local care should we remember?",
+                        "choices": [
+                            "The letter means every local herd is gone",
+                            "The letter means no local herd ever needed extra help",
+                            "The letter is a snapshot — tule elk and some Asian populations still need tighter local care",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia lists elk as Least Concern overall. Treat that letter as a snapshot, not a forever score. Tule elk and some Asian populations still need tighter local care.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "translocation-mixing-soft",
+                        "title": "Mixed herds",
+                        "stem": "What leftover can historic elk reintroductions leave in a herd’s genetics?",
+                        "choices": [
+                            "Some moves mixed subspecies genetics in herds — conservation genetics stays a soft story",
+                            "Reintroductions erase all DNA overnight",
+                            "Moves only mix elk with zoo penguins",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia describes historic reintroductions that moved elk into places where other kinds once lived. Those moves can mix subspecies genetics in some herds. Conservation genetics stays a soft story.",
                     },
                 ],
             },
