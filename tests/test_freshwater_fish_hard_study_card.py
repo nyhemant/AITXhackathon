@@ -36,7 +36,7 @@ from study_cards import (  # noqa: E402
 
 FP = REPO / "static" / "field-pack"
 FISH = FP / "cards" / "freshwater-fish" / "index.html"
-OCTOPUS = FP / "cards" / "seahorse" / "index.html"
+OCTOPUS = FP / "cards" / "stingray" / "index.html"
 SLOTH = FP / "cards" / "two-toed-sloth" / "index.html"
 LION = FP / "cards" / "african-lion" / "index.html"
 STUDY_JSON = FP / "data" / "study-cards.json"
@@ -110,8 +110,8 @@ class FreshwaterFishHardStudyCardTests(unittest.TestCase):
     def test_hard_deck_is_park_ranger_without_teach(self):
         self.assertEqual(shipped_levels_for("freshwater-fish"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("freshwater-fish", "zoologist"))
-        self.assertNotIn("seahorse", study_card_ids())
-        self.assertIsNone(study_deck_for("seahorse"))
+        self.assertNotIn("stingray", study_card_ids())
+        self.assertIsNone(study_deck_for("stingray"))
         self.assertEqual(level_display_name("hard"), "Park Ranger")
         deck = study_deck_for("freshwater-fish", "hard")
         self.assertIsNotNone(deck)
@@ -269,7 +269,7 @@ class FreshwaterFishHardStudyCardTests(unittest.TestCase):
         self.assertIn("What do they eat?", jelly)
         self.assertNotIn("card-study-pack", jelly)
         self.assertNotIn("salt-water-balance-soft", jelly)
-        self.assertIsNone(study_deck_for("seahorse"))
+        self.assertIsNone(study_deck_for("stingray"))
 
     def test_published_artifacts_and_plumbing(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))

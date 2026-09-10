@@ -179,7 +179,7 @@ class GiraffeEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Facts from Wikipedia, Giraffe / Reticulated giraffe.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
-        html = outing_talk_html({"id": "seahorse", "packTemplate": "animals"})
+        html = outing_talk_html({"id": "stingray", "packTemplate": "animals"})
         self.assertIn("What do they eat?", html)
         self.assertNotIn("card-study-pack", html)
         self.assertNotIn("What record does a giraffe hold", html)

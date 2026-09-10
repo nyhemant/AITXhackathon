@@ -42,7 +42,7 @@ from study_cards import (  # noqa: E402
 
 FP = REPO / "static" / "field-pack"
 OCTOPUS = FP / "cards" / "octopus" / "index.html"
-SEAHORSE = FP / "cards" / "seahorse" / "index.html"
+SEAHORSE = FP / "cards" / "stingray" / "index.html"
 MANTA = FP / "cards" / "manta-ray" / "index.html"
 KELP = FP / "cards" / "kelp-forest" / "index.html"
 JELLYFISH = FP / "cards" / "jellyfish" / "index.html"
@@ -145,7 +145,7 @@ def _main(html: str) -> str:
 class OctopusEasyStudyCardTests(unittest.TestCase):
     def test_deck_is_junior_ranger_only(self):
         self.assertIn("octopus", study_card_ids())
-        self.assertNotIn("seahorse", study_card_ids())
+        self.assertNotIn("stingray", study_card_ids())
         self.assertEqual(
             study_card_ids(),
             (
@@ -187,12 +187,13 @@ class OctopusEasyStudyCardTests(unittest.TestCase):
                 "manta-ray",
                 "octopus",
                 "sea-turtle",
+                "seahorse",
             ),
         )
         self.assertEqual(shipped_levels_for("octopus"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("octopus", "hard"))
         self.assertIsNotNone(study_deck_for("octopus", "zoologist"))
-        self.assertIsNone(study_deck_for("seahorse"))
+        self.assertIsNone(study_deck_for("stingray"))
         deck = study_deck_for("octopus")
         self.assertIsNotNone(deck)
         self.assertEqual(deck["id"], "octopus")
@@ -327,7 +328,7 @@ class OctopusEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Facts from Wikipedia, Octopus.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
-        html = outing_talk_html({"id": "seahorse", "packTemplate": "animals"})
+        html = outing_talk_html({"id": "stingray", "packTemplate": "animals"})
         self.assertIn("What do they eat?", html)
         self.assertNotIn("card-study-pack", html)
         self.assertNotIn("How many arms does an octopus", html)
@@ -464,7 +465,7 @@ class OctopusEasyStudyCardTests(unittest.TestCase):
     def test_artifacts_include_octopus_easy_and_hard(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
         self.assertIn("octopus", payload)
-        self.assertNotIn("seahorse", payload)
+        self.assertNotIn("stingray", payload)
         self.assertIn("manta-ray", payload)
         self.assertIn("kelp-forest", payload)
         self.assertIn("jellyfish", payload)

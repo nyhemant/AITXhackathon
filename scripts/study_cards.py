@@ -1856,6 +1856,46 @@ snapshots. Soften exact TED percents. Do
 not redo JR or PR themes. Keep
 kid-friendly. Do not invent photos.
 
+Facts for seahorse Junior Ranger (easy) are
+Wikipedia-backed: https://en.wikipedia.org/wiki/Seahorse
+(genus Hippocampus; family Syngnathidae with
+pipefish and seadragons). JR stays kid-simple
+“seahorse” (a group card). Small bony fish
+that swim upright (not mammals). Horse-like
+head and long snout for sucking tiny food.
+A curled gripping tail holds seagrass, coral,
+or seaweed. Dad carries the babies in a front
+pouch until they are born. Thin skin over
+bony plates (not fish scales) — great at
+camouflage. True bony fish in Hippocampus,
+with many kinds (soften exact species count).
+A small dorsal fin propels them; pectoral
+fins help steer; they lack a typical tail
+fin. Square-ringed prehensile tail anchors
+them so currents don’t sweep them away.
+Bent neck and tubular snout suck in tiny
+shrimp and other plankton. Bony plate rings
+under thin skin protect them (soften the
+“no ribs” skeleton detail). Female places
+eggs in the male’s brood pouch; he carries
+them until fully formed fry are released
+(soften egg counts and gestation days).
+They can change colour, and sometimes grow
+or shrink skin frills, to blend with
+seagrass or coral. Live in shallow seas —
+seagrass beds, reefs, mangroves, and some
+brackish lagoons. Closely related to
+pipefish and seadragons (same family) —
+names stay light. Myth: people think moms
+always carry babies — in seahorses, fathers
+do the pouch care. Reserve pouch
+physiology, Syngnathidae trees, trade and
+habitat status, and pygmy species for later
+tiers. Soften contested size, egg counts,
+and gestation days. Keep kid-friendly. Do
+not invent photos. Do not add Park Ranger
+or Zoologist in this pass.
+
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
 zoologist. Visible copy uses LEVEL_DISPLAY_NAMES only — no age badges,
@@ -1918,6 +1958,7 @@ WIKI_KELP_FOREST = "https://en.wikipedia.org/wiki/Kelp_forest"
 WIKI_MANTA_RAY = "https://en.wikipedia.org/wiki/Manta_ray"
 WIKI_OCTOPUS = "https://en.wikipedia.org/wiki/Octopus"
 WIKI_SEA_TURTLE = "https://en.wikipedia.org/wiki/Sea_turtle"
+WIKI_SEAHORSE = "https://en.wikipedia.org/wiki/Seahorse"
 
 LETTERS = ("A", "B", "C")
 STUDY_SLOTS = 10
@@ -1999,6 +2040,7 @@ LEVEL_DISPLAY_NAMES = {
 # ship Junior Ranger + Park Ranger + Zoologist.
 # Manta ray, octopus, and sea turtle ship Junior Ranger + Park Ranger +
 # Zoologist.
+# Seahorse ships Junior Ranger only.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -2053,6 +2095,7 @@ STUDY_NEIGHBORS = {
     "manta-ray": ("jellyfish", "kelp-forest"),
     "octopus": ("cuttlefish", "jellyfish"),
     "sea-turtle": ("octopus", "manta-ray"),
+    "seahorse": ("octopus", "sea-turtle"),
 }
 
 STUDY_CARD_TITLES = {
@@ -2094,6 +2137,7 @@ STUDY_CARD_TITLES = {
     "manta-ray": "Manta ray",
     "octopus": "Octopus",
     "sea-turtle": "Sea turtle",
+    "seahorse": "Seahorse",
 }
 
 # Shared answers-side deepen (Claude sample). Not scored. Future animals reuse keys.
@@ -2508,6 +2552,16 @@ PUSH_FURTHER_SEA_TURTLE_ZOOLOGIST = (
     "Some turtles grow bumpy tumors. Why keep that disease story soft?",
     "Climate can tilt nests toward more females. Why keep that feminization story soft?",
     "Barnacles on a shell can carry chemistry clues. Why keep that tracking story soft?",
+)
+TALK_ABOUT_SEAHORSE = (
+    "Dad carries the babies in a front pouch. Why might that job sit with him, not mom?",
+    "Seahorses swim upright, unlike most fish. What else looks different when they move?",
+    "A gripping tail holds seagrass instead of a tail fin. How is that different from a tuna?",
+)
+PUSH_FURTHER_SEAHORSE = (
+    "The pouch does more than hold eggs. Why might that inside story wait for a later card?",
+    "Pipefish and seadragon cousins share a family tree. Why keep those names light here?",
+    "Trade, habitat trouble, and tiny pygmy kinds still wait. Why not lock those stories yet?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -18748,6 +18802,157 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia says green sea turtles are among the few large animals that graze seagrass. That cropping keeps beds short so the meadow can spread across the seafloor and stay healthy for many other species. We keep that gardener story soft.",
+                    },
+                ],
+            },
+        },
+    },
+    "seahorse": {
+        "id": "seahorse",
+        "source": WIKI_SEAHORSE,
+        "source_note": "Facts from Wikipedia, Seahorse.",
+        "talk_about": list(TALK_ABOUT_SEAHORSE),
+        "push_further": list(PUSH_FURTHER_SEAHORSE),
+        "levels": {
+            "easy": {
+                # Teaching-first: same front as the quiz. Hard later may hide these.
+                "teach": [
+                    "Small bony fish that swim upright (not mammals)",
+                    "Horse-like head and long snout for sucking tiny food",
+                    "A curled gripping tail holds seagrass, coral, or seaweed",
+                    "Dad carries the babies in a front pouch until they are born",
+                    "Thin skin over bony plates (not fish scales) — great at camouflage",
+                ],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "true-fish-soft",
+                        "title": "True fish",
+                        "stem": "Are seahorses a kind of fish?",
+                        "choices": [
+                            "Yes — small bony fish in genus Hippocampus, with many kinds (soft)",
+                            "No — they are tiny horses that live in the sea",
+                            "No — they are mammals like dolphins",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says a seahorse is a small marine bony fish in the genus Hippocampus. How many kinds scientists name can shift, so we keep that count soft.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "upright-swim-soft",
+                        "title": "Upright swim",
+                        "stem": "How does a seahorse swim, if we keep the fins simple?",
+                        "choices": [
+                            "It runs on the sand with tiny hooves",
+                            "A small dorsal fin pushes it along; pectoral fins help steer; it has no typical tail fin",
+                            "It flaps big wing fins like a manta",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says seahorses swim upright. A dorsal fin propels them, pectoral fins beside the head help steer, and they lack the caudal tail fin most fish use.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "gripping-tail-soft",
+                        "title": "Gripping tail",
+                        "stem": "What does a seahorse’s tail do?",
+                        "choices": [
+                            "It works like a typical fish tail fin to sprint away",
+                            "It stores air so the seahorse can fly",
+                            "A square-ringed gripping tail holds seagrass, coral, or seaweed so they aren’t swept away",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says the prehensile tail is made of square-like rings. Seahorses are poor swimmers, so they wind that tail around a holdfast and stay put.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "horse-snout-soft",
+                        "title": "Horse head",
+                        "stem": "Why does a seahorse’s head look horse-like, and how does it eat?",
+                        "choices": [
+                            "A bent neck and tubular snout suck in tiny shrimp and other plankton",
+                            "It chews kelp with flat horse teeth",
+                            "It filters air through a trunk like an elephant",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says seahorses are named for a horse-like head and neck, with a long snout that sucks up small prey such as shrimp and other tiny drifting animals.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "bony-armour-soft",
+                        "title": "Bony armour",
+                        "stem": "What covers a seahorse’s body, if we keep the armour story soft?",
+                        "choices": [
+                            "Typical fish scales like a tuna",
+                            "Thin skin stretched over bony plate rings that help protect them",
+                            "Fur like a sea otter",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says seahorses do not have typical fish scales. Thin skin stretches over bony plates arranged in rings. That bony armour helps protect them. We keep deeper skeleton details for later.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "dads-pouch-soft",
+                        "title": "Dad’s pouch",
+                        "stem": "Who carries seahorse babies, and how?",
+                        "choices": [
+                            "Mom keeps them in a nest of bubbles at the surface",
+                            "Both parents take turns in a backpack",
+                            "The female places eggs in the male’s front pouch; he carries them until tiny fry are born",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says the female deposits eggs in the male’s brood pouch on the front of the tail. He carries them until fully formed fry are released. We keep egg counts and days soft.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "camouflage-soft",
+                        "title": "Camouflage",
+                        "stem": "How can a seahorse hide in seagrass or coral?",
+                        "choices": [
+                            "It can change colour, and sometimes grow or shrink skin frills, to blend in",
+                            "It paints a stripe down its back with ink",
+                            "It shines a bright flashlight to scare fish",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says seahorses are adept at camouflage. They can change colour and may grow or reabsorb spiny skin appendages to match their home.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "clingy-homes-soft",
+                        "title": "Slow homes",
+                        "stem": "Where do seahorses usually live?",
+                        "choices": [
+                            "Only in deep-ocean trenches with no plants",
+                            "In shallow seas — seagrass beds, reefs, mangroves, and some brackish lagoons",
+                            "In deserts far from any sea",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says seahorses live mainly in shallow tropical and temperate salt water, in sheltered places such as seagrass beds, coral reefs, mangroves, and brackish estuaries and lagoons.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "pipefish-cousins-soft",
+                        "title": "Pipefish cousins",
+                        "stem": "Which animals are seahorses closely related to?",
+                        "choices": [
+                            "Closely related to horses and zebras on land",
+                            "Closely related to octopuses and jellyfish",
+                            "Closely related to pipefish and seadragons (same family) — names stay light",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia places seahorses with pipefishes and seadragons in the same family. We keep the family-tree name light here.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "dad-not-mom-myth",
+                        "title": "Myth buster",
+                        "stem": "Do seahorse moms always carry the babies?",
+                        "choices": [
+                            "No — people think moms always carry babies, but in seahorses the father does the pouch care",
+                            "Yes — only moms ever hold the eggs",
+                            "Yes — dads only watch from a rock",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says the male seahorse carries the developing young in his brood pouch until they are born. That flips the usual “mom always carries the babies” story.",
                     },
                 ],
             },

@@ -39,7 +39,7 @@ from study_cards import (  # noqa: E402
 
 FP = REPO / "static" / "field-pack"
 MANTA = FP / "cards" / "manta-ray" / "index.html"
-OCTOPUS = FP / "cards" / "seahorse" / "index.html"
+OCTOPUS = FP / "cards" / "stingray" / "index.html"
 KELP = FP / "cards" / "kelp-forest" / "index.html"
 JELLYFISH = FP / "cards" / "jellyfish" / "index.html"
 PRINT_KIT = FP / "js" / "print-kit.js"
@@ -161,7 +161,7 @@ def _main(html: str) -> str:
 class MantaRayEasyStudyCardTests(unittest.TestCase):
     def test_deck_is_junior_ranger_only(self):
         self.assertIn("manta-ray", study_card_ids())
-        self.assertNotIn("seahorse", study_card_ids())
+        self.assertNotIn("stingray", study_card_ids())
         self.assertEqual(
             study_card_ids(),
             (
@@ -203,12 +203,13 @@ class MantaRayEasyStudyCardTests(unittest.TestCase):
                 "manta-ray",
                 "octopus",
                 "sea-turtle",
+                "seahorse",
             ),
         )
         self.assertEqual(shipped_levels_for("manta-ray"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("manta-ray", "hard"))
         self.assertIsNotNone(study_deck_for("manta-ray", "zoologist"))
-        self.assertIsNone(study_deck_for("seahorse"))
+        self.assertIsNone(study_deck_for("stingray"))
         deck = study_deck_for("manta-ray")
         self.assertIsNotNone(deck)
         self.assertEqual(deck["id"], "manta-ray")
@@ -336,7 +337,7 @@ class MantaRayEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Facts from Wikipedia, Manta ray.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
-        html = outing_talk_html({"id": "seahorse", "packTemplate": "animals"})
+        html = outing_talk_html({"id": "stingray", "packTemplate": "animals"})
         self.assertIn("What do they eat?", html)
         self.assertNotIn("card-study-pack", html)
         self.assertNotIn("What do a manta", html)
@@ -473,7 +474,7 @@ class MantaRayEasyStudyCardTests(unittest.TestCase):
     def test_artifacts_include_manta_ray_easy_and_hard(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
         self.assertIn("manta-ray", payload)
-        self.assertNotIn("seahorse", payload)
+        self.assertNotIn("stingray", payload)
         self.assertIn("kelp-forest", payload)
         self.assertIn("jellyfish", payload)
         manta = payload["manta-ray"]
