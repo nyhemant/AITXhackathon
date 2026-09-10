@@ -1,4 +1,4 @@
-"""Crab Easy study-card: Junior Ranger teach + 10 MCQs (Park Ranger and Zoologist are reserved)."""
+"""Crab Easy study-card: Junior Ranger teach + 10 MCQs (Park Ranger is a sibling level)."""
 
 from __future__ import annotations
 
@@ -97,7 +97,7 @@ QIDS = (
     "horseshoe-not-crab-myth",
 )
 
-PLAIN_LEVEL_LABELS = ("Easy",)
+PLAIN_LEVEL_LABELS = ("Easy", "Hard")
 AGE_BADGES = ("Ages", "Age 4", "age badge", "ages 4", "4–6", "4-6")
 BRITTLE = (
     "IUCN",
@@ -177,8 +177,8 @@ class CrabEasyStudyCardTests(unittest.TestCase):
                 "crab",
             ),
         )
-        self.assertEqual(shipped_levels_for("crab"), ("easy",))
-        self.assertIsNone(study_deck_for("crab", "hard"))
+        self.assertEqual(shipped_levels_for("crab"), ("easy", "hard"))
+        self.assertIsNotNone(study_deck_for("crab", "hard"))
         self.assertIsNone(study_deck_for("crab", "zoologist"))
         self.assertIsNone(study_deck_for("jellyfish"))
         deck = study_deck_for("crab")
@@ -280,13 +280,15 @@ class CrabEasyStudyCardTests(unittest.TestCase):
             self.assertNotIn(phrase, html)
         visible = _text(html)
         self.assertIn("Junior Ranger", visible)
-        self.assertNotIn("Park Ranger", visible)
+        self.assertIn("Park Ranger", visible)
         self.assertNotIn("Zoologist", visible)
-        self.assertNotIn('class="study-level-picker"', html)
-        self.assertNotIn("data-study-pick", html)
-        self.assertIn('class="study-level-badge"', html)
-        self.assertNotIn("study-level-picker-bottom", html)
-        self.assertEqual(html.count('role="group"'), 0)
+        self.assertIn('class="study-level-picker"', html)
+        self.assertIn('data-study-pick="easy"', html)
+        self.assertIn('data-study-pick="hard"', html)
+        self.assertNotIn('data-study-pick="zoologist"', html)
+        self.assertNotIn('class="study-level-badge"', html)
+        self.assertEqual(html.count('role="group"'), 2)
+        self.assertIn("study-level-picker-bottom", html)
         for badge in PLAIN_LEVEL_LABELS + AGE_BADGES:
             self.assertNotIn(badge, visible)
         self.assertNotIn(" · Easy ·", html)
@@ -331,7 +333,7 @@ class CrabEasyStudyCardTests(unittest.TestCase):
             main,
         )
         self.assertIn('class="card-try-next no-print"', main)
-        self.assertNotIn("study-level-picker-bottom", main)
+        self.assertIn("study-level-picker-bottom", main)
         self.assertNotIn("card-print-note", main)
         self.assertIn("study-card.js?v=10", html)
         self.assertIn("study-card.css?v=10", html)
@@ -355,11 +357,13 @@ class CrabEasyStudyCardTests(unittest.TestCase):
         self.assertLess(main.find("study-explore"), main.find("card-try-next"))
         visible = _text(main)
         self.assertIn("Junior Ranger", visible)
-        self.assertNotIn("Park Ranger", visible)
+        self.assertIn("Park Ranger", visible)
         self.assertNotIn("Zoologist", visible)
-        self.assertNotIn('class="study-level-picker"', main)
-        self.assertNotIn("data-study-pick", main)
-        self.assertIn('class="study-level-badge"', main)
+        self.assertIn('class="study-level-picker"', main)
+        self.assertIn('data-study-pick="easy"', main)
+        self.assertIn('data-study-pick="hard"', main)
+        self.assertNotIn('data-study-pick="zoologist"', main)
+        self.assertNotIn('class="study-level-badge"', main)
         self.assertIn("Learn first", main)
         self.assertIn(">Quiz</h2>", main)
         self.assertEqual(main.count("data-study-correct"), 2)
@@ -436,7 +440,7 @@ class CrabEasyStudyCardTests(unittest.TestCase):
         self.assertIn("is-wrong-pick", study_js)
         self.assertIn("FPStudyLevelName", study_js + STUDY_DATA_JS.read_text(encoding="utf-8"))
 
-    def test_artifacts_include_crab_easy_only(self):
+    def test_artifacts_include_crab_easy_and_hard(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
         self.assertIn("crab", payload)
         self.assertNotIn("jellyfish", payload)
@@ -445,8 +449,8 @@ class CrabEasyStudyCardTests(unittest.TestCase):
         self.assertIn("freshwater-fish", payload)
         fish = payload["crab"]
         self.assertEqual(fish["id"], "crab")
-        self.assertEqual(set(fish["levels"]), {"easy"})
-        self.assertNotIn("hard", fish["levels"])
+        self.assertEqual(set(fish["levels"]), {"easy", "hard"})
+        self.assertEqual(fish["levels"]["hard"]["teach"], [])
         self.assertNotIn("zoologist", fish["levels"])
         easy = fish["levels"]["easy"]
         self.assertEqual(len(easy["teach"]), 5)
@@ -481,7 +485,7 @@ class CrabEasyStudyCardTests(unittest.TestCase):
         crab_html = CRAB.read_text(encoding="utf-8")
         visible = _text(_main(crab_html))
         self.assertIn("Junior Ranger", visible)
-        self.assertNotIn("Park Ranger", visible)
+        self.assertIn("Park Ranger", visible)
         self.assertNotIn("Zoologist", visible)
         clown_html = CLOWNFISH.read_text(encoding="utf-8")
         self.assertIn("Junior Ranger", _text(_main(clown_html)))
