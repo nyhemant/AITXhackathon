@@ -110,7 +110,7 @@ BRITTLE = (
     "mph",
     "km/h",
 )
-PAGE_BRITTLE = BRITTLE
+PAGE_BRITTLE = tuple(p for p in BRITTLE if p != "Cervus")
 RESERVED = (
     "IUCN",
     "Least Concern",
@@ -165,9 +165,9 @@ class ElkEasyStudyCardTests(unittest.TestCase):
                 "elk",
             ),
         )
-        self.assertEqual(shipped_levels_for("elk"), ("easy", "hard"))
+        self.assertEqual(shipped_levels_for("elk"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("elk", "hard"))
-        self.assertIsNone(study_deck_for("elk", "zoologist"))
+        self.assertIsNotNone(study_deck_for("elk", "zoologist"))
         self.assertIsNone(study_deck_for("jellyfish"))
         deck = study_deck_for("elk")
         self.assertIsNotNone(deck)
@@ -261,11 +261,11 @@ class ElkEasyStudyCardTests(unittest.TestCase):
         visible = _text(html)
         self.assertIn("Junior Ranger", visible)
         self.assertIn("Park Ranger", visible)
-        self.assertNotIn("Zoologist", visible)
+        self.assertIn("Zoologist", visible)
         self.assertIn('class="study-level-picker"', html)
         self.assertIn('data-study-pick="easy"', html)
         self.assertIn('data-study-pick="hard"', html)
-        self.assertNotIn('data-study-pick="zoologist"', html)
+        self.assertIn('data-study-pick="zoologist"', html)
         self.assertNotIn('class="study-level-badge"', html)
         self.assertEqual(html.count('role="group"'), 2)
         self.assertIn("study-level-picker-bottom", html)
@@ -330,11 +330,11 @@ class ElkEasyStudyCardTests(unittest.TestCase):
         visible = _text(main)
         self.assertIn("Junior Ranger", visible)
         self.assertIn("Park Ranger", visible)
-        self.assertNotIn("Zoologist", visible)
+        self.assertIn("Zoologist", visible)
         self.assertIn('class="study-level-picker"', main)
         self.assertIn('data-study-pick="easy"', main)
         self.assertIn('data-study-pick="hard"', main)
-        self.assertNotIn('data-study-pick="zoologist"', main)
+        self.assertIn('data-study-pick="zoologist"', main)
         self.assertNotIn('class="study-level-badge"', main)
         self.assertIn("Learn first", main)
         self.assertIn(">Quiz</h2>", main)
@@ -417,9 +417,9 @@ class ElkEasyStudyCardTests(unittest.TestCase):
         self.assertIn("american-bison", payload)
         elk = payload["elk"]
         self.assertEqual(elk["id"], "elk")
-        self.assertEqual(set(elk["levels"]), {"easy", "hard"})
+        self.assertEqual(set(elk["levels"]), {"easy", "hard", "zoologist"})
         self.assertEqual(elk["levels"]["hard"]["teach"], [])
-        self.assertNotIn("zoologist", elk["levels"])
+        self.assertEqual(elk["levels"]["zoologist"]["teach"], [])
         easy = elk["levels"]["easy"]
         self.assertEqual(len(easy["teach"]), 5)
         self.assertEqual(len(easy["questions"]), STUDY_SLOTS)
@@ -452,7 +452,7 @@ class ElkEasyStudyCardTests(unittest.TestCase):
         visible = _text(_main(elk_html))
         self.assertIn("Junior Ranger", visible)
         self.assertIn("Park Ranger", visible)
-        self.assertNotIn("Zoologist", visible)
+        self.assertIn("Zoologist", visible)
         gator_html = GATOR.read_text(encoding="utf-8")
         self.assertIn("Junior Ranger", _text(_main(gator_html)))
         self.assertIn("Park Ranger", _text(_main(gator_html)))
