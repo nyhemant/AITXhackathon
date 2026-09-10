@@ -792,27 +792,40 @@ numbers. Treat IUCN letters as snapshots. Keep distinct
 from asian-small-clawed-otter (Aonyx). Do not redo JR
 or PR themes. Do not invent photos.
 
-Facts for american-alligator Junior Ranger (easy) are
-Wikipedia-backed:
+Facts for american-alligator Junior Ranger + Park Ranger
+(easy + hard) are Wikipedia-backed:
 https://en.wikipedia.org/wiki/American_alligator
-Also Crocodilian armor / Scute as needed. This is the first
-study deck for this animal. JR stays kid-simple “American
-alligator.” Live in freshwater wetlands of the Southeastern
-United States — marshes, swamps, lakes, and slow rivers.
-Powerful tails power swimming. Bony armor plates (scutes)
-along the back. Strong jaws for catching fish, turtles,
-birds, and more (soften size claims). Loud bellows help
-claim space and find mates. Females pile vegetation, sticks,
-and mud into nest mounds. Hatchlings often have yellow
-bands; moms help them to water. Digging gator holes can
-hold water in dry times for other wildlife too. Soft care:
-healthy freshwater wetlands give food, nest sites, and
-shelter (no LC / ESA recovery dump on JR). Myth: unlike
-many reptiles’ “leave the eggs” story, alligator moms
-guard nests and carry hatchlings. Park Ranger and
-Zoologist are reserved for later: denser crocodylian
-distinctions (vs crocodile), physiology (TSD/infrasound),
-LC recovery / ESA history. Do not invent photos.
+Also Crocodilian armor / Scute / Alligator as needed. JR
+stays kid-simple “American alligator.” Live in freshwater
+wetlands of the Southeastern United States — marshes,
+swamps, lakes, and slow rivers. Powerful tails power
+swimming. Bony armor plates (scutes) along the back.
+Strong jaws for catching fish, turtles, birds, and more
+(soften size claims). Loud bellows help claim space and
+find mates. Females pile vegetation, sticks, and mud into
+nest mounds. Hatchlings often have yellow bands; moms help
+them to water. Digging gator holes can hold water in dry
+times for other wildlife too. Soft care: healthy freshwater
+wetlands give food, nest sites, and shelter (no LC / ESA
+recovery dump on JR). Myth: unlike many reptiles’ “leave
+the eggs” story, alligator moms guard nests and carry
+hatchlings. Park Ranger (hard) is answer-light (empty
+teach) and deepens: broader U-shaped snout vs narrower V
+on American crocodiles (soft field tip), fresher-water
+preference / tongue salt glands that don’t work the same
+way, cooler-climate tolerance vs tropical-leaning American
+crocodiles, nest temperature helping decide hatchling sex
+(TSD — soften exact °F bands), male infrasound “felt”
+bellows that can ripple water, loud head-slaps as another
+social display, alligator holes that reshape wetlands and
+help other species in drought, IUCN Least Concern as a
+snapshot after ESA-endangered overhunting and a 1987-soft
+delist, only two living Alligator species (American and
+much smaller Chinese), and CITES Appendix II trade rules
+(soft). Soft gator-vs-croc / TSD / infrasound / LC
+recovery OK. Soften contested numbers. Keep kid-friendly.
+Do not redo JR themes. Zoologist is reserved for later.
+Do not invent photos.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
@@ -941,7 +954,7 @@ LEVEL_DISPLAY_NAMES = {
 # Asian small-clawed otter, two-toed sloth, freshwater
 # fish, polar bear, and sea otter ship Junior Ranger +
 # Park Ranger + Zoologist. American alligator ships
-# Junior Ranger only (no Park Ranger or Zoologist yet).
+# Junior Ranger + Park Ranger (no Zoologist yet).
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -1267,14 +1280,14 @@ PUSH_FURTHER_SEA_OTTER = (
     "One snapshot letter covers many coasts. Why might some regions still struggle?",
 )
 TALK_ABOUT_AMERICAN_ALLIGATOR = (
-    "Southeastern wetlands are home. What would you notice in a marsh or swamp?",
-    "Alligators bellow. What do you think that loud call is for?",
-    "Mom builds a nest mound. How does she help her eggs and babies?",
+    "Gators and crocs can look alike. What snout shape might help you tell them apart?",
+    "Nest temperature can steer hatchling sex. Why might a warmer or cooler nest matter?",
+    "Alligators made a conservation comeback. What helped them bounce back?",
 )
 PUSH_FURTHER_AMERICAN_ALLIGATOR = (
-    "A strong tail powers swimming. Why might that matter in a swamp?",
-    "A gator hole can hold water in dry times. How could that help neighbors?",
-    "Alligator vs crocodile is saved for later tiers. What one difference would you wait to learn?",
+    "Some bellows are so low you feel them. Why might the water ripple during courtship?",
+    "Alligators prefer fresher water than American crocodiles. Why might salt matter?",
+    "They were once in serious trouble from overhunting and later recovered. What does that story teach?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -12051,6 +12064,146 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia says parental care is unusual among most reptiles. Alligator moms guard nests and carry hatchlings to the water.",
+                    },
+                ],
+            },
+            "hard": {
+                # Answer-light: Park Ranger has no Learn-first strip.
+                # Facts from Wikipedia, American alligator (and Alligator).
+                # Soft gator-vs-croc / TSD / infrasound / LC recovery OK.
+                # Soften contested numbers. Kid-friendly. Do not redo
+                # JR themes.
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "u-snout-vs-crocs-soft",
+                        "title": "U-shaped snout",
+                        "stem": "How can snout shape help you tell an American alligator from an American crocodile?",
+                        "choices": [
+                            "American alligators have a broader U-shaped snout; American crocodiles tend toward a narrower V — a soft field tip",
+                            "They always wear name tags that say gator or croc",
+                            "Alligators have feathers and crocodiles have fur",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says American alligators are distinguished from American crocodiles by a broader U-shaped snout. American crocodiles tend toward a narrower V. Treat that as a helpful field tip, not a forever rule.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "fresher-water-soft",
+                        "title": "Fresher water",
+                        "stem": "Why do American alligators stick to fresher water more than American crocodiles?",
+                        "choices": [
+                            "They only drink soda from the zoo shop",
+                            "They prefer freshwater wetlands — tongue salt glands don’t work the same way as in American crocodiles",
+                            "They need ocean salt every day to survive",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says they prefer fresh water and are less tolerant of salt water than American crocodiles. Tongue salt glands do not work the same way, so salt is harder for them to handle.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "cooler-ok-soft",
+                        "title": "Cooler climates",
+                        "stem": "How do American alligators handle cooler weather compared with American crocodiles?",
+                        "choices": [
+                            "They melt if the air is below room temperature",
+                            "They can live only on tropical beaches",
+                            "They handle cooler climates better than tropical-leaning American crocodiles",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says American alligators are less vulnerable to cold than American crocodiles and range farther from the equator. American crocodiles lean more tropical. We keep the exact cutoff soft.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "temperature-sex-soft",
+                        "title": "Nest warmth",
+                        "stem": "What can nest temperature help decide for baby alligators?",
+                        "choices": [
+                            "Nest temperature helps decide whether hatchlings are male or female",
+                            "Nest temperature decides what color backpack they wear",
+                            "Nest temperature has no effect on the babies",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says the temperature at which the eggs develop helps decide hatchling sex. Warmer or cooler nests can steer more males or more females. We keep exact degree bands soft.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "infrasound-soft",
+                        "title": "Felt bellows",
+                        "stem": "What extra kind of sound can a male alligator send during courtship?",
+                        "choices": [
+                            "Only a tiny squeak that no one can feel",
+                            "Very low “felt” sounds (infrasound) that can ripple the water",
+                            "A song they play on a radio",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says males use infrasound — very low sounds — during mating bellows. Those waves can make the water over a male’s back sprinkle or ripple. People often feel the chorus as much as they hear it.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "head-slap-soft",
+                        "title": "Head-slap",
+                        "stem": "Besides bellows, what is another loud social display?",
+                        "choices": [
+                            "They tap-dance on lily pads",
+                            "They only wave a tiny flag",
+                            "A loud head-slap is another social display",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia’s alligator page lists a loud head-slap as another male display, besides the bellow. It is a social signal, not just a splash for fun.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "engineer-deepen-soft",
+                        "title": "Wetland engineer",
+                        "stem": "How can alligator holes reshape a wetland in a drought?",
+                        "choices": [
+                            "Digging holes reshapes wetlands and helps other species find water and drier nest spots in dry times",
+                            "The holes erase the wetland so nothing can live there",
+                            "The holes are only for parking airboats",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia calls them ecosystem engineers. Alligator holes do more than hold a puddle — they reshape the wetland and give other animals wet refuges and drier edges in a drought.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "lc-recovery-soft",
+                        "title": "Comeback snapshot",
+                        "stem": "How should we read the IUCN letter for American alligators?",
+                        "choices": [
+                            "Least Concern means they never needed any care",
+                            "Least Concern is a snapshot — they were once listed as endangered from overhunting and later recovered enough to be delisted",
+                            "The letter means they are extinct everywhere",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia lists them as Least Concern now. They were once endangered under U.S. law from overhunting, then recovered enough to be delisted around 1987. Treat the letter as a snapshot, not a forever grade.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "two-living-alligators-soft",
+                        "title": "Two living alligators",
+                        "stem": "How many living alligator species are there?",
+                        "choices": [
+                            "Dozens of alligator species live on every continent",
+                            "There is only one alligator species in the whole world",
+                            "Only two living alligator species — the American alligator and a much smaller Chinese alligator",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says the American alligator is one of two living species in the genus Alligator. The other is the much smaller Chinese alligator.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "cites-ii-soft",
+                        "title": "Trade rules",
+                        "stem": "What do international CITES trade rules say for American alligators?",
+                        "choices": [
+                            "Appendix II — international trade is allowed only with rules, not a free-for-all",
+                            "There are no trade rules of any kind",
+                            "They are banned from every zoo forever",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says American alligators are listed on CITES Appendix II. That means international trade in the animals and their products is regulated — rules, not a total ban.",
                     },
                 ],
             },
