@@ -1892,14 +1892,14 @@ PUSH_FURTHER_CUTTLEFISH = (
     "Flamboyant cuttlefish can hold a poison in muscle. Why is that different from injected venom?",
 )
 TALK_ABOUT_EEL = (
-    "Freshwater eels grow in rivers, then swim to the sea to spawn. How is that river-to-sea trip different from a salmon’s?",
-    "European and American freshwater eels are said to spawn in the Sargasso Sea. Why might that spawning map stay soft?",
-    "Some freshwater eels carry CR or EN snapshots, while many marine kinds do not. Why might status differ by kind?",
+    "Freshwater eels grow in rivers, then swim to the sea to spawn. How is that trip unlike a salmon’s?",
+    "European and American freshwater eels may spawn in the Sargasso Sea. Why keep that map soft?",
+    "Some freshwater eels look CR or EN, while many marine kinds do not. Why might status differ?",
 )
 PUSH_FURTHER_EEL = (
-    "Elvers may climb weirs, dams, and waterfalls. Why might a dam still block a young eel from going upstream?",
-    "Catadromy means grow in fresh water, spawn in the sea. Anadromy is the other way. Why might both trips matter?",
-    "European eels can look CR while a short-finned cousin looks NT. Why isn’t there one letter for all eels?",
+    "Elvers may climb weirs, dams, and waterfalls. Why might a dam still block a young eel?",
+    "Catadromy is grow in fresh water, spawn at sea. Anadromy is the other way. Why both trips?",
+    "European eels can look CR while a short-finned cousin looks NT. Why no one letter for all eels?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
