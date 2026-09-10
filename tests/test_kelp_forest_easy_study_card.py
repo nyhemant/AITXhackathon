@@ -186,6 +186,7 @@ class KelpForestEasyStudyCardTests(unittest.TestCase):
                 "kelp-forest",
                 "manta-ray",
                 "octopus",
+                "sea-turtle",
             ),
         )
         self.assertEqual(shipped_levels_for("kelp-forest"), ("easy", "hard", "zoologist"))

@@ -192,6 +192,7 @@ class FreshwaterFishEasyStudyCardTests(unittest.TestCase):
                 "kelp-forest",
                 "manta-ray",
                 "octopus",
+                "sea-turtle",
             ),
         )
         self.assertEqual(shipped_levels_for("freshwater-fish"), ("easy", "hard", "zoologist"))

@@ -151,6 +151,7 @@ class ElephantEasyStudyCardTests(unittest.TestCase):
                 "kelp-forest",
                 "manta-ray",
                 "octopus",
+                "sea-turtle",
             ),
         )
         self.assertEqual(shipped_levels_for("african-elephant"), ("easy", "hard", "zoologist"))

@@ -173,6 +173,7 @@ class AmericanAlligatorEasyStudyCardTests(unittest.TestCase):
                 "kelp-forest",
                 "manta-ray",
                 "octopus",
+                "sea-turtle",
             ),
         )
         self.assertEqual(shipped_levels_for("american-alligator"), ("easy", "hard", "zoologist"))
