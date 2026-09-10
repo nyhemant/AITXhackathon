@@ -1286,6 +1286,35 @@ the whole group (soft). Soften contested numbers.
 Treat IUCN letters as snapshots. Keep kid-friendly.
 Do not redo JR or PR themes. Do not invent photos.
 
+Facts for eel Junior Ranger (easy) are
+Wikipedia-backed: https://en.wikipedia.org/wiki/Eel
+(Eel / Anguilliformes group pages — JR stays
+kid-simple “eel” as a group). Long, snake-shaped
+ray-finned fish. True eels belong to order
+Anguilliformes. Most kinds live in the ocean.
+Babies start as flat, see-through larvae. Can
+swim forward and backward. Stretchy, ribbon-like
+body with an almost continuous fin along the back
+and belly. No pelvic fins; many also lack pectoral
+fins. Swim by sending waves down the body — reverse
+the wave to go backward. Morays, congers, garden
+eels, freshwater eels — about a thousand species
+(soften count). Most are marine; a few (genus
+Anguilla) spend years in rivers then return to
+the sea. First stage is a flat, transparent “leaf”
+larva drifting in the open ocean. Larvae change
+into clear glass eels, then little elvers as they
+grow. Many are night-active and tuck into sand,
+mud, or rock holes. Soft care: healthy coasts and
+open river paths help young eels reach growing
+places (no status letter). Myth: electric “eels”
+aren’t true eels — they’re South American knifefish,
+not Anguilliformes. Reserve denser Anguilliformes
+taxonomy, Sargasso/catadromy, and status-by-kind
+(CR/EN Anguilla) for later tiers. Soften contested
+numbers. Keep kid-friendly. Do not invent photos.
+Park Ranger and Zoologist are reserved.
+
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
 zoologist. Visible copy uses LEVEL_DISPLAY_NAMES only — no age badges,
@@ -1342,6 +1371,7 @@ WIKI_ATLANTIC_PUFFIN = "https://en.wikipedia.org/wiki/Atlantic_puffin"
 WIKI_CLOWNFISH = "https://en.wikipedia.org/wiki/Clownfish"
 WIKI_CRAB = "https://en.wikipedia.org/wiki/Crab"
 WIKI_CUTTLEFISH = "https://en.wikipedia.org/wiki/Cuttlefish"
+WIKI_EEL = "https://en.wikipedia.org/wiki/Eel"
 
 LETTERS = ("A", "B", "C")
 STUDY_SLOTS = 10
@@ -1418,9 +1448,9 @@ LEVEL_DISPLAY_NAMES = {
 # ring-tailed lemur, ostrich, warthog, shark, and
 # Asian small-clawed otter, two-toed sloth, freshwater
 # fish, polar bear, sea otter, American alligator, and
-# American bison, elk, puffin, clownfish, and crab
-# ship Junior Ranger + Park Ranger + Zoologist.
-# Cuttlefish ships Junior Ranger + Park Ranger.
+# American bison, elk, puffin, clownfish, crab, and
+# cuttlefish ship Junior Ranger + Park Ranger + Zoologist.
+# Eel ships Junior Ranger only.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -1469,6 +1499,7 @@ STUDY_NEIGHBORS = {
     "clownfish": ("shark", "freshwater-fish"),
     "crab": ("shark", "clownfish"),
     "cuttlefish": ("crab", "clownfish"),
+    "eel": ("cuttlefish", "crab"),
 }
 
 STUDY_CARD_TITLES = {
@@ -1504,6 +1535,7 @@ STUDY_CARD_TITLES = {
     "clownfish": "Clownfish",
     "crab": "Crab",
     "cuttlefish": "Cuttlefish",
+    "eel": "Eel",
 }
 
 # Shared answers-side deepen (Claude sample). Not scored. Future animals reuse keys.
@@ -1826,6 +1858,16 @@ PUSH_FURTHER_CUTTLEFISH = (
     "Metasepia was folded into another genus. Why might a name vanish like that?",
     "Some males flash courtship on one side and look female on the other. Why both faces?",
     "Flamboyant cuttlefish can hold a poison in muscle. Why is that different from injected venom?",
+)
+TALK_ABOUT_EEL = (
+    "An eel’s body is long and ribbon-like. How could that shape help it wave through water?",
+    "Baby eels start as flat, see-through “leaf” larvae. Why might a leaf shape help them drift?",
+    "Electric “eels” aren’t true eels. What would you tell a friend about that mix-up?",
+)
+PUSH_FURTHER_EEL = (
+    "Eels can reverse the wave along their body. Why might swimming backward help?",
+    "Most eels live in the ocean; a few spend years in rivers. What’s different about those two homes?",
+    "Young eels need open river paths to reach growing places. Why might connecting rivers matter?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -15478,6 +15520,157 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia’s IUCN snapshot for Sepia officinalis is Least Concern (LC). Local overfishing and ocean acidification are flagged as watch items. That is not one group letter for all cuttlefish, and letters can change.",
+                    },
+                ],
+            },
+        },
+    },
+    "eel": {
+        "id": "eel",
+        "source": WIKI_EEL,
+        "source_note": "Facts from Wikipedia, Eel.",
+        "talk_about": list(TALK_ABOUT_EEL),
+        "push_further": list(PUSH_FURTHER_EEL),
+        "levels": {
+            "easy": {
+                # Teaching-first: same front as the quiz. Later tiers reserved.
+                "teach": [
+                    "Long, snake-shaped ray-finned fish",
+                    "True eels belong to order Anguilliformes",
+                    "Most kinds live in the ocean",
+                    "Babies start as flat, see-through larvae",
+                    "Can swim forward and backward",
+                ],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "long-body-soft",
+                        "title": "Long body",
+                        "stem": "What is special about an eel’s body?",
+                        "choices": [
+                            "A stretchy, ribbon-like body with an almost continuous fin along the back and belly",
+                            "A round shell like a turtle",
+                            "A pair of wings for flying",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says eels have long, snake-shaped bodies. The back and belly fins often join the tail, so one long fin runs almost the whole way.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "fin-setup-soft",
+                        "title": "Fin setup",
+                        "stem": "Which fins do true eels usually skip?",
+                        "choices": [
+                            "They grow huge feathers instead of fins",
+                            "No pelvic fins; many also lack pectoral fins",
+                            "They only have wheels, never fins",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says true eels have no pelvic fins, and many kinds also lack pectoral fins.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "wave-swim-soft",
+                        "title": "Wave swim",
+                        "stem": "How do eels usually swim?",
+                        "choices": [
+                            "They hop on their tails like kangaroos",
+                            "They only fly above the waves",
+                            "They send waves down the body — and can reverse the wave to go backward",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says eels swim by sending waves along the body. Reversing the wave lets them swim backward.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "many-kinds-soft",
+                        "title": "Many kinds",
+                        "stem": "How many kinds of true eels are there, if we keep the count soft?",
+                        "choices": [
+                            "Morays, congers, garden eels, freshwater eels — about a thousand species (soft)",
+                            "Only one eel in the whole ocean",
+                            "Exactly two eels, and no more",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia groups true eels as morays, congers, garden eels, freshwater eels, and more — on the order of about a thousand species. Exact counts stay soft.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "mostly-ocean-soft",
+                        "title": "Mostly ocean",
+                        "stem": "Where do most true eels live?",
+                        "choices": [
+                            "Only in desert sand dunes",
+                            "Most are marine; a few (genus Anguilla) spend years in rivers, then return to the sea",
+                            "Only in the icy sky",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says most eels are marine. A few freshwater eels in genus Anguilla spend years in rivers and later return to the sea.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "leptocephalus-soft",
+                        "title": "Leaf larva",
+                        "stem": "What is an eel’s first baby stage?",
+                        "choices": [
+                            "A furry cub that lives in a tree",
+                            "A shelled egg that never changes",
+                            "A flat, transparent “leaf” larva that drifts in the open ocean",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says eel larvae are called leptocephali — flat, transparent, leaf-shaped larvae that drift in the open ocean.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "glass-eel-soft",
+                        "title": "Glass eel",
+                        "stem": "What do eel larvae become as they grow?",
+                        "choices": [
+                            "Clear glass eels, then little elvers",
+                            "Fuzzy chicks with feathers",
+                            "Tiny crabs with hard shells",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says the leaf larvae change into clear glass eels, then into small elvers as they grow.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "hide-soft",
+                        "title": "Hide",
+                        "stem": "Where do many eels hide, and when are they active?",
+                        "choices": [
+                            "They only sunbathe on open beaches at noon",
+                            "Many are night-active and tuck into sand, mud, or rock holes",
+                            "They nest only in treetops far from water",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says many eels are night-active and hide in sand, mud, or rocky holes.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "soft-coast-river-care",
+                        "title": "Soft care",
+                        "stem": "How can people help young eels?",
+                        "choices": [
+                            "Block every river so eels cannot pass",
+                            "Pour trash into coasts and rivers",
+                            "Keep coasts healthy and river paths open so young eels can reach growing places",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia ties young eels to coasts and river journeys. Soft care is healthy coasts and open river paths — we do not lock one status letter.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "electric-not-eel-myth",
+                        "title": "Myth buster",
+                        "stem": "Are electric “eels” true eels?",
+                        "choices": [
+                            "No — they’re South American knifefish, not Anguilliformes",
+                            "Yes — electric eels are the same as moray eels",
+                            "Yes — electric eels are a kind of shark",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says electric eels are not true eels. They are South American knifefish, not members of order Anguilliformes.",
                     },
                 ],
             },
