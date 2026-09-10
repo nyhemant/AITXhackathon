@@ -165,6 +165,7 @@ class ElkEasyStudyCardTests(unittest.TestCase):
                 "elk",
                 "puffin",
                 "clownfish",
+                "crab",
             ),
         )
         self.assertEqual(shipped_levels_for("elk"), ("easy", "hard", "zoologist"))

@@ -1108,6 +1108,32 @@ resident fish (soft). Soften contested numbers. Treat
 IUCN / status letters as snapshots. Keep kid-friendly.
 Do not redo JR or PR themes. Do not invent photos.
 
+Facts for crab Junior Ranger (easy) are
+Wikipedia-backed: https://en.wikipedia.org/wiki/Crab
+(Decapoda / Brachyura pages as needed — JR stays
+kid-simple “crab” as a group). Hard-shelled animals
+with claws. Ten-legged crustaceans (decapods). Many
+walk sideways (“crabwise”). Live in oceans and
+shores — some in fresh water or on land. Must shed
+their shell to grow. Thick armored shell (exoskeleton)
+protects the body. Front legs often end in pincers
+for eating and defense. Many scuttle sideways into
+rock crevices. Love rocky cracks, sand, and tide
+pools. Shed the old shell so a bigger soft one can
+harden. Tiny pea crabs to giant spider crabs — lots
+of shapes and sizes (soften extremes). Most marine;
+some live in rivers or even on land. Many are
+omnivores — algae, scraps, small animals (soft).
+Soft care: keep shores and reefs healthy so crabs
+have places to hide and grow (no status letter).
+Myth: horseshoe “crabs” aren’t crabs — they’re a
+different kind of animal, closer to spiders than to
+true crabs. Reserve denser Brachyura / Anomura
+taxonomy, carcinisation, and status-by-kind for
+later. Soften contested numbers. Keep kid-friendly.
+Park Ranger and Zoologist are reserved. Do not
+invent photos.
+
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
 zoologist. Visible copy uses LEVEL_DISPLAY_NAMES only — no age badges,
@@ -1162,6 +1188,7 @@ WIKI_AMERICAN_BISON = "https://en.wikipedia.org/wiki/American_bison"
 WIKI_ELK = "https://en.wikipedia.org/wiki/Elk"
 WIKI_ATLANTIC_PUFFIN = "https://en.wikipedia.org/wiki/Atlantic_puffin"
 WIKI_CLOWNFISH = "https://en.wikipedia.org/wiki/Clownfish"
+WIKI_CRAB = "https://en.wikipedia.org/wiki/Crab"
 
 LETTERS = ("A", "B", "C")
 STUDY_SLOTS = 10
@@ -1239,7 +1266,8 @@ LEVEL_DISPLAY_NAMES = {
 # Asian small-clawed otter, two-toed sloth, freshwater
 # fish, polar bear, sea otter, American alligator, and
 # American bison, elk, puffin, and clownfish ship
-# Junior Ranger + Park Ranger + Zoologist.
+# Junior Ranger + Park Ranger + Zoologist. Crab ships
+# Junior Ranger only.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -1286,6 +1314,7 @@ STUDY_NEIGHBORS = {
     "elk": ("american-bison", "zebra"),
     "puffin": ("african-penguin", "polar-bear"),
     "clownfish": ("shark", "freshwater-fish"),
+    "crab": ("shark", "clownfish"),
 }
 
 STUDY_CARD_TITLES = {
@@ -1319,6 +1348,7 @@ STUDY_CARD_TITLES = {
     "elk": "Elk",
     "puffin": "Puffin",
     "clownfish": "Clownfish",
+    "crab": "Crab",
 }
 
 # Shared answers-side deepen (Claude sample). Not scored. Future animals reuse keys.
@@ -1621,6 +1651,16 @@ PUSH_FURTHER_CLOWNFISH = (
     "Some clownfish use many host anemones; others stick to one. Why might specialist vs generalist matter?",
     "Clicks, pops, and chirps can help keep rank. How might sound work during a chase?",
     "Babies drift as ocean larvae, then must find an anemone. Why is that settlement a puzzle?",
+)
+TALK_ABOUT_CRAB = (
+    "Crabs have a hard shell and claws. Why might those help at the shore?",
+    "Many crabs walk sideways. Why might that be handy among rocks?",
+    "A crab must shed its shell to grow. What would you watch for after a molt?",
+)
+PUSH_FURTHER_CRAB = (
+    "After a molt the new shell is soft. Why might a crab hide until it hardens?",
+    "Hermit crabs borrow empty shells. Why might a used shell still be useful?",
+    "Shores and reefs give crabs cracks to hide in. Why do those homes matter?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -14403,6 +14443,157 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia describes more than shelter. Clownfish may fan, clean, and chase attackers. Some studies suggest host anemones grow better when resident fish stay. That extra benefit stays soft evidence.",
+                    },
+                ],
+            },
+        },
+    },
+    "crab": {
+        "id": "crab",
+        "source": WIKI_CRAB,
+        "source_note": "Facts from Wikipedia, Crab.",
+        "talk_about": list(TALK_ABOUT_CRAB),
+        "push_further": list(PUSH_FURTHER_CRAB),
+        "levels": {
+            "easy": {
+                # Teaching-first: same front as the quiz. Hard later may hide these.
+                "teach": [
+                    "Hard-shelled animals with claws",
+                    "Ten-legged crustaceans (decapods)",
+                    "Many walk sideways (“crabwise”)",
+                    "Live in oceans, shores — some in fresh water or on land",
+                    "Must shed their shell to grow",
+                ],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "hard-shell-soft",
+                        "title": "Hard shell",
+                        "stem": "What covers a crab’s body?",
+                        "choices": [
+                            "A thick armored shell (exoskeleton) that protects the body",
+                            "A coat of feathers like a bird",
+                            "Only a thin layer of fur",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says crabs have a heavily armoured shell — a thick exoskeleton that covers and protects the body.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "claws-soft",
+                        "title": "Claws",
+                        "stem": "What do a crab’s front legs often end in?",
+                        "choices": [
+                            "Soft flower petals",
+                            "Pincers (claws) they use for eating and defense",
+                            "Wings for flying",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says true crabs often have claws. The front legs often end in pincers used for eating and defense.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "sideways-soft",
+                        "title": "Sideways",
+                        "stem": "How do many crabs move?",
+                        "choices": [
+                            "They only hop like kangaroos",
+                            "They only fly over the waves",
+                            "Many scuttle sideways into rock crevices",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says many crabs can run swiftly sideways (“crabwise”), and they often hide in rocky crevices. Some walk forward, so we say many.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "hide-soft",
+                        "title": "Hide",
+                        "stem": "Where do many crabs like to hide?",
+                        "choices": [
+                            "Rocky cracks, sand, and tide pools",
+                            "Only in treetops far from water",
+                            "Only in desert sand dunes",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says crabs have a habit of hiding in rocky crevices. Many also use sand and shore tide pools as hideouts.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "molt-soft",
+                        "title": "Molt",
+                        "stem": "How does a crab grow bigger?",
+                        "choices": [
+                            "They inflate like balloons and never change their shell",
+                            "They shed the old shell so a bigger soft one can harden",
+                            "They grow a second shell on top and keep both forever",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia’s moulting notes say crustaceans shed the old exoskeleton so they can grow. The new shell starts soft and then hardens.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "many-kinds-soft",
+                        "title": "Many kinds",
+                        "stem": "Do all crabs look the same size and shape?",
+                        "choices": [
+                            "Every crab is exactly the same size",
+                            "There are only two crabs in the whole ocean",
+                            "From tiny pea crabs to giant spider crabs — lots of shapes and sizes",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says crabs vary from tiny pea crabs to giant spider crabs, with many shapes and sizes. Exact record sizes stay soft.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "ocean-to-land-soft",
+                        "title": "Ocean to land",
+                        "stem": "Where can crabs live?",
+                        "choices": [
+                            "Most live in the ocean; some live in rivers or even on land",
+                            "They only live in the icy sky",
+                            "They never leave a single aquarium tank",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says many crabs are marine, and a substantial number live in fresh water or other non-marine homes. Some even live on land.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "eat-mix-soft",
+                        "title": "Eat mix",
+                        "stem": "What do many crabs eat?",
+                        "choices": [
+                            "Only clouds and rain",
+                            "Many are omnivores — algae, scraps, and small animals",
+                            "Only metal and rocks",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says many crabs are free-living marine omnivores, eating a mix of algae, scraps, and small animals. Some kinds specialize, so we say many.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "soft-shore-reef-care",
+                        "title": "Soft care",
+                        "stem": "How can people help crabs?",
+                        "choices": [
+                            "Take every rock and reef home",
+                            "Pour trash on the shore so crabs can hide",
+                            "Keep shores and reefs healthy so crabs have places to hide and grow",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia ties crabs to rocky crevices, shores, and reefs. Soft care is keeping those hide-and-grow homes healthy — we do not lock one status letter.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "horseshoe-not-crab-myth",
+                        "title": "Myth buster",
+                        "stem": "Are horseshoe crabs true crabs?",
+                        "choices": [
+                            "No — horseshoe “crabs” are a different kind of animal, closer to spiders than to true crabs",
+                            "Yes — horseshoe crabs are the same as true crabs",
+                            "Yes — horseshoe crabs are a kind of fish",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says horseshoe crabs are not true crabs. They belong with a different group of animals, closer to spiders than to true crabs.",
                     },
                 ],
             },
