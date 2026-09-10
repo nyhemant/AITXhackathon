@@ -844,6 +844,28 @@ contested numbers. Treat IUCN letters as snapshots. Keep
 kid-friendly. Do not redo JR or PR themes. Do not invent
 photos.
 
+Facts for american-bison Junior Ranger (easy) are
+Wikipedia-backed:
+https://en.wikipedia.org/wiki/American_bison
+This is the first study deck for this animal. JR stays
+kid-simple “American bison.” Big grassland grazers of
+North America — open grasslands, plains, and river
+valleys. Tall shoulder hump plus a shaggy coat. Thick
+dark winter coat; lighter summer coat. Both males and
+females have short curved horns used for defense and
+herd status. Mostly grasses and sedges; chew cud like
+cattle cousins. Live in herds on the prairie — moms and
+calves in groups; older bulls often apart except
+breeding season. New calves start lighter / reddish-brown.
+Roll in dust or mud wallows (bug relief + play soft).
+Soft care: give wild bison space; keep prairie habitat
+healthy (no NT / recovery / slaughter dump on JR). Myth:
+often nicknamed “buffalo,” but they are bison — true
+buffalo live in Africa and Asia. Park Ranger and
+Zoologist are reserved for later: plains vs wood bison
+split, denser physiology, status/recovery. Do not invent
+photos.
+
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
 zoologist. Visible copy uses LEVEL_DISPLAY_NAMES only — no age badges,
@@ -894,6 +916,7 @@ WIKI_FRESHWATER_FISH = "https://en.wikipedia.org/wiki/Freshwater_fish"
 WIKI_POLAR_BEAR = "https://en.wikipedia.org/wiki/Polar_bear"
 WIKI_SEA_OTTER = "https://en.wikipedia.org/wiki/Sea_otter"
 WIKI_AMERICAN_ALLIGATOR = "https://en.wikipedia.org/wiki/American_alligator"
+WIKI_AMERICAN_BISON = "https://en.wikipedia.org/wiki/American_bison"
 
 LETTERS = ("A", "B", "C")
 STUDY_SLOTS = 10
@@ -969,9 +992,10 @@ LEVEL_DISPLAY_NAMES = {
 # koala, chimpanzee, orangutan, giant panda, and
 # ring-tailed lemur, ostrich, warthog, shark, and
 # Asian small-clawed otter, two-toed sloth, freshwater
-# fish, polar bear, and sea otter ship Junior Ranger +
-# Park Ranger + Zoologist. American alligator ships
-# Junior Ranger + Park Ranger (no Zoologist yet).
+# fish, polar bear, sea otter, and American alligator
+# ship Junior Ranger + Park Ranger + Zoologist.
+# American bison ships Junior Ranger only (no Park
+# Ranger or Zoologist yet).
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -1014,6 +1038,7 @@ STUDY_NEIGHBORS = {
     "polar-bear": ("african-penguin", "asian-small-clawed-otter"),
     "sea-otter": ("asian-small-clawed-otter", "shark"),
     "american-alligator": ("freshwater-fish", "galapagos-tortoise"),
+    "american-bison": ("zebra", "warthog"),
 }
 
 STUDY_CARD_TITLES = {
@@ -1043,6 +1068,7 @@ STUDY_CARD_TITLES = {
     "polar-bear": "Polar bear",
     "sea-otter": "Sea otter",
     "american-alligator": "American alligator",
+    "american-bison": "American bison",
 }
 
 # Shared answers-side deepen (Claude sample). Not scored. Future animals reuse keys.
@@ -1305,6 +1331,16 @@ PUSH_FURTHER_AMERICAN_ALLIGATOR = (
     "The Chinese alligator is a smaller sister species. How else do the two living alligators differ?",
     "Mid-range nest warmth tends to make males. Why might cooler or hotter nests make females?",
     "Some alligators balance sticks on their heads. Why do scientists still debate if that is a lure?",
+)
+TALK_ABOUT_AMERICAN_BISON = (
+    "Bison have a tall shoulder hump and a shaggy coat. What job might those do?",
+    "Bison live in herds on the prairie. Why might staying together help?",
+    "People often say “buffalo.” Why is bison the real name?",
+)
+PUSH_FURTHER_AMERICAN_BISON = (
+    "Bison roll in dust or mud wallows. Why might that help with bugs?",
+    "Bison can look slow, then run fast. What would surprise you?",
+    "Wild bison need space. How can you watch a herd without getting close?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -12361,6 +12397,157 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia reports fruit in alligator diets — grapes, elderberries, citrus, and more — from watching and from stomach contents. They may spread seeds as they move. That plant snack is unexpected for an apex predator. We keep amounts soft.",
+                    },
+                ],
+            },
+        },
+    },
+    "american-bison": {
+        "id": "american-bison",
+        "source": WIKI_AMERICAN_BISON,
+        "source_note": "Facts from Wikipedia, American bison.",
+        "talk_about": list(TALK_ABOUT_AMERICAN_BISON),
+        "push_further": list(PUSH_FURTHER_AMERICAN_BISON),
+        "levels": {
+            "easy": {
+                # Teaching-first: same front as the quiz. Hard later may hide these.
+                "teach": [
+                    "Big grassland grazers of North America",
+                    "Tall shoulder hump + shaggy coat",
+                    "Both males and females have horns",
+                    "Live in herds on the prairie",
+                    "Often nicknamed “buffalo,” but they’re bison",
+                ],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "prairie-home-soft",
+                        "title": "Prairie home",
+                        "stem": "Where do American bison live in the wild?",
+                        "choices": [
+                            "Open grasslands, plains, and river valleys of North America",
+                            "Only on Arctic sea ice",
+                            "Only in tropical rainforests",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says American bison live in river valleys and on prairies and plains. Typical habitat is open or semiopen grassland.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "shoulder-hump-soft",
+                        "title": "Shoulder hump",
+                        "stem": "What makes the front of an American bison look so big?",
+                        "choices": [
+                            "A long giraffe-style neck",
+                            "A massive front end with a tall shoulder hump",
+                            "Feathered wings on the shoulders",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia describes massive heads and forequarters. The tall shoulder hump is the bison’s famous front-end shape.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "coat-change-soft",
+                        "title": "Coat change",
+                        "stem": "How does an American bison’s coat change with the seasons?",
+                        "choices": [
+                            "They grow bright green summer feathers",
+                            "They stay the same short coat all year",
+                            "A thick dark winter coat, then a lighter summer coat",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says a bison has a shaggy, long, dark-brown winter coat and a lighter-weight, lighter-brown summer coat.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "horns-soft",
+                        "title": "Horns",
+                        "stem": "Who has horns, and what are they for?",
+                        "choices": [
+                            "Both males and females have short curved horns for defense and herd status",
+                            "Only baby calves grow horns",
+                            "Bison never grow horns",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says both sexes have short, curved horns. They use them for defense and for status inside the herd.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "graze-cud-soft",
+                        "title": "Graze and cud",
+                        "stem": "What do American bison mostly eat?",
+                        "choices": [
+                            "Only fish from rivers",
+                            "Mostly grasses and sedges — they graze and chew cud like cattle cousins",
+                            "Only bamboo leaves",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says bison are herbivores that graze on the grasses and sedges of the North American prairies. Their day includes grazing, resting, and cud chewing.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "herd-life-soft",
+                        "title": "Herd life",
+                        "stem": "How do bison herds usually work?",
+                        "choices": [
+                            "Every bison lives alone in a cave",
+                            "Only bulls stay with calves all year",
+                            "Moms and calves live in groups; older bulls often stay apart except in breeding season",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says female bison live in maternal herds with their young. Older males often live apart and usually join females in breeding season.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "reddish-calves-soft",
+                        "title": "Reddish calves",
+                        "stem": "What color are new bison calves?",
+                        "choices": [
+                            "They often start lighter / reddish-brown",
+                            "They hatch bright blue",
+                            "They are born with long white polar-bear fur",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says a calf is reddish-brown, and for the first two months calves are lighter in color than grown bison.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "wallow-soft",
+                        "title": "Wallow",
+                        "stem": "Why do bison roll in dust or mud wallows?",
+                        "choices": [
+                            "They are practicing swimming lessons",
+                            "Rolling in a wallow can help with bugs and can be a kind of play",
+                            "They are looking for buried treasure",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says bison roll in shallow dust or mud wallows. Ideas include relief from biting insects and play. We keep that soft.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "soft-prairie-care",
+                        "title": "Soft prairie care",
+                        "stem": "How should people care around wild bison and their home?",
+                        "choices": [
+                            "Walk up and pet every wild bison",
+                            "Feed them snacks from the car",
+                            "Give wild bison space and keep prairie habitat healthy",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says bison can look slow but can run fast, and close encounters can be dangerous. Soft care is space plus a healthy prairie home — no status letter.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "not-a-true-buffalo-myth",
+                        "title": "Myth buster",
+                        "stem": "Are American bison true buffalo?",
+                        "choices": [
+                            "No — “buffalo” is a nickname; true buffalo live in Africa and Asia",
+                            "Yes — they are the same animal as African buffalo",
+                            "Bison is just another word for cow",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says they are commonly called American buffalo, but that should not be confused with true buffalo. True buffalo live in Africa and Asia.",
                     },
                 ],
             },

@@ -217,9 +217,9 @@ OUTING_TALK_ANIMAL = (
 
 # Observation talk packs for cards that are not on a study deck yet.
 # Study decks live in scripts/study_cards.py. Freshwater fish,
-# polar bear, and sea otter ship Junior Ranger + Park Ranger +
-# Zoologist. American alligator ships Junior Ranger + Park Ranger
-# (no Zoologist yet).
+# polar bear, sea otter, and American alligator ship Junior
+# Ranger + Park Ranger + Zoologist. American bison ships
+# Junior Ranger only (no Park Ranger or Zoologist yet).
 CARD_TALK_OVERRIDE: dict[str, tuple[dict, ...]] = {}
 
 # Optional More talk on a card. Unused while lion ships the Easy study deck.
