@@ -11560,14 +11560,14 @@
     "source": "https://en.wikipedia.org/wiki/Elk",
     "source_note": "Facts from Wikipedia, Elk.",
     "talk_about": [
-      "Bulls grow antlers and bugle in the fall. What might those be for?",
-      "Cows and calves often live in herds. Why might staying together help?",
-      "People in Europe often say “elk” for moose. Why is North American elk also called wapiti?"
+      "Elk are also called wapiti. What might that Shawnee and Cree-related name describe?",
+      "Elk were once lumped with European red deer. Why treat them as their own species now?",
+      "Growing antlers wear a soft velvet cover. Why might that living skin be there?"
     ],
     "push_further": [
-      "Bulls shed their antlers and grow new ones. Why might they drop the old set?",
-      "New calves start with spots. How could spots help a hidden baby?",
-      "Wild elk need space. How can you watch a herd without getting close?"
+      "North America still has a few living elk kinds. How might a soft map of them look?",
+      "Velvet is living skin over growing bone. Why might that cover matter as antlers grow?",
+      "Some local elk kinds needed extra help to come back. What might that story include?"
     ],
     "levels": {
       "easy": {
@@ -11708,6 +11708,141 @@
             ],
             "correct": "A",
             "why": "Wikipedia says the word “elk” first meant the European moose. North American colonists used “elk” for this deer, also called wapiti."
+          }
+        ]
+      },
+      "hard": {
+        "teach": [],
+        "questions": [
+          {
+            "slot": 1,
+            "id": "cervus-canadensis-soft",
+            "title": "Scientific name",
+            "stem": "What is the elk’s scientific name, and what does “wapiti” mean?",
+            "choices": [
+              "Cervus canadensis — “wapiti” comes from a Shawnee and Cree-related word for “white rump”",
+              "Only Panthera leo — “wapiti” means “blue bird”",
+              "Only a fish name — “wapiti” means “ocean wave”"
+            ],
+            "correct": "A",
+            "why": "Wikipedia names the elk Cervus canadensis, also called wapiti. The name comes from a Shawnee and Cree word meaning “white rump.”"
+          },
+          {
+            "slot": 2,
+            "id": "not-red-deer-soft",
+            "title": "Not red deer",
+            "stem": "How do scientists now treat elk compared with European red deer?",
+            "choices": [
+              "They are the same species as a house cat",
+              "They were once lumped with European red deer (C. elaphus); genetics now treat elk/wapiti as their own species (soft)",
+              "They are a kind of penguin"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says elk were long treated as a subspecies of European red deer (Cervus elaphus). Later genetic studies treat elk/wapiti as their own species, Cervus canadensis. We keep that split soft."
+          },
+          {
+            "slot": 3,
+            "id": "na-subspecies-soft",
+            "title": "North American kinds",
+            "stem": "Which living North American elk kinds does Wikipedia still name?",
+            "choices": [
+              "Only Arctic sea-ice elk",
+              "Only one kind that lives in the deep ocean",
+              "Living kinds include Rocky Mountain, Roosevelt, tule, and Manitoban (exact splits stay soft)"
+            ],
+            "correct": "C",
+            "why": "Wikipedia names four living North American kinds: Rocky Mountain, Roosevelt, tule, and Manitoban. Some scientists debate how finely those kinds should be split, so we keep the exact map soft."
+          },
+          {
+            "slot": 4,
+            "id": "velvet-growth-soft",
+            "title": "Velvet growth",
+            "stem": "What covers a bull’s antlers while they are still growing?",
+            "choices": [
+              "Soft “velvet” skin — growing antlers are among the fastest-growing bones in mammals (daily length stays soft)",
+              "A metal helmet from a hardware store",
+              "Only bird feathers glued on"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says growing antlers are covered in a soft, blood-rich skin called velvet. Antlers are bone and can grow very fast. We keep the exact daily length soft."
+          },
+          {
+            "slot": 5,
+            "id": "testosterone-shed-soft",
+            "title": "Hormone cycle",
+            "stem": "What helps steer the antler grow-and-shed cycle?",
+            "choices": [
+              "A kitchen timer with no body chemistry",
+              "A hormone called testosterone — it rises and drops through the year",
+              "Only the color of the moon, with no body hormones"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says antler formation and shedding are testosterone-driven. When that hormone drops in late winter and early spring, the antlers are shed. When it rises later, velvet comes off and the antlers harden for the rut."
+          },
+          {
+            "slot": 6,
+            "id": "rut-deepen-soft",
+            "title": "Fall rut",
+            "stem": "What happens in the fall elk rut besides a bugle?",
+            "choices": [
+              "Every elk hibernates under the snow",
+              "Bulls only take a school trip to the city",
+              "Bulls bugle, spar with antlers, and tend harems of cows"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says the autumn rut is breeding season. Bulls bugle, wrestle with their antlers if neither backs down, and tend a group of cows called a harem. We keep dates and counts soft."
+          },
+          {
+            "slot": 7,
+            "id": "sex-split-herds-soft",
+            "title": "Split herds",
+            "stem": "Outside the fall rut, who usually stays with whom?",
+            "choices": [
+              "Cows and calves often keep to their own groups, and bulls often keep to theirs",
+              "Every elk lives alone in a cave all year",
+              "Only bulls stay with calves all year, and cows travel alone"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says that for most of the year, adult males and females live in separate herds. Female groups are larger; bulls form small groups or travel alone, then meet again in breeding season."
+          },
+          {
+            "slot": 8,
+            "id": "lc-snapshot-soft",
+            "title": "Status snapshot",
+            "stem": "How should we read the IUCN letter for elk?",
+            "choices": [
+              "The letter means elk are extinct everywhere",
+              "Least Concern is a snapshot for the whole species — some local kinds, like tule elk, had tighter recoveries",
+              "The letter means elk were never in any local trouble"
+            ],
+            "correct": "B",
+            "why": "Wikipedia lists elk as Least Concern. Treat that letter as a snapshot, not a forever score. Some local kinds, like tule elk, needed extra help to come back."
+          },
+          {
+            "slot": 9,
+            "id": "extinct-eastern-soft",
+            "title": "Gone kinds",
+            "stem": "Which North American elk kinds are gone from the wild?",
+            "choices": [
+              "Rocky Mountain elk vanished last week",
+              "Roosevelt elk live only on the moon",
+              "Eastern elk and Merriam’s elk are gone from the wild (soft history)"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says six North American kinds were known in historical times. Eastern elk and Merriam’s elk have been extinct for at least a century. Later moves brought other elk into some eastern places. We keep that history soft."
+          },
+          {
+            "slot": 10,
+            "id": "second-to-moose-soft",
+            "title": "Deer family",
+            "stem": "Where do elk sit in the deer family, Cervidae?",
+            "choices": [
+              "They are the largest living deer after moose (soft)",
+              "They are the smallest mouse in the family",
+              "They are not deer at all — they are cats"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says the elk is the second-largest living species in the deer family, Cervidae, after the moose. We keep that size rank soft."
           }
         ]
       }
