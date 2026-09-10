@@ -1219,13 +1219,35 @@ exacts). Soft care: keep shallow coastal waters
 healthy so cuttlefish have places to hunt and lay
 eggs (no status letter). Myth: not a fish — they’re
 molluscs (soft bodies + shell inside), closer to
-octopus than to tuna. Reserve denser Sepiidae
-taxonomy (2023 genera), chromatophore layers,
-polarization/color-blind paradox, hemocyanin/3
-hearts, status, and Americas-absence for later
-tiers. Park Ranger and Zoologist are reserved.
-Soften contested numbers. Keep kid-friendly. Do not
-invent photos.
+octopus than to tuna. Soften contested numbers.
+Keep kid-friendly. Do not invent photos.
+
+Facts for cuttlefish Park Ranger (hard) are
+Wikipedia-backed from the same Cuttlefish page.
+Answer-light (teach: []). Family Sepiidae, order
+Sepiida; more than 100 living species (soft —
+taxonomy is being reshuffled). Cuttlebone is a
+chambered aragonite shell; squid keep a thin
+gladius instead. Color change uses stacked skin
+cells: pigment chromatophores over reflective
+iridophores over white leucophores. Mostly
+color-blind, yet they match backgrounds; they
+sense polarized light for contrast (soft). Two
+branchial hearts push blood to the gills; one
+systemic heart serves the body. Blue-green blood
+uses copper-based hemocyanin, not iron hemoglobin.
+Present around Africa, Europe, Asia, Australia —
+totally absent from the Americas (biogeography
+soft). Mostly tropical/temperate shallow seas;
+some species to roughly hundreds of meters (soften
+depth). Common cuttlefish (Sepia officinalis) is
+an IUCN Least Concern snapshot; fisheries pressure
+can be local while the range is wide (soft).
+Acidifying seas are cited as a possible future
+stress on shells/eggs — still under study (soft).
+Soften contested numbers. Keep kid-friendly. Do
+not redo JR. Zoologist is reserved. Do not invent
+photos.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
@@ -1361,7 +1383,7 @@ LEVEL_DISPLAY_NAMES = {
 # fish, polar bear, sea otter, American alligator, and
 # American bison, elk, puffin, clownfish, and crab
 # ship Junior Ranger + Park Ranger + Zoologist.
-# Cuttlefish ships Junior Ranger only.
+# Cuttlefish ships Junior Ranger + Park Ranger.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -1759,14 +1781,14 @@ PUSH_FURTHER_CRAB = (
     "Horseshoe crabs can carry VU or EN snapshots. Why is true-crab fishing still species-by-species?",
 )
 TALK_ABOUT_CUTTLEFISH = (
-    "A cuttlebone is a porous internal “bone.” How might gas and liquid help them float or sink?",
-    "Cuttlefish can shift color and pattern in about a second. When would that help?",
-    "Ink can make a dark cloud or a look-alike decoy. How might that help them escape?",
+    "A cuttlebone is a chambered shell. A squid keeps a thin gladius instead. What would you check?",
+    "Color change uses a sandwich of skin cells — pigment, shine, then white. Why stack them?",
+    "Cuttlefish are mostly color-blind, yet they match the scene. How might they still see contrast?",
 )
 PUSH_FURTHER_CUTTLEFISH = (
-    "Cuttlefish are molluscs, not fish. What would you check besides the name?",
-    "The cuttlebone lets them adjust gas and liquid. Why might that float stay a soft story?",
-    "Skin can change color very fast. Why might that happen so quickly (soft)?",
+    "Cuttlefish have three hearts. Why might two of them push blood only to the gills?",
+    "They skip American waters. Why might that Old World map stay a soft story?",
+    "A common kind can look okay on a snapshot, while local fishing still matters. Why both?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -14996,7 +15018,7 @@ STUDY_CARDS: dict[str, dict] = {
         "push_further": list(PUSH_FURTHER_CUTTLEFISH),
         "levels": {
             "easy": {
-                # Teaching-first: same front as the quiz. Later tiers reserved.
+                # Teaching-first: same front as the quiz. Hard later may hide these.
                 "teach": [
                     "Marine molluscs related to squid and octopus",
                     "Unique internal shell (cuttlebone) for buoyancy",
@@ -15134,6 +15156,148 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia says cuttlefish are marine molluscs, not fish. They have soft bodies and an internal shell, and they sit with squid and octopus, not with tuna.",
+                    },
+                ],
+            },
+            "hard": {
+                # Answer-light: Park Ranger has no Learn-first strip.
+                # Facts from Wikipedia, Cuttlefish. Soft taxonomy,
+                # cuttlebone vs gladius, chromatophore stack,
+                # color-blind paradox, three hearts, hemocyanin,
+                # Americas-absence, shallow range, LC snapshot,
+                # ocean acid. Soften contested numbers.
+                # Kid-friendly. Do not redo JR.
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "sepiidae-soft",
+                        "title": "Sepiidae",
+                        "stem": "What family and order do living cuttlefish sit in?",
+                        "choices": [
+                            "Family Sepiidae, order Sepiida — more than 100 living species (soft); taxonomy is being reshuffled",
+                            "They are a kind of fish in the tuna family",
+                            "They sit only with insects, far from any sea animal",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia places all cuttlefish in family Sepiidae (order Sepiida). Living species are often counted above 100, but names and counts are being reshuffled, so we keep that number soft.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "sepia-vs-squid-soft",
+                        "title": "Vs squid",
+                        "stem": "What internal shell sets cuttlefish apart from squid?",
+                        "choices": [
+                            "They have no shell at all, just like a jellyfish",
+                            "A chambered cuttlebone made of aragonite; squid keep a thin gladius instead",
+                            "A hard outer crab shell they molt each week",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says the cuttlebone is a chambered internal shell of aragonite. Squid have a thin pen (gladius) instead. That shell is a main way to tell the two groups apart.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "chromatophore-stack-soft",
+                        "title": "Skin stack",
+                        "stem": "How are the color-change cells stacked in cuttlefish skin?",
+                        "choices": [
+                            "They have only one layer of green paint and nothing else",
+                            "They wear a plastic raincoat that never changes color",
+                            "Pigment chromatophores sit over reflective iridophores over white leucophores",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia describes a stack: pigment chromatophores on top, reflective iridophores in the middle, and white leucophores below.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "polarization-paradox-soft",
+                        "title": "Polar paradox",
+                        "stem": "How can cuttlefish match backgrounds if they are mostly color-blind?",
+                        "choices": [
+                            "They sense polarized light for contrast, which can help them match a scene even without full color vision (soft)",
+                            "They copy every color with human-like rainbow eyes",
+                            "They never look at the background, so matching is luck",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia notes that cuttlefish are largely color-blind, yet they camouflage brilliantly. They can sense polarized light, which may help contrast. We keep that paradox soft.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "three-hearts-soft",
+                        "title": "Three hearts",
+                        "stem": "Why do cuttlefish have three hearts?",
+                        "choices": [
+                            "They have one heart for land and two leftover hearts that never pump",
+                            "Two branchial hearts push blood to the gills; one systemic heart serves the body",
+                            "They have three hearts only when they are babies, then they lose two",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says cephalopods like cuttlefish have two branchial hearts that send blood to the gills and one systemic heart that serves the rest of the body.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "hemocyanin-soft",
+                        "title": "Blue blood",
+                        "stem": "Why can cuttlefish blood look blue-green?",
+                        "choices": [
+                            "They drink blue paint every morning",
+                            "Their blood is iron hemoglobin, just like human blood",
+                            "It uses copper-based hemocyanin to carry oxygen, not iron hemoglobin",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says their blood uses hemocyanin, a copper protein, so it can look blue-green — not red iron hemoglobin.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "americas-absence-soft",
+                        "title": "No Americas",
+                        "stem": "Where are wild cuttlefish missing, if we keep the map soft?",
+                        "choices": [
+                            "They live around Africa, Europe, Asia, and Australia — and are totally absent from the Americas (soft)",
+                            "They live only in the Great Lakes and nowhere else",
+                            "They live on every continent, including the dry deserts",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia’s range is the Old World — coasts around Africa, Europe, Asia, and Australia. They are absent from the Americas. We keep that biogeography soft.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "shallow-range-soft",
+                        "title": "Shallow seas",
+                        "stem": "How deep do most cuttlefish live, if we keep the depth soft?",
+                        "choices": [
+                            "They only live in the sky above the clouds",
+                            "Mostly tropical and temperate shallow seas; some kinds reach roughly hundreds of meters (soft)",
+                            "They only live in the deepest ocean trenches and never come shallow",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia places most cuttlefish in tropical and temperate shallow seas. Some species go deeper, on the order of hundreds of meters. Exact depth records stay soft.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "common-lc-soft",
+                        "title": "Common LC",
+                        "stem": "What IUCN snapshot does the common cuttlefish (Sepia officinalis) carry?",
+                        "choices": [
+                            "Extinct everywhere, so the letter never changes",
+                            "Critically Endangered on every coast, with no wide range left",
+                            "Least Concern — fisheries pressure can be local, but the range is wide (soft snapshot)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia’s IUCN snapshot for Sepia officinalis is Least Concern. Local fishing can still matter even when the wide range looks okay. We keep that snapshot soft.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "ocean-acid-soft",
+                        "title": "Ocean acid",
+                        "stem": "Why might acidifying seas matter for cuttlefish later?",
+                        "choices": [
+                            "More acidic water is cited as a possible future stress on shells and eggs — still under study (soft)",
+                            "Acid seas make cuttlefish grow wings and leave the water",
+                            "Acid seas have no possible effect on any shell or egg",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia notes ocean acidification as a possible future stress on cuttlebone shells and eggs. The evidence is still under study, so we keep it soft.",
                     },
                 ],
             },
