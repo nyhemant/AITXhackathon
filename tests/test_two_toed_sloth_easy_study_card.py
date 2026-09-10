@@ -178,6 +178,7 @@ class TwoToedSlothEasyStudyCardTests(unittest.TestCase):
                 "cuttlefish",
                 "eel",
                 "jellyfish",
+                "kelp-forest",
             ),
         )
         self.assertEqual(shipped_levels_for("two-toed-sloth"), ("easy", "hard", "zoologist"))

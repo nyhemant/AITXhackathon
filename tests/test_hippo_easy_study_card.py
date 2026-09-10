@@ -178,6 +178,7 @@ class HippoEasyStudyCardTests(unittest.TestCase):
                 "cuttlefish",
                 "eel",
                 "jellyfish",
+                "kelp-forest",
             ),
         )
         self.assertEqual(shipped_levels_for("nile-hippo"), ("easy", "hard", "zoologist"))

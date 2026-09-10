@@ -188,6 +188,7 @@ class JellyfishEasyStudyCardTests(unittest.TestCase):
                 "cuttlefish",
                 "eel",
                 "jellyfish",
+                "kelp-forest",
             ),
         )
         self.assertEqual(shipped_levels_for("jellyfish"), ("easy", "hard", "zoologist"))

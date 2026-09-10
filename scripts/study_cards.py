@@ -1452,6 +1452,48 @@ Treat IUCN / status as snapshots. Keep
 kid-friendly. Do not invent photos.
 Do not redo JR or PR themes.
 
+Facts for kelp-forest Junior Ranger (easy) are
+Wikipedia-backed: https://en.wikipedia.org/wiki/Kelp_forest
+(Kelp forest habitat page — JR stays kid-simple
+“underwater forest”). Underwater “forests”
+made of giant seaweeds called kelp. Kelp is
+brown algae — not land trees or plants.
+Holdfasts grip rocks on the seafloor. Home
+and food for fish, otters, urchins, snails,
+and birds. Thrive in cool, nutrient-rich
+coastal water. Dense stands of tall kelp
+form layered habitats from a sunny surface
+canopy to a shaded seafloor. Kelp belongs
+to brown algae and uses sunlight to make
+food, but it isn’t a true land plant (no
+Laminariales dump). A root-like holdfast
+anchors to rock; it grips, it doesn’t drink
+nutrients like plant roots. A flexible stalk
+(stipe) holds up leaf-like blades that catch
+light. Many kinds have gas-filled bladders
+that help blades float toward sunlight.
+Common along temperate and polar shores
+where cool, nutrient-rich water rises
+(soften maps and tropical exceptions).
+Rockfish, snails, crabs, seals, otters, and
+seabirds use the forest for food or shelter.
+Sea otters eat urchins that chew kelp —
+when predators keep urchins in check,
+forests stay lush (soft; other helpers
+exist). Soft care: protect cool coasts and
+the animals that stop urchins from mowing
+the kelp down (no status letter). Myth: a
+kelp forest isn’t a forest of trees — it’s
+a forest of seaweed, even when giant kelp
+looks tree-tall. Reserve denser Laminariales
+taxonomy (Macrocystis / Nereocystis),
+pneumatocyst jargon, urchin-barren phase
+shifts, growth-rate or height stats, carbon
+numbers, and status letters for later tiers.
+Soften contested numbers. Keep kid-friendly.
+Do not invent photos.
+Park Ranger and Zoologist are reserved.
+
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
 zoologist. Visible copy uses LEVEL_DISPLAY_NAMES only — no age badges,
@@ -1510,6 +1552,7 @@ WIKI_CRAB = "https://en.wikipedia.org/wiki/Crab"
 WIKI_CUTTLEFISH = "https://en.wikipedia.org/wiki/Cuttlefish"
 WIKI_EEL = "https://en.wikipedia.org/wiki/Eel"
 WIKI_JELLYFISH = "https://en.wikipedia.org/wiki/Jellyfish"
+WIKI_KELP_FOREST = "https://en.wikipedia.org/wiki/Kelp_forest"
 
 LETTERS = ("A", "B", "C")
 STUDY_SLOTS = 10
@@ -1588,7 +1631,8 @@ LEVEL_DISPLAY_NAMES = {
 # fish, polar bear, sea otter, American alligator, and
 # American bison, elk, puffin, clownfish, crab,
 # cuttlefish, eel, and jellyfish ship Junior
-# Ranger + Park Ranger + Zoologist.
+# Ranger + Park Ranger + Zoologist. Kelp forest
+# ships Junior Ranger only.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -1639,6 +1683,7 @@ STUDY_NEIGHBORS = {
     "cuttlefish": ("crab", "clownfish"),
     "eel": ("cuttlefish", "crab"),
     "jellyfish": ("eel", "cuttlefish"),
+    "kelp-forest": ("jellyfish", "sea-otter"),
 }
 
 STUDY_CARD_TITLES = {
@@ -1676,6 +1721,7 @@ STUDY_CARD_TITLES = {
     "cuttlefish": "Cuttlefish",
     "eel": "Eel",
     "jellyfish": "Jellyfish",
+    "kelp-forest": "Kelp forest",
 }
 
 # Shared answers-side deepen (Claude sample). Not scored. Future animals reuse keys.
@@ -2018,6 +2064,16 @@ PUSH_FURTHER_JELLYFISH = (
     "Corals and anemones never swim as medusae. Why might Anthozoa have skipped that stage?",
     "Turritopsis can reverse from medusa to polyp in the lab. Why isn’t every jelly “immortal”?",
     "When fish crash, jellies can sit near the top of the food web. Why keep that “top predator” story soft?",
+)
+TALK_ABOUT_KELP_FOREST = (
+    "A holdfast grips rock like a hand, not a drinking root. How is that different from a tree?",
+    "A kelp forest has a sunny canopy and a shady floor. What might live in each layer?",
+    "Sea otters eat urchins that chew kelp. What happens when those helpers stay nearby?",
+)
+PUSH_FURTHER_KELP_FOREST = (
+    "Kelp likes cool, nutrient-rich water. Why might a warm, still bay be a harder home?",
+    "If too many urchins chew the kelp, what could the underwater forest look like?",
+    "Aquariums love tall kelp exhibits. Why might a living forest tank help people care?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -16543,6 +16599,157 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia does not assign one IUCN letter to “jellyfish” as a group. Invasive or bloom-forming kinds can surge, while some coastal systems lose balance. Track by species and sea — not one score. Letters and local stories can change.",
+                    },
+                ],
+            },
+        },
+    },
+    "kelp-forest": {
+        "id": "kelp-forest",
+        "source": WIKI_KELP_FOREST,
+        "source_note": "Facts from Wikipedia, Kelp forest.",
+        "talk_about": list(TALK_ABOUT_KELP_FOREST),
+        "push_further": list(PUSH_FURTHER_KELP_FOREST),
+        "levels": {
+            "easy": {
+                # Teaching-first: same front as the quiz. Later tiers reserved.
+                "teach": [
+                    "Underwater “forests” made of giant seaweeds called kelp",
+                    "Kelp is brown algae — not land trees or plants",
+                    "Holdfasts grip rocks on the seafloor",
+                    "Home and food for fish, otters, urchins, snails, and birds",
+                    "Thrive in cool, nutrient-rich coastal water",
+                ],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "forest-soft",
+                        "title": "Forest",
+                        "stem": "What is a kelp forest made of?",
+                        "choices": [
+                            "Dense stands of tall kelp form layered homes from a sunny surface canopy to a shaded seafloor",
+                            "A forest of oak and pine trees planted on the beach",
+                            "A pile of dry seaweed left only on the sand",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia describes kelp forests as underwater areas packed with kelp. Tall kelp makes layered habitats from a sunny canopy down to a shaded seafloor.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "not-trees-soft",
+                        "title": "Not trees",
+                        "stem": "Is kelp a land tree or plant?",
+                        "choices": [
+                            "Yes — kelp is the same as an oak tree",
+                            "No — kelp is brown algae that uses sunlight to make food, but it isn’t a true land plant",
+                            "Yes — kelp grows acorns and wood rings",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia places kelp with brown algae, not land trees. Kelp uses sunlight to make food, but it is not a true plant.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "holdfast-soft",
+                        "title": "Holdfast",
+                        "stem": "What does a kelp holdfast do?",
+                        "choices": [
+                            "It drinks water from the seafloor like a tree root",
+                            "It flies the kelp through the air",
+                            "A root-like holdfast grips rock so the kelp stays put — it does not drink nutrients like plant roots",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says the holdfast is a root-like mass that anchors kelp to the seafloor. Unlike true roots, it does not take in and send nutrients.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "stipe-blades-soft",
+                        "title": "Stipe and blades",
+                        "stem": "What are the stalk and leaf-like parts of kelp?",
+                        "choices": [
+                            "A flexible stalk (the stipe) holds up leaf-like blades that catch light",
+                            "A wooden trunk with apple-tree leaves",
+                            "A pair of bird wings for flying",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia names a stipe — a flexible stalk — and leaf-like blades (fronds) that catch light so the kelp can make food.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "floats-soft",
+                        "title": "Floats",
+                        "stem": "How do many kinds of kelp lift their blades toward the sun?",
+                        "choices": [
+                            "They grow jet engines on the seafloor",
+                            "Many kinds have gas-filled bladders that help the blades float toward sunlight",
+                            "They tie balloons from a birthday party",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says many kelp kinds have gas-filled bladders that help the blades float upright toward sunlight.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "cool-coasts-soft",
+                        "title": "Cool coasts",
+                        "stem": "Where do kelp forests usually thrive?",
+                        "choices": [
+                            "Only in hot desert dunes far from any sea",
+                            "Only in one bathtub, and nowhere else",
+                            "Along cool, nutrient-rich coasts — often where deeper water rises and feeds the kelp (soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia places kelp forests along temperate and polar coasts, often where cool, nutrient-rich water rises. Exact maps can shift, so we keep that range soft.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "wildlife-soft",
+                        "title": "Wildlife",
+                        "stem": "Who uses a kelp forest for food or shelter?",
+                        "choices": [
+                            "Rockfish, snails, crabs, seals, otters, and seabirds can use the forest for food or shelter",
+                            "Only camels that live in dry sand",
+                            "Only animals that never visit the sea",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia lists fish such as rockfish, snails and other invertebrates, seals, sea otters, and seabirds among the life that uses kelp forests.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "otter-urchin-soft",
+                        "title": "Otter and urchin",
+                        "stem": "How can sea otters help a kelp forest stay lush?",
+                        "choices": [
+                            "Otters plant oak trees on the seafloor",
+                            "Sea otters eat urchins that chew kelp — when predators keep urchins in check, forests stay lush (soft)",
+                            "Otters scare kelp away so urchins can eat it all",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia’s classic helper story: sea otters eat urchins that graze kelp. When predators keep urchins in check, forests can stay lush. Other helpers exist too, so we keep that story soft.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "soft-coast-urchin-care",
+                        "title": "Soft care",
+                        "stem": "How can people help kelp forests?",
+                        "choices": [
+                            "Dump trash on every cool coast",
+                            "Catch every otter and urchin and keep them in jars",
+                            "Protect cool coasts and the animals that stop urchins from mowing the kelp down (soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia ties kelp loss to pressures such as losing predators and stressing cool coasts. Soft care is protecting those shores and the animals that keep urchins from chewing the forest down — we do not lock one status letter.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "not-tree-forest-myth",
+                        "title": "Myth buster",
+                        "stem": "Is a kelp forest a forest of trees?",
+                        "choices": [
+                            "No — it’s a forest of seaweed, even when giant kelp looks tree-tall",
+                            "Yes — kelp is the same as pine and oak",
+                            "Yes — each kelp grows a wooden trunk with bark",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia treats kelp as marine brown algae, not land trees. Even giant kelp that looks tree-tall is still seaweed.",
                     },
                 ],
             },
