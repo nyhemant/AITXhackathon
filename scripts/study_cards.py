@@ -1748,6 +1748,49 @@ single IUCN letter for “octopus.” Do not
 redo JR or PR themes. Keep kid-friendly.
 Do not invent photos.
 
+Facts for sea-turtle Junior Ranger (easy) are
+Wikipedia-backed: https://en.wikipedia.org/wiki/Sea_turtle
+(superfamily Chelonioidea; seven living
+species). JR stays kid-simple “sea turtle”
+(a group card). Ocean reptiles with paddle
+flippers (not land-turtle feet). About seven
+kinds live in the world’s oceans (not the
+polar ice). Moms dig nests on sandy beaches
+and bury soft eggs. Babies hatch and crawl
+to the sea (often at night). They breathe
+air — they surface, even though they live
+in the ocean. Seven living kinds, named
+light: flatback, green, hawksbill,
+leatherback, loggerhead, Kemp’s ridley, and
+olive ridley (no taxonomy deep-dive). Front
+flippers paddle; back flippers help steer
+and dig the nest hole. Streamlined shell
+built for swimming — flatter and smoother
+than many land turtles. Females haul onto
+sand (usually at night), dig with hind
+flippers, bury eggs, then return to the
+sea. Soft-shelled eggs in a sand nest; mom
+does not stay to guard them. Hatchlings dig
+out together and race toward the brightest
+horizon — normally the ocean. Lungs; must
+surface to breathe (can stay under a long
+time when resting — soften exact hours).
+Found in warm and temperate seas worldwide;
+none live only on land. Many travel far
+between feeding waters and nesting beaches
+(soften exact miles). Myth: unlike many pet
+turtles, sea turtles cannot pull their head
+and flippers into the shell — the body is
+built for swimming, not hiding inside.
+Reserve denser Chelonioidea taxonomy, TSD,
+magnetoreception / natal-homing, salt
+glands, leatherback gigantothermy, and
+status-by-kind for later tiers. Soften
+contested sizes, counts, and maturity ages.
+Keep kid-friendly. Do not invent photos.
+Do not add Park Ranger or Zoologist on
+this card.
+
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
 zoologist. Visible copy uses LEVEL_DISPLAY_NAMES only — no age badges,
@@ -1809,6 +1852,7 @@ WIKI_JELLYFISH = "https://en.wikipedia.org/wiki/Jellyfish"
 WIKI_KELP_FOREST = "https://en.wikipedia.org/wiki/Kelp_forest"
 WIKI_MANTA_RAY = "https://en.wikipedia.org/wiki/Manta_ray"
 WIKI_OCTOPUS = "https://en.wikipedia.org/wiki/Octopus"
+WIKI_SEA_TURTLE = "https://en.wikipedia.org/wiki/Sea_turtle"
 
 LETTERS = ("A", "B", "C")
 STUDY_SLOTS = 10
@@ -1889,6 +1933,7 @@ LEVEL_DISPLAY_NAMES = {
 # cuttlefish, eel, jellyfish, and kelp forest
 # ship Junior Ranger + Park Ranger + Zoologist.
 # Manta ray and octopus ship Junior Ranger + Park Ranger + Zoologist.
+# Sea turtle ships Junior Ranger only.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -1942,6 +1987,7 @@ STUDY_NEIGHBORS = {
     "kelp-forest": ("jellyfish", "sea-otter"),
     "manta-ray": ("jellyfish", "kelp-forest"),
     "octopus": ("cuttlefish", "jellyfish"),
+    "sea-turtle": ("octopus", "manta-ray"),
 }
 
 STUDY_CARD_TITLES = {
@@ -1982,6 +2028,7 @@ STUDY_CARD_TITLES = {
     "kelp-forest": "Kelp forest",
     "manta-ray": "Manta ray",
     "octopus": "Octopus",
+    "sea-turtle": "Sea turtle",
 }
 
 # Shared answers-side deepen (Claude sample). Not scored. Future animals reuse keys.
@@ -2375,6 +2422,16 @@ PUSH_FURTHER_OCTOPUS_ZOOLOGIST = (
     "A dumbo octopus was filmed in the deepest trench zone. Why keep that depth record soft?",
     "World catch peaked, then slipped, and farming plans are debated. Why treat those as snapshots?",
     "Labs build bendy robot arms after octopus limbs. Why keep that biomimicry story soft?",
+)
+TALK_ABOUT_SEA_TURTLE = (
+    "Sea turtles have paddle flippers, not land-turtle feet. Why might that help them swim?",
+    "Baby turtles race toward the brightest horizon. Why is that usually the sea?",
+    "Unlike many pet turtles, they can’t hide in the shell. Why is the body built that way?",
+)
+PUSH_FURTHER_SEA_TURTLE = (
+    "Scientists put sea turtles in a bigger family tree. Why might those denser names wait?",
+    "Nest warmth can help decide if a baby is a boy or a girl. Why keep that story soft?",
+    "A beach-finding compass, salty tears, and status-by-kind still wait. Why save those?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -18191,6 +18248,157 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia says that from 1993 the common octopus was the only invertebrate protected under UK lab law, and in 2012 the rules widened to all cephalopods to match an EU directive. Intelligence is a big reason those welfare rules exist. We keep the legal timeline soft.",
+                    },
+                ],
+            },
+        },
+    },
+    "sea-turtle": {
+        "id": "sea-turtle",
+        "source": WIKI_SEA_TURTLE,
+        "source_note": "Facts from Wikipedia, Sea turtle.",
+        "talk_about": list(TALK_ABOUT_SEA_TURTLE),
+        "push_further": list(PUSH_FURTHER_SEA_TURTLE),
+        "levels": {
+            "easy": {
+                # Teaching-first: same front as the quiz. Later tiers reserved.
+                "teach": [
+                    "Ocean reptiles with paddle flippers (not land-turtle feet)",
+                    "About seven kinds live in the world’s oceans (not the polar ice)",
+                    "Moms dig nests on sandy beaches and bury soft eggs",
+                    "Babies hatch and crawl to the sea (often at night)",
+                    "They breathe air — they surface, even though they live in the ocean",
+                ],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "seven-kinds-soft",
+                        "title": "Seven kinds",
+                        "stem": "How many kinds of sea turtle live in the world’s oceans, if we keep the list soft?",
+                        "choices": [
+                            "About seven kinds — flatback, green, hawksbill, leatherback, loggerhead, Kemp’s ridley, and olive ridley (soft)",
+                            "Exactly one kind that lives only on polar ice",
+                            "Zero kinds — they are all land turtles",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia names seven living sea turtles: flatback, green, hawksbill, leatherback, loggerhead, Kemp’s ridley, and olive ridley. We keep that list light — no deep family-tree names here.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "flippers-soft",
+                        "title": "Flippers",
+                        "stem": "What do a sea turtle’s flippers do?",
+                        "choices": [
+                            "They are land-turtle feet for walking all day on roads",
+                            "Front flippers paddle; back flippers help steer — and dig the nest hole",
+                            "They are wings for flying over the beach",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia describes sea turtles as ocean reptiles with paddle flippers, not the column-like feet of many land turtles. Front flippers power the swim; hind flippers help steer and later dig the nest.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "streamlined-shell-soft",
+                        "title": "Streamlined shell",
+                        "stem": "How is a sea turtle’s shell built for the ocean?",
+                        "choices": [
+                            "It is a heavy box they roll like a suitcase",
+                            "It is a backpack they take off at night",
+                            "It is streamlined for swimming — flatter and smoother than many land turtles",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says sea turtles have a more fusiform, streamlined body than many land or freshwater turtles. That flatter, smoother shell cuts drag so they can swim more easily.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "beach-nest-soft",
+                        "title": "Beach nest",
+                        "stem": "How does a mom sea turtle make a nest?",
+                        "choices": [
+                            "She hauls onto sand (usually at night), digs with hind flippers, buries eggs, then returns to the sea",
+                            "She builds a stick nest in a tree and sits on it",
+                            "She lays eggs in a coral cave and stays to guard them",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says the nesting female hauls onto a sandy beach, nearly always at night, and digs a hole with her hind flippers. She buries the clutch, smooths the sand, and returns to the ocean.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "eggs-soft",
+                        "title": "Soft eggs",
+                        "stem": "What are sea turtle eggs like — and does mom stay to guard them?",
+                        "choices": [
+                            "Thick chicken eggs she sits on all winter",
+                            "Soft-shelled eggs in a sand nest; mom does not stay to guard them",
+                            "No eggs at all — babies are born in the open ocean",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says she fills the nest with soft-shelled eggs, covers them, and leaves them untended. Mom does not stay to guard the clutch.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "hatchling-run-soft",
+                        "title": "Hatchling run",
+                        "stem": "What do baby sea turtles do after they hatch?",
+                        "choices": [
+                            "They stay in the nest until they grow a full shell",
+                            "They climb the nearest tree to hide",
+                            "They dig out together and race toward the brightest horizon — normally the ocean",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says hatchlings in one nest emerge together, then crawl toward the brightest horizon — traditionally the ocean, where moonlight and starlight shine on the water. Most kinds hatch at night.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "air-breathers-soft",
+                        "title": "Air breathers",
+                        "stem": "How do sea turtles breathe, even though they live in the ocean?",
+                        "choices": [
+                            "They have lungs and must surface to breathe — they can stay under a long time when resting (soft)",
+                            "They have gills like fish and never need air",
+                            "They breathe only through their flippers",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says sea turtles are air-breathing reptiles with lungs, so they surface to breathe. A resting turtle can stay under a long time; exact hours shift, so we keep that time soft.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "ocean-homes-soft",
+                        "title": "Ocean homes",
+                        "stem": "Where do sea turtles live?",
+                        "choices": [
+                            "Only on polar ice and never in the ocean",
+                            "In warm and temperate seas worldwide — none live only on land",
+                            "Only in one backyard pond",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia finds sea turtles in all oceans except the polar regions. They live in the sea; none of the seven kinds lives only on land.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "long-trips-soft",
+                        "title": "Long trips",
+                        "stem": "How far can many sea turtles travel, if we keep the miles soft?",
+                        "choices": [
+                            "They never leave the nest they hatched in",
+                            "They only hop from one rock to the next",
+                            "Many travel far between feeding waters and nesting beaches (soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says many sea turtles migrate long distances between feeding waters and nesting beaches — some even cross ocean basins. Exact miles vary, so we keep that travel story soft.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "cannot-hide-myth",
+                        "title": "Myth buster",
+                        "stem": "Can a sea turtle pull its head and flippers into its shell like many pet turtles?",
+                        "choices": [
+                            "No — unlike many pet turtles, they cannot pull their head and flippers in. The body is built for swimming, not hiding inside",
+                            "Yes — they zip fully inside like a suitcase",
+                            "Yes — they leave the shell on the beach and swim without it",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says the streamlined body means sea turtles cannot retract their head and limbs into the shell, unlike many other turtles and tortoises. The shape is built for swimming, not hiding inside.",
                     },
                 ],
             },
