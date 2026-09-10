@@ -1812,7 +1812,49 @@ status-by-kind, TEDs, plastic-vs-jellyfish
 depth, gigantothermy, and fossil giants for
 Zoologist. Do not redo JR themes. Keep
 kid-friendly. Do not invent photos.
-Zoologist is reserved.
+
+Facts for sea-turtle Zoologist (zoologist) are
+Wikipedia-backed from the same Sea turtle
+page. Answer-light (teach: []). Crown
+Chelonioidea sits in Americhelydia with
+snapping turtles and musk turtles; extinct
+Protostegidae (for example Archelon) are
+related, but that placement is still
+debated — soft names, not a forever tree.
+Leatherbacks can keep a core warmer than
+cold water by large size plus circulation
+tricks (gigantothermy); soften the exact
+degree gap. Status snapshots differ by
+kind: hawksbill and Kemp’s ridley often
+CR; loggerhead, olive ridley, and
+leatherback often VU; green recently moved
+toward LC globally (letter = snapshot);
+flatback DD. Conservation often tracks
+regional management units (stocks), not
+one global grade — one species can recover
+in one place and struggle in another. All
+sea turtles are listed CITES Appendix I —
+international trade in turtles and parts
+is tightly restricted. Turtle excluder
+devices in shrimp nets open an escape
+door; they can cut bycatch sharply when
+used (soften exact percent). Bags and
+debris can be mistaken for jellyfish; gut
+blockage and entanglement are major
+human-driven threats. Hatchlings crawl
+toward the brightest horizon; beach lights
+can send them inland instead of to the
+sea. Nesting beaches can “drift” with
+magnetic isolines; a field signature can
+predict genetic similarity better than map
+distance alone (deepen the Park Ranger
+magnetic map). Green turtles crop seagrass
+beds; that grazing helps keep meadows
+healthy for many other species. Soften
+contested numbers. Treat IUCN letters as
+snapshots. Soften exact TED percents. Do
+not redo JR or PR themes. Keep
+kid-friendly. Do not invent photos.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
@@ -1955,8 +1997,8 @@ LEVEL_DISPLAY_NAMES = {
 # American bison, elk, puffin, clownfish, crab,
 # cuttlefish, eel, jellyfish, and kelp forest
 # ship Junior Ranger + Park Ranger + Zoologist.
-# Manta ray and octopus ship Junior Ranger + Park Ranger + Zoologist.
-# Sea turtle ships Junior Ranger + Park Ranger.
+# Manta ray, octopus, and sea turtle ship Junior Ranger + Park Ranger +
+# Zoologist.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -2455,6 +2497,17 @@ PUSH_FURTHER_SEA_TURTLE = (
     "Status can differ by kind. Why not one letter for every sea turtle?",
     "TEDs help turtles slip out of nets. Why save that gear story for later?",
     "Plastic can look like jellyfish. Why save warm-giant leatherbacks and fossil giants?",
+)
+TALK_ABOUT_SEA_TURTLE_ZOOLOGIST = (
+    "One kind can look CR in one frame and closer to LC in another. Why aren’t those letters the same story?",
+    "Escape doors in shrimp nets and plastic bags that look like jellyfish. How do those threats differ?",
+    "Leatherbacks can keep a warmer core in cold water. Why might other sea turtles feel the chill more?",
+)
+PUSH_FURTHER_SEA_TURTLE_ZOOLOGIST = (
+    "Fossil sea turtles grew huge. Why keep those giant names and sizes soft?",
+    "Some turtles grow bumpy tumors. Why keep that disease story soft?",
+    "Climate can tilt nests toward more females. Why keep that feminization story soft?",
+    "Barnacles on a shell can carry chemistry clues. Why keep that tracking story soft?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -18557,6 +18610,144 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia says beach lights can pull hatchlings toward streets instead of the sea. Fishing nets can trap turtles so they cannot surface to breathe, and floating trash — including plastic that can look like jellyfish — also puts pressure on wild turtles. We do not lock status letters here.",
+                    },
+                ],
+            },
+            "zoologist": {
+                # Answer-light: Zoologist has no Learn-first strip.
+                "teach": [],
+                "talk_about": list(TALK_ABOUT_SEA_TURTLE_ZOOLOGIST),
+                "push_further": list(PUSH_FURTHER_SEA_TURTLE_ZOOLOGIST),
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "phylogeny-soft",
+                        "title": "Phylogeny",
+                        "stem": "Where does crown Chelonioidea sit among living turtles, if we keep that tree soft?",
+                        "choices": [
+                            "Crown Chelonioidea sits in Americhelydia with snapping turtles and musk turtles; extinct Protostegidae (such as Archelon) are related, but that placement is still debated (soft)",
+                            "They sit with tuna in a forever fish tree",
+                            "They have no living or fossil turtle relatives",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia places modern sea turtles in Americhelydia with snapping turtles and musk turtles. Extinct protostegids such as Archelon are a related marine lineage, but whether they sit beside crown Chelonioidea or evolved similar shapes on their own is still debated. Names stay soft — not a forever tree.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "gigantothermy-soft",
+                        "title": "Gigantothermy",
+                        "stem": "How can a leatherback keep a warmer core in cold water, if we keep that heat gap soft?",
+                        "choices": [
+                            "Every sea turtle is a warm-blooded mammal with fur",
+                            "Large size plus circulation tricks (gigantothermy) can keep a leatherback’s core warmer than the cold water around it (exact degrees stay soft)",
+                            "They never feel warmer than the water, even a little",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says sea turtles are poikilotherms, but leatherbacks can keep a body temperature warmer than the surrounding water by gigantothermy — large size plus circulation tricks. Exact degree gaps shift, so we keep that heat story soft.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "status-by-kind-soft",
+                        "title": "Status by kind",
+                        "stem": "How should we read IUCN letters for living sea turtles, if we keep those snapshots by kind?",
+                        "choices": [
+                            "One locked letter covers every sea turtle and never changes",
+                            "No sea turtle has ever been listed by IUCN",
+                            "Hawksbill and Kemp’s ridley often read CR; loggerhead, olive ridley, and leatherback often VU; green recently moved toward LC globally; flatback is DD — letters are snapshots, not forever scores (soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia’s snapshots differ by kind: hawksbill and Kemp’s ridley often read CR; loggerhead, olive ridley, and leatherback often VU; the green turtle recently moved toward LC globally; the flatback is DD. Those letters can change, so we treat them as snapshots by kind.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "rmu-soft",
+                        "title": "RMUs",
+                        "stem": "Why can one sea turtle species look recovered in one place and still struggle in another, if we keep those stocks soft?",
+                        "choices": [
+                            "Conservation often tracks regional management units (stocks), not one global grade — the same kind can recover in one place and struggle in another (soft)",
+                            "Every beach on Earth shares one forever score",
+                            "Sea turtles never move, so place never matters",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says global grades can hide distinct genetic stocks and regional management units (RMUs). Each unit faces its own mix of threats, so one species can recover in one place and keep declining in another. We keep those stock names soft.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "cites-i-soft",
+                        "title": "CITES I",
+                        "stem": "How does CITES treat sea turtles in international trade, if we keep that rule soft?",
+                        "choices": [
+                            "CITES lists none of them, so trade is wide open",
+                            "All sea turtles are listed on Appendix I — international trade in turtles and parts is tightly restricted (soft)",
+                            "Only one pet-store kind is listed, and only in one shop",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says all sea turtle species are listed in CITES Appendix I, which tightly restricts international trade in the animals and their parts. We keep that trade-rule story soft.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "ted-soft",
+                        "title": "TED",
+                        "stem": "How can a turtle excluder device (TED) help in a shrimp net, if we keep that cut soft?",
+                        "choices": [
+                            "A TED is a camera that films turtles for TV",
+                            "A TED locks turtles inside the net on purpose",
+                            "A TED opens an escape door in the net so a caught turtle can swim out; when used, it can cut bycatch sharply (exact percents stay soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says turtle excluder devices in shrimp nets give turtles an escape opening so they can leave the net and surface to breathe. When used, they can cut bycatch sharply. Exact percents shift, so we keep that cut soft.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "plastic-soft",
+                        "title": "Plastic",
+                        "stem": "Why can floating plastic put sea turtles in danger, if we keep that trash story soft?",
+                        "choices": [
+                            "Bags and debris can be mistaken for jellyfish; gut blockage and entanglement are major human-driven threats (soft)",
+                            "Plastic is their favorite healthy snack",
+                            "Trash never touches a turtle in the ocean",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says marine debris, especially plastic bags, can be mistaken for jellyfish. Swallowed plastic can block the gut, and abandoned nets can entangle turtles so they cannot surface. Those are major human-driven threats. We keep counts soft.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "light-pollution-soft",
+                        "title": "Light pollution",
+                        "stem": "How can beach lights send hatchlings inland, if we keep that glow story soft?",
+                        "choices": [
+                            "Hatchlings always ignore light and walk in circles",
+                            "Hatchlings crawl toward the brightest horizon; beach lights can pull them inland instead of to the sea (soft)",
+                            "Beach lights help babies find the nest again",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says hatchlings instinctively crawl toward the brightest horizon — traditionally the ocean, where moonlight and starlight shine on the water. Artificial beach lights can send them inland toward streets instead of the sea. We keep that glow story soft.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "geomagnetic-imprint-soft",
+                        "title": "Magnetic imprint",
+                        "stem": "What can a nesting beach’s magnetic signature tell us, if we keep that imprint story soft?",
+                        "choices": [
+                            "Beaches never move, and magnets do not matter",
+                            "Only street maps, never magnetic fields, mark a nest",
+                            "Nesting beaches can “drift” with magnetic isolines; a field signature can predict genetic similarity better than map distance alone (soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says nesting sites have been recorded to “drift” with shifts in magnetic isolines. Genetic tests find that magnetic-field signature predicts similarity among nesting groups better than physical map distance alone. That deepens the magnetic-map story. We keep the imprint mechanism soft.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "seagrass-gardeners-soft",
+                        "title": "Seagrass gardeners",
+                        "stem": "How do green turtles help seagrass meadows, if we keep that gardening story soft?",
+                        "choices": [
+                            "Green turtles crop seagrass beds; that grazing helps keep meadows short and healthy for many other species (soft)",
+                            "They never eat plants, so meadows do not matter",
+                            "They mow seagrass until every meadow disappears",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says green sea turtles are among the few large animals that graze seagrass. That cropping keeps beds short so the meadow can spread across the seafloor and stay healthy for many other species. We keep that gardener story soft.",
                     },
                 ],
             },
