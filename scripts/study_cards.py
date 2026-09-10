@@ -1384,7 +1384,8 @@ kid-friendly. Do not redo JR or PR themes.
 Do not invent photos.
 
 Facts for jellyfish Junior Ranger + Park Ranger
-(easy + hard) are Wikipedia-backed:
++ Zoologist (easy + hard + zoologist) are
+Wikipedia-backed:
 https://en.wikipedia.org/wiki/Jellyfish
 (Jellyfish group page — JR stays kid-simple
 “jelly” as a group). Soft, jelly-bodied sea
@@ -1423,9 +1424,33 @@ siphonophore, comb jellies as Ctenophora
 (no nematocyst sting), blooms (currents,
 food, warm or nutrient-rich water; clog nets
 and intakes), and status-by-kind (no single
-IUCN letter). Soften contested numbers. Keep
+IUCN letter). Zoologist deepens Acraspeda
+(Scyphozoa + Cubozoa + Staurozoa; Hydrozoa
+the diverse sister with many medusae and
+colonial siphonophores), tetramerous
+four-part symmetry (soft), cnida discharge
+(inverted tubule flips out under high
+pressure — one of biology’s fastest cellular
+weapons, soft), rhopalia pacemakers that set
+swim-pulse rate and direction via the nerve
+net, cubozoan eyes (often about 24 in four
+types — species vary, soft), passive-energy
+swim (elastic mesoglea stores a “free”
+recoil boost; Aurelia studies, soft),
+Turritopsis dohrnii medusa→polyp reversal
+in lab stress (immortal-jelly headline not
+universal), Anthozoa contrast (corals /
+anemones never swim as medusae; medusae
+after the polyp lifestyle, soft phylogeny),
+bloom drivers (eutrophication, warmer water,
+overfishing of competitors/predators,
+invasive introductions — place- and
+species-specific), and a group status
+snapshot (no single IUCN letter; track by
+species and sea). Soften contested numbers.
+Treat IUCN / status as snapshots. Keep
 kid-friendly. Do not invent photos.
-Do not redo JR themes. Zoologist is reserved.
+Do not redo JR or PR themes.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
@@ -1562,9 +1587,8 @@ LEVEL_DISPLAY_NAMES = {
 # Asian small-clawed otter, two-toed sloth, freshwater
 # fish, polar bear, sea otter, American alligator, and
 # American bison, elk, puffin, clownfish, crab,
-# cuttlefish, and eel ship Junior Ranger + Park
-# Ranger + Zoologist. Jellyfish ships Junior
-# Ranger + Park Ranger.
+# cuttlefish, eel, and jellyfish ship Junior
+# Ranger + Park Ranger + Zoologist.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -1986,14 +2010,14 @@ PUSH_FURTHER_EEL = (
     "Electric “eels” sit in Gymnotiformes, not Anguilliformes. Why might that look-alike tree matter?",
 )
 TALK_ABOUT_JELLYFISH = (
-    "Scyphozoa vs box vs hydro jellies: how would you tell those groups apart?",
-    "A scyphozoan polyp can stack and pinch off baby medusae. Why might that process be called strobilation?",
-    "A man o’ war is a hydrozoan colony, and a comb jelly is a different phylum. What mix-up would you explain?",
+    "Acraspeda groups true, box, and stalked jellies. How is Hydrozoa the diverse sister branch?",
+    "Rhopalia on the bell edge hold eyes and pacemakers. Why might that help a jelly steer?",
+    "Warm water, extra nutrients, and fewer fish can favor jelly blooms. Why keep that ecology soft?",
 )
 PUSH_FURTHER_JELLYFISH = (
-    "One polyp can pinch off many ephyrae. How could that turn into a swarm of jellies?",
-    "Box jellies have many eyes on rhopalia. Why might they see space better than most other jellies?",
-    "Some kinds bloom while habitats shift. Why isn’t there one “endangered” letter for all jellyfish?",
+    "Corals and anemones never swim as medusae. Why might Anthozoa have skipped that stage?",
+    "Turritopsis can reverse from medusa to polyp in the lab. Why isn’t every jelly “immortal”?",
+    "When fish crash, jellies can sit near the top of the food web. Why keep that “top predator” story soft?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -16244,7 +16268,7 @@ STUDY_CARDS: dict[str, dict] = {
                 # → polyp, box vision, siphonophore, ctenophore,
                 # blooms, status-by-kind. Soften contested numbers
                 # (no “24 eyes” lock). Kid-friendly. Do not redo
-                # JR themes. Zoologist reserved.
+                # JR themes. Zoologist ships on this card.
                 "teach": [],
                 "questions": [
                     {
@@ -16376,6 +16400,149 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia does not give one IUCN letter for “jellyfish” as a group. Some invasive or bloom-forming kinds surge in new places, while habitats and other kinds shift. Watch species and places — not one group score.",
+                    },
+                ],
+            },
+            "zoologist": {
+                # Answer-light: Zoologist has no Learn-first strip.
+                # Facts from Wikipedia, Jellyfish. Soft Acraspeda,
+                # tetramery, cnida discharge, rhopalia pacemakers,
+                # cubozoan eyes, passive-energy swim, Turritopsis,
+                # Anthozoa contrast, bloom drivers, status
+                # snapshot. Soften contested numbers and IUCN
+                # letters. Kid-friendly. Do not redo JR or PR
+                # themes.
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "acraspeda-soft",
+                        "title": "Acraspeda",
+                        "stem": "How are Scyphozoa, Cubozoa, and Staurozoa often grouped, if we keep that clade soft?",
+                        "choices": [
+                            "Scyphozoa, Cubozoa, and Staurozoa are often grouped as Acraspeda; Hydrozoa is the diverse sister branch with many medusae and colonial siphonophores (soft)",
+                            "They sit only with sharks and rays, and Hydrozoa is not a cnidarian group",
+                            "They sit only with birds, far from any jelly or siphonophore",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia often groups Scyphozoa, Cubozoa, and Staurozoa as Acraspeda. Hydrozoa is the diverse sister branch and includes many medusae plus colonial siphonophores. That grouping can still be discussed, so we keep it soft.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "tetramery-soft",
+                        "title": "Tetramery",
+                        "stem": "What body plan do medusozoans typically show, if we keep that symmetry soft?",
+                        "choices": [
+                            "They always grow two legs and a backbone like a mammal",
+                            "Four-part (tetramerous) symmetry — four oral arms, radial canals in fours, and other parts in fours (soft)",
+                            "They are built in perfect left-right halves, with no radial canals at all",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia describes medusozoans as typically showing tetramerous (four-part) radial symmetry — oral arms, radial canals, and other parts often come in fours. Counts can vary, so we keep that pattern soft.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "cnida-discharge-soft",
+                        "title": "Cnida discharge",
+                        "stem": "What happens inside a nematocyst capsule when it fires, if we keep that discharge soft?",
+                        "choices": [
+                            "The capsule slowly melts into sugar and never leaves the cell",
+                            "The capsule only clicks like a magnet and never opens",
+                            "The capsule flips an inverted tubule outward under high pressure — one of biology’s fastest cellular weapons (soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia describes nematocyst discharge as a high-pressure eversion: the capsule flips an inverted tubule outward when triggered. That is among the fastest cellular weapons measured. Exact speeds stay soft.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "rhopalia-pacemakers-soft",
+                        "title": "Rhopalia pacemakers",
+                        "stem": "What do rhopalia do besides hold sensors, if we keep those pacemakers soft?",
+                        "choices": [
+                            "Bell-margin sensory clubs (rhopalia) hold pacemakers that set swim-pulse rate and direction via the nerve net (soft)",
+                            "They only store air so the jelly can fly above the waves",
+                            "They are extra stomachs that digest rocks on the seafloor",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia places pacemakers in the bell-margin sensory clubs called rhopalia. Those pacemakers help set swim-pulse rate and direction through the nerve net. We keep that control story soft.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "cubozoan-24-eye-soft",
+                        "title": "Cubozoan eyes",
+                        "stem": "How should we read box-jelly eyes on the rhopalia, if we keep the count soft?",
+                        "choices": [
+                            "Box jellies have no eyes at all, so seeing is always luck",
+                            "Each box jelly often has about 24 eyes in four morphological types on the rhopalia — spatial vision that can help avoid obstacles (species vary, soft)",
+                            "Each box jelly keeps one rear-facing camera glued to the bell, with no rhopalia",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia’s box-jelly notes often cite about 24 eyes in four morphological types on the rhopalia. That spatial vision can help with obstacle avoidance. Exact counts and types vary by species, so we keep the number soft.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "passive-energy-swim-soft",
+                        "title": "Passive energy",
+                        "stem": "How can elastic mesoglea make a jelly’s swim cheaper, if we keep that boost soft?",
+                        "choices": [
+                            "The bell burns rocket fuel on every pulse and never recoils",
+                            "Mesoglea is only dry sand, so swimming always costs extra",
+                            "Elastic mesoglea stores contraction energy and releases a “free” boost on bell recoil — among the most efficient swimmers measured (Aurelia studies, soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia cites Aurelia work showing elastic mesoglea can store contraction energy and release a “free” boost as the bell recoils. That puts some jellies among the most efficient swimmers measured. We keep that energy story soft.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "turritopsis-soft",
+                        "title": "Turritopsis",
+                        "stem": "What can Turritopsis dohrnii do under stress, if we keep the “immortal jelly” headline soft?",
+                        "choices": [
+                            "Turritopsis dohrnii can reverse medusa → polyp under stress in lab conditions — an “immortal jelly” headline, not a universal jelly rule (soft)",
+                            "Every jelly on Earth lives forever in the wild, with no lab limits",
+                            "Turritopsis turns into a shark when the water gets cold",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia’s Turritopsis dohrnii story is a lab reversal from medusa back to polyp under stress. The “immortal jelly” headline is not a rule for all jellies or every wild setting, so we keep it soft.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "anthozoa-contrast-soft",
+                        "title": "Anthozoa",
+                        "stem": "How do corals and anemones differ from medusozoans, if we keep that phylogeny soft?",
+                        "choices": [
+                            "Corals and anemones are fish that swim as medusae every summer",
+                            "Anthozoa (corals and anemones) are cnidarians without a medusa stage — medusae evolved after the polyp lifestyle (soft phylogeny)",
+                            "Anthozoa are the only jellies that hunt with a backbone",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia treats Anthozoa — corals and anemones — as cnidarians that never have a medusa stage. The swimming medusa appears later, after a polyp-first lifestyle. That phylogeny can still be discussed, so we keep it soft.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "bloom-drivers-soft",
+                        "title": "Bloom drivers",
+                        "stem": "Which human-linked changes can favor jelly dominance, if we keep those drivers soft?",
+                        "choices": [
+                            "Jelly dominance only happens on the moon, never in the sea",
+                            "Jellies only bloom when every fish is kept in a jar on land",
+                            "Eutrophication, warmer water, overfishing of competitors or predators, and invasive introductions can favor jelly dominance — place- and species-specific (soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia lists extra nutrients (eutrophication), warmer water, overfishing of competitors or predators, and invasive introductions among drivers that can favor jelly dominance. Those effects are place- and species-specific, so we keep the driver list soft.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "status-snapshot-soft",
+                        "title": "Status snapshot",
+                        "stem": "How should we read IUCN letters for “jellyfish,” if we keep that snapshot soft?",
+                        "choices": [
+                            "The group has no single IUCN letter; invasive or bloom kinds can surge while some coastal systems lose balance — track by species and sea, not one score (soft)",
+                            "One locked letter covers every jelly on Earth and never changes",
+                            "Jellies have no snapshot letters at all, so coastal systems never shift",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia does not assign one IUCN letter to “jellyfish” as a group. Invasive or bloom-forming kinds can surge, while some coastal systems lose balance. Track by species and sea — not one score. Letters and local stories can change.",
                     },
                 ],
             },
