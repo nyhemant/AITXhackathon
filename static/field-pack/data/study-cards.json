@@ -14556,14 +14556,14 @@
     "source": "https://en.wikipedia.org/wiki/Kelp_forest",
     "source_note": "Facts from Wikipedia, Kelp forest.",
     "talk_about": [
-      "Kelp sits in Laminariales — Macrocystis, Nereocystis, and kin. Why keep that list soft?",
-      "Otters eat urchins, then kelp can recover. Why is that chain called a cascade?",
-      "A lush forest can flip into rocky barrens. What might that alternate state look like?"
+      "Kelps are brown algae in Ochrophyta, not land plants. Why might that still surprise people?",
+      "A forest and an urchin barren can both persist. What big push might flip one into the other?",
+      "Alaska leans on otters; Southern California uses a predator suite. Why isn’t one hunter the whole story?"
     ],
     "push_further": [
-      "Cool upwelling lifts nutrients from the deep. Why might a warm, still surface be harder?",
-      "Otters are a keystone in some Pacific forests. Why isn’t one predator enough everywhere?",
-      "Marine protected areas can protect the food web. Why keep that care place-by-place?"
+      "Urchins often eat loose drift kelp first. Why might leftover drift help a living forest last?",
+      "Warm El Niño water and later heatwaves can stress kelp differently. Why keep those climate stories soft?",
+      "A kelp forest is a habitat, not one species. Why is there no single IUCN letter for it?"
     ],
     "levels": {
       "easy": {
@@ -14839,6 +14839,141 @@
             ],
             "correct": "A",
             "why": "Wikipedia treats marine protected areas and careful fishing as tools that can protect predators and the interactions around them. Kelp-forest status is local — not one letter for the whole habitat."
+          }
+        ]
+      },
+      "zoologist": {
+        "teach": [],
+        "questions": [
+          {
+            "slot": 1,
+            "id": "ochrophyta-soft",
+            "title": "Ochrophyta",
+            "stem": "Where do kelps sit on the tree of life, if we keep that nest soft?",
+            "choices": [
+              "Kelps are stramenopile brown algae (phylum Ochrophyta / order Laminariales) — they photosynthesize but sit outside kingdom Plantae (soft)",
+              "Kelps are flowering land plants in kingdom Plantae, with wood rings and acorns",
+              "Kelps are bony fish that only look like seaweed"
+            ],
+            "correct": "A",
+            "why": "Wikipedia places kelps with brown algae among the stramenopiles (phylum Ochrophyta, order Laminariales). They use sunlight to make food, but they sit outside kingdom Plantae. That nest can still be discussed, so we keep it soft."
+          },
+          {
+            "slot": 2,
+            "id": "guild-architecture-soft",
+            "title": "Guild stack",
+            "stem": "How do kelp growth forms stack like a rainforest, if we keep those guilds soft?",
+            "choices": [
+              "Every kelp is the same height, so the forest has only one layer",
+              "Canopy kelps (Macrocystis or Alaria), stipitate understory (Eisenia or Ecklonia), and prostrate forms (Laminaria) stack microhabitats like a rainforest (soft)",
+              "Kelp only grows as a flat carpet of moss on dry land"
+            ],
+            "correct": "B",
+            "why": "Wikipedia describes kelp forests as layered habitats. Tall canopy kinds such as Macrocystis or Alaria, stipitate understory kinds such as Eisenia or Ecklonia, and prostrate forms such as Laminaria can stack microhabitats much like a rainforest. Guild names and which kinds dominate stay soft."
+          },
+          {
+            "slot": 3,
+            "id": "macrocystis-rate-soft",
+            "title": "Giant kelp rate",
+            "stem": "How fast can giant kelp add length in ideal light and nutrients, if we keep that rate soft?",
+            "choices": [
+              "Giant kelp never grows at all, even in bright, rich water",
+              "Giant kelp only grows on the moon, never in the sea",
+              "Giant kelp can add about 30 to 60 centimeters of length in a day under ideal light and nutrients — not a year-round rule (soft)"
+            ],
+            "correct": "C",
+            "why": "Wikipedia’s giant kelp notes often cite very fast length gains under ideal light and nutrients — about 30 to 60 centimeters in a day in those windows. That is not a year-round rule, so we keep the range soft."
+          },
+          {
+            "slot": 4,
+            "id": "ne-pacific-richness-soft",
+            "title": "NE Pacific",
+            "stem": "Where is kelp species richness often highest, if we keep that count soft?",
+            "choices": [
+              "The northeastern Pacific — from California toward the Aleutians — often holds the highest kelp species richness, with dozens of kinds regionally (soft)",
+              "Only one bathtub in a desert, and nowhere else",
+              "Only the open sky above mountains, far from any sea"
+            ],
+            "correct": "A",
+            "why": "Wikipedia places the highest kelp species richness in the northeastern Pacific, from California toward the Aleutians. Regional lists can run to dozens of kinds. Exact counts and maps stay soft."
+          },
+          {
+            "slot": 5,
+            "id": "alternate-states-soft",
+            "title": "Forest or barren",
+            "stem": "Why can a kelp forest and an urchin barren both last, if we keep that flip soft?",
+            "choices": [
+              "A forest can never change, and a barren can never last",
+              "Forest and urchin-barren states can both persist; flipping usually needs a big push such as disease, predator return, or a temperature swing (soft)",
+              "Kelp and urchins take turns every hour on a kitchen timer"
+            ],
+            "correct": "B",
+            "why": "Wikipedia describes kelp forest and urchin barren as states that can both persist. Moving from one to the other often needs a big push — disease, predators returning, or a temperature swing. We keep that flip story soft."
+          },
+          {
+            "slot": 6,
+            "id": "cascade-redundancy-soft",
+            "title": "Cascade suite",
+            "stem": "Why doesn’t removing one kelp-forest predator mean the same outcome everywhere?",
+            "choices": [
+              "Every coast has the exact same one predator, so one loss always clears every forest",
+              "Predators never eat urchins, so hunter lists never matter",
+              "Alaska often leans on sea otters as a keystone; Southern California uses a suite of predators such as lobsters and sheephead — one missing hunter is not the same story everywhere (soft)"
+            ],
+            "correct": "C",
+            "why": "Wikipedia’s cascade story is regional. Alaska often treats sea otters as a keystone hunter of urchins. Southern California lists a suite of predators such as lobsters and sheephead. Removing one hunter is not the same outcome on every coast, so we keep that redundancy soft."
+          },
+          {
+            "slot": 7,
+            "id": "drift-subsidy-soft",
+            "title": "Drift kelp",
+            "stem": "When do urchins switch from drift kelp to live holdfasts, if we keep that buffer soft?",
+            "choices": [
+              "Urchins often eat loose drift kelp first; when that subsidy runs out they can attack live holdfasts and clear a stand (soft)",
+              "Urchins never eat kelp of any kind, living or loose",
+              "Urchins only eat oak leaves that fall from beach trees"
+            ],
+            "correct": "A",
+            "why": "Wikipedia notes that urchins often feed on loose drift kelp first. When that subsidy runs out, they can climb and chew live holdfasts and clear a stand. Drift can buffer a forest, so we keep that switch soft."
+          },
+          {
+            "slot": 8,
+            "id": "enso-stress-soft",
+            "title": "ENSO stress",
+            "stem": "How can El Niño–type events stress a kelp canopy, if we keep that climate link soft?",
+            "choices": [
+              "El Niño–type events always plant more kelp and never change the water",
+              "Warm, nutrient-poor El Niño–type water plus storms can raise grazing and canopy-loss risk — a soft climate link, not a forever rule (soft)",
+              "El Niño–type events only happen in deserts, far from any kelp"
+            ],
+            "correct": "B",
+            "why": "Wikipedia ties some canopy losses to warm, nutrient-poor El Niño–type water and storm damage. Those events can raise grazing and canopy-loss risk. That climate link is not a forever rule, so we keep it soft."
+          },
+          {
+            "slot": 9,
+            "id": "heatwave-snapshot-soft",
+            "title": "Heatwave snapshot",
+            "stem": "What happened to some Northern California kelp in the 2010s, if we keep that snapshot local?",
+            "choices": [
+              "Every kelp forest on Earth gained a locked global letter in the 2010s",
+              "Northern California kelp grew thicker in every bay and never thinned",
+              "After marine heatwaves plus an urchin boom, some Northern California stretches lost most shallow kelp — a local snapshot, not a global habitat letter (soft)"
+            ],
+            "correct": "C",
+            "why": "Wikipedia’s 2010s Northern California notes describe marine heatwaves plus an urchin boom, after which some stretches lost most shallow kelp. That is a local snapshot, not a global letter for the habitat. We keep the story soft."
+          },
+          {
+            "slot": 10,
+            "id": "blue-carbon-soft",
+            "title": "Blue carbon",
+            "stem": "How might kelp and other macroalgae store carbon, if we keep those amounts soft?",
+            "choices": [
+              "Kelp and other macroalgae can bury carbon when biomass sinks offshore — growing research, and the amounts are still estimates (soft)",
+              "Kelp never holds any carbon, even when blades sink",
+              "Kelp stores carbon only in zoo gift-shop bags"
+            ],
+            "correct": "A",
+            "why": "Wikipedia’s blue-carbon notes say kelp and other macroalgae can export biomass that sinks offshore and may bury carbon. That research is growing, and the amounts are still estimates, so we keep the numbers soft."
           }
         ]
       }

@@ -1,4 +1,4 @@
-"""Kelp-forest Easy study-card: Junior Ranger teach + 10 MCQs (Park Ranger is a sibling level)."""
+"""Kelp-forest Easy study-card: Junior Ranger teach + 10 MCQs (Park Ranger + Zoologist ship)."""
 
 from __future__ import annotations
 
@@ -117,13 +117,12 @@ BRITTLE = (
     "mph",
     "km/h",
 )
-# Explore more now uses Park Ranger talk/push, so Laminariales
-# genera may appear on the Junior Ranger page without leaking
-# into JR questions.
+# Explore more now uses Zoologist talk/push, so IUCN may appear on
+# the Junior Ranger page without leaking into JR questions.
 PAGE_BRITTLE = tuple(
     p
     for p in BRITTLE
-    if p not in ("Laminariales", "Macrocystis", "Nereocystis")
+    if p not in ("IUCN", "Laminariales", "Macrocystis", "Nereocystis")
 )
 RESERVED = (
     "IUCN",
@@ -187,9 +186,9 @@ class KelpForestEasyStudyCardTests(unittest.TestCase):
                 "kelp-forest",
             ),
         )
-        self.assertEqual(shipped_levels_for("kelp-forest"), ("easy", "hard"))
+        self.assertEqual(shipped_levels_for("kelp-forest"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("kelp-forest", "hard"))
-        self.assertIsNone(study_deck_for("kelp-forest", "zoologist"))
+        self.assertIsNotNone(study_deck_for("kelp-forest", "zoologist"))
         self.assertIsNone(study_deck_for("octopus"))
         deck = study_deck_for("kelp-forest")
         self.assertIsNotNone(deck)
@@ -301,11 +300,11 @@ class KelpForestEasyStudyCardTests(unittest.TestCase):
         visible = _text(html)
         self.assertIn("Junior Ranger", visible)
         self.assertIn("Park Ranger", visible)
-        self.assertNotIn("Zoologist", visible)
+        self.assertIn("Zoologist", visible)
         self.assertIn('class="study-level-picker"', html)
         self.assertIn('data-study-pick="easy"', html)
         self.assertIn('data-study-pick="hard"', html)
-        self.assertNotIn('data-study-pick="zoologist"', html)
+        self.assertIn('data-study-pick="zoologist"', html)
         self.assertNotIn('class="study-level-badge"', html)
         self.assertEqual(html.count('role="group"'), 2)
         self.assertIn("study-level-picker-bottom", html)
@@ -378,11 +377,11 @@ class KelpForestEasyStudyCardTests(unittest.TestCase):
         visible = _text(main)
         self.assertIn("Junior Ranger", visible)
         self.assertIn("Park Ranger", visible)
-        self.assertNotIn("Zoologist", visible)
+        self.assertIn("Zoologist", visible)
         self.assertIn('class="study-level-picker"', main)
         self.assertIn('data-study-pick="easy"', main)
         self.assertIn('data-study-pick="hard"', main)
-        self.assertNotIn('data-study-pick="zoologist"', main)
+        self.assertIn('data-study-pick="zoologist"', main)
         self.assertNotIn('class="study-level-badge"', main)
         self.assertIn("Learn first", main)
         self.assertIn(">Quiz</h2>", main)
@@ -469,9 +468,9 @@ class KelpForestEasyStudyCardTests(unittest.TestCase):
         self.assertIn("cuttlefish", payload)
         forest = payload["kelp-forest"]
         self.assertEqual(forest["id"], "kelp-forest")
-        self.assertEqual(set(forest["levels"]), {"easy", "hard"})
+        self.assertEqual(set(forest["levels"]), {"easy", "hard", "zoologist"})
         self.assertEqual(forest["levels"]["hard"]["teach"], [])
-        self.assertNotIn("zoologist", forest["levels"])
+        self.assertEqual(forest["levels"]["zoologist"]["teach"], [])
         easy = forest["levels"]["easy"]
         self.assertEqual(len(easy["teach"]), 5)
         self.assertEqual(len(easy["questions"]), STUDY_SLOTS)
@@ -503,7 +502,7 @@ class KelpForestEasyStudyCardTests(unittest.TestCase):
         visible = _text(_main(kelp_html))
         self.assertIn("Junior Ranger", visible)
         self.assertIn("Park Ranger", visible)
-        self.assertNotIn("Zoologist", visible)
+        self.assertIn("Zoologist", visible)
         jelly_html = JELLYFISH.read_text(encoding="utf-8")
         self.assertIn("Junior Ranger", _text(_main(jelly_html)))
         self.assertIn("Park Ranger", _text(_main(jelly_html)))
