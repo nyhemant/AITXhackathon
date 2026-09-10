@@ -97,7 +97,7 @@ QIDS = (
     "horseshoe-not-crab-myth",
 )
 
-PLAIN_LEVEL_LABELS = ("Easy", "Hard")
+PLAIN_LEVEL_LABELS = ("Easy",)
 AGE_BADGES = ("Ages", "Age 4", "age badge", "ages 4", "4–6", "4-6")
 BRITTLE = (
     "IUCN",

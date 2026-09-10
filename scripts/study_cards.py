@@ -14659,7 +14659,7 @@ STUDY_CARDS: dict[str, dict] = {
                         "stem": "Which look-alike crabs sit in sister group Anomura, not Brachyura?",
                         "choices": [
                             "Only true crabs in Brachyura, and nothing else looks crabby",
-                            "Hermit crabs, king crabs, porcelain crabs, and mole crabs — they look crabby but aren’t Brachyura",
+                            "Hermit crabs, king crabs, porcelain crabs, and mole crabs sit in Anomura — they look crabby but aren’t Brachyura",
                             "Only whales and dolphins, which have no shells",
                         ],
                         "correct": "B",
