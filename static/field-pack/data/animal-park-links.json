@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "kind": "strong",
+  "note": "PoC animal↔park suggestion graph. Strong, sourced edges only. Do not add weak links (no clownfish→Yellowstone). Sightings are never promised.",
+  "animals": {
+    "american-bison": {
+      "name": "American bison",
+      "emoji": "🦬",
+      "photo": "/field-pack/photos/american-bison.jpg?v=img2",
+      "parks": [
+        {
+          "id": "yellowstone",
+          "primary": true,
+          "source": "https://www.nps.gov/yell/learn/nature/bison.htm",
+          "note": "Iconic valley herds — watch from a car or far pullout."
+        },
+        {
+          "id": "grand-teton",
+          "source": "https://www.nps.gov/grte/learn/nature/animals.htm",
+          "note": "Sometimes on the sage flats — never promised."
+        },
+        {
+          "id": "badlands",
+          "source": "https://www.nps.gov/badl/learn/nature/bison.htm",
+          "note": "Prairie herds — if you see one, stay far back."
+        }
+      ]
+    },
+    "elk": {
+      "name": "Elk",
+      "emoji": "🦌",
+      "photo": "/field-pack/photos/elk.jpg?v=img2",
+      "parks": [
+        {
+          "id": "yellowstone",
+          "primary": true,
+          "source": "https://www.nps.gov/yell/learn/nature/elk.htm",
+          "note": "More often in valleys than at the geysers — keep a long, quiet distance."
+        },
+        {
+          "id": "rocky-mountain",
+          "source": "https://www.nps.gov/romo/learn/nature/elk.htm",
+          "note": "Famous around meadows — stay in the car or far back."
+        },
+        {
+          "id": "grand-teton",
+          "source": "https://www.nps.gov/grte/learn/nature/animals.htm",
+          "note": "Sometimes in valley meadows — never promised."
+        }
+      ]
+    }
+  },
+  "parks": {
+    "yellowstone": {
+      "name": "Yellowstone",
+      "full_name": "Yellowstone National Park",
+      "photo": "/field-pack/photos/np-hero-yellowstone.jpg?v=q2",
+      "animals": ["american-bison", "elk"],
+      "source": "https://www.nps.gov/yell/learn/nature/mammals.htm",
+      "lead": "In the wider park — not the geyser boardwalks. Sightings aren’t promised. Give wildlife lots of space — stay in the car or far back."
+    },
+    "grand-teton": {
+      "name": "Grand Teton",
+      "full_name": "Grand Teton National Park",
+      "photo": "/field-pack/photos/np-hero-grand-teton.jpg?v=q2",
+      "animals": [],
+      "source": "https://www.nps.gov/grte/learn/nature/animals.htm"
+    },
+    "badlands": {
+      "name": "Badlands",
+      "full_name": "Badlands National Park",
+      "photo": "/field-pack/photos/np-hero-badlands.jpg?v=q2",
+      "animals": [],
+      "source": "https://www.nps.gov/badl/learn/nature/bison.htm"
+    },
+    "rocky-mountain": {
+      "name": "Rocky Mountain",
+      "full_name": "Rocky Mountain National Park",
+      "photo": "/field-pack/photos/np-hero-rocky-mountain.jpg?v=q2",
+      "animals": [],
+      "source": "https://www.nps.gov/romo/learn/nature/elk.htm"
+    }
+  }
+}
