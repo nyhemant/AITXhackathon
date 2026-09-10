@@ -1,4 +1,4 @@
-"""Polar bear Easy study-card: Junior Ranger teach + 10 MCQs (Park Ranger and Zoologist are sibling levels)."""
+"""Puffin Easy study-card: Junior Ranger teach + 10 MCQs (first deck)."""
 
 from __future__ import annotations
 
@@ -14,16 +14,22 @@ sys.path.insert(0, str(REPO / "scripts"))
 from generate_bdo_seo import outing_talk_html  # noqa: E402
 from study_cards import (  # noqa: E402
     LEVEL_DISPLAY_NAMES,
-    PUSH_FURTHER_FRESHWATER_FISH,
+    PUSH_FURTHER_AMERICAN_ALLIGATOR,
+    PUSH_FURTHER_AMERICAN_BISON,
+    PUSH_FURTHER_ELK,
     PUSH_FURTHER_LION,
-    PUSH_FURTHER_POLAR_BEAR,
+    PUSH_FURTHER_PUFFIN,
     STUDY_SLOTS,
-    TALK_ABOUT_FRESHWATER_FISH,
+    TALK_ABOUT_AMERICAN_ALLIGATOR,
+    TALK_ABOUT_AMERICAN_BISON,
+    TALK_ABOUT_ELK,
     TALK_ABOUT_LION,
-    TALK_ABOUT_POLAR_BEAR,
-    WIKI_FRESHWATER_FISH,
+    TALK_ABOUT_PUFFIN,
+    WIKI_AMERICAN_ALLIGATOR,
+    WIKI_AMERICAN_BISON,
+    WIKI_ATLANTIC_PUFFIN,
+    WIKI_ELK,
     WIKI_LION,
-    WIKI_POLAR_BEAR,
     level_display_name,
     shipped_levels_for,
     study_card_ids,
@@ -35,9 +41,11 @@ from study_cards import (  # noqa: E402
 )
 
 FP = REPO / "static" / "field-pack"
-BEAR = FP / "cards" / "polar-bear" / "index.html"
+PUFFIN = FP / "cards" / "puffin" / "index.html"
 JELLYFISH = FP / "cards" / "jellyfish" / "index.html"
-FISH = FP / "cards" / "freshwater-fish" / "index.html"
+GATOR = FP / "cards" / "american-alligator" / "index.html"
+BISON = FP / "cards" / "american-bison" / "index.html"
+ELK = FP / "cards" / "elk" / "index.html"
 PRINT_KIT = FP / "js" / "print-kit.js"
 STUDY_JS = FP / "js" / "study-card.js"
 STYLES = FP / "css" / "styles.css"
@@ -56,79 +64,63 @@ GENERIC_WORKSHEET = (
 )
 
 TEACH = (
-    "Live in the Arctic on sea ice and nearby coasts",
-    "Fur looks white; skin underneath is black",
-    "Huge paws for walking on ice and paddling",
-    "Hunt seals from the ice",
-    "Need healthy sea ice to find food",
+    "Black-and-white seabird with a big colorful bill",
+    "Often nicknamed “clown of the sea” or “sea parrot”",
+    "Nest in burrows on rocky islands and cliffs",
+    "Can carry many small fish crosswise in one bill",
+    "Spend most of the year out at sea",
 )
 
 STEMS = (
-    "Where do polar bears live in the wild?",
-    "Why does polar bear fur look white?",
-    "What color is the skin under a polar bear’s fur?",
-    "How do a polar bear’s huge paws help?",
-    "What do polar bears specialize in hunting?",
-    "How do polar bears swim?",
-    "How does a polar bear stay warm in the cold?",
-    "Where do polar bear moms have their cubs?",
-    "Why does healthy sea ice matter for polar bears?",
-    "Do polar bears live at the South Pole?",
+    "Where do Atlantic puffins spend their year?",
+    "What does an Atlantic puffin’s bill look like in breeding season?",
+    "Where does an Atlantic puffin usually put its nest?",
+    "How many chicks do Atlantic puffins usually raise in a season?",
+    "How can an Atlantic puffin carry food home?",
+    "How does an Atlantic puffin swim after fish?",
+    "How do Atlantic puffins often walk on land?",
+    "How can people help wild puffins?",
+    "How do Atlantic puffins usually nest?",
+    "Is an Atlantic puffin a penguin?",
 )
 
 QIDS = (
-    "arctic-home",
-    "looks-white-fur-soft",
-    "black-skin-soft",
-    "ice-and-paddle-paws",
-    "seal-snacks-soft",
-    "strong-swimmers-soft",
-    "fat-jacket-soft",
-    "cub-dens-soft",
-    "soft-ice-care",
-    "not-south-pole-myth",
+    "north-atlantic-home-soft",
+    "colorful-bill-soft",
+    "burrow-nest-soft",
+    "one-egg-soft",
+    "fish-crossbill-soft",
+    "underwater-wings-soft",
+    "land-waddle-soft",
+    "soft-island-ocean-care",
+    "colony-life-soft",
+    "not-a-penguin-myth",
 )
 
 PLAIN_LEVEL_LABELS = ("Easy", "Hard")
 AGE_BADGES = ("Ages", "Age 4", "age badge", "ages 4", "4–6", "4-6")
 BRITTLE = (
     "IUCN",
-    "Vulnerable",
     "Endangered",
+    "Vulnerable",
     "Critically",
+    "Near Threatened",
     "Least Concern",
     "CITES",
-    "Ursus",
-    "climate change",
-    "global warming",
-    "brown bear",
-    "blubber",
+    "Fratercula",
+    "arctica",
     "kg",
     "cm",
     "mph",
     "km/h",
 )
-# Talk / push are Zoologist prompts (delayed implantation, Ursus vs
-# Thalarctos, subpopulations, stored-fat den, regional status, skull).
-PAGE_BRITTLE = (
-    "Endangered",
-    "Critically",
-    "Least Concern",
-    "climate change",
-    "global warming",
-    "blubber",
-    "kg",
-    "cm",
-    "mph",
-    "km/h",
-)
+PAGE_BRITTLE = BRITTLE
 RESERVED = (
     "IUCN",
     "Vulnerable",
     "CITES",
-    "Ursus",
-    "climate change",
-    "brown bear",
+    "Fratercula",
+    "arctica",
 )
 
 
@@ -140,9 +132,10 @@ def _main(html: str) -> str:
     return html.split('<main class="card-page">', 1)[1].split("</main>", 1)[0]
 
 
-class PolarBearEasyStudyCardTests(unittest.TestCase):
-    def test_deck_is_junior_ranger(self):
-        self.assertIn("polar-bear", study_card_ids())
+class PuffinEasyStudyCardTests(unittest.TestCase):
+    def test_deck_is_junior_ranger_only(self):
+        self.assertIn("puffin", study_card_ids())
+        self.assertNotIn("jellyfish", study_card_ids())
         self.assertEqual(
             study_card_ids(),
             (
@@ -177,19 +170,20 @@ class PolarBearEasyStudyCardTests(unittest.TestCase):
                 "puffin",
             ),
         )
-        self.assertEqual(shipped_levels_for("polar-bear"), ("easy", "hard", "zoologist"))
-        self.assertIsNotNone(study_deck_for("polar-bear", "hard"))
-        self.assertIsNotNone(study_deck_for("polar-bear", "zoologist"))
-        deck = study_deck_for("polar-bear")
+        self.assertEqual(shipped_levels_for("puffin"), ("easy",))
+        self.assertIsNone(study_deck_for("puffin", "hard"))
+        self.assertIsNone(study_deck_for("puffin", "zoologist"))
+        self.assertIsNone(study_deck_for("jellyfish"))
+        deck = study_deck_for("puffin")
         self.assertIsNotNone(deck)
-        self.assertEqual(deck["id"], "polar-bear")
+        self.assertEqual(deck["id"], "puffin")
         self.assertEqual(deck["level"], "easy")
         self.assertEqual(deck["level_label"], "Junior Ranger")
         self.assertEqual(level_display_name("easy"), "Junior Ranger")
-        self.assertEqual(deck["source"], WIKI_POLAR_BEAR)
+        self.assertEqual(deck["source"], WIKI_ATLANTIC_PUFFIN)
         self.assertEqual(
             deck["source_note"],
-            "Facts from Wikipedia, Polar bear.",
+            "Facts from Wikipedia, Atlantic puffin.",
         )
         self.assertEqual(validate_deck(deck), [])
         self.assertEqual(len(deck["teach"]), 5)
@@ -197,8 +191,8 @@ class PolarBearEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(len(deck["questions"]), STUDY_SLOTS)
         self.assertEqual([q["stem"] for q in deck["questions"]], list(STEMS))
         self.assertEqual([q["id"] for q in deck["questions"]], list(QIDS))
-        self.assertEqual(deck["talk_about"], list(TALK_ABOUT_POLAR_BEAR))
-        self.assertEqual(deck["push_further"], list(PUSH_FURTHER_POLAR_BEAR))
+        self.assertEqual(deck["talk_about"], list(TALK_ABOUT_PUFFIN))
+        self.assertEqual(deck["push_further"], list(PUSH_FURTHER_PUFFIN))
         letters = [q["correct"] for q in deck["questions"]]
         self.assertEqual(letters, [target_letter_for_slot(i) for i in range(1, 11)])
         self.assertEqual(letters.count("A"), 4)
@@ -212,22 +206,19 @@ class PolarBearEasyStudyCardTests(unittest.TestCase):
         blob = " ".join(deck["teach"] + [q["stem"] + q["why"] for q in deck["questions"]])
         for phrase in BRITTLE + RESERVED:
             self.assertNotIn(phrase, blob)
-        self.assertIn("arctic", blob.lower())
-        self.assertIn("sea ice", blob.lower())
-        self.assertIn("antarctic", blob.lower())
-        self.assertIn("see-through", blob.lower())
-        self.assertIn("scatter", blob.lower())
-        self.assertIn("black", blob.lower())
-        self.assertIn("paw", blob.lower())
-        self.assertIn("paddle", blob.lower())
-        self.assertIn("ringed seal", blob.lower())
-        self.assertIn("swim", blob.lower())
-        self.assertIn("fat", blob.lower())
-        self.assertIn("den", blob.lower())
+        self.assertIn("ocean", blob.lower())
+        self.assertIn("bill", blob.lower())
+        self.assertIn("burrow", blob.lower())
+        self.assertIn("egg", blob.lower())
+        self.assertIn("fish", blob.lower())
+        self.assertIn("wing", blob.lower())
+        self.assertIn("waddle", blob.lower())
+        self.assertIn("island", blob.lower())
+        self.assertIn("colon", blob.lower())
         self.assertIn("penguin", blob.lower())
         self.assertEqual(
-            WIKI_POLAR_BEAR,
-            "https://en.wikipedia.org/wiki/Polar_bear",
+            WIKI_ATLANTIC_PUFFIN,
+            "https://en.wikipedia.org/wiki/Atlantic_puffin",
         )
 
     def test_other_study_decks_untouched(self):
@@ -238,16 +229,31 @@ class PolarBearEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(lion["talk_about"], list(TALK_ABOUT_LION))
         self.assertEqual(lion["push_further"], list(PUSH_FURTHER_LION))
         self.assertEqual(shipped_levels_for("african-lion"), ("easy", "hard", "zoologist"))
-        fish = study_deck_for("freshwater-fish")
-        self.assertEqual(fish["source"], WIKI_FRESHWATER_FISH)
-        self.assertEqual(fish["talk_about"], list(TALK_ABOUT_FRESHWATER_FISH))
-        self.assertEqual(fish["push_further"], list(PUSH_FURTHER_FRESHWATER_FISH))
-        self.assertEqual(shipped_levels_for("freshwater-fish"), ("easy", "hard", "zoologist"))
-        self.assertIsNotNone(study_deck_for("freshwater-fish", "hard"))
-        self.assertIsNotNone(study_deck_for("freshwater-fish", "zoologist"))
+        gator = study_deck_for("american-alligator")
+        self.assertEqual(gator["source"], WIKI_AMERICAN_ALLIGATOR)
+        self.assertEqual(gator["talk_about"], list(TALK_ABOUT_AMERICAN_ALLIGATOR))
+        self.assertEqual(gator["push_further"], list(PUSH_FURTHER_AMERICAN_ALLIGATOR))
+        self.assertEqual(shipped_levels_for("american-alligator"), ("easy", "hard", "zoologist"))
+        self.assertIsNotNone(study_deck_for("american-alligator", "hard"))
+        self.assertIsNotNone(study_deck_for("american-alligator", "zoologist"))
+        bison = study_deck_for("american-bison")
+        self.assertEqual(bison["source"], WIKI_AMERICAN_BISON)
+        self.assertEqual(bison["talk_about"], list(TALK_ABOUT_AMERICAN_BISON))
+        self.assertEqual(bison["push_further"], list(PUSH_FURTHER_AMERICAN_BISON))
+        self.assertEqual(shipped_levels_for("american-bison"), ("easy", "hard", "zoologist"))
+        self.assertIsNotNone(study_deck_for("american-bison", "hard"))
+        self.assertIsNotNone(study_deck_for("american-bison", "zoologist"))
+        elk = study_deck_for("elk")
+        self.assertEqual(elk["source"], WIKI_ELK)
+        self.assertEqual(elk["talk_about"], list(TALK_ABOUT_ELK))
+        self.assertEqual(elk["push_further"], list(PUSH_FURTHER_ELK))
+        self.assertEqual(shipped_levels_for("elk"), ("easy", "hard", "zoologist"))
+        self.assertIsNotNone(study_deck_for("elk", "hard"))
+        self.assertIsNotNone(study_deck_for("elk", "zoologist"))
+        self.assertEqual(shipped_levels_for("sea-otter"), ("easy", "hard", "zoologist"))
 
     def test_generator_html_is_study_not_worksheet(self):
-        html = outing_talk_html({"id": "polar-bear", "packTemplate": "animals"})
+        html = outing_talk_html({"id": "puffin", "packTemplate": "animals"})
         self.assertIn(">Quiz</h2>", html)
         self.assertIn("card-study-pack", html)
         self.assertIn("Learn first", html)
@@ -260,68 +266,70 @@ class PolarBearEasyStudyCardTests(unittest.TestCase):
         self.assertIn('<details class="study-explore', html)
         self.assertIn("Explore more", html)
         self.assertNotIn('<aside class="study-deepen"', html)
-        for prompt in TALK_ABOUT_POLAR_BEAR + PUSH_FURTHER_POLAR_BEAR:
+        for prompt in TALK_ABOUT_PUFFIN + PUSH_FURTHER_PUFFIN:
             self.assertIn(prompt, html)
         self.assertIn("Show answers", html)
         self.assertIn("Score", html)
         for line in TEACH:
-            self.assertIn(line, html)
+            self.assertIn(line.replace("&", "&amp;"), html)
         for stem in STEMS:
             self.assertIn(stem, html)
         for phrase in GENERIC_WORKSHEET:
             self.assertNotIn(phrase, html)
         visible = _text(html)
         self.assertIn("Junior Ranger", visible)
-        self.assertIn("Park Ranger", visible)
-        self.assertIn("Zoologist", visible)
-        self.assertIn('class="study-level-picker"', html)
-        self.assertIn('data-study-pick="easy"', html)
-        self.assertIn('data-study-pick="hard"', html)
-        self.assertIn('data-study-pick="zoologist"', html)
-        self.assertNotIn('class="study-level-badge"', html)
-        self.assertEqual(html.count('role="group"'), 2)
-        self.assertIn("study-level-picker-bottom", html)
+        self.assertNotIn("Park Ranger", visible)
+        self.assertNotIn("Zoologist", visible)
+        self.assertIn('class="study-level-badge"', html)
+        self.assertNotIn('class="study-level-picker"', html)
+        self.assertNotIn('data-study-pick="hard"', html)
+        self.assertNotIn('data-study-pick="zoologist"', html)
+        self.assertNotIn("study-level-picker-bottom", html)
         for badge in PLAIN_LEVEL_LABELS + AGE_BADGES:
             self.assertNotIn(badge, visible)
         for phrase in PAGE_BRITTLE:
             self.assertNotIn(phrase, html)
-        self.assertIn("On Arctic sea ice and nearby coasts — not the Antarctic", html)
         self.assertIn(
-            "No — polar bears are Arctic animals; penguins, not polar bears, live in Antarctica",
+            "They breed on cold northern coasts and islands, then winter on the open ocean",
             html,
         )
-        self.assertIn("Facts from Wikipedia, Polar bear.", html)
+        self.assertIn(
+            "No — puffins can fly in the air; penguins are different birds that don’t",
+            html,
+        )
+        self.assertIn("Facts from Wikipedia, Atlantic puffin.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
         html = outing_talk_html({"id": "jellyfish", "packTemplate": "animals"})
         self.assertIn("What do they eat?", html)
         self.assertNotIn("card-study-pack", html)
-        self.assertNotIn("Where do polar bears live in the wild?", html)
-        otter = JELLYFISH.read_text(encoding="utf-8")
-        self.assertIn("What do they eat?", otter)
-        self.assertNotIn("card-study-pack", otter)
-        self.assertNotIn("Where do polar bears live in the wild?", otter)
+        self.assertNotIn("Where do Atlantic puffins spend their year?", html)
+        jelly = JELLYFISH.read_text(encoding="utf-8")
+        self.assertIn("What do they eat?", jelly)
+        self.assertNotIn("card-study-pack", jelly)
+        self.assertNotIn("Where do Atlantic puffins spend their year?", jelly)
 
-    def test_published_polar_bear_card_matches_easy_deck(self):
-        html = BEAR.read_text(encoding="utf-8")
+    def test_published_puffin_card_matches_easy_deck(self):
+        html = PUFFIN.read_text(encoding="utf-8")
         main = _main(html)
         for phrase in GENERIC_WORKSHEET:
             self.assertNotIn(phrase, main)
         for stem in STEMS:
             self.assertIn(stem, main)
         for line in TEACH:
-            self.assertIn(line, main)
+            self.assertIn(line.replace("&", "&amp;"), main)
         self.assertIn("card-page-photo", main)
-        self.assertIn("/field-pack/photos/polar-bear.jpg", main)
+        self.assertIn("/field-pack/photos/puffin.jpg", main)
         self.assertIn('class="card-try-next no-print"', main)
-        self.assertIn("study-level-picker-bottom", main)
+        self.assertNotIn("study-level-picker-bottom", main)
         self.assertNotIn("card-print-note", main)
         self.assertIn("study-card.js?v=10", html)
         self.assertIn("study-card.css?v=10", html)
         self.assertIn("study-cards-data.js?v=6", html)
         self.assertIn('id="study-card-data"', html)
         self.assertIn('"level_label": "Junior Ranger"', html)
-        self.assertIn('"id": "polar-bear"', html)
+        self.assertIn('"id": "puffin"', html)
+        self.assertNotIn('"id": "elk"', html)
         self.assertIn('id="study-print-template"', html)
         self.assertIn("print-kit.js?v=20", html)
         self.assertIn("styles.css?v=42", html)
@@ -337,13 +345,12 @@ class PolarBearEasyStudyCardTests(unittest.TestCase):
         self.assertLess(main.find("study-explore"), main.find("card-try-next"))
         visible = _text(main)
         self.assertIn("Junior Ranger", visible)
-        self.assertIn("Park Ranger", visible)
-        self.assertIn("Zoologist", visible)
-        self.assertIn('class="study-level-picker"', main)
-        self.assertIn('data-study-pick="easy"', main)
-        self.assertIn('data-study-pick="hard"', main)
-        self.assertIn('data-study-pick="zoologist"', main)
-        self.assertNotIn('class="study-level-badge"', main)
+        self.assertNotIn("Park Ranger", visible)
+        self.assertNotIn("Zoologist", visible)
+        self.assertIn('class="study-level-badge"', main)
+        self.assertNotIn('class="study-level-picker"', main)
+        self.assertNotIn('data-study-pick="hard"', main)
+        self.assertNotIn('data-study-pick="zoologist"', main)
         self.assertIn("Learn first", main)
         self.assertIn(">Quiz</h2>", main)
         self.assertEqual(main.count("data-study-correct"), 2)
@@ -363,35 +370,38 @@ class PolarBearEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Talk about it", back)
         self.assertIn("Push further", back)
         self.assertIn("ps-study-deepen", back)
-        for prompt in TALK_ABOUT_POLAR_BEAR + PUSH_FURTHER_POLAR_BEAR:
+        for prompt in TALK_ABOUT_PUFFIN + PUSH_FURTHER_PUFFIN:
             self.assertIn(prompt, back)
         self.assertEqual(
-            study_try_next_ids("polar-bear"),
-            ["african-penguin", "asian-small-clawed-otter", "african-lion"],
+            study_try_next_ids("puffin"),
+            ["african-penguin", "polar-bear", "african-lion"],
         )
 
     def test_print_faces_are_duplex_and_clamped(self):
-        deck = study_deck_for("polar-bear")
+        deck = study_deck_for("puffin")
         sheet = study_print_html(
             deck,
-            name="Polar bear",
-            emoji="🐻‍❄️",
-            photo="/field-pack/photos/polar-bear.jpg?v=img2",
+            name="Puffin",
+            emoji="🐦",
+            photo="/field-pack/photos/puffin.jpg?v=img2",
             photo_pos="50% 22%",
         )
         self.assertIn("ps-study-front", sheet)
         self.assertIn("ps-study-back", sheet)
         self.assertIn("ps-study-photo", sheet)
-        self.assertIn("/field-pack/photos/polar-bear.jpg", sheet)
+        self.assertIn("/field-pack/photos/puffin.jpg", sheet)
         self.assertIn("Flip for answers", sheet)
         self.assertIn("Junior Ranger", sheet)
         self.assertNotIn(" · Easy ·", sheet)
-        self.assertIn(WIKI_POLAR_BEAR, sheet)
+        self.assertIn(WIKI_ATLANTIC_PUFFIN, sheet)
         for stem in STEMS:
             self.assertIn(stem, sheet)
-        self.assertIn("On Arctic sea ice and nearby coasts — not the Antarctic", sheet)
         self.assertIn(
-            "No — polar bears are Arctic animals; penguins, not polar bears, live in Antarctica",
+            "They breed on cold northern coasts and islands, then winter on the open ocean",
+            sheet,
+        )
+        self.assertIn(
+            "No — puffins can fly in the air; penguins are different birds that don’t",
             sheet,
         )
         front, _, back = sheet.partition("ps-study-back")
@@ -399,7 +409,7 @@ class PolarBearEasyStudyCardTests(unittest.TestCase):
         self.assertNotIn("Talk about it", front)
         self.assertIn("Talk about it", back)
         self.assertIn("Push further", back)
-        for prompt in TALK_ABOUT_POLAR_BEAR + PUSH_FURTHER_POLAR_BEAR:
+        for prompt in TALK_ABOUT_PUFFIN + PUSH_FURTHER_PUFFIN:
             self.assertIn(prompt, back)
         css = STYLES.read_text(encoding="utf-8")
         self.assertIn(".ps-study-front", css)
@@ -415,17 +425,15 @@ class PolarBearEasyStudyCardTests(unittest.TestCase):
         self.assertIn("is-wrong-pick", study_js)
         self.assertIn("FPStudyLevelName", study_js + STUDY_DATA_JS.read_text(encoding="utf-8"))
 
-    def test_artifacts_include_polar_bear_easy_hard_and_zoologist(self):
+    def test_artifacts_include_puffin_easy_only(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
-        self.assertIn("polar-bear", payload)
+        self.assertIn("puffin", payload)
         self.assertNotIn("jellyfish", payload)
-        self.assertIn("freshwater-fish", payload)
-        bear = payload["polar-bear"]
-        self.assertEqual(bear["id"], "polar-bear")
-        self.assertEqual(set(bear["levels"]), {"easy", "hard", "zoologist"})
-        self.assertEqual(bear["levels"]["hard"]["teach"], [])
-        self.assertEqual(bear["levels"]["zoologist"]["teach"], [])
-        easy = bear["levels"]["easy"]
+        self.assertIn("elk", payload)
+        puffin = payload["puffin"]
+        self.assertEqual(puffin["id"], "puffin")
+        self.assertEqual(set(puffin["levels"]), {"easy"})
+        easy = puffin["levels"]["easy"]
         self.assertEqual(len(easy["teach"]), 5)
         self.assertEqual(len(easy["questions"]), STUDY_SLOTS)
         self.assertEqual(
@@ -435,10 +443,10 @@ class PolarBearEasyStudyCardTests(unittest.TestCase):
         for q in easy["questions"]:
             self.assertEqual(len(q["choices"]), 3)
         data_js = STUDY_DATA_JS.read_text(encoding="utf-8")
-        self.assertIn('"polar-bear"', data_js)
+        self.assertIn('"puffin"', data_js)
         self.assertIn('"easy":"Junior Ranger"', data_js)
         self.assertEqual(
-            set(payload["freshwater-fish"]["levels"]),
+            set(payload["elk"]["levels"]),
             {"easy", "hard", "zoologist"},
         )
         self.assertEqual(set(payload["african-lion"]["levels"]), {"easy", "hard", "zoologist"})
@@ -453,15 +461,23 @@ class PolarBearEasyStudyCardTests(unittest.TestCase):
             },
         )
         self.assertEqual(level_display_name("easy"), "Junior Ranger")
-        bear_html = BEAR.read_text(encoding="utf-8")
-        visible = _text(_main(bear_html))
+        puffin_html = PUFFIN.read_text(encoding="utf-8")
+        visible = _text(_main(puffin_html))
         self.assertIn("Junior Ranger", visible)
-        self.assertIn("Park Ranger", visible)
-        self.assertIn("Zoologist", visible)
-        fish_html = FISH.read_text(encoding="utf-8")
-        self.assertIn("Junior Ranger", _text(_main(fish_html)))
-        self.assertIn("Park Ranger", _text(_main(fish_html)))
-        self.assertIn("Zoologist", _text(_main(fish_html)))
+        self.assertNotIn("Park Ranger", visible)
+        self.assertNotIn("Zoologist", visible)
+        gator_html = GATOR.read_text(encoding="utf-8")
+        self.assertIn("Junior Ranger", _text(_main(gator_html)))
+        self.assertIn("Park Ranger", _text(_main(gator_html)))
+        self.assertIn("Zoologist", _text(_main(gator_html)))
+        bison_html = BISON.read_text(encoding="utf-8")
+        self.assertIn("Junior Ranger", _text(_main(bison_html)))
+        self.assertIn("Park Ranger", _text(_main(bison_html)))
+        self.assertIn("Zoologist", _text(_main(bison_html)))
+        elk_html = ELK.read_text(encoding="utf-8")
+        self.assertIn("Junior Ranger", _text(_main(elk_html)))
+        self.assertIn("Park Ranger", _text(_main(elk_html)))
+        self.assertIn("Zoologist", _text(_main(elk_html)))
 
 
 if __name__ == "__main__":

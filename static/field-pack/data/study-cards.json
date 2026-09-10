@@ -11982,5 +11982,163 @@
         ]
       }
     }
+  },
+  "puffin": {
+    "id": "puffin",
+    "source": "https://en.wikipedia.org/wiki/Atlantic_puffin",
+    "source_note": "Facts from Wikipedia, Atlantic puffin.",
+    "talk_about": [
+      "A puffin’s bill turns bright orange, yellow, and red in breeding season. Why might that color show?",
+      "Puffins nest in burrows on rocky islands and cliffs. What might a burrow keep safe?",
+      "A puffin can hold several small fish side-by-side in one bill. How could that help a chick?"
+    ],
+    "push_further": [
+      "On land puffins walk with a funny side-to-side waddle. Why might that happen?",
+      "Most of the year puffins live far out at sea. What would winter on the ocean be like?",
+      "Nesting islands often have no land predators. Why might that help puffin families?"
+    ],
+    "levels": {
+      "easy": {
+        "teach": [
+          "Black-and-white seabird with a big colorful bill",
+          "Often nicknamed “clown of the sea” or “sea parrot”",
+          "Nest in burrows on rocky islands and cliffs",
+          "Can carry many small fish crosswise in one bill",
+          "Spend most of the year out at sea"
+        ],
+        "questions": [
+          {
+            "slot": 1,
+            "id": "north-atlantic-home-soft",
+            "title": "North Atlantic home",
+            "stem": "Where do Atlantic puffins spend their year?",
+            "choices": [
+              "They breed on cold northern coasts and islands, then winter on the open ocean",
+              "They live only in tropical rainforests",
+              "They never leave a desert burrow"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says Atlantic puffins breed on cold northern coasts and islands. They spend autumn and winter out on the open ocean."
+          },
+          {
+            "slot": 2,
+            "id": "colorful-bill-soft",
+            "title": "Colorful bill",
+            "stem": "What does an Atlantic puffin’s bill look like in breeding season?",
+            "choices": [
+              "A plain gray stick all year",
+              "A bright orange-yellow-red bill",
+              "A long pink flamingo beak"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says the breeding-season bill is boldly marked with orange-red, yellow, and darker plates. That bright color shows in spring."
+          },
+          {
+            "slot": 3,
+            "id": "burrow-nest-soft",
+            "title": "Burrow nest",
+            "stem": "Where does an Atlantic puffin usually put its nest?",
+            "choices": [
+              "In a treetop stick nest",
+              "In a floating seaweed raft",
+              "It digs a burrow — or uses a rock crevice — for the nest"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says puffins nest in clifftop colonies. They dig a burrow, and they may also use a crevice among rocks."
+          },
+          {
+            "slot": 4,
+            "id": "one-egg-soft",
+            "title": "One egg",
+            "stem": "How many chicks do Atlantic puffins usually raise in a season?",
+            "choices": [
+              "Usually one chick from one egg",
+              "A dozen chicks every week",
+              "No eggs — they grow from seeds"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says the female usually lays a single white egg each year. That one chick is the season’s family."
+          },
+          {
+            "slot": 5,
+            "id": "fish-crossbill-soft",
+            "title": "Fish in the bill",
+            "stem": "How can an Atlantic puffin carry food home?",
+            "choices": [
+              "It stacks fish on its back",
+              "It can hold several small fish side-by-side in the bill at once",
+              "It only swallows one giant fish and never carries any"
+            ],
+            "correct": "B",
+            "why": "Wikipedia says a puffin can catch several small fish in one dive. A grooved tongue and a special bill hold them in a crosswise row."
+          },
+          {
+            "slot": 6,
+            "id": "underwater-wings-soft",
+            "title": "Underwater wings",
+            "stem": "How does an Atlantic puffin swim after fish?",
+            "choices": [
+              "It walks on the seafloor on stilts",
+              "It uses only its tail as a propeller",
+              "It “flies” underwater with its wings, and its feet steer"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says puffins swim underwater using their wings like paddles. Their feet work as a rudder to steer."
+          },
+          {
+            "slot": 7,
+            "id": "land-waddle-soft",
+            "title": "Land waddle",
+            "stem": "How do Atlantic puffins often walk on land?",
+            "choices": [
+              "With a funny side-to-side waddle",
+              "On long hopping kangaroo legs",
+              "They never stand up on land"
+            ],
+            "correct": "A",
+            "why": "Wikipedia notes the puffin’s waddle on land. Short legs set far back give that upright, side-to-side walk."
+          },
+          {
+            "slot": 8,
+            "id": "soft-island-ocean-care",
+            "title": "Soft care",
+            "stem": "How can people help wild puffins?",
+            "choices": [
+              "Take every egg home from the cliff",
+              "Protect nesting islands and keep oceans healthy for fish",
+              "Fill burrows with trash so chicks stay hidden"
+            ],
+            "correct": "B",
+            "why": "Wikipedia ties puffins to predator-free nesting islands and to fish in the sea. Soft care is healthy islands plus healthy oceans — no status letter."
+          },
+          {
+            "slot": 9,
+            "id": "colony-life-soft",
+            "title": "Colony life",
+            "stem": "How do Atlantic puffins usually nest?",
+            "choices": [
+              "Each pair hides alone in a desert cave",
+              "They build one giant shared nest in a tree",
+              "They nest close together in busy cliff-top colonies"
+            ],
+            "correct": "C",
+            "why": "Wikipedia says puffins are sociable and usually breed in large clifftop colonies. Neighbors nest close together."
+          },
+          {
+            "slot": 10,
+            "id": "not-a-penguin-myth",
+            "title": "Not a penguin",
+            "stem": "Is an Atlantic puffin a penguin?",
+            "choices": [
+              "No — puffins can fly in the air; penguins are different birds that don’t",
+              "Yes — puffins and penguins are the same bird",
+              "Yes — puffins never leave the ice and cannot fly"
+            ],
+            "correct": "A",
+            "why": "Wikipedia says Atlantic puffins fly in the air over the sea. Penguins are different birds that do not fly in the air."
+          }
+        ]
+      }
+    }
   }
 }

@@ -966,6 +966,28 @@ soft). Soften contested numbers. Treat IUCN letters as
 snapshots. Keep kid-friendly. Do not redo JR or PR
 themes. Do not invent photos.
 
+Facts for puffin Junior Ranger (easy) are Wikipedia-backed:
+https://en.wikipedia.org/wiki/Atlantic_puffin
+Also Fratercula pages as needed. JR stays kid-simple
+“puffin” (Atlantic puffin). Black-and-white seabird with
+a big colorful bill. Often nicknamed “clown of the sea”
+or “sea parrot.” Nest in burrows on rocky islands and
+cliffs. Can carry many small fish crosswise in one bill.
+Spend most of the year out at sea. Breed on cold northern
+coasts and islands; winter on the open ocean. Bright
+orange-yellow-red bill in breeding season. Dig a burrow
+(or use a rock crevice) for the nest. Usually raise one
+chick per season. Hold several small fish side-by-side
+in the bill at once. “Fly” underwater with wings; feet
+steer. On land they walk with a funny side-to-side
+waddle. Soft care: protect nesting islands and keep
+oceans healthy for fish (no VU / status dump on JR).
+Nest close together in busy cliff-top colonies. Myth:
+not a penguin — puffins can fly in the air; penguins
+are different birds that don’t. Park Ranger and
+Zoologist are reserved for later: denser Fratercula
+taxonomy, physiology, status. Do not invent photos.
+
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
 zoologist. Visible copy uses LEVEL_DISPLAY_NAMES only — no age badges,
@@ -1018,6 +1040,7 @@ WIKI_SEA_OTTER = "https://en.wikipedia.org/wiki/Sea_otter"
 WIKI_AMERICAN_ALLIGATOR = "https://en.wikipedia.org/wiki/American_alligator"
 WIKI_AMERICAN_BISON = "https://en.wikipedia.org/wiki/American_bison"
 WIKI_ELK = "https://en.wikipedia.org/wiki/Elk"
+WIKI_ATLANTIC_PUFFIN = "https://en.wikipedia.org/wiki/Atlantic_puffin"
 
 LETTERS = ("A", "B", "C")
 STUDY_SLOTS = 10
@@ -1095,7 +1118,7 @@ LEVEL_DISPLAY_NAMES = {
 # Asian small-clawed otter, two-toed sloth, freshwater
 # fish, polar bear, sea otter, American alligator, and
 # American bison and elk ship Junior Ranger + Park
-# Ranger + Zoologist.
+# Ranger + Zoologist. Puffin ships Junior Ranger only.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -1140,6 +1163,7 @@ STUDY_NEIGHBORS = {
     "american-alligator": ("freshwater-fish", "galapagos-tortoise"),
     "american-bison": ("zebra", "warthog"),
     "elk": ("american-bison", "zebra"),
+    "puffin": ("african-penguin", "polar-bear"),
 }
 
 STUDY_CARD_TITLES = {
@@ -1171,6 +1195,7 @@ STUDY_CARD_TITLES = {
     "american-alligator": "American alligator",
     "american-bison": "American bison",
     "elk": "Elk",
+    "puffin": "Puffin",
 }
 
 # Shared answers-side deepen (Claude sample). Not scored. Future animals reuse keys.
@@ -1453,6 +1478,16 @@ PUSH_FURTHER_ELK = (
     "Sika deer and Thorold’s deer are close cousins. What else might that eastern family share?",
     "How many true elk subspecies exist is still debated. Why might lumpers and splitters disagree?",
     "Elk and red deer can have fertile hybrids. Why might mixed zones need extra care?",
+)
+TALK_ABOUT_PUFFIN = (
+    "A puffin’s bill turns bright orange, yellow, and red in breeding season. Why might that color show?",
+    "Puffins nest in burrows on rocky islands and cliffs. What might a burrow keep safe?",
+    "A puffin can hold several small fish side-by-side in one bill. How could that help a chick?",
+)
+PUSH_FURTHER_PUFFIN = (
+    "On land puffins walk with a funny side-to-side waddle. Why might that happen?",
+    "Most of the year puffins live far out at sea. What would winter on the ocean be like?",
+    "Nesting islands often have no land predators. Why might that help puffin families?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -13371,6 +13406,157 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia describes historic reintroductions that moved elk into places where other kinds once lived. Those moves can mix subspecies genetics in some herds. Conservation genetics stays a soft story.",
+                    },
+                ],
+            },
+        },
+    },
+    "puffin": {
+        "id": "puffin",
+        "source": WIKI_ATLANTIC_PUFFIN,
+        "source_note": "Facts from Wikipedia, Atlantic puffin.",
+        "talk_about": list(TALK_ABOUT_PUFFIN),
+        "push_further": list(PUSH_FURTHER_PUFFIN),
+        "levels": {
+            "easy": {
+                # Teaching-first: same front as the quiz. Hard later may hide these.
+                "teach": [
+                    "Black-and-white seabird with a big colorful bill",
+                    "Often nicknamed “clown of the sea” or “sea parrot”",
+                    "Nest in burrows on rocky islands and cliffs",
+                    "Can carry many small fish crosswise in one bill",
+                    "Spend most of the year out at sea",
+                ],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "north-atlantic-home-soft",
+                        "title": "North Atlantic home",
+                        "stem": "Where do Atlantic puffins spend their year?",
+                        "choices": [
+                            "They breed on cold northern coasts and islands, then winter on the open ocean",
+                            "They live only in tropical rainforests",
+                            "They never leave a desert burrow",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says Atlantic puffins breed on cold northern coasts and islands. They spend autumn and winter out on the open ocean.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "colorful-bill-soft",
+                        "title": "Colorful bill",
+                        "stem": "What does an Atlantic puffin’s bill look like in breeding season?",
+                        "choices": [
+                            "A plain gray stick all year",
+                            "A bright orange-yellow-red bill",
+                            "A long pink flamingo beak",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says the breeding-season bill is boldly marked with orange-red, yellow, and darker plates. That bright color shows in spring.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "burrow-nest-soft",
+                        "title": "Burrow nest",
+                        "stem": "Where does an Atlantic puffin usually put its nest?",
+                        "choices": [
+                            "In a treetop stick nest",
+                            "In a floating seaweed raft",
+                            "It digs a burrow — or uses a rock crevice — for the nest",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says puffins nest in clifftop colonies. They dig a burrow, and they may also use a crevice among rocks.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "one-egg-soft",
+                        "title": "One egg",
+                        "stem": "How many chicks do Atlantic puffins usually raise in a season?",
+                        "choices": [
+                            "Usually one chick from one egg",
+                            "A dozen chicks every week",
+                            "No eggs — they grow from seeds",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says the female usually lays a single white egg each year. That one chick is the season’s family.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "fish-crossbill-soft",
+                        "title": "Fish in the bill",
+                        "stem": "How can an Atlantic puffin carry food home?",
+                        "choices": [
+                            "It stacks fish on its back",
+                            "It can hold several small fish side-by-side in the bill at once",
+                            "It only swallows one giant fish and never carries any",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says a puffin can catch several small fish in one dive. A grooved tongue and a special bill hold them in a crosswise row.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "underwater-wings-soft",
+                        "title": "Underwater wings",
+                        "stem": "How does an Atlantic puffin swim after fish?",
+                        "choices": [
+                            "It walks on the seafloor on stilts",
+                            "It uses only its tail as a propeller",
+                            "It “flies” underwater with its wings, and its feet steer",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says puffins swim underwater using their wings like paddles. Their feet work as a rudder to steer.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "land-waddle-soft",
+                        "title": "Land waddle",
+                        "stem": "How do Atlantic puffins often walk on land?",
+                        "choices": [
+                            "With a funny side-to-side waddle",
+                            "On long hopping kangaroo legs",
+                            "They never stand up on land",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia notes the puffin’s waddle on land. Short legs set far back give that upright, side-to-side walk.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "soft-island-ocean-care",
+                        "title": "Soft care",
+                        "stem": "How can people help wild puffins?",
+                        "choices": [
+                            "Take every egg home from the cliff",
+                            "Protect nesting islands and keep oceans healthy for fish",
+                            "Fill burrows with trash so chicks stay hidden",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia ties puffins to predator-free nesting islands and to fish in the sea. Soft care is healthy islands plus healthy oceans — no status letter.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "colony-life-soft",
+                        "title": "Colony life",
+                        "stem": "How do Atlantic puffins usually nest?",
+                        "choices": [
+                            "Each pair hides alone in a desert cave",
+                            "They build one giant shared nest in a tree",
+                            "They nest close together in busy cliff-top colonies",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says puffins are sociable and usually breed in large clifftop colonies. Neighbors nest close together.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "not-a-penguin-myth",
+                        "title": "Not a penguin",
+                        "stem": "Is an Atlantic puffin a penguin?",
+                        "choices": [
+                            "No — puffins can fly in the air; penguins are different birds that don’t",
+                            "Yes — puffins and penguins are the same bird",
+                            "Yes — puffins never leave the ice and cannot fly",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says Atlantic puffins fly in the air over the sea. Penguins are different birds that do not fly in the air.",
                     },
                 ],
             },
