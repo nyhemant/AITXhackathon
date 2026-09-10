@@ -164,6 +164,7 @@ class AsianSmallClawedOtterEasyStudyCardTests(unittest.TestCase):
                 "sea-otter",
                 "american-alligator",
                 "american-bison",
+                "elk",
             ),
         )
         self.assertEqual(

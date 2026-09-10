@@ -31,6 +31,7 @@ from study_cards import (  # noqa: E402
     PUSH_FURTHER_FRESHWATER_FISH,
     PUSH_FURTHER_AMERICAN_ALLIGATOR,
     PUSH_FURTHER_AMERICAN_BISON,
+    PUSH_FURTHER_ELK,
     PUSH_FURTHER_POLAR_BEAR,
     PUSH_FURTHER_SEA_OTTER,
     PUSH_FURTHER_WARTHOG,
@@ -53,6 +54,7 @@ from study_cards import (  # noqa: E402
     TALK_ABOUT_FRESHWATER_FISH,
     TALK_ABOUT_AMERICAN_ALLIGATOR,
     TALK_ABOUT_AMERICAN_BISON,
+    TALK_ABOUT_ELK,
     TALK_ABOUT_POLAR_BEAR,
     TALK_ABOUT_SEA_OTTER,
     TALK_ABOUT_WARTHOG,
@@ -96,6 +98,7 @@ TRAFFIC_IDS = (
     "sea-otter",
     "american-alligator",
     "american-bison",
+    "elk",
 )
 
 
@@ -107,7 +110,7 @@ def _decks():
 
 
 class StudyCardAnswerKeyTests(unittest.TestCase):
-    def test_traffic_set_is_twenty_seven_animals(self):
+    def test_traffic_set_is_twenty_eight_animals(self):
         self.assertEqual(tuple(study_card_ids()), TRAFFIC_IDS)
         self.assertEqual(shipped_levels_for("cheetah"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("cheetah", "zoologist"))
@@ -159,8 +162,11 @@ class StudyCardAnswerKeyTests(unittest.TestCase):
         self.assertEqual(shipped_levels_for("american-bison"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("american-bison", "hard"))
         self.assertIsNotNone(study_deck_for("american-bison", "zoologist"))
+        self.assertEqual(shipped_levels_for("elk"), ("easy",))
+        self.assertIsNone(study_deck_for("elk", "hard"))
+        self.assertIsNone(study_deck_for("elk", "zoologist"))
         decks = list(_decks())
-        self.assertEqual(len(decks), 81)
+        self.assertEqual(len(decks), 82)
         for card_id, level, deck in decks:
             self.assertIsNotNone(deck, f"{card_id}/{level}")
             self.assertEqual(validate_deck(deck), [])
@@ -191,12 +197,12 @@ class StudyCardAnswerKeyTests(unittest.TestCase):
 
     def test_overall_correct_b_is_not_a_majority(self):
         letters = [q["correct"] for _, _, deck in _decks() for q in deck["questions"]]
-        self.assertEqual(len(letters), 810)
+        self.assertEqual(len(letters), 820)
         share_b = letters.count("B") / len(letters)
         self.assertLessEqual(
             share_b,
             MAX_OVERALL_B_SHARE,
-            f"correct==B is {share_b:.1%} ({letters.count('B')}/810)",
+            f"correct==B is {share_b:.1%} ({letters.count('B')}/820)",
         )
         for letter in LETTERS:
             share = letters.count(letter) / len(letters)
@@ -255,6 +261,8 @@ class StudyCardAnswerKeyTests(unittest.TestCase):
             + PUSH_FURTHER_AMERICAN_ALLIGATOR
             + TALK_ABOUT_AMERICAN_BISON
             + PUSH_FURTHER_AMERICAN_BISON
+            + TALK_ABOUT_ELK
+            + PUSH_FURTHER_ELK
         )
         for line in lines:
             for phrase in dense:
