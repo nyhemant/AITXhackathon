@@ -165,6 +165,7 @@ class AmericanBisonEasyStudyCardTests(unittest.TestCase):
                 "puffin",
                 "clownfish",
                 "crab",
+                "cuttlefish",
             ),
         )
         self.assertEqual(shipped_levels_for("american-bison"), ("easy", "hard", "zoologist"))
