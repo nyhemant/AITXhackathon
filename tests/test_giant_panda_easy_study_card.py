@@ -225,6 +225,7 @@ class GiantPandaEasyStudyCardTests(unittest.TestCase):
                 "sea-otter",
                 "american-alligator",
                 "american-bison",
+                "elk",
             ),
         )
         self.assertEqual(shipped_levels_for("giant-panda"), ("easy", "hard", "zoologist"))

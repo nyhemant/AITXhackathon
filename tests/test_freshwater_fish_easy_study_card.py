@@ -182,6 +182,7 @@ class FreshwaterFishEasyStudyCardTests(unittest.TestCase):
                 "sea-otter",
                 "american-alligator",
                 "american-bison",
+                "elk",
             ),
         )
         self.assertEqual(shipped_levels_for("freshwater-fish"), ("easy", "hard", "zoologist"))

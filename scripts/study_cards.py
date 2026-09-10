@@ -908,6 +908,27 @@ shrinking again (soft). Soften contested numbers. Treat
 IUCN letters as snapshots. Keep kid-friendly. Do not
 redo JR or PR themes. Do not invent photos.
 
+Facts for elk Junior Ranger (easy) are Wikipedia-backed:
+https://en.wikipedia.org/wiki/Elk
+Also wapiti / Cervus pages as needed. JR stays kid-simple
+“elk.” Big deer of forests, meadows, and mountain edges —
+open forests, forest edges, and mountain meadows. Pale
+rump patch that stands out against a darker body. Bulls
+grow large branched antlers each year, then shed them
+and grow a new set. Graze grasses and also browse
+leaves, twigs, and bark. Live in herds — cows and calves
+often together; bulls often apart except breeding season.
+Autumn bull bugle is a loud whistle/bellow that carries
+far. New calves start with spots, like many deer. Soft
+care: give wild elk space; keep forest and meadow
+habitat healthy (no LC / status dump on JR). One of the
+largest deer — only moose is bigger (soft). Myth: not
+the same animal Europeans call “elk” — that name often
+means moose there; North American elk are also called
+wapiti. Park Ranger and Zoologist are reserved for
+later: denser Cervus/wapiti taxonomy, physiology, status.
+Do not invent photos.
+
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
 zoologist. Visible copy uses LEVEL_DISPLAY_NAMES only — no age badges,
@@ -959,6 +980,7 @@ WIKI_POLAR_BEAR = "https://en.wikipedia.org/wiki/Polar_bear"
 WIKI_SEA_OTTER = "https://en.wikipedia.org/wiki/Sea_otter"
 WIKI_AMERICAN_ALLIGATOR = "https://en.wikipedia.org/wiki/American_alligator"
 WIKI_AMERICAN_BISON = "https://en.wikipedia.org/wiki/American_bison"
+WIKI_ELK = "https://en.wikipedia.org/wiki/Elk"
 
 LETTERS = ("A", "B", "C")
 STUDY_SLOTS = 10
@@ -1037,6 +1059,8 @@ LEVEL_DISPLAY_NAMES = {
 # fish, polar bear, sea otter, American alligator, and
 # American bison ship Junior Ranger + Park Ranger +
 # Zoologist.
+# Elk ships Junior Ranger only (no Park Ranger or
+# Zoologist yet).
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -1080,6 +1104,7 @@ STUDY_NEIGHBORS = {
     "sea-otter": ("asian-small-clawed-otter", "shark"),
     "american-alligator": ("freshwater-fish", "galapagos-tortoise"),
     "american-bison": ("zebra", "warthog"),
+    "elk": ("american-bison", "zebra"),
 }
 
 STUDY_CARD_TITLES = {
@@ -1110,6 +1135,7 @@ STUDY_CARD_TITLES = {
     "sea-otter": "Sea otter",
     "american-alligator": "American alligator",
     "american-bison": "American bison",
+    "elk": "Elk",
 }
 
 # Shared answers-side deepen (Claude sample). Not scored. Future animals reuse keys.
@@ -1382,6 +1408,16 @@ PUSH_FURTHER_AMERICAN_BISON = (
     "Wood and plains kinds are often called subspecies. Why do some scientists still debate that?",
     "Many herds carry small amounts of cattle DNA. Why might “pure” herds be rare?",
     "European bison mtDNA looks closer to cattle than to American bison. Why is that a puzzle?",
+)
+TALK_ABOUT_ELK = (
+    "Bulls grow antlers and bugle in the fall. What might those be for?",
+    "Cows and calves often live in herds. Why might staying together help?",
+    "People in Europe often say “elk” for moose. Why is North American elk also called wapiti?",
+)
+PUSH_FURTHER_ELK = (
+    "Bulls shed their antlers and grow new ones. Why might they drop the old set?",
+    "New calves start with spots. How could spots help a hidden baby?",
+    "Wild elk need space. How can you watch a herd without getting close?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -12869,6 +12905,157 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia describes a recovery plan that moves bison among Department of the Interior and park herds. The aim is to keep genetic diversity from shrinking again across that bigger connected set of herds (a metapopulation). Counts and years stay soft.",
+                    },
+                ],
+            },
+        },
+    },
+    "elk": {
+        "id": "elk",
+        "source": WIKI_ELK,
+        "source_note": "Facts from Wikipedia, Elk.",
+        "talk_about": list(TALK_ABOUT_ELK),
+        "push_further": list(PUSH_FURTHER_ELK),
+        "levels": {
+            "easy": {
+                # Teaching-first: same front as the quiz. Hard later may hide these.
+                "teach": [
+                    "Big deer of forests, meadows, and mountain edges",
+                    "Pale rump patch that stands out",
+                    "Bulls grow large antlers each year, then shed them",
+                    "Live in herds (cows & calves often together)",
+                    "Also called wapiti",
+                ],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "forest-meadow-home-soft",
+                        "title": "Forest-meadow home",
+                        "stem": "Where do elk like to live in the wild?",
+                        "choices": [
+                            "Open forests, forest edges, and mountain meadows",
+                            "Only on Arctic sea ice",
+                            "Only in the deep ocean",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says elk dwell in open forest and forest-edge habitats. They also use mountain meadows and forest openings.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "rump-patch-soft",
+                        "title": "Rump patch",
+                        "stem": "What pale mark helps an elk stand out from behind?",
+                        "choices": [
+                            "Bright blue wing feathers",
+                            "A light-colored rump patch against a darker body",
+                            "A glowing stripe down the tail",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says elk are also called wapiti, from a word meaning “white rump.” They have a distinctive light-colored rump patch.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "antlers-soft",
+                        "title": "Antlers",
+                        "stem": "What happens to a bull elk’s antlers each year?",
+                        "choices": [
+                            "They stay the same set for life",
+                            "Only cows grow antlers",
+                            "Males grow branched antlers, then shed them and grow a new set",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says male elk grow large antlers and routinely shed them each year as the weather warms, then grow a new set.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "graze-browse-soft",
+                        "title": "Graze and browse",
+                        "stem": "What do elk eat?",
+                        "choices": [
+                            "Grasses and also leaves, twigs, and bark",
+                            "Only fish from mountain streams",
+                            "Only bamboo",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says elk graze on grasses and sedges and also browse higher plants — leaves, twigs, and bark.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "herd-life-soft",
+                        "title": "Herd life",
+                        "stem": "How do elk herds usually work?",
+                        "choices": [
+                            "Every elk lives alone in a cave",
+                            "Cows and calves often stay in groups; bulls are often apart except in breeding season",
+                            "Only bulls stay with calves all year",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says elk are very social. For most of the year, adult males and females live in different herds. Female herds are larger; bulls form small groups or travel alone, then come together in breeding season.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "bugle-soft",
+                        "title": "Bugle",
+                        "stem": "What is an elk bugle?",
+                        "choices": [
+                            "A quiet snore used only while sleeping",
+                            "A kind of bird nest",
+                            "A loud autumn bull call — a whistle and bellow that can carry far",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says bulls bugle in the mating season — a loud series of throaty whistles, bellows, and other calls that can travel a long way.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "spotted-calves-soft",
+                        "title": "Spotted calves",
+                        "stem": "What do new elk calves often look like?",
+                        "choices": [
+                            "They start with spots, like many deer",
+                            "They hatch with bright blue feathers",
+                            "They are born with long white polar-bear fur",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says calves are born spotted, as is common with many deer species, and they lose those spots by the end of summer.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "soft-forest-care",
+                        "title": "Soft forest care",
+                        "stem": "How should people care around wild elk and their home?",
+                        "choices": [
+                            "Walk up and pet every wild elk",
+                            "Give wild elk space and keep forest and meadow habitat healthy",
+                            "Feed them snacks from the car",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia ties elk to forest, meadow, and mountain-edge homes. Soft care is space plus a healthy habitat — no status letter.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "big-deer-soft",
+                        "title": "Big deer",
+                        "stem": "How big are elk among deer?",
+                        "choices": [
+                            "They are the smallest deer in the world",
+                            "They are the same size as a house cat",
+                            "They are one of the largest deer — only moose is bigger",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says the elk is the second-largest living deer, after the moose. We keep that size claim soft.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "not-european-elk-myth",
+                        "title": "Myth buster",
+                        "stem": "Is a North American elk the same animal Europeans call “elk”?",
+                        "choices": [
+                            "No — in Europe “elk” often means moose; North American elk are also called wapiti",
+                            "Yes — elk and moose are the same animal everywhere",
+                            "Elk is just another word for cow",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says the word “elk” first meant the European moose. North American colonists used “elk” for this deer, also called wapiti.",
                     },
                 ],
             },

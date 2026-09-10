@@ -212,6 +212,7 @@ class KoalaEasyStudyCardTests(unittest.TestCase):
                 "sea-otter",
                 "american-alligator",
                 "american-bison",
+                "elk",
             ),
         )
         self.assertEqual(shipped_levels_for("koala"), ("easy", "hard", "zoologist"))
