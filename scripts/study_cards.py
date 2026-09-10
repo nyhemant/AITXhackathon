@@ -1010,7 +1010,29 @@ numbers. Keep kid-friendly. Do not redo JR themes
 (North Atlantic home, colorful bill, burrow nest, one
 egg, fish crossbill, underwater wings, land waddle,
 soft care, colony life, not a penguin myth). Zoologist
-is reserved for later. Do not invent photos.
+(zoologist) is answer-light (empty teach) and deepens:
+puffins plus the rhinoceros auklet form tribe
+Fraterculini inside Alcidae (soft); order
+Charadriiformes is the shorebird/seabird order that
+also includes gulls and auks (soft); Atlantic puffin
+is often split F. a. arctica, grabae, naumanni —
+size and range differ and the split stays soft; closest
+living puffin relative is the Pacific horned puffin
+(F. corniculata) (soft); Fraterculini diversity is
+highest in the Pacific; the Atlantic holds only one
+living puffin species (soft); breeding bill plates are
+keratin sheaths that slough after the season — not
+permanent paint (soft); long-lived, usually one chick,
+and may not breed until several years old (soften
+ages); chick success often tracks small forage fish
+like sandeels; warm seas can shrink or shift prey
+(soft); Vulnerable is a snapshot; East Atlantic
+declines have looked stronger than some West Atlantic
+colonies (soft); the extinct great auk was a flightless
+alcid cousin — auk lineages can diverge (soft history).
+Soften contested numbers. Treat IUCN letters as
+snapshots. Keep kid-friendly. Do not redo JR or PR
+themes. Do not invent photos.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
@@ -1141,9 +1163,8 @@ LEVEL_DISPLAY_NAMES = {
 # ring-tailed lemur, ostrich, warthog, shark, and
 # Asian small-clawed otter, two-toed sloth, freshwater
 # fish, polar bear, sea otter, American alligator, and
-# American bison and elk ship Junior Ranger + Park
-# Ranger + Zoologist. Puffin ships Junior Ranger +
-# Park Ranger.
+# American bison, elk, and puffin ship Junior Ranger +
+# Park Ranger + Zoologist.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -1505,14 +1526,14 @@ PUSH_FURTHER_ELK = (
     "Elk and red deer can have fertile hybrids. Why might mixed zones need extra care?",
 )
 TALK_ABOUT_PUFFIN = (
-    "Atlantic puffins sit with auks, not penguins. Why might that family split matter?",
-    "Colorful bill plates grow for breeding, then shed. Why might the winter bill look smaller?",
-    "Vulnerable is one snapshot for Atlantic puffins. What else might still be changing?",
+    "Puffins sit in the Fraterculini tribe, not with every other auk. Why might that closer family matter?",
+    "Bright bill plates are keratin sheaths that slough after the season. Why might the winter bill look smaller?",
+    "Chick success often tracks small forage fish like sandeels. How might warmer seas change that food?",
 )
 PUSH_FURTHER_PUFFIN = (
-    "Horned and tufted puffins live in the North Pacific. How might those cousins differ?",
-    "Why might colorful outer bill plates shed after the breeding season?",
-    "Some colonies still struggle with food and climate shifts. What might help them recover?",
+    "Atlantic puffins are often split into a few named kinds. Why might size and range still stay soft?",
+    "The rhinoceros auklet is a sister in that puffin tribe. What else might that Pacific family share?",
+    "Vulnerable is one snapshot. Why might East Atlantic declines look stronger than some West Atlantic colonies?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -13722,6 +13743,147 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia says the Atlantic puffin is the official bird of the Canadian province of Newfoundland and Labrador.",
+                    },
+                ],
+            },
+            "zoologist": {
+                # Answer-light: Zoologist has no Learn-first strip.
+                # Facts from Wikipedia, Atlantic puffin (and related
+                # Fratercula / Alcidae / Fraterculini pages). Soft
+                # taxonomy, bill molt, life history, prey, status.
+                # Soften contested numbers. Kid-friendly. Do not redo
+                # JR or PR themes.
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "fraterculini-soft",
+                        "title": "Puffin tribe",
+                        "stem": "Which auk tribe do puffins sit with, along with the rhinoceros auklet?",
+                        "choices": [
+                            "Puffins and the rhinoceros auklet form tribe Fraterculini inside the auk family Alcidae (soft)",
+                            "They sit only with penguins, far from any auk",
+                            "They sit only with flamingos, not auks",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia places puffins with the rhinoceros auklet in tribe Fraterculini, inside the auk family Alcidae. Other auks sit nearby but not in that small tribe. We keep that family map soft.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "charadriiformes-soft",
+                        "title": "Shorebird order",
+                        "stem": "Which larger bird order do Atlantic puffins sit in?",
+                        "choices": [
+                            "They sit only with songbirds that never see the sea",
+                            "Order Charadriiformes — a shorebird and seabird order that also includes gulls and auks (soft)",
+                            "They sit only with ostriches on dry grassland",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia places the Atlantic puffin in the order Charadriiformes. That order also holds gulls, auks, and other shorebirds. We keep that bigger map soft.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "three-subspecies-soft",
+                        "title": "Named kinds",
+                        "stem": "How many Atlantic puffin subspecies do scientists often name?",
+                        "choices": [
+                            "No named kinds exist anywhere",
+                            "Only one kind lives on every coast and never differs",
+                            "They are often split into F. a. arctica, grabae, and naumanni — size and range differ, and the split stays soft",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia often names three Atlantic puffin subspecies: F. a. arctica, grabae, and naumanni. Size and range can differ. Some scientists treat the differences as a gradual cline, so the split stays soft.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "horned-closest-soft",
+                        "title": "Horned cousin",
+                        "stem": "Which living puffin is the closest relative of the Atlantic puffin?",
+                        "choices": [
+                            "The Pacific horned puffin (Fratercula corniculata) is the closest living puffin relative (soft)",
+                            "The closest living relative is a desert owl",
+                            "No living puffin has any Pacific cousin",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says the horned puffin (Fratercula corniculata) of the North Pacific is the closest living relative of the Atlantic puffin. The tufted puffin is another Pacific cousin, a bit farther out. We keep that cousin map soft.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "pacific-origin-soft",
+                        "title": "Pacific diversity",
+                        "stem": "Where is living Fraterculini diversity highest?",
+                        "choices": [
+                            "Only the Atlantic holds every living puffin and auklet",
+                            "Fraterculini diversity is highest in the Pacific; the Atlantic holds only one living puffin species (soft)",
+                            "They live only on inland deserts, far from any ocean",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia names two Pacific puffins plus the Pacific rhinoceros auklet in the same tribe. The Atlantic holds only one living puffin. That makes Fraterculini diversity highest in the Pacific. We keep that origin story soft.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "keratin-bill-molt-soft",
+                        "title": "Keratin sheaths",
+                        "stem": "What are the bright breeding bill plates made of, and what happens after the season?",
+                        "choices": [
+                            "They are permanent paint that never comes off",
+                            "They are metal armor bolted on for life",
+                            "They are keratin sheaths that slough after the breeding season — not permanent paint (soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says bright bill plates and face ornaments grow for breeding, then shed in a partial moult. Those plates are keratin sheaths, not paint. The winter bill looks duller and smaller. We keep that molt story soft.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "k-selected-soft",
+                        "title": "Long life",
+                        "stem": "How do Atlantic puffins usually invest in the next generation?",
+                        "choices": [
+                            "They are long-lived, usually raise one chick, and may not breed until they are several years old (ages stay soft)",
+                            "They raise dozens of chicks every week and live only a few days",
+                            "They never raise a chick and never grow old",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia describes a long-lived auk with a small clutch — usually one chick — and young birds may wait several years before they breed. Exact ages stay soft. That is a slow, careful life plan.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "sandeel-link-soft",
+                        "title": "Sandeel food",
+                        "stem": "How can chick success track the fish puffins catch?",
+                        "choices": [
+                            "Chicks eat only tree leaves, so ocean fish never matter",
+                            "Chick success often tracks small forage fish like sandeels; warmer seas can shrink or shift that prey (soft)",
+                            "Chicks never eat fish, so climate cannot change their food",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia ties chick meals to small forage fish such as sandeels (sand eels), herring, and similar prey. When those fish drop or shift, breeding success can fall. Warmer seas can shrink or move that food. We keep the climate–prey link soft.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "vu-regional-nuance-soft",
+                        "title": "East and West",
+                        "stem": "Does the Vulnerable letter tell the same story on every Atlantic puffin coast?",
+                        "choices": [
+                            "Yes — every colony rose at the same speed",
+                            "Yes — the letter means no coast ever needed extra care",
+                            "Vulnerable is a snapshot; East Atlantic declines have looked stronger than some West Atlantic colonies (soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia lists the species as Vulnerable after a rapid decline in its European (East Atlantic) range. Trends elsewhere stay softer, and some West Atlantic colonies have had different local stories. Treat the letter as a snapshot, not a forever score.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "great-auk-contrast-soft",
+                        "title": "Great auk",
+                        "stem": "What does the extinct great auk show about auk lineages?",
+                        "choices": [
+                            "The extinct great auk was a flightless alcid cousin — auk lineages can diverge a lot (soft history)",
+                            "The great auk is a living penguin that still nests with puffins",
+                            "No auk ever went extinct or lost the ability to fly",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia’s auk family tree includes the extinct great auk, a flightless alcid cousin. Puffins still fly. That contrast shows how auk lineages can take very different paths. Soft history — not a scare story.",
                     },
                 ],
             },
