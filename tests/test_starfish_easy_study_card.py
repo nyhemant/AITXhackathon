@@ -1,4 +1,4 @@
-"""Starfish Easy study-card: Junior Ranger teach + 10 MCQs (later tiers reserved)."""
+"""Starfish Easy study-card: Junior Ranger teach + 10 MCQs (Park Ranger is a sibling level)."""
 
 from __future__ import annotations
 
@@ -200,8 +200,8 @@ class StarfishEasyStudyCardTests(unittest.TestCase):
                 "starfish",
             ),
         )
-        self.assertEqual(shipped_levels_for("starfish"), ("easy",))
-        self.assertIsNone(study_deck_for("starfish", "hard"))
+        self.assertEqual(shipped_levels_for("starfish"), ("easy", "hard"))
+        self.assertIsNotNone(study_deck_for("starfish", "hard"))
         self.assertIsNone(study_deck_for("starfish", "zoologist"))
         self.assertIsNone(study_deck_for("stingray"))
         deck = study_deck_for("starfish")
@@ -328,15 +328,15 @@ class StarfishEasyStudyCardTests(unittest.TestCase):
             self.assertNotIn(phrase, html)
         visible = _text(html)
         self.assertIn("Junior Ranger", visible)
-        self.assertNotIn("Park Ranger", visible)
+        self.assertIn("Park Ranger", visible)
         self.assertNotIn("Zoologist", visible)
-        self.assertIn('class="study-level-badge"', html)
-        self.assertNotIn('class="study-level-picker"', html)
-        self.assertNotIn("study-level-picker-bottom", html)
-        self.assertNotIn('data-study-pick="easy"', html)
-        self.assertNotIn('data-study-pick="hard"', html)
+        self.assertIn('class="study-level-picker"', html)
+        self.assertIn('data-study-pick="easy"', html)
+        self.assertIn('data-study-pick="hard"', html)
         self.assertNotIn('data-study-pick="zoologist"', html)
-        self.assertEqual(html.count('role="group"'), 0)
+        self.assertNotIn('class="study-level-badge"', html)
+        self.assertEqual(html.count('role="group"'), 2)
+        self.assertIn("study-level-picker-bottom", html)
         for badge in PLAIN_LEVEL_LABELS + AGE_BADGES:
             self.assertNotIn(badge, visible)
         self.assertNotIn(" · Easy ·", html)
@@ -381,7 +381,7 @@ class StarfishEasyStudyCardTests(unittest.TestCase):
             main,
         )
         self.assertIn('class="card-try-next no-print"', main)
-        self.assertNotIn("study-level-picker-bottom", main)
+        self.assertIn("study-level-picker-bottom", main)
         self.assertNotIn("card-print-note", main)
         self.assertIn("study-card.js?v=10", html)
         self.assertIn("study-card.css?v=10", html)
@@ -405,13 +405,13 @@ class StarfishEasyStudyCardTests(unittest.TestCase):
         self.assertLess(main.find("study-explore"), main.find("card-try-next"))
         visible = _text(main)
         self.assertIn("Junior Ranger", visible)
-        self.assertNotIn("Park Ranger", visible)
+        self.assertIn("Park Ranger", visible)
         self.assertNotIn("Zoologist", visible)
-        self.assertIn('class="study-level-badge"', main)
-        self.assertNotIn('class="study-level-picker"', main)
-        self.assertNotIn('data-study-pick="easy"', main)
-        self.assertNotIn('data-study-pick="hard"', main)
+        self.assertIn('class="study-level-picker"', main)
+        self.assertIn('data-study-pick="easy"', main)
+        self.assertIn('data-study-pick="hard"', main)
         self.assertNotIn('data-study-pick="zoologist"', main)
+        self.assertNotIn('class="study-level-badge"', main)
         self.assertIn("Learn first", main)
         self.assertIn(">Quiz</h2>", main)
         self.assertEqual(main.count("data-study-correct"), 2)
@@ -488,7 +488,7 @@ class StarfishEasyStudyCardTests(unittest.TestCase):
         self.assertIn("is-wrong-pick", study_js)
         self.assertIn("FPStudyLevelName", study_js + STUDY_DATA_JS.read_text(encoding="utf-8"))
 
-    def test_artifacts_include_starfish_easy_only(self):
+    def test_artifacts_include_starfish_easy_and_hard(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
         self.assertIn("starfish", payload)
         self.assertNotIn("stingray", payload)
@@ -498,8 +498,7 @@ class StarfishEasyStudyCardTests(unittest.TestCase):
         self.assertIn("manta-ray", payload)
         star = payload["starfish"]
         self.assertEqual(star["id"], "starfish")
-        self.assertEqual(set(star["levels"]), {"easy"})
-        self.assertNotIn("hard", star["levels"])
+        self.assertEqual(set(star["levels"]), {"easy", "hard"})
         self.assertNotIn("zoologist", star["levels"])
         easy = star["levels"]["easy"]
         self.assertEqual(len(easy["teach"]), 5)
@@ -531,7 +530,7 @@ class StarfishEasyStudyCardTests(unittest.TestCase):
         star_html = STARFISH.read_text(encoding="utf-8")
         visible = _text(_main(star_html))
         self.assertIn("Junior Ranger", visible)
-        self.assertNotIn("Park Ranger", visible)
+        self.assertIn("Park Ranger", visible)
         self.assertNotIn("Zoologist", visible)
         turtle_html = SEA_TURTLE.read_text(encoding="utf-8")
         self.assertIn("Junior Ranger", _text(_main(turtle_html)))
