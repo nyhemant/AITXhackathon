@@ -1,5 +1,6 @@
 """Card kind derivation — hub sections from kind, not hardcoded Wildlife/Parks lists."""
 
+import re
 from pathlib import Path
 import sys
 import unittest
@@ -14,6 +15,17 @@ from field_pack_card_kind import (  # noqa: E402
     card_shows_venue_attribution,
     group_cards_by_hub_section,
 )
+from field_pack_catalog_kind import load_card_kinds  # noqa: E402
+
+FP = REPO / "static" / "field-pack"
+SEALIFE_MISFILED = (
+    "whale-shark",
+    "cuttlefish",
+    "manta-ray",
+    "sea-otter",
+    "kelp-forest",
+    "puffin",
+)
 
 
 class CardKindTests(unittest.TestCase):
@@ -26,6 +38,45 @@ class CardKindTests(unittest.TestCase):
 
     def test_sea_life_id_is_kind_not_a_hub_list(self):
         self.assertEqual(card_kind({"id": "octopus", "pt": "animals"}), "sea_life")
+
+    def test_tsv_sealife_ids_are_sea_life(self):
+        for cid in SEALIFE_MISFILED:
+            self.assertEqual(card_kind({"id": cid, "pt": "animals"}), "sea_life", cid)
+        grouped = group_cards_by_hub_section(
+            [{"id": cid, "pt": "animals"} for cid in SEALIFE_MISFILED]
+        )
+        self.assertEqual(sorted(c["id"] for c in grouped["sealife"]), sorted(SEALIFE_MISFILED))
+        self.assertEqual(grouped["wildlife"], [])
+
+    def test_cards_hub_html_matches_tsv_hub(self):
+        hub = (FP / "cards" / "index.html").read_text(encoding="utf-8")
+        kinds = load_card_kinds()
+        items = re.findall(
+            r'<li class="cards-hub-item"[^>]*data-card-id="([^"]+)"[^>]*>',
+            hub,
+        )
+        self.assertTrue(items)
+        for cid in items:
+            row = kinds.get(cid)
+            if not row:
+                continue
+            want_group = row["hub"]
+            want_kind = {
+                "wildlife": "animal",
+                "sealife": "sea_life",
+                "attractions": "attraction",
+                "parks": "place_feature",
+            }[want_group]
+            li = [line for line in hub.splitlines() if f'data-card-id="{cid}"' in line and "cards-hub-item" in line][0]
+            self.assertIn(f'data-card-group="{want_group}"', li, cid)
+            self.assertIn(f'data-card-kind="{want_kind}"', li, cid)
+        wildlife = hub.split('id="cards-wildlife"', 1)[1].split('id="cards-', 1)[0]
+        sealife = hub.split('id="cards-sealife"', 1)[1].split('id="cards-', 1)[0]
+        for cid in SEALIFE_MISFILED:
+            self.assertNotIn(f'data-card-id="{cid}"', wildlife, cid)
+            self.assertIn(f'data-card-id="{cid}"', sealife, cid)
+        self.assertIn('Wildlife <span class="seo-dir-count">22</span>', hub)
+        self.assertIn('Sea life <span class="seo-dir-count">17</span>', hub)
 
     def test_animal_pack_stays_animal(self):
         self.assertEqual(

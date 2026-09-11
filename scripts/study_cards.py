@@ -20352,7 +20352,7 @@ STUDY_CARDS: dict[str, dict] = {
                         "stem": "What size record does the whale shark hold among living fish?",
                         "choices": [
                             "Smallest fish in a puddle",
-                            "Largest living fish (exact length soft)",
+                            "Largest living fish",
                             "Tallest animal on land",
                         ],
                         "correct": "B",
@@ -20390,7 +20390,7 @@ STUDY_CARDS: dict[str, dict] = {
                         "title": "Body",
                         "stem": "What is special about a whale shark’s pattern?",
                         "choices": [
-                            "A checkerboard of light spots and stripes on a dark back — each shark’s pattern is unique (soft)",
+                            "A checkerboard of light spots and stripes on a dark back — each shark’s pattern is unique",
                             "Solid neon pink with no marks",
                             "Feathers instead of skin",
                         ],

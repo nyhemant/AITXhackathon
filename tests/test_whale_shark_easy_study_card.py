@@ -224,7 +224,13 @@ class WhaleSharkEasyStudyCardTests(unittest.TestCase):
         self.assertNotIn(" · Hard ·", html)
         for phrase in PAGE_BRITTLE:
             self.assertNotIn(phrase, html)
-        self.assertIn("Largest living fish (exact length soft)", html)
+        self.assertIn("Largest living fish", html)
+        self.assertNotIn("Largest living fish (exact length soft)", html)
+        self.assertIn(
+            "A checkerboard of light spots and stripes on a dark back — each shark’s pattern is unique",
+            html,
+        )
+        self.assertNotIn("unique (soft)", html)
         self.assertIn(
             "No — it is a shark (a fish with a cartilage skeleton), even though the name says “whale”",
             html,
@@ -256,6 +262,13 @@ class WhaleSharkEasyStudyCardTests(unittest.TestCase):
         self.assertNotIn("#habitat=whale-shark", main)
         self.assertIn("https://kids.nationalgeographic.com/animals/fish/facts/whale-sharks", main)
         self.assertNotIn("https://kids.nationalgeographic.com/animals/fish/facts/whale-shark\"", main)
+        self.assertIn("Largest living fish", main)
+        self.assertNotIn("Largest living fish (exact length soft)", main)
+        self.assertIn(
+            "A checkerboard of light spots and stripes on a dark back — each shark’s pattern is unique",
+            main,
+        )
+        self.assertNotIn("unique (soft)", main)
         self.assertIn('href="/field-pack/cards/"', main)
         self.assertIn('class="card-try-next no-print"', main)
         self.assertIn("study-level-picker-bottom", main)
@@ -334,7 +347,13 @@ class WhaleSharkEasyStudyCardTests(unittest.TestCase):
         self.assertIn(WIKI_WHALE_SHARK, sheet)
         for stem in STEMS:
             self.assertIn(stem, sheet)
-        self.assertIn("Largest living fish (exact length soft)", sheet)
+        self.assertIn("Largest living fish", sheet)
+        self.assertNotIn("Largest living fish (exact length soft)", sheet)
+        self.assertIn(
+            "A checkerboard of light spots and stripes on a dark back — each shark’s pattern is unique",
+            sheet,
+        )
+        self.assertNotIn("unique (soft)", sheet)
         self.assertIn(
             "No — it is docile and poses no significant threat to people; it filters tiny food, not humans",
             sheet,
