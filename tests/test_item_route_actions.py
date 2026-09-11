@@ -118,6 +118,7 @@ class ItemRouteActionTests(unittest.TestCase):
         self.assertIn("function setExternalAction(link, url)", js)
         self.assertIn("setExternalAction(els.btnCam, camUrl)", js)
         self.assertIn("setExternalAction(els.btnPictures, picUrl)", js)
+        self.assertIn("item.links.picturesLabel", js)
         self.assertIn("setExternalAction(els.btnMore, moreUrl)", js)
         self.assertIn("!/^https?:\\/\\//.test(url)", js)
         self.assertIn("itemOnVenue", js)
@@ -199,6 +200,96 @@ class ItemRouteActionTests(unittest.TestCase):
             self.assertFalse(photos["hidden"], row["route"])
             self.assertEqual(photos["href"], lion_pictures, row["route"])
 
+    def test_western_lowland_gorilla_photos_is_not_mountain_gorilla(self):
+        """ParentTest Layer B: western-lowland Photos must not use mountain-gorilla."""
+        gorilla_pictures = (
+            "https://www.nationalgeographic.com/animals/mammals/facts/"
+            "western-lowland-gorilla"
+        )
+        catalog = CATALOG_JS.read_text(encoding="utf-8")
+        self.assertIn(f'pictures: "{gorilla_pictures}"', catalog)
+        self.assertNotIn(
+            "https://kids.nationalgeographic.com/animals/mammals/facts/mountain-gorilla",
+            catalog,
+        )
+        card = (FP / "cards" / "western-lowland-gorilla" / "index.html").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn(f'href="{gorilla_pictures}"', card)
+        self.assertNotIn("/facts/mountain-gorilla", card)
+
+        gorilla_routes = [r for r in self.routes if r["itemId"] == "western-lowland-gorilla"]
+        self.assertGreater(len(gorilla_routes), 0)
+        for row in gorilla_routes:
+            photos = next(a for a in row["actions"] if a["name"] == "Photos")
+            self.assertFalse(photos["hidden"], row["route"])
+            self.assertEqual(photos["href"], gorilla_pictures, row["route"])
+
+    def test_asian_small_clawed_otter_photos_uses_live_otter_hub(self):
+        """ParentTest Layer B: restore otter Photos; not a 404 or cousin slug."""
+        otter_pictures = (
+            "https://www.nationalgeographic.com/animals/mammals/facts/otters-1"
+        )
+        catalog = CATALOG_JS.read_text(encoding="utf-8")
+        self.assertIn(f'pictures: "{otter_pictures}"', catalog)
+        self.assertNotIn(
+            "kids.nationalgeographic.com/animals/mammals/facts/asian-small-clawed-otter",
+            catalog,
+        )
+        card = (FP / "cards" / "asian-small-clawed-otter" / "index.html").read_text(
+            encoding="utf-8"
+        )
+        main = card.split('<main class="card-page">', 1)[1].split("</main>", 1)[0]
+        self.assertIn(f'href="{otter_pictures}"', main)
+        self.assertIn(">Photos</a>", main)
+        self.assertIn(
+            "/field-pack/virtual-zoo/?from=card#habitat=asian-small-clawed-otter",
+            main,
+        )
+        self.assertNotIn("/facts/sea-otter", main)
+        self.assertNotIn("/facts/river-otter", main)
+
+        otter_routes = [r for r in self.routes if r["itemId"] == "asian-small-clawed-otter"]
+        self.assertGreater(len(otter_routes), 0)
+        for row in otter_routes:
+            photos = next(a for a in row["actions"] if a["name"] == "Photos")
+            self.assertFalse(photos["hidden"], row["route"])
+            self.assertEqual(photos["href"], otter_pictures, row["route"])
+
+    def test_shark_photos_uses_generic_shark_hub(self):
+        """ParentTest Layer B soft: generic shark card must not open great-white."""
+        shark_pictures = (
+            "https://www.nationalgeographic.com/animals/fish/facts/sharks-1"
+        )
+        catalog = CATALOG_JS.read_text(encoding="utf-8")
+        self.assertIn(f'pictures: "{shark_pictures}"', catalog)
+        shark_block = catalog.split("shark: {", 1)[1].split("stingray:", 1)[0]
+        self.assertNotIn("/facts/great-white-shark", shark_block)
+        card = (FP / "cards" / "shark" / "index.html").read_text(encoding="utf-8")
+        main = card.split('<main class="card-page">', 1)[1].split("</main>", 1)[0]
+        self.assertIn(f'href="{shark_pictures}"', main)
+        self.assertIn(">Photos</a>", main)
+        self.assertNotIn("/facts/great-white-shark", main)
+
+        shark_routes = [r for r in self.routes if r["itemId"] == "shark"]
+        self.assertGreater(len(shark_routes), 0)
+        for row in shark_routes:
+            photos = next(a for a in row["actions"] if a["name"] == "Photos")
+            self.assertFalse(photos["hidden"], row["route"])
+            self.assertEqual(photos["href"], shark_pictures, row["route"])
+
+    def test_weedy_sea_dragon_photos_is_not_leafy_cousin(self):
+        """Same cousin-species class: weedy must not open leafy sea dragon."""
+        weedy_pictures = (
+            "https://www.nationalgeographic.com/animals/fish/facts/weedy-sea-dragon"
+        )
+        catalog = CATALOG_JS.read_text(encoding="utf-8")
+        self.assertIn(f'pictures: "{weedy_pictures}"', catalog)
+        self.assertNotIn(
+            'pictures: "https://www.nationalgeographic.com/animals/fish/facts/leafy-sea-dragon"',
+            catalog,
+        )
+
     def test_whale_shark_photos_uses_live_kids_natgeo_slug(self):
         """ParentTest: whale-shark Photos must not use the 404 singular Kids slug."""
         whale_pictures = (
@@ -256,8 +347,36 @@ class ItemRouteActionTests(unittest.TestCase):
                 hits.append(f"catalog.js still has {slug}")
         self.assertEqual(hits, [], "\n".join(hits[:20]))
 
+    def test_eel_photos_uses_live_true_eel_page(self):
+        """ParentTest Layer B: restore eel Photos; not a 404 or electric-eel cousin."""
+        eel_pictures = (
+            "https://www.nationalgeographic.com/animals/fish/facts/european-eel"
+        )
+        catalog = CATALOG_JS.read_text(encoding="utf-8")
+        self.assertIn(f'pictures: "{eel_pictures}"', catalog)
+        eel_block = catalog.split("eel: {", 1)[1].split("crab:", 1)[0]
+        self.assertNotIn("/facts/electric-eel", eel_block)
+        self.assertNotIn("/facts/moray-eel", eel_block)
+        card = (FP / "cards" / "eel" / "index.html").read_text(encoding="utf-8")
+        main = card.split('<main class="card-page">', 1)[1].split("</main>", 1)[0]
+        self.assertIn(f'href="{eel_pictures}"', main)
+        self.assertIn(">Photos</a>", main)
+        self.assertIn(
+            "/field-pack/virtual-field-trip/?tab=aquarium&amp;from=card#habitat=eel",
+            main,
+        )
+        self.assertNotIn("/facts/electric-eel", main)
+        self.assertNotIn("/facts/moray-eel", main)
+
+        eel_routes = [r for r in self.routes if r["itemId"] == "eel"]
+        self.assertGreater(len(eel_routes), 0)
+        for row in eel_routes:
+            photos = next(a for a in row["actions"] if a["name"] == "Photos")
+            self.assertFalse(photos["hidden"], row["route"])
+            self.assertEqual(photos["href"], eel_pictures, row["route"])
+
     def test_remaining_layer_a_photos_use_live_or_hide(self):
-        """Layer A leftovers: penguin/crab/cuttlefish/elk live; otter Photos hidden."""
+        """Layer A leftovers: penguin/crab/cuttlefish/elk stay on their live slugs."""
         catalog = CATALOG_JS.read_text(encoding="utf-8")
         penguin = "https://kids.nationalgeographic.com/animals/birds/topic/penguin-facts"
         crab = (
@@ -268,6 +387,7 @@ class ItemRouteActionTests(unittest.TestCase):
         elk = "https://www.nationalgeographic.com/animals/mammals/facts/elk"
         self.assertIn(f'pictures: "{penguin}"', catalog)
         self.assertIn(f'pictures: "{crab}"', catalog)
+        self.assertIn('picturesLabel: "Christmas Island photos"', catalog)
         self.assertIn(f'pictures: "{cuttle}"', catalog)
         self.assertIn(f'pictures: "{elk}"', catalog)
 
@@ -278,14 +398,14 @@ class ItemRouteActionTests(unittest.TestCase):
         cuttle_card = (FP / "cards" / "cuttlefish" / "index.html").read_text(
             encoding="utf-8"
         )
-        otter_card = (FP / "cards" / "asian-small-clawed-otter" / "index.html").read_text(
-            encoding="utf-8"
-        )
         self.assertIn(f'href="{penguin}"', penguin_card)
         self.assertIn(f'href="{crab}"', crab_card)
+        crab_main = crab_card.split('<main class="card-page">', 1)[1].split(
+            "</main>", 1
+        )[0]
+        self.assertIn(">Christmas Island photos</a>", crab_main)
+        self.assertNotIn(">Photos</a>", crab_main)
         self.assertIn(f'href="{cuttle}"', cuttle_card)
-        otter_main = otter_card.split('<main class="card-page">', 1)[1].split("</main>", 1)[0]
-        self.assertNotIn(">Photos</a>", otter_main)
 
         expect = {
             "african-penguin": penguin,
@@ -300,11 +420,6 @@ class ItemRouteActionTests(unittest.TestCase):
                 photos = next(a for a in row["actions"] if a["name"] == "Photos")
                 self.assertFalse(photos["hidden"], row["route"])
                 self.assertEqual(photos["href"], url, row["route"])
-        otter_routes = [r for r in self.routes if r["itemId"] == "asian-small-clawed-otter"]
-        self.assertGreater(len(otter_routes), 0)
-        for row in otter_routes:
-            photos = next(a for a in row["actions"] if a["name"] == "Photos")
-            self.assertTrue(photos["hidden"], row["route"])
 
 
 if __name__ == "__main__":

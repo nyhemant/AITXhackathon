@@ -259,7 +259,7 @@ window.FIELD_PACK_CATALOG = {
     photoCredit: "Enhanced for print · Field Trip Kit",
     blurb: "Strong gentle ape in family groups.",
     links: {
-      pictures: "https://kids.nationalgeographic.com/animals/mammals/facts/mountain-gorilla",
+      pictures: "https://www.nationalgeographic.com/animals/mammals/facts/western-lowland-gorilla",
       more: "https://www.dallaszoo.com/",
       cam: "https://zoo.sandiegozoo.org/cams/ape-cam",
     },
@@ -319,7 +319,7 @@ window.FIELD_PACK_CATALOG = {
     photoCredit: "Enhanced for print · Field Trip Kit",
     blurb: "Playful swimmer — smallest otter.",
     links: {
-      pictures: "",
+      pictures: "https://www.nationalgeographic.com/animals/mammals/facts/otters-1",
       more: "https://www.dallaszoo.com/",
       cam: "https://zoo.sandiegozoo.org/cams",
     },
@@ -441,7 +441,7 @@ window.FIELD_PACK_CATALOG = {
     photoCredit: "Enhanced for print · Field Trip Kit",
     blurb: "Ocean hunter with a strong swishy body.",
     links: {
-      pictures: "https://kids.nationalgeographic.com/animals/fish/facts/great-white-shark",
+      pictures: "https://www.nationalgeographic.com/animals/fish/facts/sharks-1",
       more: "https://www.childrensaquarium.com/",
       cam: "https://www.montereybayaquarium.org/animals/live-cams",
     },
@@ -546,7 +546,7 @@ window.FIELD_PACK_CATALOG = {
     photoCredit: "Enhanced for print · Field Trip Kit",
     blurb: "Long snaky fish — loves rocky hidey-holes.",
     links: {
-      pictures: "",
+      pictures: "https://www.nationalgeographic.com/animals/fish/facts/european-eel",
       more: "https://www.childrensaquarium.com/",
       cam: "https://www.montereybayaquarium.org/animals/live-cams",
     },
@@ -562,6 +562,7 @@ window.FIELD_PACK_CATALOG = {
     blurb: "Sideways walker with a hard shell and pinchers.",
     links: {
       pictures: "https://kids.nationalgeographic.com/animals/invertebrates/facts/christmas-island-red-crab",
+      picturesLabel: "Christmas Island photos",
       more: "https://www.childrensaquarium.com/",
       cam: "https://www.montereybayaquarium.org/animals/live-cams",
     },
@@ -767,7 +768,7 @@ window.FIELD_PACK_CATALOG = {
     photoCredit: "Enhanced for print · Field Trip Kit",
     blurb: "A seahorse cousin dressed as kelp.",
     links: {
-      pictures: "https://www.nationalgeographic.com/animals/fish/facts/leafy-sea-dragon",
+      pictures: "https://www.nationalgeographic.com/animals/fish/facts/weedy-sea-dragon",
       more: "https://www.montereybayaquarium.org/animals/animals-a-to-z/weedy-sea-dragon",
     },
     key: { food: ["Both"], home: ["Water / wet"], superpower: ["Hide", "Swim"] },
