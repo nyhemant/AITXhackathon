@@ -114,6 +114,39 @@ class BrandHomeTests(unittest.TestCase):
         self.assertEqual(_attr(html, "about-brand"), "/start/")
         self.assertIn('href="/field-pack/">Find a place</a>', html)
 
+    def test_about_parent_map_is_the_kid_path(self):
+        html = ABOUT.read_text(encoding="utf-8")
+        section = re.search(
+            r'<section class="about-map" id="how-it-fits"[\s\S]*?</section>',
+            html,
+        )
+        self.assertIsNotNone(section)
+        block = section.group(0)
+        self.assertIn("How it fits together", block)
+        steps = re.findall(r'<a href="([^"]+)">([^<]+)</a>', block)
+        self.assertEqual(
+            steps,
+            [
+                ("/start/", "Start"),
+                ("/field-pack/cards/", "Animal cards"),
+                ("/field-pack/virtual-field-trip/", "Watch Live"),
+                ("/field-pack/", "Places"),
+            ],
+        )
+        self.assertIn("Virtual zoo home for curious kids.", block)
+        self.assertIn("Quizzes, photos, Watch Live, try the next animal.", block)
+        self.assertIn("Cams and film at home.", block)
+        self.assertIn("Map to zoo, aquarium, museum, and park kits for a real visit.", block)
+        self.assertIn("Print cutouts and list/hunt tools are extras for grown-ups", block)
+        self.assertNotIn("/field-pack/virtual-zoo/", block)
+        self.assertNotIn("/dinner", block)
+        self.assertNotIn("Arya", html)
+        self.assertNotIn("Kunal", html)
+        self.assertIn('id="for-ai-assistants"', html)
+        self.assertIn('id="faq"', html)
+        self.assertIn("Field Trip Kit is an at-home virtual zoo", html)
+        self.assertEqual(html.lower().count('href="/dinner"'), 1)
+
     def test_explorer_hub_brand_goes_to_start_all_places_stays(self):
         html = HUB.read_text(encoding="utf-8")
         self.assertEqual(_attr(html, "shell-brand"), "/start/")
