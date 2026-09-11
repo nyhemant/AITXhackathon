@@ -182,6 +182,7 @@ class EelEasyStudyCardTests(unittest.TestCase):
                 "octopus",
                 "sea-turtle",
                 "seahorse",
+                "starfish",
             ),
         )
         self.assertEqual(shipped_levels_for("eel"), ("easy", "hard", "zoologist"))

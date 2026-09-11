@@ -204,6 +204,7 @@ class MantaRayEasyStudyCardTests(unittest.TestCase):
                 "octopus",
                 "sea-turtle",
                 "seahorse",
+                "starfish",
             ),
         )
         self.assertEqual(shipped_levels_for("manta-ray"), ("easy", "hard", "zoologist"))

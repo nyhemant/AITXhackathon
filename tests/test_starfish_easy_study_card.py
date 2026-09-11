@@ -1,4 +1,4 @@
-"""Elk Easy study-card: Junior Ranger teach + 10 MCQs (Park Ranger is a sibling level)."""
+"""Starfish Easy study-card: Junior Ranger teach + 10 MCQs (later tiers reserved)."""
 
 from __future__ import annotations
 
@@ -14,19 +14,28 @@ sys.path.insert(0, str(REPO / "scripts"))
 from generate_bdo_seo import outing_talk_html  # noqa: E402
 from study_cards import (  # noqa: E402
     LEVEL_DISPLAY_NAMES,
-    PUSH_FURTHER_AMERICAN_ALLIGATOR,
-    PUSH_FURTHER_AMERICAN_BISON,
-    PUSH_FURTHER_ELK,
+    PUSH_FURTHER_JELLYFISH,
+    PUSH_FURTHER_KELP_FOREST,
     PUSH_FURTHER_LION,
+    PUSH_FURTHER_MANTA_RAY,
+    PUSH_FURTHER_OCTOPUS,
+    PUSH_FURTHER_SEA_TURTLE,
+    PUSH_FURTHER_STARFISH,
     STUDY_SLOTS,
-    TALK_ABOUT_AMERICAN_ALLIGATOR,
-    TALK_ABOUT_AMERICAN_BISON,
-    TALK_ABOUT_ELK,
+    TALK_ABOUT_JELLYFISH,
+    TALK_ABOUT_KELP_FOREST,
     TALK_ABOUT_LION,
-    WIKI_AMERICAN_ALLIGATOR,
-    WIKI_AMERICAN_BISON,
-    WIKI_ELK,
+    TALK_ABOUT_MANTA_RAY,
+    TALK_ABOUT_OCTOPUS,
+    TALK_ABOUT_SEA_TURTLE,
+    TALK_ABOUT_STARFISH,
+    WIKI_JELLYFISH,
+    WIKI_KELP_FOREST,
     WIKI_LION,
+    WIKI_MANTA_RAY,
+    WIKI_OCTOPUS,
+    WIKI_SEA_TURTLE,
+    WIKI_STARFISH,
     level_display_name,
     shipped_levels_for,
     study_card_ids,
@@ -38,10 +47,10 @@ from study_cards import (  # noqa: E402
 )
 
 FP = REPO / "static" / "field-pack"
-ELK = FP / "cards" / "elk" / "index.html"
-OCTOPUS = FP / "cards" / "stingray" / "index.html"
-GATOR = FP / "cards" / "american-alligator" / "index.html"
-BISON = FP / "cards" / "american-bison" / "index.html"
+STARFISH = FP / "cards" / "starfish" / "index.html"
+STINGRAY = FP / "cards" / "stingray" / "index.html"
+SEA_TURTLE = FP / "cards" / "sea-turtle" / "index.html"
+OCTOPUS = FP / "cards" / "octopus" / "index.html"
 PRINT_KIT = FP / "js" / "print-kit.js"
 STUDY_JS = FP / "js" / "study-card.js"
 STYLES = FP / "css" / "styles.css"
@@ -60,37 +69,37 @@ GENERIC_WORKSHEET = (
 )
 
 TEACH = (
-    "Big deer of forests, meadows, and mountain edges",
-    "Pale rump patch that stands out",
-    "Bulls grow large antlers each year, then shed them",
-    "Live in herds (cows & calves often together)",
-    "Also called wapiti",
+    "Star-shaped ocean animals — not fish (better called sea stars).",
+    "Most have a central disc and about five arms (some kinds have many more).",
+    "They walk with tiny tube feet on the underside.",
+    "The mouth is in the middle of the bottom side.",
+    "Many can regrow a lost arm over time.",
 )
 
 STEMS = (
-    "Where do elk like to live in the wild?",
-    "What pale mark helps an elk stand out from behind?",
-    "What happens to a bull elk’s antlers each year?",
-    "What do elk eat?",
-    "How do elk herds usually work?",
-    "What is an elk bugle?",
-    "What do new elk calves often look like?",
-    "How should people care around wild elk and their home?",
-    "How big are elk among deer?",
-    "Is a North American elk the same animal Europeans call “elk”?",
+    "Are starfish a kind of fish?",
+    "What does a sea star’s body look like, if we keep the arm count soft?",
+    "How does a sea star walk?",
+    "Where is a sea star’s mouth?",
+    "Where do sea stars live?",
+    "What is a sea star’s skin like?",
+    "What do many sea stars hunt?",
+    "What can many sea stars do if they lose an arm?",
+    "How many kinds of sea star are there, if we keep the count soft?",
+    "Does the name “starfish” mean they are fish?",
 )
 
 QIDS = (
-    "forest-meadow-home-soft",
-    "rump-patch-soft",
-    "antlers-soft",
-    "graze-browse-soft",
-    "herd-life-soft",
-    "bugle-soft",
-    "spotted-calves-soft",
-    "soft-forest-care",
-    "big-deer-soft",
-    "not-european-elk-myth",
+    "not-fish-soft",
+    "star-body-soft",
+    "tube-feet-soft",
+    "mouth-underneath-soft",
+    "ocean-only-soft",
+    "armour-soft",
+    "predators-soft",
+    "regrow-soft",
+    "many-kinds-soft",
+    "starfish-name-myth",
 )
 
 PLAIN_LEVEL_LABELS = ("Easy", "Hard")
@@ -103,20 +112,34 @@ BRITTLE = (
     "Near Threatened",
     "Least Concern",
     "CITES",
-    "Cervus",
-    "canadensis",
+    "Asteroidea",
+    "madreporite",
+    "ossicle",
+    "pedicellaria",
+    "pyloric",
+    "cardiac",
+    "eversion",
+    "keystone",
+    "Acanthaster",
+    "wasting",
     "kg",
     "cm",
     "mph",
     "km/h",
 )
-PAGE_BRITTLE = tuple(p for p in BRITTLE if p != "Cervus")
+PAGE_BRITTLE = BRITTLE
 RESERVED = (
     "IUCN",
-    "Least Concern",
-    "CITES",
-    "Cervus",
-    "canadensis",
+    "Asteroidea",
+    "madreporite",
+    "ossicle",
+    "pedicellaria",
+    "pyloric",
+    "cardiac",
+    "eversion",
+    "keystone",
+    "Acanthaster",
+    "wasting",
 )
 
 
@@ -128,9 +151,9 @@ def _main(html: str) -> str:
     return html.split('<main class="card-page">', 1)[1].split("</main>", 1)[0]
 
 
-class ElkEasyStudyCardTests(unittest.TestCase):
-    def test_deck_is_junior_ranger_with_hard_sibling(self):
-        self.assertIn("elk", study_card_ids())
+class StarfishEasyStudyCardTests(unittest.TestCase):
+    def test_deck_is_junior_ranger_only(self):
+        self.assertIn("starfish", study_card_ids())
         self.assertNotIn("stingray", study_card_ids())
         self.assertEqual(
             study_card_ids(),
@@ -177,26 +200,29 @@ class ElkEasyStudyCardTests(unittest.TestCase):
                 "starfish",
             ),
         )
-        self.assertEqual(shipped_levels_for("elk"), ("easy", "hard", "zoologist"))
-        self.assertIsNotNone(study_deck_for("elk", "hard"))
-        self.assertIsNotNone(study_deck_for("elk", "zoologist"))
+        self.assertEqual(shipped_levels_for("starfish"), ("easy",))
+        self.assertIsNone(study_deck_for("starfish", "hard"))
+        self.assertIsNone(study_deck_for("starfish", "zoologist"))
         self.assertIsNone(study_deck_for("stingray"))
-        deck = study_deck_for("elk")
+        deck = study_deck_for("starfish")
         self.assertIsNotNone(deck)
-        self.assertEqual(deck["id"], "elk")
+        self.assertEqual(deck["id"], "starfish")
         self.assertEqual(deck["level"], "easy")
         self.assertEqual(deck["level_label"], "Junior Ranger")
         self.assertEqual(level_display_name("easy"), "Junior Ranger")
-        self.assertEqual(deck["source"], WIKI_ELK)
-        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Elk.")
+        self.assertEqual(deck["source"], WIKI_STARFISH)
+        self.assertEqual(
+            deck["source_note"],
+            "Facts from Wikipedia, Starfish.",
+        )
         self.assertEqual(validate_deck(deck), [])
         self.assertEqual(len(deck["teach"]), 5)
         self.assertEqual(deck["teach"], list(TEACH))
         self.assertEqual(len(deck["questions"]), STUDY_SLOTS)
         self.assertEqual([q["stem"] for q in deck["questions"]], list(STEMS))
         self.assertEqual([q["id"] for q in deck["questions"]], list(QIDS))
-        self.assertEqual(deck["talk_about"], list(TALK_ABOUT_ELK))
-        self.assertEqual(deck["push_further"], list(PUSH_FURTHER_ELK))
+        self.assertEqual(deck["talk_about"], list(TALK_ABOUT_STARFISH))
+        self.assertEqual(deck["push_further"], list(PUSH_FURTHER_STARFISH))
         letters = [q["correct"] for q in deck["questions"]]
         self.assertEqual(letters, [target_letter_for_slot(i) for i in range(1, 11)])
         self.assertEqual(letters.count("A"), 4)
@@ -207,20 +233,30 @@ class ElkEasyStudyCardTests(unittest.TestCase):
             self.assertEqual(len(set(q["choices"])), 3)
             self.assertIn(q["correct"], ("A", "B", "C"))
             self.assertTrue(str(q["why"]).strip())
-        blob = " ".join(deck["teach"] + [q["stem"] + q["why"] for q in deck["questions"]])
+        blob = " ".join(
+            deck["teach"]
+            + [
+                q["stem"] + q["why"] + " ".join(q["choices"])
+                for q in deck["questions"]
+            ]
+        )
         for phrase in BRITTLE + RESERVED:
             self.assertNotIn(phrase, blob)
-        self.assertIn("forest", blob.lower())
-        self.assertIn("rump", blob.lower())
-        self.assertIn("antler", blob.lower())
-        self.assertIn("grass", blob.lower())
-        self.assertIn("herd", blob.lower())
-        self.assertIn("bugle", blob.lower())
-        self.assertIn("spot", blob.lower())
-        self.assertIn("space", blob.lower())
-        self.assertIn("moose", blob.lower())
-        self.assertIn("wapiti", blob.lower())
-        self.assertEqual(WIKI_ELK, "https://en.wikipedia.org/wiki/Elk")
+        self.assertIn("echinoderm", blob.lower())
+        self.assertIn("urchin", blob.lower())
+        self.assertIn("sea cucumber", blob.lower())
+        self.assertIn("tube feet", blob.lower())
+        self.assertIn("disc", blob.lower())
+        self.assertIn("mouth", blob.lower())
+        self.assertIn("salt", blob.lower())
+        self.assertIn("freshwater", blob.lower())
+        self.assertIn("plates", blob.lower())
+        self.assertIn("clam", blob.lower())
+        self.assertIn("regenerat", blob.lower())
+        self.assertIn("two thousand", blob.lower())
+        self.assertIn("invertebrate", blob.lower())
+        self.assertIn("sea star", blob.lower())
+        self.assertEqual(WIKI_STARFISH, "https://en.wikipedia.org/wiki/Starfish")
 
     def test_other_study_decks_untouched(self):
         lion = study_deck_for("african-lion")
@@ -230,24 +266,44 @@ class ElkEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(lion["talk_about"], list(TALK_ABOUT_LION))
         self.assertEqual(lion["push_further"], list(PUSH_FURTHER_LION))
         self.assertEqual(shipped_levels_for("african-lion"), ("easy", "hard", "zoologist"))
-        gator = study_deck_for("american-alligator")
-        self.assertEqual(gator["source"], WIKI_AMERICAN_ALLIGATOR)
-        self.assertEqual(gator["talk_about"], list(TALK_ABOUT_AMERICAN_ALLIGATOR))
-        self.assertEqual(gator["push_further"], list(PUSH_FURTHER_AMERICAN_ALLIGATOR))
-        self.assertEqual(shipped_levels_for("american-alligator"), ("easy", "hard", "zoologist"))
-        self.assertIsNotNone(study_deck_for("american-alligator", "hard"))
-        self.assertIsNotNone(study_deck_for("american-alligator", "zoologist"))
-        bison = study_deck_for("american-bison")
-        self.assertEqual(bison["source"], WIKI_AMERICAN_BISON)
-        self.assertEqual(bison["talk_about"], list(TALK_ABOUT_AMERICAN_BISON))
-        self.assertEqual(bison["push_further"], list(PUSH_FURTHER_AMERICAN_BISON))
-        self.assertEqual(shipped_levels_for("american-bison"), ("easy", "hard", "zoologist"))
-        self.assertIsNotNone(study_deck_for("american-bison", "hard"))
-        self.assertIsNotNone(study_deck_for("american-bison", "zoologist"))
-        self.assertEqual(shipped_levels_for("sea-otter"), ("easy", "hard", "zoologist"))
+        turtle = study_deck_for("sea-turtle")
+        self.assertEqual(turtle["source"], WIKI_SEA_TURTLE)
+        self.assertEqual(turtle["talk_about"], list(TALK_ABOUT_SEA_TURTLE))
+        self.assertEqual(turtle["push_further"], list(PUSH_FURTHER_SEA_TURTLE))
+        self.assertEqual(shipped_levels_for("sea-turtle"), ("easy", "hard", "zoologist"))
+        self.assertIsNotNone(study_deck_for("sea-turtle", "hard"))
+        self.assertIsNotNone(study_deck_for("sea-turtle", "zoologist"))
+        octo = study_deck_for("octopus")
+        self.assertEqual(octo["source"], WIKI_OCTOPUS)
+        self.assertEqual(octo["talk_about"], list(TALK_ABOUT_OCTOPUS))
+        self.assertEqual(octo["push_further"], list(PUSH_FURTHER_OCTOPUS))
+        self.assertEqual(shipped_levels_for("octopus"), ("easy", "hard", "zoologist"))
+        self.assertIsNotNone(study_deck_for("octopus", "hard"))
+        self.assertIsNotNone(study_deck_for("octopus", "zoologist"))
+        manta = study_deck_for("manta-ray")
+        self.assertEqual(manta["source"], WIKI_MANTA_RAY)
+        self.assertEqual(manta["talk_about"], list(TALK_ABOUT_MANTA_RAY))
+        self.assertEqual(manta["push_further"], list(PUSH_FURTHER_MANTA_RAY))
+        self.assertEqual(shipped_levels_for("manta-ray"), ("easy", "hard", "zoologist"))
+        self.assertIsNotNone(study_deck_for("manta-ray", "hard"))
+        self.assertIsNotNone(study_deck_for("manta-ray", "zoologist"))
+        kelp = study_deck_for("kelp-forest")
+        self.assertEqual(kelp["source"], WIKI_KELP_FOREST)
+        self.assertEqual(kelp["talk_about"], list(TALK_ABOUT_KELP_FOREST))
+        self.assertEqual(kelp["push_further"], list(PUSH_FURTHER_KELP_FOREST))
+        self.assertEqual(shipped_levels_for("kelp-forest"), ("easy", "hard", "zoologist"))
+        self.assertIsNotNone(study_deck_for("kelp-forest", "hard"))
+        self.assertIsNotNone(study_deck_for("kelp-forest", "zoologist"))
+        jelly = study_deck_for("jellyfish")
+        self.assertEqual(jelly["source"], WIKI_JELLYFISH)
+        self.assertEqual(jelly["talk_about"], list(TALK_ABOUT_JELLYFISH))
+        self.assertEqual(jelly["push_further"], list(PUSH_FURTHER_JELLYFISH))
+        self.assertEqual(shipped_levels_for("jellyfish"), ("easy", "hard", "zoologist"))
+        self.assertIsNotNone(study_deck_for("jellyfish", "hard"))
+        self.assertIsNotNone(study_deck_for("jellyfish", "zoologist"))
 
     def test_generator_html_is_study_not_worksheet(self):
-        html = outing_talk_html({"id": "elk", "packTemplate": "animals"})
+        html = outing_talk_html({"id": "starfish", "packTemplate": "animals"})
         self.assertIn(">Quiz</h2>", html)
         self.assertIn("card-study-pack", html)
         self.assertIn("Learn first", html)
@@ -260,72 +316,80 @@ class ElkEasyStudyCardTests(unittest.TestCase):
         self.assertIn('<details class="study-explore', html)
         self.assertIn("Explore more", html)
         self.assertNotIn('<aside class="study-deepen"', html)
-        for prompt in TALK_ABOUT_ELK + PUSH_FURTHER_ELK:
+        for prompt in TALK_ABOUT_STARFISH + PUSH_FURTHER_STARFISH:
             self.assertIn(prompt, html)
         self.assertIn("Show answers", html)
         self.assertIn("Score", html)
         for line in TEACH:
-            self.assertIn(line.replace("&", "&amp;"), html)
+            self.assertIn(line, html)
         for stem in STEMS:
             self.assertIn(stem, html)
         for phrase in GENERIC_WORKSHEET:
             self.assertNotIn(phrase, html)
         visible = _text(html)
         self.assertIn("Junior Ranger", visible)
-        self.assertIn("Park Ranger", visible)
-        self.assertIn("Zoologist", visible)
-        self.assertIn('class="study-level-picker"', html)
-        self.assertIn('data-study-pick="easy"', html)
-        self.assertIn('data-study-pick="hard"', html)
-        self.assertIn('data-study-pick="zoologist"', html)
-        self.assertNotIn('class="study-level-badge"', html)
-        self.assertEqual(html.count('role="group"'), 2)
-        self.assertIn("study-level-picker-bottom", html)
+        self.assertNotIn("Park Ranger", visible)
+        self.assertNotIn("Zoologist", visible)
+        self.assertIn('class="study-level-badge"', html)
+        self.assertNotIn('class="study-level-picker"', html)
+        self.assertNotIn("study-level-picker-bottom", html)
+        self.assertNotIn('data-study-pick="easy"', html)
+        self.assertNotIn('data-study-pick="hard"', html)
+        self.assertNotIn('data-study-pick="zoologist"', html)
+        self.assertEqual(html.count('role="group"'), 0)
         for badge in PLAIN_LEVEL_LABELS + AGE_BADGES:
             self.assertNotIn(badge, visible)
+        self.assertNotIn(" · Easy ·", html)
+        self.assertNotIn(" · Hard ·", html)
         for phrase in PAGE_BRITTLE:
             self.assertNotIn(phrase, html)
         self.assertIn(
-            "Open forests, forest edges, and mountain meadows",
+            "No — they have no gills, scales, or fins like fish. They are echinoderms, with urchins and sea cucumbers (names light)",
             html,
         )
         self.assertIn(
-            "No — in Europe “elk” often means moose; North American elk are also called wapiti",
+            "No — the name sounds like a fish, but they are sea stars: invertebrates, not fish",
             html,
         )
-        self.assertIn("Facts from Wikipedia, Elk.", html)
+        self.assertIn("Facts from Wikipedia, Starfish.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
         html = outing_talk_html({"id": "stingray", "packTemplate": "animals"})
         self.assertIn("What do they eat?", html)
         self.assertNotIn("card-study-pack", html)
-        self.assertNotIn("Where do elk like to live in the wild?", html)
-        jelly = OCTOPUS.read_text(encoding="utf-8")
-        self.assertIn("What do they eat?", jelly)
-        self.assertNotIn("card-study-pack", jelly)
-        self.assertNotIn("Where do elk like to live in the wild?", jelly)
+        self.assertNotIn("Are starfish a kind of fish", html)
+        ray = STINGRAY.read_text(encoding="utf-8")
+        self.assertIn("What do they eat?", ray)
+        self.assertNotIn("card-study-pack", ray)
+        self.assertNotIn("Are starfish a kind of fish", ray)
 
-    def test_published_elk_card_matches_easy_deck(self):
-        html = ELK.read_text(encoding="utf-8")
+    def test_published_starfish_card_matches_easy_deck(self):
+        html = STARFISH.read_text(encoding="utf-8")
         main = _main(html)
         for phrase in GENERIC_WORKSHEET:
             self.assertNotIn(phrase, main)
         for stem in STEMS:
             self.assertIn(stem, main)
         for line in TEACH:
-            self.assertIn(line.replace("&", "&amp;"), main)
+            self.assertIn(line, main)
+        self.assertIn("Watch Live", main)
+        self.assertIn("card-watch-live", main)
         self.assertIn("card-page-photo", main)
-        self.assertIn("/field-pack/photos/elk.jpg", main)
+        self.assertIn("/field-pack/photos/starfish.jpg", main)
+        self.assertIn(
+            "/field-pack/virtual-field-trip/?tab=aquarium&amp;from=card#habitat=starfish",
+            main,
+        )
         self.assertIn('class="card-try-next no-print"', main)
-        self.assertIn("study-level-picker-bottom", main)
+        self.assertNotIn("study-level-picker-bottom", main)
         self.assertNotIn("card-print-note", main)
         self.assertIn("study-card.js?v=10", html)
         self.assertIn("study-card.css?v=10", html)
         self.assertIn("study-cards-data.js?v=6", html)
         self.assertIn('id="study-card-data"', html)
         self.assertIn('"level_label": "Junior Ranger"', html)
-        self.assertIn('"id": "elk"', html)
-        self.assertNotIn('"id": "american-bison"', html)
+        self.assertIn('"id": "starfish"', html)
+        self.assertNotIn('"id": "sea-turtle"', html)
         self.assertIn('id="study-print-template"', html)
         self.assertIn("print-kit.js?v=20", html)
         self.assertIn("styles.css?v=42", html)
@@ -341,18 +405,20 @@ class ElkEasyStudyCardTests(unittest.TestCase):
         self.assertLess(main.find("study-explore"), main.find("card-try-next"))
         visible = _text(main)
         self.assertIn("Junior Ranger", visible)
-        self.assertIn("Park Ranger", visible)
-        self.assertIn("Zoologist", visible)
-        self.assertIn('class="study-level-picker"', main)
-        self.assertIn('data-study-pick="easy"', main)
-        self.assertIn('data-study-pick="hard"', main)
-        self.assertIn('data-study-pick="zoologist"', main)
-        self.assertNotIn('class="study-level-badge"', main)
+        self.assertNotIn("Park Ranger", visible)
+        self.assertNotIn("Zoologist", visible)
+        self.assertIn('class="study-level-badge"', main)
+        self.assertNotIn('class="study-level-picker"', main)
+        self.assertNotIn('data-study-pick="easy"', main)
+        self.assertNotIn('data-study-pick="hard"', main)
+        self.assertNotIn('data-study-pick="zoologist"', main)
         self.assertIn("Learn first", main)
         self.assertIn(">Quiz</h2>", main)
         self.assertEqual(main.count("data-study-correct"), 2)
         for badge in PLAIN_LEVEL_LABELS + AGE_BADGES:
             self.assertNotIn(badge, visible)
+        self.assertNotIn(" · Easy ·", main)
+        self.assertNotIn(" · Hard ·", main)
         for phrase in PAGE_BRITTLE:
             self.assertNotIn(phrase, main)
         print_tpl = html.split('id="study-print-template">', 1)[1].split("</template>", 1)[0]
@@ -367,38 +433,38 @@ class ElkEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Talk about it", back)
         self.assertIn("Push further", back)
         self.assertIn("ps-study-deepen", back)
-        for prompt in TALK_ABOUT_ELK + PUSH_FURTHER_ELK:
+        for prompt in TALK_ABOUT_STARFISH + PUSH_FURTHER_STARFISH:
             self.assertIn(prompt, back)
         self.assertEqual(
-            study_try_next_ids("elk"),
-            ["american-bison", "zebra", "african-lion"],
+            study_try_next_ids("starfish"),
+            ["sea-turtle", "octopus", "african-lion"],
         )
 
     def test_print_faces_are_duplex_and_clamped(self):
-        deck = study_deck_for("elk")
+        deck = study_deck_for("starfish")
         sheet = study_print_html(
             deck,
-            name="Elk",
-            emoji="🦌",
-            photo="/field-pack/photos/elk.jpg?v=img2",
-            photo_pos="50% 22%",
+            name="Sea star",
+            emoji="⭐",
+            photo="/field-pack/photos/starfish.jpg?v=img2",
+            photo_pos="50% 45%",
         )
         self.assertIn("ps-study-front", sheet)
         self.assertIn("ps-study-back", sheet)
         self.assertIn("ps-study-photo", sheet)
-        self.assertIn("/field-pack/photos/elk.jpg", sheet)
+        self.assertIn("/field-pack/photos/starfish.jpg", sheet)
         self.assertIn("Flip for answers", sheet)
         self.assertIn("Junior Ranger", sheet)
         self.assertNotIn(" · Easy ·", sheet)
-        self.assertIn(WIKI_ELK, sheet)
+        self.assertIn(WIKI_STARFISH, sheet)
         for stem in STEMS:
             self.assertIn(stem, sheet)
         self.assertIn(
-            "Open forests, forest edges, and mountain meadows",
+            "No — they have no gills, scales, or fins like fish. They are echinoderms, with urchins and sea cucumbers (names light)",
             sheet,
         )
         self.assertIn(
-            "No — in Europe “elk” often means moose; North American elk are also called wapiti",
+            "No — the name sounds like a fish, but they are sea stars: invertebrates, not fish",
             sheet,
         )
         front, _, back = sheet.partition("ps-study-back")
@@ -406,7 +472,7 @@ class ElkEasyStudyCardTests(unittest.TestCase):
         self.assertNotIn("Talk about it", front)
         self.assertIn("Talk about it", back)
         self.assertIn("Push further", back)
-        for prompt in TALK_ABOUT_ELK + PUSH_FURTHER_ELK:
+        for prompt in TALK_ABOUT_STARFISH + PUSH_FURTHER_STARFISH:
             self.assertIn(prompt, back)
         css = STYLES.read_text(encoding="utf-8")
         self.assertIn(".ps-study-front", css)
@@ -422,17 +488,20 @@ class ElkEasyStudyCardTests(unittest.TestCase):
         self.assertIn("is-wrong-pick", study_js)
         self.assertIn("FPStudyLevelName", study_js + STUDY_DATA_JS.read_text(encoding="utf-8"))
 
-    def test_artifacts_include_elk_easy_and_hard(self):
+    def test_artifacts_include_starfish_easy_only(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
-        self.assertIn("elk", payload)
+        self.assertIn("starfish", payload)
         self.assertNotIn("stingray", payload)
-        self.assertIn("american-bison", payload)
-        elk = payload["elk"]
-        self.assertEqual(elk["id"], "elk")
-        self.assertEqual(set(elk["levels"]), {"easy", "hard", "zoologist"})
-        self.assertEqual(elk["levels"]["hard"]["teach"], [])
-        self.assertEqual(elk["levels"]["zoologist"]["teach"], [])
-        easy = elk["levels"]["easy"]
+        self.assertIn("seahorse", payload)
+        self.assertIn("sea-turtle", payload)
+        self.assertIn("octopus", payload)
+        self.assertIn("manta-ray", payload)
+        star = payload["starfish"]
+        self.assertEqual(star["id"], "starfish")
+        self.assertEqual(set(star["levels"]), {"easy"})
+        self.assertNotIn("hard", star["levels"])
+        self.assertNotIn("zoologist", star["levels"])
+        easy = star["levels"]["easy"]
         self.assertEqual(len(easy["teach"]), 5)
         self.assertEqual(len(easy["questions"]), STUDY_SLOTS)
         self.assertEqual(
@@ -442,12 +511,11 @@ class ElkEasyStudyCardTests(unittest.TestCase):
         for q in easy["questions"]:
             self.assertEqual(len(q["choices"]), 3)
         data_js = STUDY_DATA_JS.read_text(encoding="utf-8")
-        self.assertIn('"elk"', data_js)
+        self.assertIn('"starfish"', data_js)
         self.assertIn('"easy":"Junior Ranger"', data_js)
-        self.assertEqual(
-            set(payload["american-bison"]["levels"]),
-            {"easy", "hard", "zoologist"},
-        )
+        self.assertEqual(set(payload["sea-turtle"]["levels"]), {"easy", "hard", "zoologist"})
+        self.assertEqual(set(payload["octopus"]["levels"]), {"easy", "hard", "zoologist"})
+        self.assertEqual(set(payload["manta-ray"]["levels"]), {"easy", "hard", "zoologist"})
         self.assertEqual(set(payload["african-lion"]["levels"]), {"easy", "hard", "zoologist"})
 
     def test_display_name_map_still_covers_future_tiers(self):
@@ -460,19 +528,19 @@ class ElkEasyStudyCardTests(unittest.TestCase):
             },
         )
         self.assertEqual(level_display_name("easy"), "Junior Ranger")
-        elk_html = ELK.read_text(encoding="utf-8")
-        visible = _text(_main(elk_html))
+        star_html = STARFISH.read_text(encoding="utf-8")
+        visible = _text(_main(star_html))
         self.assertIn("Junior Ranger", visible)
-        self.assertIn("Park Ranger", visible)
-        self.assertIn("Zoologist", visible)
-        gator_html = GATOR.read_text(encoding="utf-8")
-        self.assertIn("Junior Ranger", _text(_main(gator_html)))
-        self.assertIn("Park Ranger", _text(_main(gator_html)))
-        self.assertIn("Zoologist", _text(_main(gator_html)))
-        bison_html = BISON.read_text(encoding="utf-8")
-        self.assertIn("Junior Ranger", _text(_main(bison_html)))
-        self.assertIn("Park Ranger", _text(_main(bison_html)))
-        self.assertIn("Zoologist", _text(_main(bison_html)))
+        self.assertNotIn("Park Ranger", visible)
+        self.assertNotIn("Zoologist", visible)
+        turtle_html = SEA_TURTLE.read_text(encoding="utf-8")
+        self.assertIn("Junior Ranger", _text(_main(turtle_html)))
+        self.assertIn("Park Ranger", _text(_main(turtle_html)))
+        self.assertIn("Zoologist", _text(_main(turtle_html)))
+        octo_html = OCTOPUS.read_text(encoding="utf-8")
+        self.assertIn("Junior Ranger", _text(_main(octo_html)))
+        self.assertIn("Park Ranger", _text(_main(octo_html)))
+        self.assertIn("Zoologist", _text(_main(octo_html)))
 
 
 if __name__ == "__main__":

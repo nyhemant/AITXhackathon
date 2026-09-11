@@ -187,6 +187,7 @@ class CuttlefishEasyStudyCardTests(unittest.TestCase):
                 "octopus",
                 "sea-turtle",
                 "seahorse",
+                "starfish",
             ),
         )
         self.assertEqual(shipped_levels_for("cuttlefish"), ("easy", "hard", "zoologist"))
