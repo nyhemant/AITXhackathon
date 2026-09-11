@@ -17631,6 +17631,86 @@
             "why": "Wikipedia: mouths can hold hundreds of rows of tiny teeth plus filter pads for filter feeding. Soft on exact row counts; they are not built like a great white’s bite."
           }
         ]
+      },
+      "zoologist": {
+        "teach": [],
+        "talk_about": [
+          "Scientists put the living whale shark with carpet sharks. Why mention an extinct cousin too?",
+          "Whale sharks grow slowly and live a long time. Why keep the exact years soft?",
+          "Skin teeth cover more than the mouth. Why might denticles on the eyes help?"
+        ],
+        "push_further": [
+          "Spot patterns can name one animal. Why might photos beat tagging every shark?",
+          "Boats and nets still hurt whale sharks. Why treat the Endangered letter as a snapshot?",
+          "Family-tree site details stay soft. Why not lock one fossil beach forever?"
+        ],
+        "questions": [
+          {
+            "slot": 1,
+            "id": "elasmobranchii-fossil-soft",
+            "title": "Taxonomy",
+            "stem": "How do scientists place the living whale shark, and what extinct relative does Wikipedia note?",
+            "choices": [
+              "Class Chondrichthyes / subclass Elasmobranchii — a carpet shark; an extinct Rhincodon (R. ferriolensis) is noted from the Miocene of Europe (soft)",
+              "A bony bony-fish group with no cartilaginous cousins",
+              "A mammal clade with whales only"
+            ],
+            "correct": "A",
+            "why": "Wikipedia places Rhincodon typus in Chondrichthyes and Elasmobranchii as a carpet shark. It also notes an extinct Rhincodon ferriolensis from the Late Burdigalian (Miocene) of Europe. Soft on exact site details."
+          },
+          {
+            "slot": 2,
+            "id": "longevity-maturity-soft",
+            "title": "Longevity",
+            "stem": "What is unusual about whale-shark life history for a fish, if we keep numbers soft?",
+            "choices": [
+              "It matures in a few weeks and lives only one summer",
+              "Late maturity and a very long life — decades to maturity and lifespan that may reach many decades (exact years soft)",
+              "It never grows after birth"
+            ],
+            "correct": "B",
+            "why": "Wikipedia and linked research describe slow growth, late maturity, and long life (estimates often decades; some projections over a century). Exact year counts stay soft because methods still refine ages."
+          },
+          {
+            "slot": 3,
+            "id": "denticles-soft",
+            "title": "Denticles",
+            "stem": "What tooth-like skin structures do whale sharks have beyond the tiny mouth teeth?",
+            "choices": [
+              "Dermal denticles (placoid scales) on the body — and Wikipedia notes denticles on the eyeballs that help protect the eyes (soft)",
+              "Feathers that molt each spring",
+              "No scales of any kind — only slime"
+            ],
+            "correct": "A",
+            "why": "Like other sharks, whale sharks have dermal denticles. Wikipedia highlights eyeball denticles (structured differently from body denticles) plus the ability to retract the eyes for protection. Soft on filter-surface details."
+          },
+          {
+            "slot": 4,
+            "id": "photo-id-soft",
+            "title": "Photo-ID",
+            "stem": "How do researchers tell one whale shark from another without tagging every animal?",
+            "choices": [
+              "Only by guessing from swimming speed",
+              "Unique spot/stripe patterns — photos of a standard flank area feed global ID libraries (soft)",
+              "By painting numbers on the dorsal fin in the wild"
+            ],
+            "correct": "B",
+            "why": "Wikipedia notes each individual’s pattern is unique. Researchers use photo-identification of spot patterns (often a flank region near the gills/pectoral) to track re-sightings. Soft on database names."
+          },
+          {
+            "slot": 5,
+            "id": "ship-strike-bycatch-soft",
+            "title": "Threats",
+            "stem": "Beyond the IUCN Endangered letter, what human pressures does Wikipedia emphasize for whale sharks?",
+            "choices": [
+              "Only too much plankton in the sea",
+              "Only quieter oceans with no boats",
+              "Targeted fishing, bycatch in other fisheries, and collisions with large ships — drivers of a large population drop (soft)"
+            ],
+            "correct": "C",
+            "why": "Wikipedia ties the Endangered listing to a large decline over recent decades from targeted fishing, bycatch, and ship collisions. Soft on exact percent — treat as a snapshot."
+          }
+        ]
       }
     }
   }

@@ -45,7 +45,7 @@ from animal_park_links import (  # noqa: E402
 )
 from study_cards import (  # noqa: E402
     STUDY_QUIZ_H2,
-    study_deck_for,
+    default_study_deck_for,
     study_print_html,
     study_talk_html,
     study_try_next_html,
@@ -231,7 +231,7 @@ OUTING_TALK_ANIMAL = (
 # Sea turtle ships Junior Ranger + Park Ranger + Zoologist.
 # Seahorse ships Junior Ranger + Park Ranger + Zoologist.
 # Starfish ships Junior Ranger + Park Ranger.
-# Whale shark ships Junior Ranger + Park Ranger.
+# Whale shark ships Junior Ranger + Park Ranger + Zoologist.
 CARD_TALK_OVERRIDE: dict[str, tuple[dict, ...]] = {}
 
 # Optional More talk on a card. Unused while lion ships the Easy study deck.
@@ -799,7 +799,7 @@ def real_extra_qa_html(item: dict, *, heading: str = "More talk") -> str:
 
 def outing_talk_html(item: dict) -> str:
     """On-screen outing talk. A study deck wins over CARD_TALK_OVERRIDE."""
-    deck = study_deck_for(str(item.get("id") or "").strip())
+    deck = default_study_deck_for(str(item.get("id") or "").strip())
     if deck:
         return study_talk_html(deck, heading=STUDY_QUIZ_H2)
     key = item.get("key") or {}
@@ -4808,7 +4808,7 @@ def write_card_pages(
             watch_href=photo_watch_href,
         )
         talk_html = outing_talk_html(item)
-        study_deck = study_deck_for(cid)
+        study_deck = default_study_deck_for(cid)
         study_scripts = ""
         study_print_tpl = ""
         study_json_tag = ""

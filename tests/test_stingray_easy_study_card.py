@@ -194,7 +194,7 @@ class StingrayEasyStudyCardTests(unittest.TestCase):
         self.assertIsNotNone(study_deck_for("stingray", "zoologist"))
         self.assertIsNotNone(study_deck_for("whale-shark"))
         self.assertIsNotNone(study_deck_for("whale-shark", "hard"))
-        self.assertIsNone(study_deck_for("whale-shark", "zoologist"))
+        self.assertIsNotNone(study_deck_for("whale-shark", "zoologist"))
         deck = study_deck_for("stingray")
         self.assertIsNotNone(deck)
         self.assertEqual(deck["id"], "stingray")
@@ -461,7 +461,7 @@ class StingrayEasyStudyCardTests(unittest.TestCase):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
         self.assertIn("stingray", payload)
         self.assertIn("whale-shark", payload)
-        self.assertEqual(set(payload["whale-shark"]["levels"]), {"easy", "hard"})
+        self.assertEqual(set(payload["whale-shark"]["levels"]), {"easy", "hard", "zoologist"})
         self.assertIn("seahorse", payload)
         self.assertIn("manta-ray", payload)
         ray = payload["stingray"]
