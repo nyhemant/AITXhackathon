@@ -328,8 +328,8 @@ class TwoToedSlothEasyStudyCardTests(unittest.TestCase):
             self.assertIn(line, main)
         self.assertNotIn("Watch Live", main)
         self.assertNotIn("card-watch-live", main)
-        self.assertIn("card-page-photo-link", main)
-        self.assertIn(
+        self.assertNotIn("card-page-photo-link", main)
+        self.assertNotIn(
             "/field-pack/virtual-zoo/?from=card#habitat=two-toed-sloth",
             main,
         )
