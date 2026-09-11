@@ -90,7 +90,10 @@ def _menu_items(html: str, menu_id: str) -> list[tuple[str, str]]:
     assert block, f"missing #{menu_id}"
     return [
         (href, re.sub(r"<small>[\s\S]*?</small>", "", label).strip())
-        for href, label in re.findall(r'<a href="([^"]+)"[^>]*>([\s\S]*?)</a>', block.group(1))
+        for href, label in re.findall(
+            r'<a\s+[^>]*href="([^"]+)"[^>]*>([\s\S]*?)</a>',
+            block.group(1),
+        )
     ]
 
 
