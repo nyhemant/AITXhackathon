@@ -22,14 +22,19 @@ from field_pack_card_kind import card_kind  # noqa: E402
 from field_pack_catalog_kind import load_card_kinds  # noqa: E402
 from parenttest_guardrails import (  # noqa: E402
     ANIMAL_SEA_LIFE_HUBS,
+    CANONICAL_SHORT_SLUGS,
     EMPTY_PICTURES_ALLOW,
+    LIBRARY_WATCH_LIVE_PENDING_RESTORE,
     TRY_NEXT_CROSS_KINGDOM_ALLOW,
     WATCH_LIVE_WITHOUT_HABITAT_ALLOW,
     card_kingdom,
     cross_kingdom_try_next_issues,
     dead_watch_live_issues,
     empty_pictures_issues,
+    film_library_playable_ids,
+    missing_library_watch_live_issues,
     published_animal_sea_life_ids,
+    short_slug_hub_issues,
     tour_habitat_ids,
 )
 from study_cards import study_try_next_hub  # noqa: E402
@@ -48,11 +53,21 @@ LION_ON_SEALIFE_HTML = """
 </nav>
 </main>
 """
-MANTA_DEAD_LIVE_HTML = """
+UNKNOWN_HABITAT_LIVE_HTML = """
 <main class="card-page">
   <a class="btn btn-primary card-watch-live"
-     href="/field-pack/virtual-field-trip/?tab=aquarium&amp;from=card#habitat=manta-ray">Watch Live</a>
+     href="/field-pack/virtual-field-trip/?tab=aquarium&amp;from=card#habitat=not-a-real-stop">Watch Live</a>
 </main>
+"""
+NO_WATCH_LIVE_HTML = """
+<main class="card-page">
+  <a class="btn btn-ghost" href="https://example.com/photos">Photos</a>
+</main>
+"""
+GIRAFFE_404_HUB = """
+<li class="cards-hub-item" data-card-id="giraffe">
+  <a class="cards-hub-link" href="/field-pack/cards/giraffe/">Giraffe</a>
+</li>
 """
 EMPTY_PICTURES_CATALOG = {
     "asian-small-clawed-otter": {
@@ -101,6 +116,11 @@ class KingdomMappingTests(unittest.TestCase):
         self.assertEqual(TRY_NEXT_CROSS_KINGDOM_ALLOW, ())
         self.assertEqual(WATCH_LIVE_WITHOUT_HABITAT_ALLOW, ())
         self.assertEqual(EMPTY_PICTURES_ALLOW, ())
+        self.assertEqual(CANONICAL_SHORT_SLUGS["giraffe"], "reticulated-giraffe")
+        # Pending restore is one documented set, not a growing exception list.
+        self.assertIn("manta-ray", LIBRARY_WATCH_LIVE_PENDING_RESTORE)
+        self.assertIn("whale-shark", LIBRARY_WATCH_LIVE_PENDING_RESTORE)
+        self.assertLessEqual(len(LIBRARY_WATCH_LIVE_PENDING_RESTORE), 16)
 
 
 class TryNextKingdomTests(unittest.TestCase):
@@ -129,13 +149,46 @@ class WatchLiveHabitatTests(unittest.TestCase):
         self.assertIn("eel", real)
         self.assertNotIn("manta-ray", real)
 
-    def test_sep11_manta_dead_live_would_fail(self):
-        """Library-only / missing aquarium habitat still showing Watch Live."""
+    def test_sep11_unknown_habitat_watch_live_would_fail(self):
+        """Watch Live to a habitat that is in neither tour JSON nor film libraries."""
         issues = dead_watch_live_issues(
-            html_by_id={"manta-ray": MANTA_DEAD_LIVE_HTML}
+            html_by_id={"warthog": UNKNOWN_HABITAT_LIVE_HTML}
         )
         self.assertTrue(issues)
+        self.assertTrue(any("not-a-real-stop" in row for row in issues), issues)
+
+    def test_film_library_counts_as_watch_live_source(self):
+        """Hide/show must see aquarium-film-library — manta media is not a dead CTA."""
+        library = film_library_playable_ids()
+        self.assertIn("manta-ray", library)
+        self.assertIn("whale-shark", library)
+        self.assertNotIn("manta-ray", tour_habitat_ids())
+        manta_cta = """
+        <main class="card-page">
+          <a class="btn btn-primary card-watch-live"
+             href="/field-pack/virtual-field-trip/?tab=aquarium&amp;from=card#habitat=manta-ray">Watch Live</a>
+        </main>
+        """
+        self.assertEqual(
+            dead_watch_live_issues(html_by_id={"manta-ray": manta_cta}),
+            [],
+        )
+
+    def test_library_playable_without_cta_would_fail(self):
+        """manta-ray / whale-shark have library video+cam — missing Watch Live is a miss."""
+        issues = missing_library_watch_live_issues(
+            html_by_id={
+                "manta-ray": NO_WATCH_LIVE_HTML,
+                "whale-shark": NO_WATCH_LIVE_HTML,
+            },
+            pending=set(),
+        )
         self.assertTrue(any("manta-ray" in row for row in issues), issues)
+        self.assertTrue(any("whale-shark" in row for row in issues), issues)
+
+    def test_pending_restore_keeps_current_main_green(self):
+        issues = missing_library_watch_live_issues()
+        self.assertEqual(issues, [], "\n".join(issues))
 
 
 class PhotosNotEmptyTests(unittest.TestCase):
@@ -167,6 +220,20 @@ class PhotosNotEmptyTests(unittest.TestCase):
             }
         )
         self.assertEqual(issues, [])
+
+
+class HubSlugTests(unittest.TestCase):
+    def test_hub_animal_links_are_live_canonical_slugs(self):
+        issues = short_slug_hub_issues()
+        self.assertEqual(issues, [], "\n".join(issues))
+        hub = (FP / "cards" / "index.html").read_text(encoding="utf-8")
+        self.assertIn("/field-pack/cards/reticulated-giraffe/", hub)
+        self.assertNotIn("/field-pack/cards/giraffe/", hub)
+
+    def test_giraffe_short_slug_hub_link_would_fail(self):
+        issues = short_slug_hub_issues(hub_html=GIRAFFE_404_HUB)
+        self.assertTrue(issues)
+        self.assertTrue(any("giraffe" in row and "reticulated-giraffe" in row for row in issues), issues)
 
 
 if __name__ == "__main__":

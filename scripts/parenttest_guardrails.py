@@ -58,6 +58,36 @@ TRY_NEXT_CROSS_KINGDOM_ALLOW: tuple[tuple[str, str], ...] = ()
 WATCH_LIVE_WITHOUT_HABITAT_ALLOW: tuple[tuple[str, str], ...] = ()
 EMPTY_PICTURES_ALLOW: tuple[tuple[str, str], ...] = ()
 
+# Film-library overlays that already have video/cam, but baked cards still hide
+# Watch Live (PR #207). A separate PR is restoring those CTAs — do not block
+# this suite on that restore. Drop an id here when its card gains Watch Live.
+# Reason: CTA restore is a sibling PR; aquarium/zoo film libraries already have media.
+LIBRARY_WATCH_LIVE_PENDING_RESTORE = frozenset(
+    {
+        "cheetah",
+        "chimpanzee",
+        "cuttlefish",
+        "galapagos-tortoise",
+        "kelp-forest",
+        "koala",
+        "manta-ray",
+        "orangutan",
+        "polar-bear",
+        "puffin",
+        "red-panda",
+        "ring-tailed-lemur",
+        "sea-otter",
+        "two-toed-sloth",
+        "whale-shark",
+        "zebra",
+    }
+)
+
+# Short slugs that 404; hub / card links must use the canonical card id.
+CANONICAL_SHORT_SLUGS = {
+    "giraffe": "reticulated-giraffe",
+}
+
 WATCH_TAG_RE = re.compile(
     r'<a[^>]+class="[^"]*(?:card-watch-live|card-page-photo-link)[^"]*"[^>]*>',
     re.I,
@@ -103,6 +133,32 @@ def tour_habitat_ids(vdir: Path | None = None) -> set[str]:
             if hid:
                 ids.add(hid)
             if cid:
+                ids.add(cid)
+    return ids
+
+
+def _library_entry_playable(card: dict) -> bool:
+    video = card.get("video") if isinstance(card.get("video"), dict) else {}
+    cam = card.get("cam") if isinstance(card.get("cam"), dict) else {}
+    return bool(
+        str(video.get("url") or "").strip()
+        or str(cam.get("url") or "").strip()
+        or str(cam.get("embed") or "").strip()
+    )
+
+
+def film_library_playable_ids(vdir: Path | None = None) -> set[str]:
+    """cardIds in aquarium/zoo film libraries that already have video or cam."""
+    root = vdir if vdir is not None else VDIR
+    ids: set[str] = set()
+    for name in ("aquarium-film-library.json", "zoo-film-library.json"):
+        path = root / name
+        if not path.is_file():
+            continue
+        data = json.loads(path.read_text(encoding="utf-8"))
+        for card in data.get("cards") or []:
+            cid = str(card.get("cardId") or "").strip()
+            if cid and _library_entry_playable(card):
                 ids.add(cid)
     return ids
 
@@ -164,13 +220,17 @@ def dead_watch_live_issues(
     kinds: dict | None = None,
     ids: list[str] | None = None,
     habitats: set[str] | None = None,
+    library_playable: set[str] | None = None,
     vft_by_card: dict | None = None,
 ) -> list[str]:
-    """B: visible Watch Live requires a real zoo/aquarium tour habitat."""
+    """B: visible Watch Live needs a tour habitat or playable film-library media."""
     table = kinds if kinds is not None else load_card_kinds()
     want = ids if ids is not None else published_animal_sea_life_ids(table)
     skip = _allow_ids(WATCH_LIVE_WITHOUT_HABITAT_ALLOW)
     real = habitats if habitats is not None else tour_habitat_ids()
+    library = (
+        library_playable if library_playable is not None else film_library_playable_ids()
+    )
     vft = vft_by_card if vft_by_card is not None else load_vft_by_card()
     issues: list[str] = []
     for cid in want:
@@ -185,21 +245,67 @@ def dead_watch_live_issues(
         if not hrefs:
             continue
         rec = vft.get(cid) or {}
+        library_ok = cid in library
         for href in hrefs:
             hid_m = HABITAT_RE.search(href)
             hid = hid_m.group(1) if hid_m else ""
             if not hid:
                 issues.append(f"{cid}: Watch Live {href} has no #habitat=")
                 continue
-            if hid not in real:
+            tour_ok = hid in real and vft_can_watch_live(rec)
+            if not tour_ok and not library_ok:
                 issues.append(
-                    f"{cid}: Watch Live #{hid} is not a virtual-zoo/aquarium tour habitat"
+                    f"{cid}: Watch Live #{hid} has no tour habitat and no film-library video/cam"
                 )
-                continue
-            if not vft_can_watch_live(rec):
-                issues.append(
-                    f"{cid}: Watch Live #{hid} visible but vft_can_watch_live is false"
-                )
+    return issues
+
+
+def missing_library_watch_live_issues(
+    *,
+    html_by_id: dict[str, str] | None = None,
+    kinds: dict | None = None,
+    ids: list[str] | None = None,
+    library_playable: set[str] | None = None,
+    pending: set[str] | None = None,
+) -> list[str]:
+    """Film-library video/cam cards should show Watch Live (hide must see the libraries)."""
+    table = kinds if kinds is not None else load_card_kinds()
+    want = ids if ids is not None else published_animal_sea_life_ids(table)
+    library = (
+        library_playable if library_playable is not None else film_library_playable_ids()
+    )
+    skip = LIBRARY_WATCH_LIVE_PENDING_RESTORE if pending is None else set(pending)
+    issues: list[str] = []
+    for cid in want:
+        if cid not in library or cid in skip:
+            continue
+        html = (html_by_id or {}).get(cid) if html_by_id is not None else load_card_html(cid)
+        if html_by_id is not None and cid not in html_by_id:
+            continue
+        if not html:
+            issues.append(f"{cid}: film library has video/cam but cards/{cid}/index.html is missing")
+            continue
+        if not visible_watch_live_hrefs(html):
+            issues.append(
+                f"{cid}: film library has video/cam but baked HTML has no Watch Live CTA"
+            )
+    return issues
+
+
+def short_slug_hub_issues(*, hub_html: str | None = None) -> list[str]:
+    """Hub must not point animal/sea_life at a 404 short slug (giraffe → reticulated-giraffe)."""
+    html = hub_html if hub_html is not None else (CARDS / "index.html").read_text(encoding="utf-8")
+    issues: list[str] = []
+    for short, canonical in CANONICAL_SHORT_SLUGS.items():
+        if re.search(rf"/field-pack/cards/{re.escape(short)}/?", html):
+            issues.append(
+                f"cards hub links to /cards/{short}/ (404); canonical is {canonical}"
+            )
+    for slug in re.findall(r"/field-pack/cards/([a-z0-9-]+)/", html):
+        if slug in CANONICAL_SHORT_SLUGS:
+            continue
+        if not (CARDS / slug / "index.html").is_file():
+            issues.append(f"cards hub links to missing cards/{slug}/")
     return issues
 
 
@@ -238,10 +344,13 @@ def empty_pictures_issues(
 
 
 def all_issues(**kwargs) -> dict[str, list[str]]:
+    shared = {k: kwargs[k] for k in ("html_by_id", "kinds", "ids") if k in kwargs}
     return {
-        "try_next_kingdom": cross_kingdom_try_next_issues(**kwargs),
-        "watch_live_habitat": dead_watch_live_issues(**kwargs),
-        "empty_pictures": empty_pictures_issues(**kwargs),
+        "try_next_kingdom": cross_kingdom_try_next_issues(**shared),
+        "watch_live_habitat": dead_watch_live_issues(**shared),
+        "empty_pictures": empty_pictures_issues(**shared),
+        "library_watch_live": missing_library_watch_live_issues(**shared),
+        "short_slug_hub": short_slug_hub_issues(),
     }
 
 
