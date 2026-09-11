@@ -1888,13 +1888,43 @@ brackish lagoons. Closely related to
 pipefish and seadragons (same family) —
 names stay light. Myth: people think moms
 always carry babies — in seahorses, fathers
-do the pouch care. Reserve pouch
-physiology, Syngnathidae trees, trade and
-habitat status, and pygmy species for later
-tiers. Soften contested size, egg counts,
-and gestation days. Keep kid-friendly. Do
-not invent photos. Do not add Park Ranger
-or Zoologist in this pass.
+do the pouch care. Soften contested size,
+egg counts, and gestation days. Keep
+kid-friendly. Do not invent photos.
+
+Park Ranger is answer-light (empty teach) and
+deepens Syngnathidae (Hippocampus with
+pipefishes and seadragons; seahorses are
+highly modified pipefish that swim upright),
+the closed brood pouch as a living nursery
+(oxygen, salt/water control, waste removal,
+extra lipids and calcium beyond yolk —
+placenta-like, kid-simple), protected
+fertilization (eggs meet sperm inside after
+seawater briefly enters; then the pouch
+closes — physically internal, physiologically
+external), multi-day colour-bright courtship
+dances that sync the pair (soften exact
+phase names), pair bonds that often last a
+breeding season (not always for life; some
+switch more readily), no true stomach so
+they eat tiny crustaceans almost constantly,
+pivot feeding (rapid snout pivot plus
+suction to ambush copepods), weak swimming
+and a prehensile tail (dwarf seahorse often
+cited among the slowest fish — soften exact
+speed), habitat care (seagrass, mangroves,
+reefs, estuaries; coastal damage and
+destructive fishing), and the huge
+dried-seahorse trade plus bycatch
+(international trade controlled under CITES
+since 2002). Soften contested size, counts,
+and gestation days. No IUCN letter dumps.
+Reserve status-by-kind, CITES Appendix II
+depth, genome tooth-loss, pygmy-clade, and
+Miocene fossils for Zoologist. Do not redo
+JR themes. Keep kid-friendly. Do not invent
+photos. Zoologist is reserved.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
@@ -2040,7 +2070,7 @@ LEVEL_DISPLAY_NAMES = {
 # ship Junior Ranger + Park Ranger + Zoologist.
 # Manta ray, octopus, and sea turtle ship Junior Ranger + Park Ranger +
 # Zoologist.
-# Seahorse ships Junior Ranger only.
+# Seahorse ships Junior Ranger + Park Ranger.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -2554,14 +2584,14 @@ PUSH_FURTHER_SEA_TURTLE_ZOOLOGIST = (
     "Barnacles on a shell can carry chemistry clues. Why keep that tracking story soft?",
 )
 TALK_ABOUT_SEAHORSE = (
-    "Dad carries the babies in a front pouch. Why might that job sit with him, not mom?",
-    "Seahorses swim upright, unlike most fish. What else looks different when they move?",
-    "A gripping tail holds seagrass instead of a tail fin. How is that different from a tuna?",
+    "The pouch is a living nursery. What jobs might it do besides hold the eggs?",
+    "Seahorses eat almost all day. Why might a simple gut with no true stomach force that?",
+    "Seagrass homes beat empty open water. Why might a slow fish need plants to cling to?",
 )
 PUSH_FURTHER_SEAHORSE = (
-    "The pouch does more than hold eggs. Why might that inside story wait for a later card?",
-    "Pipefish and seadragon cousins share a family tree. Why keep those names light here?",
-    "Trade, habitat trouble, and tiny pygmy kinds still wait. Why not lock those stories yet?",
+    "Status can differ by kind. Why not one letter for every seahorse?",
+    "International trade has a special rulebook and a list number. Why keep that paperwork for later?",
+    "Lost-tooth genomes, tiny pygmy cousins, and old fossils still wait. Why save those names?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -18953,6 +18983,141 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia says the male seahorse carries the developing young in his brood pouch until they are born. That flips the usual “mom always carries the babies” story.",
+                    },
+                ],
+            },
+            "hard": {
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "syngnathidae-soft",
+                        "title": "Syngnathidae",
+                        "stem": "What family do seahorses sit in with pipefishes and seadragons, if we keep that tree soft?",
+                        "choices": [
+                            "Family Syngnathidae — seahorses (Hippocampus) sit with pipefishes and seadragons; seahorses are highly modified pipefish that swim upright (soft)",
+                            "They are a kind of land horse that learned to swim",
+                            "They sit only with sharks in the same family",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia places seahorses with pipefishes and seadragons in family Syngnathidae. Anatomical and molecular evidence shows seahorses are highly modified pipefish that swim upright. We keep that family tree soft.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "pouch-nursery-soft",
+                        "title": "Living nursery",
+                        "stem": "What jobs can a closed brood pouch do besides hold eggs, if we keep that nursery story kid-simple?",
+                        "choices": [
+                            "It only stores leftover snacks for later",
+                            "It can supply oxygen, control salt and water, remove waste, and add extra nutrients such as lipids and calcium beyond the egg yolk — a bit like a living nursery (soft)",
+                            "It is an empty backpack that does no work",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says the closed pouch provides oxygen, controls the salt and water mix, removes waste, and adds extra nutrients such as energy-rich lipids and calcium beyond the egg yolk. People sometimes compare that to a placenta. We keep the chemistry names kid-simple.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "protected-fertilization-soft",
+                        "title": "Protected fertilization",
+                        "stem": "Where do seahorse eggs meet sperm, if we keep that fertilization story soft?",
+                        "choices": [
+                            "Only in open water far from either parent",
+                            "In a nest of bubbles on the surface",
+                            "Inside the pouch after seawater briefly enters; then the pouch closes — physically inside, but more like outside-the-body chemistry (soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia describes protected fertilization: seawater briefly enters the open pouch so eggs and sperm meet, then the pouch closes. That is physically internal but physiologically external. We keep that wording soft.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "courtship-dance-soft",
+                        "title": "Courtship dance",
+                        "stem": "Why do seahorse pairs dance and greet for days before eggs move, if we keep those dance names soft?",
+                        "choices": [
+                            "Multi-day greetings and colour-bright dances help sync the pair before the female places eggs in the pouch (soft)",
+                            "They dance only to scare sharks away",
+                            "They never meet until the babies are born",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says pairs may court for several days. Colour-bright dances and greetings help sync the pair so the male is ready when eggs are transferred. Exact phase names stay soft.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "pair-bonds-soft",
+                        "title": "Pair bonds",
+                        "stem": "Do seahorses stay with one mate for life, if we keep that bond story soft?",
+                        "choices": [
+                            "Every seahorse pair is locked together forever",
+                            "Many species stay with one mate through a breeding season — not always for life — and some switch more readily (soft)",
+                            "Seahorses never have a partner at all",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says seahorses are not known to mate for life. Many species form pair bonds that last at least through a breeding season, but some switch mates more readily.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "no-stomach-soft",
+                        "title": "No stomach",
+                        "stem": "Why must a seahorse eat almost constantly, if we keep that gut story soft?",
+                        "choices": [
+                            "It stores a week’s food in a huge stomach",
+                            "It never eats and lives on sunlight",
+                            "Its gut is extremely simple and has no true stomach, so it must eat tiny crustaceans by suction almost all day (soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says seahorses have extremely simple digestive systems that lack a stomach, so they must eat constantly. They suck up small crustaceans.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "pivot-feeding-soft",
+                        "title": "Pivot feeding",
+                        "stem": "How can a slow seahorse still ambush a copepod, if we keep that strike story soft?",
+                        "choices": [
+                            "A rapid snout pivot plus suction lets it ambush copepods at a surprising range for a slow fish (soft)",
+                            "It chases copepods in a long sprint like a tuna",
+                            "It waits for copepods to crawl into its mouth on their own",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia describes pivot feeding: the seahorse rotates its snout at high speed and sucks in the copepod. That strike can reach farther than a typical pipefish, even though the fish is a weak swimmer.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "slow-swimmers-soft",
+                        "title": "Slow swimmers",
+                        "stem": "Why are seahorses such weak swimmers, if we keep that speed story soft?",
+                        "choices": [
+                            "They are the fastest fish and never hold on",
+                            "They swim poorly, so they cling with a prehensile tail; the dwarf seahorse is often cited among the slowest fish (exact speed stays soft)",
+                            "They fly above the waves with wing fins",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says seahorses swim extremely poorly and rest with the prehensile tail wound around a holdfast. The dwarf seahorse is often cited among the slowest fish. Exact speed records stay soft.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "habitat-care-soft",
+                        "title": "Habitat care",
+                        "stem": "What homes do seahorses need — and what can hurt those places?",
+                        "choices": [
+                            "They only live in empty open ocean with no plants",
+                            "They live in deserts and never need the sea",
+                            "They need seagrass, mangroves, reefs, and estuaries; coastal damage and destructive fishing can wipe those homes (soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says seahorses live in seagrass beds, mangroves, coral reefs, and estuaries. Habitat loss from coastal damage and destructive fishing practices reduces those homes.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "trade-cites-soft",
+                        "title": "Trade rules",
+                        "stem": "How is the huge dried-seahorse trade handled, if we keep those rules soft?",
+                        "choices": [
+                            "A huge dried-seahorse trade (medicine and curios) plus bycatch is controlled in international trade under CITES since 2002 (soft)",
+                            "Nobody ever sells a dried seahorse",
+                            "Every seahorse kind now has one forever status letter",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says huge numbers of dried seahorses are sold for medicine and curios, and many are also caught as bycatch. International trade has been controlled under CITES since 2002. We do not lock a status letter for each kind here.",
                     },
                 ],
             },
