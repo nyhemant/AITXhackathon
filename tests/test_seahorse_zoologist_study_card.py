@@ -208,7 +208,7 @@ class SeahorseZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("soft", correct_choice_text(questions[0]).lower())
         self.assertIn("scpp", correct_choice_text(questions[1]).lower())
         self.assertIn("enamel", correct_choice_text(questions[1]).lower())
-        self.assertIn("tooth", correct_choice_text(questions[1]).lower())
+        self.assertIn("teeth", correct_choice_text(questions[1]).lower())
         self.assertIn("snout", correct_choice_text(questions[1]).lower())
         self.assertIn("soft", correct_choice_text(questions[1]).lower())
         self.assertIn("tbx4", correct_choice_text(questions[2]).lower())

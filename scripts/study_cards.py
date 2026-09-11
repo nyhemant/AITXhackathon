@@ -19225,7 +19225,7 @@ STUDY_CARDS: dict[str, dict] = {
                         "title": "Status by kind",
                         "stem": "How should we read IUCN letters for “seahorse,” if we keep those snapshots by kind?",
                         "choices": [
-                            "Snapshots differ by species: many listed VU from trade and habitat loss; H. capensis (Knysna) often EN (tiny range); others DD — letters are not forever (soft)",
+                            "IUCN snapshots differ by species: many listed VU from trade and habitat loss; H. capensis (Knysna) often EN (tiny range); others DD — letters are not forever (soft)",
                             "Every seahorse kind shares one forever letter",
                             "IUCN letters never apply to any seahorse",
                         ],
