@@ -310,7 +310,7 @@ class WhaleSharkHardStudyCardTests(unittest.TestCase):
         self.assertNotIn("Push further", hard_html)
         self.assertIn("Park Ranger", hard_html)
         self.assertIn("Junior Ranger", hard_html)
-        self.assertNotIn("Zoologist", hard_html)
+        self.assertIn("Zoologist", hard_html)
         self.assertIn(">0</span>/5", hard_html)
 
 

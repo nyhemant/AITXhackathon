@@ -329,8 +329,8 @@ class WhaleSharkZoologistStudyCardTests(unittest.TestCase):
         for stem in ZOOLOGIST_STEMS:
             self.assertNotIn(stem, print_tpl)
         main = _main(html)
-        self.assertLess(main.find("study-foot"), main.find("study-explore"))
-        self.assertLess(main.find("study-explore"), main.find("card-try-next"))
+        self.assertNotIn('<details class="study-explore', main)
+        self.assertLess(main.find("study-foot"), main.find("card-try-next"))
         self.assertNotIn(">Talk</h2>", main)
         self.assertIn(">Quiz</h2>", main)
 
