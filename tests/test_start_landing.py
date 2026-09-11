@@ -109,7 +109,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn('id="start-menu-btn"', body)
         self.assertIn("Print cutouts to hide", body)
         self.assertIn("Library", body)
-        self.assertIn("/field-pack/virtual-zoo/?print=1", body)
+        self.assertIn("/field-pack/print/", body)
         self.assertNotIn(">Field Trip Kit</span>", body)
         self.assertIn("Watch Live", body)
         self.assertNotIn("I need an activity for today", body)
@@ -177,8 +177,8 @@ class StartLandingTests(unittest.TestCase):
             self.assertEqual(head_alias.wfile.getvalue(), b"", alias)
 
         virtual_zoo = _get("/field-pack/virtual-zoo/")
-        self.assertEqual(virtual_zoo._code, 200)
-        self.assertIsNone(virtual_zoo._headers.get("Location"))
+        self.assertEqual(virtual_zoo._code, 301)
+        self.assertEqual(virtual_zoo._headers.get("Location"), "/field-pack/virtual-field-trip/")
 
         nested = _get("/zoo/index.html")
         self.assertEqual(nested._code, 404)
@@ -191,9 +191,9 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn('id="start-heading"', chapter)
         self.assertIn("A virtual zoo for curious kids like Arya and Kunal", chapter)
         self.assertIn('class="start-routes"', chapter)
-        self.assertIn('href="#start-home"', chapter)
-        self.assertIn('href="#start-going"', chapter)
-        self.assertIn('href="#start-teach"', chapter)
+        self.assertIn('href="/field-pack/cards/"', chapter)
+        self.assertIn('href="/field-pack/virtual-field-trip/"', chapter)
+        self.assertIn('href="/field-pack/"', chapter)
         self.assertIn('class="start-hero-still"', chapter)
         self.assertIn('src="/start/hero-giraffe.jpg"', chapter)
         self.assertIn("srcset=", chapter)
@@ -230,16 +230,16 @@ class StartLandingTests(unittest.TestCase):
         self.assertEqual(
             routes,
             [
-                ("#start-home", "At home"),
-                ("#start-going", "Going this week"),
-                ("#start-teach", "Library"),
+                ("/field-pack/cards/", "Cards"),
+                ("/field-pack/virtual-field-trip/", "Watch Live"),
+                ("/field-pack/", "Places"),
             ],
         )
         self.assertLess(chapter.find("start-heading"), chapter.find("start-routes"))
         self.assertEqual(self.html.count('class="start-route"'), 3)
         self.assertNotIn("start-pill", chapter)
         routes_html = nav.group(0)
-        self.assertNotIn("Watch Live", routes_html)
+        self.assertIn("Watch Live", routes_html)
         self.assertNotIn("Print cutouts to hide", routes_html)
         self.assertIn("Print cutouts to hide", chapter)
         self.assertIn('id="start-menu-btn"', chapter)
@@ -298,11 +298,9 @@ class StartLandingTests(unittest.TestCase):
         self.assertIsNotNone(continue_link)
         self.assertIn('href="/field-pack/virtual-field-trip/"', continue_link.group(0))
         pills = re.findall(r'<a class="start-pill"[^>]*>[\s\S]*?</a>', chapter)
-        self.assertEqual(len(pills), 2, pills)
+        self.assertEqual(len(pills), 1, pills)
         self.assertIn('href="/field-pack/virtual-field-trip/"', pills[0])
         self.assertIn("Watch Live", pills[0])
-        self.assertIn('href="/field-pack/virtual-zoo/?print=1"', pills[1])
-        self.assertIn("Print cutouts to hide", pills[1])
         self.assertNotIn("youtube.com", chapter)
         self.assertNotIn("target=\"_blank\"", chapter)
         self.assertNotIn("#mission", chapter)
@@ -589,8 +587,8 @@ class StartLandingTests(unittest.TestCase):
         self.assertNotIn("lion portrait", chapter.lower())
         pills = re.findall(r'<a class="start-pill"[^>]*>[\s\S]*?</a>', chapter)
         self.assertEqual(len(pills), 1, pills)
-        self.assertIn('href="/field-pack/cards/#try-a-card"', pills[0])
-        self.assertIn("Browse cards", pills[0])
+        self.assertIn('href="/field-pack/cards/"', pills[0])
+        self.assertIn("Cards", pills[0])
         self.assertNotIn("Sample Animal", chapter)
         self.assertNotIn("start-teach-hit", chapter)
         self.assertIn("Open a card:", chapter)
@@ -675,7 +673,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn("data-teach-prev", self.js)
         self.assertIn("data-teach-next", self.js)
         self.assertIn("scrollTo", self.js)
-        self.assertIn('href="/field-pack/cards/#try-a-card"', chapter)
+        self.assertIn('href="/field-pack/cards/"', chapter)
         self.assertIn("Library", chapter)
         self.assertIn('.start-pill[href^="/field-pack/cards/"]', self.js)
         self.assertIn('exploreHref', self.js)
@@ -722,7 +720,7 @@ class StartLandingTests(unittest.TestCase):
         foot = self.html.find("start-foot")
         self.assertTrue(0 < hero < rest < home < rest2 < going < rest3 < teach < foot)
         self.assertEqual(self.html.count('class="start-chapter"'), 3)
-        self.assertEqual(len(self.pills), 5)
+        self.assertEqual(len(self.pills), 4)
         self.assertNotIn('id="start-outcome"', self.html)
         self.assertNotIn('id="start-doors"', self.html)
         self.assertNotIn('id="start-proof"', self.html)
@@ -766,14 +764,13 @@ class StartLandingTests(unittest.TestCase):
         expected = {
             "start-home": [
                 ("/field-pack/virtual-field-trip/", "Watch Live"),
-                ("/field-pack/virtual-zoo/?print=1", "Print cutouts to hide"),
             ],
             "start-going": [
                 ("/field-pack/dallas-zoo/", "Sample visit"),
                 ("/field-pack/", "Explore Places Near You"),
             ],
             "start-teach": [
-                ("/field-pack/cards/#try-a-card", "Browse cards"),
+                ("/field-pack/cards/", "Cards"),
             ],
         }
         for chapter_id, match in chapters.items():
@@ -790,7 +787,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertNotIn("/field-pack/dallas-zoo/", home)
         self.assertNotIn("youtube.com", home)
         self.assertNotIn("target=\"_blank\"", home)
-        self.assertEqual(self.html.count('class="start-pill"'), 5)
+        self.assertEqual(self.html.count('class="start-pill"'), 4)
         teach = chapters["start-teach"].group(0)
         open_cards = re.search(r'<p class="start-open-cards">([\s\S]*?)</p>', teach)
         self.assertIsNotNone(open_cards)
@@ -834,7 +831,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn(".start-chapter-pills {\n    flex-direction: column", self.css)
         self.assertIn('href="/start/"', self.html)
         self.assertIn('href="/field-pack/"', self.html)
-        self.assertIn('href="/field-pack/cards/#try-a-card"', self.html)
+        self.assertIn('href="/field-pack/cards/"', self.html)
         self.assertIn('href="/field-pack/virtual-field-trip/"', self.html)
         self.assertNotIn('href="/field-pack/"', self.js)
 
@@ -891,7 +888,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn(".start-pill", self.js)
         self.assertIn(".start-route", self.js)
         self.assertNotIn(".start-door", self.js)
-        self.assertEqual(len(self.pills), 5)
+        self.assertEqual(len(self.pills), 4)
         for pill in self.pills:
             self.assertTrue(pill.startswith("<a"))
 

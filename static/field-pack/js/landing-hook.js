@@ -588,9 +588,7 @@
       if (trips.length) {
         const last = trips[trips.length - 1];
         const venueId = last.venueId || store.selectedVenueId || "dallas-zoo";
-        const href = last.id
-          ? `/field-pack/app.html#/trip/${encodeURIComponent(last.id)}`
-          : `/field-pack/app.html#/venue/${encodeURIComponent(venueId)}`;
+        const href = `/field-pack/${encodeURIComponent(venueId)}/`;
         // Prefer full place name — trip titles are often short codes (e.g. AMNH)
         const fromCatalog = places.find((p) => p.id === venueId);
         const rawTitle = (last.title || "").trim();

@@ -21,7 +21,6 @@ REPO = Path(__file__).resolve().parents[1]
 START_HTML = REPO / "static" / "start" / "index.html"
 VFT_PAGES = (
     REPO / "static" / "field-pack" / "virtual-field-trip" / "index.html",
-    REPO / "static" / "field-pack" / "virtual-zoo" / "index.html",
 )
 MANIFEST = PWA_ROOT / "manifest.webmanifest"
 SW = PWA_ROOT / "sw.js"
@@ -202,9 +201,8 @@ class PwaTests(unittest.TestCase):
         self.assertEqual(vft._code, 200)
         self.assertIn(b'rel="manifest"', vft.wfile.getvalue())
         zoo = _get("/field-pack/virtual-zoo/")
-        self.assertEqual(zoo._code, 200)
-        self.assertIn(b"A zoo day at home", zoo.wfile.getvalue())
-        self.assertIn(b'rel="manifest"', zoo.wfile.getvalue())
+        self.assertEqual(zoo._code, 301)
+        self.assertEqual(zoo._headers.get("Location"), "/field-pack/virtual-field-trip/")
 
     def test_quiet_install_is_not_in_start_markup(self):
         self.assertNotIn("start-pwa-tip", self.start)

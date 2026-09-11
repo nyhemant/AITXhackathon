@@ -1,8 +1,9 @@
 """Virtual Field Trip zoo tab: full tour chrome, flamingo default, no Stop 1 shell.
 
-Fresh visitors on /field-pack/virtual-zoo/ and /field-pack/virtual-field-trip/?tab=zoo
+Fresh visitors on /field-pack/virtual-field-trip/?tab=zoo
 land on venue tabs + map with Caribbean flamingo already open. There is no
 vz-first-run panel and no fp-virtual-zoo-firstrun-v1 localStorage gate.
+/field-pack/virtual-zoo/ is a 301 alias.
 """
 
 from __future__ import annotations
@@ -19,7 +20,6 @@ REPO = Path(__file__).resolve().parents[1]
 FP = REPO / "static" / "field-pack"
 VFT_PAGES = (
     FP / "virtual-field-trip" / "index.html",
-    FP / "virtual-zoo" / "index.html",
 )
 VFT_JS = FP / "js" / "virtual-venue.js"
 VFT_CSS = FP / "css" / "virtual-venue.css"

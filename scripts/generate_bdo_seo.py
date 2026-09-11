@@ -23,7 +23,15 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 REPO = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(REPO / "src"))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from busyparent_agent.url_aliases import (  # noqa: E402
+    CARD_SLUG_ALIASES,
+    NATIONAL_PARKS_PATH,
+    PRINT_PATH,
+    PRINT_TARGET,
+    VFT_PATH,
+)
 from field_pack_card_kind import (  # noqa: E402
     HUB_SECTIONS,
     attraction_venue_attribution,
@@ -109,7 +117,7 @@ CTA_PRINT_CARD = "Print this card"
 CARDS_PLAY_H1 = "Print cutouts to play"
 CARDS_PLAY_CTA = "Print the cutouts"
 CARDS_PLAY_BROWSE = "Browse cards on the screen"
-CARDS_PLAY_PRINT_HREF = "/field-pack/virtual-zoo/?print=1"
+CARDS_PLAY_PRINT_HREF = PRINT_PATH
 CARDS_HUB_TITLE = "Print cutouts to play · Animal cards · Field Trip Kit"
 CARDS_HUB_DESC = "Print animal cutouts, hide them at home, then hunt. Or browse cards on the screen."
 CARDS_LANDING_CSS_VER = "100"
@@ -303,8 +311,8 @@ OUTING_TALK_EXHIBIT = (
 SEO_CSS_VER = "29"
 CARD_SEO_CSS_VER = "35"
 LANDING_CSS_VER = "99"
-LANDING_MAP_JS_VER = "87"
-LANDING_HOOK_JS_VER = "37"
+LANDING_MAP_JS_VER = "88"
+LANDING_HOOK_JS_VER = "38"
 STYLES_CSS_VER = "42"
 CATALOG_JS_VER = "40"
 PRINT_KIT_JS_VER = "20"
@@ -953,14 +961,12 @@ def vft_can_watch_live(vft: dict | None) -> bool:
 
 
 def card_watch_href(vft: dict | None) -> str:
-    """Same-tab Watch Live door with this animal pre-selected. Zoo uses virtual-zoo."""
+    """Same-tab Watch Live door with this animal pre-selected on canonical VFT."""
     vft = vft or {}
     hid = str(vft.get("habitat_id") or "").strip()
     if not hid:
         return ""
     tab = str(vft.get("tab") or "").strip()
-    if tab == "zoo":
-        return f"/field-pack/virtual-zoo/?from=card#habitat={esc(hid)}"
     if tab:
         return f"/field-pack/virtual-field-trip/?tab={esc(tab)}&from=card#habitat={esc(hid)}"
     href = str(vft.get("vft_href") or "").strip()
@@ -1205,9 +1211,7 @@ _START_HERE_SITES: dict[str, str] | None = None
 # Hold-back list for catalog animals that must not get a public card page.
 # Polar bear is published — keep this empty unless a future catalog id is intentionally withheld.
 # Short typed URLs → canonical card ids. Alias folders are not real cards.
-CARD_PATH_ALIASES = {
-    "giraffe": "reticulated-giraffe",
-}
+CARD_PATH_ALIASES = dict(CARD_SLUG_ALIASES)
 NEVER_PUBLISH_CARD_IDS = frozenset(CARD_PATH_ALIASES)
 _PUBLISHED_CARD_IDS: set[str] | None = None
 
@@ -3001,25 +3005,63 @@ def write_type_landing(meta: dict, venues: list[dict]) -> str:
     return f"/field-pack/{path}/"
 
 
-def write_parks_alias() -> None:
-    """ /field-pack/parks/ → national-parks (meta refresh + link). """
-    out_dir = FIELD / "parks"
+def write_redirect_stub(
+    rel_dir: str,
+    *,
+    dest_href: str,
+    title: str,
+    label: str,
+) -> None:
+    """Static alias page (meta refresh + link) for hosts without Python 301s."""
+    dest_path = dest_href.split("?")[0]
+    dest_abs = dest_href if dest_href.startswith("http") else f"{SITE}{dest_path}"
+    out_dir = FIELD / rel_dir
     out_dir.mkdir(parents=True, exist_ok=True)
-    html = """<!DOCTYPE html>
+    html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>National Parks · Field Trip Kit</title>
-  <link rel="canonical" href="https://1less.app/field-pack/national-parks/" />
-  <meta http-equiv="refresh" content="0;url=/field-pack/national-parks/" />
-  <script>location.replace("/field-pack/national-parks/");</script>
+  <title>{esc(title)} · Field Trip Kit</title>
+  <link rel="canonical" href="{esc(dest_abs)}" />
+  <meta http-equiv="refresh" content="0;url={esc(dest_href)}" />
+  <script>location.replace({json.dumps(dest_href)});</script>
 </head>
 <body>
-  <p><a href="/field-pack/national-parks/">National &amp; world park scavenger hunts</a></p>
+  <p><a href="{esc(dest_href)}">{esc(label)}</a></p>
 </body>
 </html>
 """
     (out_dir / "index.html").write_text(html, encoding="utf-8")
+
+
+def write_parks_alias() -> None:
+    """ /field-pack/parks/ → national-parks (meta refresh + link). """
+    write_redirect_stub(
+        "parks",
+        dest_href=NATIONAL_PARKS_PATH,
+        title="National Parks",
+        label="National & world park scavenger hunts",
+    )
+
+
+def write_print_alias() -> None:
+    """ /field-pack/print/ → VFT print-cutout mode. """
+    write_redirect_stub(
+        "print",
+        dest_href=PRINT_TARGET,
+        title="Print cutouts",
+        label="Print the cutouts",
+    )
+
+
+def write_virtual_zoo_alias() -> None:
+    """ /field-pack/virtual-zoo/ → canonical Watch Live. """
+    write_redirect_stub(
+        "virtual-zoo",
+        dest_href=VFT_PATH,
+        title="Watch Live",
+        label="Watch Live — Virtual Field Trip",
+    )
 
 
 def write_card_alias_pages() -> list[str]:
@@ -3028,8 +3070,8 @@ def write_card_alias_pages() -> list[str]:
     for src, dest in CARD_PATH_ALIASES.items():
         dest_href = f"/field-pack/cards/{dest}/"
         dest_abs = f"{SITE}{dest_href}"
-        title = "Giraffe" if src == "giraffe" else src.replace("-", " ").title()
-        label = "Reticulated giraffe card" if dest == "reticulated-giraffe" else f"{dest.replace('-', ' ').title()} card"
+        title = src.replace("-", " ").title()
+        label = f"{dest.replace('-', ' ').title()} card"
         out_dir = FIELD / "cards" / src
         out_dir.mkdir(parents=True, exist_ok=True)
         html = f"""<!DOCTYPE html>
@@ -3059,7 +3101,11 @@ def write_type_landings(venues: list[dict]) -> list[str]:
         urls.append(u)
         print(f"  type landing {u} ({sum(1 for v in venues if venue_type_kind(v) == meta['kind'])} places)")
     write_parks_alias()
+    write_print_alias()
+    write_virtual_zoo_alias()
     print("  type landing alias /field-pack/parks/ → national-parks")
+    print("  print alias /field-pack/print/ → virtual-field-trip/?print=1")
+    print("  watch-live alias /field-pack/virtual-zoo/ → virtual-field-trip/")
     return urls
 
 
@@ -3081,7 +3127,7 @@ def write_sitemap(venues: list[dict], extra_urls: list[str] | None = None) -> No
         if u in seen:
             continue
         seen.add(u)
-        pri = "1.0" if u.rstrip("/").endswith("field-pack") else ("0.9" if any(x in u for x in ("/zoos", "/aquariums", "/museums", "/national-parks", "/cards", "/virtual-zoo", "/virtual-field-trip")) else "0.8")
+        pri = "1.0" if u.rstrip("/").endswith("field-pack") else ("0.9" if any(x in u for x in ("/zoos", "/aquariums", "/museums", "/national-parks", "/cards", "/print", "/virtual-field-trip")) else "0.8")
         body.append("  <url>")
         body.append(f"    <loc>{esc(u)}</loc>")
         body.append(f"    <lastmod>{TODAY}</lastmod>")
@@ -4526,14 +4572,18 @@ def _card_group_key(card: dict) -> str:
     return hub_section_id(card_kind(card))
 
 
+PRIMARY_HUB_SECTION_IDS = ("wildlife", "sealife", "parks")
+EXPERIMENTAL_HUB_SECTION_IDS = ("attractions",)
+
+
 def _hub_filter_tabs_html(section_ids: list[str]) -> str:
-    """Filter tabs derived from present kind sections — never a hardcoded Wildlife/Parks list."""
+    """Primary filter tabs only — museum/sci attractions are Experimental."""
     buttons = [
         '<button type="button" class="place-type-tab is-active" role="tab" data-card-filter="all" aria-selected="true">All</button>'
     ]
     present = set(section_ids)
     for sid, label, _kind in HUB_SECTIONS:
-        if sid not in present:
+        if sid not in present or sid in EXPERIMENTAL_HUB_SECTION_IDS:
             continue
         buttons.append(
             f'<button type="button" class="place-type-tab" role="tab" data-card-filter="{esc(sid)}" aria-selected="false">{label}</button>'
@@ -4570,7 +4620,13 @@ def write_cards_hub(venues: list[dict]) -> str:
         for sid, label, _kind in HUB_SECTIONS
         if grouped.get(sid)
     ]
-    total = sum(len(s[2]) for s in sections)
+    primary_sections = [s for s in sections if s[0] in PRIMARY_HUB_SECTION_IDS]
+    experimental_sections = [
+        (sid, "Museum & science", items)
+        for sid, _label, items in sections
+        if sid in EXPERIMENTAL_HUB_SECTION_IDS and items
+    ]
+    total = sum(len(s[2]) for s in primary_sections)
 
     def section_html(sid: str, label: str, items: list[dict]) -> str:
         if not items:
@@ -4613,15 +4669,24 @@ def write_cards_hub(venues: list[dict]) -> str:
                 f"</span>"
                 f"</a></li>"
             )
+        sec_id = "cards-attractions-list" if sid == "attractions" else f"cards-{sid}"
         return (
-            f'<section class="cards-hub-section" id="cards-{esc(sid)}" aria-labelledby="h-{esc(sid)}">\n'
+            f'<section class="cards-hub-section" id="{esc(sec_id)}" aria-labelledby="h-{esc(sid)}">\n'
             f'  <h2 id="h-{esc(sid)}">{label} <span class="seo-dir-count">{len(items)}</span></h2>\n'
             f'  <ul class="cards-hub-list">\n    '
             + "\n    ".join(lis)
             + "\n  </ul>\n</section>"
         )
 
-    body_sections = "\n".join(section_html(*s) for s in sections if s[2])
+    body_sections = "\n".join(section_html(*s) for s in primary_sections if s[2])
+    experimental_body = "\n".join(section_html(*s) for s in experimental_sections if s[2])
+    if experimental_body:
+        experimental_body = (
+            '<details class="hub-more cards-experimental" id="cards-attractions">\n'
+            "        <summary>Museum &amp; science cards</summary>\n"
+            f"        {experimental_body}\n"
+            "      </details>"
+        )
     title = CARDS_HUB_TITLE
     desc = CARDS_HUB_DESC
     url = f"{SITE}/field-pack/cards/"
@@ -4743,14 +4808,14 @@ def write_cards_hub(venues: list[dict]) -> str:
         <form class="hero-search-form place-search-wrap silo-place" id="cards-hub-form" role="search" action="/field-pack/cards/" method="get">
           <label class="place-search-label sr-only" for="cards-hub-search" id="cards-search-label">Find a card</label>
           <div class="hero-search-row">
-            <input type="search" id="cards-hub-search" name="q" class="place-search-input hero-place-search-input cards-hub-search" placeholder="Lion, shark, dinosaur…" autocomplete="off" enterkeyhint="search" />
+            <input type="search" id="cards-hub-search" name="q" class="place-search-input hero-place-search-input cards-hub-search" placeholder="Lion, shark, bison…" autocomplete="off" enterkeyhint="search" />
             <button type="submit" class="btn btn-primary hero-search-submit">Find card</button>
           </div>
         </form>
       </div>
     </header>
     <main class="cards-hub" id="cards-hub">
-      {_hub_filter_tabs_html([s[0] for s in sections])}
+      {_hub_filter_tabs_html([s[0] for s in primary_sections])}
       <p class="cards-hub-count" id="cards-hub-count">{total} cards</p>
       <section class="ready-now ready-slim try-card-row" id="try-a-card" aria-labelledby="try-card-heading">
         <h2 id="try-card-heading">Try a card</h2>
@@ -4764,6 +4829,7 @@ def write_cards_hub(venues: list[dict]) -> str:
 {body_sections}
         </div>
       </details>
+      {experimental_body}
     </main>
     <footer class="site-footer site-footer-slim no-print">
       <p>
@@ -4783,7 +4849,7 @@ def write_cards_hub(venues: list[dict]) -> str:
   </div>
   <script src="/shell/shell.js?v=5"></script>
   <script src="/field-pack/js/fp-analytics.js?v=1"></script>
-  <script src="/field-pack/js/cards-explorer.js?v=2"></script>
+  <script src="/field-pack/js/cards-explorer.js?v=3"></script>
 </body>
 </html>
 """
@@ -5338,7 +5404,7 @@ def main() -> int:
     cards_urls = write_cards_hub(venues)
     if isinstance(cards_urls, str):
         cards_urls = [cards_urls]
-    write_sitemap(venues, extra_urls=type_urls + cards_urls + ["/field-pack/virtual-zoo/", "/field-pack/virtual-field-trip/", "/start/", "/about/"])
+    write_sitemap(venues, extra_urls=type_urls + cards_urls + ["/field-pack/virtual-field-trip/", "/field-pack/print/", "/start/", "/about/"])
     write_robots()
     manifest = {
         "generated": TODAY,

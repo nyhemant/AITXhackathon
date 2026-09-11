@@ -116,30 +116,30 @@ class BrandHomeTests(unittest.TestCase):
 
     def test_about_parent_map_is_the_kid_path(self):
         html = ABOUT.read_text(encoding="utf-8")
-        section = re.search(
-            r'<section class="about-map" id="how-it-fits"[\s\S]*?</section>',
-            html,
-        )
-        self.assertIsNotNone(section)
-        block = section.group(0)
-        self.assertIn("How it fits together", block)
-        steps = re.findall(r'<a href="([^"]+)">([^<]+)</a>', block)
+        intro, rest = html.split('id="how-it-fits"', 1)
+        doors = rest.split('id="experimental"', 1)[0]
+        exp = rest.split('id="experimental"', 1)[1].split("</section>", 1)[0]
+        self.assertIn("How it fits together", doors)
+        steps = re.findall(r'<a href="([^"]+)">([^<]+)</a>', doors)
         self.assertEqual(
             steps,
             [
-                ("/start/", "Start"),
-                ("/field-pack/cards/", "Animal cards"),
+                ("/field-pack/cards/", "Cards"),
                 ("/field-pack/virtual-field-trip/", "Watch Live"),
                 ("/field-pack/", "Places"),
+                ("/start/", "Start"),
+                ("/field-pack/print/", "print cutouts to hide"),
             ],
         )
-        self.assertIn("Virtual zoo home for curious kids.", block)
-        self.assertIn("Quizzes, photos, Watch Live, try the next animal.", block)
-        self.assertIn("Cams and film at home.", block)
-        self.assertIn("Map to zoo, aquarium, museum, and park kits for a real visit.", block)
-        self.assertIn("Print cutouts and list/hunt tools are extras for grown-ups", block)
-        self.assertNotIn("/field-pack/virtual-zoo/", block)
-        self.assertNotIn("/dinner", block)
+        self.assertIn("Those three doors start from", doors)
+        self.assertIn("Side door:", doors)
+        self.assertNotIn("Animal cards", doors)
+        self.assertNotIn("/field-pack/virtual-zoo/", html)
+        self.assertNotIn('href="/dinner"', intro)
+        self.assertNotIn('href="/dinner"', doors)
+        self.assertIn("Museum &amp; science cards", exp)
+        self.assertIn('href="/field-pack/cards/#cards-attractions"', exp)
+        self.assertIn('href="/dinner"', exp)
         self.assertNotIn("Arya", html)
         self.assertNotIn("Kunal", html)
         self.assertIn('id="for-ai-assistants"', html)

@@ -1432,7 +1432,8 @@
     const canPrintHunt = Boolean(ven && (ven.treasureHunt || []).length);
     const sample = sampleItemForVenue(venueId);
     const samplePhoto = sample ? photoSrc(sample.photo) : "";
-    const appHref = p.appHref || `/field-pack/app.html#/venue/${encodeURIComponent(venueId)}`;
+    const placeHref = `/field-pack/${encodeURIComponent(venueId)}/`;
+    const appHref = placeHref;
     const missionHref = `/field-pack/${encodeURIComponent(venueId)}/#mission`;
     const isMissionPilot = MISSION_PILOTS.has(venueId);
     // Park (and any) hero illustration when present on disk

@@ -82,7 +82,7 @@ class CardPageSparseChromeTests(unittest.TestCase):
         self.assertEqual(CARDS_PLAY_H1, "Print cutouts to play")
         self.assertEqual(CARDS_PLAY_CTA, "Print the cutouts")
         self.assertEqual(CARDS_PLAY_BROWSE, "Browse cards on the screen")
-        self.assertEqual(CARDS_PLAY_PRINT_HREF, "/field-pack/virtual-zoo/?print=1")
+        self.assertEqual(CARDS_PLAY_PRINT_HREF, "/field-pack/print/")
         self.assertEqual(CARD_TALK_H2, "Talk")
         self.assertEqual(CTA_CARDS_HUB, "Cards")
         self.assertEqual(CTA_CARD_PLACE, "Place")
@@ -164,13 +164,13 @@ class CardPageSparseChromeTests(unittest.TestCase):
         self.assertNotIn("youtube.com", card)
         self.assertNotIn("nationalzoo.si.edu", card)
         self.assertIn("Watch Live", card)
-        self.assertIn("/field-pack/virtual-zoo/?from=card#habitat=african-lion", card)
+        self.assertIn("/field-pack/virtual-field-trip/?tab=zoo&amp;from=card#habitat=african-lion", card)
         self.assertIn("Live from Smithsonian National Zoo", card)
         self.assertNotIn('target="_blank"', card)
         self.assertTrue(vft_has_inpage_media(item["vft"]))
         self.assertEqual(
             card_watch_href(item["vft"]),
-            "/field-pack/virtual-zoo/?from=card#habitat=african-lion",
+            "/field-pack/virtual-field-trip/?tab=zoo&from=card#habitat=african-lion",
         )
         self.assertTrue(is_youtube_url("https://www.youtube.com/watch?v=tlZwYsJpqjo"))
         self.assertFalse(is_youtube_url("https://nationalzoo.si.edu/webcams/lion-cam"))
@@ -189,7 +189,8 @@ class CardPageSparseChromeTests(unittest.TestCase):
         self.assertIn("Find a card", self.hub)
         self.assertIn('id="cards-hub-search"', self.hub)
         self.assertIn('data-card-filter="wildlife"', self.hub)
-        self.assertIn("58 cards", self.hub)
+        self.assertIn("43 cards", self.hub)
+        self.assertNotIn('data-card-filter="attractions"', self.hub)
         self.assertNotIn("from Field Trip Kit place lists", self.hub)
         self.assertNotIn("Print is optional", self.hub)
         self.assertNotIn("Explore animal", self.hub)
