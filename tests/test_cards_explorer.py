@@ -109,6 +109,13 @@ class CardsExplorerTests(unittest.TestCase):
         self.assertIn("43 cards", self.html)
         self.assertIn('id="cards-attractions"', self.html)
         self.assertIn("Museum &amp; science cards", self.html)
+        primary, experimental = self.html.split('id="cards-attractions"', 1)
+        self.assertIn('data-card-id="american-bison"', primary)
+        self.assertIn('data-card-id="american-alligator"', primary)
+        self.assertIn('data-card-id="elk"', primary)
+        self.assertNotIn('data-card-id="sci-dinosaur"', primary)
+        self.assertIn('data-card-id="sci-dinosaur"', experimental)
+        self.assertIn('data-card-id="cm-art-lab"', experimental)
         self.assertNotIn("from Field Trip Kit place lists", self.html)
 
     def test_nav_pairs_with_places_and_start(self):
