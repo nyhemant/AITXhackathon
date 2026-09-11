@@ -1924,7 +1924,51 @@ Reserve status-by-kind, CITES Appendix II
 depth, genome tooth-loss, pygmy-clade, and
 Miocene fossils for Zoologist. Do not redo
 JR themes. Keep kid-friendly. Do not invent
-photos. Zoologist is reserved.
+photos.
+
+Facts for seahorse Zoologist (zoologist) are
+Wikipedia-backed from the same Seahorse
+page. Answer-light (teach: []). The
+tiger-tail seahorse (H. comes) genome is
+among the fastest-evolving fish genomes
+studied so far (Nature 2016) — soften
+“most” claims. Lost intact P/Q-rich SCPP
+enamel-matrix genes are linked to no
+mineralized teeth and the fused tube snout
+/ tiny sucking mouth. Loss of tbx4 is
+linked (with zebrafish knockouts) to
+missing pelvic fins — part of the “no hind
+fins” seahorse look. Status snapshots
+differ by species: many listed VU from
+trade and habitat loss; H. capensis
+(Knysna) often EN (tiny range); others DD
+— letters are not forever. All Hippocampus
+trade is controlled under CITES Appendix
+II since 2002 (permits for international
+trade; not a total ban like Appendix I).
+Tens of millions of dried seahorses are
+taken yearly for traditional medicine and
+curios (soften exact 20 million); pills
+make tracking juveniles and less-wanted
+animals harder. Tiny pygmies (H.
+bargibanti and kin) sit in a separate
+deep molecular clade, with extreme
+camouflage on gorgonians and hydroids.
+Oldest known seahorse fossils are about
+13 million years old (Slovenia, Miocene);
+upright posture is tied to expanding
+seagrass after Oligocene tectonic shallow
+seas. The pouch lining (pseudoplacenta)
+remodels during pregnancy — gas, waste,
+salt, immune, and nutrient exchange
+deepen the Park Ranger nursery idea. The
+prehensile tail is built from square
+bony-plate rings — flexible armour that
+grips and resists crushing (biomaterials
+angle, kid-safe). Soften contested
+numbers. Treat IUCN letters as snapshots.
+Do not redo JR or PR themes. Keep
+kid-friendly. Do not invent photos.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
@@ -2068,9 +2112,8 @@ LEVEL_DISPLAY_NAMES = {
 # American bison, elk, puffin, clownfish, crab,
 # cuttlefish, eel, jellyfish, and kelp forest
 # ship Junior Ranger + Park Ranger + Zoologist.
-# Manta ray, octopus, and sea turtle ship Junior Ranger + Park Ranger +
-# Zoologist.
-# Seahorse ships Junior Ranger + Park Ranger.
+# Manta ray, octopus, sea turtle, and seahorse ship Junior Ranger +
+# Park Ranger + Zoologist.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -2592,6 +2635,16 @@ PUSH_FURTHER_SEAHORSE = (
     "Status can differ by kind. Why not one letter for every seahorse?",
     "International trade has a special rulebook and a list number. Why keep that paperwork for later?",
     "Lost-tooth genomes, tiny pygmy cousins, and old fossils still wait. Why save those names?",
+)
+TALK_ABOUT_SEAHORSE_ZOOLOGIST = (
+    "Appendix II still needs permits. Why isn’t that the same as “safe forever”?",
+    "Lost tooth genes go with a tube snout. Why might a sucking mouth replace chewing teeth?",
+    "Tiny pygmy seahorses sit on a deep split. Why aren’t they just small regular seahorses?",
+)
+PUSH_FURTHER_SEAHORSE_ZOOLOGIST = (
+    "Dad’s pregnancy can cost extra energy. Why keep that male-care cost story soft?",
+    "Atlantic seahorses may have crossed twice. Why keep that invasion map soft?",
+    "Square tail rings inspire bendy robots. Why keep that robotics story soft?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -19118,6 +19171,144 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia says huge numbers of dried seahorses are sold for medicine and curios, and many are also caught as bycatch. International trade has been controlled under CITES since 2002. We do not lock a status letter for each kind here.",
+                    },
+                ],
+            },
+            "zoologist": {
+                # Answer-light: Zoologist has no Learn-first strip.
+                "teach": [],
+                "talk_about": list(TALK_ABOUT_SEAHORSE_ZOOLOGIST),
+                "push_further": list(PUSH_FURTHER_SEAHORSE_ZOOLOGIST),
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "rapid-genome-soft",
+                        "title": "Rapid genome",
+                        "stem": "How fast did the tiger-tail seahorse (H. comes) genome change, if we keep that speed story soft?",
+                        "choices": [
+                            "The tiger-tail seahorse (H. comes) genome is among the fastest-evolving fish genomes studied so far (Nature 2016) — not a locked “most of all time” claim (soft)",
+                            "Its DNA never changes, so it is the slowest genome on Earth",
+                            "It copied a horse genome from land and stopped evolving",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia’s H. comes genome story (Nature 2016) reports higher protein and nucleotide change rates than other teleosts studied then. That is “among the fastest” in that set — not a forever “most evolving fish” trophy. We keep that ranking soft.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "tooth-loss-scpp-soft",
+                        "title": "Tooth genes",
+                        "stem": "What tooth-gene loss is linked to the seahorse’s tube snout, if we keep those gene names soft?",
+                        "choices": [
+                            "They grew extra horse molars so they can chew kelp",
+                            "Lost intact P/Q-rich SCPP enamel-matrix genes are linked to no mineralized teeth and the fused tube snout / tiny sucking mouth (soft)",
+                            "They kept every enamel gene and chew with a beak",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia’s H. comes genome story says intact P/Q-rich SCPP enamel-matrix genes are gone. That loss is linked to no mineralized teeth and the fused tubular snout with a tiny sucking mouth. We keep those gene names soft.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "tbx4-soft",
+                        "title": "tbx4",
+                        "stem": "How is the loss of tbx4 linked to the “no hind fins” seahorse look, if we keep that gene story soft?",
+                        "choices": [
+                            "tbx4 grew extra hind wings so seahorses can fly",
+                            "Every fish still has large pelvic fins, including seahorses",
+                            "Loss of tbx4 is linked — with zebrafish knockouts that also lack pelvic fins — to missing hind/pelvic fins (soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia’s H. comes genome story says tbx4, a hind-limb/pelvic-fin gene, is missing. Zebrafish knockouts of tbx4 also lack pelvic fins. That helps explain the “no hind fins” seahorse look. We keep that gene story soft.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "status-by-kind-soft",
+                        "title": "Status by kind",
+                        "stem": "How should we read IUCN letters for “seahorse,” if we keep those snapshots by kind?",
+                        "choices": [
+                            "Snapshots differ by species: many listed VU from trade and habitat loss; H. capensis (Knysna) often EN (tiny range); others DD — letters are not forever (soft)",
+                            "Every seahorse kind shares one forever letter",
+                            "IUCN letters never apply to any seahorse",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia treats seahorse status by species, not one group score. Many kinds are listed VU from trade and habitat loss. The Knysna seahorse (H. capensis) is often EN because its range is tiny. Some kinds are DD. Letters are snapshots and can change.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "cites-ii-soft",
+                        "title": "CITES II",
+                        "stem": "How does CITES treat Hippocampus trade, if we keep that rulebook soft?",
+                        "choices": [
+                            "Seahorses were never listed, so any trade is wide open",
+                            "All Hippocampus trade is controlled under CITES Appendix II since 2002 — permits for international trade, not a total ban like Appendix I (soft)",
+                            "Appendix I banned every seahorse in every country forever",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says international seahorse trade has been controlled under CITES since 2002, with all Hippocampus listed on Appendix II. Appendix II means permits and tracking — not a total ban like Appendix I. That is not “safe forever.”",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "trade-volume-soft",
+                        "title": "Trade volume",
+                        "stem": "How big is the dried-seahorse trade, if we keep that count soft?",
+                        "choices": [
+                            "Nobody ever dries a seahorse for sale",
+                            "Only three dried seahorses are sold each century",
+                            "Tens of millions of dried seahorses are taken yearly for traditional medicine and curios; pills make tracking juveniles and “undesirable” animals harder (soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia reports a huge dried-seahorse trade for traditional medicine and curios, often cited in the tens of millions a year. Exact twenty-million locks stay soft. Once animals are ground into pills, it is harder to track juveniles and less-wanted kinds.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "pygmy-clade-soft",
+                        "title": "Pygmy clade",
+                        "stem": "Where do tiny pygmy seahorses sit on the family tree, if we keep that split soft?",
+                        "choices": [
+                            "Tiny pygmies (H. bargibanti and kin) sit in a separate deep molecular clade, with extreme camouflage on gorgonians and hydroids (soft)",
+                            "They are just baby versions of every larger seahorse",
+                            "They sit with land horses in a forever mammal tree",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia places pygmy seahorses such as H. bargibanti in a deep molecular clade apart from many larger Hippocampus kinds. They hide on gorgonian corals and hydroids with extreme camouflage. We keep that split soft — not “just small regular seahorses.”",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "miocene-stem-soft",
+                        "title": "Miocene stem",
+                        "stem": "What do the oldest known seahorse fossils show, if we keep that timing soft?",
+                        "choices": [
+                            "Seahorses appeared last week in a backyard pond",
+                            "Oldest known seahorse fossils are about 13 million years old (Slovenia, Miocene); upright posture is tied to expanding seagrass after Oligocene tectonic shallow seas (soft)",
+                            "They have no fossils, so the upright look has no history",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia’s oldest seahorse fossils are from Slovenia, about 13 million years ago in the Miocene. The upright look is linked to spreading seagrass after Oligocene tectonic events made more shallow seas. Exact dates stay soft.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "pseudoplacenta-soft",
+                        "title": "Pseudoplacenta",
+                        "stem": "How does the pouch lining change during pregnancy, if we keep that nursery story soft?",
+                        "choices": [
+                            "The lining stays a dry empty bag and does no exchange",
+                            "The lining turns into a shell that never opens",
+                            "The pouch lining (pseudoplacenta) remodels — gas, waste, salt, immune, and nutrient exchange deepen the living-nursery idea (soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia describes the brood-pouch lining as a pseudoplacenta that remodels during pregnancy. That lining handles gas exchange, waste, salt/water balance, immune care, and extra nutrients. It deepens the living-nursery idea. Chemistry names stay soft.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "square-tail-armour-soft",
+                        "title": "Square-tail armour",
+                        "stem": "How is a seahorse’s prehensile tail built as armour, if we keep that materials story soft?",
+                        "choices": [
+                            "The prehensile tail is built from square bony-plate rings — flexible armour that grips and resists crushing (soft)",
+                            "The tail is a soft balloon that pops if touched",
+                            "The tail is one solid metal rod that cannot bend",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says the prehensile tail is made of square bony-plate rings. That stack can bend to grip a holdfast and still resist crushing — a kid-safe biomaterials story. We keep robot-copy ideas for later.",
                     },
                 ],
             },
