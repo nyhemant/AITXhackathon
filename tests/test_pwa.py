@@ -195,7 +195,7 @@ class PwaTests(unittest.TestCase):
         start = _get("/start/")
         self.assertEqual(start._code, 200)
         body = start.wfile.getvalue().decode("utf-8")
-        self.assertIn("A field trip for curious kids to zoos, oceans and more.", body)
+        self.assertIn("A virtual zoo for curious kids like Arya and Kunal", body)
         self.assertIn('rel="manifest"', body)
         self.assertNotIn("beforeinstallprompt", body)
         vft = _get("/field-pack/virtual-field-trip/")
