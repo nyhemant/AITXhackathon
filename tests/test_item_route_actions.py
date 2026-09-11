@@ -255,6 +255,28 @@ class ItemRouteActionTests(unittest.TestCase):
             self.assertFalse(photos["hidden"], row["route"])
             self.assertEqual(photos["href"], otter_pictures, row["route"])
 
+    def test_shark_photos_uses_generic_shark_hub(self):
+        """ParentTest Layer B soft: generic shark card must not open great-white."""
+        shark_pictures = (
+            "https://www.nationalgeographic.com/animals/fish/facts/sharks-1"
+        )
+        catalog = CATALOG_JS.read_text(encoding="utf-8")
+        self.assertIn(f'pictures: "{shark_pictures}"', catalog)
+        shark_block = catalog.split("shark: {", 1)[1].split("stingray:", 1)[0]
+        self.assertNotIn("/facts/great-white-shark", shark_block)
+        card = (FP / "cards" / "shark" / "index.html").read_text(encoding="utf-8")
+        main = card.split('<main class="card-page">', 1)[1].split("</main>", 1)[0]
+        self.assertIn(f'href="{shark_pictures}"', main)
+        self.assertIn(">Photos</a>", main)
+        self.assertNotIn("/facts/great-white-shark", main)
+
+        shark_routes = [r for r in self.routes if r["itemId"] == "shark"]
+        self.assertGreater(len(shark_routes), 0)
+        for row in shark_routes:
+            photos = next(a for a in row["actions"] if a["name"] == "Photos")
+            self.assertFalse(photos["hidden"], row["route"])
+            self.assertEqual(photos["href"], shark_pictures, row["route"])
+
     def test_weedy_sea_dragon_photos_is_not_leafy_cousin(self):
         """Same cousin-species class: weedy must not open leafy sea dragon."""
         weedy_pictures = (

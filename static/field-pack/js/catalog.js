@@ -441,7 +441,7 @@ window.FIELD_PACK_CATALOG = {
     photoCredit: "Enhanced for print · Field Trip Kit",
     blurb: "Ocean hunter with a strong swishy body.",
     links: {
-      pictures: "https://kids.nationalgeographic.com/animals/fish/facts/great-white-shark",
+      pictures: "https://www.nationalgeographic.com/animals/fish/facts/sharks-1",
       more: "https://www.childrensaquarium.com/",
       cam: "https://www.montereybayaquarium.org/animals/live-cams",
     },
