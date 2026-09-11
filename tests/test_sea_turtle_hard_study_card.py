@@ -322,8 +322,8 @@ class SeaTurtleHardStudyCardTests(unittest.TestCase):
         self.assertEqual(jelly_hard["talk_about"], list(TALK_ABOUT_JELLYFISH))
         self.assertEqual(jelly_hard["push_further"], list(PUSH_FURTHER_JELLYFISH))
         horse = SEAHORSE.read_text(encoding="utf-8")
-        self.assertIn("What do they eat?", horse)
-        self.assertNotIn("card-study-pack", horse)
+        self.assertIn("card-study-pack", horse)
+        self.assertNotIn("What do they eat?", horse)
         self.assertNotIn("chelonioidea-soft", horse)
 
     def test_published_artifacts_and_plumbing(self):

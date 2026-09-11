@@ -278,8 +278,8 @@ class StingrayHardStudyCardTests(unittest.TestCase):
         self.assertEqual(manta_hard["talk_about"], list(TALK_ABOUT_MANTA_RAY))
         self.assertEqual(manta_hard["push_further"], list(PUSH_FURTHER_MANTA_RAY))
         ray = WHALE_SHARK.read_text(encoding="utf-8")
-        self.assertIn("What do they eat?", ray)
-        self.assertNotIn("card-study-pack", ray)
+        self.assertIn("card-study-pack", ray)
+        self.assertNotIn("What do they eat?", ray)
         self.assertNotIn("myliobatiformes-soft", ray)
 
     def test_published_artifacts_and_plumbing(self):

@@ -130,7 +130,7 @@ def _main(html: str) -> str:
 class AmericanBisonEasyStudyCardTests(unittest.TestCase):
     def test_deck_is_junior_ranger(self):
         self.assertIn("american-bison", study_card_ids())
-        self.assertNotIn("whale-shark", study_card_ids())
+        self.assertIn("whale-shark", study_card_ids())
         self.assertEqual(
             study_card_ids(),
             (
@@ -175,12 +175,15 @@ class AmericanBisonEasyStudyCardTests(unittest.TestCase):
                 "seahorse",
                 "starfish",
                 "stingray",
+                "whale-shark",
             ),
         )
         self.assertEqual(shipped_levels_for("american-bison"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("american-bison", "hard"))
         self.assertIsNotNone(study_deck_for("american-bison", "zoologist"))
-        self.assertIsNone(study_deck_for("whale-shark"))
+        self.assertIsNotNone(study_deck_for("whale-shark"))
+        self.assertIsNone(study_deck_for("whale-shark", "hard"))
+        self.assertIsNone(study_deck_for("whale-shark", "zoologist"))
         deck = study_deck_for("american-bison")
         self.assertIsNotNone(deck)
         self.assertEqual(deck["id"], "american-bison")
@@ -296,12 +299,12 @@ class AmericanBisonEasyStudyCardTests(unittest.TestCase):
 
     def test_other_animal_stays_generic_worksheet(self):
         html = outing_talk_html({"id": "whale-shark", "packTemplate": "animals"})
-        self.assertIn("What do they eat?", html)
-        self.assertNotIn("card-study-pack", html)
+        self.assertIn("card-study-pack", html)
+        self.assertNotIn("What do they eat?", html)
         self.assertNotIn("Where do American bison live in the wild?", html)
         jelly = OCTOPUS.read_text(encoding="utf-8")
-        self.assertIn("What do they eat?", jelly)
-        self.assertNotIn("card-study-pack", jelly)
+        self.assertIn("card-study-pack", jelly)
+        self.assertNotIn("What do they eat?", jelly)
         self.assertNotIn("Where do American bison live in the wild?", jelly)
 
     def test_published_american_bison_card_matches_easy_deck(self):
@@ -424,7 +427,8 @@ class AmericanBisonEasyStudyCardTests(unittest.TestCase):
     def test_artifacts_include_american_bison_easy_and_hard(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
         self.assertIn("american-bison", payload)
-        self.assertNotIn("whale-shark", payload)
+        self.assertIn("whale-shark", payload)
+        self.assertEqual(set(payload["whale-shark"]["levels"]), {"easy"})
         self.assertIn("american-alligator", payload)
         bison = payload["american-bison"]
         self.assertEqual(bison["id"], "american-bison")

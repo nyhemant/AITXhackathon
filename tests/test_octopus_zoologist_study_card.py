@@ -396,8 +396,8 @@ class OctopusZoologistStudyCardTests(unittest.TestCase):
         self.assertEqual(manta_zoo["talk_about"], list(TALK_ABOUT_MANTA_RAY_ZOOLOGIST))
         self.assertEqual(manta_zoo["push_further"], list(PUSH_FURTHER_MANTA_RAY_ZOOLOGIST))
         horse = SEAHORSE.read_text(encoding="utf-8")
-        self.assertIn("What do they eat?", horse)
-        self.assertNotIn("card-study-pack", horse)
+        self.assertIn("card-study-pack", horse)
+        self.assertNotIn("What do they eat?", horse)
         self.assertNotIn("rna-edit-soft", horse)
 
     def test_published_artifacts_and_plumbing(self):

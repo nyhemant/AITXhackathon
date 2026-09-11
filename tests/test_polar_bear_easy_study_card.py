@@ -187,6 +187,7 @@ class PolarBearEasyStudyCardTests(unittest.TestCase):
                 "seahorse",
                 "starfish",
                 "stingray",
+                "whale-shark",
             ),
         )
         self.assertEqual(shipped_levels_for("polar-bear"), ("easy", "hard", "zoologist"))
@@ -306,12 +307,12 @@ class PolarBearEasyStudyCardTests(unittest.TestCase):
 
     def test_other_animal_stays_generic_worksheet(self):
         html = outing_talk_html({"id": "whale-shark", "packTemplate": "animals"})
-        self.assertIn("What do they eat?", html)
-        self.assertNotIn("card-study-pack", html)
+        self.assertIn("card-study-pack", html)
+        self.assertNotIn("What do they eat?", html)
         self.assertNotIn("Where do polar bears live in the wild?", html)
         otter = OCTOPUS.read_text(encoding="utf-8")
-        self.assertIn("What do they eat?", otter)
-        self.assertNotIn("card-study-pack", otter)
+        self.assertIn("card-study-pack", otter)
+        self.assertNotIn("What do they eat?", otter)
         self.assertNotIn("Where do polar bears live in the wild?", otter)
 
     def test_published_polar_bear_card_matches_easy_deck(self):
@@ -430,7 +431,8 @@ class PolarBearEasyStudyCardTests(unittest.TestCase):
     def test_artifacts_include_polar_bear_easy_hard_and_zoologist(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
         self.assertIn("polar-bear", payload)
-        self.assertNotIn("whale-shark", payload)
+        self.assertIn("whale-shark", payload)
+        self.assertEqual(set(payload["whale-shark"]["levels"]), {"easy"})
         self.assertIn("freshwater-fish", payload)
         bear = payload["polar-bear"]
         self.assertEqual(bear["id"], "polar-bear")

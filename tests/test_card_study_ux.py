@@ -168,9 +168,9 @@ class CardStudyUxTests(unittest.TestCase):
         self.assertIn("study-explore", ray)
         self.assertNotIn(">Talk</h2>", ray)
         whale = _main((FP / "cards" / "whale-shark" / "index.html").read_text(encoding="utf-8"))
-        self.assertIn('aria-label="Talk"', whale)
-        self.assertIn(">Talk</h2>", whale)
-        self.assertNotIn(">Quiz</h2>", whale)
+        self.assertIn('aria-label="Quiz"', whale)
+        self.assertIn(">Quiz</h2>", whale)
+        self.assertNotIn(">Talk</h2>", whale)
         self.assertNotIn("study-explore", whale)
         sea = _main((FP / "cards" / "sea-otter" / "index.html").read_text(encoding="utf-8"))
         self.assertIn('aria-label="Quiz"', sea)
@@ -364,6 +364,10 @@ class CardStudyUxTests(unittest.TestCase):
             study_try_next_ids("stingray"),
             ["manta-ray", "seahorse", "african-lion"],
         )
+        self.assertEqual(
+            study_try_next_ids("whale-shark"),
+            ["shark", "manta-ray", "african-lion"],
+        )
         for cid in study_card_ids():
             nxt = study_try_next_ids(cid)
             with self.subTest(card=cid):
@@ -390,8 +394,8 @@ class CardStudyUxTests(unittest.TestCase):
         print_tpl = page.split('id="study-print-template">', 1)[1].split("</template>", 1)[0]
         self.assertNotIn("card-try-next", print_tpl)
         whale = (FP / "cards" / "whale-shark" / "index.html").read_text(encoding="utf-8")
-        self.assertNotIn('aria-label="Try next"', whale)
-        self.assertNotIn("card-study-pack", whale)
+        self.assertIn('aria-label="Try next"', whale)
+        self.assertIn("card-study-pack", whale)
 
     def test_photos_and_watch_live_share_hero_row(self):
         self.assertEqual(CARD_SEO_CSS_VER, "35")

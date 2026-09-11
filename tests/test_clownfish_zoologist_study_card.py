@@ -347,8 +347,8 @@ class ClownfishZoologistStudyCardTests(unittest.TestCase):
         self.assertEqual(puffin_zoo["talk_about"], list(TALK_ABOUT_PUFFIN))
         self.assertEqual(puffin_zoo["push_further"], list(PUSH_FURTHER_PUFFIN))
         jelly = OCTOPUS.read_text(encoding="utf-8")
-        self.assertIn("What do they eat?", jelly)
-        self.assertNotIn("card-study-pack", jelly)
+        self.assertIn("card-study-pack", jelly)
+        self.assertNotIn("What do they eat?", jelly)
         self.assertNotIn("amphiprioninae-soft", jelly)
 
     def test_published_artifacts_and_plumbing(self):

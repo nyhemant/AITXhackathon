@@ -268,8 +268,8 @@ class PuffinHardStudyCardTests(unittest.TestCase):
         self.assertEqual(elk_hard["talk_about"], list(TALK_ABOUT_ELK))
         self.assertEqual(elk_hard["push_further"], list(PUSH_FURTHER_ELK))
         jelly = OCTOPUS.read_text(encoding="utf-8")
-        self.assertIn("What do they eat?", jelly)
-        self.assertNotIn("card-study-pack", jelly)
+        self.assertIn("card-study-pack", jelly)
+        self.assertNotIn("What do they eat?", jelly)
         self.assertNotIn("fratercula-arctica-soft", jelly)
 
     def test_published_artifacts_and_plumbing(self):

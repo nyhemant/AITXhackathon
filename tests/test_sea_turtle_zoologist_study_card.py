@@ -391,8 +391,8 @@ class SeaTurtleZoologistStudyCardTests(unittest.TestCase):
         self.assertEqual(kelp_zoo["talk_about"], list(TALK_ABOUT_KELP_FOREST))
         self.assertEqual(kelp_zoo["push_further"], list(PUSH_FURTHER_KELP_FOREST))
         horse = SEAHORSE.read_text(encoding="utf-8")
-        self.assertIn("What do they eat?", horse)
-        self.assertNotIn("card-study-pack", horse)
+        self.assertIn("card-study-pack", horse)
+        self.assertNotIn("What do they eat?", horse)
         self.assertNotIn("phylogeny-soft", horse)
 
     def test_published_artifacts_and_plumbing(self):

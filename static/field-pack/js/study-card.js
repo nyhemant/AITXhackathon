@@ -278,6 +278,16 @@ if (typeof window !== "undefined") {
     });
   }
 
+  function paintScoreTotal(root, total) {
+    const n = Number(total) || questions(root).length;
+    if (!n) return;
+    root.querySelectorAll(".study-score").forEach((el) => {
+      const span = el.querySelector("[data-study-correct]");
+      const scored = span ? span.textContent : "0";
+      el.innerHTML = `Score <span data-study-correct>${esc(scored)}</span>/${n}`;
+    });
+  }
+
   function revealAll(root, on) {
     questions(root).forEach((qEl) => {
       const correct = (qEl.getAttribute("data-correct") || "").toUpperCase();
@@ -393,6 +403,7 @@ if (typeof window !== "undefined") {
       });
     }
     paintPicker(root, deck.level);
+    paintScoreTotal(root, (deck.questions || []).length);
     paintScore(root);
     const reveal = root.querySelector("[data-study-reveal]");
     if (reveal) {

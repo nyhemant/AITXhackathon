@@ -303,8 +303,8 @@ class JellyfishHardStudyCardTests(unittest.TestCase):
         self.assertEqual(clown_hard["talk_about"], list(TALK_ABOUT_CLOWNFISH))
         self.assertEqual(clown_hard["push_further"], list(PUSH_FURTHER_CLOWNFISH))
         octo = OCTOPUS.read_text(encoding="utf-8")
-        self.assertIn("What do they eat?", octo)
-        self.assertNotIn("card-study-pack", octo)
+        self.assertIn("card-study-pack", octo)
+        self.assertNotIn("What do they eat?", octo)
         self.assertNotIn("medusozoa-soft", octo)
 
     def test_published_artifacts_and_plumbing(self):

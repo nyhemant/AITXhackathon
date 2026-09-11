@@ -411,8 +411,8 @@ class SeahorseZoologistStudyCardTests(unittest.TestCase):
         self.assertEqual(kelp_zoo["talk_about"], list(TALK_ABOUT_KELP_FOREST))
         self.assertEqual(kelp_zoo["push_further"], list(PUSH_FURTHER_KELP_FOREST))
         ray = STINGRAY.read_text(encoding="utf-8")
-        self.assertIn("What do they eat?", ray)
-        self.assertNotIn("card-study-pack", ray)
+        self.assertIn("card-study-pack", ray)
+        self.assertNotIn("What do they eat?", ray)
         self.assertNotIn("rapid-genome-soft", ray)
 
     def test_published_artifacts_and_plumbing(self):

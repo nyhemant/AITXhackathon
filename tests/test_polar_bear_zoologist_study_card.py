@@ -342,8 +342,8 @@ class PolarBearZoologistStudyCardTests(unittest.TestCase):
         self.assertEqual(fish_zoo["talk_about"], list(TALK_ABOUT_FRESHWATER_FISH))
         self.assertEqual(fish_zoo["push_further"], list(PUSH_FURTHER_FRESHWATER_FISH))
         sea = OCTOPUS.read_text(encoding="utf-8")
-        self.assertIn("What do they eat?", sea)
-        self.assertNotIn("card-study-pack", sea)
+        self.assertIn("card-study-pack", sea)
+        self.assertNotIn("What do they eat?", sea)
         self.assertNotIn("ursidae-soft", sea)
 
     def test_published_artifacts_and_plumbing(self):

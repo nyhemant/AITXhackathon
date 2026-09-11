@@ -131,7 +131,7 @@ def _main(html: str) -> str:
 class ElkEasyStudyCardTests(unittest.TestCase):
     def test_deck_is_junior_ranger_with_hard_sibling(self):
         self.assertIn("elk", study_card_ids())
-        self.assertNotIn("whale-shark", study_card_ids())
+        self.assertIn("whale-shark", study_card_ids())
         self.assertEqual(
             study_card_ids(),
             (
@@ -176,12 +176,15 @@ class ElkEasyStudyCardTests(unittest.TestCase):
                 "seahorse",
                 "starfish",
                 "stingray",
+                "whale-shark",
             ),
         )
         self.assertEqual(shipped_levels_for("elk"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("elk", "hard"))
         self.assertIsNotNone(study_deck_for("elk", "zoologist"))
-        self.assertIsNone(study_deck_for("whale-shark"))
+        self.assertIsNotNone(study_deck_for("whale-shark"))
+        self.assertIsNone(study_deck_for("whale-shark", "hard"))
+        self.assertIsNone(study_deck_for("whale-shark", "zoologist"))
         deck = study_deck_for("elk")
         self.assertIsNotNone(deck)
         self.assertEqual(deck["id"], "elk")
@@ -298,12 +301,12 @@ class ElkEasyStudyCardTests(unittest.TestCase):
 
     def test_other_animal_stays_generic_worksheet(self):
         html = outing_talk_html({"id": "whale-shark", "packTemplate": "animals"})
-        self.assertIn("What do they eat?", html)
-        self.assertNotIn("card-study-pack", html)
+        self.assertIn("card-study-pack", html)
+        self.assertNotIn("What do they eat?", html)
         self.assertNotIn("Where do elk like to live in the wild?", html)
         jelly = OCTOPUS.read_text(encoding="utf-8")
-        self.assertIn("What do they eat?", jelly)
-        self.assertNotIn("card-study-pack", jelly)
+        self.assertIn("card-study-pack", jelly)
+        self.assertNotIn("What do they eat?", jelly)
         self.assertNotIn("Where do elk like to live in the wild?", jelly)
 
     def test_published_elk_card_matches_easy_deck(self):
@@ -426,7 +429,8 @@ class ElkEasyStudyCardTests(unittest.TestCase):
     def test_artifacts_include_elk_easy_and_hard(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
         self.assertIn("elk", payload)
-        self.assertNotIn("whale-shark", payload)
+        self.assertIn("whale-shark", payload)
+        self.assertEqual(set(payload["whale-shark"]["levels"]), {"easy"})
         self.assertIn("american-bison", payload)
         elk = payload["elk"]
         self.assertEqual(elk["id"], "elk")

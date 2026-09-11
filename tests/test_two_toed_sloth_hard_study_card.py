@@ -263,8 +263,8 @@ class TwoToedSlothHardStudyCardTests(unittest.TestCase):
         self.assertEqual(otter_hard["talk_about"], list(TALK_ABOUT_ASIAN_SMALL_CLAWED_OTTER))
         self.assertEqual(otter_hard["push_further"], list(PUSH_FURTHER_ASIAN_SMALL_CLAWED_OTTER))
         sea = OCTOPUS.read_text(encoding="utf-8")
-        self.assertIn("What do they eat?", sea)
-        self.assertNotIn("card-study-pack", sea)
+        self.assertIn("card-study-pack", sea)
+        self.assertNotIn("What do they eat?", sea)
         self.assertNotIn("two-living-kinds-soft", sea)
 
     def test_published_artifacts_and_plumbing(self):

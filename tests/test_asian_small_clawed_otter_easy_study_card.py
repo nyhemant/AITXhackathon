@@ -178,6 +178,7 @@ class AsianSmallClawedOtterEasyStudyCardTests(unittest.TestCase):
                 "seahorse",
                 "starfish",
                 "stingray",
+                "whale-shark",
             ),
         )
         self.assertEqual(
@@ -310,15 +311,15 @@ class AsianSmallClawedOtterEasyStudyCardTests(unittest.TestCase):
 
     def test_other_animal_stays_generic_worksheet(self):
         html = outing_talk_html({"id": "whale-shark", "packTemplate": "animals"})
-        self.assertIn("What do they eat?", html)
-        self.assertNotIn("card-study-pack", html)
+        self.assertIn("card-study-pack", html)
+        self.assertNotIn("What do they eat?", html)
         self.assertNotIn("What kind of otter is the Asian small-clawed otter?", html)
         sea = OCTOPUS.read_text(encoding="utf-8")
-        self.assertIn("What do they eat?", sea)
-        self.assertNotIn("card-study-pack", sea)
+        self.assertIn("card-study-pack", sea)
+        self.assertNotIn("What do they eat?", sea)
         whale = WHALE_SHARK.read_text(encoding="utf-8")
-        self.assertIn("What do they eat?", whale)
-        self.assertNotIn("card-study-pack", whale)
+        self.assertIn("card-study-pack", whale)
+        self.assertNotIn("What kind of otter is the Asian small-clawed otter?", whale)
 
     def test_published_otter_card_matches_easy_deck(self):
         html = OTTER.read_text(encoding="utf-8")
@@ -443,7 +444,8 @@ class AsianSmallClawedOtterEasyStudyCardTests(unittest.TestCase):
     def test_artifacts_include_otter_easy_and_hard(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
         self.assertIn("asian-small-clawed-otter", payload)
-        self.assertNotIn("whale-shark", payload)
+        self.assertIn("whale-shark", payload)
+        self.assertEqual(set(payload["whale-shark"]["levels"]), {"easy"})
         self.assertIn("shark", payload)
         self.assertIn("warthog", payload)
         otter = payload["asian-small-clawed-otter"]

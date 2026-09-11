@@ -147,7 +147,7 @@ def _main(html: str) -> str:
 class SeaTurtleEasyStudyCardTests(unittest.TestCase):
     def test_deck_is_junior_ranger_only(self):
         self.assertIn("sea-turtle", study_card_ids())
-        self.assertNotIn("whale-shark", study_card_ids())
+        self.assertIn("whale-shark", study_card_ids())
         self.assertEqual(
             study_card_ids(),
             (
@@ -192,12 +192,15 @@ class SeaTurtleEasyStudyCardTests(unittest.TestCase):
                 "seahorse",
                 "starfish",
                 "stingray",
+                "whale-shark",
             ),
         )
         self.assertEqual(shipped_levels_for("sea-turtle"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("sea-turtle", "hard"))
         self.assertIsNotNone(study_deck_for("sea-turtle", "zoologist"))
-        self.assertIsNone(study_deck_for("whale-shark"))
+        self.assertIsNotNone(study_deck_for("whale-shark"))
+        self.assertIsNone(study_deck_for("whale-shark", "hard"))
+        self.assertIsNone(study_deck_for("whale-shark", "zoologist"))
         deck = study_deck_for("sea-turtle")
         self.assertIsNotNone(deck)
         self.assertEqual(deck["id"], "sea-turtle")
@@ -339,12 +342,12 @@ class SeaTurtleEasyStudyCardTests(unittest.TestCase):
 
     def test_other_animal_stays_generic_worksheet(self):
         html = outing_talk_html({"id": "whale-shark", "packTemplate": "animals"})
-        self.assertIn("What do they eat?", html)
-        self.assertNotIn("card-study-pack", html)
+        self.assertIn("card-study-pack", html)
+        self.assertNotIn("What do they eat?", html)
         self.assertNotIn("How many kinds of sea turtle", html)
         horse = SEAHORSE.read_text(encoding="utf-8")
-        self.assertIn("What do they eat?", horse)
-        self.assertNotIn("card-study-pack", horse)
+        self.assertIn("card-study-pack", horse)
+        self.assertNotIn("What do they eat?", horse)
         self.assertNotIn("How many kinds of sea turtle", horse)
 
     def test_published_sea_turtle_card_matches_easy_deck(self):
@@ -475,7 +478,8 @@ class SeaTurtleEasyStudyCardTests(unittest.TestCase):
     def test_artifacts_include_sea_turtle_easy_and_hard(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
         self.assertIn("sea-turtle", payload)
-        self.assertNotIn("whale-shark", payload)
+        self.assertIn("whale-shark", payload)
+        self.assertEqual(set(payload["whale-shark"]["levels"]), {"easy"})
         self.assertIn("octopus", payload)
         self.assertIn("manta-ray", payload)
         self.assertIn("kelp-forest", payload)

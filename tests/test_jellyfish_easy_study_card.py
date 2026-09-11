@@ -150,7 +150,7 @@ def _main(html: str) -> str:
 class JellyfishEasyStudyCardTests(unittest.TestCase):
     def test_deck_is_junior_ranger_only(self):
         self.assertIn("jellyfish", study_card_ids())
-        self.assertNotIn("whale-shark", study_card_ids())
+        self.assertIn("whale-shark", study_card_ids())
         self.assertEqual(
             study_card_ids(),
             (
@@ -195,12 +195,15 @@ class JellyfishEasyStudyCardTests(unittest.TestCase):
                 "seahorse",
                 "starfish",
                 "stingray",
+                "whale-shark",
             ),
         )
         self.assertEqual(shipped_levels_for("jellyfish"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("jellyfish", "hard"))
         self.assertIsNotNone(study_deck_for("jellyfish", "zoologist"))
-        self.assertIsNone(study_deck_for("whale-shark"))
+        self.assertIsNotNone(study_deck_for("whale-shark"))
+        self.assertIsNone(study_deck_for("whale-shark", "hard"))
+        self.assertIsNone(study_deck_for("whale-shark", "zoologist"))
         deck = study_deck_for("jellyfish")
         self.assertIsNotNone(deck)
         self.assertEqual(deck["id"], "jellyfish")
@@ -349,12 +352,12 @@ class JellyfishEasyStudyCardTests(unittest.TestCase):
 
     def test_other_animal_stays_generic_worksheet(self):
         html = outing_talk_html({"id": "whale-shark", "packTemplate": "animals"})
-        self.assertIn("What do they eat?", html)
-        self.assertNotIn("card-study-pack", html)
+        self.assertIn("card-study-pack", html)
+        self.assertNotIn("What do they eat?", html)
         self.assertNotIn("Are jellyfish a kind of fish", html)
         octo = OCTOPUS.read_text(encoding="utf-8")
-        self.assertIn("What do they eat?", octo)
-        self.assertNotIn("card-study-pack", octo)
+        self.assertIn("card-study-pack", octo)
+        self.assertNotIn("What do they eat?", octo)
         self.assertNotIn("Are jellyfish a kind of fish", octo)
 
     def test_published_jellyfish_card_matches_easy_deck(self):
@@ -485,7 +488,8 @@ class JellyfishEasyStudyCardTests(unittest.TestCase):
     def test_artifacts_include_jellyfish_easy_and_hard(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
         self.assertIn("jellyfish", payload)
-        self.assertNotIn("whale-shark", payload)
+        self.assertIn("whale-shark", payload)
+        self.assertEqual(set(payload["whale-shark"]["levels"]), {"easy"})
         self.assertIn("eel", payload)
         self.assertIn("cuttlefish", payload)
         self.assertIn("crab", payload)
