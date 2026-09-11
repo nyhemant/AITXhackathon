@@ -13764,7 +13764,7 @@
             "title": "Many kinds",
             "stem": "How many kinds of true eels are there, if we keep the count soft?",
             "choices": [
-              "Morays, congers, garden eels, freshwater eels — about a thousand species (soft)",
+              "Morays, congers, garden eels, freshwater eels — about a thousand species",
               "Only one eel in the whole ocean",
               "Exactly two eels, and no more"
             ],
@@ -14192,7 +14192,7 @@
             "title": "Sting",
             "stem": "What do a jelly’s tentacles use to grab food?",
             "choices": [
-              "Tiny stinging cells help grab plankton, small fish, or other jellies (many stings feel mild to people — soft)",
+              "Tiny stinging cells help grab plankton, small fish, or other jellies (many stings feel mild to people)",
               "They only use magnets to pull in rocks",
               "They grow hands and pick snacks off trees"
             ],
@@ -14259,7 +14259,7 @@
             "choices": [
               "Pour trash on every beach so jellies can hide",
               "Catch every jelly and keep them in jars",
-              "Keep coasts clean and seas balanced; big bloom swarms can bother beaches and fishing (soft)"
+              "Keep coasts clean and seas balanced; big bloom swarms can bother beaches and fishing"
             ],
             "correct": "C",
             "why": "Wikipedia ties jellies to coasts and open water, and notes that big bloom swarms can bother beaches and fishing. Soft care is clean coasts and balanced seas — we do not lock one status letter."
@@ -14648,7 +14648,7 @@
             "choices": [
               "Only in hot desert dunes far from any sea",
               "Only in one bathtub, and nowhere else",
-              "Along cool, nutrient-rich coasts — often where deeper water rises and feeds the kelp (soft)"
+              "Along cool, nutrient-rich coasts — often where deeper water rises and feeds the kelp"
             ],
             "correct": "C",
             "why": "Wikipedia places kelp forests along temperate and polar coasts, often where cool, nutrient-rich water rises. Exact maps can shift, so we keep that range soft."
@@ -14673,7 +14673,7 @@
             "stem": "How can sea otters help a kelp forest stay lush?",
             "choices": [
               "Otters plant oak trees on the seafloor",
-              "Sea otters eat urchins that chew kelp — when predators keep urchins in check, forests stay lush (soft)",
+              "Sea otters eat urchins that chew kelp — when predators keep urchins in check, forests stay lush",
               "Otters scare kelp away so urchins can eat it all"
             ],
             "correct": "B",
@@ -14687,7 +14687,7 @@
             "choices": [
               "Dump trash on every cool coast",
               "Catch every otter and urchin and keep them in jars",
-              "Protect cool coasts and the animals that stop urchins from mowing the kelp down (soft)"
+              "Protect cool coasts and the animals that stop urchins from mowing the kelp down"
             ],
             "correct": "C",
             "why": "Wikipedia ties kelp loss to pressures such as losing predators and stressing cool coasts. Soft care is protecting those shores and the animals that keep urchins from chewing the forest down — we do not lock one status letter."
@@ -15048,7 +15048,7 @@
             "title": "Big",
             "stem": "How big can a manta get, if we keep the size soft?",
             "choices": [
-              "Among the largest rays — disc width can reach several meters (soft)",
+              "Among the largest rays — disc width can reach several meters",
               "No bigger than a postage stamp",
               "Exactly the size of one goldfish, always"
             ],
@@ -15062,7 +15062,7 @@
             "stem": "How do reef mantas and giant oceanic mantas use the sea?",
             "choices": [
               "Both kinds live only in one bathtub",
-              "Reef mantas stay nearer coasts; giant oceanic mantas roam farther offshore (soft)",
+              "Reef mantas stay nearer coasts; giant oceanic mantas roam farther offshore",
               "Both kinds never leave a single puddle"
             ],
             "correct": "B",
@@ -15076,7 +15076,7 @@
             "choices": [
               "They lay hundreds of hard chicken eggs on the beach",
               "They buy pups from a shop",
-              "Mothers carry pups inside and give birth to live young after a long pregnancy (soft)"
+              "Mothers carry pups inside and give birth to live young after a long pregnancy"
             ],
             "correct": "C",
             "why": "Wikipedia says gestation lasts over a year and mantas give birth to live pups. Pregnancy length can vary, so we keep that story soft."
@@ -15101,7 +15101,7 @@
             "stem": "What do mantas sometimes do at the surface — and do we know why?",
             "choices": [
               "They grow jet engines and fly to the moon",
-              "They sometimes leap clear of the water — the reasons are still debated (soft)",
+              "They sometimes leap clear of the water — the reasons are still debated",
               "They never move at all"
             ],
             "correct": "B",
@@ -15115,7 +15115,7 @@
             "choices": [
               "Catch every manta and keep them in jars",
               "Dump trash in every warm sea",
-              "Keep warm seas healthy; fishing nets and demand for gill plates put pressure on slow-breeding mantas (soft)"
+              "Keep warm seas healthy; fishing nets and demand for gill plates put pressure on slow-breeding mantas"
             ],
             "correct": "C",
             "why": "Wikipedia ties pressure on mantas to entanglement in fishing nets and demand for their gill plates. Slow breeding makes that pressure harder to bounce back from. Soft care is keeping warm seas healthy — we do not lock one status letter."
@@ -15553,7 +15553,7 @@
             "choices": [
               "Exactly two, and they never change",
               "Only one kind in the whole world",
-              "About 300 known species, from tiny kinds to the giant Pacific octopus (soft)"
+              "About 300 known species, from tiny kinds to the giant Pacific octopus"
             ],
             "correct": "C",
             "why": "Wikipedia says the octopus group has some 300 known species. Sizes run from tiny kinds to the giant Pacific octopus, often cited as the largest. Exact records shift, so we keep counts and sizes soft."
@@ -15886,7 +15886,7 @@
             "title": "Seven kinds",
             "stem": "How many kinds of sea turtle live in the world’s oceans, if we keep the list soft?",
             "choices": [
-              "About seven kinds — flatback, green, hawksbill, leatherback, loggerhead, Kemp’s ridley, and olive ridley (soft)",
+              "About seven kinds — flatback, green, hawksbill, leatherback, loggerhead, Kemp’s ridley, and olive ridley",
               "Exactly one kind that lives only on polar ice",
               "Zero kinds — they are all land turtles"
             ],
@@ -15964,7 +15964,7 @@
             "title": "Air breathers",
             "stem": "How do sea turtles breathe, even though they live in the ocean?",
             "choices": [
-              "They have lungs and must surface to breathe — they can stay under a long time when resting (soft)",
+              "They have lungs and must surface to breathe — they can stay under a long time when resting",
               "They have gills like fish and never need air",
               "They breathe only through their flippers"
             ],
@@ -15992,7 +15992,7 @@
             "choices": [
               "They never leave the nest they hatched in",
               "They only hop from one rock to the next",
-              "Many travel far between feeding waters and nesting beaches (soft)"
+              "Many travel far between feeding waters and nesting beaches"
             ],
             "correct": "C",
             "why": "Wikipedia says many sea turtles migrate long distances between feeding waters and nesting beaches — some even cross ocean basins. Exact miles vary, so we keep that travel story soft."
@@ -16325,7 +16325,7 @@
             "title": "True fish",
             "stem": "Are seahorses a kind of fish?",
             "choices": [
-              "Yes — small bony fish in genus Hippocampus, with many kinds (soft)",
+              "Yes — small bony fish in genus Hippocampus, with many kinds",
               "No — they are tiny horses that live in the sea",
               "No — they are mammals like dolphins"
             ],
@@ -16777,7 +16777,7 @@
             "stem": "What does a sea star’s body look like, if we keep the arm count soft?",
             "choices": [
               "A fish body with two wings and a tail",
-              "A central disc plus arms — five is common, but some kinds have far more (soft)",
+              "A central disc plus arms — five is common, but some kinds have far more",
               "A single long snake with no arms"
             ],
             "correct": "B",
@@ -16855,7 +16855,7 @@
             "stem": "What can many sea stars do if they lose an arm?",
             "choices": [
               "They turn into a fish",
-              "They can grow a damaged or lost arm back over time; a few can rebuild more if part of the disc remains (soft)",
+              "They can grow a damaged or lost arm back over time; a few can rebuild more if part of the disc remains",
               "They never grow anything back"
             ],
             "correct": "B",
@@ -16869,7 +16869,7 @@
             "choices": [
               "Exactly three kinds, all in one lake",
               "Only one kind on Earth",
-              "About two thousand known kinds worldwide (soft)"
+              "About two thousand known kinds worldwide"
             ],
             "correct": "C",
             "why": "Wikipedia puts living starfish at about two thousand known kinds worldwide. Exact totals shift as scientists name or split kinds, so we keep that count soft."
@@ -17201,7 +17201,7 @@
             "title": "Soft skeleton",
             "stem": "What is a stingray’s skeleton mostly made of?",
             "choices": [
-              "Cartilage — tough and flexible, like a shark’s skeleton (soft)",
+              "Cartilage — tough and flexible, like a shark’s skeleton",
               "Solid bone like a cow’s leg",
               "Only sand packed into a tube"
             ],
@@ -17307,7 +17307,7 @@
             "choices": [
               "Exactly three kinds in one pond",
               "Only one kind on Earth",
-              "About two hundred known kinds worldwide (soft)"
+              "About two hundred known kinds worldwide"
             ],
             "correct": "C",
             "why": "Wikipedia puts living stingrays at about 220 known species. Exact totals shift as scientists name or split kinds, so we keep that soft."

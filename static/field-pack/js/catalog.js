@@ -289,7 +289,7 @@ window.FIELD_PACK_CATALOG = {
     photoCredit: "Enhanced for print · Field Trip Kit",
     blurb: "Waddle on land, zoom in water.",
     links: {
-      pictures: "https://kids.nationalgeographic.com/animals/birds/facts/african-penguin",
+      pictures: "https://kids.nationalgeographic.com/animals/birds/topic/penguin-facts",
       more: "https://www.dallaszoo.com/",
       cam: "https://zoo.sandiegozoo.org/cams/penguin-cam",
     },
@@ -319,7 +319,7 @@ window.FIELD_PACK_CATALOG = {
     photoCredit: "Enhanced for print · Field Trip Kit",
     blurb: "Playful swimmer — smallest otter.",
     links: {
-      pictures: "https://kids.nationalgeographic.com/animals/mammals/facts/asian-small-clawed-otter",
+      pictures: "",
       more: "https://www.dallaszoo.com/",
       cam: "https://zoo.sandiegozoo.org/cams",
     },
@@ -561,7 +561,7 @@ window.FIELD_PACK_CATALOG = {
     photoCredit: "Enhanced for print · Field Trip Kit",
     blurb: "Sideways walker with a hard shell and pinchers.",
     links: {
-      pictures: "https://kids.nationalgeographic.com/animals/invertebrates/facts/crab",
+      pictures: "https://kids.nationalgeographic.com/animals/invertebrates/facts/christmas-island-red-crab",
       more: "https://www.childrensaquarium.com/",
       cam: "https://www.montereybayaquarium.org/animals/live-cams",
     },
@@ -636,7 +636,7 @@ window.FIELD_PACK_CATALOG = {
     photoCredit: "CC BY-SA 3.0 · Nick Hobgood",
     blurb: "Color-changing cousin of the octopus — a living disguise.",
     links: {
-      pictures: "https://kids.nationalgeographic.com/animals/invertebrates/facts/cuttlefish",
+      pictures: "https://www.nationalgeographic.com/animals/invertebrates/facts/cuttlefish",
       more: "https://www.montereybayaquarium.org/animals/animals-a-to-z/cuttlefish",
       cam: "https://www.montereybayaquarium.org/animals/live-cams",
     },
@@ -781,7 +781,7 @@ window.FIELD_PACK_CATALOG = {
     photoCredit: "Enhanced for print · Field Trip Kit",
     blurb: "An underwater city built by tiny animals.",
     links: {
-      pictures: "https://kids.nationalgeographic.com/nature/habitats/article/coral-reef",
+      pictures: "https://www.nationalgeographic.com/environment/article/coral-reefs",
       more: "https://www.montereybayaquarium.org/animals/habitats/coral-reefs",
     },
     key: { food: ["Plants / leaves", "Both"], home: ["Water / wet"], superpower: ["Hide"] },
@@ -795,7 +795,7 @@ window.FIELD_PACK_CATALOG = {
     photoCredit: "Enhanced for print · Field Trip Kit",
     blurb: "A stinging ocean flower — home to clownfish.",
     links: {
-      pictures: "https://kids.nationalgeographic.com/animals/invertebrates/facts/sea-anemone",
+      pictures: "",
       more: "https://www.montereybayaquarium.org/animals/animals-a-to-z/anemone",
     },
     key: { food: ["Meat", "Fish"], home: ["Water / wet"], superpower: ["Hide"] },
@@ -852,7 +852,7 @@ window.FIELD_PACK_CATALOG = {
     photoCredit: "Enhanced for print · Field Trip Kit",
     blurb: "A living fossil in a spiral shell that floats like a submarine.",
     links: {
-      pictures: "https://kids.nationalgeographic.com/animals/invertebrates/facts/chambered-nautilus",
+      pictures: "",
       more: "https://www.montereybayaquarium.org/animals/animals-a-to-z/chambered-nautilus",
     },
     key: { food: ["Meat"], home: ["Water / wet"], superpower: ["Swim", "Hide"] },
@@ -1123,7 +1123,7 @@ window.FIELD_PACK_CATALOG = {
     photoCredit: "Enhanced for print · Field Trip Kit",
     blurb: "Biggest living reptile — a floating log with teeth.",
     links: {
-      pictures: "https://kids.nationalgeographic.com/animals/reptiles/facts/saltwater-crocodile",
+      pictures: "https://www.nationalgeographic.com/animals/reptiles/facts/saltwater-crocodile",
       more: "https://zoo.sandiegozoo.org/",
     },
     key: { food: ["Meat", "Fish"], home: ["Water / wet"], superpower: ["Swim", "Hide"] },
@@ -1193,7 +1193,7 @@ window.FIELD_PACK_CATALOG = {
     photoCredit: "Enhanced for print · Field Trip Kit",
     blurb: "Biggest parrot — cobalt blue with a nut-cracking beak.",
     links: {
-      pictures: "https://kids.nationalgeographic.com/animals/birds/facts/macaw",
+      pictures: "",
       more: "https://zoo.sandiegozoo.org/",
     },
     key: { food: ["Both"], home: ["Forest"], superpower: ["Climb"] },
@@ -1245,7 +1245,7 @@ window.FIELD_PACK_CATALOG = {
     photo: "photos/sci-rainforest.jpg?v=img3",
     photoCredit: "Illustration · Field Trip Kit",
     blurb: "Warm, green, and full of life — look for layers of plants.",
-    links: { pictures: "https://kids.nationalgeographic.com/nature/article/rain-forest", more: "https://www.calacademy.org/", cam: "https://www.calacademy.org/" },
+    links: { pictures: "https://kids.nationalgeographic.com/nature/habitats/article/rain-forest", more: "https://www.calacademy.org/", cam: "https://www.calacademy.org/" },
     key: { try: ["Quiet look", "Climb"], body: ["Slow and careful", "Climbed high"], senses: ["Colors", "Sounds", "Something new"] },
   },
   "sci-aquarium-zone": {
@@ -1379,7 +1379,7 @@ window.FIELD_PACK_CATALOG = {
     photoCredit: "Enhanced for print · Field Trip Kit",
     blurb: "Big deer of meadows and mountains — quiet watch from a safe distance.",
     links: {
-      pictures: "https://kids.nationalgeographic.com/animals/mammals/facts/elk",
+      pictures: "https://www.nationalgeographic.com/animals/mammals/facts/elk",
       more: "https://www.nps.gov/",
       cam: "",
     },

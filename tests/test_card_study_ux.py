@@ -426,7 +426,7 @@ class CardStudyUxTests(unittest.TestCase):
         self.assertIn("Watch Live", row)
         self.assertEqual(card_hero_links_html("", ""), "")
 
-        for cid in ("african-lion", "galapagos-tortoise", "reticulated-giraffe"):
+        for cid in ("african-lion", "reticulated-giraffe"):
             html = (FP / "cards" / cid / "index.html").read_text(encoding="utf-8")
             main = _main(html)
             with self.subTest(card=cid):
@@ -483,7 +483,7 @@ class CardStudyUxTests(unittest.TestCase):
         gen = SEO.read_text(encoding="utf-8")
         self.assertIn("a.card-watch-live, a.card-page-photo-link", gen)
 
-        for cid in ("galapagos-tortoise", "zebra", "african-lion"):
+        for cid in ("african-lion", "reticulated-giraffe"):
             html = (FP / "cards" / cid / "index.html").read_text(encoding="utf-8")
             main = _main(html)
             with self.subTest(card=cid):

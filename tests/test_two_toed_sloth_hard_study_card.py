@@ -292,7 +292,7 @@ class TwoToedSlothHardStudyCardTests(unittest.TestCase):
         self.assertIn('data-study-pick="hard"', html)
         self.assertIn('data-study-pick="zoologist"', html)
         self.assertIn("Learn first", html)
-        self.assertIn("Watch Live", html)
+        self.assertNotIn("Watch Live", html)
         self.assertIn('class="card-hero-links no-print"', html)
         self.assertIn('class="card-try-next no-print"', html)
         self.assertIn("study-level-picker-bottom", html)
