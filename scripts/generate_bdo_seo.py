@@ -310,7 +310,7 @@ CATALOG_JS_VER = "40"
 PRINT_KIT_JS_VER = "20"
 STUDY_CARD_JS_VER = "10"
 STUDY_CARD_CSS_VER = "10"
-STUDY_CARDS_DATA_JS_VER = "6"
+STUDY_CARDS_DATA_JS_VER = "7"
 VIEWPORT = "width=device-width, initial-scale=1, viewport-fit=cover"
 MISSION_CSS_VER = "20"
 

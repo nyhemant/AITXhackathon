@@ -128,7 +128,7 @@ BRITTLE = (
     "km/h",
 )
 REDO_THEMES = (
-    "Yes — small bony fish in genus Hippocampus, with many kinds (soft)",
+    "Yes — they are real bony fish, with many kinds",
     "A small dorsal fin pushes it along; pectoral fins help steer; it has no typical tail fin",
     "A square-ringed gripping tail holds seagrass, coral, or seaweed so they aren’t swept away",
     "A bent neck and tubular snout suck in tiny shrimp and other plankton",
@@ -446,7 +446,7 @@ class SeahorseZoologistStudyCardTests(unittest.TestCase):
         self.assertIn('data-study-pick="zoologist"', html)
         self.assertIn('data-study-pick="hard"', html)
         self.assertIn("study-card.js?v=10", html)
-        self.assertIn("study-cards-data.js?v=6", html)
+        self.assertIn("study-cards-data.js?v=7", html)
         print_tpl = html.split('id="study-print-template">', 1)[1].split("</template>", 1)[0]
         self.assertIn("Junior Ranger", print_tpl)
         self.assertIn("Learn first", print_tpl)

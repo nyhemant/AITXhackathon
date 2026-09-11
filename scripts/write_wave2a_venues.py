@@ -25,6 +25,7 @@ CARD_KINDS = [
     ("nile-hippo", "Nile hippo", "wildlife", "zoo"),
     ("orangutan", "Orangutan", "wildlife", "zoo"),
     ("ostrich", "Ostrich", "wildlife", "zoo"),
+    ("polar-bear", "Polar bear", "wildlife", "zoo"),
     ("red-panda", "Red panda", "wildlife", "zoo"),
     ("reticulated-giraffe", "Reticulated giraffe", "wildlife", "zoo"),
     ("ring-tailed-lemur", "Ring-tailed lemur", "wildlife", "zoo"),

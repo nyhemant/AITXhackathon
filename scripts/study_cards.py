@@ -2192,6 +2192,7 @@ invent photos.
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 
 from field_pack_catalog_kind import load_card_kinds
@@ -2331,6 +2332,35 @@ def apply_slot_letter_rotation(cards: dict | None = None) -> None:
                 target = target_letter_for_deck_slot(card_id, level, slot)
                 q["choices"] = rotate_choices_to_letter(choices, correct, target)
                 q["correct"] = target
+
+
+_JR_SOFT_PAREN = re.compile(r"\s*[—–-]\s*soft(?=\))")
+_JR_SOFT_TAG = re.compile(r"\s*\(soft\)")
+_JR_SOFT_DASH = re.compile(r"\s*[—–-]\s*soft\s*$")
+
+
+def strip_jr_soft_choice_label(text: str) -> str:
+    """Drop literal '(soft)' / '— soft' from a Junior Ranger choice label."""
+    s = str(text or "")
+    s = _JR_SOFT_PAREN.sub("", s)
+    s = _JR_SOFT_TAG.sub("", s)
+    s = _JR_SOFT_DASH.sub("", s)
+    return s.strip()
+
+
+def apply_easy_choice_soft_strip(cards: dict | None = None) -> None:
+    """Junior Ranger (easy) choice labels stay kid-facing — no authoring soft tags.
+
+    Hard / Zoologist keep their soft wording for a later pass.
+    """
+    src = STUDY_CARDS if cards is None else cards
+    for card in src.values():
+        pack = (card.get("levels") or {}).get("easy") or {}
+        for q in pack.get("questions") or []:
+            choices = list(q.get("choices") or [])
+            if not choices:
+                continue
+            q["choices"] = [strip_jr_soft_choice_label(ch) for ch in choices]
 
 # Product display names — one map for screen, print, and later pickers.
 LEVEL_DISPLAY_NAMES = {
@@ -19210,7 +19240,7 @@ STUDY_CARDS: dict[str, dict] = {
                         "title": "True fish",
                         "stem": "Are seahorses a kind of fish?",
                         "choices": [
-                            "Yes — small bony fish in genus Hippocampus, with many kinds (soft)",
+                            "Yes — they are real bony fish, with many kinds (soft)",
                             "No — they are tiny horses that live in the sea",
                             "No — they are mammals like dolphins",
                         ],
@@ -20560,6 +20590,7 @@ STUDY_CARDS: dict[str, dict] = {
 }
 
 apply_slot_letter_rotation()
+apply_easy_choice_soft_strip()
 
 
 def level_display_name(level: str | None = None) -> str:

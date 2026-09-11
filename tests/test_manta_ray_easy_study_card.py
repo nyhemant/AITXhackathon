@@ -360,11 +360,11 @@ class MantaRayEasyStudyCardTests(unittest.TestCase):
             self.assertIn(stem, main)
         for line in TEACH:
             self.assertIn(line, main)
-        self.assertIn("Watch Live", main)
-        self.assertIn("card-watch-live", main)
+        self.assertNotIn("Watch Live", main)
+        self.assertNotIn("card-watch-live", main)
         self.assertIn("card-page-photo", main)
         self.assertIn("/field-pack/photos/manta-ray.jpg", main)
-        self.assertIn(
+        self.assertNotIn(
             "/field-pack/virtual-field-trip/?tab=aquarium&amp;from=card#habitat=manta-ray",
             main,
         )
@@ -373,7 +373,7 @@ class MantaRayEasyStudyCardTests(unittest.TestCase):
         self.assertNotIn("card-print-note", main)
         self.assertIn("study-card.js?v=10", html)
         self.assertIn("study-card.css?v=10", html)
-        self.assertIn("study-cards-data.js?v=6", html)
+        self.assertIn("study-cards-data.js?v=7", html)
         self.assertIn('id="study-card-data"', html)
         self.assertIn('"level_label": "Junior Ranger"', html)
         self.assertIn('"id": "manta-ray"', html)

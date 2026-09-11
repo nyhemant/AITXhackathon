@@ -321,7 +321,7 @@ class TortoiseHardStudyCardTests(unittest.TestCase):
         self.assertIn("Junior Ranger", html)
         self.assertIn("Zoologist", html)
         self.assertIn("Learn first", html)
-        self.assertIn("Watch Live", html)
+        self.assertNotIn("Watch Live", html)
         print_tpl = html.split('id="study-print-template">', 1)[1].split("</template>", 1)[0]
         self.assertIn("Junior Ranger", print_tpl)
         self.assertIn("Learn first", print_tpl)

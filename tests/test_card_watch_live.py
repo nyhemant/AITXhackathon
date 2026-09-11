@@ -2,9 +2,11 @@
 
 from __future__ import annotations
 
+import json
 import re
 import sys
 import unittest
+from html import unescape
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -31,7 +33,7 @@ WARTHOG = FP / "cards" / "warthog" / "index.html"
 OSTRICH = FP / "cards" / "ostrich" / "index.html"
 DINO = FP / "cards" / "sci-dinosaur" / "index.html"
 
-# Existing card pages that play from zoo/aquarium film libraries, not default habitats.
+# Film-library overlays — not tour habitats. Watch Live stays hidden (PR #207).
 LIBRARY_ONLY_CARDS = (
     ("koala", "zoo"),
     ("chimpanzee", "zoo"),
@@ -41,8 +43,16 @@ LIBRARY_ONLY_CARDS = (
     ("sea-otter", "aquarium"),
     ("manta-ray", "aquarium"),
     ("kelp-forest", "aquarium"),
+    ("cuttlefish", "aquarium"),
+    ("puffin", "aquarium"),
+    ("galapagos-tortoise", "zoo"),
+    ("polar-bear", "zoo"),
+    ("ring-tailed-lemur", "zoo"),
+    ("two-toed-sloth", "zoo"),
+    ("zebra", "zoo"),
+    ("whale-shark", "aquarium"),
 )
-MISSING_HABITAT_CARDS = ("whale-shark",)
+MISSING_HABITAT_CARDS = tuple(cid for cid, _tab in LIBRARY_ONLY_CARDS)
 VFT_JS = FP / "js" / "virtual-venue.js"
 VFT_PAGES = (
     FP / "virtual-field-trip" / "index.html",
@@ -58,6 +68,26 @@ OUTBOUND_CAM = (
 )
 
 HREF_RE = re.compile(r"""\bhref\s*=\s*(['"])(.*?)\1""", re.I)
+WATCH_TAG_RE = re.compile(
+    r'<a[^>]+class="[^"]*(?:card-watch-live|card-page-photo-link)[^"]*"[^>]*>',
+    re.I,
+)
+HABITAT_RE = re.compile(r"#habitat=([^&\"'\s]+)")
+VDIR = FP / "data" / "virtual-venues"
+
+
+def _tour_habitat_ids() -> set[str]:
+    ids: set[str] = set()
+    for name in ("virtual-zoo.json", "virtual-aquarium.json"):
+        data = json.loads((VDIR / name).read_text(encoding="utf-8"))
+        for h in data.get("habitats") or []:
+            hid = str(h.get("id") or "").strip()
+            cid = str(h.get("cardId") or "").strip()
+            if hid:
+                ids.add(hid)
+            if cid:
+                ids.add(cid)
+    return ids
 
 
 def _main(html: str) -> str:
@@ -94,28 +124,53 @@ class CardWatchLiveTests(unittest.TestCase):
         self.assertIn("Watch Live", jelly)
         self.assertNotIn("montereybayaquarium.org", _main(jelly))
 
-    def test_library_only_animals_get_same_origin_watch_live(self):
+    def test_library_only_animals_hide_watch_live(self):
         vft = load_vft_by_card()
         for cid, tab in LIBRARY_ONLY_CARDS:
             rec = vft[cid]
-            self.assertTrue(vft_has_inpage_media(rec), cid)
             self.assertTrue(rec.get("library_only"), cid)
+            self.assertFalse(vft_can_watch_live(rec), cid)
             html = (FP / "cards" / cid / "index.html").read_text(encoding="utf-8")
             main = _main(html)
-            watch = _watch(html)
-            self.assertIn(CTA_WATCH_LIVE, watch, cid)
-            self.assertIn('class="btn btn-primary card-watch-live"', watch, cid)
+            self.assertNotIn("card-watch-live", main, cid)
+            self.assertNotIn(CTA_WATCH_LIVE, main, cid)
+            self.assertNotIn('class="seo-watch-row"', main, cid)
+            self.assertNotIn("card-page-photo-link", main, cid)
+            for host in OUTBOUND_CAM:
+                self.assertNotIn(host, main, cid)
+            actions = main.split('class="card-page-actions"', 1)[1]
+            self.assertNotIn("card-watch-live", actions, cid)
             if tab == "zoo":
                 href = f"/field-pack/virtual-zoo/?from=card#habitat={cid}"
             else:
                 href = f"/field-pack/virtual-field-trip/?tab=aquarium&from=card#habitat={cid}"
-            self.assertIn(href.replace("&", "&amp;"), watch, cid)
-            self.assertNotIn('target="_blank"', watch, cid)
-            for host in OUTBOUND_CAM:
-                self.assertNotIn(host, main, cid)
-            actions = main.split('class="card-page-actions"', 1)[1]
-            self.assertIn("card-watch-live", actions, cid)
-            self.assertIn(href, actions, cid)
+            self.assertNotIn(href, actions, cid)
+            self.assertNotIn(f"#habitat={cid}", main, cid)
+
+    def test_watch_live_hrefs_use_real_zoo_or_aquarium_habitats(self):
+        """ParentTest: no card-watch-live / hero link to a missing VFT habitat."""
+        real = _tour_habitat_ids()
+        self.assertNotIn("manta-ray", real)
+        self.assertIn("stingray", real)
+        dead: list[str] = []
+        for path in sorted((FP / "cards").glob("*/index.html")):
+            html = path.read_text(encoding="utf-8")
+            if '<main class="card-page">' not in html:
+                continue
+            main = _main(html)
+            for tag in WATCH_TAG_RE.findall(main):
+                href_m = HREF_RE.search(tag)
+                if not href_m:
+                    continue
+                href = unescape(href_m.group(2))
+                hid_m = HABITAT_RE.search(href)
+                if not hid_m:
+                    dead.append(f"{path.parent.name}: {href} (no habitat)")
+                    continue
+                hid = hid_m.group(1)
+                if hid not in real:
+                    dead.append(f"{path.parent.name}: #{hid} not in zoo/aquarium habitats")
+        self.assertEqual(dead, [])
 
     def test_missing_habitat_hides_watch_live(self):
         vft = load_vft_by_card()
@@ -225,7 +280,7 @@ class CardWatchLiveTests(unittest.TestCase):
             self.assertIn("virtual-venue.css?v=57", html)
 
     def test_card_watch_hrefs_are_internal(self):
-        for path in (LION, GIRAFFE, JELLY, KOALA, CHEETAH):
+        for path in (LION, GIRAFFE, JELLY):
             html = path.read_text(encoding="utf-8")
             watch = _watch(html)
             hrefs = HREF_RE.findall(watch)

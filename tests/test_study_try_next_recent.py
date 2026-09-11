@@ -79,6 +79,28 @@ eq(FPStudyPickTryNextIds("whale-shark", ["whale-shark"], catalog, 3),
   "whale-shark stays sealife");
 const whale = FPStudyPickTryNextIds("whale-shark", ["whale-shark"], catalog, 3);
 if (whale.includes("african-lion")) fail("whale-shark must not recommend lion");
+eq(FPStudyPickTryNextIds("stingray", ["stingray"], catalog, 3),
+  ["manta-ray", "seahorse", "clownfish"],
+  "stingray first visit stays sealife");
+const stingAfterLion = FPStudyPickTryNextIds(
+  "stingray",
+  ["african-lion", "stingray"],
+  catalog,
+  3
+);
+eq(stingAfterLion, ["manta-ray", "seahorse", "clownfish"], "stingray after lion still sea");
+if (stingAfterLion.includes("african-lion")) fail("stingray must never recommend lion");
+eq(FPStudyPickTryNextIds("starfish", ["starfish"], catalog, 3),
+  ["sea-turtle", "octopus", "clownfish"],
+  "starfish first visit stays sealife");
+const starAfterLion = FPStudyPickTryNextIds(
+  "starfish",
+  ["african-lion", "starfish"],
+  catalog,
+  3
+);
+eq(starAfterLion, ["sea-turtle", "octopus", "clownfish"], "starfish after lion still sea");
+if (starAfterLion.includes("african-lion")) fail("starfish must never recommend lion");
 const sharkSea = FPStudyPickTryNextIds("shark", ["shark"], catalog, 3);
 if (sharkSea.includes("african-lion") || sharkSea.includes("african-penguin")) {
   fail("shark try-next must stay sealife, got " + JSON.stringify(sharkSea));
@@ -124,8 +146,10 @@ class StudyTryNextRecentTests(unittest.TestCase):
         self.assertEqual(catalog["titles"]["african-lion"], "African lion")
         self.assertEqual(catalog["titles"]["galapagos-tortoise"], "Galápagos tortoise")
         self.assertEqual(catalog["hubs"]["whale-shark"], "sealife")
+        self.assertEqual(catalog["hubs"]["stingray"], "sealife")
         self.assertEqual(catalog["hubs"]["african-lion"], "wildlife")
         self.assertEqual(study_try_next_hub("whale-shark"), "sealife")
+        self.assertEqual(study_try_next_hub("stingray"), "sealife")
         self.assertEqual(study_try_next_hub("polar-bear"), "wildlife")
 
         data = STUDY_DATA_JS.read_text(encoding="utf-8")
@@ -162,6 +186,22 @@ class StudyTryNextRecentTests(unittest.TestCase):
         self.assertEqual(cheetah[0], "african-lion")
         self.assertEqual(len(cheetah), 3)
         self.assertNotIn("cheetah", cheetah)
+
+        stingray = study_try_next_ids("stingray")
+        self.assertEqual(stingray, ["manta-ray", "seahorse", "clownfish"])
+        sting_after_lion = study_try_next_ids(
+            "stingray", exclude=["african-lion", "stingray"]
+        )
+        self.assertEqual(sting_after_lion, ["manta-ray", "seahorse", "clownfish"])
+        self.assertNotIn("african-lion", sting_after_lion)
+
+        starfish = study_try_next_ids("starfish")
+        self.assertEqual(starfish, ["sea-turtle", "octopus", "clownfish"])
+        star_after_lion = study_try_next_ids(
+            "starfish", exclude=["african-lion", "starfish"]
+        )
+        self.assertEqual(star_after_lion, ["sea-turtle", "octopus", "clownfish"])
+        self.assertNotIn("african-lion", star_after_lion)
 
         almost_all = [cid for cid in study_card_ids() if cid != "shark"]
         filled = study_try_next_ids("shark", exclude=almost_all)
@@ -200,7 +240,7 @@ class StudyTryNextRecentTests(unittest.TestCase):
         self.assertIn(f'STUDY_CARD_JS_VER = "{STUDY_CARD_JS_VER}"', seo)
         self.assertIn(f'STUDY_CARDS_DATA_JS_VER = "{STUDY_CARDS_DATA_JS_VER}"', seo)
         self.assertEqual(STUDY_CARD_JS_VER, "10")
-        self.assertEqual(STUDY_CARDS_DATA_JS_VER, "6")
+        self.assertEqual(STUDY_CARDS_DATA_JS_VER, "7")
 
     def test_js_helper_runtime_matches_python(self):
         node = shutil.which("node")

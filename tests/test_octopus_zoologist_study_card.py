@@ -431,7 +431,7 @@ class OctopusZoologistStudyCardTests(unittest.TestCase):
         self.assertIn('data-study-pick="zoologist"', html)
         self.assertIn('data-study-pick="hard"', html)
         self.assertIn("study-card.js?v=10", html)
-        self.assertIn("study-cards-data.js?v=6", html)
+        self.assertIn("study-cards-data.js?v=7", html)
         print_tpl = html.split('id="study-print-template">', 1)[1].split("</template>", 1)[0]
         self.assertIn("Junior Ranger", print_tpl)
         self.assertIn("Learn first", print_tpl)

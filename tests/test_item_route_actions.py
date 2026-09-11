@@ -236,6 +236,12 @@ class ItemRouteActionTests(unittest.TestCase):
             "kids.nationalgeographic.com/animals/fish/facts/moray-eel",
             "kids.nationalgeographic.com/animals/fish/facts/ocean-sunfish",
             "kids.nationalgeographic.com/animals/fish/facts/leafy-sea-dragon",
+            "kids.nationalgeographic.com/animals/birds/facts/african-penguin",
+            "kids.nationalgeographic.com/animals/mammals/facts/asian-small-clawed-otter",
+            "kids.nationalgeographic.com/animals/invertebrates/facts/crab",
+            "kids.nationalgeographic.com/animals/invertebrates/facts/cuttlefish",
+            "kids.nationalgeographic.com/animals/mammals/facts/elk",
+            "kids.nationalgeographic.com/nature/article/rain-forest",
         )
         hits = []
         for row in self.routes:
@@ -249,6 +255,56 @@ class ItemRouteActionTests(unittest.TestCase):
             if slug in catalog:
                 hits.append(f"catalog.js still has {slug}")
         self.assertEqual(hits, [], "\n".join(hits[:20]))
+
+    def test_remaining_layer_a_photos_use_live_or_hide(self):
+        """Layer A leftovers: penguin/crab/cuttlefish/elk live; otter Photos hidden."""
+        catalog = CATALOG_JS.read_text(encoding="utf-8")
+        penguin = "https://kids.nationalgeographic.com/animals/birds/topic/penguin-facts"
+        crab = (
+            "https://kids.nationalgeographic.com/animals/invertebrates/facts/"
+            "christmas-island-red-crab"
+        )
+        cuttle = "https://www.nationalgeographic.com/animals/invertebrates/facts/cuttlefish"
+        elk = "https://www.nationalgeographic.com/animals/mammals/facts/elk"
+        self.assertIn(f'pictures: "{penguin}"', catalog)
+        self.assertIn(f'pictures: "{crab}"', catalog)
+        self.assertIn(f'pictures: "{cuttle}"', catalog)
+        self.assertIn(f'pictures: "{elk}"', catalog)
+
+        penguin_card = (FP / "cards" / "african-penguin" / "index.html").read_text(
+            encoding="utf-8"
+        )
+        crab_card = (FP / "cards" / "crab" / "index.html").read_text(encoding="utf-8")
+        cuttle_card = (FP / "cards" / "cuttlefish" / "index.html").read_text(
+            encoding="utf-8"
+        )
+        otter_card = (FP / "cards" / "asian-small-clawed-otter" / "index.html").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn(f'href="{penguin}"', penguin_card)
+        self.assertIn(f'href="{crab}"', crab_card)
+        self.assertIn(f'href="{cuttle}"', cuttle_card)
+        otter_main = otter_card.split('<main class="card-page">', 1)[1].split("</main>", 1)[0]
+        self.assertNotIn(">Photos</a>", otter_main)
+
+        expect = {
+            "african-penguin": penguin,
+            "crab": crab,
+            "cuttlefish": cuttle,
+            "elk": elk,
+        }
+        for item_id, url in expect.items():
+            routes = [r for r in self.routes if r["itemId"] == item_id]
+            self.assertGreater(len(routes), 0, item_id)
+            for row in routes:
+                photos = next(a for a in row["actions"] if a["name"] == "Photos")
+                self.assertFalse(photos["hidden"], row["route"])
+                self.assertEqual(photos["href"], url, row["route"])
+        otter_routes = [r for r in self.routes if r["itemId"] == "asian-small-clawed-otter"]
+        self.assertGreater(len(otter_routes), 0)
+        for row in otter_routes:
+            photos = next(a for a in row["actions"] if a["name"] == "Photos")
+            self.assertTrue(photos["hidden"], row["route"])
 
 
 if __name__ == "__main__":
