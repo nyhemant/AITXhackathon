@@ -90,6 +90,17 @@ const stingAfterLion = FPStudyPickTryNextIds(
 );
 eq(stingAfterLion, ["manta-ray", "seahorse", "clownfish"], "stingray after lion still sea");
 if (stingAfterLion.includes("african-lion")) fail("stingray must never recommend lion");
+eq(FPStudyPickTryNextIds("starfish", ["starfish"], catalog, 3),
+  ["sea-turtle", "octopus", "clownfish"],
+  "starfish first visit stays sealife");
+const starAfterLion = FPStudyPickTryNextIds(
+  "starfish",
+  ["african-lion", "starfish"],
+  catalog,
+  3
+);
+eq(starAfterLion, ["sea-turtle", "octopus", "clownfish"], "starfish after lion still sea");
+if (starAfterLion.includes("african-lion")) fail("starfish must never recommend lion");
 const sharkSea = FPStudyPickTryNextIds("shark", ["shark"], catalog, 3);
 if (sharkSea.includes("african-lion") || sharkSea.includes("african-penguin")) {
   fail("shark try-next must stay sealife, got " + JSON.stringify(sharkSea));
@@ -183,6 +194,14 @@ class StudyTryNextRecentTests(unittest.TestCase):
         )
         self.assertEqual(sting_after_lion, ["manta-ray", "seahorse", "clownfish"])
         self.assertNotIn("african-lion", sting_after_lion)
+
+        starfish = study_try_next_ids("starfish")
+        self.assertEqual(starfish, ["sea-turtle", "octopus", "clownfish"])
+        star_after_lion = study_try_next_ids(
+            "starfish", exclude=["african-lion", "starfish"]
+        )
+        self.assertEqual(star_after_lion, ["sea-turtle", "octopus", "clownfish"])
+        self.assertNotIn("african-lion", star_after_lion)
 
         almost_all = [cid for cid in study_card_ids() if cid != "shark"]
         filled = study_try_next_ids("shark", exclude=almost_all)

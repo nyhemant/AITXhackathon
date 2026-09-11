@@ -15,6 +15,10 @@ from generate_bdo_seo import (  # noqa: E402
     load_vft_by_card,
     vft_can_watch_live,
 )
+from rewrite_card_try_next import (  # noqa: E402
+    check_grids,
+    sealife_ids,
+)
 from study_cards import (  # noqa: E402
     STUDY_CARDS,
     strip_jr_soft_choice_label,
@@ -108,12 +112,14 @@ class LayerALeftoversTests(unittest.TestCase):
 
     def test_sealife_baked_try_next_stays_in_hub(self):
         kinds = load_card_kinds()
-        sealife = [
-            cid
-            for cid in STUDY_CARDS
-            if study_try_next_hub(cid, kinds) == "sealife"
-        ]
-        self.assertTrue(sealife)
+        tsv_sea = [cid for cid, row in kinds.items() if row.get("hub") == "sealife"]
+        sealife = sealife_ids(kinds)
+        self.assertEqual(sorted(sealife), sorted(tsv_sea))
+        self.assertGreaterEqual(len(sealife), 17)
+        self.assertIn("stingray", sealife)
+        self.assertIn("starfish", sealife)
+        self.assertIn("manta-ray", sealife)
+        self.assertIn("whale-shark", sealife)
         for cid in sealife:
             want = study_try_next_ids(cid)
             html = (FP / "cards" / cid / "index.html").read_text(encoding="utf-8")
@@ -123,14 +129,22 @@ class LayerALeftoversTests(unittest.TestCase):
                 self.assertNotIn("african-lion", baked)
                 for nxt in baked:
                     self.assertEqual(study_try_next_hub(nxt, kinds), "sealife", nxt)
+        self.assertEqual(check_grids(), [])
 
-    def test_stingray_baked_try_next_never_offers_african_lion(self):
-        """ParentTest: stingray first paint must stay sea — JS must not be required."""
-        html = (FP / "cards" / "stingray" / "index.html").read_text(encoding="utf-8")
-        baked = _try_next_ids(html)
-        self.assertEqual(baked, ["manta-ray", "seahorse", "clownfish"])
-        self.assertNotIn("african-lion", baked)
-        self.assertNotIn("/cards/african-lion/", html.split("card-try-next-grid", 1)[1].split("</nav>", 1)[0])
+    def test_stingray_and_starfish_baked_try_next_never_offer_african_lion(self):
+        """ParentTest: stingray + starfish first paint must stay sea — JS not required."""
+        cases = {
+            "stingray": ["manta-ray", "seahorse", "clownfish"],
+            "starfish": ["sea-turtle", "octopus", "clownfish"],
+        }
+        for cid, want in cases.items():
+            html = (FP / "cards" / cid / "index.html").read_text(encoding="utf-8")
+            baked = _try_next_ids(html)
+            with self.subTest(card=cid):
+                self.assertEqual(baked, want)
+                self.assertNotIn("african-lion", baked)
+                grid = html.split("card-try-next-grid", 1)[1].split("</nav>", 1)[0]
+                self.assertNotIn("/cards/african-lion/", grid)
 
     def test_library_only_cards_hide_watch_live(self):
         vft = load_vft_by_card()
