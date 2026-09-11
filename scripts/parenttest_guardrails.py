@@ -58,27 +58,21 @@ TRY_NEXT_CROSS_KINGDOM_ALLOW: tuple[tuple[str, str], ...] = ()
 WATCH_LIVE_WITHOUT_HABITAT_ALLOW: tuple[tuple[str, str], ...] = ()
 EMPTY_PICTURES_ALLOW: tuple[tuple[str, str], ...] = ()
 
-# Film-library overlays that already have video/cam, but baked cards still hide
-# Watch Live (PR #207). A separate PR is restoring those CTAs — do not block
-# this suite on that restore. Drop an id here when its card gains Watch Live.
-# Reason: CTA restore is a sibling PR; aquarium/zoo film libraries already have media.
+# Zoo film-library overlays that already have video/cam, but baked cards still
+# hide Watch Live. Aquarium overlays (manta-ray, whale-shark, kelp-forest,
+# cuttlefish, puffin, sea-otter) were restored in PR #212 — do not re-add them.
+# Drop an id here when its card gains Watch Live.
 LIBRARY_WATCH_LIVE_PENDING_RESTORE = frozenset(
     {
         "cheetah",
         "chimpanzee",
-        "cuttlefish",
         "galapagos-tortoise",
-        "kelp-forest",
         "koala",
-        "manta-ray",
         "orangutan",
         "polar-bear",
-        "puffin",
         "red-panda",
         "ring-tailed-lemur",
-        "sea-otter",
         "two-toed-sloth",
-        "whale-shark",
         "zebra",
     }
 )

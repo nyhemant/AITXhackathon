@@ -117,10 +117,15 @@ class KingdomMappingTests(unittest.TestCase):
         self.assertEqual(WATCH_LIVE_WITHOUT_HABITAT_ALLOW, ())
         self.assertEqual(EMPTY_PICTURES_ALLOW, ())
         self.assertEqual(CANONICAL_SHORT_SLUGS["giraffe"], "reticulated-giraffe")
-        # Pending restore is one documented set, not a growing exception list.
-        self.assertIn("manta-ray", LIBRARY_WATCH_LIVE_PENDING_RESTORE)
-        self.assertIn("whale-shark", LIBRARY_WATCH_LIVE_PENDING_RESTORE)
-        self.assertLessEqual(len(LIBRARY_WATCH_LIVE_PENDING_RESTORE), 16)
+        # Aquarium overlays restored in PR #212 — CI must enforce their Watch Live.
+        self.assertNotIn("manta-ray", LIBRARY_WATCH_LIVE_PENDING_RESTORE)
+        self.assertNotIn("whale-shark", LIBRARY_WATCH_LIVE_PENDING_RESTORE)
+        self.assertNotIn("kelp-forest", LIBRARY_WATCH_LIVE_PENDING_RESTORE)
+        self.assertNotIn("cuttlefish", LIBRARY_WATCH_LIVE_PENDING_RESTORE)
+        self.assertNotIn("puffin", LIBRARY_WATCH_LIVE_PENDING_RESTORE)
+        self.assertNotIn("sea-otter", LIBRARY_WATCH_LIVE_PENDING_RESTORE)
+        # Zoo overlays still pending; do not grow this list.
+        self.assertLessEqual(len(LIBRARY_WATCH_LIVE_PENDING_RESTORE), 10)
 
 
 class TryNextKingdomTests(unittest.TestCase):
@@ -181,7 +186,6 @@ class WatchLiveHabitatTests(unittest.TestCase):
                 "manta-ray": NO_WATCH_LIVE_HTML,
                 "whale-shark": NO_WATCH_LIVE_HTML,
             },
-            pending=set(),
         )
         self.assertTrue(any("manta-ray" in row for row in issues), issues)
         self.assertTrue(any("whale-shark" in row for row in issues), issues)
