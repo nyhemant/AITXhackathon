@@ -19394,7 +19394,7 @@ STUDY_CARDS: dict[str, dict] = {
                         "title": "Soft skeleton",
                         "stem": "What is a stingray’s skeleton mostly made of?",
                         "choices": [
-                            "Hard bone like a cow’s leg",
+                            "Solid bone like a cow’s leg",
                             "Cartilage — tough and flexible, like a shark’s skeleton (soft)",
                             "Only sand packed into a tube",
                         ],
