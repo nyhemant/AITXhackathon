@@ -184,7 +184,7 @@ class ElkEasyStudyCardTests(unittest.TestCase):
         self.assertIsNotNone(study_deck_for("elk", "zoologist"))
         self.assertIsNotNone(study_deck_for("whale-shark"))
         self.assertIsNotNone(study_deck_for("whale-shark", "hard"))
-        self.assertIsNone(study_deck_for("whale-shark", "zoologist"))
+        self.assertIsNotNone(study_deck_for("whale-shark", "zoologist"))
         deck = study_deck_for("elk")
         self.assertIsNotNone(deck)
         self.assertEqual(deck["id"], "elk")
@@ -430,7 +430,7 @@ class ElkEasyStudyCardTests(unittest.TestCase):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
         self.assertIn("elk", payload)
         self.assertIn("whale-shark", payload)
-        self.assertEqual(set(payload["whale-shark"]["levels"]), {"easy", "hard"})
+        self.assertEqual(set(payload["whale-shark"]["levels"]), {"easy", "hard", "zoologist"})
         self.assertIn("american-bison", payload)
         elk = payload["elk"]
         self.assertEqual(elk["id"], "elk")

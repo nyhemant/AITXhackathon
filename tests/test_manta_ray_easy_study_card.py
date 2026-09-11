@@ -214,7 +214,7 @@ class MantaRayEasyStudyCardTests(unittest.TestCase):
         self.assertIsNotNone(study_deck_for("manta-ray", "zoologist"))
         self.assertIsNotNone(study_deck_for("whale-shark"))
         self.assertIsNotNone(study_deck_for("whale-shark", "hard"))
-        self.assertIsNone(study_deck_for("whale-shark", "zoologist"))
+        self.assertIsNotNone(study_deck_for("whale-shark", "zoologist"))
         deck = study_deck_for("manta-ray")
         self.assertIsNotNone(deck)
         self.assertEqual(deck["id"], "manta-ray")
@@ -480,7 +480,7 @@ class MantaRayEasyStudyCardTests(unittest.TestCase):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
         self.assertIn("manta-ray", payload)
         self.assertIn("whale-shark", payload)
-        self.assertEqual(set(payload["whale-shark"]["levels"]), {"easy", "hard"})
+        self.assertEqual(set(payload["whale-shark"]["levels"]), {"easy", "hard", "zoologist"})
         self.assertIn("kelp-forest", payload)
         self.assertIn("jellyfish", payload)
         manta = payload["manta-ray"]

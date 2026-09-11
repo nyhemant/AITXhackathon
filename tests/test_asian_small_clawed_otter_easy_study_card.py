@@ -445,7 +445,7 @@ class AsianSmallClawedOtterEasyStudyCardTests(unittest.TestCase):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
         self.assertIn("asian-small-clawed-otter", payload)
         self.assertIn("whale-shark", payload)
-        self.assertEqual(set(payload["whale-shark"]["levels"]), {"easy", "hard"})
+        self.assertEqual(set(payload["whale-shark"]["levels"]), {"easy", "hard", "zoologist"})
         self.assertIn("shark", payload)
         self.assertIn("warthog", payload)
         otter = payload["asian-small-clawed-otter"]

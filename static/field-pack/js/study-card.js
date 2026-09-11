@@ -134,7 +134,13 @@ if (typeof window !== "undefined") {
       pack = raw.levels.easy;
       used = "easy";
     } else {
-      return null;
+      const shipped = shippedLevels(id);
+      if (shipped.length && raw.levels && raw.levels[shipped[0]]) {
+        pack = raw.levels[shipped[0]];
+        used = shipped[0];
+      } else {
+        return null;
+      }
     }
     const questions = pack.questions || [];
     if (questions.length !== 10 && questions.length !== 5) return null;
@@ -525,7 +531,7 @@ if (typeof window !== "undefined") {
     const id = root.getAttribute("data-study-id") || "";
     const wanted = levelFromQuery() || root.getAttribute("data-study-level") || "easy";
     const available = shippedLevels(id);
-    const level = available.includes(wanted) ? wanted : "easy";
+    const level = available.includes(wanted) ? wanted : available[0] || "easy";
     const deck = flattenDeck(id, level);
     if (deck && (deck.level !== (root.getAttribute("data-study-level") || "easy") || levelFromQuery() === "hard" || levelFromQuery() === "zoologist")) {
       applyDeck(root, deck);

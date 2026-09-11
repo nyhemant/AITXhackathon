@@ -165,9 +165,9 @@ class StudyCardAnswerKeyTests(unittest.TestCase):
             TRAFFIC_IDS,
         )
         self.assertIn("whale-shark", study_card_ids())
-        self.assertEqual(shipped_levels_for("whale-shark"), ("easy", "hard"))
+        self.assertEqual(shipped_levels_for("whale-shark"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("whale-shark", "hard"))
-        self.assertIsNone(study_deck_for("whale-shark", "zoologist"))
+        self.assertIsNotNone(study_deck_for("whale-shark", "zoologist"))
         self.assertEqual(shipped_levels_for("cheetah"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("cheetah", "zoologist"))
         self.assertEqual(shipped_levels_for("red-panda"), ("easy", "hard", "zoologist"))

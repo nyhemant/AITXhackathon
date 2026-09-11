@@ -2149,9 +2149,9 @@ strikes), seasonal feeding aggregations
 many rows of tiny teeth used with filter pads
 (not a great-white bite; row counts soft).
 Park Ranger is answer-light (empty teach).
-Do not redo JR themes. Do not add Zoologist
-this pass. Keep kid-friendly. Do not invent
-photos.
+Do not redo JR themes. Zoologist ships as a
+separate signed 5-question pack. Keep kid-friendly.
+Do not invent photos.
 
 Slot numbers stay 1–10 on full Junior Ranger decks.
 Stingray Park Ranger and Zoologist are 5-question
@@ -2162,6 +2162,31 @@ redo of Easy or of each other). Internal keys
 stay easy / hard / zoologist. Visible copy uses
 LEVEL_DISPLAY_NAMES only — no age badges,
 no plain Easy / Hard labels.
+
+Facts for whale-shark Zoologist are
+Wikipedia-backed: https://en.wikipedia.org/wiki/Whale_shark
+Five signed questions (letter mix A, B, A,
+B, C). Teach is empty. Do not edit Junior
+Ranger or Park Ranger decks here. Taxonomy: living
+Rhincodon typus in Chondrichthyes /
+Elasmobranchii as a carpet shark; an
+extinct Rhincodon ferriolensis is noted
+from the Miocene of Europe (soft on exact
+site details). Life history: late maturity
+and a very long life (decades; some
+projections over a century — exact years
+soft). Body: dermal denticles, including
+eyeball denticles plus the ability to
+retract the eyes (soft on filter-surface
+details). Science: unique spot/stripe
+patterns feed photo-ID libraries (soft on
+database names). Threats: targeted
+fishing, bycatch, and ship collisions as
+drivers of a large population drop (IUCN
+Endangered is a snapshot — soft on exact
+percent). Do not invent alternate
+questions. Keep kid-friendly. Do not
+invent photos.
 """
 
 from __future__ import annotations
@@ -2246,6 +2271,7 @@ SIGNED_LETTER_MIX = {
     ("stingray", "zoologist"): ("A", "B", "C", "A", "A"),
     ("whale-shark", "easy"): ("B", "A", "C", "A", "B"),
     ("whale-shark", "hard"): ("A", "B", "C", "A", "A"),
+    ("whale-shark", "zoologist"): ("A", "B", "A", "B", "C"),
 }
 
 
@@ -2324,7 +2350,7 @@ LEVEL_DISPLAY_NAMES = {
 # ship Junior Ranger + Park Ranger + Zoologist.
 # Manta ray, octopus, sea turtle, seahorse, starfish, and
 # stingray ship Junior Ranger + Park Ranger + Zoologist.
-# Whale shark ships Junior Ranger + Park Ranger (signed 5-question packs).
+# Whale shark ships Junior Ranger + Park Ranger + Zoologist.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -2904,6 +2930,16 @@ PUSH_FURTHER_STINGRAY_ZOOLOGIST = (
     "Mantas sit in this ray group on Wikipedia. Why can a separate card still treat them alone?",
     "Male teeth can get pointier in mating season. Why might that shape change come and go?",
     "Family lists stay soft. Why not lock one exact count for every stingray?",
+)
+TALK_ABOUT_WHALE_SHARK_ZOOLOGIST = (
+    "Scientists put the living whale shark with carpet sharks. Why mention an extinct cousin too?",
+    "Whale sharks grow slowly and live a long time. Why keep the exact years soft?",
+    "Skin teeth cover more than the mouth. Why might denticles on the eyes help?",
+)
+PUSH_FURTHER_WHALE_SHARK_ZOOLOGIST = (
+    "Spot patterns can name one animal. Why might photos beat tagging every shark?",
+    "Boats and nets still hurt whale sharks. Why treat the Endangered letter as a snapshot?",
+    "Family-tree site details stay soft. Why not lock one fossil beach forever?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -20444,6 +20480,78 @@ STUDY_CARDS: dict[str, dict] = {
                     },
                 ],
             },
+            "zoologist": {
+                "teach": [],
+                "talk_about": list(TALK_ABOUT_WHALE_SHARK_ZOOLOGIST),
+                "push_further": list(PUSH_FURTHER_WHALE_SHARK_ZOOLOGIST),
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "elasmobranchii-fossil-soft",
+                        "title": "Taxonomy",
+                        "stem": "How do scientists place the living whale shark, and what extinct relative does Wikipedia note?",
+                        "choices": [
+                            "Class Chondrichthyes / subclass Elasmobranchii — a carpet shark; an extinct Rhincodon (R. ferriolensis) is noted from the Miocene of Europe (soft)",
+                            "A bony bony-fish group with no cartilaginous cousins",
+                            "A mammal clade with whales only",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia places Rhincodon typus in Chondrichthyes and Elasmobranchii as a carpet shark. It also notes an extinct Rhincodon ferriolensis from the Late Burdigalian (Miocene) of Europe. Soft on exact site details.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "longevity-maturity-soft",
+                        "title": "Longevity",
+                        "stem": "What is unusual about whale-shark life history for a fish, if we keep numbers soft?",
+                        "choices": [
+                            "It matures in a few weeks and lives only one summer",
+                            "Late maturity and a very long life — decades to maturity and lifespan that may reach many decades (exact years soft)",
+                            "It never grows after birth",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia and linked research describe slow growth, late maturity, and long life (estimates often decades; some projections over a century). Exact year counts stay soft because methods still refine ages.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "denticles-soft",
+                        "title": "Denticles",
+                        "stem": "What tooth-like skin structures do whale sharks have beyond the tiny mouth teeth?",
+                        "choices": [
+                            "Dermal denticles (placoid scales) on the body — and Wikipedia notes denticles on the eyeballs that help protect the eyes (soft)",
+                            "Feathers that molt each spring",
+                            "No scales of any kind — only slime",
+                        ],
+                        "correct": "A",
+                        "why": "Like other sharks, whale sharks have dermal denticles. Wikipedia highlights eyeball denticles (structured differently from body denticles) plus the ability to retract the eyes for protection. Soft on filter-surface details.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "photo-id-soft",
+                        "title": "Photo-ID",
+                        "stem": "How do researchers tell one whale shark from another without tagging every animal?",
+                        "choices": [
+                            "Only by guessing from swimming speed",
+                            "Unique spot/stripe patterns — photos of a standard flank area feed global ID libraries (soft)",
+                            "By painting numbers on the dorsal fin in the wild",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia notes each individual’s pattern is unique. Researchers use photo-identification of spot patterns (often a flank region near the gills/pectoral) to track re-sightings. Soft on database names.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "ship-strike-bycatch-soft",
+                        "title": "Threats",
+                        "stem": "Beyond the IUCN Endangered letter, what human pressures does Wikipedia emphasize for whale sharks?",
+                        "choices": [
+                            "Only too much plankton in the sea",
+                            "Only quieter oceans with no boats",
+                            "Targeted fishing, bycatch in other fisheries, and collisions with large ships — drivers of a large population drop (soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia ties the Endangered listing to a large decline over recent decades from targeted fishing, bycatch, and ship collisions. Soft on exact percent — treat as a snapshot.",
+                    },
+                ],
+            },
         },
     },
 
@@ -20486,6 +20594,17 @@ def _prompt_lines(raw: dict, pack: dict, key: str) -> list[str]:
     else:
         src = raw.get(key) or []
     return [str(line).strip() for line in src if str(line).strip()]
+
+
+def default_study_deck_for(card_id: str) -> dict | None:
+    """Easy when that level ships; otherwise the first shipped level."""
+    deck = study_deck_for(card_id, DEFAULT_LEVEL)
+    if deck:
+        return deck
+    shipped = shipped_levels_for(card_id)
+    if not shipped:
+        return None
+    return study_deck_for(card_id, shipped[0])
 
 
 def study_deck_for(card_id: str, level: str = DEFAULT_LEVEL) -> dict | None:
@@ -20746,9 +20865,14 @@ def study_try_next_html(card_id: str, *, n: int = 3) -> str:
 
 
 def _level_picker_html(card_id: str, current: str, *, placement: str = "top") -> str:
-    """Junior Ranger / Park Ranger / Zoologist segment when 2+ levels ship."""
+    """Junior Ranger / Park Ranger / Zoologist segment when 2+ levels ship.
+
+    A Zoologist-only card still gets the picker so the Zoologist button appears.
+    """
     levels = shipped_levels_for(card_id)
-    if len(levels) < 2:
+    if len(levels) < 1:
+        return ""
+    if len(levels) < 2 and "zoologist" not in levels:
         label = _esc(level_display_name(current))
         return f'<p class="study-level-badge">{label}</p>'
     buttons: list[str] = []
