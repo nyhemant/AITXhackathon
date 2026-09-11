@@ -155,6 +155,12 @@ class IaPhaseATests(unittest.TestCase):
         self.assertIn('href="/start/"', about)
         self.assertIn('href="/field-pack/cards/"', about)
         self.assertIn('href="/field-pack/"', about)
+        self.assertIn(">Cards</a>", about)
+        self.assertIn(">Watch Live</a>", about)
+        self.assertIn(">Places</a>", about)
+        self.assertIn('id="experimental"', about)
+        self.assertIn("Museum &amp; science cards", about)
+        self.assertIn('href="/field-pack/cards/#cards-attractions"', about)
         self.assertIn('href="/field-pack/print/"', cards)
         self.assertNotIn("/field-pack/virtual-zoo/", cards)
 
@@ -164,7 +170,9 @@ class IaPhaseATests(unittest.TestCase):
             self.assertNotIn('href="/dinner"', html, path.name)
             self.assertNotIn("Dinner<small>", html, path.name)
         about = ABOUT.read_text(encoding="utf-8")
-        self.assertIn('href="/dinner"', about)
+        intro = about.split('id="experimental"', 1)[0]
+        self.assertNotIn('href="/dinner"', intro)
+        self.assertIn('href="/dinner"', about.split('id="experimental"', 1)[1])
 
     def test_zoo_watch_live_uses_vft_tab(self):
         lion = (FP / "cards" / "african-lion" / "index.html").read_text(encoding="utf-8")

@@ -15,8 +15,9 @@
   var browse = document.getElementById("cards-all-wrap");
   var tryRow = document.getElementById("try-a-card");
   var countEl = document.getElementById("cards-hub-count");
+  var experimental = document.getElementById("cards-attractions");
   var filter = "all";
-  var TOTAL = document.querySelectorAll(".cards-hub-item").length;
+  var TOTAL = document.querySelectorAll(".cards-hub-item:not([data-card-group='attractions'])").length;
 
   function applyHubFilter() {
     var n = q ? (q.value || "").trim().toLowerCase() : "";
@@ -43,6 +44,13 @@
     });
 
     if (browse && (searching || filtering)) browse.open = true;
+    if (experimental) {
+      var expHit = false;
+      experimental.querySelectorAll(".cards-hub-item").forEach(function (li) {
+        if (!li.hidden) expHit = true;
+      });
+      if (searching && expHit) experimental.open = true;
+    }
     if (tryRow) tryRow.hidden = searching || filtering;
 
     if (countEl) {
@@ -75,4 +83,5 @@
   if (browse) browse.addEventListener("toggle", applyHubFilter);
 
   if (q && q.value) applyHubFilter();
+  if (experimental && location.hash === "#cards-attractions") experimental.open = true;
 })();

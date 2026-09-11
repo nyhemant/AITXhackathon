@@ -4572,14 +4572,18 @@ def _card_group_key(card: dict) -> str:
     return hub_section_id(card_kind(card))
 
 
+PRIMARY_HUB_SECTION_IDS = ("wildlife", "sealife", "parks")
+EXPERIMENTAL_HUB_SECTION_IDS = ("attractions",)
+
+
 def _hub_filter_tabs_html(section_ids: list[str]) -> str:
-    """Filter tabs derived from present kind sections — never a hardcoded Wildlife/Parks list."""
+    """Primary filter tabs only — museum/sci attractions are Experimental."""
     buttons = [
         '<button type="button" class="place-type-tab is-active" role="tab" data-card-filter="all" aria-selected="true">All</button>'
     ]
     present = set(section_ids)
     for sid, label, _kind in HUB_SECTIONS:
-        if sid not in present:
+        if sid not in present or sid in EXPERIMENTAL_HUB_SECTION_IDS:
             continue
         buttons.append(
             f'<button type="button" class="place-type-tab" role="tab" data-card-filter="{esc(sid)}" aria-selected="false">{label}</button>'
@@ -4616,7 +4620,13 @@ def write_cards_hub(venues: list[dict]) -> str:
         for sid, label, _kind in HUB_SECTIONS
         if grouped.get(sid)
     ]
-    total = sum(len(s[2]) for s in sections)
+    primary_sections = [s for s in sections if s[0] in PRIMARY_HUB_SECTION_IDS]
+    experimental_sections = [
+        (sid, "Museum & science", items)
+        for sid, _label, items in sections
+        if sid in EXPERIMENTAL_HUB_SECTION_IDS and items
+    ]
+    total = sum(len(s[2]) for s in primary_sections)
 
     def section_html(sid: str, label: str, items: list[dict]) -> str:
         if not items:
@@ -4659,15 +4669,24 @@ def write_cards_hub(venues: list[dict]) -> str:
                 f"</span>"
                 f"</a></li>"
             )
+        sec_id = "cards-attractions-list" if sid == "attractions" else f"cards-{sid}"
         return (
-            f'<section class="cards-hub-section" id="cards-{esc(sid)}" aria-labelledby="h-{esc(sid)}">\n'
+            f'<section class="cards-hub-section" id="{esc(sec_id)}" aria-labelledby="h-{esc(sid)}">\n'
             f'  <h2 id="h-{esc(sid)}">{label} <span class="seo-dir-count">{len(items)}</span></h2>\n'
             f'  <ul class="cards-hub-list">\n    '
             + "\n    ".join(lis)
             + "\n  </ul>\n</section>"
         )
 
-    body_sections = "\n".join(section_html(*s) for s in sections if s[2])
+    body_sections = "\n".join(section_html(*s) for s in primary_sections if s[2])
+    experimental_body = "\n".join(section_html(*s) for s in experimental_sections if s[2])
+    if experimental_body:
+        experimental_body = (
+            '<details class="hub-more cards-experimental" id="cards-attractions">\n'
+            "        <summary>Museum &amp; science cards</summary>\n"
+            f"        {experimental_body}\n"
+            "      </details>"
+        )
     title = CARDS_HUB_TITLE
     desc = CARDS_HUB_DESC
     url = f"{SITE}/field-pack/cards/"
@@ -4789,14 +4808,14 @@ def write_cards_hub(venues: list[dict]) -> str:
         <form class="hero-search-form place-search-wrap silo-place" id="cards-hub-form" role="search" action="/field-pack/cards/" method="get">
           <label class="place-search-label sr-only" for="cards-hub-search" id="cards-search-label">Find a card</label>
           <div class="hero-search-row">
-            <input type="search" id="cards-hub-search" name="q" class="place-search-input hero-place-search-input cards-hub-search" placeholder="Lion, shark, dinosaur…" autocomplete="off" enterkeyhint="search" />
+            <input type="search" id="cards-hub-search" name="q" class="place-search-input hero-place-search-input cards-hub-search" placeholder="Lion, shark, bison…" autocomplete="off" enterkeyhint="search" />
             <button type="submit" class="btn btn-primary hero-search-submit">Find card</button>
           </div>
         </form>
       </div>
     </header>
     <main class="cards-hub" id="cards-hub">
-      {_hub_filter_tabs_html([s[0] for s in sections])}
+      {_hub_filter_tabs_html([s[0] for s in primary_sections])}
       <p class="cards-hub-count" id="cards-hub-count">{total} cards</p>
       <section class="ready-now ready-slim try-card-row" id="try-a-card" aria-labelledby="try-card-heading">
         <h2 id="try-card-heading">Try a card</h2>
@@ -4810,6 +4829,7 @@ def write_cards_hub(venues: list[dict]) -> str:
 {body_sections}
         </div>
       </details>
+      {experimental_body}
     </main>
     <footer class="site-footer site-footer-slim no-print">
       <p>
@@ -4829,7 +4849,7 @@ def write_cards_hub(venues: list[dict]) -> str:
   </div>
   <script src="/shell/shell.js?v=5"></script>
   <script src="/field-pack/js/fp-analytics.js?v=1"></script>
-  <script src="/field-pack/js/cards-explorer.js?v=2"></script>
+  <script src="/field-pack/js/cards-explorer.js?v=3"></script>
 </body>
 </html>
 """
