@@ -36,7 +36,7 @@ from study_cards import (  # noqa: E402
 
 FP = REPO / "static" / "field-pack"
 BEAR = FP / "cards" / "polar-bear" / "index.html"
-OCTOPUS = FP / "cards" / "starfish" / "index.html"
+OCTOPUS = FP / "cards" / "whale-shark" / "index.html"
 FISH = FP / "cards" / "freshwater-fish" / "index.html"
 LION = FP / "cards" / "african-lion" / "index.html"
 STUDY_JSON = FP / "data" / "study-cards.json"

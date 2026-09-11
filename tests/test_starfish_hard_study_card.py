@@ -1,4 +1,4 @@
-"""Seahorse Hard study-card: Park Ranger, no teach, 10 Wikipedia-backed MCQs."""
+"""Starfish Hard study-card: Park Ranger, no teach, 10 Wikipedia-backed MCQs."""
 
 from __future__ import annotations
 
@@ -19,6 +19,7 @@ from study_cards import (  # noqa: E402
     PUSH_FURTHER_OCTOPUS,
     PUSH_FURTHER_SEA_TURTLE,
     PUSH_FURTHER_SEAHORSE,
+    PUSH_FURTHER_STARFISH,
     STUDY_SLOTS,
     TALK_ABOUT_JELLYFISH,
     TALK_ABOUT_KELP_FOREST,
@@ -26,12 +27,14 @@ from study_cards import (  # noqa: E402
     TALK_ABOUT_OCTOPUS,
     TALK_ABOUT_SEA_TURTLE,
     TALK_ABOUT_SEAHORSE,
+    TALK_ABOUT_STARFISH,
     WIKI_JELLYFISH,
     WIKI_KELP_FOREST,
     WIKI_LION,
     WIKI_OCTOPUS,
     WIKI_SEA_TURTLE,
     WIKI_SEAHORSE,
+    WIKI_STARFISH,
     correct_choice_text,
     level_display_name,
     shipped_levels_for,
@@ -44,8 +47,9 @@ from study_cards import (  # noqa: E402
 )
 
 FP = REPO / "static" / "field-pack"
+STARFISH = FP / "cards" / "starfish" / "index.html"
+WHALE_SHARK = FP / "cards" / "whale-shark" / "index.html"
 SEAHORSE = FP / "cards" / "seahorse" / "index.html"
-STINGRAY = FP / "cards" / "whale-shark" / "index.html"
 SEA_TURTLE = FP / "cards" / "sea-turtle" / "index.html"
 OCTOPUS = FP / "cards" / "octopus" / "index.html"
 KELP = FP / "cards" / "kelp-forest" / "index.html"
@@ -57,42 +61,42 @@ STUDY_JS = FP / "js" / "study-card.js"
 PRINT_KIT = FP / "js" / "print-kit.js"
 
 HARD_STEMS = (
-    "What family do seahorses sit in with pipefishes and seadragons, if we keep that tree soft?",
-    "What jobs can a closed brood pouch do besides hold eggs, if we keep that nursery story kid-simple?",
-    "Where do seahorse eggs meet sperm, if we keep that fertilization story soft?",
-    "Why do seahorse pairs dance and greet for days before eggs move, if we keep those dance names soft?",
-    "Do seahorses stay with one mate for life, if we keep that bond story soft?",
-    "Why must a seahorse eat almost constantly, if we keep that gut story soft?",
-    "How can a slow seahorse still ambush a copepod, if we keep that strike story soft?",
-    "Why are seahorses such weak swimmers, if we keep that speed story soft?",
-    "What homes do seahorses need — and what can hurt those places?",
-    "How is the huge dried-seahorse trade handled, if we keep those rules soft?",
+    "What scientific class do sea stars belong to, if we keep the family tree soft?",
+    "What powers a sea star’s tube feet?",
+    "What is the madreporite on a sea star?",
+    "How does one tube foot extend and pull back?",
+    "How do many predatory sea stars eat prey too big to swallow whole?",
+    "Why do scientists call some sea stars “keystone” predators (example: ochre / purple sea star Pisaster)?",
+    "What is special about the tropical crown-of-thorns sea star (Acanthaster)?",
+    "What do most sea stars need to regrow a whole new body after an arm is lost?",
+    "What are pedicellariae on many sea stars?",
+    "Is a sea star’s “face” the colourful top side?",
 )
 
 HARD_IDS = (
-    "syngnathidae-soft",
-    "pouch-nursery-soft",
-    "protected-fertilization-soft",
-    "courtship-dance-soft",
-    "pair-bonds-soft",
-    "no-stomach-soft",
-    "pivot-feeding-soft",
-    "slow-swimmers-soft",
-    "habitat-care-soft",
-    "trade-cites-soft",
+    "asteroidea-soft",
+    "water-vascular-soft",
+    "madreporite-soft",
+    "ampullae-soft",
+    "stomach-eversion-soft",
+    "keystone-soft",
+    "crown-of-thorns-soft",
+    "regrow-deepen-soft",
+    "pedicellariae-soft",
+    "top-vs-bottom-myth",
 )
 
 EASY_STEMS = (
-    "Are seahorses a kind of fish?",
-    "How does a seahorse swim, if we keep the fins simple?",
-    "What does a seahorse’s tail do?",
-    "Why does a seahorse’s head look horse-like, and how does it eat?",
-    "What covers a seahorse’s body, if we keep the armour story soft?",
-    "Who carries seahorse babies, and how?",
-    "How can a seahorse hide in seagrass or coral?",
-    "Where do seahorses usually live?",
-    "Which animals are seahorses closely related to?",
-    "Do seahorse moms always carry the babies?",
+    "Are starfish a kind of fish?",
+    "What does a sea star’s body look like, if we keep the arm count soft?",
+    "How does a sea star walk?",
+    "Where is a sea star’s mouth?",
+    "Where do sea stars live?",
+    "What is a sea star’s skin like?",
+    "What do many sea stars hunt?",
+    "What can many sea stars do if they lose an arm?",
+    "How many kinds of sea star are there, if we keep the count soft?",
+    "Does the name “starfish” mean they are fish?",
 )
 
 PLAIN_LEVEL_LABELS = ("Easy",)
@@ -104,16 +108,13 @@ BRITTLE = (
     "Critically",
     "Near Threatened",
     "Least Concern",
-    "47 species",
-    "70 million",
-    "20 million",
-    "1.5 m",
-    "35 cm",
-    "histotroph",
-    "osmoregulation",
-    "bargibanti",
-    "zosterae",
-    "Miocene",
+    "wasting",
+    "neuropeptide",
+    "Forcipulatida",
+    "Valvatida",
+    "Spinulosida",
+    "Paxillosida",
+    "Asterias amurensis",
     " kg",
     " cm",
     " mph",
@@ -121,10 +122,11 @@ BRITTLE = (
 )
 RESERVED = (
     "IUCN",
-    "histotroph",
-    "osmoregulation",
-    "bargibanti",
-    "Miocene",
+    "wasting",
+    "neuropeptide",
+    "Forcipulatida",
+    "Valvatida",
+    "Asterias amurensis",
 )
 
 
@@ -132,21 +134,21 @@ def _text(html: str) -> str:
     return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", html)).strip()
 
 
-class SeahorseHardStudyCardTests(unittest.TestCase):
+class StarfishHardStudyCardTests(unittest.TestCase):
     def test_hard_deck_is_park_ranger_without_teach(self):
-        self.assertIn("seahorse", study_card_ids())
-        self.assertEqual(shipped_levels_for("seahorse"), ("easy", "hard", "zoologist"))
-        self.assertIsNotNone(study_deck_for("seahorse", "zoologist"))
+        self.assertIn("starfish", study_card_ids())
+        self.assertEqual(shipped_levels_for("starfish"), ("easy", "hard", "zoologist"))
+        self.assertIsNotNone(study_deck_for("starfish", "zoologist"))
         self.assertEqual(level_display_name("hard"), "Park Ranger")
-        deck = study_deck_for("seahorse", "hard")
+        deck = study_deck_for("starfish", "hard")
         self.assertIsNotNone(deck)
         self.assertEqual(deck["level"], "hard")
         self.assertEqual(deck["level_label"], "Park Ranger")
-        self.assertEqual(deck["source"], WIKI_SEAHORSE)
-        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Seahorse.")
+        self.assertEqual(deck["source"], WIKI_STARFISH)
+        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Starfish.")
         self.assertEqual(deck["teach"], [])
-        self.assertEqual(deck["talk_about"], list(TALK_ABOUT_SEAHORSE))
-        self.assertEqual(deck["push_further"], list(PUSH_FURTHER_SEAHORSE))
+        self.assertEqual(deck["talk_about"], list(TALK_ABOUT_STARFISH))
+        self.assertEqual(deck["push_further"], list(PUSH_FURTHER_STARFISH))
         self.assertEqual(len(deck["questions"]), STUDY_SLOTS)
         self.assertEqual(validate_deck(deck), [])
         letters = [q["correct"] for q in deck["questions"]]
@@ -156,8 +158,8 @@ class SeahorseHardStudyCardTests(unittest.TestCase):
         self.assertEqual(letters.count("C"), 3)
 
     def test_validate_deck_allows_empty_teach_only_for_hard(self):
-        easy = study_deck_for("seahorse", "easy")
-        hard = study_deck_for("seahorse", "hard")
+        easy = study_deck_for("starfish", "easy")
+        hard = study_deck_for("starfish", "hard")
         self.assertEqual(validate_deck(easy), [])
         self.assertEqual(validate_deck(hard), [])
         broken_easy = dict(easy)
@@ -168,7 +170,7 @@ class SeahorseHardStudyCardTests(unittest.TestCase):
         self.assertIn("hard deck must not include a teach strip", validate_deck(broken_hard))
 
     def test_hard_slots_and_copy_are_locked(self):
-        deck = study_deck_for("seahorse", "hard")
+        deck = study_deck_for("starfish", "hard")
         questions = deck["questions"]
         self.assertEqual([q["slot"] for q in questions], list(range(1, 11)))
         self.assertEqual([q["id"] for q in questions], list(HARD_IDS))
@@ -179,40 +181,39 @@ class SeahorseHardStudyCardTests(unittest.TestCase):
             self.assertIn(q["correct"], ("A", "B", "C"))
             self.assertTrue(q["why"].strip())
             self.assertTrue(q["title"].strip())
-        self.assertIn("syngnathidae", correct_choice_text(questions[0]).lower())
-        self.assertIn("hippocampus", correct_choice_text(questions[0]).lower())
-        self.assertIn("pipefish", correct_choice_text(questions[0]).lower())
-        self.assertIn("soft", correct_choice_text(questions[0]).lower())
-        self.assertIn("oxygen", correct_choice_text(questions[1]).lower())
-        self.assertIn("lipid", correct_choice_text(questions[1]).lower())
-        self.assertIn("calcium", correct_choice_text(questions[1]).lower())
-        self.assertIn("pouch", correct_choice_text(questions[2]).lower())
-        self.assertIn("seawater", correct_choice_text(questions[2]).lower())
-        self.assertIn("dance", correct_choice_text(questions[3]).lower())
-        self.assertIn("sync", correct_choice_text(questions[3]).lower())
-        self.assertIn("breeding season", correct_choice_text(questions[4]).lower())
-        self.assertIn("for life", correct_choice_text(questions[4]).lower())
-        self.assertIn("stomach", correct_choice_text(questions[5]).lower())
-        self.assertIn("crustacean", correct_choice_text(questions[5]).lower())
-        self.assertIn("pivot", correct_choice_text(questions[6]).lower())
-        self.assertIn("suction", correct_choice_text(questions[6]).lower())
-        self.assertIn("copepod", correct_choice_text(questions[6]).lower())
-        self.assertIn("dwarf", correct_choice_text(questions[7]).lower())
-        self.assertIn("prehensile", correct_choice_text(questions[7]).lower())
-        self.assertIn("seagrass", correct_choice_text(questions[8]).lower())
-        self.assertIn("fishing", correct_choice_text(questions[8]).lower())
-        self.assertIn("cites", correct_choice_text(questions[9]).lower())
-        self.assertIn("2002", correct_choice_text(questions[9]))
-        self.assertIn("bycatch", correct_choice_text(questions[9]).lower())
+        self.assertIn("asteroidea", correct_choice_text(questions[0]).lower())
+        self.assertIn("echinoderm", correct_choice_text(questions[0]).lower())
+        self.assertIn("urchin", correct_choice_text(questions[0]).lower())
+        self.assertIn("water vascular", correct_choice_text(questions[1]).lower())
+        self.assertIn("canal", correct_choice_text(questions[1]).lower())
+        self.assertIn("madreporite", questions[2]["stem"].lower())
+        self.assertIn("sieve", correct_choice_text(questions[2]).lower())
+        self.assertIn("aboral", correct_choice_text(questions[2]).lower())
+        self.assertIn("ampulla", correct_choice_text(questions[3]).lower())
+        self.assertIn("evert", correct_choice_text(questions[4]).lower())
+        self.assertNotIn("everth", correct_choice_text(questions[4]).lower())
+        self.assertIn("cardiac", correct_choice_text(questions[4]).lower())
+        self.assertIn("mussel", correct_choice_text(questions[5]).lower())
+        self.assertIn("diversity", correct_choice_text(questions[5]).lower())
+        self.assertIn("coral", correct_choice_text(questions[6]).lower())
+        self.assertIn("indo-pacific", correct_choice_text(questions[6]).lower())
+        self.assertIn("central disc", correct_choice_text(questions[7]).lower())
+        self.assertIn("ossicle", correct_choice_text(questions[7]).lower() + correct_choice_text(questions[8]).lower())
+        self.assertIn("claw", correct_choice_text(questions[8]).lower())
+        self.assertIn("oral", correct_choice_text(questions[9]).lower())
+        self.assertIn("aboral", correct_choice_text(questions[9]).lower())
+        self.assertIn("underside", correct_choice_text(questions[9]).lower())
         blob = " ".join(q["why"] for q in questions) + " ".join(
             " ".join(q["choices"]) for q in questions
         )
+        self.assertIn("evert", blob.lower())
+        self.assertNotIn("everth", blob.lower())
         for phrase in BRITTLE + RESERVED:
             self.assertNotIn(phrase, blob)
 
     def test_hard_does_not_redo_easy_stems(self):
-        hard = study_deck_for("seahorse", "hard")
-        easy = study_deck_for("seahorse", "easy")
+        hard = study_deck_for("starfish", "hard")
+        easy = study_deck_for("starfish", "easy")
         hard_stems = [q["stem"] for q in hard["questions"]]
         easy_stems = [q["stem"] for q in easy["questions"]]
         self.assertEqual(easy_stems, list(EASY_STEMS))
@@ -220,7 +221,7 @@ class SeahorseHardStudyCardTests(unittest.TestCase):
             self.assertNotIn(stem, hard_stems)
 
     def test_default_screen_html_keeps_easy_and_adds_picker(self):
-        html = outing_talk_html({"id": "seahorse", "packTemplate": "animals"})
+        html = outing_talk_html({"id": "starfish", "packTemplate": "animals"})
         self.assertIn(">Quiz</h2>", html)
         self.assertIn("Learn first", html)
         self.assertIn('<details class="study-teach">', html)
@@ -243,13 +244,13 @@ class SeahorseHardStudyCardTests(unittest.TestCase):
             self.assertNotIn(badge, visible)
 
     def test_hard_print_is_answer_light_duplex(self):
-        deck = study_deck_for("seahorse", "hard")
+        deck = study_deck_for("starfish", "hard")
         sheet = study_print_html(
             deck,
-            name="Seahorse",
-            emoji="🌊",
-            photo="/field-pack/photos/seahorse.jpg?v=img2",
-            photo_pos="50% 30%",
+            name="Sea star",
+            emoji="⭐",
+            photo="/field-pack/photos/starfish.jpg?v=img2",
+            photo_pos="50% 45%",
         )
         self.assertIn("Park Ranger", sheet)
         self.assertNotIn("Junior Ranger", sheet)
@@ -263,15 +264,17 @@ class SeahorseHardStudyCardTests(unittest.TestCase):
         self.assertIn("Talk about it", back)
         self.assertIn("Push further", back)
         self.assertIn("ps-study-deepen", back)
-        for prompt in TALK_ABOUT_SEAHORSE + PUSH_FURTHER_SEAHORSE:
+        for prompt in TALK_ABOUT_STARFISH + PUSH_FURTHER_STARFISH:
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
-        self.assertIn(WIKI_SEAHORSE, sheet)
-        self.assertIn("Facts from Wikipedia, Seahorse.", sheet)
+        self.assertIn(WIKI_STARFISH, sheet)
+        self.assertIn("Facts from Wikipedia, Starfish.", sheet)
         for stem in HARD_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS:
             self.assertNotIn(stem, sheet)
+        self.assertIn("evert", sheet.lower())
+        self.assertNotIn("everth", sheet.lower())
 
     def test_other_animal_decks_untouched(self):
         self.assertEqual(shipped_levels_for("african-lion"), ("easy", "hard", "zoologist"))
@@ -298,6 +301,13 @@ class SeahorseHardStudyCardTests(unittest.TestCase):
         self.assertIn("Zoologist", turtle_html)
         self.assertEqual(turtle_hard["talk_about"], list(TALK_ABOUT_SEA_TURTLE))
         self.assertEqual(turtle_hard["push_further"], list(PUSH_FURTHER_SEA_TURTLE))
+        self.assertEqual(shipped_levels_for("seahorse"), ("easy", "hard", "zoologist"))
+        horse_hard = study_deck_for("seahorse", "hard")
+        self.assertEqual(horse_hard["source"], WIKI_SEAHORSE)
+        horse_html = SEAHORSE.read_text(encoding="utf-8")
+        self.assertIn("Zoologist", horse_html)
+        self.assertEqual(horse_hard["talk_about"], list(TALK_ABOUT_SEAHORSE))
+        self.assertEqual(horse_hard["push_further"], list(PUSH_FURTHER_SEAHORSE))
         self.assertEqual(shipped_levels_for("kelp-forest"), ("easy", "hard", "zoologist"))
         kelp_hard = study_deck_for("kelp-forest", "hard")
         self.assertEqual(kelp_hard["source"], WIKI_KELP_FOREST)
@@ -312,23 +322,23 @@ class SeahorseHardStudyCardTests(unittest.TestCase):
         self.assertIn("Zoologist", jelly_html)
         self.assertEqual(jelly_hard["talk_about"], list(TALK_ABOUT_JELLYFISH))
         self.assertEqual(jelly_hard["push_further"], list(PUSH_FURTHER_JELLYFISH))
-        ray = STINGRAY.read_text(encoding="utf-8")
+        ray = WHALE_SHARK.read_text(encoding="utf-8")
         self.assertIn("What do they eat?", ray)
         self.assertNotIn("card-study-pack", ray)
-        self.assertNotIn("syngnathidae-soft", ray)
+        self.assertNotIn("asteroidea-soft", ray)
 
     def test_published_artifacts_and_plumbing(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
-        hard = payload["seahorse"]["levels"]["hard"]
+        hard = payload["starfish"]["levels"]["hard"]
         self.assertEqual(hard["teach"], [])
         self.assertEqual(len(hard["questions"]), STUDY_SLOTS)
         self.assertEqual([q["id"] for q in hard["questions"]], list(HARD_IDS))
-        self.assertIn("zoologist", payload["seahorse"]["levels"])
-        self.assertEqual(payload["seahorse"]["levels"]["zoologist"]["teach"], [])
+        self.assertIn("zoologist", payload["starfish"]["levels"])
+        self.assertEqual(payload["starfish"]["levels"]["zoologist"]["teach"], [])
         data_js = STUDY_DATA_JS.read_text(encoding="utf-8")
-        self.assertIn("seahorse", data_js)
-        self.assertIn("syngnathidae-soft", data_js)
-        self.assertIn("trade-cites-soft", data_js)
+        self.assertIn("starfish", data_js)
+        self.assertIn("asteroidea-soft", data_js)
+        self.assertIn("top-vs-bottom-myth", data_js)
         self.assertIn("talk_about", data_js)
         self.assertIn("push_further", data_js)
         js = STUDY_JS.read_text(encoding="utf-8")
@@ -336,7 +346,7 @@ class SeahorseHardStudyCardTests(unittest.TestCase):
         self.assertIn("levelFromQuery", js)
         print_js = PRINT_KIT.read_text(encoding="utf-8")
         self.assertIn("function selectedStudyLevel", print_js)
-        html = SEAHORSE.read_text(encoding="utf-8")
+        html = STARFISH.read_text(encoding="utf-8")
         self.assertIn("Park Ranger", html)
         self.assertIn("Junior Ranger", html)
         self.assertIn("Zoologist", html)
@@ -359,7 +369,7 @@ class SeahorseHardStudyCardTests(unittest.TestCase):
         self.assertNotIn("Talk about it", front)
         self.assertIn("Talk about it", back)
         self.assertIn("Push further", back)
-        hard_html = study_talk_html(study_deck_for("seahorse", "hard"))
+        hard_html = study_talk_html(study_deck_for("starfish", "hard"))
         self.assertNotIn("study-teach", hard_html)
         self.assertIn('<details class="study-explore', hard_html)
         self.assertIn("Explore more", hard_html)

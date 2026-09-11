@@ -39,7 +39,7 @@ from study_cards import (  # noqa: E402
 
 FP = REPO / "static" / "field-pack"
 STINGRAY = FP / "cards" / "stingray" / "index.html"
-STARFISH = FP / "cards" / "starfish" / "index.html"
+WHALE_SHARK = FP / "cards" / "whale-shark" / "index.html"
 SEAHORSE = FP / "cards" / "seahorse" / "index.html"
 MANTA = FP / "cards" / "manta-ray" / "index.html"
 PRINT_KIT = FP / "js" / "print-kit.js"
@@ -141,7 +141,7 @@ def _main(html: str) -> str:
 class StingrayEasyStudyCardTests(unittest.TestCase):
     def test_deck_is_junior_ranger_only(self):
         self.assertIn("stingray", study_card_ids())
-        self.assertNotIn("starfish", study_card_ids())
+        self.assertNotIn("whale-shark", study_card_ids())
         self.assertEqual(
             study_card_ids(),
             (
@@ -184,13 +184,14 @@ class StingrayEasyStudyCardTests(unittest.TestCase):
                 "octopus",
                 "sea-turtle",
                 "seahorse",
+                "starfish",
                 "stingray",
             ),
         )
         self.assertEqual(shipped_levels_for("stingray"), ("easy",))
         self.assertIsNone(study_deck_for("stingray", "hard"))
         self.assertIsNone(study_deck_for("stingray", "zoologist"))
-        self.assertIsNone(study_deck_for("starfish"))
+        self.assertIsNone(study_deck_for("whale-shark"))
         deck = study_deck_for("stingray")
         self.assertIsNotNone(deck)
         self.assertEqual(deck["id"], "stingray")
@@ -317,11 +318,11 @@ class StingrayEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Facts from Wikipedia, Stingray.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
-        html = outing_talk_html({"id": "starfish", "packTemplate": "animals"})
+        html = outing_talk_html({"id": "whale-shark", "packTemplate": "animals"})
         self.assertIn("What do they eat?", html)
         self.assertNotIn("card-study-pack", html)
         self.assertNotIn("What is a stingray", html)
-        star = STARFISH.read_text(encoding="utf-8")
+        star = WHALE_SHARK.read_text(encoding="utf-8")
         self.assertIn("What do they eat?", star)
         self.assertNotIn("card-study-pack", star)
         self.assertNotIn("What is a stingray", star)
@@ -452,7 +453,7 @@ class StingrayEasyStudyCardTests(unittest.TestCase):
     def test_artifacts_include_stingray_easy_only(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
         self.assertIn("stingray", payload)
-        self.assertNotIn("starfish", payload)
+        self.assertNotIn("whale-shark", payload)
         self.assertIn("seahorse", payload)
         self.assertIn("manta-ray", payload)
         ray = payload["stingray"]

@@ -1970,6 +1970,104 @@ numbers. Treat IUCN letters as snapshots.
 Do not redo JR or PR themes. Keep
 kid-friendly. Do not invent photos.
 
+Facts for starfish Junior Ranger (easy) are
+Wikipedia-backed: https://en.wikipedia.org/wiki/Starfish
+(class Asteroidea; also called sea stars).
+JR stays kid-simple “sea star” (a group
+card). Star-shaped ocean animals — not fish
+(better called sea stars). Most have a
+central disc and about five arms (some
+kinds have many more). They walk with tiny
+tube feet on the underside. The mouth is
+in the middle of the bottom side. Many can
+regrow a lost arm over time. Not a fish:
+no gills, scales, or fins like fish; they
+are echinoderms with urchins and sea
+cucumbers (names light). Star body: central
+disc plus arms; five is common, but some
+species have far more (soften exact max).
+Hundreds of tiny tube feet, powered by a
+water-pump system, help them move and grip.
+Mouth on the oral (bottom) side at the disc
+centre. Live in salt water from shores to
+the deep sea — not in freshwater lakes.
+Tough skin with plates and spines on top;
+colours from bright orange or red to dull
+browns. Many hunt slow seabed animals
+(clams, snails, other invertebrates) —
+keep feeding simple. Can regenerate a
+damaged or lost arm; a few can rebuild
+more if part of the disc remains (soften
+“from one arm” edge cases). About two
+thousand known kinds worldwide (soften
+exact count). Myth: the name “starfish”
+sounds like a fish, but they are sea
+stars — invertebrates, not fish. Soften
+contested arm counts and species totals.
+Keep kid-friendly. Do not invent photos.
+
+Park Ranger is answer-light (empty teach) and
+deepens class Asteroidea (star-shaped
+echinoderms with urchins and sea cucumbers;
+denser order names wait), the water vascular
+system that powers tube feet (locomotion,
+grip, feeding, gas exchange — not a
+mammal-style blood heart), the madreporite
+(sieve-like aboral plate where water can
+enter; canal names stay light), ampullae
+that squeeze fluid so a podium extends
+(muscles pull it back; row counts soft),
+cardiac-stomach eversion (digest outside,
+then retract; pyloric caeca finish in the
+arms — hours/counts soft), keystone
+predators such as ochre / purple Pisaster
+(Paine’s removals let mussels take over;
+counts soft), tropical crown-of-thorns
+Acanthaster (coral-eating outbreaks leave
+white scars; Indo-Pacific soft; m²/year
+and outbreak causes wait), regeneration
+that usually needs part of the central
+disc (a few tropical kinds can do more
+from an arm; months or longer — species
+lists and times soft), pedicellariae
+(tiny claw- or wrench-like ossicles that
+clear debris and settlers; feeding uses
+stay soft), and the oral/aboral myth
+(mouth + tube feet on the underside;
+colourful top is not the face). Soften
+contested numbers. Reserve denser
+orders/phylogeny, sea-star wasting
+disease, IUCN letters, catch connective
+tissue, stomach neuropeptides, and the
+Northern Pacific invader for Zoologist.
+Do not redo JR themes. Keep kid-friendly.
+Do not invent photos.
+
+Zoologist is answer-light (empty teach)
+and deepens seven living orders (name a
+few; full roll soft), unsettled ordinal
+phylogeny (which group sits nearest the
+root — morphology and genes disagree),
+catch connective / mutable collagenous
+tissue that softens so an arm can shed
+in seconds, an autotomy-promoting factor
+that can trigger shedding in another
+star (chemistry names soft), NGFFYamide
+retracting the everted cardiac stomach,
+sea-star wasting (lesions, arm loss,
+mass die-offs; virus / environment
+debated), IUCN as snapshots by kind on
+this GROUP card, the Northern Pacific
+seastar invader (Asterias amurensis;
+ballast-water larvae; world’s-worst
+list soft), living Neoasteroidea vs
+Paleozoic forerunners, and the stiffness
+myth (tissue can stiffen or soften
+under nervous control). Soften contested
+numbers. Treat IUCN letters as snapshots
+by species. Do not redo JR or PR themes.
+Keep kid-friendly. Do not invent photos.
+
 Facts for stingray Junior Ranger (easy) are
 Wikipedia-backed: https://en.wikipedia.org/wiki/Stingray
 (a group card). Flattened ocean fish with a
@@ -2076,6 +2174,7 @@ WIKI_MANTA_RAY = "https://en.wikipedia.org/wiki/Manta_ray"
 WIKI_OCTOPUS = "https://en.wikipedia.org/wiki/Octopus"
 WIKI_SEA_TURTLE = "https://en.wikipedia.org/wiki/Sea_turtle"
 WIKI_SEAHORSE = "https://en.wikipedia.org/wiki/Seahorse"
+WIKI_STARFISH = "https://en.wikipedia.org/wiki/Starfish"
 WIKI_STINGRAY = "https://en.wikipedia.org/wiki/Stingray"
 
 LETTERS = ("A", "B", "C")
@@ -2156,8 +2255,8 @@ LEVEL_DISPLAY_NAMES = {
 # American bison, elk, puffin, clownfish, crab,
 # cuttlefish, eel, jellyfish, and kelp forest
 # ship Junior Ranger + Park Ranger + Zoologist.
-# Manta ray, octopus, sea turtle, and seahorse ship Junior Ranger +
-# Park Ranger + Zoologist.
+# Manta ray, octopus, sea turtle, seahorse, and starfish ship
+# Junior Ranger + Park Ranger + Zoologist.
 # Stingray ships Junior Ranger only.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
@@ -2214,6 +2313,7 @@ STUDY_NEIGHBORS = {
     "octopus": ("cuttlefish", "jellyfish"),
     "sea-turtle": ("octopus", "manta-ray"),
     "seahorse": ("octopus", "sea-turtle"),
+    "starfish": ("sea-turtle", "octopus"),
     "stingray": ("manta-ray", "seahorse"),
 }
 
@@ -2257,6 +2357,7 @@ STUDY_CARD_TITLES = {
     "octopus": "Octopus",
     "sea-turtle": "Sea turtle",
     "seahorse": "Seahorse",
+    "starfish": "Sea star",
     "stingray": "Stingray",
 }
 
@@ -2693,6 +2794,28 @@ PUSH_FURTHER_SEAHORSE_ZOOLOGIST = (
     "Atlantic seahorses may have crossed twice. Why keep that invasion map soft?",
     "Square tail rings inspire bendy robots. Why keep that robotics story soft?",
 )
+
+TALK_ABOUT_STARFISH = (
+    "Tiny tube feet run on a hidden water-pump. Why might canals of fluid beat a red-blood heart?",
+    "Some sea stars push a stomach out to eat a clam. Why might that messy meal work?",
+    "Taking away a few sea stars can change a whole rocky pool. Why might one hunter matter so much?",
+)
+PUSH_FURTHER_STARFISH = (
+    "Status can differ by kind. Why not one letter for every sea star?",
+    "Special stretchy body tissue and stomach chemistry still wait. Why save those names?",
+    "Denser family-tree names and a Northern Pacific invader still wait. Why keep those for later?",
+)
+TALK_ABOUT_STARFISH_ZOOLOGIST = (
+    "Status can differ by kind. Why isn’t one letter the story for every sea star?",
+    "Stretchy body tissue can go stiff or floppy in seconds. Why isn’t that just muscle?",
+    "A wasting illness can take whole rocky shores. Why keep the germ story soft?",
+)
+PUSH_FURTHER_STARFISH_ZOOLOGIST = (
+    "Living sea stars sit apart from old star-shaped fossils. Why keep that family-tree debate soft?",
+    "A Northern Pacific seastar hitchhiked in ballast water. Why might larvae spread so far?",
+    "A tiny chemical can make one sea star drop an arm. Why keep that chemistry name soft?",
+)
+
 TALK_ABOUT_STINGRAY = (
     "Eyes sit on top and the mouth is underneath. Why might that help a ray rest on sand?",
     "Many stingrays hide under sand. What might they be waiting for down there?",
@@ -19371,6 +19494,430 @@ STUDY_CARDS: dict[str, dict] = {
             },
         },
     },
+    "starfish": {
+        "id": "starfish",
+        "source": WIKI_STARFISH,
+        "source_note": "Facts from Wikipedia, Starfish.",
+        "talk_about": list(TALK_ABOUT_STARFISH),
+        "push_further": list(PUSH_FURTHER_STARFISH),
+        "levels": {
+            "easy": {
+                # Teaching-first: same front as the quiz. Later tiers reserved.
+                "teach": [
+                    "Star-shaped ocean animals — not fish (better called sea stars).",
+                    "Most have a central disc and about five arms (some kinds have many more).",
+                    "They walk with tiny tube feet on the underside.",
+                    "The mouth is in the middle of the bottom side.",
+                    "Many can regrow a lost arm over time.",
+                ],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "not-fish-soft",
+                        "title": "Not a fish",
+                        "stem": "Are starfish a kind of fish?",
+                        "choices": [
+                            "No — they have no gills, scales, or fins like fish. They are echinoderms, with urchins and sea cucumbers (names light)",
+                            "Yes — they are fish that grow star-shaped fins",
+                            "Yes — they breathe with gills and swim with scales",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says starfish (also called sea stars) are not fish. They lack gills, scales, and fins. They are echinoderms, in the same big group as sea urchins and sea cucumbers. We keep those group names light.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "star-body-soft",
+                        "title": "Star body",
+                        "stem": "What does a sea star’s body look like, if we keep the arm count soft?",
+                        "choices": [
+                            "A fish body with two wings and a tail",
+                            "A central disc plus arms — five is common, but some kinds have far more (soft)",
+                            "A single long snake with no arms",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia describes a central disc with radiating arms. About five arms is common, and some kinds grow many more. Exact maxima shift by species, so we keep that count soft.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "tube-feet-soft",
+                        "title": "Tube feet",
+                        "stem": "How does a sea star walk?",
+                        "choices": [
+                            "It swims with fins like a fish",
+                            "It hops on one giant foot",
+                            "Hundreds of tiny tube feet on the underside, powered by a water-pump system, help it move and grip",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says sea stars walk with rows of tiny tube feet on the underside. A water-pump system powers those feet so they can move and grip the seafloor. We keep the pump’s denser name for later.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "mouth-underneath-soft",
+                        "title": "Mouth underneath",
+                        "stem": "Where is a sea star’s mouth?",
+                        "choices": [
+                            "On the bottom side, in the middle of the central disc",
+                            "On the tip of the longest arm",
+                            "On top, like a whale’s blowhole",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia places the mouth on the oral (bottom) side, at the centre of the disc. The top side faces up; the mouth faces the seafloor.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "ocean-only-soft",
+                        "title": "Ocean only",
+                        "stem": "Where do sea stars live?",
+                        "choices": [
+                            "Only in freshwater lakes and backyard ponds",
+                            "In salt water, from shores to the deep sea — not in freshwater lakes",
+                            "Only in desert sand",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia finds starfish in salt water worldwide, from rocky shores to the deep sea. They are marine animals — they do not live in freshwater lakes.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "armour-soft",
+                        "title": "Armour",
+                        "stem": "What is a sea star’s skin like?",
+                        "choices": [
+                            "Soft fur like a seal",
+                            "Fish scales that flake off in the air",
+                            "Tough skin with plates and spines on top; colours run from bright orange or red to dull browns",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says the upper surface is covered in tough skin with plates and often spines. Colours range from bright orange or red to dull browns and other hues. We keep plate names soft.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "predators-soft",
+                        "title": "Predators",
+                        "stem": "What do many sea stars hunt?",
+                        "choices": [
+                            "Slow seabed animals such as clams, snails, and other invertebrates",
+                            "Only flying insects over the beach",
+                            "Only grass on land",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says many starfish are predators of slow seafloor animals — clams, snails, and other invertebrates. We keep that feeding story simple and save the stomach-out meal for later.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "regrow-soft",
+                        "title": "Regrow",
+                        "stem": "What can many sea stars do if they lose an arm?",
+                        "choices": [
+                            "They turn into a fish",
+                            "They can grow a damaged or lost arm back over time; a few can rebuild more if part of the disc remains (soft)",
+                            "They never grow anything back",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says many starfish can regenerate a damaged or lost arm. In a few kinds, more of the body can rebuild if part of the central disc remains. Edge cases stay soft — we do not lock a “from one arm” rule.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "many-kinds-soft",
+                        "title": "Many kinds",
+                        "stem": "How many kinds of sea star are there, if we keep the count soft?",
+                        "choices": [
+                            "Exactly three kinds, all in one lake",
+                            "Only one kind on Earth",
+                            "About two thousand known kinds worldwide (soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia puts living starfish at about two thousand known kinds worldwide. Exact totals shift as scientists name or split kinds, so we keep that count soft.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "starfish-name-myth",
+                        "title": "Myth buster",
+                        "stem": "Does the name “starfish” mean they are fish?",
+                        "choices": [
+                            "No — the name sounds like a fish, but they are sea stars: invertebrates, not fish",
+                            "Yes — starfish is a kind of bony fish",
+                            "Yes — they hatch from fish eggs",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia prefers sea star because they are not fish. They are invertebrates — animals without a backbone — even though the older name “starfish” sounds like a fish.",
+                    },
+                ],
+            },
+            "hard": {
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "asteroidea-soft",
+                        "title": "Asteroidea",
+                        "stem": "What scientific class do sea stars belong to, if we keep the family tree soft?",
+                        "choices": [
+                            "Asteroidea — star-shaped echinoderms in the same big phylum as urchins and sea cucumbers",
+                            "Mammalia — warm-blooded animals with fur",
+                            "Osteichthyes — bony fish with scales and fins",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia places starfish in class Asteroidea (phylum Echinodermata). They sit with other echinoderms such as sea urchins and sea cucumbers. We keep denser order names for later.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "water-vascular-soft",
+                        "title": "Water vascular",
+                        "stem": "What powers a sea star’s tube feet?",
+                        "choices": [
+                            "A heart that pumps red blood like a mammal",
+                            "A water vascular system — fluid-filled canals that move, grip, feed, and help exchange gases",
+                            "Wings that flap under the arms",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia describes a hydraulic water vascular system of fluid-filled canals. It handles locomotion, adhesion, food handling, and gas exchange — not a mammal-style blood heart.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "madreporite-soft",
+                        "title": "Madreporite",
+                        "stem": "What is the madreporite on a sea star?",
+                        "choices": [
+                            "A tiny ear on each arm tip",
+                            "A spare stomach stored on top",
+                            "A sieve-like plate on the top (aboral) surface where water can enter the water vascular system",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia: the madreporite is a porous, sieve-like ossicle on the aboral surface. Water links through a stone canal to a ring canal around the mouth. We keep canal names light.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "ampullae-soft",
+                        "title": "Ampullae",
+                        "stem": "How does one tube foot extend and pull back?",
+                        "choices": [
+                            "A bulb-like ampulla squeezes fluid into the foot to extend it; muscles pull it back",
+                            "Each foot has a tiny battery and motor",
+                            "The foot grows longer by adding new bone each step",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia: each tube foot joins an inner ampulla. Muscular ampullae push fluid so the podium extends; muscles and valves help retract and grip. Soft on exact row counts.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "stomach-eversion-soft",
+                        "title": "Stomach eversion",
+                        "stem": "How do many predatory sea stars eat prey too big to swallow whole?",
+                        "choices": [
+                            "They chew it with teeth like a shark",
+                            "They evert (push out) the cardiac stomach through the mouth, digest outside, then pull food back in",
+                            "They wait for prey to crawl into their mouths",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia: many species evert the cardiac stomach through the mouth over or into prey, digest externally, then retract. Pyloric caeca in the arms help finish digestion. Soft on hours/counts.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "keystone-soft",
+                        "title": "Keystone",
+                        "stem": "Why do scientists call some sea stars “keystone” predators (example: ochre / purple sea star Pisaster)?",
+                        "choices": [
+                            "Their colour matches a stone exactly",
+                            "Removing a few can let mussels take over and shrink tide-pool diversity — they punch above their numbers",
+                            "They are the only animals that eat kelp",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia (Starfish / Pisaster ochraceus): ochre sea stars are classic keystone examples. Paine’s removals showed mussels can dominate and diversity drops when the predator is gone. Soft on exact counts.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "crown-of-thorns-soft",
+                        "title": "Crown-of-thorns",
+                        "stem": "What is special about the tropical crown-of-thorns sea star (Acanthaster)?",
+                        "choices": [
+                            "It only eats grass on land",
+                            "It is a gentle filter-feeder that never touches coral",
+                            "It is a coral-eating predator; dense outbreaks can leave large white coral scars (Indo-Pacific soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia: Acanthaster planci preys on hard-coral polyps across the Indo-Pacific. Outbreaks can kill large areas of living coral tissue. Soft on m²/year and outbreak causes.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "regrow-deepen-soft",
+                        "title": "Regrow",
+                        "stem": "What do most sea stars need to regrow a whole new body after an arm is lost?",
+                        "choices": [
+                            "At least part of the central disc still attached (a few tropical kinds can do more from an arm — soft)",
+                            "Nothing — every lost arm always becomes a full new sea star in a day",
+                            "A transplant from another species",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia: most need part of the central disc to regenerate a whole animal; a few can rebuild from an arm. Regrowth can take months (or longer). Soft on species lists and exact times.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "pedicellariae-soft",
+                        "title": "Pedicellariae",
+                        "stem": "What are pedicellariae on many sea stars?",
+                        "choices": [
+                            "Tiny claw- or wrench-like ossicles that help keep the body surface clear of debris and settlers",
+                            "Extra eyes that see colour underwater",
+                            "Hollow horns used to make sound",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia: pedicellariae are small movable claw-like ossicles on many asteroids. They help clear algae, debris, and settling organisms. Some kinds also use them in feeding — we keep that soft.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "top-vs-bottom-myth",
+                        "title": "Myth buster",
+                        "stem": "Is a sea star’s “face” the colourful top side?",
+                        "choices": [
+                            "Yes — the mouth and tube feet sit on the bright top",
+                            "No — oral (mouth + tube feet) is the underside; aboral (often colourful, with madreporite) faces up",
+                            "Sea stars have no top or bottom — both sides are identical mouths",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia: oral = underside (mouth, ambulacral grooves, tube feet). Aboral = upper surface (often colourful; madreporite sits here). The “pretty” side is not the mouth side.",
+                    },
+                ],
+            },
+            "zoologist": {
+                # Answer-light: Zoologist has no Learn-first strip.
+                "teach": [],
+                "talk_about": list(TALK_ABOUT_STARFISH_ZOOLOGIST),
+                "push_further": list(PUSH_FURTHER_STARFISH_ZOOLOGIST),
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "seven-orders-soft",
+                        "title": "Seven orders",
+                        "stem": "How do living sea stars split at the order level, if we keep the count soft?",
+                        "choices": [
+                            "Seven extant orders (e.g. Forcipulatida, Valvatida, Paxillosida, Velatida, and others) — exact lists stay soft",
+                            "Exactly one order for every ocean basin",
+                            "No orders — every kind is its own phylum",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia lists seven living orders in Asteroidea (Brisingida, Forcipulatida, Notomyotida, Paxillosida, Spinulosida, Valvatida, Velatida). We name a few and keep the full roll soft.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "phylogeny-soft",
+                        "title": "Phylogeny",
+                        "stem": "What do scientists still debate about sea-star family trees?",
+                        "choices": [
+                            "Whether sea stars have tube feet at all",
+                            "Which order sits nearest the base of living Asteroidea — morphology and genes disagree (Paxillosida / Forcipulatida / Velatida ideas soft)",
+                            "Whether sea stars live in salt water",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia and reviews note ordinal relationships are unsettled. Different studies place different groups near the root. We treat that as ongoing debate, not one forever tree.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "catch-connective-soft",
+                        "title": "Catch connective",
+                        "stem": "What lets a sea star shed an arm in seconds without using big muscles to tear it off?",
+                        "choices": [
+                            "Catch connective tissue (mutable collagenous tissue) softens rapidly under nervous control",
+                            "Tiny scissors hidden in each joint",
+                            "The arm freezes solid and snaps like ice",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia: arm loss uses rapid softening of catch connective tissue (also called mutable collagenous tissue), found in most echinoderms, under nervous signals — not a muscle tear alone.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "autotomy-factor-soft",
+                        "title": "Autotomy factor",
+                        "stem": "What experimental clue shows arm-shedding can be chemically triggered in sea stars?",
+                        "choices": [
+                            "An autotomy-promoting factor, when injected, can cause rapid arm shedding in another starfish (soft)",
+                            "Only loud music makes arms fall off",
+                            "Arms never shed except in cartoons",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia notes an autotomy-promoting factor that, injected into another starfish, causes rapid arm shedding. We keep the chemistry soft and skip exact molecule names.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "stomach-neuropeptide-soft",
+                        "title": "Stomach peptide",
+                        "stem": "What helps pull an everted cardiac stomach back inside after feeding?",
+                        "choices": [
+                            "A second set of tube feet that zip the stomach shut",
+                            "The neuropeptide NGFFYamide activates retraction and contraction of the cardiac stomach (Wikipedia)",
+                            "Gravity alone — the stomach always falls back in",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia: retraction and contraction of the cardiac stomach is activated by the neuropeptide NGFFYamide. We keep other peptide stories soft and do not invent extra names.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "wasting-soft",
+                        "title": "Sea-star wasting",
+                        "stem": "What is sea star wasting disease, in soft kid-safe terms?",
+                        "choices": [
+                            "A cold that only makes sea stars sneeze once",
+                            "A paint that turns them bright gold",
+                            "A wasting condition with lesions, arm loss, and body breakdown that can cause mass die-offs; causes are still debated (virus / environment soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia: a widespread sea star wasting disease sporadically causes mass mortalities; some species also face Vibrio-linked wasting. Signs include lesions and disintegration. Exact causes stay debated — we do not lock one germ.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "status-by-kind-soft",
+                        "title": "Status-by-kind",
+                        "stem": "How should we talk about IUCN status for the GROUP card “starfish”?",
+                        "choices": [
+                            "Every sea star on Earth shares one forever Extinct letter",
+                            "Status varies by kind — many species are not assessed; any letter is a snapshot that can change (soft)",
+                            "IUCN grades only apply to mammals",
+                        ],
+                        "correct": "B",
+                        "why": "This is a group card. Wikipedia notes kinds like Pisaster ochraceus have not been IUCN-evaluated; others differ. We never lock one letter for all starfish.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "northern-pacific-soft",
+                        "title": "Northern Pacific",
+                        "stem": "Why is the Northern Pacific seastar (Asterias amurensis) famous in invasion biology?",
+                        "choices": [
+                            "It is on a “world’s worst invasive” list; ballast-water larvae helped it invade places such as southern Australia (soft)",
+                            "It only lives in zoos and never spreads",
+                            "It is a plant that roots in deserts",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia: Asterias amurensis is listed among the world’s worst invasive alien species. It reached Tasmania/Victoria via larval ballast water and can harm native communities. Soft on exact years and counts.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "neoasteroidea-soft",
+                        "title": "Neoasteroidea",
+                        "stem": "How do living sea stars relate to ancient Paleozoic star-shaped echinoderms?",
+                        "choices": [
+                            "Living asteroids (Neoasteroidea) are distinct from their Paleozoic forerunners — classification of living orders is still debated",
+                            "Living sea stars are identical to every fossil from 400 million years ago",
+                            "There were never any fossil sea stars",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia: living asteroids, the Neoasteroidea, are distinct from Paleozoic forerunners. Order placement (including awkward groups such as sea daisies in Velatida) is still discussed.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "stiffness-myth",
+                        "title": "Stiffness myth",
+                        "stem": "Can a sea star’s body wall only be “hard bone” or “floppy muscle”?",
+                        "choices": [
+                            "Yes — echinoderms never change tissue stiffness",
+                            "No — catch connective tissue can stiffen or soften in seconds to minutes under nervous control, unlike ordinary vertebrate ligaments",
+                            "Yes — only fish have mutable tissues",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia (Catch connective tissue): mutable collagenous tissue changes mechanical properties in seconds or minutes via nervous control, not by muscle alone. That is the opposite of a forever-hard or forever-soft myth.",
+                    },
+                ],
+            },
+        },
+    },
     "stingray": {
         "id": "stingray",
         "source": WIKI_STINGRAY,
@@ -19522,6 +20069,7 @@ STUDY_CARDS: dict[str, dict] = {
             },
         },
     },
+
 }
 
 apply_slot_letter_rotation()

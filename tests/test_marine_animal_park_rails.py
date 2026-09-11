@@ -70,7 +70,7 @@ PARK_ANIMALS = {
     "everglades": ["american-alligator", "sea-turtle"],
 }
 
-STUDY_DECK_ANIMALS = ("shark", "crab", "sea-otter", "puffin", "octopus", "sea-turtle")
+STUDY_DECK_ANIMALS = ("shark", "crab", "sea-otter", "puffin", "octopus", "sea-turtle", "seahorse", "starfish", "stingray")
 
 
 def _main(html: str) -> str:
@@ -215,6 +215,18 @@ class MarineAnimalParkRailsTests(unittest.TestCase):
         self.assertEqual(
             study_try_next_ids("sea-turtle"),
             ["octopus", "manta-ray", "african-lion"],
+        )
+        self.assertEqual(
+            study_try_next_ids("seahorse"),
+            ["octopus", "sea-turtle", "african-lion"],
+        )
+        self.assertEqual(
+            study_try_next_ids("starfish"),
+            ["sea-turtle", "octopus", "african-lion"],
+        )
+        self.assertEqual(
+            study_try_next_ids("stingray"),
+            ["manta-ray", "seahorse", "african-lion"],
         )
 
     def test_published_marine_cards_add_park_rails(self):

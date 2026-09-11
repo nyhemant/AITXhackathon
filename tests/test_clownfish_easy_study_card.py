@@ -45,7 +45,7 @@ from study_cards import (  # noqa: E402
 
 FP = REPO / "static" / "field-pack"
 CLOWNFISH = FP / "cards" / "clownfish" / "index.html"
-OCTOPUS = FP / "cards" / "starfish" / "index.html"
+OCTOPUS = FP / "cards" / "whale-shark" / "index.html"
 GATOR = FP / "cards" / "american-alligator" / "index.html"
 BISON = FP / "cards" / "american-bison" / "index.html"
 ELK = FP / "cards" / "elk" / "index.html"
@@ -142,7 +142,7 @@ def _main(html: str) -> str:
 class ClownfishEasyStudyCardTests(unittest.TestCase):
     def test_deck_is_junior_ranger_with_hard_sibling(self):
         self.assertIn("clownfish", study_card_ids())
-        self.assertNotIn("starfish", study_card_ids())
+        self.assertNotIn("whale-shark", study_card_ids())
         self.assertEqual(
             study_card_ids(),
             (
@@ -185,13 +185,14 @@ class ClownfishEasyStudyCardTests(unittest.TestCase):
                 "octopus",
                 "sea-turtle",
                 "seahorse",
+                "starfish",
                 "stingray",
             ),
         )
         self.assertEqual(shipped_levels_for("clownfish"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("clownfish", "hard"))
         self.assertIsNotNone(study_deck_for("clownfish", "zoologist"))
-        self.assertIsNone(study_deck_for("starfish"))
+        self.assertIsNone(study_deck_for("whale-shark"))
         deck = study_deck_for("clownfish")
         self.assertIsNotNone(deck)
         self.assertEqual(deck["id"], "clownfish")
@@ -327,7 +328,7 @@ class ClownfishEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Facts from Wikipedia, Clownfish.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
-        html = outing_talk_html({"id": "starfish", "packTemplate": "animals"})
+        html = outing_talk_html({"id": "whale-shark", "packTemplate": "animals"})
         self.assertIn("What do they eat?", html)
         self.assertNotIn("card-study-pack", html)
         self.assertNotIn("Where do clownfish usually live?", html)
@@ -458,7 +459,7 @@ class ClownfishEasyStudyCardTests(unittest.TestCase):
     def test_artifacts_include_clownfish_easy_and_hard(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
         self.assertIn("clownfish", payload)
-        self.assertNotIn("starfish", payload)
+        self.assertNotIn("whale-shark", payload)
         self.assertIn("puffin", payload)
         self.assertIn("elk", payload)
         fish = payload["clownfish"]

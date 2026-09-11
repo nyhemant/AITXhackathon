@@ -42,7 +42,7 @@ from study_cards import (  # noqa: E402
 
 FP = REPO / "static" / "field-pack"
 KELP = FP / "cards" / "kelp-forest" / "index.html"
-OCTOPUS = FP / "cards" / "starfish" / "index.html"
+OCTOPUS = FP / "cards" / "whale-shark" / "index.html"
 JELLYFISH = FP / "cards" / "jellyfish" / "index.html"
 EEL = FP / "cards" / "eel" / "index.html"
 CUTTLEFISH = FP / "cards" / "cuttlefish" / "index.html"
@@ -145,7 +145,7 @@ def _main(html: str) -> str:
 class KelpForestEasyStudyCardTests(unittest.TestCase):
     def test_deck_is_junior_ranger_only(self):
         self.assertIn("kelp-forest", study_card_ids())
-        self.assertNotIn("starfish", study_card_ids())
+        self.assertNotIn("whale-shark", study_card_ids())
         self.assertEqual(
             study_card_ids(),
             (
@@ -188,13 +188,14 @@ class KelpForestEasyStudyCardTests(unittest.TestCase):
                 "octopus",
                 "sea-turtle",
                 "seahorse",
+                "starfish",
                 "stingray",
             ),
         )
         self.assertEqual(shipped_levels_for("kelp-forest"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("kelp-forest", "hard"))
         self.assertIsNotNone(study_deck_for("kelp-forest", "zoologist"))
-        self.assertIsNone(study_deck_for("starfish"))
+        self.assertIsNone(study_deck_for("whale-shark"))
         deck = study_deck_for("kelp-forest")
         self.assertIsNotNone(deck)
         self.assertEqual(deck["id"], "kelp-forest")
@@ -330,7 +331,7 @@ class KelpForestEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Facts from Wikipedia, Kelp forest.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
-        html = outing_talk_html({"id": "starfish", "packTemplate": "animals"})
+        html = outing_talk_html({"id": "whale-shark", "packTemplate": "animals"})
         self.assertIn("What do they eat?", html)
         self.assertNotIn("card-study-pack", html)
         self.assertNotIn("What is a kelp forest made of", html)
@@ -467,7 +468,7 @@ class KelpForestEasyStudyCardTests(unittest.TestCase):
     def test_artifacts_include_kelp_forest_easy_and_hard(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
         self.assertIn("kelp-forest", payload)
-        self.assertNotIn("starfish", payload)
+        self.assertNotIn("whale-shark", payload)
         self.assertIn("jellyfish", payload)
         self.assertIn("eel", payload)
         self.assertIn("cuttlefish", payload)

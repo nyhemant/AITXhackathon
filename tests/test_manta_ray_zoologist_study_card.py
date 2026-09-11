@@ -41,7 +41,7 @@ from study_cards import (  # noqa: E402
 
 FP = REPO / "static" / "field-pack"
 MANTA = FP / "cards" / "manta-ray" / "index.html"
-OCTOPUS = FP / "cards" / "starfish" / "index.html"
+OCTOPUS = FP / "cards" / "whale-shark" / "index.html"
 KELP = FP / "cards" / "kelp-forest" / "index.html"
 JELLYFISH = FP / "cards" / "jellyfish" / "index.html"
 LION = FP / "cards" / "african-lion" / "index.html"
