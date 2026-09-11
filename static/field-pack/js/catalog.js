@@ -319,7 +319,7 @@ window.FIELD_PACK_CATALOG = {
     photoCredit: "Enhanced for print · Field Trip Kit",
     blurb: "Playful swimmer — smallest otter.",
     links: {
-      pictures: "",
+      pictures: "https://www.nationalgeographic.com/animals/mammals/facts/otters-1",
       more: "https://www.dallaszoo.com/",
       cam: "https://zoo.sandiegozoo.org/cams",
     },
