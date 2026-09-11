@@ -936,15 +936,20 @@ def vft_has_inpage_media(vft: dict | None) -> bool:
 
 
 def vft_can_watch_live(vft: dict | None) -> bool:
-    """Watch Live only when a real VFT habitat can play in-page media.
+    """Watch Live when the in-page player can open this animal.
 
-    Film-library overlays (library_only) are not tour habitats. ParentTest:
-    do not promise a live cam without a habitat.
+    Tour habitats qualify when they have a film or cam embed.
+    Aquarium film-library overlays also qualify: virtual-venue.js
+    ``ensureDeepLinkHabitat`` injects those cards on ``#habitat=`` deep
+    links (manta-ray, whale-shark, and other aquarium-film-library
+    entries). Zoo library-only overlays stay hidden (PR #207).
     """
     vft = vft or {}
-    if vft.get("library_only"):
+    if not vft_has_inpage_media(vft):
         return False
-    return vft_has_inpage_media(vft)
+    if vft.get("library_only"):
+        return str(vft.get("tab") or "") == "aquarium"
+    return True
 
 
 def card_watch_href(vft: dict | None) -> str:
@@ -1199,7 +1204,11 @@ _START_HERE_KITS: dict[str, list[str]] | None = None
 _START_HERE_SITES: dict[str, str] | None = None
 # Hold-back list for catalog animals that must not get a public card page.
 # Polar bear is published — keep this empty unless a future catalog id is intentionally withheld.
-NEVER_PUBLISH_CARD_IDS = frozenset()
+# Short typed URLs → canonical card ids. Alias folders are not real cards.
+CARD_PATH_ALIASES = {
+    "giraffe": "reticulated-giraffe",
+}
+NEVER_PUBLISH_CARD_IDS = frozenset(CARD_PATH_ALIASES)
 _PUBLISHED_CARD_IDS: set[str] | None = None
 
 
@@ -3011,6 +3020,36 @@ def write_parks_alias() -> None:
 </html>
 """
     (out_dir / "index.html").write_text(html, encoding="utf-8")
+
+
+def write_card_alias_pages() -> list[str]:
+    """ /field-pack/cards/giraffe/ → reticulated-giraffe (parks alias pattern). """
+    urls: list[str] = []
+    for src, dest in CARD_PATH_ALIASES.items():
+        dest_href = f"/field-pack/cards/{dest}/"
+        dest_abs = f"{SITE}{dest_href}"
+        title = "Giraffe" if src == "giraffe" else src.replace("-", " ").title()
+        label = "Reticulated giraffe card" if dest == "reticulated-giraffe" else f"{dest.replace('-', ' ').title()} card"
+        out_dir = FIELD / "cards" / src
+        out_dir.mkdir(parents=True, exist_ok=True)
+        html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>{esc(title)} · Field Trip Kit</title>
+  <link rel="canonical" href="{esc(dest_abs)}" />
+  <meta http-equiv="refresh" content="0;url={esc(dest_href)}" />
+  <script>location.replace({json.dumps(dest_href)});</script>
+</head>
+<body>
+  <p><a href="{esc(dest_href)}">{esc(label)}</a></p>
+</body>
+</html>
+"""
+        (out_dir / "index.html").write_text(html, encoding="utf-8")
+        urls.append(f"/field-pack/cards/{src}/")
+        print(f"  card alias /field-pack/cards/{src}/ → {dest}")
+    return urls
 
 
 def write_type_landings(venues: list[dict]) -> list[str]:
@@ -4993,6 +5032,7 @@ def write_card_pages(
         dest.mkdir(parents=True, exist_ok=True)
         (dest / "index.html").write_text(html, encoding="utf-8")
         urls.append(f"/field-pack/cards/{cid}/")
+    write_card_alias_pages()
     return urls
 
 

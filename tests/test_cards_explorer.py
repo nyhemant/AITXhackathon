@@ -4,7 +4,7 @@ from pathlib import Path
 import re
 import unittest
 
-from busyparent_agent.web import WebHandler
+from busyparent_agent.web import CARD_ALIAS_REDIRECTS, WebHandler
 
 
 REPO = Path(__file__).resolve().parents[1]
@@ -140,6 +140,25 @@ class CardsExplorerTests(unittest.TestCase):
         self.assertIn('href="/field-pack/cards/reticulated-giraffe/"', chapter)
         self.assertNotIn("/field-pack/dallas-zoo/", chapter)
         self.assertNotIn('id="door-teaching"', self.start)
+
+    def test_giraffe_short_path_redirects_to_reticulated(self):
+        dest = "/field-pack/cards/reticulated-giraffe/"
+        self.assertEqual(CARD_ALIAS_REDIRECTS["/field-pack/cards/giraffe/"], dest)
+        self.assertEqual(CARD_ALIAS_REDIRECTS["/field-pack/cards/giraffe"], dest)
+        for path in ("/field-pack/cards/giraffe/", "/field-pack/cards/giraffe"):
+            h = FakeHandler(path)
+            h.do_GET()
+            self.assertEqual(h._code, 301, path)
+            self.assertEqual(h._headers.get("Location"), dest, path)
+        alias = Path(GIRAFFE).parent.parent / "giraffe" / "index.html"
+        self.assertTrue(alias.is_file())
+        html = alias.read_text(encoding="utf-8")
+        self.assertIn('rel="canonical" href="https://1less.app/field-pack/cards/reticulated-giraffe/"', html)
+        self.assertIn('content="0;url=/field-pack/cards/reticulated-giraffe/"', html)
+        self.assertIn("location.replace(", html)
+        self.assertIn("/field-pack/cards/reticulated-giraffe/", html)
+        self.assertNotIn("card-page", html)
+        self.assertNotIn('data-card-id="giraffe"', self.html)
 
 
 if __name__ == "__main__":

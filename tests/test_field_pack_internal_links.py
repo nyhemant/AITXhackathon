@@ -52,6 +52,7 @@ from urllib.parse import unquote, urljoin, urlsplit
 
 from busyparent_agent.web import (
     ABOUT_PREFIX,
+    CARD_ALIAS_REDIRECTS,
     DINNER_PATH,
     FIELD_PACK_PREFIX,
     LOGO_ASSETS,
@@ -229,6 +230,20 @@ def _vft_habitats() -> dict[str, set[str]]:
             if h.get("cardId"):
                 ids.add(h["cardId"])
         out[tab] = ids
+    # Film-library overlays: virtual-venue.js ensureDeepLinkHabitat injects these.
+    for tab, fname in (
+        ("zoo", "zoo-film-library.json"),
+        ("aquarium", "aquarium-film-library.json"),
+    ):
+        path = FP / "data" / "virtual-venues" / fname
+        if not path.is_file():
+            continue
+        data = json.loads(path.read_text(encoding="utf-8"))
+        ids = out.setdefault(tab, set())
+        for card in data.get("cards") or []:
+            cid = str(card.get("cardId") or "").strip()
+            if cid:
+                ids.add(cid)
     return out
 
 
@@ -241,6 +256,8 @@ def _served_status(path: str) -> int:
     if path in {"/", "/index.html"}:
         return 302
     if path in ZOO_ALIAS_PATHS:
+        return 301
+    if path in CARD_ALIAS_REDIRECTS:
         return 301
     if path in _SITEMAP_URLS or _safe_static_root_file(path) is not None:
         return 200
@@ -485,6 +502,8 @@ class FieldPackInternalLinkTests(unittest.TestCase):
             "/field-pack/": 200,
             "/field-pack/dallas-zoo/": 200,
             "/field-pack/cards/reticulated-giraffe/": 200,
+            "/field-pack/cards/giraffe/": 301,
+            "/field-pack/cards/giraffe": 301,
             "/field-pack/virtual-field-trip/": 200,
             "/field-pack/virtual-zoo/": 200,
             "/field-pack/app.html": 200,
@@ -513,6 +532,7 @@ class FieldPackInternalLinkTests(unittest.TestCase):
         from generate_bdo_seo import item_public_href, published_card_ids
 
         self.assertIn("reticulated-giraffe", published_card_ids())
+        self.assertNotIn("giraffe", published_card_ids())
         self.assertNotIn("acad-cadillac-view", published_card_ids())
         self.assertEqual(
             item_public_href("reticulated-giraffe", "dallas-zoo"),
