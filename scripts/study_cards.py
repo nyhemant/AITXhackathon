@@ -2041,8 +2041,32 @@ disease, IUCN letters, catch connective
 tissue, stomach neuropeptides, and the
 Northern Pacific invader for Zoologist.
 Do not redo JR themes. Keep kid-friendly.
-Do not invent photos. Do not add
-Zoologist on this card.
+Do not invent photos.
+
+Zoologist is answer-light (empty teach)
+and deepens seven living orders (name a
+few; full roll soft), unsettled ordinal
+phylogeny (which group sits nearest the
+root — morphology and genes disagree),
+catch connective / mutable collagenous
+tissue that softens so an arm can shed
+in seconds, an autotomy-promoting factor
+that can trigger shedding in another
+star (chemistry names soft), NGFFYamide
+retracting the everted cardiac stomach,
+sea-star wasting (lesions, arm loss,
+mass die-offs; virus / environment
+debated), IUCN as snapshots by kind on
+this GROUP card, the Northern Pacific
+seastar invader (Asterias amurensis;
+ballast-water larvae; world’s-worst
+list soft), living Neoasteroidea vs
+Paleozoic forerunners, and the stiffness
+myth (tissue can stiffen or soften
+under nervous control). Soften contested
+numbers. Treat IUCN letters as snapshots
+by species. Do not redo JR or PR themes.
+Keep kid-friendly. Do not invent photos.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
@@ -2187,9 +2211,8 @@ LEVEL_DISPLAY_NAMES = {
 # American bison, elk, puffin, clownfish, crab,
 # cuttlefish, eel, jellyfish, and kelp forest
 # ship Junior Ranger + Park Ranger + Zoologist.
-# Manta ray, octopus, sea turtle, and seahorse ship Junior Ranger +
-# Park Ranger + Zoologist.
-# Starfish ships Junior Ranger + Park Ranger.
+# Manta ray, octopus, sea turtle, seahorse, and starfish ship
+# Junior Ranger + Park Ranger + Zoologist.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -2734,6 +2757,16 @@ PUSH_FURTHER_STARFISH = (
     "Status can differ by kind. Why not one letter for every sea star?",
     "Special stretchy body tissue and stomach chemistry still wait. Why save those names?",
     "Denser family-tree names and a Northern Pacific invader still wait. Why keep those for later?",
+)
+TALK_ABOUT_STARFISH_ZOOLOGIST = (
+    "Status can differ by kind. Why isn’t one letter the story for every sea star?",
+    "Stretchy body tissue can go stiff or floppy in seconds. Why isn’t that just muscle?",
+    "A wasting illness can take whole rocky shores. Why keep the germ story soft?",
+)
+PUSH_FURTHER_STARFISH_ZOOLOGIST = (
+    "Living sea stars sit apart from old star-shaped fossils. Why keep that family-tree debate soft?",
+    "A Northern Pacific seastar hitchhiked in ballast water. Why might larvae spread so far?",
+    "A tiny chemical can make one sea star drop an arm. Why keep that chemistry name soft?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -19684,6 +19717,144 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "B",
                         "why": "Wikipedia: oral = underside (mouth, ambulacral grooves, tube feet). Aboral = upper surface (often colourful; madreporite sits here). The “pretty” side is not the mouth side.",
+                    },
+                ],
+            },
+            "zoologist": {
+                # Answer-light: Zoologist has no Learn-first strip.
+                "teach": [],
+                "talk_about": list(TALK_ABOUT_STARFISH_ZOOLOGIST),
+                "push_further": list(PUSH_FURTHER_STARFISH_ZOOLOGIST),
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "seven-orders-soft",
+                        "title": "Seven orders",
+                        "stem": "How do living sea stars split at the order level, if we keep the count soft?",
+                        "choices": [
+                            "Seven extant orders (e.g. Forcipulatida, Valvatida, Paxillosida, Velatida, and others) — exact lists stay soft",
+                            "Exactly one order for every ocean basin",
+                            "No orders — every kind is its own phylum",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia lists seven living orders in Asteroidea (Brisingida, Forcipulatida, Notomyotida, Paxillosida, Spinulosida, Valvatida, Velatida). We name a few and keep the full roll soft.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "phylogeny-soft",
+                        "title": "Phylogeny",
+                        "stem": "What do scientists still debate about sea-star family trees?",
+                        "choices": [
+                            "Whether sea stars have tube feet at all",
+                            "Which order sits nearest the base of living Asteroidea — morphology and genes disagree (Paxillosida / Forcipulatida / Velatida ideas soft)",
+                            "Whether sea stars live in salt water",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia and reviews note ordinal relationships are unsettled. Different studies place different groups near the root. We treat that as ongoing debate, not one forever tree.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "catch-connective-soft",
+                        "title": "Catch connective",
+                        "stem": "What lets a sea star shed an arm in seconds without using big muscles to tear it off?",
+                        "choices": [
+                            "Catch connective tissue (mutable collagenous tissue) softens rapidly under nervous control",
+                            "Tiny scissors hidden in each joint",
+                            "The arm freezes solid and snaps like ice",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia: arm loss uses rapid softening of catch connective tissue (also called mutable collagenous tissue), found in most echinoderms, under nervous signals — not a muscle tear alone.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "autotomy-factor-soft",
+                        "title": "Autotomy factor",
+                        "stem": "What experimental clue shows arm-shedding can be chemically triggered in sea stars?",
+                        "choices": [
+                            "An autotomy-promoting factor, when injected, can cause rapid arm shedding in another starfish (soft)",
+                            "Only loud music makes arms fall off",
+                            "Arms never shed except in cartoons",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia notes an autotomy-promoting factor that, injected into another starfish, causes rapid arm shedding. We keep the chemistry soft and skip exact molecule names.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "stomach-neuropeptide-soft",
+                        "title": "Stomach peptide",
+                        "stem": "What helps pull an everted cardiac stomach back inside after feeding?",
+                        "choices": [
+                            "A second set of tube feet that zip the stomach shut",
+                            "The neuropeptide NGFFYamide activates retraction and contraction of the cardiac stomach (Wikipedia)",
+                            "Gravity alone — the stomach always falls back in",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia: retraction and contraction of the cardiac stomach is activated by the neuropeptide NGFFYamide. We keep other peptide stories soft and do not invent extra names.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "wasting-soft",
+                        "title": "Sea-star wasting",
+                        "stem": "What is sea star wasting disease, in soft kid-safe terms?",
+                        "choices": [
+                            "A cold that only makes sea stars sneeze once",
+                            "A paint that turns them bright gold",
+                            "A wasting condition with lesions, arm loss, and body breakdown that can cause mass die-offs; causes are still debated (virus / environment soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia: a widespread sea star wasting disease sporadically causes mass mortalities; some species also face Vibrio-linked wasting. Signs include lesions and disintegration. Exact causes stay debated — we do not lock one germ.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "status-by-kind-soft",
+                        "title": "Status-by-kind",
+                        "stem": "How should we talk about IUCN status for the GROUP card “starfish”?",
+                        "choices": [
+                            "Every sea star on Earth shares one forever Extinct letter",
+                            "Status varies by kind — many species are not assessed; any letter is a snapshot that can change (soft)",
+                            "IUCN grades only apply to mammals",
+                        ],
+                        "correct": "B",
+                        "why": "This is a group card. Wikipedia notes kinds like Pisaster ochraceus have not been IUCN-evaluated; others differ. We never lock one letter for all starfish.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "northern-pacific-soft",
+                        "title": "Northern Pacific",
+                        "stem": "Why is the Northern Pacific seastar (Asterias amurensis) famous in invasion biology?",
+                        "choices": [
+                            "It is on a “world’s worst invasive” list; ballast-water larvae helped it invade places such as southern Australia (soft)",
+                            "It only lives in zoos and never spreads",
+                            "It is a plant that roots in deserts",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia: Asterias amurensis is listed among the world’s worst invasive alien species. It reached Tasmania/Victoria via larval ballast water and can harm native communities. Soft on exact years and counts.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "neoasteroidea-soft",
+                        "title": "Neoasteroidea",
+                        "stem": "How do living sea stars relate to ancient Paleozoic star-shaped echinoderms?",
+                        "choices": [
+                            "Living asteroids (Neoasteroidea) are distinct from their Paleozoic forerunners — classification of living orders is still debated",
+                            "Living sea stars are identical to every fossil from 400 million years ago",
+                            "There were never any fossil sea stars",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia: living asteroids, the Neoasteroidea, are distinct from Paleozoic forerunners. Order placement (including awkward groups such as sea daisies in Velatida) is still discussed.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "stiffness-myth",
+                        "title": "Stiffness myth",
+                        "stem": "Can a sea star’s body wall only be “hard bone” or “floppy muscle”?",
+                        "choices": [
+                            "Yes — echinoderms never change tissue stiffness",
+                            "No — catch connective tissue can stiffen or soften in seconds to minutes under nervous control, unlike ordinary vertebrate ligaments",
+                            "Yes — only fish have mutable tissues",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia (Catch connective tissue): mutable collagenous tissue changes mechanical properties in seconds or minutes via nervous control, not by muscle alone. That is the opposite of a forever-hard or forever-soft myth.",
                     },
                 ],
             },
