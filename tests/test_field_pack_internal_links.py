@@ -50,6 +50,7 @@ import unittest
 from pathlib import Path
 from urllib.parse import unquote, urljoin, urlsplit
 
+from busyparent_agent.url_aliases import redirect_location
 from busyparent_agent.web import (
     ABOUT_PREFIX,
     CARD_ALIAS_REDIRECTS,
@@ -256,6 +257,8 @@ def _served_status(path: str) -> int:
     if path in {"/", "/index.html"}:
         return 302
     if path in ZOO_ALIAS_PATHS:
+        return 301
+    if redirect_location(path):
         return 301
     if path in CARD_ALIAS_REDIRECTS:
         return 301
@@ -470,7 +473,8 @@ class FieldPackInternalLinkTests(unittest.TestCase):
             known = self.vft_habitats.get(tab) or set()
             if hid not in known and hid not in set().union(*self.vft_habitats.values()):
                 missing.append(f"{hid} from {h['source']}")
-            self.assertEqual(self._http_status(parts.path), 200, h["resolved"])
+            expect = 301 if "/virtual-zoo" in parts.path else 200
+            self.assertEqual(self._http_status(parts.path), expect, h["resolved"])
         self.assertEqual(missing, [], "VFT #habitat= ids must exist in that tab's map JSON")
 
     def test_local_server_agrees_on_flagship_paths(self):
@@ -505,8 +509,10 @@ class FieldPackInternalLinkTests(unittest.TestCase):
             "/field-pack/cards/giraffe/": 301,
             "/field-pack/cards/giraffe": 301,
             "/field-pack/virtual-field-trip/": 200,
-            "/field-pack/virtual-zoo/": 200,
-            "/field-pack/app.html": 200,
+            "/field-pack/virtual-zoo/": 301,
+            "/field-pack/parks/": 301,
+            "/field-pack/print/": 301,
+            "/field-pack/app.html": 301,
             "/dinner": 200,
             "/start/": 200,
             "/start": 301,

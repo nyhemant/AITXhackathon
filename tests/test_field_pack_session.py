@@ -118,7 +118,7 @@ class FlagshipSessionTests(unittest.TestCase):
         self.assertNotIn("Where is home?", html)
         self.assertNotIn("What is their superpower?", html)
         self.assertIn("Watch Live", html)
-        self.assertIn("/field-pack/virtual-zoo/?from=card#habitat=african-lion", html)
+        self.assertIn("/field-pack/virtual-field-trip/?tab=zoo&from=card#habitat=african-lion", html)
         self.assertNotIn("nationalzoo.si.edu/webcams/lion-cam", html)
         self.assertIn("Print", html)
         self.assertNotIn("Open in outing view", html)
@@ -144,7 +144,7 @@ class FlagshipSessionTests(unittest.TestCase):
             html = (FP / "cards" / cid / "index.html").read_text(encoding="utf-8")
             self.assertIn("Watch Live", html, cid)
             self.assertIn(f"#habitat={hid}", html, cid)
-            self.assertIn("/field-pack/virtual-zoo/?from=card", html, cid)
+            self.assertIn("/field-pack/virtual-field-trip/?tab=zoo&from=card", html, cid)
             for host in outbound:
                 self.assertNotIn(host, html, cid)
             if cid not in (
@@ -160,7 +160,7 @@ class FlagshipSessionTests(unittest.TestCase):
         self.assertNotIn("What do they eat?", koala)
         self.assertNotIn("What did you notice about the Koala?", koala)
         self.assertNotIn("Watch Live", koala)
-        self.assertNotIn("/field-pack/virtual-zoo/?from=card#habitat=koala", koala)
+        self.assertNotIn("/field-pack/virtual-field-trip/?tab=zoo&from=card#habitat=koala", koala)
         koala_main = koala.split('<main class="card-page">', 1)[1].split("</main>", 1)[0]
         self.assertNotIn("sandiegozoo.org", koala_main)
         self.assertNotIn("zoo.sandiegozoo.org/cams", koala)

@@ -401,7 +401,7 @@ class KoalaEasyStudyCardTests(unittest.TestCase):
         for line in TEACH:
             self.assertIn(line, main)
         self.assertNotIn("Watch Live", main)
-        self.assertNotIn("/field-pack/virtual-zoo/?from=card#habitat=koala", main)
+        self.assertNotIn("/field-pack/virtual-field-trip/?tab=zoo&from=card#habitat=koala", main)
         self.assertIn('class="card-hero-links no-print"', main)
         self.assertIn('class="card-try-next no-print"', main)
         self.assertNotIn('class="card-page-photo-link"', main)

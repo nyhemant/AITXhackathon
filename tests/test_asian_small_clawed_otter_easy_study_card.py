@@ -334,7 +334,7 @@ class AsianSmallClawedOtterEasyStudyCardTests(unittest.TestCase):
         self.assertIn("card-watch-live", main)
         self.assertIn("card-page-photo-link", main)
         self.assertIn(
-            "/field-pack/virtual-zoo/?from=card#habitat=asian-small-clawed-otter",
+            "/field-pack/virtual-field-trip/?tab=zoo&from=card#habitat=asian-small-clawed-otter",
             main,
         )
         self.assertIn('class="card-hero-links no-print"', main)

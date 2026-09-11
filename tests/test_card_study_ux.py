@@ -414,7 +414,7 @@ class CardStudyUxTests(unittest.TestCase):
                     "habitat_id": "african-lion",
                     "film_url": "https://www.youtube.com/watch?v=x",
                     "film_title": "Lion film at the Smithsonian National Zoo",
-                    "vft_href": "/field-pack/virtual-zoo/#habitat=african-lion",
+                    "vft_href": "/field-pack/virtual-field-trip/?tab=zoo#habitat=african-lion",
                 }
             },
             film_via_vft=True,
@@ -449,7 +449,7 @@ class CardStudyUxTests(unittest.TestCase):
         self.assertNotIn('class="seo-watch-row"', warthog)
 
     def test_hero_photo_matches_watch_live_href(self):
-        href = "/field-pack/virtual-zoo/?from=card#habitat=zebra"
+        href = "/field-pack/virtual-field-trip/?tab=zoo&from=card#habitat=zebra"
         linked = card_hero_photo_html(
             photo="/field-pack/photos/zebra.jpg?v=img2",
             name="Zebra",

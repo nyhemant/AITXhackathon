@@ -59,7 +59,6 @@ MISSING_HABITAT_CARDS = tuple(cid for cid, _tab in LIBRARY_ONLY_CARDS)
 VFT_JS = FP / "js" / "virtual-venue.js"
 VFT_PAGES = (
     FP / "virtual-field-trip" / "index.html",
-    FP / "virtual-zoo" / "index.html",
 )
 
 OUTBOUND_CAM = (
@@ -128,7 +127,7 @@ class CardWatchLiveTests(unittest.TestCase):
         watch = _watch(html)
         self.assertIn(CTA_WATCH_LIVE, watch)
         self.assertIn('class="btn btn-primary card-watch-live"', watch)
-        self.assertIn("/field-pack/virtual-zoo/?from=card#habitat=african-lion", watch)
+        self.assertIn("/field-pack/virtual-field-trip/?tab=zoo&from=card#habitat=african-lion", watch)
         self.assertIn("Live from Smithsonian National Zoo", watch)
         self.assertNotIn('target="_blank"', watch)
         for host in OUTBOUND_CAM:
@@ -140,7 +139,7 @@ class CardWatchLiveTests(unittest.TestCase):
     def test_giraffe_and_jellyfish_stay_on_site(self):
         giraffe = GIRAFFE.read_text(encoding="utf-8")
         jelly = JELLY.read_text(encoding="utf-8")
-        self.assertIn("/field-pack/virtual-zoo/?from=card#habitat=reticulated-giraffe", giraffe)
+        self.assertIn("/field-pack/virtual-field-trip/?tab=zoo&from=card#habitat=reticulated-giraffe", giraffe)
         self.assertIn("Live from Houston Zoo", giraffe)
         self.assertNotIn("houstonzoo.org", _main(giraffe))
         self.assertIn("/field-pack/virtual-field-trip/?tab=aquarium&from=card#habitat=jellyfish", jelly)
@@ -164,7 +163,7 @@ class CardWatchLiveTests(unittest.TestCase):
             actions = main.split('class="card-page-actions"', 1)[1]
             self.assertNotIn("card-watch-live", actions, cid)
             if tab == "zoo":
-                href = f"/field-pack/virtual-zoo/?from=card#habitat={cid}"
+                href = f"/field-pack/virtual-field-trip/?tab=zoo&from=card#habitat={cid}"
             else:
                 href = f"/field-pack/virtual-field-trip/?tab=aquarium&from=card#habitat={cid}"
             self.assertNotIn(href, actions, cid)
@@ -286,7 +285,7 @@ class CardWatchLiveTests(unittest.TestCase):
         self.assertFalse(vft_can_watch_live(koala))
         self.assertEqual(
             card_watch_href(koala),
-            "/field-pack/virtual-zoo/?from=card#habitat=koala",
+            "/field-pack/virtual-field-trip/?tab=zoo&from=card#habitat=koala",
         )
         place = watch_links_html({"vft": koala})
         self.assertEqual(place, "")

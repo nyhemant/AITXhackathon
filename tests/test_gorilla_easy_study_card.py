@@ -351,7 +351,7 @@ class GorillaEasyStudyCardTests(unittest.TestCase):
         for line in TEACH:
             self.assertIn(line, main)
         self.assertIn("Watch Live", main)
-        self.assertIn("/field-pack/virtual-zoo/?from=card#habitat=western-lowland-gorilla", main)
+        self.assertIn("/field-pack/virtual-field-trip/?tab=zoo&from=card#habitat=western-lowland-gorilla", main)
         self.assertIn('class="card-hero-links no-print"', main)
         self.assertIn('class="card-try-next no-print"', main)
         self.assertIn('class="card-page-photo-link"', main)

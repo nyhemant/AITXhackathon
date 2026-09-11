@@ -64,7 +64,6 @@ COMPAT_PATHS = (
     "/field-pack/cards/",
     "/field-pack/cards/reticulated-giraffe/",
     "/field-pack/virtual-field-trip/",
-    "/field-pack/virtual-zoo/",
     "/field-pack/dallas-zoo/",
     "/start/",
     "/about/",
@@ -138,7 +137,7 @@ class HubExplorerTests(unittest.TestCase):
 
     def test_try_a_place_leads_with_dallas_us_samples(self):
         js = (FP / "js" / "landing-map.js").read_text(encoding="utf-8")
-        self.assertIn("landing-map.js?v=87", self.html)
+        self.assertIn("landing-map.js?v=88", self.html)
         ready = re.search(r"window\.FP_READY_STRIP = \{([\s\S]*?)\n  \};", js)
         self.assertIsNotNone(ready)
         block = ready.group(1)
@@ -191,7 +190,8 @@ class HubExplorerTests(unittest.TestCase):
         vft = _get("/field-pack/virtual-field-trip/")
         self.assertIn(b"Virtual Field Trip", vft.wfile.getvalue())
         vz = _get("/field-pack/virtual-zoo/")
-        self.assertIn(vz._code, {200, 301, 302}, vz._code)
+        self.assertEqual(vz._code, 301)
+        self.assertEqual(vz._headers.get("Location"), "/field-pack/virtual-field-trip/")
 
     def test_about_is_seek_out_not_a_landing(self):
         slash = _get("/about")

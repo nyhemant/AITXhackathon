@@ -12,7 +12,6 @@ REPO = Path(__file__).resolve().parents[1]
 FP = REPO / "static" / "field-pack"
 VFT_PAGES = (
     FP / "virtual-field-trip" / "index.html",
-    FP / "virtual-zoo" / "index.html",
 )
 VFT_JS = FP / "js" / "virtual-venue.js"
 NOSCRIPT_RE = re.compile(r"<noscript\b[^>]*>.*?</noscript>", re.I | re.S)

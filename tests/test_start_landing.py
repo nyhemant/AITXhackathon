@@ -109,7 +109,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn('id="start-menu-btn"', body)
         self.assertIn("Print cutouts to hide", body)
         self.assertIn("Library", body)
-        self.assertIn("/field-pack/virtual-zoo/?print=1", body)
+        self.assertIn("/field-pack/print/", body)
         self.assertNotIn(">Field Trip Kit</span>", body)
         self.assertIn("Watch Live", body)
         self.assertNotIn("I need an activity for today", body)
@@ -177,8 +177,8 @@ class StartLandingTests(unittest.TestCase):
             self.assertEqual(head_alias.wfile.getvalue(), b"", alias)
 
         virtual_zoo = _get("/field-pack/virtual-zoo/")
-        self.assertEqual(virtual_zoo._code, 200)
-        self.assertIsNone(virtual_zoo._headers.get("Location"))
+        self.assertEqual(virtual_zoo._code, 301)
+        self.assertEqual(virtual_zoo._headers.get("Location"), "/field-pack/virtual-field-trip/")
 
         nested = _get("/zoo/index.html")
         self.assertEqual(nested._code, 404)
@@ -301,7 +301,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertEqual(len(pills), 2, pills)
         self.assertIn('href="/field-pack/virtual-field-trip/"', pills[0])
         self.assertIn("Watch Live", pills[0])
-        self.assertIn('href="/field-pack/virtual-zoo/?print=1"', pills[1])
+        self.assertIn('href="/field-pack/print/"', pills[1])
         self.assertIn("Print cutouts to hide", pills[1])
         self.assertNotIn("youtube.com", chapter)
         self.assertNotIn("target=\"_blank\"", chapter)
@@ -766,7 +766,7 @@ class StartLandingTests(unittest.TestCase):
         expected = {
             "start-home": [
                 ("/field-pack/virtual-field-trip/", "Watch Live"),
-                ("/field-pack/virtual-zoo/?print=1", "Print cutouts to hide"),
+                ("/field-pack/print/", "Print cutouts to hide"),
             ],
             "start-going": [
                 ("/field-pack/dallas-zoo/", "Sample visit"),

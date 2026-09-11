@@ -1039,7 +1039,7 @@
     if (bank[id]) return bank[id];
     const bare = id.replace(/^w-/, "");
     if (bank[bare]) return bank[bare];
-    // soft aliases
+    // soft aliases — keep in sync with src/busyparent_agent/url_aliases.py
     const aliases = {
       elephant: "african-elephant",
       giraffe: "reticulated-giraffe",

@@ -292,7 +292,7 @@ class FlamingoEasyStudyCardTests(unittest.TestCase):
         for line in TEACH:
             self.assertIn(line, main)
         self.assertIn("Watch Live", main)
-        self.assertIn("/field-pack/virtual-zoo/?from=card#habitat=caribbean-flamingo", main)
+        self.assertIn("/field-pack/virtual-field-trip/?tab=zoo&from=card#habitat=caribbean-flamingo", main)
         self.assertIn("study-card.js?v=10", html)
         self.assertIn("study-card.css?v=10", html)
         self.assertIn("study-cards-data.js?v=7", html)

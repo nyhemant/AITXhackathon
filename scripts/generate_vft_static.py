@@ -11,7 +11,6 @@ VENUES = ROOT / "data/virtual-venues"
 CATALOG = ROOT / "js/catalog.js"
 PAGES = [
     ROOT / "virtual-field-trip/index.html",
-    ROOT / "virtual-zoo/index.html",
 ]
 START = "<!-- VFT:PANELS:START -->"
 END = "<!-- VFT:PANELS:END -->"

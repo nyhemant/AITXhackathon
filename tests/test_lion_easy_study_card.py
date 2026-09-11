@@ -198,7 +198,7 @@ class LionEasyStudyCardTests(unittest.TestCase):
         for line in TEACH:
             self.assertIn(line, main)
         self.assertIn("Watch Live", main)
-        self.assertIn("/field-pack/virtual-zoo/?from=card#habitat=african-lion", main)
+        self.assertIn("/field-pack/virtual-field-trip/?tab=zoo&from=card#habitat=african-lion", main)
         self.assertNotIn("nationalzoo.si.edu/webcams", main)
         self.assertIn("Look close — mane, whiskers, a tuft on the tail.", html)
         self.assertNotIn("mighty roar", html)

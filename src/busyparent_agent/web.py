@@ -11,6 +11,10 @@ from uuid import uuid4
 
 from busyparent_agent.rate_limit import evaluate_request, set_limiter, RateLimiter
 from busyparent_agent.service import APP_TITLE, create_dinner_decision_session
+from busyparent_agent.url_aliases import (
+    CARD_ALIAS_REDIRECTS,
+    redirect_location,
+)
 
 
 SESSIONS = {}
@@ -37,11 +41,7 @@ START_ROOT = REPO_ROOT / "static" / "start"
 START_PREFIX = "/start"
 # Memorable short alias for the first-time landing (not Virtual Zoo)
 ZOO_ALIAS_PATHS = frozenset({"/zoo", "/zoo/"})
-# Typed/short card URLs → canonical card pages (also a static alias page).
-CARD_ALIAS_REDIRECTS = {
-    "/field-pack/cards/giraffe": "/field-pack/cards/reticulated-giraffe/",
-    "/field-pack/cards/giraffe/": "/field-pack/cards/reticulated-giraffe/",
-}
+# Typed/short card URLs + IA aliases — see url_aliases.py (one table).
 # Educational About / FAQ — seek-out only; not a landing
 ABOUT_ROOT = REPO_ROOT / "static" / "about"
 ABOUT_PREFIX = "/about"
@@ -1097,6 +1097,16 @@ def _send_redirect(handler: "WebHandler", location: str, *, code: int = 301) -> 
     handler.end_headers()
 
 
+def _ia_redirect(handler: "WebHandler") -> bool:
+    """301 legacy Watch Live / parks / app.html / print / short card slugs."""
+    parts = urlsplit(handler.path)
+    location = redirect_location(parts.path, parts.query)
+    if not location:
+        return False
+    _send_redirect(handler, location, code=301)
+    return True
+
+
 _ROOT_PLAINTEXT_NAMES = frozenset({"robots.txt", "llms.txt", "llms-full.txt"})
 _ROOT_XML_NAMES = frozenset({"sitemap.xml"})
 
@@ -1276,9 +1286,7 @@ class WebHandler(BaseHTTPRequestHandler):
             self.send_header("Content-Length", "0")
             self.end_headers()
             return
-        card_alias = CARD_ALIAS_REDIRECTS.get(path)
-        if card_alias:
-            _send_redirect(self, card_alias, code=301)
+        if _ia_redirect(self):
             return
         # Legacy place brochures → indexable venue URLs
         # /field-pack/places/dallas-zoo.html → /field-pack/dallas-zoo/
@@ -1430,9 +1438,7 @@ class WebHandler(BaseHTTPRequestHandler):
             self.send_header("Content-Length", "0")
             self.end_headers()
             return
-        card_alias = CARD_ALIAS_REDIRECTS.get(path)
-        if card_alias:
-            _send_redirect(self, card_alias, code=301)
+        if _ia_redirect(self):
             return
         if path.startswith(FIELD_PACK_PREFIX + "/places/"):
             slug = path[len(FIELD_PACK_PREFIX + "/places/") :]

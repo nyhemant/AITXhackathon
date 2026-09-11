@@ -243,7 +243,7 @@ class ItemRouteActionTests(unittest.TestCase):
         self.assertIn(f'href="{otter_pictures}"', main)
         self.assertIn(">Photos</a>", main)
         self.assertIn(
-            "/field-pack/virtual-zoo/?from=card#habitat=asian-small-clawed-otter",
+            "/field-pack/virtual-field-trip/?tab=zoo&from=card#habitat=asian-small-clawed-otter",
             main,
         )
         self.assertNotIn("/facts/sea-otter", main)
