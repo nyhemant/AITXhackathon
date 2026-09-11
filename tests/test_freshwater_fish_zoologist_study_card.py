@@ -36,7 +36,7 @@ from study_cards import (  # noqa: E402
 
 FP = REPO / "static" / "field-pack"
 FISH = FP / "cards" / "freshwater-fish" / "index.html"
-OCTOPUS = FP / "cards" / "stingray" / "index.html"
+OCTOPUS = FP / "cards" / "starfish" / "index.html"
 SLOTH = FP / "cards" / "two-toed-sloth" / "index.html"
 LION = FP / "cards" / "african-lion" / "index.html"
 STUDY_JSON = FP / "data" / "study-cards.json"
@@ -152,8 +152,8 @@ class FreshwaterFishZoologistStudyCardTests(unittest.TestCase):
             ("easy", "hard", "zoologist"),
         )
         self.assertEqual(level_display_name("zoologist"), "Zoologist")
-        self.assertNotIn("stingray", study_card_ids())
-        self.assertIsNone(study_deck_for("stingray"))
+        self.assertNotIn("starfish", study_card_ids())
+        self.assertIsNone(study_deck_for("starfish"))
         deck = study_deck_for("freshwater-fish", "zoologist")
         self.assertIsNotNone(deck)
         self.assertEqual(deck["level"], "zoologist")
@@ -357,7 +357,7 @@ class FreshwaterFishZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("What do they eat?", jelly)
         self.assertNotIn("card-study-pack", jelly)
         self.assertNotIn("ray-finned-majority-soft", jelly)
-        self.assertIsNone(study_deck_for("stingray"))
+        self.assertIsNone(study_deck_for("starfish"))
 
     def test_published_artifacts_and_plumbing(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))

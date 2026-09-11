@@ -1,4 +1,4 @@
-"""Manta-ray Easy study-card: Junior Ranger teach + 10 MCQs (Park Ranger is a sibling level)."""
+"""Stingray Easy study-card: Junior Ranger teach + 10 MCQs (no Park Ranger yet)."""
 
 from __future__ import annotations
 
@@ -14,19 +14,19 @@ sys.path.insert(0, str(REPO / "scripts"))
 from generate_bdo_seo import outing_talk_html  # noqa: E402
 from study_cards import (  # noqa: E402
     LEVEL_DISPLAY_NAMES,
-    PUSH_FURTHER_JELLYFISH,
-    PUSH_FURTHER_KELP_FOREST,
     PUSH_FURTHER_LION,
     PUSH_FURTHER_MANTA_RAY,
+    PUSH_FURTHER_SEAHORSE,
+    PUSH_FURTHER_STINGRAY,
     STUDY_SLOTS,
-    TALK_ABOUT_JELLYFISH,
-    TALK_ABOUT_KELP_FOREST,
     TALK_ABOUT_LION,
     TALK_ABOUT_MANTA_RAY,
-    WIKI_JELLYFISH,
-    WIKI_KELP_FOREST,
+    TALK_ABOUT_SEAHORSE,
+    TALK_ABOUT_STINGRAY,
     WIKI_LION,
     WIKI_MANTA_RAY,
+    WIKI_SEAHORSE,
+    WIKI_STINGRAY,
     level_display_name,
     shipped_levels_for,
     study_card_ids,
@@ -38,10 +38,10 @@ from study_cards import (  # noqa: E402
 )
 
 FP = REPO / "static" / "field-pack"
+STINGRAY = FP / "cards" / "stingray" / "index.html"
+STARFISH = FP / "cards" / "starfish" / "index.html"
+SEAHORSE = FP / "cards" / "seahorse" / "index.html"
 MANTA = FP / "cards" / "manta-ray" / "index.html"
-OCTOPUS = FP / "cards" / "starfish" / "index.html"
-KELP = FP / "cards" / "kelp-forest" / "index.html"
-JELLYFISH = FP / "cards" / "jellyfish" / "index.html"
 PRINT_KIT = FP / "js" / "print-kit.js"
 STUDY_JS = FP / "js" / "study-card.js"
 STYLES = FP / "css" / "styles.css"
@@ -60,37 +60,37 @@ GENERIC_WORKSHEET = (
 )
 
 TEACH = (
-    "Huge flat rays with wing-like fins",
-    "Horn-shaped fins beside a wide forward mouth",
-    "Filter-feed on tiny drifting animals (plankton)",
-    "Swim by flapping their “wings”",
-    "Live in warm tropical and subtropical seas",
+    "Flattened ocean fish with a skeleton of cartilage (related to sharks — soft)",
+    "Eyes on top; mouth and gills on the underside",
+    "Many hide under sand on the seafloor",
+    "The tail can carry a venomous stinger used for defense",
+    "Usually shy — they sting when threatened or stepped on, not when chasing people",
 )
 
 STEMS = (
-    "What do a manta’s broad fins work like?",
-    "What sit beside a manta’s wide forward mouth?",
-    "How do mantas gather their food?",
-    "How big can a manta get, if we keep the size soft?",
-    "How do reef mantas and giant oceanic mantas use the sea?",
-    "How are baby mantas born?",
-    "Why do mantas visit coral cleaning stations?",
-    "What do mantas sometimes do at the surface — and do we know why?",
-    "How can people help mantas?",
-    "Do a manta’s horns mean it is dangerous?",
+    "What is a stingray’s skeleton mostly made of?",
+    "What shape helps many stingrays hug the seafloor?",
+    "Where are a stingray’s eyes and mouth?",
+    "How do many bottom-living stingrays hide?",
+    "What is the famous “sting” on many stingrays?",
+    "What do many stingrays eat on the seafloor?",
+    "How can a buried stingray keep breathing without gulping sandy water through its mouth?",
+    "How do stingray babies usually arrive?",
+    "About how many kinds of stingray are there, if we keep the count soft?",
+    "Do stingrays usually chase and hunt people?",
 )
 
 QIDS = (
-    "wings-soft",
-    "horns-soft",
-    "filter-soft",
-    "big-soft",
-    "reef-ocean-soft",
-    "live-pups-soft",
-    "cleaning-soft",
-    "breach-soft",
-    "soft-net-gill-care",
-    "horns-not-danger-myth",
+    "cartilage-soft",
+    "flat-disc-soft",
+    "eyes-up-mouth-down-soft",
+    "sand-hide-soft",
+    "stinger-soft",
+    "crush-food-soft",
+    "spiracles-soft",
+    "live-young-soft",
+    "many-kinds-soft",
+    "not-hunters-myth",
 )
 
 PLAIN_LEVEL_LABELS = ("Easy", "Hard")
@@ -103,50 +103,30 @@ BRITTLE = (
     "Near Threatened",
     "Least Concern",
     "CITES",
-    "Mobula",
-    "alfredi",
-    "birostris",
-    "yarae",
-    "ricochet",
     "Myliobatiformes",
-    "Myliobatidae",
-    "gill-raker",
-    "gill raker",
-    "cognition",
+    "ampullae",
+    "undulatory",
+    "oscillatory",
+    "histotroph",
+    "uterine milk",
+    "Mobula",
+    "devil-ray",
     "kg",
     "cm",
     "mph",
     "km/h",
 )
-# Explore more now uses Park Ranger talk/push, so Mobula / VU-EN
-# wording may appear on the Junior Ranger page without leaking
-# into JR questions.
-PAGE_BRITTLE = tuple(
-    p
-    for p in BRITTLE
-    if p
-    not in (
-        "IUCN",
-        "Endangered",
-        "Vulnerable",
-        "Mobula",
-        "alfredi",
-        "birostris",
-        "yarae",
-        "Myliobatidae",
-        "gill-raker",
-        "gill raker",
-    )
-)
+PAGE_BRITTLE = BRITTLE
 RESERVED = (
     "IUCN",
-    "Mobula",
-    "alfredi",
-    "birostris",
-    "yarae",
-    "ricochet",
+    "CITES",
     "Myliobatiformes",
-    "cognition",
+    "ampullae",
+    "undulatory",
+    "oscillatory",
+    "histotroph",
+    "uterine milk",
+    "Mobula",
 )
 
 
@@ -158,9 +138,9 @@ def _main(html: str) -> str:
     return html.split('<main class="card-page">', 1)[1].split("</main>", 1)[0]
 
 
-class MantaRayEasyStudyCardTests(unittest.TestCase):
+class StingrayEasyStudyCardTests(unittest.TestCase):
     def test_deck_is_junior_ranger_only(self):
-        self.assertIn("manta-ray", study_card_ids())
+        self.assertIn("stingray", study_card_ids())
         self.assertNotIn("starfish", study_card_ids())
         self.assertEqual(
             study_card_ids(),
@@ -207,20 +187,20 @@ class MantaRayEasyStudyCardTests(unittest.TestCase):
                 "stingray",
             ),
         )
-        self.assertEqual(shipped_levels_for("manta-ray"), ("easy", "hard", "zoologist"))
-        self.assertIsNotNone(study_deck_for("manta-ray", "hard"))
-        self.assertIsNotNone(study_deck_for("manta-ray", "zoologist"))
+        self.assertEqual(shipped_levels_for("stingray"), ("easy",))
+        self.assertIsNone(study_deck_for("stingray", "hard"))
+        self.assertIsNone(study_deck_for("stingray", "zoologist"))
         self.assertIsNone(study_deck_for("starfish"))
-        deck = study_deck_for("manta-ray")
+        deck = study_deck_for("stingray")
         self.assertIsNotNone(deck)
-        self.assertEqual(deck["id"], "manta-ray")
+        self.assertEqual(deck["id"], "stingray")
         self.assertEqual(deck["level"], "easy")
         self.assertEqual(deck["level_label"], "Junior Ranger")
         self.assertEqual(level_display_name("easy"), "Junior Ranger")
-        self.assertEqual(deck["source"], WIKI_MANTA_RAY)
+        self.assertEqual(deck["source"], WIKI_STINGRAY)
         self.assertEqual(
             deck["source_note"],
-            "Facts from Wikipedia, Manta ray.",
+            "Facts from Wikipedia, Stingray.",
         )
         self.assertEqual(validate_deck(deck), [])
         self.assertEqual(len(deck["teach"]), 5)
@@ -228,8 +208,8 @@ class MantaRayEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(len(deck["questions"]), STUDY_SLOTS)
         self.assertEqual([q["stem"] for q in deck["questions"]], list(STEMS))
         self.assertEqual([q["id"] for q in deck["questions"]], list(QIDS))
-        self.assertEqual(deck["talk_about"], list(TALK_ABOUT_MANTA_RAY))
-        self.assertEqual(deck["push_further"], list(PUSH_FURTHER_MANTA_RAY))
+        self.assertEqual(deck["talk_about"], list(TALK_ABOUT_STINGRAY))
+        self.assertEqual(deck["push_further"], list(PUSH_FURTHER_STINGRAY))
         letters = [q["correct"] for q in deck["questions"]]
         self.assertEqual(letters, [target_letter_for_slot(i) for i in range(1, 11)])
         self.assertEqual(letters.count("A"), 4)
@@ -249,19 +229,20 @@ class MantaRayEasyStudyCardTests(unittest.TestCase):
         )
         for phrase in BRITTLE + RESERVED:
             self.assertNotIn(phrase, blob)
-        self.assertIn("manta", blob.lower())
+        self.assertIn("cartilage", blob.lower())
+        self.assertIn("shark", blob.lower())
         self.assertIn("pectoral", blob.lower())
-        self.assertIn("cephalic", blob.lower())
-        self.assertIn("plankton", blob.lower())
-        self.assertIn("devilfish", blob.lower())
-        self.assertIn("reef", blob.lower())
-        self.assertIn("oceanic", blob.lower())
-        self.assertIn("pups", blob.lower())
-        self.assertIn("cleaning", blob.lower())
-        self.assertIn("leap", blob.lower())
-        self.assertIn("gill plates", blob.lower())
-        self.assertIn("man-eaters", blob.lower())
-        self.assertEqual(WIKI_MANTA_RAY, "https://en.wikipedia.org/wiki/Manta_ray")
+        self.assertIn("disc", blob.lower())
+        self.assertIn("underside", blob.lower())
+        self.assertIn("sand", blob.lower())
+        self.assertIn("stinger", blob.lower())
+        self.assertIn("venom", blob.lower())
+        self.assertIn("mollusks", blob.lower())
+        self.assertIn("spiracles", blob.lower())
+        self.assertIn("ovoviviparous", blob.lower())
+        self.assertIn("two hundred", blob.lower())
+        self.assertIn("stepped", blob.lower())
+        self.assertEqual(WIKI_STINGRAY, "https://en.wikipedia.org/wiki/Stingray")
 
     def test_other_study_decks_untouched(self):
         lion = study_deck_for("african-lion")
@@ -271,23 +252,23 @@ class MantaRayEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(lion["talk_about"], list(TALK_ABOUT_LION))
         self.assertEqual(lion["push_further"], list(PUSH_FURTHER_LION))
         self.assertEqual(shipped_levels_for("african-lion"), ("easy", "hard", "zoologist"))
-        kelp = study_deck_for("kelp-forest")
-        self.assertEqual(kelp["source"], WIKI_KELP_FOREST)
-        self.assertEqual(kelp["talk_about"], list(TALK_ABOUT_KELP_FOREST))
-        self.assertEqual(kelp["push_further"], list(PUSH_FURTHER_KELP_FOREST))
-        self.assertEqual(shipped_levels_for("kelp-forest"), ("easy", "hard", "zoologist"))
-        self.assertIsNotNone(study_deck_for("kelp-forest", "hard"))
-        self.assertIsNotNone(study_deck_for("kelp-forest", "zoologist"))
-        jelly = study_deck_for("jellyfish")
-        self.assertEqual(jelly["source"], WIKI_JELLYFISH)
-        self.assertEqual(jelly["talk_about"], list(TALK_ABOUT_JELLYFISH))
-        self.assertEqual(jelly["push_further"], list(PUSH_FURTHER_JELLYFISH))
-        self.assertEqual(shipped_levels_for("jellyfish"), ("easy", "hard", "zoologist"))
-        self.assertIsNotNone(study_deck_for("jellyfish", "hard"))
-        self.assertIsNotNone(study_deck_for("jellyfish", "zoologist"))
+        horse = study_deck_for("seahorse")
+        self.assertEqual(horse["source"], WIKI_SEAHORSE)
+        self.assertEqual(horse["talk_about"], list(TALK_ABOUT_SEAHORSE))
+        self.assertEqual(horse["push_further"], list(PUSH_FURTHER_SEAHORSE))
+        self.assertEqual(shipped_levels_for("seahorse"), ("easy", "hard", "zoologist"))
+        self.assertIsNotNone(study_deck_for("seahorse", "hard"))
+        self.assertIsNotNone(study_deck_for("seahorse", "zoologist"))
+        manta = study_deck_for("manta-ray")
+        self.assertEqual(manta["source"], WIKI_MANTA_RAY)
+        self.assertEqual(manta["talk_about"], list(TALK_ABOUT_MANTA_RAY))
+        self.assertEqual(manta["push_further"], list(PUSH_FURTHER_MANTA_RAY))
+        self.assertEqual(shipped_levels_for("manta-ray"), ("easy", "hard", "zoologist"))
+        self.assertIsNotNone(study_deck_for("manta-ray", "hard"))
+        self.assertIsNotNone(study_deck_for("manta-ray", "zoologist"))
 
     def test_generator_html_is_study_not_worksheet(self):
-        html = outing_talk_html({"id": "manta-ray", "packTemplate": "animals"})
+        html = outing_talk_html({"id": "stingray", "packTemplate": "animals"})
         self.assertIn(">Quiz</h2>", html)
         self.assertIn("card-study-pack", html)
         self.assertIn("Learn first", html)
@@ -300,7 +281,7 @@ class MantaRayEasyStudyCardTests(unittest.TestCase):
         self.assertIn('<details class="study-explore', html)
         self.assertIn("Explore more", html)
         self.assertNotIn('<aside class="study-deepen"', html)
-        for prompt in TALK_ABOUT_MANTA_RAY + PUSH_FURTHER_MANTA_RAY:
+        for prompt in TALK_ABOUT_STINGRAY + PUSH_FURTHER_STINGRAY:
             self.assertIn(prompt, html)
         self.assertIn("Show answers", html)
         self.assertIn("Score", html)
@@ -312,15 +293,13 @@ class MantaRayEasyStudyCardTests(unittest.TestCase):
             self.assertNotIn(phrase, html)
         visible = _text(html)
         self.assertIn("Junior Ranger", visible)
-        self.assertIn("Park Ranger", visible)
-        self.assertIn("Zoologist", visible)
-        self.assertIn('class="study-level-picker"', html)
-        self.assertIn('data-study-pick="easy"', html)
-        self.assertIn('data-study-pick="hard"', html)
-        self.assertIn('data-study-pick="zoologist"', html)
-        self.assertNotIn('class="study-level-badge"', html)
-        self.assertEqual(html.count('role="group"'), 2)
-        self.assertIn("study-level-picker-bottom", html)
+        self.assertNotIn("Park Ranger", visible)
+        self.assertNotIn("Zoologist", visible)
+        self.assertIn('class="study-level-badge"', html)
+        self.assertNotIn('class="study-level-picker"', html)
+        self.assertNotIn("data-study-pick", html)
+        self.assertNotIn("study-level-picker-bottom", html)
+        self.assertEqual(html.count('role="group"'), 0)
         for badge in PLAIN_LEVEL_LABELS + AGE_BADGES:
             self.assertNotIn(badge, visible)
         self.assertNotIn(" · Easy ·", html)
@@ -328,27 +307,27 @@ class MantaRayEasyStudyCardTests(unittest.TestCase):
         for phrase in PAGE_BRITTLE:
             self.assertNotIn(phrase, html)
         self.assertIn(
-            "Broad triangular pectoral fins work like underwater wings",
+            "Cartilage — tough and flexible, like a shark’s skeleton (soft)",
             html,
         )
         self.assertIn(
-            "No — horns don’t mean danger. Mantas are gentle plankton-eaters, not man-eaters",
+            "No — they are not usually aggressive; stings happen mainly when a ray is stepped on or threatened",
             html,
         )
-        self.assertIn("Facts from Wikipedia, Manta ray.", html)
+        self.assertIn("Facts from Wikipedia, Stingray.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
         html = outing_talk_html({"id": "starfish", "packTemplate": "animals"})
         self.assertIn("What do they eat?", html)
         self.assertNotIn("card-study-pack", html)
-        self.assertNotIn("What do a manta", html)
-        octo = OCTOPUS.read_text(encoding="utf-8")
-        self.assertIn("What do they eat?", octo)
-        self.assertNotIn("card-study-pack", octo)
-        self.assertNotIn("What do a manta", octo)
+        self.assertNotIn("What is a stingray", html)
+        star = STARFISH.read_text(encoding="utf-8")
+        self.assertIn("What do they eat?", star)
+        self.assertNotIn("card-study-pack", star)
+        self.assertNotIn("What is a stingray", star)
 
-    def test_published_manta_ray_card_matches_easy_deck(self):
-        html = MANTA.read_text(encoding="utf-8")
+    def test_published_stingray_card_matches_easy_deck(self):
+        html = STINGRAY.read_text(encoding="utf-8")
         main = _main(html)
         for phrase in GENERIC_WORKSHEET:
             self.assertNotIn(phrase, main)
@@ -359,26 +338,26 @@ class MantaRayEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Watch Live", main)
         self.assertIn("card-watch-live", main)
         self.assertIn("card-page-photo", main)
-        self.assertIn("/field-pack/photos/manta-ray.jpg", main)
+        self.assertIn("/field-pack/photos/stingray.jpg", main)
         self.assertIn(
-            "/field-pack/virtual-field-trip/?tab=aquarium&amp;from=card#habitat=manta-ray",
+            "/field-pack/virtual-field-trip/?tab=aquarium&amp;from=card#habitat=stingray",
             main,
         )
         self.assertIn('class="card-try-next no-print"', main)
-        self.assertIn("study-level-picker-bottom", main)
+        self.assertNotIn("study-level-picker-bottom", main)
         self.assertNotIn("card-print-note", main)
         self.assertIn("study-card.js?v=10", html)
         self.assertIn("study-card.css?v=10", html)
         self.assertIn("study-cards-data.js?v=6", html)
         self.assertIn('id="study-card-data"', html)
         self.assertIn('"level_label": "Junior Ranger"', html)
-        self.assertIn('"id": "manta-ray"', html)
-        self.assertNotIn('"id": "kelp-forest"', html)
+        self.assertIn('"id": "stingray"', html)
+        self.assertNotIn('"id": "seahorse"', html)
         self.assertIn('id="study-print-template"', html)
         self.assertIn("print-kit.js?v=20", html)
         self.assertIn("styles.css?v=42", html)
-        self.assertIn('<details class="study-teach">', main)
-        self.assertNotIn('<details class="study-teach" open', main)
+        self.assertIn('<details class="study-teach">', html)
+        self.assertNotIn('<details class="study-teach" open', html)
         self.assertNotIn('<div class="study-teach">', main)
         self.assertIn("Talk about it", main)
         self.assertIn("Push further", main)
@@ -389,13 +368,11 @@ class MantaRayEasyStudyCardTests(unittest.TestCase):
         self.assertLess(main.find("study-explore"), main.find("card-try-next"))
         visible = _text(main)
         self.assertIn("Junior Ranger", visible)
-        self.assertIn("Park Ranger", visible)
-        self.assertIn("Zoologist", visible)
-        self.assertIn('class="study-level-picker"', main)
-        self.assertIn('data-study-pick="easy"', main)
-        self.assertIn('data-study-pick="hard"', main)
-        self.assertIn('data-study-pick="zoologist"', main)
-        self.assertNotIn('class="study-level-badge"', main)
+        self.assertNotIn("Park Ranger", visible)
+        self.assertNotIn("Zoologist", visible)
+        self.assertIn('class="study-level-badge"', main)
+        self.assertNotIn('class="study-level-picker"', main)
+        self.assertNotIn("data-study-pick", main)
         self.assertIn("Learn first", main)
         self.assertIn(">Quiz</h2>", main)
         self.assertEqual(main.count("data-study-correct"), 2)
@@ -417,38 +394,38 @@ class MantaRayEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Talk about it", back)
         self.assertIn("Push further", back)
         self.assertIn("ps-study-deepen", back)
-        for prompt in TALK_ABOUT_MANTA_RAY + PUSH_FURTHER_MANTA_RAY:
+        for prompt in TALK_ABOUT_STINGRAY + PUSH_FURTHER_STINGRAY:
             self.assertIn(prompt, back)
         self.assertEqual(
-            study_try_next_ids("manta-ray"),
-            ["jellyfish", "kelp-forest", "african-lion"],
+            study_try_next_ids("stingray"),
+            ["manta-ray", "seahorse", "african-lion"],
         )
 
     def test_print_faces_are_duplex_and_clamped(self):
-        deck = study_deck_for("manta-ray")
+        deck = study_deck_for("stingray")
         sheet = study_print_html(
             deck,
-            name="Manta ray",
+            name="Stingray",
             emoji="🐟",
-            photo="/field-pack/photos/manta-ray.jpg?v=img2",
-            photo_pos="50% 48%",
+            photo="/field-pack/photos/stingray.jpg?v=img2",
+            photo_pos="50% 40%",
         )
         self.assertIn("ps-study-front", sheet)
         self.assertIn("ps-study-back", sheet)
         self.assertIn("ps-study-photo", sheet)
-        self.assertIn("/field-pack/photos/manta-ray.jpg", sheet)
+        self.assertIn("/field-pack/photos/stingray.jpg", sheet)
         self.assertIn("Flip for answers", sheet)
         self.assertIn("Junior Ranger", sheet)
         self.assertNotIn(" · Easy ·", sheet)
-        self.assertIn(WIKI_MANTA_RAY, sheet)
+        self.assertIn(WIKI_STINGRAY, sheet)
         for stem in STEMS:
             self.assertIn(stem, sheet)
         self.assertIn(
-            "Broad triangular pectoral fins work like underwater wings",
+            "Cartilage — tough and flexible, like a shark’s skeleton (soft)",
             sheet,
         )
         self.assertIn(
-            "No — horns don’t mean danger. Mantas are gentle plankton-eaters, not man-eaters",
+            "No — they are not usually aggressive; stings happen mainly when a ray is stepped on or threatened",
             sheet,
         )
         front, _, back = sheet.partition("ps-study-back")
@@ -456,7 +433,7 @@ class MantaRayEasyStudyCardTests(unittest.TestCase):
         self.assertNotIn("Talk about it", front)
         self.assertIn("Talk about it", back)
         self.assertIn("Push further", back)
-        for prompt in TALK_ABOUT_MANTA_RAY + PUSH_FURTHER_MANTA_RAY:
+        for prompt in TALK_ABOUT_STINGRAY + PUSH_FURTHER_STINGRAY:
             self.assertIn(prompt, back)
         css = STYLES.read_text(encoding="utf-8")
         self.assertIn(".ps-study-front", css)
@@ -472,18 +449,18 @@ class MantaRayEasyStudyCardTests(unittest.TestCase):
         self.assertIn("is-wrong-pick", study_js)
         self.assertIn("FPStudyLevelName", study_js + STUDY_DATA_JS.read_text(encoding="utf-8"))
 
-    def test_artifacts_include_manta_ray_easy_and_hard(self):
+    def test_artifacts_include_stingray_easy_only(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
-        self.assertIn("manta-ray", payload)
+        self.assertIn("stingray", payload)
         self.assertNotIn("starfish", payload)
-        self.assertIn("kelp-forest", payload)
-        self.assertIn("jellyfish", payload)
-        manta = payload["manta-ray"]
-        self.assertEqual(manta["id"], "manta-ray")
-        self.assertEqual(set(manta["levels"]), {"easy", "hard", "zoologist"})
-        self.assertEqual(manta["levels"]["hard"]["teach"], [])
-        self.assertEqual(manta["levels"]["zoologist"]["teach"], [])
-        easy = manta["levels"]["easy"]
+        self.assertIn("seahorse", payload)
+        self.assertIn("manta-ray", payload)
+        ray = payload["stingray"]
+        self.assertEqual(ray["id"], "stingray")
+        self.assertEqual(set(ray["levels"]), {"easy"})
+        self.assertNotIn("hard", ray["levels"])
+        self.assertNotIn("zoologist", ray["levels"])
+        easy = ray["levels"]["easy"]
         self.assertEqual(len(easy["teach"]), 5)
         self.assertEqual(len(easy["questions"]), STUDY_SLOTS)
         self.assertEqual(
@@ -493,10 +470,10 @@ class MantaRayEasyStudyCardTests(unittest.TestCase):
         for q in easy["questions"]:
             self.assertEqual(len(q["choices"]), 3)
         data_js = STUDY_DATA_JS.read_text(encoding="utf-8")
-        self.assertIn('"manta-ray"', data_js)
+        self.assertIn('"stingray"', data_js)
         self.assertIn('"easy":"Junior Ranger"', data_js)
-        self.assertEqual(set(payload["kelp-forest"]["levels"]), {"easy", "hard", "zoologist"})
-        self.assertEqual(set(payload["jellyfish"]["levels"]), {"easy", "hard", "zoologist"})
+        self.assertEqual(set(payload["seahorse"]["levels"]), {"easy", "hard", "zoologist"})
+        self.assertEqual(set(payload["manta-ray"]["levels"]), {"easy", "hard", "zoologist"})
         self.assertEqual(set(payload["african-lion"]["levels"]), {"easy", "hard", "zoologist"})
 
     def test_display_name_map_still_covers_future_tiers(self):
@@ -509,19 +486,19 @@ class MantaRayEasyStudyCardTests(unittest.TestCase):
             },
         )
         self.assertEqual(level_display_name("easy"), "Junior Ranger")
-        manta_html = MANTA.read_text(encoding="utf-8")
-        visible = _text(_main(manta_html))
+        ray_html = STINGRAY.read_text(encoding="utf-8")
+        visible = _text(_main(ray_html))
         self.assertIn("Junior Ranger", visible)
-        self.assertIn("Park Ranger", visible)
-        self.assertIn("Zoologist", visible)
-        kelp_html = KELP.read_text(encoding="utf-8")
-        self.assertIn("Junior Ranger", _text(_main(kelp_html)))
-        self.assertIn("Park Ranger", _text(_main(kelp_html)))
-        self.assertIn("Zoologist", _text(_main(kelp_html)))
-        jelly_html = JELLYFISH.read_text(encoding="utf-8")
-        self.assertIn("Junior Ranger", _text(_main(jelly_html)))
-        self.assertIn("Park Ranger", _text(_main(jelly_html)))
-        self.assertIn("Zoologist", _text(_main(jelly_html)))
+        self.assertNotIn("Park Ranger", visible)
+        self.assertNotIn("Zoologist", visible)
+        horse_html = SEAHORSE.read_text(encoding="utf-8")
+        self.assertIn("Junior Ranger", _text(_main(horse_html)))
+        self.assertIn("Park Ranger", _text(_main(horse_html)))
+        self.assertIn("Zoologist", _text(_main(horse_html)))
+        manta_html = MANTA.read_text(encoding="utf-8")
+        self.assertIn("Junior Ranger", _text(_main(manta_html)))
+        self.assertIn("Park Ranger", _text(_main(manta_html)))
+        self.assertIn("Zoologist", _text(_main(manta_html)))
 
 
 if __name__ == "__main__":

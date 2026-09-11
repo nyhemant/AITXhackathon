@@ -1970,6 +1970,49 @@ numbers. Treat IUCN letters as snapshots.
 Do not redo JR or PR themes. Keep
 kid-friendly. Do not invent photos.
 
+Facts for stingray Junior Ranger (easy) are
+Wikipedia-backed: https://en.wikipedia.org/wiki/Stingray
+(a group card). Flattened ocean fish with a
+skeleton of cartilage (related to sharks —
+soft). Eyes on top; mouth and gills on the
+underside. Many hide under sand on the
+seafloor. The tail can carry a venomous
+stinger used for defense. Usually shy —
+they sting when threatened or stepped on,
+not when chasing people. Cartilage is
+tough and flexible, like a shark’s
+skeleton (not hard bone). A flattened body
+with wide pectoral “wings” fused into a
+disc helps them hug the seafloor. Many
+stir sand and settle under it, often
+leaving mainly eyes and tail showing. The
+stinger (spinal blade) sits on the tail
+and can deliver venom — rays may have one,
+two, or three blades (soften exact
+lengths). Many eat mollusks, crustaceans,
+and sometimes small fish, crushing hard
+shells with strong jaws. Spiracles behind
+the eyes can draw clearer water in while
+buried. Babies are usually born live after
+developing inside the mother
+(ovoviviparous — soften litter size).
+About two hundred known kinds worldwide
+(soft; Wikipedia cites about 220 living
+species, and totals shift). Myth: they do
+not usually chase and hunt people; stings
+happen mainly when a ray is stepped on or
+threatened. Soft care: shuffle feet in
+shallow water. Fatal stings are very rare.
+Soften contested numbers (~220 kinds).
+Reserve denser Myliobatiformes taxonomy,
+ampullae deepen, undulatory vs oscillatory
+swimming, venom chemistry, IUCN snapshots,
+freshwater river rays, uterine milk
+deepen, and the manta/devil-ray clade for
+Park Ranger or Zoologist. Keep
+kid-friendly. Do not invent photos. Do not
+add Park Ranger or Zoologist in this pass.
+
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
 zoologist. Visible copy uses LEVEL_DISPLAY_NAMES only — no age badges,
@@ -2033,6 +2076,7 @@ WIKI_MANTA_RAY = "https://en.wikipedia.org/wiki/Manta_ray"
 WIKI_OCTOPUS = "https://en.wikipedia.org/wiki/Octopus"
 WIKI_SEA_TURTLE = "https://en.wikipedia.org/wiki/Sea_turtle"
 WIKI_SEAHORSE = "https://en.wikipedia.org/wiki/Seahorse"
+WIKI_STINGRAY = "https://en.wikipedia.org/wiki/Stingray"
 
 LETTERS = ("A", "B", "C")
 STUDY_SLOTS = 10
@@ -2114,6 +2158,7 @@ LEVEL_DISPLAY_NAMES = {
 # ship Junior Ranger + Park Ranger + Zoologist.
 # Manta ray, octopus, sea turtle, and seahorse ship Junior Ranger +
 # Park Ranger + Zoologist.
+# Stingray ships Junior Ranger only.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -2169,6 +2214,7 @@ STUDY_NEIGHBORS = {
     "octopus": ("cuttlefish", "jellyfish"),
     "sea-turtle": ("octopus", "manta-ray"),
     "seahorse": ("octopus", "sea-turtle"),
+    "stingray": ("manta-ray", "seahorse"),
 }
 
 STUDY_CARD_TITLES = {
@@ -2211,6 +2257,7 @@ STUDY_CARD_TITLES = {
     "octopus": "Octopus",
     "sea-turtle": "Sea turtle",
     "seahorse": "Seahorse",
+    "stingray": "Stingray",
 }
 
 # Shared answers-side deepen (Claude sample). Not scored. Future animals reuse keys.
@@ -2645,6 +2692,16 @@ PUSH_FURTHER_SEAHORSE_ZOOLOGIST = (
     "Dad’s pregnancy can cost extra energy. Why keep that male-care cost story soft?",
     "Atlantic seahorses may have crossed twice. Why keep that invasion map soft?",
     "Square tail rings inspire bendy robots. Why keep that robotics story soft?",
+)
+TALK_ABOUT_STINGRAY = (
+    "Eyes sit on top and the mouth is underneath. Why might that help a ray rest on sand?",
+    "Many stingrays hide under sand. What might they be waiting for down there?",
+    "Stingrays are usually shy. Why might a sting happen when someone steps on one?",
+)
+PUSH_FURTHER_STINGRAY = (
+    "Scientists group rays on a bigger family tree. Why keep those long names for later?",
+    "Some rays sense tiny electric hints, and swim with different wing beats. Why wait?",
+    "Venom chemistry, river rays, baby-feeding details, and giant manta cousins still wait. Why?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -19309,6 +19366,157 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia says the prehensile tail is made of square bony-plate rings. That stack can bend to grip a holdfast and still resist crushing — a kid-safe biomaterials story. We keep robot-copy ideas for later.",
+                    },
+                ],
+            },
+        },
+    },
+    "stingray": {
+        "id": "stingray",
+        "source": WIKI_STINGRAY,
+        "source_note": "Facts from Wikipedia, Stingray.",
+        "talk_about": list(TALK_ABOUT_STINGRAY),
+        "push_further": list(PUSH_FURTHER_STINGRAY),
+        "levels": {
+            "easy": {
+                # Teaching-first: same front as the quiz. Hard later may hide these.
+                "teach": [
+                    "Flattened ocean fish with a skeleton of cartilage (related to sharks — soft)",
+                    "Eyes on top; mouth and gills on the underside",
+                    "Many hide under sand on the seafloor",
+                    "The tail can carry a venomous stinger used for defense",
+                    "Usually shy — they sting when threatened or stepped on, not when chasing people",
+                ],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "cartilage-soft",
+                        "title": "Soft skeleton",
+                        "stem": "What is a stingray’s skeleton mostly made of?",
+                        "choices": [
+                            "Hard bone like a cow’s leg",
+                            "Cartilage — tough and flexible, like a shark’s skeleton (soft)",
+                            "Only sand packed into a tube",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia calls stingrays cartilaginous fish. Their skeletons are cartilage, not hard bone — the same big idea as sharks.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "flat-disc-soft",
+                        "title": "Flat disc",
+                        "stem": "What shape helps many stingrays hug the seafloor?",
+                        "choices": [
+                            "A tall triangle like a sailboat",
+                            "A round ball with no fins",
+                            "A flattened body with wide pectoral “wings” fused into a disc",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia describes flattened bodies and large pectoral fins that form a broad disc. That shape helps them rest and hide on the bottom.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "eyes-up-mouth-down-soft",
+                        "title": "Eyes up",
+                        "stem": "Where are a stingray’s eyes and mouth?",
+                        "choices": [
+                            "Eyes on top; mouth (and gill slots) on the underside",
+                            "Eyes and mouth both on the tip of the tail",
+                            "Eyes underneath; mouth on top like a whale’s blowhole",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia: eyes sit on the upper surface; the mouth is on the ventral (underside). Gill openings are also on the underside.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "sand-hide-soft",
+                        "title": "Sand hide",
+                        "stem": "How do many bottom-living stingrays hide?",
+                        "choices": [
+                            "They climb into trees at night",
+                            "They stir sand and settle under it, often leaving mainly eyes and tail showing",
+                            "They freeze into ice cubes",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia: flattened bodies help them conceal in sand. They agitate sand and hide beneath it, often with only eyes and tail visible.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "stinger-soft",
+                        "title": "Stinger",
+                        "stem": "What is the famous “sting” on many stingrays?",
+                        "choices": [
+                            "A venomous spine (stinger / spinal blade) on the tail used for defense",
+                            "A lightning bolt shot from the eyes",
+                            "A whistle that only works underwater",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia: the stinger (spinal blade) sits on the tail and can deliver venom. Rays may have one, two, or three blades. Soft on exact lengths.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "crush-food-soft",
+                        "title": "Crush food",
+                        "stem": "What do many stingrays eat on the seafloor?",
+                        "choices": [
+                            "Only grass from land meadows",
+                            "Mostly birds that land on the beach",
+                            "Mollusks, crustaceans, and sometimes small fish — many crush hard shells with strong jaws",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia: most feed mainly on mollusks and crustaceans, and sometimes small fish. Flat teeth help crush hard-shelled prey.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "spiracles-soft",
+                        "title": "Spiracles",
+                        "stem": "How can a buried stingray keep breathing without gulping sandy water through its mouth?",
+                        "choices": [
+                            "Openings called spiracles behind the eyes can draw clearer water in",
+                            "It holds its breath for a year",
+                            "It breathes only through its tail tip",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia: spiracles just behind the eyes let a ray take in water while buried, so sediment does not flood the mouth path. Soft on efficiency details.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "live-young-soft",
+                        "title": "Live young",
+                        "stem": "How do stingray babies usually arrive?",
+                        "choices": [
+                            "As eggs left alone on a dry beach forever",
+                            "Born live after developing inside the mother (ovoviviparous soft) — litter size soft",
+                            "Hatched only in bird nests",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia: stingrays are ovoviviparous and bear live young. Litter sizes vary; we keep the count soft rather than locking one number.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "many-kinds-soft",
+                        "title": "Many kinds",
+                        "stem": "About how many kinds of stingray are there, if we keep the count soft?",
+                        "choices": [
+                            "About two hundred known kinds worldwide (soft)",
+                            "Exactly three kinds in one pond",
+                            "Only one kind on Earth",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia puts living stingrays at about 220 known species. Exact totals shift as scientists name or split kinds, so we keep that soft.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "not-hunters-myth",
+                        "title": "Myth buster",
+                        "stem": "Do stingrays usually chase and hunt people?",
+                        "choices": [
+                            "Yes — they hunt swimmers on purpose every day",
+                            "No — they are not usually aggressive; stings happen mainly when a ray is stepped on or threatened",
+                            "Yes — they only attack at noon",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia: stingrays are not usually aggressive and ordinarily sting humans only when provoked, such as when stepped on. Fatal stings are very rare. Soft care: shuffle feet in shallow water.",
                     },
                 ],
             },

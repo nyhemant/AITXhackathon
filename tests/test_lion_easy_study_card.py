@@ -121,6 +121,7 @@ class LionEasyStudyCardTests(unittest.TestCase):
                 "octopus",
                 "sea-turtle",
                 "seahorse",
+                "stingray",
             ),
         )
         deck = study_deck_for("african-lion")
@@ -180,7 +181,7 @@ class LionEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Facts from Wikipedia, Lion.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
-        html = outing_talk_html({"id": "stingray", "packTemplate": "animals"})
+        html = outing_talk_html({"id": "starfish", "packTemplate": "animals"})
         self.assertIn("What do they eat?", html)
         self.assertNotIn("card-study-pack", html)
         self.assertNotIn("What do you call a group of lions?", html)
@@ -328,7 +329,7 @@ class LionEasyStudyCardTests(unittest.TestCase):
         self.assertIn("max-width: 48rem;", css)
         self.assertIn(".study-choice.is-wrong-pick", css)
         self.assertNotIn("@media print", css)
-        jelly = (FP / "cards" / "stingray" / "index.html").read_text(encoding="utf-8")
+        jelly = (FP / "cards" / "starfish" / "index.html").read_text(encoding="utf-8")
         self.assertNotIn("study-card.css", jelly)
 
 

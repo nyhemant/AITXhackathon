@@ -36,7 +36,7 @@ FP = REPO / "static" / "field-pack"
 ELEPHANT = FP / "cards" / "african-elephant" / "index.html"
 GIRAFFE = FP / "cards" / "reticulated-giraffe" / "index.html"
 LION = FP / "cards" / "african-lion" / "index.html"
-OCTOPUS = FP / "cards" / "stingray" / "index.html"
+OCTOPUS = FP / "cards" / "starfish" / "index.html"
 PRINT_KIT = FP / "js" / "print-kit.js"
 STUDY_JS = FP / "js" / "study-card.js"
 STYLES = FP / "css" / "styles.css"
@@ -153,6 +153,7 @@ class ElephantEasyStudyCardTests(unittest.TestCase):
                 "octopus",
                 "sea-turtle",
                 "seahorse",
+                "stingray",
             ),
         )
         self.assertEqual(shipped_levels_for("african-elephant"), ("easy", "hard", "zoologist"))
@@ -249,7 +250,7 @@ class ElephantEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Facts from Wikipedia, African elephant / Elephant.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
-        html = outing_talk_html({"id": "stingray", "packTemplate": "animals"})
+        html = outing_talk_html({"id": "starfish", "packTemplate": "animals"})
         self.assertIn("What do they eat?", html)
         self.assertNotIn("card-study-pack", html)
         self.assertNotIn("What record does an African elephant hold", html)

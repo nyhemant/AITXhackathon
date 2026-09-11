@@ -36,7 +36,7 @@ from study_cards import (  # noqa: E402
 
 FP = REPO / "static" / "field-pack"
 BEAR = FP / "cards" / "polar-bear" / "index.html"
-OCTOPUS = FP / "cards" / "stingray" / "index.html"
+OCTOPUS = FP / "cards" / "starfish" / "index.html"
 FISH = FP / "cards" / "freshwater-fish" / "index.html"
 PRINT_KIT = FP / "js" / "print-kit.js"
 STUDY_JS = FP / "js" / "study-card.js"
@@ -185,6 +185,7 @@ class PolarBearEasyStudyCardTests(unittest.TestCase):
                 "octopus",
                 "sea-turtle",
                 "seahorse",
+                "stingray",
             ),
         )
         self.assertEqual(shipped_levels_for("polar-bear"), ("easy", "hard", "zoologist"))
@@ -303,7 +304,7 @@ class PolarBearEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Facts from Wikipedia, Polar bear.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
-        html = outing_talk_html({"id": "stingray", "packTemplate": "animals"})
+        html = outing_talk_html({"id": "starfish", "packTemplate": "animals"})
         self.assertIn("What do they eat?", html)
         self.assertNotIn("card-study-pack", html)
         self.assertNotIn("Where do polar bears live in the wild?", html)
@@ -428,7 +429,7 @@ class PolarBearEasyStudyCardTests(unittest.TestCase):
     def test_artifacts_include_polar_bear_easy_hard_and_zoologist(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
         self.assertIn("polar-bear", payload)
-        self.assertNotIn("stingray", payload)
+        self.assertNotIn("starfish", payload)
         self.assertIn("freshwater-fish", payload)
         bear = payload["polar-bear"]
         self.assertEqual(bear["id"], "polar-bear")
