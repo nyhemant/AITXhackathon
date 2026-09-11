@@ -199,6 +199,43 @@ class ItemRouteActionTests(unittest.TestCase):
             self.assertFalse(photos["hidden"], row["route"])
             self.assertEqual(photos["href"], lion_pictures, row["route"])
 
+    def test_western_lowland_gorilla_photos_is_not_mountain_gorilla(self):
+        """ParentTest Layer B: western-lowland Photos must not use mountain-gorilla."""
+        gorilla_pictures = (
+            "https://www.nationalgeographic.com/animals/mammals/facts/"
+            "western-lowland-gorilla"
+        )
+        catalog = CATALOG_JS.read_text(encoding="utf-8")
+        self.assertIn(f'pictures: "{gorilla_pictures}"', catalog)
+        self.assertNotIn(
+            "https://kids.nationalgeographic.com/animals/mammals/facts/mountain-gorilla",
+            catalog,
+        )
+        card = (FP / "cards" / "western-lowland-gorilla" / "index.html").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn(f'href="{gorilla_pictures}"', card)
+        self.assertNotIn("/facts/mountain-gorilla", card)
+
+        gorilla_routes = [r for r in self.routes if r["itemId"] == "western-lowland-gorilla"]
+        self.assertGreater(len(gorilla_routes), 0)
+        for row in gorilla_routes:
+            photos = next(a for a in row["actions"] if a["name"] == "Photos")
+            self.assertFalse(photos["hidden"], row["route"])
+            self.assertEqual(photos["href"], gorilla_pictures, row["route"])
+
+    def test_weedy_sea_dragon_photos_is_not_leafy_cousin(self):
+        """Same cousin-species class: weedy must not open leafy sea dragon."""
+        weedy_pictures = (
+            "https://www.nationalgeographic.com/animals/fish/facts/weedy-sea-dragon"
+        )
+        catalog = CATALOG_JS.read_text(encoding="utf-8")
+        self.assertIn(f'pictures: "{weedy_pictures}"', catalog)
+        self.assertNotIn(
+            'pictures: "https://www.nationalgeographic.com/animals/fish/facts/leafy-sea-dragon"',
+            catalog,
+        )
+
     def test_whale_shark_photos_uses_live_kids_natgeo_slug(self):
         """ParentTest: whale-shark Photos must not use the 404 singular Kids slug."""
         whale_pictures = (

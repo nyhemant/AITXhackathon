@@ -259,7 +259,7 @@ window.FIELD_PACK_CATALOG = {
     photoCredit: "Enhanced for print · Field Trip Kit",
     blurb: "Strong gentle ape in family groups.",
     links: {
-      pictures: "https://kids.nationalgeographic.com/animals/mammals/facts/mountain-gorilla",
+      pictures: "https://www.nationalgeographic.com/animals/mammals/facts/western-lowland-gorilla",
       more: "https://www.dallaszoo.com/",
       cam: "https://zoo.sandiegozoo.org/cams/ape-cam",
     },
@@ -767,7 +767,7 @@ window.FIELD_PACK_CATALOG = {
     photoCredit: "Enhanced for print · Field Trip Kit",
     blurb: "A seahorse cousin dressed as kelp.",
     links: {
-      pictures: "https://www.nationalgeographic.com/animals/fish/facts/leafy-sea-dragon",
+      pictures: "https://www.nationalgeographic.com/animals/fish/facts/weedy-sea-dragon",
       more: "https://www.montereybayaquarium.org/animals/animals-a-to-z/weedy-sea-dragon",
     },
     key: { food: ["Both"], home: ["Water / wet"], superpower: ["Hide", "Swim"] },
