@@ -17571,7 +17571,7 @@
             "title": "Rhincodontidae",
             "stem": "Where does the whale shark sit in the shark family tree, if we keep names soft?",
             "choices": [
-              "Only living member of family Rhincodontidae (genus Rhincodon) in the carpet-shark order Orectolobiformes — soft",
+              "Only living member of family Rhincodontidae (genus Rhincodon) in the carpet-shark order Orectolobiformes",
               "A kind of dolphin in the whale family",
               "A bony tuna with no shark relatives"
             ],
@@ -17585,7 +17585,7 @@
             "stem": "How does a whale shark’s filter gear work beyond “open mouth and swim”?",
             "choices": [
               "It chews rocks into flour first",
-              "Specialized sieve-like gill pads (filter pads) plus active suction help strain tiny food from water — litres-per-hour soft",
+              "Specialized sieve-like gill pads (filter pads) plus active suction help strain tiny food from water",
               "It only eats what sticks to its fins by accident"
             ],
             "correct": "B",
@@ -17599,7 +17599,7 @@
             "choices": [
               "Least Concern forever with no threats",
               "Extinct in the wild since the 1800s",
-              "Endangered — a snapshot tied to big population drops from fishing, bycatch, and ship collisions (soft)"
+              "Endangered — a snapshot tied to big population drops from fishing, bycatch, and ship collisions"
             ],
             "correct": "C",
             "why": "Wikipedia lists the whale shark as Endangered on the IUCN Red List, with a large decline over recent decades linked to targeted fishing, bycatch, and ship strikes. Letters can change — treat Endangered as a snapshot."
@@ -17610,7 +17610,7 @@
             "title": "Migration",
             "stem": "Why do whale sharks sometimes gather in the same coastal spots year after year?",
             "choices": [
-              "Seasonal feeding aggregations where food is rich — sites such as Ningaloo and the Yucatán are examples (soft)",
+              "Seasonal feeding aggregations where food is rich — sites such as Ningaloo and the Yucatán are examples",
               "They nest in trees like birds",
               "They only meet at the North Pole ice"
             ],
@@ -17623,7 +17623,7 @@
             "title": "Tiny teeth",
             "stem": "What are a whale shark’s teeth like, compared with a great white’s big biting teeth?",
             "choices": [
-              "Over many rows of tiny teeth — used with filter pads, not for hunting people (soft)",
+              "Over many rows of tiny teeth — used with filter pads, not for hunting people",
               "No teeth at all — ever",
               "One giant tooth the size of a door"
             ],
@@ -17651,7 +17651,7 @@
             "title": "Taxonomy",
             "stem": "How do scientists place the living whale shark, and what extinct relative does Wikipedia note?",
             "choices": [
-              "Class Chondrichthyes / subclass Elasmobranchii — a carpet shark; an extinct Rhincodon (R. ferriolensis) is noted from the Miocene of Europe (soft)",
+              "Class Chondrichthyes / subclass Elasmobranchii — a carpet shark; an extinct Rhincodon (R. ferriolensis) is noted from the Miocene of Europe",
               "A bony bony-fish group with no cartilaginous cousins",
               "A mammal clade with whales only"
             ],
@@ -17665,7 +17665,7 @@
             "stem": "What is unusual about whale-shark life history for a fish, if we keep numbers soft?",
             "choices": [
               "It matures in a few weeks and lives only one summer",
-              "Late maturity and a very long life — decades to maturity and lifespan that may reach many decades (exact years soft)",
+              "Late maturity and a very long life — decades to maturity and lifespan that may reach many decades",
               "It never grows after birth"
             ],
             "correct": "B",
@@ -17677,7 +17677,7 @@
             "title": "Denticles",
             "stem": "What tooth-like skin structures do whale sharks have beyond the tiny mouth teeth?",
             "choices": [
-              "Dermal denticles (placoid scales) on the body — and Wikipedia notes denticles on the eyeballs that help protect the eyes (soft)",
+              "Dermal denticles (placoid scales) on the body — and Wikipedia notes denticles on the eyeballs that help protect the eyes",
               "Feathers that molt each spring",
               "No scales of any kind — only slime"
             ],
@@ -17691,7 +17691,7 @@
             "stem": "How do researchers tell one whale shark from another without tagging every animal?",
             "choices": [
               "Only by guessing from swimming speed",
-              "Unique spot/stripe patterns — photos of a standard flank area feed global ID libraries (soft)",
+              "Unique spot/stripe patterns — photos of a standard flank area feed global ID libraries",
               "By painting numbers on the dorsal fin in the wild"
             ],
             "correct": "B",
@@ -17705,7 +17705,7 @@
             "choices": [
               "Only too much plankton in the sea",
               "Only quieter oceans with no boats",
-              "Targeted fishing, bycatch in other fisheries, and collisions with large ships — drivers of a large population drop (soft)"
+              "Targeted fishing, bycatch in other fisheries, and collisions with large ships — drivers of a large population drop"
             ],
             "correct": "C",
             "why": "Wikipedia ties the Endangered listing to a large decline over recent decades from targeted fishing, bycatch, and ship collisions. Soft on exact percent — treat as a snapshot."
