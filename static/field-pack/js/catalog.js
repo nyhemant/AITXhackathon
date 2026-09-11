@@ -562,6 +562,7 @@ window.FIELD_PACK_CATALOG = {
     blurb: "Sideways walker with a hard shell and pinchers.",
     links: {
       pictures: "https://kids.nationalgeographic.com/animals/invertebrates/facts/christmas-island-red-crab",
+      picturesLabel: "Christmas Island photos",
       more: "https://www.childrensaquarium.com/",
       cam: "https://www.montereybayaquarium.org/animals/live-cams",
     },

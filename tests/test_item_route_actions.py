@@ -118,6 +118,7 @@ class ItemRouteActionTests(unittest.TestCase):
         self.assertIn("function setExternalAction(link, url)", js)
         self.assertIn("setExternalAction(els.btnCam, camUrl)", js)
         self.assertIn("setExternalAction(els.btnPictures, picUrl)", js)
+        self.assertIn("item.links.picturesLabel", js)
         self.assertIn("setExternalAction(els.btnMore, moreUrl)", js)
         self.assertIn("!/^https?:\\/\\//.test(url)", js)
         self.assertIn("itemOnVenue", js)
@@ -386,6 +387,7 @@ class ItemRouteActionTests(unittest.TestCase):
         elk = "https://www.nationalgeographic.com/animals/mammals/facts/elk"
         self.assertIn(f'pictures: "{penguin}"', catalog)
         self.assertIn(f'pictures: "{crab}"', catalog)
+        self.assertIn('picturesLabel: "Christmas Island photos"', catalog)
         self.assertIn(f'pictures: "{cuttle}"', catalog)
         self.assertIn(f'pictures: "{elk}"', catalog)
 
@@ -398,6 +400,11 @@ class ItemRouteActionTests(unittest.TestCase):
         )
         self.assertIn(f'href="{penguin}"', penguin_card)
         self.assertIn(f'href="{crab}"', crab_card)
+        crab_main = crab_card.split('<main class="card-page">', 1)[1].split(
+            "</main>", 1
+        )[0]
+        self.assertIn(">Christmas Island photos</a>", crab_main)
+        self.assertNotIn(">Photos</a>", crab_main)
         self.assertIn(f'href="{cuttle}"', cuttle_card)
 
         expect = {

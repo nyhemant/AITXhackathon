@@ -861,8 +861,9 @@ def catalog_more_links_html(item: dict, *, shared: bool = False, allow_cam: bool
             )
     pics = str(links.get("pictures") or "").strip()
     if pics:
+        pics_label = str(links.get("picturesLabel") or "Photos").strip() or "Photos"
         bits.append(
-            f'<a class="btn btn-ghost" href="{esc(pics)}" target="_blank" rel="noopener noreferrer">Photos</a>'
+            f'<a class="btn btn-ghost" href="{esc(pics)}" target="_blank" rel="noopener noreferrer">{esc(pics_label)}</a>'
         )
     more = str(links.get("more") or "").strip()
     if shared and more and is_place_site_url(more):

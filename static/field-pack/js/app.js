@@ -1342,7 +1342,8 @@
     }
     if (els.btnPictures) {
       setExternalAction(els.btnPictures, picUrl);
-      els.btnPictures.textContent = "Photos";
+      els.btnPictures.textContent =
+        (item.links && item.links.picturesLabel) || "Photos";
     }
     if (els.btnMore) {
       setExternalAction(els.btnMore, moreUrl);
