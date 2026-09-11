@@ -231,6 +231,7 @@ OUTING_TALK_ANIMAL = (
 # Sea turtle ships Junior Ranger + Park Ranger + Zoologist.
 # Seahorse ships Junior Ranger + Park Ranger + Zoologist.
 # Starfish ships Junior Ranger + Park Ranger.
+# Whale shark ships Junior Ranger + Park Ranger.
 CARD_TALK_OVERRIDE: dict[str, tuple[dict, ...]] = {}
 
 # Optional More talk on a card. Unused while lion ships the Easy study deck.

@@ -217,7 +217,7 @@ class SharkZoologistStudyCardTests(unittest.TestCase):
         self.assertEqual(shipped_levels_for("shark"), ("easy", "hard", "zoologist"))
         self.assertEqual(level_display_name("zoologist"), "Zoologist")
         self.assertIn("whale-shark", study_card_ids())
-        self.assertIsNone(study_deck_for("whale-shark", "hard"))
+        self.assertIsNotNone(study_deck_for("whale-shark", "hard"))
         self.assertIsNone(study_deck_for("whale-shark", "zoologist"))
         deck = study_deck_for("shark", "zoologist")
         self.assertIsNotNone(deck)

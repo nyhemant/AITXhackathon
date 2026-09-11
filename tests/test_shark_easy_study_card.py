@@ -234,7 +234,7 @@ class SharkEasyStudyCardTests(unittest.TestCase):
         self.assertIsNotNone(study_deck_for("shark", "hard"))
         self.assertIsNotNone(study_deck_for("shark", "zoologist"))
         self.assertIsNotNone(study_deck_for("whale-shark"))
-        self.assertIsNone(study_deck_for("whale-shark", "hard"))
+        self.assertIsNotNone(study_deck_for("whale-shark", "hard"))
         self.assertIsNone(study_deck_for("whale-shark", "zoologist"))
         deck = study_deck_for("shark")
         self.assertIsNotNone(deck)
@@ -536,7 +536,7 @@ class SharkEasyStudyCardTests(unittest.TestCase):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
         self.assertIn("shark", payload)
         self.assertIn("whale-shark", payload)
-        self.assertEqual(set(payload["whale-shark"]["levels"]), {"easy"})
+        self.assertEqual(set(payload["whale-shark"]["levels"]), {"easy", "hard"})
         self.assertIn("warthog", payload)
         self.assertIn("ostrich", payload)
         fish = payload["shark"]

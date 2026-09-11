@@ -182,7 +182,7 @@ class AmericanBisonEasyStudyCardTests(unittest.TestCase):
         self.assertIsNotNone(study_deck_for("american-bison", "hard"))
         self.assertIsNotNone(study_deck_for("american-bison", "zoologist"))
         self.assertIsNotNone(study_deck_for("whale-shark"))
-        self.assertIsNone(study_deck_for("whale-shark", "hard"))
+        self.assertIsNotNone(study_deck_for("whale-shark", "hard"))
         self.assertIsNone(study_deck_for("whale-shark", "zoologist"))
         deck = study_deck_for("american-bison")
         self.assertIsNotNone(deck)
@@ -428,7 +428,7 @@ class AmericanBisonEasyStudyCardTests(unittest.TestCase):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
         self.assertIn("american-bison", payload)
         self.assertIn("whale-shark", payload)
-        self.assertEqual(set(payload["whale-shark"]["levels"]), {"easy"})
+        self.assertEqual(set(payload["whale-shark"]["levels"]), {"easy", "hard"})
         self.assertIn("american-alligator", payload)
         bison = payload["american-bison"]
         self.assertEqual(bison["id"], "american-bison")

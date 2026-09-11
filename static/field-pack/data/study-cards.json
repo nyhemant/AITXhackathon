@@ -17561,6 +17561,76 @@
             "why": "Wikipedia: despite its size, the whale shark is docile and poses no significant threat to humans. Soft care: give big animals space and follow local guide rules."
           }
         ]
+      },
+      "hard": {
+        "teach": [],
+        "questions": [
+          {
+            "slot": 1,
+            "id": "rhincodontidae-soft",
+            "title": "Rhincodontidae",
+            "stem": "Where does the whale shark sit in the shark family tree, if we keep names soft?",
+            "choices": [
+              "Only living member of family Rhincodontidae (genus Rhincodon) in the carpet-shark order Orectolobiformes — soft",
+              "A kind of dolphin in the whale family",
+              "A bony tuna with no shark relatives"
+            ],
+            "correct": "A",
+            "why": "Wikipedia: Rhincodon typus is the only living species of Rhincodon and the only living member of Rhincodontidae, within Orectolobiformes (carpet sharks). Soft on older name changes."
+          },
+          {
+            "slot": 2,
+            "id": "gill-pads-suction-soft",
+            "title": "Gill pads",
+            "stem": "How does a whale shark’s filter gear work beyond “open mouth and swim”?",
+            "choices": [
+              "It chews rocks into flour first",
+              "Specialized sieve-like gill pads (filter pads) plus active suction help strain tiny food from water — litres-per-hour soft",
+              "It only eats what sticks to its fins by accident"
+            ],
+            "correct": "B",
+            "why": "Wikipedia: filter pads and an active suction filter-feeding style let it process large volumes of water and catch plankton and small fish. Soft on exact pad counts and litres."
+          },
+          {
+            "slot": 3,
+            "id": "endangered-soft",
+            "title": "Endangered",
+            "stem": "How has the IUCN listed the whale shark recently, if we treat the letter as a snapshot?",
+            "choices": [
+              "Least Concern forever with no threats",
+              "Extinct in the wild since the 1800s",
+              "Endangered — a snapshot tied to big population drops from fishing, bycatch, and ship collisions (soft)"
+            ],
+            "correct": "C",
+            "why": "Wikipedia lists the whale shark as Endangered on the IUCN Red List, with a large decline over recent decades linked to targeted fishing, bycatch, and ship strikes. Letters can change — treat Endangered as a snapshot."
+          },
+          {
+            "slot": 4,
+            "id": "migration-aggregations-soft",
+            "title": "Migration",
+            "stem": "Why do whale sharks sometimes gather in the same coastal spots year after year?",
+            "choices": [
+              "Seasonal feeding aggregations where food is rich — sites such as Ningaloo and the Yucatán are examples (soft)",
+              "They nest in trees like birds",
+              "They only meet at the North Pole ice"
+            ],
+            "correct": "A",
+            "why": "Wikipedia: highly migratory animals travel far to exploit seasonal food, with predictable coastal feeding aggregations (e.g. Ningaloo Reef, Yucatán Peninsula). Soft on exact mile counts."
+          },
+          {
+            "slot": 5,
+            "id": "tiny-tooth-rows-soft",
+            "title": "Tiny teeth",
+            "stem": "What are a whale shark’s teeth like, compared with a great white’s big biting teeth?",
+            "choices": [
+              "Over many rows of tiny teeth — used with filter pads, not for hunting people (soft)",
+              "No teeth at all — ever",
+              "One giant tooth the size of a door"
+            ],
+            "correct": "A",
+            "why": "Wikipedia: mouths can hold hundreds of rows of tiny teeth plus filter pads for filter feeding. Soft on exact row counts; they are not built like a great white’s bite."
+          }
+        ]
       }
     }
   }

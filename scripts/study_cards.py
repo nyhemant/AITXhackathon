@@ -2132,19 +2132,34 @@ invent photos.
 
 Facts for whale-shark Junior Ranger (easy) are
 Wikipedia-backed: https://en.wikipedia.org/wiki/Whale_shark
-JR only this pass — do not add Park Ranger or Zoologist.
 Five teach lines + five signed MCQs. Letter mix
 B, A, C, A, B — do not rotate onto the 10-slot cycle.
 Soften exact metres and litres-per-hour. Keep
 kid-friendly. Do not invent photos.
 
+Facts for whale-shark Park Ranger (hard) are
+Wikipedia-backed: https://en.wikipedia.org/wiki/Whale_shark
+Five signed questions (letter mix A, B, C, A, A):
+Rhincodontidae / Rhincodon in Orectolobiformes
+(soft on older name changes), gill pads plus
+active suction (litres-per-hour soft), IUCN
+Endangered snapshot (fishing, bycatch, ship
+strikes), seasonal feeding aggregations
+(Ningaloo / Yucatán — mile counts soft), and
+many rows of tiny teeth used with filter pads
+(not a great-white bite; row counts soft).
+Park Ranger is answer-light (empty teach).
+Do not redo JR themes. Do not add Zoologist
+this pass. Keep kid-friendly. Do not invent
+photos.
+
 Slot numbers stay 1–10 on full Junior Ranger decks.
 Stingray Park Ranger and Zoologist are 5-question
-signed packs. Whale-shark Junior Ranger is a signed
-5-question pack. Hard and Zoologist deepen
-different themes (not a redo of Easy or
-of each other). Internal keys stay easy /
-hard / zoologist. Visible copy uses
+signed packs. Whale-shark Junior Ranger and
+Park Ranger are signed 5-question packs. Hard
+and Zoologist deepen different themes (not a
+redo of Easy or of each other). Internal keys
+stay easy / hard / zoologist. Visible copy uses
 LEVEL_DISPLAY_NAMES only — no age badges,
 no plain Easy / Hard labels.
 """
@@ -2230,6 +2245,7 @@ def target_letter_for_slot(slot: int) -> str:
 SIGNED_LETTER_MIX = {
     ("stingray", "zoologist"): ("A", "B", "C", "A", "A"),
     ("whale-shark", "easy"): ("B", "A", "C", "A", "B"),
+    ("whale-shark", "hard"): ("A", "B", "C", "A", "A"),
 }
 
 
@@ -2308,7 +2324,7 @@ LEVEL_DISPLAY_NAMES = {
 # ship Junior Ranger + Park Ranger + Zoologist.
 # Manta ray, octopus, sea turtle, seahorse, starfish, and
 # stingray ship Junior Ranger + Park Ranger + Zoologist.
-# Whale shark ships Junior Ranger only (signed 5-question pack).
+# Whale shark ships Junior Ranger + Park Ranger (signed 5-question packs).
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -20355,6 +20371,76 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "B",
                         "why": "Wikipedia: despite its size, the whale shark is docile and poses no significant threat to humans. Soft care: give big animals space and follow local guide rules.",
+                    },
+                ],
+            },
+            "hard": {
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "rhincodontidae-soft",
+                        "title": "Rhincodontidae",
+                        "stem": "Where does the whale shark sit in the shark family tree, if we keep names soft?",
+                        "choices": [
+                            "Only living member of family Rhincodontidae (genus Rhincodon) in the carpet-shark order Orectolobiformes — soft",
+                            "A kind of dolphin in the whale family",
+                            "A bony tuna with no shark relatives",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia: Rhincodon typus is the only living species of Rhincodon and the only living member of Rhincodontidae, within Orectolobiformes (carpet sharks). Soft on older name changes.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "gill-pads-suction-soft",
+                        "title": "Gill pads",
+                        "stem": "How does a whale shark’s filter gear work beyond “open mouth and swim”?",
+                        "choices": [
+                            "It chews rocks into flour first",
+                            "Specialized sieve-like gill pads (filter pads) plus active suction help strain tiny food from water — litres-per-hour soft",
+                            "It only eats what sticks to its fins by accident",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia: filter pads and an active suction filter-feeding style let it process large volumes of water and catch plankton and small fish. Soft on exact pad counts and litres.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "endangered-soft",
+                        "title": "Endangered",
+                        "stem": "How has the IUCN listed the whale shark recently, if we treat the letter as a snapshot?",
+                        "choices": [
+                            "Least Concern forever with no threats",
+                            "Extinct in the wild since the 1800s",
+                            "Endangered — a snapshot tied to big population drops from fishing, bycatch, and ship collisions (soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia lists the whale shark as Endangered on the IUCN Red List, with a large decline over recent decades linked to targeted fishing, bycatch, and ship strikes. Letters can change — treat Endangered as a snapshot.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "migration-aggregations-soft",
+                        "title": "Migration",
+                        "stem": "Why do whale sharks sometimes gather in the same coastal spots year after year?",
+                        "choices": [
+                            "Seasonal feeding aggregations where food is rich — sites such as Ningaloo and the Yucatán are examples (soft)",
+                            "They nest in trees like birds",
+                            "They only meet at the North Pole ice",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia: highly migratory animals travel far to exploit seasonal food, with predictable coastal feeding aggregations (e.g. Ningaloo Reef, Yucatán Peninsula). Soft on exact mile counts.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "tiny-tooth-rows-soft",
+                        "title": "Tiny teeth",
+                        "stem": "What are a whale shark’s teeth like, compared with a great white’s big biting teeth?",
+                        "choices": [
+                            "Over many rows of tiny teeth — used with filter pads, not for hunting people (soft)",
+                            "No teeth at all — ever",
+                            "One giant tooth the size of a door",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia: mouths can hold hundreds of rows of tiny teeth plus filter pads for filter feeding. Soft on exact row counts; they are not built like a great white’s bite.",
                     },
                 ],
             },
