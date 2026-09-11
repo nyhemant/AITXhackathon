@@ -19240,7 +19240,7 @@ STUDY_CARDS: dict[str, dict] = {
                         "title": "True fish",
                         "stem": "Are seahorses a kind of fish?",
                         "choices": [
-                            "Yes — small bony fish in genus Hippocampus, with many kinds (soft)",
+                            "Yes — they are real bony fish, with many kinds (soft)",
                             "No — they are tiny horses that live in the sea",
                             "No — they are mammals like dolphins",
                         ],

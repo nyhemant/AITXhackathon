@@ -310,7 +310,7 @@ class SeahorseEasyStudyCardTests(unittest.TestCase):
         for phrase in PAGE_BRITTLE:
             self.assertNotIn(phrase, html)
         self.assertIn(
-            "Yes — small bony fish in genus Hippocampus, with many kinds",
+            "Yes — they are real bony fish, with many kinds",
             html,
         )
         self.assertIn(
@@ -426,7 +426,7 @@ class SeahorseEasyStudyCardTests(unittest.TestCase):
         for stem in STEMS:
             self.assertIn(stem, sheet)
         self.assertIn(
-            "Yes — small bony fish in genus Hippocampus, with many kinds",
+            "Yes — they are real bony fish, with many kinds",
             sheet,
         )
         self.assertIn(

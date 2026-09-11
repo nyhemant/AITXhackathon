@@ -128,7 +128,7 @@ BRITTLE = (
     "km/h",
 )
 REDO_THEMES = (
-    "Yes — small bony fish in genus Hippocampus, with many kinds (soft)",
+    "Yes — they are real bony fish, with many kinds",
     "A small dorsal fin pushes it along; pectoral fins help steer; it has no typical tail fin",
     "A square-ringed gripping tail holds seagrass, coral, or seaweed so they aren’t swept away",
     "A bent neck and tubular snout suck in tiny shrimp and other plankton",

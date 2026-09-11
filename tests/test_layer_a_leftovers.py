@@ -94,6 +94,18 @@ class LayerALeftoversTests(unittest.TestCase):
                 label = raw.replace("&amp;", "&").replace("&quot;", '"')
                 self.assertFalse(SOFT_MARK.search(label), f"{cid}: {label}")
 
+    def test_seahorse_jr_choice_drops_hippocampus(self):
+        easy = STUDY_CARDS["seahorse"]["levels"]["easy"]
+        labels = [ch for q in easy["questions"] for ch in q.get("choices") or []]
+        self.assertTrue(any("real bony fish" in ch for ch in labels))
+        self.assertFalse(any("Hippocampus" in ch for ch in labels))
+        html = (FP / "cards" / "seahorse" / "index.html").read_text(encoding="utf-8")
+        main = _main(html)
+        self.assertIn("Yes — they are real bony fish, with many kinds", main)
+        for raw in re.findall(r'data-choice="([^"]*)"', main):
+            label = raw.replace("&amp;", "&").replace("&quot;", '"')
+            self.assertNotIn("Hippocampus", label)
+
     def test_sealife_baked_try_next_stays_in_hub(self):
         kinds = load_card_kinds()
         sealife = [
@@ -133,6 +145,7 @@ class LayerALeftoversTests(unittest.TestCase):
                 self.assertNotIn("card-page-photo-link", main)
         self.assertIn("cheetah", hidden)
         self.assertIn("koala", hidden)
+        self.assertIn("manta-ray", hidden)
         self.assertIn("whale-shark", hidden)
 
 
