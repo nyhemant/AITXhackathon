@@ -1,4 +1,4 @@
-"""Sea-turtle Easy study-card: Junior Ranger teach + 10 MCQs (Park Ranger is a sibling level)."""
+"""Seahorse Easy study-card: Junior Ranger teach + 10 MCQs (no Park Ranger yet)."""
 
 from __future__ import annotations
 
@@ -14,25 +14,19 @@ sys.path.insert(0, str(REPO / "scripts"))
 from generate_bdo_seo import outing_talk_html  # noqa: E402
 from study_cards import (  # noqa: E402
     LEVEL_DISPLAY_NAMES,
-    PUSH_FURTHER_JELLYFISH,
-    PUSH_FURTHER_KELP_FOREST,
     PUSH_FURTHER_LION,
-    PUSH_FURTHER_MANTA_RAY,
     PUSH_FURTHER_OCTOPUS,
     PUSH_FURTHER_SEA_TURTLE,
+    PUSH_FURTHER_SEAHORSE,
     STUDY_SLOTS,
-    TALK_ABOUT_JELLYFISH,
-    TALK_ABOUT_KELP_FOREST,
     TALK_ABOUT_LION,
-    TALK_ABOUT_MANTA_RAY,
     TALK_ABOUT_OCTOPUS,
     TALK_ABOUT_SEA_TURTLE,
-    WIKI_JELLYFISH,
-    WIKI_KELP_FOREST,
+    TALK_ABOUT_SEAHORSE,
     WIKI_LION,
-    WIKI_MANTA_RAY,
     WIKI_OCTOPUS,
     WIKI_SEA_TURTLE,
+    WIKI_SEAHORSE,
     level_display_name,
     shipped_levels_for,
     study_card_ids,
@@ -44,11 +38,10 @@ from study_cards import (  # noqa: E402
 )
 
 FP = REPO / "static" / "field-pack"
+SEAHORSE = FP / "cards" / "seahorse" / "index.html"
+STINGRAY = FP / "cards" / "stingray" / "index.html"
 SEA_TURTLE = FP / "cards" / "sea-turtle" / "index.html"
-SEAHORSE = FP / "cards" / "stingray" / "index.html"
 OCTOPUS = FP / "cards" / "octopus" / "index.html"
-MANTA = FP / "cards" / "manta-ray" / "index.html"
-KELP = FP / "cards" / "kelp-forest" / "index.html"
 PRINT_KIT = FP / "js" / "print-kit.js"
 STUDY_JS = FP / "js" / "study-card.js"
 STYLES = FP / "css" / "styles.css"
@@ -67,37 +60,37 @@ GENERIC_WORKSHEET = (
 )
 
 TEACH = (
-    "Ocean reptiles with paddle flippers (not land-turtle feet)",
-    "About seven kinds live in the world’s oceans (not the polar ice)",
-    "Moms dig nests on sandy beaches and bury soft eggs",
-    "Babies hatch and crawl to the sea (often at night)",
-    "They breathe air — they surface, even though they live in the ocean",
+    "Small bony fish that swim upright (not mammals)",
+    "Horse-like head and long snout for sucking tiny food",
+    "A curled gripping tail holds seagrass, coral, or seaweed",
+    "Dad carries the babies in a front pouch until they are born",
+    "Thin skin over bony plates (not fish scales) — great at camouflage",
 )
 
 STEMS = (
-    "How many kinds of sea turtle live in the world’s oceans, if we keep the list soft?",
-    "What do a sea turtle’s flippers do?",
-    "How is a sea turtle’s shell built for the ocean?",
-    "How does a mom sea turtle make a nest?",
-    "What are sea turtle eggs like — and does mom stay to guard them?",
-    "What do baby sea turtles do after they hatch?",
-    "How do sea turtles breathe, even though they live in the ocean?",
-    "Where do sea turtles live?",
-    "How far can many sea turtles travel, if we keep the miles soft?",
-    "Can a sea turtle pull its head and flippers into its shell like many pet turtles?",
+    "Are seahorses a kind of fish?",
+    "How does a seahorse swim, if we keep the fins simple?",
+    "What does a seahorse’s tail do?",
+    "Why does a seahorse’s head look horse-like, and how does it eat?",
+    "What covers a seahorse’s body, if we keep the armour story soft?",
+    "Who carries seahorse babies, and how?",
+    "How can a seahorse hide in seagrass or coral?",
+    "Where do seahorses usually live?",
+    "Which animals are seahorses closely related to?",
+    "Do seahorse moms always carry the babies?",
 )
 
 QIDS = (
-    "seven-kinds-soft",
-    "flippers-soft",
-    "streamlined-shell-soft",
-    "beach-nest-soft",
-    "eggs-soft",
-    "hatchling-run-soft",
-    "air-breathers-soft",
-    "ocean-homes-soft",
-    "long-trips-soft",
-    "cannot-hide-myth",
+    "true-fish-soft",
+    "upright-swim-soft",
+    "gripping-tail-soft",
+    "horse-snout-soft",
+    "bony-armour-soft",
+    "dads-pouch-soft",
+    "camouflage-soft",
+    "clingy-homes-soft",
+    "pipefish-cousins-soft",
+    "dad-not-mom-myth",
 )
 
 PLAIN_LEVEL_LABELS = ("Easy", "Hard")
@@ -110,14 +103,13 @@ BRITTLE = (
     "Near Threatened",
     "Least Concern",
     "CITES",
-    "Chelonioidea",
-    "Cheloniidae",
-    "Dermochelyidae",
-    "Cryptodira",
-    "Testudines",
-    "magnetoreception",
-    "natal homing",
-    "gigantothermy",
+    "Syngnathidae",
+    "Phycodurus",
+    "Phyllopteryx",
+    "bargibanti",
+    "zosterae",
+    "histotroph",
+    "osmoregulation",
     "kg",
     "cm",
     "mph",
@@ -126,13 +118,13 @@ BRITTLE = (
 PAGE_BRITTLE = BRITTLE
 RESERVED = (
     "IUCN",
-    "Chelonioidea",
-    "Cheloniidae",
-    "Dermochelyidae",
-    "Cryptodira",
-    "magnetoreception",
-    "natal homing",
-    "gigantothermy",
+    "CITES",
+    "Syngnathidae",
+    "Phycodurus",
+    "Phyllopteryx",
+    "bargibanti",
+    "zosterae",
+    "histotroph",
 )
 
 
@@ -144,9 +136,9 @@ def _main(html: str) -> str:
     return html.split('<main class="card-page">', 1)[1].split("</main>", 1)[0]
 
 
-class SeaTurtleEasyStudyCardTests(unittest.TestCase):
+class SeahorseEasyStudyCardTests(unittest.TestCase):
     def test_deck_is_junior_ranger_only(self):
-        self.assertIn("sea-turtle", study_card_ids())
+        self.assertIn("seahorse", study_card_ids())
         self.assertNotIn("stingray", study_card_ids())
         self.assertEqual(
             study_card_ids(),
@@ -192,20 +184,20 @@ class SeaTurtleEasyStudyCardTests(unittest.TestCase):
                 "seahorse",
             ),
         )
-        self.assertEqual(shipped_levels_for("sea-turtle"), ("easy", "hard", "zoologist"))
-        self.assertIsNotNone(study_deck_for("sea-turtle", "hard"))
-        self.assertIsNotNone(study_deck_for("sea-turtle", "zoologist"))
+        self.assertEqual(shipped_levels_for("seahorse"), ("easy",))
+        self.assertIsNone(study_deck_for("seahorse", "hard"))
+        self.assertIsNone(study_deck_for("seahorse", "zoologist"))
         self.assertIsNone(study_deck_for("stingray"))
-        deck = study_deck_for("sea-turtle")
+        deck = study_deck_for("seahorse")
         self.assertIsNotNone(deck)
-        self.assertEqual(deck["id"], "sea-turtle")
+        self.assertEqual(deck["id"], "seahorse")
         self.assertEqual(deck["level"], "easy")
         self.assertEqual(deck["level_label"], "Junior Ranger")
         self.assertEqual(level_display_name("easy"), "Junior Ranger")
-        self.assertEqual(deck["source"], WIKI_SEA_TURTLE)
+        self.assertEqual(deck["source"], WIKI_SEAHORSE)
         self.assertEqual(
             deck["source_note"],
-            "Facts from Wikipedia, Sea turtle.",
+            "Facts from Wikipedia, Seahorse.",
         )
         self.assertEqual(validate_deck(deck), [])
         self.assertEqual(len(deck["teach"]), 5)
@@ -213,8 +205,8 @@ class SeaTurtleEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(len(deck["questions"]), STUDY_SLOTS)
         self.assertEqual([q["stem"] for q in deck["questions"]], list(STEMS))
         self.assertEqual([q["id"] for q in deck["questions"]], list(QIDS))
-        self.assertEqual(deck["talk_about"], list(TALK_ABOUT_SEA_TURTLE))
-        self.assertEqual(deck["push_further"], list(PUSH_FURTHER_SEA_TURTLE))
+        self.assertEqual(deck["talk_about"], list(TALK_ABOUT_SEAHORSE))
+        self.assertEqual(deck["push_further"], list(PUSH_FURTHER_SEAHORSE))
         letters = [q["correct"] for q in deck["questions"]]
         self.assertEqual(letters, [target_letter_for_slot(i) for i in range(1, 11)])
         self.assertEqual(letters.count("A"), 4)
@@ -234,18 +226,19 @@ class SeaTurtleEasyStudyCardTests(unittest.TestCase):
         )
         for phrase in BRITTLE + RESERVED:
             self.assertNotIn(phrase, blob)
-        self.assertIn("flipper", blob.lower())
-        self.assertIn("seven", blob.lower())
-        self.assertIn("ridley", blob.lower())
-        self.assertIn("leatherback", blob.lower())
-        self.assertIn("nest", blob.lower())
-        self.assertIn("soft-shelled", blob.lower())
-        self.assertIn("horizon", blob.lower())
-        self.assertIn("lung", blob.lower())
-        self.assertIn("polar", blob.lower())
-        self.assertIn("feeding", blob.lower())
-        self.assertIn("retract", blob.lower())
-        self.assertEqual(WIKI_SEA_TURTLE, "https://en.wikipedia.org/wiki/Sea_turtle")
+        self.assertIn("hippocampus", blob.lower())
+        self.assertIn("bony fish", blob.lower())
+        self.assertIn("dorsal", blob.lower())
+        self.assertIn("pectoral", blob.lower())
+        self.assertIn("square", blob.lower())
+        self.assertIn("snout", blob.lower())
+        self.assertIn("pouch", blob.lower())
+        self.assertIn("colour", blob.lower())
+        self.assertIn("seagrass", blob.lower())
+        self.assertIn("pipefish", blob.lower())
+        self.assertIn("seadragon", blob.lower())
+        self.assertIn("father", blob.lower())
+        self.assertEqual(WIKI_SEAHORSE, "https://en.wikipedia.org/wiki/Seahorse")
 
     def test_other_study_decks_untouched(self):
         lion = study_deck_for("african-lion")
@@ -255,6 +248,13 @@ class SeaTurtleEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(lion["talk_about"], list(TALK_ABOUT_LION))
         self.assertEqual(lion["push_further"], list(PUSH_FURTHER_LION))
         self.assertEqual(shipped_levels_for("african-lion"), ("easy", "hard", "zoologist"))
+        turtle = study_deck_for("sea-turtle")
+        self.assertEqual(turtle["source"], WIKI_SEA_TURTLE)
+        self.assertEqual(turtle["talk_about"], list(TALK_ABOUT_SEA_TURTLE))
+        self.assertEqual(turtle["push_further"], list(PUSH_FURTHER_SEA_TURTLE))
+        self.assertEqual(shipped_levels_for("sea-turtle"), ("easy", "hard", "zoologist"))
+        self.assertIsNotNone(study_deck_for("sea-turtle", "hard"))
+        self.assertIsNotNone(study_deck_for("sea-turtle", "zoologist"))
         octo = study_deck_for("octopus")
         self.assertEqual(octo["source"], WIKI_OCTOPUS)
         self.assertEqual(octo["talk_about"], list(TALK_ABOUT_OCTOPUS))
@@ -262,30 +262,9 @@ class SeaTurtleEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(shipped_levels_for("octopus"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("octopus", "hard"))
         self.assertIsNotNone(study_deck_for("octopus", "zoologist"))
-        manta = study_deck_for("manta-ray")
-        self.assertEqual(manta["source"], WIKI_MANTA_RAY)
-        self.assertEqual(manta["talk_about"], list(TALK_ABOUT_MANTA_RAY))
-        self.assertEqual(manta["push_further"], list(PUSH_FURTHER_MANTA_RAY))
-        self.assertEqual(shipped_levels_for("manta-ray"), ("easy", "hard", "zoologist"))
-        self.assertIsNotNone(study_deck_for("manta-ray", "hard"))
-        self.assertIsNotNone(study_deck_for("manta-ray", "zoologist"))
-        kelp = study_deck_for("kelp-forest")
-        self.assertEqual(kelp["source"], WIKI_KELP_FOREST)
-        self.assertEqual(kelp["talk_about"], list(TALK_ABOUT_KELP_FOREST))
-        self.assertEqual(kelp["push_further"], list(PUSH_FURTHER_KELP_FOREST))
-        self.assertEqual(shipped_levels_for("kelp-forest"), ("easy", "hard", "zoologist"))
-        self.assertIsNotNone(study_deck_for("kelp-forest", "hard"))
-        self.assertIsNotNone(study_deck_for("kelp-forest", "zoologist"))
-        jelly = study_deck_for("jellyfish")
-        self.assertEqual(jelly["source"], WIKI_JELLYFISH)
-        self.assertEqual(jelly["talk_about"], list(TALK_ABOUT_JELLYFISH))
-        self.assertEqual(jelly["push_further"], list(PUSH_FURTHER_JELLYFISH))
-        self.assertEqual(shipped_levels_for("jellyfish"), ("easy", "hard", "zoologist"))
-        self.assertIsNotNone(study_deck_for("jellyfish", "hard"))
-        self.assertIsNotNone(study_deck_for("jellyfish", "zoologist"))
 
     def test_generator_html_is_study_not_worksheet(self):
-        html = outing_talk_html({"id": "sea-turtle", "packTemplate": "animals"})
+        html = outing_talk_html({"id": "seahorse", "packTemplate": "animals"})
         self.assertIn(">Quiz</h2>", html)
         self.assertIn("card-study-pack", html)
         self.assertIn("Learn first", html)
@@ -298,7 +277,7 @@ class SeaTurtleEasyStudyCardTests(unittest.TestCase):
         self.assertIn('<details class="study-explore', html)
         self.assertIn("Explore more", html)
         self.assertNotIn('<aside class="study-deepen"', html)
-        for prompt in TALK_ABOUT_SEA_TURTLE + PUSH_FURTHER_SEA_TURTLE:
+        for prompt in TALK_ABOUT_SEAHORSE + PUSH_FURTHER_SEAHORSE:
             self.assertIn(prompt, html)
         self.assertIn("Show answers", html)
         self.assertIn("Score", html)
@@ -310,15 +289,13 @@ class SeaTurtleEasyStudyCardTests(unittest.TestCase):
             self.assertNotIn(phrase, html)
         visible = _text(html)
         self.assertIn("Junior Ranger", visible)
-        self.assertIn("Park Ranger", visible)
-        self.assertIn("Zoologist", visible)
-        self.assertIn('class="study-level-picker"', html)
-        self.assertIn('data-study-pick="easy"', html)
-        self.assertIn('data-study-pick="hard"', html)
-        self.assertIn('data-study-pick="zoologist"', html)
-        self.assertNotIn('class="study-level-badge"', html)
-        self.assertEqual(html.count('role="group"'), 2)
-        self.assertIn("study-level-picker-bottom", html)
+        self.assertNotIn("Park Ranger", visible)
+        self.assertNotIn("Zoologist", visible)
+        self.assertIn('class="study-level-badge"', html)
+        self.assertNotIn('class="study-level-picker"', html)
+        self.assertNotIn("data-study-pick", html)
+        self.assertNotIn("study-level-picker-bottom", html)
+        self.assertEqual(html.count('role="group"'), 0)
         for badge in PLAIN_LEVEL_LABELS + AGE_BADGES:
             self.assertNotIn(badge, visible)
         self.assertNotIn(" · Easy ·", html)
@@ -326,27 +303,27 @@ class SeaTurtleEasyStudyCardTests(unittest.TestCase):
         for phrase in PAGE_BRITTLE:
             self.assertNotIn(phrase, html)
         self.assertIn(
-            "About seven kinds — flatback, green, hawksbill, leatherback, loggerhead, Kemp’s ridley, and olive ridley (soft)",
+            "Yes — small bony fish in genus Hippocampus, with many kinds (soft)",
             html,
         )
         self.assertIn(
-            "No — unlike many pet turtles, they cannot pull their head and flippers in. The body is built for swimming, not hiding inside",
+            "No — people think moms always carry babies, but in seahorses the father does the pouch care",
             html,
         )
-        self.assertIn("Facts from Wikipedia, Sea turtle.", html)
+        self.assertIn("Facts from Wikipedia, Seahorse.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
         html = outing_talk_html({"id": "stingray", "packTemplate": "animals"})
         self.assertIn("What do they eat?", html)
         self.assertNotIn("card-study-pack", html)
-        self.assertNotIn("How many kinds of sea turtle", html)
-        horse = SEAHORSE.read_text(encoding="utf-8")
-        self.assertIn("What do they eat?", horse)
-        self.assertNotIn("card-study-pack", horse)
-        self.assertNotIn("How many kinds of sea turtle", horse)
+        self.assertNotIn("Are seahorses a kind of fish", html)
+        ray = STINGRAY.read_text(encoding="utf-8")
+        self.assertIn("What do they eat?", ray)
+        self.assertNotIn("card-study-pack", ray)
+        self.assertNotIn("Are seahorses a kind of fish", ray)
 
-    def test_published_sea_turtle_card_matches_easy_deck(self):
-        html = SEA_TURTLE.read_text(encoding="utf-8")
+    def test_published_seahorse_card_matches_easy_deck(self):
+        html = SEAHORSE.read_text(encoding="utf-8")
         main = _main(html)
         for phrase in GENERIC_WORKSHEET:
             self.assertNotIn(phrase, main)
@@ -357,21 +334,21 @@ class SeaTurtleEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Watch Live", main)
         self.assertIn("card-watch-live", main)
         self.assertIn("card-page-photo", main)
-        self.assertIn("/field-pack/photos/sea-turtle.jpg", main)
+        self.assertIn("/field-pack/photos/seahorse.jpg", main)
         self.assertIn(
-            "/field-pack/virtual-field-trip/?tab=aquarium&amp;from=card#habitat=sea-turtle",
+            "/field-pack/virtual-field-trip/?tab=aquarium&amp;from=card#habitat=seahorse",
             main,
         )
         self.assertIn('class="card-try-next no-print"', main)
-        self.assertIn("study-level-picker-bottom", main)
+        self.assertNotIn("study-level-picker-bottom", main)
         self.assertNotIn("card-print-note", main)
         self.assertIn("study-card.js?v=10", html)
         self.assertIn("study-card.css?v=10", html)
         self.assertIn("study-cards-data.js?v=6", html)
         self.assertIn('id="study-card-data"', html)
         self.assertIn('"level_label": "Junior Ranger"', html)
-        self.assertIn('"id": "sea-turtle"', html)
-        self.assertNotIn('"id": "octopus"', html)
+        self.assertIn('"id": "seahorse"', html)
+        self.assertNotIn('"id": "sea-turtle"', html)
         self.assertIn('id="study-print-template"', html)
         self.assertIn("print-kit.js?v=20", html)
         self.assertIn("styles.css?v=42", html)
@@ -387,13 +364,11 @@ class SeaTurtleEasyStudyCardTests(unittest.TestCase):
         self.assertLess(main.find("study-explore"), main.find("card-try-next"))
         visible = _text(main)
         self.assertIn("Junior Ranger", visible)
-        self.assertIn("Park Ranger", visible)
-        self.assertIn("Zoologist", visible)
-        self.assertIn('class="study-level-picker"', main)
-        self.assertIn('data-study-pick="easy"', main)
-        self.assertIn('data-study-pick="hard"', main)
-        self.assertIn('data-study-pick="zoologist"', main)
-        self.assertNotIn('class="study-level-badge"', main)
+        self.assertNotIn("Park Ranger", visible)
+        self.assertNotIn("Zoologist", visible)
+        self.assertIn('class="study-level-badge"', main)
+        self.assertNotIn('class="study-level-picker"', main)
+        self.assertNotIn("data-study-pick", main)
         self.assertIn("Learn first", main)
         self.assertIn(">Quiz</h2>", main)
         self.assertEqual(main.count("data-study-correct"), 2)
@@ -415,38 +390,38 @@ class SeaTurtleEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Talk about it", back)
         self.assertIn("Push further", back)
         self.assertIn("ps-study-deepen", back)
-        for prompt in TALK_ABOUT_SEA_TURTLE + PUSH_FURTHER_SEA_TURTLE:
+        for prompt in TALK_ABOUT_SEAHORSE + PUSH_FURTHER_SEAHORSE:
             self.assertIn(prompt, back)
         self.assertEqual(
-            study_try_next_ids("sea-turtle"),
-            ["octopus", "manta-ray", "african-lion"],
+            study_try_next_ids("seahorse"),
+            ["octopus", "sea-turtle", "african-lion"],
         )
 
     def test_print_faces_are_duplex_and_clamped(self):
-        deck = study_deck_for("sea-turtle")
+        deck = study_deck_for("seahorse")
         sheet = study_print_html(
             deck,
-            name="Sea turtle",
-            emoji="🐢",
-            photo="/field-pack/photos/sea-turtle.jpg?v=img2",
-            photo_pos="50% 32%",
+            name="Seahorse",
+            emoji="🌊",
+            photo="/field-pack/photos/seahorse.jpg?v=img2",
+            photo_pos="50% 30%",
         )
         self.assertIn("ps-study-front", sheet)
         self.assertIn("ps-study-back", sheet)
         self.assertIn("ps-study-photo", sheet)
-        self.assertIn("/field-pack/photos/sea-turtle.jpg", sheet)
+        self.assertIn("/field-pack/photos/seahorse.jpg", sheet)
         self.assertIn("Flip for answers", sheet)
         self.assertIn("Junior Ranger", sheet)
         self.assertNotIn(" · Easy ·", sheet)
-        self.assertIn(WIKI_SEA_TURTLE, sheet)
+        self.assertIn(WIKI_SEAHORSE, sheet)
         for stem in STEMS:
             self.assertIn(stem, sheet)
         self.assertIn(
-            "About seven kinds — flatback, green, hawksbill, leatherback, loggerhead, Kemp’s ridley, and olive ridley (soft)",
+            "Yes — small bony fish in genus Hippocampus, with many kinds (soft)",
             sheet,
         )
         self.assertIn(
-            "No — unlike many pet turtles, they cannot pull their head and flippers in. The body is built for swimming, not hiding inside",
+            "No — people think moms always carry babies, but in seahorses the father does the pouch care",
             sheet,
         )
         front, _, back = sheet.partition("ps-study-back")
@@ -454,7 +429,7 @@ class SeaTurtleEasyStudyCardTests(unittest.TestCase):
         self.assertNotIn("Talk about it", front)
         self.assertIn("Talk about it", back)
         self.assertIn("Push further", back)
-        for prompt in TALK_ABOUT_SEA_TURTLE + PUSH_FURTHER_SEA_TURTLE:
+        for prompt in TALK_ABOUT_SEAHORSE + PUSH_FURTHER_SEAHORSE:
             self.assertIn(prompt, back)
         css = STYLES.read_text(encoding="utf-8")
         self.assertIn(".ps-study-front", css)
@@ -470,18 +445,18 @@ class SeaTurtleEasyStudyCardTests(unittest.TestCase):
         self.assertIn("is-wrong-pick", study_js)
         self.assertIn("FPStudyLevelName", study_js + STUDY_DATA_JS.read_text(encoding="utf-8"))
 
-    def test_artifacts_include_sea_turtle_easy_and_hard(self):
+    def test_artifacts_include_seahorse_easy_only(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
-        self.assertIn("sea-turtle", payload)
+        self.assertIn("seahorse", payload)
         self.assertNotIn("stingray", payload)
+        self.assertIn("sea-turtle", payload)
         self.assertIn("octopus", payload)
-        self.assertIn("manta-ray", payload)
-        self.assertIn("kelp-forest", payload)
-        turtle = payload["sea-turtle"]
-        self.assertEqual(turtle["id"], "sea-turtle")
-        self.assertEqual(set(turtle["levels"]), {"easy", "hard", "zoologist"})
-        self.assertEqual(turtle["levels"]["zoologist"]["teach"], [])
-        easy = turtle["levels"]["easy"]
+        horse = payload["seahorse"]
+        self.assertEqual(horse["id"], "seahorse")
+        self.assertEqual(set(horse["levels"]), {"easy"})
+        self.assertNotIn("hard", horse["levels"])
+        self.assertNotIn("zoologist", horse["levels"])
+        easy = horse["levels"]["easy"]
         self.assertEqual(len(easy["teach"]), 5)
         self.assertEqual(len(easy["questions"]), STUDY_SLOTS)
         self.assertEqual(
@@ -491,11 +466,10 @@ class SeaTurtleEasyStudyCardTests(unittest.TestCase):
         for q in easy["questions"]:
             self.assertEqual(len(q["choices"]), 3)
         data_js = STUDY_DATA_JS.read_text(encoding="utf-8")
-        self.assertIn('"sea-turtle"', data_js)
+        self.assertIn('"seahorse"', data_js)
         self.assertIn('"easy":"Junior Ranger"', data_js)
+        self.assertEqual(set(payload["sea-turtle"]["levels"]), {"easy", "hard", "zoologist"})
         self.assertEqual(set(payload["octopus"]["levels"]), {"easy", "hard", "zoologist"})
-        self.assertEqual(set(payload["manta-ray"]["levels"]), {"easy", "hard", "zoologist"})
-        self.assertEqual(set(payload["kelp-forest"]["levels"]), {"easy", "hard", "zoologist"})
         self.assertEqual(set(payload["african-lion"]["levels"]), {"easy", "hard", "zoologist"})
 
     def test_display_name_map_still_covers_future_tiers(self):
@@ -508,23 +482,19 @@ class SeaTurtleEasyStudyCardTests(unittest.TestCase):
             },
         )
         self.assertEqual(level_display_name("easy"), "Junior Ranger")
-        turtle_html = SEA_TURTLE.read_text(encoding="utf-8")
-        visible = _text(_main(turtle_html))
+        horse_html = SEAHORSE.read_text(encoding="utf-8")
+        visible = _text(_main(horse_html))
         self.assertIn("Junior Ranger", visible)
-        self.assertIn("Park Ranger", visible)
-        self.assertIn("Zoologist", visible)
+        self.assertNotIn("Park Ranger", visible)
+        self.assertNotIn("Zoologist", visible)
+        turtle_html = SEA_TURTLE.read_text(encoding="utf-8")
+        self.assertIn("Junior Ranger", _text(_main(turtle_html)))
+        self.assertIn("Park Ranger", _text(_main(turtle_html)))
+        self.assertIn("Zoologist", _text(_main(turtle_html)))
         octo_html = OCTOPUS.read_text(encoding="utf-8")
         self.assertIn("Junior Ranger", _text(_main(octo_html)))
         self.assertIn("Park Ranger", _text(_main(octo_html)))
         self.assertIn("Zoologist", _text(_main(octo_html)))
-        manta_html = MANTA.read_text(encoding="utf-8")
-        self.assertIn("Junior Ranger", _text(_main(manta_html)))
-        self.assertIn("Park Ranger", _text(_main(manta_html)))
-        self.assertIn("Zoologist", _text(_main(manta_html)))
-        kelp_html = KELP.read_text(encoding="utf-8")
-        self.assertIn("Junior Ranger", _text(_main(kelp_html)))
-        self.assertIn("Park Ranger", _text(_main(kelp_html)))
-        self.assertIn("Zoologist", _text(_main(kelp_html)))
 
 
 if __name__ == "__main__":

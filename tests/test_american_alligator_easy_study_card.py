@@ -36,7 +36,7 @@ from study_cards import (  # noqa: E402
 
 FP = REPO / "static" / "field-pack"
 GATOR = FP / "cards" / "american-alligator" / "index.html"
-OCTOPUS = FP / "cards" / "seahorse" / "index.html"
+OCTOPUS = FP / "cards" / "stingray" / "index.html"
 OTTER = FP / "cards" / "sea-otter" / "index.html"
 PRINT_KIT = FP / "js" / "print-kit.js"
 STUDY_JS = FP / "js" / "study-card.js"
@@ -132,7 +132,7 @@ def _main(html: str) -> str:
 class AmericanAlligatorEasyStudyCardTests(unittest.TestCase):
     def test_deck_is_junior_ranger(self):
         self.assertIn("american-alligator", study_card_ids())
-        self.assertNotIn("seahorse", study_card_ids())
+        self.assertNotIn("stingray", study_card_ids())
         self.assertEqual(
             study_card_ids(),
             (
@@ -174,12 +174,13 @@ class AmericanAlligatorEasyStudyCardTests(unittest.TestCase):
                 "manta-ray",
                 "octopus",
                 "sea-turtle",
+                "seahorse",
             ),
         )
         self.assertEqual(shipped_levels_for("american-alligator"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("american-alligator", "hard"))
         self.assertIsNotNone(study_deck_for("american-alligator", "zoologist"))
-        self.assertIsNone(study_deck_for("seahorse"))
+        self.assertIsNone(study_deck_for("stingray"))
         deck = study_deck_for("american-alligator")
         self.assertIsNotNone(deck)
         self.assertEqual(deck["id"], "american-alligator")
@@ -294,7 +295,7 @@ class AmericanAlligatorEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Facts from Wikipedia, American alligator.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
-        html = outing_talk_html({"id": "seahorse", "packTemplate": "animals"})
+        html = outing_talk_html({"id": "stingray", "packTemplate": "animals"})
         self.assertIn("What do they eat?", html)
         self.assertNotIn("card-study-pack", html)
         self.assertNotIn("Where do American alligators live in the wild?", html)
@@ -423,7 +424,7 @@ class AmericanAlligatorEasyStudyCardTests(unittest.TestCase):
     def test_artifacts_include_american_alligator_easy_and_hard(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
         self.assertIn("american-alligator", payload)
-        self.assertNotIn("seahorse", payload)
+        self.assertNotIn("stingray", payload)
         self.assertIn("sea-otter", payload)
         gator = payload["american-alligator"]
         self.assertEqual(gator["id"], "american-alligator")
