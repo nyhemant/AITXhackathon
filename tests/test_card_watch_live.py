@@ -2,9 +2,11 @@
 
 from __future__ import annotations
 
+import json
 import re
 import sys
 import unittest
+from html import unescape
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -66,6 +68,26 @@ OUTBOUND_CAM = (
 )
 
 HREF_RE = re.compile(r"""\bhref\s*=\s*(['"])(.*?)\1""", re.I)
+WATCH_TAG_RE = re.compile(
+    r'<a[^>]+class="[^"]*(?:card-watch-live|card-page-photo-link)[^"]*"[^>]*>',
+    re.I,
+)
+HABITAT_RE = re.compile(r"#habitat=([^&\"'\s]+)")
+VDIR = FP / "data" / "virtual-venues"
+
+
+def _tour_habitat_ids() -> set[str]:
+    ids: set[str] = set()
+    for name in ("virtual-zoo.json", "virtual-aquarium.json"):
+        data = json.loads((VDIR / name).read_text(encoding="utf-8"))
+        for h in data.get("habitats") or []:
+            hid = str(h.get("id") or "").strip()
+            cid = str(h.get("cardId") or "").strip()
+            if hid:
+                ids.add(hid)
+            if cid:
+                ids.add(cid)
+    return ids
 
 
 def _main(html: str) -> str:
@@ -124,6 +146,31 @@ class CardWatchLiveTests(unittest.TestCase):
                 href = f"/field-pack/virtual-field-trip/?tab=aquarium&from=card#habitat={cid}"
             self.assertNotIn(href, actions, cid)
             self.assertNotIn(f"#habitat={cid}", main, cid)
+
+    def test_watch_live_hrefs_use_real_zoo_or_aquarium_habitats(self):
+        """ParentTest: no card-watch-live / hero link to a missing VFT habitat."""
+        real = _tour_habitat_ids()
+        self.assertNotIn("manta-ray", real)
+        self.assertIn("stingray", real)
+        dead: list[str] = []
+        for path in sorted((FP / "cards").glob("*/index.html")):
+            html = path.read_text(encoding="utf-8")
+            if '<main class="card-page">' not in html:
+                continue
+            main = _main(html)
+            for tag in WATCH_TAG_RE.findall(main):
+                href_m = HREF_RE.search(tag)
+                if not href_m:
+                    continue
+                href = unescape(href_m.group(2))
+                hid_m = HABITAT_RE.search(href)
+                if not hid_m:
+                    dead.append(f"{path.parent.name}: {href} (no habitat)")
+                    continue
+                hid = hid_m.group(1)
+                if hid not in real:
+                    dead.append(f"{path.parent.name}: #{hid} not in zoo/aquarium habitats")
+        self.assertEqual(dead, [])
 
     def test_missing_habitat_hides_watch_live(self):
         vft = load_vft_by_card()

@@ -131,11 +131,12 @@ class LayerALeftoversTests(unittest.TestCase):
                     self.assertEqual(study_try_next_hub(nxt, kinds), "sealife", nxt)
         self.assertEqual(check_grids(), [])
 
-    def test_stingray_and_starfish_baked_try_next_never_offer_african_lion(self):
-        """ParentTest: stingray + starfish first paint must stay sea — JS not required."""
+    def test_stingray_starfish_manta_baked_try_next_never_offer_african_lion(self):
+        """ParentTest: stingray / starfish / manta first paint must stay sea."""
         cases = {
             "stingray": ["manta-ray", "seahorse", "clownfish"],
             "starfish": ["sea-turtle", "octopus", "clownfish"],
+            "manta-ray": ["jellyfish", "kelp-forest", "clownfish"],
         }
         for cid, want in cases.items():
             html = (FP / "cards" / cid / "index.html").read_text(encoding="utf-8")
@@ -169,6 +170,17 @@ class LayerALeftoversTests(unittest.TestCase):
         self.assertIn("koala", hidden)
         self.assertIn("manta-ray", hidden)
         self.assertIn("whale-shark", hidden)
+
+    def test_manta_ray_hides_dead_watch_live(self):
+        """ParentTest: manta-ray has 0 aquarium habitats — no Live CTA / Georgia label."""
+        html = (FP / "cards" / "manta-ray" / "index.html").read_text(encoding="utf-8")
+        main = _main(html)
+        self.assertNotIn("card-watch-live", main)
+        self.assertNotIn("Watch Live", main)
+        self.assertNotIn("card-page-photo-link", main)
+        self.assertNotIn("#habitat=manta-ray", main)
+        self.assertNotIn("Georgia Aquarium", main)
+        self.assertEqual(_try_next_ids(html), ["jellyfish", "kelp-forest", "clownfish"])
 
 
 if __name__ == "__main__":
