@@ -154,7 +154,7 @@ class FreshwaterFishZoologistStudyCardTests(unittest.TestCase):
         self.assertEqual(level_display_name("zoologist"), "Zoologist")
         self.assertIn("whale-shark", study_card_ids())
         self.assertIsNotNone(study_deck_for("whale-shark"))
-        self.assertIsNone(study_deck_for("whale-shark", "hard"))
+        self.assertIsNotNone(study_deck_for("whale-shark", "hard"))
         self.assertIsNone(study_deck_for("whale-shark", "zoologist"))
         deck = study_deck_for("freshwater-fish", "zoologist")
         self.assertIsNotNone(deck)
@@ -360,7 +360,7 @@ class FreshwaterFishZoologistStudyCardTests(unittest.TestCase):
         self.assertNotIn("What do they eat?", jelly)
         self.assertNotIn("ray-finned-majority-soft", jelly)
         self.assertIsNotNone(study_deck_for("whale-shark"))
-        self.assertIsNone(study_deck_for("whale-shark", "hard"))
+        self.assertIsNotNone(study_deck_for("whale-shark", "hard"))
         self.assertIsNone(study_deck_for("whale-shark", "zoologist"))
 
     def test_published_artifacts_and_plumbing(self):

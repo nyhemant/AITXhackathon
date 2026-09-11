@@ -203,7 +203,7 @@ class FreshwaterFishEasyStudyCardTests(unittest.TestCase):
         self.assertIsNotNone(study_deck_for("freshwater-fish", "hard"))
         self.assertIsNotNone(study_deck_for("freshwater-fish", "zoologist"))
         self.assertIsNotNone(study_deck_for("whale-shark"))
-        self.assertIsNone(study_deck_for("whale-shark", "hard"))
+        self.assertIsNotNone(study_deck_for("whale-shark", "hard"))
         self.assertIsNone(study_deck_for("whale-shark", "zoologist"))
         deck = study_deck_for("freshwater-fish")
         self.assertIsNotNone(deck)
@@ -442,7 +442,7 @@ class FreshwaterFishEasyStudyCardTests(unittest.TestCase):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
         self.assertIn("freshwater-fish", payload)
         self.assertIn("whale-shark", payload)
-        self.assertEqual(set(payload["whale-shark"]["levels"]), {"easy"})
+        self.assertEqual(set(payload["whale-shark"]["levels"]), {"easy", "hard"})
         self.assertIn("two-toed-sloth", payload)
         fish = payload["freshwater-fish"]
         self.assertEqual(fish["id"], "freshwater-fish")

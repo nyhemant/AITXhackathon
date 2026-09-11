@@ -191,7 +191,7 @@ class SeahorseEasyStudyCardTests(unittest.TestCase):
         self.assertIsNotNone(study_deck_for("seahorse", "hard"))
         self.assertIsNotNone(study_deck_for("seahorse", "zoologist"))
         self.assertIsNotNone(study_deck_for("whale-shark"))
-        self.assertIsNone(study_deck_for("whale-shark", "hard"))
+        self.assertIsNotNone(study_deck_for("whale-shark", "hard"))
         self.assertIsNone(study_deck_for("whale-shark", "zoologist"))
         deck = study_deck_for("seahorse")
         self.assertIsNotNone(deck)
@@ -458,7 +458,7 @@ class SeahorseEasyStudyCardTests(unittest.TestCase):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
         self.assertIn("seahorse", payload)
         self.assertIn("whale-shark", payload)
-        self.assertEqual(set(payload["whale-shark"]["levels"]), {"easy"})
+        self.assertEqual(set(payload["whale-shark"]["levels"]), {"easy", "hard"})
         self.assertIn("sea-turtle", payload)
         self.assertIn("octopus", payload)
         horse = payload["seahorse"]
