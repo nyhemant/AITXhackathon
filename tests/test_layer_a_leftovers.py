@@ -124,6 +124,14 @@ class LayerALeftoversTests(unittest.TestCase):
                 for nxt in baked:
                     self.assertEqual(study_try_next_hub(nxt, kinds), "sealife", nxt)
 
+    def test_stingray_baked_try_next_never_offers_african_lion(self):
+        """ParentTest: stingray first paint must stay sea — JS must not be required."""
+        html = (FP / "cards" / "stingray" / "index.html").read_text(encoding="utf-8")
+        baked = _try_next_ids(html)
+        self.assertEqual(baked, ["manta-ray", "seahorse", "clownfish"])
+        self.assertNotIn("african-lion", baked)
+        self.assertNotIn("/cards/african-lion/", html.split("card-try-next-grid", 1)[1].split("</nav>", 1)[0])
+
     def test_library_only_cards_hide_watch_live(self):
         vft = load_vft_by_card()
         hidden = []
