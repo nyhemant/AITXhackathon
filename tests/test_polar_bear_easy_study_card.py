@@ -185,6 +185,7 @@ class PolarBearEasyStudyCardTests(unittest.TestCase):
                 "octopus",
                 "sea-turtle",
                 "seahorse",
+                "starfish",
             ),
         )
         self.assertEqual(shipped_levels_for("polar-bear"), ("easy", "hard", "zoologist"))

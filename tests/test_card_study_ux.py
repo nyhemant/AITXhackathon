@@ -152,6 +152,11 @@ class CardStudyUxTests(unittest.TestCase):
         self.assertIn(">Quiz</h2>", turtle)
         self.assertIn("study-explore", turtle)
         self.assertNotIn(">Talk</h2>", turtle)
+        star = _main((FP / "cards" / "starfish" / "index.html").read_text(encoding="utf-8"))
+        self.assertIn('aria-label="Quiz"', star)
+        self.assertIn(">Quiz</h2>", star)
+        self.assertIn("study-explore", star)
+        self.assertNotIn(">Talk</h2>", star)
         horse = _main((FP / "cards" / "seahorse" / "index.html").read_text(encoding="utf-8"))
         self.assertIn('aria-label="Quiz"', horse)
         self.assertIn(">Quiz</h2>", horse)
@@ -182,7 +187,7 @@ class CardStudyUxTests(unittest.TestCase):
         js = STUDY_JS.read_text(encoding="utf-8")
         self.assertIn('if (foot) foot.insertAdjacentHTML("afterend", nextExplore)', js)
 
-        for cid in ("galapagos-tortoise", "zebra", "nile-hippo", "western-lowland-gorilla", "cheetah", "red-panda", "koala", "chimpanzee", "asian-small-clawed-otter", "two-toed-sloth", "freshwater-fish", "polar-bear", "sea-otter", "american-alligator", "american-bison", "elk", "puffin", "clownfish", "crab", "cuttlefish", "eel", "jellyfish", "kelp-forest", "manta-ray", "octopus", "sea-turtle", "seahorse"):
+        for cid in ("galapagos-tortoise", "zebra", "nile-hippo", "western-lowland-gorilla", "cheetah", "red-panda", "koala", "chimpanzee", "asian-small-clawed-otter", "two-toed-sloth", "freshwater-fish", "polar-bear", "sea-otter", "american-alligator", "american-bison", "elk", "puffin", "clownfish", "crab", "cuttlefish", "eel", "jellyfish", "kelp-forest", "manta-ray", "octopus", "sea-turtle", "seahorse", "starfish"):
             page = (FP / "cards" / cid / "index.html").read_text(encoding="utf-8")
             main = _main(page)
             with self.subTest(card=cid):
@@ -345,6 +350,10 @@ class CardStudyUxTests(unittest.TestCase):
         self.assertEqual(
             study_try_next_ids("seahorse"),
             ["octopus", "sea-turtle", "african-lion"],
+        )
+        self.assertEqual(
+            study_try_next_ids("starfish"),
+            ["sea-turtle", "octopus", "african-lion"],
         )
         for cid in study_card_ids():
             nxt = study_try_next_ids(cid)

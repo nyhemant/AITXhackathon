@@ -173,6 +173,7 @@ class AmericanBisonEasyStudyCardTests(unittest.TestCase):
                 "octopus",
                 "sea-turtle",
                 "seahorse",
+                "starfish",
             ),
         )
         self.assertEqual(shipped_levels_for("american-bison"), ("easy", "hard", "zoologist"))

@@ -1970,6 +1970,47 @@ numbers. Treat IUCN letters as snapshots.
 Do not redo JR or PR themes. Keep
 kid-friendly. Do not invent photos.
 
+Facts for starfish Junior Ranger (easy) are
+Wikipedia-backed: https://en.wikipedia.org/wiki/Starfish
+(class Asteroidea; also called sea stars).
+JR stays kid-simple “sea star” (a group
+card). Star-shaped ocean animals — not fish
+(better called sea stars). Most have a
+central disc and about five arms (some
+kinds have many more). They walk with tiny
+tube feet on the underside. The mouth is
+in the middle of the bottom side. Many can
+regrow a lost arm over time. Not a fish:
+no gills, scales, or fins like fish; they
+are echinoderms with urchins and sea
+cucumbers (names light). Star body: central
+disc plus arms; five is common, but some
+species have far more (soften exact max).
+Hundreds of tiny tube feet, powered by a
+water-pump system, help them move and grip.
+Mouth on the oral (bottom) side at the disc
+centre. Live in salt water from shores to
+the deep sea — not in freshwater lakes.
+Tough skin with plates and spines on top;
+colours from bright orange or red to dull
+browns. Many hunt slow seabed animals
+(clams, snails, other invertebrates) —
+keep feeding simple. Can regenerate a
+damaged or lost arm; a few can rebuild
+more if part of the disc remains (soften
+“from one arm” edge cases). About two
+thousand known kinds worldwide (soften
+exact count). Myth: the name “starfish”
+sounds like a fish, but they are sea
+stars — invertebrates, not fish. Reserve
+the water vascular system by name, stomach
+eversion, keystone / crown-of-thorns,
+disease, and status-by-kind for later
+tiers. Soften contested arm counts and
+species totals. Keep kid-friendly. Do not
+invent photos. Do not add Park Ranger or
+Zoologist on this card.
+
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
 (not a redo of Easy or of each other). Internal keys stay easy / hard /
 zoologist. Visible copy uses LEVEL_DISPLAY_NAMES only — no age badges,
@@ -2033,6 +2074,7 @@ WIKI_MANTA_RAY = "https://en.wikipedia.org/wiki/Manta_ray"
 WIKI_OCTOPUS = "https://en.wikipedia.org/wiki/Octopus"
 WIKI_SEA_TURTLE = "https://en.wikipedia.org/wiki/Sea_turtle"
 WIKI_SEAHORSE = "https://en.wikipedia.org/wiki/Seahorse"
+WIKI_STARFISH = "https://en.wikipedia.org/wiki/Starfish"
 
 LETTERS = ("A", "B", "C")
 STUDY_SLOTS = 10
@@ -2114,6 +2156,7 @@ LEVEL_DISPLAY_NAMES = {
 # ship Junior Ranger + Park Ranger + Zoologist.
 # Manta ray, octopus, sea turtle, and seahorse ship Junior Ranger +
 # Park Ranger + Zoologist.
+# Starfish ships Junior Ranger only.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -2169,6 +2212,7 @@ STUDY_NEIGHBORS = {
     "octopus": ("cuttlefish", "jellyfish"),
     "sea-turtle": ("octopus", "manta-ray"),
     "seahorse": ("octopus", "sea-turtle"),
+    "starfish": ("sea-turtle", "octopus"),
 }
 
 STUDY_CARD_TITLES = {
@@ -2211,6 +2255,7 @@ STUDY_CARD_TITLES = {
     "octopus": "Octopus",
     "sea-turtle": "Sea turtle",
     "seahorse": "Seahorse",
+    "starfish": "Sea star",
 }
 
 # Shared answers-side deepen (Claude sample). Not scored. Future animals reuse keys.
@@ -2645,6 +2690,17 @@ PUSH_FURTHER_SEAHORSE_ZOOLOGIST = (
     "Dad’s pregnancy can cost extra energy. Why keep that male-care cost story soft?",
     "Atlantic seahorses may have crossed twice. Why keep that invasion map soft?",
     "Square tail rings inspire bendy robots. Why keep that robotics story soft?",
+)
+
+TALK_ABOUT_STARFISH = (
+    "People say “starfish,” but they are not fish. Why might “sea star” fit better?",
+    "Tube feet walk on the bottom. How is that different from swimming with fins?",
+    "Many can grow a lost arm back. How could that help a sea star stay alive?",
+)
+PUSH_FURTHER_STARFISH = (
+    "A hidden water-pump system powers those tiny feet. Why keep that pump story for later?",
+    "Some sea stars push a stomach out to eat. Why save that messy meal for later?",
+    "A few kinds can change a whole reef, and status-by-kind still waits. Why save those?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -19309,6 +19365,157 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia says the prehensile tail is made of square bony-plate rings. That stack can bend to grip a holdfast and still resist crushing — a kid-safe biomaterials story. We keep robot-copy ideas for later.",
+                    },
+                ],
+            },
+        },
+    },
+    "starfish": {
+        "id": "starfish",
+        "source": WIKI_STARFISH,
+        "source_note": "Facts from Wikipedia, Starfish.",
+        "talk_about": list(TALK_ABOUT_STARFISH),
+        "push_further": list(PUSH_FURTHER_STARFISH),
+        "levels": {
+            "easy": {
+                # Teaching-first: same front as the quiz. Later tiers reserved.
+                "teach": [
+                    "Star-shaped ocean animals — not fish (better called sea stars).",
+                    "Most have a central disc and about five arms (some kinds have many more).",
+                    "They walk with tiny tube feet on the underside.",
+                    "The mouth is in the middle of the bottom side.",
+                    "Many can regrow a lost arm over time.",
+                ],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "not-fish-soft",
+                        "title": "Not a fish",
+                        "stem": "Are starfish a kind of fish?",
+                        "choices": [
+                            "No — they have no gills, scales, or fins like fish. They are echinoderms, with urchins and sea cucumbers (names light)",
+                            "Yes — they are fish that grow star-shaped fins",
+                            "Yes — they breathe with gills and swim with scales",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says starfish (also called sea stars) are not fish. They lack gills, scales, and fins. They are echinoderms, in the same big group as sea urchins and sea cucumbers. We keep those group names light.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "star-body-soft",
+                        "title": "Star body",
+                        "stem": "What does a sea star’s body look like, if we keep the arm count soft?",
+                        "choices": [
+                            "A fish body with two wings and a tail",
+                            "A central disc plus arms — five is common, but some kinds have far more (soft)",
+                            "A single long snake with no arms",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia describes a central disc with radiating arms. About five arms is common, and some kinds grow many more. Exact maxima shift by species, so we keep that count soft.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "tube-feet-soft",
+                        "title": "Tube feet",
+                        "stem": "How does a sea star walk?",
+                        "choices": [
+                            "It swims with fins like a fish",
+                            "It hops on one giant foot",
+                            "Hundreds of tiny tube feet on the underside, powered by a water-pump system, help it move and grip",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says sea stars walk with rows of tiny tube feet on the underside. A water-pump system powers those feet so they can move and grip the seafloor. We keep the pump’s denser name for later.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "mouth-underneath-soft",
+                        "title": "Mouth underneath",
+                        "stem": "Where is a sea star’s mouth?",
+                        "choices": [
+                            "On the bottom side, in the middle of the central disc",
+                            "On the tip of the longest arm",
+                            "On top, like a whale’s blowhole",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia places the mouth on the oral (bottom) side, at the centre of the disc. The top side faces up; the mouth faces the seafloor.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "ocean-only-soft",
+                        "title": "Ocean only",
+                        "stem": "Where do sea stars live?",
+                        "choices": [
+                            "Only in freshwater lakes and backyard ponds",
+                            "In salt water, from shores to the deep sea — not in freshwater lakes",
+                            "Only in desert sand",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia finds starfish in salt water worldwide, from rocky shores to the deep sea. They are marine animals — they do not live in freshwater lakes.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "armour-soft",
+                        "title": "Armour",
+                        "stem": "What is a sea star’s skin like?",
+                        "choices": [
+                            "Soft fur like a seal",
+                            "Fish scales that flake off in the air",
+                            "Tough skin with plates and spines on top; colours run from bright orange or red to dull browns",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia says the upper surface is covered in tough skin with plates and often spines. Colours range from bright orange or red to dull browns and other hues. We keep plate names soft.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "predators-soft",
+                        "title": "Predators",
+                        "stem": "What do many sea stars hunt?",
+                        "choices": [
+                            "Slow seabed animals such as clams, snails, and other invertebrates",
+                            "Only flying insects over the beach",
+                            "Only grass on land",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia says many starfish are predators of slow seafloor animals — clams, snails, and other invertebrates. We keep that feeding story simple and save the stomach-out meal for later.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "regrow-soft",
+                        "title": "Regrow",
+                        "stem": "What can many sea stars do if they lose an arm?",
+                        "choices": [
+                            "They turn into a fish",
+                            "They can grow a damaged or lost arm back over time; a few can rebuild more if part of the disc remains (soft)",
+                            "They never grow anything back",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia says many starfish can regenerate a damaged or lost arm. In a few kinds, more of the body can rebuild if part of the central disc remains. Edge cases stay soft — we do not lock a “from one arm” rule.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "many-kinds-soft",
+                        "title": "Many kinds",
+                        "stem": "How many kinds of sea star are there, if we keep the count soft?",
+                        "choices": [
+                            "Exactly three kinds, all in one lake",
+                            "Only one kind on Earth",
+                            "About two thousand known kinds worldwide (soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia puts living starfish at about two thousand known kinds worldwide. Exact totals shift as scientists name or split kinds, so we keep that count soft.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "starfish-name-myth",
+                        "title": "Myth buster",
+                        "stem": "Does the name “starfish” mean they are fish?",
+                        "choices": [
+                            "No — the name sounds like a fish, but they are sea stars: invertebrates, not fish",
+                            "Yes — starfish is a kind of bony fish",
+                            "Yes — they hatch from fish eggs",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia prefers sea star because they are not fish. They are invertebrates — animals without a backbone — even though the older name “starfish” sounds like a fish.",
                     },
                 ],
             },

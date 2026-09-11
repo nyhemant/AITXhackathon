@@ -238,6 +238,7 @@ class OrangutanEasyStudyCardTests(unittest.TestCase):
                 "octopus",
                 "sea-turtle",
                 "seahorse",
+                "starfish",
             ),
         )
         self.assertEqual(shipped_levels_for("orangutan"), ("easy", "hard", "zoologist"))
