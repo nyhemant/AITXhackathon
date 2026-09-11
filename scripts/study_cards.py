@@ -2002,13 +2002,46 @@ more if part of the disc remains (soften
 thousand known kinds worldwide (soften
 exact count). Myth: the name “starfish”
 sounds like a fish, but they are sea
-stars — invertebrates, not fish. Reserve
-the water vascular system by name, stomach
-eversion, keystone / crown-of-thorns,
-disease, and status-by-kind for later
-tiers. Soften contested arm counts and
-species totals. Keep kid-friendly. Do not
-invent photos. Do not add Park Ranger or
+stars — invertebrates, not fish. Soften
+contested arm counts and species totals.
+Keep kid-friendly. Do not invent photos.
+
+Park Ranger is answer-light (empty teach) and
+deepens class Asteroidea (star-shaped
+echinoderms with urchins and sea cucumbers;
+denser order names wait), the water vascular
+system that powers tube feet (locomotion,
+grip, feeding, gas exchange — not a
+mammal-style blood heart), the madreporite
+(sieve-like aboral plate where water can
+enter; canal names stay light), ampullae
+that squeeze fluid so a podium extends
+(muscles pull it back; row counts soft),
+cardiac-stomach eversion (digest outside,
+then retract; pyloric caeca finish in the
+arms — hours/counts soft), keystone
+predators such as ochre / purple Pisaster
+(Paine’s removals let mussels take over;
+counts soft), tropical crown-of-thorns
+Acanthaster (coral-eating outbreaks leave
+white scars; Indo-Pacific soft; m²/year
+and outbreak causes wait), regeneration
+that usually needs part of the central
+disc (a few tropical kinds can do more
+from an arm; months or longer — species
+lists and times soft), pedicellariae
+(tiny claw- or wrench-like ossicles that
+clear debris and settlers; feeding uses
+stay soft), and the oral/aboral myth
+(mouth + tube feet on the underside;
+colourful top is not the face). Soften
+contested numbers. Reserve denser
+orders/phylogeny, sea-star wasting
+disease, IUCN letters, catch connective
+tissue, stomach neuropeptides, and the
+Northern Pacific invader for Zoologist.
+Do not redo JR themes. Keep kid-friendly.
+Do not invent photos. Do not add
 Zoologist on this card.
 
 Slot numbers stay 1–10. Hard and Zoologist deepen different themes
@@ -2156,7 +2189,7 @@ LEVEL_DISPLAY_NAMES = {
 # ship Junior Ranger + Park Ranger + Zoologist.
 # Manta ray, octopus, sea turtle, and seahorse ship Junior Ranger +
 # Park Ranger + Zoologist.
-# Starfish ships Junior Ranger only.
+# Starfish ships Junior Ranger + Park Ranger.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -2693,14 +2726,14 @@ PUSH_FURTHER_SEAHORSE_ZOOLOGIST = (
 )
 
 TALK_ABOUT_STARFISH = (
-    "People say “starfish,” but they are not fish. Why might “sea star” fit better?",
-    "Tube feet walk on the bottom. How is that different from swimming with fins?",
-    "Many can grow a lost arm back. How could that help a sea star stay alive?",
+    "Tiny tube feet run on a hidden water-pump. Why might canals of fluid beat a red-blood heart?",
+    "Some sea stars push a stomach out to eat a clam. Why might that messy meal work?",
+    "Taking away a few sea stars can change a whole rocky pool. Why might one hunter matter so much?",
 )
 PUSH_FURTHER_STARFISH = (
-    "A hidden water-pump system powers those tiny feet. Why keep that pump story for later?",
-    "Some sea stars push a stomach out to eat. Why save that messy meal for later?",
-    "A few kinds can change a whole reef, and status-by-kind still waits. Why save those?",
+    "Status can differ by kind. Why not one letter for every sea star?",
+    "Special stretchy body tissue and stomach chemistry still wait. Why save those names?",
+    "Denser family-tree names and a Northern Pacific invader still wait. Why keep those for later?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -19516,6 +19549,141 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia prefers sea star because they are not fish. They are invertebrates — animals without a backbone — even though the older name “starfish” sounds like a fish.",
+                    },
+                ],
+            },
+            "hard": {
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "asteroidea-soft",
+                        "title": "Asteroidea",
+                        "stem": "What scientific class do sea stars belong to, if we keep the family tree soft?",
+                        "choices": [
+                            "Asteroidea — star-shaped echinoderms in the same big phylum as urchins and sea cucumbers",
+                            "Mammalia — warm-blooded animals with fur",
+                            "Osteichthyes — bony fish with scales and fins",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia places starfish in class Asteroidea (phylum Echinodermata). They sit with other echinoderms such as sea urchins and sea cucumbers. We keep denser order names for later.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "water-vascular-soft",
+                        "title": "Water vascular",
+                        "stem": "What powers a sea star’s tube feet?",
+                        "choices": [
+                            "A heart that pumps red blood like a mammal",
+                            "A water vascular system — fluid-filled canals that move, grip, feed, and help exchange gases",
+                            "Wings that flap under the arms",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia describes a hydraulic water vascular system of fluid-filled canals. It handles locomotion, adhesion, food handling, and gas exchange — not a mammal-style blood heart.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "madreporite-soft",
+                        "title": "Madreporite",
+                        "stem": "What is the madreporite on a sea star?",
+                        "choices": [
+                            "A tiny ear on each arm tip",
+                            "A spare stomach stored on top",
+                            "A sieve-like plate on the top (aboral) surface where water can enter the water vascular system",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia: the madreporite is a porous, sieve-like ossicle on the aboral surface. Water links through a stone canal to a ring canal around the mouth. We keep canal names light.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "ampullae-soft",
+                        "title": "Ampullae",
+                        "stem": "How does one tube foot extend and pull back?",
+                        "choices": [
+                            "A bulb-like ampulla squeezes fluid into the foot to extend it; muscles pull it back",
+                            "Each foot has a tiny battery and motor",
+                            "The foot grows longer by adding new bone each step",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia: each tube foot joins an inner ampulla. Muscular ampullae push fluid so the podium extends; muscles and valves help retract and grip. Soft on exact row counts.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "stomach-eversion-soft",
+                        "title": "Stomach eversion",
+                        "stem": "How do many predatory sea stars eat prey too big to swallow whole?",
+                        "choices": [
+                            "They chew it with teeth like a shark",
+                            "They evert (push out) the cardiac stomach through the mouth, digest outside, then pull food back in",
+                            "They wait for prey to crawl into their mouths",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia: many species evert the cardiac stomach through the mouth over or into prey, digest externally, then retract. Pyloric caeca in the arms help finish digestion. Soft on hours/counts.",
+                    },
+                    {
+                        "slot": 6,
+                        "id": "keystone-soft",
+                        "title": "Keystone",
+                        "stem": "Why do scientists call some sea stars “keystone” predators (example: ochre / purple sea star Pisaster)?",
+                        "choices": [
+                            "Their colour matches a stone exactly",
+                            "Removing a few can let mussels take over and shrink tide-pool diversity — they punch above their numbers",
+                            "They are the only animals that eat kelp",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia (Starfish / Pisaster ochraceus): ochre sea stars are classic keystone examples. Paine’s removals showed mussels can dominate and diversity drops when the predator is gone. Soft on exact counts.",
+                    },
+                    {
+                        "slot": 7,
+                        "id": "crown-of-thorns-soft",
+                        "title": "Crown-of-thorns",
+                        "stem": "What is special about the tropical crown-of-thorns sea star (Acanthaster)?",
+                        "choices": [
+                            "It only eats grass on land",
+                            "It is a gentle filter-feeder that never touches coral",
+                            "It is a coral-eating predator; dense outbreaks can leave large white coral scars (Indo-Pacific soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia: Acanthaster planci preys on hard-coral polyps across the Indo-Pacific. Outbreaks can kill large areas of living coral tissue. Soft on m²/year and outbreak causes.",
+                    },
+                    {
+                        "slot": 8,
+                        "id": "regrow-deepen-soft",
+                        "title": "Regrow",
+                        "stem": "What do most sea stars need to regrow a whole new body after an arm is lost?",
+                        "choices": [
+                            "At least part of the central disc still attached (a few tropical kinds can do more from an arm — soft)",
+                            "Nothing — every lost arm always becomes a full new sea star in a day",
+                            "A transplant from another species",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia: most need part of the central disc to regenerate a whole animal; a few can rebuild from an arm. Regrowth can take months (or longer). Soft on species lists and exact times.",
+                    },
+                    {
+                        "slot": 9,
+                        "id": "pedicellariae-soft",
+                        "title": "Pedicellariae",
+                        "stem": "What are pedicellariae on many sea stars?",
+                        "choices": [
+                            "Tiny claw- or wrench-like ossicles that help keep the body surface clear of debris and settlers",
+                            "Extra eyes that see colour underwater",
+                            "Hollow horns used to make sound",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia: pedicellariae are small movable claw-like ossicles on many asteroids. They help clear algae, debris, and settling organisms. Some kinds also use them in feeding — we keep that soft.",
+                    },
+                    {
+                        "slot": 10,
+                        "id": "top-vs-bottom-myth",
+                        "title": "Myth buster",
+                        "stem": "Is a sea star’s “face” the colourful top side?",
+                        "choices": [
+                            "Yes — the mouth and tube feet sit on the bright top",
+                            "No — oral (mouth + tube feet) is the underside; aboral (often colourful, with madreporite) faces up",
+                            "Sea stars have no top or bottom — both sides are identical mouths",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia: oral = underside (mouth, ambulacral grooves, tube feet). Aboral = upper surface (often colourful; madreporite sits here). The “pretty” side is not the mouth side.",
                     },
                 ],
             },
