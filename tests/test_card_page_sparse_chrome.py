@@ -164,7 +164,7 @@ class CardPageSparseChromeTests(unittest.TestCase):
         self.assertNotIn("youtube.com", card)
         self.assertNotIn("nationalzoo.si.edu", card)
         self.assertIn("Watch Live", card)
-        self.assertIn("/field-pack/virtual-field-trip/?tab=zoo&from=card#habitat=african-lion", card)
+        self.assertIn("/field-pack/virtual-field-trip/?tab=zoo&amp;from=card#habitat=african-lion", card)
         self.assertIn("Live from Smithsonian National Zoo", card)
         self.assertNotIn('target="_blank"', card)
         self.assertTrue(vft_has_inpage_media(item["vft"]))
