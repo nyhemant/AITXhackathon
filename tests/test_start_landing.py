@@ -103,7 +103,7 @@ class StartLandingTests(unittest.TestCase):
         start = _get("/start/")
         self.assertEqual(start._code, 200)
         body = start.wfile.getvalue().decode("utf-8")
-        self.assertIn("A field trip for curious kids to zoos, oceans and more.", body)
+        self.assertIn("A virtual zoo for curious kids like Arya and Kunal", body)
         self.assertIn('class="start-brand" href="/start/"', body)
         self.assertIn('aria-label="1less home"', body)
         self.assertIn('id="start-menu-btn"', body)
@@ -189,7 +189,7 @@ class StartLandingTests(unittest.TestCase):
         chapter = hero.group(0)
         self.assertLess(self.html.find('id="start-hero"'), self.html.find('id="start-home"'))
         self.assertIn('id="start-heading"', chapter)
-        self.assertIn("A field trip for curious kids to zoos, oceans and more.", chapter)
+        self.assertIn("A virtual zoo for curious kids like Arya and Kunal", chapter)
         self.assertIn('class="start-routes"', chapter)
         self.assertIn('href="#start-home"', chapter)
         self.assertIn('href="#start-going"', chapter)
@@ -698,7 +698,7 @@ class StartLandingTests(unittest.TestCase):
     def test_locked_headline_and_no_marketing_stats(self):
         self.assertEqual(
             _heading_text(self.html),
-            "A field trip for curious kids to zoos, oceans and more.",
+            "A virtual zoo for curious kids like Arya and Kunal",
         )
         self.assertNotIn("I need an activity for today", self.html)
         self.assertNotIn("We’re visiting somewhere soon", self.html)
