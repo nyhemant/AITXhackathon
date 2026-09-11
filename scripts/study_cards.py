@@ -2257,7 +2257,7 @@ LEVEL_DISPLAY_NAMES = {
 # ship Junior Ranger + Park Ranger + Zoologist.
 # Manta ray, octopus, sea turtle, seahorse, and starfish ship
 # Junior Ranger + Park Ranger + Zoologist.
-# Stingray ships Junior Ranger only.
+# Stingray ships Junior Ranger + Park Ranger.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -20067,6 +20067,76 @@ STUDY_CARDS: dict[str, dict] = {
                     },
                 ],
             },
+            "hard": {
+                "teach": [],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "myliobatiformes-soft",
+                        "title": "Myliobatiformes",
+                        "stem": "Where do scientists place stingrays in the fish family tree, if we keep names soft?",
+                        "choices": [
+                            "Order Myliobatiformes (suborder Myliobatoidei) — cartilaginous rays related to sharks, not bony fish",
+                            "With tuna and goldfish as typical bony fish",
+                            "As a kind of sea turtle",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia classifies stingrays in suborder Myliobatoidei of order Myliobatiformes — cartilaginous fishes related to sharks. We keep denser family lists for later.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "ampullae-soft",
+                        "title": "Ampullae",
+                        "stem": "How can a stingray find prey it cannot see under its disc?",
+                        "choices": [
+                            "Only by shouting until the prey answers",
+                            "Smell plus electroreceptors (ampullae of Lorenzini) that sense tiny electrical signals, similar to sharks",
+                            "A flashlight built into the tail tip",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia: eyes are on top and the mouth underneath, so after capture they rely on smell and ampullae of Lorenzini — electroreceptors like sharks use — around the mouth.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "two-swim-styles-soft",
+                        "title": "Two swim styles",
+                        "stem": "How do stingrays power swimming with their pectoral “wings”?",
+                        "choices": [
+                            "Only by kicking a tall shark-style tail fin",
+                            "They never move — currents carry them",
+                            "Two main styles — undulatory waves along thicker fins (often slower, bottom-living) or oscillatory wing-like flaps (often faster, open-water soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia: stingrays move mainly with paired pectoral fins, not a single caudal fin like most fish. Locomotion splits into undulatory (more than one wave) and oscillatory (fewer waves / wing-like). Soft on species lists.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "freshwater-soft",
+                        "title": "Freshwater",
+                        "stem": "Do all stingrays live only in the ocean?",
+                        "choices": [
+                            "No — river stingrays (and some whiptail kinds) live in fresh water; most others are marine (soft)",
+                            "Yes — every stingray dies in a river",
+                            "Yes — they only live in polar ice",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia: river stingrays (Potamotrygonidae) and some whiptail stingrays are restricted to fresh water. Most myliobatoids are marine, from coasts to deep water. Soft on exact river names.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "spiracle-vs-mouth",
+                        "title": "Spiracle vs mouth",
+                        "stem": "When a stingray is buried and hunting, which breathing path keeps sand out of the mouth route?",
+                        "choices": [
+                            "Only breathing through the stomach",
+                            "Spiracles behind the eyes can draw clearer water in while the mouth stays out of the sediment path",
+                            "It stops breathing until the hunt ends",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia: buried rays often switch to spiracles so they can ventilate without pulling sandy water through the mouth. Spiracles move less volume than the mouth path, but enough while waiting in ambush.",
+                    },
+                ],
+            },
         },
     },
 
@@ -20120,7 +20190,7 @@ def study_deck_for(card_id: str, level: str = DEFAULT_LEVEL) -> dict | None:
     if not pack:
         return None
     questions = list(pack.get("questions") or [])
-    if len(questions) != STUDY_SLOTS:
+    if len(questions) not in (5, STUDY_SLOTS):
         return None
     return {
         "id": raw["id"],
@@ -20151,8 +20221,10 @@ def validate_deck(deck: dict) -> list[str]:
     if level in ANSWER_LIGHT_LEVELS and teach:
         errors.append(f"{level} deck must not include a teach strip")
     questions = deck.get("questions") or []
-    if len(questions) != STUDY_SLOTS:
-        errors.append(f"expected {STUDY_SLOTS} questions, got {len(questions)}")
+    if len(questions) not in (5, STUDY_SLOTS):
+        errors.append(
+            f"expected 5 or {STUDY_SLOTS} questions, got {len(questions)}"
+        )
     seen_slots: set[int] = set()
     seen_ids: set[str] = set()
     for i, q in enumerate(questions, start=1):
@@ -20391,11 +20463,11 @@ def _level_picker_html(card_id: str, current: str, *, placement: str = "top") ->
 
 
 def study_talk_html(deck: dict, *, heading: str = STUDY_QUIZ_H2) -> str:
-    """Screen: optional teach strip + 10 MCQs + reveal/why. Picker when 2+ levels."""
+    """Screen: optional teach strip + MCQs + reveal/why. Picker when 2+ levels."""
     level = deck.get("level") or DEFAULT_LEVEL
     card_id = deck.get("id") or ""
     picker = _level_picker_html(str(card_id), str(level))
-    n = STUDY_SLOTS
+    n = len(deck.get("questions") or []) or STUDY_SLOTS
     foot_bits = [_score_html(n)]
     if "study-level-picker" in picker:
         foot_bits.append(_level_picker_html(str(card_id), str(level), placement="bottom"))

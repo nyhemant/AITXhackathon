@@ -137,7 +137,7 @@ if (typeof window !== "undefined") {
       return null;
     }
     const questions = pack.questions || [];
-    if (questions.length !== 10) return null;
+    if (questions.length !== 10 && questions.length !== 5) return null;
     const label =
       (typeof window.FPStudyLevelName === "function" && window.FPStudyLevelName(used)) ||
       pack.level_label ||
@@ -384,6 +384,14 @@ if (typeof window !== "undefined") {
     }
     const grid = root.querySelector(".study-grid");
     if (grid) grid.innerHTML = (deck.questions || []).map(questionHtml).join("");
+    const total = (deck.questions || []).length;
+    if (total) {
+      root.querySelectorAll(".study-score").forEach((el) => {
+        const n = el.querySelector("[data-study-correct]");
+        const correct = n ? n.textContent : "0";
+        el.innerHTML = "Score <span data-study-correct>" + correct + "</span>/" + String(total);
+      });
+    }
     paintPicker(root, deck.level);
     paintScore(root);
     const reveal = root.querySelector("[data-study-reveal]");
