@@ -101,7 +101,6 @@ from study_cards import (  # noqa: E402
     study_card_ids,
     study_deck_for,
     target_letter_for_deck_slot,
-    target_letter_for_slot,
     validate_deck,
 )
 
