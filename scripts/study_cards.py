@@ -2194,6 +2194,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from field_pack_catalog_kind import load_card_kinds
+
 REPO = Path(__file__).resolve().parents[1]
 FIELD = REPO / "static" / "field-pack"
 STUDY_JSON = FIELD / "data" / "study-cards.json"
@@ -20350,7 +20352,7 @@ STUDY_CARDS: dict[str, dict] = {
                         "stem": "What size record does the whale shark hold among living fish?",
                         "choices": [
                             "Smallest fish in a puddle",
-                            "Largest living fish (exact length soft)",
+                            "Largest living fish",
                             "Tallest animal on land",
                         ],
                         "correct": "B",
@@ -20388,7 +20390,7 @@ STUDY_CARDS: dict[str, dict] = {
                         "title": "Body",
                         "stem": "What is special about a whale shark’s pattern?",
                         "choices": [
-                            "A checkerboard of light spots and stripes on a dark back — each shark’s pattern is unique (soft)",
+                            "A checkerboard of light spots and stripes on a dark back — each shark’s pattern is unique",
                             "Solid neon pink with no marks",
                             "Feathers instead of skin",
                         ],
@@ -20687,17 +20689,29 @@ def decks_as_jsonable() -> dict:
     return STUDY_CARDS
 
 
+def study_try_next_hub(card_id: str, kinds: dict | None = None) -> str:
+    """ParentTest: sealife stays sealife; zoo / parks / unknown group as wildlife."""
+    table = kinds if kinds is not None else load_card_kinds()
+    hub = str((table.get(str(card_id or "").strip()) or {}).get("hub") or "").strip()
+    if hub == "sealife":
+        return "sealife"
+    return "wildlife"
+
+
 def study_try_next_catalog() -> dict:
-    """Neighbors + traffic + titles for client-side Try next (session recent skip)."""
+    """Neighbors + traffic + titles + hubs for client-side Try next (session recent skip)."""
     titles = {
         cid: STUDY_CARD_TITLES.get(cid) or str(cid).replace("-", " ")
         for cid in STUDY_CARDS
         if cid
     }
+    kinds = load_card_kinds()
+    hubs = {cid: study_try_next_hub(cid, kinds) for cid in titles}
     return {
         "neighbors": {k: list(v) for k, v in STUDY_NEIGHBORS.items()},
         "traffic": list(STUDY_TRAFFIC_ORDER),
         "titles": titles,
+        "hubs": hubs,
     }
 
 
@@ -20790,10 +20804,11 @@ def study_try_next_ids(
     n: int = 3,
     exclude: list[str] | tuple[str, ...] | None = None,
 ) -> list[str]:
-    """Three other study-deck animals: neighbors first, then traffic order.
+    """Three other study-deck animals: same-hub neighbors first, then traffic.
 
-    ``exclude`` is a recent-path skip (session history). Fresh ids are preferred;
-    if fewer than ``n`` remain, fill from remaining decks (never the current card).
+    ParentTest: default picks stay in-kingdom (sealife→sealife / wildlife→wildlife).
+    ``exclude`` is a recent-path skip (session history). Fresh same-hub ids are
+    preferred; recent same-hub fills before crossing hubs; never the current card.
     """
     current = str(card_id or "").strip()
     have_all = {cid for cid in STUDY_CARDS if cid and cid != current}
@@ -20802,16 +20817,23 @@ def study_try_next_ids(
     blocked = {str(x).strip() for x in (exclude or ()) if str(x or "").strip()}
     blocked.add(current)
     have_fresh = {cid for cid in have_all if cid not in blocked}
+    kinds = load_card_kinds()
+    cur_hub = study_try_next_hub(current, kinds)
 
     def extra(pool: set[str]) -> tuple[str, ...]:
         return tuple(sorted(cid for cid in pool if cid not in STUDY_TRAFFIC_ORDER))
 
+    def same_hub(cid: str) -> bool:
+        return study_try_next_hub(cid, kinds) == cur_hub
+
     out: list[str] = []
     seen: set[str] = set()
 
-    def take(cids: tuple[str, ...], pool: set[str]) -> bool:
+    def take(cids: tuple[str, ...], pool: set[str], *, hub_only: bool) -> bool:
         for cid in cids:
             if cid not in pool or cid in seen:
+                continue
+            if hub_only and not same_hub(cid):
                 continue
             seen.add(cid)
             out.append(cid)
@@ -20824,12 +20846,18 @@ def study_try_next_ids(
         *STUDY_TRAFFIC_ORDER,
         *extra(have_fresh),
     )
-    if take(fresh_order, have_fresh):
-        return out
-    take(
-        (*STUDY_NEIGHBORS.get(current, ()), *STUDY_TRAFFIC_ORDER, *extra(have_all)),
-        have_all,
+    all_order = (
+        *STUDY_NEIGHBORS.get(current, ()),
+        *STUDY_TRAFFIC_ORDER,
+        *extra(have_all),
     )
+    if take(fresh_order, have_fresh, hub_only=True):
+        return out
+    if take(all_order, have_all, hub_only=True):
+        return out
+    if take(fresh_order, have_fresh, hub_only=False):
+        return out
+    take(all_order, have_all, hub_only=False)
     return out
 
 

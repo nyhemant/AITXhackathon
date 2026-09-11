@@ -934,6 +934,18 @@ def vft_has_inpage_media(vft: dict | None) -> bool:
     return False
 
 
+def vft_can_watch_live(vft: dict | None) -> bool:
+    """Watch Live only when a real VFT habitat can play in-page media.
+
+    Film-library overlays (library_only) are not tour habitats. ParentTest:
+    do not promise a live cam without a habitat.
+    """
+    vft = vft or {}
+    if vft.get("library_only"):
+        return False
+    return vft_has_inpage_media(vft)
+
+
 def card_watch_href(vft: dict | None) -> str:
     """Same-tab Watch Live door with this animal pre-selected. Zoo uses virtual-zoo."""
     vft = vft or {}
@@ -966,7 +978,7 @@ def watch_link_html(url: str, label: str, *, kind: str) -> str:
 
 def card_watch_row_html(vft: dict, *, cta: str) -> str:
     """Card Watch Live: same-origin player only. Cousin zoo is plain text, not a href."""
-    if not vft_has_inpage_media(vft):
+    if not vft_can_watch_live(vft):
         return ""
     href = card_watch_href(vft)
     if not href:
@@ -4798,7 +4810,7 @@ def write_card_pages(
         watch_live = kind in ("animal", "sea_life")
         vft = item.get("vft") or {}
         vft_href = vft.get("vft_href") or ""
-        watch_href = card_watch_href(vft) if vft_has_inpage_media(vft) else ""
+        watch_href = card_watch_href(vft) if vft_can_watch_live(vft) else ""
         photo_watch_href = watch_href if (watch_live and watch_href) else ""
         img_html = card_hero_photo_html(
             photo=photo,
@@ -4852,7 +4864,7 @@ def write_card_pages(
             action_bits.append(
                 f'<a class="btn btn-secondary" href="{venue_href}">{esc(CTA_CARD_PLACE)}</a>'
             )
-        elif not vft_href:
+        elif not vft_href or (watch_live and not watch_href):
             action_bits.append(
                 f'<a class="btn btn-secondary" href="/field-pack/cards/">{esc(CTA_CARDS_HUB)}</a>'
             )

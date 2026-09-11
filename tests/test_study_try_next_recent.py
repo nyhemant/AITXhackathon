@@ -21,6 +21,7 @@ from study_cards import (  # noqa: E402
     study_card_ids,
     study_try_next_catalog,
     study_try_next_html,
+    study_try_next_hub,
     study_try_next_ids,
 )
 
@@ -73,6 +74,16 @@ if (after.includes("reticulated-giraffe")) fail("current must never be recommend
 if (after[0] !== "african-elephant") fail("prefer remaining neighbor when not recent");
 if (after.length !== 3) fail("must fill to 3");
 
+eq(FPStudyPickTryNextIds("whale-shark", ["whale-shark"], catalog, 3),
+  ["shark", "manta-ray", "clownfish"],
+  "whale-shark stays sealife");
+const whale = FPStudyPickTryNextIds("whale-shark", ["whale-shark"], catalog, 3);
+if (whale.includes("african-lion")) fail("whale-shark must not recommend lion");
+const sharkSea = FPStudyPickTryNextIds("shark", ["shark"], catalog, 3);
+if (sharkSea.includes("african-lion") || sharkSea.includes("african-penguin")) {
+  fail("shark try-next must stay sealife, got " + JSON.stringify(sharkSea));
+}
+
 const onlyCurrent = FPStudyPickTryNextIds("cheetah", ["cheetah"], catalog, 3);
 if (onlyCurrent.includes("cheetah")) fail("cheetah must not recommend itself");
 if (onlyCurrent.length !== 3) fail("cheetah fills to 3");
@@ -112,6 +123,10 @@ class StudyTryNextRecentTests(unittest.TestCase):
         self.assertEqual(catalog["neighbors"]["ostrich"], ["caribbean-flamingo", "african-penguin"])
         self.assertEqual(catalog["titles"]["african-lion"], "African lion")
         self.assertEqual(catalog["titles"]["galapagos-tortoise"], "Galápagos tortoise")
+        self.assertEqual(catalog["hubs"]["whale-shark"], "sealife")
+        self.assertEqual(catalog["hubs"]["african-lion"], "wildlife")
+        self.assertEqual(study_try_next_hub("whale-shark"), "sealife")
+        self.assertEqual(study_try_next_hub("polar-bear"), "wildlife")
 
         data = STUDY_DATA_JS.read_text(encoding="utf-8")
         self.assertIn("window.FP_STUDY_TRY_NEXT = ", data)

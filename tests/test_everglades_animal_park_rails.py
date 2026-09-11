@@ -93,7 +93,10 @@ class EvergladesAnimalParkRailsTests(unittest.TestCase):
         self.assertNotIn("big-cypress", rail)
         self.assertNotIn("/field-pack/cards/freshwater-fish/", rail)
         self.assertIn("Try next", nxt)
-        self.assertIn("/field-pack/cards/freshwater-fish/", nxt)
+        self.assertIn("/field-pack/cards/galapagos-tortoise/", nxt)
+        self.assertIn("/field-pack/cards/african-lion/", nxt)
+        self.assertIn("/field-pack/cards/reticulated-giraffe/", nxt)
+        self.assertNotIn("/field-pack/cards/freshwater-fish/", nxt)
         self.assertNotIn("everglades", nxt)
         self.assertNotIn("Junior Ranger", rail)
         self.assertNotIn("Park Ranger", rail)
@@ -114,7 +117,7 @@ class EvergladesAnimalParkRailsTests(unittest.TestCase):
         self.assertIn("/field-pack/cards/freshwater-fish/", gator_main)
         self.assertEqual(
             study_try_next_ids("american-alligator"),
-            ["freshwater-fish", "galapagos-tortoise", "african-lion"],
+            ["galapagos-tortoise", "african-lion", "reticulated-giraffe"],
         )
         self.assertNotIn("Junior Ranger", rail)
         self.assertNotIn('data-study-pick="easy"', rail)

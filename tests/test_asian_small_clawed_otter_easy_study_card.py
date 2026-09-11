@@ -393,7 +393,7 @@ class AsianSmallClawedOtterEasyStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertEqual(
             study_try_next_ids("asian-small-clawed-otter"),
-            ["shark", "red-panda", "african-lion"],
+            ["red-panda", "african-lion", "reticulated-giraffe"],
         )
 
     def test_print_faces_are_duplex_and_clamped(self):

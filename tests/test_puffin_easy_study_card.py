@@ -392,7 +392,7 @@ class PuffinEasyStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertEqual(
             study_try_next_ids("puffin"),
-            ["african-penguin", "polar-bear", "african-lion"],
+            ["clownfish", "crab", "cuttlefish"],
         )
 
     def test_print_faces_are_duplex_and_clamped(self):

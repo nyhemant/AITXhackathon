@@ -375,7 +375,7 @@ class AmericanAlligatorEasyStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertEqual(
             study_try_next_ids("american-alligator"),
-            ["freshwater-fish", "galapagos-tortoise", "african-lion"],
+            ["galapagos-tortoise", "african-lion", "reticulated-giraffe"],
         )
 
     def test_print_faces_are_duplex_and_clamped(self):

@@ -20,6 +20,7 @@ HUB_SECTIONS = (
 )
 
 # Kind fallback until catalog cards carry `kind`. Not a hub membership list.
+# Keep in sync with sealife rows in card-kinds.tsv.
 SEA_LIFE_IDS = frozenset(
     {
         "clownfish",
@@ -33,8 +34,21 @@ SEA_LIFE_IDS = frozenset(
         "jellyfish",
         "octopus",
         "starfish",
+        "cuttlefish",
+        "kelp-forest",
+        "manta-ray",
+        "puffin",
+        "sea-otter",
+        "whale-shark",
     }
 )
+
+_TSV_HUB_TO_KIND = {
+    "wildlife": "animal",
+    "sealife": "sea_life",
+    "attractions": "attraction",
+    "parks": "place_feature",
+}
 
 _ILLUSTRATION_MARKERS = (
     "illustration",
@@ -56,6 +70,18 @@ def venue_type_is_park(vtype: str) -> bool:
     return t in {"trail", "trails", "nature_preserve"}
 
 
+def _tsv_kind_for_id(cid: str) -> str:
+    """card-kinds.tsv hub is the published-card source of truth."""
+    if not cid:
+        return ""
+    try:
+        from field_pack_catalog_kind import load_card_kinds
+    except ImportError:
+        return ""
+    row = load_card_kinds().get(cid) or {}
+    return _TSV_HUB_TO_KIND.get(str(row.get("hub") or "").strip(), "")
+
+
 def card_kind(card: dict | None) -> str:
     """Return a CARD_KINDS value. Explicit `kind` wins; never id-special-case Towpath."""
     card = card or {}
@@ -68,6 +94,9 @@ def card_kind(card: dict | None) -> str:
         return "attraction"
     if pt == "park_features":
         return "place_feature"
+    tsv_kind = _tsv_kind_for_id(cid)
+    if tsv_kind:
+        return tsv_kind
     if cid in SEA_LIFE_IDS:
         return "sea_life"
     if venue_type_is_park(str(card.get("venue_type") or card.get("home_venue_type") or "")):
