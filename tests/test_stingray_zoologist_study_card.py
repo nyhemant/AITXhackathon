@@ -382,8 +382,8 @@ class StingrayZoologistStudyCardTests(unittest.TestCase):
         self.assertEqual(kelp_zoo["talk_about"], list(TALK_ABOUT_KELP_FOREST))
         self.assertEqual(kelp_zoo["push_further"], list(PUSH_FURTHER_KELP_FOREST))
         whale = WHALE_SHARK.read_text(encoding="utf-8")
-        self.assertIn("What do they eat?", whale)
-        self.assertNotIn("card-study-pack", whale)
+        self.assertIn("card-study-pack", whale)
+        self.assertNotIn("What do they eat?", whale)
         self.assertNotIn("families-manta-soft", whale)
 
     def test_published_artifacts_and_plumbing(self):

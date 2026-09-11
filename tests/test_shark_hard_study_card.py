@@ -120,8 +120,9 @@ class SharkHardStudyCardTests(unittest.TestCase):
     def test_hard_deck_is_park_ranger_without_teach(self):
         self.assertEqual(shipped_levels_for("shark"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("shark", "zoologist"))
-        self.assertNotIn("whale-shark", study_card_ids())
-        self.assertIsNone(study_deck_for("whale-shark"))
+        self.assertIn("whale-shark", study_card_ids())
+        self.assertIsNone(study_deck_for("whale-shark", "hard"))
+        self.assertIsNone(study_deck_for("whale-shark", "zoologist"))
         self.assertEqual(level_display_name("hard"), "Park Ranger")
         deck = study_deck_for("shark", "hard")
         self.assertIsNotNone(deck)
@@ -276,10 +277,9 @@ class SharkHardStudyCardTests(unittest.TestCase):
         self.assertEqual(hog_hard["talk_about"], list(TALK_ABOUT_WARTHOG))
         self.assertEqual(hog_hard["push_further"], list(PUSH_FURTHER_WARTHOG))
         whale = WHALE_SHARK.read_text(encoding="utf-8")
-        self.assertIn("What do they eat?", whale)
-        self.assertNotIn("card-study-pack", whale)
+        self.assertIn("card-study-pack", whale)
         self.assertNotIn("ampullae-soft", whale)
-        self.assertIsNone(study_deck_for("whale-shark"))
+        self.assertIsNone(study_deck_for("whale-shark", "hard"))
 
     def test_published_artifacts_and_plumbing(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))

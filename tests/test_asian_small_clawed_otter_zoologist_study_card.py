@@ -351,8 +351,8 @@ class AsianSmallClawedOtterZoologistStudyCardTests(unittest.TestCase):
         self.assertEqual(shark_zoo["talk_about"], list(TALK_ABOUT_SHARK))
         self.assertEqual(shark_zoo["push_further"], list(PUSH_FURTHER_SHARK))
         sea = OCTOPUS.read_text(encoding="utf-8")
-        self.assertIn("What do they eat?", sea)
-        self.assertNotIn("card-study-pack", sea)
+        self.assertIn("card-study-pack", sea)
+        self.assertNotIn("What do they eat?", sea)
         self.assertNotIn("naming-flux-soft", sea)
 
     def test_published_artifacts_and_plumbing(self):

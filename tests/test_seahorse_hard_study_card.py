@@ -313,8 +313,8 @@ class SeahorseHardStudyCardTests(unittest.TestCase):
         self.assertEqual(jelly_hard["talk_about"], list(TALK_ABOUT_JELLYFISH))
         self.assertEqual(jelly_hard["push_further"], list(PUSH_FURTHER_JELLYFISH))
         ray = STINGRAY.read_text(encoding="utf-8")
-        self.assertIn("What do they eat?", ray)
-        self.assertNotIn("card-study-pack", ray)
+        self.assertIn("card-study-pack", ray)
+        self.assertNotIn("What do they eat?", ray)
         self.assertNotIn("syngnathidae-soft", ray)
 
     def test_published_artifacts_and_plumbing(self):

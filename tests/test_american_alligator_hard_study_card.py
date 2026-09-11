@@ -267,8 +267,8 @@ class AmericanAlligatorHardStudyCardTests(unittest.TestCase):
         self.assertEqual(otter_hard["talk_about"], list(TALK_ABOUT_SEA_OTTER))
         self.assertEqual(otter_hard["push_further"], list(PUSH_FURTHER_SEA_OTTER))
         jelly = OCTOPUS.read_text(encoding="utf-8")
-        self.assertIn("What do they eat?", jelly)
-        self.assertNotIn("card-study-pack", jelly)
+        self.assertIn("card-study-pack", jelly)
+        self.assertNotIn("What do they eat?", jelly)
         self.assertNotIn("u-snout-vs-crocs-soft", jelly)
 
     def test_published_artifacts_and_plumbing(self):

@@ -264,8 +264,8 @@ class ElkHardStudyCardTests(unittest.TestCase):
         self.assertEqual(bison_hard["talk_about"], list(TALK_ABOUT_AMERICAN_BISON))
         self.assertEqual(bison_hard["push_further"], list(PUSH_FURTHER_AMERICAN_BISON))
         jelly = OCTOPUS.read_text(encoding="utf-8")
-        self.assertIn("What do they eat?", jelly)
-        self.assertNotIn("card-study-pack", jelly)
+        self.assertIn("card-study-pack", jelly)
+        self.assertNotIn("What do they eat?", jelly)
         self.assertNotIn("cervus-canadensis-soft", jelly)
 
     def test_published_artifacts_and_plumbing(self):

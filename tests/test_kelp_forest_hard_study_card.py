@@ -295,8 +295,8 @@ class KelpForestHardStudyCardTests(unittest.TestCase):
         self.assertEqual(cuttle_hard["talk_about"], list(TALK_ABOUT_CUTTLEFISH))
         self.assertEqual(cuttle_hard["push_further"], list(PUSH_FURTHER_CUTTLEFISH))
         octo = OCTOPUS.read_text(encoding="utf-8")
-        self.assertIn("What do they eat?", octo)
-        self.assertNotIn("card-study-pack", octo)
+        self.assertIn("card-study-pack", octo)
+        self.assertNotIn("What do they eat?", octo)
         self.assertNotIn("laminariales-soft", octo)
 
     def test_published_artifacts_and_plumbing(self):

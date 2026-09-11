@@ -155,6 +155,7 @@ class ElephantEasyStudyCardTests(unittest.TestCase):
                 "seahorse",
                 "starfish",
                 "stingray",
+                "whale-shark",
             ),
         )
         self.assertEqual(shipped_levels_for("african-elephant"), ("easy", "hard", "zoologist"))
@@ -252,12 +253,12 @@ class ElephantEasyStudyCardTests(unittest.TestCase):
 
     def test_other_animal_stays_generic_worksheet(self):
         html = outing_talk_html({"id": "whale-shark", "packTemplate": "animals"})
-        self.assertIn("What do they eat?", html)
-        self.assertNotIn("card-study-pack", html)
+        self.assertIn("card-study-pack", html)
+        self.assertNotIn("What do they eat?", html)
         self.assertNotIn("What record does an African elephant hold", html)
         sea = OCTOPUS.read_text(encoding="utf-8")
-        self.assertIn("What do they eat?", sea)
-        self.assertNotIn("card-study-pack", sea)
+        self.assertIn("card-study-pack", sea)
+        self.assertNotIn("What do they eat?", sea)
 
     def test_published_elephant_card_matches_easy_deck(self):
         html = ELEPHANT.read_text(encoding="utf-8")

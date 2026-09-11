@@ -160,7 +160,14 @@ def _decks():
 
 class StudyCardAnswerKeyTests(unittest.TestCase):
     def test_traffic_set_is_forty_one_animals(self):
-        self.assertEqual(tuple(study_card_ids()), TRAFFIC_IDS)
+        self.assertEqual(
+            tuple(cid for cid in study_card_ids() if cid != "whale-shark"),
+            TRAFFIC_IDS,
+        )
+        self.assertIn("whale-shark", study_card_ids())
+        self.assertEqual(shipped_levels_for("whale-shark"), ("easy",))
+        self.assertIsNone(study_deck_for("whale-shark", "hard"))
+        self.assertIsNone(study_deck_for("whale-shark", "zoologist"))
         self.assertEqual(shipped_levels_for("cheetah"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("cheetah", "zoologist"))
         self.assertEqual(shipped_levels_for("red-panda"), ("easy", "hard", "zoologist"))

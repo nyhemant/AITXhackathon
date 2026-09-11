@@ -348,8 +348,8 @@ class AmericanBisonZoologistStudyCardTests(unittest.TestCase):
         self.assertEqual(gator_zoo["talk_about"], list(TALK_ABOUT_AMERICAN_ALLIGATOR))
         self.assertEqual(gator_zoo["push_further"], list(PUSH_FURTHER_AMERICAN_ALLIGATOR))
         jelly = OCTOPUS.read_text(encoding="utf-8")
-        self.assertIn("What do they eat?", jelly)
-        self.assertNotIn("card-study-pack", jelly)
+        self.assertIn("card-study-pack", jelly)
+        self.assertNotIn("What do they eat?", jelly)
         self.assertNotIn("bison-bison-taxonomy-soft", jelly)
 
     def test_published_artifacts_and_plumbing(self):

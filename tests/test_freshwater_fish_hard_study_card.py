@@ -110,8 +110,10 @@ class FreshwaterFishHardStudyCardTests(unittest.TestCase):
     def test_hard_deck_is_park_ranger_without_teach(self):
         self.assertEqual(shipped_levels_for("freshwater-fish"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("freshwater-fish", "zoologist"))
-        self.assertNotIn("whale-shark", study_card_ids())
-        self.assertIsNone(study_deck_for("whale-shark"))
+        self.assertIn("whale-shark", study_card_ids())
+        self.assertIsNotNone(study_deck_for("whale-shark"))
+        self.assertIsNone(study_deck_for("whale-shark", "hard"))
+        self.assertIsNone(study_deck_for("whale-shark", "zoologist"))
         self.assertEqual(level_display_name("hard"), "Park Ranger")
         deck = study_deck_for("freshwater-fish", "hard")
         self.assertIsNotNone(deck)
@@ -266,10 +268,12 @@ class FreshwaterFishHardStudyCardTests(unittest.TestCase):
         self.assertEqual(sloth_hard["talk_about"], list(TALK_ABOUT_TWO_TOED_SLOTH))
         self.assertEqual(sloth_hard["push_further"], list(PUSH_FURTHER_TWO_TOED_SLOTH))
         jelly = OCTOPUS.read_text(encoding="utf-8")
-        self.assertIn("What do they eat?", jelly)
-        self.assertNotIn("card-study-pack", jelly)
+        self.assertIn("card-study-pack", jelly)
+        self.assertNotIn("What do they eat?", jelly)
         self.assertNotIn("salt-water-balance-soft", jelly)
-        self.assertIsNone(study_deck_for("whale-shark"))
+        self.assertIsNotNone(study_deck_for("whale-shark"))
+        self.assertIsNone(study_deck_for("whale-shark", "hard"))
+        self.assertIsNone(study_deck_for("whale-shark", "zoologist"))
 
     def test_published_artifacts_and_plumbing(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))

@@ -239,6 +239,7 @@ class GiantPandaEasyStudyCardTests(unittest.TestCase):
                 "seahorse",
                 "starfish",
                 "stingray",
+                "whale-shark",
             ),
         )
         self.assertEqual(shipped_levels_for("giant-panda"), ("easy", "hard", "zoologist"))
@@ -419,12 +420,12 @@ class GiantPandaEasyStudyCardTests(unittest.TestCase):
 
     def test_other_animal_stays_generic_worksheet(self):
         html = outing_talk_html({"id": "whale-shark", "packTemplate": "animals"})
-        self.assertIn("What do they eat?", html)
-        self.assertNotIn("card-study-pack", html)
+        self.assertIn("card-study-pack", html)
+        self.assertNotIn("What do they eat?", html)
         self.assertNotIn("What do giant pandas eat almost all the time?", html)
         sea = OCTOPUS.read_text(encoding="utf-8")
-        self.assertIn("What do they eat?", sea)
-        self.assertNotIn("card-study-pack", sea)
+        self.assertIn("card-study-pack", sea)
+        self.assertNotIn("What do they eat?", sea)
 
     def test_published_giant_panda_card_matches_easy_deck(self):
         html = GIANT_PANDA.read_text(encoding="utf-8")

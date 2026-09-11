@@ -132,7 +132,7 @@ def _main(html: str) -> str:
 class AmericanAlligatorEasyStudyCardTests(unittest.TestCase):
     def test_deck_is_junior_ranger(self):
         self.assertIn("american-alligator", study_card_ids())
-        self.assertNotIn("whale-shark", study_card_ids())
+        self.assertIn("whale-shark", study_card_ids())
         self.assertEqual(
             study_card_ids(),
             (
@@ -177,12 +177,15 @@ class AmericanAlligatorEasyStudyCardTests(unittest.TestCase):
                 "seahorse",
                 "starfish",
                 "stingray",
+                "whale-shark",
             ),
         )
         self.assertEqual(shipped_levels_for("american-alligator"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("american-alligator", "hard"))
         self.assertIsNotNone(study_deck_for("american-alligator", "zoologist"))
-        self.assertIsNone(study_deck_for("whale-shark"))
+        self.assertIsNotNone(study_deck_for("whale-shark"))
+        self.assertIsNone(study_deck_for("whale-shark", "hard"))
+        self.assertIsNone(study_deck_for("whale-shark", "zoologist"))
         deck = study_deck_for("american-alligator")
         self.assertIsNotNone(deck)
         self.assertEqual(deck["id"], "american-alligator")
@@ -298,12 +301,12 @@ class AmericanAlligatorEasyStudyCardTests(unittest.TestCase):
 
     def test_other_animal_stays_generic_worksheet(self):
         html = outing_talk_html({"id": "whale-shark", "packTemplate": "animals"})
-        self.assertIn("What do they eat?", html)
-        self.assertNotIn("card-study-pack", html)
+        self.assertIn("card-study-pack", html)
+        self.assertNotIn("What do they eat?", html)
         self.assertNotIn("Where do American alligators live in the wild?", html)
         jelly = OCTOPUS.read_text(encoding="utf-8")
-        self.assertIn("What do they eat?", jelly)
-        self.assertNotIn("card-study-pack", jelly)
+        self.assertIn("card-study-pack", jelly)
+        self.assertNotIn("What do they eat?", jelly)
         self.assertNotIn("Where do American alligators live in the wild?", jelly)
 
     def test_published_american_alligator_card_matches_easy_deck(self):
@@ -426,7 +429,8 @@ class AmericanAlligatorEasyStudyCardTests(unittest.TestCase):
     def test_artifacts_include_american_alligator_easy_and_hard(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
         self.assertIn("american-alligator", payload)
-        self.assertNotIn("whale-shark", payload)
+        self.assertIn("whale-shark", payload)
+        self.assertEqual(set(payload["whale-shark"]["levels"]), {"easy"})
         self.assertIn("sea-otter", payload)
         gator = payload["american-alligator"]
         self.assertEqual(gator["id"], "american-alligator")

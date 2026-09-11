@@ -185,6 +185,7 @@ class TwoToedSlothEasyStudyCardTests(unittest.TestCase):
                 "seahorse",
                 "starfish",
                 "stingray",
+                "whale-shark",
             ),
         )
         self.assertEqual(shipped_levels_for("two-toed-sloth"), ("easy", "hard", "zoologist"))
@@ -309,12 +310,12 @@ class TwoToedSlothEasyStudyCardTests(unittest.TestCase):
 
     def test_other_animal_stays_generic_worksheet(self):
         html = outing_talk_html({"id": "whale-shark", "packTemplate": "animals"})
-        self.assertIn("What do they eat?", html)
-        self.assertNotIn("card-study-pack", html)
+        self.assertIn("card-study-pack", html)
+        self.assertNotIn("What do they eat?", html)
         self.assertNotIn("How many big curved claws does a two-toed sloth", html)
         sea = OCTOPUS.read_text(encoding="utf-8")
-        self.assertIn("What do they eat?", sea)
-        self.assertNotIn("card-study-pack", sea)
+        self.assertIn("card-study-pack", sea)
+        self.assertNotIn("What do they eat?", sea)
 
     def test_published_sloth_card_matches_easy_deck(self):
         html = SLOTH.read_text(encoding="utf-8")
@@ -438,7 +439,8 @@ class TwoToedSlothEasyStudyCardTests(unittest.TestCase):
     def test_artifacts_include_sloth_easy_and_hard(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
         self.assertIn("two-toed-sloth", payload)
-        self.assertNotIn("whale-shark", payload)
+        self.assertIn("whale-shark", payload)
+        self.assertEqual(set(payload["whale-shark"]["levels"]), {"easy"})
         self.assertIn("asian-small-clawed-otter", payload)
         sloth = payload["two-toed-sloth"]
         self.assertEqual(sloth["id"], "two-toed-sloth")

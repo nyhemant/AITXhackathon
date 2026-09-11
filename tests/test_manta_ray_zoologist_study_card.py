@@ -373,8 +373,8 @@ class MantaRayZoologistStudyCardTests(unittest.TestCase):
         self.assertEqual(kelp_zoo["talk_about"], list(TALK_ABOUT_KELP_FOREST))
         self.assertEqual(kelp_zoo["push_further"], list(PUSH_FURTHER_KELP_FOREST))
         octo = OCTOPUS.read_text(encoding="utf-8")
-        self.assertIn("What do they eat?", octo)
-        self.assertNotIn("card-study-pack", octo)
+        self.assertIn("card-study-pack", octo)
+        self.assertNotIn("What do they eat?", octo)
         self.assertNotIn("paraphyly-soft", octo)
 
     def test_published_artifacts_and_plumbing(self):

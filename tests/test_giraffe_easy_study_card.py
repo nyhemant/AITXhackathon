@@ -180,8 +180,8 @@ class GiraffeEasyStudyCardTests(unittest.TestCase):
 
     def test_other_animal_stays_generic_worksheet(self):
         html = outing_talk_html({"id": "whale-shark", "packTemplate": "animals"})
-        self.assertIn("What do they eat?", html)
-        self.assertNotIn("card-study-pack", html)
+        self.assertIn("card-study-pack", html)
+        self.assertNotIn("What do they eat?", html)
         self.assertNotIn("What record does a giraffe hold", html)
 
     def test_published_giraffe_card_matches_easy_deck(self):

@@ -271,8 +271,8 @@ class AmericanBisonHardStudyCardTests(unittest.TestCase):
         self.assertEqual(gator_hard["talk_about"], list(TALK_ABOUT_AMERICAN_ALLIGATOR))
         self.assertEqual(gator_hard["push_further"], list(PUSH_FURTHER_AMERICAN_ALLIGATOR))
         jelly = OCTOPUS.read_text(encoding="utf-8")
-        self.assertIn("What do they eat?", jelly)
-        self.assertNotIn("card-study-pack", jelly)
+        self.assertIn("card-study-pack", jelly)
+        self.assertNotIn("What do they eat?", jelly)
         self.assertNotIn("plains-vs-wood-soft", jelly)
 
     def test_published_artifacts_and_plumbing(self):

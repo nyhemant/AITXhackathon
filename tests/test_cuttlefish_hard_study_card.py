@@ -281,8 +281,8 @@ class CuttlefishHardStudyCardTests(unittest.TestCase):
         self.assertEqual(clown_hard["talk_about"], list(TALK_ABOUT_CLOWNFISH))
         self.assertEqual(clown_hard["push_further"], list(PUSH_FURTHER_CLOWNFISH))
         jelly = OCTOPUS.read_text(encoding="utf-8")
-        self.assertIn("What do they eat?", jelly)
-        self.assertNotIn("card-study-pack", jelly)
+        self.assertIn("card-study-pack", jelly)
+        self.assertNotIn("What do they eat?", jelly)
         self.assertNotIn("sepiidae-soft", jelly)
 
     def test_published_artifacts_and_plumbing(self):

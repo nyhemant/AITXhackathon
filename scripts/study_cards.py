@@ -2130,9 +2130,18 @@ counts and species lists. Do not redo JR
 or PR themes. Keep kid-friendly. Do not
 invent photos.
 
-Slot numbers stay 1–10 on Junior Ranger.
-Park Ranger and Zoologist are 5-question
-signed packs. Hard and Zoologist deepen
+Facts for whale-shark Junior Ranger (easy) are
+Wikipedia-backed: https://en.wikipedia.org/wiki/Whale_shark
+JR only this pass — do not add Park Ranger or Zoologist.
+Five teach lines + five signed MCQs. Letter mix
+B, A, C, A, B — do not rotate onto the 10-slot cycle.
+Soften exact metres and litres-per-hour. Keep
+kid-friendly. Do not invent photos.
+
+Slot numbers stay 1–10 on full Junior Ranger decks.
+Stingray Park Ranger and Zoologist are 5-question
+signed packs. Whale-shark Junior Ranger is a signed
+5-question pack. Hard and Zoologist deepen
 different themes (not a redo of Easy or
 of each other). Internal keys stay easy /
 hard / zoologist. Visible copy uses
@@ -2199,9 +2208,11 @@ WIKI_SEA_TURTLE = "https://en.wikipedia.org/wiki/Sea_turtle"
 WIKI_SEAHORSE = "https://en.wikipedia.org/wiki/Seahorse"
 WIKI_STARFISH = "https://en.wikipedia.org/wiki/Starfish"
 WIKI_STINGRAY = "https://en.wikipedia.org/wiki/Stingray"
+WIKI_WHALE_SHARK = "https://en.wikipedia.org/wiki/Whale_shark"
 
 LETTERS = ("A", "B", "C")
 STUDY_SLOTS = 10
+STUDY_SLOTS_SHORT = 5
 DEFAULT_LEVEL = "easy"
 STUDY_QUIZ_H2 = "Quiz"
 # Fail a 10-question deck if one letter is used more than this many times.
@@ -2218,6 +2229,7 @@ def target_letter_for_slot(slot: int) -> str:
 # Signed packs that do not use the default A→B→C slot cycle.
 SIGNED_LETTER_MIX = {
     ("stingray", "zoologist"): ("A", "B", "C", "A", "A"),
+    ("whale-shark", "easy"): ("B", "A", "C", "A", "B"),
 }
 
 
@@ -2296,6 +2308,7 @@ LEVEL_DISPLAY_NAMES = {
 # ship Junior Ranger + Park Ranger + Zoologist.
 # Manta ray, octopus, sea turtle, seahorse, starfish, and
 # stingray ship Junior Ranger + Park Ranger + Zoologist.
+# Whale shark ships Junior Ranger only (signed 5-question pack).
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -2353,6 +2366,7 @@ STUDY_NEIGHBORS = {
     "seahorse": ("octopus", "sea-turtle"),
     "starfish": ("sea-turtle", "octopus"),
     "stingray": ("manta-ray", "seahorse"),
+    "whale-shark": ("shark", "manta-ray"),
 }
 
 STUDY_CARD_TITLES = {
@@ -2397,6 +2411,7 @@ STUDY_CARD_TITLES = {
     "seahorse": "Seahorse",
     "starfish": "Sea star",
     "stingray": "Stingray",
+    "whale-shark": "Whale shark",
 }
 
 # Shared answers-side deepen (Claude sample). Not scored. Future animals reuse keys.
@@ -20254,6 +20269,92 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "A",
                         "why": "Wikipedia: male stingrays show sexual dimorphism with pointed cusps on some teeth. In some species tooth morphology changes in mating season and returns afterward. Soft on species lists.",
+                    },
+                ],
+            },
+        },
+    },
+    "whale-shark": {
+        "id": "whale-shark",
+        "source": WIKI_WHALE_SHARK,
+        "source_note": "Facts from Wikipedia, Whale shark.",
+        "talk_about": [],
+        "push_further": [],
+        "levels": {
+            "easy": {
+                # Teaching-first: signed Junior Ranger pack. Later tiers reserved.
+                "teach": [
+                    "The biggest living fish in the ocean (size soft).",
+                    "A shark — not a whale — that filter-feeds with a huge mouth.",
+                    "Dark back with light spots and stripes in a checkerboard pattern.",
+                    "Eats tiny plankton and small schooling fish — not people.",
+                    "Usually gentle and slow-moving in warm seas.",
+                ],
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "biggest-soft",
+                        "title": "Biggest",
+                        "stem": "What size record does the whale shark hold among living fish?",
+                        "choices": [
+                            "Smallest fish in a puddle",
+                            "Largest living fish (exact length soft)",
+                            "Tallest animal on land",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia calls the whale shark the largest known living fish. Reported lengths vary, so we keep the exact metres soft.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "shark-not-whale",
+                        "title": "Name",
+                        "stem": "Is a whale shark a whale?",
+                        "choices": [
+                            "No — it is a shark (a fish with a cartilage skeleton), even though the name says “whale”",
+                            "Yes — it is a mammal that breathes air like a dolphin",
+                            "Yes — it only lives in freshwater lakes",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia: the whale shark is a filter-feeding carpet shark (Rhincodon typus). It is a fish, not a whale. The name reflects size, not being a mammal.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "filter-soft",
+                        "title": "Food",
+                        "stem": "How does a whale shark mostly get its food?",
+                        "choices": [
+                            "By hunting large seals with big teeth",
+                            "By chewing grass on the beach",
+                            "By filter-feeding — taking in water and straining plankton, krill, fish eggs, and small schooling fish",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia: it is an active filter feeder. Prey includes plankton, krill, fish eggs, and small schooling fish such as sardines and anchovies. Soft on litres-per-hour.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "spots-soft",
+                        "title": "Body",
+                        "stem": "What is special about a whale shark’s pattern?",
+                        "choices": [
+                            "A checkerboard of light spots and stripes on a dark back — each shark’s pattern is unique (soft)",
+                            "Solid neon pink with no marks",
+                            "Feathers instead of skin",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia describes a distinctive pattern of pale spots and stripes. Scientists can use spot patterns to tell individuals apart. Soft on exact ID methods.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "gentle-giant-myth",
+                        "title": "Myth buster",
+                        "stem": "Does a whale shark’s huge size mean it hunts people?",
+                        "choices": [
+                            "Yes — it chases swimmers every day",
+                            "No — it is docile and poses no significant threat to people; it filters tiny food, not humans",
+                            "Yes — only at night",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia: despite its size, the whale shark is docile and poses no significant threat to humans. Soft care: give big animals space and follow local guide rules.",
                     },
                 ],
             },

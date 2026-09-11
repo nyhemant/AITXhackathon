@@ -361,8 +361,8 @@ class SeaOtterZoologistStudyCardTests(unittest.TestCase):
             list(PUSH_FURTHER_ASIAN_SMALL_CLAWED_OTTER),
         )
         sea = OCTOPUS.read_text(encoding="utf-8")
-        self.assertIn("What do they eat?", sea)
-        self.assertNotIn("card-study-pack", sea)
+        self.assertIn("card-study-pack", sea)
+        self.assertNotIn("What do they eat?", sea)
         self.assertNotIn("enhydra-only-soft", sea)
 
     def test_published_artifacts_and_plumbing(self):
