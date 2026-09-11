@@ -1340,6 +1340,18 @@ body.start-body {
   background: rgba(10, 69, 69, 0.06);
 }
 
+.start-menu a.start-menu-grownup {
+  margin-top: 0.2rem;
+  border-top: 1px solid rgba(10, 69, 69, 0.1);
+  border-radius: 0 0 10px 10px;
+  font-weight: 550;
+  color: var(--muted);
+}
+
+.start-menu a.start-menu-grownup small {
+  font-weight: 500;
+}
+
 .start-hero .start-menu-btn {
   background: rgba(255, 255, 255, 0.78);
 }
