@@ -17170,5 +17170,163 @@
         ]
       }
     }
+  },
+  "stingray": {
+    "id": "stingray",
+    "source": "https://en.wikipedia.org/wiki/Stingray",
+    "source_note": "Facts from Wikipedia, Stingray.",
+    "talk_about": [
+      "Eyes sit on top and the mouth is underneath. Why might that help a ray rest on sand?",
+      "Many stingrays hide under sand. What might they be waiting for down there?",
+      "Stingrays are usually shy. Why might a sting happen when someone steps on one?"
+    ],
+    "push_further": [
+      "Scientists group rays on a bigger family tree. Why keep those long names for later?",
+      "Some rays sense tiny electric hints, and swim with different wing beats. Why wait?",
+      "Venom chemistry, river rays, baby-feeding details, and giant manta cousins still wait. Why?"
+    ],
+    "levels": {
+      "easy": {
+        "teach": [
+          "Flattened ocean fish with a skeleton of cartilage (related to sharks — soft)",
+          "Eyes on top; mouth and gills on the underside",
+          "Many hide under sand on the seafloor",
+          "The tail can carry a venomous stinger used for defense",
+          "Usually shy — they sting when threatened or stepped on, not when chasing people"
+        ],
+        "questions": [
+          {
+            "slot": 1,
+            "id": "cartilage-soft",
+            "title": "Soft skeleton",
+            "stem": "What is a stingray’s skeleton mostly made of?",
+            "choices": [
+              "Cartilage — tough and flexible, like a shark’s skeleton (soft)",
+              "Solid bone like a cow’s leg",
+              "Only sand packed into a tube"
+            ],
+            "correct": "A",
+            "why": "Wikipedia calls stingrays cartilaginous fish. Their skeletons are cartilage, not hard bone — the same big idea as sharks."
+          },
+          {
+            "slot": 2,
+            "id": "flat-disc-soft",
+            "title": "Flat disc",
+            "stem": "What shape helps many stingrays hug the seafloor?",
+            "choices": [
+              "A tall triangle like a sailboat",
+              "A flattened body with wide pectoral “wings” fused into a disc",
+              "A round ball with no fins"
+            ],
+            "correct": "B",
+            "why": "Wikipedia describes flattened bodies and large pectoral fins that form a broad disc. That shape helps them rest and hide on the bottom."
+          },
+          {
+            "slot": 3,
+            "id": "eyes-up-mouth-down-soft",
+            "title": "Eyes up",
+            "stem": "Where are a stingray’s eyes and mouth?",
+            "choices": [
+              "Eyes and mouth both on the tip of the tail",
+              "Eyes underneath; mouth on top like a whale’s blowhole",
+              "Eyes on top; mouth (and gill slots) on the underside"
+            ],
+            "correct": "C",
+            "why": "Wikipedia: eyes sit on the upper surface; the mouth is on the ventral (underside). Gill openings are also on the underside."
+          },
+          {
+            "slot": 4,
+            "id": "sand-hide-soft",
+            "title": "Sand hide",
+            "stem": "How do many bottom-living stingrays hide?",
+            "choices": [
+              "They stir sand and settle under it, often leaving mainly eyes and tail showing",
+              "They climb into trees at night",
+              "They freeze into ice cubes"
+            ],
+            "correct": "A",
+            "why": "Wikipedia: flattened bodies help them conceal in sand. They agitate sand and hide beneath it, often with only eyes and tail visible."
+          },
+          {
+            "slot": 5,
+            "id": "stinger-soft",
+            "title": "Stinger",
+            "stem": "What is the famous “sting” on many stingrays?",
+            "choices": [
+              "A lightning bolt shot from the eyes",
+              "A venomous spine (stinger / spinal blade) on the tail used for defense",
+              "A whistle that only works underwater"
+            ],
+            "correct": "B",
+            "why": "Wikipedia: the stinger (spinal blade) sits on the tail and can deliver venom. Rays may have one, two, or three blades. Soft on exact lengths."
+          },
+          {
+            "slot": 6,
+            "id": "crush-food-soft",
+            "title": "Crush food",
+            "stem": "What do many stingrays eat on the seafloor?",
+            "choices": [
+              "Only grass from land meadows",
+              "Mostly birds that land on the beach",
+              "Mollusks, crustaceans, and sometimes small fish — many crush hard shells with strong jaws"
+            ],
+            "correct": "C",
+            "why": "Wikipedia: most feed mainly on mollusks and crustaceans, and sometimes small fish. Flat teeth help crush hard-shelled prey."
+          },
+          {
+            "slot": 7,
+            "id": "spiracles-soft",
+            "title": "Spiracles",
+            "stem": "How can a buried stingray keep breathing without gulping sandy water through its mouth?",
+            "choices": [
+              "Openings called spiracles behind the eyes can draw clearer water in",
+              "It holds its breath for a year",
+              "It breathes only through its tail tip"
+            ],
+            "correct": "A",
+            "why": "Wikipedia: spiracles just behind the eyes let a ray take in water while buried, so sediment does not flood the mouth path. Soft on efficiency details."
+          },
+          {
+            "slot": 8,
+            "id": "live-young-soft",
+            "title": "Live young",
+            "stem": "How do stingray babies usually arrive?",
+            "choices": [
+              "As eggs left alone on a dry beach forever",
+              "Born live after developing inside the mother (ovoviviparous soft) — litter size soft",
+              "Hatched only in bird nests"
+            ],
+            "correct": "B",
+            "why": "Wikipedia: stingrays are ovoviviparous and bear live young. Litter sizes vary; we keep the count soft rather than locking one number."
+          },
+          {
+            "slot": 9,
+            "id": "many-kinds-soft",
+            "title": "Many kinds",
+            "stem": "About how many kinds of stingray are there, if we keep the count soft?",
+            "choices": [
+              "Exactly three kinds in one pond",
+              "Only one kind on Earth",
+              "About two hundred known kinds worldwide (soft)"
+            ],
+            "correct": "C",
+            "why": "Wikipedia puts living stingrays at about 220 known species. Exact totals shift as scientists name or split kinds, so we keep that soft."
+          },
+          {
+            "slot": 10,
+            "id": "not-hunters-myth",
+            "title": "Myth buster",
+            "stem": "Do stingrays usually chase and hunt people?",
+            "choices": [
+              "No — they are not usually aggressive; stings happen mainly when a ray is stepped on or threatened",
+              "Yes — they hunt swimmers on purpose every day",
+              "Yes — they only attack at noon"
+            ],
+            "correct": "A",
+            "why": "Wikipedia: stingrays are not usually aggressive and ordinarily sting humans only when provoked, such as when stepped on. Fatal stings are very rare. Soft care: shuffle feet in shallow water."
+          }
+        ]
+      }
+    }
   }
 }

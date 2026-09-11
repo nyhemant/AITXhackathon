@@ -48,7 +48,7 @@ from study_cards import (  # noqa: E402
 
 FP = REPO / "static" / "field-pack"
 STARFISH = FP / "cards" / "starfish" / "index.html"
-STINGRAY = FP / "cards" / "stingray" / "index.html"
+WHALE_SHARK = FP / "cards" / "whale-shark" / "index.html"
 SEAHORSE = FP / "cards" / "seahorse" / "index.html"
 SEA_TURTLE = FP / "cards" / "sea-turtle" / "index.html"
 OCTOPUS = FP / "cards" / "octopus" / "index.html"
@@ -322,7 +322,7 @@ class StarfishHardStudyCardTests(unittest.TestCase):
         self.assertIn("Zoologist", jelly_html)
         self.assertEqual(jelly_hard["talk_about"], list(TALK_ABOUT_JELLYFISH))
         self.assertEqual(jelly_hard["push_further"], list(PUSH_FURTHER_JELLYFISH))
-        ray = STINGRAY.read_text(encoding="utf-8")
+        ray = WHALE_SHARK.read_text(encoding="utf-8")
         self.assertIn("What do they eat?", ray)
         self.assertNotIn("card-study-pack", ray)
         self.assertNotIn("asteroidea-soft", ray)

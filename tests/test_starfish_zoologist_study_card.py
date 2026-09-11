@@ -51,7 +51,7 @@ from study_cards import (  # noqa: E402
 
 FP = REPO / "static" / "field-pack"
 STARFISH = FP / "cards" / "starfish" / "index.html"
-STINGRAY = FP / "cards" / "stingray" / "index.html"
+WHALE_SHARK = FP / "cards" / "whale-shark" / "index.html"
 SEAHORSE = FP / "cards" / "seahorse" / "index.html"
 SEA_TURTLE = FP / "cards" / "sea-turtle" / "index.html"
 OCTOPUS = FP / "cards" / "octopus" / "index.html"
@@ -400,7 +400,7 @@ class StarfishZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("Zoologist", kelp_html)
         self.assertEqual(kelp_zoo["talk_about"], list(TALK_ABOUT_KELP_FOREST))
         self.assertEqual(kelp_zoo["push_further"], list(PUSH_FURTHER_KELP_FOREST))
-        ray = STINGRAY.read_text(encoding="utf-8")
+        ray = WHALE_SHARK.read_text(encoding="utf-8")
         self.assertIn("What do they eat?", ray)
         self.assertNotIn("card-study-pack", ray)
         self.assertNotIn("seven-orders-soft", ray)

@@ -36,7 +36,7 @@ from study_cards import (  # noqa: E402
 
 FP = REPO / "static" / "field-pack"
 BISON = FP / "cards" / "american-bison" / "index.html"
-OCTOPUS = FP / "cards" / "stingray" / "index.html"
+OCTOPUS = FP / "cards" / "whale-shark" / "index.html"
 GATOR = FP / "cards" / "american-alligator" / "index.html"
 PRINT_KIT = FP / "js" / "print-kit.js"
 STUDY_JS = FP / "js" / "study-card.js"
@@ -130,7 +130,7 @@ def _main(html: str) -> str:
 class AmericanBisonEasyStudyCardTests(unittest.TestCase):
     def test_deck_is_junior_ranger(self):
         self.assertIn("american-bison", study_card_ids())
-        self.assertNotIn("stingray", study_card_ids())
+        self.assertNotIn("whale-shark", study_card_ids())
         self.assertEqual(
             study_card_ids(),
             (
@@ -174,12 +174,13 @@ class AmericanBisonEasyStudyCardTests(unittest.TestCase):
                 "sea-turtle",
                 "seahorse",
                 "starfish",
+                "stingray",
             ),
         )
         self.assertEqual(shipped_levels_for("american-bison"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("american-bison", "hard"))
         self.assertIsNotNone(study_deck_for("american-bison", "zoologist"))
-        self.assertIsNone(study_deck_for("stingray"))
+        self.assertIsNone(study_deck_for("whale-shark"))
         deck = study_deck_for("american-bison")
         self.assertIsNotNone(deck)
         self.assertEqual(deck["id"], "american-bison")
@@ -294,7 +295,7 @@ class AmericanBisonEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Facts from Wikipedia, American bison.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
-        html = outing_talk_html({"id": "stingray", "packTemplate": "animals"})
+        html = outing_talk_html({"id": "whale-shark", "packTemplate": "animals"})
         self.assertIn("What do they eat?", html)
         self.assertNotIn("card-study-pack", html)
         self.assertNotIn("Where do American bison live in the wild?", html)
@@ -423,7 +424,7 @@ class AmericanBisonEasyStudyCardTests(unittest.TestCase):
     def test_artifacts_include_american_bison_easy_and_hard(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
         self.assertIn("american-bison", payload)
-        self.assertNotIn("stingray", payload)
+        self.assertNotIn("whale-shark", payload)
         self.assertIn("american-alligator", payload)
         bison = payload["american-bison"]
         self.assertEqual(bison["id"], "american-bison")
