@@ -37,6 +37,11 @@ START_ROOT = REPO_ROOT / "static" / "start"
 START_PREFIX = "/start"
 # Memorable short alias for the first-time landing (not Virtual Zoo)
 ZOO_ALIAS_PATHS = frozenset({"/zoo", "/zoo/"})
+# Typed/short card URLs → canonical card pages (also a static alias page).
+CARD_ALIAS_REDIRECTS = {
+    "/field-pack/cards/giraffe": "/field-pack/cards/reticulated-giraffe/",
+    "/field-pack/cards/giraffe/": "/field-pack/cards/reticulated-giraffe/",
+}
 # Educational About / FAQ — seek-out only; not a landing
 ABOUT_ROOT = REPO_ROOT / "static" / "about"
 ABOUT_PREFIX = "/about"
@@ -1271,6 +1276,10 @@ class WebHandler(BaseHTTPRequestHandler):
             self.send_header("Content-Length", "0")
             self.end_headers()
             return
+        card_alias = CARD_ALIAS_REDIRECTS.get(path)
+        if card_alias:
+            _send_redirect(self, card_alias, code=301)
+            return
         # Legacy place brochures → indexable venue URLs
         # /field-pack/places/dallas-zoo.html → /field-pack/dallas-zoo/
         if path.startswith(FIELD_PACK_PREFIX + "/places/") and path.endswith(".html"):
@@ -1420,6 +1429,10 @@ class WebHandler(BaseHTTPRequestHandler):
             self.send_header("Location", ABOUT_PREFIX + "/")
             self.send_header("Content-Length", "0")
             self.end_headers()
+            return
+        card_alias = CARD_ALIAS_REDIRECTS.get(path)
+        if card_alias:
+            _send_redirect(self, card_alias, code=301)
             return
         if path.startswith(FIELD_PACK_PREFIX + "/places/"):
             slug = path[len(FIELD_PACK_PREFIX + "/places/") :]

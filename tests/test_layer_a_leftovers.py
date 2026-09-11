@@ -168,18 +168,21 @@ class LayerALeftoversTests(unittest.TestCase):
                 self.assertNotIn("card-page-photo-link", main)
         self.assertIn("cheetah", hidden)
         self.assertIn("koala", hidden)
-        self.assertIn("manta-ray", hidden)
-        self.assertIn("whale-shark", hidden)
+        self.assertNotIn("manta-ray", hidden)
+        self.assertNotIn("whale-shark", hidden)
 
-    def test_manta_ray_hides_dead_watch_live(self):
-        """ParentTest: manta-ray has 0 aquarium habitats — no Live CTA / Georgia label."""
+    def test_manta_ray_watch_live_uses_aquarium_film_library(self):
+        """ParentTest: manta-ray film+cam live in aquarium-film-library — Watch Live stays."""
+        rec = load_vft_by_card()["manta-ray"]
+        self.assertTrue(rec.get("library_only"))
+        self.assertTrue(vft_can_watch_live(rec))
         html = (FP / "cards" / "manta-ray" / "index.html").read_text(encoding="utf-8")
         main = _main(html)
-        self.assertNotIn("card-watch-live", main)
-        self.assertNotIn("Watch Live", main)
-        self.assertNotIn("card-page-photo-link", main)
-        self.assertNotIn("#habitat=manta-ray", main)
-        self.assertNotIn("Georgia Aquarium", main)
+        self.assertIn("card-watch-live", main)
+        self.assertIn("Watch Live", main)
+        self.assertIn("card-page-photo-link", main)
+        self.assertIn("#habitat=manta-ray", main)
+        self.assertIn("Georgia Aquarium", main)
         self.assertEqual(_try_next_ids(html), ["jellyfish", "kelp-forest", "clownfish"])
 
 
