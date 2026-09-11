@@ -278,11 +278,11 @@ class CardStudyUxTests(unittest.TestCase):
         )
         self.assertEqual(
             study_try_next_ids("shark"),
-            ["african-penguin", "caribbean-flamingo", "african-lion"],
+            ["clownfish", "crab", "cuttlefish"],
         )
         self.assertEqual(
             study_try_next_ids("asian-small-clawed-otter"),
-            ["shark", "red-panda", "african-lion"],
+            ["red-panda", "african-lion", "reticulated-giraffe"],
         )
         self.assertEqual(
             study_try_next_ids("two-toed-sloth"),
@@ -290,7 +290,7 @@ class CardStudyUxTests(unittest.TestCase):
         )
         self.assertEqual(
             study_try_next_ids("freshwater-fish"),
-            ["shark", "asian-small-clawed-otter", "african-lion"],
+            ["shark", "clownfish", "crab"],
         )
         self.assertEqual(
             study_try_next_ids("polar-bear"),
@@ -298,11 +298,11 @@ class CardStudyUxTests(unittest.TestCase):
         )
         self.assertEqual(
             study_try_next_ids("sea-otter"),
-            ["asian-small-clawed-otter", "shark", "african-lion"],
+            ["shark", "clownfish", "crab"],
         )
         self.assertEqual(
             study_try_next_ids("american-alligator"),
-            ["freshwater-fish", "galapagos-tortoise", "african-lion"],
+            ["galapagos-tortoise", "african-lion", "reticulated-giraffe"],
         )
         self.assertEqual(
             study_try_next_ids("american-bison"),
@@ -314,59 +314,59 @@ class CardStudyUxTests(unittest.TestCase):
         )
         self.assertEqual(
             study_try_next_ids("puffin"),
-            ["african-penguin", "polar-bear", "african-lion"],
+            ["clownfish", "crab", "cuttlefish"],
         )
         self.assertEqual(
             study_try_next_ids("clownfish"),
-            ["shark", "freshwater-fish", "african-lion"],
+            ["shark", "freshwater-fish", "crab"],
         )
         self.assertEqual(
             study_try_next_ids("crab"),
-            ["shark", "clownfish", "african-lion"],
+            ["shark", "clownfish", "cuttlefish"],
         )
         self.assertEqual(
             study_try_next_ids("cuttlefish"),
-            ["crab", "clownfish", "african-lion"],
+            ["crab", "clownfish", "eel"],
         )
         self.assertEqual(
             study_try_next_ids("eel"),
-            ["cuttlefish", "crab", "african-lion"],
+            ["cuttlefish", "crab", "clownfish"],
         )
         self.assertEqual(
             study_try_next_ids("jellyfish"),
-            ["eel", "cuttlefish", "african-lion"],
+            ["eel", "cuttlefish", "clownfish"],
         )
         self.assertEqual(
             study_try_next_ids("kelp-forest"),
-            ["jellyfish", "sea-otter", "african-lion"],
+            ["jellyfish", "sea-otter", "clownfish"],
         )
         self.assertEqual(
             study_try_next_ids("manta-ray"),
-            ["jellyfish", "kelp-forest", "african-lion"],
+            ["jellyfish", "kelp-forest", "clownfish"],
         )
         self.assertEqual(
             study_try_next_ids("octopus"),
-            ["cuttlefish", "jellyfish", "african-lion"],
+            ["cuttlefish", "jellyfish", "clownfish"],
         )
         self.assertEqual(
             study_try_next_ids("sea-turtle"),
-            ["octopus", "manta-ray", "african-lion"],
+            ["octopus", "manta-ray", "clownfish"],
         )
         self.assertEqual(
             study_try_next_ids("seahorse"),
-            ["octopus", "sea-turtle", "african-lion"],
+            ["octopus", "sea-turtle", "clownfish"],
         )
         self.assertEqual(
             study_try_next_ids("starfish"),
-            ["sea-turtle", "octopus", "african-lion"],
+            ["sea-turtle", "octopus", "clownfish"],
         )
         self.assertEqual(
             study_try_next_ids("stingray"),
-            ["manta-ray", "seahorse", "african-lion"],
+            ["manta-ray", "seahorse", "clownfish"],
         )
         self.assertEqual(
             study_try_next_ids("whale-shark"),
-            ["shark", "manta-ray", "african-lion"],
+            ["shark", "manta-ray", "clownfish"],
         )
         for cid in study_card_ids():
             nxt = study_try_next_ids(cid)

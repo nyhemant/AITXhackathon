@@ -16,6 +16,7 @@ from generate_bdo_seo import (  # noqa: E402
     card_watch_href,
     habitat_films,
     load_vft_by_card,
+    vft_can_watch_live,
     vft_has_inpage_media,
     watch_links_html,
 )
@@ -39,9 +40,9 @@ LIBRARY_ONLY_CARDS = (
     ("cheetah", "zoo"),
     ("sea-otter", "aquarium"),
     ("manta-ray", "aquarium"),
-    ("whale-shark", "aquarium"),
     ("kelp-forest", "aquarium"),
 )
+MISSING_HABITAT_CARDS = ("whale-shark",)
 VFT_JS = FP / "js" / "virtual-venue.js"
 VFT_PAGES = (
     FP / "virtual-field-trip" / "index.html",
@@ -116,6 +117,22 @@ class CardWatchLiveTests(unittest.TestCase):
             self.assertIn("card-watch-live", actions, cid)
             self.assertIn(href, actions, cid)
 
+    def test_missing_habitat_hides_watch_live(self):
+        vft = load_vft_by_card()
+        for cid in MISSING_HABITAT_CARDS:
+            rec = vft[cid]
+            self.assertTrue(rec.get("library_only"), cid)
+            self.assertFalse(vft_can_watch_live(rec), cid)
+            html = (FP / "cards" / cid / "index.html").read_text(encoding="utf-8")
+            main = _main(html)
+            self.assertNotIn("card-watch-live", main, cid)
+            self.assertNotIn("Watch Live", main, cid)
+            self.assertNotIn('class="seo-watch-row"', main, cid)
+            self.assertNotIn("card-page-photo-link", main, cid)
+            actions = main.split('class="card-page-actions"', 1)[1]
+            self.assertIn("/field-pack/cards/", actions, cid)
+            self.assertNotIn(f"#habitat={cid}", main, cid)
+
     def test_no_media_animals_stay_buttonless(self):
         vft = load_vft_by_card()
         for path in (WARTHOG, OSTRICH):
@@ -166,6 +183,7 @@ class CardWatchLiveTests(unittest.TestCase):
         self.assertTrue(koala["library_only"])
         self.assertTrue(koala["film_url"])
         self.assertEqual(koala["tab"], "zoo")
+        self.assertFalse(vft_can_watch_live(koala))
         self.assertEqual(
             card_watch_href(koala),
             "/field-pack/virtual-zoo/?from=card#habitat=koala",
@@ -173,8 +191,14 @@ class CardWatchLiveTests(unittest.TestCase):
         place = watch_links_html({"vft": koala})
         self.assertEqual(place, "")
         card = watch_links_html({"vft": koala}, film_via_vft=True, watch_live=True)
-        self.assertIn(CTA_WATCH_LIVE, card)
-        self.assertNotIn("sandiegozoo.org", card)
+        self.assertEqual(card, "")
+        whale = load_vft_by_card()["whale-shark"]
+        self.assertTrue(whale["library_only"])
+        self.assertFalse(vft_can_watch_live(whale))
+        self.assertEqual(
+            watch_links_html({"vft": whale}, film_via_vft=True, watch_live=True),
+            "",
+        )
         lion = load_vft_by_card()["african-lion"]
         self.assertFalse(lion.get("library_only"))
         self.assertTrue(vft_has_inpage_media(lion))

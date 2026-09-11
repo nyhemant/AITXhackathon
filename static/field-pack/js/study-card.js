@@ -5,7 +5,8 @@
  * Lion, giraffe, African elephant, African penguin, Caribbean flamingo,
  * and Galápagos tortoise ship JR + Park Ranger + Zoologist
  * (query ?level= or picker). Top and bottom pickers stay in sync.
- * Try next thumbs skip the session recent path (fp-study-recent, last ~8).
+ * Try next thumbs prefer the same hub (sealife→sealife / wildlife→wildlife)
+ * and skip the session recent path (fp-study-recent, last ~8).
  */
 const FP_STUDY_RECENT_KEY = "fp-study-recent";
 const FP_STUDY_RECENT_MAX = 8;
@@ -15,6 +16,7 @@ function FPStudyPickTryNextIds(current, recent, catalog, n) {
   const cur = String(current || "").trim();
   const titles = (catalog && catalog.titles) || {};
   const neighbors = (catalog && catalog.neighbors) || {};
+  const hubs = (catalog && catalog.hubs) || {};
   const traffic = Array.isArray(catalog && catalog.traffic) ? catalog.traffic : [];
   const allIds = Object.keys(titles).length
     ? Object.keys(titles)
@@ -28,12 +30,15 @@ function FPStudyPickTryNextIds(current, recent, catalog, n) {
   const haveFresh = haveAll.filter((cid) => !blocked.has(cid));
   const extra = (pool) =>
     pool.filter((cid) => traffic.indexOf(cid) < 0).slice().sort();
+  const curHub = hubs[cur] || "wildlife";
+  const sameHub = (cid) => (hubs[cid] || "wildlife") === curHub;
   const out = [];
   const seen = new Set();
-  const take = (cids, poolSet) => {
+  const take = (cids, poolSet, hubOnly) => {
     for (let i = 0; i < cids.length; i += 1) {
       const cid = cids[i];
       if (!poolSet.has(cid) || seen.has(cid)) continue;
+      if (hubOnly && !sameHub(cid)) continue;
       seen.add(cid);
       out.push(cid);
       if (out.length >= want) return true;
@@ -43,8 +48,12 @@ function FPStudyPickTryNextIds(current, recent, catalog, n) {
   const neigh = neighbors[cur] || [];
   const freshSet = new Set(haveFresh);
   const allSet = new Set(haveAll);
-  if (take([].concat(neigh, traffic, extra(haveFresh)), freshSet)) return out;
-  take([].concat(neigh, traffic, extra(haveAll)), allSet);
+  const freshOrder = [].concat(neigh, traffic, extra(haveFresh));
+  const allOrder = [].concat(neigh, traffic, extra(haveAll));
+  if (take(freshOrder, freshSet, true)) return out;
+  if (take(allOrder, allSet, true)) return out;
+  if (take(freshOrder, freshSet, false)) return out;
+  take(allOrder, allSet, false);
   return out;
 }
 

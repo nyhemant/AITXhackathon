@@ -546,7 +546,7 @@ window.FIELD_PACK_CATALOG = {
     photoCredit: "Enhanced for print · Field Trip Kit",
     blurb: "Long snaky fish — loves rocky hidey-holes.",
     links: {
-      pictures: "https://kids.nationalgeographic.com/animals/fish/facts/moray-eel",
+      pictures: "",
       more: "https://www.childrensaquarium.com/",
       cam: "https://www.montereybayaquarium.org/animals/live-cams",
     },
@@ -621,7 +621,7 @@ window.FIELD_PACK_CATALOG = {
     photoCredit: "CC BY-SA 4.0 · Arturo de Frias Marques",
     blurb: "Biggest fish in the sea — a gentle giant with a wide, filtering mouth.",
     links: {
-      pictures: "https://kids.nationalgeographic.com/animals/fish/facts/whale-shark",
+      pictures: "https://kids.nationalgeographic.com/animals/fish/facts/whale-sharks",
       more: "https://www.georgiaaquarium.org/animal/whale-shark/",
       cam: "https://www.georgiaaquarium.org/webcam/ocean-voyager/",
     },
@@ -666,7 +666,7 @@ window.FIELD_PACK_CATALOG = {
     photoCredit: "CC BY-SA 4.0 · Arturo de Frias Marques",
     blurb: "Giant winged swimmer — bigger and gentler than a stingray.",
     links: {
-      pictures: "https://kids.nationalgeographic.com/animals/fish/facts/manta-ray",
+      pictures: "https://www.nationalgeographic.com/animals/fish/facts/manta-ray",
       more: "https://www.georgiaaquarium.org/animal/manta-ray/",
       cam: "https://www.georgiaaquarium.org/webcam/ocean-voyager/",
     },
@@ -767,7 +767,7 @@ window.FIELD_PACK_CATALOG = {
     photoCredit: "Enhanced for print · Field Trip Kit",
     blurb: "A seahorse cousin dressed as kelp.",
     links: {
-      pictures: "https://kids.nationalgeographic.com/animals/fish/facts/leafy-sea-dragon",
+      pictures: "https://www.nationalgeographic.com/animals/fish/facts/leafy-sea-dragon",
       more: "https://www.montereybayaquarium.org/animals/animals-a-to-z/weedy-sea-dragon",
     },
     key: { food: ["Both"], home: ["Water / wet"], superpower: ["Hide", "Swim"] },
@@ -823,7 +823,7 @@ window.FIELD_PACK_CATALOG = {
     photoCredit: "Enhanced for print · Field Trip Kit",
     blurb: "Heaviest bony fish — a giant swimming pancake.",
     links: {
-      pictures: "https://kids.nationalgeographic.com/animals/fish/facts/ocean-sunfish",
+      pictures: "https://www.nationalgeographic.com/animals/fish/facts/ocean-sunfish",
       more: "https://www.montereybayaquarium.org/animals/animals-a-to-z/ocean-sunfish",
       cam: "https://www.montereybayaquarium.org/cams-videos/live-cams/open-sea-cam",
     },

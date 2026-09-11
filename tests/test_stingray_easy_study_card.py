@@ -406,7 +406,7 @@ class StingrayEasyStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertEqual(
             study_try_next_ids("stingray"),
-            ["manta-ray", "seahorse", "african-lion"],
+            ["manta-ray", "seahorse", "clownfish"],
         )
 
     def test_print_faces_are_duplex_and_clamped(self):

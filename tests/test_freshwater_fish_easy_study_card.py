@@ -390,7 +390,7 @@ class FreshwaterFishEasyStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertEqual(
             study_try_next_ids("freshwater-fish"),
-            ["shark", "asian-small-clawed-otter", "african-lion"],
+            ["shark", "clownfish", "crab"],
         )
 
     def test_print_faces_are_duplex_and_clamped(self):

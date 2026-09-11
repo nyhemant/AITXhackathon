@@ -114,7 +114,7 @@ class EvergladesAnimalParkRailsTests(unittest.TestCase):
         self.assertIn("/field-pack/cards/freshwater-fish/", gator_main)
         self.assertEqual(
             study_try_next_ids("american-alligator"),
-            ["freshwater-fish", "galapagos-tortoise", "african-lion"],
+            ["galapagos-tortoise", "african-lion", "reticulated-giraffe"],
         )
         self.assertNotIn("Junior Ranger", rail)
         self.assertNotIn('data-study-pick="easy"', rail)

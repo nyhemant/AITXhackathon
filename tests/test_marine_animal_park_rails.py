@@ -191,42 +191,42 @@ class MarineAnimalParkRailsTests(unittest.TestCase):
                 self.assertNotIn(park["id"], nxt)
                 self.assertIn(f'href="/field-pack/{park["id"]}/"', rail)
         self.assertIn("np-hero-dry-tortugas.jpg", animal_park_rail_html("shark"))
-        self.assertIn("/field-pack/cards/african-penguin/", study_try_next_html("shark"))
+        self.assertIn("/field-pack/cards/clownfish/", study_try_next_html("shark"))
         self.assertEqual(
             study_try_next_ids("shark"),
-            ["african-penguin", "caribbean-flamingo", "african-lion"],
+            ["clownfish", "crab", "cuttlefish"],
         )
         self.assertEqual(
             study_try_next_ids("crab"),
-            ["shark", "clownfish", "african-lion"],
+            ["shark", "clownfish", "cuttlefish"],
         )
         self.assertEqual(
             study_try_next_ids("sea-otter"),
-            ["asian-small-clawed-otter", "shark", "african-lion"],
+            ["shark", "clownfish", "crab"],
         )
         self.assertEqual(
             study_try_next_ids("puffin"),
-            ["african-penguin", "polar-bear", "african-lion"],
+            ["clownfish", "crab", "cuttlefish"],
         )
         self.assertEqual(
             study_try_next_ids("octopus"),
-            ["cuttlefish", "jellyfish", "african-lion"],
+            ["cuttlefish", "jellyfish", "clownfish"],
         )
         self.assertEqual(
             study_try_next_ids("sea-turtle"),
-            ["octopus", "manta-ray", "african-lion"],
+            ["octopus", "manta-ray", "clownfish"],
         )
         self.assertEqual(
             study_try_next_ids("seahorse"),
-            ["octopus", "sea-turtle", "african-lion"],
+            ["octopus", "sea-turtle", "clownfish"],
         )
         self.assertEqual(
             study_try_next_ids("starfish"),
-            ["sea-turtle", "octopus", "african-lion"],
+            ["sea-turtle", "octopus", "clownfish"],
         )
         self.assertEqual(
             study_try_next_ids("stingray"),
-            ["manta-ray", "seahorse", "african-lion"],
+            ["manta-ray", "seahorse", "clownfish"],
         )
 
     def test_published_marine_cards_add_park_rails(self):

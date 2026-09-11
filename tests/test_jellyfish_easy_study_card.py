@@ -434,7 +434,7 @@ class JellyfishEasyStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertEqual(
             study_try_next_ids("jellyfish"),
-            ["eel", "cuttlefish", "african-lion"],
+            ["eel", "cuttlefish", "clownfish"],
         )
 
     def test_print_faces_are_duplex_and_clamped(self):

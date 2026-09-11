@@ -199,6 +199,28 @@ class ItemRouteActionTests(unittest.TestCase):
             self.assertFalse(photos["hidden"], row["route"])
             self.assertEqual(photos["href"], lion_pictures, row["route"])
 
+    def test_whale_shark_photos_uses_live_kids_natgeo_slug(self):
+        """ParentTest: whale-shark Photos must not use the 404 singular Kids slug."""
+        whale_pictures = (
+            "https://kids.nationalgeographic.com/animals/fish/facts/whale-sharks"
+        )
+        catalog = CATALOG_JS.read_text(encoding="utf-8")
+        self.assertIn(f'pictures: "{whale_pictures}"', catalog)
+        self.assertNotIn(
+            'pictures: "https://kids.nationalgeographic.com/animals/fish/facts/whale-shark"',
+            catalog,
+        )
+        card = (FP / "cards" / "whale-shark" / "index.html").read_text(encoding="utf-8")
+        self.assertIn(f'href="{whale_pictures}"', card)
+        self.assertNotIn("/facts/whale-shark\"", card)
+
+        whale_routes = [r for r in self.routes if r["itemId"] == "whale-shark"]
+        self.assertGreater(len(whale_routes), 0)
+        for row in whale_routes:
+            photos = next(a for a in row["actions"] if a["name"] == "Photos")
+            self.assertFalse(photos["hidden"], row["route"])
+            self.assertEqual(photos["href"], whale_pictures, row["route"])
+
     def test_catalog_avoids_known_dead_natgeo_slugs(self):
         """Static denylist — no live crawl. Same class as /facts/african-lion 404."""
         dead_slugs = (
@@ -210,6 +232,10 @@ class ItemRouteActionTests(unittest.TestCase):
             "/animals/mammals/facts/plains-zebra",
             "/animals/mammals/facts/red-kangaroo",
             "/animals/mammals/facts/black-rhinoceros",
+            "kids.nationalgeographic.com/animals/fish/facts/manta-ray",
+            "kids.nationalgeographic.com/animals/fish/facts/moray-eel",
+            "kids.nationalgeographic.com/animals/fish/facts/ocean-sunfish",
+            "kids.nationalgeographic.com/animals/fish/facts/leafy-sea-dragon",
         )
         hits = []
         for row in self.routes:

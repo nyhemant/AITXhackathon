@@ -248,14 +248,15 @@ class WhaleSharkEasyStudyCardTests(unittest.TestCase):
             self.assertIn(stem, main)
         for line in TEACH:
             self.assertIn(line, main)
-        self.assertIn("Watch Live", main)
-        self.assertIn("card-watch-live", main)
+        self.assertNotIn("Watch Live", main)
+        self.assertNotIn("card-watch-live", main)
+        self.assertNotIn("card-page-photo-link", main)
         self.assertIn("card-page-photo", main)
         self.assertIn("/field-pack/photos/whale-shark.jpg", main)
-        self.assertIn(
-            "/field-pack/virtual-field-trip/?tab=aquarium&amp;from=card#habitat=whale-shark",
-            main,
-        )
+        self.assertNotIn("#habitat=whale-shark", main)
+        self.assertIn("https://kids.nationalgeographic.com/animals/fish/facts/whale-sharks", main)
+        self.assertNotIn("https://kids.nationalgeographic.com/animals/fish/facts/whale-shark\"", main)
+        self.assertIn('href="/field-pack/cards/"', main)
         self.assertIn('class="card-try-next no-print"', main)
         self.assertIn("study-level-picker-bottom", main)
         self.assertNotIn("card-print-note", main)
@@ -311,7 +312,7 @@ class WhaleSharkEasyStudyCardTests(unittest.TestCase):
         self.assertNotIn("ps-study-deepen", back)
         self.assertEqual(
             study_try_next_ids("whale-shark"),
-            ["shark", "manta-ray", "african-lion"],
+            ["shark", "manta-ray", "clownfish"],
         )
 
     def test_print_faces_are_duplex_and_clamped(self):
