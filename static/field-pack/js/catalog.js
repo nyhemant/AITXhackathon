@@ -546,7 +546,7 @@ window.FIELD_PACK_CATALOG = {
     photoCredit: "Enhanced for print · Field Trip Kit",
     blurb: "Long snaky fish — loves rocky hidey-holes.",
     links: {
-      pictures: "",
+      pictures: "https://www.nationalgeographic.com/animals/fish/facts/european-eel",
       more: "https://www.childrensaquarium.com/",
       cam: "https://www.montereybayaquarium.org/animals/live-cams",
     },

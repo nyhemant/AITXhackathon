@@ -346,6 +346,34 @@ class ItemRouteActionTests(unittest.TestCase):
                 hits.append(f"catalog.js still has {slug}")
         self.assertEqual(hits, [], "\n".join(hits[:20]))
 
+    def test_eel_photos_uses_live_true_eel_page(self):
+        """ParentTest Layer B: restore eel Photos; not a 404 or electric-eel cousin."""
+        eel_pictures = (
+            "https://www.nationalgeographic.com/animals/fish/facts/european-eel"
+        )
+        catalog = CATALOG_JS.read_text(encoding="utf-8")
+        self.assertIn(f'pictures: "{eel_pictures}"', catalog)
+        eel_block = catalog.split("eel: {", 1)[1].split("crab:", 1)[0]
+        self.assertNotIn("/facts/electric-eel", eel_block)
+        self.assertNotIn("/facts/moray-eel", eel_block)
+        card = (FP / "cards" / "eel" / "index.html").read_text(encoding="utf-8")
+        main = card.split('<main class="card-page">', 1)[1].split("</main>", 1)[0]
+        self.assertIn(f'href="{eel_pictures}"', main)
+        self.assertIn(">Photos</a>", main)
+        self.assertIn(
+            "/field-pack/virtual-field-trip/?tab=aquarium&amp;from=card#habitat=eel",
+            main,
+        )
+        self.assertNotIn("/facts/electric-eel", main)
+        self.assertNotIn("/facts/moray-eel", main)
+
+        eel_routes = [r for r in self.routes if r["itemId"] == "eel"]
+        self.assertGreater(len(eel_routes), 0)
+        for row in eel_routes:
+            photos = next(a for a in row["actions"] if a["name"] == "Photos")
+            self.assertFalse(photos["hidden"], row["route"])
+            self.assertEqual(photos["href"], eel_pictures, row["route"])
+
     def test_remaining_layer_a_photos_use_live_or_hide(self):
         """Layer A leftovers: penguin/crab/cuttlefish/elk stay on their live slugs."""
         catalog = CATALOG_JS.read_text(encoding="utf-8")
