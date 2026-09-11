@@ -17396,6 +17396,86 @@
             "why": "Wikipedia: buried rays often switch to spiracles so they can ventilate without pulling sandy water through the mouth. Spiracles move less volume than the mouth path, but enough while waiting in ambush."
           }
         ]
+      },
+      "zoologist": {
+        "teach": [],
+        "talk_about": [
+          "Status can differ by kind. Why isn’t one letter the story for every stingray?",
+          "Venom sits in tissue on the spine, not a classic gland. Why keep those toxin names soft?",
+          "After the yolk is gone, a mother can still feed babies inside. Why isn’t that a mammal placenta?"
+        ],
+        "push_further": [
+          "Mantas sit in this ray group on Wikipedia. Why can a separate card still treat them alone?",
+          "Male teeth can get pointier in mating season. Why might that shape change come and go?",
+          "Family lists stay soft. Why not lock one exact count for every stingray?"
+        ],
+        "questions": [
+          {
+            "slot": 1,
+            "id": "families-manta-soft",
+            "title": "Families",
+            "stem": "How broad is the stingray group Myliobatoidei, if we keep the family list soft?",
+            "choices": [
+              "Several families (whiptail, river, eagle, and others) — including Mobulidae (manta and devil rays) inside this ray group on Wikipedia",
+              "Exactly one species with no relatives",
+              "Only bony reef fish with scales"
+            ],
+            "correct": "A",
+            "why": "Wikipedia places stingrays in Myliobatoidei with multiple families (e.g. Dasyatidae, Potamotrygonidae, Myliobatidae, Mobulidae). Mantas and devil rays sit in Mobulidae within that group. Soft on exact family counts; separate product cards can still treat mantas on their own."
+          },
+          {
+            "slot": 2,
+            "id": "venom-tissue-soft",
+            "title": "Venom cells",
+            "stem": "What is unusual about how a stingray stores its venom, compared with many other venomous animals?",
+            "choices": [
+              "It stores venom only in hollow fangs like a snake’s tooth canals forever empty",
+              "Venom is stored in tissue cells along the spine (not a classic gland), and mixes with mucus when the blade is used — toxin names stay soft",
+              "It has no venom at all — the spine is only a plastic toy"
+            ],
+            "correct": "B",
+            "why": "Wikipedia: unlike many venomous animals that store venom in a gland, the stingray stores venom within tissue cells on the spinal blade. Secretion mixes with mucus. Named proteins (e.g. cystatins, galectin) stay soft kid-safe labels, not a full chem list."
+          },
+          {
+            "slot": 3,
+            "id": "status-by-kind-soft",
+            "title": "Status by kind",
+            "stem": "How should we talk about IUCN status for the GROUP card “stingray”?",
+            "choices": [
+              "Every stingray shares one forever Extinct letter",
+              "IUCN grades only apply to birds",
+              "Status varies by kind — some listings have been Vulnerable or Endangered; many are poorly known / data deficient; treat letters as snapshots (soft)"
+            ],
+            "correct": "C",
+            "why": "Wikipedia (as of a 2013 snapshot) noted dozens of species listed Vulnerable or Endangered from fishing pressure, while others are data deficient. This is a group card — we never lock one letter for all stingrays."
+          },
+          {
+            "slot": 4,
+            "id": "uterine-milk-soft",
+            "title": "Uterine milk",
+            "stem": "After the yolk sac is used up, how can a mother stingray keep feeding embryos inside her?",
+            "choices": [
+              "She provides uterine “milk” (histotroph) in the womb — no placenta like a mammal’s (soft)",
+              "Embryos photosynthesize through the mother’s skin",
+              "She never feeds them — they eat rocks only"
+            ],
+            "correct": "A",
+            "why": "Wikipedia: embryos absorb yolk first; after the sac is depleted the mother provides uterine “milk.” Soft on litter size and species exceptions."
+          },
+          {
+            "slot": 5,
+            "id": "tooth-dimorphism-soft",
+            "title": "Tooth dimorphism",
+            "stem": "How can a male stingray’s teeth differ from a female’s during the mating season?",
+            "choices": [
+              "Males may develop pointed tooth cusps (sexual dimorphism); some species even shift tooth shape seasonally, then return toward baseline",
+              "Males lose all teeth every spring forever",
+              "Females grow metal braces; males never have teeth"
+            ],
+            "correct": "A",
+            "why": "Wikipedia: male stingrays show sexual dimorphism with pointed cusps on some teeth. In some species tooth morphology changes in mating season and returns afterward. Soft on species lists."
+          }
+        ]
       }
     }
   }

@@ -2108,12 +2108,35 @@ swimming, venom chemistry, IUCN snapshots,
 freshwater river rays, uterine milk
 deepen, and the manta/devil-ray clade for
 Park Ranger or Zoologist. Keep
-kid-friendly. Do not invent photos. Do not
-add Park Ranger or Zoologist in this pass.
+kid-friendly. Do not invent photos.
 
-Slot numbers stay 1–10. Hard and Zoologist deepen different themes
-(not a redo of Easy or of each other). Internal keys stay easy / hard /
-zoologist. Visible copy uses LEVEL_DISPLAY_NAMES only — no age badges,
+Facts for stingray Zoologist are
+Wikipedia-backed: https://en.wikipedia.org/wiki/Stingray
+(a group card). Five signed questions
+(letter mix A, B, C, A, A): families +
+manta/devil soft (Myliobatoidei family
+list stays soft; Mobulidae sits inside
+this ray group), venom stored in tissue
+cells along the spine (not a classic
+gland; toxin names stay soft), IUCN
+status-by-kind soft (some Vulnerable or
+Endangered snapshots; many data
+deficient — never one letter for all
+stingrays), uterine “milk” (histotroph)
+after the yolk sac, and male tooth
+dimorphism (pointed cusps; some species
+shift seasonally). Soften contested
+counts and species lists. Do not redo JR
+or PR themes. Keep kid-friendly. Do not
+invent photos.
+
+Slot numbers stay 1–10 on Junior Ranger.
+Park Ranger and Zoologist are 5-question
+signed packs. Hard and Zoologist deepen
+different themes (not a redo of Easy or
+of each other). Internal keys stay easy /
+hard / zoologist. Visible copy uses
+LEVEL_DISPLAY_NAMES only — no age badges,
 no plain Easy / Hard labels.
 """
 
@@ -2192,6 +2215,21 @@ def target_letter_for_slot(slot: int) -> str:
     return LETTERS[(int(slot) - 1) % 3]
 
 
+# Signed packs that do not use the default A→B→C slot cycle.
+SIGNED_LETTER_MIX = {
+    ("stingray", "zoologist"): ("A", "B", "C", "A", "A"),
+}
+
+
+def target_letter_for_deck_slot(card_id: str, level: str, slot: int) -> str:
+    """Slot letter for a deck — signed mix when present, else A→B→C cycle."""
+    mix = SIGNED_LETTER_MIX.get((str(card_id or ""), str(level or "")))
+    idx = int(slot) - 1
+    if mix and 0 <= idx < len(mix):
+        return mix[idx]
+    return target_letter_for_slot(slot)
+
+
 def rotate_choices_to_letter(
     choices: list[str], correct: str, target: str
 ) -> list[str]:
@@ -2222,18 +2260,19 @@ def apply_slot_letter_rotation(cards: dict | None = None) -> None:
     """Rotate each question so ``correct`` lands on the slot's target letter.
 
     Stems, titles, why, and the three choice texts stay the same. Only the
-    A/B/C mapping changes. Slot 1/4/7/10 → A, 2/5/8 → B, 3/6/9 → C.
+    A/B/C mapping changes. Default: slot 1/4/7/10 → A, 2/5/8 → B, 3/6/9 → C.
+    Signed packs in SIGNED_LETTER_MIX keep their locked letter mix.
     """
     src = STUDY_CARDS if cards is None else cards
-    for card in src.values():
-        for pack in (card.get("levels") or {}).values():
+    for card_id, card in src.items():
+        for level, pack in (card.get("levels") or {}).items():
             for q in pack.get("questions") or []:
                 choices = list(q.get("choices") or [])
                 correct = str(q.get("correct") or "")
                 slot = int(q.get("slot") or 0)
                 if len(choices) != 3 or correct not in LETTERS or slot < 1:
                     continue
-                target = target_letter_for_slot(slot)
+                target = target_letter_for_deck_slot(card_id, level, slot)
                 q["choices"] = rotate_choices_to_letter(choices, correct, target)
                 q["correct"] = target
 
@@ -2255,9 +2294,8 @@ LEVEL_DISPLAY_NAMES = {
 # American bison, elk, puffin, clownfish, crab,
 # cuttlefish, eel, jellyfish, and kelp forest
 # ship Junior Ranger + Park Ranger + Zoologist.
-# Manta ray, octopus, sea turtle, seahorse, and starfish ship
-# Junior Ranger + Park Ranger + Zoologist.
-# Stingray ships Junior Ranger + Park Ranger.
+# Manta ray, octopus, sea turtle, seahorse, starfish, and
+# stingray ship Junior Ranger + Park Ranger + Zoologist.
 SHIPPED_LEVELS = ("easy", "hard", "zoologist")
 ANSWER_LIGHT_LEVELS = frozenset({"hard", "zoologist"})
 
@@ -2825,6 +2863,16 @@ PUSH_FURTHER_STINGRAY = (
     "Scientists group rays on a bigger family tree. Why keep those long names for later?",
     "Some rays sense tiny electric hints, and swim with different wing beats. Why wait?",
     "Venom chemistry, river rays, baby-feeding details, and giant manta cousins still wait. Why?",
+)
+TALK_ABOUT_STINGRAY_ZOOLOGIST = (
+    "Status can differ by kind. Why isn’t one letter the story for every stingray?",
+    "Venom sits in tissue on the spine, not a classic gland. Why keep those toxin names soft?",
+    "After the yolk is gone, a mother can still feed babies inside. Why isn’t that a mammal placenta?",
+)
+PUSH_FURTHER_STINGRAY_ZOOLOGIST = (
+    "Mantas sit in this ray group on Wikipedia. Why can a separate card still treat them alone?",
+    "Male teeth can get pointier in mating season. Why might that shape change come and go?",
+    "Family lists stay soft. Why not lock one exact count for every stingray?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
@@ -20134,6 +20182,78 @@ STUDY_CARDS: dict[str, dict] = {
                         ],
                         "correct": "B",
                         "why": "Wikipedia: buried rays often switch to spiracles so they can ventilate without pulling sandy water through the mouth. Spiracles move less volume than the mouth path, but enough while waiting in ambush.",
+                    },
+                ],
+            },
+            "zoologist": {
+                "teach": [],
+                "talk_about": list(TALK_ABOUT_STINGRAY_ZOOLOGIST),
+                "push_further": list(PUSH_FURTHER_STINGRAY_ZOOLOGIST),
+                "questions": [
+                    {
+                        "slot": 1,
+                        "id": "families-manta-soft",
+                        "title": "Families",
+                        "stem": "How broad is the stingray group Myliobatoidei, if we keep the family list soft?",
+                        "choices": [
+                            "Several families (whiptail, river, eagle, and others) — including Mobulidae (manta and devil rays) inside this ray group on Wikipedia",
+                            "Exactly one species with no relatives",
+                            "Only bony reef fish with scales",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia places stingrays in Myliobatoidei with multiple families (e.g. Dasyatidae, Potamotrygonidae, Myliobatidae, Mobulidae). Mantas and devil rays sit in Mobulidae within that group. Soft on exact family counts; separate product cards can still treat mantas on their own.",
+                    },
+                    {
+                        "slot": 2,
+                        "id": "venom-tissue-soft",
+                        "title": "Venom cells",
+                        "stem": "What is unusual about how a stingray stores its venom, compared with many other venomous animals?",
+                        "choices": [
+                            "It stores venom only in hollow fangs like a snake’s tooth canals forever empty",
+                            "Venom is stored in tissue cells along the spine (not a classic gland), and mixes with mucus when the blade is used — toxin names stay soft",
+                            "It has no venom at all — the spine is only a plastic toy",
+                        ],
+                        "correct": "B",
+                        "why": "Wikipedia: unlike many venomous animals that store venom in a gland, the stingray stores venom within tissue cells on the spinal blade. Secretion mixes with mucus. Named proteins (e.g. cystatins, galectin) stay soft kid-safe labels, not a full chem list.",
+                    },
+                    {
+                        "slot": 3,
+                        "id": "status-by-kind-soft",
+                        "title": "Status by kind",
+                        "stem": "How should we talk about IUCN status for the GROUP card “stingray”?",
+                        "choices": [
+                            "Every stingray shares one forever Extinct letter",
+                            "IUCN grades only apply to birds",
+                            "Status varies by kind — some listings have been Vulnerable or Endangered; many are poorly known / data deficient; treat letters as snapshots (soft)",
+                        ],
+                        "correct": "C",
+                        "why": "Wikipedia (as of a 2013 snapshot) noted dozens of species listed Vulnerable or Endangered from fishing pressure, while others are data deficient. This is a group card — we never lock one letter for all stingrays.",
+                    },
+                    {
+                        "slot": 4,
+                        "id": "uterine-milk-soft",
+                        "title": "Uterine milk",
+                        "stem": "After the yolk sac is used up, how can a mother stingray keep feeding embryos inside her?",
+                        "choices": [
+                            "She provides uterine “milk” (histotroph) in the womb — no placenta like a mammal’s (soft)",
+                            "Embryos photosynthesize through the mother’s skin",
+                            "She never feeds them — they eat rocks only",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia: embryos absorb yolk first; after the sac is depleted the mother provides uterine “milk.” Soft on litter size and species exceptions.",
+                    },
+                    {
+                        "slot": 5,
+                        "id": "tooth-dimorphism-soft",
+                        "title": "Tooth dimorphism",
+                        "stem": "How can a male stingray’s teeth differ from a female’s during the mating season?",
+                        "choices": [
+                            "Males may develop pointed tooth cusps (sexual dimorphism); some species even shift tooth shape seasonally, then return toward baseline",
+                            "Males lose all teeth every spring forever",
+                            "Females grow metal braces; males never have teeth",
+                        ],
+                        "correct": "A",
+                        "why": "Wikipedia: male stingrays show sexual dimorphism with pointed cusps on some teeth. In some species tooth morphology changes in mating season and returns afterward. Soft on species lists.",
                     },
                 ],
             },

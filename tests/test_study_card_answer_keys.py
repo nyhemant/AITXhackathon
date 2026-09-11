@@ -51,6 +51,7 @@ from study_cards import (  # noqa: E402
     PUSH_FURTHER_SEAHORSE,
     PUSH_FURTHER_SEAHORSE_ZOOLOGIST,
     PUSH_FURTHER_STINGRAY,
+    PUSH_FURTHER_STINGRAY_ZOOLOGIST,
     PUSH_FURTHER_WARTHOG,
     PUSH_FURTHER_TIGER,
     PUSH_FURTHER_TORTOISE,
@@ -91,6 +92,7 @@ from study_cards import (  # noqa: E402
     TALK_ABOUT_SEAHORSE,
     TALK_ABOUT_SEAHORSE_ZOOLOGIST,
     TALK_ABOUT_STINGRAY,
+    TALK_ABOUT_STINGRAY_ZOOLOGIST,
     TALK_ABOUT_WARTHOG,
     TALK_ABOUT_TIGER,
     TALK_ABOUT_TORTOISE,
@@ -98,7 +100,7 @@ from study_cards import (  # noqa: E402
     shipped_levels_for,
     study_card_ids,
     study_deck_for,
-    target_letter_for_slot,
+    target_letter_for_deck_slot,
     validate_deck,
 )
 
@@ -248,15 +250,15 @@ class StudyCardAnswerKeyTests(unittest.TestCase):
         self.assertEqual(shipped_levels_for("starfish"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("starfish", "hard"))
         self.assertIsNotNone(study_deck_for("starfish", "zoologist"))
-        self.assertEqual(shipped_levels_for("stingray"), ("easy", "hard"))
+        self.assertEqual(shipped_levels_for("stingray"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("stingray", "hard"))
-        self.assertIsNone(study_deck_for("stingray", "zoologist"))
+        self.assertIsNotNone(study_deck_for("stingray", "zoologist"))
         decks = list(_decks())
-        self.assertEqual(len(decks), 122)
+        self.assertEqual(len(decks), 123)
         for card_id, level, deck in decks:
             self.assertIsNotNone(deck, f"{card_id}/{level}")
             self.assertEqual(validate_deck(deck), [])
-            want = 5 if card_id == "stingray" and level == "hard" else STUDY_SLOTS
+            want = 5 if card_id == "stingray" and level in ("hard", "zoologist") else STUDY_SLOTS
             self.assertEqual(len(deck["questions"]), want)
 
     def test_slot_rotation_maps_correct_letter_without_dropping_texts(self):
@@ -264,7 +266,7 @@ class StudyCardAnswerKeyTests(unittest.TestCase):
             for q in deck["questions"]:
                 self.assertEqual(
                     q["correct"],
-                    target_letter_for_slot(q["slot"]),
+                    target_letter_for_deck_slot(card_id, level, q["slot"]),
                     f"{card_id}/{level} slot {q['slot']}",
                 )
                 self.assertEqual(len(q["choices"]), 3)
@@ -285,12 +287,12 @@ class StudyCardAnswerKeyTests(unittest.TestCase):
 
     def test_overall_correct_b_is_not_a_majority(self):
         letters = [q["correct"] for _, _, deck in _decks() for q in deck["questions"]]
-        self.assertEqual(len(letters), 1215)
+        self.assertEqual(len(letters), 1220)
         share_b = letters.count("B") / len(letters)
         self.assertLessEqual(
             share_b,
             MAX_OVERALL_B_SHARE,
-            f"correct==B is {share_b:.1%} ({letters.count('B')}/1215)",
+            f"correct==B is {share_b:.1%} ({letters.count('B')}/1220)",
         )
         for letter in LETTERS:
             share = letters.count(letter) / len(letters)
@@ -385,6 +387,8 @@ class StudyCardAnswerKeyTests(unittest.TestCase):
             + PUSH_FURTHER_STARFISH_ZOOLOGIST
             + TALK_ABOUT_STINGRAY
             + PUSH_FURTHER_STINGRAY
+            + TALK_ABOUT_STINGRAY_ZOOLOGIST
+            + PUSH_FURTHER_STINGRAY_ZOOLOGIST
         )
         for line in lines:
             for phrase in dense:
