@@ -394,10 +394,10 @@
       "Print the treasure hunt for your bag. Cards below are things to find — tap one later for optional tips.";
     els.btnZooSite.href = venue.website || "#";
     setDocMeta({
-      title: `${placeLabel} · Kid list & hunt · Field Trip Kit · 1Less`,
+      title: `${placeLabel} · Kid list & hunt · Field Trip Kit · KidZooKit`,
       description: `Free printable scavenger hunt and short kid list for ${placeLabel}${
         venue.location ? ` in ${venue.location}` : ""
-      }. Field Trip Kit by 1Less.`,
+      }. Field Trip Kit by KidZooKit.`,
     });
     // Prefer indexable SEO URL in the browser URL bar when sharing is not mid-session
     try {
@@ -482,8 +482,8 @@
     const venue = getVenue(trip.venueId);
     const placeLabel = (venue && (venue.name || venue.shortName)) || "This place";
     setDocMeta({
-      title: `${item.name} · ${placeLabel} · Field Trip Kit · 1Less`,
-      description: `Optional tips and printable Q&A for ${item.name} at ${placeLabel}. Field Trip Kit by 1Less.`,
+      title: `${item.name} · ${placeLabel} · Field Trip Kit · KidZooKit`,
+      description: `Optional tips and printable Q&A for ${item.name} at ${placeLabel}. Field Trip Kit by KidZooKit.`,
     });
     renderDetail(trip, item, venue);
     history.replaceState(null, "", `#/venue/${trip.venueId}/item/${itemId}`);

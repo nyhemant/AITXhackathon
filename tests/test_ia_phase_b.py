@@ -1,4 +1,4 @@
-"""Phase B IA: print is a grown-up side door; More menu is four doors only."""
+"""Phase B IA: print is a side door; More menu is four doors only."""
 
 from __future__ import annotations
 
@@ -123,12 +123,13 @@ class IaPhaseBTests(unittest.TestCase):
         self.assertEqual(menu[:4], list(PRIMARY_MENU))
         self.assertEqual(menu[4], ("/field-pack/print/", "Print cutouts"))
         self.assertIn('class="start-menu-grownup"', start)
-        self.assertIn("For grown-ups", start)
+        self.assertIn("Cut · hide · seek", start)
         about = ABOUT.read_text(encoding="utf-8")
         before_exp = about.split('id="experimental"', 1)[0]
-        self.assertIn("Side door for grown-ups", before_exp)
+        self.assertIn("Side door:", before_exp)
+        self.assertNotIn("grown-ups", before_exp)
         self.assertIn('href="/field-pack/print/"', before_exp)
-        self.assertIn("print cutouts to hide", before_exp)
+        self.assertIn("print cutouts to cut · hide · seek", before_exp)
 
     def test_featured_surfaces_do_not_link_legacy_destinations(self):
         for path in FEATURED_HTML:

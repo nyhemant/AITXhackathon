@@ -1,11 +1,11 @@
-# 1Less — session handoff
+# KidZooKit — session handoff
 
 **Last updated:** 2026-08-17 (unique lists + Ready 6 + park polish)  
 **Session:** `1less`  
 **Pre-rearch restore:** `git checkout snapshot/pre-rearch-2026-08-02`
 
 ## Product
-- **1Less** brand · **Field Trip Kit** default (`/` → `/field-pack/`) · **Dinner** secondary (`/dinner` via More)
+- **KidZooKit** brand · **Field Trip Kit** default (`/` → `/field-pack/`) · **Dinner** secondary (`/dinner` via More)
 - Kid printables: **mission**. Do not use “Baby’s Day Out” in new user-facing copy.
 
 ## Shell

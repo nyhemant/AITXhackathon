@@ -1,4 +1,4 @@
-"""Tiny local web chat adapter for 1Less."""
+"""Tiny local web chat adapter for KidZooKit."""
 
 from __future__ import annotations
 
@@ -97,7 +97,7 @@ HTML = """<!doctype html>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>1Less</title>
+    <title>KidZooKit</title>
 {ga4_snippet}
     <style>
       :root {
@@ -299,8 +299,8 @@ HTML = """<!doctype html>
       <link rel="stylesheet" href="/shell/shell.css?v=5" />
       <header class="oneless-shell" data-product="dinner">
         <a class="shell-brand" href="/">
-          <img src="/1LessMark.png" alt="1Less" width="52" height="52" />
-          1Less
+          <img src="/1LessMark.png" alt="KidZooKit" width="52" height="52" />
+          KidZooKit
         </a>
         <p class="shell-product">Dinner<small>Decide tonight’s meal</small></p>
         <div class="shell-more-wrap">
@@ -314,11 +314,11 @@ HTML = """<!doctype html>
       <script src="/shell/shell.js?v=4" defer></script>
       <header class="hero">
         <div class="brand-lockup">
-          <img class="brand-logo brand-logo-wrap" src="/1LessPrimaryLogo.png?v=transparent-square" alt="1Less logo" width="800" height="800" />
+          <img class="brand-logo brand-logo-wrap" src="/1LessPrimaryLogo.png?v=transparent-square" alt="KidZooKit logo" width="800" height="800" />
           <div class="brand-copy">
           <p class="tagline">One less thing on your plate.</p>
-          <p class="subhead">Tell 1Less what tonight looks like. Get one doable dinner idea — not a recipe rabbit hole.</p>
-          <p class="alpha-note"><strong>Dinner</strong> · a quieter 1Less tool</p>
+          <p class="subhead">Tell KidZooKit what tonight looks like. Get one doable dinner idea — not a recipe rabbit hole.</p>
+          <p class="alpha-note"><strong>Dinner</strong> · a quieter KidZooKit tool</p>
           </div>
         </div>
       </header>
@@ -385,7 +385,7 @@ HTML = """<!doctype html>
       </section>
       <section class="vision-note" aria-labelledby="why-dinner-first">
         <h2 id="why-dinner-first">Why start with dinner?</h2>
-        <p>Because dinner is often the chore before the chore. 1Less starts by removing just that one decision: a practical default you can use or tweak. For now, it only handles dinner.</p>
+        <p>Because dinner is often the chore before the chore. KidZooKit starts by removing just that one decision: a practical default you can use or tweak. For now, it only handles dinner.</p>
       </section>
       <label class="trace-footer"><input id="traceToggle" type="checkbox" /> Show trace</label>
     </main>
@@ -1540,7 +1540,7 @@ class WebHandler(BaseHTTPRequestHandler):
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex" />
-  <title>{title} · 1Less</title>
+  <title>{title} · KidZooKit</title>
   <script>{ls_js};window.__1LESS_ANALYTICS_OFF__={"true" if not enabled else "false"};</script>
   <style>
     body{{font-family:system-ui,sans-serif;max-width:36rem;margin:3rem auto;padding:0 1.25rem;line-height:1.5;color:#152238}}

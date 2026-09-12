@@ -18,7 +18,7 @@
   function freshnessMailto(slug, kind) {
     const label = kind === "accurate" ? "accurate" : "something changed";
     const subject = `Field Trip Kit · ${slug} · ${label}`;
-    return `mailto:hello@1less.app?subject=${encodeURIComponent(subject)}`;
+    return `mailto:arku2arku@gmail.com?subject=${encodeURIComponent(subject)}`;
   }
 
   function freshnessFooterHtml(venue) {

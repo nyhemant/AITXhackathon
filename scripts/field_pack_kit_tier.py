@@ -10,7 +10,7 @@ from __future__ import annotations
 import re
 from urllib.parse import quote
 
-FRESHNESS_MAIL = "hello@1less.app"
+FRESHNESS_MAIL = "arku2arku@gmail.com"
 FRESHNESS_PROMPT = "Was this list accurate?"
 FRESHNESS_ACCURATE = "accurate"
 FRESHNESS_CHANGED = "something changed"

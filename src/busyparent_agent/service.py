@@ -12,10 +12,10 @@ from busyparent_agent import tools
 from busyparent_agent.adapters import mock_epic
 
 
-APP_TITLE = "1Less"
+APP_TITLE = "KidZooKit"
 APP_SUBTITLE = "Chapter 1 dinner decision demo"
 ALLERGY_CAVEAT = (
-    "1Less can help avoid ingredients you flag, but it cannot guarantee allergy safety. "
+    "KidZooKit can help avoid ingredients you flag, but it cannot guarantee allergy safety. "
     "Always check labels and use your judgment for serious allergies."
 )
 TYPICAL_FAMILY_STAPLES = {

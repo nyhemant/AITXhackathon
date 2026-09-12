@@ -1,14 +1,14 @@
-# 1Less (AITXhackathon)
+# KidZooKit (AITXhackathon)
 
 ## Brand
-- **1Less** = initiative / site.
+- **KidZooKit** = initiative / site (`https://kidzookit.com`). Legacy `1less.app` / `www.1less.app` 301 here.
 - **Dinner** = meal thread (`/`).
 - **Field Trip Kit** = outing thread (parent-facing UI name). Code path stays `static/field-pack/` and URL `/field-pack/`.
 - Kid-facing language in printables: **mission** (e.g. “Your mission at the Dallas Zoo”).
 - Do not use “Baby’s Day Out” in new user-facing copy.
 
 ## Continuity
-- Read `.grok/HANDOFF.md` when continuing 1Less / Field Trip Kit work.
+- Read `.grok/HANDOFF.md` when continuing KidZooKit / Field Trip Kit work.
 - Grok session title for this initiative: **1less**.
 
 ## Engineering

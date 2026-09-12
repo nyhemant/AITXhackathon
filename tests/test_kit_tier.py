@@ -85,7 +85,7 @@ class KitTierHelperTests(unittest.TestCase):
     def test_freshness_subject_includes_slug(self):
         accurate = freshness_mailto("dallas-zoo", "accurate")
         changed = freshness_mailto("dallas-zoo", "changed")
-        self.assertTrue(accurate.startswith("mailto:hello@1less.app?subject="))
+        self.assertTrue(accurate.startswith("mailto:arku2arku@gmail.com?subject="))
         self.assertIn("dallas-zoo", unquote(accurate))
         self.assertIn("accurate", unquote(accurate))
         self.assertIn("dallas-zoo", unquote(changed))

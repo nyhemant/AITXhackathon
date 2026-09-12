@@ -1,7 +1,7 @@
 {
   "id": "/field-trip-kit",
   "name": "Field Trip Kit",
-  "short_name": "1less",
+  "short_name": "KidZooKit",
   "description": "A calm zoo-day-at-home app for busy parents — live cams, cards, and a ready field trip for curious kids.",
   "start_url": "/start/?source=pwa",
   "scope": "/",
