@@ -67,7 +67,7 @@ Zoos lead the launch; parks are a fast-follow. **Dallas Zoo** is the content qua
 | Shell + analytics | `static/shell/shell.js` → `window.OneLessAnalytics.track` / `window.trackEvent` |
 | Landing hero/map JS | `js/landing-hook.js`, `js/landing-map.js` |
 | Item uniqueness lint | `scripts/lint_item_uniqueness.py` → `scripts/data/item-uniqueness-report.md` |
-| Sitemap | `static/field-pack/sitemap.xml` |
+| Sitemap | `static/sitemap.xml` + `static/field-pack/sitemap.xml` — regen `python3 scripts/generate_bdo_seo.py --sitemap-only` |
 | LLM site map | `static/llms.txt` is public at `/llms.txt` (`web.py`) |
 | Search Console | `static/google*.html` served at `/google*.html` (`web.py`) |
 | Brand / path rules | `AGENTS.md`, `.grok/HANDOFF.md` |

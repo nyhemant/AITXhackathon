@@ -3,12 +3,18 @@
 
 Run from repo root:
   python3 scripts/generate_bdo_seo.py
+  python3 scripts/generate_bdo_seo.py --sitemap-only
 
 Outputs:
   static/field-pack/<venue-id>/index.html  (×N)
   static/sitemap.xml
   static/robots.txt
   static/field-pack/seo-venues.json        (machine list of URLs)
+
+Sitemap <lastmod> is the newest git commit date (fallback: file mtime) of each
+URL's source file — venue JSON for place pages, the HTML/JS/CSS that backs
+hubs and cards. Redirect-only aliases are omitted. `--sitemap-only` rewrites
+the two sitemap.xml copies without regenerating pages.
 """
 
 from __future__ import annotations
@@ -31,6 +37,7 @@ from busyparent_agent.url_aliases import (  # noqa: E402
     PRINT_PATH,
     PRINT_TARGET,
     VFT_PATH,
+    redirect_location,
 )
 from field_pack_card_kind import (  # noqa: E402
     HUB_SECTIONS,
@@ -3116,7 +3123,146 @@ def write_type_landings(venues: list[dict]) -> list[str]:
     return urls
 
 
-def write_sitemap(venues: list[dict], extra_urls: list[str] | None = None) -> None:
+_GIT_LASTMOD_CACHE: dict[str, str | None] = {}
+
+# Hub / marketing pages: lastmod is the newest of these files (HTML + the JS/CSS
+# that actually changes the page). Venue pages use mission JSON, not regenerated
+# chrome HTML — a bulk SEO rewrite must not stamp every zoo with today's date.
+_SITEMAP_HUB_SOURCES: dict[str, tuple[Path, ...]] = {
+    "/start/": (
+        STATIC / "start" / "index.html",
+        STATIC / "start" / "start.js",
+        STATIC / "start" / "start.css",
+    ),
+    "/about/": (
+        STATIC / "about" / "index.html",
+        STATIC / "about" / "about.css",
+    ),
+    "/field-pack/": (
+        FIELD / "index.html",
+        FIELD / "js" / "landing-map.js",
+        FIELD / "js" / "landing-hook.js",
+        FIELD / "css" / "landing.css",
+    ),
+    "/field-pack/virtual-field-trip/": (
+        FIELD / "virtual-field-trip" / "index.html",
+        FIELD / "js" / "virtual-venue.js",
+    ),
+    "/field-pack/cards/": (
+        FIELD / "cards" / "index.html",
+        FIELD / "js" / "cards-explorer.js",
+    ),
+}
+
+
+def sitemap_path_of(url: str) -> str:
+    """Absolute site path (`/start/`) from a loc or relative extra URL."""
+    raw = urlparse(url).path if "://" in url else url
+    if not raw.startswith("/"):
+        raw = "/" + raw
+    if raw != "/" and not raw.endswith("/") and not Path(raw).suffix:
+        raw += "/"
+    return raw
+
+
+def is_redirect_only_url(url: str) -> bool:
+    """True for 301 aliases (virtual-zoo, /parks/, /print/, app.html, short slugs)."""
+    path = sitemap_path_of(url)
+    if redirect_location(path) or redirect_location(path.rstrip("/") or "/"):
+        return True
+    return False
+
+
+def git_commit_date(path: Path) -> str | None:
+    """Last committer date (`%cs`) for ``path``, or None if git has no history."""
+    key = str(path)
+    if key in _GIT_LASTMOD_CACHE:
+        return _GIT_LASTMOD_CACHE[key]
+    try:
+        out = subprocess.check_output(
+            ["git", "log", "-1", "--format=%cs", "--", str(path)],
+            cwd=REPO,
+            text=True,
+            stderr=subprocess.DEVNULL,
+        ).strip()
+    except (OSError, subprocess.CalledProcessError):
+        out = ""
+    value = out or None
+    _GIT_LASTMOD_CACHE[key] = value
+    return value
+
+
+def file_mtime_date(path: Path) -> str | None:
+    """Local-calendar mtime as YYYY-MM-DD, or None if the file is missing."""
+    try:
+        if not path.is_file():
+            return None
+        return date.fromtimestamp(path.stat().st_mtime).isoformat()
+    except OSError:
+        return None
+
+
+def lastmod_for_paths(
+    paths: list[Path],
+    *,
+    git_lookup=None,
+    today: str | None = None,
+) -> str:
+    """Newest git date among ``paths``; file mtime if git is silent; else today."""
+    lookup = git_commit_date if git_lookup is None else git_lookup
+    dates: list[str] = []
+    for path in paths:
+        stamp = lookup(path) or file_mtime_date(path)
+        if stamp:
+            dates.append(stamp)
+    return max(dates) if dates else (today or TODAY)
+
+
+def source_paths_for_url(url: str) -> list[Path]:
+    """Content files whose freshness should drive ``<lastmod>`` for ``url``."""
+    path = sitemap_path_of(url)
+    hub = _SITEMAP_HUB_SOURCES.get(path)
+    if hub:
+        return [p for p in hub if p.is_file()]
+    parts = [p for p in path.strip("/").split("/") if p]
+    if len(parts) == 3 and parts[0] == "field-pack" and parts[1] == "cards":
+        html = FIELD / "cards" / parts[2] / "index.html"
+        return [html] if html.is_file() else []
+    if len(parts) == 2 and parts[0] == "field-pack":
+        slug = parts[1]
+        venue_json = VENUE_DATA_DIR / f"{slug}.json"
+        if venue_json.is_file():
+            return [venue_json]
+        html = FIELD / slug / "index.html"
+        return [html] if html.is_file() else []
+    fallback = STATIC / path.strip("/") / "index.html"
+    return [fallback] if fallback.is_file() else []
+
+
+def lastmod_for_url(url: str, *, git_lookup=None, today: str | None = None) -> str:
+    """``<lastmod>`` for one sitemap loc from its source file(s)."""
+    return lastmod_for_paths(
+        source_paths_for_url(url),
+        git_lookup=git_lookup,
+        today=today,
+    )
+
+
+def collect_sitemap_extra_urls() -> list[str]:
+    """Canonical extras: type hubs, cards hub + pages, VFT, Start, About."""
+    extras = [f"/field-pack/{meta['path']}/" for meta in TYPE_LANDINGS]
+    extras.append("/field-pack/cards/")
+    extras.extend(f"/field-pack/cards/{cid}/" for cid in sorted(published_card_ids()))
+    extras.extend(["/field-pack/virtual-field-trip/", "/start/", "/about/"])
+    return [u for u in extras if not is_redirect_only_url(u)]
+
+
+def write_sitemap(
+    venues: list[dict],
+    extra_urls: list[str] | None = None,
+    *,
+    lastmod_fn=None,
+) -> None:
     urls = [f"{SITE}/field-pack/"]
     for u in extra_urls or []:
         if u.startswith("http"):
@@ -3124,28 +3270,43 @@ def write_sitemap(venues: list[dict], extra_urls: list[str] | None = None) -> No
         else:
             urls.append(f"{SITE}{u}")
     urls += [f"{SITE}/field-pack/{v['id']}/" for v in venues]
-    # also root redirect target
+    stamp = lastmod_fn or lastmod_for_url
     body = [
         '<?xml version="1.0" encoding="UTF-8"?>',
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
     ]
     seen = set()
     for u in urls:
-        if u in seen:
+        if u in seen or is_redirect_only_url(u):
             continue
         seen.add(u)
-        pri = "1.0" if u.rstrip("/").endswith("field-pack") else ("0.9" if any(x in u for x in ("/zoos", "/aquariums", "/museums", "/national-parks", "/cards", "/print", "/virtual-field-trip")) else "0.8")
+        pri = "1.0" if u.rstrip("/").endswith("field-pack") else (
+            "0.9"
+            if any(
+                x in u
+                for x in (
+                    "/zoos",
+                    "/aquariums",
+                    "/museums",
+                    "/national-parks",
+                    "/cards",
+                    "/virtual-field-trip",
+                )
+            )
+            else "0.8"
+        )
         body.append("  <url>")
         body.append(f"    <loc>{esc(u)}</loc>")
-        body.append(f"    <lastmod>{TODAY}</lastmod>")
+        body.append(f"    <lastmod>{stamp(u)}</lastmod>")
         body.append(f"    <changefreq>weekly</changefreq>")
         body.append(f"    <priority>{pri}</priority>")
         body.append("  </url>")
     body.append("</urlset>")
     body.append("")
-    (STATIC / "sitemap.xml").write_text("\n".join(body), encoding="utf-8")
+    xml = "\n".join(body)
+    (STATIC / "sitemap.xml").write_text(xml, encoding="utf-8")
     # also under field-pack for convenience
-    (FIELD / "sitemap.xml").write_text("\n".join(body), encoding="utf-8")
+    (FIELD / "sitemap.xml").write_text(xml, encoding="utf-8")
 
 
 def write_robots() -> None:
@@ -5364,11 +5525,17 @@ def main() -> int:
     only_venues = _csv_flag(sys.argv[1:], "--only")
     only_cards = _csv_flag(sys.argv[1:], "--cards")
     cards_only = "--cards-only" in sys.argv[1:]
+    sitemap_only = "--sitemap-only" in sys.argv[1:]
     targeted = bool(only_venues or only_cards or cards_only)
     print("Loading venues…")
     venues = load_venues()
     venues.sort(key=lambda v: (v.get("state") or "", v.get("city") or "", v["name"]))
     print(f"  {len(venues)} venues")
+    if sitemap_only:
+        write_sitemap(venues, extra_urls=collect_sitemap_extra_urls())
+        print("  sitemap → static/sitemap.xml (sitemap-only; pages unchanged)")
+        print("  sitemap → static/field-pack/sitemap.xml")
+        return 0
 
     css_path = FIELD / "css" / "seo-venue.css"
     # Prefer hand-maintained css (visual-first enhancements); seed once if missing
@@ -5439,7 +5606,12 @@ def main() -> int:
     cards_urls = write_cards_hub(venues)
     if isinstance(cards_urls, str):
         cards_urls = [cards_urls]
-    write_sitemap(venues, extra_urls=type_urls + cards_urls + ["/field-pack/virtual-field-trip/", "/field-pack/print/", "/start/", "/about/"])
+    write_sitemap(
+        venues,
+        extra_urls=type_urls
+        + cards_urls
+        + ["/field-pack/virtual-field-trip/", "/start/", "/about/"],
+    )
     write_robots()
     manifest = {
         "generated": TODAY,
