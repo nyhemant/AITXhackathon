@@ -358,7 +358,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn('class="start-trust"', chapter)
         self.assertIn('id="start-map-coach"', chapter)
         self.assertIn("Tap an animal to open a card.", chapter)
-        self.assertLess(chapter.find("start-map-coach"), chapter.find("start-heading"))
+        self.assertLess(chapter.find("start-map-coach"), chapter.find('id="start-heading"'))
         self.assertIn("kz_start_map_coached", self.js)
         self.assertIn("start_map_hotspot_clicked", self.js)
         self.assertIn("start_map_coach_dismissed", self.js)
