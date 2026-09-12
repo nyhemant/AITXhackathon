@@ -202,7 +202,7 @@
       try {
         if (isLocalDevHost() || localStorage.getItem(LS_OFF_KEY) === "1") {
           console.info(
-            "[1Less GA4] off for this browser/host — production stats not counted. " +
+            "[KidZooKit GA4] off for this browser/host — production stats not counted. " +
               "Opt in: https://kidzookit.com/analytics/on or ?analytics=on"
           );
         }
@@ -238,7 +238,7 @@
 
     if (debug) {
       console.info(
-        "[1Less GA4] debug_mode ON — hits still go to reports unless you use /analytics/off. ID:",
+        "[KidZooKit GA4] debug_mode ON — hits still go to reports unless you use /analytics/off. ID:",
         GA4_MEASUREMENT_ID
       );
     }

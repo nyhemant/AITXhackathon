@@ -130,11 +130,12 @@ class BrandHomeTests(unittest.TestCase):
                 ("/field-pack/virtual-field-trip/", "Watch Live"),
                 ("/field-pack/", "Places"),
                 ("/start/", "Start"),
-                ("/field-pack/print/", "print cutouts to hide"),
+                ("/field-pack/print/", "print cutouts to cut · hide · seek"),
             ],
         )
         self.assertIn("Those three doors start from", doors)
-        self.assertIn("Side door for grown-ups:", doors)
+        self.assertIn("Side door:", doors)
+        self.assertNotIn("grown-ups", doors)
         self.assertNotIn("Animal cards", doors)
         self.assertNotIn("/field-pack/virtual-zoo/", html)
         self.assertNotIn('href="/dinner"', intro)

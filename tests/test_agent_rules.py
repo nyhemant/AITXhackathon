@@ -175,7 +175,7 @@ class ScenarioCliTest(unittest.TestCase):
     def test_scenario_dinner_runs_and_includes_pantry_first(self):
         output = self.run_scenario("dinner")
 
-        self.assertIn("1Less", output)
+        self.assertIn("KidZooKit", output)
         self.assertIn("[decision] pantry-first because it is close to dinner", output)
         self.assertIn("Reviewable grocery list: nothing required.", output)
         self.assertNotIn("Not feeling that", output)
@@ -469,7 +469,7 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertIn('class="brand-lockup"', HTML)
         self.assertIn('brand-logo-wrap', HTML)
         self.assertIn('class="brand-logo brand-logo-wrap"', HTML)
-        self.assertIn('alt="1Less logo"', HTML)
+        self.assertIn('alt="KidZooKit logo"', HTML)
         self.assertIn('src="/1LessPrimaryLogo.png?v=transparent-square"', HTML)
         self.assertIn('width="800" height="800"', HTML)
         self.assertNotIn('src="/1LessLogo.png', HTML)
@@ -485,7 +485,7 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertIn("Why start with dinner?", HTML)
         self.assertIn("For now, it only handles dinner.", HTML)
         self.assertIn("chore before the chore", HTML)
-        self.assertIn("Tell 1Less what tonight looks like.", HTML)
+        self.assertIn("Tell KidZooKit what tonight looks like.", HTML)
         self.assertIn("not a recipe rabbit hole", HTML)
         self.assertIn("Start with tonight.", HTML)
         self.assertIn("What do you have, who needs to eat, and how much effort can dinner take?", HTML)

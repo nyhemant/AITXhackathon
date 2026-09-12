@@ -79,6 +79,8 @@ CATALOG_JS = FIELD / "js" / "catalog.js"
 PLACES_JS = FIELD / "js" / "places-data.js"
 SITE = PUBLIC_SITE
 SITE_HOST = PUBLIC_SITE.split("://", 1)[-1]
+BRAND_NAME = "KidZooKit"
+CONTACT_MAIL = "arku2arku@gmail.com"
 TODAY = date.today().isoformat()
 
 RESERVED = {
@@ -114,8 +116,8 @@ HUNT_TEASER_MAX = 9
 NAV_PLACES_SUB = "Map &amp; places"
 NAV_CARDS_SUB = "Talk, photos &amp; Q&amp;A"
 NAV_VFT_SUB = "Explore at home"
-NAV_ABOUT_SUB = "1Less &amp; contact"
-# Phase B More menu — same four doors as Start. Print is a grown-up side door, not here.
+NAV_ABOUT_SUB = f"{BRAND_NAME} &amp; contact"
+# Phase B More menu — same four doors as Start. Print is a side door, not here.
 NAV_CARDS_LABEL = "Cards"
 NAV_WATCH_LABEL = "Watch Live"
 NAV_PLACES_LABEL = "Places"
@@ -1656,7 +1658,7 @@ def seo_hunt_label(v: dict) -> str:
 
 
 def title_for(v: dict) -> str:
-    return f"{seo_hunt_label(v)} · 1Less"
+    return f"{seo_hunt_label(v)} · {BRAND_NAME}"
 
 
 def meta_for(v: dict) -> str:
@@ -1706,8 +1708,8 @@ def venue_json_ld(v: dict, url: str) -> str:
         "@type": "Article",
         "headline": hunt_name,
         "description": meta_for(v),
-        "author": {"@type": "Organization", "name": "1Less"},
-        "publisher": {"@type": "Organization", "name": "1Less", "url": SITE},
+        "author": {"@type": "Organization", "name": BRAND_NAME},
+        "publisher": {"@type": "Organization", "name": BRAND_NAME, "url": SITE},
         "mainEntityOfPage": url,
         "about": {"@type": "Place", "name": v["name"], "address": v.get("location") or ""},
     }
@@ -2536,7 +2538,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <link rel="canonical" href="{esc(url)}" />
   <meta name="robots" content="index,follow" />
   <meta property="og:type" content="article" />
-  <meta property="og:site_name" content="1Less" />
+  <meta property="og:site_name" content="{BRAND_NAME}" />
   <meta property="og:title" content="{esc(title)}" />
   <meta property="og:description" content="{esc(desc)}" />
   <meta property="og:url" content="{esc(url)}" />
@@ -2612,7 +2614,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
         <span class="footer-dot">·</span>
         <a href="{NAV_ABOUT_HREF}">About</a>
         <span class="footer-dot">·</span>
-        <a href="mailto:hello@1less.app">Contact</a>
+        <a href="mailto:{CONTACT_MAIL}">Contact</a>
       </p>
       <p class="footer-privacy">Kid names stay on your device. We don’t collect accounts or emails for hunts.</p>
     </footer>
@@ -2686,7 +2688,7 @@ def render_venue_page(v: dict) -> str:
   <link rel="canonical" href="{esc(url)}" />
   <meta name="robots" content="index,follow" />
   <meta property="og:type" content="article" />
-  <meta property="og:site_name" content="1Less" />
+  <meta property="og:site_name" content="{BRAND_NAME}" />
   <meta property="og:title" content="{esc(title)}" />
   <meta property="og:description" content="{esc(desc)}" />
   <meta property="og:url" content="{esc(url)}" />
@@ -2921,7 +2923,7 @@ def write_type_landing(meta: dict, venues: list[dict]) -> str:
         "{"
         f'"@context":"https://schema.org","@type":"CollectionPage","name":{json.dumps(meta["h1"])},'
         f'"url":{json.dumps(url)},"description":{json.dumps(meta["blurb"])},'
-        f'"isPartOf":{{"@type":"WebSite","name":"1Less Field Trip Kit","url":"{SITE}/field-pack/"}},'
+        f'"isPartOf":{{"@type":"WebSite","name":"{BRAND_NAME} Field Trip Kit","url":"{SITE}/field-pack/"}},'
         f'"mainEntity":{{"@type":"ItemList","numberOfItems":{len(filtered)},"itemListElement":[{item_list}]}}'
         "}"
     )
@@ -2937,7 +2939,7 @@ def write_type_landing(meta: dict, venues: list[dict]) -> str:
   <link rel="canonical" href="{esc(url)}" />
   <meta name="robots" content="index,follow" />
   <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="1Less" />
+  <meta property="og:site_name" content="{BRAND_NAME}" />
   <meta property="og:title" content="{esc(meta["title"])}" />
   <meta property="og:description" content="{esc(meta["blurb"])}" />
   <meta property="og:url" content="{esc(url)}" />
@@ -4928,7 +4930,7 @@ def write_cards_hub(venues: list[dict]) -> str:
   <link rel="canonical" href="{esc(url)}" />
   <meta name="robots" content="index,follow" />
   <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="1Less" />
+  <meta property="og:site_name" content="{BRAND_NAME}" />
   <meta property="og:title" content="{esc(title)}" />
   <meta property="og:description" content="{esc(desc)}" />
   <meta property="og:url" content="{esc(url)}" />
@@ -5045,7 +5047,7 @@ def write_cards_hub(venues: list[dict]) -> str:
         <span class="footer-dot">·</span>
         <a href="/about/">About</a>
         <span class="footer-dot">·</span>
-        <a href="mailto:hello@1less.app">Contact</a>
+        <a href="mailto:{CONTACT_MAIL}">Contact</a>
       </p>
     </footer>
   </div>
