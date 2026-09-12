@@ -125,8 +125,13 @@ class KingdomMappingTests(unittest.TestCase):
         self.assertNotIn("cuttlefish", LIBRARY_WATCH_LIVE_PENDING_RESTORE)
         self.assertNotIn("puffin", LIBRARY_WATCH_LIVE_PENDING_RESTORE)
         self.assertNotIn("sea-otter", LIBRARY_WATCH_LIVE_PENDING_RESTORE)
-        # Zoo overlays still pending; alligator joined after the wildlife rehub.
-        self.assertLessEqual(len(LIBRARY_WATCH_LIVE_PENDING_RESTORE), 11)
+        # Zoo overlays restored this pass: alligator, bison, elk, zebra, polar-bear.
+        self.assertNotIn("american-alligator", LIBRARY_WATCH_LIVE_PENDING_RESTORE)
+        self.assertNotIn("american-bison", LIBRARY_WATCH_LIVE_PENDING_RESTORE)
+        self.assertNotIn("elk", LIBRARY_WATCH_LIVE_PENDING_RESTORE)
+        self.assertNotIn("zebra", LIBRARY_WATCH_LIVE_PENDING_RESTORE)
+        self.assertNotIn("polar-bear", LIBRARY_WATCH_LIVE_PENDING_RESTORE)
+        self.assertLessEqual(len(LIBRARY_WATCH_LIVE_PENDING_RESTORE), 8)
 
 
 class TryNextKingdomTests(unittest.TestCase):

@@ -36,7 +36,7 @@
   const PICK_BY_KIND = {
     zoo: {
       key: "fp-virtual-zoo-picks-v1",
-      libUrl: "/field-pack/data/virtual-venues/zoo-film-library.json?v=7",
+      libUrl: "/field-pack/data/virtual-venues/zoo-film-library.json?v=8",
       title: "Create your own virtual zoo",
       noun: "zoo",
       track: "zoo_picks_saved",
@@ -2406,7 +2406,13 @@
         filmLink.onclick = null;
       }
     }
-    if (filmHint) filmHint.hidden = true;
+    if (filmHint) {
+      const filmOnly = hasFilm && !Boolean(cam.embed);
+      filmHint.hidden = !filmOnly;
+      if (filmOnly) {
+        filmHint.textContent = "This is a film, not a live cam.";
+      }
+    }
     const skipFilm = Boolean(opts && opts.skipFilm);
     if (hasFilm && !skipFilm) playHabitatFilm(h);
     if (placeLink) {

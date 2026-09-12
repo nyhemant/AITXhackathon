@@ -1,6 +1,6 @@
 {
   "id": "zoo-film-library",
-  "checked": "2026-09-05",
+  "checked": "2026-09-12",
   "note": "Pick-10 ingredients for the zoo tab. Default tour is the current 10. Bench extras need an animal-first film (official zoo, Nat Geo Kids, or BBC Earth). Mute autoplay uses video.start to skip logos. Warthog, ostrich, and a few house animals stay omitted until a yard-first clip locks.",
   "omit": [
     {
@@ -603,11 +603,51 @@
         "verify": {
           "status": "sourced",
           "source": "https://www.youtube.com/watch?v=4IFn0t0rkiE",
-          "checked": "2026-08-16"
+          "checked": "2026-09-12"
         }
       },
       "cam": {},
       "printAnswer": "Still water and a bumpy back make it look like a log. The bony plates are armor, and the tail is a strong swim paddle."
+    },
+    {
+      "cardId": "american-bison",
+      "label": "Bison prairie",
+      "challenge": "Why does a bison have a tall shoulder hump? Why live in a herd?",
+      "defaultTour": false,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=t6qGqF1p5uk",
+        "title": "American bison exhibit at the Smithsonian National Zoo",
+        "provider": "youtube",
+        "channel": "Smithsonian's National Zoo",
+        "start": 0,
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=t6qGqF1p5uk",
+          "checked": "2026-09-12"
+        }
+      },
+      "cam": {},
+      "printAnswer": "The tall shoulder hump is the bison’s famous front-end shape. Moms and calves live in groups; older bulls often stay apart except in breeding season."
+    },
+    {
+      "cardId": "elk",
+      "label": "Elk meadow",
+      "challenge": "Why does a bull elk grow antlers? What’s a bugle?",
+      "defaultTour": false,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=hEKeDt_xAm4",
+        "title": "Rival male elk rut at Yellowstone",
+        "provider": "youtube",
+        "channel": "BBC Earth",
+        "start": 0,
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=hEKeDt_xAm4",
+          "checked": "2026-09-12"
+        }
+      },
+      "cam": {},
+      "printAnswer": "Males grow branched antlers, then shed them and grow a new set. A bugle is a loud autumn bull call — a whistle and bellow that can carry far."
     },
     {
       "cardId": "saltwater-crocodile",

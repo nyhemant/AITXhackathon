@@ -220,14 +220,16 @@ class FlagshipSessionTests(unittest.TestCase):
         towpath = self._card_chrome(
             (FP / "cards" / "cuyahoga-towpath" / "index.html").read_text(encoding="utf-8")
         )
-        bison = self._card_chrome(
-            (FP / "cards" / "american-bison" / "index.html").read_text(encoding="utf-8")
-        )
+        bison_html = (FP / "cards" / "american-bison" / "index.html").read_text(encoding="utf-8")
+        bison = self._card_chrome(bison_html)
         rocket = self._card_chrome((FP / "cards" / "sci-rocket" / "index.html").read_text(encoding="utf-8"))
         self.assertIn("Perot Museum", art)
         self.assertIn("Place", art)
         self.assertIn("Cuyahoga Valley", towpath)
-        self.assertIn("Yellowstone", bison)
+        self.assertNotIn("Place", bison)
+        self.assertNotIn("Yellowstone", bison)
+        self.assertIn('data-rail="parks"', bison_html)
+        self.assertIn("See them in the wild: Yellowstone", bison_html)
         self.assertIn("CA Science Center", rocket)
 
     def test_dallas_real_qa_kept_generic_notice_not_shipped(self):
