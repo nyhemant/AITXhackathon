@@ -161,7 +161,7 @@ class WatchLiveHabitatTests(unittest.TestCase):
     def test_sep11_unknown_habitat_watch_live_would_fail(self):
         """Watch Live to a habitat that is in neither tour JSON nor film libraries."""
         issues = dead_watch_live_issues(
-            html_by_id={"warthog": UNKNOWN_HABITAT_LIVE_HTML}
+            html_by_id={"freshwater-fish": UNKNOWN_HABITAT_LIVE_HTML}
         )
         self.assertTrue(issues)
         self.assertTrue(any("not-a-real-stop" in row for row in issues), issues)

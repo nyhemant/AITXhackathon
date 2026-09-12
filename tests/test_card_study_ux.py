@@ -385,7 +385,8 @@ class CardStudyUxTests(unittest.TestCase):
         page = (FP / "cards" / "galapagos-tortoise" / "index.html").read_text(encoding="utf-8")
         main = _main(page)
         self.assertIn('class="card-try-next no-print"', main)
-        self.assertEqual(main.count("card-try-next-link"), 3)
+        try_next = main.split('aria-label="Try next"', 1)[1].split("</nav>", 1)[0]
+        self.assertEqual(try_next.count("card-try-next-link"), 3)
         talk_at = main.find('class="card-talk-pack')
         try_at = main.find('class="card-try-next')
         actions_at = main.find('class="card-page-actions"')
@@ -500,10 +501,10 @@ class CardStudyUxTests(unittest.TestCase):
                 print_tpl = html.split('id="study-print-template">', 1)[1].split("</template>", 1)[0]
                 self.assertNotIn("card-page-photo-link", print_tpl)
 
-        warthog = _main((FP / "cards" / "warthog" / "index.html").read_text(encoding="utf-8"))
-        self.assertNotIn("card-page-photo-link", warthog)
-        self.assertIn('class="card-page-photo"', warthog)
-        self.assertLess(warthog.find("card-page-photo"), warthog.find("<h1>"))
+        fish = _main((FP / "cards" / "freshwater-fish" / "index.html").read_text(encoding="utf-8"))
+        self.assertNotIn("card-page-photo-link", fish)
+        self.assertIn('class="card-page-photo"', fish)
+        self.assertLess(fish.find("card-page-photo"), fish.find("<h1>"))
 
         dino = _main((FP / "cards" / "sci-dinosaur" / "index.html").read_text(encoding="utf-8"))
         self.assertNotIn("card-page-photo-link", dino)
