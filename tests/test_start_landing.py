@@ -270,6 +270,90 @@ class StartLandingTests(unittest.TestCase):
         self.assertNotIn("webgl", self.css.lower())
         self.assertNotIn("parallax", self.css.lower())
 
+    def test_hero_hotspots_are_centered_and_do_not_overlap(self):
+        self.assertIn("transform: translate(-50%, -50%)", self.css)
+        self.assertIn("min-width: 52px", self.css)
+        self.assertIn("min-height: 52px", self.css)
+        self.assertIn(".start-hero-copy .start-route", self.css)
+        copy = re.search(
+            r"\.start-hero-copy \{[^}]+\}",
+            self.css,
+        )
+        self.assertIsNotNone(copy)
+        self.assertIn("pointer-events: none", copy.group(0))
+        route = re.search(
+            r"\.start-hero-copy \.start-route \{[^}]+\}",
+            self.css,
+        )
+        self.assertIsNotNone(route)
+        self.assertIn("pointer-events: auto", route.group(0))
+        self.assertIn('.start-hero-hotspot[data-hero-region="east"]', self.css)
+        self.assertIn("display: none", self.css)
+
+        names = (
+            "bison",
+            "panda",
+            "zebra",
+            "tortoise",
+            "flamingo",
+            "tiger",
+            "koala",
+            "whale",
+        )
+        pins = {}
+        for name in names:
+            rule = re.search(
+                rf"\.start-hero-pin-{name} \{{([^}}]+)\}}",
+                self.css,
+            )
+            self.assertIsNotNone(rule, name)
+            body = rule.group(1)
+            left = float(re.search(r"left:\s*([\d.]+)%", body).group(1))
+            top = float(re.search(r"top:\s*([\d.]+)%", body).group(1))
+            width = float(re.search(r"width:\s*([\d.]+)%", body).group(1))
+            height = float(re.search(r"height:\s*([\d.]+)%", body).group(1))
+            self.assertGreaterEqual(width, 10.0, name)
+            self.assertGreaterEqual(height, 10.0, name)
+            pins[name] = (left, top, width, height)
+
+        # Recentered on figurines (old bison box sat high/right of the animal).
+        self.assertAlmostEqual(pins["bison"][0], 20.5, delta=1.2)
+        self.assertAlmostEqual(pins["bison"][1], 27.2, delta=1.2)
+        self.assertAlmostEqual(pins["flamingo"][0], 31.2, delta=1.2)
+        self.assertAlmostEqual(pins["flamingo"][1], 56.0, delta=2.0)
+        self.assertAlmostEqual(pins["tortoise"][0], 14.0, delta=1.2)
+        self.assertAlmostEqual(pins["tortoise"][1], 75.2, delta=1.2)
+
+        boxes = {
+            name: (
+                cx - w / 2,
+                cy - h / 2,
+                cx + w / 2,
+                cy + h / 2,
+            )
+            for name, (cx, cy, w, h) in pins.items()
+        }
+        pair_names = list(boxes)
+        for i, a in enumerate(pair_names):
+            ax0, ay0, ax1, ay1 = boxes[a]
+            for b in pair_names[i + 1 :]:
+                bx0, by0, bx1, by1 = boxes[b]
+                overlap = ax0 < bx1 and ax1 > bx0 and ay0 < by1 and ay1 > by0
+                self.assertFalse(overlap, f"{a} overlaps {b}")
+
+        # Centering translate must survive reduced-motion (it is not animation).
+        self.assertNotRegex(
+            self.css,
+            r"\.start-hero-hotspot,\s*\.start-map-coach",
+        )
+        hotspot_reduce = re.search(
+            r"@media \(prefers-reduced-motion: reduce\) \{[\s\S]*?"
+            r"\.start-hero-hotspot \{([^}]+)\}",
+            self.css,
+        )
+        self.assertIsNotNone(hotspot_reduce)
+        self.assertNotIn("transform: none", hotspot_reduce.group(1))
+
     def test_hero_has_quiet_chapter_routes(self):
         hero = re.search(r'<section class="start-hero"[\s\S]*?</section>', self.html)
         self.assertIsNotNone(hero)
@@ -1010,7 +1094,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn('preload="auto"', self.html)
         self.assertNotIn('preload="none"', self.html)
         self.assertIn('start.js?v=31', self.html)
-        self.assertIn("start.css?v=50", self.html)
+        self.assertIn("start.css?v=51", self.html)
         self.assertIn(" loop ", self.html)
         self.assertNotIn("youtube.com", self.html)
         self.assertNotIn("youtube-nocookie.com", self.html)

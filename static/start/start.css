@@ -82,22 +82,27 @@ body.start-body {
 .start-hero-hotspot {
   position: absolute;
   z-index: 1;
-  min-width: 44px;
-  min-height: 44px;
+  min-width: 52px;
+  min-height: 52px;
   border-radius: 50%;
   color: inherit;
   text-decoration: none;
+  /* left/top is the figurine center; min-size expands around that point. */
+  transform: translate(-50%, -50%);
 }
 
-/* Pin % of hero-world-map.jpg (1792×1008). left/top is the box; center sits on the figurine. */
-.start-hero-pin-bison { left: 17.2%; top: 20.2%; width: 8.8%; height: 10.4%; }
-.start-hero-pin-panda { left: 73.4%; top: 21.6%; width: 6.8%; height: 12.4%; }
-.start-hero-pin-zebra { left: 49.0%; top: 35.4%; width: 9.4%; height: 11.2%; }
-.start-hero-pin-tortoise { left: 10.4%; top: 71.8%; width: 8.0%; height: 9.0%; }
-.start-hero-pin-flamingo { left: 29.4%; top: 49.4%; width: 6.4%; height: 20.2%; }
-.start-hero-pin-tiger { left: 68.8%; top: 32.4%; width: 11.6%; height: 13.2%; }
-.start-hero-pin-koala { left: 82.6%; top: 71.6%; width: 6.8%; height: 12.4%; }
-.start-hero-pin-whale { left: 63.2%; top: 56.6%; width: 23.2%; height: 13.0%; }
+/*
+  Pin % of hero-world-map.jpg (1792×1008).
+  left/top = figurine center. Boxes are large for fingers and do not overlap.
+*/
+.start-hero-pin-bison { left: 20.5%; top: 27.2%; width: 13.0%; height: 13.0%; }
+.start-hero-pin-panda { left: 75.5%; top: 26.8%; width: 12.0%; height: 12.0%; }
+.start-hero-pin-zebra { left: 53.4%; top: 43.8%; width: 13.0%; height: 13.0%; }
+.start-hero-pin-tortoise { left: 14.0%; top: 75.2%; width: 13.0%; height: 12.5%; }
+.start-hero-pin-flamingo { left: 31.2%; top: 56.0%; width: 18.0%; height: 20.0%; }
+.start-hero-pin-tiger { left: 71.8%; top: 40.2%; width: 13.0%; height: 12.0%; }
+.start-hero-pin-koala { left: 86.2%; top: 76.2%; width: 11.0%; height: 13.0%; }
+.start-hero-pin-whale { left: 71.2%; top: 62.8%; width: 19.5%; height: 12.0%; }
 
 .start-hero-hotspot:focus-visible {
   outline: 3px solid var(--focus);
@@ -132,6 +137,11 @@ body.start-body {
   z-index: 2;
   max-width: 42rem;
   padding: 0 clamp(1.25rem, 5vw, 4rem) calc(2.4rem + env(safe-area-inset-bottom, 0px));
+  pointer-events: none;
+}
+
+.start-hero-copy .start-route {
+  pointer-events: auto;
 }
 
 .start-map-coach {
@@ -1382,11 +1392,15 @@ body.start-body {
   .start-route,
   .start-hero-copy,
   .start-chapter-copy,
-  .start-hero-hotspot,
   .start-map-coach,
   .start-hero.is-map-coaching .start-hero-pin-bison::after {
     transition: none;
     transform: none;
+    animation: none;
+  }
+
+  .start-hero-hotspot {
+    transition: none;
     animation: none;
   }
 
