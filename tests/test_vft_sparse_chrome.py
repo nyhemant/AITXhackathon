@@ -112,7 +112,7 @@ class VftSparseChromeTests(unittest.TestCase):
         for html in self.pages.values():
             self.assertIn('class="shell-brand" href="/start/"', html)
             self.assertIn('class="shell-product" href="/start/"', html)
-            self.assertIn('href="/field-pack/" role="menuitem">All places', html)
+            self.assertIn('href="/field-pack/" role="menuitem">Places', html)
             self.assertIn('href="/field-pack/virtual-field-trip/"', html)
             self.assertNotIn('id="vz-first-run"', html)
             self.assertNotIn("Start with the flamingo", html)

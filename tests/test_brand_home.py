@@ -99,7 +99,7 @@ class BrandHomeTests(unittest.TestCase):
     def test_place_page_explorer_ctas_stay_on_field_pack(self):
         html = HOUSTON.read_text(encoding="utf-8")
         self.assertIn('href="/field-pack/">All places</a>', html)
-        self.assertIn('href="/field-pack/" role="menuitem">All places', html)
+        self.assertIn('href="/field-pack/" role="menuitem">Places', html)
         self.assertEqual(_attr(html, "mission-change-place"), "/field-pack/?find=1")
         self.assertIn("Different place?", html)
 
@@ -132,7 +132,7 @@ class BrandHomeTests(unittest.TestCase):
             ],
         )
         self.assertIn("Those three doors start from", doors)
-        self.assertIn("Side door:", doors)
+        self.assertIn("Side door for grown-ups:", doors)
         self.assertNotIn("Animal cards", doors)
         self.assertNotIn("/field-pack/virtual-zoo/", html)
         self.assertNotIn('href="/dinner"', intro)
@@ -151,7 +151,7 @@ class BrandHomeTests(unittest.TestCase):
         html = HUB.read_text(encoding="utf-8")
         self.assertEqual(_attr(html, "shell-brand"), "/start/")
         self.assertEqual(_attr(html, "shell-product"), "/start/")
-        self.assertIn('href="/field-pack/" aria-current="page" role="menuitem">All places', html)
+        self.assertIn('href="/field-pack/" aria-current="page" role="menuitem">Places', html)
         self.assertIn("Find a place", html)
 
     def test_cards_and_vft_shells_match_the_same_split(self):
@@ -160,10 +160,10 @@ class BrandHomeTests(unittest.TestCase):
         self.assertEqual(_attr(cards, "shell-brand"), "/start/")
         self.assertEqual(_attr(cards, "shell-product"), "/start/")
         self.assertIn('href="/field-pack/">Places</a>', cards)
-        self.assertIn('href="/field-pack/" role="menuitem">All places', cards)
+        self.assertIn('href="/field-pack/" role="menuitem">Places', cards)
         self.assertEqual(_attr(vft, "shell-brand"), "/start/")
         self.assertEqual(_attr(vft, "shell-product"), "/start/")
-        self.assertIn('href="/field-pack/" role="menuitem">All places', vft)
+        self.assertIn('href="/field-pack/" role="menuitem">Places', vft)
 
     def test_generator_keeps_brand_on_start_and_explorer_on_field_pack(self):
         src = GENERATOR.read_text(encoding="utf-8")

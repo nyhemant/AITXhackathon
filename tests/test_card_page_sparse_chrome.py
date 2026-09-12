@@ -180,7 +180,7 @@ class CardPageSparseChromeTests(unittest.TestCase):
         for html in self.pages.values():
             self.assertIn(f'class="shell-brand" href="{HOME_HREF}"', html)
             self.assertIn(f'class="shell-product" href="{HOME_HREF}"', html)
-            self.assertIn('href="/field-pack/" role="menuitem">All places', html)
+            self.assertIn('href="/field-pack/" role="menuitem">Places', html)
             self.assertIn('href="/field-pack/virtual-field-trip/"', html)
             self.assertIn('href="/field-pack/cards/"', html)
 

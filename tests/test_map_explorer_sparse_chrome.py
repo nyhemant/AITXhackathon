@@ -217,7 +217,7 @@ class MapExplorerSparseChromeTests(unittest.TestCase):
         self.assertIn('class="shell-brand" href="/start/"', self.html)
         self.assertIn('class="shell-product" href="/start/"', self.html)
         self.assertIn('class="shell-start" href="/start/"', self.html)
-        self.assertIn('href="/field-pack/" aria-current="page" role="menuitem">All places', self.html)
+        self.assertIn('href="/field-pack/" aria-current="page" role="menuitem">Places', self.html)
         explorer = _get("/field-pack/")
         self.assertEqual(explorer._code, 200)
         self.assertIsNone(explorer._headers.get("Location"))

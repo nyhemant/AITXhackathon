@@ -106,6 +106,12 @@ NAV_PLACES_SUB = "Map &amp; places"
 NAV_CARDS_SUB = "Talk, photos &amp; Q&amp;A"
 NAV_VFT_SUB = "Explore at home"
 NAV_ABOUT_SUB = "1Less &amp; contact"
+# Phase B More menu — same four doors as Start. Print is a grown-up side door, not here.
+NAV_CARDS_LABEL = "Cards"
+NAV_WATCH_LABEL = "Watch Live"
+NAV_PLACES_LABEL = "Places"
+NAV_ABOUT_LABEL = "About"
+NAV_ABOUT_HREF = "/about/"
 
 # Place-page primary actions (short). Card pages use CARD_* / CTA_PRINT / PLACE_VFT_CTA.
 CTA_AT_HOME = "At home"
@@ -516,7 +522,7 @@ def esc(s: str) -> str:
 
 
 def nav_more_menu_html(*, current: str = "") -> str:
-    """Shared More menu — keep VFT subtitle dual-mode, not print-first."""
+    """Shared More menu — Cards, Watch Live, Places, About. No Dinner, no print."""
 
     def item(href: str, label: str, sub: str, key: str) -> str:
         cur = ' aria-current="page"' if current == key else ""
@@ -527,10 +533,10 @@ def nav_more_menu_html(*, current: str = "") -> str:
     return f"""      <div class="shell-more-wrap">
         <button type="button" class="shell-more" aria-expanded="false" aria-haspopup="true" aria-controls="shell-menu">More</button>
         <div id="shell-menu" class="shell-menu" hidden role="menu">
-          {item("/field-pack/", "All places", NAV_PLACES_SUB, "places")}
-          {item("/field-pack/cards/", "Animal cards", NAV_CARDS_SUB, "cards")}
-          {item("/field-pack/virtual-field-trip/", "Virtual Field Trip", NAV_VFT_SUB, "vft")}
-          {item("/field-pack/#about", "About", NAV_ABOUT_SUB, "about")}
+          {item("/field-pack/cards/", NAV_CARDS_LABEL, NAV_CARDS_SUB, "cards")}
+          {item("/field-pack/virtual-field-trip/", NAV_WATCH_LABEL, NAV_VFT_SUB, "vft")}
+          {item("/field-pack/", NAV_PLACES_LABEL, NAV_PLACES_SUB, "places")}
+          {item(NAV_ABOUT_HREF, NAV_ABOUT_LABEL, NAV_ABOUT_SUB, "about")}
         </div>
       </div>"""
 
@@ -2594,7 +2600,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
         <span class="footer-dot">·</span>
         <a href="/field-pack/cards/">Cards</a>
         <span class="footer-dot">·</span>
-        <a href="/field-pack/#about">About</a>
+        <a href="{NAV_ABOUT_HREF}">About</a>
         <span class="footer-dot">·</span>
         <a href="mailto:hello@1less.app">Contact</a>
       </p>
@@ -2733,7 +2739,7 @@ def render_venue_page(v: dict) -> str:
       <p>
         <a href="/field-pack/">All places</a> ·
         <strong>Field Trip Kit</strong> ·
-        <a href="/field-pack/#about">About</a>
+        <a href="{NAV_ABOUT_HREF}">About</a>
       </p>
     </footer>
   </div>
@@ -4752,11 +4758,10 @@ def write_cards_hub(venues: list[dict]) -> str:
         <div class="shell-more-wrap">
           <button type="button" class="shell-more" aria-expanded="false" aria-haspopup="true" aria-controls="shell-menu">More</button>
           <div id="shell-menu" class="shell-menu" hidden role="menu">
-            <a href="/start/" role="menuitem">Start</a>
-            <a href="/field-pack/" role="menuitem">All places<small>{NAV_PLACES_SUB}</small></a>
-            <a href="/field-pack/cards/" aria-current="page" role="menuitem">Animal cards<small>{NAV_CARDS_SUB}</small></a>
-            <a href="/field-pack/virtual-field-trip/" role="menuitem">Virtual Field Trip<small>{NAV_VFT_SUB}</small></a>
-            <a href="/about/" role="menuitem">About<small>{NAV_ABOUT_SUB}</small></a>
+            <a href="/field-pack/cards/" aria-current="page" role="menuitem">{NAV_CARDS_LABEL}<small>{NAV_CARDS_SUB}</small></a>
+            <a href="/field-pack/virtual-field-trip/" role="menuitem">{NAV_WATCH_LABEL}<small>{NAV_VFT_SUB}</small></a>
+            <a href="/field-pack/" role="menuitem">{NAV_PLACES_LABEL}<small>{NAV_PLACES_SUB}</small></a>
+            <a href="{NAV_ABOUT_HREF}" role="menuitem">{NAV_ABOUT_LABEL}<small>{NAV_ABOUT_SUB}</small></a>
           </div>
         </div>
       </nav>
@@ -5011,10 +5016,10 @@ def write_card_pages(
       <div class="shell-more-wrap">
         <button type="button" class="shell-more" aria-expanded="false" aria-haspopup="true" aria-controls="shell-menu">More</button>
         <div id="shell-menu" class="shell-menu" hidden role="menu">
-          <a href="/field-pack/" role="menuitem">All places<small>{NAV_PLACES_SUB}</small></a>
-          <a href="/field-pack/cards/" aria-current="page" role="menuitem">Animal cards<small>{NAV_CARDS_SUB}</small></a>
-          <a href="/field-pack/virtual-field-trip/" role="menuitem">Virtual Field Trip<small>{NAV_VFT_SUB}</small></a>
-          <a href="/about/" role="menuitem">About<small>{NAV_ABOUT_SUB}</small></a>
+          <a href="/field-pack/cards/" aria-current="page" role="menuitem">{NAV_CARDS_LABEL}<small>{NAV_CARDS_SUB}</small></a>
+          <a href="/field-pack/virtual-field-trip/" role="menuitem">{NAV_WATCH_LABEL}<small>{NAV_VFT_SUB}</small></a>
+          <a href="/field-pack/" role="menuitem">{NAV_PLACES_LABEL}<small>{NAV_PLACES_SUB}</small></a>
+          <a href="{NAV_ABOUT_HREF}" role="menuitem">{NAV_ABOUT_LABEL}<small>{NAV_ABOUT_SUB}</small></a>
         </div>
       </div>
     </header>
@@ -5282,8 +5287,8 @@ def patch_landing_directory(venues: list[dict]) -> None:
 
     if 'href="/field-pack/cards/"' not in html:
         html = html.replace(
-            f'<a href="/field-pack/" aria-current="page" role="menuitem">All places<small>{NAV_PLACES_SUB}</small></a>\n            <a href="/field-pack/#about"',
-            f'<a href="/field-pack/" aria-current="page" role="menuitem">All places<small>{NAV_PLACES_SUB}</small></a>\n            <a href="/field-pack/cards/" role="menuitem">Animal cards<small>{NAV_CARDS_SUB}</small></a>\n            <a href="/field-pack/#about"',
+            f'<a href="/field-pack/" aria-current="page" role="menuitem">{NAV_PLACES_LABEL}<small>{NAV_PLACES_SUB}</small></a>\n            <a href="{NAV_ABOUT_HREF}"',
+            f'<a href="/field-pack/cards/" role="menuitem">{NAV_CARDS_LABEL}<small>{NAV_CARDS_SUB}</small></a>\n            <a href="/field-pack/virtual-field-trip/" role="menuitem">{NAV_WATCH_LABEL}<small>{NAV_VFT_SUB}</small></a>\n            <a href="/field-pack/" aria-current="page" role="menuitem">{NAV_PLACES_LABEL}<small>{NAV_PLACES_SUB}</small></a>\n            <a href="{NAV_ABOUT_HREF}"',
             1,
         )
 
