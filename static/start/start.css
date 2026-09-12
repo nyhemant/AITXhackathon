@@ -44,7 +44,30 @@ body.start-body {
   min-height: 100svh;
   min-height: 100vh;
   overflow: hidden;
-  background: #1b1916;
+  background: #c5dcf0;
+}
+
+/*
+  Cover the hero with a 1792×1008 plate so pin % stay in image space.
+  Tall viewports left-align (Americas stay in frame; east pins crop).
+  Wide viewports center so the full map and all eight pins show.
+*/
+.start-hero-map {
+  position: absolute;
+  z-index: 0;
+  width: max(100%, calc(100svh * 1792 / 1008));
+  height: max(100%, calc(100vw * 1008 / 1792));
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@media (min-aspect-ratio: 1792 / 1008) {
+  .start-hero-map {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
 
 .start-hero-still {
@@ -53,15 +76,45 @@ body.start-body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 52% 28%;
+  object-position: 50% 50%;
+}
+
+.start-hero-hotspot {
+  position: absolute;
+  z-index: 1;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 50%;
+  color: inherit;
+  text-decoration: none;
+}
+
+.start-hero-pin-bison { left: 14.5%; top: 19%; width: 13%; height: 17%; }
+.start-hero-pin-panda { left: 71%; top: 12%; width: 10%; height: 18%; }
+.start-hero-pin-zebra { left: 47%; top: 33%; width: 12%; height: 16%; }
+.start-hero-pin-tortoise { left: 8%; top: 67%; width: 12%; height: 15%; }
+.start-hero-pin-flamingo { left: 28%; top: 47%; width: 9.5%; height: 18%; }
+.start-hero-pin-tiger { left: 65%; top: 33%; width: 13%; height: 16%; }
+.start-hero-pin-koala { left: 81%; top: 67%; width: 10%; height: 16%; }
+.start-hero-pin-whale { left: 60%; top: 51%; width: 22%; height: 15%; }
+
+.start-hero-hotspot:hover {
+  background: rgba(255, 252, 247, 0.16);
+  box-shadow: 0 0 0 2px rgba(12, 10, 8, 0.14);
+}
+
+.start-hero-hotspot:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+  background: rgba(255, 252, 247, 0.2);
 }
 
 .start-hero::after {
   content: "";
   position: absolute;
   inset: auto 0 0;
-  height: min(46%, 22rem);
-  background: linear-gradient(to top, rgba(12, 10, 8, 0.58), rgba(12, 10, 8, 0.12) 62%, transparent);
+  height: min(56%, 28rem);
+  background: linear-gradient(to top, rgba(12, 10, 8, 0.76), rgba(12, 10, 8, 0.32) 48%, rgba(12, 10, 8, 0.06) 78%, transparent);
   pointer-events: none;
   z-index: 1;
 }
@@ -819,6 +872,10 @@ body.start-body {
 }
 
 @media (max-width: 640px) {
+  .start-hero-hotspot[data-hero-region="east"] {
+    display: none;
+  }
+
   #start-home .start-chapter-still {
     object-position: 12% 22%;
   }
@@ -1171,6 +1228,10 @@ body.start-body {
   .start-chapter-copy {
     animation: start-hero-fade 700ms var(--ease) both;
   }
+
+  .start-hero-hotspot:hover {
+    transform: scale(1.06);
+  }
 }
 
 @keyframes start-hero-fade {
@@ -1190,7 +1251,8 @@ body.start-body {
   .start-pill,
   .start-route,
   .start-hero-copy,
-  .start-chapter-copy {
+  .start-chapter-copy,
+  .start-hero-hotspot {
     transition: none;
     transform: none;
     animation: none;
