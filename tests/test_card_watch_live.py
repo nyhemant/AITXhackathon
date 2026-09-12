@@ -380,7 +380,7 @@ class CardWatchLiveTests(unittest.TestCase):
             self.assertIn('id="vz-card-nav"', html)
             self.assertIn('id="vz-back-card"', html)
             self.assertIn('id="vz-next-stop"', html)
-            self.assertIn("virtual-venue.js?v=103", html)
+            self.assertIn("virtual-venue.js?v=104", html)
             self.assertIn("virtual-venue.css?v=57", html)
             self.assertIn("This is a film, not a live cam.", html)
 
