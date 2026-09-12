@@ -36,7 +36,7 @@
   const PICK_BY_KIND = {
     zoo: {
       key: "fp-virtual-zoo-picks-v1",
-      libUrl: "/field-pack/data/virtual-venues/zoo-film-library.json?v=8",
+      libUrl: "/field-pack/data/virtual-venues/zoo-film-library.json?v=9",
       title: "Create your own virtual zoo",
       noun: "zoo",
       track: "zoo_picks_saved",

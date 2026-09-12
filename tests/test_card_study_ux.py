@@ -445,8 +445,9 @@ class CardStudyUxTests(unittest.TestCase):
         warthog = _main((FP / "cards" / "warthog" / "index.html").read_text(encoding="utf-8"))
         self.assertIn("card-hero-links", warthog)
         self.assertIn(">Photos</a>", warthog)
-        self.assertNotIn("Watch Live", warthog)
-        self.assertNotIn('class="seo-watch-row"', warthog)
+        self.assertIn("Watch Live", warthog)
+        self.assertIn('class="seo-watch-row"', warthog)
+        self.assertIn("#habitat=warthog", warthog)
 
     def test_hero_photo_matches_watch_live_href(self):
         href = "/field-pack/virtual-field-trip/?tab=zoo&from=card#habitat=zebra"

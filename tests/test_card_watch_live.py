@@ -13,6 +13,7 @@ from urllib.parse import urlparse
 REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO / "scripts"))
 
+from field_pack_catalog_kind import load_card_kinds  # noqa: E402
 from generate_bdo_seo import (  # noqa: E402
     CTA_WATCH_LIVE,
     card_watch_href,
@@ -22,35 +23,34 @@ from generate_bdo_seo import (  # noqa: E402
     vft_has_inpage_media,
     watch_links_html,
 )
+from parenttest_guardrails import (  # noqa: E402
+    WATCH_LIVE_NO_MEDIA_ALLOW,
+    wildlife_sealife_watch_live_coverage_issues,
+)
 
 FP = REPO / "static" / "field-pack"
 LION = FP / "cards" / "african-lion" / "index.html"
 GIRAFFE = FP / "cards" / "reticulated-giraffe" / "index.html"
 JELLY = FP / "cards" / "jellyfish" / "index.html"
-CHEETAH = FP / "cards" / "cheetah" / "index.html"
-KOALA = FP / "cards" / "koala" / "index.html"
-WARTHOG = FP / "cards" / "warthog" / "index.html"
-OSTRICH = FP / "cards" / "ostrich" / "index.html"
 DINO = FP / "cards" / "sci-dinosaur" / "index.html"
 
 # Zoo film-library overlays restored for Watch Live via ensureDeepLinkHabitat.
 ZOO_LIBRARY_WATCH_CARDS = (
     "american-alligator",
     "american-bison",
+    "cheetah",
+    "chimpanzee",
     "elk",
+    "galapagos-tortoise",
+    "koala",
+    "orangutan",
+    "ostrich",
     "polar-bear",
+    "red-panda",
+    "ring-tailed-lemur",
+    "two-toed-sloth",
+    "warthog",
     "zebra",
-)
-# Still baked without Watch Live until a later regen; helper already qualifies.
-ZOO_LIBRARY_PENDING_CARDS = (
-    ("koala", "zoo"),
-    ("chimpanzee", "zoo"),
-    ("orangutan", "zoo"),
-    ("red-panda", "zoo"),
-    ("cheetah", "zoo"),
-    ("galapagos-tortoise", "zoo"),
-    ("ring-tailed-lemur", "zoo"),
-    ("two-toed-sloth", "zoo"),
 )
 AQUARIUM_LIBRARY_WATCH_CARDS = (
     "manta-ray",
@@ -60,7 +60,7 @@ AQUARIUM_LIBRARY_WATCH_CARDS = (
     "puffin",
     "sea-otter",
 )
-MISSING_HABITAT_CARDS = tuple(cid for cid, _tab in ZOO_LIBRARY_PENDING_CARDS)
+FRESHWATER = FP / "cards" / "freshwater-fish" / "index.html"
 VFT_JS = FP / "js" / "virtual-venue.js"
 VFT_PAGES = (
     FP / "virtual-field-trip" / "index.html",
@@ -155,30 +155,33 @@ class CardWatchLiveTests(unittest.TestCase):
         self.assertIn("Watch Live", jelly)
         self.assertNotIn("montereybayaquarium.org", _main(jelly))
 
-    def test_pending_zoo_library_html_still_hides_watch_live(self):
-        """Helper already qualifies; baked HTML waits for a later regen."""
+    def test_wildlife_and_sealife_watch_live_or_exception(self):
+        """Every wildlife / sea-life card has Watch Live, or is named in the allowlist."""
+        kinds = load_card_kinds()
+        issues = wildlife_sealife_watch_live_coverage_issues(kinds=kinds)
+        self.assertEqual(issues, [], "\n".join(issues))
+        allow = {cid: reason for cid, reason in WATCH_LIVE_NO_MEDIA_ALLOW}
+        self.assertEqual(set(allow), {"freshwater-fish"})
+        self.assertIn("river/lake", allow["freshwater-fish"])
         vft = load_vft_by_card()
-        for cid, tab in ZOO_LIBRARY_PENDING_CARDS:
-            rec = vft[cid]
-            self.assertTrue(rec.get("library_only"), cid)
-            self.assertTrue(vft_has_inpage_media(rec), cid)
-            self.assertTrue(vft_can_watch_live(rec), cid)
+        for cid, row in kinds.items():
+            if row.get("hub") not in {"wildlife", "sealife"}:
+                continue
+            rec = vft.get(cid) or {}
             html = (FP / "cards" / cid / "index.html").read_text(encoding="utf-8")
             main = _main(html)
-            self.assertNotIn("card-watch-live", main, cid)
-            self.assertNotIn(CTA_WATCH_LIVE, main, cid)
-            self.assertNotIn('class="seo-watch-row"', main, cid)
-            self.assertNotIn("card-page-photo-link", main, cid)
+            if cid in allow:
+                self.assertFalse(vft_has_inpage_media(rec), cid)
+                self.assertNotIn("card-watch-live", main, cid)
+                continue
+            self.assertTrue(vft_has_inpage_media(rec), cid)
+            self.assertTrue(vft_can_watch_live(rec), cid)
+            self.assertIn("card-watch-live", main, cid)
+            self.assertIn(CTA_WATCH_LIVE, main, cid)
+            self.assertIn("card-page-photo-link", main, cid)
+            self.assertIn(f"#habitat={cid}", main, cid)
             for host in OUTBOUND_CAM:
                 self.assertNotIn(host, main, cid)
-            actions = main.split('class="card-page-actions"', 1)[1]
-            self.assertNotIn("card-watch-live", actions, cid)
-            if tab == "zoo":
-                href = f"/field-pack/virtual-field-trip/?tab=zoo&from=card#habitat={cid}"
-            else:
-                href = f"/field-pack/virtual-field-trip/?tab=aquarium&from=card#habitat={cid}"
-            self.assertNotIn(href, actions, cid)
-            self.assertNotIn(f"#habitat={cid}", main, cid)
 
     def test_zoo_library_watch_cards_show_watch_live(self):
         """Zoo-film-library overlays with film are live doors, not dead CTAs."""
@@ -229,6 +232,9 @@ class CardWatchLiveTests(unittest.TestCase):
         self.assertIn("american-bison", real)
         self.assertIn("american-alligator", real)
         self.assertIn("elk", real)
+        self.assertIn("ostrich", real)
+        self.assertIn("warthog", real)
+        self.assertIn("koala", real)
         self.assertNotIn("manta-ray", _tour_habitat_ids())
         self.assertNotIn("american-bison", _tour_habitat_ids())
         self.assertNotIn("elk", _tour_habitat_ids())
@@ -252,25 +258,9 @@ class CardWatchLiveTests(unittest.TestCase):
                     dead.append(f"{path.parent.name}: #{hid} not in zoo/aquarium habitats or film library")
         self.assertEqual(dead, [])
 
-    def test_missing_habitat_hides_watch_live(self):
-        vft = load_vft_by_card()
-        for cid in MISSING_HABITAT_CARDS:
-            rec = vft[cid]
-            self.assertTrue(rec.get("library_only"), cid)
-            self.assertTrue(vft_can_watch_live(rec), cid)
-            html = (FP / "cards" / cid / "index.html").read_text(encoding="utf-8")
-            main = _main(html)
-            self.assertNotIn("card-watch-live", main, cid)
-            self.assertNotIn("Watch Live", main, cid)
-            self.assertNotIn('class="seo-watch-row"', main, cid)
-            self.assertNotIn("card-page-photo-link", main, cid)
-            actions = main.split('class="card-page-actions"', 1)[1]
-            self.assertIn("/field-pack/cards/", actions, cid)
-            self.assertNotIn(f"#habitat={cid}", main, cid)
-
     def test_no_media_animals_stay_buttonless(self):
         vft = load_vft_by_card()
-        for path in (WARTHOG, OSTRICH):
+        for path in (FRESHWATER,):
             cid = path.parent.name
             rec = vft.get(cid) or {}
             self.assertFalse(vft_has_inpage_media(rec), cid)
@@ -348,6 +338,18 @@ class CardWatchLiveTests(unittest.TestCase):
         self.assertIn("card-watch-live", gator_watch)
         self.assertIn("#habitat=american-alligator", gator_watch)
         self.assertIn("Film — not a live cam", gator_watch)
+        ostrich = load_vft_by_card()["ostrich"]
+        self.assertTrue(ostrich["library_only"])
+        self.assertTrue(vft_can_watch_live(ostrich))
+        ostrich_watch = watch_links_html({"vft": ostrich}, film_via_vft=True, watch_live=True)
+        self.assertIn("card-watch-live", ostrich_watch)
+        self.assertIn("#habitat=ostrich", ostrich_watch)
+        warthog = load_vft_by_card()["warthog"]
+        self.assertTrue(warthog["library_only"])
+        self.assertTrue(vft_can_watch_live(warthog))
+        warthog_watch = watch_links_html({"vft": warthog}, film_via_vft=True, watch_live=True)
+        self.assertIn("card-watch-live", warthog_watch)
+        self.assertIn("#habitat=warthog", warthog_watch)
         whale = load_vft_by_card()["whale-shark"]
         self.assertTrue(whale["library_only"])
         self.assertTrue(vft_can_watch_live(whale))
@@ -378,7 +380,7 @@ class CardWatchLiveTests(unittest.TestCase):
             self.assertIn('id="vz-card-nav"', html)
             self.assertIn('id="vz-back-card"', html)
             self.assertIn('id="vz-next-stop"', html)
-            self.assertIn("virtual-venue.js?v=102", html)
+            self.assertIn("virtual-venue.js?v=103", html)
             self.assertIn("virtual-venue.css?v=57", html)
             self.assertIn("This is a film, not a live cam.", html)
 

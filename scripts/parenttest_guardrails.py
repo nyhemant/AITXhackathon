@@ -57,22 +57,18 @@ TRY_NEXT_CROSS_KINGDOM_ALLOW: tuple[tuple[str, str], ...] = ()
 WATCH_LIVE_WITHOUT_HABITAT_ALLOW: tuple[tuple[str, str], ...] = ()
 EMPTY_PICTURES_ALLOW: tuple[tuple[str, str], ...] = ()
 
-# Zoo film-library overlays that already have video/cam, but baked cards still
-# hide Watch Live. Aquarium overlays (manta-ray, whale-shark, kelp-forest,
-# cuttlefish, puffin, sea-otter) were restored in PR #212 — do not re-add them.
-# Drop an id here when its card gains Watch Live.
-LIBRARY_WATCH_LIVE_PENDING_RESTORE = frozenset(
-    {
-        "cheetah",
-        "chimpanzee",
-        "galapagos-tortoise",
-        "koala",
-        "orangutan",
-        "red-panda",
-        "ring-tailed-lemur",
-        "two-toed-sloth",
-    }
+# Wildlife / sea-life cards with no playable in-page film or cam embed.
+# Watch Live stays hidden. Do not add a junk clip to clear an id.
+WATCH_LIVE_NO_MEDIA_ALLOW: tuple[tuple[str, str], ...] = (
+    (
+        "freshwater-fish",
+        "No habitat-first river/lake film. Generic river gallery is not a card; "
+        "piranha is the freshwater species on the bench.",
+    ),
 )
+
+# Empty: zoo library overlays with video/cam now bake Watch Live (PR #234 + normalize).
+LIBRARY_WATCH_LIVE_PENDING_RESTORE = frozenset()
 
 # Short slugs that 404; hub / card links must use the canonical card id.
 CANONICAL_SHORT_SLUGS = {
@@ -251,6 +247,46 @@ def dead_watch_live_issues(
     return issues
 
 
+def wildlife_sealife_watch_live_coverage_issues(
+    *,
+    html_by_id: dict[str, str] | None = None,
+    kinds: dict | None = None,
+    ids: list[str] | None = None,
+    vft_by_card: dict | None = None,
+    no_media_allow: set[str] | None = None,
+) -> list[str]:
+    """Every wildlife/sealife card has Watch Live when media exists, or is allowlisted."""
+    table = kinds if kinds is not None else load_card_kinds()
+    want = ids if ids is not None else published_animal_sea_life_ids(table)
+    vft = vft_by_card if vft_by_card is not None else load_vft_by_card()
+    skip = no_media_allow if no_media_allow is not None else _allow_ids(WATCH_LIVE_NO_MEDIA_ALLOW)
+    issues: list[str] = []
+    for cid in want:
+        html = (html_by_id or {}).get(cid) if html_by_id is not None else load_card_html(cid)
+        if html_by_id is not None and cid not in html_by_id:
+            continue
+        rec = vft.get(cid) or {}
+        has_media = vft_can_watch_live(rec)
+        hrefs = visible_watch_live_hrefs(html) if html else []
+        if cid in skip:
+            if has_media:
+                issues.append(f"{cid}: listed in WATCH_LIVE_NO_MEDIA_ALLOW but now has in-page media")
+            if hrefs:
+                issues.append(f"{cid}: listed in WATCH_LIVE_NO_MEDIA_ALLOW but baked HTML has Watch Live")
+            continue
+        if not has_media:
+            issues.append(
+                f"{cid}: no in-page film/cam and not in WATCH_LIVE_NO_MEDIA_ALLOW"
+            )
+            continue
+        if not html:
+            issues.append(f"{cid}: has in-page media but cards/{cid}/index.html is missing")
+            continue
+        if not hrefs:
+            issues.append(f"{cid}: has in-page media but baked HTML has no Watch Live CTA")
+    return issues
+
+
 def missing_library_watch_live_issues(
     *,
     html_by_id: dict[str, str] | None = None,
@@ -341,6 +377,7 @@ def all_issues(**kwargs) -> dict[str, list[str]]:
         "watch_live_habitat": dead_watch_live_issues(**shared),
         "empty_pictures": empty_pictures_issues(**shared),
         "library_watch_live": missing_library_watch_live_issues(**shared),
+        "watch_live_coverage": wildlife_sealife_watch_live_coverage_issues(**shared),
         "short_slug_hub": short_slug_hub_issues(),
     }
 

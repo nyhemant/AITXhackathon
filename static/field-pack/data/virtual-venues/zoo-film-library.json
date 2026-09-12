@@ -1,16 +1,8 @@
 {
   "id": "zoo-film-library",
   "checked": "2026-09-12",
-  "note": "Pick-10 ingredients for the zoo tab. Default tour is the current 10. Bench extras need an animal-first film (official zoo, Nat Geo Kids, or BBC Earth). Mute autoplay uses video.start to skip logos. Warthog, ostrich, and a few house animals stay omitted until a yard-first clip locks.",
+  "note": "Pick-10 ingredients for the zoo tab. Default tour is the current 10. Bench extras need an animal-first film (official zoo, Nat Geo Kids, or BBC Earth). Mute autoplay uses video.start to skip logos. Ostrich and warthog now have BBC habitat films. A few house animals stay omitted until a yard-first clip locks.",
   "omit": [
-    {
-      "cardId": "warthog",
-      "reason": "No official habitat film; visitor clips only."
-    },
-    {
-      "cardId": "ostrich",
-      "reason": "Only mixed savanna tours, not an ostrich-first film."
-    },
     {
       "cardId": "komodo-dragon",
       "reason": "Official zoo clips are debut teasers or talking facts, not a habitat-first lock."
@@ -648,6 +640,46 @@
       },
       "cam": {},
       "printAnswer": "Males grow branched antlers, then shed them and grow a new set. A bugle is a loud autumn bull call — a whistle and bellow that can carry far."
+    },
+    {
+      "cardId": "ostrich",
+      "label": "Ostrich yard",
+      "challenge": "Why can’t an ostrich fly? How do long legs help?",
+      "defaultTour": false,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=xVBqSJmHajg",
+        "title": "Ostrich courtship dance",
+        "provider": "youtube",
+        "channel": "BBC Earth",
+        "start": 0,
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=xVBqSJmHajg",
+          "checked": "2026-09-12"
+        }
+      },
+      "cam": {},
+      "printAnswer": "Ostriches cannot fly — they run on strong legs. Standing tall helps it look out and spot danger."
+    },
+    {
+      "cardId": "warthog",
+      "label": "Warthog yard",
+      "challenge": "Why does a warthog have face warts? Why back into a den?",
+      "defaultTour": false,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=OXW_1i1pA0w",
+        "title": "Warthog visit to a mongoose spa",
+        "provider": "youtube",
+        "channel": "BBC",
+        "start": 0,
+        "verify": {
+          "status": "sourced",
+          "source": "https://www.youtube.com/watch?v=OXW_1i1pA0w",
+          "checked": "2026-09-12"
+        }
+      },
+      "cam": {},
+      "printAnswer": "Face “warts” are tough pads, not disease sores. They often sleep in old aardvark burrows, backing in with tusks ready."
     },
     {
       "cardId": "saltwater-crocodile",
