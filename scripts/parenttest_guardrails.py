@@ -20,9 +20,8 @@ and rewrite_card_try_next.py already use.
   parks          place_feature    (n/a)                no
 
 study_try_next_hub(id) returns "sealife" only when TSV hub is sealife;
-every other id groups as "wildlife". Thumb ids use that same helper, so a
-wildlife card may recommend a parks study card (bison) — that is in-kingdom
-under the existing helper.
+every other id groups as "wildlife". Bison / elk / alligator are wildlife
+animals (same kingdom as other study cards). Towpath stays parks / unlisted.
 
 Usage:
   python3 scripts/parenttest_guardrails.py --check
@@ -74,6 +73,8 @@ LIBRARY_WATCH_LIVE_PENDING_RESTORE = frozenset(
         "ring-tailed-lemur",
         "two-toed-sloth",
         "zebra",
+        # Zoo-library overlay; Cards hub rehub pulled it into wildlife scope.
+        "american-alligator",
     }
 )
 

@@ -75,8 +75,10 @@ class CardKindTests(unittest.TestCase):
         for cid in SEALIFE_MISFILED:
             self.assertNotIn(f'data-card-id="{cid}"', wildlife, cid)
             self.assertIn(f'data-card-id="{cid}"', sealife, cid)
-        self.assertIn('Wildlife <span class="seo-dir-count">22</span>', hub)
+        self.assertIn('Wildlife <span class="seo-dir-count">25</span>', hub)
         self.assertIn('Sea life <span class="seo-dir-count">17</span>', hub)
+        self.assertNotIn('id="cards-parks"', hub)
+        self.assertNotIn('data-card-id="cuyahoga-towpath"', hub)
 
     def test_animal_pack_stays_animal(self):
         self.assertEqual(

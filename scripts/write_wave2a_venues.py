@@ -69,9 +69,9 @@ CARD_KINDS = [
     ("sci-aquarium-zone", "Aquarium zone", "attractions", "neither"),
     ("sci-rocket", "Rockets & launch", "attractions", "neither"),
     ("sci-astronaut", "Astronaut training", "attractions", "neither"),
-    ("american-alligator", "American alligator", "parks", "neither"),
-    ("american-bison", "American bison", "parks", "neither"),
-    ("elk", "Elk", "parks", "neither"),
+    ("american-alligator", "American alligator", "wildlife", "neither"),
+    ("american-bison", "American bison", "wildlife", "neither"),
+    ("elk", "Elk", "wildlife", "neither"),
     ("cuyahoga-towpath", "Towpath trail", "parks", "neither"),
 ]
 

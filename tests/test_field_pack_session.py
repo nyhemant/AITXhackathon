@@ -243,16 +243,18 @@ class FlagshipSessionTests(unittest.TestCase):
         web = (REPO / "src" / "busyparent_agent" / "web.py").read_text(encoding="utf-8")
         self.assertIn('DINNER_PATH = "/dinner"', web)
 
-    def test_hub_towpath_is_parks_not_wildlife(self):
+    def test_hub_unlists_towpath_and_parks_panel(self):
         hub = (FP / "cards" / "index.html").read_text(encoding="utf-8")
-        self.assertIn('id="cards-parks"', hub)
-        self.assertIn('data-card-id="cuyahoga-towpath"', hub)
-        self.assertIn('data-card-kind="place_feature"', hub)
+        self.assertNotIn('id="cards-parks"', hub)
+        self.assertNotIn('data-card-accordion="parks"', hub)
+        self.assertNotIn('data-card-filter="parks"', hub)
+        self.assertNotIn('data-card-id="cuyahoga-towpath"', hub)
         wildlife = hub.split('id="cards-wildlife"', 1)[1].split('id="cards-', 1)[0]
-        parks = hub.split('id="cards-parks"', 1)[1].split("</section>", 1)[0]
         self.assertNotIn("cuyahoga-towpath", wildlife)
-        self.assertIn("cuyahoga-towpath", parks)
-        self.assertIn('data-card-filter="parks"', hub)
+        self.assertIn('data-card-id="american-bison"', wildlife)
+        self.assertIn('data-card-id="american-alligator"', wildlife)
+        self.assertIn('data-card-id="elk"', wildlife)
+        self.assertIn('data-card-kind="animal"', wildlife)
 
     def test_art_lab_renders_perot_attribution(self):
         html = (FP / "cards" / "cm-art-lab" / "index.html").read_text(encoding="utf-8")

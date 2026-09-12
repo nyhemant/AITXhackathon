@@ -12,12 +12,15 @@ from __future__ import annotations
 CARD_KINDS = ("animal", "sea_life", "attraction", "place_feature")
 
 # Hub chrome derived from kind. Order is display order.
+# Parks stays in the table so leftover place_feature cards still group, but
+# the Cards hub does not list a Parks & trails accordion.
 HUB_SECTIONS = (
     ("wildlife", "Wildlife", "animal"),
     ("sealife", "Sea life", "sea_life"),
     ("attractions", "Attractions", "attraction"),
     ("parks", "Parks & trails", "place_feature"),
 )
+HUB_UNLISTED_SECTION_IDS = frozenset({"parks"})
 
 # Kind fallback until catalog cards carry `kind`. Not a hub membership list.
 # Keep in sync with sealife rows in card-kinds.tsv.

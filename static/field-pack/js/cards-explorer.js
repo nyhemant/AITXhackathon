@@ -147,7 +147,6 @@
   if (hash === "cards-attractions") openOnly("attractions");
   else if (hash === "cards-wildlife" || hash === "cards-wildlife-wrap") openOnly("wildlife");
   else if (hash === "cards-sealife" || hash === "cards-sealife-wrap") openOnly("sealife");
-  else if (hash === "cards-parks" || hash === "cards-parks-wrap") openOnly("parks");
   else if (hash === "cards-all-wrap" || hash === "cards-accordion") openPrimaryAll();
 
   if (q && q.value) applyHubFilter();
