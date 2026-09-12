@@ -15,6 +15,7 @@ from animal_park_links import (  # noqa: E402
     animal_park_rail_html,
     animals_for_park,
     animals_pointing_to_park,
+    is_official_source,
     load_animal_park_links,
     park_animals_html,
     parks_for_animal,
@@ -75,10 +76,6 @@ FORBIDDEN_PARKS = (
     "killarney",
     "table-mountain",
     "serengeti",
-    "galapagos",
-    "koala",
-    "giant-panda",
-    "panda",
 )
 
 
@@ -105,16 +102,6 @@ def _animals_section(html: str) -> str:
     if start < 0:
         return ""
     return vis[start:].split("</section>", 1)[0]
-
-
-def _official_source(url: str) -> bool:
-    return str(url or "").startswith(
-        (
-            "https://www.nps.gov/",
-            "https://www.sanparks.org/",
-            "https://parks.canada.ca/",
-        )
-    )
 
 
 class IntlAnimalParkRailsTests(unittest.TestCase):
@@ -156,18 +143,18 @@ class IntlAnimalParkRailsTests(unittest.TestCase):
         self.assertTrue(KILLARNEY.is_file())
         self.assertTrue(TABLE_MOUNTAIN.is_file())
         self.assertNotIn("table-mountain", {p["id"] for p in parks_for_animal("african-penguin")})
-        self.assertEqual(parks_for_animal("giant-panda"), [])
-        self.assertEqual(parks_for_animal("koala"), [])
+        self.assertNotIn("kruger", {p["id"] for p in parks_for_animal("giant-panda")})
+        self.assertNotIn("kruger", {p["id"] for p in parks_for_animal("koala")})
 
         for park_id, meta in (data.get("parks") or {}).items():
             listed = [str(x) for x in (meta.get("animals") or [])]
             incoming = animals_pointing_to_park(park_id)
             self.assertEqual(sorted(listed), sorted(incoming), park_id)
-            self.assertTrue(_official_source(str(meta.get("source") or "")), park_id)
+            self.assertTrue(is_official_source(str(meta.get("source") or "")), park_id)
         for cid, meta in (data.get("animals") or {}).items():
             for edge in meta.get("parks") or []:
                 self.assertTrue(
-                    _official_source(str(edge.get("source") or "")),
+                    is_official_source(str(edge.get("source") or "")),
                     f"{cid} → {edge.get('id')}",
                 )
 

@@ -4278,7 +4278,7 @@ _PLACE_CATS: dict[str, tuple[tuple[str, str, tuple[str, ...]], ...]] = {
     ),
     "park": (
         ("us", "US national parks", ("yellowstone", "yosemite", "grand-canyon", "zion", "acadia", "rocky-mountain", "olympic", "glacier")),
-        ("world", "Parks worldwide", ("banff", "kruger", "plitvice-lakes", "torres-del-paine", "fiordland", "table-mountain", "iguazu-argentina")),
+        ("world", "Parks worldwide", ("banff", "kruger", "galapagos", "giant-panda-national-park", "french-island", "torres-del-paine", "iguazu-argentina")),
     ),
 }
 

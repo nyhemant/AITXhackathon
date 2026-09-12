@@ -13765,12 +13765,174 @@ window.FIELD_PACK_VENUES = {
       { id: "th8", text: "Pick your favorite Iguazú stop — draw it later" }
     ],
     updated: "2026-08-09",
-  }
+  },
+  "giant-panda-national-park": {
+    id: "giant-panda-national-park",
+    name: "Giant Panda National Park",
+    shortName: "Giant Panda National Park",
+    type: "national_park",
+    mode: "precooked",
+    quality: "full",
+    lastVerified: "2026-09-12",
+    packTemplate: "park_features",
+    location: "Wolong, China",
+    website: "https://www.chinawolong.gov.cn/",
+    mapUrl: "https://www.chinawolong.gov.cn/",
+    blurb: "Sichuan mountain forests \u2014 Wolong visitor slice; wild pandas never promised.",
+    itemLabel: "stops",
+    itemDisplayNames: {
+      "np-visitor-center": "Wolong visitor center",
+      "giant-panda": "Giant panda (if you see one)",
+      "np-giant-tree": "Bamboo forest edge",
+      "np-scenic-overlook": "Mountain valley overlook",
+      "np-trailhead-sign": "Trail / stay-back sign",
+      "np-boardwalk": "Marked forest path",
+      "np-meadow": "Mountain meadow break",
+      "np-ranger-program": "Giant Panda National Park ranger talk (if offered)"
+    },
+    featuredAnimalIds: [
+      "np-visitor-center",
+      "giant-panda",
+      "np-giant-tree",
+      "np-scenic-overlook",
+      "np-trailhead-sign",
+      "np-boardwalk"
+    ],
+    animalIds: [
+      "np-visitor-center",
+      "giant-panda",
+      "np-giant-tree",
+      "np-scenic-overlook",
+      "np-trailhead-sign",
+      "np-boardwalk",
+      "np-meadow",
+      "np-ranger-program"
+    ],
+    treasureHunt: [
+      { id: "th1", text: "Find: Wolong visitor center" },
+      { id: "th2", text: "Visit: Giant panda (if you see one)" },
+      { id: "th3", text: "Read a sign at Giant Panda National Park" },
+      { id: "th4", text: "Stand still 10 seconds — what do you hear?" },
+      { id: "th5", text: "Find something tiny next to something huge" },
+      { id: "th6", text: "Point to a safe edge (rail, boardwalk, stay-back)" },
+      { id: "th7", text: "Spot water, rock, or a living thing" },
+      { id: "th8", text: "Pick your favorite Giant Panda National Park stop — draw it later" }
+    ],
+    updated: "2026-09-12",
+  },
+  "french-island": {
+    id: "french-island",
+    name: "French Island National Park",
+    shortName: "French Island",
+    type: "national_park",
+    mode: "precooked",
+    quality: "full",
+    lastVerified: "2026-09-12",
+    packTemplate: "park_features",
+    location: "Tankerton, Australia",
+    website: "https://www.parks.vic.gov.au/places-to-see/parks/french-island-national-park",
+    mapUrl: "https://www.parks.vic.gov.au/places-to-see/parks/french-island-national-park",
+    blurb: "Western Port ferry day \u2014 woodland walk from Tankerton; koalas never promised.",
+    itemLabel: "stops",
+    itemDisplayNames: {
+      "np-visitor-center": "Tankerton jetty / visitor info",
+      "koala": "Koala (if you see one)",
+      "np-giant-tree": "Manna gum woodland",
+      "np-scenic-overlook": "Wetland / Western Port view",
+      "np-trailhead-sign": "Walk / cycle sign",
+      "np-tide-coast": "Fairhaven beach walk",
+      "np-meadow": "Heathland walk",
+      "np-ranger-program": "French Island ranger talk (if offered)"
+    },
+    featuredAnimalIds: [
+      "np-visitor-center",
+      "koala",
+      "np-giant-tree",
+      "np-scenic-overlook",
+      "np-trailhead-sign",
+      "np-tide-coast"
+    ],
+    animalIds: [
+      "np-visitor-center",
+      "koala",
+      "np-giant-tree",
+      "np-scenic-overlook",
+      "np-trailhead-sign",
+      "np-tide-coast",
+      "np-meadow",
+      "np-ranger-program"
+    ],
+    treasureHunt: [
+      { id: "th1", text: "Find: Tankerton jetty / visitor info" },
+      { id: "th2", text: "Visit: Koala (if you see one)" },
+      { id: "th3", text: "Read a sign at French Island" },
+      { id: "th4", text: "Stand still 10 seconds — what do you hear?" },
+      { id: "th5", text: "Find something tiny next to something huge" },
+      { id: "th6", text: "Point to a safe edge (rail, boardwalk, stay-back)" },
+      { id: "th7", text: "Spot water, rock, or a living thing" },
+      { id: "th8", text: "Pick your favorite French Island stop — draw it later" }
+    ],
+    updated: "2026-09-12",
+  },
+  "galapagos": {
+    id: "galapagos",
+    name: "Gal\u00e1pagos National Park",
+    shortName: "Gal\u00e1pagos",
+    type: "national_park",
+    mode: "precooked",
+    quality: "full",
+    lastVerified: "2026-09-12",
+    packTemplate: "park_features",
+    location: "Puerto Ayora, Ecuador",
+    website: "https://galapagos.gob.ec/parque-nacional-galapagos/",
+    mapUrl: "https://galapagos.gob.ec/parque-nacional-galapagos/",
+    blurb: "Santa Cruz visitor slice \u2014 giant tortoises never promised on every landing.",
+    itemLabel: "stops",
+    itemDisplayNames: {
+      "np-visitor-center": "Santa Cruz visitor center",
+      "galapagos-tortoise": "Giant tortoise (if you see one)",
+      "np-scenic-overlook": "Highland or island overlook",
+      "np-trailhead-sign": "Trail / landing sign",
+      "np-boardwalk": "Marked visitor path",
+      "np-tide-coast": "Rocky shore or landing",
+      "np-giant-tree": "Highland tree / cactus edge",
+      "np-ranger-program": "Galápagos park guide talk (if offered)"
+    },
+    featuredAnimalIds: [
+      "np-visitor-center",
+      "galapagos-tortoise",
+      "np-scenic-overlook",
+      "np-trailhead-sign",
+      "np-boardwalk",
+      "np-tide-coast"
+    ],
+    animalIds: [
+      "np-visitor-center",
+      "galapagos-tortoise",
+      "np-scenic-overlook",
+      "np-trailhead-sign",
+      "np-boardwalk",
+      "np-tide-coast",
+      "np-giant-tree",
+      "np-ranger-program"
+    ],
+    treasureHunt: [
+      { id: "th1", text: "Find: Santa Cruz visitor center" },
+      { id: "th2", text: "Visit: Giant tortoise (if you see one)" },
+      { id: "th3", text: "Read a sign at Galápagos" },
+      { id: "th4", text: "Stand still 10 seconds — what do you hear?" },
+      { id: "th5", text: "Find something tiny next to something huge" },
+      { id: "th6", text: "Point to a safe edge (rail, boardwalk, stay-back)" },
+      { id: "th7", text: "Spot water, rock, or a living thing" },
+      { id: "th8", text: "Pick your favorite Galápagos stop — draw it later" }
+    ],
+    updated: "2026-09-12",
+  },
 };
 
 window.fpGetAnimal = (id) => window.FIELD_PACK_CATALOG[id] || null;
 window.fpGetVenue = (id) => window.FIELD_PACK_VENUES[id] || null;
-window.fpPrecookedVenueIds = ["dallas-zoo", "childrens-aquarium-dallas", "childrens-museum-perot", "fort-worth-zoo", "thinkery", "austin-zoo", "doseum", "houston-zoo", "san-diego-zoo", "san-diego-safari-park", "shedd-aquarium", "field-museum", "georgia-aquarium", "national-zoo", "monterey-bay-aquarium", "indy-childrens-museum", "amnh", "bronx-zoo", "la-zoo", "aquarium-of-the-pacific", "california-science-center", "cal-academy", "kennedy-space-center", "new-england-aquarium", "museum-of-science-boston", "philadelphia-zoo", "please-touch-museum", "national-aquarium-baltimore", "smithsonian-natural-history", "air-and-space", "st-louis-zoo", "omaha-henry-doorly", "minnesota-zoo", "denver-zoo", "denver-museum-nature-science", "woodland-park-zoo", "seattle-aquarium", "oregon-zoo", "oregon-museum-science-industry", "phoenix-zoo", "arizona-science-center", "san-antonio-zoo", "dallas-world-aquarium", "perot-museum", "cincinnati-zoo", "columbus-zoo", "cleveland-metroparks-zoo", "detroit-zoo", "milwaukee-zoo", "lincoln-park-zoo", "museum-of-science-industry-chi", "nashville-zoo", "memphis-zoo", "audubon-aquarium", "audubon-zoo", "miami-zoo", "frost-science", "tampa-zoo", "florida-aquarium", "orlando-science-center", "north-carolina-zoo", "discovery-place", "virginia-aquarium", "pittsburgh-zoo", "carnegie-natural-history", "kansas-city-zoo", "union-station-kc-science", "hogle-zoo", "albuquerque-biopark", "honolulu-zoo", "waikiki-aquarium", "point-defiance-zoo", "nashville-adventure-science", "dallas-arboretum", "london-zoo", "nhm-london", "singapore-zoo", "taronga-zoo", "berlin-zoo", "toronto-zoo", "ueno-zoo", "vancouver-aquarium", "paris-zoo", "melbourne-zoo", "vienna-zoo", "prague-zoo", "dubai-aquarium", "two-oceans-aquarium", "sao-paulo-zoo", "hong-kong-ocean-park", "auckland-zoo", "osaka-aquarium", "edinburgh-zoo", "dublin-zoo", "artis-zoo", "copenhagen-zoo", "singapore-night-safari", "montreal-biodome", "calgary-zoo", "chapultepec-zoo", "seoul-zoo", "kuala-lumpur-zoo", "perth-zoo", "adelaide-zoo", "wellington-zoo", "taipei-zoo", "beijing-zoo", "lotte-aquarium-seoul", "shanghai-ocean-aquarium", "munich-zoo", "zurich-zoo", "barcelona-zoo", "lisbon-zoo", "rome-bioparco", "antwerp-zoo", "manila-zoo", "johannesburg-zoo", "al-ain-zoo", "stockholm-skansen", "oslo-zoo", "helsinki-zoo", "budapest-zoo", "warsaw-zoo", "madrid-zoo", "milan-aquarium", "athens-attica-zoo", "istanbul-aquarium", "moscow-zoo", "nairobi-safari-walk", "cairo-zoo", "ecoparque-ba", "rio-zoo", "santiago-zoo", "lima-leyendas", "bogota-zoo", "jakarta-ragunan", "delhi-zoo", "mumbai-byculla-zoo", "bangalore-bannerghatta", "bangkok-safari-world", "yellowstone", "grand-canyon", "yosemite", "zion", "rocky-mountain", "great-smoky-mountains", "acadia", "arches", "bryce-canyon", "everglades", "sequoia", "cuyahoga-valley", "joshua-tree", "capitol-reef", "saguaro", "olympic", "redwood", "death-valley", "hawaii-volcanoes", "glacier", "grand-teton", "badlands", "theodore-roosevelt", "shenandoah", "mammoth-cave", "indiana-dunes", "hot-springs", "congaree", "gateway-arch", "petrified-forest", "big-bend", "biscayne", "black-canyon-gunnison", "canyonlands", "carlsbad-caverns", "channel-islands", "crater-lake", "denali", "dry-tortugas", "great-basin", "great-sand-dunes", "guadalupe-mountains", "haleakala", "kings-canyon", "lassen-volcanic", "mesa-verde", "mount-rainier", "new-river-gorge", "north-cascades", "pinnacles", "voyageurs", "white-sands", "wind-cave", "glacier-bay", "kenai-fjords", "katmai", "isle-royale", "american-samoa", "virgin-islands", "gates-of-arctic", "kobuk-valley", "lake-clark", "wrangell-st-elias", "banff", "jasper", "yoho", "plitvice-lakes", "snowdonia", "lake-district", "killarney", "fuji-hakone-izu", "nikko", "fiordland", "blue-mountains", "kruger", "table-mountain", "torres-del-paine", "iguazu-argentina"];
+window.fpPrecookedVenueIds = ["dallas-zoo", "childrens-aquarium-dallas", "childrens-museum-perot", "fort-worth-zoo", "thinkery", "austin-zoo", "doseum", "houston-zoo", "san-diego-zoo", "san-diego-safari-park", "shedd-aquarium", "field-museum", "georgia-aquarium", "national-zoo", "monterey-bay-aquarium", "indy-childrens-museum", "amnh", "bronx-zoo", "la-zoo", "aquarium-of-the-pacific", "california-science-center", "cal-academy", "kennedy-space-center", "new-england-aquarium", "museum-of-science-boston", "philadelphia-zoo", "please-touch-museum", "national-aquarium-baltimore", "smithsonian-natural-history", "air-and-space", "st-louis-zoo", "omaha-henry-doorly", "minnesota-zoo", "denver-zoo", "denver-museum-nature-science", "woodland-park-zoo", "seattle-aquarium", "oregon-zoo", "oregon-museum-science-industry", "phoenix-zoo", "arizona-science-center", "san-antonio-zoo", "dallas-world-aquarium", "perot-museum", "cincinnati-zoo", "columbus-zoo", "cleveland-metroparks-zoo", "detroit-zoo", "milwaukee-zoo", "lincoln-park-zoo", "museum-of-science-industry-chi", "nashville-zoo", "memphis-zoo", "audubon-aquarium", "audubon-zoo", "miami-zoo", "frost-science", "tampa-zoo", "florida-aquarium", "orlando-science-center", "north-carolina-zoo", "discovery-place", "virginia-aquarium", "pittsburgh-zoo", "carnegie-natural-history", "kansas-city-zoo", "union-station-kc-science", "hogle-zoo", "albuquerque-biopark", "honolulu-zoo", "waikiki-aquarium", "point-defiance-zoo", "nashville-adventure-science", "dallas-arboretum", "london-zoo", "nhm-london", "singapore-zoo", "taronga-zoo", "berlin-zoo", "toronto-zoo", "ueno-zoo", "vancouver-aquarium", "paris-zoo", "melbourne-zoo", "vienna-zoo", "prague-zoo", "dubai-aquarium", "two-oceans-aquarium", "sao-paulo-zoo", "hong-kong-ocean-park", "auckland-zoo", "osaka-aquarium", "edinburgh-zoo", "dublin-zoo", "artis-zoo", "copenhagen-zoo", "singapore-night-safari", "montreal-biodome", "calgary-zoo", "chapultepec-zoo", "seoul-zoo", "kuala-lumpur-zoo", "perth-zoo", "adelaide-zoo", "wellington-zoo", "taipei-zoo", "beijing-zoo", "lotte-aquarium-seoul", "shanghai-ocean-aquarium", "munich-zoo", "zurich-zoo", "barcelona-zoo", "lisbon-zoo", "rome-bioparco", "antwerp-zoo", "manila-zoo", "johannesburg-zoo", "al-ain-zoo", "stockholm-skansen", "oslo-zoo", "helsinki-zoo", "budapest-zoo", "warsaw-zoo", "madrid-zoo", "milan-aquarium", "athens-attica-zoo", "istanbul-aquarium", "moscow-zoo", "nairobi-safari-walk", "cairo-zoo", "ecoparque-ba", "rio-zoo", "santiago-zoo", "lima-leyendas", "bogota-zoo", "jakarta-ragunan", "delhi-zoo", "mumbai-byculla-zoo", "bangalore-bannerghatta", "bangkok-safari-world", "yellowstone", "grand-canyon", "yosemite", "zion", "rocky-mountain", "great-smoky-mountains", "acadia", "arches", "bryce-canyon", "everglades", "sequoia", "cuyahoga-valley", "joshua-tree", "capitol-reef", "saguaro", "olympic", "redwood", "death-valley", "hawaii-volcanoes", "glacier", "grand-teton", "badlands", "theodore-roosevelt", "shenandoah", "mammoth-cave", "indiana-dunes", "hot-springs", "congaree", "gateway-arch", "petrified-forest", "big-bend", "biscayne", "black-canyon-gunnison", "canyonlands", "carlsbad-caverns", "channel-islands", "crater-lake", "denali", "dry-tortugas", "great-basin", "great-sand-dunes", "guadalupe-mountains", "haleakala", "kings-canyon", "lassen-volcanic", "mesa-verde", "mount-rainier", "new-river-gorge", "north-cascades", "pinnacles", "voyageurs", "white-sands", "wind-cave", "glacier-bay", "kenai-fjords", "katmai", "isle-royale", "american-samoa", "virgin-islands", "gates-of-arctic", "kobuk-valley", "lake-clark", "wrangell-st-elias", "banff", "jasper", "yoho", "plitvice-lakes", "snowdonia", "lake-district", "killarney", "fuji-hakone-izu", "nikko", "fiordland", "blue-mountains", "kruger", "table-mountain", "torres-del-paine", "iguazu-argentina", "giant-panda-national-park", "french-island", "galapagos"];
 window.fpDefaultVenueId = "dallas-zoo";
 
 window.fpMissionsForVenue = (venue) => {
