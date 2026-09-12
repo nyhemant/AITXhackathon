@@ -167,7 +167,11 @@ class IaPhaseBTests(unittest.TestCase):
         self.assertNotIn('data-card-filter="attractions"', cards)
         self.assertNotIn('data-card-id="sci-dinosaur"', primary)
         self.assertIn("Museum &amp; science cards", experimental)
+        self.assertIn("Experimental · Quiet", experimental)
         self.assertIn('data-card-id="sci-dinosaur"', experimental)
+        self.assertIn('id="cards-accordion"', cards)
+        self.assertIn('data-card-accordion="wildlife" open', cards)
+        self.assertIn(">All cards</button>", cards)
         about = ABOUT.read_text(encoding="utf-8")
         exp = about.split('id="experimental"', 1)[1]
         self.assertIn('href="/field-pack/cards/#cards-attractions"', exp)
