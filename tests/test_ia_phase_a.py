@@ -170,7 +170,7 @@ class IaPhaseATests(unittest.TestCase):
         self.assertIn(">Watch Live</a>", before_exp)
         self.assertIn(">Places</a>", before_exp)
         self.assertIn("Those three doors start from", before_exp)
-        self.assertIn("print cutouts to hide", before_exp)
+        self.assertIn("print cutouts to cut · hide · seek", before_exp)
         self.assertIn("Experimental", exp)
         self.assertIn(
             "Not part of the three doors — quiet extras if you already know you want them.",
