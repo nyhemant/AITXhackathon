@@ -459,7 +459,7 @@ class CardStudyUxTests(unittest.TestCase):
         )
         self.assertIn('class="card-page-photo-link"', linked)
         self.assertIn('aria-label="Watch Live: Zebra"', linked)
-        self.assertIn(f'href="{href}"', linked)
+        self.assertIn(f'href="{href.replace("&", "&amp;")}"', linked)
         self.assertRegex(linked, r'<a class="card-page-photo-link"[^>]*>\s*<img class="card-page-photo"')
 
         bare = card_hero_photo_html(

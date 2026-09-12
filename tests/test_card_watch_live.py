@@ -133,7 +133,10 @@ class CardWatchLiveTests(unittest.TestCase):
         watch = _watch(html)
         self.assertIn(CTA_WATCH_LIVE, watch)
         self.assertIn('class="btn btn-primary card-watch-live"', watch)
-        self.assertIn("/field-pack/virtual-field-trip/?tab=zoo&from=card#habitat=african-lion", watch)
+        self.assertIn(
+            "/field-pack/virtual-field-trip/?tab=zoo&from=card#habitat=african-lion",
+            watch.replace("&amp;", "&"),
+        )
         self.assertIn("Live from Smithsonian National Zoo", watch)
         self.assertNotIn('target="_blank"', watch)
         for host in OUTBOUND_CAM:
