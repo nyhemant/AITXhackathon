@@ -104,9 +104,12 @@ class StartLandingTests(unittest.TestCase):
         self.assertEqual(start._code, 200)
         body = start.wfile.getvalue().decode("utf-8")
         self.assertIn("A virtual zoo for curious kids like Arya and Kunal", body)
-        self.assertIn('class="start-brand" href="/start/"', body)
-        self.assertIn('aria-label="1less home"', body)
+        self.assertNotIn("start-brand", body)
+        self.assertNotIn('aria-label="1less home"', body)
+        self.assertNotIn("/1LessMark.png", body)
         self.assertIn('id="start-menu-btn"', body)
+        self.assertLess(body.find("start-menu-wrap"), body.find("start-menu-btn"))
+        self.assertLess(body.find('class="start-top"'), body.find("start-menu-wrap"))
         self.assertIn("Print cutouts", body)
         self.assertIn("For grown-ups", body)
         self.assertIn("Library", body)
@@ -245,6 +248,27 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn("For grown-ups", chapter)
         self.assertIn('class="start-menu-grownup"', chapter)
         self.assertIn('id="start-menu-btn"', chapter)
+        self.assertLess(chapter.find("start-menu-wrap"), chapter.find("start-heading"))
+        header = re.search(r'<header class="start-top">([\s\S]*?)</header>', chapter)
+        self.assertIsNotNone(header)
+        chrome = header.group(1)
+        self.assertNotIn("start-brand", chrome)
+        self.assertNotIn("/1LessMark.png", chrome)
+        self.assertTrue(chrome.strip().startswith('<div class="start-menu-wrap">'))
+        menu_links = re.findall(r'<a(?: class="[^"]+")? href="([^"]+)">([^<]+)<', chrome)
+        self.assertEqual(
+            menu_links,
+            [
+                ("/field-pack/cards/", "Cards"),
+                ("/field-pack/virtual-field-trip/", "Watch Live"),
+                ("/field-pack/", "Places"),
+                ("/about/", "About"),
+                ("/field-pack/print/", "Print cutouts"),
+            ],
+        )
+        self.assertIn("justify-content: flex-start", self.css)
+        self.assertIn("margin-left: 0", self.css)
+        self.assertNotIn(".start-brand", self.css)
         self.assertIn(".start-routes", self.css)
         self.assertIn(".start-route", self.css)
         self.assertIn("scroll-margin-top", self.css)
@@ -831,7 +855,9 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn("overflow-x: auto", block)
         self.assertIn("overflow-x: clip", self.css)
         self.assertIn(".start-chapter-pills {\n    flex-direction: column", self.css)
-        self.assertIn('href="/start/"', self.html)
+        self.assertNotIn('class="start-brand"', self.html)
+        self.assertNotIn('href="/start/"', self.html)
+        self.assertIn('id="start-menu-btn"', self.html)
         self.assertIn('href="/field-pack/"', self.html)
         self.assertIn('href="/field-pack/cards/"', self.html)
         self.assertIn('href="/field-pack/virtual-field-trip/"', self.html)
@@ -877,7 +903,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn('preload="auto"', self.html)
         self.assertNotIn('preload="none"', self.html)
         self.assertIn('start.js?v=30', self.html)
-        self.assertIn("start.css?v=43", self.html)
+        self.assertIn("start.css?v=44", self.html)
         self.assertIn(" loop ", self.html)
         self.assertNotIn("youtube.com", self.html)
         self.assertNotIn("youtube-nocookie.com", self.html)

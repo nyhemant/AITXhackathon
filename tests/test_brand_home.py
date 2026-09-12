@@ -103,9 +103,11 @@ class BrandHomeTests(unittest.TestCase):
         self.assertEqual(_attr(html, "mission-change-place"), "/field-pack/?find=1")
         self.assertIn("Different place?", html)
 
-    def test_start_brand_stays_on_start_explore_pill_hits_explorer(self):
+    def test_start_has_no_logo_home_link_explore_pill_hits_explorer(self):
         html = START.read_text(encoding="utf-8")
-        self.assertEqual(_attr(html, "start-brand"), "/start/")
+        self.assertNotIn("start-brand", html)
+        self.assertNotIn("/1LessMark.png", html)
+        self.assertIn('id="start-menu-btn"', html)
         pills = re.findall(r'<a class="start-pill" href="([^"]+)">([^<]+)</a>', html)
         self.assertIn(("/field-pack/", "Explore Places Near You"), pills)
 
