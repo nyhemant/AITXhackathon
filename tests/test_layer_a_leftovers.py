@@ -166,10 +166,17 @@ class LayerALeftoversTests(unittest.TestCase):
                 self.assertNotIn("card-watch-live", main)
                 self.assertNotIn("Watch Live", main)
                 self.assertNotIn("card-page-photo-link", main)
-        self.assertIn("cheetah", hidden)
-        self.assertIn("koala", hidden)
+        self.assertNotIn("cheetah", hidden)
+        self.assertNotIn("koala", hidden)
         self.assertNotIn("manta-ray", hidden)
         self.assertNotIn("whale-shark", hidden)
+        self.assertNotIn("american-alligator", hidden)
+        self.assertNotIn("american-bison", hidden)
+        self.assertNotIn("elk", hidden)
+        self.assertNotIn("zebra", hidden)
+        self.assertNotIn("polar-bear", hidden)
+        koala_html = _main((FP / "cards" / "koala" / "index.html").read_text(encoding="utf-8"))
+        self.assertNotIn("card-watch-live", koala_html)
 
     def test_manta_ray_watch_live_uses_aquarium_film_library(self):
         """ParentTest: manta-ray film+cam live in aquarium-film-library — Watch Live stays."""

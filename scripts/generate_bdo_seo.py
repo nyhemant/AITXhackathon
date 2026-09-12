@@ -965,18 +965,13 @@ def vft_has_inpage_media(vft: dict | None) -> bool:
 def vft_can_watch_live(vft: dict | None) -> bool:
     """Watch Live when the in-page player can open this animal.
 
-    Tour habitats qualify when they have a film or cam embed.
-    Aquarium film-library overlays also qualify: virtual-venue.js
-    ``ensureDeepLinkHabitat`` injects those cards on ``#habitat=`` deep
-    links (manta-ray, whale-shark, and other aquarium-film-library
-    entries). Zoo library-only overlays stay hidden (PR #207).
+    Tour habitats and zoo/aquarium film-library overlays qualify when
+    they have a film or cam embed. virtual-venue.js
+    ``ensureDeepLinkHabitat`` injects library cards on ``#habitat=``
+    deep links (manta-ray, american-bison, and other film-library
+    entries).
     """
-    vft = vft or {}
-    if not vft_has_inpage_media(vft):
-        return False
-    if vft.get("library_only"):
-        return str(vft.get("tab") or "") == "aquarium"
-    return True
+    return vft_has_inpage_media(vft)
 
 
 def card_watch_href(vft: dict | None) -> str:
@@ -1020,6 +1015,8 @@ def card_watch_row_html(vft: dict, *, cta: str) -> str:
         attr = f'<span class="seo-watch-source">Live from {esc(cam_src)}</span>'
     elif film_src:
         attr = f'<span class="seo-watch-source">Film from {esc(film_src)}</span>'
+    elif str(vft.get("film_url") or "").strip():
+        attr = '<span class="seo-watch-source">Film — not a live cam</span>'
     else:
         attr = ""
     return (

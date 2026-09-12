@@ -68,13 +68,9 @@ LIBRARY_WATCH_LIVE_PENDING_RESTORE = frozenset(
         "galapagos-tortoise",
         "koala",
         "orangutan",
-        "polar-bear",
         "red-panda",
         "ring-tailed-lemur",
         "two-toed-sloth",
-        "zebra",
-        # Zoo-library overlay; Cards hub rehub pulled it into wildlife scope.
-        "american-alligator",
     }
 )
 
