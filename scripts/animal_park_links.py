@@ -1,6 +1,7 @@
 """Sourced animal ↔ national-park suggestion rails.
 
-Yellowstone, Everglades, and Wave A marine/coastal parks.
+Yellowstone, Everglades, Wave A marine/coastal parks, and Wave B
+international parks (Kruger, Banff, Jasper).
 Strong links only. Keep try-next (same-kind animals) separate.
 Park `animals` lists must name every animal that already points at that park.
 Do not invent weak edges or park study tiers.
