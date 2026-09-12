@@ -140,7 +140,7 @@ class BrandHomeTests(unittest.TestCase):
         self.assertNotIn("/field-pack/virtual-zoo/", html)
         self.assertNotIn('href="/dinner"', intro)
         self.assertNotIn('href="/dinner"', doors)
-        self.assertIn("Museum &amp; science cards", exp)
+        self.assertIn("Museum stops &amp; extras", exp)
         self.assertIn('href="/field-pack/cards/#cards-attractions"', exp)
         self.assertIn('href="/dinner"', exp)
         self.assertNotIn("Arya", html)

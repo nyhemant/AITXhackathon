@@ -14,6 +14,7 @@ CARD_KINDS = ("animal", "sea_life", "attraction", "place_feature")
 # Hub chrome derived from kind. Order is display order.
 # Parks stays in the table so leftover place_feature cards still group, but
 # the Cards hub does not list a Parks & trails accordion.
+# Attractions bake as the Experimental shelf, not a peer of Wildlife / Sea life.
 HUB_SECTIONS = (
     ("wildlife", "Wildlife", "animal"),
     ("sealife", "Sea life", "sea_life"),

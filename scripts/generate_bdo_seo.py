@@ -138,8 +138,8 @@ CARDS_PLAY_BROWSE = "Browse cards on the screen"
 CARDS_PLAY_PRINT_HREF = PRINT_PATH
 CARDS_HUB_TITLE = "Print cutouts to play · Animal cards · Field Trip Kit"
 CARDS_HUB_DESC = "Print animal cutouts, hide them at home, then hunt. Or browse cards on the screen."
-CARDS_LANDING_CSS_VER = "102"
-CARDS_EXPLORER_JS_VER = "6"
+CARDS_LANDING_CSS_VER = "103"
+CARDS_EXPLORER_JS_VER = "7"
 CTA_READY = "Open"
 CTA_FIND = "Find"
 # Map explorer (/field-pack/) — short title, no sales/FAQ essay. Do not redirect to /start/.
@@ -4749,8 +4749,13 @@ def _card_group_key(card: dict) -> str:
     return hub_section_id(card_kind(card))
 
 
+# Cards hub bake: primary = Wildlife + Sea life only (All cards / filters).
+# Experimental shelf = museum/science (attractions kind). Not a peer primary.
+# Parks stay unlisted via HUB_UNLISTED_SECTION_IDS — never bake a Parks accordion.
 PRIMARY_HUB_SECTION_IDS = ("wildlife", "sealife")
 EXPERIMENTAL_HUB_SECTION_IDS = ("attractions",)
+EXPERIMENTAL_SHELF_LABEL = "Experimental"
+EXPERIMENTAL_SHELF_NOTE = "Museum stops &amp; extras"
 
 
 def _hub_filter_tabs_html(section_ids: list[str]) -> str:
@@ -4801,7 +4806,7 @@ def write_cards_hub(venues: list[dict]) -> str:
     ]
     primary_sections = [s for s in sections if s[0] in PRIMARY_HUB_SECTION_IDS]
     experimental_sections = [
-        (sid, "Museum & science", items)
+        (sid, EXPERIMENTAL_SHELF_LABEL, items)
         for sid, _label, items in sections
         if sid in EXPERIMENTAL_HUB_SECTION_IDS and items
     ]
@@ -4870,11 +4875,12 @@ def write_cards_hub(venues: list[dict]) -> str:
         open_attr = " open" if opened else ""
         extra = " cards-experimental" if experimental else ""
         filter_attr = "" if experimental else f' data-card-filter="{esc(sid)}"'
+        # Keep id=cards-attractions so #cards-attractions still opens this shelf.
         panel_id = "cards-attractions" if experimental else f"cards-{sid}-wrap"
         if experimental:
             summary = (
-                'Museum &amp; science cards '
-                '<span class="cards-experimental-note">Experimental · Quiet</span>'
+                f'{EXPERIMENTAL_SHELF_LABEL} '
+                f'<span class="cards-experimental-note">{EXPERIMENTAL_SHELF_NOTE}</span>'
             )
         else:
             summary = f'{label} <span class="seo-dir-count">{len(items)}</span>'

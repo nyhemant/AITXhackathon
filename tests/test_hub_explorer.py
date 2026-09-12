@@ -220,7 +220,8 @@ class HubExplorerTests(unittest.TestCase):
         self.assertIn('href="mailto:arku2arku@gmail.com"', body)
         self.assertNotIn("hello@1less.app", body)
         self.assertIn('id="experimental"', body)
-        self.assertIn("Museum &amp; science cards", body)
+        self.assertIn("Museum stops &amp; extras", body)
+        self.assertNotIn("Museum &amp; science cards", body)
         intro = body.split('id="experimental"', 1)[0]
         self.assertNotIn('href="/dinner"', intro)
         self.assertIn('href="/dinner"', body.split('id="experimental"', 1)[1])

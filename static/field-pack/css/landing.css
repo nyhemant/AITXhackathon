@@ -4393,14 +4393,26 @@ body.landing-hub.landing-body {
   transform: rotate(-135deg) translateY(0.05em);
 }
 
+.cards-explorer .cards-experimental {
+  --cards-panel-wash: #eeebe6;
+  background: #f4f2ee;
+  border-color: rgba(27, 25, 22, 0.06);
+}
+
 .cards-explorer .cards-experimental > summary {
+  color: #6f6a62;
+  font-weight: 600;
+  font-size: 0.88rem;
+}
+
+.cards-explorer .cards-experimental[open] > summary {
   color: #5c564c;
-  font-weight: 650;
+  border-bottom-color: rgba(27, 25, 22, 0.05);
 }
 
 .cards-explorer .cards-experimental-note {
-  font-size: 0.75rem;
-  font-weight: 650;
+  font-size: 0.72rem;
+  font-weight: 550;
   color: #8a8378;
 }
 
