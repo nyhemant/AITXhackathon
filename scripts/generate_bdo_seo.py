@@ -42,6 +42,7 @@ from busyparent_agent.url_aliases import (  # noqa: E402
 )
 from field_pack_card_kind import (  # noqa: E402
     HUB_SECTIONS,
+    HUB_UNLISTED_SECTION_IDS,
     attraction_venue_attribution,
     card_kind,
     card_may_feature,
@@ -138,7 +139,7 @@ CARDS_PLAY_PRINT_HREF = PRINT_PATH
 CARDS_HUB_TITLE = "Print cutouts to play · Animal cards · Field Trip Kit"
 CARDS_HUB_DESC = "Print animal cutouts, hide them at home, then hunt. Or browse cards on the screen."
 CARDS_LANDING_CSS_VER = "102"
-CARDS_EXPLORER_JS_VER = "5"
+CARDS_EXPLORER_JS_VER = "6"
 CTA_READY = "Open"
 CTA_FIND = "Find"
 # Map explorer (/field-pack/) — short title, no sales/FAQ essay. Do not redirect to /start/.
@@ -4748,7 +4749,7 @@ def _card_group_key(card: dict) -> str:
     return hub_section_id(card_kind(card))
 
 
-PRIMARY_HUB_SECTION_IDS = ("wildlife", "sealife", "parks")
+PRIMARY_HUB_SECTION_IDS = ("wildlife", "sealife")
 EXPERIMENTAL_HUB_SECTION_IDS = ("attractions",)
 
 
@@ -4760,6 +4761,8 @@ def _hub_filter_tabs_html(section_ids: list[str]) -> str:
     present = set(section_ids)
     for sid, label, _kind in HUB_SECTIONS:
         if sid not in present or sid in EXPERIMENTAL_HUB_SECTION_IDS:
+            continue
+        if sid in HUB_UNLISTED_SECTION_IDS:
             continue
         buttons.append(
             f'<button type="button" class="place-type-tab" role="tab" data-card-filter="{esc(sid)}" aria-selected="false">{label}</button>'
@@ -4794,7 +4797,7 @@ def write_cards_hub(venues: list[dict]) -> str:
     sections = [
         (sid, label, grouped.get(sid) or [])
         for sid, label, _kind in HUB_SECTIONS
-        if grouped.get(sid)
+        if grouped.get(sid) and sid not in HUB_UNLISTED_SECTION_IDS
     ]
     primary_sections = [s for s in sections if s[0] in PRIMARY_HUB_SECTION_IDS]
     experimental_sections = [

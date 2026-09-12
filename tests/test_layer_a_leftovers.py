@@ -55,7 +55,7 @@ class LayerALeftoversTests(unittest.TestCase):
         wildlife = hub.split('id="cards-wildlife"', 1)[1].split('id="cards-', 1)[0]
         self.assertIn('data-card-id="polar-bear"', wildlife)
         self.assertIn('data-card-group="wildlife"', wildlife)
-        self.assertIn('Wildlife <span class="seo-dir-count">22</span>', hub)
+        self.assertIn('Wildlife <span class="seo-dir-count">25</span>', hub)
 
     def test_jr_easy_choice_labels_drop_soft_markers(self):
         self.assertEqual(

@@ -164,7 +164,7 @@ class IaPhaseBTests(unittest.TestCase):
         primary, experimental = cards.split('id="cards-attractions"', 1)
         self.assertIn('data-card-filter="wildlife"', primary)
         self.assertIn('data-card-filter="sealife"', primary)
-        self.assertIn('data-card-filter="parks"', primary)
+        self.assertNotIn('data-card-filter="parks"', cards)
         self.assertNotIn('data-card-filter="attractions"', cards)
         self.assertNotIn('data-card-id="sci-dinosaur"', primary)
         self.assertIn("Museum &amp; science cards", experimental)

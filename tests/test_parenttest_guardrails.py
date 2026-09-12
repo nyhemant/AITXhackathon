@@ -87,19 +87,18 @@ class KingdomMappingTests(unittest.TestCase):
         self.assertEqual(kinds["african-lion"]["hub"], "wildlife")
         self.assertEqual(kinds["stingray"]["hub"], "sealife")
         self.assertEqual(kinds["manta-ray"]["hub"], "sealife")
-        self.assertEqual(kinds["american-bison"]["hub"], "parks")
+        self.assertEqual(kinds["american-bison"]["hub"], "wildlife")
         self.assertEqual(kinds["sci-dinosaur"]["hub"], "attractions")
 
         self.assertEqual(card_kind({"id": "african-lion"}), "animal")
         self.assertEqual(card_kind({"id": "stingray"}), "sea_life")
-        self.assertEqual(card_kind({"id": "american-bison"}), "place_feature")
+        self.assertEqual(card_kind({"id": "american-bison"}), "animal")
         self.assertEqual(card_kind({"id": "sci-dinosaur"}), "attraction")
 
         self.assertEqual(study_try_next_hub("stingray", kinds), "sealife")
         self.assertEqual(study_try_next_hub("african-lion", kinds), "wildlife")
         self.assertEqual(card_kingdom("stingray", kinds), "sealife")
         self.assertEqual(card_kingdom("african-lion", kinds), "wildlife")
-        # Parks study cards group as wildlife under the existing helper only.
         self.assertEqual(study_try_next_hub("american-bison", kinds), "wildlife")
 
         published = published_animal_sea_life_ids(kinds)
@@ -107,10 +106,12 @@ class KingdomMappingTests(unittest.TestCase):
         self.assertIn("stingray", published)
         self.assertIn("eel", published)
         self.assertIn("asian-small-clawed-otter", published)
-        self.assertNotIn("american-bison", published)
+        self.assertIn("american-bison", published)
+        self.assertIn("elk", published)
+        self.assertIn("american-alligator", published)
         self.assertNotIn("cuyahoga-towpath", published)
         self.assertNotIn("sci-dinosaur", published)
-        self.assertGreaterEqual(len(published), 39)
+        self.assertGreaterEqual(len(published), 42)
 
     def test_allowlists_stay_empty_or_tiny(self):
         self.assertEqual(TRY_NEXT_CROSS_KINGDOM_ALLOW, ())
@@ -124,8 +125,8 @@ class KingdomMappingTests(unittest.TestCase):
         self.assertNotIn("cuttlefish", LIBRARY_WATCH_LIVE_PENDING_RESTORE)
         self.assertNotIn("puffin", LIBRARY_WATCH_LIVE_PENDING_RESTORE)
         self.assertNotIn("sea-otter", LIBRARY_WATCH_LIVE_PENDING_RESTORE)
-        # Zoo overlays still pending; do not grow this list.
-        self.assertLessEqual(len(LIBRARY_WATCH_LIVE_PENDING_RESTORE), 10)
+        # Zoo overlays still pending; alligator joined after the wildlife rehub.
+        self.assertLessEqual(len(LIBRARY_WATCH_LIVE_PENDING_RESTORE), 11)
 
 
 class TryNextKingdomTests(unittest.TestCase):
@@ -214,8 +215,10 @@ class PhotosNotEmptyTests(unittest.TestCase):
     def test_parks_and_attractions_are_excluded(self):
         kinds = load_card_kinds()
         published = set(published_animal_sea_life_ids(kinds))
-        for cid in ("cuyahoga-towpath", "sci-dinosaur", "american-bison", "elk"):
+        for cid in ("cuyahoga-towpath", "sci-dinosaur"):
             self.assertNotIn(cid, published)
+        self.assertIn("american-bison", published)
+        self.assertIn("elk", published)
         # Default sweep uses published animal/sea_life only — empty park pictures stay out.
         issues = empty_pictures_issues(
             catalog={
