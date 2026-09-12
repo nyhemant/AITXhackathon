@@ -113,9 +113,9 @@ class IaPhaseBTests(unittest.TestCase):
         self.assertEqual(
             routes,
             [
-                ("/field-pack/cards/", "Cards"),
                 ("/field-pack/virtual-field-trip/", "Watch Live"),
                 ("/field-pack/", "Places"),
+                ("/field-pack/cards/", "Cards"),
             ],
         )
         self.assertNotIn("/field-pack/print/", "".join(href for href, _ in routes))
