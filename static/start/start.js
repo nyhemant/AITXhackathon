@@ -34,6 +34,67 @@
     });
   });
 
+  const COACH_KEY = "kz_start_map_coached";
+  const hero = document.getElementById("start-hero");
+  const coach = document.getElementById("start-map-coach");
+  const hotspots = document.querySelectorAll(".start-hero-hotspot");
+
+  function hasMapCoached() {
+    try {
+      return window.localStorage.getItem(COACH_KEY) === "1";
+    } catch (_) {
+      return false;
+    }
+  }
+
+  function persistMapCoached() {
+    try {
+      window.localStorage.setItem(COACH_KEY, "1");
+    } catch (_) {}
+  }
+
+  function hideMapCoach() {
+    if (hero) hero.classList.remove("is-map-coaching");
+    if (coach) {
+      coach.hidden = true;
+      coach.setAttribute("aria-hidden", "true");
+    }
+  }
+
+  function showMapCoach() {
+    if (!hero || !coach || hasMapCoached()) return;
+    coach.hidden = false;
+    coach.removeAttribute("aria-hidden");
+    hero.classList.add("is-map-coaching");
+  }
+
+  showMapCoach();
+
+  hotspots.forEach((pin) => {
+    pin.addEventListener("click", () => {
+      const href = pin.getAttribute("href") || "";
+      const parts = href.split("/").filter(Boolean);
+      const animalId = parts[parts.length - 1] || "";
+      const label = (pin.getAttribute("aria-label") || "").trim();
+      track("start_map_hotspot_clicked", {
+        animal_id: animalId,
+        href,
+        label,
+      });
+      const first = !hasMapCoached();
+      if (first || (hero && hero.classList.contains("is-map-coaching"))) {
+        hideMapCoach();
+        persistMapCoached();
+        if (first) {
+          track("start_map_coach_dismissed", {
+            reason: "first_hotspot",
+            animal_id: animalId,
+          });
+        }
+      }
+    });
+  });
+
   const trackEl = document.getElementById("start-teach-track");
   if (trackEl) {
     const section = document.getElementById("start-teach");

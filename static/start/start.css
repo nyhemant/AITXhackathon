@@ -130,8 +130,43 @@ body.start-body {
   right: 0;
   bottom: 0;
   z-index: 2;
-  max-width: 34rem;
+  max-width: 42rem;
   padding: 0 clamp(1.25rem, 5vw, 4rem) calc(2.4rem + env(safe-area-inset-bottom, 0px));
+}
+
+.start-map-coach {
+  position: absolute;
+  z-index: 2;
+  left: clamp(1.1rem, 4vw, 2.4rem);
+  top: calc(4.7rem + env(safe-area-inset-top, 0px));
+  max-width: min(17.5rem, calc(100% - 5.5rem));
+  margin: 0;
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+  background: #fff6e8;
+  color: #3d4a38;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 650;
+  letter-spacing: 0.01em;
+  line-height: 1.3;
+  box-shadow: 0 2px 0 #6a9d86, 0 8px 20px rgba(12, 10, 8, 0.16);
+  pointer-events: none;
+}
+
+.start-map-coach[hidden] {
+  display: none !important;
+}
+
+.start-hero.is-map-coaching .start-hero-pin-bison::after {
+  content: "";
+  position: absolute;
+  inset: -6%;
+  border-radius: 50%;
+  pointer-events: none;
+  box-shadow:
+    0 0 0 3px rgba(232, 160, 108, 0.72),
+    0 0 16px 5px rgba(255, 214, 150, 0.42);
 }
 
 .start-hero .start-kicker {
@@ -148,12 +183,57 @@ body.start-body {
   text-shadow: 0 1px 18px rgba(12, 10, 8, 0.35);
 }
 
+.start-hero-guide {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.55rem;
+  margin: 0.85rem 0 0;
+}
+
+.start-here {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+  margin: 0;
+  color: rgba(255, 246, 232, 0.92);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 650;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  text-shadow: 0 1px 10px rgba(12, 10, 8, 0.4);
+  pointer-events: none;
+}
+
+.start-here-label {
+  white-space: nowrap;
+}
+
+.start-here-arrow {
+  display: block;
+  width: 3.15rem;
+  height: 2rem;
+  flex: 0 0 auto;
+}
+
 .start-routes {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 0.4rem 0.45rem;
-  margin: 0.9rem 0 0;
+  margin: 0;
+}
+
+.start-trust {
+  margin: 0.5rem 0 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.015em;
+  line-height: 1.35;
+  color: rgba(255, 252, 247, 0.58);
+  text-shadow: 0 1px 10px rgba(12, 10, 8, 0.35);
 }
 
 .start-route {
@@ -884,9 +964,39 @@ body.start-body {
     padding-bottom: calc(1.85rem + env(safe-area-inset-bottom, 0px));
   }
 
+  .start-hero-copy {
+    max-width: none;
+  }
+
+  .start-hero-guide {
+    gap: 0.35rem 0.4rem;
+    margin-top: 0.7rem;
+  }
+
+  .start-here {
+    font-size: 0.74rem;
+  }
+
+  .start-here-arrow {
+    width: 2.7rem;
+    height: 1.7rem;
+  }
+
+  .start-trust {
+    margin-top: 0.42rem;
+    font-size: 0.7rem;
+  }
+
+  .start-map-coach {
+    top: calc(4.55rem + env(safe-area-inset-top, 0px));
+    max-width: min(16rem, calc(100% - 4.75rem));
+    font-size: 0.75rem;
+    padding: 0.36rem 0.65rem;
+  }
+
   .start-routes {
     gap: 0.35rem 0.4rem;
-    margin-top: 0.8rem;
+    margin-top: 0;
   }
 
   .start-route {
@@ -1220,8 +1330,27 @@ body.start-body {
 
 @media (prefers-reduced-motion: no-preference) {
   .start-hero-copy,
-  .start-chapter-copy {
+  .start-chapter-copy,
+  .start-map-coach:not([hidden]) {
     animation: start-hero-fade 700ms var(--ease) both;
+  }
+
+  .start-hero.is-map-coaching .start-hero-pin-bison::after {
+    animation: start-bison-pulse 1.9s ease-out infinite;
+  }
+}
+
+@keyframes start-bison-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 3px rgba(232, 160, 108, 0.78),
+      0 0 14px 5px rgba(255, 214, 150, 0.4);
+  }
+  55% {
+    box-shadow:
+      0 0 0 12px rgba(232, 160, 108, 0.18),
+      0 0 26px 10px rgba(255, 214, 150, 0.22);
   }
 }
 
@@ -1243,10 +1372,18 @@ body.start-body {
   .start-route,
   .start-hero-copy,
   .start-chapter-copy,
-  .start-hero-hotspot {
+  .start-hero-hotspot,
+  .start-map-coach,
+  .start-hero.is-map-coaching .start-hero-pin-bison::after {
     transition: none;
     transform: none;
     animation: none;
+  }
+
+  .start-hero.is-map-coaching .start-hero-pin-bison::after {
+    box-shadow:
+      0 0 0 3px rgba(232, 160, 108, 0.72),
+      0 0 16px 5px rgba(255, 214, 150, 0.42);
   }
 
   .start-teach-track,

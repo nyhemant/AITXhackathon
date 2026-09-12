@@ -281,9 +281,9 @@ class StartLandingTests(unittest.TestCase):
         self.assertEqual(
             routes,
             [
-                ("/field-pack/cards/", "Cards"),
                 ("/field-pack/virtual-field-trip/", "Watch Live"),
                 ("/field-pack/", "Places"),
+                ("/field-pack/cards/", "Cards"),
             ],
         )
         self.assertLess(chapter.find("start-heading"), chapter.find("start-routes"))
@@ -318,9 +318,62 @@ class StartLandingTests(unittest.TestCase):
         self.assertNotIn(".start-brand", self.css)
         self.assertIn(".start-routes", self.css)
         self.assertIn(".start-route", self.css)
+        self.assertIn(".start-here", self.css)
+        self.assertIn(".start-here-arrow", self.css)
+        self.assertIn(".start-trust", self.css)
+        self.assertIn(".start-map-coach", self.css)
         self.assertIn("scroll-margin-top", self.css)
         self.assertIn("min-height: 8vh", self.css)
         self.assertIn("min-height: 5vh", self.css)
+
+    def test_hero_first_visit_guide(self):
+        hero = re.search(r'<section class="start-hero"[\s\S]*?</section>', self.html)
+        self.assertIsNotNone(hero)
+        chapter = hero.group(0)
+        routes = re.findall(r'<a class="start-route" href="([^"]+)">([^<]+)</a>', chapter)
+        self.assertEqual(
+            routes,
+            [
+                ("/field-pack/virtual-field-trip/", "Watch Live"),
+                ("/field-pack/", "Places"),
+                ("/field-pack/cards/", "Cards"),
+            ],
+        )
+        self.assertEqual(self.html.count('class="start-route"'), 3)
+        self.assertEqual(chapter.count('class="start-route"'), 3)
+        self.assertIn('class="start-here"', chapter)
+        self.assertIn('class="start-here-label"', chapter)
+        self.assertIn(">Start here<", chapter)
+        arrow = re.search(r"<svg class=\"start-here-arrow\"[^>]*>", chapter)
+        self.assertIsNotNone(arrow)
+        self.assertIn('aria-hidden="true"', arrow.group(0))
+        self.assertIn('focusable="false"', arrow.group(0))
+        self.assertNotIn("→", chapter)
+        self.assertNotIn("&#8594;", chapter)
+        self.assertNotIn("&#x2192;", chapter)
+        self.assertLess(chapter.find("start-here"), chapter.find("start-routes"))
+        self.assertLess(chapter.find("start-here-arrow"), chapter.find("start-routes"))
+        self.assertLess(chapter.find("start-routes"), chapter.find("start-trust"))
+        self.assertIn("Free · no signup · works on a phone", chapter)
+        self.assertIn('class="start-trust"', chapter)
+        self.assertIn('id="start-map-coach"', chapter)
+        self.assertIn("Tap an animal to open a card.", chapter)
+        self.assertLess(chapter.find("start-map-coach"), chapter.find('id="start-heading"'))
+        self.assertIn("kz_start_map_coached", self.js)
+        self.assertIn("start_map_hotspot_clicked", self.js)
+        self.assertIn("start_map_coach_dismissed", self.js)
+        self.assertIn("first_hotspot", self.js)
+        self.assertIn("animal_id", self.js)
+        self.assertIn("source: \"start_route\"", self.js)
+        self.assertIn("hero_cta_clicked", self.js)
+        self.assertIn("is-map-coaching", self.js)
+        self.assertIn("is-map-coaching", self.css)
+        self.assertIn("start-bison-pulse", self.css)
+        self.assertIn(".start-hero-pin-bison::after", self.css)
+        self.assertIn("prefers-reduced-motion", self.css)
+        self.assertNotIn("confetti", self.js.lower())
+        self.assertNotIn("1Less", chapter)
+        self.assertNotIn("Baby’s Day Out", chapter)
 
     def test_home_chapter_is_local_print_table(self):
         home = re.search(r'<section class="start-chapter"[\s\S]*?</section>', self.html)
@@ -949,8 +1002,8 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn("autoplay", self.html)
         self.assertIn('preload="auto"', self.html)
         self.assertNotIn('preload="none"', self.html)
-        self.assertIn('start.js?v=30', self.html)
-        self.assertIn("start.css?v=46", self.html)
+        self.assertIn('start.js?v=31', self.html)
+        self.assertIn("start.css?v=48", self.html)
         self.assertIn(" loop ", self.html)
         self.assertNotIn("youtube.com", self.html)
         self.assertNotIn("youtube-nocookie.com", self.html)
