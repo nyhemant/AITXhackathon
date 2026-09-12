@@ -16,13 +16,13 @@ What is crawled
 Internal vs ignored
 -------------------
 INTERNAL: paths starting with /, # hashes on 1less/field-pack, relative
-links, and https://1less.app/... (same product).
+links, and https://kidzookit.com/... (same product; 1less.app still counts).
 IGNORED: http(s) to other hosts, mailto:, tel:, javascript:.
 
 How a target is judged
 ----------------------
 - The path must return 200 (or a redirect to a real page) from the same
-  local server that serves 1less.app.
+  local server that serves kidzookit.com.
 - #/venue/<id> must be a catalog venue.
 - #/venue/<id>/item/<itemId> must pass the same itemOnVenue check as the
   live app. Unknown item hashes must NOT stay on a stale card — they
@@ -78,7 +78,13 @@ APP_JS = FP / "js" / "app.js"
 VFT_JS = FP / "js" / "virtual-venue.js"
 
 SKIP_SCHEMES = ("mailto:", "tel:", "javascript:", "data:")
-INTERNAL_HOSTS = {"", "1less.app", "www.1less.app"}
+INTERNAL_HOSTS = {
+    "",
+    "kidzookit.com",
+    "www.kidzookit.com",
+    "1less.app",
+    "www.1less.app",
+}
 HREF_RE = re.compile(r"""href\s*=\s*(['"])(.*?)\1""", re.I | re.S)
 BASE_RE = re.compile(r"""<base\s+[^>]*href\s*=\s*(['"])(.*?)\1""", re.I | re.S)
 ID_RE = re.compile(r"""\bid\s*=\s*(['"])(.*?)\1""", re.I)

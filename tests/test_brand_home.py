@@ -94,7 +94,7 @@ class BrandHomeTests(unittest.TestCase):
         self.assertEqual(_attr(html, "mission-home"), "/start/")
         self.assertIn('aria-label="Field Trip Kit home"', html)
         self.assertIn('<base href="/field-pack/" />', html)
-        self.assertIn('rel="canonical" href="https://1less.app/field-pack/houston-zoo/"', html)
+        self.assertIn('rel="canonical" href="https://kidzookit.com/field-pack/houston-zoo/"', html)
 
     def test_place_page_explorer_ctas_stay_on_field_pack(self):
         html = HOUSTON.read_text(encoding="utf-8")

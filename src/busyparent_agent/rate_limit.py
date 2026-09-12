@@ -4,7 +4,7 @@ No accounts, no email capture, no CAPTCHA on first paint. Parents and
 normal browsers should not notice this. A school classroom on one NAT IP
 should still load Field Trip Kit. Naive bulk scrapers get 429 + Retry-After.
 
-Production (1less.app) already sits behind a Cloudflare free/tunnel edge
+Production (kidzookit.com) already sits behind a Cloudflare free/tunnel edge
 (`server: cloudflare`, `cf-ray`). This module runs on the Mini origin
 (LaunchAgent → stdlib ThreadingHTTPServer). Trust CF-Connecting-IP only
 when the peer is loopback/private (cloudflared → 127.0.0.1). Do not enable

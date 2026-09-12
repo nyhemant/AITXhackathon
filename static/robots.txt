@@ -9,4 +9,4 @@ Disallow: /api/
 
 # /llms.txt is public for AI assistants. Do not Disallow GPTBot, Claude, or Perplexity.
 
-Sitemap: https://1less.app/sitemap.xml
+Sitemap: https://kidzookit.com/sitemap.xml

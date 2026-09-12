@@ -407,6 +407,16 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertNotIn("HttpOnly", cookie)
         self.assertIn("Secure", cookie)
 
+    def test_analytics_cookie_scope_covers_kidzookit_www(self):
+        cookie = _analytics_cookie_header("off", "www.kidzookit.com", max_age=31_536_000)
+
+        self.assertIn("one_less_analytics=off", cookie)
+        self.assertIn("Domain=kidzookit.com", cookie)
+        self.assertIn("Path=/", cookie)
+        self.assertIn("SameSite=Lax", cookie)
+        self.assertNotIn("HttpOnly", cookie)
+        self.assertIn("Secure", cookie)
+
     def test_chat_recovers_from_stale_session_id_after_server_restart(self):
         SESSIONS.clear()
         payload = self.handle_chat({

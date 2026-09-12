@@ -154,7 +154,7 @@ class StaticRootFileTests(unittest.TestCase):
             "text/plain; charset=utf-8",
         )
         self.assertEqual(get_handler.wfile.getvalue(), expected)
-        self.assertIn(b"https://1less.app/field-pack/dallas-zoo/", expected)
+        self.assertIn(b"https://kidzookit.com/field-pack/dallas-zoo/", expected)
 
         head_handler = FakeHandler("/llms.txt", command="HEAD")
         head_handler.do_HEAD()
