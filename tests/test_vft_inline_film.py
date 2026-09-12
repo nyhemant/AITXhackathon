@@ -10,12 +10,38 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
 FP = REPO / "static" / "field-pack"
+VDIR = FP / "data" / "virtual-venues"
 VFT_PAGES = (
     FP / "virtual-field-trip" / "index.html",
 )
 VFT_JS = FP / "js" / "virtual-venue.js"
 NOSCRIPT_RE = re.compile(r"<noscript\b[^>]*>.*?</noscript>", re.I | re.S)
 HREF_RE = re.compile(r"""\bhref\s*=\s*(['"])(.*?)\1""", re.I)
+
+# Watch Live wildlife / sea film sources. Science + park libs do not feed
+# animal/sea card Watch Live (no overlapping cardIds).
+WILDLIFE_SEA_FILM_FILES = (
+    "virtual-zoo.json",
+    "virtual-aquarium.json",
+    "zoo-film-library.json",
+    "aquarium-film-library.json",
+)
+# Explicit start: 0 is honored by filmStartSec and skips the 20s default.
+# Allowlist a (file, card_id, url) only when 20s would miss the animal moment.
+START_ZERO_ALLOWLIST: frozenset[tuple[str, str, str]] = frozenset()
+
+
+def _wildlife_sea_film_entries():
+    for name in WILDLIFE_SEA_FILM_FILES:
+        data = json.loads((VDIR / name).read_text(encoding="utf-8"))
+        for entry in list(data.get("habitats") or []) + list(data.get("cards") or []):
+            cid = str(entry.get("id") or entry.get("cardId") or "")
+            video = entry.get("video")
+            if isinstance(video, dict) and video.get("url"):
+                yield name, cid, "primary", video
+            for i, extra in enumerate(entry.get("videos") or []):
+                if isinstance(extra, dict) and extra.get("url"):
+                    yield name, cid, f"videos[{i}]", extra
 
 
 def without_noscript(html: str) -> str:
@@ -153,7 +179,7 @@ class VftInlineFilmTests(unittest.TestCase):
         self.assertNotIn("filmStartSec", cam.split("if (film)", 1)[0])
         zoo = json.loads((FP / "data" / "virtual-venues" / "virtual-zoo.json").read_text(encoding="utf-8"))
         flamingo = next(h for h in zoo["habitats"] if h["id"] == "caribbean-flamingo")
-        self.assertEqual(flamingo["video"]["start"], 0)
+        self.assertEqual(flamingo["video"]["start"], 20)
 
     def test_pre_recorded_embed_loops_the_picked_clip(self):
         embed = self.js.split("function youtubeEmbed(", 1)[1].split("function isYoutubeWatchUrl", 1)[0]
@@ -204,7 +230,7 @@ class VftInlineFilmTests(unittest.TestCase):
             url = by_id[hid]["video"]["url"]
             self.assertIn(vid, url, hid)
             self.assertNotIn("live", url.lower())
-            self.assertEqual(by_id[hid]["video"]["start"], 0)
+            self.assertEqual(by_id[hid]["video"]["start"], 20)
         stale = ("u2k4lSTZxS4", "zboaajdMGHg", "TMvYXAkHIFo", "nbY7dSf3GYE")
         blob = json.dumps(zoo) + json.dumps(aqua)
         for old in stale:
@@ -226,16 +252,57 @@ class VftInlineFilmTests(unittest.TestCase):
             pool = {v["url"].split("v=", 1)[1] for v in videos}
             self.assertEqual(pool, ids)
             self.assertIn(hab["video"]["url"].split("v=", 1)[1], pool)
-            self.assertEqual(hab["video"]["start"], 0)
+            self.assertEqual(hab["video"]["start"], 20)
             for v in videos:
                 self.assertNotIn("live", v["url"].lower())
-                self.assertEqual(v["start"], 0)
+                self.assertEqual(v["start"], 20)
                 self.assertEqual(v["verify"]["status"], "sourced")
+
+    def test_wildlife_sea_primary_films_are_not_start_zero(self):
+        zeros = []
+        for name, cid, role, film in _wildlife_sea_film_entries():
+            if film.get("start") != 0:
+                continue
+            key = (name, cid, str(film["url"]))
+            if role == "primary" and key not in START_ZERO_ALLOWLIST:
+                zeros.append(f"{name}:{cid}:{film['url']}")
+        self.assertEqual(zeros, [])
+
+    def test_wildlife_sea_films_use_explicit_intro_skip(self):
+        for name, cid, role, film in _wildlife_sea_film_entries():
+            key = (name, cid, str(film["url"]))
+            if film.get("start") == 0 and key in START_ZERO_ALLOWLIST:
+                continue
+            self.assertEqual(film.get("start"), 20, f"{name} {cid} {role}")
+
+    def test_lion_habitat_and_library_use_default_skip(self):
+        zoo = json.loads((VDIR / "virtual-zoo.json").read_text(encoding="utf-8"))
+        lib = json.loads((VDIR / "zoo-film-library.json").read_text(encoding="utf-8"))
+        habitat = next(h for h in zoo["habitats"] if h["id"] == "african-lion")
+        library = next(c for c in lib["cards"] if c["cardId"] == "african-lion")
+        self.assertEqual(habitat["video"]["url"], library["video"]["url"])
+        self.assertEqual(habitat["video"]["start"], 20)
+        self.assertEqual(library["video"]["start"], 20)
+
+    def test_wildlife_sea_duplicate_urls_agree_on_start(self):
+        by_url: dict[str, list[tuple[str, str, str, object]]] = {}
+        for name, cid, role, film in _wildlife_sea_film_entries():
+            by_url.setdefault(str(film["url"]), []).append((name, cid, role, film.get("start")))
+        disagreements = []
+        for url, rows in by_url.items():
+            starts = {row[3] for row in rows}
+            if len(starts) > 1:
+                disagreements.append(f"{url}: {rows}")
+        self.assertEqual(disagreements, [])
 
     def test_cache_bump(self):
         for html in self.pages.values():
-            self.assertIn("virtual-venue.js?v=103", html)
+            self.assertIn("virtual-venue.js?v=104", html)
             self.assertIn("virtual-venue.css?v=57", html)
+        self.assertIn("virtual-zoo.json?v=27", self.js)
+        self.assertIn("virtual-aquarium.json?v=27", self.js)
+        self.assertIn("zoo-film-library.json?v=10", self.js)
+        self.assertIn("aquarium-film-library.json?v=6", self.js)
 
 
 if __name__ == "__main__":

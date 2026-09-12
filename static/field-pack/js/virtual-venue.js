@@ -21,8 +21,8 @@
   ];
   const MUSEUM_LAST_KEY = "fp-vft-museum-tab";
   const TAB_CONFIGS = {
-    zoo: "/field-pack/data/virtual-venues/virtual-zoo.json?v=26",
-    aquarium: "/field-pack/data/virtual-venues/virtual-aquarium.json?v=26",
+    zoo: "/field-pack/data/virtual-venues/virtual-zoo.json?v=27",
+    aquarium: "/field-pack/data/virtual-venues/virtual-aquarium.json?v=27",
     "natural-history": "/field-pack/data/virtual-venues/virtual-nhm.json?v=15",
     science: "/field-pack/data/virtual-venues/virtual-science.json?v=17",
     parks: "/field-pack/data/virtual-venues/virtual-parks.json?v=24",
@@ -36,14 +36,14 @@
   const PICK_BY_KIND = {
     zoo: {
       key: "fp-virtual-zoo-picks-v1",
-      libUrl: "/field-pack/data/virtual-venues/zoo-film-library.json?v=9",
+      libUrl: "/field-pack/data/virtual-venues/zoo-film-library.json?v=10",
       title: "Create your own virtual zoo",
       noun: "zoo",
       track: "zoo_picks_saved",
     },
     aquarium: {
       key: "fp-virtual-aquarium-picks-v1",
-      libUrl: "/field-pack/data/virtual-venues/aquarium-film-library.json?v=5",
+      libUrl: "/field-pack/data/virtual-venues/aquarium-film-library.json?v=6",
       title: "Create your own virtual aquarium",
       noun: "aquarium",
       track: "aquarium_picks_saved",
@@ -1956,6 +1956,8 @@
     return "";
   }
 
+  // Wildlife/sea JSON uses explicit start: 20. Missing/null/"" also maps here.
+  // Explicit numeric 0 is honored and bypasses this skip — do not store 0 as "default".
   const FILM_START_DEFAULT = 20;
 
   function filmStartSec(start) {

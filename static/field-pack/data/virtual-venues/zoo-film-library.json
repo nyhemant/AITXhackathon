@@ -1,7 +1,7 @@
 {
   "id": "zoo-film-library",
   "checked": "2026-09-12",
-  "note": "Pick-10 ingredients for the zoo tab. Default tour is the current 10. Bench extras need an animal-first film (official zoo, Nat Geo Kids, or BBC Earth). Mute autoplay uses video.start to skip logos. Ostrich and warthog now have BBC habitat films. A few house animals stay omitted until a yard-first clip locks.",
+  "note": "Pick-10 ingredients for the zoo tab. Default tour is the current 10. Bench extras need an animal-first film (official zoo, Nat Geo Kids, or BBC Earth). Mute autoplay uses video.start (explicit 20, matching FILM_START_DEFAULT) to skip intros/logos. Ostrich and warthog now have BBC habitat films. A few house animals stay omitted until a yard-first clip locks.",
   "omit": [
     {
       "cardId": "komodo-dragon",
@@ -40,7 +40,7 @@
         "title": "Flamingos gather at Lake Bogoria",
         "provider": "youtube",
         "channel": "BBC Earth",
-        "start": 0,
+        "start": 20,
         "verify": {
           "status": "sourced",
           "source": "https://www.youtube.com/watch?v=7nK3gZqtlOM",
@@ -58,7 +58,7 @@
           "title": "Flamingos gather at Lake Bogoria",
           "provider": "youtube",
           "channel": "BBC Earth",
-          "start": 0,
+          "start": 20,
           "verify": {
             "status": "sourced",
             "source": "https://www.youtube.com/watch?v=7nK3gZqtlOM",
@@ -70,7 +70,7 @@
           "title": "West Indian flamingos make shrimp soup",
           "provider": "youtube",
           "channel": "BBC Earth",
-          "start": 0,
+          "start": 20,
           "verify": {
             "status": "sourced",
             "source": "https://www.youtube.com/watch?v=a3GkW5vuhAo",
@@ -82,7 +82,7 @@
           "title": "Underwater flamingo feeding at the San Diego Zoo",
           "provider": "youtube",
           "channel": "San Diego Zoo",
-          "start": 0,
+          "start": 20,
           "verify": {
             "status": "sourced",
             "source": "https://www.youtube.com/watch?v=-1BF2XqboOo",
@@ -102,7 +102,7 @@
         "title": "Asian small-clawed otters at the Houston Zoo",
         "provider": "youtube",
         "channel": "Houston Zoo",
-        "start": 0,
+        "start": 20,
         "verify": {
           "status": "sourced",
           "source": "https://www.youtube.com/watch?v=9IR2Ij9375w",
@@ -120,7 +120,7 @@
           "title": "Asian small-clawed otters at the Houston Zoo",
           "provider": "youtube",
           "channel": "Houston Zoo",
-          "start": 0,
+          "start": 20,
           "verify": {
             "status": "sourced",
             "source": "https://www.youtube.com/watch?v=9IR2Ij9375w",
@@ -132,7 +132,7 @@
           "title": "Asian small-clawed otters on a January day",
           "provider": "youtube",
           "channel": "Houston Zoo",
-          "start": 0,
+          "start": 20,
           "verify": {
             "status": "sourced",
             "source": "https://www.youtube.com/watch?v=XQGB3AT90o8",
@@ -152,7 +152,7 @@
         "title": "African penguins in the African sun",
         "provider": "youtube",
         "channel": "BBC Earth",
-        "start": 0,
+        "start": 20,
         "verify": {
           "status": "sourced",
           "source": "https://www.youtube.com/watch?v=ol5_zk1skx0",
@@ -176,6 +176,7 @@
         "title": "Hippos at the San Diego Zoo",
         "provider": "youtube",
         "channel": "San Diego Zoo",
+        "start": 20,
         "verify": {
           "status": "sourced",
           "source": "https://www.youtube.com/watch?v=Zdl4ndfjYBA",
@@ -199,7 +200,7 @@
         "title": "Giraffes in the wild",
         "provider": "youtube",
         "channel": "BBC Earth Relax and BBC Earth",
-        "start": 0,
+        "start": 20,
         "verify": {
           "status": "sourced",
           "source": "https://www.youtube.com/watch?v=WXsrwyNhfYw",
@@ -217,7 +218,7 @@
           "title": "Giraffes in the wild",
           "provider": "youtube",
           "channel": "BBC Earth Relax and BBC Earth",
-          "start": 0,
+          "start": 20,
           "verify": {
             "status": "sourced",
             "source": "https://www.youtube.com/watch?v=WXsrwyNhfYw",
@@ -229,7 +230,7 @@
           "title": "Masai giraffes at the Houston Zoo",
           "provider": "youtube",
           "channel": "Houston Zoo",
-          "start": 0,
+          "start": 20,
           "verify": {
             "status": "sourced",
             "source": "https://www.youtube.com/watch?v=9L7RAUD8pu4",
@@ -249,6 +250,7 @@
         "title": "Asian elephants at the National Zoo",
         "provider": "youtube",
         "channel": "Smithsonian's National Zoo",
+        "start": 20,
         "verify": {
           "status": "sourced",
           "source": "https://www.youtube.com/watch?v=Qzy0r4MUlQk",
@@ -272,7 +274,7 @@
         "title": "African lions",
         "provider": "youtube",
         "channel": "Nat Geo Kids",
-        "start": 8,
+        "start": 20,
         "verify": {
           "status": "sourced",
           "source": "https://www.youtube.com/watch?v=tlZwYsJpqjo",
@@ -296,6 +298,7 @@
         "title": "Sumatran tigers at the San Diego Zoo Safari Park",
         "provider": "youtube",
         "channel": "San Diego Zoo",
+        "start": 20,
         "verify": {
           "status": "sourced",
           "source": "https://www.youtube.com/watch?v=04kwMlYsYis",
@@ -319,6 +322,7 @@
         "title": "Gorillas at the National Zoo",
         "provider": "youtube",
         "channel": "Smithsonian's National Zoo",
+        "start": 20,
         "verify": {
           "status": "sourced",
           "source": "https://www.youtube.com/watch?v=1vIlFjl9iOk",
@@ -342,7 +346,7 @@
         "title": "Giant pandas Bao Li and Qing Bao in their habitat",
         "provider": "youtube",
         "channel": "Smithsonian's National Zoo",
-        "start": 0,
+        "start": 20,
         "verify": {
           "status": "sourced",
           "source": "https://www.youtube.com/watch?v=wTVtbr-R4yA",
@@ -365,7 +369,7 @@
         "title": "Zebras on a wild journey",
         "provider": "youtube",
         "channel": "BBC Earth",
-        "start": 0,
+        "start": 20,
         "verify": {
           "status": "sourced",
           "source": "https://www.youtube.com/watch?v=U1Ysr2DKHFI",
@@ -385,6 +389,7 @@
         "title": "Galapagos tortoise at the San Diego Zoo",
         "provider": "youtube",
         "channel": "San Diego Zoo",
+        "start": 20,
         "verify": {
           "status": "sourced",
           "source": "https://www.youtube.com/watch?v=sOYfGIFQbBA",
@@ -404,6 +409,7 @@
         "title": "Chimpanzees at the Kansas City Zoo",
         "provider": "youtube",
         "channel": "Kansas City Zoo & Aquarium",
+        "start": 20,
         "verify": {
           "status": "sourced",
           "source": "https://www.youtube.com/watch?v=6NszX7WL9jI",
@@ -426,6 +432,7 @@
         "title": "Red panda at the San Diego Zoo",
         "provider": "youtube",
         "channel": "San Diego Zoo",
+        "start": 20,
         "verify": {
           "status": "sourced",
           "source": "https://www.youtube.com/watch?v=Akil2JuA3eo",
@@ -448,7 +455,7 @@
         "title": "Ring-tailed lemurs forage for food",
         "provider": "youtube",
         "channel": "BBC Earth",
-        "start": 0,
+        "start": 20,
         "verify": {
           "status": "sourced",
           "source": "https://www.youtube.com/watch?v=11_c7iiWHhg",
@@ -468,6 +475,7 @@
         "title": "Young orangutan at the San Diego Zoo",
         "provider": "youtube",
         "channel": "San Diego Zoo",
+        "start": 20,
         "verify": {
           "status": "sourced",
           "source": "https://www.youtube.com/watch?v=I8SgscjRGpI",
@@ -490,6 +498,7 @@
         "title": "Baby koalas at the San Diego Zoo",
         "provider": "youtube",
         "channel": "San Diego Zoo Kids",
+        "start": 20,
         "verify": {
           "status": "sourced",
           "source": "https://www.youtube.com/watch?v=vB6QfskliAg",
@@ -512,6 +521,7 @@
         "title": "Two-toed sloth Athena at the National Zoo",
         "provider": "youtube",
         "channel": "Smithsonian's National Zoo",
+        "start": 20,
         "verify": {
           "status": "sourced",
           "source": "https://www.youtube.com/watch?v=ZuHroVftvvA",
@@ -531,7 +541,7 @@
         "title": "Cheetah",
         "provider": "youtube",
         "channel": "Nat Geo Kids",
-        "start": 8,
+        "start": 20,
         "verify": {
           "status": "sourced",
           "source": "https://www.youtube.com/watch?v=J20eXhZTHEo",
@@ -551,7 +561,7 @@
         "title": "Polar bears pounce and play in snow",
         "provider": "youtube",
         "channel": "San Diego Zoo",
-        "start": 0,
+        "start": 20,
         "verify": {
           "status": "sourced",
           "source": "https://www.youtube.com/watch?v=mLVkICcHUys",
@@ -571,7 +581,7 @@
         "title": "A chameleon’s race against time in Madagascar",
         "provider": "youtube",
         "channel": "BBC Earth",
-        "start": 0,
+        "start": 20,
         "verify": {
           "status": "sourced",
           "source": "https://www.youtube.com/watch?v=CtrbDRZTc8g",
@@ -591,7 +601,7 @@
         "title": "Alligators and wildlife of the Everglades",
         "provider": "youtube",
         "channel": "4K Relaxation Channel",
-        "start": 8,
+        "start": 20,
         "verify": {
           "status": "sourced",
           "source": "https://www.youtube.com/watch?v=4IFn0t0rkiE",
@@ -611,7 +621,7 @@
         "title": "American bison exhibit at the Smithsonian National Zoo",
         "provider": "youtube",
         "channel": "Smithsonian's National Zoo",
-        "start": 0,
+        "start": 20,
         "verify": {
           "status": "sourced",
           "source": "https://www.youtube.com/watch?v=t6qGqF1p5uk",
@@ -631,7 +641,7 @@
         "title": "Rival male elk rut at Yellowstone",
         "provider": "youtube",
         "channel": "BBC Earth",
-        "start": 0,
+        "start": 20,
         "verify": {
           "status": "sourced",
           "source": "https://www.youtube.com/watch?v=hEKeDt_xAm4",
@@ -651,7 +661,7 @@
         "title": "Ostrich courtship dance",
         "provider": "youtube",
         "channel": "BBC Earth",
-        "start": 0,
+        "start": 20,
         "verify": {
           "status": "sourced",
           "source": "https://www.youtube.com/watch?v=xVBqSJmHajg",
@@ -671,7 +681,7 @@
         "title": "Warthog visit to a mongoose spa",
         "provider": "youtube",
         "channel": "BBC",
-        "start": 0,
+        "start": 20,
         "verify": {
           "status": "sourced",
           "source": "https://www.youtube.com/watch?v=OXW_1i1pA0w",
@@ -691,7 +701,7 @@
         "title": "Crocodile",
         "provider": "youtube",
         "channel": "Nat Geo Kids",
-        "start": 8,
+        "start": 20,
         "verify": {
           "status": "sourced",
           "source": "https://www.youtube.com/watch?v=qyTNzTYFqlw",
@@ -711,6 +721,7 @@
         "title": "Red kangaroos staying cool",
         "provider": "youtube",
         "channel": "BBC Earth",
+        "start": 20,
         "verify": {
           "status": "sourced",
           "source": "https://www.youtube.com/watch?v=bbaX1yeSatQ",
@@ -730,6 +741,7 @@
         "title": "Lynx and snow leopard snow days at the San Diego Zoo",
         "provider": "youtube",
         "channel": "San Diego Zoo",
+        "start": 20,
         "verify": {
           "status": "sourced",
           "source": "https://www.youtube.com/watch?v=3ed6VavLTRI",
@@ -749,7 +761,7 @@
         "title": "Monarch butterfly",
         "provider": "youtube",
         "channel": "Nat Geo Kids",
-        "start": 8,
+        "start": 20,
         "verify": {
           "status": "sourced",
           "source": "https://www.youtube.com/watch?v=1b87rwtXGzA",
@@ -769,7 +781,7 @@
         "title": "Black rhino",
         "provider": "youtube",
         "channel": "Nat Geo Kids",
-        "start": 8,
+        "start": 20,
         "verify": {
           "status": "sourced",
           "source": "https://www.youtube.com/watch?v=ST_83Hkrbk4",
@@ -789,6 +801,7 @@
         "title": "Hyacinth macaw at the San Diego Zoo",
         "provider": "youtube",
         "channel": "San Diego Zoo Kids",
+        "start": 20,
         "verify": {
           "status": "sourced",
           "source": "https://www.youtube.com/watch?v=1hKZmdH2UC4",
