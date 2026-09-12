@@ -26,8 +26,13 @@
     return panel.getAttribute("data-card-accordion") || "";
   }
 
+  function isExperimental(panel) {
+    var g = panelGroup(panel);
+    return g === "attractions" || g === "experimental";
+  }
+
   function isPrimary(panel) {
-    return panelGroup(panel) !== "attractions";
+    return !isExperimental(panel);
   }
 
   function endSync() {
@@ -144,7 +149,7 @@
   }
 
   var hash = (location.hash || "").replace(/^#/, "");
-  if (hash === "cards-attractions") openOnly("attractions");
+  if (hash === "cards-attractions" || hash === "cards-experimental") openOnly("attractions");
   else if (hash === "cards-wildlife" || hash === "cards-wildlife-wrap") openOnly("wildlife");
   else if (hash === "cards-sealife" || hash === "cards-sealife-wrap") openOnly("sealife");
   else if (hash === "cards-all-wrap" || hash === "cards-accordion") openPrimaryAll();
