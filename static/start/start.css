@@ -212,17 +212,17 @@ body.start-body {
 
 .start-here-arrow {
   display: block;
-  width: 2.85rem;
-  height: 1.28rem;
+  width: 3.15rem;
+  height: 1.42rem;
   flex: 0 0 auto;
   overflow: visible;
-  filter: drop-shadow(0 1px 4px rgba(12, 10, 8, 0.28));
+  filter: drop-shadow(0 1px 6px rgba(12, 10, 8, 0.38));
 }
 
 .start-here-arrow path {
-  fill: #f3e2bc;
-  stroke: #1a4d4a;
-  stroke-width: 2.25;
+  fill: #ffe7b8;
+  stroke: #245854;
+  stroke-width: 2;
   stroke-linejoin: miter;
   stroke-miterlimit: 3;
 }
@@ -988,8 +988,8 @@ body.start-body {
   }
 
   .start-here-arrow {
-    width: 2.45rem;
-    height: 1.1rem;
+    width: 2.7rem;
+    height: 1.22rem;
   }
 
   .start-trust {
