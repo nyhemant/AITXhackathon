@@ -62,7 +62,10 @@ class YellowstoneAnimalParkRailsTests(unittest.TestCase):
         self.assertEqual([p["id"] for p in bison_parks], ["yellowstone", "badlands", "grand-teton"])
         self.assertTrue(bison_parks[0]["primary"])
         self.assertEqual(bison_parks[0]["id"], "yellowstone")
-        self.assertEqual([p["id"] for p in elk_parks], ["yellowstone", "grand-teton", "rocky-mountain"])
+        self.assertEqual(
+            [p["id"] for p in elk_parks],
+            ["yellowstone", "banff", "grand-teton", "jasper", "rocky-mountain"],
+        )
         self.assertTrue(elk_parks[0]["primary"])
         self.assertEqual([a["id"] for a in animals_for_park("yellowstone")], ["american-bison", "elk"])
         self.assertEqual([a["id"] for a in animals_for_park("grand-teton")], ["american-bison", "elk"])

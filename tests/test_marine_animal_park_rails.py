@@ -169,11 +169,28 @@ class MarineAnimalParkRailsTests(unittest.TestCase):
             listed = [str(x) for x in (meta.get("animals") or [])]
             incoming = animals_pointing_to_park(park_id)
             self.assertEqual(sorted(listed), sorted(incoming), park_id)
-            self.assertTrue(str(meta.get("source") or "").startswith("https://www.nps.gov/"))
+            src = str(meta.get("source") or "")
+            self.assertTrue(
+                src.startswith(
+                    (
+                        "https://www.nps.gov/",
+                        "https://www.sanparks.org/",
+                        "https://parks.canada.ca/",
+                    )
+                ),
+                park_id,
+            )
         for cid, meta in (data.get("animals") or {}).items():
             for edge in meta.get("parks") or []:
+                src = str(edge.get("source") or "")
                 self.assertTrue(
-                    str(edge.get("source") or "").startswith("https://www.nps.gov/"),
+                    src.startswith(
+                        (
+                            "https://www.nps.gov/",
+                            "https://www.sanparks.org/",
+                            "https://parks.canada.ca/",
+                        )
+                    ),
                     f"{cid} → {edge.get('id')}",
                 )
 

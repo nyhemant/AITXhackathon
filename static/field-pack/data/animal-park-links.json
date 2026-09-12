@@ -1,7 +1,7 @@
 {
   "version": 1,
   "kind": "strong",
-  "note": "PoC animal↔park suggestion graph. Strong, sourced edges only. Do not add weak links (no clownfish→inland parks; no sea-otter→Channel Islands current sightings; no puffin→Acadia in-park claim). Sightings are never promised.",
+  "note": "PoC animal↔park suggestion graph. Strong, sourced edges only. Do not add weak links (no clownfish→inland parks; no sea-otter→Channel Islands current sightings; no puffin→Acadia in-park claim; no Killarney→elk; no Table Mountain→penguin). Sightings are never promised.",
   "animals": {
     "american-bison": {
       "name": "American bison",
@@ -46,6 +46,81 @@
           "id": "grand-teton",
           "source": "https://www.nps.gov/grte/learn/nature/animals.htm",
           "note": "Sometimes in valley meadows — never promised."
+        },
+        {
+          "id": "banff",
+          "source": "https://parks.canada.ca/pn-np/ab/banff/nature/faune-wildlife/mammal/ongules/cervids/wapiti",
+          "note": "Often near meadows and roads — never approach or feed."
+        },
+        {
+          "id": "jasper",
+          "source": "https://parks.canada.ca/pn-np/ab/jasper/nature/faune-wildlife/cervides-deer",
+          "note": "Along roads and the townsite — never approach or feed."
+        }
+      ]
+    },
+    "african-lion": {
+      "name": "African lion",
+      "emoji": "🦁",
+      "photo": "/field-pack/photos/african-lion.jpg?v=img2",
+      "parks": [
+        {
+          "id": "kruger",
+          "primary": true,
+          "source": "https://www.sanparks.org/parks/kruger/explore/fauna-flora/mammals",
+          "note": "From the vehicle only — never get out on a game drive."
+        }
+      ]
+    },
+    "african-elephant": {
+      "name": "African elephant",
+      "emoji": "🐘",
+      "photo": "/field-pack/photos/african-elephant.jpg?v=img2",
+      "parks": [
+        {
+          "id": "kruger",
+          "primary": true,
+          "source": "https://www.sanparks.org/parks/kruger/explore/fauna-flora/mammals",
+          "note": "Huge and close-feeling — stay in the car."
+        }
+      ]
+    },
+    "zebra": {
+      "name": "Zebra",
+      "emoji": "🦓",
+      "photo": "/field-pack/photos/zebra.jpg?v=img2",
+      "parks": [
+        {
+          "id": "kruger",
+          "primary": true,
+          "source": "https://www.sanparks.org/parks/kruger/explore/fauna-flora/mammals",
+          "note": "Stripes on the savanna — binoculars help."
+        }
+      ]
+    },
+    "reticulated-giraffe": {
+      "name": "Reticulated giraffe",
+      "emoji": "🦒",
+      "photo": "/field-pack/photos/reticulated-giraffe.jpg?v=img2",
+      "parks": [
+        {
+          "id": "kruger",
+          "primary": true,
+          "source": "https://www.sanparks.org/parks/kruger/explore/fauna-flora/mammals",
+          "note": "Above the acacias — if you see one."
+        }
+      ]
+    },
+    "warthog": {
+      "name": "Warthog",
+      "emoji": "🐗",
+      "photo": "/field-pack/photos/warthog.jpg?v=img2",
+      "parks": [
+        {
+          "id": "kruger",
+          "primary": true,
+          "source": "https://www.sanparks.org/parks/kruger/explore/fauna-flora/mammals",
+          "note": "Sometimes bold near camps — still wild."
         }
       ]
     },
@@ -336,6 +411,30 @@
       "animals": ["puffin"],
       "source": "https://www.nps.gov/glba/learn/nature/birds.htm",
       "lead": "From a boat in the bay. Sightings aren’t promised. Give wildlife lots of space — keep a long, quiet distance."
+    },
+    "kruger": {
+      "name": "Kruger",
+      "full_name": "Kruger National Park",
+      "photo": "/field-pack/photos/np-hero-kruger.jpg?v=q2",
+      "animals": ["african-lion", "african-elephant", "zebra", "reticulated-giraffe", "warthog"],
+      "source": "https://www.sanparks.org/parks/kruger/explore/fauna-flora/mammals",
+      "lead": "From the vehicle on the rest-camp loop — not on foot outside camp. Sightings aren’t promised. Give wildlife lots of space — stay in the car except in rest camps."
+    },
+    "banff": {
+      "name": "Banff",
+      "full_name": "Banff National Park",
+      "photo": "/field-pack/photos/np-hero-banff.jpg?v=q2",
+      "animals": ["elk"],
+      "source": "https://parks.canada.ca/pn-np/ab/banff/nature/faune-wildlife/mammal/ongules/cervids/wapiti",
+      "lead": "Near meadows and roads. Sightings aren’t promised. Give wildlife lots of space — stay far back and never approach."
+    },
+    "jasper": {
+      "name": "Jasper",
+      "full_name": "Jasper National Park",
+      "photo": "/field-pack/photos/np-hero-jasper.jpg?v=q2",
+      "animals": ["elk"],
+      "source": "https://parks.canada.ca/pn-np/ab/jasper/nature/faune-wildlife/cervides-deer",
+      "lead": "Along roads and the townsite. Sightings aren’t promised. Give wildlife lots of space — keep a long, quiet distance."
     }
   }
 }
