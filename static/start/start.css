@@ -161,10 +161,12 @@ body.start-body {
 .start-hero.is-map-coaching .start-hero-pin-bison::after {
   content: "";
   position: absolute;
-  inset: 6%;
+  inset: -6%;
   border-radius: 50%;
   pointer-events: none;
-  box-shadow: 0 0 0 3px rgba(232, 160, 108, 0.48);
+  box-shadow:
+    0 0 0 3px rgba(232, 160, 108, 0.72),
+    0 0 16px 5px rgba(255, 214, 150, 0.42);
 }
 
 .start-hero .start-kicker {
@@ -210,8 +212,8 @@ body.start-body {
 
 .start-here-arrow {
   display: block;
-  width: 2.55rem;
-  height: 1.65rem;
+  width: 3.15rem;
+  height: 2rem;
   flex: 0 0 auto;
 }
 
@@ -976,8 +978,8 @@ body.start-body {
   }
 
   .start-here-arrow {
-    width: 2.2rem;
-    height: 1.45rem;
+    width: 2.7rem;
+    height: 1.7rem;
   }
 
   .start-trust {
@@ -1334,20 +1336,21 @@ body.start-body {
   }
 
   .start-hero.is-map-coaching .start-hero-pin-bison::after {
-    box-shadow: 0 0 0 0 rgba(232, 160, 108, 0.55);
     animation: start-bison-pulse 1.9s ease-out infinite;
   }
 }
 
 @keyframes start-bison-pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(232, 160, 108, 0.62), 0 0 12px 4px rgba(255, 246, 232, 0.35);
-  }
-  70% {
-    box-shadow: 0 0 0 14px rgba(232, 160, 108, 0), 0 0 0 0 rgba(255, 246, 232, 0);
-  }
+  0%,
   100% {
-    box-shadow: 0 0 0 0 rgba(232, 160, 108, 0), 0 0 0 0 rgba(255, 246, 232, 0);
+    box-shadow:
+      0 0 0 3px rgba(232, 160, 108, 0.78),
+      0 0 14px 5px rgba(255, 214, 150, 0.4);
+  }
+  55% {
+    box-shadow:
+      0 0 0 12px rgba(232, 160, 108, 0.18),
+      0 0 26px 10px rgba(255, 214, 150, 0.22);
   }
 }
 
@@ -1378,7 +1381,9 @@ body.start-body {
   }
 
   .start-hero.is-map-coaching .start-hero-pin-bison::after {
-    box-shadow: 0 0 0 3px rgba(232, 160, 108, 0.48);
+    box-shadow:
+      0 0 0 3px rgba(232, 160, 108, 0.72),
+      0 0 16px 5px rgba(255, 214, 150, 0.42);
   }
 
   .start-teach-track,
