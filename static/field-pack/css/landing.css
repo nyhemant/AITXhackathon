@@ -4338,6 +4338,41 @@ body.landing-hub.landing-body {
   margin: 0;
 }
 
+.cards-explorer .cards-theme-wildlife {
+  --cards-panel-wash: #f3efd6;
+}
+
+.cards-explorer .cards-theme-sealife {
+  --cards-panel-wash: #e4f3f6;
+}
+
+.cards-explorer .cards-theme-parks {
+  --cards-panel-wash: #e6eee2;
+}
+
+.cards-explorer .cards-theme-attractions {
+  --cards-panel-wash: #eeeaf1;
+}
+
+.cards-explorer .cards-accordion-panel[open] {
+  background: var(--cards-panel-wash, #fffcf7);
+}
+
+@media (prefers-color-scheme: dark) {
+  .cards-explorer .cards-theme-wildlife {
+    --cards-panel-wash: #efe8c8;
+  }
+  .cards-explorer .cards-theme-sealife {
+    --cards-panel-wash: #d7eef3;
+  }
+  .cards-explorer .cards-theme-parks {
+    --cards-panel-wash: #dce8d6;
+  }
+  .cards-explorer .cards-theme-attractions {
+    --cards-panel-wash: #e6e1ec;
+  }
+}
+
 .cards-explorer .cards-accordion-panel > summary {
   justify-content: flex-start;
   gap: 8px;

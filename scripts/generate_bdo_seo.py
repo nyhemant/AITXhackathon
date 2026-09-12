@@ -126,7 +126,7 @@ CARDS_PLAY_BROWSE = "Browse cards on the screen"
 CARDS_PLAY_PRINT_HREF = PRINT_PATH
 CARDS_HUB_TITLE = "Print cutouts to play · Animal cards · Field Trip Kit"
 CARDS_HUB_DESC = "Print animal cutouts, hide them at home, then hunt. Or browse cards on the screen."
-CARDS_LANDING_CSS_VER = "101"
+CARDS_LANDING_CSS_VER = "102"
 CARDS_EXPLORER_JS_VER = "5"
 CTA_READY = "Open"
 CTA_FIND = "Find"
@@ -4635,7 +4635,7 @@ def write_cards_hub(venues: list[dict]) -> str:
     ]
     total = sum(len(s[2]) for s in primary_sections)
 
-    def section_html(sid: str, label: str, items: list[dict]) -> str:
+    def section_html(sid: str, _label: str, items: list[dict]) -> str:
         if not items:
             return ""
         items = sorted(items, key=lambda x: (x.get("name") or "").lower())
@@ -4679,7 +4679,6 @@ def write_cards_hub(venues: list[dict]) -> str:
         sec_id = "cards-attractions-list" if sid == "attractions" else f"cards-{sid}"
         return (
             f'<section class="cards-hub-section" id="{esc(sec_id)}" aria-labelledby="h-{esc(sid)}">\n'
-            f'  <h2 id="h-{esc(sid)}">{label} <span class="seo-dir-count">{len(items)}</span></h2>\n'
             f'  <ul class="cards-hub-list">\n    '
             + "\n    ".join(lis)
             + "\n  </ul>\n</section>"
@@ -4708,9 +4707,9 @@ def write_cards_hub(venues: list[dict]) -> str:
         else:
             summary = f'{label} <span class="seo-dir-count">{len(items)}</span>'
         return (
-            f'<details class="hub-more cards-accordion-panel{extra}" id="{panel_id}"'
+            f'<details class="hub-more cards-accordion-panel cards-theme-{esc(sid)}{extra}" id="{panel_id}"'
             f'{filter_attr} data-card-accordion="{esc(sid)}"{open_attr}>\n'
-            f"        <summary>{summary}</summary>\n"
+            f'        <summary id="h-{esc(sid)}">{summary}</summary>\n'
             f"        {body}\n"
             f"      </details>"
         )
