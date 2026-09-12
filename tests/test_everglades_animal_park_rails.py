@@ -15,6 +15,7 @@ from animal_park_links import (  # noqa: E402
     animal_park_rail_html,
     animals_for_park,
     animals_pointing_to_park,
+    is_official_source,
     load_animal_park_links,
     park_animals_html,
     parks_for_animal,
@@ -81,17 +82,7 @@ class EvergladesAnimalParkRailsTests(unittest.TestCase):
             listed = [str(x) for x in (meta.get("animals") or [])]
             incoming = animals_pointing_to_park(park_id)
             self.assertEqual(sorted(listed), sorted(incoming), park_id)
-            src = str(meta.get("source") or "")
-            self.assertTrue(
-                src.startswith(
-                    (
-                        "https://www.nps.gov/",
-                        "https://www.sanparks.org/",
-                        "https://parks.canada.ca/",
-                    )
-                ),
-                park_id,
-            )
+            self.assertTrue(is_official_source(str(meta.get("source") or "")), park_id)
 
     def test_card_helper_is_a_second_rail_not_try_next(self):
         rail = animal_park_rail_html("american-alligator")

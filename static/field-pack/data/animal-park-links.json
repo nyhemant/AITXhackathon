@@ -321,6 +321,45 @@
           "note": "Sometimes on cliffs and islands from a boat — keep a long, quiet distance."
         }
       ]
+    },
+    "giant-panda": {
+      "name": "Giant panda",
+      "emoji": "🐼",
+      "photo": "/field-pack/photos/giant-panda.jpg?v=img2",
+      "parks": [
+        {
+          "id": "giant-panda-national-park",
+          "primary": true,
+          "source": "https://www.forestry.gov.cn/c/www/wmdgjgy/119160.jhtml",
+          "note": "Sichuan mountain forests — not a zoo hall. Sightings aren’t promised."
+        }
+      ]
+    },
+    "koala": {
+      "name": "Koala",
+      "emoji": "🐨",
+      "photo": "/field-pack/photos/koala.jpg?v=img2",
+      "parks": [
+        {
+          "id": "french-island",
+          "primary": true,
+          "source": "https://www.parks.vic.gov.au/places-to-see/parks/french-island-national-park",
+          "note": "Look up in the woodland from Tankerton — never promised."
+        }
+      ]
+    },
+    "galapagos-tortoise": {
+      "name": "Galápagos tortoise",
+      "emoji": "🐢",
+      "photo": "/field-pack/photos/galapagos-tortoise.jpg?v=img2",
+      "parks": [
+        {
+          "id": "galapagos",
+          "primary": true,
+          "source": "https://galapagos.gob.ec/parque-nacional-galapagos/",
+          "note": "The park’s emblem — often a highland or breeding-center visit, never promised on every landing."
+        }
+      ]
     }
   },
   "parks": {
@@ -435,6 +474,30 @@
       "animals": ["elk"],
       "source": "https://parks.canada.ca/pn-np/ab/jasper/nature/faune-wildlife/cervides-deer",
       "lead": "Along roads and the townsite. Sightings aren’t promised. Give wildlife lots of space — keep a long, quiet distance."
+    },
+    "giant-panda-national-park": {
+      "name": "Giant Panda National Park",
+      "full_name": "Giant Panda National Park",
+      "photo": "/field-pack/photos/np-hero-giant-panda-national-park.jpg?v=q2",
+      "animals": ["giant-panda"],
+      "source": "https://www.forestry.gov.cn/c/www/wmdgjgy/119160.jhtml",
+      "lead": "In the Sichuan mountain forests — not a zoo hall. Sightings aren’t promised. Give wildlife lots of space — stay on the path and far back."
+    },
+    "french-island": {
+      "name": "French Island",
+      "full_name": "French Island National Park",
+      "photo": "/field-pack/photos/np-hero-french-island.jpg?v=q2",
+      "animals": ["koala"],
+      "source": "https://www.parks.vic.gov.au/places-to-see/parks/french-island-national-park",
+      "lead": "In the woodland from Tankerton — not promised on the ferry. Sightings aren’t promised. Give wildlife lots of space — look, don’t touch, and stay far back."
+    },
+    "galapagos": {
+      "name": "Galápagos",
+      "full_name": "Galápagos National Park",
+      "photo": "/field-pack/photos/np-hero-galapagos.jpg?v=q2",
+      "animals": ["galapagos-tortoise"],
+      "source": "https://galapagos.gob.ec/parque-nacional-galapagos/",
+      "lead": "On the islands — often from a marked path or breeding-center visit, not a promise on every landing. Sightings aren’t promised. Give wildlife lots of space — keep a long, quiet distance."
     }
   }
 }

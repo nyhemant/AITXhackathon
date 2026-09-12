@@ -1,7 +1,8 @@
 """Sourced animal ↔ national-park suggestion rails.
 
-Yellowstone, Everglades, Wave A marine/coastal parks, and Wave B
-international parks (Kruger, Banff, Jasper).
+Yellowstone, Everglades, Wave A marine/coastal parks, Wave B
+international parks (Kruger, Banff, Jasper), and Wave C exotic
+rails (Giant Panda National Park, French Island, Galápagos).
 Strong links only. Keep try-next (same-kind animals) separate.
 Park `animals` lists must name every animal that already points at that park.
 Do not invent weak edges or park study tiers.
@@ -19,6 +20,20 @@ LINKS_JSON = REPO / "static" / "field-pack" / "data" / "animal-park-links.json"
 CARD_PARK_RAIL_KICKER = "See them in the wild"
 CARD_PARK_RAIL_ARIA = "See them in the wild"
 PARK_ANIMALS_H2 = "Animals you might meet"
+OFFICIAL_SOURCE_PREFIXES = (
+    "https://www.nps.gov/",
+    "https://www.sanparks.org/",
+    "https://parks.canada.ca/",
+    "https://www.forestry.gov.cn/",
+    "https://www.parks.vic.gov.au/",
+    "https://galapagos.gob.ec/",
+)
+
+
+def is_official_source(url: str) -> bool:
+    return str(url or "").startswith(OFFICIAL_SOURCE_PREFIXES)
+
+
 PARK_ANIMALS_LEAD_DEFAULT = (
     "Sightings aren’t promised. Give wildlife lots of space — "
     "stay in the car or far back."

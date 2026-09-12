@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-08-17",
+  "updated": "2026-09-12",
   "policy": "No AI park imagery. Prefer NPS PD, then Wikimedia PD/CC. Ledger is source of truth for provenance.",
   "rubric": [
     "subject_clarity",
@@ -3616,6 +3616,54 @@
       "score": 4,
       "notes": "",
       "checked_date": "2026-08-11"
+    },
+    {
+      "asset_id": "hero:french-island",
+      "role": "hero",
+      "slug": "french-island",
+      "status": "accepted",
+      "provenance": "wikimedia",
+      "source_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/West_Coast_of_French_Island%2C_looking_south.jpg/1920px-West_Coast_of_French_Island%2C_looking_south.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "source_page": "File:West Coast of French Island, looking south.jpg",
+      "license": "CC BY-SA 4.0 · Harley Calvert",
+      "credit_ui": "Photo via Wikimedia Commons",
+      "credit_full": "CC BY-SA 4.0 · Harley Calvert",
+      "local_path": "photos/np-hero-french-island.jpg",
+      "score": 4,
+      "notes": "Wave C French Island hero",
+      "checked_date": "2026-09-12"
+    },
+    {
+      "asset_id": "hero:galapagos",
+      "role": "hero",
+      "slug": "galapagos",
+      "status": "accepted",
+      "provenance": "wikimedia",
+      "source_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/Los_Gemelos%2C_Isla_Santa_Cruz%2C_Galapagos_Islands.jpg/1920px-Los_Gemelos%2C_Isla_Santa_Cruz%2C_Galapagos_Islands.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "source_page": "File:Los Gemelos, Isla Santa Cruz, Galapagos Islands.jpg",
+      "license": "CC BY-SA 4.0 · Pi3.124",
+      "credit_ui": "Photo via Wikimedia Commons",
+      "credit_full": "CC BY-SA 4.0 · Pi3.124",
+      "local_path": "photos/np-hero-galapagos.jpg",
+      "score": 4,
+      "notes": "Wave C Galapagos hero",
+      "checked_date": "2026-09-12"
+    },
+    {
+      "asset_id": "hero:giant-panda-national-park",
+      "role": "hero",
+      "slug": "giant-panda-national-park",
+      "status": "accepted",
+      "provenance": "wikimedia",
+      "source_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/Panda_at_Wolong_nature_reserve_Sichuan_China.jpg/1920px-Panda_at_Wolong_nature_reserve_Sichuan_China.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "source_page": "File:Panda at Wolong nature reserve Sichuan China.jpg",
+      "license": "CC BY-SA 3.0 · Whoisgalt",
+      "credit_ui": "Photo via Wikimedia Commons",
+      "credit_full": "CC BY-SA 3.0 · Whoisgalt",
+      "local_path": "photos/np-hero-giant-panda-national-park.jpg",
+      "score": 4,
+      "notes": "Wave C Giant Panda NP hero from Wolong Commons",
+      "checked_date": "2026-09-12"
     }
   ]
 }
