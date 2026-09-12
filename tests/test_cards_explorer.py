@@ -206,7 +206,7 @@ class CardsExplorerTests(unittest.TestCase):
         alias = Path(GIRAFFE).parent.parent / "giraffe" / "index.html"
         self.assertTrue(alias.is_file())
         html = alias.read_text(encoding="utf-8")
-        self.assertIn('rel="canonical" href="https://1less.app/field-pack/cards/reticulated-giraffe/"', html)
+        self.assertIn('rel="canonical" href="https://kidzookit.com/field-pack/cards/reticulated-giraffe/"', html)
         self.assertIn('content="0;url=/field-pack/cards/reticulated-giraffe/"', html)
         self.assertIn("location.replace(", html)
         self.assertIn("/field-pack/cards/reticulated-giraffe/", html)

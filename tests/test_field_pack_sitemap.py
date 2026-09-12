@@ -29,22 +29,25 @@ from generate_bdo_seo import (  # noqa: E402
 _LASTMOD_RE = re.compile(r"<lastmod>([^<]+)</lastmod>")
 _LOC_RE = re.compile(r"<loc>([^<]+)</loc>")
 _REDIRECT_LOCS = (
-    "https://1less.app/field-pack/print/",
-    "https://1less.app/field-pack/virtual-zoo/",
-    "https://1less.app/field-pack/parks/",
-    "https://1less.app/field-pack/app.html",
-    "https://1less.app/field-pack/cards/giraffe/",
-    "https://1less.app/field-pack/cards/lion/",
+    f"{SITE}/field-pack/print/",
+    f"{SITE}/field-pack/virtual-zoo/",
+    f"{SITE}/field-pack/parks/",
+    f"{SITE}/field-pack/app.html",
+    f"{SITE}/field-pack/cards/giraffe/",
+    f"{SITE}/field-pack/cards/lion/",
 )
 
 
 class SitemapTests(unittest.TestCase):
+    def test_site_constant_is_kidzookit(self):
+        self.assertEqual(SITE, "https://kidzookit.com")
+
     def test_static_sitemap_bytes_are_xml(self):
         body = _sitemap_bytes()
         self.assertTrue(body.startswith(b"<?xml"))
         self.assertIn(b"<urlset", body)
-        self.assertIn(b"https://1less.app/field-pack/", body)
-        self.assertIn(b"https://1less.app/about/", body)
+        self.assertIn(f"{SITE}/field-pack/".encode("utf-8"), body)
+        self.assertIn(f"{SITE}/about/".encode("utf-8"), body)
 
     def test_sitemap_paths_are_the_robots_and_alias_urls(self):
         self.assertEqual(_SITEMAP_URLS, ("/sitemap.xml", "/field-pack/sitemap.xml"))
@@ -61,13 +64,13 @@ class SitemapTests(unittest.TestCase):
 
     def test_both_sitemaps_include_live_card_urls(self):
         expected_locs = (
-            "https://1less.app/field-pack/cards/cuttlefish/",
-            "https://1less.app/field-pack/cards/kelp-forest/",
-            "https://1less.app/field-pack/cards/manta-ray/",
-            "https://1less.app/field-pack/cards/puffin/",
-            "https://1less.app/field-pack/cards/sea-otter/",
-            "https://1less.app/field-pack/cards/whale-shark/",
-            "https://1less.app/about/",
+            f"{SITE}/field-pack/cards/cuttlefish/",
+            f"{SITE}/field-pack/cards/kelp-forest/",
+            f"{SITE}/field-pack/cards/manta-ray/",
+            f"{SITE}/field-pack/cards/puffin/",
+            f"{SITE}/field-pack/cards/sea-otter/",
+            f"{SITE}/field-pack/cards/whale-shark/",
+            f"{SITE}/about/",
         )
         sitemap_paths = (
             REPO / "static" / "sitemap.xml",
@@ -108,7 +111,7 @@ class SitemapTests(unittest.TestCase):
 
     def test_robots_still_points_at_root_sitemap(self):
         robots = (REPO / "static" / "robots.txt").read_text(encoding="utf-8")
-        self.assertIn("Sitemap: https://1less.app/sitemap.xml", robots)
+        self.assertIn(f"Sitemap: {SITE}/sitemap.xml", robots)
 
     def test_canonical_ia_urls_present_redirects_omitted(self):
         extras = collect_sitemap_extra_urls()
@@ -134,9 +137,9 @@ class SitemapTests(unittest.TestCase):
         )
         for sitemap_path in sitemap_paths:
             text = sitemap_path.read_text(encoding="utf-8")
-            self.assertIn("<loc>https://1less.app/field-pack/virtual-field-trip/</loc>", text)
-            self.assertIn("<loc>https://1less.app/field-pack/national-parks/</loc>", text)
-            self.assertIn("<loc>https://1less.app/start/</loc>", text)
+            self.assertIn(f"<loc>{SITE}/field-pack/virtual-field-trip/</loc>", text)
+            self.assertIn(f"<loc>{SITE}/field-pack/national-parks/</loc>", text)
+            self.assertIn(f"<loc>{SITE}/start/</loc>", text)
             for loc in _REDIRECT_LOCS:
                 self.assertNotIn(f"<loc>{loc}</loc>", text)
 
@@ -160,12 +163,12 @@ class SitemapTests(unittest.TestCase):
             self.assertNotEqual(old_stamp, "1999-01-01")
 
     def test_source_paths_prefer_venue_json_over_generated_html(self):
-        yellowstone = source_paths_for_url("https://1less.app/field-pack/yellowstone/")
+        yellowstone = source_paths_for_url(f"{SITE}/field-pack/yellowstone/")
         self.assertEqual(
             [p.name for p in yellowstone],
             ["yellowstone.json"],
         )
-        start = source_paths_for_url("https://1less.app/start/")
+        start = source_paths_for_url(f"{SITE}/start/")
         self.assertTrue(any(p.name == "index.html" for p in start))
         vft = source_paths_for_url("/field-pack/virtual-field-trip/")
         self.assertTrue(any(p.name == "virtual-venue.js" for p in vft))
@@ -203,10 +206,10 @@ class SitemapTests(unittest.TestCase):
         self.assertLess(min(lastmods), max(lastmods))
         loc_to_mod = dict(zip(locs, lastmods))
         for loc in (
-            "https://1less.app/start/",
-            "https://1less.app/about/",
-            "https://1less.app/field-pack/cards/",
-            "https://1less.app/field-pack/virtual-field-trip/",
+            f"{SITE}/start/",
+            f"{SITE}/about/",
+            f"{SITE}/field-pack/cards/",
+            f"{SITE}/field-pack/virtual-field-trip/",
         ):
             self.assertGreaterEqual(loc_to_mod[loc], "2026-09-01", loc)
 
@@ -233,7 +236,7 @@ class SitemapTests(unittest.TestCase):
             text = root.read_text(encoding="utf-8")
             self.assertIn("<lastmod>2026-09-12</lastmod>", text)
             self.assertIn("<lastmod>2026-08-08</lastmod>", text)
-            self.assertNotIn("<loc>https://1less.app/field-pack/print/</loc>", text)
+            self.assertNotIn(f"<loc>{SITE}/field-pack/print/</loc>", text)
             self.assertNotEqual(text.count("<lastmod>2026-09-12</lastmod>"), text.count("<lastmod>"))
         finally:
             root.write_text(before_root, encoding="utf-8")

@@ -11,6 +11,11 @@ from uuid import uuid4
 
 from busyparent_agent.rate_limit import evaluate_request, set_limiter, RateLimiter
 from busyparent_agent.service import APP_TITLE, create_dinner_decision_session
+from busyparent_agent.site import (
+    PUBLIC_SITE,
+    cookie_parent_domain,
+    host_redirect_location,
+)
 from busyparent_agent.url_aliases import (
     CARD_ALIAS_REDIRECTS,
     redirect_location,
@@ -947,13 +952,12 @@ def _html_for_request(cookie_header: str | None) -> str:
 
 def _analytics_cookie_header(value: str, host_header: str | None, *, max_age: int) -> str:
     # Not HttpOnly: static /field-pack pages read this cookie in shell.js so QA
-    # browsing on 1less.app does not inflate GA4 (dinner also injects a head flag).
+    # browsing on the public host does not inflate GA4 (dinner also injects a head flag).
     parts = [f"{ANALYTICS_COOKIE}={value}", f"Max-Age={max_age}", "Path=/", "SameSite=Lax"]
-    host = (host_header or "").split(":", 1)[0].lower()
-    if host == "1less.app" or host.endswith(".1less.app"):
-        parts.insert(2, "Domain=1less.app")
-    # Secure on production HTTPS so the cookie is sent only over TLS
-    if host == "1less.app" or host.endswith(".1less.app"):
+    domain = cookie_parent_domain(host_header)
+    if domain:
+        parts.insert(2, f"Domain={domain}")
+        # Secure on production HTTPS so the cookie is sent only over TLS
         parts.append("Secure")
     return "; ".join(parts)
 
@@ -1145,10 +1149,10 @@ def _root_static_content_type(path: Path) -> str:
 
 
 _SITEMAP_URLS = ("/sitemap.xml", "/field-pack/sitemap.xml")
-_MINIMAL_SITEMAP = """<?xml version="1.0" encoding="UTF-8"?>
+_MINIMAL_SITEMAP = f"""<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://1less.app/field-pack/</loc>
+    <loc>{PUBLIC_SITE}/field-pack/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -1173,6 +1177,16 @@ class WebHandler(BaseHTTPRequestHandler):
         if not address:
             return None
         return address[0]
+
+    def _redirect_if_public_host(self) -> bool:
+        """301 legacy 1less.app (and www) to the canonical kidzookit.com host."""
+        headers = self.headers
+        host = headers.get("Host") if headers is not None else None
+        location = host_redirect_location(host, self.path)
+        if not location:
+            return False
+        _send_redirect(self, location, code=301)
+        return True
 
     def _reject_if_rate_limited(self) -> bool:
         """Return True when this request was answered with 429."""
@@ -1206,6 +1220,8 @@ class WebHandler(BaseHTTPRequestHandler):
 
     def do_GET(self) -> None:
         if self._reject_if_rate_limited():
+            return
+        if self._redirect_if_public_host():
             return
         path = urlsplit(self.path).path
         if path == "/analytics/off":
@@ -1380,6 +1396,8 @@ class WebHandler(BaseHTTPRequestHandler):
 
     def do_HEAD(self) -> None:
         if self._reject_if_rate_limited():
+            return
+        if self._redirect_if_public_host():
             return
         path = urlsplit(self.path).path
         if path in {"/", "/index.html"}:

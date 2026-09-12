@@ -31,6 +31,7 @@ from urllib.parse import urlparse
 REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO / "src"))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from busyparent_agent.site import PUBLIC_SITE  # noqa: E402
 from busyparent_agent.url_aliases import (  # noqa: E402
     CARD_SLUG_ALIASES,
     NATIONAL_PARKS_PATH,
@@ -76,7 +77,8 @@ MISSION_ENGINE = FIELD / "js" / "mission" / "mission-engine.js"
 STATIC = REPO / "static"
 CATALOG_JS = FIELD / "js" / "catalog.js"
 PLACES_JS = FIELD / "js" / "places-data.js"
-SITE = "https://1less.app"
+SITE = PUBLIC_SITE
+SITE_HOST = PUBLIC_SITE.split("://", 1)[-1]
 TODAY = date.today().isoformat()
 
 RESERVED = {
@@ -2342,7 +2344,7 @@ def mission_drawer_html(mission_venue: dict, mission: dict) -> str:
             <p class="ms-favorite">My favorite was _______________________</p>
             <p class="ms-footer">
               {freshness_span_html(vid)}
-              · free at 1less.app/field-pack/{esc(vid)}/
+              · free at {SITE_HOST}/field-pack/{esc(vid)}/
             </p>
             <p class="ms-map-hint" id="mission-map-hint"></p>
           </div>
@@ -3313,9 +3315,13 @@ def write_robots() -> None:
     text = f"""User-agent: *
 Allow: /
 Allow: /field-pack/
+Allow: /start/
+Allow: /llms.txt
 Disallow: /dinner
 Disallow: /analytics/
 Disallow: /api/
+
+# /llms.txt is public for AI assistants. Do not Disallow GPTBot, Claude, or Perplexity.
 
 Sitemap: {SITE}/sitemap.xml
 """

@@ -18,7 +18,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PHOTOS = ROOT / "static/field-pack/photos"
 CAT = ROOT / "static/field-pack/js/catalog.js"
 LEDGER = ROOT / "scripts/data/park_photo_ledger.json"
-UA = {"User-Agent": "1LessFieldTripKit/1.0 (https://1less.app; educational park photos)"}
+UA = {"User-Agent": "1LessFieldTripKit/1.0 (https://kidzookit.com; educational park photos)"}
 CTX = ssl.create_default_context()
 TODAY = date.today().isoformat()
 

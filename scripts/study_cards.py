@@ -21087,7 +21087,7 @@ def study_print_html(
         f'<div class="ps-study-top">{photo_block}'
         f'<div class="ps-study-top-qs">{top_qs}</div></div>'
         f'<div class="ps-study-grid">{rest_qs}</div>'
-        f'<p class="ps-footer">{source} · 1less.app · Duplex: this side questions, back answers</p>'
+        f'<p class="ps-footer">{source} · kidzookit.com · Duplex: this side questions, back answers</p>'
         f"</div>"
         f'<div class="ps-study-back ps-page">'
         f'<div class="ps-banner"><h1>FIELD TRIP KIT</h1>'

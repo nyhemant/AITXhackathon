@@ -860,7 +860,7 @@
       ${teachHtml}
       <div class="ps-study-top">${photoBlock}<div class="ps-study-top-qs">${qs.slice(0, 2).map(qCard).join("")}</div></div>
       <div class="ps-study-grid">${qs.slice(2).map(qCard).join("")}</div>
-      <p class="ps-footer">${escapeHtml(source)} · 1less.app · Duplex: this side questions, back answers</p>
+      <p class="ps-footer">${escapeHtml(source)} · kidzookit.com · Duplex: this side questions, back answers</p>
     </div>
     <div class="ps-study-back ps-page">
       <div class="ps-banner"><h1>FIELD TRIP KIT</h1>
@@ -1225,7 +1225,7 @@
     const sub =
       (config && config.printHideSub) ||
       "Cut the cards. Hide them. Write in the box. Ask the question.";
-    const footer = (config && config.printFooter) || "1less.app/field-pack/virtual-field-trip/ · Field Trip Kit";
+    const footer = (config && config.printFooter) || "kidzookit.com/field-pack/virtual-field-trip/ · Field Trip Kit";
     const cols = HS_COLS;
     return `<div class="hs-page hs-page-cut">
       <div class="hs-banner"><h1>${escapeHtml(banner)}</h1>
@@ -1238,7 +1238,7 @@
   function buildAnswerPageHtml(config, habitats) {
     const banner = (config && config.printHideBanner) || "Hide-and-seek at home";
     const sub = "Answers. Print two-sided.";
-    const footer = (config && config.printFooter) || "1less.app/field-pack/virtual-field-trip/ · Field Trip Kit";
+    const footer = (config && config.printFooter) || "kidzookit.com/field-pack/virtual-field-trip/ · Field Trip Kit";
     const cols = HS_COLS;
     const cards = habitats
       .map((_, i) => answerCardHtml(habitats[longEdgeMirrorIndex(i, habitats.length, cols)]))

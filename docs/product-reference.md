@@ -6,7 +6,7 @@ Last updated: 2026-05-19
 ## Canonical Product Identity
 
 - Product: **1Less**
-- Primary domain: <https://1less.app>
+- Primary domain: <https://kidzookit.com>
 - Company promise: **One less decision for busy parents.**
 - Chapter 1 promise: **Tonight's dinner, decided.**
 
@@ -24,11 +24,12 @@ The answer should be one practical, good-enough decision — not a recipe feed, 
 
 ## Current Public URLs
 
-- Primary: <https://1less.app>
-- WWW: <https://www.1less.app>
+- Primary: <https://kidzookit.com>
+- WWW: <https://www.kidzookit.com> (301 to apex)
+- Legacy: <https://1less.app> and <https://www.1less.app> (301 to kidzookit.com, same path + query)
 - Temporary backup alias: <https://aitx.myglucoach.app>
 
-The backup alias exists for continuity only. New product references should use `1less.app`.
+The backup alias exists for continuity only. New product references should use `kidzookit.com`.
 
 ## Repo / Implementation Note
 

@@ -38,7 +38,7 @@ MAP_DIR = ROOT / "static/field-pack/media/maps"
 PRINT_MAPS_JS = ROOT / "static/field-pack/js/print-maps.js"
 LEDGER = ROOT / "scripts/data/nps_park_maps_ledger.json"
 UA = {
-    "User-Agent": "1LessFieldTripKit/1.0 (https://1less.app; educational; NPS public-domain maps)",
+    "User-Agent": "1LessFieldTripKit/1.0 (https://kidzookit.com; educational; NPS public-domain maps)",
     "Accept": "text/html,application/xhtml+xml,application/pdf,image/*;q=0.9,*/*;q=0.8",
 }
 CTX = ssl.create_default_context()

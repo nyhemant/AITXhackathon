@@ -10,7 +10,7 @@ Kid names stay on the device. This does not collect emails for hunts.
 | --- | --- |
 | `src/busyparent_agent/rate_limit.py` | Sliding-window limiter, path buckets, IP + optional UA, quiet 429 counts |
 | `src/busyparent_agent/web.py` | Origin hook on `GET` / `HEAD` / `POST` (`WebHandler._reject_if_rate_limited`) |
-| Mini LaunchAgent | Same stdlib `ThreadingHTTPServer` that already serves 1less.app |
+| Mini LaunchAgent | Same stdlib `ThreadingHTTPServer` that already serves kidzookit.com |
 
 There is no reverse-proxy config in this repo. Production is the Python origin behind a **Cloudflare free/tunnel edge** (`server: cloudflare`, `cf-ray`, `cf-cache-status: DYNAMIC`). The lightest real control is this in-app limiter.
 

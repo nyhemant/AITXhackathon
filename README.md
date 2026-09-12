@@ -58,7 +58,7 @@ From the repo root:
 python3 -m unittest discover -s tests
 ```
 
-Local QA (MacBook — same server as 1less.app, not live):
+Local QA (MacBook — same server as kidzookit.com, not live):
 
 ```bash
 ./scripts/dev-serve.sh

@@ -76,12 +76,12 @@
    * Exclude build / QA / own browsing from production stats.
    *
    * Opt out (persists in this browser):
-   *   Visit https://1less.app/analytics/off
+   *   Visit https://kidzookit.com/analytics/off
    *   or  ?analytics=off  /  ?no_ga=1  (saves localStorage)
    *   or  localStorage.setItem('1less_analytics_off','1')
    *
    * Opt back in:
-   *   https://1less.app/analytics/on
+   *   https://kidzookit.com/analytics/on
    *   or  ?analytics=on
    */
   function applyQueryAnalyticsToggle() {
@@ -203,7 +203,7 @@
         if (isLocalDevHost() || localStorage.getItem(LS_OFF_KEY) === "1") {
           console.info(
             "[1Less GA4] off for this browser/host — production stats not counted. " +
-              "Opt in: https://1less.app/analytics/on or ?analytics=on"
+              "Opt in: https://kidzookit.com/analytics/on or ?analytics=on"
           );
         }
       } catch (_) {
