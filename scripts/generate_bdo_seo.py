@@ -126,7 +126,8 @@ CARDS_PLAY_BROWSE = "Browse cards on the screen"
 CARDS_PLAY_PRINT_HREF = PRINT_PATH
 CARDS_HUB_TITLE = "Print cutouts to play · Animal cards · Field Trip Kit"
 CARDS_HUB_DESC = "Print animal cutouts, hide them at home, then hunt. Or browse cards on the screen."
-CARDS_LANDING_CSS_VER = "100"
+CARDS_LANDING_CSS_VER = "101"
+CARDS_EXPLORER_JS_VER = "5"
 CTA_READY = "Open"
 CTA_FIND = "Find"
 # Map explorer (/field-pack/) — short title, no sales/FAQ essay. Do not redirect to /start/.
@@ -4602,7 +4603,7 @@ def _hub_filter_tabs_html(section_ids: list[str]) -> str:
     )
 
 
-TRY_CARD_IDS = ("reticulated-giraffe", "african-elephant", "african-lion")
+TRY_CARD_IDS = ("red-panda", "whale-shark", "octopus")
 
 
 def write_cards_hub(venues: list[dict]) -> str:
@@ -4684,15 +4685,47 @@ def write_cards_hub(venues: list[dict]) -> str:
             + "\n  </ul>\n</section>"
         )
 
-    body_sections = "\n".join(section_html(*s) for s in primary_sections if s[2])
-    experimental_body = "\n".join(section_html(*s) for s in experimental_sections if s[2])
-    if experimental_body:
-        experimental_body = (
-            '<details class="hub-more cards-experimental" id="cards-attractions">\n'
-            "        <summary>Museum &amp; science cards</summary>\n"
-            f"        {experimental_body}\n"
-            "      </details>"
+    def accordion_panel(
+        sid: str,
+        label: str,
+        items: list[dict],
+        *,
+        experimental: bool = False,
+        opened: bool = False,
+    ) -> str:
+        body = section_html(sid, label, items)
+        if not body:
+            return ""
+        open_attr = " open" if opened else ""
+        extra = " cards-experimental" if experimental else ""
+        filter_attr = "" if experimental else f' data-card-filter="{esc(sid)}"'
+        panel_id = "cards-attractions" if experimental else f"cards-{sid}-wrap"
+        if experimental:
+            summary = (
+                'Museum &amp; science cards '
+                '<span class="cards-experimental-note">Experimental · Quiet</span>'
+            )
+        else:
+            summary = f'{label} <span class="seo-dir-count">{len(items)}</span>'
+        return (
+            f'<details class="hub-more cards-accordion-panel{extra}" id="{panel_id}"'
+            f'{filter_attr} data-card-accordion="{esc(sid)}"{open_attr}>\n'
+            f"        <summary>{summary}</summary>\n"
+            f"        {body}\n"
+            f"      </details>"
         )
+
+    accordion_panels = [
+        accordion_panel(sid, label, items, opened=(sid == "wildlife"))
+        for sid, label, items in primary_sections
+        if items
+    ]
+    accordion_panels.extend(
+        accordion_panel(sid, label, items, experimental=True)
+        for sid, label, items in experimental_sections
+        if items
+    )
+    accordion_html = "\n      ".join(accordion_panels)
     title = CARDS_HUB_TITLE
     desc = CARDS_HUB_DESC
     url = f"{SITE}/field-pack/cards/"
@@ -4820,21 +4853,19 @@ def write_cards_hub(venues: list[dict]) -> str:
       </div>
     </header>
     <main class="cards-hub" id="cards-hub">
-      {_hub_filter_tabs_html([s[0] for s in primary_sections])}
-      <p class="cards-hub-count" id="cards-hub-count">{total} cards</p>
       <section class="ready-now ready-slim try-card-row" id="try-a-card" aria-labelledby="try-card-heading">
         <h2 id="try-card-heading">Try a card</h2>
         <div class="try-card-grid" id="try-card-grid">
           {try_row}
         </div>
       </section>
-      <details class="hub-more cards-all-wrap" id="cards-all-wrap">
-        <summary>All {total} cards</summary>
-        <div class="cards-all-body">
-{body_sections}
-        </div>
-      </details>
-      {experimental_body}
+      <div class="cards-library-bar">
+        <p class="cards-hub-count" id="cards-hub-count">{total} cards</p>
+        <button type="button" class="cards-all-btn" id="cards-all-wrap" data-card-filter="all" aria-pressed="false">All cards</button>
+      </div>
+      <div class="cards-accordion" id="cards-accordion">
+      {accordion_html}
+      </div>
     </main>
     <footer class="site-footer site-footer-slim no-print">
       <p>
@@ -4854,7 +4885,7 @@ def write_cards_hub(venues: list[dict]) -> str:
   </div>
   <script src="/shell/shell.js?v=5"></script>
   <script src="/field-pack/js/fp-analytics.js?v=1"></script>
-  <script src="/field-pack/js/cards-explorer.js?v=3"></script>
+  <script src="/field-pack/js/cards-explorer.js?v={CARDS_EXPLORER_JS_VER}"></script>
 </body>
 </html>
 """

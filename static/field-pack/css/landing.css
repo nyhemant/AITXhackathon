@@ -4284,10 +4284,94 @@ body.landing-hub.landing-body {
 }
 
 .cards-explorer .cards-hub-count {
-  margin: 0 0 14px;
+  margin: 0;
   font-size: 0.92rem;
   font-weight: 700;
   color: #0a4545;
+}
+
+.cards-explorer .cards-library-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 0 0 12px;
+}
+
+.cards-explorer .cards-all-btn {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(196, 92, 38, 0.28);
+  background: #fffcf7;
+  color: #0a4545;
+  font-weight: 750;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.cards-explorer .cards-all-btn:hover,
+.cards-explorer .cards-all-btn:focus-visible {
+  border-color: rgba(196, 92, 38, 0.5);
+}
+
+.cards-explorer .cards-all-btn:focus-visible {
+  outline: 3px solid #ffcf5a;
+  outline-offset: 2px;
+}
+
+.cards-explorer .cards-all-btn[aria-pressed="true"] {
+  background: var(--silo-cards, #c45c26);
+  color: #fff;
+  border-color: var(--silo-cards, #c45c26);
+}
+
+.cards-explorer .cards-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cards-explorer .cards-accordion-panel {
+  margin: 0;
+}
+
+.cards-explorer .cards-accordion-panel > summary {
+  justify-content: flex-start;
+  gap: 8px;
+}
+
+.cards-explorer .cards-accordion-panel > summary::after {
+  content: "";
+  width: 0.5em;
+  height: 0.5em;
+  margin-left: auto;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg) translateY(-0.1em);
+  flex: 0 0 auto;
+}
+
+.cards-explorer .cards-accordion-panel[open] > summary::after {
+  transform: rotate(-135deg) translateY(0.05em);
+}
+
+.cards-explorer .cards-experimental > summary {
+  color: #5c564c;
+  font-weight: 650;
+}
+
+.cards-explorer .cards-experimental-note {
+  font-size: 0.75rem;
+  font-weight: 650;
+  color: #8a8378;
+}
+
+.cards-explorer .cards-accordion-panel .cards-hub-section {
+  margin: 0;
+  padding: 12px;
 }
 
 .cards-explorer .place-type-tabs-cards {
@@ -4458,6 +4542,7 @@ body.landing-hub.landing-body {
 
 .cards-explorer .cards-hub-item[hidden],
 .cards-explorer .cards-hub-section[hidden],
+.cards-explorer .cards-accordion-panel[hidden],
 .cards-explorer .try-card-row[hidden] {
   display: none !important;
 }
@@ -4465,6 +4550,9 @@ body.landing-hub.landing-body {
 @media (max-width: 520px) {
   .cards-explorer .try-card-grid {
     grid-template-columns: 1fr;
+  }
+  .cards-explorer .cards-all-btn {
+    width: 100%;
   }
 }
 

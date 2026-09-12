@@ -1,4 +1,4 @@
-/* Find-a-card explorer: samples first; full list on search, filter, or All cards. */
+/* Find-a-card explorer: samples first; accordion library; All cards = primary set. */
 (function () {
   if (typeof FPTrack === "function") FPTrack("cards_hub_visited", { source: "cards_hub" });
   document.querySelectorAll("a[data-card-id]").forEach(function (a) {
@@ -11,68 +11,130 @@
 
   var q = document.getElementById("cards-hub-search");
   var form = document.getElementById("cards-hub-form");
-  var tabs = document.querySelectorAll(".place-type-tab[data-card-filter]");
-  var browse = document.getElementById("cards-all-wrap");
+  var allBtn = document.getElementById("cards-all-wrap");
   var tryRow = document.getElementById("try-a-card");
   var countEl = document.getElementById("cards-hub-count");
-  var experimental = document.getElementById("cards-attractions");
-  var filter = "all";
+  var panels = Array.prototype.slice.call(document.querySelectorAll("[data-card-accordion]"));
   var TOTAL = document.querySelectorAll(".cards-hub-item:not([data-card-group='attractions'])").length;
+  var syncing = false;
+
+  function setAllPressed(on) {
+    if (allBtn) allBtn.setAttribute("aria-pressed", on ? "true" : "false");
+  }
+
+  function panelGroup(panel) {
+    return panel.getAttribute("data-card-accordion") || "";
+  }
+
+  function isPrimary(panel) {
+    return panelGroup(panel) !== "attractions";
+  }
+
+  function endSync() {
+    requestAnimationFrame(function () {
+      syncing = false;
+    });
+  }
+
+  function openOnly(id) {
+    syncing = true;
+    panels.forEach(function (p) {
+      p.open = panelGroup(p) === id;
+    });
+    setAllPressed(false);
+    endSync();
+  }
+
+  function openPrimaryAll() {
+    syncing = true;
+    panels.forEach(function (p) {
+      p.open = isPrimary(p);
+    });
+    setAllPressed(true);
+    endSync();
+  }
 
   function applyHubFilter() {
     var n = q ? (q.value || "").trim().toLowerCase() : "";
     var searching = n.length >= 1;
-    var filtering = filter !== "all";
+    var allPrimary = allBtn && allBtn.getAttribute("aria-pressed") === "true";
     var visible = 0;
+    var visiblePrimary = 0;
 
     document.querySelectorAll(".cards-hub-item").forEach(function (li) {
       var blob = (li.getAttribute("data-card-search") || li.textContent || "").toLowerCase();
       var g = li.getAttribute("data-card-group") || "";
-      var missSearch = searching && blob.indexOf(n) === -1;
-      var missFilter = filtering && g !== filter;
-      var hide = missSearch || missFilter;
+      var hide = searching && blob.indexOf(n) === -1;
       li.hidden = hide;
-      if (!hide) visible += 1;
+      if (!hide) {
+        visible += 1;
+        if (g !== "attractions") visiblePrimary += 1;
+      }
     });
 
-    document.querySelectorAll(".cards-hub-section").forEach(function (sec) {
-      var any = false;
-      sec.querySelectorAll(".cards-hub-item").forEach(function (li) {
-        if (!li.hidden) any = true;
+    if (searching) {
+      syncing = true;
+      panels.forEach(function (panel) {
+        var any = false;
+        panel.querySelectorAll(".cards-hub-item").forEach(function (li) {
+          if (!li.hidden) any = true;
+        });
+        panel.hidden = !any;
+        panel.open = any;
       });
-      sec.hidden = !any;
-    });
-
-    if (browse && (searching || filtering)) browse.open = true;
-    if (experimental) {
-      var expHit = false;
-      experimental.querySelectorAll(".cards-hub-item").forEach(function (li) {
-        if (!li.hidden) expHit = true;
+      syncing = false;
+      setAllPressed(false);
+    } else {
+      panels.forEach(function (panel) {
+        panel.hidden = false;
       });
-      if (searching && expHit) experimental.open = true;
     }
-    if (tryRow) tryRow.hidden = searching || filtering;
+
+    if (tryRow) tryRow.hidden = searching;
 
     if (countEl) {
-      if (searching || filtering) {
+      if (searching) {
         countEl.textContent = visible === 1 ? "1 card" : visible + " cards";
+      } else if (allPrimary) {
+        countEl.textContent = TOTAL + " cards";
       } else {
         countEl.textContent = TOTAL + " cards";
       }
     }
   }
 
-  tabs.forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      filter = btn.getAttribute("data-card-filter") || "all";
-      tabs.forEach(function (b) {
-        var on = b === btn;
-        b.classList.toggle("is-active", on);
-        b.setAttribute("aria-selected", on ? "true" : "false");
+  panels.forEach(function (panel) {
+    var summary = panel.querySelector("summary");
+    if (summary) {
+      summary.addEventListener("click", function (e) {
+        if (allBtn && allBtn.getAttribute("aria-pressed") === "true") {
+          e.preventDefault();
+          openOnly(panelGroup(panel));
+          applyHubFilter();
+        }
       });
+    }
+    panel.addEventListener("toggle", function () {
+      if (syncing) return;
+      if (panel.open && !(allBtn && allBtn.getAttribute("aria-pressed") === "true")) {
+        syncing = true;
+        panels.forEach(function (other) {
+          if (other !== panel) other.open = false;
+        });
+        setAllPressed(false);
+        endSync();
+      }
       applyHubFilter();
     });
   });
+
+  if (allBtn) {
+    allBtn.addEventListener("click", function () {
+      if (q) q.value = "";
+      openPrimaryAll();
+      applyHubFilter();
+    });
+  }
   if (q) q.addEventListener("input", applyHubFilter);
   if (form) {
     form.addEventListener("submit", function (e) {
@@ -80,8 +142,13 @@
       applyHubFilter();
     });
   }
-  if (browse) browse.addEventListener("toggle", applyHubFilter);
+
+  var hash = (location.hash || "").replace(/^#/, "");
+  if (hash === "cards-attractions") openOnly("attractions");
+  else if (hash === "cards-wildlife" || hash === "cards-wildlife-wrap") openOnly("wildlife");
+  else if (hash === "cards-sealife" || hash === "cards-sealife-wrap") openOnly("sealife");
+  else if (hash === "cards-parks" || hash === "cards-parks-wrap") openOnly("parks");
+  else if (hash === "cards-all-wrap" || hash === "cards-accordion") openPrimaryAll();
 
   if (q && q.value) applyHubFilter();
-  if (experimental && location.hash === "#cards-attractions") experimental.open = true;
 })();

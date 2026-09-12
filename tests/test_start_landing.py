@@ -614,7 +614,7 @@ class StartLandingTests(unittest.TestCase):
         pills = re.findall(r'<a class="start-pill"[^>]*>[\s\S]*?</a>', chapter)
         self.assertEqual(len(pills), 1, pills)
         self.assertIn('href="/field-pack/cards/"', pills[0])
-        self.assertIn("Cards", pills[0])
+        self.assertIn("All cards", pills[0])
         self.assertNotIn("Sample Animal", chapter)
         self.assertNotIn("start-teach-hit", chapter)
         self.assertIn("Open a card:", chapter)
@@ -796,7 +796,7 @@ class StartLandingTests(unittest.TestCase):
                 ("/field-pack/", "Explore Places Near You"),
             ],
             "start-teach": [
-                ("/field-pack/cards/", "Cards"),
+                ("/field-pack/cards/", "All cards"),
             ],
         }
         for chapter_id, match in chapters.items():

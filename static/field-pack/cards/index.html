@@ -18,7 +18,7 @@
   <base href="/field-pack/" />
   <link rel="stylesheet" href="/shell/shell.css?v=8" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=42" />
-  <link rel="stylesheet" href="/field-pack/css/landing.css?v=100" />
+  <link rel="stylesheet" href="/field-pack/css/landing.css?v=101" />
   <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=35" />
 </head>
 <body class="landing-body landing-hub cards-explorer">
@@ -99,26 +99,21 @@
       </div>
     </header>
     <main class="cards-hub" id="cards-hub">
-      <nav class="place-type-tabs place-type-tabs-cards no-print" aria-label="Filter cards">
-        <div class="place-type-seg" role="tablist" aria-label="Card type">
-          <button type="button" class="place-type-tab is-active" role="tab" data-card-filter="all" aria-selected="true">All</button>
-          <button type="button" class="place-type-tab" role="tab" data-card-filter="wildlife" aria-selected="false">Wildlife</button>
-          <button type="button" class="place-type-tab" role="tab" data-card-filter="sealife" aria-selected="false">Sea life</button>
-          <button type="button" class="place-type-tab" role="tab" data-card-filter="parks" aria-selected="false">Parks & trails</button>
-        </div>
-      </nav>
-      <p class="cards-hub-count" id="cards-hub-count">43 cards</p>
       <section class="ready-now ready-slim try-card-row" id="try-a-card" aria-labelledby="try-card-heading">
         <h2 id="try-card-heading">Try a card</h2>
         <div class="try-card-grid" id="try-card-grid">
-          <a class="try-card" href="/field-pack/cards/reticulated-giraffe/" data-card-id="reticulated-giraffe"><img src="/field-pack/photos/reticulated-giraffe.jpg?v=img2" alt="" width="320" height="320" loading="lazy" decoding="async" /><span class="try-card-name">Reticulated giraffe</span><span class="try-card-teaser">Tallest animal on long legs — look up!</span></a>
-          <a class="try-card" href="/field-pack/cards/african-elephant/" data-card-id="african-elephant"><img src="/field-pack/photos/african-elephant.jpg?v=img2" alt="" width="320" height="320" loading="lazy" decoding="async" /><span class="try-card-name">African elephant</span><span class="try-card-teaser">Biggest land animal — trunk to grab, spray, and say hello.</span></a>
-          <a class="try-card" href="/field-pack/cards/african-lion/" data-card-id="african-lion"><img src="/field-pack/photos/african-lion.jpg?v=img2" alt="" width="320" height="320" loading="lazy" decoding="async" /><span class="try-card-name">African lion</span><span class="try-card-teaser">Look close — mane, whiskers, a tuft on the tail. Lions often rest in a pride.</span></a>
+          <a class="try-card" href="/field-pack/cards/red-panda/" data-card-id="red-panda"><img src="/field-pack/photos/red-panda.jpg?v=img2" alt="" width="320" height="320" loading="lazy" decoding="async" /><span class="try-card-name">Red panda</span><span class="try-card-teaser">Rusty tree-climber with a ringed tail — not a giant panda!</span></a>
+          <a class="try-card" href="/field-pack/cards/whale-shark/" data-card-id="whale-shark"><img src="/field-pack/photos/whale-shark.jpg?v=img2" alt="" width="320" height="320" loading="lazy" decoding="async" /><span class="try-card-name">Whale shark</span><span class="try-card-teaser">Biggest fish in the sea — a gentle giant with a wide, filtering mouth.</span></a>
+          <a class="try-card" href="/field-pack/cards/octopus/" data-card-id="octopus"><img src="/field-pack/photos/octopus.jpg?v=img2" alt="" width="320" height="320" loading="lazy" decoding="async" /><span class="try-card-name">Octopus</span><span class="try-card-teaser">Eight arms and a big brain — master of hide-and-seek.</span></a>
         </div>
       </section>
-      <details class="hub-more cards-all-wrap" id="cards-all-wrap">
-        <summary>All 43 cards</summary>
-        <div class="cards-all-body">
+      <div class="cards-library-bar">
+        <p class="cards-hub-count" id="cards-hub-count">43 cards</p>
+        <button type="button" class="cards-all-btn" id="cards-all-wrap" data-card-filter="all" aria-pressed="false">All cards</button>
+      </div>
+      <div class="cards-accordion" id="cards-accordion">
+      <details class="hub-more cards-accordion-panel" id="cards-wildlife-wrap" data-card-filter="wildlife" data-card-accordion="wildlife" open>
+        <summary>Wildlife <span class="seo-dir-count">22</span></summary>
 <section class="cards-hub-section" id="cards-wildlife" aria-labelledby="h-wildlife">
   <h2 id="h-wildlife">Wildlife <span class="seo-dir-count">22</span></h2>
   <ul class="cards-hub-list">
@@ -146,6 +141,9 @@
     <li class="cards-hub-item" data-card-id="zebra" data-card-group="wildlife" data-card-kind="animal" data-card-search="Zebra Striped grassland runner — every pattern is unique. zebra"><a class="cards-hub-link" href="/field-pack/cards/zebra/" data-card-id="zebra"><img class="cards-hub-thumb" src="/field-pack/photos/zebra.jpg" alt="" width="120" height="90" loading="lazy" decoding="async" /><span class="cards-hub-copy"><span class="cards-hub-name">Zebra</span></span></a></li>
   </ul>
 </section>
+      </details>
+      <details class="hub-more cards-accordion-panel" id="cards-sealife-wrap" data-card-filter="sealife" data-card-accordion="sealife">
+        <summary>Sea life <span class="seo-dir-count">17</span></summary>
 <section class="cards-hub-section" id="cards-sealife" aria-labelledby="h-sealife">
   <h2 id="h-sealife">Sea life <span class="seo-dir-count">17</span></h2>
   <ul class="cards-hub-list">
@@ -168,6 +166,9 @@
     <li class="cards-hub-item" data-card-id="whale-shark" data-card-group="sealife" data-card-kind="sea_life" data-card-search="Whale shark Biggest fish in the sea — a gentle giant with a wide, filtering mouth. whale-shark"><a class="cards-hub-link" href="/field-pack/cards/whale-shark/" data-card-id="whale-shark"><img class="cards-hub-thumb" src="/field-pack/photos/whale-shark.jpg" alt="" width="120" height="90" loading="lazy" decoding="async" /><span class="cards-hub-copy"><span class="cards-hub-name">Whale shark</span></span></a></li>
   </ul>
 </section>
+      </details>
+      <details class="hub-more cards-accordion-panel" id="cards-parks-wrap" data-card-filter="parks" data-card-accordion="parks">
+        <summary>Parks &amp; trails <span class="seo-dir-count">4</span></summary>
 <section class="cards-hub-section" id="cards-parks" aria-labelledby="h-parks">
   <h2 id="h-parks">Parks & trails <span class="seo-dir-count">4</span></h2>
   <ul class="cards-hub-list">
@@ -177,10 +178,9 @@
     <li class="cards-hub-item" data-card-id="cuyahoga-towpath" data-card-group="parks" data-card-kind="place_feature" data-card-search="Towpath trail Flat multi-use path along the canal — easy family miles. cuyahoga-towpath"><a class="cards-hub-link" href="/field-pack/cards/cuyahoga-towpath/" data-card-id="cuyahoga-towpath"><img class="cards-hub-thumb" src="/field-pack/photos/np-cuyahoga-towpath.jpg" alt="" width="120" height="90" loading="lazy" decoding="async" /><span class="cards-hub-copy"><span class="cards-hub-name">Towpath trail</span></span></a></li>
   </ul>
 </section>
-        </div>
       </details>
-      <details class="hub-more cards-experimental" id="cards-attractions">
-        <summary>Museum &amp; science cards</summary>
+      <details class="hub-more cards-accordion-panel cards-experimental" id="cards-attractions" data-card-accordion="attractions">
+        <summary>Museum &amp; science cards <span class="cards-experimental-note">Experimental · Quiet</span></summary>
         <section class="cards-hub-section" id="cards-attractions-list" aria-labelledby="h-attractions">
   <h2 id="h-attractions">Museum &amp; science <span class="seo-dir-count">15</span></h2>
   <ul class="cards-hub-list">
@@ -202,6 +202,7 @@
   </ul>
 </section>
       </details>
+      </div>
     </main>
     <footer class="site-footer site-footer-slim no-print">
       <p>
@@ -221,6 +222,6 @@
   </div>
   <script src="/shell/shell.js?v=5"></script>
   <script src="/field-pack/js/fp-analytics.js?v=1"></script>
-  <script src="/field-pack/js/cards-explorer.js?v=3"></script>
+  <script src="/field-pack/js/cards-explorer.js?v=5"></script>
 </body>
 </html>
