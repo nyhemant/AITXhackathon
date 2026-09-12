@@ -213,8 +213,18 @@ body.start-body {
 .start-here-arrow {
   display: block;
   width: 3.15rem;
-  height: 2rem;
+  height: 1.42rem;
   flex: 0 0 auto;
+  overflow: visible;
+  filter: drop-shadow(0 1px 6px rgba(12, 10, 8, 0.38));
+}
+
+.start-here-arrow path {
+  fill: #ffe7b8;
+  stroke: #245854;
+  stroke-width: 2;
+  stroke-linejoin: miter;
+  stroke-miterlimit: 3;
 }
 
 .start-routes {
@@ -979,7 +989,7 @@ body.start-body {
 
   .start-here-arrow {
     width: 2.7rem;
-    height: 1.7rem;
+    height: 1.22rem;
   }
 
   .start-trust {
