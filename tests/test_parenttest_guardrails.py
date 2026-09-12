@@ -26,6 +26,7 @@ from parenttest_guardrails import (  # noqa: E402
     EMPTY_PICTURES_ALLOW,
     LIBRARY_WATCH_LIVE_PENDING_RESTORE,
     TRY_NEXT_CROSS_KINGDOM_ALLOW,
+    WATCH_LIVE_NO_MEDIA_ALLOW,
     WATCH_LIVE_WITHOUT_HABITAT_ALLOW,
     card_kingdom,
     cross_kingdom_try_next_issues,
@@ -33,6 +34,7 @@ from parenttest_guardrails import (  # noqa: E402
     empty_pictures_issues,
     film_library_playable_ids,
     missing_library_watch_live_issues,
+    wildlife_sealife_watch_live_coverage_issues,
     published_animal_sea_life_ids,
     short_slug_hub_issues,
     tour_habitat_ids,
@@ -125,13 +127,9 @@ class KingdomMappingTests(unittest.TestCase):
         self.assertNotIn("cuttlefish", LIBRARY_WATCH_LIVE_PENDING_RESTORE)
         self.assertNotIn("puffin", LIBRARY_WATCH_LIVE_PENDING_RESTORE)
         self.assertNotIn("sea-otter", LIBRARY_WATCH_LIVE_PENDING_RESTORE)
-        # Zoo overlays restored this pass: alligator, bison, elk, zebra, polar-bear.
-        self.assertNotIn("american-alligator", LIBRARY_WATCH_LIVE_PENDING_RESTORE)
-        self.assertNotIn("american-bison", LIBRARY_WATCH_LIVE_PENDING_RESTORE)
-        self.assertNotIn("elk", LIBRARY_WATCH_LIVE_PENDING_RESTORE)
-        self.assertNotIn("zebra", LIBRARY_WATCH_LIVE_PENDING_RESTORE)
-        self.assertNotIn("polar-bear", LIBRARY_WATCH_LIVE_PENDING_RESTORE)
-        self.assertLessEqual(len(LIBRARY_WATCH_LIVE_PENDING_RESTORE), 8)
+        # Zoo overlays restored: bison/elk/alligator (PR #234) plus remaining library cards.
+        self.assertEqual(LIBRARY_WATCH_LIVE_PENDING_RESTORE, frozenset())
+        self.assertEqual({cid for cid, _reason in WATCH_LIVE_NO_MEDIA_ALLOW}, {"freshwater-fish"})
 
 
 class TryNextKingdomTests(unittest.TestCase):
@@ -163,7 +161,7 @@ class WatchLiveHabitatTests(unittest.TestCase):
     def test_sep11_unknown_habitat_watch_live_would_fail(self):
         """Watch Live to a habitat that is in neither tour JSON nor film libraries."""
         issues = dead_watch_live_issues(
-            html_by_id={"warthog": UNKNOWN_HABITAT_LIVE_HTML}
+            html_by_id={"freshwater-fish": UNKNOWN_HABITAT_LIVE_HTML}
         )
         self.assertTrue(issues)
         self.assertTrue(any("not-a-real-stop" in row for row in issues), issues)
@@ -199,6 +197,14 @@ class WatchLiveHabitatTests(unittest.TestCase):
     def test_pending_restore_keeps_current_main_green(self):
         issues = missing_library_watch_live_issues()
         self.assertEqual(issues, [], "\n".join(issues))
+
+    def test_wildlife_sealife_coverage_or_exception(self):
+        issues = wildlife_sealife_watch_live_coverage_issues()
+        self.assertEqual(issues, [], "\n".join(issues))
+        library = film_library_playable_ids()
+        self.assertIn("ostrich", library)
+        self.assertIn("warthog", library)
+        self.assertNotIn("freshwater-fish", library)
 
 
 class PhotosNotEmptyTests(unittest.TestCase):
