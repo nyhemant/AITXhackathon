@@ -248,7 +248,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn("For grown-ups", chapter)
         self.assertIn('class="start-menu-grownup"', chapter)
         self.assertIn('id="start-menu-btn"', chapter)
-        self.assertLess(chapter.find("start-menu-wrap"), chapter.find("start-heading"))
+        self.assertLess(chapter.find("start-top"), chapter.find('id="start-heading"'))
         header = re.search(r'<header class="start-top">([\s\S]*?)</header>', chapter)
         self.assertIsNotNone(header)
         chrome = header.group(1)
