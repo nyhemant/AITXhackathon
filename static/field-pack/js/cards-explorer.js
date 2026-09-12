@@ -30,13 +30,19 @@
     return panelGroup(panel) !== "attractions";
   }
 
+  function endSync() {
+    requestAnimationFrame(function () {
+      syncing = false;
+    });
+  }
+
   function openOnly(id) {
     syncing = true;
     panels.forEach(function (p) {
       p.open = panelGroup(p) === id;
     });
-    syncing = false;
     setAllPressed(false);
+    endSync();
   }
 
   function openPrimaryAll() {
@@ -44,8 +50,8 @@
     panels.forEach(function (p) {
       p.open = isPrimary(p);
     });
-    syncing = false;
     setAllPressed(true);
+    endSync();
   }
 
   function applyHubFilter() {
@@ -110,13 +116,13 @@
     }
     panel.addEventListener("toggle", function () {
       if (syncing) return;
-      if (panel.open) {
+      if (panel.open && !(allBtn && allBtn.getAttribute("aria-pressed") === "true")) {
         syncing = true;
         panels.forEach(function (other) {
           if (other !== panel) other.open = false;
         });
-        syncing = false;
         setAllPressed(false);
+        endSync();
       }
       applyHubFilter();
     });

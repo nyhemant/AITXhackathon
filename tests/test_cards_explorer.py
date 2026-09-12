@@ -88,7 +88,7 @@ class CardsExplorerTests(unittest.TestCase):
         self.assertIsNotNone(title)
         self.assertIn("Print cutouts to play", title.group(1))
         self.assertIn("landing.css?v=101", self.html)
-        self.assertIn("cards-explorer.js?v=4", self.html)
+        self.assertIn("cards-explorer.js?v=5", self.html)
 
     def test_explorer_is_samples_not_a_58_card_wall(self):
         self.assertIn("landing-hub", self.html)
@@ -144,7 +144,10 @@ class CardsExplorerTests(unittest.TestCase):
         gen = (REPO / "scripts" / "generate_bdo_seo.py").read_text(encoding="utf-8")
         self.assertIn('TRY_CARD_IDS = ("red-panda", "whale-shark", "octopus")', gen)
         self.assertIn("cards-accordion-panel", gen)
-        self.assertIn("openPrimaryAll", (REPO / "static" / "field-pack" / "js" / "cards-explorer.js").read_text(encoding="utf-8"))
+        explorer_js = (REPO / "static" / "field-pack" / "js" / "cards-explorer.js").read_text(encoding="utf-8")
+        self.assertIn("openPrimaryAll", explorer_js)
+        self.assertIn("requestAnimationFrame", explorer_js)
+        self.assertIn('aria-pressed") === "true"', explorer_js)
 
     def test_nav_pairs_with_places_and_start(self):
         self.assertIn('href="/start/"', self.html)

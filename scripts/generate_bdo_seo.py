@@ -127,7 +127,7 @@ CARDS_PLAY_PRINT_HREF = PRINT_PATH
 CARDS_HUB_TITLE = "Print cutouts to play · Animal cards · Field Trip Kit"
 CARDS_HUB_DESC = "Print animal cutouts, hide them at home, then hunt. Or browse cards on the screen."
 CARDS_LANDING_CSS_VER = "101"
-CARDS_EXPLORER_JS_VER = "4"
+CARDS_EXPLORER_JS_VER = "5"
 CTA_READY = "Open"
 CTA_FIND = "Find"
 # Map explorer (/field-pack/) — short title, no sales/FAQ essay. Do not redirect to /start/.
