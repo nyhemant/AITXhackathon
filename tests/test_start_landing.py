@@ -125,6 +125,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertIsNotNone(_safe_start_path("/start/teasers/giraffe.mp4"))
         self.assertIsNotNone(_safe_start_path("/start/teasers/lion.mp4"))
         self.assertIsNotNone(_safe_start_path("/start/teasers/otter.mp4"))
+        self.assertIsNotNone(_safe_start_path("/start/hero-world-map.jpg"))
         self.assertIsNotNone(_safe_start_path("/start/going-giraffe.jpg"))
         self.assertIsNotNone(_safe_start_path("/start/teach-card.jpg"))
         self.assertIsNotNone(_safe_start_path("/start/teach-lion.jpg"))
@@ -142,6 +143,10 @@ class StartLandingTests(unittest.TestCase):
         self.assertIsNotNone(_safe_about_path("/about/"))
         self.assertIsNotNone(_safe_about_path("/about/about.css"))
         self.assertIsNone(_safe_about_path("/about/../field-pack/index.html"))
+
+        hero_map = _get("/start/hero-world-map.jpg")
+        self.assertEqual(hero_map._code, 200)
+        self.assertTrue(hero_map.wfile.getvalue().startswith(b"\xff\xd8"))
 
         still = _get("/start/home-print-table.jpg")
         self.assertEqual(still._code, 200)
@@ -187,7 +192,7 @@ class StartLandingTests(unittest.TestCase):
         nested = _get("/zoo/index.html")
         self.assertEqual(nested._code, 404)
 
-    def test_hero_is_local_giraffe_still(self):
+    def test_hero_is_world_map_with_animal_hotspots(self):
         hero = re.search(r'<section class="start-hero"[\s\S]*?</section>', self.html)
         self.assertIsNotNone(hero)
         chapter = hero.group(0)
@@ -198,14 +203,16 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn('href="/field-pack/cards/"', chapter)
         self.assertIn('href="/field-pack/virtual-field-trip/"', chapter)
         self.assertIn('href="/field-pack/"', chapter)
+        self.assertIn('class="start-hero-map"', chapter)
         self.assertIn('class="start-hero-still"', chapter)
-        self.assertIn('src="/start/hero-giraffe.jpg"', chapter)
-        self.assertIn("srcset=", chapter)
-        self.assertIn("/start/hero-giraffe-480.jpg 480w", chapter)
-        self.assertIn("/start/hero-giraffe-640.jpg 640w", chapter)
-        self.assertIn("/start/hero-giraffe.jpg 896w", chapter)
-        self.assertIn('width="896"', chapter)
-        self.assertIn('height="1136"', chapter)
+        self.assertIn('src="/start/hero-world-map.jpg"', chapter)
+        self.assertNotIn("hero-giraffe.jpg", self.html)
+        self.assertIn('width="1792"', chapter)
+        self.assertIn('height="1008"', chapter)
+        self.assertIn("Stylized world map with eight animals", chapter)
+        self.assertIn('content="https://kidzookit.com/start/hero-world-map.jpg"', self.html)
+        self.assertIn('property="og:image"', self.html)
+        self.assertIn('name="twitter:image"', self.html)
         self.assertNotIn("http://", chapter)
         self.assertNotIn("https://", chapter)
         self.assertNotIn("I need an activity for today", chapter)
@@ -213,11 +220,49 @@ class StartLandingTests(unittest.TestCase):
         self.assertNotIn("At home or before you go.", chapter)
         self.assertNotIn("us-map", chapter)
         self.assertNotIn("start-door", chapter)
-        self.assertTrue((START / "hero-giraffe.jpg").is_file())
-        self.assertTrue((START / "hero-giraffe-640.jpg").is_file())
-        self.assertTrue((START / "hero-giraffe-480.jpg").is_file())
+        self.assertNotIn('href="/field-pack/cards/flamingo/"', chapter)
+        pins = re.findall(
+            r'<a class="start-hero-hotspot[^"]*" data-hero-region="([^"]+)" href="([^"]+)" aria-label="([^"]+)"></a>',
+            chapter,
+        )
+        self.assertEqual(
+            pins,
+            [
+                ("americas", "/field-pack/cards/american-bison/", "American bison"),
+                ("east", "/field-pack/cards/giant-panda/", "Giant panda"),
+                ("east", "/field-pack/cards/zebra/", "Zebra"),
+                ("americas", "/field-pack/cards/galapagos-tortoise/", "Galápagos tortoise"),
+                ("americas", "/field-pack/cards/caribbean-flamingo/", "Caribbean flamingo"),
+                ("east", "/field-pack/cards/sumatran-tiger/", "Sumatran tiger"),
+                ("east", "/field-pack/cards/koala/", "Koala"),
+                ("east", "/field-pack/cards/whale-shark/", "Whale shark"),
+            ],
+        )
+        self.assertEqual(chapter.count('class="start-hero-hotspot'), 8)
+        for href, _region, _label in (
+            ("/field-pack/cards/american-bison/", "americas", "American bison"),
+            ("/field-pack/cards/giant-panda/", "east", "Giant panda"),
+            ("/field-pack/cards/zebra/", "east", "Zebra"),
+            ("/field-pack/cards/galapagos-tortoise/", "americas", "Galápagos tortoise"),
+            ("/field-pack/cards/caribbean-flamingo/", "americas", "Caribbean flamingo"),
+            ("/field-pack/cards/sumatran-tiger/", "east", "Sumatran tiger"),
+            ("/field-pack/cards/koala/", "east", "Koala"),
+            ("/field-pack/cards/whale-shark/", "east", "Whale shark"),
+        ):
+            slug = href.rstrip("/").split("/")[-1]
+            self.assertTrue((FP / "cards" / slug / "index.html").is_file(), slug)
+        self.assertTrue((START / "hero-world-map.jpg").is_file())
+        self.assertTrue((START / "hero-world-map.jpg").read_bytes().startswith(b"\xff\xd8"))
+        self.assertIn(".start-hero-map", self.css)
+        self.assertIn(".start-hero-hotspot", self.css)
+        self.assertIn(".start-hero-hotspot:focus-visible", self.css)
+        self.assertIn(".start-hero-pin-bison", self.css)
+        self.assertIn(".start-hero-pin-whale", self.css)
+        self.assertIn("1792 / 1008", self.css)
+        self.assertIn('data-hero-region="east"', self.css)
         self.assertIn("object-fit: cover", self.css)
-        self.assertIn("object-position: 52% 28%", self.css)
+        self.assertIn("object-position: 50% 50%", self.css)
+        self.assertNotIn("object-position: 52% 28%", self.css)
         self.assertIn("100svh", self.css)
         self.assertIn("prefers-reduced-motion", self.css)
         self.assertNotIn("webgl", self.css.lower())
@@ -903,7 +948,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn('preload="auto"', self.html)
         self.assertNotIn('preload="none"', self.html)
         self.assertIn('start.js?v=30', self.html)
-        self.assertIn("start.css?v=44", self.html)
+        self.assertIn("start.css?v=45", self.html)
         self.assertIn(" loop ", self.html)
         self.assertNotIn("youtube.com", self.html)
         self.assertNotIn("youtube-nocookie.com", self.html)
