@@ -334,6 +334,7 @@ LANDING_MAP_JS_VER = "88"
 LANDING_HOOK_JS_VER = "38"
 STYLES_CSS_VER = "42"
 CATALOG_JS_VER = "40"
+SHELL_JS_VER = "6"
 PRINT_KIT_JS_VER = "20"
 STUDY_CARD_JS_VER = "10"
 STUDY_CARD_CSS_VER = "10"
@@ -2627,7 +2628,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <script type="application/json" id="challenges-data">{challenges_json}</script>
   <script type="application/json" id="wonders-data">{wonders_json}</script>
   <script type="application/json" id="bonus-hunts-data">{bonus_json}</script>
-  <script src="/shell/shell.js?v=5"></script>
+  <script src="/shell/shell.js?v={SHELL_JS_VER}"></script>
   <script src="/field-pack/js/fp-analytics.js?v=1"></script>
   <script src="/field-pack/js/catalog.js?v={CATALOG_JS_VER}"></script>
   <script src="/field-pack/js/print-maps.js?v=5"></script>
@@ -2757,7 +2758,7 @@ def render_venue_page(v: dict) -> str:
   <div id="print-sheet" class="print-sheet" aria-hidden="true"></div>
   <div id="treasure-sheet" class="print-sheet treasure-sheet" aria-hidden="true"></div>
 
-  <script src="/shell/shell.js?v=5"></script>
+  <script src="/shell/shell.js?v={SHELL_JS_VER}"></script>
   <script src="/field-pack/js/fp-analytics.js?v=1"></script>
   <script src="/field-pack/js/catalog.js?v={CATALOG_JS_VER}"></script>
   <script src="/field-pack/js/print-maps.js?v=5"></script>
@@ -3011,7 +3012,7 @@ def write_type_landing(meta: dict, venues: list[dict]) -> str:
       </div>
     </main>
   </div>
-  <script src="/shell/shell.js?v=5" defer></script>
+  <script src="/shell/shell.js?v={SHELL_JS_VER}" defer></script>
 </body>
 </html>
 """
@@ -5057,7 +5058,7 @@ def write_cards_hub(venues: list[dict]) -> str:
       </p>
     </footer>
   </div>
-  <script src="/shell/shell.js?v=5"></script>
+  <script src="/shell/shell.js?v={SHELL_JS_VER}"></script>
   <script src="/field-pack/js/fp-analytics.js?v=1"></script>
   <script src="/field-pack/js/cards-explorer.js?v={CARDS_EXPLORER_JS_VER}"></script>
 </body>
@@ -5246,7 +5247,7 @@ def write_card_pages(
   </div>
   <div id="print-sheet" class="print-sheet" aria-hidden="true"></div>
   <div id="treasure-sheet" class="print-sheet treasure-sheet" aria-hidden="true"></div>
-  {study_print_tpl}{study_json_tag}  <script src="/shell/shell.js?v=5"></script>
+  {study_print_tpl}{study_json_tag}  <script src="/shell/shell.js?v={SHELL_JS_VER}"></script>
   <script src="/field-pack/js/fp-analytics.js?v=1"></script>
   <script src="/field-pack/js/catalog.js?v={CATALOG_JS_VER}"></script>
   <script src="/field-pack/js/print-kit.js?v={PRINT_KIT_JS_VER}"></script>

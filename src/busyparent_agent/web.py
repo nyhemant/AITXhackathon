@@ -63,9 +63,12 @@ DINNER_PATH = "/dinner"
 MAX_REQUEST_BYTES = 24_000
 ANALYTICS_COOKIE = "one_less_analytics"
 ANALYTICS_OFF_VALUE = "off"
-# GA4 lives in static/shell/shell.js (site-wide). Dinner only injects an opt-out
-# flag when the one_less_analytics cookie is off — do not re-embed gtag here.
-GA4_MEASUREMENT_ID = "G-X6V6PNY9ZV"
+# KidZooKit property G-XB8HKLF4XY; historical 1Less was G-X6V6PNY9ZV (archive only).
+# Live tag is loaded by static/shell/shell.js for Field Trip Kit / start / about.
+# Dinner paths skip gtag in shell.js so meal traffic does not enter this property.
+# Dinner only injects an opt-out flag when the one_less_analytics cookie is off
+# — do not re-embed gtag here.
+GA4_MEASUREMENT_ID = "G-XB8HKLF4XY"
 GA4_OPT_OUT_SNIPPET = """    <script>window.__1LESS_ANALYTICS_OFF__=true;</script>"""
 SECURITY_HEADERS = {
     # GA4 collect often hits regionN.google-analytics.com + analytics.google.com;
@@ -311,7 +314,7 @@ HTML = """<!doctype html>
           </div>
         </div>
       </header>
-      <script src="/shell/shell.js?v=4" defer></script>
+      <script src="/shell/shell.js?v=6" defer></script>
       <header class="hero">
         <div class="brand-lockup">
           <img class="brand-logo brand-logo-wrap" src="/1LessPrimaryLogo.png?v=transparent-square" alt="KidZooKit logo" width="800" height="800" />
@@ -945,7 +948,8 @@ def _analytics_disabled(cookie_header: str | None) -> bool:
 
 def _html_for_request(cookie_header: str | None) -> str:
     # When analytics is off, inject a client flag so shared shell.js skips GA4.
-    # When on, leave head empty — shell.js loads gtag once for /dinner + /field-pack.
+    # When on, leave head empty — shell.js owns the KidZooKit tag for
+    # /field-pack /start /about. Dinner paths skip gtag in shell.js.
     snippet = GA4_OPT_OUT_SNIPPET if _analytics_disabled(cookie_header) else ""
     return HTML.replace("{ga4_snippet}", snippet)
 
