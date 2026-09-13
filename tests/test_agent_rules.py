@@ -551,7 +551,9 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertNotIn("googletagmanager.com/gtag/js", opted_out_html)
         self.assertIn("https://www.google-analytics.com", SECURITY_HEADERS["Content-Security-Policy"])
         shell_js = (Path(__file__).resolve().parents[1] / "static" / "shell" / "shell.js").read_text(encoding="utf-8")
-        self.assertIn("G-X6V6PNY9ZV", shell_js)
+        self.assertIn('GA4_MEASUREMENT_ID = "G-XB8HKLF4XY"', shell_js)
+        self.assertIn("G-X6V6PNY9ZV", shell_js)  # historical 1Less archive comment only
+        self.assertIn("isDinnerPath", shell_js)
         self.assertIn("hashchange", shell_js)
         self.assertIn("hunt_generated", (Path(__file__).resolve().parents[1] / "static" / "field-pack" / "js" / "app.js").read_text(encoding="utf-8"))
         self.assertIn("document.body.dataset.mode = activeMode", HTML)

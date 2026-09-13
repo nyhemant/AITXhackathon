@@ -32,9 +32,10 @@
 
   document.querySelectorAll(".oneless-shell").forEach(initShell);
 
-  // —— Google Analytics 4 (site-wide: /field-pack + /dinner via shared shell) ——
-  // Measurement ID from GA4 Admin → Data Streams → Web stream
-  const GA4_MEASUREMENT_ID = "G-X6V6PNY9ZV";
+  // —— Google Analytics 4 (KidZooKit Field Trip Kit / start / about) ——
+  // KidZooKit property G-XB8HKLF4XY; historical 1Less was G-X6V6PNY9ZV.
+  // Dinner (/dinner) is the old meal product — do not send it to this property.
+  const GA4_MEASUREMENT_ID = "G-XB8HKLF4XY";
   const LS_OFF_KEY = "1less_analytics_off";
   const COOKIE_NAME = "one_less_analytics";
 
@@ -107,8 +108,18 @@
     return "";
   }
 
+  function isDinnerPath() {
+    try {
+      const p = String(location.pathname || "");
+      return p === "/dinner" || p.startsWith("/dinner/");
+    } catch (_) {
+      return false;
+    }
+  }
+
   function analyticsDisabled() {
     if (window.__1LESS_ANALYTICS_OFF__ === true) return true;
+    if (isDinnerPath()) return true;
     if (isLocalDevHost()) return true;
     try {
       if (localStorage.getItem(LS_OFF_KEY) === "1") return true;
@@ -138,8 +149,8 @@
   }
 
   /**
-   * Safe event helper used by product pages (Dinner, Field Trip Kit).
-   * No-ops when analytics is off or gtag is not yet available.
+   * Safe event helper used by Field Trip Kit / start / about.
+   * No-ops when analytics is off, on Dinner paths, or gtag is not yet available.
    */
   function track(name, params) {
     if (analyticsDisabled()) return;
@@ -195,6 +206,10 @@
 
   function initGa4() {
     applyQueryAnalyticsToggle();
+
+    if (isDinnerPath()) {
+      return;
+    }
 
     if (analyticsDisabled()) {
       window.__1LESS_ANALYTICS_OFF__ = true;
@@ -256,6 +271,7 @@
     wantsDebugMode,
     isDisabled: analyticsDisabled,
     isLocalDevHost,
+    isDinnerPath,
   };
   // Back-compat for Dinner's trackEvent helper patterns
   window.trackEvent = track;
