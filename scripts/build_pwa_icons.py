@@ -15,7 +15,7 @@ from PIL import Image
 
 REPO = Path(__file__).resolve().parents[1]
 MARK = REPO / "1LessMark.png"
-START_HERO = REPO / "static" / "start" / "hero-giraffe.jpg"
+START_HERO = REPO / "static" / "start" / "hero-world-map.jpg"
 TEACH = REPO / "static" / "start" / "teach-card.jpg"
 OUT = REPO / "static" / "pwa"
 CREAM = (246, 243, 236, 255)  # --paper #f6f3ec
