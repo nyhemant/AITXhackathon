@@ -47,6 +47,14 @@ KEEP = (
     "/field-pack/js/mission/mission-ui.js",
     'id="mission-drawer"',
 )
+TEMPLATE_KEEP = (
+    'id="venue-data"',
+    'id="bonus-hunts-data"',
+    "/field-pack/js/print-maps.js",
+    "/field-pack/js/mission/mission-engine.js",
+    "/field-pack/js/mission/mission-ui.js",
+    "{drawer}",
+)
 
 
 def _fn_src(src: str, name: str, nxt: str) -> str:
@@ -66,7 +74,7 @@ class VenueSeoPayloadTests(unittest.TestCase):
     def test_mission_template_drops_dead_weight(self):
         for needle in DEAD_WEIGHT:
             self.assertNotIn(needle, self.mission_tpl, needle)
-        for needle in KEEP:
+        for needle in TEMPLATE_KEEP:
             self.assertIn(needle, self.mission_tpl, needle)
         self.assertIn("MISSION_UI_JS_VER", self.mission_tpl)
         self.assertEqual(MISSION_UI_JS_VER, "19")
