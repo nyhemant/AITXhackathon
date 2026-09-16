@@ -1,7 +1,7 @@
 [project]
 name = "one-less"
 version = "0.1.0"
-description = "Standalone 1Less parent decision-relief product prototype."
+description = "KidZooKit Field Trip Kit — outing kits for zoos, aquariums, museums, and parks."
 requires-python = ">=3.10"
 
 [tool.setuptools.packages.find]
