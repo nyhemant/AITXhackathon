@@ -10,7 +10,12 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO / "scripts"))
 
-from generate_bdo_seo import MISSION_UI_JS_VER  # noqa: E402
+from generate_bdo_seo import (  # noqa: E402
+    MISSION_UI_JS_VER,
+    load_mission_venue,
+    load_venues,
+    render_mission_venue_page,
+)
 
 FP = REPO / "static" / "field-pack"
 GENERATOR = REPO / "scripts" / "generate_bdo_seo.py"
@@ -80,6 +85,17 @@ class VenueSeoPayloadTests(unittest.TestCase):
         self.assertIn("/field-pack/data/wonders.json", self.ui)
         self.assertIn("function waitForPrintImages", self.ui)
         self.assertNotIn("window.FPPrint && typeof window.FPPrint.waitForPrintImages", self.ui)
+
+    def test_generator_render_is_slim(self):
+        venues = {row["id"]: row for row in load_venues()}
+        v = venues["dallas-zoo"]
+        mission = load_mission_venue("dallas-zoo")
+        html = render_mission_venue_page(v, mission)
+        for needle in DEAD_WEIGHT:
+            self.assertNotIn(needle, html, needle)
+        for needle in KEEP:
+            self.assertIn(needle, html, needle)
+        self.assertIn(f"mission-ui.js?v={MISSION_UI_JS_VER}", html)
 
     def test_shared_hunt_json_still_exists(self):
         challenges = json.loads((FP / "data" / "challenges.json").read_text(encoding="utf-8"))
