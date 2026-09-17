@@ -179,10 +179,6 @@ body.start-body {
     0 0 16px 5px rgba(255, 214, 150, 0.42);
 }
 
-.start-hero .start-kicker {
-  color: rgba(255, 252, 247, 0.78);
-}
-
 .start-hero h1 {
   margin: 0;
   color: #fffcf7;
@@ -425,8 +421,7 @@ body.start-body {
 }
 
 .start-chapter-hit,
-.start-going-hit,
-.start-teach-hit {
+.start-going-hit {
   position: absolute;
   inset: 0;
   z-index: 1;
@@ -435,8 +430,7 @@ body.start-body {
 }
 
 .start-chapter-hit:focus-visible,
-.start-going-hit:focus-visible,
-.start-teach-hit:focus-visible {
+.start-going-hit:focus-visible {
   outline: 3px solid var(--focus);
   outline-offset: -6px;
 }
@@ -561,11 +555,6 @@ body.start-body {
 
 .start-going-hit {
   display: none;
-}
-
-#start-going.is-going-carousel .start-going-hit {
-  display: none;
-  pointer-events: none;
 }
 
 .start-going-still {
