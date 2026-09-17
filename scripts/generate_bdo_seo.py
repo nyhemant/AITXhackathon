@@ -4721,7 +4721,7 @@ def _pick_group_cards(cards: list[dict], group: str, n: int = 12) -> list[dict]:
 
 
 def _landing_teaser_cards(all_cards: list[dict]) -> list[dict]:
-    """All-row featured 12 (interleaved so mobile All can show 6 mixed) plus up to 12 per group."""
+    """Featured 12 for All, plus every primary-hub card so filters match the cards hub."""
     featured = _featured_cards(all_cards)
     by_id: dict[str, dict] = {}
     for c in featured:
@@ -4731,9 +4731,9 @@ def _landing_teaser_cards(all_cards: list[dict]) -> list[dict]:
     ordered = [by_id[c["id"]] for c in featured]
     grouped = group_cards_by_hub_section(all_cards)
     for sid, _label, _kind in HUB_SECTIONS:
-        if not grouped.get(sid):
+        if sid not in PRIMARY_HUB_SECTION_IDS or not grouped.get(sid):
             continue
-        for c in _pick_group_cards(all_cards, sid, 12):
+        for c in _pick_group_cards(all_cards, sid, len(grouped[sid])):
             if c["id"] in by_id:
                 continue
             cc = dict(c)
@@ -4754,6 +4754,17 @@ PRIMARY_HUB_SECTION_IDS = ("wildlife", "sealife")
 EXPERIMENTAL_HUB_SECTION_IDS = ("attractions",)
 EXPERIMENTAL_SHELF_LABEL = "Experimental"
 EXPERIMENTAL_SHELF_NOTE = "Museum stops &amp; extras"
+
+
+def _landing_primary_cards(cards: list[dict]) -> list[dict]:
+    """Published Wildlife + Sea life only — Experimental and Parks stay off this rail."""
+    published = published_card_ids()
+    return [
+        c
+        for c in cards
+        if (c.get("id") or "") in published
+        and _card_group_key(c) in PRIMARY_HUB_SECTION_IDS
+    ]
 
 
 def _hub_filter_tabs_html(section_ids: list[str]) -> str:
@@ -5343,9 +5354,9 @@ def patch_landing_directory(venues: list[dict]) -> None:
         c.setdefault("blurb", "")
         c["group"] = _card_group_key(c)
 
-    pool = all_cards if all_cards else cards
+    pool = _landing_primary_cards(all_cards if all_cards else cards)
     featured = _landing_teaser_cards(pool)
-    n_cards = len(all_cards) if all_cards else len(cards)
+    n_cards = len(pool)
 
     tile_lis = []
     for c in featured:

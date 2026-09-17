@@ -80,6 +80,44 @@ class CardKindTests(unittest.TestCase):
         self.assertNotIn('id="cards-parks"', hub)
         self.assertNotIn('data-card-id="cuyahoga-towpath"', hub)
 
+    def test_landing_showcase_matches_tsv_primary_hub(self):
+        landing = (FP / "index.html").read_text(encoding="utf-8")
+        showcase = landing.split('id="cat-cards-showcase"', 1)[1].split(
+            "<!-- SEO:CARDS-BODY:END -->", 1
+        )[0]
+        kinds = load_card_kinds()
+        primary = {cid for cid, row in kinds.items() if row["hub"] in {"wildlife", "sealife"}}
+        tiles = re.findall(
+            r'<li class="cat-card-tile"[^>]*data-card-group="([^"]+)"[^>]*data-card-id="([^"]+)"',
+            showcase,
+        )
+        self.assertTrue(tiles)
+        seen: set[str] = set()
+        for group, cid in tiles:
+            row = kinds[cid]
+            self.assertEqual(row["hub"], group, cid)
+            self.assertIn(group, ("wildlife", "sealife"), cid)
+            seen.add(cid)
+        self.assertEqual(seen, primary)
+        for cid in ("american-bison", "american-alligator", "elk"):
+            li = [line for line in showcase.splitlines() if f'data-card-id="{cid}"' in line][0]
+            self.assertIn('data-card-group="wildlife"', li, cid)
+        for cid in SEALIFE_MISFILED:
+            li = [line for line in showcase.splitlines() if f'data-card-id="{cid}"' in line][0]
+            self.assertIn('data-card-group="sealife"', li, cid)
+        self.assertNotIn('data-card-group="parks"', showcase)
+        self.assertNotIn('data-card-filter="parks"', showcase)
+        self.assertNotIn('data-card-filter="attractions"', showcase)
+        self.assertNotIn("Parks & trails", showcase)
+        self.assertNotIn(">Attractions<", showcase)
+        self.assertIn("All 42 cards", showcase)
+        self.assertNotIn("All 58 cards", showcase)
+        self.assertIn('data-card-count-build="42"', landing)
+        self.assertNotIn("cuyahoga-towpath", showcase)
+        gen = (REPO / "scripts" / "generate_bdo_seo.py").read_text(encoding="utf-8")
+        self.assertIn("def _landing_primary_cards(", gen)
+        self.assertIn("PRIMARY_HUB_SECTION_IDS", gen.split("def _landing_teaser_cards(", 1)[1])
+
     def test_animal_pack_stays_animal(self):
         self.assertEqual(
             card_kind({"id": "african-lion", "pt": "animals", "venue_type": "zoo"}),
