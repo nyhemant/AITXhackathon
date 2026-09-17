@@ -341,6 +341,7 @@ STUDY_CARD_CSS_VER = "10"
 STUDY_CARDS_DATA_JS_VER = "7"
 VIEWPORT = "width=device-width, initial-scale=1, viewport-fit=cover"
 MISSION_CSS_VER = "20"
+MISSION_UI_JS_VER = "19"
 
 # Landing catalog seeds (T5) — review in POLISH-TASKS completion notes
 FEATURED_CARD_IDS = (
@@ -2485,8 +2486,6 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
         )
     json_ld = venue_json_ld(v, url)
     venue_json = json.dumps(mission_venue, ensure_ascii=False)
-    challenges_json = CHALLENGES_JSON.read_text(encoding="utf-8")
-    wonders_json = WONDERS_JSON.read_text(encoding="utf-8") if WONDERS_JSON.is_file() else "{}"
     # Per-venue bonus slice only — full catalog is huge; engine also reads venue.bonus_hunt.
     bonus_json = "{}"
     if BONUS_HUNTS_JSON.is_file():
@@ -2621,20 +2620,13 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
 
   {drawer}
 
-  <div id="print-sheet" class="print-sheet" aria-hidden="true"></div>
-  <div id="treasure-sheet" class="print-sheet treasure-sheet" aria-hidden="true"></div>
-
   <script type="application/json" id="venue-data">{venue_json}</script>
-  <script type="application/json" id="challenges-data">{challenges_json}</script>
-  <script type="application/json" id="wonders-data">{wonders_json}</script>
   <script type="application/json" id="bonus-hunts-data">{bonus_json}</script>
   <script src="/shell/shell.js?v={SHELL_JS_VER}"></script>
   <script src="/field-pack/js/fp-analytics.js?v=1"></script>
-  <script src="/field-pack/js/catalog.js?v={CATALOG_JS_VER}"></script>
   <script src="/field-pack/js/print-maps.js?v=5"></script>
-  <script src="/field-pack/js/print-kit.js?v=15"></script>
   <script src="/field-pack/js/mission/mission-engine.js?v=13"></script>
-  <script src="/field-pack/js/mission/mission-ui.js?v=18"></script>
+  <script src="/field-pack/js/mission/mission-ui.js?v={MISSION_UI_JS_VER}"></script>
 </body>
 </html>
 """
@@ -2755,22 +2747,15 @@ def render_venue_page(v: dict) -> str:
     </footer>
   </div>
 
-  <div id="print-sheet" class="print-sheet" aria-hidden="true"></div>
-  <div id="treasure-sheet" class="print-sheet treasure-sheet" aria-hidden="true"></div>
-
   <script src="/shell/shell.js?v={SHELL_JS_VER}"></script>
   <script src="/field-pack/js/fp-analytics.js?v=1"></script>
-  <script src="/field-pack/js/catalog.js?v={CATALOG_JS_VER}"></script>
-  <script src="/field-pack/js/print-maps.js?v=5"></script>
-  <script src="/field-pack/js/print-kit.js?v=15"></script>
   <script>
     (function () {{
       var btn = document.getElementById("seo-print-hunt");
       function printHunt() {{
-        // Prefer mission drawer when present; else legacy static treasure
-        if (window.FPPrint && window.FPPrint.printTreasureForVenue) {{
-          var id = (btn && btn.getAttribute("data-venue")) || "";
-          if (window.FPPrint.printTreasureForVenue(id)) return true;
+        if (window.FPMissionUI && window.FPMissionUI.open) {{
+          window.FPMissionUI.open();
+          return true;
         }}
         if (btn) {{
           location.href = "/field-pack/app.html#/venue/" + encodeURIComponent(btn.getAttribute("data-venue") || "");

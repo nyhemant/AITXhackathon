@@ -145,6 +145,7 @@
   let genTimer = null;
   let lastFocus = null;
   let drawerReady = false;
+  let huntReady = Promise.resolve();
 
   function normalizeAgeKey(raw) {
     if (window.FPMission && typeof window.FPMission.normalizeAge === "function") {
@@ -474,13 +475,29 @@
     setTimeout(() => {
       if (document.body.classList.contains("printing-mission")) done();
     }, 60000);
-    const waitImgs =
-      window.FPPrint && typeof window.FPPrint.waitForPrintImages === "function"
-        ? window.FPPrint.waitForPrintImages(sheet)
-        : Promise.resolve();
-    Promise.resolve(waitImgs).then(() => {
+    waitForPrintImages(sheet).then(() => {
       setTimeout(() => window.print(), 40);
     });
+  }
+
+  function waitForPrintImages(root) {
+    const imgs = root ? [...root.querySelectorAll("img")] : [];
+    if (!imgs.length) return Promise.resolve();
+    return Promise.all(
+      imgs.map(
+        (img) =>
+          new Promise((resolve) => {
+            if (img.complete) {
+              resolve();
+              return;
+            }
+            const done = () => resolve();
+            img.addEventListener("load", done, { once: true });
+            img.addEventListener("error", done, { once: true });
+            setTimeout(done, 2500);
+          })
+      )
+    );
   }
 
   /** Name / interest only — age & time live in `state` (set by chip clicks). */
@@ -664,16 +681,48 @@
     });
   }
 
-  function boot() {
-    const dataEl = document.getElementById("venue-data");
+  function parseEmbeddedJson(el, fallback) {
+    if (!el) return fallback;
+    try {
+      return JSON.parse(el.textContent);
+    } catch (e) {
+      return fallback;
+    }
+  }
+
+  function fetchJson(url, fallback) {
+    return fetch(url, { credentials: "same-origin" })
+      .then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
+      .catch(() => fallback);
+  }
+
+  function loadHuntLibraries() {
     const chEl = document.getElementById("challenges-data");
     const wEl = document.getElementById("wonders-data");
+    if (chEl || wEl) {
+      challenges = parseEmbeddedJson(chEl, { challenges: [] });
+      wonders = parseEmbeddedJson(wEl, null);
+      return Promise.resolve();
+    }
+    return Promise.all([
+      fetchJson("/field-pack/data/challenges.json", { challenges: [] }),
+      fetchJson("/field-pack/data/wonders.json", null),
+    ]).then(([ch, w]) => {
+      challenges = ch && typeof ch === "object" ? ch : { challenges: [] };
+      wonders = w && typeof w === "object" ? w : null;
+    });
+  }
+
+  function openDrawerWhenReady() {
+    return huntReady.then(() => openDrawer());
+  }
+
+  function boot() {
+    const dataEl = document.getElementById("venue-data");
     const bEl = document.getElementById("bonus-hunts-data");
     if (!dataEl || !window.FPMission) return;
     try {
       venue = JSON.parse(dataEl.textContent);
-      challenges = chEl ? JSON.parse(chEl.textContent) : { challenges: [] };
-      wonders = wEl ? JSON.parse(wEl.textContent) : null;
       bonusHunts = bEl ? JSON.parse(bEl.textContent) : window.FP_BONUS_HUNTS || null;
       if (bonusHunts) window.FP_BONUS_HUNTS = bonusHunts;
     } catch (e) {
@@ -686,13 +735,12 @@
     state.hunt = "classic";
     wireChangePlace();
     wireControls();
-    // Precompute default sheet (in drawer DOM) for print/SEO consistency
-    recompute(false);
+    huntReady = loadHuntLibraries().then(() => recompute(false));
 
     const openBtn = $("#mission-open-btn");
     openBtn?.addEventListener("click", (e) => {
       e.preventDefault();
-      openDrawer();
+      openDrawerWhenReady();
     });
 
     // Any print CTA on the venue page → mission drawer (never static treasure sheet)
@@ -707,7 +755,7 @@
           id === "seo-open-mission"
         ) {
           e.preventDefault();
-          openDrawer();
+          openDrawerWhenReady();
           return;
         }
         if (how === "play") {
@@ -737,13 +785,15 @@
     // in the page HTML; treat all three hashes here.
     const maybeOpenFromHash = () => {
       const h = location.hash;
-      if (h === "#mission" || h === "#print" || h === "#mission-drawer") openDrawer();
+      if (h === "#mission" || h === "#print" || h === "#mission-drawer") {
+        openDrawerWhenReady();
+      }
     };
     maybeOpenFromHash();
     window.addEventListener("hashchange", maybeOpenFromHash);
 
     window.FPMissionUI = {
-      open: openDrawer,
+      open: openDrawerWhenReady,
       close: closeDrawer,
       isOpen,
       getVenue: () => venue,
