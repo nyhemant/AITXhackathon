@@ -197,7 +197,7 @@ class IaPhaseBTests(unittest.TestCase):
         h = _get("/field-pack/places/dallas-zoo.html")
         self.assertEqual(h._code, 301)
         self.assertEqual(h._headers.get("Location"), "/field-pack/dallas-zoo/")
-        self.assertTrue((FP / "places" / "dallas-zoo.html").is_file())
+        self.assertFalse((FP / "places").exists())
         for path in FEATURED_HTML:
             html = path.read_text(encoding="utf-8")
             self.assertNotIn("/field-pack/places/", html, path.name)
