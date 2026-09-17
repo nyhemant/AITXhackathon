@@ -65,6 +65,9 @@ body.about-body {
 }
 
 .about-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   color: var(--muted);
   text-decoration: none;
   border-bottom: 1px solid var(--line);
@@ -214,6 +217,9 @@ body.about-body {
 }
 
 .about-foot a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   color: var(--muted);
   text-decoration: none;
   border-bottom: 1px solid var(--line);

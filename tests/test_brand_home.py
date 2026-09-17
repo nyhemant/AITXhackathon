@@ -7,6 +7,7 @@ Locked IA:
 """
 
 from pathlib import Path
+import json
 import re
 import unittest
 
@@ -115,6 +116,8 @@ class BrandHomeTests(unittest.TestCase):
         html = ABOUT.read_text(encoding="utf-8")
         self.assertEqual(_attr(html, "about-brand"), "/start/")
         self.assertIn('href="/field-pack/">Find a place</a>', html)
+        self.assertNotIn("manifest.webmanifest", html)
+        self.assertNotIn("/pwa/register.js", html)
 
     def test_about_parent_map_is_the_kid_path(self):
         html = ABOUT.read_text(encoding="utf-8")
@@ -149,6 +152,41 @@ class BrandHomeTests(unittest.TestCase):
         self.assertIn('id="faq"', html)
         self.assertIn("Field Trip Kit is an at-home virtual zoo", html)
         self.assertEqual(html.lower().count('href="/dinner"'), 1)
+
+    def test_about_faq_jsonld_cities_matches_visible_faq(self):
+        html = ABOUT.read_text(encoding="utf-8")
+        block = re.search(
+            r'<script type="application/ld\+json">\s*(\{.*?\})\s*</script>',
+            html,
+            re.S,
+        )
+        self.assertIsNotNone(block)
+        faq = json.loads(block.group(1))
+        self.assertEqual(faq["@type"], "FAQPage")
+        cities = next(
+            entity
+            for entity in faq["mainEntity"]
+            if entity["name"] == "Which cities are covered?"
+        )
+        text = cities["acceptedAnswer"]["text"]
+        self.assertNotIn("on this page", text.lower())
+        self.assertNotIn("Browse the map or full place list", text)
+        self.assertIn("https://kidzookit.com/field-pack/", text)
+        self.assertIn("London, Singapore, Tokyo, Sydney", text)
+        self.assertIn("Popular", text)
+        self.assertIn("International", text)
+        visible = html.split('id="faq"', 1)[1]
+        self.assertIn("Which cities are covered?", visible)
+        self.assertIn("London, Singapore, Tokyo, Sydney", visible)
+
+    def test_about_nav_and_footer_links_have_44px_hit_area(self):
+        css = (REPO / "static" / "about" / "about.css").read_text(encoding="utf-8")
+        nav = re.search(r"\.about-nav a\s*\{([^}]+)\}", css)
+        foot = re.search(r"\.about-foot a\s*\{([^}]+)\}", css)
+        self.assertIsNotNone(nav)
+        self.assertIsNotNone(foot)
+        self.assertIn("min-height: 44px", nav.group(1))
+        self.assertIn("min-height: 44px", foot.group(1))
 
     def test_explorer_hub_brand_goes_to_start_all_places_stays(self):
         html = HUB.read_text(encoding="utf-8")
