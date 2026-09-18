@@ -34,10 +34,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from busyparent_agent.site import PUBLIC_SITE  # noqa: E402
 from busyparent_agent.url_aliases import (  # noqa: E402
     CARD_SLUG_ALIASES,
-    NATIONAL_PARKS_PATH,
     PRINT_PATH,
-    PRINT_TARGET,
-    VFT_PATH,
     redirect_location,
 )
 from field_pack_card_kind import (  # noqa: E402
@@ -1228,7 +1225,7 @@ _START_HERE_KITS: dict[str, list[str]] | None = None
 _START_HERE_SITES: dict[str, str] | None = None
 # Hold-back list for catalog animals that must not get a public card page.
 # Polar bear is published — keep this empty unless a future catalog id is intentionally withheld.
-# Short typed URLs → canonical card ids. Alias folders are not real cards.
+# Short typed URLs → canonical card ids. 301 aliases only — never publish a card page here.
 CARD_PATH_ALIASES = dict(CARD_SLUG_ALIASES)
 NEVER_PUBLISH_CARD_IDS = frozenset(CARD_PATH_ALIASES)
 _PUBLISHED_CARD_IDS: set[str] | None = None
@@ -3007,107 +3004,12 @@ def write_type_landing(meta: dict, venues: list[dict]) -> str:
     return f"/field-pack/{path}/"
 
 
-def write_redirect_stub(
-    rel_dir: str,
-    *,
-    dest_href: str,
-    title: str,
-    label: str,
-) -> None:
-    """Static alias page (meta refresh + link) for hosts without Python 301s."""
-    dest_path = dest_href.split("?")[0]
-    dest_abs = dest_href if dest_href.startswith("http") else f"{SITE}{dest_path}"
-    out_dir = FIELD / rel_dir
-    out_dir.mkdir(parents=True, exist_ok=True)
-    html = f"""<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>{esc(title)} · Field Trip Kit</title>
-  <link rel="canonical" href="{esc(dest_abs)}" />
-  <meta http-equiv="refresh" content="0;url={esc(dest_href)}" />
-  <script>location.replace({json.dumps(dest_href)});</script>
-</head>
-<body>
-  <p><a href="{esc(dest_href)}">{esc(label)}</a></p>
-</body>
-</html>
-"""
-    (out_dir / "index.html").write_text(html, encoding="utf-8")
-
-
-def write_parks_alias() -> None:
-    """ /field-pack/parks/ → national-parks (meta refresh + link). """
-    write_redirect_stub(
-        "parks",
-        dest_href=NATIONAL_PARKS_PATH,
-        title="National Parks",
-        label="National & world park scavenger hunts",
-    )
-
-
-def write_print_alias() -> None:
-    """ /field-pack/print/ → VFT print-cutout mode. """
-    write_redirect_stub(
-        "print",
-        dest_href=PRINT_TARGET,
-        title="Print cutouts",
-        label="Print the cutouts",
-    )
-
-
-def write_virtual_zoo_alias() -> None:
-    """ /field-pack/virtual-zoo/ → canonical Watch Live. """
-    write_redirect_stub(
-        "virtual-zoo",
-        dest_href=VFT_PATH,
-        title="Watch Live",
-        label="Watch Live — Virtual Field Trip",
-    )
-
-
-def write_card_alias_pages() -> list[str]:
-    """ /field-pack/cards/giraffe/ → reticulated-giraffe (parks alias pattern). """
-    urls: list[str] = []
-    for src, dest in CARD_PATH_ALIASES.items():
-        dest_href = f"/field-pack/cards/{dest}/"
-        dest_abs = f"{SITE}{dest_href}"
-        title = src.replace("-", " ").title()
-        label = f"{dest.replace('-', ' ').title()} card"
-        out_dir = FIELD / "cards" / src
-        out_dir.mkdir(parents=True, exist_ok=True)
-        html = f"""<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>{esc(title)} · Field Trip Kit</title>
-  <link rel="canonical" href="{esc(dest_abs)}" />
-  <meta http-equiv="refresh" content="0;url={esc(dest_href)}" />
-  <script>location.replace({json.dumps(dest_href)});</script>
-</head>
-<body>
-  <p><a href="{esc(dest_href)}">{esc(label)}</a></p>
-</body>
-</html>
-"""
-        (out_dir / "index.html").write_text(html, encoding="utf-8")
-        urls.append(f"/field-pack/cards/{src}/")
-        print(f"  card alias /field-pack/cards/{src}/ → {dest}")
-    return urls
-
-
 def write_type_landings(venues: list[dict]) -> list[str]:
     urls = []
     for meta in TYPE_LANDINGS:
         u = write_type_landing(meta, venues)
         urls.append(u)
         print(f"  type landing {u} ({sum(1 for v in venues if venue_type_kind(v) == meta['kind'])} places)")
-    write_parks_alias()
-    write_print_alias()
-    write_virtual_zoo_alias()
-    print("  type landing alias /field-pack/parks/ → national-parks")
-    print("  print alias /field-pack/print/ → virtual-field-trip/?print=1")
-    print("  watch-live alias /field-pack/virtual-zoo/ → virtual-field-trip/")
     return urls
 
 
@@ -5305,7 +5207,6 @@ def write_card_pages(
         dest.mkdir(parents=True, exist_ok=True)
         (dest / "index.html").write_text(html, encoding="utf-8")
         urls.append(f"/field-pack/cards/{cid}/")
-    write_card_alias_pages()
     return urls
 
 
