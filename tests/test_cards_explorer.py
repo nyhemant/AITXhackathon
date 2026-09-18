@@ -222,14 +222,9 @@ class CardsExplorerTests(unittest.TestCase):
             h.do_GET()
             self.assertEqual(h._code, 301, path)
             self.assertEqual(h._headers.get("Location"), dest, path)
-        alias = Path(GIRAFFE).parent.parent / "giraffe" / "index.html"
-        self.assertTrue(alias.is_file())
-        html = alias.read_text(encoding="utf-8")
-        self.assertIn('rel="canonical" href="https://kidzookit.com/field-pack/cards/reticulated-giraffe/"', html)
-        self.assertIn('content="0;url=/field-pack/cards/reticulated-giraffe/"', html)
-        self.assertIn("location.replace(", html)
-        self.assertIn("/field-pack/cards/reticulated-giraffe/", html)
-        self.assertNotIn("card-page", html)
+        alias = Path(GIRAFFE).parent.parent / "giraffe"
+        self.assertFalse(alias.exists())
+        self.assertTrue(GIRAFFE.is_file())
         self.assertNotIn('data-card-id="giraffe"', self.html)
 
 

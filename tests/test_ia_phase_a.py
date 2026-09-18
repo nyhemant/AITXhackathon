@@ -96,9 +96,8 @@ class IaPhaseATests(unittest.TestCase):
         print_q = _get("/field-pack/virtual-zoo/?print=1")
         self.assertEqual(print_q._code, 301)
         self.assertEqual(print_q._headers.get("Location"), PRINT_TARGET)
-        stub = (FP / "virtual-zoo" / "index.html").read_text(encoding="utf-8")
-        self.assertIn('content="0;url=/field-pack/virtual-field-trip/"', stub)
-        self.assertNotIn("data-virtual-venue", stub)
+        self.assertFalse((FP / "virtual-zoo").exists())
+        self.assertEqual(_get(VFT_PATH)._code, 200)
 
     def test_print_path_301s_to_vft_print_mode(self):
         self.assertEqual(redirect_location("/field-pack/print/"), PRINT_TARGET)
@@ -106,17 +105,15 @@ class IaPhaseATests(unittest.TestCase):
             h = _get(path)
             self.assertEqual(h._code, 301, path)
             self.assertEqual(h._headers.get("Location"), PRINT_TARGET, path)
-        stub = (FP / "print" / "index.html").read_text(encoding="utf-8")
-        self.assertIn("print=1", stub)
+        self.assertFalse((FP / "print").exists())
 
     def test_parks_stub_301s_to_national_parks(self):
         for path in ("/field-pack/parks", "/field-pack/parks/"):
             h = _get(path)
             self.assertEqual(h._code, 301, path)
             self.assertEqual(h._headers.get("Location"), NATIONAL_PARKS_PATH, path)
-        stub = (FP / "parks" / "index.html").read_text(encoding="utf-8")
-        self.assertIn(NATIONAL_PARKS_PATH, stub)
-        self.assertNotIn("card-page", stub)
+        self.assertFalse((FP / "parks").exists())
+        self.assertEqual(_get(NATIONAL_PARKS_PATH)._code, 200)
 
     def test_app_html_301s_to_places_and_stays_unlisted(self):
         h = _get("/field-pack/app.html")
@@ -139,9 +136,9 @@ class IaPhaseATests(unittest.TestCase):
                 h = _get(path)
                 self.assertEqual(h._code, 301, path)
                 self.assertEqual(h._headers.get("Location"), dest_url, path)
-            stub = (FP / "cards" / src / "index.html").read_text(encoding="utf-8")
-            self.assertIn(dest_url, stub)
-            self.assertNotIn("card-page", stub)
+            self.assertFalse((FP / "cards" / src).exists(), src)
+            self.assertTrue((FP / "cards" / dest / "index.html").is_file(), dest)
+            self.assertEqual(_get(dest_url)._code, 200, dest_url)
 
     def test_start_about_cards_use_canonical_doors(self):
         start = START.read_text(encoding="utf-8")

@@ -1,4 +1,4 @@
-"""Canonical Field Trip Kit URL aliases — one table for HTTP 301s and static stubs.
+"""Canonical Field Trip Kit URL aliases — one table for HTTP 301s.
 
 Short animal slugs match the in-app soft-alias list in ``app.js``
 (``lookupPromptBank``). Do not invent animals here.
