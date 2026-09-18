@@ -118,6 +118,10 @@ class BrandHomeTests(unittest.TestCase):
         self.assertIn('href="/field-pack/">Find a place</a>', html)
         self.assertNotIn("manifest.webmanifest", html)
         self.assertNotIn("/pwa/register.js", html)
+        self.assertIn("/shell/shell.js?v=6", html)
+        self.assertNotIn("/field-pack/js/fp-analytics.js", html)
+        self.assertNotIn("FPTrack", html)
+        self.assertNotIn("OneLessAnalytics", html)
 
     def test_about_parent_map_is_the_kid_path(self):
         html = ABOUT.read_text(encoding="utf-8")
