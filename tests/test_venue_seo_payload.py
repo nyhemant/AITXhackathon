@@ -96,9 +96,9 @@ def _assert_public_embeds_are_slim(test: unittest.TestCase, html: str, slug: str
     alpha = bonus.get("alpha") or {}
     test.assertNotIn("generic", alpha, f"{slug} still embeds shared alpha.generic")
     test.assertLessEqual(len(bonus.get("venues") or {}), 1)
+    # Parks may reuse type-kit ids (np_still) inside the per-slug overlay.
+    # Shared generic pool ids must not appear — those live only in bonus-hunts.json.
     dumped = json.dumps(bonus)
-    for kid in SHARED_KIT_IDS:
-        test.assertNotIn(kid, dumped, f"{slug} embed still has kit id {kid}")
     for gid in SHARED_GENERIC_IDS:
         test.assertNotIn(gid, dumped, f"{slug} embed still has shared generic id {gid}")
 
