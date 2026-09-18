@@ -2,7 +2,7 @@
 
 Spent one-shot writers. Their kits already live in committed venue JSON / catalogs / VFT HTML.
 
-**DO NOT RE-RUN.** Paths still point at live `static/field-pack/` data. Tests lock that committed JSON/HTML, not these scripts.
+**DO NOT RE-RUN.** Tests lock that committed JSON/HTML, not these scripts. Restoring a writer to `scripts/` would rewrite live venue JSON.
 
 `write_wave3b_venues.py` and `write_wave4_venues.py` import `write_wave3a_venues.py`, so this folder is one bundle.
 
