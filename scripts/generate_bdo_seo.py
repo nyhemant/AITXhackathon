@@ -1721,6 +1721,54 @@ def load_mission_venue(slug: str) -> dict | None:
     return json.loads(p.read_text(encoding="utf-8"))
 
 
+# Authoring-only: stay on disk in data/venues/*.json, never in public #venue-data.
+PUBLIC_VENUE_DROP_KEYS = ("research_notes", "presence_sources")
+# Shared type kits + generic bonus/alpha pools are identical on every page.
+# Engine prefers venue.bonus_hunt / venue.alpha_hunt. Full bonus-hunts.json is
+# ~549KB (all venue packs) — leave shared blobs on disk; do not fetch per page.
+
+
+def public_mission_venue(mission_venue: dict) -> dict:
+    """Browser #venue-data: drop authoring notes/sources. Keep hunt packs."""
+    out = json.loads(json.dumps(mission_venue))
+    for key in PUBLIC_VENUE_DROP_KEYS:
+        out.pop(key, None)
+    return out
+
+
+def public_bonus_hunts_embed(
+    bonus_all: dict | None, slug: str, mission_venue: dict | None = None
+) -> dict:
+    """Per-slug overlay only. Shared kits/generic stay on disk for authoring."""
+    src = bonus_all if isinstance(bonus_all, dict) else {}
+    mission = mission_venue if isinstance(mission_venue, dict) else {}
+    one = (src.get("venues") or {}).get(slug)
+    if not one and isinstance(mission.get("bonus_hunt"), dict):
+        one = mission["bonus_hunt"]
+    alpha_all = src.get("alpha") or {}
+    alpha_one = (alpha_all.get("venues") or {}).get(slug)
+    if not alpha_one and isinstance(mission.get("alpha_hunt"), dict):
+        alpha_one = mission["alpha_hunt"]
+    out = {
+        "version": src.get("version", 1),
+        "venues": {slug: one} if one and slug else {},
+    }
+    # No shared alpha.generic — venue.alpha_hunt or bonus fallback is enough.
+    if alpha_one and slug:
+        out["alpha"] = {"venues": {slug: alpha_one}}
+    return out
+
+
+def load_bonus_hunts() -> dict:
+    if not BONUS_HUNTS_JSON.is_file():
+        return {}
+    try:
+        data = json.loads(BONUS_HUNTS_JSON.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return {}
+    return data if isinstance(data, dict) else {}
+
+
 def default_mission_via_node(venue: dict) -> dict:
     """Run mission-engine.js in Node for SEO default list (age 4-5, half day)."""
     script = r"""
@@ -2482,39 +2530,13 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
             f"</div>"
         )
     json_ld = venue_json_ld(v, url)
-    venue_json = json.dumps(mission_venue, ensure_ascii=False)
-    # Per-venue bonus slice only — full catalog is huge; engine also reads venue.bonus_hunt.
-    bonus_json = "{}"
-    if BONUS_HUNTS_JSON.is_file():
-        try:
-            _bh_all = json.loads(BONUS_HUNTS_JSON.read_text(encoding="utf-8"))
-        except json.JSONDecodeError:
-            _bh_all = {}
-        _slug = mission_venue.get("slug") or v.get("id") or ""
-        _bh_slim = {
-            "version": _bh_all.get("version", 1),
-            "generic": _bh_all.get("generic") or {},
-        }
-        if _bh_all.get("kits"):
-            _bh_slim["kits"] = _bh_all["kits"]
-        _one = (_bh_all.get("venues") or {}).get(_slug)
-        if not _one and isinstance(mission_venue.get("bonus_hunt"), dict):
-            _one = mission_venue["bonus_hunt"]
-        if _one:
-            _bh_slim["venues"] = {_slug: _one}
-        else:
-            _bh_slim["venues"] = {}
-        # Alpha slice (extra-hard mode)
-        _alpha_all = _bh_all.get("alpha") or {}
-        _alpha_one = (_alpha_all.get("venues") or {}).get(_slug)
-        if not _alpha_one and isinstance(mission_venue.get("alpha_hunt"), dict):
-            _alpha_one = mission_venue["alpha_hunt"]
-        _alpha_slim = {
-            "generic": _alpha_all.get("generic") or {},
-            "venues": {_slug: _alpha_one} if _alpha_one else {},
-        }
-        _bh_slim["alpha"] = _alpha_slim
-        bonus_json = json.dumps(_bh_slim, ensure_ascii=False)
+    venue_json = json.dumps(public_mission_venue(mission_venue), ensure_ascii=False)
+    # Per-slug overlay only — shared kits/generic stay in bonus-hunts.json on disk.
+    _slug = str(mission_venue.get("slug") or v.get("id") or "")
+    bonus_json = json.dumps(
+        public_bonus_hunts_embed(load_bonus_hunts(), _slug, mission_venue),
+        ensure_ascii=False,
+    )
     lead = quiet_hero_lead(v, mission_venue)
     lead_html = f'<p class="lead">{esc(lead)}</p>' if lead else ""
     facts_html = (
