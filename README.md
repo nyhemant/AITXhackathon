@@ -105,9 +105,11 @@ python3 -m busyparent_agent.web --no-rate-limit
 - Current product reference: `docs/product-reference.md`
 - Origin scrape/bot rate limits: `docs/rate-limit.md`
 - Local validation guide: `docs/demo.md`
-- Product research and planning: `docs/product/`
+- Product docs pointer: `docs/product/` (not live research)
+- Archived May 2026 dinner/Reddit research: `docs/archive/dinner-research-2026-05/`
+- Live product: KidZooKit / Field Trip Kit (`/` → `/field-pack/`); dinner is secondary at `/dinner`
 - Legacy model 1.1 freeze: `docs/legacy/model-1.1.md`
-- Archived historical prototype docs: `docs/archive/`
+- Other archived historical docs: `docs/archive/`
 
 ## Project Structure
 
@@ -120,6 +122,7 @@ src/busyparent_agent/
   agent.py    older deterministic dinner internals
   tools.py    older local mocked tools
 tests/        unittest coverage
-docs/product/ source-of-truth product research, briefs, and planning
+docs/product/ pointer only (May 2026 dinner/Reddit research archived)
+docs/archive/dinner-research-2026-05/ archived dinner/Reddit research pack
 docs/archive/ historical prototype and deprecated concept material
 ```
