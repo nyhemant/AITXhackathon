@@ -7,6 +7,7 @@ Locked IA:
 """
 
 from pathlib import Path
+import html as html_lib
 import json
 import re
 import unittest
@@ -157,7 +158,18 @@ class BrandHomeTests(unittest.TestCase):
         self.assertIn("Field Trip Kit is an at-home virtual zoo", html)
         self.assertEqual(html.lower().count('href="/dinner"'), 1)
 
-    def test_about_faq_jsonld_cities_matches_visible_faq(self):
+    def test_about_share_image_is_landscape_field_trip_still(self):
+        html = ABOUT.read_text(encoding="utf-8")
+        self.assertIn('property="og:image" content="https://kidzookit.com/start/hero-world-map.jpg"', html)
+        self.assertIn('name="twitter:image" content="https://kidzookit.com/start/hero-world-map.jpg"', html)
+        self.assertIn('property="og:image:width" content="1792"', html)
+        self.assertIn('property="og:image:height" content="1008"', html)
+        self.assertIn('property="og:image:alt" content="Stylized world map with eight animals"', html)
+        self.assertIn('name="twitter:image:alt" content="Stylized world map with eight animals"', html)
+        self.assertNotIn("sample-mission-dallas-zoo", html)
+        self.assertNotIn("/field-pack/photos/", html)
+
+    def test_about_faq_jsonld_matches_visible_faq(self):
         html = ABOUT.read_text(encoding="utf-8")
         block = re.search(
             r'<script type="application/ld\+json">\s*(\{.*?\})\s*</script>',
@@ -167,9 +179,29 @@ class BrandHomeTests(unittest.TestCase):
         self.assertIsNotNone(block)
         faq = json.loads(block.group(1))
         self.assertEqual(faq["@type"], "FAQPage")
+        visible = html.split('id="faq"', 1)[1].split("</section>", 1)[0]
+        questions = re.findall(
+            r"<details[^>]*>\s*<summary>(.*?)</summary>\s*<p>(.*?)</p>",
+            visible,
+            re.S,
+        )
+        self.assertEqual(len(questions), 8)
+        entities = faq["mainEntity"]
+        self.assertEqual(len(entities), 8)
+        visible_names = [re.sub(r"\s+", " ", name).strip() for name, _ans in questions]
+        schema_names = [entity["name"] for entity in entities]
+        self.assertEqual(schema_names, visible_names)
+        self.assertIn("We’re tourists / visiting for one day — is this for us?", schema_names)
+        self.assertIn("Do you have national park scavenger hunts?", schema_names)
+        self.assertIn("Can teachers or homeschool groups use this?", schema_names)
+        for entity, (_name, answer_html) in zip(entities, questions):
+            visible_text = html_lib.unescape(re.sub(r"<[^>]+>", "", answer_html))
+            visible_text = re.sub(r"\s+", " ", visible_text).strip()
+            schema_text = re.sub(r"\s+", " ", entity["acceptedAnswer"]["text"]).strip()
+            self.assertIn(visible_text, schema_text)
         cities = next(
             entity
-            for entity in faq["mainEntity"]
+            for entity in entities
             if entity["name"] == "Which cities are covered?"
         )
         text = cities["acceptedAnswer"]["text"]
@@ -179,9 +211,6 @@ class BrandHomeTests(unittest.TestCase):
         self.assertIn("London, Singapore, Tokyo, Sydney", text)
         self.assertIn("Popular", text)
         self.assertIn("International", text)
-        visible = html.split('id="faq"', 1)[1]
-        self.assertIn("Which cities are covered?", visible)
-        self.assertIn("London, Singapore, Tokyo, Sydney", visible)
 
     def test_about_nav_and_footer_links_have_44px_hit_area(self):
         css = (REPO / "static" / "about" / "about.css").read_text(encoding="utf-8")
