@@ -69,7 +69,7 @@ python3 -m unittest discover -s tests
 | `/field-pack/cards/` | Cards hub |
 | `/field-pack/{slug}/` | Place page (example: `/field-pack/dallas-zoo/`) |
 | `/field-pack/virtual-field-trip/` | Watch Live |
-| `/field-pack/print/` | Print cutouts (cut · hide · seek) |
+| `/field-pack/print/` | Print cutouts — **301** to `/field-pack/virtual-field-trip/?print=1` |
 | `/about/` | About, FAQ, Experimental extras |
 | `/dinner` | Dinner — secondary, **Experimental** |
 
