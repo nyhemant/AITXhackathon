@@ -67,7 +67,7 @@ class HubVenueHashTests(unittest.TestCase):
         self.assertIsNotNone(_safe_field_pack_path("/field-pack/houston-zoo/"))
         self.assertIsNotNone(_safe_field_pack_path("/field-pack/yellowstone/"))
         houston = (FP / "houston-zoo" / "index.html").read_text(encoding="utf-8")
-        self.assertIn('href="/field-pack/#us-map">Find on map</a>', houston)
+        self.assertIn('href="/field-pack/#us-map">Map</a>', houston)
         self.assertNotIn('href="/field-pack/#/venue/houston-zoo"', houston)
         yellowstone = (FP / "yellowstone" / "index.html").read_text(encoding="utf-8")
         self.assertIn('href="/field-pack/#us-map">Map</a>', yellowstone)
