@@ -72,6 +72,8 @@ Use this as the rollback/reference point while `main` moves forward.
 - `README.md` — top-level standalone product overview and local run instructions
 - `docs/product-reference.md` — canonical current product/reference note
 - `docs/demo.md` — local validation guide
-- `docs/product/` — product research, briefs, and task packets
+- `docs/product/` — pointer only; not live research
+- `docs/archive/dinner-research-2026-05/` — archived May 2026 dinner/Reddit research
+- Live product is KidZooKit / Field Trip Kit (`/` → `/field-pack/`); dinner is secondary at `/dinner`
 - `docs/legacy/model-1.1.md` — frozen legacy model 1.1 reference
 - `docs/archive/` — historical prototype and deprecated concept docs retained for history only
