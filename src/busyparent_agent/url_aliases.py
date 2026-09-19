@@ -1,7 +1,7 @@
 """Canonical Field Trip Kit URL aliases — one table for HTTP 301s.
 
-Short animal slugs match the in-app soft-alias list in ``app.js``
-(``lookupPromptBank``). Do not invent animals here.
+Short animal slugs are the typed card aliases in ``CARD_SLUG_ALIASES``.
+Do not invent animals here.
 """
 
 from __future__ import annotations
@@ -15,7 +15,7 @@ PRINT_TARGET = "/field-pack/virtual-field-trip/?print=1"
 PLACES_PATH = "/field-pack/"
 NATIONAL_PARKS_PATH = "/field-pack/national-parks/"
 
-# Short typed card slugs → canonical card ids (app.js soft aliases).
+# Short typed card slugs → canonical card ids.
 CARD_SLUG_ALIASES: dict[str, str] = {
     "elephant": "african-elephant",
     "giraffe": "reticulated-giraffe",

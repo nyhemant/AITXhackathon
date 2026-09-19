@@ -6,10 +6,8 @@ NatGeo, or any other live-cam host — those stay out of scope.
 What is crawled
 ---------------
 1. Every <a href> in static/field-pack HTML (place pages, card pages, home,
-   app.html, type hubs, Virtual Field Trip, print/mission drawers, cards hub).
-2. Catalog-derived routes that the outing app actually uses:
-   - #/venue/<venueId>
-   - #/venue/<venueId>/item/<itemId>
+   type hubs, Virtual Field Trip, print/mission drawers, cards hub).
+2. Catalog-derived live routes:
    - /field-pack/<venueId>/
    - /field-pack/cards/<itemId>/  (published card pages only)
 
@@ -23,10 +21,8 @@ How a target is judged
 ----------------------
 - The path must return 200 (or a redirect to a real page) from the same
   local server that serves kidzookit.com.
-- #/venue/<id> must be a catalog venue.
-- #/venue/<id>/item/<itemId> must pass the same itemOnVenue check as the
-  live app. Unknown item hashes must NOT stay on a stale card — they
-  rewrite to #/venue/<id> (the outing list).
+- #/venue/<id> on the map hub must be a catalog venue (landing-map
+  resolveHubVenueHash leaves for the place page).
 - In-page hashes (#about, #at-home, #mission, #print, #start-here, …)
   must match an id= on that page.
 - Virtual Field Trip #habitat=<animal> : the VFT page itself must load.
@@ -74,7 +70,6 @@ from busyparent_agent.web import (
 REPO = Path(__file__).resolve().parents[1]
 FP = REPO / "static" / "field-pack"
 CATALOG_JS = FP / "js" / "catalog.js"
-APP_JS = FP / "js" / "app.js"
 VFT_JS = FP / "js" / "virtual-venue.js"
 
 SKIP_SCHEMES = ("mailto:", "tel:", "javascript:", "data:")
@@ -127,36 +122,6 @@ process.stdout.write(JSON.stringify(out));
         text=True,
     )
     return json.loads(proc.stdout)
-
-
-def _resolve_item_hash(venue_id: str, item_id: str) -> str:
-    """Same outcome as app.js showItem + itemOnVenue (hash after route)."""
-    js = r"""
-const fs = require("fs");
-const vm = require("vm");
-const window = {};
-vm.runInNewContext(fs.readFileSync(process.argv[1], "utf8"), { window });
-const appSrc = fs.readFileSync(process.argv[2], "utf8");
-const fn = appSrc.match(/function itemOnVenue\(venue, itemId\) \{[\s\S]*?\n  \}\n/);
-if (!fn) throw new Error("itemOnVenue not found");
-const itemOnVenue = vm.runInNewContext(fn[0] + "\nitemOnVenue;");
-const venueId = process.argv[3];
-const itemId = process.argv[4];
-const venue = window.FIELD_PACK_VENUES[venueId];
-const item = window.FIELD_PACK_CATALOG[itemId];
-if (!venue || !itemOnVenue(venue, itemId) || !item) {
-  process.stdout.write(venue ? ("#/venue/" + venue.id) : "#/venue/" + venueId);
-} else {
-  process.stdout.write("#/venue/" + venue.id + "/item/" + itemId);
-}
-"""
-    proc = subprocess.run(
-        ["node", "-e", js, str(CATALOG_JS), str(APP_JS), venue_id, item_id],
-        check=True,
-        capture_output=True,
-        text=True,
-    )
-    return proc.stdout.strip()
 
 
 def _is_internal_href(raw: str) -> bool:
@@ -331,9 +296,6 @@ class FieldPackInternalLinkTests(unittest.TestCase):
         for vid in self.catalog["venueIds"]:
             extra.append(f"/field-pack/{vid}/")
             extra.append(f"/field-pack/#/venue/{vid}")
-            extra.append(f"/field-pack/app.html#/venue/{vid}")
-            for iid in self.catalog["venueItems"].get(vid, []):
-                extra.append(f"/field-pack/app.html#/venue/{vid}/item/{iid}")
         for iid in self.published_cards:
             extra.append(f"/field-pack/cards/{iid}/")
         return extra
@@ -393,22 +355,16 @@ class FieldPackInternalLinkTests(unittest.TestCase):
 
         self.assertEqual(failures, [], "\n".join(failures[:80]))
 
-    def test_unknown_item_hash_does_not_stay_on_stale_card(self):
-        js = APP_JS.read_text(encoding="utf-8")
-        self.assertIn("function itemOnVenue(venue, itemId)", js)
-        self.assertIn("if (!venueEarly || !itemOnVenue(venueEarly, itemId))", js)
-        self.assertIn("return showOuting(", js)
-
-        good = _resolve_item_hash("dallas-zoo", "reticulated-giraffe")
-        self.assertEqual(good, "#/venue/dallas-zoo/item/reticulated-giraffe")
-
-        unknown = _resolve_item_hash("dallas-zoo", "not-a-real-animal-xyz")
-        self.assertEqual(unknown, "#/venue/dallas-zoo")
-        self.assertNotIn("/item/", unknown)
-
-        # Seahorse is a real catalog card, but not a Dallas Zoo stop.
-        off_list = _resolve_item_hash("dallas-zoo", "seahorse")
-        self.assertEqual(off_list, "#/venue/dallas-zoo")
+    def test_live_html_does_not_href_dead_app_shell(self):
+        self.assertFalse((FP / "app.html").exists())
+        self.assertFalse((FP / "js" / "app.js").exists())
+        hits = [
+            f"{h['source']} → {h['raw']}"
+            for h in self.hrefs
+            if "/field-pack/app.html" in (h["raw"] or "")
+            or "/field-pack/app.html" in (h["resolved"] or "")
+        ]
+        self.assertEqual(hits, [], "live HTML still hrefs the dead app shell")
 
     def test_dallas_start_here_next_chain(self):
         dallas = (FP / "dallas-zoo" / "index.html").read_text(encoding="utf-8")
@@ -537,7 +493,7 @@ class FieldPackInternalLinkTests(unittest.TestCase):
             self.assertEqual(h._code, expect, path)
             self.assertEqual(_served_status(path), expect, path)
 
-    def test_unpublished_cards_retarget_to_outing_hash(self):
+    def test_unpublished_cards_retarget_to_place_page(self):
         import sys
 
         sys.path.insert(0, str(REPO / "scripts"))
@@ -552,7 +508,7 @@ class FieldPackInternalLinkTests(unittest.TestCase):
         )
         self.assertEqual(
             item_public_href("acad-cadillac-view", "acadia"),
-            "/field-pack/app.html#/venue/acadia/item/acad-cadillac-view",
+            "/field-pack/acadia/#at-home",
         )
         self.assertEqual(
             item_public_href("african-elephant", "dallas-zoo", extra_query="from=dallas-zoo"),

@@ -19,7 +19,6 @@ window.FP_PLACES = [
     lat: 32.74,
     lon: -96.82,
     href: "/field-pack/dallas-zoo/",
-    appHref: "/field-pack/app.html#/venue/dallas-zoo",
   },
   {
     id: "childrens-aquarium-dallas",
@@ -35,7 +34,6 @@ window.FP_PLACES = [
     lat: 32.78,
     lon: -96.76,
     href: "/field-pack/childrens-aquarium-dallas/",
-    appHref: "/field-pack/app.html#/venue/childrens-aquarium-dallas",
   },
   {
     id: "childrens-museum-perot",
@@ -51,7 +49,6 @@ window.FP_PLACES = [
     lat: 32.79,
     lon: -96.81,
     href: "/field-pack/childrens-museum-perot/",
-    appHref: "/field-pack/app.html#/venue/childrens-museum-perot",
   },
   {
     id: "fort-worth-zoo",
@@ -67,7 +64,6 @@ window.FP_PLACES = [
     lat: 32.72,
     lon: -97.36,
     href: "/field-pack/fort-worth-zoo/",
-    appHref: "/field-pack/app.html#/venue/fort-worth-zoo",
   },
   {
     id: "thinkery",
@@ -83,7 +79,6 @@ window.FP_PLACES = [
     lat: 30.31,
     lon: -97.71,
     href: "/field-pack/thinkery/",
-    appHref: "/field-pack/app.html#/venue/thinkery",
   },
   {
     id: "austin-zoo",
@@ -99,7 +94,6 @@ window.FP_PLACES = [
     lat: 30.24,
     lon: -97.93,
     href: "/field-pack/austin-zoo/",
-    appHref: "/field-pack/app.html#/venue/austin-zoo",
   },
   {
     id: "doseum",
@@ -115,7 +109,6 @@ window.FP_PLACES = [
     lat: 29.46,
     lon: -98.47,
     href: "/field-pack/doseum/",
-    appHref: "/field-pack/app.html#/venue/doseum",
   },
   {
     id: "houston-zoo",
@@ -131,7 +124,6 @@ window.FP_PLACES = [
     lat: 29.72,
     lon: -95.39,
     href: "/field-pack/houston-zoo/",
-    appHref: "/field-pack/app.html#/venue/houston-zoo",
   },
   {
     id: "san-diego-zoo",
@@ -147,7 +139,6 @@ window.FP_PLACES = [
     lat: 32.74,
     lon: -117.15,
     href: "/field-pack/san-diego-zoo/",
-    appHref: "/field-pack/app.html#/venue/san-diego-zoo",
   },
   {
     id: "san-diego-safari-park",
@@ -163,7 +154,6 @@ window.FP_PLACES = [
     lat: 33.1,
     lon: -117.0,
     href: "/field-pack/san-diego-safari-park/",
-    appHref: "/field-pack/app.html#/venue/san-diego-safari-park",
   },
   {
     id: "shedd-aquarium",
@@ -179,7 +169,6 @@ window.FP_PLACES = [
     lat: 41.87,
     lon: -87.62,
     href: "/field-pack/shedd-aquarium/",
-    appHref: "/field-pack/app.html#/venue/shedd-aquarium",
   },
   {
     id: "field-museum",
@@ -195,7 +184,6 @@ window.FP_PLACES = [
     lat: 41.87,
     lon: -87.62,
     href: "/field-pack/field-museum/",
-    appHref: "/field-pack/app.html#/venue/field-museum",
   },
   {
     id: "georgia-aquarium",
@@ -211,7 +199,6 @@ window.FP_PLACES = [
     lat: 33.76,
     lon: -84.4,
     href: "/field-pack/georgia-aquarium/",
-    appHref: "/field-pack/app.html#/venue/georgia-aquarium",
   },
   {
     id: "national-zoo",
@@ -227,7 +214,6 @@ window.FP_PLACES = [
     lat: 38.93,
     lon: -77.05,
     href: "/field-pack/national-zoo/",
-    appHref: "/field-pack/app.html#/venue/national-zoo",
   },
   {
     id: "monterey-bay-aquarium",
@@ -243,7 +229,6 @@ window.FP_PLACES = [
     lat: 36.62,
     lon: -121.9,
     href: "/field-pack/monterey-bay-aquarium/",
-    appHref: "/field-pack/app.html#/venue/monterey-bay-aquarium",
   },
   {
     id: "indy-childrens-museum",
@@ -259,7 +244,6 @@ window.FP_PLACES = [
     lat: 39.81,
     lon: -86.16,
     href: "/field-pack/indy-childrens-museum/",
-    appHref: "/field-pack/app.html#/venue/indy-childrens-museum",
   },
   {
     id: "amnh",
@@ -275,7 +259,6 @@ window.FP_PLACES = [
     lat: 40.78,
     lon: -73.97,
     href: "/field-pack/amnh/",
-    appHref: "/field-pack/app.html#/venue/amnh",
   },
   {
     id: "bronx-zoo",
@@ -291,7 +274,6 @@ window.FP_PLACES = [
     lat: 40.85,
     lon: -73.88,
     href: "/field-pack/bronx-zoo/",
-    appHref: "/field-pack/app.html#/venue/bronx-zoo",
   },
   {
     id: "la-zoo",
@@ -307,7 +289,6 @@ window.FP_PLACES = [
     lat: 34.15,
     lon: -118.28,
     href: "/field-pack/la-zoo/",
-    appHref: "/field-pack/app.html#/venue/la-zoo",
   },
   {
     id: "aquarium-of-the-pacific",
@@ -323,7 +304,6 @@ window.FP_PLACES = [
     lat: 33.76,
     lon: -118.2,
     href: "/field-pack/aquarium-of-the-pacific/",
-    appHref: "/field-pack/app.html#/venue/aquarium-of-the-pacific",
   },
   {
     id: "california-science-center",
@@ -339,7 +319,6 @@ window.FP_PLACES = [
     lat: 34.02,
     lon: -118.29,
     href: "/field-pack/california-science-center/",
-    appHref: "/field-pack/app.html#/venue/california-science-center",
   },
   {
     id: "cal-academy",
@@ -355,7 +334,6 @@ window.FP_PLACES = [
     lat: 37.77,
     lon: -122.47,
     href: "/field-pack/cal-academy/",
-    appHref: "/field-pack/app.html#/venue/cal-academy",
   },
   {
     id: "kennedy-space-center",
@@ -371,7 +349,6 @@ window.FP_PLACES = [
     lat: 28.57,
     lon: -80.65,
     href: "/field-pack/kennedy-space-center/",
-    appHref: "/field-pack/app.html#/venue/kennedy-space-center",
   },
   {
     id: "new-england-aquarium",
@@ -387,7 +364,6 @@ window.FP_PLACES = [
     lat: 42.36,
     lon: -71.05,
     href: "/field-pack/new-england-aquarium/",
-    appHref: "/field-pack/app.html#/venue/new-england-aquarium",
   },
   {
     id: "museum-of-science-boston",
@@ -403,7 +379,6 @@ window.FP_PLACES = [
     lat: 42.37,
     lon: -71.07,
     href: "/field-pack/museum-of-science-boston/",
-    appHref: "/field-pack/app.html#/venue/museum-of-science-boston",
   },
   {
     id: "philadelphia-zoo",
@@ -419,7 +394,6 @@ window.FP_PLACES = [
     lat: 39.97,
     lon: -75.2,
     href: "/field-pack/philadelphia-zoo/",
-    appHref: "/field-pack/app.html#/venue/philadelphia-zoo",
   },
   {
     id: "please-touch-museum",
@@ -435,7 +409,6 @@ window.FP_PLACES = [
     lat: 39.98,
     lon: -75.21,
     href: "/field-pack/please-touch-museum/",
-    appHref: "/field-pack/app.html#/venue/please-touch-museum",
   },
   {
     id: "national-aquarium-baltimore",
@@ -451,7 +424,6 @@ window.FP_PLACES = [
     lat: 39.28,
     lon: -76.61,
     href: "/field-pack/national-aquarium-baltimore/",
-    appHref: "/field-pack/app.html#/venue/national-aquarium-baltimore",
   },
   {
     id: "smithsonian-natural-history",
@@ -467,7 +439,6 @@ window.FP_PLACES = [
     lat: 38.89,
     lon: -77.03,
     href: "/field-pack/smithsonian-natural-history/",
-    appHref: "/field-pack/app.html#/venue/smithsonian-natural-history",
   },
   {
     id: "air-and-space",
@@ -483,7 +454,6 @@ window.FP_PLACES = [
     lat: 38.89,
     lon: -77.02,
     href: "/field-pack/air-and-space/",
-    appHref: "/field-pack/app.html#/venue/air-and-space",
   },
   {
     id: "st-louis-zoo",
@@ -499,7 +469,6 @@ window.FP_PLACES = [
     lat: 38.64,
     lon: -90.29,
     href: "/field-pack/st-louis-zoo/",
-    appHref: "/field-pack/app.html#/venue/st-louis-zoo",
   },
   {
     id: "omaha-henry-doorly",
@@ -515,7 +484,6 @@ window.FP_PLACES = [
     lat: 41.22,
     lon: -95.93,
     href: "/field-pack/omaha-henry-doorly/",
-    appHref: "/field-pack/app.html#/venue/omaha-henry-doorly",
   },
   {
     id: "minnesota-zoo",
@@ -531,7 +499,6 @@ window.FP_PLACES = [
     lat: 44.77,
     lon: -93.2,
     href: "/field-pack/minnesota-zoo/",
-    appHref: "/field-pack/app.html#/venue/minnesota-zoo",
   },
   {
     id: "denver-zoo",
@@ -547,7 +514,6 @@ window.FP_PLACES = [
     lat: 39.75,
     lon: -104.95,
     href: "/field-pack/denver-zoo/",
-    appHref: "/field-pack/app.html#/venue/denver-zoo",
   },
   {
     id: "denver-museum-nature-science",
@@ -563,7 +529,6 @@ window.FP_PLACES = [
     lat: 39.75,
     lon: -104.94,
     href: "/field-pack/denver-museum-nature-science/",
-    appHref: "/field-pack/app.html#/venue/denver-museum-nature-science",
   },
   {
     id: "woodland-park-zoo",
@@ -579,7 +544,6 @@ window.FP_PLACES = [
     lat: 47.67,
     lon: -122.35,
     href: "/field-pack/woodland-park-zoo/",
-    appHref: "/field-pack/app.html#/venue/woodland-park-zoo",
   },
   {
     id: "seattle-aquarium",
@@ -595,7 +559,6 @@ window.FP_PLACES = [
     lat: 47.61,
     lon: -122.34,
     href: "/field-pack/seattle-aquarium/",
-    appHref: "/field-pack/app.html#/venue/seattle-aquarium",
   },
   {
     id: "oregon-zoo",
@@ -611,7 +574,6 @@ window.FP_PLACES = [
     lat: 45.51,
     lon: -122.72,
     href: "/field-pack/oregon-zoo/",
-    appHref: "/field-pack/app.html#/venue/oregon-zoo",
   },
   {
     id: "oregon-museum-science-industry",
@@ -627,7 +589,6 @@ window.FP_PLACES = [
     lat: 45.51,
     lon: -122.67,
     href: "/field-pack/oregon-museum-science-industry/",
-    appHref: "/field-pack/app.html#/venue/oregon-museum-science-industry",
   },
   {
     id: "phoenix-zoo",
@@ -643,7 +604,6 @@ window.FP_PLACES = [
     lat: 33.45,
     lon: -111.95,
     href: "/field-pack/phoenix-zoo/",
-    appHref: "/field-pack/app.html#/venue/phoenix-zoo",
   },
   {
     id: "arizona-science-center",
@@ -659,7 +619,6 @@ window.FP_PLACES = [
     lat: 33.45,
     lon: -112.07,
     href: "/field-pack/arizona-science-center/",
-    appHref: "/field-pack/app.html#/venue/arizona-science-center",
   },
   {
     id: "san-antonio-zoo",
@@ -675,7 +634,6 @@ window.FP_PLACES = [
     lat: 29.46,
     lon: -98.47,
     href: "/field-pack/san-antonio-zoo/",
-    appHref: "/field-pack/app.html#/venue/san-antonio-zoo",
   },
   {
     id: "dallas-world-aquarium",
@@ -691,7 +649,6 @@ window.FP_PLACES = [
     lat: 32.78,
     lon: -96.81,
     href: "/field-pack/dallas-world-aquarium/",
-    appHref: "/field-pack/app.html#/venue/dallas-world-aquarium",
   },
   {
     id: "perot-museum",
@@ -707,7 +664,6 @@ window.FP_PLACES = [
     lat: 32.79,
     lon: -96.81,
     href: "/field-pack/perot-museum/",
-    appHref: "/field-pack/app.html#/venue/perot-museum",
   },
   {
     id: "cincinnati-zoo",
@@ -723,7 +679,6 @@ window.FP_PLACES = [
     lat: 39.14,
     lon: -84.51,
     href: "/field-pack/cincinnati-zoo/",
-    appHref: "/field-pack/app.html#/venue/cincinnati-zoo",
   },
   {
     id: "columbus-zoo",
@@ -739,7 +694,6 @@ window.FP_PLACES = [
     lat: 40.16,
     lon: -83.12,
     href: "/field-pack/columbus-zoo/",
-    appHref: "/field-pack/app.html#/venue/columbus-zoo",
   },
   {
     id: "cleveland-metroparks-zoo",
@@ -755,7 +709,6 @@ window.FP_PLACES = [
     lat: 41.45,
     lon: -81.71,
     href: "/field-pack/cleveland-metroparks-zoo/",
-    appHref: "/field-pack/app.html#/venue/cleveland-metroparks-zoo",
   },
   {
     id: "detroit-zoo",
@@ -771,7 +724,6 @@ window.FP_PLACES = [
     lat: 42.48,
     lon: -83.16,
     href: "/field-pack/detroit-zoo/",
-    appHref: "/field-pack/app.html#/venue/detroit-zoo",
   },
   {
     id: "milwaukee-zoo",
@@ -787,7 +739,6 @@ window.FP_PLACES = [
     lat: 43.03,
     lon: -88.04,
     href: "/field-pack/milwaukee-zoo/",
-    appHref: "/field-pack/app.html#/venue/milwaukee-zoo",
   },
   {
     id: "lincoln-park-zoo",
@@ -803,7 +754,6 @@ window.FP_PLACES = [
     lat: 41.92,
     lon: -87.63,
     href: "/field-pack/lincoln-park-zoo/",
-    appHref: "/field-pack/app.html#/venue/lincoln-park-zoo",
   },
   {
     id: "museum-of-science-industry-chi",
@@ -819,7 +769,6 @@ window.FP_PLACES = [
     lat: 41.79,
     lon: -87.58,
     href: "/field-pack/museum-of-science-industry-chi/",
-    appHref: "/field-pack/app.html#/venue/museum-of-science-industry-chi",
   },
   {
     id: "nashville-zoo",
@@ -835,7 +784,6 @@ window.FP_PLACES = [
     lat: 36.09,
     lon: -86.74,
     href: "/field-pack/nashville-zoo/",
-    appHref: "/field-pack/app.html#/venue/nashville-zoo",
   },
   {
     id: "memphis-zoo",
@@ -851,7 +799,6 @@ window.FP_PLACES = [
     lat: 35.15,
     lon: -89.99,
     href: "/field-pack/memphis-zoo/",
-    appHref: "/field-pack/app.html#/venue/memphis-zoo",
   },
   {
     id: "audubon-aquarium",
@@ -867,7 +814,6 @@ window.FP_PLACES = [
     lat: 29.95,
     lon: -90.06,
     href: "/field-pack/audubon-aquarium/",
-    appHref: "/field-pack/app.html#/venue/audubon-aquarium",
   },
   {
     id: "audubon-zoo",
@@ -883,7 +829,6 @@ window.FP_PLACES = [
     lat: 29.92,
     lon: -90.13,
     href: "/field-pack/audubon-zoo/",
-    appHref: "/field-pack/app.html#/venue/audubon-zoo",
   },
   {
     id: "miami-zoo",
@@ -899,7 +844,6 @@ window.FP_PLACES = [
     lat: 25.61,
     lon: -80.4,
     href: "/field-pack/miami-zoo/",
-    appHref: "/field-pack/app.html#/venue/miami-zoo",
   },
   {
     id: "frost-science",
@@ -915,7 +859,6 @@ window.FP_PLACES = [
     lat: 25.78,
     lon: -80.19,
     href: "/field-pack/frost-science/",
-    appHref: "/field-pack/app.html#/venue/frost-science",
   },
   {
     id: "tampa-zoo",
@@ -931,7 +874,6 @@ window.FP_PLACES = [
     lat: 28.01,
     lon: -82.47,
     href: "/field-pack/tampa-zoo/",
-    appHref: "/field-pack/app.html#/venue/tampa-zoo",
   },
   {
     id: "florida-aquarium",
@@ -947,7 +889,6 @@ window.FP_PLACES = [
     lat: 27.94,
     lon: -82.44,
     href: "/field-pack/florida-aquarium/",
-    appHref: "/field-pack/app.html#/venue/florida-aquarium",
   },
   {
     id: "orlando-science-center",
@@ -963,7 +904,6 @@ window.FP_PLACES = [
     lat: 28.57,
     lon: -81.37,
     href: "/field-pack/orlando-science-center/",
-    appHref: "/field-pack/app.html#/venue/orlando-science-center",
   },
   {
     id: "north-carolina-zoo",
@@ -979,7 +919,6 @@ window.FP_PLACES = [
     lat: 35.63,
     lon: -79.76,
     href: "/field-pack/north-carolina-zoo/",
-    appHref: "/field-pack/app.html#/venue/north-carolina-zoo",
   },
   {
     id: "discovery-place",
@@ -995,7 +934,6 @@ window.FP_PLACES = [
     lat: 35.23,
     lon: -80.84,
     href: "/field-pack/discovery-place/",
-    appHref: "/field-pack/app.html#/venue/discovery-place",
   },
   {
     id: "virginia-aquarium",
@@ -1011,7 +949,6 @@ window.FP_PLACES = [
     lat: 36.82,
     lon: -76.0,
     href: "/field-pack/virginia-aquarium/",
-    appHref: "/field-pack/app.html#/venue/virginia-aquarium",
   },
   {
     id: "pittsburgh-zoo",
@@ -1027,7 +964,6 @@ window.FP_PLACES = [
     lat: 40.48,
     lon: -79.92,
     href: "/field-pack/pittsburgh-zoo/",
-    appHref: "/field-pack/app.html#/venue/pittsburgh-zoo",
   },
   {
     id: "carnegie-natural-history",
@@ -1043,7 +979,6 @@ window.FP_PLACES = [
     lat: 40.44,
     lon: -79.95,
     href: "/field-pack/carnegie-natural-history/",
-    appHref: "/field-pack/app.html#/venue/carnegie-natural-history",
   },
   {
     id: "kansas-city-zoo",
@@ -1059,7 +994,6 @@ window.FP_PLACES = [
     lat: 39.01,
     lon: -94.53,
     href: "/field-pack/kansas-city-zoo/",
-    appHref: "/field-pack/app.html#/venue/kansas-city-zoo",
   },
   {
     id: "union-station-kc-science",
@@ -1075,7 +1009,6 @@ window.FP_PLACES = [
     lat: 39.09,
     lon: -94.59,
     href: "/field-pack/union-station-kc-science/",
-    appHref: "/field-pack/app.html#/venue/union-station-kc-science",
   },
   {
     id: "hogle-zoo",
@@ -1091,7 +1024,6 @@ window.FP_PLACES = [
     lat: 40.75,
     lon: -111.81,
     href: "/field-pack/hogle-zoo/",
-    appHref: "/field-pack/app.html#/venue/hogle-zoo",
   },
   {
     id: "albuquerque-biopark",
@@ -1107,7 +1039,6 @@ window.FP_PLACES = [
     lat: 35.08,
     lon: -106.67,
     href: "/field-pack/albuquerque-biopark/",
-    appHref: "/field-pack/app.html#/venue/albuquerque-biopark",
   },
   {
     id: "honolulu-zoo",
@@ -1123,7 +1054,6 @@ window.FP_PLACES = [
     lat: 21.27,
     lon: -157.82,
     href: "/field-pack/honolulu-zoo/",
-    appHref: "/field-pack/app.html#/venue/honolulu-zoo",
   },
   {
     id: "waikiki-aquarium",
@@ -1139,7 +1069,6 @@ window.FP_PLACES = [
     lat: 21.27,
     lon: -157.82,
     href: "/field-pack/waikiki-aquarium/",
-    appHref: "/field-pack/app.html#/venue/waikiki-aquarium",
   },
   {
     id: "point-defiance-zoo",
@@ -1155,7 +1084,6 @@ window.FP_PLACES = [
     lat: 47.3,
     lon: -122.52,
     href: "/field-pack/point-defiance-zoo/",
-    appHref: "/field-pack/app.html#/venue/point-defiance-zoo",
   },
   {
     id: "nashville-adventure-science",
@@ -1171,7 +1099,6 @@ window.FP_PLACES = [
     lat: 36.15,
     lon: -86.78,
     href: "/field-pack/nashville-adventure-science/",
-    appHref: "/field-pack/app.html#/venue/nashville-adventure-science",
   },
   {
     id: "dallas-arboretum",
@@ -1187,7 +1114,6 @@ window.FP_PLACES = [
     lat: 32.82,
     lon: -96.72,
     href: "/field-pack/dallas-arboretum/",
-    appHref: "/field-pack/app.html#/venue/dallas-arboretum",
   },
 
   // —— International (world map only; not shown on US map) ——
@@ -1207,7 +1133,6 @@ window.FP_PLACES = [
     lat: 51.5353,
     lon: -0.1534,
     href: "/field-pack/london-zoo/",
-    appHref: "/field-pack/app.html#/venue/london-zoo",
   },
   {
     id: "nhm-london",
@@ -1225,7 +1150,6 @@ window.FP_PLACES = [
     lat: 51.4967,
     lon: -0.1764,
     href: "/field-pack/nhm-london/",
-    appHref: "/field-pack/app.html#/venue/nhm-london",
   },
   {
     id: "edinburgh-zoo",
@@ -1243,7 +1167,6 @@ window.FP_PLACES = [
     lat: 55.9426,
     lon: -3.2692,
     href: "/field-pack/edinburgh-zoo/",
-    appHref: "/field-pack/app.html#/venue/edinburgh-zoo",
   },
   {
     id: "dublin-zoo",
@@ -1261,7 +1184,6 @@ window.FP_PLACES = [
     lat: 53.3562,
     lon: -6.3053,
     href: "/field-pack/dublin-zoo/",
-    appHref: "/field-pack/app.html#/venue/dublin-zoo",
   },
   {
     id: "paris-zoo",
@@ -1279,7 +1201,6 @@ window.FP_PLACES = [
     lat: 48.8323,
     lon: 2.4142,
     href: "/field-pack/paris-zoo/",
-    appHref: "/field-pack/app.html#/venue/paris-zoo",
   },
   {
     id: "berlin-zoo",
@@ -1297,7 +1218,6 @@ window.FP_PLACES = [
     lat: 52.5083,
     lon: 13.3378,
     href: "/field-pack/berlin-zoo/",
-    appHref: "/field-pack/app.html#/venue/berlin-zoo",
   },
   {
     id: "munich-zoo",
@@ -1315,7 +1235,6 @@ window.FP_PLACES = [
     lat: 48.097,
     lon: 11.5586,
     href: "/field-pack/munich-zoo/",
-    appHref: "/field-pack/app.html#/venue/munich-zoo",
   },
   {
     id: "artis-zoo",
@@ -1333,7 +1252,6 @@ window.FP_PLACES = [
     lat: 52.3661,
     lon: 4.9165,
     href: "/field-pack/artis-zoo/",
-    appHref: "/field-pack/app.html#/venue/artis-zoo",
   },
   {
     id: "antwerp-zoo",
@@ -1351,7 +1269,6 @@ window.FP_PLACES = [
     lat: 51.2162,
     lon: 4.4211,
     href: "/field-pack/antwerp-zoo/",
-    appHref: "/field-pack/app.html#/venue/antwerp-zoo",
   },
   {
     id: "vienna-zoo",
@@ -1369,7 +1286,6 @@ window.FP_PLACES = [
     lat: 48.182,
     lon: 16.3038,
     href: "/field-pack/vienna-zoo/",
-    appHref: "/field-pack/app.html#/venue/vienna-zoo",
   },
   {
     id: "zurich-zoo",
@@ -1387,7 +1303,6 @@ window.FP_PLACES = [
     lat: 47.385,
     lon: 8.5744,
     href: "/field-pack/zurich-zoo/",
-    appHref: "/field-pack/app.html#/venue/zurich-zoo",
   },
   {
     id: "copenhagen-zoo",
@@ -1405,7 +1320,6 @@ window.FP_PLACES = [
     lat: 55.6725,
     lon: 12.5214,
     href: "/field-pack/copenhagen-zoo/",
-    appHref: "/field-pack/app.html#/venue/copenhagen-zoo",
   },
   {
     id: "stockholm-skansen",
@@ -1423,7 +1337,6 @@ window.FP_PLACES = [
     lat: 59.327,
     lon: 18.103,
     href: "/field-pack/stockholm-skansen/",
-    appHref: "/field-pack/app.html#/venue/stockholm-skansen",
   },
   {
     id: "oslo-zoo",
@@ -1441,7 +1354,6 @@ window.FP_PLACES = [
     lat: 58.1847,
     lon: 8.1412,
     href: "/field-pack/oslo-zoo/",
-    appHref: "/field-pack/app.html#/venue/oslo-zoo",
   },
   {
     id: "helsinki-zoo",
@@ -1459,7 +1371,6 @@ window.FP_PLACES = [
     lat: 60.175,
     lon: 24.9833,
     href: "/field-pack/helsinki-zoo/",
-    appHref: "/field-pack/app.html#/venue/helsinki-zoo",
   },
   {
     id: "prague-zoo",
@@ -1477,7 +1388,6 @@ window.FP_PLACES = [
     lat: 50.117,
     lon: 14.406,
     href: "/field-pack/prague-zoo/",
-    appHref: "/field-pack/app.html#/venue/prague-zoo",
   },
   {
     id: "budapest-zoo",
@@ -1495,7 +1405,6 @@ window.FP_PLACES = [
     lat: 47.5186,
     lon: 19.0775,
     href: "/field-pack/budapest-zoo/",
-    appHref: "/field-pack/app.html#/venue/budapest-zoo",
   },
   {
     id: "warsaw-zoo",
@@ -1513,7 +1422,6 @@ window.FP_PLACES = [
     lat: 52.2545,
     lon: 21.022,
     href: "/field-pack/warsaw-zoo/",
-    appHref: "/field-pack/app.html#/venue/warsaw-zoo",
   },
   {
     id: "madrid-zoo",
@@ -1531,7 +1439,6 @@ window.FP_PLACES = [
     lat: 40.409,
     lon: -3.7615,
     href: "/field-pack/madrid-zoo/",
-    appHref: "/field-pack/app.html#/venue/madrid-zoo",
   },
   {
     id: "barcelona-zoo",
@@ -1549,7 +1456,6 @@ window.FP_PLACES = [
     lat: 41.3879,
     lon: 2.1895,
     href: "/field-pack/barcelona-zoo/",
-    appHref: "/field-pack/app.html#/venue/barcelona-zoo",
   },
   {
     id: "lisbon-zoo",
@@ -1567,7 +1473,6 @@ window.FP_PLACES = [
     lat: 38.744,
     lon: -9.17,
     href: "/field-pack/lisbon-zoo/",
-    appHref: "/field-pack/app.html#/venue/lisbon-zoo",
   },
   {
     id: "rome-bioparco",
@@ -1585,7 +1490,6 @@ window.FP_PLACES = [
     lat: 41.9175,
     lon: 12.488,
     href: "/field-pack/rome-bioparco/",
-    appHref: "/field-pack/app.html#/venue/rome-bioparco",
   },
   {
     id: "milan-aquarium",
@@ -1603,7 +1507,6 @@ window.FP_PLACES = [
     lat: 45.473,
     lon: 9.174,
     href: "/field-pack/milan-aquarium/",
-    appHref: "/field-pack/app.html#/venue/milan-aquarium",
   },
   {
     id: "athens-attica-zoo",
@@ -1621,7 +1524,6 @@ window.FP_PLACES = [
     lat: 37.978,
     lon: 23.908,
     href: "/field-pack/athens-attica-zoo/",
-    appHref: "/field-pack/app.html#/venue/athens-attica-zoo",
   },
   {
     id: "istanbul-aquarium",
@@ -1639,7 +1541,6 @@ window.FP_PLACES = [
     lat: 40.966,
     lon: 28.797,
     href: "/field-pack/istanbul-aquarium/",
-    appHref: "/field-pack/app.html#/venue/istanbul-aquarium",
   },
   {
     id: "moscow-zoo",
@@ -1657,7 +1558,6 @@ window.FP_PLACES = [
     lat: 55.7614,
     lon: 37.5783,
     href: "/field-pack/moscow-zoo/",
-    appHref: "/field-pack/app.html#/venue/moscow-zoo",
   },
   {
     id: "dubai-aquarium",
@@ -1675,7 +1575,6 @@ window.FP_PLACES = [
     lat: 25.1972,
     lon: 55.2744,
     href: "/field-pack/dubai-aquarium/",
-    appHref: "/field-pack/app.html#/venue/dubai-aquarium",
   },
   {
     id: "johannesburg-zoo",
@@ -1693,7 +1592,6 @@ window.FP_PLACES = [
     lat: -26.1664,
     lon: 28.0377,
     href: "/field-pack/johannesburg-zoo/",
-    appHref: "/field-pack/app.html#/venue/johannesburg-zoo",
   },
   {
     id: "two-oceans-aquarium",
@@ -1711,7 +1609,6 @@ window.FP_PLACES = [
     lat: -33.9081,
     lon: 18.4176,
     href: "/field-pack/two-oceans-aquarium/",
-    appHref: "/field-pack/app.html#/venue/two-oceans-aquarium",
   },
   {
     id: "nairobi-safari-walk",
@@ -1729,7 +1626,6 @@ window.FP_PLACES = [
     lat: -1.3733,
     lon: 36.858,
     href: "/field-pack/nairobi-safari-walk/",
-    appHref: "/field-pack/app.html#/venue/nairobi-safari-walk",
   },
   {
     id: "cairo-zoo",
@@ -1747,7 +1643,6 @@ window.FP_PLACES = [
     lat: 30.024,
     lon: 31.214,
     href: "/field-pack/cairo-zoo/",
-    appHref: "/field-pack/app.html#/venue/cairo-zoo",
   },
   {
     id: "toronto-zoo",
@@ -1765,7 +1660,6 @@ window.FP_PLACES = [
     lat: 43.8177,
     lon: -79.1859,
     href: "/field-pack/toronto-zoo/",
-    appHref: "/field-pack/app.html#/venue/toronto-zoo",
   },
   {
     id: "vancouver-aquarium",
@@ -1783,7 +1677,6 @@ window.FP_PLACES = [
     lat: 49.3008,
     lon: -123.1308,
     href: "/field-pack/vancouver-aquarium/",
-    appHref: "/field-pack/app.html#/venue/vancouver-aquarium",
   },
   {
     id: "montreal-biodome",
@@ -1801,7 +1694,6 @@ window.FP_PLACES = [
     lat: 45.5597,
     lon: -73.5497,
     href: "/field-pack/montreal-biodome/",
-    appHref: "/field-pack/app.html#/venue/montreal-biodome",
   },
   {
     id: "calgary-zoo",
@@ -1819,7 +1711,6 @@ window.FP_PLACES = [
     lat: 51.0455,
     lon: -114.024,
     href: "/field-pack/calgary-zoo/",
-    appHref: "/field-pack/app.html#/venue/calgary-zoo",
   },
   {
     id: "chapultepec-zoo",
@@ -1837,7 +1728,6 @@ window.FP_PLACES = [
     lat: 19.4246,
     lon: -99.1915,
     href: "/field-pack/chapultepec-zoo/",
-    appHref: "/field-pack/app.html#/venue/chapultepec-zoo",
   },
   {
     id: "ecoparque-ba",
@@ -1855,7 +1745,6 @@ window.FP_PLACES = [
     lat: -34.5805,
     lon: -58.4168,
     href: "/field-pack/ecoparque-ba/",
-    appHref: "/field-pack/app.html#/venue/ecoparque-ba",
   },
   {
     id: "rio-zoo",
@@ -1873,7 +1762,6 @@ window.FP_PLACES = [
     lat: -22.9058,
     lon: -43.228,
     href: "/field-pack/rio-zoo/",
-    appHref: "/field-pack/app.html#/venue/rio-zoo",
   },
   {
     id: "sao-paulo-zoo",
@@ -1891,7 +1779,6 @@ window.FP_PLACES = [
     lat: -23.65,
     lon: -46.62,
     href: "/field-pack/sao-paulo-zoo/",
-    appHref: "/field-pack/app.html#/venue/sao-paulo-zoo",
   },
   {
     id: "santiago-zoo",
@@ -1909,7 +1796,6 @@ window.FP_PLACES = [
     lat: -33.425,
     lon: -70.635,
     href: "/field-pack/santiago-zoo/",
-    appHref: "/field-pack/app.html#/venue/santiago-zoo",
   },
   {
     id: "lima-leyendas",
@@ -1927,7 +1813,6 @@ window.FP_PLACES = [
     lat: -12.07,
     lon: -77.087,
     href: "/field-pack/lima-leyendas/",
-    appHref: "/field-pack/app.html#/venue/lima-leyendas",
   },
   {
     id: "bogota-zoo",
@@ -1945,7 +1830,6 @@ window.FP_PLACES = [
     lat: 4.95,
     lon: -73.96,
     href: "/field-pack/bogota-zoo/",
-    appHref: "/field-pack/app.html#/venue/bogota-zoo",
   },
   {
     id: "singapore-zoo",
@@ -1963,7 +1847,6 @@ window.FP_PLACES = [
     lat: 1.4043,
     lon: 103.793,
     href: "/field-pack/singapore-zoo/",
-    appHref: "/field-pack/app.html#/venue/singapore-zoo",
   },
   {
     id: "singapore-night-safari",
@@ -1981,7 +1864,6 @@ window.FP_PLACES = [
     lat: 1.4021,
     lon: 103.7881,
     href: "/field-pack/singapore-night-safari/",
-    appHref: "/field-pack/app.html#/venue/singapore-night-safari",
   },
   {
     id: "ueno-zoo",
@@ -1999,7 +1881,6 @@ window.FP_PLACES = [
     lat: 35.7167,
     lon: 139.7713,
     href: "/field-pack/ueno-zoo/",
-    appHref: "/field-pack/app.html#/venue/ueno-zoo",
   },
   {
     id: "osaka-aquarium",
@@ -2017,7 +1898,6 @@ window.FP_PLACES = [
     lat: 34.6545,
     lon: 135.4289,
     href: "/field-pack/osaka-aquarium/",
-    appHref: "/field-pack/app.html#/venue/osaka-aquarium",
   },
   {
     id: "seoul-zoo",
@@ -2035,7 +1915,6 @@ window.FP_PLACES = [
     lat: 37.4275,
     lon: 127.017,
     href: "/field-pack/seoul-zoo/",
-    appHref: "/field-pack/app.html#/venue/seoul-zoo",
   },
   {
     id: "lotte-aquarium-seoul",
@@ -2053,7 +1932,6 @@ window.FP_PLACES = [
     lat: 37.5125,
     lon: 127.1025,
     href: "/field-pack/lotte-aquarium-seoul/",
-    appHref: "/field-pack/app.html#/venue/lotte-aquarium-seoul",
   },
   {
     id: "hong-kong-ocean-park",
@@ -2071,7 +1949,6 @@ window.FP_PLACES = [
     lat: 22.246,
     lon: 114.175,
     href: "/field-pack/hong-kong-ocean-park/",
-    appHref: "/field-pack/app.html#/venue/hong-kong-ocean-park",
   },
   {
     id: "taipei-zoo",
@@ -2089,7 +1966,6 @@ window.FP_PLACES = [
     lat: 24.9985,
     lon: 121.581,
     href: "/field-pack/taipei-zoo/",
-    appHref: "/field-pack/app.html#/venue/taipei-zoo",
   },
   {
     id: "beijing-zoo",
@@ -2107,7 +1983,6 @@ window.FP_PLACES = [
     lat: 39.9388,
     lon: 116.336,
     href: "/field-pack/beijing-zoo/",
-    appHref: "/field-pack/app.html#/venue/beijing-zoo",
   },
   {
     id: "shanghai-ocean-aquarium",
@@ -2125,7 +2000,6 @@ window.FP_PLACES = [
     lat: 31.241,
     lon: 121.496,
     href: "/field-pack/shanghai-ocean-aquarium/",
-    appHref: "/field-pack/app.html#/venue/shanghai-ocean-aquarium",
   },
   {
     id: "kuala-lumpur-zoo",
@@ -2143,7 +2017,6 @@ window.FP_PLACES = [
     lat: 3.2095,
     lon: 101.757,
     href: "/field-pack/kuala-lumpur-zoo/",
-    appHref: "/field-pack/app.html#/venue/kuala-lumpur-zoo",
   },
   {
     id: "manila-zoo",
@@ -2161,7 +2034,6 @@ window.FP_PLACES = [
     lat: 14.565,
     lon: 120.988,
     href: "/field-pack/manila-zoo/",
-    appHref: "/field-pack/app.html#/venue/manila-zoo",
   },
   {
     id: "jakarta-ragunan",
@@ -2179,7 +2051,6 @@ window.FP_PLACES = [
     lat: -6.311,
     lon: 106.82,
     href: "/field-pack/jakarta-ragunan/",
-    appHref: "/field-pack/app.html#/venue/jakarta-ragunan",
   },
   {
     id: "delhi-zoo",
@@ -2197,7 +2068,6 @@ window.FP_PLACES = [
     lat: 28.603,
     lon: 77.246,
     href: "/field-pack/delhi-zoo/",
-    appHref: "/field-pack/app.html#/venue/delhi-zoo",
   },
   {
     id: "mumbai-byculla-zoo",
@@ -2215,7 +2085,6 @@ window.FP_PLACES = [
     lat: 18.978,
     lon: 72.835,
     href: "/field-pack/mumbai-byculla-zoo/",
-    appHref: "/field-pack/app.html#/venue/mumbai-byculla-zoo",
   },
   {
     id: "bangalore-bannerghatta",
@@ -2233,7 +2102,6 @@ window.FP_PLACES = [
     lat: 12.8,
     lon: 77.577,
     href: "/field-pack/bangalore-bannerghatta/",
-    appHref: "/field-pack/app.html#/venue/bangalore-bannerghatta",
   },
   {
     id: "taronga-zoo",
@@ -2251,7 +2119,6 @@ window.FP_PLACES = [
     lat: -33.8435,
     lon: 151.2413,
     href: "/field-pack/taronga-zoo/",
-    appHref: "/field-pack/app.html#/venue/taronga-zoo",
   },
   {
     id: "melbourne-zoo",
@@ -2269,7 +2136,6 @@ window.FP_PLACES = [
     lat: -37.7841,
     lon: 144.9515,
     href: "/field-pack/melbourne-zoo/",
-    appHref: "/field-pack/app.html#/venue/melbourne-zoo",
   },
   {
     id: "perth-zoo",
@@ -2287,7 +2153,6 @@ window.FP_PLACES = [
     lat: -31.974,
     lon: 115.854,
     href: "/field-pack/perth-zoo/",
-    appHref: "/field-pack/app.html#/venue/perth-zoo",
   },
   {
     id: "adelaide-zoo",
@@ -2305,7 +2170,6 @@ window.FP_PLACES = [
     lat: -34.914,
     lon: 138.606,
     href: "/field-pack/adelaide-zoo/",
-    appHref: "/field-pack/app.html#/venue/adelaide-zoo",
   },
   {
     id: "auckland-zoo",
@@ -2323,7 +2187,6 @@ window.FP_PLACES = [
     lat: -36.864,
     lon: 174.719,
     href: "/field-pack/auckland-zoo/",
-    appHref: "/field-pack/app.html#/venue/auckland-zoo",
   },
   {
     id: "wellington-zoo",
@@ -2341,7 +2204,6 @@ window.FP_PLACES = [
     lat: -41.319,
     lon: 174.784,
     href: "/field-pack/wellington-zoo/",
-    appHref: "/field-pack/app.html#/venue/wellington-zoo",
   },
   {
     id: "al-ain-zoo",
@@ -2359,7 +2221,6 @@ window.FP_PLACES = [
     lat: 24.1758,
     lon: 55.7394,
     href: "/field-pack/al-ain-zoo/",
-    appHref: "/field-pack/app.html#/venue/al-ain-zoo",
   },
   {
     id: "bangkok-safari-world",
@@ -2377,7 +2238,6 @@ window.FP_PLACES = [
     lat: 13.865,
     lon: 100.704,
     href: "/field-pack/bangkok-safari-world/",
-    appHref: "/field-pack/app.html#/venue/bangkok-safari-world",
   },
   {
     id: "yellowstone",
@@ -2393,7 +2253,6 @@ window.FP_PLACES = [
     lat: 44.4605,
     lon: -110.8281,
     href: "/field-pack/yellowstone/",
-    appHref: "/field-pack/app.html#/venue/yellowstone",
   },
   {
     id: "grand-canyon",
@@ -2409,7 +2268,6 @@ window.FP_PLACES = [
     lat: 36.0544,
     lon: -112.1401,
     href: "/field-pack/grand-canyon/",
-    appHref: "/field-pack/app.html#/venue/grand-canyon",
   },
   {
     id: "yosemite",
@@ -2425,7 +2283,6 @@ window.FP_PLACES = [
     lat: 37.7459,
     lon: -119.5936,
     href: "/field-pack/yosemite/",
-    appHref: "/field-pack/app.html#/venue/yosemite",
   },
   {
     id: "zion",
@@ -2441,7 +2298,6 @@ window.FP_PLACES = [
     lat: 37.2982,
     lon: -113.0263,
     href: "/field-pack/zion/",
-    appHref: "/field-pack/app.html#/venue/zion",
   },
   {
     id: "rocky-mountain",
@@ -2457,7 +2313,6 @@ window.FP_PLACES = [
     lat: 40.3428,
     lon: -105.6836,
     href: "/field-pack/rocky-mountain/",
-    appHref: "/field-pack/app.html#/venue/rocky-mountain",
   },
   {
     id: "great-smoky-mountains",
@@ -2473,7 +2328,6 @@ window.FP_PLACES = [
     lat: 35.6532,
     lon: -83.507,
     href: "/field-pack/great-smoky-mountains/",
-    appHref: "/field-pack/app.html#/venue/great-smoky-mountains",
   },
   {
     id: "acadia",
@@ -2489,7 +2343,6 @@ window.FP_PLACES = [
     lat: 44.3386,
     lon: -68.2733,
     href: "/field-pack/acadia/",
-    appHref: "/field-pack/app.html#/venue/acadia",
   },
   {
     id: "arches",
@@ -2505,7 +2358,6 @@ window.FP_PLACES = [
     lat: 38.7331,
     lon: -109.5925,
     href: "/field-pack/arches/",
-    appHref: "/field-pack/app.html#/venue/arches",
   },
   {
     id: "bryce-canyon",
@@ -2521,7 +2373,6 @@ window.FP_PLACES = [
     lat: 37.593,
     lon: -112.1871,
     href: "/field-pack/bryce-canyon/",
-    appHref: "/field-pack/app.html#/venue/bryce-canyon",
   },
   {
     id: "everglades",
@@ -2537,7 +2388,6 @@ window.FP_PLACES = [
     lat: 25.2866,
     lon: -80.8987,
     href: "/field-pack/everglades/",
-    appHref: "/field-pack/app.html#/venue/everglades",
   },
   {
     id: "sequoia",
@@ -2553,7 +2403,6 @@ window.FP_PLACES = [
     lat: 36.4864,
     lon: -118.5658,
     href: "/field-pack/sequoia/",
-    appHref: "/field-pack/app.html#/venue/sequoia",
   },
   {
     id: "cuyahoga-valley",
@@ -2569,7 +2418,6 @@ window.FP_PLACES = [
     lat: 41.2808,
     lon: -81.5678,
     href: "/field-pack/cuyahoga-valley/",
-    appHref: "/field-pack/app.html#/venue/cuyahoga-valley",
   },
   {
     id: "joshua-tree",
@@ -2585,7 +2433,6 @@ window.FP_PLACES = [
     lat: 34.1347,
     lon: -116.3131,
     href: "/field-pack/joshua-tree/",
-    appHref: "/field-pack/app.html#/venue/joshua-tree",
   },
   {
     id: "capitol-reef",
@@ -2601,7 +2448,6 @@ window.FP_PLACES = [
     lat: 38.367,
     lon: -111.2615,
     href: "/field-pack/capitol-reef/",
-    appHref: "/field-pack/app.html#/venue/capitol-reef",
   },
   {
     id: "saguaro",
@@ -2617,7 +2463,6 @@ window.FP_PLACES = [
     lat: 32.2967,
     lon: -111.1666,
     href: "/field-pack/saguaro/",
-    appHref: "/field-pack/app.html#/venue/saguaro",
   },
   {
     id: "olympic",
@@ -2633,7 +2478,6 @@ window.FP_PLACES = [
     lat: 48.0414,
     lon: -123.4186,
     href: "/field-pack/olympic/",
-    appHref: "/field-pack/app.html#/venue/olympic",
   },
   {
     id: "redwood",
@@ -2649,7 +2493,6 @@ window.FP_PLACES = [
     lat: 41.2132,
     lon: -124.0046,
     href: "/field-pack/redwood/",
-    appHref: "/field-pack/app.html#/venue/redwood",
   },
   {
     id: "death-valley",
@@ -2665,7 +2508,6 @@ window.FP_PLACES = [
     lat: 36.5054,
     lon: -117.0794,
     href: "/field-pack/death-valley/",
-    appHref: "/field-pack/app.html#/venue/death-valley",
   },
   {
     id: "hawaii-volcanoes",
@@ -2681,7 +2523,6 @@ window.FP_PLACES = [
     lat: 19.4194,
     lon: -155.2885,
     href: "/field-pack/hawaii-volcanoes/",
-    appHref: "/field-pack/app.html#/venue/hawaii-volcanoes",
   },
   {
     id: "glacier",
@@ -2697,7 +2538,6 @@ window.FP_PLACES = [
     lat: 48.7596,
     lon: -113.787,
     href: "/field-pack/glacier/",
-    appHref: "/field-pack/app.html#/venue/glacier",
   },
   {
     id: "grand-teton",
@@ -2713,7 +2553,6 @@ window.FP_PLACES = [
     lat: 43.7904,
     lon: -110.6818,
     href: "/field-pack/grand-teton/",
-    appHref: "/field-pack/app.html#/venue/grand-teton",
   },
   {
     id: "badlands",
@@ -2729,7 +2568,6 @@ window.FP_PLACES = [
     lat: 43.8554,
     lon: -102.3397,
     href: "/field-pack/badlands/",
-    appHref: "/field-pack/app.html#/venue/badlands",
   },
   {
     id: "theodore-roosevelt",
@@ -2745,7 +2583,6 @@ window.FP_PLACES = [
     lat: 46.979,
     lon: -103.5387,
     href: "/field-pack/theodore-roosevelt/",
-    appHref: "/field-pack/app.html#/venue/theodore-roosevelt",
   },
   {
     id: "shenandoah",
@@ -2761,7 +2598,6 @@ window.FP_PLACES = [
     lat: 38.2928,
     lon: -78.6796,
     href: "/field-pack/shenandoah/",
-    appHref: "/field-pack/app.html#/venue/shenandoah",
   },
   {
     id: "mammoth-cave",
@@ -2777,7 +2613,6 @@ window.FP_PLACES = [
     lat: 37.1862,
     lon: -86.1,
     href: "/field-pack/mammoth-cave/",
-    appHref: "/field-pack/app.html#/venue/mammoth-cave",
   },
   {
     id: "indiana-dunes",
@@ -2793,7 +2628,6 @@ window.FP_PLACES = [
     lat: 41.6533,
     lon: -87.0524,
     href: "/field-pack/indiana-dunes/",
-    appHref: "/field-pack/app.html#/venue/indiana-dunes",
   },
   {
     id: "hot-springs",
@@ -2809,7 +2643,6 @@ window.FP_PLACES = [
     lat: 34.5217,
     lon: -93.0422,
     href: "/field-pack/hot-springs/",
-    appHref: "/field-pack/app.html#/venue/hot-springs",
   },
   {
     id: "congaree",
@@ -2825,7 +2658,6 @@ window.FP_PLACES = [
     lat: 33.794,
     lon: -80.7821,
     href: "/field-pack/congaree/",
-    appHref: "/field-pack/app.html#/venue/congaree",
   },
   {
     id: "gateway-arch",
@@ -2841,7 +2673,6 @@ window.FP_PLACES = [
     lat: 38.6247,
     lon: -90.1848,
     href: "/field-pack/gateway-arch/",
-    appHref: "/field-pack/app.html#/venue/gateway-arch",
   },
   {
     id: "petrified-forest",
@@ -2857,7 +2688,6 @@ window.FP_PLACES = [
     lat: 34.909,
     lon: -109.8068,
     href: "/field-pack/petrified-forest/",
-    appHref: "/field-pack/app.html#/venue/petrified-forest",
   },
   {
     id: "big-bend",
@@ -2873,7 +2703,6 @@ window.FP_PLACES = [
     lat: 29.1275,
     lon: -103.2425,
     href: "/field-pack/big-bend/",
-    appHref: "/field-pack/app.html#/venue/big-bend",
   },
   {
     id: "biscayne",
@@ -2889,7 +2718,6 @@ window.FP_PLACES = [
     lat: 25.4824,
     lon: -80.2083,
     href: "/field-pack/biscayne/",
-    appHref: "/field-pack/app.html#/venue/biscayne",
   },
   {
     id: "black-canyon-gunnison",
@@ -2905,7 +2733,6 @@ window.FP_PLACES = [
     lat: 38.5754,
     lon: -107.7416,
     href: "/field-pack/black-canyon-gunnison/",
-    appHref: "/field-pack/app.html#/venue/black-canyon-gunnison",
   },
   {
     id: "canyonlands",
@@ -2921,7 +2748,6 @@ window.FP_PLACES = [
     lat: 38.3269,
     lon: -109.8783,
     href: "/field-pack/canyonlands/",
-    appHref: "/field-pack/app.html#/venue/canyonlands",
   },
   {
     id: "carlsbad-caverns",
@@ -2937,7 +2763,6 @@ window.FP_PLACES = [
     lat: 32.1479,
     lon: -104.5567,
     href: "/field-pack/carlsbad-caverns/",
-    appHref: "/field-pack/app.html#/venue/carlsbad-caverns",
   },
   {
     id: "channel-islands",
@@ -2953,7 +2778,6 @@ window.FP_PLACES = [
     lat: 34.0069,
     lon: -119.7785,
     href: "/field-pack/channel-islands/",
-    appHref: "/field-pack/app.html#/venue/channel-islands",
   },
   {
     id: "crater-lake",
@@ -2969,7 +2793,6 @@ window.FP_PLACES = [
     lat: 42.8684,
     lon: -122.1685,
     href: "/field-pack/crater-lake/",
-    appHref: "/field-pack/app.html#/venue/crater-lake",
   },
   {
     id: "denali",
@@ -2985,7 +2808,6 @@ window.FP_PLACES = [
     lat: 63.1148,
     lon: -151.1926,
     href: "/field-pack/denali/",
-    appHref: "/field-pack/app.html#/venue/denali",
   },
   {
     id: "dry-tortugas",
@@ -3001,7 +2823,6 @@ window.FP_PLACES = [
     lat: 24.6285,
     lon: -82.8732,
     href: "/field-pack/dry-tortugas/",
-    appHref: "/field-pack/app.html#/venue/dry-tortugas",
   },
   {
     id: "great-basin",
@@ -3017,7 +2838,6 @@ window.FP_PLACES = [
     lat: 38.9833,
     lon: -114.3,
     href: "/field-pack/great-basin/",
-    appHref: "/field-pack/app.html#/venue/great-basin",
   },
   {
     id: "great-sand-dunes",
@@ -3033,7 +2853,6 @@ window.FP_PLACES = [
     lat: 37.7916,
     lon: -105.5943,
     href: "/field-pack/great-sand-dunes/",
-    appHref: "/field-pack/app.html#/venue/great-sand-dunes",
   },
   {
     id: "guadalupe-mountains",
@@ -3049,7 +2868,6 @@ window.FP_PLACES = [
     lat: 31.9231,
     lon: -104.8645,
     href: "/field-pack/guadalupe-mountains/",
-    appHref: "/field-pack/app.html#/venue/guadalupe-mountains",
   },
   {
     id: "haleakala",
@@ -3065,7 +2883,6 @@ window.FP_PLACES = [
     lat: 20.7204,
     lon: -156.1552,
     href: "/field-pack/haleakala/",
-    appHref: "/field-pack/app.html#/venue/haleakala",
   },
   {
     id: "kings-canyon",
@@ -3081,7 +2898,6 @@ window.FP_PLACES = [
     lat: 36.8879,
     lon: -118.5551,
     href: "/field-pack/kings-canyon/",
-    appHref: "/field-pack/app.html#/venue/kings-canyon",
   },
   {
     id: "lassen-volcanic",
@@ -3097,7 +2913,6 @@ window.FP_PLACES = [
     lat: 40.4977,
     lon: -121.4207,
     href: "/field-pack/lassen-volcanic/",
-    appHref: "/field-pack/app.html#/venue/lassen-volcanic",
   },
   {
     id: "mesa-verde",
@@ -3113,7 +2928,6 @@ window.FP_PLACES = [
     lat: 37.2309,
     lon: -108.4618,
     href: "/field-pack/mesa-verde/",
-    appHref: "/field-pack/app.html#/venue/mesa-verde",
   },
   {
     id: "mount-rainier",
@@ -3129,7 +2943,6 @@ window.FP_PLACES = [
     lat: 46.88,
     lon: -121.7269,
     href: "/field-pack/mount-rainier/",
-    appHref: "/field-pack/app.html#/venue/mount-rainier",
   },
   {
     id: "new-river-gorge",
@@ -3145,7 +2958,6 @@ window.FP_PLACES = [
     lat: 37.9608,
     lon: -81.0787,
     href: "/field-pack/new-river-gorge/",
-    appHref: "/field-pack/app.html#/venue/new-river-gorge",
   },
   {
     id: "north-cascades",
@@ -3161,7 +2973,6 @@ window.FP_PLACES = [
     lat: 48.7718,
     lon: -121.2985,
     href: "/field-pack/north-cascades/",
-    appHref: "/field-pack/app.html#/venue/north-cascades",
   },
   {
     id: "pinnacles",
@@ -3177,7 +2988,6 @@ window.FP_PLACES = [
     lat: 36.4906,
     lon: -121.1825,
     href: "/field-pack/pinnacles/",
-    appHref: "/field-pack/app.html#/venue/pinnacles",
   },
   {
     id: "voyageurs",
@@ -3193,7 +3003,6 @@ window.FP_PLACES = [
     lat: 48.4839,
     lon: -92.8386,
     href: "/field-pack/voyageurs/",
-    appHref: "/field-pack/app.html#/venue/voyageurs",
   },
   {
     id: "white-sands",
@@ -3209,7 +3018,6 @@ window.FP_PLACES = [
     lat: 32.7797,
     lon: -106.1717,
     href: "/field-pack/white-sands/",
-    appHref: "/field-pack/app.html#/venue/white-sands",
   },
   {
     id: "wind-cave",
@@ -3225,7 +3033,6 @@ window.FP_PLACES = [
     lat: 43.6046,
     lon: -103.4213,
     href: "/field-pack/wind-cave/",
-    appHref: "/field-pack/app.html#/venue/wind-cave",
   },
   {
     id: "glacier-bay",
@@ -3241,7 +3048,6 @@ window.FP_PLACES = [
     lat: 58.6658,
     lon: -136.9002,
     href: "/field-pack/glacier-bay/",
-    appHref: "/field-pack/app.html#/venue/glacier-bay",
   },
   {
     id: "kenai-fjords",
@@ -3257,7 +3063,6 @@ window.FP_PLACES = [
     lat: 59.8486,
     lon: -150.1665,
     href: "/field-pack/kenai-fjords/",
-    appHref: "/field-pack/app.html#/venue/kenai-fjords",
   },
   {
     id: "katmai",
@@ -3273,7 +3078,6 @@ window.FP_PLACES = [
     lat: 58.6126,
     lon: -155.0631,
     href: "/field-pack/katmai/",
-    appHref: "/field-pack/app.html#/venue/katmai",
   },
   {
     id: "isle-royale",
@@ -3289,7 +3093,6 @@ window.FP_PLACES = [
     lat: 48.0,
     lon: -88.9,
     href: "/field-pack/isle-royale/",
-    appHref: "/field-pack/app.html#/venue/isle-royale",
   },
   {
     id: "american-samoa",
@@ -3305,7 +3108,6 @@ window.FP_PLACES = [
     lat: -14.2583,
     lon: -170.6833,
     href: "/field-pack/american-samoa/",
-    appHref: "/field-pack/app.html#/venue/american-samoa",
   },
   {
     id: "virgin-islands",
@@ -3321,7 +3123,6 @@ window.FP_PLACES = [
     lat: 18.342,
     lon: -64.7486,
     href: "/field-pack/virgin-islands/",
-    appHref: "/field-pack/app.html#/venue/virgin-islands",
   },
   {
     id: "gates-of-arctic",
@@ -3337,7 +3138,6 @@ window.FP_PLACES = [
     lat: 67.78,
     lon: -153.29,
     href: "/field-pack/gates-of-arctic/",
-    appHref: "/field-pack/app.html#/venue/gates-of-arctic",
   },
   {
     id: "kobuk-valley",
@@ -3353,7 +3153,6 @@ window.FP_PLACES = [
     lat: 67.34,
     lon: -159.1,
     href: "/field-pack/kobuk-valley/",
-    appHref: "/field-pack/app.html#/venue/kobuk-valley",
   },
   {
     id: "lake-clark",
@@ -3369,7 +3168,6 @@ window.FP_PLACES = [
     lat: 60.97,
     lon: -153.42,
     href: "/field-pack/lake-clark/",
-    appHref: "/field-pack/app.html#/venue/lake-clark",
   },
   {
     id: "wrangell-st-elias",
@@ -3385,7 +3183,6 @@ window.FP_PLACES = [
     lat: 61.71,
     lon: -142.99,
     href: "/field-pack/wrangell-st-elias/",
-    appHref: "/field-pack/app.html#/venue/wrangell-st-elias",
   },
   {
     id: "banff",
@@ -3403,7 +3200,6 @@ window.FP_PLACES = [
     lat: 51.4968,
     lon: -115.9281,
     href: "/field-pack/banff/",
-    appHref: "/field-pack/app.html#/venue/banff",
   },
   {
     id: "jasper",
@@ -3421,7 +3217,6 @@ window.FP_PLACES = [
     lat: 52.8737,
     lon: -117.9543,
     href: "/field-pack/jasper/",
-    appHref: "/field-pack/app.html#/venue/jasper",
   },
   {
     id: "yoho",
@@ -3439,7 +3234,6 @@ window.FP_PLACES = [
     lat: 51.495,
     lon: -116.49,
     href: "/field-pack/yoho/",
-    appHref: "/field-pack/app.html#/venue/yoho",
   },
   {
     id: "plitvice-lakes",
@@ -3457,7 +3251,6 @@ window.FP_PLACES = [
     lat: 44.8654,
     lon: 15.582,
     href: "/field-pack/plitvice-lakes/",
-    appHref: "/field-pack/app.html#/venue/plitvice-lakes",
   },
   {
     id: "snowdonia",
@@ -3475,7 +3268,6 @@ window.FP_PLACES = [
     lat: 53.0685,
     lon: -4.0762,
     href: "/field-pack/snowdonia/",
-    appHref: "/field-pack/app.html#/venue/snowdonia",
   },
   {
     id: "lake-district",
@@ -3493,7 +3285,6 @@ window.FP_PLACES = [
     lat: 54.6,
     lon: -3.137,
     href: "/field-pack/lake-district/",
-    appHref: "/field-pack/app.html#/venue/lake-district",
   },
   {
     id: "killarney",
@@ -3511,7 +3302,6 @@ window.FP_PLACES = [
     lat: 52.0023,
     lon: -9.5117,
     href: "/field-pack/killarney/",
-    appHref: "/field-pack/app.html#/venue/killarney",
   },
   {
     id: "fuji-hakone-izu",
@@ -3529,7 +3319,6 @@ window.FP_PLACES = [
     lat: 35.4981,
     lon: 138.759,
     href: "/field-pack/fuji-hakone-izu/",
-    appHref: "/field-pack/app.html#/venue/fuji-hakone-izu",
   },
   {
     id: "nikko",
@@ -3547,7 +3336,6 @@ window.FP_PLACES = [
     lat: 36.7581,
     lon: 139.599,
     href: "/field-pack/nikko/",
-    appHref: "/field-pack/app.html#/venue/nikko",
   },
   {
     id: "fiordland",
@@ -3565,7 +3353,6 @@ window.FP_PLACES = [
     lat: -45.4167,
     lon: 167.7167,
     href: "/field-pack/fiordland/",
-    appHref: "/field-pack/app.html#/venue/fiordland",
   },
   {
     id: "blue-mountains",
@@ -3583,7 +3370,6 @@ window.FP_PLACES = [
     lat: -33.72,
     lon: 150.31,
     href: "/field-pack/blue-mountains/",
-    appHref: "/field-pack/app.html#/venue/blue-mountains",
   },
   {
     id: "kruger",
@@ -3601,7 +3387,6 @@ window.FP_PLACES = [
     lat: -24.9947,
     lon: 31.5969,
     href: "/field-pack/kruger/",
-    appHref: "/field-pack/app.html#/venue/kruger",
   },
   {
     id: "table-mountain",
@@ -3619,7 +3404,6 @@ window.FP_PLACES = [
     lat: -33.9628,
     lon: 18.4098,
     href: "/field-pack/table-mountain/",
-    appHref: "/field-pack/app.html#/venue/table-mountain",
   },
   {
     id: "torres-del-paine",
@@ -3637,7 +3421,6 @@ window.FP_PLACES = [
     lat: -50.9423,
     lon: -73.4068,
     href: "/field-pack/torres-del-paine/",
-    appHref: "/field-pack/app.html#/venue/torres-del-paine",
   },
   {
     id: "iguazu-argentina",
@@ -3655,7 +3438,6 @@ window.FP_PLACES = [
     lat: -25.6953,
     lon: -54.4367,
     href: "/field-pack/iguazu-argentina/",
-    appHref: "/field-pack/app.html#/venue/iguazu-argentina",
   },
   {
     id: "giant-panda-national-park",
@@ -3673,7 +3455,6 @@ window.FP_PLACES = [
     lat: 31.0294,
     lon: 103.1967,
     href: "/field-pack/giant-panda-national-park/",
-    appHref: "/field-pack/app.html#/venue/giant-panda-national-park",
   },
   {
     id: "french-island",
@@ -3691,7 +3472,6 @@ window.FP_PLACES = [
     lat: -38.3514,
     lon: 145.3372,
     href: "/field-pack/french-island/",
-    appHref: "/field-pack/app.html#/venue/french-island",
   },
   {
     id: "galapagos",
@@ -3709,7 +3489,6 @@ window.FP_PLACES = [
     lat: -0.7439,
     lon: -90.3131,
     href: "/field-pack/galapagos/",
-    appHref: "/field-pack/app.html#/venue/galapagos",
   }
 ];
 

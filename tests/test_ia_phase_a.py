@@ -120,6 +120,8 @@ class IaPhaseATests(unittest.TestCase):
         self.assertEqual(h._code, 301)
         self.assertEqual(h._headers.get("Location"), PLACES_PATH)
         self.assertEqual(_head("/field-pack/app.html")._code, 301)
+        self.assertFalse((FP / "app.html").exists())
+        self.assertFalse((FP / "js" / "app.js").exists())
         for html in (
             START.read_text(encoding="utf-8"),
             ABOUT.read_text(encoding="utf-8"),
@@ -128,6 +130,9 @@ class IaPhaseATests(unittest.TestCase):
             VFT.read_text(encoding="utf-8"),
         ):
             self.assertNotIn("/field-pack/app.html", html)
+        gen = (REPO / "scripts" / "generate_bdo_seo.py").read_text(encoding="utf-8")
+        self.assertNotIn("/field-pack/app.html#", gen)
+        self.assertNotIn("app_href =", gen)
 
     def test_short_card_slugs_301(self):
         for src, dest in CARD_SLUG_ALIASES.items():

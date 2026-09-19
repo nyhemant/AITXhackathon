@@ -218,7 +218,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertNotIn("https://", chapter)
         self.assertNotIn("I need an activity for today", chapter)
         self.assertNotIn("Free · No account · At home or on location", chapter)
-        self.assertNotIn("At home or before you go.", chapter)
+        self.assertNotIn("At home or before you go.", self.html)
         self.assertNotIn("us-map", chapter)
         self.assertNotIn("start-door", chapter)
         self.assertNotIn('href="/field-pack/cards/flamingo/"', chapter)
@@ -270,6 +270,36 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn("prefers-reduced-motion", self.css)
         self.assertNotIn("webgl", self.css.lower())
         self.assertNotIn("parallax", self.css.lower())
+
+    def test_social_description_matches_on_page_promise(self):
+        banned = "At home or before you go."
+        self.assertNotIn(banned, self.html)
+        metas = {
+            name: re.search(rf'<meta {name} content="([^"]+)"', self.html)
+            for name in (
+                'name="description"',
+                'property="og:description"',
+                'name="twitter:description"',
+            )
+        }
+        for name, match in metas.items():
+            self.assertIsNotNone(match, name)
+            desc = match.group(1)
+            self.assertNotIn(banned, desc)
+            self.assertIn("virtual zoo", desc.lower())
+            self.assertIn("Watch Live", desc)
+            self.assertIn("Places", desc)
+            self.assertIn("Cards", desc)
+            self.assertIn("free", desc.lower())
+            self.assertIn("no signup", desc.lower())
+        self.assertEqual(
+            {match.group(1) for match in metas.values()},
+            {metas['name="description"'].group(1)},
+        )
+        self.assertIn("Free · no signup · works on a phone", self.html)
+        self.assertIn(">Watch Live<", self.html)
+        self.assertIn(">Places<", self.html)
+        self.assertIn(">Cards<", self.html)
 
     def test_hero_hotspots_are_centered_and_do_not_overlap(self):
         self.assertIn("transform: translate(-50%, -50%)", self.css)
@@ -933,7 +963,7 @@ class StartLandingTests(unittest.TestCase):
             '<meta name="twitter:title" content="Make the zoo day stick. · KidZooKit" />',
             self.html,
         )
-        self.assertNotIn("A virtual zoo for curious kids", self.html)
+        self.assertNotIn("A virtual zoo for curious kids like Arya and Kunal", self.html)
         self.assertNotIn("Kunal", self.html)
         self.assertNotIn("Field Trip Kit · KidZooKit", self.html)
         self.assertNotIn("I need an activity for today", self.html)

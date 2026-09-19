@@ -5,7 +5,7 @@
 **Pre-rearch restore:** `git checkout snapshot/pre-rearch-2026-08-02`
 
 ## Product
-- **KidZooKit** brand · **Field Trip Kit** default (`/` → `/field-pack/`) · **Dinner** secondary (`/dinner` via More)
+- **KidZooKit** brand · **Field Trip Kit** default (`/` → `/start/`) · **Dinner** secondary (`/dinner`, Experimental)
 - Kid printables: **mission**. Do not use “Baby’s Day Out” in new user-facing copy.
 
 ## Shell
@@ -13,7 +13,7 @@
 - CSS cache: `shell.css?v=6`
 
 ## Landing
-- Live home stays `/` → `/field-pack/` (map hub). First-time alternate is `/start/` — giraffe hero, cream rest, home print-table, cream rest, going chapter, cream rest, teaching chapter, then trust, three doors, and proof. Do not replace the home.
+- Live home is `/` → `/start/` (first-time Field Trip Kit landing). Three doors: Watch Live `/field-pack/virtual-field-trip/`, Places `/field-pack/`, Cards `/field-pack/cards/`. Map hub stays `/field-pack/` (200; never redirect to `/start/`).
 - Hook hero + search + map + **Explore a place at home** (6 cards → place pages) + Popular SEO chips
 - Ready IDs: one list `window.FP_READY_STRIP` in `landing-map.js` (US six + intl London / Singapore / Ueno)
 - US six: Dallas Zoo, Children’s Aquarium Dallas, Children’s Museum (Perot), Houston Zoo, San Diego Zoo, National Zoo
@@ -22,9 +22,10 @@
 - Cache: `landing.css?v=94`, `landing-map.js?v=82`, `landing-hook.js?v=32`, `catalog.js?v=34`
 
 ## Flow (3 levels — current)
-1. **Home** `/` → `/field-pack/` — city + venue
-2. **Outing** `app.html#/venue/{id}` — item list + print treasure hunt (+ optional customize)
-3. **Item** `#/venue/{id}/item/{itemId}` — optional Q&A + print card
+1. **Home** `/` → `/start/` — three doors. Places map `/field-pack/` — city + venue
+2. **Place** `/field-pack/{slug}/` — photos, start-here, mission drawer
+3. **Card** `/field-pack/cards/{id}/` — talk prompts, photos, print
+- Dead shell `/field-pack/app.html` 301s to `/field-pack/` (do not restore)
 
 ## Unique lists — wave 1 (2026-08-17)
 Dual-write `catalog.js` + `data/venues/{slug}.json` for **8 packs only** (not all 218):
