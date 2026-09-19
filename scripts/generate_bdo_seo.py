@@ -1253,8 +1253,7 @@ def item_public_href(item_id: str, venue_id: str = "", *, extra_query: str = "")
     """Parent-facing item URL.
 
     Published cards keep /field-pack/cards/<id>/. Unpublished catalog animals
-    retarget to the outing item hash on that venue. Wonder w-* ids are not
-    outing cards — stay on the place page (itemOnVenue would rewrite them).
+    and wonder w-* ids stay on the place page (#at-home).
     """
     iid = (item_id or "").strip()
     vid = (venue_id or "").strip()
@@ -1266,10 +1265,8 @@ def item_public_href(item_id: str, venue_id: str = "", *, extra_query: str = "")
         if q:
             href += "?" + q
         return href
-    if vid and (iid.startswith("w-") or iid.startswith("w_")):
-        return f"/field-pack/{esc(vid)}/#at-home"
     if vid:
-        return f"/field-pack/app.html#/venue/{esc(vid)}/item/{esc(iid)}"
+        return f"/field-pack/{esc(vid)}/#at-home"
     return "/field-pack/cards/"
 
 
@@ -2446,7 +2443,6 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
     if vid in RESERVED:
         raise SystemExit(f"Venue id collides with reserved path: {vid}")
     url = f"{SITE}/field-pack/{vid}/"
-    app_href = f"/field-pack/app.html#/venue/{vid}"
     map_href = "/field-pack/#us-map"
     place, _, _ = type_bits(v)
 
@@ -2657,7 +2653,6 @@ def render_venue_page(v: dict) -> str:
     if vid in RESERVED:
         raise SystemExit(f"Venue id collides with reserved path: {vid}")
     url = f"{SITE}/field-pack/{vid}/"
-    app_href = f"/field-pack/app.html#/venue/{vid}"
     map_href = "/field-pack/#us-map"
     place, things, _ = type_bits(v)
     # Apostrophe-safe title case (avoid Children'S)
@@ -2775,9 +2770,6 @@ def render_venue_page(v: dict) -> str:
         if (window.FPMissionUI && window.FPMissionUI.open) {{
           window.FPMissionUI.open();
           return true;
-        }}
-        if (btn) {{
-          location.href = "/field-pack/app.html#/venue/" + encodeURIComponent(btn.getAttribute("data-venue") || "");
         }}
         return false;
       }}

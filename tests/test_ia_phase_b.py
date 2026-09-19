@@ -136,13 +136,15 @@ class IaPhaseBTests(unittest.TestCase):
             html = path.read_text(encoding="utf-8")
             for banned in LEGACY_HREFS:
                 self.assertNotIn(banned, html, f"{path.name} still features {banned}")
-        for js in (LANDING_MAP, LANDING_HOOK):
+        places = FP / "js" / "places-data.js"
+        for js in (LANDING_MAP, LANDING_HOOK, places):
             text = js.read_text(encoding="utf-8")
             self.assertNotIn("/field-pack/app.html", text, js.name)
             self.assertNotIn("/field-pack/parks/", text, js.name)
             self.assertNotIn("/field-pack/places/", text, js.name)
             self.assertNotIn("/field-pack/virtual-zoo/", text, js.name)
             self.assertNotIn(".appHref", text, js.name)
+            self.assertNotIn("appHref:", text, js.name)
 
     def test_shell_more_is_four_doors_only(self):
         for path in SHELL_HTML:

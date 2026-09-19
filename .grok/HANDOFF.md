@@ -23,8 +23,9 @@
 
 ## Flow (3 levels — current)
 1. **Home** `/` → `/start/` — three doors. Places map `/field-pack/` — city + venue
-2. **Outing** `app.html#/venue/{id}` — item list + print treasure hunt (+ optional customize)
-3. **Item** `#/venue/{id}/item/{itemId}` — optional Q&A + print card
+2. **Place** `/field-pack/{slug}/` — photos, start-here, mission drawer
+3. **Card** `/field-pack/cards/{id}/` — talk prompts, photos, print
+- Dead shell `/field-pack/app.html` 301s to `/field-pack/` (do not restore)
 
 ## Unique lists — wave 1 (2026-08-17)
 Dual-write `catalog.js` + `data/venues/{slug}.json` for **8 packs only** (not all 218):
