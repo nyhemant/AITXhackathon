@@ -18,7 +18,7 @@
  * YouTube, Ant Media, GA, and local teaser mp4s: never intercepted.
  */
 /* eslint-disable no-restricted-globals */
-const FTK_SHELL_CACHE = "ftk-shell-v1";
+const FTK_SHELL_CACHE = "ftk-shell-v2";
 const SHELL_PATHS = [
   "/start",
   "/field-pack/virtual-zoo",
@@ -31,7 +31,7 @@ const PRECACHE = [
   "/pwa/icon-192.png",
   "/pwa/apple-touch-icon.png",
   "/pwa/register.js?v=1",
-  "/start/start.css?v=51",
+  "/start/start.css?v=52",
 ];
 
 function sameOrigin(url) {
