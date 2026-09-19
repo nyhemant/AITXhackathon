@@ -195,7 +195,7 @@ class BrandHomeTests(unittest.TestCase):
         self.assertIn("Do you have national park scavenger hunts?", schema_names)
         self.assertIn("Can teachers or homeschool groups use this?", schema_names)
         for entity, (_name, answer_html) in zip(entities, questions):
-            visible_text = html_lib.unescape(re.sub(r"<[^>]+>", " ", answer_html))
+            visible_text = html_lib.unescape(re.sub(r"<[^>]+>", "", answer_html))
             visible_text = re.sub(r"\s+", " ", visible_text).strip()
             schema_text = re.sub(r"\s+", " ", entity["acceptedAnswer"]["text"]).strip()
             self.assertIn(visible_text, schema_text)
