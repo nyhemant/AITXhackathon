@@ -13,8 +13,6 @@ from busyparent_agent.web import _safe_field_pack_path
 REPO = Path(__file__).resolve().parents[1]
 FP = REPO / "static" / "field-pack"
 MAP_JS = FP / "js" / "landing-map.js"
-APP_JS = FP / "js" / "app.js"
-APP_HTML = FP / "app.html"
 
 _EXTRACT_JS = r"""
 const fs = require("fs");
@@ -96,13 +94,9 @@ class HubVenueHashTests(unittest.TestCase):
         self.assertIn("if (!stayOnMap && goToPlacePage(venueId)) return;", set_venue)
         self.assertNotIn("showVenueDetail(venueId)", set_venue)
 
-    def test_outing_app_hash_routes_stay(self):
-        app = APP_JS.read_text(encoding="utf-8")
-        self.assertIn("if ((m = hash.match(/^#\\/venue\\/([^/]+)\\/item\\/([^/]+)/)))", app)
-        self.assertIn("if ((m = hash.match(/^#\\/venue\\/([^/]+)/)))", app)
-        html = APP_HTML.read_text(encoding="utf-8")
-        self.assertIn("id=", html)
-        self.assertTrue((FP / "app.html").is_file())
+    def test_dead_outing_shell_is_gone(self):
+        self.assertFalse((FP / "app.html").exists())
+        self.assertFalse((FP / "js" / "app.js").exists())
 
 
 if __name__ == "__main__":

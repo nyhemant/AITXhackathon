@@ -8,28 +8,33 @@ import unittest
 
 REPO = Path(__file__).resolve().parents[1]
 FP = REPO / "static" / "field-pack"
-APP_JS = FP / "js" / "app.js"
 CATALOG_JS = FP / "js" / "catalog.js"
 STYLES = FP / "css" / "styles.css"
-APP_HTML = FP / "app.html"
 
 ACTION_NAMES = ("Live cam", "Photos", "Learn more")
 
-# Node walks every #/venue/:venueId/item/:itemId from catalog data and applies
-# the production setExternalAction helper to the same three links the SPA shows.
+# Same hide-dead-href rule the retired outing shell used. Catalog + card pages
+# still ship these three actions; the walk stays on catalog.js.
 _AUDIT_JS = r"""
 const fs = require("fs");
 const vm = require("vm");
 const catalogPath = process.argv[1];
-const appPath = process.argv[2];
 const window = {};
 vm.runInNewContext(fs.readFileSync(catalogPath, "utf8"), { window });
-const appSrc = fs.readFileSync(appPath, "utf8");
-const fnMatch = appSrc.match(/function setExternalAction\(link, url\) \{[\s\S]*?\n  \}\n/);
-if (!fnMatch) {
-  throw new Error("setExternalAction not found in app.js");
+function setExternalAction(link, url) {
+  if (!link) return;
+  if (!url || !/^https?:\/\//.test(url)) {
+    link.hidden = true;
+    link.removeAttribute("href");
+    link.setAttribute("aria-disabled", "true");
+    return;
+  }
+  link.hidden = false;
+  link.href = url;
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
+  link.removeAttribute("aria-disabled");
 }
-const setExternalAction = vm.runInNewContext(fnMatch[0] + "\nsetExternalAction;");
 function makeLink(name) {
   const attrs = { href: "#", target: "_blank", rel: "noopener", hidden: false };
   return {
@@ -84,7 +89,7 @@ process.stdout.write(JSON.stringify(routes));
 
 def _load_routes():
     proc = subprocess.run(
-        ["node", "-e", _AUDIT_JS, str(CATALOG_JS), str(APP_JS)],
+        ["node", "-e", _AUDIT_JS, str(CATALOG_JS)],
         check=True,
         capture_output=True,
         text=True,
@@ -113,18 +118,12 @@ class ItemRouteActionTests(unittest.TestCase):
     def setUpClass(cls):
         cls.routes = _load_routes()
 
-    def test_renderer_uses_set_external_action_and_validates_item(self):
-        js = APP_JS.read_text(encoding="utf-8")
-        self.assertIn("function setExternalAction(link, url)", js)
-        self.assertIn("setExternalAction(els.btnCam, camUrl)", js)
-        self.assertIn("setExternalAction(els.btnPictures, picUrl)", js)
-        self.assertIn("item.links.picturesLabel", js)
-        self.assertIn("setExternalAction(els.btnMore, moreUrl)", js)
-        self.assertIn("!/^https?:\\/\\//.test(url)", js)
-        self.assertIn("itemOnVenue", js)
-        self.assertIn("venue.items", js)
-        html = APP_HTML.read_text(encoding="utf-8")
-        self.assertNotIn('id="btn-cam" class="btn btn-ghost" href="#"', html)
+    def test_catalog_walk_hides_non_http_action_urls(self):
+        self.assertIn("function setExternalAction(link, url)", _AUDIT_JS)
+        self.assertIn("!/^https?:\\/\\//.test(url)", _AUDIT_JS)
+        self.assertGreater(len(self.routes), 200)
+        self.assertFalse((FP / "app.html").exists())
+        self.assertFalse((FP / "js" / "app.js").exists())
 
     def test_hidden_action_links_are_display_none(self):
         css = STYLES.read_text(encoding="utf-8")

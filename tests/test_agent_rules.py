@@ -555,7 +555,7 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertIn("G-X6V6PNY9ZV", shell_js)  # historical 1Less archive comment only
         self.assertIn("isDinnerPath", shell_js)
         self.assertIn("hashchange", shell_js)
-        self.assertIn("hunt_generated", (Path(__file__).resolve().parents[1] / "static" / "field-pack" / "js" / "app.js").read_text(encoding="utf-8"))
+        self.assertIn("hunt_generated", (Path(__file__).resolve().parents[1] / "static" / "field-pack" / "js" / "print-kit.js").read_text(encoding="utf-8"))
         self.assertIn("document.body.dataset.mode = activeMode", HTML)
         self.assertIn("mode: activeMode", HTML)
         self.assertNotIn('id="promptButton"', HTML)

@@ -116,7 +116,6 @@ class KidZooKitGa4Test(unittest.TestCase):
             "static/start/index.html",
             "static/about/index.html",
             "static/field-pack/index.html",
-            "static/field-pack/app.html",
         ):
             text = (REPO / rel).read_text(encoding="utf-8")
             self.assertIn("/shell/shell.js?v=6", text, rel)
