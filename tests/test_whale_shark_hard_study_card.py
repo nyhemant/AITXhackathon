@@ -153,6 +153,11 @@ class WhaleSharkHardStudyCardTests(unittest.TestCase):
         self.assertIn("ningaloo", correct_choice_text(questions[3]).lower())
         self.assertIn("yucatán", correct_choice_text(questions[3]).lower())
         self.assertIn("tiny teeth", correct_choice_text(questions[4]).lower())
+        for q in questions:
+            for choice in q["choices"]:
+                self.assertNotIn("(soft)", choice)
+                self.assertNotIn("— soft", choice)
+                self.assertNotIn("— litres-per-hour soft", choice)
         blob = " ".join(q["why"] for q in questions) + " ".join(
             " ".join(q["choices"]) for q in questions
         )
