@@ -1,98 +1,50 @@
-# 1Less
+# KidZooKit
 
-1Less is a standalone parent decision-relief product.
+KidZooKit is a free Field Trip Kit for families: an at-home virtual zoo (plus aquariums, museums, and parks). Pick a place or an animal. Get a short activity with real photos, questions to ask, and an optional printable mission.
 
-Company promise: **One less decision for busy parents.**
+Live site: [kidzookit.com](https://kidzookit.com). Legacy `1less.app` / `www.1less.app` 301 here.
 
-Chapter 1 promise: **Tonight's dinner, decided.**
+No account, no email, no ads. Kid-facing printables use **mission** language (for example, “Your mission at the Dallas Zoo”).
 
-The current product starts with a narrow dinner decision flow. A parent gives only the context needed for tonight: time, energy, simple constraints, optional ingredients, and anything to avoid. 1Less returns one practical dinner recommendation, not a recipe browser, weekly planner, nutrition tracker, or family command center.
+The GitHub repo is still `nyhemant/AITXhackathon` and the Python package is still `busyparent_agent`. Those are implementation leftovers — not product names.
 
-## Current Product Surface
+## What it is
 
-The local web app supports:
+Three doors from Start:
 
-- Quick prompts for 10 / 20 / 30 minute dinners
-- Energy levels: barely cooking, normal, can cook
-- Lightweight constraints such as picky-kid friendly, vegetarian, nut-free, dairy-free, leftovers, and pantry/freezer basics
-- Optional free text for what the parent has tonight or wants to avoid
-- One recommendation with meal name, why it fits, time/effort, simple steps, and one fallback/tweak
-- Feedback actions: Good enough, Too much work, Kid won't eat, Missing ingredient, Give me backup
+- **Watch Live** — virtual field trip / live cams
+- **Places** — map and venue kits (zoos, aquariums, museums, parks)
+- **Cards** — animals and sea life to look up at home
 
-If allergy or avoidance input is present, the recommendation shows:
+A printable hunt or cutouts is an optional companion if you are going in person.
 
-> 1Less can help avoid ingredients you flag, but it cannot guarantee allergy safety. Always check labels and use your judgment for serious allergies.
+## Run locally
 
-## Boundaries
-
-This MVP does not claim allergy safety, nutrition optimization, medical diet support, budget optimization, cultural or religious dietary correctness, pantry accuracy, or grocery fulfillment.
-
-It does not ask for child names, medical conditions, precise location, detailed health or nutrition goals, school schedules, pantry/fridge photos, or grocery purchase history.
-
-## Standalone Product Status
-
-Treat this repository as the active standalone 1Less product workspace going forward.
-
-Two implementation details remain for continuity and low-risk iteration:
-
-- The GitHub repository is still `nyhemant/AITXhackathon` until a future repo rename/migration.
-- The Python package is still `busyparent_agent` until a future refactor.
-
-Do not use either name as product branding in new documentation, product copy, outreach, or roadmap work.
-
-Legacy model 1.1 is frozen for rollback/reference at:
-
-- Branch: `legacy/model-1.1`
-- Tag: `legacy-model-1.1`
-- Notes: `docs/legacy/model-1.1.md`
-
-## Quick Start
-
-Requirements:
-
-- Python >=3.10
+Requirements: Python >= 3.10
 
 From the repo root:
-
-```bash
-python3 -m unittest discover -s tests
-```
-
-Local QA (MacBook — same server as kidzookit.com, not live):
 
 ```bash
 ./scripts/dev-serve.sh
 ```
 
-Then browse `http://127.0.0.1:8000/field-pack/`. Edit, refresh. When a chunk is good: `git push`. On the Mini (live): `./scripts/sync-from-github.sh` once, or leave it manual.
+Then open `http://127.0.0.1:8000/` — the server **302s `/` to `/start/`**. Also useful:
+
+```text
+http://127.0.0.1:8000/start/
+http://127.0.0.1:8000/field-pack/
+http://127.0.0.1:8000/field-pack/cards/
+```
 
 Same server, any host/port:
 
 ```bash
-python3 -m busyparent_agent.web --host 0.0.0.0 --port 8000
+python3 -m busyparent_agent.web --host 127.0.0.1 --port 8000
 ```
 
-Then browse locally to:
+If port `8000` is busy, pass another port to the script (`./scripts/dev-serve.sh 8001`) or to `web.py`.
 
-```text
-http://127.0.0.1:8000
-```
-
-If port `8000` is busy:
-
-```bash
-python3 -m busyparent_agent.web --host 0.0.0.0 --port 8001
-```
-
-Then browse to:
-
-```text
-http://127.0.0.1:8001
-```
-
-Public origin rate limits (no accounts, no email, no CAPTCHA) live in
-`busyparent_agent.rate_limit` and hook `web.py`. Defaults, tune env, disable
-switch, and a burst-test command: `docs/rate-limit.md`. Emergency off:
+Origin scrape/bot rate limits are on by default (`docs/rate-limit.md`). A normal family browse will not notice them. Emergency off:
 
 ```bash
 ONELESS_RATE_LIMIT=0 python3 -m busyparent_agent.web --host 127.0.0.1 --port 8000
@@ -100,29 +52,58 @@ ONELESS_RATE_LIMIT=0 python3 -m busyparent_agent.web --host 127.0.0.1 --port 800
 python3 -m busyparent_agent.web --no-rate-limit
 ```
 
+Automated tests:
+
+```bash
+python3 -m unittest discover -s tests
+```
+
+## Main routes
+
+| Path | What |
+|------|------|
+| `/` | **302** to `/start/` |
+| `/start/` | First screen. Doors: Watch Live, Places, Cards |
+| `/zoo` | **301** to `/start/` |
+| `/field-pack/` | Places — map explorer (stays **200**; does not redirect to Start) |
+| `/field-pack/cards/` | Cards hub |
+| `/field-pack/{slug}/` | Place page (example: `/field-pack/dallas-zoo/`) |
+| `/field-pack/virtual-field-trip/` | Watch Live |
+| `/field-pack/print/` | Print cutouts — **301** to `/field-pack/virtual-field-trip/?print=1` |
+| `/about/` | About, FAQ, Experimental extras |
+| `/dinner` | Dinner — secondary, **Experimental** |
+
+Field Trip Kit static lives under `static/field-pack/` and is served at `/field-pack/`. In-app links are absolute `/field-pack/...` (pages use `<base href="/field-pack/">`).
+
+## Dinner (secondary)
+
+Dinner still runs at `/dinner`. It is an Experimental leftover from Chapter 1 (“tonight’s meal”), not the default product. Frozen dinner-app notes: `docs/demo.md`, `docs/product-reference.md`. Those are dinner validation / history — not current product validation.
+
 ## Documentation
 
-- Current product reference: `docs/product-reference.md`
+- Session continuity for Field Trip Kit: `.grok/HANDOFF.md`
+- Agent brief: `docs/AGENT-BRIEF.md`
 - Origin scrape/bot rate limits: `docs/rate-limit.md`
-- Local validation guide: `docs/demo.md`
-- Product docs pointer: `docs/product/` (not live research)
+- Dinner local validation (not current product): `docs/demo.md`
+- Dinner Chapter 1 reference (not current product): `docs/product-reference.md`
+- `docs/product/` — pointer only; not live research
 - Archived May 2026 dinner/Reddit research: `docs/archive/dinner-research-2026-05/`
-- Live product: KidZooKit / Field Trip Kit (`/` → `/field-pack/`); dinner is secondary at `/dinner`
-- Legacy model 1.1 freeze: `docs/legacy/model-1.1.md`
+- Legacy dinner model 1.1 freeze: `docs/legacy/model-1.1.md` (`legacy/model-1.1`, tag `legacy-model-1.1`)
 - Other archived historical docs: `docs/archive/`
 
-## Project Structure
+## Project structure
 
 ```text
+static/start/            first-time landing (`/start/`)
+static/field-pack/       Field Trip Kit (places, cards, Watch Live, print)
+static/about/            About + FAQ
+static/shell/            shared chrome
 src/busyparent_agent/
-  app.py      legacy CLI entry point
-  service.py  channel-neutral service helpers and Chapter 1 dinner MVP session
-  web.py      stdlib local web chat adapter
-  rate_limit.py  per-IP scrape/bot limits (429 + Retry-After)
-  agent.py    older deterministic dinner internals
-  tools.py    older local mocked tools
-tests/        unittest coverage
-docs/product/ pointer only (May 2026 dinner/Reddit research archived)
-docs/archive/dinner-research-2026-05/ archived dinner/Reddit research pack
-docs/archive/ historical prototype and deprecated concept material
+  web.py                 stdlib server: Start, Field Trip Kit, About, /dinner
+  rate_limit.py          per-IP scrape/bot limits
+  service.py             dinner session (secondary)
+scripts/dev-serve.sh     local QA server
+tests/                   unittest coverage
+docs/product/            pointer only (research archived)
+docs/archive/dinner-research-2026-05/
 ```
