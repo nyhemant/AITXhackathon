@@ -103,7 +103,8 @@ class StartLandingTests(unittest.TestCase):
         start = _get("/start/")
         self.assertEqual(start._code, 200)
         body = start.wfile.getvalue().decode("utf-8")
-        self.assertIn("A virtual zoo for curious kids like Arya and Kunal", body)
+        self.assertIn("Make the zoo day stick.", body)
+        self.assertIn("Arya’s Wildlife Project", body)
         self.assertNotIn("start-brand", body)
         self.assertNotIn('aria-label="1less home"', body)
         self.assertNotIn("/1LessMark.png", body)
@@ -198,7 +199,7 @@ class StartLandingTests(unittest.TestCase):
         chapter = hero.group(0)
         self.assertLess(self.html.find('id="start-hero"'), self.html.find('id="start-home"'))
         self.assertIn('id="start-heading"', chapter)
-        self.assertIn("A virtual zoo for curious kids like Arya and Kunal", chapter)
+        self.assertIn("Make the zoo day stick.", chapter)
         self.assertIn('class="start-routes"', chapter)
         self.assertIn('href="/field-pack/cards/"', chapter)
         self.assertIn('href="/field-pack/virtual-field-trip/"', chapter)
@@ -416,6 +417,17 @@ class StartLandingTests(unittest.TestCase):
         self.assertNotIn("start-brand", chrome)
         self.assertNotIn("/1LessMark.png", chrome)
         self.assertTrue(chrome.strip().startswith('<div class="start-menu-wrap">'))
+        self.assertIn('<p class="start-wordmark">Arya’s Wildlife Project</p>', chrome)
+        self.assertLess(chrome.find("start-menu-wrap"), chrome.find("start-wordmark"))
+        self.assertEqual(self.html.count("start-wordmark"), 1)
+        self.assertIn(".start-wordmark", self.css)
+        # Start only: shell pages stay neutral for search arrivals.
+        for other in (
+            self.home,
+            (REPO / "static" / "shell" / "shell.js").read_text(encoding="utf-8"),
+            (REPO / "static" / "about" / "index.html").read_text(encoding="utf-8"),
+        ):
+            self.assertNotIn("Wildlife Project", other)
         menu_links = re.findall(r'<a(?: class="[^"]+")? href="([^"]+)">([^<]+)<', chrome)
         self.assertEqual(
             menu_links,
@@ -941,10 +953,19 @@ class StartLandingTests(unittest.TestCase):
         self.assertNotIn("parallax", self.css.lower())
 
     def test_locked_headline_and_no_marketing_stats(self):
-        self.assertEqual(
-            _heading_text(self.html),
-            "A virtual zoo for curious kids like Arya and Kunal",
+        self.assertEqual(_heading_text(self.html), "Make the zoo day stick.")
+        self.assertIn("<title>Make the zoo day stick. · KidZooKit</title>", self.html)
+        self.assertIn(
+            '<meta property="og:title" content="Make the zoo day stick. · KidZooKit" />',
+            self.html,
         )
+        self.assertIn(
+            '<meta name="twitter:title" content="Make the zoo day stick. · KidZooKit" />',
+            self.html,
+        )
+        self.assertNotIn("A virtual zoo for curious kids like Arya and Kunal", self.html)
+        self.assertNotIn("Kunal", self.html)
+        self.assertNotIn("Field Trip Kit · KidZooKit", self.html)
         self.assertNotIn("I need an activity for today", self.html)
         self.assertNotIn("We’re visiting somewhere soon", self.html)
         self.assertNotIn("I’m teaching a group", self.html)
@@ -1124,7 +1145,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn('preload="auto"', self.html)
         self.assertNotIn('preload="none"', self.html)
         self.assertIn('start.js?v=31', self.html)
-        self.assertIn("start.css?v=51", self.html)
+        self.assertIn("start.css?v=52", self.html)
         self.assertIn(" loop ", self.html)
         self.assertNotIn("youtube.com", self.html)
         self.assertNotIn("youtube-nocookie.com", self.html)
