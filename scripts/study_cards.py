@@ -3283,15 +3283,17 @@ PUSH_FURTHER_STINGRAY_ZOOLOGIST = (
     "Male teeth can get pointier in mating season. Why might that shape change come and go?",
     "Family lists stay soft. Why not lock one exact count for every stingray?",
 )
+# Talk / Push must be answerable from this card alone (JR teach + quiz premises).
+# No off-card jargon: carpet sharks, Endangered letter, fossil beach, denticles, etc.
 TALK_ABOUT_WHALE_SHARK_ZOOLOGIST = (
-    "Scientists put the living whale shark with carpet sharks. Why mention an extinct cousin too?",
-    "Whale sharks grow slowly and live a long time. Why keep the exact years soft?",
-    "Skin teeth cover more than the mouth. Why might denticles on the eyes help?",
+    "A whale shark eats some of the smallest food in the ocean but is the biggest fish. How does that work?",
+    "A whale shark’s spots are all different. How could photos help count sharks without catching them?",
+    "It’s called a whale shark but it isn’t a whale. What do you think the name was trying to describe?",
 )
 PUSH_FURTHER_WHALE_SHARK_ZOOLOGIST = (
-    "Spot patterns can name one animal. Why might photos beat tagging every shark?",
-    "Boats and nets still hurt whale sharks. Why treat the Endangered letter as a snapshot?",
-    "Family-tree site details stay soft. Why not lock one fossil beach forever?",
+    "A whale shark is huge but gentle and filters tiny food. Why might people still feel nervous around it?",
+    "Its mouth is huge, yet it does not chase fish like a great white. What is that mouth for instead?",
+    "Whale sharks swim slowly in warm seas. Why might that fit an animal that filters food as it goes?",
 )
 
 # Easy + Hard + Zoologist ship on the same african-lion card.
