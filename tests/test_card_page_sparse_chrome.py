@@ -81,7 +81,7 @@ class CardPageSparseChromeTests(unittest.TestCase):
         self.assertEqual(PRINT_SPEC, "US Letter or A4 · black & white is fine")
         self.assertNotIn("CARD_PRINT_NOTE", self.gen)
         self.assertNotIn("One animal sheet — not the hide-and-seek cutouts", self.gen)
-        self.assertEqual(CARDS_PLAY_H1, "Print cutouts to play")
+        self.assertEqual(CARDS_PLAY_H1, "Animal cards")
         self.assertEqual(CARDS_PLAY_CTA, "Print the cutouts")
         self.assertEqual(CARDS_PLAY_BROWSE, "Browse cards on the screen")
         self.assertEqual(CARDS_PLAY_PRINT_HREF, "/field-pack/print/")
@@ -198,7 +198,7 @@ class CardPageSparseChromeTests(unittest.TestCase):
             self.assertIn('href="/field-pack/cards/"', html)
 
     def test_cards_hub_stays_a_finder_without_sales_copy(self):
-        self.assertIn("Print cutouts to play", self.hub)
+        self.assertIn("Animal cards", self.hub)
         self.assertIn("Find a card", self.hub)
         self.assertIn('id="cards-hub-search"', self.hub)
         self.assertIn('data-card-filter="wildlife"', self.hub)
