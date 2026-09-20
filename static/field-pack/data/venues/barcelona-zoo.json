@@ -8,6 +8,7 @@
   "lat": 41.3879,
   "lng": 2.1895,
   "official_url": "https://www.zoobarcelona.cat/en",
+  "own_public_cams": false,
   "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",

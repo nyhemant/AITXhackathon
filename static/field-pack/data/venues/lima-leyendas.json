@@ -8,6 +8,7 @@
   "lat": -12.07,
   "lng": -77.087,
   "official_url": "https://www.leyendas.gob.pe/",
+  "own_public_cams": false,
   "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",

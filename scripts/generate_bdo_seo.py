@@ -343,7 +343,7 @@ OUTING_TALK_EXHIBIT = (
     },
 )
 
-SEO_CSS_VER = "32"
+SEO_CSS_VER = "33"
 CARD_SEO_CSS_VER = "35"
 LANDING_CSS_VER = "100"
 LANDING_MAP_JS_VER = "89"
@@ -357,7 +357,8 @@ STUDY_CARD_JS_VER = "11"
 STUDY_CARD_CSS_VER = "11"
 STUDY_CARDS_DATA_JS_VER = "8"
 VIEWPORT = "width=device-width, initial-scale=1, viewport-fit=cover"
-MISSION_CSS_VER = "21"
+MISSION_CSS_VER = "22"
+FP_ANALYTICS_JS_VER = "2"
 MISSION_UI_JS_VER = "20"
 
 # Landing catalog seeds (T5) — review in POLISH-TASKS completion notes
@@ -1482,9 +1483,29 @@ def not_yet_vft_href(
     return base
 
 
-def home_session_html(items: list[dict], *, venue_kind: str = "", venue_id: str = "") -> str:
+def cam_disclaimer_peers(venue_kind: str) -> str:
+    """Wording for third-party cam disclaimer — match place type, never invent."""
+    kind = (venue_kind or "").lower()
+    if "aquarium" in kind:
+        return "other aquariums"
+    if "park" in kind:
+        return "other parks"
+    if "museum" in kind or kind in {"sci", "nh", "cm"}:
+        return "other museums"
+    return "other zoos"
+
+
+def home_session_html(
+    items: list[dict],
+    *,
+    venue_kind: str = "",
+    venue_id: str = "",
+    place_name: str = "",
+    own_public_cams: bool = False,
+) -> str:
     """First-class at-home block: catalog cards + talk Q&A + existing VFT cams/films."""
     cards: list[str] = []
+    has_cam_links = False
     for raw in items[:12]:
         it = enrich_item(raw)
         cid = str(it.get("id") or "").strip()
@@ -1499,6 +1520,9 @@ def home_session_html(items: list[dict], *, venue_kind: str = "", venue_id: str 
         blurb = _card_blurb(it.get("blurb") or "") or (it.get("blurb") or "")
         extra = real_extra_qa_html(it)
         watch = watch_links_html(it)
+        vft = it.get("vft") or {}
+        if str(vft.get("cam_url") or "").strip():
+            has_cam_links = True
         href = start_here_card_href(cid, venue_id)
         # No public card page — stay on this place-page card, do not invent one.
         if cid not in published_card_ids():
@@ -1531,6 +1555,15 @@ def home_session_html(items: list[dict], *, venue_kind: str = "", venue_id: str 
         if HOME_SESSION_LEAD
         else ""
     )
+    disclaimer = ""
+    if has_cam_links and not own_public_cams:
+        pname = (place_name or venue_id or "This place").strip() or "This place"
+        peers = cam_disclaimer_peers(venue_kind)
+        disclaimer = (
+            f'<p class="seo-cam-disclaimer no-print">'
+            f"{esc(pname)} doesn’t stream public cams, so these are the same animals "
+            f"live at {esc(peers)}.</p>"
+        )
     n_home = len(cards)
     plural = "s" if n_home != 1 else ""
     count_label = (
@@ -1546,6 +1579,7 @@ def home_session_html(items: list[dict], *, venue_kind: str = "", venue_id: str 
       </summary>
       <div class="seo-home-session-body">
       {lead_html}
+      {disclaimer}
       {grid}
       {empty}
       </div>
@@ -2643,7 +2677,13 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
         place_id=_vid,
     )
     home_sec = home_session_html(
-        home_items, venue_kind=str(v.get("type") or ""), venue_id=str(v.get("id") or "")
+        home_items,
+        venue_kind=str(v.get("type") or ""),
+        venue_id=str(v.get("id") or ""),
+        place_name=str(
+            (mission_venue or {}).get("name") or v.get("name") or v.get("shortName") or ""
+        ),
+        own_public_cams=bool((mission_venue or {}).get("own_public_cams")),
     )
     home_ids = {str(it.get("id") or "") for it in home_items if it.get("id")}
     shortlist_exclude = set(start_exclude) | home_ids
@@ -2797,7 +2837,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <script type="application/json" id="venue-data">{venue_json}</script>
   <script type="application/json" id="bonus-hunts-data">{bonus_json}</script>
   <script src="/shell/shell.js?v={SHELL_JS_VER}"></script>
-  <script src="/field-pack/js/fp-analytics.js?v=1"></script>
+  <script src="/field-pack/js/fp-analytics.js?v={FP_ANALYTICS_JS_VER}"></script>
   <script src="/field-pack/js/print-maps.js?v=5"></script>
   <script src="/field-pack/js/mission/mission-engine.js?v=14"></script>
   <script src="/field-pack/js/mission/mission-ui.js?v={MISSION_UI_JS_VER}"></script>
@@ -2838,6 +2878,8 @@ def render_venue_page(v: dict) -> str:
         home_items,
         venue_kind=_vkind,
         venue_id=_vid,
+        place_name=str(v.get("name") or v.get("shortName") or ""),
+        own_public_cams=False,
     )
     _not_yet = not_yet_vft_href(_vid, _vkind, card_items=home_items)
     h1 = h1_for(v)
@@ -2925,7 +2967,7 @@ def render_venue_page(v: dict) -> str:
   </div>
 
   <script src="/shell/shell.js?v={SHELL_JS_VER}"></script>
-  <script src="/field-pack/js/fp-analytics.js?v=1"></script>
+  <script src="/field-pack/js/fp-analytics.js?v={FP_ANALYTICS_JS_VER}"></script>
   <script>
     (function () {{
       var btn = document.getElementById("seo-print-hunt");
@@ -5134,7 +5176,7 @@ def write_cards_hub(venues: list[dict]) -> str:
     </footer>
   </div>
   <script src="/shell/shell.js?v={SHELL_JS_VER}"></script>
-  <script src="/field-pack/js/fp-analytics.js?v=1"></script>
+  <script src="/field-pack/js/fp-analytics.js?v={FP_ANALYTICS_JS_VER}"></script>
   <script src="/field-pack/js/cards-explorer.js?v={CARDS_EXPLORER_JS_VER}"></script>
 </body>
 </html>
@@ -5324,7 +5366,7 @@ def write_card_pages(
   <div id="print-sheet" class="print-sheet" aria-hidden="true"></div>
   <div id="treasure-sheet" class="print-sheet treasure-sheet" aria-hidden="true"></div>
   {study_print_tpl}{study_json_tag}  <script src="/shell/shell.js?v={SHELL_JS_VER}"></script>
-  <script src="/field-pack/js/fp-analytics.js?v=1"></script>
+  <script src="/field-pack/js/fp-analytics.js?v={FP_ANALYTICS_JS_VER}"></script>
   <script src="/field-pack/js/catalog.js?v={CATALOG_JS_VER}"></script>
   <script src="/field-pack/js/print-kit.js?v={PRINT_KIT_JS_VER}"></script>
 {study_scripts}  <script>

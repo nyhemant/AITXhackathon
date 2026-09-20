@@ -8,6 +8,7 @@
   "lat": 43.8177,
   "lng": -79.1859,
   "official_url": "https://www.torontozoo.com/",
+  "own_public_cams": false,
   "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",

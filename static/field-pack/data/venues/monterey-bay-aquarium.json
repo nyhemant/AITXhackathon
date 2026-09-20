@@ -8,6 +8,7 @@
   "lat": 36.62,
   "lng": -121.9,
   "official_url": "https://www.montereybayaquarium.org/",
+  "own_public_cams": true,
   "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",

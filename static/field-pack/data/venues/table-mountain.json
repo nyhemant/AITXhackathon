@@ -8,6 +8,7 @@
   "lat": -33.9628,
   "lng": 18.4098,
   "official_url": "https://www.sanparks.org/parks/table-mountain",
+  "own_public_cams": false,
   "last_verified": "2026-08-09",
   "verified_by": "research",
   "status": "verified",

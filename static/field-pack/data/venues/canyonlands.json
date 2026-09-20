@@ -8,6 +8,7 @@
   "lat": 38.3269,
   "lng": -109.8783,
   "official_url": "https://www.nps.gov/cany/",
+  "own_public_cams": false,
   "last_verified": "2026-08-09",
   "verified_by": "research",
   "status": "verified",

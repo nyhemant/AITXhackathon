@@ -8,6 +8,7 @@
   "lat": -36.864,
   "lng": 174.719,
   "official_url": "https://www.aucklandzoo.co.nz/",
+  "own_public_cams": false,
   "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",

@@ -8,6 +8,7 @@
   "lat": 29.72,
   "lng": -95.39,
   "official_url": "https://www.houstonzoo.org/",
+  "own_public_cams": true,
   "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",

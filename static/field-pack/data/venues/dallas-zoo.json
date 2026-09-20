@@ -8,6 +8,7 @@
   "lat": 32.74,
   "lng": -96.82,
   "official_url": "https://www.dallaszoo.com/",
+  "own_public_cams": false,
   "last_verified": "2026-08-23",
   "verified_by": "owner",
   "status": "verified",

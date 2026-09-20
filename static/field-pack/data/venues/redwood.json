@@ -8,6 +8,7 @@
   "lat": 41.2132,
   "lng": -124.0046,
   "official_url": "https://www.nps.gov/redw/",
+  "own_public_cams": false,
   "last_verified": "2026-08-09",
   "verified_by": "research",
   "status": "verified",

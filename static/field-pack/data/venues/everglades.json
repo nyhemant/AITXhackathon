@@ -8,6 +8,7 @@
   "lat": 25.2866,
   "lng": -80.8987,
   "official_url": "https://www.nps.gov/ever/",
+  "own_public_cams": false,
   "last_verified": "2026-08-09",
   "verified_by": "research",
   "status": "verified",

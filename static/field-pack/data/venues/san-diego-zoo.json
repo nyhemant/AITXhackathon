@@ -8,6 +8,7 @@
   "lat": 32.74,
   "lng": -117.15,
   "official_url": "https://zoo.sandiegozoo.org/",
+  "own_public_cams": true,
   "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",

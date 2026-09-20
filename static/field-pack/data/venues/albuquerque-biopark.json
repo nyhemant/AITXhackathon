@@ -8,6 +8,7 @@
   "lat": 35.08,
   "lng": -106.67,
   "official_url": "https://www.cabq.gov/culturalservices/biopark/zoo",
+  "own_public_cams": false,
   "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",

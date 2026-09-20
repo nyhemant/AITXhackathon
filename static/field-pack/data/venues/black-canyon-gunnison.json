@@ -8,6 +8,7 @@
   "lat": 38.5754,
   "lng": -107.7416,
   "official_url": "https://www.nps.gov/blca/",
+  "own_public_cams": false,
   "last_verified": "2026-08-09",
   "verified_by": "research",
   "status": "verified",

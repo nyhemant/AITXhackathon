@@ -8,6 +8,7 @@
   "lat": 52.5083,
   "lng": 13.3378,
   "official_url": "https://www.zoo-berlin.de/en/",
+  "own_public_cams": false,
   "verified_by": "research",
   "status": "partial",
   "tagline": "Starter list: Germany’s only giant pandas, then gorillas and a Sumatran orangutan — Asian elephants.",

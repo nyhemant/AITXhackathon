@@ -8,6 +8,7 @@
   "lat": 53.3562,
   "lng": -6.3053,
   "official_url": "https://www.dublinzoo.ie/",
+  "own_public_cams": false,
   "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",

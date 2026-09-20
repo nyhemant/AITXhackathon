@@ -8,6 +8,7 @@
   "lat": 37.77,
   "lng": -122.47,
   "official_url": "https://www.calacademy.org/",
+  "own_public_cams": false,
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",

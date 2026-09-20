@@ -8,6 +8,7 @@
   "lat": 38.7331,
   "lng": -109.5925,
   "official_url": "https://www.nps.gov/arch/",
+  "own_public_cams": false,
   "last_verified": "2026-08-09",
   "verified_by": "research",
   "status": "verified",

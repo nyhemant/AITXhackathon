@@ -8,6 +8,7 @@
   "lat": 47.5186,
   "lng": 19.0775,
   "official_url": "https://www.zoobudapest.com/en",
+  "own_public_cams": false,
   "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",

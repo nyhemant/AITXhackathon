@@ -2269,3 +2269,72 @@ body.has-hunt-sticky {
 }
 
 /* Legacy mission-bar rules kept for older cached HTML; fork is primary */
+
+
+/* Third-party live cams on place pages */
+.seo-cam-disclaimer {
+  margin: 0.35rem 0 0.75rem;
+  font-size: 0.88rem;
+  font-weight: 550;
+  color: #3d4f6f;
+  line-height: 1.4;
+}
+
+/* Two-tap place-list feedback */
+.seo-freshness-actions {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.45rem;
+  align-items: center;
+  vertical-align: middle;
+}
+.seo-freshness-btn {
+  appearance: none;
+  border: 1.5px solid rgba(15, 92, 92, 0.28);
+  background: #fff;
+  color: #0a4545;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 650;
+  line-height: 1.2;
+  padding: 0.28rem 0.7rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+.seo-freshness-btn:hover,
+.seo-freshness-btn:focus-visible {
+  border-color: rgba(15, 92, 92, 0.55);
+  outline: none;
+}
+.seo-freshness-thanks {
+  font-weight: 650;
+  color: #0a4545;
+}
+.seo-freshness-note-wrap {
+  display: block;
+  margin-top: 0.45rem;
+  max-width: 22rem;
+}
+.seo-freshness-note-label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 650;
+  margin-bottom: 0.2rem;
+}
+.seo-freshness-note {
+  width: 100%;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 0.85rem;
+  padding: 0.4rem 0.55rem;
+  border: 1.5px solid rgba(15, 92, 92, 0.22);
+  border-radius: 8px;
+  resize: vertical;
+  min-height: 2.6rem;
+}
+.seo-freshness-note-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.35rem;
+}

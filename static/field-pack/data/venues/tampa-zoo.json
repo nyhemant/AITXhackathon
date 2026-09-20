@@ -8,6 +8,7 @@
   "lat": 28.01,
   "lng": -82.47,
   "official_url": "https://zootampa.org/",
+  "own_public_cams": false,
   "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",

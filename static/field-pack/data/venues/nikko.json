@@ -8,6 +8,7 @@
   "lat": 36.7581,
   "lng": 139.599,
   "official_url": "https://www.env.go.jp/en/nature/nps/park/nikko/",
+  "own_public_cams": false,
   "last_verified": "2026-08-09",
   "verified_by": "research",
   "status": "verified",

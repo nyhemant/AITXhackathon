@@ -8,6 +8,7 @@
   "lat": 37.4275,
   "lng": 127.017,
   "official_url": "https://grandpark.seoul.go.kr/main/en.do",
+  "own_public_cams": false,
   "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",

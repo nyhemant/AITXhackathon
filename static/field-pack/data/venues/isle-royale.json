@@ -8,6 +8,7 @@
   "lat": 48.0,
   "lng": -88.9,
   "official_url": "https://www.nps.gov/isro/",
+  "own_public_cams": false,
   "last_verified": "2026-08-09",
   "verified_by": "research",
   "status": "verified",

@@ -8,6 +8,7 @@
   "lat": 36.4864,
   "lng": -118.5658,
   "official_url": "https://www.nps.gov/seki/",
+  "own_public_cams": false,
   "last_verified": "2026-08-09",
   "verified_by": "research",
   "status": "verified",

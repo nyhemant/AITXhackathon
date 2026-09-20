@@ -8,6 +8,7 @@
   "lat": 36.0544,
   "lng": -112.1401,
   "official_url": "https://www.nps.gov/grca/",
+  "own_public_cams": true,
   "last_verified": "2026-08-09",
   "verified_by": "research",
   "status": "verified",

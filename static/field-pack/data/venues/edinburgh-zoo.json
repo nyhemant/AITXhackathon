@@ -8,6 +8,7 @@
   "lat": 55.9426,
   "lng": -3.2692,
   "official_url": "https://www.edinburghzoo.org.uk/",
+  "own_public_cams": false,
   "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",

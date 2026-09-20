@@ -8,6 +8,7 @@
   "lat": 40.16,
   "lng": -83.12,
   "official_url": "https://www.columbuszoo.org/",
+  "own_public_cams": false,
   "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",

@@ -8,6 +8,7 @@
   "lat": 29.92,
   "lng": -90.13,
   "official_url": "https://audubonnatureinstitute.org/zoo",
+  "own_public_cams": false,
   "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",

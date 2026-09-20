@@ -8,6 +8,7 @@
   "lat": 51.0455,
   "lng": -114.024,
   "official_url": "https://www.calgaryzoo.com/",
+  "own_public_cams": false,
   "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",

@@ -8,6 +8,7 @@
   "lat": 30.31,
   "lng": -97.71,
   "official_url": "https://thinkeryaustin.org/",
+  "own_public_cams": false,
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",

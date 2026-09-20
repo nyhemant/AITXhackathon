@@ -1,8 +1,11 @@
-"""Kit-tier badge + freshness mailto for Field Trip Kit place pages.
+"""Kit-tier badge + place-list feedback for Field Trip Kit place pages.
 
 Honesty rule: Verified only when existing venue JSON already has
 `list_confidence == "audited"` AND a real `last_presence_audit` date.
 Every other venue is a Starter list. Do not invent dates or slugs.
+
+Feedback is two-tap (Accurate / Something changed) with GA4 via FPTrack;
+mailto is optional only for the changed path.
 """
 
 from __future__ import annotations
@@ -12,8 +15,9 @@ from urllib.parse import quote
 
 FRESHNESS_MAIL = "arku2arku@gmail.com"
 FRESHNESS_PROMPT = "Was this list accurate?"
-FRESHNESS_ACCURATE = "accurate"
-FRESHNESS_CHANGED = "something changed"
+FRESHNESS_ACCURATE = "Accurate"
+FRESHNESS_CHANGED = "Something changed"
+FRESHNESS_THANKS = "Thanks — that helps."
 KIT_LABEL_STARTER = "Starter list"
 KIT_LABEL_VERIFIED_PREFIX = "We checked the animal list, exhibit names, and map link in "
 
@@ -89,34 +93,59 @@ def print_status_line(mission_venue: dict | None) -> str:
 def freshness_mailto(slug: str, kind: str) -> str:
     slug = str(slug or "").strip()
     if kind == "accurate":
-        subject = f"Field Trip Kit · {slug} · {FRESHNESS_ACCURATE}"
+        subject = f"Field Trip Kit · {slug} · accurate"
     else:
-        subject = f"Field Trip Kit · {slug} · {FRESHNESS_CHANGED}"
+        subject = f"Field Trip Kit · {slug} · something changed"
     return f"mailto:{FRESHNESS_MAIL}?subject={quote(subject, safe='')}"
 
 
-def freshness_links_html(slug: str) -> str:
+def freshness_actions_html(slug: str) -> str:
+    """Two-tap buttons; changed path keeps optional mailto with place id in subject."""
     slug = str(slug or "").strip()
     if not slug:
         return ""
+    mail = esc(freshness_mailto(slug, "changed"))
     return (
-        f'<a href="{esc(freshness_mailto(slug, "accurate"))}">{esc(FRESHNESS_ACCURATE)}</a>'
-        f" · "
-        f'<a href="{esc(freshness_mailto(slug, "changed"))}">{esc(FRESHNESS_CHANGED)}</a>'
+        f'<span class="seo-freshness-actions">'
+        f'<button type="button" class="seo-freshness-btn" data-feedback="accurate">'
+        f"{esc(FRESHNESS_ACCURATE)}</button>"
+        f'<button type="button" class="seo-freshness-btn" data-feedback="changed" '
+        f'data-mailto="{mail}">{esc(FRESHNESS_CHANGED)}</button>'
+        f"</span>"
+        f'<span class="seo-freshness-thanks" hidden>{esc(FRESHNESS_THANKS)}</span>'
+        f'<span class="seo-freshness-note-wrap" hidden>'
+        f'<label class="seo-freshness-note-label" for="place-feedback-note-{esc(slug)}">'
+        f"Optional note</label>"
+        f'<textarea id="place-feedback-note-{esc(slug)}" class="seo-freshness-note" '
+        f'rows="2" maxlength="280" placeholder="What changed? (optional)"></textarea>'
+        f'<span class="seo-freshness-note-actions">'
+        f'<button type="button" class="seo-freshness-btn seo-freshness-send" '
+        f'data-feedback-send="1">Email us</button>'
+        f'<button type="button" class="seo-freshness-btn seo-freshness-done" '
+        f'data-feedback-done="1">Done</button>'
+        f"</span></span>"
     )
 
 
 def freshness_html(slug: str, extra_class: str = "") -> str:
-    links = freshness_links_html(slug)
-    if not links:
+    actions = freshness_actions_html(slug)
+    if not actions:
         return ""
     cls = "seo-freshness" + (f" {extra_class}" if extra_class else "")
-    return f'<p class="{esc(cls)}">{esc(FRESHNESS_PROMPT)} {links}</p>'
+    return (
+        f'<p class="{esc(cls)}" data-place-feedback data-place-id="{esc(slug)}">'
+        f'<span class="seo-freshness-prompt">{esc(FRESHNESS_PROMPT)}</span> '
+        f"{actions}</p>"
+    )
 
 
 def freshness_span_html(slug: str, extra_class: str = "ms-freshness") -> str:
-    links = freshness_links_html(slug)
-    if not links:
+    actions = freshness_actions_html(slug)
+    if not actions:
         return ""
     cls = extra_class or "ms-freshness"
-    return f'<span class="{esc(cls)}">{esc(FRESHNESS_PROMPT)} {links}</span>'
+    return (
+        f'<span class="{esc(cls)}" data-place-feedback data-place-id="{esc(slug)}">'
+        f'<span class="seo-freshness-prompt">{esc(FRESHNESS_PROMPT)}</span> '
+        f"{actions}</span>"
+    )

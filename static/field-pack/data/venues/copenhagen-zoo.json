@@ -8,6 +8,7 @@
   "lat": 55.6725,
   "lng": 12.5214,
   "official_url": "https://www.zoo.dk/en",
+  "own_public_cams": false,
   "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",

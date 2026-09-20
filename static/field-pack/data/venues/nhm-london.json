@@ -8,6 +8,7 @@
   "lat": 51.4967,
   "lng": -0.1764,
   "official_url": "https://www.nhm.ac.uk/",
+  "own_public_cams": false,
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",

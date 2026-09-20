@@ -8,6 +8,7 @@
   "lat": 38.93,
   "lng": -77.05,
   "official_url": "https://nationalzoo.si.edu/",
+  "own_public_cams": true,
   "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",

@@ -8,6 +8,7 @@
   "lat": -34.5805,
   "lng": -58.4168,
   "official_url": "https://buenosaires.gob.ar/ecoparque",
+  "own_public_cams": false,
   "verified_by": "research",
   "status": "partial",
   "tagline": "Starter: official Ecoparque list is native fauna — orangutan, Asian elephant, and Bengal tiger already relocated.",

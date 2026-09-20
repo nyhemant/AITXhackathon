@@ -8,6 +8,7 @@
   "lat": 41.9175,
   "lng": 12.488,
   "official_url": "https://www.bioparco.it/en/",
+  "own_public_cams": false,
   "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",

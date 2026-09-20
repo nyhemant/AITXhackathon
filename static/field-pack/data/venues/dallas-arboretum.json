@@ -8,6 +8,7 @@
   "lat": 32.82,
   "lng": -96.72,
   "official_url": "https://www.dallasarboretum.org/",
+  "own_public_cams": false,
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",

@@ -8,6 +8,7 @@
   "lat": 40.78,
   "lng": -73.97,
   "official_url": "https://www.amnh.org/",
+  "own_public_cams": false,
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",

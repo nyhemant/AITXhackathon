@@ -8,6 +8,7 @@
   "lat": -24.9947,
   "lng": 31.5969,
   "official_url": "https://www.sanparks.org/parks/kruger",
+  "own_public_cams": false,
   "last_verified": "2026-08-09",
   "verified_by": "research",
   "status": "verified",

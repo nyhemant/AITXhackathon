@@ -8,6 +8,7 @@
   "lat": 53.0685,
   "lng": -4.0762,
   "official_url": "https://www.eryri.llyw.cymru/",
+  "own_public_cams": false,
   "last_verified": "2026-08-09",
   "verified_by": "research",
   "status": "verified",

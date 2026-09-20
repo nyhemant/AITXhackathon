@@ -8,6 +8,7 @@
   "lat": -23.65,
   "lng": -46.62,
   "official_url": "https://www.zoologico.com.br/",
+  "own_public_cams": false,
   "verified_by": "research",
   "status": "partial",
   "tagline": "Starter homepage: lion, chimpanzees, hippos — elephants unnamed (not African); animals directory is JS-thin.",

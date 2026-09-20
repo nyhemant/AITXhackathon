@@ -8,6 +8,7 @@
   "lat": 48.097,
   "lng": 11.5586,
   "official_url": "https://www.hellabrunn.de/en/",
+  "own_public_cams": false,
   "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",

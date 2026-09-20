@@ -8,6 +8,7 @@
   "lat": 32.72,
   "lng": -97.36,
   "official_url": "https://www.fortworthzoo.org/",
+  "own_public_cams": false,
   "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",

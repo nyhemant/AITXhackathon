@@ -8,6 +8,7 @@
   "lat": 58.1847,
   "lng": 8.1412,
   "official_url": "https://www.dyreparken.no/",
+  "own_public_cams": false,
   "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",

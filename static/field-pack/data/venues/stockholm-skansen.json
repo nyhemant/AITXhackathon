@@ -8,6 +8,7 @@
   "lat": 59.327,
   "lng": 18.103,
   "official_url": "https://www.skansen.se/en/",
+  "own_public_cams": false,
   "verified_by": "research",
   "status": "partial",
   "tagline": "Starter: official Skansen zoo is Nordic (bear, moose, lynx) — no published catalog zoo-card overlap.",

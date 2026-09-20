@@ -8,6 +8,7 @@
   "lat": 39.75,
   "lng": -104.95,
   "official_url": "https://denverzoo.org/",
+  "own_public_cams": false,
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",

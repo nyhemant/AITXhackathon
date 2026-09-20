@@ -8,6 +8,7 @@
   "lat": 28.57,
   "lng": -80.65,
   "official_url": "https://www.kennedyspacecenter.com/",
+  "own_public_cams": false,
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",
