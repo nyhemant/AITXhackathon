@@ -240,7 +240,7 @@ class ItemRouteActionTests(unittest.TestCase):
         )
         main = card.split('<main class="card-page">', 1)[1].split("</main>", 1)[0]
         self.assertIn(f'href="{otter_pictures}"', main)
-        self.assertIn(">Photos</a>", main)
+        self.assertIn("More photos at", main)
         self.assertIn(
             "/field-pack/virtual-field-trip/?tab=zoo&from=card#habitat=asian-small-clawed-otter",
             main.replace("&amp;", "&"),
@@ -267,7 +267,7 @@ class ItemRouteActionTests(unittest.TestCase):
         card = (FP / "cards" / "shark" / "index.html").read_text(encoding="utf-8")
         main = card.split('<main class="card-page">', 1)[1].split("</main>", 1)[0]
         self.assertIn(f'href="{shark_pictures}"', main)
-        self.assertIn(">Photos</a>", main)
+        self.assertIn("More photos at", main)
         self.assertNotIn("/facts/great-white-shark", main)
 
         shark_routes = [r for r in self.routes if r["itemId"] == "shark"]
@@ -359,7 +359,7 @@ class ItemRouteActionTests(unittest.TestCase):
         card = (FP / "cards" / "eel" / "index.html").read_text(encoding="utf-8")
         main = card.split('<main class="card-page">', 1)[1].split("</main>", 1)[0]
         self.assertIn(f'href="{eel_pictures}"', main)
-        self.assertIn(">Photos</a>", main)
+        self.assertIn("More photos at", main)
         self.assertIn(
             "/field-pack/virtual-field-trip/?tab=aquarium&amp;from=card#habitat=eel",
             main,

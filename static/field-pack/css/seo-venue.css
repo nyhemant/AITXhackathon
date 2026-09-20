@@ -1898,6 +1898,9 @@ a.seo-map-card:focus-visible {
 .card-page-crumbs a {
   color: #0f5c5c;
 }
+.card-page-crumbs .card-back-to-place a {
+  font-weight: 600;
+}
 .card-talk-pack .card-talk-h,
 .card-page .card-talk-h {
   font-size: clamp(1.4rem, 4vw, 1.85rem);

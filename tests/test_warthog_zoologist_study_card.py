@@ -549,7 +549,7 @@ class WarthogZoologistStudyCardTests(unittest.TestCase):
         html = WARTHOG.read_text(encoding="utf-8")
         self.assertIn("Zoologist", html)
         self.assertIn('data-study-pick="zoologist"', html)
-        self.assertIn("study-card.js?v=13", html)
+        self.assertIn("study-card.js?v=14", html)
         self.assertIn("study-cards-data.js?v=8", html)
         print_tpl = study_print_html_for("warthog")
         self.assertIn("Junior Ranger", print_tpl)

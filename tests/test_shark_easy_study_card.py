@@ -436,7 +436,7 @@ class SharkEasyStudyCardTests(unittest.TestCase):
         self.assertIn("study-next-tier", main)
         self.assertNotIn("study-level-picker-bottom", main)
         self.assertNotIn("card-print-note", main)
-        self.assertIn("study-card.js?v=13", html)
+        self.assertIn("study-card.js?v=14", html)
         self.assertIn("study-card.css?v=12", html)
         self.assertIn("study-cards-data.js?v=8", html)
         self.assertIn('id="study-card-data"', html)

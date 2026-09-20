@@ -343,7 +343,7 @@ OUTING_TALK_EXHIBIT = (
 )
 
 SEO_CSS_VER = "33"
-CARD_SEO_CSS_VER = "36"
+CARD_SEO_CSS_VER = "37"
 LANDING_CSS_VER = "100"
 LANDING_MAP_JS_VER = "89"
 LANDING_HOOK_JS_VER = "39"
@@ -352,7 +352,7 @@ CATALOG_JS_VER = "40"
 SHELL_CSS_VER = "9"
 SHELL_JS_VER = "6"
 PRINT_KIT_JS_VER = "22"
-STUDY_CARD_JS_VER = "13"
+STUDY_CARD_JS_VER = "14"
 STUDY_CARD_CSS_VER = "12"
 STUDY_CARDS_DATA_JS_VER = "8"
 VIEWPORT = "width=device-width, initial-scale=1, viewport-fit=cover"
@@ -889,6 +889,48 @@ def is_place_site_url(url: str) -> bool:
     return any(tok in host for tok in ("zoo", "aquarium", "museum"))
 
 
+
+_PHOTO_SOURCE_BY_HOST = {
+    "kids.nationalgeographic.com": "National Geographic Kids",
+    "www.nationalgeographic.com": "National Geographic",
+    "nationalgeographic.com": "National Geographic",
+    "www.perotmuseum.org": "Perot Museum",
+    "perotmuseum.org": "Perot Museum",
+    "spaceplace.nasa.gov": "NASA Space Place",
+    "www.exploratorium.edu": "Exploratorium",
+    "exploratorium.edu": "Exploratorium",
+    "www.sciencebuddies.org": "Science Buddies",
+    "sciencebuddies.org": "Science Buddies",
+    "www.nasa.gov": "NASA",
+    "nasa.gov": "NASA",
+    "airandspace.si.edu": "Air and Space Museum",
+    "mars.nasa.gov": "NASA Mars",
+    "scijinks.gov": "SciJinks",
+}
+
+
+def pictures_link_label(url: str, explicit: str = "") -> str:
+    """Outbound photos CTA: name the source, never a bare unlabeled Photos.
+
+    Explicit catalog picturesLabel wins (e.g. Christmas Island honesty).
+    Otherwise derive a readable source from the host.
+    """
+    custom = str(explicit or "").strip()
+    if custom and custom.lower() != "photos":
+        return custom
+    host = (urlparse(url or "").hostname or "").lower()
+    source = _PHOTO_SOURCE_BY_HOST.get(host)
+    if not source and host.startswith("www."):
+        source = _PHOTO_SOURCE_BY_HOST.get(host[4:])
+    if not source:
+        bare = host[4:] if host.startswith("www.") else host
+        if bare:
+            source = bare.split(".")[0].replace("-", " ").title()
+        else:
+            source = "this source"
+    return f"More photos at {source} ↗"
+
+
 def catalog_more_links_html(item: dict, *, shared: bool = False, allow_cam: bool = True) -> str:
     """Photos / learn-more from catalog.links. Prefer VFT cam over catalog cam.
 
@@ -907,7 +949,9 @@ def catalog_more_links_html(item: dict, *, shared: bool = False, allow_cam: bool
             )
     pics = str(links.get("pictures") or "").strip()
     if pics:
-        pics_label = str(links.get("picturesLabel") or "Photos").strip() or "Photos"
+        pics_label = pictures_link_label(
+            pics, str(links.get("picturesLabel") or "").strip()
+        )
         bits.append(
             f'<a class="btn btn-ghost" href="{esc(pics)}" target="_blank" rel="noopener noreferrer">{esc(pics_label)}</a>'
         )
@@ -1268,6 +1312,7 @@ _START_HERE_NEXT_SLUGS = (
 _START_HERE_NEXT: dict[str, list[dict[str, str]]] | None = None
 _START_HERE_KITS: dict[str, list[str]] | None = None
 _START_HERE_SITES: dict[str, str] | None = None
+_START_HERE_NAMES: dict[str, str] | None = None
 # Hold-back list for catalog animals that must not get a public card page.
 # Polar bear is published — keep this empty unless a future catalog id is intentionally withheld.
 # Short typed URLs → canonical card ids. 301 aliases only — never publish a card page here.
@@ -1325,17 +1370,21 @@ def start_here_card_href(item_id: str, slug: str = "") -> str:
 
 def _load_start_here_index() -> None:
     """Build per-kit Start here nexts, membership, and official URLs once."""
-    global _START_HERE_NEXT, _START_HERE_KITS, _START_HERE_SITES
+    global _START_HERE_NEXT, _START_HERE_KITS, _START_HERE_SITES, _START_HERE_NAMES
     if _START_HERE_NEXT is not None:
         return
     nexts: dict[str, list[dict[str, str]]] = {}
     kits: dict[str, list[str]] = {}
     sites: dict[str, str] = {}
+    names: dict[str, str] = {}
     for slug in _START_HERE_NEXT_SLUGS:
         mv = load_mission_venue(slug) or {}
         official = str(mv.get("official_url") or "").strip()
         if official:
             sites[slug] = official
+        pname = str(mv.get("name") or "").strip()
+        if pname:
+            names[slug] = pname
         items = {it.get("id"): it for it in (mv.get("items") or []) if it.get("id")}
         route_ids = [rid for rid in (mv.get("route_90m") or [])[:3] if rid in items]
         if len(route_ids) < 2:
@@ -1356,6 +1405,7 @@ def _load_start_here_index() -> None:
     _START_HERE_NEXT = nexts
     _START_HERE_KITS = kits
     _START_HERE_SITES = sites
+    _START_HERE_NAMES = names
 
 
 def start_here_next_by_card() -> dict[str, list[dict[str, str]]]:
@@ -1373,6 +1423,12 @@ def start_here_kits_for(cid: str) -> list[str]:
 def start_here_official_urls() -> dict[str, str]:
     _load_start_here_index()
     return dict(_START_HERE_SITES or {})
+
+
+def start_here_place_names() -> dict[str, str]:
+    """slug → display name for Back to {Place} on card pages."""
+    _load_start_here_index()
+    return dict(_START_HERE_NAMES or {})
 
 
 def start_here_next_by_kit() -> dict[str, dict[str, dict[str, str]]]:
@@ -5309,6 +5365,7 @@ def write_card_pages(
         park_rail_html = animal_park_rail_html(cid)
         print_venue_attr = f' data-venue="{esc(vid)}"' if show_venue_chrome and vid else ""
         kit_sites_js = json.dumps(start_here_official_urls(), separators=(",", ":"))
+        kit_names_js = json.dumps(start_here_place_names(), separators=(",", ":"))
         action_bits: list[str] = []
         if watch_live and watch_href:
             watch_cta = card_watch_cta_label(vft)
@@ -5386,7 +5443,7 @@ def write_card_pages(
       </div>
     </header>
     <main class="card-page">
-      <p class="card-page-crumbs"><a href="{HOME_HREF}">KidZooKit</a> · <a href="/field-pack/cards/">Cards</a></p>
+      <p class="card-page-crumbs"><a href="{HOME_HREF}">KidZooKit</a> · <a href="/field-pack/cards/">Cards</a><span class="card-back-to-place" hidden> · <a href="#"></a></span></p>
       {img_html}
       <h1>{esc(emoji)} {esc(name)}</h1>
       {venue_chrome}
@@ -5411,6 +5468,7 @@ def write_card_pages(
 {study_scripts}  <script>
     (function () {{
       var KIT_SITES = {kit_sites_js};
+      var KIT_NAMES = {kit_names_js};
       var from = new URLSearchParams(window.location.search).get("from");
       if (!from || !KIT_SITES[from]) {{
         try {{
@@ -5418,6 +5476,15 @@ def write_card_pages(
           var m = refPath.match(/^\\/field-pack\\/([a-z0-9-]+)\\/?/);
           if (m && KIT_SITES[m[1]]) from = m[1];
         }} catch (e) {{}}
+      }}
+      var backWrap = document.querySelector(".card-back-to-place");
+      if (backWrap && from && KIT_NAMES[from]) {{
+        var backA = backWrap.querySelector("a");
+        if (backA) {{
+          backA.setAttribute("href", "/field-pack/" + encodeURIComponent(from) + "/");
+          backA.textContent = "Back to " + KIT_NAMES[from];
+          backWrap.removeAttribute("hidden");
+        }}
       }}
       document.querySelectorAll(".card-page-next[data-next-from]").forEach(function (nextEl) {{
         if (from === nextEl.getAttribute("data-next-from")) nextEl.removeAttribute("hidden");
