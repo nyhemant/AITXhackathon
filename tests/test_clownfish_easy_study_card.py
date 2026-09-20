@@ -349,7 +349,7 @@ class ClownfishEasyStudyCardTests(unittest.TestCase):
             self.assertIn(stem, main)
         for line in TEACH:
             self.assertIn(line.replace("&", "&amp;"), main)
-        self.assertIn("Watch Live", main)
+        self.assertIn("card-watch-live", main)
         self.assertIn("card-watch-live", main)
         self.assertIn("card-page-photo", main)
         self.assertIn("/field-pack/photos/clownfish.jpg", main)

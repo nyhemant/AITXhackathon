@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="/shell/shell.css?v=9" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=43" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=100" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=35" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=36" />
 </head>
 <body class="landing-body card-page-body">
   <div class="app">
@@ -36,7 +36,7 @@
     </header>
     <main class="card-page">
       <p class="card-page-crumbs"><a href="/start/">KidZooKit</a> · <a href="/field-pack/cards/">Cards</a></p>
-      <img class="card-page-photo" src="/field-pack/photos/cm-woven.jpg?v=img2" alt="Woven Wonders" width="640" height="640" decoding="async" />
+      <button type="button" class="card-page-photo-zoom" aria-label="View larger photo: Woven Wonders" data-photo-src="/field-pack/photos/cm-woven.jpg?v=img2"><img class="card-page-photo" src="/field-pack/photos/cm-woven.jpg?v=img2" alt="Woven Wonders" width="640" height="640" decoding="async" /></button>
       <h1>🧗 Woven Wonders</h1>
       <p class="card-page-venue">At home · Perot Museum</p>
       <p class="card-page-blurb">Colorful climbing structure — art you can climb!</p>
@@ -78,13 +78,40 @@
         more.href = KIT_SITES[from];
         more.removeAttribute("hidden");
       }
-      document.querySelectorAll("a.card-watch-live, a.card-page-photo-link").forEach(function (a) {
+      document.querySelectorAll("a.card-watch-live").forEach(function (a) {
         if (!from || !KIT_SITES[from]) return;
         try {
           var u = new URL(a.href, window.location.origin);
           u.searchParams.set("return", from);
           a.setAttribute("href", u.pathname + u.search + u.hash);
         } catch (e) {}
+      });
+      document.querySelectorAll("button.card-page-photo-zoom").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var src = btn.getAttribute("data-photo-src") || "";
+          var img = btn.querySelector("img");
+          var alt = (img && img.getAttribute("alt")) || "";
+          if (!src) return;
+          var dlg = document.createElement("dialog");
+          dlg.className = "card-photo-lightbox";
+          dlg.setAttribute("aria-label", "Larger photo");
+          var big = document.createElement("img");
+          big.src = src;
+          big.alt = alt;
+          var close = document.createElement("form");
+          close.method = "dialog";
+          var closeBtn = document.createElement("button");
+          closeBtn.type = "submit";
+          closeBtn.className = "btn btn-secondary";
+          closeBtn.textContent = "Close";
+          close.appendChild(closeBtn);
+          dlg.appendChild(big);
+          dlg.appendChild(close);
+          document.body.appendChild(dlg);
+          if (typeof dlg.showModal === "function") dlg.showModal();
+          else dlg.setAttribute("open", "");
+          dlg.addEventListener("close", function () { dlg.remove(); });
+        });
       });
       if (typeof FPTrack === "function") FPTrack("card_page_viewed", { card_id: "cm-woven" });
       var btn = document.getElementById("print-this-card");

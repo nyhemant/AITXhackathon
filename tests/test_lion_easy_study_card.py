@@ -197,8 +197,8 @@ class LionEasyStudyCardTests(unittest.TestCase):
             self.assertIn(stem, main)
         for line in TEACH:
             self.assertIn(line, main)
-        self.assertIn("Watch Live", main)
-        self.assertIn("/field-pack/virtual-field-trip/?tab=zoo&from=card#habitat=african-lion", main)
+        self.assertIn("card-watch-live", main)
+        self.assertIn("/field-pack/virtual-field-trip/?tab=zoo&from=card#habitat=african-lion", main.replace("&amp;", "&"))
         self.assertNotIn("nationalzoo.si.edu/webcams", main)
         self.assertIn("Look close — mane, whiskers, a tuft on the tail.", html)
         self.assertNotIn("mighty roar", html)
@@ -325,7 +325,7 @@ class LionEasyStudyCardTests(unittest.TestCase):
     def test_desktop_widens_study_card_page_only(self):
         css = (FP / "css" / "study-card.css").read_text(encoding="utf-8")
         seo = (FP / "css" / "seo-venue.css").read_text(encoding="utf-8")
-        self.assertEqual(STUDY_CARD_CSS_VER, "10")
+        self.assertEqual(STUDY_CARD_CSS_VER, "11")
         self.assertIn("max-width: 34rem;", seo)
         self.assertIn("@media screen and (min-width: 960px)", css)
         self.assertIn("max-width: 48rem;", css)

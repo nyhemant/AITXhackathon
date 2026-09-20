@@ -344,7 +344,7 @@ OUTING_TALK_EXHIBIT = (
 )
 
 SEO_CSS_VER = "33"
-CARD_SEO_CSS_VER = "35"
+CARD_SEO_CSS_VER = "36"
 LANDING_CSS_VER = "100"
 LANDING_MAP_JS_VER = "89"
 LANDING_HOOK_JS_VER = "39"
@@ -965,6 +965,20 @@ def cousin_source_from_label(label: str) -> str:
     return ""
 
 
+def card_watch_cta_label(vft: dict | None) -> str:
+    """Single action-row Watch Live label; fold zoo/film source in when known."""
+    vft = vft or {}
+    cam_src = cousin_source_from_label(vft.get("cam_label") or "")
+    if cam_src:
+        return f"Watch live at {cam_src}"
+    film_src = cousin_source_from_label(vft.get("film_title") or "")
+    if film_src:
+        return f"Watch film from {film_src}"
+    if str(vft.get("film_url") or "").strip():
+        return "Watch film"
+    return CTA_WATCH_LIVE
+
+
 def is_youtube_url(url: str) -> bool:
     host = (urlparse(url or "").hostname or "").lower()
     if host.startswith("www."):
@@ -1062,14 +1076,25 @@ def card_hero_photo_html(
     emoji: str,
     pos_attr: str = "",
     watch_href: str = "",
+    enlarge: bool = False,
 ) -> str:
-    """Hero photo. Same Watch Live door when that control exists; otherwise unlinked."""
+    """Hero photo. Prefer enlarge/lightbox or bare img — never a silent cam door.
+
+    watch_href is legacy (cam on hero). Card pages pass enlarge=True instead so
+    the only Watch Live control stays in the action row.
+    """
     if not photo:
         return f'<p class="card-page-emoji" aria-hidden="true">{esc(emoji)}</p>'
     img = (
         f'<img class="card-page-photo" src="{esc(photo)}" alt="{esc(name)}" '
         f'width="640" height="640" decoding="async"{pos_attr} />'
     )
+    if enlarge:
+        return (
+            f'<button type="button" class="card-page-photo-zoom" '
+            f'aria-label="View larger photo: {esc(name)}" '
+            f'data-photo-src="{esc(photo)}">{img}</button>'
+        )
     href = (watch_href or "").strip()
     if not href:
         return img
@@ -5245,13 +5270,13 @@ def write_card_pages(
         vft = item.get("vft") or {}
         vft_href = vft.get("vft_href") or ""
         watch_href = card_watch_href(vft) if vft_can_watch_live(vft) else ""
-        photo_watch_href = watch_href if (watch_live and watch_href) else ""
+        # One cam → one action-row link. Hero enlarges the photo (no silent cam nav).
         img_html = card_hero_photo_html(
             photo=photo,
             name=name,
             emoji=emoji,
             pos_attr=pos_attr,
-            watch_href=photo_watch_href,
+            enlarge=bool(photo),
         )
         talk_html = outing_talk_html(item)
         study_deck = default_study_deck_for(cid)
@@ -5278,7 +5303,12 @@ def write_card_pages(
                 f'\n  <link rel="stylesheet" href="/field-pack/css/study-card.css?v={STUDY_CARD_CSS_VER}" />'
             )
         more_links = catalog_more_links_html(item, shared=not show_venue_chrome, allow_cam=False)
-        watch_html = watch_links_html(item, film_via_vft=True, watch_live=watch_live)
+        # Animal/sea_life Watch Live lives only in the action row (dedupe hero media block).
+        watch_html = (
+            ""
+            if watch_live
+            else watch_links_html(item, film_via_vft=True, watch_live=False)
+        )
         hero_links = card_hero_links_html(more_links, watch_html)
         next_html = card_next_html(cid)
         try_next_html = study_try_next_html(cid) if study_deck else ""
@@ -5287,8 +5317,9 @@ def write_card_pages(
         kit_sites_js = json.dumps(start_here_official_urls(), separators=(",", ":"))
         action_bits: list[str] = []
         if watch_live and watch_href:
+            watch_cta = card_watch_cta_label(vft)
             action_bits.append(
-                f'<a class="btn btn-primary card-watch-live" href="{watch_href}">{esc(CTA_WATCH_LIVE)}</a>'
+                f'<a class="btn btn-primary card-watch-live" href="{esc(watch_href)}">{esc(watch_cta)}</a>'
             )
         elif vft_href and not watch_live:
             action_bits.append(
@@ -5388,13 +5419,40 @@ def write_card_pages(
         more.href = KIT_SITES[from];
         more.removeAttribute("hidden");
       }}
-      document.querySelectorAll("a.card-watch-live, a.card-page-photo-link").forEach(function (a) {{
+      document.querySelectorAll("a.card-watch-live").forEach(function (a) {{
         if (!from || !KIT_SITES[from]) return;
         try {{
           var u = new URL(a.href, window.location.origin);
           u.searchParams.set("return", from);
           a.setAttribute("href", u.pathname + u.search + u.hash);
         }} catch (e) {{}}
+      }});
+      document.querySelectorAll("button.card-page-photo-zoom").forEach(function (btn) {{
+        btn.addEventListener("click", function () {{
+          var src = btn.getAttribute("data-photo-src") || "";
+          var img = btn.querySelector("img");
+          var alt = (img && img.getAttribute("alt")) || "";
+          if (!src) return;
+          var dlg = document.createElement("dialog");
+          dlg.className = "card-photo-lightbox";
+          dlg.setAttribute("aria-label", "Larger photo");
+          var big = document.createElement("img");
+          big.src = src;
+          big.alt = alt;
+          var close = document.createElement("form");
+          close.method = "dialog";
+          var closeBtn = document.createElement("button");
+          closeBtn.type = "submit";
+          closeBtn.className = "btn btn-secondary";
+          closeBtn.textContent = "Close";
+          close.appendChild(closeBtn);
+          dlg.appendChild(big);
+          dlg.appendChild(close);
+          document.body.appendChild(dlg);
+          if (typeof dlg.showModal === "function") dlg.showModal();
+          else dlg.setAttribute("open", "");
+          dlg.addEventListener("close", function () {{ dlg.remove(); }});
+        }});
       }});
       if (typeof FPTrack === "function") FPTrack("card_page_viewed", {{ card_id: "{esc(cid)}" }});
       var btn = document.getElementById("print-this-card");

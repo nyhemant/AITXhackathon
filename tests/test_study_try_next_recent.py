@@ -239,7 +239,7 @@ class StudyTryNextRecentTests(unittest.TestCase):
         seo = SEO.read_text(encoding="utf-8")
         self.assertIn(f'STUDY_CARD_JS_VER = "{STUDY_CARD_JS_VER}"', seo)
         self.assertIn(f'STUDY_CARDS_DATA_JS_VER = "{STUDY_CARDS_DATA_JS_VER}"', seo)
-        self.assertEqual(STUDY_CARD_JS_VER, "10")
+        self.assertEqual(STUDY_CARD_JS_VER, "11")
         self.assertEqual(STUDY_CARDS_DATA_JS_VER, "7")
 
     def test_js_helper_runtime_matches_python(self):

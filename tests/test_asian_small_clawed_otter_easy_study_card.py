@@ -330,12 +330,12 @@ class AsianSmallClawedOtterEasyStudyCardTests(unittest.TestCase):
             self.assertIn(stem, main)
         for line in TEACH:
             self.assertIn(line, main)
-        self.assertIn("Watch Live", main)
         self.assertIn("card-watch-live", main)
-        self.assertIn("card-page-photo-link", main)
+        self.assertIn("card-watch-live", main)
+        self.assertIn("card-page-photo-zoom", main)
         self.assertIn(
             "/field-pack/virtual-field-trip/?tab=zoo&from=card#habitat=asian-small-clawed-otter",
-            main,
+            main.replace("&amp;", "&"),
         )
         self.assertIn('class="card-hero-links no-print"', main)
         self.assertIn('class="card-try-next no-print"', main)

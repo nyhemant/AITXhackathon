@@ -193,8 +193,8 @@ class GiraffeEasyStudyCardTests(unittest.TestCase):
             self.assertIn(stem, main)
         for line in TEACH:
             self.assertIn(line, main)
-        self.assertIn("Watch Live", main)
-        self.assertIn("/field-pack/virtual-field-trip/?tab=zoo&from=card#habitat=reticulated-giraffe", main)
+        self.assertIn("card-watch-live", main)
+        self.assertIn("/field-pack/virtual-field-trip/?tab=zoo&from=card#habitat=reticulated-giraffe", main.replace("&amp;", "&"))
         self.assertIn("study-card.js?v=11", html)
         self.assertIn("study-card.css?v=11", html)
         self.assertIn("study-cards-data.js?v=8", html)

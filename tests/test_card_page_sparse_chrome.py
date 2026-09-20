@@ -24,6 +24,7 @@ from generate_bdo_seo import (  # noqa: E402
     CTA_PRINT_CARD,
     HOME_HREF,
     CTA_WATCH_LIVE,
+    card_watch_cta_label,
     PLACE_VFT_CTA,
     PRINT_SPEC,
     card_watch_href,
@@ -130,7 +131,8 @@ class CardPageSparseChromeTests(unittest.TestCase):
             main = _main(html)
             actions = main.split('class="card-page-actions"', 1)[1]
             with self.subTest(card=cid):
-                self.assertIn(f">{CTA_WATCH_LIVE}</a>", actions)
+                self.assertIn("card-watch-live", actions)
+                self.assertRegex(actions, r"Watch (live at |film from |film</a>|Live</a>)")
                 self.assertIn("card-watch-live", actions)
                 self.assertIn(f">{CTA_PRINT_CARD}</button>", actions)
                 self.assertNotIn("Explore at home", actions)
@@ -168,7 +170,10 @@ class CardPageSparseChromeTests(unittest.TestCase):
                 self.assertIn("#habitat=", main)
                 self.assertNotIn("nationalzoo.si.edu", main)
                 self.assertNotIn("houstonzoo.org", main)
-                self.assertNotIn('target="_blank"', main.split('class="seo-watch-row"', 1)[1].split("</p>", 1)[0])
+                self.assertNotIn('class="seo-watch-row"', main)
+                actions = main.split('class="card-page-actions"', 1)[1].split("</p>", 1)[0]
+                self.assertIn("card-watch-live", actions)
+                self.assertNotIn('target="_blank"', actions)
 
     def test_watch_links_helper_routes_card_watch_live_in_page(self):
         item = {

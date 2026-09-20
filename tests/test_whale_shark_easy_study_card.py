@@ -255,9 +255,9 @@ class WhaleSharkEasyStudyCardTests(unittest.TestCase):
             self.assertIn(stem, main)
         for line in TEACH:
             self.assertIn(line, main)
-        self.assertIn("Watch Live", main)
         self.assertIn("card-watch-live", main)
-        self.assertIn("card-page-photo-link", main)
+        self.assertIn("card-watch-live", main)
+        self.assertIn("card-page-photo-zoom", main)
         self.assertIn("card-page-photo", main)
         self.assertIn("/field-pack/photos/whale-shark.jpg", main)
         self.assertIn("#habitat=whale-shark", main)

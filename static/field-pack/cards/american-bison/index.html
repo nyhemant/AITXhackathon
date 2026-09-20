@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="/shell/shell.css?v=9" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=43" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=100" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=35" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=36" />
   <link rel="stylesheet" href="/field-pack/css/study-card.css?v=11" />
 </head>
 <body class="landing-body card-page-body">
@@ -37,14 +37,14 @@
     </header>
     <main class="card-page">
       <p class="card-page-crumbs"><a href="/start/">KidZooKit</a> · <a href="/field-pack/cards/">Cards</a></p>
-      <a class="card-page-photo-link" href="/field-pack/virtual-field-trip/?tab=zoo&amp;from=card#habitat=american-bison" aria-label="Watch Live: American bison"><img class="card-page-photo" src="/field-pack/photos/american-bison.jpg?v=img2" alt="American bison" width="640" height="640" decoding="async" style="object-position: 50% 25%" /></a>
+      <button type="button" class="card-page-photo-zoom" aria-label="View larger photo: American bison" data-photo-src="/field-pack/photos/american-bison.jpg?v=img2"><img class="card-page-photo" src="/field-pack/photos/american-bison.jpg?v=img2" alt="American bison" width="640" height="640" decoding="async" style="object-position: 50% 25%" /></button>
       <h1>🦬 American bison</h1>
       
       <p class="card-page-blurb">Huge grassland icon — never approach; watch from a car or far pullout.</p>
-      <div class="card-hero-links no-print"><div class="action-row detail-links detail-links-quiet no-print"><a class="btn btn-ghost" href="https://kids.nationalgeographic.com/animals/mammals/facts/american-bison" target="_blank" rel="noopener noreferrer">Photos</a><a class="btn btn-ghost" href="https://www.nps.gov/subjects/bison/index.htm" target="_blank" rel="noopener noreferrer">Learn more</a></div><p class="seo-watch-row"><a class="btn btn-primary card-watch-live" href="/field-pack/virtual-field-trip/?tab=zoo&amp;from=card#habitat=american-bison">Watch Live</a><span class="seo-watch-source">Film from Smithsonian National Zoo</span></p></div>
+      <div class="card-hero-links no-print"><div class="action-row detail-links detail-links-quiet no-print"><a class="btn btn-ghost" href="https://kids.nationalgeographic.com/animals/mammals/facts/american-bison" target="_blank" rel="noopener noreferrer">Photos</a><a class="btn btn-ghost" href="https://www.nps.gov/subjects/bison/index.htm" target="_blank" rel="noopener noreferrer">Learn more</a></div></div>
       
       <p class="card-page-actions">
-        <a class="btn btn-primary card-watch-live" href="/field-pack/virtual-field-trip/?tab=zoo&from=card#habitat=american-bison">Watch Live</a>
+        <a class="btn btn-primary card-watch-live" href="/field-pack/virtual-field-trip/?tab=zoo&amp;from=card#habitat=american-bison">Watch film from Smithsonian National Zoo</a>
         <button type="button" class="btn btn-secondary" id="print-this-card" data-card-id="american-bison">Print this card</button>
       </p>
       <p class="print-spec no-print">US Letter or A4 · black &amp; white is fine</p>
@@ -82,13 +82,40 @@
         more.href = KIT_SITES[from];
         more.removeAttribute("hidden");
       }
-      document.querySelectorAll("a.card-watch-live, a.card-page-photo-link").forEach(function (a) {
+      document.querySelectorAll("a.card-watch-live").forEach(function (a) {
         if (!from || !KIT_SITES[from]) return;
         try {
           var u = new URL(a.href, window.location.origin);
           u.searchParams.set("return", from);
           a.setAttribute("href", u.pathname + u.search + u.hash);
         } catch (e) {}
+      });
+      document.querySelectorAll("button.card-page-photo-zoom").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var src = btn.getAttribute("data-photo-src") || "";
+          var img = btn.querySelector("img");
+          var alt = (img && img.getAttribute("alt")) || "";
+          if (!src) return;
+          var dlg = document.createElement("dialog");
+          dlg.className = "card-photo-lightbox";
+          dlg.setAttribute("aria-label", "Larger photo");
+          var big = document.createElement("img");
+          big.src = src;
+          big.alt = alt;
+          var close = document.createElement("form");
+          close.method = "dialog";
+          var closeBtn = document.createElement("button");
+          closeBtn.type = "submit";
+          closeBtn.className = "btn btn-secondary";
+          closeBtn.textContent = "Close";
+          close.appendChild(closeBtn);
+          dlg.appendChild(big);
+          dlg.appendChild(close);
+          document.body.appendChild(dlg);
+          if (typeof dlg.showModal === "function") dlg.showModal();
+          else dlg.setAttribute("open", "");
+          dlg.addEventListener("close", function () { dlg.remove(); });
+        });
       });
       if (typeof FPTrack === "function") FPTrack("card_page_viewed", { card_id: "american-bison" });
       var btn = document.getElementById("print-this-card");
