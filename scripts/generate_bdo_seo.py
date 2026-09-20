@@ -4650,16 +4650,16 @@ def _card_group_key(card: dict) -> str:
 
 
 # Cards hub bake: primary = Wildlife + Sea life only (All cards / filters).
-# Experimental shelf = museum/science (attractions kind). Not a peer primary.
+# Beta shelf = museum/science (attractions kind). Not a peer primary.
 # Parks stay unlisted via HUB_UNLISTED_SECTION_IDS — never bake a Parks accordion.
 PRIMARY_HUB_SECTION_IDS = ("wildlife", "sealife")
 EXPERIMENTAL_HUB_SECTION_IDS = ("attractions",)
-EXPERIMENTAL_SHELF_LABEL = "Experimental"
+EXPERIMENTAL_SHELF_LABEL = "Beta"
 EXPERIMENTAL_SHELF_NOTE = "Museum stops &amp; extras"
 
 
 def _landing_primary_cards(cards: list[dict]) -> list[dict]:
-    """Published Wildlife + Sea life only — Experimental and Parks stay off this rail."""
+    """Published Wildlife + Sea life only — Beta and Parks stay off this rail."""
     published = published_card_ids()
     return [
         c
@@ -4670,7 +4670,7 @@ def _landing_primary_cards(cards: list[dict]) -> list[dict]:
 
 
 def _hub_filter_tabs_html(section_ids: list[str]) -> str:
-    """Primary filter tabs only — museum/sci attractions are Experimental."""
+    """Primary filter tabs only — museum/sci attractions are Beta."""
     buttons = [
         '<button type="button" class="place-type-tab is-active" role="tab" data-card-filter="all" aria-selected="true">All</button>'
     ]

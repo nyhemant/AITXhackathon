@@ -70,14 +70,14 @@ python3 -m unittest discover -s tests
 | `/field-pack/{slug}/` | Place page (example: `/field-pack/dallas-zoo/`) |
 | `/field-pack/virtual-field-trip/` | Watch Live |
 | `/field-pack/print/` | Print cutouts — **301** to `/field-pack/virtual-field-trip/?print=1` |
-| `/about/` | About, FAQ, Experimental extras |
-| `/dinner` | Dinner — secondary, **Experimental** |
+| `/about/` | About, FAQ, Beta extras |
+| `/dinner` | Dinner — secondary, **Beta** |
 
 Field Trip Kit static lives under `static/field-pack/` and is served at `/field-pack/`. In-app links are absolute `/field-pack/...` (pages use `<base href="/field-pack/">`).
 
 ## Dinner (secondary)
 
-Dinner still runs at `/dinner`. It is an Experimental leftover from Chapter 1 (“tonight’s meal”), not the default product. Frozen dinner-app notes: `docs/demo.md`, `docs/product-reference.md`. Those are dinner validation / history — not current product validation.
+Dinner still runs at `/dinner`. It is a Beta leftover from Chapter 1 (“tonight’s meal”), not the default product. Frozen dinner-app notes: `docs/demo.md`, `docs/product-reference.md`. Those are dinner validation / history — not current product validation.
 
 ## Documentation
 
