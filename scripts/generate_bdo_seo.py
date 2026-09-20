@@ -135,7 +135,7 @@ PRINT_SPEC = "US Letter or A4 · black & white is fine"
 FORK_GOING_TITLE = "Going soon"
 FORK_GOING_SUB = "Build and print your hunt"
 FORK_GOING_CAPTION = "A one-page checklist to carry"
-FORK_HOME_TITLE = "Not going yet"
+FORK_HOME_TITLE = "Not yet"
 FORK_HOME_SUB = "Explore at home"
 FORK_HOME_CAPTION = "Live cams, photos, and things to talk about."
 OFFER_SENTENCE = (
@@ -2126,7 +2126,7 @@ def page_mission_chrome_html(home_href: str = "#at-home") -> str:
     """Option A: two side-by-side choice cards (Going soon / Not going yet)."""
     href = home_href or "#at-home"
     return f"""
-        <div class="seo-fork no-print" aria-label="Going soon or explore at home">
+        <div class="seo-fork no-print" aria-label="Going soon or not yet">
           <button type="button" class="seo-fork-card seo-fork-going" id="mission-open-btn" data-how="going-soon" aria-haspopup="dialog" aria-controls="mission-drawer">
             <strong class="seo-fork-title">{esc(FORK_GOING_TITLE)}</strong>
             <span class="seo-fork-sub">{esc(FORK_GOING_SUB)}</span>
